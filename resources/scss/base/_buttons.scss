@@ -1,0 +1,13 @@
+/*------------------------------------*\
+    #INPUTS
+\*------------------------------------*/
+
+.button {
+  background: $color__grey;
+  border: 0;
+  color: $color__white;
+
+  &--primary {
+    background-color: $color__blue;
+  }
+}

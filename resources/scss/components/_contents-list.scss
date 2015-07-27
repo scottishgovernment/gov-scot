@@ -1,0 +1,29 @@
+/*------------------------------------*\
+    #CONTENTS LIST
+\*------------------------------------*/
+/**
+ * List of in-page links in page sidebar
+ */
+
+$contents-list-item-padding: 20px;
+$contents-list-item-border-width: 4px;
+
+.contents-list {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+
+  &__item {
+    margin-bottom: 1em;
+    padding-left: $contents-list-item-padding;
+
+    &--active {
+      border-left: $contents-list-item-border-width solid $color__blue;
+      padding-left: $contents-list-item-padding - $contents-list-item-border-width;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

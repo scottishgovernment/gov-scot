@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    #BREADCRUMBS
+\*------------------------------------*/
+
+.breadcrumbs {
+  color: $color__grey;
+  font-size: 14px;
+  padding-left: 0;
+
+  &__item {
+    display: inline-block;
+
+    &:after {
+      content: '>';
+    }
+
+    &--no-icon {
+      &:after {
+        content: '';
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

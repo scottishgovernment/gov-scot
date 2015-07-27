@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+h1,
+.alpha {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  margin: 0 0 56px;
+}
+
+/**
+ * 1. Nudge the header onto the baseline grid
+ */
+h2,
+.beta {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 0 0 32px;
+
+  position: relative; /* [1] */
+  top: -1px;
+}
+
+/**
+ * 1. Nudge the header onto the baseline grid
+ */
+h3,
+.gamma {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 16px;
+
+  position: relative; /* [1] */
+  top: 6px;
+}
+
+h4,
+.delta {
+  margin: 0;
+}
+
+.heading {
+  &--underline {
+    border-bottom: 1px solid $color__grey--light;
+    margin-bottom: 30px;
+    padding-bottom: 9px;
+  }
+
+  &--overline {
+    border-top: 1px solid $color__grey--light;
+    margin-top: 48px;
+    padding-top: 55px;
+  }
+}

@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    #MAIN NAVIGATION
+\*------------------------------------*/
+
+.main-nav {
+  display: table;
+  height: 80px;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
+
+  &__item {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    &--active {
+      background: $color__blue;
+
+      a {
+        color: $color__white;
+      }
+    }
+  }
+
+  &__link {
+    border: 0px solid transparent;
+    border-bottom-color: $color__blue;
+    color: $color__text;
+    display: table;
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
+
+    @include transition(border-width $transition-in-time);
+
+    &:hover {
+      border-width: 5px 0; // animate top and bottom to keep text centered
+    }
+
+    &:active {
+      background: $color__grey--lighter;
+    }
+  }
+
+  &__title {
+    display: table-cell;
+    padding: 0 20px;
+    vertical-align: middle;
+  }
+}

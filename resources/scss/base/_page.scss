@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    #PAGE
+\*------------------------------------*/
+
+body {
+  border-top: 10px solid $color__blue;
+  color: $color__text;
+  font: 16px/24px Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+:lang(gd) {font-style: italic;} // why is this here? create a language sass file?

@@ -1,0 +1,37 @@
+/*------------------------------------*\
+    #SEARCH BOX
+\*------------------------------------*/
+
+$box-size: 64px;
+
+.search-box {
+  float:right;
+  position: relative;
+  width: 100%;
+
+  &__input {
+    border-right: 0;
+    float: right;
+    font-size: 19px;
+    height: $box-size;
+    margin-right: $box-size;
+    width: calc(100% - 64px);
+
+    @include transition(width $transition-in-time);
+
+    &--expandable:focus {
+      width: calc(136% - 64px);         // OR the next line
+      width: calc(100% + 101px - 64px); // ([full width] + [width of 1 column] - [button width])
+    }
+  }
+
+
+
+  &__button {
+    height: $box-size;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $box-size;
+  }
+}
