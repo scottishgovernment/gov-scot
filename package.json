@@ -1,5 +1,5 @@
 {
-  "name": "gov.scot-site",
+  "name": "gov-site",
   "description": "Build environment for the gov.scot web site",
   "version": "0.0.0",
   "repository": {
