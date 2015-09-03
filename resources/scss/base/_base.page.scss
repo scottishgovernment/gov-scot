@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    #PAGE
+\*------------------------------------*/
+
+body {
+  border-top: 8px solid $color__blue--base;
+  color: $color__body;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: $inuit-base-font-size;
+  line-height: $inuit-base-line-height;
+  margin: 0;
+}
+
+:lang(gd) {font-style: italic;} // devnote: why is this here? is it worth creating a language scss file?
+
+@include media-query(tablet) {
+  body {
+    font-size: $tablet-font-size;
+  }
+}

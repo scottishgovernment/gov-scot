@@ -1,0 +1,23 @@
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
+
+a {
+  color: $color__link--primary;
+  font-weight: 400;
+  text-decoration: underline;
+
+  @include transition(color $transition-out-time);
+
+  &:hover {
+    color: $color__link--hover;
+
+    @include transition(color $transition-in-time);
+  }
+
+  &:active {
+    background: $color__blue--lighter;
+    color: $color__link--active;
+    outline: 3px solid $color__blue--lighter;
+  }
+}

@@ -1,0 +1,120 @@
+/*------------------------------------*\
+    #MAIN NAVIGATION
+\*------------------------------------*/
+
+$main-menu-button-size: 80px;
+
+.main-nav {
+
+  &__button {
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    width: $main-menu-button-size;
+    height: $main-menu-button-size;
+  }
+
+  &__list {
+    background: $color__blue--base;
+    left: 0;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: $main-menu-button-size;
+    z-index: 100;
+
+    @include transform(scaleY(0));
+    @include transform-origin(50%, 0);
+
+    @include transition(transform $transition-in-time);
+
+    &--open {
+      transform: scaleY(1);
+    }
+  }
+
+  &__link {
+    color: $color__white;
+  }
+
+}
+
+@include media-query(tablet) {
+  .main-nav {
+
+    &__button {
+      display: none;
+    }
+
+    /**
+     * 1. -1px from grid multiple because of 1px site header bottom border
+     */
+    &__list {
+      background: $color__white;
+      display: table;
+      height: 79px; /* [1] */
+      margin: 0;
+      padding-left: 0;
+      position: static;
+      width: 100%;
+
+      @include transform(none);
+
+      @include transition(none);
+
+      &--open {
+        display: table;
+        max-height: auto;
+
+        @include transition(none);
+      }
+    }
+
+    &__item {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+
+      &--active {
+        background: $color__blue--base;
+
+        a {
+          color: $color__white;
+        }
+      }
+    }
+
+    &__link {
+      border: 0px solid transparent;
+      border-bottom-color: $color__blue--base;
+      color: $color__body;
+      display: table;
+      height: 100%;
+      text-decoration: none;
+      width: 100%;
+
+      @include transition(border-width $transition-in-time);
+
+      /**
+       * 1. animate top and bottom to keep text centered
+       */
+      &:hover {
+        border-width: 5px 0; /* [1] */
+      }
+
+      &:active {
+        background: $color__grey--lighter;
+      }
+    }
+
+    &__title {
+      display: table-cell;
+      padding: 0 20px;
+      vertical-align: middle;
+    }
+  }
+}

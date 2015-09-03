@@ -1,0 +1,82 @@
+.stat-boxes {
+  overflow: hidden;
+}
+
+.stat-box {
+  display: block;
+  border: 1px solid $color__black;
+  border-width: 1px 0;
+  color: $color__black;
+  float: left;
+  margin: 16px 0 32px;
+  min-height: 112px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 30%;
+
+  @include transition(border-width $transition-in-time);
+
+  &__stat {
+    display: block;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 84px;
+  }
+
+  &__label {
+    bottom: 0;
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    left: 0;
+    line-height: 14px;
+    min-height: 28px;
+    position: absolute;
+    right: 0;
+  }
+
+  &:hover {
+    border-bottom-width: 8px;
+    color: $color__black;
+  }
+
+  &:active {
+    background: $color__black;
+    color: $color__white;
+    outline: 0;
+  }
+}
+
+.stat-box + .stat-box {
+  margin-left: 5%;
+}
+
+// clear any following elements
+.stat-box + p,
+.stat-box + h1,
+.stat-box + h2,
+.stat-box + h3,
+.stat-box + ul,
+.stat-box + ol,
+.stat-box + blockquote {
+  clear: both;
+}
+
+@include media-query(tablet) {
+  .stat-box {
+    margin: 24px 0 48px;
+    min-height: 160px;
+
+    &__stat {
+      font-size: 88px;
+      line-height: 126px;
+    }
+
+    &__label {
+      font-size: 16px;
+      line-height: 18px;
+      min-height: 36px;
+    }
+  }
+}

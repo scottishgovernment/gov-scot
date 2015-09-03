@@ -1,0 +1,52 @@
+/*------------------------------------*\
+    #LISTS
+\*------------------------------------*/
+
+$list-left-margin: 15px;
+
+ul,
+ol {
+  font-weight: 400;
+  line-height: 20px;
+  margin: -8px 0 24px $list-left-margin;
+  padding: 0;
+
+  li {
+    margin: 0 0 8px 0;
+  }
+}
+
+article ol {
+  counter-reset: li;
+  list-style-type: none;
+  margin-left: $list-left-margin * 2;
+
+  li {
+    position: relative;
+
+    &:before {
+      color: $color__blue--base;
+      content: counter(li);
+      counter-increment: li;
+      font-size: 40px;
+      font-weight: 100;
+      letter-spacing: -3px;
+      line-height: 40px;
+      padding-right: 20px;
+      position: absolute;
+      right: 100%;
+      top: 0;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  ul,
+  ol {
+    line-height: 24px;
+
+    li {
+      margin-bottom: 16px;
+    }
+  }
+}

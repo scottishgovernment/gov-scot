@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    #ARTICLE HEADER
+\*------------------------------------*/
+
+.article-header {
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__subtitle {
+    color: $color__grey--base;
+    font-size: 22px;
+  }
+}

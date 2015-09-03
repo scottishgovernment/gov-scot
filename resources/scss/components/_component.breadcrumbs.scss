@@ -3,9 +3,10 @@
 \*------------------------------------*/
 
 .breadcrumbs {
-  color: $color__grey;
+  color: $color__grey--base;
   font-size: 14px;
   padding-left: 0;
+  margin: -1px 0 0 0;
 
   &__item {
     display: inline-block;
