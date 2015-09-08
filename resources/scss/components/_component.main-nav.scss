@@ -97,8 +97,6 @@ $main-menu-button-size: 80px;
       text-decoration: none;
       width: 100%;
 
-      @include transition(border-width $transition-in-time);
-
       /**
        * 1. animate top and bottom to keep text centered
        */
@@ -116,5 +114,10 @@ $main-menu-button-size: 80px;
       padding: 0 20px;
       vertical-align: middle;
     }
+  }
+
+  // override anchor transition (which is color)
+  a.main-nav__link {
+    @include transition(border-width $transition-in-time);
   }
 }

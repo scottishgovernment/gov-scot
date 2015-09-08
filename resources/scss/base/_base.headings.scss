@@ -27,10 +27,6 @@ h2, .beta {
 
   position: relative; /* [1] */
   top: -3px;
-
-  &:first-child {
-    margin-top: 0;
-  }
 }
 
 /**
@@ -56,10 +52,6 @@ h3, .gamma {
     font-size: $tablet-h2-size;
     line-height: 40px;
     margin: 48px 0 24px;
-
-    &:first-child {
-      margin-top: 0;
-    }
   }
 
   h3, .gamma {
@@ -71,14 +63,26 @@ h3, .gamma {
 
 .heading {
   &--underline {
-    border-bottom: 1px solid $color__grey--light;
+    border-bottom: 1px solid $color__body;
     margin-bottom: 30px;
     padding-bottom: 9px;
   }
 
   &--overline {
-    border-top: 1px solid $color__grey--light;
+    border-top: 1px solid $color__body;
     margin-top: 48px;
-    padding-top: 55px;
+    padding-top: 17px;
+  }
+}
+
+
+.body-content {
+  > h1,
+  > h2,
+  > h3,
+  > .alpha,
+  > .beta,
+  > .gamma {
+    margin-top: 0;
   }
 }

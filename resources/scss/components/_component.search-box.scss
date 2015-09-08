@@ -16,16 +16,7 @@ $box-size: 64px;
     height: $box-size;
     margin-right: $box-size;
     width: calc(100% - 64px);
-
-    @include transition(width $transition-in-time);
-
-    &--expandable:focus {
-      width: calc(136% - 64px);         // OR the next line
-      width: calc(100% + 101px - 64px); // ([full width] + [width of 1 column] - [button width])
-    }
   }
-
-
 
   &__button {
     height: $box-size;
@@ -33,5 +24,18 @@ $box-size: 64px;
     right: 0;
     top: 0;
     width: $box-size;
+  }
+}
+
+@include media-query(tablet) {
+  .search-box {
+    &__input {
+      @include transition(width $transition-in-time);
+
+      &--expandable:focus {
+        width: calc(136% - 64px);         // OR the next line
+        width: calc(100% + 101px - 64px); // ([full width] + [width of 1 column] - [button width])
+      }
+    }
   }
 }

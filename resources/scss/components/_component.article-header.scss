@@ -11,4 +11,13 @@
     color: $color__grey--base;
     font-size: 22px;
   }
+
+  &__subtitle-link {
+    color: $color__grey--base;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
