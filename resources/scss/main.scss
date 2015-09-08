@@ -1,5 +1,66 @@
 @charset "utf-8";
 
+/*------------------------------------*\
+    #GOV.SCOT
+\*------------------------------------*/
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Default..............inuitcss default settings
+ * Colors...............gov.scot color variables
+ * Variables............gov.scot variables
+ * Type
+ * Responsive...........inuitcss responsive settings
+ *
+ * TOOLS
+ * Functions............inuitcss default functions
+ * Mixins...............inuitcss default mixins
+ * Widths...............inuitcss widths tool
+ * Mixins...............gov.scot mixins
+ * Responsive...........inuitcss responsive tool
+ *
+ * GENERIC
+ * Normalize............inuitcss normalizer
+ * Box-sizing...........inuitcss box-sizing defaults
+ *
+ * BASE
+ * Page.................inuitcss defaults page-level styles (HTML element)
+ * Headings
+ * Links
+ * Page
+ * Type
+ * Forms
+ * Buttons
+ * Lists
+ *
+ * OBJECTS
+ * Layout...............inuitcss layout tool
+ * Wrappers
+ * Helpers
+ *
+ * COMPONENTS
+ * Breadcrumbs
+ * Contents list
+ * Main nav
+ * Search box
+ * Site header
+ * Site footer
+ * Article header
+ * Stat box
+ * Page data
+ * Title with prefix
+ * Person
+ *
+ * TRUMPS
+ * Widths...............inuitcss width helper classes
+ * Widths-responsive....inuitcss responsive width helper classes
+ */
+
+
+
+
 /* SASS LIBRARIES
 ========================================================================== */
 /*
@@ -11,13 +72,22 @@
 @import "compass/utilities";
 @import "compass/css3";
 
-
-
-
 // inuitcss layout module is not ready. Use CSS Wizardry grids instead
 $gutter: 30px;
 $pull: true;
 $push: true;
+
+// same breakpoints as mygov.scot
+$breakpoints: (
+    'bigphone' '(min-width: 480px)',
+    'tablet' '(min-width: 768px)',
+    'desktop' '(min-width: 992px)',
+    'hd' '(min-width: 1200px)'
+);
+$breakpoint-has-widths: ('bigphone', 'tablet', 'desktop', 'hd');
+$breakpoint-has-push:   ('bigphone', 'tablet', 'desktop', 'hd');
+$breakpoint-has-pull:   ('bigphone', 'tablet', 'desktop', 'hd');
+
 @import "utilities/csswizardry-grids.scss";
 
 
@@ -26,10 +96,13 @@ $push: true;
 /**
  * SETTINGS
  */
+$inuit-base-font-size: 15px;
+$inuit-base-line-height: 24px;
 @import "../../bower_components/inuit-defaults/settings.defaults";
-@import "settings/colors";
-@import "settings/variables";
-// inuit settings responsive?
+@import "settings/settings.colors";
+@import "settings/settings.variables";
+@import "settings/settings.type";
+@import "../../bower_components/inuit-responsive-settings/settings.responsive";
 
 
 
@@ -39,8 +112,10 @@ $push: true;
  */
 @import "../../bower_components/inuit-functions/tools.functions";
 @import "../../bower_components/inuit-mixins/tools.mixins";
-@import "tools/mixins";
-// inuit tools responsive?
+$inuit-use-fractions: false;
+@import "../../bower_components/inuit-tools-widths/tools.widths";
+@import "tools/tools.mixins";
+@import "../../bower_components/inuit-responsive-tools/tools.responsive";
 
 
 
@@ -60,12 +135,13 @@ $push: true;
  * BASE
  */
 @import "../../bower_components/inuit-page/base.page";
-@import "base/headings";
-@import "base/links";
-@import "base/page";
-@import "base/type";
-@import "base/forms";
-@import "base/buttons";
+@import "base/base.headings";
+@import "base/base.links";
+@import "base/base.page";
+@import "base/base.type";
+@import "base/base.forms";
+@import "base/base.buttons";
+@import "base/base.lists";
 
 
 
@@ -73,8 +149,9 @@ $push: true;
 /**
  * OBJECTS
  */
-@import "objects/wrappers";
-@import "objects/helpers";
+@import "../../bower_components/inuit-layout/objects.layout";
+@import "objects/object.wrappers";
+@import "objects/object.helpers";
 
 
 
@@ -82,9 +159,23 @@ $push: true;
 /**
  * COMPONENTS
  */
-@import "components/breadcrumbs";
-@import "components/contents-list";
-@import "components/main-nav";
-@import "components/search-box";
-@import "components/site-header";
+@import "components/component.breadcrumbs";
+@import "components/component.contents-list";
+@import "components/component.main-nav";
+@import "components/component.search-box";
+@import "components/component.site-header";
+@import "components/component.site-footer";
+@import "components/component.article-header";
+@import "components/component.stat-box";
+@import "components/component.page-data";
+@import "components/component.title-with-prefix";
+@import "components/component.person";
 
+
+
+
+/**
+ * TRUMPS
+ */
+@import "../../bower_components/inuit-widths/trumps.widths";
+@import "../../bower_components/inuit-widths-responsive/trumps.widths-responsive";

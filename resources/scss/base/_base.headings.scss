@@ -1,0 +1,84 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+/**
+ * 1. Nudge the header onto the baseline grid
+ */
+h1, .alpha {
+  color: $color__body--h1;
+  font-size: $base-h1-size;
+  font-weight: 100;
+  line-height: 40px;
+  margin: 0 0 24px;
+
+  position: relative; /* [1] */
+  top: -1px;
+}
+
+/**
+ * 1. Nudge the header onto the baseline grid
+ */
+h2, .beta {
+  color: $color__body--h2;
+  font-size: $base-h2-size;
+  font-weight: 400;
+  margin: 32px 0 16px;
+
+  position: relative; /* [1] */
+  top: -3px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+/**
+ * 1. Nudge the header onto the baseline grid
+ */
+h3, .gamma {
+  color: $color__body--h3;
+  font-size: $base-h3-size;
+  font-weight: 700;
+  margin: 32px 0 8px;
+
+  position: relative; /* [1] */
+  top: -2px;
+}
+
+@include media-query(tablet) {
+  h1, .alpha {
+    font-size: $tablet-h1-size;
+    line-height: 72px;
+  }
+
+  h2, .beta {
+    font-size: $tablet-h2-size;
+    line-height: 40px;
+    margin: 48px 0 24px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h3, .gamma {
+    font-size: $tablet-h3-size;
+    line-height: 40px;
+    margin: 48px 0 8px;
+  }
+}
+
+.heading {
+  &--underline {
+    border-bottom: 1px solid $color__grey--light;
+    margin-bottom: 30px;
+    padding-bottom: 9px;
+  }
+
+  &--overline {
+    border-top: 1px solid $color__grey--light;
+    margin-top: 48px;
+    padding-top: 55px;
+  }
+}

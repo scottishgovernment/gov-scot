@@ -1,0 +1,16 @@
+/**
+ * Creates a RGBA tint of an input color.
+ * Not suitable for browsers that don't like RGBA.
+ */
+@function tint($color, $amount) {
+    @return rgba(red($color), green($color), blue($color), $amount);
+}
+
+/**
+ * Creates a solid tint of an input color against a supplied background color.
+ * Suitable for browsers that don't like RGBA.
+ * Basically an alias for MIX with a decimal for amount
+ */
+@function tint-solid($color, $background, $amount) {
+    @return mix($color, $background, $amount * 100);
+}

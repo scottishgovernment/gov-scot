@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    #TITLE WITH PREFIX
+\*------------------------------------*/
+
+.title-with-prefix {
+  margin: 32px 0 16px 0;
+
+  &__prefix {
+    font-size: $base-font-size;
+  }
+
+  &__title {
+    border-bottom: 1px solid $color__link--primary;
+    display: inline-block;
+    line-height: 1em;
+  }
+
+  &__link {
+    color: $color__black;
+    text-decoration: none;
+
+    &:hover {
+      color: $color__link--primary;
+    }
+
+    &:active {
+      color: $color__link--active;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .title-with-prefix {
+    margin: 48px 0 24px 0;
+
+    &__prefix {
+      font-size: $tablet-font-size;
+    }
+  }
+}

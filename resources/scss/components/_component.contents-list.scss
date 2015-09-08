@@ -18,7 +18,7 @@ $contents-list-item-border-width: 4px;
     padding-left: $contents-list-item-padding;
 
     &--active {
-      border-left: $contents-list-item-border-width solid $color__blue;
+      border-left: $contents-list-item-border-width solid $color__blue--base;
       padding-left: $contents-list-item-padding - $contents-list-item-border-width;
     }
   }

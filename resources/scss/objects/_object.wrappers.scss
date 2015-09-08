@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    #WRAPPERS
+\*------------------------------------*/
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@include media-query(tablet) {
+  .wrapper {
+    max-width: 750px;
+  }
+}
+
+@include media-query(desktop) {
+  .wrapper {
+    max-width: 970px;
+  }
+}
+
+@include media-query(hd) {
+  .wrapper {
+    max-width: 1170px;
+  }
+}
+
+

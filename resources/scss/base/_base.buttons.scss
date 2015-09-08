@@ -1,13 +1,13 @@
 /*------------------------------------*\
-    #INPUTS
+    #BUTTONS
 \*------------------------------------*/
 
 .button {
-  background: $color__grey;
+  background: $color__grey--base;
   border: 0;
   color: $color__white;
 
   &--primary {
-    background-color: $color__blue;
+    background-color: $color__blue--base;
   }
 }
