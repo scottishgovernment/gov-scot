@@ -1,0 +1,24 @@
+.pagination {
+  text-align: center;
+
+  &__list {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__page {
+    background: $color__grey--lighter;
+    display: inline-block;
+    padding: 4px 12px;
+    text-decoration: none;
+
+    &--active {
+      background: $color__link--primary;
+      color: $color__white;
+    }
+  }
+}

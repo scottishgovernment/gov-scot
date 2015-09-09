@@ -52,6 +52,7 @@
  * Stat box
  * Title with prefix
  * Person
+ * Pagination
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -169,6 +170,7 @@ $inuit-use-fractions: false;
 @import "components/component.stat-box";
 @import "components/component.title-with-prefix";
 @import "components/component.person";
+@import "components/component.pagination";
 
 
 
