@@ -3,15 +3,17 @@
 
   &__list {
     list-style: none;
-    margin-left: 0;
+    margin: 24px 0 0 0;
   }
 
   &__item {
     display: inline-block;
+    margin: 0 2px;
   }
 
   &__page {
     background: $color__grey--lighter;
+    cursor: pointer;
     display: inline-block;
     padding: 4px 12px;
     text-decoration: none;
@@ -20,5 +22,32 @@
       background: $color__link--primary;
       color: $color__white;
     }
+
+    &--no-link {
+      cursor: default;
+    }
+
+    &:active {
+      outline: 0;
+    }
   }
 }
+
+.search-results__pagination {
+  &--full {
+    display: none;
+  }
+}
+
+@include media-query(tablet) {
+  .search-results__pagination {
+    &--full {
+      display: block;
+    }
+
+    &--small {
+      display: none;
+    }
+  }
+}
+

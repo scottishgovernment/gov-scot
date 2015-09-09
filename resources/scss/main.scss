@@ -53,6 +53,7 @@
  * Title with prefix
  * Person
  * Pagination
+ * Search result
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -171,6 +172,7 @@ $inuit-use-fractions: false;
 @import "components/component.title-with-prefix";
 @import "components/component.person";
 @import "components/component.pagination";
+@import "components/component.search-result";
 
 
 
