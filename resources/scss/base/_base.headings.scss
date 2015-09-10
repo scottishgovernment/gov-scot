@@ -23,14 +23,10 @@ h2, .beta {
   color: $color__body--h2;
   font-size: $base-h2-size;
   font-weight: 400;
-  margin: 32px 0 16px;
+  margin: 48px 0 16px;
 
   position: relative; /* [1] */
   top: -3px;
-
-  &:first-child {
-    margin-top: 0;
-  }
 }
 
 /**
@@ -40,6 +36,7 @@ h3, .gamma {
   color: $color__body--h3;
   font-size: $base-h3-size;
   font-weight: 700;
+  line-height: 24px;
   margin: 32px 0 8px;
 
   position: relative; /* [1] */
@@ -55,30 +52,37 @@ h3, .gamma {
   h2, .beta {
     font-size: $tablet-h2-size;
     line-height: 40px;
-    margin: 48px 0 24px;
-
-    &:first-child {
-      margin-top: 0;
-    }
+    margin: 72px 0 24px;
   }
 
   h3, .gamma {
     font-size: $tablet-h3-size;
-    line-height: 40px;
     margin: 48px 0 8px;
   }
 }
 
 .heading {
   &--underline {
-    border-bottom: 1px solid $color__grey--light;
+    border-bottom: 1px solid $color__body;
     margin-bottom: 30px;
     padding-bottom: 9px;
   }
 
   &--overline {
-    border-top: 1px solid $color__grey--light;
+    border-top: 1px solid $color__body;
     margin-top: 48px;
-    padding-top: 55px;
+    padding-top: 17px;
+  }
+}
+
+
+.body-content {
+  > h1:first-child,
+  > h2:first-child,
+  > h3:first-child,
+  > .alpha:first-child,
+  > .beta:first-child,
+  > .gamma:first-child {
+    margin-top: 0;
   }
 }
