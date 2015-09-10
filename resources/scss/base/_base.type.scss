@@ -7,11 +7,17 @@ p {
 }
 
 .leader {
-  color: $color__black;
-  font-size: $base-leader-size;
-  font-weight: 300;
-  line-height: 32px;
-  margin: 0 0 48px 0;
+  :first-child {
+    color: $color__black;
+    font-size: $base-leader-size;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 48px 0;
+  }
+}
+
+.no-top-margin {
+  margin-top: 0;
 }
 
 @include media-query(tablet) {

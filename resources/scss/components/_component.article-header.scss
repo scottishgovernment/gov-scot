@@ -3,21 +3,32 @@
 \*------------------------------------*/
 
 .article-header {
+  margin: 48px 0 64px;
+
   &__title {
     margin-bottom: 0;
   }
 
   &__subtitle {
-    color: $color__grey--base;
+    color: $color__black;
     font-size: 22px;
+    line-height: 32px;
+    margin-top: 0;
   }
 
   &__subtitle-link {
-    color: $color__grey--base;
+    border-bottom: 1px solid $color__blue--base;
+    color: $color__black;
+    display: inline;
+    line-height: 1em;
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
+      color: $color__link--primary;
+    }
+
+    &:active {
+      color: $color__link--active;
     }
   }
 }

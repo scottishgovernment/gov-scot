@@ -23,7 +23,7 @@ h2, .beta {
   color: $color__body--h2;
   font-size: $base-h2-size;
   font-weight: 400;
-  margin: 32px 0 16px;
+  margin: 48px 0 16px;
 
   position: relative; /* [1] */
   top: -3px;
@@ -36,6 +36,7 @@ h3, .gamma {
   color: $color__body--h3;
   font-size: $base-h3-size;
   font-weight: 700;
+  line-height: 24px;
   margin: 32px 0 8px;
 
   position: relative; /* [1] */
@@ -51,12 +52,11 @@ h3, .gamma {
   h2, .beta {
     font-size: $tablet-h2-size;
     line-height: 40px;
-    margin: 48px 0 24px;
+    margin: 72px 0 24px;
   }
 
   h3, .gamma {
     font-size: $tablet-h3-size;
-    line-height: 40px;
     margin: 48px 0 8px;
   }
 }
@@ -77,12 +77,12 @@ h3, .gamma {
 
 
 .body-content {
-  > h1,
-  > h2,
-  > h3,
-  > .alpha,
-  > .beta,
-  > .gamma {
+  > h1:first-child,
+  > h2:first-child,
+  > h3:first-child,
+  > .alpha:first-child,
+  > .beta:first-child,
+  > .gamma:first-child {
     margin-top: 0;
   }
 }
