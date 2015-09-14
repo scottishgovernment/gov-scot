@@ -7,6 +7,7 @@
 $color__white: #ffffff;
 $color__black: #000000;
 
+$color__blue--lightest: #e8f0f6;
 $color__blue--lighter: #d9effc;
 $color__blue--base: #005eb8;
 $color__blue--dark: #173163;
@@ -22,8 +23,12 @@ $color__body--h1: $color__black;
 $color__body--h2: $color__black;
 $color__body--h3: $color__black;
 
+$color__placeholder: #727272;
+
 // copy - links
 $color__link--primary: $color__blue--base;
 $color__link--hover: $color__blue--dark;
 $color__link--active: $color__blue--dark;
 $color__link--focus: $color__blue--dark;
+
+$color__input--focus: $color__blue--lightest;

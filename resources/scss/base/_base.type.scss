@@ -7,7 +7,7 @@ p {
 }
 
 .leader {
-  :first-child {
+  > :first-child {
     color: $color__black;
     font-size: $base-leader-size;
     font-weight: 300;

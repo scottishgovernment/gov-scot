@@ -4,5 +4,32 @@
 
 .site-header {
   border-bottom: 1px solid $color__grey--light;
+  height: 56px;
   margin-bottom: 16px;
+  position: relative;
+  z-index: 1001;
+
+  &__buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__button {
+    font-size: 12px;
+    line-height: 16px;
+
+    height: $main-menu__button__size;
+    width: $main-menu__button__size;
+
+    span.fa {
+      font-size: 32px;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .site-header {
+    height: 80px;
+  }
 }

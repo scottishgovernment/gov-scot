@@ -1,0 +1,49 @@
+.site-brand {
+  display: table;
+  height: 56px;
+
+  &__link {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  &__logo {
+    background: url(../images/logos/scotgovlogo.png) 0 0 no-repeat transparent;
+    display: table-cell;
+    height: 32px;
+    text-indent: -999em;
+    width: 157px;
+
+    background-size: 100%;
+  }
+}
+
+
+@include media-query(tablet) {
+  .site-brand {
+    height: 80px;
+
+    &__logo {
+    }
+  }
+}
+
+@include media-query(desktop) {
+  .site-brand {
+    height: 80px;
+
+    &__logo {
+      height: 41px;
+      width: 212px;
+    }
+  }
+}
+
+@include media-query(hd) {
+  .site-brand {
+    &__logo {
+      height: 52px;
+      width: 262px;
+    }
+  }
+}

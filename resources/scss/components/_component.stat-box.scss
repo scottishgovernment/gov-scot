@@ -42,7 +42,7 @@ a.stat-box {
     border-bottom-width: 8px;
     color: $color__black;
 
-    @include transition(border-width $transition-in-time);
+    @include transition-duration($transition-in-time);
   }
 
   &:active {

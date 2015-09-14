@@ -2,10 +2,9 @@
     #SEARCH BOX
 \*------------------------------------*/
 
-$box-size: 64px;
+$search-box__box-size: 56px;
 
 .search-box {
-  overflow: hidden;
   position: relative;
   width: 100%;
 
@@ -13,17 +12,39 @@ $box-size: 64px;
     border-right: 0;
     float: right;
     font-size: 19px;
-    height: $box-size;
-    margin-right: $box-size;
-    width: calc(100% - 64px);
+    height: $search-box__box-size;
+    margin-right: $search-box__box-size;
+    width: calc(100% - #{$search-box__box-size});
   }
 
   &__button {
-    height: $box-size;
+    height: $search-box__box-size;
+    font-size: $search-box__box-size * 0.5;
     position: absolute;
     right: 0;
     top: 0;
-    width: $box-size;
+    width: $search-box__box-size;
+  }
+
+  &--mobile {
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: auto;
+    z-index: 101;
+
+    @include transition(margin-top $transition-in-time);
+  }
+}
+
+/*
+ * MOBILE SEARCH
+ */
+.mobile-search {
+  &.mobile-layer--open {
+    .search-box--mobile {
+      margin-top: 16px;
+    }
   }
 }
 
@@ -33,8 +54,13 @@ $box-size: 64px;
       @include transition(width $transition-in-time);
 
       &--expandable:focus {
-        width: calc(136% - 64px);         // OR the next line
-        width: calc(100% + 101px - 64px); // ([full width] + [width of 1 column] - [button width])
+        width: calc(136% - #{$search-box__box-size});         // OR the next line
+        width: calc(100% + 101px - #{$search-box__box-size}); // ([full width] + [width of 1 column] - [button width])
+      }
+
+      &:focus {
+        font-size: 22px;
+        font-weight: 300;
       }
     }
   }

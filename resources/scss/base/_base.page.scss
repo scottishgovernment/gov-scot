@@ -9,6 +9,17 @@ body {
   font-size: $inuit-base-font-size;
   line-height: $inuit-base-line-height;
   margin: 0;
+
+  // duplicate the blue bar at the top of the page so it can show on top of any fixed-position overlay on the page (e.g. mobile search overlay)
+  &:before {
+    background: $color__blue--base;
+    content: '';
+    height: 8px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+  }
 }
 
 :lang(gd) {font-style: italic;} // devnote: why is this here? is it worth creating a language scss file?

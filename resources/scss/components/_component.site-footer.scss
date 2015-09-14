@@ -4,7 +4,7 @@
 
 .site-footer {
   background: $color__blue--base;
-  margin-top: 4em;
+  margin-top: 48px;
   padding: 2em 0;
 
   &__link {
@@ -28,8 +28,8 @@
 }
 
 // making icon size css properties relative instead of absolute makes it easy to resize icons for different breakpoints
-$social-icon-size: 32px;
-$social-icon-size-multiplier: 2/3;
+$social-icon__size: 32px;
+$social-icon__size-multiplier: 2/3;
 
 .social-links {
   float: right;
@@ -40,17 +40,17 @@ $social-icon-size-multiplier: 2/3;
   }
 
   &__link {
-    font-size: $social-icon-size * $social-icon-size-multiplier;
+    font-size: $social-icon__size * $social-icon__size-multiplier;
 
     background: $color__white;
-    border-radius: 1em / $social-icon-size-multiplier;
+    border-radius: 1em / $social-icon__size-multiplier;
     color: $color__blue--base;
     display: block;
-    height: 1em / $social-icon-size-multiplier;
-    line-height: 1em / $social-icon-size-multiplier;
+    height: 1em / $social-icon__size-multiplier;
+    line-height: 1em / $social-icon__size-multiplier;
     opacity: 0.7;
     text-align: center;
-    width: 1em / $social-icon-size-multiplier;
+    width: 1em / $social-icon__size-multiplier;
 
     @include transition(opacity $transition-out-time);
 
@@ -58,20 +58,25 @@ $social-icon-size-multiplier: 2/3;
       color: $color__blue--base;
       opacity: 1;
 
-      @include transition(opacity $transition-in-time);
+      @include transition-duration($transition-in-time);
     }
 
     .fa {
-      line-height: 1em / $social-icon-size-multiplier;
+      line-height: 1em / $social-icon__size-multiplier;
     }
   }
 }
 
 // for demonstration only: social icon sizes can be controlled through a single property, e.g.
 @include media-query(tablet) {
+  .site-footer {
+    margin-top: 88px;
+  }
+
   .social-links__link {
     $social-icon-size: 48px;
 
-    font-size: $social-icon-size * $social-icon-size-multiplier;
+    font-size: $social-icon-size * $social-icon__size-multiplier;
   }
 }
+

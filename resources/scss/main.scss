@@ -40,6 +40,7 @@
  * Layout...............inuitcss layout tool
  * Wrappers
  * Helpers
+ * Layers
  *
  * COMPONENTS
  * Breadcrumbs
@@ -54,6 +55,7 @@
  * Person
  * Pagination
  * Search result
+ * Site brand
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -84,7 +86,12 @@ $breakpoints: (
     'bigphone' '(min-width: 480px)',
     'tablet' '(min-width: 768px)',
     'desktop' '(min-width: 992px)',
-    'hd' '(min-width: 1200px)'
+    'hd' '(min-width: 1200px)',
+
+    'tablet-down' '(max-width: 767px)',
+    'tablet-to-desktop' '(min-width: 768px) and (max-width: 991px)',
+    'desktop-to-hd' '(min-width: 992px) and (max-width: 1199px)',
+    'hd-up' '(min-width: 1200px)'
 );
 $breakpoint-has-widths: ('bigphone', 'tablet', 'desktop', 'hd');
 $breakpoint-has-push:   ('bigphone', 'tablet', 'desktop', 'hd');
@@ -154,6 +161,7 @@ $inuit-use-fractions: false;
 @import "../../bower_components/inuit-layout/objects.layout";
 @import "objects/object.wrappers";
 @import "objects/object.helpers";
+@import "objects/object.layers";
 
 
 
@@ -173,6 +181,7 @@ $inuit-use-fractions: false;
 @import "components/component.person";
 @import "components/component.pagination";
 @import "components/component.search-result";
+@import "components/component.site-brand";
 
 
 

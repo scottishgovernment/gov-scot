@@ -2,45 +2,52 @@
     #MAIN NAVIGATION
 \*------------------------------------*/
 
-$main-menu-button-size: 80px;
+$main-menu__button__size: 56px;
 
 .main-nav {
 
-  &__button {
-    left: 0;
-    position: absolute;
-    top: 0;
-
-    width: $main-menu-button-size;
-    height: $main-menu-button-size;
-  }
-
   &__list {
-    background: $color__blue--base;
-    left: 0;
+    $main-nav__list__margin: 15px;
+
+    left: 100%;
     list-style-type: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
+    margin: 0 $main-nav__list__margin * -1;
     position: absolute;
     right: 0;
-    top: $main-menu-button-size;
-    z-index: 100;
+    z-index: 1001;
 
-    @include transform(scaleY(0));
-    @include transform-origin(50%, 0);
+    @include transition(left $transition-in-time);
+  }
 
-    @include transition(transform $transition-in-time);
-
-    &--open {
-      transform: scaleY(1);
-    }
+  &__item {
+    margin-bottom: 1px;
   }
 
   &__link {
+    background: $color__blue--base;
     color: $color__white;
-  }
+    display: block;
+    padding: 8px 15px;
 
+    @include transition(background-color $transition-in-time);
+
+    &:hover,
+    &:active {
+      background: $color__link--hover;
+      color: $color__white;
+    }
+  }
+}
+
+/*
+ * MOBILE NAV
+ */
+.mobile-main-nav {
+  &.mobile-layer--open {
+    .main-nav__list {
+      left: 0;
+    }
+  }
 }
 
 @include media-query(tablet) {
@@ -56,6 +63,7 @@ $main-menu-button-size: 80px;
     &__list {
       background: $color__white;
       display: table;
+      font-size: 14px;
       height: 79px; /* [1] */
       margin: 0;
       padding-left: 0;
@@ -89,11 +97,13 @@ $main-menu-button-size: 80px;
     }
 
     &__link {
+      background: transparent;
       border: 0px solid transparent;
       border-bottom-color: $color__blue--base;
       color: $color__body;
       display: table;
       height: 100%;
+      padding: 0;
       text-decoration: none;
       width: 100%;
 
@@ -101,17 +111,21 @@ $main-menu-button-size: 80px;
        * 1. animate top and bottom to keep text centered
        */
       &:hover {
+        background: transparent;
         border-width: 5px 0; /* [1] */
+        color: $color__body;
       }
 
       &:active {
-        background: $color__grey--lighter;
+        background: $color__blue--base;
+        color: $color__white;
+        outline: 0;
       }
     }
 
     &__title {
       display: table-cell;
-      padding: 0 20px;
+      padding: 0 10px;
       vertical-align: middle;
     }
   }
@@ -121,3 +135,12 @@ $main-menu-button-size: 80px;
     @include transition(border-width $transition-in-time);
   }
 }
+
+@include media-query(desktop) {
+  .main-nav {
+    &__list {
+      font-size: 16px;
+    }
+  }
+}
+

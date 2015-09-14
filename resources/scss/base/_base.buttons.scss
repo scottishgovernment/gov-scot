@@ -7,7 +7,28 @@
   border: 0;
   color: $color__white;
 
+  @include transition(background $transition-out-time);
+
+  &:hover {
+    @include transition-duration($transition-in-time);
+  }
+
   &--primary {
-    background-color: $color__blue--base;
+    background-color: $color__link--primary;
+
+    &:hover {
+      background-color: $color__link--hover;
+    }
+  }
+
+  &--clear {
+    background-color: transparent;
+    color: $color__link--primary;
+
+    @include transition(color $transition-out-time);
+
+    &:hover {
+      color: $color__link--hover;
+    }
   }
 }

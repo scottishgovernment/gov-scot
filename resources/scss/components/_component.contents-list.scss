@@ -5,8 +5,8 @@
  * List of in-page links in page sidebar
  */
 
-$contents-list-item-padding: 20px;
-$contents-list-item-border-width: 4px;
+$contents-list__item__padding: 20px;
+$contents-list__item__border-width: 4px;
 
 .contents-list {
   list-style-type: none;
@@ -14,12 +14,12 @@ $contents-list-item-border-width: 4px;
   padding-left: 0;
 
   &__item {
-    margin-bottom: 1em;
-    padding-left: $contents-list-item-padding;
+    margin-bottom: 1em $contents-list__item__padding;
+    padding-left: $contents-list__item__padding;
 
     &--active {
-      border-left: $contents-list-item-border-width solid $color__blue--base;
-      padding-left: $contents-list-item-padding - $contents-list-item-border-width;
+      border-left: $contents-list__item__border-width solid $color__blue--base;
+      padding-left: $contents-list__item__padding - $contents-list__item__border-width;
     }
   }
 

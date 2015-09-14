@@ -2,13 +2,13 @@
     #LISTS
 \*------------------------------------*/
 
-$list-left-margin: 15px;
+$list__left-margin: 15px;
 
 ul,
 ol {
   font-weight: 400;
   line-height: 20px;
-  margin: -8px 0 24px $list-left-margin;
+  margin: -8px 0 24px $list__left-margin;
   padding: 0;
 
   li {
@@ -19,7 +19,7 @@ ol {
 article ol {
   counter-reset: li;
   list-style-type: none;
-  margin-left: $list-left-margin * 2;
+  margin-left: $list__left-margin * 2;
 
   li {
     position: relative;
