@@ -56,17 +56,6 @@ a.stat-box {
   margin-left: 5%;
 }
 
-// clear any following elements
-.stat-box + p,
-.stat-box + h1,
-.stat-box + h2,
-.stat-box + h3,
-.stat-box + ul,
-.stat-box + ol,
-.stat-box + blockquote {
-  clear: both;
-}
-
 @include media-query(tablet) {
   .stat-box {
     margin: 24px 0 48px;

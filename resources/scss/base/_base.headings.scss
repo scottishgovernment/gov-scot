@@ -63,13 +63,13 @@ h3, .gamma {
 
 .heading {
   &--underline {
-    border-bottom: 1px solid $color__body;
+    border-bottom: 1px solid $color__grey--light;
     margin-bottom: 30px;
     padding-bottom: 9px;
   }
 
   &--overline {
-    border-top: 1px solid $color__body;
+    border-top: 1px solid $color__grey--light;
     margin-top: 48px;
     padding-top: 17px;
   }

@@ -56,6 +56,7 @@
  * Pagination
  * Search result
  * Site brand
+ * Social
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -182,6 +183,7 @@ $inuit-use-fractions: false;
 @import "components/component.pagination";
 @import "components/component.search-result";
 @import "components/component.site-brand";
+@import "components/component.social";
 
 
 

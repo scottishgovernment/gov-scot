@@ -22,7 +22,7 @@ body {
   }
 }
 
-:lang(gd) {font-style: italic;} // devnote: why is this here? is it worth creating a language scss file?
+:lang(gd) {font-style: italic;} // dev note: why is this here? is it worth creating a language scss file?
 
 @include media-query(tablet) {
   body {
