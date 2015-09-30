@@ -76,7 +76,6 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-requirejs": "^0.2.2",
     "phantomjs": "1.9.17",
-    "slug": "^0.9.1",
     "watch": "^0.16.0"
   },
   "engines": {
