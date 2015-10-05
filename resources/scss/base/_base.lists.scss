@@ -2,7 +2,7 @@
     #LISTS
 \*------------------------------------*/
 
-$list__left-margin: 15px;
+$list__left-margin: 35px;
 
 ul,
 ol {
@@ -19,10 +19,12 @@ ol {
 article ol {
   counter-reset: li;
   list-style-type: none;
-  margin-left: $list__left-margin * 2;
+  margin-left: $list__left-margin;
+
 
   li {
     position: relative;
+    min-height: 40px;
 
     &:before {
       color: $color__blue--base;
@@ -48,5 +50,9 @@ article ol {
     li {
       margin-bottom: 16px;
     }
+  }
+
+  article ol li {
+    min-height: 48px;
   }
 }
