@@ -16,7 +16,7 @@ a {
   }
 
   &:active {
-    background: $color__blue--lighter;
+    background-color: $color__blue--lighter;
     color: $color__link--active;
     outline: 3px solid $color__blue--lighter;
   }
