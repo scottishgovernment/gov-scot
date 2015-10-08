@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .article-header {
-  margin: 48px 0 64px;
+  margin: 32px 0 24px;
 
   &__title {
     margin-bottom: 0;
@@ -31,5 +31,11 @@
     &:active {
       color: $color__link--active;
     }
+  }
+}
+
+@include media-query(tablet) {
+  .article-header {
+    margin-top: 48px 0 64px;
   }
 }

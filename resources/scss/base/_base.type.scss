@@ -11,7 +11,7 @@ p {
     color: $color__black;
     font-size: $base-leader-size;
     font-weight: 300;
-    line-height: 32px;
+    line-height: 24px;
     margin: 0 0 48px 0;
   }
 }
@@ -21,5 +21,11 @@ p {
 }
 
 @include media-query(tablet) {
-  margin: 0 0 72px 0;
+  .leader {
+    > :first-child {
+      font-size: $tablet-leader-size;
+      line-height: 32px;
+      margin: 0 0 72px 0;
+    }
+  }
 }

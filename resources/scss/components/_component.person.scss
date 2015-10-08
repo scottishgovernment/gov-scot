@@ -3,13 +3,13 @@
 \*------------------------------------*/
 
 .person {
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 
   &__image-container {
     clear: left;
     float: left;
     margin-right: 20px;
-    width: 130px;
+    width: 213px;
   }
 
   &__text-container {
@@ -34,10 +34,6 @@
         text-decoration: underline;
       }
     }
-  }
-
-  &__role {
-
   }
 
   &:after {
