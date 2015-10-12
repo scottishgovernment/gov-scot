@@ -9,7 +9,7 @@
     clear: left;
     float: left;
     margin-right: 20px;
-    width: 213px;
+    width: 130px;
   }
 
   &__text-container {
@@ -40,6 +40,18 @@
     clear: both;
     content: '';
     display: block;
+  }
+}
+
+@include media-query(bigphone) {
+  .person {
+    &__image-container {
+      width: 213px;
+    }
+
+    &__text-container {
+      padding-left: 233px;
+    }
   }
 }
 
