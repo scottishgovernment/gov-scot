@@ -44,7 +44,6 @@
  *
  * COMPONENTS
  * Breadcrumbs
- * Contents list
  * Main nav
  * Search box
  * Site header
@@ -59,6 +58,8 @@
  * Contact information
  * Mobile-only accordion
  * Article nav
+ * List controls
+ * Collapsible
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -173,7 +174,6 @@ $inuit-use-fractions: false;
  * COMPONENTS
  */
 @import "components/component.breadcrumbs";
-@import "components/component.contents-list";
 @import "components/component.main-nav";
 @import "components/component.search-box";
 @import "components/component.site-header";
@@ -188,6 +188,8 @@ $inuit-use-fractions: false;
 @import "components/component.contact-information";
 @import "components/component.mobile-only-accordion";
 @import "components/component.article-nav";
+@import "components/component.list-controls";
+@import "components/component.collapsible";
 
 
 

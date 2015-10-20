@@ -21,6 +21,7 @@
     }
   }
 
+  // color variant
   &--clear {
     background-color: transparent;
     color: $color__link--primary;
@@ -30,5 +31,29 @@
     &:hover {
       color: $color__link--hover;
     }
+  }
+
+  // color variant
+  &--invert {
+    background-color: $color__white;
+    color: $color__blue--base;
+
+    @include transition(color $transition-out-time);
+
+    &:hover {
+      color: $color__link--hover;
+    }
+  }
+
+  // color variant
+  &--ghost {
+    background-color: transparent;
+    border: 1px solid $color__white;
+    color: $color__white;
+  }
+
+  // size variant
+  &--large {
+    height: 64px;
   }
 }

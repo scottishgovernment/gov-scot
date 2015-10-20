@@ -2,18 +2,24 @@
     #FORMS
 \*------------------------------------*/
 
-input {
+input[type=text] {
   background: $color__grey--lighter;
   border: 1px solid $color__grey--light;
   height: 48px;
   padding: 0 1em;
 
-  &[type=text] {
-    &:focus {
-      background: $color__input--focus;
-      outline: 0;
-    }
+  &:focus {
+    background: $color__input--focus;
+    outline: 0;
   }
+}
+
+select {
+  background: $color__grey--lighter;
+  border: 1px solid $color__grey--light;
+  border-radius: 0;
+  height: 40px;
+  padding: 0 1em;
 }
 
 ::-webkit-input-placeholder {
@@ -35,4 +41,10 @@ input {
 // fallback for browsers without placeholder
 .placeholder {
   color: $color__placeholder;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }

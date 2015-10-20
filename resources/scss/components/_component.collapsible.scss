@@ -1,0 +1,36 @@
+.collapsible {
+  .collapsible__trigger {
+    text-decoration: none;
+  }
+
+  .collapsible__icon {
+    display: inline-block;
+  }
+
+  .collapsible__icon--up {
+    display: none;
+  }
+
+  .collapsible__body {
+    display: none;
+  }
+
+  .collapsible__title {
+    color: $color__white;
+    margin-top: 0;
+  }
+
+  &--open {
+    .collapsible__icon--up {
+      display: inline-block;
+    }
+
+    .collapsible__icon--down {
+      display: none;
+    }
+
+    .collapsible__body {
+      display: block;
+    }
+  }
+}
