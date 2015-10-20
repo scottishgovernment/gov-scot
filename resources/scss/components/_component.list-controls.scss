@@ -48,6 +48,11 @@
 }
 
 .filter-buttons {
+  position: absolute;
+  right: 8px;
+  top: 75px;
+  z-index: 1;
+
   &__clear-filters{
 
   }

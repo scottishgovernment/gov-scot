@@ -1,6 +1,10 @@
 .collapsible {
   .collapsible__trigger {
     text-decoration: none;
+
+    &:active {
+      outline: none;
+    }
   }
 
   .collapsible__icon {
