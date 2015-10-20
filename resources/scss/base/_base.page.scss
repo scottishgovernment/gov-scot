@@ -2,6 +2,9 @@
     #PAGE
 \*------------------------------------*/
 
+/**
+ * 1. To make space for sticky footer
+ */
 body {
   border-top: 8px solid $color__blue--base;
   color: $color__body;
@@ -9,6 +12,8 @@ body {
   font-size: $inuit-base-font-size;
   line-height: $inuit-base-line-height;
   margin: 0;
+
+//  margin-bottom: 320px; /* [1] */
 
   // duplicate the blue bar at the top of the page so it can show on top of any fixed-position overlay on the page (e.g. mobile search overlay)
   &:before {

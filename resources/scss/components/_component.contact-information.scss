@@ -1,3 +1,8 @@
+/*------------------------------------*\
+    #CONTACT INFORMATION
+    details about a person (or role)
+\*------------------------------------*/
+
 .contact-information {
   &__section-title {
     font-size: 1em;
@@ -30,6 +35,10 @@
   &__link {
     color: $color__body;
     text-decoration: none;
+
+    &:hover {
+      color: $color__link--primary;
+    }
 
     &:active {
       text-decoration: underline;
