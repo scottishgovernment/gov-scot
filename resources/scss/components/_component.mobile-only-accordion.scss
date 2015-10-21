@@ -15,7 +15,7 @@
   display: none;
 }
 
-@include media-query(tablet-down) {
+@include media-query(desktop-down) {
 
   .mobile-only-accordion {
     &__header {
@@ -44,6 +44,8 @@
 
     &__title {
       display: block;
+      font-size: 21px;
+      line-height: 24px;
       margin: 0;
       padding-right: 48px;
       top: 0;

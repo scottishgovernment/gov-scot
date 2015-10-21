@@ -93,6 +93,7 @@ $breakpoints: (
     'hd' '(min-width: 1200px)',
 
     'tablet-down' '(max-width: 767px)',
+    'desktop-down' '(max-width: 991px)',
     'tablet-to-desktop' '(min-width: 768px) and (max-width: 991px)',
     'desktop-to-hd' '(min-width: 992px) and (max-width: 1199px)',
     'hd-up' '(min-width: 1200px)'
