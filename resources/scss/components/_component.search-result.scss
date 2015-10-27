@@ -46,9 +46,15 @@
   }
 
   &__title {
-    color: #226eaa;
+    color: $color__blue--base;
     margin: 1px 0 6px;
     padding-right: 90px;
+    text-decoration: none;
+  }
+
+  &__date {
+    color: $color__grey--base;
+    margin: 1px 0 6px;
     text-decoration: none;
   }
 

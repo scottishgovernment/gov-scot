@@ -6,6 +6,13 @@
   background: $color__grey--base;
   border: 0;
   color: $color__white;
+  padding: 8px 1em;
+  display: inline-block;
+  text-decoration: none;
+  align-items: flex-start;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
 
   @include transition(background $transition-out-time);
 
@@ -18,6 +25,7 @@
 
     &:hover {
       background-color: $color__link--hover;
+      color: $color__white;
     }
   }
 

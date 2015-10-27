@@ -76,7 +76,8 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-requirejs": "^0.2.2",
     "phantomjs": "1.9.17",
-    "watch": "^0.16.0"
+    "watch": "^0.16.0",
+    "moment": "~2.10.6"
   },
   "engines": {
     "node": ">=0.10.0"
