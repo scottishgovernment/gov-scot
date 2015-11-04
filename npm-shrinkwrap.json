@@ -1595,7 +1595,7 @@
           "version": "0.9.2"
         }
       },
-      "from": "git://github.com/ruiaraujo/grunt-connect-proxy.git#patch-1",
+      "from": "git://github.com/ruiaraujo/grunt-connect-proxy.git#ca98712650d323247327a3b206e825e40d111a2c",
       "resolved": "git://github.com/ruiaraujo/grunt-connect-proxy.git#ca98712650d323247327a3b206e825e40d111a2c"
     },
     "grunt-connect-rewrite": {
@@ -3018,9 +3018,6 @@
             "mkdirp": {
               "version": "0.3.5"
             },
-            "requirejs": {
-              "version": "2.1.20"
-            },
             "underscore": {
               "version": "1.8.3"
             },
@@ -3427,6 +3424,25 @@
     },
     "jasmine-core": {
       "version": "2.3.4"
+    },
+    "js-yaml": {
+      "version": "3.4.3",
+      "dependencies": {
+        "argparse": {
+          "version": "1.0.3",
+          "dependencies": {
+            "lodash": {
+              "version": "3.10.1"
+            },
+            "sprintf-js": {
+              "version": "1.0.3"
+            }
+          }
+        },
+        "esprima": {
+          "version": "2.7.0"
+        }
+      }
     },
     "jshint-stylish": {
       "version": "2.0.1",
@@ -4800,6 +4816,9 @@
     },
     "marked": {
       "version": "0.3.5"
+    },
+    "moment": {
+      "version": "2.10.6"
     },
     "optimist": {
       "version": "0.6.1",

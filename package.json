@@ -46,6 +46,7 @@
     "lodash-node": "^2.4.1",
     "lru-cache": "^2.5.0",
     "marked": "^0.3.2",
+    "moment": "~2.10.6",
     "optimist": "^0.6.1",
     "site-builder": "latest",
     "time-grunt": "^1.2.1"
@@ -76,8 +77,7 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-requirejs": "^0.2.2",
     "phantomjs": "1.9.17",
-    "watch": "^0.16.0",
-    "moment": "~2.10.6"
+    "watch": "^0.16.0"
   },
   "engines": {
     "node": ">=0.10.0"
