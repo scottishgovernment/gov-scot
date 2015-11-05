@@ -5,7 +5,7 @@
 // Using a BEM-like syntax for variable names.
 
 $color__white: #ffffff;
-$color__black: #222222;
+$color__black: #000000;
 
 $color__blue--lightest: #e8f0f6;
 $color__blue--lighter: #d9effc;
@@ -17,12 +17,13 @@ $color__grey--light: #cccccc;
 $color__grey--base: #888888;
 $color__grey--text: #727272; // maximum for acceptable color contrast grey on white
 $color__grey--dark: #333333;
+$color__grey--darkest: #222222;
 
 // copy
 $color__body: $color__grey--dark;
-$color__body--h1: $color__black;
-$color__body--h2: $color__black;
-$color__body--h3: $color__black;
+$color__body--h1: $color__grey--darkest;
+$color__body--h2: $color__grey--darkest;
+$color__body--h3: $color__grey--darkest;
 
 $color__placeholder: #727272;
 

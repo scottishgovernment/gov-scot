@@ -11,7 +11,7 @@
   }
 
   &__subtitle {
-    color: $color__black;
+    color: $color__grey--darkest;
     font-size: 22px;
     font-weight: 400;
     line-height: 32px;
@@ -20,7 +20,7 @@
 
   &__subtitle-link {
     border-bottom: 1px solid $color__blue--base;
-    color: $color__black;
+    color: $color__grey--darkest;
     display: inline;
     line-height: 1em;
     text-decoration: none;

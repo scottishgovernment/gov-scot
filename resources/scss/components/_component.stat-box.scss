@@ -8,9 +8,9 @@
 
 .stat-box {
   display: block;
-  border: 1px solid $color__black;
+  border: 1px solid $color__grey--darkest;
   border-width: 1px 0;
-  color: $color__black;
+  color: $color__grey--darkest;
   float: left;
   margin: 16px 0 32px;
   min-height: 112px;
@@ -44,13 +44,13 @@
 a.stat-box {
   &:hover {
     border-bottom-width: 8px;
-    color: $color__black;
+    color: $color__grey--darkest;
 
     @include transition-duration($transition-in-time);
   }
 
   &:active {
-    background: $color__black;
+    background: $color__grey--darkest;
     color: $color__white;
     outline: 0;
   }
