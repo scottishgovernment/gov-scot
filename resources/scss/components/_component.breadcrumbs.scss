@@ -4,21 +4,24 @@
 
 .breadcrumbs {
   color: $color__grey--text;
-  font-size: 14px;
+  font-size: 12px;
   padding-left: 0;
-  margin: -1px 0 0 0;
+  margin: 0;
 
   &__item {
-    display: inline-block;
+    display: inline;
     margin-bottom: 0;
 
     &:after {
       content: '>';
+      padding: 0 3px;
+      color: $color__grey--medium;
     }
 
     &--no-icon {
       &:after {
         content: '';
+        padding: 0;
       }
     }
   }
@@ -26,4 +29,24 @@
   &__link {
     text-decoration: none;
   }
+}
+
+
+@include media-query(tablet) {
+
+  .breadcrumbs {
+      margin: -4px 0 4px 0;
+      font-size: 13px;
+  }
+
+}
+
+
+
+@include media-query(desktop) {
+
+  .breadcrumbs {
+      font-size: 14px;
+  }
+
 }

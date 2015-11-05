@@ -4,7 +4,12 @@
 
 .mobile-layer {
   opacity: 0;
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom:0;
+  left: 0;
+
   z-index: -1;
 
   @include transition(opacity $transition-in-time, z-index $transition-in-time);
@@ -17,6 +22,10 @@
     right: 0;
     top: 0;
     z-index: 100;
+  }
+
+  &__content {
+    padding-top: 64px; // Height of the header + the border, at the min size
   }
 
   &--open {

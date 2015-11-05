@@ -19,13 +19,27 @@
   &:hover {
     @include transition-duration($transition-in-time);
   }
+  &:focus {
+    @include transition-duration($transition-in-time);
+    .icon {
+      opacity: 0.65;
+    }
+  }
+
 
   &--primary {
     background-color: $color__link--primary;
 
     &:hover {
-      background-color: $color__link--hover;
-      color: $color__white;
+      background-color: $color__button--primary--hover
+    }
+
+    &:focus  {
+      background-color: $color__button--primary--focus;
+    }
+    &:active {
+      background-color: $color__button--primary--active;
+      color: $color__button--primary--active-text;
     }
   }
 

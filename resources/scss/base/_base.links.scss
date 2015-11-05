@@ -2,6 +2,7 @@
     #LINKS
 \*------------------------------------*/
 
+
 a {
   color: $color__link--primary;
   font-weight: 400;
@@ -20,4 +21,9 @@ a {
     color: $color__link--active;
     outline: 3px solid $color__blue--lighter;
   }
+}
+
+
+html {
+  -webkit-tap-highlight-color: $color__tap-highlight;
 }

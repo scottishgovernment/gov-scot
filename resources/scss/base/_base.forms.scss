@@ -10,7 +10,7 @@ input[type=text] {
 
   &:focus {
     background: $color__input--focus;
-    outline: 0;
+    outline: 2px solid $color__input--focus-outline;
   }
 }
 
