@@ -3,6 +3,8 @@
 \*------------------------------------*/
 
 $search-box__box-size: 56px;
+$search-box__transition-duration: 0.4s;
+$search-box__transition-timing: ease;
 
 .search-box {
   position: relative;
@@ -11,11 +13,16 @@ $search-box__box-size: 56px;
   &__input[type=text] {
     border-right: 0;
     float: right;
-    font-size: 19px;
+    font-size: 17px;
     height: $search-box__box-size;
     margin-right: $search-box__box-size;
     width: calc(100% - #{$search-box__box-size});
+    background-color: white;
+    border: 1px solid $color__grey--medium;
   }
+
+  // &__input[type=text]:focus {;
+  // }
 
   &__button {
     height: $search-box__box-size;
@@ -28,13 +35,13 @@ $search-box__box-size: 56px;
   }
 
   &--mobile {
-    left: 0;
-    position: absolute;
-    right: 0;
+    left: 15px;
+    position: fixed;
+    right: 15px;
     width: auto;
     z-index: 101;
 
-    @include transition(margin-top $transition-in-time);
+    @include transition(margin-top $search-box__transition-duration $search-box__transition-timing);
   }
 }
 
@@ -42,12 +49,19 @@ $search-box__box-size: 56px;
  * MOBILE SEARCH
  */
 .mobile-search {
+
   &.mobile-layer--open {
-    .search-box--mobile {
-      margin-top: 16px;
-    }
+      .search-box--mobile {
+          margin-top: 48px;
+      }
+  }
+
+  .mobile-layer__overlay {
+      background: rgba(225, 225, 225, 0.9);
   }
 }
+
+
 
 @include media-query(tablet) {
   .search-box {

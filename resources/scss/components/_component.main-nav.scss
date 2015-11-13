@@ -4,39 +4,59 @@
 \*------------------------------------*/
 
 $main-menu__button__size: 56px;
+$main-nav__transition-duration: 0.4s;
+$main-nav__transition-timing: ease;
 
 .main-nav {
 
-  &__list {
-    $main-nav__list__margin: 15px;
+  // The wrapper allows us to clip the hidden nav list
+  // so that the document doesn't expand in width.
+  &__wrap {
+    position: absolute;
+    overflow-x: hidden;
+    height:480px; // To work, this must be set to pixel, not a %
+    width: 100%;
+  }
 
+  &__list {
+    background: $color__blue--base;
     left: 100%;
     list-style-type: none;
-    margin: 0 $main-nav__list__margin * -1;
-    position: absolute;
+    margin: 0;
+    position: fixed;
     right: 0;
     z-index: 1001;
+    padding: 24px 0 24px 15px;
 
-    @include transition(left $transition-in-time);
+    @include transition(left $main-nav__transition-duration $main-nav__transition-timing);
   }
 
   &__item {
-    margin-bottom: 1px;
+    border-bottom: 1px solid $color__blue--medium;
+    margin-bottom: 0;
+  }
+
+  &__item:last-child {
+    border-bottom: none;
   }
 
   &__link {
-    background: $color__blue--base;
     color: $color__white;
     display: block;
-    padding: 8px 15px;
+    padding: 10px 15px;
+    font-size: 17px;
+    text-decoration: none;
 
     @include transition(background-color $transition-in-time);
 
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       background: $color__link--hover;
-      color: $color__white;
+      color: $color__white--selected;
+      outline: none;
     }
+
   }
 }
 
@@ -46,67 +66,64 @@ $main-menu__button__size: 56px;
 .mobile-main-nav {
   &.mobile-layer--open {
     .main-nav__list {
-      left: 0;
+      left: 15px;
     }
   }
 }
 
+
+
 @include media-query(tablet) {
   .main-nav {
 
-    &__button {
-      display: none;
+    &__wrap {
+        position: relative;
+        overflow-x: auto;
+        height: auto;
+        width: 100%;
     }
 
     /**
      * 1. -1px from grid multiple because of 1px site header bottom border
      */
     &__list {
-      background: $color__white;
+      // background: transparent;
       display: table;
-      font-size: 14px;
-      height: 79px; /* [1] */
-      margin: 0;
-      padding-left: 0;
+      background: transparent;
       position: static;
-      width: 100%;
+      height: 71px; /* [1] */
+      padding: 0;
+      width: auto;
+      float: right;
 
       @include transform(none);
 
       @include transition(none);
 
       &--open {
-        display: table;
-        max-height: auto;
-
         @include transition(none);
       }
     }
 
-    &__item {
+    &__item, &__item:last-child {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-
-      &--active {
-        background: $color__blue--base;
-
-        a {
-          color: $color__white;
-        }
-      }
+      width: 100px;
+      border-bottom: none;
     }
 
     &__link {
-      background: transparent;
-      border: 0px solid transparent;
-      border-bottom-color: $color__blue--base;
-      color: $color__body;
+      font-size: 13px;
+      line-height: 16px;
+      padding: 0 6px;
       display: table;
-      height: 100%;
-      padding: 0;
-      text-decoration: none;
-      width: 100%;
+      height: 71px;
+      // background: transparent;
+      border: 0px solid transparent;
+      border-bottom-color: $color__blue--base ;
+      color: $color__body;
+      @include transition(background-color $transition-out-time);
 
       /**
        * 1. animate top and bottom to keep text centered
@@ -117,31 +134,68 @@ $main-menu__button__size: 56px;
         color: $color__body;
       }
 
-      &:active {
+      &:active, &:focus {
+        background: $color__blue--lighter;
+        color: $color__body;
+        outline: 0;
+        border-width: 5px 0;
+        @include transition(background-color $transition-in-time);
+      }
+    }
+
+    &__link--selected {
         background: $color__blue--base;
         color: $color__white;
-        outline: 0;
-      }
+
+        &:hover {
+          background: $color__blue--base;
+          color: $color__white;
+          border-bottom-color: $color__blue--dark;
+        }
     }
 
     &__title {
       display: table-cell;
-      padding: 0 10px;
       vertical-align: middle;
     }
   }
 
   // override anchor transition (which is color)
   a.main-nav__link {
-    @include transition(border-width $transition-in-time);
+    //
   }
 }
 
 @include media-query(desktop) {
   .main-nav {
-    &__list {
+
+    &__item, &__item:last-child {
+      width: auto;
+    }
+
+    &__link {
       font-size: 16px;
+      line-height: 19px;
+      padding: 0 12px;
     }
   }
 }
 
+@include media-query(hd) {
+  .main-nav {
+
+    &__list {
+      height: 79px; /* [1] */
+    }
+
+    &__item, &__item:last-child {
+      width: auto;
+    }
+
+    &__link {
+      font-size: 16px;
+      line-height: 19px;
+      height: 79px;
+    }
+  }
+}
