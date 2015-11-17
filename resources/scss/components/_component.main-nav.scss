@@ -50,11 +50,14 @@ $main-nav__transition-timing: ease;
     @include transition(background-color $transition-in-time);
 
     &:hover,
-    &:active,
     &:focus {
       background: $color__link--hover;
-      color: $color__white--selected;
+      color: $color__white;
       outline: none;
+    }
+
+    &:active {
+      color: $color__white--selected;
     }
 
   }

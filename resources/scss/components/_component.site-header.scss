@@ -29,6 +29,7 @@
     line-height: 16px;
     padding: 4px 3px 4px 3px;
     vertical-align: top;
+    outline: 0;
 
     &--menu {
         // The menu icon is a bit taller, so remove padding on bottom
@@ -44,7 +45,7 @@
     }
 
     &__button:focus {
-      outline: 0;
+
     }
 
   }
