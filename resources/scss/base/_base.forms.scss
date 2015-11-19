@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 input[type=text] {
-  background: $color__grey--lighter;
+  background: $color__white;
   border: 1px solid $color__grey--light;
   height: 48px;
   padding: 0 1em;
@@ -51,4 +51,55 @@ fieldset {
 
 label.inverse {
   color: white;
+}
+
+/**
+ * Nice checkboxes
+ */
+$fancy-checkbox-size: 24px;
+
+label.fancy-checkbox {
+  position: relative;
+}
+
+input + label.fancy-checkbox:before {
+  background-color: $color__white;
+  border: 1px solid $color__grey--base;
+  content: '';
+  float: left;
+  font-size: $fancy-checkbox-size;
+  height: $fancy-checkbox-size;
+  left: 3px;
+  line-height: $fancy-checkbox-size;
+  position: absolute;
+  text-align: center;
+  width: $fancy-checkbox-size;
+}
+
+input:checked + label.fancy-checkbox:before {
+  border-color: $color__blue--base;
+  color: $color__blue--base;
+  content: '\2713';
+}
+
+@include media-query(tablet) {
+  $fancy-checkbox-size: 20px;
+
+  input + label.fancy-checkbox:before {
+    font-size: $fancy-checkbox-size;
+    height: $fancy-checkbox-size;
+    line-height: $fancy-checkbox-size;
+    width: $fancy-checkbox-size;
+  }
+}
+
+@include media-query(hd) {
+  $fancy-checkbox-size: 24px;
+
+  input + label.fancy-checkbox:before {
+    font-size: $fancy-checkbox-size;
+    height: $fancy-checkbox-size;
+    line-height: $fancy-checkbox-size;
+    width: $fancy-checkbox-size;
+  }
 }

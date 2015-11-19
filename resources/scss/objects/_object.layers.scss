@@ -12,16 +12,19 @@
 
   z-index: -1;
 
-  @include transition(opacity $transition-in-time, z-index $transition-in-time);
+  @include transition(opacity $transition-in-time * 2);
 
   &__overlay {
     background: rgba(255, 255, 255, 0.9);
     bottom: 0;
     left: 0;
+    opacity: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 100;
+
+    @include transition(opacity $transition-in-time * 2);
   }
 
   &__content {
@@ -34,6 +37,35 @@
 
     .mobile-layer__overlay {
       display: block;
+      opacity: 1;
+    }
+  }
+
+  &--above-header {
+    &.mobile-layer--open {
+      z-index: 1001;
+    }
+  }
+
+  &--dark {
+    .mobile-layer__overlay {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@include media-query(tablet) {
+  // makes content in a mobile layer display on larger devices
+  .mobile-layer--show-tablet {
+    opacity: 1;
+    position: static;
+
+    .mobile-layer__overlay {
+      display: none;
+    }
+
+    .mobile-layer__content {
+      padding-top: 0;
     }
   }
 }

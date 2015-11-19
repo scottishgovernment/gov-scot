@@ -2,13 +2,35 @@
     #SEARCH RESULTS
 \*------------------------------------*/
 
+.search-results {
+  margin-top: 9px;
+}
+
 .search-results__list {
   list-style: none;
   margin: 0;
 }
 
+.search-results__header {
+  overflow: hidden;
+}
+
+.search-results-header__left {
+  float: left;
+}
+
+.search-results-header__right {
+  float: right;
+}
+
+.search-results__count {
+  b {
+    position: static;
+  }
+}
+
 .search-result {
-  margin: 0;
+  margin: 0 -15px;
 
   &__link {
     display: block;
@@ -38,17 +60,18 @@
 
   &__article {
     border-bottom: 1px solid #ebebeb;
-    padding: 21px 15px 20px;
+    margin: 0 15px;
+    padding: 21px 0 20px;
 
     &--top-border {
-    border-top: 1px solid #b3b3b3;
-  }
+      border-top: 1px solid #b3b3b3;
+    }
   }
 
   &__title {
     color: $color__blue--base;
     margin: 1px 0 6px;
-    padding-right: 90px;
+    //padding-right: 90px;
     text-decoration: none;
   }
 
@@ -61,5 +84,17 @@
   &__summary {
     color: $color__body;
     margin-bottom: 0;
+  }
+}
+
+@include media-query(tablet) {
+  .search-result {
+    margin: 0;
+
+    &__article {
+      margin: 0;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 }

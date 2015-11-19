@@ -20,7 +20,6 @@
   }
 
   .collapsible__title {
-    color: $color__white;
     margin-top: 0;
   }
 
@@ -35,6 +34,57 @@
 
     .collapsible__body {
       display: block;
+    }
+  }
+
+  // for use when a collapsible panel should not be collapsible on mobile
+  &--not-mobile {
+    .collapsible-trigger {
+      cursor: default;
+    }
+
+    .collapsible__icon {
+      display: none;
+    }
+
+    .collapsible__body {
+      display: block;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .collapsible {
+    .collapsible__body {
+      display: none;
+    }
+
+    &--not-mobile {
+      .collapsible__icon {
+        display: inline-block;
+      }
+
+      .collapsible__icon--up {
+        display: none;
+      }
+
+      .collapsible-trigger {
+        cursor: pointer;
+      }
+    }
+
+    &--open {
+      .collapsible__body {
+        display: block;
+      }
+
+      .collapsible__icon--up {
+        display: inline-block;
+      }
+
+      .collapsible__icon--down {
+        display: none;
+      }
     }
   }
 }
