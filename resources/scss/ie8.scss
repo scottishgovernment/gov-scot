@@ -1,0 +1,21 @@
+/*
+The inevitable stylesheet for IE8
+*/
+
+.checkbox-group__input {
+  left: 7px;
+  position: relative;
+  top: 10px;
+}
+
+input + label.fancy-checkbox:before {
+  content: none;
+}
+
+.filters-container {
+  margin-top: -48px;
+}
+
+.filters {
+  margin-top: -8px;
+}

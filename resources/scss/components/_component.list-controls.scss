@@ -1,34 +1,93 @@
+$filter-close-button-size: 48px;
+
 .filters-container {
-  position: static;
-  z-index: 101;
-}
+  bottom: 0;
+  left: 0;
+  padding-top: $filter-close-button-size;
+  position: fixed;
+  right: 0;
+  top: 100%;
+  z-index: 1002;
 
-.filters {
-  background: $color__blue--base;
-  overflow: visible;
-  padding: 8px 8px;
-  position: relative;
+  @include transition(top 0.4s);
 
-  &__title {
-    margin-bottom: 24px;
+  &--open {
+    display: block;
+    top: 0;
   }
 
-  &__fieldset {
-    border: 0;
-    margin: 0;
+  &__close {
+    color: $color__body;
+    height: $filter-close-button-size;
+    margin-top: $filter-close-button-size * -1;
     padding: 0;
-    width: 100%;
+    width: $filter-close-button-size;
+
+    background: url('../images/icons/close-grey.png') no-repeat $color__grey--lighter center;
+    @include image-2x('../images/icons/close-grey_@2x.png', 27px, 27px);
+  }
+
+  &__title {
+    background: $color__grey--lighter;
+    display: inline-block;
+    font-size: 17px;
+    margin: 0;
+    padding: 8px 10px 8px 15px;
+    top: 1px;
+    z-index: 1;
+
+    border-top: 1px solid $color__grey--light;
+
+    &:after {
+      border-bottom: 41px solid $color__grey--lighter;
+      border-right: 15px solid transparent;
+      content: '';
+      position: absolute;
+      right: -14px;
+      top: -1px;
+    }
+
+    &:before {
+      border-bottom: 41px solid $color__grey--light;
+      border-right: 15px solid transparent;
+      content: '';
+      position: absolute;
+      right: -15px;
+      top: -1px;
+    }
+  }
+}
+
+
+
+.filters {
+  background: $color__grey--lighter;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  padding: 45px 15px 88px;
+  position: absolute;
+  right: 0;
+  top: $filter-close-button-size;
+
+  &__legend {
+    display: none;
   }
 
   &__input {
-    &--search-term {
-      padding-right: 48px;
+    &--search-term[type=text] {
+      height: 56px;
+      padding-right: 56px;
       width: 100%;
     }
   }
 
-  &__legend {
-    display: none;
+  &__button {
+    &--clear {
+      position: absolute;
+      right: 15px;
+      top: 9px;
+    }
   }
 }
 
@@ -39,34 +98,24 @@
 
   .filter-search__button {
     font-size: 24px;
-    height: 48px;
+    height: 56px;
+    padding: 0;
     position: absolute;
     right: 0;
     top: 0;
-    width: 48px;
-  }
-}
+    width: 56px;
 
-.filter-buttons {
-  position: absolute;
-  right: 8px;
-  top: 64px;
-  z-index: 1;
+    background: url('../images/icons/search-blue.png') no-repeat transparent center;
+    @include image-2x('../images/icons/search-blue_@2x.png', 35px, 35px);
 
-  &__clear-filters{
-
-  }
-
-  &__show-filters {
-
+    &:active {
+      background-color: $color__input--focus;
+    }
   }
 }
 
 .checkbox-group {
-  background: $color__white;
-  max-height: 50vh;
   overflow-y: auto;
-  padding: 8px 8px;
 
   &__input {
     float: left;
@@ -79,22 +128,31 @@
 
   &__label {
     display: block;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 18px;
     margin: 0 0 8px 0;
-    padding-left: 24px;
+    min-height: 35px;
+    padding-left: 30px;
+    padding-top: 3px;
     position: relative;
   }
 }
 
 .filter-actions {
-  clear: both;
-  margin-top: 16px;
-  overflow: hidden;
+  background: $color__white;
+  //box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -15px 30px $color__grey--light;
+
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+  position: fixed;
+  right: 0;
 
   .filter-actions__apply,
   .filter-actions__cancel {
     margin: 0;
-    width: 49%;
+    width: 47%;
   }
 
   .filter-actions__apply {
@@ -106,8 +164,155 @@
   }
 }
 
+.filter-buttons {
+  margin-bottom: 24px;
+
+  .button {
+    width: 100%;
+  }
+
+  &--sticky {
+    background: $color__grey--lighter;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    left: 0;
+    opacity: 0;
+    padding: 12px 15px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 1000;
+
+    @include transition(opacity $transition-in-time, top $transition-in-time);
+
+    &--show {
+      display: block;
+      opacity: 1;
+      top: 52px;
+    }
+
+    .button {
+      width: auto;
+
+      &--left {
+        float: left;
+      }
+
+      &--right {
+        float: right;
+      }
+    }
+
+    .gamma {
+      font-size: 14px;
+    }
+
+
+  }
+}
+
+// fudging this because Chay doesn't like the stock FA icon
+.clear-button {
+  font-size: 14px;
+
+  .fa {
+    font-size: 18px;
+    position: relative;
+    top: 1px;
+  }
+}
+
+/**
+ * for older mobile devices with poor/no support for position:fixed
+ */
+@include media-query (tablet-down) {
+  body.no-fixed {
+    .filters-container {
+      padding-top: 0;
+      position: relative;
+      z-index: 999;
+    }
+
+    .filters {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      position: static;
+    }
+
+    .filters-container__close {
+      display: none !important;
+    }
+
+    .filter-actions {
+      background: transparent;
+      border-top: 1px solid $color__grey--light;
+      box-shadow: none;
+      padding: 15px 0 0 0;
+      position: static;
+    }
+
+    .filters-layer {
+      &.mobile-layer {
+        position: static;
+        display: none;
+      }
+
+      &.mobile-layer--open {
+        display: block;
+      }
+
+      .mobile-layer__overlay {
+        display: none !important;
+      }
+
+      .mobile-layer__content {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+
 @include media-query(tablet) {
+  .filters-container {
+    background: transparent;
+    display: block;
+    padding-top: 0;
+    position: relative;
+  }
+
+  .filters {
+    border-bottom: 1px solid $color__grey--light;
+    border-top: 1px solid $color__grey--light;
+    display: block;
+    padding: 30px 10px 8px;
+    position: static;
+
+    &__button {
+      &--clear {
+        position: absolute;
+        right: 15px;
+        top: 11px;
+      }
+    }
+  }
+
+  .filter-buttons--sticky {
+    display: none;
+  }
+
   .checkbox-group {
-    max-height: 100%;
+    &__label {
+      padding-top: 7px;
+    }
+  }
+}
+
+@include media-query(hd) {
+  .checkbox-group {
+    &__label {
+      padding-top: 11px;
+    }
   }
 }

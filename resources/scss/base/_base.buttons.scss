@@ -3,16 +3,19 @@
 \*------------------------------------*/
 
 .button {
+  align-items: flex-start;
   background: $color__grey--base;
   border: 0;
   color: $color__white;
-  padding: 8px 1em;
-  display: inline-block;
-  text-decoration: none;
-  align-items: flex-start;
-  vertical-align: middle;
-  touch-action: manipulation;
   cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 1em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  vertical-align: middle;
 
   @include transition(background $transition-out-time);
 
@@ -44,6 +47,11 @@
   }
 
   // color variant
+  &--dark {
+    background-color: $color__blue--dark;
+  }
+
+  // color variant
   &--clear {
     background-color: transparent;
     color: $color__link--primary;
@@ -72,10 +80,41 @@
     background-color: transparent;
     border: 1px solid $color__white;
     color: $color__white;
+    padding: 7px 1em;
+  }
+
+  &--ghost-invert {
+    background-color: transparent;
+    border: 1px solid $color__grey--dark;
+    color: $color__grey--dark;
+    padding: 7px 1em;
   }
 
   // size variant
   &--large {
     height: 64px;
+  }
+
+  // size variant
+  &--small {
+    font-size: 14px;
+    padding: 0 1em;
+  }
+
+  // display in a textlike (no padding)
+  &--text {
+    background: transparent;
+    color: $color__grey--text;
+    padding: 0;
+  }
+
+  /**
+   * Button icon placement
+   */
+  .button__icon--right {
+    margin-top: -10px;
+    position: absolute;
+    right: 1em;
+    top: 50%;
   }
 }

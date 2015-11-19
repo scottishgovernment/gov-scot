@@ -3,16 +3,18 @@
 \*------------------------------------*/
 
 .site-header {
+  background-color: $color__white;
   border-top: 8px solid $color__blue--base;
   border-bottom: 1px solid $color__grey--light;
   height: 64px;
   margin-bottom: 16px;
+  overflow: hidden;
   position:fixed;
   top:0;
   left: 0;
   right: 0;
   z-index: 1001;
-  background-color: $color__white;
+
   @include transition(all $transition-in-time);
 
 
