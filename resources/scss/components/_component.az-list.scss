@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    # A Z List
+    a segmented a-z list, built with az-list helper
+\*------------------------------------*/
+
+.az-list {
+
+  &__chunkName {
+      font-weight: 600;
+      font-size: 48px;
+      float: left;
+      clear: left;
+      width: 30%;
+      padding-top: 40px;
+  }
+
+  &__chunk {
+      float: left;
+      width: 70%;
+      padding-top: 40px;
+  }
+
+  &__list {
+      list-style-type: none;
+
+  }
+
+  &__item {
+
+
+  }
+
+}
