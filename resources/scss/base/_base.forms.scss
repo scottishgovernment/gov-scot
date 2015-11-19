@@ -7,6 +7,10 @@ input[type=text] {
   border: 1px solid $color__grey--light;
   height: 48px;
   padding: 0 1em;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
 
   &:focus {
     background: $color__input--focus;
