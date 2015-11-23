@@ -19,9 +19,9 @@ table {
 }
 
 // for imported tables without correct thead/th markup
-tr:first-child td {
-  @extend %headercell;
-}
+//tr:first-child td {
+//  @extend %headercell;
+//}
 
 td {
   @extend %contentcell;
@@ -37,10 +37,10 @@ th {
 }
 
 thead + tbody {
-  tr:first-child td {
-    font-weight: normal;
-    @extend %contentcell;
-  }
+//  tr:first-child td {
+//    font-weight: normal;
+//    @extend %contentcell;
+//  }
 
   tr:nth-child(2n) td {
     background: transparent;
@@ -57,13 +57,13 @@ thead + tbody {
     line-height: 21px;
   }
 
-  tr:first-child td:first-child {
-    padding-left: 15px;
-  }
-
-  tr:first-child td:last-child {
-    padding-right: 15px;
-  }
+//  tr:first-child td:first-child {
+//    padding-left: 15px;
+//  }
+//
+//  tr:first-child td:last-child {
+//    padding-right: 15px;
+//  }
 
   tr >:first-child {
     padding-left: 15px;
