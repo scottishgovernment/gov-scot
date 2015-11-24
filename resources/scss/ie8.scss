@@ -19,3 +19,8 @@ input + label.fancy-checkbox:before {
 .filters {
   margin-top: -8px;
 }
+
+.filters__button--clear {
+  outline: none;
+  top: 60px !important;
+}

@@ -9,14 +9,13 @@
   height: 64px;
   margin-bottom: 16px;
   overflow: hidden;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
 
   @include transition(all $transition-in-time);
-
 
   // BUTTONS
 
@@ -34,16 +33,16 @@
     outline: 0;
 
     &--menu {
-        // The menu icon is a bit taller, so remove padding on bottom
-        padding-bottom: 0;
+      // The menu icon is a bit taller, so remove padding on bottom
+      padding-bottom: 0;
     }
 
-    &--selected.site-header__button--search {
-        background-color: $color__grey--light;
+    &--selected .site-header__button--search {
+      background-color: $color__grey--light;
     }
 
-    &--selected.site-header__button--menu {
-        background-color: $color__blue--base;
+    &--selected .site-header__button--menu {
+      background-color: $color__blue--base;
     }
 
     &__button:focus {
@@ -52,15 +51,15 @@
 
   }
 
-
   // ICONS
 
   &__icon {
-      display: inline-block;
-      width: 35px;
-      height: 35px;
-      background-size: contain;
-      background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 35px;
+    text-indent: -999em;
+    width: 35px;
   }
 
   &__icon--search {
@@ -70,12 +69,11 @@
   }
 
   &__icon--menu {
-      background-image: url('../images/icons/menu.png');
-      @include image-2x('../images/icons/menu_@2x.png', 35px, 40px);
-      width: 35px;
-      height: 40px;
+    background-image: url('../images/icons/menu.png');
+    @include image-2x('../images/icons/menu_@2x.png', 35px, 40px);
+    width: 35px;
+    height: 40px;
   }
-
 
   // SELECTED ICONS
 
@@ -96,86 +94,74 @@
 
 }
 
-
-
 .site-header__container {
-    // should be applied to the <body> tag
-    // should equal the height of the header
-    margin-top: 72px;
+  // should be applied to the <body> tag
+  // should equal the height of the header
+  margin-top: 72px;
 }
-
-
 
 // A variation that is added by JavaScript automatically
 // when scrolling has reached a certain point.
 .site-header--scaled {
 
-    height: 52px;
-    border-top-width: 4px;
+  height: 52px;
+  border-top-width: 4px;
 
-    // Drop shadow;
-    -webkit-box-shadow: 0px 3px 10px 0px rgba(114,114,114,0.25);
-    -moz-box-shadow: 0px 3px 10px 0px rgba(114,114,114,0.25);
-    box-shadow: 0px 3px 10px 0px rgba(114,114,114,0.25);
+  // Drop shadow;
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  -moz-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
 
+  .site-brand__logo {
+    width: 155px;
+    height: 30px;
+  }
 
-    .site-brand__logo {
-        width: 155px;
-        height: 30px;
-    }
+  .site-brand {
+    height: 48px;
+  }
 
-    .site-brand {
-        height: 48px;
-    }
+  .site-header__buttons {
+    top: 4px;
+  }
 
-    .site-header__buttons {
-        top: 4px;
-    }
+  // ICONS - REDUCED
 
-    // ICONS - REDUCED
+  .site-header__icon--search {
+    background-image: url('../images/icons/search-blue-reduced.png');
+    background-position: 0 -2px;
+    @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
+  }
 
-    .site-header__icon--search {
-        background-image: url('../images/icons/search-blue-reduced.png');
-        background-position: 0 -2px;
-        @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
-    }
-
-    .site-header__icon--menu {
-        background-image: url('../images/icons/menu-reduced.png');
-        @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
-    }
+  .site-header__icon--menu {
+    background-image: url('../images/icons/menu-reduced.png');
+    @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
+  }
 
 }
-
-
-
 
 @include media-query(tablet) {
 
-
-
   .site-header {
-      position: absolute;
-      height: 80px;
+    position: absolute;
+    height: 80px;
   }
 
-  .site-header__container  {
-      margin-top: 100px;
+  .site-header__container {
+    margin-top: 100px;
   }
 
 }
-
-
 
 @include media-query(hd) {
 
   .site-header {
-      position: absolute;
-      height: 88px;
+    position: absolute;
+    height: 88px;
   }
 
-  .site-header__container  {
-      margin-top: 108px;
+  .site-header__container {
+    margin-top: 108px;
   }
 
 }
