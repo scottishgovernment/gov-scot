@@ -20,6 +20,12 @@ p {
   margin-top: 0;
 }
 
+.text-center {
+  text-align: center;
+}
+
+
+
 @include media-query(tablet) {
   .leader {
     > :first-child {

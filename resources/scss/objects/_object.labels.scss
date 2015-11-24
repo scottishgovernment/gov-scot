@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    LABELS
+\*------------------------------------*/
+
+$label-background-default: $color__grey--dark;
+$label-font-size: 14px;
+$label-padding-vertical: 4px;
+$label-padding-horizontal: 12px;
+$label-radius: 10px;
+
+
+.label {
+    background-color: $label-background-default;
+    border-radius: $label-radius;
+    color: white;
+    font-size: $label-font-size;
+    font-weight: 600;
+    padding: $label-padding-vertical $label-padding-horizontal;
+    text-transform: uppercase;
+}

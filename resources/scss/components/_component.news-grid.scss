@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    # News grid
+    Shows three news item equal sizes
+    With a pinned subsribe button.
+\*------------------------------------*/
+
+.news-grid {
+  position: relative;
+
+
+  &__item-date {
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 16px;
+    padding-left: 8px;
+    border-left: 3px solid $color__blue--base;
+  }
+
+  &__item-title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 8px 0 16px;
+  }
+}
+
+.news-subscribe-pin {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 16px 32px;
+  background-color: $color__grey--lighter;
+
+  a {
+    text-decoration: none;
+  }
+
+  strong {
+    text-transform: uppercase;
+    display: block;
+    font-weight: bold;
+  }
+
+}
+
+
+@include media-query(tablet) {
+}
+
+
+@include media-query(desktop) {
+
+}

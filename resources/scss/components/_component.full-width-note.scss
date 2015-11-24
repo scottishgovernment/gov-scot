@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    FULL WIDTH NOTE
+\*------------------------------------*/
+
+.full-width-note {
+
+    background-color: $color__grey--lighter;
+    padding: 8px 0;
+
+    &__message {
+        @extend .wrapper;
+        font-size: 14px;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+}

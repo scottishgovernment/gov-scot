@@ -1,0 +1,32 @@
+/*------------------------------------*\
+    WELCOME COMPONENT
+\*------------------------------------*/
+
+.welcome {
+
+    margin: 24px 0 0 0;
+
+    &__intro {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 32px;
+        // width: 90%;
+    }
+
+    &__search {
+        width: 70%;
+    }
+
+    &__links {
+        border-left: 1px solid $color__blue--base;
+        list-style-type: none;
+        margin: 16px 0 0 0;
+        padding-left: 16px;
+        font-size: 16px;
+    }
+
+      &__link-item {
+        margin-bottom: 8px;
+      }
+
+}

@@ -29,6 +29,7 @@ h2, .beta {
   top: -3px;
 }
 
+
 /**
  * 1. Nudge the header onto the baseline grid
  */
@@ -42,6 +43,19 @@ h3, .gamma {
   position: relative; /* [1] */
   top: -2px;
 }
+
+h4, .delta {
+
+}
+
+
+h5, .epsilon {
+  margin: 8px 0 8px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+
 
 @include media-query(tablet) {
   h1, .alpha {

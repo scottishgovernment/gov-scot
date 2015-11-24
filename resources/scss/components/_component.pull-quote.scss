@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .pull-quote {
-  color: $color__grey--base;
+  color: $color__grey--darkest;
   display: none;
   font-size: 34px;
   font-weight: 100;
@@ -12,12 +12,14 @@
   padding-right: 30px;
   position: relative;
 
-  &:before {
-    border-top: 1px solid $color__grey--base;
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 70%;
+  &--border {
+    &:before {
+      border-top: 1px solid $color__grey--base;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 70%;
+    }
   }
 }
 

@@ -1,0 +1,39 @@
+/*------------------------------------*\
+    #DIVIDERS
+
+\*------------------------------------*/
+
+
+$divider-horizontal-margin: 48px;
+$divider-horizontal-padding: 48px;
+
+$divider-vertical-padding: 24px; // This should line up with the gutter width.
+
+
+.divider {
+    margin-top: 48px;
+    padding-top: 48px;
+
+    &--bottom {
+      padding-bottom: 48px;
+    }
+
+    &--border {
+        border-top: 1px solid $color__grey--light;
+    }
+
+    &--no-margin {
+        margin-top: 0px;
+    }
+
+}
+
+
+.vdivider {
+    padding-right: $divider-vertical-padding;
+
+
+    &--border {
+        border-right: 1px solid $color__grey--light;
+    }
+}

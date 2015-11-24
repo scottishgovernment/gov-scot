@@ -1,0 +1,78 @@
+/*------------------------------------*\
+    #CAROUSEL
+\*------------------------------------*/
+
+.carousel {
+    margin: 48px 0 0 0;
+    position: relative;
+    height: 400px;
+}
+
+
+.carousel-item {
+
+    width: 35%;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+
+
+
+    &__title {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    &__desc {
+
+    }
+
+    &__link {
+
+    }
+
+    &__stage {
+        background-color: $color__blue--base;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 65%;
+
+        & img {
+          width: 100%;
+          opacity: 0.75;
+        }
+    }
+
+    &__stage-text {
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        top: 10px;
+        right: 10px;
+        width: 30%;
+    }
+
+
+}
+
+
+@include media-query(tablet) {
+
+  .breadcrumbs {
+      margin: -4px 0 4px 0;
+      font-size: 13px;
+  }
+
+}
+
+
+
+@include media-query(desktop) {
+
+  .breadcrumbs {
+      font-size: 14px;
+  }
+
+}
