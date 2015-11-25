@@ -60,3 +60,37 @@
     display: block !important;
   }
 }
+
+// allow content in a layout column to overflow the bounds of that column
+// could be generated smartly rather than using these fixed pixel widths
+.overflow {
+  &--one-column {
+    @include media-query(desktop) {
+      margin-right: -81px; // 970 divided by 12 (columns)
+    }
+
+    @include media-query(hd) {
+      margin-right: -195px; // 1170 divided by 12 (columns)
+    }
+  }
+
+  &--two-columns {
+    @include media-query(desktop) {
+      margin-right: -162px; // 970 divided by 12 (columns), multiplied by 2
+    }
+
+    @include media-query(hd) {
+      margin-right: -195px; // 1170 divided by 12 (columns), multiplied by 2
+    }
+  }
+
+  &--three-columns {
+    @include media-query(desktop) {
+      margin-right: -242px; // 970 divided by 12 (columns), multiplied by 3
+    }
+
+    @include media-query(hd) {
+      margin-right: -292px; // 1170 divided by 12 (columns), multiplied by 3
+    }
+  }
+}
