@@ -66,12 +66,22 @@ h3, .gamma {
     border-bottom: 1px solid $color__grey--light;
     margin-bottom: 30px;
     padding-bottom: 9px;
+
+    &--heavy {
+      border-bottom: 4px solid $color__blue--base;
+      margin-bottom: 27px;
+    }
   }
 
   &--overline {
     border-top: 1px solid $color__grey--light;
     margin-top: 48px;
     padding-top: 17px;
+
+    &--heavy {
+      border-top: 4px solid $color__blue--base;
+      margin-top: 45px;
+    }
   }
 }
 
