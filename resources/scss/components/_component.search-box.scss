@@ -17,7 +17,7 @@ $search-box__transition-timing: ease;
     height: $search-box__box-size;
     margin-right: $search-box__box-size;
     width: calc(100% - #{$search-box__box-size});
-    background-color: white;
+    background-color: $color__grey--lighter;
     border: 1px solid $color__grey--medium;
   }
 

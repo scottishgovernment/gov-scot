@@ -86,3 +86,16 @@ h3, .gamma {
     margin-top: 0;
   }
 }
+
+// get first sidebar heading to share page H1's baseline
+.sidebar-content {
+  > h2:first-child,
+  > .beta:first-child {
+    margin-top: 60px;
+  }
+
+  > h3:first-child,
+  > .gamma:first-child {
+    margin-top: 71px;
+  }
+}
