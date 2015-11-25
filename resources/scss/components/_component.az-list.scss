@@ -7,11 +7,12 @@
 
   &__chunkName {
       font-weight: 600;
-      font-size: 48px;
+      font-size: 28px;
+      line-height: 28px;
       float: left;
       clear: left;
-      width: 30%;
-      padding-top: 40px;
+      width: 20%;
+      padding-top: 34px;
   }
 
   &__chunk {
@@ -29,5 +30,22 @@
 
 
   }
+
+}
+
+
+@include media-query(tablet) {
+
+
+  .az-list {
+
+      &__chunkName {
+          width: 30%;
+          font-size: 48px;
+          padding-top: 40px;
+      }
+
+  }
+
 
 }
