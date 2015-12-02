@@ -1,25 +1,49 @@
 // this cannot currently use BEM because this is all using nested markdown lists
 
 .page-subnav {
-  margin-top: -3px;
+  border-top: 3px solid $color__blue--base;
+  margin-top: 38px;
 
   ul {
     list-style-type: none;
-    margin: 0 0 24px;
+    margin: 0;
 
     li {
-      margin: 8px 0;
+      border-top: 1px solid $color__grey--light;
+      margin: 0;
+
+      &:first-child {
+        border-top: 0;
+      }
     }
 
     ul {
-      margin-left: 25px;
+      border-top: 1px solid $color__grey--light;
+
+      li {
+        margin-left: 25px;
+
+        &:first-child {
+          border-top: 0;
+        }
+
+        a {
+          padding: 8px 0;
+        }
+      }
     }
 
     a {
+      display: block;
+      padding: 16px 0;
       text-decoration: none;
 
       &:hover {
         text-decoration: underline;
+      }
+
+      &:active {
+        outline: none;
       }
     }
   }
