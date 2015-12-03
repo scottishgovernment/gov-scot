@@ -8,8 +8,7 @@
 
 .stat-box {
   display: block;
-  border: 1px solid $color__grey--darkest;
-  border-width: 1px 0;
+
   color: $color__grey--darkest;
   float: left;
   margin: 16px 0 32px;
@@ -62,6 +61,8 @@ a.stat-box {
 
 @include media-query(tablet) {
   .stat-box {
+    border: 1px solid $color__grey--darkest;
+    border-width: 1px 0;
     margin: 24px 0 48px;
     min-height: 160px;
 

@@ -2,6 +2,9 @@
     FULL WIDTH NOTE
 \*------------------------------------*/
 
+
+
+
 .full-width-note {
 
     background-color: $color__grey--lighter;
@@ -9,11 +12,21 @@
 
     &__message {
         @extend .wrapper;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     &--right {
         text-align: right;
+    }
+
+}
+
+
+
+@include media-query(tablet) {
+
+    .full-width-note__message {
+        font-size: 14px;
     }
 
 }

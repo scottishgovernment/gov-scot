@@ -2,67 +2,139 @@
     #CAROUSEL
 \*------------------------------------*/
 
-.carousel {
-    margin: 48px 0 0 0;
-    position: relative;
-    height: 400px;
-}
+/**
+ * Show a collection of rich-media items. A carousel is made up of
+ * carousel-items.
+ *
+ * Carousel-item elements:
+ * - carousel-item__title
+ * - carousel-item__desc
+ * - carousel-item__link
+ * - carousel-item__stage
+ * - carousel-item__stage-text
+ */
 
+
+ /*------------------------------------*\
+     CAROUSEL - MOBILE
+ \*------------------------------------*/
+
+$carousel-text-element-padding-mobile: 15px;
+
+.carousel {
+  position: relative;
+}
 
 .carousel-item {
+  background-color: $color__grey--lighter;
 
-    width: 35%;
-    padding-bottom: 16px;
+  &__stage {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__stage-text {
+    display: none;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 16px;
-    border-bottom: 1px solid #ccc;
-
-
-
-    &__title {
-        font-weight: bold;
-        font-size: 24px;
-        margin-bottom: 8px;
+    padding: {
+      top: $carousel-text-element-padding-mobile;
+      right: $carousel-text-element-padding-mobile;
+      bottom: 0;
+      left: $carousel-text-element-padding-mobile;
     }
+  }
 
-    &__desc {
+  &__desc {
+    font-size:13px;
+    margin-bottom: 16px;
+    padding: 0 $carousel-text-element-padding-mobile;
+  }
 
+  &__link {
+    background-color: $color__blue--base;
+    font-size: 13px;
+    padding: 8px $carousel-text-element-padding-mobile;
+    text-transform: uppercase;
+
+    a {
+      color: white;
+      font-weight: bold;
     }
-
-    &__link {
-
-    }
-
-    &__stage {
-        background-color: $color__blue--base;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 65%;
-
-        & img {
-          width: 100%;
-          opacity: 0.75;
-        }
-    }
-
-    &__stage-text {
-        position: absolute;
-        color: white;
-        font-size: 20px;
-        top: 10px;
-        right: 10px;
-        width: 30%;
-    }
-
+  }
 
 }
+
+
+
+
+
+/*------------------------------------*\
+    CAROUSEL - TABLET AND UP
+\*------------------------------------*/
 
 
 @include media-query(tablet) {
 
-  .breadcrumbs {
-      margin: -4px 0 4px 0;
-      font-size: 13px;
+
+  .carousel {
+      margin: 48px 0 0 0;
+      height: 400px;
+  }
+
+
+  .carousel-item {
+      background-color: white;
+      width: 35%;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #ccc;
+
+      &__title {
+        font-weight: 400;
+        font-size: 28px;
+        margin-bottom: 24px;
+        padding: 0;
+      }
+
+      &__desc {
+        font-size: 17px;
+        padding: 0;
+      }
+
+      &__link {
+        font-size: 17px;
+      }
+
+      &__stage {
+          background-color: $color__blue--base;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 65%;
+
+          & img {
+            width: 100%;
+            opacity: 0.75;
+          }
+      }
+
+      &__stage-text {
+          display: block;
+          position: absolute;
+          color: white;
+          font-size: 20px;
+          top: 10px;
+          right: 10px;
+          width: 30%;
+      }
+
+
   }
 
 }
@@ -70,9 +142,5 @@
 
 
 @include media-query(desktop) {
-
-  .breadcrumbs {
-      font-size: 14px;
-  }
 
 }

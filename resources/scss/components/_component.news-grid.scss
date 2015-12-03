@@ -7,6 +7,9 @@
 .news-grid {
   position: relative;
 
+  &__item {
+    margin: 0 0 40px;
+  }
 
   &__date {
     font-size: 13px;
@@ -20,7 +23,7 @@
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
-    margin: 8px 0 16px;
+    margin: 12px 0 8px;
   }
 
   &__title-link {
@@ -35,29 +38,35 @@
 }
 
 .news-subscribe-pin {
-  position: absolute;
-  top: 0;
-  right: 0;
-  text-align: center;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 16px 32px;
-  background-color: $color__grey--lighter;
-
-  a {
-    text-decoration: none;
-  }
-
-  strong {
-    text-transform: uppercase;
-    display: block;
-    font-weight: bold;
-  }
-
+  display: none;
 }
 
 
 @include media-query(tablet) {
+
+  .news-subscribe-pin {
+    background-color: $color__grey--lighter;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 16px 32px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    strong {
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+
 }
 
 

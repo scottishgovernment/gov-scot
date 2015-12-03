@@ -22,11 +22,12 @@ h1, .alpha {
 h2, .beta {
   color: $color__body--h2;
   font-size: $base-h2-size;
-  font-weight: 400;
+  font-weight: 300;
   margin: 48px 0 16px;
 
   position: relative; /* [1] */
   top: -3px;
+
 }
 
 
@@ -45,15 +46,20 @@ h3, .gamma {
 }
 
 h4, .delta {
-
+  color: $color__body--h4;
+  font-size: $base-h4-size
 }
 
 
 h5, .epsilon {
-  margin: 8px 0 8px;
+  color: $color__body--h3;
+  font-size: $base-h5-size;
+  font-weight: 600;
+  margin: 40px 0 16px;
   text-transform: uppercase;
-  font-weight: 400;
 }
+
+
 
 
 

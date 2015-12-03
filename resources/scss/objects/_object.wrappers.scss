@@ -2,9 +2,11 @@
     #WRAPPERS
 \*------------------------------------*/
 
+$wrapper-padding: 15px !default;
+
 .wrapper {
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 $wrapper-padding;
 }
 
 @include media-query(tablet) {
@@ -26,3 +28,16 @@
 }
 
 
+/**
+ * Gives us a full-width (no wrapper) on mobile, but normal wrapper on
+ * wider screens.
+ */
+.wrapper--full-mobile  {
+  padding: 0;
+}
+
+@include media-query(tablet) {
+  .wrapper--full-mobile {
+    padding: 0 $wrapper-padding;
+  }
+}
