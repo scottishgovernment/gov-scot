@@ -1,16 +1,24 @@
 /*------------------------------------*\
     #HELPERS
 \*------------------------------------*/
+/**
+ * A collection of responsive layout helpers
+ */
+
+
+
+/*------------------------------------*\
+    #HIDDEN and VISIBLE
+\*------------------------------------*/
 
 .hidden {
   position: absolute;
   left: -999em;
 }
 
-
-
-// responsive visibility, cribbed from Bootstrap 3
-
+/**
+ * responsive visibility, cribbed from Bootstrap 3
+ */
 @include media-query(tablet-down) {
   .hidden-phone {
     display: none !important;
@@ -73,8 +81,12 @@
   }
 }
 
-// allow content in a layout column to overflow the bounds of that column
-// could be generated smartly rather than using these fixed pixel widths
+
+
+/*------------------------------------*\
+    #OVERFLOW
+\*------------------------------------*/
+
 .overflow {
   &--one-column {
     @include media-query(desktop) {
@@ -104,5 +116,22 @@
     @include media-query(hd) {
       margin-right: -292px; // 1170 divided by 12 (columns), multiplied by 3
     }
+  }
+}
+
+
+/*------------------------------------*\
+    #BLEED
+\*------------------------------------*/
+/**
+ * Bleeds allow one-whole grid items to extend to the screen edges.
+ * Exentds .grid__item
+ */
+
+@include media-query(bigphone-down) {
+  .bleed--phone {
+    padding-left: 0;
+    position: relative;
+    right: -15px;
   }
 }
