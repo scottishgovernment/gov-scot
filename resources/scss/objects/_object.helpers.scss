@@ -16,6 +16,11 @@
     display: none !important;
   }
 }
+@include media-query(bigphone-to-tablet) {
+  .hidden-bigphone {
+    display: none !important;
+  }
+}
 @include media-query(tablet-to-desktop) {
   .hidden-tablet {
     display: none !important;
@@ -33,6 +38,7 @@
 }
 
 .visible-phone,
+.visible-bigphone,
 .visible-tablet,
 .visible-desktop,
 .visible-hd {
@@ -41,6 +47,12 @@
 
 @include media-query(tablet-down) {
   .visible-phone {
+    display: block !important;
+  }
+}
+
+@include media-query(bigphone-to-tablet) {
+  .visible-bigphone {
     display: block !important;
   }
 }

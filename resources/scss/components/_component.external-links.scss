@@ -1,0 +1,134 @@
+/*------------------------------------*\
+    #EXTERNAL LINKS
+\*------------------------------------*/
+/**
+ * Provides a stacked list for external links to social and similar services
+ *
+ * The .external--compact modifier produces a collapsed horizontal display on mobile
+ * and smaller paddings on tablet and above.
+ */
+
+.external-links {
+  list-style: none;
+  margin-left: 0;
+  margin-top: 48px;
+  padding-top: 24px;
+  position: relative;
+
+  &__item {
+    margin: 0;
+    padding: 8px 4px;
+  }
+
+  &__link {
+    color: $color__body;
+    text-decoration: none;
+
+    &:hover {
+      color: $color__link--primary;
+    }
+
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  &__icon {
+    margin-right: 0.5em;
+  }
+
+  &:before {
+    background: $color__grey--base;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 50%;
+    top: 0;
+  }
+
+
+  &--compact {
+    margin: 16px 0 32px;
+    padding-top: 0;
+    display: table;
+    width: 100%;
+
+    &:before {
+      height:0;
+    }
+
+    .external-links__item {
+      display: table-cell;
+      text-align: center;
+      font-size: 20px;
+      padding:0;
+    }
+    .external-links__label {
+      display: none;
+    }
+
+  }
+
+
+}
+
+@include media-query(tablet) {
+
+  .external-links {
+    margin-top: 0;
+    padding-top: 0;
+
+    &__item {
+      border-bottom: 1px solid $color__grey--light;
+      padding: 16px 4px;
+    }
+
+    .external-links__item:first-child  {
+      border-top: 1px solid $color__grey--light;
+    }
+
+    &:before {
+      content: none;
+    }
+
+
+    &--compact {
+      display: block;
+      width: auto;
+
+      &:before {
+        height:0;
+      }
+
+      .external-links__item {
+        display: block;
+        text-align: left;
+        font-size: 15px;
+        padding: 8px 4px;
+      }
+      .external-links__label {
+        display: inline;
+      }
+      .external-links__item:first-child {
+        border-top: none
+      }
+      .external-links__item:last-child {
+        border-bottom: none;
+      }
+
+    }
+
+  }
+}
+
+
+@include media-query(desktop) {
+
+  .external-links--compact {
+    .external-links__item {
+      font-size: 17px;
+    }
+  }
+
+}

@@ -3,6 +3,8 @@
     details about a person (or role)
 \*------------------------------------*/
 
+
+
 .contact-information {
   &__section-title {
     font-size: 1em;
@@ -20,49 +22,6 @@
   }
 }
 
-.external-links {
-  list-style: none;
-  margin-left: 0;
-  margin-top: 48px;
-  padding-top: 24px;
-  position: relative;
-
-  &__item {
-    margin: 0;
-    padding: 8px 4px;
-  }
-
-  &__link {
-    color: $color__body;
-    text-decoration: none;
-
-    &:hover {
-      color: $color__link--primary;
-    }
-
-    &:active {
-      text-decoration: underline;
-    }
-  }
-
-  &__icon {
-    margin-right: 0.5em;
-  }
-
-  &:before {
-    background: $color__grey--base;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    right: 50%;
-    top: 0;
-  }
-
-
-
-}
-
 @include media-query(tablet) {
 
   .contact-information {
@@ -70,35 +29,4 @@
     line-height: 24px;
   }
 
-  .external-links {
-    margin-top: 0;
-    padding-top: 0;
-
-    &__item {
-      border-bottom: 1px solid $color__grey--light;
-      padding: 16px 4px;
-    }
-
-    .external-links__item:first-child  {
-      border-top: 1px solid $color__grey--light;
-    }
-
-    &:before {
-      content: none;
-    }
-
-    &--compact {
-      .external-links__item {
-        padding: 8px 4px;
-      }
-      .external-links__item:first-child {
-        border-top: none
-      }
-      .external-links__item:last-child {
-        border-bottom: none;
-      }
-    }
-
-
-  }
 }

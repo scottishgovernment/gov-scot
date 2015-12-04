@@ -102,6 +102,7 @@ $breakpoints: (
 
     'tablet-down' '(max-width: 767px)',
     'desktop-down' '(max-width: 991px)',
+    'bigphone-to-tablet' '(min-width: 480px) and (max-width: 767px)',
     'tablet-to-desktop' '(min-width: 768px) and (max-width: 991px)',
     'desktop-to-hd' '(min-width: 992px) and (max-width: 1199px)',
     'hd-up' '(min-width: 1200px)'
@@ -201,6 +202,7 @@ $inuit-use-fractions: false;
 @import "components/component.carousel";
 @import "components/component.collapsible";
 @import "components/component.contact-information";
+@import "components/component.external-links";
 @import "components/component.full-width-note";
 @import "components/component.item-link";
 @import "components/component.list-controls";
