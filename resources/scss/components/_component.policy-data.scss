@@ -60,16 +60,13 @@
     font-size: 12px;
     line-height: 16px;
     margin: 0;
-    max-height: 16px;
+    height: 16px;
     overflow: hidden;
     padding-right: 40px;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    @include transition(max-height $transition-in-time, text-overflow 1s);
-
     &--expanded {
-      max-height: 250px;
       white-space: normal;
 
       .policy-data__value {
@@ -112,7 +109,6 @@
     }
 
     &__list {
-      max-height: none;
       overflow: visible;
       padding-right: 0;
       white-space: normal;
