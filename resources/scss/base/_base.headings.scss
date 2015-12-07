@@ -61,8 +61,6 @@ h5, .epsilon {
 
 
 
-
-
 @include media-query(tablet) {
   h1, .alpha {
     font-size: $tablet-h1-size;
@@ -102,6 +100,16 @@ h5, .epsilon {
       border-top: 4px solid $color__blue--base;
       margin-top: 45px;
     }
+  }
+}
+
+
+/**
+ * Headings with links should not have a text-underline.
+ */
+h1, h2, h3, h4, h4 {
+  a:link, a:visited {
+    text-decoration: none;
   }
 }
 
