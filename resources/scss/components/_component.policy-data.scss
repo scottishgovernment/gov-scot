@@ -4,6 +4,7 @@
 \*------------------------------------*/
 
 .policy-data {
+  margin-bottom: 40px;
   position: relative;
 
   &__toggle {
@@ -109,6 +110,7 @@
     }
 
     &__list {
+      height: auto;
       overflow: visible;
       padding-right: 0;
       white-space: normal;
