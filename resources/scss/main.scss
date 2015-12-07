@@ -43,23 +43,31 @@
  * Layers
  *
  * COMPONENTS
- * Breadcrumbs
- * Main nav
- * Search box
- * Site header
- * Site footer
  * Article header
- * Stat box
- * Title with prefix
- * Person
- * Pagination
- * Search result
- * Site brand
- * Contact information
- * Mobile-only accordion
  * Article nav
- * List controls
+ * A-Z list
+ * Breadcrumbs
  * Collapsible
+ * Contact information
+ * Full-width note
+ * List controls
+ * Main nav
+ * Media-login
+ * News grid
+ * Page subnav
+ * Pagegroup
+ * Pagination
+ * Person
+ * Policy data
+ * Pull quote
+ * Search box
+ * Search result
+ * Site footer
+ * Site brand
+ * Site header
+ * Stat box
+ * Sticky back to top
+ * Title with prefix
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -157,10 +165,6 @@ $inuit-use-fractions: false;
 @import "base/base.lists";
 @import "base/base.page";
 @import "base/base.type";
-
-
-
-
 @import "base/base.tables";
 
 
@@ -202,11 +206,12 @@ $inuit-use-fractions: false;
 @import "components/component.list-controls";
 @import "components/component.main-nav";
 @import "components/component.media-login";
-@import "components/component.mobile-only-accordion";
 @import "components/component.news-grid";
 @import "components/component.page-subnav";
+@import "components/component.pagegroup";
 @import "components/component.pagination";
 @import "components/component.person";
+@import "components/component.policy-data";
 @import "components/component.pull-quote";
 @import "components/component.search-box";
 @import "components/component.search-result";

@@ -1,0 +1,135 @@
+/*------------------------------------*\
+    #POLICY DATA
+    metadata block at the top of policy pages
+\*------------------------------------*/
+
+.policy-data {
+  position: relative;
+
+  &__toggle {
+    position: absolute;
+    right: 0;
+    top: -4px;
+
+    background: transparent;
+    border: 1px solid $color__blue--base;
+    border-radius: 12px;
+    height: 24px;
+    width: 24px;
+
+    &:before {
+      content: '';
+      width: 14px;
+      height: 2px;
+      background-color: $color__blue--base;
+      position: absolute;
+      left: 4px;
+      top: 10px;
+    }
+
+    &:after {
+      content: '';
+      width: 2px;
+      height: 14px;
+      background-color: $color__blue--base;
+      position: absolute;
+      left: 10px;
+      top: 4px;
+
+      @include transition(height $transition-in-time, top $transition-in-time);
+    }
+
+    &--open {
+      &:after {
+        height: 0;
+        top: 11px;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background: $color__blue--lighter;
+    }
+  }
+
+  &__list {
+    color: $color__grey--dark;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+    height: 16px;
+    overflow: hidden;
+    padding-right: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &--expanded {
+      white-space: normal;
+
+      .policy-data__value {
+        &:first-of-type:after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  &__label {
+    color: $color__grey--text;
+    display: inline;
+
+    &:before {
+      content: '';
+      display: block;
+      margin-top: 8px;
+    }
+
+    &:first-child:before {
+      margin-top: 0;
+    }
+  }
+
+  &__value {
+    display: inline;
+    margin: 0;
+  }
+
+  &__expand {
+    display: none;
+  }
+}
+
+@include media-query(tablet) {
+  .policy-data {
+    &__toggle {
+      display: none;
+    }
+
+    &__list {
+      overflow: visible;
+      padding-right: 0;
+      white-space: normal;
+    }
+
+    &__value {
+      &:first-of-type:after {
+        content: none;
+      }
+    }
+
+    &__expand {
+      display: inline;
+    }
+
+    &__additional {
+      display: none;
+
+      &--shown {
+        display: inline;
+      }
+    }
+  }
+}
