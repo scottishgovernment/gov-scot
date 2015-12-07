@@ -139,6 +139,23 @@ $filter-close-button-size: 48px;
   }
 }
 
+
+
+.date-entry {
+
+  /**
+   * 1. Limit width of input so that the date-entry__trigger appears beside it.
+   *    This is a bit of a magic number hack. We should implement something
+   *    generic like Bootstrap's .input-group  and .input-group-btn.
+   */
+  &__input {
+    width:70% /* [1] */
+  }
+}
+
+
+
+
 .filter-actions {
   background: $color__white;
   //box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
