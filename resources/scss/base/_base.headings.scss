@@ -47,7 +47,8 @@ h3, .gamma {
 
 h4, .delta {
   color: $color__body--h4;
-  font-size: $base-h4-size
+  font-size: $base-h4-size;
+  text-transform: uppercase;
 }
 
 
@@ -78,6 +79,9 @@ h5, .epsilon {
     font-size: $tablet-h3-size;
     margin: 48px 0 8px;
   }
+
+  h4, .delta {
+    font-size: $tablet-h4-size;
 }
 
 .heading {

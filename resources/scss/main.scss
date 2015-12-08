@@ -53,6 +53,7 @@
  * List controls
  * Main nav
  * Media-login
+ * Multipage nav
  * News grid
  * Page subnav
  * Pagegroup
@@ -209,6 +210,7 @@ $inuit-use-fractions: false;
 @import "components/component.list-controls";
 @import "components/component.main-nav";
 @import "components/component.media-login";
+@import "components/component.multipage-nav";
 @import "components/component.news-grid";
 @import "components/component.page-subnav";
 @import "components/component.pagegroup";
