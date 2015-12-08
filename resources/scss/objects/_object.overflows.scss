@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    #OVERFLOWS
+    Extend the current container across additional columns
+\*------------------------------------*/
+
+$overflow-gutter-width: 30px;
+
+$overflow-base-width: 750px;
+$overflow-column-width: $overflow-base-width / 12;
+@include media-query(tablet) {
+  .overflow--tablet--one-twelfth {
+    margin-right: $overflow-column-width * -1
+  }
+  .overflow--tablet--two-twelfths {
+    margin-right: $overflow-column-width * -2
+  }
+  .overflow--tablet--three-twelfths {
+    margin-right: $overflow-column-width * -3
+  }
+  .overflow--tablet--four-twelfths {
+    margin-right: $overflow-column-width * -4
+  }
+}
+
+$overflow-base-width: 970px;
+$overflow-column-width: $overflow-base-width / 12;
+@include media-query(desktop) {
+  .overflow--desktop--one-twelfth {
+    margin-right: $overflow-column-width * -1
+  }
+  .overflow--desktop--two-twelfths {
+    margin-right: $overflow-column-width * -2
+  }
+  .overflow--desktop--three-twelfths {
+    margin-right: $overflow-column-width * -3
+  }
+  .overflow--desktop--four-twelfths {
+    margin-right: $overflow-column-width * -4
+  }
+}
+
+$overflow-base-width: 1170px;
+$overflow-column-width: $overflow-base-width / 12;
+@include media-query(hd) {
+  .overflow--hd--one-twelfth {
+    margin-right: $overflow-column-width * -1
+  }
+  .overflow--hd--two-twelfths {
+    margin-right: $overflow-column-width * -2
+  }
+  .overflow--hd--three-twelfths {
+    margin-right: $overflow-column-width * -3
+  }
+  .overflow--hd--four-twelfths {
+    margin-right: $overflow-column-width * -4
+  }
+}

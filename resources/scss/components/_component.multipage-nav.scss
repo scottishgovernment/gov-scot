@@ -1,0 +1,46 @@
+.multipage-nav {
+  margin-top: 24px;
+
+  &__link {
+    border: 1px solid $color__blue--base;
+    border-width: 1px 0;
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 16px 0;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+
+    &--next {
+      padding-right: 40px;
+      text-align: right;
+    }
+
+    &--previous {
+      padding-left: 40px;
+      text-align: left;
+    }
+
+    &:hover {
+      border-color: $color__link--hover;
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+
+    &--left {
+      left: 10px;
+    }
+
+    &--right {
+      right: 10px;
+    }
+  }
+}
