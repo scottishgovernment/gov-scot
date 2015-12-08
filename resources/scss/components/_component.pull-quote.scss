@@ -5,9 +5,9 @@
 .pull-quote {
   color: $color__grey--darkest;
   display: none;
-  font-size: 34px;
+  font-size: 26px;
   font-weight: 100;
-  line-height: 40px;
+  line-height: 32px;
   margin: 23px 0 0 0;
   padding-right: 30px;
   position: relative;
@@ -26,5 +26,13 @@
 @include media-query(tablet) {
   .pull-quote {
     display: block;
+  }
+}
+
+
+@include media-query(desktop) {
+  .pull-quote {
+    font-size: 34px;
+    line-height: 40px;
   }
 }

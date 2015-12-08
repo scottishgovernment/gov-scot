@@ -215,7 +215,6 @@ h3.social-channel {
 /**
  * 1. Reverse padding-left added in mobile.
  * 2. Hide pseudo element that include "Scottish..." and line behind.
- * 3. Reinstate default link colour.
  */
 @include media-query(tablet) {
   h3.social-channel {
@@ -234,10 +233,7 @@ h3.social-channel {
     &:before {
       display: none; /* [2] */
     }
-
-    a:link, a:visited {
-      color: $color__link--primary; /* [3] */
-    }
+    
   }
 }
 
