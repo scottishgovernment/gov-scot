@@ -14,6 +14,8 @@
 
 $item-link-margin: 32px;
 $item-link-element-margin: 16px !default;
+$item-link-title-text-size: 14px !default;
+$item-link-title-text-size-tablet: 17px !default;
 $item-link-title-line-height: 16px !default;
 $item-link-title-line-height-tablet: 24px !default;
 $item-link-tag-text-size: 13px !default;
@@ -26,6 +28,7 @@ $item-link-date-text-size: 13px !default;
 
   &__title {
     margin: 0 0 $item-link-element-margin;
+    font-size: $item-link-title-text-size;
     line-height: $item-link-title-line-height;
   }
     &__link {
@@ -58,6 +61,7 @@ $item-link-date-text-size: 13px !default;
 
 @include media-query(tablet) {
   .item-link__title {
+    font-size: $item-link-title-text-size-tablet;
     line-height: $item-link-title-line-height-tablet;
   }
 }

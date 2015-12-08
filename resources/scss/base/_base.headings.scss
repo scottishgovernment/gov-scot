@@ -22,7 +22,7 @@ h1, .alpha {
 h2, .beta {
   color: $color__body--h2;
   font-size: $base-h2-size;
-  font-weight: 300;
+  font-weight: 400;
   margin: 48px 0 16px;
 
   position: relative; /* [1] */
@@ -55,14 +55,9 @@ h5, .epsilon {
   color: $color__body--h3;
   font-size: $base-h5-size;
   font-weight: 600;
-  margin: 40px 0 16px;
+  margin: 24px 0 16px;
   text-transform: uppercase;
 }
-
-
-
-
-
 
 
 
@@ -120,10 +115,58 @@ h1, h2, h3, h4, h4 {
 }
 
 
-
+/*------------------------------------*\
+    SECTION HEADER
+\*------------------------------------*/
 /**
- * Social channels
+ * Welcome header are used on the homepage at the top of each section.
  */
+
+h2.section-header {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 32px;
+
+  a {
+    font-weight: inherit;
+  }
+  a:link, a:visited {
+    color: inherit;
+  }
+  a:hover, a:active {
+    color: $color__link--hover;
+    border-bottom: 2px solid $color__link--hover;
+  }
+}
+
+@include media-query(tablet) {
+  h2.section-header {
+    margin-bottom: 24px; /* Reverse mobile change. */
+  }
+}
+
+@include media-query(desktop) {
+  h2.section-header {
+    font-size: 32px;
+  }
+}
+
+@include media-query(hd) {
+  h2.section-header {
+    font-size: 40px;
+  }
+}
+
+
+
+/*------------------------------------*\
+    SOCIAL CHANNELS HEADINGS
+\*------------------------------------*/
+/**
+ * The social channel headings are used on the homepage and have extra features
+ * on mobile, therefore the need for a separate heading style.
+ */
+
 h3.social-channel {
   font-size: 24px;
   color: $color__body;
@@ -193,9 +236,16 @@ h3.social-channel {
   }
 }
 
+@include media-query(hd) {
+  h3.social-channel {
+    font-size: 28px;
+  }
+}
 
 
-
+/*------------------------------------*\
+    FIRST CHILDREN
+\*------------------------------------*/
 
 
 .body-content {

@@ -29,6 +29,7 @@
     }
 
     &:active {
+      color: $color__link--active;
       text-decoration: underline;
     }
   }

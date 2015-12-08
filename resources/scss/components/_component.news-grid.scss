@@ -31,7 +31,8 @@
     font-weight: 600;
     text-decoration: none;
 
-    &:hover {
+    &:hover, &.hover {
+      color: $color__link--hover;
       text-decoration: underline;
     }
   }

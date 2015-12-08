@@ -2,6 +2,8 @@
     #BREADCRUMBS
 \*------------------------------------*/
 
+
+
 .breadcrumbs {
   color: $color__grey--text;
   font-size: 12px;
@@ -31,6 +33,9 @@
   }
 }
 
+.breadcrumbs__container {
+  padding-top: 16px;
+}
 
 @include media-query(tablet) {
 

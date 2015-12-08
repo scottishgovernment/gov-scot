@@ -85,3 +85,10 @@ $grid-divider-bottom-padding: 24px !default;
   padding-right: 0 !important;
   border-right: 0 !important;
 }
+
+@include media-query(tablet-down) {
+  .grid-divider__disabled-phone {
+    padding-right: 0 !important;
+    border-right: 0 !important;
+  }
+}
