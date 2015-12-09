@@ -22,8 +22,8 @@
   }
 
   &__name {
-    font-size: 17px;
     margin: 0 0 8px 0;
+    line-height: 20px;
 
     &--link a {
       color: $color__body;
@@ -34,6 +34,11 @@
         text-decoration: underline;
       }
     }
+  }
+
+  &__role {
+    font-size: $base-font-size;
+    line-height: 20px;
   }
 
   &:after {
@@ -70,8 +75,14 @@
     }
 
     &__name {
-      font-size: 20px;
-      margin: 0 0 16px 0;
+      margin: 0 0 8px 0;
     }
+  }
+}
+
+@include media-query(hd) {
+  .person__role {
+    font-size: $tablet-font-size;
+    line-height: $base-line-height;
   }
 }
