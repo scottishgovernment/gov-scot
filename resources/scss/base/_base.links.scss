@@ -23,6 +23,9 @@ a {
   }
 }
 
+article a {
+  word-break: break-word;
+}
 
 html {
   -webkit-tap-highlight-color: $color__tap-highlight;
