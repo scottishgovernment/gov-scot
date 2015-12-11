@@ -18,14 +18,14 @@ $color__blue--dark: #173163;
 
 $color__blue--selected: rgba(26, 83, 128, 0.65); // #1a5380 @ 65% transparency;
 
-
-$color__grey--lighter: #f6f6f6;
-$color__grey--light: #e3e3e3;
+$color__grey--lighter: #f8f8f8;
+$color__grey--light: #ebebeb;
 $color__grey--medium: #b3b3b3;
 $color__grey--base: #888888;
 $color__grey--text: #727272; // maximum for acceptable color contrast grey on white
 $color__grey--dark: #333333;
-$color__grey--darkest: #222222;
+$color__grey--darkest: #111111;
+
 
 // Typography
 $color__body: $color__grey--dark;
