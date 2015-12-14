@@ -3,6 +3,7 @@
 
   &__container {
     display: table;
+    margin-bottom: 24px;
     min-height: 63px;
     position: relative;
     width: 100%;
@@ -13,7 +14,6 @@
     border-width: 1px 0;
     display: table-cell;
     line-height: 20px;
-    margin-bottom: 24px;
     padding: 0 20px;
 
     text-decoration: none;
