@@ -1,0 +1,90 @@
+.pika-single {
+  background: $color__grey--lighter;
+  border: 0;
+  position: static;
+}
+
+.pika-lendar {
+  background: $color__white;
+  border: 0;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  float: none;
+  margin: 0;
+  width: 100%;
+}
+
+.pika-title {
+  background: $color__blue--base;
+  height: 40px;
+  padding: 5px 0;
+}
+
+.pika-label {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  color: $color__white;
+  font-size: 20px;
+  font-weight: 700;
+  height: 30px;
+  line-height: 27px;
+  margin: 0 4px;
+  padding: 0 4px;
+}
+
+.pika-table  {
+  margin: 0;
+
+  thead + tbody tr:nth-child(2n - 1) td {
+    background: transparent;
+  }
+}
+
+.pika-table td {
+  background: transparent;
+  border: 1px solid $color__grey--lighter;
+}
+
+.pika-table th {
+  border: 0;
+  color: $color__grey--text;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.pika-button {
+  background: transparent;
+  border-radius: 0;
+  color: $color__blue--base;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 8px 4px;
+  text-align: center;
+
+  &:hover {
+    background: $color__grey--lighter;
+    border-radius: 0;
+    color: $color__blue--base;
+  }
+}
+
+.is-selected .pika-button {
+  background: $color__blue--base;
+  border-radius: 0;
+  box-shadow: none;
+  color: $color__white;
+}
+
+.is-today .pika-button {
+  color: $color__blue--base;
+}
+
+.is-today.is-selected .pika-button {
+  color: $color__white;
+}
+
+@include media-query(tablet) {
+  .pika-single {
+    box-shadow: 10px 0 3px rgba(0, 0, 0, 0.2);
+    padding: 45px;
+  }
+}

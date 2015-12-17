@@ -57,6 +57,53 @@ label.inverse {
   color: white;
 }
 
+.input-group {
+  .message {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  &--has-error {
+    $input-group-background-color: $color__error--background;
+    $input-group-foreground-color: $color__error;
+
+    input {
+      background-color: $input-group-background-color;
+      border-color: $input-group-foreground-color;
+      border-width: 2px;
+
+      &:focus {
+        background-color: $input-group-background-color;
+        border-color: $input-group-foreground-color;
+      }
+    }
+
+    .message {
+      color: $input-group-foreground-color;
+    }
+  }
+
+  &--has-success {
+    $input-group-background-color: $color__success--background;
+    $input-group-foreground-color: $color__success;
+
+    input {
+      background-color: $input-group-background-color;
+      border-color: $input-group-foreground-color;
+      border-width: 2px;
+
+      &:focus {
+        background-color: $input-group-background-color;
+        border-color: $input-group-foreground-color;
+      }
+    }
+
+    .message {
+      color: $input-group-foreground-color;
+    }
+  }
+}
+
 /**
  * Nice checkboxes
  */
