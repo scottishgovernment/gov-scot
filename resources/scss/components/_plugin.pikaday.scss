@@ -82,6 +82,13 @@
   color: $color__white;
 }
 
+.pika-select {
+  background: $color__white;
+  color: $color__grey--text;
+  font-size: $base-font-size;
+  font-weight: normal;
+}
+
 @include media-query(tablet) {
   .pika-single {
     box-shadow: 10px 0 3px rgba(0, 0, 0, 0.2);
