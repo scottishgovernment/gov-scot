@@ -16,6 +16,10 @@ $color__blue--medium: #3982C8;
 $color__blue--base: #005eb8;
 $color__blue--dark: #173163;
 
+$color__green--base: #60a037;
+
+$color__red--base: #d32205;
+
 $color__blue--selected: rgba(26, 83, 128, 0.65); // #1a5380 @ 65% transparency;
 
 $color__grey--lighter: #f8f8f8;
@@ -59,3 +63,8 @@ $color__button--primary--focus: $color__blue--selected;
 $color__input--focus: $color__blue--lighter;
 $color__input--focus-outline: $color__blue--lighter;
 $color__input--focus-outline: $color__blue--light;
+
+$color__error: $color__red--base;
+$color__error--background: scale-lightness($color__red--base, 80%);
+$color__success: $color__green--base;
+$color__success--background: scale-lightness($color__green--base, 80%);

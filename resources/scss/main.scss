@@ -48,7 +48,6 @@
  * Article nav
  * A-Z list
  * Breadcrumbs
- * Collapsible
  * Contact information
  * Full-width note
  * List controls
@@ -192,6 +191,7 @@ $inuit-use-fractions: false;
  * PLUGINS
  */
 @import "../../bower_components/pikaday/scss/pikaday.scss";
+@import "components/plugin.pikaday";
 
 
 
@@ -204,7 +204,6 @@ $inuit-use-fractions: false;
 @import "components/component.az-list";
 @import "components/component.breadcrumbs";
 @import "components/component.carousel";
-@import "components/component.collapsible";
 @import "components/component.contact-information";
 @import "components/component.external-links";
 @import "components/component.full-width-note";
