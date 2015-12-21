@@ -28,7 +28,21 @@
   height: 30px;
   line-height: 27px;
   margin: 0 4px;
-  padding: 0 4px;
+  padding: 0 20px 0 4px;
+  position: relative;
+
+  &:after {
+    background: url(../images/icons/arrows/date_picker_dd_arrows.png);
+    content: '';
+    display: inline-block;
+    height: 18px;
+    position: absolute;
+    right: 4px;
+    top: 5px;
+    width: 8px;
+
+    @include image-2x('../images/icons/arrows/date_picker_dd_arrows_@2x.png', 8px, 18px);
+  }
 }
 
 .pika-table  {
@@ -87,6 +101,32 @@
   color: $color__grey--text;
   font-size: $base-font-size;
   font-weight: normal;
+}
+
+.pika-prev,
+.pika-next {
+  height: 42px;
+  opacity: 1;
+  position: absolute;
+  text-indent: 42px;
+  top: -1px;
+  width: 42px;
+}
+
+.pika-prev,
+.is-rtl .pika-next {
+  background-image: url(../images/icons/arrows/int_arrow_left_42px.png);
+  left: 0;
+
+  @include image-2x('../images/icons/arrows/int_arrow_left_42px_@2x.png', 42px, 42px);
+}
+
+.pika-next,
+.is-rtl .pika-prev {
+  background-image: url(../images/icons/arrows/int_arrow_42px.png);
+  right: 0;
+
+  @include image-2x('../images/icons/arrows/int_arrow_42px_@2x.png', 42px, 42px);
 }
 
 @include media-query(tablet) {

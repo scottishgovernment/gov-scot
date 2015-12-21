@@ -157,11 +157,17 @@ $filter-close-button-size: 48px;
   }
 
   &__trigger {
+    background-image: url(../images/icons/date_picker.png);
+    background-position: center;
+    background-repeat: no-repeat;
     bottom: 0;
     height: 48px;
     position: absolute;
     right: 0;
+    text-indent: -999em;
     width: 50px;
+
+    @include image-2x('../images/icons/date_picker_@2x.png', 48px, 48px);
   }
 
   &__calendar {
@@ -357,6 +363,7 @@ $filter-close-button-size: 48px;
     }
 
     &__calendar {
+      box-shadow: 8px 0 1px rgba(0, 0, 0, 0.1);
       left: 0;
       max-height: 1000px;
       opacity: 0;
