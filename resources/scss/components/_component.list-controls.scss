@@ -131,9 +131,9 @@ $filter-close-button-size: 48px;
     display: block;
     font-size: 14px;
     line-height: 18px;
-    margin: 0 0 8px 0;
-    min-height: 35px;
-    padding-left: 30px;
+    margin-bottom: 10px;
+    min-height: 24px;
+    padding-left: 34px;
     padding-top: 3px;
     position: relative;
   }
@@ -171,8 +171,11 @@ $filter-close-button-size: 48px;
   }
 
   &__calendar {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    margin-top: 8px;
     max-height: 0;
     overflow: hidden;
+
 
     @include transition(max-height $transition-in-time);
 
@@ -348,7 +351,8 @@ $filter-close-button-size: 48px;
 
   .checkbox-group {
     &__label {
-      padding-top: 7px;
+      padding-top: 1px;
+      min-height: 0;
     }
   }
 
@@ -390,7 +394,7 @@ $filter-close-button-size: 48px;
 @include media-query(hd) {
   .checkbox-group {
     &__label {
-      padding-top: 11px;
+      padding-top: 3px;
     }
   }
 }
