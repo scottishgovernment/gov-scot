@@ -390,6 +390,7 @@ $carousel-desc-max-height-hd: 244px;
         font-size: 16px;
         line-height: 19px;
         margin-bottom: 4px;
+        padding-right: 12px;
       }
 
       /**
@@ -402,7 +403,7 @@ $carousel-desc-max-height-hd: 244px;
         height: $carousel-support-inactive-height-tablet;
         margin-left: -$drop-shadow-offset; /* [1] */
         overflow: hidden;
-        padding: 8px 12px 8px 12px+$drop-shadow-offset;
+        padding: 8px 0 8px 12px+$drop-shadow-offset;
         position: relative;
         transition: height 0.5s ease,
                     width 0.1s ease;
@@ -419,10 +420,12 @@ $carousel-desc-max-height-hd: 244px;
        */
       &__desc {
         height: 0; /* [1] */
+        padding-right: 12px;
       }
 
       &__link {
         display: none;
+        padding-right: 12px;
       }
 
       /**
@@ -476,13 +479,14 @@ $carousel-desc-max-height-hd: 244px;
       line-height: 22px;
       margin-bottom: 10px;
       color: $color__body;
+      padding-right: 20px;
     }
 
     .carousel-item__support{
       background-color: white;
       height: $carousel-support-active-height-tablet;
       z-index: $carousel-z-support-active;
-      padding: 12px 20px 12px 12px+$drop-shadow-offset;
+      padding: 12px 0 12px 12px+$drop-shadow-offset;
     }
     &:last-child .carousel-item__support {
       z-index: $carousel-z-support-active;
@@ -493,6 +497,7 @@ $carousel-desc-max-height-hd: 244px;
       height: auto;
       line-height: 18px;
       max-height: $carousel-desc-max-height-tablet;
+      padding-right: 20px;
     }
 
     /**
