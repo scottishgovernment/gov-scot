@@ -91,8 +91,7 @@ $carousel-z-stage-image: 40;
 
 .carousel-item__desc {
   margin-bottom: 12px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 0;
 
   p {
@@ -355,7 +354,7 @@ $carousel-support-width-tablet: $wrapper-width-tablet - $carousel-image-width-ta
 $carousel-support-play-width-tablet: $wrapper-width-tablet - $carousel-video-width-tablet + $drop-shadow-offset;
 $carousel-support-active-height-tablet: 266px;
 $carousel-support-inactive-height-tablet: ($carousel-height-tablet - $carousel-support-active-height-tablet) / 2;
-$carousel-desc-max-height-tablet: 175px;
+$carousel-desc-height-tablet: 175px;
 
 $carousel-height-desktop: 400px;
 $carousel-image-width-desktop: 600px; // 3:2
@@ -364,7 +363,7 @@ $carousel-support-width-desktop: $wrapper-width-desktop - $carousel-image-width-
 $carousel-support-play-width-desktop: $wrapper-width-desktop - $carousel-video-width-desktop + $drop-shadow-offset;
 $carousel-support-active-height-desktop: 320px;
 $carousel-support-inactive-height-desktop: ($carousel-height-desktop - $carousel-support-active-height-desktop) / 2;
-$carousel-desc-max-height-desktop: 225px;
+$carousel-desc-height-desktop: 225px;
 
 $carousel-height-hd: 480px;
 $carousel-image-width-hd: 720px; // 3:2
@@ -373,7 +372,7 @@ $carousel-support-width-hd: $wrapper-width-hd - $carousel-image-width-hd + $drop
 $carousel-support-play-width-hd: $wrapper-width-hd - $carousel-video-width-hd + $drop-shadow-offset;
 $carousel-support-active-height-hd: 354px;
 $carousel-support-inactive-height-hd: ($carousel-height-hd - $carousel-support-active-height-hd) / 2;
-$carousel-desc-max-height-hd: 244px;
+$carousel-desc-height-hd: 244px;
 
 
 
@@ -496,10 +495,10 @@ $carousel-desc-max-height-hd: 244px;
 
     .carousel-item__desc {
       font-size: 14px;
-      height: auto;
       line-height: 18px;
-      max-height: $carousel-desc-max-height-tablet;
+      height: $carousel-desc-height-tablet;
       padding-right: 20px;
+      overflow-y: scroll;
     }
 
     /**
@@ -624,8 +623,7 @@ $carousel-desc-max-height-hd: 244px;
       line-height: 28px;
     }
     .carousel-item__desc {
-      height:auto;
-      max-height: $carousel-desc-max-height-desktop;
+      height: $carousel-desc-height-desktop;
     }
     .carousel-item__video {
       width: $carousel-video-width-desktop;
@@ -738,7 +736,7 @@ $carousel-desc-max-height-hd: 244px;
       line-height: 32px;
     }
     .carousel-item__desc {
-      max-height: $carousel-desc-max-height-hd;
+      height: $carousel-desc-height-hd;
       p {
         margin-bottom: 16px;
       }
