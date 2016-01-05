@@ -187,16 +187,18 @@ $carousel-z-stage-image: 40;
   .carousel-item {
     background-color: $color__grey--light;
 
+    &__support {
+      padding: $carousel-text-element-padding-mobile
+    }
+
     &__title {
       font-size: 20px;
-      padding: $carousel-text-element-padding-mobile;
       padding-bottom: 0;
     }
 
     &__desc {
       font-size:13px;
       line-height:18px;
-      padding: $carousel-text-element-padding-mobile;
     }
 
     &__link {
