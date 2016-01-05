@@ -350,7 +350,7 @@ $carousel-height-tablet: 330px;
 $carousel-image-width-tablet: 440px; // 4:3
 $carousel-video-width-tablet: 587px; // 16:9
 $carousel-support-width-tablet: $wrapper-width-tablet - $carousel-image-width-tablet + $drop-shadow-offset;
-$carousel-support-play-width-tablet: $wrapper-width-tablet - $carousel-video-width-tablet;
+$carousel-support-play-width-tablet: $wrapper-width-tablet - $carousel-video-width-tablet + $drop-shadow-offset;
 $carousel-support-active-height-tablet: 266px;
 $carousel-support-inactive-height-tablet: ($carousel-height-tablet - $carousel-support-active-height-tablet) / 2;
 $carousel-desc-max-height-tablet: 175px;
@@ -359,7 +359,7 @@ $carousel-height-desktop: 400px;
 $carousel-image-width-desktop: 600px; // 3:2
 $carousel-video-width-desktop: 711px; // 16:9
 $carousel-support-width-desktop: $wrapper-width-desktop - $carousel-image-width-desktop + $drop-shadow-offset;
-$carousel-support-play-width-desktop: $wrapper-width-desktop - $carousel-video-width-desktop;
+$carousel-support-play-width-desktop: $wrapper-width-desktop - $carousel-video-width-desktop + $drop-shadow-offset;
 $carousel-support-active-height-desktop: 320px;
 $carousel-support-inactive-height-desktop: ($carousel-height-desktop - $carousel-support-active-height-desktop) / 2;
 $carousel-desc-max-height-desktop: 225px;
@@ -368,7 +368,7 @@ $carousel-height-hd: 480px;
 $carousel-image-width-hd: 720px; // 3:2
 $carousel-video-width-hd: 854px; // 16:9
 $carousel-support-width-hd: $wrapper-width-hd - $carousel-image-width-hd + $drop-shadow-offset;
-$carousel-support-play-width-hd: $wrapper-width-hd - $carousel-video-width-hd;
+$carousel-support-play-width-hd: $wrapper-width-hd - $carousel-video-width-hd + $drop-shadow-offset;
 $carousel-support-active-height-hd: 354px;
 $carousel-support-inactive-height-hd: ($carousel-height-hd - $carousel-support-active-height-hd) / 2;
 $carousel-desc-max-height-hd: 244px;
@@ -552,7 +552,7 @@ $carousel-desc-max-height-hd: 244px;
     .carousel-item__support {
       font-size: 13px;
       line-height: 16px;
-      padding: 12px;
+      padding: 12px 12px 12px 12px+$drop-shadow-offset;
     }
 
     /**
