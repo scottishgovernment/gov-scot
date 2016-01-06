@@ -179,7 +179,7 @@ $carousel-z-stage-image: 40;
    CAROUSEL - MOBILE
 \*------------------------------------*/
 
- $carousel-text-element-padding-mobile: 12px;
+ $carousel-text-element-padding-mobile: 15px;
 
 @include media-query(tablet-down) {
 
@@ -187,7 +187,7 @@ $carousel-z-stage-image: 40;
     background-color: $color__grey--light;
 
     &__support {
-      padding: $carousel-text-element-padding-mobile
+      padding: $carousel-text-element-padding-mobile $carousel-text-element-padding-mobile 25px;
     }
 
     &__title {
@@ -201,7 +201,7 @@ $carousel-z-stage-image: 40;
     }
 
     &__link {
-      padding: 0px $carousel-text-element-padding-mobile;
+      padding: 0px 12px;
       font-size: 13px;
     }
 
@@ -346,6 +346,7 @@ $wrapper-width-desktop: 940px;
 $wrapper-width-hd: 1140px;
 
 $drop-shadow-offset: 25px;
+$carousel-hover-delta: 24px;
 
 $carousel-height-tablet: 330px;
 $carousel-image-width-tablet: 440px; // 4:3
@@ -355,6 +356,7 @@ $carousel-support-play-width-tablet: $wrapper-width-tablet - $carousel-video-wid
 $carousel-support-active-height-tablet: 266px;
 $carousel-support-inactive-height-tablet: ($carousel-height-tablet - $carousel-support-active-height-tablet) / 2;
 $carousel-desc-height-tablet: 175px;
+
 
 $carousel-height-desktop: 400px;
 $carousel-image-width-desktop: 600px; // 3:2
@@ -406,10 +408,11 @@ $carousel-desc-height-hd: 244px;
         overflow: hidden;
         padding: 8px 0 8px 12px+$drop-shadow-offset;
         position: relative;
-        transition: height 0.5s ease,
+        transition: height 0.2s ease,
                     width 0.1s ease;
         width: $carousel-support-width-tablet;
         z-index: $carousel-z-support;
+        cursor: pointer;
 
       }
       &:last-child &__support {
@@ -420,6 +423,8 @@ $carousel-desc-height-hd: 244px;
        * 1. Show no description, by default
        */
       &__desc {
+        font-size: 14px;
+        line-height: 18px;
         height: 0; /* [1] */
         padding-right: 12px;
       }
@@ -483,7 +488,7 @@ $carousel-desc-height-hd: 244px;
       padding-right: 20px;
     }
 
-    .carousel-item__support{
+    .carousel-item__support {
       background-color: white;
       height: $carousel-support-active-height-tablet;
       z-index: $carousel-z-support-active;
@@ -494,11 +499,10 @@ $carousel-desc-height-hd: 244px;
     }
 
     .carousel-item__desc {
-      font-size: 14px;
-      line-height: 18px;
       height: $carousel-desc-height-tablet;
       padding-right: 20px;
       overflow-y: scroll;
+      overflow-x: auto;
     }
 
     /**
@@ -579,6 +583,27 @@ $carousel-desc-height-hd: 244px;
   .carousel-item--pause .carousel-item__video {
      right:0; /* [1] */
    }
+
+
+
+    /**
+     * STATE: HOVER
+     */
+    .carousel-item--hover {
+      .carousel-item__support {
+        height: $carousel-support-inactive-height-tablet + $carousel-hover-delta;
+      }
+      .carousel-item__desc {
+        height: 0 + $carousel-hover-delta;
+      }
+    }
+    .carousel--hover {
+      .carousel-item--active {
+        .carousel-item__support {
+          height: $carousel-support-active-height-tablet - $carousel-hover-delta;
+        }
+      }
+    }
 
 }
 
@@ -701,6 +726,26 @@ $carousel-desc-height-hd: 244px;
   }
 
 
+  /**
+   * STATE: HOVER
+   */
+  .carousel-item--hover {
+    .carousel-item__support {
+      height: $carousel-support-inactive-height-desktop + $carousel-hover-delta;
+    }
+    .carousel-item__desc {
+      height: 0 + $carousel-hover-delta;
+    }
+  }
+  .carousel--hover {
+    .carousel-item--active {
+      .carousel-item__support {
+        height: $carousel-support-active-height-desktop - $carousel-hover-delta;
+      }
+    }
+  }
+
+
 }
 
 
@@ -775,6 +820,26 @@ $carousel-desc-height-hd: 244px;
     .carousel-item__support {
       font-size: 14px;
       line-height: 18px;
+    }
+  }
+
+
+  /**
+   * STATE: HOVER
+   */
+  .carousel-item--hover {
+    .carousel-item__support {
+      height: $carousel-support-inactive-height-hd + $carousel-hover-delta;
+    }
+    .carousel-item__desc {
+      height: 20px + $carousel-hover-delta;
+    }
+  }
+  .carousel--hover {
+    .carousel-item--active {
+      .carousel-item__support {
+        height: $carousel-support-active-height-hd - $carousel-hover-delta;
+      }
     }
   }
 
