@@ -91,7 +91,6 @@ $carousel-z-stage-image: 40;
 
 .carousel-item__desc {
   margin-bottom: 12px;
-  overflow: hidden;
   padding: 0;
 
   p {
@@ -434,6 +433,7 @@ $carousel-desc-height-hd: 244px;
         font-size: 14px;
         line-height: 18px;
         height: 0; /* [1] */
+        overflow: hidden;
         padding-right: 12px;
       }
 
@@ -501,38 +501,27 @@ $carousel-desc-height-hd: 244px;
       height: $carousel-support-active-height-tablet;
       z-index: $carousel-z-support-active;
       padding: 12px 0 12px 12px+$drop-shadow-offset;
+      overflow: scroll;
     }
     &:last-child .carousel-item__support {
       z-index: $carousel-z-support-active;
     }
 
     .carousel-item__desc {
-      height: $carousel-desc-height-tablet;
       padding-right: 20px;
-      overflow-y: scroll;
-      overflow-x: auto;
+      overflow: visible;
+      height: initial;
     }
 
     /**
      * 1. Achieve a min-height of 24px = 18px line-height + 3px padding-top + 3px padding-bottom
-     * 2. Use animation to delay appearance of object.
-     * 3. Set opacity to 1 for IE6-IE9
      */
     .carousel-item__link {
-      position: absolute;
       bottom: 8px;
       display: block;
       font-size: 14px;
       line-height: 18px;
       padding: 3px 12px; /* [1] */
-
-      opacity: 0;  /* [2] */
-      opacity: 1\9; /* [3] */
-
-      -moz-animation: fadein 0.3s ease-in 0.1s forwards; /* Firefox */
-      -webkit-animation: fadein 0.3s ease-in 0.1s forwards; /* Safari and Chrome */
-      -o-animation: fadein 0.3s ease-in 0.1s forwards; /* Opera */
-      animation: fadein 0.3s ease-in 0.1s forwards;
     }
 
 
@@ -567,9 +556,16 @@ $carousel-desc-height-hd: 244px;
       font-size: 16px;
       line-height: 19px;
     }
-    .carousel-item__support {
+    .carousel-item__desc {
       font-size: 13px;
       line-height: 16px;
+    }
+    .carousel-item__link {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    .carousel-item__support {
       padding: 12px 12px 12px 12px+$drop-shadow-offset;
     }
 
@@ -654,9 +650,6 @@ $carousel-desc-height-hd: 244px;
     .carousel-item__title {
       font-size: 22px;
       line-height: 28px;
-    }
-    .carousel-item__desc {
-      height: $carousel-desc-height-desktop;
     }
     .carousel-item__video {
       width: $carousel-video-width-desktop;
@@ -789,7 +782,6 @@ $carousel-desc-height-hd: 244px;
       line-height: 32px;
     }
     .carousel-item__desc {
-      height: $carousel-desc-height-hd;
       p {
         margin-bottom: 16px;
       }
