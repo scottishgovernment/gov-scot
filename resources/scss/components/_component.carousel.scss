@@ -409,10 +409,18 @@ $carousel-desc-height-hd: 244px;
         padding: 8px 0 8px 12px+$drop-shadow-offset;
         position: relative;
         transition: height 0.2s ease,
-                    width 0.1s ease;
+                    width 0.1s ease,
+                    background-color 0.1s ease;
         width: $carousel-support-width-tablet;
         z-index: $carousel-z-support;
         cursor: pointer;
+
+        &:active {
+          background-color: $color__blue--lighter;
+          .carousel-item__title {
+            color: $color__blue--dark;
+          }
+        }
 
       }
       &:last-child &__support {
