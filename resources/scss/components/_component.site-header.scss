@@ -31,17 +31,14 @@
     vertical-align: top;
     outline: 0;
 
-    &--menu {
-      // The menu icon is a bit taller, so remove padding on bottom
-      padding-bottom: 0;
-    }
-
-    &--selected .site-header__button--search {
+    &--selected.site-header__button--search {
       background-color: $color__grey--light;
+      padding-bottom: 8px;
     }
 
-    &--selected .site-header__button--menu {
+    &--selected.site-header__button--menu {
       background-color: $color__blue--base;
+      padding-bottom: 3px;
     }
 
     &__button:focus {
