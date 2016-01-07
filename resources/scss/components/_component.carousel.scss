@@ -452,10 +452,11 @@ $carousel-desc-height-hd: 244px;
         right: -999em; /* [1] */
         top: 0;
         width: auto;
+        width: inherit;
 
         img {
           height: 100%;
-          width: auto;
+          width: $carousel-image-width-tablet;
           position: relative;
           z-index: $carousel-z-stage-image;
         }
@@ -510,7 +511,7 @@ $carousel-desc-height-hd: 244px;
     .carousel-item__desc {
       padding-right: 20px;
       overflow: visible;
-      height: initial;
+      height: auto;
     }
 
     /**
@@ -638,6 +639,12 @@ $carousel-desc-height-hd: 244px;
   .carousel-item__desc {
     font-size: 15px;
     line-height: 20px;
+  }
+
+  .carousel-item__stage {
+    img {
+      width: $carousel-image-width-desktop;
+    }
   }
 
 
@@ -772,6 +779,13 @@ $carousel-desc-height-hd: 244px;
     line-height: 20px;
     height: 20px; /* [1] */
   }
+  
+  .carousel-item__stage {
+    img {
+      width: $carousel-image-width-hd;
+    }
+  }
+
 
   .carousel-item--active {
     .carousel-item__support {
