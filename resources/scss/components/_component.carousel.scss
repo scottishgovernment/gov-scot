@@ -457,6 +457,7 @@ $carousel-desc-height-hd: 244px;
         img {
           height: 100%;
           width: $carousel-image-width-tablet;
+          width: auto;
           position: relative;
           z-index: $carousel-z-stage-image;
         }
