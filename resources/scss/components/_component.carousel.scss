@@ -110,12 +110,19 @@ $carousel-z-stage-image: 40;
   border-left: 4px solid $color__blue--base;
   text-transform: uppercase;
   a {
-    color: $color__blue--base;
+    color: $color__link--primary;
     font-weight: 900;
-    &:link {
-      text-decoration: none;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $color__link--hover;
     }
+    &:active {
+      color: $color__link--active;
+    }
+
   }
+
 }
 
 

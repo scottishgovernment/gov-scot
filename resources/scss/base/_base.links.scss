@@ -15,6 +15,7 @@ a {
 
   &:hover {
     color: $color__link--hover;
+    text-decoration: underline;
 
     @include transition-duration($transition-in-time);
   }
