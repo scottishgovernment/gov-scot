@@ -20,8 +20,6 @@ $color__green--base: #60a037;
 
 $color__red--base: #d32205;
 
-$color__blue--selected: rgba(26, 83, 128, 0.65); // #1a5380 @ 65% transparency;
-
 $color__grey--lighter: #f8f8f8;
 $color__grey--light: #ebebeb;
 $color__grey--medium: #b3b3b3;
@@ -53,10 +51,10 @@ $color__tap-highlight: transparent;
 // Buttons
 
 $color__button--primary: $color__blue--base;
-$color__button--primary--hover: $color__blue--selected;
-$color__button--primary--active: $color__blue--selected;
+$color__button--primary--hover: $color__blue--dark;
+$color__button--primary--active: $color__blue--dark;
 $color__button--primary--active-text: $color__white--selected;
-$color__button--primary--focus: $color__blue--selected;
+$color__button--primary--focus: $color__blue--dark;
 
 // Form elements
 
