@@ -24,12 +24,13 @@
   background: transparent;
   border: 1px dashed rgba(255, 255, 255, 0.3);
   color: $color__white;
+  display: inline;
   font-size: 20px;
   font-weight: 700;
   height: 30px;
   line-height: 27px;
   margin: 0 4px;
-  padding: 0 20px 0 4px;
+  padding: 0 20px 3px 4px;
   position: relative;
 
   &:after {

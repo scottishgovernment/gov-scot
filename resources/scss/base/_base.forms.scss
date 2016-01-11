@@ -5,9 +5,10 @@
 input[type=text] {
   background: $color__white;
   border: 1px solid $color__grey--light;
+  border-radius: 0;
   font-size: 16px;
   height: 48px;
-  padding: 0 1em;
+  padding: 0 0.75em;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -60,7 +61,9 @@ label.inverse {
 .input-group {
   .message {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 5px 0;
   }
 
   &--has-error {
@@ -118,7 +121,7 @@ input + label.fancy-checkbox:before {
   border: 1px solid $color__grey--base;
   content: '';
   float: left;
-  font-size: $fancy-checkbox-size - 2;
+  font-size: $fancy-checkbox-size - 6;
   height: $fancy-checkbox-size;
   left: 0;
   line-height: $fancy-checkbox-size - 2;
@@ -138,7 +141,7 @@ input:checked + label.fancy-checkbox:before {
   $fancy-checkbox-size: 20px;
 
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size - 2;
+    font-size: $fancy-checkbox-size - 6;
     height: $fancy-checkbox-size;
     line-height: $fancy-checkbox-size - 2;
     width: $fancy-checkbox-size;
@@ -149,7 +152,7 @@ input:checked + label.fancy-checkbox:before {
   $fancy-checkbox-size: 24px;
 
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size - 2;
+    font-size: $fancy-checkbox-size - 6;
     height: $fancy-checkbox-size;
     line-height: $fancy-checkbox-size - 2;
     width: $fancy-checkbox-size;
@@ -168,7 +171,7 @@ SCROLLABLE CONTAINER
     position: relative;
 
     &:before {
-      @include background-image(linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0)));
+      @include background-image(linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0)));
 
       content: '';
       height: 4px;
@@ -187,10 +190,8 @@ SCROLLABLE CONTAINER
       -webkit-border-radius: 5px;
       border-radius: 5px;
       background: rgba(0, 0, 0, 0.1);
-
-      /*TEMP*/
-      position: relative;
       margin-top: 10px;
+      position: relative;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -210,7 +211,7 @@ SCROLLABLE CONTAINER
     &__content {
       height: 100vh;
       overflow-y: scroll;
-      padding: 8px 0;
+      padding: 16px 0 0 0;
 
       &--40 {
         height: 40vh;

@@ -76,6 +76,12 @@ $filter-close-button-size: 48px;
     display: none;
   }
 
+  &__label {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+
   &__input {
     &--search-term[type=text] {
       height: 56px;
@@ -131,7 +137,7 @@ $filter-close-button-size: 48px;
     display: block;
     font-size: 14px;
     line-height: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     min-height: 24px;
     padding-left: 34px;
     padding-top: 3px;

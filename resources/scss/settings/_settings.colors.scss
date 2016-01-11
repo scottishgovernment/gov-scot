@@ -19,6 +19,7 @@ $color__blue--dark: #173163;
 $color__green--base: #60a037;
 
 $color__red--base: #d32205;
+$color__red--lighter: #f7d5cf;
 
 $color__grey--lighter: #f8f8f8;
 $color__grey--light: #ebebeb;
@@ -63,6 +64,6 @@ $color__input--focus-outline: $color__blue--lighter;
 $color__input--focus-outline: $color__blue--light;
 
 $color__error: $color__red--base;
-$color__error--background: scale-lightness($color__red--base, 80%);
+$color__error--background: $color__red--lighter;
 $color__success: $color__green--base;
 $color__success--background: scale-lightness($color__green--base, 80%);
