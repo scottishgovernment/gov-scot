@@ -24,3 +24,38 @@ input + label.fancy-checkbox:before {
   outline: none;
   top: 60px !important;
 }
+
+.pika-select {
+  display: none;
+}
+
+.pika-label {
+  padding-right: 4px;
+}
+
+.pika-label:after {
+  content: none;
+}
+
+.pika-prev.is-disabled, .pika-next.is-disabled {
+  background-image: none;
+}
+
+.date-entry__input {
+  margin-right: 60px;
+  width: 100%;
+}
+
+
+// Carousel
+
+// Hide carousel description since the gradient overlay won't display behind it in IE8
+.carousel-item__stage-text {
+  display: none !important;
+}
+
+// Hide play button since YouTube vids don't currently display in IE8
+.carousel-item__play-button {
+  display: none !important;
+}
+

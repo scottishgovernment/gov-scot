@@ -48,7 +48,6 @@
  * Article nav
  * A-Z list
  * Breadcrumbs
- * Collapsible
  * Contact information
  * Full-width note
  * List controls
@@ -140,6 +139,7 @@ $inuit-base-line-height: 24px;
 @import "../../bower_components/inuit-mixins/tools.mixins";
 $inuit-use-fractions: false;
 @import "../../bower_components/inuit-tools-widths/tools.widths";
+@import "tools/tools.animation";
 @import "tools/tools.mixins";
 @import "../../bower_components/inuit-responsive-tools/tools.responsive";
 
@@ -192,6 +192,7 @@ $inuit-use-fractions: false;
  * PLUGINS
  */
 @import "../../bower_components/pikaday/scss/pikaday.scss";
+@import "components/plugin.pikaday";
 
 
 
@@ -204,7 +205,6 @@ $inuit-use-fractions: false;
 @import "components/component.az-list";
 @import "components/component.breadcrumbs";
 @import "components/component.carousel";
-@import "components/component.collapsible";
 @import "components/component.contact-information";
 @import "components/component.external-links";
 @import "components/component.full-width-note";
@@ -238,3 +238,4 @@ $inuit-use-fractions: false;
  */
 @import "../../bower_components/inuit-widths/trumps.widths";
 @import "../../bower_components/inuit-widths-responsive/trumps.widths-responsive";
+@import "trumps/trump.fontawesome";

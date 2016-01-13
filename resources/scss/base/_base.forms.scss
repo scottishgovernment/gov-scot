@@ -5,12 +5,13 @@
 input[type=text] {
   background: $color__white;
   border: 1px solid $color__grey--light;
+  border-radius: 0;
+  font-size: 16px;
   height: 48px;
-  padding: 0 1em;
+  padding: 0 0.75em;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-
 
   &:focus {
     background: $color__input--focus;
@@ -57,6 +58,55 @@ label.inverse {
   color: white;
 }
 
+.input-group {
+  .message {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 5px 0;
+  }
+
+  &--has-error {
+    $input-group-background-color: $color__error--background;
+    $input-group-foreground-color: $color__error;
+
+    input {
+      background-color: $input-group-background-color;
+      border-color: $input-group-foreground-color;
+      border-width: 2px;
+
+      &:focus {
+        background-color: $input-group-background-color;
+        border-color: $input-group-foreground-color;
+      }
+    }
+
+    .message {
+      color: $input-group-foreground-color;
+    }
+  }
+
+  &--has-success {
+    $input-group-background-color: $color__success--background;
+    $input-group-foreground-color: $color__success;
+
+    input {
+      background-color: $input-group-background-color;
+      border-color: $input-group-foreground-color;
+      border-width: 2px;
+
+      &:focus {
+        background-color: $input-group-background-color;
+        border-color: $input-group-foreground-color;
+      }
+    }
+
+    .message {
+      color: $input-group-foreground-color;
+    }
+  }
+}
+
 /**
  * Nice checkboxes
  */
@@ -71,12 +121,13 @@ input + label.fancy-checkbox:before {
   border: 1px solid $color__grey--base;
   content: '';
   float: left;
-  font-size: $fancy-checkbox-size;
+  font-size: $fancy-checkbox-size - 6;
   height: $fancy-checkbox-size;
-  left: 3px;
-  line-height: $fancy-checkbox-size;
+  left: 0;
+  line-height: $fancy-checkbox-size - 2;
   position: absolute;
   text-align: center;
+  top: 0;
   width: $fancy-checkbox-size;
 }
 
@@ -90,9 +141,9 @@ input:checked + label.fancy-checkbox:before {
   $fancy-checkbox-size: 20px;
 
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size;
+    font-size: $fancy-checkbox-size - 6;
     height: $fancy-checkbox-size;
-    line-height: $fancy-checkbox-size;
+    line-height: $fancy-checkbox-size - 2;
     width: $fancy-checkbox-size;
   }
 }
@@ -101,9 +152,70 @@ input:checked + label.fancy-checkbox:before {
   $fancy-checkbox-size: 24px;
 
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size;
+    font-size: $fancy-checkbox-size - 6;
     height: $fancy-checkbox-size;
-    line-height: $fancy-checkbox-size;
+    line-height: $fancy-checkbox-size - 2;
     width: $fancy-checkbox-size;
+  }
+}
+
+
+
+/*
+SCROLLABLE CONTAINER
+*/
+@include media-query(tablet) {
+  .scrollable {
+    margin: 0 -10px;
+    padding: 0 10px;
+    position: relative;
+
+    &:before {
+      @include background-image(linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0)));
+
+      content: '';
+      height: 4px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      position: relative;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &__content {
+      height: 100vh;
+      overflow-y: scroll;
+      padding: 16px 0 0 0;
+
+      &--40 {
+        height: 40vh;
+      }
+    }
   }
 }

@@ -3,72 +3,340 @@
 \*------------------------------------*/
 
 /**
+ * OVERVIEW
+ *
  * Show a collection of rich-media items. A carousel is made up of
  * carousel-items.
  *
- * Carousel-item elements:
- * - carousel-item__title
- * - carousel-item__desc
- * - carousel-item__link
- * - carousel-item__stage
- * - carousel-item__stage-text
+ * A .carousel-item has the following elements:
+ *   - .carousel-item__title
+ *   - .carousel-item__desc
+ *   - .carousel-item__link
+ *   - .carousel-item__stage
+ *   - .carousel-item__stage-text
+ *   - .carousel-item__play-button (optional; added with JavaScript)
+ *
+ * A .carousel-item has the following modifiers, corresponding with states.
+ *   - .carousel-item--active   – there is always one and only .carousel-item with this state.
+ *   - .carousel-item--play     - video currently playing
+ *   - .carousel-item--pause    - video has been clicked, but focus is on the support
+ *
+ * There is also a modifier for the .carousel item itself.
+ *   - .carousel--play          - this constrains the width of the support sections.
+ *
+ * Additionally, there is an object for the mobile-only slider controls. This
+ * item is placed into position using JavaScript.
+ *   - .carousel-controls
  */
 
 
- /*------------------------------------*\
-     CAROUSEL - MOBILE
- \*------------------------------------*/
 
-$carousel-text-element-padding-mobile: 15px;
+/**
+ * Z INDEXES
+ *
+ * 1. On mobile, place the video above everything on the page - including the
+      sticky header.
+ * 2. The last support is a bit lower, so that the drop shadows stack correctly.
+ */
+$carousel-z-stage-video-mobile: 9999; /* [1] */
+$carousel-z-support-active: 53;
+$carousel-z-support: 52;
+$carousel-z-support-last: 51; /* [2] */
+$carousel-z-stage-video: 44;
+$carousel-z-stage-play-button: 43;
+$carousel-z-stage-text: 42;
+$carousel-z-stage-overlay: 41;
+$carousel-z-stage-image: 40;
+
+
+
+
+
+
+/*------------------------------------*\
+    CAROUSEL - GENERAL
+\*------------------------------------*/
+
 
 .carousel {
   position: relative;
 }
 
-.carousel-item {
-  background-color: $color__grey--lighter;
 
-  &__stage {
-    img {
-      width: 100%;
+.carousel-item__title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+
+/**
+ * This provides a blue gradient overlay for the stage.
+ */
+.carousel-item__stage:before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: $carousel-z-stage-overlay;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom,
+        rgba(6, 56, 89, 1) 0%,
+        rgba(6, 56, 89, 0) 100%);
+
+}
+
+
+
+.carousel-item__desc {
+  margin-bottom: 12px;
+  padding: 0;
+
+  p {
+    margin-bottom: 10px;
+  }
+  ul, ol {
+    margin: 0 0 16px 32px;
+    line-height: inherit;
+    li {
+      margin-bottom: 4px;
     }
   }
+}
 
-  &__stage-text {
-    display: none;
-  }
-
-  &__title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    padding: {
-      top: $carousel-text-element-padding-mobile;
-      right: $carousel-text-element-padding-mobile;
-      bottom: 0;
-      left: $carousel-text-element-padding-mobile;
+.carousel-item__link {
+  background: transparent;
+  border-left: 4px solid $color__blue--base;
+  text-transform: uppercase;
+  a {
+    color: $color__link--primary;
+    font-weight: 900;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $color__link--hover;
     }
-  }
-
-  &__desc {
-    font-size:13px;
-    margin-bottom: 16px;
-    padding: 0 $carousel-text-element-padding-mobile;
-  }
-
-  &__link {
-    background-color: $color__blue--base;
-    font-size: 13px;
-    padding: 8px $carousel-text-element-padding-mobile;
-    text-transform: uppercase;
-
-    a {
-      color: white;
-      font-weight: bold;
+    &:active {
+      color: $color__link--active;
     }
+
   }
 
 }
+
+
+/**
+ * YOUTUBE PLAY BUTTON
+ * This is added to a .carousel-item by JavaScript if there is a video in the carousel item.
+ *
+ * 1. Add some extra margin on tablet since part of the stage is hidden.
+ * 2. Position button off center for desktop and HD displays.
+ */
+.carousel-item__play-button {
+  background-image: url(../images/icons/youtube-play.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 0;
+  display: block;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: $carousel-z-stage-play-button;
+
+  @include media-query(tablet-down) {
+    height: 36px;
+    width: 50px;
+  }
+
+  @include media-query(tablet) {
+    height: 45px;
+    width: 60px;
+    margin-left: 50%; /* [1] */
+  }
+
+  @include media-query(desktop) {
+    margin-left: 37%;  /* [2] */
+  }
+
+  @include media-query(hd) {
+    height: 60px;
+    width: 70px;
+  }
+}
+
+
+
+/**
+ * Hide mobile-only controls by default
+ */
+.carousel-controls {
+  display: none;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+   CAROUSEL - MOBILE
+\*------------------------------------*/
+
+ $carousel-text-element-padding-mobile: 15px;
+
+@include media-query(tablet-down) {
+
+  .carousel-item {
+    background-color: $color__grey--light;
+
+    &__support {
+      padding: $carousel-text-element-padding-mobile $carousel-text-element-padding-mobile 25px;
+    }
+
+    &__title {
+      font-size: 20px;
+      padding-bottom: 0;
+    }
+
+    &__desc {
+      font-size:13px;
+      line-height:18px;
+    }
+
+    &__link {
+      padding: 0px 12px;
+      font-size: 13px;
+    }
+
+    /**
+     * 1. Maintain 16:9 aspect ratio
+     */
+    &__stage {
+      line-height: 0;
+      overflow: hidden;
+      padding-bottom: 56.25%; /* [1] */
+      position: relative;
+      width: 100%;
+
+      img {
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+    &__stage-text {
+      display: none;
+    }
+
+    &__video {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: $carousel-z-stage-video-mobile;
+    }
+  }
+
+
+  /**
+   * == STATES ==
+   */
+
+  /**
+   * STATE: INACTIVE (default)
+   */
+   .carousel-item {
+     display: none;
+     &__video {
+       display: none;
+     }
+   }
+
+  /**
+   * STATE: ACTIVE
+   */
+  .carousel-item--active {
+    display: block;
+  }
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel-item--play {
+    .carousel-item__video {
+      display:block;
+    }
+  }
+
+
+
+  /**
+   * == CONTROLS ==
+   * The carousel controls object is activated and moved into position by
+   * JavaScript on mobile only.
+   */
+
+  .carousel-controls {
+    display: block;
+    background: white;
+
+    &__links {
+      display: table;
+      list-style-type: none;
+      margin: 0;
+      padding: 4px 24px;
+      width: 100%;
+    }
+
+    &__link {
+      display: table-cell;
+      a {
+        text-decoration: none;
+      }
+    }
+
+      &__link--previous {
+        font-size: 48px;
+        line-height: 48px;
+        text-align: left;
+      }
+
+      &__link--next {
+        font-size: 48px;
+        text-align: right;
+      }
+
+      &__link--pip {
+        position: relative;
+        width:48px;
+        height: 48px;
+        &:before {
+          background: #888888;
+          border-radius: 16px;
+          content: '';
+          height: 16px;
+          left: 50%;
+          margin: -8px 0 0 -8px;
+          opacity: 0.25;
+          position: absolute;
+          top: 50%;
+          width: 16px;
+        }
+      }
+
+      &__link--pip-active {
+        &:before {
+          opacity: 1;
+        }
+      }
+  }
+
+
+}
+
+
 
 
 
@@ -79,68 +347,527 @@ $carousel-text-element-padding-mobile: 15px;
 \*------------------------------------*/
 
 
-@include media-query(tablet) {
+$wrapper-width-tablet: 720px;
+$wrapper-width-desktop: 940px;
+$wrapper-width-hd: 1140px;
 
+$drop-shadow-offset: 25px;
+$carousel-hover-delta: 24px;
+
+$carousel-height-tablet: 330px;
+$carousel-image-width-tablet: 440px; // 4:3
+$carousel-video-width-tablet: 587px; // 16:9
+$carousel-support-width-tablet: $wrapper-width-tablet - $carousel-image-width-tablet + $drop-shadow-offset;
+$carousel-support-play-width-tablet: $wrapper-width-tablet - $carousel-video-width-tablet + $drop-shadow-offset;
+$carousel-support-active-height-tablet: 266px;
+$carousel-support-inactive-height-tablet: ($carousel-height-tablet - $carousel-support-active-height-tablet) / 2;
+$carousel-desc-height-tablet: 175px;
+
+
+$carousel-height-desktop: 400px;
+$carousel-image-width-desktop: 600px; // 3:2
+$carousel-video-width-desktop: 711px; // 16:9
+$carousel-support-width-desktop: $wrapper-width-desktop - $carousel-image-width-desktop + $drop-shadow-offset;
+$carousel-support-play-width-desktop: $wrapper-width-desktop - $carousel-video-width-desktop + $drop-shadow-offset;
+$carousel-support-active-height-desktop: 320px;
+$carousel-support-inactive-height-desktop: ($carousel-height-desktop - $carousel-support-active-height-desktop) / 2;
+$carousel-desc-height-desktop: 225px;
+
+$carousel-height-hd: 480px;
+$carousel-image-width-hd: 720px; // 3:2
+$carousel-video-width-hd: 854px; // 16:9
+$carousel-support-width-hd: $wrapper-width-hd - $carousel-image-width-hd + $drop-shadow-offset;
+$carousel-support-play-width-hd: $wrapper-width-hd - $carousel-video-width-hd + $drop-shadow-offset;
+$carousel-support-active-height-hd: 354px;
+$carousel-support-inactive-height-hd: ($carousel-height-hd - $carousel-support-active-height-hd) / 2;
+$carousel-desc-height-hd: 244px;
+
+
+
+@include media-query(tablet) {
 
   .carousel {
       margin: 48px 0 0 0;
-      height: 400px;
+      height: $carousel-height-tablet;
+      overflow: hidden;
   }
 
-
   .carousel-item {
-      background-color: white;
-      width: 35%;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid #ccc;
 
       &__title {
-        font-weight: 400;
-        font-size: 28px;
-        margin-bottom: 24px;
-        padding: 0;
+        color: $color__blue--base;
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 4px;
+        padding-right: 12px;
       }
 
+      /**
+       * 1. Use negative margin to position drop shadow all the way to the edge
+       */
+      &__support {
+        background-color: $color__grey--lighter;
+        box-shadow: $drop-shadow-offset 1px 10px 0px rgba(0, 0, 0, 0.25);
+        color: $color__grey--dark;
+        height: $carousel-support-inactive-height-tablet;
+        margin-left: -$drop-shadow-offset; /* [1] */
+        overflow: hidden;
+        padding: 8px 0 8px 12px+$drop-shadow-offset;
+        position: relative;
+        transition: height 0.2s ease,
+                    width 0.1s ease,
+                    background-color 0.1s ease;
+        width: $carousel-support-width-tablet;
+        z-index: $carousel-z-support;
+        cursor: pointer;
+
+        &:active {
+          background-color: $color__blue--lighter;
+          .carousel-item__title {
+            color: $color__blue--dark;
+          }
+        }
+
+      }
+      &:last-child &__support {
+        z-index: $carousel-z-support-last; /* [1] */
+      }
+
+      /**
+       * 1. Show no description, by default
+       */
       &__desc {
-        font-size: 17px;
-        padding: 0;
+        font-size: 14px;
+        line-height: 18px;
+        height: 0; /* [1] */
+        overflow: hidden;
+        padding-right: 12px;
       }
 
       &__link {
-        font-size: 17px;
+        display: none;
+        padding-right: 12px;
       }
 
+      /**
+       * 1. Safely hide offscreen
+       */
       &__stage {
-          background-color: $color__blue--base;
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 65%;
+        height: 100%;
+        padding-bottom: 0;
+        position: absolute;
+        right: -999em; /* [1] */
+        top: 0;
+        width: auto;
+        width: inherit;
 
-          & img {
-            width: 100%;
-            opacity: 0.75;
-          }
+        img {
+          height: 100%;
+          width: $carousel-image-width-tablet;
+          width: auto;
+          position: relative;
+          z-index: $carousel-z-stage-image;
+        }
       }
 
       &__stage-text {
-          display: block;
-          position: absolute;
-          color: white;
-          font-size: 20px;
-          top: 10px;
-          right: 10px;
-          width: 30%;
+        display: none
       }
+
+      /**
+       * 1. Safely hide offscreen.
+       */
+      &__video {
+        position: absolute;
+        top: 0;
+        right: -999em; /* [1] */
+        z-index: $carousel-z-stage-video;
+        width: $carousel-video-width-tablet;
+      }
+
+  }
+
+  /**
+   * == STATES @tablet ==
+   */
+
+
+  /**
+   * STATE: ACTIVE
+   */
+  .carousel-item--active {
+
+    .carousel-item__title {
+      font-size: 18px;
+      line-height: 22px;
+      margin-bottom: 10px;
+      color: $color__body;
+      padding-right: 20px;
+    }
+
+    .carousel-item__support {
+      background-color: white;
+      height: $carousel-support-active-height-tablet;
+      z-index: $carousel-z-support-active;
+      padding: 12px 0 12px 12px+$drop-shadow-offset;
+      overflow: scroll;
+    }
+    &:last-child .carousel-item__support {
+      z-index: $carousel-z-support-active;
+    }
+
+    .carousel-item__desc {
+      padding-right: 20px;
+      overflow: visible;
+      height: auto;
+    }
+
+    /**
+     * 1. Achieve a min-height of 24px = 18px line-height + 3px padding-top + 3px padding-bottom
+     */
+    .carousel-item__link {
+      bottom: 8px;
+      display: block;
+      font-size: 14px;
+      line-height: 18px;
+      padding: 3px 12px; /* [1] */
+    }
+
+
+    /**
+     * 1. Reveal hidden stage
+     */
+    .carousel-item__stage {
+        right: 0; /* [1] */
+    }
+
 
 
   }
+
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel--play {
+    .carousel-item__title {
+      font-size: 14px;
+      // line-height: 17px;
+    }
+    .carousel-item__support {
+      width: $carousel-support-play-width-tablet;
+    }
+  }
+
+  .carousel-item--play {
+
+    .carousel-item__title {
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .carousel-item__desc {
+      font-size: 13px;
+      line-height: 16px;
+    }
+    .carousel-item__link {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    .carousel-item__support {
+      padding: 12px 12px 12px 12px+$drop-shadow-offset;
+    }
+
+    /**
+     * 1. Reveal hidden video
+     */
+    .carousel-item__video {
+       right:0; /* [1] */
+    }
+  }
+
+
+  /**
+   * STATE: PAUSE
+   * 1. Reveal hidden video
+   * NOTE: the difference here is that the support is not constrained to a
+   * smaller width.
+   */
+  .carousel-item--pause .carousel-item__video {
+     right:0; /* [1] */
+   }
+
+
+
+    /**
+     * STATE: HOVER
+     */
+    .carousel-item--hover {
+      .carousel-item__support {
+        height: $carousel-support-inactive-height-tablet + $carousel-hover-delta;
+      }
+      .carousel-item__desc {
+        height: 0 + $carousel-hover-delta;
+      }
+    }
+    .carousel--hover {
+      .carousel-item--active {
+        .carousel-item__support {
+          height: $carousel-support-active-height-tablet - $carousel-hover-delta;
+        }
+      }
+    }
 
 }
 
 
 
+
+
+
+
+
 @include media-query(desktop) {
+
+  .carousel {
+    height: $carousel-height-desktop;
+  }
+
+  .carousel-item__support {
+    width: $carousel-support-width-desktop;
+    height: $carousel-support-inactive-height-desktop;
+    padding: 10px 12px 10px 12px+$drop-shadow-offset;
+  }
+
+  .carousel-item__title {
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  .carousel-item__desc {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .carousel-item__stage {
+    img {
+      width: $carousel-image-width-desktop;
+    }
+  }
+
+
+  .carousel-item--active {
+
+    .carousel-item__support {
+      height: $carousel-support-active-height-desktop;
+    }
+
+    .carousel-item__title {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    .carousel-item__video {
+      width: $carousel-video-width-desktop;
+    }
+
+    /**
+     * NOTE: This is the first breakpoint that this element shows in.
+     * 1. Set width to line up with desired components. Magic num.
+     * 2. Fade in, so set opacity to 0 and then trigger fadein animation.
+     */
+    .carousel-item__stage-text {
+      color: white;
+      display: block;
+      font-size: 15px;
+      line-height: 20px;
+      position: absolute;
+      right: 32px;
+      top: 32px;
+      width: 247px; /* [1] */
+      z-index: $carousel-z-stage-text;
+
+      opacity: 0;  /* [2] */
+      -moz-animation: fadein 2s ease-in 0s forwards; /* Firefox */
+      -webkit-animation: fadein 2s ease-in 0s forwards; /* Safari and Chrome */
+      -o-animation: fadein 2s ease-in 0s forwards; /* Opera */
+      animation: fadein 2s ease-in 0s forwards;
+
+      /**
+       * TODO: use blockquote helper, not this
+       */
+      blockquote {
+          margin: 0 0 10px 0;
+          p {
+            font-style: italic;
+          }
+          cite {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+          }
+      }
+    }
+  }
+
+
+
+  /**
+   * == STATES @desktop ==
+   */
+
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel--play {
+    .carousel-item__title {
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .carousel-item__support {
+      width: $carousel-support-play-width-desktop;
+    }
+  }
+
+  .carousel-item--play {
+
+    .carousel-item__title {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .carousel-item__desc {
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    .carousel-item__support {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+
+  /**
+   * STATE: HOVER
+   */
+  .carousel-item--hover {
+    .carousel-item__support {
+      height: $carousel-support-inactive-height-desktop + $carousel-hover-delta;
+    }
+    .carousel-item__desc {
+      height: 0 + $carousel-hover-delta;
+    }
+  }
+  .carousel--hover {
+    .carousel-item--active {
+      .carousel-item__support {
+        height: $carousel-support-active-height-desktop - $carousel-hover-delta;
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
+@include media-query(hd) {
+
+  .carousel {
+    height: $carousel-height-hd;
+  }
+
+  .carousel-item__support {
+    width: $carousel-support-width-hd;
+    height: $carousel-support-inactive-height-hd;
+  }
+
+  /**
+   * 1. Limit element height to one line.
+   */
+  .carousel-item__desc {
+    font-size: 15px;
+    line-height: 20px;
+    height: 20px; /* [1] */
+  }
+  
+  .carousel-item__stage {
+    img {
+      width: $carousel-image-width-hd;
+    }
+  }
+
+
+  .carousel-item--active {
+    .carousel-item__support {
+      height: $carousel-support-active-height-hd;
+    }
+    .carousel-item__title {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    .carousel-item__desc {
+      p {
+        margin-bottom: 16px;
+      }
+    }
+    /**
+     * 1. Set width to line up with desired components. Magic num.
+     */
+    .carousel-item__stage-text {
+      width: 314px; /* [1] */
+    }
+    .carousel-item__video {
+      width: $carousel-video-width-hd;
+    }
+  }
+
+
+  /**
+   * == STATES @hd ==
+   */
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel--play {
+    .carousel-item__support {
+      width: $carousel-support-play-width-hd;
+    }
+  }
+
+  .carousel-item--play {
+
+    .carousel-item__title {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    .carousel-item__support {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+
+  /**
+   * STATE: HOVER
+   */
+  .carousel-item--hover {
+    .carousel-item__support {
+      height: $carousel-support-inactive-height-hd + $carousel-hover-delta;
+    }
+    .carousel-item__desc {
+      height: 20px + $carousel-hover-delta;
+    }
+  }
+  .carousel--hover {
+    .carousel-item--active {
+      .carousel-item__support {
+        height: $carousel-support-active-height-hd - $carousel-hover-delta;
+      }
+    }
+  }
 
 }
