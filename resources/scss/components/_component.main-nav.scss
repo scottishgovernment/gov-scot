@@ -7,198 +7,170 @@ $main-menu__button__size: 56px;
 $main-nav__transition-duration: 0.4s;
 $main-nav__transition-timing: ease;
 
-.main-nav {
 
-  // The wrapper allows us to clip the hidden nav list
-  // so that the document doesn't expand in width.
-  &__wrap {
-    position: absolute;
-    overflow-x: hidden;
-    height:480px; // To work, this must be set to pixel, not a %
-    width: 100%;
-  }
+/*------------------------------------*\
+    Mobile styles
+\*------------------------------------*/
 
-  &__list {
-    background: $color__blue--base;
-    left: 100%;
-    list-style-type: none;
-    margin: 0;
-    position: fixed;
-    right: 0;
-    z-index: 1001;
-    padding: 24px 0 24px 15px;
+@include media-query(tablet-down) {
+  .main-nav {
 
-    @include transition(left $main-nav__transition-duration $main-nav__transition-timing);
-  }
+    /**
+     * This wrapper element allows us to clip the hidden nav list
+     * so that the document doesn't expand in width.
+     *
+     * 1. To work, height must be set to pixel, not a %
+     */
+    &__wrap {
+      position: absolute;
+      overflow-x: hidden;
+      height:480px; /* [1] */
+      width: 100%;
+    }
 
-  &__item {
-    border-bottom: 1px solid $color__blue--medium;
-    margin-bottom: 0;
-  }
+    &__list {
+      background: $color__blue--base;
+      left: 100%;
+      list-style-type: none;
+      margin: 0;
+      position: fixed;
+      right: 0;
+      z-index: 1001;
+      padding: 24px 0 24px 15px;
 
-  &__item:last-child {
-    border-bottom: none;
-  }
+      @include transition(left $main-nav__transition-duration $main-nav__transition-timing);
+    }
 
-  &__link {
-    color: $color__white;
-    display: block;
-    padding: 10px 15px;
-    font-size: 17px;
-    text-decoration: none;
+    &__item {
+      border-bottom: 1px solid $color__blue--medium;
+      margin-bottom: 0;
+    }
 
-    @include transition(background-color $transition-in-time);
+    &__item:last-child {
+      border-bottom: none;
+    }
 
-    &:hover,
-    &:focus {
-      background: $color__link--hover;
+    &__link {
       color: $color__white;
-      outline: none;
-    }
+      display: block;
+      padding: 10px 15px;
+      font-size: 17px;
+      text-decoration: none;
 
-    &:active {
-      color: $color__white--selected;
-    }
+      @include transition(background-color $transition-in-time);
 
+      &:hover,
+      &:focus {
+        background: $color__link--hover;
+        color: $color__white;
+        outline: none;
+      }
+
+      &:active {
+        color: $color__white--selected;
+      }
+
+    }
+  }
+
+  /*
+   * MOBILE NAV
+   */
+  .mobile-main-nav {
+    &.mobile-layer--open {
+      .main-nav__list {
+        left: 15px;
+      }
+    }
   }
 }
 
-/*
- * MOBILE NAV
- */
-.mobile-main-nav {
-  &.mobile-layer--open {
-    .main-nav__list {
-      left: 15px;
-    }
-  }
-}
 
+
+
+/*------------------------------------*\
+    Tablet and up styles
+\*------------------------------------*/
 
 
 @include media-query(tablet) {
   .main-nav {
 
-    &__wrap {
-        position: relative;
-        overflow-x: auto;
-        height: auto;
-        width: 100%;
+    &__list {
+      display: block;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+    }
+
+    &__item {
+      display: inline-block;
     }
 
     /**
-     * 1. -1px from grid multiple because of 1px site header bottom border
+     * 1. Use display: table-cell display so that we can easily center the text
+     *    in the block.
      */
-    &__list {
-      // background: transparent;
-      display: table;
-      background: transparent;
-      position: static;
-      height: 71px; /* [1] */
-      padding: 0;
-      width: auto;
-      float: right;
-
-      @include transform(none);
-
-      @include transition(none);
-
-      &--open {
-        @include transition(none);
-      }
-    }
-
-    &__item, &__item:last-child {
-      display: table-cell;
-      text-align: center;
-      vertical-align: middle;
-      width: 100px;
-      border-bottom: none;
-    }
-
     &__link {
+      border: 0px solid transparent;
+      box-sizing: border-box;
+      color: $color__body;
+      display: table-cell; /* [1] */
       font-size: 13px;
+      height: 71px;
       line-height: 16px;
       padding: 0 6px;
-      display: table;
-      height: 71px;
-      // background: transparent;
-      border: 0px solid transparent;
-      border-bottom-color: $color__blue--base ;
+      text-decoration: none;
+      vertical-align: middle;
+
+      @include transition(background-color $transition-in-time);
+    }
+
+    /**
+     * 1. Add border to top and bottom to keep text centered
+     */
+    &__link:hover, &__link:active, &__link:focus {
+      border-width: 5px 0; /* [1] */
+      border-bottom-color: $color__blue--base;
       color: $color__body;
-      @include transition(background-color $transition-out-time);
+      text-decoration: none;
+    }
 
-      /**
-       * 1. animate top and bottom to keep text centered
-       */
-      &:hover {
-        background: transparent;
-        border-width: 5px 0; /* [1] */
-        color: $color__body;
-      }
-
-      &:active, &:focus {
-        background: $color__blue--lighter;
-        color: $color__body;
-        outline: 0;
-        border-width: 5px 0;
-        @include transition(background-color $transition-in-time);
-      }
+    &__link:active, &__link:focus {
+      background: $color__blue--lighter;
+      outline: 0;
     }
 
     &__link--selected {
+      background: $color__blue--base;
+      color: $color__white;
+
+      &:hover {
         background: $color__blue--base;
+        border-bottom-color: $color__blue--dark;
         color: $color__white;
-
-        &:hover {
-          background: $color__blue--base;
-          color: $color__white;
-          border-bottom-color: $color__blue--dark;
-        }
+      }
     }
-
-    &__title {
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
-
-  // override anchor transition (which is color)
-  a.main-nav__link {
-    //
   }
 }
+
 
 @include media-query(desktop) {
-  .main-nav {
 
-    &__item, &__item:last-child {
-      width: auto;
-    }
-
-    &__link {
-      font-size: 16px;
-      line-height: 19px;
-      padding: 0 12px;
-    }
+  .main-nav__link {
+    font-size: 16px;
+    line-height: 19px;
+    padding: 0 12px;
   }
+
 }
 
+
 @include media-query(hd) {
-  .main-nav {
 
-    &__list {
-      height: 79px; /* [1] */
-    }
-
-    &__item, &__item:last-child {
-      width: auto;
-    }
-
-    &__link {
-      font-size: 16px;
-      line-height: 19px;
-      height: 79px;
-    }
+  .main-nav__link {
+    height: 79px;
   }
+
 }
