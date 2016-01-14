@@ -55,6 +55,20 @@ input + label.fancy-checkbox:before {
 }
 
 
+/**
+ * Search box
+ */
+
+.welcome__search .search-box__input {
+  margin-right: 0;
+  float: left;
+  width: 80%;
+}
+.welcome__search .search-box__button {
+  position: relative;
+}
+
+
 
 /**
  * Carousel
