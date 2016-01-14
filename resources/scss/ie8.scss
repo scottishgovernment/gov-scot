@@ -46,8 +46,19 @@ input + label.fancy-checkbox:before {
   width: 100%;
 }
 
+/**
+ * Site header
+ */
 
-// Carousel
+.site-brand__logo {
+  background-image: url(../images/logos/scotgovlogo-195.png);
+}
+
+
+
+/**
+ * Carousel
+ */
 
 // Hide carousel description since the gradient overlay won't display behind it in IE8
 .carousel-item__stage-text {
@@ -58,4 +69,3 @@ input + label.fancy-checkbox:before {
 .carousel-item__play-button {
   display: none !important;
 }
-
