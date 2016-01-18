@@ -39,6 +39,7 @@
   }
 
   &__responsibilities {
+    position: relative;
     font-size: $base-font-size - 2px;
     @include secondary-link;
   }
