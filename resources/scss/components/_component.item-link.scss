@@ -31,9 +31,9 @@ $item-link-date-text-size: 13px !default;
     font-size: $item-link-title-text-size;
     line-height: $item-link-title-line-height;
   }
-    &__link {
-      text-decoration: none;
-    }
+
+  @include non-contextual-link;
+
 
   &__tags {
     margin: 0 0 $item-link-element-margin;

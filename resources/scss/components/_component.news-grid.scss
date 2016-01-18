@@ -24,18 +24,11 @@
     font-weight: 600;
     line-height: 24px;
     margin: 12px 0 8px;
+
+    @include heading-link;
   }
 
-  &__title-link {
-    color: $color__body;
-    font-weight: 600;
-    text-decoration: none;
 
-    &:hover, &.hover {
-      color: $color__link--hover;
-      text-decoration: underline;
-    }
-  }
 }
 
 .news-subscribe-pin {

@@ -23,12 +23,7 @@
 
     &__link-item {
       margin-bottom: 8px;
-      a {
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+      @include non-contextual-link;
     }
 
 }

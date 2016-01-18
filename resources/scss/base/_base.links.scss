@@ -30,3 +30,67 @@ a {
 html {
   -webkit-tap-highlight-color: $color__tap-highlight;
 }
+
+
+/**
+ * Provide stylings for links inside headings
+ */
+@mixin heading-link {
+  a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $color__link--hover;
+      text-decoration: underline;
+    }
+    &:active {
+      background-color: $color__blue--lighter;
+      color: $color__link--active;
+      outline: 3px solid $color__blue--lighter;
+    }
+  }
+}
+
+
+/**
+ * Provide non-contextual link styling for use in places other than content.
+ */
+@mixin non-contextual-link {
+  a {
+    color: $color__link--primary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color__link--hover;
+      text-decoration: underline;
+    }
+    &:active {
+      background-color: $color__blue--lighter;
+      color: $color__link--active;
+      outline: 3px solid $color__blue--lighter;
+    }
+  }
+}
+
+
+/**
+ * Provide default secondary-link styling.
+ */
+@mixin secondary-link {
+  a {
+    color: $color__black;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color__link--hover;
+      text-decoration: underline;
+    }
+    &:active {
+      background-color: $color__blue--lighter;
+      color: $color__link--active;
+      outline: 3px solid $color__blue--lighter;
+    }
+  }
+}
