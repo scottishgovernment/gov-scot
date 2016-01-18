@@ -1,0 +1,18 @@
+/*------------------------------------*\
+    Person Grid
+\*------------------------------------*/
+
+.person-grid {
+  /**
+   * 1. With the margin bottom of the last .person of 56px, we get a total of 128px.
+   */
+  margin-bottom: 56px; /* [1] */
+
+  /**
+   * 1. With the margin bottom of the last <p> or <ul> in the description
+   *    of 24px we should get a total of 56px;
+   */
+  &__intro {
+    margin-bottom: 32px; /* [1] */
+  }
+}

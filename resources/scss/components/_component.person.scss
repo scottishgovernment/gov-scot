@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .person {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   &__image-container {
     clear: left;
@@ -22,23 +22,44 @@
   }
 
   &__name {
-    margin: 0 0 8px 0;
-    line-height: 20px;
+    font-size: $base-font-size;
+    line-height: 24px;
+    margin: 0 0 16px 0;
 
-    &--link a {
-      color: $color__body;
-      font-weight: 700;
-      text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+    @include heading-link;
   }
 
   &__role {
-    font-size: $base-font-size;
-    line-height: 20px;
+    font-size: $base-font-size - 1px;
+    line-height: 16px;
+
+    @include non-contextual-link;
+
+  }
+
+  &__responsibilities {
+    font-size: $base-font-size - 2px;
+    @include secondary-link;
+  }
+
+  &__responsibilities-title {
+    text-transform: none;
+    font-size: inherit;
+    margin-bottom: 8px;
+  }
+
+  &__responsibilities-list {
+    list-style-type: none;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__responsibilities-toggle {
+    position: absolute;
+    top: -3px;
+    right: 0;
   }
 
   &:after {
@@ -128,6 +149,8 @@ body.directorate {
 
 @include media-query(tablet) {
   .person {
+    margin-bottom: 56px;
+
     &__image-container {
       float: none;
       margin: 0 0 16px 0;
@@ -140,14 +163,30 @@ body.directorate {
     }
 
     &__name {
+      font-size: $tablet-h3-size;
+      line-height: $base-line-height;
       margin: 0 0 8px 0;
+    }
+
+    &__role {
+      font-size: $tablet-font-size;
+      line-height: $base-line-height;
+    }
+
+    &__responsibilities {
+      font-size: $tablet-font-size - 2px;
+      line-height: $base-line-height;
+      ul {
+        line-height: $base-line-height;
+        li {
+          margin-bottom: 8px;
+        }
+      }
     }
   }
 }
 
 @include media-query(hd) {
   .person__role {
-    font-size: $tablet-font-size;
-    line-height: $base-line-height;
   }
 }

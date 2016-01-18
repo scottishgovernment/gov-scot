@@ -80,16 +80,16 @@ html {
  */
 @mixin secondary-link {
   a {
-    color: $color__black;
+    color: $color__grey--dark;
     text-decoration: underline;
 
     &:hover {
-      color: $color__link--hover;
+      color: $color__black;
       text-decoration: underline;
     }
     &:active {
       background-color: $color__blue--lighter;
-      color: $color__link--active;
+      color: $color__black;
       outline: 3px solid $color__blue--lighter;
     }
   }
