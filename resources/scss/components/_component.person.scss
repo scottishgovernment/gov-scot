@@ -48,6 +48,70 @@
   }
 }
 
+/*
+Person sizes for particular templates
+*/
+.org-roles {
+  .person__image {
+    height: 130px;
+    width: 130px;
+
+    background: url(../images/people/placeholder.png);
+    background-size: cover;
+
+    @include media-query(bigphone) {
+      height: 213px;
+      width: 213px;
+    }
+
+    @include media-query(tablet) {
+      height: 220px;
+      width: 220x;
+    }
+
+    @include media-query(desktop) {
+      height: 213px;
+      width: 213px;
+    }
+
+    @include media-query(hd) {
+      height: 263px;
+      width: 263px;
+    }
+  }
+}
+
+.directorate {
+  .person__image {
+    height: 130px;
+    width: 130px;
+
+    background: url(../images/people/placeholder.png);
+    background-size: cover;
+
+    @include media-query(bigphone) {
+      height: 213px;
+      width: 213px;
+    }
+
+    @include media-query(tablet) {
+      height: 137px;
+      width: 137px;
+    }
+
+    @include media-query(desktop) {
+      height: 132px;
+      width: 132px;
+    }
+
+    @include media-query(hd) {
+      height: 165px;
+      width: 165px;
+    }
+  }
+}
+
+
 @include media-query(bigphone) {
   .person {
     &__image-container {
