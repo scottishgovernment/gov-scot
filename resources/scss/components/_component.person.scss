@@ -51,7 +51,8 @@
 /*
 Person sizes for particular templates
 */
-.org-roles {
+body.org-roles,
+body.person {
   .person__image {
     height: 130px;
     width: 130px;
@@ -81,7 +82,7 @@ Person sizes for particular templates
   }
 }
 
-.directorate {
+body.directorate {
   .person__image {
     height: 130px;
     width: 130px;
