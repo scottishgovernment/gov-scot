@@ -15,4 +15,9 @@
   &__intro {
     margin-bottom: 32px; /* [1] */
   }
+  &__people {
+    li {
+      margin-bottom: 0;
+    }
+  }
 }
