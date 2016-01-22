@@ -1,0 +1,18 @@
+/*------------------------------------*\
+    Hit target
+\*------------------------------------*/
+
+
+/**
+ * .hit-target gives you a 40px x 40px invisible element intended to be the child
+ * of a clickable/tappable button to extend the hit target to 40px.
+ */
+.hit-target {
+  position: relative;
+  &:after {
+    content:'';
+    position:absolute;
+    top:-20px; bottom:-20px;
+    left:-20px; right:-20px;
+  }
+}
