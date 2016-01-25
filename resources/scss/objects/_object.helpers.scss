@@ -12,8 +12,9 @@
 \*------------------------------------*/
 
 .hidden {
-  position: absolute;
-  left: -999em;
+  left: -999em !important;
+  position: absolute !important;
+  right: auto !important;
 }
 
 /**
