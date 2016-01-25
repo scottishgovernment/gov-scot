@@ -5,14 +5,18 @@
 .person-grid {
   /**
    * 1. With the margin bottom of the last .person of 56px, we get a total of 128px.
+   * 2. With the margin bottom of the last <p> or <ul> in the description
+   *    of 24px we should get a total of 56px;
+   * 3. This affects <li>'s that are used as grid-item and so should not have
+   *    a margin.
    */
   margin-bottom: 56px; /* [1] */
 
-  /**
-   * 1. With the margin bottom of the last <p> or <ul> in the description
-   *    of 24px we should get a total of 56px;
-   */
   &__intro {
-    margin-bottom: 32px; /* [1] */
+    margin-bottom: 32px; /* [2] */
+  }
+
+  &__people > li {
+    margin-bottom: 0; /* [3] */
   }
 }
