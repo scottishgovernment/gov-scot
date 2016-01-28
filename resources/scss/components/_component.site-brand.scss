@@ -12,35 +12,31 @@
   }
 
   &__logo {
-    background: url(../images/logos/scotgovlogo.png) 0 0 no-repeat transparent;
-    display: table-cell;
-    height: 38px;
-    text-indent: -999em;
+    display: block;
+    height: 40px;
     width: 195px;
     background-size: 100%;
+    transition: none;
     @include transition(all $transition-in-time);
+    img {
+      height: 100%;
+      width: auto;
+    }
   }
 }
 
 
 @include media-query(tablet) {
   .site-brand {
-    height: 80px;
+    height: 72px;
     position: absolute;
-
-    &__logo {
-      height: 48px;
-      width: 195px;
-    }
   }
 }
 
 @include media-query(desktop) {
   .site-brand {
-    height: 80px;
-
     &__logo {
-      height: 52px;
+      height: 47px;
       width: 230px;
     }
   }
@@ -48,8 +44,10 @@
 
 @include media-query(hd) {
   .site-brand {
+    height: 80px;
+
     &__logo {
-      height: 52px;
+      height: 53px;
       width: 262px;
     }
   }
