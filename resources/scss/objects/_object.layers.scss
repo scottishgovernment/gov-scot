@@ -52,6 +52,13 @@
       background: rgba(0, 0, 0, 0.5);
     }
   }
+
+  // for things we want to always be on top
+  &--highest {
+    &.mobile-layer--open {
+      z-index: 9999;
+    }
+  }
 }
 
 @include media-query(tablet) {
