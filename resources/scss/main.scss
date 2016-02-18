@@ -16,11 +16,13 @@
  * Responsive...........inuitcss responsive settings
  *
  * TOOLS
+ * Animation
  * Functions............inuitcss default functions
+ * Hit target
  * Mixins...............inuitcss default mixins
- * Widths...............inuitcss widths tool
  * Mixins...............gov.scot mixins
  * Responsive...........inuitcss responsive tool
+ * Widths...............inuitcss widths tool
  *
  * GENERIC
  * Normalize............inuitcss normalizer
@@ -28,28 +30,39 @@
  *
  * BASE
  * Page.................inuitcss defaults page-level styles (HTML element)
+ * Buttons
+ * Forms
  * Headings
  * Links
- * Page
- * Type
- * Forms
- * Buttons
  * Lists
+ * Page
+ * Tables
+ * Type
  *
  * OBJECTS
  * Layout...............inuitcss layout tool
- * Wrappers
+ * Dividers
  * Helpers
  * Layers
+ * Media
  * Overflows
+ * Wrappers
+ *
+ * PLUGINS
+ * Pikaday (plugin styles)
+ * Pikaday (custom styles)
  *
  * COMPONENTS
  * Article header
  * Article nav
  * A-Z list
  * Breadcrumbs
+ * Carousel
  * Contact information
+ * Expand
+ * External links
  * Full-width note
+ * Item link
  * List controls
  * Main nav
  * Media-login
@@ -59,20 +72,23 @@
  * Pagegroup
  * Pagination
  * Person
+ * Person grid
  * Policy data
  * Pull quote
  * Search box
  * Search result
- * Site footer
  * Site brand
+ * Site footer
  * Site header
  * Stat box
  * Sticky back to top
  * Title with prefix
+ * Welcome
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
  * Widths-responsive....inuitcss responsive width helper classes
+ * Font awesome
  */
 
 
@@ -123,11 +139,11 @@ $breakpoint-has-pull:   ('bigphone', 'tablet', 'desktop', 'hd');
  */
 $inuit-base-font-size: 15px;
 $inuit-base-line-height: 24px;
-@import "../../bower_components/inuit-defaults/settings.defaults";
+@import "../../node_modules/inuit-defaults/settings.defaults";
 @import "settings/settings.colors";
 @import "settings/settings.variables";
 @import "settings/settings.type";
-@import "../../bower_components/inuit-responsive-settings/settings.responsive";
+@import "../../node_modules/inuit-responsive-settings/settings.responsive";
 
 
 
@@ -135,14 +151,14 @@ $inuit-base-line-height: 24px;
 /**
  * TOOLS
  */
-@import "../../bower_components/inuit-functions/tools.functions";
-@import "../../bower_components/inuit-mixins/tools.mixins";
+@import "../../node_modules/inuit-functions/tools.functions";
+@import "../../node_modules/inuit-mixins/tools.mixins";
 $inuit-use-fractions: false;
-@import "../../bower_components/inuit-tools-widths/tools.widths";
+@import "../../node_modules/inuit-tools-widths/tools.widths";
 @import "tools/tools.animation";
 @import "tools/tools.mixins";
-@import "../../bower_components/inuit-responsive-tools/tools.responsive";
 @import "tools/tools.hit-target";
+@import "../../node_modules/inuit-responsive-tools/tools.responsive";
 
 
 
@@ -150,9 +166,9 @@ $inuit-use-fractions: false;
 /**
  * GENERIC
  */
-@import "../../bower_components/inuit-normalize/generic.normalize";
+@import "../../node_modules/inuit-normalize/generic.normalize";
 // inuit generic reset?
-@import "../../bower_components/inuit-box-sizing/generic.box-sizing";
+@import "../../node_modules/inuit-box-sizing/generic.box-sizing";
 // inuit generic shared?
 
 
@@ -161,7 +177,7 @@ $inuit-use-fractions: false;
 /**
  * BASE
  */
-@import "../../bower_components/inuit-page/base.page";
+@import "../../node_modules/inuit-page/base.page";
 @import "base/base.buttons";
 @import "base/base.forms";
 @import "base/base.headings";
@@ -169,8 +185,8 @@ $inuit-use-fractions: false;
 @import "base/base.links";
 @import "base/base.lists";
 @import "base/base.page";
-@import "base/base.type";
 @import "base/base.tables";
+@import "base/base.type";
 
 
 
@@ -178,13 +194,13 @@ $inuit-use-fractions: false;
 /**
  * OBJECTS
  */
-@import "../../bower_components/inuit-layout/objects.layout";
+@import "../../node_modules/inuit-layout/objects.layout";
 @import "objects/object.dividers";
 @import "objects/object.helpers";
 @import "objects/object.layers";
 @import "objects/object.media";
-@import "objects/object.wrappers";
 @import "objects/object.overflows";
+@import "objects/object.wrappers";
 
 
 
@@ -192,7 +208,7 @@ $inuit-use-fractions: false;
 /**
  * PLUGINS
  */
-@import "../../bower_components/pikaday/scss/pikaday.scss";
+@import "../../node_modules/pikaday/scss/pikaday.scss";
 @import "components/plugin.pikaday";
 
 
@@ -239,6 +255,6 @@ $inuit-use-fractions: false;
 /**
  * TRUMPS
  */
-@import "../../bower_components/inuit-widths/trumps.widths";
-@import "../../bower_components/inuit-widths-responsive/trumps.widths-responsive";
+@import "../../node_modules/inuit-widths/trumps.widths";
+@import "../../node_modules/inuit-responsive-widths/trumps.widths-responsive";
 @import "trumps/trump.fontawesome";
