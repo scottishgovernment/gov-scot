@@ -196,9 +196,6 @@
     "escape-string-regexp": {
       "version": "1.0.3"
     },
-    "fsevents": {
-      "version": "0.3.8"
-    },
     "grunt": {
       "version": "0.4.5",
       "dependencies": {
