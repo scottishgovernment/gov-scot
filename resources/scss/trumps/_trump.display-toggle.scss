@@ -1,0 +1,9 @@
+.display-toggle {
+  &--hidden {
+    display: none;
+  }
+
+  &--shown {
+    display: inherit;
+  }
+}

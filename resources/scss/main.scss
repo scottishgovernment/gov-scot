@@ -53,12 +53,14 @@
  * Pikaday (custom styles)
  *
  * COMPONENTS
+ * Accordion
  * Article header
  * Article nav
  * A-Z list
  * Breadcrumbs
  * Carousel
  * Contact information
+ * Content data
  * Expand
  * External links
  * Full-width note
@@ -73,7 +75,6 @@
  * Pagination
  * Person
  * Person grid
- * Policy data
  * Pull quote
  * Search box
  * Search result
@@ -158,6 +159,7 @@ $inuit-use-fractions: false;
 @import "tools/tools.animation";
 @import "tools/tools.mixins";
 @import "tools/tools.hit-target";
+@import "tools/tools.placeholder-selectors";
 @import "../../node_modules/inuit-responsive-tools/tools.responsive";
 
 
@@ -217,12 +219,15 @@ $inuit-use-fractions: false;
 /**
  * COMPONENTS
  */
+@import "components/component.accordion";
 @import "components/component.article-header";
 @import "components/component.article-nav";
 @import "components/component.az-list";
 @import "components/component.breadcrumbs";
 @import "components/component.carousel";
 @import "components/component.contact-information";
+@import "components/component.contact-data";
+@import "components/component.document-info";
 @import "components/component.expand";
 @import "components/component.external-links";
 @import "components/component.full-width-note";
@@ -237,7 +242,6 @@ $inuit-use-fractions: false;
 @import "components/component.pagination";
 @import "components/component.person";
 @import "components/component.person-grid";
-@import "components/component.policy-data";
 @import "components/component.pull-quote";
 @import "components/component.search-box";
 @import "components/component.search-result";
@@ -251,10 +255,10 @@ $inuit-use-fractions: false;
 
 
 
-
 /**
  * TRUMPS
  */
 @import "../../node_modules/inuit-widths/trumps.widths";
 @import "../../node_modules/inuit-responsive-widths/trumps.widths-responsive";
+@import "trumps/trump.display-toggle";
 @import "trumps/trump.fontawesome";

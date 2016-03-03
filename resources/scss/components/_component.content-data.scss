@@ -1,9 +1,9 @@
 /*------------------------------------*\
-    #POLICY DATA
-    metadata block at the top of policy pages
+    #CONTENT DATA
+    metadata block at the top of content items
 \*------------------------------------*/
 
-.policy-data {
+.content-data {
   margin-bottom: 40px;
   position: relative;
 
@@ -47,7 +47,7 @@
 }
 
 @include media-query(tablet) {
-  .policy-data {
+  .content-data {
     &__toggle {
       display: none;
     }

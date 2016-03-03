@@ -1,0 +1,42 @@
+%inner-shadow-top {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: '';
+    height: 8px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @include background-image(linear-gradient(
+        rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0)
+    ));
+  }
+}
+
+%inner-shadow-bottom {
+  position: relative;
+
+  &:after {
+    bottom: 0;
+    display: block;
+    content: '';
+    height: 8px;
+    left: 0;
+    position: absolute;
+    right: 0;
+
+    @include background-image(linear-gradient(
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.05)
+    ));
+  }
+}
+
+
+.inner-shadow-top {
+  @extend %inner-shadow-top;
+}

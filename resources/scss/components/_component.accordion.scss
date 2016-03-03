@@ -1,0 +1,132 @@
+$accordion__background-color: $color__grey--lighter !default;
+$accordion__border-color: $color__grey--light !default;
+$accordion__header-hover-color: $color__grey--light !default;
+$accordion__header-open-color: $color__blue--lightest !default;
+$accordion__icon-color: $color__blue--base !default;
+$accordion__icon-hover-color: $color__blue--dark !default;
+$accordion__icon-open-color: $color__blue--dark !default;
+$accordion__body-open-color: $color__grey--light !default;
+
+
+
+
+
+.accordion {
+  margin: 0 -15px;
+
+  h2 {
+    margin-bottom: 20px;
+    line-height: 28px;
+  }
+}
+
+.accordion-item {
+  background-color: $accordion__background-color;
+  border: 1px solid $accordion__border-color;
+  border-width: 1px 0;
+
+  & + .accordion-item {
+    margin-top: -1px;
+  }
+
+  &__header {
+    background-color: $accordion__background-color;
+    display: table;
+    height: 55px;
+    min-height: 55px;
+    outline: none !important;
+    padding: 0 15px;
+    position: relative;
+    text-decoration: none;
+    @include transition(background 0.2s);
+    width: 100%;
+
+    &:hover {
+      background-color: $accordion__header-hover-color;
+
+      .accordion-item__icon {
+        background-color: $accordion__icon-color;
+
+        @include transition(background 0.2s);
+      }
+    }
+  }
+
+  &__title {
+    color: inherit;
+    display: table-cell;
+    line-height: 21px;
+    padding: 6px 42px 7px 0;
+    vertical-align: middle;
+  }
+
+  &__icon {
+    background: url(../images/icons/arrows/int_arrow_down_35px.png) no-repeat center $accordion__icon-color;
+    border-radius: 100%;
+    height: 35px;
+    margin-top: -18px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    width: 35px;
+
+    //@include image-retina('../images/icons/arrows/int_arrow_down_35px.png', 35px, 35px);
+
+    @include transition(background 1s);
+  }
+
+  &__body {
+    display: none;
+    padding: 21px 15px 27px;
+    position: relative;
+
+    p.headerforlink {
+      margin: 28px 0 7px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    @extend %inner-shadow-bottom !optional;
+    @extend %inner-shadow-top !optional;
+  }
+
+  // accordion open styles
+  &--open {
+    .accordion-item {
+      &__header {
+        background-color: $accordion__header-open-color;
+
+        .accordion-item__icon {
+          background: url(../images/icons/arrows/int_arrow_up_blue_35px.png) no-repeat center $accordion__icon-open-color;
+
+          //@include image-retina('../images/icons/arrows/int_arrow_up_blue_35px.png', 35px, 35px);
+
+          &:hover {
+            background: url(../images/icons/arrows/int_arrow_up_blue_over_35px.png) no-repeat center $accordion__icon-hover-color;
+
+            //@include image-retina('../images/icons/arrows/int_arrow_up_blue_over_35px.png', 35px, 35px);
+          }
+        }
+      }
+
+      &__body {
+        background: $accordion__body-open-color;
+      }
+    }
+  }
+
+  // no bottom shadow on last accordion item
+  &:last-child {
+    .accordion-item__body:after {
+      content: none;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .accordion {
+    margin: 0;
+  }
+}

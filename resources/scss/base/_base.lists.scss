@@ -6,7 +6,7 @@ $list__left-margin: 35px;
 
 ul,
 ol {
-  font-weight: 400;
+  font-weight: inherit;
   line-height: 20px;
   margin: -8px 0 24px $list__left-margin;
   padding: 0;

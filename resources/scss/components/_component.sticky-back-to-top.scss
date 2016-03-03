@@ -17,7 +17,7 @@
   width: 70px;
   z-index: 1000;
 
-@include transition(opacity 1s);
+  @include transition(opacity 1s, z-index 1s);
 
   &:hover,
   &:active,

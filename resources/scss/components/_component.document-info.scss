@@ -1,0 +1,194 @@
+$document-info__background: $color__grey--lighter !default;
+$document-info__border-color: $color__grey--light !default;
+$document-info__preview__border: $color__grey--pale !default;
+$document-info__preview__background: $color__grey--light !default;
+$document-info__preview__background--focus: $color__blue--lighter !default;
+
+
+
+
+.document-info {
+  background: $document-info__background;
+  border-top: 1px solid $document-info__border-color;
+  margin: 35px -15px 0;
+  padding: 35px 15px;
+
+  &__preview {
+    background-color: $document-info__preview__background;
+    border: 1px solid $document-info__preview__border;
+    display: table;
+    outline: none !important;
+    float: left;
+    position: relative;
+    width: 107px;
+
+    // hide default external link icon
+    padding-right: 0 !important;
+    background-image: none !important;
+
+    &:focus {
+      background-color: $document-info__preview__background--focus;
+    }
+
+    &:after {
+      font-size: 26px;
+      font-weight: 300;
+      left: 0;
+      line-height: 50px;
+      margin-top: -25px;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 50%;
+
+      @include transition(opacity 0.2s);
+    }
+
+    &:focus,
+    &:hover {
+      .document-info__preview-image {
+        opacity: 0.25;
+        @include transition-duration(0.2s);
+      }
+
+
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    &--pdf {
+      &:after {
+        content: 'PDF'
+      }
+    }
+  }
+
+  &__preview-image {
+    display: block;
+    width: 100%;
+
+    @include transition(opacity 0.2s);
+  }
+
+  &__text {
+    margin-left: 122px;
+  }
+
+  &__title {
+    font-weight: normal;
+    margin: -5px 0 13px;
+    text-decoration: underline;
+  }
+
+  &__page-count {
+    font-weight: 700;
+  }
+
+  &__file-size {
+    font-size: $base-h2-size;
+    font-weight: 300;
+  }
+
+  &__disclaimer {
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+  &__inline-title {
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    overflow: hidden;
+  }
+
+  // some more specific selectors are required
+  .button-download {
+    background-image: none;
+    padding: 0;
+
+    &:hover {
+      background-image: none;
+    }
+
+    &:active {
+      .document-info__download-icon {
+        opacity: 0.65;
+      }
+    }
+
+    .link-text {
+      padding: 20px 0 0;
+    }
+  }
+
+  &__download-icon {
+    background: url(../images/icons/arrows/download.png) no-repeat 0 0 transparent;
+    display: inline-block;
+    height: 15px;
+    width: 16px;
+
+
+    //@include image-retina('../images/icons/arrows/download.png', 15px, 16px);
+  }
+}
+
+@include media-query(tablet) {
+  .document-info {
+    background: transparent;
+    border: 0;
+    margin: 49px 0 0 0;
+    padding: 0;
+
+    &__preview {
+      width: 165px;
+    }
+
+    &__text {
+      border-top: 2px dotted $color__grey--base;
+      margin-left: 185px;
+      padding-top: 35px;
+    }
+
+    &__footer {
+      clear: both;
+      display: table;
+      margin-top: 14px;
+    }
+
+    &__download-wrapper {
+      padding-right: 20px;
+    }
+
+    &__cell {
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    &__disclaimer {
+      border-bottom: 2px dotted $color__grey--base;
+      font-size: 14px;
+      margin-left: 185px;
+    }
+
+    &__download {
+      clear: left;
+      float: left;
+    }
+
+    // some more specific selectors are required
+    a.document-info__download {
+      margin: 0;
+      width: 165px;
+    }
+  }
+}
+
+@include media-query(desktop) {
+  .document-info__file-size {
+    font-size: 26px;
+  }
+}

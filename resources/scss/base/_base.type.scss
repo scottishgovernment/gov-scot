@@ -2,17 +2,32 @@
     #TYPE
 \*------------------------------------*/
 
+%leader-text {
+  color: $color__grey--darkest;
+  font-size: $base-leader-size;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 0 0 48px 0;
+}
+
+
 p {
   margin: 0 0 24px;
 }
 
 .leader {
-  > :first-child {
-    color: $color__grey--darkest;
-    font-size: $base-leader-size;
-    font-weight: 300;
-    line-height: 24px;
-    margin: 0 0 48px 0;
+  @extend %leader-text;
+
+  &--first-para {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: inherit;
+
+    > :first-child {
+      @extend %leader-text;
+    }
   }
 }
 
@@ -25,13 +40,25 @@ p {
 }
 
 
-
 @include media-query(tablet) {
+
+  %tablet-leader-text {
+    font-size: $tablet-leader-size;
+    line-height: 32px;
+    margin-bottom: 72px;
+  }
+
   .leader {
-    > :first-child {
-      font-size: $tablet-leader-size;
-      line-height: 32px;
-      margin: 0 0 72px 0;
+    @extend %tablet-leader-text;
+
+    &--first-para {
+      font-size: inherit;
+      line-height: inherit;
+      margin-bottom: inherit;
+
+      > :first-child {
+        @extend %tablet-leader-text;
+      }
     }
   }
 }
