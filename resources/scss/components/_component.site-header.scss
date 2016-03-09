@@ -13,6 +13,7 @@
   left: 0;
   right: 0;
   z-index: 1001;
+  -webkit-transform : translate3d(0px,0px,0px);
 
   @include transition(all $transition-in-time);
 
