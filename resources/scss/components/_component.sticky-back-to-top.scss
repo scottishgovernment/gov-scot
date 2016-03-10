@@ -1,5 +1,6 @@
 .sticky-back-to-top {
-  background: rgba(red($color__grey--dark), green($color__grey--dark), blue($color__grey--dark), 0.8);
+
+  background: tint($color__grey--dark, 0.8);
   color: $color__white;
   font-size: 14px;
   font-weight: bold;

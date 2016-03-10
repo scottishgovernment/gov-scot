@@ -1,26 +1,78 @@
-$document-info__background: $color__grey--lighter !default;
 $document-info__border-color: $color__grey--light !default;
+$document-info__background-color: $color__grey--lighter !default;
 $document-info__preview__border: $color__grey--pale !default;
 $document-info__preview__background: $color__grey--light !default;
 $document-info__preview__background--focus: $color__blue--lighter !default;
+$document-info__button-size: 70px;
 
 
 
 
 .document-info {
-  background: $document-info__background;
-  border-top: 1px solid $document-info__border-color;
-  margin: 35px -15px 0;
-  padding: 35px 15px;
+  text-align: center;
 
-  &__preview {
+  &__title {
+    margin-top: 0;
+
+    a {
+      text-decoration: underline;
+    }
+
+    &--upper {
+      display: block;
+    }
+    &--lower {
+      display: none;
+    }
+  }
+
+  &__thumbnail {
+    margin: 0 auto;
+    padding-bottom: $document-info__button-size;
+    position: relative;
+    width: 137px;
+
+    &--pdf {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'PDF'
+        }
+      }
+    }
+
+    &--rtf {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'RTF'
+        }
+      }
+    }
+
+    &--xls,
+    &--xlsx {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'XLS'
+        }
+      }
+    }
+
+    &--doc,
+    &--docx {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'DOC'
+        }
+      }
+    }
+  }
+
+  &__thumbnail-link {
     background-color: $document-info__preview__background;
     border: 1px solid $document-info__preview__border;
-    display: table;
+    display: block;
     outline: none !important;
-    float: left;
-    position: relative;
-    width: 107px;
+    width: 100%;
 
     // hide default external link icon
     padding-right: 0 !important;
@@ -35,7 +87,7 @@ $document-info__preview__background--focus: $color__blue--lighter !default;
       font-weight: 300;
       left: 0;
       line-height: 50px;
-      margin-top: -25px;
+      margin-top: -25px + ($document-info__button-size * -0.5);
       opacity: 0;
       position: absolute;
       right: 0;
@@ -47,148 +99,141 @@ $document-info__preview__background--focus: $color__blue--lighter !default;
 
     &:focus,
     &:hover {
-      .document-info__preview-image {
+      .document-info__thumbnail-image {
         opacity: 0.25;
         @include transition-duration(0.2s);
       }
-
 
       &:after {
         opacity: 1;
       }
     }
-
-    &--pdf {
-      &:after {
-        content: 'PDF'
-      }
-    }
   }
 
-  &__preview-image {
+  &__thumbnail-button {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  &__thumbnail-image {
     display: block;
     width: 100%;
 
     @include transition(opacity 0.2s);
   }
 
-  &__text {
-    margin-left: 122px;
+  &__file-details {
+    margin: 28px 0 35px;
   }
 
-  &__title {
-    font-weight: normal;
-    margin: -5px 0 13px;
-    text-decoration: underline;
+  &__page-count,
+  &__file-size {
+    display: inline-block;
+    margin: 0;
+    padding: 0 8px;
   }
 
   &__page-count {
-    font-weight: 700;
+    font-weight: bold;
   }
 
   &__file-size {
-    font-size: $base-h2-size;
-    font-weight: 300;
+    font-size: 26px;
   }
 
   &__disclaimer {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 21px;
   }
 
   &__inline-title {
-    font-weight: 400;
     text-transform: uppercase;
   }
 
-  &__body {
-    overflow: hidden;
+  &__download-wrapper {
+    display: none;
   }
 
-  // some more specific selectors are required
-  .button-download {
-    background-image: none;
-    padding: 0;
+  &--main {
+    background-color: $document-info__background-color;
+    border: 1px solid $document-info__border-color;
+    border-width: 1px 0;
+    margin: 0 -15px;
+    padding: 35px 15px;
+  }
+}
 
-    &:hover {
-      background-image: none;
-    }
+/*
+ *
+ */
 
-    &:active {
-      .document-info__download-icon {
-        opacity: 0.65;
+@include media-query(tablet) {
+
+  .document-info {
+    /*
+     * alternative columnar display
+     */
+    &--columns {
+      text-align: left;
+
+      .document-info__title {
+        &--upper {
+          display: none;
+        }
+        &--lower {
+          display: block;
+        }
+      }
+
+      .document-info__thumbnail {
+        float: left;
+        padding-bottom: 0;
+        width: 165px;
+      }
+
+      .document-info__thumbnail-link:after {
+        margin-top: -25px;
+      }
+
+      .document-info__thumbnail-button {
+        display: none;
+      }
+
+      .document-info__text {
+        margin-left: 185px;
+      }
+
+      .document-info__page-count,
+      .document-info__file-size {
+        display: block;
+        padding: 0;
+      }
+
+      .document-info__footer {
+        clear: both;
+        display: table;
+        margin-top: 14px;
+      }
+
+      .document-info__download-wrapper {
+        display: block;
+        padding-right: 20px;
+        width: 185px;
+      }
+
+      .document-info__cell {
+        display: table-cell;
+        vertical-align: top;
       }
     }
 
-    .link-text {
-      padding: 20px 0 0;
-    }
-  }
-
-  &__download-icon {
-    background: url(../images/icons/arrows/download.png) no-repeat 0 0 transparent;
-    display: inline-block;
-    height: 15px;
-    width: 16px;
-
-
-    //@include image-retina('../images/icons/arrows/download.png', 15px, 16px);
-  }
-}
-
-@include media-query(tablet) {
-  .document-info {
-    background: transparent;
-    border: 0;
-    margin: 49px 0 0 0;
-    padding: 0;
-
-    &__preview {
-      width: 165px;
-    }
-
-    &__text {
-      border-top: 2px dotted $color__grey--base;
-      margin-left: 185px;
-      padding-top: 35px;
-    }
-
-    &__footer {
-      clear: both;
-      display: table;
-      margin-top: 14px;
-    }
-
-    &__download-wrapper {
-      padding-right: 20px;
-    }
-
-    &__cell {
-      display: table-cell;
-      vertical-align: top;
-    }
-
-    &__disclaimer {
-      border-bottom: 2px dotted $color__grey--base;
-      font-size: 14px;
-      margin-left: 185px;
-    }
-
-    &__download {
-      clear: left;
-      float: left;
-    }
-
-    // some more specific selectors are required
-    a.document-info__download {
+    &--main {
+      background-color: transparent;
+      border: 0;
       margin: 0;
-      width: 165px;
+      padding: 35px 0;
     }
-  }
-}
-
-@include media-query(desktop) {
-  .document-info__file-size {
-    font-size: 26px;
   }
 }

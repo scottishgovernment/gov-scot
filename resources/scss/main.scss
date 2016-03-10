@@ -61,6 +61,7 @@
  * Carousel
  * Contact information
  * Content data
+ * Document info
  * Expand
  * External links
  * Full-width note
@@ -159,9 +160,9 @@ $inuit-use-fractions: false;
 @import "tools/tools.animation";
 @import "tools/tools.mixins";
 @import "tools/tools.hit-target";
-@import "tools/tools.placeholder-selectors";
 @import "../../node_modules/inuit-responsive-tools/tools.responsive";
 
+@import "tools/tools.placeholder-selectors";
 
 
 
@@ -220,15 +221,16 @@ $inuit-use-fractions: false;
  * COMPONENTS
  */
 @import "components/component.accordion";
+@import "components/component.expand";
+
 @import "components/component.article-header";
 @import "components/component.article-nav";
 @import "components/component.az-list";
 @import "components/component.breadcrumbs";
 @import "components/component.carousel";
 @import "components/component.contact-information";
-@import "components/component.contact-data";
+@import "components/component.content-data";
 @import "components/component.document-info";
-@import "components/component.expand";
 @import "components/component.external-links";
 @import "components/component.full-width-note";
 @import "components/component.item-link";
@@ -242,6 +244,7 @@ $inuit-use-fractions: false;
 @import "components/component.pagination";
 @import "components/component.person";
 @import "components/component.person-grid";
+@import "components/component.publication-files";
 @import "components/component.pull-quote";
 @import "components/component.search-box";
 @import "components/component.search-result";
@@ -250,6 +253,7 @@ $inuit-use-fractions: false;
 @import "components/component.site-header";
 @import "components/component.stat-box";
 @import "components/component.sticky-back-to-top";
+@import "components/component.sticky-document-info";
 @import "components/component.title-with-prefix";
 @import "components/component.welcome";
 

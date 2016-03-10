@@ -8,18 +8,22 @@
   border: 0;
   color: $color__white;
   cursor: pointer;
-  display: inline-block;
+  display: table;
   font-weight: bold;
-  padding: 8px 1em;
+  padding: 8px 0;
   position: relative;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   touch-action: manipulation;
   vertical-align: middle;
+  width: 100%;
 
   @include transition(background $transition-out-time);
 
   &:hover {
+    text-decoration: none;
+    color: $color__white;
     @include transition-duration($transition-in-time);
   }
   &:focus {
@@ -92,7 +96,7 @@
 
   // size variant
   &--large {
-    height: 64px;
+    height: 70px;
   }
 
   // size variant
@@ -116,5 +120,10 @@
     position: absolute;
     right: 1em;
     top: 50%;
+  }
+
+  .link-text {
+    display: table-cell;
+    vertical-align: middle;
   }
 }

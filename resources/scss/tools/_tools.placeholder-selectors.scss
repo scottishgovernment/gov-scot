@@ -2,9 +2,10 @@
   position: relative;
 
   &:before {
+    border-top: 1px solid $color__grey--light;
     display: block;
     content: '';
-    height: 8px;
+    height: 7px;
     left: 0;
     position: absolute;
     right: 0;
@@ -21,10 +22,11 @@
   position: relative;
 
   &:after {
+    border-bottom: 1px solid $color__grey--light;
     bottom: 0;
     display: block;
     content: '';
-    height: 8px;
+    height: 7px;
     left: 0;
     position: absolute;
     right: 0;
@@ -36,7 +38,14 @@
   }
 }
 
-
 .inner-shadow-top {
   @extend %inner-shadow-top;
+}
+
+@include media-query(tablet-down) {
+  .inner-shadow-top--no-mobile {
+    &:before {
+      content: none;
+    }
+  }
 }

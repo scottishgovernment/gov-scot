@@ -114,7 +114,7 @@ h5, .epsilon {
  * Headings with links should not have a text-underline.
  */
 h1, h2, h3, h4, h4 {
-  a:link, a:visited {
+  a, a:visited {
     text-decoration: none;
   }
 }
