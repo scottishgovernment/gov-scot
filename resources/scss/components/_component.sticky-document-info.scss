@@ -33,6 +33,7 @@
   left: auto;
   margin-top: 0;
   display: block;
+  z-index: 1000;
 
   @include animation(fadeInFromNone 0.2s);
 }
