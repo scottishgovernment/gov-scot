@@ -66,6 +66,10 @@
 
     @extend %inner-shadow-bottom;
     @extend %inner-shadow-top;
+
+    &:before {
+      height: 15px;
+    }
   }
 
   &__section {
@@ -102,6 +106,18 @@
 
     &__body {
       margin: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+
+    &:after {
+      display: block;
+      content: '';
+      height: 360px;
+
+      @include background-image(linear-gradient($color__grey--lighter, $color__white));
     }
   }
 }
