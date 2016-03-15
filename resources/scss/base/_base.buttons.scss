@@ -10,6 +10,7 @@
   cursor: pointer;
   display: table;
   font-weight: bold;
+  height: 49px;
   padding: 8px 0;
   position: relative;
   text-align: center;
@@ -79,19 +80,39 @@
     }
   }
 
-  // color variant
+  // type variant
   &--ghost {
-    background-color: transparent;
-    border: 1px solid $color__white;
-    color: $color__white;
-    padding: 7px 1em;
-  }
-
-  &--ghost-invert {
     background-color: transparent;
     border: 1px solid $color__grey--dark;
     color: $color__grey--dark;
     padding: 7px 1em;
+
+    &:hover {
+      background-color: $color__grey--lighter;
+      color: $color__grey--dark;
+    }
+
+    &:focus {
+      background-color: $color__grey--light;
+      outline: none !important;
+    }
+  }
+
+  // color variant
+  &--ghost-primary {
+    border-color: $color__link--primary;
+    color: $color__link--primary;
+
+    &:hover {
+      border-color: $color__link--hover;
+      color: $color__link--hover;
+    }
+  }
+
+  // color variant
+  &--ghost-invert {
+    border-color: $color__white;
+    color: $color__white;
   }
 
   // size variant
