@@ -94,6 +94,7 @@
 
     &:focus {
       background-color: $color__grey--light;
+      color: tint-solid($color__grey--dark, $color__grey--light, 0.65);
       outline: none !important;
     }
   }
@@ -106,6 +107,10 @@
     &:hover {
       border-color: $color__link--hover;
       color: $color__link--hover;
+    }
+
+    &:focus {
+      color: tint-solid($color__link--hover, $color__grey--light, 0.65);
     }
   }
 
