@@ -1,0 +1,123 @@
+.publication-body {
+  margin-top: 35px;
+}
+
+.publication-info {
+  &__preamble {
+    border: 1px dashed $color__grey--pale;
+    border-width: 1px 0;
+    margin-bottom: 0;
+    padding: 14px 0;
+
+    &--icon {
+      padding-left: 40px;
+      position: relative;
+
+      $publication-files__icon-height: 40px;
+
+      &:before {
+        background: $color__white;
+        content: '';
+        border: 2px solid $color__grey--base;
+        font-size: 12px;
+        height: $publication-files__icon-height;
+        left: 0;
+        line-height: $publication-files__icon-height;
+        margin-top: $publication-files__icon-height * -0.5;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 50%;
+        width: 30px;
+      }
+
+      &:after {
+        border-top: 7px solid white;
+        border-left: 7px solid $color__grey--base;
+        content: '';
+        height: 7px;
+        left: 23px;
+        margin-top: $publication-files__icon-height * -0.5;
+        position: absolute;
+        top: 50%;
+        width: 7px;
+      }
+
+      &--pdf {
+        &:before {
+          content: 'pdf';
+        }
+      }
+    }
+  }
+
+  &__collapsible {
+    // collapsible panel is initially collapsed on mobile
+    &--collapsed-initial {
+      display: none;
+    }
+  }
+
+  &__body {
+    background-color: $color__grey--lighter;
+    margin: -1px -15px 0;
+    overflow: hidden;
+    padding: 0 15px;
+
+    @extend %inner-shadow-bottom;
+    @extend %inner-shadow-top;
+
+    &:before {
+      height: 15px;
+    }
+  }
+
+  &__section {
+    padding-top: 42px;
+    padding-bottom: 28px;
+
+    &:first-child {
+      padding-top: 35px;
+    }
+
+    &:not(:first-child) {
+      border-top: 2px solid $color__grey--pale;
+    }
+
+    h2, .beta,
+    h3, .gamma {
+      margin-top: 0;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .publication-info {
+    &__collapsible {
+      // collapsible panel is NOT initially collapsed on tablet and above
+      &--collapsed-initial {
+        display: block;
+      }
+
+      &--not-tablet {
+        display: block !important;
+      }
+    }
+
+    &__body {
+      margin: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+
+    &:after {
+      display: block;
+      content: '';
+      height: 360px;
+
+      @include background-image(linear-gradient($color__grey--lighter, $color__white));
+    }
+  }
+}

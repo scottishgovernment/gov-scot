@@ -53,12 +53,15 @@
  * Pikaday (custom styles)
  *
  * COMPONENTS
+ * Accordion
  * Article header
  * Article nav
  * A-Z list
  * Breadcrumbs
  * Carousel
  * Contact information
+ * Content data
+ * Document info
  * Expand
  * External links
  * Full-width note
@@ -73,7 +76,6 @@
  * Pagination
  * Person
  * Person grid
- * Policy data
  * Pull quote
  * Search box
  * Search result
@@ -160,6 +162,7 @@ $inuit-use-fractions: false;
 @import "tools/tools.hit-target";
 @import "../../node_modules/inuit-responsive-tools/tools.responsive";
 
+@import "tools/tools.placeholder-selectors";
 
 
 
@@ -185,6 +188,7 @@ $inuit-use-fractions: false;
 @import "base/base.links";
 @import "base/base.lists";
 @import "base/base.page";
+@import "base/base.rules";
 @import "base/base.tables";
 @import "base/base.type";
 
@@ -217,13 +221,17 @@ $inuit-use-fractions: false;
 /**
  * COMPONENTS
  */
+@import "components/component.accordion";
+@import "components/component.expand";
+
 @import "components/component.article-header";
 @import "components/component.article-nav";
 @import "components/component.az-list";
 @import "components/component.breadcrumbs";
 @import "components/component.carousel";
 @import "components/component.contact-information";
-@import "components/component.expand";
+@import "components/component.content-data";
+@import "components/component.document-info";
 @import "components/component.external-links";
 @import "components/component.full-width-note";
 @import "components/component.item-link";
@@ -237,7 +245,7 @@ $inuit-use-fractions: false;
 @import "components/component.pagination";
 @import "components/component.person";
 @import "components/component.person-grid";
-@import "components/component.policy-data";
+@import "components/component.publication-info";
 @import "components/component.pull-quote";
 @import "components/component.search-box";
 @import "components/component.search-result";
@@ -246,9 +254,9 @@ $inuit-use-fractions: false;
 @import "components/component.site-header";
 @import "components/component.stat-box";
 @import "components/component.sticky-back-to-top";
+@import "components/component.sticky-document-info";
 @import "components/component.title-with-prefix";
 @import "components/component.welcome";
-
 
 
 
@@ -257,4 +265,5 @@ $inuit-use-fractions: false;
  */
 @import "../../node_modules/inuit-widths/trumps.widths";
 @import "../../node_modules/inuit-responsive-widths/trumps.widths-responsive";
+@import "trumps/trump.display-toggle";
 @import "trumps/trump.fontawesome";

@@ -1,11 +1,16 @@
 /*------------------------------------*\
-    #POLICY DATA
-    metadata block at the top of policy pages
+    #CONTENT DATA
+    metadata block at the top of content items
 \*------------------------------------*/
 
-.policy-data {
-  margin-bottom: 40px;
+.content-data {
+  font-size: 12px;
+  margin-bottom: 35px;
   position: relative;
+
+  &__expandable {
+    position: relative;
+  }
 
   &__toggle {
     position: absolute;
@@ -15,7 +20,6 @@
 
   &__list {
     color: $color__grey--dark;
-    font-size: 12px;
     line-height: 16px;
     margin: 0;
     padding-right: 40px;
@@ -24,21 +28,17 @@
   &__label {
     color: $color__grey--text;
     display: inline;
-
-    &:before {
-      content: '';
-      display: block;
-      margin-top: 8px;
-    }
-
-    &:first-child:before {
-      margin-top: 0;
-    }
   }
 
   &__value {
     display: inline;
     margin: 0;
+
+    &:after {
+      content: '';
+      display: block;
+      margin-bottom: 8px;
+    }
   }
 
   &__expand {
@@ -47,23 +47,18 @@
 }
 
 @include media-query(tablet) {
-  .policy-data {
+  .content-data {
+    font-size: 14px;
+
     &__toggle {
       display: none;
     }
 
     &__list {
-      font-size: 14px;
       height: auto;
       overflow: visible;
       padding-right: 0;
       white-space: normal;
-    }
-
-    &__value {
-      &:first-of-type:after {
-        content: none;
-      }
     }
 
     &__expand {

@@ -1,0 +1,246 @@
+$document-info__border-color: $color__grey--light !default;
+$document-info__background-color: $color__grey--lighter !default;
+$document-info__preview__border: $color__grey--medium !default;
+$document-info__preview__background: $color__grey--light !default;
+$document-info__preview__background--focus: $color__blue--lighter !default;
+$document-info__button-size: 49px !default;
+$document-info__large-button-size: 70px !default;
+
+
+
+
+.document-info {
+  text-align: center;
+
+  &__title {
+    margin-top: 0;
+
+    a {
+      text-decoration: underline;
+    }
+
+    &--upper {
+      display: block;
+    }
+    &--lower {
+      display: none;
+    }
+  }
+
+  &__thumbnail {
+    margin: 0 auto;
+    padding-bottom: $document-info__button-size;
+    position: relative;
+    width: 137px;
+
+    &--main {
+      padding-bottom: $document-info__large-button-size;
+    }
+
+    &--pdf {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'PDF'
+        }
+      }
+    }
+
+    &--rtf {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'RTF'
+        }
+      }
+    }
+
+    &--xls,
+    &--xlsx {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'XLS'
+        }
+      }
+    }
+
+    &--doc,
+    &--docx {
+      .document-info__thumbnail-link {
+        &:after {
+          content: 'DOC'
+        }
+      }
+    }
+  }
+
+  &__thumbnail-link {
+    background-color: $document-info__preview__background;
+    border: 1px solid $document-info__preview__border;
+    display: block;
+    outline: none !important;
+    width: 100%;
+
+    // hide default external link icon
+    padding-right: 0 !important;
+    background-image: none !important;
+
+    &:focus {
+      background-color: $document-info__preview__background--focus;
+    }
+
+    &:after {
+      font-size: 26px;
+      font-weight: 300;
+      left: 0;
+      line-height: 50px;
+      margin-top: -25px + ($document-info__button-size * -0.5);
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 50%;
+
+      @include transition(opacity 0.2s);
+    }
+
+    &:focus,
+    &:hover {
+      .document-info__thumbnail-image {
+        opacity: 0.25;
+        @include transition-duration(0.2s);
+      }
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__thumbnail-button {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  &__thumbnail-image {
+    display: block;
+    width: 100%;
+
+    @include transition(opacity 0.2s);
+  }
+
+  &__file-details {
+    margin: 21px 0 7px;
+  }
+
+  &__page-count,
+  &__file-size {
+    display: inline-block;
+    margin: 0 0 14px;
+    padding: 0 8px;
+  }
+
+  &__page-count {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__file-size {
+    font-size: 26px;
+    font-weight: 300;
+  }
+
+  &__disclaimer {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__inline-title {
+    text-transform: uppercase;
+  }
+
+  &__download-wrapper {
+    display: none;
+  }
+
+  &--main {
+    background-color: $document-info__background-color;
+    border: 1px solid $document-info__border-color;
+    border-width: 1px 0;
+    margin: 0 -15px;
+    padding: 35px 15px;
+  }
+}
+
+/*
+ *
+ */
+
+@include media-query(tablet) {
+
+  .document-info {
+    /*
+     * alternative columnar display
+     */
+    &--columns {
+      text-align: left;
+
+      .document-info__title {
+        &--upper {
+          display: none;
+        }
+        &--lower {
+          display: block;
+        }
+      }
+
+      .document-info__thumbnail {
+        float: left;
+        padding-bottom: 0;
+        width: 165px;
+      }
+
+      .document-info__thumbnail-link:after {
+        margin-top: -25px;
+      }
+
+      .document-info__thumbnail-button {
+        display: none;
+      }
+
+      .document-info__text {
+        margin-left: 185px;
+      }
+
+      .document-info__page-count,
+      .document-info__file-size {
+        display: block;
+        padding: 0;
+      }
+
+      .document-info__footer {
+        clear: both;
+        display: table;
+        margin-top: 14px;
+      }
+
+      .document-info__download-wrapper {
+        display: block;
+        padding-right: 20px;
+        width: 185px;
+      }
+
+      .document-info__cell {
+        display: table-cell;
+        vertical-align: top;
+      }
+    }
+
+    &--main {
+      background-color: transparent;
+      border: 0;
+      margin: 0;
+      padding: 35px 0;
+    }
+  }
+}
