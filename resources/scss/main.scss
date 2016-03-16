@@ -64,6 +64,7 @@
  * Document info
  * Expand
  * External links
+ * Feedback
  * Full-width note
  * Item link
  * List controls
@@ -233,6 +234,7 @@ $inuit-use-fractions: false;
 @import "components/component.content-data";
 @import "components/component.document-info";
 @import "components/component.external-links";
+@import "components/component.feedback";
 @import "components/component.full-width-note";
 @import "components/component.item-link";
 @import "components/component.list-controls";

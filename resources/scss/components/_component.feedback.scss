@@ -1,0 +1,21 @@
+.feedback {
+  border-top: 1px solid $color__grey--light;
+  margin-top: 35px;
+  padding-top: 28px;
+
+  &__radio-label {
+    margin-right: 21px;
+    padding-left: 7px;
+  }
+
+  &__field {
+    display: block;
+    margin: 14px 0;
+    width: 100%;
+  }
+}
+
+
+@include media-query(desktop) {
+  margin-top: 84px;
+}

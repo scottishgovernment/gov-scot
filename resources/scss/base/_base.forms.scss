@@ -19,6 +19,12 @@ input[type=text] {
   }
 }
 
+textarea {
+  background: $color__white;
+  border: 1px solid $color__grey--light;
+  padding: 0.5em;
+}
+
 select {
   background: $color__grey--lighter;
   border: 1px solid $color__grey--light;
@@ -70,7 +76,9 @@ label.inverse {
     $input-group-background-color: $color__error--background;
     $input-group-foreground-color: $color__error;
 
-    input {
+    input,
+    select,
+    textarea {
       background-color: $input-group-background-color;
       border-color: $input-group-foreground-color;
       border-width: 2px;
