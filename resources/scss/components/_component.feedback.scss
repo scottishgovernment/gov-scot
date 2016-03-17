@@ -10,8 +10,11 @@
 
   &__field {
     display: block;
-    margin: 14px 0;
     width: 100%;
+  }
+
+  .input-group {
+    margin-bottom: 14px;
   }
 }
 
