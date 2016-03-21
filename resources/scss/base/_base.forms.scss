@@ -174,8 +174,6 @@ SCROLLABLE CONTAINER
 */
 @include media-query(tablet) {
   .scrollable {
-    margin: 0 -10px;
-    padding: 0 10px;
     position: relative;
 
     &:before {
