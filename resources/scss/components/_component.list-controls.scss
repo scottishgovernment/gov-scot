@@ -116,8 +116,8 @@ $filter-close-button-size: 49px;
     top: 0;
     width: 56px;
 
-    background: url('../images/icons/search-blue.png') no-repeat transparent center;
-    @include image-2x('../images/icons/search-blue_@2x.png', 35px, 35px);
+    background: url('../images/icons/search-grey.png') no-repeat transparent center;
+    @include image-2x('../images/icons/search-grey_@2x.png', 35px, 35px);
 
     &:active {
       background-color: $color__input--focus;
@@ -319,6 +319,10 @@ $filter-close-button-size: 49px;
 
 
 @include media-query(tablet) {
+  .filter-search .filter-search__button {
+    height: 49px;
+  }
+
   .filters-accordion {
     margin: -1px -10px;
   }
@@ -380,6 +384,9 @@ $filter-close-button-size: 49px;
     &__trigger {
       height: 42px;
       width: 42px;
+
+      background-image: url(../images/icons/date_picker_42px.png);
+      @include image-2x('../images/icons/date_picker_42px_@2x.png', 42px, 42px);
     }
 
     &__close {

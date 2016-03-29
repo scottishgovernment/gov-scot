@@ -150,24 +150,14 @@ input:checked + label.fancy-checkbox:before {
 }
 
 @include media-query(tablet) {
-  $fancy-checkbox-size: 20px;
-
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size - 6;
-    height: $fancy-checkbox-size;
-    line-height: $fancy-checkbox-size - 2;
-    width: $fancy-checkbox-size;
+    top: -2px;
   }
 }
 
 @include media-query(hd) {
-  $fancy-checkbox-size: 24px;
-
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size - 6;
-    height: $fancy-checkbox-size;
-    line-height: $fancy-checkbox-size - 2;
-    width: $fancy-checkbox-size;
+    top: 0;
   }
 }
 
