@@ -16,16 +16,19 @@ ol {
   }
 }
 
+ol {
+  margin-left: 20px;
+}
+
 ul.no-bullets {
   list-style-type: none;
   margin-left: 0;
 }
 
-article ol {
+article ol.fancy {
   counter-reset: li;
   list-style-type: none;
   margin-left: $list__left-margin;
-
 
   li {
     position: relative;
@@ -57,7 +60,7 @@ article ol {
     }
   }
 
-  article ol li {
+  article ol.fancy li {
     min-height: 48px;
   }
 }
