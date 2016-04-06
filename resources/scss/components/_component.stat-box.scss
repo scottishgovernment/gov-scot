@@ -41,9 +41,11 @@
 }
 
 a.stat-box {
-  &:hover {
+  &:hover,
+  &:focus {
     border-bottom-width: 8px;
     color: $color__grey--darkest;
+    text-decoration: none;
 
     @include transition-duration($transition-in-time);
   }
