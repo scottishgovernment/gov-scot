@@ -415,6 +415,7 @@ $filter-close-button-size: 49px;
         left: 100%;
         display: block;
         opacity: 1;
+        filter: alpha(opacity=100);
         top: -21px;
 
         @include animation(showCalendar 0.2s);
