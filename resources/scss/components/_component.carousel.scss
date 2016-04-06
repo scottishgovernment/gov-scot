@@ -407,12 +407,13 @@ $carousel-desc-height-hd: 244px;
        */
       &__support {
         background-color: $color__grey--lighter;
-        box-shadow: $drop-shadow-offset 1px 10px 0px rgba(0, 0, 0, 0.25);
+        border-top: 1px solid $color__grey--pale;
+        box-shadow: $drop-shadow-offset 1px 9px 0px rgba(0, 0, 0, 0.22);
         color: $color__grey--dark;
         height: $carousel-support-inactive-height-tablet;
         margin-left: -$drop-shadow-offset; /* [1] */
         overflow: hidden;
-        padding: 8px 0 8px 12px+$drop-shadow-offset;
+        padding: 7px 0 8px 13px+$drop-shadow-offset;
         position: relative;
         transition: height 0.2s ease,
                     width 0.1s ease,
@@ -431,6 +432,10 @@ $carousel-desc-height-hd: 244px;
       }
       &:last-child &__support {
         z-index: $carousel-z-support-last; /* [1] */
+      }
+
+      &:first-child &__support {
+        border: 0;
       }
 
       /**
