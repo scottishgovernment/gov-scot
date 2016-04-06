@@ -510,7 +510,7 @@ $carousel-desc-height-hd: 244px;
       height: $carousel-support-active-height-tablet;
       z-index: $carousel-z-support-active;
       padding: 12px 0 12px 12px+$drop-shadow-offset;
-      overflow: scroll;
+      overflow-y: auto;
     }
     &:last-child .carousel-item__support {
       z-index: $carousel-z-support-active;
