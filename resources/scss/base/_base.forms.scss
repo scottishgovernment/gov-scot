@@ -15,7 +15,8 @@ input[type=text] {
 
   &:focus {
     background: $color__input--focus;
-    outline: 2px solid $color__input--focus-outline;
+    border: 2px solid $color__input--focus-outline;
+    outline: none;
   }
 }
 
