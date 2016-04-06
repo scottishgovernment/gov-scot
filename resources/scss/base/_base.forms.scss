@@ -4,10 +4,10 @@
 
 input[type=text] {
   background: $color__white;
-  border: 1px solid $color__grey--light;
+  border: 1px solid $color__grey--pale;
   border-radius: 0;
   font-size: 16px;
-  height: 48px;
+  height: 49px;
   padding: 0 0.75em;
   appearance: none;
   -moz-appearance: none;
@@ -139,6 +139,10 @@ input + label.fancy-checkbox:before {
   width: $fancy-checkbox-size;
 }
 
+input:focus + label.fancy-checkbox:before {
+  background: $color__blue--lighter;
+}
+
 input:checked + label.fancy-checkbox:before {
   border-color: $color__blue--base;
   color: $color__blue--base;
@@ -146,24 +150,14 @@ input:checked + label.fancy-checkbox:before {
 }
 
 @include media-query(tablet) {
-  $fancy-checkbox-size: 20px;
-
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size - 6;
-    height: $fancy-checkbox-size;
-    line-height: $fancy-checkbox-size - 2;
-    width: $fancy-checkbox-size;
+    top: -2px;
   }
 }
 
 @include media-query(hd) {
-  $fancy-checkbox-size: 24px;
-
   input + label.fancy-checkbox:before {
-    font-size: $fancy-checkbox-size - 6;
-    height: $fancy-checkbox-size;
-    line-height: $fancy-checkbox-size - 2;
-    width: $fancy-checkbox-size;
+    top: 0;
   }
 }
 
@@ -174,8 +168,6 @@ SCROLLABLE CONTAINER
 */
 @include media-query(tablet) {
   .scrollable {
-    margin: 0 -10px;
-    padding: 0 10px;
     position: relative;
 
     &:before {
@@ -198,7 +190,7 @@ SCROLLABLE CONTAINER
       -webkit-border-radius: 5px;
       border-radius: 5px;
       background: rgba(0, 0, 0, 0.1);
-      margin-top: 10px;
+      margin: 21px 0;
       position: relative;
     }
 
@@ -219,11 +211,15 @@ SCROLLABLE CONTAINER
     &__content {
       height: 100vh;
       overflow-y: scroll;
-      padding: 16px 0 0 0;
+      padding: 14px 0 0 0;
 
       &--40 {
         height: 40vh;
       }
+    }
+
+    &.accordion-item__body {
+      padding: 0 10px;
     }
   }
 }
