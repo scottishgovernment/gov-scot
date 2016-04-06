@@ -7,16 +7,18 @@
     border: 1px dashed $color__grey--pale;
     border-width: 1px 0;
     margin-bottom: 0;
+    min-height: 63px;
     padding: 14px 0;
 
     &--icon {
-      padding-left: 40px;
+      padding-left: 44px;
       position: relative;
 
-      $publication-files__icon-height: 40px;
+      $publication-files__icon-height: 48px;
 
       &:before {
         background: $color__white;
+        color: $color__grey--text;
         content: '';
         border: 2px solid $color__grey--base;
         font-size: 12px;
@@ -28,19 +30,19 @@
         text-align: center;
         text-transform: uppercase;
         top: 50%;
-        width: 30px;
+        width: 34px;
       }
 
       &:after {
-        border-top: 7px solid white;
-        border-left: 7px solid $color__grey--base;
+        border-top: 9px solid white;
+        border-left: 9px solid $color__grey--base;
         content: '';
-        height: 7px;
-        left: 23px;
+        height: 9px;
+        left: 25px;
         margin-top: $publication-files__icon-height * -0.5;
         position: absolute;
         top: 50%;
-        width: 7px;
+        width: 9px;
       }
 
       &--pdf {
@@ -88,6 +90,10 @@
     h3, .gamma {
       margin-top: 0;
     }
+  }
+
+  &__contact {
+    font-size: 15px;
   }
 }
 
