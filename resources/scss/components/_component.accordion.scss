@@ -6,7 +6,7 @@ $accordion__icon-color: $color__blue--base !default;
 $accordion__icon-hover-color: $color__blue--dark !default;
 $accordion__icon-open-color: $color__blue--dark !default;
 $accordion__body-open-color: $color__grey--light !default;
-
+$accordion__body-color: $color__body !default;
 
 
 
@@ -29,8 +29,15 @@ $accordion__body-open-color: $color__grey--light !default;
     margin-top: -1px;
   }
 
+  &--init-open .accordion-item__body {
+    display: block;
+  }
+
   &__header {
     background-color: $accordion__background-color;
+    border: none;
+    color: $accordion__body-color;
+    cursor: pointer;
     display: table;
     height: 55px;
     min-height: 55px;
@@ -43,12 +50,18 @@ $accordion__body-open-color: $color__grey--light !default;
 
     &:hover {
       background-color: $accordion__header-hover-color;
+      color: $accordion__body-color;
+      text-decoration: none;
 
       .accordion-item__icon {
         background-color: $accordion__icon-color;
 
         @include transition(background 0.2s);
       }
+    }
+
+    &:focus {
+      background: $color__blue--lighter !important;
     }
   }
 
@@ -57,11 +70,12 @@ $accordion__body-open-color: $color__grey--light !default;
     display: table-cell;
     line-height: 21px;
     padding: 6px 42px 7px 0;
+    text-align: left;
     vertical-align: middle;
   }
 
   &__icon {
-    background: url(../images/icons/arrows/int_arrow_down_35px.png) no-repeat center $accordion__icon-color;
+    background: url(../zimages/icons/arrows/int_arrow_down_blue_35px.png) no-repeat center $accordion__icon-color;
     border-radius: 100%;
     height: 35px;
     margin-top: -18px;
@@ -99,12 +113,12 @@ $accordion__body-open-color: $color__grey--light !default;
         background-color: $accordion__header-open-color;
 
         .accordion-item__icon {
-          background: url(../images/icons/arrows/int_arrow_up_blue_35px.png) no-repeat center $accordion__icon-open-color;
+          background: url(../zimages/icons/arrows/int_arrow_up_blue_35px.png) no-repeat center $accordion__icon-open-color;
 
           //@include image-retina('../images/icons/arrows/int_arrow_up_blue_35px.png', 35px, 35px);
 
           &:hover {
-            background: url(../images/icons/arrows/int_arrow_up_blue_over_35px.png) no-repeat center $accordion__icon-hover-color;
+            background: url(../zimages/icons/arrows/int_arrow_up_blue_over_35px.png) no-repeat center $accordion__icon-hover-color;
 
             //@include image-retina('../images/icons/arrows/int_arrow_up_blue_over_35px.png', 35px, 35px);
           }
@@ -121,6 +135,40 @@ $accordion__body-open-color: $color__grey--light !default;
   &:last-child {
     .accordion-item__body:after {
       content: none;
+    }
+  }
+}
+
+.filters-accordion {
+  margin: -1px -15px;
+
+  .accordion-item--open .accordion-item__header {
+    background-color: inherit;
+
+    &:hover {
+      background-color: $accordion__header-hover-color;
+    }
+  }
+
+  // accordion icons
+  .accordion-item__header {
+    .accordion-item__icon {
+      background-color: transparent !important;
+      background-image: url(../images/icons/arrows/int_arrow_down_blue_35px.png);
+    }
+
+    &:hover .accordion-item__icon {
+      background-image: url(../images/icons/arrows/int_arrow_down_blue_over_35px.png);
+    }
+  }
+
+  .accordion-item--open .accordion-item__header {
+    .accordion-item__icon {
+      background-image: url(../images/icons/arrows/int_arrow_up_blue_35px.png);
+    }
+
+    &:hover .accordion-item__icon {
+      background-image: url(../images/icons/arrows/int_arrow_up_blue_over_35px.png);
     }
   }
 }

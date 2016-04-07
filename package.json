@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "postinstall": "test -e node_modules/site-builder || npm install site-builder",
+    "postinstall": "test -e node_modules/site-builder || ./install site-builder",
     "shrinkwrap": "./node_modules/site-builder/scripts/shrinkwrap site-builder"
   },
   "dependencies": {

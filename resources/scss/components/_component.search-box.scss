@@ -21,17 +21,20 @@ $search-box__transition-timing: ease;
     border: 1px solid $color__grey--medium;
   }
 
-  // &__input[type=text]:focus {;
-  // }
-
   &__button {
-    height: $search-box__box-size;
+    display: block;
     font-size: $search-box__box-size * 0.5;
+    height: $search-box__box-size;
     position: absolute;
     right: 0;
     top: 0;
     width: $search-box__box-size;
     padding: 0;
+
+    .icon {
+      background-position: center;
+      height: $search-box__box-size;
+    }
   }
 
   &--mobile {
