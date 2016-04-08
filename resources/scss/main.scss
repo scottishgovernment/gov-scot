@@ -80,6 +80,7 @@
  * Pull quote
  * Search box
  * Search result
+ * Sidebar block
  * Site brand
  * Site footer
  * Site header
@@ -91,7 +92,9 @@
  * TRUMPS
  * Widths...............inuitcss width helper classes
  * Widths-responsive....inuitcss responsive width helper classes
+ * Display toggle
  * Font awesome
+ * Margins
  */
 
 
@@ -251,6 +254,7 @@ $inuit-use-fractions: false;
 @import "components/component.pull-quote";
 @import "components/component.search-box";
 @import "components/component.search-result";
+@import "components/component.sidebar-block";
 @import "components/component.site-brand";
 @import "components/component.site-footer";
 @import "components/component.site-header";
@@ -269,3 +273,4 @@ $inuit-use-fractions: false;
 @import "../../node_modules/inuit-responsive-widths/trumps.widths-responsive";
 @import "trumps/trump.display-toggle";
 @import "trumps/trump.fontawesome";
+@import "trumps/trump.margins";

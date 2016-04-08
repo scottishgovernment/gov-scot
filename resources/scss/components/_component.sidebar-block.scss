@@ -1,0 +1,41 @@
+.sidebar-block {
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 70px;
+
+  &:first-child {
+    border-top: 1px dotted $color__grey--medium;
+    margin-top: 35px;
+    padding-top: 62px;
+  }
+
+  &__heading {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+    top: 0;
+  }
+
+  &__list {
+    margin-top: 0;
+  }
+
+  &__list-item {
+    margin-bottom: 7px;
+  }
+}
+
+@include media-query(desktop) {
+  .sidebar-block {
+    font-size: 17px;
+    line-height: 28px;
+
+    &:first-child {
+      border: 0;
+      margin-top: 70px;
+      padding: 0;
+    }
+  }
+}

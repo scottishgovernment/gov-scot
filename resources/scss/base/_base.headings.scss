@@ -271,3 +271,20 @@ h3.social-channel {
     margin-top: 71px;
   }
 }
+
+
+.emphasis {
+  display: inline-block;
+  padding-top: 15px;
+
+  &:before {
+    background: $color__blue--base;
+    border-radius: 7px;
+    content: '';
+    height: 7px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
