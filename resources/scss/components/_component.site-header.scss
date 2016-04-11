@@ -26,11 +26,13 @@
   }
 
   &__button {
+    float: left;
     font-size: 12px;
     line-height: 16px;
     padding: 4px 3px 4px 3px;
     vertical-align: top;
     outline: 0;
+    width: 45px;
 
     &--selected.site-header__button--search {
       background-color: $color__grey--light;
