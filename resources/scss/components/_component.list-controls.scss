@@ -121,7 +121,7 @@ $filter-close-button-size: 49px;
   &__input:focus + .filter-search__button {
 
     background: url('../images/icons/search-blue.png') no-repeat transparent center;
-    @include image-2x('../images/icons/search-_@2x.png', 35px, 35px);
+    @include image-2x('../images/icons/search-blue_@2x.png', 35px, 35px);
   }
 }
 

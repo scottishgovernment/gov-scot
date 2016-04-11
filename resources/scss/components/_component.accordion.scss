@@ -2,9 +2,9 @@ $accordion__background-color: $color__grey--lighter !default;
 $accordion__border-color: $color__grey--pale !default;
 $accordion__header-hover-color: $color__grey--light !default;
 $accordion__header-open-color: $color__blue--lightest !default;
-$accordion__icon-color: $color__blue--base !default;
-$accordion__icon-hover-color: $color__blue--dark !default;
-$accordion__icon-open-color: $color__blue--dark !default;
+$accordion__icon-color: transparent !default;
+$accordion__icon-hover-color: transparent !default;
+$accordion__icon-open-color: transparent !default;
 $accordion__body-open-color: $color__grey--light !default;
 $accordion__body-color: $color__body !default;
 
@@ -68,6 +68,7 @@ $accordion__body-color: $color__body !default;
   &__title {
     color: inherit;
     display: table-cell;
+    font-size: 16px;
     line-height: 21px;
     padding: 6px 42px 7px 0;
     text-align: left;
@@ -75,7 +76,7 @@ $accordion__body-color: $color__body !default;
   }
 
   &__icon {
-    background: url(../zimages/icons/arrows/int_arrow_down_blue_35px.png) no-repeat center $accordion__icon-color;
+    background: url(../images/icons/arrows/int_arrow_down_blue_35px.png) no-repeat center $accordion__icon-color;
     border-radius: 100%;
     height: 35px;
     margin-top: -18px;
@@ -84,12 +85,13 @@ $accordion__body-color: $color__body !default;
     top: 50%;
     width: 35px;
 
-    //@include image-retina('../images/icons/arrows/int_arrow_down_35px.png', 35px, 35px);
+    @include image-2x('../images/icons/arrows/int_arrow_down_blue_35px_@2x.png', 35px, 35px);
 
     @include transition(background 1s);
   }
 
   &__body {
+    background: $accordion__body-open-color;
     display: none;
     padding: 21px 15px 27px;
     position: relative;
@@ -112,20 +114,16 @@ $accordion__body-color: $color__body !default;
         background-color: $accordion__header-open-color;
 
         .accordion-item__icon {
-          background: url(../zimages/icons/arrows/int_arrow_up_blue_35px.png) no-repeat center $accordion__icon-open-color;
+          background: url(../images/icons/arrows/int_arrow_up_blue_35px.png) no-repeat center $accordion__icon-open-color;
 
-          //@include image-retina('../images/icons/arrows/int_arrow_up_blue_35px.png', 35px, 35px);
+          @include image-2x('../images/icons/arrows/int_arrow_up_blue_35px_@2x.png', 35px, 35px);
 
           &:hover {
-            background: url(../zimages/icons/arrows/int_arrow_up_blue_over_35px.png) no-repeat center $accordion__icon-hover-color;
+            background: url(../images/icons/arrows/int_arrow_up_blue_over_35px.png) no-repeat center $accordion__icon-hover-color;
 
-            //@include image-retina('../images/icons/arrows/int_arrow_up_blue_over_35px.png', 35px, 35px);
+            @include image-2x('../images/icons/arrows/int_arrow_up_blue_over_35px_@2x.png', 35px, 35px);
           }
         }
-      }
-
-      &__body {
-        background: $accordion__body-open-color;
       }
     }
   }
@@ -143,32 +141,6 @@ $accordion__body-color: $color__body !default;
 
   .accordion-item--open .accordion-item__header {
     background-color: inherit;
-
-    &:hover {
-      background-color: $accordion__header-hover-color;
-    }
-  }
-
-  // accordion icons
-  .accordion-item__header {
-    .accordion-item__icon {
-      background-color: transparent !important;
-      background-image: url(../images/icons/arrows/int_arrow_down_blue_35px.png);
-    }
-
-    &:hover .accordion-item__icon {
-      background-image: url(../images/icons/arrows/int_arrow_down_blue_over_35px.png);
-    }
-  }
-
-  .accordion-item--open .accordion-item__header {
-    .accordion-item__icon {
-      background-image: url(../images/icons/arrows/int_arrow_up_blue_35px.png);
-    }
-
-    &:hover .accordion-item__icon {
-      background-image: url(../images/icons/arrows/int_arrow_up_blue_over_35px.png);
-    }
   }
 }
 
