@@ -8,12 +8,11 @@
   border-bottom: 1px solid $color__grey--light;
   height: 64px;
   overflow: hidden;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
-  -webkit-transform : translate3d(0px,0px,0px);
 
   @include transition(all $transition-in-time);
 
@@ -93,7 +92,12 @@
 
 }
 
-.site-header__container {
+
+.site-header--fixed {
+  position: fixed;
+}
+
+.site-header__container--fixed {
   // should be applied to the <body> tag
   // should equal the height of the header
   margin-top: 64px;
@@ -142,25 +146,25 @@
 @include media-query(tablet) {
 
   .site-header {
-    position: absolute;
+    position: relative;
     height: 80px;
   }
 
   .site-header__container {
-    margin-top: 80px;
+    margin-top: 0px;
   }
 
 }
 
 @include media-query(hd) {
 
-  .site-header {
-    position: absolute;
-    height: 88px;
-  }
-
-  .site-header__container {
-    margin-top: 88px;
-  }
+  // .site-header {
+  //   position: absolute;
+  //   height: 88px;
+  // }
+  //
+  // .site-header__container {
+  //   margin-top: 88px;
+  // }
 
 }
