@@ -1,0 +1,50 @@
+article {
+  a[href^="//"],
+  a[href^="http://"],
+  a[href^="https://"] {
+    background-image: url(../images/icons/arrows/ext_arrow_text_15px.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+
+    @include image-2x('../images/icons/arrows/ext_arrow_text_15px.png', 15px, 15px);
+
+    &:hover,
+    &:active {
+      background-image: url(../images/icons/arrows/ext_arrow_text_15px_hover.png);
+
+      @include image-2x('../images/icons/arrows/ext_arrow_text_15px_hover.png', 15px, 15px);
+    }
+
+    &.no-icon {
+      background-image: none;
+      padding-right: 0;
+
+      &:hover {
+        background-image: none;
+      }
+
+      &:active {
+        background-image: none;
+      }
+    }
+  }
+
+  h2, h3 {
+    a[href^="//"],
+    a[href^="http://"],
+    a[href^="https://"] {
+      background-image: url(../images/icons/arrows/ext_arrow_text_17px.png);
+      padding-right: 22px;
+
+      @include image-2x('../images/icons/arrows/ext_arrow_text_17px.png', 17px, 17px);
+
+      &:hover,
+      &:active {
+        background-image: url(../images/icons/arrows/ext_arrow_text_17px_hover.png);
+
+        @include image-2x('../images/icons/arrows/ext_arrow_text_17px_hover.png', 17px, 17px);
+      }
+    }
+  }
+}
