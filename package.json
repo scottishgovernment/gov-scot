@@ -14,7 +14,8 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "test -e node_modules/site-builder || ./install site-builder",
-    "shrinkwrap": "./node_modules/site-builder/scripts/shrinkwrap site-builder"
+    "shrinkwrap": "./node_modules/site-builder/scripts/shrinkwrap site-builder",
+    "preview": "./node_modules/site-builder/preview/run.js"
   },
   "dependencies": {
     "async": "^0.9.0",
