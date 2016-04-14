@@ -271,6 +271,7 @@ h3.social-channel {
   display: inline-block;
   margin-bottom: 21px;
   padding-top: 15px;
+  text-transform: uppercase;
 
   &:before {
     background: $color__blue--base;
@@ -281,10 +282,5 @@ h3.social-channel {
     position: absolute;
     right: 0;
     top: 0;
-  }
-
-  &--uppercase {
-    font-weight: 400;
-    text-transform: uppercase;
   }
 }

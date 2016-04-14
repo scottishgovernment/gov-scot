@@ -11,18 +11,20 @@
 
   &__heading {
     font-size: 19px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 28px;
     margin: 0 0 14px;
     text-transform: uppercase;
     top: 0;
   }
 
-  &__list {
+  &__list,
+  > ul {
     margin-top: 0;
   }
 
-  &__list-item {
+  &__list-item,
+  > ul > li {
     margin-bottom: 7px;
   }
 }
