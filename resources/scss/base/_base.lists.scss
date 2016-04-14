@@ -20,7 +20,11 @@ ol {
   margin-left: 20px;
 }
 
-ul.no-bullets {
+/*
+ * [1] for lists in markdown blocks we want to have no bullets
+ */
+ul.no-bullets,
+.no-bullets ul /*[1]*/ {
   list-style-type: none;
   margin-left: 0;
 }
