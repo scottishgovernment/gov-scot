@@ -6,4 +6,26 @@
   font-size: 14px;
   line-height: 21px;
   margin-bottom: 21px;
+
+  &__button {
+    margin-bottom: 0;
+  }
+}
+
+@include media-query(tablet) {
+  .media-login {
+    margin-top: 70px;
+
+    &__button {
+      margin-bottom: 21px;
+    }
+  }
+}
+
+@include media-query(desktop) {
+  .media-login {
+    &__button {
+      margin-bottom: 0;
+    }
+  }
 }
