@@ -33,6 +33,10 @@ article {
       &:active {
         background-image: none;
       }
+
+      &.button {
+        padding-right: 1em;
+      }
     }
   }
 

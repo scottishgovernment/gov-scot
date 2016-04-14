@@ -8,7 +8,7 @@
   border: 0;
   color: $color__white;
   cursor: pointer;
-  display: table;
+  display: table !important;
   font-weight: bold;
   height: 49px;
   padding: 8px 0;
@@ -123,6 +123,11 @@
   // size variant
   &--large {
     height: 70px;
+  }
+
+  // size variant
+  &--medium {
+    height: 42px;
   }
 
   // size variant

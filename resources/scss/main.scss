@@ -137,6 +137,15 @@ $breakpoint-has-pull:   ('bigphone', 'tablet', 'desktop', 'hd');
 
 @import "utilities/csswizardry-grids.scss";
 
+// some overrides for csswizardry grids
+.grid--narrow {
+    margin-left: $gutter / -3;
+
+    > .grid__item {
+        padding-left: $gutter / 3;
+    }
+}
+
 
 
 

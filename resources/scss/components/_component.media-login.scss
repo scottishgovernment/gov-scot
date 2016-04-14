@@ -3,23 +3,7 @@
 \*------------------------------------*/
 
 .media-login {
-  display: none;
-  padding: 16px 16px 8px;
-  background-color: $color__blue--lightest;
-
-  &__header {
-    font-size: 24px;
-    margin: 8px auto 16px;
-  }
-}
-
-
-@include media-query(tablet) {
-}
-
-
-@include media-query(desktop) {
-  .media-login {
-    display: block;
-  }
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: 21px;
 }

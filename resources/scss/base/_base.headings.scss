@@ -269,6 +269,7 @@ h3.social-channel {
 
 .emphasis {
   display: inline-block;
+  margin-bottom: 21px;
   padding-top: 15px;
 
   &:before {
@@ -280,5 +281,10 @@ h3.social-channel {
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  &--uppercase {
+    font-weight: 400;
+    text-transform: uppercase;
   }
 }
