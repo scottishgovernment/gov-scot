@@ -27,6 +27,10 @@
   > ul > li {
     margin-bottom: 7px;
   }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 @include media-query(desktop) {

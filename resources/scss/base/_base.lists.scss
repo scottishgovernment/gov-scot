@@ -7,12 +7,12 @@ $list__left-margin: 35px;
 ul,
 ol {
   font-weight: inherit;
-  line-height: 20px;
-  margin: -8px 0 24px $list__left-margin;
+  line-height: 21px;
+  margin: -7px 0 21px $list__left-margin;
   padding: 0;
 
   li {
-    margin: 0 0 8px 0;
+    margin: 0 0 7px 0;
   }
 }
 
@@ -36,16 +36,16 @@ article ol.fancy {
 
   li {
     position: relative;
-    min-height: 40px;
+    min-height: 42px;
 
     &:before {
       color: $color__blue--base;
       content: counter(li);
       counter-increment: li;
-      font-size: 40px;
+      font-size: 42px;
       font-weight: 100;
       letter-spacing: -3px;
-      line-height: 40px;
+      line-height: 42px;
       padding-right: 20px;
       position: absolute;
       right: 100%;
@@ -57,14 +57,12 @@ article ol.fancy {
 @include media-query(tablet) {
   ul,
   ol {
-    line-height: 24px;
-
     li {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
   }
 
   article ol.fancy li {
-    min-height: 48px;
+    min-height: 49px;
   }
 }

@@ -38,20 +38,14 @@
 }
 
 @include media-query(tablet) {
-
   .breadcrumbs {
-      margin: -4px 0 4px 0;
+      margin: -3px 0 4px 0;
       font-size: 13px;
   }
-
 }
 
-
-
 @include media-query(desktop) {
-
   .breadcrumbs {
       font-size: 14px;
   }
-
 }
