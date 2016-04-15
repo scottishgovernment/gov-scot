@@ -44,6 +44,10 @@
   &__expand {
     display: none;
   }
+
+  &__additional.display-toggle--shown {
+    display: inline;
+  }
 }
 
 @include media-query(tablet) {
