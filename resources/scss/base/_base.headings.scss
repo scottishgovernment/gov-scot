@@ -269,9 +269,9 @@ h3.social-channel {
 
 .emphasis {
   display: inline-block;
+  font-weight: 500;
   margin-bottom: 21px;
   padding-top: 15px;
-  text-transform: uppercase;
 
   &:before {
     background: $color__blue--base;
