@@ -28,7 +28,6 @@ $accordion__icon-image-open: '../images/icons/arrows/int_arrow_up_blue_35px.png'
   background-color: $accordion__background-color;
   border: 1px solid $accordion__border-color;
   border-width: 1px 0;
-  margin: 0 -15px;
 
   & + .accordion-item {
     margin-top: -1px;
@@ -146,11 +145,5 @@ $accordion__icon-image-open: '../images/icons/arrows/int_arrow_up_blue_35px.png'
 
   .accordion-item--open .accordion-item__header {
     background-color: inherit;
-  }
-}
-
-@include media-query(tablet) {
-  .accordion-item {
-    margin: 0;
   }
 }
