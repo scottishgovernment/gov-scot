@@ -23,6 +23,7 @@
   &__link {
     color: $color__body;
     text-decoration: none;
+    background-image: none !important;
 
     &:hover {
       color: $color__link--primary;
