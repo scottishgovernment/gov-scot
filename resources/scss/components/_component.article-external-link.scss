@@ -5,7 +5,7 @@ article {
     background-image: url(../images/icons/arrows/ext_arrow_text_15px.png);
     background-position: center right;
     background-repeat: no-repeat;
-    display: inline-block;
+    display: inline;
     padding-right: 20px;
 
     @include image-2x('../images/icons/arrows/ext_arrow_text_15px.png', 15px, 15px);
