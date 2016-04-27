@@ -2,13 +2,9 @@
     #LINKS
 \*------------------------------------*/
 
-/*
- * 1. This is the more widely-supported legacy property name. correct property name, overflow-wrap, is currently only supported in webkit browsers (23/12/2015)
- */
 a {
   color: $color__link--primary;
   text-decoration: underline;
-  word-wrap: break-word; /* [1] */
 
   @include transition(color $transition-out-time);
 
