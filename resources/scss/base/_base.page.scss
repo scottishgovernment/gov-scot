@@ -8,8 +8,8 @@
 body {
   color: $color__body;
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-size: $inuit-base-font-size;
-  line-height: $inuit-base-line-height;
+  font-size: $base-font-size;
+  line-height: $base-line-height * 3;
   margin: 0;
 
 //  margin-bottom: 320px; /* [1] */
@@ -31,5 +31,6 @@ body {
 @include media-query(tablet) {
   body {
     font-size: $tablet-font-size;
+    line-height: $base-line-height * 4;
   }
 }

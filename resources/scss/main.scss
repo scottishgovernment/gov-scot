@@ -46,6 +46,7 @@
  * Layers
  * Media
  * Overflows
+ * Scrollable
  * Wrappers
  *
  * PLUGINS
@@ -87,7 +88,12 @@
  * Stat box
  * Sticky back to top
  * Title with prefix
+ * Utility link
  * Welcome
+ *
+ * Homepage block
+ * Homepage news
+ * Homepage publication
  *
  * TRUMPS
  * Widths...............inuitcss width helper classes
@@ -152,8 +158,8 @@ $breakpoint-has-pull:   ('bigphone', 'tablet', 'desktop', 'hd');
 /**
  * SETTINGS
  */
-$inuit-base-font-size: 15px;
-$inuit-base-line-height: 24px;
+$inuit-base-font-size: 16px;
+$inuit-base-line-height: 7px;
 @import "../../node_modules/inuit-defaults/settings.defaults";
 @import "settings/settings.colors";
 @import "settings/settings.variables";
@@ -217,6 +223,7 @@ $inuit-use-fractions: false;
 @import "objects/object.layers";
 @import "objects/object.media";
 @import "objects/object.overflows";
+@import "objects/object.scrollable";
 @import "objects/object.wrappers";
 
 
@@ -271,11 +278,17 @@ $accordion__title-size: 16px;
 @import "components/component.site-brand";
 @import "components/component.site-footer";
 @import "components/component.site-header";
+@import "components/component.social-channels";
 @import "components/component.stat-box";
 @import "components/component.sticky-back-to-top";
 @import "components/component.sticky-document-info";
 @import "components/component.title-with-prefix";
+@import "components/component.utility-link";
 @import "components/component.welcome";
+
+@import "components/homepage/component.homepage-block";
+@import "components/homepage/component.homepage-news";
+@import "components/homepage/component.homepage-publication";
 
 
 

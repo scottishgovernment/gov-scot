@@ -1,0 +1,14 @@
+.utility-link {
+  background: $color__grey--lighter;
+  color: $color__grey--text;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 35px;
+  line-height: 35px;
+  outline: none !important;
+  text-align: center;
+  text-decoration: none;
+
+  @extend %inner-shadow-top;
+}
