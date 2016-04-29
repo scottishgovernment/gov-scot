@@ -34,6 +34,7 @@
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-rev": "~0.1.0",
     "grunt-usemin": "^3.0.0",
+    "handlebars": "^4.0.5",
     "html5shiv": "^3.7.3",
     "inuit-box-sizing": "^0.2.0",
     "inuit-defaults": "^0.2.3",
