@@ -80,14 +80,6 @@
       color: black;
       background-color: $color_gold;
 
-      .beta-box {
-        display: inline-block;
-        background: black;
-        color: $color_gold;
-        padding: 2px 14px;
-        font-weight: 700;
-      }
-
       p {
         margin: 14px 0;
       }
@@ -97,7 +89,15 @@
         font-weight: 700;
       }
 
-      .btn {
+      .notification__beta-box {
+        display: inline-block;
+        background: black;
+        color: $color_gold;
+        padding: 2px 14px;
+        font-weight: 700;
+      }
+
+      .notification__btn {
         font-size: 13px;
         text-decoration: none;
         text-align: center;
@@ -105,6 +105,7 @@
         display: inline-block;;
         padding: 7px 14px;
         width: 100%;
+        word-break: normal;
       }
 
       .notification__close {
@@ -112,19 +113,19 @@
         background: url("../images/icons/close-grey.png") no-repeat;
         @include image-2x('../images/icons/close-grey_@2x.png', 35px, 35px);
       }
-
     }
 }
 
 @include media-query(desktop) {
   .notification {
     &--gold {
-      .beta-box {
-        margin: 0 10px 0 0;
-      }
 
       p {
         margin: 0;
+      }
+
+      .notification__beta-box {
+        margin: 0 10px 0 0;
       }
 
       .wrapper {
