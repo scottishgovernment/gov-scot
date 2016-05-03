@@ -496,6 +496,7 @@ $carousel-desc-height-hd: 244px;
         border: 0;
       }
 
+
       /**
        * 1. Show no description, by default
        */
@@ -647,10 +648,29 @@ $carousel-desc-height-hd: 244px;
       height: $carousel-support-active-height-desktop-1item;
       z-index: $carousel-z-support-active;
       padding: 12px 0 12px 12px+$drop-shadow-offset;
-      overflow-y: auto;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 35px;
+        background: linear-gradient( to top,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 14%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
     }
     &:last-child .carousel-item__support {
       z-index: $carousel-z-support-active;
+    }
+
+    .carousel-item__scrollable {
+      overflow-y: auto;
+      height: 100%;
+      padding-bottom: 21px;
     }
 
     .carousel-item__desc {
@@ -798,7 +818,7 @@ $carousel-desc-height-hd: 244px;
   .carousel-item--active {
     .carousel-item__support {
       height: $carousel-support-active-height-hd-1item;
-      padding: 14px 10px 14px 15px+$drop-shadow-offset;
+      padding: 14px 10px 0 15px+$drop-shadow-offset;
     }
     .carousel-item__title {
       font-size: 26px;
