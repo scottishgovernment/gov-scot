@@ -334,6 +334,12 @@ $filter-close-button-size: 49px;
     position: relative;
   }
 
+  .filters-layer {
+    // the sticky footer won't work without this. :/
+    // the size was determined using chrome dev tools.
+    min-height: 1100px;
+  }
+
   .filters {
     border-bottom: 1px solid $color__grey--light;
     border-top: 1px solid $color__grey--light;

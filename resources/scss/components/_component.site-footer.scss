@@ -1,10 +1,29 @@
 /*------------------------------------*\
     #SITE FOOTER
 \*------------------------------------*/
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+#main-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -200px;
+}
+
+.site-footer, .push {
+  height: 221px;
+  clear: both;
+}
 
 .site-footer {
+  box-sizing: border-box;
   background: $color__blue--base;
-  margin-top: 48px;
   padding: 2em 0;
 
   &__link {
@@ -16,13 +35,6 @@
     list-style-type: none;
     padding: 0;
   }
-
-//  &--sticky {
-//    bottom: 0;
-//    left: 0;
-//    position: absolute;
-//    right: 0;
-//  }
 }
 
 .site-items {
@@ -76,10 +88,6 @@ $social-icon__size-multiplier: 2/3;
 
 // for demonstration only: social icon sizes can be controlled through a single property, e.g.
 @include media-query(tablet) {
-  .site-footer {
-    margin-top: 88px;
-  }
-
   .social-links__link {
     $social-icon-size: 48px;
 
