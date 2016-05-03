@@ -45,6 +45,7 @@
  * Helpers
  * Layers
  * Media
+ * Narrow
  * Overflows
  * Scrollable
  * Wrappers
@@ -91,6 +92,7 @@
  * Utility link
  * Welcome
  *
+ * Homepage about
  * Homepage block
  * Homepage news
  * Homepage publication
@@ -222,6 +224,7 @@ $inuit-use-fractions: false;
 @import "objects/object.helpers";
 @import "objects/object.layers";
 @import "objects/object.media";
+@import "objects/object.narrow";
 @import "objects/object.overflows";
 @import "objects/object.scrollable";
 @import "objects/object.wrappers";
@@ -286,6 +289,7 @@ $accordion__title-size: 16px;
 @import "components/component.utility-link";
 @import "components/component.welcome";
 
+@import "components/homepage/component.homepage-about";
 @import "components/homepage/component.homepage-block";
 @import "components/homepage/component.homepage-news";
 @import "components/homepage/component.homepage-publication";

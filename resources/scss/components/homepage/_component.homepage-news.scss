@@ -24,6 +24,7 @@
 
   &__summary {
     color: $color__grey--text;
+    margin-bottom: 42px;
   }
 }
 
@@ -39,9 +40,11 @@
     float: right;
     line-height: 26px;
     margin-left: 15px;
-    padding: 0 10px;
+    padding: 0 28px 0 10px;
     text-transform: none;
     width: 0;
+
+    @extend %small-arrow-right;
   }
 }
 

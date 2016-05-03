@@ -7,11 +7,12 @@
 }
 
 .stat-box {
-  display: block;
-
+  border: 1px solid $color__grey--darkest;
+  border-width: 1px 0;
   color: $color__grey--darkest;
+  display: block;
   float: left;
-  margin: 16px 0 32px;
+  margin: 14px 0 28px;
   min-height: 112px;
   position: relative;
   text-align: center;
@@ -28,15 +29,20 @@
   }
 
   &__label {
-    bottom: 0;
-    display: block;
+    bottom: 3px;
+    display: table;
+    height: 35px;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__label-text {
+    display: table-cell;
     font-size: 12px;
     font-weight: 400;
-    left: 0;
     line-height: 14px;
-    min-height: 28px;
-    position: absolute;
-    right: 0;
+    text-align: center;
+    vertical-align: middle;
   }
 }
 
@@ -63,8 +69,6 @@ a.stat-box {
 
 @include media-query(tablet) {
   .stat-box {
-    border: 1px solid $color__grey--darkest;
-    border-width: 1px 0;
     margin: 24px 0 48px;
     min-height: 160px;
 
@@ -73,10 +77,9 @@ a.stat-box {
       line-height: 126px;
     }
 
-    &__label {
+    &__label-text {
       font-size: 16px;
       line-height: 18px;
-      min-height: 36px;
     }
   }
 }

@@ -1,0 +1,7 @@
+// for narrow content areas on tablet, use mobile sizing
+@include media-query(tablet-to-desktop) {
+  .narrow {
+    font-size: $base-font-size;
+    line-height: $base-line-height * 3;
+  }
+}

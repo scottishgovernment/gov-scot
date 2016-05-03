@@ -1,0 +1,52 @@
+.homepage-about {
+  margin-bottom: 56px;
+
+  &__title {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 14px 0 21px;
+  }
+
+  &__image-container {
+    margin: 0 -15px 21px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+}
+
+@include media-query(tablet) {
+  .homepage-about {
+    &__image-container {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+@include media-query(tablet-to-desktop) {
+  // special case for "homepage about" stat boxes
+  // take mobile size for tablet resolution
+  .homepage-about {
+    .stat-box {
+      margin: 14px 0 28px;
+      min-height: 112px;
+
+      &__value {
+        font-size: 56px;
+        line-height: 84px;
+      }
+
+      &__label-text {
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      + .stat-box {
+        margin-left: 5%;
+      }
+    }
+  }
+}

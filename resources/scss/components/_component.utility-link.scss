@@ -2,7 +2,7 @@
   background: $color__grey--lighter;
   color: $color__grey--text;
   display: block;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   height: 35px;
   line-height: 35px;
@@ -11,4 +11,11 @@
   text-decoration: none;
 
   @extend %inner-shadow-top;
+  @extend %small-arrow-right;
+}
+
+@include media-query(hd) {
+  .utility-link {
+    font-size: 14px;
+  }
 }

@@ -6,10 +6,9 @@
   color: $color__grey--darkest;
   font-size: $base-leader-size;
   font-weight: 300;
-  line-height: 24px;
-  margin: 0 0 48px 0;
+  line-height: 28px;
+  margin: 0 0 28px 0;
 }
-
 
 p {
   margin: 0 0 24px;
@@ -44,8 +43,8 @@ p {
 
   %tablet-leader-text {
     font-size: $tablet-leader-size;
-    line-height: 32px;
-    margin-bottom: 72px;
+    line-height: 28px;
+    margin-bottom: 35px;
   }
 
   .leader {
