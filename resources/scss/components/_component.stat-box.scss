@@ -29,7 +29,7 @@
   }
 
   &__label {
-    bottom: 3px;
+    top: 74px;
     display: table;
     height: 35px;
     position: absolute;
@@ -75,6 +75,10 @@ a.stat-box {
     &__value {
       font-size: 88px;
       line-height: 126px;
+    }
+
+    &__label {
+      top: 116px;
     }
 
     &__label-text {
