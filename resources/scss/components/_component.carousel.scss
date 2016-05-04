@@ -588,8 +588,7 @@ $carousel-desc-height-hd: 244px;
         padding: 0;
         margin: 0;
         z-index: $carousel-z-stage-text-toggle;
-        transition: opacity 0.2s ease,
-                    background-color 0.2s ease;
+        transition: background-color 0.2s ease;
 
         &:focus {
           outline: none;
