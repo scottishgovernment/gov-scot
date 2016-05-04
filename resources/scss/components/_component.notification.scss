@@ -42,39 +42,105 @@
   p {
     margin: 0px;
     margin-right: 49px;
-  }
-  p + p {
-    margin-top: 14px;
-  }
-
-
-  /**
-   * MODIFIERS
-   */
-  &--dark {
-    background-color: $color__grey--dark;
-    color: white;
-
-
-    a, a:link, a:visited, a:hover, a:active {
-      color: white;
-      @include transition(opacity 1s);
-
-      &:hover,
-      &:active {
-        opacity: 0.75;
-        @include transition(opacity 0.2s);
-      }
+    }
+    p + p {
+      margin-top: 14px;
     }
 
 
-    .notification__close {
+    /**
+     * MODIFIERS
+     */
+    &--dark {
+      background-color: $color__grey--dark;
+      color: white;
+
+
+      a, a:link, a:visited, a:hover, a:active {
+        color: white;
+        @include transition(opacity 1s);
+
+        &:hover,
+        &:active {
+          opacity: 0.75;
+          @include transition(opacity 0.2s);
+        }
+      }
+
+
+      .notification__close {
         background: url('../images/icons/close-white.png') no-repeat;
         @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+      }
+
     }
 
+    &--gold {
+      overflow: auto;
+      color: black;
+      background-color: $color_gold;
+
+      p {
+        margin: 14px 0;
+      }
+
+      a {
+        color: black;
+        font-weight: 700;
+      }
+
+      .notification__beta-box {
+        display: inline-block;
+        background: black;
+        color: $color_gold;
+        padding: 2px 14px;
+        font-weight: 700;
+      }
+
+      .notification__btn {
+        font-size: 13px;
+        text-decoration: none;
+        text-align: center;
+        border: 1px solid;
+        display: inline-block;;
+        padding: 7px 14px;
+        width: 100%;
+        word-break: normal;
+      }
+
+      .notification__close {
+        top: 0;
+        background: url("../images/icons/close-grey.png") no-repeat;
+        @include image-2x('../images/icons/close-grey_@2x.png', 35px, 35px);
+      }
+    }
+}
+
+@include media-query(desktop) {
+  .notification {
+    &--gold {
+
+      p {
+        margin: 0;
+      }
+
+      .notification__beta-box {
+        margin: 0 10px 0 0;
+      }
+
+      .wrapper {
+        >div {
+          width: 50%;
+          float: left;
+        }
+
+        >div:first-of-type {
+          padding-top: 7px;
+          >* {
+            float: left;
+          }
+        }
+      }
+    }
   }
-
-
-
 }
