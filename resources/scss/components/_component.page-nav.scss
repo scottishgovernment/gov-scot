@@ -1,0 +1,126 @@
+/*------------------------------------*\
+    #PAGE NAVIGATION
+    previous and next buttons
+\*------------------------------------*/
+
+
+.page-nav {
+  margin-top: 70px;
+  margin-bottom: 56px;
+
+
+  &__item {
+    vertical-align: middle;
+  }
+
+  // BEGIN: page-nav__button
+  &__button {
+    background: transparent;
+    text-decoration: none;
+    min-height: 42px;
+    display: block;
+    position: relative;
+    padding: 14px 0;
+    @include transition(background 1s);
+
+    &:not([href]) {
+      display: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $color__grey--lighter;
+      outline: none;
+      text-decoration: underline;
+      @include transition(background 0.2s);
+
+      &:before,
+      &:after {
+        background-color: $color__blue--dark;
+      }
+
+    }
+
+    &:active {
+      background: $color__blue--lighter;
+      @include transition(background 0s);
+    }
+
+    span {
+      padding: 7px 15px;
+      display: inline-block;
+      text-decoration: inherit;
+    }
+
+    ///////////////////
+    // Variations    //
+    ///////////////////
+
+    // Shared styles for left and right variations
+    &--left:before,
+    &--right:after {
+      content: '';
+      height: 42px;
+      width: 42px;
+      background-color: $color__blue--base;
+      border-radius: 21px;
+      display: inline-block;
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+
+      @include transition(background 1s);
+
+    }
+
+    // Left button variation
+    // BEGIN: page-nav__button--left
+    &--left {
+      padding-left: 52px;
+      text-align: left;
+
+      &:before {
+        background-image: url(../images/icons/arrows/int_arrow_left_42px.png);
+        left: 10px;
+        @include image-2x('../images/icons/arrows/int_arrow_left_42px_@2x.png', 42px, 42px);
+      }
+
+      &:active {
+        &:before {
+          @include transition(background 0s);
+          background-image: url(../images/icons/arrows/int_arrow_left_tint_42px.png);
+          @include image-2x('../images/icons/arrows/int_arrow_left_tint_42px_@2x.png', 42px, 42px);
+        }
+      }
+    }
+    // END: page-nav__button--left
+
+
+    // Right button variation
+    // BEGIN: page-nav__button--right
+    &--right {
+      padding-right: 52px;
+      text-align: right;
+
+      &:after {
+        right: 10px;
+        background-image: url(../images/icons/arrows/int_arrow_right_42px.png);
+        @include image-2x('../images/icons/arrows/int_arrow_right_42px_@2x.png', 42px, 42px);
+      }
+
+      &:active {
+        &:after {
+          @include transition(background 0s);
+          background-image: url(../images/icons/arrows/int_arrow_right_tint_42px.png);
+          @include image-2x('../images/icons/arrows/int_arrow_right_tint_42px_@2x.png', 42px, 42px);
+        }
+      }
+    }
+    // END: page-nav__button--right
+
+
+  }
+  // END: page-nav__button
+
+}
