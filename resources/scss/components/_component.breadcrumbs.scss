@@ -20,13 +20,14 @@
       color: $color__grey--medium;
     }
 
-    &--no-icon {
+    &:last-child {
       &:after {
         content: '';
         padding: 0;
       }
     }
   }
+
 
   &__link {
     text-decoration: none;
