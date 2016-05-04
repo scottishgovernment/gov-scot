@@ -7,9 +7,9 @@
 }
 
 .stat-box {
-  border: 1px solid $color__grey--darkest;
+  border: 1px solid $color__grey--dark;
   border-width: 1px 0;
-  color: $color__grey--darkest;
+  color: $color__grey--dark;
   display: block;
   float: left;
   margin: 14px 0 28px;
@@ -19,7 +19,7 @@
   text-decoration: none;
   width: 30%;
 
-  @include transition(border-width $transition-in-time);
+  @include transition(border-width $transition-in-time, color $transition-in-time, border-color $transition-in-time);
 
   &__value {
     display: block;
@@ -50,15 +50,16 @@ a.stat-box {
   &:hover,
   &:focus {
     border-bottom-width: 8px;
-    color: $color__grey--darkest;
+    border-color: $color__link--primary;
+    color: $color__link--primary;
     text-decoration: none;
 
     @include transition-duration($transition-in-time);
   }
 
   &:active {
-    background: $color__grey--darkest;
-    color: $color__white;
+    background: $color__blue--lighter;
+    color: $color__link--primary;
     outline: 0;
   }
 }

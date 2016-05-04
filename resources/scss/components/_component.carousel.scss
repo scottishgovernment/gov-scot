@@ -348,7 +348,7 @@ $carousel-text-element-padding-mobile: 15px;
     &__support {
       max-width: 750px;
       margin: 0 auto;
-      padding: 14px 20px 84px;
+      padding: 14px 35px 0;
     }
 
     &__title {
@@ -363,6 +363,10 @@ $carousel-text-element-padding-mobile: 15px;
   .carousel-controls {
     max-width: 750px;
     margin: 0 auto;
+
+    &__links {
+      padding: 0 15px;
+    }
 
     &__link {
       width: 63px;
