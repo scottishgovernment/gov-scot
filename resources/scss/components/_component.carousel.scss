@@ -179,7 +179,7 @@ $carousel-text-element-padding-mobile: 15px;
   .carousel-item {
 
     &__support {
-      padding: 14px $carousel-text-element-padding-mobile 84px;
+      padding: 14px $carousel-text-element-padding-mobile 0;
     }
 
     &__title {
@@ -445,7 +445,7 @@ $carousel-desc-height-hd: 244px;
 @include media-query(desktop) {
 
   .carousel {
-      margin: 56px 0 98px 0;
+      margin: 56px 0 0 0;
       height: $carousel-height-desktop;
       overflow: hidden;
   }
