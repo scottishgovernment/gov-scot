@@ -82,17 +82,15 @@ $notification_padding: 14px;
       overflow: auto;
       color: $color__grey--dark;
       background-color: $color_gold;
-      line-height: 35px;
 
       .wrapper {
-        padding: 0 14px;
+        padding: 0;
       }
 
       p {
-        font-size: 18px;
         line-height: 35px;
         color: #333;
-        padding: 7px 0;
+        padding: 14px 0;
       }
 
       a {
@@ -117,7 +115,7 @@ $notification_padding: 14px;
       .notification__btn {
         text-decoration: none;
         display: inline-block;
-        font-size: 14px;
+        font-size: 13px;
         text-align: center;
         text-transform: uppercase;
         border: 1px solid $color__grey--dark;
@@ -126,16 +124,29 @@ $notification_padding: 14px;
         width: 100%;
 
         &:hover {
-          background: rgba(255, 255, 255, 0.5);
+          background: rgba(0, 0, 0, 0.05);
+        }
+
+        &:active {
+          background: rgba(0, 0, 0, 0.1);
+          outline: none;
         }
       }
 
-
       .notification__close {
         top: 0;
-        right: 14px;
-        background: url("../images/icons/close-grey.png") no-repeat;
-        @include image-2x('../images/icons/close-grey_@2x.png', 35px, 35px);
+        right: 0;
+        background: url("../images/icons/grey_arrow_down.png") no-repeat;
+        @include image-2x('../images/icons/grey_arrow_down_@2x.png', 35px, 35px);
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .notification__close--minimised {
+        background: url("../images/icons/grey_arrow_up.png") no-repeat;
+        @include image-2x('../images/icons/grey_arrow_up_@2x.png', 35px, 35px);
       }
     }
 }
@@ -143,6 +154,8 @@ $notification_padding: 14px;
 @include media-query(desktop) {
   .notification {
     &--gold {
+      line-height: 35px;
+
       .notification__close {
         display: none;
       }
@@ -171,7 +184,12 @@ $notification_padding: 14px;
         width: auto;
         padding: 0 0 0 10px;
       }
+    }
 
+    &--dark {
+      .notification__close {
+        right: 10px;
+      }
     }
   }
 }
