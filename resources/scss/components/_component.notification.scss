@@ -1,9 +1,12 @@
+$notification_padding: 14px;
+
 .notification {
+
   /**
    * BLOCK
    */
   background-color: $color__grey--light;
-  padding: 14px;
+  padding: $notification_padding;
 
   /**
    * 1. Position wrapper so that we can position the close button
@@ -77,39 +80,60 @@
 
     &--gold {
       overflow: auto;
-      color: black;
+      color: $color__grey--dark;
       background-color: $color_gold;
+      line-height: 35px;
+
+      .wrapper {
+        padding: 0 14px;
+      }
 
       p {
-        margin: 14px 0;
+        font-size: 18px;
+        line-height: 35px;
+        color: #333;
+        padding: 7px 0;
       }
 
       a {
-        color: black;
+        color: $color__grey--dark;
         font-weight: 700;
+      }
+
+      .notification__extra-content {
+        overflow: auto;
       }
 
       .notification__beta-box {
         display: inline-block;
         background: black;
         color: $color_gold;
-        padding: 2px 14px;
+        padding: 7px 14px;
+        text-transform: uppercase;
         font-weight: 700;
+        line-height: 21px;
       }
 
       .notification__btn {
-        font-size: 13px;
         text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
         text-align: center;
-        border: 1px solid;
-        display: inline-block;;
+        text-transform: uppercase;
+        border: 1px solid $color__grey--dark;
+        word-break: normal;
         padding: 7px 14px;
         width: 100%;
-        word-break: normal;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.5);
+        }
       }
+
 
       .notification__close {
         top: 0;
+        right: 14px;
         background: url("../images/icons/close-grey.png") no-repeat;
         @include image-2x('../images/icons/close-grey_@2x.png', 35px, 35px);
       }
@@ -119,28 +143,35 @@
 @include media-query(desktop) {
   .notification {
     &--gold {
+      .notification__close {
+        display: none;
+      }
 
-      p {
-        margin: 0;
+      .notification__extra-content {
+        overflow: auto;
       }
 
       .notification__beta-box {
-        margin: 0 10px 0 0;
+        line-height: 35px;
+        float: left;
       }
 
-      .wrapper {
-        >div {
-          width: 50%;
-          float: left;
-        }
-
-        >div:first-of-type {
-          padding-top: 7px;
-          >* {
-            float: left;
-          }
-        }
+      p {
+        display: inline-block;
+        width: auto;
+        padding: 7px 14px;
       }
+
+      .grid {
+        float: right;
+      }
+
+      .grid__item {
+        display: inline-block;
+        width: auto;
+        padding: 0 0 0 10px;
+      }
+
     }
   }
 }
