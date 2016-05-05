@@ -165,20 +165,20 @@ body.layout-directorate {
 
     &__name {
       font-size: $tablet-h3-size;
-      line-height: $base-line-height;
+      line-height: $base-line-height * 4;
       margin: 0 0 8px 0;
     }
 
     &__role {
       font-size: $tablet-font-size;
-      line-height: $base-line-height;
+      line-height: $base-line-height * 3;
     }
 
     &__responsibilities {
       font-size: $tablet-font-size - 2px;
-      line-height: $base-line-height;
+      line-height: $base-line-height * 3;
       ul {
-        line-height: $base-line-height;
+        line-height: $base-line-height * 3;
         li {
           margin-bottom: 8px;
         }
