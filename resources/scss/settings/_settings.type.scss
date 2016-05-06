@@ -6,22 +6,28 @@ $base-font-size: $inuit-base-font-size;
 $base-line-height: $inuit-base-line-height;
 
 // base
-$base-h1-size: 34px;
-$base-h2-size: 24px;
-$base-h3-size: 17px;
-$base-h4-size: $base-font-size - 1;
+$base-h1-size: 56px;
+$base-h2-size: 28px;
+$base-h3-size: 21px;
+$base-h4-size: $base-font-size + 2;
 $base-h5-size: 14px;
-$base-leader-size: 19px;
+$base-leader-size: 22px;
+$base-note-size: 14px;
 
 // tablet
-$tablet-font-size: 18px;
+$tablet-font-size: 17px;
 $tablet-h1-size: 64px;
 $tablet-h2-size: 32px;
 $tablet-h3-size: 20px;
 $tablet-h4-size: $tablet-font-size - 1;
 $tablet-h5-size: 16px;
-$tablet-leader-size: 22px;
+$tablet-leader-size: 21px;
 
 // mobile
 $mobile-font-size: 16px;
 $mobile-milli-size: 14px;
+$mobile-h1-size: 35px;
+$mobile-h2-size: 22px;
+$mobile-h3-size: 18px;
+$mobile-h4-size: 15px;
+$mobile-leader-size: 19px;

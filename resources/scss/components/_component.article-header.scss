@@ -4,14 +4,13 @@
 \*------------------------------------*/
 
 .article-header {
-  margin: 32px 0 24px;
 
   &__subtitle {
-    color: $color__grey--darkest;
-    font-size: 15px;
+    color: $color__grey--dark;
+    font-size: 12px;
     font-weight: 700;
-    line-height: 16px;
-    margin-bottom: 0;
+    line-height: 14px;
+    margin: 0 0 7px 0;
     text-transform: uppercase;
   }
 
@@ -34,6 +33,10 @@
 
 @include media-query(tablet) {
   .article-header {
-    margin: 48px 0 64px;
+
+    &__subtitle {
+      font-size: 14px;
+      line-height: 21px;
+    }
   }
 }

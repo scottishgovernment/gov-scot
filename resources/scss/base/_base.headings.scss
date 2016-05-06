@@ -2,79 +2,85 @@
     #HEADINGS
 \*------------------------------------*/
 
-/**
- * 1. Nudge the header onto the baseline grid
- */
 h1, .alpha {
-  font-size: $base-h1-size;
+  font-size: $mobile-h1-size;
+  line-height: 42px;
   font-weight: 100;
-  line-height: 40px;
-  margin: 0 0 24px;
-
-  position: relative; /* [1] */
-  top: -1px;
+  margin: 0 0 28px -1px;
 }
 
-/**
- * 1. Nudge the header onto the baseline grid
- */
 h2, .beta {
-  font-size: $base-h2-size;
-  font-weight: 400;
-  margin: 48px 0 16px;
-
-  position: relative; /* [1] */
-  top: -3px;
-
+  font-size: $mobile-h2-size;
+  line-height: 28px;
+  font-weight: 500;
+  margin: 49px 0 14px 0;
 }
 
-
-/**
- * 1. Nudge the header onto the baseline grid
- */
 h3, .gamma {
-  font-size: $base-h3-size;
+  font-size: $mobile-h3-size;
+  line-height: 21px;
   font-weight: 700;
-  line-height: 24px;
-  margin: 32px 0 8px;
-
-  position: relative; /* [1] */
-  top: -2px;
+  margin: 35px 0 7px 0;
 }
 
 h4, .delta {
-  font-size: $base-h4-size;
+  line-height: 21px;
+  font-size: $mobile-h4-size;
+  font-weight: 700;
+  margin: 35px 0 7px 0;
 }
-
-
-h5, .epsilon {
-  font-size: $base-h5-size;
-  font-weight: 600;
-  margin: 24px 0 16px;
-}
-
-
-
 
 @include media-query(tablet) {
+  /**
+   * 1. Nudge the header onto the baseline grid
+   */
   h1, .alpha {
-    font-size: $tablet-h1-size;
-    line-height: 72px;
+    font-size: $base-h1-size;
+    line-height: 63px;
+    margin: 0 0 35px -3px;
+
+    position: relative; /* [1] */
+    top: -1px;
   }
 
+  /**
+   * 1. Nudge the header onto the baseline grid
+   */
   h2, .beta {
-    font-size: $tablet-h2-size;
-    line-height: 40px;
-    margin: 72px 0 24px;
+    font-size: $base-h2-size;
+    line-height: 35px;
+    margin: 56px 0 14px 0;
+
+    position: relative; /* [1] */
+    top: -3px;
+
   }
 
+
+  /**
+   * 1. Nudge the header onto the baseline grid
+   */
   h3, .gamma {
-    font-size: $tablet-h3-size;
-    margin: 48px 0 8px;
+    font-size: $base-h3-size;
+    line-height: 28px;
+    margin: 42px 0 7px 0;
+
+    position: relative; /* [1] */
+    top: -2px;
   }
 
   h4, .delta {
-    font-size: $tablet-h4-size;
+    font-size: $base-h4-size;
+    font-weight: 700;
+    line-height: 21px;
+    margin: 35px 0 7px 0;
+  }
+
+
+  h5, .epsilon {
+    font-size: $base-h5-size;
+    font-weight: 600;
+    margin: 24px 0 16px;
   }
 }
 
@@ -266,21 +272,53 @@ h3.social-channel {
   }
 }
 
-
+/** Original emphasis **/
 .emphasis {
   display: inline-block;
   font-weight: 500;
   margin-bottom: 21px;
-  padding-top: 15px;
+  padding-top: 13px;
 
   &:before {
     background: $color__blue--base;
-    border-radius: 7px;
+    border-radius: 8px;
     content: '';
-    height: 7px;
+    height: 8px;
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
   }
 }
+
+/** New Emphasis **/
+h3.emphasis {
+  font-weight: 500;
+}
+
+@include media-query(tablet) {
+  h3.emphasis {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 28px;
+    margin: 0 0 14px 0;
+    text-transform: uppercase;
+
+    &:before {
+      background: $color__blue--base;
+      border-radius: 8px;
+      content: '';
+      height: 8px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
+
+
+
+

@@ -5,7 +5,7 @@
 
 .content-data {
   font-size: 12px;
-  margin-bottom: 35px;
+  margin: 0 0 28px 0;
   position: relative;
 
   &__expandable {
@@ -20,9 +20,10 @@
 
   &__list {
     color: $color__grey--dark;
-    line-height: 16px;
-    margin: 0;
+    line-height: 18px;
+    margin: 0 0 7px 0;
     padding-right: 40px;
+    font-size: 12px;
   }
 
   &__label {
@@ -52,7 +53,8 @@
 
 @include media-query(tablet) {
   .content-data {
-    font-size: 14px;
+    font-size: 12px;
+    margin: 0 0 35px 0;
 
     &__toggle {
       display: none;
@@ -63,6 +65,7 @@
       overflow: visible;
       padding-right: 0;
       white-space: normal;
+      font-size: 12px;
     }
 
     &__expand {

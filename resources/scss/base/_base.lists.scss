@@ -4,20 +4,84 @@
 
 $list__left-margin: 35px;
 
-ul,
-ol {
-  font-weight: inherit;
-  line-height: 21px;
-  margin: -7px 0 21px $list__left-margin;
+ul {
+  margin: 14px 0 21px 12px;
   padding: 0;
-
+  font-size: 16px;
+  line-height: 21px;
   li {
-    margin: 0 0 7px 0;
+    margin: 0 0 14px 18px;
+    type: circle;
   }
 }
 
+article ol {
+  counter-reset: li;
+  list-style-type: none;
+  margin: 14px 0 21px 10px;
+  padding: 0;
+
+  li {
+    margin: 0 0 14px 25px;
+    font-size: 16px;
+    line-height: 21px;
+    position: relative;
+
+    h1, h2, h3, h4 {
+      margin-left: -40px;
+    }
+
+    &:before {
+      content: counter(li) ".";
+      counter-increment: li;
+      font-weight: 500;
+      line-height: 21px;
+      left: -25px;
+      top: 0;
+      position: absolute;
+    }
+  }
+}
+
+ol > ul  {
+  counter-reset: ul;
+  list-style-type: none;
+
+  > li {
+    &:before {
+      content: "- ";
+    }
+  }
+}
+
+ol li > ul  {
+  counter-reset: ul;
+  list-style-type: none;
+
+  > li {
+    position: relative;
+
+    &:before {
+      content: "- ";
+      left: -30px;
+      position: absolute;
+
+    }
+  }
+}
+
+.hidden-phone li {
+  margin: 0 !important;
+}
+
+ol.emphasis {
+  margin: 21px 0 28px 5px;
+}
+
 ol {
-  margin-left: 20px;
+  li.emphasis {
+    margin: 0 0 21px 45px;
+  }
 }
 
 /*
@@ -55,10 +119,59 @@ article ol.fancy {
 }
 
 @include media-query(tablet) {
-  ul,
-  ol {
+
+  ul {
+    margin: 21px 0 28px 20px;
+    font-size: 18px;
+    line-height: 28px;
     li {
-      margin-bottom: 14px;
+      margin: 0 0 14px 20px;
+    }
+
+  }
+
+  ol {
+    margin: 21px 0 28px 10px;
+    padding: 0;
+    li {
+      margin: 0 0 14px 30px;
+    }
+  }
+
+  ol.emphasis {
+    margin: 28px 0 35px 10px;
+  }
+
+  ol {
+    li.emphasis {
+      margin: 0 0 28px 50px;
+    }
+  }
+
+  article ol {
+    counter-reset: li;
+    list-style-type: none;
+    margin: 14px 0 21px 10px;
+
+    li {
+      margin: 0 0 14px 30px;
+      font-size: 18px;
+      line-height: 28px;
+      position: relative;
+
+      h1, h2, h3, h4 {
+        margin-left: -40px;
+      }
+
+      &:before {
+        content: counter(li) ".";
+        counter-increment: li;
+        font-weight: 500;
+        line-height: 28px;
+        left: -30px;
+        top: 0;
+        position: absolute;
+      }
     }
   }
 

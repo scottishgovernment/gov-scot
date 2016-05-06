@@ -4,14 +4,10 @@
 
 %leader-text {
   color: $color__grey--darkest;
-  font-size: $base-leader-size;
+  font-size: $mobile-leader-size;
   font-weight: 300;
   line-height: 28px;
   margin: 0 0 28px 0;
-}
-
-p {
-  margin: 0 0 24px;
 }
 
 .leader {
@@ -27,6 +23,30 @@ p {
     > :first-child {
       @extend %leader-text;
     }
+
+    h2:first-child {
+      font-size: $mobile-h2-size;
+      line-height: 28px;
+      margin: 49px 0 14px 0;
+      font-weight: 500;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .leader {
+    font-size: $base-leader-size;
+    line-height: 35px;
+    margin: 0 0 35px 0;
+
+    &--first-para {
+      h2:first-child {
+        font-size: $base-h2-size;
+        line-height: 35px;
+        margin: 56px 0 14px 0;
+        font-weight: 500;
+      }
+    }
   }
 }
 
@@ -39,25 +59,19 @@ p {
 }
 
 
+p, .p-alpha {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  margin: 0 0 21px 0;
+}
+
 @include media-query(tablet) {
-
-  %tablet-leader-text {
-    font-size: $tablet-leader-size;
+  p, .p-alpha {
+    font-size: 18px;
     line-height: 28px;
-    margin-bottom: 35px;
-  }
-
-  .leader {
-    @extend %tablet-leader-text;
-
-    &--first-para {
-      font-size: inherit;
-      line-height: inherit;
-      margin-bottom: inherit;
-
-      > :first-child {
-        @extend %tablet-leader-text;
-      }
-    }
+    font-weight: 400;
+    margin: 0 0 28px 0;
   }
 }
+
