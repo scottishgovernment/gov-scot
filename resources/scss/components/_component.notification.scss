@@ -156,6 +156,10 @@ $notification_padding: 14px;
     &--gold {
       line-height: 35px;
 
+      .wrapper {
+        padding: 0 14px;
+      }
+
       .notification__close {
         display: none;
       }
