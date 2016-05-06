@@ -19,13 +19,6 @@
       padding: 0 3px;
       color: $color__grey--medium;
     }
-
-    &:last-child {
-      &:after {
-        content: '';
-        padding: 0;
-      }
-    }
   }
 
 
