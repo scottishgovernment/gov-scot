@@ -29,6 +29,8 @@
 @include media-query(desktop) {
   .welcome {
     &__intro {
+      font-size: 21px;
+      line-height: 28px;
       padding-left: 15px;
     }
   }

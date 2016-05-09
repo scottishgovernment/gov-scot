@@ -39,7 +39,7 @@
   &__link {
     float: right;
     line-height: 26px;
-    margin-left: 15px;
+    margin: -4px 0 0 15px;
     padding: 0 28px 0 10px;
     text-transform: none;
     width: 0;
@@ -48,10 +48,12 @@
   }
 }
 
-@include media-query(tablet) {
-  .homepage-news {
-    &__date {
-      padding-left: 12px;
+@include media-query(tablet-down) {
+  .homepage-news__item {
+    display: none;
+
+    &:nth-child(-n + 2) {
+      display: inline-block;
     }
   }
 }

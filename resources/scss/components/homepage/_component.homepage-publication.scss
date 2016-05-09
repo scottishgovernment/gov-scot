@@ -49,19 +49,21 @@
   }
 
   &__see-all {
+    font-size: 14px;
+    line-height: 21px;
     position: relative;
     text-decoration: none;
 
     &--icon {
-      padding-left: 32px;
+      padding-left: 29px;
 
       span {
         background: $color__link--primary;
-        height: 20px;
+        height: 17px;
         left: 0;
         position: absolute;
         top: 0;
-        width: 20px;
+        width: 17px;
 
         @include transition(background-color 1s);
 
@@ -69,11 +71,11 @@
           border: 1px solid $color__white;
           border-width: 1px 0;
           content: '';
-          height: 8px;
+          height: 7px;
           left: 0;
           position: absolute;
-          top: 6px;
-          width: 21px;
+          top: 5px;
+          width: 17px;
           z-index: 1;
         }
       }
@@ -94,11 +96,11 @@
         border: 1px solid $color__white;
         border-width: 0 1px;
         content: '';
-        height: 21px;
-        left: 6px;
+        height: 17px;
+        left: 5px;
         position: absolute;
         top: 0;
-        width: 8px;
+        width: 7px;
       }
     }
   }

@@ -13,13 +13,13 @@
   display: block;
   float: left;
   margin: 14px 0 28px;
-  min-height: 112px;
+  min-height: 119px;
   position: relative;
   text-align: center;
   text-decoration: none;
   width: 30%;
 
-  @include transition(border-width $transition-in-time, color $transition-in-time, border-color $transition-in-time);
+  @include transition(color $transition-in-time, border-color $transition-in-time);
 
   &__value {
     display: block;
@@ -49,7 +49,6 @@
 a.stat-box {
   &:hover,
   &:focus {
-    border-bottom-width: 8px;
     border-color: $color__link--primary;
     color: $color__link--primary;
     text-decoration: none;
@@ -71,7 +70,7 @@ a.stat-box {
 @include media-query(tablet) {
   .stat-box {
     margin: 24px 0 48px;
-    min-height: 160px;
+    min-height: 174px;
 
     &__value {
       font-size: 88px;

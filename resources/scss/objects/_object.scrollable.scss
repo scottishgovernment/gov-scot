@@ -37,7 +37,7 @@ SCROLLABLE CONTAINER
     padding: 14px 0 0 0;
 
     &--homepage-policies {
-      height: 119px;
+      height: 196px;
     }
   }
 }
@@ -63,6 +63,10 @@ SCROLLABLE CONTAINER
 
       &--40 {
         height: 40vh;
+      }
+
+      &--homepage-policies {
+        height: 119px;
       }
     }
 
