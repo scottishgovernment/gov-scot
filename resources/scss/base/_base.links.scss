@@ -5,6 +5,7 @@
 a {
   color: $color__link--primary;
   text-decoration: underline;
+  word-break: break-all;
 
   @include transition(color $transition-out-time);
 
