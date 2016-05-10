@@ -82,20 +82,25 @@ $notification_padding: 14px;
       overflow: auto;
       color: $color__grey--dark;
       background-color: $color_gold;
+      padding: 0 14px;
 
       .wrapper {
         padding: 0;
       }
 
       p {
-        line-height: 35px;
         color: #333;
-        padding: 14px 0;
+        padding: 0;
+        margin: 14px 0;
       }
 
       a {
         color: $color__grey--dark;
         font-weight: 700;
+      }
+
+      .notification__main-content {
+        height: 42px;
       }
 
       .notification__extra-content {
@@ -106,10 +111,10 @@ $notification_padding: 14px;
         display: inline-block;
         background: $color__grey--dark;
         color: $color_gold;
-        padding: 7px 14px;
         text-transform: uppercase;
         font-weight: 700;
-        line-height: 21px;
+        padding: 1px 14px;
+        margin: 10.5px 0;
       }
 
       .notification__btn {
@@ -120,7 +125,8 @@ $notification_padding: 14px;
         text-transform: uppercase;
         border: 1px solid $color__grey--dark;
         word-break: normal;
-        padding: 7px 14px;
+        padding: 6px 10px;
+        margin: 0 0 21px 0;
         width: 100%;
 
         &:hover {
@@ -134,8 +140,11 @@ $notification_padding: 14px;
       }
 
       .notification__close {
-        top: -5px;
-        right: 0;
+        top: 0;
+        right: -9px;
+        margin: 0;
+        height: 42px;
+        width: 42px;
         background: url("../images/icons/grey_arrow_down.png") no-repeat;
         @include image-2x('../images/icons/grey_arrow_down_@2x.png', 35px, 35px);
 
@@ -151,17 +160,24 @@ $notification_padding: 14px;
     }
 }
 
-@include media-query(desktop) {
+
+
+@include media-query(tablet) {
   .notification {
     &--gold {
-      line-height: 35px;
-
       .wrapper {
-        padding: 0 14px;
+        padding: 0;
       }
 
+      .notification__btn {
+        margin: 0;
+      }
       .notification__close {
         display: none;
+      }
+
+      .notification__main-content {
+        height: auto;
       }
 
       .notification__extra-content {
@@ -169,18 +185,24 @@ $notification_padding: 14px;
       }
 
       .notification__beta-box {
-        line-height: 35px;
         float: left;
+        margin: 15.5px 0;
+      }
+
+      .notification__btn {
+        margin: 10.5px 0;
       }
 
       p {
         display: inline-block;
         width: auto;
         padding: 7px 14px;
+        margin: 10.5px 0;
       }
 
       .grid {
         float: right;
+        margin: 0;
       }
 
       .grid__item {
