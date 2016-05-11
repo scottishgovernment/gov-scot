@@ -9,13 +9,15 @@ $base-line-height: $inuit-base-line-height;
 $base-h1-size: 56px;
 $base-h2-size: 28px;
 $base-h3-size: 21px;
-$base-h4-size: $base-font-size + 2;
+$base-h4-size: $base-font-size + 1;
 $base-h5-size: 14px;
 $base-leader-size: 22px;
 $base-note-size: 14px;
+$base-para-size: 18px;
+$base-para-line-height: 28px;
 
 // tablet
-$tablet-font-size: 17px;
+$tablet-font-size: 18px;
 $tablet-h1-size: 64px;
 $tablet-h2-size: 32px;
 $tablet-h3-size: 20px;
@@ -31,3 +33,5 @@ $mobile-h2-size: 22px;
 $mobile-h3-size: 18px;
 $mobile-h4-size: 15px;
 $mobile-leader-size: 19px;
+$mobile-para-size: 16px;
+$mobile-para-line-height: 21px;
