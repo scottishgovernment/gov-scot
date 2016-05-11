@@ -38,7 +38,7 @@ h4, .delta {
     font-size: $base-h1-size;
     line-height: 63px;
     margin: 0 0 35px -3px;
-
+    letter-spacing: -0.5px;
     position: relative; /* [1] */
     top: -1px;
   }
@@ -73,6 +73,7 @@ h4, .delta {
     font-size: $base-h4-size;
     font-weight: 700;
     line-height: 21px;
+    letter-spacing: 0.3px;
     margin: 35px 0 7px 0;
   }
 

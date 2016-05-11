@@ -5,7 +5,7 @@
 $list__left-margin: 35px;
 
 ul {
-  margin: 14px 0 21px 12px;
+  margin: -7px 0 21px 12px;
   padding: 0;
   font-size: 16px;
   line-height: 21px;
@@ -18,7 +18,7 @@ ul {
 article ol {
   counter-reset: li;
   list-style-type: none;
-  margin: 14px 0 21px 10px;
+  margin: -7px 0 21px 10px;
   padding: 0;
 
   li {
@@ -36,6 +36,7 @@ article ol {
       counter-increment: li;
       font-weight: 500;
       line-height: 21px;
+      letter-spacing: -5px;
       left: -25px;
       top: 0;
       position: absolute;
@@ -121,7 +122,7 @@ article ol.fancy {
 @include media-query(tablet) {
 
   ul {
-    margin: 21px 0 28px 20px;
+    margin: -7px 0 28px 20px;
     font-size: 18px;
     line-height: 28px;
     li {
@@ -131,7 +132,7 @@ article ol.fancy {
   }
 
   ol {
-    margin: 21px 0 28px 10px;
+    margin: -7px 0 28px 10px;
     padding: 0;
     li {
       margin: 0 0 14px 30px;
@@ -168,6 +169,7 @@ article ol.fancy {
         counter-increment: li;
         font-weight: 500;
         line-height: 28px;
+        letter-spacing: -5px;
         left: -30px;
         top: 0;
         position: absolute;
