@@ -141,7 +141,7 @@ $notification_padding: 14px;
 
       .notification__close {
         top: 0;
-        right: -9px;
+        right: -15px;
         margin: 0;
         height: 42px;
         width: 42px;
@@ -166,7 +166,7 @@ $notification_padding: 14px;
   .notification {
     &--gold {
       .wrapper {
-        padding: 0;
+        padding: 0 15px;
       }
 
       .notification__btn {
@@ -186,7 +186,8 @@ $notification_padding: 14px;
 
       .notification__beta-box {
         float: left;
-        margin: 15.5px 0;
+        margin: 10.5px 0;
+        padding: 6px 10px;
       }
 
       .notification__btn {
@@ -196,7 +197,7 @@ $notification_padding: 14px;
       p {
         display: inline-block;
         width: auto;
-        padding: 7px 14px;
+        padding: 7px;
         margin: 10.5px 0;
       }
 
