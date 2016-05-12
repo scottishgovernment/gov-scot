@@ -22,8 +22,8 @@
   }
 
   &__name {
-    font-size: $base-font-size;
-    line-height: 24px;
+    font-size: $mobile-h3-size;
+    line-height: $mobile-para-line-height;
     margin: 0 0 16px 0;
 
 
@@ -31,8 +31,8 @@
   }
 
   &__role {
-    font-size: $base-font-size - 1px;
-    line-height: 16px;
+    font-size: $mobile-para-size;
+    line-height: $mobile-para-line-height;
 
     @include non-contextual-link;
 
@@ -164,14 +164,14 @@ body.layout-directorate {
     }
 
     &__name {
-      font-size: $tablet-h3-size;
-      line-height: $base-line-height * 4;
+      font-size: $base-h3-size;
+      line-height: $base-para-line-height;
       margin: 0 0 8px 0;
     }
 
     &__role {
-      font-size: $tablet-font-size;
-      line-height: $base-line-height * 3;
+      font-size: $base-para-size;
+      line-height: $base-para-line-height;
     }
 
     &__responsibilities {
