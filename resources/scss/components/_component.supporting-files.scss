@@ -1,0 +1,16 @@
+.supporting-files {
+
+  &__list {
+    list-style-type: none;
+    margin: 0;
+  }
+
+  &__item {
+    margin: 0;
+  }
+}
+
+.supporting-file {
+  color: $color__grey--text;
+  text-decoration: none;
+}

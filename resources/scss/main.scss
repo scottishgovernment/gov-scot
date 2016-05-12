@@ -88,6 +88,7 @@
  * Site header
  * Stat box
  * Sticky back to top
+ * Supporting files
  * Title with prefix
  * Utility link
  * Welcome
@@ -285,6 +286,7 @@ $accordion__title-size: 16px;
 @import "components/component.stat-box";
 @import "components/component.sticky-back-to-top";
 @import "components/component.sticky-document-info";
+@import "components/component.supporting-files";
 @import "components/component.title-with-prefix";
 @import "components/component.utility-link";
 @import "components/component.welcome";
