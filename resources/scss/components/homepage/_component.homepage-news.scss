@@ -1,12 +1,12 @@
 .homepage-news {
   &__date {
-    border-left: 3px solid $color__grey--dark;
+    border-left: 2px solid $color__grey--dark;
     font-size: 12px;
     font-weight: 500;
     height: 21px;
     line-height: 21px;
-    margin-bottom: 14px;
-    padding-left: 10px;
+    margin: 11px 0 10px;
+    padding-left: 9px;
   }
 
   &__title {
@@ -34,7 +34,7 @@
   line-height: 21px;
   position: absolute;
   right: 0;
-  top: 28px;
+  top: 24px;
 
   &__link {
     float: right;
@@ -54,6 +54,14 @@
 
     &:nth-child(-n + 2) {
       display: inline-block;
+    }
+  }
+}
+
+@include media-query(tablet) {
+  .homepage-news {
+    &__summary {
+      margin-bottom: 28px;
     }
   }
 }

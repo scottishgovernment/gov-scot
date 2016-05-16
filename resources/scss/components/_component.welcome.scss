@@ -20,6 +20,8 @@
 
 @include media-query(tablet) {
   .welcome {
+    margin-bottom: 28px;
+
     &__intro {
       padding-left: 20px;
     }

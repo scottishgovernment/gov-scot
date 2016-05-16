@@ -11,10 +11,13 @@
 
   &__intro {
     color: $color__grey--text;
+    font-size: 16px;
+    line-height: 21px;
     margin-bottom: 14px;
   }
 
   &__button {
+    font-size: 16px;
     height: 42px;
     margin-top: 28px;
     width: 125px;
@@ -91,6 +94,7 @@
   .homepage-block {
     &__title {
       font-size: $tablet-h2-size;
+      line-height: 35px;
 
       &--icon {
         &:after {

@@ -69,21 +69,21 @@ a.stat-box {
 
 @include media-query(tablet) {
   .stat-box {
-    margin: 24px 0 48px;
-    min-height: 174px;
+    margin: 0 0 42px;
+    min-height: 133px;
 
     &__value {
-      font-size: 88px;
-      line-height: 126px;
+      font-size: 70px;
+      line-height: 97px;
     }
 
     &__label {
-      top: 116px;
+      top: 82px;
     }
 
     &__label-text {
-      font-size: 16px;
-      line-height: 18px;
+      font-size: 15px;
+      line-height: 21px;
     }
   }
 }

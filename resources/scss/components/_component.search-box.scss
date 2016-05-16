@@ -13,14 +13,15 @@ $search-box__transition-timing: ease;
   margin-bottom: 21px;
 
   &__input[type=text] {
+    background-color: $color__grey--lighter;
+    border: 1px solid $color__grey--medium;
     border-right: 0;
     float: right;
     font-size: 17px;
     height: $search-box__box-size;
     margin-right: $search-box__box-size;
+    padding-left: 20px;
     width: calc(100% - #{$search-box__box-size});
-    background-color: $color__grey--lighter;
-    border: 1px solid $color__grey--medium;
   }
 
   &__button {
