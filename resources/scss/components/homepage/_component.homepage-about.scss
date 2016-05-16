@@ -19,6 +19,10 @@
   &__grid-item + &__grid-item {
     margin-top: 28px;
   }
+
+  &__read-more {
+    margin-top: -14px;
+  }
 }
 
 @include media-query(tablet) {
@@ -31,6 +35,10 @@
     &__image-container {
       margin-left: 0;
       margin-right: 0;
+    }
+
+    &__leader {
+      margin-top: -9px;
     }
   }
 }
@@ -73,6 +81,15 @@
 
     .narrow {
       padding-right: 30px;
+    }
+
+    &__leader {
+      font-size: 21px;
+      margin-top: -2px;
+    }
+
+    &__image {
+      margin-top: 7px;
     }
   }
 }
