@@ -141,18 +141,26 @@ $carousel-z-stage-image: 40;
   @include media-query(tablet) {
     height: 45px;
     width: 60px;
-
   }
 
   @include media-query(desktop) {
     height: 49px;
     width: 70px;
-    margin-left: 29%;  /* [2] */
   }
 
   @include media-query(hd) {
     height: 60px;
     width: 70px;
+  }
+
+  &--stage-text-visible {
+    @include media-query(desktop) {
+      margin-left: 28%;
+    }
+
+    @include media-query(hd) {
+      margin-left: 35%;
+    }
   }
 }
 
