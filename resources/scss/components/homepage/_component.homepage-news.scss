@@ -34,7 +34,7 @@
   line-height: 21px;
   position: absolute;
   right: 0;
-  top: 22px;
+  top: 20px;
 
   &__link {
     float: right;
@@ -63,5 +63,15 @@
     &__summary {
       margin-bottom: 28px;
     }
+  }
+
+  .homepage-subscribe {
+    top: 29px;
+  }
+}
+
+@include media-query(desktop) {
+  .homepage-subscribe {
+    top: 34px;
   }
 }

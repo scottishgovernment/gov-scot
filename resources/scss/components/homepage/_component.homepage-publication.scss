@@ -37,14 +37,14 @@
     margin-bottom: 0;
   }
 
-  &:not(:last-of-type) {
-    padding-bottom: 28px;
+  &:not(:first-of-type) {
+    padding-top: 28px;
 
-    &:after {
+    &:before {
       border-bottom: 2px dotted $color__grey--pale;
-      bottom: 0;
       content: '';
       position: absolute;
+      top: 0;
       width: 30%;
     }
   }
@@ -103,6 +103,16 @@
         top: 0;
         width: 7px;
       }
+    }
+  }
+}
+
+@include media-query(tablet-down) {
+  .homepage-publication {
+    display: none;
+
+    &:nth-child(-n + 3) {
+      display: block;
     }
   }
 }
