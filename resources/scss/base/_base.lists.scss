@@ -7,11 +7,9 @@ $list__left-margin: 35px;
 ul {
   margin: -7px 0 21px 12px;
   padding: 0;
-  font-size: 16px;
-  line-height: 21px;
+
   li {
     margin: 0 0 14px 18px;
-    type: circle;
   }
 }
 
@@ -23,8 +21,6 @@ article ol {
 
   li {
     margin: 0 0 14px 25px;
-    font-size: 16px;
-    line-height: 21px;
     position: relative;
 
     h1, h2, h3, h4 {
@@ -35,7 +31,6 @@ article ol {
       content: counter(li) ".";
       counter-increment: li;
       font-weight: 500;
-      line-height: 21px;
       letter-spacing: -0.5px;
       left: -25px;
       top: 0;
@@ -66,7 +61,6 @@ ol li > ul  {
       content: "- ";
       left: -30px;
       position: absolute;
-
     }
   }
 }
@@ -123,8 +117,6 @@ article ol.fancy {
 
   ul {
     margin: -7px 0 28px 20px;
-    font-size: 18px;
-    line-height: 28px;
     li {
       margin: 0 0 14px 20px;
     }
@@ -156,8 +148,6 @@ article ol.fancy {
 
     li {
       margin: 0 0 14px 30px;
-      font-size: 18px;
-      line-height: 28px;
       position: relative;
 
       h1, h2, h3, h4 {
