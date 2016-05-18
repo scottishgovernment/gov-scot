@@ -20,12 +20,14 @@ html, body {
   margin-bottom: -$site-footer-height;
 }
 
-.site-footer, .push {
-  height: $site-footer-height;
+.push {
+  height: $site-footer-height + 10px;
   clear: both;
 }
 
 .site-footer {
+  height: $site-footer-height;
+  clear: both;
   box-sizing: border-box;
   background: $color__blue--base;
   padding: 2em 0;
