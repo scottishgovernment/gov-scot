@@ -295,6 +295,17 @@ h3.social-channel {
 /** New Emphasis **/
 h3.emphasis {
   font-weight: 500;
+
+  &:before {
+    background: $color__blue--base;
+    border-radius: 8px;
+    content: '';
+    height: 8px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
 @include media-query(tablet) {
@@ -306,16 +317,6 @@ h3.emphasis {
     margin: 0 0 14px 0;
     text-transform: uppercase;
 
-    &:before {
-      background: $color__blue--base;
-      border-radius: 8px;
-      content: '';
-      height: 8px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
   }
 }
 
