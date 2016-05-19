@@ -325,11 +325,6 @@ $filter-close-button-size: 49px;
   .filter-search .filter-search__button {
     height: 49px;
     width: 49px;
-
-    &--home {
-      height: 42px;
-      width: 42px;
-    }
   }
 
   .filters-accordion {
@@ -361,10 +356,6 @@ $filter-close-button-size: 49px;
       &--search-term[type=text] {
         height: 49px;
         padding-right: 49px;
-      }
-
-      &--search-term-home[type=text] {
-        height: 42px;
       }
     }
 

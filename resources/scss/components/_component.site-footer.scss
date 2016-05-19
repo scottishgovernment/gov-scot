@@ -1,6 +1,9 @@
 /*------------------------------------*\
     #SITE FOOTER
 \*------------------------------------*/
+
+$site-footer-height: 350px;
+
 * {
   margin: 0;
 }
@@ -13,15 +16,18 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -200px;
+  margin: 0 auto;
+  margin-bottom: -$site-footer-height;
 }
 
-.site-footer, .push {
-  height: 221px;
+.push {
+  height: $site-footer-height + 10px;
   clear: both;
 }
 
 .site-footer {
+  height: $site-footer-height;
+  clear: both;
   box-sizing: border-box;
   background: $color__blue--base;
   padding: 2em 0;
@@ -56,6 +62,7 @@ $social-icon__size-multiplier: 2/3;
 
   &__item {
     display: inline-block;
+    margin: 0 0 7px 0;
   }
 
   &__link {
@@ -90,7 +97,6 @@ $social-icon__size-multiplier: 2/3;
 @include media-query(tablet) {
   .social-links__link {
     $social-icon-size: 48px;
-
     font-size: $social-icon-size * $social-icon__size-multiplier;
   }
 }
