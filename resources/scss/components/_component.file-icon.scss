@@ -31,7 +31,7 @@ $filetypegroups: (
 
 $includeretina: true !default;
 
-// Dev note: this generates a lot of extraneous code and it would be nice to optimize it.
+// Dev note: this generates some extraneous code and it would be nice to optimize it.
 //
 // 1) It currently generates separate definitions for each file extension but it would be good to consolidate in groups
 //    pseudocode i.e.
@@ -39,7 +39,7 @@ $includeretina: true !default;
 //
 // 2) It generates media queries for every item but it would be nice to go through all at a given size then mq them
 //    pseudocode i.e.
-//      [ all icon definitions ]
+//      [all icon definitions]
 //
 //      @include media-query(retina) {
 //        [all retina icon definitions]
@@ -116,6 +116,24 @@ $includeretina: true !default;
     }
 
     @include icon-files(165, 235);
+  }
+}
+
+// hover and active states for icon links
+a.file-icon {
+  @include transition(background-color $transition-out-time);
+
+  &:hover {
+    background-color: $color__grey--lighter;
+
+    @include transition-duration($transition-in-time);
+  }
+
+  &:active {
+    background-color: $color__blue--lightest;
+    outline: none;
+
+    @include transition(none);
   }
 }
 
