@@ -46,16 +46,18 @@ SCROLLABLE CONTAINER
 @include media-query(tablet) {
   .scrollable {
 
-    &:before {
-      @include background-image(linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0)));
+    &--shadow {
+      &:before {
+        @include background-image(linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0)));
 
-      content: '';
-      height: 4px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 1;
+        content: '';
+        height: 4px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+      }
     }
 
     &__content {
