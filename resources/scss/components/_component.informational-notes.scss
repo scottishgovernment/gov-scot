@@ -54,6 +54,7 @@
       position: absolute;
       top: 15px;
       width: 36px;
+      font-size: 16px;
 
       @include image-2x('../images/icons/caution.png', 36px, 36px);
     }
@@ -130,6 +131,7 @@
 
       padding-right: 35px;
       padding-left: 64px;
+      font-size: 18px;
     }
 
     &.smallprint {
@@ -150,14 +152,14 @@
   }
 }
 
-@include media-query(desktop)  {
-  .info-note {
-    margin-right: 81px;
-  }
-}
-
-@include media-query(hd)  {
-  .info-note {
-    margin-right: 98px;
-  }
-}
+//@include media-query(desktop)  {
+//  .info-note {
+//    margin-right: 81px;
+//  }
+//}
+//
+//@include media-query(hd)  {
+//  .info-note {
+//    margin-right: 98px;
+//  }
+//}
