@@ -1,5 +1,13 @@
 $notification_padding: 14px;
 
+/**
+ * 1. Notifications should display on top
+ */
+.notification-wrapper {
+  position: relative;
+  z-index: 9999; /* [1] */
+}
+
 .notification {
 
   /**
