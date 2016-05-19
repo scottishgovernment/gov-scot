@@ -1,5 +1,5 @@
 .sidebar-block {
-  font-size: 14px !important;
+  font-size: 16px;
   line-height: 21px;
   margin-bottom: 70px;
 
@@ -29,11 +29,15 @@
   a {
     text-decoration: none;
   }
+
+  ul li {
+    font-size: 14px !important;
+  }
 }
 
 @include media-query(desktop) {
   .sidebar-block {
-    font-size: 14px !important;
+    font-size: 17px;
     line-height: 28px;
 
     &:first-child {
