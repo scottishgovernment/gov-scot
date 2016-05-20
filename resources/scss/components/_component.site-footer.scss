@@ -16,8 +16,7 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto;
-  margin-bottom: -$site-footer-height;
+  margin: 0 auto -$site-footer-height auto;
   position: relative;
 }
 
@@ -32,6 +31,7 @@ html, body {
   box-sizing: border-box;
   background: $color__blue--base;
   padding: 2em 0;
+  position: relative;
 
   &__link {
     color: $color__white !important;
