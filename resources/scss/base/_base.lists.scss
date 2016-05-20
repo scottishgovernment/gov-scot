@@ -86,6 +86,10 @@ ul.no-bullets,
 .no-bullets ul /*[1]*/ {
   list-style-type: none;
   margin-left: 0;
+
+  li {
+    margin-left: 0px;
+  }
 }
 
 article ol.fancy {

@@ -29,6 +29,10 @@
   a {
     text-decoration: none;
   }
+
+  ul li {
+    font-size: 14px !important;
+  }
 }
 
 @include media-query(desktop) {

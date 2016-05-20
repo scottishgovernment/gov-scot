@@ -54,6 +54,7 @@
       position: absolute;
       top: 15px;
       width: 36px;
+      font-size: 16px !important;
 
       @include image-2x('../images/icons/caution.png', 36px, 36px);
     }
@@ -115,7 +116,6 @@
     font-size: $tablet-font-size;
     line-height: 28px;
     padding-right: 35px;
-    margin-right: 125px;
     top: 0;
 
     &.note {
@@ -130,6 +130,7 @@
 
       padding-right: 35px;
       padding-left: 64px;
+      font-size: 18px !important;
     }
 
     &.smallprint {
@@ -150,14 +151,3 @@
   }
 }
 
-@include media-query(desktop)  {
-  .info-note {
-    margin-right: 81px;
-  }
-}
-
-@include media-query(hd)  {
-  .info-note {
-    margin-right: 98px;
-  }
-}
