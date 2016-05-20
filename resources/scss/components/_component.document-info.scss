@@ -31,7 +31,7 @@ $document-info__large-button-size: 70px !default;
     margin: 0 auto;
     padding-bottom: $document-info__button-size;
     position: relative;
-    width: 137px;
+    width: 107px;
 
     &--main {
       padding-bottom: $document-info__large-button-size;
@@ -117,6 +117,7 @@ $document-info__large-button-size: 70px !default;
 
   &__thumbnail-button {
     bottom: 0;
+    font-size: 14px;
     left: 0;
     position: absolute;
     right: 0;
@@ -130,12 +131,12 @@ $document-info__large-button-size: 70px !default;
   }
 
   &__file-details {
+    line-height: 28px;
     margin: 21px 0 7px;
   }
 
   &__page-count,
   &__file-size {
-    display: inline-block;
     margin: 0 0 14px;
     padding: 0 8px;
   }
@@ -151,6 +152,7 @@ $document-info__large-button-size: 70px !default;
   }
 
   &__disclaimer {
+    color: $color__grey--text;
     font-size: 14px;
     line-height: 21px;
   }

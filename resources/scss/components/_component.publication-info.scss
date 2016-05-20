@@ -6,51 +6,26 @@
   &__preamble {
     border: 1px dashed $color__grey--pale;
     border-width: 1px 0;
+    font-size: 14px;
     margin-bottom: 0;
-    min-height: 63px;
+    min-height: 79px;
     padding: 14px 0;
 
     &--icon {
       padding-left: 44px;
       position: relative;
-
-      $publication-files__icon-height: 48px;
-
-      &:before {
-        background: $color__white;
-        color: $color__grey--text;
-        content: '';
-        border: 1px solid $color__grey--base;
-        font-size: 12px;
-        height: $publication-files__icon-height;
-        left: 0;
-        line-height: $publication-files__icon-height;
-        margin-top: $publication-files__icon-height * -0.5;
-        position: absolute;
-        text-align: center;
-        text-transform: uppercase;
-        top: 50%;
-        width: 34px;
-      }
-
-      &:after {
-        border-top: 9px solid white;
-        border-left: 9px solid $color__grey--base;
-        content: '';
-        height: 9px;
-        left: 25px;
-        margin-top: $publication-files__icon-height * -0.5;
-        position: absolute;
-        top: 50%;
-        width: 9px;
-      }
-
-      &--pdf {
-        &:before {
-          content: 'pdf';
-        }
-      }
     }
+  }
+
+  &__file-icon {
+    left: 0;
+    position: absolute;
+    top: 10px;
+  }
+
+  &__preamble-expand {
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   &__collapsible {
@@ -82,10 +57,6 @@
       padding-top: 35px;
     }
 
-    &:not(:first-child) {
-      border-top: 2px solid $color__grey--pale;
-    }
-
     h2, .beta,
     h3, .gamma {
       margin-top: 0;
@@ -111,6 +82,7 @@
     }
 
     &__body {
+      background-color: $color__grey--lighter;
       margin: 0;
 
       &:after {
