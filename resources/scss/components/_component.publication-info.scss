@@ -25,7 +25,6 @@
 
   &__preamble-expand {
     font-weight: 700;
-    text-decoration: none;
     text-transform: uppercase;
   }
 
@@ -37,7 +36,7 @@
   }
 
   &__body {
-    background-color: $color__grey--light;
+    background-color: $color__grey--lighter;
     margin: -1px -15px 0;
     overflow: hidden;
     padding: 0 15px;

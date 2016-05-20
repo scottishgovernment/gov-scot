@@ -96,8 +96,8 @@ $includeretina: true !default;
     width: $file-icon-large-width;
 
     &:before {
-      border-top-width: 20px;
-      border-left-width: 20px;
+      border-top-width: 32px;
+      border-left-width: 32px;
     }
 
     @include icon-files(107, 152);
@@ -111,8 +111,8 @@ $includeretina: true !default;
     width: $file-icon-large-width;
 
     &:before {
-      border-top-width: 20px;
-      border-left-width: 20px;
+      border-top-width: 49px;
+      border-left-width: 49px;
     }
 
     @include icon-files(165, 235);
@@ -140,14 +140,6 @@ a.file-icon {
 // component-specific variants
 .publication-info__body .file-icon {
   &:before {
-    border-top-color: $color__grey--light;
-  }
-}
-
-@include media-query(tablet) {
-  .publication-info__body .file-icon {
-    &:before {
-      border-top-color: $color__grey--lighter;
-    }
+    border-top-color: $color__grey--lighter;
   }
 }

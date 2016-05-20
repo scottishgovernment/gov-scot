@@ -12,7 +12,7 @@
   }
 
   &__item {
-    border-top: 1px solid $color__white;
+    border-top: 1px solid $color__grey--pale;
     margin: 21px 0 0;
     padding-top: 21px;
   }
@@ -55,10 +55,6 @@
 
     &:first-child {
       border-top: 0;
-    }
-
-    &__item {
-      border-color: $color__grey--pale;
     }
   }
 }
