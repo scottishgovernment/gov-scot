@@ -71,8 +71,8 @@ $pagegroup-pip-size: 12px;
 }
 
 .pagegroup__list {
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 28px;
   list-style-type: none;
   margin: 0 0 8px;
 
@@ -90,13 +90,24 @@ $pagegroup-pip-size: 12px;
 
 .pagegroup__text {
   display: block;
-  padding: 18px 15px 17px;
+  padding: 21px 10px;
   text-decoration: none;
 
   &--no-link {
     background-color: $color__blue--lightest;
     border-left: 4px solid $color__blue--base;
-    padding-left: 11px;
+    padding-left: 6px;
+  }
+
+  &--level-1 {
+    font-size: 16px;
+    line-height: 21px;
+    padding: 14px 10px;
+    padding-left: 25px;
+
+    &--no-link {
+      padding-left: 21px;
+    }
   }
 
   &--link {
@@ -179,10 +190,18 @@ $pagegroup-pip-size: 12px;
   }
 
   .pagegroup__text {
-    padding-left: 20px;
+    padding-left: 10px;
 
     &--no-link {
-      padding-left: 16px;
+      padding-left: 6px;
+    }
+
+    &--level-1 {
+      padding-left: 25px;
+
+      &--no-link {
+        padding-left: 21px;
+      }
     }
   }
 }
