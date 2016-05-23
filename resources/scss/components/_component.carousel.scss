@@ -321,7 +321,7 @@ $carousel-text-element-padding-mobile: 15px;
         height: 42px;
         padding: 0;
         &:before {
-          background: #888888;
+          background: $color__grey--base;
           border-radius: 14px;
           content: '';
           height: 14px;
