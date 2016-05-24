@@ -36,10 +36,12 @@
   }
 
   &__body {
-    background-color: $color__grey--lighter;
     margin: -1px -15px 0;
     overflow: hidden;
     padding: 0 15px;
+
+    //min-height: 100vh;
+    @include background-image(linear-gradient($color__grey--lighter, $color__grey--lighter, $color__white));
 
     @extend %inner-shadow-bottom;
     @extend %inner-shadow-top;
@@ -88,14 +90,6 @@
       &:after {
         content: none;
       }
-    }
-
-    &:after {
-      display: block;
-      content: '';
-      height: 360px;
-
-      @include background-image(linear-gradient($color__grey--lighter, $color__white));
     }
   }
 }

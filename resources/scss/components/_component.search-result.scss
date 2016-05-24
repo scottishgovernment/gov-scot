@@ -21,6 +21,7 @@
 
 .search-results-header__right {
   float: right;
+  margin-top: 21px;
   width: auto;
 }
 
@@ -50,7 +51,7 @@
     }
 
     &:active {
-      background: $color__blue--lightest;
+      background: $color__blue--lighter;
       outline: none;
 
       @include transition(none);
