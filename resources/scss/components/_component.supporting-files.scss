@@ -37,8 +37,9 @@
 
   &__link {
     color: $color__grey--text;
+    display: block;
     text-decoration: none;
-
+    
     &:hover {
       color: $color__grey--dark;
     }

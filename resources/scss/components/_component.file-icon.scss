@@ -130,7 +130,7 @@ a.file-icon {
   }
 
   &:active {
-    background-color: $color__blue--lightest;
+    background-color: $color__blue--lighter;
     outline: none;
 
     @include transition(none);

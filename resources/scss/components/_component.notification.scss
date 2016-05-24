@@ -93,7 +93,7 @@ $notification_padding: 14px;
 
     &--gold {
       color: $color__grey--dark;
-      background-color: $color_gold;
+      background-color: $color__gold--base;
       padding: 0 14px;
 
       .wrapper {
@@ -122,7 +122,7 @@ $notification_padding: 14px;
       .notification__beta-box {
         display: inline-block;
         background: $color__grey--dark;
-        color: $color_gold;
+        color: $color__gold--base;
         text-transform: uppercase;
         font-weight: 700;
         padding: 1px 14px;

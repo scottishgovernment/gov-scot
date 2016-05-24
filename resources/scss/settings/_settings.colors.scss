@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 // Using a BEM-like syntax for variable names.
-/*
+
 $color__white: #ffffff !default;
 $color__black: #000000 !default;
 
@@ -15,12 +15,12 @@ $color__blue--base:     #0065bd !default;
 $color__blue--dark:     #00437e !default;
 $color__blue--darker:   #002d54 !default;
 
-$color__grey--lightest: #f8f8f8 !default; // WAS $color__grey--lighter
-$color__grey--lighter:  #ebebeb !default; // WAS $color__grey--light
-$color__grey--light:    #e3e3e3 !default; // WAS $color__grey--pale
-$color__grey--medium:   #b3b3b3 !default; // WAS $color__grey--medium
-$color__grey--base:     #727272 !default; // WAS $color__grey--text
-$color__grey--dark:     #333333 !default; // WAS $color__grey--dark
+$color__grey--lighter:  #f8f8f8 !default;
+$color__grey--light:    #ebebeb !default;
+$color__grey--pale:     #e3e3e3 !default;
+$color__grey--medium:   #b3b3b3 !default;
+$color__grey--base:     #727272 !default;
+$color__grey--dark:     #333333 !default;
 
 $color__red--base:      #d32205 !default;
 $color__gold--base:     #ffb644 !default;
@@ -30,6 +30,7 @@ $color__orange--base:   #e87621 !default; // used for ppt icon
 // Typography
 $color__body:           $color__grey--dark !default;
 $color__placeholder:    $color__grey--base !default;
+$color__grey--text:     $color__grey--base !default;
 
 // Links
 $color__link--primary:  $color__blue--base !default;
@@ -58,8 +59,8 @@ $color__success--background: scale-lightness($color__green--base, 80%) !default;
 
 // Beta
 $color__notification:        $color__gold--base !default;
-*/
 
+/*
 
 $color__white: #ffffff;
 $color__black: #000000;
@@ -125,3 +126,4 @@ $color__success--background: scale-lightness($color__green--base, 80%);
 
 // Beta
 $color_gold: #FFB644;
+*/
