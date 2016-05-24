@@ -8,13 +8,13 @@
 
   &__list {
     list-style-type: none;
-    margin: 0;
+    margin: 21px 0 0;
   }
 
   &__item {
     border-top: 1px solid $color__grey--pale;
-    margin: 21px 0 0;
-    padding-top: 21px;
+    margin: 0;
+    padding: 21px 0;
   }
 
   &__title {
