@@ -39,8 +39,7 @@
     margin: -1px -15px 0;
     overflow: hidden;
     padding: 0 15px;
-
-    //min-height: 100vh;
+    
     @include background-image(linear-gradient($color__grey--lighter, $color__grey--lighter, $color__white));
 
     @extend %inner-shadow-bottom;
