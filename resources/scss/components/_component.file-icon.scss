@@ -3,47 +3,32 @@
 \*------------------------------------*/
 $color__icon--default: $color__grey--text;
 
-$color__icon--img: $color__icon--default;
-$color__icon--doc: $color__blue--base;
+$color__icon--image: $color__icon--default;
+$color__icon--word: $color__blue--base;
 $color__icon--pdf: $color__icon--default;
-$color__icon--xls: $color__green--base;
+$color__icon--excel: $color__green--base;
 $color__icon--ppt: $color__orange--base;
 $color__icon--txt: $color__icon--default;
+$color__icon--rtf: $color__icon--default;
 $color__icon--xml: $color__icon--default;
 $color__icon--csv: $color__icon--default;
-$color__icon--odt: $color__icon--default;
-$color__icon--ods: $color__icon--default;
-$color__icon--odp: $color__icon--default;
-$color__icon--kml: $color__icon--default;
+$color__icon--geo: $color__icon--default;
 
+// a filetypegroup has: extensions, class modifier, border color
 $filetypegroups: (
-  (gif png jpg jpeg) image,
-  (doc docx) word,
-  (pdf) pdf,
-  (xls xlsx xlsm) excel,
-  (ppt pptx pps ppsx) ppt,
-  (rtf) rtf,
-  (txt) txt,
-  (xml, xsd) xml,
-  (csv) csv,
-  (kml, kmz) geo
+  (gif png jpg jpeg) image $color__icon--image,
+  (doc docx) word $color__icon--word,
+  (pdf) pdf $color__icon--pdf,
+  (xls xlsx xlsm) excel $color__icon--excel,
+  (ppt pptx pps ppsx) ppt $color__icon--ppt,
+  (rtf) rtf $color__icon--rtf,
+  (txt) txt $color__icon--txt,
+  (xml, xsd) xml $color__icon--xml,
+  (csv) csv $color__icon--csv,
+  (kml, kmz) geo $color__icon--geo
 ) !default;
 
 $includeretina: true !default;
-
-// Dev note: this generates some extraneous code and it would be nice to optimize it.
-//
-// 1) It currently generates separate definitions for each file extension but it would be good to consolidate in groups
-//    pseudocode i.e.
-//      .ppt, .pptx, .pps, .ppsx {background-image: url(ppt.png)}
-//
-// 2) It generates media queries for every item but it would be nice to go through all at a given size then mq them
-//    pseudocode i.e.
-//      [all icon definitions]
-//
-//      @include media-query(retina) {
-//        [all retina icon definitions]
-//      }
 
 @mixin icon-files($sizex, $sizey) {
   background: url('../images/icons/documents/gen_#{$sizex}px.png') no-repeat center center $color__white;
@@ -52,13 +37,21 @@ $includeretina: true !default;
   }
 
   @each $filetypegroup in $filetypegroups {
-    @each $extension in nth($filetypegroup, 1) {
-      &.file-icon--#{to-upper-case($extension)} {
-        background-image: url('../images/icons/documents/#{$extension}_#{$sizex}px.png');
+    $iconname: nth($filetypegroup, 2);
+    $iconcolor: nth($filetypegroup, 3);
 
-        @if $includeretina {
-          @include image-2x('../images/icons/documents/#{$extension}_#{$sizex}px_@2x.png', #{$sizex}px, #{$sizey}px);
-        }
+    @each $extension in nth($filetypegroup, 1) {
+      $foo: '#{$foo} &.file-icon--#{to-upper-case($extension)}, ';
+    }
+
+    #{$foo} {
+      background-image: url('../images/icons/documents/#{$iconname}_#{$sizex}px.png');
+      @if $iconcolor != $color__icon--default {
+        border-color: $iconcolor;
+      }
+
+      @if $includeretina {
+        @include image-2x('../images/icons/documents/#{$iconname}_#{$sizex}px_@2x.png', #{$sizex}px, #{$sizey}px);
       }
     }
   }
@@ -79,6 +72,7 @@ $includeretina: true !default;
   &:before {
     border-top: 9px solid $color__white;
     border-left: 9px solid $color__grey--base;
+    border-left-color: inherit;
     content: '';
     position: absolute;
     right: -1px;
