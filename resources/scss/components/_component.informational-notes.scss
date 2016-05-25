@@ -54,11 +54,11 @@
       position: absolute;
       top: 15px;
       width: 36px;
-      font-size: 16px !important;
 
       @include image-2x('../images/icons/caution.png', 36px, 36px);
     }
 
+    font-size: 16px !important;
     border-width: 1px 0;
     border-color: $color__grey--medium;
     border-style: solid;
