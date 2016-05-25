@@ -37,6 +37,7 @@ $includeretina: true !default;
   }
 
   @each $filetypegroup in $filetypegroups {
+    $foo: '';
     $iconname: nth($filetypegroup, 2);
     $iconcolor: nth($filetypegroup, 3);
 
@@ -72,7 +73,6 @@ $includeretina: true !default;
   &:before {
     border-top: 9px solid $color__white;
     border-left: 9px solid $color__grey--base;
-    border-left-color: inherit;
     content: '';
     position: absolute;
     right: -1px;
