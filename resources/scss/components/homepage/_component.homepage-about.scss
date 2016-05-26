@@ -48,7 +48,6 @@
   // take mobile size for tablet resolution
   .homepage-about {
     .stat-box {
-      margin: 14px 0 28px;
       min-height: 119px;
 
       &__value {
@@ -77,15 +76,11 @@
     &__title {
       font-size: 26px;
       line-height: 35px;
+      margin-bottom: 28px;
     }
 
     .narrow {
       padding-right: 30px;
-    }
-
-    &__leader {
-      font-size: 21px;
-      margin-top: -2px;
     }
 
     &__image {

@@ -11,7 +11,7 @@
 
   &__intro {
     color: $color__grey--text;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
     margin-bottom: 14px;
   }
@@ -24,6 +24,7 @@
   }
 
   &__title {
+    font-size: 21px;
     line-height: 28px;
     margin: 0 0 28px;
     padding-top: 14px;
@@ -62,6 +63,11 @@
     }
   }
 
+  &__subtitle {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
   &__title-link {
     color: $color__body;
     font-weight: 500;
@@ -84,8 +90,7 @@
     }
 
     &__title {
-      font-size: $base-h2-size;
-      padding-top: 21px;
+      padding-top: 14px;
     }
   }
 }
@@ -95,6 +100,7 @@
     &__title {
       font-size: $tablet-h2-size;
       line-height: 35px;
+      padding-top: 21px;
 
       &--icon {
         &:after {

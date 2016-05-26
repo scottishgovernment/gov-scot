@@ -117,7 +117,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(desktop) {
   .homepage-publication {
     &__title {
       line-height: 28px;
