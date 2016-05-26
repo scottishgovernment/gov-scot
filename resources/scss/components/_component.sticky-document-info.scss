@@ -1,61 +1,135 @@
 .sticky-document-info {
   background: $color__grey--light;
-  box-shadow: 0 3px 10px tint($color__grey--dark, 0.25);
   height: 49px;
   left: 100%;
   opacity: 0;
   position: fixed;
   margin-top: -10px;
   width: 100%;
+  border-bottom: 1px solid $color__grey--light;
 
-  @include animation(fadeOutFromBlock 0.2s);
+  &--animate {
+    @include animation(fadeOutFromBlock 0.2s);
+  }
 
   &__cell {
     height: 49px;
-  }
-
-  &__title {
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15px;
-
     display: table-cell;
     vertical-align: middle;
+
+   }
+
+  /**
+   * 1. Specify a width larger than cell width to force table to be rendered
+   *    with max width. Width 100% doesn't work since requires a px width.
+   *    _bit of a hack_
+   */
+  &__cell--text-right {
+    text-align: right;
+    width: 600px; /* [1] */
   }
+
+
+  &__title {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    line-height: 15px;
+    color: $color__grey--base;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+  }
+
 
   &__content-data {
     display: none;
   }
+
+  &--visible-if-sticky {
+    display: none;
+  }
+
+  &--is-sticky {
+    opacity: 1;
+    left: auto;
+    margin-top: 0;
+    display: block;
+    z-index: 1000;
+    top: 0;
+    box-shadow: 0 3px 10px tint($color__grey--dark, 0.25);
+
+    .sticky-document-info--visible-if-sticky {
+      display: table-cell;
+    }
+    &.sticky-document-info--animate {
+      @include animation(fadeInFromNone 0.2s);
+    }
+  }
+
+  .content-data  {
+    margin-bottom:0;
+  }
+
 }
 
-.sticky-document-info.is-sticky {
-  opacity: 1;
-  left: auto;
-  margin-top: 0;
-  display: block;
-  z-index: 1000;
-
-  @include animation(fadeInFromNone 0.2s);
-}
 
 @include media-query(tablet) {
   .sticky-document-info {
     background: $color__white;
-    border-bottom: 1px solid $color__grey--light;
-    box-shadow: 0 3px 10px tint($color__grey--text, 0.25);
 
-    &__cell {
-      line-height: 49px;
+    height: 70px;
+    padding-top: 0;
+    padding-bottom: 7px;
+    position: relative;
+    left: auto;
+    opacity: 1;
+
+    /**
+     * Hack to make the iOS render position:fixed while scrolling
+     */
+    -webkit-transform: translate3d(-1, 0, 0);
+
+    &--is-sticky {
+      position: fixed;
     }
 
+    &__cell {
+      height: 70px;
+      // line-height: 70px;
+      // padding-top: 7px;
+    }
+
+    /**
+     * 1. Ellipsis requires fixed pixel width
+     */
     &__title {
       display: block;
-      font-size: 21px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 28px;
+
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 100%;
+      width: 330px; /* [1] */
+    }
+
+    &__label {
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 28px;
     }
 
     &__content-data {
@@ -63,6 +137,110 @@
     }
   }
 }
+
+@include media-query(desktop) {
+
+  .sticky-document-info {
+
+    /**
+     * 1. Ellipsis requires fixed pixel width
+     */
+    &__title {
+      font-size: 21px;
+      font-weight: 300;
+      line-height: 35px;
+      width: 535px; /* [1] */
+    }
+  }
+
+}
+
+
+
+/**
+ * Trigger button and drop down panel
+ */
+
+ .sticky-document-info__trigger {
+   @extend .button;
+   @extend .button--clear;
+   // color: $color__blue--base;
+   // background-color: transparent;
+   border-top: 1px solid $color__blue--base;
+   position: relative;
+   text-transform: none;
+   font-size: 14px;
+   height: 70px;
+   padding-right: 28px;
+   top: -1px;
+
+   &:after {
+     content: '';
+     position: absolute;
+     right: 0;
+     top: 23px;
+     width: 28px;
+     height: 28px;
+     margin: 0 auto;
+
+     background-image: url(../images/icons/arrows/int_arrow_down_blue_35px.png);
+     @include image-2x("../images/icons/arrows/int_arrow_down_blue_35px_@2x.png", 28px, 28px);
+   }
+
+   &:active, &:focus {
+     background-color: $color__blue--lighter;
+     outline: none;
+   }
+
+   &:hover {
+     &:after {
+       background-image: url(../images/icons/arrows/int_arrow_down_blue_over_35px.png);
+       @include image-2x("../images/icons/arrows/int_arrow_down_blue_over_35px_@2x.png", 28px, 28px);
+     }
+   }
+
+   &--expanded {
+     &:after {
+       -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+       -ms-transform: rotate(180deg);
+       -o-transform: rotate(180deg);
+       transform: rotate(180deg);
+     }
+   }
+
+ }
+
+
+.sticky-document-info__panel-container {
+  position: relative;
+}
+.sticky-document-info__panel {
+  display: none;
+  &--open {
+    display: block;
+    position:absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 6px 10px tint($color__grey--dark, 0.25);
+    width: 292px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 30px;
+    z-index: 100000;
+
+
+  }
+}
+
+
+
+
+
+
+/**
+ * Animations
+ */
 
 
 @include keyframes(fadeOutFromBlock) {
