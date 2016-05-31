@@ -9,6 +9,8 @@
     padding-left: 9px;
   }
 
+
+
   &__title {
     font-weight: 700;
     margin-top: 0;
@@ -23,7 +25,7 @@
   }
 
   &__summary {
-    margin-bottom: 42px;
+    margin-bottom: 0;
   }
 }
 
@@ -50,6 +52,11 @@
 @include media-query(tablet-down) {
   .homepage-news__item {
     display: none;
+    margin-bottom: 42px;
+
+    &:nth-child(-n + 1) {
+      margin-bottom: 35px;
+    }
 
     &:nth-child(-n + 2) {
       display: inline-block;

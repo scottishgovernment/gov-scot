@@ -15,7 +15,7 @@
   @extend %small-arrow-right;
 }
 
-@include media-query(hd) {
+@include media-query(desktop) {
   .utility-link {
     font-size: 14px;
   }
