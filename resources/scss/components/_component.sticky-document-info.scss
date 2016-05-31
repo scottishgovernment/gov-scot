@@ -62,13 +62,13 @@
   }
 
   &--is-sticky {
-    opacity: 1;
+    box-shadow: 0 3px 10px tint($color__grey--dark, 0.25);
+    display: block;
     left: auto;
     margin-top: 0;
-    display: block;
-    z-index: 1000;
+    opacity: 1;
     top: 0;
-    box-shadow: 0 3px 10px tint($color__grey--dark, 0.25);
+    z-index: 1000;
 
     .sticky-document-info--visible-if-sticky {
       display: table-cell;
