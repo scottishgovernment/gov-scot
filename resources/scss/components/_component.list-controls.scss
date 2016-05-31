@@ -87,6 +87,11 @@ $filter-close-button-size: 49px;
       padding-right: 56px;
       width: 100%;
     }
+
+    &--search-term-home[type=text] {
+      height: 49px;
+      padding-right: 49px;
+    }
   }
 
   &__button {
@@ -121,6 +126,11 @@ $filter-close-button-size: 49px;
 
     background: url('../images/icons/search-grey.png') no-repeat transparent center;
     @include image-2x('../images/icons/search-grey_@2x.png', 35px, 35px);
+
+    &--home {
+      height: 49px;
+      width: 49px;
+    }
   }
 
   &__input:focus + .filter-search__button {
@@ -338,11 +348,11 @@ $filter-close-button-size: 49px;
     position: relative;
   }
 
-  .filters-layer {
-    // the sticky footer won't work without this. :/
-    // the size was determined using chrome dev tools.
-    min-height: 1100px;
-  }
+  //.filters-layer {
+  //  // the sticky footer won't work without this. :/
+  //  // the size was determined using chrome dev tools.
+  //  min-height: 1100px;
+  //}
 
   .filters {
     border-bottom: 1px solid $color__grey--light;

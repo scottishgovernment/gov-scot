@@ -4,9 +4,8 @@
   position: relative;
 
   &__title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 21px;
     margin: 0 0 7px;
   }
 
@@ -120,6 +119,7 @@
 @include media-query(desktop) {
   .homepage-publication {
     &__title {
+      font-size: 18px;
       line-height: 28px;
     }
   }
