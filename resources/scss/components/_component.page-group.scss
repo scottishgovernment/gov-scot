@@ -73,8 +73,12 @@ $page-group-pip-size: 12px;
     margin: 0;
     border-bottom: 1px solid $color__grey--light;
 
+    h3 {
+      margin: 14px 0 7px;
+    }
+
     a {
-      padding: 21px 10px;
+      padding: 21px 15px 27px;
       display: block;
       width: 100%;
       height: 100%;
@@ -82,6 +86,10 @@ $page-group-pip-size: 12px;
 
       &:hover {
         background: $color__grey--lighter;
+      }
+
+      &:active {
+        background: #E5F0F8;
       }
 
       p {
@@ -101,34 +109,33 @@ $page-group-pip-size: 12px;
 }
 
 .page-group__item {
-  border-bottom: 1px solid $color__grey--light;
+  border-top: 1px solid $color__grey--light;
   margin: 0;
 
-  &:last-child {
-    border-bottom: 1px solid $color__grey--base;
+  &--level-1 {
+    font-size: 16px;
+    line-height: 21px;
+    margin-left: 15px;
+  }
+
+  &:first-child {
+    border-top: none;
   }
 }
 
 .page-group__text {
   display: block;
-  padding: 21px 10px;
+  padding: 21px 14px;
   text-decoration: none;
 
   &--no-link {
     background-color: $color__blue--lighter;
     border-left: 4px solid $color__blue--base;
-    padding-left: 6px;
+    padding-left: 10px;
   }
 
   &--level-1 {
-    font-size: 16px;
-    line-height: 21px;
     padding: 14px 10px;
-    padding-left: 25px;
-
-    &--no-link {
-      padding-left: 21px;
-    }
   }
 
   &--link {
@@ -209,24 +216,6 @@ $page-group-pip-size: 12px;
       border-bottom: 0;
     }
   }
-
-  .page-group__text {
-    padding-left: 10px;
-
-    &--no-link {
-      padding-left: 6px;
-    }
-
-    &--level-1 {
-      padding-left: 25px;
-
-      &--no-link {
-        padding-left: 21px;
-      }
-    }
-  }
-
-
 }
 
 
