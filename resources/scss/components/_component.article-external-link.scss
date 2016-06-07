@@ -2,6 +2,17 @@ article {
   a[href^="//"],
   a[href^="http://"],
   a[href^="https://"] {
+
+    &.nonexternallink {
+      padding-right: 0;
+      background-image: none;
+
+      &:hover,
+      &:active {
+        background-image: none;
+      }
+    }
+
     background-image: url(../images/icons/arrows/ext_arrow_text_15px.png);
     background-position: center right;
     background-repeat: no-repeat;
@@ -44,6 +55,17 @@ article {
     a[href^="//"],
     a[href^="http://"],
     a[href^="https://"] {
+
+      &.nonexternallink {
+        padding-right: 0;
+        background-image: none;
+
+        &:hover,
+        &:active {
+          background-image: none;
+        }
+      }
+
       background-image: url(../images/icons/arrows/ext_arrow_text_17px.png);
       padding-right: 22px;
 
