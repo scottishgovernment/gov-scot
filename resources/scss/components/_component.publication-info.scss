@@ -3,16 +3,22 @@
 }
 
 .publication-info {
+  &--push-down-mobile {
+    margin-top: 7px;
+  }
+
   &__preamble {
+    color: $color__body;
     border: 1px dashed $color__grey--pale;
     border-width: 1px 0;
     font-size: 14px;
     margin-bottom: 0;
     min-height: 79px;
     padding: 14px 0;
+    text-decoration: none !important;
 
     &--icon {
-      padding-left: 44px;
+      padding-left: 49px;
       position: relative;
     }
   }
@@ -24,7 +30,9 @@
   }
 
   &__preamble-expand {
+    color: $color__link--primary;
     font-weight: 700;
+    text-decoration: underline;
     text-transform: uppercase;
   }
 
@@ -39,7 +47,7 @@
     margin: -1px -15px 0;
     overflow: hidden;
     padding: 0 15px;
-    
+
     @include background-image(linear-gradient($color__grey--lighter, $color__grey--lighter, $color__white));
 
     @extend %inner-shadow-bottom;
@@ -71,6 +79,10 @@
 
 @include media-query(tablet) {
   .publication-info {
+    &--push-down-mobile {
+      margin-top: 0;
+    }
+
     &__collapsible {
       // collapsible panel is NOT initially collapsed on tablet and above
       &--collapsed-initial {
