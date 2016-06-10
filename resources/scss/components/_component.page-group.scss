@@ -74,7 +74,11 @@ $page-group-pip-size: 12px;
     border-bottom: 1px solid $color__grey--light;
 
     h3 {
-      margin: 14px 0 7px;
+      margin: 21px 0 7px;
+
+      @include media-query(tablet) {
+        margin: 14px 0 7px;
+      }
     }
 
     a {
