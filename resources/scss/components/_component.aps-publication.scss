@@ -1,6 +1,7 @@
 
 .publication-content {
-  overflow-x: scroll;
+
+  border-bottom: 1px solid $color__grey--pale;
 
   h3 {
     margin-bottom: 21px;
@@ -21,14 +22,12 @@
   @include media-query(tablet) {
     padding-top: 56px;
   }
-
 }
 
 
 .publication-section {
-  text-align: center;
   color: $color__grey--base;
-  margin-bottom: 14px;
+  margin: 21px 0;
   font-size: 15px;
 
   &__current {
