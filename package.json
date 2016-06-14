@@ -55,7 +55,7 @@
     "load-grunt-tasks": "^3.5.0",
     "lodash-node": "^2.4.1",
     "lru-cache": "^2.5.0",
-    "marked": "^0.3.2",
+    "marked": "^0.3.3",
     "moment": "~2.10.6",
     "optimist": "^0.6.1",
     "pikaday": "1.4.0",
