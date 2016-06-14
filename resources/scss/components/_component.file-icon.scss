@@ -37,15 +37,15 @@ $includeretina: true !default;
   }
 
   @each $filetypegroup in $filetypegroups {
-    $foo: '';
+    $classList: '';
     $iconname: nth($filetypegroup, 2);
     $iconcolor: nth($filetypegroup, 3);
 
     @each $extension in nth($filetypegroup, 1) {
-      $foo: '#{$foo} &.file-icon--#{to-upper-case($extension)}, ';
+      $classList: '#{$classList} &.file-icon--#{to-upper-case($extension)}, ';
     }
 
-    #{$foo} {
+    #{$classList} {
       background-image: url('../images/icons/documents/#{$iconname}_#{$sizex}px.png');
       @if $iconcolor != $color__icon--default {
         border-color: $iconcolor;

@@ -84,7 +84,7 @@
     background: $color__grey--lighter;
     background-color: inherit;
     border-left: 4px solid $color__grey--dark;
-    font-size: $base-note-size;
+    font-size: $tablet-note-size;
     padding: 3px 35px 4px 10px;
   }
 
@@ -101,7 +101,7 @@
 
     cite {
       display: block;
-      font-size: $mobile-milli-size;
+      font-size: $base-milli-size;
       font-style: normal;
       font-weight: 400;
       margin-top: 8px;
@@ -150,4 +150,3 @@
     }
   }
 }
-

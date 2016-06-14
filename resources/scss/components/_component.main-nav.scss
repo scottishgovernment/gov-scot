@@ -43,7 +43,7 @@ $main-nav__transition-timing: ease;
 
     &__item {
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      margin-bottom: 0;
+      margin: 0 0 0 15px;
     }
 
     &__item:last-child {
@@ -80,6 +80,8 @@ $main-nav__transition-timing: ease;
     &.mobile-layer--open {
       .main-nav__list {
         left: 15px;
+        max-height: 100%;
+        overflow-y: auto;
       }
     }
   }

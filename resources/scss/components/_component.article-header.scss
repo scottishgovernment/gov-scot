@@ -10,8 +10,11 @@
     color: $color__grey--dark;
     font-size: 16px;
     line-height: 21px;
-    font-weight: 500;
     margin: -21px 0 35px 0;
+
+    &__b {
+        font-weight: 500;
+    }
   }
 
   &__subtitle-link {

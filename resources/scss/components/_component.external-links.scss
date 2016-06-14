@@ -10,14 +10,14 @@
 
 .external-links {
   list-style: none;
-  margin-left: 0;
-  margin-top: 48px;
-  padding-top: 24px;
-  position: relative;
+  margin: 0;
 
   &__item {
-    margin: 0;
-    padding: 8px 4px;
+    margin: 14px 4px 28px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
   }
 
   &__link {
@@ -69,68 +69,5 @@
     .external-links__label {
       display: none;
     }
-
   }
-
-
-}
-
-@include media-query(tablet) {
-
-  .external-links {
-    margin-top: 0;
-    padding-top: 0;
-
-    &__item {
-      border-bottom: 1px solid $color__grey--light;
-      padding: 16px 4px;
-    }
-
-    .external-links__item:first-child  {
-      border-top: 1px solid $color__grey--light;
-    }
-
-    &:before {
-      content: none;
-    }
-
-
-    &--compact {
-      display: block;
-      width: auto;
-
-      &:before {
-        height:0;
-      }
-
-      .external-links__item {
-        display: block;
-        text-align: left;
-        font-size: 15px;
-        padding: 8px 4px;
-      }
-      .external-links__label {
-        display: inline;
-      }
-      .external-links__item:first-child {
-        border-top: none
-      }
-      .external-links__item:last-child {
-        border-bottom: none;
-      }
-
-    }
-
-  }
-}
-
-
-@include media-query(desktop) {
-
-  .external-links--compact {
-    .external-links__item {
-      font-size: 17px;
-    }
-  }
-
 }

@@ -3,13 +3,34 @@
 \*------------------------------------*/
 
 .person {
-  margin-bottom: 24px;
+  margin-bottom: 21px;
 
   &__image-container {
     clear: left;
     float: left;
     margin-right: 20px;
+    position: relative;
     width: 130px;
+
+    a {
+        &:after {
+            background: rgba(0, 0, 0, 0);
+            bottom: 0;
+            content: '';
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            @include transition(background-color $transition-out-time);
+        }
+
+        &:hover:after {
+            background: rgba(0, 0, 0, 0.2);
+
+            @include transition-duration($transition-in-time);
+        }
+    }
   }
 
   &__text-container {
@@ -22,17 +43,16 @@
   }
 
   &__name {
-    font-size: $mobile-h3-size;
-    line-height: $mobile-para-line-height;
-    margin: 0 0 16px 0;
-
+    font-size: $base-h3-size;
+    line-height: $base-line-height * 3;
+    margin: 0 0 14px 0;
 
     @include heading-link;
   }
 
   &__role {
-    font-size: $mobile-para-size;
-    line-height: $mobile-para-line-height;
+    font-size: $base-milli-size;
+    line-height: $base-line-height * 3;
 
     @include non-contextual-link;
 
@@ -52,7 +72,7 @@
 
   &__responsibilities-list {
     list-style-type: none;
-    line-height: 16px;
+    line-height: 14px;
     margin: 0;
     padding: 0;
   }
@@ -68,13 +88,32 @@
     content: '';
     display: block;
   }
+
+
+}
+
+@include media-query(tablet-down) {
+  .person {
+    &--bordered-mobile {
+      border: 1px solid $color__grey--pale;
+      border-width: 1px 0;
+      margin-bottom: 35px;
+      padding: 35px 0;
+    }
+
+    &__image-container--centred-mobile {
+      float: none;
+      margin: 0 auto;
+    }
+  }
 }
 
 /*
 Person sizes for particular templates
 */
 body.layout-org-roles,
-body.layout-person {
+body.layout-person,
+body.layout-role {
   .person__image {
     height: 130px;
     width: 130px;
@@ -154,7 +193,7 @@ body.layout-directorate {
 
     &__image-container {
       float: none;
-      margin: 0 0 16px 0;
+      margin: 0 0 14px 0;
       width: 100%;
     }
 
@@ -164,14 +203,14 @@ body.layout-directorate {
     }
 
     &__name {
-      font-size: $base-h3-size;
-      line-height: $base-para-line-height;
-      margin: 0 0 8px 0;
+      font-size: $tablet-h3-size;
+      line-height: $base-line-height * 3;
+      margin: 0 0 7px 0;
     }
 
     &__role {
-      font-size: $base-para-size;
-      line-height: $base-para-line-height;
+      font-size: $base-font-size;
+      line-height: $base-line-height * 3;
     }
 
     &__responsibilities {
@@ -180,14 +219,9 @@ body.layout-directorate {
       ul {
         line-height: $base-line-height * 3;
         li {
-          margin-bottom: 8px;
+          margin-bottom: 7px;
         }
       }
     }
-  }
-}
-
-@include media-query(hd) {
-  .person__role {
   }
 }

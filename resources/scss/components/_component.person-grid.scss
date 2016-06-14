@@ -20,4 +20,18 @@
     margin-bottom: 0; /* [3] */
     margin-left: 0;
   }
+
+  + .person-grid {
+    border-top: 1px solid $color__grey--dark;
+    margin-top: 63px;
+    padding-top: 21px;
+  }
+}
+
+@include media-query(tablet) {
+    .person-grid {
+        + .person-grid {
+            padding-top: 42px;
+        }
+    }
 }

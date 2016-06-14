@@ -1,49 +1,66 @@
-// this cannot currently use BEM because this is all using nested markdown lists
-
 .page-subnav {
-  border-top: 3px solid $color__blue--base;
-  margin-top: 38px;
-
-  ul {
+  &__list {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 0 15px;
 
-    li {
-      border-top: 1px solid $color__grey--light;
+    &--first {
       margin: 0;
+    }
+  }
 
-      &:first-child {
+  &__item {
+    margin: 0;
+  }
+
+  &__link {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: white !important;
+    display: block;
+    font-size: 18px;
+    line-height: 28px;
+    padding: 21px 10px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      border-left: 3px solid $color__blue--base;
+      outline: none;
+      padding-left: 7px;
+    }
+
+    &--secondary {
+      font-size: 16px;
+      line-height: 21px;
+      padding: 14px 10px;
+    }
+
+    &--tertiary {
+      font-size: 14px;
+      line-height: 21px;
+      padding: 7px 10px;
+    }
+  }
+
+  &--tablet {
+    border-top: 3px solid $color__body;
+    margin-top: 9px;
+
+    .page-subnav__item {
+
+    }
+
+    .page-subnav__link {
+      border-top-color: $color__grey--light;
+      color: $color__body !important;
+
+      &--current {
+        background: $color__blue--lighter;
         border-top: 0;
-      }
-    }
-
-    ul {
-      border-top: 1px solid $color__grey--light;
-
-      li {
-        margin-left: 25px;
-
-        &:first-child {
-          border-top: 0;
-        }
-
-        a {
-          padding: 8px 0;
-        }
-      }
-    }
-
-    a {
-      display: block;
-      padding: 16px 0;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &:active {
-        outline: none;
+        border-left: 3px solid $color__blue--base;
+        padding-left: 7px;
       }
     }
   }
