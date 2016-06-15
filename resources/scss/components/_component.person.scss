@@ -34,6 +34,7 @@
   }
 
   &__text-container {
+    line-height: $base-line-height * 3;
     padding-left: 150px;
   }
 
@@ -44,7 +45,6 @@
 
   &__name {
     font-size: $base-h3-size;
-    line-height: $base-line-height * 3;
     margin: 0 0 14px 0;
 
     @include heading-link;
@@ -52,10 +52,8 @@
 
   &__role {
     font-size: $base-milli-size;
-    line-height: $base-line-height * 3;
 
     @include non-contextual-link;
-
   }
 
   &__responsibilities {
@@ -199,18 +197,17 @@ body.layout-directorate {
 
     &__text-container {
       float: none;
+      line-height: $base-line-height * 4;
       padding-left: 0;
     }
 
     &__name {
       font-size: $tablet-h3-size;
-      line-height: $base-line-height * 3;
       margin: 0 0 7px 0;
     }
 
     &__role {
       font-size: $base-font-size;
-      line-height: $base-line-height * 3;
     }
 
     &__responsibilities {

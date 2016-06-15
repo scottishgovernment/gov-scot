@@ -8,6 +8,8 @@ $page-group-pip-size: 12px;
 
 .page-group {
   position: relative;
+
+
 }
 
 .page-group__title {
@@ -102,12 +104,16 @@ $page-group-pip-size: 12px;
       height: 100%;
       text-decoration: none;
 
+      @include transition(background-color 1s);
+
       &:hover {
         background: $color__grey--lighter;
+        @include transition(background-color 0.2s);
       }
 
       &:active {
         background: #E5F0F8;
+        @include transition(none);
       }
 
       p {
@@ -121,17 +127,33 @@ $page-group-pip-size: 12px;
   font-size: 18px;
   line-height: 28px;
   list-style-type: none;
-  margin: 0 0 8px;
+  margin: 0;
 
   display: none;
+
+  &--mobile {
+      display: block;
+  }
 }
 
 .page-group__item {
-  border-top: 1px solid $color__grey--light;
+
   margin: 0;
+
+  &--level-0:first-of-type {
+    > .page-group__text {
+      border-top: 0;
+    }
+  }
 
   &--level-1 {
     font-size: 16px;
+    line-height: 21px;
+    margin-left: 15px;
+  }
+
+  &--level-2 {
+    font-size: 14px;
     line-height: 21px;
     margin-left: 15px;
   }
@@ -145,6 +167,7 @@ $page-group-pip-size: 12px;
   display: block;
   padding: 21px 14px;
   text-decoration: none;
+  border-top: 1px solid $color__grey--light;
 
   &--no-link {
     background-color: $color__blue--lighter;
@@ -156,14 +179,23 @@ $page-group-pip-size: 12px;
     padding: 14px 10px;
   }
 
+  &--level-2 {
+    padding: 7px 10px;
+  }
+
   &--link {
+    @include transition(background-color 1s);
+
     &:hover {
       background-color: $color__grey--lighter;
+      text-decoration: none;
+      @include transition(background-color 0.2s);
     }
 
     &:active {
       background-color: $color__blue--lighter;
       outline: 0;
+      @include transition(none);
     }
   }
 }
@@ -212,7 +244,7 @@ $page-group-pip-size: 12px;
 
     &:after {
       display: block;
-      content: '';
+     // content: '';
       height: 16px;
 
       @include background-image(linear-gradient($color__grey--light, $color__grey--lighter));
@@ -226,6 +258,18 @@ $page-group-pip-size: 12px;
       height: 360px;
 
       @include background-image(linear-gradient($color__grey--lighter, $color__white));
+    }
+
+    &--section-nav {
+      border-top: 3px solid $color__body;
+
+      a {
+        color: $color__body;
+      }
+
+      &:after {
+        content: none;
+      }
     }
   }
 
@@ -251,6 +295,25 @@ $page-group-pip-size: 12px;
       top: 0;
       bottom: 0;
       overflow-y: auto;
+    }
+  }
+}
+
+/* styles for mobile nav */
+@include media-query(tablet-down) {
+  .page-group--mobile {
+    .page-group__list {
+      display: block;
+    }
+
+    .page-group__text {
+      background: transparent;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+
+      &:hover {
+        background-color: $color__blue--dark;
+      }
     }
   }
 }
