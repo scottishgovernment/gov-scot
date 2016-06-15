@@ -22,6 +22,12 @@ $page-group-pip-size: 12px;
   }
 }
 
+.page-group__content {
+  @include media-query(tablet-down) {
+    padding-top: 35px;
+  }
+}
+
 .page-group__toggle {
   background-color: transparent;
   border: 1px solid $color__blue--base;
