@@ -43,6 +43,7 @@ $search-box__transition-timing: ease;
   &--mobile {
     left: 15px;
     position: fixed;
+    top: 75px;
     right: 15px;
     width: auto;
     z-index: 101;
@@ -62,7 +63,7 @@ $search-box__transition-timing: ease;
 
   &.mobile-layer--open {
       .search-box--mobile {
-          margin-top: 48px;
+          //margin-top: 100px;
       }
   }
 
