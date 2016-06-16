@@ -37,14 +37,14 @@ $main-nav__transition-timing: ease;
       top: 75px;
       right: 0;
       z-index: 1001;
-      padding: 24px 0 24px 15px;
+      padding: 24px 15px;
 
       @include transition(left $main-nav__transition-duration $main-nav__transition-timing);
     }
 
     &__item {
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      margin: 0 0 0 15px;
+      margin: 0;
     }
 
     &__item:last-child {

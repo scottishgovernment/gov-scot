@@ -6,46 +6,39 @@
 .az-list {
 
   &__chunkName {
-      font-weight: 600;
-      font-size: 28px;
+      font-size: 24px;
+      font-weight: 900;
       line-height: 28px;
-      float: left;
-      clear: left;
-      width: 20%;
-      padding-top: 34px;
-  }
-
-  &__chunk {
-      float: left;
-      width: 70%;
-      padding-top: 40px;
+      white-space: nowrap;
   }
 
   &__list {
       list-style-type: none;
-
+      margin: 0 0 56px 0;
   }
 
   &__item {
-
-
+      margin-left: 0;
   }
 
+  &__link {
+      text-decoration: none;
+  }
 }
 
 
 @include media-query(tablet) {
-
-
   .az-list {
-
       &__chunkName {
-          width: 30%;
-          font-size: 48px;
-          padding-top: 40px;
+          font-size: 28px;
       }
-
   }
+}
 
-
+@include media-query(hd) {
+  .az-list {
+      &__chunkName {
+          font-size: 35px;
+      }
+  }
 }
