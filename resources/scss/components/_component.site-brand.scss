@@ -30,6 +30,14 @@
   .site-brand {
     height: 72px;
     position: absolute;
+
+    &__logo {
+      @include transition(all 0);
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 }
 
