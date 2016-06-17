@@ -148,6 +148,8 @@
   .site-header {
     position: relative;
     height: 80px;
+
+    @include transition(all 0);
   }
 
   .site-header__container {
@@ -156,15 +158,3 @@
 
 }
 
-@include media-query(hd) {
-
-  // .site-header {
-  //   position: absolute;
-  //   height: 88px;
-  // }
-  //
-  // .site-header__container {
-  //   margin-top: 88px;
-  // }
-
-}
