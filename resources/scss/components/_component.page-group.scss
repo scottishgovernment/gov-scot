@@ -140,10 +140,13 @@ $page-group-pip-size: 12px;
 
   margin: 0;
 
-  &--level-0:first-of-type {
+  &--level-0 {
     font-size: 18px;
     line-height: 28px;
 
+  }
+  
+  &--level-0:first-of-type {
     > .page-group__text {
       border-top: 0;
     }
