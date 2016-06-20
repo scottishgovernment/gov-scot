@@ -4,6 +4,14 @@
 \*------------------------------------*/
 
 
+.layout-featured-role {
+  .article-header {
+    &__title {
+      margin-top: 35px;
+    }
+  }
+}
+
 .article-header {
 
   &__subtitle {
