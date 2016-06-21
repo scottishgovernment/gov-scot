@@ -1,3 +1,7 @@
+/*------------------------------------*\
+    #ARTICLE EXTERNAL LINK
+\*------------------------------------*/
+
 article {
   a[href^="//"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]),
   a[href^="http://"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]),
