@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #CONTAINERS
+\*------------------------------------*/
+
+.container {
+    &--grey {
+        background: #f8f8f8;
+        padding: 42px 0 7px;
+
+    }
+
+    &--last {
+        margin-bottom: -70px;
+    }
+}
