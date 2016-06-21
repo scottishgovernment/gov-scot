@@ -109,6 +109,7 @@ $main-nav__transition-timing: ease;
 
     &__item {
       display: inline-block;
+      margin: 0;
     }
 
     /**
@@ -173,7 +174,7 @@ $main-nav__transition-timing: ease;
 @include media-query(hd) {
 
   .main-nav__link {
-    height: 79px;
+    height: 71px;
   }
 
 }
