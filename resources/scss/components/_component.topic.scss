@@ -1,0 +1,76 @@
+/*------------------------------------*\
+    #TOPIC
+\*------------------------------------*/
+
+.topic {
+    color: $color__grey--base;
+    font-size: 14px;
+    line-height: 21px;
+
+    &__title {
+        color: #909090;
+        font-size: 18px;
+        line-height: 21px;
+        margin: 0 0 14px;
+        padding-bottom: 14px;
+        position: relative;
+
+        &:after {
+            background-color: $color__grey--medium;
+            bottom: 0;
+            content: '';
+            height: 1px;
+            left: 0;
+            position: absolute;
+            width: 40px;
+        }
+    }
+
+    p {
+        margin-bottom: 14px;
+    }
+
+    &--transitioned {
+        color: $color__body;
+
+        .topic__title {
+            color: $color__body;
+
+            &:after {
+                background-color: $color__blue--base;
+                bottom: -1px;
+                height: 2px;
+            }
+        }
+    }
+
+    &__buttons {
+        left: -12px;
+        margin: 0 -28px 14px 0;
+        position: relative;
+    }
+}
+
+
+.topics {
+    li {
+        margin: 0 0 42px;
+    }
+
+    ul {
+        margin-bottom: 0;
+        margin-left: -30px;
+    }
+}
+
+@include media-query(tablet) {
+    .topics {
+        li {
+            margin-bottom: 56px;
+        }
+    }
+
+    .topic {
+        padding-right: 30px;
+    }
+}

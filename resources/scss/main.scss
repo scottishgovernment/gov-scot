@@ -41,6 +41,7 @@
  *
  * OBJECTS
  * Layout...............inuitcss layout tool
+ * Containers
  * Dividers
  * Helpers
  * Layers
@@ -91,6 +92,7 @@
  * Sticky back to top
  * Supporting files
  * Title with prefix
+ * Topic
  * Utility link
  * Welcome
  *
@@ -222,6 +224,7 @@ $inuit-use-fractions: false;
  * OBJECTS
  */
 @import "../../node_modules/inuit-layout/objects.layout";
+@import "objects/object.containers";
 @import "objects/object.dividers";
 @import "objects/object.helpers";
 @import "objects/object.layers";
@@ -287,11 +290,11 @@ $accordion__title-size: 16px;
 @import "components/component.site-header";
 @import "components/component.social-channels";
 @import "components/component.stat-box";
-
 @import "components/component.sticky-back-to-top";
 @import "components/component.sticky-document-info";
 @import "components/component.supporting-files";
 @import "components/component.title-with-prefix";
+@import "components/component.topic";
 @import "components/component.utility-link";
 @import "components/component.welcome";
 

@@ -158,6 +158,27 @@
     @include image-2x('../images/icons/close-grey_@2x.png', 27px, 27px);
   }
 
+  // display variant
+  &--pill {
+      border-radius: 100px;
+      display: inline-block;
+      font-weight: 400;
+      height: 35px;
+      line-height: 35px;
+      padding: 0 24px 0 12px;
+      text-transform: none;
+      width: auto;
+
+      @extend %small-arrow-right;
+      & + & {
+          margin-left: 10px;
+      }
+
+      &:active {
+          outline: none;
+      }
+  }
+
   /**
    * Button icon placement
    */
