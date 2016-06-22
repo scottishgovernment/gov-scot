@@ -139,9 +139,13 @@
 
   // size variant
   &--xsmall {
-    font-size: 13px;
+    font-size: 12px;
     height: 28px;
     padding: 0 0.5em;
+
+    @include media-query(tablet) {
+        font-size: 13px;
+    }
   }
 
   // display in a textlike (no padding)
@@ -165,7 +169,7 @@
       font-weight: 400;
       height: 35px;
       line-height: 35px;
-      padding: 0 24px 0 12px;
+      padding: 0 24px 0 10px;
       text-transform: none;
       width: auto;
 
@@ -174,8 +178,17 @@
           margin-left: 10px;
       }
 
+      &:hover {
+          text-decoration: underline;
+      }
+
       &:active {
+          background-color: $color__blue--light;
           outline: none;
+      }
+
+      @include media-query(tablet) {
+          padding-right: 22px;
       }
   }
 

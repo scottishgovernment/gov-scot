@@ -51,6 +51,11 @@
     }
 }
 
+@include media-query(tablet-down) {
+    .topic {
+        margin-left: -15px;
+    }
+}
 
 .topics {
     li {
