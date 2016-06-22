@@ -254,7 +254,6 @@ $filter-close-button-size: 49px;
     right: 0;
     text-align: center;
     top: 0;
-    z-index: 1000;
 
     @include transition(opacity $transition-in-time, top $transition-in-time);
 
