@@ -20,8 +20,9 @@
 .full-width-image {
   // allow the image to break out of layout; by design
   @include media-query(tablet-down) {
-    margin-left: -30px;
+    margin-left: -15px;
     max-width: none;
+    width: auto;
   }
 
   display: block;
