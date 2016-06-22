@@ -7,7 +7,32 @@
 .layout-featured-role {
   .article-header {
     &__title {
-      margin-top: 35px;
+      margin-top: 21px;
+    }
+
+    &__subtitle {
+      margin-bottom: 49px;
+    }
+
+    @include media-query(tablet) {
+      &__title {
+        margin-top: 35px;
+      }
+      &__subtitle {
+        margin-bottom: 56px;
+      }
+    }
+
+    @include media-query(desktop) {
+      &__title {
+        margin-top: 36px;
+      }
+    }
+
+    @include media-query(hd) {
+      &__title {
+        margin-top: 35px;
+      }
     }
   }
 }
