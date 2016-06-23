@@ -167,9 +167,9 @@
       border-radius: 100px;
       display: inline-block;
       font-weight: 400;
-      height: 35px;
-      line-height: 35px;
-      padding: 0 24px 0 10px;
+      height: auto;
+      line-height: 21px;
+      padding: 7px 24px 7px 10px;
       text-transform: none;
       width: auto;
 
@@ -188,6 +188,7 @@
       }
 
       @include media-query(tablet) {
+          padding-left: 12px;
           padding-right: 22px;
       }
   }
