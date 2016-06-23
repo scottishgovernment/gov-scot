@@ -21,7 +21,7 @@ html, body {
 }
 
 .site-footer {
-  height: $site-footer-height;
+  //height: $site-footer-height;
   clear: both;
   box-sizing: border-box;
   background: $color__blue--base;
@@ -32,6 +32,11 @@ html, body {
   &__link {
     color: $color__white !important;
     text-decoration: none;
+
+    &:active {
+      background-color: $color__blue--dark;
+      outline: 3px solid $color__blue--dark;
+    }
   }
 
   &__list {
@@ -41,8 +46,12 @@ html, body {
 }
 
 .site-items {
-  border-left: 1px solid $color__white;
-  padding-left: 1em;
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  padding-left: 0;
+  margin: 0 0 40px 0 !important;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
 
   &__link:hover {
     text-decoration: underline;
@@ -54,8 +63,10 @@ $social-icon__size: 32px;
 $social-icon__size-multiplier: 2/3;
 
 .social-links {
-  float: right;
+  float: none;
   list-style-type: none;
+  margin:0 auto;
+  display: table;
 
   &__item {
     display: inline-block;
@@ -63,8 +74,8 @@ $social-icon__size-multiplier: 2/3;
   }
 
   &__link {
-    font-size: $social-icon__size * $social-icon__size-multiplier;
-
+    font-size: 23px;
+    margin-left: 10px;
     background: $color__white;
     border-radius: 1em / $social-icon__size-multiplier;
     color: $color__blue--base;
@@ -84,16 +95,35 @@ $social-icon__size-multiplier: 2/3;
       @include transition-duration($transition-in-time);
     }
 
+    &:active {
+      color: $color__blue--dark;
+      outline: none;
+      background: $color__social__button;
+    }
+
     .fa {
       line-height: 1em / $social-icon__size-multiplier;
+      font-size: 21px;
     }
   }
 }
 
 // for demonstration only: social icon sizes can be controlled through a single property, e.g.
 @include media-query(tablet) {
+  .social-links {
+    float: right;
+  }
+
   .social-links__link {
-    $social-icon-size: 48px;
-    font-size: $social-icon-size * $social-icon__size-multiplier;
+    $social-icon-size: 28px;
+    font-size: $social-icon-size;
+
+    .fa {
+      font-size: 26px;
+    }
+  }
+
+  .site-items {
+    margin: 0 !important;
   }
 }
