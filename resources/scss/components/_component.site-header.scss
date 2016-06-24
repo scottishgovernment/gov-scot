@@ -93,54 +93,59 @@
 }
 
 
-.site-header--fixed {
-  position: fixed;
-}
 
-.site-header__container--fixed {
-  // should be applied to the <body> tag
-  // should equal the height of the header
-  margin-top: 64px;
-}
 
-// A variation that is added by JavaScript automatically
-// when scrolling has reached a certain point.
-.site-header--scaled {
+// sticky and scaled header is mobile-only
+@include media-query(tablet-down) {
+    .site-header--fixed {
+      position: fixed;
+    }
 
-  height: 52px;
-  border-top-width: 4px;
+    .site-header-container--fixed {
+      // should be applied to the <body> tag
+      // should equal the height of the header
+      padding-top: 64px;
+    }
 
-  // Drop shadow;
-  -webkit-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
-  -moz-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
-  box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+    // A variation that is added by JavaScript automatically
+    // when scrolling has reached a certain point.
+    .site-header--scaled {
 
-  .site-brand__logo {
-    width: 155px;
-    height: 32px;
-  }
+      height: 52px;
+      border-top-width: 4px;
 
-  .site-brand {
-    height: 48px;
-  }
+      // Drop shadow;
+      -webkit-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+      -moz-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+      box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
 
-  .site-header__buttons {
-    top: 4px;
-  }
+      .site-brand__logo {
+        width: 155px;
+        height: 32px;
+      }
 
-  // ICONS - REDUCED
+      .site-brand {
+        height: 48px;
+      }
 
-  .site-header__icon--search {
-    background-image: url('../images/icons/search-blue-reduced.png');
-    background-position: 0 -2px;
-    @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
-  }
+      .site-header__buttons {
+        top: 4px;
+      }
 
-  .site-header__icon--menu {
-    background-image: url('../images/icons/menu-reduced.png');
-    @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
-  }
+      // ICONS - REDUCED
 
+      .site-header__icon--search {
+        background-image: url('../images/icons/search-blue-reduced.png');
+        background-position: 0 -2px;
+        @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
+      }
+
+      .site-header__icon--menu {
+        background-image: url('../images/icons/menu-reduced.png');
+        @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
+      }
+
+    }
 }
 
 @include media-query(tablet) {
@@ -157,4 +162,3 @@
   }
 
 }
-

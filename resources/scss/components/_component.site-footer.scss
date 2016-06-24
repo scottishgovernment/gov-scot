@@ -21,13 +21,13 @@ html, body {
 }
 
 .site-footer {
-  height: $site-footer-height;
-  clear: both;
-  box-sizing: border-box;
   background: $color__blue--base;
+  box-sizing: border-box;
+  clear: both;
+  height: $site-footer-height;
+  margin-top: 70px;
   padding: 2em 0;
   position: relative;
-  margin-top: 70px;
 
   &__link {
     color: $color__white !important;
