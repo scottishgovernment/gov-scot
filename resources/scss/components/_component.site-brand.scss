@@ -4,7 +4,8 @@
 
 .site-brand {
   display: table;
-  height: 56px;
+  height: 70px;
+  padding-right: 20px;
 
   &__link {
     display: table-cell;
@@ -13,8 +14,8 @@
 
   &__logo {
     display: block;
-    height: 40px;
-    width: 195px;
+    height: 32px;
+    width: 185px;
     background-size: 100%;
     transition: none;
     @include transition(all $transition-in-time);
@@ -28,11 +29,14 @@
 
 @include media-query(tablet) {
   .site-brand {
-    height: 72px;
+    height: 76px;
     position: absolute;
 
     &__logo {
       @include transition(all 0);
+      height: 33px;
+      width: 195px;
+
       img {
         height: 100%;
         width: 100%;
@@ -43,20 +47,12 @@
 
 @include media-query(desktop) {
   .site-brand {
-    &__logo {
-      height: 47px;
-      width: 230px;
-    }
-  }
-}
-
-@include media-query(hd) {
-  .site-brand {
-    height: 80px;
+    height: 90px;
+    padding-right: 25px;
 
     &__logo {
-      height: 53px;
-      width: 262px;
+      height: 44px;
+      width: 240px;
     }
   }
 }

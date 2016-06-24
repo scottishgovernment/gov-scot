@@ -4,9 +4,9 @@
 
 .site-header {
   background-color: $color__white;
-  border-top: 8px solid $color__blue--base;
+  border-top: 7px solid $color__blue--base;
   border-bottom: 1px solid $color__grey--light;
-  height: 64px;
+  height: 77px;
   overflow: hidden;
   position: relative;
   top: 0;
@@ -21,7 +21,7 @@
   &__buttons {
     position: absolute;
     right: 10px;
-    top: 8px;
+    top: 10px;
   }
 
   &__button {
@@ -147,7 +147,7 @@
 
   .site-header {
     position: relative;
-    height: 80px;
+    height: 84px;
 
     @include transition(all 0);
   }
@@ -158,3 +158,9 @@
 
 }
 
+@include media-query(desktop) {
+
+  .site-header {
+    height: 98px;
+  }
+}

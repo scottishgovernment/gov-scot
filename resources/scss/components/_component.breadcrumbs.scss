@@ -29,13 +29,17 @@
 }
 
 .breadcrumbs__container {
-  padding-top: 16px;
+  padding-top: 14px;
 }
 
 @include media-query(tablet) {
   .breadcrumbs {
       margin: -3px 0 4px 0;
       font-size: 13px;
+  }
+
+  .breadcrumbs__container {
+    padding-top: 21px;
   }
 }
 
