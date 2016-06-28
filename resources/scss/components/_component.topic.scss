@@ -30,7 +30,8 @@
         margin-bottom: 14px;
     }
 
-    &--transitioned {
+    &--transitioned,
+    &--external {
         color: $color__body;
 
         .topic__title {

@@ -125,6 +125,11 @@ label.fancy-checkbox {
   position: relative;
 }
 
+input.fancy-checkbox {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=00)";
+}
+
 input + label.fancy-checkbox:before {
   background-color: $color__white;
   border: 1px solid $color__grey--base;
@@ -138,6 +143,15 @@ input + label.fancy-checkbox:before {
   text-align: center;
   top: 0;
   width: $fancy-checkbox-size;
+}
+
+input:disabled + label.fancy-checkbox:before {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+
+input:disabled + label.fancy-checkbox {
+  color: $color__grey--base;
 }
 
 input:focus + label.fancy-checkbox:before {
