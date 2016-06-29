@@ -145,7 +145,7 @@ $page-group-pip-size: 12px;
     line-height: 28px;
 
   }
-  
+
   &--level-0:first-of-type {
     > .page-group__text {
       border-top: 0;
@@ -267,8 +267,6 @@ $page-group-pip-size: 12px;
     }
 
     &--section-nav {
-      border-top: 3px solid $color__body;
-
       a {
         color: $color__body;
       }
