@@ -39,6 +39,21 @@ article ol {
   }
 }
 
+table {
+    ol,
+    ul {
+        margin: 14px 0 21px 12px;
+    }
+
+    li {
+        margin: 0 0 14px 18px;
+    }
+
+    ol li {
+        margin-left: 25px;
+    }
+}
+
 ol > ul  {
   counter-reset: ul;
   list-style-type: none;
