@@ -2,11 +2,11 @@
     #PUBLICATION INFO
 \*------------------------------------*/
 
-.publication-body {
-  margin-top: 35px;
-}
+
 
 .publication-info {
+  margin-bottom: 35px;
+
   &--push-down-mobile {
     margin-top: 7px;
   }
@@ -82,7 +82,13 @@
 }
 
 @include media-query(tablet) {
+  .publication-body {
+    margin-top: 35px;
+  }
+
   .publication-info {
+    margin-bottom: 0;
+
     &--push-down-mobile {
       margin-top: 0;
     }
