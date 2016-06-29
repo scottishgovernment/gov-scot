@@ -80,7 +80,7 @@ $main-nav__transition-timing: ease;
     &.mobile-layer--open {
       .main-nav__list {
         left: 15px;
-        max-height: 100%;
+        max-height: calc(100% - 63px);
         overflow-y: auto;
       }
     }
@@ -128,10 +128,6 @@ $main-nav__transition-timing: ease;
       vertical-align: middle;
 
       @include transition(background-color $transition-in-time);
-    }
-
-    &__item:last-child &__link {
-      padding-right: 0;
     }
 
     &__link:hover {

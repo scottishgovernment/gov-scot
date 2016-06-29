@@ -141,6 +141,19 @@ body.layout-role {
   }
 }
 
+body.layout-role {
+  @include media-query(tablet-down) {
+    .person__image-container {
+      width: 183px;
+    }
+
+    .person__image {
+      height: 183px;
+      width: 183px;
+    }
+  }
+}
+
 body.layout-directorate {
   .person__image {
     height: 130px;

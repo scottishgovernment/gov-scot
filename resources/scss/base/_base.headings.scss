@@ -294,6 +294,10 @@ h3.social-channel {
   }
 }
 
+h2.emphasis {
+    text-transform: none;
+}
+
 @include media-query(tablet) {
   h3.emphasis {
     font-size: 19px;
