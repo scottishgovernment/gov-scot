@@ -71,6 +71,15 @@ $carousel-z-stage-image: 40;
 }
 
 
+.carousel-item__support {
+  cursor: pointer;
+}
+
+.carousel-item--active .carousel-item__support {
+  cursor: default;
+}
+
+
 /**
  * This provides a blue gradient overlay for the stage.
  */
