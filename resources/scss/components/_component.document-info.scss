@@ -185,6 +185,8 @@ $document-info__large-button-size: 70px !default;
 @include media-query(tablet) {
 
   .document-info {
+    margin-bottom: 35px;
+
     /*
      * alternative columnar display
      */
