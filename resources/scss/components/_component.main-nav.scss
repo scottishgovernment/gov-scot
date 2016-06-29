@@ -130,10 +130,6 @@ $main-nav__transition-timing: ease;
       @include transition(background-color $transition-in-time);
     }
 
-    &__item:last-child &__link {
-      padding-right: 0;
-    }
-
     &__link:hover {
       background-color: $color__grey--lighter;
       text-decoration: none;
