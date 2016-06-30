@@ -44,7 +44,6 @@ $main-nav__transition-timing: ease;
 
     &__item {
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      margin: 0;
     }
 
     &__item:last-child {
@@ -81,7 +80,7 @@ $main-nav__transition-timing: ease;
     &.mobile-layer--open {
       .main-nav__list {
         left: 15px;
-        max-height: 100%;
+        max-height: calc(100% - 63px);
         overflow-y: auto;
       }
     }
@@ -119,62 +118,50 @@ $main-nav__transition-timing: ease;
     &__link {
       border: 0px solid transparent;
       box-sizing: border-box;
-      color: $color__body;
+      color: $color__body !important;
       display: table-cell; /* [1] */
-      font-size: 13px;
-      height: 71px;
-      line-height: 16px;
-      padding: 0 6px;
+      font-size: 15px;
+      height: 76px;
+      line-height: 21px;
+      padding: 0 12px;
       text-decoration: none;
       vertical-align: middle;
 
       @include transition(background-color $transition-in-time);
     }
 
-    /**
-     * 1. Add border to top and bottom to keep text centered
-     */
-    &__link:hover, &__link:active, &__link:focus {
-      border-width: 5px 0; /* [1] */
-      border-bottom-color: $color__blue--base;
-      color: $color__body;
+    &__link:hover {
+      background-color: $color__grey--lighter;
       text-decoration: none;
     }
 
     &__link:active, &__link:focus {
-      background: $color__blue--lighter;
+      background: $color__blue--light;
       outline: 0;
     }
 
+    /**
+     * 1. Add border to top and bottom to keep text centered
+     */
     &__link--selected {
-      background: $color__blue--base;
+      border-width: 5px 0; /* [1] */
+      border-bottom-color: $color__blue--base;
+      background: $color__blue--lighter;
       color: $color__white;
 
       &:hover {
-        background: $color__blue--base;
-        border-bottom-color: $color__blue--dark;
-        color: $color__white;
+        background-color: $color__blue--lighter;
+        cursor: pointer;
       }
     }
   }
 }
 
-
 @include media-query(desktop) {
-
   .main-nav__link {
     font-size: 16px;
-    line-height: 19px;
-    padding: 0 12px;
+    height: 90px;
+    line-height: 21px;
+    padding: 0 20px;
   }
-
-}
-
-
-@include media-query(hd) {
-
-  .main-nav__link {
-    height: 71px;
-  }
-
 }

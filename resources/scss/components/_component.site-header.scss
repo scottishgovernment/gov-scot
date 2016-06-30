@@ -4,9 +4,9 @@
 
 .site-header {
   background-color: $color__white;
-  border-top: 8px solid $color__blue--base;
+  border-top: 7px solid $color__blue--base;
   border-bottom: 1px solid $color__grey--light;
-  height: 64px;
+  height: 77px;
   overflow: hidden;
   position: relative;
   top: 0;
@@ -21,7 +21,7 @@
   &__buttons {
     position: absolute;
     right: 10px;
-    top: 8px;
+    bottom: 0;
   }
 
   &__button {
@@ -93,66 +93,61 @@
 }
 
 
+.site-header--fixed {
+  position: fixed;
+}
 
+.site-header__container--fixed {
+  // should be applied to the <body> tag
+  // should equal the height of the header
+  margin-top: 64px;
+}
 
-// sticky and scaled header is mobile-only
-@include media-query(tablet-down) {
-    .site-header--fixed {
-      position: fixed;
-    }
+// A variation that is added by JavaScript automatically
+// when scrolling has reached a certain point.
+.site-header--scaled {
 
-    .site-header-container--fixed {
-      // should be applied to the <body> tag
-      // should equal the height of the header
-      padding-top: 64px;
-    }
+  height: 52px;
+  border-top-width: 4px;
 
-    // A variation that is added by JavaScript automatically
-    // when scrolling has reached a certain point.
-    .site-header--scaled {
+  // Drop shadow;
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  -moz-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
 
-      height: 52px;
-      border-top-width: 4px;
+  .site-brand__logo {
+    width: 155px;
+    height: 32px;
+  }
 
-      // Drop shadow;
-      -webkit-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
-      -moz-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
-      box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  .site-brand {
+    height: 48px;
+  }
 
-      .site-brand__logo {
-        width: 155px;
-        height: 32px;
-      }
+  .site-header__buttons {
+    top: 4px;
+  }
 
-      .site-brand {
-        height: 48px;
-      }
+  // ICONS - REDUCED
 
-      .site-header__buttons {
-        top: 4px;
-      }
+  .site-header__icon--search {
+    background-image: url('../images/icons/search-blue-reduced.png');
+    background-position: 0 -2px;
+    @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
+  }
 
-      // ICONS - REDUCED
+  .site-header__icon--menu {
+    background-image: url('../images/icons/menu-reduced.png');
+    @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
+  }
 
-      .site-header__icon--search {
-        background-image: url('../images/icons/search-blue-reduced.png');
-        background-position: 0 -2px;
-        @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
-      }
-
-      .site-header__icon--menu {
-        background-image: url('../images/icons/menu-reduced.png');
-        @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
-      }
-
-    }
 }
 
 @include media-query(tablet) {
 
   .site-header {
     position: relative;
-    height: 80px;
+    height: 84px;
 
     @include transition(all 0);
   }
@@ -161,4 +156,11 @@
     margin-top: 0px;
   }
 
+}
+
+@include media-query(desktop) {
+
+  .site-header {
+    height: 98px;
+  }
 }
