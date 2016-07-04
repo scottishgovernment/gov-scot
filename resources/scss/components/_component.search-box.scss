@@ -42,9 +42,10 @@ $search-box__transition-timing: ease;
 
   &--mobile {
     left: 15px;
+    height: auto;
     position: fixed;
-    top: 104px;
     right: 15px;
+    top: 104px;
     width: auto;
     z-index: 101;
 
