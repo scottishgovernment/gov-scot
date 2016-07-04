@@ -49,6 +49,10 @@ $includeretina: true !default;
       background-image: url('../images/icons/documents/#{$iconname}_#{$sizex}px.png');
       @if $iconcolor != $color__icon--default {
         border-color: $iconcolor;
+
+        &:before {
+            border-left-color: $iconcolor;
+        }
       }
 
       @if $includeretina {
