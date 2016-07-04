@@ -22,7 +22,8 @@
   @include media-query(tablet-down) {
     margin-left: -15px;
     max-width: none;
-    width: auto;
+    margin-right: -15px;
+    width: calc(100% + 30px);
   }
 
   display: block;
