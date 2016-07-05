@@ -25,12 +25,12 @@ $search-box__transition-timing: ease;
   }
 
   &__button {
+    bottom: 0;
     display: block;
     font-size: $search-box__box-size * 0.5;
     height: $search-box__box-size;
     position: absolute;
     right: 0;
-    top: 0;
     width: $search-box__box-size;
     padding: 0;
 
@@ -42,9 +42,10 @@ $search-box__transition-timing: ease;
 
   &--mobile {
     left: 15px;
+    height: auto;
     position: fixed;
-    top: 104px;
     right: 15px;
+    top: 104px;
     width: auto;
     z-index: 101;
 
