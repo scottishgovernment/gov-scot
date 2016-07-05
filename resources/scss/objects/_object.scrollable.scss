@@ -31,9 +31,9 @@
   }
 
   &__content {
-    width: calc(100% - 50px);
     overflow-y: scroll;
     padding: 14px 0 0 0;
+    width: calc(100% - 50px);
 
     &--homepage-policies {
       height: 196px;
@@ -44,6 +44,11 @@
 
 @include media-query(tablet) {
   .scrollable {
+
+      &--mobile-only &__content {
+          overflow-y: visible;
+          width: auto;
+      }
 
     &--shadow {
       &:before {
