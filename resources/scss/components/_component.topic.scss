@@ -2,6 +2,10 @@
     #TOPIC
 \*------------------------------------*/
 
+.topics {
+    padding: 42px 0 7px;
+}
+
 .topic {
     color: $color__grey--base;
     font-size: 14px;
@@ -9,8 +13,6 @@
 
     &__title {
         color: #909090;
-        font-size: 18px;
-        line-height: 21px;
         margin: 0 0 14px;
         padding-bottom: 14px;
         position: relative;
