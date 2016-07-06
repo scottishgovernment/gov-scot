@@ -178,11 +178,6 @@
           margin-left: 10px;
       }
 
-      &:active {
-          background-color: $color__blue--light;
-          outline: none;
-      }
-
       @include media-query(tablet) {
           padding-left: 12px;
           padding-right: 22px;
