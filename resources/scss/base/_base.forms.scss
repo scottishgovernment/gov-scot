@@ -122,8 +122,11 @@ label.inverse {
 $fancy-checkbox-size: 24px;
 
 label.fancy-checkbox {
-  font-weight: 500;
   position: relative;
+
+  &--bold {
+      font-weight: 500;
+  }
 }
 
 input.fancy-checkbox {
