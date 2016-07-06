@@ -122,6 +122,7 @@ label.inverse {
 $fancy-checkbox-size: 24px;
 
 label.fancy-checkbox {
+  font-weight: 500;
   position: relative;
 }
 
@@ -146,12 +147,13 @@ input + label.fancy-checkbox:before {
 }
 
 input:disabled + label.fancy-checkbox:before {
-  opacity: 0.5;
+  opacity: 0.3;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 }
 
 input:disabled + label.fancy-checkbox {
   color: $color__grey--base;
+  font-weight: normal;
 }
 
 input:focus + label.fancy-checkbox:before {
