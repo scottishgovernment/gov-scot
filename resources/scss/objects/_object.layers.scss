@@ -25,6 +25,14 @@
     z-index: 100;
 
     @include transition(opacity $transition-in-time * 2);
+
+    &--white {
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    &--grey {
+        background: rgba(225, 225, 225, 0.9);
+    }
   }
 
   &__content {
@@ -35,7 +43,7 @@
     opacity: 1;
     z-index: 1000;
 
-    .mobile-layer__overlay {
+    + .mobile-layer__overlay {
       display: block;
       opacity: 1;
     }
@@ -67,7 +75,7 @@
     opacity: 1;
     position: static;
 
-    .mobile-layer__overlay {
+    + .mobile-layer__overlay {
       display: none;
     }
 
