@@ -45,6 +45,10 @@
 @include media-query(tablet) {
   .scrollable {
 
+      &--mobile-only {
+          position: static;
+      }
+
       &--mobile-only &__content {
           overflow-y: visible;
           width: auto;
