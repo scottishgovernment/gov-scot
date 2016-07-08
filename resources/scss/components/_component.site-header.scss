@@ -38,7 +38,7 @@
       padding-bottom: 8px;
     }
 
-    &--selected.site-header__button--menu {
+    &--selected.site-header__button--nav {
       background-color: $color__blue--base;
       padding-bottom: 3px;
     }
@@ -66,7 +66,7 @@
     @include image-2x('../images/icons/search-blue_@2x.png', 35px, 35px);
   }
 
-  &__icon--menu {
+  &__icon--nav {
     background-image: url('../images/icons/menu.png');
     @include image-2x('../images/icons/menu_@2x.png', 35px, 40px);
     width: 35px;
@@ -83,13 +83,27 @@
       @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
     }
 
-    .site-header__icon--menu {
+    .site-header__icon--nav {
       background-image: url('../images/icons/close-white.png');
       @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
     }
-
   }
 
+  &--scaled {
+      .site-header__button--selected {
+
+          .site-header__icon--search {
+            background-image: url('../images/icons/close-blue.png');
+            background-position: 0 0;
+            @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
+          }
+
+          .site-header__icon--nav {
+            background-image: url('../images/icons/close-white.png');
+            @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+          }
+      }
+  }
 }
 
 
@@ -136,7 +150,7 @@
     @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
   }
 
-  .site-header__icon--menu {
+  .site-header__icon--nav {
     background-image: url('../images/icons/menu-reduced.png');
     @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
   }

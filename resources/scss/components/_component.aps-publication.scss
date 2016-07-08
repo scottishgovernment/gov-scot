@@ -3,13 +3,6 @@
 \*------------------------------------*/
 
 .publication-content {
-
-  h3 {
-    margin-bottom: 21px;
-    font-size: 22px;
-    line-height: 35px;
-  }
-
   img {
     max-width: 100%;
   }
@@ -21,10 +14,9 @@
   }
 
   @include media-query(tablet) {
-    padding-top: 56px;
+    padding-top: 35px;
   }
 }
-
 
 .publication-section {
   color: $color__grey--base;
@@ -34,4 +26,13 @@
   &__current {
     font-weight: 600;
   }
+}
+
+.publication-content td img {
+    mix-blend-mode: multiply;
+}
+
+.publication-content p > img {
+    display: block;
+    margin: 14px 0;
 }

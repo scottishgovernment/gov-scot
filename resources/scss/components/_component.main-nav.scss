@@ -34,7 +34,7 @@ $main-nav__transition-timing: ease;
       list-style-type: none;
       margin: 0;
       position: fixed;
-      top: 63px;
+      top: 0;
       right: 0;
       z-index: 1001;
       padding: 24px 15px;
@@ -44,6 +44,7 @@ $main-nav__transition-timing: ease;
 
     &__item {
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      margin-left: 0;
     }
 
     &__item:last-child {
@@ -76,12 +77,13 @@ $main-nav__transition-timing: ease;
   /*
    * MOBILE NAV
    */
-  .mobile-main-nav {
+  .mobile-nav {
     &.mobile-layer--open {
       .main-nav__list {
         left: 15px;
         max-height: calc(100% - 63px);
         overflow-y: auto;
+        width: auto;
       }
     }
   }

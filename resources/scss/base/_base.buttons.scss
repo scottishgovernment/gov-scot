@@ -166,7 +166,6 @@
   &--pill {
       border-radius: 100px;
       display: inline-block;
-      font-weight: 400;
       height: auto;
       line-height: 21px;
       padding: 7px 24px 7px 10px;
@@ -174,17 +173,9 @@
       width: auto;
 
       @extend %small-arrow-right;
+      @extend %small-arrow-right--white;
       & + & {
           margin-left: 10px;
-      }
-
-      &:hover {
-          text-decoration: underline;
-      }
-
-      &:active {
-          background-color: $color__blue--light;
-          outline: none;
       }
 
       @include media-query(tablet) {

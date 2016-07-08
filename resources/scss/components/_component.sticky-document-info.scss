@@ -166,14 +166,15 @@
 
  .sticky-document-info__trigger {
    @extend .button;
-   @extend .button--clear;
+   @extend .button--clear !optional;
    // color: $color__blue--base;
    // background-color: transparent;
    border-top: 1px solid $color__blue--base;
    position: relative;
    text-transform: none;
    font-size: 14px;
-   height: 70px;
+   height: 55px;
+   padding-top: 20px;
    padding-right: 28px;
    top: -1px;
 
