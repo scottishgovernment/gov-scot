@@ -11,6 +11,8 @@
     font-size: 16px;
     font-weight: 400;
     margin: 0 0 7px;
+    max-height: 42px;
+    overflow: hidden;
   }
 
   &__topics {
@@ -120,11 +122,20 @@
   }
 }
 
+@include media-query(tablet) {
+  .homepage-publication {
+    &__title {
+      max-height: 56px;
+    }
+  }
+}
+
 @include media-query(desktop) {
   .homepage-publication {
     &__title {
       font-size: 18px;
       line-height: 28px;
+      max-height: 56px;
     }
   }
 }

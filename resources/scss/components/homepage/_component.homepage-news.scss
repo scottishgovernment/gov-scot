@@ -18,6 +18,8 @@
   &__title {
     font-weight: 700;
     margin-top: 0;
+    max-height: 42px;
+    overflow: hidden;
 
     a {
       text-decoration: none;
@@ -72,6 +74,10 @@
   .homepage-news {
     &__summary {
       margin-bottom: 28px;
+    }
+
+    &__title {
+        max-height: 56px;
     }
   }
 
