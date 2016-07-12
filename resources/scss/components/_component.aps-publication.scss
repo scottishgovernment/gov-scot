@@ -32,7 +32,12 @@
     mix-blend-mode: multiply;
 }
 
-.publication-content p img {
+.publication-content p img,
+.publication-content h2 img,
+.publication-content h3 img,
+.publication-content h4 img,
+.publication-content h5 img,
+.publication-content li img {
     display: block;
     margin: 14px 0;
 }
