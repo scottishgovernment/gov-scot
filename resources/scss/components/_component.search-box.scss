@@ -29,6 +29,7 @@ $search-box__transition-timing: ease;
     display: block;
     font-size: $search-box__box-size * 0.5;
     height: $search-box__box-size;
+    overflow: hidden;
     position: absolute;
     right: 0;
     width: $search-box__box-size;
