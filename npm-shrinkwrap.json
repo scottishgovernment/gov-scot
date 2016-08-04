@@ -2822,60 +2822,8 @@
         }
       }
     },
-    "grunt-rev": {
-      "version": "0.1.0"
-    },
     "grunt-sonar-runner": {
       "version": "2.4.7"
-    },
-    "grunt-usemin": {
-      "version": "3.1.1",
-      "dependencies": {
-        "chalk": {
-          "version": "1.1.3",
-          "dependencies": {
-            "ansi-styles": {
-              "version": "2.2.1"
-            },
-            "escape-string-regexp": {
-              "version": "1.0.5"
-            },
-            "has-ansi": {
-              "version": "2.0.0",
-              "dependencies": {
-                "ansi-regex": {
-                  "version": "2.0.0"
-                }
-              }
-            },
-            "strip-ansi": {
-              "version": "3.0.1",
-              "dependencies": {
-                "ansi-regex": {
-                  "version": "2.0.0"
-                }
-              }
-            },
-            "supports-color": {
-              "version": "2.0.0"
-            }
-          }
-        },
-        "debug": {
-          "version": "2.2.0",
-          "dependencies": {
-            "ms": {
-              "version": "0.7.1"
-            }
-          }
-        },
-        "lodash": {
-          "version": "3.10.1"
-        },
-        "path-exists": {
-          "version": "1.0.0"
-        }
-      }
     },
     "grunt-webpack": {
       "version": "1.0.11",

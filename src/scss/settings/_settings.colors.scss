@@ -4,6 +4,7 @@
 
 // Using a BEM-like syntax for variable names.
 
+// Palette
 $color__white: #ffffff !default;
 $color__black: #000000 !default;
 
@@ -41,90 +42,26 @@ $color__link--focus:    $color__blue--dark !default;
 $color__tap-highlight:  transparent !default;
 
 // Buttons
-$color__button--primary:              $color__blue--base !default;
-$color__button--primary--hover:       $color__blue--dark !default;
-$color__button--primary--active:      $color__blue--dark !default;
-$color__button--primary--active-text: $color__white--selected !default;
-$color__button--primary--focus:       $color__blue--dark !default;
-$color__social__button: #d9effc !default;
+$color__button--primary:                $color__blue--base !default;
+$color__button--primary--hover:         $color__blue--dark !default;
+$color__button--primary--active:        $color__blue--dark !default;
+$color__button--primary--active-text:   $color__white--selected !default;
+$color__button--primary--focus:         $color__blue--dark !default;
+$color__social__button:                 $color__blue--light !default;
 
 // Form elements
-$color__input--focus:                 $color__blue--lighter !default;
-$color__input--focus-outline:         $color__blue--lighter !default;
-$color__input--focus-outline:         $color__blue--light !default;
+$color__input--focus:                   $color__blue--lighter !default;
+$color__input--focus-outline:           $color__blue--lighter !default;
+$color__input--focus-outline:           $color__blue--light !default;
 
-$color__error:               $color__red--base !default;
-$color__error--background:   scale-lightness($color__red--base, 80%) !default;
-$color__success:             $color__green--base !default;
-$color__success--background: scale-lightness($color__green--base, 80%) !default;
+// Error and success
+$color__error:                          $color__red--base !default;
+$color__error--background:              scale-lightness($color__red--base, 80%) !default;
+$color__success:                        $color__green--base !default;
+$color__success--background:            scale-lightness($color__green--base, 80%) !default;
 
-// Beta
-$color__notification:        $color__gold--base !default;
-
-/*
-
-$color__white: #ffffff;
-$color__black: #000000;
-
-$color__white--selected: rgba(255,255,255, 0.65);
-
-$color__blue--lightest: #e8f0f6;
-$color__blue--lighter: #d9effc;
-$color__blue--light: #609AD3;
-$color__blue--medium: #3982C8;
-$color__blue--base: #005eb8;
-$color__blue--dark: #173163;
-
-$color__green--base: #60a037;
-
-$color__red--base: #d32205;
-$color__red--lighter: #f7d5cf;
-
-$color__orange--base: #e87621; // used for ppt icon
-
-$color__grey--lighter: #f8f8f8;
-$color__grey--light: #ebebeb;
-$color__grey--pale: #e3e3e3;
-$color__grey--medium: #b3b3b3;
-$color__grey--base: #888888;
-$color__grey--text: #727272; // maximum for acceptable color contrast grey on white
-$color__grey--dark: #333333;
-$color__grey--darkest: #111111;
-
-
-// Typography
-$color__body: $color__grey--dark;
-
-$color__placeholder: $color__grey--text;
-
-// Links
-
-$color__link--primary: $color__blue--base;
-$color__link--hover: $color__blue--dark;
-$color__link--active: $color__blue--dark;
-$color__link--focus: $color__blue--dark;
-
-$color__tap-highlight: transparent;
-
-// Buttons
-
-$color__button--primary: $color__blue--base;
-$color__button--primary--hover: $color__blue--dark;
-$color__button--primary--active: $color__blue--dark;
-$color__button--primary--active-text: $color__white--selected;
-$color__button--primary--focus: $color__blue--dark;
-
-// Form elements
-
-$color__input--focus: $color__blue--lighter;
-$color__input--focus-outline: $color__blue--lighter;
-$color__input--focus-outline: $color__blue--light;
-
-$color__error: $color__red--base;
-$color__error--background: $color__red--lighter;
-$color__success: $color__green--base;
-$color__success--background: scale-lightness($color__green--base, 80%);
-
-// Beta
-$color_gold: #FFB644;
-*/
+// Notifications
+$notification__background--normal:  $color__grey--dark;
+$notification__foreground--normal:  $color__white;
+$notification__background--strong:  $color__gold--base;
+$notification__foreground--strong:  $color__body;
