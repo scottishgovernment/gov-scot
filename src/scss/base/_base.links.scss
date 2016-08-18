@@ -17,9 +17,9 @@ a {
   }
 
   &:active {
-    background-color: $color__blue--lighter;
+    background-color: $color__blue--light;
     color: $color__link--active;
-    outline: 3px solid $color__blue--lighter;
+    outline: 3px solid $color__blue--light;
   }
 }
 
@@ -42,9 +42,9 @@ html {
       text-decoration: underline;
     }
     &:active {
-      background-color: $color__blue--lighter;
+      background-color: $color__blue--light;
       color: $color__link--active;
-      outline: 3px solid $color__blue--lighter;
+      outline: 3px solid $color__blue--light;
     }
   }
 }
@@ -63,9 +63,9 @@ html {
       text-decoration: underline;
     }
     &:active {
-      background-color: $color__blue--lighter;
+      background-color: $color__blue--light;
       color: $color__link--active;
-      outline: 3px solid $color__blue--lighter;
+      outline: 3px solid $color__blue--light;
     }
   }
 }
@@ -84,9 +84,9 @@ html {
       text-decoration: underline;
     }
     &:active {
-      background-color: $color__blue--lighter;
+      background-color: $color__blue--light;
       color: $color__black;
-      outline: 3px solid $color__blue--lighter;
+      outline: 3px solid $color__blue--light;
     }
   }
 }

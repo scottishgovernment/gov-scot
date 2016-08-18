@@ -191,8 +191,13 @@
      @include image-2x("../images/icons/arrows/int_arrow_down_blue_35px_@2x.png", 28px, 28px);
    }
 
-   &:active, &:focus {
+   &:focus {
      background-color: $color__blue--lighter;
+     outline: none;
+   }
+
+   &:active {
+     background-color: $color__blue--light;
      outline: none;
    }
 

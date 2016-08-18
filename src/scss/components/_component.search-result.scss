@@ -51,7 +51,7 @@
     }
 
     &:active {
-      background: $color__blue--lighter;
+      background: $color__blue--light;
       outline: none;
 
       @include transition(none);

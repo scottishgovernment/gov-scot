@@ -117,7 +117,7 @@ $page-group-pip-size: 12px;
     }
 
     &:active {
-      background: #E5F0F8;
+      background: $color__blue--light;
       @include transition(none);
     }
 
@@ -203,7 +203,7 @@ $page-group-pip-size: 12px;
     }
 
     &:active {
-      background-color: $color__blue--lighter;
+      background-color: $color__blue--light;
       outline: 0;
       @include transition(none);
     }
