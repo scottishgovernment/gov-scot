@@ -18,6 +18,11 @@ html, body {
   height: 100%;
   margin: 0 auto -$site-footer-height auto;
   position: relative;
+
+  // Lower min-height so footer appears earlier for status page
+  &.status-wrapper {
+    min-height: 70%;
+  }
 }
 
 .site-footer {

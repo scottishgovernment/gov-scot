@@ -500,7 +500,7 @@ $carousel-desc-height-hd: 244px;
         z-index: $carousel-z-support;
 
         &:active {
-          background-color: $color__blue--lighter;
+          background-color: $color__blue--light;
           .carousel-item__title {
             color: $color__blue--dark;
           }
