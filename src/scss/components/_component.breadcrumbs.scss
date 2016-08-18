@@ -14,17 +14,15 @@
     display: inline;
     margin-bottom: 0;
     margin-left: 0px;
-
-    &:after {
-      content: '>';
-      padding: 0 3px;
-      color: $color__grey--medium;
-    }
   }
-
 
   &__link {
     text-decoration: none;
+    &:after {
+      content: '>';
+      padding: 0 3px 0 6px;
+      color: $color__grey--medium;
+    }
   }
 }
 
