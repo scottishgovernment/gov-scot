@@ -12,6 +12,12 @@ input + label.fancy-checkbox:before {
   content: none;
 }
 
+input.fancy-checkbox {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  top: 5px
+}
+
 .filters-container {
   margin-top: -48px;
 }
