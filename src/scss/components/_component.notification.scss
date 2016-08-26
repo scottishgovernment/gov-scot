@@ -33,7 +33,6 @@ $notification_padding: 14px;
   /**
    * ELEMENTS
    */
-
   &__close {
     position: absolute;
     top: -5px;
@@ -58,133 +57,164 @@ $notification_padding: 14px;
   p {
     margin: 0px;
     margin-right: 49px;
-    }
-    p + p {
-      margin-top: 14px;
-    }
+  }
+  p + p {
+    margin-top: 14px;
+  }
 
 
-    /**
-     * MODIFIERS
-     */
-    &--dark {
-      background-color: $color__grey--dark;
+  /**
+   * MODIFIERS
+   */
+  &--dark {
+    background-color: $color__grey--dark;
+    color: white;
+
+    a, a:link, a:visited, a:hover, a:active {
       color: white;
+      @include transition(opacity 1s);
 
-
-      a, a:link, a:visited, a:hover, a:active {
-        color: white;
-        @include transition(opacity 1s);
-
-        &:hover,
-        &:active {
-          opacity: 0.75;
-          @include transition(opacity 0.2s);
-        }
+      &:hover,
+      &:active {
+        opacity: 0.75;
+        @include transition(opacity 0.2s);
       }
-
-
-      .notification__close {
-        background: url('../images/icons/close-white.png') no-repeat;
-        @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
-      }
-
     }
 
-    &--gold {
-      color: $color__grey--dark;
-      background-color: $color__gold--base;
-      padding: 0 14px;
+    .notification__close {
+      background: url('../images/icons/close-white.png') no-repeat;
+      @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+    }
+  }
 
-      .wrapper {
-        padding: 0;
+  &--gold,
+  &--green {
+    color: $color__grey--dark;
+    background-color: $color__gold--base;
+    padding: 0 14px;
+
+    .wrapper {
+      padding: 0;
+    }
+
+    p {
+      color: $color__body;
+      padding: 0;
+      margin: 14px 0;
+    }
+
+    a {
+      color: $color__grey--dark;
+      font-weight: 700;
+    }
+
+    .notification__main-content {
+      height: 42px;
+    }
+
+    .notification__extra-content {
+      overflow: auto;
+    }
+
+    .notification__close {
+      top: 0;
+      right: -15px;
+      margin: 0;
+      height: 42px;
+      width: 42px;
+      background: url("../images/icons/grey_arrow_up.png") no-repeat;
+      @include image-2x('../images/icons/grey_arrow_up_@2x.png', 35px, 35px);
+
+      &:focus {
+        outline: none;
       }
+    }
+
+    .notification__close--minimised {
+      background: url("../images/icons/grey_arrow_down.png") no-repeat;
+      @include image-2x('../images/icons/grey_arrow_down_@2x.png', 35px, 35px);
+    }
+  }
+
+  &--gold .notification__beta-box,
+  &--green .notification__staging-box {
+    display: inline-block;
+    background: $color__grey--dark;
+    color: $color__gold--base;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1px 14px;
+    margin: 10.5px 0;
+  }
+
+  &--gold {
+    .notification__btn {
+      text-decoration: none;
+      display: inline-block;
+      font-size: 13px;
+      text-align: center;
+      text-transform: uppercase;
+      border: 1px solid $color__grey--dark;
+      word-break: normal;
+      padding: 6px 10px;
+      margin: 0 0 21px 0;
+      width: 100%;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &:active {
+        background: rgba(0, 0, 0, 0.1);
+        outline: none;
+      }
+    }
+  }
+
+  &--green {
+    background-color: $color__green--base;
+
+    .notification__staging-box {
+      $iconWidth: 25px;
+
+      background: none;
+      color: $color__white;
+      margin-left: 25px;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        height: $iconWidth;
+        width: $iconWidth;
+        top: 9px;
+        left: 0;
+        background: url(../images/icons/fact_check_tick_25px.png) no-repeat 0 0 transparent;
+        @include image-2x('../images/icons/fact_check_tick_25px_@2x.png', 25px, 25px);
+      }
+    }
+
+    .notification__extra-content {
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
 
       p {
-        color: $color__body;
-        padding: 0;
-        margin: 14px 0;
-      }
-
-      a {
-        color: $color__grey--dark;
-        font-weight: 700;
-      }
-
-      .notification__main-content {
-        height: 42px;
-      }
-
-      .notification__extra-content {
-        overflow: auto;
-      }
-
-      .notification__beta-box {
-        display: inline-block;
-        background: $color__grey--dark;
-        color: $color__gold--base;
-        text-transform: uppercase;
-        font-weight: 700;
-        padding: 1px 14px;
-        margin: 10.5px 0;
-      }
-
-      .notification__btn {
-        text-decoration: none;
-        display: inline-block;
-        font-size: 13px;
-        text-align: center;
-        text-transform: uppercase;
-        border: 1px solid $color__grey--dark;
-        word-break: normal;
-        padding: 6px 10px;
-        margin: 0 0 21px 0;
-        width: 100%;
-
-        &:hover {
-          background: rgba(0, 0, 0, 0.05);
-        }
-
-        &:active {
-          background: rgba(0, 0, 0, 0.1);
-          outline: none;
-        }
-      }
-
-      .notification__close {
-        top: 0;
-        right: -15px;
-        margin: 0;
-        height: 42px;
-        width: 42px;
-        background: url("../images/icons/grey_arrow_up.png") no-repeat;
-        @include image-2x('../images/icons/grey_arrow_up_@2x.png', 35px, 35px);
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      .notification__close--minimised {
-        background: url("../images/icons/grey_arrow_down.png") no-repeat;
-        @include image-2x('../images/icons/grey_arrow_down_@2x.png', 35px, 35px);
-
+        color: $color__white;
+        font-size: 14px;
       }
     }
+  }
 }
 
 
 
 @include media-query(tablet) {
   .notification {
-    &--gold {
+    &--gold,
+    &--green {
       .wrapper {
         padding: 0 15px;
       }
 
-      .notification__btn {
-        margin: 0;
-      }
       .notification__close {
         display: none;
       }
@@ -197,20 +227,23 @@ $notification_padding: 14px;
         overflow: auto;
       }
 
-      .notification__beta-box {
-        float: left;
-        margin: 10.5px 0;
-        padding: 6px 10px;
-      }
-
-      .notification__btn {
-        margin: 10.5px 0;
-      }
-
       p {
         display: inline-block;
         width: auto;
         padding: 7px;
+        margin: 10.5px 0;
+      }
+    }
+
+    &--gold .notification__beta-box,
+    &--green .notification__staging-box {
+      float: left;
+      margin: 10.5px 0;
+      padding: 6px 10px;
+    }
+
+    &--gold {
+      .notification__btn {
         margin: 10.5px 0;
       }
 
@@ -226,9 +259,40 @@ $notification_padding: 14px;
       }
     }
 
+    &--green {
+      .notification__staging-box {
+        $iconWidth: 30px;
+
+        margin: 25px 5px 0 45px;
+
+        &:after {
+          height: $iconWidth;
+          width: $iconWidth;
+          top: auto;
+          left: 18px;
+          background: url(../images/icons/fact_check_tick_30px.png) no-repeat 0 0 transparent;
+          @include image-2x('../images/icons/fact_check_tick_30px_@2x.png', 30px, 30px);
+        }
+      }
+
+      .notification__extra-content {
+        border-top: 0;
+      }
+    }
+
     &--dark {
       .notification__close {
         right: 10px;
+      }
+    }
+  }
+}
+
+@include media-query(desktop) {
+  .notification {
+    &--green {
+      .notification__staging-box {
+        margin-top: 10.5px;
       }
     }
   }
