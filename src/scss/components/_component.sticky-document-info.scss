@@ -173,8 +173,7 @@
    position: relative;
    text-transform: none;
    font-size: 14px;
-   height: 55px;
-   padding-top: 20px;
+   height: 70px;
    padding-right: 28px;
    top: -1px;
 
@@ -188,7 +187,7 @@
      margin: 0 auto;
 
      background-image: url(../images/icons/arrows/int_arrow_down_blue_35px.png);
-     @include image-2x("../images/icons/arrows/int_arrow_down_blue_35px_@2x.png", 28px, 28px);
+     @include image-2x("../images/icons/arrows/int_arrow_down_blue_35px_@2x.png", 35px, 35px);
    }
 
    &:focus {
@@ -212,7 +211,7 @@
        margin: 0 auto;
 
        background-image: url(../images/icons/arrows/int_arrow_up_blue_over_35px.png);
-       @include image-2x("../images/icons/arrows/int_arrow_up_blue_over_35px_@2x.png", 28px, 28px);
+       @include image-2x("../images/icons/arrows/int_arrow_up_blue_over_35px_@2x.png", 35px, 35px);
      }
    }
 
