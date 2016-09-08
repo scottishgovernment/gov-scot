@@ -11,8 +11,9 @@ $color__icon--ppt: $color__orange--base;
 $color__icon--txt: $color__icon--default;
 $color__icon--rtf: $color__icon--default;
 $color__icon--xml: $color__icon--default;
-$color__icon--csv: $color__icon--default;
 $color__icon--geo: $color__icon--default;
+// Make CSV border transparent - the page fold is part of the image
+$color__icon--csv: transparent;
 
 // a filetypegroup has: extensions, class modifier, border color
 $filetypegroups: (
