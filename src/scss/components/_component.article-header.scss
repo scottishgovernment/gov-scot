@@ -62,7 +62,7 @@
     }
   }
 
-  &__prefix {
+  &__label {
     color: $color__grey--dark;
     font-size: 12px;
     font-weight: 700;
@@ -81,7 +81,7 @@
       margin: -21px 0 49px 0;
     }
 
-    &__prefix {
+    &__label {
       font-size: 14px;
       line-height: 21px;
     }

@@ -1,9 +1,9 @@
 /*------------------------------------*\
-    #TITLE WITH PREFIX
+    #TITLE WITH LABEL
 \*------------------------------------*/
 
-.title-with-prefix {
-  &__prefix {
+.title-with-label {
+  &__label {
     display: block;
     font-size: $base-font-size;
     font-weight: 400;
@@ -29,8 +29,8 @@
 }
 
 @include media-query(tablet) {
-  .title-with-prefix {
-    &__prefix {
+  .title-with-label {
+    &__label {
       font-size: $tablet-font-size;
     }
   }
