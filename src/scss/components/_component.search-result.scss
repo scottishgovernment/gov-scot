@@ -109,17 +109,17 @@
   &__summary {
     margin-bottom: 0;
   }
+
+  &__image {
+      float: right;
+      height: 87px;
+      width: 87px;
+  }
 }
 
 .search-result__article--has-image {
-    .search-result__image {
-        float: right;
-        height: 130px;
-        width: 130px;
-    }
-
     .search-result__wrapper {
-        margin-right: 145px;
+        margin-right: 102px;
     }
 }
 
@@ -145,6 +145,17 @@
       right: 0;
       top: -8px;
     }
+
+    &__image {
+        height: 144px;
+        width: 144px;
+    }
+  }
+
+  .search-result__article--has-image {
+      .search-result__wrapper {
+          margin-right: 159px;
+      }
   }
 
   .search-results__count {
