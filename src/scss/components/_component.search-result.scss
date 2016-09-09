@@ -33,6 +33,7 @@
   margin: 0 -15px;
 
   &__link {
+    color: $color__body !important;
     display: block;
     position: relative;
     text-decoration: none;
@@ -61,6 +62,7 @@
   &__article {
     border-bottom: 1px solid $color__grey--light;
     margin: 0 15px;
+    overflow: hidden;
     padding: 21px 0 20px;
 
     &--top-border {
@@ -71,17 +73,20 @@
   &__title {
     color: $color__blue--base;
     margin: 1px 0 6px;
-    //padding-right: 90px;
     text-decoration: none;
   }
 
   &__label {
-    color: $color__body;
     font-size: 12px;
     font-weight: 700;
     line-height: 14px;
     margin: 0 0 7px 0;
     text-transform: uppercase;
+  }
+
+  &__role {
+    font-weight: 500;
+    margin-bottom: 7px;
   }
 
   &__date {
@@ -102,9 +107,20 @@
   }
 
   &__summary {
-    color: $color__body;
     margin-bottom: 0;
   }
+}
+
+.search-result__article--has-image {
+    .search-result__image {
+        float: right;
+        height: 130px;
+        width: 130px;
+    }
+
+    .search-result__wrapper {
+        margin-right: 145px;
+    }
 }
 
 @include media-query(tablet) {
