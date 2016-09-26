@@ -14,7 +14,7 @@ $page-group-pip-size: 12px;
   }
 
   &__policy-action-count {
-    margin: -21px 0 21px;
+    margin: 7px 0 21px;
 
     &__label {
       font-weight: bold;
@@ -70,6 +70,11 @@ $page-group-pip-size: 12px;
         background-color: $color__blue--dark;
       }
     }
+
+    + .page-group__list {
+        position: relative;
+        top: -28px;
+    }
   }
 
   &__list {
@@ -77,8 +82,6 @@ $page-group-pip-size: 12px;
     line-height: 21px;
     list-style-type: none;
     margin: 0;
-    position: relative;
-    top: -28px;
 
     display: none;
 
@@ -324,5 +327,9 @@ $page-group-pip-size: 12px;
     @include media-query(tablet-down) {
       padding-top: 35px;
     }
+  }
+
+  .page-group__toggle + .page-group__list {
+      position: static;
   }
 }
