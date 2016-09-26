@@ -284,6 +284,10 @@ $page-group-pip-size: 12px;
       }
     }
   }
+
+  .page-group__toggle + .page-group__list {
+      position: static;
+  }
 }
 
 
@@ -327,9 +331,5 @@ $page-group-pip-size: 12px;
     @include media-query(tablet-down) {
       padding-top: 35px;
     }
-  }
-
-  .page-group__toggle + .page-group__list {
-      position: static;
   }
 }
