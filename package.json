@@ -13,8 +13,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "postinstall": "test -e node_modules/site-builder || ./install site-builder",
-    "shrinkwrap": "./node_modules/site-builder/scripts/shrinkwrap site-builder",
+    "postshrinkwrap": ".bin/sealant site-builder",
     "preview": "./node_modules/site-builder/preview/run.js"
   },
   "dependencies": {
@@ -79,6 +78,7 @@
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-requirejs": "^1.0.0",
     "phantomjs-prebuilt": "^2.1.7",
+    "sealant": "0.0.2",
     "serve-static": "^1.11.1",
     "watch": "^0.19.1",
     "webpack": "^1.13.1",

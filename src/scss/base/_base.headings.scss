@@ -2,6 +2,13 @@
     #HEADINGS
 \*------------------------------------*/
 
+h1, .alpha,
+h2, .beta,
+h3, .gamma,
+h4, .delta {
+    letter-spacing: 0;
+}
+
 h1, .alpha {
   font-size: $base-h1-size;
   line-height: 42px;

@@ -91,8 +91,9 @@
 
   &__date {
     color: $color__grey--text;
+    display: block;
     font-size: 12px;
-    margin: 1px 0 6px;
+    line-height: 14px;
     text-decoration: none;
   }
 
@@ -101,9 +102,8 @@
   }
 
   &__meta-right {
-    position: absolute;
-    right: 15px;
-    top: -5px;
+    float: right;
+    margin-left: 10px;
   }
 
   &__summary {
@@ -111,16 +111,12 @@
   }
 
   &__image {
+      background-color: $color__grey--light;
       float: right;
-      height: 87px;
-      width: 87px;
+      height: 84px;
+      margin: 0 0 10px 20px;
+      width: 84px;
   }
-}
-
-.search-result__article--has-image {
-    .search-result__wrapper {
-        margin-right: 102px;
-    }
 }
 
 @include media-query(tablet) {
@@ -139,11 +135,6 @@
 
     &__date {
       font-size: 14px;
-    }
-
-    &__meta-right {
-      right: 0;
-      top: -8px;
     }
 
     &__image {
