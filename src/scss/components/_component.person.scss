@@ -50,6 +50,7 @@
 
   &__role {
     font-size: $base-milli-size;
+    line-height: 21px;
 
     @include non-contextual-link;
   }
@@ -214,6 +215,7 @@ body.layout-directorate {
 
     &__name {
       font-size: $tablet-h3-size;
+      line-height: 28px;
       margin: 0 0 7px 0;
     }
 
