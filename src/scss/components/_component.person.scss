@@ -3,13 +3,14 @@
 \*------------------------------------*/
 
 .person {
+  margin-bottom: 21px;
+  overflow: hidden;
 
   &__link {
     color: $color__body !important;
-    margin-bottom: 21px;
+    display: block;
     text-decoration: none !important;
   }
-
 
   &__image-container {
     clear: left;
