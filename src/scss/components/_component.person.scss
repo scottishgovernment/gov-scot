@@ -3,7 +3,9 @@
 \*------------------------------------*/
 
 .person {
+  color: $color__body !important;
   margin-bottom: 21px;
+  text-decoration: none !important;
 
   &__image-container {
     clear: left;
@@ -46,13 +48,23 @@
   &__name {
     font-size: $base-h3-size;
     margin: 0 0 14px 0;
+
+    &--link:hover {
+        text-decoration: underline;
+    }
   }
 
-  &__role {
+  &__roles {
     font-size: $base-milli-size;
     line-height: 21px;
 
     @include non-contextual-link;
+  }
+
+  &__role-link {
+      &:hover {
+          text-decoration: underline;
+      }
   }
 
   &__responsibilities {
@@ -219,7 +231,7 @@ body.layout-directorate {
       margin: 0 0 7px 0;
     }
 
-    &__role {
+    &__roles {
       font-size: $base-font-size;
     }
 
