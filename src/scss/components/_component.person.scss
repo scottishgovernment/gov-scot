@@ -14,25 +14,23 @@
     position: relative;
     width: 130px;
 
-    a {
-        &:after {
-            background: rgba(0, 0, 0, 0);
-            bottom: 0;
-            content: '';
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
+    &:after {
+        background: rgba(0, 0, 0, 0);
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
 
-            @include transition(background-color $transition-out-time);
-        }
-
-        &:hover:after {
-            background: rgba(0, 0, 0, 0.2);
-
-            @include transition-duration($transition-in-time);
-        }
+        @include transition(background-color $transition-out-time);
     }
+  }
+
+  &:hover &__image-container:after {
+      background: rgba(0, 0, 0, 0.2);
+
+      @include transition-duration($transition-in-time);
   }
 
   &__text-container {
@@ -48,10 +46,6 @@
   &__name {
     font-size: $base-h3-size;
     margin: 0 0 14px 0;
-
-    &--link:hover {
-        text-decoration: underline;
-    }
   }
 
   &__roles {
