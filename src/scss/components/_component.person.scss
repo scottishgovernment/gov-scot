@@ -3,9 +3,13 @@
 \*------------------------------------*/
 
 .person {
-  color: $color__body !important;
-  margin-bottom: 21px;
-  text-decoration: none !important;
+
+  &__link {
+    color: $color__body !important;
+    margin-bottom: 21px;
+    text-decoration: none !important;
+  }
+
 
   &__image-container {
     clear: left;
@@ -27,7 +31,7 @@
     }
   }
 
-  &:hover &__image-container:after {
+  &__link:hover &__image-container:after {
       background: rgba(0, 0, 0, 0.2);
 
       @include transition-duration($transition-in-time);
