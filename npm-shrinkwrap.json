@@ -2130,7 +2130,8 @@
       "version": "2.1.5"
     },
     "html5shiv": {
-      "version": "3.7.3"
+      "version": "3.7.3",
+      "dev": true
     },
     "http-rewrite-middleware": {
       "version": "0.1.6",
