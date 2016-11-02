@@ -2,23 +2,24 @@
     #BREADCRUMBS
 \*------------------------------------*/
 
-
-
 .breadcrumbs {
   color: $color__grey--text;
   font-size: 12px;
   padding-left: 0;
-  margin: 0 0 28px 0;
+  margin: 0 0 28px;
 
   &__item {
     display: inline-block;
     margin-bottom: 0;
-    margin-left: 0px;
+    margin-left: 0;
 
     &:after {
-      content: '>';
-      padding: 0 3px 0 3px;
-      color: $color__grey--medium;
+        color: $color__grey--base;
+        content: '\203a';
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 14px;
+        padding: 0 3px 0 3px;
     }
   }
 
