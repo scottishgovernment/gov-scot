@@ -4,7 +4,6 @@
     #GOV.SCOT
 \*------------------------------------*/
 
-
 /**
  * CONTENTS
  *
@@ -109,9 +108,6 @@
  * Margins
  */
 
-
-
-
 /* SASS LIBRARIES
 ========================================================================== */
 /*
@@ -129,24 +125,10 @@ $pull: true;
 $push: true;
 
 // same breakpoints as mygov.scot
-$breakpoints: (
-    'bigphone' '(min-width: 480px)',
-    'tablet' '(min-width: 768px)',
-    'desktop' '(min-width: 992px)',
-    'hd' '(min-width: 1200px)',
-
-    'bigphone-down' '(max-width: 479px)',
-    'tablet-down' '(max-width: 767px)',
-    'desktop-down' '(max-width: 991px)',
-    'bigphone-to-tablet' '(min-width: 480px) and (max-width: 767px)',
-    'tablet-to-desktop' '(min-width: 768px) and (max-width: 991px)',
-    'desktop-to-hd' '(min-width: 992px) and (max-width: 1199px)',
-    'hd-up' '(min-width: 1200px)'
-);
+$breakpoints: ( 'bigphone' '(min-width: 480px)', 'tablet' '(min-width: 768px)', 'desktop' '(min-width: 992px)', 'hd' '(min-width: 1200px)', 'bigphone-down' '(max-width: 479px)', 'tablet-down' '(max-width: 767px)', 'desktop-down' '(max-width: 991px)', 'bigphone-to-tablet' '(min-width: 480px) and (max-width: 767px)', 'tablet-to-desktop' '(min-width: 768px) and (max-width: 991px)', 'desktop-to-hd' '(min-width: 992px) and (max-width: 1199px)', 'hd-up' '(min-width: 1200px)' );
 $breakpoint-has-widths: ('bigphone', 'tablet', 'desktop', 'hd');
-$breakpoint-has-push:   ('bigphone', 'tablet', 'desktop', 'hd');
-$breakpoint-has-pull:   ('bigphone', 'tablet', 'desktop', 'hd');
-
+$breakpoint-has-push: ('bigphone', 'tablet', 'desktop', 'hd');
+$breakpoint-has-pull: ('bigphone', 'tablet', 'desktop', 'hd');
 @import "utilities/csswizardry-grids.scss";
 
 // some overrides for csswizardry grids
@@ -158,22 +140,16 @@ $breakpoint-has-pull:   ('bigphone', 'tablet', 'desktop', 'hd');
     }
 }
 
-
-
-
 /**
  * SETTINGS
  */
 $inuit-base-font-size: 16px;
 $inuit-base-line-height: 7px;
 @import "../../node_modules/inuit-defaults/settings.defaults";
-@import "settings/settings.colors";
+@import "../../node_modules/mygov-assets/scss/settings/settings.colors";
 @import "settings/settings.variables";
 @import "settings/settings.type";
 @import "../../node_modules/inuit-responsive-settings/settings.responsive";
-
-
-
 
 /**
  * TOOLS
@@ -186,10 +162,7 @@ $inuit-use-fractions: false;
 @import "tools/tools.mixins";
 @import "tools/tools.hit-target";
 @import "../../node_modules/inuit-responsive-tools/tools.responsive";
-
 @import "tools/tools.placeholder-selectors";
-
-
 
 /**
  * GENERIC
@@ -198,9 +171,6 @@ $inuit-use-fractions: false;
 // inuit generic reset?
 @import "../../node_modules/inuit-box-sizing/generic.box-sizing";
 // inuit generic shared?
-
-
-
 
 /**
  * BASE
@@ -217,9 +187,6 @@ $inuit-use-fractions: false;
 @import "base/base.tables";
 @import "base/base.type";
 
-
-
-
 /**
  * OBJECTS
  */
@@ -234,25 +201,15 @@ $inuit-use-fractions: false;
 @import "objects/object.scrollable";
 @import "objects/object.wrappers";
 
-
-
-
 /**
  * PLUGINS
  */
 @import "../../node_modules/pikaday/scss/pikaday.scss";
 @import "components/plugin.pikaday";
 
-
-
-
 /**
  * COMPONENTS
  */
-$accordion__title-size: 16px;
-@import "components/component.accordion";
-@import "components/component.expand";
-
 @import "components/component.aps-publication";
 @import "components/component.article";
 @import "components/component.article-header";
@@ -265,11 +222,25 @@ $accordion__title-size: 16px;
 @import "components/component.content-data";
 @import "components/component.did-you-mean";
 @import "components/component.document-info";
+@import "components/component.expand";
+$expandable__title-size: 16px;
+$expandable__background-color: $color__grey--lighter;
+$expandable__body-background-color-open: $color__grey--light;
+$expandable__border-color: $color__grey--pale;
+$expandable__header-color-hover: $color__body;
+$expandable__header-color-open: $color__body;
+$expandable__header-background-color-hover: $color__grey--light;
+$expandable__header-background-color-open: $color__blue--lighter;
+$expandable__icon-color: transparent;
+$expandable__icon-color-hover: transparent;
+$expandable__icon-color-open: $expandable__icon-color;
+$expandable__icon-image: '../images/icons/arrows/int_arrow_down_blue_35px.png';
+@import '../../node_modules/mygov-assets/scss/components/component.expandable';
 @import "components/component.external-links";
 @import "components/component.feedback";
 @import "components/component.file-icon";
 @import "components/component.full-width-note";
-@import "components/component.informational-notes";
+@import "../../node_modules/mygov-assets/scss/components/component.informational-notes";
 @import "components/component.item-link";
 @import "components/component.list-controls";
 @import "components/component.main-nav";
@@ -299,15 +270,10 @@ $accordion__title-size: 16px;
 @import "components/component.topic";
 @import "components/component.utility-link";
 @import "components/component.welcome";
-
 @import "components/homepage/component.homepage-about";
 @import "components/homepage/component.homepage-block";
 @import "components/homepage/component.homepage-news";
 @import "components/homepage/component.homepage-publication";
-
-
-
-
 
 /**
  * TRUMPS
