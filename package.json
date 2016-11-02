@@ -17,6 +17,7 @@
     "preview": "./node_modules/site-builder/preview/run.js"
   },
   "dependencies": {
+    "async": "^1.5.2",
     "cheerio": "^0.19.0",
     "config-weaver": "0.0.15",
     "entities": "^1.1.1",
