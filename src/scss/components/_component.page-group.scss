@@ -23,7 +23,7 @@
         border: 1px solid $color__blue--base;
         border-width: 1px 0;
         color: $color__link--primary;
-        margin-bottom: 42px;
+        margin-bottom: 21px;
         padding: 15px 20px;
         position: relative;
         text-align: left;
@@ -64,11 +64,6 @@
             &:after {
                 background-color: $color__blue--dark;
             }
-        }
-
-        + .page-group__list {
-            position: relative;
-            top: -28px;
         }
     }
 
@@ -128,6 +123,10 @@
             background-color: $color__blue--lighter;
             border-left: 4px solid $color__blue--base;
             padding-left: 10px;
+        }
+
+        &--no-link {
+            background-color: inherit !important;
         }
 
         &--level-1 {
