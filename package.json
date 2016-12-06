@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "postshrinkwrap": ".bin/sealant site-builder",
+    "postshrinkwrap": ".bin/sealant mygov-assets site-builder",
     "preview": "./node_modules/site-builder/preview/run.js"
   },
   "dependencies": {
