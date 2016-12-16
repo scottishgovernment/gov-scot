@@ -1288,6 +1288,9 @@
       },
       "dev": true
     },
+    "grunt-contrib-symlink": {
+      "version": "1.0.0"
+    },
     "grunt-contrib-watch": {
       "version": "1.0.0",
       "dependencies": {
