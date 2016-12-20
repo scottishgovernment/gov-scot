@@ -3,47 +3,47 @@
 \*------------------------------------*/
 .scrollable {
   position: relative;
-
-  ::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  ::-webkit-scrollbar-track {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.1);
-    margin: 14px 0;
-    position: relative;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  ::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  &__content {
-    overflow-y: scroll;
-    padding: 14px 0 0 0;
-    width: calc(100% - 50px);
-
-    &--homepage-policies {
-      height: 196px;
-    }
-  }
 }
 
 
 @include media-query(tablet) {
   .scrollable {
+
+      ::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      ::-webkit-scrollbar-track {
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 14px 0;
+        position: relative;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      ::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &__content {
+        overflow-y: scroll;
+        padding: 14px 0 0 0;
+        width: calc(100% - 50px);
+
+        &--homepage-policies {
+          height: 196px;
+        }
+      }
 
       &--mobile-only {
           position: static;
