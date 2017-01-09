@@ -12,8 +12,8 @@
   }
 
   &__heading {
-    font-size: 19px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 21px;
     top: 0;
   }
 
@@ -36,10 +36,18 @@
   }
 }
 
+@include media-query(tablet) {
+  .sidebar-block {
+    &__heading {
+    line-height: 28px;
+    }
+  }
+
+}
+
 @include media-query(desktop) {
   .sidebar-block {
     font-size: 17px;
-    line-height: 28px;
 
     &:first-child {
       border: 0;
