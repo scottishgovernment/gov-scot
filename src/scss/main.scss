@@ -227,15 +227,15 @@ $external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
 @import "base/base.forms";
 @import "base/base.headings";
 @import "base/base.icons";
-//@import "base/base.lists";
-@import "../../node_modules/mygov-assets/scss/base/type/type.lists";
-@import "base/base.page";
+@import "base/base.lists";
+
 @import "../../node_modules/mygov-assets/scss/base/base.rules";
 $table__border-color--header: $color__grey--light;
 @import "../../node_modules/mygov-assets/scss/base/base.tables";
 @import "base/base.type";
 
 /* BASE: TYPE */
+@import "../../node_modules/mygov-assets/scss/base/type/type.body";
 @import "../../node_modules/mygov-assets/scss/base/type/type.leader";
 @import "../../node_modules/mygov-assets/scss/base/type/type.links";
 

@@ -124,6 +124,7 @@ $filter-close-button-size: 49px;
     .filter-search__button {
         font-size: 24px;
         height: 56px;
+        margin: 0;
         padding: 0;
         position: absolute;
         right: 0;
@@ -190,6 +191,8 @@ $filter-close-button-size: 49px;
         background-repeat: no-repeat;
         bottom: 0;
         height: 48px;
+        margin: 0;
+        padding: 0;
         position: absolute;
         right: 0;
         text-indent: -999em;

@@ -2,19 +2,7 @@
     #PAGE
 \*------------------------------------*/
 
-/**
- * 1. To make space for sticky footer
- */
 body {
-  color: $color__body;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-size: $base-font-size;
-  line-height: $base-line-height * 3;
-  margin: 0;
-  text-transform: none;
-
-//  margin-bottom: 320px; /* [1] */
-
   // duplicate the blue bar at the top of the page so it can show on top of any fixed-position overlay on the page (e.g. mobile search overlay)
   &:before {
     background: $color__blue--base;
@@ -24,14 +12,5 @@ body {
     top: 0;
     width: 100%;
     z-index: 1001;
-  }
-}
-
-:lang(gd) {font-style: italic;} // dev note: why is this here? is it worth creating a language scss file?
-
-@include media-query(tablet) {
-  body {
-    font-size: $tablet-font-size;
-    line-height: $base-line-height * 4;
   }
 }
