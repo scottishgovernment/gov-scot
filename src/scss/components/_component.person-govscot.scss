@@ -1,0 +1,130 @@
+/*------------------------------------*\
+    #PERSON
+    govscot-specific .person styles
+\*------------------------------------*/
+
+.person {
+  &__responsibilities {
+    position: relative;
+    font-size: $base-font-size - 2px;
+    @include secondary-link;
+  }
+
+  &__responsibilities-title {
+    text-transform: none;
+    font-size: inherit;
+    margin-bottom: 8px;
+  }
+
+  &__responsibilities-list {
+    list-style-type: none;
+    line-height: 14px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__responsibilities-toggle {
+    position: absolute;
+    top: -3px;
+    right: 0;
+  }
+
+  &__roles {
+    @include non-contextual-link;
+  }
+}
+
+@include media-query(tablet) {
+  .person {
+    &__responsibilities {
+      font-size: $tablet-font-size - 2px;
+      line-height: $base-line-height * 3;
+
+      ul {
+        line-height: $base-line-height * 3;
+
+        li {
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+}
+
+/*
+ Person sizes for particular templates
+ */
+body.layout-org-roles,
+body.layout-person,
+body.layout-role {
+  .person__image {
+    height: 130px;
+    width: 130px;
+
+    background: url(../images/people/placeholder.png);
+    background-size: cover;
+
+    @include media-query(bigphone) {
+      height: 213px;
+      width: 213px;
+    }
+
+    @include media-query(tablet) {
+      height: 220px;
+      width: 220px;
+    }
+
+    @include media-query(desktop) {
+      height: 213px;
+      width: 213px;
+    }
+
+    @include media-query(hd) {
+      height: 263px;
+      width: 263px;
+    }
+  }
+}
+
+body.layout-role {
+  @include media-query(tablet-down) {
+    .person__image-container {
+      width: 183px;
+    }
+
+    .person__image {
+      height: 183px;
+      width: 183px;
+    }
+  }
+}
+
+body.layout-directorate {
+  .person__image {
+    height: 130px;
+    width: 130px;
+
+    background: url(../images/people/placeholder.png);
+    background-size: cover;
+
+    @include media-query(bigphone) {
+      height: 213px;
+      width: 213px;
+    }
+
+    @include media-query(tablet) {
+      height: 137px;
+      width: 137px;
+    }
+
+    @include media-query(desktop) {
+      height: 132px;
+      width: 132px;
+    }
+
+    @include media-query(hd) {
+      height: 165px;
+      width: 165px;
+    }
+  }
+}

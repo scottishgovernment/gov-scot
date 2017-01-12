@@ -15,13 +15,14 @@
  * Responsive...........inuitcss responsive settings
  *
  * TOOLS
- * Animation
  * Functions............inuitcss default functions
- * Hit target
  * Mixins...............inuitcss default mixins
- * Mixins...............gov.scot mixins
  * Responsive...........inuitcss responsive tool
  * Widths...............inuitcss widths tool
+ * Animation
+ * Hit target
+ * Mixins...............mygov-assets mixins
+ * Placeholder selectors
  *
  * GENERIC
  * Normalize............inuitcss normalizer
@@ -32,9 +33,11 @@
  * Buttons
  * Forms
  * Headings
+ * Icons
  * Links
  * Lists
  * Page
+ * Rules
  * Tables
  * Type
  *
@@ -55,31 +58,39 @@
  * Pikaday (custom styles)
  *
  * COMPONENTS
- * Accordion
+ * APS publication
+ * Article
  * Article header
  * Article nav
+ * Article external link
  * A-Z list
  * Breadcrumbs
  * Carousel
  * Contact information
  * Content data
+ * Did you mean
  * Document info
  * Expand
+ * Expandable
  * External links
  * Feedback
  * File icon
  * Full-width note
+ * Informational notes
  * Item link
  * List controls
  * Main nav
  * Media-login
  * Multipage nav
  * News grid
+ * Notification
  * Page nav
  * Page group
  * Pagination
  * Person
+ * Person govscot
  * Person grid
+ * Publication info
  * Pull quote
  * Search box
  * Search result
@@ -89,23 +100,22 @@
  * Site header
  * Stat box
  * Sticky back to top
+ * Sticky document info
  * Supporting files
  * Title with prefix
  * Topic
  * Utility link
  * Welcome
- *
  * Homepage about
  * Homepage block
  * Homepage news
  * Homepage publication
  *
  * TRUMPS
- * Widths...............inuitcss width helper classes
- * Widths-responsive....inuitcss responsive width helper classes
  * Display toggle
  * Font awesome
  * Margins
+ * Pikaday
  */
 
 /* SASS LIBRARIES
@@ -140,16 +150,35 @@ $breakpoint-has-pull: ('bigphone', 'tablet', 'desktop', 'hd');
     }
 }
 
+
+
+
 /**
  * SETTINGS
  */
 $inuit-base-font-size: 16px;
 $inuit-base-line-height: 7px;
 @import "../../node_modules/inuit-defaults/settings.defaults";
+@import "../../node_modules/mygov-assets/scss/settings/settings.base-spacing";
 @import "../../node_modules/mygov-assets/scss/settings/settings.colors";
-@import "settings/settings.variables";
-@import "settings/settings.type";
+@import "../../node_modules/mygov-assets/scss/settings/settings.transition";
+$base-h1-size: 35px; // 2.1875em;
+$base-h2-size: 22px; // 1.375em;
+$base-h3-size: 18px; // 1.125em;
+$base-h4-size: 15px; // 0.9375em
+$tablet-font-size: 18px;
+//$tablet-milli-size: 16px;
+$tablet-h1-size: 56px;
+$tablet-h2-size: 28px;
+$tablet-h3-size: 21px;
+$tablet-h4-size: $tablet-font-size - 1;
+$tablet-h5-size: 14px;
+$desktop-h2-size: 32px;
+@import "../../node_modules/mygov-assets/scss/settings/settings.type";
 @import "../../node_modules/inuit-responsive-settings/settings.responsive";
+
+
+
 
 /**
  * TOOLS
@@ -158,11 +187,14 @@ $inuit-base-line-height: 7px;
 @import "../../node_modules/inuit-mixins/tools.mixins";
 $inuit-use-fractions: false;
 @import "../../node_modules/inuit-tools-widths/tools.widths";
-@import "tools/tools.animation";
-@import "tools/tools.mixins";
-@import "tools/tools.hit-target";
 @import "../../node_modules/inuit-responsive-tools/tools.responsive";
+@import "tools/tools.animation";
+@import "tools/tools.hit-target";
+@import "../../node_modules/mygov-assets/scss/tools/tools.mixins";
 @import "tools/tools.placeholder-selectors";
+
+
+
 
 /**
  * GENERIC
@@ -172,20 +204,43 @@ $inuit-use-fractions: false;
 @import "../../node_modules/inuit-box-sizing/generic.box-sizing";
 // inuit generic shared?
 
+
+
+
+/**
+ * HELPERS
+ */
+@import "../../node_modules/mygov-assets/scss/helpers/helper.bleed";
+@import "../../node_modules/mygov-assets/scss/helpers/helper.visibility";
+@import "../../node_modules/mygov-assets/scss/helpers/helper.wrappers";
+
+
+
+
 /**
  * BASE
  */
 @import "../../node_modules/inuit-page/base.page";
-@import "base/base.buttons";
+@import "../../node_modules/mygov-assets/scss/base/base.buttons";
+$external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
+@import "../../node_modules/mygov-assets/scss/base/base.external-links";
 @import "base/base.forms";
 @import "base/base.headings";
 @import "base/base.icons";
-@import "base/base.links";
-@import "base/base.lists";
+//@import "base/base.lists";
+@import "../../node_modules/mygov-assets/scss/base/type/type.lists";
 @import "base/base.page";
-@import "base/base.rules";
-@import "base/base.tables";
+@import "../../node_modules/mygov-assets/scss/base/base.rules";
+$table__border-color--header: $color__grey--light;
+@import "../../node_modules/mygov-assets/scss/base/base.tables";
 @import "base/base.type";
+
+/* BASE: TYPE */
+@import "../../node_modules/mygov-assets/scss/base/type/type.leader";
+@import "../../node_modules/mygov-assets/scss/base/type/type.links";
+
+
+
 
 /**
  * OBJECTS
@@ -193,19 +248,23 @@ $inuit-use-fractions: false;
 @import "../../node_modules/inuit-layout/objects.layout";
 @import "objects/object.containers";
 @import "objects/object.dividers";
-@import "objects/object.helpers";
 @import "objects/object.layers";
 @import "objects/object.media";
 @import "objects/object.narrow";
 @import "objects/object.overflows";
 @import "objects/object.scrollable";
-@import "objects/object.wrappers";
+
+
+
 
 /**
  * PLUGINS
  */
 @import "../../node_modules/pikaday/scss/pikaday.scss";
 @import "components/plugin.pikaday";
+
+
+
 
 /**
  * COMPONENTS
@@ -216,13 +275,20 @@ $inuit-use-fractions: false;
 @import "components/component.article-nav";
 @import "components/component.article-external-link";
 @import "components/component.az-list";
-@import "components/component.breadcrumbs";
+$breadcrumbs__font-size: 12px;
+$breadcrumbs__font-size--tablet: 13px;
+$breadcrumbs__font-size--desktop: 14px;
+$breadcrumbs__margin: 0 0 28px;
+$breadcrumbs__margin--tablet: -3px 0 4px;
+$breadcrumbs__margin--desktop: $breadcrumbs__margin--tablet;
+@import "../../node_modules/mygov-assets/scss/components/component.breadcrumbs";
 @import "components/component.carousel";
 @import "components/component.contact-information";
 @import "components/component.content-data";
 @import "components/component.did-you-mean";
 @import "components/component.document-info";
-@import "components/component.expand";
+//@import "components/component.expand";
+@import '../../node_modules/mygov-assets/scss/components/component.expand';
 $expandable__title-size: 16px;
 $expandable__background-color: $color__grey--lighter;
 $expandable__body-background-color-open: $color__grey--light;
@@ -236,9 +302,9 @@ $expandable__icon-color-hover: transparent;
 $expandable__icon-color-open: $expandable__icon-color;
 $expandable__icon-image: '../images/icons/arrows/int_arrow_down_blue_35px.png';
 @import '../../node_modules/mygov-assets/scss/components/component.expandable';
-@import "components/component.external-links";
+@import "../../node_modules/mygov-assets/scss/components/component.external-links";
 @import "components/component.feedback";
-@import "components/component.file-icon";
+@import "../../node_modules/mygov-assets/scss/components/component.file-icon";
 @import "components/component.full-width-note";
 @import "../../node_modules/mygov-assets/scss/components/component.informational-notes";
 @import "components/component.item-link";
@@ -251,11 +317,20 @@ $expandable__icon-image: '../images/icons/arrows/int_arrow_down_blue_35px.png';
 @import "components/component.page-nav";
 @import "components/component.page-group";
 @import "components/component.pagination";
-@import "components/component.person";
+@import "../../node_modules/mygov-assets/scss/components/component.person";
+@import "components/component.person-govscot";
 @import "components/component.person-grid";
 @import "components/component.publication-info";
 @import "components/component.pull-quote";
-@import "components/component.search-box";
+$search-box__border-radius: 0;
+$search-box__background-color: $color__grey--lighter;
+$search-box__font-size: 16px;
+$search-box__font-size--tablet: 17px;
+$search-box__font-size--desktop: $search-box__font-size--tablet;
+$search-box__size: 56px;
+$search-box__size--tablet: $search-box__size;
+@import "../../node_modules/mygov-assets/scss/components/component.search-box";
+@import "components/component.search-box-govscot";
 @import "components/component.search-result";
 @import "components/component.sidebar-block";
 @import "components/component.site-brand";
@@ -274,6 +349,9 @@ $expandable__icon-image: '../images/icons/arrows/int_arrow_down_blue_35px.png';
 @import "components/homepage/component.homepage-block";
 @import "components/homepage/component.homepage-news";
 @import "components/homepage/component.homepage-publication";
+
+
+
 
 /**
  * TRUMPS

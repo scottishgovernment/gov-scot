@@ -3,9 +3,11 @@
     Extend the current container across additional columns
 \*------------------------------------*/
 
-$overflow-gutter-width: 30px;
+$overflow-gutter-width: 30px !default;
+$overflow-base-width: 750px !default;
+$overflow-desktop-width: 970px !default;
+$overflow-hd-width: 1170px !default;
 
-$overflow-base-width: 750px;
 $overflow-column-width: $overflow-base-width / 12;
 @include media-query(tablet) {
   .overflow--tablet--one-twelfth {
@@ -22,8 +24,7 @@ $overflow-column-width: $overflow-base-width / 12;
   }
 }
 
-$overflow-base-width: 970px;
-$overflow-column-width: $overflow-base-width / 12;
+$overflow-column-width: $overflow-desktop-width / 12;
 @include media-query(desktop) {
   .overflow--desktop--one-twelfth {
     margin-right: $overflow-column-width * -1
@@ -39,8 +40,7 @@ $overflow-column-width: $overflow-base-width / 12;
   }
 }
 
-$overflow-base-width: 1170px;
-$overflow-column-width: $overflow-base-width / 12;
+$overflow-column-width: $overflow-hd-width / 12;
 @include media-query(hd) {
   .overflow--hd--one-twelfth {
     margin-right: $overflow-column-width * -1

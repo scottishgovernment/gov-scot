@@ -2,10 +2,22 @@
     #ARTICLE EXTERNAL LINK
 \*------------------------------------*/
 
+$excludedSites: ('.gov.scot', '.scotland.gov.uk');
+
+@function addExcludedUrls() {
+    $output: '';
+
+    @each $excludedSite in $excludedSites {
+        $output: $output + ':not([href*="' + $excludedSite + '"])';
+    }
+
+    @return $output;
+}
+
 article {
-  a[href^="//"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]),
-  a[href^="http://"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]),
-  a[href^="https://"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]) {
+  a[href^="//"]#{addExcludedUrls()},
+  a[href^="http://"]#{addExcludedUrls()},
+  a[href^="https://"]#{addExcludedUrls()} {
 
     background-image: url(../images/icons/arrows/ext_arrow_text_15px.png);
     background-position: center right;
@@ -46,9 +58,9 @@ article {
   }
 
   h2, h3 {
-    a[href^="//"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]),
-    a[href^="http://"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]),
-    a[href^="https://"]:not([href*=".gov.scot"]):not([href*=".scotland.gov.uk"]) {
+    a[href^="//"]#{addExcludedUrls()},
+    a[href^="http://"]#{addExcludedUrls()},
+    a[href^="https://"]#{addExcludedUrls()} {
 
       background-image: url(../images/icons/arrows/ext_arrow_text_17px.png);
       padding-right: 22px;
