@@ -34,10 +34,10 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .person {
     &__responsibilities {
-      font-size: $tablet-font-size - 2px;
+      font-size: $medium-font-size - 2px;
       line-height: $base-line-height * 3;
 
       ul {
@@ -64,22 +64,22 @@ body.layout-role {
     background: url(../images/people/placeholder.png);
     background-size: cover;
 
-    @include media-query(bigphone) {
+    @include media-query(small) {
       height: 213px;
       width: 213px;
     }
 
-    @include media-query(tablet) {
+    @include media-query(medium) {
       height: 220px;
       width: 220px;
     }
 
-    @include media-query(desktop) {
+    @include media-query(large) {
       height: 213px;
       width: 213px;
     }
 
-    @include media-query(hd) {
+    @include media-query(xlarge) {
       height: 263px;
       width: 263px;
     }
@@ -87,7 +87,7 @@ body.layout-role {
 }
 
 body.layout-role {
-  @include media-query(tablet-down) {
+  @include media-query(medium-down) {
     .person__image-container {
       width: 183px;
     }
@@ -107,22 +107,22 @@ body.layout-directorate {
     background: url(../images/people/placeholder.png);
     background-size: cover;
 
-    @include media-query(bigphone) {
+    @include media-query(small) {
       height: 213px;
       width: 213px;
     }
 
-    @include media-query(tablet) {
+    @include media-query(medium) {
       height: 137px;
       width: 137px;
     }
 
-    @include media-query(desktop) {
+    @include media-query(large) {
       height: 132px;
       width: 132px;
     }
 
-    @include media-query(hd) {
+    @include media-query(xlarge) {
       height: 165px;
       width: 165px;
     }

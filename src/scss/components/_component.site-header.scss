@@ -158,7 +158,7 @@
 
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
 
   .site-header {
     position: relative;
@@ -173,7 +173,7 @@
 
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
 
   .site-header {
     height: 98px;

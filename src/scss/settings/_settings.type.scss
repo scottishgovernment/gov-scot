@@ -16,15 +16,15 @@ $base-leader-size: 19px; // 1.1875em;
 $base-line-height: $base-line-height;
 
 // tablet
-$tablet-font-size: 18px;
-//$tablet-milli-size: 16px;
-$tablet-h1-size: 56px;
-$tablet-h2-size: 28px;
-$tablet-h3-size: 21px;
-$tablet-h4-size: $tablet-font-size - 1;
-$tablet-h5-size: 14px;
-$tablet-note-size: 14px;
-$tablet-leader-size: 22px;
+$medium-font-size: 18px;
+//$medium-milli-size: 16px;
+$medium-h1-size: 56px;
+$medium-h2-size: 28px;
+$medium-h3-size: 21px;
+$medium-h4-size: $medium-font-size - 1;
+$medium-h5-size: 14px;
+$medium-note-size: 14px;
+$medium-leader-size: 22px;
 
 // desktop
-$desktop-h2-size: 32px;
+$large-h2-size: 32px;

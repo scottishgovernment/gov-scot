@@ -54,7 +54,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .supporting-files {
     border-top: 1px solid $color__grey--pale;
 

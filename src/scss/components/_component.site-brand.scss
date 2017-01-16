@@ -27,7 +27,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .site-brand {
     height: 76px;
     position: absolute;
@@ -45,7 +45,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .site-brand {
     height: 90px;
     padding-right: 25px;

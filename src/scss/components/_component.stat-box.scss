@@ -67,7 +67,7 @@ a.stat-box {
   margin-left: 5%;
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .stat-box {
     margin: 0 0 42px;
     min-height: 133px;

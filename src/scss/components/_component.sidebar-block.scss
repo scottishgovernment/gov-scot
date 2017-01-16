@@ -36,7 +36,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .sidebar-block {
     &__heading {
     line-height: 28px;
@@ -44,7 +44,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .sidebar-block {
     font-size: 17px;
 

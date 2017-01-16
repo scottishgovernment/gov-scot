@@ -71,7 +71,7 @@
   @extend %inner-shadow-right;
 }
 
-@include media-query(tablet-down) {
+@include media-query(medium-down) {
   .inner-shadow-top--no-mobile,
   .inner-shadow-right--no-mobile {
     &:before {
@@ -80,7 +80,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .inner-shadow-top--no-desktop {
     &:before {
       content: none;

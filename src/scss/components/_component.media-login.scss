@@ -17,7 +17,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .media-login {
     margin-top: 70px;
 
@@ -27,7 +27,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .media-login {
     &__button {
       margin-bottom: 0;

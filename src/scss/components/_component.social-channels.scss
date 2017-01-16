@@ -100,7 +100,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .social-channel {
     &__body {
       height: 189px;
@@ -109,7 +109,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .social-channel {
     &__body {
       height: 266px;
@@ -117,7 +117,7 @@
   }
 }
 
-@include media-query(hd) {
+@include media-query(xlarge) {
   .social-channel {
     &__body {
       height: 329px;

@@ -6,7 +6,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .scrollable {
 
       ::-webkit-scrollbar {

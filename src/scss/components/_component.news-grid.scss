@@ -36,7 +36,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
 
   .news-subscribe-pin {
     background-color: $color__grey--lighter;
@@ -64,6 +64,6 @@
 }
 
 
-@include media-query(desktop) {
+@include media-query(large) {
 
 }

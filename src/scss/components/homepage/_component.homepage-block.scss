@@ -81,7 +81,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .homepage-block {
     margin-top: 98px;
 
@@ -97,7 +97,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .homepage-block {
     &__intro {
       font-size: 16px;
@@ -105,7 +105,7 @@
     }
 
     &__title {
-      font-size: $desktop-h2-size;
+      font-size: $large-h2-size;
       line-height: 35px;
       padding-top: 21px;
 

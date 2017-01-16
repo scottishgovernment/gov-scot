@@ -154,7 +154,7 @@
     }
 
 }
-@include media-query(tablet) {
+@include media-query(medium) {
     .page-group {
         &:after {
             display: block;
@@ -207,7 +207,7 @@
     -webkit-transform: translate3d(0, 0, 0);
 
     &--is-sticky {
-        @include media-query(tablet) {
+        @include media-query(medium) {
             position: fixed;
             top: 0;
             bottom: 0;
@@ -217,7 +217,7 @@
 }
 
 /* styles for mobile nav */
-@include media-query(tablet-down) {
+@include media-query(medium-down) {
     .page-group--mobile {
         .page-group__list {
             display: block;
@@ -235,7 +235,7 @@
     }
 
     .page-group__content {
-        @include media-query(tablet-down) {
+        @include media-query(medium-down) {
             padding-top: 35px;
         }
     }

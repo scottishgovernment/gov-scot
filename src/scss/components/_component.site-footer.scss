@@ -114,7 +114,7 @@ $social-icon__size-multiplier: 2/3;
 }
 
 // for demonstration only: social icon sizes can be controlled through a single property, e.g.
-@include media-query(tablet) {
+@include media-query(medium) {
   .social-links {
     float: right;
   }

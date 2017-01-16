@@ -23,14 +23,14 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .pull-quote {
     display: block;
   }
 }
 
 
-@include media-query(desktop) {
+@include media-query(large) {
   .pull-quote {
     font-size: 34px;
     line-height: 40px;

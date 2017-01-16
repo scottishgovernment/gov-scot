@@ -135,10 +135,10 @@ $pull: true;
 $push: true;
 
 // same breakpoints as mygov.scot
-$breakpoints: ( 'bigphone' '(min-width: 480px)', 'tablet' '(min-width: 768px)', 'desktop' '(min-width: 992px)', 'hd' '(min-width: 1200px)', 'bigphone-down' '(max-width: 479px)', 'tablet-down' '(max-width: 767px)', 'desktop-down' '(max-width: 991px)', 'bigphone-to-tablet' '(min-width: 480px) and (max-width: 767px)', 'tablet-to-desktop' '(min-width: 768px) and (max-width: 991px)', 'desktop-to-hd' '(min-width: 992px) and (max-width: 1199px)', 'hd-up' '(min-width: 1200px)' );
-$breakpoint-has-widths: ('bigphone', 'tablet', 'desktop', 'hd');
-$breakpoint-has-push: ('bigphone', 'tablet', 'desktop', 'hd');
-$breakpoint-has-pull: ('bigphone', 'tablet', 'desktop', 'hd');
+$breakpoints: ( 'small' '(min-width: 480px)', 'medium' '(min-width: 768px)', 'large' '(min-width: 992px)', 'xlarge' '(min-width: 1200px)', 'small-down' '(max-width: 479px)', 'medium-down' '(max-width: 767px)', 'large-down' '(max-width: 991px)', 'small-to-medium' '(min-width: 480px) and (max-width: 767px)', 'medium-to-large' '(min-width: 768px) and (max-width: 991px)', 'large-to-xlarge' '(min-width: 992px) and (max-width: 1199px)', 'xlarge-up' '(min-width: 1200px)' );
+$breakpoint-has-widths: ('small', 'medium', 'large', 'xlarge');
+$breakpoint-has-push: ('small', 'medium', 'large', 'xlarge');
+$breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
 @import "utilities/csswizardry-grids.scss";
 
 // some overrides for csswizardry grids
@@ -166,14 +166,14 @@ $base-h1-size: 35px; // 2.1875em;
 $base-h2-size: 22px; // 1.375em;
 $base-h3-size: 18px; // 1.125em;
 $base-h4-size: 15px; // 0.9375em
-$tablet-font-size: 18px;
-//$tablet-milli-size: 16px;
-$tablet-h1-size: 56px;
-$tablet-h2-size: 28px;
-$tablet-h3-size: 21px;
-$tablet-h4-size: $tablet-font-size - 1;
-$tablet-h5-size: 14px;
-$desktop-h2-size: 32px;
+$medium-font-size: 18px;
+//$medium-milli-size: 16px;
+$medium-h1-size: 56px;
+$medium-h2-size: 28px;
+$medium-h3-size: 21px;
+$medium-h4-size: $medium-font-size - 1;
+$medium-h5-size: 14px;
+$large-h2-size: 32px;
 @import "../../node_modules/mygov-assets/scss/settings/settings.type";
 @import "../../node_modules/inuit-responsive-settings/settings.responsive";
 
@@ -236,6 +236,7 @@ $table__border-color--header: $color__grey--light;
 
 /* BASE: TYPE */
 @import "../../node_modules/mygov-assets/scss/base/type/type.body";
+@import "../../node_modules/mygov-assets/scss/base/type/type.header-emphasis";
 @import "../../node_modules/mygov-assets/scss/base/type/type.leader";
 @import "../../node_modules/mygov-assets/scss/base/type/type.links";
 
@@ -276,11 +277,11 @@ $table__border-color--header: $color__grey--light;
 @import "components/component.article-external-link";
 @import "components/component.az-list";
 $breadcrumbs__font-size: 12px;
-$breadcrumbs__font-size--tablet: 13px;
-$breadcrumbs__font-size--desktop: 14px;
+$breadcrumbs__font-size--medium: 13px;
+$breadcrumbs__font-size--large: 14px;
 $breadcrumbs__margin: 0 0 28px;
-$breadcrumbs__margin--tablet: -3px 0 4px;
-$breadcrumbs__margin--desktop: $breadcrumbs__margin--tablet;
+$breadcrumbs__margin--medium: -3px 0 4px;
+$breadcrumbs__margin--large: $breadcrumbs__margin--medium;
 @import "../../node_modules/mygov-assets/scss/components/component.breadcrumbs";
 @import "components/component.carousel";
 @import "components/component.contact-information";
@@ -303,6 +304,7 @@ $expandable__icon-color-open: $expandable__icon-color;
 $expandable__icon-image: '../images/icons/arrows/int_arrow_down_blue_35px.png';
 @import '../../node_modules/mygov-assets/scss/components/component.expandable';
 @import "../../node_modules/mygov-assets/scss/components/component.external-links";
+@import "components/component.external-links.govscot";
 @import "components/component.feedback";
 @import "../../node_modules/mygov-assets/scss/components/component.file-icon";
 @import "components/component.full-width-note";
@@ -325,10 +327,10 @@ $expandable__icon-image: '../images/icons/arrows/int_arrow_down_blue_35px.png';
 $search-box__border-radius: 0;
 $search-box__background-color: $color__grey--lighter;
 $search-box__font-size: 16px;
-$search-box__font-size--tablet: 17px;
-$search-box__font-size--desktop: $search-box__font-size--tablet;
+$search-box__font-size--medium: 17px;
+$search-box__font-size--large: $search-box__font-size--medium;
 $search-box__size: 56px;
-$search-box__size--tablet: $search-box__size;
+$search-box__size--medium: $search-box__size;
 @import "../../node_modules/mygov-assets/scss/components/component.search-box";
 @import "components/component.search-box-govscot";
 @import "components/component.search-result";

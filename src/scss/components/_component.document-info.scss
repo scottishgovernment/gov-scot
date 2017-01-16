@@ -182,7 +182,7 @@ $document-info__large-button-size: 70px !default;
  *
  */
 
-@include media-query(tablet) {
+@include media-query(medium) {
 
   .document-info {
     margin-bottom: 35px;

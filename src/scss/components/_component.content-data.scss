@@ -51,7 +51,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .content-data {
     font-size: 12px;
     margin: 0 0 35px 0;

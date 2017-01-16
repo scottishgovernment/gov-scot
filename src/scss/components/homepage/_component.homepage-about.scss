@@ -29,7 +29,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .homepage-about {
 
     &__grid-item + &__grid-item {
@@ -48,7 +48,7 @@
   }
 }
 
-@include media-query(tablet-to-desktop) {
+@include media-query(medium-to-large) {
   // special case for "homepage about" stat boxes
   // take mobile size for tablet resolution
   .homepage-about {
@@ -76,7 +76,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .homepage-about {
     &__title {
       font-size: 26px;

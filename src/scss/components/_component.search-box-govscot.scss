@@ -33,7 +33,7 @@ $search-box__transition-timing: ease;
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .search-box {
 
     &__input {

@@ -136,7 +136,7 @@ article ol.fancy {
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
 
   ul {
     margin: -7px 0 28px 20px;

@@ -127,7 +127,7 @@
         top: -12px;
     }
 }
-@include media-query(tablet) {
+@include media-query(medium) {
     .search-result {
         margin: 0;
 

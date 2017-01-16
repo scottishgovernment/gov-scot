@@ -12,7 +12,7 @@ $main-nav__transition-timing: ease;
     Mobile styles
 \*------------------------------------*/
 
-@include media-query(tablet-down) {
+@include media-query(medium-down) {
   .main-nav {
 
     /**
@@ -97,7 +97,7 @@ $main-nav__transition-timing: ease;
 \*------------------------------------*/
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .main-nav {
 
     &__list {
@@ -159,7 +159,7 @@ $main-nav__transition-timing: ease;
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .main-nav__link {
     font-size: 16px;
     height: 90px;
