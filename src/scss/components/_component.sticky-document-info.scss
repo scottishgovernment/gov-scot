@@ -88,7 +88,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .sticky-document-info {
     background: $color__white;
 
@@ -141,7 +141,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
 
   .sticky-document-info {
 

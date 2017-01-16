@@ -28,10 +28,10 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .title-with-label {
     &__label {
-      font-size: $tablet-font-size;
+      font-size: $medium-font-size;
     }
   }
 }

@@ -126,7 +126,7 @@ $carousel-z-stage-image: 40;
  * This is added to a .carousel-item by JavaScript if there is a video in the carousel item.
  *
  * 1. Add some extra margin on tablet since part of the stage is hidden.
- * 2. Position button off center for desktop and HD displays.
+ * 2. Position button off center for large and xlarge displays.
  */
 .carousel-item__play-button {
   background-image: url(../images/icons/youtube-play.png);
@@ -141,33 +141,33 @@ $carousel-z-stage-image: 40;
   right: 0;
   z-index: $carousel-z-stage-play-button;
 
-  @include media-query(tablet-down) {
+  @include media-query(medium-down) {
     height: 36px;
     width: 50px;
     margin-top: 25%;
   }
 
-  @include media-query(tablet) {
+  @include media-query(medium) {
     height: 45px;
     width: 60px;
   }
 
-  @include media-query(desktop) {
+  @include media-query(large) {
     height: 49px;
     width: 70px;
   }
 
-  @include media-query(hd) {
+  @include media-query(xlarge) {
     height: 60px;
     width: 70px;
   }
 
   &--stage-text-visible {
-    @include media-query(desktop) {
+    @include media-query(large) {
       margin-left: 28%;
     }
 
-    @include media-query(hd) {
+    @include media-query(xlarge) {
       margin-left: 35%;
     }
   }
@@ -191,7 +191,7 @@ $carousel-z-stage-image: 40;
 
 $carousel-text-element-padding-mobile: 15px;
 
-@include media-query(desktop-down) {
+@include media-query(large-down) {
 
   .carousel-item {
 
@@ -359,7 +359,7 @@ $carousel-text-element-padding-mobile: 15px;
 }
 
 
-@include media-query(tablet-to-desktop) {
+@include media-query(medium-to-large) {
 
   .carousel-item {
     &__support {
@@ -438,40 +438,40 @@ $carousel-text-element-padding-mobile: 15px;
     CAROUSEL - DESKTOP AND UP
 \*------------------------------------*/
 
-$wrapper-width-desktop: 940px;
-$wrapper-width-hd: 1140px;
+$wrapper-width-large: 940px;
+$wrapper-width-xlarge: 1140px;
 
 $drop-shadow-offset: 5px;
 $carousel-hover-delta: 24px;
 
-$carousel-height-desktop: 400px;
-$carousel-image-width-desktop: 566px; // arbitrary width to match grid
-$carousel-video-width-desktop: 711px; // 16:9
-$carousel-support-width-desktop: $wrapper-width-desktop - $carousel-image-width-desktop + $drop-shadow-offset;
-$carousel-support-play-width-desktop: $wrapper-width-desktop - $carousel-video-width-desktop + $drop-shadow-offset;;
-$carousel-support-inactive-height-desktop: 56px;
-$carousel-support-active-height-desktop-3items: $carousel-height-desktop - ($carousel-support-inactive-height-desktop * 2);
-$carousel-support-active-height-desktop-2items: $carousel-height-desktop - $carousel-support-inactive-height-desktop;
-$carousel-support-active-height-desktop-1item: $carousel-height-desktop;
-$carousel-desc-height-desktop: 225px;
+$carousel-height-large: 400px;
+$carousel-image-width-large: 566px; // arbitrary width to match grid
+$carousel-video-width-large: 711px; // 16:9
+$carousel-support-width-large: $wrapper-width-large - $carousel-image-width-large + $drop-shadow-offset;
+$carousel-support-play-width-large: $wrapper-width-large - $carousel-video-width-large + $drop-shadow-offset;;
+$carousel-support-inactive-height-large: 56px;
+$carousel-support-active-height-large-3items: $carousel-height-large - ($carousel-support-inactive-height-large * 2);
+$carousel-support-active-height-large-2items: $carousel-height-large - $carousel-support-inactive-height-large;
+$carousel-support-active-height-large-1item: $carousel-height-large;
+$carousel-desc-height-large: 225px;
 
-$carousel-height-hd: 420px;
-$carousel-image-width-hd: 750px; // 16:9
-$carousel-video-width-hd: 750px; // 16:9
-$carousel-support-width-hd: $wrapper-width-hd - $carousel-image-width-hd + $drop-shadow-offset;
-$carousel-support-play-width-hd: $wrapper-width-hd - $carousel-video-width-hd + $drop-shadow-offset;
-$carousel-support-inactive-height-hd: 56px;
-$carousel-support-active-height-hd-3items: $carousel-height-hd - ($carousel-support-inactive-height-hd * 2);
-$carousel-support-active-height-hd-2items: $carousel-height-hd - $carousel-support-inactive-height-hd;
-$carousel-support-active-height-hd-1item: $carousel-height-hd;
-$carousel-desc-height-hd: 244px;
+$carousel-height-xlarge: 420px;
+$carousel-image-width-xlarge: 750px; // 16:9
+$carousel-video-width-xlarge: 750px; // 16:9
+$carousel-support-width-xlarge: $wrapper-width-xlarge - $carousel-image-width-xlarge + $drop-shadow-offset;
+$carousel-support-play-width-xlarge: $wrapper-width-xlarge - $carousel-video-width-xlarge + $drop-shadow-offset;
+$carousel-support-inactive-height-xlarge: 56px;
+$carousel-support-active-height-xlarge-3items: $carousel-height-xlarge - ($carousel-support-inactive-height-xlarge * 2);
+$carousel-support-active-height-xlarge-2items: $carousel-height-xlarge - $carousel-support-inactive-height-xlarge;
+$carousel-support-active-height-xlarge-1item: $carousel-height-xlarge;
+$carousel-desc-height-xlarge: 244px;
 
 
 
-@include media-query(desktop) {
+@include media-query(large) {
 
   .carousel {
-      height: $carousel-height-desktop;
+      height: $carousel-height-large;
       overflow: hidden;
   }
 
@@ -493,7 +493,7 @@ $carousel-desc-height-hd: 244px;
         border-top: 1px solid $color__grey--pale;
         box-shadow: $drop-shadow-offset 1px 9px 0px rgba(0, 0, 0, 0.22);
         color: $color__grey--dark;
-        height: $carousel-support-inactive-height-desktop;
+        height: $carousel-support-inactive-height-large;
         margin-left: -$drop-shadow-offset; /* [1] */
         overflow: hidden;
         padding: 17px 10px 14px 15px+$drop-shadow-offset;
@@ -501,7 +501,7 @@ $carousel-desc-height-hd: 244px;
         transition: height 0.2s ease,
                     width 0.1s ease,
                     background-color 0.1s ease;
-        width: $carousel-support-width-desktop;
+        width: $carousel-support-width-large;
         z-index: $carousel-z-support;
 
         &:active {
@@ -547,7 +547,7 @@ $carousel-desc-height-hd: 244px;
         position: absolute;
         right: -999em; /* [1] */
         top: 0;
-        width: $carousel-image-width-desktop;
+        width: $carousel-image-width-large;
 
         img {
           height: 100%;
@@ -642,13 +642,13 @@ $carousel-desc-height-hd: 244px;
         top: 0;
         right: -999em; /* [1] */
         z-index: $carousel-z-stage-video;
-        width: $carousel-video-width-desktop;
+        width: $carousel-video-width-large;
       }
 
   }
 
   /**
-   * == STATES @desktop ==
+   * == STATES @large ==
    */
 
 
@@ -668,7 +668,7 @@ $carousel-desc-height-hd: 244px;
 
     .carousel-item__support {
       background-color: white;
-      height: $carousel-support-active-height-desktop-1item;
+      height: $carousel-support-active-height-large-1item;
       z-index: $carousel-z-support-active;
       padding: 12px 0 12px 12px+$drop-shadow-offset;
 
@@ -739,10 +739,10 @@ $carousel-desc-height-hd: 244px;
    * Support 2 and 3 carousel-items. The default is for 1 item.
    */
   .carousel--2items .carousel-item--active .carousel-item__support {
-    height: $carousel-support-active-height-desktop-2items;
+    height: $carousel-support-active-height-large-2items;
   }
   .carousel--3items .carousel-item--active .carousel-item__support {
-    height: $carousel-support-active-height-desktop-3items;
+    height: $carousel-support-active-height-large-3items;
   }
 
 
@@ -751,7 +751,7 @@ $carousel-desc-height-hd: 244px;
    */
   .carousel--play {
     .carousel-item__support {
-      width: $carousel-support-play-width-desktop;
+      width: $carousel-support-play-width-large;
     }
   }
 
@@ -782,7 +782,7 @@ $carousel-desc-height-hd: 244px;
      */
     .carousel-item--hover {
       .carousel-item__support {
-        height: $carousel-support-inactive-height-desktop + $carousel-hover-delta;
+        height: $carousel-support-inactive-height-large + $carousel-hover-delta;
       }
       .carousel-item__desc {
         height: 0 + $carousel-hover-delta;
@@ -791,7 +791,7 @@ $carousel-desc-height-hd: 244px;
     .carousel--hover {
       .carousel-item--active {
         .carousel-item__support {
-          height: $carousel-support-active-height-desktop-1item - $carousel-hover-delta;
+          height: $carousel-support-active-height-large-1item - $carousel-hover-delta;
         }
       }
     }
@@ -799,32 +799,32 @@ $carousel-desc-height-hd: 244px;
      * Support 2 and 3 carousel-items. The default is for 1 item.
      */
     .carousel--2items.carousel--hover .carousel-item--active .carousel-item__support {
-      height: $carousel-support-active-height-desktop-2items - $carousel-hover-delta;
+      height: $carousel-support-active-height-large-2items - $carousel-hover-delta;
     }
     .carousel--3items.carousel--hover .carousel-item--active .carousel-item__support {
-      height: $carousel-support-active-height-desktop-3items - $carousel-hover-delta;
+      height: $carousel-support-active-height-large-3items - $carousel-hover-delta;
     }
 
 }
 
 
 
-@include media-query(hd) {
+@include media-query(xlarge) {
 
   .carousel {
-    height: $carousel-height-hd;
+    height: $carousel-height-xlarge;
   }
 
   .carousel-item__support {
-    width: $carousel-support-width-hd;
-    height: $carousel-support-inactive-height-hd;
+    width: $carousel-support-width-xlarge;
+    height: $carousel-support-inactive-height-xlarge;
   }
 
   /**
    * 1. Crop the height as needed to fit the width.
    */
   .carousel-item__stage {
-    width: $carousel-image-width-hd;
+    width: $carousel-image-width-xlarge;
 
     img {
       width: 100%;
@@ -834,7 +834,7 @@ $carousel-desc-height-hd: 244px;
 
 
    /**
-    * == STATES @hd ==
+    * == STATES @xlarge ==
     */
 
    /**
@@ -842,21 +842,21 @@ $carousel-desc-height-hd: 244px;
     */
   .carousel-item--active {
     .carousel-item__support {
-      height: $carousel-support-active-height-hd-1item;
+      height: $carousel-support-active-height-xlarge-1item;
       padding: 14px 10px 0 15px+$drop-shadow-offset;
     }
     .carousel-item__video {
-      width: $carousel-video-width-hd;
+      width: $carousel-video-width-xlarge;
     }
   }
   /**
    * Support 2 and 3 carousel-items. The default is for 1 item.
    */
   .carousel--2items .carousel-item--active .carousel-item__support {
-    height: $carousel-support-active-height-hd-2items;
+    height: $carousel-support-active-height-xlarge-2items;
   }
   .carousel--3items .carousel-item--active .carousel-item__support {
-    height: $carousel-support-active-height-hd-3items;
+    height: $carousel-support-active-height-xlarge-3items;
   }
 
 
@@ -866,7 +866,7 @@ $carousel-desc-height-hd: 244px;
    */
   .carousel--play {
     .carousel-item__support {
-      width: $carousel-support-play-width-hd;
+      width: $carousel-support-play-width-xlarge;
     }
   }
 
@@ -875,7 +875,7 @@ $carousel-desc-height-hd: 244px;
    */
   .carousel-item--hover {
     .carousel-item__support {
-      height: $carousel-support-inactive-height-hd + $carousel-hover-delta;
+      height: $carousel-support-inactive-height-xlarge + $carousel-hover-delta;
     }
     .carousel-item__desc {
       height: 0px + $carousel-hover-delta;
@@ -884,7 +884,7 @@ $carousel-desc-height-hd: 244px;
   .carousel--hover {
     .carousel-item--active {
       .carousel-item__support {
-        height: $carousel-support-active-height-hd-1item - $carousel-hover-delta;
+        height: $carousel-support-active-height-xlarge-1item - $carousel-hover-delta;
       }
     }
   }
@@ -892,10 +892,10 @@ $carousel-desc-height-hd: 244px;
    * Support 2 and 3 carousel-items. The default is for 1 item.
    */
   .carousel--2items.carousel--hover .carousel-item--active .carousel-item__support {
-    height: $carousel-support-active-height-hd-2items - $carousel-hover-delta;
+    height: $carousel-support-active-height-xlarge-2items - $carousel-hover-delta;
   }
   .carousel--3items.carousel--hover .carousel-item--active .carousel-item__support {
-    height: $carousel-support-active-height-hd-3items - $carousel-hover-delta;
+    height: $carousel-support-active-height-xlarge-3items - $carousel-hover-delta;
   }
 
 

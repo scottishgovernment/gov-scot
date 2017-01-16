@@ -54,7 +54,7 @@
     }
 }
 
-@include media-query(tablet-down) {
+@include media-query(medium-down) {
     .topic {
         margin-left: -15px;
     }
@@ -71,7 +71,7 @@
     }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
     .topics {
         li {
             margin-bottom: 56px;

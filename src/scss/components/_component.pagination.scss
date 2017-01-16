@@ -45,7 +45,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .search-results__pagination {
     &--full {
       display: block;

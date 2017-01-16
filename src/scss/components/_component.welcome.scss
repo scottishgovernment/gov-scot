@@ -18,7 +18,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .welcome {
     margin-bottom: 28px;
 
@@ -28,7 +28,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .welcome {
     &__intro {
       font-size: 21px;

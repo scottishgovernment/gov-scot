@@ -55,7 +55,7 @@
   }
 }
 
-@include media-query(tablet-down) {
+@include media-query(medium-down) {
   .homepage-news__item {
     display: none;
     margin-bottom: 42px;
@@ -70,7 +70,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .homepage-news {
     &__summary {
       margin-bottom: 28px;
@@ -86,7 +86,7 @@
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .homepage-subscribe {
     top: 34px;
   }

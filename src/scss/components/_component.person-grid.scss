@@ -30,7 +30,7 @@ h1 + .person-grid {
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
     h1 + .person-grid {
         margin-top: -35px;
     }

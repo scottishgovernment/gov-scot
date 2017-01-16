@@ -27,7 +27,7 @@
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .az-list {
       &__chunkName {
           font-size: 28px;
@@ -36,7 +36,7 @@
   }
 }
 
-@include media-query(hd) {
+@include media-query(xlarge) {
   .az-list {
       &__chunkName {
           font-size: 35px;

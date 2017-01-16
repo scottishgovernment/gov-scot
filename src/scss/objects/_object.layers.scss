@@ -69,7 +69,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   // makes content in a mobile layer display on larger devices
   .mobile-layer--show-tablet {
     opacity: 1;

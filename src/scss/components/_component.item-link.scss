@@ -15,9 +15,9 @@
 $item-link-margin: 32px;
 $item-link-element-margin: 16px !default;
 $item-link-title-text-size: 14px !default;
-$item-link-title-text-size-tablet: 17px !default;
+$item-link-title-text-size-medium: 17px !default;
 $item-link-title-line-height: 16px !default;
-$item-link-title-line-height-tablet: 24px !default;
+$item-link-title-line-height-medium: 24px !default;
 $item-link-tag-text-size: 13px !default;
 $item-link-tag-line-height: 15px !default;
 $item-link-date-text-size: 13px !default;
@@ -59,9 +59,9 @@ $item-link-date-text-size: 13px !default;
 }
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .item-link__title {
-    font-size: $item-link-title-text-size-tablet;
-    line-height: $item-link-title-line-height-tablet;
+    font-size: $item-link-title-text-size-medium;
+    line-height: $item-link-title-line-height-medium;
   }
 }

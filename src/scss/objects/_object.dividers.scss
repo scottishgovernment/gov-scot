@@ -39,8 +39,8 @@ $grid-divider-bottom-padding: 24px !default;
  * Grid dividers give you responsive dividers on the grid. Extends .grid
  *
  * .grid-divider  ................ Add a right border on grid-items in tablets and up
- * .grid-divider--phone  ......... Add a right border on grid items in phones
- * .grid-divider--phone-bottom  .. Add a bottom border on grid items in phones
+ * .grid-divider--xsmall  ........ Add a right border on grid items in phones
+ * .grid-divider--xsmall-bottom  . Add a bottom border on grid items in phones
  * .grid-divider__disabled  ...... Disable the divider on a specific grid item
  * .grid-divider--narrow  ........ Reduces padding to match narrow grid
  *
@@ -61,22 +61,22 @@ $grid-divider-bottom-padding: 24px !default;
 }
 
 .grid-divider {
-  @include media-query(tablet) {
+  @include media-query(medium) {
     @include grid-divider-setup('right', $grid-divider-right-padding);
   }
 }
 
-.grid-divider--phone {
+.grid-divider--xsmall {
   @include grid-divider-setup('right', $grid-divider-right-padding);
 }
 
-.grid-divider--phone-bottom {
+.grid-divider--xsmall-bottom {
   @include grid-divider-setup('bottom', $grid-divider-bottom-padding);
 }
 
 .grid-divider--narrow {
   @include grid-divider-setup('right', $grid-divider-right-padding-narrow);
-  @include media-query(tablet) {
+  @include media-query(medium) {
     @include grid-divider-setup('right', $grid-divider-right-padding-narrow);
   }
 }
@@ -86,8 +86,8 @@ $grid-divider-bottom-padding: 24px !default;
   border-right: 0 !important;
 }
 
-@include media-query(tablet-down) {
-  .grid-divider__disabled-phone {
+@include media-query(medium-down) {
+  .grid-divider__disabled-xsmall {
     padding-right: 0 !important;
     border-right: 0 !important;
   }

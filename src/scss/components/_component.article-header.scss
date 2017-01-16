@@ -14,7 +14,7 @@
       margin-bottom: 49px;
     }
 
-    @include media-query(tablet) {
+    @include media-query(medium) {
       &__title {
         margin-top: 35px;
       }
@@ -23,13 +23,13 @@
       }
     }
 
-    @include media-query(desktop) {
+    @include media-query(large) {
       &__title {
         margin-top: 36px;
       }
     }
 
-    @include media-query(hd) {
+    @include media-query(xlarge) {
       &__title {
         margin-top: 35px;
       }
@@ -72,7 +72,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .article-header {
 
     &__subtitle {

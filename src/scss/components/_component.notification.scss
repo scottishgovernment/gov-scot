@@ -207,7 +207,7 @@ $notification_padding: 14px;
 
 
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .notification {
     &--gold,
     &--green {
@@ -288,7 +288,7 @@ $notification_padding: 14px;
   }
 }
 
-@include media-query(desktop) {
+@include media-query(large) {
   .notification {
     &--green {
       .notification__staging-box {

@@ -34,7 +34,7 @@
   }
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   .contact-information {
     font-size: 15px;
     margin-top: 70px;

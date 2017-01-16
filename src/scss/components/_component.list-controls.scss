@@ -293,7 +293,7 @@ $filter-close-button-size: 49px;
 /**
  * for older mobile devices with poor/no support for position:fixed
  */
-@include media-query (tablet-down) {
+@include media-query (medium-down) {
     body.no-fixed {
         .filters-container {
             padding-top: 0;
@@ -339,7 +339,7 @@ $filter-close-button-size: 49px;
         }
     }
 }
-@include media-query(tablet) {
+@include media-query(medium) {
     .filter-search .filter-search__button {
         height: 49px;
         width: 49px;
@@ -448,7 +448,7 @@ $filter-close-button-size: 49px;
         }
     }
 }
-@include media-query(hd) {
+@include media-query(xlarge) {
     .checkbox-group {
         &__label {
             padding-top: 3px;

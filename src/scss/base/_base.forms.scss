@@ -169,13 +169,13 @@ input:checked + label.fancy-checkbox:before {
   content: '\2713';
 }
 
-@include media-query(tablet) {
+@include media-query(medium) {
   input + label.fancy-checkbox:before {
     top: -2px;
   }
 }
 
-@include media-query(hd) {
+@include media-query(xlarge) {
   input + label.fancy-checkbox:before {
     top: 0;
   }
