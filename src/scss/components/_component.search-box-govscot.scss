@@ -31,6 +31,10 @@ $search-box__transition-timing: ease;
 
     @include transition(margin-top $search-box__transition-duration $search-box__transition-timing);
   }
+
+  &--large {
+      margin-bottom: 42px;
+  }
 }
 
 @include media-query(medium) {

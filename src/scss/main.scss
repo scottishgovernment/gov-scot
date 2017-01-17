@@ -221,6 +221,7 @@ $inuit-use-fractions: false;
  * BASE
  */
 @import "../../node_modules/inuit-page/base.page";
+$button__padding: 7px 20px;
 @import "../../node_modules/mygov-assets/scss/base/base.buttons";
 $external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
 @import "../../node_modules/mygov-assets/scss/base/base.external-links";
