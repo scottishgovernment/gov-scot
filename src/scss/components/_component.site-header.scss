@@ -30,19 +30,17 @@
     height: auto;
     line-height: 16px;
     margin: 0;
-    padding: 4px 3px 4px 3px;
+    padding: 4px 3px 11px 3px;
     vertical-align: top;
     outline: 0;
     width: 45px;
 
     &--selected.site-header__button--search {
       background-color: $color__grey--light;
-      padding-bottom: 8px;
     }
 
     &--selected.site-header__button--nav {
       background-color: $color__blue--base;
-      padding-bottom: 3px;
     }
 
     &__button:focus {
@@ -141,7 +139,7 @@
   }
 
   .site-header__buttons {
-    top: 4px;
+    top: 1px;
   }
 
   // ICONS - REDUCED
