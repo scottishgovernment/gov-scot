@@ -157,6 +157,10 @@
 
 }
 
+.site-header__mourning {
+  border-top: 7px solid $color__black;
+}
+
 @include media-query(medium) {
 
   .site-header {
