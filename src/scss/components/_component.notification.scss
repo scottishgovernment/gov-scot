@@ -88,7 +88,8 @@ $notification_padding: 14px;
   }
 
   &--gold,
-  &--green {
+  &--green,
+  &--light {
     color: $color__grey--dark;
     background-color: $color__gold--base;
     padding: 0 14px;
@@ -137,6 +138,7 @@ $notification_padding: 14px;
   }
 
   &--gold .notification__beta-box,
+  &--light .notification__beta-box,
   &--green .notification__staging-box {
     display: inline-block;
     background: $color__grey--dark;
@@ -147,7 +149,8 @@ $notification_padding: 14px;
     margin: 10.5px 0;
   }
 
-  &--gold {
+  &--gold,
+  &--light {
     .notification__btn {
       text-decoration: none;
       display: inline-block;
@@ -203,6 +206,21 @@ $notification_padding: 14px;
       }
     }
   }
+
+  &--light {
+    background-color: $color__grey--light;
+
+    .notification__beta-box {
+      color: $color__white;
+    }
+  }
+
+  &--mourning {
+    background-color: $color__black;
+    height: 56px;
+    color: $color__white;
+    font-weight: bold;
+  }
 }
 
 
@@ -210,7 +228,8 @@ $notification_padding: 14px;
 @include media-query(medium) {
   .notification {
     &--gold,
-    &--green {
+    &--green,
+    &--light {
       .wrapper {
         padding: 0 10px;
       }
@@ -236,13 +255,15 @@ $notification_padding: 14px;
     }
 
     &--gold .notification__beta-box,
+    &--light .notification__beta-box,
     &--green .notification__staging-box {
       float: left;
       margin: 10.5px 0;
       padding: 6px 10px;
     }
 
-    &--gold {
+    &--gold,
+    &--light {
       .notification__btn {
         margin: 10.5px 0;
       }
