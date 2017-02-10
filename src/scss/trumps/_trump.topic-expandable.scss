@@ -1,0 +1,21 @@
+/*------------------------------------*\
+    #TOPIC EXPANDABLE
+\*------------------------------------*/
+
+// dev note: this may turn out to be some additional padding that ought to be applied to accordions globally
+
+.topic-expandable {
+    .expandable-item__body {
+        padding-top: 28px;
+        padding-bottom: 14px;
+    }
+}
+
+@include media-query(medium) {
+    .topic-expandable {
+        .expandable-item__body {
+            padding-top: 49px;
+            padding-bottom: 49px;
+        }
+    }
+}

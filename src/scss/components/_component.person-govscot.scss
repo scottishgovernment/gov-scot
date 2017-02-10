@@ -3,6 +3,12 @@
     govscot-specific .person styles
 \*------------------------------------*/
 
+.person-list {
+    li {
+        margin-left: 0;
+    }
+}
+
 .person {
   &__responsibilities {
     position: relative;

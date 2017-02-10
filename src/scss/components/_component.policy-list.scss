@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    #POLICY LIST
+\*------------------------------------*/
+
+.policy-list {
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0 49px 0;
+    position: relative;
+
+    &:after {
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 0;
+
+        background: $color__white;
+    }
+
+    &__item {
+        margin: 0;
+        position: relative;
+    }
+
+    &__link {
+        color: $color__body;
+        display: block;
+        padding-bottom: 7px;
+        padding-top: 7px;
+        text-decoration: none;
+
+        &:after {
+            content: '';
+            height: 1px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            background: $color__grey--pale;
+        }
+
+        &:hover {
+            background: $color__grey--lighter;
+        }
+    }
+}
+
+@include media-query(medium) {
+    .policy-list {
+        &__link {
+            &:after {
+                right: 25%;
+            }
+        }
+    }
+}

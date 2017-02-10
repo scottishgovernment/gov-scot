@@ -1,0 +1,74 @@
+/*------------------------------------*\
+    #COLUMN LIST
+    Displays a list in columns with items flowing vertically
+    Falls back to displaying row-by-row in old IE
+\*------------------------------------*/
+
+$gutter: 30px !default;
+
+
+
+
+.column-list {
+    -moz-column-gap: $gutter;
+    column-gap: $gutter;
+    margin-left: 0;
+
+    $columns: 4;
+
+    @while $columns > 1 {
+        &--#{$columns} {
+            -moz-column-count: #{$columns};
+            column-count: #{$columns};
+        }
+
+        $columns: $columns - 1;
+    }
+
+    &__item {
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+@include media-query(medium-down) {
+    .column-list--not-small {
+        -moz-column-count: 1 !important;
+        column-count: 1 !important;
+    }
+}
+
+
+
+
+.old-ie .column-list {
+    $columns: 4;
+
+    margin-right: -30px;
+    overflow: hidden;
+
+    @while $columns > 1 {
+        &--#{$columns} .column-list__item {
+            width: (100% / $columns);
+        }
+
+        &--#{$columns} .column-list__item:nth-child(#{$columns}n+1) {
+            clear: left;
+        }
+
+        $columns: $columns - 1;
+    }
+
+    &__item {
+        float: left;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .column-list--not-small {
+        .column-list__item {
+            width: 100% !important;
+        }
+    }
+}

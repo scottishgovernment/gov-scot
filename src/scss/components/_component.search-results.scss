@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    #SEARCH RESULTS
+\*------------------------------------*/
+
+.search-results__list {
+    list-style: none;
+    margin: 21px 0 0 -40px;
+}
+
+.search-results__header {
+    overflow: hidden;
+}
+
+.search-results-header__left {
+    float: left;
+}
+
+.search-results-header__right {
+    float: right;
+    margin-top: 21px;
+    width: auto;
+}
+
+.search-results__count {
+    margin: 0;
+}
