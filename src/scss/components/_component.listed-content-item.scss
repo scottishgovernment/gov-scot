@@ -1,9 +1,9 @@
 /*------------------------------------*\
-    #CONTENT PREVIEW
-    Summary of a content item, such as one would see on a search results page
+  #LISTED CONTENT ITEM
+  For when you want a list of content items as links, such as a set of search results
 \*------------------------------------*/
 
-.content-preview {
+.listed-content-item {
     margin: 0;
     max-width: 510px;
 
@@ -20,11 +20,11 @@
             text-decoration: none;
             @include transition-duration($transition-out-time);
 
-            .content-preview__title {
+            .listed-content-item__title {
                 text-decoration: underline;
             }
 
-            .content-preview__feature-image {
+            .listed-content-item__feature-image {
                 opacity: 0.8;
 
                 @include transition-duration($transition-in-time);
@@ -122,49 +122,49 @@
     }
 }
 
-.content-preview--small {
+.listed-content-item--small {
 
-    .content-preview__label,
-    .content-preview__date {
+    .listed-content-item__label,
+    .listed-content-item__date {
         font-size: 12px !important;
     }
 
-    .content-preview__title {
+    .listed-content-item__title {
         font-size: 19px;
         line-height: 21px;
     }
 
-    .content-preview__summary {
+    .listed-content-item__summary {
         font-size: 16px;
         line-height: 21px;
     }
 }
 
 // alternative colorway
-.content-preview--dark {
-    .content-preview__link {
+.listed-content-item--dark {
+    .listed-content-item__link {
         background-color: $color__grey--dark !important;
     }
 
-    .content-preview__article {
+    .listed-content-item__article {
         border-bottom: 0;
     }
 
-    .content-preview__date,
-    .content-preview__title,
-    .content-preview__link {
+    .listed-content-item__date,
+    .listed-content-item__title,
+    .listed-content-item__link {
         color: $color__white !important;
     }
 }
 
 @include media-query(medium-down) {
-    .content-preview:not(:last-child) {
+    .listed-content-item:not(:last-child) {
         margin-bottom: 35px;
     }
 }
 
 @include media-query(medium) {
-    .content-preview {
+    .listed-content-item {
 
         &__article {
             margin: 0;
@@ -186,8 +186,8 @@
         }
     }
 
-    .content-preview__article--has-image {
-        .content-preview__wrapper {
+    .listed-content-item__article--has-image {
+        .listed-content-item__wrapper {
             margin-right: 159px;
         }
     }
@@ -200,12 +200,12 @@
         margin-left: 0;
     }
 
-    .content-preview--small {
-        .content-preview__feature-image {
+    .listed-content-item--small {
+        .listed-content-item__feature-image {
             height: 124px;
         }
 
-        .content-preview__link {
+        .listed-content-item__link {
             height: 283px;
             overflow: hidden;
         }
@@ -213,24 +213,24 @@
 }
 
 @include media-query(large) {
-    .content-preview--small {
-        .content-preview__feature-image {
+    .listed-content-item--small {
+        .listed-content-item__feature-image {
             height: 165px;
         }
 
-        .content-preview__link {
+        .listed-content-item__link {
             height: 324px;
         }
     }
 }
 
 @include media-query(xlarge) {
-    .content-preview--small {
-        .content-preview__feature-image {
+    .listed-content-item--small {
+        .listed-content-item__feature-image {
             height: 202px;
         }
 
-        .content-preview__link {
+        .listed-content-item__link {
             height: 361px;
         }
     }
