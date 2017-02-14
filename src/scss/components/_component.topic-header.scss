@@ -12,19 +12,13 @@
 
 @include media-query(medium) {
     .topic-header {
-        margin: 0 -15px 35px;
+        margin-bottom: 35px;
         padding-top: 49px;
         position: relative;
 
         &__title {
-            background: $color__white;
-            left: 0;
-            padding-left: 15px;
             padding-bottom: 14px;
-            position: absolute;
-            top: 0;
             width: 67%;
-            z-index: 1;
         }
 
         &__image {
@@ -38,7 +32,18 @@
         }
 
         &--has-image {
+            margin-left: -15px;
             padding-bottom: 24.56%;
+            padding-left: 15px;
+            padding-top: 49px;
+        }
+
+        &--has-image &__title {
+            background: $color__white;
+            left: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
         }
     }
 }
