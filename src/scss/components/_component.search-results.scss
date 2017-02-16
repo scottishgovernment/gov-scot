@@ -4,10 +4,11 @@
 
 .search-results__list {
     list-style: none;
-    margin: 21px 0 0 0;
+    margin: 21px 0 0 -40px;
 
     .listed-content-item {
       max-width: none;
+      margin: 0 -15px;
     }
 }
 
@@ -27,4 +28,14 @@
 
 .search-results__count {
     margin: 0;
+}
+
+@include media-query(medium) {
+    .search-results__list {
+        margin: 21px 0 0 0;
+
+        .listed-content-item {
+          margin: 0;
+        }
+    }
 }
