@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .policy-list {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
     margin: 0 0 49px 0;
     position: relative;
@@ -13,12 +13,14 @@
         height: 1px;
         left: 0;
         position: absolute;
+        right: 0;
         top: 0;
 
         background: $color__white;
     }
 
     &__item {
+        border-top: 1px solid $color__grey--pale;
         margin: 0;
         position: relative;
     }
@@ -27,29 +29,30 @@
         color: $color__body;
         display: block;
         padding-bottom: 7px;
+        padding-right: 30px;
         padding-top: 7px;
         text-decoration: none;
 
-        &:after {
-            content: '';
-            height: 1px;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-
-            background: $color__grey--pale;
-        }
-
         &:hover {
             background: $color__grey--lighter;
+        }
+
+        &:active,
+        &:focus {
+            background: $color__blue--light;
+            outline: none !important;
         }
     }
 }
 
 @include media-query(medium) {
     .policy-list {
+        font-size: 16px;
+
         &__link {
+            padding-top: 10px;
+            padding-bottom: 11px;
+
             &:after {
                 right: 25%;
             }
