@@ -21,10 +21,10 @@ $search-box__transition-timing: ease;
     padding-left: 20px;
   }
 
-  &--mobile {
+   &--mobile {
     left: 15px;
     height: auto;
-    position: fixed;
+    position: absolute;
     right: 15px;
     top: 104px;
     width: auto;
@@ -35,6 +35,12 @@ $search-box__transition-timing: ease;
 
   &--large {
       margin-bottom: 42px;
+  }
+}
+
+.site-header-container--fixed {
+  .search-box--mobile {
+    position: fixed;
   }
 }
 
