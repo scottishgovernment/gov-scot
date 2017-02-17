@@ -1,5 +1,6 @@
 /*------------------------------------*\
-    #SEARCH BOX GOVSCOT
+    #TRUMP SEARCH BOX
+    Override styles for gov.scot searchbox
 \*------------------------------------*/
 
 $search-box__transition-duration: 0.4s;
@@ -44,6 +45,7 @@ $search-box__transition-timing: ease;
       &[type=text] {
         @include transition(width $transition-in-time);
         margin-right: $search-box__size;
+        padding-right: 0;
         width: calc(100% - #{$search-box__size});
       }
 
