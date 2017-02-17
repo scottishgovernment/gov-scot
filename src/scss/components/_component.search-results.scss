@@ -30,6 +30,12 @@
     margin: 0;
 }
 
+.search-results__item >
+.listed-content-item__link >
+.listed-content-item__article {
+    overflow: hidden;
+}
+
 @include media-query(medium) {
     .search-results__list {
         margin: 21px 0 0 0;
