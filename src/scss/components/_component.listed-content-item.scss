@@ -38,6 +38,12 @@
         }
     }
 
+    &__link:hover &__title,
+    &__link:focus &__title,
+    &__link:active &__title  {
+        color: $color__link--hover;
+    }
+
     &__feature-image {
         display: block;
         margin: -21px -15px 14px;
