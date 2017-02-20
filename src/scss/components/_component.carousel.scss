@@ -232,6 +232,7 @@ $carousel-text-element-padding-mobile: 15px;
     &__video {
       position: absolute;
       top: 0;
+      right: 0;
       width: 100%;
       z-index: $carousel-z-stage-video-mobile;
     }
@@ -504,8 +505,11 @@ $carousel-desc-height-xlarge: 244px;
         width: $carousel-support-width-large;
         z-index: $carousel-z-support;
 
-        &:active {
+        &:active,
+        &:focus {
           background-color: $color__blue--light;
+          outline: none;
+
           .carousel-item__title {
             color: $color__blue--dark;
           }
@@ -545,9 +549,23 @@ $carousel-desc-height-xlarge: 244px;
         height: 100%;
         padding-bottom: 0;
         position: absolute;
-        right: -999em; /* [1] */
+        display: none;
+        right: 0;
         top: 0;
         width: $carousel-image-width-large;
+
+        &:focus {
+            &:before {
+                bottom: 0;
+                content: '';
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                border: 6px solid $color__blue--light;
+            }
+        }
 
         img {
           height: 100%;
@@ -640,7 +658,8 @@ $carousel-desc-height-xlarge: 244px;
       &__video {
         position: absolute;
         top: 0;
-        right: -999em; /* [1] */
+        right: 0;
+        display: none;
         z-index: $carousel-z-stage-video;
         width: $carousel-video-width-large;
       }
@@ -722,7 +741,7 @@ $carousel-desc-height-xlarge: 244px;
      * 1. Reveal hidden stage
      */
     .carousel-item__stage {
-        right: 0; /* [1] */
+        display: block;
     }
 
     .carousel-item__stage-text {
@@ -760,7 +779,7 @@ $carousel-desc-height-xlarge: 244px;
      * 1. Reveal hidden video
      */
     .carousel-item__video {
-       right:0; /* [1] */
+       display: block;
     }
   }
 
@@ -772,7 +791,7 @@ $carousel-desc-height-xlarge: 244px;
    * smaller width.
    */
   .carousel-item--pause .carousel-item__video {
-     right:0; /* [1] */
+     right: 0; /* [1] */
    }
 
 
