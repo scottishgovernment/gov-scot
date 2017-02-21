@@ -38,12 +38,6 @@ $search-box__transition-timing: ease;
   }
 }
 
-.site-header-container--fixed {
-  .search-box--mobile {
-    position: fixed;
-  }
-}
-
 @include media-query(medium) {
   .search-box {
 
