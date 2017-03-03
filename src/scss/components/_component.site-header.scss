@@ -7,7 +7,7 @@
   border-top: 7px solid $color__blue--base;
   border-bottom: 1px solid $color__grey--light;
   height: 77px;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@
   &__buttons {
     position: absolute;
     right: 10px;
-    bottom: 0;
+    bottom: -1px;
   }
 
   &__button {
@@ -37,6 +37,7 @@
 
     &--selected.site-header__button--search {
       background-color: $color__grey--light;
+      padding-bottom: 16px;
     }
 
     &--selected.site-header__button--nav {
@@ -163,6 +164,7 @@
 @include media-query(medium) {
 
   .site-header {
+    overflow: hidden;
     position: relative;
     height: 84px;
 
