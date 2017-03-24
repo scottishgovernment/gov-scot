@@ -1,0 +1,32 @@
+/*------------------------------------*\
+  #CROSSBAR HEADER
+\*------------------------------------*/
+
+.crossbar-header {
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 28px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+
+    &:before {
+        background: $color__body;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 50%;
+    }
+
+    &__text {
+        background: $color__white;
+        border: 1px solid $color__body;
+        display: inline-block;
+        margin: 0 auto;
+        padding: 4px 7px 3px;
+        position: relative;
+    }
+}

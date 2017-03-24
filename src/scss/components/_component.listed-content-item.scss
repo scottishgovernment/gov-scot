@@ -241,3 +241,50 @@
         }
     }
 }
+
+// size variant
+.listed-content-item--compact {
+    margin-bottom: 14px !important;
+
+    .listed-content-item__article {
+        padding-bottom: 7px;
+        padding-top: 14px;
+    }
+
+    .listed-content-item__meta {
+        margin-bottom: 7px;
+    }
+
+    .listed-content-item__label {
+        font-size: 16px;
+        line-height: 21px;
+        margin-bottom: 0;
+    }
+
+    .listed-content-item__date {
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 0;
+    }
+
+    .listed-content-item__title {
+        font-size: 18px;
+        line-height: 21px;
+    }
+}
+
+// style variant
+.listed-content-item--highlight {
+    .listed-content-item__link {
+        background-color: $color__grey--lighter;
+        border-left: 3px solid $color__link--primary;
+
+        &:hover {
+            border-left-color: $color__link--hover;
+        }
+
+        &:active {
+            background-color: $color__blue--light;
+        }
+    }
+}

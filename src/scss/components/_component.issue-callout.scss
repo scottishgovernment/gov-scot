@@ -1,0 +1,94 @@
+/*------------------------------------*\
+    #ISSUE CALLOUT
+\*------------------------------------*/
+
+// dev note: this doesn't really belong here
+.body-content {
+    position: relative;
+}
+
+.issue-callout {
+    background: $color__white;
+    color: $color__blue--base;
+    margin: 0 -15px;
+    padding: 14px 15px;
+    text-align: center;
+
+    &__inner {
+        border: 1px solid $color__blue--base;
+        overflow: hidden;
+        padding: 7px 15px;
+        position: relative;
+
+        &:before,
+        &:after {
+            background: $color__white;
+            bottom: 0;
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 15px;
+            z-index: 2;
+        }
+
+        &:after {
+            right: 0;
+        }
+
+        &:before {
+            left: 0;
+        }
+    }
+
+    &__alpha {
+        display: inline-block;
+        font-size: 26px;
+        font-weight: 300;
+        margin: 0 0 18px;
+        position: relative;
+
+        &:before,
+        &:after {
+            background: $color__blue--base;
+            content: '';
+            height: 1px;
+
+            position: absolute;
+            top: 50%;
+        }
+
+        &:before {
+            left: -25px;
+            right: calc(100% + 8px);
+        }
+
+        &:after {
+            left: calc(100% + 8px);
+            right: -25px;
+        }
+    }
+
+    &__beta {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 19px 0 18px;
+    }
+
+    &__gamma {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0 0 27px;
+    }
+}
+
+@include media-query(medium) {
+    .issue-callout {
+        bottom: 100%;
+        box-shadow: 0px 4px 6px 1px rgba(0,0,0,0.1);
+        margin-left: 0;
+        margin-right: 0;
+        position: absolute;
+        right: 0;
+        width: calc(33.333333% - 20px);
+    }
+}
