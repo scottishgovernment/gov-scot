@@ -18,7 +18,8 @@
 
         &__title {
             padding-bottom: 14px;
-            width: 67%;
+            padding-right: 0.5em;
+            max-width: 67%;
         }
 
         &__image {
@@ -52,7 +53,7 @@
 @include media-query(large) {
     .topic-header {
         &__title {
-            width: 50%;
+            max-width: 50%;
         }
 
         &__image {
