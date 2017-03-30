@@ -256,7 +256,7 @@
     }
 
     .listed-content-item__label {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 21px;
         margin-bottom: 0;
     }
@@ -269,7 +269,7 @@
 
     .listed-content-item__title {
         font-size: 18px;
-        line-height: 21px;
+        line-height: 28px;
     }
 }
 
@@ -277,7 +277,7 @@
 .listed-content-item--highlight {
     .listed-content-item__link {
         background-color: $color__grey--lighter;
-        border-left: 3px solid $color__link--primary;
+        border-left: 4px solid $color__link--primary;
 
         &:hover {
             border-left-color: $color__link--hover;

@@ -10,6 +10,14 @@
     }
 }
 
+@include media-query(medium-down) {
+    .topic-header {
+        &__title + &__image {
+            margin-top: -14px;
+        }
+    }
+}
+
 @include media-query(medium) {
     .topic-header {
         margin-bottom: 35px;
@@ -33,10 +41,8 @@
         }
 
         &--has-image {
-            margin-left: -15px;
             padding-bottom: 24.56%;
-            padding-left: 15px;
-            padding-top: 49px;
+            padding-top: 20px;
         }
 
         &--has-image &__title {

@@ -10,7 +10,7 @@
 .issue-callout {
     background: $color__white;
     color: $color__blue--base;
-    margin: 0 -15px;
+    margin: 0 -15px 35px;
     padding: 14px 15px;
     text-align: center;
 
@@ -44,7 +44,8 @@
         display: inline-block;
         font-size: 26px;
         font-weight: 300;
-        margin: 0 0 18px;
+        line-height: 35px;
+        margin: 0 0 14px;
         position: relative;
 
         &:before,
@@ -69,26 +70,45 @@
     }
 
     &__beta {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 700;
-        margin: 19px 0 18px;
+        margin: 16px 0 14px;
     }
 
     &__gamma {
         font-size: 14px;
         font-weight: 700;
+        line-height: 21px;
         margin: 0 0 27px;
+    }
+}
+
+@include media-query(medium-down) {
+    .displace-by-issue-callout {
+        padding-top: 0 !important;
     }
 }
 
 @include media-query(medium) {
     .issue-callout {
-        bottom: 100%;
         box-shadow: 0px 4px 6px 1px rgba(0,0,0,0.1);
         margin-left: 0;
         margin-right: 0;
+        margin-top: -50px;
         position: absolute;
         right: 0;
+        top: 100%;
         width: calc(33.333333% - 20px);
+        z-index: 1;
+    }
+
+    .displace-by-issue-callout {
+        padding-top: 125px;
+    }
+}
+
+@include media-query(large) {
+    .displace-by-issue-callout {
+        padding-top: 97px;
     }
 }
