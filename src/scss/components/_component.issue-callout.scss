@@ -112,3 +112,25 @@
         padding-top: 97px;
     }
 }
+
+
+
+.old-ie {
+    @include media-query(medium) {
+        .issue-callout {
+            width: 230px;
+        }
+    }
+
+    @include media-query(large) {
+        .issue-callout {
+            width: 300px;
+        }
+    }
+
+    @include media-query(xlarge) {
+        .issue-callout {
+            width: 370px;
+        }
+    }
+}

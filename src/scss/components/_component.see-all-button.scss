@@ -1,0 +1,63 @@
+/*------------------------------------*\
+    #SEE ALL BUTTON
+\*------------------------------------*/
+
+.see-all-button {
+  border: 1px solid $color__link--primary;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 7px 14px;;
+  position: relative;
+  text-decoration: none;
+
+  &--icon {
+    padding-left: 35px;
+
+    span {
+      background: $color__link--primary;
+      height: 17px;
+      left: 7px;
+      position: absolute;
+      top: 6px;
+      width: 17px;
+
+      @include transition(background-color 1s);
+
+      &:before {
+        border: 1px solid $color__white;
+        border-width: 1px 0;
+        content: '';
+        height: 7px;
+        left: 0;
+        position: absolute;
+        top: 5px;
+        width: 17px;
+        z-index: 1;
+      }
+    }
+  }
+
+  &:hover {
+    border-color: $color__link--hover;
+    text-decoration: underline;
+
+    span {
+      background-color: $color__link--hover;
+
+      @include transition(background-color 0.2s);
+    }
+  }
+
+  &--icon-grid {
+    span:after {
+      border: 1px solid $color__white;
+      border-width: 0 1px;
+      content: '';
+      height: 17px;
+      left: 5px;
+      position: absolute;
+      top: 0;
+      width: 7px;
+    }
+  }
+}

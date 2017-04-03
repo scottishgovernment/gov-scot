@@ -67,11 +67,7 @@
         }
     }
 
-    &__title {
-        color: $color__blue--base;
-        margin: 1px 0 6px;
-        text-decoration: none;
-    }
+
 
     &__label {
         font-size: 12px;
@@ -125,6 +121,14 @@
         left: 0;
         position: absolute !important;
         top: -12px;
+    }
+}
+
+h1,h2,h3,h4 {
+    &.listed-content-item__title {
+        color: $color__blue--base;
+        margin: 1px 0 6px;
+        text-decoration: none;
     }
 }
 
