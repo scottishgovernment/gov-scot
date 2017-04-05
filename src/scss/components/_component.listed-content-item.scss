@@ -5,7 +5,6 @@
 
 .listed-content-item {
     margin: 0;
-    max-width: 510px;
 
     &__link {
         color: $color__body !important;
@@ -152,6 +151,8 @@ h1,h2,h3,h4 {
 
 // alternative colorway
 .listed-content-item--dark {
+    max-width: 510px;
+
     .listed-content-item__link {
         background-color: $color__grey--dark !important;
     }
