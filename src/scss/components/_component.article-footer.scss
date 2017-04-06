@@ -4,5 +4,10 @@
 
 .article-footer {
     background: $color__grey--lighter;
+    overflow: hidden;
     padding: 49px 0;
+
+    .force-right {
+        float: right;
+    }
 }
