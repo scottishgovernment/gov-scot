@@ -3,7 +3,8 @@
 \*------------------------------------*/
 
 .crossbar-header {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: $semibold;
     line-height: 21px;
     margin-bottom: 28px;
     margin-top: 0;
@@ -27,7 +28,7 @@
         border: 1px solid $color__body;
         display: inline-block;
         margin: 0 auto;
-        padding: 4px 7px 3px;
+        padding: 3px 15px 2px;
         position: relative;
     }
 }
