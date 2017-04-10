@@ -16,4 +16,8 @@
 .issue-sidebar-block__link {
     font-weight: 700;
     text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
