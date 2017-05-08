@@ -16,21 +16,22 @@
 
 .pika-title {
   background: $color__blue--base;
-  height: 40px;
+  height: 42px;
   padding: 5px 0;
 }
 
 .pika-label {
   background: transparent;
-  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
   color: $color__white;
-  display: inline;
-  font-size: 20px;
+  display: inline-block;
+  font-size: 18px;
   font-weight: 700;
   height: 30px;
   line-height: 27px;
   margin: 0 4px;
-  padding: 0 20px 3px 4px;
+  padding: 0 25px 3px 10px;
   position: relative;
 
   &:after {
@@ -39,7 +40,7 @@
     display: inline-block;
     height: 18px;
     position: absolute;
-    right: 4px;
+    right: 8px;
     top: 5px;
     width: 8px;
 
@@ -58,13 +59,18 @@
 .pika-table td {
   background: transparent;
   border: 1px solid $color__grey--lighter;
+  height: 35px;
+  vertical-align: middle;
 }
 
 .pika-table th {
   border: 0;
+  border-bottom: 1px solid $color__grey--pale;
   color: $color__grey--text;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 400;
+  height: 28px;
+  vertical-align: middle;
 }
 
 .pika-button {
@@ -73,7 +79,7 @@
   color: $color__blue--base;
   font-size: 16px;
   font-weight: 900;
-  padding: 8px 4px;
+  padding: 9px 4px 10px;
   text-align: center;
 
   &:hover {
@@ -81,27 +87,37 @@
     border-radius: 0;
     color: $color__blue--base;
   }
+
+  &:active {
+    background: $color__blue--light;
+    border-radius: 0;
+    color: $color__blue--base;
+  }
 }
 
 .is-selected .pika-button {
-  background: $color__blue--base;
+  background: $color__blue--light;
+  border: 2px solid $color__blue--base;
+  color: $color__blue--base;
   border-radius: 0;
   box-shadow: none;
-  color: $color__white;
+  padding: 8px 3px 9px;
 }
 
 .is-today .pika-button {
+  background-color: $color__gold--base;
   color: $color__blue--base;
 }
 
 .is-today.is-selected .pika-button {
-  color: $color__white;
+  background-color: $color__gold--base;
+  color: $color__blue--base;
 }
 
 .pika-select {
   background: $color__white;
   color: $color__grey--text;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
 }
 
@@ -111,7 +127,7 @@
   opacity: 1;
   position: absolute;
   text-indent: 42px;
-  top: -1px;
+  top: 0;
   width: 42px;
 }
 
@@ -131,9 +147,29 @@
   @include image-2x('../images/icons/arrows/int_arrow_42px_@2x.png', 42px, 42px);
 }
 
+.is-disabled .pika-button {
+    color: $color__grey--medium;
+}
+
+/* overriding base table styles */
+.pika-table {
+    td, thead + tbody tr:first-child td {
+        border-bottom: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+}
+
 @include media-query(medium) {
   .pika-single {
     box-shadow: 10px 0 3px rgba(0, 0, 0, 0.2);
     padding: 45px;
+  }
+
+  /* overriding base table styles */
+  .pika-table {
+      tr:first-child td:last-child {
+          padding-right: 0;
+      }
   }
 }
