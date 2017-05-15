@@ -31,9 +31,13 @@
         }
 
         &:active {
-            background: $color__blue--light;
+            background-color: $color__blue--light;
             outline: none;
             @include transition(none);
+        }
+
+        &--external {
+            background-position: calc(100% - 10px) 10px !important;
         }
     }
 
