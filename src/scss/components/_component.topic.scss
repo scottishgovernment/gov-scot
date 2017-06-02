@@ -7,21 +7,21 @@
 }
 
 .topic {
-    color: $color__grey--base;
+    color: $color__body;
     font-size: 14px;
     line-height: 21px;
 
     &__title {
-        color: #909090;
+        color: $color__body;
         margin: 0 0 14px;
         padding-bottom: 14px;
         position: relative;
 
         &:after {
-            background-color: $color__grey--medium;
-            bottom: 0;
+            background-color: $color__blue--base;
+            bottom: -1px;
             content: '';
-            height: 1px;
+            height: 2px;
             left: 0;
             position: absolute;
             width: 40px;
@@ -30,21 +30,6 @@
 
     p {
         margin-bottom: 14px;
-    }
-
-    &--transitioned,
-    &--external {
-        color: $color__body;
-
-        .topic__title {
-            color: $color__body;
-
-            &:after {
-                background-color: $color__blue--base;
-                bottom: -1px;
-                height: 2px;
-            }
-        }
     }
 
     &__buttons {
