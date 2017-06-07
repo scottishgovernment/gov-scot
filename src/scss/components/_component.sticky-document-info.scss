@@ -193,6 +193,7 @@
    &:focus {
      background-color: $color__blue--lighter;
      outline: none;
+     color: $color__blue--base;
    }
 
    &:active {
