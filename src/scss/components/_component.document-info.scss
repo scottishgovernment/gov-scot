@@ -9,8 +9,8 @@ $document-info__preview__background: $color__grey--light !default;
 $document-info__preview__background--focus: $color__blue--lighter !default;
 $document-info__button-size: 49px !default;
 $document-info__large-button-size: 70px !default;
-
-
+$document-info__button-color--focus:$color__blue--base !default;
+$document-info__button-color--hover:$color__blue--dark !default;
 
 
 .document-info {
@@ -127,6 +127,13 @@ $document-info__large-button-size: 70px !default;
     padding: 0;
     position: absolute;
     right: 0;
+
+    &:focus {
+      color: $document-info__button-color--focus;
+    }
+    &:hover {
+      color: $document-info__button-color--hover;
+    }
   }
 
   &__thumbnail-image {
