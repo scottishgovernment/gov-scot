@@ -3,10 +3,10 @@
 \*------------------------------------*/
 
 .policy-list {
-    font-size: 14px;
     line-height: 21px;
     margin: 0 0 49px 0;
     position: relative;
+    font-size: 16px;
 
     &:after {
         content: '';
@@ -26,11 +26,10 @@
     }
 
     &__link {
-        color: $color__body;
         display: block;
-        padding-bottom: 7px;
+        padding-bottom: 21px;
         padding-right: 30px;
-        padding-top: 7px;
+        padding-top: 21px;
         text-decoration: none;
 
         &:hover {
@@ -47,15 +46,20 @@
 
 @include media-query(medium) {
     .policy-list {
-        font-size: 16px;
 
         &__link {
-            padding-top: 10px;
-            padding-bottom: 11px;
+            padding-top: 28px;
+            padding-bottom: 28px;
 
             &:after {
                 right: 25%;
             }
         }
+    }
+}
+
+@include media-query(large) {
+    .policy-list {
+        font-size: 18px;
     }
 }
