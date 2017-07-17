@@ -12,11 +12,22 @@ $document-info__large-button-size: 70px !default;
 $document-info__button-color--focus:$color__blue--base !default;
 $document-info__button-color--hover:$color__blue--dark !default;
 
+$document-info__text-margin: 20px;
+
 
 .document-info {
-  text-align: center;
+  clear: both;
+  margin: 35px 0;
+  overflow: hidden;
+  position: relative;
+
+  &:not(:last-child) {
+      border-bottom: 1px solid $color__grey--pale;
+      padding-bottom: 34px; // 35px - border
+  }
 
   &__title {
+    font-weight: 400;
     margin-top: 0;
 
     a {
@@ -31,11 +42,19 @@ $document-info__button-color--hover:$color__blue--dark !default;
     }
   }
 
+  &__text {
+      margin-left: 70px + $document-info__text-margin;
+  }
+
+  &--limelight &__text {
+      margin-left: 107px + $document-info__text-margin;
+  }
+
   &__thumbnail {
-    margin: 0 auto;
-    padding-bottom: $document-info__button-size;
+    float: left;
+    margin: 0 $document-info__text-margin 0 0;
     position: relative;
-    width: 107px;
+    width: 70px;
 
     &--main {
       padding-bottom: $document-info__button-size;
@@ -74,6 +93,10 @@ $document-info__button-color--hover:$color__blue--dark !default;
         }
       }
     }
+  }
+
+  &--limelight &__thumbnail {
+      width: 107px;
   }
 
   &__thumbnail-link {
@@ -145,7 +168,7 @@ $document-info__button-color--hover:$color__blue--dark !default;
 
   &__file-details {
     line-height: 28px;
-    margin: 21px 0 7px;
+    margin-bottom: 21px;
   }
 
   &__page-count,
@@ -164,6 +187,18 @@ $document-info__button-color--hover:$color__blue--dark !default;
     font-weight: 300;
   }
 
+  &__meta {
+    dd {
+      display: inline;
+    }
+
+    dd:not(:first-of-type) {
+      border-left: 1px solid $color__body;
+      margin-left: 8px;
+      padding-left: 10px;
+    }
+  }
+
   &__disclaimer {
     color: $color__grey--text;
     font-size: 14px;
@@ -177,24 +212,16 @@ $document-info__button-color--hover:$color__blue--dark !default;
   &__download-wrapper {
     display: none;
   }
-
-  &--main {
-    background-color: $document-info__background-color;
-    border: 1px solid $document-info__border-color;
-    border-width: 1px 0;
-    margin: 0 -15px;
-    padding: 35px 15px;
-  }
 }
-
-/*
- *
- */
 
 @include media-query(medium) {
 
   .document-info {
     margin-bottom: 35px;
+
+    &--limelight .document-info__thumbnail {
+      width: 107px;
+    }
 
     /*
      * alternative columnar display
@@ -214,7 +241,7 @@ $document-info__button-color--hover:$color__blue--dark !default;
       .document-info__thumbnail {
         float: left;
         padding-bottom: 0;
-        width: 165px;
+        width: 70px;
       }
 
       .document-info__thumbnail-link:after {
@@ -226,7 +253,7 @@ $document-info__button-color--hover:$color__blue--dark !default;
       }
 
       .document-info__text {
-        margin-left: 185px;
+        margin-left: 107px + $document-info__text-margin;
       }
 
       .document-info__page-count,
@@ -253,11 +280,86 @@ $document-info__button-color--hover:$color__blue--dark !default;
       }
     }
 
-    &--main {
-      background-color: transparent;
-      border: 0;
-      margin: 0;
-      padding: 35px 0;
+    &__download {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &__text {
+        margin-right: 197px;
     }
   }
+}
+
+
+
+/*
+Legacy stuff, pre-MGS-3144
+*/
+.document-info--old-style {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+
+    &:not(.document-info--main) {
+        border-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .document-info__title {
+        font-weight: 500;
+    }
+
+    .document-info__thumbnail {
+        float: none;
+        margin: 0 auto;
+        padding-bottom: 49px;
+        width: 107px;
+    }
+
+    .document-info__text {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .document-info__file-details {
+        margin-top: 21px;
+    }
+
+    /*
+    Legacy stuff (?), APS pubs
+    */
+    &.document-info--main {
+        background-color: $document-info__background-color;
+        border: 1px solid $document-info__border-color;
+        border-width: 1px 0;
+        margin: 0 -15px;
+        padding: 35px 15px;
+    }
+
+    @include media-query(medium) {
+        &.document-info--main {
+            background-color: transparent;
+            border: 0;
+            margin: 0;
+            padding: 35px 0;
+        }
+    }
+
+    @include media-query(medium) {
+        &.document-info--columns {
+            text-align: left;
+        }
+
+        &.document-info--columns .document-info__thumbnail {
+            float: left;
+            padding-bottom: 0;
+            width: 165px;
+        }
+
+        &.document-info--columns .document-info__text {
+            margin-left: (165px + $document-info__text-margin);
+        }
+    }
 }
