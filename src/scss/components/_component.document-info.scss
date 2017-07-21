@@ -110,10 +110,6 @@ $document-info__text-margin: 20px;
     padding-right: 0 !important;
     background-image: none !important;
 
-    &:focus {
-      background-color: $document-info__preview__background--focus;
-    }
-
     &:after {
       font-size: 26px;
       font-weight: 300;
