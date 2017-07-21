@@ -118,8 +118,7 @@ $document-info__text-margin: 20px;
       font-size: 26px;
       font-weight: 300;
       left: 0;
-      line-height: 50px;
-      margin-top: -25px + ($document-info__button-size * -0.5);
+      line-height: 0;
       opacity: 0;
       position: absolute;
       right: 0;
@@ -242,10 +241,6 @@ $document-info__text-margin: 20px;
         float: left;
         padding-bottom: 0;
         width: 70px;
-      }
-
-      .document-info__thumbnail-link:after {
-        margin-top: -25px;
       }
 
       .document-info__thumbnail-button {
