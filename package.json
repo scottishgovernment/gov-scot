@@ -54,6 +54,7 @@
     "grunt-karma": "^2.0.0",
     "grunt-newer": "^1.2.0",
     "grunt-sonar-runner": "^2.4.7",
+    "grunt-svg-sprite": "^1.3.7",
     "grunt-webpack": "^1.0.11",
     "handlebars-loader": "^1.3.0",
     "html5shiv": "^3.7.3",

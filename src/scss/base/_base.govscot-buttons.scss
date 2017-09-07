@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #GOVSCOT BUTTONS
+    For legacy button styles and other govscot-specific buttons not accounted for
+    in the button language spec
+\*------------------------------------*/
+
+.button--pill {
+    border-radius: 100px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 7px 24px 7px 10px;
+    text-transform: none;
+    width: auto;
+
+    > .mg-icon {
+        height: 16px;
+        margin-top: -8px;
+    }
+}
