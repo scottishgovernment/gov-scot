@@ -165,17 +165,19 @@
  */
 
  .sticky-document-info__trigger {
-   @extend .button;
-   @extend .button--clear !optional;
+
    // color: $color__blue--base;
    // background-color: transparent;
    border-top: 1px solid $color__blue--base;
+   color: $color__blue--base !important;
+   font-weight: 700;
    position: relative;
    text-transform: none;
    font-size: 14px;
    height: 70px;
    padding-right: 28px;
    top: -1px;
+   width: 100%;
 
    &:after {
      content: '';
@@ -190,10 +192,13 @@
      @include image-2x("../images/icons/arrows/int_arrow_down_blue_35px_@2x.png", 35px, 35px);
    }
 
+   &:hover {
+     background-color: $color__grey--lighter;
+   }
+
    &:focus {
      background-color: $color__blue--lighter;
      outline: none;
-     color: $color__blue--base;
    }
 
    &:active {
