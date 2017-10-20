@@ -171,9 +171,9 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
 $inuit-base-font-size: 16px;
 $inuit-base-line-height: 7px;
 @import "../../node_modules/inuit-defaults/settings.defaults";
-@import "../../node_modules/mygov-assets/scss/settings/settings.base-spacing";
-@import "../../node_modules/mygov-assets/scss/settings/settings.colors";
-@import "../../node_modules/mygov-assets/scss/settings/settings.transition";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
 $base-h1-size: 35px; // 2.1875em;
 $base-h2-size: 22px; // 1.375em;
 $base-h3-size: 18px; // 1.125em;
@@ -186,7 +186,7 @@ $medium-h3-size: 21px;
 $medium-h4-size: $medium-font-size - 1;
 $medium-h5-size: 14px;
 $large-h2-size: 32px;
-@import "../../node_modules/mygov-assets/scss/settings/settings.type";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.type";
 @import "../../node_modules/inuit-responsive-settings/settings.responsive";
 
 
@@ -202,7 +202,7 @@ $inuit-use-fractions: false;
 @import "../../node_modules/inuit-responsive-tools/tools.responsive";
 @import "tools/tools.animation";
 @import "tools/tools.hit-target";
-@import "../../node_modules/mygov-assets/scss/tools/tools.mixins";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/tools/tools.mixins";
 @import "tools/tools.placeholder-selectors";
 
 
@@ -222,9 +222,9 @@ $inuit-use-fractions: false;
 /**
  * HELPERS
  */
-@import "../../node_modules/mygov-assets/scss/helpers/helper.bleed";
-@import "../../node_modules/mygov-assets/scss/helpers/helper.visibility";
-@import "../../node_modules/mygov-assets/scss/helpers/helper.wrappers";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.bleed";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.visibility";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.wrappers";
 
 
 
@@ -234,27 +234,27 @@ $inuit-use-fractions: false;
  */
 @import "../../node_modules/inuit-page/base.page";
 $button__padding: 7px 20px;
-@import "../../node_modules/mygov-assets/scss/base/base.buttons";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.buttons";
 @import "base/base.govscot-buttons";
 $external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
-@import "../../node_modules/mygov-assets/scss/base/base.external-links";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.external-links";
 @import "base/base.forms";
 @import "base/base.headings";
 @import "base/base.icons";
 @import "base/base.lists";
 @import "base/base.large-list";
 
-@import "../../node_modules/mygov-assets/scss/base/base.rules";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.rules";
 $table__border-color--header: $color__grey--light;
-@import "../../node_modules/mygov-assets/scss/base/base.tables";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.tables";
 @import "base/base.type";
 
 
 /* BASE: TYPE */
-@import "../../node_modules/mygov-assets/scss/base/type/type.body";
-@import "../../node_modules/mygov-assets/scss/base/type/type.header-emphasis";
-@import "../../node_modules/mygov-assets/scss/base/type/type.leader";
-@import "../../node_modules/mygov-assets/scss/base/type/type.links";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.body";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.header-emphasis";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.leader";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.links";
 
 
 
@@ -301,23 +301,23 @@ $breadcrumbs__font-size--large: 14px;
 $breadcrumbs__margin: 0 0 28px;
 $breadcrumbs__margin--medium: -3px 0 4px;
 $breadcrumbs__margin--large: $breadcrumbs__margin--medium;
-@import "../../node_modules/mygov-assets/scss/components/component.breadcrumbs";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.breadcrumbs";
 @import "components/component.carousel";
 @import "components/component.contact-information";
 @import "components/component.content-data";
 @import "components/component.crossbar-header";
 @import "components/component.did-you-mean";
 @import "components/component.directorate-list";
-@import "../../node_modules/mygov-assets/scss/components/component.document-info";
-@import "../../node_modules/mygov-assets/scss/components/component.document-section";
-@import '../../node_modules/mygov-assets/scss/components/component.expand';
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
+@import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
 $expandable__title-size: 16px;
-@import '../../node_modules/mygov-assets/scss/components/component.expandable';
-@import "../../node_modules/mygov-assets/scss/components/component.external-links";
+@import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expandable';
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.external-links";
 @import "components/component.feedback";
-@import "../../node_modules/mygov-assets/scss/components/component.file-icon";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
 @import "components/component.full-width-note";
-@import "../../node_modules/mygov-assets/scss/components/component.informational-notes";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.informational-notes";
 @import "components/component.issue-callout";
 @import "components/component.issue-sidebar-block";
 @import "components/component.item-link";
@@ -328,10 +328,10 @@ $expandable__title-size: 16px;
 @import "components/component.multipage-nav";
 @import "components/component.news-grid";
 @import "components/component.notification";
-@import "../../node_modules/mygov-assets/scss/components/component.page-nav";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.page-nav";
 @import "components/component.page-group";
 @import "components/component.pagination";
-@import "../../node_modules/mygov-assets/scss/components/component.person";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.person";
 @import "components/component.person-grid";
 @import "components/component.policy-list";
 @import "components/component.publication-info";
@@ -343,14 +343,14 @@ $search-box__font-size--medium: 17px;
 $search-box__font-size--large: $search-box__font-size--medium;
 $search-box__size: 56px;
 $search-box__size--medium: $search-box__size;
-@import "../../node_modules/mygov-assets/scss/components/component.search-box";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.search-box";
 @import "components/component.search-results";
 @import "components/component.see-all-button";
 @import "components/component.sidebar-block";
 @import "components/component.site-brand";
 @import "components/component.site-footer";
 @import "components/component.site-header";
-@import "../../node_modules/mygov-assets/scss/components/component.skip-links";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.skip-links";
 @import "components/component.social-channels";
 @import "components/component.stat-box";
 @import "components/component.sticky-back-to-top";
