@@ -8,9 +8,10 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
+  <artifactId>gov-scot-repository-data-application</artifactId>
+
   <name>www.gov.scot Repository Data For Application</name>
   <description>www.gov.scot Repository Data For Application</description>
-  <artifactId>gov-scot-repository-data-application</artifactId>
 
   <build>
     <defaultGoal>install</defaultGoal>
@@ -30,6 +31,7 @@
         </configuration>
       </plugin>
     </plugins>
+
   </build>
 
 </project>

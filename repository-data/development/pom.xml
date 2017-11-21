@@ -8,9 +8,10 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
+  <artifactId>gov-scot-repository-data-development</artifactId>
+
   <name>www.gov.scot Repository Data For Development</name>
   <description>www.gov.scot Repository Data For Development</description>
-  <artifactId>gov-scot-repository-data-development</artifactId>
 
   <build>
     <defaultGoal>install</defaultGoal>

@@ -3,66 +3,27 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.onehippo.cms7</groupId>
-    <artifactId>hippo-cms7-release</artifactId>
-    <version>12.0.2</version>
+    <groupId>scot.mygov</groupId>
+    <artifactId>mygov-parent</artifactId>
+    <version>4</version>
   </parent>
 
-  <name>www.gov.scot</name>
-  <description>www.gov.scot</description>
   <groupId>scot.gov.www</groupId>
   <artifactId>gov-scot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <!-- 
-    The below project elements are emptied/overridden as otherwise their metadata would be
-    inherited or merged from the parent hippo-cms7-release pom (or its hippo-cms7-project pom).
+  <name>www.gov.scot</name>
+  <description>www.gov.scot</description>
+  <url>https://www.gov.scot</url>
+  <inceptionYear>2017</inceptionYear>
 
-    DO NOT remove these tags but instead fill them in appropriately as needed, 
-    UNLESS the inherited values are valid for your project.
-  -->
-  <url/>
-  <inceptionYear/>
-  <organization/>
-  <licenses>
-    <license/>
-  </licenses>
-  <mailingLists>
-    <mailingList/>
-  </mailingLists>
-  <developers>
-    <developer/>
-  </developers>
-  <contributors>
-    <contributor/>
-  </contributors>
-  <issueManagement/>
-  <!--
   <scm>
-    <connection/>
-    <developerConnection/>
-    <url/>
+    <connection>scm:git:ssh://git@stash.digital.gov.uk:7999/mgv/gov-scot.git</connection>
+    <url>http://stash.digital.gov.uk/projects/MGV/repos/gov-scot/</url>
   </scm>
-  -->
-  <ciManagement/>
-  <distributionManagement>
-    <repository>
-      <id>-</id>
-      <url>-</url>
-    </repository>
-    <snapshotRepository>
-      <id>-</id>
-      <url>-</url>
-    </snapshotRepository>
-  </distributionManagement>
-  <!-- End of emptied/overridden metadata from parent hippo-cms7-release pom. -->
 
   <properties>
-
-    <!--***START temporary override of versions*** -->
-    <!-- ***END temporary override of versions*** -->
-
     <essentials.version>4.0.2</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
     <taglibs.version>1.2.1</taglibs.version>
@@ -74,18 +35,62 @@
 
     <hippo.cms.locales>nl,de,fr,es,zh</hippo.cms.locales>
     <buildNumber>${maven.build.timestamp}</buildNumber>
+
+    <hippo.release.version>12.0.2</hippo.release.version>
+    <freemarker.version>2.3.24-incubating</freemarker.version>
+    <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>hippo</id>
-      <name>Hippo maven 2 repository.</name>
-      <url>https://maven.onehippo.com/maven2/</url>
-    </repository>
-  </repositories>
+  <dependencies>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-cms7-commons</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-services</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-repository-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-repository-builtin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jta_1.1_spec</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.jcr</groupId>
+      <artifactId>jcr</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+    </dependency>
+
+  </dependencies>
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.onehippo.cms7</groupId>
+        <artifactId>hippo-cms7-release</artifactId>
+        <version>${hippo.release.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.onehippo.cms7</groupId>
         <artifactId>hippo-essentials-plugin-sdk-api</artifactId>
@@ -155,6 +160,38 @@
     <defaultGoal>package</defaultGoal>
     <pluginManagement>
       <plugins>
+
+        <plugin>
+          <groupId>org.zeroturnaround</groupId>
+          <artifactId>jrebel-maven-plugin</artifactId>
+          <version>${maven.plugin.jrebel.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+
+        <!-- maven.plugin.assembly.version kept on 2.6. 3.0.0 shows snapshot download warnings, see CMS-10817 -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.cargo</groupId>
+          <artifactId>cargo-maven2-plugin</artifactId>
+          <version>1.6.5</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.onehippo.cms.l10n</groupId>
+          <artifactId>hippo-cms-l10n-maven-plugin</artifactId>
+          <version>2.0.2</version>
+        </plugin>
+
         <!--
           This plugin configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.
         -->
@@ -182,8 +219,10 @@
             </lifecycleMappingMetadata>
           </configuration>
         </plugin>
+
       </plugins>
     </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -200,6 +239,7 @@
         </configuration>
       </plugin>
     </plugins>
+
   </build>
 
   <profiles>
@@ -338,6 +378,7 @@
                   <descriptors>
                     <descriptor>${project.basedir}/src/main/assembly/distribution.xml</descriptor>
                   </descriptors>
+                  <tarLongFileMode>posix</tarLongFileMode>
                 </configuration>
               </execution>
             </executions>

@@ -1,70 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>scot.gov.www</groupId>
     <artifactId>gov-scot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+
   <artifactId>gov-scot-cms</artifactId>
   <packaging>war</packaging>
+
   <name>www.gov.scot CMS</name>
   <description>www.gov.scot CMS</description>
+
   <dependencies>
+
     <dependency>
       <groupId>org.onehippo.cms7.hst.dependencies</groupId>
       <artifactId>hst-repository-dependencies</artifactId>
       <type>pom</type>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7.hst.dependencies</groupId>
       <artifactId>hst-cms-dependencies</artifactId>
       <type>pom</type>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-package-cms-dependencies</artifactId>
       <type>pom</type>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-addon-channel-manager-frontend</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-addon-channel-manager-repository</artifactId>
     </dependency>
+
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>gov-scot-repository-data-application</artifactId>
       <version>${project.version}</version>
     </dependency>
+
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>gov-scot-repository-data-webfiles</artifactId>
       <version>${project.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-gallerypicker</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-resourcebundle-editor</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-selections-addon-cms</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-selections-addon-repository</artifactId>
     </dependency>
+
   </dependencies>
+
   <build>
+
     <finalName>cms</finalName>
+
     <plugins>
+
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
@@ -77,6 +104,7 @@
           </archive>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.codehaus.cargo</groupId>
         <artifactId>cargo-maven2-plugin</artifactId>
@@ -89,10 +117,14 @@
           </container>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.onehippo.cms.l10n</groupId>
         <artifactId>hippo-cms-l10n-maven-plugin</artifactId>
       </plugin>
+
     </plugins>
+
   </build>
+
 </project>
