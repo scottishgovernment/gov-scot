@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:catalog:
+      jcr:primaryType: hst:catalog
+      /govscot-catalog:
+        jcr:primaryType: hst:containeritempackage

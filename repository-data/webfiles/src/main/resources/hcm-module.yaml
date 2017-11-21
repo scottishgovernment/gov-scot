@@ -1,0 +1,5 @@
+group: 
+  name: gov-scot
+  after: hippo-cms
+project: gov-scot
+module: gov-scot-repository-data-webfiles

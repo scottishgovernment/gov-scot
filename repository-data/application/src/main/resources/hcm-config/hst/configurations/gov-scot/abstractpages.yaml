@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:abstractpages:
+      jcr:primaryType: hst:pages

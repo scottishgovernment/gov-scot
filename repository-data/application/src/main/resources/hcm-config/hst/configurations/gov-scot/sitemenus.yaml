@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:sitemenus:
+      jcr:primaryType: hst:sitemenus
