@@ -1,0 +1,34 @@
+.hippo-root .hippo-login-extend {
+    background: linear-gradient(135deg, #0065bd 0%,#004A8A 100%);
+}
+
+.hippo-root .hippo-login-panel {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.hippo-root .hippo-login-panel-header {
+    background-image: url(govlogo.svg);
+    background-color: #fff;
+    background-size: 185px;
+    background-position: 25px 21px;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #b3b3b3;
+    height: 70px;
+}
+
+.hippo-root .hippo-login-panel-center h2 {
+    font-weight: 100;
+    font-size: 35px;
+    line-height: 35px;
+    margin-bottom: 21px;
+}
+
+.hippo-root .hippo-login-panel {
+    left: 50%;
+    margin-left: -153px;
+}
+
+body.hippo-root {
+    font-family: Roboto, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
