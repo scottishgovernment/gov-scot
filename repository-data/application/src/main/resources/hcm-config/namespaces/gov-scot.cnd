@@ -2,6 +2,14 @@
 <'hippo'='http://www.onehippo.org/jcr/hippo/nt/2.0.4'>
 <'hippostd'='http://www.onehippo.org/jcr/hippostd/nt/2.0'>
 <'hippostdpubwf'='http://www.onehippo.org/jcr/hippostdpubwf/nt/1.0'>
+<'hippotranslation'='http://www.onehippo.org/jcr/hippotranslation/nt/1.0'>
 
-[govscot:basedocument] > hippo:document, hippostd:publishableSummary, hippostdpubwf:document orderable
+[govscot:basedocument] > hippo:document, hippostd:publishableSummary, hippostdpubwf:document
+  orderable
+
+[govscot:contentdocument] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:articledocument] > govscot:contentdocument, hippostd:relaxed, hippotranslation:translated
+  orderable
 

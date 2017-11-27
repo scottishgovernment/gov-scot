@@ -3,9 +3,11 @@ definitions:
     /hippo:namespaces/govscot/basedocument:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 5da296ac-b8e6-47d9-a3eb-e7c4192c7e88
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: d768118d-7c64-456d-b59e-d6307ad9d96b
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['hipposysedit:remodel']

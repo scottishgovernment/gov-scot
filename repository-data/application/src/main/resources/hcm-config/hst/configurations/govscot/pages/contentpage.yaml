@@ -1,0 +1,16 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/contentpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/twocolumns
+      /main:
+        jcr:primaryType: hst:component
+        /primary:
+          jcr:primaryType: hst:containercomponentreference
+          hst:referencecomponent: contentpage/main/primary
+        /secondary:
+          jcr:primaryType: hst:component
+          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsMenuComponent
+          hst:parameternames: [menu]
+          hst:parametervalues: [main]
+          hst:template: twocolumns-secondary-menu

@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:templates/en:
+      new-resource-bundle: new resource bundle
+      new-untranslated-folder: new untranslated folder
+      new-content-folder: new content folder
+      new-content-document: new content document

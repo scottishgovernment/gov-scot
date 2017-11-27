@@ -1,0 +1,6 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/main/Consultations:
+  .meta:order-before: Blogs
+  jcr:primaryType: hst:sitemenuitem
+  jcr:uuid: 729dd703-8129-47d8-9f74-8fca2f73a14c
+  hst:externallink: https://consult.scotland.gov.uk/
+  hst:repobased: false

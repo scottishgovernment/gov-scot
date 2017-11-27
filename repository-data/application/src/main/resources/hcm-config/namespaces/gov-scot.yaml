@@ -3,3 +3,4 @@ definitions:
     /hippo:namespaces/govscot:
       jcr:primaryType: hipposysedit:namespace
       jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: e1613752-2be3-492f-afb6-09317b023651

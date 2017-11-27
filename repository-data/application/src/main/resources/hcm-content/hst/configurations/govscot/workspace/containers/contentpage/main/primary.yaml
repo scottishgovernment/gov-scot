@@ -1,0 +1,11 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:containers/contentpage/main/primary:
+  jcr:primaryType: hst:containercomponent
+  jcr:uuid: 9dcdf1e1-0364-405c-a230-8b9d73b302ed
+  hst:label: Content Page Primary
+  hst:xtype: hst.vbox
+  /content:
+    jcr:primaryType: hst:containeritemcomponent
+    jcr:uuid: 7da2b5c4-ffac-4c83-820f-f2b9bd2c9de1
+    hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+    hst:template: contentpage-main
+    hst:xtype: hst.item

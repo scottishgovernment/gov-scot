@@ -1,0 +1,32 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:types/govscot:contentdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        govscot:content: Content
+        govscot:introduction: Introduction
+        govscot:publicationdate: Publication date
+        govscot:title: Title
+        jcr:name: Simple Document
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        govscot:content: Inhoud
+        govscot:introduction: Introductie
+        govscot:publicationdate: Publicatiedatum
+        govscot:title: Titel
+        jcr:name: Eenvoudig Document
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        govscot:content: Contenu
+        govscot:introduction: Introduction
+        govscot:publicationdate: Date de publication
+        govscot:title: Titre
+        jcr:name: Document simple
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        govscot:content: Inhalt
+        govscot:introduction: Einführung
+        govscot:publicationdate: Publikationsdatum
+        govscot:title: Titel
+        jcr:name: Einfaches Dokument

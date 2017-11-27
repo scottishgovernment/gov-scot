@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:prototypepages/contentpage:
+      jcr:primaryType: hst:component
+      jcr:mixinTypes: ['hst:prototypemeta']
+      hst:displayname: Simple Content Page
+      hst:primarycontainer: main
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:containercomponent
+        hst:label: Content Page Main
+        hst:xtype: hst.vbox

@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:abstractpages/twocolumns:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:template: twocolumns-main

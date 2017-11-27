@@ -1,0 +1,5 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/main/Blogs:
+  jcr:primaryType: hst:sitemenuitem
+  jcr:uuid: 5de1f89f-627b-43ec-9846-a705fd9d3c8a
+  hst:externallink: http://blogs.gov.scot/
+  hst:repobased: false
