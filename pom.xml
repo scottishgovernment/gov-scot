@@ -196,6 +196,15 @@
         </plugin>
 
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <inherited>true</inherited>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.codehaus.cargo</groupId>
           <artifactId>cargo-maven2-plugin</artifactId>
           <version>${maven.plugin.cargo.version}</version>
@@ -253,6 +262,16 @@
     </pluginManagement>
 
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <inherited>false</inherited>
+        <configuration>
+          <skip>false</skip>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -267,6 +286,7 @@
           </archive>
         </configuration>
       </plugin>
+
     </plugins>
 
   </build>
@@ -286,6 +306,8 @@
         <module>cms</module>
         <module>site</module>
         <module>essentials</module>
+        <module>site-deb</module>
+        <module>cms-deb</module>
       </modules>
     </profile>
 
