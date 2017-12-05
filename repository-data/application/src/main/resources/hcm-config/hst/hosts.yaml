@@ -13,3 +13,24 @@ definitions:
           jcr:primaryType: hst:mount
           hst:homepage: root
           hst:mountpoint: /hst:hst/hst:sites/govscot
+    /hst:hst/hst:hosts/lcl:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: 68a77b21-3c55-4867-b908-fdfa5aac131c
+      hst:cmslocation: https://lcl.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: e4fd4f3b-a966-44ad-9d4e-7377e88ae18c
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: 94744134-3a83-4b64-b4f3-5a8aef0fcfcc
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: c62011a9-7842-4685-8c06-22284c1749a8
+            /lcl:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 44bc237c-5de0-4db7-ae94-06f389226d54
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: e3a15fac-2035-46d3-aa2b-8f7b6466843a
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
