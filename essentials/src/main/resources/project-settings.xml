@@ -10,9 +10,9 @@
     <extraTemplates>true</extraTemplates>
     <projectNamespace>govscot</projectNamespace>
     <repositoryDataModule>repository-data</repositoryDataModule>
-    <selectedBeansPackage>scot.gov.beans</selectedBeansPackage>
-    <selectedComponentsPackage>scot.gov.components</selectedComponentsPackage>
-    <selectedProjectPackage>scot.gov</selectedProjectPackage>
+    <selectedBeansPackage>scot.gov.www.beans</selectedBeansPackage>
+    <selectedComponentsPackage>scot.gov.www.components</selectedComponentsPackage>
+    <selectedProjectPackage>scot.gov.www</selectedProjectPackage>
     <selectedRestPackage>scot.gov.rest</selectedRestPackage>
     <setupDone>true</setupDone>
     <siteModule>site</siteModule>

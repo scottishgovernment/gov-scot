@@ -3,11 +3,3 @@
   jcr:uuid: 8ee95d5d-268c-48a6-b80a-7e6b3b36e67f
   hst:referencesitemapitem: about
   hst:repobased: false
-  /What the Scottish Government does:
-    jcr:primaryType: hst:sitemenuitem
-    jcr:uuid: 543a5586-a369-4e9c-900c-d4da97d74e72
-    hst:referencesitemapitem: about-section/what-the-scottish-government-does.html
-  /Who runs Government:
-    jcr:primaryType: hst:sitemenuitem
-    jcr:uuid: a58b28c2-fa0c-4bef-b1c0-7523b77abc17
-    hst:referencesitemapitem: about-section/who-runs-government.html

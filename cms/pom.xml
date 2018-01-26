@@ -84,6 +84,11 @@
       <artifactId>hippo-plugin-selections-addon-repository</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-plugin-content-tagging</artifactId>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -118,7 +123,6 @@
           </container>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.onehippo.cms.l10n</groupId>
         <artifactId>hippo-cms-l10n-maven-plugin</artifactId>

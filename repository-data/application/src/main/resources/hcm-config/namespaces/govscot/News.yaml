@@ -1,0 +1,243 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/News:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 0886fed0-a981-4437-b703-893cb53e3ae6
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: d8a7ea63-df8c-4b12-8908-56d89b02d33a
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: f1fbad1f-41e7-4e21-91b2-bb6a46426c71
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
+            'hippotranslation:translated']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /background:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:background
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /heroImage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:heroImage
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:ExternalLink
+          /attachments:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:attachments
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:ExternalLink
+          /publishedDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:publishedDate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
+          /string:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:string
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required]
+          /updatedDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:updatedDate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:News
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          govscot:seoTitle: ''
+          govscot:metaDescription: ''
+          govscot:summary: ''
+          govscot:title: ''
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: e7ba4436-5956-4c98-8f3b-38e2ed6a8058
+          hippostdpubwf:lastModificationDate: 2018-01-26T13:27:12.677Z
+          hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
+          govscot:string: ''
+          govscot:updatedDate: 0001-01-01T12:00:00Z
+          govscot:publishedDate: 0001-01-01T12:00:00Z
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:heroImage:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:string: ''
+            govscot:title: ''
+          /govscot:attachments:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:string: ''
+            govscot:title: ''
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /title:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: title
+            hint: Enter a title for this document
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /publishedDate:
+            jcr:primaryType: frontend:plugin
+            caption: Published Date
+            field: publishedDate
+            hint: The date/time the document should be published to the website
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /summary:
+            jcr:primaryType: frontend:plugin
+            caption: Summary
+            field: summary
+            hint: A summary of this document
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /content:
+            jcr:primaryType: frontend:plugin
+            caption: Content
+            field: content
+            hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /tags:
+            jcr:primaryType: frontend:plugin
+            caption: Tags
+            field: tags
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            type: hippostd:taggable
+            wicket.id: ${cluster.id}.field
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO Title
+            field: seoTitle
+            hint: Title used by google whilst indexing the content
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta Description
+            field: metaDescription
+            hint: A description of this content item for search engine indexing purposes
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: Notes about the content for future editors
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /topics:
+            jcr:primaryType: frontend:plugin
+            caption: Topics
+            field: topics
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/topics/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Topic']
+          /background:
+            jcr:primaryType: frontend:plugin
+            caption: Background
+            field: background
+            hint: Notes to Editor from the news feed
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /heroImage:
+            jcr:primaryType: frontend:plugin
+            caption: Hero Image
+            field: heroImage
+            hint: The title and URL of the hero image from news importer
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /attachments:
+            jcr:primaryType: frontend:plugin
+            caption: Attachments
+            field: attachments
+            hint: The title and URL of any attachments from the news importer
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /string:
+            jcr:primaryType: frontend:plugin
+            caption: External ID
+            field: string
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: The ID from the external news importer
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /updatedDate:
+            jcr:primaryType: frontend:plugin
+            caption: Updated Date
+            field: updatedDate
+            hint: The last time the document was updated in the news importer. Used
+              to identify when a document needs to be updated
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

@@ -1,49 +1,39 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/articledocument:
+    /hippo:namespaces/govscot/Topic:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 6ad49e2d-b957-476d-aa00-9fc4c69709d6
+      jcr:uuid: e07c2ae9-a752-4029-8800-8d9f8903ccda
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 9d6da636-205a-4a1e-9693-570ea633be13
+        jcr:uuid: 45d490f6-afa8-45c9-bdc5-680a6de19d5a
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 1ee97bf7-6c03-4cbb-825d-591b7ff6ba4f
+          jcr:uuid: 8f568148-f48d-459a-a379-e6602b397007
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:contentdocument', 'hippostd:relaxed',
-            'hippotranslation:translated']
+          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /additional:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:additional
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:articledocument
+          jcr:primaryType: govscot:Topic
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
           hippostdpubwf:lastModifiedBy: ''
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
-          jcr:mixinTypes: ['mix:referenceable']
-          govscot:introduction: ''
+          govscot:seoTitle: ''
+          govscot:metaDescription: ''
+          govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 24412909-ecdb-40fa-9d19-07e9334f7d3f
-          hippostdpubwf:lastModificationDate: 2017-11-22T15:50:33.156Z
-          hippostdpubwf:creationDate: 2017-11-22T15:50:33.156Z
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 6f473041-dcab-4a53-a137-25fcce184edd
+          hippostdpubwf:lastModificationDate: 2018-01-26T11:27:44.600Z
+          hippostdpubwf:creationDate: 2018-01-26T11:27:44.600Z
           /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:additional:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -59,30 +49,63 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
+            caption: Title
             field: title
+            hint: Enter a title for this document
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /introduction:
+          /summary:
             jcr:primaryType: frontend:plugin
-            field: introduction
+            caption: Summary
+            field: summary
+            hint: A summary of this document
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
+            caption: Content
             field: content
+            hint: The main content for the page
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /additional:
+          /tags:
             jcr:primaryType: frontend:plugin
-            caption: Additional Content
-            field: additional
-            hint: ''
+            caption: Tags
+            field: tags
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            type: hippostd:taggable
+            wicket.id: ${cluster.id}.field
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO Title
+            field: seoTitle
+            hint: Title used by google whilst indexing the content
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta Description
+            field: metaDescription
+            hint: A description of this content item for search engine indexing purposes
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: Notes about the content for future editors
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

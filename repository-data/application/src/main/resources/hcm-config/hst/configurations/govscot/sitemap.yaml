@@ -25,15 +25,11 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/contentlist
           hst:relativecontentpath: ${parent}/${1}
-      /about-section:
+      /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
-        hst:relativecontentpath: about-section
-        /_any_.html:
+        hst:relativecontentpath: topics
+        /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/contentpage
-          hst:relativecontentpath: ${parent}/${1}
-        /_any_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentlist
           hst:relativecontentpath: ${parent}/${1}

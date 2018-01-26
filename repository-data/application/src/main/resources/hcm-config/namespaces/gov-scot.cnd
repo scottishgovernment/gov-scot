@@ -7,9 +7,18 @@
 [govscot:basedocument] > hippo:document, hippostd:publishableSummary, hippostdpubwf:document
   orderable
 
-[govscot:contentdocument] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+[govscot:SimpleContent] > govscot:basedocument, hippostd:relaxed, hippostd:taggable, hippotranslation:translated
   orderable
 
-[govscot:articledocument] > govscot:contentdocument, hippostd:relaxed, hippotranslation:translated
+[govscot:AttributableContent] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:ExternalLink] > hippo:compound, hippostd:relaxed
+  orderable
+
+[govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
