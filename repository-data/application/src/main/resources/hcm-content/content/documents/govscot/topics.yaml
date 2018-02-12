@@ -1,8 +1,0 @@
-/content/documents/govscot/topics:
-  jcr:primaryType: hippostd:folder
-  jcr:mixinTypes: ['hippo:named', 'hippotranslation:translated', 'mix:versionable']
-  jcr:uuid: 66a4871e-b450-495b-b368-208ad31fd7c3
-  hippo:name: Topics
-  hippostd:foldertype: [new-translated-folder, new-document]
-  hippotranslation:id: aa9cdda0-66c4-4a33-ac60-4875c704184c
-  hippotranslation:locale: en

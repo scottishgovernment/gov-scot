@@ -1,64 +1,32 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/AttributableContent:
+    /hippo:namespaces/govscot/Directorate:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: a559f7e0-141f-40f1-bce5-86acc5ec38df
+      jcr:uuid: 2572f7d9-aaad-4583-adf5-e0f3916b9054
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 863f0d98-1399-4ca7-922e-af1621e01a85
+        jcr:uuid: fe673807-2338-4a8c-a725-3be5153b54a6
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d5445d38-d195-4cb4-8b69-d2d0f1d619e0
+          jcr:uuid: 7b0a5090-fbae-4cbd-8754-b28440420e50
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /topics:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:topics
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /responsibleDirectorate:
+          /ContactInformation:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:responsibleDirectorate
+            hipposysedit:path: govscot:ContactInformation
             hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /secondaryResponsibleDirectorate:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: true
-            hipposysedit:path: govscot:secondaryResponsibleDirectorate
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /responsibleRole:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:responsibleRole
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /secondaryResponsibleRole:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: true
-            hipposysedit:path: govscot:secondaryResponsibleRole
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
+            hipposysedit:type: govscot:ContactInformation
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:AttributableContent
+          jcr:primaryType: govscot:Directorate
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
@@ -70,30 +38,21 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 0ea3866f-77ac-4bf2-bc76-ab8c3489fed9
-          hippostdpubwf:lastModificationDate: 2018-01-26T11:27:23.004Z
-          hippostdpubwf:creationDate: 2018-01-26T11:27:23.004Z
+          jcr:uuid: 9a540c97-f2ab-4c33-8458-e8b25488561c
+          hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
+          hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:topics:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:responsibilities:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:responsibleDirectorate:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:secondaryResponsibleDirectorate:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:responsibleRole:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:secondaryResponsibleRole:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:ContactInformation:
+            jcr:primaryType: govscot:ContactInformation
+            govscot:blog: ''
+            govscot:email: ''
+            govscot:facebook: ''
+            govscot:flickr: ''
+            govscot:twitter: ''
+            govscot:website: ''
+            govscot:youtube: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -168,52 +127,12 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /topics:
+          /ContactInformation:
             jcr:primaryType: frontend:plugin
-            caption: Topics
-            field: topics
+            caption: ContactInformation
+            field: ContactInformation
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
             hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/topics/
-              last.visited.enabled: 'false'
-          /responsibleDirectorate:
-            jcr:primaryType: frontend:plugin
-            caption: Responsible Directorate
-            field: responsibleDirectorate
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              last.visited.enabled: 'false'
-              base.path: /content/documents/govscot/directorates/
-          /secondaryResponsibleDirectorate:
-            jcr:primaryType: frontend:plugin
-            caption: Seondary Responsible Directorates
-            field: secondaryResponsibleDirectorate
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              last.visited.enabled: 'false'
-              base.path: /content/documents/govscot/directorates/
-          /responsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Responsible Role
-            field: responsibleRole
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /secondaryResponsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
-            field: secondaryResponsibleRole
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

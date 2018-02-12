@@ -13,10 +13,25 @@
 [govscot:AttributableContent] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:ContactInformation] > hippo:compound, hippostd:relaxed
+  orderable
+
+[govscot:Directorate] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:ExternalLink] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:Migration] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Policy] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated

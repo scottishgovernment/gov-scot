@@ -1,39 +1,21 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/SimpleContent:
+    /hippo:namespaces/govscot/Role:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 61b41fcc-8ad2-4e57-8d11-3184a2cf9260
+      jcr:uuid: 11efcad3-9a89-4bb3-ac77-a760cedef8d2
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: bdca7180-88ff-48ce-a696-c6578d4b68df
+        jcr:uuid: 6953c4fb-710c-4232-b41e-3bc46627f8b5
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: b544b84e-f0e0-432f-a7ef-a79476081e3f
+          jcr:uuid: 3b4e5e44-6800-4bfc-be89-93eae90e9374
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated',
-            'hippostd:taggable']
+          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /title:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:title
-            hipposysedit:primary: false
-            hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
-          /summary:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:summary
-            hipposysedit:primary: false
-            hipposysedit:type: Text
-          /content:
+          /responsibilities:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
@@ -41,35 +23,10 @@ definitions:
             hipposysedit:path: govscot:responsibilities
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
-          /seoTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:seoTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /metaDescription:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:metaDescription
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /notes:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:notes
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-            hipposysedit:validators: [optional]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:SimpleContent
+          jcr:primaryType: govscot:Role
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
@@ -77,20 +34,13 @@ definitions:
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
-          govscot:title: ''
-          govscot:summary: ''
-          hippostd:tags: []
           govscot:seoTitle: ''
           govscot:metaDescription: ''
-          jcr:uuid: dd8d8e17-9920-4771-a90b-b8d521f7a12b
-          hippostdpubwf:lastModificationDate: 2018-01-25T11:47:57.024Z
-          hippostdpubwf:creationDate: 2018-01-25T11:47:57.024Z
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:notes:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
+          govscot:summary: ''
+          govscot:title: ''
+          jcr:uuid: 7ce9621a-d07c-44c2-94e9-e46dc60673e8
+          hippostdpubwf:lastModificationDate: 2018-02-09T12:32:15.950Z
+          hippostdpubwf:creationDate: 2018-02-09T12:32:15.950Z
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -123,22 +73,6 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /content:
-            jcr:primaryType: frontend:plugin
-            caption: Content
-            field: content
-            hint: The main content for the page
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /taggable:
-            jcr:primaryType: frontend:plugin
-            mixin: hippostd:taggable
-            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO Title
@@ -159,11 +93,27 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /tags:
+            jcr:primaryType: frontend:plugin
+            caption: Tags
+            field: tags
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            type: hippostd:taggable
+            wicket.id: ${cluster.id}.field
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes
             field: notes
             hint: Notes about the content for future editors
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /responsibilities:
+            jcr:primaryType: frontend:plugin
+            caption: Responsibilities
+            field: responsibilities
+            hint: The main content for the page
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

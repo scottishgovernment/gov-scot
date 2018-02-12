@@ -1,99 +1,87 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/SimpleContent:
+    /hippo:namespaces/govscot/ContactInformation:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 61b41fcc-8ad2-4e57-8d11-3184a2cf9260
+      jcr:uuid: f60d7542-837f-4903-9a1b-55349214984e
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: bdca7180-88ff-48ce-a696-c6578d4b68df
+        jcr:uuid: 2ff508e2-5b03-4283-944e-93edeb34b17b
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: b544b84e-f0e0-432f-a7ef-a79476081e3f
+          jcr:uuid: c5c02120-7ea6-4723-95d0-2bd1fcc603e6
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated',
-            'hippostd:taggable']
+          hipposysedit:supertype: ['hippo:compound', 'hippostd:relaxed']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /title:
+          /email:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:title
+            hipposysedit:path: govscot:email
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
-          /summary:
+          /twitter:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:summary
-            hipposysedit:primary: false
-            hipposysedit:type: Text
-          /content:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:responsibilities
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /seoTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:seoTitle
+            hipposysedit:path: govscot:twitter
             hipposysedit:primary: false
             hipposysedit:type: String
-          /metaDescription:
+          /flickr:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:metaDescription
+            hipposysedit:path: govscot:flickr
             hipposysedit:primary: false
             hipposysedit:type: String
-          /notes:
+          /website:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:notes
+            hipposysedit:path: govscot:website
             hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-            hipposysedit:validators: [optional]
+            hipposysedit:type: String
+          /facebook:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:facebook
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /youtube:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:youtube
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /blog:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:blog
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:SimpleContent
-          hippostd:holder: holder
-          hippostd:state: draft
-          hippostdpubwf:createdBy: ''
-          hippostdpubwf:lastModifiedBy: ''
-          hippotranslation:id: document-type-locale-id
-          hippotranslation:locale: document-type-locale
-          jcr:mixinTypes: ['mix:referenceable']
-          govscot:title: ''
-          govscot:summary: ''
-          hippostd:tags: []
-          govscot:seoTitle: ''
-          govscot:metaDescription: ''
-          jcr:uuid: dd8d8e17-9920-4771-a90b-b8d521f7a12b
-          hippostdpubwf:lastModificationDate: 2018-01-25T11:47:57.024Z
-          hippostdpubwf:creationDate: 2018-01-25T11:47:57.024Z
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:notes:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:responsibilities:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
+          jcr:primaryType: govscot:ContactInformation
+          govscot:facebook: ''
+          govscot:flickr: ''
+          govscot:blog: ''
+          govscot:youtube: ''
+          govscot:twitter: ''
+          govscot:website: ''
+          govscot:email: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -105,66 +93,61 @@ definitions:
             jcr:primaryType: frontend:plugin
             item: ${cluster.id}.field
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
-          /title:
+          /email:
             jcr:primaryType: frontend:plugin
-            caption: Title
-            field: title
-            hint: Enter a title for this document
+            caption: Email Address
+            field: email
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /summary:
+          /twitter:
             jcr:primaryType: frontend:plugin
-            caption: Summary
-            field: summary
-            hint: A summary of this document
+            caption: Twitter Handle
+            field: twitter
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /content:
+          /flickr:
             jcr:primaryType: frontend:plugin
-            caption: Content
-            field: content
-            hint: The main content for the page
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            caption: Flickr URL
+            field: flickr
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /taggable:
+          /website:
             jcr:primaryType: frontend:plugin
-            mixin: hippostd:taggable
-            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /seoTitle:
-            jcr:primaryType: frontend:plugin
-            caption: SEO Title
-            field: seoTitle
-            hint: Title used by google whilst indexing the content
+            caption: Website URL
+            field: website
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              maxlength: '60'
-          /metaDescription:
+          /facebook:
             jcr:primaryType: frontend:plugin
-            caption: Meta Description
-            field: metaDescription
-            hint: A description of this content item for search engine indexing purposes
+            caption: Facebook URL
+            field: facebook
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              maxlength: '300'
-          /notes:
+          /youtube:
             jcr:primaryType: frontend:plugin
-            caption: Notes
-            field: notes
-            hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            caption: Youtube URL
+            field: youtube
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /blog:
+            jcr:primaryType: frontend:plugin
+            caption: Blog URL
+            field: blog
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
