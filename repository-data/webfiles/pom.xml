@@ -93,7 +93,7 @@
             <goals>
               <goal>exec</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>generate-resources</phase>
             <configuration>
               <execArgs>${project.build.directory}/rubygems/bin/compass compile</execArgs>
             </configuration>
