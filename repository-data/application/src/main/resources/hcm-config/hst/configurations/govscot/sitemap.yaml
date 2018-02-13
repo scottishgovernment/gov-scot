@@ -41,3 +41,11 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/contentpage
           hst:relativecontentpath: ${parent}/${1}
+      /about:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/contentlist
+        hst:relativecontentpath: about
+        /_any_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/contentpage
+          hst:relativecontentpath: ${parent}/${1}

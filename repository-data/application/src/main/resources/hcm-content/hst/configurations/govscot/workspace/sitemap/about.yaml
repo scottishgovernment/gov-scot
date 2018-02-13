@@ -1,6 +1,0 @@
-/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemap/about:
-  jcr:primaryType: hst:sitemapitem
-  jcr:uuid: ae6fb4f3-d961-4fe7-9fbd-467dd08f8d1e
-  hst:componentconfigurationid: hst:pages/about-contentpage
-  hst:lastmodified: 2017-11-22T15:48:12.705Z
-  hst:pagetitle: About the Scottish Government
