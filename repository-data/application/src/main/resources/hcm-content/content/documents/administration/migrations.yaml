@@ -1,0 +1,41 @@
+/content/documents/administration/migrations:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: 1804f000-ab3a-4ba8-92e7-851d894748a7
+  hippo:name: migrations
+  /Topics:
+    jcr:primaryType: govscot:Migration
+    govscot:migrationId: topics
+    hippo:availability: [live, preview]
+    hippo:name: Topics
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-02-13T09:10:02.055Z
+    hippostdpubwf:lastModificationDate: 2018-02-13T09:10:02.056Z
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: ef9d4f65-b0cc-44d6-ae70-766be1e833c9
+    hippotranslation:locale: en
+  /Roles:
+    jcr:primaryType: govscot:Migration
+    govscot:migrationId: roles
+    hippo:availability: [live, preview]
+    hippo:name: Roles
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-02-13T09:10:10.431Z
+    hippostdpubwf:lastModificationDate: 2018-02-13T09:10:10.432Z
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 0c72d51d-ad30-4d97-a42f-7d6603521760
+    hippotranslation:locale: en
+  /Directorates:
+    jcr:primaryType: govscot:Migration
+    govscot:migrationId: directorates
+    hippo:availability: [live, preview]
+    hippo:name: Directorates
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-02-13T09:10:26.922Z
+    hippostdpubwf:lastModificationDate: 2018-02-13T09:10:26.922Z
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 20274a48-7650-4efd-b45b-1d081fa999f5
+    hippotranslation:locale: en

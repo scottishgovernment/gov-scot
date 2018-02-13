@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: f39646f0-8ea3-4c1f-a1a4-4942f0738950
+          jcr:uuid: 5b0c75d3-9a60-4587-a189-076ad9aae0fc
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -53,7 +53,7 @@ definitions:
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:string
+            hipposysedit:path: govscot:externalId
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [non-empty, required]
@@ -80,12 +80,12 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: aa1ec162-be7d-460c-8663-bf52782bf377
+          jcr:uuid: 8cfc539a-50fe-416a-9825-7ebf96008544
           hippostdpubwf:lastModificationDate: 2018-01-26T13:27:12.677Z
           hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
-          govscot:string: ''
           govscot:updatedDate: 0001-01-01T12:00:00Z
           govscot:publishedDate: 0001-01-01T12:00:00Z
+          govscot:externalId: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -227,13 +227,13 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /string:
+          /externalId:
             jcr:primaryType: frontend:plugin
             caption: External ID
             field: string
+            hint: The ID from the external news importer
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: The ID from the external news importer
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /updatedDate:

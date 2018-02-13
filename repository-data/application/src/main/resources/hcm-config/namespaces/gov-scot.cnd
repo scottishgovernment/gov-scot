@@ -31,6 +31,9 @@
 [govscot:Policy] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:PolicyInDetail] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
