@@ -1,0 +1,196 @@
+/*------------------------------------*\
+    #LISTS
+\*------------------------------------*/
+
+$list__left-margin: 35px;
+
+ul {
+  margin: -7px 0 21px 12px;
+  padding: 0;
+
+  li {
+    margin: 0 0 14px 18px;
+
+    ul {
+      margin-top: 14px;
+    }
+  }
+}
+
+li.no-left-margin {
+    margin-left: 0;
+}
+
+article ol {
+  counter-reset: li;
+  list-style-type: none;
+  margin: -7px 0 21px 10px;
+  padding: 0;
+
+  li {
+    margin: 0 0 14px 25px;
+    position: relative;
+
+    h1, h2, h3, h4 {
+      margin-left: -40px;
+    }
+
+    &:before {
+      content: counter(li) ".";
+      counter-increment: li;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      left: -25px;
+      top: 0;
+      position: absolute;
+    }
+  }
+}
+
+table {
+    ol,
+    ul {
+        margin: 14px 0 21px 12px;
+    }
+
+    li {
+        margin: 0 0 14px 18px;
+    }
+
+    ol li {
+        margin-left: 25px;
+    }
+}
+
+ol > ul  {
+  counter-reset: ul;
+  list-style-type: none;
+
+  > li {
+    &:before {
+      content: "- ";
+    }
+  }
+}
+
+ol li > ul  {
+  counter-reset: ul;
+  list-style-type: none;
+
+  > li {
+    position: relative;
+
+    &:before {
+      content: "- ";
+      left: -30px;
+      position: absolute;
+    }
+  }
+}
+
+ol.emphasis {
+  margin: 21px 0 28px 5px;
+}
+
+ol {
+  li.emphasis {
+    margin: 0 0 21px 45px;
+  }
+}
+
+/*
+ * [1] for lists in markdown blocks we want to have no bullets
+ */
+ul.no-bullets,
+.no-bullets ul /*[1]*/ {
+  list-style-type: none;
+  margin-left: 0;
+
+  li {
+    margin-left: 0px;
+  }
+}
+
+article ol.fancy {
+  counter-reset: li;
+  list-style-type: none;
+  margin-left: $list__left-margin;
+
+  li {
+    position: relative;
+    min-height: 42px;
+
+    &:before {
+      color: $color__blue--base;
+      content: counter(li);
+      counter-increment: li;
+      font-size: 42px;
+      font-weight: 100;
+      letter-spacing: -3px;
+      line-height: 42px;
+      padding-right: 20px;
+      position: absolute;
+      right: 100%;
+      top: 0;
+    }
+  }
+}
+
+@include media-query(medium) {
+
+  ul {
+    margin: -7px 0 28px 20px;
+    li {
+      margin: 0 0 14px 20px;
+    }
+
+  }
+
+  ol {
+    margin: -7px 0 28px 10px;
+    padding: 0;
+    li {
+      margin: 0 0 14px 30px;
+    }
+  }
+
+  ol.emphasis {
+    margin: 28px 0 35px 10px;
+  }
+
+  ol {
+    li.emphasis {
+      margin: 0 0 28px 50px;
+    }
+  }
+
+  article ol {
+    counter-reset: li;
+    list-style-type: none;
+    margin: 14px 0 21px 10px;
+
+    li {
+      margin: 0 0 14px 30px;
+      position: relative;
+
+      h1, h2, h3, h4 {
+        margin-left: -40px;
+      }
+
+      &:before {
+        content: counter(li) ".";
+        counter-increment: li;
+        font-weight: 500;
+        line-height: 28px;
+        letter-spacing: -0.5px;
+        left: -30px;
+        top: 0;
+        position: absolute;
+      }
+    }
+  }
+
+  article ol.fancy li {
+    min-height: 49px;
+  }
+}

@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    #FONTAWESOME
+    overrides non-fontawesome items (e.g. standard glyph for checkmark) when we have
+    fontawesome with the intention that these items will gracefully degrade to standard
+    glyphs when we replace fontawesome with some other icon solution & inevitably forget
+    to replace everything
+\*------------------------------------*/
+
+.fontawesome {
+  input + label.fancy-checkbox:before {
+    font-family: FontAwesome;
+  }
+
+  input:checked + label.fancy-checkbox:before {
+    content: '\f00c';
+  }
+}

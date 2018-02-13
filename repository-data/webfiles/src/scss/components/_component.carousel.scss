@@ -1,0 +1,921 @@
+/*------------------------------------*\
+    #CAROUSEL
+\*------------------------------------*/
+
+/**
+ * OVERVIEW
+ *
+ * Show a collection of rich-media items. A carousel is made up of
+ * carousel-items.
+ *
+ * A .carousel-item has the following elements:
+ *   - .carousel-item__title
+ *   - .carousel-item__desc
+ *   - .carousel-item__link
+ *   - .carousel-item__stage
+ *   - .carousel-item__stage-text
+ *   - .carousel-item__play-button (optional; added with JavaScript)
+ *
+ * A .carousel-item has the following modifiers, corresponding with states.
+ *   - .carousel-item--active   – there is always one and only .carousel-item with this state.
+ *   - .carousel-item--play     - video currently playing
+ *   - .carousel-item--pause    - video has been clicked, but focus is on the support
+ *
+ * There is also a modifier for the .carousel item itself.
+ *   - .carousel--play          - this constrains the width of the support sections.
+ *
+ * Additionally, there is an object for the mobile-only slider controls. This
+ * item is placed into position using JavaScript.
+ *   - .carousel-controls
+ */
+
+
+
+/**
+ * Z INDEXES
+ *
+ * 1. On mobile, place the video above everything on the page - including the
+      sticky header.
+ * 2. The last support is a bit lower, so that the drop shadows stack correctly.
+ */
+$carousel-z-stage-video-mobile: 9999; /* [1] */
+$carousel-z-support-active: 53;
+$carousel-z-support: 52;
+$carousel-z-support-last: 51; /* [2] */
+$carousel-z-stage-video: 44;
+$carousel-z-stage-play-button: 43;
+$carousel-z-stage-text-toggle: 43;
+$carousel-z-stage-text: 42;
+$carousel-z-stage-overlay: 41;
+$carousel-z-stage-image: 40;
+
+
+
+
+
+
+/*------------------------------------*\
+    CAROUSEL - GENERAL
+\*------------------------------------*/
+
+
+.carousel {
+  position: relative;
+}
+
+
+.carousel-item__title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+
+.carousel-item__support {
+  cursor: pointer;
+}
+
+.carousel-item--active .carousel-item__support {
+  cursor: default;
+}
+
+
+/**
+ * This provides a blue gradient overlay for the stage.
+ */
+.carousel-item__stage:before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: $carousel-z-stage-overlay;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom,
+        rgba(0, 45, 84, 0.5) 15%,
+        rgba(0, 45, 84, 0) 50%);
+}
+
+.carousel-item__stage-text-toggle {
+  display: none;
+}
+
+
+.carousel-item__link {
+  display: inline;
+  background: transparent;
+  text-transform: uppercase;
+  a {
+    color: $color__link--primary;
+    font-weight: 900;
+    text-decoration: underline;
+    &:hover {
+      color: $color__link--hover;
+    }
+    &:active {
+      color: $color__link--active;
+    }
+
+  }
+
+}
+
+
+/**
+ * YOUTUBE PLAY BUTTON
+ * This is added to a .carousel-item by JavaScript if there is a video in the carousel item.
+ *
+ * 1. Add some extra margin on tablet since part of the stage is hidden.
+ * 2. Position button off center for large and xlarge displays.
+ */
+.carousel-item__play-button {
+  background-image: url(../images/icons/youtube-play.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 0;
+  display: block;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: $carousel-z-stage-play-button;
+
+  @include media-query(medium-down) {
+    height: 36px;
+    width: 50px;
+    margin-top: 25%;
+  }
+
+  @include media-query(medium) {
+    height: 45px;
+    width: 60px;
+  }
+
+  @include media-query(large) {
+    height: 49px;
+    width: 70px;
+  }
+
+  @include media-query(xlarge) {
+    height: 60px;
+    width: 70px;
+  }
+
+  &--stage-text-visible {
+    @include media-query(large) {
+      margin-left: 28%;
+    }
+
+    @include media-query(xlarge) {
+      margin-left: 35%;
+    }
+  }
+}
+
+
+
+/**
+ * Hide mobile-only controls by default
+ */
+.carousel-controls, .carousel-controls-placeholder {
+  display: none;
+}
+
+
+
+
+/*------------------------------------*\
+   CAROUSEL - MOBILE and TABLET
+\*------------------------------------*/
+
+$carousel-text-element-padding-mobile: 15px;
+
+@include media-query(large-down) {
+
+  .carousel-item {
+
+    &__support {
+      padding: 14px $carousel-text-element-padding-mobile 0;
+    }
+
+    &__title {
+      position: absolute;
+      top: 0;
+      color: $color__white;
+      z-index: $carousel-z-stage-text;
+      margin-top: 14px;
+      font-size: 18px;
+      line-height: 21px;
+    }
+
+    /**
+     * 1. Maintain 16:9 aspect ratio
+     */
+    &__stage {
+      line-height: 0;
+      overflow: hidden;
+      padding-bottom: 56.25%; /* [1] */
+      position: relative;
+      width: 100%;
+
+      img {
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+    &__stage-text {
+      display: none;
+    }
+
+    &__video {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      z-index: $carousel-z-stage-video-mobile;
+    }
+  }
+
+
+  /**
+   * == STATES ==
+   */
+
+  /**
+   * STATE: INACTIVE (default)
+   */
+   .carousel-item {
+     display: none;
+     &__video {
+       display: none;
+     }
+   }
+
+  /**
+   * STATE: ACTIVE
+   */
+  .carousel-item--active {
+    display: block;
+  }
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel-item--play {
+    .carousel-item__video {
+      display:block;
+    }
+  }
+
+
+
+  /**
+   * == CONTROLS ==
+   * The carousel controls object is activated and moved into position by
+   * JavaScript and is displayed on mobile only.
+   */
+
+  .carousel-controls {
+    display: block;
+    padding: 0;
+
+    &__links {
+      display: table;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    &__link {
+      display: table-cell;
+      vertical-align: top;
+      text-align: center;
+      width: 42px;
+      line-height: 0;
+      &:first-of-type {
+        text-align: left;
+        width: auto;
+      }
+      &:last-of-type {
+        text-align: right;
+        width: auto;
+      }
+    }
+
+      &__link--previous {
+        background: url("../images/icons/arrows/int_arrow_left_blue_42px.png") no-repeat;
+        @include image-2x("../images/icons/arrows/int_arrow_left_blue_42px_@2x.png", 42px, 42px);
+        height: 42px;
+        width: 42px;
+        padding: 0;
+        border: none;
+      }
+
+      &__link--next {
+        background: url("../images/icons/arrows/int_arrow_right_blue_42px.png") no-repeat;
+        @include image-2x("../images/icons/arrows/int_arrow_right_blue_42px_@2x.png", 42px, 42px);
+        height: 42px;
+        width: 42px;
+        padding: 0;
+        border: none;
+      }
+
+      &__link--pip {
+        position: relative;
+        border: none;
+        background: transparent;
+        width:42px;
+        height: 42px;
+        padding: 0;
+        &:before {
+          background: $color__grey--base;
+          border-radius: 14px;
+          content: '';
+          height: 14px;
+          left: 50%;
+          margin: -7px 0 0 -7px;
+          opacity: 0.25;
+          position: absolute;
+          top: 50%;
+          width: 14px;
+        }
+      }
+
+      &__link--pip-active {
+        &:before {
+          opacity: 1;
+        }
+      }
+  }
+
+  .carousel-controls-placeholder {
+    display: block;
+    height: 42px;
+  }
+
+
+}
+
+
+@include media-query(medium-to-large) {
+
+  .carousel-item {
+    &__support {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 14px 35px 0;
+    }
+
+    &__title {
+      margin-top: 28px;
+      font-size: 28px;
+      line-height: 35px;
+      width: 66.66%;
+    }
+
+    &__desc {
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+  }
+
+  .carousel-controls {
+    max-width: 750px;
+    margin: 0 auto;
+
+    &__links {
+      padding: 0 15px;
+    }
+
+    &__link {
+      width: 63px;
+    }
+
+      &__link--previous {
+        background: url("../images/icons/arrows/int_arrow_left_blue_63px.png") no-repeat;
+        @include image-2x("../images/icons/arrows/int_arrow_left_blue_63px_@2x.png", 63px, 63px);
+        height: 63px;
+        width: 63px;
+      }
+
+      &__link--next {
+        background: url("../images/icons/arrows/int_arrow_right_blue_63px.png") no-repeat;
+        @include image-2x("../images/icons/arrows/int_arrow_right_blue_63px_@2x.png", 63px, 63px);
+        height: 63px;
+        width: 63px;
+      }
+
+      &__link--pip {
+        width: 42px;
+        height: 63px;
+        &:before {
+          border-radius: 16px;
+          height: 16px;
+          margin: -8px 0 0 -8px;
+          width: 16px;
+        }
+      }
+  }
+
+  .carousel-controls-placeholder {
+    height: 63px;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+/*------------------------------------*\
+    CAROUSEL - DESKTOP AND UP
+\*------------------------------------*/
+
+$wrapper-width-large: 940px;
+$wrapper-width-xlarge: 1140px;
+
+$drop-shadow-offset: 5px;
+$carousel-hover-delta: 24px;
+
+$carousel-height-large: 400px;
+$carousel-image-width-large: 566px; // arbitrary width to match grid
+$carousel-video-width-large: 711px; // 16:9
+$carousel-support-width-large: $wrapper-width-large - $carousel-image-width-large + $drop-shadow-offset;
+$carousel-support-play-width-large: $wrapper-width-large - $carousel-video-width-large + $drop-shadow-offset;;
+$carousel-support-inactive-height-large: 56px;
+$carousel-support-active-height-large-3items: $carousel-height-large - ($carousel-support-inactive-height-large * 2);
+$carousel-support-active-height-large-2items: $carousel-height-large - $carousel-support-inactive-height-large;
+$carousel-support-active-height-large-1item: $carousel-height-large;
+$carousel-desc-height-large: 225px;
+
+$carousel-height-xlarge: 420px;
+$carousel-image-width-xlarge: 750px; // 16:9
+$carousel-video-width-xlarge: 750px; // 16:9
+$carousel-support-width-xlarge: $wrapper-width-xlarge - $carousel-image-width-xlarge + $drop-shadow-offset;
+$carousel-support-play-width-xlarge: $wrapper-width-xlarge - $carousel-video-width-xlarge + $drop-shadow-offset;
+$carousel-support-inactive-height-xlarge: 56px;
+$carousel-support-active-height-xlarge-3items: $carousel-height-xlarge - ($carousel-support-inactive-height-xlarge * 2);
+$carousel-support-active-height-xlarge-2items: $carousel-height-xlarge - $carousel-support-inactive-height-xlarge;
+$carousel-support-active-height-xlarge-1item: $carousel-height-xlarge;
+$carousel-desc-height-xlarge: 244px;
+
+
+
+@include media-query(large) {
+
+  .carousel {
+      height: $carousel-height-large;
+      overflow: hidden;
+  }
+
+  .carousel-item {
+
+      &__title {
+        color: $color__blue--base;
+        font-size: 17px;
+        line-height: 20px;
+        margin-bottom: 4px;
+        padding-right: 12px;
+      }
+
+      /**
+       * 1. Use negative margin to position drop shadow all the way to the edge
+       */
+      &__support {
+        background-color: $color__grey--lighter;
+        border-top: 1px solid $color__grey--pale;
+        box-shadow: $drop-shadow-offset 1px 9px 0px rgba(0, 0, 0, 0.22);
+        color: $color__grey--dark;
+        height: $carousel-support-inactive-height-large;
+        margin-left: -$drop-shadow-offset; /* [1] */
+        overflow: hidden;
+        padding: 17px 10px 14px 15px+$drop-shadow-offset;
+        position: relative;
+        transition: height 0.2s ease,
+                    width 0.1s ease,
+                    background-color 0.1s ease;
+        width: $carousel-support-width-large;
+        z-index: $carousel-z-support;
+
+        &:active,
+        &:focus {
+          background-color: $color__blue--light;
+          outline: none;
+
+          .carousel-item__title {
+            color: $color__blue--dark;
+          }
+        }
+
+      }
+      &:last-child &__support {
+        z-index: $carousel-z-support-last; /* [1] */
+      }
+
+      &:first-child &__support {
+        border: 0;
+      }
+
+
+      /**
+       * 1. Show no description, by default
+       */
+      &__desc {
+        font-size: 16px;
+        line-height: 21px;
+        height: 0; /* [1] */
+        overflow: hidden;
+        padding-right: 12px;
+      }
+
+      &__link {
+        display: none;
+        padding-right: 12px;
+      }
+
+      /**
+       * 1. Safely hide offscreen
+       * 2. Crop the width as needed to fit the height.
+       */
+      &__stage {
+        height: 100%;
+        padding-bottom: 0;
+        position: absolute;
+        display: none;
+        right: 0;
+        top: 0;
+        width: $carousel-image-width-large;
+
+        &:focus {
+            &:before {
+                bottom: 0;
+                content: '';
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                border: 6px solid $color__blue--light;
+            }
+        }
+
+        img {
+          height: 100%;
+          width: auto; /* [2] */
+          position: relative;
+          z-index: $carousel-z-stage-image;
+        }
+      }
+
+      /**
+       * NOTE: This is the first breakpoint where stage-text and
+       * stage-text-toggle appear.
+       * 1. Set width to line up with grid.
+       * 2. Fade in, so set opacity to 0 and then trigger fadein animation.
+       */
+      &__stage-text {
+        color: white;
+        background-color: transparentize($color__blue--dark, 0.10);
+        display: none;
+        font-size: 16px;
+        line-height: 21px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 42px 24px 28px 20px;
+        width: 33.33%; /* [1] */
+        z-index: $carousel-z-stage-text;
+
+        opacity: 0;  /* [2] */
+        -moz-animation: fadein 1s ease-in 0s forwards; /* Firefox */
+        -webkit-animation: fadein 1s ease-in 0s forwards; /* Safari and Chrome */
+        -o-animation: fadein 1s ease-in 0s forwards; /* Opera */
+        animation: fadein 1s ease-in 0s forwards;
+
+        transition: top 0.2s ease,
+                    right 1.1s ease;
+
+        /**
+         * TODO: use blockquote helper, not this
+         */
+        blockquote {
+            margin: 0;
+            cite {
+              margin-top: 10px;
+              display: block;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 14px;
+            }
+        }
+      }
+
+      &__stage-text-toggle {
+        background: url("../images/icons/close_quote_42.png") center / 42px 42px no-repeat;
+        @include image-2x("../images/icons/close_quote_42_@2x.png", 42px, 42px);
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        padding: 0;
+        margin: 0;
+        z-index: $carousel-z-stage-text-toggle;
+        transition: background-color 0.2s ease;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          opacity: 0.65;
+        }
+
+        &--closed {
+          background-color: transparentize($color__blue--dark, 0.10);
+          background-image: url("../images/icons/expand_quote_42.png");
+          @include image-2x("../images/icons/expand_quote_42_@2x.png", 42px, 42px);
+        }
+
+        &[disabled] {
+          opacity: 0.25;
+        }
+
+      }
+
+      /**
+       * 1. Safely hide offscreen.
+       */
+      &__video {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: none;
+        z-index: $carousel-z-stage-video;
+        width: $carousel-video-width-large;
+      }
+
+  }
+
+  /**
+   * == STATES @large ==
+   */
+
+
+  /**
+   * STATE: ACTIVE
+   */
+  .carousel-item--active {
+
+    .carousel-item__title {
+      font-size: 26px;
+      line-height: 35px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: $color__body;
+      padding-right: 20px;
+    }
+
+    .carousel-item__support {
+      background-color: white;
+      height: $carousel-support-active-height-large-1item;
+      z-index: $carousel-z-support-active;
+      padding: 12px 0 12px 12px+$drop-shadow-offset;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 28px;
+        background: linear-gradient( to top,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 14%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
+    &:last-child .carousel-item__support {
+      z-index: $carousel-z-support-active;
+    }
+
+    .carousel-item__scrollable {
+      bottom: 0;
+      overflow-y: auto;
+      position: absolute;
+      top: 14px;
+    }
+
+    .carousel-item__desc {
+      padding-right: 20px;
+      overflow: visible;
+      height: auto;
+      p {
+        margin-bottom: 14px;
+      }
+    }
+
+    /**
+     * 1. Achieve a min-height of 24px = 18px line-height + 3px padding-top + 3px padding-bottom
+     */
+    .carousel-item__link {
+      bottom: 8px;
+      display: inline;
+      font-size: 16px;
+      line-height: 21px;
+      padding-bottom: 28px;
+    }
+
+
+    /**
+     * 1. Reveal hidden stage
+     */
+    .carousel-item__stage {
+        display: block;
+    }
+
+    .carousel-item__stage-text {
+      display: block;
+    }
+    .carousel-item__stage-text-toggle {
+      display: inline;
+    }
+
+
+
+  }
+  /**
+   * Support 2 and 3 carousel-items. The default is for 1 item.
+   */
+  .carousel--2items .carousel-item--active .carousel-item__support {
+    height: $carousel-support-active-height-large-2items;
+  }
+  .carousel--3items .carousel-item--active .carousel-item__support {
+    height: $carousel-support-active-height-large-3items;
+  }
+
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel--play {
+    .carousel-item__support {
+      width: $carousel-support-play-width-large;
+    }
+  }
+
+  .carousel-item--play {
+    /**
+     * 1. Reveal hidden video
+     */
+    .carousel-item__video {
+       display: block;
+    }
+  }
+
+
+  /**
+   * STATE: PAUSE
+   * 1. Reveal hidden video
+   * NOTE: the difference here is that the support is not constrained to a
+   * smaller width.
+   */
+  .carousel-item--pause .carousel-item__video {
+     right: 0; /* [1] */
+   }
+
+
+
+    /**
+     * STATE: HOVER
+     */
+    .carousel-item--hover {
+      .carousel-item__support {
+        height: $carousel-support-inactive-height-large + $carousel-hover-delta;
+      }
+      .carousel-item__desc {
+        height: 0 + $carousel-hover-delta;
+      }
+    }
+    .carousel--hover {
+      .carousel-item--active {
+        .carousel-item__support {
+          height: $carousel-support-active-height-large-1item - $carousel-hover-delta;
+        }
+      }
+    }
+    /**
+     * Support 2 and 3 carousel-items. The default is for 1 item.
+     */
+    .carousel--2items.carousel--hover .carousel-item--active .carousel-item__support {
+      height: $carousel-support-active-height-large-2items - $carousel-hover-delta;
+    }
+    .carousel--3items.carousel--hover .carousel-item--active .carousel-item__support {
+      height: $carousel-support-active-height-large-3items - $carousel-hover-delta;
+    }
+
+}
+
+
+
+@include media-query(xlarge) {
+
+  .carousel {
+    height: $carousel-height-xlarge;
+  }
+
+  .carousel-item__support {
+    width: $carousel-support-width-xlarge;
+    height: $carousel-support-inactive-height-xlarge;
+  }
+
+  /**
+   * 1. Crop the height as needed to fit the width.
+   */
+  .carousel-item__stage {
+    width: $carousel-image-width-xlarge;
+
+    img {
+      width: 100%;
+      height: auto; /* [1] */
+    }
+  }
+
+
+   /**
+    * == STATES @xlarge ==
+    */
+
+   /**
+    * STATE: ACTIVE
+    */
+  .carousel-item--active {
+    .carousel-item__support {
+      height: $carousel-support-active-height-xlarge-1item;
+      padding: 14px 10px 0 15px+$drop-shadow-offset;
+    }
+    .carousel-item__video {
+      width: $carousel-video-width-xlarge;
+    }
+  }
+  /**
+   * Support 2 and 3 carousel-items. The default is for 1 item.
+   */
+  .carousel--2items .carousel-item--active .carousel-item__support {
+    height: $carousel-support-active-height-xlarge-2items;
+  }
+  .carousel--3items .carousel-item--active .carousel-item__support {
+    height: $carousel-support-active-height-xlarge-3items;
+  }
+
+
+
+  /**
+   * STATE: PLAY
+   */
+  .carousel--play {
+    .carousel-item__support {
+      width: $carousel-support-play-width-xlarge;
+    }
+  }
+
+  /**
+   * STATE: HOVER
+   */
+  .carousel-item--hover {
+    .carousel-item__support {
+      height: $carousel-support-inactive-height-xlarge + $carousel-hover-delta;
+    }
+    .carousel-item__desc {
+      height: 0px + $carousel-hover-delta;
+    }
+  }
+  .carousel--hover {
+    .carousel-item--active {
+      .carousel-item__support {
+        height: $carousel-support-active-height-xlarge-1item - $carousel-hover-delta;
+      }
+    }
+  }
+  /**
+   * Support 2 and 3 carousel-items. The default is for 1 item.
+   */
+  .carousel--2items.carousel--hover .carousel-item--active .carousel-item__support {
+    height: $carousel-support-active-height-xlarge-2items - $carousel-hover-delta;
+  }
+  .carousel--3items.carousel--hover .carousel-item--active .carousel-item__support {
+    height: $carousel-support-active-height-xlarge-3items - $carousel-hover-delta;
+  }
+
+
+}

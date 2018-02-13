@@ -1,0 +1,76 @@
+/*------------------------------------*\
+    #TOPIC HEADER
+\*------------------------------------*/
+
+.topic-header {
+    &__image {
+        height: 126px;
+        margin: 0 -16px;
+        max-width: calc(100% + 32px);
+    }
+}
+
+@include media-query(medium-down) {
+    .topic-header {
+        &__title + &__image {
+            margin-top: -14px;
+        }
+    }
+}
+
+@include media-query(medium) {
+    .topic-header {
+        margin-bottom: 35px;
+        padding-top: 49px;
+        position: relative;
+
+        &__title {
+            padding-bottom: 14px;
+            padding-right: 0.5em;
+            max-width: 67%;
+        }
+
+        &__image {
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            position: absolute;
+
+            height: 175px;
+        }
+
+        &--has-image {
+            padding-bottom: 24.56%;
+            padding-top: 20px;
+        }
+
+        &--has-image &__title {
+            background: $color__white;
+            left: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+    }
+}
+
+@include media-query(large) {
+    .topic-header {
+        &__title {
+            max-width: 50%;
+        }
+
+        &__image {
+            height: 231px;
+        }
+    }
+}
+
+@include media-query(xlarge) {
+    .topic-header {
+        &__image {
+            height: 280px;
+        }
+    }
+}

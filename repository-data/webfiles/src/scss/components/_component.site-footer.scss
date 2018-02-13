@@ -1,0 +1,134 @@
+/*------------------------------------*\
+    #SITE FOOTER
+\*------------------------------------*/
+
+$site-footer-height: 350px;
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+#main-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -$site-footer-height auto;
+  position: relative;
+
+  // Lower min-height so footer appears earlier for status page
+  &.status-wrapper {
+    min-height: 70%;
+  }
+}
+
+.site-footer {
+  //height: $site-footer-height;
+  clear: both;
+  box-sizing: border-box;
+  background: $color__blue--base;
+  padding: 2em 0;
+  position: relative;
+  margin-top: 70px;
+
+  &__link {
+    color: $color__white !important;
+    text-decoration: none;
+
+    &:active {
+      background-color: $color__blue--dark;
+      outline: 3px solid $color__blue--dark;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.site-items {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  padding-left: 0;
+  margin: 0 0 40px 0 !important;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+
+  &__link:hover {
+    text-decoration: underline;
+  }
+}
+
+// making icon size css properties relative instead of absolute makes it easy to resize icons for different breakpoints
+$social-icon__size: 32px;
+$social-icon__size-multiplier: 2/3;
+
+.social-links {
+  float: none;
+  list-style-type: none;
+  margin:0 auto;
+  display: table;
+
+  &__item {
+    display: inline-block;
+    margin: 0 0 7px 0;
+  }
+
+  &__link {
+    font-size: 23px;
+    margin-left: 10px;
+    background: $color__white;
+    border-radius: 1em / $social-icon__size-multiplier;
+    color: $color__blue--base;
+    display: block;
+    height: 1em / $social-icon__size-multiplier;
+    line-height: 1em / $social-icon__size-multiplier;
+    opacity: 0.7;
+    text-align: center;
+    width: 1em / $social-icon__size-multiplier;
+
+    @include transition(opacity $transition-out-time);
+
+    &:hover {
+      color: $color__blue--base;
+      opacity: 1;
+
+      @include transition-duration($transition-in-time);
+    }
+
+    &:active {
+      color: $color__blue--dark;
+      outline: none;
+      background: $color__social__button;
+    }
+
+    .fa {
+      line-height: 1em / $social-icon__size-multiplier;
+      font-size: 21px;
+    }
+  }
+}
+
+// for demonstration only: social icon sizes can be controlled through a single property, e.g.
+@include media-query(medium) {
+  .social-links {
+    float: right;
+  }
+
+  .social-links__link {
+    $social-icon-size: 28px;
+    font-size: $social-icon-size;
+
+    .fa {
+      font-size: 26px;
+    }
+  }
+
+  .site-items {
+    margin: 0 !important;
+  }
+}

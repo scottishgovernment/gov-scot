@@ -1,0 +1,23 @@
+/*------------------------------------*\
+    #ISSUE SIDEBAR BLOCK
+\*------------------------------------*/
+
+.issue-sidebar-block {
+    margin-bottom: 77px;
+}
+
+.issue-sidebar-block__title {
+    font-size: 21px !important;
+    margin-bottom: 28px !important;
+    margin-top: 0 !important;
+    text-transform: none !important;
+}
+
+.issue-sidebar-block__link {
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

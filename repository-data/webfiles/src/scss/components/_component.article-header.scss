@@ -1,0 +1,89 @@
+/*------------------------------------*\
+    #ARTICLE HEADER
+    title block for articles
+\*------------------------------------*/
+
+
+.layout-featured-role {
+  .article-header {
+    &__title {
+      margin-top: 21px;
+    }
+
+    &__subtitle {
+      margin-bottom: 49px;
+    }
+
+    @include media-query(medium) {
+      &__title {
+        margin-top: 35px;
+      }
+      &__subtitle {
+        margin-bottom: 56px;
+      }
+    }
+
+    @include media-query(large) {
+      &__title {
+        margin-top: 36px;
+      }
+    }
+
+    @include media-query(xlarge) {
+      &__title {
+        margin-top: 35px;
+      }
+    }
+  }
+}
+
+.article-header {
+
+  &__subtitle {
+    color: $color__grey--dark;
+    font-size: 16px;
+    line-height: 21px;
+    margin: -21px 0 35px 0;
+
+    &__b {
+        font-weight: 500;
+    }
+  }
+
+  &__subtitle-link {
+    color: $color__grey--dark;
+
+    &:hover {
+      color: $color__link--primary;
+    }
+
+    &:active {
+      color: $color__link--active;
+    }
+  }
+
+  &__label {
+    color: $color__grey--dark;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    margin: 0 0 7px 0;
+    text-transform: uppercase;
+  }
+}
+
+@include media-query(medium) {
+  .article-header {
+
+    &__subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      margin: -21px 0 49px 0;
+    }
+
+    &__label {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+}

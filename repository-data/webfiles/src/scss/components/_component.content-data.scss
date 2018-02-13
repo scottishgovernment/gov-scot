@@ -1,0 +1,83 @@
+/*------------------------------------*\
+    #CONTENT DATA
+    metadata block at the top of content items
+\*------------------------------------*/
+
+.content-data {
+  font-size: 12px;
+  margin: 0 0 28px 0;
+  position: relative;
+
+  &__expandable {
+    position: relative;
+  }
+
+  &__toggle {
+    position: absolute !important;
+    right: 0;
+    top: -4px;
+  }
+
+  &__list {
+    color: $color__grey--dark;
+    line-height: 21px;
+    margin: 0;
+    padding-right: 40px;
+    font-size: 12px;
+  }
+
+  &__label {
+    color: $color__grey--text;
+    display: inline;
+  }
+
+  &__value {
+    display: inline;
+    margin: 0;
+
+    &:after {
+      content: '';
+      display: block;
+      margin-bottom: 7px;
+    }
+  }
+
+  &__expand {
+    display: none;
+  }
+
+  &__additional.display-toggle--shown {
+    display: inline;
+  }
+}
+
+@include media-query(medium) {
+  .content-data {
+    font-size: 12px;
+    margin: 0 0 35px 0;
+
+    &__toggle {
+      display: none;
+    }
+
+    &__list {
+      height: auto;
+      overflow: visible;
+      padding-right: 0;
+      white-space: normal;
+      font-size: 13px;
+    }
+
+    &__expand {
+      display: inline;
+    }
+
+    &__additional {
+      display: none;
+
+      &--shown {
+        display: inline;
+      }
+    }
+  }
+}

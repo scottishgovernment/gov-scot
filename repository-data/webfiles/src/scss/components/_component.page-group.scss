@@ -1,0 +1,242 @@
+/*------------------------------------*\
+  #PAGE GROUP GOV
+  Vertical nav of group of pages
+\*------------------------------------*/
+
+.page-group {
+    margin-bottom: 21px;
+    position: relative;
+
+    &__title {
+        margin-bottom: 21px;
+    }
+
+    &__policy-action-count {
+        margin: 7px 0 21px;
+
+        &__label {
+            font-weight: bold;
+        }
+    }
+
+    &__toggle {
+        background-color: transparent;
+        border: 1px solid $color__blue--base;
+        border-width: 1px 0;
+        color: $color__link--primary;
+        margin-bottom: 21px;
+        padding: 15px 20px;
+        position: relative;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        height: 56px;
+
+        &:after {
+            content: '';
+            border-left: 7px solid white;
+            height: 56px;
+            position: absolute;
+            right: 0;
+            top: -1px;
+            width: 63px;
+
+            background: url('../images/icons/arrows/dd_handle.png') no-repeat $color__blue--base center;
+            @include image-2x( '../images/icons/arrows/dd_handle_@2x.png', 56px, 56px);
+            @include transition(background-color 0.2s, border-color 0.2s);
+        }
+
+        &:active {
+            outline: 0;
+
+            &:after {
+                background-image: url('../images/icons/arrows/dd_handle.png');
+                @include image-2x( '../images/icons/arrows/dd_handle_@2x.png', 56px, 56px);
+            }
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        &--open {
+            color: $color__blue--dark;
+
+            &:after {
+                background-color: $color__blue--dark;
+            }
+        }
+    }
+
+    &__list {
+        font-size: 16px;
+        line-height: 21px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        display: none;
+
+        &--mobile {
+            display: block;
+        }
+    }
+
+    &__item {
+        margin: 0;
+        padding: 0;
+
+        &--level-0 {
+            font-size: 18px;
+            line-height: 28px;
+
+        }
+
+        &--level-0:first-of-type {
+            > .page-group__link {
+                border-top: 0;
+            }
+        }
+
+        &--level-1 {
+            font-size: 16px;
+            line-height: 21px;
+            margin-left: 15px;
+        }
+
+        &--level-2 {
+            font-size: 14px;
+            line-height: 21px;
+            margin-left: 15px;
+        }
+
+        &:first-child {
+            border-top: none;
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: 21px 14px;
+        text-decoration: none;
+        border-top: 1px solid $color__grey--light;
+
+        &--selected {
+            background-color: $color__blue--lighter;
+            border-left: 4px solid $color__blue--base;
+            padding-left: 10px;
+        }
+
+        &--no-link {
+            background-color: inherit !important;
+        }
+
+        &--level-1 {
+            padding: 14px 10px;
+        }
+
+        &--level-2 {
+            padding: 7px 10px;
+        }
+        @include transition(background-color 1s);
+
+        &:hover {
+            background-color: $color__grey--lighter;
+            text-decoration: none;
+            @include transition(background-color 0.2s);
+        }
+
+        &:active {
+            background-color: $color__blue--light;
+            outline: 0;
+            @include transition(none);
+        }
+    }
+
+}
+@include media-query(medium) {
+    .page-group {
+        &:after {
+            display: block;
+            content: '';
+            height: 360px;
+            @include background-image(linear-gradient($color__grey--lighter, $color__white));
+        }
+
+        &--section-nav {
+            a {
+                color: $color__body;
+            }
+
+            &:after {
+                content: none;
+            }
+        }
+
+        &__item {
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        &__list {
+            display: block !important;
+            margin-bottom: 0;
+
+            &:after {
+                display: block;
+                // content: '';
+                height: 16px;
+                @include background-image(linear-gradient($color__grey--light, $color__grey--lighter));
+            }
+        }
+    }
+
+    .page-group__toggle + .page-group__list {
+        position: static;
+    }
+}
+
+/**
+ * Sticky styles
+ */
+.page-group--stickable {
+    /**
+   * Hack to make the iOS render position:fixed while scrolling
+   */
+    -webkit-transform: translate3d(0, 0, 0);
+
+    &--is-sticky {
+        @include media-query(medium) {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+    }
+}
+
+/* styles for mobile nav */
+@include media-query(medium-down) {
+    .page-group--mobile {
+        .page-group__list {
+            display: block;
+        }
+
+        .page-group__link {
+            background: transparent;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+
+            &:hover {
+                background-color: $color__blue--dark;
+            }
+        }
+    }
+
+    .page-group__content {
+        @include media-query(medium-down) {
+            padding-top: 35px;
+        }
+    }
+}

@@ -1,0 +1,175 @@
+.pika-single {
+  background: $color__grey--lighter;
+  border: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  position: static;
+}
+
+.pika-lendar {
+  background: $color__white;
+  border: 0;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  float: none;
+  margin: 0;
+  width: 100%;
+}
+
+.pika-title {
+  background: $color__blue--base;
+  height: 42px;
+  padding: 5px 0;
+}
+
+.pika-label {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  color: $color__white;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  height: 30px;
+  line-height: 27px;
+  margin: 0 4px;
+  padding: 0 25px 3px 10px;
+  position: relative;
+
+  &:after {
+    background: url(../images/icons/arrows/date_picker_dd_arrows.png);
+    content: '';
+    display: inline-block;
+    height: 18px;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    width: 8px;
+
+    @include image-2x('../images/icons/arrows/date_picker_dd_arrows_@2x.png', 8px, 18px);
+  }
+}
+
+.pika-table  {
+  margin: 0;
+
+  thead + tbody tr:nth-child(2n - 1) td {
+    background: transparent;
+  }
+}
+
+.pika-table td {
+  background: transparent;
+  border: 1px solid $color__grey--lighter;
+  height: 35px;
+  vertical-align: middle;
+}
+
+.pika-table th {
+  border: 0;
+  border-bottom: 1px solid $color__grey--pale;
+  color: $color__grey--text;
+  font-size: 12px;
+  font-weight: 400;
+  height: 28px;
+  vertical-align: middle;
+}
+
+.pika-button {
+  background: transparent;
+  border-radius: 0;
+  color: $color__blue--base;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 9px 4px 10px;
+  text-align: center;
+
+  &:hover {
+    background: $color__grey--lighter;
+    border-radius: 0;
+    color: $color__blue--base;
+  }
+
+  &:active {
+    background: $color__blue--light;
+    border-radius: 0;
+    color: $color__blue--base;
+  }
+}
+
+.is-selected .pika-button {
+  background: $color__blue--lighter;
+  border: 2px solid $color__blue--base;
+  color: $color__blue--base;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 8px 3px 9px;
+}
+
+.is-today .pika-button {
+  background-color: $color__gold--base;
+  color: $color__blue--base;
+}
+
+.is-today.is-selected .pika-button {
+  background-color: $color__gold--base;
+  color: $color__blue--base;
+}
+
+.pika-select {
+  background: $color__white;
+  color: $color__grey--text;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.pika-prev,
+.pika-next {
+  height: 42px;
+  opacity: 1;
+  position: absolute;
+  text-indent: 42px;
+  top: 0;
+  width: 42px;
+}
+
+.pika-prev,
+.is-rtl .pika-next {
+  background-image: url(../images/icons/arrows/int_arrow_left_42px.png);
+  left: 0;
+
+  @include image-2x('../images/icons/arrows/int_arrow_left_42px_@2x.png', 42px, 42px);
+}
+
+.pika-next,
+.is-rtl .pika-prev {
+  background-image: url(../images/icons/arrows/int_arrow_42px.png);
+  right: 0;
+
+  @include image-2x('../images/icons/arrows/int_arrow_42px_@2x.png', 42px, 42px);
+}
+
+.is-disabled .pika-button {
+    color: $color__grey--medium;
+}
+
+/* overriding base table styles */
+.pika-table {
+    td, thead + tbody tr:first-child td {
+        border-bottom: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+}
+
+@include media-query(medium) {
+  .pika-single {
+    box-shadow: 10px 0 3px rgba(0, 0, 0, 0.2);
+    padding: 45px;
+  }
+
+  /* overriding base table styles */
+  .pika-table {
+      tr:first-child td:last-child {
+          padding-right: 0;
+      }
+  }
+}

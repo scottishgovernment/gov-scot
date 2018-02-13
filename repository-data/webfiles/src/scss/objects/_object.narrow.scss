@@ -1,0 +1,11 @@
+/*------------------------------------*\
+    #NARROW
+    For narrow content areas on tablet, use mobile sizing
+\*------------------------------------*/
+
+@include media-query(medium-to-large) {
+  .narrow {
+    font-size: $base-font-size;
+    line-height: $base-line-height * 3;
+  }
+}

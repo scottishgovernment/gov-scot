@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    #UTILITY-link
+\*------------------------------------*/
+
+.utility-link {
+  background: $color__grey--lighter;
+  color: $color__grey--text;
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  height: 35px;
+  line-height: 21px;
+  outline: none !important;
+  padding: 7px 10px;
+  text-align: center;
+  text-decoration: none;
+
+  @extend %inner-shadow-top;
+  @extend %small-arrow-right;
+}
+
+@include media-query(large) {
+  .utility-link {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,318 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+h1, .alpha,
+h2, .beta,
+h3, .gamma,
+h4, .delta {
+    letter-spacing: 0;
+}
+
+h1, .alpha {
+  font-size: $base-h1-size;
+  line-height: 42px;
+  font-weight: 100;
+  margin: 0 0 28px -1px;
+}
+
+h2, .beta {
+  font-size: $base-h2-size;
+  line-height: 28px;
+  font-weight: 500;
+  margin: 49px 0 14px 0;
+}
+
+h3, .gamma {
+  font-size: $base-h3-size;
+  line-height: $base-line-height * 3;
+  font-weight: 700;
+  margin: 35px 0 7px 0;
+}
+
+h4, .delta {
+  line-height: $base-line-height * 3;
+  font-size: $base-h4-size;
+  font-weight: 700;
+  margin: 35px 0 7px 0;
+}
+
+@include media-query(medium) {
+  /**
+   * 1. Nudge the header onto the baseline grid
+   */
+  h1, .alpha {
+    font-size: $medium-h1-size;
+    line-height: 63px;
+    margin: 0 0 35px -3px;
+    letter-spacing: -0.5px;
+    position: relative; /* [1] */
+    top: -1px;
+  }
+
+  /**
+   * 1. Nudge the header onto the baseline grid
+   */
+  h2, .beta {
+    font-size: $medium-h2-size;
+    line-height: 35px;
+    margin: 56px 0 14px 0;
+
+    position: relative; /* [1] */
+    top: -3px;
+
+  }
+
+
+  /**
+   * 1. Nudge the header onto the baseline grid
+   */
+  h3, .gamma {
+    font-size: $medium-h3-size;
+    line-height: 28px;
+    margin: 42px 0 7px 0;
+
+    position: relative; /* [1] */
+    top: -2px;
+  }
+
+  h4, .delta {
+    font-size: $medium-h4-size;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.3px;
+    margin: 35px 0 7px 0;
+  }
+
+
+  h5, .epsilon {
+    font-size: $medium-h5-size;
+    font-weight: 600;
+    margin: 24px 0 16px;
+  }
+}
+
+.heading {
+  &--underline {
+    border-bottom: 1px solid $color__grey--light;
+    margin-bottom: 30px;
+    padding-bottom: 9px;
+
+    &--heavy {
+      border-bottom: 4px solid $color__blue--base;
+      margin-bottom: 27px;
+    }
+  }
+
+  &--overline {
+    border-top: 1px solid $color__black;
+    margin-top: 48px;
+    padding-top: 17px;
+
+    &--heavy {
+      border-top: 4px solid $color__blue--base;
+      margin-top: 45px;
+    }
+  }
+}
+
+
+/**
+ * Headings with links should not have a text-underline.
+ */
+h1, h2, h3, h4, h4 {
+  a, a:visited {
+    text-decoration: none;
+  }
+}
+
+
+/*------------------------------------*\
+    SECTION HEADER
+\*------------------------------------*/
+/**
+ * Welcome header are used on the homepage at the top of each section.
+ */
+
+h2.section-header {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 32px;
+
+  a {
+    font-weight: inherit;
+  }
+  a:link, a:visited {
+    color: inherit;
+  }
+  a:hover, a:active {
+    color: $color__link--hover;
+    border-bottom: 2px solid $color__link--hover;
+  }
+}
+
+@include media-query(medium) {
+  h2.section-header {
+    margin-bottom: 24px; /* Reverse mobile change. */
+  }
+}
+
+@include media-query(large) {
+  h2.section-header {
+    font-size: 32px;
+  }
+}
+
+@include media-query(xlarge) {
+  h2.section-header {
+    font-size: 40px;
+  }
+}
+
+
+
+/*------------------------------------*\
+    SOCIAL CHANNELS HEADINGS
+\*------------------------------------*/
+/**
+ * The social channel headings are used on the homepage and have extra features
+ * on mobile, therefore the need for a separate heading style.
+ */
+
+h3.social-channel {
+  font-size: 24px;
+  color: $color__body;
+  text-align: right;
+  margin-bottom: 24px;
+
+  .fa {
+      float: right;
+      padding-left: 8px;
+  }
+
+
+/**
+ * 1. Add border to pseudo element ...
+ * 2. ... and position behind the real elemnt
+ * 3. Set a background to hide the line behind the link.
+ * 4. Add padding to separate link from the line.
+ * 5. Override the default link colour
+ */
+  &:before {
+    content: "Scottish Government on";
+    display: block;
+    color: $color__grey--text;
+    font-size: 15px;
+    font-weight: 400;
+    border-bottom: 1px solid $color__body; /* [1] */
+    padding-bottom: 26px; /* [2] */
+    margin-bottom: -20px;
+  }
+  a {
+    display: inline-block;
+    background: white; /* [3] */
+    padding-left: 14px; /* [4] */
+  }
+  a:link, a:visited {
+    color: $color__body; /* [5] */
+  }
+
+}
+
+/**
+ * 1. Reverse padding-left added in mobile.
+ * 2. Hide pseudo element that include "Scottish..." and line behind.
+ */
+@include media-query(medium) {
+  h3.social-channel {
+    text-align: left;
+
+    .fa {
+        float: left;
+        padding-right: 8px;
+        padding-left: 0; /* [1] */
+    }
+
+    a {
+      padding-left:0; /* [1] */
+    }
+
+    &:before {
+      display: none; /* [2] */
+    }
+
+  }
+}
+
+@include media-query(xlarge) {
+  h3.social-channel {
+    font-size: 28px;
+  }
+}
+
+
+/*------------------------------------*\
+    FIRST CHILDREN
+\*------------------------------------*/
+
+
+.body-content {
+  > h1:first-child,
+  > h2:first-child,
+  > h3:first-child,
+  > .alpha:first-child,
+  > .beta:first-child,
+  > .gamma:first-child {
+    margin-top: 0;
+  }
+}
+
+// get first sidebar heading to share page H1's baseline
+.sidebar-content {
+  > h2:first-child,
+  > .beta:first-child {
+    margin-top: 60px;
+  }
+
+  > h3:first-child,
+  > .gamma:first-child {
+    margin-top: 71px;
+  }
+}
+
+/** Original emphasis **/
+.emphasis {
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 21px;
+  padding-top: 20px;
+  position: relative;
+  text-transform: uppercase;
+
+  &:before {
+    background: $color__blue--base;
+    border-radius: 8px;
+    content: '';
+    height: 8px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+h2.emphasis {
+    text-transform: none;
+}
+
+@include media-query(medium) {
+  h3.emphasis {
+    font-size: 19px;
+    margin: 0 0 14px 0;
+  }
+}
+
+//Fix for spacing in additional content (e.g. groups). Combines with h4's 7px bottom margin
+h4 + ul {
+  margin-top: 14px;
+}

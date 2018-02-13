@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    #CONTACT INFORMATION
+    details about a person (or role)
+\*------------------------------------*/
+
+.contact-information {
+  margin-top: 49px;
+
+  &__group {
+    margin-bottom: 70px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    font-size: 1em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  &__section-subtitle {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
+
+  &__email {
+    word-break: break-word;
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+}
+
+@include media-query(medium) {
+  .contact-information {
+    font-size: 15px;
+    margin-top: 56px;
+  }
+}

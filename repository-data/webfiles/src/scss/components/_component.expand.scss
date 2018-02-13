@@ -1,0 +1,70 @@
+/*------------------------------------*\
+    #EXPAND
+\*------------------------------------*/
+/**
+ * The js-expand is a button for revealing extra content.
+ */
+
+
+
+.expand {
+  background: transparent;
+  position: relative;
+  border: 1px solid $color__blue--base;
+  border-radius: 24px;
+  height: 24px;
+  padding: 0;
+  width: 24px;
+
+  &:before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background-color: $color__blue--base;
+    position: absolute;
+    left: 4px;
+    top: 10px;
+  }
+
+  &:after {
+    content: '';
+    width: 2px;
+    height: 14px;
+    background-color: $color__blue--base;
+    position: absolute;
+    left: 10px;
+    top: 4px;
+
+    @include transition(height $transition-in-time, top $transition-in-time);
+
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+  }
+
+  &--open {
+    &:after {
+      // height: 0;
+      // top: 11px;
+      -ms-transform: rotate(90deg); /* IE 9 */
+      -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+      transform: rotate(90deg);
+    }
+  }
+
+  &--mobile-only {
+    @include media-query(medium) {
+      display: none;
+    }
+  }
+
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background: $color__blue--light;
+  }
+}

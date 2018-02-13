@@ -1,0 +1,385 @@
+@charset "utf-8";
+
+/*------------------------------------*\
+    #GOV.SCOT
+\*------------------------------------*/
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Default..............inuitcss default settings
+ * Colors...............gov.scot color variables
+ * Variables............gov.scot variables
+ * Type
+ * Responsive...........inuitcss responsive settings
+ *
+ * TOOLS
+ * Functions............inuitcss default functions
+ * Mixins...............inuitcss default mixins
+ * Responsive...........inuitcss responsive tool
+ * Widths...............inuitcss widths tool
+ * Animation
+ * Hit target
+ * Mixins...............mygov-assets mixins
+ * Placeholder selectors
+ *
+ * GENERIC
+ * Normalize............inuitcss normalizer
+ * Box-sizing...........inuitcss box-sizing defaults
+ *
+ * BASE
+ * Page.................inuitcss defaults page-level styles (HTML element)
+ * Buttons
+ * Forms
+ * Headings
+ * Icons
+ * Links
+ * Lists
+ * Large list
+ * Page
+ * Rules
+ * Tables
+ * Type
+ *
+ * OBJECTS
+ * Layout...............inuitcss layout tool
+ * Containers
+ * Dividers
+ * Helpers
+ * Layers
+ * Media
+ * Narrow
+ * Overflows
+ * Scrollable
+ * Wrappers
+ *
+ * PLUGINS
+ * Pikaday (plugin styles)
+ * Pikaday (custom styles)
+ *
+ * COMPONENTS
+ * APS publication
+ * Article
+ * Article header
+ * Article nav
+ * Article external link
+ * A-Z list
+ * Breadcrumbs
+ * Carousel
+ * Contact information
+ * Content data
+ * Did you mean
+ * Document info
+ * Expand
+ * Expandable
+ * External links
+ * Feedback
+ * File icon
+ * Full-width note
+ * Informational notes
+ * Item link
+ * List controls
+ * Main nav
+ * Media-login
+ * Multipage nav
+ * News grid
+ * Notification
+ * Page nav
+ * Page group
+ * Pagination
+ * Person
+ * Person govscot
+ * Person grid
+ * Publication info
+ * Pull quote
+ * Search box
+ * Search result
+ * Sidebar block
+ * Site brand
+ * Site footer
+ * Site header
+ * Stat box
+ * Sticky back to top
+ * Sticky document info
+ * Supporting files
+ * Title with prefix
+ * Topic
+ * Utility link
+ * Welcome
+ * Homepage about
+ * Homepage block
+ * Homepage news
+ * Homepage publication
+ *
+ * TRUMPS
+ * Display toggle
+ * Font awesome
+ * Margins
+ * Pikaday
+ */
+
+/* SASS LIBRARIES
+========================================================================== */
+/*
+ * Global SASS libraries/helpers from Compass's built in mixins to aid
+ * compatibility and progressive enhancement methods.
+ */
+@import "compass";
+@import "compass/typography";
+@import "compass/utilities";
+@import "compass/css3";
+
+// inuitcss layout module is not ready. Use CSS Wizardry grids instead
+$gutter: 30px;
+$pull: true;
+$push: true;
+
+// same breakpoints as mygov.scot
+$breakpoints: (
+    'small' '(min-width: 480px)',
+    'medium' '(min-width: 768px)',
+    'large' '(min-width: 992px)',
+    'xlarge' '(min-width: 1200px)',
+    'small-down' '(max-width: 479px)',
+    'medium-down' '(max-width: 767px)',
+    'large-down' '(max-width: 991px)',
+    'small-to-medium' '(min-width: 480px) and (max-width: 767px)',
+    'medium-to-large' '(min-width: 768px) and (max-width: 991px)',
+    'large-to-xlarge' '(min-width: 992px) and (max-width: 1199px)',
+    'xlarge-up' '(min-width: 1200px)' );
+$breakpoint-has-widths: ('small', 'medium', 'large', 'xlarge');
+$breakpoint-has-push: ('small', 'medium', 'large', 'xlarge');
+$breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
+@import "utilities/csswizardry-grids.scss";
+
+// some overrides for csswizardry grids
+.grid--narrow {
+    margin-left: $gutter / -3;
+
+    > .grid__item {
+        padding-left: $gutter / 3;
+    }
+}
+
+
+
+
+/**
+ * SETTINGS
+ */
+$inuit-base-font-size: 16px;
+$inuit-base-line-height: 7px;
+@import "../../node_modules/inuit-defaults/settings.defaults";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
+$base-h1-size: 35px; // 2.1875em;
+$base-h2-size: 22px; // 1.375em;
+$base-h3-size: 18px; // 1.125em;
+$base-h4-size: 15px; // 0.9375em
+$medium-font-size: 18px;
+//$medium-milli-size: 16px;
+$medium-h1-size: 56px;
+$medium-h2-size: 28px;
+$medium-h3-size: 21px;
+$medium-h4-size: $medium-font-size - 1;
+$medium-h5-size: 14px;
+$large-h2-size: 32px;
+@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.type";
+@import "../../node_modules/inuit-responsive-settings/settings.responsive";
+
+
+
+
+/**
+ * TOOLS
+ */
+@import "../../node_modules/inuit-functions/tools.functions";
+@import "../../node_modules/inuit-mixins/tools.mixins";
+$inuit-use-fractions: false;
+@import "../../node_modules/inuit-tools-widths/tools.widths";
+@import "../../node_modules/inuit-responsive-tools/tools.responsive";
+@import "tools/tools.animation";
+@import "tools/tools.hit-target";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/tools/tools.mixins";
+@import "tools/tools.placeholder-selectors";
+
+
+
+
+/**
+ * GENERIC
+ */
+@import "../../node_modules/inuit-normalize/generic.normalize";
+// inuit generic reset?
+@import "../../node_modules/inuit-box-sizing/generic.box-sizing";
+// inuit generic shared?
+
+
+
+
+/**
+ * HELPERS
+ */
+@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.bleed";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.visibility";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.wrappers";
+
+
+
+
+/**
+ * BASE
+ */
+@import "../../node_modules/inuit-page/base.page";
+$button__padding: 7px 20px;
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.buttons";
+@import "base/base.govscot-buttons";
+$external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.external-links";
+@import "base/base.forms";
+@import "base/base.headings";
+@import "base/base.icons";
+@import "base/base.lists";
+@import "base/base.large-list";
+
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.rules";
+$table__border-color--header: $color__grey--light;
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.tables";
+@import "base/base.type";
+
+
+/* BASE: TYPE */
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.body";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.header-emphasis";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.leader";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.links";
+
+
+
+
+/**
+ * OBJECTS
+ */
+@import "../../node_modules/inuit-layout/objects.layout";
+@import "objects/object.column-list";
+@import "objects/object.containers";
+@import "objects/object.dividers";
+@import "objects/object.layers";
+@import "objects/object.media";
+@import "objects/object.narrow";
+@import "objects/object.overflows";
+@import "objects/object.scrollable";
+@import "objects/object.svg-icon";
+
+
+
+
+/**
+ * PLUGINS
+ */
+@import "../../node_modules/pikaday/scss/pikaday.scss";
+@import "components/plugin.pikaday";
+
+
+
+
+/**
+ * COMPONENTS
+ */
+@import "components/component.aps-publication";
+@import "components/component.article";
+@import "components/component.article-footer";
+@import "components/component.article-header";
+@import "components/component.article-nav";
+@import "components/component.article-external-link";
+@import "components/component.az-list";
+$breadcrumbs__font-size: 12px;
+$breadcrumbs__font-size--medium: 13px;
+$breadcrumbs__font-size--large: 14px;
+$breadcrumbs__margin: 0 0 28px;
+$breadcrumbs__margin--medium: -3px 0 4px;
+$breadcrumbs__margin--large: $breadcrumbs__margin--medium;
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.breadcrumbs";
+@import "components/component.carousel";
+@import "components/component.contact-information";
+@import "components/component.content-data";
+@import "components/component.content-placeholder";
+@import "components/component.crossbar-header";
+@import "components/component.did-you-mean";
+@import "components/component.directorate-list";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
+@import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
+$expandable__title-size: 16px;
+@import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expandable';
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.external-links";
+@import "components/component.feedback";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
+@import "components/component.full-width-note";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.informational-notes";
+@import "components/component.issue-callout";
+@import "components/component.issue-sidebar-block";
+@import "components/component.item-link";
+@import "components/component.list-controls";
+@import "components/component.listed-content-item";
+@import "components/component.main-nav";
+@import "components/component.media-login";
+@import "components/component.multipage-nav";
+@import "components/component.news-grid";
+@import "components/component.notification";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.page-nav";
+@import "components/component.page-group";
+@import "components/component.pagination";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.person";
+@import "components/component.person-grid";
+@import "components/component.policy-list";
+@import "components/component.publication-info";
+@import "components/component.pull-quote";
+$search-box__border-radius: 0;
+$search-box__background-color: $color__grey--lighter;
+$search-box__font-size: 16px;
+$search-box__font-size--medium: 17px;
+$search-box__font-size--large: $search-box__font-size--medium;
+$search-box__size: 56px;
+$search-box__size--medium: $search-box__size;
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.search-box";
+@import "components/component.search-results";
+@import "components/component.see-all-button";
+@import "components/component.sidebar-block";
+@import "components/component.site-brand";
+@import "components/component.site-footer";
+@import "components/component.site-header";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.skip-links";
+@import "components/component.social-channels";
+@import "components/component.stat-box";
+@import "components/component.sticky-back-to-top";
+@import "components/component.sticky-document-info";
+@import "components/component.supporting-files";
+@import "components/component.title-with-label";
+@import "components/component.topic";
+@import "components/component.topic-block";
+@import "components/component.topic-header";
+@import "components/component.utility-link";
+@import "components/component.video-container";
+@import "components/component.welcome";
+@import "components/homepage/component.homepage-about";
+@import "components/homepage/component.homepage-block";
+@import "components/homepage/component.homepage-news";
+@import "components/homepage/component.homepage-publication";
+
+
+
+
+/**
+ * TRUMPS
+ */
+@import "trumps/trump.display-toggle";
+@import "trumps/trump.external-links.govscot";
+@import "trumps/trump.fontawesome";
+@import "trumps/trump.margins";
+@import "trumps/trump.pikaday";
+@import "trumps/trump.person.govscot";
+@import "trumps/trump.search-box.govscot";
+@import "trumps/trump.topic-expandable";

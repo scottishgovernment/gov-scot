@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    #SEARCH RESULTS
+\*------------------------------------*/
+
+.search-results__list {
+    list-style: none;
+    margin: 21px 0 0 -40px;
+
+    .listed-content-item {
+      max-width: none;
+      margin: 0 -15px;
+    }
+}
+
+.search-results__header {
+    overflow: hidden;
+}
+
+.search-results-header__left {
+    float: left;
+}
+
+.search-results-header__right {
+    float: right;
+    margin-top: 21px;
+    width: auto;
+}
+
+.search-results__count {
+    margin: 0;
+}
+
+.search-results__item >
+.listed-content-item__link >
+.listed-content-item__article {
+    overflow: hidden;
+}
+
+@include media-query(medium) {
+    .search-results__list {
+        margin: 21px 0 0 0;
+
+        .listed-content-item {
+          margin: 0;
+        }
+    }
+}

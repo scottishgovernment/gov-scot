@@ -1,0 +1,79 @@
+/*------------------------------------*\
+    #ARTICLE EXTERNAL LINK
+\*------------------------------------*/
+
+$excludedSites: ('.gov.scot', '.scotland.gov.uk');
+
+@function addExcludedUrls() {
+    $output: '';
+
+    @each $excludedSite in $excludedSites {
+        $output: $output + ':not([href*="' + $excludedSite + '"])';
+    }
+
+    @return $output;
+}
+
+article {
+  a[href^="//"]#{addExcludedUrls()},
+  a[href^="http://"]#{addExcludedUrls()},
+  a[href^="https://"]#{addExcludedUrls()} {
+
+    background-image: url(../images/icons/arrows/ext_arrow_text_15px.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    display: inline;
+    padding-right: 20px;
+
+    @include image-2x('../images/icons/arrows/ext_arrow_text_15px.png', 15px, 15px);
+
+    &:hover,
+    &:active {
+      background-image: url(../images/icons/arrows/ext_arrow_text_15px_hover.png);
+
+      @include image-2x('../images/icons/arrows/ext_arrow_text_15px_hover.png', 15px, 15px);
+    }
+
+    &.button {
+      background-image: none;
+      padding-right: 0;
+    }
+
+    &.no-icon {
+      background-image: none;
+      padding-right: 0;
+
+      &:hover {
+        background-image: none;
+      }
+
+      &:active {
+        background-image: none;
+      }
+
+      &.button {
+        padding-right: 10px;
+      }
+    }
+  }
+
+  h2, h3 {
+    a[href^="//"]#{addExcludedUrls()},
+    a[href^="http://"]#{addExcludedUrls()},
+    a[href^="https://"]#{addExcludedUrls()} {
+
+      background-image: url(../images/icons/arrows/ext_arrow_text_17px.png);
+      padding-right: 22px;
+
+      @include image-2x('../images/icons/arrows/ext_arrow_text_17px.png', 17px, 17px);
+
+      &:hover,
+      &:active {
+        background-image: url(../images/icons/arrows/ext_arrow_text_17px_hover.png);
+
+        @include image-2x('../images/icons/arrows/ext_arrow_text_17px_hover.png', 17px, 17px);
+      }
+    }
+  }
+
+}

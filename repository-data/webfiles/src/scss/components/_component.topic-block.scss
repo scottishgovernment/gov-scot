@@ -1,0 +1,25 @@
+/*------------------------------------*\
+    #TOPIC: BLOCK
+\*------------------------------------*/
+
+.topic-block {
+    margin-bottom: 84px;
+
+    &__title {
+        margin-top: 0;
+    }
+
+    &--close-top-margin {
+        margin-top: -56px;
+    }
+}
+
+@include media-query(medium) {
+    .topic-block {
+        margin-bottom: 77px;
+
+        &--close-top-margin {
+            margin-top: -49px;
+        }
+    }
+}

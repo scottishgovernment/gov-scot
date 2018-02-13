@@ -1,0 +1,185 @@
+/*------------------------------------*\
+    #SITE HEADER
+\*------------------------------------*/
+
+.site-header {
+  background-color: $color__white;
+  border-top: 7px solid $color__blue--base;
+  border-bottom: 1px solid $color__grey--light;
+  height: 77px;
+  overflow: visible;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+
+  @include transition(all $transition-in-time);
+
+  // BUTTONS
+
+  &__buttons {
+    position: absolute;
+    right: 10px;
+    bottom: -1px;
+  }
+
+  &__button {
+    float: left;
+    font-size: 12px;
+    height: auto;
+    line-height: 16px;
+    margin: 0;
+    padding: 4px 3px 11px 3px;
+    vertical-align: top;
+    outline: 0;
+    width: 45px;
+
+    &--selected.site-header__button--search {
+      background-color: $color__grey--light;
+      padding-bottom: 16px;
+    }
+
+    &--selected.site-header__button--nav {
+      background-color: $color__blue--base;
+    }
+
+    &__button:focus {
+
+    }
+
+  }
+
+  // ICONS
+
+  &__icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 35px;
+    text-indent: -999em;
+    width: 35px;
+  }
+
+  &__icon--search {
+    background-image: url('../images/icons/search-blue.png');
+    background-position: 0 -4px;
+    @include image-2x('../images/icons/search-blue_@2x.png', 35px, 35px);
+  }
+
+  &__icon--nav {
+    background-image: url('../images/icons/menu.png');
+    @include image-2x('../images/icons/menu_@2x.png', 35px, 40px);
+    width: 35px;
+    height: 40px;
+  }
+
+  // SELECTED ICONS
+
+  &__button--selected {
+
+    .site-header__icon--search {
+      background-image: url('../images/icons/close-blue.png');
+      background-position: 0 0;
+      @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
+    }
+
+    .site-header__icon--nav {
+      background-image: url('../images/icons/close-white.png');
+      @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+    }
+  }
+
+  &--scaled {
+      .site-header__button--selected {
+
+          .site-header__icon--search {
+            background-image: url('../images/icons/close-blue.png');
+            background-position: 0 0;
+            @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
+          }
+
+          .site-header__icon--nav {
+            background-image: url('../images/icons/close-white.png');
+            @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+          }
+      }
+  }
+}
+
+.header-mourning {
+  border-top: 7px solid $color__black;
+}
+
+.site-header--fixed {
+  position: fixed;
+}
+
+.site-header__container--fixed {
+  // should be applied to the <body> tag
+  // should equal the height of the header
+  margin-top: 64px;
+}
+
+// A variation that is added by JavaScript automatically
+// when scrolling has reached a certain point.
+.site-header--scaled {
+
+  height: 52px;
+  border-top-width: 4px;
+
+  // Drop shadow;
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  -moz-box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+  box-shadow: 0px 3px 10px 0px rgba(114, 114, 114, 0.25);
+
+  .site-brand__logo {
+    width: 155px;
+    height: 32px;
+  }
+
+  .site-brand {
+    height: 48px;
+  }
+
+  .site-header__buttons {
+    top: 1px;
+  }
+
+  // ICONS - REDUCED
+
+  .site-header__icon--search {
+    background-image: url('../images/icons/search-blue-reduced.png');
+    background-position: 0 -2px;
+    @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
+  }
+
+  .site-header__icon--nav {
+    background-image: url('../images/icons/menu-reduced.png');
+    @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
+  }
+
+}
+
+@include media-query(medium) {
+
+  .site-header {
+    overflow: hidden;
+    position: relative;
+    height: 84px;
+
+    @include transition(all 0);
+  }
+
+  .site-header__container {
+    margin-top: 0px;
+  }
+
+}
+
+@include media-query(large) {
+
+  .site-header {
+    height: 98px;
+  }
+}

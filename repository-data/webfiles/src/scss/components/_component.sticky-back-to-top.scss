@@ -1,0 +1,55 @@
+/*------------------------------------*\
+    #STICKY BACK TO TOP
+\*------------------------------------*/
+
+.sticky-back-to-top {
+
+  background: tint($color__grey--dark, 0.8);
+  color: $color__white;
+  font-size: 14px;
+  font-weight: bold;
+  height: 70px;
+  margin-top: -35px;
+  opacity: 0;
+  padding: 10px;
+  position: fixed;
+  -webkit-backface-visibility: hidden;
+  right: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 50%;
+  width: 70px;
+  z-index: 1000;
+
+  @include transition(opacity 1s, z-index 1s);
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color__white;
+    text-decoration: none;
+  }
+
+  &:after {
+    background: url(../images/icons/arrows/int_arrow_up_70px.png) no-repeat 0 0 transparent;
+    content: '';
+    height: 70px;
+    left: 0;
+    position: absolute;
+    top: 7px;
+    width: 70px;
+
+    @include image-2x('../images/icons/arrows/int_arrow_up_70px_@2x.png', 70px, 70px);
+  }
+
+  &--show {
+    opacity: 1;
+
+    @include transition(opacity 0.2s);
+  }
+
+  &--hidden {
+    z-index: -1;
+  }
+}

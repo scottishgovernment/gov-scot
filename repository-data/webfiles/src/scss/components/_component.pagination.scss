@@ -1,0 +1,59 @@
+/*------------------------------------*\
+    #PAGINATION
+\*------------------------------------*/
+
+.pagination {
+  margin-bottom: 77px;
+  text-align: center;
+
+  &__list {
+    list-style: none;
+    margin: 24px 0 0 0;
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 0 2px;
+  }
+
+  &__page {
+    background: $color__grey--lighter;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 12px;
+    text-decoration: none;
+
+    &--active {
+      background: $color__link--primary;
+      color: $color__white;
+    }
+
+    &--no-link {
+      cursor: default;
+    }
+
+    &:active {
+      outline: 0;
+    }
+  }
+}
+
+.search-results__pagination {
+  &--full {
+    display: none;
+  }
+}
+
+@include media-query(medium) {
+  .search-results__pagination {
+    &--full {
+      display: block;
+    }
+
+    &--small {
+      display: none;
+    }
+  }
+}
+

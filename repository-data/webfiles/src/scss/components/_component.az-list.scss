@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    #A-Z List
+    a segmented a-z list, built with az-list helper
+\*------------------------------------*/
+
+.az-list {
+
+  &__chunkName {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 28px;
+      white-space: nowrap;
+  }
+
+  &__list {
+      list-style-type: none;
+      margin: 0 0 56px 0;
+  }
+
+  &__item {
+      margin-left: 0;
+  }
+
+  &__link {
+      text-decoration: none;
+  }
+}
+
+
+@include media-query(medium) {
+  .az-list {
+      &__chunkName {
+          font-size: 28px;
+          text-align: center;
+      }
+  }
+}
+
+@include media-query(xlarge) {
+  .az-list {
+      &__chunkName {
+          font-size: 35px;
+      }
+  }
+}
