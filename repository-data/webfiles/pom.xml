@@ -13,6 +13,12 @@
   <name>www.gov.scot Repository Data Web Files</name>
   <description>www.gov.scot Repository Data Web Files</description>
 
+  <properties>
+    <version.node>v6.12.3</version.node>
+    <version.npm>3.10.8</version.npm>
+    <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
+  </properties>
+
   <dependencies>
 
     <!-- ARCHE-555 Add dependency on the site war for IntelliJ bean-definition code completion in ftl files -->
@@ -41,6 +47,7 @@
 
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
@@ -48,6 +55,60 @@
           <includeEmptyDirs>true</includeEmptyDirs>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <installDirectory>${install.node.dir}</installDirectory>
+          <nodeVersion>${version.node}</nodeVersion>
+          <npmVersion>${version.npm}</npmVersion>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>de.saumya.mojo</groupId>
+        <artifactId>gem-maven-plugin</artifactId>
+        <version>1.1.5</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <execArgs>${project.build.directory}/rubygems/bin/compass compile</execArgs>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>compass</artifactId>
+            <version>1.0.3</version>
+            <type>gem</type>
+          </dependency>
+        </dependencies>
+      </plugin>
+
     </plugins>
   </build>
 

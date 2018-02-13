@@ -1,5 +1,7 @@
 target/
 overlays/
+repository-data/webfiles/src/main/resources/site/assets/
+node_modules/
 .DS_Store
 .idea
 *.iml

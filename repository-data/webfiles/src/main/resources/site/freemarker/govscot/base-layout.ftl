@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="content">
 
-    <link rel="stylesheet" type="text/css" href="<@hst.webfile path="/css/main.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<@hst.webfile path="/assets/css/main.css"/>"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <link rel="icon" href="<@hst.webfile path="/images/favicon.ico"/>" type="image/x-icon" />
