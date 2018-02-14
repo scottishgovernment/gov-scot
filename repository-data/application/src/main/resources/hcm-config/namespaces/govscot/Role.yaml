@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 3b4e5e44-6800-4bfc-be89-93eae90e9374
+          jcr:uuid: 8dc52661-f824-4998-9aa7-e12b8c27e205
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -23,6 +23,14 @@ definitions:
             hipposysedit:path: govscot:responsibilities
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /incumbent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:incumbent
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -38,12 +46,15 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 7ce9621a-d07c-44c2-94e9-e46dc60673e8
+          jcr:uuid: 983dbf49-7295-4914-88a0-1f5238f83b53
           hippostdpubwf:lastModificationDate: 2018-02-09T12:32:15.950Z
           hippostdpubwf:creationDate: 2018-02-09T12:32:15.950Z
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:incumbent:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -114,6 +125,15 @@ definitions:
             caption: Responsibilities
             field: responsibilities
             hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /incumbent:
+            jcr:primaryType: frontend:plugin
+            caption: Incumbent
+            field: incumbent
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
