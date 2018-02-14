@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 8dc52661-f824-4998-9aa7-e12b8c27e205
+          jcr:uuid: 3ca4c952-8604-428b-ac5f-da2220292bc6
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -46,7 +46,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 983dbf49-7295-4914-88a0-1f5238f83b53
+          jcr:uuid: ee293647-de4c-4e89-804a-7747f22b9b19
           hippostdpubwf:lastModificationDate: 2018-02-09T12:32:15.950Z
           hippostdpubwf:creationDate: 2018-02-09T12:32:15.950Z
           /govscot:responsibilities:
@@ -55,6 +55,9 @@ definitions:
           /govscot:incumbent:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -81,6 +84,33 @@ definitions:
             field: summary
             hint: A summary of this document
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /content:
+            jcr:primaryType: frontend:plugin
+            caption: Content
+            field: content
+            hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /responsibilities:
+            jcr:primaryType: frontend:plugin
+            caption: Responsibilities
+            field: responsibilities
+            hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /incumbent:
+            jcr:primaryType: frontend:plugin
+            caption: Incumbent
+            field: incumbent
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -116,24 +146,6 @@ definitions:
             caption: Notes
             field: notes
             hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /responsibilities:
-            jcr:primaryType: frontend:plugin
-            caption: Responsibilities
-            field: responsibilities
-            hint: The main content for the page
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /incumbent:
-            jcr:primaryType: frontend:plugin
-            caption: Incumbent
-            field: incumbent
-            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

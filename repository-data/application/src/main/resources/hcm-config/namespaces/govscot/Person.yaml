@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: e5047c45-d354-4249-b6f0-bda432ba7e46
+          jcr:uuid: 6eaf582a-6197-4aee-9664-f2704c125877
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -38,7 +38,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 892dac2b-f1ef-43ab-b178-7fe676dbd066
+          jcr:uuid: 0e9eca05-6354-4767-b2a7-6babbf467950
           hippostdpubwf:lastModificationDate: 2018-02-13T13:26:22.509Z
           hippostdpubwf:creationDate: 2018-02-13T13:26:22.509Z
           /govscot:responsibilities:
@@ -53,6 +53,9 @@ definitions:
             govscot:twitter: ''
             govscot:website: ''
             govscot:youtube: ''
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:

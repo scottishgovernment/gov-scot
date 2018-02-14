@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: fc3384c8-11f6-448a-a446-352a2471556d
+          jcr:uuid: c2dbd520-4a44-46eb-bdf1-6e1449142382
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -31,7 +31,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: a8d52bf9-6885-49dc-a502-dd6e1635f70e
+          jcr:uuid: 0e9c71aa-abe6-4578-923b-2e0b0dcbd5a6
           hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
           hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
           /govscot:responsibilities:
@@ -43,6 +43,9 @@ definitions:
           /govscot:responsibleRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:

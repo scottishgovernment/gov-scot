@@ -38,7 +38,7 @@ definitions:
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:responsibilities
+            hipposysedit:path: govscot:content
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
           /seoTitle:
