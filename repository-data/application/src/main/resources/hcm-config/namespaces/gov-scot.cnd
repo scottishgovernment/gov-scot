@@ -40,3 +40,9 @@
 [govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:Group] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+    orderable
+
