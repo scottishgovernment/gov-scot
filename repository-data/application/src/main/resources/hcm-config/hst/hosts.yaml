@@ -15,35 +15,35 @@ definitions:
           hst:mountpoint: /hst:hst/hst:sites/govscot
     /hst:hst/hst:hosts/lcl:
       jcr:primaryType: hst:virtualhostgroup
-      jcr:uuid: 68a77b21-3c55-4867-b908-fdfa5aac131c
+      jcr:uuid: ba3ead53-bbda-4aec-838d-fda2bf62b166
       hst:cmslocation: https://lcl.publishing.gov.scot
       /scot:
         jcr:primaryType: hst:virtualhost
-        jcr:uuid: e4fd4f3b-a966-44ad-9d4e-7377e88ae18c
+        jcr:uuid: 786c6fff-6c85-4632-90fa-2a683e31c302
         hst:scheme: https
         /gov:
           jcr:primaryType: hst:virtualhost
-          jcr:uuid: 94744134-3a83-4b64-b4f3-5a8aef0fcfcc
+          jcr:uuid: 15fca65e-eac0-419e-a716-6a4a1cc0945c
           /publishing:
             jcr:primaryType: hst:virtualhost
-            jcr:uuid: c62011a9-7842-4685-8c06-22284c1749a8
+            jcr:uuid: 2b2a8ddd-bfad-4575-9b65-abf407539617
             /lcl:
               jcr:primaryType: hst:virtualhost
-              jcr:uuid: 44bc237c-5de0-4db7-ae94-06f389226d54
+              jcr:uuid: 50f47c59-e9b9-4158-950a-1d61c2a31d59
               /hst:root:
                 jcr:primaryType: hst:mount
-                jcr:uuid: e3a15fac-2035-46d3-aa2b-8f7b6466843a
+                jcr:uuid: 7fc2fb35-f2d3-4ef7-b41e-a5aa271d6281
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
           /beta:
             jcr:primaryType: hst:virtualhost
-            jcr:uuid: dc570c2d-ba0a-43b2-8915-02a0104101b4
+            jcr:uuid: d8499069-74f7-44bb-bc03-9d13b12a39ea
             /lcl:
               jcr:primaryType: hst:virtualhost
-              jcr:uuid: fac510ff-d36f-4a21-94f6-8c502b12d389
+              jcr:uuid: 360b49e9-1a21-480b-ba30-63721767f7b9
               /hst:root:
                 jcr:primaryType: hst:mount
-                jcr:uuid: c18b1194-26ef-4103-9b1c-a9334def4339
+                jcr:uuid: 60752647-9bfa-4f99-a2df-fe2e90d57df3
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
@@ -78,6 +78,108 @@ definitions:
               /hst:root:
                 jcr:primaryType: hst:mount
                 jcr:uuid: c18b1194-26ef-4103-9b1c-a9334def4339
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:showcontextpath: false
+    /hst:hst/hst:hosts/int:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: a987e83c-eb47-47b9-abaf-1810ad966336
+      hst:cmslocation: https://int.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: 513a387a-b3f0-42e9-8d8f-a5fe6350f6bd
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: ad3c3055-c17b-4788-950d-0fa39eeef43f
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: a0c8ab06-63ad-4499-8380-d2b49c146864
+            /int:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 38293176-1a66-4e0c-89b8-a198c47aac82
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 70a49e03-4197-4747-8dfc-744d4908764a
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: 123861f7-42f2-467a-82fa-5d97b92d59b5
+            /int:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: fcfcce80-c044-4dd1-92d6-56d419c6ee53
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: d8e5fb2c-8338-4028-aa35-c1de358caec4
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:showcontextpath: false
+    /hst:hst/hst:hosts/exp:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: 6310b3ad-c323-4198-b4d5-e2c5e675a755
+      hst:cmslocation: https://exp.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: e9eca519-1d36-4aad-a310-44eb2c602823
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: adc76e5d-71b8-471a-8e5e-b307cc3d5bf9
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: e342ea40-4fab-4a98-b81d-f46354749610
+            /exp:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 935a1c8d-65ce-4242-a87f-f55aa8072581
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 726a843c-aaf3-4a58-9b71-2eec45cacd65
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: efca75ee-d5c4-4481-a69a-2e69ffe0da33
+            /exp:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 998169c6-45f0-43fa-a2a9-c5bcb41e64c3
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 77c29f6b-21ee-4f9d-ade8-1387ece10931
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:showcontextpath: false
+    /hst:hst/hst:hosts/uat:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: f3a4461a-d4eb-477d-af8c-b9d3b414eaaf
+      hst:cmslocation: https://uat.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: 03435931-6b17-4420-9d0f-2970abac95b9
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: f9e87f6a-28ac-4d6f-945e-c880043677b5
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: 2226ffc4-1763-449d-963c-73733f514f5c
+            /uat:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 525e2de4-e9d5-4bd0-afbd-53149ff097d2
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 1a768d55-c7d5-4c92-8e27-37358b6091e9
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: 4877f321-7d66-4616-a355-413e204a5bc3
+            /uat:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 2176d630-e713-4f93-8cdd-d282939ca9f0
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: e77a2ef8-ff17-431b-8c97-9b5373bf535d
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
