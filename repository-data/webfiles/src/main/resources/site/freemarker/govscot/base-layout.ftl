@@ -18,7 +18,8 @@
 
     <link rel="apple-touch-icon" href="<@hst.webfile path="/images/apple-touch-icon.png"/>" />
 
-    <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>
+    <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
+    <@hst.headContributions xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >
@@ -80,7 +81,7 @@
 
     <@hst.include ref="footer"/>
 
-    <script src="<@hst.webfile path="/js/default.js"/>" type="text/javascript"></script>
+    <script src="<@hst.webfile path="/assets/scripts/default.js"/>" type="text/javascript"></script>
 
   <@hst.headContributions categoryIncludes="htmlBodyEnd" xhtml=true/>
 
