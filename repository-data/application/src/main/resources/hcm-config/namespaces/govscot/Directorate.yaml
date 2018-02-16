@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: e0c58ef8-c562-4271-a4d3-b845a6b60f93
+          jcr:uuid: 1094fc48-8b5f-4c21-a84f-ff85c5ee871a
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -23,6 +23,22 @@ definitions:
             hipposysedit:path: govscot:ContactInformation
             hipposysedit:primary: false
             hipposysedit:type: govscot:ContactInformation
+          /orgRoles:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:orgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /secondaryOrgRoles:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:secondaryOrgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -38,7 +54,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 1aa0c595-ffe7-4c6a-8619-203dd81682e1
+          jcr:uuid: 00176b0c-7268-448c-be95-3f3a0a82b3b4
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           /govscot:content:
@@ -53,6 +69,12 @@ definitions:
             govscot:twitter: ''
             govscot:website: ''
             govscot:youtube: ''
+          /govscot:orgRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:secondaryOrgRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -134,5 +156,23 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /orgRole:
+            jcr:primaryType: frontend:plugin
+            caption: Organisational Roles
+            field: orgRoles
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /secondaryOrgRole:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary Organisational Roles
+            field: secondaryOrgRoles
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

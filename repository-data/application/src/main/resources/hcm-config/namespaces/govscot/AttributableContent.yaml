@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d5445d38-d195-4cb4-8b69-d2d0f1d619e0
+          jcr:uuid: d139190b-2f11-4c71-9288-eaabd0544243
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -55,6 +55,22 @@ definitions:
             hipposysedit:path: govscot:secondaryResponsibleRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+          /orgRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:orgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /secondaryOrgRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:secondaryOrgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -70,7 +86,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 0ea3866f-77ac-4bf2-bc76-ab8c3489fed9
+          jcr:uuid: df732a2a-f217-473d-9e76-db193183e392
           hippostdpubwf:lastModificationDate: 2018-01-26T11:27:23.004Z
           hippostdpubwf:creationDate: 2018-01-26T11:27:23.004Z
           /govscot:content:
@@ -92,6 +108,12 @@ definitions:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:secondaryResponsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:orgRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:secondaryOrgRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
@@ -213,6 +235,23 @@ definitions:
             caption: Secondary Responsible Roles
             field: secondaryResponsibleRole
             hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /orgRole:
+            jcr:primaryType: frontend:plugin
+            caption: Org Role
+            field: orgRole
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /secondaryOrgRole:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary Org Role
+            field: secondaryOrgRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

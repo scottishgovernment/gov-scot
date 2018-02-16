@@ -1,17 +1,17 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/Group:
+    /hippo:namespaces/govscot/OrgRoles:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: a1f9b4c0-a616-4284-8963-d8468f53c455
+      jcr:uuid: 3c7f9511-8518-4636-8fcb-82b6896184d8
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: e16699f8-ff7e-4cf0-9ee5-ccec3c7cf92e
+        jcr:uuid: ecde0de2-5ac4-4325-8254-bf532c8fc3e4
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: c22a7a9b-37de-460f-850a-0d8a885501e0
+          jcr:uuid: d4b45a14-020b-4f3b-ba07-ed0c7da4640e
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -19,7 +19,7 @@ definitions:
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:Group
+          jcr:primaryType: govscot:OrgRoles
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
@@ -31,18 +31,9 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 3c9ee691-53e3-4972-bf8f-5d116b2d0b5d
-          hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
-          hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
-          /govscot:responsibilities:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:responsibleDirectorate:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:responsibleRole:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          jcr:uuid: 466350a2-e5b7-498d-ace9-9f705d490ac3
+          hippostdpubwf:lastModificationDate: 2018-02-15T16:34:09.353Z
+          hippostdpubwf:creationDate: 2018-02-15T16:34:09.353Z
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -75,7 +66,7 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /responsibilities:
+          /content:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
@@ -111,6 +102,8 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             type: hippostd:taggable
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /topics:
             jcr:primaryType: frontend:plugin
             caption: Topics
@@ -122,53 +115,6 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-          /responsibleDirectorate:
-            jcr:primaryType: frontend:plugin
-            caption: Responsible Directorate
-            field: responsibleDirectorate
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/directorates/
-              last.visited.enabled: 'false'
-          /secondaryResponsibleDirectorate:
-            jcr:primaryType: frontend:plugin
-            caption: Seondary Responsible Directorates
-            field: secondaryResponsibleDirectorate
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/directorates/
-              last.visited.enabled: 'false'
-          /responsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Responsible Role
-            field: responsibleRole
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /secondaryResponsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
-            field: secondaryResponsibleRole
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /notes:
-            jcr:primaryType: frontend:plugin
-            caption: Notes
-            field: notes
-            hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
           /orgRole:
             jcr:primaryType: frontend:plugin
             caption: Org Role
@@ -185,5 +131,14 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: Notes about the content for future editors
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
