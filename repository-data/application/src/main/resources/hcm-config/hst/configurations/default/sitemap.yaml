@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/webfiles/latest:
+      jcr:primaryType: hst:sitemapitem
+      /_any_:
+        jcr:primaryType: hst:sitemapitem
+        hst:relativecontentpath: ${1}
