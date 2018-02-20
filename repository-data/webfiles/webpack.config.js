@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const aliasPath = '../../../../../site/src/main/webapp/assets/scripts/vendor/';
 
 // Packs JS files & deps into bundles
 module.exports = {
@@ -19,8 +20,9 @@ module.exports = {
 
         // equivalent to requirejs paths
         alias: {
-            'jquery': '../vendor/jquery.min',
-            'moment': '../vendor/moment'
+            'jquery': aliasPath + 'jquery.min',
+            'jquery.dotdotdot': aliasPath + 'jquery.dotdotdot.min',
+            'moment': aliasPath + 'moment'
         }
     },
 
