@@ -16,6 +16,10 @@
   <name>www.gov.scot Site</name>
   <description>www.gov.scot Site</description>
 
+  <properties>
+    <sonar.exclusions>src/main/webapp/assets/scripts/vendor/**</sonar.exclusions>
+  </properties>
+
   <dependencies>
 
     <dependency>
