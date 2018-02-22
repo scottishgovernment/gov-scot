@@ -304,10 +304,12 @@
       <modules>
         <module>repository-data</module>
         <module>cms</module>
-        <module>site</module>
-        <module>essentials</module>
-        <module>site-deb</module>
         <module>cms-deb</module>
+        <module>essentials</module>
+        <module>repository</module>
+        <module>repository-deb</module>
+        <module>site</module>
+        <module>site-deb</module>
       </modules>
     </profile>
 
