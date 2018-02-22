@@ -17,7 +17,7 @@
   <description>www.gov.scot CMS Package</description>
 
   <properties>
-    <install.path>/opt/cms</install.path>
+    <install.path>/opt/hippo</install.path>
   </properties>
 
   <dependencies>
