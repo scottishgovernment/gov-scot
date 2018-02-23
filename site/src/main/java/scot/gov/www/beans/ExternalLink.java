@@ -12,8 +12,8 @@ public class ExternalLink extends HippoCompound {
         return getProperty("govscot:title");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:string")
-    public String getString() {
-        return getProperty("govscot:string");
+    @HippoEssentialsGenerated(internalName = "govscot:url")
+    public String getUrl() {
+        return getProperty("govscot:url");
     }
 }
