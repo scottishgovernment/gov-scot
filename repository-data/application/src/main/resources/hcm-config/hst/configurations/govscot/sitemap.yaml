@@ -37,3 +37,19 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/contentpage
           hst:relativecontentpath: ${parent}/${1}
+      /roles:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/contentlist
+        hst:relativecontentpath: roles
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/contentpage
+          hst:relativecontentpath: ${parent}/${1}
+      /groups:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/contentlist
+        hst:relativecontentpath: groups
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/contentpage
+          hst:relativecontentpath: ${parent}/${1}
