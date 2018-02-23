@@ -13,18 +13,6 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
         hst:refId: pagenotfound
-      /content:
-        jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/contentlist
-        hst:relativecontentpath: content
-        /_any_.html:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentpage
-          hst:relativecontentpath: ${parent}/${1}
-        /_any_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentlist
-          hst:relativecontentpath: ${parent}/${1}
       /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
@@ -39,7 +27,7 @@ definitions:
         hst:relativecontentpath: news
         /_any_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentpage
+          hst:componentconfigurationid: hst:pages/newspage
           hst:relativecontentpath: ${parent}/${1}
       /about:
         jcr:primaryType: hst:sitemapitem
