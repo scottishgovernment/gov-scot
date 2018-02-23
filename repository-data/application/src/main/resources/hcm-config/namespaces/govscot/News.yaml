@@ -88,10 +88,10 @@ definitions:
           govscot:externalId: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:background:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:heroImage:
             jcr:primaryType: govscot:ExternalLink
             govscot:string: ''
@@ -104,7 +104,7 @@ definitions:
             govscot:url: ''
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:

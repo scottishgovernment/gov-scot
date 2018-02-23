@@ -59,7 +59,7 @@ definitions:
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:ContactInformation:
             jcr:primaryType: govscot:ContactInformation
             govscot:blog: ''

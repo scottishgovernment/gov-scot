@@ -43,7 +43,7 @@ definitions:
           hippostdpubwf:creationDate: 2018-02-13T13:26:22.509Z
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:ContactInformation:
             jcr:primaryType: govscot:ContactInformation
             govscot:blog: ''
@@ -55,7 +55,7 @@ definitions:
             govscot:youtube: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:

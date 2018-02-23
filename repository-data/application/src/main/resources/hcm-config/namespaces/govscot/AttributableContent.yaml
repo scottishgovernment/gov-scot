@@ -91,13 +91,13 @@ definitions:
           hippostdpubwf:creationDate: 2018-01-26T11:27:23.004Z
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:topics:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:responsibleDirectorate:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe

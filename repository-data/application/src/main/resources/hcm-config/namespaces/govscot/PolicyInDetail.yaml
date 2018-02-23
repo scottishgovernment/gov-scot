@@ -35,7 +35,7 @@ definitions:
           hippostdpubwf:creationDate: 2018-02-12T13:51:17.155Z
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:

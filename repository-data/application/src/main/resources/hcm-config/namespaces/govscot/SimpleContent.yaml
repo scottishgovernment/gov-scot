@@ -87,13 +87,13 @@ definitions:
           hippostdpubwf:creationDate: 2018-01-25T11:47:57.024Z
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:notes:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: ''
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
