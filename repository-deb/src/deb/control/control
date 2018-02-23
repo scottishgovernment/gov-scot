@@ -1,4 +1,4 @@
-Package: gov-scot-repository
+Package: gov-scot-repo
 Version: [[version]]
 Section: mygov
 Priority: optional
