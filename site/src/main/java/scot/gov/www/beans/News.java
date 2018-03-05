@@ -1,5 +1,6 @@
 package scot.gov.www.beans;
 
+import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
@@ -63,5 +64,10 @@ public class News extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:attachments")
     public List<ExternalLink> getAttachments() {
         return getChildBeansByName("govscot:attachments", ExternalLink.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:topics")
+    public List<HippoBean> getTopics() {
+        return getLinkedBeans("govscot:topics", HippoBean.class);
     }
 }
