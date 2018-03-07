@@ -47,6 +47,7 @@ definitions:
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
+                hst:nochannelinfo: true
     /hst:hst/hst:hosts/dev:
       jcr:primaryType: hst:virtualhostgroup
       jcr:uuid: 68a77b21-3c55-4867-b908-fdfa5aac131c
@@ -81,6 +82,7 @@ definitions:
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
+                hst:nochannelinfo: true
     /hst:hst/hst:hosts/int:
       jcr:primaryType: hst:virtualhostgroup
       jcr:uuid: a987e83c-eb47-47b9-abaf-1810ad966336
@@ -115,6 +117,7 @@ definitions:
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
+                hst:nochannelinfo: true
     /hst:hst/hst:hosts/exp:
       jcr:primaryType: hst:virtualhostgroup
       jcr:uuid: 6310b3ad-c323-4198-b4d5-e2c5e675a755
@@ -149,6 +152,7 @@ definitions:
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
+                hst:nochannelinfo: true
     /hst:hst/hst:hosts/uat:
       jcr:primaryType: hst:virtualhostgroup
       jcr:uuid: f3a4461a-d4eb-477d-af8c-b9d3b414eaaf
@@ -183,3 +187,4 @@ definitions:
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
+                hst:nochannelinfo: true
