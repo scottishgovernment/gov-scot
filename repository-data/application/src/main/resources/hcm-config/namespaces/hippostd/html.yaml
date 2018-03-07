@@ -1,8 +1,0 @@
-definitions:
-  config:
-    /hippo:namespaces/hippostd/html/hipposysedit:prototypes/hipposysedit:prototype:
-      hippostd:content: |-
-        <html>
-         <head></head>
-         <body></body>
-        </html>
