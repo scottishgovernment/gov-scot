@@ -1,0 +1,55 @@
+/content/documents/govscot/roles:
+  .meta:order-before: organisations
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: b7114ad3-065c-4b60-80fb-beaf3a4bd3b5
+  hippo:name: roles
+  /chief-executive-copfs:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: ef698d5b-2005-4097-8504-b9bb3203fad4
+    hippo:name: Chief Executive Crown Office and Procurator Fiscal Service
+    /chief-executive-copfs:
+      jcr:primaryType: govscot:Role
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 8f29d9ab-3af2-4131-a27a-f0c2a77f0e98
+      govscot:metaDescription: The role and biography of the Chief Executive Crown
+        Office and Procurator Fiscal Service in Scotland.
+      govscot:seoTitle: Chief Executive Crown Office and Procurator Fiscal Service
+        in Scotland
+      govscot:summary: Member of the Scottish Government's Strategic Board.
+      govscot:title: Chief Executive Crown Office and Procurator Fiscal Service
+      hippo:availability: [live, preview]
+      hippo:name: Chief Executive Crown Office and Procurator Fiscal Service
+      hippostd:state: published
+      hippostd:tags: [CE, chief executive copfs, COPFS, Procurators Fiscal]
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2018-02-27T16:17:25.362Z
+      hippostdpubwf:lastModificationDate: 2018-02-27T16:17:25.362Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: f20b75dc-9f99-4db9-9189-87698915a8d8
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head>\n <body>\n  <p>The Crown Agent for\
+          \ Scotland's principal role is Chief Executive of the Crown Office and Procurator\
+          \ Fiscal Service (COPFS), acting as civil service head of the staff and\
+          \ legal advisor to the Lord Advocate on prosecution matters.</p> \n </body>\n\
+          </html>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <html>
+           <head></head>
+           <body></body>
+          </html>
+      /govscot:incumbent:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: c25b778a-ea84-4a22-8706-e0a36c8cb74c
+      /govscot:responsibilities:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <html>
+           <head></head>
+           <body></body>
+          </html>

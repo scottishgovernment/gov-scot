@@ -1,0 +1,103 @@
+/content/documents/govscot/example-of-setting-up-in-article-anchor-links:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: ee189924-1fec-424c-82bd-95fadfa9b8bf
+  hippo:name: Example of setting up in-article anchor links
+  /example-of-setting-up-in-article-anchor-links:
+    jcr:primaryType: govscot:SimpleContent
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 2666e3d4-fb97-4f85-8433-ba6d848c5ab8
+    govscot:metaDescription: summ summ summ
+    govscot:seoTitle: Example of setting up in-article anchor links
+    govscot:summary: summ summ summ
+    govscot:title: Example of setting up in-article anchor links
+    hippo:availability: [preview]
+    hippo:name: Example of setting up in-article anchor links
+    hippostd:state: unpublished
+    hippostd:tags: []
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-02-27T16:17:29.507Z
+    hippostdpubwf:lastModificationDate: 2018-02-27T16:17:29.508Z
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 3fb1f88e-8282-41ad-ae40-8e110acc8f6e
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: "<html>\n <head></head>\n <body>\n  <p>This page demonstrates\
+        \ how to create in-page anchor links in Rubric.</p> \n  <div class=\"info-note\
+        \ note\">\n   Note that you can create anchor links using either standard\
+        \ markdown link syntax (e.g. Section One below) or with HTML link syntax (e.g.\
+        \ Section Two below)\n  </div> \n  <ul> \n   <li><a href=\"#section-one\"\
+        >Section One</a></li> \n   <li><a href=\"#section-two\">Section Two</a></li>\
+        \ \n   <li><a href=\"#section-three\">Section Three</a></li> \n   <li><a href=\"\
+        #foo\">Section Four</a></li> \n   <li><a href=\"#bar\">Section Five</a></li>\
+        \ \n  </ul> \n  <div class=\"info-note note\">\n   If a title contains any\
+        \ punctuation, such as apostrophes, in the anchor link code replace the punctuation\
+        \ with a dash e.g. \n   <a href=\"#section-six-\">Section Six!</a>\n  </div>\
+        \ \n  <h2 id=\"section-one\">Section One</h2> \n  <div class=\"info-note note\"\
+        >\n   Rubric will automatically add IDs to headings, making it possible to\
+        \ link to them. The ID is the \"slug\" of the heading, i.e. it is the heading\
+        \ text converted to lower case with all punctuation reduced to hyphens. For\
+        \ example, \"The Scottish Government\" will have an ID of \"the-scottish-government\"\
+        .\n  </div> \n  <div class=\"info-note caution\">\n   This is the preferred\
+        \ way of creating in-page anchor links.\n  </div> \n  <p>Lorem ipsum dolor\
+        \ sit amet, consectetur adipiscing elit. Proin eu commodo nulla, vitae aliquam\
+        \ magna. Aenean placerat at ante eget fringilla. Suspendisse ex urna, ultrices\
+        \ ut velit vel, molestie efficitur ipsum. Proin ac lacus malesuada, dictum\
+        \ ipsum at, ornare orci. Suspendisse venenatis pretium neque, eget blandit\
+        \ nisi convallis eu. Quisque nunc turpis, blandit eu lacus in, tincidunt lacinia\
+        \ nibh. Morbi dapibus, tortor eget interdum imperdiet, ipsum massa elementum\
+        \ quam, nec congue orci turpis vel mauris. Phasellus cursus, erat ut placerat\
+        \ aliquam, ligula velit tristique erat, et efficitur arcu augue sed mi. Vestibulum\
+        \ ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>\
+        \ \n  <h2 id=\"section-two\">Section Two</h2> \n  <p>Nulla facilisi. Cras\
+        \ sagittis, enim sed posuere dictum, erat felis tempor massa, efficitur vehicula\
+        \ sapien lorem in lorem. Vivamus varius neque mauris, a posuere diam tempor\
+        \ eu. Proin lacinia et dolor sed aliquet. Maecenas non lacinia magna. Duis\
+        \ et lorem bibendum massa lacinia pharetra vitae non mi. Sed rhoncus dignissim\
+        \ leo, a tempus quam maximus vel.</p> \n  <h2 id=\"section-three\">Section\
+        \ Three</h2> \n  <p>Duis ullamcorper, sapien ut varius placerat, turpis urna\
+        \ varius arcu, et aliquam nunc diam at tortor. Curabitur mauris nisl, vehicula\
+        \ eget feugiat non, sagittis in eros. Donec commodo sapien non arcu accumsan\
+        \ consectetur. Fusce a risus pretium lectus sagittis porta vel nec ligula.\
+        \ Maecenas mauris risus, tincidunt sit amet mauris non, fringilla auctor felis.\
+        \ Etiam at quam blandit, dictum metus eget, mattis ligula. Maecenas laoreet\
+        \ purus tincidunt sagittis vestibulum. Maecenas eu lorem ac diam fermentum\
+        \ ultricies. Maecenas sagittis velit in dolor pellentesque, vulputate convallis\
+        \ enim commodo. Donec sit amet tortor id nibh pellentesque tempus. Proin convallis\
+        \ rutrum eros, sed semper nunc lacinia eu. Vestibulum scelerisque fermentum\
+        \ magna, vel iaculis ligula vestibulum cursus. Vivamus sodales, nisi vitae\
+        \ maximus placerat, nisl libero vestibulum est, vitae ultrices lorem velit\
+        \ ut ante. Pellentesque non venenatis dolor, id fermentum augue. Nulla luctus\
+        \ convallis posuere.</p> \n  <h2 id=\"-a-name-foo-section-four-a-\"><a name=\"\
+        foo\">Section Four</a></h2> \n  <div class=\"info-note note\">\n   It is possible\
+        \ to use named anchors as link targets within headings but this is not recommended.\
+        \ In this example we are wrapping the heading text in a link that doesn't\
+        \ go anywhere. This doesn't display well (it will take on link styling) and\
+        \ is bad for accessibility.\n  </div> \n  <p>Pellentesque fermentum tristique\
+        \ commodo. Pellentesque sed eros quam. Etiam quis ornare diam, vel pellentesque\
+        \ ligula. Proin id nibh ut lacus mattis eleifend. Sed ullamcorper ullamcorper\
+        \ ex in luctus. Donec scelerisque convallis metus sit amet varius. Integer\
+        \ blandit efficitur nunc, sit amet imperdiet enim iaculis non. Ut dui velit,\
+        \ rutrum non metus vitae, pretium molestie turpis. Aenean aliquam odio vel\
+        \ risus ullamcorper, in fermentum nisi euismod. Sed dolor est, tempus et justo\
+        \ eget, bibendum molestie lectus. Donec nulla elit, pellentesque a nisl nec,\
+        \ bibendum venenatis mi. Lorem ipsum dolor sit amet, consectetur adipiscing\
+        \ elit. Nunc ante nunc, sodales at arcu et, bibendum interdum libero.</p>\
+        \ \n  <h2 id=\"-a-name-bar-a-section-five\"><a name=\"bar\"></a>Section Five</h2>\
+        \ \n  <div class=\"info-note note\">\n   In this example the named anchor\
+        \ has no content and the heading text will display as expected.\n  </div>\
+        \ \n  <p>Donec lacus mi, pulvinar sed scelerisque a, aliquam ac ante. Phasellus\
+        \ commodo libero urna, quis efficitur nibh sollicitudin vel. Pellentesque\
+        \ habitant morbi tristique senectus et netus et malesuada fames ac turpis\
+        \ egestas. Curabitur quis nibh mi. Vestibulum eget blandit orci. Curabitur\
+        \ ullamcorper malesuada rutrum. Donec vitae odio nec nisi mattis pulvinar.\
+        \ Integer efficitur sagittis nibh ut facilisis. Etiam sit amet pellentesque\
+        \ sapien.</p> \n  <h2 id=\"section-six-\">Section Six!</h2> \n </body>\n</html>"
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <html>
+         <head></head>
+         <body></body>
+        </html>
