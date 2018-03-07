@@ -35,7 +35,7 @@
   position: relative;
 
   &:after {
-    background: url(../images/icons/arrows/date_picker_dd_arrows.png);
+    background: url(../../../../assets/images/icons/arrows/date_picker_dd_arrows.png);
     content: '';
     display: inline-block;
     height: 18px;
@@ -44,7 +44,7 @@
     top: 5px;
     width: 8px;
 
-    @include image-2x('../images/icons/arrows/date_picker_dd_arrows_@2x.png', 8px, 18px);
+    @include image-2x('../../../../assets/images/icons/arrows/date_picker_dd_arrows_@2x.png', 8px, 18px);
   }
 }
 
@@ -133,18 +133,18 @@
 
 .pika-prev,
 .is-rtl .pika-next {
-  background-image: url(../images/icons/arrows/int_arrow_left_42px.png);
+  background-image: url(../../../../assets/images/icons/arrows/int_arrow_left_42px.png);
   left: 0;
 
-  @include image-2x('../images/icons/arrows/int_arrow_left_42px_@2x.png', 42px, 42px);
+  @include image-2x('../../../../assets/images/icons/arrows/int_arrow_left_42px_@2x.png', 42px, 42px);
 }
 
 .pika-next,
 .is-rtl .pika-prev {
-  background-image: url(../images/icons/arrows/int_arrow_42px.png);
+  background-image: url(../../../../assets/images/icons/arrows/int_arrow_42px.png);
   right: 0;
 
-  @include image-2x('../images/icons/arrows/int_arrow_42px_@2x.png', 42px, 42px);
+  @include image-2x('../../../../assets/images/icons/arrows/int_arrow_42px_@2x.png', 42px, 42px);
 }
 
 .is-disabled .pika-button {
