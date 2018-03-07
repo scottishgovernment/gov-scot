@@ -25,13 +25,13 @@ article {
     display: inline;
     padding-right: 20px;
 
-    @include image-2x('../images/icons/arrows/ext_arrow_text_15px.png', 15px, 15px);
+    @include image-2x('../../../../assets/images/icons/arrows/ext_arrow_text_15px.png', 15px, 15px);
 
     &:hover,
     &:active {
-      background-image: url(../images/icons/arrows/ext_arrow_text_15px_hover.png);
+      background-image: url(../../../../assets/images/icons/arrows/ext_arrow_text_15px_hover.png);
 
-      @include image-2x('../images/icons/arrows/ext_arrow_text_15px_hover.png', 15px, 15px);
+      @include image-2x('../../../../assets/images/icons/arrows/ext_arrow_text_15px_hover.png', 15px, 15px);
     }
 
     &.button {
@@ -69,9 +69,9 @@ article {
 
       &:hover,
       &:active {
-        background-image: url(../images/icons/arrows/ext_arrow_text_17px_hover.png);
+        background-image: url(../../../../assets/images/icons/arrows/ext_arrow_text_17px_hover.png);
 
-        @include image-2x('../images/icons/arrows/ext_arrow_text_17px_hover.png', 17px, 17px);
+        @include image-2x('../../../../assets/images/icons/arrows/ext_arrow_text_17px_hover.png', 17px, 17px);
       }
     }
   }

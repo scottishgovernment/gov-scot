@@ -129,7 +129,7 @@ $carousel-z-stage-image: 40;
  * 2. Position button off center for large and xlarge displays.
  */
 .carousel-item__play-button {
-  background-image: url(../images/icons/youtube-play.png);
+  background-image: url(../../../../assets/images/icons/youtube-play.png);
   background-size: contain;
   background-repeat: no-repeat;
   bottom: 0;
@@ -306,8 +306,8 @@ $carousel-text-element-padding-mobile: 15px;
     }
 
       &__link--previous {
-        background: url("../images/icons/arrows/int_arrow_left_blue_42px.png") no-repeat;
-        @include image-2x("../images/icons/arrows/int_arrow_left_blue_42px_@2x.png", 42px, 42px);
+        background: url("../../../../assets/images/icons/arrows/int_arrow_left_blue_42px.png") no-repeat;
+        @include image-2x("../../../../assets/images/icons/arrows/int_arrow_left_blue_42px_@2x.png", 42px, 42px);
         height: 42px;
         width: 42px;
         padding: 0;
@@ -315,8 +315,8 @@ $carousel-text-element-padding-mobile: 15px;
       }
 
       &__link--next {
-        background: url("../images/icons/arrows/int_arrow_right_blue_42px.png") no-repeat;
-        @include image-2x("../images/icons/arrows/int_arrow_right_blue_42px_@2x.png", 42px, 42px);
+        background: url("../../../../assets/images/icons/arrows/int_arrow_right_blue_42px.png") no-repeat;
+        @include image-2x("../../../../assets/images/icons/arrows/int_arrow_right_blue_42px_@2x.png", 42px, 42px);
         height: 42px;
         width: 42px;
         padding: 0;
@@ -396,15 +396,15 @@ $carousel-text-element-padding-mobile: 15px;
     }
 
       &__link--previous {
-        background: url("../images/icons/arrows/int_arrow_left_blue_63px.png") no-repeat;
-        @include image-2x("../images/icons/arrows/int_arrow_left_blue_63px_@2x.png", 63px, 63px);
+        background: url("../../../../assets/images/icons/arrows/int_arrow_left_blue_63px.png") no-repeat;
+        @include image-2x("../../../../assets/images/icons/arrows/int_arrow_left_blue_63px_@2x.png", 63px, 63px);
         height: 63px;
         width: 63px;
       }
 
       &__link--next {
-        background: url("../images/icons/arrows/int_arrow_right_blue_63px.png") no-repeat;
-        @include image-2x("../images/icons/arrows/int_arrow_right_blue_63px_@2x.png", 63px, 63px);
+        background: url("../../../../assets/images/icons/arrows/int_arrow_right_blue_63px.png") no-repeat;
+        @include image-2x("../../../../assets/images/icons/arrows/int_arrow_right_blue_63px_@2x.png", 63px, 63px);
         height: 63px;
         width: 63px;
       }
@@ -619,8 +619,8 @@ $carousel-desc-height-xlarge: 244px;
       }
 
       &__stage-text-toggle {
-        background: url("../images/icons/close_quote_42.png") center / 42px 42px no-repeat;
-        @include image-2x("../images/icons/close_quote_42_@2x.png", 42px, 42px);
+        background: url("../../../../assets/images/icons/close_quote_42.png") center / 42px 42px no-repeat;
+        @include image-2x("../../../../assets/images/icons/close_quote_42_@2x.png", 42px, 42px);
         width: 42px;
         height: 42px;
         position: absolute;
@@ -642,8 +642,8 @@ $carousel-desc-height-xlarge: 244px;
 
         &--closed {
           background-color: transparentize($color__blue--dark, 0.10);
-          background-image: url("../images/icons/expand_quote_42.png");
-          @include image-2x("../images/icons/expand_quote_42_@2x.png", 42px, 42px);
+          background-image: url("../../../../assets/images/icons/expand_quote_42.png");
+          @include image-2x("../../../../assets/images/icons/expand_quote_42_@2x.png", 42px, 42px);
         }
 
         &[disabled] {
