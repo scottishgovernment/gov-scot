@@ -1,5 +1,5 @@
 <#include "../include/imports.ftl">
-<!--
+
 <#if document??>
     <article id="page-content">
     <@hst.cmseditlink hippobean=document/>
@@ -17,6 +17,22 @@
                         <span class="content-data__value"><strong><@fmt.formatDate value=document.publishedDate.time type="both" pattern="dd MMM yyyy HH:mm"/></strong></span>
                     </div>
 
+                    <#if document.topics?first??>
+                        <div>
+                            <dl class="content-data__list">
+
+                                <dt class="content-data__label">Part of:</dt>
+
+                                <dd class="content-data__value">
+                                    <#list document.topics as topic>
+                                        <@hst.link var="link" hippobean=topic/>
+                                        <a href="${link}">${topic.title}</a><#sep>, </sep>
+                                    </#list>
+                                </dd>
+                            </dl>
+                        </div>
+                    </#if>
+
                 </section>
 
                 <div class="body-content">
@@ -33,14 +49,12 @@
                         </div>
                     </#if>
 
-                    <#if document.pressReleaseNotesToEditor??>
+                    <#if document.background.content != ''>
                         <h2>Background</h2>
-                        ${document.pressReleaseNotesToEditor?html}
+                        ${document.background.content}
                     </#if>
 
 
-
-<#--
                     <aside class="visible-xsmall visible-medium">
                         <div class="sidebar-block no-bullets">
                             <h3 class="emphasis sidebar-block__heading">Contacts</h3>
@@ -49,38 +63,52 @@
                             </p>
                         </div>
 
-                        {{#if contentItem.pressReleaseMedia}}
+                        <#if document.heroImage?? || document.attachments??>
                             <div class="sidebar-block no-bullets">
                                 <h3 class="emphasis sidebar-block__heading">Media</h3>
-                                {{#markdown}}{{contentItem.pressReleaseMedia}}{{/markdown}}
+                                <ul>
+                                    <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
+                                    <#list document.attachments as attachment>
+                                        <li><a href="${attachment.url}">Image ${attachment?index + 2}: ${attachment.title}</a></li>
+                                    </#list>
+                                </ul>
                             </div>
-                        {{/if}}
+                        </#if>
+
                     </aside>
 
                 </div>
--->
+
             </div>
-<#--
+
             <div class="grid__item medium--three-twelfths push--medium--one-twelfth push--xlarge--two-twelfths">
                 <aside class="hidden-xsmall hidden-medium">
-                    {{#if contentItem.pressReleaseContacts}}
-                        <div class="sidebar-block no-bullets">
-                            <h3 class="emphasis sidebar-block__heading no-top-margin">Contacts</h3>
-                            <p>
-                                <a href="/about/contact-information/media-enquiries/">Media enquiries</a>
-                            </p>
-                        </div>
-                    {{/if}}
+                    <div class="sidebar-block no-bullets">
+                        <h3 class="emphasis sidebar-block__heading no-top-margin">Contacts</h3>
+                        <p>
+                            <a href="/about/contact-information/media-enquiries/">Media enquiries</a>
+                        </p>
+                    </div>
 
-                    {{#if contentItem.pressReleaseMedia}}
+                    <#if document.heroImage.url != '' || document.attachments??>
                         <div class="sidebar-block no-bullets">
                             <h3 class="emphasis sidebar-block__heading no-top-margin">Media</h3>
-                            {{#markdown}}{{contentItem.pressReleaseMedia}}{{/markdown}}
+                            <ul>
+                                <#if document.heroImage.url != ''>
+                                    <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
+                                    <#assign firstAttachmentOffset=2>
+                                <#else>
+                                    <#assign firstAttachmentOffset=1>
+                                </#if>
+                                <#list document.attachments as attachment>
+                                    <li><a href="${attachment.url}">Image ${attachment?index + firstAttachmentOffset}: ${attachment.title}</a></li>
+                                </#list>
+                            </ul>
                         </div>
-                    {{/if}}
+                    </#if>
                 </aside>
             </div>
--->
+
 
         </div>
 
