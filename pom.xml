@@ -31,6 +31,11 @@
     <junit.version>4.12</junit.version>
     <easymock.version>3.4</easymock.version>
 
+    <version.node>v6.12.3</version.node>
+    <version.npm>3.10.8</version.npm>
+    <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
+
+
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
 
     <hippo.cms.locales>nl,de,fr,es,zh</hippo.cms.locales>

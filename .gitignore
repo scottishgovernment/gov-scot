@@ -2,6 +2,7 @@ target/
 overlays/
 repository-data/webfiles/src/main/resources/site/assets/
 node_modules/
+site/src/main/webapp/assets/mygov/
 .DS_Store
 .idea
 *.iml
