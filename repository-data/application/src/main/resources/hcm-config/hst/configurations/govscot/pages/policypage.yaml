@@ -1,0 +1,15 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/policypage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/twocolumns
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:template: policy-content
+        /menu:
+          jcr:primaryType: hst:component
+          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsMenuComponent
+          hst:parameternames: [menu]
+          hst:parametervalues: [main]
+          hst:template: policy-menu

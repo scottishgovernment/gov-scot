@@ -29,3 +29,9 @@ definitions:
       /news-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/news.ftl
+      /policy-menu:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/policy-menu.ftl
+      /policy-content:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/policy-content.ftl

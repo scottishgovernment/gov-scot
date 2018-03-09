@@ -12,6 +12,3 @@ definitions:
       /footer:
         jcr:primaryType: hst:component
         hst:template: base-footer
-        /container:
-          jcr:primaryType: hst:containercomponentreference
-          hst:referencecomponent: base/footer

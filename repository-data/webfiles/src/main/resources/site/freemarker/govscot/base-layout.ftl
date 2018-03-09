@@ -61,7 +61,7 @@
                                 <!--
                                 <li id="{{uuid}}" class="breadcrumbs__item" itemprop="url">
                                     <a class="breadcrumbs__link" href="{{url}}"  data-gtm="bread-1">
-                                        <span class="breadcrumbs__title" itemprop="title">${document.title}</span>
+                                        <span class="breadcrumbs__title" itemprop="title"></span>
                                 </a>
                                 -->
                                 </li>
