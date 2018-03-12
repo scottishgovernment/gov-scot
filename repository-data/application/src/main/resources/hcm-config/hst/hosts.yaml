@@ -188,3 +188,143 @@ definitions:
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:showcontextpath: false
                 hst:nochannelinfo: true
+    /hst:hst/hst:hosts/per:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: 26ba4e41-450b-437a-9f67-3f4ae11ba8cd
+      hst:cmslocation: https://per.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: 494b24ff-2d4d-4dd1-8470-f6f1763fda11
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: b73ae2e4-cbb8-4a14-83cc-297e84518e74
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: 8d4a88c6-36b8-4969-81e7-ad36f7a6102b
+            /per:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 02080cc7-2e86-4008-8808-30e381230596
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 9b110c4e-c09f-4d1f-92b2-5be6c8e4f819
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: c8d719de-8020-45ff-b27f-2f2cb892a70f
+            /per:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: eadc2322-367a-4273-9631-ddf55f21dd1b
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 92f1f94a-3384-4c55-a766-722af3c509b8
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:nochannelinfo: true
+                hst:showcontextpath: false
+    /hst:hst/hst:hosts/tst:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: 3f5dc778-6b6a-4ed1-9c0b-4b9f7ab7f964
+      hst:cmslocation: https://tst.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: 9aaf20e3-5666-44f8-b2a5-26280c9353b2
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: 59fa0e36-a756-411a-926b-230a41e44fd9
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: cda51e05-205d-4ae5-ac9b-003c3d80d555
+            /tst:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: cc7ed8be-1c30-4e03-bd50-04473b383dbd
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 977245c0-5dfb-4cee-ae32-abc4a7f3d920
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: c77a552f-89d8-4e84-a3a6-70b223286996
+            /tst:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: cf7cc1ad-4ce3-4484-bcab-5ff8714004b9
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 76c29002-bea6-4240-8b05-a2543fdd02d3
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:nochannelinfo: true
+                hst:showcontextpath: false
+    /hst:hst/hst:hosts/blu:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: ab0b7377-a504-407e-a336-1afac7c98d79
+      hst:cmslocation: https://per.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: 95f23f27-dfb8-43d1-9920-124966a2ec5b
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: de71b861-a86c-4931-b2f3-3d363f337052
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: be96c4b1-e091-4448-9d39-9ec592d232df
+            /blu:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: add45076-5641-44cf-a413-f50ea7ef831d
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: e500374f-8885-4dd9-9fb6-76f3e800edd1
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: c1ae5108-0716-46cc-adf1-d117a0a1dea3
+            /blu:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: a08cd3f7-6fe6-4c7d-bce4-6e8d5cb22ef4
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: cb5848d0-3b6f-4b6c-b95a-74e18b7e4c78
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:nochannelinfo: true
+                hst:showcontextpath: false
+    /hst:hst/hst:hosts/grn:
+      jcr:primaryType: hst:virtualhostgroup
+      jcr:uuid: 08ca5f8f-d02b-4e77-a704-cd45ee764568
+      hst:cmslocation: https://grn.publishing.gov.scot
+      /scot:
+        jcr:primaryType: hst:virtualhost
+        jcr:uuid: 89846ed2-6876-41b7-b604-8aa4e4e7377e
+        hst:scheme: https
+        /gov:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: efed4791-54c6-4820-9fae-028c57300643
+          /publishing:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: b4687389-1ac7-446e-a08e-fda1bbead26a
+            /grn:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 83131007-41d8-4e55-9e20-1336743fbc34
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: ef1d8fa1-215c-473b-bb91-8cbdd96d009d
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+          /beta:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: 0de8d3e4-d829-4b8c-b58f-867d47169125
+            /grn:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 604cc04c-3c0a-4596-af6a-db2d3389d440
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 785bfc9a-08d7-4861-9d37-3d7c913413b2
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:nochannelinfo: true
+                hst:showcontextpath: false
