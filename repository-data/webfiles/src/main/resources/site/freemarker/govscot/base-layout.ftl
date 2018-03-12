@@ -20,6 +20,8 @@
 
     <link rel="apple-touch-icon" href="<@hst.webfile path="/images/apple-touch-icon.png"/>" />
 
+    <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
+
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
     <@hst.headContributions xhtml=true/>
 
@@ -83,7 +85,8 @@
 
     <@hst.include ref="footer"/>
 
-    <script src="<@hst.webfile path="/assets/scripts/default.js"/>" type="text/javascript"></script>
+    <script src="<@hst.webfile path="/assets/scripts/global.js"/>" type="text/javascript"></script>
+    <script src="<@hst.webfile path="/assets/scripts/policy.js"/>" type="text/javascript"></script>
 
   <@hst.headContributions categoryIncludes="htmlBodyEnd" xhtml=true/>
 
