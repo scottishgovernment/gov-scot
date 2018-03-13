@@ -65,7 +65,7 @@
 
         <#if menu??>
             <#if menu.siteMenuItems??>
-                <nav class="main-nav">
+                <nav class="main-nav hidden-xsmall">
                     <div class="main-nav__wrap  scrollable  scrollable--mobile-only">
                         <ul class="main-nav__list  scrollable__content" id="main-navigation">
                             <#list menu.siteMenuItems as item>
