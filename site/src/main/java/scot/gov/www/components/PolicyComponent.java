@@ -2,7 +2,6 @@ package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
-import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import scot.gov.www.beans.Policy;
@@ -17,7 +16,7 @@ public class PolicyComponent extends BaseHstComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request,
-                               final HstResponse response) throws HstComponentException {
+                               final HstResponse response) {
         HippoBean document = request.getRequestContext().getContentBean();
         Policy policy = document.getParentBean().getBean("index", Policy.class);
         List<PolicyInDetail> details = document.getParentBean().getChildBeans(PolicyInDetail.class);
