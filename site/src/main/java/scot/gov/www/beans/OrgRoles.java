@@ -2,12 +2,11 @@ package scot.gov.www.beans;
 
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import scot.gov.www.beans.ContactInformation;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 
-@HippoEssentialsGenerated(internalName = "govscot:Person")
-@Node(jcrType = "govscot:Person")
-public class Person extends AttributableContent {
+@HippoEssentialsGenerated(internalName = "govscot:OrgRoles")
+@Node(jcrType = "govscot:OrgRoles")
+public class OrgRoles extends AttributableContent {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
         return getProperty("govscot:title");
@@ -31,11 +30,6 @@ public class Person extends AttributableContent {
     @HippoEssentialsGenerated(internalName = "hippostd:tags")
     public String[] getTags() {
         return getProperty("hippostd:tags");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:ContactInformation")
-    public ContactInformation getContactInformation() {
-        return getBean("govscot:ContactInformation", ContactInformation.class);
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:content")

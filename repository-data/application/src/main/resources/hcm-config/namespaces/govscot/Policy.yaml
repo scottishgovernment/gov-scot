@@ -11,10 +11,10 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 43b8438f-a058-41ae-a293-b7a5fc161734
+          jcr:uuid: 2a397b63-79d3-4f81-8f57-38e3b05dce52
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
-            'hippotranslation:translated']
+            'hippotranslation:translated', 'hippostd:taggable']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /background:
             jcr:primaryType: hipposysedit:field
@@ -51,64 +51,9 @@ definitions:
           /policyTag:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:policyTag
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /relatedItems:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
             hipposysedit:multiple: true
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:relatedItems
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-        /hipposysedit:nodetype[2]:
-          jcr:primaryType: hipposysedit:nodetype
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: e0f41872-f378-40b9-95f6-5b614bf1999c
-          hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
-            'hippotranslation:translated']
-          /background:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:background
-            hipposysedit:primary: false
-            hipposysedit:type: Html
-          /billsAndLegislation:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:billsAndLegislation
-            hipposysedit:primary: false
-            hipposysedit:type: Html
-          /contact:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:contact
-            hipposysedit:primary: false
-            hipposysedit:type: Html
-          /actions:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:actions
-            hipposysedit:primary: false
-            hipposysedit:type: Html
-          /policyTag:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:policyTag
+            hipposysedit:path: govscot:policyTags
             hipposysedit:primary: false
             hipposysedit:type: String
           /relatedItems:
@@ -134,51 +79,14 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 0047b55c-a734-4fce-b80b-f0db9f3495f5
+          jcr:uuid: 588fd1de-e628-4aa5-a9fa-b874a130f346
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:contact: ''
           govscot:background: ''
           govscot:billsAndLegislation: ''
           govscot:actions: ''
-          govscot:policyTag: ''
-          /govscot:responsibilities:
-            jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
-          /govscot:responsibleDirectorate:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:responsibleRole:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:relatedItems:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-        /hipposysedit:prototype[2]:
-          jcr:primaryType: nt:unstructured
-          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
-            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
-          jcr:uuid: e6f9f0d6-838c-4102-8d96-62b202a0d572
-          govscot:actions: ''
-          govscot:background: ''
-          govscot:billsAndLegislation: ''
-          govscot:contact: ''
-          govscot:metaDescription: ''
-          govscot:policyTag: ''
-          govscot:seoTitle: ''
-          govscot:summary: ''
-          govscot:title: ''
-          hippostd:holder: holder
-          hippostd:state: draft
-          hippostdpubwf:createdBy: ''
-          hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
-          hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
-          hippostdpubwf:lastModifiedBy: ''
-          hippotranslation:id: document-type-locale-id
-          hippotranslation:locale: document-type-locale
+          govscot:policyTags: ['']
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
@@ -293,11 +201,12 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             type: hippostd:taggable
             wicket.id: ${cluster.id}.field
-          /policyTag:
+          /policyTags:
             jcr:primaryType: frontend:plugin
-            caption: Policy Tag
+            caption: Policy Tag(s)
             field: policyTag
-            hint: This tag is used to associate News items with this policy.
+            hint: This tag is used to associate News items with this policy.   This
+              can have multiple values.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

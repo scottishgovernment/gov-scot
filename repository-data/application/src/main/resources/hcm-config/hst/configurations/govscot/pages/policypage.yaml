@@ -5,11 +5,11 @@ definitions:
       hst:referencecomponent: hst:abstractpages/twocolumns
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:componentclassname: scot.gov.www.components.PolicyComponent
         hst:template: policy-content
         /menu:
           jcr:primaryType: hst:component
-          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsMenuComponent
           hst:parameternames: [menu]
           hst:parametervalues: [main]
           hst:template: policy-menu
+          hst:componentclassname: scot.gov.www.components.PolicyComponent

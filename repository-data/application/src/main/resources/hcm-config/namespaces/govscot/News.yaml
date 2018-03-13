@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 5b0c75d3-9a60-4587-a189-076ad9aae0fc
+          jcr:uuid: 16f45201-1c0f-45dd-ac09-7f1811c3476a
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -65,6 +65,14 @@ definitions:
             hipposysedit:path: govscot:updatedDate
             hipposysedit:primary: false
             hipposysedit:type: Date
+          /policyTag:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:policyTags
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -80,18 +88,19 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 8cfc539a-50fe-416a-9825-7ebf96008544
+          jcr:uuid: 1201697d-6f90-4983-b6e0-fd696c61ad15
           hippostdpubwf:lastModificationDate: 2018-01-26T13:27:12.677Z
           hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
           govscot:updatedDate: 0001-01-01T12:00:00Z
           govscot:publishedDate: 0001-01-01T12:00:00Z
           govscot:externalId: ''
+          govscot:policyTags: ['']
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
           /govscot:background:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
           /govscot:heroImage:
             jcr:primaryType: govscot:ExternalLink
             govscot:string: ''
@@ -242,6 +251,15 @@ definitions:
             field: updatedDate
             hint: The last time the document was updated in the news importer. Used
               to identify when a document needs to be updated
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /policyTags:
+            jcr:primaryType: frontend:plugin
+            caption: Policy Tag(s)
+            field: policyTag
+            hint: Tags used to link news items to Policy Latest pages.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

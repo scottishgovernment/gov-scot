@@ -70,4 +70,29 @@ public class News extends SimpleContent {
     public List<HippoBean> getTopics() {
         return getLinkedBeans("govscot:topics", HippoBean.class);
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:policyTags")
+    public String[] getPolicyTags() {
+        return getProperty("govscot:policyTags");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:orgRole")
+    public List<HippoBean> getOrgRole() {
+        return getLinkedBeans("govscot:orgRole", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:secondaryOrgRole")
+    public List<HippoBean> getSecondaryOrgRole() {
+        return getLinkedBeans("govscot:secondaryOrgRole", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:content")
+    public HippoHtml getContent() {
+        return getHippoHtml("govscot:content");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:notes")
+    public HippoHtml getNotes() {
+        return getHippoHtml("govscot:notes");
+    }
 }

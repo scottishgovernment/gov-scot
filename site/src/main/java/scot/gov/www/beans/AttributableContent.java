@@ -34,4 +34,14 @@ public class AttributableContent extends SimpleContent {
         return getLinkedBeans("govscot:secondaryResponsibleRole",
                 HippoBean.class);
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:orgRole")
+    public List<HippoBean> getOrgRole() {
+        return getLinkedBeans("govscot:orgRole", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:secondaryOrgRole")
+    public List<HippoBean> getSecondaryOrgRole() {
+        return getLinkedBeans("govscot:secondaryOrgRole", HippoBean.class);
+    }
 }

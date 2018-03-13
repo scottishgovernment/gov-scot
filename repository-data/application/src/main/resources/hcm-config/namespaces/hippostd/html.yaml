@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:namespaces/hippostd/html/hipposysedit:prototypes/hipposysedit:prototype:
+      hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
