@@ -5,3 +5,6 @@ definitions:
       new-untranslated-folder: new untranslated folder
       new-content-folder: new content folder
       new-content-document: new content document
+      new-policy: New Policy
+      new-policy-folder: New Policy Folder
+      new-policy-detail: New Policy Detail
