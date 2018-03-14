@@ -67,19 +67,19 @@
             <#if menu.siteMenuItems??>
                 <nav class="main-nav hidden-xsmall">
                     <div class="main-nav__wrap  scrollable  scrollable--mobile-only">
-                        <ul class="main-nav__list  scrollable__content" id="main-navigation">
-                            <#list menu.siteMenuItems as item>
+                        <ul class="main-nav__list  scrollable__content" id="main-navigation"><!--
+                                <#list menu.siteMenuItems as item>
                                 <#if item.selected || item.expanded>
-                                <li class="main-nav__item">
+                             --><li class="main-nav__item">
                                     <a class="main-nav__link  main-nav__link--selected" href="<@hst.link link=item.hstLink/>" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
-                                </li>
+                                </li><!--
                                 <#else>
-                                <li class="main-nav__item">
+                             --><li class="main-nav__item">
                                     <a class="main-nav__link" href="<@hst.link link=item.hstLink/>" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
-                                </li>
+                                </li><!--
                                 </#if>
                             </#list>
-                        </ul>
+                     --></ul>
                     </div>
                 </nav>
             </#if>
