@@ -28,7 +28,7 @@
 </head>
 <body class="fontawesome site-header__container" >
 
-    <div id="main-wrapper"class="status-wrapper">
+    <div id="main-wrapper">
 
         <@hst.include ref="menu"/>
 
