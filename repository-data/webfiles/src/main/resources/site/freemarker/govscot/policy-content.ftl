@@ -3,76 +3,80 @@
 <#if document??>
     <article id="page-content">
     <@hst.cmseditlink hippobean=document/>
-        <header class="article-header">
-            <p class="article-header__label">Policy</p>
-            <h1 class="article-header__title">${policy.title?html}</h1>
+        <div class="grid"><!--
+         --><div class="grid__item medium--eight-twelfths">
+                <header class="article-header">
+                    <p class="article-header__label">Policy</p>
+                    <h1 class="article-header__title">${policy.title?html}</h1>
         
-            <section class="content-data">
-            <#-- These sections to be pulled out into content-data component and passed in the 'policy' variable -->
-                <div class="content-data__expandable">
-                    <button class="expand  expand--mobile-only  content-data__toggle" data-target-selector="#expandable-content-data" title="Show details">
-                        <span class="hit-target">
-                            <span class="expand__icon"></span>
-                        </span>
-                    </button>
-                    <dl class="content-data__list" id="expandable-content-data">
-                        <#if policy.responsibleRole??>
-                            <dt class="content-data__label">From:</dt>
+                    <section class="content-data">
+                    <#-- These sections to be pulled out into content-data component and passed in the 'policy' variable -->
+                        <div class="content-data__expandable">
+                            <button class="expand  expand--mobile-only  content-data__toggle" data-target-selector="#expandable-content-data" title="Show details">
+                                <span class="hit-target">
+                                    <span class="expand__icon"></span>
+                                </span>
+                            </button>
+                            <dl class="content-data__list" id="expandable-content-data">
+                                <#if policy.responsibleRole??>
+                                    <dt class="content-data__label">From:</dt>
 
-                            <dd class="content-data__value">
-                                    <@hst.link var="link" hippobean=policy.responsibleRole/>
-                                    <a href="${link}">${policy.responsibleRole.title}</a><!--
-                             --><#if policy.secondaryResponsibleRole?first??><!--
-                                 -->, <!--
-                                 --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
-                                 &#43;${policy.secondaryResponsibleRole?size}&nbsp;more&nbsp;&hellip;</a>
+                                    <dd class="content-data__value">
+                                            <@hst.link var="link" hippobean=policy.responsibleRole/>
+                                            <a href="${link}">${policy.responsibleRole.title}</a><!--
+                                     --><#if policy.secondaryResponsibleRole?first??><!--
+                                         -->, <!--
+                                         --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
+                                         &#43;${policy.secondaryResponsibleRole?size}&nbsp;more&nbsp;&hellip;</a>
 
-                                    <#list policy.secondaryResponsibleRole as secondaryRole>
-                                        <span id="secondary-responsible-roles" class="content-data__additional">
-                                            <@hst.link var="link" hippobean=secondaryRole/>
-                                            <a href="${link}">${secondaryRole.title}</a><#sep>, </#sep>
-                                        </span>
-                                    </#list>
+                                            <#list policy.secondaryResponsibleRole as secondaryRole>
+                                                <span id="secondary-responsible-roles" class="content-data__additional">
+                                                    <@hst.link var="link" hippobean=secondaryRole/>
+                                                    <a href="${link}">${secondaryRole.title}</a><#sep>, </#sep>
+                                                </span>
+                                            </#list>
+                                        </#if>
+                                    </dd>
                                 </#if>
-                            </dd>
-                        </#if>
-                        <#if policy.responsibleDirectorate??>
-                            <dt class="content-data__label">Directorate:</dt>
+                                <#if policy.responsibleDirectorate??>
+                                    <dt class="content-data__label">Directorate:</dt>
 
-                            <dd class="content-data__value">
-                                    <@hst.link var="link" hippobean=policy.responsibleDirectorate/>
-                                    <a href="${link}">${policy.responsibleDirectorate.title}</a><!--
-                             --><#if policy.secondaryResponsibleDirectorate?first??><!--
-                                 -->, <!--
-                                 --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
-                                 &#43;${policy.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
+                                    <dd class="content-data__value">
+                                            <@hst.link var="link" hippobean=policy.responsibleDirectorate/>
+                                            <a href="${link}">${policy.responsibleDirectorate.title}</a><!--
+                                     --><#if policy.secondaryResponsibleDirectorate?first??><!--
+                                         -->, <!--
+                                         --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
+                                         &#43;${policy.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
 
-                                    <#list policy.secondaryResponsibleDirectorate as secondaryDirectorate>
-                                        <span id="secondary-responsible-directorates" class="content-data__additional">
-                                            <@hst.link var="link" hippobean=secondaryDirectorate/>
-                                            <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
-                                        </span>
-                                    </#list>
+                                            <#list policy.secondaryResponsibleDirectorate as secondaryDirectorate>
+                                                <span id="secondary-responsible-directorates" class="content-data__additional">
+                                                    <@hst.link var="link" hippobean=secondaryDirectorate/>
+                                                    <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
+                                                </span>
+                                            </#list>
+                                        </#if>
+                                    </dd>
                                 </#if>
-                            </dd>
-                        </#if>
-                        <#if policy.topics?first??>
-                            <dt class="content-data__label">Part of:</dt>
+                                <#if policy.topics?first??>
+                                    <dt class="content-data__label">Part of:</dt>
 
-                            <dd class="content-data__value">
-                                <#list policy.topics as topic>
-                                    <@hst.link var="link" hippobean=topic/>
-                                    <a href="${link}">${topic.title}</a><#sep>, </sep>
-                                </#list>
-                            </dd>
-                        </#if>
-                    </dl>
-                </div>
-            </section>
-        </header>
+                                    <dd class="content-data__value">
+                                        <#list policy.topics?sort_by("title") as topic>
+                                            <@hst.link var="link" hippobean=topic/>
+                                            <a href="${link}">${topic.title}</a><#sep>, </sep>
+                                        </#list>
+                                    </dd>
+                                </#if>
+                            </dl>
+                        </div>
+                    </section>
+                </header>
+            </div><!--
+     --></div>
 
-        <div class="grid">
-            <div class="grid__item medium--four-twelfths large--three-twelfths">
+        <div class="grid"><!--
+         --><div class="grid__item medium--four-twelfths large--three-twelfths">
                 <@hst.include ref="menu"/>
 
                 <div class="page-group__policy-action-count visible-xsmall">
@@ -83,9 +87,9 @@
                         &nbsp;${policyDetails?seq_index_of(document) + 1} of ${policyDetails?size}
                     </#if>
                 </div>
-            </div>
+            </div><!--
 
-            <div class="grid__item medium--nine-twelfths large--seven-twelfths">
+         --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
                 <div class="body-content">
                     <div class="page-group__content body-content inner-shadow-top inner-shadow-top--no-desktop">
                         <#if document != policy>
@@ -139,8 +143,8 @@
                      --></div>
                     </nav>
 
-                </div>
-            </div>
+                </div><!--
+         --></div>
     </article>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
