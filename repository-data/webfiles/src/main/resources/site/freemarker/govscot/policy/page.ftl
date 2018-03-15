@@ -21,7 +21,8 @@
 
          --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
                 <@hst.include ref="content"/>
-            </div>
+            </div><!--
+     --></div>
     </article>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->

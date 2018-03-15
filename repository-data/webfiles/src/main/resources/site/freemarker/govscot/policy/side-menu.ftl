@@ -6,12 +6,12 @@
     <!-- nav links -->
     <ul class="page-group__list">
         <li class="page-group__item page-group__item--level-0">
-            <#if document == policy>
+            <#if document == index>
                 <span class="page-group__link page-group__link--level-0 page-group__link--selected page-group__link--level-0--selected">
                     <span class="page-group__text">Overview</span>
                 </span>
             <#else>
-                <@hst.link var="link" hippobean=policy/>
+                <@hst.link var="link" hippobean=index/>
                 <a class="page-group__link page-group__link--level-0" href="${link}">
                     <span class="page-group__text">Overview</span>
                 </a>
@@ -20,9 +20,10 @@
 
         <#-- todo: Latest -->
         <li class="page-group__item page-group__item--level-0">
-          <span class="page-group__link page-group__link--level-0">
-              <span class="page-group__text">Latest</span>
-          </span>
+            <@hst.link var="link" hippobean=index/>
+            <a class="page-group__link page-group__link--level-0" href="${link + '/latest'}">
+                <span class="page-group__text">Latest</span>
+            </a>
         </li>
 
         <li class="page-group__item page-group__item--level-0">
@@ -49,10 +50,10 @@
 </nav>
 
 <div class="page-group__policy-action-count visible-xsmall">
-<#if document == policy>
-    <span class="page-group__policy-action-count__label">Overview</span>
-<#else>
-    <span class="page-group__policy-action-count__label">Policy actions</span>
-    &nbsp;${policyDetails?seq_index_of(document) + 1} of ${policyDetails?size}
-</#if>
+    <#if document == index>
+        <span class="page-group__policy-action-count__label">Overview</span>
+    <#else>
+        <span class="page-group__policy-action-count__label">Policy actions</span>
+        &nbsp;${policyDetails?seq_index_of(document) + 1} of ${policyDetails?size}
+    </#if>
 </div>
