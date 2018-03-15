@@ -37,7 +37,7 @@
 
                 <div class="body-content">
 
-                    <#if document.summary??>
+                    <#if document.summary != ''>
                         <div class="leader leader--first-para">
                             <p>${document.summary?html}</p>
                         </div>
