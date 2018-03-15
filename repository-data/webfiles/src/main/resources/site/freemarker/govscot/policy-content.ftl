@@ -89,7 +89,7 @@
                 </div>
             </div><!--
 
-         --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
+         --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
                 <div class="body-content">
                     <div class="page-group__content body-content inner-shadow-top inner-shadow-top--no-desktop">
                         <#if document != policy>
@@ -98,12 +98,12 @@
 
                         ${document.content.content}
 
-                        <#if document.actions != ''>
+                        <#if document.actions??>
                             <h3>Actions</h3>
                             ${document.actions}
                         </#if>
 
-                        <#if document.background != ''>
+                        <#if document.background??>
                             <h3>Background</h3>
                             ${document.background}
                         </#if>
@@ -113,7 +113,7 @@
                             ${document.billsAndLegislation}
                         </#if>
 
-                        <#if document.contact != ''>
+                        <#if document.contact??>
                             <h3>Contact</h3>
                             ${document.contact}
                         </#if>
@@ -142,9 +142,9 @@
                             </div><!--
                      --></div>
                     </nav>
-
-                </div><!--
-         --></div>
+                </div>
+            </div><!--
+     --></div>
     </article>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->

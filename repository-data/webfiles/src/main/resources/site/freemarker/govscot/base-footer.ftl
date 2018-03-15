@@ -4,8 +4,8 @@
 
 <footer id="site-footer" class="site-footer  ">
     <div class="wrapper">
-        <div class="grid">
-            <div class="grid__item medium--four-twelfths large--four-twelfths">
+        <div class="grid"><!--
+         --><div class="grid__item medium--four-twelfths large--four-twelfths">
                 <ul class="site-items site-footer__list">
                         <li>
                             <a class="site-items__link site-footer__link" href="/about-beta/" data-gtm="link-footer">About this site</a>
@@ -26,8 +26,8 @@
                             <a class="site-items__link site-footer__link" href="/privacy/" data-gtm="link-footer">Privacy</a>
                         </li>
                 </ul>
-            </div>
-            <div class="grid__item medium--seven-twelfths large--seven-twelfths">
+            </div><!--
+             --><div class="grid__item medium--seven-twelfths large--seven-twelfths">
                 <ul class="social-links site-footer__list">
                     <li class="social-links__item">
                         <a title="Facebook" class="social-links__link" href="https://www.facebook.com/TheScottishGovernment/timeline/" data-gtm="social">
@@ -60,7 +60,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-        </div>
+            </div><!--
+         --></div>
     </div>
 </footer>

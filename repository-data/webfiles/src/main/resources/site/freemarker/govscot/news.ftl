@@ -3,8 +3,8 @@
 <#if document??>
     <article id="page-content">
     <@hst.cmseditlink hippobean=document/>
-        <div class="grid">
-            <div class="grid__item medium--eight-twelfths xlarge--seven-twelfths">
+        <div class="grid"><!--
+         --><div class="grid__item medium--eight-twelfths xlarge--seven-twelfths">
 
                 <header class="article-header">
                     <p class="article-header__label">News</p>
@@ -77,11 +77,11 @@
 
                     </aside>
 
-                </div>
+                </div><!--
 
-            </div>
+         --></div><!--
 
-            <div class="grid__item medium--three-twelfths push--medium--one-twelfth push--xlarge--two-twelfths">
+         --><div class="grid__item medium--three-twelfths push--medium--one-twelfth push--xlarge--two-twelfths">
                 <aside class="hidden-xsmall hidden-medium">
                     <div class="sidebar-block no-bullets">
                         <h3 class="emphasis sidebar-block__heading no-top-margin">Contacts</h3>
@@ -107,10 +107,8 @@
                         </div>
                     </#if>
                 </aside>
-            </div>
-
-
-        </div>
+            </div><!--
+     --></div>
 
     </article>
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
