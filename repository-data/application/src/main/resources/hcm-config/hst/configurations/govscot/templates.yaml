@@ -29,9 +29,15 @@ definitions:
       /news-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/news.ftl
-      /policy-menu:
+      /content-data:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/policy-menu.ftl
-      /policy-content:
+        hst:renderpath: webfile:/freemarker/govscot/common/content-data.ftl
+      /policy.side-menu:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/policy-content.ftl
+        hst:renderpath: webfile:/freemarker/govscot/policy/side-menu.ftl
+      /policy.page:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/policy/page.ftl
+      /policy.content:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/policy/content.ftl

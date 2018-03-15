@@ -23,7 +23,7 @@ public class PolicyComponent extends BaseHstComponent {
         HippoBean prev = prevBean(policy, document, details);
         HippoBean next = nextBean(policy, document, details);
         request.setAttribute("document", document);
-        request.setAttribute("policy", policy);
+        request.setAttribute("index", policy);
         request.setAttribute("policyDetails", details);
         request.setAttribute("prev", prev);
         request.setAttribute("next", next);

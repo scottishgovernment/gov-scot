@@ -2,14 +2,21 @@ definitions:
   config:
     /hst:hst/hst:configurations/govscot/hst:pages/policypage:
       jcr:primaryType: hst:component
-      hst:referencecomponent: hst:abstractpages/twocolumns
+      hst:referencecomponent: hst:abstractpages/base
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.PolicyComponent
-        hst:template: policy-content
-        /menu:
+        hst:template: policy.page
+        /content-data:
           jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/content-data
+        /side-menu:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.PolicyComponent
           hst:parameternames: [menu]
           hst:parametervalues: [main]
-          hst:template: policy-menu
+          hst:template: policy.side-menu
+        /content:
+          jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.PolicyComponent
+          hst:template: policy.content

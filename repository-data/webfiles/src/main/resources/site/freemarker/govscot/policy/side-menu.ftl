@@ -1,4 +1,4 @@
-<#include "../include/imports.ftl">
+<#include "../../include/imports.ftl">
 
 <nav class="page-group">
     <!-- toggler -->
@@ -47,3 +47,12 @@
         </#list>
     </ul>
 </nav>
+
+<div class="page-group__policy-action-count visible-xsmall">
+<#if document == policy>
+    <span class="page-group__policy-action-count__label">Overview</span>
+<#else>
+    <span class="page-group__policy-action-count__label">Policy actions</span>
+    &nbsp;${policyDetails?seq_index_of(document) + 1} of ${policyDetails?size}
+</#if>
+</div>
