@@ -3,7 +3,7 @@
 <#-- @ftlvariable name="document" type="scot.gov.www.beans.ContentDocument" -->
 <#if document??>
   <article class="has-edit-button">
-    <@hst.cmseditlink hippobean=document/>
+    <@hst.manageContent hippobean=document/>
     <h3>${document.title?html}
       <#if document.publicationDate??>
         <small><@fmt.formatDate value=document.publicationDate.time type="date" dateStyle="medium"/></small>

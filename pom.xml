@@ -24,29 +24,30 @@
   </scm>
 
   <properties>
-    <essentials.version>4.0.2</essentials.version>
-    <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.1</taglibs.version>
-    <xalan.version>2.7.2</xalan.version>
-    <junit.version>4.12</junit.version>
-    <easymock.version>3.4</easymock.version>
-
+    <!-- Front end build -->
     <version.node>v6.12.3</version.node>
     <version.npm>3.10.8</version.npm>
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
+    <!-- Hippo versions -->
+    <hippo.release.version>12.2.0</hippo.release.version>
+    <hippo.maven.plugin.l10n>2.2.0</hippo.maven.plugin.l10n>
+    <freemarker.version>2.3.24-incubating</freemarker.version>
+
+    <essentials.version>4.2.0-1</essentials.version>
+    <jsp-api.version>2.2</jsp-api.version>
+    <taglibs.version>1.2.5</taglibs.version>
+    <xalan.version>2.7.2</xalan.version>
+    <junit.version>4.12</junit.version>
+    <easymock.version>3.4</easymock.version>
+
+    <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
+    <maven.plugin.cargo.version>1.6.5</maven.plugin.cargo.version>
+    <maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
 
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
-
     <hippo.cms.locales>nl,de,fr,es,zh</hippo.cms.locales>
     <buildNumber>${maven.build.timestamp}</buildNumber>
-
-    <freemarker.version>2.3.24-incubating</freemarker.version>
-    <hippo.release.version>12.0.2</hippo.release.version>
-    <hippo.maven.plugin.l10n>2.0.2</hippo.maven.plugin.l10n>
-    <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
-    <maven.plugin.cargo.version>1.6.3</maven.plugin.cargo.version>
-    <maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
 
     <cargo.debug.address>8000</cargo.debug.address>
     <cargo.debug.suspend>n</cargo.debug.suspend>
