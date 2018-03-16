@@ -18,7 +18,7 @@
     width: 185px;
     background-size: 100%;
     transition: none;
-    @include transition(all $transition-in-time);
+    transition: all $transition-in-time;
     img {
       height: 100%;
       width: 100%;
@@ -33,7 +33,7 @@
     position: absolute;
 
     &__logo {
-      @include transition(all 0);
+      transition: all 0;
       height: 33px;
       width: 195px;
 

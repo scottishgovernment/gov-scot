@@ -6,7 +6,7 @@
   <div>
     <#list pageable.items as item>
       <div class="media has-edit-button">
-        <@hst.cmseditlink hippobean=item/>
+        <@hst.manageContent hippobean=item/>
         <div class="media-body">
           <h4 class="media-heading">
             <@hst.link var="link" hippobean=item/>

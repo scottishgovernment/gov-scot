@@ -22,11 +22,11 @@
     text-decoration: none;
 
     &--link {
-      @include transition(background-color $transition-out-time);
+      transition: background-color $transition-out-time;
 
       &:hover {
         background-color: $color__grey--lighter;
-        @include transition(background-color $transition-in-time);
+        transition: background-color $transition-in-time;
       }
     }
 

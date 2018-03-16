@@ -1,6 +1,8 @@
 target/
 overlays/
-repository-data/webfiles/src/main/resources/site/assets/
+repository-data/webfiles/src/main/resources/site/assets/css/*
+!repository-data/webfiles/src/main/resources/site/assets/css/.gitkeep
+repository-data/webfiles/src/main/resources/site/assets/scripts
 repository-data/application/src/main/resources/hcm-content/content/documents/govscot/
 repository-data/application/src/main/resources/hcm-content/content/documents/administration/migrations.yaml
 node_modules/

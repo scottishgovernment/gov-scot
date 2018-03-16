@@ -3,7 +3,7 @@
 <#-- @ftlvariable name="document" type="org.example.beans.ContentDocument" -->
 <#if document??>
   <article class="has-edit-button">
-    <@hst.cmseditlink hippobean=document/>
+    <@hst.manageContent hippobean=document/>
     <h1>${document.title?html}</h1>
     <#if document.publicationDate??>
       <p>

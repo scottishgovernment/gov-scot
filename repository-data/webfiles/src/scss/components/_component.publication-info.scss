@@ -52,7 +52,7 @@
     overflow: hidden;
     padding: 0 15px;
 
-    @include background-image(linear-gradient($color__grey--lighter, $color__grey--lighter, $color__white));
+    background-image: linear-gradient(to bottom, $color__grey--lighter, $color__grey--lighter, $color__white);
 
     @extend %inner-shadow-bottom;
     @extend %inner-shadow-top;

@@ -2,7 +2,7 @@
 
 <#if document??>
     <article id="page-content">
-    <@hst.cmseditlink hippobean=document/>
+    <@hst.manageContent hippobean=document/>
         <div class="grid"><!--
          --><div class="grid__item medium--eight-twelfths xlarge--seven-twelfths">
 
