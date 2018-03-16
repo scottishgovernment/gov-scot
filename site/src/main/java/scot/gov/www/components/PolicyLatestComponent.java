@@ -32,9 +32,12 @@ public class PolicyLatestComponent extends BaseHstComponent {
                                final HstResponse response) {
 
         HippoBean document = request.getRequestContext().getContentBean();
+        LOG.info("document {}", document.getCanonicalPath());
         Policy policy = document.getParentBean().getBean("index", Policy.class);
+        LOG.info("paremt {}", document.getParentBean().getCanonicalPath());
+        LOG.info("policy {}", policy.getCanonicalPath());
         request.setAttribute("document", document);
-        request.setAttribute("policy", policy);
+        request.setAttribute("index", policy);
 
         HippoBeanIterator newsIt = getLatestNews(request, policy);
         List<HippoBean> all = new ArrayList<>();
