@@ -11,13 +11,13 @@
         display: block;
         position: relative;
         text-decoration: none;
-        @include transition(background-color $transition-out-time);
+        transition: background-color $transition-out-time;
 
         &:hover,
         &:focus {
             background-color: $color__grey--lighter;
             text-decoration: none;
-            @include transition-duration($transition-out-time);
+            transition-duration: $transition-out-time;
 
             .listed-content-item__title {
                 text-decoration: underline;
@@ -26,14 +26,14 @@
             .listed-content-item__feature-image {
                 opacity: 0.8;
 
-                @include transition-duration($transition-in-time);
+                transition-duration: $transition-in-time;
             }
         }
 
         &:active {
             background-color: $color__blue--light;
             outline: none;
-            @include transition(none);
+            transition: none;
         }
 
         &--external {
@@ -53,7 +53,7 @@
         max-width: inherit;
         width: calc(100% + 30px);
 
-        @include transition(opacity $transition-in-time);
+        transition: opacity $transition-in-time;
     }
 
     &__article {

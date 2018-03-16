@@ -67,7 +67,7 @@ body.layout-role {
     height: 130px;
     width: 130px;
 
-    background: url(../../../../assets/images/people/placeholder.png);
+    background: url(../images/people/placeholder.png);
     background-size: cover;
 
     @include media-query(small) {
@@ -110,7 +110,7 @@ body.layout-directorate {
     height: 130px;
     width: 130px;
 
-    background: url(../../../../assets/images/people/placeholder.png);
+    background: url(../images/people/placeholder.png);
     background-size: cover;
 
     @include media-query(small) {

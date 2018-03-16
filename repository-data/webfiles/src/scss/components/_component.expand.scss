@@ -35,12 +35,8 @@
     left: 10px;
     top: 4px;
 
-    @include transition(height $transition-in-time, top $transition-in-time);
-
-    -webkit-transition: 0.2s ease-in-out;
-    -moz-transition: 0.2s ease-in-out;
-    -o-transition: 0.2s ease-in-out;
-    transition: 0.2s ease-in-out;
+    transition: height $transition-in-time, top $transition-in-time;
+    transition: $transition-in-time ease-in-out;
   }
 
   &--open {

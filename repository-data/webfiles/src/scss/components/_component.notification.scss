@@ -42,15 +42,15 @@ $notification_padding: 14px;
     width: 35px;
     text-indent: 200%;
     overflow: hidden;
-    background: url('../../../../assets/images/icons/close-blue.png') no-repeat;
-    @include image-2x('../../../../assets/images/icons/close-blue_@2x.png', 35px, 35px);
-    @include transition(opacity 1s);
+    background: url('../images/icons/close-blue.png') no-repeat;
+    @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
+    transition: opacity $transition-out-time;
 
     &:hover,
     &:active {
       opacity: 0.5;
 
-      @include transition(opacity 0.2s);
+      transition: opacity $transition-in-time;
     }
   }
 
@@ -72,18 +72,18 @@ $notification_padding: 14px;
 
     a, a:link, a:visited, a:hover, a:active {
       color: white;
-      @include transition(opacity 1s);
+      transition: opacity $transition-out-time;
 
       &:hover,
       &:active {
         opacity: 0.75;
-        @include transition(opacity 0.2s);
+        transition: opacity $transition-in-time;
       }
     }
 
     .notification__close {
-      background: url('../../../../assets/images/icons/close-white.png') no-repeat;
-      @include image-2x('../../../../assets/images/icons/close-white_@2x.png', 35px, 35px);
+      background: url('../images/icons/close-white.png') no-repeat;
+      @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
     }
   }
 
@@ -123,8 +123,8 @@ $notification_padding: 14px;
       margin: 0;
       height: 42px;
       width: 42px;
-      background: url("../../../../assets/images/icons/grey_arrow_up.png") no-repeat;
-      @include image-2x('../../../../assets/images/icons/grey_arrow_up_@2x.png', 35px, 35px);
+      background: url("../images/icons/grey_arrow_up.png") no-repeat;
+      @include image-2x('../images/icons/grey_arrow_up_@2x.png', 35px, 35px);
 
       &:focus {
         outline: none;
@@ -132,8 +132,8 @@ $notification_padding: 14px;
     }
 
     .notification__close--minimised {
-      background: url("../../../../assets/images/icons/grey_arrow_down.png") no-repeat;
-      @include image-2x('../../../../assets/images/icons/grey_arrow_down_@2x.png', 35px, 35px);
+      background: url("../images/icons/grey_arrow_down.png") no-repeat;
+      @include image-2x('../images/icons/grey_arrow_down_@2x.png', 35px, 35px);
     }
   }
 
@@ -192,8 +192,8 @@ $notification_padding: 14px;
         width: $iconWidth;
         top: 9px;
         left: 0;
-        background: url(../../../../assets/images/icons/fact_check_tick_25px.png) no-repeat 0 0 transparent;
-        @include image-2x('../../../../assets/images/icons/fact_check_tick_25px_@2x.png', 25px, 25px);
+        background: url(../images/icons/fact_check_tick_25px.png) no-repeat 0 0 transparent;
+        @include image-2x('../images/icons/fact_check_tick_25px_@2x.png', 25px, 25px);
       }
     }
 
@@ -291,8 +291,8 @@ $notification_padding: 14px;
           width: $iconWidth;
           top: auto;
           left: 18px;
-          background: url(../../../../assets/images/icons/fact_check_tick_30px.png) no-repeat 0 0 transparent;
-          @include image-2x('../../../../assets/images/icons/fact_check_tick_30px_@2x.png', 30px, 30px);
+          background: url(../images/icons/fact_check_tick_30px.png) no-repeat 0 0 transparent;
+          @include image-2x('../images/icons/fact_check_tick_30px_@2x.png', 30px, 30px);
         }
       }
 

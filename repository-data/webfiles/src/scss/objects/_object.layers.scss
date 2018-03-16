@@ -11,7 +11,7 @@
 
   z-index: -1;
 
-  @include transition(opacity $transition-in-time * 2);
+  transition: opacity $transition-in-time * 2;
 
   &__overlay {
     background: rgba(255, 255, 255, 0.9);
@@ -23,7 +23,7 @@
     top: 0;
     z-index: -1;
 
-    @include transition(opacity $transition-in-time * 2);
+    transition: opacity $transition-in-time * 2;
 
     &--white {
         background: rgba(255, 255, 255, 0.9);

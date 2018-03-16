@@ -4,133 +4,20 @@
     #GOV.SCOT
 \*------------------------------------*/
 
-/**
- * CONTENTS
- *
- * SETTINGS
- * Default..............inuitcss default settings
- * Colors...............gov.scot color variables
- * Variables............gov.scot variables
- * Type
- * Responsive...........inuitcss responsive settings
- *
- * TOOLS
- * Functions............inuitcss default functions
- * Mixins...............inuitcss default mixins
- * Responsive...........inuitcss responsive tool
- * Widths...............inuitcss widths tool
- * Animation
- * Hit target
- * Mixins...............mygov-assets mixins
- * Placeholder selectors
- *
- * GENERIC
- * Normalize............inuitcss normalizer
- * Box-sizing...........inuitcss box-sizing defaults
- *
- * BASE
- * Page.................inuitcss defaults page-level styles (HTML element)
- * Buttons
- * Forms
- * Headings
- * Icons
- * Links
- * Lists
- * Large list
- * Page
- * Rules
- * Tables
- * Type
- *
- * OBJECTS
- * Layout...............inuitcss layout tool
- * Containers
- * Dividers
- * Helpers
- * Layers
- * Media
- * Narrow
- * Overflows
- * Scrollable
- * Wrappers
- *
- * PLUGINS
- * Pikaday (plugin styles)
- * Pikaday (custom styles)
- *
- * COMPONENTS
- * APS publication
- * Article
- * Article header
- * Article nav
- * Article external link
- * A-Z list
- * Breadcrumbs
- * Carousel
- * Contact information
- * Content data
- * Did you mean
- * Document info
- * Expand
- * Expandable
- * External links
- * Feedback
- * File icon
- * Full-width note
- * Informational notes
- * Item link
- * List controls
- * Main nav
- * Media-login
- * Multipage nav
- * News grid
- * Notification
- * Page nav
- * Page group
- * Pagination
- * Person
- * Person govscot
- * Person grid
- * Publication info
- * Pull quote
- * Search box
- * Search result
- * Sidebar block
- * Site brand
- * Site footer
- * Site header
- * Stat box
- * Sticky back to top
- * Sticky document info
- * Supporting files
- * Title with prefix
- * Topic
- * Utility link
- * Welcome
- * Homepage about
- * Homepage block
- * Homepage news
- * Homepage publication
- *
- * TRUMPS
- * Display toggle
- * Font awesome
- * Margins
- * Pikaday
- */
 
-/* SASS LIBRARIES
-========================================================================== */
-/*
- * Global SASS libraries/helpers from Compass's built in mixins to aid
- * compatibility and progressive enhancement methods.
- */
-@import "compass";
-@import "compass/typography";
-@import "compass/utilities";
-@import "compass/css3";
 
-// inuitcss layout module is not ready. Use CSS Wizardry grids instead
+
+ $base-line-height: 7px;
+ $base-font-size: 16px;
+
+
+
+
+ /**
+  * GRID/LAYOUT
+  */
+
+ // CSS Wizardry grids settings
 $gutter: 30px;
 $pull: true;
 $push: true;
@@ -168,13 +55,10 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
 /**
  * SETTINGS
  */
-$inuit-base-font-size: 16px;
-$inuit-base-line-height: 7px;
-@import "../../node_modules/inuit-defaults/settings.defaults";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
+$images-path: '../images/';
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
-$images-path: '../../../../assets/mygov/';
 $base-h1-size: 35px; // 2.1875em;
 $base-h2-size: 22px; // 1.375em;
 $base-h3-size: 18px; // 1.125em;
@@ -188,7 +72,6 @@ $medium-h4-size: $medium-font-size - 1;
 $medium-h5-size: 14px;
 $large-h2-size: 32px;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.type";
-@import "../../node_modules/inuit-responsive-settings/settings.responsive";
 
 
 
@@ -196,11 +79,6 @@ $large-h2-size: 32px;
 /**
  * TOOLS
  */
-@import "../../node_modules/inuit-functions/tools.functions";
-@import "../../node_modules/inuit-mixins/tools.mixins";
-$inuit-use-fractions: false;
-@import "../../node_modules/inuit-tools-widths/tools.widths";
-@import "../../node_modules/inuit-responsive-tools/tools.responsive";
 @import "tools/tools.animation";
 @import "tools/tools.hit-target";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/tools/tools.mixins";
@@ -212,10 +90,8 @@ $inuit-use-fractions: false;
 /**
  * GENERIC
  */
-@import "../../node_modules/inuit-normalize/generic.normalize";
-// inuit generic reset?
-@import "../../node_modules/inuit-box-sizing/generic.box-sizing";
-// inuit generic shared?
+@import "../../node_modules/@scottish-government/mygov-assets/scss/generic/generic.normalize";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/generic/generic.box-sizing";
 
 
 
@@ -233,7 +109,6 @@ $inuit-use-fractions: false;
 /**
  * BASE
  */
-@import "../../node_modules/inuit-page/base.page";
 $button__padding: 7px 20px;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.buttons";
 @import "base/base.govscot-buttons";
@@ -263,7 +138,6 @@ $table__border-color--header: $color__grey--light;
 /**
  * OBJECTS
  */
-@import "../../node_modules/inuit-layout/objects.layout";
 @import "objects/object.column-list";
 @import "objects/object.containers";
 @import "objects/object.dividers";

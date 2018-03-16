@@ -10,6 +10,8 @@ $search-box__transition-timing: ease;
 
 
 .search-box {
+
+border: 10px solid red !important;
   margin-top: 0;
   margin-bottom: 21px;
 
@@ -30,7 +32,7 @@ $search-box__transition-timing: ease;
     width: auto;
     z-index: 101;
 
-    @include transition(margin-top $search-box__transition-duration $search-box__transition-timing);
+    transition: margin-top $search-box__transition-duration $search-box__transition-timing;
   }
 
   &--large {
@@ -43,7 +45,7 @@ $search-box__transition-timing: ease;
 
     &__input {
       &[type=text] {
-        @include transition(width $transition-in-time);
+        transition: width $transition-in-time;
         margin-right: $search-box__size;
         padding-right: 0;
         width: calc(100% - #{$search-box__size});

@@ -12,7 +12,7 @@ $filter-close-button-size: 49px;
     right: 0;
     top: 100%;
     z-index: 1002;
-    @include transition(top 0.4s);
+    transition: top 0.4s;
 
     &--open {
         display: block;
@@ -26,8 +26,8 @@ $filter-close-button-size: 49px;
         padding: 0;
         width: $filter-close-button-size;
 
-        background: url('../../../../assets/images/icons/close-grey.png') no-repeat $color__grey--lighter center;
-        @include image-2x( '../../../../assets/images/icons/close-grey_@2x.png', 27px, 27px);
+        background: url('../images/icons/close-grey.png') no-repeat $color__grey--lighter center;
+        @include image-2x( '../images/icons/close-grey_@2x.png', 27px, 27px);
     }
 
     &__title {
@@ -94,8 +94,8 @@ $filter-close-button-size: 49px;
             padding-right: 49px;
 
             &:focus + .filter-search__button {
-                background: url('../../../../assets/images/icons/search-blue.png') no-repeat transparent center;
-                @include image-2x( '../../../../assets/images/icons/search-blue_@2x.png', 35px, 35px);
+                background: url('../images/icons/search-blue.png') no-repeat transparent center;
+                @include image-2x( '../images/icons/search-blue_@2x.png', 35px, 35px);
             }
         }
     }
@@ -131,8 +131,8 @@ $filter-close-button-size: 49px;
         top: 0;
         width: 56px;
 
-        background: url('../../../../assets/images/icons/search-grey.png') no-repeat transparent center;
-        @include image-2x( '../../../../assets/images/icons/search-grey_@2x.png', 35px, 35px);
+        background: url('../images/icons/search-grey.png') no-repeat transparent center;
+        @include image-2x( '../images/icons/search-grey_@2x.png', 35px, 35px);
 
         &--home {
             height: 49px;
@@ -142,8 +142,8 @@ $filter-close-button-size: 49px;
 
     &__input:focus + .filter-search__button {
 
-        background: url('../../../../assets/images/icons/search-blue.png') no-repeat transparent center;
-        @include image-2x( '../../../../assets/images/icons/search-blue_@2x.png', 35px, 35px);
+        background: url('../images/icons/search-blue.png') no-repeat transparent center;
+        @include image-2x( '../images/icons/search-blue_@2x.png', 35px, 35px);
     }
 }
 
@@ -185,7 +185,7 @@ $filter-close-button-size: 49px;
     }
 
     &__trigger {
-        background-image: url("../../../../assets/images/icons/date_picker.png");
+        background-image: url("../images/icons/date_picker.png");
         background-position: center;
         background-repeat: no-repeat;
         bottom: 0;
@@ -196,7 +196,7 @@ $filter-close-button-size: 49px;
         right: 0;
         text-indent: -999em;
         width: 50px;
-        @include image-2x( '../../../../assets/images/icons/date_picker_@2x.png', 48px, 48px);
+        @include image-2x( '../images/icons/date_picker_@2x.png', 48px, 48px);
     }
 
     &__calendar {
@@ -204,7 +204,7 @@ $filter-close-button-size: 49px;
         margin-top: 8px;
         max-height: 0;
         overflow: hidden;
-        @include transition(max-height $transition-in-time);
+        transition: max-height $transition-in-time;
 
         &--open {
             max-height: 260px;
@@ -258,7 +258,7 @@ $filter-close-button-size: 49px;
         text-align: center;
         top: 0;
         z-index: 1;
-        @include transition(opacity $transition-in-time, top $transition-in-time);
+        transition: opacity $transition-in-time, top $transition-in-time;
 
         &--show {
             display: block;
@@ -413,8 +413,8 @@ $filter-close-button-size: 49px;
             height: 42px;
             width: 42px;
 
-            background-image: url("../../../../assets/images/icons/date_picker_42px.png");
-            @include image-2x( '../../../../assets/images/icons/date_picker_42px_@2x.png', 42px, 42px);
+            background-image: url("../images/icons/date_picker_42px.png");
+            @include image-2x( '../images/icons/date_picker_42px_@2x.png', 42px, 42px);
         }
 
         &__close {
@@ -436,7 +436,7 @@ $filter-close-button-size: 49px;
             top: -999em;
             width: 380px;
             z-index: -1;
-            @include animation(hideCalendar 0.2s);
+            @include animation(hideCalendar $transition-in-time);
 
             &--open {
                 left: 100%;
@@ -444,7 +444,7 @@ $filter-close-button-size: 49px;
                 opacity: 1;
                 filter: alpha(opacity=100);
                 top: -21px;
-                @include animation(showCalendar 0.2s);
+                @include animation(showCalendar $transition-in-time);
             }
         }
     }

@@ -39,7 +39,7 @@ $main-nav__transition-timing: ease;
       z-index: 1001;
       padding: 24px 15px;
 
-      @include transition(left $main-nav__transition-duration $main-nav__transition-timing);
+      transition: left $main-nav__transition-duration $main-nav__transition-timing;
     }
 
     &__item {
@@ -58,7 +58,7 @@ $main-nav__transition-timing: ease;
       font-size: 17px;
       text-decoration: none;
 
-      @include transition(background-color $transition-in-time);
+      transition: background-color $transition-in-time;
 
       &:hover,
       &:focus {
@@ -129,7 +129,7 @@ $main-nav__transition-timing: ease;
       text-decoration: none;
       vertical-align: middle;
 
-      @include transition(background-color $transition-in-time);
+      transition: background-color $transition-in-time;
     }
 
     &__link:hover {

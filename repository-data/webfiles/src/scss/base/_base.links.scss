@@ -7,13 +7,13 @@ a {
   text-decoration: underline;
   word-break: break-word;
 
-  @include transition(color $transition-out-time);
+  transition: color $transition-out-time;
 
   &:hover {
     color: $color__link--hover;
     text-decoration: underline;
 
-    @include transition-duration($transition-in-time);
+    transition-duration: $transition-in-time;
   }
 
   &:active {

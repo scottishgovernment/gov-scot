@@ -21,7 +21,7 @@
       top: 6px;
       width: 17px;
 
-      @include transition(background-color 1s);
+      transition: background-color $transition-out-time;
 
       &:before {
         border: 1px solid $color__white;
@@ -44,7 +44,7 @@
     span {
       background-color: $color__link--hover;
 
-      @include transition(background-color 0.2s);
+      transition: background-color $transition-in-time;
     }
   }
 

@@ -19,7 +19,7 @@
   text-decoration: none;
   width: 30%;
 
-  @include transition(color $transition-in-time, border-color $transition-in-time);
+  transition: color $transition-in-time, border-color $transition-in-time;
 
   &__value {
     display: block;
@@ -53,7 +53,7 @@ a.stat-box {
     color: $color__link--primary;
     text-decoration: none;
 
-    @include transition-duration($transition-in-time);
+    transition-duration: $transition-in-time;
   }
 
   &:active {

@@ -91,13 +91,13 @@ $social-icon__size-multiplier: 2/3;
     text-align: center;
     width: 1em / $social-icon__size-multiplier;
 
-    @include transition(opacity $transition-out-time);
+    transition: opacity $transition-out-time;
 
     &:hover {
       color: $color__blue--base;
       opacity: 1;
 
-      @include transition-duration($transition-in-time);
+      transition-duration: $transition-in-time;
     }
 
     &:active {
