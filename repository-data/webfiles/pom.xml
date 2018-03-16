@@ -98,7 +98,7 @@
             </goals>
             <phase>generate-resources</phase>
             <configuration>
-              <execArgs>${project.build.directory}/rubygems/bin/sass src/scss/main.scss src/main/resources/site/assets/css/main.css --style compact</execArgs>
+              <execArgs>${project.build.directory}/rubygems/bin/sass src/scss/main.scss src/main/resources/site/assets/css/main.css --style compact --cache-location target/.sass-cache</execArgs>
             </configuration>
           </execution>
         </executions>
