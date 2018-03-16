@@ -62,14 +62,14 @@
   }
 
   &__icon--search {
-    background-image: url('../images/icons/search-blue.png');
+    background-image: url('../../../../assets/images/icons/search-blue.png');
     background-position: 0 -4px;
-    @include image-2x('../images/icons/search-blue_@2x.png', 35px, 35px);
+    @include image-2x('../../../../assets/images/icons/search-blue_@2x.png', 35px, 35px);
   }
 
   &__icon--nav {
-    background-image: url('../images/icons/menu.png');
-    @include image-2x('../images/icons/menu_@2x.png', 35px, 40px);
+    background-image: url('../../../../assets/images/icons/menu.png');
+    @include image-2x('../../../../assets/images/icons/menu_@2x.png', 35px, 40px);
     width: 35px;
     height: 40px;
   }
@@ -79,14 +79,14 @@
   &__button--selected {
 
     .site-header__icon--search {
-      background-image: url('../images/icons/close-blue.png');
+      background-image: url('../../../../assets/images/icons/close-blue.png');
       background-position: 0 0;
-      @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
+      @include image-2x('../../../../assets/images/icons/close-blue_@2x.png', 35px, 35px);
     }
 
     .site-header__icon--nav {
-      background-image: url('../images/icons/close-white.png');
-      @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+      background-image: url('../../../../assets/images/icons/close-white.png');
+      @include image-2x('../../../../assets/images/icons/close-white_@2x.png', 35px, 35px);
     }
   }
 
@@ -94,14 +94,14 @@
       .site-header__button--selected {
 
           .site-header__icon--search {
-            background-image: url('../images/icons/close-blue.png');
+            background-image: url('../../../../assets/images/icons/close-blue.png');
             background-position: 0 0;
-            @include image-2x('../images/icons/close-blue_@2x.png', 35px, 35px);
+            @include image-2x('../../../../assets/images/icons/close-blue_@2x.png', 35px, 35px);
           }
 
           .site-header__icon--nav {
-            background-image: url('../images/icons/close-white.png');
-            @include image-2x('../images/icons/close-white_@2x.png', 35px, 35px);
+            background-image: url('../../../../assets/images/icons/close-white.png');
+            @include image-2x('../../../../assets/images/icons/close-white_@2x.png', 35px, 35px);
           }
       }
   }
@@ -149,14 +149,14 @@
   // ICONS - REDUCED
 
   .site-header__icon--search {
-    background-image: url('../images/icons/search-blue-reduced.png');
+    background-image: url('../../../../assets/images/icons/search-blue-reduced.png');
     background-position: 0 -2px;
-    @include image-2x('../images/icons/search-blue-reduced_@2x.png', 35px, 35px);
+    @include image-2x('../../../../assets/images/icons/search-blue-reduced_@2x.png', 35px, 35px);
   }
 
   .site-header__icon--nav {
-    background-image: url('../images/icons/menu-reduced.png');
-    @include image-2x('../images/icons/menu-reduced_@2x.png', 35px, 35px);
+    background-image: url('../../../../assets/images/icons/menu-reduced.png');
+    @include image-2x('../../../../assets/images/icons/menu-reduced_@2x.png', 35px, 35px);
   }
 
 }

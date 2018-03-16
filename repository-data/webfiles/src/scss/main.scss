@@ -57,7 +57,7 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
  */
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
-$images-path: '../images/';
+$images-path: '../../../../assets/mygov/';
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
 $base-h1-size: 35px; // 2.1875em;
 $base-h2-size: 22px; // 1.375em;
