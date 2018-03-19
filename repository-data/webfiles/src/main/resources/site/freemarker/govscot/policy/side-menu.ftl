@@ -6,13 +6,13 @@
     <!-- nav links -->
     <ul class="page-group__list">
         <li class="page-group__item page-group__item--level-0">
-            <#if document == index>
+            <@hst.link var="link" hippobean=index/>
+            <#if document == index && !link?ends_with("/latest")>
                 <span class="page-group__link page-group__link--level-0 page-group__link--selected page-group__link--level-0--selected">
                     <span class="page-group__text">Overview</span>
                 </span>
             <#else>
-                <@hst.link var="link" hippobean=index/>
-                <a class="page-group__link page-group__link--level-0" href="${link}">
+                <a class="page-group__link page-group__link--level-0" href="${link?keep_before('/latest')}">
                     <span class="page-group__text">Overview</span>
                 </a>
             </#if>
@@ -21,9 +21,15 @@
         <#-- todo: Latest -->
         <li class="page-group__item page-group__item--level-0">
             <@hst.link var="link" hippobean=index/>
-            <a class="page-group__link page-group__link--level-0" href="${link + '/latest'}">
-                <span class="page-group__text">Latest</span>
-            </a>
+            <#if link?ends_with("/latest")>
+                <span class="page-group__link page-group__link--level-0 page-group__link--selected page-group__link--level-0--selected">
+                    <span class="page-group__text">Latest</span>
+                </span>
+            <#else>
+                <a class="page-group__link page-group__link--level-0" href="${link + '/latest'}">
+                    <span class="page-group__text">Latest</span>
+                </a>
+            </#if>
         </li>
 
         <li class="page-group__item page-group__item--level-0">
@@ -50,7 +56,10 @@
 </nav>
 
 <div class="page-group__policy-action-count visible-xsmall">
-    <#if document == index>
+    <@hst.link var="link" hippobean=index/>
+    <#if document == index && link?ends_with("/latest")>
+        <span class="page-group__policy-action-count__label">Latest</span>
+    <#elseif document == index>
         <span class="page-group__policy-action-count__label">Overview</span>
     <#else>
         <span class="page-group__policy-action-count__label">Policy actions</span>
