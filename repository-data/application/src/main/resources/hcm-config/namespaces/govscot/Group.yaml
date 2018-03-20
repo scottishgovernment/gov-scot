@@ -11,11 +11,19 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: c22a7a9b-37de-460f-850a-0d8a885501e0
+          jcr:uuid: b1343e37-d1a3-450b-8277-18df159915d8
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /relatedPolicy:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:relatedPolicy
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -31,12 +39,12 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 3c9ee691-53e3-4972-bf8f-5d116b2d0b5d
+          jcr:uuid: 3616194b-b652-4ab5-b1a1-dff38df55980
           hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
           hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
           /govscot:responsibleDirectorate:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -45,7 +53,10 @@ definitions:
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
+          /govscot:relatedPolicy:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -169,21 +180,11 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /orgRole:
+          /relatedPolicy:
             jcr:primaryType: frontend:plugin
-            caption: Org Role
-            field: orgRole
-            hint: ''
+            caption: mirror
+            field: relatedPolicy
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /secondaryOrgRole:
-            jcr:primaryType: frontend:plugin
-            caption: Secondary Org Role
-            field: secondaryOrgRole
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

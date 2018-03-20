@@ -2,11 +2,19 @@ package scot.gov.www.beans;
 
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
+
+import java.util.List;
+import org.hippoecm.hst.content.beans.standard.HippoResourceBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 
 @HippoEssentialsGenerated(internalName = "govscot:Publication")
 @Node(jcrType = "govscot:Publication")
 public class Publication extends AttributableContent {
+    @HippoEssentialsGenerated(internalName = "govscot:isbn")
+    public String getIsbn() {
+        return getProperty("govscot:isbn");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
         return getProperty("govscot:title");
@@ -32,6 +40,11 @@ public class Publication extends AttributableContent {
         return getProperty("hippostd:tags");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:resource")
+    public HippoResourceBean getResource() {
+        return getBean("govscot:resource", HippoResourceBean.class);
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:content")
     public HippoHtml getContent() {
         return getHippoHtml("govscot:content");
@@ -40,5 +53,10 @@ public class Publication extends AttributableContent {
     @HippoEssentialsGenerated(internalName = "govscot:notes")
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:images")
+    public List<HippoResourceBean> getImages() {
+        return getChildBeansByName("govscot:images", HippoResourceBean.class);
     }
 }

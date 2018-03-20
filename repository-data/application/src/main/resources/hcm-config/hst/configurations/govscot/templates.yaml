@@ -71,3 +71,9 @@ definitions:
       /featured-role:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/featured-role.ftl
+      /publication-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/publication.ftl
+      /publicationpage-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/publication-page.ftl

@@ -108,3 +108,17 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/personpage
           hst:relativecontentpath: ${parent}/${1}
+      /publications:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/contentlist
+        hst:relativecontentpath: publications
+        /_any_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/publicationpage
+          hst:relativecontentpath: ${parent}/${1}
+          /pages:
+            jcr:primaryType: hst:sitemapitem
+            /_default_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/publicationsubpage
+              hst:relativecontentpath: ${parent)/${1}

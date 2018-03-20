@@ -19,6 +19,9 @@
 [govscot:Directorate] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:DocumentInformation] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:ExternalLink] > hippo:compound, hippostd:relaxed
   orderable
 
@@ -41,6 +44,12 @@
   orderable
 
 [govscot:PolicyInDetail] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Publication] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:PublicationPage] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
