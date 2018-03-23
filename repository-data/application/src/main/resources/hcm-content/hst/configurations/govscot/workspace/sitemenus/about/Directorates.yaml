@@ -1,0 +1,4 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/Directorates:
+  .meta:order-before: Contact
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: about/how-government-is-run/directorates/

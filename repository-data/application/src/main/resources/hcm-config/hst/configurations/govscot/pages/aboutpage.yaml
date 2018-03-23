@@ -1,0 +1,19 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/aboutpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:template: about.page
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        /content:
+          jcr:primaryType: hst:component
+          hst:template: about.content
+          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        /side-menu:
+          jcr:primaryType: hst:component
+          hst:template: about.side-menu
+          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsMenuComponent
+          hst:parameternames: [selectedMenu, level, menu]
+          hst:parametervalues: ['on', '1', about]

@@ -1,0 +1,3 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/Contact:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: about/contact-information/

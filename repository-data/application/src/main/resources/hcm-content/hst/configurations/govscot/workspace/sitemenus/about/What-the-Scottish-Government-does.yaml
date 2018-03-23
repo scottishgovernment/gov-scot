@@ -1,0 +1,6 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/What the Scottish Government does:
+  .meta:order-before: First minister
+  jcr:primaryType: hst:sitemenuitem
+  hst:parameternames: [level]
+  hst:parametervalues: ['1']
+  hst:referencesitemapitem: about/what-the-government-does/

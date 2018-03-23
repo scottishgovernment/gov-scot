@@ -1,0 +1,3 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/About the Scottish Government:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: about/

@@ -1,0 +1,3 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/Cabinet and ministers:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: about/who-runs-government/cabinet-and-ministers/
