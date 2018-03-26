@@ -1,4 +1,0 @@
-/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/Who runs government:
-  .meta:order-before: First minister
-  jcr:primaryType: hst:sitemenuitem
-  hst:referencesitemapitem: about/who-runs-government/

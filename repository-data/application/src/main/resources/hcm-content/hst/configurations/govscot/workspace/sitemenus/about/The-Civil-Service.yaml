@@ -1,4 +1,0 @@
-/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/The Civil Service:
-  .meta:order-before: Directorates
-  jcr:primaryType: hst:sitemenuitem
-  hst:referencesitemapitem: about/how-government-is-run/civil-service/

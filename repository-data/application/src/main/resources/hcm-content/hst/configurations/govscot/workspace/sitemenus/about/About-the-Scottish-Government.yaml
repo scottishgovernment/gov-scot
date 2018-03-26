@@ -1,3 +1,27 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/About the Scottish Government:
   jcr:primaryType: hst:sitemenuitem
   hst:referencesitemapitem: about/
+  /What the Scottish Government does:
+    jcr:primaryType: hst:sitemenuitem
+    hst:referencesitemapitem: about/what-the-government-does/
+  /Who runs government:
+    jcr:primaryType: hst:sitemenuitem
+    hst:referencesitemapitem: about/who-runs-government/
+    /First minister:
+      jcr:primaryType: hst:sitemenuitem
+      hst:referencesitemapitem: about/who-runs-government/first-minister/
+    /Cabinet and ministers:
+      jcr:primaryType: hst:sitemenuitem
+      hst:referencesitemapitem: about/who-runs-government/cabinet-and-ministers/
+  /Government structure:
+    jcr:primaryType: hst:sitemenuitem
+    hst:referencesitemapitem: about/how-government-is-run/
+    /The Civil Service:
+      jcr:primaryType: hst:sitemenuitem
+      hst:referencesitemapitem: about/how-government-is-run/civil-service/
+    /Directorates:
+      jcr:primaryType: hst:sitemenuitem
+      hst:referencesitemapitem: about/how-government-is-run/directorates/
+  /Contact:
+    jcr:primaryType: hst:sitemenuitem
+    hst:referencesitemapitem: about/contact-information/

@@ -1,4 +1,0 @@
-/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/First minister:
-  .meta:order-before: Cabinet and ministers
-  jcr:primaryType: hst:sitemenuitem
-  hst:referencesitemapitem: about/who-runs-government/first-minister/
