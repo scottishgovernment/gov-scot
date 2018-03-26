@@ -32,7 +32,7 @@ definitions:
       /about:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/aboutpage
-        hst:relativecontentpath: about/index
+        hst:relativecontentpath: about/
         /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
