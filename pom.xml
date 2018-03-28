@@ -45,6 +45,8 @@
     <maven.plugin.cargo.version>1.6.5</maven.plugin.cargo.version>
     <maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
 
+    <sonar.exclusions>org/onehippo/forge/breadcrumb/**/*</sonar.exclusions>
+
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
     <hippo.cms.locales>nl,de,fr,es,zh</hippo.cms.locales>
     <buildNumber>${maven.build.timestamp}</buildNumber>
