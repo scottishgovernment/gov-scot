@@ -11,66 +11,11 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 634073d4-6550-435d-bb26-9f74970c4f5f
-          hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
-            'hippotranslation:translated', 'hippostd:taggable']
-          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /policyTag:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:policyTags
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /relatedItems:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:relatedItems
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /html:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:actions
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /html_:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:background
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /html__:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:billsAndLegislation
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /html___:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:contact
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-        /hipposysedit:nodetype[2]:
-          jcr:primaryType: hipposysedit:nodetype
-          jcr:mixinTypes: ['mix:referenceable']
           jcr:uuid: 8c42dcc5-cdb7-437d-8360-d78908353197
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /policyTag:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -134,55 +79,10 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 30c7494f-bb0b-4f30-91b0-8183fb8fc645
+          jcr:uuid: 5d944b0a-61d4-4db0-80a4-7582b2a93afc
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:policyTags: ['']
-          /govscot:responsibilities:
-            jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
-          /govscot:responsibleDirectorate:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:responsibleRole:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:relatedItems:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:actions:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:background:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:billsAndLegislation:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:contact:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-        /hipposysedit:prototype[2]:
-          jcr:primaryType: nt:unstructured
-          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
-            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
-          jcr:uuid: 94d409f8-2e12-46f1-ad05-85ac6e62294a
-          govscot:metaDescription: ''
-          govscot:policyTags: ['']
-          govscot:seoTitle: ''
-          govscot:summary: ''
-          govscot:title: ''
-          hippostd:holder: holder
-          hippostd:state: draft
-          hippostdpubwf:createdBy: ''
-          hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
-          hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
-          hippostdpubwf:lastModifiedBy: ''
-          hippotranslation:id: document-type-locale-id
-          hippotranslation:locale: document-type-locale
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
