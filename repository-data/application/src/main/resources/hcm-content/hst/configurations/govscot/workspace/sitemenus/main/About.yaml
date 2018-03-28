@@ -1,5 +1,4 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/main/About:
   jcr:primaryType: hst:sitemenuitem
-  jcr:uuid: 8ee95d5d-268c-48a6-b80a-7e6b3b36e67f
   hst:referencesitemapitem: about
   hst:repobased: false

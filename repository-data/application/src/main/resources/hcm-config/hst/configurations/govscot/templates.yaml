@@ -44,3 +44,6 @@ definitions:
       /policy.latest:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/policy/latest.ftl
+      /breadcrumb:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/common/breadcrumb.ftl

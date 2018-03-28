@@ -1,32 +1,29 @@
 <#include "../include/imports.ftl">
 
+<#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->
+<#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 <@hst.setBundle basename="essentials.global"/>
 
 <footer id="site-footer" class="site-footer  ">
     <div class="wrapper">
         <div class="grid"><!--
-         --><div class="grid__item medium--four-twelfths large--four-twelfths">
-                <ul class="site-items site-footer__list">
-                        <li>
-                            <a class="site-items__link site-footer__link" href="/about-beta/" data-gtm="link-footer">About this site</a>
-                        </li>
-                        <li>
-                            <a class="site-items__link site-footer__link" href="/accessibility/" data-gtm="link-footer">Accessibility</a>
-                        </li>
-                        <li>
-                            <a class="site-items__link site-footer__link" href="/archive/" data-gtm="link-footer">Archive</a>
-                        </li>
-                        <li>
-                            <a class="site-items__link site-footer__link" href="/cookies/" data-gtm="link-footer">Cookies</a>
-                        </li>
-                        <li>
-                            <a class="site-items__link site-footer__link" href="http://www.work-for-scotland.org" data-gtm="link-footer">Jobs</a>
-                        </li>
-                        <li>
-                            <a class="site-items__link site-footer__link" href="/privacy/" data-gtm="link-footer">Privacy</a>
-                        </li>
-                </ul>
-            </div><!--
+            <#if pageable?? && pageable.items??>
+             --><div class="grid__item medium--four-twelfths large--four-twelfths">
+                    <ul class="site-items site-footer__list">
+                        <#list pageable.items as item>
+                            <li>
+                                <#if item.externalLink??>
+                                    <#assign href>${item.externalLink.url}</#assign>
+                                <#else>
+                                    <#assign href><@hst.link hippobean=item /></#assign>
+                                </#if>
+
+                                <a class="site-items__link site-footer__link" href="${href}" data-gtm="link-footer">${item.title}</a>
+                            </li>
+                        </#list>
+                    </ul>
+                </div><!--
+            </#if>
              --><div class="grid__item medium--seven-twelfths large--seven-twelfths">
                 <ul class="social-links site-footer__list">
                     <li class="social-links__item">
