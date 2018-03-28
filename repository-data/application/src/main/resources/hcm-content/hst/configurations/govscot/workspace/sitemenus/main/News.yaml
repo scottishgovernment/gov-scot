@@ -1,5 +1,5 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/main/News:
-  .meta:order-before: Publications
+  .meta:order-before: Consultations
   jcr:primaryType: hst:sitemenuitem
-  jcr:uuid: b800ef70-e12d-4fc1-bd46-e0b5c62c8490
+  hst:referencesitemapitem: news
   hst:repobased: false

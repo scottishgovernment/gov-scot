@@ -54,20 +54,7 @@
 
                     --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
                         <nav>
-                            <ol role="navigation" class="breadcrumbs">
-                                <li class="breadcrumbs__item" itemprop="url">
-                                    <a class="breadcrumbs__link" href="/site/" data-gtm="bread-0">
-                                        <span class="breadcrumbs__title" itemprop="title">Home</span><!--
-                                    --></a>
-                                </li>
-                                <!--
-                                <li id="{{uuid}}" class="breadcrumbs__item" itemprop="url">
-                                    <a class="breadcrumbs__link" href="{{url}}"  data-gtm="bread-1">
-                                        <span class="breadcrumbs__title" itemprop="title"></span>
-                                </a>
-                                -->
-                                </li>
-                            </ol>
+                          <@hst.include ref="breadcrumb"/>
                         </nav>
                     </div><!--
                 --></div>

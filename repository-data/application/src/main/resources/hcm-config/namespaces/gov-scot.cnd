@@ -46,6 +46,9 @@
 [govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:SiteItem] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

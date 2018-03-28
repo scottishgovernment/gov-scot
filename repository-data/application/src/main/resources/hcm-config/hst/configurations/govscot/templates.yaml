@@ -53,3 +53,6 @@ definitions:
       /about.page:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/about/page.ftl
+      /breadcrumb:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/common/breadcrumb.ftl

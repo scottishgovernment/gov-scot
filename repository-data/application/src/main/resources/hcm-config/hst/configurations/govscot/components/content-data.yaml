@@ -1,6 +1,7 @@
 definitions:
   config:
     /hst:hst/hst:configurations/govscot/hst:components/content-data:
+      .meta:order-before: breadcrumb
       jcr:primaryType: hst:component
       hst:template: content-data
       hst:componentclassname: scot.gov.www.components.PolicyComponent

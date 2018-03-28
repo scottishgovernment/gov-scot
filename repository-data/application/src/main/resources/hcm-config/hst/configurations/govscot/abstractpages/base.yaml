@@ -12,3 +12,11 @@ definitions:
       /footer:
         jcr:primaryType: hst:component
         hst:template: base-footer
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsListComponent
+        hst:parameternames: [path, documentTypes, sortField, sortOrder, includeSubtypes,
+          showPagination, pageSize]
+        hst:parametervalues: [/content/documents/govscot/siteitems, 'govscot:SiteItem',
+          'govscot:title', asc, 'off', 'off', '10']
+      /breadcrumb:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:components/breadcrumb
