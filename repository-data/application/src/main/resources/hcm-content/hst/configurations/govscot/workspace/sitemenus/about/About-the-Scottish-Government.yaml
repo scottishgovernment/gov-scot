@@ -1,5 +1,5 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/about/About the Scottish Government:
   jcr:primaryType: hst:sitemenuitem
-  hst:depth: 3
+  hst:depth: 4
   hst:referencesitemapitem: about/
   hst:repobased: true

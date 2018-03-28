@@ -15,5 +15,3 @@ definitions:
           jcr:primaryType: hst:component
           hst:template: about.side-menu
           hst:componentclassname: scot.gov.www.components.AboutMenu
-          hst:parameternames: [selectedMenu, level, menu]
-          hst:parametervalues: ['on', '1', about]
