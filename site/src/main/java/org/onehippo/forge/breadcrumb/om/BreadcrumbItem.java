@@ -4,8 +4,8 @@ import org.hippoecm.hst.core.linking.HstLink;
 
 public class BreadcrumbItem {
 
-    public String title;
-    public HstLink link;
+    private String title;
+    private HstLink link;
 
     public BreadcrumbItem(final HstLink link, final String title) {
         this.link = link;
