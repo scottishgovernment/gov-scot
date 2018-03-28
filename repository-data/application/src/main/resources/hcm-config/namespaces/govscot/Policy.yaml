@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 8c42dcc5-cdb7-437d-8360-d78908353197
+          jcr:uuid: 65df4e33-5bb6-4b56-a77d-0d80a1e85dba
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -79,7 +79,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 5d944b0a-61d4-4db0-80a4-7582b2a93afc
+          jcr:uuid: b02b070b-6f79-41ca-95b3-9e763821c4e9
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:policyTags: ['']
