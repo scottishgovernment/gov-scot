@@ -9,6 +9,12 @@ definitions:
         hst:parameternames: [selectedMenu, level, menu]
         hst:parametervalues: ['on', '1', main]
         hst:template: base-top-menu
+        /about-menu:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.AboutMenu
+          hst:template: about.side-menu
+          hst:parameternames: [mobile]
+          hst:parametervalues: ['true']
       /footer:
         jcr:primaryType: hst:component
         hst:template: base-footer

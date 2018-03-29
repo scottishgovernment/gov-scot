@@ -1,7 +1,7 @@
 <#include "../../include/imports.ftl">
 
 <#if aboutMenuItem??>
-    <aside class="page-group page-group--section-nav">
+    <aside class="page-group page-group--section-nav <#if isMobile == "true">page-group--mobile</#if>">
         <ul class="page-group__list">
             <li class="page-group__item page-group__item--level-0">
                 <#if aboutMenuItem.selected>

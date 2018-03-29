@@ -1,7 +1,7 @@
 <#include "../../include/imports.ftl">
 
 <#if document??>
-    <div id="page-content">
+    <article id="page-content">
     <@hst.manageContent hippobean=document/>
 
         <div class="grid"><!--
@@ -13,7 +13,7 @@
                 <@hst.include ref="side-menu"/>
             </div><!--
      --></div>
-    </div>
+    </article>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>

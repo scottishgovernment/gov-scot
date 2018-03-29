@@ -19,6 +19,9 @@ public class AboutMenu extends BaseHstComponent {
         final HstRequestContext requestContext = request.getRequestContext();
         HstSiteMenu menu = requestContext.getHstSiteMenus().getSiteMenu("about");
 
+        String isMobile = this.getComponentLocalParameter("mobile");
+        request.setAttribute("isMobile", isMobile);
+
         if (menu != null) {
             EditableMenu editable = menu.getEditableMenu();
             EditableMenuItem item = editable.getDeepestExpandedItem();
