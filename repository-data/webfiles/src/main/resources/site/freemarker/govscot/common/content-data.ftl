@@ -20,13 +20,15 @@
                  --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
                     &#43;${index.secondaryResponsibleRole?size}&nbsp;more&nbsp;&hellip;</a>
 
-                    <#list index.secondaryResponsibleRole as secondaryRole>
-                        <span id="secondary-responsible-roles" class="content-data__additional">
+                    <span id="secondary-responsible-roles" class="content-data__additional">
+                        <#list index.secondaryResponsibleRole as secondaryRole>
+
                             <@hst.link var="link" hippobean=secondaryRole/>
                             <a href="${link}">${secondaryRole.title}</a><#sep>, </#sep>
-                            </span>
-                    </#list>
-                </#if>
+                        </#list>
+                    </span>
+
+            </#if>
             </dd>
         </#if>
         <#if index.responsibleDirectorate??>
@@ -35,18 +37,19 @@
             <dd class="content-data__value">
                 <@hst.link var="link" hippobean=index.responsibleDirectorate/>
                 <a href="${link}">${index.responsibleDirectorate.title}</a><!--
-                 --><#if index.secondaryResponsibleDirectorate?first??><!--
+                 --><#if index.secondaryResponsibleDirectorate?has_content><!--
                  -->, <!--
                  --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
                 &#43;${index.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
 
-                <#list index.secondaryResponsibleDirectorate as secondaryDirectorate>
                     <span id="secondary-responsible-directorates" class="content-data__additional">
-                        <@hst.link var="link" hippobean=secondaryDirectorate/>
-                        <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
-                        </span>
-                </#list>
-            </#if>
+                        <#list index.secondaryResponsibleDirectorate as secondaryDirectorate>
+
+                            <@hst.link var="link" hippobean=secondaryDirectorate/>
+                            <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
+                        </#list>
+                    </span>
+                </#if>
             </dd>
         </#if>
         <#if index.topics?first??>
