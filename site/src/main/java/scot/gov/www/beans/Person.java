@@ -47,4 +47,14 @@ public class Person extends AttributableContent {
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:roleTitle")
+    public String getRoleTitle() {
+        return getProperty("govscot:roleTitle");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:postalAddress")
+    public HippoHtml getPostalAddress() {
+        return getHippoHtml("govscot:postalAddress");
+    }
 }
