@@ -31,12 +31,20 @@ definitions:
           hst:relativecontentpath: ${parent}/${1}
       /about:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/contentlist
-        hst:relativecontentpath: about
+        hst:componentconfigurationid: hst:pages/aboutpage
+        hst:relativecontentpath: about/
         /_any_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentpage
-          hst:relativecontentpath: ${parent}/${1}
+          hst:componentconfigurationid: hst:pages/aboutpage
+          hst:relativecontentpath: about/${1}
+          /_index_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/aboutpage
+            hst:relativecontentpath: ${parent}/index
+        /_index_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/aboutpage
+          hst:relativecontentpath: about/index
       /roles:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
