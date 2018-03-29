@@ -40,23 +40,23 @@ public class Policy extends AttributableContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:background")
-    public String getBackground() {
-        return getProperty("govscot:background");
+    public HippoHtml getBackground() {
+        return getHippoHtml("govscot:background");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:billsAndLegislation")
-    public String getBillsAndLegislation() {
-        return getProperty("govscot:billsAndLegislation");
+    public HippoHtml getBillsAndLegislation() {
+        return getHippoHtml("govscot:billsAndLegislation");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:contact")
-    public String getContact() {
-        return getProperty("govscot:contact");
+    public HippoHtml getContact() {
+        return getHippoHtml("govscot:contact");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:actions")
-    public String getActions() {
-        return getProperty("govscot:actions");
+    public HippoHtml getActions() {
+        return getHippoHtml("govscot:actions");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:policyTags")

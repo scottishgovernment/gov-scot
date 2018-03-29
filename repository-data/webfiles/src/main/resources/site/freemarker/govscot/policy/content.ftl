@@ -6,26 +6,26 @@
         <h2>${document.title}</h2>
     </#if>
 
-    ${document.content.content}
+    <@hst.html hippohtml=document.content/>
 
-    <#if document.actions??>
+    <#if document.actions?has_content>
         <h3>Actions</h3>
-    ${document.actions}
+        <@hst.html hippohtml=document.actions/>
     </#if>
 
-    <#if document.background??>
+    <#if document.background?has_content>
         <h3>Background</h3>
-    ${document.background}
+        <@hst.html hippohtml=document.background/>
     </#if>
 
-    <#if document.billsAndLegislation != ''>
+    <#if document.billsAndLegislation?has_content>
         <h3>Bills and legislation</h3>
-    ${document.billsAndLegislation}
+        <@hst.html hippohtml=document.billsAndLegislation/>
     </#if>
 
-    <#if document.contact??>
+    <#if document.contact?has_content>
         <h3>Contact</h3>
-    ${document.contact}
+        <@hst.html hippohtml=document.contact/>
     </#if>
     </div>
 
