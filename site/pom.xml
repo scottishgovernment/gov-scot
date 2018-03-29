@@ -17,8 +17,10 @@
   <description>www.gov.scot Site</description>
 
   <properties>
-    <sonar.exclusions>src/main/webapp/assets/scripts/vendor/**</sonar.exclusions>
-    <sonar.exclusions>src/main/java/org/onehippo/forge/breadcrumb/**/*</sonar.exclusions>
+    <sonar.exclusions>
+      src/main/webapp/assets/scripts/vendor/**/*,
+      src/main/java/org/onehippo/forge/breadcrumb/**/*
+    </sonar.exclusions>
   </properties>
 
   <dependencies>
