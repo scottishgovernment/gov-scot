@@ -65,3 +65,7 @@ definitions:
       /person:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/person.ftl
+      /siteitem:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/site-item.ftl
+

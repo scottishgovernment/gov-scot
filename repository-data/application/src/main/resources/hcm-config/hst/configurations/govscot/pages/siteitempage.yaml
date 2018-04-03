@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/siteitempage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:template: siteitem
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent

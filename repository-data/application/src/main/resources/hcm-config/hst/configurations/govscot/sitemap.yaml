@@ -96,7 +96,7 @@ definitions:
         hst:relativecontentpath: siteitems
         /_default_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentpage
+          hst:componentconfigurationid: hst:pages/siteitempage
           hst:relativecontentpath: ${parent}/${1}
       /people:
         jcr:primaryType: hst:sitemapitem
