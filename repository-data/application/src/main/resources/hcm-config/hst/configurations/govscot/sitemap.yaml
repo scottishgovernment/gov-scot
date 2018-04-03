@@ -49,6 +49,8 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           /_default_:
             jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/featuredrolepage
+            hst:relativecontentpath: about/who-runs-government/first-minister
             /_any_:
               jcr:primaryType: hst:sitemapitem
               hst:relativecontentpath: about/${1}/${2}/${3}

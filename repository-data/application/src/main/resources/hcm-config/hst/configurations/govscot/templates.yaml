@@ -68,4 +68,6 @@ definitions:
       /siteitem:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/site-item.ftl
-
+      /featuredrole:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/featured-role.ftl
