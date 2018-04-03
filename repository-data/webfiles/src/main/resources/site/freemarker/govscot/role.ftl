@@ -3,7 +3,7 @@
 <#if document??>
     <article id="page-content">
     <@hst.manageContent hippobean=document/>
-    <#assign contactInformation = document.contactInformation/>
+    <#assign contactInformation = document.incumbent.contactInformation/>
     <#assign postalAddress = document.postalAddress/>
 
         <div class="grid"><!--
