@@ -39,21 +39,15 @@
 
                     <#if document.summary != ''>
                         <div class="leader leader--first-para">
-                            <p>${document.summary?html}</p>
+                            <p>${document.summary}</p>
                         </div>
 
                         ${document.content.content}
                     <#else>
                         <div class="leader leader--first-para">
-                            ${document.content.content}
+                            <@hst.html hippohtml=document.content/>
                         </div>
                     </#if>
-
-                    <#if document.background.content != ''>
-                        <h2>Background</h2>
-                        ${document.background.content}
-                    </#if>
-
 
                     <aside class="visible-xsmall visible-medium">
                         <div class="sidebar-block no-bullets">
