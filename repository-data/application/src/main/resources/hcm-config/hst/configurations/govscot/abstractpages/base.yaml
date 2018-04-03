@@ -15,6 +15,7 @@ definitions:
           hst:template: about.side-menu
           hst:parameternames: [mobile]
           hst:parametervalues: ['true']
+          hst:suppresswastemessage: true
       /footer:
         jcr:primaryType: hst:component
         hst:template: base-footer
