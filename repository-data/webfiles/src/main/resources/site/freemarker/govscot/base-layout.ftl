@@ -23,7 +23,7 @@
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
-    <@hst.headContributions xhtml=true/>
+    <@hst.headContributions categoryExcludes="footerScripts" xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >
@@ -73,9 +73,7 @@
     <@hst.include ref="footer"/>
 
     <script src="<@hst.webfile path="/assets/scripts/global.js"/>" type="text/javascript"></script>
-    <script src="<@hst.webfile path="/assets/scripts/policy.js"/>" type="text/javascript"></script>
-
-  <@hst.headContributions categoryIncludes="htmlBodyEnd" xhtml=true/>
+    <@hst.headContributions categoryIncludes="footerScripts" xhtml=true/>
 
 </body>
 </html>

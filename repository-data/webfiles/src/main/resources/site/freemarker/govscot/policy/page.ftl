@@ -31,3 +31,7 @@
     <img src="<@hst.link path="/images/essentials/catalog-component-icons/simple-content.png" />"> Click to edit Content
   </div>
 </#if>
+
+<@hst.headContribution category="footerScripts">
+    <script src="<@hst.webfile path="/assets/scripts/policy.js"/>" type="text/javascript"></script>
+</@hst.headContribution>
