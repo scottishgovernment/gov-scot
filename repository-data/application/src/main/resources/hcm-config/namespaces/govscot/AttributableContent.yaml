@@ -31,6 +31,7 @@ definitions:
             hipposysedit:path: govscot:responsibleDirectorate
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
           /secondaryResponsibleDirectorate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -47,6 +48,7 @@ definitions:
             hipposysedit:path: govscot:responsibleRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
           /secondaryResponsibleRole:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
