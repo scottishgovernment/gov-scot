@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:components/contact-information:
+      jcr:primaryType: hst:component
+      hst:template: contact-information

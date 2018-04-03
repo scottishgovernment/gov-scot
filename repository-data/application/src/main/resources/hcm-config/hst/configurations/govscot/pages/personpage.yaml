@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/personpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:template: person
+        /contact-information:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/contact-information

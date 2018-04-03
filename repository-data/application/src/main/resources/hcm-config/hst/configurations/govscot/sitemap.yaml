@@ -45,13 +45,22 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
           hst:relativecontentpath: about/index
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          /_default_:
+            jcr:primaryType: hst:sitemapitem
+            /_any_:
+              jcr:primaryType: hst:sitemapitem
+              hst:relativecontentpath: about/${1}/${2}/${3}
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
+              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
       /roles:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
         hst:relativecontentpath: roles
         /_default_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentpage
+          hst:componentconfigurationid: hst:pages/rolepage
           hst:relativecontentpath: ${parent}/${1}
       /groups:
         jcr:primaryType: hst:sitemapitem
@@ -88,4 +97,12 @@ definitions:
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/contentpage
+          hst:relativecontentpath: ${parent}/${1}
+      /people:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/contentlist
+        hst:relativecontentpath: roles
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/personpage
           hst:relativecontentpath: ${parent}/${1}
