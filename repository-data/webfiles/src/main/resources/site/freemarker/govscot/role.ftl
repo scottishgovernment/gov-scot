@@ -2,9 +2,15 @@
 
 <#if document??>
     <article id="page-content">
-    <@hst.manageContent hippobean=document/>
-    <#assign contactInformation = document.incumbent.contactInformation/>
-    <#assign postalAddress = document.postalAddress/>
+        <@hst.manageContent hippobean=document/>
+        <#if document.incumbent??>
+            <#if document.incumbent.contactInformation??>
+                <#assign contactInformation = document.incumbent.contactInformation/>
+            </#if>
+        </#if>
+        <#if document.postalAddress??>
+            <#assign postalAddress = document.postalAddress/>
+        </#if>
 
         <div class="grid"><!--
             --><div class="grid__item medium--eight-twelfths">

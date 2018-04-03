@@ -50,7 +50,7 @@ definitions:
           /_default_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/featuredrolepage
-            hst:relativecontentpath: about/who-runs-government/first-minister
+            hst:relativecontentpath: about/${1}/${2}
             /_any_:
               jcr:primaryType: hst:sitemapitem
               hst:relativecontentpath: about/${1}/${2}/${3}

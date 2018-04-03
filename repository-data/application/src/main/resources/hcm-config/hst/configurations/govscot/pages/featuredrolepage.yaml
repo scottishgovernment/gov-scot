@@ -6,7 +6,7 @@ definitions:
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
-        hst:template: featuredrole
+        hst:template: featured-role
         /contact-information:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/contact-information
