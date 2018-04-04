@@ -33,7 +33,11 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/aboutpage
         hst:relativecontentpath: about/
-        /_any_:
+        /_index_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/aboutpage
+          hst:relativecontentpath: about/index
+        /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
           hst:relativecontentpath: about/${1}
@@ -41,21 +45,42 @@ definitions:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: ${parent}/index
-        /_index_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/aboutpage
-          hst:relativecontentpath: about/index
-        /_default_:
-          jcr:primaryType: hst:sitemapitem
-          /_default_:
+          /first-minister:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/featuredrolepage
+            hst:relativecontentpath: ${parent}/first-minister
+          /_any_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: about/${1}/${2}
-            /_any_:
+            hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/directoratepage',
+              'hst:pages/personpage']
+            hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Directorate',
+              'govscot:Person']
+          /_default_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/aboutpage
+            hst:relativecontentpath: about/${1}/${2}
+            /_index_:
               jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/aboutpage
+              hst:relativecontentpath: ${parent}/index
+              hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage']
+              hst:componentconfigurationmappingnames: ['govscot:OrgRoles']
+            /_default_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/aboutpage
               hst:relativecontentpath: about/${1}/${2}/${3}
-              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
-              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
+              /_index_:
+                jcr:primaryType: hst:sitemapitem
+                hst:componentconfigurationid: hst:pages/aboutpage
+                hst:relativecontentpath: ${parent}/index
+                hst:componentconfigurationmappingvalues: ['hst:pages/directoratepage']
+                hst:componentconfigurationmappingnames: ['govscot:Directorate']
+          /directorates:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/orgrolespage
+            hst:relativecontentpath: ${parent}/directorates
       /roles:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist

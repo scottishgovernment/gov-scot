@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/orgrolespage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:template: about.page
+        /content:
+          jcr:primaryType: hst:component
+          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+          hst:template: orgroles.content
+        /side-menu:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.AboutMenu
+          hst:template: about.side-menu
