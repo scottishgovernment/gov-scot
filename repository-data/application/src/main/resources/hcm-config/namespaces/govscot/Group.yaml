@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: b1343e37-d1a3-450b-8277-18df159915d8
+          jcr:uuid: d275057b-8ec4-41b3-b8b4-8eb603f01447
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -39,7 +39,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 3616194b-b652-4ab5-b1a1-dff38df55980
+          jcr:uuid: 581d8606-889b-43a7-bc49-f8716ee94eb1
           hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
           hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
           /govscot:responsibilities:
@@ -53,7 +53,7 @@ definitions:
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
+            hippostd:content: ''
           /govscot:relatedPolicy:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -145,7 +145,7 @@ definitions:
               last.visited.enabled: 'false'
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Seondary Responsible Directorates
+            caption: Secondary Responsible Directorates
             field: secondaryResponsibleDirectorate
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
