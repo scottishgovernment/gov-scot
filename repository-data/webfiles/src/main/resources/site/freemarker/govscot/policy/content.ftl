@@ -8,24 +8,28 @@
 
     <@hst.html hippohtml=document.content/>
 
-    <#if document.actions?has_content>
+    <@hst.html hippohtml=document.actions var="actions"/>
+    <#if actions?has_content>
         <h3>Actions</h3>
-        <@hst.html hippohtml=document.actions/>
+        ${actions}
     </#if>
 
-    <#if document.background?has_content>
+    <@hst.html hippohtml=document.background var="background"/>
+    <#if background?has_content>
         <h3>Background</h3>
-        <@hst.html hippohtml=document.background/>
+        ${background}
     </#if>
 
-    <#if document.billsAndLegislation?has_content>
+    <@hst.html hippohtml=document.billsAndLegislation var="billsAndLegislation"/>
+    <#if billsAndLegislation?has_content>
         <h3>Bills and legislation</h3>
-        <@hst.html hippohtml=document.billsAndLegislation/>
+        ${billsAndLegislation}
     </#if>
 
-    <#if document.contact?has_content>
+    <@hst.html hippohtml=document.contact var="contact"/>
+    <#if contact?has_content>
         <h3>Contact</h3>
-        <@hst.html hippohtml=document.contact/>
+        ${contact}
     </#if>
     </div>
 
