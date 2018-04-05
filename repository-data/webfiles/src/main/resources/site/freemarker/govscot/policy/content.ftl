@@ -1,6 +1,6 @@
 <#include "../../include/imports.ftl">
 
-<div class="body-content">
+<article class="body-content">
     <div class="page-group__content body-content inner-shadow-top inner-shadow-top--no-desktop">
     <#if document != index>
         <h2>${document.title}</h2>
@@ -60,4 +60,4 @@
             </div><!--
      --></div>
     </nav>
-</div>
+</article>
