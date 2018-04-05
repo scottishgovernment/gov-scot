@@ -5,20 +5,17 @@
 ====
 * link from image/title to role (or person) page
 * list responsibilities
-<del>* multiple sections (cabinet/ministers, directors-general/non-exec)</del>
-* <em>dynamic</em> section titles & intros
-* script behavior
-<del>* org name for section ID</del>
+* script behavior (expand)
 ====
 </pre>
 <style>
 #page-content a:not([href]), #page-content a[href="#"], #page-content a[href=""] {
-    background: red;
+    background: #fdd;
 }
 </style>
 
-
-<#--  <ul>
+<#--  
+<ul>
 <#list document?keys as prop>
 <li>${prop} = ${document[prop]}</li>
 </#list>
@@ -38,13 +35,13 @@
                         ${document.content.content}
                     </#if>
 
-                    <#assign orgName = 'The Scottish Cabinet'/>
-                    <#assign orgDescription = 'The Cabinet is the main decision-making body of the Scottish Government. It is made up of the First Minister, all Cabinet Secretaries, Minister for Parliamentary Business and Permanent Secretary. The Lord Advocate may also attend in his or her role as the Scottish Government’s principal legal adviser. Cabinet meetings are held weekly during Parliament in Bute House, Edinburgh, and may also be held at other times in locations throughout Scotland.'/>
+                    <#assign orgName = document.organisationName/>
+                    <#assign orgDescription = document.organisationDescription/>
                     <#assign orgRoles = document.orgRole/>
                     <#include 'about/org-roles-grid.ftl' />
 
-                    <#assign orgName = 'Ministers'/>
-                    <#assign orgDescription = 'Cabinet Secretaries are supported by Ministers. Responsibilities and biographies of Ministers, including the Lord Advocate and Solicitor General (who are also the principal legal advisers to the Scottish Government), are below.'/>
+                    <#assign orgName = document.secondaryOrganisationName/>
+                    <#assign orgDescription = document.secondaryOrganisationDescription/>
                     <#assign orgRoles = document.secondaryOrgRole/>
                     <#include 'about/org-roles-grid.ftl' />
 
