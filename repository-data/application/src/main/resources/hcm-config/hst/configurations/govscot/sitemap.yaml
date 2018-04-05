@@ -53,10 +53,8 @@ definitions:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: about/${1}/${2}
-            hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/directoratepage',
-              'hst:pages/personpage']
-            hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Directorate',
-              'govscot:Person']
+            hst:componentconfigurationmappingvalues: ['hst:pages/personpage']
+            hst:componentconfigurationmappingnames: ['govscot:Person']
           /_default_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
@@ -71,6 +69,8 @@ definitions:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
               hst:relativecontentpath: about/${1}/${2}/${3}
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
+              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
               /_index_:
                 jcr:primaryType: hst:sitemapitem
                 hst:componentconfigurationid: hst:pages/aboutpage
