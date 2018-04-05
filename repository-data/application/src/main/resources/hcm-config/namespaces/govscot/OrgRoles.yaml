@@ -11,11 +11,43 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d4b45a14-020b-4f3b-ba07-ed0c7da4640e
+          jcr:uuid: 4332d6f1-06fa-482a-b9be-ce392b219ea6
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /organisationName:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:organisationName
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /organisationDescription:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:organisationDescription
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /secondaryOrganisationName:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:secondaryOrganisationName
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /secondaryOrganisationDescription:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:secondaryOrganisationDescription
+            hipposysedit:primary: false
+            hipposysedit:type: Text
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -31,12 +63,16 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 466350a2-e5b7-498d-ace9-9f705d490ac3
+          jcr:uuid: ae40812e-fbfe-42be-8d47-8ac341073171
           hippostdpubwf:lastModificationDate: 2018-02-15T16:34:09.353Z
           hippostdpubwf:creationDate: 2018-02-15T16:34:09.353Z
+          govscot:secondaryOrganisationName: ''
+          govscot:secondaryOrganisationDescription: ''
+          govscot:organisationDescription: ''
+          govscot:organisationName: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -115,12 +151,45 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
+          /organisationName:
+            jcr:primaryType: frontend:plugin
+            caption: Organisation Name
+            field: organisationName
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /organisationDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Organisation Description
+            field: organisationDescription
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /orgRole:
             jcr:primaryType: frontend:plugin
             caption: Org Role
             field: orgRole
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /secondaryOrganisationName:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary Organisation Name
+            field: secondaryOrganisationName
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /secondaryOrganisationDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary Organisation Description
+            field: secondaryOrganisationDescription
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
