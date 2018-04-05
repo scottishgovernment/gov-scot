@@ -106,6 +106,7 @@
         ||   document.contactInformation.youtube?has_content
         ||   document.contactInformation.blog?has_content
         ||   document.contactInformation.postalAddress.content?has_content>
+            <#assign contactInformation = document.contactInformation/>
             <h2>Connect with us</h2>
             <#include 'common/contact-information.ftl' />
         </#if>
