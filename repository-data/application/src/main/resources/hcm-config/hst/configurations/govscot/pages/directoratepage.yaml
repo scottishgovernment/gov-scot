@@ -5,5 +5,5 @@ definitions:
       hst:referencecomponent: hst:abstractpages/base
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:componentclassname: scot.gov.www.components.DirectorateComponent
         hst:template: directorate

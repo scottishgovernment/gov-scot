@@ -30,10 +30,10 @@ public class DirectorateComponent extends BaseHstComponent {
         try {
             HippoBean baseBean = context.getSiteContentBaseBean();
             HstQuery policyQuery = ContentBeanUtils.createIncomingBeansQuery(
-                    document, baseBean, "govscot:*/@hippo:docbase", Policy.class, false);
+                    document, baseBean, "*/@hippo:docbase", Policy.class, false);
             policyQuery.addOrderByDescending("govscot:title");
             HstQueryResult policies = policyQuery.execute();
-            request.setAttribute("policies", policies);
+            request.setAttribute("policies", policies.getHippoBeans());
         } catch (QueryException e) {
             LOG.warn("Unable to get Policies for directorate {}", document.getPath(), e);
         }

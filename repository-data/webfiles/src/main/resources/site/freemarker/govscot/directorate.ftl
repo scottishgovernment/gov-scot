@@ -111,27 +111,35 @@
             <#include 'common/contact-information.ftl' />
         </#if>
 
+        <#if news??>
+            <h2 class="heading--underline heading--underline--heavy">News</h2>
+            <ul class="no-bullets">
+                <li>
+                    <a href="{{url}}"></a>
+                </li>
+            </ul>
+        </#if>
 
-        <h2 class="heading--underline heading--underline--heavy">News</h2>
-        <ul class="no-bullets">
-            <li>
-                <a href="{{url}}"></a>
-            </li>
-        </ul>
+        <#if publications??>
+            <h2 class="heading--underline heading--underline--heavy">Publications</h2>
+            <ul class="no-bullets">
+                <li>
+                    <a href="{{url}}"></a>
+                </li>
+            </ul>
+        </#if>
 
-        <h2 class="heading--underline heading--underline--heavy">Publications</h2>
-        <ul class="no-bullets">
-            <li>
-                <a href="{{url}}"></a>
-            </li>
-        </ul>
-
-        <h2 class="heading--underline heading--underline--heavy">Policies</h2>
-        <ul class="no-bullets">
-            <li>
-                <a href="{{url}}"></a>
-            </li>
-        </ul>
+        <#if policies?has_content>
+            <h2 class="heading--underline heading--underline--heavy">Policies</h2>
+            <#list policies as policy>
+                <ul class="no-bullets">
+                    <li>
+                        <@hst.link var="link" hippobean=policy/>
+                        <a href="${link}">${policy.title}</a>
+                    </li>
+                </ul>
+            </#list>
+        </#if>
 
     </aside>
 
