@@ -9,7 +9,7 @@ definitions:
         hst:template: about.page
         /content:
           jcr:primaryType: hst:component
-          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+          hst:componentclassname: scot.gov.www.components.OrgRolesComponent
           hst:template: orgroles.content
         /side-menu:
           jcr:primaryType: hst:component

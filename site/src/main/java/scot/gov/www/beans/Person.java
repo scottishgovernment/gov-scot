@@ -1,13 +1,27 @@
 package scot.gov.www.beans;
 
+import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import scot.gov.www.beans.ContactInformation;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 
+import java.util.List;
+
 @HippoEssentialsGenerated(internalName = "govscot:Person")
 @Node(jcrType = "govscot:Person")
 public class Person extends AttributableContent {
+
+    private List<HippoBean> roles;
+
+    public List<HippoBean> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<HippoBean> roles) {
+        this.roles = roles;
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
         return getProperty("govscot:title");

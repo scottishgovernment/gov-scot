@@ -1,61 +1,73 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-import org.hippoecm.hst.content.beans.query.HstQuery;
-import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.util.ContentBeanUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.Directorate;
+
 import scot.gov.www.beans.OrgRoles;
 import scot.gov.www.beans.Person;
-import scot.gov.www.beans.Policy;
+
 import scot.gov.www.beans.Role;
+import scot.gov.www.beans.SimpleContent;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.Set;
+
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class OrgRolesComponent  extends BaseHstComponent {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DirectorateComponent.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OrgRolesComponent.class);
 
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
-
         HstRequestContext context = request.getRequestContext();
         OrgRoles document = context.getContentBean(OrgRoles.class);
         request.setAttribute("document", document);
-
-        //
+        request.setAttribute("primaryPeople", peopleWithRoles(document.getOrgRole()));
+        request.setAttribute("secondaryPeople", peopleWithRoles(document.getSecondaryOrgRole()));
     }
 
+    private List<Person> peopleWithRoles(List<HippoBean> roles) {
 
-    class PersonWithRoles {
-        private Person person;
-        private List<Role> roles;
+        // group the roles by incumbent
+        Map<String, List<HippoBean>> orgRoleByIncumbent = roles.stream().collect(groupingBy(this::incumbentTitle));
 
-        public Person getPerson() {
-            return person;
+        // now list the incumbet and list their roles, avoiding duplicates
+        Set<String> seen = new HashSet<>();
+        List<Person> peopleWithRoles = new ArrayList<>();
+        for (HippoBean bean : roles) {
+            Person incumbent = incumbent(bean);
+            if (!seen.contains(incumbent.getTitle()))  {
+                incumbent.setRoles(orgRoleByIncumbent.get(incumbent.getTitle()));
+                peopleWithRoles.add(incumbent);
+                seen.add(incumbent.getTitle());
+            }
         }
+        return peopleWithRoles;
+    }
 
-        public void setPerson(Person person) {
-            this.person = person;
+    private Person incumbent(HippoBean bean) {
+        if (bean instanceof Person) {
+            return (Person) bean;
         }
+        Role role = (Role) bean;
+        return (Person) role.getIncumbent();
+    }
 
-        public List<Role> getRoles() {
-            return roles;
-        }
-
-        public void setRoles(List<Role> roles) {
-            this.roles = roles;
-        }
+    private String incumbentTitle(HippoBean bean) {
+        HippoBean incumbent = incumbent(bean);
+        return ((SimpleContent) incumbent).getTitle();
     }
 
 }

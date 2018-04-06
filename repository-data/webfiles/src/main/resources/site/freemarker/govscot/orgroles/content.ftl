@@ -10,6 +10,35 @@
         <@hst.html hippohtml=document.content/>
         </div>
 
+    <h2>Primary</h2>
+    <#list primaryPeople as person>
+        <p>
+        ${person.title}
+
+        <ul>
+            <#list person.roles as role>
+                <li>
+                ${role.title}
+                </li>
+            </#list>
+        </ul>
+        </p>
+    </#list>
+
+    <h2>Secondary</h2>
+    <#list secondaryPeople as person>
+        <p>
+            ${person.title}
+
+            <ul>
+            <#list person.roles as role>
+                <li>
+                    ${role.title}
+                </li>
+            </#list>
+            </ul>
+        </p>
+    </#list>
 
     </div>
 
