@@ -3,9 +3,8 @@
 <#if document??>
 <pre>TODO:
 ====
-* link from image/title to role (or person) page
 * list responsibilities
-* script behavior (expand)
+* duplicated John Swinney (two roles)
 ====
 </pre>
 <style>
@@ -30,7 +29,7 @@
 
             <div class="grid">
                 <div class="grid__item large--seven-ninths">
-                    
+
                     <#if document.content.content??>
                         ${document.content.content}
                     </#if>
@@ -55,4 +54,9 @@
             </div>
         </div><!--
     --></div>
+<#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
+<#elseif editMode>
+  <div>
+    <img src="<@hst.link path="/images/essentials/catalog-component-icons/simple-content.png" />"> Click to edit Content
+  </div>
 </#if>
