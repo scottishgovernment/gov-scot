@@ -6,9 +6,6 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import scot.gov.www.beans.OrgRoles;
 import scot.gov.www.beans.Person;
 
@@ -26,8 +23,6 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class OrgRolesComponent  extends BaseHstComponent {
 
-    private static final Logger LOG = LoggerFactory.getLogger(OrgRolesComponent.class);
-
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -41,8 +36,8 @@ public class OrgRolesComponent  extends BaseHstComponent {
     private List<Person> peopleWithRoles(List<HippoBean> roles) {
 
         // group the roles by incumbent
-        Map<String, List<HippoBean>> orgRoleByIncumbent = roles.stream().collect(groupingBy(this::incumbentTitle));
-
+        Map<String, List<HippoBean>> orgRoleByIncumbent =
+                roles.stream().collect(groupingBy(role -> incumbentTitle(role)));
         // now list the incumbet and list their roles, avoiding duplicates
         Set<String> seen = new HashSet<>();
         List<Person> peopleWithRoles = new ArrayList<>();
