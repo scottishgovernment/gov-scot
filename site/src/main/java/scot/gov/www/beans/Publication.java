@@ -2,10 +2,10 @@ package scot.gov.www.beans;
 
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-
 import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoResourceBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import java.util.Calendar;
 
 @HippoEssentialsGenerated(internalName = "govscot:Publication")
 @Node(jcrType = "govscot:Publication")
@@ -40,11 +40,6 @@ public class Publication extends AttributableContent {
         return getProperty("hippostd:tags");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:resource")
-    public HippoResourceBean getResource() {
-        return getBean("govscot:resource", HippoResourceBean.class);
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:content")
     public HippoHtml getContent() {
         return getHippoHtml("govscot:content");
@@ -58,5 +53,15 @@ public class Publication extends AttributableContent {
     @HippoEssentialsGenerated(internalName = "govscot:images")
     public List<HippoResourceBean> getImages() {
         return getChildBeansByName("govscot:images", HippoResourceBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:publicationDate")
+    public Calendar getPublicationDate() {
+        return getProperty("govscot:publicationDate");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:publicationType")
+    public String getPublicationType() {
+        return getProperty("govscot:publicationType");
     }
 }

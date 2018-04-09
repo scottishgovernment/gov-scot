@@ -111,22 +111,28 @@
             <#include 'common/contact-information.ftl' />
         </#if>
 
-        <#if news??>
+        <#if document.relatedNews?has_content>
             <h2 class="heading--underline heading--underline--heavy">News</h2>
-            <ul class="no-bullets">
-                <li>
-                    <a href="{{url}}"></a>
-                </li>
-            </ul>
+            <#list document.relatedNews as newsItem>
+                <ul class="no-bullets">
+                    <li>
+                        <@hst.link var="link" hippobean=newsItem/>
+                        <a href="${link}">${newsItem.title}</a>
+                    </li>
+                </ul>
+            </#list>
         </#if>
 
-        <#if publications??>
+        <#if document.relatedPublications?has_content>
             <h2 class="heading--underline heading--underline--heavy">Publications</h2>
-            <ul class="no-bullets">
-                <li>
-                    <a href="{{url}}"></a>
-                </li>
-            </ul>
+            <#list document.relatedPublications as publication>
+                <ul class="no-bullets">
+                    <li>
+                        <@hst.link var="link" hippobean=publication/>
+                        <a href="${link}">${publication.title}</a>
+                    </li>
+                </ul>
+            </#list>
         </#if>
 
         <#if policies?has_content>

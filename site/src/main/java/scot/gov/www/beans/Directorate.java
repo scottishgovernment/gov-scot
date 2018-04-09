@@ -19,6 +19,16 @@ public class Directorate extends SimpleContent {
         return getLinkedBeans("govscot:orgRole", HippoBean.class);
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:relatedNews")
+    public List<HippoBean> getRelatedNews() {
+        return getLinkedBeans("govscot:relatedNews", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:relatedPublications")
+    public List<HippoBean> getRelatedPublications() {
+        return getLinkedBeans("govscot:relatedPublications", HippoBean.class);
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:secondaryOrgRole")
     public List<HippoBean> getSecondaryOrgRole() {
         return getLinkedBeans("govscot:secondaryOrgRole", HippoBean.class);

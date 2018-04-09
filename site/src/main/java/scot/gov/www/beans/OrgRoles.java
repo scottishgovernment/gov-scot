@@ -41,4 +41,24 @@ public class OrgRoles extends AttributableContent {
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:organisationName")
+    public String getOrganisationName() {
+        return getProperty("govscot:organisationName");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:organisationDescription")
+    public String getOrganisationDescription() {
+        return getProperty("govscot:organisationDescription");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:secondaryOrganisationName")
+    public String getSecondaryOrganisationName() {
+        return getProperty("govscot:secondaryOrganisationName");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:secondaryOrganisationDescription")
+    public String getSecondaryOrganisationDescription() {
+        return getProperty("govscot:secondaryOrganisationDescription");
+    }
 }
