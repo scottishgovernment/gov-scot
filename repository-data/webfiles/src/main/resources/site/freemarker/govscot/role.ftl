@@ -8,8 +8,8 @@
                 <#assign contactInformation = document.incumbent.contactInformation/>
             </#if>
         </#if>
-        <#if document.postalAddress??>
-            <#assign postalAddress = document.postalAddress/>
+        <#if document.incumbent.postalAddress??>
+            <#assign postalAddress = document.incumbent.postalAddress/>
         </#if>
 
         <div class="grid"><!--
@@ -45,8 +45,9 @@
 
                 <div class="body-content">
 
-                    <div class="leader">
-                        ${document.incumbent.content.content?keep_before("\n")}
+                    <div class="leader  leader--first-para">
+                        <@hst.html hippohtml=document.incumbent.content var="biography"/>
+                        ${biography?trim?keep_before("\n")}
                     </div>
 
                     <h2>Responsibilities</h2>
@@ -54,11 +55,12 @@
 
                     <#if document.incumbent??>
                         <h2>Biography</h2>
-                        ${document.incumbent.content.content?keep_after("\n")}
+                        ${biography?trim?keep_after("\n")}
 
                         <div class="visible-xsmall">
                             <#include 'common/contact-information.ftl' />
                         </div>
+                        
                     </#if>
                 </div>
                 <!-- /end .body-content -->

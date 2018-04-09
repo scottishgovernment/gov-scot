@@ -367,11 +367,6 @@
           <artifactId>log4j-core</artifactId>
           <scope>provided</scope>
         </dependency>
-        <dependency>
-          <groupId>org.onehippo.cms7</groupId>
-          <artifactId>hippo-services-autoreload</artifactId>
-          <scope>provided</scope>
-        </dependency>
       </dependencies>
       <build>
         <defaultGoal>initialize</defaultGoal>
@@ -494,11 +489,6 @@
                   <dependency>
                     <groupId>org.onehippo.cms7</groupId>
                     <artifactId>hippo-repository-builtin</artifactId>
-                    <classpath>shared</classpath>
-                  </dependency>
-                  <dependency>
-                    <groupId>org.onehippo.cms7</groupId>
-                    <artifactId>hippo-services-autoreload</artifactId>
                     <classpath>shared</classpath>
                   </dependency>
                 </dependencies>
