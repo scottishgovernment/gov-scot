@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d275057b-8ec4-41b3-b8b4-8eb603f01447
+          jcr:uuid: 518a724c-f7d1-4876-94bc-d6c0ccf6e257
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -19,9 +19,49 @@ definitions:
           /relatedPolicy:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:relatedPolicies
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /members:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:relatedPolicy
+            hipposysedit:path: govscot:members
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /contactDetails:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contactDetails
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /relatedGroups:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:relatedGroups
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /relatedNews:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:relatedNews
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /relatedPublications:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:relatedPublications
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
@@ -39,7 +79,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 581d8606-889b-43a7-bc49-f8716ee94eb1
+          jcr:uuid: ab3a3651-1d13-475c-8cbe-ba0e479840a4
           hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
           hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
           /govscot:responsibilities:
@@ -54,7 +94,22 @@ definitions:
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:relatedPolicy:
+          /govscot:members:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:contactDetails:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:relatedPolicies:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:relatedGroups:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:relatedNews:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:relatedPublications:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
@@ -91,6 +146,23 @@ definitions:
             caption: Content
             field: content
             hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /members:
+            jcr:primaryType: frontend:plugin
+            caption: Members
+            field: members
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /contactDetails:
+            jcr:primaryType: frontend:plugin
+            caption: Contact Details
+            field: contactDetails
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -171,19 +243,43 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /relatedPolicies:
+            jcr:primaryType: frontend:plugin
+            caption: Related Policies
+            field: relatedPolicy
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /relatedGroups:
+            jcr:primaryType: frontend:plugin
+            caption: Related Groups
+            field: relatedGroups
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /relatedNews:
+            jcr:primaryType: frontend:plugin
+            caption: Related News
+            field: relatedNews
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /relatedPublications:
+            jcr:primaryType: frontend:plugin
+            caption: Related Publications
+            field: relatedPublications
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes
             field: notes
             hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /relatedPolicy:
-            jcr:primaryType: frontend:plugin
-            caption: mirror
-            field: relatedPolicy
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
