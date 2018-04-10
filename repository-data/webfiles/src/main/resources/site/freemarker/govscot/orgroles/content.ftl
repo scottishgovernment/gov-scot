@@ -12,13 +12,21 @@
 
                 <#assign orgName = document.organisationName/>
                 <#assign orgDescription = document.organisationDescription/>
-                <#assign people = primaryPeople/>
-                <#include 'org-roles-grid.ftl' />
+                <#if primaryPeople??>
+                    <#assign people = primaryPeople/>
+                    <#include 'org-roles-grid.ftl' />
+                </#if>
 
                 <#assign orgName = document.secondaryOrganisationName/>
                 <#assign orgDescription = document.secondaryOrganisationDescription/>
-                <#assign people = secondaryPeople/>
-                <#include 'org-roles-grid.ftl' />
+                <#if secondaryPeople??>
+                    <#assign people = secondaryPeople/>
+                    <#include 'org-roles-grid.ftl' />
+                <#elseif document.secondaryOrgRole??>
+                    <#assign people = document.secondaryOrgRole/>
+                    <#include 'org-roles-grid.ftl' />
+                </#if>
+                
             </div>
         </div>
 

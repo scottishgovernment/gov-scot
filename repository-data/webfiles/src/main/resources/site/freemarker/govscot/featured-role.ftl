@@ -4,7 +4,7 @@
     <article id="page-content" class="layout-featured-role">
     <@hst.manageContent hippobean=document/>
     <#assign contactInformation = document.incumbent.contactInformation/>
-    <#assign postalAddress = document.postalAddress/>
+    <#assign postalAddress = document.incumbent.postalAddress/>
 
         <div class="grid"><!--
             --><div class="grid__item
@@ -39,11 +39,12 @@
                         </header>
                         <div class="body-content">
                             <h2>Responsibilities</h2>
-                            ${document.content.content}
+                            <@hst.html hippohtml=document.content />
 
                             <#if document.incumbent??>
-                                <h2>Biography</h2>
-                                ${document.incumbent.content.content?keep_after("\n")}
+                                <h2>${document.incumbent.title}</h2>
+                                <@hst.html var="content" hippohtml=document.incumbent.content />
+                                ${content?keep_after("</p>")}
 
                                 <div class="visible-xsmall">
                                     <#include 'common/contact-information.ftl' />

@@ -5,9 +5,22 @@ import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 
+import java.util.List;
+
 @HippoEssentialsGenerated(internalName = "govscot:Role")
 @Node(jcrType = "govscot:Role")
 public class Role extends SimpleContent {
+
+    private List<HippoBean> directorates;
+
+    public List<HippoBean> getDirectorates() {
+        return directorates;
+    }
+
+    public void setDirectorates(List<HippoBean> directorates) {
+        this.directorates = directorates;
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:responsibilities")
     public HippoHtml getResponsibilities() {
         return getHippoHtml("govscot:responsibilities");

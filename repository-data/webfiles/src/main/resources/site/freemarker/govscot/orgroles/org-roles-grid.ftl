@@ -12,7 +12,12 @@
             <ul class="grid  person-grid__people overflow--large--two-twelfths overflow--xlarge--two-twelfths"><!--
 
                 <#list people as person>
+                <#if person.roles??>
                     <@hst.link var="link" hippobean=person.roles[0]/>
+                <#else>
+                    <@hst.link var="link" hippobean=person/>
+                </#if>
+                    
                     --><li class="grid__item medium--six-twelfths large--four-twelfths">
 
                         <div class=person>
@@ -32,39 +37,55 @@
                                             <#if !role?is_first>and</#if> <a class="person__role-link" href="${rolelink}">${role.title}</a>
                                         </#list>
                                     <#else>
-                                        ${person.roleDescription}
+                                        ${person.roleTitle}
                                     </#if>
                                 </p>
 
-                                <@hst.html hippohtml=orgRole.responsibilities var="responsibilities"/>
-                                <#if responsibilities?has_content>
+                                <#assign hasDirectorates=false/>
+                                <#if person.roles??>
+                                    <#list person.roles as role>
+                                        <#list role.directorates as directorate>
+                                            <#assign hasDirectorates=true/>
+                                        </#list>
+                                    </#list>
+                                </#if>
+
+                                <@hst.link var="documentlink" hippobean=document/>
+                                <#if documentlink?contains("civil-service") && hasDirectorates>
                                     <div class="person__responsibilities">
                                         <button class="link expand  person__responsibilities-toggle"
-                                            data-target-selector="#${orgRole.canonicalUUID}-responsibilities"
+                                            data-target-selector="#${person.canonicalUUID}-responsibilities"
                                             title="Show responsibilities">
                                             <span class="expand__icon"></span>
                                         </button>
 
                                         <h4 class="person__responsibilities-title">Responsibilities</h4>
 
-                                        <div id="${orgRole.canonicalUUID}-responsibilities">
-                                        ${responsibilities}
-
-                                        <#--  <ul class="person__responsibilities-list no-bullets">
-                                            {{#responsibilities}}
-                                                <li>
-                                                    <a class="person__role-link" href="">{{title}}</a>
-                                                </li>
-                                            {{/responsibilities}}
-                                        </ul>  -->
+                                        <div id="${person.canonicalUUID}-responsibilities">
+                                            <#if person.roles??>
+                                                <ul class="person__responsibilities-list no-bullets">
+                                                    <#list person.roles as role>
+                                                        <#list role.directorates as directorate>
+                                                            <li>
+                                                                <@hst.link var="directoratelink" hippobean=directorate/>
+                                                                <a href="${directoratelink}">${directorate.title}</a>
+                                                            </li>
+                                                        </#list>
+                                                        <#-- end role.directorates loop -->
+                                                    </#list>
+                                                    <#-- end person.roles loop -->
+                                                </ul>
+                                            </#if>
+                                            <#-- end person.roles condition -->
                                         </div>
-
                                     </div>
                                 </#if>
+                                <#-- end url condition -->
                             </div>
                         </div>
                     </li><!--
                 </#list>
+                <#-- end people loop -->
             --></ul>
         </div><!--
     --></div>

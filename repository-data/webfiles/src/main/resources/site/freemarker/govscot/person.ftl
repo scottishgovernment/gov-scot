@@ -15,7 +15,7 @@
                 <header class="article-header">
                     <h1 class="article-header__title">${document.title}</h1>
 
-                    <p class="article-header__subtitle">${document.incumbent.roleTitle}</p>
+                    <p class="article-header__subtitle">${document.roleTitle}</p>
                 </header>
             </div><!--
         --></div>
