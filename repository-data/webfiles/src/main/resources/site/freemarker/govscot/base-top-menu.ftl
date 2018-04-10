@@ -4,7 +4,8 @@
     <div class="wrapper">
         <div class="site-brand">
             <div class="site-brand__link">
-                <a class="site-brand__logo" data-gtm="main-nav" href="/site/">
+                <@hst.link var="home" siteMapItemRefId="root" />
+                <a class="site-brand__logo" data-gtm="main-nav" href="${home}">
                 <svg viewBox="0 0 357 67" aria-label="Scottish Government logo">
                   <title>Scottish Government logo</title>
                   <defs>
