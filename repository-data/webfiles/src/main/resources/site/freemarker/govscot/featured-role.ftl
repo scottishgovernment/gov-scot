@@ -39,11 +39,12 @@
                         </header>
                         <div class="body-content">
                             <h2>Responsibilities</h2>
-                            ${document.content.content}
+                            <@hst.html hippohtml=document.content />
 
                             <#if document.incumbent??>
-                                <h2>Biography</h2>
-                                ${document.incumbent.content.content?keep_after("\n")}
+                                <h2>${document.incumbent.title}</h2>
+                                <@hst.html var="content" hippohtml=document.incumbent.content />
+                                ${content?keep_after("</p>")}
 
                                 <div class="visible-xsmall">
                                     <#include 'common/contact-information.ftl' />

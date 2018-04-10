@@ -46,7 +46,7 @@
     <#if postalAddress??>
         <div class="contact-information__group">
             <h3 class="emphasis contact-information__title">Contact</h3>
-            <p>${postalAddress.content}</p>
+            <@hst.html hippohtml=postalAddress/>
         </div>
     </#if>
 </aside>
