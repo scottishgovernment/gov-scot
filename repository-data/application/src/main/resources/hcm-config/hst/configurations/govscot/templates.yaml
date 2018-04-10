@@ -77,3 +77,6 @@ definitions:
       /directorate:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/directorate.ftl
+      /group:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/group.ftl
