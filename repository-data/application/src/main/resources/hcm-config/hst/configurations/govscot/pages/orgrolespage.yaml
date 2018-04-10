@@ -6,12 +6,12 @@ definitions:
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
-        hst:template: about.page
-        /content:
-          jcr:primaryType: hst:component
-          hst:componentclassname: scot.gov.www.components.OrgRolesComponent
-          hst:template: orgroles.content
+        hst:template: org-roles.page
         /side-menu:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.AboutMenu
           hst:template: about.side-menu
+        /content:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.OrgRolesComponent
+          hst:template: org-roles.content

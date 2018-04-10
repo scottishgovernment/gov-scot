@@ -33,11 +33,7 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/aboutpage
         hst:relativecontentpath: about/
-        /_index_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/aboutpage
-          hst:relativecontentpath: about/index
-        /_default_:
+        /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
           hst:relativecontentpath: about/${1}
@@ -45,42 +41,46 @@ definitions:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: ${parent}/index
-          /first-minister:
+        /_index_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/aboutpage
+          hst:relativecontentpath: about/index
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+        /who-runs-government:
+          jcr:primaryType: hst:sitemapitem
+          /cabinet-and-ministers:
             jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/featuredrolepage
-            hst:relativecontentpath: ${parent}/first-minister
-          /_any_:
-            jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/aboutpage
-            hst:relativecontentpath: about/${1}/${2}
-            hst:componentconfigurationmappingvalues: ['hst:pages/personpage']
-            hst:componentconfigurationmappingnames: ['govscot:Person']
-          /_default_:
-            jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/aboutpage
-            hst:relativecontentpath: about/${1}/${2}
+            /_any_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
+              hst:relativecontentpath: about/who-runs-government/cabinet-and-ministers/${1}
             /_index_:
               jcr:primaryType: hst:sitemapitem
-              hst:componentconfigurationid: hst:pages/aboutpage
-              hst:relativecontentpath: ${parent}/index
-              hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage']
-              hst:componentconfigurationmappingnames: ['govscot:OrgRoles']
-            /_default_:
+              hst:componentconfigurationid: hst:pages/orgrolespage
+              hst:relativecontentpath: about/who-runs-government/cabinet-and-ministers/index
+          /_any_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
+            hst:componentconfigurationmappingvalues: ['hst:pages/featuredrolepage',
+              'hst:pages/personpage']
+            hst:relativecontentpath: about/who-runs-government/${1}
+        /how-government-is-run:
+          jcr:primaryType: hst:sitemapitem
+          /civil-service:
+            jcr:primaryType: hst:sitemapitem
+            /_any_:
               jcr:primaryType: hst:sitemapitem
-              hst:componentconfigurationid: hst:pages/aboutpage
-              hst:relativecontentpath: about/${1}/${2}/${3}
-              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
               hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
-              /_index_:
-                jcr:primaryType: hst:sitemapitem
-                hst:componentconfigurationid: hst:pages/aboutpage
-                hst:relativecontentpath: ${parent}/index
-                hst:componentconfigurationmappingvalues: ['hst:pages/directoratepage']
-                hst:componentconfigurationmappingnames: ['govscot:Directorate']
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
+              hst:relativecontentpath: about/how-government-is-run/civil-service/${1}
+            /_index_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/orgrolespage
+              hst:relativecontentpath: about/how-government-is-run/civil-service/index
           /directorates:
             jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/orgrolespage
-            hst:relativecontentpath: ${parent}/directorates
       /roles:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist

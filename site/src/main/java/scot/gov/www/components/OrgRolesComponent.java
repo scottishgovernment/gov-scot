@@ -69,7 +69,7 @@ public class OrgRolesComponent  extends BaseHstComponent {
         try {
             HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
                     role, baseBean, "*/@hippo:docbase", Directorate.class, false);
-            query.addOrderByDescending("govscot:title");
+            query.addOrderByAscending("govscot:title");
             HstQueryResult res = query.execute();
             List<HippoBean> directorates = new ArrayList<>();
             res.getHippoBeans().forEachRemaining(directorates::add);
