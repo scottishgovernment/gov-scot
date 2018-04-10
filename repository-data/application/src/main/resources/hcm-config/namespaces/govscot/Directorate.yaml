@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 98edca62-d0f1-4ef8-a5b2-5daf1695deb0
+          jcr:uuid: 1c7d0db5-0cd6-45bf-b903-760971d95c55
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -34,7 +34,7 @@ definitions:
           /secondaryOrgRoles:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
-            hipposysedit:multiple: false
+            hipposysedit:multiple: true
             hipposysedit:ordered: false
             hipposysedit:path: govscot:secondaryOrgRole
             hipposysedit:primary: false
@@ -70,7 +70,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 77de6d06-4f8d-4ae0-ae0c-223a0672cb59
+          jcr:uuid: 6be02531-88ca-4b86-bb73-675ff9ada065
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           /govscot:content:

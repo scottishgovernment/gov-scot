@@ -25,8 +25,8 @@ public class Directorate extends SimpleContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:secondaryOrgRole")
-    public HippoBean getSecondaryOrgRole() {
-        return getLinkedBean("govscot:secondaryOrgRole", HippoBean.class);
+    public List<HippoBean> getSecondaryOrgRole() {
+        return getLinkedBeans("govscot:secondaryOrgRole", HippoBean.class);
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:relatedPublications")
