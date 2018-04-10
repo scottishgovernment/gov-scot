@@ -32,8 +32,8 @@
 
         <@hst.include ref="menu"/>
 
-        <!-- search & breadcrumbs -->
         <div class="wrapper">
+        <!-- search & breadcrumbs -->
             <div class="breadcrumbs__container">
                 <div class="grid"><!--
                     --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
@@ -59,10 +59,8 @@
                     </div><!--
                 --></div>
             </div>
-        </div>
 
         <!-- body / main -->
-        <div class="wrapper">
             <@hst.include ref="main"/>
         </div>
 
