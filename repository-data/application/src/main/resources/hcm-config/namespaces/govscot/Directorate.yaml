@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d093b3d3-9506-4082-9f3f-c4dc04817562
+          jcr:uuid: 3cb62f80-b116-447f-a3f7-37be906397db
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -87,7 +87,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: bb781615-a812-4fd8-b9ce-9e33b6203fa5
+          jcr:uuid: 4f428f4e-c1ee-4705-8469-246da4c02fdf
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           /govscot:content:
@@ -248,6 +248,8 @@ definitions:
             hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:Role']
+              base.path: /content/documents/govscot/about
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Secondary Responsible Roles
@@ -257,3 +259,5 @@ definitions:
             hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:Role']
+              base.path: /content/documents/govscot/about
