@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 1c7d0db5-0cd6-45bf-b903-760971d95c55
+          jcr:uuid: d99082f4-1bfa-4946-ad4e-95a48e82b3b3
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -55,6 +55,15 @@ definitions:
             hipposysedit:path: govscot:relatedPublications
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+          /responsibleRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:responsibleRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -70,7 +79,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 6be02531-88ca-4b86-bb73-675ff9ada065
+          jcr:uuid: 9fe78969-8460-42a0-8fb5-5b778d2bc071
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           /govscot:content:
@@ -95,6 +104,9 @@ definitions:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:relatedPublications:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:responsibleRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
@@ -196,6 +208,15 @@ definitions:
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /responsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Responsible Role
+            field: responsibleRole
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /relatedNews:
