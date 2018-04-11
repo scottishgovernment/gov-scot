@@ -28,7 +28,7 @@
 
                                     <div class="person__image-container">
                                         <div class="person__image-container">
-                                            <img class="person__image" src="/site/assets/images/people/placeholder.png" alt="" />
+                                            <img class="person__image" src='<@hst.link path="/assets/images/people/placeholder.png"/>' alt="" />
                                         </div>
                                     </div>
 
@@ -62,7 +62,7 @@
                                 <@hst.link var="link" hippobean=role/>
                                 <a class="person__link" href="${link}">
                                     <div class="person__image-container">
-                                        <img class="person__image" src="/site/assets/images/people/placeholder.png" alt="" />
+                                        <img class="person__image" src='<@hst.link path="/assets/images/people/placeholder.png"/>' alt="" />
                                     </div>
 
                                     <div class="person__text-container">

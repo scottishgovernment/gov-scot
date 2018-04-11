@@ -26,7 +26,7 @@
                 <div class="person person--bordered-mobile">
                     <div class="person person--bordered-mobile">
                         <div class="person__image-container person__image-container--centred-mobile">
-                            <img class="person__image" src="/site/assets/images/people/placeholder.png" alt="" />
+                            <img class="person__image" src='<@hst.link path="/assets/images/people/placeholder.png"/>' alt="" />
                         </div>
                     </div>
                 </div>
