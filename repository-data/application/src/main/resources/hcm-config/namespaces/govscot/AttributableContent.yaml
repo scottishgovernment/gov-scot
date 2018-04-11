@@ -73,6 +73,70 @@ definitions:
             hipposysedit:path: govscot:secondaryOrgRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+        /hipposysedit:nodetype[2]:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: fa9f7ef8-f82e-428a-891d-fce876e05aac
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
+          /topics:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:topics
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /responsibleDirectorate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:responsibleDirectorate
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
+          /secondaryResponsibleDirectorate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:secondaryResponsibleDirectorate
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /responsibleRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:responsibleRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
+          /secondaryResponsibleRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:secondaryResponsibleRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /orgRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:orgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /secondaryOrgRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:secondaryOrgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -94,6 +158,50 @@ definitions:
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+          /govscot:topics:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:responsibilities:
+            jcr:primaryType: hippostd:html
+            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+          /govscot:responsibleDirectorate:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:secondaryResponsibleDirectorate:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:responsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:secondaryResponsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:orgRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:secondaryOrgRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /hipposysedit:prototype[2]:
+          jcr:primaryType: nt:unstructured
+          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
+            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
+          jcr:uuid: 1ca42187-d56f-49f7-9e22-84183c37b4d2
+          govscot:metaDescription: ''
+          govscot:seoTitle: ''
+          govscot:summary: ''
+          govscot:title: ''
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2018-01-26T11:27:23.004Z
+          hippostdpubwf:lastModificationDate: 2018-01-26T11:27:23.004Z
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
           /govscot:topics:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
