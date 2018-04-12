@@ -20,13 +20,15 @@
 
     <link rel="apple-touch-icon" href="<@hst.webfile path="/images/apple-touch-icon.png"/>" />
 
-    <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
-
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
     <@hst.headContributions categoryExcludes="footerScripts" xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >
+    <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
+
+    <#include 'common/accessibility-links.ftl' />
+    <#include 'common/notifications.ftl' />
 
     <div id="main-wrapper">
 
