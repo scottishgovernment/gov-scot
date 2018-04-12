@@ -34,6 +34,12 @@
 [govscot:Migration] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:Publication] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Minutes] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -49,9 +55,6 @@
 [govscot:PolicyInDetail] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:Publication] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
-  orderable
-
 [govscot:PublicationPage] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -59,6 +62,9 @@
   orderable
 
 [govscot:SiteItem] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:SpeechOrStatement] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated

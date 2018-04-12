@@ -1,65 +1,40 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/Publication:
+    /hippo:namespaces/govscot/SpeechOrStatement:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 44105405-8a33-49e7-bfc1-981ff0330556
+      jcr:uuid: 148ed5a6-2aab-4b4d-9f23-8906289486e9
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 3142aadc-f3ff-49e6-8d7f-6f97f8c4fb91
+        jcr:uuid: bbe4d65a-b416-4521-8ca1-a967a0f63684
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 63670f77-4a6c-43ed-af7a-bf9fe80bd8eb
+          jcr:uuid: 5a2fd808-0bfe-47db-aa32-6b9f2360b6c9
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
-            'hippotranslation:translated']
+          hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /isbn:
+          /location:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:isbn
+            hipposysedit:path: govscot:location
             hipposysedit:primary: false
             hipposysedit:type: String
-          /images:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:images
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:resource
-          /publicationDate:
+          /string:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:publicationDate
+            hipposysedit:path: govscot:string
             hipposysedit:primary: false
-            hipposysedit:type: Date
-          /dynamicdropdown:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:publicationType
-            hipposysedit:primary: false
-            hipposysedit:type: DynamicDropdown
-          /officialdate:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:officialdate
-            hipposysedit:primary: false
-            hipposysedit:type: CalendarDate
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:Publication
+          jcr:primaryType: govscot:SpeechOrStatement
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
@@ -67,17 +42,19 @@ definitions:
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
+          govscot:isbn: ''
+          govscot:string: ''
+          govscot:officialdate: 0001-01-01T12:00:00Z
+          govscot:publicationDate: 0001-01-01T12:00:00Z
+          govscot:publicationType: ''
+          govscot:location: ''
           govscot:seoTitle: ''
           govscot:metaDescription: ''
           govscot:summary: ''
-          govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: 84cb63fd-5fd3-4d4e-bd56-478ac99e67be
-          hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
-          hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
-          govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:publicationType: ''
-          govscot:officialdate: 0001-01-01T12:00:00Z
+          jcr:uuid: ddc064a2-05dc-47ac-921f-3157fda68421
+          hippostdpubwf:lastModificationDate: 2018-04-12T15:41:01.916+01:00
+          hippostdpubwf:creationDate: 2018-04-12T15:41:01.916+01:00
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -87,15 +64,6 @@ definitions:
           /govscot:responsibleRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:images:
-            jcr:primaryType: hippo:resource
-            hippo:filename: hippo:resource
-            jcr:data:
-              type: binary
-              resource: /namespaces/govscot/Publication/prototypes/prototype/images/data.bin
-            jcr:encoding: UTF-8
-            jcr:lastModified: 2008-03-26T12:03:00+01:00
-            jcr:mimeType: application/vnd.hippo.blank
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -150,6 +118,23 @@ definitions:
             field: officialdate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /location:
+            jcr:primaryType: frontend:plugin
+            caption: Location
+            field: location
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /string:
+            jcr:primaryType: frontend:plugin
+            caption: DeliveredBy
+            field: string
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /summary:
@@ -229,19 +214,19 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
+          /responsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Responsible Role
+            field: responsibleRole
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Secondary Responsible Roles
             field: secondaryResponsibleRole
             hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /responsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Responsible Role
-            field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -259,8 +244,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Images
             field: images
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

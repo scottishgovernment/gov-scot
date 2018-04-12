@@ -63,6 +63,22 @@ definitions:
             hipposysedit:path: govscot:accessible
             hipposysedit:primary: false
             hipposysedit:type: Boolean
+          /long:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:pageCount
+            hipposysedit:primary: false
+            hipposysedit:type: Long
+          /size:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:size
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -76,11 +92,13 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
           govscot:srcUrl: ''
-          jcr:uuid: c67d7869-0e70-4651-925b-7cc5bd37744f
+          jcr:uuid: 9914d282-80ed-4a80-b94b-b2d60bce439e
           hippostdpubwf:lastModificationDate: 2018-03-19T08:55:08.662Z
           hippostdpubwf:creationDate: 2018-03-19T08:55:08.663Z
           govscot:highlighted: false
           govscot:accessible: false
+          govscot:size: ''
+          govscot:pageCount: 0
           /govscot:document:
             jcr:primaryType: hippo:resource
             hippo:filename: hippo:resource
@@ -149,6 +167,24 @@ definitions:
             field: Thumbnail
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /pageCount:
+            jcr:primaryType: frontend:plugin
+            caption: Page Count
+            field: long
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /size:
+            jcr:primaryType: frontend:plugin
+            caption: File Size
+            field: size
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
