@@ -11,6 +11,7 @@ module.exports = {
         'global':                       './src/scripts/govscot/global.js',
 
         // format-specific entry points
+        'home':                         './src/scripts/govscot/format.home.js',
         'policy':                       './src/scripts/govscot/format.policy.js'
     },
 

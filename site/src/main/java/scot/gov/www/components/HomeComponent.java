@@ -1,6 +1,8 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
+import org.hippoecm.hst.content.beans.ObjectBeanManagerException;
+import org.hippoecm.hst.content.beans.manager.ObjectBeanManager;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
@@ -13,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Publication;
+import scot.gov.www.beans.Topic;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
@@ -23,12 +26,31 @@ public class HomeComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
+        request.setAttribute("isHomepage", true);
 
         HstRequestContext context = request.getRequestContext();
         HippoBean scope = context.getSiteContentBaseBean();
         populateNews(scope, request);
         populateConsultations(scope, request);
         populatePublications(scope, request);
+        populateTopicsList(scope, request);
+
+        // get the First Minister page
+        ObjectBeanManager beanManager = context.getObjectBeanManager();
+        try {
+            Object firstMinister = beanManager.getObject("/content/documents/govscot/about/who-runs-government/first-minister/");
+            request.setAttribute("firstMinister", firstMinister);
+        } catch (ObjectBeanManagerException e) {
+            LOG.warn("Unable to get First Minister details {}", e);
+        }
+
+        // get the Home page
+        try {
+            Object homeContent = beanManager.getObject("/content/documents/govscot/home/");
+            request.setAttribute("homeContent", homeContent);
+        } catch (ObjectBeanManagerException e) {
+            LOG.warn("Unable to get Home content item details {}", e);
+        }
     }
 
     private void populateNews(HippoBean scope, HstRequest request) {
@@ -41,14 +63,20 @@ public class HomeComponent extends BaseHstComponent {
         HstQuery query = publicationsQuery(scope)
                 .where(constraint("govscot:publicationsType").equalTo("consultation"))
                 .build();
-        executeQueryLoggingException(query, request, "Latest Consultations");
+        executeQueryLoggingException(query, request, "consultations");
     }
 
     private void populatePublications(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
                 .where(constraint("govscot:publicationsType").notEqualTo("consultation"))
                 .build();
-        executeQueryLoggingException(query, request, "consultations");
+        executeQueryLoggingException(query, request, "publications");
+    }
+
+    private void populateTopicsList(HippoBean scope, HstRequest request) {
+        HstQuery query = HstQueryBuilder.create(scope)
+                .ofTypes(Topic.class).orderByAscending("govscot:title").build();
+        executeQueryLoggingException(query, request, "topics");
     }
 
     private HstQueryBuilder publicationsQuery(HippoBean scope) {

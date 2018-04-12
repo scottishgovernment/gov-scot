@@ -3,9 +3,8 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/homepage:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
+      hst:componentclassname: scot.gov.www.components.HomeComponent
       /main:
         jcr:primaryType: hst:component
         hst:template: homepage-main
-        /container:
-          jcr:primaryType: hst:containercomponentreference
-          hst:referencecomponent: homepage/main
+        hst:componentclassname: scot.gov.www.components.HomeComponent

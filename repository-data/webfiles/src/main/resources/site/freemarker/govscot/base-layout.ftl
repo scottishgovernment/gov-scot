@@ -32,18 +32,20 @@
 
         <@hst.include ref="menu"/>
 
+        <#if !(isHomepage!false)>
         <div class="wrapper">
-        <!-- search & breadcrumbs -->
-            <div class="breadcrumbs__container">
-                <div class="grid"><!--
-                    --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
+            <!-- search & breadcrumbs -->
+            <!-- only show when not on homepage -->
+                <div class="breadcrumbs__container">
+                    <div class="grid"><!--
+                        --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
                         <div class="search-box">
 
 
                             <form class="search-box__form" method="GET" action="search.html">
                                 <label class="search-box__label hidden" for="searchbox-inputtext">Search</label>
                                 <input type="text" class="search-box__input" id="searchbox-inputtext" name="query"
-                                    placeholder="Search site" />
+                                       placeholder="Search site" />
                                 <button type="submit" title="search" class="search-box__button button button--primary">
                                     <span class="icon icon--search-white"></span>
                                     <span class="hidden">Search</span>
@@ -52,17 +54,20 @@
                         </div>
                     </div><!--
 
-                    --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
+                        --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
                         <nav>
-                          <@hst.include ref="breadcrumb"/>
+                            <@hst.include ref="breadcrumb"/>
                         </nav>
                     </div><!--
-                --></div>
-            </div>
+                    --></div>
+                </div>
+            </#if>
 
         <!-- body / main -->
             <@hst.include ref="main"/>
-        </div>
+        <#if !(isHomepage!false)>
+            </div>
+        </#if>
 
     </div>
 
