@@ -24,6 +24,7 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 public class HomeComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(DirectorateComponent.class);
+    private static final String PUBLICATIONTYPE = "govscot:publicationType";
 
     @Override
     public void doBeforeRender(final HstRequest request,
@@ -65,8 +66,8 @@ public class HomeComponent extends BaseHstComponent {
         HstQuery query = publicationsQuery(scope)
                 .where(
                         or(
-                                constraint("govscot:publicationType").equalTo("consultation-paper"),
-                                constraint("govscot:publicationType").equalTo("consultation-response")
+                                constraint(PUBLICATIONTYPE).equalTo("consultation-paper"),
+                                constraint(PUBLICATIONTYPE).equalTo("consultation-response")
                         )
                 )
                 .build();
@@ -77,8 +78,8 @@ public class HomeComponent extends BaseHstComponent {
         HstQuery query = publicationsQuery(scope)
                 .where(
                         and(
-                                constraint("govscot:publicationType").notEqualTo("consultation-paper"),
-                                constraint("govscot:publicationType").notEqualTo("consultation-response")
+                                constraint(PUBLICATIONTYPE).notEqualTo("consultation-paper"),
+                                constraint(PUBLICATIONTYPE).notEqualTo("consultation-response")
                         )
                 )
                 .build();
