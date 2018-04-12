@@ -17,7 +17,9 @@ import scot.gov.www.beans.News;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.Topic;
 
+import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.and;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
+import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 
 public class HomeComponent extends BaseHstComponent {
 
@@ -61,14 +63,24 @@ public class HomeComponent extends BaseHstComponent {
 
     private void populateConsultations(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
-                .where(constraint("govscot:publicationsType").equalTo("consultation"))
+                .where(
+                        or(
+                                constraint("govscot:publicationType").equalTo("consultation-paper"),
+                                constraint("govscot:publicationType").equalTo("consultation-response")
+                        )
+                )
                 .build();
         executeQueryLoggingException(query, request, "consultations");
     }
 
     private void populatePublications(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
-                .where(constraint("govscot:publicationsType").notEqualTo("consultation"))
+                .where(
+                        and(
+                                constraint("govscot:publicationType").notEqualTo("consultation-paper"),
+                                constraint("govscot:publicationType").notEqualTo("consultation-response")
+                        )
+                )
                 .build();
         executeQueryLoggingException(query, request, "publications");
     }
@@ -83,7 +95,7 @@ public class HomeComponent extends BaseHstComponent {
         return HstQueryBuilder.create(scope)
                 .ofTypes(Publication.class)
                 .limit(3)
-                .orderByDescending("govscot:publishedDate");
+                .orderByDescending("govscot:publicationDate");
     }
 
     private void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
