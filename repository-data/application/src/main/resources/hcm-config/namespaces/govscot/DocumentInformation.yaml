@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: b8f0c199-e113-40fa-98bd-43b06ad3c4c2
+          jcr:uuid: 107c5492-73f5-425a-8679-3252fda90e99
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -47,6 +47,22 @@ definitions:
             hipposysedit:path: govscot:thumbnails
             hipposysedit:primary: false
             hipposysedit:type: hippo:resource
+          /highlighted:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:highlighted
+            hipposysedit:primary: false
+            hipposysedit:type: Boolean
+          /accessible:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:accessible
+            hipposysedit:primary: false
+            hipposysedit:type: Boolean
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -60,9 +76,11 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
           govscot:srcUrl: ''
-          jcr:uuid: 5d003a59-167e-472e-9271-9f926d736c2e
+          jcr:uuid: c67d7869-0e70-4651-925b-7cc5bd37744f
           hippostdpubwf:lastModificationDate: 2018-03-19T08:55:08.662Z
           hippostdpubwf:creationDate: 2018-03-19T08:55:08.663Z
+          govscot:highlighted: false
+          govscot:accessible: false
           /govscot:document:
             jcr:primaryType: hippo:resource
             hippo:filename: hippo:resource
@@ -90,6 +108,23 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /highlighted:
+            jcr:primaryType: frontend:plugin
+            caption: Highlighted
+            field: highlighted
+            hint: Should this document be given prominence?
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /accessible:
+            jcr:primaryType: frontend:plugin
+            caption: Accessible
+            field: accessible
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /srcUrl:
