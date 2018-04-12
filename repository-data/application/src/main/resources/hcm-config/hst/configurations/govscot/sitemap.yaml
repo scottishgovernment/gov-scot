@@ -15,7 +15,7 @@ definitions:
         hst:refId: pagenotfound
       /topics:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/contentlist
+        hst:componentconfigurationid: hst:pages/topicslistpage
         hst:relativecontentpath: topics
         /_default_:
           jcr:primaryType: hst:sitemapitem
