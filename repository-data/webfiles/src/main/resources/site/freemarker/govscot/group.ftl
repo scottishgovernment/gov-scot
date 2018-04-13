@@ -65,10 +65,11 @@
                 </#if>
             </div>
 
-            <#if document.contactDetails?has_content>
+            <@hst.html hippohtml=document.contactDetails var="contactDetails"/>
+            <#if contactDetails?has_content>
                 <div class="sidebar-block">
                     <h3 class="emphasis sidebar-block__heading">Contacts</h3>
-                    <@hst.html hippohtml=document.contactDetails />
+                    ${contactDetails}
                 </div>
             </#if>
         </aside>
