@@ -15,13 +15,19 @@ import static java.util.stream.Collectors.groupingBy;
 public class AtoZComponent extends BaseHstComponent {
 
     private static final int CHUNK_SIZE = 7;
-    @Override
-    public void doBeforeRender(final HstRequest request,
-                               final HstResponse response) {
-        // TODO: get this from config param or ?
-        String path = "groups/";
-        SortedMap<String, List<HippoBean>> beansByFirstLetter  = beansByFirstLetter(request, path);
 
+    @Override
+    public void doBeforeRender(
+            final HstRequest request,
+           final HstResponse response) {
+
+        SortedMap<String, List<HippoBean>> beansByFirstLetter  = beansByFirstLetter(request);
+        List<LettersAndBeans> lettersAndBeans = lettersAndBeans(beansByFirstLetter);
+        addLabels(lettersAndBeans);
+        request.setAttribute("beansByLetter", lettersAndBeans);
+    }
+
+    private  List<LettersAndBeans> lettersAndBeans(SortedMap<String, List<HippoBean>> beansByFirstLetter) {
         // convert the map into a list of chunks of at least the chunk size
         LettersAndBeans current = new LettersAndBeans();
         List<LettersAndBeans> lettersAndBeans = new ArrayList<>();
@@ -41,11 +47,11 @@ public class AtoZComponent extends BaseHstComponent {
         } else {
             lettersAndBeans.add(current);
         }
+        return lettersAndBeans;
+    }
 
-        // now describe each object
+    private void addLabels(List<LettersAndBeans> lettersAndBeans) {
         lettersAndBeans.stream().forEach(this::addLabel);
-
-        request.setAttribute("beansByLetter", lettersAndBeans);
     }
 
     private void addLabel(LettersAndBeans lettersAndBeans) {
@@ -58,13 +64,15 @@ public class AtoZComponent extends BaseHstComponent {
         lettersAndBeans.setLabel(label);
     }
 
-    private SortedMap<String, List<HippoBean>>  beansByFirstLetter(HstRequest request, String path) {
-        HippoBean base = request.getRequestContext().getSiteContentBaseBean();
-        HippoBean topicsBean = base.getBean(path);
-        List<HippoBean> beans = topicsBean.getChildBeans(HippoBean.class);
+    private SortedMap<String, List<HippoBean>>  beansByFirstLetter(HstRequest request) {
+        List<HippoBean> beans = request
+                .getRequestContext()
+                .getContentBean()
+                .getChildBeans(HippoBean.class);
 
-        // group by first letter of the title
-        SortedMap<String, List<HippoBean>> map = new TreeMap<>(beans.stream().collect(groupingBy(this::firstLetter)));
+        // group by first letter of the title.
+        SortedMap<String, List<HippoBean>> map
+                = new TreeMap<>(beans.stream().collect(groupingBy(bean -> firstLetter(bean))));
 
         // now ensure that every letter is included in the map
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars()
