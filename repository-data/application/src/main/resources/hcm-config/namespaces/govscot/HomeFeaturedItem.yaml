@@ -1,40 +1,64 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/Home:
+    /hippo:namespaces/govscot/HomeFeaturedItem:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 468106a8-06d1-4a88-ac07-64890f0260b6
+      jcr:uuid: 1c702805-ad0f-460d-97f0-1015e8b5c6b1
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: bd0acda9-ade5-4ae4-98de-8816b99cf932
+        jcr:uuid: 27e4c84a-5828-4590-a640-2a628070f127
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 0fb8afcd-0be1-4cf4-a723-7fe0c4e504d5
+          jcr:uuid: 94e3ff1b-ad59-4aae-8f02-818a66dd52e4
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /howGovernmentWorks:
+          /teaserText:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:howGovernmentWorks
+            hipposysedit:path: govscot:teaserText
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
-          /featuredItems:
+          /overlayQuote:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: true
-            hipposysedit:path: govscot:featuredItems
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:overlayQuote
             hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
+            hipposysedit:type: Html
+          /overlayQuoteAttribution:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:overlayQuoteAttribution
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /link:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:link
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:ExternalLink
+          /youtube:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:youtube
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:Home
+          jcr:primaryType: govscot:HomeFeaturedItem
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
@@ -42,22 +66,21 @@ definitions:
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
-          govscot:seoTitle: ''
-          govscot:metaDescription: ''
           govscot:summary: ''
+          govscot:overlayQuote: ''
+          govscot:overlayQuoteAttribution: ''
           govscot:title: ''
-          jcr:uuid: eb3f5783-f71b-441e-93c8-9f4bdd666027
-          hippostdpubwf:lastModificationDate: 2018-04-12T10:35:48.116+01:00
-          hippostdpubwf:creationDate: 2018-04-12T10:35:48.117+01:00
-          /govscot:content:
+          jcr:uuid: f9b7d989-d763-4f0a-b2f8-8a6ef9b5bbe8
+          hippostdpubwf:lastModificationDate: 2018-04-13T09:51:56.199+01:00
+          hippostdpubwf:creationDate: 2018-04-13T09:51:56.199+01:00
+          govscot:youtube: ''
+          /govscot:teaserText:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:howGovernmentWorks:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:featuredItems:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:link:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:title: ''
+            govscot:url: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -87,66 +110,47 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /content:
+          /teaserText:
             jcr:primaryType: frontend:plugin
-            caption: Content
-            field: content
-            hint: The main content for the page
+            caption: Teaser Text
+            field: teaserText
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /howGovernmentWorks:
+          /overlayQuote:
             jcr:primaryType: frontend:plugin
-            caption: How Government Works
-            field: howGovernmentWorks
+            caption: Overlay Quote
+            field: overlayQuote
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
             hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /featuredItems:
+          /overlayQuoteAttribution:
             jcr:primaryType: frontend:plugin
-            caption: Featured Items
-            field: featuredItems
+            caption: Overlay Quote Attribution
+            field: overlayQuoteAttribution
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
             hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /link:
+            jcr:primaryType: frontend:plugin
+            caption: Link
+            field: link
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /tags:
+          /youtube:
             jcr:primaryType: frontend:plugin
-            caption: Tags
-            field: tags
+            caption: Youtube
+            field: youtube
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            type: hippostd:taggable
-            wicket.id: ${cluster.id}.field
-          /seoTitle:
-            jcr:primaryType: frontend:plugin
-            caption: SEO Title
-            field: seoTitle
-            hint: Title used by google whilst indexing the content
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '60'
-          /metaDescription:
-            jcr:primaryType: frontend:plugin
-            caption: Meta Description
-            field: metaDescription
-            hint: A description of this content item for search engine indexing purposes
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '300'
-          /notes:
-            jcr:primaryType: frontend:plugin
-            caption: Notes
-            field: notes
-            hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

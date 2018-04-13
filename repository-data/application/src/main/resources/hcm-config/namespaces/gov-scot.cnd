@@ -31,6 +31,9 @@
 [govscot:Home] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:HomeFeaturedItem] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:Migration] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
