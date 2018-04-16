@@ -8,7 +8,6 @@ import org.hippoecm.hst.core.component.HstResponse;
 import scot.gov.www.beans.LettersAndBeans;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.groupingBy;
