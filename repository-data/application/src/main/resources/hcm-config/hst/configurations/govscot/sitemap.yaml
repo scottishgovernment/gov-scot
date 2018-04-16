@@ -78,7 +78,7 @@ definitions:
             hst:relativecontentpath: ${parent}/first-minister
           /directorates:
             jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/orgrolespage
+            hst:componentconfigurationid: hst:pages/directoratespage
             hst:relativecontentpath: ${parent}/directorates
       /roles:
         jcr:primaryType: hst:sitemapitem

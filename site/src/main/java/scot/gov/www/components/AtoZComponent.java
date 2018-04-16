@@ -8,9 +8,11 @@ import org.hippoecm.hst.core.component.HstResponse;
 import scot.gov.www.beans.LettersAndBeans;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
 
 public class AtoZComponent extends BaseHstComponent {
 
@@ -68,7 +70,11 @@ public class AtoZComponent extends BaseHstComponent {
         List<HippoBean> beans = request
                 .getRequestContext()
                 .getContentBean()
-                .getChildBeans(HippoBean.class);
+                .getChildBeans(HippoBean.class)
+                .stream()
+                .map(this::determineBean)
+                .filter(Objects::nonNull)
+                .collect(toList());
 
         // group by first letter of the title.
         SortedMap<String, List<HippoBean>> map
@@ -81,6 +87,15 @@ public class AtoZComponent extends BaseHstComponent {
                 .forEach(letter -> map.putIfAbsent(letter, emptyList()));
 
         return map;
+    }
+
+    private HippoBean determineBean(HippoBean bean) {
+        if (!bean.isHippoFolderBean()) {
+            return bean;
+        }
+
+        HippoBean indexBean = bean.getBean("index");
+        return indexBean == null ? null : indexBean;
     }
 
     private String firstLetter(HippoBean bean) {

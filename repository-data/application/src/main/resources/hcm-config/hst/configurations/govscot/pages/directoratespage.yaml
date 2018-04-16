@@ -1,0 +1,14 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/directoratespage:
+      jcr:primaryType: hst:component
+      hst:componentclassname: scot.gov.www.components.AtoZComponent
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.AtoZComponent
+        hst:template: directorates-list
+        /side-menu:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.AboutMenu
+          hst:template: about.side-menu
