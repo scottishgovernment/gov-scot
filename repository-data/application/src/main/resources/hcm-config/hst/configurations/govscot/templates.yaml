@@ -86,3 +86,6 @@ definitions:
       /topics-list:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/topics-list.ftl
+      /topic:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/topic.ftl
