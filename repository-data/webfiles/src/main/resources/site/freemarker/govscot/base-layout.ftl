@@ -78,6 +78,7 @@
     <@hst.include ref="footer"/>
 
     <script src="<@hst.webfile path="/assets/scripts/global.js"/>" type="text/javascript"></script>
+    <script defer src="<@hst.link path="/assets/scripts/vendor/svgxuse.min.js"/>"></script>
     <@hst.headContributions categoryIncludes="footerScripts" xhtml=true/>
 
 </body>
