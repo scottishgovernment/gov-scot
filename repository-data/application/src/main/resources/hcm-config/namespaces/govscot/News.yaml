@@ -93,7 +93,7 @@ definitions:
           hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
           govscot:updatedDate: 0001-01-01T12:00:00Z
           govscot:externalId: ''
-          govscot:policyTags: ['']
+          govscot:policyTags: []
           govscot:publicationDate: 0001-01-01T12:00:00Z
           /govscot:content:
             jcr:primaryType: hippostd:html

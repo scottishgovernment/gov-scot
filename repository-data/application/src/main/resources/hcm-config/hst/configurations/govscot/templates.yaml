@@ -95,3 +95,12 @@ definitions:
       /groups-list:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/groups-list.ftl
+      /filteredlist.page:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/filteredlist/page.ftl
+      /filteredlist.side-filter:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/filteredlist/filter.ftl
+      /filteredlist.results:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/filteredlist/results.ftl
