@@ -11,10 +11,18 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 8f568148-f48d-459a-a379-e6602b397007
+          jcr:uuid: 803c7f27-9523-4028-8b12-1767451c38ef
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /responsibleRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:responsibleRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -30,12 +38,19 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 6f473041-dcab-4a53-a137-25fcce184edd
+          jcr:uuid: 8de00065-82be-49f9-9d61-a62543ae0e6b
           hippostdpubwf:lastModificationDate: 2018-01-26T11:27:44.600Z
           hippostdpubwf:creationDate: 2018-01-26T11:27:44.600Z
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: |-
+              <html>
+               <head></head>
+               <body></body>
+              </html>
+          /govscot:responsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -108,5 +123,14 @@ definitions:
             hint: Notes about the content for future editors
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /responsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Responsible Roles
+            field: responsibleRole
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
