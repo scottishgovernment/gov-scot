@@ -105,7 +105,6 @@ public class TopicComponent extends BaseHstComponent {
         }
 
         Filter filter = query.createFilter();
-        query.setFilter(filter);
         adder.add(filter);
     }
 
