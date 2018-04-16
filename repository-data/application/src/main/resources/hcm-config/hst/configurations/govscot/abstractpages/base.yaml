@@ -27,3 +27,4 @@ definitions:
       /breadcrumb:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/breadcrumb
+        hst:suppresswastemessage: true
