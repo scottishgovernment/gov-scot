@@ -31,7 +31,7 @@ public class DirectorateComponent extends BaseHstComponent {
             HippoBean baseBean = context.getSiteContentBaseBean();
             HstQuery policyQuery = ContentBeanUtils.createIncomingBeansQuery(
                     document, baseBean, "*/@hippo:docbase", Policy.class, false);
-            policyQuery.addOrderByDescending("govscot:title");
+            policyQuery.addOrderByAscending("govscot:title");
             HstQueryResult policies = policyQuery.execute();
             request.setAttribute("policies", policies.getHippoBeans());
         } catch (QueryException e) {
