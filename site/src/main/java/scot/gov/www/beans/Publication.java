@@ -64,4 +64,9 @@ public class Publication extends AttributableContent {
     public String getPublicationType() {
         return getProperty("govscot:publicationType");
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:officialdate")
+    public Calendar getOfficialdate() {
+        return getProperty("govscot:officialdate");
+    }
 }
