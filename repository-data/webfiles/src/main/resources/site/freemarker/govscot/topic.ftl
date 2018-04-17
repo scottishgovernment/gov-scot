@@ -214,7 +214,7 @@
             <div class="expandable-item__body">
 
                 <ul class="person-list grid"><!--
-                    <#list roles as role>
+                    <#list document.responsibleRoles as role>
                     --><li class="grid__item  medium--six-twelfths  person  person--small">
                             <h4 class="person__name">${role.incumbent.title}</h4>
                             <p class="person__roles"><a href="<@hst.link hippobean=role/>">${role.title}</a></p>

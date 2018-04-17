@@ -51,18 +51,18 @@ public class TopicComponent extends BaseHstComponent {
                     false);
             query.addOrderByAscending("govscot:title");
             HippoBeanIterator policies = executeQueryLoggingException(query, request, "policies");
-            populatePolicies(policies, request);
+            populateDirectorates(policies, request);
         } catch (QueryException e) {
             LOG.warn("Unable to get policies for topic {}", topic.getPath(), e);
         }
     }
 
-    private void populatePolicies(HippoBeanIterator policies, HstRequest request) {
+    private void populateDirectorates(HippoBeanIterator policies, HstRequest request) {
         // populate the directorates responsible for policies into a map - this will remove any duplicates
         Map<String, HippoBean> directoratesById = new HashMap<>();
         while (policies.hasNext()) {
             Policy policy = (Policy) policies.nextHippoBean();
-            directoratesById.put(policy.getIdentifier(), policy.getResponsibleDirectorate());
+            directoratesById.put(policy.getResponsibleDirectorate().getIdentifier(), policy.getResponsibleDirectorate());
             for (HippoBean directorate : policy.getSecondaryResponsibleDirectorate()) {
                 directoratesById.put(directorate.getIdentifier(), directorate);
             }
@@ -71,7 +71,7 @@ public class TopicComponent extends BaseHstComponent {
         // now add them to a list and sort them by name
         List<HippoBean> directorates = directoratesById.values()
                 .stream()
-                .sorted(comparing(HippoBean::getName))
+                .sorted(comparing(bean -> bean.getProperty("govscot:title")))
                 .collect(toList());
         request.setAttribute("directorates", directorates);
     }
