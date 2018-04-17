@@ -4,10 +4,10 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.exceptions.FilterException;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -15,6 +15,13 @@ import org.hippoecm.hst.util.ContentBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 
 public class TopicComponent extends BaseHstComponent {
 
@@ -28,23 +35,57 @@ public class TopicComponent extends BaseHstComponent {
         Topic topic = context.getContentBean(Topic.class);
         request.setAttribute("document", topic);
 
-        populatePolicies(base, topic, request);
+        populatePoliciesAndDirectorates(base, topic, request);
         populateNews(base, topic, request);
         populateConsultations(base, topic, request);
         populatePublications(base, topic, request);
     }
 
-    private void populatePolicies(HippoBean base, Topic topic, HstRequest request) {
-        HstQuery query = topicLinkedBeansQuery(topic, base, Policy.class);
-        query.addOrderByAscending("govscot:title");
-        executeQueryLoggingException(query, request, "policies");
+    private void populatePoliciesAndDirectorates(HippoBean base, Topic topic, HstRequest request) {
+        try {
+            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
+                    topic,
+                    base,
+                    "*/@hippo:docbase",
+                    Policy.class,
+                    false);
+            query.addOrderByAscending("govscot:title");
+            HippoBeanIterator policies = executeQueryLoggingException(query, request, "policies");
+            populatePolicies(policies, request);
+        } catch (QueryException e) {
+            LOG.warn("Unable to get policies for topic {}", topic.getPath(), e);
+        }
+    }
+
+    private void populatePolicies(HippoBeanIterator policies, HstRequest request) {
+        // populate the directorates responsible for policies into a map - this will remove any duplicates
+        Map<String, HippoBean> directoratesById = new HashMap<>();
+        while (policies.hasNext()) {
+            Policy policy = (Policy) policies.nextHippoBean();
+            directoratesById.put(policy.getIdentifier(), policy.getResponsibleDirectorate());
+            for (HippoBean directorate : policy.getSecondaryResponsibleDirectorate()) {
+                directoratesById.put(directorate.getIdentifier(), directorate);
+            }
+        }
+
+        // now add them to a list and sort them by name
+        List<HippoBean> directorates = directoratesById.values()
+                .stream()
+                .sorted(comparing(HippoBean::getName))
+                .collect(toList());
+        request.setAttribute("directorates", directorates);
     }
 
     private void populateNews(HippoBean base, Topic topic, HstRequest request) {
         HstQuery query = topicLinkedBeansQuery(topic, base, News.class);
         query.addOrderByDescending("govscot:publishedDate");
         query.setLimit(3);
-        executeQueryLoggingException(query, request, "news");
+
+        try {
+            executeQueryLoggingException(query, request, "news");
+        } catch (QueryException e) {
+            LOG.warn("Unable to get News for topic {}", topic.getPath(), e);
+        }
     }
 
     private void populateConsultations(HippoBean base, Topic topic, HstRequest request) {
@@ -55,12 +96,11 @@ public class TopicComponent extends BaseHstComponent {
         try {
             Filter filter = query.createFilter();
             filter.addContains("govscot:publicationType", "consultation-paper");
+            executeQueryLoggingException(query, request, "consultations");
             ((Filter) query.getFilter()).addAndFilter(filter);
-        } catch (FilterException e) {
-            LOG.error("Failed to filter results of consultation query", e);
+        } catch (QueryException e) {
+            LOG.error("Unable to get Consultations for topic {}", topic.getPath(), e);
         }
-
-        executeQueryLoggingException(query, request, "consultations");
     }
 
     private void populatePublications(HippoBean base, Topic topic, HstRequest request) {
@@ -72,11 +112,10 @@ public class TopicComponent extends BaseHstComponent {
             Filter filter = query.createFilter();
             filter.addNotContains("govscot:publicationType", "consultation-paper");
             ((Filter) query.getFilter()).addAndFilter(filter);
-        } catch (FilterException e) {
-            LOG.error("Failed to filter results of publication query", e);
+            executeQueryLoggingException(query, request, "publications");
+        } catch (QueryException e) {
+            LOG.error("Unable to get Publications for topic {}", topic.getPath(), e);
         }
-
-        executeQueryLoggingException(query, request, "publications");
     }
 
     private HstQuery topicLinkedBeansQuery(Topic topic, HippoBean base, Class linkedClass) {
@@ -93,14 +132,14 @@ public class TopicComponent extends BaseHstComponent {
         }
     }
 
-    private void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
-        try {
-            HstQueryResult result = query.execute();
-            request.setAttribute(name, result.getHippoBeans());
-        } catch (QueryException e) {
-            LOG.error("Failed to get {}", name, e);
-        }
+    private HippoBeanIterator executeQueryLoggingException(
+            HstQuery query,
+            HstRequest request,
+            String name)
+            throws QueryException {
+        HstQueryResult result = query.execute();
+        request.setAttribute(name, result.getHippoBeans());
+        return result.getHippoBeans();
     }
-
 
 }
