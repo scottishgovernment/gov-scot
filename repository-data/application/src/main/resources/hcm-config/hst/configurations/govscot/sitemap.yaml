@@ -72,6 +72,13 @@ definitions:
                 hst:componentconfigurationmappingnames: ['govscot:Directorate']
                 hst:componentconfigurationmappingvalues: ['hst:pages/directoratepage']
                 hst:relativecontentpath: ${parent}/index
+              /_default_:
+                jcr:primaryType: hst:sitemapitem
+                hst:componentconfigurationid: hst:pages/aboutpage
+                hst:componentconfigurationmappingnames: ['govscot:Person', 'govscot:Role']
+                hst:componentconfigurationmappingvalues: ['hst:pages/personpage',
+                  'hst:pages/rolepage']
+                hst:relativecontentpath: about/${1}/${2}/${3}/${4}
           /first-minister:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/featuredrolepage
