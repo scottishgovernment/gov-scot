@@ -71,6 +71,15 @@
             </configuration>
           </execution>
           <execution>
+            <id>npm svgsprites</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>run svgsprites</arguments>
+            </configuration>
+          </execution>
+          <execution>
             <id>webpack build</id>
             <goals>
               <goal>webpack</goal>

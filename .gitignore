@@ -12,3 +12,4 @@ site/src/main/webapp/assets/mygov/
 .project
 .settings/
 .vscode
+*.stack.svg

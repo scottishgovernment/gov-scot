@@ -8,7 +8,8 @@
     "url": "http://www.gov.scot/"
   },
   "scripts": {
-    "postshrinkwrap": ".bin/sealant @scottish-government/mygov-assets"
+    "postshrinkwrap": ".bin/sealant @scottish-government/mygov-assets",
+    "svgsprites": "svg-sprite ../../site/src/main/webapp/assets/images/icons/svg/*.svg --shape-id-separator='' -S -V=false -s=false --Ss=icons.stack.svg --stack-dest='../../site/src/main/webapp/assets/images/icons'"
   },
   "devDependencies": {
     "@scottish-government/mygov-assets": "latest",
@@ -19,6 +20,7 @@
     "jquery": "^1.12.4",
     "pikaday": "^1.4.0",
     "sealant": "0.0.2",
+    "svg-sprite": "^1.4.0",
     "webpack": "^1.13.1"
   }
 }
