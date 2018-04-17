@@ -9,6 +9,11 @@ import java.util.List;
 @Node(jcrType = "govscot:Topic")
 public class Topic extends SimpleContent {
 
+    @HippoEssentialsGenerated(internalName = "govscot:featuredItems")
+    public List<HippoBean> getFeaturedItems() {
+        return getLinkedBeans("govscot:featuredItems", HippoBean.class);
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:responsibleRole")
     public List<HippoBean> getResponsibleRoles() {
         return getLinkedBeans("govscot:responsibleRole", HippoBean.class);
