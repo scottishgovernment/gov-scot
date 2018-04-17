@@ -4,9 +4,6 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import java.util.List;
-import org.hippoecm.hst.content.beans.standard.HippoBean;
-
-import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:Topic")
 @Node(jcrType = "govscot:Topic")
