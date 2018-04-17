@@ -53,10 +53,13 @@ public class TopicComponent extends BaseHstComponent {
         query.setLimit(3);
 
         try {
-            addFilter(query, filter -> filter.addContains("govscot:publicationType", "consultation"));
+            Filter filter = query.createFilter();
+            filter.addContains("govscot:publicationType", "consultation-paper");
+            ((Filter) query.getFilter()).addAndFilter(filter);
         } catch (FilterException e) {
             LOG.error("Failed to filter results of consultation query", e);
         }
+
         executeQueryLoggingException(query, request, "consultations");
     }
 
@@ -64,11 +67,15 @@ public class TopicComponent extends BaseHstComponent {
         HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
         query.addOrderByDescending("govscot:publicationDate");
         query.setLimit(3);
+
         try {
-            addFilter(query, filter -> filter.addNotContains("govscot:publicationType", "consultation"));
+            Filter filter = query.createFilter();
+            filter.addNotContains("govscot:publicationType", "consultation-paper");
+            ((Filter) query.getFilter()).addAndFilter(filter);
         } catch (FilterException e) {
-            LOG.error("Failed to filter results of consultation query", e);
+            LOG.error("Failed to filter results of publication query", e);
         }
+
         executeQueryLoggingException(query, request, "publications");
     }
 
@@ -84,20 +91,6 @@ public class TopicComponent extends BaseHstComponent {
             LOG.warn("Unable to get linked beans for topic {}", topic.getPath(), e);
             return null;
         }
-    }
-
-    private void addFilter(HstQuery query, FilterAdder adder) throws FilterException {
-        if (adder == null) {
-            return;
-        }
-
-        Filter filter = query.createFilter();
-        adder.add(filter);
-    }
-
-    @FunctionalInterface
-    public interface FilterAdder {
-        void add(Filter filter) throws FilterException;
     }
 
     private void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {

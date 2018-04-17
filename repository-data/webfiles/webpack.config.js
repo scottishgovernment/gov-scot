@@ -12,6 +12,7 @@ module.exports = {
 
         // format-specific entry points
         'home':                         './src/scripts/govscot/format.home.js',
+        'topic':                        './src/scripts/govscot/format.topic.js',
         'policy':                       './src/scripts/govscot/format.policy.js'
     },
 

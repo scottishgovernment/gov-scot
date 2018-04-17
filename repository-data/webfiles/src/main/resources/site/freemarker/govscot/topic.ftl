@@ -110,19 +110,18 @@
                             <a href="<@hst.link hippobean=publication />" data-gtm="news-${publication?index}" title="${publication.title}">${publication.title}</a>
                         </h3>
                         <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                        <#list publication.topics as topic>
-                            <li>${topic.title}</li>
-                        </#list>
                     </article>
                 </#list>
+            <#else>
+                <p>There are no publications relating to this topic.</p>
             </#if>
         </div>
 
         <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="/publications/?topics={{#contentItem._embedded.topics}}{{name}}{{/contentItem._embedded.topics}}"
+        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?topics=${document.title}'/>"
            data-gtm="all-pubs">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="/assets/images/icons/svg/sprite.stack.svg#3x3grid"></use>
+                <use xlink:href="<@hst.link path='/assets/images/icons/svg/sprite.stack.svg#3x3grid'/>"></use>
             </svg>
             See all publications
         </a>
@@ -145,19 +144,18 @@
                             <a href="<@hst.link hippobean=consultation />" data-gtm="news-${consultation?index}" title="${consultation.title}">${consultation.title}</a>
                         </h3>
                         <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                        <#list consultation.topics as topic>
-                            <li>${topic.title}</li>
-                        </#list>
                     </article>
                 </#list>
+            <#else>
+                <p>There are no consultations relating to this topic.</p>
             </#if>
         </div>
 
         <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="/publications/?topics={{#contentItem._embedded.topics}}{{name}}{{/contentItem._embedded.topics}}&publicationTypes=consultation_paper|consultation_response"
+        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation_paper|consultation_response'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="/assets/images/icons/svg/sprite.stack.svg#3x3grid"></use>
+                <use xlink:href="<@hst.link path='/assets/images/icons/svg/sprite.stack.svg#3x3grid'/>"></use>
             </svg>
             See all consultations
         </a>
@@ -180,20 +178,20 @@
             </a>
         </div><div class="grid__item medium--four-twelfths">
         <!-- if you're changing this link remember to also change the mobile equivalent above -->
-        <a class="button  button--tertiary  tst-all-pubs" href="/publications/?topics={{#contentItem._embedded.topics}}{{name}}{{/contentItem._embedded.topics}}"
+        <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/?topics=${document.title}'/>"
            data-gtm="all-pubs">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="/assets/images/icons/svg/sprite.stack.svg#3x3grid"></use>
+                <use xlink:href="<@hst.link path='/assets/images/icons/svg/sprite.stack.svg#3x3grid'/>"></use>
             </svg>
             See all publications
         </a>
     </div><div class="grid__item medium--four-twelfths">
         <!-- if you're changing this link remember to also change the mobile equivalent above -->
         <a class="button  button--tertiary  tst-all-cons"
-           href="/publications/?topics={{#contentItem._embedded.topics}}{{name}}{{/contentItem._embedded.topics}}&publicationTypes=consultation_paper|consultation_response"
+           href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation_paper|consultation_response'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="/assets/images/icons/svg/sprite.stack.svg#3x3grid"></use>
+                <use xlink:href="<@hst.link path='/assets/images/icons/svg/sprite.stack.svg#3x3grid'/>"></use>
             </svg>
             See all consultations
         </a>
@@ -208,38 +206,38 @@
     <div class="expandable  topic-expandable">
         <div class="expandable-item  expandable-item--open  expandable-item--init-open" id="people-expandable">
             <button type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
-                <h3 class="expandable-item__title">{{contentItem.peopleSectionTitle}}</h3>
+                <h3 class="expandable-item__title">${document.peopleSectionTitle!"Cabinet Secretary and Ministers"}</h3>
                 <span class="expandable-item__icon"></span>
             </button>
 
             <div class="expandable-item__body">
 
                 <ul class="person-list grid"><!--
-          {{#roles}}
-        --><li class="grid__item  medium--six-twelfths  person  person--small">
-                    <h4 class="person__name">{{name}}</h4>
-                    <p class="person__roles"><a href={{url}}>{{title}}</a></p>
-                </li><!--
-          {{/roles}}
-        --></ul>
+                    <#list roles as role>
+                    --><li class="grid__item  medium--six-twelfths  person  person--small">
+                            <h4 class="person__name">${role.incumbent.title}</h4>
+                            <p class="person__roles"><a href="<@hst.link hippobean=role/>">${role.title}</a></p>
+                        </li><!--
+                    </#list>
+             --></ul>
             </div>
         </div>
         <!-- /end .expandable-item -->
 
         <div class="expandable-item" id="directorate-expandable">
             <button type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
-                <h3 class="expandable-item__title">{{contentItem.directoratesSectionTitle}}</h3>
+                <h3 class="expandable-item__title">${document.directoratesSectionTitle!"Directorates"}</h3>
                 <span class="expandable-item__icon"></span>
             </button>
 
             <div class="expandable-item__body">
 
                 <ul class="directorate-list  column-list  column-list--not-small  column-list--2">
-                    {{#directorates}}
-                    <li class="directorate-list__item  column-list__item">
-                        <a class="directorate-list__link" href={{url}}>{{title}}</a>
-                    </li>
-                    {{/directorates}}
+                    <#list directorates as directorate>
+                        <li class="directorate-list__item  column-list__item">
+                            <a class="directorate-list__link" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
+                        </li>
+                    </#list>
                 </ul>
             </div>
         </div>
@@ -250,5 +248,6 @@
 
 </section>
 
-{{> footer-scripts formatScriptPath="/assets/scripts/topic.js"}}
-
+<@hst.headContribution category="footerScripts">
+    <script src="<@hst.webfile path="/assets/scripts/topic.js"/>" type="text/javascript"></script>
+</@hst.headContribution>
