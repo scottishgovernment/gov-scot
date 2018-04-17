@@ -90,7 +90,7 @@ definitions:
           hst:relativecontentpath: ${parent}/${1}
       /groups:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/contentlist
+        hst:componentconfigurationid: hst:pages/groupspage
         hst:relativecontentpath: groups
         /_default_:
           jcr:primaryType: hst:sitemapitem

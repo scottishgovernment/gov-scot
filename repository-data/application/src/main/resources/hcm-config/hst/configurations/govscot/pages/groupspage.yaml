@@ -1,0 +1,10 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/groupspage:
+      jcr:primaryType: hst:component
+      hst:componentclassname: scot.gov.www.components.AtoZComponent
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.AtoZComponent
+        hst:template: groups-list

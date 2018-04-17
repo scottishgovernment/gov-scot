@@ -11,3 +11,4 @@ site/src/main/webapp/assets/mygov/
 .classpath
 .project
 .settings/
+.vscode
