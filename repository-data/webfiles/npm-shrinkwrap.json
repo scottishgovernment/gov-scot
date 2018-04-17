@@ -2,10 +2,6 @@
   "name": "gov-scot",
   "version": "0.0.0",
   "dependencies": {
-    "Base64": {
-      "version": "0.2.1",
-      "dev": true
-    },
     "acorn": {
       "version": "3.3.0",
       "dev": true
@@ -63,7 +59,7 @@
       "dev": true
     },
     "async": {
-      "version": "1.5.2",
+      "version": "2.6.0",
       "dev": true
     },
     "async-each": {
@@ -87,7 +83,7 @@
       "dev": true
     },
     "babel-core": {
-      "version": "6.18.2",
+      "version": "6.26.0",
       "dev": true
     },
     "babel-generator": {
@@ -131,7 +127,7 @@
       "dev": true
     },
     "babel-loader": {
-      "version": "6.2.7",
+      "version": "6.4.1",
       "dev": true
     },
     "babel-messages": {
@@ -239,17 +235,11 @@
       "dev": true
     },
     "babel-preset-es2015": {
-      "version": "6.18.0",
+      "version": "6.24.1",
       "dev": true
     },
     "babel-register": {
       "version": "6.26.0",
-      "dependencies": {
-        "babel-core": {
-          "version": "6.26.0",
-          "dev": true
-        }
-      },
       "dev": true
     },
     "babel-runtime": {
@@ -277,7 +267,7 @@
       "dev": true
     },
     "base64-js": {
-      "version": "1.2.1",
+      "version": "1.2.3",
       "dev": true
     },
     "bcrypt-pbkdf": {
@@ -309,6 +299,10 @@
       "version": "1.8.5",
       "dev": true
     },
+    "browserify-aes": {
+      "version": "0.4.0",
+      "dev": true
+    },
     "browserify-zlib": {
       "version": "0.1.4",
       "dev": true
@@ -317,8 +311,12 @@
       "version": "4.9.1",
       "dev": true
     },
+    "builtin-status-codes": {
+      "version": "3.0.0",
+      "dev": true
+    },
     "camelcase": {
-      "version": "1.2.1",
+      "version": "4.1.0",
       "dev": true
     },
     "caseless": {
@@ -331,12 +329,6 @@
     },
     "chalk": {
       "version": "1.1.3",
-      "dependencies": {
-        "supports-color": {
-          "version": "2.0.0",
-          "dev": true
-        }
-      },
       "dev": true
     },
     "chokidar": {
@@ -344,17 +336,21 @@
       "dev": true
     },
     "cliui": {
-      "version": "2.1.0",
+      "version": "4.0.0",
       "dependencies": {
-        "wordwrap": {
-          "version": "0.0.2",
+        "ansi-regex": {
+          "version": "3.0.0",
+          "dev": true
+        },
+        "strip-ansi": {
+          "version": "4.0.0",
           "dev": true
         }
       },
       "dev": true
     },
     "clone": {
-      "version": "1.0.3",
+      "version": "2.1.2",
       "dev": true
     },
     "clone-buffer": {
@@ -367,16 +363,6 @@
     },
     "cloneable-readable": {
       "version": "1.1.2",
-      "dependencies": {
-        "readable-stream": {
-          "version": "2.3.6",
-          "dev": true
-        },
-        "string_decoder": {
-          "version": "1.1.1",
-          "dev": true
-        }
-      },
       "dev": true
     },
     "co": {
@@ -416,7 +402,7 @@
       "dev": true
     },
     "constants-browserify": {
-      "version": "0.0.1",
+      "version": "1.0.0",
       "dev": true
     },
     "convert-source-map": {
@@ -424,7 +410,7 @@
       "dev": true
     },
     "core-js": {
-      "version": "2.5.3",
+      "version": "2.5.5",
       "dev": true
     },
     "core-util-is": {
@@ -446,7 +432,7 @@
       "dev": true
     },
     "crypto-browserify": {
-      "version": "3.2.8",
+      "version": "3.3.0",
       "dev": true
     },
     "css-select": {
@@ -1318,20 +1304,16 @@
       "version": "3.7.3",
       "dev": true
     },
-    "http-browserify": {
-      "version": "1.7.0",
-      "dev": true
-    },
     "http-signature": {
       "version": "1.2.0",
       "dev": true
     },
     "https-browserify": {
-      "version": "0.0.0",
+      "version": "0.0.1",
       "dev": true
     },
     "ieee754": {
-      "version": "1.1.8",
+      "version": "1.1.11",
       "dev": true
     },
     "indexof": {
@@ -1351,7 +1333,7 @@
       "dev": true
     },
     "invariant": {
-      "version": "2.2.2",
+      "version": "2.2.4",
       "dev": true
     },
     "invert-kv": {
@@ -1642,7 +1624,7 @@
       "dev": true
     },
     "moment": {
-      "version": "2.20.1",
+      "version": "2.22.1",
       "dev": true,
       "optional": true
     },
@@ -1660,16 +1642,8 @@
       "optional": true
     },
     "node-libs-browser": {
-      "version": "0.6.0",
+      "version": "0.7.0",
       "dependencies": {
-        "isarray": {
-          "version": "0.0.1",
-          "dev": true
-        },
-        "readable-stream": {
-          "version": "1.1.14",
-          "dev": true
-        },
         "string_decoder": {
           "version": "0.10.31",
           "dev": true
@@ -1726,7 +1700,7 @@
       "dev": true
     },
     "os-browserify": {
-      "version": "0.1.2",
+      "version": "0.2.1",
       "dev": true
     },
     "os-homedir": {
@@ -1798,7 +1772,7 @@
       "dev": true
     },
     "pikaday": {
-      "version": "1.4.0",
+      "version": "1.7.0",
       "dev": true
     },
     "pinkie": {
@@ -1886,7 +1860,7 @@
       "dev": true
     },
     "readable-stream": {
-      "version": "2.3.4",
+      "version": "2.3.6",
       "dev": true
     },
     "readdirp": {
@@ -2003,6 +1977,10 @@
       "version": "1.0.1",
       "dev": true
     },
+    "setimmediate": {
+      "version": "1.0.5",
+      "dev": true
+    },
     "sha.js": {
       "version": "2.2.6",
       "dev": true
@@ -2056,21 +2034,11 @@
       "dev": true
     },
     "stream-browserify": {
-      "version": "1.0.0",
-      "dependencies": {
-        "isarray": {
-          "version": "0.0.1",
-          "dev": true
-        },
-        "readable-stream": {
-          "version": "1.1.14",
-          "dev": true
-        },
-        "string_decoder": {
-          "version": "0.10.31",
-          "dev": true
-        }
-      },
+      "version": "2.0.1",
+      "dev": true
+    },
+    "stream-http": {
+      "version": "2.8.1",
       "dev": true
     },
     "string-width": {
@@ -2088,7 +2056,7 @@
       "dev": true
     },
     "string_decoder": {
-      "version": "1.0.3",
+      "version": "1.1.1",
       "dev": true
     },
     "stringstream": {
@@ -2104,37 +2072,11 @@
       "dev": true
     },
     "supports-color": {
-      "version": "3.2.3",
+      "version": "2.0.0",
       "dev": true
     },
     "svg-sprite": {
       "version": "1.4.0",
-      "dependencies": {
-        "ansi-regex": {
-          "version": "3.0.0",
-          "dev": true
-        },
-        "async": {
-          "version": "2.6.0",
-          "dev": true
-        },
-        "cliui": {
-          "version": "4.0.0",
-          "dev": true
-        },
-        "find-up": {
-          "version": "2.1.0",
-          "dev": true
-        },
-        "strip-ansi": {
-          "version": "4.0.0",
-          "dev": true
-        },
-        "yargs": {
-          "version": "11.0.0",
-          "dev": true
-        }
-      },
       "dev": true
     },
     "svgo": {
@@ -2156,7 +2098,11 @@
       "dev": true
     },
     "timers-browserify": {
-      "version": "1.4.2",
+      "version": "2.0.8",
+      "dev": true
+    },
+    "to-arraybuffer": {
+      "version": "1.0.1",
       "dev": true
     },
     "to-fast-properties": {
@@ -2189,10 +2135,26 @@
       "dev": true
     },
     "uglify-js": {
-      "version": "2.6.4",
+      "version": "2.7.5",
       "dependencies": {
         "async": {
           "version": "0.2.10",
+          "dev": true
+        },
+        "camelcase": {
+          "version": "1.2.1",
+          "dev": true
+        },
+        "cliui": {
+          "version": "2.1.0",
+          "dev": true
+        },
+        "wordwrap": {
+          "version": "0.0.2",
+          "dev": true
+        },
+        "yargs": {
+          "version": "3.10.0",
           "dev": true
         }
       },
@@ -2207,7 +2169,7 @@
       "dev": true
     },
     "url": {
-      "version": "0.10.3",
+      "version": "0.11.0",
       "dependencies": {
         "punycode": {
           "version": "1.3.2",
@@ -2244,12 +2206,6 @@
     },
     "vinyl": {
       "version": "2.1.0",
-      "dependencies": {
-        "clone": {
-          "version": "2.1.2",
-          "dev": true
-        }
-      },
       "dev": true
     },
     "vm-browserify": {
@@ -2267,7 +2223,21 @@
       "dev": true
     },
     "webpack": {
-      "version": "1.13.1",
+      "version": "1.15.0",
+      "dependencies": {
+        "async": {
+          "version": "1.5.2",
+          "dev": true
+        },
+        "clone": {
+          "version": "1.0.4",
+          "dev": true
+        },
+        "supports-color": {
+          "version": "3.2.3",
+          "dev": true
+        }
+      },
       "dev": true
     },
     "webpack-core": {
@@ -2336,6 +2306,10 @@
       "version": "0.0.27",
       "dev": true
     },
+    "xtend": {
+      "version": "4.0.1",
+      "dev": true
+    },
     "y18n": {
       "version": "3.2.1",
       "dev": true
@@ -2345,17 +2319,17 @@
       "dev": true
     },
     "yargs": {
-      "version": "3.10.0",
+      "version": "11.0.0",
+      "dependencies": {
+        "find-up": {
+          "version": "2.1.0",
+          "dev": true
+        }
+      },
       "dev": true
     },
     "yargs-parser": {
       "version": "9.0.2",
-      "dependencies": {
-        "camelcase": {
-          "version": "4.1.0",
-          "dev": true
-        }
-      },
       "dev": true
     },
     "yauzl": {

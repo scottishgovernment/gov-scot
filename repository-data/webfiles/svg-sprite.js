@@ -1,5 +1,5 @@
 'use strict';
-//svg-sprite ../../site/src/main/webapp/assets/images/icons/svg/*.svg --shape-id-separator='' -S -V=false -s=false --Ss=icons.stack.svg --stack-dest='../../site/src/main/webapp/assets/images/icons'
+
 var SVGSpriter = require('svg-sprite'),
 path = require('path'),
 mkdirp = require('mkdirp'),
