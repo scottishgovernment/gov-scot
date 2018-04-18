@@ -8,6 +8,7 @@ File = require('vinyl'),
 glob = require('glob'),
 
 config = {
+    "log": "verbose",
     "shape": {
         "id": {
            "separator": ""
