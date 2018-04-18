@@ -18,9 +18,9 @@
 <section class="topics">
   <div class="az-list">
     <#list topicsByLetter as letter>
-      <div class="grid">
-        <div class="grid__item two-twelfths medium--one-ninth az-list__chunkName" id="az-list__A">${letter.letter}</div>
-        <div class="grid__item ten-twelfths medium--seven-ninth az-list__chunk">
+      <div class="grid"><!--
+        --><div class="grid__item two-twelfths medium--one-ninth az-list__chunkName" id="az-list__A">${letter.letter}</div><!--
+        --><div class="grid__item ten-twelfths medium--seven-ninth az-list__chunk">
           <ul class="az-list__list grid">
             <#list letter.topics as topic>
               <li class="az-list__item grid__item ">
@@ -56,8 +56,8 @@
             </#list>
             <#-- end letter.topics loop -->
           </ul>
-        </div>
-      </div>
+        </div><!--
+      --></div>
     </#list>
     <#-- end topicsByLetter loop -->
   </div>
