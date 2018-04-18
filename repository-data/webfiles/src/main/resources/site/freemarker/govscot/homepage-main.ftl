@@ -1,4 +1,5 @@
 <#include "../include/imports.ftl">
+<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <div class="wrapper hidden-xsmall">
     <div class="grid"><!--
@@ -89,7 +90,7 @@
         <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/topics/'/>"
            data-gtm="all-topics">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all topics
         </a>
@@ -121,7 +122,7 @@
         <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/'/>"
            data-gtm="all-pubs">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all publications
         </a>
@@ -154,7 +155,7 @@
         <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=consultation_paper|consultation_response'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all consultations
         </a>
@@ -166,7 +167,7 @@
         <!-- if you're changing this link remember to also change the mobile equivalent above -->
         <a class="button  button--tertiary  tst-all-topics" href="<@hst.link path='/topics/'/>"
            data-gtm="all-topics"><svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-            <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+            <use xlink:href="${iconspath}#3x3grid"></use>
         </svg>
             See all topics
         </a>
@@ -177,7 +178,7 @@
         <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/'/>"
            data-gtm="all-pubs">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all publications
         </a>
@@ -189,7 +190,7 @@
            href="<@hst.link path='/publications/?publicationTypes=consultation_paper|consultation_response'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all consultations
         </a>
@@ -207,7 +208,7 @@
 
             <a data-gtm="link-note-sub" class="homepage-subscribe__link button  button--tertiary" href="http://register.scotland.gov.uk/Subscribe/Step1" data-gtm="news-subscribe">
                 <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium  mg-icon--right">
-                    <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#chevron-right'/>"></use>
+                    <use xlink:href="${iconspath}#chevron-right"></use>
                 </svg>
                 Subscribe
             </a>
@@ -232,7 +233,7 @@
         <a class="button  button--tertiary  tst-all-news" href="<@hst.link path='/news/'/>"
            data-gtm="all-news">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all news
         </a>

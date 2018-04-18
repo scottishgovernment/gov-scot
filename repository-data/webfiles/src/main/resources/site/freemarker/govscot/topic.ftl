@@ -1,4 +1,5 @@
 <#include "../include/imports.ftl">
+<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <header class="topic-header  {{#if contentItem.featureImage}}topic-header--has-image{{/if}}" id="page-content">
     <!--{{#if contentItem.featureImage}}-->
@@ -87,7 +88,7 @@
         <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/news/?topics=${document.title}'/>"
            data-gtm="all-news">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all news
         </a>
@@ -121,7 +122,7 @@
         <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?topics=${document.title}'/>"
            data-gtm="all-pubs">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all publications
         </a>
@@ -155,7 +156,7 @@
         <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation_paper|consultation_response'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all consultations
         </a>
@@ -172,7 +173,7 @@
             <a class="button  button--tertiary  tst-all-news" href="<@hst.link path='/news/?topics=${document.title}'/>"
                data-gtm="all-news">
                 <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                    <use xlink:href="${iconspath}#3x3grid"></use>
                 </svg>
                 See all news
             </a>
@@ -181,7 +182,7 @@
         <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/?topics=${document.title}'/>"
            data-gtm="all-pubs">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all publications
         </a>
@@ -191,7 +192,7 @@
            href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation_paper|consultation_response'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="<@hst.link path='/assets/images/icons/icons.stack.svg#3x3grid'/>"></use>
+                <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
             See all consultations
         </a>
