@@ -71,4 +71,6 @@ public class Person extends AttributableContent {
     public HippoHtml getPostalAddress() {
         return getHippoHtml("govscot:postalAddress");
     }
+
+    public String getLabel() { return "role"; }
 }

@@ -73,4 +73,6 @@ public class Policy extends AttributableContent {
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
     }
+
+    public String getLabel() { return "policy"; }
 }

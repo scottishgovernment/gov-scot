@@ -6,4 +6,6 @@ import org.hippoecm.hst.content.beans.Node;
 @HippoEssentialsGenerated(internalName = "govscot:PolicyInDetail")
 @Node(jcrType = "govscot:PolicyInDetail")
 public class PolicyInDetail extends SimpleContent {
+
+    public String getLabel() { return "policy"; }
 }

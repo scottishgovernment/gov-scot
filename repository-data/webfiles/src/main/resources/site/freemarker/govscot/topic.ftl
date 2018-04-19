@@ -23,6 +23,7 @@
 </ul>
 
 <#if document.featuredItems?has_content>
+
     <section id="featured-items" class="topic-block">
         <h2 class="emphasis  topic-block__title">Featured</h2>
 
@@ -30,27 +31,28 @@
             <#list document.featuredItems as item>
              --><li class="grid__item  medium--four-twelfths  listed-content-item  listed-content-item--dark  listed-content-item--small">
 
-                    <a href="{{url}}" title="{{{title}}}" class="listed-content-item__link">
+                    <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link">
                         <article class="listed-content-item__article">
-                            {{feature-image featureImage}}
+                            <#--{{feature-image featureImage}}-->
 
                             <header class="listed-content-item__heading">
-                                {{#if label}}
-                                <div class="listed-content-item__meta">
-                                    <div class="listed-content-item__meta-right">
-                                        <span class="listed-content-item__date">{{dateFormat date}}</span>
+                                <#if item.label?has_content>
+                                    <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
+                                    <div class="listed-content-item__meta">
+                                        <div class="listed-content-item__meta-right">
+                                            <span class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></span>
+                                        </div>
+                                        <div class="listed-content-item__meta-left">
+                                            <p class="listed-content-item__label  js-truncate" data-lines="1">${item.label}</p>
+                                        </div>
                                     </div>
-                                    <div class="listed-content-item__meta-left">
-                                        <p class="listed-content-item__label  js-truncate" data-lines="1">{{label}}</p>
-                                    </div>
-                                </div>
-                                {{/if}}
+                                </#if>
 
-                                <h3 class="listed-content-item__title  js-truncate" title="{{title}}">{{{title}}}</h3>
+                                <h3 class="listed-content-item__title  js-truncate" title="${item.title}">${item.title}</h3>
                             </header>
 
-                            <p class="listed-content-item__summary  hidden-small  hidden-xsmall  js-truncate" title="{{summary}}">
-                                {{{summary}}}
+                            <p class="listed-content-item__summary  hidden-small  hidden-xsmall  js-truncate" title="${item.summary}">
+                                ${item.summary}
                             </p>
                         </article>
                     </a>

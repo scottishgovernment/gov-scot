@@ -30,4 +30,6 @@ public class Role extends SimpleContent {
     public HippoBean getIncumbent() {
         return getLinkedBean("govscot:incumbent", HippoBean.class);
     }
+
+    public String getLabel() { return "role"; }
 }
