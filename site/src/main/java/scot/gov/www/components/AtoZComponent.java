@@ -10,6 +10,7 @@ import scot.gov.www.beans.LettersAndBeans;
 import java.util.*;
 
 import static java.util.Collections.emptyList;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
@@ -48,6 +49,12 @@ public class AtoZComponent extends BaseHstComponent {
         } else {
             lettersAndBeans.add(current);
         }
+
+        // sort each sublist.
+        lettersAndBeans.stream()
+                .map(LettersAndBeans::getBeans)
+                .forEach(list -> list.sort(comparing(item -> item.getProperty("govscot:title"))));
+
         return lettersAndBeans;
     }
 
@@ -65,7 +72,7 @@ public class AtoZComponent extends BaseHstComponent {
         lettersAndBeans.setLabel(label);
     }
 
-    private SortedMap<String, List<HippoBean>>  beansByFirstLetter(HstRequest request) {
+    private SortedMap<String, List<HippoBean>> beansByFirstLetter(HstRequest request) {
         List<HippoBean> beans = request
                 .getRequestContext()
                 .getContentBean()
