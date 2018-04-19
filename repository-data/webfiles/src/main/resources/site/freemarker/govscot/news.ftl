@@ -14,7 +14,7 @@
                 <section class="content-data">
                     <div class="content-data__list">
                         <span class="content-data__label">Published:</span>
-                        <span class="content-data__value"><strong><@fmt.formatDate value=document.publishedDate.time type="both" pattern="dd MMM yyyy HH:mm"/></strong></span>
+                        <span class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></strong></span>
                     </div>
 
                     <#if document.topics?first??>

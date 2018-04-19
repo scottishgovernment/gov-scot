@@ -58,7 +58,7 @@ public class HomeComponent extends BaseHstComponent {
 
     private void populateNews(HippoBean scope, HstRequest request) {
         HstQuery query = HstQueryBuilder.create(scope)
-                .ofTypes(News.class).limit(3).orderByDescending("govscot:publishedDate").build();
+                .ofTypes(News.class).limit(3).orderByDescending("govscot:publicationDate").build();
         executeQueryLoggingException(query, request, "news");
     }
 

@@ -60,7 +60,7 @@ public class PolicyLatestComponent extends BaseHstComponent {
         HstQuery query = HstQueryBuilder.create(scope)
                 .ofTypes(News.class)
                 .where(or(tagConstraints(policy)))
-                .orderByDescending("govscot:publishedDate").build();
+                .orderByDescending("govscot:publicationDate").build();
         try {
             StopWatch stopWatch = new StopWatch();
             stopWatch.start();

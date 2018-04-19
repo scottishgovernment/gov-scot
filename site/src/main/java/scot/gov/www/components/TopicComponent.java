@@ -78,8 +78,6 @@ public class TopicComponent extends BaseHstComponent {
 
     private void populateNews(HippoBean base, Topic topic, HstRequest request) {
         HstQuery query = topicLinkedBeansQuery(topic, base, News.class);
-        query.addOrderByDescending("govscot:publishedDate");
-        query.setLimit(3);
 
         try {
             executeQueryLoggingException(query, request, "news");
@@ -90,14 +88,12 @@ public class TopicComponent extends BaseHstComponent {
 
     private void populateConsultations(HippoBean base, Topic topic, HstRequest request) {
         HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
-        query.addOrderByDescending("govscot:publicationDate");
-        query.setLimit(3);
 
         try {
             Filter filter = query.createFilter();
             filter.addContains("govscot:publicationType", "consultation-paper");
-            executeQueryLoggingException(query, request, "consultations");
             ((Filter) query.getFilter()).addAndFilter(filter);
+            executeQueryLoggingException(query, request, "consultations");
         } catch (QueryException e) {
             LOG.error("Unable to get Consultations for topic {}", topic.getPath(), e);
         }
@@ -105,8 +101,6 @@ public class TopicComponent extends BaseHstComponent {
 
     private void populatePublications(HippoBean base, Topic topic, HstRequest request) {
         HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
-        query.addOrderByDescending("govscot:publicationDate");
-        query.setLimit(3);
 
         try {
             Filter filter = query.createFilter();
@@ -120,12 +114,15 @@ public class TopicComponent extends BaseHstComponent {
 
     private HstQuery topicLinkedBeansQuery(Topic topic, HippoBean base, Class linkedClass) {
         try {
-            return ContentBeanUtils.createIncomingBeansQuery(
+            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
                     topic,
                     base,
                     "*/@hippo:docbase",
                     linkedClass,
                     false);
+            query.addOrderByDescending("govscot:publicationDate");
+            query.setLimit(3);
+            return query;
         } catch (QueryException e) {
             LOG.warn("Unable to get linked beans for topic {}", topic.getPath(), e);
             return null;

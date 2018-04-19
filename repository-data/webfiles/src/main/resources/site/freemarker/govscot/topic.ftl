@@ -96,7 +96,7 @@
                       <h3 class="js-truncate  homepage-publication__title">
                           <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index}" title="${newsItem.title}">${newsItem.title}</a>
                       </h3>
-                      <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publishedDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                      <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                     </article>
                 </#list>
             <#else>
