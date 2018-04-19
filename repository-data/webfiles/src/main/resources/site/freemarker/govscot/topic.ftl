@@ -8,7 +8,7 @@
     <h1 class="article-header  topic-header__title">${document.title}</h1>
 </header>
 
-<input id="topicName" type="hidden" value="{{#contentItem._embedded.topics}}{{name}}{{/contentItem._embedded.topics}}"/>
+<input id="topicName" type="hidden" value="${document.title}"/>
 
 <div class="body-content  leader--first-para">
     <@hst.html hippohtml=document.content />
@@ -33,7 +33,25 @@
 
                     <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link">
                         <article class="listed-content-item__article">
-                            <#--{{feature-image featureImage}}-->
+                            <#-- use news as default image -->
+                            <#assign imgLabel = 'news'/>
+                            <#if item.label == 'news'>
+                                <#assign imgLabel = 'news'/>
+                            <#elseif item.label?contains('Consultation')>
+                                <#assign imgLabel = 'cons'/>
+                            <#elseif item.publicationType??>
+                                <#assign imgLabel = 'pubs'/>
+                            </#if>
+                            <#if imgLabel??>
+                                <img src="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/>"
+                                     srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
+                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
+                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
+                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
+                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
+                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
+                                     sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px" alt="" class="listed-content-item__feature-image">
+                            </#if>
 
                             <header class="listed-content-item__heading">
                                 <#if item.label?has_content>
