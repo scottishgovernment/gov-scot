@@ -1,13 +1,15 @@
 'use strict';
 
-var SVGSpriter = require('svg-sprite'),
-path = require('path'),
-mkdirp = require('mkdirp'),
-fs = require('fs'),
-File = require('vinyl'),
-glob = require('glob'),
+let SVGSpriter = require('svg-sprite');
+let path = require('path');
+let mkdirp = require('mkdirp');
+let fs = require('fs');
+let File = require('vinyl');
+let glob = require('glob');
 
-config = {
+let destpath = path.resolve('../../site/src/main/webapp/assets/images/icons/');
+
+let config = {
     "log": "verbose",
     "shape": {
         "id": {
@@ -16,12 +18,13 @@ config = {
     },
     "mode": {
         "stack": {
-            "dest": "../../site/src/main/webapp/assets/images/icons",
+            "dest": destpath,
             "sprite": "icons.stack.svg"
         }
     }
-},
-spriter = new SVGSpriter(config);
+};
+
+let spriter = new SVGSpriter(config);
 
 // Register some SVG files with the spriter
 let cwd = path.resolve('../../site/src/main/webapp/assets/images/icons/svg/');
