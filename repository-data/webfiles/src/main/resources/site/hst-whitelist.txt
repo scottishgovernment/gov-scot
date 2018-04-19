@@ -26,3 +26,4 @@ css/
 fonts/
 js/
 images/
+icons/
