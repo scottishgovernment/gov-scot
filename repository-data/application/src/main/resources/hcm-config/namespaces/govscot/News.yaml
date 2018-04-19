@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 16f45201-1c0f-45dd-ac09-7f1811c3476a
+          jcr:uuid: 212ac5f3-d458-44f0-9818-98303699cd2f
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -45,7 +45,7 @@ definitions:
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:publishedDate
+            hipposysedit:path: govscot:publicationDate
             hipposysedit:primary: false
             hipposysedit:type: Date
           /string:
@@ -88,13 +88,13 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 1201697d-6f90-4983-b6e0-fd696c61ad15
+          jcr:uuid: 9d298ae2-5710-42ed-89c8-080629cc0b7f
           hippostdpubwf:lastModificationDate: 2018-01-26T13:27:12.677Z
           hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
           govscot:updatedDate: 0001-01-01T12:00:00Z
-          govscot:publishedDate: 0001-01-01T12:00:00Z
           govscot:externalId: ''
           govscot:policyTags: ['']
+          govscot:publicationDate: 0001-01-01T12:00:00Z
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -113,7 +113,7 @@ definitions:
             govscot:url: ''
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -134,9 +134,9 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /publishedDate:
+          /publicationDate:
             jcr:primaryType: frontend:plugin
-            caption: Published Date
+            caption: Publication Date
             field: publishedDate
             hint: The date/time the document should be published to the website
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin

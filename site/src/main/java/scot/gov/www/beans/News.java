@@ -46,9 +46,9 @@ public class News extends SimpleContent {
         return getBean("govscot:heroImage", ExternalLink.class);
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:publishedDate")
-    public Calendar getPublishedDate() {
-        return getProperty("govscot:publishedDate");
+    @HippoEssentialsGenerated(internalName = "govscot:publicationDate")
+    public Calendar getPublicationDate() {
+        return getProperty("govscot:publicationDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:externalId")
