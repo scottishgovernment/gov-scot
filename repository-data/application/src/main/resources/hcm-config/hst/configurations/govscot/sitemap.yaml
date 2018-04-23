@@ -16,7 +16,7 @@ definitions:
       /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/topicslistpage
-        hst:relativecontentpath: topics
+        hst:relativecontentpath: topics/index
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicpage

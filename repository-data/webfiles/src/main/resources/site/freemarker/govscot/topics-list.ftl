@@ -3,17 +3,17 @@
 
 <div class="grid" id="page-content"><!--
   --><div class="grid__item medium--eight-twelfths">
-    <h1 class="article-header">Topics</h1>
+    <h1 class="article-header">${document.title}</h1>
   </div><!--
 --></div>
 
 <#if document??>
-  <#if document.content>
-    <div id="topics-intro">
-      <@hst.html hippohtml=document.content />
-    </div>
-  </#if>
+  <div id="topics-intro">
+    <@hst.html hippohtml=document.content />
+  </div>
 </#if>
+
+<@hst.include ref="list"/>
 
 <section class="topics">
   <div class="az-list">

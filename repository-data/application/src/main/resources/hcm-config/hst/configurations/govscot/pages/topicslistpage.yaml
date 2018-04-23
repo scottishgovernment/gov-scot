@@ -3,8 +3,11 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/topicslistpage:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
-      hst:componentclassname: scot.gov.www.components.TopicsComponent
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: scot.gov.www.components.TopicsComponent
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
         hst:template: topics-list
+        /list:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.TopicsComponent
+          hst:template: topics-list
