@@ -16,11 +16,15 @@ definitions:
       /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/topicslistpage
-        hst:relativecontentpath: topics/index
+        hst:relativecontentpath: topics
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicpage
           hst:relativecontentpath: ${parent}/${1}
+        /_index_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/topicslistpage
+          hst:relativecontentpath: ${parent}/index
       /news:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
