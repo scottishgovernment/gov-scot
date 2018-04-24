@@ -4,8 +4,6 @@ import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerat
 import org.hippoecm.hst.content.beans.Node;
 import java.util.Calendar;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import java.util.List;
-import org.hippoecm.hst.content.beans.standard.HippoResourceBean;
 
 @HippoEssentialsGenerated(internalName = "govscot:SpeechOrStatement")
 @Node(jcrType = "govscot:SpeechOrStatement")
