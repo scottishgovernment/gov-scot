@@ -14,6 +14,7 @@ module.exports = {
         'home':                         './src/scripts/govscot/format.home.js',
         'news-landing-page':            './src/scripts/govscot/format.news-landing-page.js',
         'topic':                        './src/scripts/govscot/format.topic.js',
+        'publication':                  './src/scripts/govscot/format.publication.js',
         'policy':                       './src/scripts/govscot/format.policy.js'
         
     },

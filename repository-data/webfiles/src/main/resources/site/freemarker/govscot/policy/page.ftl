@@ -9,7 +9,9 @@
                     <p class="article-header__label">Policy</p>
                     <h1 class="article-header__title">${index.title?html}</h1>
 
-                    <@hst.include ref="content-data"/>
+                    <section class="content-data">
+                        <#include '../common/content-data.ftl'/>
+                    </section>
                 </header>
             </div><!--
      --></div>

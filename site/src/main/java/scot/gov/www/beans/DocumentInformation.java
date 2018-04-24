@@ -45,7 +45,7 @@ public class DocumentInformation extends BaseDocument {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:size")
-    public String getSize() {
+    public Long getSize() {
         return getProperty("govscot:size");
     }
 }

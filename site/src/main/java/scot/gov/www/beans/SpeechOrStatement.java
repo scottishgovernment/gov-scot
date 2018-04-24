@@ -88,4 +88,5 @@ public class SpeechOrStatement extends AttributableContent {
         return getHippoHtml("govscot:contact");
     }
 
+    public String getLabel() { return "speech / ministerial statement"; }
 }

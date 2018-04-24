@@ -97,4 +97,7 @@ public class Minutes extends AttributableContent {
     public HippoHtml getExecutiveSummary() {
         return getHippoHtml("govscot:executiveSummary");
     }
+
+    public String getLabel() { return "minutes"; }
+
 }
