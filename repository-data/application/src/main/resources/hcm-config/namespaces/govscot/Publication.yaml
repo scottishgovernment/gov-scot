@@ -24,14 +24,6 @@ definitions:
             hipposysedit:path: govscot:isbn
             hipposysedit:primary: false
             hipposysedit:type: String
-          /images:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:images
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:resource
           /publicationDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -56,6 +48,30 @@ definitions:
             hipposysedit:path: govscot:officialdate
             hipposysedit:primary: false
             hipposysedit:type: CalendarDate
+          /html_:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contact
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /executveSummary:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:executiveSummary
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /html:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:epilogue
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -87,15 +103,15 @@ definitions:
           /govscot:responsibleRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:images:
-            jcr:primaryType: hippo:resource
-            hippo:filename: hippo:resource
-            jcr:data:
-              type: binary
-              resource: /namespaces/govscot/Publication/prototypes/prototype/images/data.bin
-            jcr:encoding: UTF-8
-            jcr:lastModified: 2008-03-26T12:03:00+01:00
-            jcr:mimeType: application/vnd.hippo.blank
+          /govscot:contact:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:epilogue:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:executiveSummary:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -161,11 +177,36 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /executiveSummary:
+            jcr:primaryType: frontend:plugin
+            caption: Executive summary
+            field: executveSummary
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
             hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /contact:
+            jcr:primaryType: frontend:plugin
+            caption: Contact
+            field: html_
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /epilogue:
+            jcr:primaryType: frontend:plugin
+            caption: Epilogue
+            field: html
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -253,14 +294,5 @@ definitions:
             hint: Notes about the content for future editors
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /images:
-            jcr:primaryType: frontend:plugin
-            caption: Images
-            field: images
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

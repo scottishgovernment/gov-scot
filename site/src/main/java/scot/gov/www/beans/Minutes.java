@@ -92,4 +92,9 @@ public class Minutes extends AttributableContent {
     public HippoHtml getEpilogue() {
         return getHippoHtml("govscot:epilogue");
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:executiveSummary")
+    public HippoHtml getExecutiveSummary() {
+        return getHippoHtml("govscot:executiveSummary");
+    }
 }

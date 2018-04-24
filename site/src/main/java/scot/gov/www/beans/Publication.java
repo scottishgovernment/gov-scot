@@ -3,12 +3,9 @@ package scot.gov.www.beans;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import java.util.List;
-import org.hippoecm.hst.content.beans.standard.HippoResourceBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
-
 import java.util.Calendar;
 import java.util.Map;
 
@@ -55,11 +52,6 @@ public class Publication extends AttributableContent {
         return getHippoHtml("govscot:notes");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:images")
-    public List<HippoResourceBean> getImages() {
-        return getChildBeansByName("govscot:images", HippoResourceBean.class);
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:publicationDate")
     public Calendar getPublicationDate() {
         return getProperty("govscot:publicationDate");
@@ -76,12 +68,25 @@ public class Publication extends AttributableContent {
     }
 
     public String getLabel() {
-        final ValueList publicationValueList =
-                SelectionUtil.getValueListByIdentifier("publicationTypes", RequestContextProvider.get());
-
+        final ValueList publicationValueList = SelectionUtil
+                .getValueListByIdentifier("publicationTypes",
+                        RequestContextProvider.get());
         Map publicationMap = SelectionUtil.valueListAsMap(publicationValueList);
-
         return publicationMap.get(this.getPublicationType()).toString();
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:contact")
+    public HippoHtml getContact() {
+        return getHippoHtml("govscot:contact");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:executiveSummary")
+    public HippoHtml getExecutiveSummary() {
+        return getHippoHtml("govscot:executiveSummary");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:epilogue")
+    public HippoHtml getEpilogue() {
+        return getHippoHtml("govscot:epilogue");
+    }
 }
