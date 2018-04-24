@@ -47,6 +47,22 @@ definitions:
             hipposysedit:path: govscot:actions
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /contact:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contact
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /epilogue:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:epilogue
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -65,11 +81,12 @@ definitions:
           govscot:publicationDate: 0001-01-01T12:00:00Z
           govscot:publicationType: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 511421f5-fa1d-4a57-9c14-2d5c2f98236e
+          jcr:uuid: 5f5cc674-7dfc-477d-b7c6-091fe8faf427
           hippostdpubwf:lastModificationDate: 2018-04-12T15:30:46.250+01:00
           hippostdpubwf:creationDate: 2018-04-12T15:30:46.250+01:00
           govscot:nextMeetingDate: 0001-01-01T12:00:00Z
           govscot:location: ''
+          govscot:officialdate: 0001-01-01T12:00:00Z
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -83,6 +100,12 @@ definitions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
           /govscot:actions:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:contact:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:epilogue:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -141,6 +164,15 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /officialdate:
+            jcr:primaryType: frontend:plugin
+            caption: Meeting date
+            field: officialdate
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /nextMeetingDate:
             jcr:primaryType: frontend:plugin
             caption: Next Meeting Date
@@ -160,9 +192,9 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Executive summary
             field: content
-            hint: The main content for the page
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -204,6 +236,24 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /contact:
+            jcr:primaryType: frontend:plugin
+            caption: Contact details
+            field: contact
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /epilogue:
+            jcr:primaryType: frontend:plugin
+            caption: Epilogue
+            field: epilogue
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /tags:
             jcr:primaryType: frontend:plugin
             caption: Tags
@@ -265,15 +315,6 @@ definitions:
             caption: Notes
             field: notes
             hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /images:
-            jcr:primaryType: frontend:plugin
-            caption: Images
-            field: images
-            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

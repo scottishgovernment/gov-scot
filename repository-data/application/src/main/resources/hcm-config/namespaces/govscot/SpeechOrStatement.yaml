@@ -28,9 +28,33 @@ definitions:
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:string
+            hipposysedit:path: govscot:speechDeliveredBy
             hipposysedit:primary: false
             hipposysedit:type: String
+          /executiveSummary:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:executiveSummary
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /epilogue:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:epilogue
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /contact:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contact
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -43,7 +67,6 @@ definitions:
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
           govscot:isbn: ''
-          govscot:string: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
           govscot:publicationType: ''
@@ -52,9 +75,10 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: ddc064a2-05dc-47ac-921f-3157fda68421
+          jcr:uuid: 49ad7123-7254-4566-87af-414653093466
           hippostdpubwf:lastModificationDate: 2018-04-12T15:41:01.916+01:00
           hippostdpubwf:creationDate: 2018-04-12T15:41:01.916+01:00
+          govscot:speechDeliveredBy: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -64,6 +88,15 @@ definitions:
           /govscot:responsibleRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:executiveSummary:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:epilogue:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:contact:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -128,13 +161,13 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /string:
+          /speechDeliveredBy:
             jcr:primaryType: frontend:plugin
-            caption: DeliveredBy
+            caption: Delivered by
             field: string
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /summary:
@@ -146,6 +179,15 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /executiveSummary:
+            jcr:primaryType: frontend:plugin
+            caption: Executive summary
+            field: executiveSummary
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
             caption: Content
@@ -153,6 +195,23 @@ definitions:
             hint: The main content for the page
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /contact:
+            jcr:primaryType: frontend:plugin
+            caption: Contact details
+            field: contact
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /epilogue:
+            jcr:primaryType: frontend:plugin
+            caption: Epilogue
+            field: epilogue
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /seoTitle:
@@ -236,15 +295,6 @@ definitions:
             caption: Notes
             field: notes
             hint: Notes about the content for future editors
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /images:
-            jcr:primaryType: frontend:plugin
-            caption: Images
-            field: images
-            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
