@@ -85,7 +85,7 @@ definitions:
         hst:renderpath: webfile:/freemarker/govscot/group.ftl
       /topics-list:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/topics-list.ftl
+        hst:renderpath: webfile:/freemarker/govscot/topics-list/page.ftl
       /directorates-list:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/directorates-list.ftl
@@ -104,3 +104,6 @@ definitions:
       /filteredlist.results:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/filteredlist/results.ftl
+      /topics-list.list:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/topics-list/list.ftl

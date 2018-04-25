@@ -10,4 +10,4 @@ definitions:
         /list:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.TopicsComponent
-          hst:template: topics-list
+          hst:template: topics-list.list

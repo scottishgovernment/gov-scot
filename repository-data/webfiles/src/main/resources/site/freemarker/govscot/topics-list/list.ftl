@@ -1,19 +1,5 @@
-<#include "../include/imports.ftl">
+<#include "../../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
-
-<div class="grid" id="page-content"><!--
-  --><div class="grid__item medium--eight-twelfths">
-    <h1 class="article-header">${document.title}</h1>
-  </div><!--
---></div>
-
-<#if document??>
-  <div id="topics-intro">
-    <@hst.html hippohtml=document.content />
-  </div>
-</#if>
-
-<@hst.include ref="list"/>
 
 <section class="topics">
   <div class="az-list">
