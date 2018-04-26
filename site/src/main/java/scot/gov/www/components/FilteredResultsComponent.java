@@ -58,8 +58,9 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String offsetParam = param(request, "page");
         int offset = 0;
         if (offsetParam != null) {
-            offset = Integer.parseInt(offsetParam)-1;
+            offset = Integer.parseInt(offsetParam) - 1;
         }
+        offset = pageSize * offset;
 
         try {
             HstQuery hstQuery;
@@ -71,7 +72,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                         .where(constraints(request, PUBLICATION_DATE))
                         .orderByDescending(PUBLICATION_DATE)
                         .limit(pageSize)
-                        .offset(pageSize * offset)
+                        .offset(offset)
                         .build();
             } else if (path.contains("publications")) {
                 hstQuery = HstQueryBuilder.create(bean)
@@ -79,7 +80,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                         .where(constraints(request, PUBLICATION_DATE))
                         .orderByDescending(PUBLICATION_DATE)
                         .limit(pageSize)
-                        .offset(pageSize * offset)
+                        .offset(offset)
                         .build();
             } else {
                 hstQuery = HstQueryBuilder.create(bean)
@@ -87,12 +88,16 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                         .where(constraints(request, null))
                         .orderByAscending("govscot:title")
                         .limit(pageSize)
-                        .offset(pageSize * offset)
+                        .offset(offset)
                         .build();
             }
 
+            Map<String, Set<String>> params = sanitiseParameterMap(request,
+                    request.getRequestContext().getServletRequest().getParameterMap());
+
             HstQueryResult result = hstQuery.execute();
             request.setAttribute("result", result.getHippoBeans());
+            request.setAttribute("parameters", params);
         } catch (RepositoryException e) {
             LOG.error("Failed to access repository", e);
         } catch (QueryException e) {
@@ -101,6 +106,17 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
         super.doBeforeRender(request, response);
 
+    }
+
+    private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
+        if (parameterMap == null) {
+            return null;
+        }
+        Map<String, Set<String>> sanitisedMap = new HashMap();
+        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
+            sanitisedMap.put(entry.getKey(), splitParameters(request, entry.getKey()));
+        }
+        return sanitisedMap;
     }
 
     private Constraint constraints(HstRequest request, String searchField) {
@@ -155,7 +171,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private List<String> topicIds(HstRequest request) {
         List<String> topicIds = new ArrayList<>();
-        Set<String> topics = topics(request);
+        Set<String> topics = splitParameters(request, "topics");
         try {
             Session session = request.getRequestContext().getSession();
             Node topicsNode = session.getNode("/content/documents/govscot/topics");
@@ -167,7 +183,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             while (nodeIt.hasNext()) {
                 Node topicNode = nodeIt.nextNode();
 
-                if (isRequiredTopic(topicNode, topics)) {
+                if (isRequired(topicNode, topics)) {
                     topicIds.add(topicNode.getIdentifier());
                 }
             }
@@ -188,18 +204,18 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         return servletRequest.getParameter(param);
     }
 
-    private Set<String> topics(HstRequest request) {
-        String topicsParam = param(request, "topics");
-        if (topicsParam == null) {
+    private Set<String> splitParameters(HstRequest request, String parameter) {
+        String parameters = param(request, parameter);
+        if (parameters == null) {
             return Collections.emptySet();
         }
-        String [] topicTitleArray = topicsParam.split("\\;");
+        String [] topicTitleArray = parameters.split("\\;");
         return new HashSet<>(Arrays.asList(topicTitleArray));
     }
 
-    private boolean isRequiredTopic(Node topicNode, Set<String> requiredTopicTitles) throws RepositoryException {
+    private boolean isRequired(Node topicNode, Set<String> requiredTitles) throws RepositoryException {
         String title = nodeTitle(topicNode);
-        return requiredTopicTitles.contains(title);
+        return requiredTitles.contains(title);
     }
 
     private String nodeTitle(Node node) throws RepositoryException {
