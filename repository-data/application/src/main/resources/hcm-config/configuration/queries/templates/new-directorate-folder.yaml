@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:queries/hippo:templates/new-policy-folder:
+    /hippo:configuration/hippo:queries/hippo:templates/new-directorate-folder:
       jcr:primaryType: hippostd:templatequery
       jcr:mixinTypes: ['hipposys:implementation']
       hippostd:icon: addfolder_ico
@@ -8,11 +8,11 @@ definitions:
         $inherited]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
-      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-directorate-folder/hippostd:templates/node()
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-policy-folder/hippostd:templates/node()
       /hippostd:templates:
         jcr:primaryType: hippostd:templates
         /hippostd:folder:
           jcr:primaryType: hippostd:folder
           jcr:mixinTypes: ['mix:versionable']
-          jcr:uuid: 34c35f9e-2ed3-4a4d-9b29-0f0b5d98275f
-          hippostd:foldertype: [new-policy, new-policy-detail]
+          jcr:uuid: 574d1269-054d-4841-9122-6d8196d91e1c
+          hippostd:foldertype: [new-directorate, new-role, new-person]

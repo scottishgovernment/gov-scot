@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:queries/hippo:templates/new-policy:
+    /hippo:configuration/hippo:queries/hippo:templates/new-site-item:
       jcr:primaryType: hippostd:templatequery
       hippostd:icon: adddocument_ico
       hippostd:modify: [./_name, $name, './hippotranslation:locale', $inherited, './hippotranslation:id',
@@ -8,4 +8,4 @@ definitions:
         $now, './hippostdpubwf:lastModifiedBy', $holder, './hippostdpubwf:lastModificationDate',
         $now, './hippostd:holder', $holder]
       jcr:language: xpath
-      jcr:statement: //element(*,hipposysedit:namespacefolder)/element(*,mix:referenceable)/element(*,hipposysedit:templatetype)/hipposysedit:prototypes/element(hipposysedit:prototype,govscot:Policy)
+      jcr:statement: //element(*,hipposysedit:namespacefolder)/element(*,mix:referenceable)/element(*,hipposysedit:templatetype)/hipposysedit:prototypes/element(hipposysedit:prototype,govscot:SiteItem)

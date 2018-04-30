@@ -1,3 +1,221 @@
 /content/taxonomies:
   jcr:primaryType: hippotaxonomy:container
-
+  /publication-types:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 43f496e2-fb6c-4925-b509-4affad8a6ffe
+    hippo:name: Publication Types
+    /publication-types:
+      jcr:primaryType: hippotaxonomy:taxonomy
+      jcr:mixinTypes: ['hippo:container', 'hippo:derived', 'hippostd:container', 'hippostd:publishableSummary',
+        'hippostd:relaxed', 'mix:referenceable']
+      jcr:uuid: c90f8444-487a-4739-beb7-1ad2a6111c50
+      hippo:availability: [live, preview]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2018-04-30T22:53:27.504+01:00
+      hippostdpubwf:lastModificationDate: 2018-04-30T22:53:27.504+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      /consultations:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: consultations
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Consultations
+        /consultation-paper:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: consultation-paper
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Consultation paper
+        /consultation-responses:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: consultation-responses
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Consultation responses
+      /corporate:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: corporate
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Corporate
+        /corporate-report:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: corporate-report
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Corporate report
+              hippotaxonomy:synonyms: [report]
+        /foi-eir-release:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: foi-eir-release
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: FOI/EIR release
+        /transparency-data:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: transparency-data
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Transparency data
+      /policy-and-guidance:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: policy-and-guidance
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Policy and guidance
+        /advice-and-guidance:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: advice-and-guidance
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Advice and guidance
+              hippotaxonomy:synonyms: [guidance]
+        /agreement:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: agreement
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Agreement
+        /correspondence:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: correspondence
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: ' Correspondence'
+              hippotaxonomy:synonyms: [newsletter, letter-circular]
+        /legislation:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: legislation
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Legislation
+        /legislative-consent:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: legislative-consent
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Legislative consent
+        /minutes:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: minutes
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Minutes
+      /research-and-statistics:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: research-and-statistics
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Research and statistics
+        /research-finding:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: research-finding
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Research finding
+        /research-publication:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: research-publication
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Research publication
+        /statistics-dataset:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: statistics-dataset
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Statistics dataset
+        /statistics-publication:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: statistics-publication
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Statistics publication
+      /other:
+        jcr:primaryType: hippotaxonomy:category
+        hippotaxonomy:key: other
+        /hippotaxonomy:categoryinfos:
+          jcr:primaryType: hippotaxonomy:categoryinfos
+          /en:
+            jcr:primaryType: hippotaxonomy:categoryinfo
+            hippotaxonomy:name: Other
+        /factsheet:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: factsheet
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Factsheet
+        /form:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: form
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Form
+        /map:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: map
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Map
+        /publication:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: publication
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Publication
+        /speech---statement:
+          jcr:primaryType: hippotaxonomy:category
+          hippotaxonomy:key: speech---statement
+          /hippotaxonomy:categoryinfos:
+            jcr:primaryType: hippotaxonomy:categoryinfos
+            /en:
+              jcr:primaryType: hippotaxonomy:categoryinfo
+              hippotaxonomy:name: Speech / Statement
