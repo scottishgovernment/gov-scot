@@ -147,13 +147,20 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/filteredlistpage
         hst:relativecontentpath: publications
-        /_any_:
+        /_default_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/publicationpage
-          hst:relativecontentpath: ${parent}/${1}
-          /pages:
+          /_default_:
             jcr:primaryType: hst:sitemapitem
             /_default_:
               jcr:primaryType: hst:sitemapitem
-              hst:componentconfigurationid: hst:pages/publicationsubpage
-              hst:relativecontentpath: ${parent)/${1}
+              /_default_:
+                jcr:primaryType: hst:sitemapitem
+                hst:relativecontentpath: publications/${1}/${2}/${3}/${4}
+                /_index_:
+                  jcr:primaryType: hst:sitemapitem
+                  hst:componentconfigurationid: hst:pages/publicationpage
+                  hst:relativecontentpath: ${parent}/index
+                /_any_:
+                  jcr:primaryType: hst:sitemapitem
+                  hst:componentconfigurationid: hst:pages/publicationpage
+                  hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/${5}

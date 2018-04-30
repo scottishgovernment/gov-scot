@@ -1,215 +1,211 @@
 <#include "../../include/imports.ftl">
+<#include "../common/macros/format-file-size.ftl">
 
 <#if document??>
 </div>
 
 <article id="page-content">
 
+    <#--------------------- HEADER SECTION --------------------->
     <div class="top-matter">
         <div class="wrapper">
             <header class="article-header no-bottom-margin">
-                <div class="grid"><!--
-                 --><div class="grid__item large--ten-twelfths">
-                        <p class="article-header__label">Publication - ${document.label}</p>
-                        <h1 class="article-header__title">${document.title}</h1>
-                    </div><!--
-             --></div>
+                <#if isMultiPagePublication>
 
-                <div class="grid"><!--
-                 --><div class="grid__item  large--three-twelfths">
-                        <section class="content-data">
-                            <div class="content-data__list">
-                                <span class="content-data__label">Published:</span>
-                                <span class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></strong></span>
+                    <div class="grid"><!--
+                     --><div class="grid__item">
+                            <p class="article-header__label">Publication - ${document.label}</p>
+                        </div><!--
+                 --></div>
+                    <div class="grid"><!--
+                     --><div class="grid__item medium--nine-twelfths">
+                            <div class="grid">
+                                <div class="grid__item"><h1 class="article-header__title">${document.title}</h1></div><!--
+
+                             --><div class="grid__item large--four-twelfths">
+                                    <#include 'metadata.ftl'/>
+                                </div><!--
+
+                             --><div class="grid__item large--eight-twelfths">
+                                    <p class="leader">${document.summary}</p>
+                                </div><!--
+                         --></div>
+                        </div><!--
+
+                     --><div class="grid__item  push--large--one-twelfth medium--three-twelfths large--two-twelfths">
+                            <#if pages?has_content>
+
+                                <#if documents?has_content>
+                                    <div class="hidden-xsmall">
+                                        <#include 'header-document-info.ftl'/>
+                                    </div>
+                                </#if>
+
+                                <div class="publication-info__header">
+                                    <a href="#files-list" class="js-expand-downloads publication-info__preamble publication-info__preamble--icon publication-info__preamble--icon--pdf visible-xsmall">
+
+                                        <span class="publication-info__file-icon file-icon file-icon--gen"></span>
+                                        This publication is available to download in other formats. <span class="publication-info__preamble-expand">More</span>&hellip;
+
+                                    </a>
+                                </div>
+
+                                <div class="publication-info__body visible-xsmall">
+                                    <section id="files-list" class="publication-info__section publication-info__collapsible publication-info__collapsible--collapsed-initial publication-info__collapsible--not-tablet">
+                                        <#if documents?has_content>
+                                            <#include 'header-document-info.ftl'/>
+                                            <#include 'supporting-files.ftl'/>
+                                        </#if>
+                                    </section>
+                                </div>
+                            </#if>
+                        </div><!--
+                 --></div>
+
+                <#else>
+
+                    <div class="grid"><!--
+                     --><div class="grid__item large--ten-twelfths">
+                            <p class="article-header__label">Publication - ${document.label}</p>
+                            <h1 class="article-header__title">${document.title}</h1>
+                        </div><!--
+                 --></div>
+                    <div class="grid"><!--
+                     --><div class="grid__item  large--three-twelfths">
+                            <#include 'metadata.ftl'/>
+                        </div><!--
+
+                     --><div class="grid__item  large--seven-twelfths">
+                            <div class="leader">
+                                <@hst.html var="executiveSummary" hippohtml=document.executiveSummary/>
+                                <#if executiveSummary?has_content>
+                                    ${executiveSummary}
+                                <#else>
+                                    ${document.summary}
+                                </#if>
                             </div>
+                        </div><!--
+                 --></div>
 
-                            <#assign index=document/>
-                            <#include '../common/content-data.ftl'/>
-
-                            <#--! BEGIN 'minutes' format-specific fields-->
-                            <#if document.label == 'minutes'>
-                                <#if document.officialdate?has_content>
-                                    <div class="content-data__list">
-                                        <span class="content-data__label">Date of meeting:</span>
-                                        <span class="content-data__value"><strong><@fmt.formatDate value=document.officialdate.time type="both" pattern="d MMM yyyy"/></strong></span>
-                                    </div>
-                                </#if>
-
-                                <#if document.nextMeetingDate?has_content>
-                                    <div class="content-data__list">
-                                        <span class="content-data__label">Date of next meeting:</span>
-                                        <span class="content-data__value"><strong><@fmt.formatDate value=document.nextMeetingDate.time type="both" pattern="d MMM yyyy"/></strong></span>
-                                    </div>
-                                </#if>
-
-                                <#if document.location?has_content>
-                                    <div class="content-data__list">
-                                        <span class="content-data__label">Location:</span>
-                                        <span class="content-data__value"><strong>${document.location}</strong></span>
-                                    </div>
-                                </#if>
-                            </#if>
-                            <#--! END 'minutes' format-specific fields-->
-
-                            <#--! BEGIN 'speech or statement' format-specific fields-->
-                            <#if document.label == 'speech / ministerial statement'>
-                                <#if document.officialdate?has_content>
-                                    <div class="content-data__list">
-                                        <span class="content-data__label">Date of speech:</span>
-                                        <span class="content-data__value"><strong><@fmt.formatDate value=document.officialdate.time type="both" pattern="d MMM yyyy"/></strong></span>
-                                    </div>
-                                </#if>
-
-                                <#if document.speechDeliveredBy?has_content>
-                                    <div class="content-data__list">
-                                        <span class="content-data__label">Delivered by:</span>
-                                        <span class="content-data__value"><strong>${document.speechDeliveredBy}</strong></span>
-                                    </div>
-                                </#if>
-
-                                <#if document.location?has_content>
-                                    <div class="content-data__list">
-                                        <span class="content-data__label">Location:</span>
-                                        <span class="content-data__value"><strong>${document.location}</strong></span>
-                                    </div>
-                                </#if>
-                            </#if>
-                            <#--! END 'speech or statement' format-specific fields-->
-
-                        </section>
-                    </div><!--
-
-                 --><div class="grid__item  large--seven-twelfths">
-                        <div class="leader">
-                            <@hst.html hippohtml=document.executiveSummary/>
-                        </div>
-                    </div><!--
-             --></div>
+                </#if>
             </header>
         </div>
     </div>
 
-    <div class="inner-shadow-top  js-sticky-header-position">
+    <#include 'sticky-document-info.ftl'/>
+
+    <#--------------------- BODY SECTION --------------------->
+    <div class="inner-shadow-top  js-sticky-header-position <#if isMultiPagePublication>inner-shadow-top--no-mobile</#if>">
 
         <div class="wrapper js-content-wrapper">
             <div class="grid"><!--
 
-             --><div class="grid__item  medium--four-twelfths  large--three-twelfths  hidden-xsmall  hidden-small  hidden-medium">
-                    <#--sidebar-->
+             --><div class="grid__item  medium--four-twelfths  large--three-twelfths <#if !isMultiPagePublication>hidden-xsmall  hidden-small  hidden-medium</#if>">
+                    <#if pages??>
+                        <#include 'side-menu.ftl'/>
+                    </#if>
                 </div><!--
 
-             --><div class="grid__item large--seven-twelfths">
+                <#if isMultiPagePublication>
+                 --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
 
-                    <#if document.content?has_content ||
-                    document.attendees?has_content ||
-                    document.actions?has_content>
-                        <div id="preamble">
-                            <@hst.html hippohtml=document.content var="content"/>
-                            <#if content?has_content>
-                                <div class="body-content publication-body">
-                                    ${content}
-                                </div>
-                            </#if>
-
-                            <#--! BEGIN 'minutes' format-specific fields-->
-
-                            <@hst.html hippohtml=document.attendees var="attendees"/>
-                            <#if attendees?has_content>
-                                <h2>Attendees and apologies</h2>
-                                ${attendees}
-                            </#if>
-
-                            <@hst.html hippohtml=document.actions var="actions"/>
-                            <#if actions?has_content>
-                                <h2>Items and actions</h2>
-                                ${actions}
-                            </#if>
-                            <#--! END 'minutes' format-specific fields-->
+                        <div class="body-content publication-content js-content-wrapper inner-shadow-top  inner-shadow-top--no-desktop ">
+                            <@hst.html hippohtml=currentPage.content/>
                         </div>
-                    </#if>
 
-                    <#if documents??>
-                    <section class="document-section">
-                        <#-- todo: groups of documents and titles -->
-                            <#--{{#if title}}<h2>{{title}}</h2>{{/if}}-->
+                        <div class="grid  page-nav"><!--
+                         --><div class="grid__item  push--medium--six-twelfths  medium--six-twelfths  page-nav__item">
+                                <#if next??>
+                                    <a title="Next page" href="<@hst.link hippobean=next/>" class="page-nav__button  page-nav__button--right  js-next">
+                                        <span data-label="next" class="page-nav__text">${next.title}</span>
+                                    </a>
+                                </#if>
+                            </div><!--
+                         --><div class="grid__item  medium--six-twelfths  pull--medium--six-twelfths  page-nav__item">
+                                <#if prev??>
+                                    <a title="Previous page" href="<@hst.link hippobean=prev/>" class="page-nav__button  page-nav__button--left  js-previous">
+                                        <span data-label="prev" class="page-nav__text">${prev.title}</span>
+                                    </a>
+                                </#if>
+                            </div><!--
+                     --></div>
 
-                        <#list documents as attachedDocument>
-                            <div class="document-info <#if attachedDocument.highlighted>document-info--limelight</#if>">
+                        <hr>
 
-                                <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?upper_case/>
-                                <#assign filenameWithoutExtension = attachedDocument.document.filename?keep_before_last(".")/>
-                                <#--<@hst.link hippobean=attachedDocument.thumbnails[1]/>-->
+                        <@hst.html hippohtml=document.contact var="contact"/>
+                        <#if contact?has_content>
+                            <section class="publication-info__section publication-info__contact">
+                                <h3 class="emphasis">Contact</h3>
+                                ${contact}
+                            </section>
+                        </#if>
 
+                    </div><!--
+                <#else>
+                 --><div class="grid__item large--seven-twelfths">
 
-                                <div class="document-info__body">
-                                    <div class="document-info__thumbnail  document-info__thumbnail--pdf">
-                                        <#if filenameExtension == "PDF">
-                                        <a class="document-info__thumbnail-link" href="<@hst.link hippobean=attachedDocument.document/>?inline=true">
-                                            <img
-                                                    alt="View this document"
-                                                    class="document-info__thumbnail-image"
-                                                    src="<@hst.link hippobean=attachedDocument.thumbnails[0]/>"
-                                                    srcset="
-                                                    <#list attachedDocument.thumbnails as thumbnail>
-                                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                    </#list>"
-                                                    sizes="(min-width: 768px) 165px, 107px" />
-                                        </a>
-                                        <#else>
-                                        <a title="View this document" href="<@hst.link hippobean=attachedDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
-                                        </#if>
+                        <#if document.content?has_content ||
+                        document.attendees?has_content ||
+                        document.actions?has_content>
+                            <div id="preamble">
+                                <@hst.html hippohtml=document.content var="content"/>
+                                <#if content?has_content>
+                                    <div class="body-content publication-body">
+                                        ${content}
                                     </div>
-                                </div>
+                                </#if>
 
-                                <div class="document-info__text">
+                                <#--! BEGIN 'minutes' format-specific fields-->
+                                <@hst.html hippohtml=document.attendees var="attendees"/>
+                                <#if attendees?has_content>
+                                    <h2>Attendees and apologies</h2>
+                                    ${attendees}
+                                </#if>
 
-                                    <h3 class="document-info__title"><a class="no-icon" href="<@hst.link hippobean=attachedDocument.document/>?inline=true">${attachedDocument.title}</a></h3>
-
-                                    <div class="document-info__file-details">
-                                        <dl class="document-info__meta">
-                                            <dt class="hidden">File type</dt>
-                                            <dd><b><#if attachedDocument.pageCount?has_content && attachedDocument.pageCount gt 0>${attachedDocument.pageCount} page </#if>${filenameExtension}</b></dd>
-                                            <#if attachedDocument.size??>
-                                                <dt class="hidden">File size</dt>
-                                                <#assign fileSize = (attachedDocument.size/1000)?string["0.0"] + 'kB'/>
-                                                <#if (attachedDocument.size/1000) gte 1000>
-                                                    <#assign fileSize = (attachedDocument.size/1000000)?string["0.0"] + 'MB'/>
-                                                </#if>
-                                                <dd>${fileSize}</dd>
-                                            </#if>
-                                        </dl>
-                                    </div>
-
-                                    <div class="document-info__download">
-                                        <a href="<@hst.link hippobean=attachedDocument.document/>" class="button  <#if attachedDocument.highlighted>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
-                                            <span class="link-text">
-                                                Download
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
+                                <@hst.html hippohtml=document.actions var="actions"/>
+                                <#if actions?has_content>
+                                    <h2>Items and actions</h2>
+                                    ${actions}
+                                </#if>
+                                <#--! END 'minutes' format-specific fields-->
                             </div>
+                        </#if>
 
-                        </#list>
-                    </section>
-                    </#if>
+                        <#if documents??>
+                            <section class="document-section">
+                                <#list documents as attachedDocument>
+                                    <#include 'body-document-info.ftl'/>
+                                </#list>
+                            </section>
 
-                    <#if document.epilogueContent?has_content>
-                    <div id="epilogue">
-                        <@hst.html hippohtml=document.epilogueContent/>
-                    </div>
-                    </#if>
+                            <#if groupedDocumentFolders??>
+                                <#list groupedDocumentFolders as folder>
+                                    <section class="document-section">
+                                        <h2>${folder.displayName}</h2>
+                                        <#list folder.documents as attachedDocument>
+                                            <#include 'body-document-info.ftl'/>
+                                        </#list>
+                                    </section>
+                                </#list>
+                            </#if>
+                        </#if>
 
-                    <@hst.html hippohtml=document.contact var="contact"/>
-                    <#if contact?has_content>
-                        <div class="publication-info__contact">
-                            <h3 class="emphasis">Contact</h3>
-                            ${contact}
+                        <@hst.html hippohtml=document.epilogue var="epilogue"/>
+                        <#if epilogue?has_content>
+                        <div id="epilogue">
+                            ${epilogue}
                         </div>
-                    </#if>
+                        </#if>
 
-                </div><!--
-
+                        <@hst.html hippohtml=document.contact var="contact"/>
+                        <#if contact?has_content>
+                            <div class="publication-info__contact">
+                                <h3 class="emphasis">Contact</h3>
+                                ${contact}
+                            </div>
+                        </#if>
+                    </div><!--
+                </#if>
 
          --></div>
 
@@ -217,25 +213,6 @@
     </div>
 </article>
 
-<div class="sticky-document-info  sticky-document-info--animate  sticky-document-info--visible-if-sticky">
-    <div class="wrapper">
-        <div class="grid"><!--
-         --><div class="grid__item medium--four-twelfths large--three-twelfths sticky-document-info__content-data">
-                <div class=" sticky-document-info__cell">
-                    <dl class="content-data">
-                        <dt class="content-data__label">Published:</dt>
-                        <dd class="content-data__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></dd>
-                    </dl>
-                </div>
-            </div><!--
-             --><div class="grid__item medium--eight-twelfths large--nine-twelfths">
-                    <div class="sticky-document-info__cell">
-                    <div class="sticky-document-info__title">${document.title}</div>
-                </div>
-            </div><!--
-     --></div>
-    </div>
-</div>
 </#if>
 
 <@hst.headContribution category="footerScripts">

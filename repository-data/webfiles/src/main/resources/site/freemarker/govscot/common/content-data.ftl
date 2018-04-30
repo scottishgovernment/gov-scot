@@ -30,7 +30,7 @@
         </#if>
         </dd>
     </#if>
-    <#if index.responsibleDirectorate??>
+    <#if index.responsibleDirectorate?? && !isMultiPagePublication>
         <dt class="content-data__label">Directorate:</dt>
 
         <dd class="content-data__value">
@@ -60,6 +60,10 @@
                 <a href="${link}">${topic.title}</a><#sep>, </sep>
             </#list>
         </dd>
+    </#if>
+    <#if index.isbn?has_content>
+        <dt class="content-data__label">ISBN:</dt>
+        <dd class="content-data__value">${index.isbn}</dd>
     </#if>
     </dl>
 </div>
