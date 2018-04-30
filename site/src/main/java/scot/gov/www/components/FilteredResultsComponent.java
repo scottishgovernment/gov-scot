@@ -27,7 +27,11 @@ import scot.gov.www.beans.Publication;
 import javax.jcr.*;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.toList;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
@@ -37,8 +41,11 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/YYYY");
+
+    private static final String PUBLICATION_DATE = "govscot:publicationDate";
+
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
-    private static String PUBLICATION_DATE = "govscot:publicationDate";
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
@@ -230,8 +237,8 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String begin = param(request, "begin");
         String end = param(request, "end");
         if (begin != null && end != null) {
-            Calendar beginCal = getCalendar(request, begin);
-            Calendar endCal = getCalendar(request, end);
+            Calendar beginCal = getCalendar(begin);
+            Calendar endCal = getCalendar(end);
             constraints.add(and(constraint(searchField).between(beginCal, endCal, DateTools.Resolution.DAY)));
             return;
         }
@@ -249,7 +256,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         if (begin == null) {
             return;
         }
-        Calendar calendar = getCalendar(request, begin);
+        Calendar calendar = getCalendar(begin);
         constraints.add(and(constraint(searchField).greaterOrEqualThan(calendar, DateTools.Resolution.DAY)));
 
     }
@@ -263,19 +270,19 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             return;
         }
 
-        Calendar calendar = getCalendar(request, end);
+        Calendar calendar = getCalendar(end);
         constraints.add(and(constraint(searchField).lessOrEqualThan(calendar, DateTools.Resolution.DAY)));
 
     }
 
-    private Calendar getCalendar(HstRequest request, String param) {
-
-        String[] splitDate = param.split("-");
-
-        return new GregorianCalendar(
-                Integer.parseInt(splitDate[0]),
-                // 0-11 represent Jan-Dec
-                Integer.parseInt(splitDate[1]) - 1,
-                Integer.parseInt(splitDate[2]));
+    private Calendar getCalendar(String param) {
+        try {
+            GregorianCalendar cal = new GregorianCalendar();
+            cal.setTime(DATE_FORMAT.parse(param));
+            return cal;
+        } catch (ParseException e) {
+            LOG.warn("Invalid date {}", param, e);
+            return null;
+        }
     }
 }
