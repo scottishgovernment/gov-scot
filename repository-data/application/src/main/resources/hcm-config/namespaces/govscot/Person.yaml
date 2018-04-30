@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: ffd3f09c-d90a-4ac2-a9a2-d865d7a8f8a3
+          jcr:uuid: cd33b49c-81c1-4580-b732-1e0c22836e97
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -40,6 +40,14 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [optional]
+          /image:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:image
+            hipposysedit:primary: false
+            hipposysedit:type: hippogallerypicker:imagelink
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -55,7 +63,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: c711b6a9-84ed-4e63-9f13-25bbf3306510
+          jcr:uuid: e5192f26-9403-4fff-87fe-8f57d6de5b9d
           hippostdpubwf:lastModificationDate: 2018-02-13T13:26:22.509Z
           hippostdpubwf:creationDate: 2018-02-13T13:26:22.509Z
           govscot:roleTitle: ''
@@ -77,6 +85,12 @@ definitions:
           /govscot:postalAddress:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:image:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -97,6 +111,16 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /image:
+            jcr:primaryType: frontend:plugin
+            caption: Image
+            field: image
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:People']
           /summary:
             jcr:primaryType: frontend:plugin
             caption: Summary

@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 94e3ff1b-ad59-4aae-8f02-818a66dd52e4
+          jcr:uuid: b0c27c6e-01da-44a3-a06f-2583dfeeb926
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -55,6 +55,14 @@ definitions:
             hipposysedit:path: govscot:youtube
             hipposysedit:primary: false
             hipposysedit:type: String
+          /image:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:image
+            hipposysedit:primary: false
+            hipposysedit:type: hippogallerypicker:imagelink
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -70,7 +78,7 @@ definitions:
           govscot:overlayQuote: ''
           govscot:overlayQuoteAttribution: ''
           govscot:title: ''
-          jcr:uuid: f9b7d989-d763-4f0a-b2f8-8a6ef9b5bbe8
+          jcr:uuid: 37d1376a-d14f-4738-87e4-7d8070f00481
           hippostdpubwf:lastModificationDate: 2018-04-13T09:51:56.199+01:00
           hippostdpubwf:creationDate: 2018-04-13T09:51:56.199+01:00
           govscot:youtube: ''
@@ -81,6 +89,12 @@ definitions:
             jcr:primaryType: govscot:ExternalLink
             govscot:title: ''
             govscot:url: ''
+          /govscot:image:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -154,3 +168,13 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /image:
+            jcr:primaryType: frontend:plugin
+            caption: Image
+            field: image
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:FeaturedItems']

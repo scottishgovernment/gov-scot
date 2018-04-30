@@ -30,3 +30,7 @@ definitions:
         govscot:publicationdate: Publikationsdatum
         govscot:title: Titel
         jcr:name: Einfaches Dokument
+    /hippo:configuration/hippo:translations/hippo:types/govscot:People:
+      jcr:primaryType: hipposys:resourcebundles
+    /hippo:configuration/hippo:translations/hippo:types/govscot:BannerImages:
+      jcr:primaryType: hipposys:resourcebundles

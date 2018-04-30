@@ -3,15 +3,13 @@ package scot.gov.www.beans;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import scot.gov.www.beans.ContactInformation;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
-
 import java.util.List;
+
 
 @HippoEssentialsGenerated(internalName = "govscot:Person")
 @Node(jcrType = "govscot:Person")
 public class Person extends AttributableContent {
-
     private List<HippoBean> roles;
 
     public List<HippoBean> getRoles() {
@@ -72,5 +70,11 @@ public class Person extends AttributableContent {
         return getHippoHtml("govscot:postalAddress");
     }
 
-    public String getLabel() { return "role"; }
+    public String getLabel() {
+        return "role";
+    }
+
+    public People getImage() {
+        return getLinkedBean("govscot:image", People.class);
+    }
 }

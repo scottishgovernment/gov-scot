@@ -7,6 +7,7 @@ import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import scot.gov.www.beans.ContactInformation;
 import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import scot.gov.www.beans.BannerImages;
 
 @HippoEssentialsGenerated(internalName = "govscot:Issue")
 @Node(jcrType = "govscot:Issue")
@@ -79,5 +80,10 @@ public class Issue extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:featuredItems")
     public List<HippoBean> getFeaturedItems() {
         return getLinkedBeans("govscot:featuredItems", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:image")
+    public BannerImages getImage() {
+        return getLinkedBean("govscot:image", BannerImages.class);
     }
 }

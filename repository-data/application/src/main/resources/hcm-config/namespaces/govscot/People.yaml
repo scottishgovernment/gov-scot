@@ -1,0 +1,177 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/People:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 5551f884-2983-4bea-a3bb-0252abebccf9
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 4805dd18-de53-4975-9db1-3f81c56f0b93
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['hipposysedit:remodel']
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippogallery:imageset', 'hippogallery:relaxed']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /filename:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:filename
+            hipposysedit:type: String
+          /description:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:description
+            hipposysedit:type: String
+          /thumbnail:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:autocreated: true
+            hipposysedit:mandatory: true
+            hipposysedit:path: hippogallery:thumbnail
+            hipposysedit:primary: true
+            hipposysedit:type: hippogallery:image
+          /original:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:original
+            hipposysedit:type: hippogallery:image
+          /small:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:small
+            hipposysedit:type: hippogallery:image
+          /smalldoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:smalldoubled
+            hipposysedit:type: hippogallery:image
+          /medium:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:medium
+            hipposysedit:type: hippogallery:image
+          /mediumdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumdoubled
+            hipposysedit:type: hippogallery:image
+          /large:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:large
+            hipposysedit:type: hippogallery:image
+          /largedoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largedoubled
+            hipposysedit:type: hippogallery:image
+          /xlarge:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlarge
+            hipposysedit:type: hippogallery:image
+          /xlargedoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargedoubled
+            hipposysedit:type: hippogallery:image
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:People
+          jcr:mixinTypes: ['mix:versionable']
+          jcr:uuid: 8d8adedc-4b35-49b8-af83-1f7d1e41f80c
+          /hippogallery:thumbnail:
+            jcr:primaryType: hippogallery:image
+            jcr:data:
+              type: binary
+              resource: /namespaces/govscot/People/prototypes/prototype/thumbnail/thumbnail.gif
+            jcr:lastModified: 1970-01-01T00:00:00Z
+            jcr:mimeType: image/gif
+          /hippogallery:original:
+            jcr:primaryType: hippogallery:image
+            hippogallery:height: 0
+            hippogallery:width: 0
+            jcr:data:
+              type: binary
+              resource: /namespaces/govscot/People/prototypes/prototype/original/original.gif
+            jcr:lastModified: 1970-01-01T00:00:00Z
+            jcr:mimeType: image/gif
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [model.compareTo, wicket.model, engine]
+          frontend:services: [wicket.id]
+          mode: edit
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /filename:
+            jcr:primaryType: frontend:plugin
+            caption: file name
+            field: filename
+            plugin.class: org.hippoecm.frontend.plugins.gallery.editor.FileNameDisplayPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /description:
+            jcr:primaryType: frontend:plugin
+            caption: description
+            field: description
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /thumbnail:
+            jcr:primaryType: frontend:plugin
+            caption: thumbnail
+            field: thumbnail
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /original:
+            jcr:primaryType: frontend:plugin
+            caption: original
+            field: original
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /small:
+            jcr:primaryType: frontend:plugin
+            caption: small
+            field: small
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /smalldoubled:
+            jcr:primaryType: frontend:plugin
+            caption: smalldoubled
+            field: smalldoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /medium:
+            jcr:primaryType: frontend:plugin
+            caption: medium
+            field: medium
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumdoubled
+            field: mediumdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /large:
+            jcr:primaryType: frontend:plugin
+            caption: large
+            field: large
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largedoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largedoubled
+            field: largedoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlarge:
+            jcr:primaryType: frontend:plugin
+            caption: xlarge
+            field: xlarge
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargedoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargedoubled
+            field: xlargedoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field

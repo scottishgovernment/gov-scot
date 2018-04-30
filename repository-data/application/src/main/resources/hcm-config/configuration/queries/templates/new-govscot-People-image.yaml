@@ -1,0 +1,25 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-govscot-People-image:
+      jcr:primaryType: hippostd:templatequery
+      hippostd:modify: [./_name, $name, ./_node/_name, $name]
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-govscot-People-image/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /image:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 574832a5-9ffa-4670-9050-93a99e399d51
+          /image:
+            jcr:primaryType: hippogallery:imageset
+            jcr:mixinTypes: ['mix:versionable']
+            jcr:uuid: c814ee44-98ed-400e-b230-1216b1d80497
+            /hippogallery:thumbnail:
+              jcr:primaryType: hippogallery:image
+              jcr:data:
+                type: binary
+                resource: /configuration/queries/templates/new-govscot-People-image/templates/image/image_thumbnail.jpg
+              jcr:encoding: UTF-8
+              jcr:lastModified: 2008-03-26T12:03:00+01:00
+              jcr:mimeType: image/jpeg

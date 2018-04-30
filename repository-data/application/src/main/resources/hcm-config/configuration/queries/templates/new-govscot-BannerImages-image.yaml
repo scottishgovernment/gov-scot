@@ -1,0 +1,25 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-govscot-BannerImages-image:
+      jcr:primaryType: hippostd:templatequery
+      hippostd:modify: [./_name, $name, ./_node/_name, $name]
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-govscot-BannerImages-image/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /image:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 4a4f48fb-8b3c-4a4e-b4c0-dd3b91895581
+          /image:
+            jcr:primaryType: hippogallery:imageset
+            jcr:mixinTypes: ['mix:versionable']
+            jcr:uuid: c7582061-ea41-4a5b-97bb-0f98293ab4e1
+            /hippogallery:thumbnail:
+              jcr:primaryType: hippogallery:image
+              jcr:data:
+                type: binary
+                resource: /configuration/queries/templates/new-govscot-BannerImages-image/templates/image/image_thumbnail.jpg
+              jcr:encoding: UTF-8
+              jcr:lastModified: 2008-03-26T12:03:00+01:00
+              jcr:mimeType: image/jpeg

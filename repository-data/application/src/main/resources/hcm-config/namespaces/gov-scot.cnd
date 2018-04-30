@@ -3,6 +3,7 @@
 <'hippostd'='http://www.onehippo.org/jcr/hippostd/nt/2.0'>
 <'hippostdpubwf'='http://www.onehippo.org/jcr/hippostdpubwf/nt/1.0'>
 <'hippotranslation'='http://www.onehippo.org/jcr/hippotranslation/nt/1.0'>
+<'hippogallery'='http://www.onehippo.org/jcr/hippogallery/nt/2.0'>
 
 [govscot:basedocument] > hippo:document, hippostd:publishableSummary, hippostdpubwf:document
   orderable
@@ -12,6 +13,8 @@
 
 [govscot:AttributableContent] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
+
+[govscot:BannerImages] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:ContactInformation] > hippo:compound, hippostd:relaxed
   orderable
@@ -24,6 +27,8 @@
 
 [govscot:ExternalLink] > hippo:compound, hippostd:relaxed
   orderable
+
+[govscot:FeaturedItems] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:Group] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
@@ -51,6 +56,8 @@
 
 [govscot:OrgRoles] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
+
+[govscot:People] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable

@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /content/gallery:
+      hippostd:foldertype: [new-govscot-BannerImages-folder]
+      hippostd:gallerytype: ['govscot:BannerImages']
