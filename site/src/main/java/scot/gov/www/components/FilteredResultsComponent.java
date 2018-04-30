@@ -39,7 +39,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/YYYY");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 
     private static final String PUBLICATION_DATE = "govscot:publicationDate";
 
@@ -276,7 +276,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private Calendar getCalendar(String param) {
         try {
             GregorianCalendar cal = new GregorianCalendar();
-            cal.setTime(DATE_FORMAT.parse(param));
+            cal.setTime(DATE_FORMAT.parse(param););
             return cal;
         } catch (ParseException e) {
             LOG.warn("Invalid date {}", param, e);
