@@ -276,7 +276,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private Calendar getCalendar(String param) {
         try {
             GregorianCalendar cal = new GregorianCalendar();
-            cal.setTime(DATE_FORMAT.parse(param););
+            cal.setTime(DATE_FORMAT.parse(param));
             return cal;
         } catch (ParseException e) {
             LOG.warn("Invalid date {}", param, e);
