@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Policy;
 import scot.gov.www.beans.Publication;
+import scot.gov.www.components.mapper.TaxonomyMapper;
 
 import javax.jcr.*;
 import javax.servlet.ServletContext;
@@ -198,9 +199,25 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         }
     }
 
-
     private void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
-        // TODO: once we know how the publication types are to be structured in the CMS
+
+        Set<String> publicationTypeParams = splitParameters(request, "publicationTypes");
+
+        if (publicationTypeParams.isEmpty()) {
+            return;
+        }
+
+        List<String> publicationTypeIds = TaxonomyMapper.getInstance()
+                .getPublicationTypes(publicationTypeParams, request.getLocale());
+
+        List<Constraint> constraintList = new ArrayList<>();
+        for (String typeId : publicationTypeIds) {
+            constraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
+        }
+
+        Constraint orConstraint = ConstraintBuilder.or(constraintList.toArray(new Constraint[constraintList.size()]));
+        constraints.add(orConstraint);
+
     }
 
     private String param(HstRequest request, String param) {
