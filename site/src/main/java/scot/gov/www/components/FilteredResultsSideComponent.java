@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.mapper.TaxonomyMapper;
 
-import java.util.*;		
-import org.hippoecm.hst.core.request.HstRequestContext;		
+import java.util.*;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.jcr.RepositoryException;
@@ -66,8 +66,8 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
             
         }
 
-        Map<String, Set<String>> params = sanitiseParameterMap(request,		
-            request.getRequestContext().getServletRequest().getParameterMap());		
+        Map<String, Set<String>> params = sanitiseParameterMap(request,
+            request.getRequestContext().getServletRequest().getParameterMap());
         request.setAttribute("parameters", params);
 
     }
