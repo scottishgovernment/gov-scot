@@ -14,6 +14,10 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.mapper.TaxonomyMapper;
 
+import java.util.*;		
+import org.hippoecm.hst.core.request.HstRequestContext;		
+import javax.servlet.http.HttpServletRequest;
+
 import javax.jcr.RepositoryException;
 
 /**
@@ -59,7 +63,12 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
 
         } catch (RepositoryException e) {
             LOG.error("Failed to get path from bean {}", bean, e);
+            
         }
+
+        Map<String, Set<String>> params = sanitiseParameterMap(request,		
+            request.getRequestContext().getServletRequest().getParameterMap());		
+        request.setAttribute("parameters", params);
 
     }
 
@@ -70,5 +79,31 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
         } catch (QueryException e) {
             LOG.error("Failed to get {}", name, e);
         }
+    }
+
+    private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
+        if (parameterMap == null) {
+            return null;
+        }
+        Map<String, Set<String>> sanitisedMap = new HashMap();
+        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
+            sanitisedMap.put(entry.getKey(), splitParameters(request, entry.getKey()));
+        }
+        return sanitisedMap;
+    }
+
+    private Set<String> splitParameters(HstRequest request, String parameter) {
+        String parameters = param(request, parameter);
+        if (parameters == null) {
+            return Collections.emptySet();
+        }
+        String [] topicTitleArray = parameters.split("\\;");
+        return new HashSet<>(Arrays.asList(topicTitleArray));
+    }
+
+    private String param(HstRequest request, String param) {
+        HstRequestContext requestContext = request.getRequestContext();
+        HttpServletRequest servletRequest = requestContext.getServletRequest();
+        return servletRequest.getParameter(param);
     }
 }

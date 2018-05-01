@@ -102,7 +102,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                     request.getRequestContext().getServletRequest().getParameterMap());
 
             HstQueryResult result = hstQuery.execute();
-            request.setAttribute("result", result.getHippoBeans());
+            request.setAttribute("result", result);
             request.setAttribute("parameters", params);
         } catch (RepositoryException e) {
             LOG.error("Failed to access repository", e);

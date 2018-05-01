@@ -134,6 +134,10 @@ $table__border-color--header: $color__grey--light;
 
 
 
+/* FORMS */
+@import "../../node_modules/@scottish-government/mygov-assets/scss/components/forms/forms.radio-buttons";
+
+
 
 /**
  * OBJECTS
@@ -252,6 +256,7 @@ $search-box__size--medium: $search-box__size;
  */
 @import "trumps/trump.display-toggle";
 @import "trumps/trump.external-links.govscot";
+@import "trumps/trump.fancy-radio";
 @import "trumps/trump.fontawesome";
 @import "trumps/trump.margins";
 @import "trumps/trump.pikaday";

@@ -11,7 +11,7 @@ let destpath = path.resolve('src/main/resources/site/assets/images/icons');
 
 
 let config = {
-    "log": "verbose",
+    "log": "",
     "shape": {
         "id": {
            "separator": ""
