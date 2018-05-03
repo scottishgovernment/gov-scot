@@ -18,11 +18,10 @@ import org.hippoecm.hst.util.SearchInputParsingUtils;
 import org.hippoecm.repository.util.DateTools;
 import org.onehippo.cms7.essentials.components.EssentialsListComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
+import org.onehippo.cms7.essentials.components.paging.Pageable;
+import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.News;
-import scot.gov.www.beans.Policy;
-import scot.gov.www.beans.Publication;
 import scot.gov.www.components.mapper.TaxonomyMapper;
 
 import javax.jcr.*;
@@ -41,9 +40,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
-
-    private static final String PUBLICATION_DATE = "govscot:publicationDate";
-
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
 
     @Override
@@ -57,61 +53,46 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
 
-        final EssentialsListComponentInfo paramInfo = getComponentParametersInfo(request);
-
-        HippoBean bean = request.getRequestContext().getContentBean();
-        int pageSize = paramInfo.getPageSize();
-        String offsetParam = param(request, "page");
-        int offset = 0;
-        if (offsetParam != null) {
-            offset = Integer.parseInt(offsetParam) - 1;
-        }
-        offset = pageSize * offset;
-
-        try {
-            HstQuery hstQuery;
-            String path = bean.getNode().getPath();
-
-            if (path.contains("news")) {
-                hstQuery = HstQueryBuilder.create(bean)
-                        .ofTypes(News.class)
-                        .where(constraints(request, PUBLICATION_DATE))
-                        .orderByDescending(PUBLICATION_DATE)
-                        .limit(pageSize)
-                        .offset(offset)
-                        .build();
-            } else if (path.contains("publications")) {
-                hstQuery = HstQueryBuilder.create(bean)
-                        .ofTypes(Publication.class)
-                        .where(constraints(request, PUBLICATION_DATE))
-                        .orderByDescending(PUBLICATION_DATE)
-                        .limit(pageSize)
-                        .offset(offset)
-                        .build();
-            } else {
-                hstQuery = HstQueryBuilder.create(bean)
-                        .ofTypes(Policy.class)
-                        .where(constraints(request, null))
-                        .orderByAscending("govscot:title")
-                        .limit(pageSize)
-                        .offset(offset)
-                        .build();
-            }
-
-            Map<String, Set<String>> params = sanitiseParameterMap(request,
-                    request.getRequestContext().getServletRequest().getParameterMap());
-
-            HstQueryResult result = hstQuery.execute();
-            request.setAttribute("result", result);
-            request.setAttribute("parameters", params);
-        } catch (RepositoryException e) {
-            LOG.error("Failed to access repository", e);
-        } catch (QueryException e) {
-            LOG.error("Failed to execute query", e);
-        }
-
         super.doBeforeRender(request, response);
 
+        Map<String, Set<String>> params = sanitiseParameterMap(request,
+                request.getRequestContext().getServletRequest().getParameterMap());
+
+        request.setAttribute("parameters", params);
+
+    }
+
+    @Override
+    protected <T extends EssentialsListComponentInfo>
+    HstQuery buildQuery(final HstRequest request, final T paramInfo, final HippoBean scope) {
+        final String documentTypes = paramInfo.getDocumentTypes();
+        final String[] types = SiteUtils.parseCommaSeparatedValue(documentTypes);
+
+        final int pageSize = getPageSize(request, paramInfo);
+        final int page = getCurrentPage(request);
+        final int offset = (page - 1) * pageSize;
+
+        HstQueryBuilder builder = HstQueryBuilder.create(scope);
+        return builder.ofTypes(types)
+                .where(constraints(request, null))
+                .orderByAscending(paramInfo.getSortField())
+                .limit(pageSize)
+                .offset(offset)
+                .build();
+    }
+
+    @Override
+    protected <T extends EssentialsListComponentInfo>
+    Pageable<HippoBean> executeQuery(final HstRequest request, final T paramInfo, final HstQuery query) throws QueryException {
+        final int pageSize = getPageSize(request, paramInfo);
+        final int page = getCurrentPage(request);
+
+        final HstQueryResult execute = query.execute();
+        return getPageableFactory().createPageable(
+                execute.getHippoBeans(),
+                execute.getTotalSize(),
+                pageSize,
+                page);
     }
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {

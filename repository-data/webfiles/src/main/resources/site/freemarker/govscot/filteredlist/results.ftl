@@ -1,16 +1,22 @@
 <#include "../../include/imports.ftl">
 
+<#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
+<#-- @ftlvariable name="parameters" type="java.util.Map" -->
+<#-- @ftlvariable name="item" type="scot.gov.www.beans.News" -->
+<#-- @ftlvariable name="item" type="scot.gov.www.beans.Publication" -->
+<#-- @ftlvariable name="item" type="scot.gov.www.beans.Policy" -->
+
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
 <#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['types']?has_content>
     <#assign hasActiveParameters = true/>
 </#if>
 
-<#-- this div is here to make use of `result` -->
+<#-- this div is here to make use of 'pageable' -->
 <div class="filter-buttons--sticky">
     <button class="button  button--secondary  button--no-margin  button--left  button--xsmall  js-show-filters">Filter</button>
 
-    <span class="search-results__count js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${result.totalSize}</b> items</span>
+    <span class="search-results__count js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${pageable.total}</b> items</span>
 
     <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  button button--xsmall button--cancel button--right">Clear</a>
 </div>
@@ -21,7 +27,7 @@
 
         <p class="search-results__count  search-results-header__left">
             <#if hasActiveParameters == true>
-                Showing <b>${result.totalSize}</b> <#if result.totalSize == 1>item<#else>items</#if>
+                Showing <b>${pageable.total}</b> <#if pageable.total == 1>item<#else>items</#if>
 
                 <#if parameters['term']??>
                     <#list parameters['term'] as nested>
@@ -62,15 +68,14 @@
                 </#if>
 
             <#else>
-                Showing all <b>${result.totalSize}</b> items
+                Showing all <b>${pageable.total}</b> items
             </#if>
         </p>
-
         <button type="button" name="filters-clear" class="hidden visible-xsmall button button--small button--secondary js-clear-filters search-results-header__right clear-button">Clear</button>
     </header>
 
     <ol id="search-results-list" class="search-results__list">
-        <#list result.hippoBeans as item>
+        <#list pageable.items as item>
             <@hst.manageContent hippobean=item/>
             <@hst.link var="link" hippobean=item/>
             <li class="search-results__item  listed-content-item">

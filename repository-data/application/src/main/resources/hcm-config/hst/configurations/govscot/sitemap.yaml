@@ -27,7 +27,7 @@ definitions:
           hst:relativecontentpath: ${parent}/index
       /news:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/filteredlistpage
+        hst:componentconfigurationid: hst:pages/newslistpage
         hst:relativecontentpath: news
         /_any_:
           jcr:primaryType: hst:sitemapitem
@@ -109,7 +109,7 @@ definitions:
           hst:relativecontentpath: ${parent}/${1}
       /policies:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/filteredlistpage
+        hst:componentconfigurationid: hst:pages/policylistpage
         hst:relativecontentpath: policies
         /_default_:
           jcr:primaryType: hst:sitemapitem
@@ -145,7 +145,7 @@ definitions:
           hst:relativecontentpath: ${parent}/${1}
       /publications:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/filteredlistpage
+        hst:componentconfigurationid: hst:pages/publicationlistpage
         hst:relativecontentpath: publications
         /_default_:
           jcr:primaryType: hst:sitemapitem

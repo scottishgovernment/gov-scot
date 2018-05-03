@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:abstractpages/filteredlistpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.FilteredResultsContentComponent
+        hst:template: filteredlist.page

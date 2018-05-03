@@ -1,0 +1,21 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/publicationlistpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/filteredlistpage
+      /main:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:abstractpages/filteredlistpage/main
+        /results:
+          jcr:primaryType: hst:containercomponent
+          hst:componentclassname: scot.gov.www.components.FilteredResultsComponent
+          hst:label: Filtered Results List
+          hst:parameternames: [sortField, sortOrder, includeSubtypes, showPagination,
+            path, pageSize, documentTypes]
+          hst:parametervalues: ['govscot:publicationDate', desc, 'off', 'on', '',
+            '10', 'govscot:Publication']
+          hst:template: filteredlist.results
+          hst:xtype: hst.item
+        /side-filter:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/side-filter
