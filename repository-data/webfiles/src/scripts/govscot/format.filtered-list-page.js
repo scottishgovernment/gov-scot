@@ -1,4 +1,4 @@
-//news-landing-page.js
+// format.filtered-list-page.js
 /*
  Contains functionality for the news landing page
  */
@@ -10,15 +10,15 @@ define([
 
     window.dataLayer = window.dataLayer || [];
 
-    const newsListPage = new SearchWithFilters ({
+    const filteredListPage = new SearchWithFilters ({
         filters: {
             date: true,
             topics: true
         }
     }); 
 
-    window.format = newsListPage;
+    window.format = filteredListPage;
     window.format.init();
 
-    return newsListPage;
+    return filteredListPage;
 });

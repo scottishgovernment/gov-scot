@@ -11,6 +11,16 @@ define([
 ], function (searchUtils, expandable, Pikaday, dates) {
     'use strict';
 
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
     function PickerOptions(field, container, settings, theme) {
         this.field = field;
         this.container = container;
@@ -179,6 +189,7 @@ define([
 
                 // do search on a small timeout to allow user to select multiple items without making multiple requests
                 t = setTimeout(function() {
+                    delete that.searchParams.page;
                     $('#filters').submit();
                 }, 300);
             }
@@ -196,14 +207,14 @@ define([
             let filtersForm = $('#filters');
             filtersForm.find('input[type="checkbox"]').prop('checked', false);
             filtersForm.find('input[type="text"]').val('');
+            delete that.searchParams.page;
 
             $('#filters').submit();
         });
-
         $('#search-results').on('click', '.pagination__page', function (event) {
             event.preventDefault();
 
-            that.searchParams.page = event.target.innerText;
+            that.searchParams.page = getParameterByName('page', event.target.href);
             
             $('#filters').submit();
         });
@@ -217,9 +228,7 @@ define([
             .addClass('fancy-checkbox');
 
         // populate checkboxes from searchParams
-        if (this.settings.topics) {
-            $('.checkbox-group input[data-checkedonload]').prop('checked', true);
-        }
+        $('.checkbox-group input[data-checkedonload]').prop('checked', true);
 
         // date pickers display
         $('.js-show-calendar').removeClass('hidden  hidden--hard');
@@ -259,11 +268,9 @@ define([
         }
 
         // DATE RANGES
-        if (this.settings.filters.date) {
+        if ($('#filter-date-range').length) {
             searchParams.date = searchParams.date || {};
-        }
 
-        if (this.settings.filters.date) {
             searchParams.date.begin = $('#date-from').val();
             searchParams.date.end = $('#date-to').val();
         }
@@ -365,6 +372,7 @@ define([
             if (event.keyCode === 13) {
                 event.preventDefault();
                 if (that.validateDateInput($(this))) {
+                    delete that.searchParams.page;
                     $('#filters').submit();
                 }
             }
@@ -372,6 +380,7 @@ define([
             let isValidDates = that.validateDateInput($(this));
             // If on mobile don't do the search automatically.
             if ($(window).innerWidth() > that.settings.responsiveWidthThreshold) {
+                delete that.searchParams.page;
                 $('#filters').submit();
             }
         });

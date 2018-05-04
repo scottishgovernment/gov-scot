@@ -8,7 +8,7 @@
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
-<#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['types']?has_content>
+<#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['publicationTypes']?has_content>
     <#assign hasActiveParameters = true/>
 </#if>
 
@@ -25,9 +25,19 @@
     <header class="search-results__header">
         <h2 class="hidden">Search results</h2>
 
+        <#assign searchTypePlural = searchType/>
+        <#if searchType == "publications">
+            <#assign searchTypeSingular = "publication"/>
+        <#elseif searchType == "policies">
+            <#assign searchTypeSingular = "policy"/>
+        <#elseif searchType == "news">
+            <#assign searchTypeSingular = "news item"/>
+            <#assign searchTypePlural = "news items"/>
+        </#if>
+
         <p class="search-results__count  search-results-header__left">
             <#if hasActiveParameters == true>
-                Showing <b>${pageable.total}</b> <#if pageable.total == 1>item<#else>items</#if>
+                Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTypeSingular}<#else>${searchTypePlural}</#if>
 
                 <#if parameters['term']??>
                     <#list parameters['term'] as nested>
@@ -67,8 +77,16 @@
                     </#list>
                 </#if>
 
+                <#if parameters['publicationTypes']??>
+                    of type
+                    <#list parameters['publicationTypes'] as nested>
+                        <b>${nested}</b>
+                        <#sep>or</#sep>
+                    </#list>
+                </#if>
+
             <#else>
-                Showing all <b>${pageable.total}</b> items
+                Showing all <b>${pageable.total}</b> ${searchTypePlural}
             </#if>
         </p>
         <button type="button" name="filters-clear" class="hidden visible-xsmall button button--small button--secondary js-clear-filters search-results-header__right clear-button">Clear</button>

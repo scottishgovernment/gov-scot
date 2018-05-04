@@ -47,19 +47,30 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
 
             TaxonomyMapper mapper = TaxonomyMapper.getInstance();
             Taxonomy publicationTypes = mapper.getPublicationTypesTaxonomy();
+            String searchType = "";
 
             String path = bean.getNode().getPath();
             if (path.contains(NEWS)) {
+                request.setAttribute("term", true);
+                request.setAttribute("dates", true);
                 executeQueryLoggingException(query, request, TOPICS);
+                searchType = "news";
 
             } else if (path.contains(POLICIES)) {
+                request.setAttribute("term", true);
                 executeQueryLoggingException(query, request, TOPICS);
+                searchType = "policies";
 
             } else if (path.contains(PUBLICATIONS)) {
+                request.setAttribute("term", true);
+                request.setAttribute("dates", true);
                 executeQueryLoggingException(query, request, TOPICS);
                 request.setAttribute("publicationTypes", publicationTypes);
                 request.setAttribute("locale", request.getLocale());
+                searchType = "publications";
             }
+
+            request.setAttribute("searchType", searchType);
 
         } catch (RepositoryException e) {
             LOG.error("Failed to get path from bean {}", bean, e);

@@ -57,6 +57,21 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
         Map<String, Set<String>> params = sanitiseParameterMap(request,
                 request.getRequestContext().getServletRequest().getParameterMap());
+        try {
+            String searchType;
+            HippoBean bean = request.getRequestContext().getContentBean();
+            String path = bean.getNode().getPath();
+            if (path.contains("news")) {
+                searchType = "news";
+            } else if (path.contains("publications")) {
+                searchType = "publications";
+            } else {
+                searchType = "policies";
+            }
+            request.setAttribute("searchType", searchType);
+        } catch (RepositoryException e) {
+            LOG.error("Failed to access repository", e);
+        }
 
         request.setAttribute("parameters", params);
 

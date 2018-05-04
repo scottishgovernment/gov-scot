@@ -5,9 +5,8 @@
     <div class="grid" id="page-content"><!--
         --><div class="grid__item medium--eight-twelfths">
             <h1 class="article-header">${index.title?html}</h1>
-            <#if index.summary??>
-                <p>${index.summary}</p>
-            </#if>
+
+            ${index.content.content}
         </div><!--
     --></div>
 </#if>
@@ -22,5 +21,5 @@
 --></div>
 
 <@hst.headContribution category="footerScripts">
-    <script src="<@hst.webfile path="/assets/scripts/news-landing-page.js"/>" type="text/javascript"></script>
+    <script src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>" type="text/javascript"></script>
 </@hst.headContribution>

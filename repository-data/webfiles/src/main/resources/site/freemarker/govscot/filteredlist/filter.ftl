@@ -3,7 +3,7 @@
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
-<#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['types']?has_content>
+<#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['publicationTypes']?has_content>
     <#assign hasActiveParameters = true/>
 </#if>
 
@@ -53,57 +53,61 @@
 
                     <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  filters__button--clear  button button--cancel  button--xsmall">Clear</a>
 
+                    <#if term??>
                     <fieldset id="filter-search" class="filters__fieldset filter-search">
                         <legend class="filters__legend">Keyword search</legend>
-                        <input type="text" title="Filter by keyword" name="term" id="filters-search-term" maxlength="160" class="filter-search__input filters__input--search-term" value="${term}" />
+                        <input placeholder="Search ${searchType}" type="text" title="Filter by keyword" name="term" id="filters-search-term" maxlength="160" class="filter-search__input filters__input--search-term" value="${term}" />
                         <button type="submit" title="Submit" id="filters-search-submit" class="filter-search__button filter-search__button--submit js-filter-search-submit button button--clear"></button>
                     </fieldset>
+                    </#if>
 
-                    <fieldset id="filter-date-range">
-                        <legend class="filters__legend">Filter by date</legend>
+                    <#if dates??>
+                        <fieldset id="filter-date-range">
+                            <legend class="filters__legend">Filter by date</legend>
 
-                        <div class="date-entry">
-                            <label class="filters__label" for="date-from">Date from</label>
-                            <div class="date-entry__input-group input-group">
-                                <input name="begin" type="text" id="date-from" placeholder="dd/mm/yyyy" pattern="\d\d\/\d\d\/\d\d\d\d" class="date-entry__input datepicker" value="${begin}">
-                                <button id="date-start-trigger" type="button" class="date-entry__trigger  button button--primary  button--xsmall  js-show-calendar  hidden  hidden--hard">
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                        <use xlink:href="${iconspath}#calendar"></use>
-                                    </svg>
-                                    Choose start date
-                                </button>
+                            <div class="date-entry">
+                                <label class="filters__label" for="date-from">Date from</label>
+                                <div class="date-entry__input-group input-group">
+                                    <input name="begin" type="text" id="date-from" placeholder="dd/mm/yyyy" pattern="\d\d\/\d\d\/\d\d\d\d" class="date-entry__input datepicker" value="${begin}">
+                                    <button id="date-start-trigger" type="button" class="date-entry__trigger  button button--primary  button--xsmall  js-show-calendar  hidden  hidden--hard">
+                                        <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
+                                            <use xlink:href="${iconspath}#calendar"></use>
+                                        </svg>
+                                        Choose start date
+                                    </button>
+                                </div>
+                                <div class="date-entry__calendar">
+                                    <button class="date-entry__close filters-container__close hidden-xsmall js-close-calendar" type="button">
+                                        <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
+                                            <use xlink:href="${iconspath}#close"></use>
+                                        </svg>
+                                        Close
+                                    </button>
+                                </div>
                             </div>
-                            <div class="date-entry__calendar">
-                                <button class="date-entry__close filters-container__close hidden-xsmall js-close-calendar" type="button">
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                        <use xlink:href="${iconspath}#close"></use>
-                                    </svg>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
 
-                        <div class="date-entry">
-                            <label class="filters__label" for="date-to">Date to</label>
-                            <div class="date-entry__input-group input-group">
-                                <input name="end" type="text" id="date-to" placeholder="dd/mm/yyyy" pattern="\d\d\/\d\d\/\d\d\d\d" class="date-entry__input datepicker" value="${end}">
-                                <button id="date-end-trigger" type="button" class="date-entry__trigger  button button--primary  button--xsmall  js-show-calendar  hidden  hidden--hard">
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                        <use xlink:href="${iconspath}#calendar"></use>
-                                    </svg>
-                                    Choose end date
-                                </button>
+                            <div class="date-entry">
+                                <label class="filters__label" for="date-to">Date to</label>
+                                <div class="date-entry__input-group input-group">
+                                    <input name="end" type="text" id="date-to" placeholder="dd/mm/yyyy" pattern="\d\d\/\d\d\/\d\d\d\d" class="date-entry__input datepicker" value="${end}">
+                                    <button id="date-end-trigger" type="button" class="date-entry__trigger  button button--primary  button--xsmall  js-show-calendar  hidden  hidden--hard">
+                                        <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
+                                            <use xlink:href="${iconspath}#calendar"></use>
+                                        </svg>
+                                        Choose end date
+                                    </button>
+                                </div>
+                                <div class="date-entry__calendar">
+                                    <button class="date-entry__close filters-container__close hidden-xsmall js-close-calendar" type="button">
+                                        <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
+                                            <use xlink:href="${iconspath}#close"></use>
+                                        </svg>
+                                        Close
+                                    </button>
+                                </div>
                             </div>
-                            <div class="date-entry__calendar">
-                                <button class="date-entry__close filters-container__close hidden-xsmall js-close-calendar" type="button">
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                        <use xlink:href="${iconspath}#close"></use>
-                                    </svg>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </fieldset>
+                        </fieldset>
+                    </#if>
 
                     <div class="expandable expandable--single filters-expandable">
 
@@ -116,31 +120,31 @@
 
                                 <div class="expandable-item__body scrollable scrollable--shadow">
                                     <div class="scrollable__content scrollable__content--40 checkbox-group">
-                                        <#assign noTopics = true />
-                                        <#assign topicsTrigger = false />
-                                        <#list topics as topic>
+                                        <#assign noItems = true />
+                                        <#assign itemsTrigger = false />
+                                        <#list topics as item>
                                             <#assign isSelected = false/>
                                             <#if parameters['topics']??>
-                                                <#list parameters['topics'] as selectedTopic>
-                                                    <#if selectedTopic == topic.title>
+                                                <#list parameters['topics'] as selectedItem>
+                                                    <#if selectedItem == item.title>
                                                         <#assign isSelected = true/>
-                                                        <#assign topicsTrigger = true />
+                                                        <#assign itemsTrigger = true />
                                                     </#if>
                                                 </#list>
                                             </#if>
 
                                             <input
                                                 <#if isSelected == true>
-                                                    <#if noTopics == true>
+                                                    <#if noItems == true>
                                                     checked=true
                                                     </#if>
                                                     data-checkedonload=true
                                                 </#if>
-                                                id="${topic.canonicalPath}" name="topics" class="fancy-checkbox checkbox-group__input" type="radio" value="${topic.title}">
-                                            <label for="${topic.canonicalPath}" class="checkbox-group__label fancy-radio fancy-radio--min">${topic.title}</label>
+                                                id="${item.canonicalPath}" name="topics" class="fancy-checkbox checkbox-group__input" type="radio" value="${item.title}">
+                                            <label for="${item.canonicalPath}" class="checkbox-group__label fancy-radio fancy-radio--min">${item.title}</label>
 
-                                            <#if topicsTrigger>
-                                                <#assign noTopics = false />
+                                            <#if itemsTrigger>
+                                                <#assign noItems = false />
                                             </#if>
                                         </#list>
                                     </div>
@@ -149,21 +153,46 @@
                         </#if>
 
                         <#if publicationTypes??>
-                            <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
-                                <h4 class="expandable-item__title">Type</h4>
-                                <span class="expandable-item__icon"></span>
-                            </button>
+                            <div class="expandable-item">
+                                <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
+                                    <h4 class="expandable-item__title">Type</h4>
+                                    <span class="expandable-item__icon"></span>
+                                </button>
+                                <div class="expandable-item__body scrollable scrollable--shadow">
+                                    <div class="scrollable__content scrollable__content--40 checkbox-group">
+                                        <#assign noItems = true />
+                                        <#assign itemsTrigger = false />
+                                        <#list publicationTypes.categories as category>
+                                            <h5 class="checkbox-group__title">${category.getInfo(locale).name}</h5>
 
-                            <div class="expandable-item__body scrollable scrollable--shadow">
-                                <div class="checkbox-group">
-                                    <#list publicationTypes.categories as publicationType>
-                                        <h5 class="checkbox-group__title">${publicationType.getInfo(locale).name}</h5>
-                                        <#list publicationType.children as category>
-                                            <input id="${category.key}" name="publicationTypes[]" class="checkbox-group__input" type="checkbox" value="${category.key}"/>
-                                            <label for="${category.key}" class="checkbox-group__label fancy-checkbox">${category.getInfo(locale).name}</label>
+                                            <#list category.children as item>
+
+                                                <#assign isSelected = false/>
+                                                <#if parameters['publicationTypes']??>
+                                                    <#list parameters['publicationTypes'] as selectedItem>
+                                                        <#if selectedItem == item.key>
+                                                            <#assign isSelected = true/>
+                                                            <#assign itemsTrigger = true />
+                                                        </#if>
+                                                    </#list>
+                                                </#if>
+
+                                                <input
+                                                    <#if isSelected == true>
+                                                        <#if noItems == true>
+                                                        checked=true
+                                                        </#if>
+                                                        data-checkedonload=true
+                                                    </#if>
+                                                    id="${item.key}" name="publicationTypes" class="fancy-checkbox checkbox-group__input" type="radio" value="${item.key}">
+                                                <label for="${item.key}" class="checkbox-group__label fancy-radio fancy-radio--min">${item.getInfo(locale).name}</label>
+
+                                                <#if itemsTrigger>
+                                                    <#assign noItems = false />
+                                                </#if>
+                                            </#list>
                                         </#list>
-
-                                    </#list>
+                                    </div>
                                 </div>
                             </div>
                         </#if>

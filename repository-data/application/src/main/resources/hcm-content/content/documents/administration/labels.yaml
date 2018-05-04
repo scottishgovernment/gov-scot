@@ -92,4 +92,4 @@
           the link to the previous page., Label used for the link to the next page.]
       resourcebundle:id: essentials.pagination
       resourcebundle:keys: [results.indication, page.previous, page.next]
-      resourcebundle:messages: [document(s), previous, next]
+      resourcebundle:messages: [document(s), Previous, Next]

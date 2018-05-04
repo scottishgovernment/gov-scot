@@ -12,11 +12,10 @@ module.exports = {
 
         // format-specific entry points
         'home':                         './src/scripts/govscot/format.home.js',
-        'news-landing-page':            './src/scripts/govscot/format.news-landing-page.js',
+        'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
         'topic':                        './src/scripts/govscot/format.topic.js',
         'publication':                  './src/scripts/govscot/format.publication.js',
         'policy':                       './src/scripts/govscot/format.policy.js'
-        
     },
 
     resolve: {
