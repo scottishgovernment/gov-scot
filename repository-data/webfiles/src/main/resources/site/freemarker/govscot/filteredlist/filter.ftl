@@ -32,7 +32,7 @@
 <form id="filters" action="#" method="GET">
 
     <div class="buttons filter-buttons visible-xsmall">
-        <button class="button  button--primary  js-show-filters">Show filters</button>
+        <button type="button" class="button  button--primary  js-show-filters">Show filters</button>
     </div>
 
     <div class="mobile-layer mobile-layer--show-tablet mobile-layer--highest mobile-layer--dark filters-layer">
