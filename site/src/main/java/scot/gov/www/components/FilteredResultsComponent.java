@@ -1,6 +1,7 @@
 package scot.gov.www.components;
 
 import org.apache.commons.lang.StringUtils;
+import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
@@ -20,8 +21,11 @@ import org.onehippo.cms7.essentials.components.EssentialsListComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
 import org.onehippo.cms7.essentials.components.paging.Pageable;
 import org.onehippo.cms7.essentials.components.utils.SiteUtils;
+import org.onehippo.forge.selection.hst.contentbean.ValueList;
+import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.components.info.FilteredResultsComponentInfo;
 import scot.gov.www.components.mapper.TaxonomyMapper;
 
 import javax.jcr.*;
@@ -30,17 +34,21 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
-@ParametersInfo(type = EssentialsListComponentInfo.class)
+@ParametersInfo(type = FilteredResultsComponentInfo.class)
 public class FilteredResultsComponent extends EssentialsListComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
+
+    private final ValueList publicationValueList =
+            SelectionUtil.getValueListByIdentifier("publicationTypes", RequestContextProvider.get());
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
@@ -53,27 +61,16 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
 
+        final FilteredResultsComponentInfo paramInfo = getComponentParametersInfo(request);
+
         super.doBeforeRender(request, response);
 
         Map<String, Set<String>> params = sanitiseParameterMap(request,
                 request.getRequestContext().getServletRequest().getParameterMap());
-        try {
-            String searchType;
-            HippoBean bean = request.getRequestContext().getContentBean();
-            String path = bean.getNode().getPath();
-            if (path.contains("news")) {
-                searchType = "news";
-            } else if (path.contains("publications")) {
-                searchType = "publications";
-            } else {
-                searchType = "policies";
-            }
-            request.setAttribute("searchType", searchType);
-        } catch (RepositoryException e) {
-            LOG.error("Failed to access repository", e);
-        }
 
         request.setAttribute("parameters", params);
+        request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
+        request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
 
     }
 
@@ -116,7 +113,23 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         }
         Map<String, Set<String>> sanitisedMap = new HashMap();
         for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
-            sanitisedMap.put(entry.getKey(), splitParameters(request, entry.getKey()));
+            if (!entry.getKey().equalsIgnoreCase("page")) {
+                if (entry.getKey().equalsIgnoreCase("publicationTypes")) {
+                    // need to do some extra lookup to get the name rather than the ID
+                    Set<String> values = new HashSet<>();
+                    for (String param : splitParameters(request, entry.getKey())) {
+                        values.add(publicationValueList.getItems().
+                                stream().
+                                filter(p -> p.getKey().equalsIgnoreCase(param)).
+                                map(p -> p.getLabel()).
+                                collect(Collectors.joining()));
+                    }
+                    sanitisedMap.put(entry.getKey(), values);
+                    break;
+                }
+                sanitisedMap.put(entry.getKey(), splitParameters(request, entry.getKey()));
+            }
+
         }
         return sanitisedMap;
     }

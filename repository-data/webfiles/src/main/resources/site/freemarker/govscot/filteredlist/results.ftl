@@ -5,6 +5,8 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.News" -->
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.Publication" -->
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.Policy" -->
+<#-- @ftlvariable name="searchTermSingular" type="java.lang.String" -->
+<#-- @ftlvariable name="searchTermPlural" type="java.lang.String" -->
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
@@ -25,19 +27,9 @@
     <header class="search-results__header">
         <h2 class="hidden">Search results</h2>
 
-        <#assign searchTypePlural = searchType/>
-        <#if searchType == "publications">
-            <#assign searchTypeSingular = "publication"/>
-        <#elseif searchType == "policies">
-            <#assign searchTypeSingular = "policy"/>
-        <#elseif searchType == "news">
-            <#assign searchTypeSingular = "news item"/>
-            <#assign searchTypePlural = "news items"/>
-        </#if>
-
         <p class="search-results__count  search-results-header__left">
             <#if hasActiveParameters == true>
-                Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTypeSingular}<#else>${searchTypePlural}</#if>
+                Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
                 <#if parameters['term']??>
                     <#list parameters['term'] as nested>
@@ -86,7 +78,7 @@
                 </#if>
 
             <#else>
-                Showing all <b>${pageable.total}</b> ${searchTypePlural}
+                Showing all <b>${pageable.total}</b> ${searchTermPlural}
             </#if>
         </p>
         <button type="button" name="filters-clear" class="hidden visible-xsmall button button--small button--secondary js-clear-filters search-results-header__right clear-button">Clear</button>
