@@ -129,7 +129,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             } else {
                 sanitisedMap.put(entry.getKey(), splitParamaters);
             }
-        };
+        }
         return sanitisedMap;
     }
 
