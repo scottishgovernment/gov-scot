@@ -22,6 +22,7 @@ import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
 import org.onehippo.cms7.essentials.components.paging.Pageable;
 import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
+import org.onehippo.forge.selection.hst.contentbean.ValueListItem;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,9 +35,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
+import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.*;
+import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
@@ -45,10 +47,11 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
+    public static final String PUBLICATION_TYPES = "publicationTypes";
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
 
     private final ValueList publicationValueList =
-            SelectionUtil.getValueListByIdentifier("publicationTypes", RequestContextProvider.get());
+            SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
@@ -111,27 +114,31 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         if (parameterMap == null) {
             return null;
         }
+
         Map<String, Set<String>> sanitisedMap = new HashMap();
         for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
-            if (!entry.getKey().equalsIgnoreCase("page")) {
-                if (entry.getKey().equalsIgnoreCase("publicationTypes")) {
-                    // need to do some extra lookup to get the name rather than the ID
-                    Set<String> values = new HashSet<>();
-                    for (String param : splitParameters(request, entry.getKey())) {
-                        values.add(publicationValueList.getItems().
-                                stream().
-                                filter(p -> p.getKey().equalsIgnoreCase(param)).
-                                map(p -> p.getLabel()).
-                                collect(Collectors.joining()));
-                    }
-                    sanitisedMap.put(entry.getKey(), values);
-                    break;
-                }
-                sanitisedMap.put(entry.getKey(), splitParameters(request, entry.getKey()));
+
+            if (equalsIgnoreCase("page", entry.getKey())) {
+                continue;
             }
 
-        }
+            Set<String> splitParamaters = splitParameters(request, entry.getKey());
+            if (equalsIgnoreCase(PUBLICATION_TYPES, entry.getKey())) {
+                // need to do some extra lookup to get the name rather than the ID
+                sanitisedMap.put(entry.getKey(), publicationTypes(splitParamaters));
+            } else {
+                sanitisedMap.put(entry.getKey(), splitParamaters);
+            }
+        };
         return sanitisedMap;
+    }
+
+    private Set<String> publicationTypes(Set<String> publicationTypeParams) {
+        return publicationValueList.getItems()
+                .stream()
+                .filter(item -> publicationTypeParams.contains(item.getKey()))
+                .map(ValueListItem::getKey)
+                .collect(toSet());
     }
 
     private Constraint constraints(HstRequest request, String searchField) {
@@ -210,7 +217,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
 
-        Set<String> publicationTypeParams = splitParameters(request, "publicationTypes");
+        Set<String> publicationTypeParams = splitParameters(request, PUBLICATION_TYPES);
 
         if (publicationTypeParams.isEmpty()) {
             return;
@@ -241,7 +248,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             return Collections.emptySet();
         }
         String [] topicTitleArray = parameters.split("\\;");
-        return new HashSet<>(Arrays.asList(topicTitleArray));
+        return new HashSet<>(asList(topicTitleArray));
     }
 
     private boolean isRequired(Node topicNode, Set<String> requiredTitles) throws RepositoryException {
