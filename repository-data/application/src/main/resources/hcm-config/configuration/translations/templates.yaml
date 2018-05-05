@@ -24,3 +24,11 @@ definitions:
       new-role: New role
       new-directorate: New directorate
       new-featured-item: New featured item
+      new-speech-or-statement: New speech or statement
+      new-minutes: New Minutes
+      new-minutes-folder: New Minutes folder
+      new-publication: New publication
+      new-publication-folder: New publication folder
+      new-speech-or-statement-folder: New Speech or statement
+      new-publication-page: New publication page
+      new-publication-pages-folder: New publication pages folder
