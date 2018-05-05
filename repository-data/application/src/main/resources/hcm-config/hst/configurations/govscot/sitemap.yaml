@@ -168,3 +168,11 @@ definitions:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/publicationpage
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/${5}
+      /isbn:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/newslistpage
+        hst:relativecontentpath: news
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/isbnpage
+          hst:relativecontentpath: publications
