@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/newspageprgloo:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.PRGlooSlugRedirectComponent
+        hst:template: news-main

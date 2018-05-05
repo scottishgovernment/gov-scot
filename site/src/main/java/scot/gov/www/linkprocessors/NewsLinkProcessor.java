@@ -50,6 +50,10 @@ public class NewsLinkProcessor extends HstLinkProcessorTemplate {
         try {
             String slug = link.getPathElements()[link.getPathElements().length - 1];
             Node handle = getHandleBySlug(slug);
+
+            if (handle == null) {
+                return link;
+            }
             String newPath = String.format("news/%s", StringUtils.substringAfter(handle.getPath(), NEWS));
             link.setPath(newPath);
             return link;
