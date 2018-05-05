@@ -51,7 +51,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
     }
 
     private String lastPathElement(HstRequest request) {
-        String pathElements [] = request.getPathInfo().split("/");
+        String [] pathElements = request.getPathInfo().split("/");
         return pathElements[pathElements.length - 1];
     }
 
