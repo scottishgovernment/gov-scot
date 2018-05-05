@@ -51,7 +51,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
     }
 
     private String isbn(HstRequest request) {
-        String pathElements [] = request.getPathInfo().split("/");
+        String [] pathElements = request.getPathInfo().split("/");
         return pathElements[pathElements.length - 1];
     }
 
