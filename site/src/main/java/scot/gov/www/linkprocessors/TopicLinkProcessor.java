@@ -57,12 +57,13 @@ public class TopicLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String sql = String.format("SELECT * FROM govscot:Topic WHERE jcr:path LIKE '%%/%s'", slug);
+        String sql = String.format("SELECT * FROM hippo:handle " +
+                "WHERE jcr:path LIKE '/content/documents/govscot/topics/%s/'", slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
             return null;
         }
-        return result.getNodes().nextNode().getParent();
+        return result.getNodes().nextNode();
     }
 
 }
