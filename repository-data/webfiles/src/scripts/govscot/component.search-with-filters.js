@@ -11,6 +11,8 @@ define([
 ], function (searchUtils, expandable, Pikaday, dates) {
     'use strict';
 
+    window.dataLayer = window.dataLayer || [];
+
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -55,15 +57,7 @@ define([
     const SearchWithFilters = function (settings) {
 
         this.settings = {
-            pageSize: 10,
-            pagePadding: 3,
             responsiveWidthThreshold: 767,
-            sortField: 'title',
-            sortOrder: 'asc',
-            displayText: {
-                singular: 'result',
-                plural: 'results'
-            },
             autoscaleThreshold: 786,
             autoscalePollingFrequency: 50,
             maxDate: new Date(),
@@ -80,6 +74,8 @@ define([
         this.initStickyFilterButtons = initStickyFilterButtons;
         this.init = init;
         this.validateDateInput = validateDateInput;
+
+        
     };
 
     function init() {
@@ -92,6 +88,9 @@ define([
         this.initStickyFilterButtons();
         this.showFilters = showFilters;
         this.searchUtils = searchUtils;
+        this.submitSearch = function () {
+            $('#filters').submit();
+        };
     }
 
     function attachEventHandlers () {
@@ -107,8 +106,10 @@ define([
                 url: window.location.pathname + newQueryString
             }).done(function (response) {
                 // update querystring
-                if (window.history.replaceState) {
+                try {
                     window.history.replaceState('', '', newQueryString);
+                } catch(error) {
+                    // history API not supported
                 }
 
                 // update results (incl pagination and status readout)
@@ -190,7 +191,7 @@ define([
                 // do search on a small timeout to allow user to select multiple items without making multiple requests
                 t = setTimeout(function() {
                     delete that.searchParams.page;
-                    $('#filters').submit();
+                    that.submitSearch();
                 }, 300);
             }
         });
@@ -209,14 +210,14 @@ define([
             filtersForm.find('input[type="text"]').val('');
             delete that.searchParams.page;
 
-            $('#filters').submit();
+            that.submitSearch();
         });
         $('#search-results').on('click', '.pagination__page', function (event) {
             event.preventDefault();
 
             that.searchParams.page = getParameterByName('page', event.target.href);
             
-            $('#filters').submit();
+            that.submitSearch();
         });
     }
 
@@ -245,8 +246,8 @@ define([
 
         // PAGINATION
         if (initial) {
-            searchParams.page = searchUtils.getQueryString('page') || 0;
-            searchParams.size = searchUtils.getQueryString('size') || 10;
+            searchParams.page = getParameterByName('page') || 1;
+            searchParams.size = getParameterByName('size') || 10;
         }
 
         // TOPICS
@@ -373,7 +374,7 @@ define([
                 event.preventDefault();
                 if (that.validateDateInput($(this))) {
                     delete that.searchParams.page;
-                    $('#filters').submit();
+                    that.submitSearch();
                 }
             }
         }).on('change', function () {
@@ -381,7 +382,7 @@ define([
             // If on mobile don't do the search automatically.
             if ($(window).innerWidth() > that.settings.responsiveWidthThreshold) {
                 delete that.searchParams.page;
-                $('#filters').submit();
+                that.submitSearch();
             }
         });
 

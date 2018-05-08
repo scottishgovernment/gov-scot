@@ -1,5 +1,5 @@
 
-define([], function () {
+define(['jquery'], function ($) {
     var o = $({});
 
     $.subscribe = function() {

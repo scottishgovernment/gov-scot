@@ -1,29 +1,7 @@
-'use strict';
-define('search-utils', [
-    '../utils/gup',
-    '../utils/dates'
-], function (gup, dates) {
+define([
+], function () {
+
     var searchUtils = {
-        /**
-         * Helper function to determine whether session/local storage can be written to
-         * @returns {boolean}
-         */
-        browserHasWriteableStorage: function() {
-            var mod, result;
-
-            mod = new Date();
-
-            try {
-                sessionStorage.setItem(mod, mod.toString());
-                result = sessionStorage.getItem(mod) === mod.toString();
-                sessionStorage.removeItem(mod);
-            } catch(err) {
-                result = false;
-            }
-
-            return result;
-        },
-
         addError: function (message, inputGroup) {
             var errorContainer = inputGroup.find('.message');
 
@@ -81,17 +59,6 @@ define('search-utils', [
             }
 
             return newQueryString;
-        },
-
-        /**
-         * @param param
-         * @param $window
-         * @param $gup
-         * @returns {*|string}
-         */
-        getQueryString: function (param, $window, $gup) {
-            gup = $gup || gup;
-            return gup(param, $window) || '';
         }
     };
 
