@@ -291,6 +291,14 @@ define([
             });
         },
 
+        svgFallback: function () {
+            if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
+                $('img[src$=".svg"]').each(function () {
+                    $(this).attr('src', $(this).attr('src').replace(/\.svg$/, '.png'));
+                });
+            }
+        },
+
         init: function () {
             this.initHeader();
             this.initMourningBanner();
@@ -298,11 +306,14 @@ define([
             this.initBanner('beta-banner');
             this.initBanner('staging-banner');
             this.resetSwipeHandler();
+            this.svgFallback();
 
             // IE8 doesn't support window.pageYOffset
             if (window.pageXOffset !== undefined) {
                 this.compensateAnchorOffsetForStickyElements();
             }
+
+            
         }
     };
 
