@@ -90,7 +90,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HstQueryBuilder builder = HstQueryBuilder.create(scope);
         return builder.ofTypes(types)
                 .where(constraints(request, null))
-                .orderByAscending(paramInfo.getSortField())
+                .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), paramInfo.getSortField())
                 .limit(pageSize)
                 .offset(offset)
                 .build();
