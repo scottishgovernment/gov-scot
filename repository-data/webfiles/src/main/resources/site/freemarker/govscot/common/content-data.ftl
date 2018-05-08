@@ -1,7 +1,7 @@
 <#include "../../include/imports.ftl">
 
 <div class="content-data__expandable">
-    <button class="expand  expand--mobile-only  content-data__toggle" data-target-selector="#expandable-content-data" title="Show details">
+    <button class="js-expand  expand  expand--mobile-only  content-data__toggle" data-target-selector="#expandable-content-data" title="Show details">
         <span class="hit-target">
             <span class="expand__icon"></span>
         </span>
@@ -67,4 +67,3 @@
     </#if>
     </dl>
 </div>
-
