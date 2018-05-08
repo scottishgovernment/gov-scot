@@ -6,7 +6,7 @@
             <div class="site-brand__link">
                 <@hst.link var="home" siteMapItemRefId="root" />
                 <a class="site-brand__logo" data-gtm="main-nav" href="${home}">
-                    <img alt="Scottish Government" src="assets/images/logos/scotgovlogo.svg"/>
+                    <img alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
                 </a>
             </div>
         </div>
