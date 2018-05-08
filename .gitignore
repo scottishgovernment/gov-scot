@@ -13,3 +13,4 @@ site/src/main/webapp/assets/mygov/
 .settings/
 .vscode
 *.stack.svg
+repository-data/webfiles/src/scripts/test/coverage

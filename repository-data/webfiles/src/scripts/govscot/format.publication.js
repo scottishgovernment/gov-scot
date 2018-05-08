@@ -6,7 +6,7 @@ define([
     './component.display-toggle',
     './component.sticky-back-to-top',
     '../shared/component.sticky-document-info'
-], function(pubsub, pageGroup) {
+], function(pubsub, pageGroup, displayToggle) {
 
     var publicationPage = {},
         pages = {},
@@ -18,6 +18,7 @@ define([
         this.initAsyncNavigation();
         this.initStickyInfoInteractivity();
         this.initSidebarHeight();
+        displayToggle.init();
         pgroup = pageGroup.init();
     };
 

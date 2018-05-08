@@ -2,11 +2,11 @@
 
 define([
     'jquery',
-    './cookie',
-    './component.expand',
-    './component.feedback'
+    'cookie',
+    './component.expand'
 ], function ($, cookie) {
-        // run autoscaling/fixing code up to.
+
+    // run autoscaling/fixing code up to.
     var autoThreshold = 768,
         siteHeader = $('.site-header'),
         notice = $('#cookie-notice'),

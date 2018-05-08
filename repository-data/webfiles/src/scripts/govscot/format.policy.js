@@ -1,11 +1,12 @@
 define([
     '../shared/component.page-group',
     './component.display-toggle'
-], function(pageGroup) {
+], function(pageGroup, displayToggle) {
 
     var policyPage = {
         init: function(){
             pageGroup.init();
+            displayToggle.init();
         }
     };
 

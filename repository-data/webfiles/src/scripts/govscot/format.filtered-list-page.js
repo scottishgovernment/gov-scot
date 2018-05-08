@@ -4,7 +4,7 @@
  */
 
 define([
-    './search-with-filters'
+    './component.search-with-filters'
 ], function (SearchWithFilters) {
     'use strict';
 

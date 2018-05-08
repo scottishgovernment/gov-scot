@@ -1,7 +1,6 @@
 /**
  * Utility functions for formatting dates.
  */
-
 define([],  function () {
     'use strict';
 

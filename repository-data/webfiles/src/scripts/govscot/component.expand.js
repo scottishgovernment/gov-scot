@@ -22,9 +22,6 @@ define([
     collapseTarget = function(el, height, noAnimate) {
         var animateSpeed = noAnimate ? 0 : 200;
 
-
-
-
         el.animate({'height': height}, animateSpeed, function(){
             el.css({
                'overflow': 'hidden',
@@ -71,7 +68,6 @@ define([
            return;
         }
 
-
         /**
          * Initialise collapsed state and vars.
          */
@@ -117,9 +113,7 @@ define([
                 collapsedHeight = target.css('line-height');
                 collapseTarget(target, collapsedHeight);
             }
-
         });
-
     });
 
     return;
