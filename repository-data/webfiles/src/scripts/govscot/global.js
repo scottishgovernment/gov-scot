@@ -2,7 +2,7 @@
 
 define([
     'jquery',
-    'cookie',
+    './cookie',
     './component.expand'
 ], function ($, cookie) {
 
