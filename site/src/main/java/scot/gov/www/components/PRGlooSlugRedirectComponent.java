@@ -9,7 +9,6 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.linking.HstLink;
-import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
@@ -27,23 +26,20 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        HstRequestContext context = request.getRequestContext();
         HippoBean bean = findBySlug(request);
-        if (bean != null) {
-            HstLinkCreator linkCreator = context.getHstLinkCreator();
-            final HstLink link = linkCreator.create(bean, context);
-            HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
+        if (bean == null) {
+            response.setStatus(404);
             return;
         }
-
-        response.setStatus(404);
+        HstRequestContext context = request.getRequestContext();
+        final HstLink link = context.getHstLinkCreator().create(bean, context);
+        HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
     }
 
     private HippoBean findBySlug(HstRequest request) {
-        HippoBean scope = request.getRequestContext().getSiteContentBaseBean();
         String slug = lastPathElement(request);
         HstQuery query = HstQueryBuilder
-                .create(scope)
+                .create(request.getRequestContext().getSiteContentBaseBean())
                 .ofTypes(News.class)
                 .where(constraint("govscot:prglooslug").equalTo(slug))
                 .build();
