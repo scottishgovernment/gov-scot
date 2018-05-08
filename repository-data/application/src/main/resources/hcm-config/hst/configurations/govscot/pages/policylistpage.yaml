@@ -19,3 +19,5 @@ definitions:
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter
+          hst:parameternames: [searchType, includeDateFilter]
+          hst:parametervalues: [policies, 'false']

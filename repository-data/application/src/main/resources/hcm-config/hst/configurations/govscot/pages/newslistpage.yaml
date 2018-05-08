@@ -19,3 +19,5 @@ definitions:
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter
+          hst:parameternames: [searchType, includeDateFilter, fromDate]
+          hst:parametervalues: [news, 'true', '2015-09-01']

@@ -19,3 +19,6 @@ definitions:
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter
+          hst:parameternames: [searchType, localeRequired, includeDateFilter, fromDate,
+            includePublicationTypesFilter]
+          hst:parametervalues: [publications, 'true', 'true', '1996-01-01', 'true']

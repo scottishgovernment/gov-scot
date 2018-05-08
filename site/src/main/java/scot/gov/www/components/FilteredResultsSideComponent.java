@@ -8,74 +8,54 @@ import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.parameters.ParametersInfo;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.taxonomy.api.Taxonomy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Topic;
+import scot.gov.www.components.info.FilteredResultsSideComponentInfo;
 import scot.gov.www.components.mapper.TaxonomyMapper;
 
-import java.util.*;
-import org.hippoecm.hst.core.request.HstRequestContext;
 import javax.servlet.http.HttpServletRequest;
-
-import javax.jcr.RepositoryException;
+import java.util.*;
 
 /**
  * Created by z441571 on 09/04/2018.
  */
+@ParametersInfo(type = FilteredResultsSideComponentInfo.class)
 public class FilteredResultsSideComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsSideComponent.class);
-
-    private static final String NEWS = "news";
     private static final String TOPICS = "topics";
-    private static final String POLICIES = "policies";
-    private static final String PUBLICATIONS = "publications";
 
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
         super.doBeforeRender(request, response);
+        FilteredResultsSideComponentInfo info = getComponentParametersInfo(request);
 
-        HippoBean bean = request.getRequestContext().getContentBean();
-        try {
+        HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
 
-            HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
+        HstQuery query = HstQueryBuilder.create(baseBean)
+                .ofTypes(Topic.class).orderByAscending("govscot:title").build();
 
-            HstQuery query = HstQueryBuilder.create(baseBean)
-                    .ofTypes(Topic.class).orderByAscending("govscot:title").build();
+        TaxonomyMapper mapper = TaxonomyMapper.getInstance();
+        Taxonomy publicationTypes = mapper.getPublicationTypesTaxonomy();
 
-            TaxonomyMapper mapper = TaxonomyMapper.getInstance();
-            Taxonomy publicationTypes = mapper.getPublicationTypesTaxonomy();
-            String searchType = "";
-
-            String path = bean.getNode().getPath();
-            if (path.contains(NEWS)) {
-                request.setAttribute("term", true);
-                request.setAttribute("dates", true);
-                executeQueryLoggingException(query, request, TOPICS);
-                searchType = "news";
-
-            } else if (path.contains(POLICIES)) {
-                request.setAttribute("term", true);
-                executeQueryLoggingException(query, request, TOPICS);
-                searchType = "policies";
-
-            } else if (path.contains(PUBLICATIONS)) {
-                request.setAttribute("term", true);
-                request.setAttribute("dates", true);
-                executeQueryLoggingException(query, request, TOPICS);
-                request.setAttribute("publicationTypes", publicationTypes);
-                request.setAttribute("locale", request.getLocale());
-                searchType = "publications";
-            }
-
-            request.setAttribute("searchType", searchType);
-
-        } catch (RepositoryException e) {
-            LOG.error("Failed to get path from bean {}", bean, e);
-            
+        request.setAttribute("term", true);
+        if (info.getIncludeDateFilter()) {
+            request.setAttribute("dates", true);
+            request.setAttribute("fromDate", info.getFromDate());
         }
+        if (info.getIncludePublicationTypesFilter()) {
+            request.setAttribute("publicationTypes", publicationTypes);
+        }
+        if (info.getLocaleRequired()) {
+            request.setAttribute("locale", request.getLocale());
+        }
+        executeQueryLoggingException(query, request, TOPICS);
+        request.setAttribute("searchType", info.getSearchType());
 
         Map<String, Set<String>> params = sanitiseParameterMap(request,
             request.getRequestContext().getServletRequest().getParameterMap());
