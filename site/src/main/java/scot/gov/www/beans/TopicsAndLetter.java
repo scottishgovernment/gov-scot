@@ -6,7 +6,7 @@ public class TopicsAndLetter {
 
     private String letter;
 
-    private List<Topic> topics;
+    private List<SimpleContent> topics;
 
     public String getLetter() {
         return letter;
@@ -16,11 +16,11 @@ public class TopicsAndLetter {
         this.letter = letter;
     }
 
-    public List<Topic> getTopics() {
+    public List<SimpleContent> getTopics() {
         return topics;
     }
 
-    public void setTopics(List<Topic> topics) {
+    public void setTopics(List<SimpleContent> topics) {
         this.topics = topics;
     }
 }

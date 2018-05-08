@@ -5,6 +5,8 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import scot.gov.www.beans.Issue;
+import scot.gov.www.beans.SimpleContent;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.beans.TopicsAndLetter;
 
@@ -22,12 +24,13 @@ public class TopicsComponent extends BaseHstComponent {
                                final HstResponse response) {
         HippoBean base = request.getRequestContext().getSiteContentBaseBean();
         HippoBean topicsBean = base.getBean("topics/");
-        List<Topic> topics = topicsBean.getChildBeans(Topic.class);
-        Map<String, List<Topic>> topicsByFirstLetter  = topics
+        List<SimpleContent> topics = topicsBean.getChildBeans(SimpleContent.class);
+        Map<String, List<SimpleContent>> topicsByFirstLetter  = topics
                 .stream()
+                .filter(this::include)
                 .collect(groupingBy(topic -> String.format("%s", topic.getName().toUpperCase().charAt(0))));
         List<TopicsAndLetter> topicsAndLetters = new ArrayList<>();
-        for (Map.Entry<String, List<Topic>> entry : topicsByFirstLetter.entrySet()) {
+        for (Map.Entry<String, List<SimpleContent>> entry : topicsByFirstLetter.entrySet()) {
             TopicsAndLetter topicAndLetter = new TopicsAndLetter();
             topicAndLetter.setLetter(entry.getKey());
             topicAndLetter.setTopics(entry.getValue());
@@ -36,4 +39,16 @@ public class TopicsComponent extends BaseHstComponent {
         request.setAttribute("topicsByLetter", topicsAndLetters);
     }
 
+    private boolean include(SimpleContent item) {
+        if (item instanceof Topic) {
+            return true;
+        }
+
+        if (item instanceof Issue) {
+            Issue issue = (Issue) item;
+            return issue.getShowOnTopicsLandingPage();
+        }
+
+        return false;
+    }
 }
