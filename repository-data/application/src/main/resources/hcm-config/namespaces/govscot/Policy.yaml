@@ -240,7 +240,7 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:Directorate']
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
@@ -252,7 +252,7 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:Directorate']
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
           /responsibleRole:
             jcr:primaryType: frontend:plugin
