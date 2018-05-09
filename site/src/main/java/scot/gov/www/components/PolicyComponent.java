@@ -4,6 +4,8 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Policy;
 import scot.gov.www.beans.PolicyInDetail;
 
@@ -14,11 +16,12 @@ import java.util.List;
  */
 public class PolicyComponent extends BaseHstComponent {
 
+    private static final Logger LOG = LoggerFactory.getLogger(PolicyComponent.class);
+
     @Override
-    public void doBeforeRender(final HstRequest request,
-                               final HstResponse response) {
+    public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HippoBean document = request.getRequestContext().getContentBean();
-        Policy policy = document.getParentBean().getBean("index", Policy.class);
+        Policy policy = getPolicy(document);
         List<PolicyInDetail> details = document.getParentBean().getChildBeans(PolicyInDetail.class);
         HippoBean prev = prevBean(policy, document, details);
         HippoBean next = nextBean(policy, document, details);
@@ -27,6 +30,18 @@ public class PolicyComponent extends BaseHstComponent {
         request.setAttribute("policyDetails", details);
         request.setAttribute("prev", prev);
         request.setAttribute("next", next);
+    }
+
+    private Policy getPolicy(HippoBean document) {
+        HippoBean parent = document.getParentBean();
+        List<Policy> policies = parent.getChildBeans(Policy.class);
+        if (policies.isEmpty()) {
+            LOG.info("No policy found under {}", document.getPath());
+        }
+        if (policies.size() > 1) {
+            LOG.info("More than one policy found under {}, will use first", document.getPath());
+        }
+        return policies.get(0);
     }
 
     private HippoBean prevBean(HippoBean policy, HippoBean document, List<PolicyInDetail> details) {
@@ -65,7 +80,5 @@ public class PolicyComponent extends BaseHstComponent {
         }
         return details.get(0);
     }
-
-
 
 }
