@@ -172,11 +172,18 @@
                         </#if>
 
                         <#if documents??>
-                            <section class="document-section">
-                                <#list documents as attachedDocument>
-                                    <#include 'body-document-info.ftl'/>
-                                </#list>
-                            </section>
+                            <#assign hasAttachedDocument = '' />
+                            <#list documents as attachedDocument>
+                                <#assign hasAttachedDocument = true />
+                            </#list>
+
+                            <#if hasAttachedDocument?has_content>
+                                <section class="document-section">
+                                    <#list documents as attachedDocument>
+                                        <#include 'body-document-info.ftl'/>
+                                    </#list>
+                                </section>
+                            </#if>
 
                             <#if groupedDocumentFolders??>
                                 <#list groupedDocumentFolders as folder>
