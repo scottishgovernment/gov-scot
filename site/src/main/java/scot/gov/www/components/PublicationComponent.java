@@ -11,6 +11,8 @@ import scot.gov.www.beans.PublicationPage;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class PublicationComponent extends BaseHstComponent {
 
     @Override
@@ -46,19 +48,7 @@ public class PublicationComponent extends BaseHstComponent {
         }
 
         if (!pageFolders.isEmpty()){
-            List<HippoDocumentBean> pages = pageFolders.get(0).getDocuments();
-
-            // if there is a Contents page (named 0), remove it
-            HippoDocumentBean contentsPage = null;
-
-            for(HippoDocumentBean page:pages){
-                if ("0".equals(page.getName())){
-                    contentsPage = page;
-                }
-            }
-
-            pages.remove(contentsPage);
-
+            List<HippoDocumentBean> pages = pagestoInclude(pageFolders.get(0));
             request.setAttribute("pages", pages);
             request.setAttribute("isMultiPagePublication", true);
 
@@ -80,6 +70,16 @@ public class PublicationComponent extends BaseHstComponent {
         } else {
             request.setAttribute("isMultiPagePublication", false);
         }
+    }
+
+    private List<HippoDocumentBean> pagestoInclude(HippoFolderBean pagesFolder) {
+
+        return pagesFolder.getDocuments().stream().filter(this::includePage).collect(toList());
+    }
+
+    private boolean includePage(HippoDocumentBean page) {
+        // do not include pages that have been marked as a contents page by the migration
+        return !page.getProperty("govscot:contentsPage", false);
     }
 
     private HippoBean prevBean(HippoBean currentPage, List<HippoDocumentBean> pages) {
