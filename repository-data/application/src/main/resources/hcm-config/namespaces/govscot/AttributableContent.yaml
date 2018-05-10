@@ -209,10 +209,11 @@ definitions:
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
             caption: Seondary Responsible Directorates
@@ -223,7 +224,7 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Responsible Role

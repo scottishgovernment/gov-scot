@@ -246,7 +246,7 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
@@ -257,7 +257,7 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
           /topics:
             jcr:primaryType: frontend:plugin
