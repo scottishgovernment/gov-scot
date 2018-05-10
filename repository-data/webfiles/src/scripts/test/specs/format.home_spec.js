@@ -36,13 +36,13 @@ define([
                 $('input[name="topics[]"]').get(7).setAttribute('checked', 'checked');
 
                 policySubmitButton.trigger('click');
-                expect(Home.navigateToUrl).toHaveBeenCalledWith('/policies/?topics=Economy|Education');
+                expect(Home.navigateToUrl).toHaveBeenCalledWith('/policies/?topics=Economy;Education');
 
                 // case 3: search term added
                 Home.navigateToUrl.calls.reset();
                 $('#filters-search-term').val('foo');
                 policySubmitButton.trigger('click');
-                expect(Home.navigateToUrl).toHaveBeenCalledWith('/policies/?term=foo&topics=Economy|Education');
+                expect(Home.navigateToUrl).toHaveBeenCalledWith('/policies/?term=foo&topics=Economy;Education');
             });
         });
 

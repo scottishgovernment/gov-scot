@@ -31,7 +31,7 @@
 
      --><div class="grid__item medium--four-twelfths push--medium--one-twelfth hidden-xsmall">
             <div class="search-box welcome__search-box ">
-                <form class="search-box__form" method="GET" action="/search/">
+                <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
                     <label class="search-box__label hidden" for="search-box">Search</label>
                     <input name="q" required="" id="search-box" class="search-box__input " type="text" placeholder="Search site">
                     <button type="submit" title="search" class="search-box__button button button--primary">
@@ -47,8 +47,64 @@
 
 <!-- CAROUSEL -->
 <div class="wrapper  wrapper--full-small  wrapper--full-medium">
-    <#--Carousel component-->
+    <div class="carousel"><!--
+        <#list homeContent.featuredItems as featuredItem>
+            --><div class="carousel-item   <#if featuredItem?is_first> carousel-item--active </#if>">
+
+                <div tabindex="0" class="carousel-item__stage">
+                    <#if featuredItem.youtube?has_content>
+                        <img alt="" src="<@hst.link hippobean=featuredItem.image />" />
+                        <div class="carousel-item__video">
+                            <div class="  embed-responsive  embed-responsive--16by9 ">
+                                <iframe title="youtubevideo" data-videoUrl=${featuredItem.youtube} src="${featuredItem.youtube}?enablejsapi=1&playsinline=1" allowfullscreen></iframe><!-- https://www.youtube.com/embed/{{getYouTubeId youtube}} -->
+                            </div>
+                        </div>
+                    <#else>
+                        <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image />" />
+                    </#if>
+                </div>
+
+                <div class="carousel-controls-placeholder"></div>
+
+                <#if featuredItem.overlayQuote?has_content>
+                    <div class="carousel-item__stage-text">
+                        <blockquote>${featuredItem.overlayQuote}
+                            <#if featuredItem.overlayQuoteAttribution?has_content>
+                                <cite>${featuredItem.overlayQuoteAttribution}</cite>
+                            </#if>
+                        </blockquote>
+                    </div>
+                    <button title="Hide this text" class="carousel-item__stage-text-toggle" disabled="disabled"></button>
+                </#if>
+
+                <div tabindex="0" class="carousel-item__support">
+                    <div class="carousel-item__scrollable">
+                        <div class="carousel-item__title">${featuredItem.title}</div>
+
+                        <div class="carousel-item__desc">
+                            ${featuredItem.teaserText.content}
+                        </div>
+
+                        <div class="carousel-item__link"><a href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
+                    </div>
+                </div>
+            </div><!--
+        </#list>
+
+        --><nav class="carousel-controls">
+            <ul class="carousel-controls__links">
+                <li class="carousel-controls__link">
+                    <button class="carousel-controls__link--previous" title="carousel_previous"></button>
+                </li>
+                <li class="carousel-controls__link">
+                    <button class="carousel-controls__link--next"  title="carousel_next"></button>
+                </li>
+            </ul>
+        </nav><!--
+
+    --></div>
 </div>
+<!-- end CAROUSEL -->
 
 <div class="wrapper">
     <div class="grid"><!--
@@ -66,7 +122,7 @@
                 <fieldset id="filter-search" class="filters__fieldset filter-search">
                     <legend class="filters__legend">Keyword search</legend>
                     <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="filters__input--search-term-home filters__input--search-term" />
-                    <a href="/policies/" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
+                    <a href="<@hst.link path='/policies/' />" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
                 </fieldset>
 
                 <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by topic</h3>
@@ -81,7 +137,7 @@
                     </fieldset>
                 </div>
 
-                <button href="/policies/" class="js-policy-form-submit button button--primary homepage-block__button">Go</button>
+                <button href="<@hst.link path='/policies/' />" class="js-policy-form-submit button button--primary homepage-block__button">Go</button>
 
             </form>
         </section>
@@ -251,22 +307,29 @@
             <h3 class="homepage-about__title">${firstMinister.title}</h3>
 
             <div class="grid"><!--
-                        --><div class="grid__item large--four-twelfths">
+                --><div class="grid__item large--four-twelfths">
 
-                <div class="homepage-about__image-container">
-                    <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="" />
-                </div>
-            </div><!--
+                    <div class="homepage-about__image-container">
+                        <img alt="The First Minister" class="homepage-about__image visible-xsmall" src="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/>"
+                            srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x"/>
+                        <img alt="The First Minister" class="homepage-about__image visible-medium" src="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/>"
+                            srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x"/>
+                        <img alt="The First Minister" class="homepage-about__image visible-large" src="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/>"
+                            srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x"/>
+                        <img alt="The First Minister" class="homepage-about__image visible-xlarge" src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>"
+                            srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x"/>
+                    </div>
+                </div><!--
 
-                        --><div class="grid__item large--eight-twelfths">
-                <div class="narrow">
-                    <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
-                    ${firstMinisterContent?trim?keep_before("\n")}
+                --><div class="grid__item large--eight-twelfths">
+                    <div class="narrow">
+                        <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
+                        ${firstMinisterContent?trim?keep_before("\n")}
 
-                    <p class="homepage-about__read-more"><a href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
-                </div>
-            </div><!--
-                    --></div>
+                        <p class="homepage-about__read-more"><a href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
+                    </div>
+                </div><!--
+            --></div>
 
         </div><!--
 

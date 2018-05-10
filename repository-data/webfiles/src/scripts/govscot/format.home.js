@@ -1,7 +1,10 @@
 define([
+    './component.carousel',
     './tool.text-truncate',
     'jquery.dotdotdot'
-    ], function(TextTruncate){
+    ], function(carousel, TextTruncate){
+
+    window.dataLayer = window.dataLayer || [];
 
     var homePage = {
 
@@ -14,6 +17,8 @@ define([
 
             this.populateFlickr();
             this.populateYouTube();
+
+            carousel.init();
 
             TextTruncate();
         },
@@ -73,7 +78,7 @@ define([
                 queryStringParams.push('term=' + term);
             }
             if (topics.length > 0) {
-                queryStringParams.push('topics=' + topics.join('|'));
+                queryStringParams.push('topics=' + topics.join(';'));
             }
 
             if (queryStringParams.length > 0) {

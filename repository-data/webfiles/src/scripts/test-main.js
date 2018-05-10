@@ -24,9 +24,10 @@ require.config({
   baseUrl: '/base',
 
   paths: {
-   jquery: 'vendor/jquery.min',
-   moment: 'vendor/moment',
-   'jquery.dotdotdot': 'vendor/jquery.dotdotdot.min'
+    hammer: 'vendor/hammer.min',
+    jquery: 'vendor/jquery.min',
+    'jquery.dotdotdot': 'vendor/jquery.dotdotdot.min',
+    moment: 'vendor/moment'
   },
 
   // dynamically load all test files
