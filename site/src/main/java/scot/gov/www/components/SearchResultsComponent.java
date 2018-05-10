@@ -19,8 +19,6 @@ import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
 import org.onehippo.cms7.essentials.components.paging.Pageable;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +33,6 @@ import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES
 @ParametersInfo(type = EssentialsListComponentInfo.class)
 public class SearchResultsComponent extends EssentialsListComponent {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SearchResultsComponent.class);
 
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
     private final ValueList publicationValueList =
@@ -52,8 +49,6 @@ public class SearchResultsComponent extends EssentialsListComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
-
-        final EssentialsListComponentInfo paramInfo = getComponentParametersInfo(request);
 
         super.doBeforeRender(request, response);
 
