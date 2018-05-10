@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/searchpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.ResultsPageContentComponent
+        hst:template: search.page
+        /results:
+          jcr:primaryType: hst:containercomponent
+          hst:componentclassname: scot.gov.www.components.SearchResultsComponent
+          hst:label: Search Results List
+          hst:parameternames: [includeSubtypes, showPagination, pageSize, path]
+          hst:parametervalues: ['on', 'on', '10', content/documents/govscot]
+          hst:template: search.results
+          hst:xtype: hst.item

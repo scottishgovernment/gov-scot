@@ -176,3 +176,7 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications
+      /search:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/searchpage
+        hst:relativecontentpath: search

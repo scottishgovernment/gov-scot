@@ -9,7 +9,7 @@ import scot.gov.www.beans.SimpleContent;
 /**
  * Created by z441571 on 09/04/2018.
  */
-public class FilteredResultsContentComponent extends BaseHstComponent {
+public class ResultsPageContentComponent extends BaseHstComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request,

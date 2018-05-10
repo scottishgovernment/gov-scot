@@ -110,3 +110,9 @@ definitions:
       /publication.page:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/publication/page.ftl
+      /search.page:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/search/page.ftl
+      /search.results:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/search/results.ftl

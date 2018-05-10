@@ -93,7 +93,7 @@
                     <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if>">
                         <#if item.publicationDate??>
                             <p class="listed-content-item__date">
-                                <@fmt.formatDate value=item.publicationDate.time type="both" dateStyle="medium" timeStyle="short"/>
+                                <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy KK:mm"/>
                             </p>
                         </#if>
                         <h2 class="gamma listed-content-item__title">${item.title?html}</h2>
