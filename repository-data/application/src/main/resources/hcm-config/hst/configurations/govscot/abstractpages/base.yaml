@@ -28,3 +28,7 @@ definitions:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/breadcrumb
         hst:suppresswastemessage: true
+      /search:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:components/search
+        hst:suppresswastemessage: true

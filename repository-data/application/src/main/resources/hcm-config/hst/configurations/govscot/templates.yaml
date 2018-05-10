@@ -116,3 +116,6 @@ definitions:
       /search.results:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/search/results.ftl
+      /search-box:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/common/search.ftl
