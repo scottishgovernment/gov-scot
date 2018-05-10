@@ -23,9 +23,11 @@
                 
                 <!-- dev note: inline styles to illustrate image dimensions only. remove when we have correct images. -->
                 <img class="full-width-image"
-                    src=""
-                    alt="First Minister"
-                    style="padding-bottom: 42.5531914893617%; height: 0; background: #e5f0f8;">
+                    src="<@hst.link path='/assets/images/people/first_minister_desktop.jpg'/>"
+                    srcset="<@hst.link path='/assets/images/people/first_minister_mob.jpg'/> 767w,
+                        <@hst.link path='/assets/images/people/first_minister_desktop.jpg'/> 848w,
+                        <@hst.link path='/assets/images/people/first_minister_desktop_@2x.jpg'/> 1696w"
+                    alt="First Minister">
                 
                 <div class="grid">
                     <div class="grid__item large--ten-twelfths">

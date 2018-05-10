@@ -23,7 +23,19 @@
                         <div class=person>
                             <a class="person__link" href="${link}">
                                 <div class="person__image-container">
-                                    <img class="person__image" src='<@hst.link path="/assets/images/people/placeholder.png"/>' alt="" />
+                                    <div class="person__image-container">
+                                        <img xlargewidth="263" largewidth="213" mediumwidth="220" smallwidth="130" alt="${person.title}" class="person__image"
+                                        src="<@hst.link hippobean=person.image.xlarge/>"
+                                        srcset="<@hst.link hippobean=person.image.small/> 130w,
+                                            <@hst.link hippobean=person.image.smalldoubled/> 260w,
+                                            <@hst.link hippobean=person.image.medium/> 220w,
+                                            <@hst.link hippobean=person.image.mediumdoubled/> 440w,
+                                            <@hst.link hippobean=person.image.large/> 213w,
+                                            <@hst.link hippobean=person.image.largedoubled/> 426w,
+                                            <@hst.link hippobean=person.image.xlarge/> 263w,
+                                            <@hst.link hippobean=person.image.xlargedoubled/> 526w"
+                                        sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px">
+                                    </div>
                                 </div>
                             </a>
 
