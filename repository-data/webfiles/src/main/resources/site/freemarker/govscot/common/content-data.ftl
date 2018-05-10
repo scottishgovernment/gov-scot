@@ -30,7 +30,7 @@
         </#if>
         </dd>
     </#if>
-    <#if index.responsibleDirectorate?? && !isMultiPagePublication>
+    <#if index.responsibleDirectorate?? && !isMultiPagePublication!false>
         <dt class="content-data__label">Directorate:</dt>
 
         <dd class="content-data__value">
