@@ -126,3 +126,5 @@ definitions:
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/imageValidationService:
       max.width: 2280
+    /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
+      country: sc
