@@ -24,7 +24,7 @@
                             <a class="person__link" href="${link}">
                                 <div class="person__image-container">
                                     <div class="person__image-container">
-                                        <img xlargewidth="263" largewidth="213" mediumwidth="220" smallwidth="130" alt="${person.title}" class="person__image"
+                                        <img alt="${person.title}" class="person__image"
                                         src="<@hst.link hippobean=person.image.xlarge/>"
                                         srcset="<@hst.link hippobean=person.image.small/> 130w,
                                             <@hst.link hippobean=person.image.smalldoubled/> 260w,
