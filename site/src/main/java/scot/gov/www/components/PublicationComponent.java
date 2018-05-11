@@ -57,7 +57,7 @@ public class PublicationComponent extends BaseHstComponent {
             if (document.getClass() == PublicationPage.class){
                 currentPage = document;
             } else {
-                currentPage = (HippoBean) pageFolders.get(0).getChildBeansByName("1").get(0);
+                currentPage = pages.get(0);
             }
 
             request.setAttribute("currentPage", currentPage);
