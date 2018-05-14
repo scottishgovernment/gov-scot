@@ -13,6 +13,7 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.taxonomy.api.Taxonomy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsSideComponentInfo;
 import scot.gov.www.components.mapper.TaxonomyMapper;
@@ -38,7 +39,7 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
         HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
 
         HstQuery query = HstQueryBuilder.create(baseBean)
-                .ofTypes(Topic.class).orderByAscending("govscot:title").build();
+                .ofTypes(Issue.class, Topic.class).orderByAscending("govscot:title").build();
 
         TaxonomyMapper mapper = TaxonomyMapper.getInstance();
         Taxonomy publicationTypes = mapper.getPublicationTypesTaxonomy();

@@ -7,7 +7,7 @@
             <h1 class="article-header">${index.title?html}</h1>
 
             <#if index.content.content?has_content>
-                ${index.content.content}
+                <@hst.html hippohtml=index.content/>
             <#else>
                 <p>${index.summary}</p>
             </#if>
