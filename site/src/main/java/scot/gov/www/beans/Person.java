@@ -77,4 +77,6 @@ public class Person extends AttributableContent {
     public People getImage() {
         return getLinkedBean("govscot:image", People.class);
     }
+
+    public String getName() { return getTitle(); }
 }
