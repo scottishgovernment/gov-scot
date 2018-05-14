@@ -5,24 +5,11 @@
 <#-- @ftlvariable name="publicationTypes" type="java.util.Map" -->
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.Publication" -->
 
-<#-- determine whether we have active parameters -->
-<#assign hasActiveParameters = false/>
-<#if parameters['term']?has_content>
-    <#assign hasActiveParameters = true/>
-</#if>
-
 <#-- this div is here to make use of 'pageable' -->
-<div class="filter-buttons--sticky">
-    <button class="button  button--secondary  button--no-margin  button--left  button--xsmall  js-show-filters">Filter</button>
-
-    <span class="search-results__count js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${pageable.total}</b> items</span>
-
-    <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  button button--xsmall button--cancel button--right">Clear</a>
-</div>
 
 <section id="search-results" class="search-results">
     <h2 class="hidden">Search results</h2>
-    <p class="search-results__count js-search-results-count">Showing <b>${pageable.total}</b> results</p>
+    <p class="search-results__count js-search-results-count">Showing <b>${pageable.total}</b> <#if pageable.total == 1>result<#else>results</#if></p>
 
     <ol id="search-results-list" class="search-results__list">
         <#list pageable.items as item>

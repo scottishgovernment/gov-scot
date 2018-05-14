@@ -102,6 +102,15 @@ define([
             let currentParams = that.gatherParams();
             let newQueryString = searchUtils.getNewQueryString(currentParams);
 
+            // insert "loading" message
+            let searchResults = $('#search-results');
+            searchResults.css({position: 'relative'});
+            let overlay = $('<div class="search-results-overlay"></div>');
+            overlay.appendTo(searchResults);
+
+            // disable form
+            $('#filters-fields').prop('disabled',true);
+
             $.ajax({
                 url: window.location.pathname + newQueryString
             }).done(function (response) {
@@ -113,7 +122,7 @@ define([
                 }
 
                 // update results (incl pagination and status readout)
-                $('#search-results').html($(response).find('#search-results'));
+                $('#search-results').html($(response).find('#search-results').html());
 
                 // update display status of "clear" buttons
                 if (that.hasActiveSearch(currentParams)) {
@@ -121,6 +130,12 @@ define([
                 } else {
                     $('.js-clear-filters').addClass('hidden');
                 }
+
+                // remove "loading" message
+                $('.search-results-overlay').remove();
+
+                // enable form
+                $('#filters-fields').prop('disabled',false);
 
                 that.hideFilters();
             }).fail(function () {
@@ -212,11 +227,12 @@ define([
 
             that.submitSearch();
         });
+
         $('#search-results').on('click', '.pagination__page', function (event) {
             event.preventDefault();
 
             that.searchParams.page = getParameterByName('page', event.target.href);
-            
+
             that.submitSearch();
         });
     }

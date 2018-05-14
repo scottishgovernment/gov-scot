@@ -57,8 +57,6 @@ public class SearchResultsComponent extends EssentialsListComponent {
 
         request.setAttribute("parameters", params);
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
-
-
     }
 
     @Override

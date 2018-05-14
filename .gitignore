@@ -14,3 +14,4 @@ site/src/main/webapp/assets/mygov/
 .vscode
 *.stack.svg
 repository-data/webfiles/src/scripts/test/coverage
+repository-data/application/src/main/resources/hcm-content/content/gallery

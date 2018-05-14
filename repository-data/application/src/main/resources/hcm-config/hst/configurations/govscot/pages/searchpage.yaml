@@ -3,6 +3,7 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/searchpage:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
+      hst:componentclassname: scot.gov.www.components.ResultsPageContentComponent
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.ResultsPageContentComponent

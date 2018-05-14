@@ -31,7 +31,6 @@
     <#include 'common/notifications.ftl' />
 
     <div id="main-wrapper">
-
         <@hst.include ref="menu"/>
 
         <#if !(isHomepage!false)>
@@ -39,17 +38,20 @@
             <!-- search & breadcrumbs -->
             <!-- only show when not on homepage -->
                 <div class="breadcrumbs__container">
+                
                     <div class="grid"><!--
+                        <#if !(isSearchpage!false)>
                         --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
-                        <@hst.include ref="search"/>
-                    </div><!--
+                            <@hst.include ref="search"/>
+                        </div><!--
+                        </#if>
 
-                 --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
-                        <nav>
-                            <@hst.include ref="breadcrumb"/>
-                        </nav>
-                    </div><!--
-             --></div>
+                        --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
+                            <nav>
+                                <@hst.include ref="breadcrumb"/>
+                            </nav>
+                        </div><!--
+                    --></div>
                 </div>
             </#if>
 
