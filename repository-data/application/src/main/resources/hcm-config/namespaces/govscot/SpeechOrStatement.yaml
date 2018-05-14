@@ -265,15 +265,16 @@ definitions:
               last.visited.enabled: 'false'
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics
+            caption: Topics and Issues
             field: topics
-            hint: ''
+            hint: Topics or Issues that this content is part of
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
+              nodetypes: ['govscot:Topic', 'govscot:Issue']
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Responsible Role

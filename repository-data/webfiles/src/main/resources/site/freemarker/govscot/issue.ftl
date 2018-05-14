@@ -2,6 +2,7 @@
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if document??>
+    <@hst.manageContent hippobean=document />
 
     <header class="topic-header  <#if document.image?has_content>topic-header--has-image</#if>" id="page-content">
         <h1 class="article-header  topic-header__title">${document.title}</h1>
@@ -86,7 +87,7 @@
                         </section>
                     </#if>
 
-                    <#if news??>
+                    <#if news?has_content>
                         <section class="issue-sidebar-block" id="related-news">
                             <h2 class="gamma  emphasis  issue-sidebar-block__title">News</h2>
                             <ul class="no-bullets">
@@ -94,7 +95,7 @@
                                     <li><a class="issue-sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
                                 </#list>
                             </ul>
-                            <a href="/news/?topics=${document.title}" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all news</a>
+                            <a href="<@hst.link path='/news/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all news</a>
                         </section>
                     </#if>
 
@@ -106,11 +107,11 @@
                                     <li><a class="issue-sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
                                 </#list>
                             </ul>
-                            <a href="/policies/?topics=${document.title}" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all policies</a>
+                            <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all policies</a>
                         </section>
                     </#if>
 
-                    <#if publications??>
+                    <#if publications?has_content>
                         <section class="issue-sidebar-block" id="related-publications">
                             <h2 class="gamma  emphasis  issue-sidebar-block__title">Publications</h2>
                             <ul class="no-bullets">
@@ -118,7 +119,7 @@
                                     <li><a class="issue-sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
                                 </#list>
                             </ul>
-                            <a href="/publications/?topics=${document.title}" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all publications</a>
+                            <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all publications</a>
                         </section>
                     </#if>
 
@@ -134,16 +135,18 @@
     <div class="wrapper">
 
         <div class="grid"><!--
-            <#if document.phone?has_content ||
+        <@hst.html hippohtml=document.phone var="phone"/>
+        <@hst.html hippohtml=document.postalAddress var="address"/>
+            <#if phone?has_content ||
                 document.contactInformation.email?has_content ||
-                document.address?has_content>
+                address?has_content>
              --><div class="grid__item medium--four-twelfths">
                     <div id="contact">
                         <h2 class="gamma emphasis"><#if document.contactTitle?has_content>${document.contactTitle}<#else>Contact</#if></h2>
 
-                        <#if document.phone?has_content><p><b>Phone</b>: ${document.phone}</p></#if>
+                        <#if phone?has_content><p><b>Phone</b>: ${phone}</p></#if>
                         <#if document.contactInformation.email?has_content><p><b>Email</b>: ${document.contactInformation.email}</p></#if>
-                        <#if document.address?has_content><p><b>Address</b>:<br /> ${document.address}</p></#if>
+                        <#if address?has_content><p><b>Address</b>:<br /> ${address}</p></#if>
                     </div>
                 </div><!--
             </#if>

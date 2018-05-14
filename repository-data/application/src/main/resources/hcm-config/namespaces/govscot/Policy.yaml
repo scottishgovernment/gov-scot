@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 65df4e33-5bb6-4b56-a77d-0d80a1e85dba
+          jcr:uuid: cdc05cb5-2cca-404b-99e9-bb04cca33bf1
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -79,7 +79,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: b02b070b-6f79-41ca-95b3-9e763821c4e9
+          jcr:uuid: b24a1011-4996-4cc0-9671-11f749394f5d
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:policyTags: ['']
@@ -220,9 +220,9 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics
+            caption: Topics and Issues
             field: topics
-            hint: ''
+            hint: Topics or Issues that this content is part of
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -230,7 +230,7 @@ definitions:
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
               last.visited.nodetypes: []
-              nodetypes: ['govscot:Topic']
+              nodetypes: ['govscot:Topic', 'govscot:Issue']
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
             caption: Responsible Directorate
@@ -244,7 +244,7 @@ definitions:
               last.visited.enabled: 'false'
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Seondary Responsible Directorates
+            caption: Secondary Responsible Directorates
             field: secondaryResponsibleDirectorate
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin

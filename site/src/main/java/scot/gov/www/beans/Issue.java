@@ -58,13 +58,13 @@ public class Issue extends SimpleContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:phone")
-    public String getPhone() {
-        return getProperty("govscot:phone");
+    public HippoHtml getPhone() {
+        return getHippoHtml("govscot:phone");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:address")
-    public String getAddress() {
-        return getProperty("govscot:address");
+    @HippoEssentialsGenerated(internalName = "govscot:postalAddress")
+    public HippoHtml getPostalAddress() {
+        return getHippoHtml("govscot:postalAddress");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:overview")
