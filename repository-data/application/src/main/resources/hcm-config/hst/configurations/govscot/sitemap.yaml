@@ -20,7 +20,9 @@ definitions:
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicpage
-          hst:relativecontentpath: ${parent}/${1}
+          hst:relativecontentpath: topics/${1}
+          hst:componentconfigurationmappingvalues: ['hst:pages/issuepage']
+          hst:componentconfigurationmappingnames: ['govscot:Issue']
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicslistpage
