@@ -6,7 +6,12 @@
         --><div class="grid__item medium--eight-twelfths">
             <h1 class="article-header">${index.title?html}</h1>
 
-            ${index.content.content}
+            <#if index.content.content?has_content>
+                ${index.content.content}
+            <#else>
+                <p>${index.summary}</p>
+            </#if>
+            
         </div><!--
     --></div>
 </#if>
