@@ -4,7 +4,7 @@ define([
     'jquery',
     './cookie',
     './component.expand'
-], function ($, cookie) {
+], function ($, cookie, expand) {
 
     // run autoscaling/fixing code up to.
     var autoThreshold = 768,
@@ -301,12 +301,13 @@ define([
 
         init: function () {
             this.initHeader();
-            this.initMourningBanner();
+            //this.initMourningBanner();
             this.initCookieNotice();
             this.initBanner('beta-banner');
             this.initBanner('staging-banner');
             this.resetSwipeHandler();
             this.svgFallback();
+            expand.init();
 
             // IE8 doesn't support window.pageYOffset
             if (window.pageXOffset !== undefined) {

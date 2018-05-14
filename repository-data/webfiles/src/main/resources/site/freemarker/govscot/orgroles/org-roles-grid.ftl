@@ -65,7 +65,7 @@
                                 <@hst.link var="documentlink" hippobean=document/>
                                 <#if documentlink?contains("civil-service") && hasDirectorates>
                                     <div class="person__responsibilities">
-                                        <button class="link expand  person__responsibilities-toggle"
+                                        <button class="link  js-expand  expand  person__responsibilities-toggle"
                                             data-target-selector="#${person.canonicalUUID}-responsibilities"
                                             title="Show responsibilities">
                                             <span class="expand__icon"></span>
