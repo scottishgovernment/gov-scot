@@ -28,7 +28,17 @@
 
                                     <div class="person__image-container">
                                         <div class="person__image-container">
-                                            <img class="person__image" src='<@hst.link path="/assets/images/people/placeholder.png"/>' alt="" />
+                                            <img alt="${role.incumbent.title}" class="person__image"
+                                        src="<@hst.link hippobean=role.incumbent.image.xlarge/>"
+                                        srcset="<@hst.link hippobean=role.incumbent.image.small/> 130w,
+                                            <@hst.link hippobean=role.incumbent.image.smalldoubled/> 260w,
+                                            <@hst.link hippobean=role.incumbent.image.medium/> 220w,
+                                            <@hst.link hippobean=role.incumbent.image.mediumdoubled/> 440w,
+                                            <@hst.link hippobean=role.incumbent.image.large/> 213w,
+                                            <@hst.link hippobean=role.incumbent.image.largedoubled/> 426w,
+                                            <@hst.link hippobean=role.incumbent.image.xlarge/> 263w,
+                                            <@hst.link hippobean=role.incumbent.image.xlargedoubled/> 526w"
+                                        sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, (min-width:480px) 213px, 130px">
                                         </div>
                                     </div>
 
@@ -37,7 +47,7 @@
                                         <p class="person__roles">
                                             <#-- todo: allow for multiple here -->
                                             <@hst.link var="link" hippobean=role/>
-                                            <a class="person__role-link" href="${link}">${role.title}</a>
+                                            <object><a class="person__role-link" href="${link}">${role.title}</a></object>
                                         </p>
                                     </div>
 
@@ -56,22 +66,33 @@
                 <#if document.secondaryOrgRole??>
                     <#list document.secondaryOrgRole as role>
 
-
                      --><li class="grid__item medium--four-twelfths large--three-twelfths no-left-margin">
                             <div class="person">
                                 <@hst.link var="link" hippobean=role/>
                                 <a class="person__link" href="${link}">
                                     <div class="person__image-container">
-                                        <img class="person__image" src='<@hst.link path="/assets/images/people/placeholder.png"/>' alt="" />
+                                        <#if role.incumbent??>
+                                            <#assign roleperson = role.incumbent/>
+                                        <#else>
+                                            <#assign roleperson = role/>
+                                        </#if>
+                                        
+                                        <img alt="${roleperson.title}" class="person__image"
+                                        src="<@hst.link hippobean=roleperson.image.xlarge/>"
+                                        srcset="<@hst.link hippobean=roleperson.image.small/> 130w,
+                                            <@hst.link hippobean=roleperson.image.smalldoubled/> 260w,
+                                            <@hst.link hippobean=roleperson.image.medium/> 220w,
+                                            <@hst.link hippobean=roleperson.image.mediumdoubled/> 440w,
+                                            <@hst.link hippobean=roleperson.image.large/> 213w,
+                                            <@hst.link hippobean=roleperson.image.largedoubled/> 426w,
+                                            <@hst.link hippobean=roleperson.image.xlarge/> 263w,
+                                            <@hst.link hippobean=roleperson.image.xlargedoubled/> 526w"
+                                        sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, 130px">
                                     </div>
 
                                     <div class="person__text-container">
                                         <h4 class="person__name person__name--link">
-                                            <#if role.incumbent??>
-                                                ${role.incumbent.title}
-                                            <#else>
-                                                ${role.title}
-                                            </#if>
+                                            ${roleperson.title}
                                         </h4>
 
                                         <p class="person__roles">
