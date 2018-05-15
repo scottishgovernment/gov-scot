@@ -21,8 +21,7 @@ define([], function () {
                 bannerClosed = !bannerClosed;
                 sessionStorage.setItem(id + '-closed', JSON.stringify(bannerClosed));
 
-                that.headerAutofixing();
-
+                $(window).trigger('headerautofixing');
                 $(window).trigger('positionnav');
             });
         }

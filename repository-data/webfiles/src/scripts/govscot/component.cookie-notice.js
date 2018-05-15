@@ -4,11 +4,13 @@ define([
     'use strict';
 
     return {
-        init: function () {
+        init: function (ppp) {
             let notice = $('#cookie-notice');
 
             // check whether we need to display the cookie notice
-            if (!cookie('cookie-notification-acknowledged')) {
+            if (cookie('cookie-notification-acknowledged')) {
+                notice.addClass('hidden');
+            } else {
                 notice.removeClass('hidden');
             }
     
