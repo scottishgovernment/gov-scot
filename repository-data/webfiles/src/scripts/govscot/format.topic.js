@@ -2,6 +2,7 @@ define([
     './component.expandable',
     './tool.text-truncate'
 ], function(expandable, TextTruncate) {
+    'use strict';
 
     var topicPage = {};
 

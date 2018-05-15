@@ -1,5 +1,3 @@
-'use strict';
-
 define([
     './pubsub',
     '../shared/component.page-group',
@@ -7,6 +5,7 @@ define([
     './component.sticky-back-to-top',
     '../shared/component.sticky-document-info'
 ], function(pubsub, pageGroup, displayToggle) {
+    'use strict';
 
     var publicationPage = {},
         pages = {},

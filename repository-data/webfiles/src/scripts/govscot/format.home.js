@@ -2,7 +2,8 @@ define([
     './component.carousel',
     './tool.text-truncate',
     'jquery.dotdotdot'
-    ], function(carousel, TextTruncate){
+], function(carousel, TextTruncate){
+    'use strict';
 
     window.dataLayer = window.dataLayer || [];
 

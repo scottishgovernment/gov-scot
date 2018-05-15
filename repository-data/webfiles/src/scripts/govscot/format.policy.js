@@ -2,6 +2,7 @@ define([
     '../shared/component.page-group',
     './component.display-toggle'
 ], function(pageGroup, displayToggle) {
+    'use strict';
 
     var policyPage = {
         init: function(){

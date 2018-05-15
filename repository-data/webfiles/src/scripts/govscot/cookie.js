@@ -16,6 +16,7 @@
 
 define([
 ], function () {
+    'use strict';
 
     var cookie = function(name, value, days) {
         if (typeof value === 'undefined') {

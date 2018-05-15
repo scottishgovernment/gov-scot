@@ -232,11 +232,11 @@ define([
                 var dateToPick = datePicker.find('td:not(.is-disabled) .pika-day:last');
 
                 var expectedDate = dates.leadingZeroes(dateToPick.data('pika-day'), 2) + '/' + dates.leadingZeroes(dateToPick.data('pika-month') + 1, 2)  + '/' + dateToPick.data('pika-year').toString();
-
-                //search.dateFromPicker.setDate(dates.dateFormatMachine(expectedDate));
                 search.dateFromPicker.setDate(expectedDate);
 
-                expect($('#date-from').val()).toEqual(expectedDate);
+                window.setTimeout(function () {
+                    expect($('#date-from').val()).toEqual(expectedDate)
+                }, 200);
             });
 
             it('date picker: should trigger a search on DESKTOP', function () {
@@ -253,7 +253,9 @@ define([
 
                 search.dateFromPicker.setDate(expectedDate);
 
-                expect(search.submitSearch).toHaveBeenCalled();
+                window.setTimeout(function () {
+                    expect(search.submitSearch).toHaveBeenCalled();
+                }, 100);
             });
 
             it ('date picker: there should be a way of opening the date picker calendar', function () {

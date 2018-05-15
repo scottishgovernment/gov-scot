@@ -1,5 +1,6 @@
-
 define(['jquery'], function ($) {
+    'use strict';
+    
     var o = $({});
 
     $.subscribe = function() {

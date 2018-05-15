@@ -1,5 +1,5 @@
-define([
-], function () {
+define([], function () {
+    'use strict';
 
     var searchUtils = {
         addError: function (message, inputGroup) {
