@@ -32,13 +32,19 @@
                     <div class="main-nav__wrap  scrollable  scrollable--mobile-only">
                         <ul class="main-nav__list  scrollable__content" id="main-navigation"><!--
                                 <#list menu.siteMenuItems as item>
+                                <#if item.hstLink??>
+                                    <#assign href><@hst.link link=item.hstLink /></#assign>
+                                <#elseif item.externalLink??>
+                                    <#assign href>${item.externalLink}</#assign>
+                                </#if>
+
                                 <#if item.selected || item.expanded>
                              --><li class="main-nav__item">
-                                    <a class="main-nav__link  main-nav__link--selected" href="<@hst.link link=item.hstLink/>" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                    <a class="main-nav__link  main-nav__link--selected" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
                                 </li><!--
                                 <#else>
                              --><li class="main-nav__item">
-                                    <a class="main-nav__link" href="<@hst.link link=item.hstLink/>" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                    <a class="main-nav__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
                                 </li><!--
                                 </#if>
                             </#list>
