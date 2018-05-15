@@ -57,8 +57,8 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
         super.init(servletContext, componentConfig);
-        Collections.addAll(FIELD_NAMES, "govscot:title", "govscot:summary", "govscot:content", "hippostd:tags", 
-                "govscot:incumbentTitle", "govscot:policyTags");
+        Collections.addAll(FIELD_NAMES, "govscot:title", "govscot:summary", "govscot:content/hippostd:content",
+                "hippostd:tags", "govscot:incumbentTitle", "govscot:policyTags");
     }
 
     @Override
