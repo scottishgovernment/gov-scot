@@ -4,6 +4,8 @@
 <#if document??>
 </div>
 
+<@hst.manageContent hippobean=document/>
+
 <article id="page-content">
 
     <#--------------------- HEADER SECTION --------------------->

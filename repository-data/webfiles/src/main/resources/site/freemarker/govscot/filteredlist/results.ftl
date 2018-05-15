@@ -86,7 +86,6 @@
 
     <ol id="search-results-list" class="search-results__list">
         <#list pageable.items as item>
-            <@hst.manageContent hippobean=item/>
             <@hst.link var="link" hippobean=item/>
             <li class="search-results__item  listed-content-item">
                 <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">

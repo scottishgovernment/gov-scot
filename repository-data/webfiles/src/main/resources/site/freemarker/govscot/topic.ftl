@@ -1,6 +1,8 @@
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
+<@hst.manageContent hippobean=document/>
+
 <header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
     <#if document.image??>
         <img src="<@hst.link hippobean=document.image.bannerdesktop/>"

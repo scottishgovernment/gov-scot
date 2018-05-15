@@ -1,6 +1,9 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
+
+<@hst.manageContent hippobean=document/>
+
 <div class="grid" id="page-content"><!--
      --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
 
