@@ -99,7 +99,7 @@
                         </section>
                     </#if>
 
-                    <#if policies??>
+                    <#if policies?has_content>
                         <section class="issue-sidebar-block" id="related-policies">
                             <h2 class="gamma  emphasis  issue-sidebar-block__title">Policies</h2>
                             <ul class="no-bullets">
