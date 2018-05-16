@@ -68,6 +68,9 @@
 [govscot:PolicyInDetail] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:PublicationInlineImage] > hippogallery:imageset, hippogallery:relaxed
+  orderable
+
 [govscot:PublicationPage] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 

@@ -1,0 +1,101 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/PublicationInlineImage:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 45bed038-6e35-4a5c-9843-eb0648ee89dd
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 1e5851fa-4c61-4de9-abbb-1441cb874111
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippogallery:imageset', 'hippogallery:relaxed']
+          jcr:mixinTypes: ['hipposysedit:remodel']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /filename:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:filename
+            hipposysedit:type: String
+          /description:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:description
+            hipposysedit:type: String
+          /thumbnail:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:autocreated: true
+            hipposysedit:mandatory: true
+            hipposysedit:path: hippogallery:thumbnail
+            hipposysedit:primary: true
+            hipposysedit:type: hippogallery:image
+          /original:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:original
+            hipposysedit:type: hippogallery:image
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:PublicationInlineImage
+          jcr:mixinTypes: ['mix:versionable', 'mix:referenceable']
+          jcr:uuid: 12f75f53-ef99-4d49-972b-55f758c769cf
+          hippogallery:description: ''
+          /hippogallery:thumbnail:
+            jcr:primaryType: hippogallery:image
+            hippogallery:height: 94
+            hippogallery:width: 94
+            jcr:data:
+              type: binary
+              resource: /namespaces/govscot/PublicationInlineImage/prototypes/prototype/thumbnail/thumbnail.jpg
+            jcr:encoding: UTF-8
+            jcr:lastModified: 2008-03-26T12:03:00+01:00
+            jcr:mimeType: image/jpeg
+          /hippogallery:original:
+            jcr:primaryType: hippogallery:image
+            hippogallery:height: 0
+            hippogallery:width: 0
+            jcr:data:
+              type: binary
+              resource: /namespaces/govscot/PublicationInlineImage/prototypes/prototype/original/original.gif
+            jcr:lastModified: 1970-01-01T00:00:00Z
+            jcr:mimeType: image/gif
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [model.compareTo, wicket.model, engine]
+          frontend:services: [wicket.id]
+          mode: edit
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /filename:
+            jcr:primaryType: frontend:plugin
+            caption: file name
+            field: filename
+            plugin.class: org.hippoecm.frontend.plugins.gallery.editor.FileNameDisplayPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /description:
+            jcr:primaryType: frontend:plugin
+            caption: description
+            field: description
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /thumbnail:
+            jcr:primaryType: frontend:plugin
+            caption: thumbnail
+            field: thumbnail
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /original:
+            jcr:primaryType: frontend:plugin
+            caption: original
+            field: original
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
