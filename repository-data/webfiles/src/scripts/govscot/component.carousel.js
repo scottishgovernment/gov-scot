@@ -33,22 +33,20 @@ define([
       'hoverDelta': 24
     };
 
-    var carousel = $(config.selectors.carousel),
-        items = $(config.selectors.items),
-        stage = $(config.selectors.stage),
-        support = $(config.selectors.support),
-        desc = $(config.selectors.desc),
-        controls = $(config.selectors.controls),
-        controlsPrevious = $(config.selectors.controlsPrevious),
-        controlsNext = $(config.selectors.controlsNext),
-        textOverlayToggle = $(config.selectors.textOverlayToggle),
-        currentItem = 0,
-        itemClickedText = '',
-        itemClickedHref = '',
-        videos = [],
-        touchDevice = ('ontouchstart' in document.documentElement);
-
-
+    var carousel,
+        items,
+        stage,
+        support,
+        desc,
+        controls,
+        controlsPrevious,
+        controlsNext,
+        textOverlayToggle,
+        currentItem,
+        itemClickedText,
+        itemClickedHref,
+        videos,
+        touchDevice;
 
     /**
      * Carousel object that gets returned.
@@ -58,8 +56,23 @@ define([
         itemTitleClicked: false,
 
         init: function () {
+            carousel = $(config.selectors.carousel);
+            items = $(config.selectors.items);
+            stage = $(config.selectors.stage);
+            support = $(config.selectors.support);
+            desc = $(config.selectors.desc);
+            controls = $(config.selectors.controls);
+            controlsPrevious = $(config.selectors.controlsPrevious);
+            controlsNext = $(config.selectors.controlsNext);
+            textOverlayToggle = $(config.selectors.textOverlayToggle);
+            currentItem = 0;
+            itemClickedText = '';
+            itemClickedHref = '';
+            videos = [];
+            touchDevice = ('ontouchstart' in document.documentElement);
+
             if (carousel.length === 0) {
-                return;
+                return false;
             }
             /**
              * Add class to indicate number of items.
@@ -237,10 +250,11 @@ define([
             });
 
             support.on('keydown', function(e) {
-                var code = e.which;
-                if ((code === 13) || (code === 32)) {
-                    $(this).click();
-                }
+                keypress(e, element);
+            });
+
+            stage.on('keydown', function(e) {
+                keypress(e, element);
             });
 
             items.find('a').on('click', function (e) {
@@ -265,13 +279,6 @@ define([
                   that.playVideo(itemIndex);
                 }
                 ev.stopPropagation();
-            });
-
-            stage.on('keydown', function(e) {
-                var code = e.which;
-                if ((code === 13) || (code === 32)) {
-                    $(this).click();
-                }
             });
 
             /**
@@ -331,6 +338,12 @@ define([
 
         },
 
+        keypressToClick: function (element, event) {
+            let code = event.which || event.key;
+            if (code === 13 || code === 32) {
+                element.click();
+            }
+        },
 
         /**
          * ==================================================================
@@ -359,7 +372,13 @@ define([
                 let videoUrl = videoIframe.attr('data-videoUrl');
 
                 var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                var match = videoUrl.match(regExp);
+                
+                var match;
+
+                if (videoUrl) {
+                    match = videoUrl.match(regExp);
+                }
+                
                 if (match) {
                     videoIframe.attr('src', 'https://www.youtube.com/embed/' + match[2] + '?enablejsapi=1&playsinline=1');
                 }
