@@ -30,7 +30,7 @@
 
                 <div class="person person--bordered-mobile">
                     <div class="person__image-container person__image-container--centred-mobile">
-                        <img alt="${person.title}" class="person__image"
+                        <img alt="${document.incumbent.title}" class="person__image"
                             src="<@hst.link hippobean=document.incumbent.image.xlarge/>"
                             srcset="<@hst.link hippobean=document.incumbent.image.small/> 130w,
                                 <@hst.link hippobean=document.incumbent.image.smalldoubled/> 260w,
