@@ -137,6 +137,9 @@ define([
                 // enable form
                 $('#filters-fields').prop('disabled',false);
 
+                // update count for mobile
+                $('.js-search-results-count').html($('#search-results .search-results__count').html());
+
                 that.hideFilters();
             }).fail(function () {
                 window.location.search = newQueryString;
@@ -164,6 +167,7 @@ define([
 
                 // update results (incl pagination)
                 $('#search-results-list').append($(response).find('#search-results-list').html());
+                $('#pagination').html($(response).find('#pagination').html());
                 $('#load-more').attr('data-page-start', startPage + 1);
             }).fail(function () {
                 window.location.search = newQueryString;
@@ -212,7 +216,7 @@ define([
         });
 
         // clear filters
-        $('.js-clear-filters').on('click', function (e) {
+        $('body').on('click', '.js-clear-filters', function (e) {
             e.preventDefault();
 
             dataLayer.push({
