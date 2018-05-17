@@ -7,9 +7,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
         hst:template: featured-role
-        /contact-information:
-          jcr:primaryType: hst:component
-          hst:referencecomponent: hst:components/contact-information
         /side-menu:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.AboutMenu
