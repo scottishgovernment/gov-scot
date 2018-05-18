@@ -154,6 +154,9 @@ define([
             if (qsArray[0] === '') {
                 qsArray = [];
             } 
+
+            qsArray = qsArray.filter(function (item) {return item !== ''});
+
             qsArray.push('page=' + startPage);
             let newQueryString = '?' + qsArray.join('&');
 

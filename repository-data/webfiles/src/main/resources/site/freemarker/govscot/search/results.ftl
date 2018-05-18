@@ -97,8 +97,10 @@
         </#list>
     </#if>
 
-        <div class="search-results__pagination  search-results__pagination--small  pagination">
-            <button data-page-start="${pageNumber + 1}" id="load-more" class="js-load-more-results  button  button--primary">Load more</button>
-        </div>
+        <#if pageable.currentPage < pageable.totalPages>
+            <div class="search-results__pagination  search-results__pagination--small  pagination">
+                <button data-page-start="${pageNumber + 1}" id="load-more" class="js-load-more-results  button  button--primary">Load more</button>
+            </div>
+        </#if>
     </div>
 </section>
