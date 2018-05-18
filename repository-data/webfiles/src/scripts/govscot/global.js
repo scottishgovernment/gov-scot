@@ -3,8 +3,7 @@ define([
     './component.banner',
     './component.cookie-notice',
     './component.expand',
-    './component.header',
-    './component.mourning-banner'
+    './component.header'
 ], function ($, banner, cookieNotice, expand, header, mourningBanner) {
     'use strict';
 
@@ -43,7 +42,6 @@ define([
             cookieNotice.init();
             expand.init();
             header.init();
-            mourningBanner.init();
         }
     };
 
