@@ -4,7 +4,7 @@ define([
     './component.cookie-notice',
     './component.expand',
     './component.header'
-], function ($, banner, cookieNotice, expand, header, mourningBanner) {
+], function ($, banner, cookieNotice, expand, header) {
     'use strict';
 
     const global = {

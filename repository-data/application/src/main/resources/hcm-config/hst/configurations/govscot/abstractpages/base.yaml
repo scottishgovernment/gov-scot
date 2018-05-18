@@ -32,3 +32,7 @@ definitions:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/search
         hst:suppresswastemessage: true
+      /mourning-banner:
+        jcr:primaryType: hst:component
+        hst:template: mourning-banner
+        hst:componentclassname: scot.gov.www.components.MourningBannerComponent

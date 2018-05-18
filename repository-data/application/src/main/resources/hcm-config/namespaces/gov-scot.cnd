@@ -51,6 +51,9 @@
 [govscot:Minutes] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:MourningBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

@@ -28,6 +28,7 @@
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
     <#include 'common/accessibility-links.ftl' />
+    <@hst.include ref="mourning-banner"/>
     <#include 'common/notifications.ftl' />
 
     <div id="main-wrapper">

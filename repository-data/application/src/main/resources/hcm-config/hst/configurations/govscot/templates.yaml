@@ -122,3 +122,6 @@ definitions:
       /issue:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/issue.ftl
+      /mourning-banner:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/common/mourning-banner.ftl
