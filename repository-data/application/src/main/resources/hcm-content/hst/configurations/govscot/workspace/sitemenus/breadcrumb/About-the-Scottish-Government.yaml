@@ -1,0 +1,10 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/breadcrumb/About the Scottish Government:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: about
+  hst:repobased: false
+  /Who runs government:
+    jcr:primaryType: hst:sitemenuitem
+    hst:referencesitemapitem: about/who-runs-government
+  /Government structure:
+    jcr:primaryType: hst:sitemenuitem
+    hst:referencesitemapitem: about/how-government-is-run

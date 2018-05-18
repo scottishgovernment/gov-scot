@@ -1,0 +1,5 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/breadcrumb/Topics:
+  .meta:order-before: News
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: topics
+  hst:repobased: false

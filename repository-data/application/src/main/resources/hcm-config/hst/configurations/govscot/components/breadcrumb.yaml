@@ -2,7 +2,7 @@ definitions:
   config:
     /hst:hst/hst:configurations/govscot/hst:components/breadcrumb:
       jcr:primaryType: hst:component
-      hst:componentclassname: org.onehippo.forge.breadcrumb.components.BreadcrumbComponent
+      hst:componentclassname: scot.gov.www.components.BreadcrumbRenderingComponent
       hst:template: breadcrumb
-      hst:parameternames: [breadcrumb-add-content-based, breadcrumb-exclude-current-document]
-      hst:parametervalues: ['true', 'false']
+      hst:parameternames: [breadcrumb-menus]
+      hst:parametervalues: [breadcrumb]

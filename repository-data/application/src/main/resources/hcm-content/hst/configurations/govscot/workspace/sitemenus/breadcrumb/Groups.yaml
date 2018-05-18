@@ -1,0 +1,4 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/breadcrumb/Groups:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: groups
+  hst:repobased: false

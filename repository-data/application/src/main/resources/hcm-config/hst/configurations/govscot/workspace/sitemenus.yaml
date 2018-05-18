@@ -9,3 +9,7 @@ definitions:
       /about:
         .meta:residual-child-node-category: content
         jcr:primaryType: hst:sitemenu
+      /breadcrumb:
+        .meta:residual-child-node-category: content
+        jcr:primaryType: hst:sitemenu
+        hst:lastmodified: 2017-11-23T12:34:30.061Z
