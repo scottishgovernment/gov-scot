@@ -6,7 +6,8 @@
         <div class="grid"><!--
          --><div class="grid__item medium--eight-twelfths">
                 <header class="article-header">
-                    <p class="article-header__label">Policy</p>
+                    <@hst.link var="link" hippobean=index />
+                    <p class="article-header__label">Policy<#if link?ends_with('/latest')> - Latest</#if></p>
                     <h1 class="article-header__title">${index.title?html}</h1>
 
                     <section class="content-data">
