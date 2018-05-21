@@ -51,9 +51,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     public static final String PUBLICATION_TYPES = "publicationTypes";
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
 
-    private final ValueList publicationValueList =
-            SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
-
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
         super.init(servletContext, componentConfig);
@@ -71,6 +68,9 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
         Map<String, Set<String>> params = sanitiseParameterMap(request,
                 request.getRequestContext().getServletRequest().getParameterMap());
+
+        ValueList publicationValueList =
+                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
 
         request.setAttribute("parameters", params);
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
@@ -117,6 +117,9 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             return null;
         }
 
+        ValueList publicationValueList =
+                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
+
         Map<String, Set<String>> sanitisedMap = new HashMap();
         for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
 
@@ -136,6 +139,10 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private Set<String> publicationTypes(Set<String> publicationTypeParams) {
+
+        ValueList publicationValueList =
+                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
+
         return publicationValueList.getItems()
                 .stream()
                 .filter(item -> publicationTypeParams.contains(item.getKey()))
