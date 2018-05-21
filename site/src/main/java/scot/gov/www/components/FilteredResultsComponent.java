@@ -117,9 +117,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             return null;
         }
 
-        ValueList publicationValueList =
-                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
-
         Map<String, Set<String>> sanitisedMap = new HashMap();
         for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
 
