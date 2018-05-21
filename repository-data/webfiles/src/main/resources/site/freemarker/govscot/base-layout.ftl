@@ -41,11 +41,11 @@
                 <div class="breadcrumbs__container">
                 
                     <div class="grid"><!--
-                        <#if !(isSearchpage!false)>
                         --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
+                            <#if !(isSearchpage!false)>
                             <@hst.include ref="search"/>
+                            </#if>
                         </div><!--
-                        </#if>
 
                         --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
                             <nav>
