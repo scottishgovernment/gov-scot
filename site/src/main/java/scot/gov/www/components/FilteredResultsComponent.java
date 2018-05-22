@@ -70,7 +70,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                 request.getRequestContext().getServletRequest().getParameterMap());
 
         ValueList publicationValueList =
-                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
+                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
 
         request.setAttribute("parameters", params);
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
