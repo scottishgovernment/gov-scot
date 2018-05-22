@@ -41,8 +41,8 @@ public class SearchResultsComponent extends EssentialsListComponent {
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
         super.init(servletContext, componentConfig);
-        Collections.addAll(FIELD_NAMES, "govscot:title", "govscot:summary", "govscot:content", "hippostd:tags", 
-                "govscot:incumbentTitle", "govscot:policyTags", "govscot:roleTitle", "govscot:twitter",
+        Collections.addAll(FIELD_NAMES, "govscot:title", "govscot:summary", "govscot:content/hippostd:content",
+                "hippostd:tags", "govscot:incumbentTitle", "govscot:policyTags", "govscot:roleTitle", "govscot:twitter",
                 "govscot:email", "govscot:website", "govscot:flickr", "govscot:facebook", "govscot:blog");
     }
 
