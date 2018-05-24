@@ -27,6 +27,8 @@
 <body class="fontawesome site-header__container" >
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
+    <@hst.include ref="googletagmanager"/>
+
     <#include 'common/accessibility-links.ftl' />
     <@hst.include ref="mourning-banner"/>
     <#include 'common/notifications.ftl' />

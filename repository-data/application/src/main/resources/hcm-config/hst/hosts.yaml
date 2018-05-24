@@ -6,6 +6,7 @@ definitions:
       hst:cacheable: true
       hst:defaultcontextpath: /site
       hst:locale: en_GB
+      hst:defaultresourcebundleid: analytics_dev
       /dev-localhost:
         .meta:residual-child-node-category: content
         jcr:primaryType: hst:virtualhostgroup
@@ -277,6 +278,7 @@ definitions:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 95f23f27-dfb8-43d1-9920-124966a2ec5b
           hst:scheme: https
+          hst:defaultresourcebundleid: analytics_live
           /gov:
             jcr:primaryType: hst:virtualhost
             jcr:uuid: de71b861-a86c-4931-b2f3-3d363f337052
@@ -314,6 +316,7 @@ definitions:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 89846ed2-6876-41b7-b604-8aa4e4e7377e
           hst:scheme: https
+          hst:defaultresourcebundleid: analytics_live
           /gov:
             jcr:primaryType: hst:virtualhost
             jcr:uuid: efed4791-54c6-4820-9fae-028c57300643
@@ -351,6 +354,7 @@ definitions:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 1481e45a-1ecd-4e78-90d5-77138ac89986
           hst:scheme: https
+          hst:defaultresourcebundleid: analytics_live
           /gov:
             jcr:primaryType: hst:virtualhost
             jcr:uuid: d77c0571-ab94-49d1-bb07-2e9a604e431e

@@ -36,3 +36,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:template: mourning-banner
         hst:componentclassname: scot.gov.www.components.MourningBannerComponent
+      /googletagmanager:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:components/googletagmanager

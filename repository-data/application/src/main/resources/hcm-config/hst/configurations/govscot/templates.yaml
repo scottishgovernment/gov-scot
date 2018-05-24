@@ -125,3 +125,6 @@ definitions:
       /mourning-banner:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/common/mourning-banner.ftl
+      /googletagmanager:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/common/google-tag-manager.ftl

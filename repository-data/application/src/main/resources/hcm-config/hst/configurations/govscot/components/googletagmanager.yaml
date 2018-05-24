@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:components/googletagmanager:
+      jcr:primaryType: hst:component
+      hst:componentclassname: scot.gov.www.components.GoogleTagManagerComponent
+      hst:template: googletagmanager
