@@ -6,6 +6,7 @@ import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.linking.HstLink;
@@ -19,6 +20,8 @@ import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+
+import java.io.IOException;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
@@ -35,7 +38,7 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.con
  */
 public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DirectorateComponent.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PRGlooSlugRedirectComponent.class);
 
     private static final String ARCHIVE_TEMPLATE = "https://www.webarchive.org.uk/wayback/archive/3000/http://news.gov.scot/%s";
 
@@ -62,7 +65,13 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         }
 
         // we do not know this slug, send a 404
-        response.setStatus(404);
+        try {
+            response.setStatus(404);
+            response.forward("/pagenotfound");
+            return;
+        }  catch (IOException e) {
+            throw new HstComponentException("forward failed", e);
+        }
     }
 
     private String lastPathElement(HstRequest request) {

@@ -2,6 +2,7 @@ package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Policy;
 import scot.gov.www.beans.PolicyInDetail;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,8 +22,32 @@ public class PolicyComponent extends BaseHstComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        HippoBean document = request.getRequestContext().getContentBean();
-        Policy policy = getPolicy(document);
+        HippoBean document;
+
+        try {
+            document = request.getRequestContext().getContentBean();
+            if(document == null) {
+                response.setStatus(404);
+                response.forward("/pagenotfound");
+                return;
+            }
+        }  catch (IOException e) {
+            throw new HstComponentException("forward failed", e);
+        }
+
+        Policy policy;
+
+        try {
+            policy = getPolicy(document);
+            if(policy == null) {
+                response.setStatus(404);
+                response.forward("/pagenotfound");
+                return;
+            }
+        }  catch (IOException e) {
+            throw new HstComponentException("forward failed", e);
+        }
+
         List<PolicyInDetail> details = document.getParentBean().getChildBeans(PolicyInDetail.class);
         HippoBean prev = prevBean(policy, document, details);
         HippoBean next = nextBean(policy, document, details);

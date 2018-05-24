@@ -6,6 +6,7 @@ import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.linking.HstLink;
@@ -14,6 +15,8 @@ import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Publication;
+
+import java.io.IOException;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
@@ -28,8 +31,13 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HippoBean bean = findByIsbn(request);
         if (bean == null) {
-            response.setStatus(404);
-            return;
+            try {
+                response.setStatus(404);
+                response.forward("/pagenotfound");
+                return;
+            }  catch (IOException e) {
+                throw new HstComponentException("forward failed", e);
+            }
         }
         HstRequestContext context = request.getRequestContext();
         final HstLink link = context.getHstLinkCreator().create(bean, context);

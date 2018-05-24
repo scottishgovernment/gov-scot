@@ -48,7 +48,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     }
 
     private boolean isPublicationsSlugLink(HstLink link) {
-        // match any slug style link for a publicaiton or page
+        // match any slug style link for a publication or page
         return link.getPath().startsWith(PUBLICATIONS) && link.getPathElements().length >= 2;
     }
 
@@ -60,6 +60,12 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                     link.getPathElements()[0],
                     link.getPathElements()[1]);
             Node handle = getHandleBySlug(slug);
+            if(handle == null) {
+                link.setNotFound(true);
+                link.setPath("/pagenotfound");
+                return link;
+            }
+
             String pubPath = StringUtils.substringAfter(handle.getPath(), PUBLICATIONS);
 
             String newPath = null;

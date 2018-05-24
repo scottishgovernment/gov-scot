@@ -8,6 +8,7 @@ import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
+import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -16,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,8 +34,19 @@ public class TopicComponent extends BaseHstComponent {
                                final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
         HippoBean base = context.getSiteContentBaseBean();
-        Topic topic = context.getContentBean(Topic.class);
-        request.setAttribute("document", topic);
+        Topic topic;
+
+        try {
+            topic = context.getContentBean(Topic.class);
+            if(topic == null) {
+                response.setStatus(404);
+                response.forward("/pagenotfound");
+                return;
+            }
+            request.setAttribute("document", topic);
+        }  catch (IOException e) {
+            throw new HstComponentException("forward failed", e);
+        }
 
         populatePoliciesAndDirectorates(base, topic, request);
         populateNews(base, topic, request);

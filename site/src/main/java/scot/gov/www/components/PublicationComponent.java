@@ -4,34 +4,70 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
 import org.hippoecm.hst.content.beans.standard.HippoFolderBean;
+import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import scot.gov.www.beans.PublicationPage;
 
+import java.io.IOException;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 public class PublicationComponent extends BaseHstComponent {
 
+    private static final String PAGENOTFOUND = "/pagenotfound";
+    private static final String FORWARDFAILED = "forward failed";
+
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
 
         HstRequestContext context = request.getRequestContext();
-        HippoBean document = context.getContentBean();
-
+        HippoBean document;
         HippoBean publicationParentFolder;
+
+        try {
+            document = context.getContentBean();
+            if(document == null) {
+                response.setStatus(404);
+                response.forward(PAGENOTFOUND);
+                return;
+            }
+        }  catch (IOException e) {
+            throw new HstComponentException(FORWARDFAILED, e);
+        }
 
         if (document.getClass() == PublicationPage.class){
             HippoBean pagesFolder = document.getParentBean();
             publicationParentFolder = pagesFolder.getParentBean();
-            HippoBean index = (HippoBean) publicationParentFolder.getChildBeansByName("index").get(0);
+
+            HippoBean index;
+
+            try {
+                index = (HippoBean) publicationParentFolder.getChildBeansByName("index").get(0);
+                if(index == null) {
+                    response.setStatus(404);
+                    response.forward(PAGENOTFOUND);
+                    return;
+                }
+            }  catch (IOException e) {
+                throw new HstComponentException(FORWARDFAILED, e);
+            }
+
             request.setAttribute("document", index);
-        } else {
+        } else if ("index".equals(document.getName())) {
             publicationParentFolder = document.getParentBean();
             request.setAttribute("document", document);
+        } else {
+            try {
+                response.setStatus(404);
+                response.forward(PAGENOTFOUND);
+                return;
+            }  catch (IOException e) {
+                throw new HstComponentException(FORWARDFAILED, e);
+            }
         }
 
         List<HippoFolderBean> documentFolders = publicationParentFolder.getChildBeansByName("documents");

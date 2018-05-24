@@ -172,8 +172,8 @@ definitions:
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/${5}
       /isbn:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/newslistpage
-        hst:relativecontentpath: news
+        hst:componentconfigurationid: hst:pages/publicationlistpage
+        hst:relativecontentpath: publications
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
