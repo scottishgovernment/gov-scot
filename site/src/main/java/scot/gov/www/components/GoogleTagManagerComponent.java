@@ -19,10 +19,10 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
 
         HstComponentConfiguration hstComponentConfiguration = resolvedSiteMapItem.getHstComponentConfiguration();
 
-        String GTMname = hstComponentConfiguration.getName();
-        String GTMid = resolvedSiteMapItem.getPathInfo();
+        String gtmName = hstComponentConfiguration.getName();
+        String gtmId = resolvedSiteMapItem.getPathInfo();
 
-        request.setAttribute("GTMname", GTMname);
-        request.setAttribute("GTMid", GTMid);
+        request.setAttribute("gtmName", gtmName);
+        request.setAttribute("gtmId", gtmId);
     }
 }

@@ -8,9 +8,9 @@
           <#if GTMincludewhitelist??>
 	      'gtm.whitelist': ['google', 'jsm', 'lcl', 'mf'],
           </#if>
-          'format' : '${GTMname}',
+          'format' : '${gtmName}',
           'userType': 'internal',
-		  'siteid' : '${GTMid}'
+		  'siteid' : '${gtmId}'
 	    }
       ];
     </script>
