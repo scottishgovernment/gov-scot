@@ -53,24 +53,58 @@
     jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
     jcr:uuid: 55f0b5a8-2827-4553-b86d-80b3416b82bc
     hippo:name: Page not found
-    /pagenotfound:
+    /pagenotfound[1]:
       jcr:primaryType: resourcebundle:resourcebundle
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: d5b329c2-7c0b-42de-87a3-27b3350433e8
-      hippo:availability: [live, preview]
+      hippo:availability: [live]
       hippostd:state: published
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2014-08-21T17:08:08.703+02:00
-      hippostdpubwf:lastModificationDate: 2014-08-21T17:11:53.242+02:00
+      hippostdpubwf:lastModificationDate: 2018-05-21T14:37:15.296+01:00
       hippostdpubwf:lastModifiedBy: admin
-      hippostdpubwf:publicationDate: 2014-08-21T17:11:55.239+02:00
+      hippostdpubwf:publicationDate: 2018-05-21T14:37:22.832+01:00
       resourcebundle:descriptions: [Title displayed when page is not found., Text
           displayed when page is not found.]
       resourcebundle:id: essentials.pagenotfound
       resourcebundle:keys: [pagenotfound.title, pagenotfound.text]
-      resourcebundle:messages: [Page not found (404), 'The page you requested was
-          not found. - [This text can be edited <a href="http://localhost:8080/cms/?1&path=/content/documents/administration/labels/pagenotfound"
-          target="_blank">here</a>.]']
+      resourcebundle:messages: [404 - Not Found, 'Sorry, but the page you were trying
+          to view doesn''t exist. This could be the result of either:  <ul><li>a mistyped
+          address</li><li>an out of date link</li></ul>']
+    /pagenotfound[2]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 6dd50be4-da87-4b47-b226-e8de69bbcb1d
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2014-08-21T17:08:08.703+02:00
+      hippostdpubwf:lastModificationDate: 2018-05-21T14:37:15.296+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: [Title displayed when page is not found., Text
+          displayed when page is not found.]
+      resourcebundle:id: essentials.pagenotfound
+      resourcebundle:keys: [pagenotfound.title, pagenotfound.text]
+      resourcebundle:messages: [404 - Not Found, 'Sorry, but the page you were trying
+          to view doesn''t exist. This could be the result of either:  <ul><li>a mistyped
+          address</li><li>an out of date link</li></ul>']
+    /pagenotfound[3]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: b9a32265-2123-4afa-b47e-21d75fc0ecb4
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2014-08-21T17:08:08.703+02:00
+      hippostdpubwf:lastModificationDate: 2018-05-21T14:35:43.249+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: [Title displayed when page is not found., Text
+          displayed when page is not found.]
+      resourcebundle:id: essentials.pagenotfound
+      resourcebundle:keys: [pagenotfound.title, pagenotfound.text]
+      resourcebundle:messages: [404 - Not Found, 'Sorry, but the page you were trying
+          to view doesn''t exist. This could be the result of either:  <ul><li>a mistyped
+          address</li><li>an out of date link</li></ul>']
   /pagination:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
