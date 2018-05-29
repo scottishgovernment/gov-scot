@@ -7,8 +7,6 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.cms7.essentials.components.CommonComponent;
 
 public class PageNotFoundComponent extends CommonComponent {
-    public PageNotFoundComponent() {
-    }
 
     public void doBeforeRender(HstRequest request, HstResponse response) {
         HstRequestContext context = request.getRequestContext();
