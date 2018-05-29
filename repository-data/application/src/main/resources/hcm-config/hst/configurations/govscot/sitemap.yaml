@@ -9,10 +9,12 @@ definitions:
       /_any_:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
+        hst:relativecontentpath: '404'
       /pagenotfound:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
         hst:refId: pagenotfound
+        hst:relativecontentpath: '404'
       /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/topicslistpage

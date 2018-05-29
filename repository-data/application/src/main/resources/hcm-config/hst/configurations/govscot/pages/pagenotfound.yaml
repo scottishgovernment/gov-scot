@@ -5,8 +5,5 @@ definitions:
       hst:referencecomponent: hst:abstractpages/base
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsPageNotFoundComponent
+        hst:componentclassname: scot.gov.www.components.PageNotFoundComponent
         hst:template: pagenotfound-main
-        /container:
-          jcr:primaryType: hst:containercomponentreference
-          hst:referencecomponent: pagenotfound/main
