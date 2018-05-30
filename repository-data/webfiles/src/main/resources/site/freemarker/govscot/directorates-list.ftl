@@ -14,3 +14,5 @@
         </div><!--
     --></div>
 </article>
+
+<@hst.headContribution category="pageTitle"><title>Directorates - gov.scot</title></@hst.headContribution>

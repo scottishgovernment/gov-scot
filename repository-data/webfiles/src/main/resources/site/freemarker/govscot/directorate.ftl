@@ -181,3 +181,5 @@
     <img src="<@hst.link path="/images/essentials/catalog-component-icons/simple-content.png" />"> Click to edit Content
 </div>
 </#if>
+
+<@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>

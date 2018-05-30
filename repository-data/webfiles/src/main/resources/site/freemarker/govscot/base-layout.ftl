@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>gov.scot</title>
+    <@hst.headContributions categoryIncludes="pageTitle"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="content">
@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" href="<@hst.webfile path="/images/apple-touch-icon.png"/>" />
 
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
-    <@hst.headContributions categoryExcludes="footerScripts" xhtml=true/>
+    <@hst.headContributions categoryExcludes="footerScripts, pageTitle" xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >

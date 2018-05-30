@@ -284,3 +284,5 @@
 <@hst.headContribution category="footerScripts">
     <script src="<@hst.webfile path="/assets/scripts/topic.js"/>" type="text/javascript"></script>
 </@hst.headContribution>
+
+<@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>

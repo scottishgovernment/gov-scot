@@ -10,3 +10,5 @@
         </div><!--
     --></div>
 </article>
+
+<@hst.headContribution category="pageTitle"><title>Groups - gov.scot</title></@hst.headContribution>

@@ -8,3 +8,5 @@
         </div><!--
     --></div>
 </#if>
+
+<@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>

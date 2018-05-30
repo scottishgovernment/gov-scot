@@ -13,3 +13,5 @@
 </#if>
 
 <@hst.include ref="list"/>
+
+<@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
