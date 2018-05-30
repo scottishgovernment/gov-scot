@@ -12,6 +12,7 @@ public class PageNotFoundComponent extends CommonComponent {
         HstRequestContext context = request.getRequestContext();
         HippoBean document = context.getContentBean();
         request.setAttribute("document", document);
+        request.setAttribute("isPageNotFound", true);
         response.setStatus(404);
     }
 }

@@ -50,9 +50,11 @@
                         </div><!--
 
                         --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
+                            <#if !(isPageNotFound!false)>
                             <nav>
                                 <@hst.include ref="breadcrumb"/>
                             </nav>
+                            </#if>
                         </div><!--
                     --></div>
                 </div>
