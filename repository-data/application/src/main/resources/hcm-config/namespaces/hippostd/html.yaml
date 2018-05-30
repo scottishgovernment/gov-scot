@@ -2,3 +2,14 @@ definitions:
   config:
     /hippo:namespaces/hippostd/html/hipposysedit:prototypes/hipposysedit:prototype:
       hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
+    /hippo:namespaces/hippostd/html/editor:templates/_default_:
+      ckeditor.config.overlayed.json: "{\r\n\t\"toolbarGroups\": [{\r\n\t\t\"name\"\
+        : \"styles\"\r\n\t}, {\r\n\t\t\"name\": \"basicstyles\"\r\n\t}, {\r\n\t\t\"\
+        name\": \"cleanup\"\r\n\t}, {\r\n\t\t\"name\": \"undo\"\r\n\t}, {\r\n\t\t\"\
+        name\": \"listindentalign\",\r\n\t\t\"groups\": [\"list\"]\r\n\t}, {\r\n\t\
+        \t\"name\": \"links\"\r\n\t}, {\r\n\t\t\"name\": \"clipboard\"\r\n\t}, {\r\
+        \n\t\t\"name\": \"insert\"\r\n\t}, {\r\n\t\t\"name\": \"tools\"\r\n\t}, {\r\
+        \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote\"\
+        \r\n}"
+      ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript\"\
+        \r\n}"
