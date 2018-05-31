@@ -25,21 +25,34 @@ CKEDITOR.plugins.add( 'mygov_infonote', {
             CKEDITOR.dialog.add( 'informationDialog', this.path + 'dialogs/information.js' );
             CKEDITOR.dialog.add( 'cautionDialog', this.path + 'dialogs/caution.js' );
         } else {
-            let stylesSet = CKEDITOR.stylesSet.registered.hippo_en || [];
-            stylesSet.push({
-                element: 'div',
-                name: 'Information',
-                attributes: {
-                    class: "info-note note"
+
+            if (!CKEDITOR.hasAddedInfoNote) {
+                let loadedStyleSet = CKEDITOR.stylesSet.loaded;
+                for (let key in loadedStyleSet) {
+                    if (loadedStyleSet[key] === 1) {
+                        loadedStyleSetName = key;
+                        break;
+                    }
                 }
-            });
-            stylesSet.push({
-                element: 'div',
-                name: 'Caution',
-                attributes: {
-                    class: "info-note caution"
-                }
-            });
+
+                let stylesSet = CKEDITOR.stylesSet.registered[loadedStyleSetName] || [];
+                stylesSet.push({
+                    element: 'div',
+                    name: 'Information',
+                    attributes: {
+                        class: "info-note note"
+                    }
+                });
+                stylesSet.push({
+                    element: 'div',
+                    name: 'Caution',
+                    attributes: {
+                        class: "info-note caution"
+                    }
+                });
+
+                CKEDITOR.hasAddedInfoNote = true;
+            }
         }
     }
 });

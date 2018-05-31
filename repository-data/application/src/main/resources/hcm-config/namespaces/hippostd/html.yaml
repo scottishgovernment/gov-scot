@@ -11,5 +11,5 @@ definitions:
         \n\t\t\"name\": \"insert\"\r\n\t}, {\r\n\t\t\"name\": \"tools\"\r\n\t}, {\r\
         \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote\"\
         \r\n}"
-      ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript\"\
+      ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline,Table,Youtube\"\
         \r\n}"
