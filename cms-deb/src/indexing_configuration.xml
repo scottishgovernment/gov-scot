@@ -12,7 +12,6 @@
     <index-rule nodeType="govscot:summary" boost="3.0"></index-rule>
     <index-rule nodeType="hippostd:tags" boost="3.0"></index-rule>
     <index-rule nodeType="govscot:content" boost="3.0"></index-rule>
-    <index-rule nodeType="hippostd:html" boost="3.0"></index-rule>
     <index-rule nodeType="govscot:metaDescription" boost="3.0"></index-rule>
     <index-rule nodeType="govscot:blog"></index-rule>
     <index-rule nodeType="govscot:email"></index-rule>
