@@ -68,6 +68,15 @@
                 <prefix>${install.path}/webapps</prefix>
               </mapper>
             </data>
+            <data>
+              <src>${basedir}/../${index.configuration}</src>
+              <dst>index.xml</dst>
+              <type>file</type>
+              <mapper>
+                <type>perm</type>
+                <prefix>${install.path}/conf</prefix>
+              </mapper>
+            </data>
           </dataSet>
         </configuration>
       </plugin>

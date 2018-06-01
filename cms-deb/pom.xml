@@ -68,7 +68,8 @@
               </mapper>
             </data>
             <data>
-              <src>${basedir}/src/indexing_configuration.xml</src>
+              <src>${basedir}/../${index.configuration}</src>
+              <dst>index.xml</dst>
               <type>file</type>
               <mapper>
                 <type>perm</type>
