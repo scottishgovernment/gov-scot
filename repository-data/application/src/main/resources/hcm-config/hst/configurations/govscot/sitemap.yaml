@@ -194,3 +194,8 @@ definitions:
         /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/govscotpublicationspage
+      /robots.txt:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/robotstxt
+        hst:hiddeninchannelmanager: true
+        hst:relativecontentpath: ../administration/robots

@@ -108,6 +108,12 @@
       <artifactId>hippo-plugin-taxonomy-addon-repository</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-plugin-robotstxt-addon-repository</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
