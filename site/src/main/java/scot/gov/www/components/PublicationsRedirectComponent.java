@@ -47,7 +47,7 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
     // - when www2.gov.scot is decomissioned and publications are archived.
     private static final String ARCHIVE_TEMPLATE = "http://www.gov.scot%s";
 
-    private static final boolean PERMENANT_ARCHIVE = false;
+    private static final boolean PERMANENT_ARCHIVE = false;
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
@@ -63,15 +63,7 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
 
         // check if this url is a known publications url
         if (isArchivedUrl(request)) {
-            String archiveUrl = String.format(ARCHIVE_TEMPLATE, request.getPathInfo());
-            LOG.info("Redirecting slug {} to archive: {}", request.getPathInfo(), archiveUrl);
-
-            if (PERMENANT_ARCHIVE) {
-                HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
-            } else {
-                HstResponseUtils.sendRedirect(request, response, archiveUrl);
-            }
-
+            sendPublicationsRedirect(request.getPathInfo(), request, response);
             return;
         }
 
@@ -82,6 +74,22 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
             return;
         }  catch (IOException e) {
             throw new HstComponentException("forward failed", e);
+        }
+    }
+
+    /**
+     * Rerirect a publications url.
+     *
+     * Not that this method is also used by PublicationsIsbnRedirectComponent as it shares the same tmeplate and
+     * logic determining if the redirect should be permanent or not.
+     */
+    public static void sendPublicationsRedirect(String path, HstRequest request, HstResponse response) {
+        String archiveUrl = String.format(ARCHIVE_TEMPLATE, path);
+        LOG.info("Redirecting publication path {} to archive: {}", path, archiveUrl);
+        if (PERMANENT_ARCHIVE) {
+            HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
+        } else {
+            HstResponseUtils.sendRedirect(request, response, archiveUrl);
         }
     }
 
