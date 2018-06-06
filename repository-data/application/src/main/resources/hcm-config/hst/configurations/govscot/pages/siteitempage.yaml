@@ -7,3 +7,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:template: siteitem
         hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

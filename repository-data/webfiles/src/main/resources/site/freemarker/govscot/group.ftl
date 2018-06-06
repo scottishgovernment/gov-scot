@@ -81,6 +81,12 @@
 
 </article>
 
+<div class="grid"><!--
+    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+        <@hst.include ref="feedback"/>
+    </div><!--
+--></div>
+
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>
 <div>

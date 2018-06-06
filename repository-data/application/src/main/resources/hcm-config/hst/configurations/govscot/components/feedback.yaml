@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:components/feedback:
+      jcr:primaryType: hst:component
+      hst:componentclassname: scot.gov.www.components.FeedbackComponent
+      hst:template: feedback
+      hst:parameternames: [feedbackIsEnabled]
+      hst:parametervalues: ['true']

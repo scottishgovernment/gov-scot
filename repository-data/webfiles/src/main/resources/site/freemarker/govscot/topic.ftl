@@ -281,6 +281,12 @@
 
 </section>
 
+<div class="grid"><!--
+    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+        <@hst.include ref="feedback"/>
+    </div><!--
+--></div>
+
 <@hst.headContribution category="footerScripts">
     <script src="<@hst.webfile path="/assets/scripts/topic.js"/>" type="text/javascript"></script>
 </@hst.headContribution>

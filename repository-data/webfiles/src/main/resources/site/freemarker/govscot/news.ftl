@@ -60,6 +60,7 @@
                         <#if document.heroImage?? || document.attachments??>
                             <div class="sidebar-block  no-bullets">
                                 <h3 class="emphasis  sidebar-block__heading">Media</h3>
+
                                 <ul>
                                     <#if document.heroImage.url != ''>
                                         <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
@@ -74,7 +75,6 @@
                                 </ul>
                             </div>
                         </#if>
-
                     </aside>
 
                 </div><!--
@@ -101,6 +101,7 @@
                                 <#else>
                                     <#assign firstAttachmentOffset=1>
                                 </#if>
+
                                 <#list document.attachments as attachment>
                                     <li><a href="${attachment.url}">Image ${attachment?index + firstAttachmentOffset}: ${attachment.title}</a></li>
                                 </#list>
@@ -112,6 +113,12 @@
      --></div>
 
     </article>
+
+    <div class="grid"><!--
+        --><div class="grid__item  medium--nine-twelfths  xlarge--seven-twelfths">
+            <@hst.include ref="feedback"/>
+        </div><!--
+    --></div>
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>
   <div>

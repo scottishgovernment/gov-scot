@@ -69,7 +69,7 @@ define([
                     feedback.reason = reasonDropdown.val() || '';
                 }
 
-                feedback.contentItem = $('body').attr('data-uuid');
+                feedback.hippoContentItem = window.location.pathname;
 
                 // validate
                 if (that.validateFeedback()) {

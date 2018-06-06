@@ -130,6 +130,12 @@
 
 </div>
 
+<div class="grid"><!--
+    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+        <@hst.include ref="feedback"/>
+    </div><!--
+--></div>
+
 <footer class="article-footer" id="article-footer">
 
     <div class="wrapper">

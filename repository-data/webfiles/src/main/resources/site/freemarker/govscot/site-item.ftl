@@ -17,6 +17,12 @@
      --></div>
 
     </article>
+
+    <div class="grid"><!--
+        --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+            <@hst.include ref="feedback"/>
+        </div><!--
+    --></div>
 </#if>
 
 <@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>

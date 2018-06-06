@@ -15,3 +15,6 @@ definitions:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.OrgRolesComponent
           hst:template: org-roles.content
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

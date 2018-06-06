@@ -4,8 +4,9 @@ define([
     './component.cookie-notice',
     './component.expand',
     './component.header',
-    './component.google-analytics'
-], function ($, banner, cookieNotice, expand, header, mourningBanner) {
+    './component.google-analytics',
+    './component.feedback'
+], function ($, banner, cookieNotice, expand, header, mourningBanner, feedback) {
     'use strict';
 
     const global = {

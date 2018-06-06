@@ -8,3 +8,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:template: homepage-main
         hst:componentclassname: scot.gov.www.components.HomeComponent
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

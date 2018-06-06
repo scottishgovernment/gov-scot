@@ -222,6 +222,14 @@
     </div>
 </article>
 
+<div class="wrapper">
+    <div class="grid"><!--
+        --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
+            <@hst.include ref="feedback"/>
+        </div><!--
+    --></div>
+</div>
+
 </#if>
 
 <@hst.headContribution category="footerScripts">

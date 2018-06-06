@@ -7,3 +7,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.IssueComponent
         hst:template: issue
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

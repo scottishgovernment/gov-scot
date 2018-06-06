@@ -402,13 +402,11 @@
         </section>
 
 
-        <#--{{#if config.feedback.enabled}}-->
-        <#--<div class="grid">-->
-            <#--<div class="grid__item medium--nine-twelfths large--seven-twelfths">-->
-                <#--{{> feedback }}-->
-            <#--</div>-->
-        <#--</div>-->
-        <#--{{/if}}-->
+        <div class="grid"><!--
+            --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+                <@hst.include ref="feedback"/>
+            </div><!--
+        --></div>
     </div>
 </div>
 

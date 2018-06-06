@@ -15,3 +15,6 @@ definitions:
           jcr:primaryType: hst:component
           hst:template: about.side-menu
           hst:componentclassname: scot.gov.www.components.AboutMenu
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

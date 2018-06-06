@@ -7,3 +7,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.PRGlooSlugRedirectComponent
         hst:template: news-main
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback
