@@ -58,12 +58,18 @@
                         </div>
 
                         <#if document.heroImage?? || document.attachments??>
-                            <div class="sidebar-block no-bullets">
-                                <h3 class="emphasis sidebar-block__heading">Media</h3>
+                            <div class="sidebar-block  no-bullets">
+                                <h3 class="emphasis  sidebar-block__heading">Media</h3>
                                 <ul>
-                                    <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
+                                    <#if document.heroImage.url != ''>
+                                        <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
+                                        <#assign firstAttachmentOffset=2>
+                                    <#else>
+                                        <#assign firstAttachmentOffset=1>
+                                    </#if>
+
                                     <#list document.attachments as attachment>
-                                        <li><a href="${attachment.url}">Image ${attachment?index + 2}: ${attachment.title}</a></li>
+                                        <li><a href="${attachment.url}">Image ${attachment?index + firstAttachmentOffset}: ${attachment.title}</a></li>
                                     </#list>
                                 </ul>
                             </div>
@@ -84,9 +90,10 @@
                         </p>
                     </div>
 
-                    <#if document.heroImage.url != '' || document.attachments??>
-                        <div class="sidebar-block no-bullets">
-                            <h3 class="emphasis sidebar-block__heading no-top-margin">Media</h3>
+                    <#if document.heroImage?? || document.attachments??>
+                        <div class="sidebar-block  no-bullets">
+                            <h3 class="emphasis  sidebar-block__heading  no-top-margin">Media</h3>
+
                             <ul>
                                 <#if document.heroImage.url != ''>
                                     <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
