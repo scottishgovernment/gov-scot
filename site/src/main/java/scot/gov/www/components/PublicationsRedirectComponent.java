@@ -47,6 +47,8 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
     // - when www2.gov.scot is decomissioned and publications are archived.
     private static final String ARCHIVE_TEMPLATE = "http://www.gov.scot%s";
 
+    private static final boolean PERMENANT_ARCHIVE = false;
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
 
@@ -63,7 +65,13 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
         if (isArchivedUrl(request)) {
             String archiveUrl = String.format(ARCHIVE_TEMPLATE, request.getPathInfo());
             LOG.info("Redirecting slug {} to archive: {}", request.getPathInfo(), archiveUrl);
-            HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
+
+            if (PERMENANT_ARCHIVE) {
+                HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
+            } else {
+                HstResponseUtils.sendRedirect(request, response, archiveUrl);
+            }
+
             return;
         }
 
