@@ -40,7 +40,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PRGlooSlugRedirectComponent.class);
 
-    private static final String ARCHIVE_TEMPLATE = "https://www.webarchive.org.uk/wayback/archive/3000/http://news.gov.scot/%s";
+    private static final String ARCHIVE_TEMPLATE = "https://www.webarchive.org.uk/wayback/archive/3000/news.gov.scot/news%s";
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
