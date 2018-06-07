@@ -116,7 +116,7 @@ define([
             }).done(function (response) {
                 // update querystring
                 try {
-                    window.history.replaceState('', '', newQueryString);
+                    window.history.pushState('', '', newQueryString);
                 } catch(error) {
                     // history API not supported
                 }
@@ -164,8 +164,8 @@ define([
                 url: window.location.pathname + newQueryString
             }).done(function (response) {
                 // update querystring
-                if (window.history.replaceState) {
-                    window.history.replaceState('', '', newQueryString);
+                if (window.history.pushState) {
+                    window.history.pushState('', '', newQueryString);
                 }
 
                 // update results (incl pagination)
