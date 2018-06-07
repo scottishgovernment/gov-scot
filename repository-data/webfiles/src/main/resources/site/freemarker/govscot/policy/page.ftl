@@ -30,7 +30,7 @@
 
     <div class="grid"><!--
         --><div class="grid__item  push--medium--four-twelfths  push--large--three-twelfths  medium--eight-twelfths  large--seven-twelfths">
-            <@hst.include ref="feedback"/>
+            <#include '../common/feedback-wrapper.ftl'>
         </div><!--
     --></div>
 

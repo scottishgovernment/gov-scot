@@ -20,7 +20,7 @@
 
     <div class="grid"><!--
         --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
-            <@hst.include ref="feedback"/>
+            <#include 'common/feedback-wrapper.ftl'>
         </div><!--
     --></div>
 </#if>

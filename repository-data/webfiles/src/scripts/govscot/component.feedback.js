@@ -70,6 +70,7 @@ define([
                 }
 
                 feedback.hippoContentItem = window.location.pathname;
+                feedback.contentItem = document.getElementById('documentUuid').value;
 
                 // validate
                 if (that.validateFeedback()) {

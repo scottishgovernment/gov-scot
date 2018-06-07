@@ -15,6 +15,12 @@
      --></div>
     </article>
 
+    <div class="grid"><!--
+        --><div class="grid__item push--medium--three-twelfths medium--nine-twelfths large--seven-twelfths">
+            <#include '../common/feedback-wrapper.ftl'>
+        </div><!--
+    --></div>
+
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>
   <div>

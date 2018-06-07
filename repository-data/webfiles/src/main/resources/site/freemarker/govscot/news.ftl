@@ -116,7 +116,7 @@
 
     <div class="grid"><!--
         --><div class="grid__item  medium--nine-twelfths  xlarge--seven-twelfths">
-            <@hst.include ref="feedback"/>
+            <#include 'common/feedback-wrapper.ftl'>
         </div><!--
     --></div>
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
