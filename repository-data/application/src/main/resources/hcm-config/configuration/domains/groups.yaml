@@ -1,0 +1,24 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/groups:
+      jcr:primaryType: hipposys:domain
+      /admin:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [useradmin]
+        hipposys:role: admin
+      /group:
+        jcr:primaryType: hipposys:domainrule
+        /nodetype-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposys:group
+        /exclude-admin-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: admin
