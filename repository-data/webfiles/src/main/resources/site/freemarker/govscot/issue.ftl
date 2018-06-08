@@ -128,13 +128,14 @@
      --></div>
     </div>
 
+    <#if document.includeFeedback == true>
+        <div class="grid"><!--
+            --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+                <#include 'common/feedback-wrapper.ftl'>
+            </div><!--
+        --></div>
+    </#if>
 </div>
-
-<div class="grid"><!--
-    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
-        <#include 'common/feedback-wrapper.ftl'>
-    </div><!--
---></div>
 
 <footer class="article-footer" id="article-footer">
 

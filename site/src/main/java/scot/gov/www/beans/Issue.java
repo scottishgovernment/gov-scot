@@ -37,6 +37,11 @@ public class Issue extends SimpleContent {
         return getProperty("govscot:includeTwitterReplies");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:includeFeedback")
+    public Boolean getIncludeFeedback() {
+        return getProperty("govscot:includeFeedback");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:showOnTopicsLandingPage")
     public Boolean getShowOnTopicsLandingPage() {
         return getProperty("govscot:showOnTopicsLandingPage");
