@@ -3,7 +3,7 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/pagenotfound:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
-      hst:componentclassname: scot.gov.www.components.PageNotFoundComponent
+      hst:componentclassname: scot.gov.www.components.UrlAliasRedirectComponent
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.PageNotFoundComponent

@@ -41,7 +41,7 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationsRedirectComponent.class);
 
-    // Initially redirect to the cirrent gov.scot site.
+    // Initially redirect to the current gov.scot site.
     // However we will need to decide wat happens when:
     // - www.gov.scot becomes www2.gov.scot
     // - when www2.gov.scot is decomissioned and publications are archived.
