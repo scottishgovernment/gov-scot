@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: bef29329-324c-4ec4-a19f-94036dd3ef1b
+          jcr:uuid: 80eede04-d0c5-46f5-8492-59766a4fe0cd
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -135,132 +135,14 @@ definitions:
             hipposysedit:path: govscot:phone
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
-        /hipposysedit:nodetype[2]:
-          jcr:primaryType: hipposysedit:nodetype
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 80eede04-d0c5-46f5-8492-59766a4fe0cd
-          hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
-          /introduction:
+          /includeFeedback:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:overview
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /featureDate:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:featureDate
-            hipposysedit:primary: false
-            hipposysedit:type: CalendarDate
-          /string:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:featureDateTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /featuredItemsTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:featuredItemsTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /contactTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:contactTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /ContactInformation:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:ContactInformation
-            hipposysedit:primary: false
-            hipposysedit:type: govscot:ContactInformation
-          /includeTwitterReplies:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:includeTwitterReplies
+            hipposysedit:path: govscot:includeFeedback
             hipposysedit:primary: false
             hipposysedit:type: Boolean
-          /showOnTopicsLandingPage:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:showOnTopicsLandingPage
-            hipposysedit:primary: false
-            hipposysedit:type: Boolean
-          /issueTag:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:issueTag
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /featuredItems:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:featuredItems
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /featureDateSummary:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:featureDateSummary
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /socialMediaTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:socialMediaTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /image:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:image
-            hipposysedit:primary: false
-            hipposysedit:type: hippogallerypicker:imagelink
-          /postalAddress:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:postalAddress
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /html:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:phone
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -282,68 +164,13 @@ definitions:
           govscot:showOnTopicsLandingPage: false
           govscot:issueTag: ''
           govscot:title: ''
-          jcr:uuid: 33cb42b8-efa2-4133-966c-3ff1eb679581
+          jcr:uuid: abdcc487-85e7-4bbf-adc3-79095f348f8e
           hippostdpubwf:lastModificationDate: 2018-04-23T13:01:39.688+01:00
           hippostdpubwf:creationDate: 2018-04-23T13:01:39.688+01:00
           govscot:featureDateTitle: ''
           govscot:featureDateSummary: ''
           govscot:socialMediaTitle: ''
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:ContactInformation:
-            jcr:primaryType: govscot:ContactInformation
-            govscot:blog: ''
-            govscot:email: ''
-            govscot:facebook: ''
-            govscot:flickr: ''
-            govscot:twitter: ''
-            govscot:website: ''
-            govscot:youtube: ''
-          /govscot:featuredItems:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:overview:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:image:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-          /govscot:postalAddress:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:phone:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-        /hipposysedit:prototype[2]:
-          jcr:primaryType: nt:unstructured
-          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
-            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
-          jcr:uuid: 099e93bb-424a-48ce-bb81-e150f8f0ce44
-          govscot:contactTitle: ''
-          govscot:featureDate: 0001-01-01T12:00:00Z
-          govscot:featureDateSummary: ''
-          govscot:featureDateTitle: ''
-          govscot:featuredItemsTitle: ''
-          govscot:includeTwitterReplies: false
-          govscot:issueTag: ''
-          govscot:metaDescription: ''
-          govscot:seoTitle: ''
-          govscot:showOnTopicsLandingPage: false
-          govscot:socialMediaTitle: ''
-          govscot:summary: ''
-          govscot:title: ''
-          hippostd:holder: holder
-          hippostd:state: draft
-          hippostdpubwf:createdBy: ''
-          hippostdpubwf:creationDate: 2018-04-23T13:01:39.688+01:00
-          hippostdpubwf:lastModificationDate: 2018-04-23T13:01:39.688+01:00
-          hippostdpubwf:lastModifiedBy: ''
-          hippotranslation:id: document-type-locale-id
-          hippotranslation:locale: document-type-locale
+          govscot:includeFeedback: false
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -565,6 +392,15 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Show on topics landing page?
             field: showOnTopicsLandingPage
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /includeFeedback:
+            jcr:primaryType: frontend:plugin
+            caption: Include feedback?
+            field: includeFeedback
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
