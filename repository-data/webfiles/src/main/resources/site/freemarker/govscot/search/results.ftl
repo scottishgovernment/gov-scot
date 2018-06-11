@@ -32,7 +32,7 @@
 
                         <div class="listed-content-item__wrapper">
                             <header class="listed-content-item__heading">
-                                <h2 class="gamma listed-content-item__title">${item.roleTitle}</h2>
+                                <#if item.roleTitle??><h2 class="gamma listed-content-item__title">${item.roleTitle}</h2></#if>
                                 <p class="listed-content-item__role">${item.name}</p>
                             </header>
 
