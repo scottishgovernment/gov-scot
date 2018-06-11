@@ -9,7 +9,7 @@ define([
 
     var Feedback = {
         settings: {
-            feedbackUrl: '/feedback/',
+            feedbackUrl: '/service/feedback/',
             badServer: 'I\'m sorry, we have a problem at our side, please try again later'
         },
 
