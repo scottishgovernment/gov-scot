@@ -16,31 +16,32 @@
     </div><!--
     --></div>
 </div>
-
 <div class="wrapper" id="page-content">
-    <h1 class="hidden">${homeContent.title}</h1>
+    <h1 class="hidden"><#if document??>${document.title}<#else>The Scottish Government</#if></h1>
 
     <!-- WELCOME SECTION -->
     <div class="welcome">
         <div class="grid"><!--
+        <#if document??>
             --><div class="grid__item medium--seven-twelfths">
-            <div class="welcome__intro">
-                <@hst.html hippohtml=homeContent.content />
-            </div>
-        </div><!--
+                <div class="welcome__intro">
+                    <@hst.html hippohtml=document.content />
+                </div>
+            </div><!--
+        </#if>
 
-     --><div class="grid__item medium--four-twelfths push--medium--one-twelfth hidden-xsmall">
-            <div class="search-box welcome__search-box ">
-                <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
-                    <label class="search-box__label hidden" for="search-box">Search</label>
-                    <input name="term" required="" id="search-box" class="search-box__input " type="text" placeholder="Search site">
-                    <button type="submit" title="search" class="search-box__button button button--primary">
-                        <span class="icon icon--search-white"></span>
-                        <span class="hidden">Search</span>
-                    </button>
-                </form>
-            </div>
-        </div><!--
+        --><div class="grid__item medium--four-twelfths push--medium--one-twelfth hidden-xsmall">
+                <div class="search-box welcome__search-box ">
+                    <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
+                        <label class="search-box__label hidden" for="search-box">Search</label>
+                        <input name="term" required="" id="search-box" class="search-box__input " type="text" placeholder="Search site">
+                        <button type="submit" title="search" class="search-box__button button button--primary">
+                            <span class="icon icon--search-white"></span>
+                            <span class="hidden">Search</span>
+                        </button>
+                    </form>
+                </div>
+            </div><!--
         --></div>
     </div>
 </div>
@@ -48,48 +49,50 @@
 <!-- CAROUSEL -->
 <div class="wrapper  wrapper--full-small  wrapper--full-medium">
     <div class="carousel"><!--
-        <#list homeContent.featuredItems as featuredItem>
-            --><div class="carousel-item   <#if featuredItem?is_first> carousel-item--active </#if>">
+        <#if document??>
+            <#list document.featuredItems as featuredItem>
+                --><div class="carousel-item   <#if featuredItem?is_first> carousel-item--active </#if>">
 
-                <div tabindex="0" class="carousel-item__stage">
-                    <#if featuredItem.youtube?has_content>
-                        <img alt="" src="<@hst.link hippobean=featuredItem.image />" />
-                        <div class="carousel-item__video">
-                            <div class="  embed-responsive  embed-responsive--16by9 ">
-                                <iframe title="youtubevideo" data-videoUrl=${featuredItem.youtube} src="${featuredItem.youtube}?enablejsapi=1&playsinline=1" allowfullscreen></iframe><!-- https://www.youtube.com/embed/{{getYouTubeId youtube}} -->
+                    <div tabindex="0" class="carousel-item__stage">
+                        <#if featuredItem.youtube?has_content>
+                            <img alt="" src="<@hst.link hippobean=featuredItem.image />" />
+                            <div class="carousel-item__video">
+                                <div class="  embed-responsive  embed-responsive--16by9 ">
+                                    <iframe title="youtubevideo" data-videoUrl=${featuredItem.youtube} src="${featuredItem.youtube}?enablejsapi=1&playsinline=1" allowfullscreen></iframe><!-- https://www.youtube.com/embed/{{getYouTubeId youtube}} -->
+                                </div>
                             </div>
+                        <#else>
+                            <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image />" />
+                        </#if>
+                    </div>
+
+                    <div class="carousel-controls-placeholder"></div>
+
+                    <#if featuredItem.overlayQuote?has_content>
+                        <div class="carousel-item__stage-text">
+                            <blockquote>${featuredItem.overlayQuote}
+                                <#if featuredItem.overlayQuoteAttribution?has_content>
+                                    <cite>${featuredItem.overlayQuoteAttribution}</cite>
+                                </#if>
+                            </blockquote>
                         </div>
-                    <#else>
-                        <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image />" />
+                        <button title="Hide this text" class="carousel-item__stage-text-toggle" disabled="disabled"></button>
                     </#if>
-                </div>
 
-                <div class="carousel-controls-placeholder"></div>
+                    <div tabindex="0" class="carousel-item__support">
+                        <div class="carousel-item__scrollable">
+                            <div class="carousel-item__title">${featuredItem.title}</div>
 
-                <#if featuredItem.overlayQuote?has_content>
-                    <div class="carousel-item__stage-text">
-                        <blockquote>${featuredItem.overlayQuote}
-                            <#if featuredItem.overlayQuoteAttribution?has_content>
-                                <cite>${featuredItem.overlayQuoteAttribution}</cite>
-                            </#if>
-                        </blockquote>
-                    </div>
-                    <button title="Hide this text" class="carousel-item__stage-text-toggle" disabled="disabled"></button>
-                </#if>
+                            <div class="carousel-item__desc">
+                                ${featuredItem.teaserText.content}
+                            </div>
 
-                <div tabindex="0" class="carousel-item__support">
-                    <div class="carousel-item__scrollable">
-                        <div class="carousel-item__title">${featuredItem.title}</div>
-
-                        <div class="carousel-item__desc">
-                            ${featuredItem.teaserText.content}
+                            <div class="carousel-item__link"><a href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
                         </div>
-
-                        <div class="carousel-item__link"><a href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
                     </div>
-                </div>
-            </div><!--
-        </#list>
+                </div><!--
+            </#list>
+        </#if>
 
         --><nav class="carousel-controls">
             <ul class="carousel-controls__links">
@@ -302,44 +305,47 @@
             government</a></h2>
 
         <div class="grid"><!--
-            --><div class="grid__item medium--six-twelfths homepage-about__grid-item" id="first-minister">
+            <#if firstMinister??>
+                --><div class="grid__item medium--six-twelfths homepage-about__grid-item" id="first-minister">
 
-            <h3 class="homepage-about__title">${firstMinister.title}</h3>
+                    <h3 class="homepage-about__title">${firstMinister.title}</h3>
 
-            <div class="grid"><!--
-                --><div class="grid__item large--four-twelfths">
+                    <div class="grid"><!--
+                        --><div class="grid__item large--four-twelfths">
 
-                    <div class="homepage-about__image-container">
-                        <img alt="The First Minister" class="homepage-about__image visible-xsmall" src="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/>"
-                            srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x"/>
-                        <img alt="The First Minister" class="homepage-about__image visible-medium" src="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/>"
-                            srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x"/>
-                        <img alt="The First Minister" class="homepage-about__image visible-large" src="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/>"
-                            srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x"/>
-                        <img alt="The First Minister" class="homepage-about__image visible-xlarge" src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>"
-                            srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x"/>
+                            <div class="homepage-about__image-container">
+                                <img alt="The First Minister" class="homepage-about__image visible-xsmall" src="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/>"
+                                    srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x"/>
+                                <img alt="The First Minister" class="homepage-about__image visible-medium" src="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/>"
+                                    srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x"/>
+                                <img alt="The First Minister" class="homepage-about__image visible-large" src="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/>"
+                                    srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x"/>
+                                <img alt="The First Minister" class="homepage-about__image visible-xlarge" src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>"
+                                    srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x"/>
+                            </div>
+                        </div><!--
+
+                        --><div class="grid__item large--eight-twelfths">
+                            <div class="narrow">
+                                <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
+                                ${firstMinisterContent?trim?keep_before("\n")}
+
+                                <p class="homepage-about__read-more"><a href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
+                            </div>
+                        </div><!--
+                    --></div>
+                </div><!--
+            </#if>
+
+            <#if document??>
+                --><div class="grid__item medium--six-twelfths homepage-about__grid-item" id="how-gov-works">
+                    <h3 class="homepage-about__title">How government works</h3>
+
+                    <div class="leader homepage-about__leader">
+                        <@hst.html hippohtml=document.howGovernmentWorks />
                     </div>
                 </div><!--
-
-                --><div class="grid__item large--eight-twelfths">
-                    <div class="narrow">
-                        <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
-                        ${firstMinisterContent?trim?keep_before("\n")}
-
-                        <p class="homepage-about__read-more"><a href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
-                    </div>
-                </div><!--
-            --></div>
-
-        </div><!--
-
-            --><div class="grid__item medium--six-twelfths homepage-about__grid-item" id="how-gov-works">
-            <h3 class="homepage-about__title">How government works</h3>
-
-            <div class="leader homepage-about__leader">
-                <@hst.html hippohtml=homeContent.howGovernmentWorks />
-            </div>
-        </div><!--
+            </#if>
         --></div>
     </section>
 </div>
@@ -413,5 +419,6 @@
 <@hst.headContribution category="footerScripts">
 <script src="<@hst.webfile path="/assets/scripts/home.js"/>" type="text/javascript"></script>
 </@hst.headContribution>
-
-<@hst.headContribution category="pageTitle"><title>${homeContent.title} - gov.scot</title></@hst.headContribution>
+<#if document??>
+<@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
+</#if>

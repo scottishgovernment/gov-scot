@@ -50,7 +50,7 @@ public class HomeComponent extends BaseHstComponent {
         // get the Home page
         try {
             Object homeContent = beanManager.getObject("/content/documents/govscot/home/");
-            request.setAttribute("homeContent", homeContent);
+            request.setAttribute("document", homeContent);
         } catch (ObjectBeanManagerException e) {
             LOG.warn("Unable to get Home content item details {}", e);
         }
