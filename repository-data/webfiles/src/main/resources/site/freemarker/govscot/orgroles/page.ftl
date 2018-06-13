@@ -15,7 +15,7 @@
 --></div>
 
 <div class="grid"><!--
-    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths  push--medium--three-twelfths">
         <#include '../common/feedback-wrapper.ftl'>
     </div><!--
 --></div>
