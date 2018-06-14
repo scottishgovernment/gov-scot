@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/brokenlinks/readonly:
+      hipposys:groups: [author, editor, useradmin]

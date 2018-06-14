@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/hipporequests/editor:
+      hipposys:groups: [editor, useradmin]

@@ -4,3 +4,5 @@ definitions:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [document-unlocker]
       hipposys:role: admin
+    /hippo:configuration/hippo:domains/hippodocuments/editor:
+      hipposys:groups: [admin, editor, useradmin]
