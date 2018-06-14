@@ -99,6 +99,8 @@ define([
         $('#filters').on('submit', function (event) {
             event.preventDefault();
 
+            if (!that.isChangingPage) {that.searchParams.page = 1;}
+
             let currentParams = that.gatherParams();
             let newQueryString = searchUtils.getNewQueryString(currentParams);
 
@@ -141,6 +143,13 @@ define([
                 $('.js-search-results-count').html($('#search-results .search-results__count').html());
 
                 that.hideFilters();
+
+                // scroll to the top of the page if we are changing page
+                if (that.isChangingPage) {
+                    let pageContent = document.getElementById('page-content');
+                    window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
+                }
+                that.isChangingPage = false;
             }).fail(function () {
                 window.location.search = newQueryString;
             });
@@ -239,7 +248,7 @@ define([
             event.preventDefault();
 
             that.searchParams.page = getParameterByName('page', event.target.href);
-
+            that.isChangingPage = true;
             that.submitSearch();
         });
     }
