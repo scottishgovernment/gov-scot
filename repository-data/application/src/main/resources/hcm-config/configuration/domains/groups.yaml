@@ -22,3 +22,10 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: admin
+        /exclude-webmaster-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: webmaster
