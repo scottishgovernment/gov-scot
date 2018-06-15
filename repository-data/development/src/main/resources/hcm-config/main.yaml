@@ -4,7 +4,9 @@ definitions:
       autoexport:modules:
         operation: add
         type: string
-        value: [repository-data/development]
+        # this value tells auto-export to update existing definitions but not create new definitions here
+        # add path mappings to export development data into this module
+        value: ['repository-data/development'] 
     /hippo:configuration/hippo:groups/author:
       hipposys:members:
         operation: add
@@ -16,4 +18,7 @@ definitions:
         type: string
         value: [editor]
     /hippo:configuration/hippo:groups/webmaster:
-      .meta:delete: true
+      hipposys:members:
+        operation: add
+        type: string
+        value: [editor]
