@@ -3,7 +3,7 @@
 <div class="search-box">
     <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
         <label class="search-box__label hidden" for="searchbox-inputtext">Search</label>
-        <input type="text" class="search-box__input  search-box__input--expandable" id="searchbox-inputtext" name="term"
+        <input type="text" required="" class="search-box__input  search-box__input--expandable" id="searchbox-inputtext" name="term"
                placeholder="Search site" />
         <button type="submit" title="search" class="search-box__button button button--primary">
             <span class="icon icon--search-white"></span>
