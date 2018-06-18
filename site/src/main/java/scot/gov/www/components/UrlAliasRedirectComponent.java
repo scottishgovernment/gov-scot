@@ -23,14 +23,14 @@ public class UrlAliasRedirectComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
 
-        // check if this url is a known publications url
+        // check if this url is a known url alias
         String url = findAlias(request);
         if (url != null) {
             HstResponseUtils.sendPermanentRedirect(request, response, url);
             return;
         }
 
-        // we do not know this publications, send a 404
+        // we do not know this url, send a 404
         HstRequestContext context = request.getRequestContext();
         HippoBean document = context.getContentBean();
         request.setAttribute("document", document);
