@@ -101,6 +101,16 @@
       <artifactId>mail</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-services</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-repository-api</artifactId>
+    </dependency>
+
   </dependencies>
 
   <dependencyManagement>
