@@ -10,6 +10,7 @@
                 <bean class="scot.gov.www.linkprocessors.SiteItemsLinkProcessor" />
                 <bean class="scot.gov.www.linkprocessors.TopicLinkProcessor" />
                 <bean class="scot.gov.www.linkprocessors.PublicationLinkProcessor" />
+                <bean class="scot.gov.www.linkprocessors.TrailingSlashLinkProcessor" />
             </list>
         </property>
     </bean>
