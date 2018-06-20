@@ -95,9 +95,47 @@ definitions:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/featuredrolepage
             hst:relativecontentpath: ${parent}/first-minister
+        /how-government-is-run:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/aboutpage
+          hst:relativecontentpath: about/how-government-is-run
+          /_index_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/aboutpage
+            hst:relativecontentpath: ${parent}/index
+          /_default_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/aboutpage
+            hst:relativecontentpath: about/how-government-is-run/${1}
+            /_index_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/aboutpage
+              hst:componentconfigurationmappingnames: ['govscot:OrgRoles']
+              hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage']
+              hst:relativecontentpath: ${parent}/index
+            /_default_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/aboutpage
+              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
+              hst:relativecontentpath: about/how-government-is-run/${1}/${2}
+              /_index_:
+                jcr:primaryType: hst:sitemapitem
+                hst:componentconfigurationid: hst:pages/aboutpage
+                hst:componentconfigurationmappingnames: ['govscot:Directorate']
+                hst:componentconfigurationmappingvalues: ['hst:pages/directoratepage']
+                hst:relativecontentpath: ${parent}/index
+              /_default_:
+                jcr:primaryType: hst:sitemapitem
+                hst:componentconfigurationid: hst:pages/aboutpage
+                hst:componentconfigurationmappingnames: ['govscot:Person', 'govscot:Role']
+                hst:componentconfigurationmappingvalues: ['hst:pages/personpage',
+                  'hst:pages/rolepage']
+                hst:relativecontentpath: about/how-government-is-run/${1}/${2}/${3}
           /directorates:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/directoratespage
+            hst:refId: directorates
             hst:relativecontentpath: ${parent}/directorates
       /roles:
         jcr:primaryType: hst:sitemapitem
@@ -111,6 +149,7 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/groupspage
         hst:relativecontentpath: groups
+        hst:refId: groups
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/grouppage
@@ -157,6 +196,7 @@ definitions:
         hst:relativecontentpath: publications
         /_default_:
           jcr:primaryType: hst:sitemapitem
+          hst:relativecontentpath: ${parent}/${1}
           /_default_:
             jcr:primaryType: hst:sitemapitem
             /_default_:

@@ -12,3 +12,6 @@
 </article>
 
 <@hst.headContribution category="pageTitle"><title>Groups - gov.scot</title></@hst.headContribution>
+
+<@hst.link var="canonicalitem" siteMapItemRefId="groups" canonical=true />
+<#include "common/canonical.ftl" />

@@ -41,4 +41,9 @@
     <script src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>" type="text/javascript"></script>
 </@hst.headContribution>
 
-<@hst.headContribution category="pageTitle"><title>${index.title} - gov.scot</title></@hst.headContribution>
+<#if index??>
+    <@hst.headContribution category="pageTitle"><title>${index.title} - gov.scot</title></@hst.headContribution>
+
+    <@hst.link var="canonicalitem" path="/search" canonical=true />
+    <#include "../common/canonical.ftl" />
+</#if>

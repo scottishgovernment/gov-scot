@@ -85,7 +85,7 @@
         <#if menu.siteMenuItems??>
             <nav class="main-nav main-nav--mobile">
                 <div class="main-nav__wrap  scrollable  scrollable--mobile-only">
-                    <ul class="main-nav__list  scrollable__content" id="main-navigation"><!--
+                    <ul class="main-nav__list  scrollable__content" id="main-navigation-mobile"><!--
                         <#list menu.siteMenuItems as item>
                             <#if item.hstLink??>
                                 <#assign href><@hst.link link=item.hstLink /></#assign>

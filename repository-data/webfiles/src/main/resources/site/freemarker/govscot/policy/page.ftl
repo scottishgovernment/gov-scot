@@ -45,6 +45,12 @@
     <script src="<@hst.webfile path="/assets/scripts/policy.js"/>" type="text/javascript"></script>
 </@hst.headContribution>
 
-<@hst.headContribution category="pageTitle">
-    <title>${index.title}<#if document.title != index.title>: ${document.title}</#if> - gov.scot</title>
-</@hst.headContribution>
+
+<#if document??>
+    <@hst.headContribution category="pageTitle">
+        <title>${index.title}<#if document.title != index.title>: ${document.title}</#if> - gov.scot</title>
+    </@hst.headContribution>
+
+    <@hst.link var="canonicalitem" hippobean=document canonical=true />
+    <#include "../common/canonical.ftl" />
+</#if>

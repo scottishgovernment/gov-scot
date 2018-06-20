@@ -16,3 +16,6 @@
 </article>
 
 <@hst.headContribution category="pageTitle"><title>Directorates - gov.scot</title></@hst.headContribution>
+
+<@hst.link var="canonicalitem" siteMapItemRefId="directorates" canonical=true/>
+<#include "common/canonical.ftl">

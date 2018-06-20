@@ -29,4 +29,12 @@
     <script src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>" type="text/javascript"></script>
 </@hst.headContribution>
 
-<@hst.headContribution category="pageTitle"><title>${index.title} - gov.scot</title></@hst.headContribution>
+<#if index??>
+    <@hst.headContribution category="pageTitle"><title>${index.title} - gov.scot</title></@hst.headContribution>
+
+    <@hst.link var="canonicalitem" hippobean=index canonical=true />
+    <@hst.headContribution>
+        <link rel="canonical" href="${canonicalitem}"/>
+    </@hst.headContribution>
+    <#include "../common/canonical.ftl" />
+</#if>

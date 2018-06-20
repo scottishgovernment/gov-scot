@@ -73,4 +73,9 @@
   </div>
 </#if>
 
-<@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
+<#if document??>
+    <@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
+
+    <@hst.link var="canonicalitem" hippobean=document canonical=true />
+    <#include "common/canonical.ftl" />
+</#if>
