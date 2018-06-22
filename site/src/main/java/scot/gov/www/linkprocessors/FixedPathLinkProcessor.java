@@ -11,50 +11,39 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryResult;
 
-public class NewsLinkProcessor extends HstLinkProcessorTemplate {
+public abstract class  FixedPathLinkProcessor extends HstLinkProcessorTemplate {
 
-    private static final Logger LOG = LoggerFactory.getLogger(NewsLinkProcessor.class);
-
-    public static final String NEWS = "news/";
+    private static final Logger LOG = LoggerFactory.getLogger(FixedPathLinkProcessor.class);
 
     @Override
     protected HstLink doPostProcess(HstLink link) {
-        if (isNewsFullLink(link)) {
+        if (isSiteItemFullLink(link)) {
             // remove the date and time...
-            link.setPath(String.format("news/%s", link.getPathElements()[3]));
+            link.setPath(String.format("%s", link.getPathElements()[1]));
         }
 
         return link;
     }
 
-    private boolean isNewsFullLink(HstLink link) {
-        return link.getPath().startsWith(NEWS) && link.getPathElements().length == 4;
+    private boolean isSiteItemFullLink(HstLink link) {
+        return link.getPath().startsWith(getPath()) && link.getPathElements().length == 2;
     }
 
     @Override
     protected HstLink doPreProcess(HstLink link) {
-        if (isNewsSlugLink(link)) {
-            return preProcessNewsLink(link);
+
+        if (link.getPathElements().length != 1) {
+            return link;
         }
-        return link;
-    }
 
-    private boolean isNewsSlugLink(HstLink link) {
-        return link.getPath().startsWith(NEWS) && link.getPathElements().length == 2;
-    }
-
-    private HstLink preProcessNewsLink(HstLink link) {
         try {
             String slug = link.getPathElements()[link.getPathElements().length - 1];
             Node handle = getHandleBySlug(slug);
-
             if (handle == null) {
                 return link;
             }
-            String newPath = String.format("news/%s", StringUtils.substringAfter(handle.getPath(), NEWS));
+            String newPath = String.format("%s%s", getPath(), StringUtils.substringAfter(handle.getPath(), getPath()));
             link.setPath(newPath);
             return link;
         } catch (RepositoryException e) {
@@ -66,13 +55,14 @@ public class NewsLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String newsPath = "/content/documents/govscot/news/";
-        String sql = String.format("SELECT * FROM govscot:News WHERE jcr:path LIKE '%s%%/%s'", newsPath, slug);
-        QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
-        if (result.getNodes().getSize() == 0) {
+
+        String topicPath = String.format("/content/documents/govscot/%s%s", getPath(), slug);
+        if (session.nodeExists(topicPath)) {
+            return session.getNode(topicPath);
+        } else {
             return null;
         }
-        return result.getNodes().nextNode().getParent();
     }
 
+    protected abstract String getPath();
 }
