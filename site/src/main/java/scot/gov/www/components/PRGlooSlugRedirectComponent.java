@@ -16,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 
-import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryResult;
 
 import java.io.IOException;
 
@@ -107,21 +104,19 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         }
     }
 
-    private boolean isArchivedSlug(String slug, HstRequest request)  {
-        String query = String.format("/jcr:root/content/redirects/prgloo/*[govscot:slug = '%s']", slug);
+    private boolean isArchivedSlug(String slug, HstRequest request) {
+        // form the letters of the slug into a path e.g. myslug -> /m/y/s/l/u/g/
+        StringBuffer path = new StringBuffer("/content/redirects/");
+        for(char c : slug.toCharArray()) {
+            path.append(c).append("/");
+        }
+
         try {
-            QueryResult result = request
-                    .getRequestContext()
-                    .getSession()
-                    .getWorkspace()
-                    .getQueryManager()
-                    .createQuery(query, Query.XPATH)
-                    .execute();
-            NodeIterator nodeIt = result.getNodes();
-            return nodeIt.getSize() > 0;
+            return request.getRequestContext().getSession().nodeExists(path.toString());
         } catch (RepositoryException e) {
-            LOG.error("Failed to query for archived prgloo slug {}", slug, e);
+            LOG.warn("Failed to determine existance of slug {}", slug, e);
             return false;
         }
     }
+
 }
