@@ -19,6 +19,10 @@
       max-width: none;
       margin: 0 -15px;
     }
+
+    li:before {
+        content: none;
+    }
 }
 
 .search-results__header {
