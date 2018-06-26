@@ -19,6 +19,8 @@ import scot.gov.www.beans.Policy;
 import scot.gov.www.beans.PolicyInDetail;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
@@ -51,6 +53,8 @@ public class PolicyLatestComponent extends BaseHstComponent {
         List<HippoBean> all = new ArrayList<>();
         newsIt.forEachRemaining(all::add);
         all.addAll(policy.getRelatedItems());
+        Collections.sort(all, Comparator.comparing(bean -> bean.getProperty("govscot:publicationDate")));
+        Collections.reverse(all);
         LOG.info("{} related items, total size is {}", policy.getRelatedItems().size(), all.size());
         request.setAttribute("latest", all);
     }

@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: cdc05cb5-2cca-404b-99e9-bb04cca33bf1
+          jcr:uuid: c7f995df-dd8c-427a-a660-58ab0354010d
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -79,7 +79,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: b24a1011-4996-4cc0-9671-11f749394f5d
+          jcr:uuid: 13a6edfe-22a0-4d69-9091-d45239391d15
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:policyTags: ['']
@@ -288,6 +288,8 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:News', 'govscot:Publication', 'govscot:SpeechOrStatement',
+                'govscot:Minutes']
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes
