@@ -106,7 +106,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
     private boolean isArchivedSlug(String slug, HstRequest request) {
         // form the letters of the slug into a path e.g. myslug -> /m/y/s/l/u/g/
-        StringBuffer path = new StringBuffer("/content/redirects/");
+        StringBuilder path = new StringBuilder("/content/redirects/");
         for(char c : slug.toCharArray()) {
             path.append(c).append("/");
         }
