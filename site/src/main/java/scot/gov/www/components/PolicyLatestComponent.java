@@ -42,6 +42,7 @@ public class PolicyLatestComponent extends BaseHstComponent {
         HippoBean next = nextBean(policy, document, details);
         request.setAttribute("document", document);
         request.setAttribute("index", policy);
+        request.setAttribute("policyDetails", details);
         request.setAttribute("prev", prev);
         request.setAttribute("next", next);
 

@@ -19,7 +19,7 @@
 
         <div class="grid"><!--
          --><div class="grid__item medium--four-twelfths large--three-twelfths">
-                <@hst.include ref="side-menu"/>
+                <#include 'side-menu.ftl'>
             </div><!--
 
          --><div class="grid__item medium--eight-twelfths large--seven-twelfths">

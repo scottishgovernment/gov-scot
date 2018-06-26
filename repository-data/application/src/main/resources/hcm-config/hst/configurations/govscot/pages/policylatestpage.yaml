@@ -7,15 +7,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.PolicyLatestComponent
         hst:template: policy.page
-        /content-data:
-          jcr:primaryType: hst:component
-          hst:referencecomponent: hst:components/content-data
-        /side-menu:
-          jcr:primaryType: hst:component
-          hst:componentclassname: scot.gov.www.components.PolicyComponent
-          hst:parameternames: [menu]
-          hst:parametervalues: [main]
-          hst:template: policy.side-menu
         /content:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.PolicyLatestComponent
