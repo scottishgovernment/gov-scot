@@ -28,16 +28,16 @@ define([
 
                 if (expandableItem.hasClass('expandable-item--open')) {
                     that.closeExpandableItem(expandableItem);
-                    // dataLayer.push({
-                    //     'event': containerType + '-collapse'
-                    // });
+                    dataLayer.push({
+                        'event': containerType + '-collapse'
+                    });
                 } else {
                     if (that.expandable.hasClass('expandable--single')) {
                         that.closeExpandableItem(expandableItem.siblings('.expandable-item'));
                     }
-                    // dataLayer.push({
-                    //     'event': containerType + '-expand'
-                    // });
+                    dataLayer.push({
+                        'event': containerType + '-expand'
+                    });
                     that.openExpandableItem(expandableItem);
                 }
             });
