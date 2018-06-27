@@ -24,6 +24,10 @@ public class SitemapAssetsUtils {
 
     private static final String ASSET_ROOT_SITEMAPS = "/content/assets/sitemaps";
 
+    private SitemapAssetsUtils() {
+        // utility class
+    }
+
     public static void createOrUpdateResource(Session session, String prefixIn, byte [] bytes)
             throws RepositoryException {
 

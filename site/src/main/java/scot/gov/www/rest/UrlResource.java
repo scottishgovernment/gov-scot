@@ -28,7 +28,7 @@ public class UrlResource extends org.hippoecm.hst.jaxrs.services.AbstractResourc
     public UrlResponse getUrls(@RequestBody UrlRequest urlRequest) {
         UrlResponse response = new UrlResponse();
         response.setUrls(urlRequest.getPaths()
-                .stream().collect(toMap(identity(), this::toUrl)));
+                .stream().collect(toMap(identity(), path -> toUrl(path))));
         return response;
     }
 
