@@ -60,7 +60,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
             Set<String> stoplist = new HashSet<>();
             Collections.addAll(stoplist, "valuelists");
-            Node root = session.getNode("/content/documents/govscot");
+            Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
             NodeIterator nodeIterator = root.getNodes();
             while (nodeIterator.hasNext()) {
                 Node node = nodeIterator.nextNode();
@@ -74,7 +74,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
             }
 
             // now create the root sitemap
-            byte [] urlset = urlset(session, "/content/documents/govscot");
+            byte [] urlset = urlset(session, CONTENT_DOCUMENTS_GOVSCOT);
             createOrUpdateResource(session, "root", urlset);
         } catch (XMLStreamException | IOException | RepositoryException e) {
             LOG.error("Failed to write sitemap", e);

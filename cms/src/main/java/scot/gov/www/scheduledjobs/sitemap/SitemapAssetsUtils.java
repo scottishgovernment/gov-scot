@@ -24,6 +24,8 @@ public class SitemapAssetsUtils {
 
     private static final String ASSET_ROOT_SITEMAPS = "/content/assets/sitemaps";
 
+    public static final String SITEMAPS = "sitemaps";
+
     private SitemapAssetsUtils() {
         // utility class
     }
@@ -65,11 +67,11 @@ public class SitemapAssetsUtils {
     }
 
     private static Node getGallery(Node root) throws RepositoryException {
-        if (root.hasNode("sitemaps")) {
-            return root.getNode("sitemaps");
+        if (root.hasNode(SITEMAPS)) {
+            return root.getNode(SITEMAPS);
         }
 
-        Node gallery = root.addNode("sitemaps", "hippogallery:stdAssetGallery");
+        Node gallery = root.addNode(SITEMAPS, "hippogallery:stdAssetGallery");
         gallery.addMixin("mix:versionable");
         gallery.addMixin("mix:referenceable");
         gallery.addMixin("mix:simpleVersionable");
