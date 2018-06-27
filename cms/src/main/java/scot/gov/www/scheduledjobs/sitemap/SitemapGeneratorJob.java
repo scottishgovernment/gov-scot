@@ -1,6 +1,5 @@
 package scot.gov.www.scheduledjobs.sitemap;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.onehippo.repository.scheduling.RepositoryJob;
@@ -43,6 +42,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
     private static final String ROOT_URL = "https://www.beta.gov.scot/";
 
     private static final String REST_URL = "http://localhost:8080/site/rest/urls/";
+
+    private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
 
     private Client restClient = ClientBuilder.newClient();
 
@@ -93,7 +94,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         writer.writeStartDocument();
         writer.writeStartElement("sitemapindex");
 
-        Node root = session.getNode("/content/documents/govscot");
+        Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
         NodeIterator nodeIterator = root.getNodes();
         while (nodeIterator.hasNext()) {
             Node child = nodeIterator.nextNode();
@@ -157,7 +158,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return removeEnd(url, "index");
     }
 
-    private UrlResponse fetchUrlsForPartition(Client client, List<SitemapEntry> partition) throws IOException, JsonProcessingException {
+    private UrlResponse fetchUrlsForPartition(Client client, List<SitemapEntry> partition) throws IOException {
         UrlRequest urlRequest = new UrlRequest();
         urlRequest.setPaths(partition.stream().map(SitemapEntry::getLoc).collect(toList()));
         String res = client.target(REST_URL)
