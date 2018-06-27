@@ -128,3 +128,5 @@ definitions:
       max.width: 2280
     /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
       country: sc
+    /hippo:configuration/hippo:frontend/cms/cms-static/root:
+      wicket.skin: skin/document-editor.css
