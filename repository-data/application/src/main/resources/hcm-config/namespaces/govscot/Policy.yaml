@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: c7f995df-dd8c-427a-a660-58ab0354010d
+          jcr:uuid: 5e59f3a2-24ba-4edf-a1af-6090018555a5
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -40,6 +40,7 @@ definitions:
             hipposysedit:path: govscot:actions
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
           /html_:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -48,6 +49,7 @@ definitions:
             hipposysedit:path: govscot:background
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
           /html__:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -64,6 +66,25 @@ definitions:
             hipposysedit:path: govscot:contact
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
+          /responsibleDirectorate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:responsibleDirectorate
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
+          /responsibleRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:responsibleRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -79,7 +100,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 13a6edfe-22a0-4d69-9091-d45239391d15
+          jcr:uuid: e9720648-5441-4413-9258-a302f69c2d2c
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:policyTags: ['']
@@ -123,9 +144,11 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
-            caption: Title
+            caption: Policy title
             field: title
-            hint: Enter a title for this document
+            hint: A policy is a statement of what the Scottish Government is trying
+              to achieve and why.  Policy titles should be clear and succinct e.g.
+              Reducing reoffending.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -134,109 +157,103 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: A summary of this document
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /responsibilities:
+          /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Policy overview
             field: content
-            hint: The main content for the page
+            hint: This should answer the question 'why does the government have this
+              policy?' Give a short, clear and specific description of the problem
+              or opportunity and a brief explanation of what the Scottish Government
+              is doing or going to do about it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /actions:
             jcr:primaryType: frontend:plugin
-            caption: Actions
+            caption: Policy actions
             field: html
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: The policy actions section details what the Scottish Government
+              is doing to achieve the outcome or address the issue set out in the
+              policy title/overview.  Actions should be specific, measurable and time
+              bound.  The content should summarise briefly what the government is
+              doing now and what it will do next, using short bullet points or paragraph
+              for each action with links to supporting details pages or publications
+              where relevant.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /background:
             jcr:primaryType: frontend:plugin
-            caption: Background
+            caption: Policy background
             field: html_
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: The background section should be used to provide essential information
+              for understanding the context/situation that resulted in this policy,
+              issue and actions.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /billsAndLegislation:
             jcr:primaryType: frontend:plugin
-            caption: Bills and Legislation
+            caption: Bills and legislation
             field: html__
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Provide details of relevant legislation to explain the legal context
+              for the policy and if the policy will mean changes to the law.  Provide
+              relevant links within the content.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /contact:
             jcr:primaryType: frontend:plugin
             caption: Contact
             field: html___
-            hint: ''
+            hint: Provide contact information for the policy team (where possible)
+              or the central enquiry unit details.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /seoTitle:
-            jcr:primaryType: frontend:plugin
-            caption: SEO Title
-            field: seoTitle
-            hint: Title used by google whilst indexing the content
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '60'
-          /metaDescription:
-            jcr:primaryType: frontend:plugin
-            caption: Meta Description
-            field: metaDescription
-            hint: A description of this content item for search engine indexing purposes
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '300'
-          /tags:
-            jcr:primaryType: frontend:plugin
-            caption: Tags
-            field: tags
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            type: hippostd:taggable
-            wicket.id: ${cluster.id}.field
           /policyTags:
             jcr:primaryType: frontend:plugin
-            caption: Policy Tag(s)
+            caption: News tags
             field: policyTag
-            hint: This tag is used to associate News items with this policy.   This
-              can have multiple values.
+            hint: Enter the relevant news tags associated with the policy.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics and Issues
+            caption: Topics and issues
             field: topics
-            hint: Topics or Issues that this content is part of
+            hint: Select one or more topics related to this policy, e.g. Economy or
+              Energy. Please also select any issues/campaigns related to the policy,
+              e.g. Brexit or Year of Young People 2018.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-              last.visited.nodetypes: []
               nodetypes: ['govscot:Topic', 'govscot:Issue']
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Directorate
+            caption: Primary responsible directorate
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the primary directorate responsible for the policy.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:Directorate']
@@ -244,9 +261,9 @@ definitions:
               last.visited.enabled: 'false'
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Directorates
+            caption: Secondary responsible directorate(s)
             field: secondaryResponsibleDirectorate
-            hint: ''
+            hint: Select any secondary directorate(s) responsible for this policy.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -256,45 +273,77 @@ definitions:
               last.visited.enabled: 'false'
           /responsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Role
+            caption: Primary responsible role
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Select the primary role responsible for this policy e.g. Cabinet
+              Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role']
+              nodetypes: ['govscot:Role', 'govscot:Person']
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
+            caption: Secondary responsible role(s)
             field: secondaryResponsibleRole
-            hint: ''
+            hint: Select any secondary responsible role(s) for this policy e.g. Minister
+              for …
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role']
+              nodetypes: ['govscot:Role', 'govscot:Person']
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
           /relatedItems:
             jcr:primaryType: frontend:plugin
-            caption: Related Items
+            caption: Related items
             field: relatedItems
-            hint: Items added here will appears in the Policy Latest page for this
-              policy along with any News items that have a matching policy tag.
+            hint: Select one or more content items related to the policy e.g. publications,
+              news items.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:News', 'govscot:Publication', 'govscot:SpeechOrStatement',
                 'govscot:Minutes']
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO title
+            field: seoTitle
+            hint: 'This title is used by search engines and social media for indexing
+              this content item.  The title needs to be brief and concise.  Note:
+              Search engines and social media only use first 60 characters.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta description
+            field: metaDescription
+            hint: 'A description of this content item for search engine indexing purposes.  Note:
+              Meta descriptions should be limited to no more than 300 characters -
+              approx. 50 words.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /tags:
+            jcr:primaryType: frontend:plugin
+            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            wicket.id: ${cluster.id}.field
+            mixin: hippostd:taggable
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes
             field: notes
-            hint: Notes about the content for future editors
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
