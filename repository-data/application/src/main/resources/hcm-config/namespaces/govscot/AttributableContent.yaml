@@ -31,7 +31,6 @@ definitions:
             hipposysedit:path: govscot:responsibleDirectorate
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
-            hipposysedit:validators: [required]
           /secondaryResponsibleDirectorate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -48,7 +47,6 @@ definitions:
             hipposysedit:path: govscot:responsibleRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
-            hipposysedit:validators: [required]
           /secondaryResponsibleRole:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -61,7 +59,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:orgRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -69,7 +67,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:secondaryOrgRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -133,7 +131,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: Enter a title for this document
+            hint: 'This is the main title for this content item.  The title needs
+              to be descriptive and concise.  Note: Search engines and social media
+              only use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -142,7 +142,10 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: A summary of this document
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -151,52 +154,18 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content for the page
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /tags:
-            jcr:primaryType: frontend:plugin
-            caption: Tags
-            field: tags
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            type: hippostd:taggable
-            wicket.id: ${cluster.id}.field
-          /seoTitle:
-            jcr:primaryType: frontend:plugin
-            caption: SEO Title
-            field: seoTitle
-            hint: Title used by google whilst indexing the content
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '60'
-          /metaDescription:
-            jcr:primaryType: frontend:plugin
-            caption: Meta Description
-            field: metaDescription
-            hint: A description of this content item for search engine indexing purposes
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '300'
-          /notes:
-            jcr:primaryType: frontend:plugin
-            caption: Notes
-            field: notes
-            hint: Notes about the content for future editors
+            hint: The main content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics
+            caption: Topics and issues
             field: topics
-            hint: ''
+            hint: Select one or more topics related to this content item, e.g. Economy
+              or Energy. Please also select any issues/campaigns related to the content
+              item, e.g. Brexit or Year of Young People 2018.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -205,43 +174,55 @@ definitions:
               last.visited.enabled: 'false'
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Directorate
+            caption: Primary responsible directorate
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Select the primary directorate responsible for the content item.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
               base.path: /content/documents/govscot/about/how-government-is-run/directorates
+              nodetypes: ['govscot:Directorate']
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Seondary Responsible Directorates
+            caption: Secondary responsible directorate(s)
             field: secondaryResponsibleDirectorate
-            hint: ''
+            hint: Select any secondary directorate(s) responsible for this content
+              item.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
               base.path: /content/documents/govscot/about/how-government-is-run/directorates
+              nodetypes: ['govscot:Directorate']
           /responsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Role
+            caption: Primary responsible role
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the primary role responsible for this content item e.g. Cabinet
+              Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
+            caption: Secondary responsible role(s)
             field: secondaryResponsibleRole
-            hint: ''
+            hint: Select any secondary responsible role(s) for this content item e.g.
+              Minister for …
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /orgRole:
             jcr:primaryType: frontend:plugin
             caption: Org Role
@@ -255,6 +236,47 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Secondary Org Role
             field: secondaryOrgRole
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO title
+            field: seoTitle
+            hint: 'This title is used by search engines and social media for indexing
+              this content item.  The title needs to be brief and concise.  Note:
+              Search engines and social media only use first 60 characters.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta description
+            field: metaDescription
+            hint: 'A description of this content item for search engine indexing purposes.  Note:
+              Meta descriptions should be limited to no more than 300 characters -
+              approx. 50 words.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /tags:
+            jcr:primaryType: frontend:plugin
+            mixin: hippostd:taggable
+            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: b544b84e-f0e0-432f-a7ef-a79476081e3f
+          jcr:uuid: 7b5317bc-f3c3-4930-8386-46e5ef80f28e
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated',
             'hippostd:taggable']
@@ -24,7 +24,7 @@ definitions:
             hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required, non-empty]
           /summary:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -33,6 +33,7 @@ definitions:
             hipposysedit:path: govscot:summary
             hipposysedit:primary: false
             hipposysedit:type: Text
+            hipposysedit:validators: [non-empty, required]
           /content:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -49,6 +50,7 @@ definitions:
             hipposysedit:path: govscot:seoTitle
             hipposysedit:primary: false
             hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required]
           /metaDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -57,6 +59,7 @@ definitions:
             hipposysedit:path: govscot:metaDescription
             hipposysedit:primary: false
             hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required]
           /notes:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -82,15 +85,15 @@ definitions:
           hippostd:tags: []
           govscot:seoTitle: ''
           govscot:metaDescription: ''
-          jcr:uuid: dd8d8e17-9920-4771-a90b-b8d521f7a12b
+          jcr:uuid: c6a23366-5d6e-4acc-a15f-89058e24e2fc
           hippostdpubwf:lastModificationDate: 2018-01-25T11:47:57.024Z
           hippostdpubwf:creationDate: 2018-01-25T11:47:57.024Z
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
           /govscot:notes:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
@@ -109,7 +112,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: Enter a title for this document
+            hint: 'This is the main title for this content item.  The title needs
+              to be descriptive and concise.  Note: Search engines and social media
+              only use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -118,32 +123,31 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: A summary of this document
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
           /content:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content for the page
+            hint: The main content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /taggable:
-            jcr:primaryType: frontend:plugin
-            mixin: hippostd:taggable
-            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /seoTitle:
             jcr:primaryType: frontend:plugin
-            caption: SEO Title
+            caption: SEO title
             field: seoTitle
-            hint: Title used by google whilst indexing the content
+            hint: 'This title is used by search engines and social media for indexing
+              this content item.  The title needs to be brief and concise.  Note:
+              Search engines and social media only use first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -151,19 +155,29 @@ definitions:
               maxlength: '60'
           /metaDescription:
             jcr:primaryType: frontend:plugin
-            caption: Meta Description
+            caption: Meta description
             field: metaDescription
-            hint: A description of this content item for search engine indexing purposes
+            hint: 'A description of this content item for search engine indexing purposes.  Note:
+              Meta descriptions should be limited to no more than 300 characters -
+              approx. 50 words.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /taggable:
+            jcr:primaryType: frontend:plugin
+            mixin: hippostd:taggable
+            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes
             field: notes
-            hint: Notes about the content for future editors
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
