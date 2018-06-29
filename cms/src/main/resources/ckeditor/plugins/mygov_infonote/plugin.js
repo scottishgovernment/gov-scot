@@ -1,8 +1,13 @@
 CKEDITOR.plugins.add( 'mygov_infonote', {
     init: function( editor ) {
         editor.addContentsCss(this.path + 'infonote.css');
-        if ($('#infoNoteStyles').length === 0) {
-            $('<link id="infoNoteStyles" rel="stylesheet" type="text/css" href="' + this.path + 'infonote.css"/>').appendTo('body');
+        if (document.getElementById('infoNoteStyles') === null) {
+            let link = document.createElement('link');
+            link.id = 'infoNoteStyles';
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = this.path + 'infonote.css';
+            document.body.appendChild(link);
         }
 
         if (editor.config.addButtons) {
