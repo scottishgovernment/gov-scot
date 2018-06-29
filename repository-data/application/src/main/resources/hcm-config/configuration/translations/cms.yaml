@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:cms/validators/en:
+      non-empty: A mandatory field is empty
