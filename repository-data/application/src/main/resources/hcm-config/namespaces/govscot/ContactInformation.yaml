@@ -95,7 +95,7 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /email:
             jcr:primaryType: frontend:plugin
-            caption: Email Address
+            caption: Email address
             field: email
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -103,7 +103,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /twitter:
             jcr:primaryType: frontend:plugin
-            caption: Twitter Handle
+            caption: Twitter handle
             field: twitter
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -136,7 +136,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /youtube:
             jcr:primaryType: frontend:plugin
-            caption: Youtube URL
+            caption: YouTube URL
             field: youtube
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field

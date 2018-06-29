@@ -64,7 +64,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: ''
+            hint: 'This is the main title for this content item.  The title needs
+              to be descriptive and concise.  Note: Search engines and social media
+              only use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -73,7 +75,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: ''
+            hint: The main content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

@@ -73,7 +73,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: Enter a title for this document
+            hint: 'This is the main title for this content item.  The title needs
+              to be descriptive and concise.  Note: Search engines and social media
+              only use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -82,7 +84,10 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: A summary of this document
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -91,7 +96,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content for the page
+            hint: The main content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -100,7 +105,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Responsibilities
             field: responsibilities
-            hint: The main content for the page
+            hint: Responsibilities of this role.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -109,7 +114,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Incumbent
             field: incumbent
-            hint: ''
+            hint: The incumbent for this role.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

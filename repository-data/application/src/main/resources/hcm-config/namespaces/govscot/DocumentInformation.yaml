@@ -172,7 +172,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /pageCount:
             jcr:primaryType: frontend:plugin
-            caption: Page Count
+            caption: Page count
             field: long
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
@@ -181,7 +181,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /size:
             jcr:primaryType: frontend:plugin
-            caption: File Size
+            caption: File size
             field: size
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin

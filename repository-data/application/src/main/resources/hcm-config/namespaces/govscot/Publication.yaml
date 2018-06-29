@@ -127,14 +127,37 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: Enter a title for this document
+            hint: 'This is the main title for this content item.  The title needs
+              to be descriptive and concise.  Note: Search engines and social media
+              only use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /summary:
+            jcr:primaryType: frontend:plugin
+            caption: Summary
+            field: summary
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /executiveSummary:
+            jcr:primaryType: frontend:plugin
+            caption: Executive summary
+            field: executveSummary
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /publicationType:
             jcr:primaryType: frontend:plugin
-            caption: Publication Type
+            caption: Publication type
             field: dynamicdropdown
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
@@ -153,7 +176,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /publicationDate:
             jcr:primaryType: frontend:plugin
-            caption: Publication Date
+            caption: Publication date
             field: publicationDate
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
@@ -162,27 +185,9 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /officialdate:
             jcr:primaryType: frontend:plugin
-            caption: Official Date
+            caption: Official date
             field: officialdate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /summary:
-            jcr:primaryType: frontend:plugin
-            caption: Summary
-            field: summary
-            hint: A summary of this document
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /executiveSummary:
-            jcr:primaryType: frontend:plugin
-            caption: Executive summary
-            field: executveSummary
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -190,7 +195,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content for the page
+            hint: The main content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -213,30 +218,36 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Directorate
+            caption: Primary responsible directorate
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the primary directorate responsible for the content item.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
+              nodetypes: govscot:Directorate
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Seondary Responsible Directorates
+            caption: Secondary responsible directorate(s)
             field: secondaryResponsibleDirectorate
-            hint: ''
+            hint: Select any secondary directorate(s) responsible for this content
+              item.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
+              nodetypes: govscot:Directorate
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics and Issues
+            caption: Topics and issues
             field: topics
-            hint: Topics or Issues that this content is part of
+            hint: Select one or more topics related to this content item, e.g. Economy
+              or Energy. Please also select any issues/campaigns related to the content
+              item, e.g. Brexit or Year of Young People 2018.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -244,23 +255,32 @@ definitions:
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
               nodetypes: ['govscot:Topic', 'govscot:Issue']
-          /secondaryResponsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
-            field: secondaryResponsibleRole
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
           /responsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Role
+            caption: Primary responsible role
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the primary role responsible for this content item e.g. Cabinet
+              Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
+          /secondaryResponsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary responsible role(s)
+            field: secondaryResponsibleRole
+            hint: Select any secondary responsible role(s) for this content item e.g.
+              Minister for …
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

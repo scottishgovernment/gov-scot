@@ -149,7 +149,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /contactDetails:
             jcr:primaryType: frontend:plugin
-            caption: Contact Details
+            caption: Contact details
             field: contactDetails
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
@@ -169,45 +169,58 @@ definitions:
               last.visited.enabled: 'false'
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Directorate
+            caption: Primary responsible directorate
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the primary directorate responsible for the content item.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
+              nodetypes: govscot:Directorate
           /secondaryResponsibleDirectorate:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Directorates
+            caption: Secondary responsible directorate(s)
             field: secondaryResponsibleDirectorate
-            hint: ''
+            hint: Select any secondary directorate(s) responsible for this content
+              item.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/directorates/
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
               last.visited.enabled: 'false'
+              nodetypes: govscot:Directorate
           /responsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Role
+            caption: Primary responsible role
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the primary role responsible for this content item e.g. Cabinet
+              Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
+            caption: Secondary responsible role(s)
             field: secondaryResponsibleRole
-            hint: ''
+            hint: Select any secondary responsible role(s) for this content item e.g.
+              Minister for …
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /relatedPolicies:
             jcr:primaryType: frontend:plugin
-            caption: Related Policies
+            caption: Related policies
             field: relatedPolicy
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -215,7 +228,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /relatedGroups:
             jcr:primaryType: frontend:plugin
-            caption: Related Groups
+            caption: Related groups
             field: relatedGroups
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -223,7 +236,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /relatedPublications:
             jcr:primaryType: frontend:plugin
-            caption: Related Publications
+            caption: Related publications
             field: relatedPublications
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field

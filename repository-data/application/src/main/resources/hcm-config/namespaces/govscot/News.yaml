@@ -129,16 +129,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: Enter a title for this document
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /publicationDate:
-            jcr:primaryType: frontend:plugin
-            caption: Publication Date
-            field: publishedDate
-            hint: The date/time the document should be published to the website
+            hint: 'This is the main title for this content item.  The title needs
+              to be descriptive and concise.  Note: Search engines and social media
+              only use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -147,7 +140,19 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: A summary of this document
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /publicationDate:
+            jcr:primaryType: frontend:plugin
+            caption: Publication date
+            field: publishedDate
+            hint: The date/time the news item was released.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -156,16 +161,18 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content for the page
+            hint: The main content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics
+            caption: Topics and issues
             field: topics
-            hint: ''
+            hint: Select one or more topics related to this content item, e.g. Economy
+              or Energy. Please also select any issues/campaigns related to the content
+              item, e.g. Brexit or Year of Young People 2018.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -184,7 +191,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /heroImage:
             jcr:primaryType: frontend:plugin
-            caption: Hero Image
+            caption: Hero image
             field: heroImage
             hint: The title and URL of the hero image from news importer
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
@@ -211,7 +218,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /updatedDate:
             jcr:primaryType: frontend:plugin
-            caption: Updated Date
+            caption: Updated date
             field: updatedDate
             hint: The last time the document was updated in the news importer. Used
               to identify when a document needs to be updated
@@ -221,7 +228,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /policyTags:
             jcr:primaryType: frontend:plugin
-            caption: Policy Tag(s)
+            caption: Policy tag(s)
             field: policyTag
             hint: Tags used to link news items to Policy Latest pages.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
