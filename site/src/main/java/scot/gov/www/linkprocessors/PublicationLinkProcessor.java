@@ -59,14 +59,14 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             String [] remaining = ArrayUtils.removeElements(link.getPathElements(),
                     link.getPathElements()[0],
                     link.getPathElements()[1]);
-            Node handle = getHandleBySlug(slug);
-            if(handle == null) {
+            Node pubFolder = getFolderBySlug(slug);
+            if (pubFolder == null) {
                 link.setNotFound(true);
                 link.setPath("/pagenotfound");
                 return link;
             }
 
-            String pubPath = StringUtils.substringAfter(handle.getPath(), PUBLICATIONS);
+            String pubPath = StringUtils.substringAfter(pubFolder.getPath(), PUBLICATIONS);
 
             String newPath = null;
             if (remaining.length == 0) {
@@ -79,21 +79,24 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             link.setPath(newPath);
             return link;
         } catch (RepositoryException e) {
-            LOG.warn("Exception trying to process link: {}", link.getPath(), e);
+            LOG.warn("Exception trying to imageprocessing link: {}", link.getPath(), e);
             return link;
         }
     }
 
-    private Node getHandleBySlug(String slug) throws RepositoryException {
+    private Node getFolderBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String sql = String.format("SELECT * FROM hippo:handle " +
-                "WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/index'", slug);
+        String sql = String.format("SELECT * FROM govscot:Publication " +
+                "WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'", slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
             return null;
         }
-        return result.getNodes().nextNode();
+
+        Node pub = result.getNodes().nextNode();
+
+        return pub.getParent().getParent();
     }
 
 }

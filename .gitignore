@@ -3,6 +3,7 @@ overlays/
 repository-data/webfiles/src/main/resources/site/assets/
 repository-data/application/src/main/resources/hcm-content/content/documents/govscot/
 repository-data/application/src/main/resources/hcm-content/content/documents/administration/migrations.yaml
+repository-data/application/src/main/resources/hcm-config/configuration/modules/scheduler.yaml
 node_modules/
 site/src/main/webapp/assets/mygov/
 .DS_Store

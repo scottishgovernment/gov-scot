@@ -5,9 +5,9 @@ definitions:
       new-untranslated-folder: new untranslated folder
       new-content-folder: new content folder
       new-content-document: new content document
-      new-policy: New Policy
-      new-policy-folder: New Policy Folder
-      new-policy-detail: New Policy Detail
+      new-policy: New policy
+      new-policy-folder: New policy Folder
+      new-policy-detail: New policy detail
       new-govscot-FeaturedItems-folder: new folder
       new-govscot-FeaturedItems-image: New featured item image
       new-govscot-People-folder: new folder
@@ -25,10 +25,12 @@ definitions:
       new-directorate: New directorate
       new-featured-item: New featured item
       new-speech-or-statement: New speech or statement
-      new-minutes: New Minutes
-      new-minutes-folder: New Minutes folder
+      new-minutes: New minutes
+      new-minutes-folder: New minutes folder
       new-publication: New publication
       new-publication-folder: New publication folder
-      new-speech-or-statement-folder: New Speech or statement
+      new-speech-or-statement-folder: New speech or statement folder
       new-publication-page: New publication page
       new-publication-pages-folder: New publication pages folder
+      new-publication-documents-folder: New document folder
+      new-publication-document-info: New document

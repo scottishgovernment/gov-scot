@@ -8,6 +8,8 @@ import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.PublicationPage;
 
 import java.io.IOException;
@@ -17,99 +19,106 @@ import static java.util.stream.Collectors.toList;
 
 public class PublicationComponent extends BaseHstComponent {
 
-    private static final String PAGENOTFOUND = "/pagenotfound";
-    private static final String FORWARDFAILED = "forward failed";
+    private static final Logger LOG = LoggerFactory.getLogger(PublicationComponent.class);
 
     @Override
-    public void doBeforeRender(final HstRequest request,
-                               final HstResponse response) {
-
+    public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
-        HippoBean document;
-        HippoBean publicationParentFolder;
+        HippoBean document = context.getContentBean();
 
-        try {
-            document = context.getContentBean();
-            if(document == null) {
-                response.setStatus(404);
-                response.forward(PAGENOTFOUND);
-                return;
-            }
-        }  catch (IOException e) {
-            throw new HstComponentException(FORWARDFAILED, e);
-        }
+        HippoBean publication = getPublication(document);
+        setDocuments(publication, request);
+        setPages(publication, document, request);
+        request.setAttribute("document", publication);
 
-        if (document.getClass() == PublicationPage.class){
-            HippoBean pagesFolder = document.getParentBean();
-            publicationParentFolder = pagesFolder.getParentBean();
-
-            HippoBean index;
-
-            try {
-                index = (HippoBean) publicationParentFolder.getChildBeansByName("index").get(0);
-                if(index == null) {
-                    response.setStatus(404);
-                    response.forward(PAGENOTFOUND);
-                    return;
-                }
-            }  catch (IOException e) {
-                throw new HstComponentException(FORWARDFAILED, e);
-            }
-
-            request.setAttribute("document", index);
-        } else if ("index".equals(document.getName())) {
-            publicationParentFolder = document.getParentBean();
-            request.setAttribute("document", document);
-        } else {
+        if (publication == null) {
             try {
                 response.setStatus(404);
-                response.forward(PAGENOTFOUND);
-                return;
+                response.forward("/pagenotfound");
             }  catch (IOException e) {
-                throw new HstComponentException(FORWARDFAILED, e);
+                throw new HstComponentException("Forward failed", e);
             }
-        }
-
-        List<HippoFolderBean> documentFolders = publicationParentFolder.getChildBeansByName("documents");
-        List<HippoFolderBean> pageFolders = publicationParentFolder.getChildBeansByName("pages");
-
-        if (!documentFolders.isEmpty()) {
-            HippoFolderBean documentFolder = documentFolders.get(0);
-            request.setAttribute("documents", documentFolder.getDocuments());
-
-            // look for grouped documents which are stored in their own named sub-folders
-            if (!documentFolder.getFolders().isEmpty()){
-                request.setAttribute("groupedDocumentFolders", documentFolder.getFolders());
-            }
-        }
-
-        if (!pageFolders.isEmpty()){
-            List<HippoDocumentBean> pages = pagestoInclude(pageFolders.get(0));
-            request.setAttribute("pages", pages);
-            request.setAttribute("isMultiPagePublication", true);
-
-            HippoBean currentPage;
-
-            if (document.getClass() == PublicationPage.class){
-                currentPage = document;
-            } else {
-                currentPage = pages.get(0);
-            }
-
-            request.setAttribute("currentPage", currentPage);
-
-            HippoBean prev = prevBean(currentPage, pages);
-            HippoBean next = nextBean(currentPage, pages);
-
-            request.setAttribute("prev", prev);
-            request.setAttribute("next", next);
-        } else {
-            request.setAttribute("isMultiPagePublication", false);
         }
     }
 
-    private List<HippoDocumentBean> pagestoInclude(HippoFolderBean pagesFolder) {
+    private HippoBean getPublication(HippoBean document) {
+        if (document.isHippoFolderBean()) {
+            List<HippoBean> publications = document.getChildBeans("govscot:Publication");
+            if (publications.size() > 1) {
+                LOG.warn("Multiple publications found in folder {}, will use first", document.getPath());
+            }
+            return publications.isEmpty() ? null : publications.get(0);
+        }
 
+        if (isPage(document)) {
+            HippoBean publicationFolder = document.getParentBean().getParentBean();
+            List<HippoBean> publications = publicationFolder.getChildBeans("govscot:Publication");
+            if (publications.size() > 1) {
+                LOG.warn("Multiple publications found in folder {}, will use first", publicationFolder.getPath());
+            }
+            return publications.isEmpty() ? null : publications.get(0);
+        }
+
+        return document;
+    }
+    private void setDocuments(HippoBean publication, HstRequest request) {
+
+        HippoBean publicationFolder = publication.getParentBean();
+        if (!hasDocuments(publication.getParentBean())) {
+            return;
+        }
+
+        List<HippoFolderBean> documentFolders = publicationFolder.getChildBeansByName("documents");
+        HippoFolderBean documentFolder = documentFolders.get(0);
+        request.setAttribute("documents", documentFolder.getDocuments());
+
+        // look for grouped documents which are stored in their own named sub-folders
+        if (!documentFolder.getFolders().isEmpty()) {
+            request.setAttribute("groupedDocumentFolders", documentFolder.getFolders());
+        }
+    }
+
+    private void setPages(HippoBean publication, HippoBean document, HstRequest request) {
+        HippoBean publicationFolder = publication.getParentBean();
+        boolean hasPages = hasPages(publicationFolder);
+        request.setAttribute("isMultiPagePublication", hasPages);
+
+        if (!hasPages(publicationFolder)){
+            return;
+        }
+
+        List<HippoFolderBean> pageFolders = publicationFolder.getChildBeansByName("pages");
+        List<HippoDocumentBean> pages = pagestoInclude(pageFolders.get(0));
+        HippoBean currentPage = isPage(document) ? document : pages.get(0);
+        request.setAttribute("pages", pages);
+        request.setAttribute("isMultiPagePublication", true);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("prev", prevBean(currentPage, pages));
+        request.setAttribute("next", nextBean(currentPage, pages));
+    }
+
+    private boolean isPage(HippoBean document) {
+        return document.getClass() == PublicationPage.class;
+    }
+
+    private boolean hasDocuments(HippoBean publicationParentFolder) {
+        return hasChildBeans(publicationParentFolder.getChildBeansByName("documents"));
+    }
+
+    private boolean hasPages(HippoBean publicationParentFolder) {
+        return hasChildBeans(publicationParentFolder.getChildBeansByName("pages"));
+    }
+
+    boolean hasChildBeans(List<HippoFolderBean> folders) {
+        for (HippoFolderBean docFolder : folders) {
+            if (docFolder.getDocumentSize() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<HippoDocumentBean> pagestoInclude(HippoFolderBean pagesFolder) {
         return pagesFolder.getDocuments().stream().filter(this::includePage).collect(toList());
     }
 
