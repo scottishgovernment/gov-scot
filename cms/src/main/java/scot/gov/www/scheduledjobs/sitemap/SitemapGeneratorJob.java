@@ -45,9 +45,16 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
 
+    private static final Set<String> STOPLIST;
+
     private Client restClient = ClientBuilder.newClient();
 
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    static {
+        STOPLIST = new HashSet<>();
+        Collections.addAll(STOPLIST, "valuelists", "404");
+    }
 
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
         LOG.info("Generating sitemap");
@@ -56,25 +63,23 @@ public class SitemapGeneratorJob implements RepositoryJob {
         try {
             session = context.createSystemSession();
             session.refresh(false);
-            createOrUpdateResource(session, "", rootSitemap(session));
+            createOrUpdateResource(session, "", sitemapindex(session));
 
-            Set<String> stoplist = new HashSet<>();
-            Collections.addAll(stoplist, "valuelists");
             Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
             NodeIterator nodeIterator = root.getNodes();
             while (nodeIterator.hasNext()) {
                 Node node = nodeIterator.nextNode();
                 String name = node.getName();
-                if (stoplist.contains(name) || !node.isNodeType("hippostd:folder")) {
+                if (STOPLIST.contains(name) || !node.isNodeType("hippostd:folder")) {
                     continue;
                 }
-
-                byte [] urlset = urlset(session, "/content/documents/govscot/" + name);
+                NodeIterator nodesForPath = getPublishedNodesUnderPath(session, CONTENT_DOCUMENTS_GOVSCOT + "/" + name);
+                byte [] urlset = urlset(session, nodesForPath);
                 createOrUpdateResource(session, name, urlset);
             }
 
-            // now create the root sitemap
-            byte [] urlset = urlset(session, CONTENT_DOCUMENTS_GOVSCOT);
+            // now create the root sitemap (only include items directly at the root)
+            byte [] urlset = urlset(session, session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes());
             createOrUpdateResource(session, "root", urlset);
         } catch (XMLStreamException | IOException | RepositoryException e) {
             LOG.error("Failed to write sitemap", e);
@@ -85,7 +90,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         }
     }
 
-    private byte [] rootSitemap(Session session) throws IOException, XMLStreamException, RepositoryException {
+    private byte [] sitemapindex(Session session) throws IOException, XMLStreamException, RepositoryException {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();
@@ -98,6 +103,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
         NodeIterator nodeIterator = root.getNodes();
         while (nodeIterator.hasNext()) {
             Node child = nodeIterator.nextNode();
+
+            if (STOPLIST.contains(child.getName()) || !child.isNodeType("hippostd:folder")) {
+                continue;
+            }
+
             writer.writeStartElement("sitemap");
             writer.writeStartElement("loc");
             String url = format("%ssitemap.%s.xml", ROOT_URL, child.getName());
@@ -114,7 +124,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return out.toByteArray();
     }
 
-    private byte [] urlset(Session session, String path) throws RepositoryException, XMLStreamException, IOException {
+    private byte [] urlset(Session session, NodeIterator nodeIterator)
+            throws RepositoryException, XMLStreamException, IOException {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();
@@ -123,8 +134,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         writer.writeStartDocument();
         writer.writeStartElement("urlset");
 
-        Map<String, SitemapEntry> entriesByLoc
-                = mapSitemapEntriesByLoc(getPublishedNodesUnderPath(session, path));
+        Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator);
 
         // convert the paths in the entries to urls using the rest service
         // partition them into chunks of 100 first
@@ -182,7 +192,16 @@ public class SitemapGeneratorJob implements RepositoryJob {
     private Map<String, SitemapEntry> mapSitemapEntriesByLoc(NodeIterator nodeIt) throws RepositoryException {
         Map<String, SitemapEntry> entries = new HashMap<>();
         while (nodeIt.hasNext()) {
-            SitemapEntry entry = toSitemapEntry(nodeIt.nextNode());
+            Node node = nodeIt.nextNode();
+            if (STOPLIST.contains(node.getName()) || node.isNodeType("hippostd:folder")) {
+                continue;
+            }
+
+            // exclude document information codes since they are not pages
+            if (node.isNodeType("govscot:DocumentInformation")) {
+                continue;
+            }
+            SitemapEntry entry = toSitemapEntry(node);
             entries.put(entry.getLoc(), entry);
         }
         return entries;
