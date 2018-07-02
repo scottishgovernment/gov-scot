@@ -8,6 +8,9 @@
 <#-- @ftlvariable name="searchTermSingular" type="java.lang.String" -->
 <#-- @ftlvariable name="searchTermPlural" type="java.lang.String" -->
 
+<#-- Set number format to exclude comma separators -->
+<#setting number_format="0.##">
+
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
 <#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['publicationTypes']?has_content>
