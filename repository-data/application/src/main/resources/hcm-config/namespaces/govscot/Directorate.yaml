@@ -165,7 +165,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /ContactInformation:
             jcr:primaryType: frontend:plugin
-            caption: ContactInformation
+            caption: Contact information
             field: ContactInformation
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -174,7 +174,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /orgRole:
             jcr:primaryType: frontend:plugin
-            caption: Organisational Roles
+            caption: Organisational roles
             field: orgRoles
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
@@ -183,7 +183,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /secondaryOrgRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Organisational Roles
+            caption: Secondary organisational roles
             field: secondaryOrgRoles
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
@@ -192,7 +192,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /relatedNews:
             jcr:primaryType: frontend:plugin
-            caption: Related News
+            caption: Related news
             field: relatedNews
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -202,7 +202,7 @@ definitions:
               nodetypes: []
           /relatedPublications:
             jcr:primaryType: frontend:plugin
-            caption: Related Publications
+            caption: Related publications
             field: relatedPublications
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -210,22 +210,24 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /responsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Responsible Role
+            caption: Primary responsible role
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Select the primary role responsible for this content item e.g. Cabinet
+              Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:Role']
               base.path: /content/documents/govscot/about
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Responsible Roles
+            caption: Secondary responsible role(s)
             field: secondaryResponsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Select any secondary responsible role(s) for this content item e.g.
+              Minister for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:Role']

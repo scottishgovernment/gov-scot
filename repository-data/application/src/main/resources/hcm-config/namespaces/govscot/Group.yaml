@@ -151,7 +151,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Contact details
             field: contactDetails
-            hint: ''
+            hint: Provide contact information for the content item (where possible)
+              or use the central enquiry unit's contact details.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

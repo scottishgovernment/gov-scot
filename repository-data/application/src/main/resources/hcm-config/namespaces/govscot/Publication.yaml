@@ -202,10 +202,12 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /contact:
             jcr:primaryType: frontend:plugin
-            caption: Contact
+            caption: Contact details
             field: html_
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Provide contact information for the content item (where possible)
+              or use the central enquiry unit's contact details.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /epilogue:

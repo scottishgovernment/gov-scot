@@ -216,7 +216,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /contact:
             jcr:primaryType: frontend:plugin
-            caption: Contact
+            caption: Contact details
             field: html___
             hint: Provide contact information for the policy team (where possible)
               or the central enquiry unit details.
