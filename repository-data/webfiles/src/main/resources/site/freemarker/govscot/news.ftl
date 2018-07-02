@@ -90,7 +90,7 @@
                         </p>
                     </div>
 
-                    <#if document.heroImage?? || document.attachments??>
+                    <#if document.heroImage?has_content || document.attachments?has_content>
                         <div class="sidebar-block  no-bullets">
                             <h3 class="emphasis  sidebar-block__heading  no-top-margin">Media</h3>
 
