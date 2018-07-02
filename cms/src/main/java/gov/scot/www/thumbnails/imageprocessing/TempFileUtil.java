@@ -10,6 +10,10 @@ import java.io.InputStream;
 
 public class TempFileUtil {
 
+    private TempFileUtil() {
+        // static only class
+    }
+
     public static File createTempFile(FileType type) throws IOException {
         return File.createTempFile("thumbnails-tmp-", "." + type.getExtension());
     }

@@ -46,6 +46,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
     private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
 
     private static final Set<String> STOPLIST;
+    public static final String HIPPOSTD_FOLDER = "hippostd:folder";
 
     private Client restClient = ClientBuilder.newClient();
 
@@ -70,7 +71,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
             while (nodeIterator.hasNext()) {
                 Node node = nodeIterator.nextNode();
                 String name = node.getName();
-                if (STOPLIST.contains(name) || !node.isNodeType("hippostd:folder")) {
+                if (STOPLIST.contains(name) || !node.isNodeType(HIPPOSTD_FOLDER)) {
                     continue;
                 }
                 NodeIterator nodesForPath = getPublishedNodesUnderPath(session, CONTENT_DOCUMENTS_GOVSCOT + "/" + name);
@@ -104,7 +105,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         while (nodeIterator.hasNext()) {
             Node child = nodeIterator.nextNode();
 
-            if (STOPLIST.contains(child.getName()) || !child.isNodeType("hippostd:folder")) {
+            if (STOPLIST.contains(child.getName()) || !child.isNodeType(HIPPOSTD_FOLDER)) {
                 continue;
             }
 
@@ -193,20 +194,27 @@ public class SitemapGeneratorJob implements RepositoryJob {
         Map<String, SitemapEntry> entries = new HashMap<>();
         while (nodeIt.hasNext()) {
             Node node = nodeIt.nextNode();
-            if (STOPLIST.contains(node.getName()) || node.isNodeType("hippostd:folder")) {
-                continue;
+            if (includeSitemapEntry(node)) {
+                SitemapEntry entry = toSitemapEntry(node);
+                entries.put(entry.getLoc(), entry);
             }
-
-            // exclude document information codes since they are not pages
-            if (node.isNodeType("govscot:DocumentInformation")) {
-                continue;
-            }
-            SitemapEntry entry = toSitemapEntry(node);
-            entries.put(entry.getLoc(), entry);
         }
         return entries;
     }
 
+    private boolean includeSitemapEntry(Node node) throws RepositoryException {
+
+        if (STOPLIST.contains(node.getName()) || node.isNodeType(HIPPOSTD_FOLDER)) {
+            return false;
+        }
+
+        // exclude document information codes since they are not pages
+        if (node.isNodeType("govscot:DocumentInformation")) {
+            return false;
+        }
+
+        return true;
+    }
     private SitemapEntry toSitemapEntry(Node node) throws RepositoryException {
         SitemapEntry entry = new SitemapEntry();
         entry.setLoc(node.getPath());

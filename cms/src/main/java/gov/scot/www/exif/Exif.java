@@ -15,12 +15,13 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.toMap;
 
-/**
- * Created by z418868 on 30/06/2018.
- */
 public class Exif {
 
     private static final Logger LOG = LoggerFactory.getLogger(Exif.class);
+
+    private Exif() {
+        // static only class
+    }
 
     public static long pageCount(Binary binary) {
 

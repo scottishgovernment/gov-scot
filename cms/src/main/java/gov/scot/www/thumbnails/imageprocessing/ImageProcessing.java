@@ -15,6 +15,10 @@ import static java.util.stream.Collectors.joining;
 
 public class ImageProcessing {
 
+    private ImageProcessing() {
+        // static only class
+    }
+
     public static File extractPdfCoverImage(InputStream source) throws ImageProcessingException {
 
         try {

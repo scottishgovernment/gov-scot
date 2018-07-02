@@ -1,7 +1,5 @@
 package gov.scot.www.thumbnails;
 
-import org.apache.commons.io.FilenameUtils;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -13,61 +11,65 @@ import java.util.Set;
  */
 public enum FileType {
 
-    PDF("pdf", "application/pdf"),
+    PDF("pdf", "application/pdf", "pdf"),
 
-    DOC("doc", "application/msword"),
-    DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+    DOC("doc", "application/msword", "word"),
+    DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "word"),
 
-    XLS("xls", "application/msexcel"),
-    XLSX("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
-    XLSM("xlsm", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+    XLS("xls", "application/msexcel", "excel"),
+    XLSX("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
+    XLSM("xlsm", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
 
-    PPT("ppt", "application/vnd.ms-powerpoint"),
-    PPS("pps", "application/vnd.ms-powerpoint"),
-    PPTX("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
-    PPSX("ppsx", "application/vnd.openxmlformats-officedocument.presentationml.slideshow"),
+    PPT("ppt", "application/vnd.ms-powerpoint", IconNames.PPT),
+    PPS("pps", "application/vnd.ms-powerpoint", IconNames.PPT),
+    PPTX("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation", IconNames.PPT),
+    PPSX("ppsx", "application/vnd.openxmlformats-officedocument.presentationml.slideshow", IconNames.PPT),
 
-    RTF("rtf", "application/rtf"),
+    RTF("rtf", "application/rtf", "rtf"),
 
-    XML("xml", "application/xml"),
-    XSD("xsd", "application/xsd"),
+    XML("xml", "application/xml", "xml"),
+    XSD("xsd", "application/xsd", "xml"),
 
-    MD("md", "text/markdown"),
-    CSV("csv", "text/csv"),
-    TXT("txt", "text/plain"),
+    MD("md", "text/markdown", IconNames.FALLBACK),
+    CSV("csv", "text/csv", "csv"),
+    TXT("txt", "text/plain", "txt"),
 
-    HTML("html", "text/html"),
+    HTML("html", "text/html", IconNames.FALLBACK),
 
-    HTM("htm", "text/html"),
+    HTM("htm", "text/html", IconNames.FALLBACK),
 
     // open docs
-    ODT("odt", "application/vnd.oasis.opendocument.text"),
-    ODS("ods", "application/vnd.oasis.opendocument.spreadsheet"),
-    ODP("odp", "odp application/vnd.oasis.opendocument.presentation"),
+    ODT("odt", "application/vnd.oasis.opendocument.text", IconNames.ODT),
+    ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", IconNames.ODT),
+    ODP("odp", "odp application/vnd.oasis.opendocument.presentation", IconNames.ODT),
 
     // google earth
-    KML("kml", "application/vnd.google-earth.kml+xml"),
-    KMZ("kmz", "application/vnd.google-earth.kmz"),
+    KML("kml", "application/vnd.google-earth.kml+xml", "geo"),
+    KMZ("kmz", "application/vnd.google-earth.kmz", "geo"),
 
     // images
-    JPG("jpg", "image/jpeg"),
-    JPEG("jpeg", "image/jpeg"),
-    GIF("gif", "image/gif"),
-    PNG("png", "image/png"),
+    JPG("jpg", "image/jpeg", IconNames.IMAGE),
+    JPEG("jpeg", "image/jpeg", IconNames.IMAGE),
+    GIF("gif", "image/gif", IconNames.IMAGE),
+    PNG("png", "image/png", IconNames.IMAGE),
 
-    JSON("json", "application/json");
+    JSON("json", "application/json", IconNames.FALLBACK);
 
-    private static final Set<FileType> imageTypes = new HashSet<>();
+    private static final Set<FileType> IMAGE_TYPES = new HashSet<>();
+
     static {
-        Collections.addAll(imageTypes, JPG, JPEG, GIF, PNG);
+        Collections.addAll(IMAGE_TYPES, JPG, JPEG, GIF, PNG);
+
     }
 
     private final String extension;
     private final String mimeType;
+    private final String iconName;
 
-    FileType(String extension, String mimeType) {
+    FileType(String extension, String mimeType, String iconName) {
         this.extension = extension;
         this.mimeType = mimeType;
+        this.iconName = iconName;
     }
 
     public String getMimeType() {
@@ -78,8 +80,12 @@ public enum FileType {
         return extension;
     }
 
+    public String getIconName() {
+        return iconName;
+    }
+
     public boolean isImage() {
-        return imageTypes.contains(this);
+        return IMAGE_TYPES.contains(this);
     }
 
     public boolean fixedThumbnail() {
@@ -98,60 +104,6 @@ public enum FileType {
             return result.get();
         } else {
             return null;
-        }
-    }
-
-    public static String iconName(FileType type) {
-        switch (type) {
-            case CSV:
-                return "csv";
-
-            case XLS:
-            case XLSM:
-            case XLSX:
-                return "excel";
-
-            case KML:
-            case KMZ:
-                return "geo";
-
-            case GIF:
-            case JPEG:
-            case JPG:
-            case PNG:
-                return "image";
-
-            case PDF:
-                return "pdf";
-
-            case PPS:
-            case PPSX:
-            case PPT:
-            case PPTX:
-                return "ppt";
-
-            case RTF:
-                return "rtf";
-
-            case TXT:
-                return "txt";
-
-            case DOC:
-            case DOCX:
-                return "word";
-
-            case XML:
-            case XSD:
-                return "xml";
-
-            case ODP:
-            case ODS:
-            case ODT:
-                return "odt";
-
-            default:
-                return "fallback";
-
         }
     }
 }

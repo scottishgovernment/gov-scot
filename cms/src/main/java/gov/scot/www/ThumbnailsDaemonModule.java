@@ -56,7 +56,7 @@ public class ThumbnailsDaemonModule implements DaemonModule {
         try {
             HippoNode subject = (HippoNode) session.getNodeByIdentifier(event.subjectId());
 
-            if (!subject.getName().equals("govscot:document")) {
+            if (!"govscot:document".equals(subject.getName())) {
                 return;
             }
 

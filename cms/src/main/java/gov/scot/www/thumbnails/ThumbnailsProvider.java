@@ -24,6 +24,10 @@ public class ThumbnailsProvider {
         Collections.addAll(SIZES, 330, 214, 165, 107);
     }
 
+    private ThumbnailsProvider() {
+        // static only class
+    }
+
     /**
      * Create thumbnails for document attachments.
      */
@@ -104,7 +108,7 @@ public class ThumbnailsProvider {
     private static File fixedThumbnail(FileType type, int size) throws ThumbnailsProviderException {
 
         // lookup based on the required size
-        String filename = String.format("/thumbnails/%s_%dpx.png", FileType.iconName(type), size);
+        String filename = String.format("/thumbnails/%s_%dpx.png", type.getIconName(), size);
         InputStream inputStream = ThumbnailsProvider.class.getResourceAsStream(filename);
         if (isNull(inputStream)) {
             // check we have default icon for this size
