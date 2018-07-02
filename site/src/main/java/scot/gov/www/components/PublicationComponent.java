@@ -21,6 +21,10 @@ public class PublicationComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationComponent.class);
 
+    private static final String DOCUMENTS = "documents";
+
+    private static final String PAGES = "documents";
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
@@ -68,9 +72,9 @@ public class PublicationComponent extends BaseHstComponent {
             return;
         }
 
-        List<HippoFolderBean> documentFolders = publicationFolder.getChildBeansByName("documents");
+        List<HippoFolderBean> documentFolders = publicationFolder.getChildBeansByName(DOCUMENTS);
         HippoFolderBean documentFolder = documentFolders.get(0);
-        request.setAttribute("documents", documentFolder.getDocuments());
+        request.setAttribute(DOCUMENTS, documentFolder.getDocuments());
 
         // look for grouped documents which are stored in their own named sub-folders
         if (!documentFolder.getFolders().isEmpty()) {
@@ -87,10 +91,10 @@ public class PublicationComponent extends BaseHstComponent {
             return;
         }
 
-        List<HippoFolderBean> pageFolders = publicationFolder.getChildBeansByName("pages");
+        List<HippoFolderBean> pageFolders = publicationFolder.getChildBeansByName(PAGES);
         List<HippoDocumentBean> pages = pagestoInclude(pageFolders.get(0));
         HippoBean currentPage = isPage(document) ? document : pages.get(0);
-        request.setAttribute("pages", pages);
+        request.setAttribute(PAGES, pages);
         request.setAttribute("isMultiPagePublication", true);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("prev", prevBean(currentPage, pages));
@@ -102,11 +106,11 @@ public class PublicationComponent extends BaseHstComponent {
     }
 
     private boolean hasDocuments(HippoBean publicationParentFolder) {
-        return hasChildBeans(publicationParentFolder.getChildBeansByName("documents"));
+        return hasChildBeans(publicationParentFolder.getChildBeansByName(DOCUMENTS));
     }
 
     private boolean hasPages(HippoBean publicationParentFolder) {
-        return hasChildBeans(publicationParentFolder.getChildBeansByName("pages"));
+        return hasChildBeans(publicationParentFolder.getChildBeansByName(PAGES));
     }
 
     boolean hasChildBeans(List<HippoFolderBean> folders) {
