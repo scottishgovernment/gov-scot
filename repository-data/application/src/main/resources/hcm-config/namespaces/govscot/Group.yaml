@@ -56,6 +56,15 @@ definitions:
             hipposysedit:path: govscot:relatedPublications
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+          /content:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:content
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -116,7 +125,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: Enter a title for this document
+            hint: 'This is the main title for this content item. The title needs to
+              be descriptive and concise.  Note: Search engines and social media only
+              use the first 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -125,16 +136,20 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: A summary of this document
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /responsibilities:
+          /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Overview
             field: content
-            hint: The main content for the page
+            hint: Provide a brief description of the group's role, independent review
+              or inquiry.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -145,6 +160,7 @@ definitions:
             field: members
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: List of the members.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /contactDetails:
@@ -159,9 +175,11 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /topics:
             jcr:primaryType: frontend:plugin
-            caption: Topics
+            caption: Topics and issues
             field: topics
-            hint: ''
+            hint: Select one or more topics related to this content item, e.g. Economy
+              or Energy. Please also select any issues/campaigns related to the content
+              item, e.g. Brexit or Year of Young People 2018.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -225,24 +243,36 @@ definitions:
             field: relatedPolicy
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select one or more policies related to this content item.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/policies/
+              last.visited.enabled: 'false'
+              nodetypes: govscot:Policy
           /relatedGroups:
             jcr:primaryType: frontend:plugin
             caption: Related groups
             field: relatedGroups
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select one or more groups related to this content item.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/groups/
+              last.visited.enabled: 'false'
+              nodetypes: govscot:Group
           /relatedPublications:
             jcr:primaryType: frontend:plugin
             caption: Related publications
             field: relatedPublications
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select one or more publications related to this content item.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/publications/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Publication', 'govscot:Minutes', 'govscot:SpeechOrStatement']
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title
