@@ -63,7 +63,6 @@ definitions:
             hipposysedit:path: govscot:responsibleRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
-            hipposysedit:validators: [required]
           /secondaryResponsibleRole:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -156,16 +155,16 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Directorate overview
             field: content
-            hint: The main content area for this page.
+            hint: Describe the directorate's purpose and responsibilities.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /ContactInformation:
             jcr:primaryType: frontend:plugin
-            caption: Contact information
+            caption: Social media contacts
             field: ContactInformation
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -174,36 +173,18 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /orgRole:
             jcr:primaryType: frontend:plugin
-            caption: Organisational roles
+            caption: Ministerial role(s)
             field: orgRoles
-            hint: ''
+            hint: Select the ministerial role(s) associated with this directorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /secondaryOrgRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary organisational roles
+            caption: Civil service role(s)
             field: secondaryOrgRoles
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /relatedNews:
-            jcr:primaryType: frontend:plugin
-            caption: Related news
-            field: relatedNews
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              nodetypes: []
-          /relatedPublications:
-            jcr:primaryType: frontend:plugin
-            caption: Related publications
-            field: relatedPublications
+            hint: Select the civil service role(s) responsible for this directorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -214,24 +195,50 @@ definitions:
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select the primary role responsible for this content item e.g. Cabinet
+            hint: Select the primary role responsible for this directorate e.g. Cabinet
               Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role']
+              nodetypes: ['govscot:Role', 'govscot:Person']
               base.path: /content/documents/govscot/about
+              last.visited.enabled: 'false'
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Secondary responsible role(s)
             field: secondaryResponsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select any secondary responsible role(s) for this content item e.g.
+            hint: Select any secondary responsible role(s) for this directorate e.g.
               Minister for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role']
+              nodetypes: ['govscot:Role', 'govscot:Person']
               base.path: /content/documents/govscot/about
+              last.visited.enabled: 'false'
+          /relatedNews:
+            jcr:primaryType: frontend:plugin
+            caption: Related news
+            field: relatedNews
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Select one or more news items related to the directorate.
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:News']
+              base.path: /content/documents/govscot/news
+              last.visited.enabled: 'false'
+          /relatedPublications:
+            jcr:primaryType: frontend:plugin
+            caption: Related publications
+            field: relatedPublications
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Select one or more publications related to the directorate.
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/publications
+              nodetypes: ['govscot:Publication', 'govscot:Minutes', 'govscot:SpeechOrStatement']
+              last.visited.enabled: 'false'
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

@@ -108,11 +108,9 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
-            caption: Title
+            caption: Feature panel title
             field: title
-            hint: 'This is the main title for this content item.  The title needs
-              to be descriptive and concise.  Note: Search engines and social media
-              only use the first 60 characters.'
+            hint: Enter the title of the feature.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -129,12 +127,24 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /image:
+            jcr:primaryType: frontend:plugin
+            caption: Image
+            field: image
+            hint: Add the image for this homepage item. If you enter an image this
+              will be the backdrop.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:FeaturedItems']
           /teaserText:
             jcr:primaryType: frontend:plugin
             caption: Teaser text
             field: teaserText
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the teaser text for this feature.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /overlayQuote:
@@ -143,7 +153,8 @@ definitions:
             field: overlayQuote
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: The quote that will be overlaid on the main image or video for this
+              featured item (max of 280 characters).
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /overlayQuoteAttribution:
@@ -152,7 +163,8 @@ definitions:
             field: overlayQuoteAttribution
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Enter the source of the quote. Shown directly below the feature
+              quote. (Max of 65 characters).
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /link:
@@ -166,20 +178,11 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /youtube:
             jcr:primaryType: frontend:plugin
-            caption: YouTube
+            caption: YouTube URL
             field: youtube
-            hint: ''
+            hint: Enter the YouTube URL for this feature, ensure the URL begins with
+              https:// e.g. https://www.youtube.com/user/scottishgovernment
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /image:
-            jcr:primaryType: frontend:plugin
-            caption: Image
-            field: image
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:FeaturedItems']

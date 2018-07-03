@@ -104,11 +104,9 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
-            caption: Title
+            caption: Name
             field: title
-            hint: 'This is the main title for this content item.  The title needs
-              to be descriptive and concise.  Note: Search engines and social media
-              only use the first 60 characters.'
+            hint: Enter the full name of the person along with any post nominal letters.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -131,15 +129,24 @@ definitions:
             field: image
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Add an image of the person.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:People']
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Biography
             field: content
             hint: The main content for the page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /postalAddress:
+            jcr:primaryType: frontend:plugin
+            caption: Postal address
+            field: postalAddress
+            hint: Please enter the postal address for this person.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -151,15 +158,6 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /postalAddress:
-            jcr:primaryType: frontend:plugin
-            caption: Postal address
-            field: postalAddress
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /roleTitle:

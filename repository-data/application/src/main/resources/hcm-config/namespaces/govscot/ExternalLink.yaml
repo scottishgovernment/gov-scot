@@ -50,18 +50,18 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
-            caption: Title
+            caption: Link title
             field: title
-            hint: The title you want the link to have
+            hint: Enter the title you want the link to have.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /url:
             jcr:primaryType: frontend:plugin
-            caption: URL
+            caption: Link URL
             field: string
-            hint: The URL of the external link
+            hint: Enter the link URL.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

@@ -39,36 +39,6 @@ definitions:
             hipposysedit:path: govscot:image
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
-        /hipposysedit:nodetype[2]:
-          jcr:primaryType: hipposysedit:nodetype
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 9bd1c4cb-4089-4fc1-b440-aa6c6b9c0f74
-          hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
-          /responsibleRole:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:responsibleRole
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /featuredItems:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:featuredItems
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /image:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:image
-            hipposysedit:primary: false
-            hipposysedit:type: hippogallerypicker:imagelink
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -172,7 +142,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Image
             field: image
-            hint: ''
+            hint: Add the banner image for the topic.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -189,12 +159,11 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /responsibleRole:
             jcr:primaryType: frontend:plugin
-            caption: Primary responsible role
+            caption: Responsible role(s)
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select the primary role responsible for this content item e.g. Cabinet
-              Secretary for …
+            hint: Select the ministerial role(s) associated with this topic.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/
@@ -204,7 +173,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Featured items
             field: featuredItems
-            hint: ''
+            hint: Select any publications or news items you would like associated
+              with this topic.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

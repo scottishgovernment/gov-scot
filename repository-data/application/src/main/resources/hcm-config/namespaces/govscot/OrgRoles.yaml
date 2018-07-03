@@ -24,6 +24,7 @@ definitions:
             hipposysedit:path: govscot:organisationName
             hipposysedit:primary: false
             hipposysedit:type: String
+            hipposysedit:validators: [required, non-empty]
           /organisationDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -40,6 +41,7 @@ definitions:
             hipposysedit:path: govscot:secondaryOrganisationName
             hipposysedit:primary: false
             hipposysedit:type: String
+            hipposysedit:validators: [required, non-empty]
           /secondaryOrganisationDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -109,58 +111,54 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Intro text
             field: content
-            hint: The main content area for this page.
+            hint: Enter any introductory text or content you want to appear at the
+              top of the page below the main page title and above the primary organisation
+              content.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /topics:
-            jcr:primaryType: frontend:plugin
-            caption: Topics and issues
-            field: topics
-            hint: Select one or more topics related to this content item, e.g. Economy
-              or Energy. Please also select any issues/campaigns related to the content
-              item, e.g. Brexit or Year of Young People 2018.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/topics/
-              last.visited.enabled: 'false'
           /organisationName:
             jcr:primaryType: frontend:plugin
-            caption: Organisation name
+            caption: Primary organisation name
             field: organisationName
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the name of the primary organisation to be displayed on this
+              page e.g. The Scottish Cabinet or Permanent Secretary and directors-general.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /organisationDescription:
             jcr:primaryType: frontend:plugin
-            caption: Organisation description
+            caption: Primary organisation description
             field: organisationDescription
-            hint: ''
+            hint: Enter a brief description of what the primary organisation does.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /orgRole:
             jcr:primaryType: frontend:plugin
-            caption: Org Role
+            caption: Primary organisation role(s)
             field: orgRole
-            hint: ''
+            hint: Add all the roles that belong to the primary organisation.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:Person', 'govscot:Role']
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
           /secondaryOrganisationName:
             jcr:primaryType: frontend:plugin
             caption: Secondary organisation name
             field: secondaryOrganisationName
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the name of the secondary organisation to be displayed on
+              this page e.g. Ministers or Non Executive Directors
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /secondaryOrganisationDescription:
@@ -169,17 +167,21 @@ definitions:
             field: secondaryOrganisationDescription
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter a brief description of what the secondary organisation does.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /secondaryOrgRole:
             jcr:primaryType: frontend:plugin
-            caption: Secondary Org Role
+            caption: Secondary organisation role(s)
             field: secondaryOrgRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Add all the roles that belong to the secondary organisation.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

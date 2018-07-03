@@ -99,6 +99,8 @@ definitions:
             field: email
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the main contact email address for this content item e.g.
+              ceu@gov.scot
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /twitter:
@@ -107,6 +109,7 @@ definitions:
             field: twitter
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the Twitter handle for this content item e.g. @scotgov
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /flickr:
@@ -115,7 +118,8 @@ definitions:
             field: flickr
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Enter the Flickr URL for the content item, ensure the URL begins
+              with https:// e.g. https://www.flickr.com/photos/scottishgovernment
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /website:
@@ -124,6 +128,8 @@ definitions:
             field: website
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the website address of the content item (if applicable) e.g.
+              https://www.gov.scot
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /facebook:
@@ -132,6 +138,8 @@ definitions:
             field: facebook
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the content item's Facebook URL, ensure the URL begins with
+              https:// e.g. https://www.facebook.com/TheScottishGovernment/timeline/
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /youtube:
@@ -140,13 +148,16 @@ definitions:
             field: youtube
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter the content item's YouTube URL, ensure the URL begins with
+              https:// e.g. https://www.youtube.com/user/scottishgovernment
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /blog:
             jcr:primaryType: frontend:plugin
             caption: Blog URL
             field: blog
-            hint: ''
+            hint: Enter the content item's blog URL, ensure the URL begins with https://
+              e.g. https://blogs.gov.scot/digital
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

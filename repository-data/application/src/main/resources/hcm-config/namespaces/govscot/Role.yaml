@@ -94,18 +94,18 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Role description
             field: content
-            hint: The main content area for this page.
+            hint: Provide a description of the role.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /responsibilities:
             jcr:primaryType: frontend:plugin
-            caption: Responsibilities
+            caption: Role responsibilities
             field: responsibilities
-            hint: Responsibilities of this role.
+            hint: Provide detail on the responsibilities of the role.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -114,7 +114,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Incumbent
             field: incumbent
-            hint: The incumbent for this role.
+            hint: Enter the incumbent for the role.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
