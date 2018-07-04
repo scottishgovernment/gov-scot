@@ -1,0 +1,11 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:frontend/cms/cms-static:
+      /feedbackPerspective:
+        jcr:primaryType: frontend:plugin
+        plugin.class: com.example.FeedbackPerspective
+        wicket.id: service.tab
+      /documentsPerspective:
+        jcr:primaryType: frontend:plugin
+        plugin.class: com.example.DocumentsPerspective
+        wicket.id: service.tab
