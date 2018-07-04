@@ -23,7 +23,7 @@ public class PublicationComponent extends BaseHstComponent {
 
     private static final String DOCUMENTS = "documents";
 
-    private static final String PAGES = "documents";
+    private static final String PAGES = "pages";
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
