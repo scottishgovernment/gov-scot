@@ -1,6 +1,5 @@
-//news-landing-page.js
 /*
- Contains functionality for the news landing page
+ Contains functionality for the filterable search pages
  */
 
 define([
@@ -79,6 +78,7 @@ define([
     };
 
     function init() {
+        let that = this;
         this.searchParams = this.gatherParams(true);
 
         this.attachEventHandlers();
@@ -88,7 +88,9 @@ define([
         this.initStickyFilterButtons();
         this.showFilters = showFilters;
         this.searchUtils = searchUtils;
-        this.submitSearch = function () {
+        this.submitSearch = function (options) {
+            if (options.changingPage) {that.isChangingPage = true;}
+            if (options.popstate) {that.isPopstate = true;}
             $('#filters').submit();
         };
     }
@@ -116,11 +118,17 @@ define([
             $.ajax({
                 url: window.location.pathname + newQueryString
             }).done(function (response) {
-                // update querystring
-                try {
-                    window.history.pushState('', '', newQueryString);
-                } catch(error) {
-                    // history API not supported
+
+                // skip this if we're on popstate
+                if (that.isPopstate){
+                    delete that.isPopstate;
+                } else {
+                    // update querystring
+                    try {
+                        window.history.pushState('', '', newQueryString);
+                    } catch(error) {
+                        // history API not supported
+                    }
                 }
 
                 // update results (incl pagination and status readout)
@@ -248,9 +256,16 @@ define([
             event.preventDefault();
 
             that.searchParams.page = getParameterByName('page', event.target.href);
-            that.isChangingPage = true;
-            that.submitSearch();
+            that.submitSearch({changingPage: true});
         });
+
+        window.onpopstate = function () {
+            that.searchParams.page = getParameterByName('page');
+            that.submitSearch({
+                changingPage: true,
+                popstate: true
+            });
+        }
     }
 
     function enableJSFilters () {
