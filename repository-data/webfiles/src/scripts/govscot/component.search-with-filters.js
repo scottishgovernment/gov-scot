@@ -89,6 +89,7 @@ define([
         this.showFilters = showFilters;
         this.searchUtils = searchUtils;
         this.submitSearch = function (options) {
+            options = options || {};
             if (options.changingPage) {that.isChangingPage = true;}
             if (options.popstate) {that.isPopstate = true;}
             $('#filters').submit();
