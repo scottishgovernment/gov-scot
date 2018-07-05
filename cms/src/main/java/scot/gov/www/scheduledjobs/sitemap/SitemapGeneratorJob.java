@@ -75,12 +75,12 @@ public class SitemapGeneratorJob implements RepositoryJob {
                     continue;
                 }
                 NodeIterator nodesForPath = getPublishedNodesUnderPath(session, CONTENT_DOCUMENTS_GOVSCOT + "/" + name);
-                byte [] urlset = urlset(session, nodesForPath);
+                byte [] urlset = urlset(nodesForPath);
                 createOrUpdateResource(session, name, urlset);
             }
 
             // now create the root sitemap (only include items directly at the root)
-            byte [] urlset = urlset(session, session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes());
+            byte [] urlset = urlset(session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes());
             createOrUpdateResource(session, "root", urlset);
         } catch (XMLStreamException | IOException | RepositoryException e) {
             LOG.error("Failed to write sitemap", e);
@@ -125,7 +125,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return out.toByteArray();
     }
 
-    private byte [] urlset(Session session, NodeIterator nodeIterator)
+    private byte [] urlset(NodeIterator nodeIterator)
             throws RepositoryException, XMLStreamException, IOException {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -210,6 +210,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
         // exclude document information codes since they are not pages
         if (node.isNodeType("govscot:DocumentInformation")) {
+            return false;
+        }
+
+        // ensure the item is published
+        if (!node.hasProperty("hippostd:state") || !node.getProperty("hippostd:state").getString().equals("published")) {
             return false;
         }
 
