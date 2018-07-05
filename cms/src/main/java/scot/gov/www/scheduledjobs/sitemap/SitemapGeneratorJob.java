@@ -214,7 +214,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         }
 
         // ensure the item is published
-        if (!node.hasProperty("hippostd:state") || !node.getProperty("hippostd:state").getString().equals("published")) {
+        if (!node.hasProperty("hippostd:state") || !"published".equals(node.getProperty("hippostd:state").getString())) {
             return false;
         }
 
