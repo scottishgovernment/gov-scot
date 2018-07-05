@@ -218,7 +218,12 @@ public class SitemapGeneratorJob implements RepositoryJob {
     private SitemapEntry toSitemapEntry(Node node) throws RepositoryException {
         SitemapEntry entry = new SitemapEntry();
         entry.setLoc(node.getPath());
-        entry.setLastModified(node.getProperty("hippostdpubwf:lastModificationDate").getDate());
+        if (node.hasProperty("hippostdpubwf:lastModificationDate")) {
+            entry.setLastModified(node.getProperty("hippostdpubwf:lastModificationDate").getDate());
+        } else {
+            entry.setLastModified(Calendar.getInstance());
+            LOG.info("Node has no modificaiton date: {}", node.getPath());
+        }
         return entry;
     }
 
