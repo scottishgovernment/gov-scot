@@ -95,10 +95,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();
+        outputFactory.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, true);
         XMLStreamWriter writer = outputFactory.createXMLStreamWriter(out);
         writer.setDefaultNamespace(SITEMAP_NS);
         writer.writeStartDocument();
-        writer.writeStartElement("sitemapindex");
+        writer.writeStartElement(SITEMAP_NS, "sitemapindex");
 
         Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
         NodeIterator nodeIterator = root.getNodes();
@@ -109,8 +110,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
                 continue;
             }
 
-            writer.writeStartElement("sitemap");
-            writer.writeStartElement("loc");
+            writer.writeStartElement(SITEMAP_NS, "sitemap");
+            writer.writeStartElement(SITEMAP_NS, "loc");
             String url = format("%ssitemap.%s.xml", ROOT_URL, child.getName());
             writer.writeCharacters(url);
             writer.writeEndElement();
@@ -130,10 +131,12 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();
+        outputFactory.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, true);
         XMLStreamWriter writer = outputFactory.createXMLStreamWriter(out);
         writer.setDefaultNamespace(SITEMAP_NS);
         writer.writeStartDocument();
-        writer.writeStartElement("urlset");
+        writer.writeStartElement(SITEMAP_NS, "urlset");
+
 
         Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator);
 
@@ -147,8 +150,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
             for (Map.Entry<String, String> pathAndUrl : urlResponse.getUrls().entrySet()) {
                 SitemapEntry entry = entriesByLoc.get(pathAndUrl.getKey());
                 entry.setLoc(pathAndUrl.getKey());
-                writer.writeStartElement("url");
-                writer.writeStartElement("loc");
+                writer.writeStartElement(SITEMAP_NS, "url");
+                writer.writeStartElement(SITEMAP_NS, "loc");
                 writer.writeCharacters(sitemapUrl(pathAndUrl.getValue()));
                 writer.writeEndElement();
                 writer.writeStartElement("lastmod");
