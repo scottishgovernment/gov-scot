@@ -3,3 +3,7 @@
     white-space: normal;
     background-color: #e5f0f8;
 }
+
+.add-root-folder {
+    display: none;
+}
