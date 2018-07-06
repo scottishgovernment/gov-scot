@@ -134,9 +134,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: 'This is the main title for this content item.  The title needs
-              to be descriptive and concise.  Note: Search engines and social media
-              only use the first 60 characters.'
+            hint: This is the main title for this content item.  The title needs to
+              be descriptive and concise.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -208,7 +207,7 @@ definitions:
             field: secondaryResponsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select any secondary responsible role(s) for this directorate e.g.
+            hint: Select any secondary role(s) responsible for this directorate e.g.
               Minister for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

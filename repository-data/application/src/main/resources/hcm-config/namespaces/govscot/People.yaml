@@ -101,7 +101,7 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /filename:
             jcr:primaryType: frontend:plugin
-            caption: file name
+            caption: File name
             field: filename
             plugin.class: org.hippoecm.frontend.plugins.gallery.editor.FileNameDisplayPlugin
             wicket.id: ${cluster.id}.field
@@ -109,7 +109,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /description:
             jcr:primaryType: frontend:plugin
-            caption: description
+            caption: Description
             field: description
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -117,61 +117,61 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /thumbnail:
             jcr:primaryType: frontend:plugin
-            caption: thumbnail
+            caption: Thumbnail
             field: thumbnail
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /original:
             jcr:primaryType: frontend:plugin
-            caption: original
+            caption: Original
             field: original
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /small:
             jcr:primaryType: frontend:plugin
-            caption: small
+            caption: Small
             field: small
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /smalldoubled:
             jcr:primaryType: frontend:plugin
-            caption: smalldoubled
+            caption: Small doubled
             field: smalldoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /medium:
             jcr:primaryType: frontend:plugin
-            caption: medium
+            caption: Medium
             field: medium
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /mediumdoubled:
             jcr:primaryType: frontend:plugin
-            caption: mediumdoubled
+            caption: Medium doubled
             field: mediumdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /large:
             jcr:primaryType: frontend:plugin
-            caption: large
+            caption: Large
             field: large
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /largedoubled:
             jcr:primaryType: frontend:plugin
-            caption: largedoubled
+            caption: Large doubled
             field: largedoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /xlarge:
             jcr:primaryType: frontend:plugin
-            caption: xlarge
+            caption: Extra large
             field: xlarge
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /xlargedoubled:
             jcr:primaryType: frontend:plugin
-            caption: xlargedoubled
+            caption: Extra large doubled
             field: xlargedoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field

@@ -216,9 +216,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: 'This is the main title for this content item.  The title needs
-              to be descriptive and concise.  Note: Search engines and social media
-              only use the first 60 characters.'
+            hint: This is the main title for this content item.  The title needs to
+              be descriptive and concise.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

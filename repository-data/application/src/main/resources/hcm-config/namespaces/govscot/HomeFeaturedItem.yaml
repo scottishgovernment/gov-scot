@@ -131,8 +131,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Image
             field: image
-            hint: Add the image for this homepage item. If you enter an image this
-              will be the backdrop.
+            hint: Add the image for this homepage item. This will be the backdrop.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
