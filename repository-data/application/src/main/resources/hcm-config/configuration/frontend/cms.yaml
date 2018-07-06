@@ -130,3 +130,5 @@ definitions:
       country: sc
     /hippo:configuration/hippo:frontend/cms/cms-static/root:
       wicket.skin: skin/document-editor.css
+    /hippo:configuration/hippo:frontend/cms/cms-dashshortcuts/gotoShortcut:
+      option.location: /content/documents/govscot
