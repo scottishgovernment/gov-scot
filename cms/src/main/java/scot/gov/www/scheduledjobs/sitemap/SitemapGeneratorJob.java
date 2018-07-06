@@ -1,7 +1,6 @@
 package scot.gov.www.scheduledjobs.sitemap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang.time.DateFormatUtils;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
@@ -23,6 +22,7 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.apache.commons.lang.StringUtils.removeEnd;
+import static org.apache.commons.lang.time.DateFormatUtils.ISO_DATE_TIME_ZONE_FORMAT;
 import static scot.gov.www.scheduledjobs.sitemap.SitemapAssetsUtils.createOrUpdateResource;
 
 /**
@@ -32,7 +32,6 @@ import static scot.gov.www.scheduledjobs.sitemap.SitemapAssetsUtils.createOrUpda
  * Works by first generating the sitemap index file and then by generating a sitemap for each folder that s a child
  * of the root content folder.  Urls are fetch from hst / site via a rest service in batches of 100.
  */
-
 public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(SitemapGeneratorJob.class);
@@ -45,16 +44,22 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
 
-    private static final Set<String> STOPLIST;
-    public static final String HIPPOSTD_FOLDER = "hippostd:folder";
+    private static final String HIPPOSTD_FOLDER = "hippostd:folder";
+
+    private static final Set<String> STOPLIST = new HashSet<>();
+
+    private static final Set<String> QUERY_BACKED_TYPES = new HashSet<>();
 
     private Client restClient = ClientBuilder.newClient();
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     static {
-        STOPLIST = new HashSet<>();
-        Collections.addAll(STOPLIST, "valuelists", "404");
+        // list of items to exclude
+        Collections.addAll(STOPLIST, "valuelists", "featured-items", "404", "search");
+
+        // types that are backed by queries and whose modified date should be set to the start of today
+        Collections.addAll(QUERY_BACKED_TYPES, "govscot:Home", "govscot:Issue", "govscot:Topic");
     }
 
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
@@ -149,15 +154,18 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
             for (Map.Entry<String, String> pathAndUrl : urlResponse.getUrls().entrySet()) {
                 SitemapEntry entry = entriesByLoc.get(pathAndUrl.getKey());
-                entry.setLoc(pathAndUrl.getKey());
-                writer.writeStartElement(SITEMAP_NS, "url");
-                writer.writeStartElement(SITEMAP_NS, "loc");
-                writer.writeCharacters(sitemapUrl(pathAndUrl.getValue()));
-                writer.writeEndElement();
-                writer.writeStartElement("lastmod");
-                writer.writeCharacters(DateFormatUtils.ISO_DATE_TIME_ZONE_FORMAT.format(entry.getLastModified()));
-                writer.writeEndElement();
-                writer.writeEndElement();
+
+                String url = sitemapUrl(pathAndUrl.getValue());
+                Calendar dateModified = entry.getLastModified();
+                if (QUERY_BACKED_TYPES.contains(entry.getNodeType())) {
+                    dateModified = startOfToday();
+                }
+                urlElement(writer, url, ISO_DATE_TIME_ZONE_FORMAT.format(dateModified));
+
+                // write the policy latest page for policies
+                if ("govscot:Policy".equals(entry.getNodeType())) {
+                    urlElement(writer, url + "latest/", ISO_DATE_TIME_ZONE_FORMAT.format(startOfToday()));
+                }
             }
         }
         writer.writeEndElement();
@@ -167,9 +175,28 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return out.toByteArray();
     }
 
+    private Calendar startOfToday() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal;
+    }
+    private void urlElement(XMLStreamWriter writer, String url, String date) throws XMLStreamException {
+        writer.writeStartElement(SITEMAP_NS, "url");
+        writer.writeStartElement(SITEMAP_NS, "loc");
+        writer.writeCharacters(url);
+        writer.writeEndElement();
+        writer.writeStartElement("lastmod");
+        writer.writeCharacters(date);
+        writer.writeEndElement();
+        writer.writeEndElement();
+    }
+
     private String sitemapUrl(String path) {
         String url = format("%s%s", ROOT_URL, path);
-        return removeEnd(url, "index");
+        return removeEnd(url, "index/");
     }
 
     private UrlResponse fetchUrlsForPartition(Client client, List<SitemapEntry> partition) throws IOException {
@@ -223,9 +250,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
         return true;
     }
+
     private SitemapEntry toSitemapEntry(Node node) throws RepositoryException {
         SitemapEntry entry = new SitemapEntry();
         entry.setLoc(node.getPath());
+        entry.setNodeType(node.getPrimaryNodeType().getName());
         if (node.hasProperty("hippostdpubwf:lastModificationDate")) {
             entry.setLastModified(node.getProperty("hippostdpubwf:lastModificationDate").getDate());
         } else {

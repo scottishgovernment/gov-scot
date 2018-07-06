@@ -7,6 +7,7 @@ import java.util.Calendar;
  */
 public class SitemapEntry {
     private String loc;
+    private String nodeType;
     private Calendar lastModified;
 
     public String getLoc() {
@@ -15,6 +16,14 @@ public class SitemapEntry {
 
     public void setLoc(String loc) {
         this.loc = loc;
+    }
+
+    public String getNodeType() {
+        return nodeType;
+    }
+
+    public void setNodeType(String nodeType) {
+        this.nodeType = nodeType;
     }
 
     public Calendar getLastModified() {
