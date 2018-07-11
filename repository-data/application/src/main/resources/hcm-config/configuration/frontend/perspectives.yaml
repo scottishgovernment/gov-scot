@@ -3,11 +3,7 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-static:
       /feedbackPerspective:
         jcr:primaryType: frontend:plugin
-        plugin.class: com.example.FeedbackPerspective
+        plugin.class: scot.gov.perspectives.FeedbackPerspective
         wicket.id: service.tab
         browser.id: service.browse
         option.location: /content/documents
-      # /documentsPerspective:
-      #   jcr:primaryType: frontend:plugin
-      #   plugin.class: com.example.DocumentsPerspective
-      #   wicket.id: service.tab

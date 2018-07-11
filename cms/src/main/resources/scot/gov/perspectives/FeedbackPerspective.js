@@ -10,8 +10,7 @@ let FeedbackPerspective;
     FeedbackPerspective.showIFrame = function (id) {
         if (!FeedbackPerspective.iFrameRendered) {
             let iFrame = $('#feedback-perspective').find('iframe');
-
-            // iFrame.attr('src', 'https://lgv.publishing.gov.scot/#/feedback');
+            iFrame.attr('src', 'https://lgv.publishing.gov.scot/#/feedback');
 
             FeedbackPerspective.iFrameRendered = true;
         }
@@ -19,8 +18,9 @@ let FeedbackPerspective;
 
     window.addEventListener('message', function (event) {
         let feedbackContentItemLink = $('.feedback-content-item-link');
-        feedbackContentItemLink.attr('data-querystring', JSON.parse(event.data).querystring);
-        feedbackContentItemLink.attr('href', JSON.parse(event.data).href);
+        let eventData = JSON.parse(event.data);
+        feedbackContentItemLink.attr('data-uuid', eventData.uuid);
+        feedbackContentItemLink.attr('href', eventData.href);
         feedbackContentItemLink.click();
     });
 })();
