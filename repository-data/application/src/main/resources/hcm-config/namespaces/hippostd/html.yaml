@@ -9,7 +9,8 @@ definitions:
         name\": \"listindentalign\",\r\n\t\t\"groups\": [\"list\"]\r\n\t}, {\r\n\t\
         \t\"name\": \"links\"\r\n\t}, {\r\n\t\t\"name\": \"clipboard\"\r\n\t}, {\r\
         \n\t\t\"name\": \"insert\"\r\n\t}, {\r\n\t\t\"name\": \"tools\"\r\n\t}, {\r\
-        \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote\"\
-        \r\n}"
-      ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline,Table,Youtube\"\
+        \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote,simple_tables\"\
+        ,\r\n\r\n        \"contentsCss\": [\r\n                \"ckeditor/hippocontents.css\"\
+        ,\r\n                \"ckeditor/ckeditorstyle.css\"\r\n        ]\r\n}"
+      ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline,Youtube\"\
         \r\n}"

@@ -1,0 +1,4 @@
+/* Add border to tables in HTML editor */
+.cke_wysiwyg_div.cke_editable table, .cke_wysiwyg_div.cke_editable th, .cke_wysiwyg_div.cke_editable td {
+    border: 1px solid silver !important;
+}
