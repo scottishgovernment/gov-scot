@@ -1,9 +1,47 @@
+/* Allow tooltips to wrap and set appearance */
 .hippo-hint-field .info span {
     width: 400px;
     white-space: normal;
     background-color: #e5f0f8;
 }
 
+/* Hide 'add root folder' button*/
 .add-root-folder {
     display: none;
 }
+
+/* Search boxes styling */
+.section-search-input input {
+    height: 40px;
+    border-width: 3px;
+    border-color: #0877d1;
+    font-size: 18px;
+}
+
+.section-search-input .hi-m {
+    width: 32px;
+    height: 32px;
+}
+
+.section-search-input > a {
+    right: 38px;
+    top: 6px;
+}
+
+/* Hover effects on left menu */
+.navigator-left-body .row:hover {
+    background-color: #d9effc;
+}
+
+.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-dropdown-icon-container svg {
+    background-color: #d9effc;
+}
+
+.navigator-left-body .row.row-selected:hover{
+    background-color: transparent;
+}
+
+.navigator-left-body .hippo-tree .wicket-tree .row.row-selected .hippo-tree-dropdown-icon-container svg {
+    background-color: transparent;
+}
+
