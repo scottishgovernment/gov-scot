@@ -5,14 +5,23 @@ import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import javax.jcr.*;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import javax.ws.rs.client.*;
-import javax.xml.stream.XMLOutputFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
@@ -27,7 +36,7 @@ import static scot.gov.www.scheduledjobs.sitemap.SitemapAssetsUtils.createOrUpda
 
 /**
  *
- * Scheduled job to create requred sitemaps as assets.
+ * Scheduled job to create required sitemaps as assets.
  *
  * Works by first generating the sitemap index file and then by generating a sitemap for each folder that s a child
  * of the root content folder.  Urls are fetch from hst / site via a rest service in batches of 100.
@@ -87,7 +96,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
             // now create the root sitemap (only include items directly at the root)
             byte [] urlset = urlset(session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes());
             createOrUpdateResource(session, "root", urlset);
-        } catch (XMLStreamException | IOException | RepositoryException e) {
+        } catch (XMLStreamException | IOException | RepositoryException | ParserConfigurationException | TransformerException e) {
             LOG.error("Failed to write sitemap", e);
         } finally {
             if(session != null) {
@@ -96,16 +105,15 @@ public class SitemapGeneratorJob implements RepositoryJob {
         }
     }
 
-    private byte [] sitemapindex(Session session) throws IOException, XMLStreamException, RepositoryException {
+    private byte [] sitemapindex(Session session)
+            throws IOException, ParserConfigurationException, TransformerException, RepositoryException {
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();
-        outputFactory.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, true);
-        XMLStreamWriter writer = outputFactory.createXMLStreamWriter(out);
-        writer.setDefaultNamespace(SITEMAP_NS);
-        writer.writeStartDocument();
-        writer.writeStartElement(SITEMAP_NS, "sitemapindex");
-
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = dbf.newDocumentBuilder();
+        dbf.setNamespaceAware(true);
+        Document doc = docBuilder.newDocument();
+        Element rootElement = doc.createElementNS(SITEMAP_NS, "sitemap");
+        rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
         Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
         NodeIterator nodeIterator = root.getNodes();
         while (nodeIterator.hasNext()) {
@@ -115,33 +123,25 @@ public class SitemapGeneratorJob implements RepositoryJob {
                 continue;
             }
 
-            writer.writeStartElement(SITEMAP_NS, "sitemap");
-            writer.writeStartElement(SITEMAP_NS, "loc");
-            String url = format("%ssitemap.%s.xml", ROOT_URL, child.getName());
-            writer.writeCharacters(url);
-            writer.writeEndElement();
-            writer.writeEndElement();
+            Element sitemapElement = doc.createElementNS(SITEMAP_NS, "sitemap");
+            Element locElement = doc.createElementNS(SITEMAP_NS, "loc");
+            locElement.appendChild(doc.createTextNode(format("%ssitemap.%s.xml", ROOT_URL, child.getName())));
+            sitemapElement.appendChild(locElement);
+            rootElement.appendChild(sitemapElement);
         }
-
-        writer.writeEndElement();
-        writer.writeEndDocument();
-        writer.close();
-        out.close();
-
-        return out.toByteArray();
+        doc.appendChild(rootElement);
+        return writeDocumentToBytes(doc);
     }
 
     private byte [] urlset(NodeIterator nodeIterator)
-            throws RepositoryException, XMLStreamException, IOException {
+            throws RepositoryException, XMLStreamException, IOException, ParserConfigurationException, TransformerException {
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();
-        outputFactory.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, true);
-        XMLStreamWriter writer = outputFactory.createXMLStreamWriter(out);
-        writer.setDefaultNamespace(SITEMAP_NS);
-        writer.writeStartDocument();
-        writer.writeStartElement(SITEMAP_NS, "urlset");
-
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = dbf.newDocumentBuilder();
+        dbf.setNamespaceAware(true);
+        Document doc = docBuilder.newDocument();
+        Element rootElement = doc.createElementNS(SITEMAP_NS, "urlset");
+        rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
 
         Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator);
 
@@ -160,18 +160,40 @@ public class SitemapGeneratorJob implements RepositoryJob {
                 if (QUERY_BACKED_TYPES.contains(entry.getNodeType())) {
                     dateModified = startOfToday();
                 }
-                urlElement(writer, url, ISO_DATE_TIME_ZONE_FORMAT.format(dateModified));
+
+                rootElement.appendChild(urlElement(doc, url, dateModified));
 
                 // write the policy latest page for policies
                 if ("govscot:Policy".equals(entry.getNodeType())) {
-                    urlElement(writer, url + "latest/", ISO_DATE_TIME_ZONE_FORMAT.format(startOfToday()));
+                    urlElement(doc, url + "latest/", startOfToday());
                 }
             }
         }
-        writer.writeEndElement();
-        writer.writeEndDocument();
-        writer.close();
-        out.close();
+        doc.appendChild(rootElement);
+        return writeDocumentToBytes(doc);
+    }
+
+    private Element urlElement(Document doc, String url, Calendar dateModified) {
+        Element urlElement = doc.createElementNS(SITEMAP_NS, "url");
+        Element locElement = doc.createElementNS(SITEMAP_NS, "loc");
+        Element lastModElement = doc.createElementNS(SITEMAP_NS, "lastmod");
+        locElement.appendChild(doc.createTextNode(url));
+        lastModElement.appendChild(doc.createTextNode(ISO_DATE_TIME_ZONE_FORMAT.format(dateModified)));
+        urlElement.appendChild(locElement);
+        urlElement.appendChild(lastModElement);
+        return urlElement;
+    }
+
+    private byte [] writeDocumentToBytes(Document doc) throws TransformerException {
+        DOMSource domSource = new DOMSource(doc);
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        StreamResult sr = new StreamResult(out);
+        transformer.transform(domSource, sr);
         return out.toByteArray();
     }
 
@@ -182,16 +204,6 @@ public class SitemapGeneratorJob implements RepositoryJob {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
         return cal;
-    }
-    private void urlElement(XMLStreamWriter writer, String url, String date) throws XMLStreamException {
-        writer.writeStartElement(SITEMAP_NS, "url");
-        writer.writeStartElement(SITEMAP_NS, "loc");
-        writer.writeCharacters(url);
-        writer.writeEndElement();
-        writer.writeStartElement("lastmod");
-        writer.writeCharacters(date);
-        writer.writeEndElement();
-        writer.writeEndElement();
     }
 
     private String sitemapUrl(String path) {
