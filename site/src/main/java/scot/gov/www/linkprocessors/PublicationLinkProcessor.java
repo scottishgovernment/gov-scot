@@ -99,7 +99,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         stopWatch.stop();
-        LOG.info("getFolderBySlug returned in {} millis", stopWatch.getSplitTime());
+        LOG.info("getFolderBySlug returned in {} millis", stopWatch.getTime());
         if (result.getNodes().getSize() == 0) {
             return null;
         }
