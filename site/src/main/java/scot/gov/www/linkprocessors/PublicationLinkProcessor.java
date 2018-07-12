@@ -2,6 +2,7 @@ package scot.gov.www.linkprocessors;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.StopWatch;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -28,7 +29,11 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             String [] newElements = ArrayUtils.removeElements(link.getPathElements(),
                     link.getPathElements()[1],
                     link.getPathElements()[2],
-                    link.getPathElements()[3]);
+                    link.getPathElements()[3]
+                    );
+            if (link.getPathElements().length > 5 && !"pages".equals(link.getPathElements()[5])) {
+                newElements = ArrayUtils.removeElements(newElements, link.getPathElements()[5]);
+            }
             link.setPath(String.join("/", newElements));
         }
         return link;
@@ -85,11 +90,16 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     }
 
     private Node getFolderBySlug(String slug) throws RepositoryException {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
         String sql = String.format("SELECT * FROM govscot:Publication " +
                 "WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'", slug);
+
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
+        stopWatch.stop();
+        LOG.info("getFolderBySlug returned in {} millis", stopWatch.getSplitTime());
         if (result.getNodes().getSize() == 0) {
             return null;
         }
