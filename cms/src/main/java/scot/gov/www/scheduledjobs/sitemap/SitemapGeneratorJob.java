@@ -35,7 +35,6 @@ import static org.apache.commons.lang.time.DateFormatUtils.ISO_DATE_TIME_ZONE_FO
 import static scot.gov.www.scheduledjobs.sitemap.SitemapAssetsUtils.createOrUpdateResource;
 
 /**
- *
  * Scheduled job to create required sitemaps as assets.
  *
  * Works by first generating the sitemap index file and then by generating a sitemap for each folder that s a child
@@ -89,12 +88,12 @@ public class SitemapGeneratorJob implements RepositoryJob {
                     continue;
                 }
                 NodeIterator nodesForPath = getPublishedNodesUnderPath(session, CONTENT_DOCUMENTS_GOVSCOT + "/" + name);
-                byte [] urlset = urlset(nodesForPath);
+                byte [] urlset = urlset(nodesForPath, session);
                 createOrUpdateResource(session, name, urlset);
             }
 
             // now create the root sitemap (only include items directly at the root)
-            byte [] urlset = urlset(session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes());
+            byte [] urlset = urlset(session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes(), session);
             createOrUpdateResource(session, "root", urlset);
         } catch (XMLStreamException | IOException | RepositoryException | ParserConfigurationException | TransformerException e) {
             LOG.error("Failed to write sitemap", e);
@@ -133,7 +132,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return writeDocumentToBytes(doc);
     }
 
-    private byte [] urlset(NodeIterator nodeIterator)
+    private byte [] urlset(NodeIterator nodeIterator, Session session)
             throws RepositoryException, XMLStreamException, IOException, ParserConfigurationException, TransformerException {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -143,7 +142,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         Element rootElement = doc.createElementNS(SITEMAP_NS, "urlset");
         rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
 
-        Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator);
+        Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator, session);
 
         // convert the paths in the entries to urls using the rest service
         // partition them into chunks of 100 first
@@ -165,7 +164,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
                 // write the policy latest page for policies
                 if ("govscot:Policy".equals(entry.getNodeType())) {
-                    urlElement(doc, url + "latest/", startOfToday());
+                    rootElement.appendChild(urlElement(doc, url + "latest/", startOfToday()));
                 }
             }
         }
@@ -232,11 +231,13 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return result.getNodes();
     }
 
-    private Map<String, SitemapEntry> mapSitemapEntriesByLoc(NodeIterator nodeIt) throws RepositoryException {
+    private Map<String, SitemapEntry> mapSitemapEntriesByLoc(NodeIterator nodeIt, Session session)
+            throws RepositoryException {
+
         Map<String, SitemapEntry> entries = new HashMap<>();
         while (nodeIt.hasNext()) {
             Node node = nodeIt.nextNode();
-            if (includeSitemapEntry(node)) {
+            if (includeSitemapEntry(node, session)) {
                 SitemapEntry entry = toSitemapEntry(node);
                 entries.put(entry.getLoc(), entry);
             }
@@ -244,14 +245,24 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return entries;
     }
 
-    private boolean includeSitemapEntry(Node node) throws RepositoryException {
+    private boolean includeSitemapEntry(Node node, Session session) throws RepositoryException {
 
         if (STOPLIST.contains(node.getName()) || node.isNodeType(HIPPOSTD_FOLDER)) {
             return false;
         }
 
-        // exclude document information codes since they are not pages
+        // exclude document information nodes since they are not pages
         if (node.isNodeType("govscot:DocumentInformation")) {
+            return false;
+        }
+
+        // exclude page 0 of publications- these are the content pages that we leave out of the site
+        if (node.isNodeType("govscot:PublicationPage") && "0".equals(node.getName())) {
+            return false;
+        }
+
+        // leave out people who are the incumbent of a role
+        if (node.isNodeType("govscot:Person") && isIncumbentOfRole(node, session)) {
             return false;
         }
 
@@ -261,6 +272,14 @@ public class SitemapGeneratorJob implements RepositoryJob {
         }
 
         return true;
+    }
+
+    private boolean isIncumbentOfRole(Node node, Session session) throws RepositoryException {
+        String xpath = format(
+                "/jcr:root/content/documents/govscot//element(*, govscot:Role)/govscot:incumbent[hippo:docbase = '%s']",
+                node.getParent().getIdentifier());
+        QueryResult result = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH).execute();
+        return result.getNodes().getSize() > 0;
     }
 
     private SitemapEntry toSitemapEntry(Node node) throws RepositoryException {
