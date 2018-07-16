@@ -179,6 +179,9 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/who-runs-government/cabinet-and-ministers/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /secondaryOrgRole:
             jcr:primaryType: frontend:plugin
             caption: Civil service role(s)
@@ -188,6 +191,9 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/how-government-is-run/civil-service/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Role', 'govscot:Person']
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible role
