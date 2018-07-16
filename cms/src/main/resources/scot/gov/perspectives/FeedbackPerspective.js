@@ -41,6 +41,7 @@ let FeedbackPerspective;
         let feedbackContentItemLink = $('.feedback-content-item-link');
         let eventData = JSON.parse(event.data);
         feedbackContentItemLink.attr('data-uuid', eventData.uuid);
+        feedbackContentItemLink.attr('data-path', eventData.path);
         feedbackContentItemLink.attr('href', eventData.href);
         feedbackContentItemLink.click();
     });
