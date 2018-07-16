@@ -1,0 +1,65 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-minutes-folder:
+      jcr:primaryType: hippostd:templatequery
+      jcr:mixinTypes: ['hipposys:implementation']
+      hippostd:icon: addfolder_ico
+      hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
+        $inherited, './index/index/govscot:title', $localName, './index/hippo:name',
+        $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
+        $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
+        $now, './index/index/hippostdpubwf:lastModificationDate', $now]
+      hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-minutes-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /hippostd:folder:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['mix:versionable']
+          jcr:uuid: 628f27b3-c5e4-4af4-8271-66ed6868f109
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-documents-folder, new-publication-document-info]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+            jcr:uuid: 975d9b50-af13-48c1-a33d-606d0af00ad8
+            hippo:name: Publication name
+            /index:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 51e38933-b5a3-47d4-8a41-1c18244ef39b
+              govscot:isbn: ''
+              govscot:metaDescription: ''
+              govscot:publicationType: ''
+              govscot:seoTitle: ''
+              govscot:summary: ''
+              govscot:title: ''
+              hippo:availability: [preview]
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
+              hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
