@@ -215,7 +215,7 @@ definitions:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/publicationpage
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/${5}
-        /_any_:
+        /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/govscotpublicationspage
       /isbn:
