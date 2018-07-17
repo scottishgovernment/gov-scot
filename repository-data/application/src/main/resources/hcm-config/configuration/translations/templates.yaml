@@ -1,20 +1,20 @@
 definitions:
   config:
     /hippo:configuration/hippo:translations/hippo:templates/en:
-      new-resource-bundle: new resource bundle
-      new-untranslated-folder: new untranslated folder
-      new-content-folder: new content folder
-      new-content-document: new content document
+      new-resource-bundle: New resource bundle
+      new-untranslated-folder: New untranslated folder
+      new-content-folder: New content folder
+      new-content-document: New content document
       new-policy: New policy
-      new-policy-folder: New policy Folder
+      new-policy-folder: New policy folder
       new-policy-detail: New policy detail
-      new-govscot-FeaturedItems-folder: new folder
+      new-govscot-FeaturedItems-folder: New folder
       new-govscot-FeaturedItems-image: New featured item image
-      new-govscot-People-folder: new folder
+      new-govscot-People-folder: New folder
       new-govscot-People-image: New people image
-      new-govscot-BannerImages-folder: new folder
+      new-govscot-BannerImages-folder: New folder
       new-govscot-BannerImages-image: New banner image
-      new-image: New Image1
+      new-image: New image
       new-topic: New topic
       new-group: New group
       new-site-item: New site item
@@ -24,8 +24,6 @@ definitions:
       new-role: New role
       new-directorate: New directorate
       new-featured-item: New featured item
-      new-speech-or-statement: New speech or statement
-      new-minutes: New minutes
       new-minutes-folder: New minutes folder
       new-publication: New publication
       new-publication-folder: New publication folder
@@ -34,3 +32,15 @@ definitions:
       new-publication-pages-folder: New publication pages folder
       new-publication-documents-folder: New document folder
       new-publication-document-info: New document
+      new-simple-content: New simple content item
+      new-document: New document
+      new-translated-folder: New translated folder
+      new-subsite: New subsite
+      new-collection: New folder
+      new-file-folder: New file folder
+      new-image-folder: New folder
+      new-folder: New folder
+      simple:
+        operation: delete
+      new-issue: New issue
+      new-type: New type
