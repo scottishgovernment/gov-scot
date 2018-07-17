@@ -119,6 +119,9 @@ definitions:
             maxitems: 3
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/featured-items/
+              last.visited.enabled: 'false'
+              nodetypes: govscot:HomeFeaturedItem
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

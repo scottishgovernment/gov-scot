@@ -118,6 +118,9 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/about
+              nodetypes: govscot:Person
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

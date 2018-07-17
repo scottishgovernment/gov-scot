@@ -304,6 +304,8 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              last.visited.enabled: 'false'
+              base.path: /content/documents/govscot/
           /contactTitle:
             jcr:primaryType: frontend:plugin
             caption: Contact title

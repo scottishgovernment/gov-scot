@@ -13,7 +13,7 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
           jcr:uuid: b0c27c6e-01da-44a3-a06f-2583dfeeb926
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
+          hipposysedit:supertype: ['hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /teaserText:
             jcr:primaryType: hipposysedit:field
@@ -63,6 +63,24 @@ definitions:
             hipposysedit:path: govscot:image
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
+          /title:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:title
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required, non-empty]
+          /summary:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:summary
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+            hipposysedit:validators: [non-empty, required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -137,6 +155,7 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:FeaturedItems']
+              base.path: /content/gallery/featureditems
           /teaserText:
             jcr:primaryType: frontend:plugin
             caption: Teaser text
