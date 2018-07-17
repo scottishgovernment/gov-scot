@@ -44,3 +44,6 @@ definitions:
         operation: delete
       new-issue: New issue
       new-type: New type
+      new-publication-year-folder: New publication year folder
+      new-publication-month-folder: New publication month folder
+      new-mourning-banner: New mourning banner
