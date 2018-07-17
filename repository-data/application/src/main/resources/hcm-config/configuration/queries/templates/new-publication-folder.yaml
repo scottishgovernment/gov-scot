@@ -48,23 +48,5 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: 30fec85e-56bb-470d-9326-a30bf380b739
+              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
-              /govscot:epilogue:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
-              /govscot:contact:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
-              /govscot:content:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
-              /govscot:responsibleDirectorate:
-                jcr:primaryType: hippo:mirror
-                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-              /govscot:responsibleRole:
-                jcr:primaryType: hippo:mirror
-                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
