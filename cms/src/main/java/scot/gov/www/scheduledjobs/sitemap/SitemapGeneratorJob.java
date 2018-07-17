@@ -92,9 +92,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
                 createOrUpdateResource(session, name, urlset);
             }
 
-            // now create the root sitemap (only include items directly at the root)
-            byte [] urlset = urlset(session.getNode(CONTENT_DOCUMENTS_GOVSCOT).getNodes(), session);
-            createOrUpdateResource(session, "root", urlset);
+            writeRootSitemap(session);
         } catch (XMLStreamException | IOException | RepositoryException | ParserConfigurationException | TransformerException e) {
             LOG.error("Failed to write sitemap", e);
         } finally {
@@ -135,41 +133,61 @@ public class SitemapGeneratorJob implements RepositoryJob {
     private byte [] urlset(NodeIterator nodeIterator, Session session)
             throws RepositoryException, XMLStreamException, IOException, ParserConfigurationException, TransformerException {
 
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = dbf.newDocumentBuilder();
-        dbf.setNamespaceAware(true);
-        Document doc = docBuilder.newDocument();
-        Element rootElement = doc.createElementNS(SITEMAP_NS, "urlset");
-        rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
-
         Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator, session);
 
         // convert the paths in the entries to urls using the rest service
         // partition them into chunks of 100 first
         Map<Integer, List<SitemapEntry>> partitions = partition(entriesByLoc.values());
 
+        List<UrlAndDateModified> entries = new ArrayList<>();
         for (List<SitemapEntry> partition : partitions.values()) {
             UrlResponse urlResponse = fetchUrlsForPartition(restClient, partition);
 
             for (Map.Entry<String, String> pathAndUrl : urlResponse.getUrls().entrySet()) {
                 SitemapEntry entry = entriesByLoc.get(pathAndUrl.getKey());
-
                 String url = sitemapUrl(pathAndUrl.getValue());
                 Calendar dateModified = entry.getLastModified();
                 if (QUERY_BACKED_TYPES.contains(entry.getNodeType())) {
                     dateModified = startOfToday();
                 }
 
-                rootElement.appendChild(urlElement(doc, url, dateModified));
-
+                entries.add(new UrlAndDateModified(url, dateModified));
                 // write the policy latest page for policies
                 if ("govscot:Policy".equals(entry.getNodeType())) {
-                    rootElement.appendChild(urlElement(doc, url + "latest/", startOfToday()));
+                    entries.add(new UrlAndDateModified(url + "latest/", startOfToday()));
                 }
             }
         }
+
+        return urlset(entries);
+    }
+
+    private byte [] urlset(List<UrlAndDateModified> entries)
+            throws TransformerException, ParserConfigurationException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = dbf.newDocumentBuilder();
+        dbf.setNamespaceAware(true);
+        Document doc = docBuilder.newDocument();
+        Element rootElement = doc.createElementNS(SITEMAP_NS, "urlset");
+        rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
+        for (UrlAndDateModified entry : entries) {
+            rootElement.appendChild(urlElement(doc, entry.getUrl(), entry.getDateModified()));
+        }
         doc.appendChild(rootElement);
         return writeDocumentToBytes(doc);
+    }
+
+    private void writeRootSitemap(Session session)
+            throws IOException, ParserConfigurationException, TransformerException, RepositoryException, XMLStreamException {
+        List<UrlAndDateModified> entries = new ArrayList<>();
+        Collections.addAll(entries,
+                new UrlAndDateModified(sitemapUrl("/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("/search/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("/about/how-government-is-run/directorates/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("/groups/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("/topics/"), startOfToday())
+        );
+        createOrUpdateResource(session, "root", urlset(entries));
     }
 
     private Element urlElement(Document doc, String url, Calendar dateModified) {
