@@ -28,9 +28,23 @@
     top: 6px;
 }
 
+/* Dashboard header styling */
+.cms-title {
+    color: #0065bd;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.cms-site-logo {
+    float: right;
+    height: 24px;
+    margin-top: 9px;
+}
+
 /* Hover effects on left menu */
 .navigator-left-body .row:hover {
     background-color: #d9effc;
+    padding-top: 0;
 }
 
 .navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-dropdown-icon-container svg {
@@ -41,7 +55,45 @@
     background-color: transparent;
 }
 
+.navigator-left-body .hippo-tree .wicket-tree  .row.row-selected .hippo-tree-node-link:before {
+    background-color: #0877d1;
+}
+
+.navigator-left-body .hippo-tree .hippo-tree-highlight-widget {
+    display: none;
+}
+
+.navigator-left-body .hippo-tree .wicket-tree .row .a_ {
+    height: auto;
+}
+
+.navigator-left-body .hippo-tree .wicket-tree .row {
+    overflow-x: hidden;
+    padding-top: 0;
+    position: relative;
+}
+
+.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-junction-link,
+.navigator-left-body .hippo-tree .wicket-tree .row-selected .hippo-tree-node-link span {
+    position: relative;
+    z-index: 1;
+}
+
+.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-node-link {
+    padding-bottom: 1px;
+    padding-top: 1px;
+    width: 100%;
+}
+
 .navigator-left-body .hippo-tree .wicket-tree .row.row-selected .hippo-tree-dropdown-icon-container svg {
     background-color: transparent;
 }
 
+.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-node-link:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
