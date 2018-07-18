@@ -1,5 +1,6 @@
 package scot.gov.www.scheduledjobs.sitemap;
 
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +9,9 @@ import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import static java.lang.String.format;
@@ -25,21 +28,31 @@ public class SitemapAssetsUtils {
     private static final String ASSET_ROOT_SITEMAPS = "/content/assets/sitemaps";
 
     public static final String SITEMAPS = "sitemaps";
+    public static final String JCR_DATA = "jcr:data";
 
     private SitemapAssetsUtils() {
         // utility class
     }
 
-    public static void createOrUpdateResource(Session session, String prefixIn, byte [] bytes)
-            throws RepositoryException {
-
-        InputStream in = new ByteArrayInputStream(bytes);
+    protected static void createOrUpdateResource(Session session, String prefixIn, byte [] bytes)
+            throws RepositoryException, IOException {
         String prefix = StringUtils.isEmpty(prefixIn) ? "" : "." + prefixIn;
         String name = format("sitemap%s.xml", prefix);
         Node resource = getResource(session, name);
+        byte [] existingData = null;
+        if (resource.hasProperty(JCR_DATA)) {
+            existingData = IOUtils.toByteArray(resource.getProperty(JCR_DATA).getBinary().getStream());
+        }
+
+        // do not save if the content has not changed
+        if (Arrays.equals(bytes, existingData)) {
+            return;
+        }
+
+        InputStream in = new ByteArrayInputStream(bytes);
         resource.setProperty("jcr:lastModified", Calendar.getInstance());
         resource.setProperty("jcr:mimeType", "application/xml");
-        resource.setProperty("jcr:data", session.getValueFactory().createBinary(in));
+        resource.setProperty(JCR_DATA, session.getValueFactory().createBinary(in));
 
         LOG.info("Saved sitemap to {}", name);
         session.save();

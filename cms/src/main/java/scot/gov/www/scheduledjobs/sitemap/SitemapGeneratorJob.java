@@ -174,6 +174,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private byte [] urlset(List<UrlAndDateModified> entries)
             throws TransformerException, ParserConfigurationException {
+        entries.sort(Comparator.comparing(UrlAndDateModified::getUrl));
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = dbf.newDocumentBuilder();
         dbf.setNamespaceAware(true);
