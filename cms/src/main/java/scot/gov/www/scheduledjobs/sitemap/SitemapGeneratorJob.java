@@ -44,6 +44,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(SitemapGeneratorJob.class);
 
+    private static final String SITEMAP = "sitemap";
+
     private static final String SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
     private static final String ROOT_URL = "https://www.beta.gov.scot/";
@@ -109,7 +111,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         DocumentBuilder docBuilder = dbf.newDocumentBuilder();
         dbf.setNamespaceAware(true);
         Document doc = docBuilder.newDocument();
-        Element rootElement = doc.createElementNS(SITEMAP_NS, "sitemap");
+        Element rootElement = doc.createElementNS(SITEMAP_NS, SITEMAP);
         rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
         Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
         NodeIterator nodeIterator = root.getNodes();
@@ -120,12 +122,20 @@ public class SitemapGeneratorJob implements RepositoryJob {
                 continue;
             }
 
-            Element sitemapElement = doc.createElementNS(SITEMAP_NS, "sitemap");
+            Element sitemapElement = doc.createElementNS(SITEMAP_NS, SITEMAP);
             Element locElement = doc.createElementNS(SITEMAP_NS, "loc");
             locElement.appendChild(doc.createTextNode(format("%ssitemap.%s.xml", ROOT_URL, child.getName())));
             sitemapElement.appendChild(locElement);
             rootElement.appendChild(sitemapElement);
         }
+
+        // add root - we make this one manually
+        Element sitemapElement = doc.createElementNS(SITEMAP_NS, SITEMAP);
+        Element locElement = doc.createElementNS(SITEMAP_NS, "loc");
+        locElement.appendChild(doc.createTextNode(format("%ssitemap.root.xml", ROOT_URL)));
+        sitemapElement.appendChild(locElement);
+        rootElement.appendChild(sitemapElement);
+
         doc.appendChild(rootElement);
         return writeDocumentToBytes(doc);
     }
@@ -181,11 +191,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
             throws IOException, ParserConfigurationException, TransformerException, RepositoryException, XMLStreamException {
         List<UrlAndDateModified> entries = new ArrayList<>();
         Collections.addAll(entries,
-                new UrlAndDateModified(sitemapUrl("/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("/search/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("/about/how-government-is-run/directorates/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("/groups/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("/topics/"), startOfToday())
+                new UrlAndDateModified(sitemapUrl(""), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("search/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("about/how-government-is-run/directorates/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("groups/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl("topics/"), startOfToday())
         );
         createOrUpdateResource(session, "root", urlset(entries));
     }
