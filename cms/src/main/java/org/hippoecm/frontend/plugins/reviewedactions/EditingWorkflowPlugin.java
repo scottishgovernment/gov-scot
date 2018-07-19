@@ -52,9 +52,9 @@ import org.slf4j.LoggerFactory;
 public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
     private static final Logger LOG = LoggerFactory.getLogger(EditingWorkflowPlugin.class);
-    private static final String serviceName = "service.edit";
-    private static final String unableToSaveMessage = "Unable to save the document in the editor";
-    private static final String unableToDiscardMessage = "Unable to discard the document in the editor";
+    private static final String SERVICE_NAME = "service.edit";
+    private static final String UNABLE_TO_SAVE_MESSAGE = "Unable to save the document in the editor";
+    private static final String UNABLE_TO_DISCARD_MESSAGE = "Unable to discard the document in the editor";
 
     public EditingWorkflowPlugin(final IPluginContext context, final IPluginConfig config) {
         super(context, config);
@@ -78,7 +78,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             protected String execute(Workflow wf) throws Exception {
-                final IEditorManager editorMgr = context.getService(serviceName, IEditorManager.class);
+                final IEditorManager editorMgr = context.getService(SERVICE_NAME, IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
                 editor.save();
 
@@ -105,7 +105,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             public String execute(Workflow wf) throws Exception {
-                final IEditorManager editorMgr = context.getService(serviceName, IEditorManager.class);
+                final IEditorManager editorMgr = context.getService(SERVICE_NAME, IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
                 editor.done();
                 return null;
@@ -130,7 +130,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             protected String execute(Workflow wf) throws Exception {
-                final IEditorManager editorMgr = context.getService(serviceName, IEditorManager.class);
+                final IEditorManager editorMgr = context.getService(SERVICE_NAME, IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
 
                 OnCloseDialog.Actions actions = new OnCloseDialog.Actions() {
@@ -138,8 +138,8 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                         try {
                             editor.discard();
                         } catch(EditorException e) {
-                            LOG.warn(unableToDiscardMessage, e);
-                            throw new RuntimeException(unableToDiscardMessage, e);
+                            LOG.warn(UNABLE_TO_DISCARD_MESSAGE, e);
+                            throw new RuntimeException(UNABLE_TO_DISCARD_MESSAGE, e);
                         }
                     }
 
@@ -147,8 +147,8 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                         try {
                             editor.done();
                         } catch (EditorException e) {
-                            LOG.warn(unableToSaveMessage, e);
-                            throw new RuntimeException(unableToSaveMessage, e);
+                            LOG.warn(UNABLE_TO_SAVE_MESSAGE, e);
+                            throw new RuntimeException(UNABLE_TO_SAVE_MESSAGE, e);
                         }
                     }
 
@@ -176,8 +176,8 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                         editor.close();
                     }
                 } catch (EditorException e) {
-                    LOG.warn(unableToSaveMessage, e);
-                    throw new RuntimeException(unableToSaveMessage, e);
+                    LOG.warn(UNABLE_TO_SAVE_MESSAGE, e);
+                    throw new RuntimeException(UNABLE_TO_SAVE_MESSAGE, e);
                 }
 
                 return null;
