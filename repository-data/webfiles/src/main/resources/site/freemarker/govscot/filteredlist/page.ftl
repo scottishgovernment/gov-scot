@@ -8,8 +8,6 @@
 
             <#if index.content.content?has_content>
                 <@hst.html hippohtml=index.content/>
-            <#else>
-                <p>${index.summary}</p>
             </#if>
             
         </div><!--
