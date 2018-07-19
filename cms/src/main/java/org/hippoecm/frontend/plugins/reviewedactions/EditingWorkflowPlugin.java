@@ -15,9 +15,6 @@
  */
 package org.hippoecm.frontend.plugins.reviewedactions;
 
-import java.text.DateFormat;
-import java.util.Date;
-
 import javax.jcr.Node;
 
 import org.apache.wicket.Component;
@@ -49,12 +46,20 @@ import org.hippoecm.frontend.dialog.IDialogService;
 import org.hippoecm.frontend.service.IconSize;
 import org.hippoecm.frontend.service.EditorException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
+
+    private static final Logger LOG = LoggerFactory.getLogger(EditingWorkflowPlugin.class);
+    private final String SERVICE_NAME = "service.edit";
+    private final String UNABLE_TO_SAVE_MESSAGE = "Unable to save the document in the editor";
+    private final String UNABLE_TO_DISCARD_MESSAGE = "Unable to discard the document in the editor";
 
     public EditingWorkflowPlugin(final IPluginContext context, final IPluginConfig config) {
         super(context, config);
 
-        add(new StdWorkflow("save", new StringResourceModel("save", this, null, "Save"), context, getModel()) {
+        StdWorkflow saveWorkflow = new StdWorkflow("save", new StringResourceModel("save", this, null, "Save"), context, getModel()) {
 
             @Override
             public String getSubMenu() {
@@ -73,15 +78,15 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             protected String execute(Workflow wf) throws Exception {
-                final IEditorManager editorMgr = context.getService("service.edit", IEditorManager.class);
+                final IEditorManager editorMgr = context.getService(SERVICE_NAME, IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
                 editor.save();
 
                 return null;
             }
-        });
+        };
 
-        add(new StdWorkflow("done", new StringResourceModel("done", this, null, "Done"), context, getModel()) {
+        StdWorkflow doneWorkflow = new StdWorkflow("done", new StringResourceModel("done", this, null, "Done"), context, getModel()) {
 
             @Override
             public String getSubMenu() {
@@ -100,14 +105,14 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             public String execute(Workflow wf) throws Exception {
-                final IEditorManager editorMgr = context.getService("service.edit", IEditorManager.class);
+                final IEditorManager editorMgr = context.getService(SERVICE_NAME, IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
                 editor.done();
                 return null;
             }
-        });
+        };
 
-        add(new StdWorkflow("close", new StringResourceModel("close", this, null, "Close"), context, getModel()) {
+        StdWorkflow closeWorkflow = new StdWorkflow("close", new StringResourceModel("close", this, null, "Close"), context, getModel()) {
             @Override
             public String getSubMenu() {
                 return "top";
@@ -125,38 +130,40 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             protected String execute(Workflow wf) throws Exception {
-                final IEditorManager editorMgr = context.getService("service.edit", IEditorManager.class);
+                final IEditorManager editorMgr = context.getService(SERVICE_NAME, IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
+
+                OnCloseDialog.Actions actions = new OnCloseDialog.Actions() {
+                    public void revert() {
+                        try {
+                            editor.discard();
+                        } catch(EditorException e) {
+                            LOG.warn(UNABLE_TO_DISCARD_MESSAGE, e);
+                            throw new RuntimeException(UNABLE_TO_DISCARD_MESSAGE, e);
+                        };
+                    }
+
+                    public void save() {
+                        try {
+                            editor.done();
+                        } catch (EditorException e) {
+                            LOG.warn(UNABLE_TO_SAVE_MESSAGE, e);
+                            throw new RuntimeException(UNABLE_TO_SAVE_MESSAGE, e);
+                        }
+                    }
+
+                    public void close() {
+                        try {
+                            editor.close();
+                        } catch (EditorException ex) {
+                            LOG.error(ex.getMessage());
+                        }
+                    }
+                };
 
                 try {
                     if (editor.isModified() || !editor.isValid()) {
-                        OnCloseDialog onCloseDialog = new OnCloseDialog(new OnCloseDialog.Actions() {
-                            public void revert() {
-                                try {
-                                    editor.discard();
-                                } catch(EditorException e) {
-                                    log.warn("Unable to discard the document in the editor", e);
-                                    throw new RuntimeException("Unable to discard the document in the editor", e);
-                                }
-                            }
-
-                            public void save() {
-                                try {
-                                    editor.done();
-                                } catch (EditorException e) {
-                                    log.warn("Unable to save the document in the editor", e);
-                                    throw new RuntimeException("Unable to save the document in the editor", e);
-                                }
-                            }
-
-                            public void close() {
-                                try {
-                                    editor.close();
-                                } catch (EditorException ex) {
-                                    log.error(ex.getMessage());
-                                }
-                            }
-                        }, editor.isValid(), (JcrNodeModel) editor.getModel(), editor.getMode());
+                        OnCloseDialog onCloseDialog = new OnCloseDialog(actions, editor.isValid(), (JcrNodeModel) editor.getModel(), editor.getMode());
 
                         IDialogService dialogService = getPluginContext().getService(IDialogService.class.getName(),
                                 IDialogService.class);
@@ -168,13 +175,17 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                         editor.close();
                     }
                 } catch (EditorException e) {
-                    log.warn("Unable to save the document in the editor", e);
-                    throw new RuntimeException("Unable to save the document in the editor", e);
+                    LOG.warn(UNABLE_TO_SAVE_MESSAGE, e);
+                    throw new RuntimeException(UNABLE_TO_SAVE_MESSAGE, e);
                 }
 
                 return null;
             }
-        });
+        };
+
+        add(saveWorkflow);
+        add(doneWorkflow);
+        add(closeWorkflow);
     }
 
     private static class OnCloseDialog extends Dialog<Node> {
@@ -211,6 +222,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                     } catch (Exception ex) {
                         exceptionLabel.setDefaultModel(Model.of(ex.getMessage()));
                         target.add(exceptionLabel);
+                        LOG.warn("Unable to close the Close button's dialog", ex);
                     }
                 }
             });
@@ -231,6 +243,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                     } catch (Exception ex) {
                         exceptionLabel.setDefaultModel(Model.of(ex.getMessage()));
                         target.add(exceptionLabel);
+                        LOG.warn("Unable to close the Save button's dialog", ex);
                     }
                 }
             };
