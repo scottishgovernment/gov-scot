@@ -115,7 +115,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             protected Component getIcon(final String id) {
-                return HippoIcon.fromSprite(id, Icon.TIMES_CIRCLE);
+                return HippoIcon.fromSprite(id, Icon.TIMES);
             }
 
             @Override
