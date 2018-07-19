@@ -122,15 +122,11 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
             public boolean isFormSubmitted() {
                 return true;
             }
-            
+
             @Override
             protected String execute(Workflow wf) throws Exception {
                 final IEditorManager editorMgr = context.getService("service.edit", IEditorManager.class);
                 IEditor<Node> editor = editorMgr.getEditor(new JcrNodeModel(getModel().getNode()));
-                editor.close();
-
-                return null;
-
 
                 try {
                     if (editor.isModified() || !editor.isValid()) {
@@ -160,7 +156,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                                     log.error(ex.getMessage());
                                 }
                             }
-                        });
+                        }, editor.isValid(), (JcrNodeModel) editor.getModel(), editor.getMode());
 
                         IDialogService dialogService = getPluginContext().getService(IDialogService.class.getName(),
                                 IDialogService.class);
@@ -175,6 +171,8 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
                     log.warn("Unable to save the document in the editor", e);
                     throw new RuntimeException("Unable to save the document in the editor", e);
                 }
+
+                return null;
             }
         });
     }
