@@ -7,7 +7,7 @@
          --><div class="grid__item medium--eight-twelfths">
                 <header class="article-header">
                     <@hst.link var="link" hippobean=index />
-                    <p class="article-header__label">Policy<#if link?ends_with('/latest')> - Latest</#if></p>
+                    <p class="article-header__label">Policy<#if latest??> - Latest</#if></p>
                     <h1 class="article-header__title">${index.title?html}</h1>
 
                     <section class="content-data">
@@ -16,17 +16,21 @@
                 </header>
             </div><!--
      --></div>
-
-        <div class="grid"><!--
-         --><div class="grid__item medium--four-twelfths large--three-twelfths">
-                <#include 'side-menu.ftl'>
-            </div><!--
-
-         --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
-                <@hst.include ref="content"/>
-            </div><!--
-     --></div>
     </article>
+
+    <div class="grid"><!--
+     --><div class="grid__item medium--four-twelfths large--three-twelfths">
+            <#include 'side-menu.ftl'>
+        </div><!--
+
+     --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
+            <#if latest??>
+                <#include 'latest.ftl'/>
+            <#else>
+                <#include 'content.ftl'/>
+            </#if>
+        </div><!--
+ --></div>
 
     <div class="grid"><!--
         --><div class="grid__item  push--medium--four-twelfths  push--large--three-twelfths  medium--eight-twelfths  large--seven-twelfths">

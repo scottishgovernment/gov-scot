@@ -172,7 +172,7 @@ definitions:
             hst:relativecontentpath: ${parent}/index
           /latest:
             jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/policylatestpage
+            hst:componentconfigurationid: hst:pages/policypage
             hst:relativecontentpath: ${parent}/index
       /siteitems:
         jcr:primaryType: hst:sitemapitem

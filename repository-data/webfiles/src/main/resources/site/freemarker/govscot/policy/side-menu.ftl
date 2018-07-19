@@ -6,21 +6,20 @@
     <!-- nav links -->
     <ul class="page-group__list">
         <li class="page-group__item page-group__item--level-0">
-            <@hst.link var="link" hippobean=index/>
-            <#if document == index && !link?ends_with("/latest/")>
+            <@hst.link var="link" hippobean=index canonical=true/>
+            <#if document == index && !latest??>
                 <span class="page-group__link page-group__link--level-0 page-group__link--selected page-group__link--level-0--selected">
                     <span class="page-group__text">Overview</span>
                 </span>
             <#else>
-                <a class="page-group__link page-group__link--level-0" href="${link?keep_before('latest/')}">
+                <a class="page-group__link page-group__link--level-0" href="${link}">
                     <span class="page-group__text">Overview</span>
                 </a>
             </#if>
         </li>
 
         <li class="page-group__item page-group__item--level-0">
-            <@hst.link var="link" hippobean=index/>
-            <#if link?ends_with("/latest/")>
+            <#if latest??>
                 <span class="page-group__link page-group__link--level-0 page-group__link--selected page-group__link--level-0--selected">
                     <span class="page-group__text">Latest</span>
                 </span>
@@ -56,7 +55,7 @@
 
 <div class="page-group__policy-action-count visible-xsmall">
     <@hst.link var="link" hippobean=index/>
-    <#if document == index && link?ends_with("/latest/")>
+    <#if latest??>
         <span class="page-group__policy-action-count__label">Latest</span>
     <#elseif document == index>
         <span class="page-group__policy-action-count__label">Overview</span>

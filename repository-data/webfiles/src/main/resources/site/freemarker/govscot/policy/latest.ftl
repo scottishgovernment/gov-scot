@@ -1,10 +1,9 @@
 <#include "../../include/imports.ftl">
 
-<div class="body-content page-group__content body-content inner-shadow-top inner-shadow-top--no-desktop">
+<div class="body-content page-group__content inner-shadow-top inner-shadow-top--no-desktop">
 
 	<section class="search-results">
 		<ol id="search-results-list" class="search-results__list no-top-margin">
-
 			<#list latest as item>
 				<li class="search-results__item listed-content-item">
 					<@hst.link var="link" hippobean=item/>

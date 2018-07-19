@@ -7,10 +7,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.PolicyComponent
         hst:template: policy.page
-        /content:
-          jcr:primaryType: hst:component
-          hst:componentclassname: scot.gov.www.components.PolicyComponent
-          hst:template: policy.content
         /feedback:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/feedback
