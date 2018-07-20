@@ -93,27 +93,20 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Homepage intro text
             field: content
-            hint: The main content area for this page.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /howGovernmentWorks:
-            jcr:primaryType: frontend:plugin
-            caption: How government works
-            field: howGovernmentWorks
-            hint: ''
+            hint: Option to provide a brief introduction or highlight something specific
+              at the top of the homepage.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /featuredItems:
             jcr:primaryType: frontend:plugin
-            caption: Featured items
+            caption: Featured items panel
             field: featuredItems
-            hint: ''
+            hint: This controls which featured items are displayed on the homepage
+              and the order.  Up to 3 featured items can be added.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             maxitems: 3
@@ -122,6 +115,16 @@ definitions:
               base.path: /content/documents/govscot/featured-items/
               last.visited.enabled: 'false'
               nodetypes: govscot:HomeFeaturedItem
+          /howGovernmentWorks:
+            jcr:primaryType: frontend:plugin
+            caption: How government works
+            field: howGovernmentWorks
+            hint: The stat box is controlled dynamically from the 'How government
+              works' page and should not be edited.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

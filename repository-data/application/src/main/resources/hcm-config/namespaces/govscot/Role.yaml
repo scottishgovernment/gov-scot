@@ -71,10 +71,9 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
-            caption: Title
+            caption: Role title
             field: title
-            hint: This is the main title for this content item.  The title needs to
-              be descriptive and concise.
+            hint: Enter the role title e.g. First Minister
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

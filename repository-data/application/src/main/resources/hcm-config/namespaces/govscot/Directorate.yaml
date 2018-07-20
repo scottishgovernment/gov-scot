@@ -27,7 +27,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:orgRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -35,7 +35,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:secondaryOrgRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror

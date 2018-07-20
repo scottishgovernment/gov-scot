@@ -147,12 +147,12 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /publicationDate:
+          /heroImage:
             jcr:primaryType: frontend:plugin
-            caption: Publication date
-            field: publishedDate
-            hint: The date/time the news item was released.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            caption: Hero image
+            field: heroImage
+            hint: Add hero image that is reflective of the content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -161,6 +161,24 @@ definitions:
             caption: Content
             field: content
             hint: The main content area for this page.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /background:
+            jcr:primaryType: frontend:plugin
+            caption: Background
+            field: background
+            hint: Notes to editor from the news feed.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /attachments:
+            jcr:primaryType: frontend:plugin
+            caption: Attachments
+            field: attachments
+            hint: The title and URL of any attachments from the news importer.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -179,30 +197,12 @@ definitions:
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
               nodetypes: ['govscot:Topic']
-          /background:
+          /policyTags:
             jcr:primaryType: frontend:plugin
-            caption: Background
-            field: background
-            hint: Notes to Editor from the news feed
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /heroImage:
-            jcr:primaryType: frontend:plugin
-            caption: Hero image
-            field: heroImage
-            hint: The title and URL of the hero image from news importer
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /attachments:
-            jcr:primaryType: frontend:plugin
-            caption: Attachments
-            field: attachments
-            hint: The title and URL of any attachments from the news importer
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            caption: Policy tag(s)
+            field: policyTag
+            hint: Tags used to link news items to Policy Latest pages.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -210,7 +210,16 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: External ID
             field: string
-            hint: The ID from the external news importer
+            hint: The ID from the external news importer.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /publicationDate:
+            jcr:primaryType: frontend:plugin
+            caption: Publication date
+            field: publishedDate
+            hint: The date/time the news item was released.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -220,16 +229,7 @@ definitions:
             caption: Updated date
             field: updatedDate
             hint: The last time the document was updated in the news importer. Used
-              to identify when a document needs to be updated
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /policyTags:
-            jcr:primaryType: frontend:plugin
-            caption: Policy tag(s)
-            field: policyTag
-            hint: Tags used to link news items to Policy Latest pages.
+              to identify when a document needs to be updated.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

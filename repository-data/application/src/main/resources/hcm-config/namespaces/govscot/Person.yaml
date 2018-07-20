@@ -137,7 +137,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Biography
             field: content
-            hint: The main content for the page
+            hint: Provide a biography for the person, such as where they were born,
+              academic career, hobbies & interests, previous career and political
+              career.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -164,7 +166,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Role title
             field: roleTitle
-            hint: ''
+            hint: If the person has an undefined role within the system please enter
+              their role title here.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

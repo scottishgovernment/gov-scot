@@ -71,9 +71,11 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Policy action content
             field: content
-            hint: The main content area for this page.
+            hint: Provide detailed content on the action the Scottish Government is
+              taking  to achieve the outcome or address the issue set out in the policy.  Actions
+              should be specific, measurable and time bound.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

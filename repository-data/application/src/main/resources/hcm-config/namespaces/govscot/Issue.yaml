@@ -91,7 +91,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:featuredItems
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -236,9 +236,9 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /image:
             jcr:primaryType: frontend:plugin
-            caption: Image
+            caption: Hero image
             field: image
-            hint: ''
+            hint: Add hero image that is reflective of the content.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -248,7 +248,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Introduction
             field: content
-            hint: The main content area for this page.
+            hint: Provide an introduction to the issue.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -257,16 +257,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Overview
             field: introduction
-            hint: ''
+            hint: Provide more detail on the issue, key elements and activities.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /featureDateTitle:
-            jcr:primaryType: frontend:plugin
-            caption: Feature date title
-            field: string
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -276,13 +268,27 @@ definitions:
             field: featureDate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: If there is a key date for the issue, select the relevant date using
+              the date picker.  The feature date will be displayed on the bottom right
+              corner of the hero image.
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /featureDateTitle:
+            jcr:primaryType: frontend:plugin
+            caption: Feature date title
+            field: string
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Enter a feature date title.  When a feature date title is provided
+              it will be displayed above the feature date.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /featureDateSummary:
             jcr:primaryType: frontend:plugin
             caption: Feature date summary
             field: featureDateSummary
-            hint: ''
+            hint: Enter a short concise summary that will be displayed below the feature
+              date.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -293,19 +299,39 @@ definitions:
             field: featuredItemsTitle
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Enter a title for the feature items panel.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /featuredItems:
             jcr:primaryType: frontend:plugin
             caption: Featured items
             field: featuredItems
-            hint: ''
+            hint: Add all content items related to the issue e.g. publications, policies,
+              news items.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
               base.path: /content/documents/govscot/
+          /socialMediaTitle:
+            jcr:primaryType: frontend:plugin
+            caption: Social media title
+            field: socialMediaTitle
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: 'Enter any social media hashtags associated with this issue.  E.g.
+              Connect: #Brexit'
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /ContactInformation:
+            jcr:primaryType: frontend:plugin
+            caption: Social media contacts
+            field: ContactInformation
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /contactTitle:
             jcr:primaryType: frontend:plugin
             caption: Contact title
@@ -321,38 +347,15 @@ definitions:
             field: postalAddress
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Provide a postal address for the content item or use the central
+              enquiry unit's contact details.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /phone:
             jcr:primaryType: frontend:plugin
             caption: Phone
             field: html
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /issueTag:
-            jcr:primaryType: frontend:plugin
-            caption: Issue tag
-            field: issueTag
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /socialMediaTitle:
-            jcr:primaryType: frontend:plugin
-            caption: Social media title
-            field: socialMediaTitle
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /ContactInformation:
-            jcr:primaryType: frontend:plugin
-            caption: Contact information
-            field: ContactInformation
+            hint: Provide a contact telephone number for the issue.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -363,6 +366,8 @@ definitions:
             field: includeTwitterReplies
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the checkbox if you want twitter replies to be displayed
+              on the issue page.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /showOnTopicsLandingPage:
@@ -371,13 +376,24 @@ definitions:
             field: showOnTopicsLandingPage
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Select the checkbox if you want the issue title to be displayed
+              on the topics landing page.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /includeFeedback:
             jcr:primaryType: frontend:plugin
             caption: Include feedback?
             field: includeFeedback
-            hint: ''
+            hint: Select this checkbox if you want feedback on this issue to be displayed.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /issueTag:
+            jcr:primaryType: frontend:plugin
+            caption: Issue tag
+            field: issueTag
+            hint: Enter the tag that is associated with this issue e.g. news:brexit
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

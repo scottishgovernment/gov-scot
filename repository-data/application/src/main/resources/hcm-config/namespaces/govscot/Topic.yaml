@@ -19,7 +19,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:responsibleRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -27,7 +27,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:featuredItems
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -151,7 +151,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content area for this page.
+            hint: Option to provide a brief summary or highlight something specific
+              at the top of the topic landing page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

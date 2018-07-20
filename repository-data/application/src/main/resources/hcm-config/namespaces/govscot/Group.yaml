@@ -20,7 +20,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:relatedPolicies
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -44,7 +44,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:relatedGroups
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
@@ -52,7 +52,7 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
-            hipposysedit:ordered: false
+            hipposysedit:ordered: true
             hipposysedit:path: govscot:relatedPublications
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
