@@ -18,7 +18,7 @@
   <properties>
     <sonar.exclusions>src/main/webapp/assets/scripts/vendor/**/*,
       src/main/java/org/onehippo/forge/breadcrumb/**/*,
-      **/EditingWorkflowPlugin.java</sonar.exclusions>
+    </sonar.exclusions>
   </properties>
 
   <dependencies>

@@ -15,6 +15,12 @@
   <name>www.gov.scot CMS</name>
   <description>www.gov.scot CMS</description>
 
+  <properties>
+    <sonar.exclusions>
+      src/main/java/org/hippoecm/frontend/plugins/reviewedactions/EditingWorkflowPlugin.java
+    </sonar.exclusions>
+  </properties>
+
   <dependencies>
 
     <dependency>
