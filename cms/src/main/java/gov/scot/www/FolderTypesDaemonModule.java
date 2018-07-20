@@ -56,15 +56,13 @@ public class FolderTypesDaemonModule implements DaemonModule {
 
             // if the type is minutes or speech / statement then alter the folder type
             Node typeFolder = newFolder.getParent().getParent();
-            switch (typeFolder.getName()) {
-                case "minutes" :
-                    setFolderType(newFolder, "new-minutes-folder");
-                    break;
-                case "speech---statement" :
-                    setFolderType(newFolder, "new-speech-or-statement-folder");
-                    break;
+            if ("minutes".equals(typeFolder.getName())) {
+                setFolderType(newFolder, "new-minutes-folder");
             }
-            session.save();
+
+            if ("speech---statement".equals(typeFolder.getName())) {
+                setFolderType(newFolder, "new-speech-or-statement-folder");
+            }
         } catch (RepositoryException e) {
             LOG.error("Unexpected exception while doing simple JCR read operations", e);
         }
@@ -85,6 +83,7 @@ public class FolderTypesDaemonModule implements DaemonModule {
 
     private void setFolderType(Node node, String type) throws RepositoryException {
         node.setProperty("hippostd:foldertype", new String []{ type });
+        session.save();
     }
 
     private boolean isFolderType(Node node, String type) throws RepositoryException {
