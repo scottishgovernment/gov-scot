@@ -5,25 +5,25 @@ definitions:
       jcr:uuid: 939ceba7-dcb1-4e91-8065-2cb682252934
       hst:cacheable: true
       hst:defaultcontextpath: /site
-      hst:locale: en_GB
       hst:defaultresourcebundleid: analytics_dev
+      hst:locale: en_GB
       /dev-localhost:
-        .meta:residual-child-node-category: content
         jcr:primaryType: hst:virtualhostgroup
+        jcr:uuid: 906a7602-5e7a-40b7-b8dc-f49fa705022f
         hst:cmslocation: http://localhost:8080/cms
         hst:defaultport: 8080
         /localhost:
-          .meta:residual-child-node-category: content
           jcr:primaryType: hst:virtualhost
+          jcr:uuid: 6a5a1d11-bcfc-477e-a8c7-e8ca491ee3ce
           hst:cacheable: false
           /hst:root:
-            .meta:residual-child-node-category: content
             jcr:primaryType: hst:mount
+            jcr:uuid: b284f3b2-400c-48bb-851b-84c1808848c8
             hst:homepage: root
             hst:mountpoint: /hst:hst/hst:sites/govscot
             /rest:
-              .meta:residual-child-node-category: content
               jcr:primaryType: hst:mount
+              jcr:uuid: 846ae82f-1007-4d8c-926d-30d9e12f4a46
               hst:alias: rest
               hst:ismapped: false
               hst:namedpipeline: JaxrsRestPlainPipeline
@@ -61,11 +61,11 @@ definitions:
                   jcr:uuid: 60752647-9bfa-4f99-a2df-fe2e90d57df3
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
-                  hst:showcontextpath: false
                   hst:nochannelinfo: true
+                  hst:showcontextpath: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: fcfe4280-4896-47fc-a8ea-ddd912b78607
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -103,11 +103,11 @@ definitions:
                   jcr:uuid: c18b1194-26ef-4103-9b1c-a9334def4339
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
-                  hst:showcontextpath: false
                   hst:nochannelinfo: true
+                  hst:showcontextpath: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: a20d62b1-5b3b-4531-8be2-dee52b9f1551
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -145,57 +145,57 @@ definitions:
                   jcr:uuid: d8e5fb2c-8338-4028-aa35-c1de358caec4
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
-                  hst:showcontextpath: false
                   hst:nochannelinfo: true
+                  hst:showcontextpath: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: 91c570c0-757b-4ea3-a8f9-5d743293c6cc
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
       /exp:
-              jcr:primaryType: hst:virtualhostgroup
-              jcr:uuid: 6310b3ad-c323-4198-b4d5-e2c5e675a755
-              hst:cmslocation: https://exp.publishing.gov.scot
-              /scot:
+        jcr:primaryType: hst:virtualhostgroup
+        jcr:uuid: 6310b3ad-c323-4198-b4d5-e2c5e675a755
+        hst:cmslocation: https://exp.publishing.gov.scot
+        /scot:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: e9eca519-1d36-4aad-a310-44eb2c602823
+          hst:scheme: https
+          /gov:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: adc76e5d-71b8-471a-8e5e-b307cc3d5bf9
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: e342ea40-4fab-4a98-b81d-f46354749610
+              /exp:
                 jcr:primaryType: hst:virtualhost
-                jcr:uuid: e9eca519-1d36-4aad-a310-44eb2c602823
-                hst:scheme: https
-                /gov:
-                  jcr:primaryType: hst:virtualhost
-                  jcr:uuid: adc76e5d-71b8-471a-8e5e-b307cc3d5bf9
-                  /publishing:
-                    jcr:primaryType: hst:virtualhost
-                    jcr:uuid: e342ea40-4fab-4a98-b81d-f46354749610
-                    /exp:
-                      jcr:primaryType: hst:virtualhost
-                      jcr:uuid: 935a1c8d-65ce-4242-a87f-f55aa8072581
-                      /hst:root:
-                        jcr:primaryType: hst:mount
-                        jcr:uuid: 726a843c-aaf3-4a58-9b71-2eec45cacd65
-                        hst:homepage: root
-                        hst:mountpoint: /hst:hst/hst:sites/govscot
-                  /beta:
-                    jcr:primaryType: hst:virtualhost
-                    jcr:uuid: efca75ee-d5c4-4481-a69a-2e69ffe0da33
-                    /exp:
-                      jcr:primaryType: hst:virtualhost
-                      jcr:uuid: 998169c6-45f0-43fa-a2a9-c5bcb41e64c3
-                      /hst:root:
-                        jcr:primaryType: hst:mount
-                        jcr:uuid: 77c29f6b-21ee-4f9d-ade8-1387ece10931
-                        hst:homepage: root
-                        hst:mountpoint: /hst:hst/hst:sites/govscot
-                        hst:showcontextpath: false
-                        hst:nochannelinfo: true
-                        /rest:
-                          .meta:residual-child-node-category: content
-                          jcr:primaryType: hst:mount
-                          hst:alias: rest
-                          hst:ismapped: false
-                          hst:namedpipeline: JaxrsRestPlainPipeline
-                          hst:types: [rest]
+                jcr:uuid: 935a1c8d-65ce-4242-a87f-f55aa8072581
+                /hst:root:
+                  jcr:primaryType: hst:mount
+                  jcr:uuid: 726a843c-aaf3-4a58-9b71-2eec45cacd65
+                  hst:homepage: root
+                  hst:mountpoint: /hst:hst/hst:sites/govscot
+            /beta:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: efca75ee-d5c4-4481-a69a-2e69ffe0da33
+              /exp:
+                jcr:primaryType: hst:virtualhost
+                jcr:uuid: 998169c6-45f0-43fa-a2a9-c5bcb41e64c3
+                /hst:root:
+                  jcr:primaryType: hst:mount
+                  jcr:uuid: 77c29f6b-21ee-4f9d-ade8-1387ece10931
+                  hst:homepage: root
+                  hst:mountpoint: /hst:hst/hst:sites/govscot
+                  hst:nochannelinfo: true
+                  hst:showcontextpath: false
+                  /rest:
+                    jcr:primaryType: hst:mount
+                    jcr:uuid: 0d9d4d89-3564-4db8-af4c-00ad6b8a54cf
+                    hst:alias: rest
+                    hst:ismapped: false
+                    hst:namedpipeline: JaxrsRestPlainPipeline
+                    hst:types: [rest]
       /uat:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: f3a4461a-d4eb-477d-af8c-b9d3b414eaaf
@@ -229,11 +229,11 @@ definitions:
                   jcr:uuid: e77a2ef8-ff17-431b-8c97-9b5373bf535d
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
-                  hst:showcontextpath: false
                   hst:nochannelinfo: true
+                  hst:showcontextpath: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: c991a8fe-a76a-433b-92c5-c4b26d80475e
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -276,8 +276,8 @@ definitions:
                   hst:showcontextpath: false
                   hst:showport: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: c299faf1-7a0b-4c47-9d64-cf2aa61e0d47
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -320,8 +320,8 @@ definitions:
                   hst:showcontextpath: false
                   hst:showport: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: 4b67d3aa-bf2d-4add-8e42-0fba75224dd5
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -333,8 +333,8 @@ definitions:
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 95f23f27-dfb8-43d1-9920-124966a2ec5b
-          hst:scheme: https
           hst:defaultresourcebundleid: analytics_live
+          hst:scheme: https
           /gov:
             jcr:primaryType: hst:virtualhost
             jcr:uuid: de71b861-a86c-4931-b2f3-3d363f337052
@@ -365,8 +365,8 @@ definitions:
                   hst:showcontextpath: false
                   hst:showport: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: 2182bac9-edee-4144-b90a-905169b16d28
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -378,8 +378,8 @@ definitions:
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 89846ed2-6876-41b7-b604-8aa4e4e7377e
-          hst:scheme: https
           hst:defaultresourcebundleid: analytics_live
+          hst:scheme: https
           /gov:
             jcr:primaryType: hst:virtualhost
             jcr:uuid: efed4791-54c6-4820-9fae-028c57300643
@@ -410,8 +410,8 @@ definitions:
                   hst:showcontextpath: false
                   hst:showport: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: 2e006feb-e465-43a2-b350-935549cd94ce
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
@@ -423,8 +423,8 @@ definitions:
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 1481e45a-1ecd-4e78-90d5-77138ac89986
-          hst:scheme: https
           hst:defaultresourcebundleid: analytics_live
+          hst:scheme: https
           /gov:
             jcr:primaryType: hst:virtualhost
             jcr:uuid: d77c0571-ab94-49d1-bb07-2e9a604e431e
@@ -455,9 +455,51 @@ definitions:
                   hst:showcontextpath: false
                   hst:showport: false
                   /rest:
-                    .meta:residual-child-node-category: content
                     jcr:primaryType: hst:mount
+                    jcr:uuid: f290476f-7f58-4499-8dd6-4372ac7c2459
                     hst:alias: rest
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+      /beta:
+        jcr:primaryType: hst:virtualhostgroup
+        jcr:uuid: 49d30cf0-242b-4bdd-ab1d-2709ca220d12
+        hst:cmslocation: https://beta2.publishing.gov.scot
+        /scot:
+          jcr:primaryType: hst:virtualhost
+          jcr:uuid: 3f1d250c-30f8-49c4-b751-761cd30ffd74
+          hst:defaultresourcebundleid: analytics_live
+          hst:scheme: https
+          /gov:
+            jcr:primaryType: hst:virtualhost
+            jcr:uuid: 827273de-b124-43e3-8845-db109441c417
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 96156cee-a025-4d8a-a699-db7608075fb4
+              /beta:
+                jcr:primaryType: hst:virtualhost
+                jcr:uuid: a635b3ad-3549-453c-9f44-b07071897b37
+                /hst:root:
+                  jcr:primaryType: hst:mount
+                  jcr:uuid: f77bae32-3afb-41b8-829f-29c2b7a8a74c
+                  hst:homepage: root
+                  hst:mountpoint: /hst:hst/hst:sites/govscot
+            /beta:
+              jcr:primaryType: hst:virtualhost
+              jcr:uuid: 1ffd1d27-6dc6-43ea-ab4a-8d39cd4279e1
+              /hst:root:
+                jcr:primaryType: hst:mount
+                jcr:uuid: 51cc3130-5950-4529-9b2d-aee846ea599a
+                hst:homepage: root
+                hst:mountpoint: /hst:hst/hst:sites/govscot
+                hst:nochannelinfo: true
+                hst:schemeagnostic: true
+                hst:showcontextpath: false
+                hst:showport: false
+                /rest:
+                  jcr:primaryType: hst:mount
+                  jcr:uuid: 4ff4679e-2462-4119-8995-313788b407af
+                  hst:alias: rest
+                  hst:ismapped: false
+                  hst:namedpipeline: JaxrsRestPlainPipeline
+                  hst:types: [rest]
