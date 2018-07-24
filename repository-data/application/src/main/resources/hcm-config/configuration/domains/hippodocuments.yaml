@@ -3,6 +3,6 @@ definitions:
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [document-unlocker]
-      hipposys:role: admin
+      hipposys:role: unlocker
     /hippo:configuration/hippo:domains/hippodocuments/editor:
       hipposys:groups: [admin, editor, useradmin]
