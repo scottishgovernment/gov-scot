@@ -33,7 +33,7 @@ import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES
 @ParametersInfo(type = EssentialsListComponentInfo.class)
 public class SearchResultsComponent extends EssentialsListComponent {
 
-
+    private static String PRIMARY_TYPE = "jcr:primaryType";
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
     private final ValueList publicationValueList =
             SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
@@ -41,9 +41,21 @@ public class SearchResultsComponent extends EssentialsListComponent {
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
         super.init(servletContext, componentConfig);
-        Collections.addAll(FIELD_NAMES, "govscot:title", "govscot:summary", "govscot:content/hippostd:content",
-                "hippostd:tags", "govscot:incumbentTitle", "govscot:policyTags", "govscot:roleTitle", "govscot:twitter",
-                "govscot:email", "govscot:website", "govscot:flickr", "govscot:facebook", "govscot:blog");
+        Collections.addAll(FIELD_NAMES,
+                "govscot:title",
+                "govscot:summary",
+                "govscot:content/hippostd:content",
+                "hippostd:tags",
+                "govscot:incumbentInformation",
+                "govscot:policyTags",
+                "govscot:roleTitle",
+                "govscot:twitter",
+                "govscot:email",
+                "govscot:website",
+                "govscot:flickr",
+                "govscot:facebook",
+                "govscot:blog"
+        );
     }
 
     @Override
@@ -67,6 +79,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
         final int page = getCurrentPage(request);
         final int offset = (page - 1) * pageSize;
 
+//      Sorts by jcr:score by default.
         HstQueryBuilder builder = HstQueryBuilder.create(scope);
         return builder.where(constraints(request, null))
                 .limit(pageSize)
@@ -100,8 +113,8 @@ public class SearchResultsComponent extends EssentialsListComponent {
                 continue;
             }
 
-            Set<String> splitParamaters = splitParameters(request, entry.getKey());
-            sanitisedMap.put(entry.getKey(), splitParamaters);
+            Set<String> splitParameters = splitParameters(request, entry.getKey());
+            sanitisedMap.put(entry.getKey(), splitParameters);
         }
         return sanitisedMap;
     }
@@ -110,13 +123,15 @@ public class SearchResultsComponent extends EssentialsListComponent {
 
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, request);
+        addContentTypeConstraints(constraints);
+        constraints.add(
+                or(
+                    constraint("govscot:excludeFromSearchIndex").equalTo(false),
+                    constraint("govscot:excludeFromSearchIndex").notExists()
+                )
+        );
 
-        Constraint[] constraints1 = new Constraint[constraints.size()];
-        for (int i = 0; i < constraints.size(); i++) {
-            constraints1[i] = constraints.get(i);
-        }
-
-        return and(constraints1);
+        return and(constraints.toArray(new Constraint[] {}));
     }
 
     private void addTermConstraints(List<Constraint> constraints, HstRequest request) {
@@ -127,6 +142,16 @@ public class SearchResultsComponent extends EssentialsListComponent {
             return;
         }
         constraints.add(or(fieldConstraints(parsedTerm)));
+    }
+
+    private void addContentTypeConstraints(List<Constraint> constraints) {
+        constraints.add(
+            and(
+                constraint(PRIMARY_TYPE).notEqualTo("govscot:HomeFeaturedItem"),
+                constraint(PRIMARY_TYPE).notEqualTo("govscot:DocumentInformation"),
+                constraint(PRIMARY_TYPE).notEqualTo("govscot:SiteItem")
+            )
+        );
     }
 
     private Constraint [] fieldConstraints(String term) {

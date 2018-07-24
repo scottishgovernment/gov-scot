@@ -41,4 +41,6 @@ public class SimpleContent extends BaseDocument {
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
     }
+
+    public String getLabel() { return ""; }
 }

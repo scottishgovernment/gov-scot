@@ -1,10 +1,11 @@
 package scot.gov.www.beans;
 
-import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
+
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:Group")
 @Node(jcrType = "govscot:Group")
@@ -68,4 +69,6 @@ public class Group extends AttributableContent {
     public List<HippoBean> getRelatedPublications() {
         return getLinkedBeans("govscot:relatedPublications", HippoBean.class);
     }
+
+    public String getLabel() { return ""; }
 }

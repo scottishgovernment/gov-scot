@@ -44,35 +44,28 @@
                     <#else>
                         <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if> ">
                             <header class="listed-content-item__heading">
-                                <div class="listed-content-item__meta">
-                                    <div class="listed-content-item__meta-right">
-                                        <#if item.publicationDate??>
-                                            <span class="listed-content-item__date">
-                                                <#assign dateFormat = "dd MMM yyyy">
-                                                <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                                    <#assign dateFormat = "dd MMM yyyy KK:mm">
-                                                </#if>
-                                                <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat />
-                                            </span>
-                                        </#if>
-                                    </div>
+                                <#if item.publicationDate?? || item.label?has_content>
+                                    <div class="listed-content-item__meta">
+                                        <div class="listed-content-item__meta-right">
+                                            <#if item.publicationDate??>
+                                                <span class="listed-content-item__date">
+                                                    <#assign dateFormat = "dd MMM yyyy">
+                                                    <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                                        <#assign dateFormat = "dd MMM yyyy KK:mm">
+                                                    </#if>
+                                                    <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat />
+                                                </span>
+                                            </#if>
+                                        </div>
 
-                                    <div class="listed-content-item__meta-left">
-                                        <#if !hst.isBeanType(item, "scot.gov.www.beans.Group")>
-                                            <#assign documentType = "${item.class.simpleName}">
-                                            <#if hst.isBeanType(item, "scot.gov.www.beans.Publication")>
-                                                <#assign documentType = "${publicationTypes[item.publicationType]}" >
-                                            </#if>
-                                            <#if hst.isBeanType(item, "scot.gov.www.beans.PolicyInDetail")>
-                                                <#assign documentType = "Policy" >
-                                            </#if>
-                                            <p class="listed-content-item__label">${documentType}</p>
-                                        </#if>
+                                        <div class="listed-content-item__meta-left">
+                                            <p class="listed-content-item__label">${item.label}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </#if>
+                                <h1 class="gamma listed-content-item__title">${item.title?html}</h1>
                             </header>
 
-                            <h1 class="gamma listed-content-item__title">${item.title?html}</h1>
                             <#if item.summary??>
                                 <p class="listed-content-item__summary js-truncate" title="${item.summary?html}" style="max-height: 56px; word-wrap: break-word;">
                                     ${item.summary?html}

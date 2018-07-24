@@ -61,4 +61,6 @@ public class OrgRoles extends AttributableContent {
     public String getSecondaryOrganisationDescription() {
         return getProperty("govscot:secondaryOrganisationDescription");
     }
+
+    public String getLabel() { return ""; }
 }

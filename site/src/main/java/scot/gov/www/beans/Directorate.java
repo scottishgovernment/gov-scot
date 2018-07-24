@@ -1,10 +1,10 @@
 package scot.gov.www.beans;
 
-import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import scot.gov.www.beans.ContactInformation;
-import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
+
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:Directorate")
 @Node(jcrType = "govscot:Directorate")
@@ -44,4 +44,6 @@ public class Directorate extends SimpleContent {
         return getLinkedBeans("govscot:secondaryResponsibleRole",
                 HippoBean.class);
     }
+
+    public String getLabel() { return "directorate"; }
 }

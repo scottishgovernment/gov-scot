@@ -155,12 +155,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         addPublicationTypeConstraint(constraints, request);
         addDateConstraint(constraints, request, searchField);
 
-        Constraint[] constraints1 = new Constraint[constraints.size()];
-        for (int i = 0; i < constraints.size(); i++) {
-            constraints1[i] = constraints.get(i);
-        }
-
-        return and(constraints1);
+        return and(constraints.toArray(new Constraint[] {}));
     }
 
     private void addTermConstraints(List<Constraint> constraints, HstRequest request) {

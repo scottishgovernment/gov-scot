@@ -3,23 +3,35 @@
     Adapted from https://github.com/woonsanko/myindextestproject.
 -->
 <!DOCTYPE configuration SYSTEM "http://jackrabbit.apache.org/dtd/indexing-configuration-1.0.dtd">
-<configuration xmlns:hippostd="http://www.onehippo.org/jcr/hippostd/nt/2.0" xmlns:hippostdpubwf="http://www.onehippo.org/jcr/hippostdpubwf/nt/1.0"
+<configuration xmlns:hippostd="http://www.onehippo.org/jcr/hippostd/nt/2.0"
+               xmlns:hippostdpubwf="http://www.onehippo.org/jcr/hippostdpubwf/nt/1.0"
                xmlns:jcr="http://www.jcp.org/jcr/1.0"
                xmlns:govscot="http://www.onehippo.org/govscot/nt/1.0">
 
-    <index-rule nodeType="govscot:title" boost="5.0"></index-rule>
-    <index-rule nodeType="govscot:incumbentName" boost="4.0"></index-rule>
-    <index-rule nodeType="govscot:summary" boost="3.0"></index-rule>
-    <index-rule nodeType="hippostd:tags" boost="3.0"></index-rule>
-    <index-rule nodeType="govscot:content" boost="3.0"></index-rule>
-    <index-rule nodeType="govscot:metaDescription" boost="3.0"></index-rule>
-    <index-rule nodeType="govscot:blog"></index-rule>
-    <index-rule nodeType="govscot:email"></index-rule>
-    <index-rule nodeType="govscot:facebook"></index-rule>
-    <index-rule nodeType="govscot:flickr"></index-rule>
-    <index-rule nodeType="govscot:twitter"></index-rule>
-    <index-rule nodeType="govscot:website"></index-rule>
-    <index-rule nodeType="govscot:youtube"></index-rule>
+    <!--This can be used to exclude nodes from the nodeScopeIndex.-->
+    <!--These need to come before SimpleContent boosting?-->
+    <!--<index-rule nodeType="govscot:HomeFeaturedItem" nodeScopeIndex="false"></index-rule>-->
+
+    <!--This can be used to exclude specific fields from the nodeScopeIndex.-->
+    <!--<property isRegexp="true" nodeScopeIndex="false">.*:.*</property>-->
+
+    <!--This requires the regexp catch-all - why?-->
+    <!--The incumbentInformation boost is very high -
+        need to find out why lower values don't seem to have much effect.-->
+    <index-rule nodeType="govscot:Role">
+        <property boost="3.0">govscot:title</property>
+        <property boost="20.0">govscot:incumbentInformation</property>
+        <property isRegexp="true">.*:.*</property>
+    </index-rule>
+
+    <!--This requires the regexp catch-all - why?-->
+    <index-rule nodeType="govscot:SimpleContent">
+        <property boost="10.0">govscot:title</property>
+        <property boost="0.5">govscot:summary</property>
+        <property boost="0.5">hippostd:tags</property>
+        <property boost="0.5">govscot:metaDescription</property>
+        <property isRegexp="true" nodeScopeIndex="false">.*:.*</property>
+    </index-rule>
 
     <!-- Custom Index Rule in order to exclude hippostd:html nodes under govscot:PublicationPage node. -->
     <index-rule nodeType="hippostd:html"
