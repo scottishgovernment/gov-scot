@@ -2,7 +2,6 @@ package scot.gov.www.linkprocessors;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.StopWatch;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -11,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
@@ -29,11 +29,8 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             String [] newElements = ArrayUtils.removeElements(link.getPathElements(),
                     link.getPathElements()[1],
                     link.getPathElements()[2],
-                    link.getPathElements()[3]
-                    );
-            if (link.getPathElements().length > 5 && !"pages".equals(link.getPathElements()[5])) {
-                newElements = ArrayUtils.removeElements(newElements, link.getPathElements()[5]);
-            }
+                    link.getPathElements()[3],
+                    link.getPathElements()[5]);
             link.setPath(String.join("/", newElements));
         }
         return link;
@@ -64,14 +61,14 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             String [] remaining = ArrayUtils.removeElements(link.getPathElements(),
                     link.getPathElements()[0],
                     link.getPathElements()[1]);
-            Node pubFolder = getFolderBySlug(slug);
-            if (pubFolder == null) {
+            Node handle = getHandleBySlug(slug);
+            if(handle == null) {
                 link.setNotFound(true);
                 link.setPath("/pagenotfound");
                 return link;
             }
 
-            String pubPath = StringUtils.substringAfter(pubFolder.getPath(), PUBLICATIONS);
+            String pubPath = StringUtils.substringAfter(handle.getPath(), PUBLICATIONS);
 
             String newPath = null;
             if (remaining.length == 0) {
@@ -84,29 +81,46 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             link.setPath(newPath);
             return link;
         } catch (RepositoryException e) {
-            LOG.warn("Exception trying to imageprocessing link: {}", link.getPath(), e);
+            LOG.warn("Exception trying to process link: {}", link.getPath(), e);
             return link;
         }
     }
 
-    private Node getFolderBySlug(String slug) throws RepositoryException {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
+    private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String sql = String.format("SELECT * FROM govscot:Publication " +
-                "WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'", slug);
-
+        String sql = String.format("SELECT * FROM hippostd:folder WHERE jcr:name LIKE '%s'", slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
-        stopWatch.stop();
-        LOG.info("getFolderBySlug returned in {} millis", stopWatch.getTime());
         if (result.getNodes().getSize() == 0) {
             return null;
         }
 
-        Node pub = result.getNodes().nextNode();
+        // find the index in this folder
+        Node folder = findPublicationFolder(result);
+        if (folder == null) {
+            return null;
+        }
 
-        return pub.getParent().getParent();
+        NodeIterator nodeIterator = folder.getNodes();
+        while (nodeIterator.hasNext()) {
+            Node node = nodeIterator.nextNode();
+            if ("index".equals(node.getName())) {
+                return node;
+            }
+        }
+
+        return null;
+    }
+
+    private Node findPublicationFolder(QueryResult result) throws RepositoryException {
+        NodeIterator nodeIterator = result.getNodes();
+        while (nodeIterator.hasNext()) {
+            Node node = nodeIterator.nextNode();
+            if (node.getPath().startsWith("/content/documents/govscot/publications")) {
+                return node;
+            }
+        }
+        return null;
     }
 
 }

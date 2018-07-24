@@ -66,8 +66,7 @@ public class NewsLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String newsPath = "/content/documents/govscot/news/";
-        String sql = String.format("SELECT * FROM govscot:News WHERE jcr:path LIKE '%s%%/%s'", newsPath, slug);
+        String sql = String.format("SELECT * FROM govscot:News WHERE jcr:name LIKE '%s'", slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
             return null;
