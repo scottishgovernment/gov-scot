@@ -80,22 +80,6 @@ $carousel-z-stage-image: 40;
 }
 
 
-/**
- * This provides a blue gradient overlay for the stage.
- */
-.carousel-item__stage:before {
-  content: " ";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: $carousel-z-stage-overlay;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom,
-        rgba(0, 45, 84, 0.5) 15%,
-        rgba(0, 45, 84, 0) 50%);
-}
-
 .carousel-item__stage-text-toggle {
   display: none;
 }
