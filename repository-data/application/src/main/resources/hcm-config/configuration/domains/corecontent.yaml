@@ -1,0 +1,196 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/corecontent:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [core-content-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [core-content-authors]
+        hipposys:role: author
+      /about-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-about-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/about
+      /featured-items-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-featured-items-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/featured-items
+      /site-items-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-site-items-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/siteitems
+      /home-document:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-home-page:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/home
+      /search-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-search-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/search
+      /policy-landing:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-policy-landing-page:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/policies/index
+      /publication-landing:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-publication-landing-page:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/publications/index
+      /topics-landing:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-topics-landing-page:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/topics/index

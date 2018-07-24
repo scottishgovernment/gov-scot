@@ -7,15 +7,9 @@ definitions:
     /hippo:configuration/hippo:modules/webfiles/hippo:moduleconfig:
       watchedModules: [repository-data/webfiles]
     /hippo:configuration/hippo:domains/hippofolders/readonly:
-      hipposys:groups:
-        operation: add
-        type: string
-        value: [sitewriters]
+      hipposys:groups: [everybody, sitewriters]
     /hippo:configuration/hippo:domains/preview-documents/readonly:
-      hipposys:groups:
-        operation: add
-        type: string
-        value: [previewusers]
+      hipposys:groups: [previewusers]
     /hippo:configuration/hippo:domains/live-documents/readonly:
       hipposys:groups:
         operation: add

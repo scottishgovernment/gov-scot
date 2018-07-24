@@ -1,0 +1,35 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/group-documents:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [group-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [group-authors]
+        hipposys:role: author
+      /group-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-group-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/groups/

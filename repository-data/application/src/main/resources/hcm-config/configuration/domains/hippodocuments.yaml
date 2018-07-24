@@ -1,5 +1,9 @@
 definitions:
   config:
+    /hippo:configuration/hippo:domains/hippodocuments/readonly:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [everybody]
+      hipposys:role: readonly
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [document-unlocker]

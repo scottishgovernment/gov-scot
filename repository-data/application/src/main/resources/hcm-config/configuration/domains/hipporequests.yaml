@@ -1,4 +1,5 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/hipporequests/editor:
-      hipposys:groups: [editor, useradmin]
+      hipposys:groups: [core-content-editors, editor, foi-editors, housing-editors,
+        topics-issues-editors, useradmin, policy-editors, publication-editors, group-editors]

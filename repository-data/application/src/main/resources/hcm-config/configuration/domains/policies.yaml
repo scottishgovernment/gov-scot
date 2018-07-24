@@ -1,0 +1,42 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/policies:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [policy-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [policy-authors]
+        hipposys:role: author
+      /policy-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /exclude-policy-landing:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/policies/index
+        /include-policy-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/policies/
