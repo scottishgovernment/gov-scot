@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-valuelist:
+      jcr:primaryType: hippostd:templatequery
+      hippostd:icon: adddocument_ico
+      hippostd:modify: [./_name, $name, './hippotranslation:locale', $inherited, './hippotranslation:id',
+        $uuid]
+      jcr:language: xpath
+      jcr:statement: //element(*,hipposysedit:namespacefolder)/element(*,mix:referenceable)/element(*,hipposysedit:templatetype)/hipposysedit:prototypes/element(hipposysedit:prototype,selection:valuelist)
