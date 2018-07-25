@@ -20,7 +20,6 @@ let FeedbackPerspective;
         FeedbackPerspective.iFrameRendered = false;
     }
 
-
     FeedbackPerspective.showIFrame = function (id) {
         if (!FeedbackPerspective.iFrameRendered) {
             let iframe = $('#feedback-perspective').find('iframe');
@@ -45,4 +44,7 @@ let FeedbackPerspective;
         feedbackContentItemLink.attr('href', eventData.href);
         feedbackContentItemLink.click();
     });
+
+
+    
 })();
