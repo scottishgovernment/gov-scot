@@ -1,6 +1,6 @@
 package scot.gov.www.linkprocessors;
 
-import org.apache.commons.lang3.ArrayUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
@@ -16,6 +16,8 @@ import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 
+import static org.apache.commons.lang3.ArrayUtils.removeElements;
+
 public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationLinkProcessor.class);
@@ -26,11 +28,15 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     protected HstLink doPostProcess(HstLink link) {
         if (isPublicationsFullLink(link)) {
             // remove the type, year and month...
-            String [] newElements = ArrayUtils.removeElements(link.getPathElements(),
+            String [] newElements = removeElements(link.getPathElements(),
                     link.getPathElements()[1],
                     link.getPathElements()[2],
-                    link.getPathElements()[3],
-                    link.getPathElements()[5]);
+                    link.getPathElements()[3]);
+
+            // if the last element is /index then remove it
+            if ("index".equals(link.getPathElements()[5])) {
+                newElements = removeElements(newElements, link.getPathElements()[5]);
+            }
             link.setPath(String.join("/", newElements));
         }
         return link;
@@ -58,7 +64,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
         try {
             String slug = link.getPathElements()[1];
-            String [] remaining = ArrayUtils.removeElements(link.getPathElements(),
+            String [] remaining = removeElements(link.getPathElements(),
                     link.getPathElements()[0],
                     link.getPathElements()[1]);
             Node handle = getHandleBySlug(slug);
