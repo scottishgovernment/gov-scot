@@ -4,8 +4,8 @@ definitions:
       jcr:primaryType: hipposched:jobgroup
       /SitemapGenerator:
         jcr:primaryType: hipposched:repositoryjob
-        hipposched:attributeNames: []
-        hipposched:attributeValues: []
+        hipposched:attributeNames: ['baseURL']
+        hipposched:attributeValues: ['https://www.beta.gogv.scot/']
         hipposched:enabled: true
         hipposched:repositoryJobClass: scot.gov.www.scheduledjobs.sitemap.SitemapGeneratorJob
         /hipposched:triggers:

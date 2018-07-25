@@ -48,8 +48,6 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final String SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
-    private static final String ROOT_URL = "https://www.beta.gov.scot/";
-
     private static final String REST_URL = "http://localhost:8080/site/rest/urls/";
 
     private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
@@ -75,11 +73,13 @@ public class SitemapGeneratorJob implements RepositoryJob {
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
         LOG.info("Generating sitemap");
 
+        String baseURL = context.getAttribute("baseURL");
+
         Session session = null;
         try {
             session = context.createSystemSession();
             session.refresh(false);
-            createOrUpdateResource(session, "", sitemapindex(session));
+            createOrUpdateResource(session, "", sitemapindex(session, baseURL));
 
             Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
             NodeIterator nodeIterator = root.getNodes();
@@ -90,11 +90,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
                     continue;
                 }
                 NodeIterator nodesForPath = getPublishedNodesUnderPath(session, CONTENT_DOCUMENTS_GOVSCOT + "/" + name);
-                byte [] urlset = urlset(nodesForPath, session);
+                byte [] urlset = urlset(nodesForPath, session, baseURL);
                 createOrUpdateResource(session, name, urlset);
             }
 
-            writeRootSitemap(session);
+            writeRootSitemap(session, baseURL);
         } catch (XMLStreamException | IOException | RepositoryException | ParserConfigurationException | TransformerException e) {
             LOG.error("Failed to write sitemap", e);
         } finally {
@@ -104,7 +104,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         }
     }
 
-    private byte [] sitemapindex(Session session)
+    private byte [] sitemapindex(Session session, String baseURL)
             throws IOException, ParserConfigurationException, TransformerException, RepositoryException {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -124,7 +124,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
             Element sitemapElement = doc.createElementNS(SITEMAP_NS, SITEMAP);
             Element locElement = doc.createElementNS(SITEMAP_NS, "loc");
-            locElement.appendChild(doc.createTextNode(format("%ssitemap.%s.xml", ROOT_URL, child.getName())));
+            locElement.appendChild(doc.createTextNode(format("%ssitemap.%s.xml", baseURL, child.getName())));
             sitemapElement.appendChild(locElement);
             rootElement.appendChild(sitemapElement);
         }
@@ -132,7 +132,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         // add root - we make this one manually
         Element sitemapElement = doc.createElementNS(SITEMAP_NS, SITEMAP);
         Element locElement = doc.createElementNS(SITEMAP_NS, "loc");
-        locElement.appendChild(doc.createTextNode(format("%ssitemap.root.xml", ROOT_URL)));
+        locElement.appendChild(doc.createTextNode(format("%ssitemap.root.xml", baseURL)));
         sitemapElement.appendChild(locElement);
         rootElement.appendChild(sitemapElement);
 
@@ -140,7 +140,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return writeDocumentToBytes(doc);
     }
 
-    private byte [] urlset(NodeIterator nodeIterator, Session session)
+    private byte [] urlset(NodeIterator nodeIterator, Session session, String baseURL)
             throws RepositoryException, XMLStreamException, IOException, ParserConfigurationException, TransformerException {
 
         Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator, session);
@@ -155,7 +155,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
             for (Map.Entry<String, String> pathAndUrl : urlResponse.getUrls().entrySet()) {
                 SitemapEntry entry = entriesByLoc.get(pathAndUrl.getKey());
-                String url = sitemapUrl(pathAndUrl.getValue());
+                String url = sitemapUrl(baseURL, pathAndUrl.getValue());
                 Calendar dateModified = entry.getLastModified();
                 if (QUERY_BACKED_TYPES.contains(entry.getNodeType())) {
                     dateModified = startOfToday();
@@ -188,15 +188,15 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return writeDocumentToBytes(doc);
     }
 
-    private void writeRootSitemap(Session session)
+    private void writeRootSitemap(Session session, String baseURL)
             throws IOException, ParserConfigurationException, TransformerException, RepositoryException, XMLStreamException {
         List<UrlAndDateModified> entries = new ArrayList<>();
         Collections.addAll(entries,
-                new UrlAndDateModified(sitemapUrl(""), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("search/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("about/how-government-is-run/directorates/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("groups/"), startOfToday()),
-                new UrlAndDateModified(sitemapUrl("topics/"), startOfToday())
+                new UrlAndDateModified(sitemapUrl(baseURL, ""), startOfToday()),
+                new UrlAndDateModified(sitemapUrl(baseURL, "search/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl(baseURL, "about/how-government-is-run/directorates/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl(baseURL, "groups/"), startOfToday()),
+                new UrlAndDateModified(sitemapUrl(baseURL, "topics/"), startOfToday())
         );
         createOrUpdateResource(session, "root", urlset(entries));
     }
@@ -234,8 +234,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return cal;
     }
 
-    private String sitemapUrl(String path) {
-        String url = format("%s%s", ROOT_URL, path);
+    private String sitemapUrl(String baseURL, String path) {
+        String url = format("%s%s", baseURL, path);
         return removeEnd(url, "index/");
     }
 

@@ -3,6 +3,7 @@ package scot.gov.www.rest;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
+import org.hippoecm.hst.jaxrs.services.AbstractResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ import static java.util.stream.Collectors.toMap;
 
 
 @Path("/urls/")
-public class UrlResource extends org.hippoecm.hst.jaxrs.services.AbstractResource {
+public class UrlResource extends AbstractResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(UrlResource.class);
 
