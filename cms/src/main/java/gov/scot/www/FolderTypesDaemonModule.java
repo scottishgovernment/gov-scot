@@ -10,10 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
-import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.Value;
 
 /**
  * Event listener to set the available actions available to new publication month folders depending on the type
@@ -42,15 +40,14 @@ public class FolderTypesDaemonModule implements DaemonModule {
             return;
         }
 
-        // we only want tyo listen to folder being added
+        // we only want to listen to folder being added
         if (!"threepane:folder-permissions:add".equals(event.interaction())) {
             return;
         }
 
         try {
             HippoNode newFolder = (HippoNode) session.getNode(event.result());
-
-            if (!isPublicationsMonthFolder(newFolder)) {
+            if (!FolderUtils.hasFolderType(newFolder, "new-publication-folder")) {
                 return;
             }
 
@@ -68,34 +65,9 @@ public class FolderTypesDaemonModule implements DaemonModule {
         }
     }
 
-    private boolean isPublicationsMonthFolder(HippoNode subject) throws RepositoryException {
-        if (!subject.isNodeType("hippostd:folder")) {
-            return false;
-        }
-
-        // if a month folder is created then alter the foldertype if if is either minutes or speech / statement
-        if (!isFolderType(subject, "new-publication-folder")) {
-            return false;
-        }
-        return true;
-    }
-
-
     private void setFolderType(Node node, String type) throws RepositoryException {
         node.setProperty("hippostd:foldertype", new String []{ type });
         session.save();
-    }
-
-    private boolean isFolderType(Node node, String type) throws RepositoryException {
-        Property prop = node.getProperty("hippostd:foldertype");
-        Value[] values = prop.getValues();
-        for (Value v : values) {
-            String val = v.getString();
-            if (val.equals(type)) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }

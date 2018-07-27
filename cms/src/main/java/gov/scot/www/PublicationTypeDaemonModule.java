@@ -10,11 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.Value;
 
 /**
  * Event listener to set the publication type fiedl depending on the folder.
@@ -42,15 +39,21 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             return;
         }
 
-        try {
-            HippoNode publication = (HippoNode) session.getNode(event.result());
+        // we only want to listen to folder being added
+        if (!"threepane:folder-permissions:add".equals(event.interaction())) {
+            return;
+        }
 
-            if (!publication.isNodeType("govscot:Publication")) {
+        try {
+            HippoNode newFolder = (HippoNode) session.getNode(event.result());
+            if (!FolderUtils.hasFolderType(newFolder.getParent(), "new-publication-folder")) {
                 return;
             }
 
-            Node typeFolder = publication.getParent().getParent().getParent().getParent().getParent();
+            Node publication = newFolder.getNode("index").getNode("index");
+            Node typeFolder = newFolder.getParent().getParent().getParent();
             publication.setProperty("govscot:publicationType", typeFolder.getName());
+            session.save();
         } catch (RepositoryException e) {
             LOG.error("Unexpected exception while doing simple JCR read operations", e);
         }
