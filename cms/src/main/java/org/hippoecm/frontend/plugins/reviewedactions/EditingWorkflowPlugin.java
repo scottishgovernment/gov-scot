@@ -125,7 +125,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
             @Override
             public boolean isFormSubmitted() {
-                return true;
+                return false;
             }
 
             @Override
@@ -212,7 +212,7 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
             exceptionLabel.setOutputMarkupId(true);
             add(exceptionLabel);
 
-            ResourceModel discardButtonLabel = isValid ? new ResourceModel("discard", "Discard") : new ResourceModel("discard-invalid");
+            ResourceModel discardButtonLabel = isValid ? new ResourceModel("discard", "Discard") : new ResourceModel("discard-invalid", "Discard");
             addButton(new AjaxButton(DialogConstants.BUTTON, discardButtonLabel) {
                 @Override
                 protected void onSubmit(AjaxRequestTarget target, Form form) {
