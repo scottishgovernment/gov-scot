@@ -4,7 +4,7 @@ definitions:
       jcr:primaryType: hipposys:domain
       /admin:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [useradmin]
+        hipposys:groups: [cmsadmin, useradmin]
         hipposys:role: admin
       /user:
         jcr:primaryType: hipposys:domainrule

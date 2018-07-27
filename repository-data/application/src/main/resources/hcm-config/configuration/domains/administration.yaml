@@ -1,16 +1,12 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/foi-eir-releases:
+    /hippo:configuration/hippo:domains/administration:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [cmsadmin, foi-editors]
+        hipposys:groups: [cmsadmin]
         hipposys:role: editor
-      /author:
-        jcr:primaryType: hipposys:authrole
-        hipposys:groups: [foi-authors]
-        hipposys:role: author
-      /foi-publication-type:
+      /administration-documents:
         jcr:primaryType: hipposys:domainrule
         /hide-prototypes:
           jcr:primaryType: hipposys:facetrule
@@ -26,14 +22,14 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: hippo:document
-        /include-foi-documents:
+        /include-administration-folder:
           jcr:primaryType: hipposys:facetrule
           hipposys:equals: true
           hipposys:facet: jcr:path
           hipposys:filter: false
           hipposys:type: Reference
-          hipposys:value: /content/documents/govscot/publications/foi-eir-release/
-      /foi-documents-folder:
+          hipposys:value: /content/documents/administration
+      /valuelists-documents:
         jcr:primaryType: hipposys:domainrule
         /hide-prototypes:
           jcr:primaryType: hipposys:facetrule
@@ -49,10 +45,10 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: hippo:document
-        /include-foi-documents:
+        /include-valuelists-folder:
           jcr:primaryType: hipposys:facetrule
           hipposys:equals: true
-          hipposys:facet: govscot:publicationType
+          hipposys:facet: jcr:path
           hipposys:filter: false
-          hipposys:type: String
-          hipposys:value: foi-eir-release
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/valuelists

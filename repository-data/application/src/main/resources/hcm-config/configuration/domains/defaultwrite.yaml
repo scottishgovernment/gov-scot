@@ -1,10 +1,10 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/defaultwrite/readwrite:
-      hipposys:groups: [admin, author, core-content-authors, core-content-editors,
-        editor, foi-authors, foi-editors, housing-authors, housing-editors, useradmin,
-        topics-issues-authors, topics-issues-editors, policy-authors, policy-editors,
-        publication-authors, publication-editors, group-authors, group-editors]
+      hipposys:groups: [admin, author, cmsadmin, core-content-authors, core-content-editors,
+        editor, foi-authors, foi-editors, group-authors, group-editors, housing-authors,
+        housing-editors, policy-authors, policy-editors, publication-authors, publication-editors,
+        topics-issues-authors, topics-issues-editors, useradmin]
     /hippo:configuration/hippo:domains/defaultwrite/admin:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: []

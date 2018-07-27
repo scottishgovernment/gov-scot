@@ -1,4 +1,4 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/hippogallery/readwrite:
-      hipposys:groups: [author, editor, useradmin]
+      hipposys:groups: [author, cmsadmin, editor, useradmin]

@@ -4,7 +4,7 @@ definitions:
       jcr:primaryType: hipposys:domain
       /admin:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [useradmin]
+        hipposys:groups: [cmsadmin, useradmin]
         hipposys:role: admin
       /group:
         jcr:primaryType: hipposys:domainrule
@@ -29,3 +29,10 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: webmaster
+        /exclude-cmsadmin-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: cmsadmin

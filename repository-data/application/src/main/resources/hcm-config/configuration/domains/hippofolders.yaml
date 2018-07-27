@@ -1,4 +1,22 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/hippofolders/readwrite:
-      hipposys:groups: [author, editor, useradmin]
+      hipposys:groups: [author, cmsadmin, editor]
+    /hippo:configuration/hippo:domains/hippofolders/hippostd-folder/exclude-valuelists-folder:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: jcr:path
+      hipposys:filter: false
+      hipposys:type: Reference
+      hipposys:value: /content/documents/govscot/valuelists
+    /hippo:configuration/hippo:domains/hippofolders/hippostd-folder/exclude-administration-folder:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: jcr:path
+      hipposys:filter: false
+      hipposys:type: Reference
+      hipposys:value: /content/documents/administration
+    /hippo:configuration/hippo:domains/hippofolders/admin:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: []
+      hipposys:role: admin

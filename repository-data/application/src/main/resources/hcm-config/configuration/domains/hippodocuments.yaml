@@ -1,12 +1,26 @@
 definitions:
   config:
+    /hippo:configuration/hippo:domains/hippodocuments/editor:
+      hipposys:groups: [cmsadmin, editor]
+    /hippo:configuration/hippo:domains/hippodocuments/hippo-document/exclude-valuelists-folder:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: jcr:path
+      hipposys:filter: false
+      hipposys:type: Reference
+      hipposys:value: /content/documents/govscot/valuelists
+    /hippo:configuration/hippo:domains/hippodocuments/hippo-document/exclude-administration-folder:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: jcr:path
+      hipposys:filter: false
+      hipposys:type: Reference
+      hipposys:value: /content/documents/administration
     /hippo:configuration/hippo:domains/hippodocuments/readonly:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [everybody]
       hipposys:role: readonly
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole
-      hipposys:groups: [document-unlocker]
+      hipposys:groups: [cmsadmin, document-unlocker]
       hipposys:role: unlocker
-    /hippo:configuration/hippo:domains/hippodocuments/editor:
-      hipposys:groups: [admin, editor, useradmin]

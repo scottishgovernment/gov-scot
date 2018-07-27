@@ -13,5 +13,5 @@ definitions:
           hipposys:value: org.hippoecm.frontend.plugins.cms.admin.AdminPerspective
       /readonly:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [useradmin]
+        hipposys:groups: [cmsadmin, useradmin]
         hipposys:role: readonly

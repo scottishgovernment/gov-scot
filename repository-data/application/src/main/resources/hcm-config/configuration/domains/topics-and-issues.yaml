@@ -4,7 +4,7 @@ definitions:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [topics-issues-editors]
+        hipposys:groups: [cmsadmin, topics-issues-editors]
         hipposys:role: editor
       /author:
         jcr:primaryType: hipposys:authrole
