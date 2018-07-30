@@ -226,7 +226,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /updatedDate:
             jcr:primaryType: frontend:plugin
-            caption: Updated date
+            caption: Last updated date
             field: updatedDate
             hint: The last time the document was updated in the news importer. Used
               to identify when a document needs to be updated.

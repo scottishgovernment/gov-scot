@@ -100,7 +100,7 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: Enter the main contact email address for this content item e.g.
-              ceu@gov.scot
+              firstname.lastname@gov.scot
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /twitter:
@@ -118,7 +118,7 @@ definitions:
             field: flickr
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Enter the Flickr URL for the content item, ensure the URL begins
+            hint: Enter the Flickr URL for this content item, ensure the URL begins
               with https:// e.g. https://www.flickr.com/photos/scottishgovernment
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -128,8 +128,8 @@ definitions:
             field: website
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Enter the website address of the content item (if applicable) e.g.
-              https://www.gov.scot
+            hint: Enter the website address for this content item, ensure the URL
+              begins with https:// e.g. https://www.gov.scot
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /facebook:
