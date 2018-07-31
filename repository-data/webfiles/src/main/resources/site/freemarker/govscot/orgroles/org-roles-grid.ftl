@@ -24,6 +24,7 @@
                             <a class="person__link" href="${link}">
                                 <div class="person__image-container">
                                     <div class="person__image-container">
+                                        <#if person.image??>
                                         <img alt="${person.title}" class="person__image"
                                         src="<@hst.link hippobean=person.image.xlarge/>"
                                         srcset="<@hst.link hippobean=person.image.small/> 130w,
@@ -35,6 +36,9 @@
                                             <@hst.link hippobean=person.image.xlarge/> 263w,
                                             <@hst.link hippobean=person.image.xlargedoubled/> 526w"
                                         sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px">
+                                        <#else>
+                                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
+                                        </#if>
                                     </div>
                                 </div>
                             </a>

@@ -25,6 +25,7 @@
 
                 <div class="person person--bordered-mobile">
                     <div class="person__image-container person__image-container--centred-mobile">
+                        <#if document.image??>
                         <img alt="${person.title}" class="person__image"
                             src="<@hst.link hippobean=document.image.xlarge/>"
                             srcset="<@hst.link hippobean=document.image.small/> 130w,
@@ -36,6 +37,9 @@
                                 <@hst.link hippobean=document.image.xlarge/> 263w,
                                 <@hst.link hippobean=document.image.xlargedoubled/> 526w"
                             sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px"/>
+                        <#else>
+                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
+                        </#if>
                     </div>
                 </div>
 

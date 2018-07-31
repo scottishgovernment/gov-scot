@@ -31,6 +31,7 @@
 
                                     <div class="person__image-container">
                                         <div class="person__image-container">
+                                        <#if role.incumbent.image??>
                                             <img alt="${role.incumbent.title}" class="person__image"
                                         src="<@hst.link hippobean=role.incumbent.image.xlarge/>"
                                         srcset="<@hst.link hippobean=role.incumbent.image.small/> 130w,
@@ -42,6 +43,9 @@
                                             <@hst.link hippobean=role.incumbent.image.xlarge/> 263w,
                                             <@hst.link hippobean=role.incumbent.image.xlargedoubled/> 526w"
                                         sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, (min-width:480px) 213px, 130px">
+                                        <#else>
+                                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
+                                        </#if>
                                         </div>
                                     </div>
 
