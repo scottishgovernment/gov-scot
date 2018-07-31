@@ -67,6 +67,9 @@ public class SearchResultsComponent extends EssentialsListComponent {
         Map<String, Set<String>> params = sanitiseParameterMap(request,
                 request.getRequestContext().getServletRequest().getParameterMap());
 
+        String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
+        request.setAttribute("relativeContentPath", relativeContentPath);
+
         request.setAttribute("parameters", params);
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
     }

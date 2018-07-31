@@ -72,6 +72,10 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         ValueList publicationValueList =
                 SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
 
+
+        String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
+        request.setAttribute("relativeContentPath", relativeContentPath);
+
         request.setAttribute("parameters", params);
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());

@@ -80,6 +80,7 @@
 
     <div id="pagination" class="search-results__pagination pagination">
     <#if cparam.showPagination>
+        <#assign gtmslug = relativeContentPath />
         <#include "../../include/pagination.ftl">
     </#if>
 

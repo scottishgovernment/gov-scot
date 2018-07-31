@@ -2,7 +2,7 @@
 <#include "../include/imports.ftl">
 <#if pageable??>
     <@hst.setBundle basename="essentials.pagination"/>
-
+${gtmslug}
     <div class="search-results__pagination search-results__pagination--full pagination">
         <ul class="pagination__list"><!--
             <#if pageable.totalPages gt 1>
@@ -15,7 +15,7 @@
                             <@hst.param name="page" value="${pageable.previousPage}"/>
                         </@hst.renderURL>
                         --><li class="pagination__item ">
-                            <a data-gtm="news-p-prev" class="pagination__page" href="${pageUrlPrevious}"><@fmt.message key="page.previous" var="prev"/>${prev?html}</a>
+                            <a data-gtm="${gtmslug}-p-prev" class="pagination__page" href="${pageUrlPrevious}"><@fmt.message key="page.previous" var="prev"/>${prev?html}</a>
                         </li><!--
                     </#if>
                     <#if pageable.currentPage == pageNr>
@@ -24,7 +24,7 @@
                         </li><!--
                     <#else >
                         --><li class="pagination__item ">
-                            <a data-gtm="news-p-${pageNr}" class="pagination__page" href="${pageUrl}">${pageNr}</a>
+                            <a data-gtm="${gtmslug}-p-${pageNr}" class="pagination__page" href="${pageUrl}">${pageNr}</a>
                         </li><!--
                     </#if>
 
@@ -33,7 +33,7 @@
                             <@hst.param name="page" value="${pageable.nextPage}"/>
                         </@hst.renderURL>
                         --><li class="pagination__item ">
-                            <a data-gtm="news-p-next" class="pagination__page" href="${pageUrlNext}"><@fmt.message key="page.next" var="next"/>${next?html}</a>
+                            <a data-gtm="${gtmslug}-p-next" class="pagination__page" href="${pageUrlNext}"><@fmt.message key="page.next" var="next"/>${next?html}</a>
                         </li><!--
                     </#if>
                 </#list>
