@@ -111,6 +111,7 @@
     </ol>
 
     <div id="pagination" class="search-results__pagination pagination">
+        <#assign gtmslug = relativeContentPath />
         <#if cparam.showPagination>
             <#include "../../include/pagination.ftl">
         </#if>

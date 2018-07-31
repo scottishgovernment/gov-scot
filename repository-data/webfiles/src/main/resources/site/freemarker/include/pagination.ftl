@@ -2,7 +2,7 @@
 <#include "../include/imports.ftl">
 <#if pageable??>
     <@hst.setBundle basename="essentials.pagination"/>
-${gtmslug}
+
     <div class="search-results__pagination search-results__pagination--full pagination">
         <ul class="pagination__list"><!--
             <#if pageable.totalPages gt 1>
