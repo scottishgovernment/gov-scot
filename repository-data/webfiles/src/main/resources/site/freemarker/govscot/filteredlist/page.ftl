@@ -1,5 +1,7 @@
 <#include "../../include/imports.ftl">
 
+<div class="layout--filtered-list">
+
 <#-- @ftlvariable name="index" type="scot.gov.www.beans.SimpleContent" -->
 <#if index??>
     <div class="grid" id="page-content"><!--
@@ -22,6 +24,8 @@
         <@hst.include ref="results"/>
     </div><!--
 --></div>
+
+</div>
 
 <@hst.headContribution category="footerScripts">
     <script src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>" type="text/javascript"></script>

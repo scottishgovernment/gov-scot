@@ -1,7 +1,7 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
-    <article id="page-content">
+    <article id="page-content" class="layout--role">
         <@hst.manageContent hippobean=document/>
         <#if document.incumbent??>
             <#if document.incumbent.contactInformation??>

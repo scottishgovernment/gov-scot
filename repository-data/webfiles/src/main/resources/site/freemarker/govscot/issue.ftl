@@ -2,6 +2,9 @@
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if document??>
+
+<div class="layout--issue">
+
     <@hst.manageContent hippobean=document />
 
     <header class="topic-header  <#if document.image?has_content>topic-header--has-image</#if>" id="page-content">
@@ -232,6 +235,7 @@
 
     </div>
 </footer>
+</div>
 
 </#if>
 

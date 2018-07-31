@@ -60,9 +60,9 @@
 /*
  Person sizes for particular templates
  */
-body.layout-org-roles,
-body.layout-person,
-body.layout-role {
+.layout--org-roles,
+.layout--person,
+.layout--role {
   .person__image {
     height: 130px;
     width: 130px;
@@ -92,7 +92,7 @@ body.layout-role {
   }
 }
 
-body.layout-role {
+.layout--role {
   @include media-query(medium-down) {
     .person__image-container {
       width: 183px;
@@ -105,7 +105,7 @@ body.layout-role {
   }
 }
 
-body.layout-directorate {
+.layout--directorate {
   .person__image {
     height: 130px;
     width: 130px;

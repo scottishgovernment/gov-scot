@@ -1,6 +1,7 @@
 <#include "../../include/imports.ftl">
 
 <#if document??>
+<div class="layout--org-roles">
     <@hst.manageContent hippobean=document/>
 
     <div class="grid" id="page-content"><!--
@@ -19,6 +20,8 @@
         <#include '../common/feedback-wrapper.ftl'>
     </div><!--
 --></div>
+
+</div>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>

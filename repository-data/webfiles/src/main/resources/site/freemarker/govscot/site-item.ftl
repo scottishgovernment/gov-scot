@@ -4,7 +4,7 @@
 
     <@hst.manageContent hippobean=document/>
 
-    <article id="page-content">
+    <article id="page-content" class="layout--site-item">
 
         <div class="grid"><!--
          --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">

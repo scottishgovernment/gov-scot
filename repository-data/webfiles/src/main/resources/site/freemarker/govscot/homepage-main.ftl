@@ -1,6 +1,8 @@
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
+<div class="layout--home">
+
 <div class="wrapper hidden-xsmall">
     <div class="grid"><!--
         --><div class="grid__item medium--four-twelfths push--medium--eight-twelfths">
@@ -414,6 +416,7 @@
             </div><!--
         --></div>
     </div>
+</div>
 </div>
 
 <@hst.headContribution category="footerScripts">

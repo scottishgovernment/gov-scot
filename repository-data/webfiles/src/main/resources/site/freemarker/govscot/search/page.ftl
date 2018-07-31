@@ -9,6 +9,8 @@
     <#assign term = parameters['term'][0] />
 </#if>
 
+<div class="layout--search-results">
+
 <div class="grid" id="page-content">
     <div class="grid__item medium--nine-twelfths large--seven-twelfths">
         <#if index??>
@@ -35,6 +37,8 @@
     <div class="grid__item medium--nine-twelfths large--seven-twelfths">
         <@hst.include ref="results"/>
     </div>
+</div>
+
 </div>
 
 <@hst.headContribution category="footerScripts">

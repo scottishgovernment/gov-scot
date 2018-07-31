@@ -1,6 +1,6 @@
 <#include "../include/imports.ftl">
 
-<article id="page-content">
+<article id="page-content" class="layout--groups-list">
 
     <div class="grid"><!--
         --><div class="grid__item medium--nine-twelfths large--seven-twelfths">

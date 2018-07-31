@@ -6,7 +6,7 @@
 
 <@hst.manageContent hippobean=document/>
 
-<article id="page-content">
+<article id="page-content" class="layout--publication">
 
     <#--------------------- HEADER SECTION --------------------->
     <div class="top-matter">

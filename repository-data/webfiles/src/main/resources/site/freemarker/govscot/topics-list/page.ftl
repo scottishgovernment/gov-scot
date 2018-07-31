@@ -1,5 +1,6 @@
 <#include "../../include/imports.ftl">
 
+<div class="layout--topics-list">
 <div class="grid" id="page-content"><!--
   --><div class="grid__item medium--eight-twelfths">
     <h1 class="article-header">${document.title}</h1>
@@ -13,6 +14,7 @@
 </#if>
 
 <@hst.include ref="list"/>
+</div>
 
 <#if document??>
   <@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
