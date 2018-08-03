@@ -1,6 +1,0 @@
-definitions:
-  config:
-    /hippo:configuration/hippo:groups/useradmin:
-      jcr:primaryType: hipposys:group
-      hipposys:members: [himaja.kothapalli@gov.scot, jyothish.sathyan@gov.scot, testadmin@gov.scot]
-      hipposys:securityprovider: internal

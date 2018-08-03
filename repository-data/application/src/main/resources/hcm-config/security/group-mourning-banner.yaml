@@ -1,6 +1,0 @@
-definitions:
-  config:
-    /hippo:configuration/hippo:groups/mourning-banner:
-      jcr:primaryType: hipposys:group
-      hipposys:members: []
-      hipposys:securityprovider: internal
