@@ -6,10 +6,10 @@
     <#list topicsByLetter as letter>
       <div class="grid"><!--
         --><div class="grid__item two-twelfths medium--one-ninth az-list__chunkName" id="az-list__A">${letter.letter}</div><!--
-        --><div class="grid__item ten-twelfths medium--seven-ninth az-list__chunk">
-          <ul class="az-list__list grid">
+        --><div class="grid__item ten-twelfths medium--seven-ninths az-list__chunk">
+          <ul class="az-list__list grid"><!--
             <#list letter.topics as topic>
-              <li class="az-list__item grid__item ">
+              --><li class="az-list__item grid__item ">
                 <div class="topic">
                   <h2 class="gamma topic__title">
                     <a href="<@hst.link hippobean=topic />">${topic.title}</a>
@@ -38,10 +38,10 @@
                     </a>
                   </div>
                 </div>
-              </li>
+              </li><!--
             </#list>
             <#-- end letter.topics loop -->
-          </ul>
+          --></ul>
         </div><!--
       --></div>
     </#list>
