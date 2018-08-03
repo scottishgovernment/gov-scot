@@ -115,7 +115,7 @@ public class PublicationComponent extends BaseHstComponent {
 
     boolean hasChildBeans(List<HippoFolderBean> folders) {
         for (HippoFolderBean docFolder : folders) {
-            if (docFolder.getDocumentSize() > 0 || docFolder.getFolders().size() > 0) {
+            if (docFolder.getDocumentSize() > 0 || !docFolder.getFolders().isEmpty()) {
                 return true;
             }
         }
