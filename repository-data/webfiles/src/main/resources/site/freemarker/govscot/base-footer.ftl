@@ -12,7 +12,7 @@
                     <ul class="site-items site-footer__list">
                         <#list pageable.items as item>
                             <li>
-                                <#if item.externalLink??>
+                                <#if item.externalLink?? && item.externalLink.url?has_content>
                                     <#assign href>${item.externalLink.url}</#assign>
                                 <#else>
                                     <#assign href><@hst.link hippobean=item /></#assign>
