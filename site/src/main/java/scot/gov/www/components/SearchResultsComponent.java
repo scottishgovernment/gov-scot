@@ -35,8 +35,6 @@ public class SearchResultsComponent extends EssentialsListComponent {
 
     private static String PRIMARY_TYPE = "jcr:primaryType";
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
-    private final ValueList publicationValueList =
-            SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
@@ -71,6 +69,10 @@ public class SearchResultsComponent extends EssentialsListComponent {
         request.setAttribute("relativeContentPath", relativeContentPath);
 
         request.setAttribute("parameters", params);
+
+        ValueList publicationValueList =
+                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
+
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
     }
 
