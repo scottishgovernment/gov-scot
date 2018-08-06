@@ -30,7 +30,8 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 /**
  * Get the information required to render a Policy or Policy in Detail page.
  */
-public class PolicyComponent extends BaseHstComponent {
+public class
+PolicyComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PolicyComponent.class);
 
@@ -73,9 +74,8 @@ public class PolicyComponent extends BaseHstComponent {
 
         // if this is the patest page then also include latest info
         if (request.getPathInfo().endsWith("/latest/")) {
-            HippoBeanIterator newsIt = getLatestNews(request, policy);
-            List<HippoBean> all = new ArrayList<>();
-            newsIt.forEachRemaining(all::add);
+
+            List<HippoBean> all = getLatestNews(request, policy);
             all.addAll(policy.getRelatedItems());
             Collections.sort(all, Comparator.comparing(bean -> bean.getProperty("govscot:publicationDate")));
             Collections.reverse(all);
@@ -84,7 +84,10 @@ public class PolicyComponent extends BaseHstComponent {
         }
     }
 
-    private HippoBeanIterator getLatestNews(HstRequest request, Policy policy) {
+    private List<HippoBean> getLatestNews(HstRequest request, Policy policy) {
+        if (policy.getPolicyTags().length == 0) {
+            return new ArrayList<>();
+        }
 
         HippoBean scope = request.getRequestContext().getSiteContentBaseBean();
         HstQuery query = HstQueryBuilder.create(scope)
@@ -97,7 +100,10 @@ public class PolicyComponent extends BaseHstComponent {
             HstQueryResult result = query.execute();
             stopWatch.stop();
             LOG.info("result count: {}, took: {}", result.getTotalSize(), stopWatch.getTime());
-            return result.getHippoBeans();
+
+            List<HippoBean> all = new ArrayList<>();
+            result.getHippoBeans().forEachRemaining(all::add);
+            return all;
         } catch (QueryException e) {
             throw new HstComponentException(e);
         }
