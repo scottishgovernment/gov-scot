@@ -8,3 +8,6 @@
   /Government structure:
     jcr:primaryType: hst:sitemenuitem
     hst:referencesitemapitem: about/how-government-is-run
+    /Directorates:
+      jcr:primaryType: hst:sitemenuitem
+      hst:referencesitemapitem: about/how-government-is-run/directorates

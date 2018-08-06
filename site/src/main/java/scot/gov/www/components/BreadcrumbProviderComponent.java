@@ -124,6 +124,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
         // if we are in About or Policies, add the parent folder to the breadcrumbs if it's not already there
         if ("about".equals(deepestExpandedMenuItemBean.getName())
                 || "about".equals(deepestExpandedMenuItemBean.getParentBean().getName())
+                || "directorates".equals(deepestExpandedMenuItemBean.getName())
                 || "policies".equals(deepestExpandedMenuItemBean.getName()) ){
 
             BreadcrumbItem parent = getBreadcrumbItem(request, currentBean.getParentBean());
