@@ -18,7 +18,10 @@ definitions:
       hipposys:value: /content/documents/administration
     /hippo:configuration/hippo:domains/hippodocuments/readonly:
       jcr:primaryType: hipposys:authrole
-      hipposys:groups: [everybody]
+      hipposys:groups: [cmsadmin, core-content-authors, core-content-editors, document-unlocker,
+        foi-authors, foi-editors, group-authors, group-editors, mourning-banner, policy-authors,
+        policy-editors, previewusers, publication-authors, publication-editors, topics-issues-authors,
+        topics-issues-editors, useradmin]
       hipposys:role: readonly
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole
