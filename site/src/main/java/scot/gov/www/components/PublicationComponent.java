@@ -30,6 +30,15 @@ public class PublicationComponent extends BaseHstComponent {
         HstRequestContext context = request.getRequestContext();
         HippoBean document = context.getContentBean();
 
+        if (document == null) {
+            try {
+                response.setStatus(404);
+                response.forward("/pagenotfound");
+            }  catch (IOException e) {
+                throw new HstComponentException("Forward failed", e);
+            }
+        }
+
         HippoBean publication = getPublication(document);
         setDocuments(publication, request);
         setPages(publication, document, request);
