@@ -464,7 +464,7 @@ definitions:
       /beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 49d30cf0-242b-4bdd-ab1d-2709ca220d12
-        hst:cmslocation: https://beta2.publishing.gov.scot
+        hst:cmslocation: https://beta.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 3f1d250c-30f8-49c4-b751-761cd30ffd74
