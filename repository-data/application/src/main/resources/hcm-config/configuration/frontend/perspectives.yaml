@@ -6,4 +6,4 @@ definitions:
         plugin.class: scot.gov.perspectives.FeedbackPerspective
         wicket.id: service.tab
         browser.id: service.browse
-        option.location: /content/documents
+        option.location: ""
