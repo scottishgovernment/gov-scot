@@ -18,24 +18,18 @@ $main-nav__transition-timing: ease;
     /**
      * This wrapper element allows us to clip the hidden nav list
      * so that the document doesn't expand in width.
-     *
-     * 1. To work, height must be set to pixel, not a %
      */
     &__wrap {
       position: absolute;
       overflow-x: hidden;
-      height:480px; /* [1] */
+      height: 100vh;
       width: 100%;
     }
 
     &__list {
       background: $color__blue--base;
-      left: 100%;
       list-style-type: none;
       margin: 0;
-      position: fixed;
-      top: 0;
-      right: 0;
       z-index: 1001;
       padding: 24px 15px;
 

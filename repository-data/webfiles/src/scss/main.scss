@@ -185,10 +185,12 @@ $breadcrumbs__margin--large: $breadcrumbs__margin--medium;
 @import "components/component.contact-information";
 @import "components/component.content-data";
 @import "components/component.content-placeholder";
+@import "components/component.contents-list";
 @import "components/component.crossbar-header";
 @import "components/component.did-you-mean";
 @import "components/component.directorate-list";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
+@import "components/component.document-nav";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
 @import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
 $expandable__title-size: 16px;
@@ -254,6 +256,7 @@ $search-box__size--medium: $search-box__size;
 /**
  * TRUMPS
  */
+@import "trumps/trump.contents-expandable";
 @import "trumps/trump.display-toggle";
 @import "trumps/trump.external-links.govscot";
 @import "trumps/trump.fancy-radio";

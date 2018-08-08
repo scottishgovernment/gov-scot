@@ -1,0 +1,26 @@
+.contents-list {
+    list-style-type: none;
+    margin: 0 -15px;
+}
+
+.contents-list__item {
+    margin: 0;
+}
+
+.contents-list__link {
+    border-bottom: 1px solid $color__grey--light;
+    display: block;
+    line-height: 21px;
+    min-height: 35px;
+    padding: 6px 15px 7px 35px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $color__grey--lighter;
+    }
+
+    &:active {
+        background-color: $color__blue--light;
+        outline-color: transparent;
+    }
+}

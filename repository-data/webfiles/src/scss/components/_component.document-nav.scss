@@ -1,0 +1,25 @@
+.document-nav {
+    background: $color__grey--lighter;
+    margin: 0 -15px;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 15px;
+    position: sticky;
+    z-index: 1000;
+
+    &:after {
+        background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0));
+        bottom: -5px;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+    }
+}
+
+@include media-query(medium) {
+    .document-nav {
+        position: static;
+    }
+}

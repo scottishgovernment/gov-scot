@@ -1,0 +1,38 @@
+/* modifier for Mygov Assets expandable */
+
+.contents-expandable {
+    margin-bottom: 35px;
+
+    .expandable-item {
+        margin: 0;
+    }
+
+    .expandable-item__header {
+        color: $color__blue--base;
+        height: auto;
+        min-height: 35px;
+    }
+
+    .expandable-item__title {
+        font-size: 22px;
+    }
+
+    .expandable-item--open .expandable-item__header {
+        color: $color__blue--base;
+        border-left: 4px solid $color__blue--base;
+    }
+
+    .expandable-item__body {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+@include media-query(medium) {
+    .contents-expandable {
+    
+        .expandable-item__title {
+            font-size: 22px;
+        }
+    }
+}
