@@ -217,6 +217,20 @@ definitions:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/publicationpage
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/${5}
+                  hst:componentconfigurationmappingvalues: ['hst:pages/complexdocumentpage']
+                  hst:componentconfigurationmappingnames: ['govscot:ComplexDocument']
+                  /_default_:
+                    jcr:primaryType: hst:sitemapitem
+                    hst:componentconfigurationid: hst:pages/complexdocumentpage
+                    hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/chapters/${5}/${6}
+                /about:
+                  jcr:primaryType: hst:sitemapitem
+                  hst:componentconfigurationid: hst:pages/complexdocumentpage
+                  hst:relativecontentpath: ${parent}
+                /documents:
+                  jcr:primaryType: hst:sitemapitem
+                  hst:componentconfigurationid: hst:pages/complexdocumentpage
+                  hst:relativecontentpath: ${parent}
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/govscotpublicationspage

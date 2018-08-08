@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/complexdocumentpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.ComplexDocumentComponent
+        hst:template: complexdocument.page
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

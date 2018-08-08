@@ -26,7 +26,7 @@ definitions:
       new-featured-item: New featured item
       new-minutes-folder: New minutes folder
       new-publication: New publication
-      new-publication-folder: New publication folder
+      new-publication-folder: New publication
       new-speech-or-statement-folder: New speech or statement folder
       new-publication-page: New publication page
       new-publication-pages-folder: New publication pages folder
@@ -48,3 +48,6 @@ definitions:
       new-publication-month-folder: New publication month folder
       new-mourning-banner: New mourning banner
       new-valuelist: New value list
+      new-complex-document-folder: New multisectioned publication
+      new-complex-document-section: New section
+      new-chapter-folder: New chapter
