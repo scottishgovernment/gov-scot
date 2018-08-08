@@ -62,11 +62,13 @@
                                 <h3 class="emphasis  sidebar-block__heading">Media</h3>
 
                                 <ul>
-                                    <#if document.heroImage.url != ''>
-                                        <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
-                                        <#assign firstAttachmentOffset=2>
-                                    <#else>
-                                        <#assign firstAttachmentOffset=1>
+                                    <#if document.heroImage??>
+                                        <#if document.heroImage.url != ''>
+                                            <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
+                                            <#assign firstAttachmentOffset=2>
+                                        <#else>
+                                            <#assign firstAttachmentOffset=1>
+                                        </#if>
                                     </#if>
 
                                     <#list document.attachments as attachment>
@@ -95,11 +97,13 @@
                             <h3 class="emphasis  sidebar-block__heading  no-top-margin">Media</h3>
 
                             <ul>
-                                <#if document.heroImage.url != ''>
-                                    <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
-                                    <#assign firstAttachmentOffset=2>
-                                <#else>
-                                    <#assign firstAttachmentOffset=1>
+                                <#if document.heroImage?has_content>
+                                    <#if document.heroImage.url != ''>
+                                        <li><a href="${document.heroImage.url}">Image 1: ${document.heroImage.title}</a></li>
+                                        <#assign firstAttachmentOffset=2>
+                                    <#else>
+                                        <#assign firstAttachmentOffset=1>
+                                    </#if>
                                 </#if>
 
                                 <#list document.attachments as attachment>
