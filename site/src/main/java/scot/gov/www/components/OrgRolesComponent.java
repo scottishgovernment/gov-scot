@@ -45,35 +45,42 @@ public class OrgRolesComponent  extends BaseHstComponent {
 
     private List<Person> peopleWithRoles(HippoBean baseBean, List<HippoBean> roles) {
 
-        // group the roles by incumbent and enrich with directorates.
-        Map<String, List<HippoBean>> orgRoleByIncumbent =
-                roles.stream()
-                        .map(role -> enrichRoleWithDirectorates(baseBean, (Role) role))
-                        .collect(groupingBy(role -> incumbentTitle(role)));
+            // group the roles by incumbent and enrich with directorates.
+            Map<String, List<HippoBean>> orgRoleByIncumbent =
+                    roles.stream()
+                            .map(role -> enrichRoleWithDirectorates(baseBean, role))
+                            .collect(groupingBy(role -> incumbentTitle(role)));
 
-        // now list the incumbents and list their roles, avoiding duplicates
-        Set<String> seen = new HashSet<>();
-        List<Person> peopleWithRoles = new ArrayList<>();
-        for (HippoBean bean : roles) {
-            Person incumbent = incumbent(bean);
-            if (!seen.contains(incumbent.getTitle()))  {
-                incumbent.setRoles(orgRoleByIncumbent.get(incumbent.getTitle()));
-                peopleWithRoles.add(incumbent);
-                seen.add(incumbent.getTitle());
+            // now list the incumbents and list their roles, avoiding duplicates
+            Set<String> seen = new HashSet<>();
+            List<Person> peopleWithRoles = new ArrayList<>();
+            for (HippoBean bean : roles) {
+                Person incumbent = incumbent(bean);
+                if (!seen.contains(incumbent.getTitle())) {
+                    incumbent.setRoles(orgRoleByIncumbent.get(incumbent.getTitle()));
+                    peopleWithRoles.add(incumbent);
+                    seen.add(incumbent.getTitle());
+                }
             }
-        }
-        return peopleWithRoles;
+            return peopleWithRoles;
+
     }
 
-    private Role enrichRoleWithDirectorates(HippoBean baseBean, Role role) {
+    private HippoBean enrichRoleWithDirectorates(HippoBean baseBean, HippoBean role) {
+
+        if (!(role instanceof Role)) {
+            return role;
+        }
+
         try {
+            Role castRole = (Role) role;
             HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
-                    role, baseBean, "*/@hippo:docbase", Directorate.class, false);
+                    castRole, baseBean, "*/@hippo:docbase", Directorate.class, false);
             query.addOrderByAscending("govscot:title");
             HstQueryResult res = query.execute();
             List<HippoBean> directorates = new ArrayList<>();
             res.getHippoBeans().forEachRemaining(directorates::add);
-            role.setDirectorates(directorates);
+            castRole.setDirectorates(directorates);
         } catch (QueryException e) {
             LOG.warn("Unable to get Directorates for role {}", role.getPath(), e);
         }
@@ -85,7 +92,8 @@ public class OrgRolesComponent  extends BaseHstComponent {
             return (Person) bean;
         }
         Role role = (Role) bean;
-        return (Person) role.getIncumbent();
+        return role.getIncumbent();
+
     }
 
     private String incumbentTitle(HippoBean bean) {

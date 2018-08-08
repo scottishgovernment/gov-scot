@@ -60,9 +60,11 @@
                                 <#assign hasDirectorates=false/>
                                 <#if person.roles??>
                                     <#list person.roles as role>
-                                        <#list role.directorates as directorate>
-                                            <#assign hasDirectorates=true/>
-                                        </#list>
+                                        <#if role.directorates??>
+                                            <#list role.directorates as directorate>
+                                                <#assign hasDirectorates=true/>
+                                            </#list>
+                                        </#if>
                                     </#list>
                                 </#if>
 
