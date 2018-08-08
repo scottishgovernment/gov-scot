@@ -207,6 +207,8 @@ definitions:
                 hst:relativecontentpath: publications/${1}/${2}/${3}/${4}
                 /pages:
                   jcr:primaryType: hst:sitemapitem
+                  hst:relativecontentpath: publications/${1}/${2}/${3}/${4}
+                  hst:componentconfigurationid: hst:pages/publicationpage
                   /_default_:
                     jcr:primaryType: hst:sitemapitem
                     hst:componentconfigurationid: hst:pages/publicationpage
