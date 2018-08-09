@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                         <#else>
-                            <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image />" />
+                            <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                         </#if>
                     </div>
 

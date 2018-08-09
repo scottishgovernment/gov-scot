@@ -34,3 +34,5 @@ definitions:
       jcr:primaryType: hipposys:resourcebundles
     /hippo:configuration/hippo:translations/hippo:types/govscot:BannerImages:
       jcr:primaryType: hipposys:resourcebundles
+    /hippo:configuration/hippo:translations/hippo:types/govscot:FeaturedItems:
+      jcr:primaryType: hipposys:resourcebundles
