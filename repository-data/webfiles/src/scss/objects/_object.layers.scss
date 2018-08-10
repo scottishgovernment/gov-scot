@@ -37,19 +37,13 @@
 
   &--open {
     opacity: 1;
-    z-index: 1000;
+    z-index: 1001;
     display: block;
 
     > .mobile-layer__overlay {
       display: block;
       opacity: 1;
       z-index: 100;
-    }
-  }
-
-  &--above-header {
-    &.mobile-layer--open {
-      z-index: 1001;
     }
   }
 
@@ -70,7 +64,7 @@
 .mobile-layer__overlay--open {
   display: block;
   opacity: 1;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 @include media-query(medium) {
@@ -87,4 +81,9 @@
       padding-top: 0;
     }
   }
+}
+
+/* helper class for elements we want to keep above an overlay when an overlay is open */
+.has-overlay .above-overlay {
+  z-index: 2001;
 }

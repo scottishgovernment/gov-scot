@@ -1,0 +1,48 @@
+/*------------------------------------*\
+    #SECTION MARKER
+\*------------------------------------*/
+
+.section-marker {
+    font-size: 15px;
+    line-height: 21px;
+    position: sticky;
+    top: 73px; /* detect w/script */
+    z-index: 1000;
+
+    &__part {
+        background: $color__blue--base;
+        color: $color__white;
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    &__text-line {
+        max-height: 21px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__section-title {
+        font-weight: 700;
+    }
+
+    &__document-title {
+        height: 24px; /* covers a half line that sometimes appears with subpixel rendering */
+        left: -999em;
+        margin: 0 -15px;
+        opacity: 0;
+        padding: 0 15px;
+        position: fixed;
+        right: 999em;
+        top: 52px;
+        transition: opacity 0.2s;
+        z-index: 1000;
+    
+        &--visible {
+            left: 0;
+            opacity: 1;
+            right: 0;
+        }
+    }
+}

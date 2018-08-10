@@ -1,4 +1,5 @@
 <div class="notification-wrapper">
+    <@hst.include ref="mourning-banner"/>
     <div id="beta-banner" class="notification notification--gold">
         <div class="wrapper">
             <div class="notification__main-content">

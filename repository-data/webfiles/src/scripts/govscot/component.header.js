@@ -74,6 +74,7 @@ define([], function () {
             }
 
             $('.js-mobile-' + menuItemType + '-overlay').addClass('mobile-layer__overlay--open');
+            $('body').addClass('has-overlay');
         },
 
         closeMenuItem: function (menuItemType) {
@@ -83,6 +84,7 @@ define([], function () {
             $('.site-header__button--' + menuItemType).removeClass('site-header__button--selected');
 
             $('.js-mobile-' + menuItemType + '-overlay').removeClass('mobile-layer__overlay--open');
+            $('body').removeClass('has-overlay');
         }
     };
 

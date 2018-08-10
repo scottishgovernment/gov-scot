@@ -5,14 +5,26 @@
 
 .contents-list__item {
     margin: 0;
+    position: relative;
+
+    &:not(:last-child) .contents-list__link {
+        border-bottom: 1px solid $color__grey--light;
+    }
+}
+
+.contents-list__icon {
+    color: $color__grey--medium;
+    left: 15px;
+    position: absolute;
+    top: 7px;
 }
 
 .contents-list__link {
-    border-bottom: 1px solid $color__grey--light;
     display: block;
-    line-height: 21px;
+    font-weight: 500;
+    line-height: 21px; 
     min-height: 35px;
-    padding: 6px 15px 7px 35px;
+    padding: 6px 15px 7px 42px;
     text-decoration: none;
 
     &:hover {
@@ -22,5 +34,11 @@
     &:active {
         background-color: $color__blue--light;
         outline-color: transparent;
+    }
+}
+
+@include media-query(medium) {
+    .contents-list {
+        margin: 0;
     }
 }

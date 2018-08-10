@@ -30,7 +30,6 @@
     <@hst.include ref="googletagmanager"/>
 
     <#include 'common/accessibility-links.ftl' />
-    <@hst.include ref="mourning-banner"/>
     <#include 'common/notifications.ftl' />
 
     <div id="main-wrapper">

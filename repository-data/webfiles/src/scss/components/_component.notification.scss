@@ -223,7 +223,7 @@ $notification_padding: 14px;
   }
 }
 
-#mourning-banner ~ .notification-wrapper #beta-banner {
+#mourning-banner ~ #beta-banner {
   background-color: $color__grey--light;
 
   .notification__beta-box {

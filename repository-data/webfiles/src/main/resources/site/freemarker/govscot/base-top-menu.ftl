@@ -1,6 +1,6 @@
 <#include "../include/imports.ftl">
 
-<header class="site-header" id="page-top">
+<header class="site-header  above-overlay" id="page-top">
     <div class="wrapper">
         <div class="site-brand">
             <div class="site-brand__link">

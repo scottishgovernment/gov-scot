@@ -17,15 +17,38 @@
         font-size: 22px;
     }
 
-    .expandable-item--open .expandable-item__header {
-        color: $color__blue--base;
-        border-left: 4px solid $color__blue--base;
-    }
+    
 
     .expandable-item__body {
         padding-top: 0;
         padding-bottom: 0;
     }
+
+    .expandable-item__icon {
+        background-image: none !important;
+        color: $color__grey--medium;
+
+        .optional-icon {display: none;}
+        .optional-icon:not(.icon-less) {
+            display: block;
+        }
+    }
+
+    .expandable-item--open {
+        .expandable-item__header {
+            color: $color__blue--base;
+            border-left: 4px solid $color__blue--base;
+        }
+
+        .expandable-item__icon {
+            color: $color__blue--base;
+
+            .optional-icon {display: none;}
+            .optional-icon:not(.icon-more) {
+                display: block;
+            }
+        }
+    } 
 }
 
 @include media-query(medium) {
