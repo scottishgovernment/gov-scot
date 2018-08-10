@@ -22,6 +22,8 @@ public class FOINumberDaemonModule implements DaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(FolderTypesDaemonModule.class);
 
+    public static final String HIPPOSTD_TAGS = "hippostd:tags";
+
     private Session session;
 
     @Override
@@ -60,13 +62,13 @@ public class FOINumberDaemonModule implements DaemonModule {
             }
 
             String foiNumber = parts[2];
-            Value[] tags = foi.hasProperty("hippostd:tags")
-                    ? foi.getProperty("hippostd:tags").getValues()
+            Value[] tags = foi.hasProperty(HIPPOSTD_TAGS)
+                    ? foi.getProperty(HIPPOSTD_TAGS).getValues()
                     : new Value [] {};
             List<Value> tagList = new ArrayList<>(Arrays.asList(tags));
             if (!containsTag(foiNumber, tagList)) {
                 tagList.add(session.getValueFactory().createValue(foiNumber));
-                foi.setProperty("hippostd:tags", tagList.toArray(new Value [tagList.size()]));
+                foi.setProperty(HIPPOSTD_TAGS, tagList.toArray(new Value [tagList.size()]));
                 session.save();
             }
 
