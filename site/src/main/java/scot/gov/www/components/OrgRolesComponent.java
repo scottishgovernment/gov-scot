@@ -45,24 +45,24 @@ public class OrgRolesComponent  extends BaseHstComponent {
 
     private List<Person> peopleWithRoles(HippoBean baseBean, List<HippoBean> roles) {
 
-            // group the roles by incumbent and enrich with directorates.
-            Map<String, List<HippoBean>> orgRoleByIncumbent =
-                    roles.stream()
-                            .map(role -> enrichRoleWithDirectorates(baseBean, role))
-                            .collect(groupingBy(role -> incumbentTitle(role)));
+        // group the roles by incumbent and enrich with directorates.
+        Map<String, List<HippoBean>> orgRoleByIncumbent =
+                roles.stream()
+                        .map(role -> enrichRoleWithDirectorates(baseBean, role))
+                        .collect(groupingBy(role -> incumbentTitle(role)));
 
-            // now list the incumbents and list their roles, avoiding duplicates
-            Set<String> seen = new HashSet<>();
-            List<Person> peopleWithRoles = new ArrayList<>();
-            for (HippoBean bean : roles) {
-                Person incumbent = incumbent(bean);
-                if (!seen.contains(incumbent.getTitle())) {
-                    incumbent.setRoles(orgRoleByIncumbent.get(incumbent.getTitle()));
-                    peopleWithRoles.add(incumbent);
-                    seen.add(incumbent.getTitle());
-                }
+        // now list the incumbents and list their roles, avoiding duplicates
+        Set<String> seen = new HashSet<>();
+        List<Person> peopleWithRoles = new ArrayList<>();
+        for (HippoBean bean : roles) {
+            Person incumbent = incumbent(bean);
+            if (!seen.contains(incumbent.getTitle())) {
+                incumbent.setRoles(orgRoleByIncumbent.get(incumbent.getTitle()));
+                peopleWithRoles.add(incumbent);
+                seen.add(incumbent.getTitle());
             }
-            return peopleWithRoles;
+        }
+        return peopleWithRoles;
 
     }
 
@@ -97,6 +97,10 @@ public class OrgRolesComponent  extends BaseHstComponent {
     }
 
     private String incumbentTitle(HippoBean bean) {
+        if (bean instanceof Person) {
+            return ((Person) bean).getRoleTitle();
+        }
+
         HippoBean incumbent = incumbent(bean);
         return ((SimpleContent) incumbent).getTitle();
     }
