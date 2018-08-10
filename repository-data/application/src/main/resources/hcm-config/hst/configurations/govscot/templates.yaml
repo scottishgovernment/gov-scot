@@ -131,3 +131,6 @@ definitions:
       /feedback:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/common/feedback.ftl
+      /complexdocument.page:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/complexdocument/page.ftl

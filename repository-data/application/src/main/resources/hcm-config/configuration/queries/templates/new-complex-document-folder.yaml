@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:queries/hippo:templates/new-publication-folder:
+    /hippo:configuration/hippo:queries/hippo:templates/new-complex-document-folder:
       jcr:primaryType: hippostd:templatequery
       jcr:mixinTypes: ['hipposys:implementation']
       hippostd:icon: addfolder_ico
@@ -11,23 +11,23 @@ definitions:
         $now, './index/index/hippostdpubwf:lastModificationDate', $now]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
-      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-publication-folder/hippostd:templates/node()
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-complex-document-folder/hippostd:templates/node()
       /hippostd:templates:
         jcr:primaryType: hippostd:templates
         /hippostd:folder:
           jcr:primaryType: hippostd:folder
           jcr:mixinTypes: ['mix:versionable']
-          jcr:uuid: 4f48ee5e-b1b5-439b-b300-d9236ead6394
+          jcr:uuid: 78376cab-54c5-471c-96c7-84a727906b34
           hippostd:foldertype: []
           /index:
             jcr:primaryType: hippo:handle
             jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
-            jcr:uuid: a53a9e2d-dfdd-400f-af4f-7b9288150f8d
+            jcr:uuid: cfa43d8a-ead3-435d-b7ff-592134c6b63a
             hippo:name: Publication name
-            /index[1]:
-              jcr:primaryType: govscot:Publication
+            /index:
+              jcr:primaryType: govscot:ComplexDocument
               jcr:mixinTypes: ['mix:referenceable']
-              jcr:uuid: f037e3be-ecbf-43b6-86a8-a81eb3502e12
+              jcr:uuid: 7650bd60-b4ed-4184-bde2-c22117bf8ab9
               govscot:isbn: ''
               govscot:metaDescription: ''
               govscot:officialdate: 0001-01-01T12:00:00Z
@@ -42,11 +42,11 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:id: 0017de1c-4d77-45de-aed2-0cf00d9916b9
               hippotranslation:locale: en
-          /pages:
+          /chapters:
             jcr:primaryType: hippostd:folder
-            hippostd:foldertype: [new-publication-page]
+            hippostd:foldertype: [new-chapter-folder]
           /documents:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-documents-folder, new-publication-document-info]
