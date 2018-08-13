@@ -17,9 +17,11 @@ import scot.gov.www.beans.News;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.Topic;
 
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.and;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
 public class HomeComponent extends BaseHstComponent {
 
@@ -33,10 +35,10 @@ public class HomeComponent extends BaseHstComponent {
 
         HstRequestContext context = request.getRequestContext();
         HippoBean scope = context.getSiteContentBaseBean();
-        populateNews(scope, request);
-        populateConsultations(scope, request);
-        populatePublications(scope, request);
-        populateTopicsList(scope, request);
+        populateNews(scope.getBean("news/"), request);
+        populateConsultations(scope.getBean("publications/"), request);
+        populatePublications(scope.getBean("publications/"), request);
+        populateTopicsList(scope.getBean("topics/"), request);
 
         // get the First Minister page
         ObjectBeanManager beanManager = context.getObjectBeanManager();
@@ -87,9 +89,10 @@ public class HomeComponent extends BaseHstComponent {
     }
 
     private void populateTopicsList(HippoBean scope, HstRequest request) {
-        HstQuery query = HstQueryBuilder.create(scope)
-                .ofTypes(Topic.class).orderByAscending("govscot:title").build();
-        executeQueryLoggingException(query, request, "topics");
+        List<Topic> topics = scope.getChildBeans(Topic.class);
+        Comparator<Topic> titleComparator = Comparator.comparing(Topic::getTitle);
+                Collections.sort(topics, titleComparator);
+        request.setAttribute("topics", topics);
     }
 
     private HstQueryBuilder publicationsQuery(HippoBean scope) {
