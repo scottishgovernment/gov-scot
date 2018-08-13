@@ -86,7 +86,7 @@
                             <div class="carousel-item__title">${featuredItem.title}</div>
 
                             <div class="carousel-item__desc">
-                                ${featuredItem.teaserText.content}
+                                <@hst.html hippohtml=featuredItem.teaserText/>
                             </div>
 
                             <div class="carousel-item__link"><a href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
