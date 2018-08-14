@@ -42,7 +42,7 @@
                             <p>${document.summary}</p>
                         </div>
 
-                        ${document.content.content}
+                        <@hst.html hippohtml=document.content/>
                     <#else>
                         <div class="leader leader--first-para">
                             <@hst.html hippohtml=document.content/>

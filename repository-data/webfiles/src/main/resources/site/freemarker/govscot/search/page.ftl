@@ -16,7 +16,7 @@
         <#if index??>
             <h1 class="article-header">${index.title?html}</h1>
             <div class="body-content  leader--first-para">
-                ${index.content.content}
+                <@hst.html hippohtml=index.content/>
             </div>
 
             <div class="search-box search-box--large ">

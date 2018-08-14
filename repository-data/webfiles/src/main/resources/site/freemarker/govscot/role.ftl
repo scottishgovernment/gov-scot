@@ -63,7 +63,7 @@
                     </div>
 
                     <h2>Responsibilities</h2>
-                    ${document.content.content}
+                    <@hst.html hippohtml=document.content/>
 
                     <#if document.incumbent??>
                         <h2>Biography</h2>
