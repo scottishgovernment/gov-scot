@@ -101,7 +101,7 @@
         <div class="grid"><!--
             --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
 
-                <h2>Supporting documents</h2>
+                <h2><b>Supporting documents</b></h2>
 
                 <#if documents??>
                     <#assign hasAttachedDocument = '' />
@@ -134,20 +134,22 @@
     <#elseif currentPage == document>
         <div class="grid"><!--
             --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
-                <h2>Contents</h2>
+                <h2><b>Contents</b></h2>
 
-                <button class="button  button--secondary  button--medium  button--no-margin  icon-button  js-expand-all">
-                    <span class="icon-button__text  js-button-text">Expand all</span>
-                    <span class="icon-button__icon-container">
-                        <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more  icon-button__icon">
-                            <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                        </svg>
-                        <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less  icon-button__icon">
-                            <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                        </svg>
-                    </span>
-                </button>
+                
                 <div class="expandable  contents-expandable">
+                    <button class="button  button--secondary  button--small  button--no-margin  expand-all-button  js-expand-all">
+                        <span class="expand-all-button__text  js-button-text">Expand all</span>
+                        <span class="expand-all-button__icon-container">
+                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more  expand-all-button__icon">
+                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                            </svg>
+                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less  expand-all-button__icon">
+                                <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                            </svg>
+                        </span>
+                    </button>
+
                     <#list chapters as chapter>
                         <div class="expandable-item">
                             <button class="expandable-item__header  js-toggle-expand" role="tab" id="${chapter.name}-heading" data-toggle="collapse" aria-expanded="false" aria-controls="${chapter.name}-body">
@@ -184,7 +186,7 @@
             </div><!--
             --><div class="grid__item  medium--three-twelfths  push--medium--two-twelfths">
 
-
+<div class="hidden-small hidden-xsmall">
                 <#assign firstDocument = documents[0]/>
                 <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
                 <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
@@ -202,15 +204,17 @@
                 <#else>
                     <a title="View this document" href="<@hst.link hippobean=firstDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
                 </#if>
-
-                        
-
-
+</div>
 
                 <a class="button  button--secondary  button--full-width" href="${baseurl + 'about/'}">About this publication</a><br><br>
 
                 <#if documents?has_content>
-                    <a class="button  button--secondary  button--full-width" href="${baseurl + 'documents/'}">Supporting documents</a><br><br>
+                    <a class="button  button--secondary  button--full-width" href="${baseurl + 'documents/'}">
+                        <svg class="svg-icon  mg-icon" style="fill: white;background:red;border-radius:30px;height: 35px;width:35px;line-height:1em;margin-top: -35px;">
+                            <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                        </svg>
+                        Supporting documents
+                    </a>
                 </#if>
             </div><!--
         --></div>

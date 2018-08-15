@@ -43,8 +43,8 @@
             margin-right: 0;
         }
 
-        &:disabled {
-            background: $color__grey--medium;
+        &[disabled] {
+            background: $color__grey--base;
             color: $color__grey--lighter;
         }
     }

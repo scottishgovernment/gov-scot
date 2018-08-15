@@ -22,12 +22,12 @@ define([
                 event.preventDefault();
 
                 let expandButton = $(this);
-                let expandable = expandButton.next('.expandable');
+                let expandable = expandButton.closest('.expandable');
                 let expandButtonTextElement = expandButton.find('.js-button-text');
 
-                expandButton.toggleClass('open');
+                expandButton.toggleClass('expand-all-button--open');
 
-                if (expandButton.hasClass('open')) {
+                if (expandButton.hasClass('expand-all-button--open')) {
                     expandButtonTextElement.text('Close all');
                     expandable.find('.expandable-item').addClass('expandable-item--open');
                     expandable.find('.expandable-item__body').show();

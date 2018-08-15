@@ -21,35 +21,3 @@
 .button--full-width {
     width: 100%;
 }
-
-
-.icon-button {
-    position: relative;
-
-    &__text {
-        padding-right: 42px;
-    }
-
-    &__icon-container {
-        height: 42px;
-        position: absolute;
-        right: -2px;
-        top: -2px;
-        width: 42px;
-    }
-
-    &__icon {
-        height: 100%;
-        width: 100%;
-    }
-}
-
-.button--secondary:hover {
-    .icon-button__icon-container {
-        height: 42px;
-        position: absolute;
-        right: -3px;
-        top: -3px;
-        width: 42px;
-    }
-}
