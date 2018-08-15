@@ -11,10 +11,8 @@ let FeedbackPerspective;
         uat: 'https://ugv.publishing.gov.scot',
         blu: 'https://bgv.publishing.gov.scot',
         grn: 'https://ggv.publishing.gov.scot',
-        beta2: 'https://beta.publishing.gov.scot',
-        www: 'https://beta2.publishing.gov.scot',
-        beta: 'https://beta2.publishing.gov.scot',
-        publishing: 'https://beta2.publishing.gov.scot'
+        beta: 'https://rubric.publishing.gov.scot',
+        publishing: 'https://rubric.publishing.gov.scot'
     };
 
     if (typeof FeedbackPerspective == 'undefined') {
