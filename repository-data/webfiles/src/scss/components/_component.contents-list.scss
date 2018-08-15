@@ -40,5 +40,15 @@
 @include media-query(medium) {
     .contents-list {
         margin: 0;
+
+        &__link {
+            line-height: 28px;
+        }
+
+        &__icon {
+            height: 28px;
+            top: 5px;
+            width: 28px;
+        }
     }
 }

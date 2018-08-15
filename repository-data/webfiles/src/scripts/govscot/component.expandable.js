@@ -7,9 +7,9 @@ define([
 ], function ($) {
     'use strict';
 
-    var Expandable = {
+    let Expandable = {
         init: function () {
-            var that = this;
+            let that = this;
 
             that.expandable = $('.expandable');
 
@@ -18,13 +18,33 @@ define([
                 $(this).attr('data-gtm', 'panel-closed');
             });
 
+            $('body').on('click', '.js-expand-all', function (event) {
+                event.preventDefault();
+
+                let expandButton = $(this);
+                let expandable = expandButton.next('.expandable');
+                let expandButtonTextElement = expandButton.find('.js-button-text');
+
+                expandButton.toggleClass('open');
+
+                if (expandButton.hasClass('open')) {
+                    expandButtonTextElement.text('Close all');
+                    expandable.find('.expandable-item').addClass('expandable-item--open');
+                    expandable.find('.expandable-item__body').show();
+                } else {
+                    expandButtonTextElement.text('Expand all');
+                    expandable.find('.expandable-item').removeClass('expandable-item--open');
+                    expandable.find('.expandable-item__body').hide();
+                }
+            });
+
             //Handle changing colours on panel headers when open
             that.expandable.on('click', '.js-toggle-expand', function(event) {
 
                 event.preventDefault();
 
-                var expandableItem = $(this).closest('.expandable-item');
-                var containerType = expandableItem.find('.expandable-item__title').text().toLowerCase();
+                let expandableItem = $(this).closest('.expandable-item');
+                let containerType = expandableItem.find('.expandable-item__title').text().toLowerCase();
 
                 if (expandableItem.hasClass('expandable-item--open')) {
                     that.closeExpandableItem(expandableItem);
@@ -44,7 +64,7 @@ define([
         },
 
         openExpandableItem: function (expandableItem) {
-            var expandableItemBody = expandableItem.find('.expandable-item__body');
+            let expandableItemBody = expandableItem.find('.expandable-item__body');
 
             expandableItemBody.attr('aria-expanded', 'true');
             expandableItem.addClass('expandable-item--open');
@@ -57,7 +77,7 @@ define([
         },
 
         closeExpandableItem: function (expandableItem) {
-            var expandableItemBody = expandableItem.find('.expandable-item__body');
+            let expandableItemBody = expandableItem.find('.expandable-item__body');
 
             expandableItemBody.attr('aria-expanded', 'false');
             expandableItem.removeClass('expandable-item--open');
@@ -70,9 +90,9 @@ define([
         },
 
         showAllExpandableItems: function () {
-            var expandableItems = this.expandable.find('.expandable-item');
+            let expandableItems = this.expandable.find('.expandable-item');
 
-            for (var i = 0, il = expandableItems.length; i < il; i++) {
+            for (let i = 0, il = expandableItems.length; i < il; i++) {
                 this.openExpandableItem($(expandableItems[i]));
             }
         }

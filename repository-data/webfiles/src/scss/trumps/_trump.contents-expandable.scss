@@ -8,6 +8,7 @@
     }
 
     .expandable-item__header {
+        border-left: 6px solid transparent;
         color: $color__blue--base;
         height: auto;
         min-height: 35px;
@@ -15,6 +16,7 @@
 
     .expandable-item__title {
         font-size: 22px;
+        top: 0;
     }
 
     
@@ -36,8 +38,8 @@
 
     .expandable-item--open {
         .expandable-item__header {
+            border-left-color: $color__blue--base;
             color: $color__blue--base;
-            border-left: 4px solid $color__blue--base;
         }
 
         .expandable-item__icon {
@@ -53,9 +55,13 @@
 
 @include media-query(medium) {
     .contents-expandable {
+
+        .expandable-item__header {
+            min-height: 49px;
+        }
     
         .expandable-item__title {
-            font-size: 22px;
+            font-size: 26px;
         }
     }
 }

@@ -6,9 +6,13 @@
     background: $color__grey--lighter;
     height: 56px;
     line-height: 56px;
-    position: sticky;
+    position: relative;
     text-align: center;
     z-index: 1000; /* same as .site-header */
+
+    &--sticky {
+        position: sticky;
+    }
 
     //box-shadow: 0 3px 10px 0px rgba(114,114,114,0.25);
 
@@ -26,9 +30,9 @@
         border-radius: 100%;
         display: inline-block;
         height: 42px;
-        margin: 7px 21px 7px 0;
-        padding: 4px 0 0;
         min-height: 0;
+        margin: 7px 21px 7px 0;
+        padding: 0;
         width: 42px;
 
         font-size: 10px;
@@ -38,14 +42,36 @@
         &:last-child {
             margin-right: 0;
         }
+
+        &:disabled {
+            background: $color__grey--medium;
+            color: $color__grey--lighter;
+        }
+    }
+
+    &__icon {
+        display: block;
+        height: 32px;
+        margin: 0 auto -7px;
+        width: 32px;
     }
 }
 
 @include media-query(medium) {
     .document-nav {
-        position: static;
+        height: 77px;
+        line-height: 77px;
         text-align: left;
+
+        &__button {
+            font-size: 12px;
+            height: 63px;
+            width: 63px;
+        }
+
+        &__icon {
+            width: 49px;
+            height: 49px;
+        }
     }
-
-
 }
