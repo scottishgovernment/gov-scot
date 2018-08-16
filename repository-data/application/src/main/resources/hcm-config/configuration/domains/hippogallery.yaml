@@ -1,4 +1,17 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/hippogallery/readwrite:
-      hipposys:groups: [author, cmsadmin, editor, useradmin]
+      hipposys:groups: [author, cmsadmin, editor, image-editors, useradmin]
+    /hippo:configuration/hippo:domains/hippogallery/hippogallery-folder:
+      jcr:primaryType: hipposys:domainrule
+      /include-gallery-folder:
+        jcr:primaryType: hipposys:facetrule
+        hipposys:equals: true
+        hipposys:facet: jcr:path
+        hipposys:filter: false
+        hipposys:type: Reference
+        hipposys:value: /content/gallery
+    /hippo:configuration/hippo:domains/hippogallery/editor:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [image-editors]
+      hipposys:role: editor

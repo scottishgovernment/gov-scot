@@ -3,8 +3,8 @@ definitions:
     /hippo:configuration/hippo:domains/defaultwrite/readwrite:
       hipposys:groups: [admin, author, cmsadmin, core-content-authors, core-content-editors,
         editor, foi-authors, foi-editors, group-authors, group-editors, housing-authors,
-        housing-editors, policy-authors, policy-editors, publication-authors, publication-editors,
-        topics-issues-authors, topics-issues-editors, useradmin]
+        housing-editors, image-editors, policy-authors, policy-editors, publication-authors,
+        publication-editors, topics-issues-authors, topics-issues-editors, useradmin]
     /hippo:configuration/hippo:domains/defaultwrite/admin:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: []
