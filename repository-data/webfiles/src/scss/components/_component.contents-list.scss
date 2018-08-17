@@ -1,3 +1,8 @@
+/*------------------------------------*\
+    #CONTENTS LIST
+    (used on complex doc)
+\*------------------------------------*/
+
 .contents-list {
     list-style-type: none;
     margin: 0 -15px;
@@ -14,7 +19,7 @@
 
 .contents-list__icon {
     color: $color__grey--medium;
-    left: 15px;
+    left: 0;
     position: absolute;
     top: 7px;
 }
