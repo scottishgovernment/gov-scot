@@ -242,7 +242,14 @@
             <div class="expandable-item  expandable-item--open  expandable-item--init-open" id="people-expandable">
                 <button type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
                     <h3 class="expandable-item__title">${document.peopleSectionTitle!"Cabinet Secretary and Ministers"}</h3>
-                    <span class="expandable-item__icon"></span>
+                    <span class="expandable-item__icon">
+                        <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
+                            <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                        </svg>
+                        <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
+                            <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                        </svg>
+                    </span> 
                 </button>
 
                 <div class="expandable-item__body">
@@ -264,7 +271,14 @@
             <div class="expandable-item" id="directorate-expandable">
                 <button type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
                     <h3 class="expandable-item__title">${document.directoratesSectionTitle!"Directorates"}</h3>
-                    <span class="expandable-item__icon"></span>
+                    <span class="expandable-item__icon">
+                        <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
+                            <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                        </svg>
+                        <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
+                            <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                        </svg>
+                    </span> 
                 </button>
 
                 <div class="expandable-item__body">

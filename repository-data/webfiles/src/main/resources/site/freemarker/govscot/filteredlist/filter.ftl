@@ -117,7 +117,14 @@
                                 <div class="expandable-item  expandable-item--open  expandable-item--init-open">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
                                         <h4 class="expandable-item__title">Topics</h4>
-                                        <span class="expandable-item__icon"></span>
+                                        <span class="expandable-item__icon">
+                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
+                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                                            </svg>
+                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
+                                                <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                                            </svg>
+                                        </span> 
                                     </button>
 
                                     <div class="expandable-item__body scrollable scrollable--shadow">
@@ -158,7 +165,14 @@
                                 <div class="expandable-item">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
                                         <h4 class="expandable-item__title">Type</h4>
-                                        <span class="expandable-item__icon"></span>
+                                        <span class="expandable-item__icon">
+                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
+                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                                            </svg>
+                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
+                                                <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                                            </svg>
+                                        </span> 
                                     </button>
                                     <div class="expandable-item__body scrollable scrollable--shadow">
                                         <div class="scrollable__content scrollable__content--40 checkbox-group">
