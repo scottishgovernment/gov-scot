@@ -57,7 +57,7 @@
 
                     <div tabindex="0" class="carousel-item__stage">
                         <#if featuredItem.youtube?has_content>
-                            <img alt="" src="<@hst.link hippobean=featuredItem.image />" />
+                            <img alt="" src="<@hst.link hippobean=featuredItem.image.featuredlarge />" />
                             <div class="carousel-item__video">
                                 <div class="  embed-responsive  embed-responsive--16by9 ">
                                     <iframe title="youtubevideo" data-videoUrl=${featuredItem.youtube} src="${featuredItem.youtube}?enablejsapi=1&playsinline=1" allowfullscreen></iframe><!-- https://www.youtube.com/embed/{{getYouTubeId youtube}} -->
