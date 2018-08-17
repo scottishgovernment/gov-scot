@@ -5,8 +5,8 @@
 <#-- @ftlvariable name="index" type="scot.gov.www.beans.SimpleContent" -->
 
 <#assign term = "" />
-<#if parameters['term']??>
-    <#assign term = parameters['term'][0] />
+<#if parameters['q']??>
+    <#assign term = parameters['q'][0] />
 </#if>
 
 <div class="layout--search-results">

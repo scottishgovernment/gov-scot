@@ -290,7 +290,11 @@ define([
         let searchParams = this.searchParams || {};
 
         // KEYWORD / TERM
-        searchParams.term = $('#filters-search-term').val();
+        if (window.location.href.indexOf("/search/") != -1) {
+            searchParams.q = $('#filters-search-term').val();
+        } else {
+            searchParams.term = $('#filters-search-term').val();
+        }
 
         // PAGINATION
         if (initial) {

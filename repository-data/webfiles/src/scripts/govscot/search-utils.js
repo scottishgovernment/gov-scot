@@ -31,6 +31,9 @@ define([], function () {
             if (params.term) {
                 newQueryStringParams.push('term=' + params.term);
             }
+            if (params.q) {
+                newQueryStringParams.push('q=' + params.q);
+            }
             if (params.topics) {
                 newQueryStringParams.push('topics=' + params.topics.join(';'));
             }
