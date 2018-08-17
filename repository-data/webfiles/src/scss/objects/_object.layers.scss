@@ -70,6 +70,7 @@
 @include media-query(medium) {
   // makes content in a mobile layer display on larger devices
   .mobile-layer--show-tablet {
+    display: block;
     opacity: 1;
     position: static;
 

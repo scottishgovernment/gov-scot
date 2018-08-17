@@ -1,11 +1,13 @@
 define([
-    './component.expandable'
-], function (expandable) {
+    './component.expandable',
+    './component.display-toggle'
+], function (expandable, displayToggle) {
     'use strict';
 
     var complexDocumentPage = {};
 
     complexDocumentPage.init = function () {
+        displayToggle.init();
         checkDocumentTitleSticky();
         
         $(window).on('scroll resize', function () {

@@ -3,22 +3,22 @@
 \*------------------------------------*/
 
 .document-nav {
-    background: $color__grey--lighter;
+    background: $color__grey--light;
     height: 56px;
     line-height: 56px;
     position: relative;
     text-align: center;
-    z-index: 1000; /* same as .site-header */
-
+    
     &--sticky {
         position: sticky;
+        z-index: 1000; /* same as .site-header */
     }
 
     //box-shadow: 0 3px 10px 0px rgba(114,114,114,0.25);
 
     &:after {
-        background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0));
-        bottom: -5px;
+        background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0));
+        bottom: -7px;
         content: '';
         left: 0;
         position: absolute;
@@ -44,15 +44,16 @@
         }
 
         &[disabled] {
-            background: $color__grey--base;
+            background: $color__grey--medium;
             color: $color__grey--lighter;
+            opacity: 1;
         }
     }
 
     &__icon {
         display: block;
         height: 32px;
-        margin: 0 auto -7px;
+        margin: 0 auto -5px;
         width: 32px;
     }
 }

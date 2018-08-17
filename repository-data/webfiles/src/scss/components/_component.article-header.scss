@@ -38,6 +38,9 @@
 }
 
 .article-header {
+  &__icon {
+    fill: $color__blue--base;
+  }
 
   &__subtitle {
     color: $color__grey--dark;
