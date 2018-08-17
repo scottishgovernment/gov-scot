@@ -3,9 +3,9 @@
 <#macro formatFileSize document>
     <#if document.size??>
         <#if document.size gte 1000000>
-            <#assign size = (document.size/1000000)?string["0.0"] + 'MB'/>
+            <#assign size = (document.size/1000000)?string["0.0"] + ' MB'/>
         <#elseif document.size gte 1000>
-            <#assign size = (document.size/1000)?string["0.0"] + 'kB'/>
+            <#assign size = (document.size/1000)?string["0.0"] + ' kB'/>
         <#else>
             <#assign size = document.size?string + ' B'/>
         </#if>
