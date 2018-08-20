@@ -202,7 +202,7 @@
                             </span>                            
                         </button>
 
-                        <div id="revisions-body" class="expandable-item__body" role="tabpanel" aria-expanded="false" aria-labelledby="revisions-heading">
+                        <div id="revisions-body" class="expandable-item__body  expandable-item__body--with-padding" role="tabpanel" aria-expanded="false" aria-labelledby="revisions-heading">
                             <@hst.html hippohtml=document.revisions/>
                         </div>
                     </div>
