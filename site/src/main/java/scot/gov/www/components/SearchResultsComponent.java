@@ -140,7 +140,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
     }
 
     private void addTermConstraints(List<Constraint> constraints, HstRequest request) {
-        String term = param(request, "term");
+        String term = param(request, "q");
         String parsedTerm = SearchInputParsingUtils.parse(term, false);
 
         if (StringUtils.isBlank(term)) {

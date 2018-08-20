@@ -33,6 +33,10 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: hippogallery:original
             hipposysedit:type: hippogallery:image
+          /featuredlarge:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:featuredlarge
+            hipposysedit:type: hippogallery:image
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -93,5 +97,11 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Original
             field: original
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /featuredlarge:
+            jcr:primaryType: frontend:plugin
+            caption: featuredlarge
+            field: featuredlarge
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field

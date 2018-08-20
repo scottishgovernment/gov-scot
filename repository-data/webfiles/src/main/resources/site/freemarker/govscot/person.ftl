@@ -53,7 +53,7 @@
                 <div class="body-content">
 
                     <div class="leader leader--first-para">
-                        ${document.content.content}
+                        <@hst.html hippohtml=document.content/>
                     </div>
 
                     <div class="visible-xsmall">

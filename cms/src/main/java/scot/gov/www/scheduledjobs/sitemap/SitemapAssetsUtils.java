@@ -1,11 +1,13 @@
 package scot.gov.www.scheduledjobs.sitemap;
 
-import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Binary;
 import javax.jcr.Node;
+import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.ByteArrayInputStream;
@@ -27,21 +29,23 @@ public class SitemapAssetsUtils {
 
     private static final String ASSET_ROOT_SITEMAPS = "/content/assets/sitemaps";
 
-    public static final String SITEMAPS = "sitemaps";
-    public static final String JCR_DATA = "jcr:data";
+    private static final String SITEMAPS = "sitemaps";
+
+    private static final String JCR_DATA = "jcr:data";
 
     private SitemapAssetsUtils() {
         // utility class
     }
 
-    protected static void createOrUpdateResource(Session session, String prefixIn, byte [] bytes)
+    static void createOrUpdateResource(Session session, String prefixIn, byte[] bytes)
             throws RepositoryException, IOException {
         String prefix = StringUtils.isEmpty(prefixIn) ? "" : "." + prefixIn;
         String name = format("sitemap%s.xml", prefix);
         Node resource = getResource(session, name);
-        byte [] existingData = null;
+
+        byte[] existingData = null;
         if (resource.hasProperty(JCR_DATA)) {
-            existingData = IOUtils.toByteArray(resource.getProperty(JCR_DATA).getBinary().getStream());
+            existingData = binaryToBytes(resource.getProperty(JCR_DATA));
         }
 
         // do not save if the content has not changed
@@ -49,13 +53,26 @@ public class SitemapAssetsUtils {
             return;
         }
 
-        InputStream in = new ByteArrayInputStream(bytes);
         resource.setProperty("jcr:lastModified", Calendar.getInstance());
         resource.setProperty("jcr:mimeType", "application/xml");
-        resource.setProperty(JCR_DATA, session.getValueFactory().createBinary(in));
+        resource.setProperty(JCR_DATA, bytesToBinary(session, bytes));
 
         LOG.info("Saved sitemap to {}", name);
         session.save();
+    }
+
+    private static byte[] binaryToBytes(Property property) throws RepositoryException, IOException {
+        Binary binary = property.getBinary();
+        InputStream is = binary.getStream();
+        byte[] bytes = IOUtils.toByteArray(is);
+        IOUtils.closeQuietly(is);
+        binary.dispose();
+        return bytes;
+    }
+
+    private static Binary bytesToBinary(Session session, byte[] bytes) throws RepositoryException {
+        InputStream in = new ByteArrayInputStream(bytes);
+        return session.getValueFactory().createBinary(in);
     }
 
     private static Node getResource(Session session, String name) throws RepositoryException {

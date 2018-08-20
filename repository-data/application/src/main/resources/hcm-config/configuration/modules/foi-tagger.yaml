@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/foi-tagger:
+      jcr:primaryType: hipposys:module
+      hipposys:className: gov.scot.www.FOINumberDaemonModule

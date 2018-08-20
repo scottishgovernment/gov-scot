@@ -42,7 +42,7 @@
                 <div class="search-box welcome__search-box ">
                     <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
                         <label class="search-box__label hidden" for="search-box">Search</label>
-                        <input name="term" required="" id="search-box" class="search-box__input " type="text" placeholder="Search site">
+                        <input name="q" required="" id="search-box" class="search-box__input " type="text" placeholder="Search site">
                         <button type="submit" title="search" class="search-box__button button button--primary">
                             <span class="icon icon--search-white"></span>
                             <span class="hidden">Search</span>
@@ -63,14 +63,14 @@
 
                     <div tabindex="0" class="carousel-item__stage">
                         <#if featuredItem.youtube?has_content>
-                            <img alt="" src="<@hst.link hippobean=featuredItem.image />" />
+                            <img alt="" src="<@hst.link hippobean=featuredItem.image.featuredlarge />" />
                             <div class="carousel-item__video">
                                 <div class="  embed-responsive  embed-responsive--16by9 ">
                                     <iframe title="youtubevideo" data-videoUrl=${featuredItem.youtube} src="${featuredItem.youtube}?enablejsapi=1&playsinline=1" allowfullscreen></iframe><!-- https://www.youtube.com/embed/{{getYouTubeId youtube}} -->
                                 </div>
                             </div>
                         <#else>
-                            <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image />" />
+                            <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                         </#if>
                     </div>
 
@@ -92,7 +92,7 @@
                             <div class="carousel-item__title">${featuredItem.title}</div>
 
                             <div class="carousel-item__desc">
-                                ${featuredItem.teaserText.content}
+                                <@hst.html hippohtml=featuredItem.teaserText/>
                             </div>
 
                             <div class="carousel-item__link"><a href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>

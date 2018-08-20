@@ -36,3 +36,19 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: cmsadmin
+      /current-groups:
+        jcr:primaryType: hipposys:domainrule
+        /nodetype-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposys:group
+        /include-current-groups:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: __group__

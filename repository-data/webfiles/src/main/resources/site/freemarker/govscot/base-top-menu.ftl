@@ -67,7 +67,7 @@
             <div class="search-box  search-box--mobile">
                 <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
                     <label class="search-box__label hidden" for="search-box-mobile">Search</label>
-                    <input name="term" required="" id="search-box-mobile" class="search-box__input search-box__input--expandable" type="text" placeholder="Search site">
+                    <input name="q" required="" id="search-box-mobile" class="search-box__input search-box__input--expandable" type="text" placeholder="Search site">
                     <button type="submit" title="search" class="search-box__button button button--primary">
                         <span class="icon icon--search-white"></span>
                         <span class="hidden">Search</span>

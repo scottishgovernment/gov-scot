@@ -22,9 +22,6 @@
                 <#if secondaryPeople??>
                     <#assign people = secondaryPeople/>
                     <#include 'org-roles-grid.ftl' />
-                <#elseif document.secondaryOrgRole??>
-                    <#assign people = document.secondaryOrgRole/>
-                    <#include 'org-roles-grid.ftl' />
                 </#if>
                 
             </div>

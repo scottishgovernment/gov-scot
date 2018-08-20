@@ -5,8 +5,8 @@
 <#-- @ftlvariable name="index" type="scot.gov.www.beans.SimpleContent" -->
 
 <#assign term = "" />
-<#if parameters['term']??>
-    <#assign term = parameters['term'][0] />
+<#if parameters['q']??>
+    <#assign term = parameters['q'][0] />
 </#if>
 
 <div class="layout--search-results">
@@ -16,7 +16,7 @@
         <#if index??>
             <h1 class="article-header">${index.title?html}</h1>
             <div class="body-content  leader--first-para">
-                ${index.content.content}
+                <@hst.html hippohtml=index.content/>
             </div>
 
             <div class="search-box search-box--large ">
