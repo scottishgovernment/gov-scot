@@ -25,15 +25,6 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [required, non-empty]
-          /summary:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:summary
-            hipposysedit:primary: false
-            hipposysedit:type: Text
-            hipposysedit:validators: [non-empty, required]
           /content:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -42,6 +33,7 @@ definitions:
             hipposysedit:path: govscot:content
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
           /seoTitle:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -110,32 +102,20 @@ definitions:
             plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
           /title:
             jcr:primaryType: frontend:plugin
-            caption: Title
+            caption: Section title
             field: title
-            hint: This is the main title for this content item.  The title needs to
-              be descriptive and concise.
+            hint: The section title will appear below the relevant chapter heading
+              in the publication content page. The section title needs to be descriptive
+              and concise.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /summary:
-            jcr:primaryType: frontend:plugin
-            caption: Summary
-            field: summary
-            hint: 'The summary is used by the internal search and category list pages.  The
-              summary should be a short description of the content item (300 characters
-              - approx. 50 words).  Note: longer summaries will be truncated to two
-              lines of text on search result and category listing pages.'
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              maxlength: '300'
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Content
+            caption: Section content
             field: content
-            hint: The main content area for this page.
+            hint: Enter the content for this section.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
