@@ -42,12 +42,6 @@
         &:last-child {
             margin-right: 0;
         }
-
-        &[disabled] {
-            background: $color__grey--medium;
-            color: $color__grey--lighter;
-            opacity: 1;
-        }
     }
 
     &__icon {
