@@ -40,6 +40,8 @@
 .article-header {
   &__icon {
     fill: $color__blue--base;
+    margin-top: -7px;
+    max-width: 120px;
   }
 
   &__subtitle {
@@ -88,5 +90,11 @@
       font-size: 14px;
       line-height: 21px;
     }
+  }
+}
+
+@include media-query(large) {
+  .article-header__icon {
+    margin-top: 9px;
   }
 }

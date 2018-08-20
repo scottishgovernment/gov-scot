@@ -13,7 +13,6 @@
 <#else>
     <#assign subsectionTitle = "Contents"/>
     <#assign disableMenuButton = true/>
-    <#assign disableStickyNav = true/>
     <#assign isHomePage = true/>
 </#if>
 
@@ -43,12 +42,12 @@
 </div>
 <!-- exit a wrapper set in base-layout so we can make the document navigation span the whole width -->
 
-<div class="section-marker  <#if NOTisHomePage??>visible-xsmall visible-small</#if>">
+<div class="section-marker  <#if isHomePage??>visible-xsmall visible-small</#if>">
     <div class="section-marker__part  section-marker__document-title">
         <div class="wrapper">
             <div class="grid"><!--
-                --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
-                    <div class="section-marker__text-line">${document.title}</div>
+                --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
+                    <div class="section-marker__text-line" title="${document.title}">${document.title}</div>
                 </div><!--
             --></div>
         </div>
@@ -56,7 +55,7 @@
     <div class="section-marker__part  section-marker__section-title">
         <div class="wrapper">
             <div class="grid"><!--
-                --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
+                --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
                     <#if currentChapter??>
                         <#assign subsectionTitle = currentChapter.displayName/>
                     <#elseif isAboutPage??>
@@ -73,12 +72,12 @@
     </div>
 </div>
 
-<nav class="document-nav  <#if !NOTdisableStickyNav??>document-nav--sticky</#if>">
+<nav class="document-nav  document-nav--sticky">
     <div class="wrapper">
         <div class="grid"><!--
             --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
                 <@hst.link hippobean=prev var="prevlink"/>
-                <<#if prevlink??>a<#else>span disabled</#if> class="document-nav__button  button" href="<@hst.link hippobean=prev/>" title="Previous page">
+                <<#if prevlink??>a<#else>span disabled</#if> class="document-nav__button  button--primary  button" href="<@hst.link hippobean=prev/>" title="Previous page">
                     <svg class="svg-icon  mg-icon  document-nav__icon">
                         <use xlink:href="${iconspath}#sharp-chevron_left-24px"></use>
                     </svg>
@@ -86,14 +85,14 @@
                 <<#if prevlink??>/a<#else>/span</#if>><!--
 
                 <@hst.link hippobean=document var="baseurl" canonical=true/>
-                --><<#if disableMenuButton??>span disabled<#else>a</#if> class="document-nav__button  button" href="${baseurl}" title="Menu">
+                --><<#if disableMenuButton??>span disabled<#else>a</#if> class="document-nav__button  button--primary  button" href="${baseurl}" title="Menu">
                     <svg class="svg-icon  mg-icon  document-nav__icon">
                         <use xlink:href="${iconspath}#sharp-menu-24px"></use>
                     </svg>
                     Menu<<#if disableMenuButton??>/span<#else>/a</#if>><!--
 
                 <@hst.link hippobean=next var="nextlink"/>
-                --><<#if nextlink??>a<#else>span disabled</#if> class="document-nav__button  button" href="<@hst.link hippobean=next/>" title="Next page">
+                --><<#if nextlink??>a<#else>span disabled</#if> class="document-nav__button  button--primary  button" href="<@hst.link hippobean=next/>" title="Next page">
                     <svg class="svg-icon  mg-icon  document-nav__icon">
                         <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                     </svg>
@@ -224,10 +223,12 @@
                         <#assign hasAttachedDocument = true />
                     </#list>
 
+                    <#assign isLimelitItem = true/>
                     <#if hasAttachedDocument?has_content>
                         <section class="document-section">
                             <#list documents as attachedDocument>
                                 <#include '../publication/body-document-info.ftl'/>
+                                <#assign isLimelitItem = false/>
                             </#list>
                         </section>
                     </#if>
@@ -252,7 +253,7 @@
                 <h2><b>Contents</b></h2>
 
                 <div class="grid"><!--
-                    --><div class="grid__item  medium--seven-tenths">
+                    --><div class="grid__item  medium--seven-tenths  xlarge--eight-tenths">
 
                         <div class="expandable  contents-expandable">
                             <button class="button  button--secondary  button--small  button--no-margin  expand-all-button  js-expand-all">
@@ -301,13 +302,13 @@
                         </div>
 
                     </div><!--
-                    --><div class="grid__item  medium--three-tenths">
+                    --><div class="grid__item  medium--three-tenths  xlarge--two-tenths">
                         <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
                             <#assign firstDocument = documents[0]/>
                             <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
                             <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
                             <#if filenameExtension == "PDF">
-                                <a class="document-info__thumbnail-link" href="<@hst.link hippobean=firstDocument.document/>?inline=true">
+                                <a class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
                                     <img
                                         class="document-info__thumbnail-image"
                                         alt="View this document"
@@ -319,7 +320,7 @@
                                         sizes="(min-width: 768px) 165px, 107px" />
                                 </a>
                             <#else>
-                                <a title="View this document" href="<@hst.link hippobean=firstDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+                                <a title="View this document" href="${baseurl + 'about/'}" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
                             </#if>
                         </div>
 

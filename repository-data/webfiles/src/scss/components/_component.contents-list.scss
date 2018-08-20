@@ -19,7 +19,7 @@
 
 .contents-list__icon {
     color: $color__grey--medium;
-    left: 0;
+    left: 21px;
     position: absolute;
     top: 7px;
 }
@@ -29,7 +29,7 @@
     font-weight: 500;
     line-height: 21px; 
     min-height: 35px;
-    padding: 6px 15px 7px 42px;
+    padding: 6px 15px 7px 52px;
     text-decoration: none;
 
     &:hover {
@@ -53,6 +53,7 @@
 
         &__icon {
             height: 28px;
+            left: 0;
             top: 5px;
             width: 28px;
         }

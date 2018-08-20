@@ -19,20 +19,20 @@
 
                   <div class="topic__buttons">
                     <a class="button button--xsmall button--primary button--pill button--margin-right" href="<@hst.link path='/policies/?topics=${topic.title}'/>">
-                        <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium  mg-icon--right">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${iconspath}#chevron-right"></use>
+                        <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                         </svg>
                         Policies
                     </a>
                     <a class="button button--xsmall button--primary button--pill button--margin-right" href="<@hst.link path='/news/?topics=${topic.title}'/>">
-                        <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium  mg-icon--right">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${iconspath}#chevron-right"></use>
+                        <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                         </svg>
                         News
                     </a>
                     <a class="button button--xsmall button--primary button--pill button--margin-right" href="<@hst.link path='/publications/?topics=${topic.title}'/>">
-                        <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium  mg-icon--right">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${iconspath}#chevron-right"></use>
+                        <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                         </svg>
                         Publications
                     </a>

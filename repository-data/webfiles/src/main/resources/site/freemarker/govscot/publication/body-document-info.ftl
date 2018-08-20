@@ -1,4 +1,4 @@
-<div class="document-info <#if attachedDocument.highlighted>document-info--limelight</#if>">
+<div class="document-info <#if attachedDocument.highlighted || isLimelitItem>document-info--limelight</#if>">
 
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?upper_case/>
     <#assign filenameWithoutExtension = attachedDocument.document.filename?keep_before_last(".")/>
@@ -18,7 +18,7 @@
                     sizes="(min-width: 768px) 165px, 107px" />
             </a>
         <#else>
-            <a title="View this document" href="<@hst.link hippobean=attachedDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+            <a title="View this document" href="<@hst.link hippobean=attachedDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted || isLimelitItem>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
         </#if>
         </div>
     </div>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="document-info__download">
-            <a href="<@hst.link hippobean=attachedDocument.document/>" class="button  <#if attachedDocument.highlighted>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
+            <a href="<@hst.link hippobean=attachedDocument.document/>" class="button  <#if attachedDocument.highlighted || isLimelitItem>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
                 <span class="link-text">
                     Download
                 </span>

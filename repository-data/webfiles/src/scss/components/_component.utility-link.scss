@@ -16,7 +16,6 @@
   text-decoration: none;
 
   @extend %inner-shadow-top;
-  @extend %small-arrow-right;
 }
 
 @include media-query(large) {

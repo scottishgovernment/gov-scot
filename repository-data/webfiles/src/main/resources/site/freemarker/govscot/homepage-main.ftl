@@ -8,11 +8,17 @@
         --><div class="grid__item medium--four-twelfths push--medium--eight-twelfths">
         <div class="grid grid--narrow"><!--
                 --><div class="grid__item medium--six-twelfths">
-            <a data-gtm="link-note" class="utility-link" href="http://register.scotland.gov.uk/Subscribe/Step1" data-gtm="subscribe">Subscribe</a>
+            <a data-gtm="link-note" class="utility-link" href="http://register.scotland.gov.uk/Subscribe/Step1" data-gtm="subscribe">Subscribe
+                <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
+                    <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
+                </svg></a>
         </div><!--
 
                 --><div class="grid__item medium--six-twelfths">
-            <a class="utility-link" href="<@hst.link path='/about/contact-information/'/>" data-gtm="contact">Contact</a>
+            <a class="utility-link" href="<@hst.link path='/about/contact-information/'/>" data-gtm="contact">Contact
+                <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
+                    <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
+                </svg></a>
         </div><!--
             --></div>
     </div><!--
@@ -268,8 +274,8 @@
             <span class="hidden-xsmall">Get all the latest news from gov.scot&hellip;</span>
 
             <a data-gtm="link-note-sub" class="homepage-subscribe__link button  button--tertiary" href="http://register.scotland.gov.uk/Subscribe/Step1" data-gtm="news-subscribe">
-                <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium  mg-icon--right">
-                    <use xlink:href="${iconspath}#chevron-right"></use>
+                <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
+                    <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                 </svg>
                 Subscribe
             </a>

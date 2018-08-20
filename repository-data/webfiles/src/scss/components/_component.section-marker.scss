@@ -5,6 +5,7 @@
 .section-marker {
     font-size: 15px;
     line-height: 21px;
+    margin-top: -28px;
     position: sticky;
     z-index: 1000;
 
@@ -40,7 +41,7 @@
 
 @include media-query(medium) {
     .section-marker {
-        font-size: 25px;
+        font-size: 22px;
         line-height: 28px;
 
         &__text-line {

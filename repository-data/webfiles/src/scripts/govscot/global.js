@@ -19,7 +19,7 @@ define([
                     }, 300);
                 }
 
-                $('a[href^="#"]').on('click', function () {
+                $('a[href^="#"]:not(.js-display-toggle)').on('click', function () {
                     window.setTimeout(function () {
                         window.scrollTo(window.pageXOffset, window.pageYOffset - 100);
                     }, 10);
