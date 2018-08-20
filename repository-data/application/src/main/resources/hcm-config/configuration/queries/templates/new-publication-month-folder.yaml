@@ -15,4 +15,4 @@ definitions:
           jcr:primaryType: hippostd:folder
           jcr:mixinTypes: ['mix:versionable']
           jcr:uuid: b261e783-bbb5-4e31-bc61-3203100a4d83
-          hippostd:foldertype: [new-publication-folder]
+          hippostd:foldertype: [new-publication-folder, new-complex-document-folder]
