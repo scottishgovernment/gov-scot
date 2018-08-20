@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
@@ -39,19 +40,17 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             return;
         }
 
-        // we only want to listen to folder being added
-        if (!"threepane:folder-permissions:add".equals(event.interaction())) {
+        if (!event.subjectPath().startsWith("/content/documents/govscot/publications/")) {
+            return;
+        }
+
+        if (!"govscot:Publication".equals(event.documentType())) {
             return;
         }
 
         try {
-            HippoNode newFolder = (HippoNode) session.getNode(event.result());
-            if (!FolderUtils.hasFolderType(newFolder.getParent(), "new-publication-folder")) {
-                return;
-            }
-
-            Node publication = newFolder.getNode("index").getNode("index");
-            Node typeFolder = newFolder.getParent().getParent().getParent();
+            HippoNode publication = (HippoNode) getLatestVariant(session.getNodeByIdentifier(event.subjectId()));
+            Node typeFolder = publication.getParent().getParent().getParent().getParent().getParent();
             publication.setProperty("govscot:publicationType", typeFolder.getName());
             session.save();
         } catch (RepositoryException e) {
@@ -59,4 +58,12 @@ public class PublicationTypeDaemonModule implements DaemonModule {
         }
     }
 
+    private static Node getLatestVariant(Node handle) throws RepositoryException {
+        NodeIterator it = handle.getNodes();
+        Node variant = null;
+        while (it.hasNext()){
+            variant = it.nextNode();
+        }
+        return variant;
+    }
 }
