@@ -244,3 +244,11 @@ definitions:
         hst:componentconfigurationid: hst:pages/robotstxt
         hst:hiddeninchannelmanager: true
         hst:relativecontentpath: ../administration/robots
+      /ISBN:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/publicationlistpage
+        hst:relativecontentpath: publications
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/isbnpage
+          hst:relativecontentpath: publications
