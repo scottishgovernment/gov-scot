@@ -33,10 +33,10 @@
 
 <#if index??>
     <@hst.headContribution category="pageTitle">
-        <title>${document.title} - gov.scot</title>
+        <title>${index.title} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription}"/>
+        <meta name="description" content="${index.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=index canonical=true />
