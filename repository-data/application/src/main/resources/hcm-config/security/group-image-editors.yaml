@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/image-editors:
+      jcr:primaryType: hipposys:group
+      hipposys:members: []
+      hipposys:securityprovider: internal
+      hipposys:system: false
