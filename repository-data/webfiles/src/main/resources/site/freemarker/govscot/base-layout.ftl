@@ -15,8 +15,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,400italic' rel='stylesheet' type='text/css'>
 
-    <@hst.webfile var="favicon" path="/assets/images/icons/favicon.png" />
-    <link rel="icon" href="${favicon}" type="image/x-icon" />
+    <@hst.link var="favicon" path="assets/images/icons/favicon.ico" />
     <link rel="shortcut icon" href="${favicon}" type="image/x-icon" />
     
 
@@ -27,6 +26,7 @@
 
 </head>
 <body class="fontawesome site-header__container" >
+
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
     <@hst.include ref="googletagmanager"/>
