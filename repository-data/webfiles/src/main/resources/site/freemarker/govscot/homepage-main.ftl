@@ -429,7 +429,12 @@
 <script src="<@hst.webfile path="/assets/scripts/home.js"/>" type="text/javascript"></script>
 </@hst.headContribution>
 <#if document??>
-    <@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
+    <@hst.headContribution category="pageTitle">
+        <title>${document.title} - gov.scot</title>
+    </@hst.headContribution>
+    <@hst.headContribution>
+        <meta name="description" content="${document.metaDescription}"/>
+    </@hst.headContribution>
     
     <@hst.link var="canonicalitem" path="/" canonical=true />
     <#include "common/canonical.ftl" />

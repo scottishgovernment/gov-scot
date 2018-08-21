@@ -8,7 +8,6 @@
     <@hst.headContributions categoryIncludes="pageTitle"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="content">
 
     <link rel="stylesheet" type="text/css" href="<@hst.webfile path="/assets/css/main.css"/>"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -26,7 +25,6 @@
 
 </head>
 <body class="fontawesome site-header__container" >
-
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
     <@hst.include ref="googletagmanager"/>

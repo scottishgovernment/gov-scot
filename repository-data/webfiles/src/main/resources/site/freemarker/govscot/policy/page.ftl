@@ -54,6 +54,9 @@
     <@hst.headContribution category="pageTitle">
         <title>${index.title}<#if document.title != index.title>: ${document.title}</#if> - gov.scot</title>
     </@hst.headContribution>
+    <@hst.headContribution>
+        <meta name="description" content="${document.metaDescription}"/>
+    </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "../common/canonical.ftl" />

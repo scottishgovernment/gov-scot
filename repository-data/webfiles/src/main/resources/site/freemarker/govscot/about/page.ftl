@@ -3,7 +3,6 @@
 <#if document??>
     <article id="page-content" class="layout--about">
     <@hst.manageContent hippobean=document/>
-
         <div class="grid"><!--
          --><div class="grid__item medium--nine-twelfths large--seven-twelfths push--medium--three-twelfths">
                 <@hst.include ref="content"/>
@@ -29,7 +28,13 @@
 </#if>
 
 <#if document??>
-    <@hst.headContribution category="pageTitle"><title>${document.title} - gov.scot</title></@hst.headContribution>
+    <@hst.headContribution category="pageTitle">
+        <title>${document.title} - gov.scot</title>
+    </@hst.headContribution>
+    <@hst.headContribution>
+        <meta name="description" content="${document.metaDescription}"/>
+    </@hst.headContribution>
+
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "../common/canonical.ftl" />

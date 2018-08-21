@@ -16,6 +16,11 @@
 </article>
 
 <@hst.headContribution category="pageTitle"><title>Directorates - gov.scot</title></@hst.headContribution>
+<#if document??>
+    <@hst.headContribution>
+        <meta name="description" content="${document.metaDescription}"/>
+    </@hst.headContribution>
+</#if>
 
 <@hst.link var="canonicalitem" siteMapItemRefId="directorates" canonical=true/>
 <#include "common/canonical.ftl">
