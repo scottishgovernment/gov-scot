@@ -15,8 +15,10 @@
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,400italic' rel='stylesheet' type='text/css'>
 
-    <link rel="icon" href="<@hst.webfile path="/images/favicon.ico"/>" type="image/x-icon" />
-    <link rel="shortcut icon" href="<@hst.webfile path="/images/favicon.ico"/>" type="image/x-icon" />
+    <@hst.webfile var="favicon" path="/assets/images/icons/favicon.png" />
+    <link rel="icon" href="${favicon}" type="image/x-icon" />
+    <link rel="shortcut icon" href="${favicon}" type="image/x-icon" />
+    
 
     <link rel="apple-touch-icon" href="<@hst.webfile path="/images/apple-touch-icon.png"/>" />
 
