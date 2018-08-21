@@ -8,7 +8,7 @@ definitions:
         $inherited]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
-      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-publication-folder/hippostd:templates/node()
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-publication-pages-folder/hippostd:templates/node()
       /hippostd:templates:
         jcr:primaryType: hippostd:templates
         /hippostd:folder:
