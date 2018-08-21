@@ -112,7 +112,7 @@
 
                 <h2><b>About this publication</b></h2>
 
-                <dl class="content-data__list">
+                <dl class="content-data  content-data__list">
                     <dt class="content-data__label">Published:</dt>
                     <dd class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMM yyyy"/></strong></dd>
 
