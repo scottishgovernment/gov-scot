@@ -44,12 +44,19 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             return;
         }
 
-        if (!"govscot:Publication".equals(event.documentType())) {
-            return;
-        }
-
         try {
-            HippoNode publication = (HippoNode) getLatestVariant(session.getNodeByIdentifier(event.subjectId()));
+            Node handle = null;
+            // a new folder is being added
+            if ("threepane:folder-permissions:add".equals(event.interaction())) {
+                handle = session.getNode(event.returnValue()).getNode("index");
+            }
+
+            // a publication is being edited
+            if ("govscot:Publication".equals(event.documentType())) {
+                handle = session.getNodeByIdentifier(event.subjectId());
+            }
+
+            HippoNode publication = (HippoNode) getLatestVariant(handle);
             Node typeFolder = publication.getParent().getParent().getParent().getParent().getParent();
             publication.setProperty("govscot:publicationType", typeFolder.getName());
             session.save();
