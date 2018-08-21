@@ -4,4 +4,3 @@ definitions:
       jcr:primaryType: hipposys:group
       hipposys:members: []
       hipposys:securityprovider: internal
-      hipposys:system: false
