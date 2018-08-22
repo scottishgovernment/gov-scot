@@ -4,7 +4,7 @@ definitions:
       jcr:primaryType: hipposys:domain
       /readonly:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [publication-authors, publication-editors]
+        hipposys:groups: [publication-authors, publication-editors, foi-authors, foi-editors]
         hipposys:role: readonly
       /publication-types-document:
         jcr:primaryType: hipposys:domainrule
