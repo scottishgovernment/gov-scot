@@ -141,6 +141,8 @@ definitions:
       width: 720
       compression: 1.0
       optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/assetValidationService:
+      max.file.size: 25M
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcover:
       .meta:order-before: govscot:mediumcover
       jcr:primaryType: frontend:pluginconfig
