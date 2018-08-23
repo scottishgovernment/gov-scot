@@ -1,3 +1,7 @@
+<#if !isLimelitItem??>
+    <#assign isLimelitItem = false/>
+</#if>
+
 <div class="document-info <#if attachedDocument.highlighted || isLimelitItem>document-info--limelight</#if>">
 
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?upper_case/>
