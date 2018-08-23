@@ -3,5 +3,5 @@
   jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
   jcr:uuid: 4ac36430-fbdb-4894-bf86-2e8aa76a831c
   hippo:name: govscot
-  hippostd:foldertype: [new-govscot-People-folder]
+  hippostd:foldertype: [new-govscot-People-folder, new-govscot-CoverImage-folder]
   hippostd:gallerytype: ['govscot:People']

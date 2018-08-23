@@ -5,10 +5,10 @@ import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerat
 import org.hippoecm.hst.content.beans.Node;
 import java.util.Calendar;
 import java.util.Map;
-
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
+import scot.gov.www.beans.CoverImage;
 
 @HippoEssentialsGenerated(internalName = "govscot:ComplexDocument")
 @Node(jcrType = "govscot:ComplexDocument")
@@ -63,11 +63,6 @@ public class ComplexDocument extends AttributableContent {
         return getHippoHtml("govscot:contact");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:executiveSummary")
-    public HippoHtml getExecutiveSummary() {
-        return getHippoHtml("govscot:executiveSummary");
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:revisions")
     public HippoHtml getRevisions() {
         return getHippoHtml("govscot:revisions");
@@ -89,5 +84,10 @@ public class ComplexDocument extends AttributableContent {
                         RequestContextProvider.get());
         Map publicationMap = SelectionUtil.valueListAsMap(publicationValueList);
         return publicationMap.get(this.getPublicationType()).toString();
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:coverimage")
+    public CoverImage getCoverimage() {
+        return getLinkedBean("govscot:coverimage", CoverImage.class);
     }
 }

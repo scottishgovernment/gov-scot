@@ -25,6 +25,8 @@
 [govscot:ContactInformation] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:CoverImage] > hippogallery:imageset, hippogallery:relaxed
+
 [govscot:Directorate] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

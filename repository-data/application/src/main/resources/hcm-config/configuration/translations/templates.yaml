@@ -10,7 +10,7 @@ definitions:
       new-policy-detail: New policy detail
       new-govscot-FeaturedItems-folder: New folder
       new-govscot-FeaturedItems-image: New featured item image
-      new-govscot-People-folder: New folder
+      new-govscot-People-folder: New people images folder
       new-govscot-People-image: New people image
       new-govscot-BannerImages-folder: New folder
       new-govscot-BannerImages-image: New banner image
@@ -51,3 +51,5 @@ definitions:
       new-complex-document-folder: New multisectioned publication
       new-complex-document-section: New section
       new-chapter-folder: New chapter
+      new-govscot-CoverImage-image: New cover image
+      new-govscot-CoverImage-folder: New cover images folder

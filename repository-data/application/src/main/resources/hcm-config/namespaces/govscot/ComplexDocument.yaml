@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 5ff6b7b4-b7bc-4855-82f9-d0cb3cd171c3
+          jcr:uuid: 0855deb7-4acd-478e-8859-32eb187664dd
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -64,12 +64,20 @@ definitions:
             hipposysedit:path: govscot:revisions
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /coverimage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:coverimage
+            hipposysedit:primary: false
+            hipposysedit:type: hippogallerypicker:imagelink
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
           jcr:primaryType: govscot:ComplexDocument
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: a8870817-4f3b-4897-87df-be31f1cce175
+          jcr:uuid: 8ae64c7b-16fd-481a-aa02-f2d4ca176797
           govscot:isbn: ''
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
@@ -101,6 +109,12 @@ definitions:
           /govscot:revisions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:coverimage:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -144,6 +158,17 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /coverimage:
+            jcr:primaryType: frontend:plugin
+            caption: Cover image
+            field: coverimage
+            hint: Option to upload a cover image for the document. If no image is
+              uploaded the default thumbnail will be the document's cover page.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:CoverImage']
           /contact:
             jcr:primaryType: frontend:plugin
             caption: Contact details

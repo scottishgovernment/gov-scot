@@ -141,3 +141,33 @@ definitions:
       width: 720
       compression: 1.0
       optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcover:
+      .meta:order-before: govscot:mediumcover
+      jcr:primaryType: frontend:pluginconfig
+      compression: 1.0
+      height: 0
+      optimize: quality
+      upscaling: false
+      width: 107
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumcover:
+      .meta:order-before: govscot:largecover
+      jcr:primaryType: frontend:pluginconfig
+      compression: 1.0
+      height: 0
+      optimize: quality
+      upscaling: false
+      width: 165
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largecover:
+      jcr:primaryType: frontend:pluginconfig
+      compression: 1.0
+      height: 0
+      optimize: quality
+      upscaling: false
+      width: 214
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargecover:
+      jcr:primaryType: frontend:pluginconfig
+      compression: 1.0
+      height: 0
+      optimize: quality
+      upscaling: false
+      width: 330
