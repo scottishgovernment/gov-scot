@@ -18,4 +18,4 @@
 </@hst.headContribution>
 <@hst.headContribution>
     <meta name="description" content="${document.metaDescription}"/>
-</@hst.headContribution>>
+</@hst.headContribution>
