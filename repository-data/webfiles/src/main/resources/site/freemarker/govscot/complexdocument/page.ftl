@@ -203,10 +203,8 @@
 
                 <h2><b>Supporting documents</b></h2>
 
-                <#if documents??>
-                    <#if documents?size gt 0>
+                <#if documents?? && documents?size gt 0>
                         <section class="document-section">
-
                             <#list documents as attachedDocument>
                                 <#if attachedDocument?index == 0>
                                     <#assign isLimelitItem = true/>
@@ -217,20 +215,19 @@
                                 <#assign useCoverPage = false/>
                             </#list>
                         </section>
-                    </#if>
+                </#if>
 
-                    <#if groupedDocumentFolders??>
-                        <#list groupedDocumentFolders as folder>
-                            <#if folder.documents?has_content>
-                            <section class="document-section">
-                                <h2>${folder.displayName}</h2>
-                                <#list folder.documents as attachedDocument>
-                                    <#include '../publication/body-document-info.ftl'/>
-                                </#list>
-                            </section>
-                            </#if>
-                        </#list>
-                    </#if>
+                <#if groupedDocumentFolders??>
+                    <#list groupedDocumentFolders as folder>
+                        <#if folder.documents?has_content>
+                        <section class="document-section">
+                            <h2>${folder.displayName}</h2>
+                            <#list folder.documents as attachedDocument>
+                                <#include '../publication/body-document-info.ftl'/>
+                            </#list>
+                        </section>
+                        </#if>
+                    </#list>
                 </#if>
             </div><!--
         --></div>
@@ -292,10 +289,12 @@
                     </div><!--
                     --><div class="grid__item  medium--three-tenths  xlarge--two-tenths">
                         <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
-                            <#assign firstDocument = documents[0]/>
-                            <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                            <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
-                            <#if filenameExtension == "PDF">
+                            <#if documents??>
+                                <#assign firstDocument = documents[0]/>
+                                <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                            </#if>
+                            <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
                                 <a class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
                                     <#if document.coverimage?has_content>
                                         <img
@@ -320,7 +319,7 @@
                                     </#if>
                                 </a>
                             <#else>
-                                <a title="View this document" href="${baseurl + 'about/'}" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+                                <a title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
                             </#if>
                         </div>
 
@@ -337,7 +336,7 @@
                             </div>
                         </a>
 
-                        <#if (documents?size gt 1) || groupedDocumentFolders??>
+                        <#if (documents?? && documents?size gt 1) || groupedDocumentFolders??>
                             <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
                                 <div class="icon-button__content">
                                     <span class="icon-button__icon">

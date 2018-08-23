@@ -32,37 +32,21 @@ public class ComplexDocumentComponent extends BaseHstComponent {
         HippoBean document = context.getContentBean();
 
         if (document == null) {
-            try {
-                response.setStatus(404);
-                response.forward("/pagenotfound");
-                return;
-            }  catch (IOException e) {
-                throw new HstComponentException("Forward failed", e);
-            }
+            send404(response);
         }
 
         HippoBean publication = getPublication(document);
 
         if (publication == null) {
-            try {
-                response.setStatus(404);
-                response.forward("/pagenotfound");
-                return;
-            }  catch (IOException e) {
-                throw new HstComponentException("Forward failed", e);
-            }
+            send404(response);
         }
 
-        setDocuments(publication, request);
+        setDocuments(publication, request, response);
         setChapters(publication, document, request);
         request.setAttribute("document", publication);
 
         if (request.getPathInfo().endsWith("/about/")) {
             request.setAttribute("isAboutPage", true);
-        }
-
-        if (request.getPathInfo().endsWith("/documents/")) {
-            request.setAttribute("isDocumentsPage", true);
         }
     }
 
@@ -87,10 +71,15 @@ public class ComplexDocumentComponent extends BaseHstComponent {
         return document;
     }
 
-    private void setDocuments(HippoBean publication, HstRequest request) {
+    private void setDocuments(HippoBean publication, HstRequest request, HstResponse response) {
 
         HippoBean publicationFolder = publication.getParentBean();
+        Boolean isDocumentsPage = request.getPathInfo().endsWith("/documents/");
+
         if (!hasDocuments(publication.getParentBean())) {
+            if (isDocumentsPage) {
+                send404(response);
+            }
             return;
         }
 
@@ -99,8 +88,34 @@ public class ComplexDocumentComponent extends BaseHstComponent {
         request.setAttribute(DOCUMENTS, documentFolder.getDocuments());
 
         // look for grouped documents which are stored in their own named sub-folders
-        if (!documentFolder.getFolders().isEmpty()) {
+        Boolean hasGroupedFolderContent = false;
+
+        // check if any of those folders have content
+        for (HippoFolderBean folder : documentFolder.getFolders()){
+            if (!folder.getDocuments().isEmpty()){
+                hasGroupedFolderContent = true;
+            }
+        }
+
+        if (hasGroupedFolderContent) {
             request.setAttribute("groupedDocumentFolders", documentFolder.getFolders());
+        }
+
+        // send a 404 for the /documents/ path if there's only one or zero documents and no grouped folders
+        if (isDocumentsPage && (hasGroupedFolderContent || documentFolder.getDocuments().size() > 1)){
+            request.setAttribute("isDocumentsPage", true);
+        } else if (isDocumentsPage) {
+            send404(response);
+        }
+    }
+
+    private void send404(HstResponse response){
+        try {
+            response.setStatus(404);
+            response.forward("/pagenotfound");
+            return;
+        }  catch (IOException e) {
+            throw new HstComponentException("Forward failed", e);
         }
     }
 
