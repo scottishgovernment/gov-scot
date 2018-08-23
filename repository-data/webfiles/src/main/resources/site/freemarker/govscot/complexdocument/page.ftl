@@ -56,15 +56,6 @@
         <div class="wrapper">
             <div class="grid"><!--
                 --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
-                    <#if currentChapter??>
-                        <#assign subsectionTitle = currentChapter.displayName/>
-                    <#elseif isAboutPage??>
-                        <#assign subsectionTitle = "About this publication"/>
-                    <#elseif isDocumentsPage??>
-                        <#assign subsectionTitle = "Supporting documents"/>
-                    <#else>
-                        <#assign subsectionTitle = "Contents"/>
-                    </#if>
                     <div class="section-marker__text-line">${subsectionTitle}</div>
                 </div><!--
             --></div>
