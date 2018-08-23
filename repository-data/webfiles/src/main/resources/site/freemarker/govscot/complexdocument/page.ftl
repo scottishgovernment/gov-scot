@@ -184,6 +184,7 @@
                 <#if documents?has_content>
                     <div class="documents">
                         <#assign attachedDocument = documents[0]/>
+                        <#assign useCoverPage = true/>
                         <#include '../publication/body-document-info.ftl'/>
                     </div>
                 </#if>
@@ -218,15 +219,14 @@
                 <h2><b>Supporting documents</b></h2>
 
                 <#if documents??>
-                    <#assign hasAttachedDocument = '' />
-                    <#list documents as attachedDocument>
-                        <#assign hasAttachedDocument = true />
-                    </#list>
-
-                    <#assign isLimelitItem = true/>
-                    <#if hasAttachedDocument?has_content>
+                    <#if documents?size gt 0>
                         <section class="document-section">
+
                             <#list documents as attachedDocument>
+                                <#if attachedDocument?index == 0>
+                                    <#assign isLimelitItem = true/>
+                                    <#assign useCoverPage = true/>
+                                </#if>
                                 <#include '../publication/body-document-info.ftl'/>
                                 <#assign isLimelitItem = false/>
                             </#list>
@@ -309,15 +309,27 @@
                             <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
                             <#if filenameExtension == "PDF">
                                 <a class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
-                                    <img
-                                        class="document-info__thumbnail-image"
-                                        alt="View this document"
-                                        src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                        srcset="
-                                                <#list firstDocument.thumbnails as thumbnail>
-                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                </#list>"
-                                        sizes="(min-width: 768px) 165px, 107px" />
+                                    <#if document.coverimage?has_content>
+                                        <img
+                                            alt="View this document"
+                                            class="document-info__thumbnail-image"
+                                            src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                            srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                            sizes="(min-width: 768px) 165px, 107px" />
+                                    <#else>
+                                        <img
+                                            class="document-info__thumbnail-image"
+                                            alt="View this document"
+                                            src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                            srcset="
+                                            <#list firstDocument.thumbnails as thumbnail>
+                                                <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                            </#list>"
+                                            sizes="(min-width: 768px) 165px, 107px" />
+                                    </#if>
                                 </a>
                             <#else>
                                 <a title="View this document" href="${baseurl + 'about/'}" class="file-icon--<#if attachedDocument.highlighted>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
