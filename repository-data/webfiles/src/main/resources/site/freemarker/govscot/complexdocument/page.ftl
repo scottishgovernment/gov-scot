@@ -29,13 +29,7 @@
             --><div class="grid__item  medium--seven-twelfths">
                 
                 <h1 class="article-header__title">${document.title}</h1>
-
-                <@hst.html var="executiveSummary" hippohtml=document.executiveSummary/>
-                <#if executiveSummary?has_content>
-                    ${executiveSummary}
-                <#else>
-                    ${document.summary}
-                </#if>
+                ${document.summary}
             </div><!--
         --></div>
     </header>
@@ -220,18 +214,21 @@
                                 </#if>
                                 <#include '../publication/body-document-info.ftl'/>
                                 <#assign isLimelitItem = false/>
+                                <#assign useCoverPage = false/>
                             </#list>
                         </section>
                     </#if>
 
                     <#if groupedDocumentFolders??>
                         <#list groupedDocumentFolders as folder>
+                            <#if folder.documents?has_content>
                             <section class="document-section">
                                 <h2>${folder.displayName}</h2>
                                 <#list folder.documents as attachedDocument>
                                     <#include '../publication/body-document-info.ftl'/>
                                 </#list>
                             </section>
+                            </#if>
                         </#list>
                     </#if>
                 </#if>
@@ -340,7 +337,7 @@
                             </div>
                         </a>
 
-                        <#if documents?has_content>
+                        <#if (documents?size gt 1) || groupedDocumentFolders??>
                             <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
                                 <div class="icon-button__content">
                                     <span class="icon-button__icon">
