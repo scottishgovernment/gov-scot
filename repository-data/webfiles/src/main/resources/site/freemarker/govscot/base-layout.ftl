@@ -16,9 +16,6 @@
 
     <@hst.link var="favicon" path="assets/images/icons/favicon.ico" />
     <link rel="shortcut icon" href="${favicon}" type="image/x-icon" />
-    
-
-    <link rel="apple-touch-icon" href="<@hst.webfile path="/images/apple-touch-icon.png"/>" />
 
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
     <@hst.headContributions categoryExcludes="footerScripts, pageTitle" xhtml=true/>
