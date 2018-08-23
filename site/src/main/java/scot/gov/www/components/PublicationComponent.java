@@ -34,6 +34,7 @@ public class PublicationComponent extends BaseHstComponent {
             try {
                 response.setStatus(404);
                 response.forward("/pagenotfound");
+                return;
             }  catch (IOException e) {
                 throw new HstComponentException("Forward failed", e);
             }

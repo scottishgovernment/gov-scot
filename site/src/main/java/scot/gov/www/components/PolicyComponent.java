@@ -29,8 +29,7 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 /**
  * Get the information required to render a Policy or Policy in Detail page.
  */
-public class
-PolicyComponent extends BaseHstComponent {
+public class PolicyComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PolicyComponent.class);
 
