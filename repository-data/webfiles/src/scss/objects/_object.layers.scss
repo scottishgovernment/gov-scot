@@ -5,6 +5,7 @@
 .mobile-layer {
   display: none;
   opacity: 0;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   right: 0;

@@ -8,6 +8,7 @@
   border-bottom: 1px solid $color__grey--light;
   height: 77px;
   overflow: visible;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
