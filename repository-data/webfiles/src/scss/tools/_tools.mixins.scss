@@ -1,72 +1,9 @@
-/**
- * Creates a RGBA tint of an input color.
- * Not suitable for browsers that don't like RGBA.
+/*
+ * Position: sticky fallback for browsers that do not support position: sticky
+ * (makes sticky elements relatively positioned instead)
  */
-@function tint($color, $amount) {
-    @return rgba(red($color), green($color), blue($color), $amount);
-}
-
-/**
- * Creates a solid tint of an input color against a supplied background color.
- * Suitable for browsers that don't like RGBA.
- * Basically an alias for MIX with a decimal for amount
- */
-@function tint-solid($color, $background, $amount) {
-    @return mix($color, $background, $amount * 100);
-}
-
-
-/**
- * Mixin for retina-ready images.
- * Retrieved from Signal vs Noise at:
- * https://signalvnoise.com/posts/3271-easy-retina-ready-images-using-scss
- *
- * Example usage:
- *     div.logo {
- *         background: url("logo.png") no-repeat;
- *         @include image-2x("logo2x.png", 100px, 25px);
- *     }
- */
-@mixin image-2x($image, $width, $height) {
-  @media only screen and (min--moz-device-pixel-ratio: 1.3),
-         only screen and (-o-min-device-pixel-ratio: 2.6/2),
-         only screen and (-webkit-min-device-pixel-ratio: 1.3),
-         only screen and (min-device-pixel-ratio: 1.3),
-         only screen and (min-resolution: 1.3dppx) {
-    /* on retina, use image that's scaled by 2 */
-    background-image: url($image);
-    background-size: $width $height;
-  }
-}
-
-@mixin animation($animate...) {
-  $max: length($animate);
-  $animations: '';
-
-  @for $i from 1 through $max {
-    $animations: #{$animations + nth($animate, $i)};
-
-    @if $i < $max {
-      $animations: #{$animations + ", "};
-    }
-  }
-  -webkit-animation: $animations;
-  -moz-animation:    $animations;
-  -o-animation:      $animations;
-  animation:         $animations;
-}
-
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-  @-moz-keyframes #{$animationName} {
-    @content;
-  }
-  @-o-keyframes #{$animationName} {
-    @content;
-  }
-  @keyframes #{$animationName} {
-    @content;
-  }
+@mixin sticky() {
+  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
 }

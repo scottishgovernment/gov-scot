@@ -10,8 +10,7 @@
     text-align: center;
     
     &--sticky {
-        position: -webkit-sticky;
-        position: sticky;
+        @include sticky();
         z-index: 1000; /* same as .site-header */
     }
 

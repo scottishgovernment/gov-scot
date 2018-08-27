@@ -20,7 +20,9 @@ define([
 
     function checkDocumentTitleSticky () {
 
-        if ($('.document-nav--sticky').length) {
+        let documentNavSticky = $('.document-nav--sticky');
+
+        if (documentNavSticky.length && documentNavSticky.css('position').match(/sticky/).length) {
 
             // set top offset of section marker (height of site-header--scaled)
             // set top offset of document nav (section marker height + site header height)
