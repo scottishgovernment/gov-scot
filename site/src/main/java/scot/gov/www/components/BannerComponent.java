@@ -16,7 +16,7 @@ public class BannerComponent extends BaseHstComponent {
 
         String hostGroupName = requestContext.getResolvedMount().getResolvedVirtualHost().getVirtualHost().getHostGroupName();
 
-        if (!hostGroupName.equals("www")) {
+        if (!"www".equals(hostGroupName)) {
             request.setAttribute("showBetaBanner", true);
         }
 
