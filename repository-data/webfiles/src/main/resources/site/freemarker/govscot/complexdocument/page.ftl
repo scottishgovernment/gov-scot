@@ -29,7 +29,7 @@
             --><div class="grid__item  medium--seven-twelfths">
                 
                 <h1 class="article-header__title">${document.title}</h1>
-                ${document.summary}
+                <p>${document.summary}</p>
             </div><!--
         --></div>
     </header>
