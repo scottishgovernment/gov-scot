@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:components/beta-banner:
+      jcr:primaryType: hst:component
+      hst:componentclassname: scot.gov.www.components.BetaBannerComponent
+      hst:template: beta-banner

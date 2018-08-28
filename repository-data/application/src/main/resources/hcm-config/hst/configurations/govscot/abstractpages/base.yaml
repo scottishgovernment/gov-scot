@@ -39,3 +39,6 @@ definitions:
       /googletagmanager:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/googletagmanager
+      /beta-banner:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:components/beta-banner
