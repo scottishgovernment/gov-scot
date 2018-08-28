@@ -94,7 +94,7 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
     }
 
     private HippoBean findByGovScotUrl(HstRequest request) {
-        String govscotUrl = String.format("http://www.gov.scot%s", request.getPathInfo());
+        String govscotUrl = String.format("https://www.gov.scot%s", request.getPathInfo());
 
         // if the url ends with /downloads then remove it since there is no downloads page in the new version
         // of publications
