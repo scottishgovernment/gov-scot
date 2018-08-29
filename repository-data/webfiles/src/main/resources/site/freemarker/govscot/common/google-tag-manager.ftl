@@ -8,7 +8,6 @@
         'gtm.whitelist': ['google', 'jsm', 'lcl', 'mf'],
         </#if>
         'format' : '${gtmName}',
-        'userType': 'internal',
         'siteid' : '${gtmId}'
     }
     ];
