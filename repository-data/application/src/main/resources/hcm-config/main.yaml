@@ -7,10 +7,7 @@ definitions:
     /hippo:configuration/hippo:modules/webfiles/hippo:moduleconfig:
       watchedModules: [repository-data/webfiles]
     /hippo:configuration/hippo:domains/hippofolders/readonly:
-      hipposys:groups: [cmsadmin, core-content-authors, core-content-editors, document-unlocker,
-        foi-authors, foi-editors, group-authors, group-editors, image-editors, mourning-banner,
-        policy-authors, policy-editors, publication-authors, publication-editors,
-        sitewriters, topics-issues-authors, topics-issues-editors, useradmin]
+      hipposys:groups: [image-editors, mourning-banner, sitewriters, useradmin]
     /hippo:configuration/hippo:domains/preview-documents/readonly:
       hipposys:groups: [previewusers]
     /hippo:configuration/hippo:domains/live-documents/readonly:

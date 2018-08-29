@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:workflows/threepane/folder:
+      hipposys:privileges: ['hippo:author']
