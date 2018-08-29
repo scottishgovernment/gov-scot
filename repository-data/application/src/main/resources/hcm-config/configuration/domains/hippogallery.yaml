@@ -13,5 +13,5 @@ definitions:
         hipposys:value: /content/gallery
     /hippo:configuration/hippo:domains/hippogallery/editor:
       jcr:primaryType: hipposys:authrole
-      hipposys:groups: [image-editors]
+      hipposys:groups: [cmsadmin, image-editors]
       hipposys:role: editor
