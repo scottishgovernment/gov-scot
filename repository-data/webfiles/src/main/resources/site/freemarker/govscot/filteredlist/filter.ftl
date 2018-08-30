@@ -127,7 +127,7 @@
                                         </span> 
                                     </button>
 
-                                    <div class="expandable-item__body scrollable scrollable--shadow">
+                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
                                         <div class="scrollable__content scrollable__content--40 checkbox-group">
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />
@@ -174,7 +174,7 @@
                                             </svg>
                                         </span> 
                                     </button>
-                                    <div class="expandable-item__body scrollable scrollable--shadow">
+                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable  scrollable--shadow">
                                         <div class="scrollable__content scrollable__content--40 checkbox-group">
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />
