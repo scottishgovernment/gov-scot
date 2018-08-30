@@ -30,7 +30,7 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <hippo.release.version>12.4.0</hippo.release.version>
+    <hippo.release.version>12.4.1</hippo.release.version>
     <hippo.maven.plugin.l10n>2.2.0</hippo.maven.plugin.l10n>
     <freemarker.version>2.3.24-incubating</freemarker.version>
 
