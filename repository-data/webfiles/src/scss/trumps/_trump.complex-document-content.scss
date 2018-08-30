@@ -1,0 +1,17 @@
+.complex-document {
+    h3.complex-document__title {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 35px;
+        margin-bottom: 21px;
+    }
+}
+
+@include media-query(medium) {
+    .complex-document {
+        h3.complex-document__title {
+            font-size: 46px;
+            line-height: 56px;
+        }
+    }
+}

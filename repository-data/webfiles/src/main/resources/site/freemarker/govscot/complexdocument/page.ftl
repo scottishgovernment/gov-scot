@@ -18,15 +18,15 @@
 
 <@hst.manageContent hippobean=document/>
 
-    <header class="article-header has-icon has-icon--guide">
+    <header class="article-header   has-icon  has-icon--guide">
     <p class="article-header__label">Publication - ${document.label}</p>
         <div class="grid"><!--
-            --><div class="grid__item medium--two-twelfths  hidden-small  hidden-xsmall">
+            --><div class="grid__item  large--two-twelfths  hidden-small  hidden-xsmall  hidden-medium">
                 <svg class="svg-icon  mg-icon  mg-icon--full  article-header__icon">
                     <use xlink:href="${iconspath}#format-publication"></use>
                 </svg>
             </div><!--
-            --><div class="grid__item  medium--seven-twelfths">
+            --><div class="grid__item  large--seven-twelfths">
                 
                 <h1 class="article-header__title">${document.title}</h1>
                 <p>${document.summary}</p>
@@ -36,11 +36,11 @@
 </div>
 <!-- exit a wrapper set in base-layout so we can make the document navigation span the whole width -->
 
-<div class="section-marker  <#if isHomePage??>visible-xsmall visible-small</#if>">
+<div class="section-marker  <#if isHomePage??>visible-xsmall  visible-small</#if>">
     <div class="section-marker__part  section-marker__document-title">
         <div class="wrapper">
             <div class="grid"><!--
-                --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
+                --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
                     <div class="section-marker__text-line" title="${document.title}">${document.title}</div>
                 </div><!--
             --></div>
@@ -49,7 +49,7 @@
     <div class="section-marker__part  section-marker__section-title">
         <div class="wrapper">
             <div class="grid"><!--
-                --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
+                --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
                     <div class="section-marker__text-line">${subsectionTitle}</div>
                 </div><!--
             --></div>
@@ -60,7 +60,7 @@
 <nav class="document-nav  document-nav--sticky">
     <div class="wrapper">
         <div class="grid"><!--
-            --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
+            --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
                 <@hst.link hippobean=prev var="prevlink"/>
                 <<#if prevlink??>a<#else>span disabled</#if> class="document-nav__button  button--primary  button" href="<@hst.link hippobean=prev/>" title="Previous page">
                     <svg class="svg-icon  mg-icon  document-nav__icon">
@@ -93,7 +93,7 @@
     <#if isAboutPage??>
 
         <div class="grid"><!--
-            --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
+            --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
 
                 <h2><b>About this publication</b></h2>
 
@@ -133,7 +133,7 @@
                             <a href="${link}">${document.responsibleDirectorate.title}</a><!--
                             --><#if document.secondaryResponsibleDirectorate?has_content><!--
                             -->, <!--
-                            --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
+                            --><a href="#secondary-responsible-directorates" class="content-data__expand  js-display-toggle">
                             &#43;${document.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
 
                                 <span id="secondary-responsible-directorates" class="content-data__additional">
@@ -199,7 +199,7 @@
 
     <#elseif isDocumentsPage??>
         <div class="grid"><!--
-            --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
+            --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
 
                 <h2><b>Supporting documents</b></h2>
 
@@ -234,7 +234,7 @@
 
     <#elseif currentPage == document>
         <div class="grid"><!--
-            --><div class="grid__item  medium--ten-twelfths  push--medium--two-twelfths">
+            --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
                 <h2><b>Contents</b></h2>
 
                 <div class="grid"><!--
@@ -355,14 +355,15 @@
             </div><!--
         --></div>
     <#else>
-        <div class="grid"><!--
-            --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
-                <h3>${currentChapter.displayName}</h3>
-                <h4>${currentPage.title}</h4>
+        <article class="complex-document">
+            <div class="grid"><!--
+                --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
+                    <h3 class="complex-document__title">${currentPage.title}</h3>
 
-                <@hst.html hippohtml=currentPage.content/>
-            </div><!--
-        --></div>
+                    <@hst.html hippohtml=currentPage.content/>
+                </div><!--
+            --></div>
+        </article>
     </#if>
 </div>
 <!-- /end .wrapper -->
@@ -370,7 +371,7 @@
 
 <div class="wrapper">
     <div class="grid"><!--
-        --><div class="grid__item  medium--seven-twelfths  push--medium--two-twelfths">
+        --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
             <#include '../common/feedback-wrapper.ftl'>
         </div><!--
     --></div>
