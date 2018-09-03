@@ -3,3 +3,4 @@ definitions:
     /hippo:configuration/hippo:modules/thumbnails:
       jcr:primaryType: hipposys:module
       hipposys:className: gov.scot.www.ThumbnailsDaemonModule
+      hipposys:cmsonly: true

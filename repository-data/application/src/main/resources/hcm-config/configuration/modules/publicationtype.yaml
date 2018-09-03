@@ -3,3 +3,4 @@ definitions:
     /hippo:configuration/hippo:modules/publicationtype:
       jcr:primaryType: hipposys:module
       hipposys:className: gov.scot.www.PublicationTypeDaemonModule
+      hipposys:cmsonly: true

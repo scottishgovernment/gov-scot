@@ -3,3 +3,4 @@ definitions:
     /hippo:configuration/hippo:modules/roleenricher:
       jcr:primaryType: hipposys:module
       hipposys:className: scot.gov.www.EnrichRoleDaemonModule
+      hipposys:cmsonly: true

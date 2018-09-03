@@ -3,3 +3,4 @@ definitions:
     /hippo:configuration/hippo:modules/foinumbers:
       jcr:primaryType: hipposys:module
       hipposys:className: gov.scot.www.FOINumberDaemonModule
+      hipposys:cmsonly: true
