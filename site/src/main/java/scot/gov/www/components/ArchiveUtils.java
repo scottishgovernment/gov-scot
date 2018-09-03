@@ -28,7 +28,7 @@ public class ArchiveUtils {
 
         String archiveUrl;
 
-        if ("beta.gov.scot".equals(request.getHeader("Host"))) {
+        if (request.getHeader("Host").endsWith("beta.gov.scot")) {
             archiveUrl = String.format("https://www.gov.scot%s", path);
         } else {
             archiveUrl = String.format("https://www2.gov.scot%s", path);
