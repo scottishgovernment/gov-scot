@@ -23,6 +23,7 @@ define([
         let documentNavSticky = $('.document-nav--sticky');
 
         if (documentNavSticky.length && documentNavSticky.css('position').match(/sticky/).length) {
+            let stickyPropertyName = documentNavSticky.css('position');
 
             // set top offset of section marker (height of site-header--scaled)
             // set top offset of document nav (section marker height + site header height)
@@ -37,7 +38,10 @@ define([
     
             sectionMarker.css({position: 'static'});
             const triggerPoint = sectionMarker.offset().top - headerHeight;
-            sectionMarker.css({position: 'sticky'});
+            sectionMarker.css({position: stickyPropertyName});
+
+
+
 
             if ($(window).scrollTop() > triggerPoint) {
                 $('.section-marker__document-title').addClass('section-marker__document-title--visible')
