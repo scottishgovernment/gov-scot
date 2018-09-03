@@ -13,6 +13,9 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Event listener to set the publication type fiedl depending on the folder.
@@ -52,7 +55,9 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             }
 
             // a publication is being edited
-            if ("govscot:Publication".equals(event.documentType())) {
+            Set<String> publicationtypes = new HashSet<>();
+            Collections.addAll(publicationtypes, "govscot:Publication", "govscot:ComplexDocument", "govscot:Minutes", "govscot:SpeechOrStatement");
+            if (publicationtypes.contains(event.documentType())) {
                 handle = session.getNodeByIdentifier(event.subjectId());
             }
 
