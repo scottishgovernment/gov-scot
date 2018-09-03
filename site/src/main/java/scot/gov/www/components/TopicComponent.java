@@ -102,16 +102,17 @@ public class TopicComponent extends BaseHstComponent {
 
     private void populateConsultations(HippoBean base, Topic topic, HstRequest request) {
         HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
+        if (query == null) {
+            return;
+        }
 
         try {
-            if(query != null){
-                Filter parentFilter = query.createFilter();
-                parentFilter.addContains("govscot:publicationType", "consultation-paper");
-                BaseFilter incomingFilter = query.getFilter();
-                query.setFilter(incomingFilter);
-                parentFilter.addAndFilter(incomingFilter);
-                executeQueryLoggingException(query, request, "consultations");
-            }
+            Filter parentFilter = query.createFilter();
+            parentFilter.addContains("govscot:publicationType", "consultation-paper");
+            BaseFilter incomingFilter = query.getFilter();
+            query.setFilter(incomingFilter);
+            parentFilter.addAndFilter(incomingFilter);
+            executeQueryLoggingException(query, request, "consultations");
         } catch (QueryException e) {
             LOG.error("Unable to get Consultations for topic {}", topic.getPath(), e);
         }
@@ -119,16 +120,17 @@ public class TopicComponent extends BaseHstComponent {
 
     private void populatePublications(HippoBean base, Topic topic, HstRequest request) {
         HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
+        if (query == null) {
+            return;
+        }
 
         try {
-            if(query != null){
-                Filter parentFilter = query.createFilter();
-                parentFilter.addNotContains("govscot:publicationType", "consultation-paper");
-                BaseFilter incomingFilter = query.getFilter();
-                query.setFilter(incomingFilter);
-                parentFilter.addAndFilter(incomingFilter);
-                executeQueryLoggingException(query, request, "publications");
-            }
+            Filter parentFilter = query.createFilter();
+            parentFilter.addNotContains("govscot:publicationType", "consultation-paper");
+            BaseFilter incomingFilter = query.getFilter();
+            query.setFilter(incomingFilter);
+            parentFilter.addAndFilter(incomingFilter);
+            executeQueryLoggingException(query, request, "publications");
         } catch (QueryException e) {
             LOG.error("Unable to get Publications for topic {}", topic.getPath(), e);
         }
