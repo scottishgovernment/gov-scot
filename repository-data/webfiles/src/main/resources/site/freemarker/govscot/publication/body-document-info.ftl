@@ -30,7 +30,7 @@
                 </#if>
             </a>
         <#else>
-            <a title="View this document" href="<@hst.link hippobean=attachedDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted || isLimelitItem>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+            <a title="View this document" href="<@hst.link hippobean=attachedDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
         </#if>
         </div>
     </div>
