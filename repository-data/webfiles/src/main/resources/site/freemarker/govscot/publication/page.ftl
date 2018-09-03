@@ -244,6 +244,11 @@
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" hippobean=document canonical=true />
+    <#if prev??>
+        <@hst.link var="canonicalitem" hippobean=currentPage canonical=true />
+    <#else>
+        <@hst.link var="canonicalitem" hippobean=document canonical=true />
+    </#if>
+
     <#include "../common/canonical.ftl" />
 </#if>
