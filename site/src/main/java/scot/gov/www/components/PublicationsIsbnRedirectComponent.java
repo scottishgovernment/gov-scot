@@ -24,6 +24,7 @@ import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
+import static scot.gov.www.components.ArchiveUtils.sendArchiveRedirect;
 
 /**
  * Redirect isbn urls
@@ -43,6 +44,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
 
         if (bean != null) {
             final HstLink link = context.getHstLinkCreator().create(bean, context);
+            LOG.info("Redirecting to ISBN {} -> {}", isbn, link.getPath());
             HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
             return;
         }
@@ -50,7 +52,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
         // check to see if we recorded this isbn in the historical publication urls
         String historicalPublicationPath = findHistoricalPublicationUrl(isbn, context);
         if (StringUtils.isNotBlank(historicalPublicationPath)) {
-            PublicationsRedirectComponent.sendPublicationsRedirect(historicalPublicationPath, request, response);
+            sendArchiveRedirect(historicalPublicationPath, request, response);
             return;
         }
 
@@ -71,6 +73,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
     }
 
     private HippoBean findByIsbn(String isbn, HstRequestContext requestContext) {
+        StringUtils.equals("", "");
         HstQuery query = HstQueryBuilder
                 .create(requestContext.getSiteContentBaseBean())
                 .ofTypes(Publication.class)

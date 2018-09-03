@@ -13,6 +13,9 @@ import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
+import static scot.gov.www.components.ArchiveUtils.sendArchiveRedirect;
+
 /**
  * Componenet used to support url aliases from Rubric.
  */
@@ -26,7 +29,14 @@ public class UrlAliasRedirectComponent extends BaseHstComponent {
         // check if this url is a known url alias
         String url = findAlias(request);
         if (url != null) {
+            LOG.info("Redirecting to url alias {} -> {}", request.getPathInfo(), url);
             HstResponseUtils.sendPermanentRedirect(request, response, url);
+            return;
+        }
+
+        // check if this url is an archived url
+        if (isArchivedUrl(request)) {
+            sendArchiveRedirect(request.getPathInfo(), request, response);
             return;
         }
 
@@ -52,4 +62,6 @@ public class UrlAliasRedirectComponent extends BaseHstComponent {
             return null;
         }
     }
+
 }
+

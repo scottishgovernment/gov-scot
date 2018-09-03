@@ -18,11 +18,11 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.PublicationPage;
 
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 import java.io.IOException;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
+import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
+import static scot.gov.www.components.ArchiveUtils.sendArchiveRedirect;
 
 /**
  * Redirect old gov.scot style publication urls.
@@ -41,14 +41,6 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationsRedirectComponent.class);
 
-    // Initially redirect to the current gov.scot site.
-    // However we will need to decide wat happens when:
-    // - www.gov.scot becomes www2.gov.scot
-    // - when www2.gov.scot is decomissioned and publications are archived.
-    private static final String ARCHIVE_TEMPLATE = "http://www.gov.scot%s";
-
-    private static final boolean PERMANENT_ARCHIVE = false;
-
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
 
@@ -57,13 +49,14 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
         if (bean != null) {
             HstRequestContext context = request.getRequestContext();
             final HstLink link = context.getHstLinkCreator().create(bean, context);
+            LOG.info("Redirecting govscot publicaiton url {} to {}", request.getPathInfo(), link.getPath());
             HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
             return;
         }
 
         // check if this url is a known publications url
         if (isArchivedUrl(request)) {
-            sendPublicationsRedirect(request.getPathInfo(), request, response);
+            sendArchiveRedirect(request.getPathInfo(), request, response);
             return;
         }
 
@@ -74,22 +67,6 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
             return;
         }  catch (IOException e) {
             throw new HstComponentException("forward failed", e);
-        }
-    }
-
-    /**
-     * Rerirect a publications url.
-     *
-     * Not that this method is also used by PublicationsIsbnRedirectComponent as it shares the same tmeplate and
-     * logic determining if the redirect should be permanent or not.
-     */
-    public static void sendPublicationsRedirect(String path, HstRequest request, HstResponse response) {
-        String archiveUrl = String.format(ARCHIVE_TEMPLATE, path);
-        LOG.info("Redirecting publication path {} to archive: {}", path, archiveUrl);
-        if (PERMANENT_ARCHIVE) {
-            HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
-        } else {
-            HstResponseUtils.sendRedirect(request, response, archiveUrl);
         }
     }
 
@@ -122,17 +99,6 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
         } catch (QueryException e) {
             LOG.error("Failed to get publication by govscotUrl slug {}", govscotUrl, e);
             return null;
-        }
-    }
-
-    private boolean isArchivedUrl(HstRequest request)  {
-        try {
-            Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects%s", request.getPathInfo());
-            return session.nodeExists(path);
-        } catch (RepositoryException e) {
-            LOG.error("Failed to find publications redirect {}", request.getPathInfo(), e);
-            return false;
         }
     }
 }

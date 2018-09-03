@@ -48,6 +48,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         if (bean != null) {
             HstRequestContext context = request.getRequestContext();
             final HstLink link = context.getHstLinkCreator().create(bean, context);
+            LOG.info("Redirecting news slug {} -> {}", request.getPathInfo(), link.getPath());
             HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
             return;
         }
@@ -56,7 +57,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         // if so then send a redirect to the archive.
         if (isArchivedSlug(slug, request)) {
             String archiveUrl = String.format(ARCHIVE_TEMPLATE, slug);
-            LOG.info("Redirecting slug {} to archive: {}", slug, archiveUrl);
+            LOG.info("Redirecting news slug to archive {} -> {}", slug, archiveUrl);
             HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
             return;
         }
