@@ -26,12 +26,12 @@
                     <#list document.orgRole as role>
                      --><li class="grid__item medium--four-twelfths large--three-twelfths no-left-margin">
                             <div class="person">
-                                <@hst.link var="link" hippobean=role.incumbent/>
+                                <@hst.link var="link" hippobean=role.incumbent!role/>
                                 <a class="person__link" href="${link}">
 
                                     <div class="person__image-container">
                                         <div class="person__image-container">
-                                        <#if role.incumbent.image??>
+                                        <#if role.incumbent?has_content && role.incumbent.image??>
                                             <img alt="${role.incumbent.title}" class="person__image"
                                         src="<@hst.link hippobean=role.incumbent.image.xlarge/>"
                                         srcset="<@hst.link hippobean=role.incumbent.image.small/> 130w,
@@ -44,7 +44,7 @@
                                             <@hst.link hippobean=role.incumbent.image.xlargedoubled/> 526w"
                                         sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, (min-width:480px) 213px, 130px">
                                         <#else>
-                                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
+                                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                         </#if>
                                         </div>
                                     </div>
@@ -83,7 +83,8 @@
                                         <#else>
                                             <#assign roleperson = role/>
                                         </#if>
-                                        
+
+                                        <#if roleperson.image??>
                                         <img alt="${roleperson.title}" class="person__image"
                                         src="<@hst.link hippobean=roleperson.image.xlarge/>"
                                         srcset="<@hst.link hippobean=roleperson.image.small/> 130w,
@@ -95,6 +96,9 @@
                                             <@hst.link hippobean=roleperson.image.xlarge/> 263w,
                                             <@hst.link hippobean=roleperson.image.xlargedoubled/> 526w"
                                         sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, 130px">
+                                        <#else>
+                                            <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${roleperson.title}">
+                                        </#if>
                                     </div>
 
                                     <div class="person__text-container">
