@@ -33,12 +33,14 @@ public class ComplexDocumentComponent extends BaseHstComponent {
 
         if (document == null) {
             send404(response);
+            return;
         }
 
         HippoBean publication = getPublication(document);
 
         if (publication == null) {
             send404(response);
+            return;
         }
 
         setDocuments(publication, request, response);
@@ -113,7 +115,6 @@ public class ComplexDocumentComponent extends BaseHstComponent {
         try {
             response.setStatus(404);
             response.forward("/pagenotfound");
-            return;
         }  catch (IOException e) {
             throw new HstComponentException("Forward failed", e);
         }
