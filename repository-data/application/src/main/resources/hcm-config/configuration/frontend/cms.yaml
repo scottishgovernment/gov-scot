@@ -173,3 +173,5 @@ definitions:
       optimize: quality
       upscaling: false
       width: 330
+    /hippo:configuration/hippo:frontend/cms/cms-pickers/documents/navigator/browser.options:
+      list.page.size: '50'
