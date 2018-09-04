@@ -94,15 +94,21 @@ public class PublicationComponent extends BaseHstComponent {
 
     private void setPages(HippoBean publication, HippoBean document, HstRequest request) {
         HippoBean publicationFolder = publication.getParentBean();
-        boolean hasPages = hasPages(publicationFolder);
-        request.setAttribute("isMultiPagePublication", hasPages);
 
-        if (!hasPages(publicationFolder)){
+        List<HippoFolderBean> pageFolders = publicationFolder.getChildBeansByName(PAGES);
+
+        if (pageFolders.isEmpty()){
+            request.setAttribute("isMultiPagePublication", false);
             return;
         }
 
-        List<HippoFolderBean> pageFolders = publicationFolder.getChildBeansByName(PAGES);
         List<HippoDocumentBean> pages = pagestoInclude(pageFolders.get(0));
+
+        if (pages.isEmpty()){
+            request.setAttribute("isMultiPagePublication", false);
+            return;
+        }
+
         HippoBean currentPage = isPage(document) ? document : pages.get(0);
         request.setAttribute(PAGES, pages);
         request.setAttribute("isMultiPagePublication", true);
@@ -117,10 +123,6 @@ public class PublicationComponent extends BaseHstComponent {
 
     private boolean hasDocuments(HippoBean publicationParentFolder) {
         return hasChildBeans(publicationParentFolder.getChildBeansByName(DOCUMENTS));
-    }
-
-    private boolean hasPages(HippoBean publicationParentFolder) {
-        return hasChildBeans(publicationParentFolder.getChildBeansByName(PAGES));
     }
 
     boolean hasChildBeans(List<HippoFolderBean> folders) {
