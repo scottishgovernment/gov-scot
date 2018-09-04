@@ -25,6 +25,8 @@ public class PublicationComponent extends BaseHstComponent {
 
     private static final String PAGES = "pages";
 
+    private static final String ISMULTIPAGE = "isMultiPagePublication";
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
@@ -98,20 +100,20 @@ public class PublicationComponent extends BaseHstComponent {
         List<HippoFolderBean> pageFolders = publicationFolder.getChildBeansByName(PAGES);
 
         if (pageFolders.isEmpty()){
-            request.setAttribute("isMultiPagePublication", false);
+            request.setAttribute(ISMULTIPAGE, false);
             return;
         }
 
         List<HippoDocumentBean> pages = pagestoInclude(pageFolders.get(0));
 
         if (pages.isEmpty()){
-            request.setAttribute("isMultiPagePublication", false);
+            request.setAttribute(ISMULTIPAGE, false);
             return;
         }
 
         HippoBean currentPage = isPage(document) ? document : pages.get(0);
         request.setAttribute(PAGES, pages);
-        request.setAttribute("isMultiPagePublication", true);
+        request.setAttribute(ISMULTIPAGE, true);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("prev", prevBean(currentPage, pages));
         request.setAttribute("next", nextBean(currentPage, pages));
