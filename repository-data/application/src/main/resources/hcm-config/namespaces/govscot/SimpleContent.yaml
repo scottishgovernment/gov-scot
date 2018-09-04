@@ -58,7 +58,7 @@ definitions:
             hipposysedit:ordered: false
             hipposysedit:path: govscot:metaDescription
             hipposysedit:primary: false
-            hipposysedit:type: String
+            hipposysedit:type: Text
             hipposysedit:validators: [non-empty, required]
           /notes:
             jcr:primaryType: hipposysedit:field
