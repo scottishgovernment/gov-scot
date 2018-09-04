@@ -19,9 +19,8 @@
             <@hst.link var="link" hippobean=item/>
             <li class="search-results__item  listed-content-item">
                 <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">
-                    <#if hst.isBeanType(item, "scot.gov.www.beans.Role") || hst.isBeanType(item, "scot.gov.www.beans.Person")>
+                    <#if ((hst.isBeanType(item, "scot.gov.www.beans.Role") && item.incumbent??) || hst.isBeanType(item, "scot.gov.www.beans.Person")) && item.image??>
                         <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if> listed-content-item__article--role listed-content-item__article--has-image ">
-                        <#if item.image??>
                             <img alt=""
                                 class="listed-content-item__image"
                                 src="<@hst.link hippobean=item.image.large />"
@@ -30,7 +29,6 @@
                                 <@hst.link hippobean=item.image.large/> 144w,
                                 <@hst.link hippobean=item.image.largedoubled/> 288w"
                                 sizes="(min-width:768px) 144px, 84px">
-                        </#if>
 
                         <div class="listed-content-item__wrapper">
                             <header class="listed-content-item__heading">
