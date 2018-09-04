@@ -21,14 +21,16 @@
                 <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">
                     <#if hst.isBeanType(item, "scot.gov.www.beans.Role") || hst.isBeanType(item, "scot.gov.www.beans.Person")>
                         <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if> listed-content-item__article--role listed-content-item__article--has-image ">
-                        <img alt=""
-                            class="listed-content-item__image"
-                            src="<@hst.link hippobean=item.image.large />"
-                            srcset="<@hst.link hippobean=item.image.small/> 84w,
-                            <@hst.link hippobean=item.image.smalldoubled/> 168w,
-                            <@hst.link hippobean=item.image.large/> 144w,
-                            <@hst.link hippobean=item.image.largedoubled/> 288w"
-                            sizes="(min-width:768px) 144px, 84px">
+                        <#if item.image??>
+                            <img alt=""
+                                class="listed-content-item__image"
+                                src="<@hst.link hippobean=item.image.large />"
+                                srcset="<@hst.link hippobean=item.image.small/> 84w,
+                                <@hst.link hippobean=item.image.smalldoubled/> 168w,
+                                <@hst.link hippobean=item.image.large/> 144w,
+                                <@hst.link hippobean=item.image.largedoubled/> 288w"
+                                sizes="(min-width:768px) 144px, 84px">
+                        </#if>
 
                         <div class="listed-content-item__wrapper">
                             <header class="listed-content-item__heading">
