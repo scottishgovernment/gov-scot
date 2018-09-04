@@ -95,37 +95,31 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String sql = String.format("SELECT * FROM hippostd:folder WHERE jcr:name LIKE '%s'", slug);
+
+        String template = "SELECT * FROM hippostd:folder " +
+                "WHERE jcr:name LIKE '%s' " +
+                "AND jcr:path like '/content/documents/govscot/publications/%%'";
+        String sql = String.format(template, slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
             return null;
         }
 
-        // find the index in this folder
-        Node folder = findPublicationFolder(result);
-        if (folder == null) {
-            return null;
-        }
-
-        NodeIterator nodeIterator = folder.getNodes();
-        while (nodeIterator.hasNext()) {
-            Node node = nodeIterator.nextNode();
-            if ("index".equals(node.getName())) {
-                return node;
-            }
-        }
-
-        return null;
+        // find the index in the results folder
+        return findPublication(result.getNodes());
     }
 
-    private Node findPublicationFolder(QueryResult result) throws RepositoryException {
-        NodeIterator nodeIterator = result.getNodes();
+    private Node findPublication(NodeIterator nodeIterator) throws RepositoryException {
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
-            if (node.getPath().startsWith("/content/documents/govscot/publications")) {
-                return node;
+            if (node.hasNode("index/index")) {
+                Node publication = node.getNode("index/index");
+                if ("published".equals(publication.getProperty("hippostd:state").getString())) {
+                    return publication.getParent();
+                }
             }
         }
+
         return null;
     }
 
