@@ -12,6 +12,8 @@ import javax.jcr.*;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import javax.ws.rs.client.*;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status.Family;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,6 +50,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final String SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
+    private static final String PING_URL = "http://localhost:8080/site/ping/";
+
     private static final String REST_URL = "http://localhost:8080/site/rest/urls/";
 
     private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
@@ -71,8 +75,12 @@ public class SitemapGeneratorJob implements RepositoryJob {
     }
 
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
-        LOG.info("Generating sitemap");
+        if (!isSiteAvailable()) {
+            LOG.info("Site context not available - sitemap will not be updated now");
+            return;
+        }
 
+        LOG.info("Generating sitemap");
         String baseURL = context.getAttribute("baseURL");
 
         Session session = null;
@@ -102,6 +110,11 @@ public class SitemapGeneratorJob implements RepositoryJob {
                 session.logout();
             }
         }
+    }
+
+    private boolean isSiteAvailable() {
+        Response pingResponse = restClient.target(PING_URL).request().get();
+        return Family.SUCCESSFUL.equals(pingResponse.getStatusInfo().getFamily());
     }
 
     private byte [] sitemapindex(Session session, String baseURL)
