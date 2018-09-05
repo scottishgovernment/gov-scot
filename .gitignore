@@ -1,11 +1,6 @@
 target/
 overlays/
-repository-data/webfiles/src/main/resources/site/assets/
-repository-data/application/src/main/resources/hcm-content/content/documents/govscot/
-repository-data/application/src/main/resources/hcm-content/content/documents/administration/migrations.yaml
-repository-data/application/src/main/resources/hcm-config/configuration/modules/scheduler.yaml
 node_modules/
-site/src/main/webapp/assets/mygov/
 .DS_Store
 .idea
 *.iml
@@ -14,6 +9,11 @@ site/src/main/webapp/assets/mygov/
 .settings/
 .vscode
 *.stack.svg
-repository-data/webfiles/src/scripts/test/coverage
+repository-data/application/src/main/resources/hcm-content/content/documents/govscot/
+repository-data/application/src/main/resources/hcm-content/content/documents/administration/migrations.yaml
+repository-data/application/src/main/resources/hcm-config/configuration/modules/scheduler.yaml
 repository-data/application/src/main/resources/hcm-content/content/gallery
 repository-data/application/src/main/resources/hcm-content/content/assets
+repository-data/webfiles/src/main/resources/site/assets/
+repository-data/webfiles/src/scripts/test/coverage
+site/src/main/webapp/assets/mygov/
