@@ -156,7 +156,7 @@ define([
         window.onpopstate = function(e){
             if(e.state){
                 var url = e.target.location.pathname;
-                publicationPage.loadSubPage(url, false)
+                publicationPage.loadSubPageHtml(url, false)
                     .fail(function(){
                         window.location = url;
                     });
