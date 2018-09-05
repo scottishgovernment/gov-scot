@@ -4,7 +4,7 @@
     <form id="feedback-form" class="feedback__form">
         <input id="page-category" type="hidden" value="${layoutName}" />
 
-        <h3>Was this helpful?</h3>
+        <h2 class="gamma">Was this helpful?</h2>
         <p>Your feedback will help us improve this site</p>
 
         <div class="input-group">

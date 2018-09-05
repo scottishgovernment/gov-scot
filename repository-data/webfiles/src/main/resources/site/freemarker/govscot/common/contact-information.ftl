@@ -4,7 +4,7 @@
 <aside class="contact-information">
     <#if contactInformation??>
         <div class="contact-information__group">
-            <h3 class="emphasis contact-information__title">Connect</h3>
+            <h2 class="gamma  emphasis  contact-information__title">Connect</h2>
             <ul class="external-links">
                 <#if contactInformation.twitter?has_content>
                     <li class="external-links__item">
@@ -47,7 +47,7 @@
 
     <#if postalAddress??>
         <div class="contact-information__group">
-            <h3 class="emphasis contact-information__title">Contact</h3>
+            <h2 class="gamma  emphasis  contact-information__title">Contact</h2>
             <@hst.html hippohtml=postalAddress/>
         </div>
     </#if>

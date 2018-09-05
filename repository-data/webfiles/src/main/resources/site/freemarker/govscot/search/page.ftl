@@ -6,7 +6,7 @@
 
 <#assign term = "" />
 <#if parameters['q']??>
-    <#assign term = parameters['q'][0] />
+    <#assign term = parameters['q'][0]?j_string />
 </#if>
 
 <div class="layout--search-results">

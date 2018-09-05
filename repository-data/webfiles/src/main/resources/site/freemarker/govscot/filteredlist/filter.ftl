@@ -16,13 +16,13 @@
 <#assign end = ''/>
 
 <#list termParam as nested>
-    <#assign term = nested />
+    <#assign term = nested?j_string />
 </#list>
 <#list beginParam as nested>
-    <#assign begin = nested />
+    <#assign begin = nested?j_string />
 </#list>
 <#list endParam as nested>
-    <#assign end = nested />
+    <#assign end = nested?j_string />
 </#list>
 
 <#-- @ftlvariable name="publicationTypes" type="org.onehippo.forge.selection.hst.contentbean.ValueList" -->
@@ -32,6 +32,7 @@
 <form id="filters" action="#" method="GET">
 
     <fieldset id="filters-fields">
+        <legend class="hidden-xsmall gamma filters-container__title">Filters</legend>
 
         <div class="buttons filter-buttons visible-xsmall">
             <button type="button" class="button  button--primary  js-show-filters">Show filters</button>
@@ -41,8 +42,6 @@
             <div class="mobile-layer__overlay"></div>
             <div class="mobile-layer__content">
                 <div class="filters-container">
-
-                    <h2 class="hidden-xsmall gamma filters-container__title">Filters</h2>
 
                     <button type="button" class="button filters-container__close js-cancel-filters visible-xsmall">
                         <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
@@ -116,7 +115,7 @@
                             <#if topics??>
                                 <div class="expandable-item  expandable-item--open  expandable-item--init-open">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
-                                        <h4 class="expandable-item__title">Topics</h4>
+                                        <h2 class="delta  expandable-item__title">Topics</h2>
                                         <span class="expandable-item__icon">
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
                                                 <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
@@ -164,7 +163,7 @@
                             <#if publicationTypes??>
                                 <div class="expandable-item">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
-                                        <h4 class="expandable-item__title">Type</h4>
+                                        <h2 class="delta  expandable-item__title">Type</h2>
                                         <span class="expandable-item__icon">
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
                                                 <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
@@ -179,7 +178,7 @@
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />
                                             <#list publicationTypes.categories as category>
-                                                <h5 class="checkbox-group__title">${category.getInfo(locale).name}</h5>
+                                                <h3 class="epsilon  checkbox-group__title">${category.getInfo(locale).name}</h5>
 
                                                 <#list category.children as item>
 

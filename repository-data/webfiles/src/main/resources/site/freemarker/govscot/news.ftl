@@ -51,7 +51,7 @@
 
                     <aside class="visible-xsmall visible-medium">
                         <div class="sidebar-block no-bullets">
-                            <h3 class="emphasis sidebar-block__heading">Contacts</h3>
+                            <h2 class="gamma  emphasis  sidebar-block__heading">Contacts</h2>
                             <p>
                                 <a href="/about/contact-information/media-enquiries/">Media enquiries</a>
                             </p>
@@ -59,7 +59,7 @@
 
                         <#if document.heroImage?? || document.attachments??>
                             <div class="sidebar-block  no-bullets">
-                                <h3 class="emphasis  sidebar-block__heading">Media</h3>
+                                <h2 class="gamma  emphasis  sidebar-block__heading">Media</h2>
 
                                 <ul>
                                     <#if document.heroImage??>

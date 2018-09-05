@@ -37,7 +37,7 @@ $filter-close-button-size: 49px;
         line-height: initial;
         padding: 8px 10px 8px 15px;
         top: 1px;
-        z-index: 1;
+        z-index: 1003; /* magic number to punt it above filters-container */
 
         border-top: 1px solid $color__grey--pale;
 
@@ -382,7 +382,7 @@ $filter-close-button-size: 49px;
             &--clear {
                 position: absolute;
                 right: 0;
-                top: 0;
+                top: -42px;
             }
         }
     }

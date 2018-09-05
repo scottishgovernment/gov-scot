@@ -24,7 +24,7 @@
                                     </div>
 								</#if>
 
-				                <h3 class="gamma listed-content-item__title">${item.title}</h3>
+				                <h2 class="gamma listed-content-item__title">${item.title}</h2>
 				            </header>
 
 				            <p class="listed-content-item__summary">${item.summary}</p>
