@@ -2,5 +2,5 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/thumbnails:
       jcr:primaryType: hipposys:module
-      hipposys:className: gov.scot.www.ThumbnailsDaemonModule
+      hipposys:className: scot.gov.www.ThumbnailsDaemonModule
       hipposys:cmsonly: true

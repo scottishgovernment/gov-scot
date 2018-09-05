@@ -1,4 +1,4 @@
-package gov.scot.www;
+package scot.gov.www;
 
 import javax.jcr.Node;
 import javax.jcr.Property;

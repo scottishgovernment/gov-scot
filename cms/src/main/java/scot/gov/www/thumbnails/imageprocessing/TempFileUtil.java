@@ -1,6 +1,6 @@
-package gov.scot.www.thumbnails.imageprocessing;
+package scot.gov.www.thumbnails.imageprocessing;
 
-import gov.scot.www.thumbnails.FileType;
+import scot.gov.www.thumbnails.FileType;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;

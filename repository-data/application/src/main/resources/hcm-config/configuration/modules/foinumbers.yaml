@@ -2,5 +2,5 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/foinumbers:
       jcr:primaryType: hipposys:module
-      hipposys:className: gov.scot.www.FOINumberDaemonModule
+      hipposys:className: scot.gov.www.FOINumberDaemonModule
       hipposys:cmsonly: true

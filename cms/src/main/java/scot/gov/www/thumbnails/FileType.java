@@ -1,4 +1,4 @@
-package gov.scot.www.thumbnails;
+package scot.gov.www.thumbnails;
 
 import java.util.Arrays;
 import java.util.Collections;

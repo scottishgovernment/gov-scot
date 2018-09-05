@@ -2,5 +2,5 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/publicationfolders:
       jcr:primaryType: hipposys:module
-      hipposys:className: gov.scot.www.FolderTypesDaemonModule
+      hipposys:className: scot.gov.www.FolderTypesDaemonModule
       hipposys:cmsonly: true

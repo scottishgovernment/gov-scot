@@ -1,4 +1,4 @@
-package gov.scot.www;
+package scot.gov.www;
 
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.cms7.services.HippoServiceRegistry;

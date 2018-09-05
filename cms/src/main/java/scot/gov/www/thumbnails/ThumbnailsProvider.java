@@ -1,7 +1,7 @@
-package gov.scot.www.thumbnails;
+package scot.gov.www.thumbnails;
 
-import gov.scot.www.thumbnails.imageprocessing.ImageProcessing;
-import gov.scot.www.thumbnails.imageprocessing.TempFileUtil;
+import scot.gov.www.thumbnails.imageprocessing.ImageProcessing;
+import scot.gov.www.thumbnails.imageprocessing.TempFileUtil;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

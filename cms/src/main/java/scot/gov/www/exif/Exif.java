@@ -1,4 +1,4 @@
-package gov.scot.www.exif;
+package scot.gov.www.exif;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;

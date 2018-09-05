@@ -1,4 +1,4 @@
-package gov.scot.www.thumbnails;
+package scot.gov.www.thumbnails;
 
 public class ThumbnailsProviderException extends Exception {
 

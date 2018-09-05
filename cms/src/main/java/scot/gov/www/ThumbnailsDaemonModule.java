@@ -1,9 +1,9 @@
-package gov.scot.www;
+package scot.gov.www;
 
-import gov.scot.www.exif.Exif;
-import gov.scot.www.thumbnails.FileType;
-import gov.scot.www.thumbnails.ThumbnailsProvider;
-import gov.scot.www.thumbnails.ThumbnailsProviderException;
+import scot.gov.www.exif.Exif;
+import scot.gov.www.thumbnails.FileType;
+import scot.gov.www.thumbnails.ThumbnailsProvider;
+import scot.gov.www.thumbnails.ThumbnailsProviderException;
 import org.apache.commons.io.FileUtils;
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.cms7.services.HippoServiceRegistry;

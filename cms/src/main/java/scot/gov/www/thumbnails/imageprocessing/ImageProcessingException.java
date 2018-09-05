@@ -1,4 +1,4 @@
-package gov.scot.www.thumbnails.imageprocessing;
+package scot.gov.www.thumbnails.imageprocessing;
 
 public class ImageProcessingException extends Exception {
 
