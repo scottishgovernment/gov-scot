@@ -42,68 +42,68 @@
 }
 
 /* Hover effects on left menu */
-.navigator-left-body .row:hover {
+.hippo-tree .wicket-tree .row:hover {
     background-color: #ebebeb;
     padding-top: 0;
 }
 
-.navigator-left-body .row:active {
+.hippo-tree .wicket-tree .row:active {
     background-color: #d9effc;
     padding-top: 0;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-dropdown-icon-container svg {
+.hippo-tree .wicket-tree .row .hippo-tree-dropdown-icon-container svg {
     background-color: #ebebeb;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row:active .hippo-tree-dropdown-icon-container svg {
+.hippo-tree .wicket-tree .row:active .hippo-tree-dropdown-icon-container svg {
     background-color: #d9effc;
 }
 
-.navigator-left-body .row.row-selected:hover{
+.hippo-tree .wicket-tree .row.row-selected:hover{
     background-color: transparent;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row.row-selected .hippo-tree-node-link {
+.hippo-tree .wicket-tree .row.row-selected .hippo-tree-node-link {
     color: #22272f;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row.row-selected .hippo-tree-node-link:before {
+.hippo-tree .wicket-tree .row.row-selected .hippo-tree-node-link:before {
     background-color: #0877d1;
 }
 
-.navigator-left-body .hippo-tree .hippo-tree-highlight-widget {
+.hippo-tree .hippo-tree-highlight-widget {
     display: none;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row .a_ {
+.hippo-tree .wicket-tree .row .a_ {
     height: auto;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row {
+.hippo-tree .wicket-tree .row {
     overflow-x: hidden;
     padding-top: 0;
     position: relative;
     transition: background-color 0.2s;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-junction-link,
-.navigator-left-body .hippo-tree .wicket-tree .row-selected .hippo-tree-node-link span {
+.hippo-tree .wicket-tree .row .hippo-tree-junction-link,
+.hippo-tree .wicket-tree .row-selected .hippo-tree-node-link span {
     position: relative;
     z-index: 1;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-node-link {
+.hippo-tree .wicket-tree .row .hippo-tree-node-link {
     padding-bottom: 1px;
     padding-top: 1px;
     width: 100%;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row.row-selected .hippo-tree-dropdown-icon-container svg {
+.hippo-tree .wicket-tree .row.row-selected .hippo-tree-dropdown-icon-container svg {
     background-color: transparent;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row .hippo-tree-node-link:before {
+.hippo-tree .wicket-tree .row .hippo-tree-node-link:before {
     content: '';
     position: absolute;
     left: 0;
@@ -112,7 +112,7 @@
     bottom: 0;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree .row-selected .hippo-tree-dropdown-icon-container svg {
+.hippo-tree .wicket-tree .row-selected .hippo-tree-dropdown-icon-container svg {
     color: #22272f;
 }
 
@@ -128,7 +128,7 @@
     color: inherit;
 }
 
-.navigator-left-body .hippo-tree .wicket-tree  .row.row-selected .hippo-tree-node-link:before {
+.hippo-tree .wicket-tree  .row.row-selected .hippo-tree-node-link:before {
     background-color: #e5f0f8;
 }
 
