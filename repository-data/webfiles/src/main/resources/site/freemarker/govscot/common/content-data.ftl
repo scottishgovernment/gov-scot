@@ -7,7 +7,7 @@
         </span>
     </button>
     <dl class="content-data__list" id="expandable-content-data">
-    <#if index.responsibleRole??>
+    <#if index.responsibleRole?has_content>
         <dt class="content-data__label">From:</dt>
 
         <dd class="content-data__value">
@@ -30,7 +30,7 @@
         </#if>
         </dd>
     </#if>
-    <#if index.responsibleDirectorate?? && !isMultiPagePublication!false>
+    <#if index.responsibleDirectorate?has_content>
         <dt class="content-data__label">Directorate:</dt>
 
         <dd class="content-data__value">
