@@ -95,10 +95,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-
-        String template = "SELECT * FROM hippostd:folder " +
-                "WHERE jcr:name LIKE '%s' " +
-                "AND jcr:path like '/content/documents/govscot/publications/%%'";
+        String template = "SELECT * FROM hippostd:folder WHERE jcr:name LIKE '%s' ";
         String sql = String.format(template, slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
@@ -112,7 +109,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node findPublication(NodeIterator nodeIterator) throws RepositoryException {
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
-            if (node.hasNode("index/index")) {
+            if (node.getPath().startsWith("/content/documents/govscot/publications") && node.hasNode("index/index")) {
                 Node publication = node.getNode("index/index");
                 if ("published".equals(publication.getProperty("hippostd:state").getString())) {
                     return publication.getParent();
