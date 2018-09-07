@@ -786,6 +786,9 @@ $carousel-desc-height-xlarge: 244px;
       }
       .carousel-item__desc {
         height: 0 + $carousel-hover-delta;
+        ul {
+          margin-top: 0px;
+        }
       }
     }
     .carousel--hover {
