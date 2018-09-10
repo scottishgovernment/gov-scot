@@ -3,10 +3,17 @@
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?upper_case/>
     <#assign filenameWithoutExtension = attachedDocument.document.filename?keep_before_last(".")/>
 
+    <@hst.link var="documentdownload" hippobean=attachedDocument.document>
+        <@hst.param name="forceDownload" value="true"/>
+    </@hst.link>
+
+    <@hst.link var="documentinline" hippobean=attachedDocument.document>
+    </@hst.link>
+
     <div class="document-info__body">
         <div class="document-info__thumbnail  document-info__thumbnail--pdf">
         <#if filenameExtension == "PDF">
-            <a class="document-info__thumbnail-link" href="<@hst.link hippobean=attachedDocument.document/>?inline=true">
+            <a class="document-info__thumbnail-link" href="${documentinline}">
                 <#if ((useCoverPage)!false) && document.coverimage?has_content>
                     <img
                         alt="View this document"
@@ -30,14 +37,14 @@
                 </#if>
             </a>
         <#else>
-            <a title="View this document" href="<@hst.link hippobean=attachedDocument.document/>?inline=true" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+            <a title="View this document" href="${documentinline}" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
         </#if>
         </div>
     </div>
 
     <div class="document-info__text">
 
-        <h3 class="document-info__title"><a class="no-icon" href="<@hst.link hippobean=attachedDocument.document/>?inline=true">${attachedDocument.title}</a></h3>
+        <h3 class="document-info__title"><a class="no-icon" href="${documentinline}">${attachedDocument.title}</a></h3>
 
         <div class="document-info__file-details">
             <dl class="document-info__meta">
@@ -48,7 +55,7 @@
         </div>
 
         <div class="document-info__download">
-            <a href="<@hst.link hippobean=attachedDocument.document/>" class="button  <#if attachedDocument.highlighted || (isLimelitItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
+            <a href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isLimelitItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
                 <span class="link-text">
                     Download
                 </span>

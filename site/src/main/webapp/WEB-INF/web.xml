@@ -108,6 +108,10 @@
   <servlet>
     <servlet-name>BinariesServlet</servlet-name>
     <servlet-class>org.hippoecm.hst.servlet.BinariesServlet</servlet-class>
+    <init-param>
+      <param-name>contentDispositionFilenameProperty</param-name>
+      <param-value>hippo:filename</param-value>
+    </init-param>
   </servlet>
 
   <servlet>
@@ -271,4 +275,3 @@
   </env-entry>
 
 </web-app>
-

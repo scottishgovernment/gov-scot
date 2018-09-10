@@ -6,8 +6,15 @@
             <#assign mainDocument = documents[0]/>
             <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
 
+            <@hst.link var="documentdownload" hippobean=attachedDocument.document>
+                <@hst.param name="forceDownload" value="true"/>
+            </@hst.link>
+
+            <@hst.link var="documentinline" hippobean=attachedDocument.document>
+            </@hst.link>
+
             <#if filenameExtension == "PDF">
-            <a title="View this document" class="document-info__thumbnail-link" href="<@hst.link hippobean=mainDocument.document/>?inline=true">
+            <a title="View this document" class="document-info__thumbnail-link" href="${documentinline}">
                 <img
                         alt="View this document"
                         class="document-info__thumbnail-image"
@@ -19,10 +26,10 @@
                         sizes="(min-width: 768px) 165px, 107px" />
             </a>
             <#else>
-            <a title="View this document" href="<@hst.link hippobean=mainDocument.document/>?inline=true" class="file-icon--large file-icon file-icon--${filenameExtension}"></a>
+            <a title="View this document" href="${documentinline}" class="file-icon--large file-icon file-icon--${filenameExtension}"></a>
             </#if>
 
-            <a href="<@hst.link hippobean=mainDocument.document/>" class="button button--secondary document-info__thumbnail-button no-icon button--no-margin">
+            <a href="${documentdownload}" class="button button--secondary document-info__thumbnail-button no-icon button--no-margin">
                 <span class="link-text">
                     Download
                 </span>
@@ -42,7 +49,7 @@
 
     <div class="document-info__footer">
         <div class="document-info__cell document-info__download-wrapper">
-            <a href="<@hst.link hippobean=mainDocument.document/>" class="button button--primary button--large no-icon  button--no-margin">
+            <a href="${documentdownload}" class="button button--primary button--large no-icon  button--no-margin">
                 <span class="link-text">
                     Download
                 </span>
