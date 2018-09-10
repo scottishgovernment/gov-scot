@@ -95,7 +95,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String template = "SELECT * FROM hippostd:folder WHERE jcr:name LIKE '%s' ";
+        String template = "SELECT * FROM govscot:Publication WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'";
         String sql = String.format(template, slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
@@ -107,17 +107,19 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     }
 
     private Node findPublication(NodeIterator nodeIterator) throws RepositoryException {
+
+        Node publishedNode = null;
+        Node lastNode = null;
+
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
-            if (node.getPath().startsWith("/content/documents/govscot/publications") && node.hasNode("index/index")) {
-                Node publication = node.getNode("index/index");
-                if ("published".equals(publication.getProperty("hippostd:state").getString())) {
-                    return publication.getParent();
-                }
+            lastNode = node.getParent();
+            if ("published".equals(node.getProperty("hippostd:state").getString())) {
+                publishedNode = node.getParent();
             }
         }
 
-        return null;
+        return publishedNode != null ? publishedNode : lastNode;
     }
 
 }
