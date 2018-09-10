@@ -19,6 +19,9 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
@@ -26,6 +29,8 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 public class IssueComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(IssueComponent.class);
+
+    private static final String PUBLICATIONDATE = "govscot:publicationDate";
 
     @Override
     public void doBeforeRender(final HstRequest request,
@@ -61,7 +66,7 @@ public class IssueComponent extends BaseHstComponent {
                 .ofTypes(News.class)
                 .where(or(tagConstraints(issue)))
                 .limit(4)
-                .orderByDescending("govscot:publicationDate").build();
+                .orderByDescending(PUBLICATIONDATE).build();
         try {
             StopWatch stopWatch = new StopWatch();
             stopWatch.start();
@@ -85,6 +90,7 @@ public class IssueComponent extends BaseHstComponent {
         HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class);
         HstQuery minutesQuery = issueLinkedBeansQuery(issue, base, Minutes.class);
         HstQuery speechOrStatementQuery = issueLinkedBeansQuery(issue, base, SpeechOrStatement.class);
+        HstQuery complexDocumentQuery = issueLinkedBeansQuery(issue, base, ComplexDocument.class);
 
         ArrayList<HippoBean> allLinkedPublications = new ArrayList<HippoBean>();
 
@@ -92,6 +98,7 @@ public class IssueComponent extends BaseHstComponent {
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
             HippoBeanIterator minutes = minutesQuery.execute().getHippoBeans();
             HippoBeanIterator speechOrStatements = speechOrStatementQuery.execute().getHippoBeans();
+            HippoBeanIterator complexDocuments = complexDocumentQuery.execute().getHippoBeans();
 
             while(publications.hasNext()) {
                 HippoBean publication = publications.next();
@@ -108,9 +115,20 @@ public class IssueComponent extends BaseHstComponent {
                 allLinkedPublications.add(publication);
             }
 
-            // sort by date and limit to 4?
+            while(complexDocuments.hasNext()) {
+                HippoBean publication = complexDocuments.next();
+                allLinkedPublications.add(publication);
+            }
 
-            request.setAttribute("publications", allLinkedPublications);
+            allLinkedPublications.sort(Comparator.comparing(bean -> bean.getProperty(PUBLICATIONDATE)));
+            Collections.reverse(allLinkedPublications);
+            List<HippoBean> latestPublications = allLinkedPublications;
+
+            if (allLinkedPublications.size() > 5){
+                latestPublications = allLinkedPublications.subList(0, 5);
+            }
+
+            request.setAttribute("publications", latestPublications);
 
         } catch (QueryException e) {
             LOG.error("Unable to get Publications for issue {}", issue.getPath(), e);
@@ -125,7 +143,7 @@ public class IssueComponent extends BaseHstComponent {
                     "*/@hippo:docbase",
                     linkedClass,
                     false);
-            query.addOrderByDescending("govscot:publicationDate");
+            query.addOrderByDescending(PUBLICATIONDATE);
             return query;
         } catch (QueryException e) {
             LOG.warn("Unable to get linked beans for issue {}", issue.getPath(), e);
