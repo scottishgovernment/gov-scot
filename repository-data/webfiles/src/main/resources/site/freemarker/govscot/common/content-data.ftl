@@ -7,45 +7,46 @@
         </span>
     </button>
     <dl class="content-data__list" id="expandable-content-data">
-    <#if index.responsibleRole?has_content>
+    <#if index.allResponsibleRoles?has_content>
         <dt class="content-data__label">From:</dt>
 
         <dd class="content-data__value">
-            <@hst.link var="link" hippobean=index.responsibleRole/>
-            <a href="${link}">${index.responsibleRole.title}</a><!--
+            <@hst.link var="link" hippobean=index.allResponsibleRoles[0]/>
+            <a href="${link}">${index.allResponsibleRoles[0].title}</a><!--
 
-         --><#if index.secondaryResponsibleRole?first??><!--
+         --><#if index.allResponsibleRoles?size gt 1><!--
          -->, <!--
              --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
-                &#43;${index.secondaryResponsibleRole?size}&nbsp;more&nbsp;&hellip;</a>
+                &#43;${index.allResponsibleRoles?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                 <span id="secondary-responsible-roles" class="content-data__additional">
-                    <#list index.secondaryResponsibleRole as secondaryRole>
-
-                        <@hst.link var="link" hippobean=secondaryRole/>
-                        <a href="${link}">${secondaryRole.title}</a><#sep>, </#sep>
+                    <#list index.allResponsibleRoles as role>
+                        <#if role?index != 0>
+                            <@hst.link var="link" hippobean=role/>
+                            <a href="${link}">${role.title}</a><#sep>, </#sep>
+                        </#if>
                     </#list>
                 </span>
-
-        </#if>
+            </#if>
         </dd>
     </#if>
-    <#if index.responsibleDirectorate?has_content>
+    <#if index.allDirectorates?has_content>
         <dt class="content-data__label">Directorate:</dt>
 
         <dd class="content-data__value">
-            <@hst.link var="link" hippobean=index.responsibleDirectorate/>
-            <a href="${link}">${index.responsibleDirectorate.title}</a><!--
-             --><#if index.secondaryResponsibleDirectorate?has_content><!--
+            <@hst.link var="link" hippobean=index.allDirectorates[0]/>
+            <a href="${link}">${index.allDirectorates[0].title}</a><!--
+             --><#if index.allDirectorates?size gt 1><!--
              -->, <!--
              --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
-            &#43;${index.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
+            &#43;${index.allDirectorates?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                 <span id="secondary-responsible-directorates" class="content-data__additional">
-                    <#list index.secondaryResponsibleDirectorate as secondaryDirectorate>
-
-                        <@hst.link var="link" hippobean=secondaryDirectorate/>
-                        <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
+                    <#list index.allDirectorates as directorate>
+                        <#if directorate?index != 0>
+                            <@hst.link var="link" hippobean=directorate/>
+                            <a href="${link}">${directorate.title}</a><#sep>, </#sep>
+                        </#if>
                     </#list>
                 </span>
             </#if>

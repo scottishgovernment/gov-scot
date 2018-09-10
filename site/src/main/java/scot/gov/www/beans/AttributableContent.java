@@ -2,7 +2,9 @@ package scot.gov.www.beans;
 
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import java.util.List;
+
+import java.util.*;
+
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 
 @HippoEssentialsGenerated(internalName = "govscot:AttributableContent")
@@ -24,6 +26,16 @@ public class AttributableContent extends SimpleContent {
                 HippoBean.class);
     }
 
+    public List<HippoBean> getAllDirectorates() {
+        List<HippoBean> directorates = new ArrayList<>();
+        HippoBean responsibleDirectorate = this.getResponsibleDirectorate();
+        if (responsibleDirectorate != null){
+            directorates.add(this.getResponsibleDirectorate());
+        }
+        directorates.addAll(this.getSecondaryResponsibleDirectorate());
+        return directorates;
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:responsibleRole")
     public HippoBean getResponsibleRole() {
         return getLinkedBean("govscot:responsibleRole", HippoBean.class);
@@ -33,6 +45,16 @@ public class AttributableContent extends SimpleContent {
     public List<HippoBean> getSecondaryResponsibleRole() {
         return getLinkedBeans("govscot:secondaryResponsibleRole",
                 HippoBean.class);
+    }
+
+    public List<HippoBean> getAllResponsibleRoles() {
+        List<HippoBean> roles = new ArrayList<>();
+        HippoBean responsibleRole = this.getResponsibleRole();
+        if (responsibleRole != null){
+            roles.add(this.getResponsibleRole());
+        }
+        roles.addAll(this.getSecondaryResponsibleRole());
+        return roles;
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:orgRole")
