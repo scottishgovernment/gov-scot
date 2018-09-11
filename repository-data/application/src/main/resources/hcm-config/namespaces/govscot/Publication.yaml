@@ -40,6 +40,7 @@ definitions:
             hipposysedit:path: govscot:publicationType
             hipposysedit:primary: false
             hipposysedit:type: DynamicDropdown
+            hipposysedit:validators: [required, non-empty]
           /officialdate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
