@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 
+import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
 import java.io.IOException;
@@ -84,14 +85,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
                 .ofTypes(News.class)
                 .where(constraint("govscot:prglooslug").equalTo(slug))
                 .build();
-        HippoBean bean = executeHstQuery(query, slug);
-
-        // only return the result if this is a leaf node
-        if (bean.getChildBeans(HippoBean.class).isEmpty()) {
-            return bean;
-        } else {
-            return null;
-        }
+        return executeHstQuery(query, slug);
     }
 
     private HippoBean executeHstQuery(HstQuery query, String slug) {
@@ -121,7 +115,11 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         }
 
         try {
-            return request.getRequestContext().getSession().nodeExists(path.toString());
+            if (request.getRequestContext().getSession().nodeExists(path.toString())){
+                Node node = request.getRequestContext().getSession().getNode(path.toString());
+                return !node.hasNodes();
+            }
+            return false;
         } catch (RepositoryException e) {
             LOG.warn("Failed to determine existance of slug {}", slug, e);
             return false;
