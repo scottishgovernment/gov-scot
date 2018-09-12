@@ -45,6 +45,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
         // see if the slug is the prgloo slug of a news item we have imported to the repo
         HippoBean bean = findByPRGlooSlug(slug, request);
+
         if (bean != null) {
             HstRequestContext context = request.getRequestContext();
             final HstLink link = context.getHstLinkCreator().create(bean, context);
@@ -83,7 +84,14 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
                 .ofTypes(News.class)
                 .where(constraint("govscot:prglooslug").equalTo(slug))
                 .build();
-        return executeHstQuery(query, slug);
+        HippoBean bean = executeHstQuery(query, slug);
+
+        // only return the result if this is a leaf node
+        if (bean.getChildBeans(HippoBean.class).isEmpty()) {
+            return bean;
+        } else {
+            return null;
+        }
     }
 
     private HippoBean executeHstQuery(HstQuery query, String slug) {
