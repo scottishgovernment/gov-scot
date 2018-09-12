@@ -40,8 +40,8 @@
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=index canonical=true />
-    <@hst.headContribution>
-        <link rel="canonical" href="${canonicalitem}"/>
-    </@hst.headContribution>
+
+    <#assign canonicalitem = canonicalitem?remove_ending("index/")/>
+
     <#include "../common/canonical.ftl" />
 </#if>
