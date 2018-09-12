@@ -8,7 +8,8 @@ definitions:
         $inherited, './index/index/govscot:title', $localName, './index/index/hippostdpubwf:createdBy',
         $holder, './index/index/hippostdpubwf:creationDate', $now, './index/index/hippostdpubwf:lastModificationDate',
         $now, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/hippo:name',
-        $localName, './index/index/hippo:name', $localName]
+        $localName, './index/index/hippo:name', $localName, './index/index/govscot:seoTitle',
+        $localName]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
       jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-directorate-folder/hippostd:templates/node()
