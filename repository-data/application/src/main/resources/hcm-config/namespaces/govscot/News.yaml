@@ -196,7 +196,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Topic']
+              nodetypes: ['govscot:Topic', 'govscot:Issue']
           /policyTags:
             jcr:primaryType: frontend:plugin
             caption: Policy tag(s)
