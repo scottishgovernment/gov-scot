@@ -1,10 +1,24 @@
 <#include "../../include/imports.ftl">
 
+<#if useLiveAnalytics??>
+    <#assign accountid = "UA-78735385-5" />
+    <#assign containerid = "GTM-PZ62X92" />
+    <#assign includewhitelist = true/>
+    <#assign isactive = true/>
+    <#assign optimizecontainerid = "GTM-5876ZHM" />
+<#else>
+    <#assign accountid = "UA-78735385-4" />
+    <#assign containerid = "GTM-WMP56LD" />
+    <#assign includewhitelist = false/>
+    <#assign isactive = true/>
+    <#assign optimizecontainerid = "GTM-MF68M3N" />
+</#if>
+
 <!-- Google Tag Manager (GTM) -->
 <script id="gtm-datalayer">
     dataLayer = [
     {
-        <#if GTMincludewhitelist??>
+        <#if includewhitelist>
         'gtm.whitelist': ['google', 'jsm', 'lcl', 'mf'],
         </#if>
         'format' : '${gtmName}',
@@ -20,7 +34,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 );var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','<@fmt.message key="containerid"/>');</script>
+})(window,document,'script','dataLayer','${containerid}');</script>
 <!-- End Google Tag Manager -->
 
 <#--  Modified GA compliant GO code for on page implementation. Note these examples have our UA-ID (GOV.SCOT (Test)) and our GO container ID (devTest GO container) -->
@@ -31,8 +45,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '<@fmt.message key="accountid"/>', 'auto', {allowLinker: true}); // {allowLinker: true} is optional at this point, however, it may satisfy portion of requirements for CDT
-    ga('require', '<@fmt.message key="optimizecontainerid"/>'); // removed the ga('send', 'pageview') tracker portion in compliance with Google Optimize guidelines
+    ga('create', '${accountid}', 'auto', {allowLinker: true}); // {allowLinker: true} is optional at this point, however, it may satisfy portion of requirements for CDT
+    ga('require', '${optimizecontainerid}'); // removed the ga('send', 'pageview') tracker portion in compliance with Google Optimize guidelines
 
 </script>
 
@@ -44,4 +58,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null;},c);h.timeout=c;
 })(window,document.documentElement,'async-hide','dataLayer',4000,
-{'<@fmt.message key="optimizecontainerid"/>':true});</script>
+{'${optimizecontainerid}':true});</script>

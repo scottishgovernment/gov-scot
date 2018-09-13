@@ -24,5 +24,11 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
 
         request.setAttribute("gtmName", gtmName);
         request.setAttribute("gtmId", gtmId);
+
+        String hostGroupName = requestContext.getResolvedMount().getResolvedVirtualHost().getVirtualHost().getHostGroupName();
+
+        if ("www".equals(hostGroupName) || "beta".equals(hostGroupName)) {
+            request.setAttribute("useLiveAnalytics", true);
+        }
     }
 }

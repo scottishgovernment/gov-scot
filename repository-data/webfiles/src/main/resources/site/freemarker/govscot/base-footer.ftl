@@ -2,7 +2,6 @@
 
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
-<@hst.setBundle basename="essentials.global"/>
 
 <footer id="site-footer" class="site-footer  ">
     <div class="wrapper">
