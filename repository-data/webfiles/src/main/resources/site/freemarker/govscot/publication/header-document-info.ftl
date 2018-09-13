@@ -6,11 +6,11 @@
             <#assign mainDocument = documents[0]/>
             <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
 
-            <@hst.link var="documentdownload" hippobean=attachedDocument.document>
+            <@hst.link var="documentdownload" hippobean=mainDocument.document>
                 <@hst.param name="forceDownload" value="true"/>
             </@hst.link>
 
-            <@hst.link var="documentinline" hippobean=attachedDocument.document>
+            <@hst.link var="documentinline" hippobean=mainDocument.document>
             </@hst.link>
 
             <#if filenameExtension == "PDF">
