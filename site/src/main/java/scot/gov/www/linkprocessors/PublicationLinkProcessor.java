@@ -1,6 +1,5 @@
 package scot.gov.www.linkprocessors;
 
-
 import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
@@ -33,10 +32,11 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                     link.getPathElements()[2],
                     link.getPathElements()[3]);
 
-            // if the last element is /index then remove it
-            if ("index".equals(link.getPathElements()[5])) {
+            // if this is a link to govscot:Publication then remove the name part of the url e.g. index
+            if (link.getPathElements().length == 6) {
                 newElements = removeElements(newElements, link.getPathElements()[5]);
             }
+
             link.setPath(String.join("/", newElements));
         }
         return link;
@@ -62,11 +62,22 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
     private HstLink preProcessPublicationsLink(HstLink link) {
 
+        /**
+         * Turn a publication link into a path that the document can be fetched from.
+         * Some examples:
+         * /publication/mypublication -> /publications/report/2018/01/mypublication/index
+         * /publication/mypublication/pages/1 -> /publications/report/2018/01/mypublication/pages/1
+         */
         try {
+            // the slug is in element 1 (/publications/slug)
             String slug = link.getPathElements()[1];
+
+            // remove /publications/slug and remember any remaining path elements
             String [] remaining = removeElements(link.getPathElements(),
                     link.getPathElements()[0],
                     link.getPathElements()[1]);
+
+            //get the publication by the publication slug
             Node handle = getHandleBySlug(slug);
             if(handle == null) {
                 link.setNotFound(true);
@@ -75,15 +86,12 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             }
 
             String pubPath = StringUtils.substringAfter(handle.getPath(), PUBLICATIONS);
-
-            String newPath = null;
-            if (remaining.length == 0) {
-                // this is a link to the publication, include the /index part.
-                newPath = String.format("publications/%s", pubPath);
-            } else {
-                // this is a link to a page, remove the index and add on the pages part
-                newPath = String.format("publications/%s/%s", StringUtils.substringBefore(pubPath, "/index"), String.join("/", remaining));
+            if (remaining.length > 0) {
+                // if there is more then one element then remove the 'index' part
+                String lastPathElement = StringUtils.substringAfterLast(pubPath, "/");
+                pubPath = StringUtils.substringBefore(pubPath, lastPathElement);
             }
+            String newPath = String.format("publications/%s%s", pubPath, String.join("/", remaining));
             link.setPath(newPath);
             return link;
         } catch (RepositoryException e) {
@@ -95,7 +103,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String template = "SELECT * FROM govscot:Publication WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'";
+        String template = "SELECT * FROM govscot:SimpleContent WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'";
         String sql = String.format(template, slug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
         if (result.getNodes().getSize() == 0) {
