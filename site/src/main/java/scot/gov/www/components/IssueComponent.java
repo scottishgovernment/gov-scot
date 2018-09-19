@@ -73,7 +73,7 @@ public class IssueComponent extends BaseHstComponent {
             HippoBeanIterator taggedNews = taggedQuery.execute().getHippoBeans();
             request.setAttribute("news", taggedNews);
             stopWatch.stop();
-            LOG.info("result count: {}, took: {}", taggedNews.getSize(), stopWatch.getTime());
+            LOG.debug("Issue page found {} tagged news items, took: {}", taggedNews.getSize(), stopWatch.getTime());
 
         } catch (QueryException e) {
             throw new HstComponentException(e);
