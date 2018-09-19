@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 63670f77-4a6c-43ed-af7a-bf9fe80bd8eb
+          jcr:uuid: f5c67494-e869-44b9-86fa-701e3c98fb83
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -73,6 +73,14 @@ definitions:
             hipposysedit:path: govscot:epilogue
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /sme:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:sme
+            hipposysedit:primary: false
+            hipposysedit:type: Text
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -89,12 +97,13 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: 84cb63fd-5fd3-4d4e-bd56-478ac99e67be
+          jcr:uuid: 71c899d6-ef7d-4ca0-adc9-743ed517b96f
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
           govscot:publicationType: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
+          govscot:sme: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -321,6 +330,17 @@ definitions:
             hint: The content of the notes field is not displayed.  It should be used
               for additional information about this content.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /sme:
+            jcr:primaryType: frontend:plugin
+            caption: Subject matter expert / policy contact
+            field: sme
+            hint: The contents of the SME / policy contact field will not be displayed.
+              It should be used to enter details of the the subject matter expert
+              / policy contact associated with this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
