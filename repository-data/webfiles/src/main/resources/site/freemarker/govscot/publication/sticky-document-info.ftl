@@ -18,18 +18,21 @@
                     </div>
                 </div><!--
              --><div class="grid__item  hidden-xsmall  medium--three-twelfths large--two-twelfths  sticky-document-info__panel-container">
-                    <button class="sticky-document-info__trigger">Supporting files</button>
+                    <#if documents??>
+                        <button class="sticky-document-info__trigger">Supporting files</button>
 
-                    <div class="sticky-document-info__panel ">
-                        <div class="primary-doc">
-                            <#if documents?size gt 0>
-                                <#include 'header-document-info.ftl'/>
-                            </#if>
+                        <div class="sticky-document-info__panel ">
+
+                            <div class="primary-doc">
+                                <#if documents?size gt 0>
+                                    <#include 'header-document-info.ftl'/>
+                                </#if>
+                            </div>
+                            <div>
+                                <#include 'supporting-files.ftl'/>
+                            </div>
                         </div>
-                        <div>
-                            <#include 'supporting-files.ftl'/>
-                        </div>
-                    </div>
+                    </#if>
                 </div><!--
              --><div class="grid__item  four-twelfths hidden-medium hidden-large hidden-xlarge">
                     <div class="sticky-document-info__cell sticky-document-info__cell--text-right">
