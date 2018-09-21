@@ -49,8 +49,15 @@ public class PublicationTypeDaemonModule implements DaemonModule {
 
         try {
             Node handle = null;
+
             // a new folder is being added
-            if ("threepane:folder-permissions:add".equals(event.interaction())) {
+            Boolean isFolder = false;
+
+            if (event.arguments() != null){
+                isFolder = event.arguments().contains("hippostd:folder");
+            }
+
+            if ("threepane:folder-permissions:add".equals(event.interaction()) && isFolder) {
                 handle = session.getNode(event.returnValue()).getNode("index");
             }
 
@@ -59,6 +66,10 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             Collections.addAll(publicationtypes, "govscot:Publication", "govscot:ComplexDocument", "govscot:Minutes", "govscot:SpeechOrStatement");
             if (publicationtypes.contains(event.documentType())) {
                 handle = session.getNodeByIdentifier(event.subjectId());
+            }
+
+            if (handle == null){
+                return;
             }
 
             HippoNode publication = (HippoNode) getLatestVariant(handle);
