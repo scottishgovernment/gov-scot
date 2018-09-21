@@ -75,8 +75,6 @@
                         <div class="visible-xsmall">
                             <#include 'common/contact-information.ftl' />
                         </div>
-                        
-                    </#if>
                 </div>
                 <!-- /end .body-content -->
             </div><!--
