@@ -1,0 +1,13 @@
+/content/documents/govscot/valuelists/aps-blocklist:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: 66ba99fa-9784-49c6-b3d5-2cbdbbd50561
+  hippo:name: APS blocklist
+  /aps-blocklist:
+    jcr:primaryType: selection:valuelist
+    jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+    jcr:uuid: 1ebf903f-339f-4c94-b215-83d1adf0efc2
+    hippo:availability: [live, preview]
+    hippotranslation:id: 2e6f0384-29eb-458f-9cc4-7cd856e3b53c
+    hippotranslation:locale: inherited - from query
+
