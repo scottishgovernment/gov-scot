@@ -1,8 +1,10 @@
 <section class="content-data">
-    <div class="content-data__list">
-        <span class="content-data__label">Published:</span>
-        <span class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></strong></span>
-    </div>
+    <#if document.publicationDate??>
+        <div class="content-data__list">
+            <span class="content-data__label">Published:</span>
+            <span class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></strong></span>
+        </div>
+    </#if>
 
     <#assign index=document/>
     <#include '../common/content-data.ftl'/>

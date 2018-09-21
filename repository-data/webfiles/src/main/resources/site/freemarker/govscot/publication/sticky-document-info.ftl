@@ -42,12 +42,14 @@
                 </div><!--
             <#else>
              --><div class="grid__item medium--four-twelfths large--three-twelfths sticky-document-info__content-data">
-                    <div class=" sticky-document-info__cell">
-                        <dl class="content-data">
-                            <dt class="content-data__label">Published:</dt>
-                            <dd class="content-data__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></dd>
-                        </dl>
-                    </div>
+                    <#if document.publicationDate??>
+                        <div class=" sticky-document-info__cell">
+                            <dl class="content-data">
+                                <dt class="content-data__label">Published:</dt>
+                                <dd class="content-data__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></dd>
+                            </dl>
+                        </div>
+                    </#if>
                 </div><!--
              --><div class="grid__item medium--eight-twelfths large--nine-twelfths">
                     <div class="sticky-document-info__cell">
