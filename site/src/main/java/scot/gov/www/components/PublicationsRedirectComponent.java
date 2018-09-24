@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
-import static scot.gov.www.components.ArchiveUtils.sendArchiveRedirect;
 
 /**
  * Redirect old gov.scot style publication urls.
@@ -56,7 +55,7 @@ public class PublicationsRedirectComponent extends BaseHstComponent {
 
         // check if this url is a known publications url
         if (isArchivedUrl(request)) {
-            sendArchiveRedirect(request.getPathInfo(), request, response);
+            ArchiveUtils.redirectToOldSite(request, response);
             return;
         }
 

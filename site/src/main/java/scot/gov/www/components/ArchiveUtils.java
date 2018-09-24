@@ -3,7 +3,6 @@ package scot.gov.www.components;
 import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,24 +19,24 @@ public class ArchiveUtils {
     }
 
     /**
-     * Redirect to the 'Archive'.
+     * Redirect to the same path on the old site.
+     */
+    public static void redirectToOldSite(HstRequest request, HstResponse response) {
+        String path = request.getPathInfo();
+        redirectToOldSite(path, request, response);
+    }
+
+    /**
+     * Redirect to a given path on the old site.
      *
      * While beta still exists pages will be sent to the live gov.scot site.  When the new site goes live the redirects
-     * will all go to ww2.gov.scot.
+     * will all go to www2.gov.scot.
      */
-    public static void sendArchiveRedirect(String path, HstRequest request, HstResponse response) {
-
-        String archiveUrl;
-        final HstRequestContext requestContext = request.getRequestContext();
-        String hostGroupName = requestContext.getResolvedMount().getMount().getVirtualHost().getHostGroupName();
-        if ("www".equals(hostGroupName)) {
-            archiveUrl = String.format("https://www2.gov.scot%s", path);
-        } else {
-            archiveUrl = String.format("https://www.gov.scot%s", path);
-        }
-
-        LOG.info("Redirecting to archive {} -> {}", path, archiveUrl);
-        HstResponseUtils.sendRedirect(request, response, archiveUrl);
+    public static void redirectToOldSite(String path, HstRequest request, HstResponse response) {
+        String target = Switchover.isLive(request) ? "www2.gov.scot" : "www.gov.scot";
+        String url = String.format("https://%s%s", target, path);
+        LOG.info("Redirecting to archive {} -> {}", path, url);
+        HstResponseUtils.sendRedirect(request, response, url);
     }
 
     public static boolean isArchivedUrl(HstRequest request)  {

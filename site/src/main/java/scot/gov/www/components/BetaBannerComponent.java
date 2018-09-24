@@ -10,15 +10,7 @@ public class BetaBannerComponent extends BaseHstComponent {
     public void doBeforeRender(HstRequest request, HstResponse response) {
         super.doBeforeRender(request, response);
 
-        String hostGroup = request
-                .getRequestContext()
-                .getResolvedMount()
-                .getMount()
-                .getVirtualHost()
-                .getHostGroupName();
-
-        boolean showBetaBanner = hostGroup.endsWith("beta");
-        if (showBetaBanner) {
+        if (Switchover.isLive(request)) {
             request.setAttribute("showBetaBanner", true);
         }
     }

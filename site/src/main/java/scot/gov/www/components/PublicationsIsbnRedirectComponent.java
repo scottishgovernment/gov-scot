@@ -17,14 +17,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Publication;
 
-import java.io.IOException;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.io.IOException;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
-import static scot.gov.www.components.ArchiveUtils.sendArchiveRedirect;
 
 /**
  * Redirect isbn urls
@@ -52,7 +51,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
         // check to see if we recorded this isbn in the historical publication urls
         String historicalPublicationPath = findHistoricalPublicationUrl(isbn, context);
         if (StringUtils.isNotBlank(historicalPublicationPath)) {
-            sendArchiveRedirect(historicalPublicationPath, request, response);
+            ArchiveUtils.redirectToOldSite(historicalPublicationPath, request, response);
             return;
         }
 
@@ -73,7 +72,6 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
     }
 
     private HippoBean findByIsbn(String isbn, HstRequestContext requestContext) {
-        StringUtils.equals("", "");
         HstQuery query = HstQueryBuilder
                 .create(requestContext.getSiteContentBaseBean())
                 .ofTypes(Publication.class)

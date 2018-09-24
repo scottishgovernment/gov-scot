@@ -14,7 +14,6 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
 import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
-import static scot.gov.www.components.ArchiveUtils.sendArchiveRedirect;
 
 /**
  * Componenet used to support url aliases from Rubric.
@@ -36,7 +35,7 @@ public class UrlAliasRedirectComponent extends BaseHstComponent {
 
         // check if this url is an archived url
         if (isArchivedUrl(request)) {
-            sendArchiveRedirect(request.getPathInfo(), request, response);
+            ArchiveUtils.redirectToOldSite(request, response);
             return;
         }
 
