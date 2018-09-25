@@ -41,6 +41,7 @@ script-src
   https://syndication.twitter.com
   https://www.googletagmanager.com
   https://www.youtube.com
+  https://youtu.be
 ;object-src
   'self'
 ;
