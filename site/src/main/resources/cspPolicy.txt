@@ -1,0 +1,46 @@
+script-src
+  'self'
+  'unsafe-inline'
+  'unsafe-eval'
+  data:
+  https://cdn.syndication.twimg.com/
+  https://platform.twitter.com
+  https://www.googletagmanager.com
+  https://www.google-analytics.com
+  https://www.youtube.com/iframe_api
+  https://s.ytimg.com/
+  https://cdn.mouseflow.com
+;img-src
+  'self'
+  data:
+  http://www.gov.scot/
+  http://cdn.prgloo.com/
+  https://cdn.prgloo.com/
+  https://www.google-analytics.com/
+  https://www.googletagmanager.com/
+  https://*.staticflickr.com/
+  https://*.ytimg.com/
+  https://pbs.twimg.com
+  https://platform.twitter.com
+  https://syndication.twitter.com
+  https://ton.twimg.com/
+;style-src
+  'self'
+  'unsafe-inline'
+  https://fonts.googleapis.com
+  https://maxcdn.bootstrapcdn.com
+  https://platform.twitter.com
+  https://ton.twimg.com/
+;font-src
+  'self'
+  data:
+  https://fonts.gstatic.com
+  https://maxcdn.bootstrapcdn.com
+;frame-src
+  https://platform.twitter.com
+  https://syndication.twitter.com
+  https://www.googletagmanager.com
+  https://www.youtube.com
+;object-src
+  'self'
+;
