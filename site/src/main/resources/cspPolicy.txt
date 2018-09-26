@@ -14,17 +14,14 @@ script-src
 img-src
   'self'
   data:
-  http://www.gov.scot/
-  http://cdn.prgloo.com/
   https://cdn.prgloo.com/
   https://www.google-analytics.com/
   https://www.googletagmanager.com/
   https://*.staticflickr.com/
   https://*.ytimg.com/
-  https://pbs.twimg.com
+  https://*.twimg.com/
   https://platform.twitter.com
   https://syndication.twitter.com
-  https://ton.twimg.com/
 ;
 style-src
   'self'
@@ -49,4 +46,7 @@ frame-src
 ;
 object-src
   'self'
+;
+report-uri
+  /service/csp
 ;
