@@ -1,5 +1,6 @@
 package scot.gov.www.filters;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,22 +11,38 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
-
-import java.io.InputStream;
 import java.io.IOException;
-import java.io.StringWriter;
-
-import org.apache.commons.io.IOUtils;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class CSPFilter implements Filter {
+
     private static final Logger LOG = LoggerFactory.getLogger(CSPFilter.class);
 
     private String cspPolicy;
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException {
-        LOG.info("CSP header added to the response");
+    public void init(FilterConfig filterConfig) throws ServletException {
+        LOG.trace("Initialising CSP filter");
+
+        InputStream inputStream = CSPFilter.class.getResourceAsStream("/cspPolicy.txt");
+        try {
+            String policy = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+            cspPolicy = policy
+                    .replaceAll("\\s+;", "; ")
+                    .replaceAll("\\s+", " ");
+            IOUtils.closeQuietly(inputStream);
+        } catch (IOException ex) {
+            throw new ServletException("Could not read CSP policy", ex);
+        }
+    }
+
+    @Override
+    public void doFilter(
+            ServletRequest servletRequest,
+            ServletResponse servletResponse,
+            FilterChain filterChain)
+            throws IOException, ServletException {
 
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.setHeader("Content-Security-Policy", cspPolicy);
@@ -34,23 +51,8 @@ public class CSPFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        LOG.info("Creating CSP string");
-
-        InputStream inputStream = CSPFilter.class.getResourceAsStream("/cspPolicy.txt"); // src/main/resources
-        StringWriter writer = new StringWriter();
-
-        try {
-            IOUtils.copy(inputStream, writer, "UTF-8");
-            cspPolicy = writer.toString().replaceAll("\\s+", " ");
-        } catch (IOException e) {
-            LOG.error(e.getMessage(), e);
-            throw new ServletException(e);
-        }
-    }
-
-    @Override
     public void destroy() {
         // destroy
     }
+
 }
