@@ -40,7 +40,7 @@
                                 <@hst.link hippobean=document.image.xlargedoubled/> 526w"
                             sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px"/>
                         <#else>
-                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
+                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">
                         </#if>
                     </div>
                 </div>

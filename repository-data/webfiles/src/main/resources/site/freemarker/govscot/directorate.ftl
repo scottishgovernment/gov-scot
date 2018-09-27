@@ -50,7 +50,7 @@
                                     </div>
 
                                     <div class="person__text-container">
-                                        <h4 class="person__name person__name--link">${role.incumbent.title}</h4>
+                                        <h4 class="person__name person__name--link"><#if role.incumbent??>${role.incumbent.title}<#else>${role.title}</#if></h4>
                                         <p class="person__roles">
                                             <#-- todo: allow for multiple here -->
                                             <@hst.link var="link" hippobean=role/>

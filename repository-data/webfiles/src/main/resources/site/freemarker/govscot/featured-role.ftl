@@ -7,19 +7,8 @@
     <#assign postalAddress = document.incumbent.postalAddress/>
 
         <div class="grid"><!--
-            --><div class="grid__item
-            medium--three-twelfths large--three-twelfths">
-                <div>
-                    <@hst.include ref="side-menu"/>
-                </div>
-
-                <div class="hidden-xsmall">
-                    <#include 'common/contact-information.ftl' />
-                </div>
-
-
-            </div><!--
-            --><div class="grid__item medium--nine-twelfths large--nine-twelfths">
+            
+            --><div class="grid__item  medium--nine-twelfths   push--medium--three-twelfths">
                 
                 <!-- dev note: inline styles to illustrate image dimensions only. remove when we have correct images. -->
                 <img class="full-width-image"
@@ -55,6 +44,18 @@
                         </div>
                     </div>
                 </div>
+            </div><!--
+
+            --><div class="grid__item  medium--three-twelfths  pull--medium--nine-twelfths">
+                <div>
+                    <@hst.include ref="side-menu"/>
+                </div>
+
+                <div class="hidden-xsmall">
+                    <#include 'common/contact-information.ftl' />
+                </div>
+
+
             </div><!--
 
         --></div>
