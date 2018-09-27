@@ -53,8 +53,8 @@
 
          --><div class="grid__item medium--nine-twelfths large--three-twelfths push--large--two-twelfths">
         <aside>
-            <div class="sidebar-block">
-                <#if document.relatedPolicies?has_content>
+            <#if document.relatedPolicies?has_content>
+                <div class="sidebar-block">
                     <h3 class="emphasis sidebar-block__heading">Related policies</h3>
 
                     <ul class="sidebar-block__list no-bullets">
@@ -65,8 +65,8 @@
                             </li>
                         </#list>
                     </ul>
-                </#if>
-            </div>
+                </div>
+            </#if>
 
             <@hst.html hippohtml=document.contactDetails var="contactDetails"/>
             <#if contactDetails?has_content>
