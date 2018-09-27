@@ -1,3 +1,4 @@
+<#if attachedDocument.document??>
 <div class="document-info <#if attachedDocument.highlighted || (isLimelitItem)!false>document-info--limelight</#if>">
 
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?upper_case/>
@@ -63,3 +64,4 @@
         </div>
     </div>
 </div>
+</#if>
