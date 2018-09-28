@@ -4,12 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,13 +20,11 @@ public class CSPFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         LOG.trace("Initialising CSP filter");
 
-        InputStream inputStream = CSPFilter.class.getResourceAsStream("/cspPolicy.txt");
-        try {
+        try (InputStream inputStream = CSPFilter.class.getResourceAsStream("/cspPolicy.txt")) {
             String policy = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
             cspPolicy = policy
                     .replaceAll("\\s+;", "; ")
                     .replaceAll("\\s+", " ");
-            IOUtils.closeQuietly(inputStream);
         } catch (IOException ex) {
             throw new ServletException("Could not read CSP policy", ex);
         }
