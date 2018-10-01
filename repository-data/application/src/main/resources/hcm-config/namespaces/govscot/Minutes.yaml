@@ -204,7 +204,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Executive summary
+            caption: Content
             field: content
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
