@@ -109,7 +109,6 @@ definitions:
       /uat.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: f3a4461a-d4eb-477d-af8c-b9d3b414eaaf
-        hst:cmslocation: https://uat.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 03435931-6b17-4420-9d0f-2970abac95b9
@@ -151,7 +150,6 @@ definitions:
       /tst.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 3f5dc778-6b6a-4ed1-9c0b-4b9f7ab7f964
-        hst:cmslocation: https://tst.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 9aaf20e3-5666-44f8-b2a5-26280c9353b2
@@ -195,7 +193,6 @@ definitions:
       /per.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 26ba4e41-450b-437a-9f67-3f4ae11ba8cd
-        hst:cmslocation: https://per.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 494b24ff-2d4d-4dd1-8470-f6f1763fda11
@@ -239,7 +236,6 @@ definitions:
       /lcl.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: ba3ead53-bbda-4aec-838d-fda2bf62b166
-        hst:cmslocation: https://lcl.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 786c6fff-6c85-4632-90fa-2a683e31c302
@@ -281,7 +277,6 @@ definitions:
       /int.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: a987e83c-eb47-47b9-abaf-1810ad966336
-        hst:cmslocation: https://int.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 513a387a-b3f0-42e9-8d8f-a5fe6350f6bd
@@ -323,7 +318,6 @@ definitions:
       /grn.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 08ca5f8f-d02b-4e77-a704-cd45ee764568
-        hst:cmslocation: https://grn.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 89846ed2-6876-41b7-b604-8aa4e4e7377e
@@ -367,7 +361,6 @@ definitions:
       /exp.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 6310b3ad-c323-4198-b4d5-e2c5e675a755
-        hst:cmslocation: https://exp.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: e9eca519-1d36-4aad-a310-44eb2c602823
@@ -409,7 +402,6 @@ definitions:
       /dev.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 68a77b21-3c55-4867-b908-fdfa5aac131c
-        hst:cmslocation: https://dev.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: e4fd4f3b-a966-44ad-9d4e-7377e88ae18c
@@ -451,7 +443,6 @@ definitions:
       /blu.beta:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: ab0b7377-a504-407e-a336-1afac7c98d79
-        hst:cmslocation: https://blu.publishing.gov.scot
         /scot:
           jcr:primaryType: hst:virtualhost
           jcr:uuid: 95f23f27-dfb8-43d1-9920-124966a2ec5b
