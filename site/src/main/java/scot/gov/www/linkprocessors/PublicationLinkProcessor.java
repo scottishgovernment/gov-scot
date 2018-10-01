@@ -1,6 +1,7 @@
 package scot.gov.www.linkprocessors;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.jackrabbit.util.ISO9075;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -103,9 +104,13 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String template = "SELECT * FROM govscot:SimpleContent WHERE jcr:path LIKE '/content/documents/govscot/publications/%%/%s/%%'";
-        String sql = String.format(template, slug);
-        QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
+        String escapedSlug = ISO9075.encodePath(slug);
+
+        String template =
+                "/jcr:root/content/documents/govscot/publications//element(%s, hippostd:folder)" +
+                "/element(*, hippo:handle)/element(*, govscot:Publication)";
+        String sql = String.format(template, escapedSlug);
+        QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.XPATH).execute();
         if (result.getNodes().getSize() == 0) {
             return null;
         }
