@@ -79,12 +79,7 @@
 
                      --><div class="grid__item  large--seven-twelfths">
                             <div class="leader">
-                                <@hst.html var="executiveSummary" hippohtml=document.executiveSummary/>
-                                <#if executiveSummary?has_content>
-                                    ${executiveSummary}
-                                <#else>
-                                    ${document.summary}
-                                </#if>
+                                ${document.summary}
                             </div>
                         </div><!--
                  --></div>
