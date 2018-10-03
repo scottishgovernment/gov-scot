@@ -108,7 +108,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
         String template =
                 "/jcr:root/content/documents/govscot/publications//element(%s, hippostd:folder)" +
-                "/element(*, hippo:handle)/element(*, govscot:Publication)";
+                "/element(*, hippo:handle)/element(*, govscot:SimpleContent)";
         String sql = String.format(template, escapedSlug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.XPATH).execute();
         if (result.getNodes().getSize() == 0) {
