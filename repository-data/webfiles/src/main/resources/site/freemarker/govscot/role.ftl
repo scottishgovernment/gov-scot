@@ -59,7 +59,7 @@
                 <div class="body-content">
 
                     <#if document.incumbent??>
-                        <#if document.incumbent.biography?has_content>
+                        <#if document.incumbent.content?has_content>
                         <div class="leader  leader--first-para">
                             <@hst.html hippohtml=document.incumbent.content var="biography"/>
                             ${biography?trim?keep_before("\n")}
@@ -71,7 +71,7 @@
                     <@hst.html hippohtml=document.content/>
 
                     <#if document.incumbent??>
-                        <#if document.incumbent.biography?has_content>
+                        <#if document.incumbent.content?has_content>
                         <h2>Biography</h2>
                         ${biography?trim?keep_after("\n")}
                         </#if>
