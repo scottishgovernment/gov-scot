@@ -41,7 +41,7 @@ public class FolderTypesDaemonModule implements DaemonModule {
         }
 
         // we only want to listen to folder being added
-        if (!"threepane:folder-permissions:add".equals(event.interaction())) {
+        if (!"add".equals(event.action())) {
             return;
         }
 
