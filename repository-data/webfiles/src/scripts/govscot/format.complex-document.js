@@ -69,10 +69,12 @@ define([
         });
 
         // 2.2 replace elements
-        newLimitationTitle = $("<h5 class=delta/>");
-        newLimitationTitle.html(limitationTitle.text());
-        newLimitationTitle.insertAfter(limitationTitle);
-        limitationTitle.remove();
+        if (limitationTitle) {
+            newLimitationTitle = $("<h5 class=delta/>");
+            newLimitationTitle.html(limitationTitle.text());
+            newLimitationTitle.insertAfter(limitationTitle);
+            limitationTitle.remove();
+        }
 
         standardTitle = $('blockquote.bs_blockquote .bs_blockquote-title');
         newStandardTitle = $("<h4 class=\"beta no-top-margin\"/>");
