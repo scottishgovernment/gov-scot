@@ -6,7 +6,7 @@
   <parent>
     <groupId>scot.gov.www</groupId>
     <artifactId>gov-scot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.526</version>
   </parent>
 
   <artifactId>gov-scot-site</artifactId>
