@@ -116,7 +116,7 @@ article ol.fancy {
   list-style-type: none;
   margin-left: $list__left-margin;
 
-  li {
+  > li {
     position: relative;
     min-height: 42px;
 
@@ -169,7 +169,7 @@ article ol.fancy {
     list-style-type: none;
     margin: 14px 0 21px 10px;
 
-    li {
+    > li {
       margin: 0 0 14px 30px;
       position: relative;
 
