@@ -111,7 +111,7 @@ public class PublicationComponent extends BaseHstComponent {
             return;
         }
 
-        HippoBean currentPage = isPage(document) ? document : pages.get(0);
+        HippoBean currentPage = isPage(document) && includePage(document) ? document : pages.get(0);
         request.setAttribute(PAGES, pages);
         request.setAttribute(ISMULTIPAGE, true);
         request.setAttribute("currentPage", currentPage);
@@ -140,7 +140,7 @@ public class PublicationComponent extends BaseHstComponent {
         return pagesFolder.getDocuments().stream().filter(this::includePage).collect(toList());
     }
 
-    private boolean includePage(HippoDocumentBean page) {
+    private boolean includePage(HippoBean page) {
         // do not include pages that have been marked as a contents page by the migration
         return !page.getProperty("govscot:contentsPage", false);
     }
