@@ -5,6 +5,46 @@
         line-height: 35px;
         margin-bottom: 21px;
     }
+
+    h2, h3, h4 {
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .bs_table table {
+        border: 0;
+    }
+
+    .bs_figure td {
+        border: 1px solid $color__grey--base;
+    }
+
+    th:first-child {
+        border-left: 4px solid $color__blue--base;
+    }
+
+    thead {
+        background-color: $color__blue--lighter;
+    }
+
+    // brace for some ugly very specific rules...
+    .bs_informaltable > table > tbody > tr > td {
+        border-bottom: 0;
+        padding: 0;
+    }
+    .bs_informaltable > table > tbody > tr:first-child > td:first-child {
+        padding-left: 0;
+    }
+
+    .bs_informaltable tr,
+    .bs_informaltable td {
+        display: block;
+        font-weight: normal !important;
+    }
+    .bs_orderedlist + p {
+        margin-top: 35px;
+    }
 }
 
 @include media-query(medium) {
