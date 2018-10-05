@@ -26,39 +26,37 @@
                     <#list document.orgRole as role>
                      --><li class="grid__item medium--four-twelfths large--three-twelfths no-left-margin">
                             <div class="person">
-                                <@hst.link var="link" hippobean=role.incumbent!role/>
+                                <@hst.link var="link" hippobean=role/>
                                 <a class="person__link" href="${link}">
 
                                     <div class="person__image-container">
-                                        <div class="person__image-container">
-                                        <#if role.incumbent?has_content && role.incumbent.image??>
-                                            <img alt="${role.incumbent.title}" class="person__image"
-                                        src="<@hst.link hippobean=role.incumbent.image.xlarge/>"
-                                        srcset="<@hst.link hippobean=role.incumbent.image.small/> 130w,
-                                            <@hst.link hippobean=role.incumbent.image.smalldoubled/> 260w,
-                                            <@hst.link hippobean=role.incumbent.image.medium/> 220w,
-                                            <@hst.link hippobean=role.incumbent.image.mediumdoubled/> 440w,
-                                            <@hst.link hippobean=role.incumbent.image.large/> 213w,
-                                            <@hst.link hippobean=role.incumbent.image.largedoubled/> 426w,
-                                            <@hst.link hippobean=role.incumbent.image.xlarge/> 263w,
-                                            <@hst.link hippobean=role.incumbent.image.xlargedoubled/> 526w"
-                                        sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, (min-width:480px) 213px, 130px">
-                                        <#else>
-                                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
-                                        </#if>
-                                        </div>
+                                    <#if role.incumbent?has_content && role.incumbent.image??>
+                                        <img alt="${role.incumbent.title}" class="person__image"
+                                    src="<@hst.link hippobean=role.incumbent.image.xlarge/>"
+                                    srcset="<@hst.link hippobean=role.incumbent.image.small/> 130w,
+                                        <@hst.link hippobean=role.incumbent.image.smalldoubled/> 260w,
+                                        <@hst.link hippobean=role.incumbent.image.medium/> 220w,
+                                        <@hst.link hippobean=role.incumbent.image.mediumdoubled/> 440w,
+                                        <@hst.link hippobean=role.incumbent.image.large/> 213w,
+                                        <@hst.link hippobean=role.incumbent.image.largedoubled/> 426w,
+                                        <@hst.link hippobean=role.incumbent.image.xlarge/> 263w,
+                                        <@hst.link hippobean=role.incumbent.image.xlargedoubled/> 526w"
+                                    sizes="(min-width:1200px) 213px, (min-width:920px) 130px, (min-width:768px) 213px, (min-width:480px) 213px, 130px">
+                                    <#else>
+                                    <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
+                                    </#if>
                                     </div>
 
                                     <div class="person__text-container">
                                         <h4 class="person__name person__name--link"><#if role.incumbent??>${role.incumbent.title}<#else>${role.title}</#if></h4>
-                                        <p class="person__roles">
-                                            <#-- todo: allow for multiple here -->
-                                            <@hst.link var="link" hippobean=role/>
-                                            <object><a class="person__role-link" href="${link}">${role.title}</a></object>
-                                        </p>
                                     </div>
-
                                 </a>
+
+                                <p class="person__roles">
+                                    <#-- todo: allow for multiple here -->
+                                    <a class="person__role-link" href="${link}">${role.title}</a>
+                                </p>
+
                             </div>
                         </li><!--
                     </#list>
@@ -105,17 +103,18 @@
                                         <h4 class="person__name person__name--link">
                                             ${roleperson.title}
                                         </h4>
-
-                                        <p class="person__roles">
-                                            <#-- todo: allow for multiple here -->
-                                            <#if role.incumbent??>
-                                                <object><a class="person__role-link" href="${link}">${role.title}</a></object>
-                                            <#else>
-                                                ${role.roleTitle}
-                                            </#if>
-                                        </p>
                                     </div>
                                 </a>
+
+                                <p class="person__roles">
+                                    <#-- todo: allow for multiple here -->
+                                    <#if role.incumbent??>
+                                        <a class="person__role-link" href="${link}">${role.title}</a>
+                                    <#else>
+                                        ${role.roleTitle}
+                                    </#if>
+                                </p>
+
                             </div>
                         </li><!--
                     </#list>
