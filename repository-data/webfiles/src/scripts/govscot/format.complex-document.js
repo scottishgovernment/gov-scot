@@ -54,7 +54,7 @@ define([
 
     function tweakComplexDocumentMarkup () {
         // 1. add overflow class to image containers
-        $('.bs_figure').addClass('overflow--medium--three-twelfths');
+        $('.bs_figure').addClass('overflow--large--three-twelfths');
 
         // 2. style standard definition block
         $('blockquote.bs_blockquote').addClass('info-note blockquote');
@@ -81,6 +81,15 @@ define([
         newStandardTitle.html(standardTitle.html());
         newStandardTitle.insertAfter(standardTitle);
         standardTitle.remove();
+
+        // 3. fix notes
+        let bsnote, bsnotecontent;
+        bsnote = $('.bs_note');
+        bsnotecontent = bsnote.find('td:last');
+        bsnote
+          .addClass('note info-note')
+          .removeAttr('style')
+          .html(bsnotecontent.html());
     }
 
     return complexDocumentPage;
