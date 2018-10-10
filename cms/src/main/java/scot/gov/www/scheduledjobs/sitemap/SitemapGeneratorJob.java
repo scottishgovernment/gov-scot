@@ -48,6 +48,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final String SITEMAP = "sitemap";
 
+    private static final String SITEMAP_INDEX = "sitemapindex";
+
     private static final String SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
     private static final String PING_URL = "http://localhost:8080/site/ping/";
@@ -117,15 +119,16 @@ public class SitemapGeneratorJob implements RepositoryJob {
         return Family.SUCCESSFUL.equals(pingResponse.getStatusInfo().getFamily());
     }
 
-    private byte [] sitemapindex(Session session, String baseURL)
+    private byte[] sitemapindex(Session session, String baseURL)
             throws IOException, ParserConfigurationException, TransformerException, RepositoryException {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = dbf.newDocumentBuilder();
         dbf.setNamespaceAware(true);
         Document doc = docBuilder.newDocument();
-        Element rootElement = doc.createElementNS(SITEMAP_NS, SITEMAP);
+        Element rootElement = doc.createElementNS(SITEMAP_NS, SITEMAP_INDEX);
         rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", SITEMAP_NS);
+
         Node root = session.getNode(CONTENT_DOCUMENTS_GOVSCOT);
         NodeIterator nodeIterator = root.getNodes();
         while (nodeIterator.hasNext()) {
