@@ -30,6 +30,8 @@ public class TopicComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(TopicComponent.class);
 
+    private static final String PUBLICATIONTYPE = "govscot:publicationType";
+
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -107,11 +109,13 @@ public class TopicComponent extends BaseHstComponent {
         }
 
         try {
-            Filter parentFilter = query.createFilter();
-            parentFilter.addContains("govscot:publicationType", "consultation-paper");
-            BaseFilter incomingFilter = query.getFilter();
-            query.setFilter(incomingFilter);
-            parentFilter.addAndFilter(incomingFilter);
+            Filter consultationPaperFilter = query.createFilter();
+            consultationPaperFilter.addContains(PUBLICATIONTYPE, "consultation-");
+
+            BaseFilter topicFilter = query.getFilter();
+            query.setFilter(consultationPaperFilter);
+            consultationPaperFilter.addAndFilter(topicFilter);
+
             executeQueryLoggingException(query, request, "consultations");
         } catch (QueryException e) {
             LOG.error("Unable to get Consultations for topic {}", topic.getPath(), e);
@@ -125,11 +129,14 @@ public class TopicComponent extends BaseHstComponent {
         }
 
         try {
-            Filter parentFilter = query.createFilter();
-            parentFilter.addNotContains("govscot:publicationType", "consultation-paper");
-            BaseFilter incomingFilter = query.getFilter();
-            query.setFilter(incomingFilter);
-            parentFilter.addAndFilter(incomingFilter);
+            Filter consultationFilter = query.createFilter();
+            consultationFilter.addNotContains(PUBLICATIONTYPE, "consultation-paper");
+            consultationFilter.addNotContains(PUBLICATIONTYPE, "consultation-responses");
+
+            BaseFilter topicFilter = query.getFilter();
+            query.setFilter(consultationFilter);
+            consultationFilter.addAndFilter(topicFilter);
+
             executeQueryLoggingException(query, request, "publications");
         } catch (QueryException e) {
             LOG.error("Unable to get Publications for topic {}", topic.getPath(), e);
