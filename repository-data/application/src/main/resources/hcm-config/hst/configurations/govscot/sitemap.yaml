@@ -6,84 +6,102 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/homepage
         hst:refId: root
+        hst:sitemapitemhandlerids: [trailing-slash]
       /_any_:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
         hst:relativecontentpath: '404'
+        hst:sitemapitemhandlerids: [trailing-slash]
       /pagenotfound:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
         hst:refId: pagenotfound
         hst:relativecontentpath: '404'
+        hst:sitemapitemhandlerids: [trailing-slash]
       /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/topicslistpage
         hst:relativecontentpath: topics
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicpage
           hst:relativecontentpath: topics/${1}
           hst:componentconfigurationmappingvalues: ['hst:pages/issuepage']
           hst:componentconfigurationmappingnames: ['govscot:Issue']
+          hst:sitemapitemhandlerids: [trailing-slash]
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicslistpage
           hst:relativecontentpath: ${parent}/index
+          hst:sitemapitemhandlerids: [trailing-slash]
       /news:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/newslistpage
         hst:relativecontentpath: news
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/newspage
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/newspageprgloo
           hst:relativecontentpath: news
+          hst:sitemapitemhandlerids: [trailing-slash]
       /about:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/aboutpage
         hst:relativecontentpath: about/
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
           hst:relativecontentpath: about/index
+          hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
           hst:relativecontentpath: about/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
           /_index_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: ${parent}/index
+            hst:sitemapitemhandlerids: [trailing-slash]
           /_any_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:componentconfigurationmappingnames: ['govscot:Person']
             hst:componentconfigurationmappingvalues: ['hst:pages/personpage']
+            hst:sitemapitemhandlerids: [trailing-slash]
           /_default_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: about/${1}/${2}
+            hst:sitemapitemhandlerids: [trailing-slash]
             /_index_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
               hst:componentconfigurationmappingnames: ['govscot:OrgRoles']
               hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage']
               hst:relativecontentpath: ${parent}/index
+              hst:sitemapitemhandlerids: [trailing-slash]
             /_default_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
               hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
               hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
               hst:relativecontentpath: about/${1}/${2}/${3}
+              hst:sitemapitemhandlerids: [trailing-slash]
               /_index_:
                 jcr:primaryType: hst:sitemapitem
                 hst:componentconfigurationid: hst:pages/aboutpage
                 hst:componentconfigurationmappingnames: ['govscot:Directorate']
                 hst:componentconfigurationmappingvalues: ['hst:pages/directoratepage']
                 hst:relativecontentpath: ${parent}/index
+                hst:sitemapitemhandlerids: [trailing-slash]
               /_default_:
                 jcr:primaryType: hst:sitemapitem
                 hst:componentconfigurationid: hst:pages/aboutpage
@@ -91,40 +109,48 @@ definitions:
                 hst:componentconfigurationmappingvalues: ['hst:pages/personpage',
                   'hst:pages/rolepage']
                 hst:relativecontentpath: about/${1}/${2}/${3}/${4}
+                hst:sitemapitemhandlerids: [trailing-slash]
           /first-minister:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/featuredrolepage
             hst:relativecontentpath: ${parent}/first-minister
+            hst:sitemapitemhandlerids: [trailing-slash]
         /how-government-is-run:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
           hst:relativecontentpath: about/how-government-is-run
+          hst:sitemapitemhandlerids: [trailing-slash]
           /_index_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: ${parent}/index
+            hst:sitemapitemhandlerids: [trailing-slash]
           /_default_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: about/how-government-is-run/${1}
+            hst:sitemapitemhandlerids: [trailing-slash]
             /_index_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
               hst:componentconfigurationmappingnames: ['govscot:OrgRoles']
               hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage']
               hst:relativecontentpath: ${parent}/index
+              hst:sitemapitemhandlerids: [trailing-slash]
             /_default_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
               hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
               hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
               hst:relativecontentpath: about/how-government-is-run/${1}/${2}
+              hst:sitemapitemhandlerids: [trailing-slash]
               /_index_:
                 jcr:primaryType: hst:sitemapitem
                 hst:componentconfigurationid: hst:pages/aboutpage
                 hst:componentconfigurationmappingnames: ['govscot:Directorate']
                 hst:componentconfigurationmappingvalues: ['hst:pages/directoratepage']
                 hst:relativecontentpath: ${parent}/index
+                hst:sitemapitemhandlerids: [trailing-slash]
               /_default_:
                 jcr:primaryType: hst:sitemapitem
                 hst:componentconfigurationid: hst:pages/aboutpage
@@ -132,108 +158,135 @@ definitions:
                 hst:componentconfigurationmappingvalues: ['hst:pages/personpage',
                   'hst:pages/rolepage']
                 hst:relativecontentpath: about/how-government-is-run/${1}/${2}/${3}
+                hst:sitemapitemhandlerids: [trailing-slash]
           /directorates:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/directoratespage
             hst:refId: directorates
             hst:relativecontentpath: ${parent}/directorates
+            hst:sitemapitemhandlerids: [trailing-slash]
       /roles:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
         hst:relativecontentpath: roles
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/rolepage
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
       /groups:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/groupspage
         hst:relativecontentpath: groups
         hst:refId: groups
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/grouppage
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
       /policies:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/policylistpage
         hst:relativecontentpath: policies
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/policypage
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
           /_default_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/policypage
             hst:relativecontentpath: ${parent}/${2}
+            hst:sitemapitemhandlerids: [trailing-slash]
           /_index_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/policypage
             hst:relativecontentpath: ${parent}/index
+            hst:sitemapitemhandlerids: [trailing-slash]
           /latest:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/policypage
             hst:relativecontentpath: ${parent}/index
+            hst:sitemapitemhandlerids: [trailing-slash]
       /siteitems:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
         hst:relativecontentpath: siteitems
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/siteitempage
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
       /people:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
         hst:relativecontentpath: roles
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/personpage
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
       /publications:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/publicationlistpage
         hst:relativecontentpath: publications
+        hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:relativecontentpath: ${parent}/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
           /_default_:
             jcr:primaryType: hst:sitemapitem
+            hst:sitemapitemhandlerids: [trailing-slash]
             /_default_:
               jcr:primaryType: hst:sitemapitem
+              hst:sitemapitemhandlerids: [trailing-slash]
               /_default_:
                 jcr:primaryType: hst:sitemapitem
                 hst:componentconfigurationid: hst:pages/publicationpage
                 hst:relativecontentpath: publications/${1}/${2}/${3}/${4}
+                hst:sitemapitemhandlerids: [trailing-slash]
                 /pages:
                   jcr:primaryType: hst:sitemapitem
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}
                   hst:componentconfigurationid: hst:pages/publicationpage
+                  hst:sitemapitemhandlerids: [trailing-slash]
                   /_default_:
                     jcr:primaryType: hst:sitemapitem
                     hst:componentconfigurationid: hst:pages/publicationpage
                     hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/pages/${5}
+                    hst:sitemapitemhandlerids: [trailing-slash]
                 /_default_:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/publicationpage
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/${5}
                   hst:componentconfigurationmappingvalues: ['hst:pages/complexdocumentpage']
                   hst:componentconfigurationmappingnames: ['govscot:ComplexDocument']
+                  hst:sitemapitemhandlerids: [trailing-slash]
                   /_default_:
                     jcr:primaryType: hst:sitemapitem
                     hst:componentconfigurationid: hst:pages/complexdocumentpage
                     hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/chapters/${5}/${6}
+                    hst:sitemapitemhandlerids: [trailing-slash]
                 /about:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/complexdocumentpage
                   hst:relativecontentpath: ${parent}
+                  hst:sitemapitemhandlerids: [trailing-slash]
                 /documents:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/complexdocumentpage
                   hst:relativecontentpath: ${parent}
+                  hst:sitemapitemhandlerids: [trailing-slash]
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/govscotpublicationspage
+          hst:sitemapitemhandlerids: [trailing-slash]
       /isbn:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/publicationlistpage
@@ -246,6 +299,7 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/searchpage
         hst:relativecontentpath: search
+        hst:sitemapitemhandlerids: [trailing-slash]
       /Publications:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/publicationlistpage

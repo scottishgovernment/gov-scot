@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:sitemapitemhandlers:
+      jcr:primaryType: hst:sitemapitemhandlers
+      jcr:uuid: 50832d64-13e2-47b6-aca9-3d3f3efed528
+      /trailing-slash:
+        jcr:primaryType: hst:sitemapitemhandler
+        jcr:uuid: 3018f588-fca2-4d13-858f-273e1f861b2a
+        hst:sitemapitemhandlerclassname: scot.gov.www.sitemap.TrailingSlashRedirect
