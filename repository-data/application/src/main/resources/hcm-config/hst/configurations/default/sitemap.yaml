@@ -5,3 +5,5 @@ definitions:
       /_any_:
         jcr:primaryType: hst:sitemapitem
         hst:relativecontentpath: ${1}
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/login:
+      .meta:delete: true
