@@ -2,15 +2,15 @@ let FeedbackPerspective;
 
 (function () {
     let environments = {
-        lcl: 'https://lgv.publishing.gov.scot',
-        dev: 'https://dgv.publishing.gov.scot',
-        int: 'https://igv.publishing.gov.scot',
-        exp: 'https://egv.publishing.gov.scot',
-        per: 'https://pgv.publishing.gov.scot',
-        tst: 'https://tgv.publishing.gov.scot',
-        uat: 'https://ugv.publishing.gov.scot',
-        blu: 'https://bgv.publishing.gov.scot',
-        grn: 'https://ggv.publishing.gov.scot',
+        lcl: 'https://lclrubric.publishing.gov.scot',
+        dev: 'https://devrubric.publishing.gov.scot',
+        int: 'https://intrubric.publishing.gov.scot',
+        exp: 'https://exprubric.publishing.gov.scot',
+        per: 'https://perrubric.publishing.gov.scot',
+        tst: 'https://tstrubric.publishing.gov.scot',
+        uat: 'https://uatrubric.publishing.gov.scot',
+        blu: 'https://blurubric.publishing.gov.scot',
+        grn: 'https://grnrubric.publishing.gov.scot',
         beta: 'https://rubric.publishing.gov.scot',
         publishing: 'https://rubric.publishing.gov.scot'
     };
