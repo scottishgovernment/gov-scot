@@ -12,7 +12,7 @@
     hippostdpubwf:creationDate: 2018-06-06T13:17:14.872+01:00
     hippostdpubwf:lastModificationDate: 2018-06-06T13:19:13.900+01:00
     hippostdpubwf:lastModifiedBy: admin
-    robotstxt:sitemap: ['https://beta.gov.scot/sitemap.xml']
+    robotstxt:sitemap: ['https://www.gov.scot/sitemap.xml']
     /robotstxt:section:
       jcr:primaryType: robotstxt:section
       robotstxt:disallow: [/search/]
@@ -27,7 +27,7 @@
     hippostdpubwf:creationDate: 2018-06-06T13:17:14.872+01:00
     hippostdpubwf:lastModificationDate: 2018-06-06T13:59:29.609+01:00
     hippostdpubwf:lastModifiedBy: admin
-    robotstxt:sitemap: ['https://beta.gov.scot/sitemap.xml']
+    robotstxt:sitemap: ['https://www.gov.scot/sitemap.xml']
     /robotstxt:section:
       jcr:primaryType: robotstxt:section
       robotstxt:disallow: [/search/]
@@ -43,7 +43,7 @@
     hippostdpubwf:lastModificationDate: 2018-06-06T13:19:13.900+01:00
     hippostdpubwf:lastModifiedBy: admin
     hippostdpubwf:publicationDate: 2018-06-06T13:19:16.690+01:00
-    robotstxt:sitemap: ['https://beta.gov.scot/sitemap.xml']
+    robotstxt:sitemap: ['https://www.gov.scot/sitemap.xml']
     /robotstxt:section:
       jcr:primaryType: robotstxt:section
       robotstxt:disallow: [/search/]
