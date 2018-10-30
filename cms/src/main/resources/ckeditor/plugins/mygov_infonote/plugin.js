@@ -1,6 +1,6 @@
 CKEDITOR.plugins.add( 'mygov_infonote', {
     init: function( editor ) {
-        editor.addContentsCss(this.path + 'infonote.css');
+
         if (document.getElementById('infoNoteStyles') === null) {
             let link = document.createElement('link');
             link.id = 'infoNoteStyles';
