@@ -11,3 +11,8 @@ definitions:
       .meta:delete: true
     /hst:hst/hst:configurations/hst:default/hst:sitemap/_any_.pdf:
       .meta:delete: true
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/favicon.ico:
+      .meta:delete: true
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/browserconfig.xml:
+      jcr:primaryType: hst:sitemapitem
+      hst:containerresource: true
