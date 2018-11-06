@@ -87,11 +87,13 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             }
 
             String pubPath = StringUtils.substringAfter(handle.getPath(), PUBLICATIONS);
+
             if (remaining.length > 0) {
                 // if there is more then one element then remove the 'index' part
                 String lastPathElement = StringUtils.substringAfterLast(pubPath, "/");
-                pubPath = StringUtils.substringBefore(pubPath, lastPathElement);
+                pubPath = StringUtils.substringBeforeLast(pubPath, lastPathElement);
             }
+
             String newPath = String.format("publications/%s%s", pubPath, String.join("/", remaining));
             link.setPath(newPath);
             return link;
@@ -123,7 +125,6 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
         Node publishedNode = null;
         Node lastNode = null;
-
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
             lastNode = node.getParent();
