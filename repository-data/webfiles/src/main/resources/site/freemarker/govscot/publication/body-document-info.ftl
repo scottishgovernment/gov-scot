@@ -38,14 +38,14 @@
                 </#if>
             </a>
         <#else>
-            <a title="View this document" href="${documentinline}" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+            <a title="View this document" href="${documentdownload}" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
         </#if>
         </div>
     </div>
 
     <div class="document-info__text">
 
-        <h3 class="document-info__title"><a class="no-icon" href="${documentinline}">${attachedDocument.title}</a></h3>
+        <h3 class="document-info__title"><a class="no-icon" href="<#if filenameExtension == "PDF">${documentinline}<#else>${documentdownload}</#if>">${attachedDocument.title}</a></h3>
 
         <div class="document-info__file-details">
             <dl class="document-info__meta">
