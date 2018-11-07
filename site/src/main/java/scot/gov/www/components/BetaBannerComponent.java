@@ -9,10 +9,6 @@ public class BetaBannerComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(HstRequest request, HstResponse response) {
         super.doBeforeRender(request, response);
-
-        if (!Switchover.isLive(request)) {
-            request.setAttribute("showBetaBanner", true);
-        }
     }
 
 }

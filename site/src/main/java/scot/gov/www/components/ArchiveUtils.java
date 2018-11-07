@@ -33,8 +33,7 @@ public class ArchiveUtils {
      * will all go to www2.gov.scot.
      */
     public static void redirectToOldSite(String path, HstRequest request, HstResponse response) {
-        String target = Switchover.isLive(request) ? "www2.gov.scot" : "www.gov.scot";
-        String url = String.format("https://%s%s", target, path);
+        String url = String.format("https://www2.gov.scot%s", path);
         LOG.info("Redirecting to archive {} -> {}", path, url);
         HstResponseUtils.sendRedirect(request, response, url);
     }
