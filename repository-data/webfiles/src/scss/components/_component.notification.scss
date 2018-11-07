@@ -223,14 +223,6 @@ $notification_padding: 14px;
   }
 }
 
-#mourning-banner ~ #beta-banner {
-  background-color: $color__grey--light;
-
-  .notification__beta-box {
-    color: $color__white;
-  }
-}
-
 @include media-query(medium) {
   .notification {
     &--gold,

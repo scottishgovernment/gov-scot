@@ -39,7 +39,6 @@ define([
             this.svgFallback();
             this.compensateAnchorOffsetForStickyElements();
 
-            banner.init('beta-banner');
             banner.init('staging-banner');
             cookieNotice.init();
             expand.init();
