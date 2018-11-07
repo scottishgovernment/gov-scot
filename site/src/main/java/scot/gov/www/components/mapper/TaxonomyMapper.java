@@ -4,16 +4,12 @@ import org.hippoecm.hst.site.HstServices;
 import org.onehippo.taxonomy.api.Category;
 import org.onehippo.taxonomy.api.Taxonomy;
 import org.onehippo.taxonomy.api.TaxonomyManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 import static java.util.Arrays.asList;
 
 public class TaxonomyMapper {
-
-    private static final Logger LOG = LoggerFactory.getLogger(TaxonomyMapper.class);
 
     private static final String PUBLICATION_TYPES = "publication-types";
 
