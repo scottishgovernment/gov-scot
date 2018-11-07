@@ -11,16 +11,11 @@
                 <li class="supporting-files__item">
 
                     <#if attachedDocument.document.filename??>
-
-                        <@hst.link var="documentdownload" hippobean=attachedDocument.document>
-                            <@hst.param name="forceDownload" value="true"/>
-                        </@hst.link>
-
                         <div class="supporting-file">
-                            <a href="${documentdownload}" class="supporting-file__icon file-icon file-icon--${supportingFilenameExtension}"></a>
+                            <a href="<@hst.link hippobean=attachedDocument.document/>?inline-true" class="supporting-file__icon file-icon file-icon--${supportingFilenameExtension}"></a>
 
                             <span class="supporting-file__link-wrap">
-                                <a class="supporting-file__link" href="${documentdownload}">
+                                <a class="supporting-file__link" href="<@hst.link hippobean=attachedDocument.document/>">
                                     ${attachedDocument.title} (<b><abbr>${supportingFilenameExtension}</abbr> <@formatFileSize document=attachedDocument/></b>)
                                 </a>
                             </span>
