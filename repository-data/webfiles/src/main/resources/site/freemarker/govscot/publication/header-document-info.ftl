@@ -26,7 +26,7 @@
                         sizes="(min-width: 768px) 165px, 107px" />
             </a>
             <#else>
-            <a title="View this document" href="${documentinline}" class="file-icon--large file-icon file-icon--${filenameExtension}"></a>
+                <a title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="file-icon--large file-icon file-icon--${filenameExtension}"></a>
             </#if>
 
             <a href="${documentdownload}" class="button button--secondary document-info__thumbnail-button no-icon button--no-margin">
