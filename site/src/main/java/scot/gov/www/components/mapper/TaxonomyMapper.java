@@ -1,62 +1,56 @@
 package scot.gov.www.components.mapper;
 
 import org.hippoecm.hst.site.HstServices;
+import org.onehippo.taxonomy.api.Category;
 import org.onehippo.taxonomy.api.Taxonomy;
 import org.onehippo.taxonomy.api.TaxonomyManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Singleton;
 import java.util.*;
 
-/**
- * Created by z441571 on 24/04/2018.
- */
-@Singleton
+import static java.util.Arrays.asList;
+
 public class TaxonomyMapper {
 
     private static final Logger LOG = LoggerFactory.getLogger(TaxonomyMapper.class);
+
     private static final String PUBLICATION_TYPES = "publication-types";
 
     private static TaxonomyMapper instance;
-    private TaxonomyManager taxonomyManager = HstServices.getComponentManager().getComponent(TaxonomyManager.class.getName());
+
+    private final TaxonomyManager taxonomyManager;
 
     /**
      * private constructor to enforce the use of getInstance() method to create singleton
      */
-    private TaxonomyMapper(){}
+    private TaxonomyMapper() {
+        taxonomyManager = HstServices.getComponentManager().getComponent(TaxonomyManager.class);
+    }
 
-    public static synchronized TaxonomyMapper getInstance(){
-        if(instance == null){
-            synchronized (TaxonomyMapper.class) {
-                if(instance == null){
-                    instance = new TaxonomyMapper();
-                }
-            }
+    public static synchronized TaxonomyMapper getInstance() {
+        if (instance == null) {
+            instance = new TaxonomyMapper();
         }
         return instance;
     }
 
     /**
-     *  Map of Groupings and categories for selection in the front end, which contains a list of
-     *  valuelist IDs to look up the correct documents from the repository
+     * Returns the categories and synonyms that match the given taxonomy ids.
      */
     public List<String> getPublicationTypes(Set<String> taxonomyIds, Locale locale) {
 
-        LOG.info("Into TaxonomyMapper.getPublicationTypes(List<String> taxonomyIds)");
         List<String> derivedList = new ArrayList<>();
-
         Taxonomy taxonomy = taxonomyManager.getTaxonomies().getTaxonomy(PUBLICATION_TYPES);
 
-        taxonomy.getCategories().forEach(category ->
-                category.getChildren()
-                        .stream()
-                        .filter(c -> taxonomyIds.contains(c.getKey()))
-                        .forEach(child -> {
-                            derivedList.add(child.getKey());
-                            Arrays.stream(child.getInfo(locale).getSynonyms())
-                                    .forEach(synonym -> derivedList.add(synonym));
-                        }));
+        for (Category category : taxonomy.getCategories()) {
+            for (Category child : category.getChildren()) {
+                if (taxonomyIds.contains(child.getKey())) {
+                    derivedList.add(child.getKey());
+                    derivedList.addAll(asList(child.getInfo(locale).getSynonyms()));
+                }
+            }
+        }
 
         return derivedList;
     }
@@ -64,4 +58,5 @@ public class TaxonomyMapper {
     public Taxonomy getPublicationTypesTaxonomy() {
         return taxonomyManager.getTaxonomies().getTaxonomy(PUBLICATION_TYPES);
     }
+
 }
