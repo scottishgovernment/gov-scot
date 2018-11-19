@@ -1,6 +1,5 @@
 package scot.gov.www.components;
 
-import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
@@ -32,7 +31,8 @@ import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
 public class UrlAliasRedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(UrlAliasRedirectComponent.class);
-    public static final String GOVSCOT_URL = "govscot:url";
+
+    private static final String GOVSCOT_URL = "govscot:url";
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
@@ -62,7 +62,7 @@ public class UrlAliasRedirectComponent extends BaseHstComponent {
     private String findAlias(HstRequest request)  {
         try {
             Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects/Aliases%s", Text.escapeIllegalJcrChars(request.getPathInfo()));
+            String path = String.format("/content/redirects/Aliases%s", ArchiveUtils.escapeJcrPath(request.getPathInfo()));
             if (session.nodeExists(path)) {
                 Node node = session.getNode(path);
                 if (node.hasProperty(GOVSCOT_URL)) {

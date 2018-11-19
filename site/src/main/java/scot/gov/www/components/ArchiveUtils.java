@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class ArchiveUtils {
 
@@ -42,7 +44,7 @@ public class ArchiveUtils {
     public static boolean isArchivedUrl(HstRequest request)  {
         try {
             Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects/HistoricalUrls%s", Text.escapeIllegalJcrChars(request.getPathInfo()));
+            String path = String.format("/content/redirects/HistoricalUrls%s", escapeJcrPath(request.getPathInfo()));
             if (path.endsWith("/")) {
                 path = StringUtils.substringBeforeLast(path, "/");
             }
@@ -51,5 +53,9 @@ public class ArchiveUtils {
             LOG.error("Failed to find publications redirect {}", request.getPathInfo(), e);
             return false;
         }
+    }
+
+    public static String escapeJcrPath(String path) {
+        return Arrays.stream(path.split("/")).map(Text::escapeIllegalJcrChars).collect(Collectors.joining("/"));
     }
 }
