@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
@@ -16,11 +17,22 @@ import javax.jcr.Session;
 import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
 
 /**
- * Componenet used to support url aliases from Rubric.
+ * Component used to support url aliases from Rubric.  It can also be used to support other redirects.
+ *
+ * The repository path unde stores redirects that the site shoudl support.
+ *
+ * Before serving a 404 page we first check if we have a redirect stored for the path being requested.  We do this by
+ * looking to see if we have an entry under:
+ *
+ *  /content/redirects/Aliases/<requestpath>
+ *
+ * If we do have a node at that path and it has a govscot:url attribute then we redirect them there.
+ *
  */
 public class UrlAliasRedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(UrlAliasRedirectComponent.class);
+    public static final String GOVSCOT_URL = "govscot:url";
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
@@ -50,10 +62,12 @@ public class UrlAliasRedirectComponent extends BaseHstComponent {
     private String findAlias(HstRequest request)  {
         try {
             Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects/Aliases%s", request.getPathInfo());
+            String path = String.format("/content/redirects/Aliases%s", Text.escapeIllegalJcrChars(request.getPathInfo()));
             if (session.nodeExists(path)) {
                 Node node = session.getNode(path);
-                return node.getProperty("govscot:url").getString();
+                if (node.hasProperty(GOVSCOT_URL)) {
+                    return node.getProperty(GOVSCOT_URL).getString();
+                }
             }
             return null;
         } catch (RepositoryException e) {

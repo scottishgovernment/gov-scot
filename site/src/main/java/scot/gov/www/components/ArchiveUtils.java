@@ -1,6 +1,8 @@
 package scot.gov.www.components;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.jackrabbit.commons.JcrUtils;
+import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.util.HstResponseUtils;
@@ -41,7 +43,7 @@ public class ArchiveUtils {
     public static boolean isArchivedUrl(HstRequest request)  {
         try {
             Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects/HistoricalUrls%s", request.getPathInfo());
+            String path = String.format("/content/redirects/HistoricalUrls%s", Text.escapeIllegalJcrChars(request.getPathInfo()));
             if (path.endsWith("/")) {
                 path = StringUtils.substringBeforeLast(path, "/");
             }
