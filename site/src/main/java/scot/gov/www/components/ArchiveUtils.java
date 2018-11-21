@@ -13,6 +13,8 @@ import javax.jcr.Session;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.joining;
+
 public class ArchiveUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ArchiveUtils.class);
@@ -56,6 +58,10 @@ public class ArchiveUtils {
     }
 
     public static String escapeJcrPath(String path) {
-        return Arrays.stream(path.split("/")).map(Text::escapeIllegalJcrChars).collect(Collectors.joining("/"));
+        return Arrays.stream(path.split("/"))
+                .filter(segment -> !StringUtils.equals(segment, ".."))
+                .map(Text::escapeIllegalJcrChars)
+                .collect(joining("/"));
     }
+
 }
