@@ -110,6 +110,9 @@ public class RedirectComponent extends BaseHstComponent {
     private HippoBean findPublicationsByGovScotUrl(HstRequest request) {
         String govscotUrl = request.getPathInfo();
 
+        // remove any trailing slash since they are stored without a trailing slash
+        govscotUrl = StringUtils.removeEnd(govscotUrl, "/");
+
         // if the url ends with /downloads then remove it since there is no downloads page in the new version
         // of publications
         if (govscotUrl.endsWith("/downloads")) {
