@@ -16,21 +16,24 @@
 
                     <div class="grid"><!--
                      --><div class="grid__item">
-                            <p class="article-header__label">Publication - ${document.label}</p>
+                            <p class="article-header__label">Publication<#if document.label??> - ${document.label}</#if></p>
                         </div><!--
                  --></div>
                     <div class="grid"><!--
                      --><div class="grid__item medium--nine-twelfths">
-                            <div class="grid">
-                                <div class="grid__item"><h1 class="article-header__title">${document.title}</h1></div><!--
+                            <div class="grid"><!--
+                                <#if document.title??>
+                                --><div class="grid__item"><h1 class="article-header__title">${document.title}</h1></div><!--
 
-                             --><div class="grid__item large--four-twelfths">
+                                --><div class="grid__item large--four-twelfths">
                                     <#include 'metadata.ftl'/>
                                 </div><!--
-
-                             --><div class="grid__item large--eight-twelfths">
+                                </#if>
+                                <#if document.summary??>
+                                --><div class="grid__item large--eight-twelfths">
                                     <p class="leader">${document.summary}</p>
                                 </div><!--
+                                </#if>
                          --></div>
                         </div><!--
 
