@@ -300,13 +300,6 @@ definitions:
         hst:componentconfigurationid: hst:pages/searchpage
         hst:relativecontentpath: search
         hst:sitemapitemhandlerids: [trailing-slash]
-      /Publications:
-        jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/publicationlistpage
-        hst:relativecontentpath: publications
-        /_any_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/govscotpublicationspage
       /robots.txt:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/robotstxt
