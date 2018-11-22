@@ -283,6 +283,13 @@ definitions:
                   hst:componentconfigurationid: hst:pages/complexdocumentpage
                   hst:relativecontentpath: ${parent}
                   hst:sitemapitemhandlerids: [trailing-slash]
+                /downloads:
+                  jcr:primaryType: hst:sitemapitem
+                  hst:componentconfigurationid: hst:pages/publicationpage
+                  hst:componentconfigurationmappingnames: ['govscot:ComplexDocument']
+                  hst:componentconfigurationmappingvalues: ['hst:pages/complexdocumentpage']
+                  hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/index
+                  hst:sitemapitemhandlerids: [trailing-slash]
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/govscotpublicationspage
