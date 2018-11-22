@@ -27,8 +27,6 @@ public class PublicationTypeDaemonModule implements DaemonModule {
 
     private static final String PUBLICATION_TYPE_PROPERTY = "govscot:publicationType";
 
-    private static final String FOLDER_TYPE = "hippostd:foldertype";
-
     private static final String PREFIX = "/content/documents/govscot/publications/";
 
     private static final Set<String> TYPES = unmodifiableSet(new HashSet<>(asList(
