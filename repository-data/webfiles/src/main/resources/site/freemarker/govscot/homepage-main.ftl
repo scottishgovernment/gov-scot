@@ -433,7 +433,7 @@
         <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription}"/>
+        <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
     
     <@hst.link var="canonicalitem" path="/" canonical=true />

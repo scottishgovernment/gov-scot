@@ -14,7 +14,7 @@
 <@hst.headContribution category="pageTitle"><title>Groups - gov.scot</title></@hst.headContribution>
 <#if document??>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription}"/>
+        <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
 </#if>
 

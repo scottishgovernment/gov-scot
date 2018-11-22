@@ -18,7 +18,7 @@
 <@hst.headContribution category="pageTitle"><title>Directorates - gov.scot</title></@hst.headContribution>
 <#if document??>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription}"/>
+        <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
 </#if>
 

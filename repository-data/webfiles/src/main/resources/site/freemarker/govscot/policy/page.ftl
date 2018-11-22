@@ -55,7 +55,7 @@
         <title>${index.title}<#if document.title != index.title>: ${document.title}</#if> - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription}"/>
+        <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
