@@ -1,6 +1,5 @@
 package scot.gov.www;
 
-import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.cms7.services.HippoServiceRegistry;
 import org.onehippo.cms7.services.eventbus.HippoEventBus;
 import org.onehippo.cms7.services.eventbus.Subscribe;
@@ -13,9 +12,11 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableSet;
 
 /**
  * Event listener to set the publication type fiedl depending on the folder.
@@ -24,10 +25,23 @@ public class PublicationTypeDaemonModule implements DaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(FolderTypesDaemonModule.class);
 
+    private static final String PUBLICATION_TYPE_PROPERTY = "govscot:publicationType";
+
+    private static final String FOLDER_TYPE = "hippostd:foldertype";
+
+    private static final String PREFIX = "/content/documents/govscot/publications/";
+
+    private static final Set<String> TYPES = unmodifiableSet(new HashSet<>(asList(
+            "govscot:Publication",
+            "govscot:ComplexDocument",
+            "govscot:Minutes",
+            "govscot:SpeechOrStatement"
+    )));
+
     private Session session;
 
     @Override
-    public void initialize(final Session session) throws RepositoryException {
+    public void initialize(Session session) throws RepositoryException {
         this.session = session;
         HippoServiceRegistry.registerService(this, HippoEventBus.class);
     }
@@ -38,55 +52,78 @@ public class PublicationTypeDaemonModule implements DaemonModule {
     }
 
     @Subscribe
-    public void handleEvent(final HippoWorkflowEvent event) {
+    public void handleEvent(HippoWorkflowEvent event) {
         if (!event.success()) {
             return;
         }
 
-        if (!event.subjectPath().startsWith("/content/documents/govscot/publications/")) {
+
+        if (!event.subjectPath().startsWith(PREFIX)) {
             return;
         }
 
         try {
             Node handle = null;
 
-            // a new folder is being added
-            Boolean isFolder = false;
-
-            if (event.arguments() != null){
-                isFolder = event.arguments().contains("hippostd:folder");
-            }
-
-            if ("threepane:folder-permissions:add".equals(event.interaction()) && isFolder) {
+            if (isNewPublicationFolder(event)) {
                 handle = session.getNode(event.returnValue()).getNode("index");
-            }
-
-            // a publication is being edited
-            Set<String> publicationtypes = new HashSet<>();
-            Collections.addAll(publicationtypes, "govscot:Publication", "govscot:ComplexDocument", "govscot:Minutes", "govscot:SpeechOrStatement");
-            if (publicationtypes.contains(event.documentType())) {
+            } else if (isPublicationEdit(event)) {
                 handle = session.getNodeByIdentifier(event.subjectId());
             }
 
-            if (handle == null){
+            if (handle == null) {
                 return;
             }
 
-            HippoNode publication = (HippoNode) getLatestVariant(handle);
-            Node typeFolder = publication.getParent().getParent().getParent().getParent().getParent();
-            publication.setProperty("govscot:publicationType", typeFolder.getName());
-            session.save();
-        } catch (RepositoryException e) {
-            LOG.error("Unexpected exception while doing simple JCR read operations", e);
+            Node publication = getLatestVariant(handle);
+            String typeName = typeName(publication);
+
+            if (!hasPublicationType(publication, typeName)) {
+                publication.setProperty(PUBLICATION_TYPE_PROPERTY, typeName);
+                session.save();
+            }
+        } catch (RepositoryException ex) {
+            LOG.error("Could not verify publication type for {}",
+                    event.subjectPath(),
+                    ex);
         }
+    }
+
+    private boolean isNewPublicationFolder(HippoWorkflowEvent event) {
+        return event.arguments() != null &&
+                event.arguments().contains("hippostd:folder") &&
+                "threepane:folder-permissions:add".equals(event.interaction());
+    }
+
+    private boolean isPublicationEdit(HippoWorkflowEvent event) {
+        return TYPES.contains(event.documentType());
+    }
+
+    private boolean hasPublicationType(Node publication, String typeName) throws RepositoryException {
+        return typeName.equals(getStringProperty(publication, PUBLICATION_TYPE_PROPERTY));
+    }
+
+    private String typeName(Node node) throws RepositoryException {
+        Node current = node;
+        Node previous;
+        do {
+            previous = current;
+            current = current.getParent();
+        } while (!"publications".equals(current.getName()));
+        return previous.getName();
+    }
+
+    private String getStringProperty(Node node, String property) throws RepositoryException {
+        return node.hasProperty(property) ? node.getProperty(property).getString() : null;
     }
 
     private static Node getLatestVariant(Node handle) throws RepositoryException {
         NodeIterator it = handle.getNodes();
         Node variant = null;
-        while (it.hasNext()){
+        while (it.hasNext()) {
             variant = it.nextNode();
         }
         return variant;
     }
+
 }
