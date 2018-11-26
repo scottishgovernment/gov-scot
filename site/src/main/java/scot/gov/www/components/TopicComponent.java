@@ -78,7 +78,9 @@ public class TopicComponent extends BaseHstComponent {
         Map<String, HippoBean> directoratesById = new HashMap<>();
         while (policies.hasNext()) {
             Policy policy = (Policy) policies.nextHippoBean();
-            directoratesById.put(policy.getResponsibleDirectorate().getIdentifier(), policy.getResponsibleDirectorate());
+            if (policy.getResponsibleDirectorate() != null) {
+                directoratesById.put(policy.getResponsibleDirectorate().getIdentifier(), policy.getResponsibleDirectorate());
+            }
             for (HippoBean directorate : policy.getSecondaryResponsibleDirectorate()) {
                 directoratesById.put(directorate.getIdentifier(), directorate);
             }
