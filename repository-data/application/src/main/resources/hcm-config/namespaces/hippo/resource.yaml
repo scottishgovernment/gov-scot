@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:namespaces/hippo/resource/editor:templates/_default_/upload:
+      plugin.class: scot.gov.www.DocumentUploadPlugin
