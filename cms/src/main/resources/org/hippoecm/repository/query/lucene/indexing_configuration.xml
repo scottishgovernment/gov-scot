@@ -3,39 +3,58 @@
     Adapted from https://github.com/woonsanko/myindextestproject.
 -->
 <!DOCTYPE configuration SYSTEM "http://jackrabbit.apache.org/dtd/indexing-configuration-1.0.dtd">
-<configuration xmlns:hippostd="http://www.onehippo.org/jcr/hippostd/nt/2.0"
+<configuration xmlns:hippo="http://www.onehippo.org/jcr/hippo/nt/2.0.4"
+               xmlns:hippostd="http://www.onehippo.org/jcr/hippostd/nt/2.0"
                xmlns:hippostdpubwf="http://www.onehippo.org/jcr/hippostdpubwf/nt/1.0"
                xmlns:jcr="http://www.jcp.org/jcr/1.0"
                xmlns:govscot="http://www.onehippo.org/govscot/nt/1.0">
 
-    <!--This can be used to exclude nodes from the nodeScopeIndex.-->
-    <!--These need to come before SimpleContent boosting?-->
-    <!--<index-rule nodeType="govscot:HomeFeaturedItem" nodeScopeIndex="false"></index-rule>-->
 
-    <!--This can be used to exclude specific fields from the nodeScopeIndex.-->
-    <!--<property isRegexp="true" nodeScopeIndex="false">.*:.*</property>-->
+    <!--Exclude DocumentInformation nodes from the index.-->
+    <index-rule nodeType="govscot:DocumentInformation" nodeScopeIndex="false"></index-rule>
 
-    <!--This requires the regexp catch-all - why?-->
-    <!--The incumbentInformation boost is very high -
-        need to find out why lower values don't seem to have much effect.-->
+    <!--
+       This can be used to exclude specific fields from the nodeScopeIndex:
+       <property isRegexp="true" nodeScopeIndex="false">.*:.*</property>
+
+       These need to come before SimpleContent boosting?
+   -->
+
+    <!--
+        The incumbentInformation boost is very high -
+        need to find out why lower values don't seem to have much effect.
+        The regexp catch-all is required after specific property entries.
+    -->
     <index-rule nodeType="govscot:Role">
         <property boost="3.0">govscot:title</property>
         <property boost="20.0">govscot:incumbentInformation</property>
         <property isRegexp="true">.*:.*</property>
     </index-rule>
 
-    <!--This requires the regexp catch-all - why?-->
+    <!--
+        The regexp catch-all is required after specific property entries.
+    -->
     <index-rule nodeType="govscot:SimpleContent">
         <property boost="10.0">govscot:title</property>
         <property boost="0.5">govscot:summary</property>
         <property boost="0.5">hippostd:tags</property>
         <property boost="0.5">govscot:metaDescription</property>
-        <property isRegexp="true" nodeScopeIndex="false">.*:.*</property>
+        <property isRegexp="true">.*:.*</property>
     </index-rule>
 
-    <!-- Custom Index Rule in order to exclude hippostd:html nodes under govscot:PublicationPage node. -->
+    <!--
+        Custom Index Rule in order to exclude hippostd:html nodes under govscot:PublicationPage node.
+    -->
     <index-rule nodeType="hippostd:html"
                 condition="parent::element(*, govscot:PublicationPage)/@jcr:primaryType = '{http://www.onehippo.org/govscot/nt/1.0}PublicationPage'">
+    </index-rule>
+
+    <!--
+        Custom Index Rule in order to exclude hippo:resource nodes under govscot:DocumentInformation node.
+        This covers document and thumbnail nodes.
+    -->
+    <index-rule nodeType="hippo:resource"
+                condition="parent::element(*, govscot:DocumentInformation)/@jcr:primaryType = '{http://www.onehippo.org/govscot/nt/1.0}DocumentInformation'">
     </index-rule>
 
     <!-- hippo aggregates -->
