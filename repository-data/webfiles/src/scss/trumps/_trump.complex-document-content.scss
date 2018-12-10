@@ -46,9 +46,8 @@
         margin-top: 35px;
     }
 
-    ol,
-    ol ol ol ol {
-        list-style-type: decimal;
+    ol:first-child {
+        margin-top: 0;
     }
     
     ol li {
@@ -56,12 +55,16 @@
         padding-left: 10px;
     }
     
-    ol ol {
-        list-style-type: lower-roman
+    ol[type="1"] {
+        list-style-type: decimal;
     }
     
-    ol ol ol {
-        list-style-type: lower-alpha
+    ol[type="a"] {
+        list-style-type: lower-alpha;
+    }
+    
+    ol[type="i"] {
+        list-style-type: lower-roman;
     }
     
     ol li:before {
