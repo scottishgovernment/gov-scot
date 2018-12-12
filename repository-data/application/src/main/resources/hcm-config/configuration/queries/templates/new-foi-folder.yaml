@@ -1,0 +1,70 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-foi-folder:
+      jcr:primaryType: hippostd:templatequery
+      jcr:mixinTypes: ['hipposys:implementation']
+      hippostd:icon: addfolder_ico
+      hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
+        $inherited, './index/index/govscot:title', $localName, './index/hippo:name',
+        $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
+        $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
+        $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
+        $localName]
+      hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-foi-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /hippostd:folder:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['mix:versionable']
+          jcr:uuid: 8c594e05-4533-40ce-acbf-041c703b650c
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-documents-folder, new-publication-document-info]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+            jcr:uuid: e6394d58-5522-4c09-b87d-7dc40fc656a6
+            hippo:name: Publication name
+            /index:
+              jcr:primaryType: govscot:FOI
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: ad90b19a-05a8-4e69-9249-1d6e72f17d62
+              govscot:isbn: ''
+              govscot:metaDescription: ''
+              govscot:publicationType: foi-eir-release
+              govscot:seoTitle: ''
+              govscot:summary: ''
+              govscot:title: ''
+              hippo:availability: [preview]
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
+              hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 2fc490d3-3c1a-4155-9254-d6e4299bd52b
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: "<p>Please quote the FOI reference<br />\r\nCentral\
+                  \ Enquiry Unit<br />\r\nEmail: <a href=\"mailto:ceu@gov.scot\">ceu@gov.scot</a><br\
+                  \ />\r\nPhone: 0300 244 4000</p>\r\n\r\n<p>The Scottish Government<br\
+                  \ />\r\nSt Andrews House<br />\r\nRegent Road<br />\r\nEdinburgh<br\
+                  \ />\r\nEH1 3DG</p>"
+              /govscot:response:
+                jcr:primaryType: hippostd:html
+                hippostd:content: "<p><strong>About FOI</strong></p>\r\n<p>The Scottish\
+                  \ Government is committed to publishing all information released\
+                  \ in response to Freedom of Information requests. View all FOI responses\
+                  \ at <a href=\"http://www.gov.scot/foi-responses\">http://www.gov.scot/foi-responses</a>.</p>"

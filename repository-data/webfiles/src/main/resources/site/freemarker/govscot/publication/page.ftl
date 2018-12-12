@@ -144,15 +144,11 @@
                 <#else>
                  --><div class="grid__item large--seven-twelfths">
 
-                        <#if document.content?has_content ||
-                        document.attendees?has_content ||
-                        document.actions?has_content>
-                            <div id="preamble">
+                        <div id="preamble">
+                            <div class="body-content publication-body">
                                 <@hst.html hippohtml=document.content var="content"/>
                                 <#if content?has_content>
-                                    <div class="body-content publication-body">
-                                        ${content}
-                                    </div>
+                                    ${content}    
                                 </#if>
 
                                 <#--! BEGIN 'minutes' format-specific fields-->
@@ -168,8 +164,36 @@
                                     ${actions}
                                 </#if>
                                 <#--! END 'minutes' format-specific fields-->
+
+                                <#--! BEGIN 'FOI/EIR release' format-specific fields-->
+                                <#if document.foiNumber?has_content>
+                                    <strong>FOI reference:</strong> ${document.foiNumber}<br>
+                                </#if>
+                                
+                                <#if document.dateReceived?has_content>
+                                    <strong>Date received:</strong> <@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/><br>
+                                </#if>
+
+                                <#if document.dateResponded?has_content>
+                                    <strong>Date responded:</strong> <@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/><br>
+                                </#if>
+
+                                <@hst.html hippohtml=document.request var="request"/>
+                                <#if request?has_content>
+                                    <div class="body-content publication-body">
+                                        <strong>Information requested</strong><br>
+                                        ${request}
+                                    </div>
+                                </#if>
+
+                                <@hst.html hippohtml=document.response var="response"/>
+                                <#if response?has_content>
+                                    <strong>Response</strong><br>
+                                    ${response}
+                                </#if>
+                                <#--! END 'FOI/EIR release' format-specific fields-->
                             </div>
-                        </#if>
+                        </div>
 
                         <#if documents??>
                             <#assign hasAttachedDocument = '' />

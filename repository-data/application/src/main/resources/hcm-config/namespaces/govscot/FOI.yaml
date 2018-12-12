@@ -1,0 +1,357 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/FOI:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 60d6ab0c-3eeb-4b4e-9923-9b7c1cb2aec6
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 615eff9c-2403-4de5-a112-d95df300d0cb
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['hipposysedit:remodel', 'mix:referenceable']
+          jcr:uuid: dd0b7d5b-90ab-47b7-bf07-cc7e1992947e
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /contact:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contact
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /sme:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:sme
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /foiNumber:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:foiNumber
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required, non-empty]
+          /response:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:response
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
+          /request:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:request
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
+          /dateReceived:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:dateReceived
+            hipposysedit:primary: false
+            hipposysedit:type: CalendarDate
+            hipposysedit:validators: [required]
+          /dateResponded:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:dateResponded
+            hipposysedit:primary: false
+            hipposysedit:type: CalendarDate
+            hipposysedit:validators: [required]
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:FOI
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 5f81a51f-c884-4eac-8876-d018cea28442
+          govscot:isbn: ''
+          govscot:metaDescription: ''
+          govscot:officialdate: 0001-01-01T12:00:00Z
+          govscot:publicationDate: 0001-01-01T12:00:00Z
+          govscot:publicationType: ''
+          govscot:seoTitle: ''
+          govscot:summary: ''
+          govscot:title: ''
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2018-04-12T15:41:01.916+01:00
+          hippostdpubwf:lastModificationDate: 2018-04-12T15:41:01.916+01:00
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: 84ecbf93-a84a-4611-abb3-97278d157e3f
+          hippotranslation:locale: document-type-locale
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:responsibleDirectorate:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:responsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:executiveSummary:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:contact:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /title:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: title
+            hint: This is the main title for this content item.  The title needs to
+              be descriptive and concise.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /summary:
+            jcr:primaryType: frontend:plugin
+            caption: Summary
+            field: summary
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /foiNumber:
+            jcr:primaryType: frontend:plugin
+            caption: FOI/EIR reference
+            field: foiNumber
+            hint: 'Please enter the FOI number assigned to this response. The expected
+              format for FOI numbers is: FOI/18/1234'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /dateReceived:
+            jcr:primaryType: frontend:plugin
+            caption: Date received
+            field: dateReceived
+            hint: Select the date when the FOI/EIR was received
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /dateResponded:
+            jcr:primaryType: frontend:plugin
+            caption: Date responded
+            field: dateResponded
+            hint: Select the date when the FOI/EIR was responded to
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /publicationType:
+            jcr:primaryType: frontend:plugin
+            caption: Publication type
+            field: dynamicdropdown
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/publicationTypes
+          /isbn:
+            jcr:primaryType: frontend:plugin
+            caption: ISBN
+            field: isbn
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /publicationDate:
+            jcr:primaryType: frontend:plugin
+            caption: Publication date
+            field: publicationDate
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /officialdate:
+            jcr:primaryType: frontend:plugin
+            caption: Official date
+            field: officialdate
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /request:
+            jcr:primaryType: frontend:plugin
+            caption: Information requested
+            field: request
+            hint: Provide a description of the information requested in the FOI/EIR
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /response:
+            jcr:primaryType: frontend:plugin
+            caption: Response
+            field: response
+            hint: Enter the FOI response information, if you are unable to provide
+              a response include the reasons for not providing information
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /contact:
+            jcr:primaryType: frontend:plugin
+            caption: Contact details
+            field: contact
+            hint: Provide contact information for the content item (where possible)
+              or use the central enquiry unit's contact details.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /responsibleDirectorate:
+            jcr:primaryType: frontend:plugin
+            caption: Primary responsible directorate
+            field: responsibleDirectorate
+            hint: Select the primary directorate responsible for the content item.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
+              last.visited.enabled: 'false'
+              nodetypes: govscot:Directorate
+          /secondaryResponsibleDirectorate:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary responsible directorate(s)
+            field: secondaryResponsibleDirectorate
+            hint: Select any secondary directorate(s) responsible for this content
+              item.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
+              last.visited.enabled: 'false'
+              nodetypes: govscot:Directorate
+          /topics:
+            jcr:primaryType: frontend:plugin
+            caption: Topics and issues
+            field: topics
+            hint: Select one or more topics related to this content item, e.g. Economy
+              or Energy. Please also select any issues/campaigns related to the content
+              item, e.g. Brexit or Year of Young People 2018.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/topics/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Topic', 'govscot:Issue']
+          /responsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Primary responsible role
+            field: responsibleRole
+            hint: Select the primary role responsible for this content item e.g. Cabinet
+              Secretary for …
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Role', 'govscot:Person']
+          /secondaryResponsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary responsible role(s)
+            field: secondaryResponsibleRole
+            hint: Select any secondary responsible role(s) for this content item e.g.
+              Minister for …
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Role', 'govscot:Person']
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO title
+            field: seoTitle
+            hint: 'This title is used by search engines and social media for indexing
+              this content item.  The title needs to be brief and concise.  Note:
+              Search engines and social media only use first 60 characters.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta description
+            field: metaDescription
+            hint: 'A description of this content item for search engine indexing purposes.  Note:
+              Meta descriptions should be limited to no more than 300 characters -
+              approx. 50 words.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /tags:
+            jcr:primaryType: frontend:plugin
+            mixin: hippostd:taggable
+            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /sme:
+            jcr:primaryType: frontend:plugin
+            caption: FOI/EIR case handler
+            field: sme
+            hint: Please enter the name of the FOI/EIR contact for this content item.
+              This field will not be displayed.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

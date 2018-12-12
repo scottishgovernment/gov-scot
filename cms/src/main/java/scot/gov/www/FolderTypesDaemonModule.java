@@ -51,7 +51,7 @@ public class FolderTypesDaemonModule implements DaemonModule {
                 return;
             }
 
-            // if the type is minutes or speech / statement then alter the folder type
+            // if the type is minutes, speech / statement or FOI then alter the folder type
             Node typeFolder = newFolder.getParent().getParent();
             if ("minutes".equals(typeFolder.getName())) {
                 setFolderType(newFolder, "new-minutes-folder");
@@ -60,6 +60,11 @@ public class FolderTypesDaemonModule implements DaemonModule {
             if ("speech---statement".equals(typeFolder.getName())) {
                 setFolderType(newFolder, "new-speech-or-statement-folder");
             }
+
+            if ("foi-eir-release".equals(typeFolder.getName())) {
+                setFolderType(newFolder, "new-foi-folder");
+            }
+
         } catch (RepositoryException e) {
             LOG.error("Unexpected exception while doing simple JCR read operations", e);
         }

@@ -88,30 +88,16 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
         HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class);
-        HstQuery minutesQuery = issueLinkedBeansQuery(issue, base, Minutes.class);
-        HstQuery speechOrStatementQuery = issueLinkedBeansQuery(issue, base, SpeechOrStatement.class);
         HstQuery complexDocumentQuery = issueLinkedBeansQuery(issue, base, ComplexDocument.class);
 
         ArrayList<HippoBean> allLinkedPublications = new ArrayList<HippoBean>();
 
         try {
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
-            HippoBeanIterator minutes = minutesQuery.execute().getHippoBeans();
-            HippoBeanIterator speechOrStatements = speechOrStatementQuery.execute().getHippoBeans();
             HippoBeanIterator complexDocuments = complexDocumentQuery.execute().getHippoBeans();
 
             while(publications.hasNext()) {
                 HippoBean publication = publications.next();
-                allLinkedPublications.add(publication);
-            }
-
-            while(minutes.hasNext()) {
-                HippoBean publication = minutes.next();
-                allLinkedPublications.add(publication);
-            }
-
-            while(speechOrStatements.hasNext()) {
-                HippoBean publication = speechOrStatements.next();
                 allLinkedPublications.add(publication);
             }
 
@@ -142,7 +128,7 @@ public class IssueComponent extends BaseHstComponent {
                     base,
                     "*/@hippo:docbase",
                     linkedClass,
-                    false);
+                    true);
             query.addOrderByDescending(PUBLICATIONDATE);
             return query;
         } catch (QueryException e) {

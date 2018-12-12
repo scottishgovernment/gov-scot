@@ -36,6 +36,9 @@
 [govscot:ExternalLink] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:FOI] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:FeaturedItems] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:Group] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
