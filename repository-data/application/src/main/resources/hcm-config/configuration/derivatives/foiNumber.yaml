@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:derivatives/foiNumber:
+      jcr:primaryType: hipposys:deriveddefinition
+      hipposys:classname: scot.gov.www.FoiNumberDerivedData
+      hipposys:nodetype: govscot:FOI
+      hipposys:serialver: 1
+      /hipposys:accessed:
+        jcr:primaryType: hipposys:propertyreferences
+        /foiNumber:
+          jcr:primaryType: hipposys:relativepropertyreference
+          hipposys:relPath: govscot:foiNumber
+      /hipposys:derived:
+        jcr:primaryType: hipposys:propertyreferences
+        /foiSubstring:
+          jcr:primaryType: hipposys:relativepropertyreference
+          hipposys:relPath: govscot:foiSubstring

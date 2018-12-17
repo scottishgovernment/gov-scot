@@ -39,7 +39,7 @@ definitions:
             hipposysedit:path: govscot:foiNumber
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [required, non-empty]
+            hipposysedit:validators: [required, non-empty, foiNumber]
           /response:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -76,6 +76,15 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: CalendarDate
             hipposysedit:validators: [required]
+          /foiSubstring:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:foiSubstring
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: []
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -151,7 +160,7 @@ definitions:
             caption: FOI/EIR reference
             field: foiNumber
             hint: 'Please enter the FOI number assigned to this response. The expected
-              format for FOI numbers is: FOI/18/1234'
+              format for FOI numbers is: FOI/18/12345'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

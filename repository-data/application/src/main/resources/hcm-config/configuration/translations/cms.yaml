@@ -2,3 +2,4 @@ definitions:
   config:
     /hippo:configuration/hippo:translations/hippo:cms/validators/en:
       non-empty: A mandatory field is empty
+      foiNumber: 'FOI/EIR numbers must match the format: FOI/XX/XXXXX'
