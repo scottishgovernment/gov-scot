@@ -211,14 +211,6 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /officialdate:
-            jcr:primaryType: frontend:plugin
-            caption: Official date
-            field: officialdate
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
           /request:
             jcr:primaryType: frontend:plugin
             caption: Information requested
