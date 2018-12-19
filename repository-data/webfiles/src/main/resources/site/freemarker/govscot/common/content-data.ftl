@@ -52,14 +52,28 @@
             </#if>
         </dd>
     </#if>
-    <#if index.topics?first??>
+    <#if index.topics?has_content>
         <dt class="content-data__label">Part of:</dt>
 
         <dd class="content-data__value">
             <#list index.topics?sort_by("title") as topic>
-                <@hst.link var="link" hippobean=topic/>
-                <a href="${link}">${topic.title}</a><#sep>, </sep>
-            </#list>
+                <#if topic?index lte 2>
+                    <@hst.link var="link" hippobean=topic/>
+                    <a href="${link}">${topic.title}</a><#sep>, </sep>
+                </#if><!--
+         --></#list><!--
+         --><#if index.topics?size gt 3><!--
+             --><a href="#secondary-topics" class="content-data__expand js-display-toggle">
+                &#43;${index.topics?size - 3}&nbsp;more&nbsp;&hellip;</a>
+                <span id="secondary-topics" class="content-data__additional">
+                    <#list index.topics?sort_by("title") as topic>
+                        <#if topic?index gt 2>
+                            <@hst.link var="link" hippobean=topic/>
+                            <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                        </#if>
+                    </#list>
+                </span>
+            </#if>
         </dd>
     </#if>
     <#if index.isbn?has_content>
