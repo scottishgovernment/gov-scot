@@ -50,4 +50,4 @@ definitions:
             hippostd:foldertype: [new-publication-page]
           /documents:
             jcr:primaryType: hippostd:folder
-            hippostd:foldertype: [new-publication-documents-folder, new-publication-document-info]
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]

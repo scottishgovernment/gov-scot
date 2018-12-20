@@ -22,7 +22,7 @@ definitions:
           hippostd:foldertype: []
           /documents:
             jcr:primaryType: hippostd:folder
-            hippostd:foldertype: [new-publication-documents-folder, new-publication-document-info]
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
           /index:
             jcr:primaryType: hippo:handle
             jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
