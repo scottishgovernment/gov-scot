@@ -343,3 +343,8 @@
       font-size: 11px;
     }
 }
+
+/* MGS-4819 - Cannot select/copy text in Channel Manager view using Edge */
+.channel-iframe-canvas iframe {
+    -ms-user-select: text;
+}
