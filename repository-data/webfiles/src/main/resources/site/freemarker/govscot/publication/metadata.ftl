@@ -10,7 +10,7 @@
     <#include '../common/content-data.ftl'/>
 
     <#--! BEGIN 'minutes' format-specific fields-->
-    <#if document.label == 'minutes'>
+    <#if document.publicationType?lower_case == "minutes">
         <#if document.officialdate?has_content>
             <div class="content-data__list">
                 <span class="content-data__label">Date of meeting:</span>
@@ -35,7 +35,7 @@
     <#--! END 'minutes' format-specific fields-->
 
     <#--! BEGIN 'speech or statement' format-specific fields-->
-    <#if document.label == 'speech / ministerial statement'>
+    <#if document.publicationType?lower_case == "speech---statement">
         <#if document.officialdate?has_content>
             <div class="content-data__list">
                 <span class="content-data__label">Date of speech:</span>
