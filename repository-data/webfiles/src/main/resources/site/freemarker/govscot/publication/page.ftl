@@ -260,7 +260,7 @@
 
 <#if document??>
     <@hst.headContribution category="pageTitle">
-        <title>${document.title} - gov.scot</title>
+        <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
