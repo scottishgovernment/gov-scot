@@ -25,7 +25,7 @@
     ];
 </script>
 
-<noscript  id="gtm-noscript"><iframe src="//www.googletagmanager.com/ns.html?id=<@fmt.message key='containerid'/>"
+<noscript  id="gtm-noscript"><iframe src="//www.googletagmanager.com/ns.html?id=${containerid}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script id="gtm">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
 {'gtm.start': new Date().getTime(),event:'gtm.js'}
