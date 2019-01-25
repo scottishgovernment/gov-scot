@@ -46,9 +46,6 @@ definitions:
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: 2fc490d3-3c1a-4155-9254-d6e4299bd52b
               hippotranslation:locale: en
-              /govscot:content:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:responsibleDirectorate:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
