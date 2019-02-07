@@ -7,22 +7,12 @@
 
     <@hst.manageContent hippobean=document />
 
-    <header class="topic-header  <#if document.image?has_content>topic-header--has-image</#if>" id="page-content">
-        <h1 class="article-header  topic-header__title">${document.title}</h1>
-
-        <#if document.image?has_content>
-            <img src="<@hst.link hippobean=document.image.bannerdesktop/>"
-                 srcset="<@hst.link hippobean=document.image.bannermobile/> 320w,
-                  <@hst.link hippobean=document.image.bannermobiledoubled/> 640w,
-                  <@hst.link hippobean=document.image.bannertablet/> 750w,
-                  <@hst.link hippobean=document.image.bannertabletdoubled/> 1500w,
-                  <@hst.link hippobean=document.image.bannerdesktop/> 970w,
-                  <@hst.link hippobean=document.image.bannerdesktopdoubled/> 1940w,
-                  <@hst.link hippobean=document.image.bannerdesktophd/> 1170w,
-                  <@hst.link hippobean=document.image.bannerdesktophddoubled/> 2340ww"
-                 sizes="(min-width:1200px) 1170px, (min-width:992px) 970px, (min-width:768px) 750px, 360px"
-                 alt="" class="topic-header__image">
+    <header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
+        <#if document.image??>
+            <img src="<@hst.link hippobean=document.image.bannerdesktop/>" class="topic-header__image">
         </#if>
+
+        <h1 class="article-header  topic-header__title">${document.title}</h1>
 
         <#if document.featureDateTitle?has_content ||
         document.featureDate?has_content ||

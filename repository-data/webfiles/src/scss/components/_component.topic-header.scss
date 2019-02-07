@@ -74,3 +74,50 @@
         }
     }
 }
+
+
+
+
+/* support for new svg topic/issue images */
+/* this needs a follow-up cleanup task once svg images are in use on the site */
+.topic-header__image {
+    height: 100%;
+    max-width: 9999px;
+    width: calc(100% + 32px);
+}
+
+@include media-query(medium)  {
+    .topic-header__image {
+        width: 100%;
+    }
+
+    .topic-header--has-image [src*=".svg"] + .topic-header__title {
+        background: transparent;
+        font-size: 42px;
+        left: 25px;
+        line-height: 49px;
+        padding-right: 0;
+        right: 55%;
+        top: 25px;
+    }
+}
+
+@include media-query(large)  {
+    .topic-header--has-image [src*=".svg"] + .topic-header__title {
+        background: transparent;
+        font-size: 48px;
+        left: 25px;
+        line-height: 56px;
+        top: 25px;
+    }
+}
+
+@include media-query(xlarge) {
+    .topic-header--has-image [src*=".svg"] + .topic-header__title {
+        background: transparent;
+        font-size: 56px;
+        left: 50px;
+        line-height: 63px;
+        top: 50px;
+    }
+}
