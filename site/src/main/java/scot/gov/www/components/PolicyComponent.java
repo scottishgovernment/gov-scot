@@ -18,10 +18,7 @@ import scot.gov.www.beans.Policy;
 import scot.gov.www.beans.PolicyInDetail;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
@@ -72,14 +69,27 @@ public class PolicyComponent extends BaseHstComponent {
 
         // if this is the patest page then also include latest info
         if (request.getPathInfo().endsWith("/latest/")) {
-
             List<HippoBean> all = getLatestNews(request, policy);
             all.addAll(policy.getRelatedItems());
-            Collections.sort(all, Comparator.comparing(bean -> bean.getProperty("govscot:publicationDate")));
+            Collections.sort(all, this::compareDateIfNoNull);
             Collections.reverse(all);
             LOG.info("{} related items, total size is {}", policy.getRelatedItems().size(), all.size());
             request.setAttribute("latest", all);
         }
+    }
+
+    private int compareDateIfNoNull(HippoBean left, HippoBean right) {
+        return dateToCompare(left).compareTo(dateToCompare(right));
+    }
+
+    Calendar dateToCompare(HippoBean bean) {
+        Calendar publicationDate = bean.getProperty("govscot:publicationDate");
+        if (publicationDate != null) {
+            return publicationDate;
+        }
+
+        // this bean has no publication date, default to the hippostdpubwf:publicationDate
+        return bean.getProperty("hippostdpubwf:publicationDate");
     }
 
     private List<HippoBean> getLatestNews(HstRequest request, Policy policy) {
@@ -97,7 +107,6 @@ public class PolicyComponent extends BaseHstComponent {
             stopWatch.start();
             HstQueryResult result = query.execute();
             stopWatch.stop();
-            LOG.info("result count: {}, took: {}", result.getTotalSize(), stopWatch.getTime());
 
             List<HippoBean> all = new ArrayList<>();
             result.getHippoBeans().forEachRemaining(all::add);
