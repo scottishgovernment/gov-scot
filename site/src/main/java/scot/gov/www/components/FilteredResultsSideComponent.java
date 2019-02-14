@@ -9,17 +9,20 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
+import org.hippoecm.hst.core.parameters.ValueListProvider;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.onehippo.taxonomy.api.Taxonomy;
+import org.onehippo.forge.selection.hst.contentbean.ValueList;
+import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsSideComponentInfo;
-import scot.gov.www.components.mapper.TaxonomyMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+
+import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES;
 
 /**
  * Created by z441571 on 09/04/2018.
@@ -41,16 +44,15 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
         HstQuery query = HstQueryBuilder.create(baseBean)
                 .ofTypes(Issue.class, Topic.class).orderByAscending("govscot:title").build();
 
-        TaxonomyMapper mapper = TaxonomyMapper.getInstance();
-        Taxonomy publicationTypes = mapper.getPublicationTypesTaxonomy();
-
         request.setAttribute("term", true);
         if (info.getIncludeDateFilter()) {
             request.setAttribute("dates", true);
             request.setAttribute("fromDate", info.getFromDate());
         }
+
+        ValueList publicationValueList = SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
         if (info.getIncludePublicationTypesFilter()) {
-            request.setAttribute("publicationTypes", publicationTypes);
+            request.setAttribute("publicationTypes", publicationValueList.getItems());
         }
         if (info.getLocaleRequired()) {
             request.setAttribute("locale", request.getLocale());

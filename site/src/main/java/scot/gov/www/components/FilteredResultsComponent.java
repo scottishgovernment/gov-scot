@@ -1,7 +1,6 @@
 package scot.gov.www.components;
 
 import org.apache.commons.lang.StringUtils;
-import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
@@ -22,12 +21,10 @@ import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
 import org.onehippo.cms7.essentials.components.paging.Pageable;
 import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
-import org.onehippo.forge.selection.hst.contentbean.ValueListItem;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
-import scot.gov.www.components.mapper.TaxonomyMapper;
 
 import javax.jcr.*;
 import javax.servlet.ServletContext;
@@ -71,7 +68,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
         ValueList publicationValueList =
                 SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
-
 
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
         request.setAttribute("relativeContentPath", relativeContentPath);
@@ -129,36 +125,18 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             }
 
             Set<String> splitParamaters = splitParameters(request, entry.getKey());
-            if (equalsIgnoreCase(PUBLICATION_TYPES, entry.getKey())) {
-                // need to do some extra lookup to get the name rather than the ID
-                sanitisedMap.put(entry.getKey(), publicationTypes(splitParamaters));
-            } else {
-                sanitisedMap.put(entry.getKey(), splitParamaters);
-            }
+            sanitisedMap.put(entry.getKey(), splitParamaters);
         }
+        LOG.info("sanitisedMap {}", sanitisedMap);
         return sanitisedMap;
     }
 
-    private Set<String> publicationTypes(Set<String> publicationTypeParams) {
-
-        ValueList publicationValueList =
-                SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
-
-        return publicationValueList.getItems()
-                .stream()
-                .filter(item -> publicationTypeParams.contains(item.getKey()))
-                .map(ValueListItem::getKey)
-                .collect(toSet());
-    }
-
     private Constraint constraints(HstRequest request, String searchField) {
-
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, request);
         addTopicsConstraint(constraints, request);
         addPublicationTypeConstraint(constraints, request);
         addDateConstraint(constraints, request, searchField);
-
         return and(constraints.toArray(new Constraint[] {}));
     }
 
@@ -228,11 +206,8 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             return;
         }
 
-        List<String> publicationTypeIds = TaxonomyMapper.getInstance()
-                .getPublicationTypes(publicationTypeParams, request.getLocale());
-
         List<Constraint> constraintList = new ArrayList<>();
-        for (String typeId : publicationTypeIds) {
+        for (String typeId : publicationTypeParams) {
             constraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
         }
 

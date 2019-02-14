@@ -133,7 +133,7 @@ public class TopicComponent extends BaseHstComponent {
         try {
             Filter consultationFilter = query.createFilter();
             consultationFilter.addNotContains(PUBLICATIONTYPE, "consultation-paper");
-            consultationFilter.addNotContains(PUBLICATIONTYPE, "consultation-responses");
+            consultationFilter.addNotContains(PUBLICATIONTYPE, "consultation-analysis");
 
             BaseFilter topicFilter = query.getFilter();
             query.setFilter(consultationFilter);

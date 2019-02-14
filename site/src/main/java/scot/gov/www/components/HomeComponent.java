@@ -69,7 +69,7 @@ public class HomeComponent extends BaseHstComponent {
                 .where(
                         or(
                                 constraint(PUBLICATIONTYPE).equalTo("consultation-paper"),
-                                constraint(PUBLICATIONTYPE).equalTo("consultation-responses")
+                                constraint(PUBLICATIONTYPE).equalTo("consultation-analysis")
                         )
                 )
                 .build();
@@ -81,7 +81,7 @@ public class HomeComponent extends BaseHstComponent {
                 .where(
                         and(
                                 constraint(PUBLICATIONTYPE).notEqualTo("consultation-paper"),
-                                constraint(PUBLICATIONTYPE).notEqualTo("consultation-responses")
+                                constraint(PUBLICATIONTYPE).notEqualTo("consultation-analysis")
                         )
                 )
                 .build();
