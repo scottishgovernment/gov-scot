@@ -14,15 +14,14 @@
 
 <!-- Google Tag Manager (GTM) -->
 <script id="gtm-datalayer">
-    dataLayer = [
-    {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
         <#if includewhitelist>
         'gtm.whitelist': ['google', 'jsm', 'lcl', 'mf'],
         </#if>
         'format' : '${gtmName}',
         'siteid' : '${gtmId}'
-    }
-    ];
+    });
 </script>
 
 <noscript  id="gtm-noscript"><iframe src="//www.googletagmanager.com/ns.html?id=${containerid}"

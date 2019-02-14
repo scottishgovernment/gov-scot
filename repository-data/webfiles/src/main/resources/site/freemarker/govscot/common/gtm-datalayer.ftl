@@ -1,3 +1,4 @@
+<@hst.headContribution category="dataLayer">
 <script id="datalayerPush">
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -21,4 +22,5 @@
         'uuid': '${document.getProperty('jcr:uuid')}'
     })
 </script>
+</@hst.headContribution>
 

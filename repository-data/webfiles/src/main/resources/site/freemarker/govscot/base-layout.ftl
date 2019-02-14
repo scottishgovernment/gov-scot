@@ -23,12 +23,13 @@
     <meta name="theme-color" content="#ffffff">
 
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
-    <@hst.headContributions categoryExcludes="footerScripts, pageTitle" xhtml=true/>
+    <@hst.headContributions categoryExcludes="footerScripts, pageTitle, dataLayer" xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
+    <@hst.headContributions categoryIncludes="dataLayer"/>
     <@hst.include ref="googletagmanager"/>
 
     <#include 'common/accessibility-links.ftl' />
