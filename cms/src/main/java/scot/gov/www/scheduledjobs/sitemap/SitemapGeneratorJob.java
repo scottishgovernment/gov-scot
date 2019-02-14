@@ -311,12 +311,8 @@ public class SitemapGeneratorJob implements RepositoryJob {
             return false;
         }
 
-        // ensure the item is published
-        if (!node.hasProperty("hippostd:state") || !"published".equals(node.getProperty("hippostd:state").getString())) {
-            return false;
-        }
-
-        return true;
+        // ensure the item is published 
+        return node.hasProperty("hippostd:state") && "published".equals(node.getProperty("hippostd:state").getString());
     }
 
     private boolean isIncumbentOfRole(Node node, Session session) throws RepositoryException {
