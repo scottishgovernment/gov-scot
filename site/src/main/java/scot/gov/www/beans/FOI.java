@@ -89,4 +89,5 @@ public class FOI extends AttributableContent {
         return getHippoHtml("govscot:contact");
     }
 
+    public String getLabel() { return "FOI/EIR Release"; }
 }
