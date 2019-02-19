@@ -77,7 +77,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         request.setAttribute("relativeContentPath", relativeContentPath);
 
         request.setAttribute("parameters", params);
-        request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
+        request.setAttribute(PUBLICATION_TYPES, SelectionUtil.valueListAsMap(publicationValueList));
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
 

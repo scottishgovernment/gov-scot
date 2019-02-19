@@ -120,7 +120,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
     }
 
     private byte[] sitemapindex(Session session, String baseURL)
-            throws IOException, ParserConfigurationException, TransformerException, RepositoryException {
+            throws ParserConfigurationException, TransformerException, RepositoryException {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = dbf.newDocumentBuilder();
@@ -157,7 +157,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
     }
 
     private byte [] urlset(NodeIterator nodeIterator, Session session, String baseURL)
-            throws RepositoryException, XMLStreamException, IOException, ParserConfigurationException, TransformerException {
+            throws RepositoryException, IOException, ParserConfigurationException, TransformerException {
 
         Map<String, SitemapEntry> entriesByLoc = mapSitemapEntriesByLoc(nodeIterator, session);
 

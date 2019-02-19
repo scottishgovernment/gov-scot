@@ -4,7 +4,6 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import scot.gov.www.beans.ExternalLink;
 import java.util.Calendar;
 import java.util.List;
 

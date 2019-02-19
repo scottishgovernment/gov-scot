@@ -8,7 +8,6 @@ import java.util.Map;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
-import scot.gov.www.beans.CoverImage;
 
 @HippoEssentialsGenerated(internalName = "govscot:ComplexDocument")
 @Node(jcrType = "govscot:ComplexDocument")
