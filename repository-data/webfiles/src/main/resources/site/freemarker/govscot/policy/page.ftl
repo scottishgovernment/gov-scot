@@ -61,5 +61,9 @@
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "../common/canonical.ftl" />
 
+    <#assign uuid = document.getProperty('jcr:uuid')/>
+    <#assign lastUpdated = document.getProperty('hippostdpubwf:lastModificationDate')/>
+    <#assign dateCreated = document.getProperty('hippostdpubwf:creationDate')/>
+    <#assign document = index/>
     <#include "../common/gtm-datalayer.ftl"/>
 </#if>

@@ -1,5 +1,10 @@
 <@hst.headContribution category="dataLayer">
 <script id="datalayerPush">
+
+    <#if !dateCreated??><#assign dateCreated = document.getProperty('hippostdpubwf:creationDate')/></#if>
+    <#if !lastUpdated??><#assign lastUpdated = document.getProperty('hippostdpubwf:lastModificationDate')/></#if>
+    <#if !uuid??><#assign uuid = document.getProperty('jcr:uuid')/></#if>
+
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         <#if document.responsibleRole??>
@@ -17,9 +22,9 @@
         <#if document.topics?has_content>
             'topics' : [<#list document.topics as topic>'${topic.title}'<#sep>, </#sep></#list>],
         </#if>
-        'lastUpdated': '<@fmt.formatDate value=document.getProperty('hippostdpubwf:lastModificationDate').time type="Date" pattern="dd/MM/yyyy" />',
-        'dateCreated': '<@fmt.formatDate value=document.getProperty('hippostdpubwf:creationDate').time type="Date" pattern="dd/MM/yyyy" />',
-        'uuid': '${document.getProperty('jcr:uuid')}'
+        'lastUpdated': '<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />',
+        'dateCreated': '<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />',
+        'uuid': '${uuid}'
     })
 </script>
 </@hst.headContribution>
