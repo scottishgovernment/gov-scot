@@ -14,7 +14,7 @@
     <div class="document-info__body">
         <div class="document-info__thumbnail  document-info__thumbnail--pdf">
         <#if filenameExtension == "PDF">
-            <a class="document-info__thumbnail-link" href="${documentinline}">
+            <a data-title="${attachedDocument.title}" class="document-info__thumbnail-link" href="${documentinline}">
                 <#if ((useCoverPage)!false) && document.coverimage?has_content>
                     <img
                         alt="View this document"
@@ -38,7 +38,7 @@
                 </#if>
             </a>
         <#else>
-            <a title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+            <a data-title="${attachedDocument.title}" title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
         </#if>
         </div>
     </div>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="document-info__download">
-            <a href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isLimelitItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
+            <a data-title="${attachedDocument.title}" href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isLimelitItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
                 <span class="link-text">
                     Download
                 </span>

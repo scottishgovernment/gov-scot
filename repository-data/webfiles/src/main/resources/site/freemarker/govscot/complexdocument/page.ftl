@@ -295,7 +295,7 @@
                                 <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
                             </#if>
                             <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                <a class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
+                                <a data-title="${document.title}" class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
                                     <#if document.coverimage?has_content>
                                         <img
                                             alt="View this document"
@@ -319,11 +319,11 @@
                                     </#if>
                                 </a>
                             <#else>
-                                <a title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
+                                <a data-title="${document.title}" title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
                             </#if>
                         </div>
 
-                        <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'about/'}">
+                        <a data-title="${document.title}" class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'about/'}">
                             <div class="icon-button__content">
                                 <span class="icon-button__icon">
                                     <svg class="svg-icon  mg-icon">

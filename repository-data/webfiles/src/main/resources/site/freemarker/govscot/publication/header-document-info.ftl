@@ -14,7 +14,7 @@
             </@hst.link>
 
             <#if filenameExtension == "PDF">
-            <a title="View this document" class="document-info__thumbnail-link" href="${documentinline}">
+            <a data-title="${mainDocument.title}" title="View this document" class="document-info__thumbnail-link" href="${documentinline}">
                 <img
                         alt="View this document"
                         class="document-info__thumbnail-image"
@@ -26,10 +26,10 @@
                         sizes="(min-width: 768px) 165px, 107px" />
             </a>
             <#else>
-                <a title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="file-icon--large file-icon file-icon--${filenameExtension}"></a>
+                <a data-title="${mainDocument.title}" title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="file-icon--large file-icon file-icon--${filenameExtension}"></a>
             </#if>
 
-            <a href="${documentdownload}" class="button button--secondary document-info__thumbnail-button no-icon button--no-margin">
+            <a data-title="${mainDocument.title}" href="${documentdownload}" class="button button--secondary document-info__thumbnail-button no-icon button--no-margin">
                 <span class="link-text">
                     Download
                 </span>
@@ -49,7 +49,7 @@
 
     <div class="document-info__footer">
         <div class="document-info__cell document-info__download-wrapper">
-            <a href="${documentdownload}" class="button button--primary button--large no-icon  button--no-margin">
+            <a data-title="${mainDocument.title}" href="${documentdownload}" class="button button--primary button--large no-icon  button--no-margin">
                 <span class="link-text">
                     Download
                 </span>
