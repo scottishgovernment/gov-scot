@@ -31,7 +31,9 @@
                                 </#if>
                                 <#if document.summary??>
                                 --><div class="grid__item large--eight-twelfths">
-                                    <p class="leader">${document.summary}</p>
+                                    <#list document.summary?split("\n") as summaryParagraph>
+                                        <p class="leader">${summaryParagraph}</p>
+                                    </#list>
                                 </div><!--
                                 </#if>
                          --></div>
@@ -81,8 +83,10 @@
                         </div><!--
 
                      --><div class="grid__item  large--seven-twelfths">
-                            <div class="leader">
-                                ${document.summary}
+                            <div class="leader  leader--first-para">
+                                <#list document.summary?split("\n\r") as summaryParagraph>
+                                    <p>${summaryParagraph}</p>
+                                </#list>
                             </div>
                         </div><!--
                  --></div>
