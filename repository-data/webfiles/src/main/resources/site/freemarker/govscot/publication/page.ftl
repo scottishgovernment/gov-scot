@@ -152,7 +152,15 @@
                             <div class="body-content publication-body">
                                 <@hst.html hippohtml=document.content var="content"/>
                                 <#if content?has_content>
-                                    ${content}    
+                                    <#if content?contains("</")>
+                                        <#--  CONTAINS CLOSING TAG  -->
+                                        ${content}
+                                    <#else>
+                                        <#--  DOES NOT HAVE CLOSING TAG  -->
+                                        <#list content?split("\\n") as contentParagraph>
+                                            <p>${contentParagraph}</p>
+                                        </#list>
+                                    </#if>
                                 </#if>
 
                                 <#--! BEGIN 'minutes' format-specific fields-->
