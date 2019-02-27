@@ -84,7 +84,7 @@
 
                      --><div class="grid__item  large--seven-twelfths">
                             <div class="leader  leader--first-para">
-                                <#list document.summary?split("\n\r") as summaryParagraph>
+                                <#list document.summary?split("\n") as summaryParagraph>
                                     <p>${summaryParagraph}</p>
                                 </#list>
                             </div>
