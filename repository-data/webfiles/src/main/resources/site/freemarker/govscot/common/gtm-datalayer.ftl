@@ -22,6 +22,9 @@
         <#if document.topics?has_content>
             'topics' : [<#list document.topics as topic>'${topic.title}'<#sep>, </#sep></#list>],
         </#if>
+        <#if document.publicationDate??>
+            'publicationDate': '<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="dd/MM/yyyy" />',
+        </#if>
         'lastUpdated': '<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />',
         'dateCreated': '<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />',
         'uuid': '${uuid}'
