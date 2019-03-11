@@ -436,7 +436,6 @@ $filter-close-button-size: 49px;
             top: -999em;
             width: 380px;
             z-index: -1;
-            @include animation(hideCalendar $transition-in-time);
 
             &--open {
                 left: 100%;
@@ -456,28 +455,7 @@ $filter-close-button-size: 49px;
         }
     }
 }
-@include keyframes(hideCalendar) {
-    0% {
-        display: block;
-        left: 100%;
-        opacity: 1;
-        top: -21px;
-    }
 
-    99% {
-        display: block;
-        left: 0;
-        opacity: 0;
-        top: -21px;
-    }
-
-    100% {
-        display: none;
-        left: 0;
-        opacity: 0;
-        top: -999em;
-    }
-}
 @include keyframes(showCalendar) {
     0% {
         display: none;
