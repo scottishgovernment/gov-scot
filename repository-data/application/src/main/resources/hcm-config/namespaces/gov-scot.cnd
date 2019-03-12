@@ -36,6 +36,12 @@
 [govscot:ExternalLink] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:Publication] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:FOI] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:FeaturedItems] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:Group] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
@@ -51,9 +57,6 @@
   orderable
 
 [govscot:Migration] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
-  orderable
-
-[govscot:Publication] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:Minutes] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
@@ -79,6 +82,9 @@
 [govscot:PolicyInDetail] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:PolicyLatest] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:PublicationInlineImage] > hippogallery:imageset, hippogallery:relaxed
   orderable
 
@@ -95,8 +101,5 @@
   orderable
 
 [govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
-  orderable
-
-[govscot:FOI] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
   orderable
 

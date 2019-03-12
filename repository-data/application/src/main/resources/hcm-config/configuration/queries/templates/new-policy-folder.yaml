@@ -41,3 +41,26 @@ definitions:
               hippotranslation:locale: en
               govscot:policyTags: []
               govscot:seoTitle: ''
+          /latest:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+            jcr:uuid: c2f3d28f-214e-44b3-8ccb-9f138ff3d81c
+            hippo:name: Latest
+            /latest[1]:
+              jcr:primaryType: govscot:PolicyLatest
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 54bfe335-af36-4d3f-bc0d-9c12e5ecef87
+              govscot:metaDescription: ''
+              govscot:title: Latest
+              hippo:availability: [preview]
+              hippo:name: Latest
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: reece.cargan@gov.scot
+              hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+              hippostdpubwf:lastModificationDate: 2018-11-29T14:50:35.339Z
+              hippostdpubwf:lastModifiedBy: agne.drumelyte@gov.scot
+              hippotranslation:id: 4e7da127-fd27-4de3-9902-026226b5f5c9
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''

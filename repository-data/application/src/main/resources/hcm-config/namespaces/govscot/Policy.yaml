@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 5e59f3a2-24ba-4edf-a1af-6090018555a5
+          jcr:uuid: 3b969b39-6988-4021-8b35-fa79e56ecd93
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -24,14 +24,6 @@ definitions:
             hipposysedit:path: govscot:policyTags
             hipposysedit:primary: false
             hipposysedit:type: String
-          /relatedItems:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:relatedItems
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
           /html:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -126,10 +118,11 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: e9720648-5441-4413-9258-a302f69c2d2c
+          jcr:uuid: 6758f522-2544-4c29-b485-0ee7239eba92
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:policyTags: ['']
+          govscot:sme: ''
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
@@ -142,9 +135,6 @@ definitions:
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:relatedItems:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:actions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -157,6 +147,9 @@ definitions:
           /govscot:contact:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:topics:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -323,18 +316,6 @@ definitions:
               nodetypes: ['govscot:Role', 'govscot:Person']
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
-          /relatedItems:
-            jcr:primaryType: frontend:plugin
-            caption: Related items
-            field: relatedItems
-            hint: Select one or more content items related to the policy e.g. publications,
-              news items.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:News', 'govscot:Publication', 'govscot:SpeechOrStatement',
-                'govscot:Minutes']
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

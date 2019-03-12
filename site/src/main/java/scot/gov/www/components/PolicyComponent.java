@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Policy;
 import scot.gov.www.beans.PolicyInDetail;
+import scot.gov.www.beans.PolicyLatest;
 
 import java.io.IOException;
 import java.util.*;
@@ -46,14 +47,16 @@ public class PolicyComponent extends BaseHstComponent {
         }
 
         Policy policy;
-
         try {
             policy = getPolicy(document);
+
             if(policy == null) {
                 response.setStatus(404);
                 response.forward("/pagenotfound");
                 return;
             }
+
+            LOG.info("policy {}", policy.getPath());
         }  catch (IOException e) {
             throw new HstComponentException("forward failed", e);
         }
@@ -70,10 +73,11 @@ public class PolicyComponent extends BaseHstComponent {
         // if this is the patest page then also include latest info
         if (request.getPathInfo().endsWith("/latest/")) {
             List<HippoBean> all = getLatestNews(request, policy);
-            all.addAll(policy.getRelatedItems());
+            PolicyLatest latest = (PolicyLatest) document;
+            all.addAll(latest.getRelatedItems());
             Collections.sort(all, this::compareDateIfNoNull);
             Collections.reverse(all);
-            LOG.info("{} related items, total size is {}", policy.getRelatedItems().size(), all.size());
+            LOG.info("{} related items, total size is {}", latest.getRelatedItems().size(), all.size());
             request.setAttribute("latest", all);
         }
     }
@@ -138,6 +142,11 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     private HippoBean prevBean(HippoBean policy, HippoBean document, List<PolicyInDetail> details) {
+
+        if ("latest".equals(document.getName())) {
+            return policy;
+        }
+
         // if the document being rendered is the policy, then there is no previous bean
         if (document.isSelf(policy)) {
             return null;
@@ -153,6 +162,11 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     private HippoBean nextBean(HippoBean policy, HippoBean document, List<PolicyInDetail> details) {
+
+        if ("latest".equals(document.getName())) {
+            return details.isEmpty() ? null : details.get(0);
+        }
+
         // if the document being rendered is the policy, return the first details page (if there is one)
         if (document.isSelf(policy)) {
             return nextBeanForPolicy(details);

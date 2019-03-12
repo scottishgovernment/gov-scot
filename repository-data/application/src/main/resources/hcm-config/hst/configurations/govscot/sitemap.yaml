@@ -206,11 +206,6 @@ definitions:
             hst:componentconfigurationid: hst:pages/policypage
             hst:relativecontentpath: ${parent}/index
             hst:sitemapitemhandlerids: [trailing-slash]
-          /latest:
-            jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/policypage
-            hst:relativecontentpath: ${parent}/index
-            hst:sitemapitemhandlerids: [trailing-slash]
       /siteitems:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
