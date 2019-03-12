@@ -31,6 +31,8 @@ public class PolicyComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PolicyComponent.class);
 
+    private static final String LATEST = "latest";
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HippoBean document;
@@ -78,7 +80,7 @@ public class PolicyComponent extends BaseHstComponent {
             Collections.sort(all, this::compareDateIfNoNull);
             Collections.reverse(all);
             LOG.info("{} related items, total size is {}", latest.getRelatedItems().size(), all.size());
-            request.setAttribute("latest", all);
+            request.setAttribute(LATEST, all);
         }
     }
 
@@ -143,7 +145,7 @@ public class PolicyComponent extends BaseHstComponent {
 
     private HippoBean prevBean(HippoBean policy, HippoBean document, List<PolicyInDetail> details) {
 
-        if ("latest".equals(document.getName())) {
+        if (LATEST.equals(document.getName())) {
             return policy;
         }
 
@@ -163,7 +165,7 @@ public class PolicyComponent extends BaseHstComponent {
 
     private HippoBean nextBean(HippoBean policy, HippoBean document, List<PolicyInDetail> details) {
 
-        if ("latest".equals(document.getName())) {
+        if (LATEST.equals(document.getName())) {
             return details.isEmpty() ? null : details.get(0);
         }
 
