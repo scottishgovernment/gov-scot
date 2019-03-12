@@ -2,6 +2,8 @@
 
 <div class="body-content page-group__content inner-shadow-top inner-shadow-top--no-desktop">
 
+	<@hst.html hippohtml=document.content/>
+
 	<section class="search-results">
 		<ol id="search-results-list" class="search-results__list no-top-margin">
 			<#list latest as item>
