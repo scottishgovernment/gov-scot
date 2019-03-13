@@ -63,9 +63,13 @@ public class EnrichRoleDaemonModule implements DaemonModule {
                 return;
             }
 
-            // add information from the incumbent to the role
             String incumbentUUID = published.getNode("govscot:incumbent").getProperty("hippo:docbase").getString();
             Node incumbent = getPublishedVariant(session.getNodeByIdentifier(incumbentUUID));
+
+            // this role has an incumbent and so we do not want to include that incumbent in search results
+            incumbent.setProperty("govscot:excludeFromSearchIndex", true);
+
+            // add information from the incumbent to the role
             String incumbentInformation = String.format("%s", incumbent.getProperty("govscot:title").getString());
             published.setProperty("govscot:incumbentInformation", incumbentInformation);
             session.save();
