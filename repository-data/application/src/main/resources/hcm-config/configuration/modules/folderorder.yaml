@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/folderorder:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.DocumentOrderDaemonModule
+      hipposys:cmsonly: true
