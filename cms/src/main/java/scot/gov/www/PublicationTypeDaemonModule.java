@@ -19,11 +19,11 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableSet;
 
 /**
- * Event listener to set the publication type fiedl depending on the folder.
+ * Event listener to set the publication type field depending on the folder.
  */
 public class PublicationTypeDaemonModule implements DaemonModule {
 
-    private static final Logger LOG = LoggerFactory.getLogger(FolderTypesDaemonModule.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PublicationTypeDaemonModule.class);
 
     private static final String PUBLICATION_TYPE_PROPERTY = "govscot:publicationType";
 

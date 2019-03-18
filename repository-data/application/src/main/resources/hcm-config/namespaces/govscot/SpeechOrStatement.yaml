@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 5a2fd808-0bfe-47db-aa32-6b9f2360b6c9
+          jcr:uuid: 8270f186-062b-46b8-af02-bc11fa975de6
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -83,10 +83,12 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 49ad7123-7254-4566-87af-414653093466
+          jcr:uuid: 46bd9051-5047-4612-a615-829ad7ff66f7
           hippostdpubwf:lastModificationDate: 2018-04-12T15:41:01.916+01:00
           hippostdpubwf:creationDate: 2018-04-12T15:41:01.916+01:00
           govscot:speechDeliveredBy: ''
+          govscot:sme: ''
+          govscot:slug: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -122,6 +124,16 @@ definitions:
             field: title
             hint: This is the main title for this content item.  The title needs to
               be descriptive and concise.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /slug:
+            jcr:primaryType: frontend:plugin
+            caption: Slug
+            field: slug
+            hint: This is used to determine the URL of this publication.  It must
+              be unique and should be a short, URL friendly version of the title.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

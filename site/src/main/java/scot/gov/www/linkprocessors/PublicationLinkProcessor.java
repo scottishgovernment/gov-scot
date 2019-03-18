@@ -16,6 +16,9 @@ import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.apache.commons.lang3.ArrayUtils.removeElements;
 
 public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
@@ -33,12 +36,15 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                     link.getPathElements()[2],
                     link.getPathElements()[3]);
 
+            // replace the folder name with the slug
+            newElements[1] = slug(link);
+
             // if this is a link to govscot:Publication then remove the name part of the url e.g. index
             if (link.getPathElements().length == 6) {
                 newElements = removeElements(newElements, link.getPathElements()[5]);
             }
 
-            link.setPath(String.join("/", newElements));
+            link.setPath(Arrays.stream(newElements).collect(Collectors.joining("/")));
         }
         return link;
     }
@@ -46,6 +52,40 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private boolean isPublicationsFullLink(HstLink link) {
         // should match on any publication or publication page link.
         return link.getPath().startsWith(PUBLICATIONS) && link.getPathElements().length >= 5;
+    }
+
+    private String slug(HstLink link) {
+        String path =
+                String.format("/content/documents/govscot/%s",
+                Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(Collectors.joining("/")));
+        try {
+            Node publicationNode = publicationNode(path);
+            LOG.info("pubNode is {}", publicationNode.getPath());
+            return publicationNode.getProperty("govscot:slug").getString();
+        } catch (RepositoryException e) {
+            LOG.error("Unable to get the publication slug", e);
+            return link.getPathElements()[4];
+        }
+    }
+
+    private Node publicationNode(String path) throws RepositoryException {
+        HstRequestContext req = RequestContextProvider.get();
+        Session session = req.getSession();
+        Node folder = session.getNode(path);
+        Node handle = handleFromFolder(folder);
+        return findPublication(handle.getNodes());
+    }
+
+
+    private Node handleFromFolder(Node folder) throws RepositoryException {
+        NodeIterator it = folder.getNodes();
+        while (it.hasNext()) {
+            Node candidate = it.nextNode();
+            if (candidate.isNodeType("hippo:handle")) {
+                return candidate;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -109,8 +149,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         String escapedSlug = ISO9075.encodePath(slug);
 
         String template =
-                "/jcr:root/content/documents/govscot/publications//element(%s, hippostd:folder)" +
-                "/element(*, hippo:handle)/element(*, govscot:SimpleContent)";
+                "/jcr:root/content/documents/govscot/publications//element(*, govscot:SimpleContent)[govscot:slug = '%s']";
         String sql = String.format(template, escapedSlug);
         QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.XPATH).execute();
         if (result.getNodes().getSize() == 0) {
@@ -118,7 +157,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         }
 
         // find the index in the results folder
-        return findPublication(result.getNodes());
+        return findPublication(result.getNodes()).getParent();
     }
 
     private Node findPublication(NodeIterator nodeIterator) throws RepositoryException {
@@ -127,9 +166,9 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         Node lastNode = null;
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
-            lastNode = node.getParent();
+            lastNode = node;
             if ("published".equals(node.getProperty("hippostd:state").getString())) {
-                publishedNode = node.getParent();
+                publishedNode = node;
             }
         }
 
