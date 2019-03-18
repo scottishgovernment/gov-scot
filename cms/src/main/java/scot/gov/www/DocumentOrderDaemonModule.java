@@ -13,22 +13,22 @@ import javax.jcr.*;
 import java.util.*;
 
 /**
- * Maintain documents in a sorted order as they are added.  This applies to the following folders:
+ * Maintain documents in a sorted order as they are added or renamed.  This applies to the following folders:
  *
  * policy folders, alpha ascending
  * publications:
  *  - year, alpha descending
  *  - months, alpha descending
  *  - publications, alpha ascending
- * groups alpha ascending
  * directorates alpha ascending
- * topics / issues alpha ascending
  */
 public class DocumentOrderDaemonModule implements DaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(DocumentOrderDaemonModule.class);
 
     private Session session;
+
+    private Set<String> sortActions = new HashSet<>();
 
     private Map<String, SortOrder> directionMap = new HashMap<>();
 
@@ -40,6 +40,8 @@ public class DocumentOrderDaemonModule implements DaemonModule {
     public void initialize(final Session session) throws RepositoryException {
         this.session = session;
         HippoServiceRegistry.registerService(this, HippoEventBus.class);
+
+        Collections.addAll(sortActions, "add", "setDisplayName");
 
         directionMap.put("new-publication-folder", SortOrder.ASCENDING);
         directionMap.put("new-publication-month-folder", SortOrder.DESCENDING);
@@ -63,12 +65,12 @@ public class DocumentOrderDaemonModule implements DaemonModule {
         }
 
         // we only want to listen to folder being added
-        if (!"add".equals(event.action())) {
+        if (!shouldSortFolder(event)) {
             return;
         }
 
         try {
-            HippoNode newItem = (HippoNode) session.getNode(event.result());
+            HippoNode newItem = (HippoNode) session.getNode(event.subjectPath());
             SortOrder sortOrder = determineSortOrder(newItem.getParent());
             if (sortOrder == null) {
                 // no sort order is specified so do not take any action
@@ -80,6 +82,10 @@ public class DocumentOrderDaemonModule implements DaemonModule {
         } catch (RepositoryException e) {
             LOG.error("Unexpected exception while doing simple JCR read operations", e);
         }
+    }
+
+    boolean shouldSortFolder(HippoWorkflowEvent event) {
+        return sortActions.contains(event.action());
     }
 
     SortOrder determineSortOrder(Node folder) throws RepositoryException {
