@@ -129,7 +129,7 @@ public class PublicationSlugDaemonModule implements DaemonModule {
         return
                 event.arguments() != null &&
                 event.arguments().contains("hippostd:folder") &&
-                "threepane:folder-permissions:add".equals(event.interaction());
+                "add".equals(event.action());
     }
 
     /**

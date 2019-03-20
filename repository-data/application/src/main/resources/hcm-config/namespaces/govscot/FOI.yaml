@@ -60,6 +60,15 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
             hipposysedit:validators: [required]
+          /slug:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:slug
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required, publication-slug, publication-slug-regex]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -74,6 +83,7 @@ definitions:
           govscot:isbn: ''
           govscot:publicationDate: 0001-01-01T12:00:00Z
           govscot:sme: ''
+          govscot:slug: ''
           govscot:title: ''
           govscot:summary: ''
           govscot:foiNumber: ''
@@ -126,6 +136,16 @@ definitions:
             field: title
             hint: This is the main title for this content item.  The title needs to
               be descriptive and concise.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /slug:
+            jcr:primaryType: frontend:plugin
+            caption: Slug
+            field: slug
+            hint: This is used to determine the URL of this publication.  It must
+              be unique and should be a short, URL friendly version of the title.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

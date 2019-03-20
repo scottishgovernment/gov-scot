@@ -179,3 +179,10 @@ definitions:
       jcr:primaryType: frontend:plugin
       plugin.class: org.hippoecm.frontend.editor.validator.plugins.RegExCmsValidator
       regex_pattern: ^FOI\/[0-9]{2}\/[0-9]{5}$
+    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.gov.www.validation.PublicationSlugValidator
+    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug-regex:
+      jcr:primaryType: frontend:plugin
+      plugin.class: org.hippoecm.frontend.editor.validator.plugins.RegExCmsValidator
+      regex_pattern: ^\S*$

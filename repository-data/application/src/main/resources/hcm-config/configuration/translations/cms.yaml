@@ -3,4 +3,5 @@ definitions:
     /hippo:configuration/hippo:translations/hippo:cms/validators/en:
       non-empty: A mandatory field is empty
       publication-slug: This slug is either already in use, or the field has been left blank. Please choose another.
+      publication-slug-regex: Slugs must not contain spaces.
       foiNumber: 'FOI/EIR numbers must match the format: FOI/XX/XXXXX'
