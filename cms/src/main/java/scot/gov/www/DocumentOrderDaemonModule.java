@@ -28,8 +28,6 @@ public class DocumentOrderDaemonModule implements DaemonModule {
 
     private Session session;
 
-    private Set<String> sortActions = new HashSet<>();
-
     private Map<String, SortOrder> directionMap = new HashMap<>();
 
     enum SortOrder {
@@ -41,9 +39,10 @@ public class DocumentOrderDaemonModule implements DaemonModule {
         this.session = session;
         HippoServiceRegistry.registerService(this, HippoEventBus.class);
 
-        Collections.addAll(sortActions, "add", "setDisplayName");
-
         directionMap.put("new-publication-folder", SortOrder.ASCENDING);
+        directionMap.put("new-minutes-folder", SortOrder.ASCENDING);
+        directionMap.put("new-foi-folder", SortOrder.ASCENDING);
+        directionMap.put("new-speech-or-statement-folder", SortOrder.ASCENDING);
         directionMap.put("new-publication-month-folder", SortOrder.DESCENDING);
         directionMap.put("new-publication-year-folder", SortOrder.DESCENDING);
         directionMap.put("new-directorate-folder", SortOrder.ASCENDING);
@@ -64,33 +63,54 @@ public class DocumentOrderDaemonModule implements DaemonModule {
             return;
         }
 
-        // we only want to listen to folder being added
-        if (!shouldSortFolder(event)) {
-            return;
-        }
-
         try {
-            HippoNode newItem = (HippoNode) session.getNode(event.subjectPath());
-            SortOrder sortOrder = determineSortOrder(newItem.getParent());
-            if (sortOrder == null) {
-                // no sort order is specified so do not take any action
+            HippoNode parentFolder = getParentFolder(event);
+            if (parentFolder == null) {
                 return;
             }
 
-            sortChildren(newItem.getParent(), sortOrder);
+            SortOrder sortOrder = determineSortOrder(parentFolder);
+
+            if (sortOrder == null) {
+                // no sort order is specified so do not take any action
+
+                LOG.info("No sort order!");
+                return;
+            }
+
+            sortChildren(parentFolder, sortOrder);
             session.save();
         } catch (RepositoryException e) {
             LOG.error("Unexpected exception while doing simple JCR read operations", e);
         }
     }
 
-    boolean shouldSortFolder(HippoWorkflowEvent event) {
-        return sortActions.contains(event.action());
+    HippoNode getParentFolder(HippoWorkflowEvent event) throws RepositoryException {
+
+        LOG.info("getParentFolder {} {} {} {} {}", event.action(), event.subjectPath(), event.result(), event.returnValue(), event.arguments());
+
+        if ("add".equals(event.action())) {
+            return (HippoNode) session.getNode(event.subjectPath());
+        }
+
+        if ("rename".equals(event.action())) {
+            Node node = session.getNode(event.subjectPath());
+            return (HippoNode) node;
+        }
+
+        if ("setDisplayName".equals(event.action())) {
+            return (HippoNode) session.getNodeByIdentifier(event.subjectId()).getParent();
+        }
+
+        return null;
     }
 
     SortOrder determineSortOrder(Node folder) throws RepositoryException {
+        LOG.info("determineSortOrder {}", folder.getPath());
         for (Value value : folder.getProperty("hippostd:foldertype").getValues()) {
+            LOG.info("value is {}", value.getString());
             if (directionMap.containsKey(value.getString())) {
+                LOG.info("found!");
                 return directionMap.get(value.getString());
             }
         }
@@ -103,6 +123,7 @@ public class DocumentOrderDaemonModule implements DaemonModule {
             Collections.reverse(sortedNames);
         }
 
+        LOG.info("Sorted names {}", sortedNames);
         for (int i = sortedNames.size() - 1; i >= 0; i--) {
             String before = sortedNames.get(i);
             String after = i < sortedNames.size() - 1 ? sortedNames.get(i + 1) : null;
@@ -119,6 +140,7 @@ public class DocumentOrderDaemonModule implements DaemonModule {
         // partition them into folders and 'others'
         Map<String, String> nameMap = new HashMap<>();
         List<String> folders = new ArrayList<>();
+
         List<String> others = new ArrayList<>();
         apply(it, node -> {
             nameMap.put(node.getName(), name(node));
@@ -129,12 +151,16 @@ public class DocumentOrderDaemonModule implements DaemonModule {
             }
         });
 
-        folders.sort(compareNodeNames(nameMap));
         others.sort(compareNodeNames(nameMap));
+        folders.sort(compareNodeNames(nameMap));
+
+        LOG.info("namemap {}", nameMap);
+        LOG.info("foldernames  {}", folders);
+        LOG.info("others       {}", others);
 
         List<String> names = new ArrayList<>();
-        names.addAll(folders);
         names.addAll(others);
+        names.addAll(folders);
         return names;
     }
 
