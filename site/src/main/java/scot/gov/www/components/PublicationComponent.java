@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 public class PublicationComponent extends BaseHstComponent {
 
@@ -90,8 +91,15 @@ public class PublicationComponent extends BaseHstComponent {
 
         // look for grouped documents which are stored in their own named sub-folders
         if (!documentFolder.getFolders().isEmpty()) {
-            request.setAttribute("groupedDocumentFolders", documentFolder.getFolders());
+            // only include folders that have visible documents.
+            List<HippoFolderBean> folders = documentFolder.getFolders()
+                    .stream().filter(this::hasDocuments).collect(toList());
+            request.setAttribute("groupedDocumentFolders", folders);
         }
+    }
+
+    boolean hasDocuments(HippoFolderBean folderBean) {
+        return !folderBean.getDocuments().isEmpty();
     }
 
     private void setPages(HippoBean publication, HippoBean document, HstRequest request) {
