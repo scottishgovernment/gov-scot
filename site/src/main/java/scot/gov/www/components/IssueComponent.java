@@ -82,7 +82,7 @@ public class IssueComponent extends BaseHstComponent {
 
     private Constraint[] tagConstraints(Issue issue) {
         ArrayList<Constraint> tagConstraints = new ArrayList<>();
-        tagConstraints.add(constraint("govscot:policyTags").equalTo(issue.getIssueTag()));
+        tagConstraints.add(constraint("govscot:policyTags").equalToCaseInsensitive(issue.getIssueTag()));
         return tagConstraints.toArray(new Constraint[tagConstraints.size()]);
     }
 
