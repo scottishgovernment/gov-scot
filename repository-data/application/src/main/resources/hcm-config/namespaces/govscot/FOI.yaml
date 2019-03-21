@@ -145,7 +145,8 @@ definitions:
             caption: Slug
             field: slug
             hint: This is used to determine the URL of this publication.  It must
-              be unique and should be a short, URL friendly version of the title.
+              be unique and should ideally be a short, URL friendly version of the title.
+              Slugs should be limited to no more than 60 characters.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
