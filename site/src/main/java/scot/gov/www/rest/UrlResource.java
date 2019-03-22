@@ -7,6 +7,8 @@ import org.hippoecm.hst.jaxrs.services.AbstractResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
+import scot.gov.www.rest.metadata.MetadataResource;
+import scot.gov.www.rest.metadata.MetadataResponse;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -18,7 +20,7 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 
 
-@Path("/urls/")
+@Path("/internal/urls/")
 public class UrlResource extends AbstractResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(UrlResource.class);

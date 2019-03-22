@@ -22,6 +22,11 @@
                         <bean class="scot.gov.www.rest.UrlResource" />
                     </constructor-arg>
                 </bean>
+                <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
+                    <constructor-arg>
+                        <bean class="scot.gov.www.rest.metadata.MetadataResource" />
+                    </constructor-arg>
+                </bean>
             </list>
         </property>
     </bean>

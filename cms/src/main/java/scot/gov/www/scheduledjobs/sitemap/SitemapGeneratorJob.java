@@ -54,7 +54,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
 
     private static final String PING_URL = "http://localhost:8080/site/ping/";
 
-    private static final String REST_URL = "http://localhost:8080/site/rest/urls/";
+    private static final String REST_URL = "http://localhost:8080/site/rest/internal/urls/";
 
     private static final String CONTENT_DOCUMENTS_GOVSCOT = "/content/documents/govscot";
 
