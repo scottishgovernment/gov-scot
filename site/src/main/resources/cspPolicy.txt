@@ -7,6 +7,8 @@ script-src
   https://platform.twitter.com
   https://www.googletagmanager.com
   https://www.google-analytics.com
+  https://translate.google.com
+  https://translate.googleapis.com
   https://www.youtube.com/iframe_api
   https://s.ytimg.com/
   https://cdn.mouseflow.com
@@ -15,8 +17,12 @@ img-src
   'self'
   data:
   https://cdn.prgloo.com/
+  https://www.google.com
   https://www.google-analytics.com/
   https://www.googletagmanager.com/
+  https://www.gstatic.com
+  https://translate.google.com
+  https://translate.googleapis.com
   https://*.staticflickr.com/
   https://*.ytimg.com/
   https://*.twimg.com/
@@ -29,6 +35,8 @@ style-src
   https://maxcdn.bootstrapcdn.com
   https://platform.twitter.com
   https://ton.twimg.com/
+  https://translate.google.com
+  https://translate.googleapis.com
 ;
 font-src
   'self'
