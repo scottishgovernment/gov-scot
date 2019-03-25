@@ -380,7 +380,7 @@ define([
                 }
                 
                 if (match) {
-                    videoIframe.attr('src', 'https://www.youtube.com/embed/' + match[2] + '?enablejsapi=1&playsinline=1');
+                    videoIframe.attr('src', 'https://www.youtube-nocookie.com/embed/' + match[2] + '?enablejsapi=1&playsinline=1');
                 }
             });
 
