@@ -1,7 +1,7 @@
 package scot.gov.www.linkprocessors;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.jackrabbit.util.ISO9075;
+import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -15,7 +15,6 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -146,7 +145,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String escapedSlug = ISO9075.encodePath(slug);
+        String escapedSlug = Text.escapeIllegalJcr10Chars(slug);
 
         String template =
                 "/jcr:root/content/documents/govscot/publications//element(*, govscot:SimpleContent)[govscot:slug = '%s']";
