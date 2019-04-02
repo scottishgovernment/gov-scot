@@ -4,8 +4,6 @@ import org.apache.commons.lang.time.StopWatch;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.builder.Constraint;
-import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
@@ -22,9 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 
 public class IssueComponent extends BaseHstComponent {
 
@@ -62,15 +57,13 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populateNews(HippoBean base, Issue issue, HstRequest request) {
         // Search for news with this issue's prgloo tag
-        HstQuery taggedQuery = HstQueryBuilder.create(base)
-                .ofTypes(News.class)
-                .where(or(tagConstraints(issue)))
-                .limit(4)
-                .orderByDescending(PUBLICATIONDATE).build();
+        HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class);
+        taggedQuery.setLimit(4);
         try {
             StopWatch stopWatch = new StopWatch();
             stopWatch.start();
             HippoBeanIterator taggedNews = taggedQuery.execute().getHippoBeans();
+
             request.setAttribute("news", taggedNews);
             stopWatch.stop();
             LOG.debug("Issue page found {} tagged news items, took: {}", taggedNews.getSize(), stopWatch.getTime());
@@ -78,12 +71,6 @@ public class IssueComponent extends BaseHstComponent {
         } catch (QueryException e) {
             throw new HstComponentException(e);
         }
-    }
-
-    private Constraint[] tagConstraints(Issue issue) {
-        ArrayList<Constraint> tagConstraints = new ArrayList<>();
-        tagConstraints.add(constraint("govscot:policyTags").equalToCaseInsensitive(issue.getIssueTag()));
-        return tagConstraints.toArray(new Constraint[tagConstraints.size()]);
     }
 
     private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
