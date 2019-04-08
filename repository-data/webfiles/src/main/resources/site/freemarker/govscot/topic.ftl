@@ -214,7 +214,7 @@
         </div><div class="grid__item medium--four-twelfths">
             <!-- if you're changing this link remember to also change the mobile equivalent above -->
             <a class="button  button--tertiary  tst-all-cons"
-            href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-paper;consultation-responses'/>"
+            href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>"
             data-gtm="all-cons">
                 <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                     <use xlink:href="${iconspath}#3x3grid"></use>

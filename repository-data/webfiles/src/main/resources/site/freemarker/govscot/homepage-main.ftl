@@ -200,7 +200,7 @@
         <section id="consultations" class="homepage-block">
             <h2 class="emphasis homepage-block__title homepage-block__title--icon
                 homepage-block__title--icon--consultation"><a class="homepage-block__title-link"
-                                                              href="<@hst.link path='/publications/?publicationTypes=consultation-paper;consultation-responses'/>"
+                                                              href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
                                                               data-gtm="panel-cons">Consultations</a></h2>
 
             <#list consultations as consultation>
@@ -219,7 +219,7 @@
         </section>
 
         <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=cconsultation-analysis;consultation-paper'/>"
+        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                 <use xlink:href="${iconspath}#3x3grid"></use>
@@ -254,7 +254,7 @@
         --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
         <!-- if you're changing this link remember to also change the mobile equivalent above -->
         <a class="button  button--tertiary  tst-all-cons"
-           href="<@hst.link path='/publications/?publicationTypes=consultation-paper;consultation-responses'/>"
+           href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                 <use xlink:href="${iconspath}#3x3grid"></use>
