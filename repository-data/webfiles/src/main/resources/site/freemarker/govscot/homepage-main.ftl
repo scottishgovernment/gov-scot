@@ -219,7 +219,7 @@
         </section>
 
         <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=consultation-paper;consultation-responses'/>"
+        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=cconsultation-analysis;consultation-paper'/>"
            data-gtm="all-cons">
             <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                 <use xlink:href="${iconspath}#3x3grid"></use>
