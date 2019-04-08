@@ -9,11 +9,12 @@ definitions:
         name\": \"listindentalign\",\r\n\t\t\"groups\": [\"list\"]\r\n\t}, {\r\n\t\
         \t\"name\": \"links\"\r\n\t}, {\r\n\t\t\"name\": \"clipboard\"\r\n\t}, {\r\
         \n\t\t\"name\": \"insert\"\r\n\t}, {\r\n\t\t\"name\": \"tools\"\r\n\t}, {\r\
-        \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote,simple_tables\"\
+        \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote,simple_tables,mygov_statbox\"\
         ,\r\n\r\n        \"contentsCss\": [\r\n                \"ckeditor/hippocontents.css\"\
         ,\r\n                \"ckeditor/ckeditorstyle.css\"\r\n        ],\r\n\r\n\
         \       \"youtube_responsive\": true,\r\n       \"youtube_privacy\": true,\r\
         \n       \"youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\",\
-        \ \"txtEmbed\", \"chkOlderCode\"]\r\n}"
+        \ \"txtEmbed\", \"chkOlderCode\"],\r\n       \"extraAllowedContent\": { \"\
+        span\": { \"attributes\": \"class\", classes: \"*\" } }\r\n\r\n}"
       ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
         \r\n}"

@@ -348,3 +348,83 @@
 .channel-iframe-canvas iframe {
     -ms-user-select: text;
 }
+
+
+/*------------------------------------*\
+    #STAT BOX
+    This is a compiled version of the mygov-assets css component.
+\*------------------------------------*/
+
+.stat-boxes {
+    overflow: hidden;
+}
+
+.stat-box {
+    border: 1px solid #333;
+    border-width: 1px 0;
+    color: #333;
+    display: block;
+    float: left;
+    margin: 0 0 28px;
+    min-height: 105px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 30%;
+    transition: color 0.2s, border-color 0.2s;
+}
+.stat-box__value {
+    display: block;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 77px;
+}
+.stat-box__label {
+    top: 67px;
+    display: table;
+    height: 35px;
+    position: absolute;
+    width: 100%;
+}
+.stat-box__label-text {
+    display: table-cell;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+a.stat-box:hover, a.stat-box:focus {
+    border-color: #0065bd;
+    color: #0065bd;
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+a.stat-box:active {
+    background: #d9effc;
+    color: #0065bd;
+    outline: 0;
+}
+
+.stat-box + .stat-box {
+    margin-left: 5%;
+}
+
+@media (min-width: 768px) {
+    .stat-box {
+        margin: 0 0 42px;
+        min-height: 133px;
+    }
+    .stat-box__value {
+        font-size: 70px;
+        line-height: 97px;
+    }
+    .stat-box__label {
+        top: 82px;
+    }
+    .stat-box__label-text {
+        font-size: 15px;
+        line-height: 21px;
+    }
+}
