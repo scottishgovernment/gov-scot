@@ -46,11 +46,6 @@
                         </a>
                     </li>
                     <li class="social-links__item">
-                        <a title="Audioboom" class="social-links__link" href="https://audioboom.com/channel/scottishgovernment" data-gtm="social">
-                            <span class="fa fa-headphones"></span>
-                        </a>
-                    </li>
-                    <li class="social-links__item">
                         <a title="Instagram" class="social-links__link" href="https://www.instagram.com/scotgov/" data-gtm="social">
                             <span class="fa fa-instagram"></span>
                         </a>

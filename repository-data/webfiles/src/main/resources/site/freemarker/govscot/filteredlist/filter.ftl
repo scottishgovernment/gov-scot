@@ -161,9 +161,9 @@
                             </#if>
 
                             <#if publicationTypes??>
-                                <div class="expandable-item">
+                                <div class="expandable-item  expandable-item--open  expandable-item--init-open">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
-                                        <h2 class="delta  expandable-item__title">Type</h2>
+                                        <h2 class="delta  expandable-item__title">Publication Types</h2>
                                         <span class="expandable-item__icon">
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
                                                 <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
@@ -171,41 +171,37 @@
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
                                                 <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
                                             </svg>
-                                        </span> 
+                                        </span>
                                     </button>
-                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable  scrollable--shadow">
+
+                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
                                         <div class="scrollable__content scrollable__content--40 checkbox-group">
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />
-                                            <#list publicationTypes.categories as category>
-                                                <h3 class="epsilon  checkbox-group__title">${category.getInfo(locale).name}</h5>
-
-                                                <#list category.children as item>
-
-                                                    <#assign isSelected = false/>
-                                                    <#if parameters['publicationTypes']??>
-                                                        <#list parameters['publicationTypes'] as selectedItem>
-                                                            <#if selectedItem == item.key>
-                                                                <#assign isSelected = true/>
-                                                                <#assign itemsTrigger = true />
-                                                            </#if>
-                                                        </#list>
-                                                    </#if>
-
-                                                    <input
-                                                        <#if isSelected == true>
-                                                            <#if noItems == true>
-                                                            checked=true
-                                                            </#if>
-                                                            data-checkedonload=true
+                                            <#list publicationTypes as item>
+                                                <#assign isSelected = false/>
+                                                <#if parameters['publicationTypes']??>
+                                                    <#list parameters['publicationTypes'] as selectedItem>
+                                                        <#if selectedItem == item.key>
+                                                            <#assign isSelected = true/>
+                                                            <#assign itemsTrigger = true />
                                                         </#if>
-                                                        id="${item.key}" name="publicationTypes" class="fancy-checkbox checkbox-group__input" type="radio" value="${item.key}">
-                                                    <label for="${item.key}" class="checkbox-group__label fancy-radio fancy-radio--min">${item.getInfo(locale).name}</label>
+                                                    </#list>
+                                                </#if>
 
-                                                    <#if itemsTrigger>
-                                                        <#assign noItems = false />
+                                                <input
+                                                    <#if isSelected == true>
+                                                        <#if noItems == true>
+                                                                checked=true
+                                                        </#if>
+                                                                data-checkedonload=true
                                                     </#if>
-                                                </#list>
+                                                                id="${item.key}" name="publicationTypes" class="fancy-checkbox checkbox-group__input" type="radio" value="${item.key}">
+                                                <label for="${item.key}" class="checkbox-group__label fancy-radio fancy-radio--min">${item.label}</label>
+
+                                                <#if itemsTrigger>
+                                                    <#assign noItems = false />
+                                                </#if>
                                             </#list>
                                         </div>
                                     </div>

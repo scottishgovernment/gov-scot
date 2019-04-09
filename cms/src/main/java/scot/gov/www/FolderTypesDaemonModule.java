@@ -57,7 +57,7 @@ public class FolderTypesDaemonModule implements DaemonModule {
                 setFolderType(newFolder, "new-minutes-folder");
             }
 
-            if ("speech---statement".equals(typeFolder.getName())) {
+            if ("speech-statement".equals(typeFolder.getName())) {
                 setFolderType(newFolder, "new-speech-or-statement-folder");
             }
 
