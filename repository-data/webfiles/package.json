@@ -33,7 +33,7 @@
     "karma-coverage": "^1.1.2",
     "karma-coverage-istanbul-reporter": "^1.4.3",
     "karma-jasmine": "^2.0.1",
-    "karma-jasmine-jquery": "^0.1.1",
+    "karma-jasmine-jquery-2": "^0.1.1",
     "karma-jasmine-matchers": "^4.0.1",
     "karma-webpack": "^4.0.0-rc.6",
     "pikaday": "^1.4.0",
