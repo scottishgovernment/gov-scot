@@ -1,20 +1,21 @@
-define(['jquery'], function ($) {
-    'use strict';
-    
-    var o = $({});
+// PUBSUB
 
-    $.subscribe = function() {
-        o.on.apply(o, arguments);
-    };
+'use strict';
 
-    $.unsubscribe = function() {
-        o.off.apply(o, arguments);
-    };
+import $ from 'jquery';
 
-    $.publish = function() {
-        o.trigger.apply(o, arguments);
-    };
+const o = $({});
 
-    window.pubsub = $;
-    return $;
-});
+$.subscribe = function() {
+    o.on.apply(o, arguments);
+};
+
+$.unsubscribe = function() {
+    o.off.apply(o, arguments);
+};
+
+$.publish = function() {
+    o.trigger.apply(o, arguments);
+};
+
+window.pubsub = $;

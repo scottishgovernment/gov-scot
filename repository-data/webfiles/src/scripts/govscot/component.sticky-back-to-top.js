@@ -1,94 +1,89 @@
-//sticky-back-to-top.js
+// STICKY BACK TO TOP
 /*
  Contains functionality sticky "back to top" links, reusable across formats
  */
 
-define([
-    'jquery'
-], function($) {
-    'use strict';
+/* global window */
 
-    var backToTop = {
+'use strict';
 
-        init: function () {
-            var that = this;
+import $ from 'jquery';
 
-            var backToTopIcon = $('<a class="sticky-back-to-top sticky-back-to-top--hidden" href="#page-top">Top</a>');
-            backToTopIcon.appendTo('body');
+const backToTop = {
 
-            var t = false;
-            var visibleTime = 2000;
-            var lastScrollTop = 0;
+    init: function () {
+        const that = this;
 
-            $(window).on('scroll', function () {
-                // detect whether we are scrolling UP
-                var scrollingUp = false;
+        const backToTopIcon = $('<a class="sticky-back-to-top sticky-back-to-top--hidden" href="#page-top">Top</a>');
+        backToTopIcon.appendTo('body');
 
-                var scrollTop = $(window).scrollTop();
+        let t = false;
+        const visibleTime = 2000;
+        let lastScrollTop = 0;
 
-                if (scrollTop <= lastScrollTop) {
-                    // we are scrolling UP
-                    scrollingUp = true;
-                }
-                lastScrollTop = scrollTop;
+        $(window).on('scroll', function () {
+            // detect whether we are scrolling UP
+            let scrollingUp = false;
 
-                // detect whether we are near the top of the page (1/4 screen height)
-                var nearTopOfPage = false;
-                if ($(window).scrollTop() < $(window).innerHeight() * 0.25) {
-                    nearTopOfPage = true;
-                }
+            const scrollTop = $(window).scrollTop();
 
-                if(scrollingUp && !nearTopOfPage) {
+            if (scrollTop <= lastScrollTop) {
+                // we are scrolling UP
+                scrollingUp = true;
+            }
+            lastScrollTop = scrollTop;
 
-                    backToTopIcon.addClass('sticky-back-to-top--show');
-                    backToTopIcon.removeClass('sticky-back-to-top--hidden');
+            // detect whether we are near the top of the page (1/4 screen height)
+            let nearTopOfPage = false;
+            if ($(window).scrollTop() < $(window).innerHeight() * 0.25) {
+                nearTopOfPage = true;
+            }
 
-                    clearTimeout(t);
+            if(scrollingUp && !nearTopOfPage) {
 
-                    t = setTimeout(function () {
-                        that.hideBackToTopIcon(backToTopIcon, t);
-                    }, visibleTime);
-                } else {
-                    // if we are scrolling down, hide the back to top button
-                    backToTopIcon.removeClass('sticky-back-to-top--show');
-                    backToTopIcon.addClass('sticky-back-to-top--hidden');
-
-                    clearTimeout(t);
-                }
-            });
-
-            backToTopIcon.on('mouseenter', function () {
                 backToTopIcon.addClass('sticky-back-to-top--show');
                 backToTopIcon.removeClass('sticky-back-to-top--hidden');
 
-                clearTimeout(t);
-            }).on('mouseleave', function () {
-                t = setTimeout(function () {
+                window.clearTimeout(t);
+
+                t = window.setTimeout(function () {
                     that.hideBackToTopIcon(backToTopIcon, t);
                 }, visibleTime);
-            }).on('click', function (event) {
-                event.preventDefault();
-                window.scrollTo(0, 0);
-
-                clearTimeout(t);
-                that.hideBackToTopIcon(backToTopIcon, t);
-            });
-        },
-
-        hideBackToTopIcon: function (backToTopIcon) {
-            // match 1s fade time in CSS
-            var fadeAnimationTime = 1000;
-
-            backToTopIcon.removeClass('sticky-back-to-top--show');
-
-            // hide after the fade animation has finished
-            setTimeout(function () {
+            } else {
+                // if we are scrolling down, hide the back to top button
+                backToTopIcon.removeClass('sticky-back-to-top--show');
                 backToTopIcon.addClass('sticky-back-to-top--hidden');
-            }, fadeAnimationTime);
-        }
-    };
 
-    backToTop.init();
+                window.clearTimeout(t);
+            }
+        });
 
-    return backToTop;
-});
+        backToTopIcon.on('mouseenter', function () {
+            backToTopIcon.addClass('sticky-back-to-top--show');
+            backToTopIcon.removeClass('sticky-back-to-top--hidden');
+
+            window.clearTimeout(t);
+        }).on('mouseleave', function () {
+            t = window.setTimeout(function () {
+                that.hideBackToTopIcon(backToTopIcon, t);
+            }, visibleTime);
+        }).on('click', function () {
+            window.clearTimeout(t);
+            that.hideBackToTopIcon(backToTopIcon, t);
+        });
+    },
+
+    hideBackToTopIcon: function (backToTopIcon) {
+        // match 1s fade time in CSS
+        const fadeAnimationTime = 1000;
+
+        backToTopIcon.removeClass('sticky-back-to-top--show');
+
+        // hide after the fade animation has finished
+        window.setTimeout(function () {
+            backToTopIcon.addClass('sticky-back-to-top--hidden');
+        }, fadeAnimationTime);
+    }
+};
+
+export default backToTop;

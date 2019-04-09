@@ -1,32 +1,35 @@
-define([], function() {
+// ISSUE HUB FORMAT
 
-    var issueHubPage = {};
+/* global window */
 
-    issueHubPage.init = function() {
-        this.initIssueCalloutDisplacement();
-    };
+import $ from 'jquery';
 
-    // nudge the sidebar down if necessary
-    // recheck on resize
-    issueHubPage.initIssueCalloutDisplacement = function () {
+const issueHubPage = {};
+
+issueHubPage.init = function() {
+    this.initIssueCalloutDisplacement();
+};
+
+// nudge the sidebar down if necessary
+// recheck on resize
+issueHubPage.initIssueCalloutDisplacement = function () {
+    displaceSidebar();
+
+    $(window).on('resize', function () {
         displaceSidebar();
+    });
+};
 
-        $(window).on('resize', function () {
-            displaceSidebar();
-        });
-    };
+function displaceSidebar () {
+    const calloutBox = $('.issue-callout'),
+        elementToDisplace = $('.displace-by-issue-callout');
 
-    function displaceSidebar () {
-        var calloutBox = $('.issue-callout'),
-            elementToDisplace = $('.displace-by-issue-callout');
+    const amountToDisplace = calloutBox.height() + 56 - 50;
 
-        var amountToDisplace = calloutBox.height() + 56 - 50;
+    elementToDisplace.css({paddingTop: amountToDisplace});
+}
 
-        elementToDisplace.css({paddingTop: amountToDisplace});
-    };
+window.format = issueHubPage;
+window.format.init();
 
-    window.format = issueHubPage;
-    window.format.init();
-
-    return issueHubPage;
-});
+export default issueHubPage;

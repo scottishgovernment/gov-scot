@@ -1,29 +1,53 @@
-define([
-    './cookie'
-], function (cookie) {
-    'use strict';
+// COOKIE COMPONENT
 
-    return {
-        init: function (ppp) {
-            let notice = $('#cookie-notice');
+/* global window */
 
-            // check whether we need to display the cookie notice
-            if (cookie('cookie-notification-acknowledged')) {
-                notice.addClass('hidden');
-            } else {
-                notice.removeClass('hidden');
-            }
-    
-            // When clicked, hide notice and set cookie for a year
-            notice.on('click', '.notification__close', function(event) {
-                event.preventDefault();
-    
-                notice.addClass('hidden');
-                cookie('cookie-notification-acknowledged', 'yes', 365);
-    
-                $(window).trigger('positionnav');
-                $(window).trigger('headerautofixing');
-            });
+'use strict';
+
+import cookie from './cookie';
+
+function triggerEvent(element, eventData) {
+    let event;
+
+    if (window.CustomEvent) {
+        event = new CustomEvent('my-event', {detail: eventData});
+    } else {
+        event = document.createEvent('CustomEvent');
+        event.initCustomEvent('my-event', true, true, eventData);
+    }
+
+    element.dispatchEvent(event);
+}
+
+export default {
+    init: function () {
+        const notice = document.getElementById('cookie-notice');
+
+        if (!notice) {
+            return;
         }
-    };
-});
+
+        // check whether we need to display the cookie notice
+        if (cookie('cookie-notification-acknowledged')) {
+            notice.classList.add('hidden');
+        } else {
+            notice.classList.remove('hidden');
+        }
+
+        notice.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const clickedElement = event.target;
+
+            if(clickedElement.classList.contains('notification__close')) {
+                event.preventDefault();
+
+                notice.classList.add('hidden');
+                cookie('cookie-notification-acknowledged', 'yes', 365);
+
+                triggerEvent(window, 'headerautofixing');
+                triggerEvent(window, 'positionnav');
+            }
+        });
+    }
+};

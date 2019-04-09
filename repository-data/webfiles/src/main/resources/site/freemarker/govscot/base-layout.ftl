@@ -43,7 +43,7 @@
             <!-- search & breadcrumbs -->
             <!-- only show when not on homepage -->
                 <div class="breadcrumbs__container">
-                
+
                     <div class="grid"><!--
                         --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
                             <#if !(isSearchpage!false)>
@@ -74,7 +74,9 @@
 
     <@hst.include ref="footer"/>
 
-    <script src="<@hst.webfile path="/assets/scripts/global.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/global.js"/>"></script>
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/global.es5.js"/>"></script>
+
     <script defer src="<@hst.link path="/assets/scripts/vendor/svgxuse.min.js"/>"></script>
     <@hst.headContributions categoryIncludes="footerScripts" xhtml=true/>
 

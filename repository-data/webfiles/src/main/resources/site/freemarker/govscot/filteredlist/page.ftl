@@ -11,7 +11,7 @@
             <#if index.content.content?has_content>
                 <@hst.html hippohtml=index.content/>
             </#if>
-            
+
         </div><!--
     --></div>
 </#if>
@@ -28,7 +28,10 @@
 </div>
 
 <@hst.headContribution category="footerScripts">
-    <script src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/filtered-list-page.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if index??>

@@ -27,7 +27,7 @@
                 </svg>
             </div><!--
             --><div class="grid__item  large--seven-twelfths">
-                
+
                 <h1 class="article-header__title">${document.title}</h1>
                 <p>${document.summary}</p>
             </div><!--
@@ -185,7 +185,7 @@
                                 <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
                                     <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
                                 </svg>
-                            </span>                            
+                            </span>
                         </button>
 
                         <div id="revisions-body" class="expandable-item__body  expandable-item__body--with-padding" role="tabpanel" aria-expanded="false" aria-labelledby="revisions-heading">
@@ -270,14 +270,14 @@
                                     <div id="${chapter.name}-body" class="expandable-item__body" role="tabpanel" aria-expanded="false" aria-labelledby="${chapter.name}-heading">
                                         <ul class="contents-list">
                                             <#list chapter.documents as section>
-                                                
+
                                                 <li class="contents-list__item">
                                                     <svg class="svg-icon  mg-icon  contents-list__icon">
                                                         <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                                                     </svg>
                                                     <a class="contents-list__link" href="<@hst.link hippobean=section/>">${section.title}</a>
                                                 </li>
-                        
+
                                             </#list>
                                         </ul>
                                     </div>
@@ -380,7 +380,10 @@
 </#if>
 
 <@hst.headContribution category="footerScripts">
-<script src="<@hst.webfile path="/assets/scripts/complex-document.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/complex-document.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/complex-document.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if document??>

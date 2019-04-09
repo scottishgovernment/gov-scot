@@ -1,17 +1,19 @@
-define([
-    './component.expandable',
-    './tool.text-truncate'
-], function(expandable, TextTruncate) {
-    'use strict';
+// TOPIC FORMAT
 
-    var topicPage = {};
+/* global window */
 
-    topicPage.init = function() {
-        TextTruncate();
-    };
+'use strict';
 
-    window.format = topicPage;
-    window.format.init();
+import './component.expandable';
+import TextTruncate from './tool.text-truncate';
 
-    return topicPage;
-});
+const topicPage = {};
+
+topicPage.init = function() {
+    TextTruncate();
+};
+
+window.format = topicPage;
+window.format.init();
+
+export default topicPage;

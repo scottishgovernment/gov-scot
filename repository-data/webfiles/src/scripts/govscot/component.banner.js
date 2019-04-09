@@ -1,29 +1,51 @@
-define([], function () {
-    'use strict';
+// BANNER COMPONENT
 
-    return {
-        init: function (id) {
-            var that = this;
-            var notice = $('#' + id);
+'use strict';
 
-            var bannerClosed = JSON.parse(sessionStorage.getItem(id + '-closed'));
-            if (!bannerClosed) {
-                notice.find('.notification__close').removeClass('notification__close--minimised');
-                notice.find('.notification__extra-content').removeClass('hidden-xsmall');
-            }
+const banner = {
+    init: function (id) {
+        const notice = document.getElementById(id);
 
-            notice.on('click', '.notification__close', function(event) {
-                event.preventDefault();
+        if (!notice) {
+            return;
+        }
 
-                notice.find('.notification__close').toggleClass('notification__close--minimised');
-                notice.find('.notification__extra-content').toggleClass('hidden-xsmall');
+        let bannerClosed = JSON.parse(sessionStorage.getItem(id + '-closed'));
+        if (!bannerClosed) {
+            notice.querySelectorAll('.notification__close').classList.remove('notification__close--minimised');
+            notice.querySelectorAll('.notification__extra-content').classList.remove('hidden-xsmall');
+        }
+
+        notice.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const clickedElement = event.target;
+
+            if(clickedElement.classList.contains('notification__close')) {
+                notice.querySelectorAll('.notification__close').classList.toggle('notification__close--minimised');
+                notice.querySelectorAll('.notification__extra-content').classList.toggle('hidden-xsmall');
 
                 bannerClosed = !bannerClosed;
                 sessionStorage.setItem(id + '-closed', JSON.stringify(bannerClosed));
 
-                $(window).trigger('headerautofixing');
-                $(window).trigger('positionnav');
-            });
-        }
-    };
-});
+                triggerEvent(window, 'headerautofixing');
+                triggerEvent(window, 'positionnav');
+            }
+        });
+    }
+};
+
+function triggerEvent(element, eventData) {
+    let event;
+
+    if (window.CustomEvent) {
+        event = new CustomEvent('my-event', {detail: eventData});
+    } else {
+        event = document.createEvent('CustomEvent');
+        event.initCustomEvent('my-event', true, true, eventData);
+    }
+
+    element.dispatchEvent(event);
+}
+
+export default banner;

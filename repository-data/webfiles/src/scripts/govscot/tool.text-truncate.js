@@ -1,28 +1,29 @@
-define([
-    'jquery.dotdotdot'
-], function () {
-    'use strict';
+// TEXT TRUNCATE
 
-    var TextTruncate = function() {
-        // set heights of all truncateable elements
-        $('.js-truncate').each(function (key, value) {
-            var lines = 2,
-                itemToTruncate = $(value),
-                lineHeight = parseInt(itemToTruncate.css('line-height'), 10);
+'use strict';
 
-            if (itemToTruncate.data('lines')) {
-                lines = parseInt(itemToTruncate.data('lines'), 10);
-            }
+import 'jquery.dotdotdot';
+import $ from 'jquery';
 
-            itemToTruncate.css({
-                maxHeight: lineHeight * lines
-            });
+const TextTruncate = function() {
+    // set heights of all truncateable elements
+    $('.js-truncate').each(function (key, value) {
+        const itemToTruncate = $(value),
+            lineHeight = parseInt(itemToTruncate.css('line-height'), 10);
+        let lines = 2;
 
-            itemToTruncate.dotdotdot({
-                watch: 'window'
-            });
+        if (itemToTruncate.data('lines')) {
+            lines = parseInt(itemToTruncate.data('lines'), 10);
+        }
+
+        itemToTruncate.css({
+            maxHeight: lineHeight * lines
         });
-    };
 
-    return TextTruncate;
-});
+        itemToTruncate.dotdotdot({
+            watch: 'window'
+        });
+    });
+};
+
+export default TextTruncate;

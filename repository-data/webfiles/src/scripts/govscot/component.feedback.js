@@ -2,171 +2,171 @@
  * Feedback component
  */
 
-define([
-    'jquery'
-], function ($) {
-    'use strict';
+/* global document, window */
 
-    var Feedback = {
-        settings: {
-            feedbackUrl: '/service/feedback/',
-            badServer: 'I\'m sorry, we have a problem at our side, please try again later'
-        },
+'use strict';
 
-        init: function () {
-            this.attachEventHandlers();
-        },
+import $ from 'jquery';
 
-        attachEventHandlers: function () {
-            var that = this;
+const Feedback = {
+    settings: {
+        feedbackUrl: '/service/feedback/',
+        badServer: 'I\'m sorry, we have a problem at our side, please try again later'
+    },
+
+    init: function () {
+        this.attachEventHandlers();
+    },
+
+    attachEventHandlers: function () {
+        const that = this;
+
+        // show relevant fields
+        $('.js-feedback-type').on('change', function (event) {
+            // remove errors
+            that.removeErrorMessages();
+
+            // set feedback type
+            that.feedbackType = event.target.value;
+
+            // hide all fields
+            $('.feedback__field').addClass('hidden');
+            $('.feedback__field').attr('disabled', true);
 
             // show relevant fields
-            $('.js-feedback-type').on('change', function (event) {
-                // remove errors
-                that.removeErrorMessages();
+            $('.feedback__field--' + that.feedbackType).removeClass('hidden');
+            $('.feedback__field--' + that.feedbackType).removeAttr('disabled');
 
-                // set feedback type
-                that.feedbackType = event.target.value;
-
-                // hide all fields
-                $('.feedback__field').addClass('hidden');
-                $('.feedback__field').attr('disabled', true);
-
-                // show relevant fields
-                $('.feedback__field--' + that.feedbackType).removeClass('hidden');
-                $('.feedback__field--' + that.feedbackType).removeAttr('disabled');
-
-                // clear dropdowns
-                $('.feedback__select').each(function () {
-                    $(this).find('option:eq(0)').prop('selected', true);
-                });
-
-                // hacky fix for IE8 not creating space on the page for the fields we're showing
-                $('#feedback').css('visibility', 'hidden');
-                $('#feedback').css('visibility', 'visible');
+            // clear dropdowns
+            $('.feedback__select').each(function () {
+                $(this).find('option:eq(0)').prop('selected', true);
             });
 
-            // validate on form submission
-            $('#feedback-form').on('submit', function (event) {
-                event.preventDefault();
+            // hacky fix for IE8 not creating space on the page for the fields we're showing
+            $('#feedback').css('visibility', 'hidden');
+            $('#feedback').css('visibility', 'visible');
+        });
 
-                // remove errors
-                that.removeErrorMessages();
+        // validate on form submission
+        $('#feedback-form').on('submit', function (event) {
+            event.preventDefault();
 
-                // gather feedback
-                var feedback = {
-                    slug: document.location.pathname,
-                    type: that.feedbackType,
-                    freetext: $('#feedback-comment').val(),
-                    category: $('#page-category').val(),
-                    errors: []
-                };
+            // remove errors
+            that.removeErrorMessages();
 
-                // there will not always be a reason dropdown
-                var reasonDropdown = $('.feedback__select:not(.hidden)');
+            // gather feedback
+            const feedback = {
+                slug: document.location.pathname,
+                type: that.feedbackType,
+                freetext: $('#feedback-comment').val(),
+                category: $('#page-category').val(),
+                errors: []
+            };
 
-                if(reasonDropdown.length > 0) {
-                    feedback.reason = reasonDropdown.val() || '';
-                }
+            // there will not always be a reason dropdown
+            const reasonDropdown = $('.feedback__select:not(.hidden)');
 
-                feedback.hippoContentItem = window.location.pathname;
-                feedback.contentItem = document.getElementById('documentUuid').value;
-
-                // validate
-                if (that.validateFeedback()) {
-                    // send
-                    that.sendFeedback(feedback);
-                }
-            });
-        },
-
-        validateFeedback: function () {
-            var isValid = true;
-
-            var requiredFields = $('.required--' + this.feedbackType);
-
-            for (var i = 0, il = requiredFields.length; i < il; i++) {
-                var thisField = $(requiredFields[i]);
-
-                if (thisField.val() === '' || thisField.val() === null) {
-                    this.addError(thisField.data('message'), thisField.closest('.input-group'));
-                    isValid = false;
-                }
+            if(reasonDropdown.length > 0) {
+                feedback.reason = reasonDropdown.val() || '';
             }
 
-            return isValid;
-        },
+            feedback.hippoContentItem = window.location.pathname;
+            feedback.contentItem = document.getElementById('documentUuid').value;
 
-        sendFeedback: function (feedback) {
-            var that = this;
+            // validate
+            if (that.validateFeedback()) {
+                // send
+                that.sendFeedback(feedback);
+            }
+        });
+    },
 
-            $.ajax({
-                type: 'POST',
-                url: that.settings.feedbackUrl,
-                data: JSON.stringify(feedback),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json'
-            }).then(function() {
+    validateFeedback: function () {
+        let isValid = true;
+
+        const requiredFields = $('.required--' + this.feedbackType);
+
+        for (let i = 0, il = requiredFields.length; i < il; i++) {
+            const thisField = $(requiredFields[i]);
+
+            if (thisField.val() === '' || thisField.val() === null) {
+                this.addError(thisField.data('message'), thisField.closest('.input-group'));
+                isValid = false;
+            }
+        }
+
+        return isValid;
+    },
+
+    sendFeedback: function (feedback) {
+        const that = this;
+
+        $.ajax({
+            type: 'POST',
+            url: that.settings.feedbackUrl,
+            data: JSON.stringify(feedback),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json'
+        }).then(function() {
+            // hide form
+            $('#feedback-form').addClass('hidden');
+
+            // show thanks
+            $('.feedback-thanks').removeClass('hidden');
+
+            // Log the event to analytics.
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'type' : feedback.type,
+                'reason' : feedback.reason,
+                'event' : 'feedbackSubmit'
+            });
+        }, function(err) {
+            if (err.status === 201) {
                 // hide form
                 $('#feedback-form').addClass('hidden');
 
                 // show thanks
-                $('.feedback-thanks').removeClass('hidden');
+                $('.feedback__thanks').removeClass('hidden');
 
                 // Log the event to analytics.
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
-                  'type' : feedback.type,
-                  'reason' : feedback.reason,
-                  'event' : 'feedbackSubmit'
+                    'type' : feedback.type,
+                    'reason' : feedback.reason,
+                    'event' : 'feedbackSubmit'
                 });
-            }, function(err) {
-                if (err.status === 201) {
-                    // hide form
-                    $('#feedback-form').addClass('hidden');
+            } else {
+                const submit = $('#feedback-form').find('[type=submit]');
 
-                    // show thanks
-                    $('.feedback__thanks').removeClass('hidden');
-
-                    // Log the event to analytics.
-                    window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push({
-                      'type' : feedback.type,
-                      'reason' : feedback.reason,
-                      'event' : 'feedbackSubmit'
-                    });
-                } else {
-                    var submit = $('#feedback-form').find('[type=submit]');
-
-                    that.addError(
-                        that.settings.badServer,
-                        submit.parent()
-                    );
-                }
-            });
-        },
-
-        removeErrorMessages: function () {
-            $('.input-group--has-error')
-                .removeClass('input-group--has-error')
-                .find('.message').remove();
-        },
-
-        addError: function (message, inputGroup) {
-            var errorContainer = inputGroup.find('.message');
-
-            if (errorContainer.length === 0) {
-                errorContainer = $('<div class="message"></div>');
-                errorContainer.prependTo(inputGroup);
+                that.addError(
+                    that.settings.badServer,
+                    submit.parent()
+                );
             }
+        });
+    },
 
-            errorContainer.text(message);
-            inputGroup.addClass('input-group--has-error');
+    removeErrorMessages: function () {
+        $('.input-group--has-error')
+            .removeClass('input-group--has-error')
+            .find('.message').remove();
+    },
+
+    addError: function (message, inputGroup) {
+        let errorContainer = inputGroup.find('.message');
+
+        if (errorContainer.length === 0) {
+            errorContainer = $('<div class="message"></div>');
+            errorContainer.prependTo(inputGroup);
         }
-    };
 
-    // auto-initialize
-    Feedback.init();
+        errorContainer.text(message);
+        inputGroup.addClass('input-group--has-error');
+    }
+};
 
-    return Feedback;
-});
+// auto-initialize
+Feedback.init();
+
+export default Feedback;

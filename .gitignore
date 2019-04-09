@@ -15,5 +15,5 @@ repository-data/application/src/main/resources/hcm-config/configuration/modules/
 repository-data/application/src/main/resources/hcm-content/content/gallery
 repository-data/application/src/main/resources/hcm-content/content/assets
 repository-data/webfiles/src/main/resources/site/assets/
-repository-data/webfiles/src/scripts/test/coverage
+repository-data/webfiles/test/coverage
 site/src/main/webapp/assets/mygov/

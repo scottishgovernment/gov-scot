@@ -1,18 +1,20 @@
-define([
-    '../shared/component.page-group',
-    './component.display-toggle'
-], function(pageGroup, displayToggle) {
-    'use strict';
+// POLICY FORMAT
 
-    var policyPage = {
-        init: function(){
-            pageGroup.init();
-            displayToggle.init();
-        }
-    };
+/* global window */
 
-    window.format = policyPage;
-    window.format.init();
+'use strict';
 
-    return policyPage;
-});
+import pageGroup from '../shared/component.page-group';
+import displayToggle from './component.display-toggle';
+
+const policyPage = {
+    init: function(){
+        pageGroup.init();
+        displayToggle.init();
+    }
+};
+
+window.format = policyPage;
+window.format.init();
+
+export default policyPage;

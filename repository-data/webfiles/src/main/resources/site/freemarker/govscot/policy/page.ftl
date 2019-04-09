@@ -46,7 +46,10 @@
 </#if>
 
 <@hst.headContribution category="footerScripts">
-    <script src="<@hst.webfile path="/assets/scripts/policy.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/policy.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/policy.es5.js"/>"></script>
 </@hst.headContribution>
 
 

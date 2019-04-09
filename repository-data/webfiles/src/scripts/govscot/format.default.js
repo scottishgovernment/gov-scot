@@ -1,13 +1,15 @@
-define([], function () {
-    'use strict';
+// DEFAULT FORMAT
 
-    var defaultPage = {};
+/* global window */
 
-    defaultPage.init = function () {
-    };
+'use strict';
 
-    window.format = defaultPage;
-    window.format.init();
+const defaultPage = {};
 
-    return defaultPage;
-});
+defaultPage.init = function () {
+};
+
+window.format = defaultPage;
+window.format.init();
+
+export default defaultPage;

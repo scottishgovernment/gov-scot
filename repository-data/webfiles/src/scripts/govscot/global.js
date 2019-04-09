@@ -1,52 +1,54 @@
-define([
-    'jquery',
-    './component.banner',
-    './component.cookie-notice',
-    './component.expand',
-    './component.header',
-    './component.google-analytics',
-    './component.feedback'
-], function ($, banner, cookieNotice, expand, header, mourningBanner, feedback) {
-    'use strict';
+// GLOBAL
 
-    const global = {
-        compensateAnchorOffsetForStickyElements: function () {
-            // IE8 doesn't support window.pageYOffset
-            if (window.pageXOffset !== undefined) {
-                if (window.location.hash && $(window.location.hash).length) {
-                    window.setTimeout(function () {
-                        window.scrollTo(window.pageXOffset, parseInt($(window.location.hash).offset().top, 10) - 100);
-                    }, 300);
-                }
+/* global window, document */
 
-                $('a[href^="#"]:not(.js-display-toggle)').on('click', function () {
-                    window.setTimeout(function () {
-                        window.scrollTo(window.pageXOffset, window.pageYOffset - 100);
-                    }, 10);
-                });
+'use strict';
+
+import $ from 'jquery';
+import banner from './component.banner';
+import cookieNotice from './component.cookie-notice';
+import expand from './component.expand';
+import header from './component.header';
+import './component.google-analytics';
+import './component.feedback';
+
+const global = {
+    compensateAnchorOffsetForStickyElements: function () {
+        // IE8 doesn't support window.pageYOffset
+        if (window.pageXOffset !== undefined) {
+            if (window.location.hash && $(window.location.hash).length) {
+                window.setTimeout(function () {
+                    window.scrollTo(window.pageXOffset, parseInt($(window.location.hash).offset().top, 10) - 100);
+                }, 300);
             }
-        },
 
-        svgFallback: function () {
-            if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
-                $('img[src$=".svg"]').each(function () {
-                    $(this).attr('src', $(this).attr('src').replace(/\.svg$/, '.png'));
-                });
-            }
-        },
-
-        init: function () {
-            this.svgFallback();
-            this.compensateAnchorOffsetForStickyElements();
-
-            banner.init('staging-banner');
-            cookieNotice.init();
-            expand.init();
-            header.init();
+            $('a[href^="#"]:not(.js-display-toggle)').on('click', function () {
+                window.setTimeout(function () {
+                    window.scrollTo(window.pageXOffset, window.pageYOffset - 100);
+                }, 10);
+            });
         }
-    };
+    },
 
-    global.init();
+    svgFallback: function () {
+        if (!document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
+            $('img[src$=".svg"]').each(function () {
+                $(this).attr('src', $(this).attr('src').replace(/\.svg$/, '.png'));
+            });
+        }
+    },
 
-    return global;
-});
+    init: function () {
+        this.svgFallback();
+        this.compensateAnchorOffsetForStickyElements();
+
+        banner.init('staging-banner');
+        cookieNotice.init();
+        expand.init();
+        header.init();
+    }
+};
+
+global.init();
+
+export default global;

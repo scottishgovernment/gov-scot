@@ -6,7 +6,7 @@
  * utils.cookie('foo', 'bar', 7)
  *
  * 2) Getting a cookie's value
- * var cookieValue = utils.cookie('foo')
+ * const cookieValue = utils.cookie('foo')
  *
  * @param {string} name - name of the cookie
  * @param {string} value - value of the cookie to set (undefined if getting)
@@ -14,61 +14,59 @@
  * @returns {string|object} value of the cookie if getting, object of cookie data if setting
  */
 
-define([
-], function () {
-    'use strict';
+/* global document */
 
-    var cookie = function(name, value, days) {
-        if (typeof value === 'undefined') {
-            // with no value param, we are in read mode
+'use strict';
 
-            var nameEQ = name + '=',
-                cookiesArray = document.cookie.split(';');
+const cookie = function(name, value, days) {
+    if (typeof value === 'undefined') {
+        // with no value param, we are in read mode
 
-            // find a matching cookie
-            for (var i = 0, il = cookiesArray.length; i < il; i++) {
-                var cookie = cookiesArray[i];
+        const nameEQ = name + '=',
+            cookiesArray = document.cookie.split(';');
 
-                while (cookie.charAt(0) === ' ') {
-                    cookie = cookie.substring(1, cookie.length);
-                }
+        // find a matching cookie
+        for (let i = 0, il = cookiesArray.length; i < il; i++) {
+            let cookie = cookiesArray[i];
 
-                if (cookie.indexOf(nameEQ) === 0) {
-                    return cookie.substring(nameEQ.length, cookie.length);
-                }
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1, cookie.length);
             }
 
-            // return null if no matching cookie found
-            return null;
-        } else {
-            // with a value param, we are in write mode
-
-            var cookieData = {
-                name: name,
-                value: value
-            };
-
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-
-                cookieData.expires = date.toUTCString();
+            if (cookie.indexOf(nameEQ) === 0) {
+                return cookie.substring(nameEQ.length, cookie.length);
             }
-
-            // build the string, as IE wants expiry parameter omitted if no expiry set
-            var cookieString = name + '=' + value + '; ';
-            if (cookieData.expires) {
-                cookieString += 'expires=' + cookieData.expires + '; ';
-            }
-            cookieString += 'path=/';
-
-            document.cookie = cookieString;
-
-            // this variable is used in tests to verify that things are being set correctly
-            return cookieData;
         }
-    };
 
-    return cookie;
+        // return null if no matching cookie found
+        return null;
+    } else {
+        // with a value param, we are in write mode
 
-});
+        const cookieData = {
+            name: name,
+            value: value
+        };
+
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            cookieData.expires = date.toUTCString();
+        }
+
+        // build the string, as IE wants expiry parameter omitted if no expiry set
+        let cookieString = name + '=' + value + '; ';
+        if (cookieData.expires) {
+            cookieString += 'expires=' + cookieData.expires + '; ';
+        }
+        cookieString += 'path=/';
+
+        document.cookie = cookieString;
+
+        // this variable is used in tests to verify that things are being set correctly
+        return cookieData;
+    }
+};
+
+export default cookie;

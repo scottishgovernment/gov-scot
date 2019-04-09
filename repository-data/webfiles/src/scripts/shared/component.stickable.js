@@ -29,14 +29,14 @@ define([
             options = {};
         }
 
-        this.item = $( el );
+        this.item = el;
         this.options = options;
         this.classToAdd = options.stickyClass ? options.stickyClass : 'is-sticky';
 
         this.stick();
 
         // Re- 'stick' item on resize and scroll
-        $(window).on('resize scroll', function(){
+        window.addEventListener('resize scroll', function(){
             obj.stick();
         });
     }
@@ -48,21 +48,23 @@ define([
      * depending on height or other factors.
      */
     Stickable.prototype.pointToStickAt = function() {
-        var elThreshold = $( this.options.threshold ),
-            elOffset = $( this.options.thresholdOffset ),
+        var elThreshold = (document.querySelector(this.options.threshold)),
+            elOffset = (document.querySelector(this.options.thresholdOffset)),
             offset,
             pointToStickAt;
 
         if ( this.options.thresholdOffset === 'this' ) {
-            offset = this.item.outerHeight();
+            offset = this.item.offsetHeight;
         } else if (elOffset.length > 0) {
-            offset = elOffset.outerHeight();
+            offset = elOffset.offsetHeight
         } else {
             offset = 0;
         }
 
         if (elThreshold.length > 0) {
-            pointToStickAt = elThreshold.offset().top - offset;
+            const rect = elThreshold.getBoundingClientRect();
+
+            pointToStickAt = rect.top + document.body.scrollTop - offset;
         } else {
             pointToStickAt = 0;
         }
@@ -74,7 +76,7 @@ define([
      * Make item sticky if threshold is exceeded
      */
     Stickable.prototype.stick = function() {
-        if ($(window).scrollTop() > this.pointToStickAt()) {
+        if (window.scrollY > this.pointToStickAt()) {
             this.item.addClass( this.classToAdd );
             if (this.options.stick instanceof Function) {
                 this.options.stick();

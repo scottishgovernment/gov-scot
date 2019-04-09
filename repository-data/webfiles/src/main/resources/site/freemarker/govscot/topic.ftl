@@ -240,7 +240,7 @@
                         <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
                             <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
                         </svg>
-                    </span> 
+                    </span>
                 </button>
 
                 <div class="expandable-item__body">
@@ -269,7 +269,7 @@
                         <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
                             <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
                         </svg>
-                    </span> 
+                    </span>
                 </button>
 
                 <div class="expandable-item__body">
@@ -299,7 +299,10 @@
 --></div>
 
 <@hst.headContribution category="footerScripts">
-    <script src="<@hst.webfile path="/assets/scripts/topic.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/topic.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/topic.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if document??>

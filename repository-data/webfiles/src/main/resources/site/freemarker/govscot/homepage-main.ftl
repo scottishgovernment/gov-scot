@@ -426,8 +426,12 @@
 </div>
 
 <@hst.headContribution category="footerScripts">
-<script src="<@hst.webfile path="/assets/scripts/home.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/home.js"/>"></script>
 </@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/home.es5.js"/>"></script>
+</@hst.headContribution>
+
 <#if document??>
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
@@ -435,7 +439,7 @@
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
-    
+
     <@hst.link var="canonicalitem" path="/" canonical=true />
     <#include "common/canonical.ftl" />
 </#if>

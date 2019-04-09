@@ -230,7 +230,10 @@
 </#if>
 
 <@hst.headContribution category="footerScripts">
-    <script src="<@hst.webfile path="/assets/scripts/issue-hub.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/image-hub.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/image-hub.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if document??>

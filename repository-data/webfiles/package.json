@@ -8,27 +8,40 @@
     "url": "http://www.gov.scot/"
   },
   "scripts": {
-    "postshrinkwrap": ".bin/sealant @scottish-government/mygov-assets",
-    "svgsprites": "node svg-sprite"
+    "postshrinkwrap": "node_modules/.bin/sealant @scottish-government/mygov-assets",
+    "svgsprites": "node svg-sprite",
+    "scss": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
+    "webpack": "./node_modules/.bin/webpack -p --config webpack.config.es5.js && ./node_modules/.bin/webpack -p --config webpack.config.js",
+    "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
     "@scottish-government/mygov-assets": "latest",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.7",
-    "babel-preset-es2015": "^6.18.0",
+    "ajv": "^6.10.0",
+    "babel-loader": "^8.0.5",
     "html5shiv": "^3.7.3",
+    "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",
+    "jasmine-jquery": "^2.1.1",
     "jquery": "^1.12.4",
-    "karma": "^1.1.1",
+    "karma": "^3.1.4",
+    "karma-babel-preprocessor": "^8.0.0",
     "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.0",
-    "karma-jasmine": "^1.0.2",
-    "karma-jasmine-matchers": "^2.0.2",
-    "karma-requirejs": "^1.0.0",
+    "karma-coverage": "^1.1.2",
+    "karma-coverage-istanbul-reporter": "^1.4.3",
+    "karma-jasmine": "^2.0.1",
+    "karma-jasmine-jquery": "^0.1.1",
+    "karma-jasmine-matchers": "^4.0.1",
+    "karma-webpack": "^4.0.0-rc.6",
     "pikaday": "^1.4.0",
     "requirejs": "^2.1.0",
     "sealant": "0.0.2",
     "svg-sprite": "^1.4.0",
-    "webpack": "^1.13.1"
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   }
 }

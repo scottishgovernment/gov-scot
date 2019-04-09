@@ -1,24 +1,22 @@
-// format.filtered-list-page.js
-/*
- Contains functionality for the news landing page
- */
+// FILTERED LIST PAGE FORMAT
+// Contains functionality for the news landing page
 
-define([
-    './component.search-with-filters'
-], function (SearchWithFilters) {
-    'use strict';
+/* global window */
 
-    window.dataLayer = window.dataLayer || [];
+'use strict';
 
-    const filteredListPage = new SearchWithFilters ({
-        filters: {
-            date: true,
-            topics: true
-        }
-    }); 
+import SearchWithFilters from './component.search-with-filters';
 
-    window.format = filteredListPage;
-    window.format.init();
+window.dataLayer = window.dataLayer || [];
 
-    return filteredListPage;
+const filteredListPage = new SearchWithFilters ({
+    filters: {
+        date: true,
+        topics: true
+    }
 });
+
+window.format = filteredListPage;
+window.format.init();
+
+export default filteredListPage;

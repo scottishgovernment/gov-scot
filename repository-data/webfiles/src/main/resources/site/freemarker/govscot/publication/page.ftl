@@ -181,7 +181,7 @@
                                 <#if document.foiNumber?has_content>
                                     <strong>FOI reference:</strong> ${document.foiNumber}<br>
                                 </#if>
-                                
+
                                 <#if document.dateReceived?has_content>
                                     <strong>Date received:</strong> <@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/><br>
                                 </#if>
@@ -267,7 +267,10 @@
 </#if>
 
 <@hst.headContribution category="footerScripts">
-<script src="<@hst.webfile path="/assets/scripts/publication.js"/>" type="text/javascript"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/publication.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/publication.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if document??>

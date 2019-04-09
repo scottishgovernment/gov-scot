@@ -85,12 +85,12 @@
             </configuration>
           </execution>
           <execution>
-            <id>webpack build</id>
+            <id>npm webpack build</id>
             <goals>
-              <goal>webpack</goal>
+              <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>-p</arguments>
+              <arguments>run webpack</arguments>
             </configuration>
           </execution>
         </executions>
