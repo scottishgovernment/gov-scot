@@ -23,7 +23,7 @@
 import $ from 'jquery';
 
 function Stickable( el, options ) {
-    var obj = this;
+    const obj = this;
 
     if (typeof options === 'undefined') {
         options = {};

@@ -7,7 +7,6 @@
  */
 'use strict';
 
-import pubsub from '../govscot/pubsub';
 import Stickable from './component.stickable';
 import $ from 'jquery';
 
@@ -16,7 +15,6 @@ const classButtonOpen = 'page-group__toggle--open',
     isMobile = $('.page-group__toggle').is(':visible');
 
 function PageGroup() {
-
     const pgroup = this;
 
     $('body').on('click', '.js-show-page-group-list', function () {

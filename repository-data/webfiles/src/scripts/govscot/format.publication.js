@@ -5,7 +5,6 @@
 'use strict';
 
 import $ from 'jquery';
-import pubsub from './pubsub';
 import pageGroup from '../shared/component.page-group';
 import displayToggle from './component.display-toggle';
 import './component.sticky-back-to-top';

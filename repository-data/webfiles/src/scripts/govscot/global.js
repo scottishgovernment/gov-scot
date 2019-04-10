@@ -38,7 +38,26 @@ const global = {
         }
     },
 
+    initPubsub: function () {
+        const o = $({});
+
+        $.subscribe = function() {
+            o.on.apply(o, arguments);
+        };
+
+        $.unsubscribe = function() {
+            o.off.apply(o, arguments);
+        };
+
+        $.publish = function() {
+            o.trigger.apply(o, arguments);
+        };
+
+        window.pubsub = $;
+    },
+
     init: function () {
+        this.initPubsub();
         this.svgFallback();
         this.compensateAnchorOffsetForStickyElements();
 

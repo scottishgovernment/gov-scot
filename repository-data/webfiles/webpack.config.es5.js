@@ -10,7 +10,7 @@ const babelRule = {
             presets: ['@babel/env']
         }
     }
-}
+};
 
 webpackConfig.module.rules.push(babelRule);
 
