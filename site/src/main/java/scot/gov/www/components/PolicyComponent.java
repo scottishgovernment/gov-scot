@@ -57,8 +57,6 @@ public class PolicyComponent extends BaseHstComponent {
                 response.forward("/pagenotfound");
                 return;
             }
-
-            LOG.info("policy {}", policy.getPath());
         }  catch (IOException e) {
             throw new HstComponentException("forward failed", e);
         }
@@ -72,14 +70,13 @@ public class PolicyComponent extends BaseHstComponent {
         request.setAttribute("prev", prev);
         request.setAttribute("next", next);
 
-        // if this is the patest page then also include latest info
+        // if this is the latest page then also include latest info
         if (request.getPathInfo().endsWith("/latest/")) {
             List<HippoBean> all = getLatestNews(request, policy);
             PolicyLatest latest = (PolicyLatest) document;
             all.addAll(latest.getRelatedItems());
             Collections.sort(all, this::compareDateIfNoNull);
             Collections.reverse(all);
-            LOG.info("{} related items, total size is {}", latest.getRelatedItems().size(), all.size());
             request.setAttribute(LATEST, all);
         }
     }
@@ -125,7 +122,6 @@ public class PolicyComponent extends BaseHstComponent {
     private Constraint[] tagConstraints(Policy policy) {
         ArrayList<Constraint> tagConstraints = new ArrayList<>();
         for (String tag : policy.getPolicyTags()) {
-            LOG.info("policy tag: {}", tag);
             tagConstraints.add(constraint("govscot:policyTags").equalToCaseInsensitive(tag));
         }
         return tagConstraints.toArray(new Constraint[tagConstraints.size()]);
