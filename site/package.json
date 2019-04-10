@@ -1,0 +1,13 @@
+{
+  "name": "gov-scot",
+  "description": "Build environment for the gov.scot web site",
+  "version": "0.0.0",
+  "author": {
+    "name": "mygov.scot team",
+    "email": "dleepdigmsgb@scotland.gsi.gov.uk",
+    "url": "http://www.gov.scot/"
+  },
+  "devDependencies": {
+    "@scottish-government/mygov-assets": "latest"
+  }
+}
