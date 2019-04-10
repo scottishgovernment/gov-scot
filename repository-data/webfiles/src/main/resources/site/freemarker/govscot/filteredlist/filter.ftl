@@ -123,7 +123,7 @@
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
                                                 <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
                                             </svg>
-                                        </span> 
+                                        </span>
                                     </button>
 
                                     <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
@@ -161,9 +161,9 @@
                             </#if>
 
                             <#if publicationTypes??>
-                                <div class="expandable-item  expandable-item--open  expandable-item--init-open">
+                                <div class="expandable-item">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
-                                        <h2 class="delta  expandable-item__title">Publication Types</h2>
+                                        <h2 class="delta  expandable-item__title">Publication types</h2>
                                         <span class="expandable-item__icon">
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
                                                 <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
