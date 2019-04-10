@@ -6,18 +6,15 @@
 
 'use strict';
 
+import $ from 'jquery';
+
 export default {
     init: function () {
-        document.addEventListener('click', function (event) {
-            if (event.target.classList.contains('js-display-toggle')) {
-                console.log(event);
-                event.preventDefault();
-
-                const elementToShow = document.getElementById(event.target.href.substring(event.target.href.indexOf('/#') + 2));
-
-                elementToShow.classList.add('display-toggle--shown');
-                event.target.classList.add('hidden');
-            }
+        $('.js-display-toggle').on('click', function (event) {
+            event.preventDefault();
+            const target = $($(this).attr('href'));
+            target.addClass('display-toggle--shown');
+            $(this).addClass('hidden');
         });
     }
 };

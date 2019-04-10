@@ -2,50 +2,31 @@
 
 'use strict';
 
+import $ from 'jquery';
+
 const banner = {
     init: function (id) {
-        const notice = document.getElementById(id);
-
-        if (!notice) {
-            return;
-        }
+        const notice = $('#' + id);
 
         let bannerClosed = JSON.parse(sessionStorage.getItem(id + '-closed'));
         if (!bannerClosed) {
-            notice.querySelectorAll('.notification__close').classList.remove('notification__close--minimised');
-            notice.querySelectorAll('.notification__extra-content').classList.remove('hidden-xsmall');
+            notice.find('.notification__close').removeClass('notification__close--minimised');
+            notice.find('.notification__extra-content').removeClass('hidden-xsmall');
         }
 
-        notice.addEventListener('click', function (event) {
+        notice.on('click', '.notification__close', function(event) {
             event.preventDefault();
 
-            const clickedElement = event.target;
+            notice.find('.notification__close').toggleClass('notification__close--minimised');
+            notice.find('.notification__extra-content').toggleClass('hidden-xsmall');
 
-            if(clickedElement.classList.contains('notification__close')) {
-                notice.querySelectorAll('.notification__close').classList.toggle('notification__close--minimised');
-                notice.querySelectorAll('.notification__extra-content').classList.toggle('hidden-xsmall');
+            bannerClosed = !bannerClosed;
+            sessionStorage.setItem(id + '-closed', JSON.stringify(bannerClosed));
 
-                bannerClosed = !bannerClosed;
-                sessionStorage.setItem(id + '-closed', JSON.stringify(bannerClosed));
-
-                triggerEvent(window, 'headerautofixing');
-                triggerEvent(window, 'positionnav');
-            }
+            $(window).trigger('headerautofixing');
+            $(window).trigger('positionnav');
         });
     }
 };
-
-function triggerEvent(element, eventData) {
-    let event;
-
-    if (window.CustomEvent) {
-        event = new CustomEvent('my-event', {detail: eventData});
-    } else {
-        event = document.createEvent('CustomEvent');
-        event.initCustomEvent('my-event', true, true, eventData);
-    }
-
-    element.dispatchEvent(event);
-}
 
 export default banner;

@@ -5,49 +5,28 @@
 'use strict';
 
 import cookie from './cookie';
-
-function triggerEvent(element, eventData) {
-    let event;
-
-    if (window.CustomEvent) {
-        event = new CustomEvent('my-event', {detail: eventData});
-    } else {
-        event = document.createEvent('CustomEvent');
-        event.initCustomEvent('my-event', true, true, eventData);
-    }
-
-    element.dispatchEvent(event);
-}
+import $ from 'jquery';
 
 export default {
     init: function () {
-        const notice = document.getElementById('cookie-notice');
-
-        if (!notice) {
-            return;
-        }
+        let notice = $('#cookie-notice');
 
         // check whether we need to display the cookie notice
         if (cookie('cookie-notification-acknowledged')) {
-            notice.classList.add('hidden');
+            notice.addClass('hidden');
         } else {
-            notice.classList.remove('hidden');
+            notice.removeClass('hidden');
         }
 
-        notice.addEventListener('click', function (event) {
+        // When clicked, hide notice and set cookie for a year
+        notice.on('click', '.notification__close', function(event) {
             event.preventDefault();
 
-            const clickedElement = event.target;
+            notice.addClass('hidden');
+            cookie('cookie-notification-acknowledged', 'yes', 365);
 
-            if(clickedElement.classList.contains('notification__close')) {
-                event.preventDefault();
-
-                notice.classList.add('hidden');
-                cookie('cookie-notification-acknowledged', 'yes', 365);
-
-                triggerEvent(window, 'headerautofixing');
-                triggerEvent(window, 'positionnav');
-            }
+            $(window).trigger('positionnav');
+            $(window).trigger('headerautofixing');
         });
     }
 };
