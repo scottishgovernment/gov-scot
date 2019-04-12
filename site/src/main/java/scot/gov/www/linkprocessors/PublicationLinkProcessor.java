@@ -165,6 +165,9 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
             lastNode = node;
+            if (!node.hasProperty("hippostd:state")) {
+                LOG.info("Node has no state property! - {}", node.getPath());
+            }
             if ("published".equals(node.getProperty("hippostd:state").getString())) {
                 publishedNode = node;
             }
