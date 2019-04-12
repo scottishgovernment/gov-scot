@@ -86,9 +86,6 @@ public class DocumentOrderDaemonModule implements DaemonModule {
     }
 
     HippoNode getParentFolder(HippoWorkflowEvent event) throws RepositoryException {
-
-        LOG.info("getParentFolder {} {} {} {} {}", event.action(), event.subjectPath(), event.result(), event.returnValue(), event.arguments());
-
         if ("add".equals(event.action())) {
             return (HippoNode) session.getNode(event.subjectPath());
         }
@@ -106,11 +103,8 @@ public class DocumentOrderDaemonModule implements DaemonModule {
     }
 
     SortOrder determineSortOrder(Node folder) throws RepositoryException {
-        LOG.info("determineSortOrder {}", folder.getPath());
         for (Value value : folder.getProperty("hippostd:foldertype").getValues()) {
-            LOG.info("value is {}", value.getString());
             if (directionMap.containsKey(value.getString())) {
-                LOG.info("found!");
                 return directionMap.get(value.getString());
             }
         }
@@ -123,7 +117,6 @@ public class DocumentOrderDaemonModule implements DaemonModule {
             Collections.reverse(sortedNames);
         }
 
-        LOG.info("Sorted names {}", sortedNames);
         for (int i = sortedNames.size() - 1; i >= 0; i--) {
             String before = sortedNames.get(i);
             String after = i < sortedNames.size() - 1 ? sortedNames.get(i + 1) : null;
@@ -153,10 +146,6 @@ public class DocumentOrderDaemonModule implements DaemonModule {
 
         others.sort(compareNodeNames(nameMap));
         folders.sort(compareNodeNames(nameMap));
-
-        LOG.info("namemap {}", nameMap);
-        LOG.info("foldernames  {}", folders);
-        LOG.info("others       {}", others);
 
         List<String> names = new ArrayList<>();
         names.addAll(others);
