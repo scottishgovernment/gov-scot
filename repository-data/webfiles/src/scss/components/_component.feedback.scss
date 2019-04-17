@@ -24,5 +24,7 @@
 
 
 @include media-query(large) {
-  margin-top: 84px;
+  .feedback {
+    margin-top: 84px;
+  }
 }

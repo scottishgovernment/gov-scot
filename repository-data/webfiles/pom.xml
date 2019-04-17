@@ -121,28 +121,24 @@
       </plugin>
 
       <plugin>
-        <groupId>de.saumya.mojo</groupId>
-        <artifactId>gem-maven-plugin</artifactId>
-        <version>1.1.5</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>generate-resources</phase>
-            <configuration>
-              <execArgs>${project.build.directory}/rubygems/bin/sass src/scss/main.scss src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache</execArgs>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>rubygems</groupId>
-            <artifactId>sass</artifactId>
-            <version>3.4.5</version>
-            <type>gem</type>
-          </dependency>
-        </dependencies>
+         <groupId>com.github.warmuuh</groupId>
+         <artifactId>libsass-maven-plugin</artifactId>
+         <version>0.2.10-libsass_3.5.3</version>
+         <executions>
+            <execution>
+               <phase>generate-resources</phase>
+               <goals>
+                  <goal>compile</goal>
+               </goals>
+            </execution>
+         </executions>
+         <configuration>
+            <inputPath>src/scss</inputPath>
+            <outputPath>src/main/resources/site/assets/css</outputPath>
+            <outputStyle>compressed</outputStyle>
+            <generateSourceMap>false</generateSourceMap>
+            <cacheLocation>target/.sass-cache</cacheLocation>
+         </configuration>
       </plugin>
 
     </plugins>
