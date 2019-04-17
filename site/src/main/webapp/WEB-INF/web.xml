@@ -85,9 +85,18 @@
     <filter-class>scot.gov.www.filters.CSPFilter</filter-class>
   </filter>
 
+  <filter>
+    <filter-name>BinaryRedirectServletFilter</filter-name>
+    <filter-class>scot.gov.www.filters.BinaryRedirectServletFilter</filter-class>
+  </filter>
+
   <filter-mapping>
     <filter-name>CSPFilter</filter-name>
     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>BinaryRedirectServletFilter</filter-name>
+    <url-pattern>/binaries/*</url-pattern>
   </filter-mapping>
 
   <filter-mapping>
@@ -119,7 +128,9 @@
     <servlet-name>BinariesServlet</servlet-name>
     <servlet-class>org.hippoecm.hst.servlet.BinariesServlet</servlet-class>
     <init-param>
-      <param-name>contentDispositionFilenameProperty</param-name>
+      <param-name>
+        contentDispositionFilenameProperty
+      </param-name>
       <param-value>hippo:filename</param-value>
     </init-param>
   </servlet>

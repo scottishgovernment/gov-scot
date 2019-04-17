@@ -44,7 +44,7 @@ public class RedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(RedirectComponent.class);
 
-    private static final String GOVSCOT_URL = "govscot:url";
+    public static final String GOVSCOT_URL = "govscot:url";
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
