@@ -7,7 +7,7 @@ var statBoxDialogContents = [
                 type: 'text',
                 id: 'number1',
                 label: 'Box 1 Number',
-                validate: CKEDITOR.dialog.validate.notEmpty( 'Number field cannot be empty.' ),
+                validate: CKEDITOR.dialog.validate.regex( /^.{1,4}$/, 'Number field must be 1-4 characters long' ),
                 setup: function( element ) {
                     this.setValue( element.$.querySelectorAll('.stat-box__value')[0].innerText );
                 }
@@ -39,7 +39,7 @@ var statBoxDialogContents = [
                 type: 'text',
                 id: 'number2',
                 label: 'Box 2 Number',
-                validate: CKEDITOR.dialog.validate.notEmpty( 'Number field cannot be empty.' ),
+                validate: CKEDITOR.dialog.validate.regex( /^.{1,4}$/, 'Number field must be 1-4 characters long' ),
                 setup: function( element ) {
                     this.setValue( element.$.querySelectorAll('.stat-box__value')[1].innerText );
                 }
@@ -71,7 +71,7 @@ var statBoxDialogContents = [
                 type: 'text',
                 id: 'number3',
                 label: 'Box 3 Number',
-                validate: CKEDITOR.dialog.validate.notEmpty( 'Number field cannot be empty.' ),
+                validate: CKEDITOR.dialog.validate.regex( /^.{1,4}$/, 'Number field must be 1-4 characters long' ),
                 setup: function( element ) {
                     this.setValue( element.$.querySelectorAll('.stat-box__value')[2].innerText );
                 }
@@ -139,7 +139,7 @@ CKEDITOR.dialog.add( 'statboxDialog', function( editor ) {
                 +   '<span class="stat-box__label-text">' + description1 + '</span>'
                 +   '</span>'
                 + (url1 ? '</a>' : '</div>')
-                + (url2 ? '<a href=' + url2 + '" class="stat-box">' : '<div class="stat-box">')
+                + (url2 ? '<a href="' + url2 + '" class="stat-box">' : '<div class="stat-box">')
                 + '<span class="stat-box__value">' + number2 + '</span>'
                 +   '<span class="stat-box__label">'
                 +   '<span class="stat-box__label-text">' + description2 + '</span>'
