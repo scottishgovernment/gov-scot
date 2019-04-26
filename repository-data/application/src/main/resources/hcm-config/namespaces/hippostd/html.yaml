@@ -7,7 +7,7 @@ definitions:
         : \"styles\"\r\n\t}, {\r\n\t\t\"name\": \"basicstyles\"\r\n\t}, {\r\n\t\t\"\
         name\": \"cleanup\"\r\n\t}, {\r\n\t\t\"name\": \"undo\"\r\n\t}, {\r\n\t\t\"\
         name\": \"listindentalign\",\r\n\t\t\"groups\": [\"list\"]\r\n\t}, {\r\n\t\
-        \t\"name\": \"links\"\r\n\t}, {\r\n\t\t\"name\": \"clipboard\"\r\n\t}, {\r\
+        \t\"name\": \"links\"\r\n\t}, {\r\
         \n\t\t\"name\": \"insert\"\r\n\t}, {\r\n\t\t\"name\": \"tools\"\r\n\t}, {\r\
         \n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\r\n\t\"extraPlugins\": \"mygov_infonote,simple_tables\"\
         ,\r\n\r\n        \"contentsCss\": [\r\n                \"ckeditor/hippocontents.css\"\
