@@ -103,6 +103,10 @@ public class DocumentOrderDaemonModule implements DaemonModule {
     }
 
     SortOrder determineSortOrder(Node folder) throws RepositoryException {
+        if (!folder.hasProperty("hippostd:foldertype")) {
+            return null;
+        }
+
         for (Value value : folder.getProperty("hippostd:foldertype").getValues()) {
             if (directionMap.containsKey(value.getString())) {
                 return directionMap.get(value.getString());
