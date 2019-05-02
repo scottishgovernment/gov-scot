@@ -127,7 +127,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             Set<String> splitParamaters = splitParameters(request, entry.getKey());
             sanitisedMap.put(entry.getKey(), splitParamaters);
         }
-        LOG.info("sanitisedMap {}", sanitisedMap);
         return sanitisedMap;
     }
 
