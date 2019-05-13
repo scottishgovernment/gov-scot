@@ -28,8 +28,7 @@ public class UrlResource extends AbstractResource {
     @POST
     public UrlResponse getUrls(@RequestBody UrlRequest urlRequest) {
         UrlResponse response = new UrlResponse();
-        response.setUrls(urlRequest.getPaths()
-                .stream().collect(toMap(identity(), path -> toUrl(path))));
+        response.setUrls(urlRequest.getPaths().stream().collect(toMap(identity(), this::toUrl)));
         return response;
     }
 
@@ -40,7 +39,7 @@ public class UrlResource extends AbstractResource {
             Node node = session.getNode(path);
             HstLink link = req.getHstLinkCreator().create(node, req);
             return link.getPath();
-        } catch (RepositoryException e) {
+        } catch (RepositoryException | NullPointerException e) {
             LOG.warn("Unable to get url for path {}", path, e);
             return "invalidpath";
         }

@@ -60,7 +60,8 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         try {
             Node publicationNode = publicationNode(path);
             if (publicationNode == null) {
-                LOG.info("Unable to find publication node for path {}", link.getPath());
+                LOG.warn("Unable to find publication node for path {}", link.getPath());
+                return null;
             }
             return publicationNode.getProperty("govscot:slug").getString();
         } catch (RepositoryException e) {

@@ -170,6 +170,13 @@ public class SitemapGeneratorJob implements RepositoryJob {
             UrlResponse urlResponse = fetchUrlsForPartition(restClient, partition);
 
             for (Map.Entry<String, String> pathAndUrl : urlResponse.getUrls().entrySet()) {
+
+                // if not url was rpovided then skip this path
+                if ("invalidpath".equals(pathAndUrl.getValue())) {
+                    LOG.warn("No url for {}", pathAndUrl.getKey());
+                    continue;
+                }
+
                 SitemapEntry entry = entriesByLoc.get(pathAndUrl.getKey());
                 String url = sitemapUrl(baseURL, pathAndUrl.getValue());
                 Calendar dateModified = entry.getLastModified();
@@ -331,7 +338,7 @@ public class SitemapGeneratorJob implements RepositoryJob {
             entry.setLastModified(node.getProperty("hippostdpubwf:lastModificationDate").getDate());
         } else {
             entry.setLastModified(Calendar.getInstance());
-            LOG.info("Node has no modificaiton date: {}", node.getPath());
+            LOG.info("Node has no modification date: {}", node.getPath());
         }
         return entry;
     }
