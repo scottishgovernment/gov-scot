@@ -23,7 +23,7 @@ definitions:
             hipposysedit:path: govscot:foiNumber
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [non-empty, required, foiNumber]
           /dateReceived:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
