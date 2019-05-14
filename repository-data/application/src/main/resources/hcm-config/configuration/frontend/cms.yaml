@@ -182,7 +182,11 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug:
       jcr:primaryType: frontend:plugin
       plugin.class: scot.gov.www.validation.PublicationSlugValidator
-    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug-regex:
+    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug-spaces:
       jcr:primaryType: frontend:plugin
       plugin.class: org.hippoecm.frontend.editor.validator.plugins.RegExCmsValidator
       regex_pattern: ^\S*$
+    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug-dots:
+      jcr:primaryType: frontend:plugin
+      plugin.class: org.hippoecm.frontend.editor.validator.plugins.RegExCmsValidator
+      regex_pattern: ^(?!.*\.).+$
