@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/stringcodec/hippo:moduleconfig:
+      encoding.node: scot.gov.codec.UriCodecPeriodFix
