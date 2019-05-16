@@ -1,6 +1,5 @@
 package scot.gov.www.rest.metadata;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +61,8 @@ public class MetadataResource {
             addResponses(response, valueList.getNodes(), this::getItemFromListItem);
             return response;
         } catch (RepositoryException e) {
-            throw new WebApplicationException("Metadata not available", Response.Status.INTERNAL_SERVER_ERROR);
+            LOG.error("Failed to generate metadata", e);
+            throw new WebApplicationException("Metadata not available", e, Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -81,7 +81,8 @@ public class MetadataResource {
             response.getData().sort(Comparator.comparing(MetadataItem::getKey));
             return response;
         } catch (RepositoryException e) {
-            throw new WebApplicationException("Metadata not available", Response.Status.INTERNAL_SERVER_ERROR);
+            LOG.error("Failed to generate metadata", e);
+            throw new WebApplicationException("Metadata not available", e, Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
 
