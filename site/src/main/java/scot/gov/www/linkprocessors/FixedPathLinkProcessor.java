@@ -1,6 +1,7 @@
 package scot.gov.www.linkprocessors;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -47,7 +48,7 @@ public abstract class  FixedPathLinkProcessor extends HstLinkProcessorTemplate {
             link.setPath(newPath);
             return link;
         } catch (RepositoryException e) {
-            LOG.warn("Exception trying to process link: {}", link.getPath(), e);
+            LOG.warn("Exception trying to process link: \"{}\"", link.getPath(), e);
             return link;
         }
     }
@@ -55,8 +56,7 @@ public abstract class  FixedPathLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-
-        String topicPath = String.format("/content/documents/govscot/%s%s", getPath(), slug);
+        String topicPath = String.format("/content/documents/govscot/%s%s", getPath(), Text.escapeIllegalJcrChars(slug));
         if (session.nodeExists(topicPath)) {
             return session.getNode(topicPath);
         } else {
