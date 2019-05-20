@@ -64,6 +64,7 @@ public class PolicyComponent extends BaseHstComponent {
         List<PolicyInDetail> details = document.getParentBean().getChildBeans(PolicyInDetail.class);
         HippoBean prev = prevBean(policy, document, details);
         HippoBean next = nextBean(policy, document, details);
+        request.setAttribute("policies", Collections.singletonList(policy.getParentBean().getName()));
         request.setAttribute("document", document);
         request.setAttribute("index", policy);
         request.setAttribute("policyDetails", details);

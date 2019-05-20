@@ -1,24 +1,18 @@
 package scot.gov.www.components;
 
-import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
 import org.hippoecm.hst.content.beans.standard.HippoFolderBean;
-import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import org.hippoecm.hst.core.request.HstRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.ComplexDocumentSection;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
-public class ComplexDocumentComponent extends BaseHstComponent {
+public class ComplexDocumentComponent extends AbstractPublicationComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(ComplexDocumentComponent.class);
 
@@ -27,32 +21,18 @@ public class ComplexDocumentComponent extends BaseHstComponent {
     private static final String CHAPTERS = "chapters";
 
     @Override
-    public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        HstRequestContext context = request.getRequestContext();
-        HippoBean document = context.getContentBean();
-
-        if (document == null) {
-            send404(response);
-            return;
-        }
-
-        HippoBean publication = getPublication(document);
-
-        if (publication == null) {
-            send404(response);
-            return;
-        }
-
+    protected void populateRequest(HippoBean publication, HippoBean document, HstRequest request, HstResponse response) {
         setDocuments(publication, request, response);
-        setChapters(publication, document, request);
-        request.setAttribute("document", publication);
 
+        // complex specific part
+        setChapters(publication, document, request);
         if (request.getPathInfo().endsWith("/about/")) {
             request.setAttribute("isAboutPage", true);
         }
     }
 
-    private HippoBean getPublication(HippoBean document) {
+    @Override
+    protected HippoBean getPublication(HippoBean document) {
         if (document.isHippoFolderBean()) {
             List<HippoBean> publications = document.getChildBeans("govscot:ComplexDocument");
             if (publications.size() > 1) {
@@ -111,15 +91,6 @@ public class ComplexDocumentComponent extends BaseHstComponent {
         }
     }
 
-    private void send404(HstResponse response){
-        try {
-            response.setStatus(404);
-            response.forward("/pagenotfound");
-        }  catch (IOException e) {
-            throw new HstComponentException("Forward failed", e);
-        }
-    }
-
     private void setChapters(HippoBean publication, HippoBean document, HstRequest request) {
         HippoBean publicationFolder = publication.getParentBean();
         boolean hasChapters = hasChapters(publicationFolder);
@@ -154,44 +125,8 @@ public class ComplexDocumentComponent extends BaseHstComponent {
         return document.getClass() == ComplexDocumentSection.class;
     }
 
-    private boolean hasDocuments(HippoBean publicationParentFolder) {
-        return hasChildBeans(publicationParentFolder.getChildBeansByName(DOCUMENTS));
-    }
-
     private boolean hasChapters(HippoBean publicationParentFolder) {
         return hasChildBeans(publicationParentFolder.getChildBeansByName(CHAPTERS));
     }
-
-    boolean hasChildBeans(List<HippoFolderBean> folders) {
-        for (HippoFolderBean docFolder : folders) {
-            if (docFolder.getDocumentSize() > 0 || !docFolder.getFolders().isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private HippoBean prevBean(HippoBean currentPage, List<HippoDocumentBean> pages) {
-        int index = pages.indexOf(currentPage);
-
-        // if this is the first page, then there is no previous bean
-        if (index == 0) {
-            return null;
-        }
-
-        return pages.get(index - 1);
-    }
-
-    private HippoBean nextBean(HippoBean currentPage, List<HippoDocumentBean> pages) {
-        int index = pages.indexOf(currentPage);
-
-        // if this is the last page, then there is no next bean
-        if (index == pages.size() - 1) {
-            return null;
-        }
-
-        return pages.get(index + 1);
-    }
-
 }
 
