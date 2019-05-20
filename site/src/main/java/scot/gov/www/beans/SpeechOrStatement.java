@@ -1,9 +1,13 @@
 package scot.gov.www.beans;
 
+import org.hippoecm.hst.container.RequestContextProvider;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import java.util.Calendar;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import org.onehippo.forge.selection.hst.contentbean.ValueList;
+import org.onehippo.forge.selection.hst.util.SelectionUtil;
+import java.util.Calendar;
+import java.util.Map;
 
 @HippoEssentialsGenerated(internalName = "govscot:SpeechOrStatement")
 @Node(jcrType = "govscot:SpeechOrStatement")
@@ -88,5 +92,11 @@ public class SpeechOrStatement extends AttributableContent {
         return getHippoHtml("govscot:contact");
     }
 
-    public String getLabel() { return "speech / ministerial statement"; }
+    public String getLabel() {
+        final ValueList publicationValueList = SelectionUtil
+                .getValueListByIdentifier("publicationTypes",
+                        RequestContextProvider.get());
+        Map publicationMap = SelectionUtil.valueListAsMap(publicationValueList);
+        return publicationMap.get(this.getPublicationType()).toString();
+    }
 }
