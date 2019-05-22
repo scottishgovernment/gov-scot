@@ -16,7 +16,6 @@ import org.hippoecm.hst.util.ContentBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.PolicyLatest;
-import scot.gov.www.beans.SimpleContent;
 
 import java.io.IOException;
 import java.util.ArrayList;
