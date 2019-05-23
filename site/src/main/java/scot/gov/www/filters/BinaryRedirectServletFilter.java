@@ -46,7 +46,7 @@ public class BinaryRedirectServletFilter implements Filter {
         if (newPath != null) {
             HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
             LOG.info("binary redirect {} -> {}", httpServletRequest.getPathInfo(), newPath);
-            httpServletResponse.sendRedirect("/site/" + newPath);
+            httpServletResponse.sendRedirect("/site" + newPath);
             return;
         }
 
