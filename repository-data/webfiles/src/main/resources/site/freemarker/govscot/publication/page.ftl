@@ -128,7 +128,7 @@
                          --><div class="grid__item  medium--six-twelfths  pull--medium--six-twelfths  page-nav__item">
                                 <#if prev??>
                                     <a title="Previous page" href="<@hst.link hippobean=prev/>" class="page-nav__button  page-nav__button--left  js-previous">
-                                        <span data-label="prev" class="page-nav__text">${prev.title}</span>
+                                        <span data-label="previous" class="page-nav__text">${prev.title}</span>
                                     </a>
                                 </#if>
                             </div><!--
@@ -265,6 +265,8 @@
 </div>
 
 </#if>
+
+<#include "../common/schema.article.ftl"/>
 
 <@hst.headContribution category="footerScripts">
     <script type="module" src="<@hst.webfile path="/assets/scripts/publication.js"/>"></script>

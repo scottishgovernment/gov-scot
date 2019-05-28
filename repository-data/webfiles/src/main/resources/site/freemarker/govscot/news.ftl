@@ -131,6 +131,8 @@
 </#if>
 
 <#if document??>
+    <#include "common/schema.article.ftl"/>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>

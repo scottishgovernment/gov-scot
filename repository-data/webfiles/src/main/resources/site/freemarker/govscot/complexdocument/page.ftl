@@ -66,7 +66,7 @@
                     <svg class="svg-icon  mg-icon  document-nav__icon">
                         <use xlink:href="${iconspath}#sharp-chevron_left-24px"></use>
                     </svg>
-                    Back
+                    <span aria-hidden="true">Prev</span> <span class="hidden">Previous</span>
                 <<#if prevlink??>/a<#else>/span</#if>><!--
 
                 <@hst.link hippobean=document var="baseurl" canonical=true/>
@@ -174,26 +174,29 @@
                     </div>
                 </#if>
 
-                <div class="expandable">
-                    <div class="expandable-item">
-                        <button class="expandable-item__header  js-toggle-expand" role="tab" id="revisions-heading" data-toggle="collapse" aria-expanded="false" aria-controls="revisions-body">
-                            <h3 class="expandable-item__title  gamma"><span class="link-text">Revisions</span></h3>
-                            <span class="expandable-item__icon">
-                                <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
-                                    <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                </svg>
-                                <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
-                                    <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                                </svg>
-                            </span>
-                        </button>
+                <@hst.html hippohtml=document.revisions var="docRevisions"/>
+                <#if docRevisions?has_content>
+                    <div class="expandable">
+                        <div class="expandable-item">
+                            <button class="expandable-item__header  js-toggle-expand" role="tab" id="revisions-heading" data-toggle="collapse" aria-expanded="false" aria-controls="revisions-body">
+                                <h3 class="expandable-item__title  gamma"><span class="link-text">Revisions</span></h3>
+                                <span class="expandable-item__icon">
+                                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
+                                        <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                                    </svg>
+                                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
+                                        <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                                    </svg>
+                                </span>
+                            </button>
 
-                        <div id="revisions-body" class="expandable-item__body  expandable-item__body--with-padding" role="tabpanel" aria-expanded="false" aria-labelledby="revisions-heading">
-                            <@hst.html hippohtml=document.revisions/>
+                            <div id="revisions-body" class="expandable-item__body  expandable-item__body--with-padding" role="tabpanel" aria-expanded="false" aria-labelledby="revisions-heading">
+                                ${docRevisions}
+                            </div>
                         </div>
+                        <!-- /end .expandable-item -->
                     </div>
-                    <!-- /end .expandable-item -->
-                </div>
+                </#if>
             </div><!--
         --></div>
 
@@ -361,6 +364,24 @@
                     <h3 class="complex-document__title">${currentPage.title}</h3>
 
                     <@hst.html hippohtml=currentPage.content/>
+
+
+                    <div class="grid  page-nav"><!--
+                        --><div class="grid__item  push--medium--six-twelfths  medium--six-twelfths  page-nav__item">
+                            <#if next??>
+                                <a title="Next page" href="<@hst.link hippobean=next/>" class="page-nav__button  page-nav__button--right  js-next">
+                                    <span data-label="next" class="page-nav__text">${next.title}</span>
+                                </a>
+                            </#if>
+                        </div><!--
+                        --><div class="grid__item  medium--six-twelfths  pull--medium--six-twelfths  page-nav__item">
+                            <#if prev??>
+                                <a title="Previous page" href="<@hst.link hippobean=prev/>" class="page-nav__button  page-nav__button--left  js-previous">
+                                    <span data-label="previous" class="page-nav__text">${prev.title}</span>
+                                </a>
+                            </#if>
+                        </div><!--
+                    --></div>
                 </div><!--
             --></div>
         </article>
@@ -378,6 +399,8 @@
 </div>
 
 </#if>
+
+<#include "../common/schema.article.ftl"/>
 
 <@hst.headContribution category="footerScripts">
     <script type="module" src="<@hst.webfile path="/assets/scripts/complex-document.js"/>"></script>
