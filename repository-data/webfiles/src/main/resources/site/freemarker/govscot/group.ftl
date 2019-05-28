@@ -14,7 +14,7 @@
             <h1>${document.title}</h1>
         </div>
 
-        <h2>Role of the group</h2>
+        <h2>Overview</h2>
         <@hst.html hippohtml=document.content/>
 
         <#if document.relatedGroups?has_content>
