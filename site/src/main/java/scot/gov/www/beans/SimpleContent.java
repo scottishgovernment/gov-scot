@@ -43,4 +43,7 @@ public class SimpleContent extends BaseDocument {
     }
 
     public String getLabel() { return ""; }
+
+    @HippoEssentialsGenerated(internalName = "govscot:reportingTags")
+    public String[] getReportingTags() { return getProperty("govscot:reportingTags"); }
 }

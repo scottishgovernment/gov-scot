@@ -352,3 +352,17 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /reportingTags:
+            jcr:primaryType: frontend:plugin
+            caption: Reporting Tags
+            field: reportingTags
+            multiselect.type: palette
+            palette.alloworder: false
+            palette.maxrows: '8'
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/reportingTags

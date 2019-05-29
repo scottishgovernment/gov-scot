@@ -428,3 +428,19 @@ a.stat-box:active {
         line-height: 21px;
     }
 }
+
+/* Arrows in multi-select */
+
+button.button.remove div, button.button.add div {
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+}
+
+button.button.remove div:after {
+    content: '\2190';
+}
+
+button.button.add div:after {
+    content: '\2192';
+}

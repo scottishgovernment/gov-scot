@@ -25,7 +25,9 @@
         <#if document.publicationDate??>
             'publicationDate': '<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="dd/MM/yyyy" />',
         </#if>
-
+        <#if document.reportingTags?has_content>
+            'reportingTags': [<#list document.reportingTags as tag>'${tag}'<#sep>, </#sep></#list>],
+        </#if>
         'policies': [<#list policies as policy>'${policy}'<#sep>, </#sep></#list>],
         'lastUpdated': '<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />',
         'dateCreated': '<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />',
