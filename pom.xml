@@ -30,11 +30,11 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <hippo.release.version>12.5.1</hippo.release.version>
+    <hippo.release.version>12.6.3</hippo.release.version>
     <hippo.maven.plugin.l10n>2.2.2</hippo.maven.plugin.l10n>
     <freemarker.version>2.3.24-incubating</freemarker.version>
 
-    <essentials.version>4.5.1</essentials.version>
+    <essentials.version>4.6.3</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
     <taglibs.version>1.2.5</taglibs.version>
     <xalan.version>2.7.2</xalan.version>
