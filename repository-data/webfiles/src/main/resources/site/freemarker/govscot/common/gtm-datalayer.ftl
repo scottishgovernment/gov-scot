@@ -4,6 +4,7 @@
     <#if !dateCreated??><#assign dateCreated = document.getProperty('hippostdpubwf:creationDate')/></#if>
     <#if !lastUpdated??><#assign lastUpdated = document.getProperty('hippostdpubwf:lastModificationDate')/></#if>
     <#if !uuid??><#assign uuid = document.getProperty('jcr:uuid')/></#if>
+    <#if !reportingTags??><#assign reportingTags = document.getProperty('govscot:reportingTags')/></#if>
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -25,8 +26,8 @@
         <#if document.publicationDate??>
             'publicationDate': '<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="dd/MM/yyyy" />',
         </#if>
-        <#if document.reportingTags?has_content>
-            'reportingTags': [<#list document.reportingTags as tag>'${tag}'<#sep>, </#sep></#list>],
+        <#if reportingTags?has_content>
+            'reportingTags': [<#list reportingTags as tag>'${tag}'<#sep>, </#sep></#list>],
         </#if>
         'policies': [<#list policies as policy>'${policy}'<#sep>, </#sep></#list>],
         'lastUpdated': '<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />',

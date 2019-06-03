@@ -20,6 +20,7 @@ import scot.gov.www.beans.PolicyLatest;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Stream;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
@@ -60,6 +61,9 @@ public class PolicyComponent extends BaseHstComponent {
         }  catch (IOException e) {
             throw new HstComponentException("forward failed", e);
         }
+
+        // combine policy in detail reporting tags with parent reporting tags
+        setReportingTags(document, policy, request);
 
         List<PolicyInDetail> details = document.getParentBean().getChildBeans(PolicyInDetail.class);
         HippoBean prev = prevBean(policy, document, details);
@@ -185,6 +189,21 @@ public class PolicyComponent extends BaseHstComponent {
             return null;
         }
         return details.get(0);
+    }
+
+    private void setReportingTags(HippoBean document, HippoBean policy, HstRequest request){
+        // if the current document is the main policy document, no action needed
+        if (document.getClass() == Policy.class){
+            return;
+        }
+
+        String[] detailTags = document.getProperty("govscot:reportingTags");
+        String[] policyTags = policy.getProperty("govscot:reportingTags");
+
+        String[] reportingTags = Stream.concat(Arrays.stream(detailTags), Arrays.stream(policyTags))
+                .toArray(String[]::new);
+
+        request.setAttribute("reportingTags", reportingTags);
     }
 
 }
