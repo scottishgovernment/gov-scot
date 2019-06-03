@@ -20,7 +20,6 @@ import scot.gov.www.beans.PolicyLatest;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Stream;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
@@ -197,12 +196,9 @@ public class PolicyComponent extends BaseHstComponent {
             return;
         }
 
-        String[] detailTags = document.getProperty("govscot:reportingTags");
-        String[] policyTags = policy.getProperty("govscot:reportingTags");
-
-        String[] reportingTags = Stream.concat(Arrays.stream(detailTags), Arrays.stream(policyTags))
-                .toArray(String[]::new);
-
+        Set<String> reportingTags = new HashSet<>();
+        reportingTags.addAll(Arrays.asList(document.getProperty("govscot:reportingTags")));
+        reportingTags.addAll(Arrays.asList(policy.getProperty("govscot:reportingTags")));
         request.setAttribute("reportingTags", reportingTags);
     }
 
