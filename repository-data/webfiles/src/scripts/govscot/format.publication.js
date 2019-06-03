@@ -7,7 +7,7 @@
 import $ from 'jquery';
 import pageGroup from '../shared/component.page-group';
 import displayToggle from './component.display-toggle';
-import './component.sticky-back-to-top';
+import stickyBackToTop from './component.sticky-back-to-top';
 import '../shared/component.sticky-document-info';
 
 const publicationPage = {},
@@ -21,6 +21,7 @@ publicationPage.init = function() {
     this.initStickyInfoInteractivity();
     this.initSidebarHeight();
     displayToggle.init();
+    stickyBackToTop.init();
     pgroup = pageGroup.init();
 };
 
