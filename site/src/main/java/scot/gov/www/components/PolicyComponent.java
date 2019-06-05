@@ -197,9 +197,16 @@ public class PolicyComponent extends BaseHstComponent {
         }
 
         Set<String> reportingTags = new HashSet<>();
-        reportingTags.addAll(Arrays.asList(document.getProperty("govscot:reportingTags")));
-        reportingTags.addAll(Arrays.asList(policy.getProperty("govscot:reportingTags")));
+        addTags(reportingTags, document);
+        addTags(reportingTags, policy);
         request.setAttribute("reportingTags", reportingTags);
+    }
+
+    private void addTags(Set<String> reportingTags, HippoBean document) {
+        String [] tags = document.getProperty("govscot:reportingTags");
+        if (tags != null) {
+            reportingTags.addAll(Arrays.asList(tags));
+        }
     }
 
 }

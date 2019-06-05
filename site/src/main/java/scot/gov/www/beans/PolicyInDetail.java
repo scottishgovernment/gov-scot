@@ -8,4 +8,9 @@ import org.hippoecm.hst.content.beans.Node;
 public class PolicyInDetail extends SimpleContent {
 
     public String getLabel() { return "policy"; }
+
+    @HippoEssentialsGenerated(internalName = "govscot:policyTags")
+    public String[] getPolicyTags() {
+        return getProperty("govscot:policyTags");
+    }
 }
