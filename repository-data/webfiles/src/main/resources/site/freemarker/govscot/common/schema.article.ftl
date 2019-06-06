@@ -19,11 +19,11 @@
         }
     },
 
-    "headline": "${document.title}",
+    "headline": "${document.title?js_string}",
     "dateModified": "<@fmt.formatDate value=document.getProperty('hippostdpubwf:lastModificationDate').time type="Date" pattern="yyyy-MM-dd" />",
     "datePublished": "<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="yyyy-MM-dd" />",
-    "description": "${document.metaDescription}",
-    
+    "description": "${document.metaDescription?js_string}",
+
     "publisher": {
         "@type": "Organization",
         "name": "The Scottish Government",
