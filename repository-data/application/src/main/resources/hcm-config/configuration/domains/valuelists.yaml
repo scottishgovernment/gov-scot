@@ -1,12 +1,16 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/administration:
+    /hippo:configuration/hippo:domains/valuelists:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [cmsadmin]
         hipposys:role: editor
-      /administration-documents:
+      /readonly:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [everybody]
+        hipposys:role: readonly
+      /valuelists-documents:
         jcr:primaryType: hipposys:domainrule
         /hide-prototypes:
           jcr:primaryType: hipposys:facetrule
@@ -22,11 +26,11 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: hippo:document
-        /include-administration-folder:
+        /include-valuelists-folder:
           jcr:primaryType: hipposys:facetrule
           hipposys:equals: true
           hipposys:facet: jcr:path
           hipposys:filter: false
           hipposys:type: Reference
-          hipposys:value: /content/documents/administration
+          hipposys:value: /content/documents/govscot/valuelists
 
