@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 6fef64f0-babe-4b55-821b-732b016970fb
+          jcr:uuid: 1623abfd-80eb-4032-8939-76115f977529
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -23,6 +23,7 @@ definitions:
             hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required]
           /document:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -31,6 +32,7 @@ definitions:
             hipposysedit:path: govscot:document
             hipposysedit:primary: false
             hipposysedit:type: hippo:resource
+            hipposysedit:validators: [resource-required]
           /highlighted:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -59,7 +61,7 @@ definitions:
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
-          jcr:uuid: eccf092b-1a91-48d7-82f5-dfdc97a02864
+          jcr:uuid: d73672a5-3ea6-4b77-8775-3d60a3077b44
           hippostdpubwf:lastModificationDate: 2018-03-19T08:55:08.662Z
           hippostdpubwf:creationDate: 2018-03-19T08:55:08.663Z
           govscot:highlighted: false
@@ -116,5 +118,6 @@ definitions:
             field: document
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
