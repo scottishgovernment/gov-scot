@@ -16,8 +16,8 @@ import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.joining;
 import static org.apache.commons.lang3.ArrayUtils.removeElements;
 
 public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
@@ -43,7 +43,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                 newElements = removeElements(newElements, link.getPathElements()[5]);
             }
 
-            link.setPath(Arrays.stream(newElements).collect(Collectors.joining("/")));
+            link.setPath(Arrays.stream(newElements).collect(joining("/")));
         }
         return link;
     }
@@ -56,7 +56,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private String slug(HstLink link) {
         String path =
                 String.format("/content/documents/govscot/%s",
-                Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(Collectors.joining("/")));
+                Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(joining("/")));
         try {
             Node publicationNode = publicationNode(path);
             if (publicationNode == null) {
@@ -140,7 +140,8 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                 pubPath = StringUtils.substringBeforeLast(pubPath, lastPathElement);
             }
 
-            String newPath = String.format("publications/%s%s", pubPath, String.join("/", remaining));
+            String escapedRemaining = Arrays.stream(remaining).map(Text::escapeIllegalJcrChars).collect(joining("/"));
+            String newPath = String.format("publications/%s%s", pubPath, escapedRemaining);
             Session session = RequestContextProvider.get().getSession();
             if (!session.nodeExists("/content/documents/govscot/" + newPath)) {
                 link.setNotFound(true);
