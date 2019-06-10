@@ -140,7 +140,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                 pubPath = StringUtils.substringBeforeLast(pubPath, lastPathElement);
             }
 
-            String escapedRemaining = Arrays.stream(remaining).map(Text::escapeIllegalJcrChars).collect(joining("/"));
+            String escapedRemaining = Arrays.stream(remaining).map(Text::escapeIllegalJcr10Chars).collect(joining("/"));
             String newPath = String.format("publications/%s%s", pubPath, escapedRemaining);
             Session session = RequestContextProvider.get().getSession();
             if (!session.nodeExists("/content/documents/govscot/" + newPath)) {

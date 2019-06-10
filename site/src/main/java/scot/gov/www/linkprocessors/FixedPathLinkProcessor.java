@@ -56,7 +56,7 @@ public abstract class  FixedPathLinkProcessor extends HstLinkProcessorTemplate {
     private Node getHandleBySlug(String slug) throws RepositoryException {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
-        String topicPath = String.format("/content/documents/govscot/%s%s", getPath(), Text.escapeIllegalJcrChars(slug));
+        String topicPath = String.format("/content/documents/govscot/%s%s", getPath(), Text.escapeIllegalJcr10Chars(slug));
         if (session.nodeExists(topicPath)) {
             return session.getNode(topicPath);
         } else {
