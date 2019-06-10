@@ -16,14 +16,6 @@ definitions:
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /policyTag:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:policyTags
-            hipposysedit:primary: false
-            hipposysedit:type: String
           /html:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -121,7 +113,6 @@ definitions:
           jcr:uuid: 6758f522-2544-4c29-b485-0ee7239eba92
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
-          govscot:policyTags: ['']
           govscot:sme: ''
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
@@ -243,15 +234,21 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /policyTags:
+          /newsTags:
             jcr:primaryType: frontend:plugin
-            caption: News tags
-            field: policyTag
-            hint: Enter the relevant news tags associated with the policy.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            caption: News Tags
+            field: newsTags
+            multiselect.type: palette
+            palette.alloworder: false
+            palette.maxrows: '8'
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
             wicket.id: ${cluster.id}.field
+            hint: Select the tags associated with this issue
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/policyTags
           /topics:
             jcr:primaryType: frontend:plugin
             caption: Topics and issues

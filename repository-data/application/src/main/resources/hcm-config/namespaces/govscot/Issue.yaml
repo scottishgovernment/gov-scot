@@ -79,14 +79,6 @@ definitions:
             hipposysedit:path: govscot:showOnTopicsLandingPage
             hipposysedit:primary: false
             hipposysedit:type: Boolean
-          /issueTag:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:issueTag
-            hipposysedit:primary: false
-            hipposysedit:type: String
           /featuredItems:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -170,7 +162,6 @@ definitions:
           govscot:contactTitle: ''
           govscot:includeTwitterReplies: false
           govscot:showOnTopicsLandingPage: false
-          govscot:issueTag: ''
           govscot:title: ''
           jcr:uuid: abdcc487-85e7-4bbf-adc3-79095f348f8e
           hippostdpubwf:lastModificationDate: 2018-04-23T13:01:39.688+01:00
@@ -397,15 +388,21 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /issueTag:
+          /newsTags:
             jcr:primaryType: frontend:plugin
-            caption: Issue tag
-            field: issueTag
-            hint: Enter the tag that is associated with this issue e.g. news:brexit
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            caption: News Tags
+            field: newsTags
+            multiselect.type: palette
+            palette.alloworder: false
+            palette.maxrows: '8'
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
             wicket.id: ${cluster.id}.field
+            hint: Select the tags associated with this issue
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/topicTags
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

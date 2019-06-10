@@ -65,7 +65,7 @@ definitions:
             hipposysedit:path: govscot:updatedDate
             hipposysedit:primary: false
             hipposysedit:type: Date
-          /policyTag:
+          /policyTags:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: true
@@ -199,13 +199,19 @@ definitions:
               nodetypes: ['govscot:Topic', 'govscot:Issue']
           /policyTags:
             jcr:primaryType: frontend:plugin
-            caption: Policy tag(s)
-            field: policyTag
+            caption: Policy tags
+            field: policyTags
             hint: Tags used to link news items to Policy Latest pages.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
             wicket.id: ${cluster.id}.field
+            palette.maxrows: '8'
+            multiselect.type: palette
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
+            palette.alloworder: false
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/policyTags
           /externalId:
             jcr:primaryType: frontend:plugin
             caption: External ID
