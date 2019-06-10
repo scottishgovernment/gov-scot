@@ -48,7 +48,6 @@ public class RedirectComponent extends BaseHstComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        LOG.info("here {}", request.getPathInfo());
 
         // check if this url is a known url alias
         String url = findAlias(request);
@@ -61,7 +60,6 @@ public class RedirectComponent extends BaseHstComponent {
         // if this is a publicaitons url then check if we have a publicaiton for it
         if (isOldStylePublicationUrl(request)) {
             HippoBean bean = findPublicationsByGovScotUrl(request);
-LOG.info("is old style pub {}", request.getPathInfo());
             if (bean != null) {
                 HstRequestContext context = request.getRequestContext();
                 final HstLink link = context.getHstLinkCreator().create(bean, context);
