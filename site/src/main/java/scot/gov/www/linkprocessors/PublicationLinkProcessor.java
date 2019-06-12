@@ -16,8 +16,8 @@ import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.joining;
 import static org.apache.commons.lang3.ArrayUtils.removeElements;
 
 public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
@@ -43,7 +43,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                 newElements = removeElements(newElements, link.getPathElements()[5]);
             }
 
-            link.setPath(Arrays.stream(newElements).collect(joining("/")));
+            link.setPath(Arrays.stream(newElements).collect(Collectors.joining("/")));
         }
         return link;
     }
@@ -56,18 +56,13 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     private String slug(HstLink link) {
         String path =
                 String.format("/content/documents/govscot/%s",
-                Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(joining("/")));
+                        Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(Collectors.joining("/")));
         try {
             Node publicationNode = publicationNode(path);
             if (publicationNode == null) {
                 LOG.warn("Unable to find publication node for path {}", link.getPath());
                 return null;
             }
-            if (!publicationNode.hasProperty("govscot:slug")) {
-                LOG.warn("result has no slug property: {}", publicationNode.getPath());
-                return null;
-            }
-
             return publicationNode.getProperty("govscot:slug").getString();
         } catch (RepositoryException e) {
             LOG.error("Unable to get the publication slug", e);
@@ -109,6 +104,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     }
 
     private HstLink preProcessPublicationsLink(HstLink link) {
+
         /**
          * Turn a publication link into a path that the document can be fetched from.
          * Some examples:
@@ -140,15 +136,8 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                 pubPath = StringUtils.substringBeforeLast(pubPath, lastPathElement);
             }
 
-            String escapedRemaining = Arrays.stream(remaining).map(Text::escapeIllegalJcr10Chars).collect(joining("/"));
-            String newPath = String.format("publications/%s%s", pubPath, escapedRemaining);
-            Session session = RequestContextProvider.get().getSession();
-            if (!session.nodeExists("/content/documents/govscot/" + newPath)) {
-                link.setNotFound(true);
-                link.setPath("/pagenotfound");
-            } else {
-                link.setPath(newPath);
-            }
+            String newPath = String.format("publications/%s%s", pubPath, String.join("/", remaining));
+            link.setPath(newPath);
             return link;
         } catch (RepositoryException e) {
             LOG.warn("Exception trying to process link: {}", link.getPath(), e);
