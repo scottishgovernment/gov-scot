@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
@@ -14,9 +15,9 @@ import org.onehippo.cms7.essentials.components.EssentialsContentComponent;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Policy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import static java.util.stream.Collectors.*;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 
@@ -34,27 +35,56 @@ public class NewsComponent extends EssentialsContentComponent {
         // find any policies that share a news tag with this news item.
         News news = (News) request.getRequestContext().getContentBean();
         HippoBean scope = request.getRequestContext().getSiteContentBaseBean();
-        HstQuery query = HstQueryBuilder.create(scope).ofTypes(Policy.class).where(or(tagConstraints(news))).build();
+        request.setAttribute("policies", policyNames(scope, news));
+    }
+
+    /**
+     * Get the policy names for this news item.
+     *
+     * This is done by querying all Policy pages that share a value of govscot:policyTags
+     */
+    private List<String> policyNames(HippoBean scope, News news) {
+        Set<String> tags = nonBlankPolicyTags(news);
+        if (tags.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        HstQuery query = HstQueryBuilder.create(scope).ofTypes(Policy.class).where(or(tagConstraints(tags))).build();
+
         try {
             HstQueryResult result = query.execute();
             HippoBeanIterator it = result.getHippoBeans();
             List<String> policyNames = new ArrayList<>();
             while (it.hasNext()) {
                 HippoBean policy = it.nextHippoBean();
-                policyNames.add(policy.getParentBean().getName());
+                HippoBean folder = policy.getParentBean();
+                policyNames.add(folder.getName());
             }
-            request.setAttribute("policies", policyNames);
+            return policyNames;
         } catch (QueryException e) {
             throw new HstComponentException(e);
         }
     }
 
-    private Constraint[] tagConstraints(News news) {
-        ArrayList<Constraint> tagConstraints = new ArrayList<>();
-        for (String tag : news.getPolicyTags()) {
-            tagConstraints.add(constraint("govscot:policyTags").equalToCaseInsensitive(tag));
+    /**
+     * Get the set of all non-blank policy tags for this news item
+     */
+    private Set<String> nonBlankPolicyTags(News news) {
+        if (news.getPolicyTags() == null) {
+            return Collections.emptySet();
         }
-        return tagConstraints.toArray(new Constraint[tagConstraints.size()]);
+
+        return Arrays.stream(news.getPolicyTags()).filter(StringUtils::isNotBlank).collect(toSet());
+    }
+
+    /**
+     * Convert the set of tags into an array of constraints.
+     */
+    private Constraint[] tagConstraints(Set<String> tags) {
+        return tags.stream()
+                .map(tag -> constraint("govscot:policyTags").equalToCaseInsensitive(tag))
+                .collect(toList())
+                .toArray(new Constraint[tags.size()]);
     }
 
 }
