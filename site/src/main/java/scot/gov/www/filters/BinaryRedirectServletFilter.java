@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+import static org.apache.commons.lang3.StringUtils.*;
 import static scot.gov.www.components.RedirectComponent.GOVSCOT_URL;
 
 /**
@@ -31,13 +32,21 @@ public class BinaryRedirectServletFilter implements Filter {
 
     private static final Logger LOG = LoggerFactory.getLogger(BinaryRedirectServletFilter.class);
 
+    static final String X_FORWARDED_HOST = "x-forwarded-host";
+
+    static final String X_FORWARDED_PROTO = "x-forwarded-proto";
+
+    // provide a session.  overridable in unit tests
+    SessionProvider sessionProvider = request -> SessionUtils.getBinariesSession(request);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // nothing required
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
 
         //servletRequest.getPath
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
@@ -45,21 +54,41 @@ public class BinaryRedirectServletFilter implements Filter {
 
         if (newPath != null) {
             HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
-            LOG.info("binary redirect {} -> {}", httpServletRequest.getPathInfo(), newPath);
-            httpServletResponse.sendRedirect("/site" + newPath);
-            return;
+            String url = getUrl(httpServletRequest, newPath);
+            LOG.info("binary redirect {} -> {}", httpServletRequest.getPathInfo(), url);
+            httpServletResponse.sendRedirect(url);
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
+    }
 
-        filterChain.doFilter(servletRequest, servletResponse);
+    /**
+     * Get the url that this path should redirect to.
+     *
+     * If the x-forwarded-host and x-forwarded-proto headers are set then use them to construct a full url. Otherwise
+     * use the context path and redirect path.
+     */
+    private String getUrl(HttpServletRequest req, String newPath) {
+        if (hasForwardingHeaders(req)) {
+            String host = req.getHeader(X_FORWARDED_HOST);
+            String proto = req.getHeader(X_FORWARDED_PROTO);
+            return String.format("%s://%s%s", proto, host, newPath);
+        } else {
+            return String.format("%s%s", req.getContextPath(), newPath);
+        }
+    }
+
+    private boolean hasForwardingHeaders(HttpServletRequest req) {
+        return isNoneBlank(req.getHeader(X_FORWARDED_HOST), req.getHeader(X_FORWARDED_PROTO));
     }
 
     private String findRedirectPath(HttpServletRequest request) throws IOException {
         // get a session
         Session session = null;
         try {
-            session = SessionUtils.getBinariesSession(request);
+            session = sessionProvider.get(request);
 
-            String redirectPath = redirectPath(request);
+            String redirectPath = jcrLookupPath(request);
             if (!session.nodeExists(redirectPath)) {
                 return null;
             }
@@ -77,7 +106,7 @@ public class BinaryRedirectServletFilter implements Filter {
         }
     }
 
-    private String redirectPath(HttpServletRequest request) throws UnsupportedEncodingException {
+    static String jcrLookupPath(HttpServletRequest request) throws UnsupportedEncodingException {
         String characterEncoding = request.getCharacterEncoding();
         if (characterEncoding == null) {
             characterEncoding = "ISO-8859-1";
@@ -90,6 +119,14 @@ public class BinaryRedirectServletFilter implements Filter {
     @Override
     public void destroy() {
         // nothing required
+    }
+
+    /**
+     * Session provider interface - this enables us to iverride how we get a sesison in unit tests since Hippo use a static
+     * method.
+     */
+    interface SessionProvider {
+        Session get(HttpServletRequest request) throws RepositoryException;
     }
 
 }
