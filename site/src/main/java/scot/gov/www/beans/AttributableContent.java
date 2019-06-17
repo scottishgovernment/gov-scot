@@ -26,13 +26,18 @@ public class AttributableContent extends SimpleContent {
                 HippoBean.class);
     }
 
+    /**
+     * Get all of the directorates (primary and secondary)
+     *
+     * The primary directorate should be first followed by the secondary directorates with duplicates removed.
+     */
     public List<HippoBean> getAllDirectorates() {
+        Set<String> taken = new HashSet<>();
         List<HippoBean> directorates = new ArrayList<>();
-        HippoBean responsibleDirectorate = this.getResponsibleDirectorate();
-        if (responsibleDirectorate != null){
-            directorates.add(this.getResponsibleDirectorate());
-        }
-        directorates.addAll(this.getSecondaryResponsibleDirectorate());
+        addIfNotTaken(directorates, this.getResponsibleDirectorate(), taken);
+        this.getSecondaryResponsibleDirectorate()
+                .stream()
+                .forEach(directorate -> addIfNotTaken(directorates, directorate, taken));
         return directorates;
     }
 
@@ -47,13 +52,19 @@ public class AttributableContent extends SimpleContent {
                 HippoBean.class);
     }
 
+    /**
+     * Get all of the responsible roles (primary and secondary)
+     *
+     * The primary role should be first followed by the secondary roles with duplicates removed.
+     */
+
     public List<HippoBean> getAllResponsibleRoles() {
+        Set<String> taken = new HashSet<>();
         List<HippoBean> roles = new ArrayList<>();
-        HippoBean responsibleRole = this.getResponsibleRole();
-        if (responsibleRole != null){
-            roles.add(this.getResponsibleRole());
-        }
-        roles.addAll(this.getSecondaryResponsibleRole());
+        addIfNotTaken(roles, this.getResponsibleRole(), taken);
+        this.getSecondaryResponsibleRole()
+                .stream()
+                .forEach(role -> addIfNotTaken(roles, role, taken));
         return roles;
     }
 
@@ -65,5 +76,18 @@ public class AttributableContent extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:secondaryOrgRole")
     public List<HippoBean> getSecondaryOrgRole() {
         return getLinkedBeans("govscot:secondaryOrgRole", HippoBean.class);
+    }
+
+    private void addIfNotTaken(List<HippoBean> beans, HippoBean bean, Set<String> taken) {
+        if (bean == null) {
+            return;
+        }
+
+        if (taken.contains(bean.getIdentifier())) {
+            return;
+        }
+
+        beans.add(bean);
+        taken.add(bean.getIdentifier());
     }
 }
