@@ -111,29 +111,29 @@ definitions:
         \n          <else/>\r\n            <!-- for a not-current editor the current\
         \ editor (holder) is reported through the 'inUseBy' feedback -->\r\n     \
         \       <hippo:feedback key=\"inUseBy\" value=\"holder\"/>\r\n          </if>\r\
-        \n          <if cond=\"!editor and workflowContext.isGranted(draft,'hippo:admin')\"\
-        >\r\n            <!-- For an admin (granted hippo:admin) enable the unlock\
-        \ operation if not-current editor -->\r\n            <hippo:action action=\"\
-        unlock\" enabledExpr=\"true\"/>\r\n          </if>\r\n        </onentry>\r\
+        \n          <if cond=\"!editor and workflowContext.isGranted(draft,'hippo:unlocker')\"\
+        >\r\n            <!-- For an unlocker (granted hippo:unlocker) enable the\
+        \ unlock operation if not-current editor -->\r\n            <hippo:action\
+        \ action=\"unlock\" enabledExpr=\"true\"/>\r\n          </if>\r\n        </onentry>\r\
         \n      </state>\r\n\r\n      <!-- editable state becomes active if editing\
         \ is possible but there is no current editor -->\r\n      <state id=\"editable\"\
-        >\r\n        <onentry>\r\n          <if cond=\"workflowContext.isGranted(draft,'hippo:admin')\"\
-        >\r\n            <!-- for an admin (granted hippo:admin) report the unlock\
-        \ operation as available but disabled -->\r\n            <hippo:action action=\"\
-        unlock\" enabledExpr=\"false\"/>\r\n          </if>\r\n          <!-- enable\
-        \ the operation to start editing -->\r\n          <hippo:action action=\"\
-        obtainEditableInstance\" enabledExpr=\"branchExists\"/>\r\n        </onentry>\r\
-        \n      </state>\r\n\r\n      <!-- target-less transition to 'dispose' an\
-        \ editable instance by (only) removing the current draft holder, and the\r\
-        \n           current unpublished document variant is returned if currently\
-        \ in preview state else the published variant -->\r\n      <transition event=\"\
-        disposeEditableInstance\">\r\n        <!-- remove holder from the draft document\
-        \ -->\r\n        <hippo:setHolder holder=\"null\"/>\r\n        <hippo:result\
-        \ value=\"preview ? unpublished : published\"/>\r\n      </transition>\r\n\
-        \r\n      <!-- target-less transition to 'obtain' an editable draft document\
-        \ variant by creating or updating a draft variant\r\n           by copying\
-        \ (the contents of) the current unpublished variant if available or else the\
-        \ published variant -->\r\n      <transition event=\"obtainEditableInstance\"\
+        >\r\n        <onentry>\r\n          <if cond=\"workflowContext.isGranted(draft,'hippo:unlocker')\"\
+        >\r\n            <!-- for an unlocker (granted hippo:unlocker) report the\
+        \ unlock operation as available but disabled -->\r\n            <hippo:action\
+        \ action=\"unlock\" enabledExpr=\"false\"/>\r\n          </if>\r\n       \
+        \   <!-- enable the operation to start editing -->\r\n          <hippo:action\
+        \ action=\"obtainEditableInstance\" enabledExpr=\"branchExists\"/>\r\n   \
+        \     </onentry>\r\n      </state>\r\n\r\n      <!-- target-less transition\
+        \ to 'dispose' an editable instance by (only) removing the current draft holder,\
+        \ and the\r\n           current unpublished document variant is returned if\
+        \ currently in preview state else the published variant -->\r\n      <transition\
+        \ event=\"disposeEditableInstance\">\r\n        <!-- remove holder from the\
+        \ draft document -->\r\n        <hippo:setHolder holder=\"null\"/>\r\n   \
+        \     <hippo:result value=\"preview ? unpublished : published\"/>\r\n    \
+        \  </transition>\r\n\r\n      <!-- target-less transition to 'obtain' an editable\
+        \ draft document variant by creating or updating a draft variant\r\n     \
+        \      by copying (the contents of) the current unpublished variant if available\
+        \ or else the published variant -->\r\n      <transition event=\"obtainEditableInstance\"\
         >\r\n        <!-- copy/update draft unless user already is holder (editing)\
         \ -->\r\n\r\n        <if cond=\"!editor\">\r\n          <if cond=\"!!unpublished\"\
         >\r\n            <!-- unpublished document exists -->\r\n            <!--\
