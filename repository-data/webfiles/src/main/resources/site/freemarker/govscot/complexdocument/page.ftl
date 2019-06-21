@@ -291,53 +291,56 @@
 
                     </div><!--
                     --><div class="grid__item  medium--three-tenths  xlarge--two-tenths">
-                        <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
-                            <#if documents??>
-                                <#assign firstDocument = documents[0]/>
-                                <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                                <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
-                            </#if>
-                            <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                <a data-title="${document.title}" class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
-                                    <#if document.coverimage?has_content>
-                                        <img
-                                            alt="View this document"
-                                            class="document-info__thumbnail-image"
-                                            src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                            srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                            sizes="(min-width: 768px) 165px, 107px" />
-                                    <#else>
-                                        <img
-                                            class="document-info__thumbnail-image"
-                                            alt="View this document"
-                                            src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                            srcset="
-                                            <#list firstDocument.thumbnails as thumbnail>
-                                                <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                            </#list>"
-                                            sizes="(min-width: 768px) 165px, 107px" />
-                                    </#if>
-                                </a>
-                            <#else>
-                                <a data-title="${document.title}" title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
-                            </#if>
-                        </div>
 
-                        <a data-title="${document.title}" class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'about/'}">
-                            <div class="icon-button__content">
-                                <span class="icon-button__icon">
-                                    <svg class="svg-icon  mg-icon">
-                                        <use xlink:href="${iconspath}#sharp-info_no_circle-24px"></use>
-                                    </svg>
-                                </span>
-                                <span class="icon-button__text">
-                                    About this publication
-                                </span>
+                        <#if document.displayPrimaryDocument == true>
+                            <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
+                                <#if documents??>
+                                    <#assign firstDocument = documents[0]/>
+                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                    <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                                </#if>
+                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                    <a data-title="${document.title}" class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
+                                        <#if document.coverimage?has_content>
+                                            <img
+                                                alt="View this document"
+                                                class="document-info__thumbnail-image"
+                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        <#else>
+                                            <img
+                                                class="document-info__thumbnail-image"
+                                                alt="View this document"
+                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                                srcset="
+                                                <#list firstDocument.thumbnails as thumbnail>
+                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                </#list>"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        </#if>
+                                    </a>
+                                <#else>
+                                    <a data-title="${document.title}" title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
+                                </#if>
                             </div>
-                        </a>
+
+                            <a data-title="${document.title}" class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'about/'}">
+                                <div class="icon-button__content">
+                                    <span class="icon-button__icon">
+                                        <svg class="svg-icon  mg-icon">
+                                            <use xlink:href="${iconspath}#sharp-info_no_circle-24px"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="icon-button__text">
+                                        About this publication
+                                    </span>
+                                </div>
+                            </a>
+                        </#if>
 
                         <#if (documents?? && documents?size gt 1) || groupedDocumentFolders??>
                             <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
