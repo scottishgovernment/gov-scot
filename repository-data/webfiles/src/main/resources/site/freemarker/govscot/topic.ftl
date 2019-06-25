@@ -36,7 +36,7 @@
                 <#list document.featuredItems as item>
                 --><li class="grid__item  medium--four-twelfths  listed-content-item  listed-content-item--dark  listed-content-item--small">
 
-                        <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link">
+                        <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link" data-gtm="featured-item-${item?index}">
                             <article class="listed-content-item__article">
                                 <#-- use news as default image -->
                                 <#assign imgLabel = 'news'/>
@@ -133,7 +133,7 @@
                     <#list publications as publication>
                         <article class="homepage-publication">
                             <h3 class="js-truncate  homepage-publication__title">
-                                <a href="<@hst.link hippobean=publication />" data-gtm="news-${publication?index}" title="${publication.title}">${publication.title}</a>
+                                <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index}" title="${publication.title}">${publication.title}</a>
                             </h3>
                             <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
                         </article>
@@ -167,7 +167,7 @@
                     <#list consultations as consultation>
                         <article class="homepage-publication">
                             <h3 class="js-truncate  homepage-publication__title">
-                                <a href="<@hst.link hippobean=consultation />" data-gtm="news-${consultation?index}" title="${consultation.title}">${consultation.title}</a>
+                                <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index}" title="${consultation.title}">${consultation.title}</a>
                             </h3>
                             <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
                         </article>
