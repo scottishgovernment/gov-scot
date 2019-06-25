@@ -7,9 +7,9 @@
     <#assign postalAddress = document.incumbent.postalAddress/>
 
         <div class="grid"><!--
-            
+
             --><div class="grid__item  medium--nine-twelfths   push--medium--three-twelfths">
-                
+
                 <!-- dev note: inline styles to illustrate image dimensions only. remove when we have correct images. -->
                 <img class="full-width-image"
                     src="<@hst.link path='/assets/images/people/first_minister_desktop.jpg'/>"
@@ -17,7 +17,7 @@
                         <@hst.link path='/assets/images/people/first_minister_desktop.jpg'/> 848w,
                         <@hst.link path='/assets/images/people/first_minister_desktop_@2x.jpg'/> 1696w"
                     alt="First Minister">
-                
+
                 <div class="grid">
                     <div class="grid__item large--ten-twelfths">
                         <header class="article-header">
@@ -82,7 +82,7 @@
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" hippobean=document canonical=true />
+    <@hst.link var="canonicalitem" hippobean=document canonical=true fullyQualified=true />
     <#include "common/canonical.ftl" />
 
     <#include "common/gtm-datalayer.ftl"/>

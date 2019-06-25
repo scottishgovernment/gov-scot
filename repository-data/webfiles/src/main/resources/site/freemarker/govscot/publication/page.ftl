@@ -284,13 +284,13 @@
     </@hst.headContribution>
 
     <#if isMultiPagePublication && (currentPage != pages[0])>
-        <@hst.link var="canonicalitem" hippobean=currentPage canonical=true />
+        <@hst.link var="canonicalitem" hippobean=currentPage canonical=true fullyQualified=true/>
         <#assign uuid = currentPage.getProperty('jcr:uuid')/>
         <#assign lastUpdated = currentPage.getProperty('hippostdpubwf:lastModificationDate')/>
         <#assign dateCreated = currentPage.getProperty('hippostdpubwf:creationDate')/>
         <#include "../common/gtm-datalayer.ftl"/>
     <#else>
-        <@hst.link var="canonicalitem" hippobean=document canonical=true />
+        <@hst.link var="canonicalitem" hippobean=document canonical=true fullyQualified=true/>
         <#include "../common/gtm-datalayer.ftl"/>
     </#if>
 

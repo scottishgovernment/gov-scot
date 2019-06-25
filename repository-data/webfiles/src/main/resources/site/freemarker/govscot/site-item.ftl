@@ -32,8 +32,8 @@
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
-    
-    <@hst.link var="canonicalitem" hippobean=document canonical=true />
+
+    <@hst.link var="canonicalitem" hippobean=document canonical=true fullyQualified=true/>
     <#include "common/canonical.ftl" />
 
     <#include "common/gtm-datalayer.ftl"/>

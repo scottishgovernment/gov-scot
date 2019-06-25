@@ -22,5 +22,5 @@
     </@hst.headContribution>
 </#if>
 
-<@hst.link var="canonicalitem" siteMapItemRefId="directorates" canonical=true/>
+<@hst.link var="canonicalitem" siteMapItemRefId="directorates" canonical=true fullyQualified=true/>
 <#include "common/canonical.ftl">
