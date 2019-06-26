@@ -13,16 +13,20 @@ import javax.jcr.query.QueryResult;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Expose metadata required for external publication registration forms.
  *
- * Date that we expose:
+ * Data that we expose:
  * - list of published Directorates
  * - list of published Roles (this includes people who have role specified internally)
  * - list of available Publication Types
  * - list of available Topics
+ * - list of available Policies (including what topics they should be listed under)
  */
 @Path("/metadata/")
 public class MetadataResource {
@@ -64,6 +68,13 @@ public class MetadataResource {
             LOG.error("Failed to generate metadata", e);
             throw new WebApplicationException("Metadata not available", e, Response.Status.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Path("policies")
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public MetadataResponse getPolicies() {
+        return getMetadata(this::getPolicyInfo, "govscot:Policy");
     }
 
     MetadataResponse getMetadata(String ...types) {
@@ -110,6 +121,27 @@ public class MetadataResource {
         metadataItem.setKey(node.getParent().getParent().getName());
         metadataItem.setValue(node.getProperty("govscot:title").getString());
         return metadataItem;
+    }
+
+    MetadataItem getPolicyInfo(Node node) throws RepositoryException {
+        PolicyMetadataItem metadataItem = new PolicyMetadataItem();
+        metadataItem.setKey(node.getParent().getParent().getName());
+        metadataItem.setValue(node.getProperty("govscot:title").getString());
+        metadataItem.setTopics(topicIds(node));
+        return metadataItem;
+    }
+
+    List<String> topicIds(Node node) throws RepositoryException {
+        List<String> topicsIds = new ArrayList<>();
+        NodeIterator it = node.getNodes("govscot:topics");
+        Session session = RequestContextProvider.get().getSession();
+        while (it.hasNext()) {
+            Node topicMirror = it.nextNode();
+            String docbase = topicMirror.getProperty("hippo:docbase").getString();
+            Node topic = session.getNodeByIdentifier(docbase);
+            topicsIds.add(topic.getName());
+        }
+        return topicsIds;
     }
 
     MetadataItem getItemFromListItem(Node node) throws RepositoryException {
