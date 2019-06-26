@@ -80,7 +80,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         Session session = req.getSession();
         Node folder = session.getNode(path);
         Node handle = handleFromFolder(folder);
-        return findPublication(handle.getNodes());
+        return findPublishedNode(handle.getNodes());
     }
 
 
@@ -174,7 +174,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
             String testPath = "/content/documents/govscot/" + path;
 
             // we test that it is not a folder because we do not want a 200 for /chapters, /pages etc.
-            if (session.nodeExists(testPath)) {
+            if (session.nodeExists(testPath) && findPublishedNode(session.getNode(testPath).getNodes()) != null) {
                 return true;
             }
         }
@@ -195,17 +195,17 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         }
 
         // find the index in the results folder
-        return findPublication(result.getNodes());
+        return findPublishedNode(result.getNodes());
     }
 
-    private Node findPublication(NodeIterator nodeIterator) throws RepositoryException {
+    private Node findPublishedNode(NodeIterator nodeIterator) throws RepositoryException {
 
         Node publishedNode = null;
         Node lastNode = null;
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
             lastNode = node;
-            if (node.isNodeType("govscot:SimpleContent") && "published".equals(node.getProperty("hippostd:state").getString())) {
+            if (node.isNodeType("govscot:basedocument") && "published".equals(node.getProperty("hippostd:state").getString())) {
                 publishedNode = node;
             }
         }
