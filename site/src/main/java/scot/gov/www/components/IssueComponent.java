@@ -75,21 +75,13 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
         HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class);
-        HstQuery complexDocumentQuery = issueLinkedBeansQuery(issue, base, ComplexDocument.class);
-
         ArrayList<HippoBean> allLinkedPublications = new ArrayList<HippoBean>();
 
         try {
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
-            HippoBeanIterator complexDocuments = complexDocumentQuery.execute().getHippoBeans();
 
             while(publications.hasNext()) {
                 HippoBean publication = publications.next();
-                allLinkedPublications.add(publication);
-            }
-
-            while(complexDocuments.hasNext()) {
-                HippoBean publication = complexDocuments.next();
                 allLinkedPublications.add(publication);
             }
 

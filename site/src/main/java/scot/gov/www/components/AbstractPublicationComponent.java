@@ -49,7 +49,7 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
     }
 
     /**
-     * Get the publication document - this is different for Publication and its subclasses and ComplexDocument
+     * Get the publication document
      */
     protected abstract HippoBean getPublication(HippoBean document);
 

@@ -26,7 +26,7 @@ definitions:
             jcr:uuid: cfa43d8a-ead3-435d-b7ff-592134c6b63a
             hippo:name: Publication name
             /index:
-              jcr:primaryType: govscot:ComplexDocument
+              jcr:primaryType: govscot:ComplexDocument2
               jcr:mixinTypes: ['mix:referenceable']
               jcr:uuid: 7650bd60-b4ed-4184-bde2-c22117bf8ab9
               govscot:isbn: ''

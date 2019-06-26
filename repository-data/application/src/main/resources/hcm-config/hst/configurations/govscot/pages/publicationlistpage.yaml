@@ -13,7 +13,7 @@ definitions:
           hst:parameternames: [sortField, sortOrder, includeSubtypes, showPagination,
             path, pageSize, documentTypes, searchTermPlural, searchTermSingular]
           hst:parametervalues: ['govscot:publicationDate', desc, 'off', 'on', '',
-            '10', 'govscot:Publication, govscot:ComplexDocument', publications, publication]
+            '10', 'govscot:Publication', publications, publication]
           hst:template: filteredlist.results
           hst:xtype: hst.item
         /side-filter:

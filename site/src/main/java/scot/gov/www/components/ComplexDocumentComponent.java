@@ -34,7 +34,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
     @Override
     protected HippoBean getPublication(HippoBean document) {
         if (document.isHippoFolderBean()) {
-            List<HippoBean> publications = document.getChildBeans("govscot:ComplexDocument");
+            List<HippoBean> publications = document.getChildBeans("govscot:ComplexDocument2");
             if (publications.size() > 1) {
                 LOG.warn("Multiple publications found in folder {}, will use first", document.getPath());
             }
@@ -43,7 +43,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
 
         if (isSection(document)) {
             HippoBean publicationFolder = document.getParentBean().getParentBean().getParentBean();
-            List<HippoBean> publications = publicationFolder.getChildBeans("govscot:ComplexDocument");
+            List<HippoBean> publications = publicationFolder.getChildBeans("govscot:ComplexDocument2");
             if (publications.size() > 1) {
                 LOG.warn("Multiple publications found in folder {}, will use first", publicationFolder.getPath());
             }
