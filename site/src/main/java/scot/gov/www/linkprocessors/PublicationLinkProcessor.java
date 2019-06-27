@@ -173,8 +173,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
     String stripAboutAndDownloads(String path) {
         String one = StringUtils.substringBeforeLast(path, "/about");
-        String two = StringUtils.substringBeforeLast(one, "/downloads");
-        return two;
+        return StringUtils.substringBeforeLast(one, "/downloads");
     }
 
     boolean anyExist(String ...paths) throws RepositoryException {
