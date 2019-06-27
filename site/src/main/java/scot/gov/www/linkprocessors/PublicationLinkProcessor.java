@@ -160,12 +160,21 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     String determinePath(String pubPath, String escapedRemaining) throws RepositoryException {
         String path = String.format("publications/%s%s", pubPath, escapedRemaining);
         String chapterPath = String.format("publications/%schapters/%s", pubPath, escapedRemaining);
-        String pathWithoutAbout = StringUtils.substringBefore(path, "/about");
-        if (anyExist(path, pathWithoutAbout, chapterPath)) {
+        String stripped = stripAboutAndDownloads(path);
+
+        LOG.info("stripped path is {}", stripped);
+
+        if (anyExist(path, stripped, chapterPath)) {
             return path;
         } else {
             return null;
         }
+    }
+
+    String stripAboutAndDownloads(String path) {
+        String one = StringUtils.substringBeforeLast(path, "/about");
+        String two = StringUtils.substringBeforeLast(one, "/downloads");
+        return two;
     }
 
     boolean anyExist(String ...paths) throws RepositoryException {
