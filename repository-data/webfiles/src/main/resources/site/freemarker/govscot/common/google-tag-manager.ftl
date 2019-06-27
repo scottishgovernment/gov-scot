@@ -17,7 +17,7 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         <#if includewhitelist>
-        'gtm.whitelist': ['google', 'jsm', 'lcl', 'mf'],
+        'gtm.whitelist': ['google', 'jsm', 'lcl'],
         </#if>
         'format' : '${gtmName}',
         'siteid' : '${gtmId}'

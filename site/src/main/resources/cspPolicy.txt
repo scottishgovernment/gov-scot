@@ -12,7 +12,6 @@ script-src
   https://translate.googleapis.com
   https://www.youtube.com/iframe_api
   https://s.ytimg.com/
-  https://cdn.mouseflow.com
 ;
 img-src
   'self'
