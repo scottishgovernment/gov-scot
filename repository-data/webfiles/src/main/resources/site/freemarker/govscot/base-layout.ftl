@@ -4,7 +4,7 @@
 <!--[if gt IE 9]><!--><html dir="ltr" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-
+    <@hst.headContributions categoryIncludes="googleTagManager"/>
     <@hst.headContributions categoryIncludes="pageTitle"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,14 +23,14 @@
     <meta name="theme-color" content="#ffffff">
 
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
-    <@hst.headContributions categoryExcludes="footerScripts, pageTitle, dataLayer" xhtml=true/>
+    <@hst.headContributions categoryExcludes="footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >
+    <@hst.include ref="googletagmanager"/>
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
     <@hst.headContributions categoryIncludes="dataLayer"/>
-    <@hst.include ref="googletagmanager"/>
 
     <#include 'common/accessibility-links.ftl' />
     <#include 'common/notifications.ftl' />

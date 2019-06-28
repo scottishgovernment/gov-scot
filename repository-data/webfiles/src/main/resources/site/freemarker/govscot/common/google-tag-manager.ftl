@@ -1,17 +1,16 @@
 <#include "../../include/imports.ftl">
 
 <#if useLiveAnalytics??>
-    <#assign accountid = "UA-78735385-5" />
-    <#assign containerid = "GTM-PZ62X92" />
+    <#assign gtmAuth = "eBDGxMFYXLnv72VcZO6hog" />
+    <#assign gtmEnv = "2" />
     <#assign includewhitelist = true/>
-    <#assign isactive = true/>
 <#else>
-    <#assign accountid = "UA-78735385-4" />
-    <#assign containerid = "GTM-WMP56LD" />
+    <#assign gtmAuth = "g8K7GRj2SA6kHC_g2wl3Aw" />
+    <#assign gtmEnv = "58" />
     <#assign includewhitelist = false/>
-    <#assign isactive = true/>
 </#if>
 
+<@hst.headContribution category="googleTagManager">
 <!-- Google Tag Manager (GTM) -->
 <script id="gtm-datalayer">
     window.dataLayer = window.dataLayer || [];
@@ -23,14 +22,19 @@
         'siteid' : '${gtmId}'
     });
 </script>
+</@hst.headContribution>
 
-<noscript  id="gtm-noscript"><iframe src="//www.googletagmanager.com/ns.html?id=${containerid}"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script id="gtm">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-{'gtm.start': new Date().getTime(),event:'gtm.js'}
-);var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${containerid}');</script>
+<@hst.headContribution category="googleTagManager">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&amp;gtm_auth=${gtmAuth}&amp;gtm_preview=env-${gtmEnv}&amp;gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZ62X92');</script>
 <!-- End Google Tag Manager -->
+</@hst.headContribution>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ62X92&gtm_auth=${gtmAuth}&gtm_preview=env-${gtmEnv}&gtm_cookies_win=x"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
