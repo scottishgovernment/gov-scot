@@ -42,7 +42,7 @@
         <meta name="description" content="${index.metaDescription}"/>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" hippobean=index canonical=true fullyQualified=true/>
+    <@hst.link var="canonicalitem" hippobean=index canonical=true/>
 
     <#assign canonicalitem = canonicalitem?remove_ending("index/")/>
 

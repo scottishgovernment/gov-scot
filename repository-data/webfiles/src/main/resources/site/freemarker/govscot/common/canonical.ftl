@@ -1,3 +1,3 @@
 <@hst.headContribution>
-    <link rel="canonical" href="${canonicalitem?replace("blu.www","www")?replace("grn.www","www")}"/>
+    <link rel="canonical" href="https://www.gov.scot${canonicalitem?replace("^/site/", "/", "r")}"/>
 </@hst.headContribution>

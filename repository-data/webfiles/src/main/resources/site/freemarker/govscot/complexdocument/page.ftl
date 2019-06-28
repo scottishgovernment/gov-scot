@@ -417,7 +417,7 @@
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" hippobean=document canonical=true fullyQualified=true/>
+    <@hst.link var="canonicalitem" hippobean=document canonical=true/>
 
     <#include "../common/canonical.ftl" />
 
