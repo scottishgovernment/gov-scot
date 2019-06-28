@@ -18,5 +18,5 @@
     </@hst.headContribution>
 </#if>
 
-<@hst.link var="canonicalitem" siteMapItemRefId="groups" canonical=true />
+<@hst.link var="canonicalitem" siteMapItemRefId="groups" canonical=true fullyQualified=true/>
 <#include "common/canonical.ftl" />

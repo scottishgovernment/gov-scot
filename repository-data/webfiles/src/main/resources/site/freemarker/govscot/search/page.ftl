@@ -56,6 +56,6 @@
         <meta name="description" content="${index.metaDescription}"/>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" path="/search" canonical=true />
+    <@hst.link var="canonicalitem" path="/search" canonical=true fullyQualified=true/>
     <#include "../common/canonical.ftl" />
 </#if>
