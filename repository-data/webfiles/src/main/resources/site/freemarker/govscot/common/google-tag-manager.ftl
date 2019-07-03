@@ -3,11 +3,9 @@
 <#if useLiveAnalytics??>
     <#assign gtmAuth = "eBDGxMFYXLnv72VcZO6hog" />
     <#assign gtmEnv = "2" />
-    <#assign includewhitelist = true/>
 <#else>
     <#assign gtmAuth = "g8K7GRj2SA6kHC_g2wl3Aw" />
     <#assign gtmEnv = "58" />
-    <#assign includewhitelist = false/>
 </#if>
 
 <@hst.headContribution category="googleTagManager">
@@ -15,9 +13,7 @@
 <script id="gtm-datalayer">
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        <#if includewhitelist>
         'gtm.whitelist': ['google', 'jsm', 'lcl'],
-        </#if>
         'format' : '${gtmName}',
         'siteid' : '${gtmId}'
     });
