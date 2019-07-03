@@ -22,7 +22,7 @@
     <ul class="policy-list column-list  column-list--not-small  column-list--3">
         <#list policies as policy>
             <li class="policy-list__item  column-list__item">
-                <a class="policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
+                <a data-gtm="policy-${policy?index}" class="policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
             </li>
         </#list>
     </ul>

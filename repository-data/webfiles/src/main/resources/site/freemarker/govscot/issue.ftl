@@ -54,7 +54,7 @@
                             <ul class="no-bullets">
                                 <#list document.featuredItems as item>
                                     <li class="listed-content-item  listed-content-item--compact  listed-content-item--highlight">
-                                        <a href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>" class="listed-content-item__link <#if item.class == 'scot.gov.www.beans.ExternalLink'>external  listed-content-item__link--external</#if>" title="${item.title}">
+                                        <a data-gtm="featured-item-${item?index}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>" class="listed-content-item__link <#if item.class == 'scot.gov.www.beans.ExternalLink'>external  listed-content-item__link--external</#if>" title="${item.title}">
                                             <article class="listed-content-item__article ">
                                                 <header class="listed-content-item__header">
                                                     <div class="listed-content-item__meta">
@@ -85,7 +85,7 @@
                             <h2 class="gamma  emphasis  issue-sidebar-block__title">News</h2>
                             <ul class="no-bullets">
                                 <#list news as newsItem>
-                                    <li><a class="issue-sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
+                                    <li><a data-gtm="news-${newsItem?index}" class="issue-sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/news/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all news</a>
@@ -97,7 +97,7 @@
                             <h2 class="gamma  emphasis  issue-sidebar-block__title">Policies</h2>
                             <ul class="no-bullets">
                                 <#list policies as policy>
-                                    <li><a class="issue-sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
+                                    <li><a data-gtm="policy-${policy?index}" class="issue-sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all policies</a>
@@ -109,7 +109,7 @@
                             <h2 class="gamma  emphasis  issue-sidebar-block__title">Publications</h2>
                             <ul class="no-bullets">
                                 <#list publications as publication>
-                                    <li><a class="issue-sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
+                                    <li><a data-gtm="publications-${publication?index}" class="issue-sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all publications</a>
