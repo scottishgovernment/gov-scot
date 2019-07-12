@@ -4,6 +4,8 @@
 <!--[if gt IE 9]><!--><html dir="ltr" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
+    <@hst.headContributions categoryIncludes="dataLayer"/>
+    <!-- dataLayer code MUST be higher than google tag manager code -->
     <@hst.headContributions categoryIncludes="googleTagManager"/>
     <@hst.headContributions categoryIncludes="pageTitle"/>
 
@@ -27,8 +29,6 @@
 
 </head>
 <body class="fontawesome site-header__container" >
-    <@hst.headContributions categoryIncludes="dataLayer"/>
-    <!-- dataLayer code MUST be higher than google tag manager code -->
     <@hst.include ref="googletagmanager"/>
     <script src="<@hst.link path="/assets/scripts/vendor/jquery.min.js"/>"></script>
 
