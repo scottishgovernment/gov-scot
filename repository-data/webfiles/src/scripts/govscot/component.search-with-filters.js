@@ -291,10 +291,10 @@ function gatherParams (initial) {
     let searchParams = this.searchParams || {};
 
     // KEYWORD / TERM
-    if (window.location.href.indexOf("/search/") != -1) {
-        searchParams.q = $('#filters-search-term').val();
+    if (window.location.href.indexOf('/search/') !== -1) {
+        searchParams.q = encodeURI($('#filters-search-term').val());
     } else {
-        searchParams.term = $('#filters-search-term').val();
+        searchParams.term = encodeURI($('#filters-search-term').val());
     }
 
     // PAGINATION
