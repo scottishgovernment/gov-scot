@@ -29,11 +29,12 @@
         <#if reportingTags?has_content>
             'reportingTags': [<#list reportingTags as tag>'${tag}'<#sep>, </#sep></#list>],
         </#if>
+        <#if policies?has_content>
         'policies': [<#list policies as policy>'${policy}'<#sep>, </#sep></#list>],
+        </#if>
         'lastUpdated': '<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />',
         'dateCreated': '<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />',
         'uuid': '${uuid}'
     })
 </script>
 </@hst.headContribution>
-
