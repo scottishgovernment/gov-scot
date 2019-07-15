@@ -39,7 +39,7 @@ function PickerOptions(field, container, settings, theme) {
 
     this.onSelect = function () {
 
-        dataLayer.push({
+        window.dataLayer.push({
             'field': this.name,
             'interaction': 'select',
             'event': 'date-picker'
@@ -104,7 +104,7 @@ function attachEventHandlers () {
         event.preventDefault();
 
         // do not proceed if there are errors
-        if (document.querySelectorAll('#filters [aria-invalid]').length) {
+        if (document.querySelectorAll('#filters [aria-invalid="true"]').length) {
             return false;
         }
 
@@ -537,9 +537,10 @@ function validateDateInput (element) {
         isValid = false;
         element.attr('aria-invalid', true);
     } else {
-        searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
-        searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
-        element.attr('aria-invalid', false);
+        // searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
+        // searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
+        searchUtils.removeError(element.closest('.date-entry__input-group'));
+        element.removeAttr('aria-invalid');
     }
 
     return isValid;
