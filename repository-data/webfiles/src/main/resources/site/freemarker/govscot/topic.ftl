@@ -7,7 +7,7 @@
 
     <header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
         <#if document.image??>
-            <img src="<@hst.link hippobean=document.image.bannerdesktop/>" class="topic-header__image">
+            <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="topic-header__image">
         </#if>
 
         <h1 class="article-header  topic-header__title">${document.title}</h1>

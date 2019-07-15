@@ -15,7 +15,7 @@
             <input title="This page was not helpful" type="radio" class="js-feedback-type" id="feedback-type-no" data-gtm="fdbk-no" name="feedback-type" value="no"/><label class="feedback__radio-label" for="feedback-type-no">No</label>
 
             <input title="This page was helpful but" type="radio" class="js-feedback-type" id="feedback-type-yesbut" data-gtm="fdbk-yesbut" name="feedback-type" value="yesbut"/><label class="feedback__radio-label" for="feedback-type-yesbut">Yes, but</label>
-          </fieldsset>
+          </fieldset>
         </div>
 
         <div class="grid"><!--
