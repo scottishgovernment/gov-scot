@@ -101,8 +101,6 @@ function attachEventHandlers () {
     let that = this;
 
     $('#filters').on('submit', function (event) {
-console.log('submit search!')
-
         event.preventDefault();
 
         // do not proceed if there are errors
