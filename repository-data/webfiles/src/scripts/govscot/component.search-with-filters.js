@@ -254,6 +254,12 @@ function attachEventHandlers () {
         let filtersForm = $('#filters');
         filtersForm.find('input[type="checkbox"]').prop('checked', false);
         filtersForm.find('input[type="text"]').val('');
+        filtersForm.find('input[aria-invalid], textarea[aria-invalid]').removeAttr('aria-invalid');
+
+        // remove date errors
+        searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
+        searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
+
         delete that.searchParams.page;
 
         that.submitSearch();
