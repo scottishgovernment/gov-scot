@@ -1,11 +1,12 @@
 package scot.gov.www.beans;
 
-import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import java.util.Calendar;
-import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
+
+import java.util.Calendar;
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:Issue")
 @Node(jcrType = "govscot:Issue")
@@ -43,11 +44,6 @@ public class Issue extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:showOnTopicsLandingPage")
     public Boolean getShowOnTopicsLandingPage() {
         return getProperty("govscot:showOnTopicsLandingPage");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:issueTag")
-    public String getIssueTag() {
-        return getProperty("govscot:issueTag");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:featureDateSummary")
@@ -89,4 +85,7 @@ public class Issue extends SimpleContent {
     public BannerImages getImage() {
         return getLinkedBean("govscot:image", BannerImages.class);
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:newsTags")
+    public String[] getNewsTags() { return getProperty("govscot:newsTags"); }
 }

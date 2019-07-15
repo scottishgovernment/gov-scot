@@ -100,7 +100,7 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     private List<HippoBean> getLatestNews(HstRequest request, Policy policy) {
-        if (policy.getPolicyTags().length == 0) {
+        if (policy.getNewsTags().length == 0) {
             return new ArrayList<>();
         }
 
@@ -125,7 +125,7 @@ public class PolicyComponent extends BaseHstComponent {
 
     private Constraint[] tagConstraints(Policy policy) {
         ArrayList<Constraint> tagConstraints = new ArrayList<>();
-        for (String tag : policy.getPolicyTags()) {
+        for (String tag : policy.getNewsTags()) {
             tagConstraints.add(constraint("govscot:policyTags").equalToCaseInsensitive(tag));
         }
         return tagConstraints.toArray(new Constraint[tagConstraints.size()]);

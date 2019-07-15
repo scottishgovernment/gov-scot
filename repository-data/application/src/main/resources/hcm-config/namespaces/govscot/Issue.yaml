@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 80eede04-d0c5-46f5-8492-59766a4fe0cd
+          jcr:uuid: 8c4638e3-d658-4aef-a3be-c0866a5cab7a
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -143,6 +143,14 @@ definitions:
             hipposysedit:path: govscot:sme
             hipposysedit:primary: false
             hipposysedit:type: Text
+          /newsTags:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:newsTags
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -163,13 +171,15 @@ definitions:
           govscot:includeTwitterReplies: false
           govscot:showOnTopicsLandingPage: false
           govscot:title: ''
-          jcr:uuid: abdcc487-85e7-4bbf-adc3-79095f348f8e
+          jcr:uuid: 88f3114b-a115-4681-9da7-23e3b754cc94
           hippostdpubwf:lastModificationDate: 2018-04-23T13:01:39.688+01:00
           hippostdpubwf:creationDate: 2018-04-23T13:01:39.688+01:00
           govscot:featureDateTitle: ''
           govscot:featureDateSummary: ''
           govscot:socialMediaTitle: ''
           govscot:includeFeedback: false
+          govscot:sme: ''
+          govscot:newsTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -459,6 +469,11 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Reporting Tags
             field: reportingTags
+            source: /content/documents/govscot/valuelists/reportingTags
+          /newsTags:
+            jcr:primaryType: frontend:plugin
+            caption: News Tags
+            field: newsTags
             multiselect.type: palette
             palette.alloworder: false
             palette.maxrows: '8'
@@ -466,6 +481,7 @@ definitions:
             selectlist.maxrows: '8'
             valuelist.provider: service.valuelist.default
             wicket.id: ${cluster.id}.field
+            hint: Select the tags associated with this issue
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              source: /content/documents/govscot/valuelists/reportingTags
+            source: /content/documents/govscot/valuelists/topicTags

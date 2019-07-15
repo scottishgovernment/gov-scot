@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 3b969b39-6988-4021-8b35-fa79e56ecd93
+          jcr:uuid: e05e5f68-721c-4506-bb98-a2c087f88072
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -95,6 +95,14 @@ definitions:
             hipposysedit:path: govscot:sme
             hipposysedit:primary: false
             hipposysedit:type: Text
+          /newsTags:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:newsTags
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -110,10 +118,11 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 6758f522-2544-4c29-b485-0ee7239eba92
+          jcr:uuid: f4336ab9-def7-4c79-8eb3-ae4f367fa5cf
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:sme: ''
+          govscot:newsTags: []
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
@@ -367,6 +376,11 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Reporting Tags
             field: reportingTags
+            source: /content/documents/govscot/valuelists/reportingTags
+          /newsTags:
+            jcr:primaryType: frontend:plugin
+            caption: News Tags
+            field: newsTags
             multiselect.type: palette
             palette.alloworder: false
             palette.maxrows: '8'
@@ -374,6 +388,7 @@ definitions:
             selectlist.maxrows: '8'
             valuelist.provider: service.valuelist.default
             wicket.id: ${cluster.id}.field
+            hint: Select the tags associated with this issue
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              source: /content/documents/govscot/valuelists/reportingTags
+            source: /content/documents/govscot/valuelists/policyTags
