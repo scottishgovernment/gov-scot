@@ -101,7 +101,14 @@ function attachEventHandlers () {
     let that = this;
 
     $('#filters').on('submit', function (event) {
+console.log('submit search!')
+
         event.preventDefault();
+
+        // do not proceed if there are errors
+        if (document.querySelectorAll('#filters [aria-invalid]').length) {
+            return false;
+        }
 
         if (!that.isChangingPage) {that.searchParams.page = 1;}
 
@@ -325,8 +332,8 @@ function gatherParams (initial) {
     if ($('#filter-date-range').length) {
         searchParams.date = searchParams.date || {};
 
-        searchParams.date.begin = $('#date-from').val();
-        searchParams.date.end = $('#date-to').val();
+        searchParams.date.begin = encodeURI($('#date-from').val());
+        searchParams.date.end = encodeURI($('#date-to').val());
     }
 
     return searchParams;
@@ -509,6 +516,7 @@ function validateDateInput (element) {
     if (!element.val().match(dateRegex) && element.val() !== '') {
         searchUtils.addError('Please enter date in dd/mm/yyyy format', inputGroup);
         isValid = false;
+        element.attr('aria-invalid', true);
         return isValid;
     }
 
@@ -523,9 +531,11 @@ function validateDateInput (element) {
     if (dateTo.getTime() < dateFrom.getTime()) {
         searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', element.closest('.date-entry__input-group'));
         isValid = false;
+        element.attr('aria-invalid', true);
     } else {
         searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
         searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
+        element.attr('aria-invalid', false);
     }
 
     return isValid;
