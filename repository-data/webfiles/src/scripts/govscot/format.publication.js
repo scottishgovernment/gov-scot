@@ -226,13 +226,15 @@ publicationPage.loadSubPageHtml = function (url, updateHistory) {
         .done(function (data) {
             const bodyContentWrapper = document.querySelector('.js-content-wrapper');
 
-            // parse the HTML string and extract the part we want
+            // parse the HTML string and extract the parts we want
             const element = document.createElement('div');
             element.insertAdjacentHTML('beforeend', data);
             const newContents = element.querySelector('.js-content-wrapper');
+            const newStickyHeader = element.querySelector('.sticky-document-info');
 
             // insert new HTML
             bodyContentWrapper.innerHTML = newContents.innerHTML;
+            document.querySelector('.sticky-document-info').innerHTML = newStickyHeader.innerHTML;
 
             // scroll to top of content
             const targetOffset = $('.js-content-wrapper').offset().top - parseInt($('.sticky-document-info').height(), 10);
