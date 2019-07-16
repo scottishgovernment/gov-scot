@@ -376,7 +376,16 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Reporting Tags
             field: reportingTags
-            source: /content/documents/govscot/valuelists/reportingTags
+            multiselect.type: palette
+            palette.alloworder: false
+            palette.maxrows: '8'
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/reportingTags
           /newsTags:
             jcr:primaryType: frontend:plugin
             caption: News Tags
@@ -391,4 +400,4 @@ definitions:
             hint: Select the tags associated with this issue
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-            source: /content/documents/govscot/valuelists/policyTags
+              source: /content/documents/govscot/valuelists/policyTags
