@@ -15,16 +15,16 @@
         "url": "https://www.gov.scot",
         "logo": {
             "@type": "ImageObject",
-            "url": "<@hst.link path='assets/images/logos/scotgovlogo.svg' />"
+            "url": "<@hst.link path='assets/images/logos/scotgovlogo.png' />"
         }
     },
 
-    "headline": "${document.title?js_string}",
+    "headline": "${document.title?json_string}",
     "dateModified": "<@fmt.formatDate value=document.getProperty('hippostdpubwf:lastModificationDate').time type="Date" pattern="yyyy-MM-dd" />",
     <#if document.publicationDate??>
         "datePublished": "<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="yyyy-MM-dd" />",
     </#if>
-    "description": "${document.metaDescription?js_string}",
+    "description": "${document.metaDescription?json_string}",
 
     "publisher": {
         "@type": "Organization",
@@ -32,7 +32,7 @@
         "url": "https://www.gov.scot",
         "logo": {
             "@type": "ImageObject",
-            "url": "<@hst.link path='assets/images/logos/scotgovlogo.svg' />"
+            "url": "<@hst.link path='assets/images/logos/scotgovlogo.png' />"
         }
     }
 }
