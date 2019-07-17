@@ -82,7 +82,7 @@ public class NewsComponent extends EssentialsContentComponent {
      */
     private Constraint[] tagConstraints(Set<String> tags) {
         return tags.stream()
-                .map(tag -> constraint("govscot:policyTags").equalToCaseInsensitive(tag))
+                .map(tag -> constraint("govscot:newsTags").equalTo(tag))
                 .collect(toList())
                 .toArray(new Constraint[tags.size()]);
     }
