@@ -21,7 +21,7 @@ definitions:
       hipposys:groups: [cmsadmin, core-content-authors, core-content-editors, document-unlocker,
         foi-authors, foi-editors, group-authors, group-editors, image-editors, mourning-banner,
         policy-authors, policy-editors, previewusers, publication-authors, publication-editors,
-        readonly, topics-issues-authors, topics-issues-editors, useradmin, news-editors]
+        readonly, topics-issues-authors, topics-issues-editors, useradmin, news-editors, collection-authors, collection-editors]
       hipposys:role: readonly
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole

@@ -4,7 +4,7 @@ definitions:
       hipposys:groups: [author, cmsadmin, core-content-authors, core-content-editors,
         document-unlocker, editor, foi-authors, foi-editors, group-authors, group-editors,
         policy-authors, policy-editors, publication-authors, publication-editors,
-        topics-issues-authors, topics-issues-editors, news-editors]
+        topics-issues-authors, topics-issues-editors, news-editors, collection-authors, collection-editors]
     /hippo:configuration/hippo:domains/hippofolders/hippostd-folder/exclude-valuelists-folder:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false

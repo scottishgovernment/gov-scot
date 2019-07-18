@@ -3,4 +3,4 @@ definitions:
     /hippo:configuration/hippo:domains/hipporequests/editor:
       hipposys:groups: [cmsadmin, core-content-editors, editor, foi-editors, group-editors,
         housing-editors, policy-editors, publication-editors, topics-issues-editors,
-        useradmin, news-editors]
+        useradmin, news-editors, collection-editors]

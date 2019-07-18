@@ -1,0 +1,35 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/collections:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, collection-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [collection-authors]
+        hipposys:role: author
+      /collection-documents:
+        jcr:primaryType: hipposys:domainrule
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
+        /nodetype-hippo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hippo:document
+        /include-collection-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/collections/

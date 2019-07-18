@@ -5,7 +5,7 @@ definitions:
         editor, foi-authors, foi-editors, group-authors, group-editors, housing-authors,
         housing-editors, image-editors, policy-authors, policy-editors, publication-authors,
         publication-editors, topics-issues-authors, topics-issues-editors, useradmin,
-        news-editors]
+        news-editors, collection-authors, collection-editors]
     /hippo:configuration/hippo:domains/defaultwrite/admin:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: []
