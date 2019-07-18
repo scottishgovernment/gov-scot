@@ -1,0 +1,138 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/CollectionGroup:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 68447f73-d7ce-41fd-a714-7b3061f7676f
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: baed3ee6-80fa-457e-831d-2bf149b706a9
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['hipposysedit:remodel', 'mix:referenceable']
+          jcr:uuid: 3dd49ce9-ebd8-4c42-8165-f1ff506d5751
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippo:compound', 'hippostd:relaxed']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /groupTitle:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: true
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:groupTitle
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /description:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:description
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /collectionItems:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:collectionItems
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /order:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:order
+            hipposysedit:primary: false
+            hipposysedit:type: selection:BooleanRadioGroup
+          /highlight:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:highlight
+            hipposysedit:primary: false
+            hipposysedit:type: selection:BooleanRadioGroup
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:CollectionGroup
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /groupTitle:
+            jcr:primaryType: frontend:plugin
+            caption: Group heading
+            field: groupTitle
+            hint: Enter the heading for this group of publications.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /description:
+            jcr:primaryType: frontend:plugin
+            caption: Description
+            field: description
+            hint: Enter a description explaining the reason for grouping these publications.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              ckeditor.config.appended.json: "{\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\": \"\
+                styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\": \"cleanup\"\
+                \t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\",\t\
+                \t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\"name\"\
+                : \"clipboard\"\t}, {\t\t\"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\
+                \t}, {\t\t\"name\": \"mygov\"\t}],\t\"extraPlugins\": \"mygov_infonote,simple_tables\"\
+                ,        \"contentsCss\": [                \"ckeditor/hippocontents.css\"\
+                ,                \"ckeditor/ckeditorstyle.css\"        ],       \"youtube_responsive\"\
+                : true,       \"youtube_privacy\": true,       \"youtube_disabled_fields\"\
+                : [\"chkResponsive\", \"chkPrivacy\", \"txtEmbed\", \"chkOlderCode\"],\
+                \       \"extraAllowedContent\": { \"span\": { \"attributes\": \"class\"\
+                , classes: \"*\" } }}"
+          /collectionItems:
+            jcr:primaryType: frontend:plugin
+            caption: Publications
+            field: collectionItems
+            hint: Add publications - these can be manually reordered with the arrow buttons, or ordered by date by selecting 'yes' to 'Order by date?' below.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Publication', 'govscot:SpeechOrStatement', 'govscot:Minutes', 'govscot:FOI', 'govscot:ComplexDocument']
+          /order:
+            jcr:primaryType: frontend:plugin
+            caption: 'Order by date?'
+            field: order
+            hint: 'Select if the publications should be ordered by date, newest to oldest. If not, you can manually order the items above using the arrow buttons.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              falseLabel: 'No'
+              trueLabel: 'Yes'
+          /highlight:
+            jcr:primaryType: frontend:plugin
+            caption: 'Highlight first item?'
+            field: highlight
+            hint: 'Select if the first item in the list should be highlighted.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              falseLabel: 'No'
+              trueLabel: 'Yes'

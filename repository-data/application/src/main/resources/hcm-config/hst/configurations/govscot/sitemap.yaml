@@ -315,3 +315,13 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications
+      /collections:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/collectionpage
+        hst:relativecontentpath: collections
+        hst:sitemapitemhandlerids: [trailing-slash]
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/collectionpage
+          hst:relativecontentpath: collections/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]

@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #COLLECTIONS LIST
+\*------------------------------------*/
+
+// Negative left indent if first item is highlighted
+
+.collections-list .listed-content-item--highlight {
+  margin-left: -12px;
+}
+
+@include media-query(medium) {
+  .collections-list .listed-content-item--highlight {
+    margin-left: -20px;
+  }
+}

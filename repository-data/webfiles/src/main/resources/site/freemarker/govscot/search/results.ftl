@@ -48,13 +48,13 @@
                                     <div class="listed-content-item__meta">
                                         <div class="listed-content-item__meta-right">
                                             <#if item.publicationDate??>
-                                                <span class="listed-content-item__date">
+                                                <p class="listed-content-item__date">
                                                     <#assign dateFormat = "dd MMM yyyy">
                                                     <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                                                         <#assign dateFormat = "dd MMM yyyy KK:mm">
                                                     </#if>
                                                     <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat />
-                                                </span>
+                                                </p>
                                             </#if>
                                         </div>
 

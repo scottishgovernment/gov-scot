@@ -134,3 +134,6 @@ definitions:
       /complexdocument.page:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/complexdocument/page.ftl
+      /collection:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/collection.ftl

@@ -16,6 +16,12 @@
 
 [govscot:BannerImages] > hippogallery:imageset, hippogallery:relaxed
 
+[govscot:Collection] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:CollectionGroup] > hippo:compound, hippostd:relaxed
+  orderable
+
 [govscot:ComplexDocument] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

@@ -5,6 +5,7 @@
 
 .listed-content-item {
     margin: 0;
+    list-style-type: none;
 
     &__link {
         color: $color__body !important;
@@ -87,7 +88,6 @@
 
     &__date {
         color: $color__grey--text;
-        display: block;
         font-size: 12px;
         line-height: 14px;
         margin-bottom: 7px;
@@ -279,6 +279,10 @@ h1,h2,h3,h4 {
     .listed-content-item__title {
         font-size: 18px;
         line-height: 28px;
+    }
+
+    .listed-content-item__summary {
+        margin-bottom: 7px;
     }
 }
 

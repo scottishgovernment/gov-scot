@@ -1,0 +1,294 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/Collection:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 65bb9bbd-e617-426c-9929-8bd7aba65b4b
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 78eb922d-fb9a-40d8-88ff-1cf78db8859d
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: 8f2c44d6-b0a4-481a-9526-8d3be78e1b57
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
+            'hippotranslation:translated']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /groups:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:groups
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:CollectionGroup
+          /slug:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:slug
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required, publication-slug, publication-slug-spaces, publication-slug-dots]
+          /sme:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:sme
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /contact:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contact
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:Collection
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 28feb0d0-7458-4b99-9db7-d307cd3a2b03
+          hippostdpubwf:lastModificationDate: 2019-04-29T16:33:33.694+01:00
+          hippostdpubwf:creationDate: 2019-04-29T16:33:33.694+01:00
+          govscot:seoTitle: ''
+          govscot:metaDescription: ''
+          govscot:title: ''
+          govscot:summary: ''
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:responsibleDirectorate:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:responsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /title:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: title
+            hint: This is the main title for this content item.  The title needs to
+              be descriptive and concise.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /slug:
+            jcr:primaryType: frontend:plugin
+            caption: Slug
+            field: slug
+            hint: This is used to determine the URL of this publication.  It must
+              be unique and should ideally be a short, URL friendly version of the title.
+              Slugs should be limited to no more than 60 characters.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /summary:
+            jcr:primaryType: frontend:plugin
+            caption: Summary
+            field: summary
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /content:
+            jcr:primaryType: frontend:plugin
+            caption: Introduction
+            field: content
+            hint: Provide a brief overview/description of this collection.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              ckeditor.config.appended.json: "{\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
+                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
+                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
+                \"name\": \"clipboard\"\t}, {\t\t\"name\": \"insert\"\t}, {\t\t\"\
+                name\": \"tools\"\t}, {\t\t\"name\": \"mygov\"\t}],\t\"extraPlugins\"\
+                : \"mygov_infonote,simple_tables\",        \"contentsCss\": [    \
+                \            \"ckeditor/hippocontents.css\",                \"ckeditor/ckeditorstyle.css\"\
+                \        ],       \"youtube_responsive\": true,       \"youtube_privacy\"\
+                : true,       \"youtube_disabled_fields\": [\"chkResponsive\", \"\
+                chkPrivacy\", \"txtEmbed\", \"chkOlderCode\"],       \"extraAllowedContent\"\
+                : { \"span\": { \"attributes\": \"class\", classes: \"*\" } }}"
+          /groups:
+            jcr:primaryType: frontend:plugin
+            caption: Publication groups
+            field: groups
+            hint: Add one or more groups of publications that make up this collection.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /contact:
+            jcr:primaryType: frontend:plugin
+            caption: Contact details
+            field: contact
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Provide contact information for the collection (where possible)
+              or use the central enquiry unit's contact details.
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /responsibleDirectorate:
+            jcr:primaryType: frontend:plugin
+            caption: Primary responsible directorate
+            field: responsibleDirectorate
+            hint: Select the primary directorate responsible for the content item.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Directorate']
+          /secondaryResponsibleDirectorate:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary responsible directorate(s)
+            field: secondaryResponsibleDirectorate
+            hint: Select any secondary directorate(s) responsible for this content
+              item.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/how-government-is-run/directorates
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Directorate']
+          /topics:
+            jcr:primaryType: frontend:plugin
+            caption: Topics and issues
+            field: topics
+            hint: Select one or more topics related to this content item, e.g. Economy
+              or Energy. Please also select any issues/campaigns related to the content
+              item, e.g. Brexit or Year of Young People 2018.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/topics/
+              last.visited.enabled: 'false'
+          /responsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Primary responsible role
+            field: responsibleRole
+            hint: Select the primary role responsible for this content item e.g. Cabinet
+              Secretary for …
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Role', 'govscot:Person']
+          /secondaryResponsibleRole:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary responsible role(s)
+            field: secondaryResponsibleRole
+            hint: Select any secondary responsible role(s) for this content item e.g.
+              Minister for …
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              base.path: /content/documents/govscot/about/
+              last.visited.enabled: 'false'
+              nodetypes: ['govscot:Role', 'govscot:Person']
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO title
+            field: seoTitle
+            hint: 'This title is used by search engines and social media for indexing
+              this content item.  The title needs to be brief and concise.  Note:
+              Search engines and social media only use first 60 characters.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta description
+            field: metaDescription
+            hint: 'A description of this content item for search engine indexing purposes.  Note:
+              Meta descriptions should be limited to no more than 300 characters -
+              approx. 50 words.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /tags:
+            jcr:primaryType: frontend:plugin
+            mixin: hippostd:taggable
+            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /sme:
+            jcr:primaryType: frontend:plugin
+            caption: Subject matter expert / policy contact
+            field: sme
+            hint: The contents of the SME / policy contact field will not be displayed.
+              It should be used to enter details of the the subject matter expert
+              / policy contact associated with this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /reportingTags:
+            jcr:primaryType: frontend:plugin
+            caption: Reporting Tags
+            field: reportingTags
+            multiselect.type: palette
+            palette.alloworder: false
+            palette.maxrows: '8'
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/reportingTags

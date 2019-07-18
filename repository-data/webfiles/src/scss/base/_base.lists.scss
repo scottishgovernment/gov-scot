@@ -21,6 +21,10 @@ li.no-left-margin {
     margin-left: 0;
 }
 
+ul.no-left-margin {
+    margin-left: 0;
+}
+
 article ol {
   counter-reset: li;
   list-style-type: none;

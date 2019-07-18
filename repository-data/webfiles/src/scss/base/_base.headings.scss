@@ -315,6 +315,6 @@ h2.emphasis {
 }
 
 //Fix for spacing in additional content (e.g. groups). Combines with h4's 7px bottom margin
-h4 + ul {
+h4 + ul, h3 + ul, h2 + ul {
   margin-top: 14px;
 }

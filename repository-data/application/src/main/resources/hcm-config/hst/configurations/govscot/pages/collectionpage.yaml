@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/collectionpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:template: collection
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback
