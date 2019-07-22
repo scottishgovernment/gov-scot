@@ -24,15 +24,6 @@ definitions:
             hipposysedit:path: govscot:groups
             hipposysedit:primary: false
             hipposysedit:type: govscot:CollectionGroup
-          /slug:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:slug
-            hipposysedit:primary: false
-            hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required, publication-slug, publication-slug-spaces, publication-slug-dots]
           /sme:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -93,17 +84,6 @@ definitions:
             field: title
             hint: This is the main title for this content item.  The title needs to
               be descriptive and concise.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /slug:
-            jcr:primaryType: frontend:plugin
-            caption: Slug
-            field: slug
-            hint: This is used to determine the URL of this publication.  It must
-              be unique and should ideally be a short, URL friendly version of the title.
-              Slugs should be limited to no more than 60 characters.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
