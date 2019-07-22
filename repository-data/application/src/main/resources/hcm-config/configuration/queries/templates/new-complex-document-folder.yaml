@@ -37,6 +37,7 @@ definitions:
               govscot:seoTitle: ''
               govscot:summary: ''
               govscot:title: ''
+              govscot:displayPrimaryDocument: true
               hippo:availability: [preview]
               hippostd:state: unpublished
               hippostdpubwf:createdBy: admin

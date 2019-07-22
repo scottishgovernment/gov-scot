@@ -291,8 +291,7 @@
 
                     </div><!--
                     --><div class="grid__item  medium--three-tenths  xlarge--two-tenths">
-
-                        <#if document.displayPrimaryDocument == true>
+                        <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
                             <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
                                 <#if documents??>
                                     <#assign firstDocument = documents[0]/>
@@ -342,20 +341,21 @@
                             </a>
                         </#if>
 
-                        <#if (documents?? && documents?size gt 1) || groupedDocumentFolders??>
+                        <#if (displaySupportingDocuments == true)>
                             <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
                                 <div class="icon-button__content">
-                                    <span class="icon-button__icon">
-                                        <svg class="svg-icon  mg-icon">
-                                            <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="icon-button__text">
-                                        Supporting documents
-                                    </span>
+                                        <span class="icon-button__icon">
+                                            <svg class="svg-icon  mg-icon">
+                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="icon-button__text">
+                                            Supporting documents
+                                        </span>
                                 </div>
                             </a>
                         </#if>
+
                     </div><!--
                 --></div>
             </div><!--

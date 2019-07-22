@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 6535b51a-6713-4b5f-a6ce-cf0998c7905f
+          jcr:uuid: 531ce956-ae92-4b31-bced-682bf1e467cd
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -23,12 +23,20 @@ definitions:
             hipposysedit:path: govscot:revisions
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /displayPrimaryDocument:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:displayPrimaryDocument
+            hipposysedit:primary: false
+            hipposysedit:type: Boolean
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
           jcr:primaryType: govscot:ComplexDocument2
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 12c5b735-f64c-42e3-a6d2-cdb7b426ff99
+          jcr:uuid: 0032ada4-4430-43d3-8297-e02e14644116
           govscot:isbn: ''
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
@@ -47,6 +55,8 @@ definitions:
           hippotranslation:locale: document-type-locale
           govscot:sme: ''
           govscot:slug: ''
+          govscot:displayPrimaryDocument: false
+          govscot:reportingTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -90,6 +100,17 @@ definitions:
             hint: This is used to determine the URL of this publication.  It must
               be unique and should ideally be a short, URL friendly version of the
               title. Slugs should be limited to no more than 60 characters.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /displayPrimaryDocument:
+            jcr:primaryType: frontend:plugin
+            caption: Display primary document
+            field: displayPrimaryDocument
+            hint: Most complex documents are the HTML representation of a large PDF
+              document. If this is not the case for this document then you can uncheck
+              this to suppress the display of a primary document.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

@@ -83,12 +83,35 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
             request.setAttribute("groupedDocumentFolders", documentFolder.getFolders());
         }
 
-        // send a 404 for the /documents/ path if there's only one or zero documents and no grouped folders
-        if (isDocumentsPage && (hasGroupedFolderContent || documentFolder.getDocuments().size() > 1)){
+        request.setAttribute(
+                "displaySupportingDocuments",
+                shouldDisplaySupportingDocumentButton(publication, hasGroupedFolderContent, documentFolder.getDocuments())
+        );
+
+        // send a 404 for the /documents/ path if there are no documents
+        if (isDocumentsPage && (hasGroupedFolderContent || !documentFolder.getDocuments().isEmpty())){
             request.setAttribute("isDocumentsPage", true);
         } else if (isDocumentsPage) {
             send404(response);
         }
+    }
+
+    private boolean shouldDisplaySupportingDocumentButton(
+            HippoBean publication,
+            boolean hasGroupedFolderContent,
+            List<HippoDocumentBean> documents) {
+        // display the link if there are grouped folders under the document folder
+        if (hasGroupedFolderContent) {
+            return true;
+        }
+
+        // we are showing the document so we only need to display the link of there are more than one documents
+        if (publication.getProperty("govscot:displayPrimaryDocument")) {
+            return documents.size() > 1;
+        }
+
+        // we are not showing the primary document so we should show the link if there are any documents
+        return !documents.isEmpty();
     }
 
     private void setChapters(HippoBean publication, HippoBean document, HstRequest request) {

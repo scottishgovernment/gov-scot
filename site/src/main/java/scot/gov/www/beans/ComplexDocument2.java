@@ -77,6 +77,16 @@ public class ComplexDocument2 extends AttributableContent {
         return getHippoHtml("govscot:notes");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:displaPrimaryDocument")
+    public boolean getDisplayPrimaryDocument() {
+        return getProperty("govscot:displayPrimaryDocument");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:displaPrimaryDocument")
+    public boolean getDisplaySupportingDocuments() {
+        return getProperty("govscot:displaySupportingDocuments");
+    }
+
     public String getLabel() {
         final ValueList publicationValueList = SelectionUtil
                 .getValueListByIdentifier("publicationTypes",
