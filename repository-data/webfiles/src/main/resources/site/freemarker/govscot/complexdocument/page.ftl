@@ -30,6 +30,8 @@
 
                 <h1 class="article-header__title">${document.title}</h1>
                 <p>${document.summary}</p>
+
+                <#include '../common/collections-list.ftl'/>
             </div><!--
         --></div>
     </header>

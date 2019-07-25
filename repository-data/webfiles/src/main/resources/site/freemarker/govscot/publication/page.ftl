@@ -34,6 +34,8 @@
                                     <#list document.summary?split("\n") as summaryParagraph>
                                         <p class="leader">${summaryParagraph}</p>
                                     </#list>
+
+                                    <#include '../common/collections-list.ftl'/>
                                 </div><!--
                                 </#if>
                          --></div>
@@ -87,6 +89,8 @@
                                 <#list document.summary?split("\n") as summaryParagraph>
                                     <p>${summaryParagraph}</p>
                                 </#list>
+
+                                <#include '../common/collections-list.ftl'/>
                             </div>
                         </div><!--
                  --></div>

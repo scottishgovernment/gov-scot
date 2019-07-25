@@ -9,6 +9,7 @@ import pageGroup from '../shared/component.page-group';
 import displayToggle from './component.display-toggle';
 import stickyBackToTop from './component.sticky-back-to-top';
 import '../shared/component.sticky-document-info';
+import './component.expandable';
 
 const publicationPage = {},
     pages = {},

@@ -16,10 +16,10 @@ import org.hippoecm.hst.util.ContentBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.PolicyLatest;
+import scot.gov.www.beans.Collection;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,6 +34,8 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
 
     private static final String POLICIES = "policies";
 
+    private static final String COLLECTIONS = "collections";
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
@@ -46,6 +48,7 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
         request.setAttribute("document", publication);
         populateRequest(publication, document, request, response);
         populatePolicyAttribution(request, publication);
+        populateCollectionAttribution(request, publication);
     }
 
     /**
@@ -75,7 +78,24 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
         }
     }
 
-    private Collection<String> policyNames(HstQueryResult result) {
+    public void populateCollectionAttribution(HstRequest request, HippoBean publication) {
+        try {
+            // find any Collection documents that link to the content bean in this request
+            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
+                    (HippoDocumentBean) publication,
+                    request.getRequestContext().getSiteContentBaseBean(),
+                    "*/*/@hippo:docbase",
+                    Collection.class,
+                    false);
+            HstQueryResult result = query.execute();
+            request.setAttribute(COLLECTIONS, collectionsBeans(result));
+        } catch (QueryException e) {
+            LOG.warn("Unable to get collections for content item {}", request.getRequestURI(), e);
+            request.setAttribute(COLLECTIONS, Collections.emptyList());
+        }
+    }
+
+    private java.util.Collection<String> policyNames(HstQueryResult result) {
         // convert the resulting beans to a list of policy names
         List<String> policyNodes = new ArrayList<>();
         HippoBeanIterator it = result.getHippoBeans();
@@ -84,6 +104,17 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
             policyNodes.add(policyLatest.getParentBean().getName());
         }
         return policyNodes;
+    }
+
+    private List<HippoBean> collectionsBeans(HstQueryResult result) {
+        // convert the iterator to a list of hippo beans - otherwise size method fails
+        List<HippoBean> collectionsBeans = new ArrayList<>();
+        HippoBeanIterator it = result.getHippoBeans();
+        while (it.hasNext()) {
+            HippoBean collection = it.nextHippoBean();
+            collectionsBeans.add(collection);
+        }
+        return collectionsBeans;
     }
 
     protected void send404(HstResponse response){
@@ -129,4 +160,5 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
 
         return pages.get(index + 1);
     }
+
 }

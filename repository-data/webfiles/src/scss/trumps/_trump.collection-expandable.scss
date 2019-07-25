@@ -1,0 +1,39 @@
+/*------------------------------------*\
+    #COLLECTION EXPANDABLE
+    modifier for Mygov Assets expandable
+\*------------------------------------*/
+
+.collection-expandable {
+  margin-bottom: 35px;
+  position: relative;
+
+  .expandable-item__header {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 50px;
+    background-image: url(../../../../assets/images/icons/collection.png);
+    @include image-2x('../../../../assets/images/icons/collection_@2x.png', 30px, 30px);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 10px center;
+  }
+
+  .expandable-item__body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .contents-list__link {
+    padding-top: 13px;
+    padding-bottom: 14px;
+    padding-left: 15px;
+  }
+}
+
+@include media-query(medium) {
+  .contents-expandable {
+    .expandable-item__body {
+      margin-left: 21px;
+    }
+  }
+}
