@@ -15,7 +15,7 @@ let Expandable = {
         that.expandable = $('.expandable');
 
         // init all data-gtm to being closed
-        that.expandable.find('a.expandable-item__header').each(function () {
+        that.expandable.find('.expandable-item__header').each(function () {
             $(this).attr('data-gtm', 'panel-closed');
         });
 
@@ -66,6 +66,7 @@ let Expandable = {
 
     openExpandableItem: function (expandableItem) {
         let expandableItemBody = expandableItem.find('.expandable-item__body');
+        let expandableItemHeader = expandableItem.find('.expandable-item__header');
 
         expandableItemBody.attr('aria-expanded', 'true');
         expandableItem.addClass('expandable-item--open');
@@ -74,11 +75,12 @@ let Expandable = {
             expandableItem.closest('.grid__item').toggleClass('foo');
             expandableItem.closest('.grid__item').toggleClass('foo');
         });
-        $(this).attr('data-gtm', 'panel-opened');
+        expandableItemHeader.attr('data-gtm', 'panel-opened');
     },
 
     closeExpandableItem: function (expandableItem) {
         let expandableItemBody = expandableItem.find('.expandable-item__body');
+        let expandableItemHeader = expandableItem.find('.expandable-item__header');
 
         expandableItemBody.attr('aria-expanded', 'false');
         expandableItem.removeClass('expandable-item--open');
@@ -87,7 +89,7 @@ let Expandable = {
             expandableItem.closest('.grid__item').toggleClass('foo');
             expandableItem.closest('.grid__item').toggleClass('foo');
         });
-        $(this).attr('data-gtm', 'panel-closed');
+        expandableItemHeader.attr('data-gtm', 'panel-closed');
     },
 
     showAllExpandableItems: function () {
