@@ -444,3 +444,19 @@ button.button.remove div:after {
 button.button.add div:after {
     content: '\2192';
 }
+
+/* Show move and close buttons in collection group publications */
+
+.hippo-node-field-type-govscot-collectiongroup .hippo-editor-field-subfield-item .hippo-editor-field-subfield-controls+.hippo-editor-field-subfield-item
+{
+    display: inline-block;
+}
+
+.hippo-node-field-type-govscot-collectiongroup .hippo-editor-field-subfield-controls {
+    opacity: 1;
+}
+
+.hippo-node-field-type-govscot-collectiongroup .hippo-editor-field-subfield-item .hippo-editor-field-subfield-controls {
+    display: inline-block;
+    position: relative;
+}
