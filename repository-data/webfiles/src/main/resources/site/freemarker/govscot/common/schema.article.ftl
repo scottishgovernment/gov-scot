@@ -4,7 +4,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
 
-    image: "<@hst.link path='assets/images/logos/scotgovlogo.png' />",
+    "image": "<@hst.link path='assets/images/logos/scotgovlogo.png' />",
 
     "mainEntityOfPage": {
         "@type": "WebPage",
