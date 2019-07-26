@@ -111,7 +111,7 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/
+              base.path: /content/documents/govscot/publications/
               last.visited.enabled: 'false'
               nodetypes: ['govscot:Publication', 'govscot:SpeechOrStatement', 'govscot:Minutes', 'govscot:FOI', 'govscot:ComplexDocument']
           /order:
