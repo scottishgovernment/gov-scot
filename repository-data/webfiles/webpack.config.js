@@ -10,6 +10,7 @@ module.exports = {
         'global':                       './src/scripts/govscot/global.js',
 
         // format-specific entry points
+        'collection':                   './src/scripts/govscot/format.collection.js',
         'complex-document':             './src/scripts/govscot/format.complex-document.js',
         'home':                         './src/scripts/govscot/format.home.js',
         'issue-hub':                    './src/scripts/govscot/format.issue-hub.js',
