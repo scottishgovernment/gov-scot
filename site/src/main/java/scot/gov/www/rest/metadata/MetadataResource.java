@@ -14,7 +14,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -32,6 +31,8 @@ import java.util.List;
 public class MetadataResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(MetadataResource.class);
+
+    private static final String GOVSCOT_TITLE = "govscot:title";
 
     @Path("directorates")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,25 +109,24 @@ public class MetadataResource {
         return result.getNodes();
     }
 
-
     MetadataItem getMetadata(Node node) throws RepositoryException {
         MetadataItem metadataItem = new MetadataItem();
         metadataItem.setKey(node.getParent().getName());
-        metadataItem.setValue(node.getProperty("govscot:title").getString());
+        metadataItem.setValue(node.getProperty(GOVSCOT_TITLE).getString());
         return metadataItem;
     }
 
     MetadataItem getDirectorateInfo(Node node) throws RepositoryException {
         MetadataItem metadataItem = new MetadataItem();
         metadataItem.setKey(node.getParent().getParent().getName());
-        metadataItem.setValue(node.getProperty("govscot:title").getString());
+        metadataItem.setValue(node.getProperty(GOVSCOT_TITLE).getString());
         return metadataItem;
     }
 
     MetadataItem getPolicyInfo(Node node) throws RepositoryException {
         PolicyMetadataItem metadataItem = new PolicyMetadataItem();
         metadataItem.setKey(node.getParent().getParent().getName());
-        metadataItem.setValue(node.getProperty("govscot:title").getString());
+        metadataItem.setValue(node.getProperty(GOVSCOT_TITLE).getString());
         metadataItem.setTopics(topicIds(node));
         return metadataItem;
     }
