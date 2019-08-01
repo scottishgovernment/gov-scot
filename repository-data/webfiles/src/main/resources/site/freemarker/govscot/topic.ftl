@@ -63,7 +63,7 @@
                                         <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
                                         <div class="listed-content-item__meta">
                                             <div class="listed-content-item__meta-right">
-                                                <span class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></span>
+                                                <p class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></p>
                                             </div>
                                             <div class="listed-content-item__meta-left">
                                                 <p class="listed-content-item__label  js-truncate" data-lines="1">${item.label}</p>
