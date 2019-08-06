@@ -12,7 +12,7 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 @HippoEssentialsGenerated(internalName = "govscot:CollectionGroup")
 @Node(jcrType = "govscot:CollectionGroup")
 public class CollectionGroup extends HippoCompound {
-    public ArrayList<HippoBean> orderedItems = new ArrayList<>();
+    private ArrayList<HippoBean> orderedItems = new ArrayList<>();
 
     @HippoEssentialsGenerated(internalName = "govscot:groupTitle")
     public String getGroupTitle() {
