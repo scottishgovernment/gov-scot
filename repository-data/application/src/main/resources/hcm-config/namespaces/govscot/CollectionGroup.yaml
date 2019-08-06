@@ -118,7 +118,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: 'Order by date?'
             field: order
-            hint: 'Select if the publications should be ordered by date, newest to oldest. If not, you can manually order the items above using the arrow buttons.'
+            hint: Select if the publications should be ordered by date, newest to oldest. The publication's Publication Date will be used for ordering - if one has not been set, the date it was last updated will be used.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

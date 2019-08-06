@@ -4,12 +4,16 @@ import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerat
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoCompound;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 
 @HippoEssentialsGenerated(internalName = "govscot:CollectionGroup")
 @Node(jcrType = "govscot:CollectionGroup")
 public class CollectionGroup extends HippoCompound {
+    public ArrayList<HippoBean> orderedItems = new ArrayList<>();
+
     @HippoEssentialsGenerated(internalName = "govscot:groupTitle")
     public String getGroupTitle() {
         return getProperty("govscot:groupTitle");
@@ -35,4 +39,12 @@ public class CollectionGroup extends HippoCompound {
         return getProperty("govscot:highlight");
     }
 
+    public void setOrderedItems(List<HippoBean> orderedItems){
+        this.orderedItems.clear();
+        this.orderedItems.addAll(orderedItems);
+    }
+
+    public ArrayList<HippoBean> getOrderedItems() {
+        return this.orderedItems;
+    }
 }

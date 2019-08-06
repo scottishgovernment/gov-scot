@@ -58,7 +58,7 @@
                     </#if>
 
                     <#if group.order>
-                        <#assign collectionItems = group.collectionItems?sort_by('publicationDate')?reverse/>
+                        <#assign collectionItems = group.orderedItems/>
                     <#else>
                         <#assign collectionItems = group.collectionItems/>
                     </#if>
