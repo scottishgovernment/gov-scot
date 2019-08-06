@@ -73,7 +73,9 @@
                                                 <div class="listed-content-item__meta">
                                                     <span class="listed-content-item__label">${item.label}</span>
 
-                                                    <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></span>
+                                                    <#if item.publicationDate??>
+                                                        <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></span>
+                                                    </#if>
                                                 </div>
 
                                                 <h3 class="gamma  listed-content-item__title" title="${item.title}">${item.title}</h3>
