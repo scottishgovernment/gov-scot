@@ -44,7 +44,7 @@ public class CollectionGroup extends HippoCompound {
         this.orderedItems.addAll(orderedItems);
     }
 
-    public ArrayList<HippoBean> getOrderedItems() {
+    public List<HippoBean> getOrderedItems() {
         return this.orderedItems;
     }
 }
