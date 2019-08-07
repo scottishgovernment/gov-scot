@@ -45,8 +45,8 @@ public class CollectionComponent extends BaseHstComponent {
             return publicationDate;
         }
 
-        // this bean has no publication date, default to the hippostdpubwf:publicationDate
-        return bean.getProperty("hippostdpubwf:publicationDate");
+        // this bean has no publication date, default to the hippostdpubwf:lastModificationDate
+        return bean.getProperty("hippostdpubwf:lastModificationDate");
     }
 }
 
