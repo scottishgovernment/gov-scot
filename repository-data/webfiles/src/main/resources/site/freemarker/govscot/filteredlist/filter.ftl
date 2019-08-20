@@ -110,58 +110,10 @@
                             </fieldset>
                         </#if>
 
-                        <div class="expandable expandable--single filters-expandable">
-
-                            <#if topics??>
-                                <div class="expandable-item  expandable-item--open  expandable-item--init-open">
-                                    <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
-                                        <h2 class="delta  expandable-item__title">Topics</h2>
-                                        <span class="expandable-item__icon">
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
-                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                            </svg>
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
-                                                <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                                            </svg>
-                                        </span>
-                                    </button>
-
-                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
-                                        <div class="scrollable__content scrollable__content--40 checkbox-group">
-                                            <#assign noItems = true />
-                                            <#assign itemsTrigger = false />
-                                            <#list topics as item>
-                                                <#assign isSelected = false/>
-                                                <#if parameters['topics']??>
-                                                    <#list parameters['topics'] as selectedItem>
-                                                        <#if selectedItem == item.title>
-                                                            <#assign isSelected = true/>
-                                                            <#assign itemsTrigger = true />
-                                                        </#if>
-                                                    </#list>
-                                                </#if>
-
-                                                <input
-                                                    <#if isSelected == true>
-                                                        <#if noItems == true>
-                                                        checked=true
-                                                        </#if>
-                                                        data-checkedonload=true
-                                                    </#if>
-                                                    id="${item.canonicalPath}" name="topics" class="fancy-checkbox checkbox-group__input" type="radio" value="${item.title}">
-                                                <label for="${item.canonicalPath}" class="checkbox-group__label fancy-radio fancy-radio--min">${item.title}</label>
-
-                                                <#if itemsTrigger>
-                                                    <#assign noItems = false />
-                                                </#if>
-                                            </#list>
-                                        </div>
-                                    </div>
-                                </div>
-                            </#if>
+                        <div class="expandable filters-expandable">
 
                             <#if publicationTypes??>
-                                <div class="expandable-item">
+                                <div class="expandable-item expandable-item--open  expandable-item--init-open">
                                     <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
                                         <h2 class="delta  expandable-item__title">Publication types</h2>
                                         <span class="expandable-item__icon">
@@ -175,7 +127,7 @@
                                     </button>
 
                                     <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
-                                        <div class="scrollable__content scrollable__content--40 checkbox-group">
+                                        <div class="scrollable__content scrollable__content--20 checkbox-group">
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />
                                             <#list publicationTypes as item>
@@ -207,6 +159,55 @@
                                     </div>
                                 </div>
                             </#if>
+
+                            <#if topics??>
+                                <div class="expandable-item  expandable-item--open  expandable-item--init-open">
+                                    <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
+                                        <h2 class="delta  expandable-item__title">Topics</h2>
+                                        <span class="expandable-item__icon">
+                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
+                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
+                                            </svg>
+                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
+                                                <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
+                                            </svg>
+                                        </span>
+                                    </button>
+
+                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
+                                        <div class="scrollable__content scrollable__content--20 checkbox-group">
+                                            <#assign noItems = true />
+                                            <#assign itemsTrigger = false />
+                                            <#list topics as item>
+                                                <#assign isSelected = false/>
+                                                <#if parameters['topics']??>
+                                                    <#list parameters['topics'] as selectedItem>
+                                                        <#if selectedItem == item.title>
+                                                            <#assign isSelected = true/>
+                                                            <#assign itemsTrigger = true />
+                                                        </#if>
+                                                    </#list>
+                                                </#if>
+
+                                                <input
+                                                    <#if isSelected == true>
+                                                        <#if noItems == true>
+                                                                checked=true
+                                                        </#if>
+                                                                data-checkedonload=true
+                                                    </#if>
+                                                                id="${item.canonicalPath}" name="topics" class="fancy-checkbox checkbox-group__input" type="radio" value="${item.title}">
+                                                <label for="${item.canonicalPath}" class="checkbox-group__label fancy-radio fancy-radio--min">${item.title}</label>
+
+                                                <#if itemsTrigger>
+                                                    <#assign noItems = false />
+                                                </#if>
+                                            </#list>
+                                        </div>
+                                    </div>
+                                </div>
+                            </#if>
+
                         </div>
 
                         <div id="filter-actions">
