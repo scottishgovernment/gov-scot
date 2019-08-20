@@ -8,12 +8,14 @@ import org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.ComponentConfiguration;
 import org.hippoecm.hst.core.request.HstRequestContext;
+import org.hippoecm.hst.util.ContentBeanUtils;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
 import org.hippoecm.repository.util.DateTools;
 import org.onehippo.cms7.essentials.components.EssentialsListComponent;
@@ -24,6 +26,7 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.*;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
 import javax.jcr.*;
@@ -32,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Collection;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.*;
@@ -105,11 +109,48 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         final int page = getCurrentPage(request);
 
         final HstQueryResult execute = query.execute();
+
+        // populate Collections for Publication type items
+        HippoBeanIterator it = execute.getHippoBeans();
+        while (it.hasNext()) {
+            HippoBean item = it.nextHippoBean();
+            if (item.getClass().getSuperclass() == AttributableContent.class || item.getClass().getSuperclass() == Publication.class){
+                populateCollectionAttribution(request, (AttributableContent) item);
+            }
+        }
+
         return getPageableFactory().createPageable(
                 execute.getHippoBeans(),
                 execute.getTotalSize(),
                 pageSize,
                 page);
+    }
+
+    public void populateCollectionAttribution(HstRequest request, AttributableContent item) {
+        try {
+            // find any Collection documents that link to the content bean in this request
+            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
+                    item,
+                    request.getRequestContext().getSiteContentBaseBean(),
+                    "*/*/@hippo:docbase",
+                    scot.gov.www.beans.Collection.class,
+                    false);
+            HstQueryResult result = query.execute();
+            item.setCollections(collectionsBeans(result));
+        } catch (QueryException e) {
+            LOG.warn("Unable to get collections for content item {}", request.getRequestURI(), e);
+        }
+    }
+
+    private List<HippoBean> collectionsBeans(HstQueryResult result) {
+        // convert the iterator to a list of hippo beans - otherwise size method fails
+        List<HippoBean> collectionsBeans = new ArrayList<>();
+        HippoBeanIterator it = result.getHippoBeans();
+        while (it.hasNext()) {
+            HippoBean collection = it.nextHippoBean();
+            collectionsBeans.add(collection);
+        }
+        return collectionsBeans;
     }
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {

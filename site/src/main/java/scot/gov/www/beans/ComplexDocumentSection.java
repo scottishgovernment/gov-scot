@@ -7,6 +7,8 @@ import org.hippoecm.hst.content.beans.standard.HippoHtml;
 @HippoEssentialsGenerated(internalName = "govscot:ComplexDocumentSection")
 @Node(jcrType = "govscot:ComplexDocumentSection")
 public class ComplexDocumentSection extends BaseDocument {
+    private ComplexDocument2 parent;
+
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
         return getProperty("govscot:title");
@@ -42,5 +44,13 @@ public class ComplexDocumentSection extends BaseDocument {
         return getHippoHtml("govscot:notes");
     }
 
-    public String getLabel() { return ""; }
+    public String getLabel() { return "Publication Page"; }
+
+    public void setParent(ComplexDocument2 parent){
+        this.parent = parent;
+    }
+
+    public ComplexDocument2 getParent() {
+        return this.parent;
+    }
 }

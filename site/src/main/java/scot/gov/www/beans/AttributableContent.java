@@ -10,6 +10,8 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 @HippoEssentialsGenerated(internalName = "govscot:AttributableContent")
 @Node(jcrType = "govscot:AttributableContent")
 public class AttributableContent extends SimpleContent {
+    private ArrayList<HippoBean> collections = new ArrayList<>();
+
     @HippoEssentialsGenerated(internalName = "govscot:topics")
     public List<HippoBean> getTopics() {
         return getLinkedBeans("govscot:topics", HippoBean.class);
@@ -89,5 +91,14 @@ public class AttributableContent extends SimpleContent {
 
         beans.add(bean);
         taken.add(bean.getIdentifier());
+    }
+
+    public void setCollections(List<HippoBean> collections){
+        this.collections.clear();
+        this.collections.addAll(collections);
+    }
+
+    public List<HippoBean> getCollections() {
+        return this.collections;
     }
 }

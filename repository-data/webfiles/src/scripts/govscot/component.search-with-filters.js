@@ -6,6 +6,7 @@
 'use strict';
 
 import searchUtils from './search-utils';
+import displayToggle from './component.display-toggle';
 import expandable from './component.expandable';
 import Pikaday from '../vendor/pikaday';
 import dates from '../utils/dates';
@@ -82,6 +83,7 @@ function init() {
     let that = this;
     this.searchParams = this.gatherParams(true);
 
+    displayToggle.init();
     this.attachEventHandlers();
     this.enableJSFilters();
     this.hideFilters = hideFilters;

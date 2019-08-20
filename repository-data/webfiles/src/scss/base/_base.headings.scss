@@ -38,42 +38,25 @@ h4, .delta {
 }
 
 @include media-query(medium) {
-  /**
-   * 1. Nudge the header onto the baseline grid
-   */
+
   h1, .alpha {
     font-size: $medium-h1-size;
     line-height: 63px;
     margin: 0 0 35px -3px;
     letter-spacing: -0.5px;
-    position: relative; /* [1] */
-    top: -1px;
   }
 
-  /**
-   * 1. Nudge the header onto the baseline grid
-   */
   h2, .beta {
     font-size: $medium-h2-size;
     line-height: 35px;
     margin: 56px 0 14px 0;
 
-    position: relative; /* [1] */
-    top: -3px;
-
   }
 
-
-  /**
-   * 1. Nudge the header onto the baseline grid
-   */
   h3, .gamma {
     font-size: $medium-h3-size;
     line-height: 28px;
     margin: 42px 0 7px 0;
-
-    position: relative; /* [1] */
-    top: -2px;
   }
 
   h4, .delta {

@@ -67,22 +67,26 @@
                         <#list collectionItems as item>
                             <#if group.highlight == true && item?index == 0>
                                 <li class="listed-content-item listed-content-item--highlight listed-content-item--compact">
-                                    <a href="<@hst.link hippobean=item/>" class="listed-content-item__link" title="${item.title}">
-                                        <article class="listed-content-item__article ">
-                                            <header class="listed-content-item__header">
-                                                <div class="listed-content-item__meta">
-                                                    <span class="listed-content-item__label">${item.label}</span>
+                                    <article class="listed-content-item__article ">
+                                        <header class="listed-content-item__header">
+                                            <div class="listed-content-item__meta">
+                                                <span class="listed-content-item__label">${item.label}</span>
 
-                                                    <#if item.publicationDate??>
-                                                        <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></span>
+                                                <#if item.publicationDate??>
+                                                    <#assign dateFormat = "dd MMM yyyy">
+                                                    <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                                        <#assign dateFormat = "dd MMM yyyy KK:mm">
                                                     </#if>
-                                                </div>
+                                                    <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
+                                                </#if>
+                                            </div>
 
-                                                <h3 class="gamma  listed-content-item__title" title="${item.title}">${item.title}</h3>
-                                            </header>
-                                            <p class="listed-content-item__summary">${item.summary}</p>
-                                        </article>
-                                    </a>
+                                            <h3 class="gamma  listed-content-item__title" title="${item.title}">
+                                                <a href="<@hst.link hippobean=item/>" class="listed-content-item__link" title="${item.title}">${item.title}</a>
+                                            </h3>
+                                        </header>
+                                        <p class="listed-content-item__summary">${item.summary}</p>
+                                    </article>
                                 </li>
                             <#else>
                                 <li><a href="<@hst.link hippobean=item/>">${item.title}</a></li>

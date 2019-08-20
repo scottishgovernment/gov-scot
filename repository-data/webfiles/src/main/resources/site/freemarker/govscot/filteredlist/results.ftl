@@ -91,21 +91,55 @@
         <#list pageable.items as item>
             <@hst.link var="link" hippobean=item/>
             <li class="search-results__item  listed-content-item">
-                <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">
-                    <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if>">
-                        <#if item.publicationDate??>
-                            <p class="listed-content-item__date">
-                                <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/>
-                            </p>
+                <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if>">
+                    <header class="listed-content-item__header">
+                        <div class="listed-content-item__meta">
+                            <span class="listed-content-item__label">${item.label}</span>
+
+                            <#if item.publicationDate??>
+                                <#assign dateFormat = "dd MMM yyyy">
+                                <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                    <#assign dateFormat = "dd MMM yyyy KK:mm">
+                                </#if>
+                                <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
+                            </#if>
+                        </div>
+
+                        <h2 class="gamma listed-content-item__title">
+                            <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">${item.title?html}</a>
+                        </h2>
+                    </header>
+                    <#if item.summary??>
+                        <p class="listed-content-item__summary">
+                            ${item.summary?html}
+                        </p>
+                    </#if>
+                    <#if item.collections?has_content>
+                        <#if item.collections?size == 1>
+                            <#assign description = 'a collection'/>
+                        <#else>
+                            <#assign description = '${item.collections?size} collections'/>
                         </#if>
-                        <h2 class="gamma listed-content-item__title">${item.title?html}</h2>
-                        <#if item.summary??>
-                            <p class="listed-content-item__summary">
-                                ${item.summary?html}
-                            </p>
-                        </#if>
-                    </article>
-                </a>
+                        <p class="listed-content-item__collections">This publication is part of ${description}:&nbsp;
+                            <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
+
+                         --><#if item.collections?size gt 1><!--
+                             -->,&nbsp;<!--
+                             --><a href="#content-item-${item?index}-collections" class="content-data__expand js-display-toggle">
+                                    &#43;${item.collections?size - 1}&nbsp;more&nbsp;&hellip;</a>
+
+                                <span id="content-item-${item?index}-collections" class="content-data__additional">
+                                    <#list item.collections as collection>
+                                        <#if collection?index != 0>
+                                            <@hst.link var="link" hippobean=collection/>
+                                            <a href="${link}">${collection.title}</a><#sep>,&nbsp;</#sep>
+                                        </#if>
+                                    </#list>
+                                </span>
+                            </#if>
+                        </p>
+                    </#if>
+                </article>
             </li>
         </#list>
     </ol>
