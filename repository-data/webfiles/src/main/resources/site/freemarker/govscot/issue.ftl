@@ -54,26 +54,28 @@
                             <ul class="no-bullets">
                                 <#list document.featuredItems as item>
                                     <li class="listed-content-item  listed-content-item--compact  listed-content-item--highlight">
-                                        <a data-gtm="featured-item-${item?index}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>" class="listed-content-item__link <#if item.class == 'scot.gov.www.beans.ExternalLink'>external  listed-content-item__link--external</#if>" title="${item.title}">
-                                            <article class="listed-content-item__article ">
-                                                <header class="listed-content-item__header">
-                                                    <div class="listed-content-item__meta">
-                                                        <#if item.label??><p class="listed-content-item__label">${item.label}</p></#if>
+                                        <article class="listed-content-item__article ">
+                                            <header class="listed-content-item__header">
+                                                <div class="listed-content-item__meta">
+                                                    <#if item.label??><p class="listed-content-item__label">${item.label}</p></#if>
 
-                                                        <#if item.label == 'news'>
-                                                            <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></p>
-                                                        <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
-                                                            <p class="listed-content-item__date">${document.url}</p>
-                                                        <#else>
-                                                            <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></p>
-                                                        </#if>
+                                                    <#if item.label == 'news'>
+                                                        <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></p>
+                                                    <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
+                                                        <p class="listed-content-item__date">${document.url}</p>
+                                                    <#else>
+                                                        <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></p>
+                                                    </#if>
 
-                                                    </div>
+                                                </div>
 
-                                                    <h3 class="gamma  listed-content-item__title" title="${item.title}">${item.title}</h3>
-                                                </header>
-                                            </article>
-                                        </a>
+                                                <h3 class="gamma  listed-content-item__title" title="${item.title}">
+                                                    <a data-gtm="featured-item-${item?index}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>" class="listed-content-item__link <#if item.class == 'scot.gov.www.beans.ExternalLink'>external  listed-content-item__link--external</#if>" title="${item.title}">
+                                                        ${item.title}
+                                                    </a>
+                                                </h3>
+                                            </header>
+                                        </article>
                                     </li>
                                 </#list>
                             </ul>

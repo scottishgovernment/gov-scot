@@ -35,51 +35,51 @@
             <ul class="grid"><!--
                 <#list document.featuredItems as item>
                 --><li class="grid__item  medium--four-twelfths  listed-content-item  listed-content-item--dark  listed-content-item--small">
-
-                        <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link" data-gtm="featured-item-${item?index}">
-                            <article class="listed-content-item__article">
-                                <#-- use news as default image -->
+                        <article class="listed-content-item__article">
+                            <#-- use news as default image -->
+                            <#assign imgLabel = 'news'/>
+                            <#if item.label == 'news'>
                                 <#assign imgLabel = 'news'/>
-                                <#if item.label == 'news'>
-                                    <#assign imgLabel = 'news'/>
-                                <#elseif item.label?contains('Consultation')>
-                                    <#assign imgLabel = 'cons'/>
-                                <#elseif item.publicationType??>
-                                    <#assign imgLabel = 'pubs'/>
-                                </#if>
-                                <#if imgLabel??>
-                                    <img src="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/>"
-                                        srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
-                                        <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
-                                        <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
-                                        <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
-                                        <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
-                                        <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
-                                        sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px" alt="" class="listed-content-item__feature-image">
-                                </#if>
+                            <#elseif item.label?contains('Consultation')>
+                                <#assign imgLabel = 'cons'/>
+                            <#elseif item.publicationType??>
+                                <#assign imgLabel = 'pubs'/>
+                            </#if>
+                            <#if imgLabel??>
+                                <img src="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/>"
+                                    srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
+                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
+                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
+                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
+                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
+                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
+                                    sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px" alt="" class="listed-content-item__feature-image">
+                            </#if>
 
-                                <header class="listed-content-item__heading">
-                                    <#if item.label?has_content>
-                                        <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
-                                        <div class="listed-content-item__meta">
-                                            <div class="listed-content-item__meta-right">
-                                                <p class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></p>
-                                            </div>
-                                            <div class="listed-content-item__meta-left">
-                                                <p class="listed-content-item__label  js-truncate" data-lines="1">${item.label}</p>
-                                            </div>
+                            <header class="listed-content-item__heading">
+                                <#if item.label?has_content>
+                                    <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
+                                    <div class="listed-content-item__meta">
+                                        <div class="listed-content-item__meta-right">
+                                            <p class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></p>
                                         </div>
-                                    </#if>
+                                        <div class="listed-content-item__meta-left">
+                                            <p class="listed-content-item__label  js-truncate" data-lines="1">${item.label}</p>
+                                        </div>
+                                    </div>
+                                </#if>
 
-                                    <h3 class="listed-content-item__title  js-truncate" title="${item.title}">${item.title}</h3>
-                                </header>
+                                <h3 class="listed-content-item__title  js-truncate" title="${item.title}">
+                                    <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link" data-gtm="featured-item-${item?index}">
+                                        ${item.title}
+                                    </a>
+                                </h3>
+                            </header>
 
-                                <p class="listed-content-item__summary  hidden-small  hidden-xsmall  js-truncate" title="${item.summary}">
-                                    ${item.summary}
-                                </p>
-                            </article>
-                        </a>
-
+                            <p class="listed-content-item__summary  hidden-small  hidden-xsmall  js-truncate" title="${item.summary}">
+                                ${item.summary}
+                            </p>
+                        </article>
                     </li><!--
                 </#list>
             --></ul>
