@@ -23,14 +23,12 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.AttributableContent;
-import scot.gov.www.beans.ComplexDocument2;
-import scot.gov.www.beans.ComplexDocumentSection;
-import scot.gov.www.beans.Publication;
+import scot.gov.www.beans.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.Collection;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
@@ -121,7 +119,12 @@ public class SearchResultsComponent extends EssentialsListComponent {
 
             // populate parent publication for Complex Document sections
             if (item.getClass() == ComplexDocumentSection.class){
-                populateParent((ComplexDocumentSection) item);
+                populateComplexDocParent((ComplexDocumentSection) item);
+            }
+
+            // populate parent publication for Publication pages
+            if (item.getClass() == PublicationPage.class){
+                populatePublicationParent((PublicationPage) item);
             }
         }
 
@@ -159,7 +162,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
         return collectionsBeans;
     }
 
-    public void populateParent(ComplexDocumentSection item) {
+    public void populateComplexDocParent(ComplexDocumentSection item) {
         // find this page's parent publication
         HippoBean sectionFolder = item.getParentBean();
         HippoBean chaptersFolder = sectionFolder.getParentBean();
@@ -167,6 +170,14 @@ public class SearchResultsComponent extends EssentialsListComponent {
         ComplexDocument2 parent = (ComplexDocument2) parentFolder.getChildBeans("govscot:ComplexDocument2").get(0);
         item.setParent(parent);
     }
+
+    public void populatePublicationParent(PublicationPage item){
+        HippoBean pagesFolder = item.getParentBean();
+        HippoBean parentFolder = pagesFolder.getParentBean();
+        HippoBean parent = (HippoBean) parentFolder.getChildBeansByName("index").get(0);
+        item.setParent(parent);
+    }
+
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
         if (parameterMap == null) {
