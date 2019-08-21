@@ -167,6 +167,7 @@ function attachEventHandlers () {
                 window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
             }
             that.isChangingPage = false;
+            displayToggle.init();
         }).fail(function () {
             window.location.search = newQueryString;
         });
