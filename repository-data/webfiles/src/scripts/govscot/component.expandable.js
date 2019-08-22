@@ -14,9 +14,13 @@ let Expandable = {
 
         that.expandable = $('.expandable');
 
-        // init all data-gtm to being closed
+        // init all data-gtm to opened or closed
         that.expandable.find('.expandable-item__header').each(function () {
-            $(this).attr('data-gtm', 'panel-closed');
+            if ($(this).parent('.expandable-item').hasClass('expandable-item--init-open')){
+                $(this).attr('data-gtm', 'panel-opened');
+            } else {
+                $(this).attr('data-gtm', 'panel-closed');
+            }
         });
 
         $('body').on('click', '.js-expand-all', function (event) {
