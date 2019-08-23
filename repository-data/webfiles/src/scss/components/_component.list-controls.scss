@@ -36,13 +36,14 @@ $filter-close-button-size: 49px;
         margin: 0;
         line-height: initial;
         padding: 8px 10px 8px 15px;
+        position: relative;
         top: 1px;
         z-index: 1003; /* magic number to punt it above filters-container */
 
         border-top: 1px solid $color__grey--pale;
 
         &:after {
-            border-bottom: 41px solid $color__grey--lighter;
+            border-bottom: 45px solid $color__grey--lighter;
             border-right: 15px solid transparent;
             content: '';
             position: absolute;
@@ -51,7 +52,7 @@ $filter-close-button-size: 49px;
         }
 
         &:before {
-            border-bottom: 41px solid $color__grey--pale;
+            border-bottom: 45px solid $color__grey--pale;
             border-right: 15px solid transparent;
             content: '';
             position: absolute;
