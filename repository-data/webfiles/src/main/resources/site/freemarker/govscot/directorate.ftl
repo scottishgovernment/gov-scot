@@ -127,9 +127,7 @@
 
      --><div class="grid__item medium--four-twelfths large--three-twelfths push--large--two-twelfths">
 
-    <aside class="sidebar-content">
-
-        <#if document.contactInformation.twitter?has_content
+    <#if document.contactInformation.twitter?has_content
         ||   document.contactInformation.flickr?has_content
         ||   document.contactInformation.website?has_content
         ||   document.contactInformation.email?has_content
@@ -138,47 +136,52 @@
         ||   document.contactInformation.blog?has_content
         ||   document.contactInformation.postalAddress.content?has_content>
             <#assign contactInformation = document.contactInformation/>
-            <h2>Connect with us</h2>
+        <section class="sidebar-block">
             <#include 'common/contact-information.ftl' />
-        </#if>
+        </section>
+    </#if>
 
-        <#if document.relatedNews?has_content>
-            <h2 class="heading--underline heading--underline--heavy">News</h2>
-            <#list document.relatedNews as newsItem>
-                <ul class="no-bullets">
+    <#if document.relatedNews?has_content>
+        <section class="sidebar-block">
+            <h3 class="gamma emphasis sidebar-block__heading">News</h3>
+            <ul class="no-bullets">
+                <#list document.relatedNews as newsItem>
                     <li>
                         <@hst.link var="link" hippobean=newsItem/>
-                        <a href="${link}">${newsItem.title}</a>
+                        <a href="${link}" class="sidebar-block__link">${newsItem.title}</a>
                     </li>
-                </ul>
-            </#list>
-        </#if>
+                </#list>
+            </ul>
+        </section>
+    </#if>
 
-        <#if document.relatedPublications?has_content>
-            <h2 class="heading--underline heading--underline--heavy">Publications</h2>
-            <#list document.relatedPublications as publication>
-                <ul class="no-bullets">
+    <#if document.relatedPublications?has_content>
+        <section class="sidebar-block">
+            <h3 class="gamma emphasis sidebar-block__heading">Publications</h3>
+            <ul class="no-bullets">
+                <#list document.relatedPublications as publication>
                     <li>
                         <@hst.link var="link" hippobean=publication/>
-                        <a href="${link}">${publication.title}</a>
+                        <a href="${link}" class="sidebar-block__link">${publication.title}</a>
                     </li>
-                </ul>
-            </#list>
-        </#if>
+                </#list>
+            </ul>
+        </section>
+    </#if>
 
-        <#if policies?has_content>
-            <h2 class="heading--underline heading--underline--heavy">Policies</h2>
-            <#list policies as policy>
-                <ul class="no-bullets">
+    <#if policies?has_content>
+        <section class="sidebar-block">
+            <h3 class="gamma emphasis sidebar-block__heading">Policies</h3>
+            <ul class="no-bullets">
+                <#list policies as policy>
                     <li>
                         <@hst.link var="link" hippobean=policy/>
-                        <a href="${link}">${policy.title}</a>
+                        <a href="${link}" class="sidebar-block__link">${policy.title}</a>
                     </li>
-                </ul>
-            </#list>
-        </#if>
-
-    </aside>
+                </#list>
+            </ul>
+        </section>
+    </#if>
 
 </div><!--
  --></div>

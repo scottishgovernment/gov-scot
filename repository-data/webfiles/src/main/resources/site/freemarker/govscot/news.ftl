@@ -51,7 +51,7 @@
 
                     <aside class="visible-xsmall visible-medium">
                         <div class="sidebar-block no-bullets">
-                            <h2 class="gamma  emphasis  sidebar-block__heading">Contacts</h2>
+                            <h2 class="gamma  emphasis  sidebar-block__heading">Contact</h2>
                             <p>
                                 <a href="/about/contact-information/media-enquiries/">Media enquiries</a>
                             </p>

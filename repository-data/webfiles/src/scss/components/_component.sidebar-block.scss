@@ -24,24 +24,24 @@
 
   &__list-item,
   > ul > li {
-    margin-bottom: 7px;
+    margin-bottom: 14px;
   }
 
-  a {
+  &__link {
     text-decoration: none;
+    font-weight: 700;
 
     &:hover {
         text-decoration: underline;
     }
   }
-
-  ul li {
-    font-size: 14px !important;
-  }
 }
 
 @include media-query(medium) {
   .sidebar-block {
+    font-size: 18px;
+    line-height: 21px;
+
     &__heading {
     line-height: 28px;
     }
@@ -50,8 +50,6 @@
 
 @include media-query(large) {
   .sidebar-block {
-    font-size: 17px;
-
     &:first-child {
       border: 0;
       margin-top: 70px;

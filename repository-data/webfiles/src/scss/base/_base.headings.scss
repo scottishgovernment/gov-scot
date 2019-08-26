@@ -272,7 +272,6 @@ h3.social-channel {
   margin-bottom: 21px;
   padding-top: 20px;
   position: relative;
-  text-transform: uppercase;
 
   &:before {
     background: $color__blue--base;
@@ -284,10 +283,6 @@ h3.social-channel {
     right: 0;
     top: 0;
   }
-}
-
-h2.emphasis {
-    text-transform: none;
 }
 
 @include media-query(medium) {

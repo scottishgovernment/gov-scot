@@ -47,7 +47,7 @@
                     document.featureDate?has_content ||
                     document.featureDateSummary?has_content >class="displace-by-issue-callout"</#if>>
                     <#if document.featuredItems?has_content>
-                        <section id="featured-items" class="issue-sidebar-block">
+                        <section id="featured-items">
 
                             <h2 class="crossbar-header"><span class="crossbar-header__text"><#if document.featuredItemsTitle?has_content>${document.featuredItemsTitle}<#else>Featured</#if></span></h2>
 
@@ -82,12 +82,13 @@
                         </section>
                     </#if>
 
+                    <div>
                     <#if news?has_content>
-                        <section class="issue-sidebar-block" id="related-news">
-                            <h2 class="gamma  emphasis  issue-sidebar-block__title">News</h2>
+                        <section class="sidebar-block" id="related-news">
+                            <h2 class="gamma  emphasis  sidebar-block__title">News</h2>
                             <ul class="no-bullets">
                                 <#list news as newsItem>
-                                    <li><a data-gtm="news-${newsItem?index}" class="issue-sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
+                                    <li><a data-gtm="news-${newsItem?index}" class="sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/news/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all news</a>
@@ -95,11 +96,11 @@
                     </#if>
 
                     <#if policies?has_content>
-                        <section class="issue-sidebar-block" id="related-policies">
-                            <h2 class="gamma  emphasis  issue-sidebar-block__title">Policies</h2>
+                        <section class="sidebar-block" id="related-policies">
+                            <h2 class="gamma  emphasis  sidebar-block__title">Policies</h2>
                             <ul class="no-bullets">
                                 <#list policies as policy>
-                                    <li><a data-gtm="policy-${policy?index}" class="issue-sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
+                                    <li><a data-gtm="policy-${policy?index}" class="sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all policies</a>
@@ -107,17 +108,17 @@
                     </#if>
 
                     <#if publications?has_content>
-                        <section class="issue-sidebar-block" id="related-publications">
-                            <h2 class="gamma  emphasis  issue-sidebar-block__title">Publications</h2>
+                        <section class="sidebar-block" id="related-publications">
+                            <h2 class="gamma  emphasis  sidebar-block__title">Publications</h2>
                             <ul class="no-bullets">
                                 <#list publications as publication>
-                                    <li><a data-gtm="publications-${publication?index}" class="issue-sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
+                                    <li><a data-gtm="publications-${publication?index}" class="sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all publications</a>
                         </section>
                     </#if>
-
+                    </div>
                 </div>
             </div><!--
      --></div>

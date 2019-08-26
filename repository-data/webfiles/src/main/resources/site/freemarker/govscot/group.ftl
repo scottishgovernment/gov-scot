@@ -52,30 +52,28 @@
     </div><!--
 
          --><div class="grid__item medium--nine-twelfths large--three-twelfths push--large--two-twelfths">
-        <aside>
             <#if document.relatedPolicies?has_content>
-                <div class="sidebar-block">
-                    <h3 class="emphasis sidebar-block__heading">Related policies</h3>
+                <section class="sidebar-block">
+                    <h3 class="gamma emphasis issue-sidebar-block__heading">Policies</h3>
 
                     <ul class="sidebar-block__list no-bullets">
                         <#list document.relatedPolicies as policy>
                             <li class="sidebar-block__list-item">
                                 <@hst.link var="link" hippobean=policy />
-                                <a href="${link}">${policy.title}</a>
+                                <a href="${link}" class="sidebar-block__link">${policy.title}</a>
                             </li>
                         </#list>
                     </ul>
-                </div>
+                </section>
             </#if>
 
             <@hst.html hippohtml=document.contactDetails var="contactDetails"/>
             <#if contactDetails?has_content>
-                <div class="sidebar-block">
-                    <h3 class="emphasis sidebar-block__heading">Contacts</h3>
+                <section class="sidebar-block">
+                    <h3 class="gamma emphasis sidebar-block__heading">Contact</h3>
                     ${contactDetails}
-                </div>
+                </section>
             </#if>
-        </aside>
     </div><!--
      --></div>
 
