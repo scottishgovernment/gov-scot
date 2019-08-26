@@ -19,6 +19,8 @@
         <@hst.html hippohtml=document.content />
     </div>
 
+    <h2 class="emphasis  topic-block__title">Policies</h2>
+
     <ul class="policy-list column-list  column-list--not-small  column-list--3">
         <#list policies as policy>
             <li class="policy-list__item  column-list__item">
