@@ -279,7 +279,7 @@
                     <ul class="directorate-list  column-list  column-list--not-small  column-list--2">
                         <#list directorates as directorate>
                             <li class="directorate-list__item  column-list__item">
-                                <a class="directorate-list__link" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
+                                <a class="directorate-list__link" data-gtm="directorate-${directorate?index}" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
                             </li>
                         </#list>
                     </ul>
