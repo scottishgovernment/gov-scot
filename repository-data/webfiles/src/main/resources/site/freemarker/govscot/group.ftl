@@ -60,11 +60,7 @@
                         <#list document.relatedPolicies as policy>
                             <li class="sidebar-block__list-item">
                                 <@hst.link var="link" hippobean=policy />
-<<<<<<< HEAD
-                                <a href="${link}" class="sidebar-block__link">${policy.title}</a>
-=======
                                 <a data-gtm="policies-${policy?index}" href="${link}">${policy.title}</a>
->>>>>>> MGS-5374 Additional Data Attributes for policies on group and directorate
                             </li>
                         </#list>
                     </ul>
