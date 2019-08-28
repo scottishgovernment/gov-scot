@@ -19,15 +19,17 @@
         <@hst.html hippohtml=document.content />
     </div>
 
-    <h2 class="emphasis  topic-block__title">Policies</h2>
+    <#if policies?has_content>
+        <h2 class="emphasis  topic-block__title">Policies</h2>
 
-    <ul class="policy-list column-list  column-list--not-small  column-list--3">
-        <#list policies as policy>
-            <li class="policy-list__item  column-list__item">
-                <a data-gtm="policy-${policy?index}" class="policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
-            </li>
-        </#list>
-    </ul>
+        <ul class="policy-list column-list  column-list--not-small  column-list--3">
+            <#list policies as policy>
+                <li class="policy-list__item  column-list__item">
+                    <a data-gtm="policy-${policy?index}" class="policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
+                </li>
+            </#list>
+        </ul>
+    </#if>
 
     <#if document.featuredItems?has_content>
 
