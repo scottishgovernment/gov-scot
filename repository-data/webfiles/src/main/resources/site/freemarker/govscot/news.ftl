@@ -86,7 +86,7 @@
          --><div class="grid__item medium--three-twelfths push--medium--one-twelfth push--xlarge--two-twelfths">
                 <aside class="hidden-xsmall hidden-medium">
                     <div class="sidebar-block no-bullets">
-                        <h3 class="emphasis sidebar-block__heading no-top-margin">Contacts</h3>
+                        <h3 class="emphasis sidebar-block__heading no-top-margin">Contact</h3>
                         <p>
                             <a href="/about/contact-information/media-enquiries/">Media enquiries</a>
                         </p>
