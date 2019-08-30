@@ -31,7 +31,12 @@ public class ResultsPageContentComponent extends BaseHstComponent {
 
         HippoBean bean = request.getRequestContext().getContentBean();
         SimpleContent index = bean.getBean("index", SimpleContent.class);
-        request.setAttribute("index", index);
+
+        if (index != null){
+            request.setAttribute("index", index);
+        } else {
+            request.setAttribute("index", bean);
+        }
     }
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {

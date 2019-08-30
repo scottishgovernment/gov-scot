@@ -51,6 +51,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
     public static final String PUBLICATION_TYPES = "publicationTypes";
     private static Collection<String> FIELD_NAMES = new ArrayList<>();
+    private static FilteredResultsComponentInfo paramInfo;
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
@@ -63,7 +64,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
 
-        final FilteredResultsComponentInfo paramInfo = getComponentParametersInfo(request);
+        paramInfo = getComponentParametersInfo(request);
 
         super.doBeforeRender(request, response);
 
@@ -239,21 +240,33 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
+        // check for publication type constraints in both the request query parameters and the component parameters
+        Set<String> publicationTypeQueryParams = splitParameters(request, PUBLICATION_TYPES);
+        Set<String> publicationTypeComponentParams = SiteUtils.parseCommaSeparatedValueAsSet(paramInfo.getPublicationTypes());
 
-        Set<String> publicationTypeParams = splitParameters(request, PUBLICATION_TYPES);
-
-        if (publicationTypeParams.isEmpty()) {
+        if (publicationTypeQueryParams.isEmpty() && publicationTypeComponentParams.isEmpty()) {
             return;
         }
 
-        List<Constraint> constraintList = new ArrayList<>();
-        for (String typeId : publicationTypeParams) {
-            constraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
+        if (!publicationTypeQueryParams.isEmpty()){
+            List<Constraint> queryConstraintList = new ArrayList<>();
+            for (String typeId : publicationTypeQueryParams) {
+                queryConstraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
+            }
+
+            Constraint queryOrConstraint = ConstraintBuilder.or(queryConstraintList.toArray(new Constraint[queryConstraintList.size()]));
+            constraints.add(queryOrConstraint);
         }
 
-        Constraint orConstraint = ConstraintBuilder.or(constraintList.toArray(new Constraint[constraintList.size()]));
-        constraints.add(orConstraint);
+        if (!publicationTypeComponentParams.isEmpty()){
+            List<Constraint> componentConstraintList = new ArrayList<>();
+            for (String typeId : publicationTypeComponentParams) {
+                componentConstraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
+            }
 
+            Constraint componentOrConstraint = ConstraintBuilder.or(componentConstraintList.toArray(new Constraint[componentConstraintList.size()]));
+            constraints.add(componentOrConstraint);
+        }
     }
 
     private String param(HstRequest request, String param) {

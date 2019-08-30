@@ -13,4 +13,8 @@ public interface FilteredResultsComponentInfo extends EssentialsListComponentInf
 
     @Parameter(name = "searchTermSingular", required = true)
     String getSearchTermSingular();
+
+    @Parameter(name = "publicationTypes")
+    String getPublicationTypes();
+
 }
