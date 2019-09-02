@@ -73,6 +73,17 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         ValueList publicationValueList =
                 SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
 
+        if(params.containsKey(PUBLICATION_TYPES)){
+            Set<String> pubTypesParams = params.get(PUBLICATION_TYPES);
+            Set<String> validPubTypesParams = removeInvalidPublicationTypeParams(pubTypesParams, publicationValueList);
+
+            if(!validPubTypesParams.isEmpty()){
+                params.put(PUBLICATION_TYPES, validPubTypesParams);
+            } else {
+                params.remove(PUBLICATION_TYPES);
+            }
+        }
+
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
         request.setAttribute("relativeContentPath", relativeContentPath);
 
@@ -152,6 +163,20 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         }
         return collectionsBeans;
     }
+
+    private Set<String> removeInvalidPublicationTypeParams(Set<String> pubTypesParams, ValueList publicationValueList){
+        Set<String> validPubTypesParams = new HashSet<>();
+        Map<String, String> publicationTypesMap = SelectionUtil.valueListAsMap(publicationValueList);
+
+        for (String item : pubTypesParams){
+            if(publicationTypesMap.containsKey(item)){
+                validPubTypesParams.add(item);
+            }
+        }
+
+        return validPubTypesParams;
+    }
+
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
         if (parameterMap == null) {
@@ -241,6 +266,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
 
         Set<String> publicationTypeParams = splitParameters(request, PUBLICATION_TYPES);
+        publicationTypeParams = removeInvalidPublicationTypeParams(publicationTypeParams, SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext()));
 
         if (publicationTypeParams.isEmpty()) {
             return;
