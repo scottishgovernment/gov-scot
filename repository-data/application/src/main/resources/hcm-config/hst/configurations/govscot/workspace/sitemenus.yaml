@@ -5,7 +5,7 @@ definitions:
       /main:
         .meta:residual-child-node-category: content
         jcr:primaryType: hst:sitemenu
-        hst:lastmodified: 2017-11-23T12:34:30.061Z
+        hst:lastmodified: 2019-09-02T13:58:34.640+01:00
       /about:
         .meta:residual-child-node-category: content
         jcr:primaryType: hst:sitemenu
