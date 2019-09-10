@@ -105,17 +105,6 @@ const carouselObject = {
          * Init the videos API objects.
          */
         this.initVideos();
-
-        // add data-gtm attribute to links in carousel content
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        carouselItems.forEach(function(carouselItem, itemIndex) {
-            const links = carouselItem.querySelectorAll('.carousel-item__desc a');
-
-            links.forEach(function (link, linkIndex) {
-                link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex}-${linkIndex}`);
-            });
-        });
-
     },
 
 
@@ -216,9 +205,21 @@ const carouselObject = {
              * Clear JS set height (e.g. from hover state)
              */
             support.css('height', '');
+
+            // add data-gtm attribute to links in carousel content
+            let itemIndex = 0;
+            let fooItem = document.querySelector('.carousel-item--active');
+            while (fooItem.previousElementSibling) {
+                fooItem = fooItem.previousElementSibling;
+                itemIndex = itemIndex + 1;
+            }
+
+            const links = toItem.querySelectorAll('.carousel-item__desc a');
+
+            links.forEach(function (link, linkIndex) {
+                link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex+1}-${linkIndex+1}`);
+            });
         }
-
-
 
         this.transitionControls(newIndex);
     },
