@@ -105,6 +105,17 @@ const carouselObject = {
          * Init the videos API objects.
          */
         this.initVideos();
+
+        // add data-gtm attribute to links in carousel content
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        carouselItems.forEach(function(carouselItem, itemIndex) {
+            const links = carouselItem.querySelectorAll('.carousel-item__desc a');
+
+            links.forEach(function (link, linkIndex) {
+                link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex}-${linkIndex}`);
+            });
+        });
+
     },
 
 
