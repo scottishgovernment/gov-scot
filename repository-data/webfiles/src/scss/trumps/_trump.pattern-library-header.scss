@@ -133,7 +133,7 @@
     left: 0;
     overflow: auto;
     right: 0;
-    z-index: 10
+    z-index: 50
 }
 .ds_mobile-navigation__button {
     display: block;
@@ -198,7 +198,7 @@
 .ds_mobile-navigation__content {
     background: $color__blue--lighter;
     overflow: hidden;
-    padding: 0 15px
+    padding: 0 15px;
 }
 .ds_mobile-navigation__block {
     margin: 21px 0;
