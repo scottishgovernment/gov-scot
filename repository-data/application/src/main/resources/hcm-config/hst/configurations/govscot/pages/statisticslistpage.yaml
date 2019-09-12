@@ -1,0 +1,26 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/statisticslistpage:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/filteredlistpage
+      /main:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:abstractpages/filteredlistpage/main
+        /results:
+          jcr:primaryType: hst:containercomponent
+          hst:componentclassname: scot.gov.www.components.FilteredResultsComponent
+          hst:label: Filtered Results List
+          hst:parameternames: [sortField, sortOrder, includeSubtypes, showPagination,
+            path, pageSize, documentTypes, searchTermPlural, searchTermSingular, publicationTypes]
+          hst:parametervalues: ['govscot:publicationDate', desc, 'off', 'on', /publications,
+            '10', 'govscot:Publication', publications, publication, 'research-and-analysis,statistics']
+          hst:template: filteredlist.results
+          hst:xtype: hst.item
+        /side-filter:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.FilteredResultsSideComponent
+          hst:parameternames: [searchType, localeRequired, includeDateFilter, fromDate,
+            includePublicationTypesFilter, publicationTypes]
+          hst:parametervalues: [publications, 'true', 'true', '2002-01-01', 'false', 'research-and-analysis:Research
+              and analysis,statistics:Statistics']
+          hst:template: filteredlist.side-filter

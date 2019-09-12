@@ -10,6 +10,7 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.HstRequestContext;
+import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
@@ -52,7 +53,22 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
         ValueList publicationValueList = SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
         if (info.getIncludePublicationTypesFilter()) {
             request.setAttribute("publicationTypes", publicationValueList.getItems());
+        } else if (!info.getPublicationTypes().isEmpty()) {
+            String[] types = SiteUtils.parseCommaSeparatedValue(info.getPublicationTypes());
+            ArrayList<HashMap> pubTypes = new ArrayList<>();
+
+            for (String type : types){
+                String[] keyLabel = type.split(":");
+                HashMap<String, String> typeMap = new HashMap<>();
+                typeMap.put("key", keyLabel[0]);
+                typeMap.put("label", keyLabel[1]);
+                pubTypes.add(typeMap);
+
+            }
+
+            request.setAttribute("publicationTypes", pubTypes);
         }
+
         if (info.getLocaleRequired()) {
             request.setAttribute("locale", request.getLocale());
         }

@@ -16,6 +16,10 @@ definitions:
           hst:parameternames: [mobile]
           hst:parametervalues: ['true']
           hst:suppresswastemessage: true
+        /search:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/search
+          hst:suppresswastemessage: true
       /footer:
         jcr:primaryType: hst:component
         hst:template: base-footer
@@ -27,10 +31,6 @@ definitions:
       /breadcrumb:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/breadcrumb
-        hst:suppresswastemessage: true
-      /search:
-        jcr:primaryType: hst:component
-        hst:referencecomponent: hst:components/search
         hst:suppresswastemessage: true
       /mourning-banner:
         jcr:primaryType: hst:component

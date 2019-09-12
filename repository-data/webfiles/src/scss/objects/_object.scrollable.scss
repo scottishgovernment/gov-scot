@@ -72,11 +72,11 @@
       width: 100%;
 
       &--40 {
-        height: 40vh;
+        max-height: 40vh;
       }
 
       &--20 {
-        height: 20vh;
+        max-height: 20vh;
       }
 
       &--homepage-policies {

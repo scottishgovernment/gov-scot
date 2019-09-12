@@ -24,4 +24,7 @@ public interface FilteredResultsSideComponentInfo {
     @Parameter(name = "includePublicationTypesFilter", defaultValue = "false", required = true)
     Boolean getIncludePublicationTypesFilter();
 
+    @Parameter(name = "publicationTypes")
+    String getPublicationTypes();
+
 }
