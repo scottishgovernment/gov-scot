@@ -1,3 +1,10 @@
+
+.ds_icon {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
 .ds_site-navigation {
     clear: both;
     display: none;
@@ -32,7 +39,7 @@
     outline-width: 0
 }
 .ds_site-navigation__link:active {
-    background: #fcc2f3
+    background: $color__link--active--background
 }
 .ds_site-navigation__link:after {
     background-color: currentColor;
@@ -56,10 +63,10 @@
     z-index: 1
 }
 .ds_site-navigation__link:hover {
-    background-color: #d9effc
+    background-color: $color__grey--lighter
 }
 .ds_site-navigation__link:active {
-    background-color: #fcc2f3
+    background-color: $color__link--active--background
 }
 .ds_site-navigation__link:after {
     bottom: 0;
@@ -71,7 +78,7 @@
     right: 15px
 }
 .ds_site-navigation__link.ds_current {
-    background-color: #f8f8f8
+    background-color: $color__blue--lighter
 }
 .ds_site-navigation__link.ds_current:after {
     background-color: #0065bd;
@@ -85,15 +92,15 @@
 .ds_site-navigation--reversed .ds_site-navigation__link:hover:not(.ds_current):not(:active),
 .ds_site-navigation--reversed .ds_site-navigation__link:focus:not(.ds_current):not(:active) {
     background-color: #00437e;
-    color: #d9effc
+    color: $color__grey--lighter
 }
 .ds_site-navigation--reversed .ds_site-navigation__link:active {
-    background-color: #fcc2f3;
+    background-color: $color__link--active--background;
     color: #333
 }
 .ds_site-navigation--reversed .ds_site-navigation__link.ds_current {
     background-color: transparent;
-    color: #d9effc
+    color: $color__grey--lighter
 }
 .ds_site-navigation--reversed .ds_site-navigation__link.ds_current:after {
     background-color: currentColor
@@ -124,7 +131,6 @@
 .ds_mobile-navigation {
     box-sizing: border-box;
     left: 0;
-    margin: 0 -15px;
     overflow: auto;
     right: 0;
     z-index: 10
@@ -141,26 +147,26 @@
     padding: 0 15px
 }
 .ds_mobile-navigation__button:focus {
-    outline: 3px solid #fcc2f3
+    outline: 3px solid $color__link--active--background
 }
 .ds_mobile-navigation__button:focus:not(:active) {
-    outline-color: #f700d0
+    outline-color: $color__link--active--background
 }
 .ds_mobile-navigation__button:hover:not(:focus) {
     outline: 0
 }
 .ds_mobile-navigation__button:hover {
-    background-color: #d9effc
+    background-color: $color__grey--lighter
 }
 .ds_mobile-navigation__button:active {
-    background-color: #fcc2f3;
+    background-color: $color__link--active--background;
     transition-duration: 0s
 }
 .ds_mobile-navigation__button.ds_current {
-    background-color: #f8f8f8
+    background-color: $color__blue--lighter
 }
 .ds_mobile-navigation__button--open {
-    background-color: #f8f8f8;
+    background-color: $color__blue--lighter;
     color: #0065bd
 }
 .ds_mobile-navigation__button:hover {
@@ -190,7 +196,7 @@
     top: 0
 }
 .ds_mobile-navigation__content {
-    background: #f8f8f8;
+    background: $color__blue--lighter;
     overflow: hidden;
     padding: 0 15px
 }
@@ -216,7 +222,7 @@
 }
 .ds_mobile-navigation__link:focus {
     border-left: 3px solid #0065bd;
-    outline: 2px solid #f700d0;
+    outline: 2px solid $color__link--active--background;
     padding-left: 18px
 }
 .ds_mobile-navigation__link:hover {
@@ -227,7 +233,7 @@
     outline: 0
 }
 .ds_mobile-navigation__link.ds_current {
-    background-color: #f8f8f8;
+    background-color: $color__blue--lighter;
     border-left: 3px solid #0065bd;
     padding-left: 18px
 }
@@ -237,10 +243,10 @@
 .ds_mobile-navigation__button--reversed:hover:not(:active),
 .ds_mobile-navigation__button--reversed:focus:not(:active) {
     background-color: #00437e;
-    color: #d9effc
+    color: $color__grey--lighter
 }
 .ds_mobile-navigation__button--reversed:active {
-    background-color: #fcc2f3;
+    background-color: $color__link--active--background;
     color: #333
 }
 @media (max-width: 767px) {
@@ -289,7 +295,7 @@
     outline-width: 0
 }
 .ds_site-branding__link:active {
-    background: #fcc2f3
+    background: $color__link--active--background
 }
 .ds_site-branding__link:after {
     background-color: currentColor;
@@ -422,23 +428,23 @@
     transition: background-color .2s
 }
 .ds_site-header__control:focus {
-    outline: 3px solid #fcc2f3
+    outline: 3px solid $color__link--active--background
 }
 .ds_site-header__control:focus:not(:active) {
-    outline-color: #f700d0
+    outline-color: $color__link--active--background
 }
 .ds_site-header__control:hover:not(:focus) {
     outline: 0
 }
 .ds_site-header__control:hover {
-    background-color: #d9effc
+    background-color: $color__grey--lighter
 }
 .ds_site-header__control:active {
-    background-color: #fcc2f3;
+    background-color: $color__link--active--background;
     transition-duration: 0s
 }
 .ds_site-header__control.ds_current {
-    background-color: #f8f8f8
+    background-color: $color__blue--lighter
 }
 .ds_site-header__control-icon {
     height: 21px;
@@ -538,33 +544,30 @@
     right: 0;
     top: 0;
     width: 42px;
-    margin: 0
-}
-.ds_icon {
-    width: 35px;
-    height: 35px;
-    fill: currentColor;
+    margin: 0;
+    min-height:0;
 }
 .ds_site-search__icon {
-    padding: 5px;
-    margin: 0
+    display: block;
+    padding: 10px;
+    
 }
 .ds_site-search--large {
     margin-bottom: 42px
 }
 @media (min-width: 768px) {
     .ds_site-search {
-        height: 56px;
+        height: 49px;
         margin: 0
     }
     .ds_site-search__input[type=text] {
-        min-height: 56px;
-        margin-right: 56px;
-        width: calc(100% - 56px)
+        min-height: 49px;
+        margin-right: 49px;
+        width: calc(100% - 49px)
     }
     .ds_site-search__button {
-        height: 56px;
-        width: 56px;
+        height: 49px;
+        width: 49px;
     }
     
 }
@@ -572,7 +575,7 @@
     background-color: #002d54
 }
 .ds_site-search--reversed .ds_site-search__button:active {
-    background-color: #fcc2f3
+    background-color: $color__link--active--background
 }
 @media (max-width: 767px) {
     .ds_site-search--collapsible {

@@ -5,29 +5,15 @@
     <div class="wrapper">
         <div class="ds_site-header__content">
             <div class="ds_site-branding">
-                <a data-header="header-logo" class="ds_site-branding__logo  ds_site-branding__link" href="/">
+                <@hst.link var="home" siteMapItemRefId="root" />
+                <a data-header="header-logo" class="ds_site-branding__logo  ds_site-branding__link" href="${home}">
                     <img class="ds_site-branding__logo-image" alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
                 </a>
     
             </div>
-
-            <div class="ds_site-header__search  ds_site-search  ds_site-search--collapsible">
-
-                <form role="search" class="ds_site-search__form" method="GET" action="<@hst.link path='/search/'/>">
-                    <label class="ds_site-search__label hidden" for="site-search">Search</label>
-
-                    <div class="ds_site-search__input-group">
-                        <input name="q" required="" id="site-search" class="ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
-
-                        <button type="submit" title="search" class="ds_site-search__button  button  button--primary">
-                            <svg class="ds_icon  ds_site-search__icon" role="img"><use xlink:href="${iconspath}#search"></use></svg>
-                                <span class="hidden">Search gov.scot</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <@hst.include ref="search"/>
         </div>
-
+   
 
         <nav role="navigation">
             <button class="js-toggle-menu  ds_mobile-navigation__button" aria-expanded="false" aria-controls="mobile-navigation-menu">
@@ -90,7 +76,7 @@
                     </#if>
 
                     <button type="button" class="ds_mobile-navigation__backdrop  js-close-menu" aria-expanded="false" aria-controls="mobile-navigation-menu">
-                        <span class="visually-hidden">Close menu</span>
+                        <span class="hidden">Close menu</span>
                     </button>
                 </div>
             </div>

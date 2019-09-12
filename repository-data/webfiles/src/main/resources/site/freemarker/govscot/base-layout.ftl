@@ -36,6 +36,10 @@
     <#include 'common/notifications.ftl' />
 
     <div id="main-wrapper">
+
+<#if isHomepage??><style>.ds_site-header__search {display: none;}</style></#if>
+<#if isSearchpage??><style>.ds_site-header__search {display: none;}</style></#if>
+
         <@hst.include ref="menu"/>
 
         <#if !(isHomepage!false)>
