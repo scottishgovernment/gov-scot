@@ -12,6 +12,7 @@ import header from './component.header';
 import './component.google-analytics';
 import './component.feedback';
 
+
 const global = {
     compensateAnchorOffsetForStickyElements: function () {
         // IE8 doesn't support window.pageYOffset

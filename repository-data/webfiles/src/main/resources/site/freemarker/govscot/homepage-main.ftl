@@ -31,14 +31,14 @@
     <div class="welcome">
         <div class="grid"><!--
         <#if document??>
-            --><div class="grid__item medium--seven-twelfths">
+            --><div class="grid__item">
                 <div class="welcome__intro">
                     <@hst.html hippohtml=document.content />
                 </div>
             </div><!--
         </#if>
 
-        --><div class="grid__item medium--four-twelfths push--medium--one-twelfth hidden-xsmall">
+        --><!--<div class="grid__item medium--four-twelfths push--medium--one-twelfth hidden-xsmall">
                 <div class="search-box welcome__search-box ">
                     <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
                         <label class="search-box__label hidden" for="search-box">Search</label>
@@ -49,8 +49,8 @@
                         </button>
                     </form>
                 </div>
-            </div><!--
-        --></div>
+            </div>
+        </div>-->
     </div>
 </div>
 

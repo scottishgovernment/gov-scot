@@ -1,128 +1,141 @@
 <#include "../include/imports.ftl">
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
-<header class="site-header  above-overlay" id="page-top">
+<header class="ds_site-header" role="banner">
     <div class="wrapper">
-        <div class="site-brand">
-            <div class="site-brand__link">
-                <@hst.link var="home" siteMapItemRefId="root" />
-                <a class="site-brand__logo" data-gtm="main-nav" href="${home}">
-                    <img alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
+        <div class="ds_site-header__content">
+            <div class="ds_site-branding">
+                <a data-header="header-logo" class="ds_site-branding__logo  ds_site-branding__link" href="/">
+                    <img class="ds_site-branding__logo-image" alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
                 </a>
+    
+            </div>
+
+            <div class="ds_site-header__search  ds_site-search  ds_site-search--collapsible">
+
+                <form role="search" class="ds_site-search__form" method="GET" action="<@hst.link path='/search/'/>">
+                    <label class="ds_site-search__label hidden" for="site-search">Search</label>
+
+                    <div class="ds_site-search__input-group">
+                        <input name="q" required="" id="site-search" class="ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
+
+                        <button type="submit" title="search" class="ds_site-search__button  button  button--primary">
+                            <svg class="ds_icon  ds_site-search__icon" role="img"><use xlink:href="${iconspath}#search"></use></svg>
+                                <span class="hidden">Search gov.scot</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <div class="visible-xsmall site-header__buttons">
 
-            <button aria-controls="mobile-search" type="button" class="
-                site-header__button  site-header__button--search
-                js-mobile-search-toggle">
-                <span class="site-header__icon  site-header__icon--search">Search</span>
+        <nav role="navigation">
+            <button class="js-toggle-menu  ds_mobile-navigation__button" aria-expanded="false" aria-controls="mobile-navigation-menu">
+                <span class="ds_site-header__control-text">Menu</span>
+                <svg class="ds_icon  ds_site-header__control-icon" role="img"><use xlink:href="${iconspath}#menu-21"></use></svg>
+                <svg class="ds_icon  ds_site-header__control-icon--close  ds_site-header__control-icon" role="img"><use xlink:href="${iconspath}#close-21"></use></svg>
             </button>
 
-            <button aria-controls="mobile-navigation" type="button" class="
-                site-header__button  site-header__button--nav
-                js-mobile-nav-toggle">
-                <span class="site-header__icon site-header__icon--nav">Menu</span>
-            </button>
-        </div>
+            <div id="mobile-navigation-menu" class="ds_mobile-navigation" data-offsetselector=".ds_site-header">
+                <div class="ds_mobile-navigation__content">
 
-        <#if menu??>
-            <#if menu.siteMenuItems??>
-                <nav class="main-nav hidden-xsmall">
-                    <div class="main-nav__wrap  scrollable  scrollable--mobile-only">
-                        <ul class="main-nav__list  scrollable__content" id="main-navigation"><!--
+                    <div class="ds_mobile-navigation__block">
+                        <div class="ds_site-search">
+                            <form role="search" class="ds_site-search__form" method="GET" action="<@hst.link path='/search/'/>">
+                                <label class="ds_site-search__label hidden" for="site-search--mobile">Search</label>
+
+                                <div class="ds_site-search__input-group">
+                                    <input name="/searah/q" required="" id="site-search--mobile" class="ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
+
+                                    <button type="submit" title="search" class="ds_site-search__button  button  button--primary">
+                                        <svg class="ds_icon  ds_site-search__icon" role="img"><use xlink:href="${iconspath}#search"></use></svg>
+
+                                        <span class="hidden">Search gov.scot</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <#if menu??>
+                        <#if menu.siteMenuItems??>
+                            <div class="ds_mobile-navigation__block"> 
+                                        <ul class="ds_mobile-navigation__list"><!--
+                                            <#list menu.siteMenuItems as item>
+                                                <#if item.hstLink??>
+                                                    <#assign href><@hst.link link=item.hstLink /></#assign>
+                                                <#elseif item.externalLink??>
+                                                    <#assign href>${item.externalLink}</#assign>
+                                                </#if>
+                                                    <#if item.selected || item.expanded>
+                                                    --><li class="ds_mobile-navigation__item">
+                                                            <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                                        </li><!--
+                                                    <#else>
+                                                    --><li class="ds_mobile-navigation__item">
+                                                            <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                                        </li><!--
+                                                    </#if>
+                                            </#list>
+                                        --></ul>
+                            </div>
+                            </#if>
+                        <@hst.cmseditmenu menu=menu/>
+                        <#else>
+                            <#if editMode>
+                                <h5>[Menu Component]</h5>
+                                <sub>Click to edit Menu</sub>
+                            </#if>
+                    </#if>
+
+                    <button type="button" class="ds_mobile-navigation__backdrop  js-close-menu" aria-expanded="false" aria-controls="mobile-navigation-menu">
+                        <span class="visually-hidden">Close menu</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <#if menu??>
+        <#if menu.siteMenuItems??>
+            <div class="ds_site-header__navigation">
+                <div class="wrapper">
+                    <nav class="ds_site-navigation">
+                        <ul class="ds_site-navigation__list"><!--
                                 <#list menu.siteMenuItems as item>
                                 <#if item.hstLink??>
                                     <#assign href><@hst.link link=item.hstLink /></#assign>
                                 <#elseif item.externalLink??>
                                     <#assign href>${item.externalLink}</#assign>
                                 </#if>
-
                                 <#if item.selected || item.expanded>
-                             --><li class="main-nav__item">
-                                    <a class="main-nav__link  main-nav__link--selected" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                             --><li class="ds_site-navigation__item">
+                                    <a class="ds_site-navigation__link ds_current" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
                                 </li><!--
                                 <#else>
-                             --><li class="main-nav__item">
-                                    <a class="main-nav__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                             --><li class="ds_site-navigation__item">
+                                    <a class="ds_site-navigation__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
                                 </li><!--
                                 </#if>
                             </#list>
                      --></ul>
-                    </div>
-                </nav>
-            </#if>
-            <@hst.cmseditmenu menu=menu/>
-        <#else>
-            <#if editMode>
-                <h5>[Menu Component]</h5>
-                <sub>Click to edit Menu</sub>
-            </#if>
-        </#if>
-    </div>
-
-    <div class="mobile-layer mobile-search" aria-expanded="false" id="mobile-search">
-        
-        <div class="mobile-layer__content">
-            <div class="search-box  search-box--mobile">
-                <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
-                    <label class="search-box__label hidden" for="search-box-mobile">Search</label>
-                    <input name="q" required="" id="search-box-mobile" class="search-box__input search-box__input--expandable" type="text" placeholder="Search site">
-                    <button type="submit" title="search" class="search-box__button button button--primary">
-                        <span class="icon icon--search-white"></span>
-                        <span class="hidden">Search</span>
-                    </button>
-                </form>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="mobile-layer mobile-nav" aria-expanded="false" id="mobile-navigation">
-        <div class="mobile-layer__content">
-        <#if menu??>
-            <#if menu.siteMenuItems??>
-                <nav class="main-nav main-nav--mobile">
-                    <div class="main-nav__wrap  scrollable  scrollable--mobile-only">
-                        <ul class="main-nav__list  scrollable__content" id="main-navigation-mobile"><!--
-                            <#list menu.siteMenuItems as item>
-                                <#if item.hstLink??>
-                                    <#assign href><@hst.link link=item.hstLink /></#assign>
-                                <#elseif item.externalLink??>
-                                    <#assign href>${item.externalLink}</#assign>
-                                </#if>
-
-                                <#if item.selected || item.expanded>
-                                    <#if item.name == "About">
-                                    --><li class="main-nav__item">
-                                            <div class="visible-xsmall">
-                                                <@hst.include ref="about-menu"/>
-                                            </div>
-                                        </li><!--
-                                        <#else>
-                                        --><li class="main-nav__item">
-                                                <a class="main-nav__link  main-nav__link--selected" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
-                                            </li><!--
-                                    </#if>
-                                <#else>
-                                --><li class="main-nav__item">
-                                        <a class="main-nav__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
-                                    </li><!--
-                                </#if>
-                            </#list>
-                    --></ul>
-                    </div>
-                </nav>
-            </#if>
-            <@hst.cmseditmenu menu=menu/>
+        </#if>
+        <@hst.cmseditmenu menu=menu/>
         <#else>
             <#if editMode>
                 <h5>[Menu Component]</h5>
                 <sub>Click to edit Menu</sub>
             </#if>
-        </#if>
-        </div>
-    </div>
+    </#if>
 </header>
+
+
+
+
 
 <div class="mobile-layer__overlay js-mobile-search-overlay mobile-layer__overlay--grey js-mobile-search-toggle"></div>
 <div class="mobile-layer__overlay js-mobile-nav-overlay mobile-layer__overlay--grey js-mobile-nav-toggle"></div>
