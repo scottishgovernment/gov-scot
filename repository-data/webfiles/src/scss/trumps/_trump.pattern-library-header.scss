@@ -133,7 +133,7 @@
     left: 0;
     overflow: auto;
     right: 0;
-    z-index: 50
+    z-index: 99999
 }
 .ds_mobile-navigation__button {
     display: block;
@@ -184,7 +184,7 @@
     top: 0;
     transition-duration: .2s;
     width: 100%;
-    z-index: 1
+    z-index: -1
 }
 .ds_mobile-navigation__backdrop:after {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
