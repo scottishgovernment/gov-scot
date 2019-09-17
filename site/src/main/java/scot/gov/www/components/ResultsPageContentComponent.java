@@ -18,6 +18,8 @@ import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
  */
 public class ResultsPageContentComponent extends BaseHstComponent {
 
+    private static final String INDEX = "index";
+
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -30,12 +32,12 @@ public class ResultsPageContentComponent extends BaseHstComponent {
         request.setAttribute("isSearchpage", true);
 
         HippoBean bean = request.getRequestContext().getContentBean();
-        SimpleContent index = bean.getBean("index", SimpleContent.class);
+        SimpleContent index = bean.getBean(INDEX, SimpleContent.class);
 
         if (index != null){
-            request.setAttribute("index", index);
+            request.setAttribute(INDEX, index);
         } else {
-            request.setAttribute("index", bean);
+            request.setAttribute(INDEX, bean);
         }
     }
 
