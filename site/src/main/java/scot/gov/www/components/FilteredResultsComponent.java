@@ -48,14 +48,16 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private static final String PUBLICATION_DATE = "govscot:publicationDate";
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
     public static final String PUBLICATION_TYPES = "publicationTypes";
-    private static Collection<String> FIELD_NAMES = new ArrayList<>();
+
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private Collection<String> fieldNames = new ArrayList<>();
+    private FilteredResultsComponentInfo paramInfo;
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
         super.init(servletContext, componentConfig);
-        Collections.addAll(FIELD_NAMES, "govscot:title", "govscot:summary", "govscot:content/hippostd:content",
+        Collections.addAll(fieldNames, "govscot:title", "govscot:summary", "govscot:content/hippostd:content",
                 "hippostd:tags", "govscot:incumbentTitle", "govscot:policyTags", "govscot:newsTags");
     }
 
@@ -63,7 +65,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
 
-        final FilteredResultsComponentInfo paramInfo = getComponentParametersInfo(request);
+       paramInfo = getComponentParametersInfo(request);
 
         super.doBeforeRender(request, response);
 
@@ -73,7 +75,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         ValueList publicationValueList =
                 SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
 
-        if(params.containsKey(PUBLICATION_TYPES)){
+        if(params != null && params.containsKey(PUBLICATION_TYPES)){
             Set<String> pubTypesParams = params.get(PUBLICATION_TYPES);
             Set<String> validPubTypesParams = removeInvalidPublicationTypeParams(pubTypesParams, publicationValueList);
 
@@ -217,7 +219,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private Constraint [] fieldConstraints(String term) {
 
-        List<Constraint> constraints = FIELD_NAMES
+        List<Constraint> constraints = fieldNames
                 .stream()
                 .map(field -> constraint(field).contains(term))
                 .collect(toList());
@@ -264,22 +266,31 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
+        // check for publication type constraints in both the request query parameters and the component parameters
+        Set<String> publicationTypeQueryParams = splitParameters(request, PUBLICATION_TYPES);
+        Set<String> publicationTypeComponentParams = SiteUtils.parseCommaSeparatedValueAsSet(paramInfo.getPublicationTypes());
 
-        Set<String> publicationTypeParams = splitParameters(request, PUBLICATION_TYPES);
-        publicationTypeParams = removeInvalidPublicationTypeParams(publicationTypeParams, SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext()));
-
-        if (publicationTypeParams.isEmpty()) {
+        if (publicationTypeQueryParams.isEmpty() && publicationTypeComponentParams.isEmpty()) {
             return;
         }
 
-        List<Constraint> constraintList = new ArrayList<>();
-        for (String typeId : publicationTypeParams) {
-            constraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
+        if (!publicationTypeQueryParams.isEmpty()){
+            buildConstraint(constraints, publicationTypeQueryParams);
         }
 
-        Constraint orConstraint = ConstraintBuilder.or(constraintList.toArray(new Constraint[constraintList.size()]));
-        constraints.add(orConstraint);
+        if (!publicationTypeComponentParams.isEmpty()){
+            buildConstraint(constraints, publicationTypeComponentParams);
+        }
+    }
 
+    private void buildConstraint(List<Constraint> constraints, Set<String> params) {
+        List<Constraint> queryConstraintList = new ArrayList<>();
+        for (String typeId : params) {
+            queryConstraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
+        }
+
+        Constraint orConstraint = ConstraintBuilder.or(queryConstraintList.toArray(new Constraint[queryConstraintList.size()]));
+        constraints.add(orConstraint);
     }
 
     private String param(HstRequest request, String param) {
@@ -320,12 +331,12 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             return;
         }
 
-        addBeginFilter(constraints, request, searchField, begin);
-        addEndFilter(constraints, request, searchField, end);
+        addBeginFilter(constraints, searchField, begin);
+        addEndFilter(constraints, searchField, end);
 
     }
 
-    private void addBeginFilter(List<Constraint> constraints, HstRequest request, String searchField, String begin) {
+    private void addBeginFilter(List<Constraint> constraints, String searchField, String begin) {
         if (searchField == null) {
             return;
         }
@@ -338,7 +349,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     }
 
-    private void addEndFilter(List<Constraint> constraints, HstRequest request, String searchField, String end) {
+    private void addEndFilter(List<Constraint> constraints, String searchField, String end) {
         if (searchField == null) {
             return;
         }
@@ -355,7 +366,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private Calendar getCalendar(String param) {
         try {
             GregorianCalendar cal = new GregorianCalendar();
-            cal.setTime(DATE_FORMAT.parse(param));
+            cal.setTime(dateFormat.parse(param));
             return cal;
         } catch (ParseException e) {
             LOG.warn("Invalid date {}", param, e);

@@ -287,7 +287,7 @@ definitions:
                   hst:sitemapitemhandlerids: [trailing-slash]
         /_index_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/govscotpublicationspage
+          hst:componentconfigurationid: hst:pages/publicationpage
           hst:sitemapitemhandlerids: [trailing-slash]
       /isbn:
         jcr:primaryType: hst:sitemapitem
