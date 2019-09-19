@@ -95,7 +95,7 @@
                                 <@hst.html hippohtml=featuredItem.teaserText/>
                             </div>
 
-                            <div class="carousel-item__link"><a data-gtm="carousel-item-${featuredItem?index}" href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
+                            <div class="carousel-item__link"><a data-gtm="carousel-item-${featuredItem?index + 1}" href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
                         </div>
                     </div>
                 </div><!--
