@@ -166,7 +166,7 @@
     background-color: $color__blue--lighter
 }
 .ds_mobile-navigation__button--open {
-    background-color: $color__blue--lighter;
+    background-color: $color__grey--lighter;
     color: #0065bd
 }
 .ds_mobile-navigation__button--open .ds_site-header__control-icon {
@@ -202,7 +202,7 @@
     top: 0
 }
 .ds_mobile-navigation__content {
-    background: $color__blue--lighter;
+    background: $color__grey--lighter;
     overflow: hidden;
     padding: 0 15px;
 }
@@ -228,7 +228,7 @@
 }
 .ds_mobile-navigation__link:focus {
     border-left: 3px solid #0065bd;
-    outline: 2px solid $color__link--active--background;
+    //outline: 2px solid $color__link--active--background;
     padding-left: 17px
 }
 .ds_mobile-navigation__link:hover {
@@ -532,7 +532,7 @@
     position: relative
 }
 .ds_site-search__input[type=text] {
-    background: #ebebeb;
+    background-color: $color__grey--light;
     border: 0;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
     height: auto;
@@ -542,12 +542,6 @@
     padding: 0 20px;
     width: calc(100% - 42px)
 }
-
-.ds_site-search__input[type=text]:focus {
-    background: #ffffff;
-    outline: 2px solid #00437e;
-}
-
 .ds_site-search__button {
     height: 42px;
     padding: 0;
