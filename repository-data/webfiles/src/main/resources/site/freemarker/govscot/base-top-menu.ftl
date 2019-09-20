@@ -31,7 +31,7 @@
                                 <label class="ds_site-search__label hidden" for="site-search--mobile">Search</label>
 
                                 <div class="ds_site-search__input-group">
-                                    <input name="/searah/q" required="" id="site-search--mobile" class="ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
+                                    <input name="q" required="" id="site-search--mobile" class="ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
 
                                     <button type="submit" title="search" class="ds_site-search__button  button  button--primary">
                                         <svg class="ds_icon  ds_site-search__icon" role="img"><use xlink:href="${iconspath}#search"></use></svg>
@@ -47,24 +47,24 @@
                     <#if menu??>
                         <#if menu.siteMenuItems??>
                             <div class="ds_mobile-navigation__block"> 
-                                        <ul class="ds_mobile-navigation__list"><!--
-                                            <#list menu.siteMenuItems as item>
-                                                <#if item.hstLink??>
-                                                    <#assign href><@hst.link link=item.hstLink /></#assign>
-                                                <#elseif item.externalLink??>
-                                                    <#assign href>${item.externalLink}</#assign>
-                                                </#if>
-                                                    <#if item.selected || item.expanded>
-                                                    --><li class="ds_mobile-navigation__item">
-                                                            <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
-                                                        </li><!--
-                                                    <#else>
-                                                    --><li class="ds_mobile-navigation__item">
-                                                            <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
-                                                        </li><!--
-                                                    </#if>
-                                            </#list>
-                                        --></ul>
+                                <ul class="ds_mobile-navigation__list"><!--
+                                    <#list menu.siteMenuItems as item>
+                                        <#if item.hstLink??>
+                                            <#assign href><@hst.link link=item.hstLink /></#assign>
+                                        <#elseif item.externalLink??>
+                                            <#assign href>${item.externalLink}</#assign>
+                                        </#if>
+                                        <#if item.selected || item.expanded>
+                                        --><li class="ds_mobile-navigation__item">
+                                                <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                            </li><!--
+                                        <#else>
+                                        --><li class="ds_mobile-navigation__item">
+                                                <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                            </li><!--
+                                        </#if>
+                                    </#list>
+                            --></ul>
                             </div>
                             </#if>
                         <@hst.cmseditmenu menu=menu/>

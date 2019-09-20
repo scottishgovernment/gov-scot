@@ -42,7 +42,7 @@
                 <div class="search-box welcome__search-box ">
                     <form class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
                         <label class="search-box__label hidden" for="search-box">Search</label>
-                        <input name="q" required="" id="search-box" class="search-box__input " type="text" placeholder="Search site">
+                        <input name="q" required="" id="search-box" class="search-box__input" type="text" placeholder="Search site">
                         <button type="submit" title="search" class="search-box__button button button--primary">
                             <span class="icon icon--search-white"></span>
                             <span class="hidden">Search</span>
@@ -305,6 +305,45 @@
             See all news
         </a>
     </section>
+
+
+<!-- STATISTICS AND RESEARCH -->
+    <section id="stats" class="homepage-block">
+        <h2 class="emphasis homepage-block__title"><a class="homepage-block__title-link"
+                                                      href="<@hst.link path='/statistics-and-research/'/>"
+                                                      data-gtm="panel-news">Statistics and research</a></h2>
+
+        <h3 class="homepage-about__title">Latest</h3>
+        <div class="grid"><!--
+
+            <#list statisticsAndResearch as statsItem>
+             --><div class="grid__item medium--four-twelfths homepage-news__item">
+                    <article class="narrow">
+                        <h3 class="js-truncate homepage-news__title">
+                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index}" title="${statsItem.title}">${statsItem.title}</a>
+                        </h3>
+                            <ul class="homepage-publication__topics">
+                                    <li>${statsItem.label}</li>
+                            </ul>
+
+                            <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                    </article>
+                </div><!--
+            </#list>
+
+        --></div>
+
+        <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
+           data-gtm="all-statistics">
+            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                <use xlink:href="${iconspath}#3x3grid"></use>
+            </svg>
+            See all Statistics and research
+        </a>
+    </section>
+
+
+<!-- END STATISTICS AND REASEARCH  -->
 
     <!-- ABOUT -->
     <section id="about" class="homepage-block homepage-about">
