@@ -257,14 +257,14 @@ $filter-close-button-size: 49px;
         position: fixed;
         right: 0;
         text-align: center;
-        top: 0;
+        top: -49px;
         z-index: 1;
         transition: opacity $transition-in-time, top $transition-in-time;
 
         &--show {
             display: block;
             opacity: 1;
-            top: 52px;
+            top: 0;
         }
 
         .button {

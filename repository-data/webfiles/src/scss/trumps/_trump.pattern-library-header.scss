@@ -120,7 +120,7 @@
 .js-enabled .ds_mobile-navigation__button {
     position: absolute;
     right: 0;
-    top: 0
+    top: 7px
 }
 .js-enabled .ds_mobile-navigation {
     position: absolute
@@ -143,7 +143,7 @@
     display: none;
     color: #0065bd;
     font-weight: 400;
-    height: calc(100% + 1px);
+    height: calc(100% - 6px);
     padding: 0 15px
 }
 .ds_mobile-navigation__button:focus {
@@ -168,6 +168,12 @@
 .ds_mobile-navigation__button--open {
     background-color: $color__blue--lighter;
     color: #0065bd
+}
+.ds_mobile-navigation__button--open .ds_site-header__control-icon {
+    display: none
+}
+.ds_mobile-navigation__button--open .ds_site-header__control-icon--close {
+    display: inline
 }
 .ds_mobile-navigation__button:hover {
     color: #00437e
@@ -223,11 +229,11 @@
 .ds_mobile-navigation__link:focus {
     border-left: 3px solid #0065bd;
     outline: 2px solid $color__link--active--background;
-    padding-left: 18px
+    padding-left: 17px
 }
 .ds_mobile-navigation__link:hover {
     border-left: 3px solid #0065bd;
-    padding-left: 18px
+    padding-left: 17px
 }
 .ds_mobile-navigation__link:active {
     outline: 0
@@ -235,7 +241,7 @@
 .ds_mobile-navigation__link.ds_current {
     background-color: $color__blue--lighter;
     border-left: 3px solid #0065bd;
-    padding-left: 18px
+    padding-left: 17px
 }
 .ds_mobile-navigation__button--reversed {
     color: #fff
@@ -260,11 +266,11 @@
     .ds_site-navigation {
         display: block;
 
-         ul { 
+         ul {
              li {
                  margin:0px;
             }
-        }   
+        }
 
 
     }
@@ -278,7 +284,7 @@
 }
 .ds_site-branding__logo-image {
     height: 100%;
-  
+
 }
 .ds_site-branding__link {
     color: currentColor;
@@ -356,7 +362,6 @@
         vertical-align: middle
     }
     .ds_site-branding__logo-image {
-   
         padding: 6px 0;
     }
 }
@@ -530,6 +535,7 @@
     background: #ebebeb;
     border: 0;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    height: auto;
     margin-right: 42px;
     min-height: 42px;
     min-width: 150px;
@@ -539,13 +545,7 @@
 
 .ds_site-search__input[type=text]:focus {
     background: #ffffff;
-    border: 0;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-    margin-right: 42px;
-    min-height: 42px;
-    min-width: 150px;
-    padding: 0 20px;
-    width: calc(100% - 42px)
+    outline: 2px solid #00437e;
 }
 
 .ds_site-search__button {
@@ -561,7 +561,7 @@
 .ds_site-search__icon {
     display: block;
     padding: 10px;
-    
+
 }
 .ds_site-search--large {
     margin-bottom: 42px
@@ -580,7 +580,7 @@
         height: 49px;
         width: 49px;
     }
-    
+
 }
 .ds_site-search--reversed .ds_site-search__button {
     background-color: #002d54

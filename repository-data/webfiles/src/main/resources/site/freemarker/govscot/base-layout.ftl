@@ -37,9 +37,6 @@
 
     <div id="main-wrapper">
 
-<#if isHomepage??><style>.ds_site-header__search {display: none;}</style></#if>
-<#if isSearchpage??><style>.ds_site-header__search {display: none;}</style></#if>
-
         <@hst.include ref="menu"/>
 
         <#if !(isHomepage!false)>
@@ -49,13 +46,13 @@
                 <div class="breadcrumbs__container">
 
                     <div class="grid"><!--
-                        
+
                         --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
                             <#if !(isSearchpage!true)>
                             <@hst.include ref="search"/>
                             </#if>
                         </div><!--
-                        
+
                         --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
                             <#if !(isPageNotFound!false)>
                             <nav>
@@ -78,6 +75,9 @@
     <!-- footer -->
 
     <@hst.include ref="footer"/>
+
+    <#if isHomepage??><script>document.querySelector('.ds_site-header__search').remove()</script></#if>
+    <#if isSearchpage??><script>document.querySelector('.ds_site-header__search').remove()</script></#if>
 
     <script type="module" src="<@hst.webfile path="/assets/scripts/global.js"/>"></script>
     <script nomodule="true" src="<@hst.webfile path="/assets/scripts/global.es5.js"/>"></script>

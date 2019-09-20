@@ -1,7 +1,7 @@
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
-<header class="ds_site-header" role="banner">
+<header class="ds_site-header" role="banner" id="page-top">
     <div class="wrapper">
         <div class="ds_site-header__content">
             <div class="ds_site-branding">
@@ -9,11 +9,11 @@
                 <a data-header="header-logo" class="ds_site-branding__logo  ds_site-branding__link" href="${home}">
                     <img class="ds_site-branding__logo-image" alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
                 </a>
-    
+
             </div>
             <@hst.include ref="search"/>
         </div>
-   
+
 
         <nav role="navigation">
             <button class="js-toggle-menu  ds_mobile-navigation__button" aria-expanded="false" aria-controls="mobile-navigation-menu">
@@ -46,7 +46,7 @@
 
                     <#if menu??>
                         <#if menu.siteMenuItems??>
-                            <div class="ds_mobile-navigation__block"> 
+                            <div class="ds_mobile-navigation__block">
                                 <ul class="ds_mobile-navigation__list"><!--
                                     <#list menu.siteMenuItems as item>
                                         <#if item.hstLink??>
@@ -56,23 +56,23 @@
                                         </#if>
                                         <#if item.selected || item.expanded>
                                         --><li class="ds_mobile-navigation__item">
-                                                <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                                <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
                                             </li><!--
                                         <#else>
                                         --><li class="ds_mobile-navigation__item">
-                                                <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                                <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
                                             </li><!--
                                         </#if>
                                     </#list>
-                            --></ul>
+                                --></ul>
                             </div>
-                            </#if>
-                        <@hst.cmseditmenu menu=menu/>
-                        <#else>
-                            <#if editMode>
-                                <h5>[Menu Component]</h5>
-                                <sub>Click to edit Menu</sub>
-                            </#if>
+                        </#if>
+                    <@hst.cmseditmenu menu=menu/>
+                    <#else>
+                        <#if editMode>
+                            <h5>[Menu Component]</h5>
+                            <sub>Click to edit Menu</sub>
+                        </#if>
                     </#if>
 
                     <button type="button" class="ds_mobile-navigation__backdrop  js-close-menu" aria-expanded="false" aria-controls="mobile-navigation-menu">
@@ -89,7 +89,7 @@
                 <div class="wrapper">
                     <nav class="ds_site-navigation">
                         <ul class="ds_site-navigation__list"><!--
-                                <#list menu.siteMenuItems as item>
+                            <#list menu.siteMenuItems as item>
                                 <#if item.hstLink??>
                                     <#assign href><@hst.link link=item.hstLink /></#assign>
                                 <#elseif item.externalLink??>
@@ -97,11 +97,11 @@
                                 </#if>
                                 <#if item.selected || item.expanded>
                              --><li class="ds_site-navigation__item">
-                                    <a class="ds_site-navigation__link ds_current" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                    <a class="ds_site-navigation__link ds_current" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
                                 </li><!--
                                 <#else>
                              --><li class="ds_site-navigation__item">
-                                    <a class="ds_site-navigation__link" href="${href}" itemprop="url" data-gtm="nav-main">${item.name?html}</a>
+                                    <a class="ds_site-navigation__link" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
                                 </li><!--
                                 </#if>
                             </#list>
