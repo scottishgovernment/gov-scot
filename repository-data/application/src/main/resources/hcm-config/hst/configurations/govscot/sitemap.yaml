@@ -302,11 +302,6 @@ definitions:
         hst:componentconfigurationid: hst:pages/searchpage
         hst:relativecontentpath: search
         hst:sitemapitemhandlerids: [trailing-slash]
-      /statistics-and-research:
-        jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/statisticslistpage
-        hst:relativecontentpath: publications/statistics-and-research
-        hst:sitemapitemhandlerids: [trailing-slash]
       /robots.txt:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/robotstxt
