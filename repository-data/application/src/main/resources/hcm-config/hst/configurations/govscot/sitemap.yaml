@@ -353,3 +353,8 @@ definitions:
       /sitemap.xml:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:components/sitemapIndex
+      /statistics-and-research:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/statisticslistpage
+        hst:relativecontentpath: publications/statistics-and-research
+        hst:sitemapitemhandlerids: [trailing-slash]
