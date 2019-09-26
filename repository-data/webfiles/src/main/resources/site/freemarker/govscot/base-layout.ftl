@@ -76,8 +76,8 @@
 
     <@hst.include ref="footer"/>
 
-    <#if isHomepage??><script>document.querySelector('.ds_site-header__search').remove()</script></#if>
-    <#if isSearchpage??><script>document.querySelector('.ds_site-header__search').remove()</script></#if>
+    <#if isHomepage??><script>var headerSearch = document.querySelector('.ds_site-header__search'); headerSearch.parentNode.removeChild(headerSearch);</script></#if>
+    <#if isSearchpage??><script>var headerSearch = document.querySelector('.ds_site-header__search'); headerSearch.parentNode.removeChild(headerSearch);</script></#if>
 
     <script type="module" src="<@hst.webfile path="/assets/scripts/global.js"/>"></script>
     <script nomodule="true" src="<@hst.webfile path="/assets/scripts/global.es5.js"/>"></script>
