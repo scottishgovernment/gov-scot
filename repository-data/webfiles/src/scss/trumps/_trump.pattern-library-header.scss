@@ -415,11 +415,6 @@
     padding: 14px 0;
     transition: min-height .2s
 }
-@supports (display: grid) {
-    .ds_site-header__content {
-        overflow: visible
-    }
-}
 .ds_site-header__controls {
     display: block
 }
@@ -600,5 +595,20 @@
     .ds_site-search--expanded .ds_site-search__input[type="text"] {
         opacity: 1;
         padding: 0 42px 0 25px
+    }
+}
+
+
+
+.ds_site-branding {
+    float: left;
+}
+.ds_site-search {
+    float: right;
+}
+@supports (display: flex) {
+    .ds_site-branding,
+    .ds_site-search {
+        float: none;
     }
 }
