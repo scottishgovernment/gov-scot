@@ -27,6 +27,7 @@ public class HomeComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(DirectorateComponent.class);
     private static final String PUBLICATIONTYPE = "govscot:publicationType";
+    private static final String PUBLICATIONS = "publications/";
 
     @Override
     public void doBeforeRender(final HstRequest request,
@@ -36,8 +37,9 @@ public class HomeComponent extends BaseHstComponent {
         HstRequestContext context = request.getRequestContext();
         HippoBean scope = context.getSiteContentBaseBean();
         populateNews(scope.getBean("news/"), request);
-        populateConsultations(scope.getBean("publications/"), request);
-        populatePublications(scope.getBean("publications/"), request);
+        populateStatsAndReasearch(scope.getBean(PUBLICATIONS), request);
+        populateConsultations(scope.getBean(PUBLICATIONS), request);
+        populatePublications(scope.getBean(PUBLICATIONS), request);
         populateTopicsList(scope.getBean("topics/"), request);
 
         // get the First Minister page
@@ -64,6 +66,19 @@ public class HomeComponent extends BaseHstComponent {
         executeQueryLoggingException(query, request, "news");
     }
 
+    private void populateStatsAndReasearch(HippoBean scope, HstRequest request) {
+        HstQuery query = publicationsQuery(scope)
+                .where(
+                        or(
+                                constraint(PUBLICATIONTYPE).equalTo("research-and-analysis"),
+                                constraint(PUBLICATIONTYPE).equalTo("statistics")
+                        )
+                )
+                .build();
+        executeQueryLoggingException(query, request, "statisticsAndResearch");
+    }
+
+
     private void populateConsultations(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
                 .where(
@@ -87,6 +102,7 @@ public class HomeComponent extends BaseHstComponent {
                 .build();
         executeQueryLoggingException(query, request, "publications");
     }
+
 
     private void populateTopicsList(HippoBean scope, HstRequest request) {
         List<Topic> topics = scope.getChildBeans(Topic.class);

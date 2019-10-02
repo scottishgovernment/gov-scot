@@ -157,7 +157,7 @@
             </a>
 
         </section>
-    </div><!--
+        </div><!--
 
 
         --><div class="grid__item  medium--four-twelfths">
@@ -191,11 +191,117 @@
             </a>
 
         </section>
-    </div>
-    </div>
+        </div><!--
+
+        --><div class="grid__item  medium--four-twelfths">
+        <section id="latest-publications" class="topic-block">
+            <h2 class="emphasis  topic-block__title">
+                Statistics and research
+            </h2>
+
+            <div id="publications-container">
+                <#if statsAndResearch?has_content>
+                    <#list statsAndResearch as publication>
+                        <article class="homepage-publication">
+                            <h3 class="js-truncate  homepage-publication__title">
+                                <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index}" title="${publication.title}">${publication.title}</a>
+                            </h3>
+                             <ul class="homepage-publication__topics">
+                                    <li>${publication.label}</li>
+                            </ul>
+                            <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                        </article>
+                    </#list>
+                <#else>
+                    <p>There are no statistics and research relating to this topic.</p>
+                </#if>
+            </div>
+
+            <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
+            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/statisitics-and-research/?topics=${document.title}'/>"
+            data-gtm="all-pubs">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all Statistics and research
+            </a>
+
+        </section>
+        </div><!--
+
+
+
+   --> </div>
     <!-- /end .grid -->
 
     <div class="topic-block  topic-block--negate-top-margin  hidden-xsmall">
+        <div class="grid">
+            <div class="grid__item medium--four-twelfths">
+                <!-- if you're changing this link remember to also change the mobile equivalent above -->
+                <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/?topics=${document.title}'/>"
+                data-gtm="all-pubs">
+                    <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                        <use xlink:href="${iconspath}#3x3grid"></use>
+                    </svg>
+                    See all publications
+                </a>
+            </div><div class="grid__item medium--four-twelfths">
+                <!-- if you're changing this link remember to also change the mobile equivalent above -->
+                <a class="button  button--tertiary  tst-all-cons"
+                href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>"
+                data-gtm="all-cons">
+                    <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                        <use xlink:href="${iconspath}#3x3grid"></use>
+                    </svg>
+                    See all consultations
+                </a>
+            </div><div class="grid__item medium--four-twelfths">
+                <!-- if you're changing this link remember to also change the mobile equivalent above -->
+                <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
+                data-gtm="all-pubs">
+                    <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                        <use xlink:href="${iconspath}#3x3grid"></use>
+                    </svg>
+                    See all Statistics and research
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+<!-- start news -->
+
+<section id="news" class="homepage-block">
+        <section id="latest-news" class="topic-block">
+            <h2 class="emphasis  topic-block__title">
+                News
+            </h2>
+
+        <div class="grid"><!--
+
+            <#list news as newsItem>
+             --><div class="grid__item medium--four-twelfths homepage-news__item">
+                    <article class="narrow">
+                        <h3 class="js-truncate  homepage-publication__title">
+                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index}" title="${newsItem.title}">${newsItem.title}</a>
+                        </h3>
+                        <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                    </article>
+                </div><!--
+            </#list>
+
+        --></div>
+
+        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/news/?topics=${document.title}'/>"
+           data-gtm="all-news">
+            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                <use xlink:href="${iconspath}#3x3grid"></use>
+            </svg>
+            See all news
+        </a>
+    </section><!--
+
+--><div class="topic-block  topic-block--negate-top-margin  hidden-xsmall">
         <div class="grid">
             <div class="grid__item  medium--four-twelfths">
                 <!-- if you're changing this link remember to also change the mobile equivalent above -->
@@ -206,29 +312,12 @@
                     </svg>
                     See all news
                 </a>
-            </div><div class="grid__item medium--four-twelfths">
-            <!-- if you're changing this link remember to also change the mobile equivalent above -->
-            <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/?topics=${document.title}'/>"
-            data-gtm="all-pubs">
-                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="${iconspath}#3x3grid"></use>
-                </svg>
-                See all publications
-            </a>
-        </div><div class="grid__item medium--four-twelfths">
-            <!-- if you're changing this link remember to also change the mobile equivalent above -->
-            <a class="button  button--tertiary  tst-all-cons"
-            href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>"
-            data-gtm="all-cons">
-                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="${iconspath}#3x3grid"></use>
-                </svg>
-                See all consultations
-            </a>
-        </div>
-        </div>
-    </div>
+            </div>
+        </div>    
+</div>
 
+
+<!-- close news -->
 
     <section class="topic-block" id="people-and-directorates">
         <h2 class="emphasis  topic-block__title">People and directorates</h2>
