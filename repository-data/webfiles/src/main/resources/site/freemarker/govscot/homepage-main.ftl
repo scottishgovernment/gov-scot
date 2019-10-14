@@ -339,7 +339,7 @@
                                 <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
                                 ${firstMinisterContent?trim?keep_before("\n")}
 
-                                <p><a class="homepage-about__read-more" href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
+                                <p><a class="homepage-about__read-more" data-gtm="read-more" href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
                             </div>
                         </div><!--
                     --></div>
