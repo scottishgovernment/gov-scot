@@ -82,9 +82,13 @@ const carouselObject = {
         carousel.addClass( 'carousel--' + items.length + 'items' );
 
         /**
+         * Init analytics attributes
+         */
+        this.initAnalyticsAttributes();
+
+        /**
          * Init the automatic ellipses
          */
-
         desc.dotdotdot({'watch':'window'});
 
         /**
@@ -106,8 +110,6 @@ const carouselObject = {
          * Init the videos API objects.
          */
         this.initVideos();
-
-        this.addAnalyticsAttributesToCarouselContent();
     },
 
 
@@ -189,7 +191,6 @@ const carouselObject = {
              * Activate new item
              */
             $(toItem).addClass('carousel-item--active');
-            this.addAnalyticsAttributesToCarouselContent(toItem);
 
             /**
              * Remove hover classes from the new item.
@@ -212,6 +213,35 @@ const carouselObject = {
         }
 
         this.transitionControls(newIndex);
+    },
+
+    initAnalyticsAttributes: function () {
+        // add data-gtm attribute to links in carousel content
+        const carouselItems = document.querySelectorAll('.carousel-item'/*config.selectors.items*/);
+
+        carouselItems.forEach(function (carouselItem, carouselItemIndex) {
+            const links = carouselItem.querySelectorAll('.carousel-item__desc a');
+
+            links.forEach(function (link, linkIndex) {
+                link.setAttribute('data-gtm', `carousel-item-desc-${carouselItemIndex+1}-${linkIndex+1}`);
+            });
+        });
+
+            // toItem = toItem || document.querySelector('.carousel-item--active');
+
+            // let itemIndex = 0;
+            // let fooItem = toItem;
+            // while (fooItem.previousElementSibling) {
+            //     fooItem = fooItem.previousElementSibling;
+            //     itemIndex = itemIndex + 1;
+            // }
+
+            //
+
+            // links.forEach(function (link, linkIndex) {
+            //     link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex+1}-${linkIndex+1}`);
+            // });
+
     },
 
     initMobileEvents: function() {
@@ -543,26 +573,7 @@ const carouselObject = {
         $(pips[toItem]).addClass('carousel-controls__link--pip-active');
     },
 
-    addAnalyticsAttributesToCarouselContent: function (toItem) {
-        // add data-gtm attribute to links in carousel content
-        window.setTimeout(function(){
-            toItem = toItem || document.querySelector('.carousel-item--active');
 
-            let itemIndex = 0;
-            let fooItem = toItem;
-            while (fooItem.previousElementSibling) {
-                fooItem = fooItem.previousElementSibling;
-                itemIndex = itemIndex + 1;
-            }
-
-            const links = toItem.querySelectorAll('.carousel-item__desc a');
-
-            links.forEach(function (link, linkIndex) {
-                link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex+1}-${linkIndex+1}`);
-                link.innerHTML =  `${link.innerHTML} ||||| carousel-item-desc-${itemIndex+1}-${linkIndex+1}`;
-            });
-        }, 0);
-    }
 
 };
 
