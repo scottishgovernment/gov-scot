@@ -84,6 +84,7 @@ const carouselObject = {
         /**
          * Init the automatic ellipses
          */
+
         desc.dotdotdot({'watch':'window'});
 
         /**
@@ -188,6 +189,7 @@ const carouselObject = {
              * Activate new item
              */
             $(toItem).addClass('carousel-item--active');
+            this.addAnalyticsAttributesToCarouselContent(toItem);
 
             /**
              * Remove hover classes from the new item.
@@ -207,8 +209,6 @@ const carouselObject = {
              * Clear JS set height (e.g. from hover state)
              */
             support.css('height', '');
-
-            this.addAnalyticsAttributesToCarouselContent();
         }
 
         this.transitionControls(newIndex);
@@ -254,11 +254,11 @@ const carouselObject = {
         });
 
         support.on('keydown', function(e) {
-            window.keypress(e);
+            $(window).keypress(e);
         });
 
         stage.on('keydown', function(e) {
-            window.keypress(e);
+            $(window).keypress(e);
         });
 
         items.find('a').on('click', function (e) {
@@ -543,20 +543,25 @@ const carouselObject = {
         $(pips[toItem]).addClass('carousel-controls__link--pip-active');
     },
 
-    addAnalyticsAttributesToCarouselContent: function () {
+    addAnalyticsAttributesToCarouselContent: function (toItem) {
         // add data-gtm attribute to links in carousel content
-        let itemIndex = 0;
-        let fooItem = document.querySelector('.carousel-item--active');
-        while (fooItem.previousElementSibling) {
-            fooItem = fooItem.previousElementSibling;
-            itemIndex = itemIndex + 1;
-        }
+        window.setTimeout(function(){
+            toItem = toItem || document.querySelector('.carousel-item--active');
 
-        const links = fooItem.querySelectorAll('.carousel-item__desc a');
+            let itemIndex = 0;
+            let fooItem = toItem;
+            while (fooItem.previousElementSibling) {
+                fooItem = fooItem.previousElementSibling;
+                itemIndex = itemIndex + 1;
+            }
 
-        links.forEach(function (link, linkIndex) {
-            link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex+1}-${linkIndex+1}`);
-        });
+            const links = toItem.querySelectorAll('.carousel-item__desc a');
+
+            links.forEach(function (link, linkIndex) {
+                link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex+1}-${linkIndex+1}`);
+                link.innerHTML =  `${link.innerHTML} ||||| carousel-item-desc-${itemIndex+1}-${linkIndex+1}`;
+            });
+        }, 0);
     }
 
 };
