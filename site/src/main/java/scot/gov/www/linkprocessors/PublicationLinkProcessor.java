@@ -80,7 +80,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         Session session = req.getSession();
         Node folder = session.getNode(path);
         Node handle = handleFromFolder(folder);
-        return findPublishedNode(handle.getNodes());
+        return findPublishedNode(handle.getNodes(handle.getName()));
     }
 
 
