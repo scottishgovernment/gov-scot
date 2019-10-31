@@ -6,13 +6,14 @@ import org.hippoecm.hst.content.beans.standard.HippoCompound;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 
 @HippoEssentialsGenerated(internalName = "govscot:CollectionGroup")
 @Node(jcrType = "govscot:CollectionGroup")
 public class CollectionGroup extends HippoCompound {
-    private ArrayList<HippoBean> orderedItems = new ArrayList<>();
 
     @HippoEssentialsGenerated(internalName = "govscot:groupTitle")
     public String getGroupTitle() {
@@ -31,7 +32,10 @@ public class CollectionGroup extends HippoCompound {
 
     @HippoEssentialsGenerated(internalName = "govscot:collectionItems")
     public List<HippoBean> getCollectionItems() {
-        return getLinkedBeans("govscot:collectionItems", HippoBean.class);
+        List<HippoBean> unordered = getLinkedBeans("govscot:collectionItems", HippoBean.class);
+        return getOrder()
+                ? sortedDocuments(unordered)
+                : unordered;
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:highlight")
@@ -39,12 +43,25 @@ public class CollectionGroup extends HippoCompound {
         return getProperty("govscot:highlight");
     }
 
-    public void setOrderedItems(List<HippoBean> orderedItems){
-        this.orderedItems.clear();
-        this.orderedItems.addAll(orderedItems);
+    List<HippoBean> sortedDocuments(List<HippoBean> unordered) {
+        List<HippoBean> ordered = new ArrayList<>(unordered);
+        Collections.sort(ordered, this::compareDateIfNoNull);
+        return ordered;
+
     }
 
-    public List<HippoBean> getOrderedItems() {
-        return this.orderedItems;
+    private int compareDateIfNoNull(HippoBean left, HippoBean right) {
+        return dateToCompare(right).compareTo(dateToCompare(left));
     }
+
+    Calendar dateToCompare(HippoBean bean) {
+        Calendar publicationDate = bean.getProperty("govscot:publicationDate");
+        if (publicationDate != null) {
+            return publicationDate;
+        }
+
+        // this bean has no publication date, default to the hippostdpubwf:lastModificationDate
+        return bean.getProperty("hippostdpubwf:lastModificationDate");
+    }
+
 }

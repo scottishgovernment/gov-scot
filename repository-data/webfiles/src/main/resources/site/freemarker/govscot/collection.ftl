@@ -57,14 +57,8 @@
                         ${description}
                     </#if>
 
-                    <#if group.order>
-                        <#assign collectionItems = group.orderedItems/>
-                    <#else>
-                        <#assign collectionItems = group.collectionItems/>
-                    </#if>
-
                     <ul class="collections-list">
-                        <#list collectionItems as item>
+                        <#list group.collectionItems as item>
                             <#if group.highlight == true && item?index == 0>
                                 <li class="listed-content-item listed-content-item--highlight listed-content-item--compact">
                                     <article class="listed-content-item__article ">
