@@ -68,11 +68,11 @@ publicationPage.initStickyInfoInteractivity = function() {
     /**
      * Open or close the pageGroup list with buttons in sticy doc info
      */
-    $('.js-mobile-toc-trigger-open').click(function(){
+    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-open', function(){
         pgroup.open();
         scrollListTop();
     });
-    $('.js-mobile-toc-trigger-close').click(function(){
+    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-close', function(){
         pgroup.close();
         scrollListTop();
     });
@@ -93,7 +93,7 @@ publicationPage.initStickyInfoInteractivity = function() {
         }
     });
 
-    $('.sticky-document-info__trigger').click(function(){
+    $('.sticky-document-info').on('click', '.sticky-document-info__trigger', function(){
         const button = $(this),
             expandClass = 'sticky-document-info__trigger--expanded',
             panel = button.next(),
@@ -236,6 +236,7 @@ publicationPage.loadSubPageHtml = function (url, updateHistory) {
             // insert new HTML
             bodyContentWrapper.innerHTML = newContents.innerHTML;
             document.querySelector('.sticky-document-info').innerHTML = newStickyHeader.innerHTML;
+            $('.js-mobile-toc-trigger-close').hide();
 
             // scroll to top of content
             const targetOffset = $('.js-content-wrapper').offset().top - parseInt($('.sticky-document-info').height(), 10);
