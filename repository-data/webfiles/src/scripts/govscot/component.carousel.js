@@ -217,31 +217,19 @@ const carouselObject = {
 
     initAnalyticsAttributes: function () {
         // add data-gtm attribute to links in carousel content
-        const carouselItems = document.querySelectorAll('.carousel-item'/*config.selectors.items*/);
+        const carouselItems = document.querySelectorAll('.carousel-item');
 
-        carouselItems.forEach(function (carouselItem, carouselItemIndex) {
-            const links = carouselItem.querySelectorAll('.carousel-item__desc a');
+        for (let i = 0, il = carouselItems.length; i < il; i++) {
+            let carouselItem = carouselItems[i];
 
-            links.forEach(function (link, linkIndex) {
-                link.setAttribute('data-gtm', `carousel-item-desc-${carouselItemIndex+1}-${linkIndex+1}`);
-            });
-        });
+            let links = carouselItem.querySelectorAll('.carousel-item__desc a');
 
-            // toItem = toItem || document.querySelector('.carousel-item--active');
+            for (let j = 0, jl = links.length; j < jl; j++) {
+                let link = links[j];
 
-            // let itemIndex = 0;
-            // let fooItem = toItem;
-            // while (fooItem.previousElementSibling) {
-            //     fooItem = fooItem.previousElementSibling;
-            //     itemIndex = itemIndex + 1;
-            // }
-
-            //
-
-            // links.forEach(function (link, linkIndex) {
-            //     link.setAttribute('data-gtm', `carousel-item-desc-${itemIndex+1}-${linkIndex+1}`);
-            // });
-
+                link.setAttribute('data-gtm', `carousel-item-desc-${i+1}-${j+1}`);
+            }
+        }
     },
 
     initMobileEvents: function() {
