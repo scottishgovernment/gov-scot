@@ -4,7 +4,9 @@
     <#if !dateCreated??><#assign dateCreated = document.getProperty('hippostdpubwf:creationDate')/></#if>
     <#if !lastUpdated??><#assign lastUpdated = document.getProperty('hippostdpubwf:lastModificationDate')/></#if>
     <#if !uuid??><#assign uuid = document.getProperty('jcr:uuid')/></#if>
-    <#if !reportingTags??><#assign reportingTags = document.getProperty('govscot:reportingTags')/></#if>
+    <#if !reportingTags?? && document.getProperty('govscot:reportingTags')??>
+      <#assign reportingTags = document.getProperty('govscot:reportingTags')/>
+    </#if>
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
