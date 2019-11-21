@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <@hst.headContribution category="articleschema">
     <script type="application/ld+json">
 {
