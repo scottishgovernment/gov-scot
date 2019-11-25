@@ -162,8 +162,6 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         String chapterPath = String.format("publications/%schapters/%s", pubPath, escapedRemaining);
         String stripped = stripAboutAndDownloads(path);
 
-        LOG.info("stripped path is {}", stripped);
-
         if (anyExist(path, stripped, chapterPath)) {
             return path;
         } else {
