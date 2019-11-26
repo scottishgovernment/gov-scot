@@ -21,18 +21,20 @@
 
 </article>
 
-<form id="online-payment-form" class="layout--site-item" action="http://localhost:9095" method="post">
+<form id="payment-form" class="layout--site-item" method="post">
 
     Payment Reference<br>
-    <input type="text" name="paymentReference" required placeholder="Customer ID - invoice number">
+    <input type="text" id="orderCode" name="orderCode" required placeholder="Customer ID - invoice number">
     <br>
     Amount<br>
-    <input type="number" step="0.01" name="amount" required placeholder="(GBP £)">
+    <input type="number" step="0.01" id="amount" name="amount" required placeholder="(GBP £)">
     <br>
     Description<br>
-    <input type="text" name="description" placeholder="please advise of reason for payment if non-invoiced item">
+    <input type="text" id="description" name="description" placeholder="please advise of reason for payment if non-invoiced item">
     <br><br>
     <input type="submit" name="submit" content="Submit Payment" >
+
+    <p id="error" class="hidden"></p>
 </form>
 
 <div class="grid"><!--

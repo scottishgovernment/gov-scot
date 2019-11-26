@@ -11,6 +11,7 @@ import expand from './component.expand';
 import header from './component.header';
 import './component.google-analytics';
 import './component.feedback';
+import './component.payment';
 import './component.site-navigation';
 
 
