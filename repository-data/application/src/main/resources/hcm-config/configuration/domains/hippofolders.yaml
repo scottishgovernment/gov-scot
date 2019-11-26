@@ -5,7 +5,7 @@ definitions:
         document-unlocker, editor, foi-authors, foi-editors, group-authors, group-editors,
         policy-authors, policy-editors, publication-authors, publication-editors,
         topics-issues-authors, topics-issues-editors, news-editors, collection-authors,
-        collection-editors]
+        collection-editors, statistics-authors, statistics-editors]
     /hippo:configuration/hippo:domains/hippofolders/hippostd-folder/exclude-valuelists-folder:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false

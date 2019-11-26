@@ -22,7 +22,7 @@ definitions:
         foi-authors, foi-editors, group-authors, group-editors, image-editors, mourning-banner,
         policy-authors, policy-editors, previewusers, publication-authors, publication-editors,
         readonly, topics-issues-authors, topics-issues-editors, useradmin, news-editors,
-        collection-authors, collection-editors]
+        collection-authors, collection-editors, statistics-authors, statistics-editors]
       hipposys:role: readonly
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole
