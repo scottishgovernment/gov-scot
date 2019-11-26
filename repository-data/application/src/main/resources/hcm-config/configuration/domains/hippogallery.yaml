@@ -15,3 +15,5 @@ definitions:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [cmsadmin, image-editors]
       hipposys:role: editor
+    /hippo:configuration/hippo:domains/hippogallery/embargo:
+      hipposys:groups: []

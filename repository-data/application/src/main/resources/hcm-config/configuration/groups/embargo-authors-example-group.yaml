@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/embargo-authors-example-group:
+      .meta:delete: true
