@@ -325,3 +325,8 @@ definitions:
           hst:componentconfigurationid: hst:pages/collectionpage
           hst:relativecontentpath: collections/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
+      /payment:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/paymentform
+        hst:sitemapitemhandlerids: [trailing-slash]
+        hst:relativecontentpath: payment
