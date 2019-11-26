@@ -80,6 +80,9 @@
 [govscot:OrgRoles] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:PaymentForm] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:People] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
