@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/embargo/author:
+      hipposys:groups: []
+    /hippo:configuration/hippo:domains/embargo/editor:
+      hipposys:groups: []
+    /hippo:configuration/hippo:domains/embargo/embargo:
+      hipposys:groups: []
