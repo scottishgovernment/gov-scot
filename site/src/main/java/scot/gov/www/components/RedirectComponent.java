@@ -22,7 +22,6 @@ import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.and;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
 
@@ -124,17 +123,13 @@ public class RedirectComponent extends BaseHstComponent {
         HstQuery query = HstQueryBuilder
                 .create(request.getRequestContext().getSiteContentBaseBean())
                 .ofTypes(Publication.class, PublicationPage.class)
-                .where(hasGovscotUrlAndIsNotContentsPage(govscotUrl))
+                .where(urlConstraint(govscotUrl))
                 .build();
 
         try {
             HstQueryResult result = query.execute();
             if (result.getTotalSize() == 0) {
                 return null;
-            }
-
-            if (result.getTotalSize() > 1) {
-                LOG.warn("Multiple publications with this url: {}, will use first", govscotUrl);
             }
 
             return result.getHippoBeans().nextHippoBean();
@@ -144,11 +139,8 @@ public class RedirectComponent extends BaseHstComponent {
         }
     }
 
-    Constraint hasGovscotUrlAndIsNotContentsPage(String govscotUrl) {
-        return and(
-                constraint("govscot:govscoturl").equalTo(govscotUrl),
-                constraint("govscot:contentsPage").notEqualTo(true)
-        );
+    Constraint urlConstraint(String govscotUrl) {
+        return constraint("govscot:govscoturl").equalTo(govscotUrl);
     }
 }
 
