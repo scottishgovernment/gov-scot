@@ -18,7 +18,8 @@ import scot.gov.www.beans.Policy;
 import java.io.IOException;
 import java.util.*;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
