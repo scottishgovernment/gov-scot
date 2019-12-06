@@ -9,6 +9,7 @@
 
 <#-- this div is here to make use of 'pageable' -->
 
+<#if pageable??>
 <section id="search-results" class="search-results">
     <h2 class="hidden">Search results</h2>
     <p class="search-results__count js-search-results-count">Showing <b>${pageable.total}</b> <#if pageable.total == 1>result<#else>results</#if></p>
@@ -121,5 +122,4 @@
         </#if>
     </div>
 </section>
-
-
+</#if>

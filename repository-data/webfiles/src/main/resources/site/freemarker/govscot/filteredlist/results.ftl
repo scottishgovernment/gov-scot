@@ -17,6 +17,7 @@
     <#assign hasActiveParameters = true/>
 </#if>
 
+<#if pageable??>
 <#-- this div is here to make use of 'pageable' -->
 <div class="filter-buttons--sticky">
     <button class="button  button--secondary  button--no-margin  button--left  button--xsmall  js-show-filters">Filter</button>
@@ -164,3 +165,4 @@
         </#if>
     </div>
 </section>
+</#if>

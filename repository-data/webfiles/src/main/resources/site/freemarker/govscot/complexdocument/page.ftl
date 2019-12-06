@@ -343,7 +343,7 @@
                             </a>
                         </#if>
 
-                        <#if (displaySupportingDocuments == true)>
+                        <#if (displaySupportingDocuments?? && displaySupportingDocuments == true)>
                             <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
                                 <div class="icon-button__content">
                                         <span class="icon-button__icon">

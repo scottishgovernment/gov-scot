@@ -1,4 +1,5 @@
 <#ftl output_format="HTML">
+<#if document??>
 <@hst.headContribution category="articleschema">
     <script type="application/ld+json">
 {
@@ -41,3 +42,4 @@
 }
     </script>
 </@hst.headContribution>
+</#if>
