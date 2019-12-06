@@ -11,31 +11,31 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         <#if document.responsibleRole??>
-            'responsibleRole': '${document.responsibleRole.title}',
+            'responsibleRole': '${document.responsibleRole.title?json_string}',
         </#if>
         <#if document.secondaryResponsibleRole?has_content>
-            'secondaryResponsibleRole': [<#list document.secondaryResponsibleRole as role>'${role.title}'<#sep>, </#sep></#list>],
+            'secondaryResponsibleRole': [<#list document.secondaryResponsibleRole as role>'${role.title?json_string}'<#sep>, </#sep></#list>],
         </#if>
         <#if document.responsibleDirectorate??>
-            'responsibleDirectorate': '${document.responsibleDirectorate.title}',
+            'responsibleDirectorate': '${document.responsibleDirectorate.title?json_string}',
         </#if>
         <#if document.secondaryResponsibleDirectorate?has_content>
             'secondaryResponsibleDirectorate': [<#list document.secondaryResponsibleDirectorate as dir>'${dir.title}'<#sep>, </#sep></#list>],
         </#if>
         <#if document.topics?has_content>
-            'topics': [<#list document.topics as topic>'${topic.title}'<#sep>, </#sep></#list>],
+            'topics': [<#list document.topics as topic>'${topic.title?json_string}'<#sep>, </#sep></#list>],
         </#if>
         <#if document.publicationDate??>
             'publicationDate': '<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="dd/MM/yyyy" />',
         </#if>
         <#if reportingTags?has_content>
-            'reportingTags': [<#list reportingTags as tag>'${tag}'<#sep>, </#sep></#list>],
+            'reportingTags': [<#list reportingTags as tag>'${tag?json_string}'<#sep>, </#sep></#list>],
         </#if>
         <#if policies?has_content>
-            'policies': [<#list policies as policy>'${policy}'<#sep>, </#sep></#list>],
+            'policies': [<#list policies as policy>'${policy?json_string}'<#sep>, </#sep></#list>],
         </#if>
         <#if collections?has_content>
-            'collections': [<#list collections as collection>'${collection.title}'<#sep>, </#sep></#list>],
+            'collections': [<#list collections as collection>'${collection.title?json_string}'<#sep>, </#sep></#list>],
         </#if>
         'lastUpdated': '<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />',
         'dateCreated': '<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />',
