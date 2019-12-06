@@ -140,3 +140,6 @@ definitions:
       /payment-form:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/payment-form.ftl
+      /payment-result:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/payment-result.ftl

@@ -332,6 +332,6 @@ definitions:
         hst:relativecontentpath: payment
         /_default_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/contentpage
+          hst:componentconfigurationid: hst:pages/paymentresult
           hst:relativecontentpath: payment/${1}
           hst:sitemapitemhandlerids: [trailing-slash]

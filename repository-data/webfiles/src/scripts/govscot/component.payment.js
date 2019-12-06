@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 const Payment = {
     settings: {
-        paymentUrl: 'http://localhost:9095/payment/'
+        paymentUrl: 'http://localhost:9095/service/payment/'
     },
 
     init: function () {
