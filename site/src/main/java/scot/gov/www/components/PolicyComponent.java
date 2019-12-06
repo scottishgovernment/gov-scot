@@ -100,7 +100,7 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     private List<HippoBean> getLatestNews(HstRequest request, Policy policy) {
-        if (policy.getNewsTags().length == 0) {
+        if (policy.getNewsTags() == null || policy.getNewsTags().length == 0) {
             return new ArrayList<>();
         }
 
