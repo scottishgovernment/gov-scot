@@ -31,6 +31,7 @@ public class NewsComponent extends EssentialsContentComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
+        super.doBeforeRender(request, response);
 
         if (request.getRequestContext().getContentBean() == null) {
             send404(response);
