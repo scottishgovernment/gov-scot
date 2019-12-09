@@ -40,8 +40,12 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
         HippoBean document = context.getContentBean();
-        HippoBean publication = getPublication(document);
         if (document == null) {
+            send404(response);
+            return;
+        }
+        HippoBean publication = getPublication(document);
+        if (publication == null) {
             send404(response);
             return;
         }
