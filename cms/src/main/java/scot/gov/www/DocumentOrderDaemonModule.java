@@ -73,8 +73,7 @@ public class DocumentOrderDaemonModule implements DaemonModule {
 
             if (sortOrder == null) {
                 // no sort order is specified so do not take any action
-
-                LOG.info("No sort order!");
+                // for example this is the case for the pages or documents folders of publicaitons.
                 return;
             }
 
