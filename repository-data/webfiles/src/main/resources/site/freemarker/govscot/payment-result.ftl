@@ -2,8 +2,6 @@
 
 <#if paymentResult??>
 
-    <#--<@hst.manageContent hippobean=document/>-->
-
 <article id="page-content" class="layout--site-item">
 
     <div class="grid">
@@ -26,9 +24,6 @@
     <@hst.headContribution category="pageTitle">
     <title>${paymentResult.title?html} - gov.scot</title>
     </@hst.headContribution>
-    <#--<@hst.headContribution>-->
-    <#--<meta name="description" content="${paymentResult.metaDescription?html}"/>-->
-    <#--</@hst.headContribution>-->
 
     <@hst.link var="canonicalitem" hippobean=paymentResult canonical=true/>
     <#include "common/canonical.ftl" />
