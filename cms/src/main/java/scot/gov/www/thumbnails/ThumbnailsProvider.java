@@ -34,13 +34,18 @@ public class ThumbnailsProvider {
     public static Map<Integer, File> thumbnails(InputStream documentStream, String mimeType)
             throws ThumbnailsProviderException {
 
+
         FileType type = FileType.forMimeType(mimeType);
+
+        if (type == null) {
+            return fixedThumbnails(type);
+        }
 
         if (type == FileType.PDF) {
             return pdfThumbnails(documentStream);
         }
 
-            if (type.isImage()) {
+        if (type.isImage()) {
             return imageThumbnails(documentStream, type);
         }
 

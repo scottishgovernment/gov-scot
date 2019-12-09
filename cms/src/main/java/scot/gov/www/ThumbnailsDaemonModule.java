@@ -87,6 +87,11 @@ public class ThumbnailsDaemonModule implements DaemonModule {
         Binary data = documentNode.getProperty("jcr:data").getBinary();
         String mimeType = documentNode.getProperty("jcr:mimeType").getString();
         String filename = documentNode.getProperty("hippo:filename").getString();
+
+        if (mimeType == null) {
+            LOG.warn("A document has been uploded with no mimetype: {}", documentNode.getPath());
+        }
+
         Map<Integer, File> thumbnails = ThumbnailsProvider.thumbnails(data.getStream(), mimeType);
 
         List<Integer> sortedKeys = new ArrayList<>(thumbnails.keySet());
