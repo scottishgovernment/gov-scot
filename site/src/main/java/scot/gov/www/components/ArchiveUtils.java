@@ -51,7 +51,7 @@ public class ArchiveUtils {
             }
             return session.nodeExists(path);
         } catch (RepositoryException e) {
-            LOG.error("Failed to find publications redirect {}", request.getPathInfo(), e);
+            LOG.error("Failed to find historical url redirect {}", request.getPathInfo(), e);
             return false;
         }
     }
