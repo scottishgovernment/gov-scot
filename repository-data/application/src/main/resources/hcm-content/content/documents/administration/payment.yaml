@@ -1,0 +1,250 @@
+/content/documents/administration/payment:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['mix:versionable']
+  jcr:uuid: 22976f3e-d2b6-40c1-a952-a05b6df311cb
+  hippostd:foldertype: [new-resource-bundle, new-untranslated-folder]
+  /authorised:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 2e2b70ac-5fbc-4b65-a14b-2c454b16c414
+    hippo:name: Authorised
+    hippo:versionHistory: 2c33d3f5-345a-4e22-b50d-faa42a06ec8c
+    /authorised[1]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 4ba62429-f74b-492d-b0f4-e6dd27ebe5ef
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T11:19:30.161Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T11:19:30.161Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.authorised
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Authorised, Your payment was processed successfully]
+    /authorised[2]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 743e193e-4119-4ae0-ab85-6582d241933c
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T11:19:30.161Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T11:20:08.879Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.authorised
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Authorised, Your payment was processed successfully]
+    /authorised[3]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 6ba7a755-2406-44b0-8224-a9e7b61457c9
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T11:19:30.161Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T11:20:08.879Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2019-12-09T11:21:50.621Z
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.authorised
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Authorised, Your payment was processed successfully]
+  /cancelled:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 8508c484-59b5-4a34-9482-95e4abe192b0
+    hippo:name: Cancelled
+    hippo:versionHistory: 4b0cea0e-588a-4275-9e37-cd546a20ad4a
+    /cancelled[1]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 3e90a3c5-fb19-4baf-a76d-7b4a8764bd38
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T11:20:27.977Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T11:20:27.977Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.cancelled
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Cancelled, Your payment was cancelled]
+    /cancelled[2]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 0c4d0cfd-930a-46b6-9d37-7bee2d148b50
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T11:20:27.977Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T11:20:57.553Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.cancelled
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Cancelled, Your payment was cancelled]
+    /cancelled[3]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: f06e59ce-96ff-4ce5-a237-f479b100d094
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T11:20:27.977Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T11:20:57.553Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2019-12-09T11:21:53.237Z
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.cancelled
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Cancelled, Your payment was cancelled]
+  /redirected:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 100d9f61-6970-49df-bd47-2a7e7f97157d
+    hippo:name: Redirected
+    hippo:versionHistory: 1af070b8-8cfe-470a-8ef1-631297271aeb
+    /redirected[1]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 35a2fa48-41cb-4196-b477-d7ca27ad865d
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:56:37.991Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:56:37.991Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.redirected
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Redirected, Your payment has been redirected]
+    /redirected[2]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: d9475937-560e-4449-9241-c5836a738b75
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:56:37.991Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:57:09.004Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.redirected
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Redirected, Your payment has been redirected]
+    /redirected[3]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: ee4234b4-60ca-42da-96f5-4bc2c4f65c9d
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:56:37.991Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:57:09.004Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2019-12-09T15:57:12.716Z
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.redirected
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Redirected, Your payment has been redirected]
+  /refused:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: f42ad98d-56f0-4ad0-af5c-ec2eaffc7875
+    hippo:name: Refused
+    hippo:versionHistory: 218f0ebe-0490-4047-86f7-716bfb5c7c47
+    /refused[1]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 89ffeed2-69cd-4345-8422-0973fa1c5d7f
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:58:17.621Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:58:17.621Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.refused
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Refused, Your payment has been refused]
+    /refused[2]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 95ea1bf7-2892-45ab-830c-93cda17bad30
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:58:17.621Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:58:41.317Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.refused
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Refused, Your payment has been refused]
+    /refused[3]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 751f14ee-de91-4014-b379-4c9e59dafd54
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:58:17.621Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:58:41.317Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2019-12-09T15:58:43.088Z
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.refused
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Refused, Your payment has been refused]
+  /error:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: e23f91ba-b9d3-4e2f-a890-da972c5316a6
+    hippo:name: Error
+    hippo:versionHistory: c0d41d8e-d1cb-42a5-a8a0-3d14d1414338
+    /error[1]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 7427482a-26bf-4c57-a4a8-e18dddbf32f1
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:59:02.060Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:59:02.060Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.error
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Error, There has been an error]
+    /error[2]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 20355916-2c12-406b-aab1-bec38ad6c0fb
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:59:02.060Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:59:36.732Z
+      hippostdpubwf:lastModifiedBy: admin
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.error
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Error, There has been an error]
+    /error[3]:
+      jcr:primaryType: resourcebundle:resourcebundle
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 04cd337e-e41f-46b1-9bdf-e22fe8fc2571
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2019-12-09T15:59:02.060Z
+      hippostdpubwf:lastModificationDate: 2019-12-09T15:59:36.732Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2019-12-09T15:59:39.997Z
+      resourcebundle:descriptions: ['', '']
+      resourcebundle:id: payment.error
+      resourcebundle:keys: [title, content]
+      resourcebundle:messages: [Error, There has been an error]
