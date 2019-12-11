@@ -55,7 +55,7 @@
 
 <#if document??>
     <@hst.headContribution category="pageTitle">
-        <title>${index.title}<#if document.title != index.title>: ${document.title}</#if> - gov.scot</title>
+        <title>${index.title?html}<#if document.title != index.title>: ${document.title?html}</#if> - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
