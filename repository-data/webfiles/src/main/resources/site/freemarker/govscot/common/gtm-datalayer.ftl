@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <@hst.headContribution category="dataLayer">
 <script id="datalayerPush">
 

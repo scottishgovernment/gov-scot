@@ -1,5 +1,5 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
-
 <#if useLiveAnalytics??>
     <#assign gtmAuth = "eBDGxMFYXLnv72VcZO6hog" />
     <#assign gtmEnv = "2" />
