@@ -9,8 +9,6 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
 import org.hippoecm.hst.configuration.components.HstComponentConfiguration;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.components.info.FeedbackComponentInfo;
 
