@@ -60,22 +60,28 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             return;
         }
 
+        if (event.interaction().startsWith("embargo:")) {
+            return;
+        }
+
         try {
             Node handle = null;
 
             if (isNewPublicationFolder(event)) {
+                LOG.info("its a new folder event");
                 handle = session.getNode(event.returnValue()).getNode("index");
             } else if (isPublicationEdit(event)) {
                 handle = session.getNodeByIdentifier(event.subjectId());
+                LOG.info("its an edit event");
             }
 
             if (handle == null) {
+                LOG.info("the handle was null");
                 return;
             }
 
             Node publication = getLatestVariant(handle);
             String typeName = typeName(publication);
-
             if (!hasPublicationType(publication, typeName)) {
                 publication.setProperty(PUBLICATION_TYPE_PROPERTY, typeName);
                 session.save();
@@ -116,6 +122,7 @@ public class PublicationTypeDaemonModule implements DaemonModule {
     }
 
     private static Node getLatestVariant(Node handle) throws RepositoryException {
+        LOG.info("getLatestVariant {}", handle.getPath());
         NodeIterator it = handle.getNodes();
         Node variant = null;
         while (it.hasNext()) {
