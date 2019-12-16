@@ -90,7 +90,7 @@ public class DocumentOrderDaemonModule implements DaemonModule {
         }
 
         if ("rename".equals(event.action())) {
-            Node node = session.getNode(event.subjectPath());
+            Node node = session.getNodeByIdentifier((event.subjectId()));
             return (HippoNode) node;
         }
 
