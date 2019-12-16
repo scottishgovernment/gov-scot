@@ -68,15 +68,12 @@ public class PublicationTypeDaemonModule implements DaemonModule {
             Node handle = null;
 
             if (isNewPublicationFolder(event)) {
-                LOG.info("its a new folder event");
                 handle = session.getNode(event.returnValue()).getNode("index");
             } else if (isPublicationEdit(event)) {
                 handle = session.getNodeByIdentifier(event.subjectId());
-                LOG.info("its an edit event");
             }
 
             if (handle == null) {
-                LOG.info("the handle was null");
                 return;
             }
 
@@ -122,7 +119,6 @@ public class PublicationTypeDaemonModule implements DaemonModule {
     }
 
     private static Node getLatestVariant(Node handle) throws RepositoryException {
-        LOG.info("getLatestVariant {}", handle.getPath());
         NodeIterator it = handle.getNodes();
         Node variant = null;
         while (it.hasNext()) {
