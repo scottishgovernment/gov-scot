@@ -65,19 +65,21 @@ public class PublicationTypeDaemonModule implements DaemonModule {
         }
 
         try {
-            Node handle = null;
-
-            if (isNewPublicationFolder(event)) {
-                handle = session.getNode(event.returnValue()).getNode("index");
-            } else if (isPublicationEdit(event)) {
-                handle = session.getNodeByIdentifier(event.subjectId());
+            Node subject = session.getNodeByIdentifier(event.subjectId());
+            Node publication = null;
+            if (subject.isNodeType("govscot:Publication") || subject.isNodeType("govscot:ComplexDocument")) {
+                publication = subject;
             }
 
-            if (handle == null) {
+            // some event have the
+            if (subject.isNodeType("hippo:handle")) {
+                publication = getLatestVariant(subject);
+            }
+
+            if (publication == null) {
                 return;
             }
 
-            Node publication = getLatestVariant(handle);
             String typeName = typeName(publication);
             if (!hasPublicationType(publication, typeName)) {
                 publication.setProperty(PUBLICATION_TYPE_PROPERTY, typeName);
@@ -88,16 +90,6 @@ public class PublicationTypeDaemonModule implements DaemonModule {
                     event.subjectPath(),
                     ex);
         }
-    }
-
-    private boolean isNewPublicationFolder(HippoWorkflowEvent event) {
-        return event.arguments() != null &&
-                event.arguments().contains("hippostd:folder") &&
-                "threepane:folder-permissions:add".equals(event.interaction());
-    }
-
-    private boolean isPublicationEdit(HippoWorkflowEvent event) {
-        return TYPES.contains(event.documentType());
     }
 
     private boolean hasPublicationType(Node publication, String typeName) throws RepositoryException {
@@ -122,7 +114,10 @@ public class PublicationTypeDaemonModule implements DaemonModule {
         NodeIterator it = handle.getNodes();
         Node variant = null;
         while (it.hasNext()) {
-            variant = it.nextNode();
+            Node next = it.nextNode();
+            if (!next.isNodeType("hippostdpubwf:request")) {
+                variant = next;
+            }
         }
         return variant;
     }
