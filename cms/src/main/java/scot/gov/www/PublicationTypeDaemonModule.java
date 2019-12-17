@@ -12,11 +12,6 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.util.HashSet;
-import java.util.Set;
-
-import static java.util.Arrays.asList;
-import static java.util.Collections.unmodifiableSet;
 
 /**
  * Event listener to set the publication type field depending on the folder.
@@ -28,13 +23,6 @@ public class PublicationTypeDaemonModule implements DaemonModule {
     private static final String PUBLICATION_TYPE_PROPERTY = "govscot:publicationType";
 
     private static final String PREFIX = "/content/documents/govscot/publications/";
-
-    private static final Set<String> TYPES = unmodifiableSet(new HashSet<>(asList(
-            "govscot:Publication",
-            "govscot:ComplexDocument",
-            "govscot:Minutes",
-            "govscot:SpeechOrStatement"
-    )));
 
     private Session session;
 
