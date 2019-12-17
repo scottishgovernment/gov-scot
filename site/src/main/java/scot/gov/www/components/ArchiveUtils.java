@@ -1,6 +1,7 @@
 package scot.gov.www.components;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.jackrabbit.util.ISO9075;
 import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
@@ -59,7 +60,7 @@ public class ArchiveUtils {
     public static String escapeJcrPath(String path) {
         return Arrays.stream(path.split("/"))
                 .filter(segment -> !StringUtils.equals(segment, ".."))
-                .map(Text::escapeIllegalJcrChars)
+                .map(ISO9075::encodePath)
                 .collect(joining("/"));
     }
 
