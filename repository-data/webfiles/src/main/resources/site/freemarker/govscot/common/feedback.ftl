@@ -1,4 +1,4 @@
-<#if feedbackIsEnabled??>
+<#if feedbackIsEnabled?? && feedbackIsEnabled = true>
 
 <section id="feedback" class="feedback">
     <form id="feedback-form" class="feedback__form">
