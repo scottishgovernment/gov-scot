@@ -16,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class IssueComponent extends BaseHstComponent {
 
@@ -85,7 +82,7 @@ public class IssueComponent extends BaseHstComponent {
                 allLinkedPublications.add(publication);
             }
 
-            allLinkedPublications.sort(Comparator.comparing(bean -> bean.getProperty(PUBLICATIONDATE)));
+            allLinkedPublications.sort(Comparator.comparing(this::dateToCompare));
             Collections.reverse(allLinkedPublications);
             List<HippoBean> latestPublications = allLinkedPublications;
 
@@ -98,6 +95,16 @@ public class IssueComponent extends BaseHstComponent {
         } catch (QueryException e) {
             LOG.error("Unable to get Publications for issue {}", issue.getPath(), e);
         }
+    }
+
+    Calendar dateToCompare(HippoBean bean) {
+        Calendar publicationDate = bean.getProperty(PUBLICATIONDATE);
+        if (publicationDate != null) {
+            return publicationDate;
+        }
+
+        // this bean has no publication date, default to the hippostdpubwf:lastModificationDate
+        return bean.getProperty("hippostdpubwf:lastModificationDate");
     }
 
     private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass) {
