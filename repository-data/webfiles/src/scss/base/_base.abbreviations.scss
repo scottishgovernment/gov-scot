@@ -1,0 +1,25 @@
+/*------------------------------------*\
+    #ABBREVIATIONS
+\*------------------------------------*/
+
+/*
+[1] restrict scope to .body-content to reduce risk of unintended side-effects
+[2] only apply this if there is a title attribute
+ */
+.body-content { /* [1] */
+    abbr, acronym {
+        &[title] { /* [2] */
+            position: relative;
+            text-decoration: none;
+
+            &:after {
+                border-bottom: 1px dotted currentColor;
+                content: '';
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: calc(100% - 2px);
+            }
+        }
+    }
+}

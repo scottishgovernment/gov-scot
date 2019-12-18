@@ -272,4 +272,24 @@ $search-box__size--medium: $search-box__size;
 @import "trumps/trump.search-box.govscot";
 @import "trumps/trump.topic-expandable";
 
-@import "trumps/trump.pattern-library-header"
+@import "trumps/trump.pattern-library-header";
+
+
+/**
+ * DESIGN SYSTEM FORMS
+ */
+$pl_prefix: 'ds_';
+$large-size: 1.1625em;
+$color__gold--base:     #fdd522;
+$color__input--hover__border:       $color__grey--medium !default;
+$color__input--focus__background:   $color__blue--lighter !default;
+$color__input--focus__outline:      $color__gold--base !default;
+$color__input--active__background:  $color__input--focus__background !default;
+$color__input--spot:                $color__body !default;
+@import "design-system-forms/form.settings";
+@import "design-system-forms/form.mixins";
+@import "design-system-forms/form.base";
+@import "design-system-forms/currency/currency";
+@import "design-system-forms/error-summary/error-summary";
+@import "design-system-forms/field-group/field-group";
+@import "design-system-forms/text-input/text-input";

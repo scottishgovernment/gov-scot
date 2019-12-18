@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 const Payment = {
     settings: {
-        paymentUrl: 'http://localhost:9095/service/payment/'
+        paymentUrl: '/service/payment/'
     },
 
     init: function () {
@@ -35,21 +35,23 @@ const Payment = {
     },
 
     sendPayment: function (payment) {
-        const that = this;
-
         $.ajax({
             type: 'POST',
-            url: that.settings.paymentUrl,
+            url: this.settings.paymentUrl,
             data: JSON.stringify(payment),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json'
-        }).then(function(data) {
-            // go to the response url
+        }).done(function(data) {
             window.location.href = data.paymentUrl;
+        }).fail(function () {
+            $('#error-summary-fail .error-summary-message').text('Sorry, we are currently unable to submit your request. Please try again later.');
+            $('#error-summary-fail').removeClass('hidden');
+            $('#error-summary-fail').get(0).scrollIntoView();
+            $('#error-summary-fail').addClass('flashable--flash');
+            window.setTimeout(function () {
+                $('#error-summary-fail').removeClass('flashable--flash');
+            }, 200);
 
-        }, function(err, data) {
-            $('#error').text(err.responseJSON.error);
-            $('#error').removeClass('hidden');
         });
     },
 

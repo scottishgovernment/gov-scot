@@ -4,12 +4,14 @@
 
 <article id="page-content" class="layout--site-item">
 
-    <div class="grid">
+<div class="grid"><!--
+    --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
         <h1 class="article-header">${paymentResult.title}</h1>
         <div class="body-content">
-        ${paymentResult.content?html}
+            ${paymentResult.content?html}
         </div>
-    </div>
+    </div><!--
+--></div>
 
 </article>
 
