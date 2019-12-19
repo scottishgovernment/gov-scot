@@ -1,6 +1,5 @@
 package scot.gov.www.components;
 
-import org.apache.jackrabbit.util.ISO9075;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
@@ -18,7 +17,7 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
         ResolvedSiteMapItem resolvedSiteMapItem = requestContext.getResolvedSiteMapItem();
         HstComponentConfiguration hstComponentConfiguration = resolvedSiteMapItem.getHstComponentConfiguration();
         String gtmName = hstComponentConfiguration.getName();
-        String gtmId = ISO9075.encodePath(resolvedSiteMapItem.getPathInfo());
+        String gtmId = resolvedSiteMapItem.getPathInfo();
         request.setAttribute("gtmName", gtmName);
         request.setAttribute("gtmId", gtmId);
 
