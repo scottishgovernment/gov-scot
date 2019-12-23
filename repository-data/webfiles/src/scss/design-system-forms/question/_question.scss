@@ -1,0 +1,21 @@
+/*------------------------------------*\
+    QUESTION BLOCK (temp)
+\*------------------------------------*/
+
+.#{$pl_prefix}question {
+    margin-bottom: 21px;
+
+    &--error {
+        border-left: 5px solid $color__red--base;
+        padding-left: 20px;
+    }
+
+    &__message {
+        margin-bottom: 14px;
+    }
+
+    &--error &__message {
+        color: $color__red--base;
+        font-weight: bold;
+    }
+}
