@@ -5,7 +5,6 @@ class CharacterCount {
         this.field = field;
         this.inputElement = this.field.querySelector('input, textarea');
         this.threshold = this.field.dataset.threshold ? this.field.dataset.threshold * 0.01 : 0;
-        console.log(this.threshold, this.field, this.field.dataset)
     }
 
     init() {
