@@ -39,7 +39,6 @@ const Payment = {
             that.removeErrorMessages();
 
             if (that.validateInputs()) {
-                console.log('ok to send')
                 that.sendPayment(payment);
             }
         });
@@ -108,6 +107,9 @@ const Payment = {
     removeErrorMessages: function () {
         const errorSummary = document.getElementById('error-summary');
         errorSummary.querySelector('.error-summary-message').innerHTML = '';
+
+        [].slice.call(errorSummary.querySelectorAll('ul')).forEach(ul => ul.parentNode.removeChild(ul));
+
         errorSummary.classList.add('hidden');
     },
 
