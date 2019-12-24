@@ -51,14 +51,14 @@ const Payment = {
 
         // reference number restrictions: 64 characters, no spaces
         if (orderCodeInput.value.length > 64) {
-            errors.push('Payment Reference is too long (maximum is 64 characters)');
+            errors.push({message: 'Payment Reference is too long (maximum is 64 characters)', element: orderCodeInput});
 
             orderCodeInput.parentNode.classList.add('ds_question--error');
             orderCodeInput.classList.add('ds_input--error');
         }
 
         if (orderCodeInput.value.indexOf(' ') > -1) {
-            errors.push('Payment Reference cannot contain spaces');
+            errors.push({message: 'Payment Reference cannot contain spaces', element: orderCodeInput});
 
             orderCodeInput.parentNode.classList.add('ds_question--error');
             orderCodeInput.classList.add('ds_input--error');
@@ -69,12 +69,30 @@ const Payment = {
 
         if (errors.length) {
             const errorList = document.createElement('ul');
+            errorList.classList.add('ds_error-summary__list');
 
             errors.forEach(function (error) {
                 const errorItem = document.createElement('li');
-                errorItem.innerText = error;
-
+                const errorLink = document.createElement('a');
+                errorLink.innerText = error.message;
+                errorLink.href = `#${error.element.id}`;
+                errorItem.appendChild(errorLink);
                 errorList.appendChild(errorItem);
+
+                errorLink.addEventListener('click', (event) => {
+                    event.preventDefault();
+
+                    const errorInput = document.querySelector(event.target.getAttribute('href'));
+
+                    let testNode = errorInput;
+
+                    while (!testNode.classList.contains('ds_question')) {
+                        testNode = testNode.parentNode;
+                    }
+
+                    testNode.scrollIntoView();
+                    errorInput.focus();
+                });
             });
 
             errorSummary.appendChild(errorList);

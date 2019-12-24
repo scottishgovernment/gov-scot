@@ -12,6 +12,7 @@
     }
 
     &__list {
+        color: $color__red--base;
         font-weight: bold;
         list-style-type: none;
         margin-left: 0;
@@ -19,11 +20,16 @@
         a {
             color: $color__red--base;
         }
+
+        li {
+            margin-left: 0;
+        }
     }
 
     > :last-child {
         margin-bottom: 0;
     }
+
 }
 
 .flashable {
