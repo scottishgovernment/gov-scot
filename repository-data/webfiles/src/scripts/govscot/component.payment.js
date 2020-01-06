@@ -10,8 +10,6 @@ import $ from 'jquery';
 import CharacterCount from '../design-system-forms/character-count';
 
 const characterCountModules = [].slice.call(document.querySelectorAll('[data-module="ds-character-count"]'));
-const characterCountElements = [].slice.call(document.querySelectorAll('input[maxlength], textarea[maxlength]'));
-characterCountElements.forEach(element => characterCountModules.push(element.parentNode));
 characterCountModules.forEach(characterCount => new CharacterCount(characterCount).init());
 
 const Payment = {
