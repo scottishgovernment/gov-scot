@@ -21,7 +21,9 @@
 								<div class="listed-content-item__meta listed-content-item__meta--has-icon">
 									<span class="listed-content-item__icon file-icon file-icon--TXT"></span>
 									<p class="listed-content-item__label">${item.label}</p>
-									<p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+									<#if item.publicationDate??>
+										<p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+									</#if>
 								</div>
 							</#if>
 
