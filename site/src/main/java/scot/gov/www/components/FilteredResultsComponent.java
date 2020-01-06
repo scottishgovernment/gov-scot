@@ -106,7 +106,9 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         final int page = getCurrentPage(request);
         final int offset = (page - 1) * pageSize;
 
-        HstQueryBuilder builder = HstQueryBuilder.create(scope);
+        HippoBean scopeFolder = scope.isHippoFolderBean() ? scope : scope.getParentBean();
+
+        HstQueryBuilder builder = HstQueryBuilder.create(scopeFolder);
         return builder.ofTypes(types)
                 .where(constraints(request, PUBLICATION_DATE))
                 .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), paramInfo.getSortField())
