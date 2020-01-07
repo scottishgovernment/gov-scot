@@ -50,6 +50,11 @@ definitions:
           hst:componentconfigurationid: hst:pages/newspageprgloo
           hst:relativecontentpath: news
           hst:sitemapitemhandlerids: [trailing-slash]
+        /index:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/newslistpage
+          hst:relativecontentpath: ${parent}/index
+          hst:sitemapitemhandlerids: [trailing-slash]
       /about:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/aboutpage
@@ -290,9 +295,10 @@ definitions:
                   hst:componentconfigurationmappingvalues: ['hst:pages/complexdocumentpage']
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/index
                   hst:sitemapitemhandlerids: [trailing-slash]
-        /_index_:
+        /index:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/publicationpage
+          hst:componentconfigurationid: hst:pages/publicationlistpage
+          hst:relativecontentpath: publications
           hst:sitemapitemhandlerids: [trailing-slash]
       /isbn:
         jcr:primaryType: hst:sitemapitem

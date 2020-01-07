@@ -105,7 +105,11 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
     private boolean isPublicationsSlugLink(HstLink link) {
         // match any slug style link for a publication or page
-        return link.getPath().startsWith(PUBLICATIONS) && link.getPathElements().length >= 2;
+        return link.getPath().startsWith(PUBLICATIONS) && link.getPathElements().length >= 2 && !isPublicationsListPage(link);
+    }
+
+    private boolean isPublicationsListPage(HstLink link) {
+        return link.getPathElements().length == 2 && link.getPathElements()[1].equals("index");
     }
 
     private HstLink preProcessPublicationsLink(HstLink link) {
