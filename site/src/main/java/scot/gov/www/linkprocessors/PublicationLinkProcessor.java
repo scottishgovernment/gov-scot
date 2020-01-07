@@ -109,7 +109,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
     }
 
     private boolean isPublicationsListPage(HstLink link) {
-        return link.getPathElements().length == 2 && link.getPathElements()[1].equals("index");
+        return link.getPathElements().length == 2 && "index".equals(link.getPathElements()[1]);
     }
 
     private HstLink preProcessPublicationsLink(HstLink link) {

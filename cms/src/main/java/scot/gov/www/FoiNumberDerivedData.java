@@ -25,7 +25,7 @@ public class FoiNumberDerivedData extends DerivedDataFunction {
             String[] parts = foiString.split("/");
 
             if (parts.length < 3) {
-                LOG.warn("Unable to get FOI number");
+                LOG.warn("Unable to get FOI number, foiString is {}", foiString);
                 return parameters;
             }
 
