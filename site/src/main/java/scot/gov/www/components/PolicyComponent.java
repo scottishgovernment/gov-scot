@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.time.StopWatch;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.query.HstQuery;
@@ -79,14 +80,14 @@ public class PolicyComponent extends BaseHstComponent {
             List<HippoBean> all = getLatestNews(request, policy);
             PolicyLatest latest = (PolicyLatest) document;
             all.addAll(latest.getRelatedItems());
-            Collections.sort(all, this::compareDateIfNoNull);
+            Collections.sort(all, this::compareDate);
             Collections.reverse(all);
             request.setAttribute(LATEST, all);
         }
     }
 
-    private int compareDateIfNoNull(HippoBean left, HippoBean right) {
-        return dateToCompare(left).compareTo(dateToCompare(right));
+    private int compareDate(HippoBean left, HippoBean right) {
+        return ObjectUtils.compare(dateToCompare(left), dateToCompare(right));
     }
 
     Calendar dateToCompare(HippoBean bean) {

@@ -1,5 +1,6 @@
 package scot.gov.www.beans;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoCompound;
@@ -51,7 +52,7 @@ public class CollectionGroup extends HippoCompound {
     }
 
     private int compareDateIfNoNull(HippoBean left, HippoBean right) {
-        return dateToCompare(right).compareTo(dateToCompare(left));
+        return ObjectUtils.compare(dateToCompare(left), dateToCompare(right));
     }
 
     Calendar dateToCompare(HippoBean bean) {
