@@ -43,7 +43,7 @@
 
             <div class="ds_question">
                 <label class="ds_label" for="description">Description</label>
-                <textarea rows="2" class="ds_input" type="text" id="description" name="description" placeholder="please advise of reason for payment if non-invoiced item"></textarea>
+                <textarea rows="2" class="ds_input" type="text" id="description" name="description" required placeholder="please advise of reason for payment if non-invoiced item"></textarea>
             </div>
 
             <input type="submit" class="button  button--primary" name="submit" value="Submit Payment" >
