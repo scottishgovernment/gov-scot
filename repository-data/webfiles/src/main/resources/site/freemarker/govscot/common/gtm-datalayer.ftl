@@ -1,4 +1,6 @@
 <#ftl output_format="HTML">
+
+<#if document??>
 <@hst.headContribution category="dataLayer">
 <script id="datalayerPush">
 
@@ -44,3 +46,4 @@
     })
 </script>
 </@hst.headContribution>
+</#if>
