@@ -17,7 +17,6 @@ definitions:
         hst:componentconfigurationid: hst:pages/pagenotfound
         hst:refId: pagenotfound
         hst:relativecontentpath: '404'
-        hst:sitemapitemhandlerids: [trailing-slash]
       /topics:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/topicslistpage
