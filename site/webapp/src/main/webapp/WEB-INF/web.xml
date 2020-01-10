@@ -77,6 +77,11 @@
   </filter>
 
   <filter>
+    <filter-name>PingFilter</filter-name>
+    <filter-class>org.hippoecm.hst.container.PingFilter</filter-class>
+  </filter>
+
+  <filter>
     <filter-name>HstFilter</filter-name>
     <filter-class>org.hippoecm.hst.container.HstFilter</filter-class>
   </filter>
@@ -120,8 +125,16 @@
   </filter-mapping>
 
   <filter-mapping>
+    <filter-name>PingFilter</filter-name>
+    <url-pattern>/ping/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+
+  <filter-mapping>
     <filter-name>HstFilter</filter-name>
     <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
   </filter-mapping>
 
   <!-- HstContextLoaderListener configuring/initializing/destroying HST Container -->
@@ -205,11 +218,6 @@
     </init-param>
   </servlet>
 
-  <servlet>
-    <servlet-name>PingServlet</servlet-name>
-    <servlet-class>org.hippoecm.hst.servlet.HstPingServlet</servlet-class>
-  </servlet>
-
   <servlet-mapping>
     <servlet-name>BinariesServlet</servlet-name>
     <url-pattern>/binaries/*</url-pattern>
@@ -238,11 +246,6 @@
   <servlet-mapping>
     <servlet-name>HstResourceServlet</servlet-name>
     <url-pattern>/resources/*</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>PingServlet</servlet-name>
-    <url-pattern>/ping/*</url-pattern>
   </servlet-mapping>
 
   <security-constraint>

@@ -3,15 +3,3 @@ definitions:
     govscot:
       uri: http://www.onehippo.org/govscot/nt/1.0
       cnd: namespaces/gov-scot.cnd
-  config:
-    /hippo:configuration/hippo:modules/webfiles/hippo:moduleconfig:
-      watchedModules: [repository-data/webfiles]
-    /hippo:configuration/hippo:domains/hippofolders/readonly:
-      hipposys:groups: [image-editors, mourning-banner, sitewriters, useradmin]
-    /hippo:configuration/hippo:domains/preview-documents/readonly:
-      hipposys:groups: [previewusers]
-    /hippo:configuration/hippo:domains/live-documents/readonly:
-      hipposys:groups:
-        operation: add
-        type: string
-        value: [liveusers]

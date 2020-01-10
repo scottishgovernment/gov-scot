@@ -64,11 +64,6 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
         }
 
         @Override
-        public boolean getContainerResource() {
-            return link.getContainerResource();
-        }
-
-        @Override
         public boolean isContainerResource() {
             return link.isContainerResource();
         }

@@ -15,39 +15,33 @@
  */
 package org.hippoecm.frontend.plugins.reviewedactions;
 
-import javax.jcr.Node;
-
 import org.apache.wicket.Component;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
-import org.hippoecm.addon.workflow.StdWorkflow;
-import org.hippoecm.addon.workflow.WorkflowDescriptorModel;
-import org.hippoecm.frontend.model.JcrNodeModel;
-import org.hippoecm.frontend.plugin.IPluginContext;
-import org.hippoecm.frontend.plugin.config.IPluginConfig;
-import org.hippoecm.frontend.plugins.standards.icon.HippoIcon;
-import org.hippoecm.frontend.service.IEditor;
-import org.hippoecm.frontend.service.IEditorManager;
-import org.hippoecm.frontend.skin.CmsIcon;
-import org.hippoecm.frontend.skin.Icon;
-import org.hippoecm.repository.api.Workflow;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.model.*;
 import org.apache.wicket.util.io.IClusterable;
+import org.hippoecm.addon.workflow.StdWorkflow;
+import org.hippoecm.addon.workflow.WorkflowDescriptorModel;
 import org.hippoecm.frontend.dialog.Dialog;
 import org.hippoecm.frontend.dialog.DialogConstants;
 import org.hippoecm.frontend.dialog.IDialogService;
-import org.hippoecm.frontend.service.IconSize;
+import org.hippoecm.frontend.model.JcrNodeModel;
+import org.hippoecm.frontend.plugin.IPluginContext;
+import org.hippoecm.frontend.plugin.config.IPluginConfig;
+import org.hippoecm.frontend.plugins.standards.icon.HippoIcon;
 import org.hippoecm.frontend.service.EditorException;
-
+import org.hippoecm.frontend.service.IEditor;
+import org.hippoecm.frontend.service.IEditorManager;
+import org.hippoecm.frontend.service.IconSize;
+import org.hippoecm.frontend.skin.CmsIcon;
+import org.hippoecm.frontend.skin.Icon;
+import org.hippoecm.repository.api.Workflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.jcr.Node;
 
 public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
@@ -59,7 +53,9 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
     public EditingWorkflowPlugin(final IPluginContext context, final IPluginConfig config) {
         super(context, config);
 
-        StdWorkflow saveWorkflow = new StdWorkflow("save", new StringResourceModel("save", this, null, "Save"), context, getModel()) {
+        StdWorkflow saveWorkflow = new StdWorkflow("save", new StringResourceModel("save", this).setModel(null)
+                .setDefaultValue("Save")
+                .setParameters(), context, getModel()) {
 
             @Override
             public String getSubMenu() {
@@ -86,7 +82,9 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
             }
         };
 
-        StdWorkflow doneWorkflow = new StdWorkflow("done", new StringResourceModel("done", this, null, "Done"), context, getModel()) {
+        StdWorkflow doneWorkflow = new StdWorkflow("done", new StringResourceModel("done", this).setModel(null)
+                .setDefaultValue("Done")
+                .setParameters(), context, getModel()) {
 
             @Override
             public String getSubMenu() {
@@ -112,7 +110,9 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
             }
         };
 
-        StdWorkflow closeWorkflow = new StdWorkflow("close", new StringResourceModel("close", this, null, "Close"), context, getModel()) {
+        StdWorkflow closeWorkflow = new StdWorkflow("close", new StringResourceModel("close", this).setModel(null)
+                .setDefaultValue("Close")
+                .setParameters(), context, getModel()) {
             @Override
             public String getSubMenu() {
                 return "top";
@@ -254,8 +254,9 @@ public class EditingWorkflowPlugin extends AbstractDocumentWorkflowPlugin {
 
         @Override
         public IModel<String> getTitle() {
-            return new StringResourceModel("close-document", this, null, "Close {0}",
-                    new PropertyModel(getModel(), "displayName"));
+            return new StringResourceModel("close-document", this).setModel(null)
+                    .setDefaultValue("Close {0}")
+                    .setParameters(new PropertyModel(getModel(), "displayName"));
         }
     }
 

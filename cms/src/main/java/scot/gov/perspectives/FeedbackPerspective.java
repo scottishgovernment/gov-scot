@@ -108,7 +108,7 @@ public class FeedbackPerspective extends Perspective {
     public void renderHead(final IHeaderResponse response) {
         response.render(CssHeaderItem.forReference(PERSPECTIVE_CSS));
         response.render(JavaScriptHeaderItem.forReference(PERSPECTIVE_JS));
-        response.render(OnEventHeaderItem.forScript("'" + componentMarkupId + "'", "onreadystatechange", "FeedbackPerspective.showIFrame(\"" + iframe.getMarkupId() + "\");"));
+        response.render(OnEventHeaderItem.forScript("'" + componentMarkupId + "'", "readystatechange", "FeedbackPerspective.showIFrame(\"" + iframe.getMarkupId() + "\");"));
     }
 
     private String getNodePathFromId(String uuid) {

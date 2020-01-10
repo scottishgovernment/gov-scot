@@ -1,6 +1,7 @@
 package scot.gov.www;
 
 import org.onehippo.cms7.services.eventbus.HippoEventBus;
+import org.onehippo.cms7.services.eventbus.HippoEventListenerRegistry;
 import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.onehippo.repository.modules.DaemonModule;
@@ -36,7 +37,7 @@ public abstract class DaemonModuleBase implements DaemonModule {
     public void initialize(Session session) throws RepositoryException {
         this.session = session;
 
-        registerService(this, HippoEventBus.class);
+        HippoEventListenerRegistry.get().register(this);
     }
 
     @Subscribe
@@ -67,7 +68,7 @@ public abstract class DaemonModuleBase implements DaemonModule {
 
     @Override
     public void shutdown() {
-        unregisterService(this, HippoEventBus.class);
+        HippoEventListenerRegistry.get().unregister(this);
     }
 
 

@@ -19,21 +19,21 @@
 
   <dependencies>
 
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-package-app-dependencies</artifactId>
-      <type>pom</type>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.onehippo.cms7</groupId>
-          <artifactId>hippo-essentials-components-repository</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.onehippo.cms7</groupId>-->
+      <!--<artifactId>hippo-package-app-dependencies</artifactId>-->
+      <!--<type>pom</type>-->
+      <!--<exclusions>-->
+        <!--<exclusion>-->
+          <!--<groupId>commons-logging</groupId>-->
+          <!--<artifactId>commons-logging</artifactId>-->
+        <!--</exclusion>-->
+        <!--<exclusion>-->
+          <!--<groupId>org.onehippo.cms7</groupId>-->
+          <!--<artifactId>hippo-essentials-components-repository</artifactId>-->
+        <!--</exclusion>-->
+      <!--</exclusions>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
