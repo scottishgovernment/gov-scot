@@ -68,7 +68,7 @@ definitions:
           hipposys:value: events-embargo-assets
       /editor:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: []
+        hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5]
         hipposys:role: editor
       /author:
         jcr:primaryType: hipposys:authrole
@@ -177,7 +177,7 @@ definitions:
           hipposys:value: /content/documents/govscot/publications/statistics/
       /embargo:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: []
+        hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5]
         hipposys:role: embargo
       /statistics-publication-type:
         jcr:primaryType: hipposys:domainrule

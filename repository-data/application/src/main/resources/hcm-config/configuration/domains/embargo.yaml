@@ -5,4 +5,4 @@ definitions:
     /hippo:configuration/hippo:domains/embargo/editor:
       hipposys:groups: []
     /hippo:configuration/hippo:domains/embargo/embargo:
-      hipposys:groups: []
+      hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5]
