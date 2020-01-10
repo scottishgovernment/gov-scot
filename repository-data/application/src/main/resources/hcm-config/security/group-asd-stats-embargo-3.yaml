@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/ASD Stats embargo group 3:
+      jcr:primaryType: hipposys:group
+      hipposys:description: ASD Stats embargo group 3
+      hipposys:members: []
+      hipposys:securityprovider: internal

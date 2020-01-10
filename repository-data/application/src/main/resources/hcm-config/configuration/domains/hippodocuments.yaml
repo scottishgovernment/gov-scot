@@ -18,15 +18,16 @@ definitions:
       hipposys:value: /content/documents/administration
     /hippo:configuration/hippo:domains/hippodocuments/readonly:
       jcr:primaryType: hipposys:authrole
-      hipposys:groups: [cmsadmin, core-content-authors, core-content-editors, document-unlocker,
-        foi-authors, foi-editors, group-authors, group-editors, image-editors, mourning-banner,
-        policy-authors, policy-editors, previewusers, publication-authors, publication-editors,
-        readonly, topics-issues-authors, topics-issues-editors, useradmin, news-editors,
-        collection-authors, collection-editors, statistics-authors, statistics-editors]
+      hipposys:groups: [ASD Stats embargo group 1, cmsadmin, collection-authors, collection-editors,
+        core-content-authors, core-content-editors, document-unlocker, foi-authors,
+        foi-editors, group-authors, group-editors, image-editors, mourning-banner,
+        news-editors, policy-authors, policy-editors, previewusers, publication-authors,
+        publication-editors, readonly, statistics-authors, statistics-editors, topics-issues-authors,
+        topics-issues-editors, useradmin]
       hipposys:role: readonly
     /hippo:configuration/hippo:domains/hippodocuments/unlockauthrole:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [cmsadmin, document-unlocker]
       hipposys:role: unlocker
     /hippo:configuration/hippo:domains/hippodocuments/embargo:
-      hipposys:groups: [admin]
+      hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5, admin]

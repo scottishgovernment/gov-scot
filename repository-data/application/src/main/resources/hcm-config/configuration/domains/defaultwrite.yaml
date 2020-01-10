@@ -5,9 +5,13 @@ definitions:
         core-content-authors, core-content-editors, editor, foi-authors, foi-editors,
         group-authors, group-editors, housing-authors, housing-editors, image-editors,
         news-editors, policy-authors, policy-editors, publication-authors, publication-editors,
-        statistics-authors, topics-issues-authors, topics-issues-editors, useradmin,
-        statistics-editors]
+        statistics-authors, statistics-editors, topics-issues-authors, topics-issues-editors,
+        useradmin]
     /hippo:configuration/hippo:domains/defaultwrite/admin:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: []
       hipposys:role: admin
+    /hippo:configuration/hippo:domains/defaultwrite/embargo:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5]
+      hipposys:role: embargo

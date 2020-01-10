@@ -1,11 +1,11 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/hippofolders/readwrite:
-      hipposys:groups: [author, cmsadmin, core-content-authors, core-content-editors,
-        document-unlocker, editor, foi-authors, foi-editors, group-authors, group-editors,
-        policy-authors, policy-editors, publication-authors, publication-editors,
-        topics-issues-authors, topics-issues-editors, news-editors, collection-authors,
-        collection-editors, statistics-authors, statistics-editors]
+      hipposys:groups: [author, cmsadmin, collection-authors, collection-editors,
+        core-content-authors, core-content-editors, document-unlocker, editor, foi-authors,
+        foi-editors, group-authors, group-editors, news-editors, policy-authors, policy-editors,
+        publication-authors, publication-editors, statistics-authors, statistics-editors,
+        topics-issues-authors, topics-issues-editors]
     /hippo:configuration/hippo:domains/hippofolders/hippostd-folder/exclude-valuelists-folder:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false
@@ -25,4 +25,4 @@ definitions:
       hipposys:groups: []
       hipposys:role: admin
     /hippo:configuration/hippo:domains/hippofolders/embargo:
-      hipposys:groups: [admin]
+      hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5, admin]
