@@ -92,7 +92,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         try {
             HstQueryResult result = query.execute();
             if (result.getTotalSize() == 0) {
-                LOG.warn("PRGloo slug not found: {}", slug);
+                LOG.info("PRGloo slug not found: {}", slug);
                 return null;
             }
 
@@ -121,7 +121,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
             }
             return false;
         } catch (RepositoryException e) {
-            LOG.warn("Failed to determine existance of slug {}", slug, e);
+            LOG.warn("Failed to determine existence of slug {}", slug, e);
             return false;
         }
     }
