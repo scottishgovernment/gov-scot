@@ -14,7 +14,7 @@ characterCountModules.forEach(characterCount => new CharacterCount(characterCoun
 
 const Payment = {
     settings: {
-        paymentUrl: '/service/payment/'
+        paymentUrl: '/service/payment'
     },
 
     init: function () {
