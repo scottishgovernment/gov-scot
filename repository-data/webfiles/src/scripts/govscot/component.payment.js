@@ -45,24 +45,37 @@ const Payment = {
     validateInputs: function () {
         const errors = [];
         const orderCodeInput = document.getElementById('orderCode');
+        const amountInput = document.getElementById('amount');
+        const orderCodeInputQuestion = orderCodeInput.parentNode;
+        const amountInputQuestion = amountInput.parentNode.parentNode;
         const errorSummary = document.getElementById('error-summary');
 
         // reference number restrictions: 64 characters, no spaces
         if (orderCodeInput.value.length > 64) {
             errors.push({message: 'Payment Reference is too long (maximum is 64 characters)', element: orderCodeInput});
 
-            orderCodeInput.parentNode.classList.add('ds_question--error');
+            orderCodeInputQuestion.classList.add('ds_question--error');
             orderCodeInput.classList.add('ds_input--error');
         }
 
         if (orderCodeInput.value.indexOf(' ') > -1) {
             errors.push({message: 'Payment Reference cannot contain spaces', element: orderCodeInput});
 
-            orderCodeInput.parentNode.classList.add('ds_question--error');
+            orderCodeInputQuestion.classList.add('ds_question--error');
             orderCodeInput.classList.add('ds_input--error');
 
-            const spacesMessage = orderCodeInput.parentNode.querySelector('#payment-ref-spaces');
+            const spacesMessage = orderCodeInputQuestion.querySelector('#payment-ref-spaces');
             spacesMessage.classList.remove('hidden');
+        }
+
+        // value: max £5000
+        if (parseInt(amountInput.value, 10) > 5000) {
+            errors.push({message: 'Amount cannot be more than £5000', element: amountInput});
+            amountInputQuestion.classList.add('ds_question--error');
+            amountInput.classList.add('ds_input--error');
+
+            const amountMaxMessage = amountInputQuestion.querySelector('#amount-max');
+            amountMaxMessage.classList.remove('hidden');
         }
 
         if (errors.length) {
