@@ -11,7 +11,7 @@
     "postshrinkwrap": "node_modules/.bin/sealant @scottish-government/mygov-assets",
     "svgsprites": "node svg-sprite",
     "scss": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
-    "webpack": "./node_modules/.bin/webpack -p --config webpack.config.es5.js && ./node_modules/.bin/webpack -p --config webpack.config.js",
+    "webpack": "./node_modules/.bin/webpack -p --config webpack.config.js",
     "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
   "devDependencies": {

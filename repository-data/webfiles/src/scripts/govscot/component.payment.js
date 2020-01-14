@@ -7,7 +7,7 @@
 'use strict';
 
 import $ from 'jquery';
-import CharacterCount from '../design-system-forms/character-count';
+import CharacterCount from './design-system-forms/character-count';
 
 const characterCountModules = [].slice.call(document.querySelectorAll('[data-module="ds-character-count"]'));
 characterCountModules.forEach(characterCount => new CharacterCount(characterCount).init());
