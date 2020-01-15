@@ -46,7 +46,7 @@ public class TrailingSlashRedirect implements HstSiteMapItemHandler {
     }
 
     boolean hasExtension(String url) {
-        String lastSegment = StringUtils.substringAfterLast(url.toString(), "/");
+        String lastSegment = StringUtils.substringAfterLast(url, "/");
         return StringUtils.contains(lastSegment, ".");
     }
 
