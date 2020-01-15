@@ -19,7 +19,7 @@ definitions:
     /hippo:configuration/hippo:domains/hippodocuments/readonly:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD
-        Stats embargo group 4, ASD Stats embargo group 5,  cmsadmin, collection-authors, collection-editors,
+        Stats embargo group 4, ASD Stats embargo group 5, General Embargo, cmsadmin, collection-authors, collection-editors,
         core-content-authors, core-content-editors, document-unlocker, foi-authors,
         foi-editors, group-authors, group-editors, image-editors, mourning-banner,
         news-editors, policy-authors, policy-editors, previewusers, publication-authors,
@@ -31,4 +31,4 @@ definitions:
       hipposys:groups: [cmsadmin, document-unlocker]
       hipposys:role: unlocker
     /hippo:configuration/hippo:domains/hippodocuments/embargo:
-      hipposys:groups: [admin]
+      hipposys:groups: [General Embargo, admin]

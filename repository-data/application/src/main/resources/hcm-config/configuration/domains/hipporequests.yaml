@@ -6,5 +6,7 @@ definitions:
         publication-editors, statistics-editors, topics-issues-editors, useradmin]
     /hippo:configuration/hippo:domains/hipporequests/embargo:
       jcr:primaryType: hipposys:authrole
-      hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group 5]
+      hipposys:groups: [ASD Stats embargo group 1, ASD Stats embargo group 2, ASD
+          Stats embargo group 3, ASD Stats embargo group 4, ASD Stats embargo group
+          5, General Embargo]
       hipposys:role: embargo
