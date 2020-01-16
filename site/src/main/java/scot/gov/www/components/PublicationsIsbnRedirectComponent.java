@@ -113,7 +113,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
         try {
             HstQueryResult result = query.execute();
             if (result.getTotalSize() == 0) {
-                LOG.warn("ISBN not found: {}", isbn);
+                LOG.info("ISBN not found: {}", isbn);
                 return null;
             }
 
