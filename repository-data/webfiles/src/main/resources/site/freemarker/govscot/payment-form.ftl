@@ -36,7 +36,7 @@
 
             <div class="ds_question">
                 <label class="ds_label" for="amount">Amount</label>
-                <p class="ds_question__message  hidden  hidden--hard" id="amount-max">Amount cannot be more than £5000</p>
+                <p class="ds_question__message  hidden  hidden--hard" id="amount-max">Amount cannot be more than £5000.00</p>
                 <div class="ds_currency-wrapper" data-symbol="£">
                     <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" required />
                 </div>
@@ -45,6 +45,11 @@
             <div class="ds_question">
                 <label class="ds_label" for="description">Description</label>
                 <textarea rows="2" class="ds_input" type="text" id="description" name="description" required placeholder="please advise of reason for payment if non-invoiced item"></textarea>
+            </div>
+
+            <div class="ds_question">
+                <label class="ds_label" for="email">Email address</label>
+                <input class="ds_input" type="text" id="email" name="email" required placeholder="Your email address for payment confirmation"></input>
             </div>
 
             <input type="submit" class="button  button--primary" name="submit" value="Submit Payment" >

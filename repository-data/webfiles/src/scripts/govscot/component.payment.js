@@ -31,7 +31,8 @@ const Payment = {
             const payment = {
                 orderCode: $('#orderCode').val(),
                 amount: $('#amount').val(),
-                description: $('#description').val()
+                description: $('#description').val(),
+                emailAddress: $('#email').val()
             };
 
             that.removeErrorMessages();
@@ -69,8 +70,8 @@ const Payment = {
         }
 
         // value: max £5000
-        if (parseInt(amountInput.value, 10) > 5000) {
-            errors.push({message: 'Amount cannot be more than £5000', element: amountInput});
+        if (parseFloat(amountInput.value) > 5000.00) {
+            errors.push({message: 'Amount cannot be more than £5000.00', element: amountInput});
             amountInputQuestion.classList.add('ds_question--error');
             amountInput.classList.add('ds_input--error');
 
