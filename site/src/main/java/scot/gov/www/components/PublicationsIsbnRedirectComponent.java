@@ -101,7 +101,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
                 LOG.warn("Multiple publications found with isbn {}, will use the first one", isbn);
             }
 
-            return StringUtils.substringAfter(result.getNodes().nextNode().getPath(), "/content/redirects/HistoricalUrls/");
+            return StringUtils.substringAfter(result.getNodes().nextNode().getPath(), "/content/redirects/HistoricalUrls");
         } catch (RepositoryException e) {
             LOG.error("Failed to query for isbn url {}", isbn, e);
             return null;
