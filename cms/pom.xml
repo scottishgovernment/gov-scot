@@ -25,13 +25,13 @@
     <dependency>
       <groupId>org.onehippo.forge.embargo</groupId>
       <artifactId>embargo-addon-frontend</artifactId>
-      <version>4.0.0</version>
+      <version>4.1.0</version>
     </dependency>
 
     <dependency>
       <groupId>org.onehippo.forge.embargo</groupId>
       <artifactId>embargo-addon-repository</artifactId>
-      <version>4.0.0</version>
+      <version>4.1.0</version>
     </dependency>
 
     <dependency>
