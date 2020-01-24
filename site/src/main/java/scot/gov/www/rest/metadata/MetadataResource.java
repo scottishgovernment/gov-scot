@@ -4,10 +4,7 @@ import org.hippoecm.hst.container.RequestContextProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
+import javax.jcr.*;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import javax.ws.rs.*;
@@ -16,6 +13,7 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * Expose metadata required for external publication registration forms.
@@ -33,6 +31,8 @@ public class MetadataResource {
     private static final Logger LOG = LoggerFactory.getLogger(MetadataResource.class);
 
     private static final String GOVSCOT_TITLE = "govscot:title";
+
+    private static final String NOT_AVAILABLE = "Metadata not available";
 
     @Path("directorates")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,11 +63,27 @@ public class MetadataResource {
             Session session = RequestContextProvider.get().getSession();
             Node valueList = session.getNode("/content/documents/govscot/valuelists/publicationTypes/publicationTypes");
             MetadataResponse response = new MetadataResponse();
-            addResponses(response, valueList.getNodes(), this::getItemFromListItem);
+            addResponses(response, valueList.getNodes(), this::getItemFromListItem, this::notGeneric);
             return response;
         } catch (RepositoryException e) {
             LOG.error("Failed to generate metadata", e);
-            throw new WebApplicationException("Metadata not available", e, Response.Status.INTERNAL_SERVER_ERROR);
+            throw new WebApplicationException(NOT_AVAILABLE, e, Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Filter out the publication type "publication" since we do not want any new publications to be registered as
+     * this type.
+     *
+     * Once the content migration is finished and we have recategorized all generic publication we can
+     * remove this value from the value list and remove this predicate.
+     */
+    boolean notGeneric(Node node) {
+        try {
+            Property property = node.getProperty("selection:key");
+            return !"publication".equals(property.getString());
+        } catch (RepositoryException e) {
+            throw new WebApplicationException(NOT_AVAILABLE, e, Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -94,7 +110,7 @@ public class MetadataResource {
             return response;
         } catch (RepositoryException e) {
             LOG.error("Failed to generate metadata", e);
-            throw new WebApplicationException("Metadata not available", e, Response.Status.INTERNAL_SERVER_ERROR);
+            throw new WebApplicationException(NOT_AVAILABLE, e, Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -152,8 +168,15 @@ public class MetadataResource {
     }
 
     void addResponses(MetadataResponse response, NodeIterator iterator, MetadataGetter getter) throws RepositoryException {
+        addResponses(response, iterator, getter, node -> true);
+    }
+
+    void addResponses(MetadataResponse response, NodeIterator iterator, MetadataGetter getter, Predicate<Node> predicate) throws RepositoryException {
         while (iterator.hasNext()) {
-            response.getData().add(getter.getItemFromNode(iterator.nextNode()));
+            Node node = iterator.nextNode();
+            if (predicate.test(node)) {
+                response.getData().add(getter.getItemFromNode(node));
+            }
         }
     }
 
