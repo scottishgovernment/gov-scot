@@ -345,3 +345,12 @@ definitions:
           hst:componentconfigurationid: hst:pages/paymentresult
           hst:relativecontentpath: payment/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
+      /sitemap_latest.xml:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:components/sitemapLatest
+      /sitemap_default_.xml:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:components/sitemap
+      /sitemap.xml:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:components/sitemapIndex

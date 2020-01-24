@@ -1,21 +1,4 @@
 definitions:
   config:
-    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/govscot:
-      jcr:primaryType: hipposched:jobgroup
-      /SitemapGenerator:
-        jcr:primaryType: hipposched:repositoryjob
-        hipposched:attributeNames: [baseURL]
-        hipposched:attributeValues: ['https://www.gov.scot/']
-        hipposched:enabled: true
-        hipposched:repositoryJobClass: scot.gov.www.scheduledjobs.sitemap.SitemapGeneratorJob
-        /hipposched:triggers:
-          jcr:primaryType: hipposched:triggers
-          /halfhour:
-            jcr:primaryType: hipposched:crontrigger
-            jcr:mixinTypes: ['hippo:lockable', 'mix:lockable']
-            jcr:uuid: b58ae451-dc02-4b88-9b86-d41a09eda877
-            hipposched:cronExpression: 0 0/30 * * * ?
-            hipposched:enabled: true
-            hipposched:nextFireTime: 2019-11-27T09:30:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/CheckBrokenLinks/hipposched:triggers/nightly:
       hipposched:cronExpression: 0 0/5 * * * ?
