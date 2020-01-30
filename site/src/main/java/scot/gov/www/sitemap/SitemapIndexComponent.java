@@ -1,12 +1,15 @@
 package scot.gov.www.sitemap;
 
 import org.apache.commons.lang.time.StopWatch;
+import org.hippoecm.hst.configuration.hosting.Mount;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.linking.HstLinkCreator;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.forge.sitemap.components.model.sitemapindex.SitemapIndex;
 import org.onehippo.forge.sitemap.components.model.sitemapindex.TSitemap;
 import org.onehippo.forge.sitemap.generator.SitemapIndexGenerator;
@@ -65,4 +68,10 @@ public class SitemapIndexComponent extends BaseSitemapComponent {
         return sitemap;
     }
 
+    String createLink(HstRequest request, String path) {
+        HstRequestContext context = request.getRequestContext();
+        Mount mount = context.getResolvedMount().getMount();
+        HstLinkCreator linkCreator = context.getHstLinkCreator();
+        return linkCreator.create(path, mount).toUrlForm(context, true);
+    }
 }

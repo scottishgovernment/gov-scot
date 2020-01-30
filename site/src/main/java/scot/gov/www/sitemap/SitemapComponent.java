@@ -12,6 +12,7 @@ import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;
 
+import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
 import org.onehippo.forge.sitemap.components.model.Url;
@@ -25,20 +26,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.apache.commons.lang.StringUtils.endsWith;
+import static org.apache.commons.lang.StringUtils.removeEnd;
 import static org.apache.commons.lang.StringUtils.substringAfter;
 
 /**
  * Component that produces a sitemap for a part of the content tree.  Uses code from the bloomreach forge plugin to
  * produce the XML.
- *
- * Some differences:
- * - DONE /index for some landing pages: special case?
- * - /groups/
- * - directorates and grooups pages have no content page
- * - people in roles difference (think this might be a bug in existing code?)
- * -         // types that are backed by queries and whose modified date should be set to the start of today
- * - query backed types whose modified date should be today...
- * - Collections.addAll(STOPLIST, "valuelists", "featured-items", "404", "search");
  */
 public class SitemapComponent extends BaseSitemapComponent {
 
@@ -110,14 +104,35 @@ public class SitemapComponent extends BaseSitemapComponent {
     Url url(String path, Calendar lastMod) {
         Url url = new Url();
         url.setLastmod(lastMod);
-        url.setLoc(path);
+        url.setLoc(correctIndexUrls(path));
         return url;
     }
 
+    String correctIndexUrls(String url) {
+        return endsWith(url, "/index/")
+                ? removeEnd(url, "index/")
+                : url;
+    }
+
     Calendar getLastModifiedDate(HippoBean bean) throws RepositoryException {
-        return QUERY_BACKED_TYPES.contains(bean.getNode().getPrimaryNodeType())
+        return frequentlyChanging(bean)
                 ? startOfToday()
                 : bean.getProperty("hippostdpubwf:lastModificationDate");
+    }
+
+    boolean frequentlyChanging(HippoBean bean) throws RepositoryException {
+        return isQueryBackedType(bean) || isIndexFile(bean);
+    }
+
+    boolean isQueryBackedType(HippoBean bean) throws RepositoryException {
+        return QUERY_BACKED_TYPES.contains(bean.getNode().getPrimaryNodeType());
+    }
+
+    boolean isIndexFile(HippoBean bean) throws RepositoryException {
+        // if the type is simpel content and the name is index then this is one of the landing pages
+        Node node = bean.getNode();
+        return "index".equals(node.getName())
+                && "govscot:SimpleContent".equals(node.getPrimaryNodeType().getName());
     }
 
     Calendar startOfToday() {
