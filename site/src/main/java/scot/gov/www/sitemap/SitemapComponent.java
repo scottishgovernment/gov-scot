@@ -116,7 +116,7 @@ public class SitemapComponent extends BaseSitemapComponent {
 
     Calendar getLastModifiedDate(HippoBean bean) throws RepositoryException {
         return frequentlyChanging(bean)
-                ? startOfToday()
+                ? Calendar.getInstance()
                 : bean.getProperty("hippostdpubwf:lastModificationDate");
     }
 
@@ -133,14 +133,5 @@ public class SitemapComponent extends BaseSitemapComponent {
         Node node = bean.getNode();
         return "index".equals(node.getName())
                 && "govscot:SimpleContent".equals(node.getPrimaryNodeType().getName());
-    }
-
-    Calendar startOfToday() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return cal;
     }
 }
