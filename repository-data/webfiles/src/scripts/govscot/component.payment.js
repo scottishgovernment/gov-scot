@@ -46,9 +46,11 @@ const Payment = {
     validateInputs: function () {
         const errors = [];
         const orderCodeInput = document.getElementById('orderCode');
-        const amountInput = document.getElementById('amount');
         const orderCodeInputQuestion = orderCodeInput.parentNode;
+        const amountInput = document.getElementById('amount');
         const amountInputQuestion = amountInput.parentNode.parentNode;
+        const emailInput = document.getElementById('email');
+        const emailInputQuestion = emailInput.parentNode;
         const errorSummary = document.getElementById('error-summary');
 
         // reference number restrictions: 64 characters, no spaces
@@ -77,6 +79,22 @@ const Payment = {
 
             const amountMaxMessage = amountInputQuestion.querySelector('#amount-max');
             amountMaxMessage.classList.remove('hidden');
+        }
+
+        // email must be valid format
+        if (emailInput.value.length > 0) {
+            const trimmedValue = emailInput.value.trim();
+            const regex = /^[^@ ]+@[^@ ]+\.[^@ ]+$/;
+            const valid = trimmedValue === '' || trimmedValue.match(regex) !== null;
+
+            if (!valid) {
+                errors.push({ message: 'Email address is not in a valid format', element: emailInput });
+                emailInputQuestion.classList.add('ds_question--error');
+                emailInput.classList.add('ds_input--error');
+
+                const invalidEmailMessage = emailInputQuestion.querySelector('#invalid-email');
+                invalidEmailMessage.classList.remove('hidden');
+            }
         }
 
         if (errors.length) {
@@ -141,6 +159,10 @@ const Payment = {
         [].slice.call(errorSummary.querySelectorAll('ul')).forEach(ul => ul.parentNode.removeChild(ul));
 
         errorSummary.classList.add('hidden');
+
+        [].slice.call(document.querySelectorAll('.ds_question--error')).forEach(question => question.classList.remove('ds_question--error'));
+        [].slice.call(document.querySelectorAll('.ds_input--error')).forEach(input => input.classList.remove('ds_input--error'));
+        [].slice.call(document.querySelectorAll('.ds_question__message')).forEach(message => message.classList.add('hidden'));
     },
 
     showErrorSummary: function () {

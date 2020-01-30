@@ -49,6 +49,7 @@
 
             <div class="ds_question">
                 <label class="ds_label" for="email">Email address</label>
+                <p class="ds_question__message  hidden  hidden--hard" id="invalid-email">Email address is not in a valid format</p>
                 <input class="ds_input" type="text" id="email" name="email" required placeholder="Your email address for payment confirmation"></input>
             </div>
 
