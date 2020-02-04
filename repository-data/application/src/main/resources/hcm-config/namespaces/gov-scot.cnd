@@ -80,6 +80,9 @@
 [govscot:OrgRoles] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:PageNotFound] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:PaymentForm] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

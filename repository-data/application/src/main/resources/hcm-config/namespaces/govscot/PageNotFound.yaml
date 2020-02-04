@@ -1,0 +1,168 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/PageNotFound:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: b9bdd651-15bf-4651-a9bb-bf3d95ec5032
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 7c3dd680-a1f0-403e-8a78-36993aa85fd0
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: fcd1f180-e915-4a6d-9071-65e9c96a4297
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /archiveContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:archiveContent
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
+          /archiveUrl:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:archiveUrl
+            hipposysedit:primary: false
+            hipposysedit:type: String
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:PageNotFound
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          jcr:mixinTypes: ['mix:referenceable']
+          govscot:seoTitle: ''
+          govscot:archiveUrl: ''
+          govscot:metaDescription: ''
+          govscot:title: ''
+          govscot:summary: ''
+          govscot:reportingTags: []
+          jcr:uuid: f8309a48-4abe-41f0-b745-d2b4d05d8911
+          hippostdpubwf:lastModificationDate: 2020-02-03T13:18:24.507Z
+          hippostdpubwf:creationDate: 2020-02-03T13:18:24.507Z
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:archiveContent:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /title:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: title
+            hint: This is the main title for this content item.  The title needs to
+              be descriptive and concise.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /seoTitle:
+            jcr:primaryType: frontend:plugin
+            caption: SEO title
+            field: seoTitle
+            hint: 'This title is used by search engines and social media for indexing
+              this content item.  The title needs to be brief and concise.  Note:
+              Search engines and social media only use first 60 characters.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '60'
+          /summary:
+            jcr:primaryType: frontend:plugin
+            caption: Summary
+            field: summary
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /metaDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Meta description
+            field: metaDescription
+            hint: 'A description of this content item for search engine indexing purposes.  Note:
+              Meta descriptions should be limited to no more than 300 characters -
+              approx. 50 words.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /content:
+            jcr:primaryType: frontend:plugin
+            caption: 404 Content
+            field: content
+            hint: The main content area for this page.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /archiveContent:
+            jcr:primaryType: frontend:plugin
+            caption: Archive content
+            field: archiveContent
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /reportingTags:
+            jcr:primaryType: frontend:plugin
+            caption: Reporting Tags
+            field: reportingTags
+            multiselect.type: palette
+            palette.alloworder: false
+            palette.maxrows: '8'
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/govscot/valuelists/reportingTags
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /archiveUrl:
+            jcr:primaryType: frontend:plugin
+            caption: Archive URL
+            field: archiveUrl
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

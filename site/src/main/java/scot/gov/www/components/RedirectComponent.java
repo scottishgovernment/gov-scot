@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.PublicationPage;
+import scot.gov.www.beans.SimpleContent;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -58,7 +59,7 @@ public class RedirectComponent extends BaseHstComponent {
             return;
         }
 
-        // if this is a publicaitons url then check if we have a publicaiton for it
+        // if this is a publications url then check if we have a publication for it
         if (isOldStylePublicationUrl(request)) {
             HippoBean bean = findPublicationsByGovScotUrl(request);
             if (bean != null) {
@@ -68,13 +69,6 @@ public class RedirectComponent extends BaseHstComponent {
                 HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
                 return;
             }
-
-        }
-
-        // check if this url is an archived url
-        if (isArchivedUrl(request)) {
-            ArchiveUtils.redirectToOldSite(request, response);
-            return;
         }
 
         // we do not know this url, send a 404

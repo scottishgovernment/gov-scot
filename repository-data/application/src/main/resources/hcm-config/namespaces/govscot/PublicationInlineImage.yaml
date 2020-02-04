@@ -37,7 +37,7 @@ definitions:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
           jcr:primaryType: govscot:PublicationInlineImage
-          jcr:mixinTypes: ['mix:versionable', 'mix:referenceable']
+          jcr:mixinTypes: ['mix:versionable']
           jcr:uuid: 12f75f53-ef99-4d49-972b-55f758c769cf
           hippogallery:description: ''
           /hippogallery:thumbnail:
