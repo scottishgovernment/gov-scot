@@ -21,6 +21,7 @@ import org.onehippo.forge.sitemap.generator.SitemapGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
@@ -57,7 +58,19 @@ public class SitemapComponent extends BaseSitemapComponent {
                     request.getPathInfo(), urlset.getUrls().size(), stopWatch.getTime());
         } catch (QueryException | RepositoryException e) {
             LOG.error("Failed to generate sitemap", e);
-            throw new HstComponentException(e);
+            throw new HstComponentException("Unable to generate sitemap for url: " + request.getPathInfo(), e);
+        } catch (NumberFormatException e) {
+            LOG.error("Failed to generate sitemap - no valid index in url:" + request.getPathInfo(), e);
+            send404(response);
+        }
+    }
+
+    protected void send404(HstResponse response){
+        try {
+            response.setStatus(404);
+            response.forward("/pagenotfound");
+        }  catch (IOException e) {
+            throw new HstComponentException("Forward failed", e);
         }
     }
 
@@ -74,12 +87,8 @@ public class SitemapComponent extends BaseSitemapComponent {
 
     private int getOffsetFromRequestPath(String path) {
         String stripped = StringUtils.substringBefore(substringAfter(path, "/sitemap_"), ".xml");
-        try {
-            int index = Integer.valueOf(stripped);
-            return index * MAX_SITEMAP_SIZE;
-        } catch (NumberFormatException e) {
-            throw new HstComponentException(String.format("Invalid sitemap index in request path: %s", path));
-        }
+        int index = Integer.valueOf(stripped);
+        return index * MAX_SITEMAP_SIZE;
     }
 
     Urlset getUrlSetForResults(HippoBeanIterator it, HstRequest request) throws RepositoryException {
