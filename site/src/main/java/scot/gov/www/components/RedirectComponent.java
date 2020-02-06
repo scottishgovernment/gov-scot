@@ -17,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.PublicationPage;
-import scot.gov.www.beans.SimpleContent;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
