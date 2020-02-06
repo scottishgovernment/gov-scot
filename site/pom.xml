@@ -29,6 +29,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.onehippo.forge</groupId>
+      <artifactId>feed-hst</artifactId>
+      <version>${forge.feed.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.taglibs</groupId>
       <artifactId>taglibs-standard-spec</artifactId>
     </dependency>

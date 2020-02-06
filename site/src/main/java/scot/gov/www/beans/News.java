@@ -1,20 +1,29 @@
 package scot.gov.www.beans;
 
-import org.hippoecm.hst.content.beans.standard.HippoBean;
-import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
+import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
+import org.onehippo.forge.feed.api.FeedType;
+import org.onehippo.forge.feed.api.annot.SyndicationElement;
+import org.onehippo.forge.feed.api.transform.CalendarToDateConverter;
+import org.onehippo.forge.feed.api.transform.PathLinkResolver;
+import org.onehippo.forge.feed.api.transform.rss.StringToDescriptionConverter;
+
 import java.util.Calendar;
 import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:News")
 @Node(jcrType = "govscot:News")
 public class News extends SimpleContent {
+
     @HippoEssentialsGenerated(internalName = "govscot:title")
+    @SyndicationElement(type = FeedType.RSS, name = "title")
     public String getTitle() {
         return getProperty("govscot:title");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "description", converter = StringToDescriptionConverter.class)
     @HippoEssentialsGenerated(internalName = "govscot:summary")
     public String getSummary() {
         return getProperty("govscot:summary");
@@ -46,6 +55,7 @@ public class News extends SimpleContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:publicationDate")
+    @SyndicationElement(type = FeedType.RSS, name = "pubDate", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
         return getProperty("govscot:publicationDate");
     }
@@ -95,5 +105,17 @@ public class News extends SimpleContent {
         return getHippoHtml("govscot:notes");
     }
 
-    public String getLabel() { return "news"; }
+    public String getLabel() {
+        return "news";
+    }
+
+    @SyndicationElement(type = FeedType.RSS, name = "link", transformer = PathLinkResolver.class)
+    public String getURL() {
+        return "news/".concat(getProperty("govscot:prglooslug"));
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:reportingTags")
+    public String[] getReportingTags() {
+        return getProperty("govscot:reportingTags");
+    }
 }

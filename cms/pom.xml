@@ -59,6 +59,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.onehippo.forge</groupId>
+      <artifactId>feed-cms-addon</artifactId>
+      <version>${forge.feed.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-addon-channel-manager-frontend</artifactId>
     </dependency>

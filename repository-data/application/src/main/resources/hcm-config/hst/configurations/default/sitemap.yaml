@@ -16,3 +16,7 @@ definitions:
     /hst:hst/hst:configurations/hst:default/hst:sitemap/browserconfig.xml:
       jcr:primaryType: hst:sitemapitem
       hst:containerresource: true
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/_any_.xml:
+      jcr:primaryType: hst:sitemapitem
+      hst:namedpipeline: JaxrsRestFeedPipeline
+      hst:relativecontentpath: ${1}

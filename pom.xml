@@ -33,6 +33,7 @@
     <hippo.release.version>12.6.3</hippo.release.version>
     <hippo.maven.plugin.l10n>2.2.2</hippo.maven.plugin.l10n>
     <freemarker.version>2.3.24-incubating</freemarker.version>
+    <forge.feed.version>4.0.1</forge.feed.version>
 
     <essentials.version>4.6.3</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
