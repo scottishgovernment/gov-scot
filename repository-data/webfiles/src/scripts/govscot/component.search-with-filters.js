@@ -303,12 +303,14 @@ function enableJSFilters () {
 
 function gatherParams (initial) {
     let searchParams = this.searchParams || {};
-
+    
     // KEYWORD / TERM
     if (window.location.href.indexOf('/search/') !== -1) {
         searchParams.q = encodeURI($('#filters-search-term').val());
+        searchParams.cat = 'sitesearch';
     } else {
         searchParams.term = encodeURI($('#filters-search-term').val());
+        searchParams.cat = 'filter';
     }
 
     // PAGINATION
