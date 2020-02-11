@@ -83,7 +83,9 @@
                                     </article>
                                 </li>
                             <#else>
-                                <li><a href="<@hst.link hippobean=item/>">${item.title}</a></li>
+                                <#if item.title??>
+                                    <li><a href="<@hst.link hippobean=item/>">${item.title}</a></li>
+                                </#if>
                             </#if>
                         </#list>
                     </ul>
@@ -111,7 +113,11 @@
     <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-    <meta name="description" content="${document.metaDescription?html}"/>
+
+    <#if document.metaDescription??>
+        <meta name="description" content="${document.metaDescription?html}"/>
+    </#if>
+
     </@hst.headContribution>
 
     <@hst.headContribution category="footerScripts">
