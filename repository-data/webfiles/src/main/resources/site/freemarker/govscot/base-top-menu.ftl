@@ -32,7 +32,7 @@
 
                                 <div class="ds_site-search__input-group">
                                     <input name="q" required="" id="site-search--mobile" class="ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
-
+                                    <input name="cat" value="search" hidden>
                                     <button type="submit" title="search" class="ds_site-search__button  button  button--primary">
                                         <svg class="ds_icon  ds_site-search__icon" role="img"><use xlink:href="${iconspath}#search"></use></svg>
 
