@@ -23,6 +23,11 @@
     --></div>
     </#if>
 
+    <div class="grid"><!--
+        --><div class="grid__item  medium--nine-twelfths  xlarge--seven-twelfths">
+            <#include 'common/feedback-wrapper.ftl'>
+        </div><!--
+    --></div>
 </div>
 
 <@hst.headContribution category="pageTitle">

@@ -8,3 +8,6 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.PageNotFoundComponent
         hst:template: pagenotfound-main
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback
