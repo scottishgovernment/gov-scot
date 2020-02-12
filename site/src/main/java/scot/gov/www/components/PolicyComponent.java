@@ -52,7 +52,6 @@ public class PolicyComponent extends BaseHstComponent {
         Policy policy;
         try {
             policy = getPolicy(document);
-
             if(policy == null) {
                 response.setStatus(404);
                 response.forward("/pagenotfound");
@@ -137,10 +136,13 @@ public class PolicyComponent extends BaseHstComponent {
         List<Policy> policies = parent.getChildBeans(Policy.class);
         if (policies.isEmpty()) {
             LOG.info("No policy found under {}", document.getPath());
+            return null;
         }
         if (policies.size() > 1) {
             LOG.info("More than one policy found under {}, will use first", document.getPath());
         }
+
+        LOG.info("Here ... ");
         return policies.get(0);
     }
 
