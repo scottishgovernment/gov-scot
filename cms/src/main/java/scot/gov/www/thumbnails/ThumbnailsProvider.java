@@ -38,7 +38,7 @@ public class ThumbnailsProvider {
         FileType type = FileType.forMimeType(mimeType);
 
         if (type == null) {
-            return fixedThumbnails(type);
+            return fixedThumbnails(IconNames.FALLBACK);
         }
 
         if (type == FileType.PDF) {
@@ -49,7 +49,7 @@ public class ThumbnailsProvider {
             return imageThumbnails(documentStream, type);
         }
 
-        return fixedThumbnails(type);
+        return fixedThumbnails(type.getIconName());
     }
 
     private static Map<Integer, File> pdfThumbnails(InputStream documentStream) throws ThumbnailsProviderException {
@@ -101,19 +101,19 @@ public class ThumbnailsProvider {
 
     }
 
-    private static Map<Integer, File> fixedThumbnails(FileType type) throws ThumbnailsProviderException {
+    private static Map<Integer, File> fixedThumbnails(String iconName) throws ThumbnailsProviderException {
         Map<Integer, File> thumbs = new HashMap();
         for (Integer size : SIZES) {
-            File thumb = fixedThumbnail(type, size);
+            File thumb = fixedThumbnail(iconName, size);
             thumbs.put(size, thumb);
         }
         return thumbs;
     }
 
-    private static File fixedThumbnail(FileType type, int size) throws ThumbnailsProviderException {
+    private static File fixedThumbnail(String iconName, int size) throws ThumbnailsProviderException {
 
         // lookup based on the required size
-        String filename = String.format("/thumbnails/%s_%dpx.png", type.getIconName(), size);
+        String filename = String.format("/thumbnails/%s_%dpx.png", iconName, size);
         InputStream inputStream = ThumbnailsProvider.class.getResourceAsStream(filename);
         if (isNull(inputStream)) {
             // check we have default icon for this size
