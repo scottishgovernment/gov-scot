@@ -134,7 +134,6 @@
                 <fieldset id="filter-search" class="filters__fieldset filter-search">
                     <legend class="filters__legend">Keyword search</legend>
                     <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="filters__input--search-term-home filters__input--search-term" />
-                    <input name="cat" value="filter" hidden>
                     <a href="<@hst.link path='/policies/' />" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
                 </fieldset>
 

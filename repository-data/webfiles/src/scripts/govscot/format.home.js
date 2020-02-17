@@ -82,6 +82,8 @@ const homePage = {
         if (term.length > 0) {
             queryStringParams.push('term=' + term);
         }
+        queryStringParams.push('cat=filter');
+        
         if (topics.length > 0) {
             queryStringParams.push('topics=' + topics.join(';'));
         }
