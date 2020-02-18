@@ -142,7 +142,6 @@ public class PolicyComponent extends BaseHstComponent {
             LOG.info("More than one policy found under {}, will use first", document.getPath());
         }
 
-        LOG.info("Here ... ");
         return policies.get(0);
     }
 
