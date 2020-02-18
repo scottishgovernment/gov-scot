@@ -1,12 +1,5 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
-<#if useLiveAnalytics??>
-    <#assign gtmAuth = "eBDGxMFYXLnv72VcZO6hog" />
-    <#assign gtmEnv = "2" />
-<#else>
-    <#assign gtmAuth = "g8K7GRj2SA6kHC_g2wl3Aw" />
-    <#assign gtmEnv = "58" />
-</#if>
 
 <@hst.headContribution category="googleTagManager">
 <!-- Google Tag Manager (GTM) -->
@@ -20,20 +13,39 @@
 </script>
 </@hst.headContribution>
 
+<#assign gtmAuthDev = "0gwH66LRTpDbpRlyEGUv0Q" />
+<#assign gtmEnvDev = "58" />
+
 <@hst.headContribution category="googleTagManager">
+<#if useLiveAnalytics??>
 <script>
 initGTM = function () {
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&amp;gtm_auth=${gtmAuth}&amp;gtm_preview=env-${gtmEnv}&amp;gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PZ62X92');
 }
 </script>
-<!-- End Google Tag Manager -->
+<#else>
+<script>
+initGTM = function () {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&amp;gtm_auth=${gtmAuthDev}&amp;gtm_preview=env-${gtmEnvDev}&amp;gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PZ62X92');
+}
+</script>
+</#if>
 </@hst.headContribution>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ62X92&gtm_auth=${gtmAuth}&gtm_preview=env-${gtmEnv}&gtm_cookies_win=x"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <#if useLiveAnalytics??>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ62X92"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <#else>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ62X92&gtm_auth=${gtmAuthDev}&gtm_preview=env-${gtmEnvDev}&gtm_cookies_win=x"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    </#if>
+    <!-- End Google Tag Manager (noscript) -->
