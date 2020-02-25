@@ -30,14 +30,15 @@ const searchUtils = {
     getNewQueryString: function (params) {
         let newQueryStringParams = [],
             newQueryString;
-        
-        if (params.cat) {
-            newQueryStringParams.push('cat=' + params.cat);
-        }
 
         if (params.term) {
             newQueryStringParams.push('term=' + params.term);
         }
+
+        if (params.cat) {
+            newQueryStringParams.push('cat=' + params.cat);
+        }
+        
         if (params.q) {
             newQueryStringParams.push('q=' + params.q);
         }
