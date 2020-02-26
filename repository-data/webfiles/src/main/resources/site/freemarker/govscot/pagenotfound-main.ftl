@@ -15,7 +15,6 @@
                     <a href="${archiveUrl}">${archiveUrl}</a>
                 </p>
                 <@hst.html hippohtml=document.archiveContentEpilogue/>
-                <p>HERE</p>
             <#else>
                 <h1 class="article-header">${document.title}</h1>
                 <@hst.html hippohtml=document.content/>
