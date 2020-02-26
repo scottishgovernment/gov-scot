@@ -105,6 +105,11 @@ public class PageNotFound extends SimpleContent {
         return getHippoHtml("govscot:archiveContent");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:archiveContentEpilogue")
+    public HippoHtml getArchiveContentEpilogue() {
+        return getHippoHtml("govscot:archiveContentEpilogue");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:notes")
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
