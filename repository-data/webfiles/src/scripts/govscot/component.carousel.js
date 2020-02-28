@@ -265,10 +265,12 @@ const carouselObject = {
         items.on('click', function (e) {
             e.stopPropagation();
 
-            that.itemTitleClicked = true;
-            itemClickedText = this.innerHTML;
+            if (!e.currentTarget.classList.contains('carousel-item--active')) {
+                that.itemTitleClicked = true;
+                itemClickedText = this.innerHTML;
 
-            that.transition(this, 'none');
+                that.transition(this, 'none');
+            }
         });
 
         support.on('keydown', function(e) {
