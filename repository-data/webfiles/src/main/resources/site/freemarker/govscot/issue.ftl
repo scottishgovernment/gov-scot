@@ -70,7 +70,7 @@
                                                 </div>
 
                                                 <h3 class="gamma  listed-content-item__title" title="${item.title}">
-                                                    <a data-gtm="featured-item-${item?index}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>" class="listed-content-item__link <#if item.class == 'scot.gov.www.beans.ExternalLink'>external  listed-content-item__link--external</#if>" title="${item.title}">
+                                                    <a data-gtm="featured-item-${item?index + 1}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>" class="listed-content-item__link <#if item.class == 'scot.gov.www.beans.ExternalLink'>external  listed-content-item__link--external</#if>" title="${item.title}">
                                                         ${item.title}
                                                     </a>
                                                 </h3>
@@ -88,7 +88,7 @@
                             <h2 class="gamma  emphasis  sidebar-block__title">News</h2>
                             <ul class="no-bullets">
                                 <#list news as newsItem>
-                                    <li><a data-gtm="news-${newsItem?index}" class="sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
+                                    <li><a data-gtm="news-${newsItem?index + 1}" class="sidebar-block__link" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/news/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all news</a>
@@ -100,7 +100,7 @@
                             <h2 class="gamma  emphasis  sidebar-block__title">Policies</h2>
                             <ul class="no-bullets">
                                 <#list policies as policy>
-                                    <li><a data-gtm="policy-${policy?index}" class="sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
+                                    <li><a data-gtm="policy-${policy?index + 1}" class="sidebar-block__link" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all policies</a>
@@ -112,7 +112,7 @@
                             <h2 class="gamma  emphasis  sidebar-block__title">Publications</h2>
                             <ul class="no-bullets">
                                 <#list publications as publication>
-                                    <li><a data-gtm="publications-${publication?index}" class="sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
+                                    <li><a data-gtm="publications-${publication?index + 1}" class="sidebar-block__link" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
                                 </#list>
                             </ul>
                             <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all publications</a>

@@ -32,7 +32,7 @@
 
                     <div class="listed-content-item__wrapper">
                         <header class="listed-content-item__heading">
-                            <#if item.roleTitle??><h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">${item.roleTitle}</a></h2></#if>
+                            <#if item.roleTitle??><h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.roleTitle}</a></h2></#if>
                             <p class="listed-content-item__role">${item.name}</p>
                         </header>
 
@@ -57,7 +57,7 @@
                                     </#if>
                                 </div>
                             </#if>
-                            <h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">${item.title?html}</a></h2>
+                            <h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a></h2>
                         </header>
 
                         <#if item.summary??>

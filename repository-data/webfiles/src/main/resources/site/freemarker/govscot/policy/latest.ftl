@@ -30,7 +30,7 @@
 							</#if>
 
 							<h2 class="gamma listed-content-item__title">
-								<a href="${link}" class="listed-content-item__link" title="${item.title}" data-gtm="search-pos-${latest?seq_index_of(item)}">
+								<a href="${link}" class="listed-content-item__link" title="${item.title}" data-gtm="search-pos-${latest?seq_index_of(item) + 1}">
 									${item.title}
 								</a>
 							</h2>

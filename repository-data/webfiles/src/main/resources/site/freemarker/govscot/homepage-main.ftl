@@ -174,7 +174,7 @@
             <#list publications as publication>
                 <article class="homepage-publication">
                     <h3 class="js-truncate homepage-publication__title"><a href="<@hst.link hippobean=publication />"
-                                                                           data-gtm="pubs-${publication?index}" title="${publication.title}">${publication.title}</a></h3>
+                                                                           data-gtm="pubs-${publication?index + 1}" title="${publication.title}">${publication.title}</a></h3>
                     <ul class="homepage-publication__topics">
                         <#list publication.topics as topic>
                         <li>${topic.title}</li>
@@ -207,7 +207,7 @@
             <#list consultations as consultation>
                 <article class="homepage-publication">
                     <h3 class="js-truncate homepage-publication__title">
-                        <a href="<@hst.link hippobean=consultation />" data-gtm="cons-${consultation?index}" title="${consultation.title}">${consultation.title}</a></h3>
+                        <a href="<@hst.link hippobean=consultation />" data-gtm="cons-${consultation?index + 1}" title="${consultation.title}">${consultation.title}</a></h3>
                     <ul class="homepage-publication__topics">
                         <#list consultation.topics as topic>
                         <li>${topic.title}</li>
@@ -289,7 +289,7 @@
                     <article class="narrow">
                         <p class="homepage-news__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                         <h3 class="js-truncate homepage-news__title">
-                            <a href="<@hst.link hippobean=newsItem/>" data-gtm="news-${newsItem?index}" title="${newsItem.title}">${newsItem.title}</a>
+                            <a href="<@hst.link hippobean=newsItem/>" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
                         </h3>
                         <p class="homepage-news__summary">${newsItem.summary}</p>
                     </article>

@@ -25,7 +25,7 @@
         <ul class="policy-list column-list  column-list--not-small  column-list--3">
             <#list policies as policy>
                 <li class="policy-list__item  column-list__item">
-                    <a data-gtm="policy-${policy?index}" class="policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
+                    <a data-gtm="policy-${policy?index + 1}" class="policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
                 </li>
             </#list>
         </ul>
@@ -74,7 +74,7 @@
                                 </#if>
 
                                 <h3 class="listed-content-item__title  js-truncate" title="${item.title}">
-                                    <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link" data-gtm="featured-item-${item?index}">
+                                    <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link" data-gtm="featured-item-${item?index + 1}">
                                         ${item.title}
                                     </a>
                                 </h3>
@@ -103,7 +103,7 @@
                     <#list news as newsItem>
                         <article class="homepage-publication">
                         <h3 class="js-truncate  homepage-publication__title">
-                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index}" title="${newsItem.title}">${newsItem.title}</a>
+                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
                         </h3>
                         <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                         </article>
@@ -137,7 +137,7 @@
                     <#list publications as publication>
                         <article class="homepage-publication">
                             <h3 class="js-truncate  homepage-publication__title">
-                                <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index}" title="${publication.title}">${publication.title}</a>
+                                <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
                             </h3>
                             <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
                         </article>
@@ -171,7 +171,7 @@
                     <#list consultations as consultation>
                         <article class="homepage-publication">
                             <h3 class="js-truncate  homepage-publication__title">
-                                <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index}" title="${consultation.title}">${consultation.title}</a>
+                                <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index + 1}" title="${consultation.title}">${consultation.title}</a>
                             </h3>
                             <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
                         </article>
@@ -255,7 +255,7 @@
                                 <#if role.incumbent??>
                                     <h4 class="person__name">${role.incumbent.title}</h4>
                                 </#if>
-                                <p class="person__roles"><a href="<@hst.link hippobean=role/>">${role.title}</a></p>
+                                <p class="person__roles"><a href="<@hst.link hippobean=role/>" data-gtm="person-${role?index + 1}">${role.title}</a></p>
                             </li><!--
                         </#list>
                 --></ul>
@@ -281,7 +281,7 @@
                     <ul class="directorate-list  column-list  column-list--not-small  column-list--2">
                         <#list directorates as directorate>
                             <li class="directorate-list__item  column-list__item">
-                                <a class="directorate-list__link" data-gtm="directorate-${directorate?index}" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
+                                <a class="directorate-list__link" data-gtm="directorate-${directorate?index + 1}" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
                             </li>
                         </#list>
                     </ul>

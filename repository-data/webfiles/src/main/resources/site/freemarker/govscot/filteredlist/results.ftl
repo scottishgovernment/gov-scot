@@ -107,7 +107,7 @@
                         </div>
 
                         <h2 class="gamma listed-content-item__title">
-                            <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index}">${item.title?html}</a>
+                            <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a>
                         </h2>
                     </header>
                     <#if item.summary??>

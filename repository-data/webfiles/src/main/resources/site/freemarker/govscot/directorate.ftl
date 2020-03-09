@@ -176,7 +176,7 @@
                 <#list policies as policy>
                     <li>
                         <@hst.link var="link" hippobean=policy/>
-                        <a class="sidebar-block__link" data-gtm="policies-${policy?index}"  href="${link}">${policy.title}</a>
+                        <a class="sidebar-block__link" data-gtm="policies-${policy?index + 1}"  href="${link}">${policy.title}</a>
                     </li>
                 </#list>
             </ul>
