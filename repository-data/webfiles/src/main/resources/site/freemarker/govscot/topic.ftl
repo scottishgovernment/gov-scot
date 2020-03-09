@@ -249,16 +249,16 @@
 
                 <div class="expandable-item__body">
 
-                    <ul class="person-list grid"><!--
+                    <ul class="person-list  column-list  column-list--not-small  column-list--2">
                         <#list document.responsibleRoles as role>
-                        --><li class="grid__item  medium--six-twelfths  person  person--small">
+                            <li class="person  person--small">
                                 <#if role.incumbent??>
                                     <h4 class="person__name">${role.incumbent.title}</h4>
                                 </#if>
                                 <p class="person__roles"><a href="<@hst.link hippobean=role/>" data-gtm="person-${role?index + 1}">${role.title}</a></p>
-                            </li><!--
+                            </li>
                         </#list>
-                --></ul>
+                    </ul>
                 </div>
             </div>
             <!-- /end .expandable-item -->
