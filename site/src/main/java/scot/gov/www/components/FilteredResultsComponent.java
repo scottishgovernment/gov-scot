@@ -248,19 +248,32 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         Set<String> topics = splitParameters(request, "topics");
         try {
             Session session = request.getRequestContext().getSession();
+
             Node topicsNode = session.getNode("/content/documents/govscot/topics");
+
             if (topicsNode == null) {
                 return Collections.emptyList();
             }
+            try {
+                HstQuery query = HstQueryBuilder.create(topicsNode)
+                        .ofTypes(Topic.class, Issue.class)
+                        .orderByAscending("govscot:title")
+                        .build();
 
-            NodeIterator nodeIt = topicsNode.getNodes();
-            while (nodeIt.hasNext()) {
-                Node topicNode = nodeIt.nextNode();
+                HstQueryResult result = query.execute();
+                HippoBeanIterator hippoBeans = result.getHippoBeans();
 
-                if (isRequired(topicNode, topics)) {
-                    topicIds.add(topicNode.getIdentifier());
+                while (hippoBeans.hasNext()) {
+                    Node topicNode = hippoBeans.nextHippoBean().getNode();
+
+                    if (isRequired(topicNode, topics)) {
+                        topicIds.add(topicNode.getParent().getIdentifier());
+                    }
                 }
+            } catch (QueryException e) {
+                LOG.error("Failed to get topics", e);
             }
+
             return topicIds;
         } catch (RepositoryException e) {
             throw new HstComponentException("Failed to get topics", e);
@@ -316,7 +329,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private String nodeTitle(Node node) throws RepositoryException {
-        Property titleProperty = node.getProperty("hippo:name");
+        Property titleProperty = node.getProperty("govscot:title");
         return titleProperty.getString();
     }
 
