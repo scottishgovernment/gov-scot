@@ -26,19 +26,24 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.*;
+import scot.gov.www.beans.AttributableContent;
+import scot.gov.www.beans.Issue;
+import scot.gov.www.beans.Publication;
+import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
-import javax.jcr.*;
+import javax.jcr.Node;
+import javax.jcr.Property;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Collection;
 
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
@@ -46,6 +51,7 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 public class FilteredResultsComponent extends EssentialsListComponent {
 
     private static final String PUBLICATION_DATE = "govscot:publicationDate";
+    private static final String GOVSCOT_TITLE = "govscot:title";
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
     public static final String PUBLICATION_TYPES = "publicationTypes";
@@ -57,7 +63,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
         super.init(servletContext, componentConfig);
-        Collections.addAll(fieldNames, "govscot:title", "govscot:summary", "govscot:content/hippostd:content",
+        Collections.addAll(fieldNames, GOVSCOT_TITLE, "govscot:summary", "govscot:content/hippostd:content",
                 "hippostd:tags", "govscot:incumbentTitle", "govscot:policyTags", "govscot:newsTags");
     }
 
@@ -254,29 +260,34 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             if (topicsNode == null) {
                 return Collections.emptyList();
             }
-            try {
-                HstQuery query = HstQueryBuilder.create(topicsNode)
-                        .ofTypes(Topic.class, Issue.class)
-                        .orderByAscending("govscot:title")
-                        .build();
 
-                HstQueryResult result = query.execute();
-                HippoBeanIterator hippoBeans = result.getHippoBeans();
-
-                while (hippoBeans.hasNext()) {
-                    Node topicNode = hippoBeans.nextHippoBean().getNode();
-
-                    if (isRequired(topicNode, topics)) {
-                        topicIds.add(topicNode.getParent().getIdentifier());
-                    }
-                }
-            } catch (QueryException e) {
-                LOG.error("Failed to get topics", e);
-            }
+            populateTopics(topicIds, topicsNode, topics);
 
             return topicIds;
         } catch (RepositoryException e) {
             throw new HstComponentException("Failed to get topics", e);
+        }
+    }
+
+    private void populateTopics(List<String> topicIds, Node topicsNode, Set<String> topics) throws RepositoryException {
+        try {
+            HstQuery query = HstQueryBuilder.create(topicsNode)
+                    .ofTypes(Topic.class, Issue.class)
+                    .orderByAscending(GOVSCOT_TITLE)
+                    .build();
+
+            HstQueryResult result = query.execute();
+            HippoBeanIterator hippoBeans = result.getHippoBeans();
+
+            while (hippoBeans.hasNext()) {
+                Node topicNode = hippoBeans.nextHippoBean().getNode();
+
+                if (isRequired(topicNode, topics)) {
+                    topicIds.add(topicNode.getParent().getIdentifier());
+                }
+            }
+        } catch (QueryException e) {
+            LOG.error("Failed to get topics", e);
         }
     }
 
@@ -329,7 +340,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private String nodeTitle(Node node) throws RepositoryException {
-        Property titleProperty = node.getProperty("govscot:title");
+        Property titleProperty = node.getProperty(GOVSCOT_TITLE);
         return titleProperty.getString();
     }
 
