@@ -14,7 +14,7 @@ window.dataLayer = window.dataLayer || [];
 const homePage = {
 
     settings: {
-        youTubePublicKey: 'AIzaSyCFPNz-2U46zuAxB-jM83mTsoZ30Sk9s6I'
+        youTubePublicKey: 'AIzaSyDGmgKDuodqUe8Sb59iNu39OQfEUc7h0PM'
     },
 
     init: function () {
@@ -83,7 +83,7 @@ const homePage = {
             queryStringParams.push('term=' + term);
         }
         queryStringParams.push('cat=filter');
-        
+
         if (topics.length > 0) {
             queryStringParams.push('topics=' + topics.join(';'));
         }
