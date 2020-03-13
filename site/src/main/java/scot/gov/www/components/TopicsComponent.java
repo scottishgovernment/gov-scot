@@ -1,7 +1,6 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
@@ -28,7 +27,7 @@ public class TopicsComponent extends BaseHstComponent {
         Map<String, List<SimpleContent>> topicsByFirstLetter  = topics
                 .stream()
                 .filter(this::include)
-                .collect(groupingBy(topic -> String.format("%s", topic.getName().toUpperCase().charAt(0))));
+                .collect(groupingBy(topic -> String.format("%s", topic.getTitle().toUpperCase().charAt(0))));
         List<TopicsAndLetter> topicsAndLetters = new ArrayList<>();
         for (Map.Entry<String, List<SimpleContent>> entry : topicsByFirstLetter.entrySet()) {
             TopicsAndLetter topicAndLetter = new TopicsAndLetter();
