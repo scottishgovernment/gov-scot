@@ -232,10 +232,10 @@
 </#if>
 
 <@hst.headContribution category="footerScripts">
-    <script type="module" src="<@hst.webfile path="/assets/scripts/image-hub.js"/>"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/issue-hub.js"/>"></script>
 </@hst.headContribution>
 <@hst.headContribution category="footerScripts">
-    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/image-hub.es5.js"/>"></script>
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/issue-hub.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if document??>
