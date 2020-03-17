@@ -1,0 +1,201 @@
+/*------------------------------------*\
+    NOTIFICATION BANNER
+\*------------------------------------*/
+
+$pl-prefix: "ds_";
+$colour__grey--dark: $color__grey--dark;
+$colour__white: $color__white;
+$colour__text: $color__body;
+$colour__gold--base: $color__gold--base;
+$colour__green--base: $color__green--base;
+$colour__red--base: $color__red--base;
+$colour__link: $color__link--primary;
+$colour__blue--light: $color__blue--light;
+
+// fixed vars
+$notification-banner__close-padding: 5px;
+$notification-banner__icon-padding: $notification-banner__close-padding;
+
+
+
+
+.#{$pl-prefix}notification {
+    background: $colour__grey--dark;
+    color: $colour__white;
+    margin-bottom: 1px;
+
+    &__content {
+        justify-content: space-between;
+        padding: 14px 0;
+        position: relative;
+
+        &--has-close {
+            padding-right: 45px;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+
+    &__text {
+        display: inline-block;
+        margin-right: 20px;
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__actions {
+        display: inline-block;
+        margin: 21px -10px -7px 0;
+
+        > * {
+            margin: 0 10px 14px 0;
+        }
+    }
+
+    &__icon {
+        background-color: currentColor;
+        border-radius: 100px;
+        display: block;
+        float: left;
+        height: 29px;
+        line-height: 0;
+        margin-left: -5px;
+        padding: 5px;
+        width: 29px;
+
+        + .#{$pl-prefix}notification__text {
+            margin-left: 15px;
+
+            @include media-query(medium) {
+                margin-left: 40px;
+            }
+        }
+    }
+
+    &__close {
+        background: transparent;
+        box-sizing: content-box;
+        color: currentColor;
+        display: none;
+        font-size: 14px;
+        height: 21px;
+        margin: #{$notification-banner__close-padding * -1} #{$notification-banner__close-padding * -1} #{$notification-banner__close-padding * -1} 25px;
+        padding: $notification-banner__close-padding;
+        position: absolute;
+        right: 0;
+        top: 14px;
+        width: 21px;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &:hover:not(:focus) {
+            background-color: transparent;
+            color: currentColor;
+            outline: 2px solid currentColor;
+        }
+    }
+
+    &--major {
+        background: $colour__gold--base;
+        color: $colour__text;
+
+        .#{$pl-prefix}notification__icon svg {
+            fill: $colour__gold--base;
+        }
+
+        // major needs special behavour for focus/active state of its interactive elements
+        .#{$pl_prefix}notification__close,
+        a {
+            color: $colour__link;
+
+            &:focus {
+                outline-color: $colour__text;
+                color: $colour__text;
+            }
+
+            &:active {
+                background-color: $colour__text;
+                color: $colour__gold--base !important;
+            }
+        }
+    }
+
+    &--positive {
+        background: $colour__green--base;
+        color: $colour__white;
+
+        .#{$pl-prefix}notification__icon svg {
+            fill: $colour__green--base;
+        }
+    }
+
+    &--negative {
+        background: $colour__red--base;
+        color: $colour__white;
+
+        .#{$pl-prefix}notification__icon svg {
+            fill: $colour__red--base;
+        }
+    }
+
+    &--light {
+        background: $colour__blue--light;
+        color: $colour__text;
+
+        a {
+            color: $colour__link;
+        }
+    }
+}
+
+@include media-query(medium) {
+    .#{$pl-prefix}notification__actions {
+        margin: 0 0 -14px;
+    }
+
+    .#{$pl-prefix}notification__close {
+        top: 18px;
+    }
+}
+
+
+@supports(display: flex) {
+    .#{$pl-prefix}notification__actions {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 7px;
+
+        > * {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+    }
+
+    @include media-query(medium) {
+        .#{$pl-prefix}notification__actions {
+            display: inline-flex;
+            width: auto;
+
+            > * {
+                flex-basis: auto;
+                flex-grow: initial;
+            }
+        }
+    }
+}
+
+.js-enabled {
+    .#{$pl-prefix}notification__close {
+        display: block;
+    }
+}

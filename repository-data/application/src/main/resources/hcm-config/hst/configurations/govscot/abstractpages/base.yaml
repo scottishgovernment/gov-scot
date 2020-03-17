@@ -39,3 +39,7 @@ definitions:
       /googletagmanager:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/googletagmanager
+      /important-banner:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.ImportantBannerComponent
+        hst:template: important-banner

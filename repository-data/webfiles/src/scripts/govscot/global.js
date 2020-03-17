@@ -13,6 +13,7 @@ import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
 import './component.site-navigation';
+import NotificationBanner from './component.notification';
 
 
 const global = {
@@ -59,6 +60,11 @@ const global = {
         window.pubsub = $;
     },
 
+    initNotifications: function () {
+        const notificationBanners = [].slice.call(document.querySelectorAll('[data-module="ds-notification"]'));
+        notificationBanners.forEach(notificationBanner => new NotificationBanner(notificationBanner).init());
+    },
+
     init: function () {
         this.initPubsub();
         this.svgFallback();
@@ -68,6 +74,7 @@ const global = {
         cookieNotice.init();
         expand.init();
         header.init();
+        this.initNotifications();
     }
 };
 

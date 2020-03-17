@@ -74,6 +74,9 @@
 [govscot:MourningBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:ImportantBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

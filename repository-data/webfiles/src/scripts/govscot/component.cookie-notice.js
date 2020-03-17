@@ -19,7 +19,7 @@ export default {
         }
 
         // When clicked, hide notice and set cookie for a year
-        notice.on('click', '.notification__close', function(event) {
+        notice.on('click', '.js-close-notification', function(event) {
             event.preventDefault();
 
             notice.addClass('hidden');

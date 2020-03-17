@@ -47,6 +47,7 @@ definitions:
       new-publication-year-folder: New publication year folder
       new-publication-month-folder: New publication month folder
       new-mourning-banner: New mourning banner
+      new-important-banner: New important banner
       new-valuelist: New value list
       new-complex-document-folder: New multisectioned publication
       new-complex-document-section: New section
