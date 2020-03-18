@@ -73,6 +73,15 @@ definitions:
             hipposysedit:path: govscot:policyTags
             hipposysedit:primary: false
             hipposysedit:type: String
+          /slug:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:slug
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -95,6 +104,8 @@ definitions:
           govscot:externalId: ''
           govscot:policyTags: []
           govscot:publicationDate: 0001-01-01T12:00:00Z
+          govscot:slug: ''
+          govscot:reportingTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -131,6 +142,17 @@ definitions:
             field: title
             hint: This is the main title for this content item.  The title needs to
               be descriptive and concise.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /slug:
+            jcr:primaryType: frontend:plugin
+            caption: Slug
+            field: slug
+            hint: This is used to determine the URL of this new item.  It must be
+              unique and should ideally be a short, URL friendly version of the title.
+              Slugs should be limited to no more than 60 characters.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
