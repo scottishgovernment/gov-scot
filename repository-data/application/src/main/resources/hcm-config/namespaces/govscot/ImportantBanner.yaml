@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 5ab9a97a-54c8-4705-971f-e98069a9fc0a
+          jcr:uuid: 6f24a8d0-68ee-499f-b93a-23ee364a62d9
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -23,6 +23,14 @@ definitions:
             hipposysedit:path: govscot:content
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /suppress:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:suppressed
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -34,12 +42,15 @@ definitions:
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 022e2e53-fe67-4a3a-9e58-01319ec7aceb
+          jcr:uuid: ee3ab364-0d72-4ecb-9e26-a6026f76ff03
           hippostdpubwf:lastModificationDate: 2018-05-18T14:17:44.155+01:00
           hippostdpubwf:creationDate: 2018-05-18T14:17:44.155+01:00
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:suppressed:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -56,6 +67,15 @@ definitions:
             caption: Content
             field: content
             hint: Text to be displayed inside the banner
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /suppressed:
+            jcr:primaryType: frontend:plugin
+            caption: Suppressed pages
+            field: suppress
+            hint: Add any pages that should not show this banner
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
