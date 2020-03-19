@@ -62,18 +62,25 @@ public class ImportantBannerComponent extends BaseHstComponent {
             NodeIterator it = contentNode.getNodes();
             while (it.hasNext()) {
                 Node child = it.nextNode();
-                if (child.isNodeType("hippo:facetselect")) {
-                    String docbase = child.getProperty("hippo:docbase").getString();
-                    if (bean.getNode().getParent().getIdentifier().equals(docbase)) {
-                        // the banner has a link to this node so do nto show it
-                        return false;
-                    }
+                if (isLinked(child, bean)) {
+                    return false;
                 }
             }
             return true;
         } catch (RepositoryException e) {
-            LOG.error("Failed to determine if banner links to item, will default to true");
+            LOG.error("Failed to determine if banner links to item, will default to true", e);
             return true;
         }
+    }
+
+    boolean isLinked(Node child, HippoBean bean) throws RepositoryException  {
+        if (child.isNodeType("hippo:facetselect")) {
+            String docbase = child.getProperty("hippo:docbase").getString();
+            if (bean.getNode().getParent().getIdentifier().equals(docbase)) {
+                // the banner has a link to this node so do nto show it
+                return false;
+            }
+        }
+        return true;
     }
 }
