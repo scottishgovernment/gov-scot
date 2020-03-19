@@ -13,6 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.ImportantBanner;
 
+import javax.jcr.Node;
+import javax.jcr.NodeIterator;
+import javax.jcr.RepositoryException;
+
 /**
  * Created by z418868 on 16/03/2020.
  */
@@ -31,7 +35,13 @@ public class ImportantBannerComponent extends BaseHstComponent {
         HstQuery query = HstQueryBuilder.create(scope).ofTypes(ImportantBanner.class).limit(1).build();
         try {
             HstQueryResult result = query.execute();
-            if (result.getSize() > 0){
+            if (result.getSize() == 0) {
+                return;
+            }
+            HippoBean bean = context.getContentBean();
+            HippoBean resultBean = result.getHippoBeans().nextHippoBean();
+
+            if (showBanner(bean, resultBean)) {
                 request.setAttribute("importantBanner", result.getHippoBeans().nextHippoBean());
             }
         } catch (QueryException e) {
@@ -39,4 +49,31 @@ public class ImportantBannerComponent extends BaseHstComponent {
         }
     }
 
+    boolean showBanner(HippoBean bean, HippoBean resultBean)  {
+        if (bean == null) {
+            // some may not have a bean - e.g,. the home page.  Default to showing the banner.
+            return true;
+        }
+
+        ImportantBanner banner = (ImportantBanner) resultBean;
+        Node contentNode = banner.getContent().getNode();
+
+        try {
+            NodeIterator it = contentNode.getNodes();
+            while (it.hasNext()) {
+                Node child = it.nextNode();
+                if (child.isNodeType("hippo:facetselect")) {
+                    String docbase = child.getProperty("hippo:docbase").getString();
+                    if (bean.getNode().getParent().getIdentifier().equals(docbase)) {
+                        // the banner has a link to this node so do nto show it
+                        return false;
+                    }
+                }
+            }
+            return true;
+        } catch (RepositoryException e) {
+            LOG.error("Failed to determine if banner links to item, will default to true");
+            return true;
+        }
+    }
 }
