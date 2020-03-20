@@ -58,3 +58,6 @@ definitions:
       new-document-collection: new Collection
       new-payment-form: New payment form
       new-rss-feed: New RSS feed
+      new-news-year-folder: New news year folder
+      new-news-month-folder: New news month folder
+      new-news-document: New news document
