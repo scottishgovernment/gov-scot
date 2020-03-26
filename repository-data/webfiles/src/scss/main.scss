@@ -49,9 +49,6 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
     }
 }
 
-
-
-
 /**
  * SETTINGS
  */
@@ -252,7 +249,6 @@ $search-box__size--medium: $search-box__size;
 @import "components/homepage/component.homepage-publication";
 @import "components/homepage/component.homepage-stats";
 
-
 /**
  * TRUMPS
  */
@@ -273,6 +269,12 @@ $search-box__size--medium: $search-box__size;
 @import "trumps/trump.topic-expandable";
 
 @import "trumps/trump.pattern-library-header";
+
+/**
+ * DESIGN SYSTEM
+ */
+
+@import "design-system/components";
 
 
 /**

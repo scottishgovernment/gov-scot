@@ -5,14 +5,14 @@
     <@hst.manageContent hippobean=document/>
 
     <div class="grid" id="page-content"><!--
-    --><div class="grid__item medium--nine-twelfths push--medium--three-twelfths">
 
-        <@hst.include ref="content"/>
-
-    </div><!--
-    --><div class="grid__item medium--three-twelfths pull--medium--nine-twelfths">
-        <@hst.include ref="side-menu"/>
-    </div><!--
+--><div class="grid__item medium--three-twelfths large--three-twelfths">
+                <@hst.include ref="side-menu"/>
+            </div><!--
+        --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
+                <@hst.include ref="content"/>
+            </div><!--
+  
 --></div>
 
 <div class="grid"><!--

@@ -3,15 +3,18 @@
 <article id="page-content" class="layout--directorates-list">
 
     <div class="grid"><!--
-        --><div class="grid__item medium--nine-twelfths large--seven-twelfths push--medium--three-twelfths">
+--><div class="grid__item medium--three-twelfths large--three-twelfths">
+            <@hst.include ref="side-menu"/>
+        </div><!--
+
+
+        --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
             <h1>Directorates</h1>
 
             <#include 'common/a-z-list.ftl' />
         </div><!--
 
-        --><div class="grid__item medium--three-twelfths pull--medium--nine-twelfths pull--large--seven-twelfths">
-            <@hst.include ref="side-menu"/>
-        </div><!--
+     
     --></div>
 </article>
 
