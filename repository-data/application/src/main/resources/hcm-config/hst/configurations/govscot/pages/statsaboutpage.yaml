@@ -5,11 +5,11 @@ definitions:
       hst:referencecomponent: hst:abstractpages/base
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: scot.gov.www.components.TopicComponent
+        hst:componentclassname: scot.gov.www.components.StatsAboutComponent
         hst:template: about.page
         /content:
           jcr:primaryType: hst:component
-          hst:componentclassname: scot.gov.www.components.TopicComponent
+          hst:componentclassname: scot.gov.www.components.StatsAboutComponent
           hst:template: topicabout
         /side-menu:
           jcr:primaryType: hst:component

@@ -91,7 +91,7 @@ public class HomeComponent extends BaseHstComponent {
         executeQueryLoggingException(query, request, "consultations");
     }
 
-    private void populatePublications(HippoBean scope, HstRequest request) {
+    static void populatePublications(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
                 .where(
                         and(
@@ -111,16 +111,19 @@ public class HomeComponent extends BaseHstComponent {
         request.setAttribute("topics", topics);
     }
 
-    private HstQueryBuilder publicationsQuery(HippoBean scope) {
+
+    static HstQueryBuilder publicationsQuery(HippoBean scope) {
         return HstQueryBuilder.create(scope)
                 .ofTypes(Publication.class)
                 .limit(3)
                 .orderByDescending("govscot:publicationDate");
     }
 
-    private void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
+    static void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
         try {
             HstQueryResult result = query.execute();
+            LOG.info("executeQueryLoggingException {}, {}", name, result.getSize());
+
             request.setAttribute(name, result.getHippoBeans());
         } catch (QueryException e) {
             LOG.error("Failed to get {}", name, e);
