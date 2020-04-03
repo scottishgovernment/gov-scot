@@ -1,82 +1,46 @@
 package scot.gov.www;
 
-import org.onehippo.cms7.services.HippoServiceRegistry;
-import org.onehippo.cms7.services.eventbus.HippoEventBus;
-import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.onehippo.repository.modules.DaemonModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 
 /**
  * Event listener to set the publication type field depending on the folder.
  */
-public class PublicationTypeDaemonModule implements DaemonModule {
-
-    private static final Logger LOG = LoggerFactory.getLogger(PublicationTypeDaemonModule.class);
+public class PublicationTypeDaemonModule extends DaemonModuleBase {
 
     private static final String PUBLICATION_TYPE_PROPERTY = "govscot:publicationType";
 
     private static final String PREFIX = "/content/documents/govscot/publications/";
 
-    private Session session;
-
-    @Override
-    public void initialize(Session session) throws RepositoryException {
-        this.session = session;
-        HippoServiceRegistry.registerService(this, HippoEventBus.class);
+    public boolean canHandleEvent(HippoWorkflowEvent event) {
+        return event.success() && event.subjectPath().startsWith(PREFIX) && !event.interaction().startsWith("embargo:");
     }
 
-    @Override
-    public void shutdown() {
-        HippoServiceRegistry.unregisterService(this, HippoEventBus.class);
-    }
+    public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
 
-    @Subscribe
-    public void handleEvent(HippoWorkflowEvent event) {
-        if (!event.success()) {
+        Node subject = session.getNodeByIdentifier(event.subjectId());
+
+        Node publication = null;
+        if (subject.isNodeType("govscot:Publication") || subject.isNodeType("govscot:ComplexDocument")) {
+            publication = subject;
+        }
+
+        // some event have the
+        if (subject.isNodeType("hippo:handle")) {
+            publication = getLatestVariant(subject);
+        }
+
+        if (publication == null) {
             return;
         }
 
-
-        if (!event.subjectPath().startsWith(PREFIX)) {
-            return;
-        }
-
-        if (event.interaction().startsWith("embargo:")) {
-            return;
-        }
-
-        try {
-            Node subject = session.getNodeByIdentifier(event.subjectId());
-            Node publication = null;
-            if (subject.isNodeType("govscot:Publication") || subject.isNodeType("govscot:ComplexDocument")) {
-                publication = subject;
-            }
-
-            // some event have the
-            if (subject.isNodeType("hippo:handle")) {
-                publication = getLatestVariant(subject);
-            }
-
-            if (publication == null) {
-                return;
-            }
-
-            String typeName = typeName(publication);
-            if (!hasPublicationType(publication, typeName)) {
-                publication.setProperty(PUBLICATION_TYPE_PROPERTY, typeName);
-                session.save();
-            }
-        } catch (RepositoryException ex) {
-            LOG.error("Could not verify publication type for {}",
-                    event.subjectPath(),
-                    ex);
+        String typeName = typeName(publication);
+        if (!hasPublicationType(publication, typeName)) {
+            publication.setProperty(PUBLICATION_TYPE_PROPERTY, typeName);
+            session.save();
         }
     }
 

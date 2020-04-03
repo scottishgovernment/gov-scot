@@ -6,11 +6,7 @@ import scot.gov.www.thumbnails.ThumbnailsProvider;
 import scot.gov.www.thumbnails.ThumbnailsProviderException;
 import org.apache.commons.io.FileUtils;
 import org.hippoecm.repository.api.HippoNode;
-import org.onehippo.cms7.services.HippoServiceRegistry;
-import org.onehippo.cms7.services.eventbus.HippoEventBus;
-import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +14,6 @@ import javax.jcr.Binary;
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,28 +26,16 @@ import java.util.Map;
 /**
  * Event listener to generate thumbnails whenever a document is edited.
  */
-public class ThumbnailsDaemonModule implements DaemonModule {
+public class ThumbnailsDaemonModule extends DaemonModuleBase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ThumbnailsDaemonModule.class);
 
-    private Session session;
-
-    @Override
-    public void initialize(final Session session) throws RepositoryException {
-        this.session = session;
-        HippoServiceRegistry.registerService(this, HippoEventBus.class);
+    public boolean canHandleEvent(HippoWorkflowEvent event) {
+        return event.success();
     }
 
-    @Override
-    public void shutdown() {
-        HippoServiceRegistry.unregisterService(this, HippoEventBus.class);
-    }
+    public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
 
-    @Subscribe
-    public void handleEvent(final HippoWorkflowEvent event) {
-        if (!event.success()) {
-            return;
-        }
         try {
             HippoNode subject = (HippoNode) session.getNodeByIdentifier(event.subjectId());
 
@@ -63,8 +46,6 @@ public class ThumbnailsDaemonModule implements DaemonModule {
             deleteExistingThumbnails(subject);
             createThumbnails(subject);
             session.save();
-        } catch (RepositoryException e) {
-            LOG.error("Unexpected exception while doing simple JCR read operations", e);
         } catch (ThumbnailsProviderException e) {
             LOG.error("Unexpected exception while generating thumbnail", e);
         } catch (FileNotFoundException e) {

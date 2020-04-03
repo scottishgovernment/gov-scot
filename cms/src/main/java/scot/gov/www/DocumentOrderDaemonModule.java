@@ -1,11 +1,7 @@
 package scot.gov.www;
 
 import org.hippoecm.repository.api.HippoNode;
-import org.onehippo.cms7.services.HippoServiceRegistry;
-import org.onehippo.cms7.services.eventbus.HippoEventBus;
-import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +18,9 @@ import java.util.*;
  *  - publications, alpha ascending
  * directorates alpha ascending
  */
-public class DocumentOrderDaemonModule implements DaemonModule {
+public class DocumentOrderDaemonModule extends DaemonModuleBase {
 
     private static final Logger LOG = LoggerFactory.getLogger(DocumentOrderDaemonModule.class);
-
-    private Session session;
 
     private Map<String, SortOrder> directionMap = new HashMap<>();
 
@@ -36,8 +30,7 @@ public class DocumentOrderDaemonModule implements DaemonModule {
 
     @Override
     public void initialize(final Session session) throws RepositoryException {
-        this.session = session;
-        HippoServiceRegistry.registerService(this, HippoEventBus.class);
+        super.initialize(session);
 
         directionMap.put("new-publication-folder", SortOrder.ASCENDING);
         directionMap.put("new-minutes-folder", SortOrder.ASCENDING);
@@ -52,36 +45,27 @@ public class DocumentOrderDaemonModule implements DaemonModule {
         directionMap.put("new-issue", SortOrder.ASCENDING);
     }
 
-    @Override
-    public void shutdown() {
-        HippoServiceRegistry.unregisterService(this, HippoEventBus.class);
+    public boolean canHandleEvent(HippoWorkflowEvent event) {
+        return event.success();
     }
 
-    @Subscribe
-    public void handleEvent(final HippoWorkflowEvent event) {
-        if (!event.success()) {
+    public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
+
+        HippoNode parentFolder = getParentFolder(event);
+        if (parentFolder == null) {
             return;
         }
 
-        try {
-            HippoNode parentFolder = getParentFolder(event);
-            if (parentFolder == null) {
-                return;
-            }
-
-            SortOrder sortOrder = determineSortOrder(parentFolder);
-
-            if (sortOrder == null) {
-                // no sort order is specified so do not take any action
-                // for example this is the case for the pages or documents folders of publicaitons.
-                return;
-            }
-
-            sortChildren(parentFolder, sortOrder);
-            session.save();
-        } catch (RepositoryException e) {
-            LOG.error("Unexpected exception while doing simple JCR read operations", e);
+        SortOrder sortOrder = determineSortOrder(parentFolder);
+        if (sortOrder == null) {
+            // no sort order is specified so do not take any action
+            // for example this is the case for the pages or documents folders of publications.
+            return;
         }
+
+        sortChildren(parentFolder, sortOrder);
+        session.save();
+
     }
 
     HippoNode getParentFolder(HippoWorkflowEvent event) throws RepositoryException {
@@ -115,6 +99,9 @@ public class DocumentOrderDaemonModule implements DaemonModule {
     }
 
     public void sortChildren(Node node, SortOrder sortOrder) throws RepositoryException {
+
+        LOG.info("sortChildren {}, {}", node.getPath(), sortOrder.name());
+
         List<String> sortedNames = sortedNames(node.getNodes());
         if (sortOrder == SortOrder.DESCENDING) {
             Collections.reverse(sortedNames);

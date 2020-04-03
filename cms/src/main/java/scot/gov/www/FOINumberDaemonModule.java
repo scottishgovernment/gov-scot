@@ -1,79 +1,50 @@
 package scot.gov.www;
 
 import org.hippoecm.repository.api.HippoNode;
-import org.onehippo.cms7.services.HippoServiceRegistry;
-import org.onehippo.cms7.services.eventbus.HippoEventBus;
-import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 import javax.jcr.Value;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FOINumberDaemonModule implements DaemonModule {
+public class FOINumberDaemonModule extends DaemonModuleBase {
 
     private static final Logger LOG = LoggerFactory.getLogger(FolderTypesDaemonModule.class);
 
     public static final String HIPPOSTD_TAGS = "hippostd:tags";
 
-    private Session session;
-
-    @Override
-    public void initialize(final Session session) throws RepositoryException {
-        this.session = session;
-        HippoServiceRegistry.registerService(this, HippoEventBus.class);
+    public boolean canHandleEvent(HippoWorkflowEvent event) {
+        return event.success()
+                && event.subjectPath().startsWith("/content/documents/govscot/publications/foi-eir-release/")
+                && "govscot:Publication".equals(event.documentType());
     }
 
-    @Override
-    public void shutdown() {
-        HippoServiceRegistry.unregisterService(this, HippoEventBus.class);
-    }
+    public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
 
-    @Subscribe
-    public void handleEvent(final HippoWorkflowEvent event) {
-        if (!event.success()) {
+        HippoNode foi = (HippoNode) getLatestVariant(session.getNodeByIdentifier(event.subjectId()));
+        Node foiFolder = foi.getParent().getParent();
+        String [] parts = foiFolder.getName().replace("--", "-").split("-");
+
+        if (parts.length < 3) {
+            LOG.warn("Unable to get FOI number for {}", foi.getPath());
             return;
         }
 
-        if (!event.subjectPath().startsWith("/content/documents/govscot/publications/foi-eir-release/")) {
-            return;
-        }
-
-        if (!"govscot:Publication".equals(event.documentType())) {
-            return;
-        }
-
-        try {
-            HippoNode foi = (HippoNode) getLatestVariant(session.getNodeByIdentifier(event.subjectId()));
-            Node foiFolder = foi.getParent().getParent();
-            String [] parts = foiFolder.getName().replace("--", "-").split("-");
-
-            if (parts.length < 3) {
-                LOG.warn("Unable to get FOI number for {}", foi.getPath());
-                return;
-            }
-
-            String foiNumber = parts[2];
-            Value[] tags = foi.hasProperty(HIPPOSTD_TAGS)
-                    ? foi.getProperty(HIPPOSTD_TAGS).getValues()
-                    : new Value [] {};
-            List<Value> tagList = new ArrayList<>(Arrays.asList(tags));
-            if (!containsTag(foiNumber, tagList)) {
-                tagList.add(session.getValueFactory().createValue(foiNumber));
-                foi.setProperty(HIPPOSTD_TAGS, tagList.toArray(new Value [tagList.size()]));
-                session.save();
-            }
-
-        } catch (RepositoryException e) {
-            LOG.error("Unexpected exception while trying to set foi tag", e);
+        String foiNumber = parts[2];
+        Value[] tags = foi.hasProperty(HIPPOSTD_TAGS)
+                ? foi.getProperty(HIPPOSTD_TAGS).getValues()
+                : new Value [] {};
+        List<Value> tagList = new ArrayList<>(Arrays.asList(tags));
+        if (!containsTag(foiNumber, tagList)) {
+            tagList.add(session.getValueFactory().createValue(foiNumber));
+            foi.setProperty(HIPPOSTD_TAGS, tagList.toArray(new Value[tagList.size()]));
+            session.save();
         }
     }
 

@@ -28,7 +28,7 @@ public class MourningBannerComponent extends BaseHstComponent {
         HstQuery query = HstQueryBuilder.create(scope).ofTypes(MourningBanner.class).limit(1).build();
         try {
             HstQueryResult result = query.execute();
-            if (result.getSize() > 0){
+            if (result.getSize() > 0) {
                 request.setAttribute("mourningBanner", result.getHippoBeans().nextHippoBean());
             }
         } catch (QueryException e) {
