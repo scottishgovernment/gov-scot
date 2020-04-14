@@ -1,6 +1,5 @@
 package scot.gov.www;
 
-import org.apache.commons.lang.time.StopWatch;
 import org.onehippo.cms7.services.eventbus.HippoEventBus;
 import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
@@ -54,11 +53,7 @@ public abstract class DaemonModuleBase implements DaemonModule {
     }
 
     void handleEventWithLogging(HippoWorkflowEvent event) throws RepositoryException {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
-
         try {
-            LOG.info("{} start", this.getClass().getName());
             doHandleEvent(event);
         } catch (RepositoryException e) {
             LOG.error("{} Unexpected exception while doing simple JCR read operations, calling session.refresh(false)",
@@ -67,9 +62,6 @@ public abstract class DaemonModuleBase implements DaemonModule {
         } catch (Exception t) {
             LOG.error("{} Unexpected exception", this.getClass().getName(), t);
             throw t;
-        } finally {
-            stopWatch.stop();
-            LOG.info("{} end, took {} millis", this.getClass().getName(), stopWatch.getTime());
         }
     }
 
