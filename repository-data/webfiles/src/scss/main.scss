@@ -124,6 +124,7 @@ $external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
 @import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.rules";
 $table__border-color--header: $color__grey--light;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.tables";
+@import "base/base.tables";
 @import "base/base.type";
 
 
