@@ -1,0 +1,148 @@
+/* Style the supporting hint text */
+.hippo-editor-field p.hint-text {
+    line-height: 1.6em;
+    margin-bottom: 0.7em;
+    color: #666;
+}
+
+.visually-hidden,
+.hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px; width: 1px;
+    overflow: hidden;
+    position: absolute !important;
+}
+
+.fully-hidden,
+.hidden.hidden-hard {display: none;}
+
+/*------------------------------------*\
+    #INSET TEXT PLUGIN
+\*------------------------------------*/
+
+.ds_inset-text {
+    border-left: 10px solid #b3b3b3;
+    padding: 14px 15px;
+
+    /* to match CKEditor spacing */
+    margin-top: 0.7em;
+    margin-bottom: 0.3em;
+}
+
+.ds_inset-text__text > :last-child {
+    margin-bottom: 0;
+}
+
+
+/*------------------------------------*\
+    ACCORDION PLUGIN
+\*------------------------------------*/
+
+/* edit mode styles */
+.cke_inner .ds_accordion {
+    border: 1px dashed black;
+}
+
+.cke_inner .ds_accordion-item {
+    outline: 1px dotted black;
+}
+
+.cke_inner .ds_accordion::after {
+    background: #333;
+    color: white;
+    content: '+ add accordion panel';
+    cursor: pointer;
+    display: block;
+    padding: 7px 15px;
+}
+
+.cke_inner .ds_accordion-item__title,
+.cke_inner .ds_accordion-item__body {
+    border: 1px dashed #cccccc;
+    border-radius: 5px;
+}
+
+.ds_accordion {
+    background: #fcfcfc;
+    margin-top: 14px;
+}
+
+.ds_accordion-item {
+    margin-bottom: -1px;
+}
+
+.ds_accordion-item__header {
+    padding: 7px 15px;
+    position: relative;
+}
+
+.ds_accordion-item__title {
+    margin: 0 50px 0 0;
+    padding: 5px 8px;
+}
+
+.ds_accordion-item__body {
+    padding: 0 8px;
+    margin: 7px 15px;
+}
+
+.ds_accordion-item__indicator {
+    border: 3px solid currentColor;
+    border-width: 3px 3px 0 0;
+    content: "";
+    display: inline-block;
+    height: 0.70711em;
+    -webkit-transform: rotateX(0) rotateZ(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotateX(0) rotateZ(-45deg);
+    transition: transform 0.2s, top 0.2s;
+    width: 0.70711em;
+    color: currentColor;
+    right: 21px;
+    position: absolute;
+    top: 20px;
+}
+
+.ds_accordion-item {
+    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
+}
+
+.ds_accordion-item__header {
+    background: #f3f3f3;
+}
+
+/*------------------------------------*\
+    #WARNING TEXT PLUGIN
+\*------------------------------------*/
+
+.ds_warning-text {
+    border : 1px solid currentColor;
+    border-width: 1px 0;
+    padding: 14px 15px 14px 65px;
+    position: relative;
+
+    /* to match CKEditor spacing */
+    margin-top: 0.7em;
+    margin-bottom: 0.3em;
+}
+
+.ds_warning-text__text > :last-child {
+    margin-bottom: 0;
+}
+
+.ds_warning-text__icon {
+    background: #333;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 35px;
+    font-size: 32px;
+    font-weight: 700;
+    left: 15px;
+    line-height: 35px;
+    position: absolute;
+    text-align: center;
+    top: 9px;
+    width: 35px;
+}

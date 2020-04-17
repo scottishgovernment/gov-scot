@@ -14,7 +14,7 @@ import './component.feedback';
 import './component.payment';
 import './component.site-navigation';
 import NotificationBanner from './component.notification';
-
+import Accordion from './design-system/accordion';
 
 const global = {
     compensateAnchorOffsetForStickyElements: function () {
@@ -65,6 +65,11 @@ const global = {
         notificationBanners.forEach(notificationBanner => new NotificationBanner(notificationBanner).init());
     },
 
+    initAccordions: function () {
+        const accordionModules = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"]'));
+        accordionModules.forEach(accordion => new Accordion(accordion).init());
+    },
+
     init: function () {
         this.initPubsub();
         this.svgFallback();
@@ -75,6 +80,7 @@ const global = {
         expand.init();
         header.init();
         this.initNotifications();
+        this.initAccordions();
     }
 };
 

@@ -129,7 +129,9 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
       country: sc
     /hippo:configuration/hippo:frontend/cms/cms-static/root:
-      wicket.skin: skin/document-editor.css
+      wicket.skin:
+        - skin/document-editor.css
+        - skin/cms-design-tweaks.css
     /hippo:configuration/hippo:frontend/cms/cms-dashshortcuts/gotoShortcut:
       option.location: /content/documents/govscot
     /hippo:configuration/hippo:frontend/cms:

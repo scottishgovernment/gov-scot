@@ -1,0 +1,10 @@
+definitions:
+    config:
+      /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/input:
+        jcr:primaryType: hipposys:moduleconfig
+        attributes: [class, id, aria-labelledby, type]
+      /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/label:
+        jcr:primaryType: hipposys:moduleconfig
+        attributes: [class, for]
+      /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/div:
+        attributes: [class, dir, id, lang, style, title, data-module]

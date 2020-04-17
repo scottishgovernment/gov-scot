@@ -1,0 +1,196 @@
+/*------------------------------------*\
+    ACCORDION
+\*------------------------------------*/
+
+.ds_accordion {
+	margin-top: 35px;
+	margin-bottom: 35px;
+	position: relative;
+}
+
+.ds_accordion__open-all {
+	display: none;
+	position: absolute;
+	right: 0;
+	text-decoration: none;
+	top: -35px;
+}
+
+h1+.ds_accordion,
+h2+.ds_accordion,
+h3+.ds_accordion {
+	margin-top: 0;
+}
+
+.ds_accordion.js-initialised .ds_accordion__open-all {
+	display: block;
+	margin: 0;
+}
+
+.ds_accordion-item {
+	border-bottom: 1px solid #ebebeb;
+	border-top: 1px solid #ebebeb;
+}
+
+.ds_accordion-item__header,
+.ds_accordion-item__header-button {
+	display: block;
+	position: relative;
+	transition: background-color 0.2s, outline-color 0.2s;
+	z-index: 1;
+	outline: 0 !important;
+	background-color: #ffffff;
+	color: #0065bd;
+	font-size: 1rem;
+	line-height: 28px;
+	margin: 0;
+	padding: 14px 50px 14px 15px;
+	position: relative;
+	text-align: left;
+	width: 100%;
+}
+
+.ds_accordion-item__header:focus,
+.ds_accordion-item__header-button:focus {
+	background-color: #fdd522;
+	box-shadow: inset 0 -3px #333333, inset 0 -3px #333333;
+}
+
+.ds_accordion-item__header:hover:not(:focus),
+.ds_accordion-item__header-button:hover:not(:focus) {
+	background-color: #d9effc;
+}
+
+.ds_accordion-item__header:active,
+.ds_accordion-item__header-button:active {
+	background-color: #fdd522;
+}
+
+.ds_accordion-item__header:hover:not(:active):not(:focus),
+.ds_accordion-item__header-button:hover:not(:active):not(:focus) {
+	background-color: #d9effc;
+	color: #00437e;
+}
+
+.ds_accordion-item__header:hover,
+.ds_accordion-item__header-button:hover {
+	color: #00437e;
+}
+
+.ds_accordion-item__header:active,
+.ds_accordion-item__header-button:active {
+	color: #333333;
+}
+
+.ds_accordion-item--open .ds_accordion-item__header-button:not(:focus):not(:active) {
+	background-color: #f8f8f8;
+	color: #333333;
+}
+
+.ds_accordion-item__title {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.ds_accordion-item__label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.ds_accordion-item__indicator {
+	border: 3px solid currentColor;
+	border-width: 3px 3px 0 0;
+	content: "";
+	display: inline-block;
+	height: 0.707107em;
+	-webkit-transform: rotateX(0) rotateZ(135deg);
+	-ms-transform: rotate(135deg);
+	transform: rotateX(0) rotateZ(135deg);
+	transition: transform 0.2s, top 0.2s;
+	width: 0.707107em;
+	color: currentColor;
+	right: 21px;
+	position: absolute;
+	top: 20px;
+}
+
+.ds_accordion-item__body {
+	display: none;
+	padding: 21px 50px 42px 15px;
+}
+
+.ds_accordion-item__body> :last-child {
+	margin-bottom: 0;
+}
+
+.ds_accordion-item__control:checked~.ds_accordion-item__body {
+	display: block;
+}
+
+.ds_accordion-item__control:checked:not(:active):not(:focus)~.ds_accordion-item__header {
+	background-color: #f8f8f8;
+	color: #333333;
+}
+
+.ds_accordion-item__control:checked~.ds_accordion-item__header .ds_accordion-item__indicator,
+.ds_accordion-item__control:checked~.ds_accordion-item__header-button .ds_accordion-item__indicator {
+	border: 3px solid currentColor;
+	border-width: 3px 3px 0 0;
+	content: "";
+	display: inline-block;
+	height: 0.707107em;
+	-webkit-transform: rotateX(0) rotateZ(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotateX(0) rotateZ(-45deg);
+	transition: transform 0.2s, top 0.2s;
+	width: 0.707107em;
+	top: 20px;
+	top: 24px;
+}
+
+.ds_accordion-item__control:focus~.ds_accordion-item__header {
+	background: #fdd522;
+	box-shadow: 0 3px #333333;
+	color: #333333;
+	z-index: 2;
+}
+
+.ds_accordion-item+.ds_accordion-item {
+	margin-top: -1px;
+}
+
+.ds_accordion.js-initialised .ds_accordion-item__body {
+	max-height: 0;
+	overflow: hidden;
+	padding: 0 50px 0 15px;
+	transition: max-height 0.2s, padding 0.2s;
+}
+
+@media (min-width: 768px) {
+	.ds_accordion.js-initialised .ds_accordion-item__body {
+		padding-right: 100px;
+	}
+}
+
+.ds_accordion.js-initialised .ds_accordion-item__control:checked~.ds_accordion-item__body {
+	padding-bottom: 28px;
+	padding-top: 21px;
+}
+
+@media (min-width: 768px) {
+	.ds_accordion-item__indicator {
+		top: 18px;
+	}
+	.ds_accordion-item__control:checked~.ds_accordion-item__header .ds_accordion-item__indicator,
+	.ds_accordion-item__control:checked~.ds_accordion-item__header-button .ds_accordion-item__indicator {
+		top: 24px;
+	}
+	.ds_accordion-item__header,
+	.ds_accordion-item__header-button,
+	.ds_accordion-item__body {
+		padding-right: 100px;
+	}
+}
