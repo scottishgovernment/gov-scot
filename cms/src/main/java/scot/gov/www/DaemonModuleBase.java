@@ -56,8 +56,8 @@ public abstract class DaemonModuleBase implements DaemonModule {
         try {
             doHandleEvent(event);
         } catch (RepositoryException e) {
-            LOG.error("{} Unexpected exception while doing simple JCR read operations, calling session.refresh(false)",
-                    this.getClass().getName(), e);
+            LOG.error("{} Unexpected exception while doing simple JCR read operations, calling session.refresh(false), subject path is {}",
+                    this.getClass().getName(), event.subjectPath(), e);
             session.refresh(false);
         } catch (Exception t) {
             LOG.error("{} Unexpected exception", this.getClass().getName(), t);
