@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:derivatives/publicationType:
+      jcr:primaryType: hipposys:deriveddefinition
+      hipposys:classname: scot.gov.www.PublicationTypeDerivedData
+      hipposys:nodetype: govscot:Publication
+      hipposys:serialver: 1
+      /hipposys:accessed:
+        jcr:primaryType: hipposys:propertyreferences
+        /publicationType:
+          jcr:primaryType: hipposys:resolvepropertyreference
+          hipposys:relPath: ../../../../../govscot:publicationType
+      /hipposys:derived:
+        jcr:primaryType: hipposys:propertyreferences
+        /publicationType:
+          jcr:primaryType: hipposys:relativepropertyreference
+          hipposys:relPath: govscot:publicationType

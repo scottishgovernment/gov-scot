@@ -1,6 +1,0 @@
-definitions:
-  config:
-    /hippo:configuration/hippo:modules/publicationtype:
-      jcr:primaryType: hipposys:module
-      hipposys:className: scot.gov.www.PublicationTypeDaemonModule
-      hipposys:cmsonly: true
