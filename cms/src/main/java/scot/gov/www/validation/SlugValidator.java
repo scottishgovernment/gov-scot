@@ -9,6 +9,7 @@ import org.hippoecm.frontend.session.UserSession;
 import org.hippoecm.frontend.validation.IFieldValidator;
 import org.hippoecm.frontend.validation.ValidationException;
 import org.hippoecm.frontend.validation.Violation;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -25,9 +26,11 @@ import java.util.Set;
  * https://www.onehippo.org/library/concepts/plugins/create-a-custom-field-validator.html
  *
  */
-public class PublicationSlugValidator extends AbstractCmsValidator {
+public class SlugValidator extends AbstractCmsValidator {
 
-    public PublicationSlugValidator(IPluginContext context, IPluginConfig config) {
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SlugValidator.class);
+
+    public SlugValidator(IPluginContext context, IPluginConfig config) {
         super(context, config);
     }
 
@@ -56,7 +59,9 @@ public class PublicationSlugValidator extends AbstractCmsValidator {
         Set<Violation> violations = new HashSet<>();
         String candidateSlug = (String) childModel.getObject();
         try {
-            if (!isValid(candidateSlug, node)) {
+            String type = node.getPrimaryNodeType().getName();
+            LOG.info("Content path: {}", type);
+            if (!isValid(type, candidateSlug, node)) {
                 violations.add(fieldValidator.newValueViolation(childModel, getTranslation()));
             }
             return violations;
@@ -69,10 +74,11 @@ public class PublicationSlugValidator extends AbstractCmsValidator {
      * The slug is valid if no other nodes share this slug
      * (with the exception of ones that share the same handle).
      */
-    private boolean isValid(String candidateSlug, Node node) throws RepositoryException {
+    public boolean isValid(String documentType, String candidateSlug, Node node) throws RepositoryException {
         Session session = UserSession.get().getJcrSession();
-        String sql = String.format("SELECT * FROM govscot:SimpleContent WHERE govscot:slug = '%s'", candidateSlug);
+        String sql = String.format("SELECT * FROM %s WHERE govscot:slug = '%s'", documentType, candidateSlug);
         Query query = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL);
+        LOG.info("Query being run: {}", query);
         QueryResult result = query.execute();
 
         // if any of the results do not belong to the same handle then this slug is already used elsewhere

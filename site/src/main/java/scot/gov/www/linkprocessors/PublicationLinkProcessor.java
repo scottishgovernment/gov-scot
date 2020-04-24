@@ -4,23 +4,18 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
-import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.linking.HstLinkProcessorTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
-import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryResult;
 import java.util.Arrays;
 
 import static java.util.stream.Collectors.joining;
 import static org.apache.commons.lang3.ArrayUtils.removeElements;
 
-public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
+public class PublicationLinkProcessor extends SlugProcessor {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationLinkProcessor.class);
 
@@ -28,7 +23,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
     @Override
     protected HstLink doPostProcess(HstLink link) {
-        if (isPublicationsFullLink(link)) {
+        if (isFullLink(link, PUBLICATIONS, 5)) {
             // remove the type, year and month...
             String [] newElements = removeElements(link.getPathElements(),
                     link.getPathElements()[1],
@@ -48,17 +43,12 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         return link;
     }
 
-    private boolean isPublicationsFullLink(HstLink link) {
-        // should match on any publication or publication page link.
-        return link.getPath().startsWith(PUBLICATIONS) && link.getPathElements().length >= 5;
-    }
-
     private String slug(HstLink link) {
         String path =
                 String.format("/content/documents/govscot/%s",
                         Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(joining("/")));
         try {
-            Node publicationNode = publicationNode(path);
+            Node publicationNode = findNode(path);
             if (publicationNode == null) {
                 LOG.warn("Unable to find publication node for path {}", link.getPath());
                 return null;
@@ -75,26 +65,6 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         }
     }
 
-    private Node publicationNode(String path) throws RepositoryException {
-        HstRequestContext req = RequestContextProvider.get();
-        Session session = req.getSession();
-        Node folder = session.getNode(path);
-        Node handle = handleFromFolder(folder);
-        return findPublishedNode(handle.getNodes(handle.getName()));
-    }
-
-
-    private Node handleFromFolder(Node folder) throws RepositoryException {
-        NodeIterator it = folder.getNodes();
-        while (it.hasNext()) {
-            Node candidate = it.nextNode();
-            if (candidate.isNodeType("hippo:handle")) {
-                return candidate;
-            }
-        }
-        return null;
-    }
-
     @Override
     protected HstLink doPreProcess(HstLink link) {
         if (isPublicationsSlugLink(link)) {
@@ -105,7 +75,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
 
     private boolean isPublicationsSlugLink(HstLink link) {
         // match any slug style link for a publication or page
-        return link.getPath().startsWith(PUBLICATIONS) && link.getPathElements().length >= 2 && !isPublicationsListPage(link);
+        return isSlugLink(link, PUBLICATIONS, 2) && !isPublicationsListPage(link);
     }
 
     private boolean isPublicationsListPage(HstLink link) {
@@ -129,7 +99,7 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
                     link.getPathElements()[1]);
 
             //get the publication by the publication slug
-            Node publication = getPublicationBySlug(slug);
+            Node publication = getNodeBySlug(slug, PUBLICATIONS);
             if(publication == null) {
                 link.setNotFound(true);
                 link.setPath("/pagenotfound");
@@ -190,38 +160,5 @@ public class PublicationLinkProcessor extends HstLinkProcessorTemplate {
         }
         return false;
     }
-
-    private Node getPublicationBySlug(String slug) throws RepositoryException {
-        HstRequestContext req = RequestContextProvider.get();
-        Session session = req.getSession();
-        String escapedSlug = Text.escapeIllegalJcr10Chars(slug);
-
-        String template =
-                "/jcr:root/content/documents/govscot/publications//element(*, govscot:SimpleContent)[govscot:slug = '%s']";
-        String sql = String.format(template, escapedSlug);
-        QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.XPATH).execute();
-        if (result.getNodes().getSize() == 0) {
-            return null;
-        }
-
-        // find the index in the results folder
-        return findPublishedNode(result.getNodes());
-    }
-
-    private Node findPublishedNode(NodeIterator nodeIterator) throws RepositoryException {
-
-        Node publishedNode = null;
-        Node lastNode = null;
-        while (nodeIterator.hasNext()) {
-            Node node = nodeIterator.nextNode();
-            lastNode = node;
-            if (node.isNodeType("govscot:basedocument") && "published".equals(node.getProperty("hippostd:state").getString())) {
-                publishedNode = node;
-            }
-        }
-
-        return publishedNode != null ? publishedNode : lastNode;
-    }
-
 
 }

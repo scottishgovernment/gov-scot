@@ -56,7 +56,6 @@ definitions:
             hipposysedit:path: govscot:externalId
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
           /updatedDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -81,7 +80,7 @@ definitions:
             hipposysedit:path: govscot:slug
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [non-empty, required, govscot-slug]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:

@@ -40,9 +40,12 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
         directionMap.put("new-publication-year-folder", SortOrder.DESCENDING);
         directionMap.put("new-directorate-folder", SortOrder.ASCENDING);
         directionMap.put("new-policy-folder", SortOrder.ASCENDING);
+        directionMap.put("new-news-month-folder", SortOrder.DESCENDING);
+        directionMap.put("new-news-year-folder", SortOrder.DESCENDING);
         directionMap.put("new-group", SortOrder.ASCENDING);
         directionMap.put("new-topic", SortOrder.ASCENDING);
         directionMap.put("new-issue", SortOrder.ASCENDING);
+        directionMap.put("new-news-document", SortOrder.ASCENDING);
     }
 
     public boolean canHandleEvent(HippoWorkflowEvent event) {

@@ -2,6 +2,7 @@ definitions:
   config:
     /hippo:configuration/hippo:translations/hippo:cms/validators/en:
       non-empty: A mandatory field is empty
-      publication-slug: This slug is either already in use, or the field has been left blank. Please choose another.
       publication-slug-spaces: Slugs must not contain spaces.
       publication-slug-dots: Slugs must not contain full stops.
+      govscot-slug: This slug is either already in use, or the field has been left
+        blank. Please choose another.

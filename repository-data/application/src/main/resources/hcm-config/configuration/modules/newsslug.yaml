@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/newsslug:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.NewsSlugDaemonModule
+      hipposys:cmsonly: true
