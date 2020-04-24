@@ -20,8 +20,13 @@ const homePage = {
     init: function () {
         this.attachEventHandlers();
 
-        this.populateFlickr();
-        this.populateYouTube();
+        if (typeof IntersectionObserver === 'function') {
+            this.observeYouTube();
+            this.observeFlickr();
+        } else {
+            this.populateYouTube();
+            this.populateFlickr();
+        }
 
         carousel.init();
 
@@ -102,6 +107,19 @@ const homePage = {
         window.location.href = url;
     },
 
+    observeFlickr: function () {
+        const observer = new IntersectionObserver((entries, self) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.populateFlickr();
+                    self.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.getElementById('flickr'));
+    },
+
     populateFlickr: function () {
         const data = {
                 method: 'flickr.people.getPublicPhotos',
@@ -129,7 +147,20 @@ const homePage = {
         });
     },
 
+    observeYouTube: function () {
+        const observer = new IntersectionObserver((entries, self) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('is intersecting');
 
+                    this.populateYouTube();
+                    self.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.getElementById('youtube'));
+    },
 
     populateYouTube: function () {
         const that = this;
