@@ -151,8 +151,6 @@ const homePage = {
         const observer = new IntersectionObserver((entries, self) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log('is intersecting');
-
                     this.populateYouTube();
                     self.unobserve(entry.target);
                 }
