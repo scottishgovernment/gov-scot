@@ -42,7 +42,7 @@ public class ThumbnailsDaemonModule extends DaemonModuleBase {
             if (!"govscot:document".equals(subject.getName())) {
                 return;
             }
-
+            LOG.info("updating thumbnails for {}", subject.getPath());
             deleteExistingThumbnails(subject);
             createThumbnails(subject);
             session.save();
