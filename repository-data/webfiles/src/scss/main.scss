@@ -49,9 +49,6 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
     }
 }
 
-
-
-
 /**
  * SETTINGS
  */
@@ -246,9 +243,56 @@ $search-box__size--medium: $search-box__size;
 
 
 
-@import "design-system-preview/accordion";
-@import "design-system-preview/icon";
-@import "design-system-preview/notifications";
+/**
+ * DESIGN SYSTEM
+ */
+$pl_prefix: 'ds_';
+$large-size: 1.1625em;
+$small-size: 0.85em;
+$small-size--fixed: 14px !default;
+$tiny-size: 0.75rem;
+$link__outline-width: 2px;
+$link__border-width: 3px;
+$color__gold--base:     #fdd522;
+$color__input--hover__border:       $color__grey--medium !default;
+$color__input--focus__background:   $color__blue--lighter !default;
+$color__input--focus__outline:      $color__gold--base !default;
+$color__input--active__background:  $color__input--focus__background !default;
+$color__input--spot:                $color__body !default;
+
+$colour__brand--primary: $color__blue--base;
+$colour__brand--secondary: $color__blue--dark;
+@import "design-system-preview/base/helpers/helper.visibility";
+@import "design-system-preview/base/settings/settings.colours";
+@import "design-system-preview/base/settings/settings.grid";
+@import "design-system-preview/base/tools/tool.mixins";
+@import "design-system-preview/base/icon";
+$colour__link--hover__background: $colour__grey--lighter;
+$colour__link--current__background: $colour__blue--lighter;
+$colour__link--active__background: $colour__blue--light;
+$transition-in-time: 0.2s;
+$transition-out-time: 0.2s;
+
+$colour__blocklink-bg--focus: $colour__blue--light;
+$colour__blocklink-bg--active: $colour__blocklink-bg--focus;
+
+@import "design-system-preview/components/accordion/accordion";
+@import "design-system-preview/components/notification-banner/notification-banner";
+@import "design-system-preview/components/side-navigation/side-navigation";
+@import "design-system-preview/components/site-branding/site-branding";
+@import "design-system-preview/components/site-header/site-header";
+@import "design-system-preview/components/site-navigation/site-navigation";
+@import "design-system-preview/components/site-search/site-search";
+
+@import "design-system-preview/forms/form.settings";
+@import "design-system-preview/forms/form.mixins";
+@import "design-system-preview/forms/form.base";
+@import "design-system-preview/forms/currency/currency";
+@import "design-system-preview/forms/error-summary/error-summary";
+@import "design-system-preview/forms/field-group/field-group";
+@import "design-system-preview/forms/label/label";
+@import "design-system-preview/forms/question/question";
+@import "design-system-preview/forms/text-input/text-input";
 
 
 
@@ -271,27 +315,3 @@ $search-box__size--medium: $search-box__size;
 @import "trumps/trump.person.govscot";
 @import "trumps/trump.search-box.govscot";
 @import "trumps/trump.topic-expandable";
-
-@import "trumps/trump.pattern-library-header";
-
-
-/**
- * DESIGN SYSTEM FORMS
- */
-$pl_prefix: 'ds_';
-$large-size: 1.1625em;
-$color__gold--base:     #fdd522;
-$color__input--hover__border:       $color__grey--medium !default;
-$color__input--focus__background:   $color__blue--lighter !default;
-$color__input--focus__outline:      $color__gold--base !default;
-$color__input--active__background:  $color__input--focus__background !default;
-$color__input--spot:                $color__body !default;
-@import "design-system-forms/form.settings";
-@import "design-system-forms/form.mixins";
-@import "design-system-forms/form.base";
-@import "design-system-forms/currency/currency";
-@import "design-system-forms/error-summary/error-summary";
-@import "design-system-forms/field-group/field-group";
-@import "design-system-forms/label/label";
-@import "design-system-forms/question/question";
-@import "design-system-forms/text-input/text-input";

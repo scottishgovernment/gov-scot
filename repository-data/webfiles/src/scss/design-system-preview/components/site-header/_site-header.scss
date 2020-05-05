@@ -1,0 +1,144 @@
+/*------------------------------------*\
+    SITE HEADER
+\*------------------------------------*/
+
+// modifiable vars
+$site-header__border-colour--reversed: $colour__brand--secondary !default;
+
+// fixed vars
+$site-header__border-colour: $colour__border--light;
+$site-header__top-band-colour: $colour__brand--primary;
+
+
+
+
+.#{$pl-prefix}site-header {
+    background-color: $colour__white;
+    border-bottom: 1px solid $site-header__border-colour;
+    position: relative;
+
+    &::before {
+        background: $site-header__top-band-colour;
+        display: block;
+        content: '';
+        height: 7px;
+    }
+
+    &__top {
+        position: relative;
+    }
+
+    &__content {
+        overflow: hidden;
+        padding: 14px 0;
+        transition: min-height $transition-in-time;
+
+        @supports(display: grid) {
+            overflow: visible;
+        }
+    }
+
+    &__controls {
+        display: block;
+    }
+
+    &__control {
+        cursor: pointer;
+        height: 21px;
+        margin-right: -15px;
+        padding: 14px 15px;
+
+        @include blocklink;
+    }
+
+    &__control-icon {
+        height: 21px;
+        width: 21px;
+
+        &--close {
+            display: none;
+        }
+    }
+
+    &__control-text {
+        float: left;
+        margin-right: 10px;
+    }
+
+    &__search {
+        display: none;
+    }
+}
+
+/* variant with the top colour bar set to a gradient of site brand colours */
+.#{$pl-prefix}site-header--gradient {
+    &::before {
+        background: linear-gradient(to $brand-gradient-direction, $colour__brand--primary, $colour__brand--secondary);
+    }
+}
+
+/* variant with a drop shadow instead of a bottom border */
+.#{$pl-prefix}site-header--shadow {
+    border-bottom: 0;
+
+    &::after {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0));
+        bottom: -11px;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+    }
+}
+
+/* variant with a solid-colour background and reversed branding */
+.#{$pl-prefix}site-header.#{$pl-prefix}reversed {
+    background-color: $colour__brand--primary;
+    color: $colour__white;
+
+    &:not(.#{$pl-prefix}site-header--gradient) {
+        &::before {
+            content: none;
+        }
+    }
+
+    .#{$pl-prefix}site-header__navigation {
+        border-top: 1px solid $site-header__border-colour--reversed;
+    }
+}
+
+@supports (display: flex) {
+    .#{$pl-prefix}site-header__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@include media-query(medium) {
+    .#{$pl-prefix}site-header__content {
+        padding-bottom: 14px;
+        padding-top: 14px;
+    }
+
+    .#{$pl-prefix}site-header__controls {
+        display: none;
+    }
+
+    .#{$pl-prefix}site-header__search {
+        display: block;
+
+        .#{$pl-prefix}site-search__input {
+            float: right;
+        }
+    }
+
+    .#{$pl-prefix}site-header__branding {
+        max-width: calc(2/3 * 100% - #{$grid-gap-x});
+    }
+
+    .#{$pl-prefix}site-header__navigation {
+        border-top: 1px solid $colour__border--light;
+    }
+}

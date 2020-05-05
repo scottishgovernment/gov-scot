@@ -39,7 +39,7 @@ const accordionPlugin = function () {
 
             editor.widgets.add('accordion', {
                 button: 'Add accordion',
-                template: `<div class="ds_accordion" data-module="ds_accordion"></div>`,
+                template: `<div class="ds_accordion" data-module="ds-accordion"></div>`,
                 editables: {
                     items: {
                         selector: '.ds_accordion',

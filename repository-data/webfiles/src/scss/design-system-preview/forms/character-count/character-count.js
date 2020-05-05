@@ -18,15 +18,21 @@ class CharacterCount {
             return;
         }
 
+        this.emptyMessage = `You can enter up to ${this.maxLength} characters`;
+
         // dynamically create the message element
         this.messageElement = document.createElement('div');
         this.messageElement.setAttribute('aria-live', 'polite');
         this.messageElement.classList.add('ds_input__message', 'ds_hint-text');
-        this.messageElement.innerText = `You can enter up to ${this.maxLength} characters`;
+        // this.messageElement.innerText = this.inputElement.length ? : this.emptyMessage;
         if (this.inputElement.value.length < this.maxLength * this.threshold) {
-            this.messageElement.classList.add('hidden', 'hidden--hard');
+            this.messageElement.classList.add('fully-hidden');
         }
         this.field.appendChild(this.messageElement);
+
+
+
+        this.updateCountMessage();
 
         this.inputElement.addEventListener('keyup', this.checkIfChanged.bind(this));
     }
@@ -67,19 +73,25 @@ class CharacterCount {
             this.inputElement.classList.add('ds_input--error');
             this.inputElement.setAttribute('aria-invalid', true);
             this.messageElement.innerText = `You have ${Math.abs(count)} ${noun} too many`;
-            this.messageElement.classList.remove('ds_hint-text');
+            this.messageElement.classList.add('ds_input__message--error');
         }
         else {
             this.inputElement.classList.remove('ds_input--error');
             this.inputElement.setAttribute('aria-invalid', false);
-            this.messageElement.innerText = `You have ${count} ${noun} remaining`;
-            this.messageElement.classList.add('ds_hint-text');
+
+            if (this.inputElement.value.length === 0) {
+                this.messageElement.innerText = this.emptyMessage;
+            } else {
+                this.messageElement.innerText = `You have ${count} ${noun} remaining`;
+            }
+
+            this.messageElement.classList.remove('ds_input__message--error');
         }
 
         if (this.inputElement.value.length < this.maxLength * this.threshold) {
-            this.messageElement.classList.add('hidden');
+            this.messageElement.classList.add('fully-hidden');
         } else {
-            this.messageElement.classList.remove('hidden');
+            this.messageElement.classList.remove('fully-hidden');
         }
     }
 }

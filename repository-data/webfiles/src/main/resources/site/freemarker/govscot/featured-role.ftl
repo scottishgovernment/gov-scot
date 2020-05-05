@@ -7,8 +7,11 @@
     <#assign postalAddress = document.incumbent.postalAddress/>
 
         <div class="grid"><!--
+            --><div class="grid__item medium--three-twelfths large--three-twelfths">
+                <@hst.include ref="side-menu"/>
+            </div><!--
 
-            --><div class="grid__item  medium--nine-twelfths   push--medium--three-twelfths">
+            --><div class="grid__item  medium--nine-twelfths large--seven-twelfths">
 
                 <!-- dev note: inline styles to illustrate image dimensions only. remove when we have correct images. -->
                 <img class="full-width-image"

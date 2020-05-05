@@ -14,8 +14,7 @@
             <@hst.include ref="search"/>
         </div>
 
-
-        <nav role="navigation">
+        <nav role="navigation" data-module="ds-site-navigation">
             <button class="js-toggle-menu  ds_mobile-navigation__button" aria-expanded="false" aria-controls="mobile-navigation-menu">
                 <span class="ds_site-header__control-text">Menu</span>
                 <svg class="ds_icon  ds_site-header__control-icon" role="img"><use xlink:href="${iconspath}#menu-21"></use></svg>

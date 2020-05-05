@@ -12,9 +12,10 @@ import header from './component.header';
 import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
-import './component.site-navigation';
 import NotificationBanner from './component.notification';
-import Accordion from './design-system/accordion';
+import Accordion from '../../scss/design-system-preview/components/accordion/accordion';
+import SideNavigation from '../../scss/design-system-preview/components/side-navigation/side-navigation';
+import MobileMenu from '../../scss/design-system-preview/components/site-navigation/site-navigation';
 
 const global = {
     compensateAnchorOffsetForStickyElements: function () {
@@ -70,7 +71,19 @@ const global = {
         accordionModules.forEach(accordion => new Accordion(accordion).init());
     },
 
+    initSideNavigation: function () {
+        const sideNavigationModules = [].slice.call(document.querySelectorAll('[data-module="ds-side-navigation"]'));
+        sideNavigationModules.forEach(sideNavigation => new SideNavigation(sideNavigation).init());
+    },
+
+    initMobileMenu: function () {
+        const mobileMenuModules = [].slice.call(document.querySelectorAll('[data-module="ds-site-navigation"]'));
+        mobileMenuModules.forEach(mobileMenu => new MobileMenu(mobileMenu).init());
+    },
+
     init: function () {
+        document.documentElement.classList.add('js-enabled');
+
         this.initPubsub();
         this.svgFallback();
         this.compensateAnchorOffsetForStickyElements();
@@ -81,6 +94,8 @@ const global = {
         header.init();
         this.initNotifications();
         this.initAccordions();
+        this.initSideNavigation();
+        this.initMobileMenu();
     }
 };
 

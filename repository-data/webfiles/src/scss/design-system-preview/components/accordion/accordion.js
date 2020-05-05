@@ -8,13 +8,13 @@ class Accordion {
     }
 
     init() {
-        this.items.forEach(item => this.initAccordionItem(item));
+        this.items.forEach((item, index) => this.initAccordionItem(item, index));
 
         this.initOpenAll();
         this.accordion.classList.add('js-initialised');
     }
 
-    initAccordionItem(item) {
+    initAccordionItem(item, index) {
         // transform markup to button-driven version
         const itemControl = item.querySelector('.ds_accordion-item__control');
         const itemHeader = item.querySelector('.ds_accordion-item__header');
@@ -50,43 +50,15 @@ class Accordion {
             this.setOpenAllButton(this.checkAllOpen());
         }
 
+        itemButton.setAttribute('data-accordion', `accordion-${startsOpen ? 'close' : 'open'}-${index}`);
+
         itemButton.setAttribute('aria-expanded', startsOpen);
         itemBody.id = itemBody.id || `accordion-item-${parseInt(Math.random() * 1e8, 10)}`;
         itemButton.setAttribute('aria-controls', itemBody.id);
 
         // events
-        itemButton.addEventListener('click', () => {
-            const body = item.querySelector('.ds_accordion-item__body');
-            const isOpen = item.classList.contains('ds_accordion-item--open');
-            const that = this;
-
-            if (!isOpen) {
-                item.classList.add('ds_accordion-item--open');
-                body.style.display = 'block';
-                // 21px and 28px are the top and bottom padding of the body content
-                body.style.maxHeight = body.scrollHeight + 21 + 28 + 'px';
-                this.checkAllOpen();
-            } else {
-                body.style.maxHeight = 0;
-                item.classList.remove('ds_accordion-item--open');
-                that.checkAllOpen();
-
-                window.setTimeout(function () {
-                    body.style.display = 'none';
-                }, 200);
-            }
-
-            itemButton.setAttribute('aria-expanded', !isOpen);
-            itemControl.checked = !isOpen;
-
-            // tracking
-            let accordionNumber = 0;
-            if (itemButton.getAttribute('data-accordion')) {
-                accordionNumber = itemButton.getAttribute('data-accordion').split('-').reverse()[0];
-            }
-            itemButton.setAttribute('data-accordion', `accordion-${isOpen ? 'close' : 'open'}-${accordionNumber}`);
-
-            this.setOpenAllButton(this.checkAllOpen());
+        itemButton.addEventListener('click', event => {
+            this.toggleAccordionItem(item);
         });
     }
 
@@ -109,14 +81,47 @@ class Accordion {
                 panelsToToggle = allPanelButtons.filter(button => button.parentNode.classList.contains('ds_accordion-item--open'));
             }
 
-            panelsToToggle.forEach(function (button) {
-                const event = document.createEvent('HTMLEvents');
-                event.initEvent('click', true, false);
-                button.dispatchEvent(event);
+            panelsToToggle.forEach(button => {
+                this.toggleAccordionItem(button.parentNode);
             });
 
             this.setOpenAllButton(opening);
         });
+    }
+
+    toggleAccordionItem(item) {
+        const itemButton = item.querySelector('.js-accordion-button');
+        const itemControl = item.querySelector('.ds_accordion-item__control');
+        const body = item.querySelector('.ds_accordion-item__body');
+        const isOpen = item.classList.contains('ds_accordion-item--open');
+
+        if (!isOpen) {
+            item.classList.add('ds_accordion-item--open');
+            body.style.display = 'block';
+            // 21px and 28px are the top and bottom padding of the body content
+            body.style.maxHeight = body.scrollHeight + 21 + 28 + 'px';
+            this.checkAllOpen();
+        } else {
+            body.style.maxHeight = 0;
+            item.classList.remove('ds_accordion-item--open');
+            this.checkAllOpen();
+
+            window.setTimeout(function () {
+                body.style.display = 'none';
+            }, 200);
+        }
+
+        itemButton.setAttribute('aria-expanded', !isOpen);
+        itemControl.checked = !isOpen;
+
+        // tracking
+        let accordionNumber = 0;
+        if (itemButton.getAttribute('data-accordion')) {
+            accordionNumber = itemButton.getAttribute('data-accordion').split('-').reverse()[0];
+        }
+        itemButton.setAttribute('data-accordion', `accordion-${isOpen ? 'open' : 'close'}-${accordionNumber}`);
+
+        this.setOpenAllButton(this.checkAllOpen());
     }
 
     setOpenAllButton(open) {

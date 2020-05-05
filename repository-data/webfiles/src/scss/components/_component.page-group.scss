@@ -74,12 +74,6 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
-
-        display: none;
-
-        &--mobile {
-            display: block;
-        }
     }
 
     &__item {
@@ -116,6 +110,7 @@
     }
 
     &__link {
+        color: $color__body;
         display: block;
         padding: 21px 14px;
         text-decoration: none;
@@ -219,10 +214,6 @@
 /* styles for mobile nav */
 @include media-query(medium-down) {
     .page-group--mobile {
-        .page-group__list {
-            display: block;
-        }
-
         .page-group__link {
             background: transparent;
             border-top: 1px solid rgba(255, 255, 255, 0.2);

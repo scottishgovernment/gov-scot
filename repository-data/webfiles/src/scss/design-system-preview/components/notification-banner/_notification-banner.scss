@@ -2,16 +2,6 @@
     NOTIFICATION BANNER
 \*------------------------------------*/
 
-$pl-prefix: "ds_";
-$colour__grey--dark: $color__grey--dark;
-$colour__white: $color__white;
-$colour__text: $color__body;
-$colour__gold--base: $color__gold--base;
-$colour__green--base: $color__green--base;
-$colour__red--base: $color__red--base;
-$colour__link: $color__link--primary;
-$colour__blue--light: $color__blue--light;
-
 // fixed vars
 $notification-banner__close-padding: 5px;
 $notification-banner__icon-padding: $notification-banner__close-padding;
@@ -85,7 +75,7 @@ $notification-banner__icon-padding: $notification-banner__close-padding;
         box-sizing: content-box;
         color: currentColor;
         display: none;
-        font-size: 14px;
+        font-size: $small-size--fixed;
         height: 21px;
         margin: #{$notification-banner__close-padding * -1} #{$notification-banner__close-padding * -1} #{$notification-banner__close-padding * -1} 25px;
         padding: $notification-banner__close-padding;
@@ -131,20 +121,20 @@ $notification-banner__icon-padding: $notification-banner__close-padding;
     }
 
     &--positive {
-        background: $colour__green--base;
+        background: $colour__state--positive;
         color: $colour__white;
 
         .#{$pl-prefix}notification__icon svg {
-            fill: $colour__green--base;
+            fill: $colour__state--positive;
         }
     }
 
     &--negative {
-        background: $colour__red--base;
+        background: $colour__state--negative;
         color: $colour__white;
 
         .#{$pl-prefix}notification__icon svg {
-            fill: $colour__red--base;
+            fill: $colour__state--negative;
         }
     }
 
