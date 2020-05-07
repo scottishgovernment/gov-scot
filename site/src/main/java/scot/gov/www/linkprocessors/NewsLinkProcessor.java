@@ -62,8 +62,6 @@ public class NewsLinkProcessor extends SlugProcessor {
             Node newsNode = getNodeBySlug(slug, NEWS);
 
             if (newsNode == null) {
-                link.setNotFound(true);
-                link.setPath("/pagenotfound");
                 return link;
             }
 
