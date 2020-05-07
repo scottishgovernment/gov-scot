@@ -75,7 +75,7 @@ public class PublicationLinkProcessor extends SlugProcessor {
 
     private boolean isPublicationsSlugLink(HstLink link) {
         // match any slug style link for a publication or page
-        return isSlugLink(link, PUBLICATIONS, 2) && !isPublicationsListPage(link);
+        return isFullLink(link, PUBLICATIONS, 2) && !isPublicationsListPage(link);
     }
 
     private boolean isPublicationsListPage(HstLink link) {
