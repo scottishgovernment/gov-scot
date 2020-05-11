@@ -1,4 +1,5 @@
 <#include "../include/imports.ftl">
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <h1 class="article-header">${document.title}</h1>
 
@@ -7,7 +8,7 @@
             <p>${document.summary}</p>
     </#if>
 </div>
-    
+
 <header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
         <#if document.image??>
             <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="topic-header__image">
@@ -15,54 +16,79 @@
 </header>
 
 <div class="body-content">
-    
-  <@hst.html hippohtml=document.content />
+    <#if document.content?has_content>
+        <@hst.html hippohtml=document.content />
+    </#if>
 
+   <#if document.additionalContent?has_content>
+   <section id="additional-content" class="topic-block">
+        <#list document.additionalContent as additionalContent>
+            <h2 class="emphasis  topic-block__title">${additionalContent.title}</h2>
+            <@hst.html hippohtml=additionalContent.body />
+        </#list>
+    </section>    
+    </#if>
+    
     <section id="latest-publications" class="topic-block">
                 <h2 class="emphasis  topic-block__title">
-                Statistics and research
+                Statistics and research publications
                 </h2>
         
-        <div class="grid"><!--
-
+        <div class="grid"><!-- 
         --><div class="grid__item  medium--six-twelfths"><!-- 
 
-          --><div id="publications-container">
-                <#if publications?has_content>
-                    <#list publications as publication>
-                        <article class="homepage-publication">
-                            <h3 class="js-truncate  homepage-publication__title">
-                                <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index}" title="${publication.title}">${publication.title}</a>
-                            </h3>
-                             <ul class="homepage-publication__topics">
-                                    <li>${publication.label}</li>
+              --><div id="publications-container">
+                <h3 class="filter-search__subtitle homepage-block__subtitle">Latest</h3>
+                    <#if statisticsAndResearch?has_content>
+                        <#list statisticsAndResearch as statsItem>
+                            <article class="homepage-publication">
+                        <h3 class="js-truncate homepage-news__title">
+                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index}" title="${statsItem.title}">${statsItem.title}</a>
+                        </h3>
+                            <ul class="homepage-publication__topics">
+                                    <li>${statsItem.label}</li>
                             </ul>
-                            <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                        </article>
-                    </#list>
-                <#else>
-                    <p>There are no statistics and research relating to this topic.</p>
-                </#if>
-            </div>
 
-            <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/statisitics-and-research/?topics=${document.title}'/>"
-            data-gtm="all-pubs">
-                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="${iconspath}#3x3grid"></use>
-                </svg>
-                See all Statistics and research
-            </a>
-</div>
-</div>
-    </section>
+                            <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                    </article>
+                        </#list>
+                        <#else>
+                        <p>There are no statistics and research relating to this topic.</p>
+                    </#if>
+                 </div>
 
-  </div>  
-
-
-    <#if document.featuredItems?has_content>
-
-        <section id="featured-items" class="topic-block">
+                <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
+                <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
+                data-gtm="all-pubs">
+                    <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                        <use xlink:href="${iconspath}#3x3grid"></use>
+                    </svg>
+                    See all Statistics and research
+                </a>
+        </div><!--
+  
+         --><div class="grid__item  medium--six-twelfths"><!-- 
+             --><div id="publications-container">
+                    <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by type</h3>
+                    <p>Look for either statistics or research that have been published by the Scottish Government.</p>          
+                    <form>
+                        <div class="checkbox-group">
+                            <fieldset>
+                                <legend class="hidden">Publication type</legend>
+                    
+                                        <input id="research" name="topics[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="research-and-analysis"/><label for="research" class="checkbox-group__label fancy-checkbox">Research and analysis</label>
+                                        <input id="statistics" name="topics[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="statistics"/><label for="statistics" class="checkbox-group__label fancy-checkbox">Statistics</label>
+                      
+                            </fieldset>
+                        </div>    
+                        <button href="<@hst.link path='/statistics-and-research/'/>" class="js-stats-form-submit button button--primary homepage-block__button">Go</button>
+                    </form>  
+            </div><!--
+    --></section><!--
+--></div>  
+  
+<#if document.featuredItems?has_content><!--
+    --><section id="featured-items" class="topic-block">
             <h2 class="emphasis  topic-block__title">Featured</h2>
 
             <ul class="grid"><!--
@@ -116,14 +142,30 @@
                     </li><!--
                 </#list>
             --></ul>
+        </section><!--
+--></#if><!--
+
+        
+ --><#if document.trailingContent?has_content>
+        <section id="trailing-content" class="topic-block">
+        <#list document.trailingContent as trailingContent>
+            <h2 class="emphasis  topic-block__title">${trailingContent.title}</h2>
+            <@hst.html hippohtml=trailingContent.body />
+        </#list>
         </section>
-    </#if>
+    </#if><!--
 
-
-
-
-<div class="grid"><!--
-    --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+--><div class="grid">
+    <div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
         <#include 'common/feedback-wrapper.ftl'>
-    </div><!--
---></div>
+       </div>
+</div><!--
+
+
+--><@hst.headContribution category="footerScripts">
+    <script type="module" src="<@hst.webfile path="/assets/scripts/aboutstats.js"/>"></script>
+    </@hst.headContribution>
+    <@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/aboutstats.es5.js"/>"></script>
+    </@hst.headContribution>
+
