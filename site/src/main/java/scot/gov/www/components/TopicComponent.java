@@ -18,7 +18,6 @@ import org.hippoecm.hst.util.ContentBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aj.org.objectweb.asm.Type;
 import scot.gov.www.beans.*;
 
 import java.io.IOException;
