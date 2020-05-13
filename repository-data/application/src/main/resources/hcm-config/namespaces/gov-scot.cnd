@@ -11,6 +11,9 @@
 [govscot:SimpleContent] > govscot:basedocument, hippostd:relaxed, hippostd:taggable, hippotranslation:translated
   orderable
 
+[govscot:AdditionalContent] > hippo:compound, hippostd:relaxed
+  orderable
+
 [govscot:AttributableContent] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
