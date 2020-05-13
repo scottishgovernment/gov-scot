@@ -38,8 +38,7 @@ TopicComponent extends BaseHstComponent {
     private static final Logger LOG = LoggerFactory.getLogger(TopicComponent.class);
 
     private static final String PUBLICATIONTYPE = "govscot:publicationType";
-
-    private String[] types;
+ 
 
     @Override
     public void doBeforeRender(final HstRequest request,

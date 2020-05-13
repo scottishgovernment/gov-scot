@@ -27,7 +27,7 @@ public class StatsAboutComponent extends TopicComponent {
 
     HstRequestContext context = request.getRequestContext();
     HippoBean scope = context.getSiteContentBaseBean();
-    TopicsList(scope.getBean("topics/"), request);
+    topicsList(scope.getBean("topics/"), request);
     
     }
 
@@ -35,7 +35,7 @@ public class StatsAboutComponent extends TopicComponent {
         HomeComponent.populateStatsAndReasearch(base, request);
   
     }
-        void TopicsList(HippoBean scope, HstRequest request) {
+        void topicsList(HippoBean scope, HstRequest request) {
         List<Topic> topics = scope.getChildBeans(Topic.class);
         Comparator<Topic> titleComparator = Comparator.comparing(Topic::getTitle);
                 Collections.sort(topics, titleComparator);
