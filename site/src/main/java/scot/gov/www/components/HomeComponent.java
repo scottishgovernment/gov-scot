@@ -66,7 +66,7 @@ public class HomeComponent extends BaseHstComponent {
         executeQueryLoggingException(query, request, "news");
     }
 
-    private void populateStatsAndReasearch(HippoBean scope, HstRequest request) {
+    static void populateStatsAndReasearch(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
                 .where(
                         or(
