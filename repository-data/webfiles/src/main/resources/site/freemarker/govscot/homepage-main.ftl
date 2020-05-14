@@ -308,6 +308,7 @@
     </section>
 
 <!-- STATISTICS AND RESEARCH -->
+<#if homeStatsPanelEnabled == true>
     <section id="stats" class="homepage-block">
         <h2 class="emphasis homepage-block__title">
             <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-news">Statistics and research</a>
@@ -341,7 +342,7 @@
             See all Statistics and research
         </a>
     </section>
-
+</#if>
 
 <!-- END STATISTICS AND REASEARCH  -->
 

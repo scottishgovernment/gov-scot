@@ -27,8 +27,6 @@ import java.util.Map;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 
 public class
 
@@ -37,7 +35,6 @@ TopicComponent extends BaseHstComponent {
     private static final Logger LOG = LoggerFactory.getLogger(TopicComponent.class);
 
     private static final String PUBLICATIONTYPE = "govscot:publicationType";
- 
 
     @Override
     public void doBeforeRender(final HstRequest request,
@@ -64,7 +61,8 @@ TopicComponent extends BaseHstComponent {
         populateConsultations(base, topic, request);
         populatePublications(base, topic, request);
         populateStatsAndResearch(base, topic, request);
-
+        boolean topicsStatsPanel = FeatureFlags.isEnabled("topicsStatsPanel", request.getRequestContext());
+        request.setAttribute("topicsStatsPanelEnabled", topicsStatsPanel);
     }
 
     private void populatePoliciesAndDirectorates(HippoBean base, Topic topic, HstRequest request) {
@@ -131,7 +129,6 @@ TopicComponent extends BaseHstComponent {
     }
 
     void populatePublications(HippoBean base, Topic topic, HstRequest request) {
-        LOG.info("HERE?");
         HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
         if (query == null) {
             return;

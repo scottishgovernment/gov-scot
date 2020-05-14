@@ -21,6 +21,7 @@
       <map>
         <!--<entry key="name" value="/absolute/repository/path"/>-->
         <entry key="publicationTypes" value="/content/documents/govscot/valuelists/publicationTypes"/>
+        <entry key="featureFlags" value="/content/documents/govscot/valuelists/featureflags"/>
       </map> 
     </constructor-arg> 
   </bean> 

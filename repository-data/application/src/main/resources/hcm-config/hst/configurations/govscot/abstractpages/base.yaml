@@ -5,7 +5,7 @@ definitions:
       hst:template: base-layout
       /menu:
         jcr:primaryType: hst:component
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsMenuComponent
+        hst:componentclassname: scot.gov.www.components.MainMenu
         hst:parameternames: [selectedMenu, level, menu]
         hst:parametervalues: ['on', '1', main]
         hst:template: base-top-menu

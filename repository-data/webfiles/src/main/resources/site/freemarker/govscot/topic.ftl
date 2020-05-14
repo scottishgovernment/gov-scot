@@ -92,7 +92,7 @@
 
     <div class="grid"><!--
 
-        --><div class="grid__item  medium--four-twelfths">
+        --><#if topicsStatsPanelEnabled == false><div class="grid__item  medium--four-twelfths">
         <section id="latest-news" class="topic-block">
             <h2 class="emphasis  topic-block__title">
                 News
@@ -123,7 +123,7 @@
             </a>
 
         </section>
-    </div><!--
+    </div></#if><!--
 
 
         --><div class="grid__item  medium--four-twelfths">
@@ -193,7 +193,7 @@
         </section>
         </div><!--
 
-        --><div class="grid__item  medium--four-twelfths">
+        --><#if topicsStatsPanelEnabled == true><div class="grid__item  medium--four-twelfths">
         <section id="latest-publications" class="topic-block">
             <h2 class="emphasis  topic-block__title">
                 Statistics and research
@@ -227,7 +227,7 @@
             </a>
 
         </section>
-        </div><!--
+        </div></#if><!--
 
 
 
@@ -271,11 +271,11 @@
 
 <!-- start news -->
 
-<section id="news" class="homepage-block">
-        <section id="latest-news" class="topic-block">
-            <h2 class="emphasis  topic-block__title">
-                News
-            </h2>
+<#if topicsStatsPanelEnabled == true>
+<section id="latest-news" class="topic-block">
+    <h2 class="emphasis  topic-block__title">
+        News
+    </h2>
 
         <div class="grid"><!--
 
@@ -315,7 +315,7 @@
             </div>
         </div>    
 </div>
-
+</#if>
 
 <!-- close news -->
 

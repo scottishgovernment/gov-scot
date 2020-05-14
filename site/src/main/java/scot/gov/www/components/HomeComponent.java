@@ -33,7 +33,7 @@ public class HomeComponent extends BaseHstComponent {
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
         request.setAttribute("isHomepage", true);
-
+        request.setAttribute("homeStatsPanelEnabled", FeatureFlags.isEnabled("homeStatsPanel", request.getRequestContext()));
         HstRequestContext context = request.getRequestContext();
         HippoBean scope = context.getSiteContentBaseBean();
         populateNews(scope.getBean("news/"), request);
@@ -41,7 +41,6 @@ public class HomeComponent extends BaseHstComponent {
         populateConsultations(scope.getBean(PUBLICATIONS), request);
         populatePublications(scope.getBean(PUBLICATIONS), request);
         populateTopicsList(scope.getBean("topics/"), request);
-
         // get the First Minister page
         ObjectBeanManager beanManager = context.getObjectBeanManager();
         try {
