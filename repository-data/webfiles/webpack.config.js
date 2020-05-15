@@ -13,7 +13,9 @@ const commonEntry = {
     'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
     'topic':                        './src/scripts/govscot/format.topic.js',
     'publication':                  './src/scripts/govscot/format.publication.js',
-    'policy':                       './src/scripts/govscot/format.policy.js'
+    'policy':                       './src/scripts/govscot/format.policy.js',
+    'aboutstats':                   './src/scripts/govscot/format.aboutstats.js'
+    
 };
 
 const commonMode = 'development';

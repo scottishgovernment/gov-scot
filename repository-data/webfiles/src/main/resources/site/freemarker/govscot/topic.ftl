@@ -121,7 +121,6 @@
                 </svg>
                 See all news
             </a>
-
         </section>
     </div></#if><!--
 
@@ -194,7 +193,7 @@
         </div><!--
 
         --><#if topicsStatsPanelEnabled == true><div class="grid__item  medium--four-twelfths">
-        <section id="latest-publications" class="topic-block">
+        <section id="latest-stats-research" class="topic-block">
             <h2 class="emphasis  topic-block__title">
                 Statistics and research
             </h2>
@@ -218,8 +217,8 @@
             </div>
 
             <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/statisitics-and-research/?topics=${document.title}'/>"
-            data-gtm="all-pubs">
+            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
+            data-gtm="all-stats">
                 <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                     <use xlink:href="${iconspath}#3x3grid"></use>
                 </svg>
@@ -236,7 +235,16 @@
 
     <div class="topic-block  topic-block--negate-top-margin  hidden-xsmall">
         <div class="grid">
-            <div class="grid__item medium--four-twelfths">
+            <#if topicsStatsPanelEnabled == false><div class="grid__item medium--four-twelfths">
+                <!-- if you're changing this link remember to also change the mobile equivalent above -->
+                 <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/news/?topics=${document.title}'/>"
+                data-gtm="all-news">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all news
+            </a>
+            </div></#if><div class="grid__item medium--four-twelfths">
                 <!-- if you're changing this link remember to also change the mobile equivalent above -->
                 <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/?topics=${document.title}'/>"
                 data-gtm="all-pubs">
@@ -255,16 +263,16 @@
                     </svg>
                     See all consultations
                 </a>
-            </div><div class="grid__item medium--four-twelfths">
+            </div><#if topicsStatsPanelEnabled == true><div class="grid__item medium--four-twelfths">
                 <!-- if you're changing this link remember to also change the mobile equivalent above -->
-                <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
-                data-gtm="all-pubs">
+                <a class="button  button--tertiary  tst-all-stats" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
+                data-gtm="all-stats">
                     <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                         <use xlink:href="${iconspath}#3x3grid"></use>
                     </svg>
                     See all Statistics and research
                 </a>
-            </div>
+            </div></#if>
         </div>
     </div>
 

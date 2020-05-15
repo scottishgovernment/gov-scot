@@ -9,11 +9,11 @@
     </#if>
 </div>
 
-<header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
-        <#if document.image??>
+    <#if document.image??>
+        <header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
             <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="topic-header__image">
-        </#if>
-</header>
+        </header>
+    </#if>
 
 <div class="body-content">
     <#if document.content?has_content>
@@ -29,7 +29,7 @@
     </section>    
     </#if>
     
-    <section id="latest-publications" class="topic-block">
+    <section id="latest-stats-research" class="topic-block">
                 <h2 class="emphasis  topic-block__title">
                 Statistics and research publications
                 </h2>
@@ -58,8 +58,8 @@
                  </div>
 
                 <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-                <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
-                data-gtm="all-pubs">
+                <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline tst-all-stats" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
+                data-gtm="all-stats">
                     <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                         <use xlink:href="${iconspath}#3x3grid"></use>
                     </svg>
