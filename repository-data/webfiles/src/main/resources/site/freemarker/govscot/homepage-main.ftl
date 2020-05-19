@@ -311,7 +311,7 @@
 <#if homeStatsPanelEnabled == true>
     <section id="stats" class="homepage-block">
         <h2 class="emphasis homepage-block__title">
-            <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-news">Statistics and research</a>
+            <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-stats">Statistics and research</a>
         </h2>
 
         <h3 class="homepage-about__title">Latest</h3>
@@ -321,7 +321,7 @@
              --><div class="grid__item medium--four-twelfths homepage-news__item">
                     <article class="narrow">
                         <h3 class="js-truncate homepage-news__title">
-                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index}" title="${statsItem.title}">${statsItem.title}</a>
+                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index + 1}" title="${statsItem.title}">${statsItem.title}</a>
                         </h3>
                             <ul class="homepage-publication__topics">
                                     <li>${statsItem.label}</li>

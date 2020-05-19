@@ -198,12 +198,12 @@
                 Statistics and research
             </h2>
 
-            <div id="publications-container">
+            <div id="statistics-container">
                 <#if statsAndResearch?has_content>
                     <#list statsAndResearch as publication>
                         <article class="homepage-publication">
                             <h3 class="js-truncate  homepage-publication__title">
-                                <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index}" title="${publication.title}">${publication.title}</a>
+                                <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
                             </h3>
                              <ul class="homepage-publication__topics">
                                     <li>${publication.label}</li>
@@ -291,7 +291,7 @@
              --><div class="grid__item medium--four-twelfths homepage-news__item">
                     <article class="narrow">
                         <h3 class="js-truncate  homepage-publication__title">
-                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index}" title="${newsItem.title}">${newsItem.title}</a>
+                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
                         </h3>
                         <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                     </article>
