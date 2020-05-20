@@ -39,15 +39,15 @@
  * 2. The last support is a bit lower, so that the drop shadows stack correctly.
  */
 $carousel-z-stage-video-mobile: 9999; /* [1] */
-$carousel-z-support-active: 53;
-$carousel-z-support: 52;
-$carousel-z-support-last: 51; /* [2] */
-$carousel-z-stage-video: 44;
-$carousel-z-stage-play-button: 43;
-$carousel-z-stage-text-toggle: 43;
-$carousel-z-stage-text: 42;
-$carousel-z-stage-overlay: 41;
-$carousel-z-stage-image: 40;
+$carousel-z-support-active: 2;
+$carousel-z-support: 2;
+$carousel-z-support-last: 1; /* [2] */
+$carousel-z-stage-video: 1;
+$carousel-z-stage-play-button: 1;
+$carousel-z-stage-text-toggle: 1;
+$carousel-z-stage-text: 1;
+$carousel-z-stage-overlay: 1;
+$carousel-z-stage-image: 1;
 
 
 

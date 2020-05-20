@@ -41,8 +41,6 @@ class MobileMenu {
     }
 
     openMenu() {
-        console.log('open menu')
-
         window.scrollTo(0, window.scrollX);
         const htmlElement = document.querySelector('html');
         const bodyElement = document.querySelector('body');
@@ -54,11 +52,9 @@ class MobileMenu {
 
         let ppp = offsetElement;
         while (ppp.offsetParent) {
-            console.log(offsetTop)
             ppp = ppp.offsetParent;
             offsetTop += ppp.offsetTop;
         }
-
 
         const mobileNavigation = document.querySelector('.ds_mobile-navigation');
         mobileNavigation.style.top = offsetHeight + 'px';
