@@ -44,10 +44,4 @@ public class Topic extends SimpleContent {
                 AdditionalContent.class);
     }
 
-
-
-
-
-
-
 }

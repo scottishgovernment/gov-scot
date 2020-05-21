@@ -134,7 +134,7 @@ definitions:
             hst:relativecontentpath: about/how-government-is-run/${1}
             hst:sitemapitemhandlerids: [trailing-slash]
             hst:componentconfigurationmappingvalues: ['hst:pages/aboutpage', 'hst:pages/statsaboutpage']
-            hst:componentconfigurationmappingnames: ['govscot:SimpleContent', 'govscot:Topic']
+            hst:componentconfigurationmappingnames: ['govscot:SimpleContent', 'govscot:AboutTopic']
             /_index_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage

@@ -124,3 +124,6 @@
 [govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+
+[govscot:AboutTopic] > govscot:Topic, hippostd:relaxed, hippotranslation:translated
+  orderable
