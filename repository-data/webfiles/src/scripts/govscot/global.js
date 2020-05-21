@@ -67,7 +67,7 @@ const global = {
     },
 
     initAccordions: function () {
-        const accordionModules = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"]'));
+        const accordionModules = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"],[data-module="ds_accordion"]'));
         accordionModules.forEach(accordion => new Accordion(accordion).init());
     },
 

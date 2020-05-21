@@ -45,8 +45,8 @@ h1,h2,h3 {
 
         background-color: $colour__white;
         color: $accordion__header-colour;
-        font-size: 1rem;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: 700;
         line-height: 28px;
         margin: 0;
         padding: 14px 50px 14px 15px;
@@ -158,6 +158,11 @@ h1,h2,h3 {
         &__control:checked ~ &__header &__indicator,
         &__control:checked ~ &__header-button &__indicator {
             top: 24px;
+        }
+
+        &__header,
+        &__header-button {
+            font-size: 19px;
         }
 
         &__header,
