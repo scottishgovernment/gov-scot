@@ -21,25 +21,24 @@ const homePage = {
     attachEventHandlers: function () {
         const that = this;
 
-        const policySubmitLink = $('.js-stats-form-submit');
+        const statsSubmitLink = $('.js-stats-form-submit');
 
-        // submit policy form on press of enter on keyword input
-        policySubmitLink.on('click', function (event) {
+        // submit stats form on press of enter on keyword input
+        statsSubmitLink.on('click', function (event) {
             event.preventDefault();
 
-            that.submitPolicyForm($(this).attr('href'));
+            that.submitstatsForm($(this).attr('href'));
 
         });   
     },
 
-        submitPolicyForm: function (destinationUrl) {
+        submitstatsForm: function (destinationUrl) {
             const queryStringParams = [],
-            term = $('#filters-search-term').val(),
-            topics = [];
+            pubtype = [];
         let queryString;
 
-        $.each($('input[name="topics[]"]:checked'), function (index, checkbox) {
-            push(checkbox.value);
+        $.each($('input[name="pubtype[]"]:checked'), function (index, checkbox) {
+            pubtype.push(checkbox.value);
 
         });
 
@@ -47,8 +46,8 @@ const homePage = {
       
         queryStringParams.push('cat=filter');
 
-        if (length > 0) {
-            queryStringParams.push('publicationTypes=' + join(';'));
+        if (pubtype.length > 0) {
+            queryStringParams.push('publicationTypes=' + pubtype.join(';'));
         }
 
         if (queryStringParams.length > 0) {

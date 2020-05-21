@@ -58,7 +58,7 @@
                  </div>
 
                 <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-                <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline tst-all-stats" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
+                <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
                 data-gtm="all-stats">
                     <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                         <use xlink:href="${iconspath}#3x3grid"></use>
@@ -76,8 +76,8 @@
                             <fieldset>
                                 <legend class="hidden">Publication type</legend>
                     
-                                        <input id="research" name="topics[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="research-and-analysis"/><label for="research" class="checkbox-group__label fancy-checkbox">Research and analysis</label>
-                                        <input id="statistics" name="topics[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="statistics"/><label for="statistics" class="checkbox-group__label fancy-checkbox">Statistics</label>
+                                        <input id="research" name="pubtype[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="research-and-analysis"/><label for="research" class="checkbox-group__label fancy-checkbox">Research and analysis</label>
+                                        <input id="statistics" name="pubtype[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="statistics"/><label for="statistics" class="checkbox-group__label fancy-checkbox">Statistics</label>
                       
                             </fieldset>
                         </div>    
