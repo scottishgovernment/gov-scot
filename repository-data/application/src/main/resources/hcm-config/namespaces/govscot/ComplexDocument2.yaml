@@ -51,7 +51,6 @@ definitions:
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:publicationType: ''
           govscot:seoTitle: ''
           govscot:summary: ''
           govscot:title: ''
@@ -304,6 +303,16 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /updateHistory:
+            jcr:primaryType: frontend:plugin
+            caption: Update History
+            field: updateHistory
+            hint: Details of the last updated date and a brief descriptions of the  content
+              update
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /tags:
             jcr:primaryType: frontend:plugin
             mixin: hippostd:taggable

@@ -90,7 +90,6 @@ definitions:
           govscot:foiNumber: ''
           govscot:dateReceived: 0001-01-01T12:00:00Z
           govscot:dateResponded: 0001-01-01T12:00:00Z
-          govscot:publicationType: ''
           govscot:seoTitle: ''
           govscot:metaDescription: ''
           jcr:uuid: 2d14b582-fcac-4b00-9a7e-dca33d396be3

@@ -1,0 +1,70 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/UpdateHistory:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 60cd51b0-0823-44de-8a7d-decdf8ef2f35
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: e2ef3dec-7f3d-421a-9490-d49580c0973c
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: 37d9b3dc-d59a-4de7-bbc4-048a95629304
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippo:compound', 'hippostd:relaxed']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /lastUpdated:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:lastUpdated
+            hipposysedit:primary: false
+            hipposysedit:type: Date
+            hipposysedit:validators: [required]
+          /updateText:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:updateText
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [non-empty, required]
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:UpdateHistory
+          govscot:lastUpdated: 0001-01-01T12:00:00Z
+          govscot:updateText: ''
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /lastUpdated:
+            jcr:primaryType: frontend:plugin
+            caption: Last updated date
+            field: lastUpdated
+            hint: The date of the latest update to the content
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /updateText:
+            jcr:primaryType: frontend:plugin
+            caption: Update text
+            field: updateText
+            hint: Details of the last significant update made to the content
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

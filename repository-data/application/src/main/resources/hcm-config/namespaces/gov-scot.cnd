@@ -11,6 +11,12 @@
 [govscot:SimpleContent] > govscot:basedocument, hippostd:relaxed, hippostd:taggable, hippotranslation:translated
   orderable
 
+[govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:AboutTopic] > govscot:Topic, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:AdditionalContent] > hippo:compound, hippostd:relaxed
   orderable
 
@@ -65,6 +71,9 @@
 [govscot:HomeFeaturedItem] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:ImportantBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:Issue] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -75,9 +84,6 @@
   orderable
 
 [govscot:MourningBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
-  orderable
-
-[govscot:ImportantBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
@@ -121,9 +127,6 @@
 [govscot:SpeechOrStatement] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:Topic] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+[govscot:UpdateHistory] > hippo:compound, hippostd:relaxed
   orderable
 
-
-[govscot:AboutTopic] > govscot:Topic, hippostd:relaxed, hippotranslation:translated
-  orderable

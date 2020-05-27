@@ -87,7 +87,6 @@ definitions:
           govscot:isbn: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:publicationType: ''
           govscot:location: ''
           govscot:seoTitle: ''
           govscot:metaDescription: ''

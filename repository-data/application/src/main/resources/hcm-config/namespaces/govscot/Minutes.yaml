@@ -97,7 +97,6 @@ definitions:
           govscot:seoTitle: ''
           govscot:metaDescription: ''
           govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:publicationType: ''
           jcr:mixinTypes: ['mix:referenceable']
           jcr:uuid: e582d123-b1a6-4987-9c73-fc80b7c2b0a2
           hippostdpubwf:lastModificationDate: 2018-04-12T15:30:46.250+01:00

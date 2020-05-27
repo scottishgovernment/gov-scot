@@ -148,6 +148,14 @@
                             </section>
                         </#if>
 
+                        <hr>
+
+                        <#if document.updateHistory?has_content>
+                            <section class="publication-info__section publication-info__contact">
+                                <#include '../common/update-history.ftl'/>
+                            </section>
+                        </#if>
+
                     </div><!--
                 <#else>
                  --><div class="grid__item large--seven-twelfths">
@@ -251,6 +259,11 @@
                                 ${contact}
                             </div>
                         </#if>
+
+                        <#if document.updateHistory?has_content>
+                            <#include '../common/update-history.ftl'/>
+                        </#if>
+
                     </div><!--
                 </#if>
 

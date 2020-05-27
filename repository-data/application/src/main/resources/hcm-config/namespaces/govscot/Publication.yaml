@@ -91,6 +91,14 @@ definitions:
             hipposysedit:type: String
             hipposysedit:validators: [non-empty, required, govscot-slug, publication-slug-spaces,
               publication-slug-dots]
+          /updateHistory:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:updateHistory
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:UpdateHistory
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -111,10 +119,10 @@ definitions:
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:publicationType: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:sme: ''
           govscot:slug: ''
+          govscot:reportingTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -338,6 +346,16 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /updateHistory:
+            jcr:primaryType: frontend:plugin
+            caption: Update History
+            field: updateHistory
+            hint: Details of the last updated date and a brief descriptions of the  content
+              update
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /tags:
             jcr:primaryType: frontend:plugin
             mixin: hippostd:taggable
