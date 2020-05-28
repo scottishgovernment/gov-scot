@@ -237,7 +237,7 @@
         <div class="grid">
             <#if topicsStatsPanelEnabled == false><div class="grid__item medium--four-twelfths">
                 <!-- if you're changing this link remember to also change the mobile equivalent above -->
-                 <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/news/?topics=${document.title}'/>"
+                 <a class="button  button--tertiary  tst-all-news" href="<@hst.link path='/news/?topics=${document.title}'/>"
                 data-gtm="all-news">
                 <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                     <use xlink:href="${iconspath}#3x3grid"></use>
@@ -321,7 +321,7 @@
                     See all news
                 </a>
             </div>
-        </div>    
+        </div>
 </div>
 </#if>
 
