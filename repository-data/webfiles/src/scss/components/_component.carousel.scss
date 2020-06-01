@@ -116,6 +116,7 @@ $carousel-z-stage-image: 1;
   background-size: contain;
   background-repeat: no-repeat;
   bottom: 0;
+  cursor: pointer;
   display: block;
   left: 0;
   margin: auto;
@@ -156,6 +157,9 @@ $carousel-z-stage-image: 1;
   }
 }
 
+.carousel-item--play .carousel-item__play-button {
+  display: none;
+}
 
 
 /**
