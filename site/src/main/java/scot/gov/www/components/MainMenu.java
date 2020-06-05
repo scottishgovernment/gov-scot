@@ -1,6 +1,5 @@
 package scot.gov.www.components;
 
-import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
@@ -24,12 +23,15 @@ public class MainMenu extends EssentialsMenuComponent {
             return;
         }
 
-        // filter out any disabled items
-        for (HstSiteMenuItem siteMenuIte : menu.getSiteMenuItems()) {
-            String flagName = Text.escapeIllegalJcrChars(siteMenuIte.getName()) + "Menu";
-            if (!FeatureFlags.isEnabled(flagName, request.getRequestContext(), true)) {
-                menu.getSiteMenuItems().remove(siteMenuIte);
-            }
+        // set feature flags for site items
+        for (HstSiteMenuItem siteMenuItem : menu.getSiteMenuItems()) {
+            String flagName = flagname(siteMenuItem);
+            boolean enabled = FeatureFlags.isEnabled(flagName, request.getRequestContext(), true);
+            request.setAttribute(flagName, enabled);
         }
+    }
+
+    String flagname(HstSiteMenuItem menuItem) {
+        return menuItem.getName().replaceAll(" ", "") + "Menu";
     }
 }
