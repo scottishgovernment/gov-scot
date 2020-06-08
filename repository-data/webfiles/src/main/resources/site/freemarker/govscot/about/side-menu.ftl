@@ -10,7 +10,7 @@
                 <#if aboutMenuItem.selected>
                         <span class="page-group__link page-group__link--level-0 page-group__link--selected">${aboutMenuItem.name?html}</span>
                 <#else>
-                        <a class="page-group__link page-group__link--level-0" href="<@hst.link link=aboutMobileMenuItem.hstLink/>">${aboutMenuItem.name?html}</a>
+                        <a class="page-group__link page-group__link--level-0" href="<@hst.link link=aboutMenuItem.hstLink/>">${aboutMenuItem.name?html}</a>
                 </#if>
 
                 <#if aboutMenuItem.childMenuItems?has_content>
