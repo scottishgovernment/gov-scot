@@ -39,7 +39,6 @@ TopicComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
-        LOG.info("doBeforeRender");
         HstRequestContext context = request.getRequestContext();
         HippoBean base = context.getSiteContentBaseBean();
         Topic topic;

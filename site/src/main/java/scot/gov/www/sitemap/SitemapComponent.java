@@ -54,7 +54,7 @@ public class SitemapComponent extends BaseSitemapComponent {
         try {
             Urlset urlset = generateSitemap(request);
             request.setAttribute("sitemap", SitemapGenerator.toString(urlset));
-            LOG.info("sitemap for {}, {} pages, took {} millis",
+            LOG.debug("sitemap for {}, {} pages, took {} millis",
                     request.getPathInfo(), urlset.getUrls().size(), stopWatch.getTime());
         } catch (QueryException | RepositoryException e) {
             LOG.error("Failed to generate sitemap", e);

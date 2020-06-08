@@ -32,7 +32,7 @@ public class StatsAboutComponent extends TopicComponent {
     }
 
         void populatePublications(HippoBean base, Topic topic, HstRequest request) {
-        HomeComponent.populateStatsAndReasearch(base, request);
+        HomeComponent.populateStatsAndResearch(base, request);
   
     }
         void topicsList(HippoBean scope, HstRequest request) {

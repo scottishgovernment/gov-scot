@@ -32,12 +32,13 @@ public class HomeComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
+        boolean homeStatsPanelEnabled = FeatureFlags.isEnabled("homeStatsPanel", request.getRequestContext());
         request.setAttribute("isHomepage", true);
-        request.setAttribute("homeStatsPanelEnabled", FeatureFlags.isEnabled("homeStatsPanel", request.getRequestContext()));
+        request.setAttribute("homeStatsPanelEnabled", homeStatsPanelEnabled);
         HstRequestContext context = request.getRequestContext();
         HippoBean scope = context.getSiteContentBaseBean();
         populateNews(scope.getBean("news/"), request);
-        populateStatsAndReasearch(scope.getBean(PUBLICATIONS), request);
+        populateStatsAndResearch(scope.getBean(PUBLICATIONS), request);
         populateConsultations(scope.getBean(PUBLICATIONS), request);
         populatePublications(scope.getBean(PUBLICATIONS), request);
         populateTopicsList(scope.getBean("topics/"), request);
@@ -65,7 +66,7 @@ public class HomeComponent extends BaseHstComponent {
         executeQueryLoggingException(query, request, "news");
     }
 
-    static void populateStatsAndReasearch(HippoBean scope, HstRequest request) {
+    static void populateStatsAndResearch(HippoBean scope, HstRequest request) {
         HstQuery query = publicationsQuery(scope)
                 .where(
                         or(
@@ -121,7 +122,7 @@ public class HomeComponent extends BaseHstComponent {
     static void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
         try {
             HstQueryResult result = query.execute();
-            LOG.info("executeQueryLoggingException {}, {}", name, result.getSize());
+            LOG.debug("executeQueryLoggingException {}, {}", name, result.getSize());
 
             request.setAttribute(name, result.getHippoBeans());
         } catch (QueryException e) {

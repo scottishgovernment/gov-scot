@@ -33,7 +33,7 @@ public class SitemapIndexComponent extends BaseSitemapComponent {
         try {
             SitemapIndex sitemapIndex = generateSitemap(request);
             request.setAttribute("sitemap", SitemapIndexGenerator.toString(sitemapIndex));
-            LOG.info("sitemap index {} pages, took {} millis",
+            LOG.debug("sitemap index {} pages, took {} millis",
                     sitemapIndex.getSitemap().size(), stopWatch.getTime());
         } catch (QueryException e) {
             LOG.error("Failed top generate sitemap index", e);
