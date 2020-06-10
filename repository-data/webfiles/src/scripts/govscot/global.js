@@ -9,6 +9,7 @@ import banner from './component.banner';
 import cookieNotice from './component.cookie-notice';
 import expand from './component.expand';
 import header from './component.header';
+import showHide from './component.showhide';
 import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
@@ -27,7 +28,7 @@ const global = {
                 }, 300);
             }
 
-            $('a[href^="#"]:not(.js-display-toggle)').on('click', function () {
+            $('a[href^="#"]:not(.js-display-toggle):not(.js-trigger)').on('click', function () {
                 window.setTimeout(function () {
                     window.scrollTo(window.pageXOffset, window.pageYOffset - 100);
                 }, 10);
@@ -96,6 +97,8 @@ const global = {
         this.initAccordions();
         this.initSideNavigation();
         this.initMobileMenu();
+
+        showHide.init();
     }
 };
 

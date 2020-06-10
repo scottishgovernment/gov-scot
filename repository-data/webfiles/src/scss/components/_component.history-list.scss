@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    #HISTORY LIST
+\*------------------------------------*/
+
+
+
+
+.history-list {
+    font-size: 14px;
+    line-height: 21px;
+    list-style-type: none;
+    margin-left: 0;
+    margin-top: 35px;
+
+    &__item {
+        margin-left: 0;
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__item::before {
+        content: none;
+    }
+
+    &__date {
+        font-weight: bold;
+    }
+}

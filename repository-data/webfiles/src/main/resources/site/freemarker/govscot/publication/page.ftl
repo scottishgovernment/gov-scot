@@ -148,10 +148,8 @@
                             </section>
                         </#if>
 
-                        <hr>
-
                         <#if document.updateHistory?has_content>
-                            <section class="publication-info__section publication-info__contact">
+                            <section>
                                 <#include '../common/update-history.ftl'/>
                             </section>
                         </#if>
