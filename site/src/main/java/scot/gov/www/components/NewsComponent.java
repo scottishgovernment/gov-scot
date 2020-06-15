@@ -16,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Policy;
-import scot.gov.www.sitemap.SitemapComponent;
 
 import java.io.IOException;
 import java.util.*;
