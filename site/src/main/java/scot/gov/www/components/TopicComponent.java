@@ -46,6 +46,7 @@ TopicComponent extends BaseHstComponent {
         try {
             topic = context.getContentBean(Topic.class);
             if (topic == null) {
+                LOG.info("404 for {}", request.getRequestURL());
                 response.setStatus(404);
                 response.forward("/pagenotfound");
                 return;

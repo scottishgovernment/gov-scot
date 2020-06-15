@@ -61,12 +61,13 @@ public class SitemapComponent extends BaseSitemapComponent {
             throw new HstComponentException("Unable to generate sitemap for url: " + request.getPathInfo(), e);
         } catch (NumberFormatException e) {
             LOG.error("Failed to generate sitemap - no valid index in url:" + request.getPathInfo(), e);
-            send404(response);
+            send404(request, response);
         }
     }
 
-    protected void send404(HstResponse response){
+    protected void send404(HstRequest request, HstResponse response){
         try {
+            LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);
             response.forward("/pagenotfound");
         }  catch (IOException e) {

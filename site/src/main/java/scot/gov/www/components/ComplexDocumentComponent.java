@@ -60,7 +60,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
 
         if (!hasDocuments(publication.getParentBean())) {
             if (isDocumentsPage) {
-                send404(response);
+                send404(request, response);
             }
             return;
         }
@@ -92,7 +92,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
         if (isDocumentsPage && (hasGroupedFolderContent || !documentFolder.getDocuments().isEmpty())){
             request.setAttribute("isDocumentsPage", true);
         } else if (isDocumentsPage) {
-            send404(response);
+            send404(request, response);
         }
     }
 

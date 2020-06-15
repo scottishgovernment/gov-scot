@@ -57,6 +57,7 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
 
         // we were not able to resolve the isbn, send a 404
         try {
+            LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);
             response.forward("/pagenotfound");
             return;

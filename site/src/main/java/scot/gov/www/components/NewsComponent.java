@@ -12,8 +12,11 @@ import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.onehippo.cms7.essentials.components.EssentialsContentComponent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Policy;
+import scot.gov.www.sitemap.SitemapComponent;
 
 import java.io.IOException;
 import java.util.*;
@@ -31,6 +34,8 @@ import static scot.gov.www.components.ArchiveUtils.redirectToOldSite;
  * Note that this will need to be updated when MGS-5175 is completed.
  */
 public class NewsComponent extends EssentialsContentComponent {
+
+    private static final Logger LOG = LoggerFactory.getLogger(NewsComponent.class);
 
     @Override
     public void doBeforeRender(HstRequest request, HstResponse response) {
@@ -57,6 +62,7 @@ public class NewsComponent extends EssentialsContentComponent {
         }
 
         try {
+            LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);
             response.forward("/pagenotfound");
         }  catch (IOException e) {

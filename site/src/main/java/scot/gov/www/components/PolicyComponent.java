@@ -41,6 +41,7 @@ public class PolicyComponent extends BaseHstComponent {
         try {
             document = request.getRequestContext().getContentBean();
             if(document == null) {
+                LOG.info("404 for {}", request.getRequestURL());
                 response.setStatus(404);
                 response.forward("/pagenotfound");
                 return;
@@ -53,6 +54,7 @@ public class PolicyComponent extends BaseHstComponent {
         try {
             policy = getPolicy(document);
             if(policy == null) {
+                LOG.info("404 for {}", request.getRequestURL());
                 response.setStatus(404);
                 response.forward("/pagenotfound");
                 return;

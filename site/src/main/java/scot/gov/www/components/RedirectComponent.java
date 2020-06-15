@@ -75,6 +75,7 @@ public class RedirectComponent extends BaseHstComponent {
         HippoBean document = context.getContentBean();
         request.setAttribute("document", document);
         request.setAttribute("isPageNotFound", true);
+        LOG.info("404 for {}", request.getRequestURL());
         response.setStatus(404);
     }
 

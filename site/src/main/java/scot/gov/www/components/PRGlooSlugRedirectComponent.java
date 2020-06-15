@@ -66,6 +66,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
         // we do not know this slug, send a 404
         try {
+            LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);
             response.forward("/pagenotfound");
             return;

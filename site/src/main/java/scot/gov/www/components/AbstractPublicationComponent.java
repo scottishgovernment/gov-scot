@@ -41,12 +41,12 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
         HstRequestContext context = request.getRequestContext();
         HippoBean document = context.getContentBean();
         if (document == null) {
-            send404(response);
+            send404(request, response);
             return;
         }
         HippoBean publication = getPublication(document);
         if (publication == null) {
-            send404(response);
+            send404(request, response);
             return;
         }
         request.setAttribute("document", publication);
@@ -121,8 +121,9 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
         return collectionsBeans;
     }
 
-    protected void send404(HstResponse response){
+    protected void send404(HstRequest request, HstResponse response){
         try {
+            LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);
             response.forward("/pagenotfound");
         }  catch (IOException e) {
