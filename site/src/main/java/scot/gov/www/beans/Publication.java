@@ -94,8 +94,9 @@ public class Publication extends AttributableContent {
         List<UpdateHistory> history = getChildBeansByName("govscot:updateHistory", UpdateHistory.class);
         Collections.sort(history, new Comparator<UpdateHistory>() {
             public int compare(UpdateHistory o1, UpdateHistory o2) {
-                if (o1.getLastUpdated() == null || o2.getLastUpdated() == null)
+                if (o1.getLastUpdated() == null || o2.getLastUpdated() == null) {
                     return 0;
+                }
                 return o1.getLastUpdated().compareTo(o2.getLastUpdated());
             }
         });
