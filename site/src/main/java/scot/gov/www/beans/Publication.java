@@ -1,15 +1,13 @@
 package scot.gov.www.beans;
 
 import org.hippoecm.hst.container.RequestContextProvider;
-import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 @HippoEssentialsGenerated(internalName = "govscot:Publication")
 @Node(jcrType = "govscot:Publication")
@@ -94,6 +92,13 @@ public class Publication extends AttributableContent {
 
     public List<UpdateHistory> getUpdateHistory() {
         List<UpdateHistory> history = getChildBeansByName("govscot:updateHistory", UpdateHistory.class);
+        Collections.sort(history, new Comparator<UpdateHistory>() {
+            public int compare(UpdateHistory o1, UpdateHistory o2) {
+                if (o1.getLastUpdated() == null || o2.getLastUpdated() == null)
+                    return 0;
+                return o1.getLastUpdated().compareTo(o2.getLastUpdated());
+            }
+        });
         Collections.reverse(history);
         return history;
     }
