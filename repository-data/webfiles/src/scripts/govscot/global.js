@@ -9,7 +9,6 @@ import banner from './component.banner';
 import cookieNotice from './component.cookie-notice';
 import expand from './component.expand';
 import header from './component.header';
-import showHide from './component.showhide';
 import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
@@ -97,8 +96,6 @@ const global = {
         this.initAccordions();
         this.initSideNavigation();
         this.initMobileMenu();
-
-        showHide.init();
     }
 };
 

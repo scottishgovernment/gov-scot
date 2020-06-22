@@ -7,8 +7,8 @@
 'use strict';
 
 export default {
-    init: function () {
-        document.querySelector('.js-content-wrapper').addEventListener('click', function (event) {
+    init: function (scope = document) {
+        scope.addEventListener('click', function (event) {
             event.preventDefault();
 
             if (event.target.classList.contains('js-trigger') && event.target.closest('.js-show-hide')) {
