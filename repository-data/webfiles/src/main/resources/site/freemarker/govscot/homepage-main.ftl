@@ -67,8 +67,8 @@
                             <img alt="" src="<@hst.link hippobean=featuredItem.image.featuredlarge />" />
                             <div class="carousel-item__video">
                                 <div class="  embed-responsive  embed-responsive--16by9 ">
-                                    <#assign youtubeVideoUrl = featuredItem.youtube?replace("youtube.com/","youtube-nocookie.com/")?replace("youtu.be/","www.youtube-nocookie.com/")>
-                                    <iframe title="youtubevideo" data-videoUrl="${youtubeVideoUrl}" src="${youtubeVideoUrl}?enablejsapi=1&playsinline=1" allowfullscreen></iframe><!-- https://www.youtube.com/embed/{{getYouTubeId youtube}} -->
+                                    <#assign youtubeVideoUrl = featuredItem.youtube?replace("youtube.com/","youtube-nocookie.com/")?replace("youtu.be/","www.youtube-nocookie.com/embed/")>
+                                    <iframe title="youtubevideo" data-videoUrl="${youtubeVideoUrl}" src="${youtubeVideoUrl}?enablejsapi=1&playsinline=1" allowfullscreen></iframe>
                                 </div>
                             </div>
                         <#else>

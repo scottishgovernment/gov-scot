@@ -263,7 +263,7 @@ const carouselObject = {
         const that = this;
 
         items.on('click', function (e) {
-            e.stopPropagation();
+            e.preventDefault();
 
             if (!e.currentTarget.classList.contains('carousel-item--active')) {
                 that.itemTitleClicked = true;
@@ -282,7 +282,7 @@ const carouselObject = {
         });
 
         items.find('a').on('click', function (e) {
-            e.stopPropagation();
+            e.preventDefault();
 
             that.itemTitleClicked = false;
             itemClickedText = this.innerHTML;
@@ -302,7 +302,7 @@ const carouselObject = {
                 item.addClass('carousel-item--play');
                 that.playVideo(itemIndex);
             }
-            ev.stopPropagation();
+            ev.preventDefault();
         });
 
         /**
@@ -527,7 +527,7 @@ const carouselObject = {
             pip.find('button').attr('title', 'Slide ' + (itemIndex + 1));
             pip.find('button').click(function(ev){
                 that.transition(items[itemIndex]);
-                ev.stopPropagation();
+                ev.preventDefault();
             });
             controlsNext.parent().before(pip);
         });

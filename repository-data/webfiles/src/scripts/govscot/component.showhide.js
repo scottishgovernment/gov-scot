@@ -7,16 +7,13 @@
 'use strict';
 
 export default {
-    init: function () {
-        const showHides = [].slice.call(document.querySelectorAll('.js-show-hide'));
-
-        showHides.forEach(function (showHide) {
-            const trigger = showHide.querySelector('.js-trigger');
-
-            const target = document.querySelector(trigger.getAttribute('href'));
-
-            trigger.addEventListener('click', function (event) {
+    init: function (scope = document) {
+        scope.addEventListener('click', function (event) {
+            if (event.target.classList.contains('js-trigger') && event.target.closest('.js-show-hide')) {
                 event.preventDefault();
+
+                const trigger = event.target;
+                const target = document.querySelector(trigger.getAttribute('href'));
 
                 if (trigger.getAttribute('aria-expanded') === 'false') {
                     target.classList.remove('hidden');
@@ -29,7 +26,7 @@ export default {
                 const tempText = trigger.innerText;
                 trigger.innerText = trigger.dataset.toggledText;
                 trigger.dataset.toggledText = tempText;
-            });
+            }
         });
     }
 };
