@@ -263,7 +263,7 @@ const carouselObject = {
         const that = this;
 
         items.on('click', function (e) {
-            e.preventDefault();
+            e.stopPropagation();
 
             if (!e.currentTarget.classList.contains('carousel-item--active')) {
                 that.itemTitleClicked = true;
@@ -282,7 +282,7 @@ const carouselObject = {
         });
 
         items.find('a').on('click', function (e) {
-            e.preventDefault();
+            e.stopPropagation();
 
             that.itemTitleClicked = false;
             itemClickedText = this.innerHTML;
@@ -292,8 +292,7 @@ const carouselObject = {
         /**
          * Trigger video if available
          */
-        stage.click(function (ev) {
-            ev.preventDefault();
+        stage.click(function(ev){
             const item = $(this).parent(),
                 itemIndex = items.index(item),
                 video = $(this).find(config.selectors.video);
@@ -303,6 +302,7 @@ const carouselObject = {
                 item.addClass('carousel-item--play');
                 that.playVideo(itemIndex);
             }
+            ev.stopPropagation();
         });
 
         /**
@@ -477,7 +477,7 @@ const carouselObject = {
     /**
      * Fires when player changes state
      */
-    onPlayerStateChange: function (event) {
+    onPlayerStateChange: function(event) {
         const nonPlayingStates = [-1, 0, 2, 5],
             iframe = $(event.target.f),
             item = iframe.parent().parent().parent().parent();
@@ -526,8 +526,8 @@ const carouselObject = {
             const pip = $(config.html.pip);
             pip.find('button').attr('title', 'Slide ' + (itemIndex + 1));
             pip.find('button').click(function(ev){
-                ev.preventDefault();
                 that.transition(items[itemIndex]);
+                ev.stopPropagation();
             });
             controlsNext.parent().before(pip);
         });

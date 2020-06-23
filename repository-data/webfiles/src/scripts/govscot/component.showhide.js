@@ -8,15 +8,13 @@
 
 export default {
     init: function () {
-        const showHides = [].slice.call(document.querySelectorAll('.js-show-hide'));
+        document.querySelector('.js-content-wrapper').addEventListener('click', function (event) {
+            event.preventDefault();
 
-        showHides.forEach(function (showHide) {
-            const trigger = showHide.querySelector('.js-trigger');
+            if (event.target.classList.contains('js-trigger') && event.target.closest('.js-show-hide')) {
 
-            const target = document.querySelector(trigger.getAttribute('href'));
-
-            trigger.addEventListener('click', function (event) {
-                event.preventDefault();
+                const trigger = event.target;
+                const target = document.querySelector(trigger.getAttribute('href'));
 
                 if (trigger.getAttribute('aria-expanded') === 'false') {
                     target.classList.remove('hidden');
@@ -29,7 +27,7 @@ export default {
                 const tempText = trigger.innerText;
                 trigger.innerText = trigger.dataset.toggledText;
                 trigger.dataset.toggledText = tempText;
-            });
+            }
         });
     }
 };

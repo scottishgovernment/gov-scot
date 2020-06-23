@@ -10,7 +10,6 @@ import displayToggle from './component.display-toggle';
 import stickyBackToTop from './component.sticky-back-to-top';
 import '../shared/component.sticky-document-info';
 import './component.expandable';
-import showHide from './component.showhide';
 
 const publicationPage = {},
     pages = {},
@@ -25,7 +24,6 @@ publicationPage.init = function() {
     displayToggle.init();
     stickyBackToTop.init();
     pgroup = pageGroup.init();
-    showHide.init(document.querySelector('.js-content-wrapper'));
 };
 
 publicationPage.initExpandables = function () {
