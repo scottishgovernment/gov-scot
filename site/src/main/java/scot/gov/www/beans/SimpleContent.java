@@ -1,8 +1,12 @@
 package scot.gov.www.beans;
 
-import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:SimpleContent")
 @Node(jcrType = "govscot:SimpleContent")
@@ -42,8 +46,28 @@ public class SimpleContent extends BaseDocument {
         return getHippoHtml("govscot:notes");
     }
 
-    public String getLabel() { return ""; }
+    public String getLabel() {
+        return "";
+    }
 
     @HippoEssentialsGenerated(internalName = "govscot:reportingTags")
-    public String[] getReportingTags() { return getProperty("govscot:reportingTags"); }
+    public String[] getReportingTags() {
+        return getProperty("govscot:reportingTags");
+    }
+
+    public List<UpdateHistory> getUpdateHistory() {
+        List<UpdateHistory> history = getChildBeansByName(
+                "govscot:updateHistory", UpdateHistory.class);
+        Collections.sort(history, new Comparator<UpdateHistory>() {
+            public int compare(UpdateHistory o1, UpdateHistory o2) {
+                if (o1.getLastUpdated() == null || o2.getLastUpdated() == null) {
+                    return 0;
+                }
+                return o1.getLastUpdated().compareTo(o2.getLastUpdated());
+            }
+        });
+        Collections.reverse(history);
+        return history;
+    }
+
 }

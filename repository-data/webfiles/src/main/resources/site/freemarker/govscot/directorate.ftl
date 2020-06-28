@@ -7,6 +7,8 @@
 <div class="grid layout--directorate" id="page-content"><!--
      --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
 
+    <#include "common/metadata.ftl"/>
+
     <article>
 
         <h1 class="article-header">
@@ -121,6 +123,10 @@
                 </#if>
          --></ul>
         </div>
+
+        <#if document.updateHistory?has_content>
+            <#include 'common/update-history.ftl'/>
+        </#if>
 
     </article>
 </div><!--

@@ -1,6 +1,7 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
+    <#include "common/metadata.ftl"/>
     <article id="page-content" class="layout--role">
         <@hst.manageContent hippobean=document/>
         <#if document.incumbent??>
@@ -78,9 +79,15 @@
                     </#if>
 
 
-                        <div class="visible-xsmall">
-                            <#include 'common/contact-information.ftl' />
-                        </div>
+                    <div class="visible-xsmall">
+                        <#include 'common/contact-information.ftl' />
+                    </div>
+
+                    <#if document.updateHistory?has_content>
+                    <div class="update-history">
+                        <#include 'common/update-history.ftl'/>
+                    </div>
+                    </#if>
 
                 </div>
                 <!-- /end .body-content -->

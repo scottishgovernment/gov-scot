@@ -7,7 +7,8 @@ import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerat
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Map;
 
 @HippoEssentialsGenerated(internalName = "govscot:Publication")
 @Node(jcrType = "govscot:Publication")
@@ -88,20 +89,6 @@ public class Publication extends AttributableContent {
     @HippoEssentialsGenerated(internalName = "govscot:epilogue")
     public HippoHtml getEpilogue() {
         return getHippoHtml("govscot:epilogue");
-    }
-
-    public List<UpdateHistory> getUpdateHistory() {
-        List<UpdateHistory> history = getChildBeansByName("govscot:updateHistory", UpdateHistory.class);
-        Collections.sort(history, new Comparator<UpdateHistory>() {
-            public int compare(UpdateHistory o1, UpdateHistory o2) {
-                if (o1.getLastUpdated() == null || o2.getLastUpdated() == null) {
-                    return 0;
-                }
-                return o1.getLastUpdated().compareTo(o2.getLastUpdated());
-            }
-        });
-        Collections.reverse(history);
-        return history;
     }
 
 }

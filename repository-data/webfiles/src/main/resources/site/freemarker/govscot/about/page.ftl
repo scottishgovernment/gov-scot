@@ -1,5 +1,11 @@
 <#include "../../include/imports.ftl">
 <#if document??>
+
+    <div class="grid">
+        <div class="grid__item">
+            <#include "../common/metadata.ftl"/>
+        </div>
+    </div>
     <article id="page-content" class="layout--about">
 
     <@hst.manageContent hippobean=document/>
@@ -9,6 +15,12 @@
             </div><!--
         --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
                 <@hst.include ref="content"/>
+
+                <#if document.updateHistory?has_content>
+                <div class="update-history">
+                    <#include '../common/update-history.ftl'/>
+                </div>
+                </#if>
             </div><!--
      --></div>
     </article>

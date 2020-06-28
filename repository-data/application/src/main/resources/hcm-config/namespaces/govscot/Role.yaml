@@ -49,15 +49,16 @@ definitions:
           jcr:uuid: ee293647-de4c-4e89-804a-7747f22b9b19
           hippostdpubwf:lastModificationDate: 2018-02-09T12:32:15.950Z
           hippostdpubwf:creationDate: 2018-02-09T12:32:15.950Z
+          govscot:reportingTags: []
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
           /govscot:incumbent:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:content:
             jcr:primaryType: hippostd:html
-            hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -144,6 +145,16 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /updateHistory:
+            jcr:primaryType: frontend:plugin
+            caption: UpdateHistory
+            field: UpdateHistory
+            hint: Details of the last updated date and a brief descriptions of the content
+              update
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /tags:
             jcr:primaryType: frontend:plugin
             mixin: hippostd:taggable

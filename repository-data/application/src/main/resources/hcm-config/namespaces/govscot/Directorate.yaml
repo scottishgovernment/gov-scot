@@ -97,6 +97,8 @@ definitions:
           jcr:uuid: 4f428f4e-c1ee-4705-8469-246da4c02fdf
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
+          govscot:sme: ''
+          govscot:reportingTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -276,13 +278,25 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
-          /tags:
+          /updateHistory:
             jcr:primaryType: frontend:plugin
-            mixin: hippostd:taggable
-            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            caption: UpdateHistory
+            field: UpdateHistory
+            hint: Details of the last updated date and a brief descriptions of the content
+              update
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /tags:
+            jcr:primaryType: frontend:plugin
+            caption: Internal search tags
+            field: tags
+            hint: These tags are used to inform the internal search.  Please enter
+              all the tags relevant to this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            type: hippostd:taggable
+            wicket.id: ${cluster.id}.field
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes

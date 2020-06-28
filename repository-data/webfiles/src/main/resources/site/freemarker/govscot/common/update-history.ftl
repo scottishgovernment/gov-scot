@@ -1,7 +1,9 @@
 <div class="js-show-hide" id="history">
     <div class="content-data__list">
+    <#if document.publicationDate??>
         <span class="content-data__label">First published:</span>
         <span class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></strong></span>
+    </#if>
 
         <#assign latestUpdate = document.updateHistory[0].lastUpdated>
         <span class="content-data__label">Last updated:</span>

@@ -77,6 +77,14 @@ definitions:
             hipposysedit:path: govscot:reportingTags
             hipposysedit:primary: false
             hipposysedit:type: String
+          /UpdateHistory:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:updateHistory
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:UpdateHistory
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -96,6 +104,7 @@ definitions:
           jcr:uuid: c6a23366-5d6e-4acc-a15f-89058e24e2fc
           hippostdpubwf:lastModificationDate: 2018-01-25T11:47:57.024Z
           hippostdpubwf:creationDate: 2018-01-25T11:47:57.024Z
+          govscot:reportingTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -172,6 +181,16 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               maxlength: '300'
+          /updateHistory:
+            jcr:primaryType: frontend:plugin
+            caption: UpdateHistory
+            field: UpdateHistory
+            hint: Details of the last updated date and a brief descriptions of the content
+              update
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /taggable:
             jcr:primaryType: frontend:plugin
             mixin: hippostd:taggable

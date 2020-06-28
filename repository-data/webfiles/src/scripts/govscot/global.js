@@ -16,6 +16,7 @@ import NotificationBanner from './component.notification';
 import Accordion from '../../scss/design-system-preview/components/accordion/accordion';
 import SideNavigation from '../../scss/design-system-preview/components/side-navigation/side-navigation';
 import MobileMenu from '../../scss/design-system-preview/components/site-navigation/site-navigation';
+import showHide from './component.showhide';
 
 const global = {
     compensateAnchorOffsetForStickyElements: function () {
@@ -96,6 +97,7 @@ const global = {
         this.initAccordions();
         this.initSideNavigation();
         this.initMobileMenu();
+        showHide.init(document.querySelector('#page-content'));
     }
 };
 
