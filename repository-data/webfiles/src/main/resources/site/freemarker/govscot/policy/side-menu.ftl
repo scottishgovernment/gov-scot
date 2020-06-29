@@ -1,10 +1,11 @@
 <#include "../../include/imports.ftl">
 
-<nav class="page-group">
-    <!-- toggler -->
-    <button type="button" class="page-group__toggle visible-xsmall js-show-page-group-list">Choose section &hellip;</button>
-    <!-- nav links -->
-    <ul class="page-group__list">
+<nav class="ds_side-navigation" data-module="ds-side-navigation">
+    <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
+    <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
+
+    <ul class="ds_side-navigation__list  ds_side-navigation__list--root" id="side-navigation-root">
+
         <li class="page-group__item page-group__item--level-0">
             <@hst.link var="link" hippobean=index canonical=true/>
             <#if document == index && !latest??>
@@ -50,6 +51,7 @@
                 </#if>
             </li>
         </#list>
+
     </ul>
 </nav>
 
