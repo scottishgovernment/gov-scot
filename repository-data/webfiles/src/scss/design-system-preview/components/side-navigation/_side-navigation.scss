@@ -89,8 +89,7 @@ $side-nav__spacing-unit: 15px;
     &__list {
         list-style-type: none;
         margin-bottom: 0;
-        margin-left: #{$side-nav__outline-width * -1};
-        padding: 0 $side-nav__outline-width;
+        margin-top: 0;
 
         &--root {
             display: none;
@@ -105,6 +104,7 @@ $side-nav__spacing-unit: 15px;
     &__item {
         position: relative;
         margin-bottom: 0;
+        margin-left: 0;
 
         &--has-children {
             > .#{$pl-prefix}side-navigation__link {

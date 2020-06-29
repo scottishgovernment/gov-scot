@@ -5,6 +5,10 @@
 .expandable {
     position: relative;
 
+    .expandable-item__header {
+        height: auto;
+    }
+
     .expandable-item__icon {
         background-image: none !important;
         color: $color__grey--medium;
@@ -28,7 +32,7 @@
                 display: block;
             }
         }
-    } 
+    }
 }
 
 .expand-all-button {
