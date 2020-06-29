@@ -1,11 +1,5 @@
 <#include "../../include/imports.ftl">
 <#if document??>
-
-    <div class="grid">
-        <div class="grid__item">
-            <#include "../common/metadata.ftl"/>
-        </div>
-    </div>
     <article id="page-content" class="layout--about">
 
     <@hst.manageContent hippobean=document/>

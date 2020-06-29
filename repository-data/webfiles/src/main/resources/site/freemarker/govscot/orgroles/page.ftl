@@ -4,12 +4,6 @@
 <div class="layout--org-roles">
     <@hst.manageContent hippobean=document/>
 
-    <div class="grid">
-        <div class="grid__item">
-            <#include "../common/metadata.ftl"/>
-        </div>
-    </div>
-
     <div class="grid" id="page-content"><!--
 
 --><div class="grid__item medium--three-twelfths large--three-twelfths">
@@ -23,7 +17,7 @@
                 </#if>
             </div><!--
 
-  
+
 --></div>
 
 <div class="grid"><!--

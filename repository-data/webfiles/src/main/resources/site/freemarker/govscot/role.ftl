@@ -1,7 +1,6 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
-    <#include "common/metadata.ftl"/>
     <article id="page-content" class="layout--role">
         <@hst.manageContent hippobean=document/>
         <#if document.incumbent??>
@@ -23,6 +22,8 @@
                         </p>
                     </#if>
                 </header>
+
+                <#include "common/metadata.ftl"/>
             </div><!--
         --></div>
 

@@ -7,13 +7,13 @@
 <div class="grid layout--directorate" id="page-content"><!--
      --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
 
-    <#include "common/metadata.ftl"/>
-
     <article>
 
         <h1 class="article-header">
             ${document.title}
         </h1>
+
+        <#include "common/metadata.ftl"/>
 
         <@hst.html hippohtml=document.content/>
 

@@ -5,6 +5,8 @@
 
         <h1 class="article-header">${document.title}</h1>
 
+        <#include "../common/metadata.ftl"/>
+
         <div class="grid">
             <div class="grid__item large--seven-ninths">
 
@@ -23,7 +25,7 @@
                     <#assign people = secondaryPeople/>
                     <#include 'org-roles-grid.ftl' />
                 </#if>
-                
+
             </div>
         </div>
 
