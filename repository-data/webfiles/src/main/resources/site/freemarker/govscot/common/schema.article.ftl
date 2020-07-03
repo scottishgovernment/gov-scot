@@ -28,8 +28,9 @@
     <#if document.publicationDate??>
         "datePublished": "<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="yyyy-MM-dd" />",
     </#if>
+    <#if document.metaDescription??>
     "description": "${document.metaDescription?json_string}",
-
+    </#if>
     "publisher": {
         "@type": "Organization",
         "name": "The Scottish Government",

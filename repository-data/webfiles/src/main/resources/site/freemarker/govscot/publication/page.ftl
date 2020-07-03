@@ -295,7 +295,10 @@
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+
+        <#if document.metaDescription??>
+            <meta name="description" content="${document.metaDescription?html}"/>
+        </#if>
     </@hst.headContribution>
 
     <#if isMultiPagePublication && (currentPage != pages[0])>
