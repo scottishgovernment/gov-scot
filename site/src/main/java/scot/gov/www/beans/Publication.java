@@ -9,7 +9,6 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 
 import java.util.Calendar;
-import java.util.Map;
 
 @HippoEssentialsGenerated(internalName = "govscot:Publication")
 @Node(jcrType = "govscot:Publication")

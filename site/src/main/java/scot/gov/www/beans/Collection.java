@@ -1,15 +1,10 @@
 package scot.gov.www.beans;
 
-import org.hippoecm.hst.container.RequestContextProvider;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import java.util.List;
-import java.util.Map;
 
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import org.onehippo.forge.selection.hst.contentbean.ValueList;
-import org.onehippo.forge.selection.hst.util.SelectionUtil;
-import scot.gov.www.beans.CollectionGroup;
 
 @HippoEssentialsGenerated(internalName = "govscot:Collection")
 @Node(jcrType = "govscot:Collection")
