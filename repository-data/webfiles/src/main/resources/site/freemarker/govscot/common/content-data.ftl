@@ -59,7 +59,7 @@
             <#list index.topics?sort_by("title") as topic>
                 <#if topic?index lte 2>
                     <@hst.link var="link" hippobean=topic/>
-                    <a href="${link}">${topic.title}</a><#sep>, </sep>
+                    <a href="${link}">${topic.title}</a><#sep>, </#sep>
                 </#if><!--
          --></#list><!--
          --><#if index.topics?size gt 3><!--

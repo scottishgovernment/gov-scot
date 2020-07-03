@@ -23,7 +23,7 @@
                 </span>
             </button>
 
-            <div id="collections-body" class="expandable-item__body" role="tabpanel" aria-expanded="false" aria-labelledby=collections-heading">
+            <div id="collections-body" class="expandable-item__body" role="tabpanel" aria-expanded="false" aria-labelledby="collections-heading">
                 <ul class="contents-list">
                     <#list collections as collection>
 
