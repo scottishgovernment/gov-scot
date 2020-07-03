@@ -5,25 +5,24 @@
 'use strict';
 
 import $ from 'jquery';
-import pageGroup from '../shared/component.page-group';
 import displayToggle from './component.display-toggle';
 import stickyBackToTop from './component.sticky-back-to-top';
 import '../shared/component.sticky-document-info';
 import './component.expandable';
+import SideNavigation from '../../scss/design-system-preview/components/side-navigation/side-navigation';
 
 const publicationPage = {},
     pages = {},
     isMobile = $('.toc-mobile-trigger').is(':visible');
-let pgroup;
 
 publicationPage.init = function() {
     this.initExpandables();
     this.initAsyncNavigation();
     this.initStickyInfoInteractivity();
     this.initSidebarHeight();
+    this.initSideNavigation();
     displayToggle.init();
     stickyBackToTop.init();
-    pgroup = pageGroup.init();
 };
 
 publicationPage.initExpandables = function () {
@@ -61,37 +60,28 @@ publicationPage.setSidebarHeight = function () {
 publicationPage.initStickyInfoInteractivity = function() {
 
     function scrollListTop() {
-        const offset = $('.page-group').offset().top + 3; /** MAGIC NUM!! */
+        const offset = $('.ds_side-navigation').offset().top + 3; /** MAGIC NUM!! */
         window.scrollTo(null, offset);
     }
 
     /**
-     * Open or close the pageGroup list with buttons in sticy doc info
+     * Open or close the contents list with buttons in sticky doc info
      */
-    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-open', function(){
-        pgroup.open();
+    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-open', () => {
+        this.sideNavigationModule.openSideNav();
+        $('.js-mobile-toc-trigger-close').css('display', 'inline-block');
+        $('.js-mobile-toc-trigger-open').hide();
         scrollListTop();
     });
-    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-close', function(){
-        pgroup.close();
+    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-close', () => {
+        this.sideNavigationModule.closeSideNav();
+        $('.js-mobile-toc-trigger-open').css('display', 'inline-block');
+        $('.js-mobile-toc-trigger-close').hide();
         scrollListTop();
     });
 
     /* Hide close button to start with */
     $('.js-mobile-toc-trigger-close').hide();
-
-    /**
-     * Update which button to show based on page group state
-     */
-    pubsub.subscribe('page-group-change', function(event, state){
-        if (state === 'open') {
-            $('.js-mobile-toc-trigger-close').css('display', 'inline-block');
-            $('.js-mobile-toc-trigger-open').hide();
-        } else {
-            $('.js-mobile-toc-trigger-open').css('display', 'inline-block');
-            $('.js-mobile-toc-trigger-close').hide();
-        }
-    });
 
     $('.sticky-document-info').on('click', '.sticky-document-info__trigger', function(){
         const button = $(this),
@@ -146,7 +136,7 @@ publicationPage.initAsyncNavigation = function () {
                 .done(function(){
                     linkEl.blur();
                     if (isMobile && linkEl.hasClass('page-group__link')) {
-                        pgroup.close();
+                        this.sideNavigationModule.closeSideNav();
                     }
                 })
                 .fail(function(){
@@ -209,6 +199,12 @@ publicationPage.loadHtml = function (url) {
     }
 
     return deferred.promise();
+};
+
+publicationPage.initSideNavigation = function () {
+    const sideNavigationModule = document.querySelector('[data-module="ds-side-navigation"]');
+    this.sideNavigationModule = new SideNavigation(sideNavigationModule);
+    this.sideNavigationModule.init();
 };
 
 /**

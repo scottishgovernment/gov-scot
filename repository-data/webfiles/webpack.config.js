@@ -6,6 +6,7 @@ const commonEntry = {
     'global':                       './src/scripts/govscot/global.js',
 
     // format-specific entry points
+    'about':                        './src/scripts/govscot/format.about.js',
     'collection':                   './src/scripts/govscot/format.collection.js',
     'complex-document':             './src/scripts/govscot/format.complex-document.js',
     'home':                         './src/scripts/govscot/format.home.js',
@@ -15,7 +16,7 @@ const commonEntry = {
     'publication':                  './src/scripts/govscot/format.publication.js',
     'policy':                       './src/scripts/govscot/format.policy.js',
     'aboutstats':                   './src/scripts/govscot/format.aboutstats.js'
-    
+
 };
 
 const commonMode = 'development';

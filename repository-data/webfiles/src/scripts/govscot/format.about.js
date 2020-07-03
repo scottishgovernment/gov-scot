@@ -1,15 +1,11 @@
-// POLICY FORMAT
-
-/* global window */
+// ABOUT FORMAT
 
 'use strict';
 
-import displayToggle from './component.display-toggle';
 import SideNavigation from '../../scss/design-system-preview/components/side-navigation/side-navigation';
 
-const policyPage = {
+const aboutPage = {
     init: function(){
-        displayToggle.init();
         this.initSideNavigation();
     },
 
@@ -19,7 +15,7 @@ const policyPage = {
     }
 };
 
-window.format = policyPage;
+window.format = aboutPage;
 window.format.init();
 
-export default policyPage;
+export default aboutPage;
