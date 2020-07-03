@@ -63,10 +63,9 @@
                                                         <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></p>
                                                     <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
                                                         <p class="listed-content-item__date">${document.url}</p>
-                                                    <#else>
+                                                    <#elseif item.publicationDate??>
                                                         <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></p>
                                                     </#if>
-
                                                 </div>
 
                                                 <h3 class="gamma  listed-content-item__title" title="${item.title}">
