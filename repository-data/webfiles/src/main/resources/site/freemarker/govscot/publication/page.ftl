@@ -86,9 +86,11 @@
 
                      --><div class="grid__item  large--seven-twelfths">
                             <div class="leader  leader--first-para">
-                                <#list document.summary?split("\n") as summaryParagraph>
-                                    <p>${summaryParagraph}</p>
-                                </#list>
+                                <#if document.summary??>
+                                    <#list document.summary?split("\n") as summaryParagraph>
+                                        <p>${summaryParagraph}</p>
+                                    </#list>
+                                </#if>
 
                                 <#include '../common/collections-list.ftl'/>
                             </div>
