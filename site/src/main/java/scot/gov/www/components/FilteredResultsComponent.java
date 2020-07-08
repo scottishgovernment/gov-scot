@@ -1,6 +1,6 @@
 package scot.gov.www.components;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
@@ -45,6 +45,8 @@ import java.util.*;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
+import static org.apache.commons.lang3.StringUtils.isAnyBlank;
+import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
@@ -350,7 +352,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         }
         String begin = param(request, "begin");
         String end = param(request, "end");
-        if (begin != null && end != null) {
+        if (isNoneBlank(begin, end)) {
             Calendar beginCal = getCalendar(begin);
             Calendar endCal = getCalendar(end);
             constraints.add(and(constraint(searchField).between(beginCal, endCal, DateTools.Resolution.DAY)));
@@ -363,30 +365,21 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private void addBeginFilter(List<Constraint> constraints, String searchField, String begin) {
-        if (searchField == null) {
+        if (isAnyBlank(searchField, begin)) {
             return;
         }
 
-        if (begin == null) {
-            return;
-        }
         Calendar calendar = getCalendar(begin);
         constraints.add(and(constraint(searchField).greaterOrEqualThan(calendar, DateTools.Resolution.DAY)));
-
     }
 
     private void addEndFilter(List<Constraint> constraints, String searchField, String end) {
-        if (searchField == null) {
-            return;
-        }
-
-        if (end == null) {
+        if (isAnyBlank(searchField, end)) {
             return;
         }
 
         Calendar calendar = getCalendar(end);
         constraints.add(and(constraint(searchField).lessOrEqualThan(calendar, DateTools.Resolution.DAY)));
-
     }
 
     private Calendar getCalendar(String param) {
