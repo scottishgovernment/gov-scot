@@ -46,8 +46,9 @@
                         <header class="listed-content-item__heading">
                             <#if item.publicationDate?? || item.label?has_content>
                                 <div class="listed-content-item__meta">
-                                    <span class="listed-content-item__label">${item.label}</span>
-
+                                    <#if item.label?has_content>
+                                        <span class="listed-content-item__label">${item.label}</span>
+                                    </#if>
                                     <#if item.publicationDate??>
                                         <#assign dateFormat = "dd MMM yyyy">
                                         <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
