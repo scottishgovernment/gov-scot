@@ -10,4 +10,75 @@
     hippo:availability: [live, preview]
     hippotranslation:id: 2e6f0384-29eb-458f-9cc4-7cd856e3b53c
     hippotranslation:locale: inherited - from query
-
+    /selection:listitem[1]:
+      jcr:primaryType: selection:listitem
+      selection:key: '329376'
+      selection:label: '329376'
+    /selection:listitem[2]:
+      jcr:primaryType: selection:listitem
+      selection:key: '330877'
+      selection:label: '330877'
+    /selection:listitem[3]:
+      jcr:primaryType: selection:listitem
+      selection:key: '331319'
+      selection:label: '331319'
+    /selection:listitem[4]:
+      jcr:primaryType: selection:listitem
+      selection:key: '341931'
+      selection:label: '341931'
+    /selection:listitem[5]:
+      jcr:primaryType: selection:listitem
+      selection:key: '334005'
+      selection:label: '334005'
+    /selection:listitem[6]:
+      jcr:primaryType: selection:listitem
+      selection:key: '340399'
+      selection:label: '340399'
+    /selection:listitem[7]:
+      jcr:primaryType: selection:listitem
+      selection:key: '347902'
+      selection:label: '347902'
+    /selection:listitem[8]:
+      jcr:primaryType: selection:listitem
+      selection:key: '347964'
+      selection:label: '347964'
+    /selection:listitem[9]:
+      jcr:primaryType: selection:listitem
+      selection:key: '340303'
+      selection:label: '340303'
+    /selection:listitem[10]:
+      jcr:primaryType: selection:listitem
+      selection:key: '348816'
+      selection:label: '348816'
+    /selection:listitem[11]:
+      jcr:primaryType: selection:listitem
+      selection:key: '361800'
+      selection:label: '361800'
+    /selection:listitem[12]:
+      jcr:primaryType: selection:listitem
+      selection:key: '357175'
+      selection:label: '357175'
+    /selection:listitem[13]:
+      jcr:primaryType: selection:listitem
+      selection:key: '362106'
+      selection:label: '362106'
+    /selection:listitem[14]:
+      jcr:primaryType: selection:listitem
+      selection:key: '362055'
+      selection:label: '362055'
+    /selection:listitem[15]:
+      jcr:primaryType: selection:listitem
+      selection:key: '361736'
+      selection:label: '361736'
+    /selection:listitem[16]:
+      jcr:primaryType: selection:listitem
+      selection:key: '361803'
+      selection:label: '361803'
+    /selection:listitem[17]:
+      jcr:primaryType: selection:listitem
+      selection:key: '352163'
+      selection:label: '352163'
+    /selection:listitem[18]:
+      jcr:primaryType: selection:listitem
+      selection:key: '306528'
+      selection:label: '306528'

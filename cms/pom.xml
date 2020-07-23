@@ -22,6 +22,7 @@
   </properties>
 
   <dependencies>
+
     <dependency>
       <groupId>org.onehippo.forge.embargo</groupId>
       <artifactId>embargo-addon-frontend</artifactId>
@@ -140,6 +141,18 @@
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-sitemap-content</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.www</groupId>
+      <artifactId>publications-rest</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.www</groupId>
+      <artifactId>imageprocessing</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
   </dependencies>

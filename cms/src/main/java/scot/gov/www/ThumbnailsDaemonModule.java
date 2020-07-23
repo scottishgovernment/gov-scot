@@ -1,14 +1,14 @@
 package scot.gov.www;
 
-import scot.gov.www.exif.Exif;
-import scot.gov.www.thumbnails.FileType;
-import scot.gov.www.thumbnails.ThumbnailsProvider;
-import scot.gov.www.thumbnails.ThumbnailsProviderException;
+import scot.gov.imageprocessing.exif.Exif;
 import org.apache.commons.io.FileUtils;
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.imageprocessing.thumbnails.FileType;
+import scot.gov.imageprocessing.thumbnails.ThumbnailsProvider;
+import scot.gov.imageprocessing.thumbnails.ThumbnailsProviderException;
 
 import javax.jcr.Binary;
 import javax.jcr.Node;

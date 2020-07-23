@@ -55,7 +55,11 @@ public class PublicationSlugDaemonModule extends SlugDaemonModule {
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
 
-        Node handle = session.getNode(event.returnValue()).getNode(INDEX);
+        Node returnVal  = session.getNode(event.returnValue());
+        if (!returnVal.hasNode(INDEX)) {
+            return;
+        }
+        Node handle = returnVal.getNode(INDEX);
 
         if (handle == null) {
             LOG.info("handle was null: {}", event.subjectPath());

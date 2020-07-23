@@ -82,6 +82,7 @@
 
     <!-- project logging -->
     <Logger name="scot.gov.www" level="info"/>
+    <Logger name="scot.gov.publications" level="info"/>
 
     <Root level="warn">
       <AppenderRef ref="site"/>

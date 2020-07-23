@@ -128,5 +128,6 @@
   orderable
 
 [govscot:UpdateHistory] > hippo:compound, hippostd:relaxed
-  orderable
+
+[govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
 
