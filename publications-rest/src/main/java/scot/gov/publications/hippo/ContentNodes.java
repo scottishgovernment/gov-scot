@@ -14,7 +14,6 @@ import scot.gov.publications.hippo.pages.HtmlUtil;
 import scot.gov.publications.metadata.Metadata;
 import scot.gov.publications.repo.Publication;
 
-import javax.jcr.RepositoryException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -114,18 +113,7 @@ public class ContentNodes {
     private void createImageFacets(
             ContentNode contentNode,
             Set<String> imageLinks,
-            Map<String, String> filenameToImageId) throws ApsZipImporterException {
-        try {
-            doCreateImageFacets(contentNode, imageLinks, filenameToImageId);
-        } catch (RepositoryException e) {
-            throw new ApsZipImporterException("Failed to create image facets", e);
-        }
-    }
-
-    private void doCreateImageFacets(
-        ContentNode contentNode,
-        Set<String> imageLinks,
-        Map<String, String> filenameToImageId) throws RepositoryException {
+            Map<String, String> filenameToImageId)  {
 
         // create facets for each of the images we know about
         Set<String> imageNames = imageLinks.stream()
