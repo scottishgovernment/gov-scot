@@ -17,6 +17,8 @@ public class HippoNodeFactory {
 
     HippoUtils hippoUtils = new HippoUtils();
 
+    private static final String USER = "aps-importer";
+
     public HippoNodeFactory(Session session) {
         this.session = session;
     }
@@ -44,9 +46,9 @@ public class HippoNodeFactory {
         node.setProperty("hippotranslation:locale", "en");
         node.setProperty("hippotranslation:id", UUID.randomUUID().toString());
         Calendar now = Calendar.getInstance();
-        node.setProperty("hippostdpubwf:createdBy", "aps-importer");
+        node.setProperty("hippostdpubwf:createdBy", USER);
         node.setProperty("hippostdpubwf:creationDate", now);
-        node.setProperty("hippostdpubwf:lastModifiedBy", "aps-importer");
+        node.setProperty("hippostdpubwf:lastModifiedBy", USER);
         node.setProperty("hippostdpubwf:lastModificationDate", now);
         ensurePublicationStatus(node, publishDateTime, embargo);
         return node;
@@ -198,9 +200,9 @@ public class HippoNodeFactory {
         node.setProperty("hippotranslation:locale", "en");
         node.setProperty("hippotranslation:id", UUID.randomUUID().toString());
         Calendar now = Calendar.getInstance();
-        node.setProperty("hippostdpubwf:createdBy", "aps-importer");
+        node.setProperty("hippostdpubwf:createdBy", USER);
         node.setProperty("hippostdpubwf:creationDate", now);
-        hippoUtils.setPropertyIfAbsent(node, "hippostdpubwf:lastModifiedBy", "aps-importer");
+        hippoUtils.setPropertyIfAbsent(node, "hippostdpubwf:lastModifiedBy", USER);
         node.setProperty("hippostdpubwf:lastModificationDate", now);
     }
 

@@ -14,16 +14,12 @@ import scot.gov.publications.hippo.pages.HtmlUtil;
 import scot.gov.publications.metadata.Metadata;
 import scot.gov.publications.repo.Publication;
 
-import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.ZonedDateTime;
 import java.util.Map;
 import java.util.Set;
-import java.util.zip.ZipEntry;
 
-import static com.ibm.icu.text.PluralRules.Operand.i;
 import static java.util.stream.Collectors.toSet;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;

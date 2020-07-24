@@ -7,7 +7,6 @@ import scot.gov.publications.ApsZipImporterException;
 import scot.gov.publications.util.ZipEntryUtil;
 import scot.gov.publications.util.ZipUtil;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.zip.ZipEntry;
