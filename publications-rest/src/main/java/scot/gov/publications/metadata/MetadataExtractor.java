@@ -35,16 +35,6 @@ public class MetadataExtractor {
 
     private HtmlRenderer markdownToHtmlRenderer = HtmlRenderer.builder().build();
 
-//    public Metadata extract(File file) throws ApsZipImporterException {
-//
-//        try {
-//            ZipFile zipFile = new ZipFile(file);
-//            return extract(zipFile);
-//        } catch (IOException e) {
-//            throw new ApsZipImporterException("Failed to create zip file", e);
-//        }
-//    }
-
     public Metadata extract(ZipFile zipFile) throws ApsZipImporterException {
 
         String dir = zipUtil.getDirname(zipFile);
