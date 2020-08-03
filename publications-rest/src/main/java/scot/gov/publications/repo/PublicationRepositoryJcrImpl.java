@@ -137,37 +137,33 @@ public class PublicationRepositoryJcrImpl {
         }
     }
 
-    String pathPredicate() {
-        return "'";
-    }
-
     ListResult executeQuery(String sql, int page, int size) throws RepositoryException {
         Query queryObj = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL);
-        queryObj.setLimit(size);
-        queryObj.setOffset((page - 1) * size);
-
+        int zeroBasedPage = page - 1;
+        int offset = zeroBasedPage * size;
+        queryObj.setOffset(offset);
         QueryResult queryResult = queryObj.execute();
         NodeIterator nodeIt = queryResult.getNodes();
         List<Publication> publications = new ArrayList<>();
+        int i = 0;
         while (nodeIt.hasNext()) {
             Node node = nodeIt.nextNode();
-            publications.add(nodeToPublication(node));
+            i++;
+            if (i <= size) {
+                publications.add(nodeToPublication(node));
+            }
         }
         ListResult result = new ListResult();
         result.setPage(page);
         result.setPageSize(size);
         result.setPublications(publications);
-
-        Query allqueryObj = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL);
-        QueryResult allresults = allqueryObj.execute();
-        result.setTotalSize(allresults.getNodes().getSize());
+        result.setTotalSize(offset + i);
         return result;
     }
 
     List<String> path(Publication publication) {
         String guid = publication.getId().replaceAll("-", "");
         return Arrays.asList(guid.split("(?<=\\G.{2})"));
-
     }
 
     void copyValues(Node node, Publication publication) throws RepositoryException  {
@@ -190,14 +186,18 @@ public class PublicationRepositoryJcrImpl {
         publication.setId(node.getProperty("govscot:id").getString());
         publication.setTitle(node.getProperty("govscot:title").getString());
         publication.setIsbn(node.getProperty("govscot:isbn").getString());
-        publication.setContact(node.getProperty("govscot:contact").getString());
+        publication.setContact(propWithDefault(node, "govscot:contact", ""));
         publication.setFilename(node.getProperty("govscot:filename").getString());
         publication.setState(node.getProperty("govscot:state").getString());
-        publication.setStatedetails(node.getProperty("govscot:statedetails").getString());
-        publication.setUsername(node.getProperty("govscot:username").getString());
+        publication.setStatedetails(propWithDefault(node, "govscot:statedetails", ""));
+        publication.setUsername(propWithDefault(node, "govscot:username", ""));
         publication.setCreateddate(node.getProperty("govscot:createddate").getDate());
         publication.setEmbargodate(node.getProperty("govscot:embargodate").getDate());
         return publication;
+    }
+
+    String propWithDefault(Node node, String prop, String defaultVal) throws RepositoryException {
+        return node.hasProperty(prop) ? node.getProperty(prop).getString() : defaultVal;
     }
 
     Node findById(String id) throws RepositoryException {
