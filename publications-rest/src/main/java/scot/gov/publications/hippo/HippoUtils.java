@@ -24,7 +24,7 @@ public class HippoUtils {
         void accept(Node t) throws RepositoryException;
     }
 
-    public void apply(NodeIterator it,ThrowingConsumer consumer) throws RepositoryException {
+    public void apply(NodeIterator it, ThrowingConsumer consumer) throws RepositoryException {
         apply(it, n -> true, consumer);
     }
 

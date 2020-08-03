@@ -6,14 +6,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.Node;
-import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
+import static org.apache.commons.lang.StringUtils.isEmpty;
 import static org.apache.commons.lang.StringUtils.substringAfter;
 import static scot.gov.publications.hippo.rewriter.LinkRewriter.CONTENT_ATTRIB;
 
@@ -36,27 +37,26 @@ public class PublicationLinkRewriter {
 
     Map<String, Node> pageNodesByEntryname;
 
+    HippoUtils hippoUtils = new HippoUtils();
+
     public PublicationLinkRewriter(String publicationSlug, Map<String, Node> pageNodesByEntryname) {
         this.publicationSlug = publicationSlug;
         this.pageNodesByEntryname = pageNodesByEntryname;
     }
 
     public void rewrite(Node publicationFolder) throws RepositoryException {
-        NodeIterator pageIterator = publicationFolder.getNode("pages").getNodes();
-        while (pageIterator.hasNext()) {
-            Node pageHandle = pageIterator.nextNode();
-            Node page = pageHandle.getNodes().nextNode();
-            rewritePage(page);
-        }
+        hippoUtils.apply(publicationFolder.getNode("pages").getNodes(), this::rewritePageHandle);
+    }
+
+    public void rewritePageHandle(Node pageHandle) throws RepositoryException {
+        hippoUtils.apply(pageHandle.getNodes(), this::rewritePage);
     }
 
     private void rewritePage(Node pageNode) throws RepositoryException {
         Node htmlNode = pageNode.getNode("govscot:content");
         String html = htmlNode.getProperty(CONTENT_ATTRIB).getString();
         Document htmlDoc = Jsoup.parse(html);
-        List<Element> links = htmlDoc.select("a[href]")
-                .stream().filter(this::isLocalLink)
-                .collect(toList());
+        List<Element> links = htmlDoc.select("a[href]").stream().filter(this::isLocalLink).collect(toList());
         for (Element link : links) {
             rewriteLink(link.attr("href"), pageNode);
         }
@@ -68,9 +68,7 @@ public class PublicationLinkRewriter {
 
         // if the href is one of the pages then rewrite it as a facet link
         if (pageNodesByEntryname.containsKey(href)) {
-            Node pagenode = pageNodesByEntryname.get(href);
-            Node toNode = pagenode.isNodeType("hippo:resource") ? pagenode : pagenode.getParent();
-            linkRewriter.rewriteLinkToFacet(pageNode, href, toNode);
+            linkRewriter.rewriteLinkToFacet(pageNode, href, pageNodesByEntryname.get(href));
             return;
         }
 
@@ -90,7 +88,7 @@ public class PublicationLinkRewriter {
 
     private boolean isLocalLink(Element link) {
         String href = link.attr("href");
-        if (StringUtils.isEmpty(href)) {
+        if (isEmpty(href)) {
             return false;
         }
 
