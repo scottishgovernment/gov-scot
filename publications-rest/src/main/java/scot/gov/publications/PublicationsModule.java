@@ -20,7 +20,7 @@ public class PublicationsModule extends AbstractReconfigurableDaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationsModule.class);
 
-    private static final String PATH = "/publications-importer";
+    private static final String PATH = "/internal/publications-importer";
 
     @Override
     protected void doConfigure(Node module) throws RepositoryException {
