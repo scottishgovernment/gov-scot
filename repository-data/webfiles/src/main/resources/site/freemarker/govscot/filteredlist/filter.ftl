@@ -28,8 +28,8 @@
 <#-- @ftlvariable name="publicationTypes" type="org.onehippo.forge.selection.hst.contentbean.ValueList" -->
 <#-- @ftlvariable name="type" type="org.onehippo.forge.selection.hst.contentbean.ValueListItem" -->
 <#-- @ftlvariable name="topic" type="scot.gov.www.beans.Topic" -->
-
 <form id="filters" action="#" method="GET">
+    <input type="hidden" id="imagePath" value="<@hst.link path='assets/images/icons/' />" />
 
     <fieldset id="filters-fields">
         <legend class="hidden-xsmall gamma filters-container__title">Filters</legend>
@@ -63,48 +63,19 @@
                         </#if>
 
                         <#if dates??>
-                            <fieldset id="filter-date-range">
+                            <fieldset id="filter-date-range" class="filters__fieldset">
                                 <legend class="filters__legend">Filter by date</legend>
-
-                                <div class="date-entry">
+                                <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
                                     <label class="filters__label" for="date-from">Date from</label>
-                                    <div class="date-entry__input-group input-group">
-                                        <input name="begin" type="text" id="date-from" placeholder="dd/mm/yyyy" pattern="\d\d\/\d\d\/\d\d\d\d" class="date-entry__input datepicker" value="${begin}">
-                                        <button id="date-start-trigger" type="button" class="date-entry__trigger  button button--primary  button--xsmall  js-show-calendar  hidden  hidden--hard">
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                                <use xlink:href="${iconspath}#calendar"></use>
-                                            </svg>
-                                            Choose start date
-                                        </button>
-                                    </div>
-                                    <div class="date-entry__calendar">
-                                        <button class="date-entry__close filters-container__close hidden-xsmall js-close-calendar" type="button">
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                                <use xlink:href="${iconspath}#close"></use>
-                                            </svg>
-                                            Close
-                                        </button>
+                                    <div class="ds_input__wrapper">
+                                        <input data-maxdate="<#if end?has_content>${end}<#else>${.now?date?string.short}</#if>" placeholder="dd/mm/yyyy" id="date-from" style="margin-bottom: 21px;" type="text" value="${begin}" data-form="textinput-date-from" />
                                     </div>
                                 </div>
 
-                                <div class="date-entry">
+                                <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
                                     <label class="filters__label" for="date-to">Date to</label>
-                                    <div class="date-entry__input-group input-group">
-                                        <input name="end" type="text" id="date-to" placeholder="dd/mm/yyyy" pattern="\d\d\/\d\d\/\d\d\d\d" class="date-entry__input datepicker" value="${end}">
-                                        <button id="date-end-trigger" type="button" class="date-entry__trigger  button button--primary  button--xsmall  js-show-calendar  hidden  hidden--hard">
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                                <use xlink:href="${iconspath}#calendar"></use>
-                                            </svg>
-                                            Choose end date
-                                        </button>
-                                    </div>
-                                    <div class="date-entry__calendar">
-                                        <button class="date-entry__close filters-container__close hidden-xsmall js-close-calendar" type="button">
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                                                <use xlink:href="${iconspath}#close"></use>
-                                            </svg>
-                                            Close
-                                        </button>
+                                    <div class="ds_input__wrapper">
+                                        <input data-mindate="${begin}" placeholder="dd/mm/yyyy" id="date-to" style="margin-bottom: 21px;" type="text" value="${end}" data-form="textinput-date-from" />
                                     </div>
                                 </div>
                             </fieldset>

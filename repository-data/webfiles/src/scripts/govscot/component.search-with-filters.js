@@ -8,9 +8,9 @@
 import searchUtils from './search-utils';
 import displayToggle from './component.display-toggle';
 import expandable from './component.expandable';
-import Pikaday from '../vendor/pikaday';
 import dates from '../utils/dates';
 import $ from 'jquery';
+import DSDatePicker from '../../scss/design-system-preview/components/date-picker-standalone/datepicker';
 
 window.dataLayer = window.dataLayer || [];
 
@@ -22,37 +22,6 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-function PickerOptions(field, container, settings, theme) {
-    this.field = field;
-    this.container = container;
-    this.format = 'DD/MM/YYYY';
-    this.maxDate = settings.maxDate;
-    this.minDate = settings.minDate;
-    this.bound = false;
-    this.yearRange = [1980, settings.maxDate.getFullYear()];
-    this.theme = theme;
-    this.onDraw = function() {
-        $(this.el).find('select > option:disabled').prop('disabled', false);
-        $(this.el).find('button, a, select').attr('tabindex', '-1');
-    };
-
-    this.onSelect = function () {
-
-        window.dataLayer.push({
-            'field': this.name,
-            'interaction': 'select',
-            'event': 'date-picker'
-        });
-
-        $(this._o.container).removeClass('date-entry__calendar--open');
-        $(this._o.field).trigger('blur');
-        // If on mobile don't do the search automatically.
-        if ($(window).innerWidth() > 767) {
-            $('#filters').submit();
-        }
-    };
 }
 
 const SearchWithFilters = function (settings) {
@@ -75,8 +44,6 @@ const SearchWithFilters = function (settings) {
     this.initStickyFilterButtons = initStickyFilterButtons;
     this.init = init;
     this.validateDateInput = validateDateInput;
-
-
 };
 
 function init() {
@@ -303,7 +270,7 @@ function enableJSFilters () {
 
 function gatherParams (initial) {
     let searchParams = this.searchParams || {};
-    
+
     // KEYWORD / TERM
     if (window.location.href.indexOf('/search/') !== -1) {
         searchParams.q = encodeURI($('#filters-search-term').val());
@@ -381,83 +348,108 @@ function hideFilters() {
     }
 }
 
-function initDateFilters () {
-    let that = this;
+function initDateFilters() {
+    const imagePath = document.getElementById('imagePath').value;
+    const fromDatePickerElement = document.querySelector('#fromDatePicker');
+    const toDatePickerElement = document.querySelector('#toDatePicker');
+    const fromDatePicker = new DSDatePicker(fromDatePickerElement, {imagePath: imagePath});
+    const toDatePicker = new DSDatePicker(toDatePickerElement, {imagePath: imagePath});
 
-    function dateToDependsOnDateFrom(fromPickerOptions) {
-        const originalMethod = fromPickerOptions.onSelect;
-        fromPickerOptions.onSelect = function () {
-            originalMethod.apply(this);
-            that.dateToPicker.setMinDate(that.dateFromPicker.getDate());
+    fromDatePicker.init();
+    toDatePicker.init();
 
-            if (that.dateToPicker.getDate() &&
-                that.dateToPicker.getDate() < that.dateFromPicker.getDate()) {
-                that.dateToPicker.setDate(that.dateFromPicker.getDate());
-            }
-        };
-    }
-
-    const fromPickerOptions = new PickerOptions(document.getElementById('date-from'), $('#date-from').closest('.date-entry').find('.date-entry__calendar')[0], that.settings, 'tst-date-from'); //NOSONAR
-    const toPickerOptions = new PickerOptions(document.getElementById('date-to'), $('#date-to').closest('.date-entry').find('.date-entry__calendar')[0], that.settings, 'tst-date-to'); //NOSONAR
-
-    dateToDependsOnDateFrom(fromPickerOptions);
-
-    if (this.searchParams.date) {
-        $.extend(fromPickerOptions, {
-            defaultDate: new Date(this.searchParams.date.begin),
-            setDefaultDate: true
-        });
-        $.extend(toPickerOptions, {
-            defaultDate: new Date(this.searchParams.date.end),
-            setDefaultDate: true
-        });
-    }
-
-    this.dateFromPicker = new Pikaday(fromPickerOptions);
-    this.dateFromPicker.name = 'date-from';
-
-    this.dateToPicker = new Pikaday(toPickerOptions);
-    this.dateToPicker.name = 'date-to';
-
-    $('.js-show-calendar').on('click', function () {
-        let calendar = $($(this).closest('.date-entry').find('.date-entry__calendar').get(0));
-
-        window.dataLayer.push({
-            'field': calendar.parent().find('label').text().toLowerCase().replace(' ', '-'),
-            'interaction': calendar.hasClass('date-entry__calendar--open') ? 'close': 'open',
-            'event': 'date-picker'
-        });
-
-        // close any other open calendars
-        $(this).closest('.date-entry').siblings().find('.date-entry__calendar').removeClass('date-entry__calendar--open');
-        calendar.toggleClass('date-entry__calendar--open');
-    });
-
-    $('.js-close-calendar').on('click', function () {
-        let calendar = $($(this).closest('.date-entry').find('.date-entry__calendar').get(0));
-        calendar.removeClass('date-entry__calendar--open');
-    });
-
-    $('.date-entry__input').on('keypress', function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            if (that.validateDateInput($(this))) {
-                delete that.searchParams.page;
-                that.submitSearch();
+    fromDatePicker.datePickerParent.addEventListener('selectDate', () => {
+        if (this.validateDateInput($(fromDatePicker.inputElement))) {
+            toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
+            if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                delete this.searchParams.page;
+                this.submitSearch();
             }
         }
-    }).on('change', function () {
-        let isValidDates = that.validateDateInput($(this));
-        // If on mobile don't do the search automatically.
-        if ($(window).innerWidth() > that.settings.responsiveWidthThreshold) {
-            delete that.searchParams.page;
-            that.submitSearch();
+    });
+
+    toDatePicker.datePickerParent.addEventListener('selectDate', () => {
+        if (this.validateDateInput($(toDatePicker.inputElement))) {
+            fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
+            if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                delete this.searchParams.page;
+                this.submitSearch();
+            }
         }
     });
 
-    // set calendar min dates
-    this.dateFromPicker.setMinDate(this.settings.minDate);
-    this.dateToPicker.setMinDate(this.settings.minDate);
+    fromDatePickerElement.addEventListener('change', () => {
+        if (this.validateDateInput($(toDatePicker.inputElement))) {
+            toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
+            if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                delete this.searchParams.page;
+                this.submitSearch();
+            }
+        }
+    });
+
+    toDatePickerElement.addEventListener('change', () => {
+        if (this.validateDateInput($(toDatePicker.inputElement))) {
+            fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
+            if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                delete this.searchParams.page;
+                this.submitSearch();
+            }
+        }
+    });
+
+
+
+    // let that = this;
+
+    // function dateToDependsOnDateFrom(fromPickerOptions) {
+    //     const originalMethod = fromPickerOptions.onSelect;
+    //     fromPickerOptions.onSelect = function () {
+    //         originalMethod.apply(this);
+    //         that.dateToPicker.setMinDate(that.dateFromPicker.getDate());
+
+    //         if (that.dateToPicker.getDate() &&
+    //             that.dateToPicker.getDate() < that.dateFromPicker.getDate()) {
+    //             that.dateToPicker.setDate(that.dateFromPicker.getDate());
+    //         }
+    //     };
+    // }
+
+    // const fromPickerOptions = new PickerOptions(document.getElementById('date-from'), $('#date-from').closest('.date-entry').find('.date-entry__calendar')[0], that.settings, 'tst-date-from'); //NOSONAR
+    // const toPickerOptions = new PickerOptions(document.getElementById('date-to'), $('#date-to').closest('.date-entry').find('.date-entry__calendar')[0], that.settings, 'tst-date-to'); //NOSONAR
+
+    // dateToDependsOnDateFrom(fromPickerOptions);
+
+    // if (this.searchParams.date) {
+    //     $.extend(fromPickerOptions, {
+    //         defaultDate: new Date(this.searchParams.date.begin),
+    //         setDefaultDate: true
+    //     });
+    //     $.extend(toPickerOptions, {
+    //         defaultDate: new Date(this.searchParams.date.end),
+    //         setDefaultDate: true
+    //     });
+    // }
+
+    // $('.date-entry__input').on('keypress', function (event) {
+    //     if (event.keyCode === 13) {
+    //         event.preventDefault();
+    //         if (that.validateDateInput($(this))) {
+    //             delete that.searchParams.page;
+    //             that.submitSearch();
+    //         }
+    //     }
+    // }).on('change', function () {
+    //     let isValidDates = that.validateDateInput($(this));
+    //     // If on mobile don't do the search automatically.
+    //     if ($(window).innerWidth() > that.settings.responsiveWidthThreshold) {
+    //         delete that.searchParams.page;
+    //         that.submitSearch();
+    //     }
+    // });
+
+    // // set calendar min dates
+
 }
 
 function initStickyFilterButtons() {
@@ -538,13 +530,13 @@ function validateDateInput (element) {
     dateTo = dateTo ? new Date(dateTo) : this.settings.maxDate;
 
     if (dateTo.getTime() < dateFrom.getTime()) {
-        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', element.closest('.date-entry__input-group'));
+        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', element.closest('.ds_datepicker'));
         isValid = false;
         element.attr('aria-invalid', true);
     } else {
         // searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
         // searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
-        searchUtils.removeError(element.closest('.date-entry__input-group'));
+        searchUtils.removeError(element.closest('.ds_datepicker'));
         element.removeAttr('aria-invalid');
     }
 

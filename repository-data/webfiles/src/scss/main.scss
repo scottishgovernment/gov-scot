@@ -3,7 +3,7 @@
 /*------------------------------------*\
     #GOV.SCOT
 \*------------------------------------*/
-
+body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
@@ -279,6 +279,7 @@ $colour__blocklink-bg--focus: $colour__blue--light;
 $colour__blocklink-bg--active: $colour__blocklink-bg--focus;
 
 @import "design-system-preview/components/accordion/accordion";
+@import "design-system-preview/components/date-picker-standalone/date-picker-standalone";
 @import "design-system-preview/components/notification-banner/notification-banner";
 @import "design-system-preview/components/side-navigation/side-navigation";
 @import "design-system-preview/components/site-branding/site-branding";

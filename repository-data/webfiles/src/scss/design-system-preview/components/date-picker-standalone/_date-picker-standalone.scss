@@ -1,0 +1,642 @@
+$pl-prefix: "ds_";
+
+$large-size: 19px !default;
+$small-size: 14px !default;
+$tiny-size: 12px !default;
+
+$large-size--medium: 24px !default;
+$small-size--medium: 16px !default;
+$tiny-size--medium: 14px !default;
+
+$colour__link--disabled:             $colour__text !default;
+$colour__link--disabled__background: $colour__grey--light !default;
+
+$colour__brand: $colour__blue--base;
+
+@mixin layout($gutter: $grid-gap-x) {
+  margin-right: #{$gutter * -1};
+  overflow: hidden;
+
+  > *[class] {
+      margin-right: $gutter;
+  }
+
+  @supports (display: grid) {
+      display: grid;
+      grid-gap: 0 $gutter;
+      margin-right: 0;
+      overflow: visible;
+
+      > *[class] {
+          margin-left: 0;
+          margin-right: 0;
+          width: auto;
+      }
+  }
+}
+
+@mixin colwidth($columns: 1, $total: 12, $gutter: $grid-gap-x) {
+  width: calc(100% * #{$columns/$total} - #{$gutter});
+}
+
+@mixin colpush($columns: 1, $total: 12) {
+  margin-left: calc(100% * #{$columns/$total});
+}
+
+@mixin colpull($columns: 1, $total: 12) {
+  margin-left: calc(100% * #{$columns/$total} * -1);
+}
+
+@mixin tiny-size {
+  font-size: $tiny-size;
+
+  @include media-query(medium) {
+      font-size: $tiny-size--medium;
+  }
+}
+
+@mixin small-size {
+  font-size: $small-size;
+
+  @include media-query(medium) {
+      font-size: $small-size--medium;
+  }
+}
+
+/**
+ * Mixin to enforce consistency on block-style links, e.g. search results,
+ * category items, etc
+ */
+ @mixin DSblocklink ($link-selector: null, $display: block) {
+  display: $display;
+  position: relative;
+  transition: background-color $transition-out-time, outline-color $transition-out-time;
+  z-index: 1;
+
+  outline: 0 !important;
+
+  &:focus {
+      background-color: $colour__blocklink-bg--focus;
+      box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
+  }
+
+  &:hover:not(:focus) {
+      background-color: $colour__blocklink-bg--hover;
+  }
+
+  @if $link-selector {
+      &:hover:not(:focus) {
+          background: transparent;
+      }
+
+      #{$link-selector} {
+          &::after {
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+              z-index: 0;
+
+              transition: background-color $transition-in-time;
+          }
+
+          &:focus {
+              &::after {
+                  transition-duration: 0s;
+              }
+          }
+
+          &:focus:hover {
+              text-decoration: none;
+          }
+      }
+
+      // apply the background colour in browsers that support blend modes, so we don't obscure the text
+      @supports(mix-blend-mode: darken) {
+          #{$link-selector} {
+              outline: 0;
+
+              &::after {
+                  mix-blend-mode: darken;
+              }
+
+              &:hover {
+                  &::after {
+                      background-color: $colour__blocklink-bg--hover;
+                  }
+              }
+
+              &:focus {
+                  background-color: transparent;
+                  box-shadow: none;
+                  text-decoration: underline;
+              }
+
+              &:focus {
+                  &::after {
+                      background-color: $colour__blocklink-bg--focus;
+                      box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
+                  }
+              }
+
+              &:focus:hover {
+                  text-decoration: underline;
+              }
+          }
+      }
+  }
+}
+
+
+
+/*------------------------------------*\
+    DATE PICKER
+\*------------------------------------*/
+
+
+
+
+.#{$pl-prefix}datepicker {
+  position: relative;
+
+  &__dialog {
+      background-color: $colour__white;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+      display: none;
+      padding: 8px;
+      outline: 1px solid $colour__border;
+      outline-offset: -1px;
+      position: absolute;
+      top: 0;
+      transition: background-color 0.2s, outline-color 0.2s;
+      width: 296px;
+      z-index: 2;
+
+      &__header {
+          text-align: center;
+
+          > :nth-child(1) {
+              position: absolute;
+              left: 8px;
+              top: 8px;
+          }
+
+          > :nth-child(3) {
+              position: absolute;
+              right: 8px;
+              top: 8px;
+          }
+      }
+
+      &__title {
+          @include small-size;
+          margin: 0 !important;
+          text-transform: uppercase;
+      }
+
+      &__navbuttons {
+          button {
+              background-color: transparent;
+              color: $colour__text !important;
+              font-weight: $normal;
+              height: 40px;
+              margin: 0;
+              width:  32px;
+
+              @include DSblocklink(null, inline-block);
+          }
+      }
+
+      &__table {
+
+          tbody:focus-within {
+              outline: 2px solid $colour__link--focus__background;
+          }
+
+          td {
+              border: 0;
+              margin: 0;
+              outline: 0;
+              padding: 0;
+          }
+
+          th {
+              @include small-size;
+              color: $colour__text--secondary;
+              font-weight: $normal;
+          }
+
+          button {
+              background-color: transparent;
+              color: $colour__text;
+              font-weight: $normal;
+              height: 40px;
+              margin: 0;
+              padding: 0;
+              width: 40px;
+
+              @include blocklink;
+
+              &[disabled="true"] {
+                  background-color: $colour__link--disabled__background;
+                  color: $colour__link--disabled;
+              }
+
+              &.#{$pl-prefix}datepicker__current {
+                  $dp-current-outline-width: 2px;
+                  outline: $dp-current-outline-width solid $colour__border--dark !important;
+                  outline-offset: #{$dp-current-outline-width * -1};
+              }
+
+              &.#{$pl-prefix}datepicker__current[tabindex="-1"] {
+                  background: $colour__grey--lighter;
+                  color: currentColor;
+              }
+
+              &.#{$pl-prefix}datepicker__today {
+                  font-weight: $bold;
+
+                  &::after {
+                      background-color: currentColor;
+                      border-radius: 4px;
+                      bottom: 6px;
+                      content: '';
+                      height: 4px;
+                      left: 50%;
+                      margin-left: -2px;
+                      position: absolute;
+                      width: 4px;
+                  }
+              }
+
+              // &[tabindex="0"]:not(:focus) {
+              //
+              // }
+
+              &.#{$pl-prefix}selected:not(:focus) {
+                  background-color: $colour__text;
+                  color: $colour__white;
+              }
+          }
+      }
+
+      &__table-caption {
+          @include tiny-size;
+          caption-side: bottom;
+          margin-top: 8px;
+      }
+
+      &__buttongroup {
+          @include layout(8px);
+          overflow: visible;
+
+          // non-grid
+          button {
+              @include colwidth(1,2,8px);
+              display: block;
+              float: left;
+              margin: 0;
+          }
+
+          @supports (display: grid) {
+              grid-template-columns: 1fr 1fr;
+          }
+      }
+  }
+}
+
+@include media-query(medium-down) {
+  .#{$pl-prefix}datepicker {
+
+      &__dialog {
+          position: static;
+
+          &__header {
+              position: relative;
+
+              > :nth-child(1) {
+                  left: 0;
+                  top: -2px;
+              }
+
+              > :nth-child(3) {
+                  right: 0;
+                  top: -2px;
+              }
+          }
+      }
+  }
+}
+
+.ds_datepicker__dialog__table {
+  margin: 0;
+}
+
+.ds_datepicker__dialog__table td {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.ds_datepicker__dialog__table button:hover:not(.ds_selected) {
+  color: currentColor;
+}
+
+
+
+
+/*------------------------------------*\
+    BUTTONS
+\*------------------------------------*/
+
+$button__border-width: 2px !default;
+$button__outline-width: 3px !default;
+$button__height: 48px !default;
+$button__height--small: 40px !default;
+$button__padding--x: 16px !default;
+$link__border-width: 3px;
+
+$button__secondary-border-width: 2px !default;
+$button__secondary-border-width--active: 3px !default;
+
+
+
+
+.#{$pl-prefix}button {
+
+    background-color: $color__blue--base;
+    border: 0;
+    border-radius: 0;
+    color: $color__white;
+    display: inline-block;
+    font-size: $base-font-size + 1px;
+    font-weight: 700;
+    line-height: 21px;
+    height: 49px;
+    outline-width: 0;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+
+    transition: outline-color $transition-out-time, background-color $transition-out-time, color $transition-out-time;
+
+    &:focus {
+        color: $color__white;
+        background-color: $color__blue--dark;
+    }
+
+    &:hover {
+        transition-duration: $transition-in-time;
+        color: $color__white;
+    }
+
+    &:active {
+        color: rgba(red($color__white), green($color__white), blue($color__white), 0.65);
+        outline: 0;
+
+        transition-duration: 0s;
+    }
+
+    &[disabled] {
+        background: $color__grey--medium;
+        color: $color__grey--lighter;
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background-color: $color__blue--dark;
+    }
+
+    &:active {
+        background-color: $color__blue--dark;
+    }
+
+
+    &--cancel {
+        background-color: $color__white;
+        border: $button__secondary-border-width solid $color__body;
+        color: $color__body;
+        //padding: ($button__padding-y - $button__secondary-border-width) ($button__padding-x - $button__secondary-border-width);
+
+        &:hover,
+        &:active {
+            border-color: $color__blue--dark;
+            border-width: $button__secondary-border-width--active;
+            color: $color__blue--dark !important;
+            //padding: ($button__padding-y - $button__secondary-border-width--active) ($button__padding-x - $button__secondary-border-width--active);
+        }
+
+        &:focus {
+            color: $color__body;
+            background-color: $color__blue--lighter;
+        }
+
+        &:hover {
+            background-color: $color__white;
+            color: $color__blue--dark;
+        }
+
+        &:active {
+            background-color: $color__blue--light;
+        }
+    }
+
+    // background: $colour__button__background;
+    // border: 0;
+    // border-radius: 0;
+    // color: $colour__button;
+    // cursor: pointer;
+    // display: inline-block;
+    // @include small-size;
+    // font-weight: $bold;
+    // line-height: 24px;
+    // outline-width: 0;
+    // padding: 16px;
+    // text-align: center;
+    // text-decoration: none;
+    // transition: background-color $transition-out-time;
+
+    // @include block-margins;
+
+    // &:hover,
+    // &:focus {
+    //     outline-width: 0;
+    // }
+
+    // &:hover {
+    //     background-color: $colour__button--hover__background;
+    //     color: $colour__button;
+    //     transition-duration: $transition-in-time;
+    // }
+
+    // &:focus {
+    //     background-color: $colour__button--focus__background;
+    //     box-shadow: 0 $link__border-width $colour__link--focus__shadow;
+    //     color: $colour__button--focus;
+    //     outline-color: $colour__button--focus__background;
+
+    //     transition-duration: 0s;
+    // }
+
+    // // ICONS ON BUTTONS
+    // .#{$pl-prefix}icon {
+    //     pointer-events: none;
+    // }
+
+    // &[disabled] {
+    //     background-color: $colour__grey--base;
+    //     box-shadow: none;
+    //     color: $colour__white;
+    //     font-weight: $normal;
+    //     outline: none;
+    //     pointer-events: none;
+    // }
+}
+
+// .#{$pl-prefix}reversed .#{$pl-prefix}button {
+//     background-color: $colour__white;
+//     color: $colour__button__background;
+
+//     &:focus,
+//     &:hover:focus {
+//         background-color: $colour__blocklink-bg--focus;
+//     }
+
+//     &:hover {
+//         background-color: $colour__blocklink-bg--hover;
+//     }
+
+//     &--secondary {
+//         background-color: transparent;
+//         border-color: currentColor;
+//         color: $colour__white;
+
+//         &:hover:not(:focus) {
+//             background-color: rgba(red($colour__brand), green($colour__brand), blue($colour__brand), 0.3);
+//             color: $colour__white;
+//         }
+//     }
+// }
+
+// .#{$pl-prefix}button {
+//     &--secondary {
+//         background-color: $colour__button--secondary__background;
+//         color: $colour__button--secondary;
+//         outline: 2px solid currentColor;
+//         outline-offset: -2px;
+
+//         &:hover:not(:focus) {
+//             background-color: $colour__button--secondary--hover__background;
+//             color: $colour__button--secondary--hover;
+//         }
+//     }
+
+//     &--cancel {
+//         background-color: $colour__button--cancel__background;
+//         color: $colour__button--cancel;
+//         outline: 2px solid currentColor;
+//         outline-offset: -2px;
+
+//         &:hover:not(:focus) {
+//             background-color: $colour__button--cancel--hover__background;
+//             color: $colour__button--cancel;
+//         }
+//     }
+// }
+
+// // SIZE VARIANTS
+// .#{$pl-prefix}button {
+//     &--small {
+//         @include small-size;
+//         padding-top: 10px;
+//         padding-bottom: 11px;
+//     }
+// }
+
+// // WIDTH VARIANTS
+// .#{$pl-prefix}button {
+//     &--fixed {
+//         width: 200px;
+
+//         &.#{$pl-prefix}button--small {
+//             width: 160px;
+//         }
+//     }
+
+//     &--max {
+//         max-width: 480px;
+//         width: 100%;
+//     }
+// }
+
+// // STACKED BUTTONS
+// .#{$pl-prefix}button-group {
+//     @include block-margins;
+
+//     >.#{$pl-prefix}button {
+//         margin: 0 0 24px;
+
+//         &:last-child {
+//             margin-bottom: 0;
+//         }
+//     }
+// }
+
+// .#{$pl-prefix}button {
+//     &--has-icon {
+//         padding-right: calc(#{$button__height} + #{$button__padding--x});
+//         position: relative;
+
+//         >.#{$pl-prefix}icon {
+//             bottom: 0;
+//             padding: 10px 10px 11px 11px;
+//             position: absolute;
+//             right: 0;
+//             top: 0;
+//             width: $button__height;
+//         }
+
+//         &--left {
+//             padding-left: calc(#{$button__height} + #{$button__padding--x});
+//             padding-right: #{$button__padding--x};
+
+//             >.#{$pl-prefix}icon {
+//                 left: 0;
+//                 right: auto;
+//             }
+//         }
+//     }
+
+//     &--small.#{$pl-prefix}button--has-icon {
+//         padding-right: calc(16px + #{$button__padding--x});
+
+//         &--left {
+//             padding-right: 16px;
+//             padding-left: calc(16px + #{$button__padding--x});
+//         }
+
+//         >.#{$pl-prefix}icon {
+//             height: $button__height--small;
+//             padding: 10px;
+//             width: $button__height--small;
+//         }
+//     }
+// }
+
+// ICON-ONLY BUTTONS
+.#{$pl-prefix}button--icon-only {
+    height: $button__height;
+    padding: 10px 10px 11px 11px;
+    width: $button__height;
+
+    &.#{$pl-prefix}button--small {
+        height: $button__height--small;
+        padding: 10px;
+        width: $button__height--small;
+    }
+}

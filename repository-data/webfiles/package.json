@@ -9,7 +9,7 @@
   },
   "scripts": {
     "postshrinkwrap": "node_modules/.bin/sealant @scottish-government/mygov-assets",
-    "svgsprites": "node svg-sprite",
+    "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
     "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
     "webpack": "./node_modules/.bin/webpack -p --config webpack.config.js",
