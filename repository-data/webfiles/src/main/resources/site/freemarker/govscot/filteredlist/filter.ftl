@@ -57,8 +57,11 @@
                         <#if term??>
                         <fieldset id="filter-search" class="filters__fieldset filter-search">
                             <legend class="filters__legend">Keyword search</legend>
-                            <input placeholder="Search ${searchType}" type="text" title="Filter by keyword" name="term" id="filters-search-term" maxlength="160" class="filter-search__input filters__input--search-term" value="${term}" />
-                            <button type="submit" title="Submit" id="filters-search-submit" class="filter-search__button filter-search__button--submit js-filter-search-submit button button--clear"></button>
+                            <label class="filters__label" for="filters-search-term">Keyword</label>
+                            <div class="filters-input__wrapper">
+                                <input placeholder="Search ${searchType}" type="text" title="Filter by keyword" name="term" id="filters-search-term" maxlength="160" class="filter-search__input filters__input--search-term" value="${term}" />
+                                <button type="submit" title="Submit" id="filters-search-submit" class="filter-search__button filter-search__button--submit js-filter-search-submit button button--clear"></button>
+                            </div>
                         </fieldset>
                         </#if>
 

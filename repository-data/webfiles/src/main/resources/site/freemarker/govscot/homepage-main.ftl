@@ -134,8 +134,11 @@
 
                 <fieldset id="filter-search" class="filters__fieldset filter-search">
                     <legend class="filters__legend">Keyword search</legend>
-                    <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="filters__input--search-term-home filters__input--search-term" />
-                    <a href="<@hst.link path='/policies/' />" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
+                    <label class="filters__label" for="filters-search-term">Filter by keyword</label>
+                    <div class="filters-input__wrapper">
+                        <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="filters__input--search-term-home filters__input--search-term" />
+                        <a href="<@hst.link path='/policies/' />" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
+                    </div>
                 </fieldset>
 
                 <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by topic</h3>

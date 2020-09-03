@@ -21,12 +21,14 @@
 
             <div class="search-box search-box--large ">
                 <form id="filters" class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
-                    <label class="search-box__label hidden" for="search-box">Search</label>
-                    <input value="${term}" name="term" required="" id="filters-search-term" class="search-box__input " type="text" placeholder="Search site">
-                    <button type="submit" title="search" class="search-box__button button button--primary">
-                        <span class="icon icon--search-white"></span>
-                        <span class="hidden">Search</span>
-                    </button>
+                    <label class="search-box__label" for="filters-search-term">Search term</label>
+                    <div class="filters-input__wrapper">
+                        <input value="${term}" name="term" required="" id="filters-search-term" class="search-box__input " type="text" placeholder="Search site">
+                        <button type="submit" title="search" class="search-box__button button button--primary">
+                            <span class="icon icon--search-white"></span>
+                            <span class="hidden">Search</span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </#if>

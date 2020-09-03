@@ -21,6 +21,7 @@
         <div class="grid"><!--
             --><div class="grid__item medium--nine-twelfths">
             <div class="input-group">
+                <label class="hidden feedback__label feedback__field feedback__field--no feedback__field--yesbut">Choose a reason for your feedback</label>
                 <select data-message="Please select a reason" title="Choose reason for your feedback" class="hidden feedback__field feedback__select feedback__field--no required--no reason">
                     <option value="" selected disabled>Please select a reason</option>
                     <option>It wasn't detailed enough</option>
@@ -43,6 +44,7 @@
             </div>
 
             <div class="input-group">
+                <label class="hidden feedback__label feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut" for="feedback-comment">Your comments</label>
                 <textarea data-message="Please enter a comment" maxlength="250" title="Your comments - please do not enter any personal information" rows="5" id="feedback-comment" placeholder="Your comments - please do not enter any personal information" class="hidden comments required--no required--yesbut feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut"></textarea>
             </div>
             </div><!--
