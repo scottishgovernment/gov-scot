@@ -1761,7 +1761,6 @@
         "anymatch": "2.0.0",
         "async-each": "1.0.2",
         "braces": "2.3.2",
-        "fsevents": "1.2.13",
         "glob-parent": "3.1.0",
         "inherits": "2.0.3",
         "is-binary-path": "1.0.1",
@@ -3388,12 +3387,6 @@
       "version": "1.0.0",
       "dev": true,
       "integrity": "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
-    },
-    "fsevents": {
-      "version": "1.2.13",
-      "dev": true,
-      "integrity": "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==",
-      "optional": true
     },
     "function-bind": {
       "version": "1.1.1",
