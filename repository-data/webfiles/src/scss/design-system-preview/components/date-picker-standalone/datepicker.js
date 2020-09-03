@@ -376,7 +376,9 @@ class DSDatePicker {
             break;
         }
 
-        this.inputElement.dispatchEvent(new CustomEvent('selectDate', { bubbles: true }));
+        const changeEvent = document.createEvent('Event');
+        changeEvent.initEvent('change', true, true);
+        this.inputElement.dispatchEvent(changeEvent);
 
         this.closeDialog();
     }
