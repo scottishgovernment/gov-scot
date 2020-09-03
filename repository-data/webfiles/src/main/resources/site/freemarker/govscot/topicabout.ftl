@@ -1,5 +1,5 @@
 <#include "../include/imports.ftl">
-<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <h1 class="article-header">${document.title}</h1>
 
@@ -26,16 +26,16 @@
             <h2 class="emphasis  topic-block__title">${additionalContent.title}</h2>
             <@hst.html hippohtml=additionalContent.body />
         </#list>
-    </section>    
+    </section>
     </#if>
-    
+
     <section id="latest-stats-research" class="topic-block">
                 <h2 class="emphasis  topic-block__title">
                 Statistics and research publications
                 </h2>
-        
-        <div class="grid"><!-- 
-        --><div class="grid__item  medium--six-twelfths"><!-- 
+
+        <div class="grid"><!--
+        --><div class="grid__item  medium--six-twelfths"><!--
 
               --><div id="publications-container">
                 <h3 class="filter-search__subtitle homepage-block__subtitle">Latest</h3>
@@ -66,27 +66,27 @@
                     See all Statistics and research
                 </a>
         </div><!--
-  
-         --><div class="grid__item  medium--six-twelfths"><!-- 
+
+         --><div class="grid__item  medium--six-twelfths"><!--
              --><div id="publications-container">
                     <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by type</h3>
-                    <p>Look for either statistics or research that have been published by the Scottish Government.</p>          
+                    <p>Look for either statistics or research that have been published by the Scottish Government.</p>
                     <form>
                         <div class="checkbox-group">
                             <fieldset>
                                 <legend class="hidden">Publication type</legend>
-                    
+
                                         <input id="research" name="pubtype[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="research-and-analysis"/><label for="research" class="checkbox-group__label fancy-checkbox">Research and analysis</label>
                                         <input id="statistics" name="pubtype[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="statistics"/><label for="statistics" class="checkbox-group__label fancy-checkbox">Statistics</label>
-                      
+
                             </fieldset>
-                        </div>    
+                        </div>
                         <button href="<@hst.link path='/statistics-and-research/'/>" class="js-stats-form-submit button button--primary homepage-block__button">Go</button>
-                    </form>  
+                    </form>
             </div><!--
     --></section><!--
---></div>  
-  
+--></div>
+
 <#if document.featuredItems?has_content><!--
     --><section id="featured-items" class="topic-block">
             <h2 class="emphasis  topic-block__title">Featured</h2>
@@ -145,7 +145,7 @@
         </section><!--
 --></#if><!--
 
-        
+
  --><#if document.trailingContent?has_content>
         <section id="trailing-content" class="topic-block">
         <#list document.trailingContent as trailingContent>
@@ -168,4 +168,3 @@
     <@hst.headContribution category="footerScripts">
     <script nomodule="true" src="<@hst.webfile path="/assets/scripts/aboutstats.es5.js"/>"></script>
     </@hst.headContribution>
-

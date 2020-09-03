@@ -1,4 +1,4 @@
-<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if collections?has_content>
     <#if collections?size == 1>

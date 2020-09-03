@@ -1,4 +1,4 @@
-<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <div class="notification-wrapper">
     <@hst.include ref="mourning-banner"/>

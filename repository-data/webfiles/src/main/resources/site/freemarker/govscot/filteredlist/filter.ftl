@@ -1,5 +1,5 @@
 <#include "../../include/imports.ftl">
-<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
