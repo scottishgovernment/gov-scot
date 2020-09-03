@@ -65,6 +65,8 @@ class DSDatePicker {
 
         this.dialogTitleNode = this.dialogElement.querySelector('.js-datepicker-month-year');
 
+        this.setMinAndMaxDatesOnCalendar();
+
         // create calendar
         const tbody = this.datePickerParent.querySelector('tbody');
         let dayCount = 0;
@@ -174,50 +176,79 @@ class DSDatePicker {
       </div>`;
     }
 
+    leadingZeroes(value, length = 2) {
+        let ret = value.toString();
+
+        while (ret.length < length) {
+            ret = '0' + ret.toString();
+        }
+
+        return ret;
+    }
+
     setMinDate(date) {
-        this.inputElement.dataset.mindate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        this.inputElement.dataset.mindate = this.formattedDateFromDate(date);
     }
 
     setMaxDate(date) {
-        this.inputElement.dataset.maxdate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        this.inputElement.dataset.maxdate = this.formattedDateFromDate(date);
     }
 
     setMinAndMaxDatesOnCalendar() {
         if (this.inputElement.dataset.mindate) {
-            this.minDate = this.dateFromString(this.inputElement.dataset.mindate);
+            this.minDate = this.formattedDateFromString(this.inputElement.dataset.mindate);
             if (this.minDate && this.currentDate < this.minDate) {
                 this.currentDate = this.minDate;
             }
         }
 
         if (this.inputElement.dataset.maxdate) {
-            this.maxDate = this.dateFromString(this.inputElement.dataset.maxdate);
+            this.maxDate = this.formattedDateFromString(this.inputElement.dataset.maxdate);
             if (this.maxDate && this.currentDate > this.maxDate) {
                 this.currentDate = this.maxDate;
             }
         }
     }
 
-    dateFromString(dateString) {
-        let date = null;
+    formattedDateFromString(dateString) {
+        let formattedDate = null;
         const parts = dateString.split('/');
 
         if (dateString.match(/\d{1,4}\/\d{1,2}\/\d{1,4}/)) {
             switch (this.inputElement.dataset.dateformat) {
             case 'YMD':
-                date = new Date(`${parts[1]}/${parts[2]}/${parts[0]}`);
+                formattedDate = new Date(`${parts[1]}/${parts[2]}/${parts[0]}`);
                 break;
             case 'MDY':
-                date = new Date(`${parts[0]}/${parts[1]}/${parts[2]}`);
+                formattedDate = new Date(`${parts[0]}/${parts[1]}/${parts[2]}`);
                 break;
             case 'DMY':
             default:
-                date = new Date(`${parts[1]}/${parts[0]}/${parts[2]}`);
+                formattedDate = new Date(`${parts[1]}/${parts[0]}/${parts[2]}`);
                 break;
             }
         }
 
-        return date;
+        return formattedDate;
+    }
+
+    formattedDateFromDate(date) {
+        let formattedDate = null;
+
+        switch (this.inputElement.dataset.dateformat) {
+        case 'YMD':
+            formattedDate = `${date.getFullYear()}/${this.leadingZeroes(date.getMonth() + 1)}/${this.leadingZeroes(date.getDate())}`;
+            break;
+        case 'MDY':
+            formattedDate = `${this.leadingZeroes(date.getMonth() + 1)}/${this.leadingZeroes(date.getDate())}/${date.getFullYear()}`;
+            break;
+        case 'DMY':
+        default:
+            formattedDate = `${this.leadingZeroes(date.getDate())}/${this.leadingZeroes(date.getMonth() + 1)}/${date.getFullYear()}`;
+            break;
+        }
+
+        return formattedDate;
     }
 
     backgroundClick(event) {
@@ -329,33 +360,23 @@ class DSDatePicker {
     }
 
     selectDate(date) {
-        function leadingZeroes(value, length = 2) {
-            let ret = value.toString();
-
-            while (ret.length < length) {
-                ret = '0' + ret.toString();
-            }
-
-            return ret;
-        }
-
         this.calendarButtonElement.querySelector('span').innerText = `Choose date. Selected date is ${this.formattedDateHuman(date)}`;
-        this.inputElement.value = `${leadingZeroes(date.getDate())}/${leadingZeroes(date.getMonth() + 1)}/${date.getFullYear()}`;
+        this.inputElement.value = `${this.leadingZeroes(date.getDate())}/${this.leadingZeroes(date.getMonth() + 1)}/${date.getFullYear()}`;
 
         switch (this.inputElement.dataset.dateformat) {
         case 'YMD':
-            this.inputElement.value = `${date.getFullYear()}/${leadingZeroes(date.getMonth() + 1)}/${leadingZeroes(date.getDate())}`;
+            this.inputElement.value = `${date.getFullYear()}/${this.leadingZeroes(date.getMonth() + 1)}/${this.leadingZeroes(date.getDate())}`;
             break;
         case 'MDY':
-            this.inputElement.value = `${leadingZeroes(date.getMonth() + 1)}/${leadingZeroes(date.getDate())}/${date.getFullYear()}`;
+            this.inputElement.value = `${this.leadingZeroes(date.getMonth() + 1)}/${this.leadingZeroes(date.getDate())}/${date.getFullYear()}`;
             break;
         case 'DMY':
         default:
-            this.inputElement.value = `${leadingZeroes(date.getDate())}/${leadingZeroes(date.getMonth() + 1)}/${date.getFullYear()}`;
+            this.inputElement.value = `${this.leadingZeroes(date.getDate())}/${this.leadingZeroes(date.getMonth() + 1)}/${date.getFullYear()}`;
             break;
         }
 
-        this.inputElement.dispatchEvent(new CustomEvent('selectDate', { bubbles: true, detail: { text: () => this.inputElement.value } }));
+        this.inputElement.dispatchEvent(new CustomEvent('selectDate', { bubbles: true }));
 
         this.closeDialog();
     }
@@ -384,7 +405,7 @@ class DSDatePicker {
 
         // get the date from the input element
         if (this.inputElement.value.match(/^\d{1,2}\/\d{1,2}\/\d{4}$/)) {
-            this.inputDate = this.dateFromString(this.inputElement.value);
+            this.inputDate = this.formattedDateFromString(this.inputElement.value);
             this.currentDate = this.inputDate;
         }
 

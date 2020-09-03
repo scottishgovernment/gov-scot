@@ -352,8 +352,8 @@ function initDateFilters() {
     const imagePath = document.getElementById('imagePath').value;
     const fromDatePickerElement = document.querySelector('#fromDatePicker');
     const toDatePickerElement = document.querySelector('#toDatePicker');
-    const fromDatePicker = new DSDatePicker(fromDatePickerElement, {imagePath: imagePath});
-    const toDatePicker = new DSDatePicker(toDatePickerElement, {imagePath: imagePath});
+    const fromDatePicker = new DSDatePicker(fromDatePickerElement, {imagePath: imagePath, maxDate: new Date()});
+    const toDatePicker = new DSDatePicker(toDatePickerElement, { imagePath: imagePath, maxDate: new Date()});
 
     fromDatePicker.init();
     toDatePicker.init();

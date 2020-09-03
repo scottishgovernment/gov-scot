@@ -68,14 +68,14 @@
                                 <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
                                     <label class="filters__label" for="date-from">Date from</label>
                                     <div class="ds_input__wrapper">
-                                        <input data-maxdate="<#if end?has_content>${end}<#else>${.now?date?string.short}</#if>" placeholder="dd/mm/yyyy" id="date-from" style="margin-bottom: 21px;" type="text" value="${begin}" data-form="textinput-date-from" />
+                                        <input placeholder="dd/mm/yyyy" id="date-from" style="margin-bottom: 21px;" type="text" value="${begin}" data-form="textinput-date-from" />
                                     </div>
                                 </div>
 
                                 <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
                                     <label class="filters__label" for="date-to">Date to</label>
                                     <div class="ds_input__wrapper">
-                                        <input data-mindate="${begin}" placeholder="dd/mm/yyyy" id="date-to" style="margin-bottom: 21px;" type="text" value="${end}" data-form="textinput-date-from" />
+                                        <input placeholder="dd/mm/yyyy" id="date-to" style="margin-bottom: 21px;" type="text" value="${end}" data-form="textinput-date-from" />
                                     </div>
                                 </div>
                             </fieldset>

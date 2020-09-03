@@ -8,7 +8,7 @@ let File = require('vinyl');
 let glob = require('glob');
 
 // let destpath = path.resolve('src/main/resources/site/assets/images/icons');
-let destpath = path.resolve('../../site/src/main/webapp/assets/images/icons');
+let destpath = path.resolve('../../site/src/main/webapp/assets/images/icons/');
 
 
 let config = {
@@ -32,7 +32,6 @@ let spriter = new SVGSpriter(config);
 let cwd = path.resolve('../../site/src/main/webapp/assets/images/icons/svg/');
 glob.glob('**/*.svg', { cwd: cwd }, function (err, files) {
     files.forEach(function (file, index) {
-        console.log(file)
         spriter.add(new File({
             path: path.join(cwd, file),
             base: cwd,
