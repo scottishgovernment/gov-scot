@@ -31,7 +31,9 @@ let spriter = new SVGSpriter(config);
 // Register some SVG files with the spriter
 let cwd = path.resolve('../../site/src/main/webapp/assets/images/icons/svg/');
 glob.glob('**/*.svg', { cwd: cwd }, function (err, files) {
+    console.info(`Combining ${files.length} images`);
     files.forEach(function (file, index) {
+        console.info(file);
         spriter.add(new File({
             path: path.join(cwd, file),
             base: cwd,
