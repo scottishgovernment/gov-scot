@@ -1,5 +1,5 @@
 <#include "../../include/imports.ftl">
-<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <div class="ds_site-header__search  ds_site-search  ds_site-search--collapsible">
     <form role="search" class="ds_search-box__form" method="GET" action="<@hst.link path='/search/'/>">

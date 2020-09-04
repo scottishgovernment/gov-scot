@@ -7,9 +7,7 @@ let fs = require('fs');
 let File = require('vinyl');
 let glob = require('glob');
 
-// let destpath = path.resolve('src/main/resources/site/assets/images/icons');
-let destpath = path.resolve('../../site/src/main/webapp/assets/images/icons/');
-
+let destpath = path.resolve('src/main/resources/site/assets/images/icons');
 
 let config = {
     "log": "",

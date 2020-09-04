@@ -1,5 +1,5 @@
 <#include "../../include/imports.ftl">
-<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
@@ -29,7 +29,7 @@
 <#-- @ftlvariable name="type" type="org.onehippo.forge.selection.hst.contentbean.ValueListItem" -->
 <#-- @ftlvariable name="topic" type="scot.gov.www.beans.Topic" -->
 <form id="filters" action="#" method="GET">
-    <input type="hidden" id="imagePath" value="<@hst.link path='assets/images/icons/' />" />
+    <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />" />
 
     <fieldset id="filters-fields">
         <legend class="hidden-xsmall gamma filters-container__title">Filters</legend>

@@ -1,5 +1,5 @@
 <#include "../include/imports.ftl">
-<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if document??>
 

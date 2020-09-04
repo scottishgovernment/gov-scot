@@ -1,6 +1,6 @@
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
-<@hst.link var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if document??>
 
