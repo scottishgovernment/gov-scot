@@ -21,8 +21,8 @@
         <div class="grid"><!--
             --><div class="grid__item medium--nine-twelfths">
             <div class="input-group">
-                <label class="hidden feedback__label feedback__field feedback__field--no feedback__field--yesbut">Choose a reason for your feedback</label>
-                <select data-message="Please select a reason" title="Choose reason for your feedback" class="hidden feedback__field feedback__select feedback__field--no required--no reason">
+                <label class="fully-hidden feedback__label feedback__field feedback__field--no feedback__field--yesbut">Choose a reason for your feedback</label>
+                <select data-message="Please select a reason" title="Choose reason for your feedback" class="fully-hidden feedback__field feedback__select feedback__field--no required--no reason">
                     <option value="" selected disabled>Please select a reason</option>
                     <option>It wasn't detailed enough</option>
                     <option>It's hard to understand</option>
@@ -33,7 +33,7 @@
                     <option>Other</option>
                 </select>
 
-                <select data-message="Please select a reason" title="Choose reason for your feedback" class="hidden feedback__field feedback__select feedback__field--yesbut required--yesbut reason">
+                <select data-message="Please select a reason" title="Choose reason for your feedback" class="fully-hidden feedback__field feedback__select feedback__field--yesbut required--yesbut reason">
                     <option value="" selected disabled>Please select a reason</option>
                     <option>It needs updating</option>
                     <option>There's a spelling mistake</option>
@@ -44,8 +44,8 @@
             </div>
 
             <div class="input-group">
-                <label class="hidden feedback__label feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut" for="feedback-comment">Your comments</label>
-                <textarea data-message="Please enter a comment" maxlength="250" title="Your comments - please do not enter any personal information" rows="5" id="feedback-comment" placeholder="Your comments - please do not enter any personal information" class="hidden comments required--no required--yesbut feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut"></textarea>
+                <label class="fully-hidden feedback__label feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut" for="feedback-comment">Your comments</label>
+                <textarea data-message="Please enter a comment" maxlength="250" title="Your comments - please do not enter any personal information" rows="5" id="feedback-comment" placeholder="Your comments - please do not enter any personal information" class="fully-hidden comments required--no required--yesbut feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut"></textarea>
             </div>
             </div><!--
         --></div>
@@ -53,7 +53,7 @@
 
         <div class="grid"><!--
             --><div class="grid__item medium--six-twelfths">
-                <div class="feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut hidden submit">
+                <div class="feedback__field feedback__field--yes feedback__field--no feedback__field--yesbut fully-hidden submit">
                     <button type="submit" class="button button--primary" data-gtm="fdbk-send">Send</button>
                 </div>
             </div><!--

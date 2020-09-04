@@ -27,27 +27,27 @@
                 <ul class="social-links site-footer__list">
                     <li class="social-links__item">
                         <a title="Facebook" class="social-links__link" href="https://www.facebook.com/TheScottishGovernment/timeline/" data-gtm="social">
-                            <span class="fa fa-facebook"></span>
+                            <span class="fa fa-facebook" aria-hidden="true"></span>
                         </a>
                     </li>
                     <li class="social-links__item">
                         <a title="Twitter" class="social-links__link" href="https://twitter.com/scotgov" data-gtm="social">
-                            <span class="fa fa-twitter"></span>
+                            <span class="fa fa-twitter" aria-hidden="true"></span>
                         </a>
                     </li>
                     <li class="social-links__item">
                         <a title="Flickr" class="social-links__link" href="https://www.flickr.com/photos/26320652@N02" data-gtm="social">
-                            <span class="fa fa-flickr"></span>
+                            <span class="fa fa-flickr" aria-hidden="true"></span>
                         </a>
                     </li>
                     <li class="social-links__item">
                         <a title="YouTube" class="social-links__link" href="https://www.youtube.com/user/scottishgovernment" data-gtm="social">
-                            <span class="fa fa-youtube-play"></span>
+                            <span class="fa fa-youtube-play" aria-hidden="true"></span>
                         </a>
                     </li>
                     <li class="social-links__item">
                         <a title="Instagram" class="social-links__link" href="https://www.instagram.com/scotgov/" data-gtm="social">
-                            <span class="fa fa-instagram"></span>
+                            <span class="fa fa-instagram" aria-hidden="true"></span>
                         </a>
                     </li>
                 </ul>

@@ -30,11 +30,11 @@ const Feedback = {
             that.feedbackType = event.target.value;
 
             // hide all fields
-            $('.feedback__field').addClass('hidden');
+            $('.feedback__field').addClass('fully-hidden');
             $('.feedback__field').attr('disabled', true);
 
             // show relevant fields
-            $('.feedback__field--' + that.feedbackType).removeClass('hidden');
+            $('.feedback__field--' + that.feedbackType).removeClass('fully-hidden');
             $('.feedback__field--' + that.feedbackType).removeAttr('disabled');
 
             // clear dropdowns
