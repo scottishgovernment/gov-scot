@@ -359,7 +359,7 @@ function initDateFilters() {
     toDatePicker.init();
 
     fromDatePickerElement.addEventListener('change', () => {
-        if (this.validateDateInput($(toDatePicker.inputElement))) {
+        if (this.validateDateInput($(fromDatePicker.inputElement))) {
             toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
             if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
                 delete this.searchParams.page;
@@ -438,10 +438,10 @@ function validateDateInput (element) {
 
     // 1) is the date in an allowed format?
     let dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/[0-9]{4}$/;
-    let inputGroup = element.closest('.date-entry__input-group');
+    let inputGroup = element.closest('.ds_datepicker');
     searchUtils.removeError(inputGroup);
 
-    if (!element.val().match(dateRegex) && element.val() !== '') {
+    if (!element.val().match(dateRegex)) {
         searchUtils.addError('Please enter date in dd/mm/yyyy format', inputGroup);
         isValid = false;
         element.attr('aria-invalid', true);
@@ -457,7 +457,7 @@ function validateDateInput (element) {
     dateTo = dateTo ? new Date(dateTo) : this.settings.maxDate;
 
     if (dateTo.getTime() < dateFrom.getTime()) {
-        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', element.closest('.ds_datepicker'));
+        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', inputGroup);
         isValid = false;
         element.attr('aria-invalid', true);
     } else {

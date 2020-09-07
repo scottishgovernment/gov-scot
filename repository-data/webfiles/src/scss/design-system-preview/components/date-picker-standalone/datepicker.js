@@ -229,7 +229,11 @@ class DSDatePicker {
             }
         }
 
-        return formattedDate;
+        if (formattedDate instanceof Date && !isNaN(formattedDate)) {
+            return formattedDate;
+        } else {
+            return new Date();
+        }
     }
 
     formattedDateFromDate(date) {
