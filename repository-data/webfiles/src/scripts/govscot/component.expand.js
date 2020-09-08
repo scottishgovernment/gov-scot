@@ -19,6 +19,9 @@ let expand = {
                 collapsedHeight,
                 expandedHeight;
 
+            button.attr('aria-expanded', false);
+            button.attr('aria-controls', targetId.substring(1));
+
             if (target.length === 0) {
                 return;
             }
@@ -44,11 +47,13 @@ let expand = {
                 if (button.hasClass('expand--open')) {
                     expand.collapseTarget(target, collapsedHeight);
                     button.removeClass('expand--open');
+                    button.attr('aria-expanded', false);
                 }
                 /* Open */
                 else {
                     expand.expandTarget(target, expandedHeight);
                     button.addClass('expand--open');
+                    button.attr('aria-expanded', true);
                 }
             });
 

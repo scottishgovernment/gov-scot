@@ -88,7 +88,7 @@
 
                             <#if publicationTypes??>
                                 <div class="expandable-item expandable-item--open  expandable-item--init-open">
-                                    <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
+                                    <button aria-expanded="true" aria-controls="publication-types-body" type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
                                         <h2 class="delta  expandable-item__title">Publication types</h2>
                                         <span class="expandable-item__icon">
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
@@ -100,7 +100,7 @@
                                         </span>
                                     </button>
 
-                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
+                                    <div id="publication-types-body" class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
                                         <div class="scrollable__content scrollable__content--20 checkbox-group">
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />
@@ -136,7 +136,7 @@
 
                             <#if topics??>
                                 <div class="expandable-item  expandable-item--open  expandable-item--init-open">
-                                    <button type="button" class="expandable-item__header js-toggle-expand" tabindex="0">
+                                    <button type="button" aria-expanded="true" aria-controls="topics-body"  class="expandable-item__header js-toggle-expand" tabindex="0">
                                         <h2 class="delta  expandable-item__title">Topics</h2>
                                         <span class="expandable-item__icon">
                                             <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
@@ -148,7 +148,7 @@
                                         </span>
                                     </button>
 
-                                    <div class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
+                                    <div id="topics-body" class="expandable-item__body  expandable-item__body--with-padding  scrollable scrollable--shadow">
                                         <div class="scrollable__content scrollable__content--20 checkbox-group">
                                             <#assign noItems = true />
                                             <#assign itemsTrigger = false />

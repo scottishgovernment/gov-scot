@@ -332,7 +332,7 @@
 
         <div class="expandable  topic-expandable">
             <div class="expandable-item  expandable-item--open  expandable-item--init-open" id="people-expandable">
-                <button type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
+                <button aria-controls="people-body" aria-expanded="true" type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
                     <h3 class="expandable-item__title">${document.peopleSectionTitle!"Cabinet Secretary and Ministers"}</h3>
                     <span class="expandable-item__icon">
                         <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
@@ -344,7 +344,7 @@
                     </span>
                 </button>
 
-                <div class="expandable-item__body">
+                <div id="people-body" class="expandable-item__body">
 
                     <ul class="person-list  column-list  column-list--not-small  column-list--2">
                         <#list document.responsibleRoles as role>
@@ -361,7 +361,7 @@
             <!-- /end .expandable-item -->
 
             <div class="expandable-item" id="directorate-expandable">
-                <button type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
+                <button aria-controls="people-body" aria-expanded="false" type="button" class="expandable-item__header  js-toggle-expand" tabindex="0">
                     <h3 class="expandable-item__title">${document.directoratesSectionTitle!"Directorates"}</h3>
                     <span class="expandable-item__icon">
                         <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
@@ -373,7 +373,7 @@
                     </span>
                 </button>
 
-                <div class="expandable-item__body">
+                <div id="directorates-body" class="expandable-item__body">
 
                     <ul class="directorate-list  column-list  column-list--not-small  column-list--2">
                         <#list directorates as directorate>

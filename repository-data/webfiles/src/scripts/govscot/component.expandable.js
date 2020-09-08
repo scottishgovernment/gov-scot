@@ -72,7 +72,7 @@ let Expandable = {
         let expandableItemBody = expandableItem.find('.expandable-item__body');
         let expandableItemHeader = expandableItem.find('.expandable-item__header');
 
-        expandableItemBody.attr('aria-expanded', 'true');
+        expandableItemHeader.attr('aria-expanded', 'true');
         expandableItem.addClass('expandable-item--open');
         expandableItemBody.slideDown(200, function () {
             // hacky IE8 fix to force redraw of changed inline-block element
@@ -86,7 +86,7 @@ let Expandable = {
         let expandableItemBody = expandableItem.find('.expandable-item__body');
         let expandableItemHeader = expandableItem.find('.expandable-item__header');
 
-        expandableItemBody.attr('aria-expanded', 'false');
+        expandableItemHeader.attr('aria-expanded', 'false');
         expandableItem.removeClass('expandable-item--open');
         expandableItemBody.slideUp(200, function () {
             // hacky IE8 fix to force redraw of changed inline-block element
