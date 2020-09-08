@@ -34,7 +34,13 @@ publicationPage.initExpandables = function () {
 
         target.slideToggle(200);
 
-        linkText.text() === 'More' ? linkText.text('Less') : linkText.text('More');
+        if (linkText.text() === 'More') {
+            linkText.text('Less');
+            this.attr('aria-expanded', true);
+        } else {
+            linkText.text('More');
+            this.attr('aria-expanded', false);
+        }
     });
 };
 
