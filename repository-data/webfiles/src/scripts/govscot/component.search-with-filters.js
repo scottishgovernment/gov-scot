@@ -358,25 +358,29 @@ function initDateFilters() {
     fromDatePicker.init();
     toDatePicker.init();
 
-    fromDatePickerElement.addEventListener('change', () => {
-        if (this.validateDateInput($(fromDatePicker.inputElement))) {
-            toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
-            if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
-                delete this.searchParams.page;
-                this.submitSearch();
+    if (fromDatePickerElement) {
+        fromDatePickerElement.addEventListener('change', () => {
+            if (this.validateDateInput($(fromDatePicker.inputElement))) {
+                toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
+                if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                    delete this.searchParams.page;
+                    this.submitSearch();
+                }
             }
-        }
-    });
+        });
+    }
 
-    toDatePickerElement.addEventListener('change', () => {
-        if (this.validateDateInput($(toDatePicker.inputElement))) {
-            fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
-            if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
-                delete this.searchParams.page;
-                this.submitSearch();
+    if (toDatePickerElement) {
+        toDatePickerElement.addEventListener('change', () => {
+            if (this.validateDateInput($(toDatePicker.inputElement))) {
+                fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
+                if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                    delete this.searchParams.page;
+                    this.submitSearch();
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 function initStickyFilterButtons() {
