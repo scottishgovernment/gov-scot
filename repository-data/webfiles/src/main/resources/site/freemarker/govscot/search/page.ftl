@@ -21,6 +21,7 @@
 
             <div class="search-box search-box--large ">
                 <form id="filters" class="search-box__form" method="GET" action="<@hst.link path='/search/'/>">
+                    <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />" />
                     <label class="search-box__label" for="filters-search-term">Search term</label>
                     <div class="filters-input__wrapper">
                         <input value="${term}" name="term" required="" id="filters-search-term" class="search-box__input " type="text" placeholder="Search site">
