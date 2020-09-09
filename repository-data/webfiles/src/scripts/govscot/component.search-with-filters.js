@@ -472,8 +472,10 @@ function validateDateInput (element) {
     } else {
         // searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
         // searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
-        searchUtils.removeError(element.closest('#date-to'));
-        element.removeAttr('aria-invalid');
+        searchUtils.removeError($('#date-to').closest('.ds_datepicker'));
+        searchUtils.removeError($('#date-from').closest('.ds_datepicker'));
+        $('#date-to').removeAttr('aria-invalid');
+        $('#date-from').removeAttr('aria-invalid');
     }
 
     return isValid;
