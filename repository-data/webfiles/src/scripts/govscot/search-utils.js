@@ -5,11 +5,11 @@
 import $ from 'jquery';
 
 const searchUtils = {
-    addError: function (message, inputGroup) {
+    addError: function (message, inputGroup, errorId) {
         let errorContainer = inputGroup.find('.message');
 
         if (errorContainer.length === 0) {
-            errorContainer = $('<div class="message"></div>');
+            errorContainer = $(`<div id="${errorId}" class="message"></div>`);
             errorContainer.prependTo(inputGroup);
         }
 
@@ -19,6 +19,7 @@ const searchUtils = {
 
     removeError: function (inputGroup) {
         inputGroup.find('.message').remove();
+        inputGroup.find('[aria-describedby]').removeAttr('aria-describedby');
         inputGroup.removeClass('input-group--has-error');
     },
 

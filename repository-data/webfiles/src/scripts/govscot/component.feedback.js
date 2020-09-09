@@ -88,9 +88,11 @@ const Feedback = {
 
         for (let i = 0, il = requiredFields.length; i < il; i++) {
             const thisField = $(requiredFields[i]);
+            const idString = 'error-' + parseInt(Math.random() * 1000000);
+            thisField.attr('aria-describedby', idString);
 
             if (thisField.val() === '' || thisField.val() === null) {
-                this.addError(thisField.data('message'), thisField.closest('.input-group'));
+                this.addError(thisField.data('message'), thisField.closest('.input-group'), idString);
                 isValid = false;
             }
         }
@@ -148,16 +150,15 @@ const Feedback = {
     },
 
     removeErrorMessages: function () {
-        $('.input-group--has-error')
-            .removeClass('input-group--has-error')
-            .find('.message').remove();
+        $('.input-group--has-error').find('.message').remove();
+        $('.input-group--has-error').find('[aria-describedby]').removeAttr('aria-describedby');
+        $('.input-group--has-error').removeClass('input-group--has-error');
     },
 
-    addError: function (message, inputGroup) {
+    addError: function (message, inputGroup, errorId) {
         let errorContainer = inputGroup.find('.message');
-
         if (errorContainer.length === 0) {
-            errorContainer = $('<div class="message"></div>');
+            errorContainer = $(`<div id="${errorId}" class="message"></div>`);
             errorContainer.prependTo(inputGroup);
         }
 

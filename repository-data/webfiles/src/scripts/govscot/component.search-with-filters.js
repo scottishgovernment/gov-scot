@@ -227,8 +227,8 @@ function attachEventHandlers () {
         filtersForm.find('input[aria-invalid], textarea[aria-invalid]').removeAttr('aria-invalid');
 
         // remove date errors
-        searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
-        searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
+        searchUtils.removeError($('#date-to').closest('.ds_datepicker'));
+        searchUtils.removeError($('#date-from').closest('.ds_datepicker'));
 
         delete that.searchParams.page;
 
@@ -445,10 +445,13 @@ function validateDateInput (element) {
     let inputGroup = element.closest('.ds_datepicker');
     searchUtils.removeError(inputGroup);
 
+
     if (!element.val().match(dateRegex)) {
-        searchUtils.addError('Please enter date in dd/mm/yyyy format', inputGroup);
+        const errorId = 'error-' + parseInt(Math.random() * 1000000);
+        searchUtils.addError('Please enter date in dd/mm/yyyy format', inputGroup, errorId);
         isValid = false;
         element.attr('aria-invalid', true);
+        element.attr('aria-describedby', errorId);
         return isValid;
     }
 
@@ -461,13 +464,15 @@ function validateDateInput (element) {
     dateTo = dateTo ? new Date(dateTo) : this.settings.maxDate;
 
     if (dateTo.getTime() < dateFrom.getTime()) {
-        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', inputGroup);
+        const errorId = 'error-' + parseInt(Math.random() * 1000000);
+        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', inputGroup, errorId);
         isValid = false;
         element.attr('aria-invalid', true);
+        element.attr('aria-describedby', errorId)
     } else {
         // searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
         // searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
-        searchUtils.removeError(element.closest('.ds_datepicker'));
+        searchUtils.removeError(element.closest('#date-to'));
         element.removeAttr('aria-invalid');
     }
 
