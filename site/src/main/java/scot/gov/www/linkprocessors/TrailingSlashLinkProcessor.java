@@ -92,7 +92,7 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
         String addUrlToPath(String linkStr) {
             int questionMarkIndex = linkStr.indexOf("?");
             if (questionMarkIndex == -1) {
-                return linkStr;
+                return linkStr + "/";
             }
 
             String pathPart = linkStr.substring(0, questionMarkIndex - 1);
