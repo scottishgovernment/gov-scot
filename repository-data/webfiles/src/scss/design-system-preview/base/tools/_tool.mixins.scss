@@ -210,6 +210,10 @@ $blocklink__outline-width: 0;
     margin-bottom: 35px;
 }
 
+@mixin box-shadow {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
 /**
  * Mixin to enforce consistent open/close icons,
  * mobile section nav, accordions, etc

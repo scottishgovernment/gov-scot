@@ -109,7 +109,7 @@ definitions:
               and the order.  Up to 3 featured items can be added.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            maxitems: 3
+            maxitems: 4
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/featured-items/

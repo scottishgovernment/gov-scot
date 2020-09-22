@@ -55,69 +55,55 @@
     </div>
 </div>
 
-<!-- CAROUSEL -->
-<div class="wrapper  wrapper--full-small  wrapper--full-medium">
-    <div class="carousel"><!--
-        <#if document??>
-            <#list document.featuredItems as featuredItem>
-                --><div class="carousel-item   <#if featuredItem?is_first> carousel-item--active </#if>">
 
-                    <div tabindex="0" class="carousel-item__stage">
-                        <#if featuredItem.youtube?has_content>
-                            <img alt="" src="<@hst.link hippobean=featuredItem.image.featuredlarge />" />
-                            <div class="carousel-item__video">
-                                <div class="  embed-responsive  embed-responsive--16by9 ">
-                                    <#assign youtubeVideoUrl = featuredItem.youtube?replace("youtube.com/","youtube-nocookie.com/")?replace("youtu.be/","www.youtube-nocookie.com/embed/")>
-                                    <iframe title="youtubevideo" data-videoUrl="${youtubeVideoUrl}" src="${youtubeVideoUrl}?enablejsapi=1&playsinline=1" allowfullscreen></iframe>
-                                </div>
+<#if document??>
+<div class="wrapper">
+    <div class="homepage-hero  homepage-hero--${document.featuredItems?size}">
+        <div class="homepage-hero__main">
+            <#assign featuredItem = document.featuredItems?first>
+            <div class="hero-item">
+                <div class="hero-item__media">
+                    <a data-gtm="carousel-item-1" href="${featuredItem.link.url}">
+                        <div class="hero-item__figure">
+                            <img class="hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hero-item__content">
+                    <h2 class="hero-item__title">
+                        <a data-gtm="carousel-item-1" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                    </h2>
+
+                    <@hst.html hippohtml=featuredItem.teaserText/>
+                </div>
+            </div>
+        </div>
+
+        <div class="homepage-hero__sub">
+            <#list document.featuredItems[1..] as featuredItem>
+                <div class="hero-item">
+                    <div class="hero-item__media">
+                        <a data-gtm="carousel-item-${featuredItem?index + 1}" href="${featuredItem.link.url}">
+                            <div class="hero-item__figure">
+                                <img class="hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                             </div>
-                        <#else>
-                            <img alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
-                        </#if>
+                        </a>
                     </div>
 
-                    <div class="carousel-controls-placeholder"></div>
+                    <div class="hero-item__content">
+                        <h2 class="hero-item__title">
+                            <a data-gtm="carousel-item-${featuredItem?index + 1}" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                        </h2>
 
-                    <#if featuredItem.overlayQuote?has_content>
-                        <div class="carousel-item__stage-text">
-                            <blockquote>${featuredItem.overlayQuote}
-                                <#if featuredItem.overlayQuoteAttribution?has_content>
-                                    <cite>${featuredItem.overlayQuoteAttribution}</cite>
-                                </#if>
-                            </blockquote>
-                        </div>
-                        <button title="Hide this text" class="carousel-item__stage-text-toggle" disabled="disabled"></button>
-                    </#if>
-
-                    <div tabindex="0" class="carousel-item__support">
-                        <div class="carousel-item__scrollable">
-                            <div class="carousel-item__title">${featuredItem.title}</div>
-
-                            <div class="carousel-item__desc">
-                                <@hst.html hippohtml=featuredItem.teaserText/>
-                            </div>
-
-                            <div class="carousel-item__link"><a data-gtm="carousel-item-${featuredItem?index + 1}" href="${featuredItem.link.url}">${featuredItem.link.title}</a></div>
-                        </div>
+                        <@hst.html hippohtml=featuredItem.teaserText/>
                     </div>
-                </div><!--
+                </div>
             </#list>
-        </#if>
-
-        --><nav class="carousel-controls">
-            <ul class="carousel-controls__links">
-                <li class="carousel-controls__link">
-                    <button class="carousel-controls__link--previous" title="carousel_previous"></button>
-                </li>
-                <li class="carousel-controls__link">
-                    <button class="carousel-controls__link--next"  title="carousel_next"></button>
-                </li>
-            </ul>
-        </nav><!--
-
-    --></div>
+        </div>
+    </div>
 </div>
-<!-- end CAROUSEL -->
+</#if>
 
 <div class="wrapper">
     <div class="grid"><!--

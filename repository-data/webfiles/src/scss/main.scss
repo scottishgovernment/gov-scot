@@ -179,7 +179,6 @@ $breadcrumbs__margin: 0 0 28px;
 $breadcrumbs__margin--medium: -3px 0 25px;
 $breadcrumbs__margin--large: $breadcrumbs__margin--medium;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.breadcrumbs";
-@import "components/component.carousel";
 @import "components/component.contact-information";
 @import "components/component.content-data";
 @import "components/component.contents-list";
@@ -238,6 +237,7 @@ $search-box__size--medium: $search-box__size;
 
 @import "components/homepage/component.homepage-about";
 @import "components/homepage/component.homepage-block";
+
 @import "components/homepage/component.homepage-news";
 @import "components/homepage/component.homepage-publication";
 @import "components/homepage/component.homepage-stats";
@@ -278,6 +278,9 @@ $transition-out-time: 0.2s;
 $colour__blocklink-bg--focus: $colour__blue--light;
 $colour__blocklink-bg--active: $colour__blocklink-bg--focus;
 
+$colour__link--focus__background: $colour__blue--light;
+$colour__link--focus__shadow: transparent;
+
 @import "design-system-preview/components/accordion/accordion";
 @import "design-system-preview/components/date-picker-standalone/date-picker-standalone";
 @import "design-system-preview/components/notification-banner/notification-banner";
@@ -297,7 +300,7 @@ $colour__blocklink-bg--active: $colour__blocklink-bg--focus;
 @import "design-system-preview/forms/question/question";
 @import "design-system-preview/forms/text-input/text-input";
 
-
+@import "components/homepage/component.homepage-hero";
 
 
 /**

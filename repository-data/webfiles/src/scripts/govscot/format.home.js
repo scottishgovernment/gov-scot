@@ -4,9 +4,7 @@
 
 'use strict';
 
-import carousel from './component.carousel';
 import TextTruncate from './tool.text-truncate';
-import 'jquery.dotdotdot';
 import $ from 'jquery';
 
 window.dataLayer = window.dataLayer || [];
@@ -27,8 +25,6 @@ const homePage = {
             this.populateYouTube();
             this.populateFlickr();
         }
-
-        carousel.init();
 
         TextTruncate();
     },
