@@ -106,7 +106,7 @@ definitions:
             caption: Featured items panel
             field: featuredItems
             hint: This controls which featured items are displayed on the homepage
-              and the order.  Up to 3 featured items can be added.
+              and the order.  Up to 4 featured items can be added.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             maxitems: 4
