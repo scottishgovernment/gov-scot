@@ -6,12 +6,8 @@ import org.hippoecm.hst.configuration.sitemap.HstSiteMapItem;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.linking.HstLinkProcessorTemplate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
-
-    private static final Logger LOG = LoggerFactory.getLogger(TrailingSlashLinkProcessor.class);
 
     protected HstLink doPostProcess(final HstLink link) {
         // if the path has an extension then leave it alone
@@ -26,7 +22,6 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
 
         }
 
-        LOG.info("wrapping link {}", link.getPath());
         // wrap the link in order to add a trailing slash
         return new GovScotLink(link);
     }
