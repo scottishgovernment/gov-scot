@@ -55,6 +55,8 @@ public class SearchResultsComponent extends EssentialsListComponent {
                 "govscot:policyTags",
                 "govscot:newsTags",
                 "govscot:roleTitle",
+                "govscot:request/hippostd:content",
+                "govscot:response/hippostd:content",
                 "govscot:twitter",
                 "govscot:email",
                 "govscot:website",
