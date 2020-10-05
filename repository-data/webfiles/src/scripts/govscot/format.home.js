@@ -26,7 +26,28 @@ const homePage = {
             this.populateFlickr();
         }
 
+        this.initHeroItemAnalytics();
+
         TextTruncate();
+    },
+
+    initHeroItemAnalytics: function () {
+        // add data-gtm attribute to links in carousel content
+        const heroItems = document.querySelectorAll('.hero-item');
+
+        for (let i = 0, il = heroItems.length; i < il; i++) {
+            let heroItem = heroItems[i];
+
+            let links = heroItem.querySelectorAll('.hero-item__content a');
+
+            for (let j = 0, jl = links.length; j < jl; j++) {
+                let link = links[j];
+
+                if (!link.getAttribute('data-gtm')) {
+                    link.setAttribute('data-gtm', `hero-item-link-${i + 1}-${j}`);
+                }
+            }
+        }
     },
 
     attachAnalyticsEvents: function () {

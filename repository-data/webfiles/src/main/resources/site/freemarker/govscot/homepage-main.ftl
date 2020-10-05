@@ -63,7 +63,7 @@
             <#assign featuredItem = document.featuredItems?first>
             <div class="hero-item">
                 <div class="hero-item__media">
-                    <a data-gtm="carousel-item-1" href="${featuredItem.link.url}">
+                    <a data-gtm="hero-item-1" href="${featuredItem.link.url}">
                         <div class="hero-item__figure">
                             <img class="hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                         </div>
@@ -72,7 +72,7 @@
 
                 <div class="hero-item__content">
                     <h2 class="hero-item__title">
-                        <a data-gtm="carousel-item-1" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                        <a data-gtm="hero-item-1" href="${featuredItem.link.url}">${featuredItem.title}</a>
                     </h2>
 
                     <@hst.html hippohtml=featuredItem.teaserText/>
@@ -84,7 +84,7 @@
             <#list document.featuredItems[1..] as featuredItem>
                 <div class="hero-item">
                     <div class="hero-item__media">
-                        <a data-gtm="carousel-item-${featuredItem?index + 2}" href="${featuredItem.link.url}">
+                        <a data-gtm="hero-item-${featuredItem?index + 2}" href="${featuredItem.link.url}">
                             <div class="hero-item__figure">
                                 <img class="hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                             </div>
@@ -93,7 +93,7 @@
 
                     <div class="hero-item__content">
                         <h2 class="hero-item__title">
-                            <a data-gtm="carousel-item-${featuredItem?index + 2}" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                            <a data-gtm="hero-item-${featuredItem?index + 2}" href="${featuredItem.link.url}">${featuredItem.title}</a>
                         </h2>
 
                         <@hst.html hippohtml=featuredItem.teaserText/>
