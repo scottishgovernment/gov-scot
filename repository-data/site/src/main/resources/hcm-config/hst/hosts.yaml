@@ -1,7 +1,6 @@
 definitions:
   config:
     /hst:hst/hst:hosts:
-      jcr:primaryType: hst:virtualhosts
       jcr:uuid: 939ceba7-dcb1-4e91-8065-2cb682252934
       hst:cacheable: true
       hst:locale: en_GB
