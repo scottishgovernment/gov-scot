@@ -18,6 +18,7 @@
     <module>development</module>
     <module>webfiles</module>
     <module>site</module>
+    <module>site-development</module>
   </modules>
 
   <build>

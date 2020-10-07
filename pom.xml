@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <modules>
-    <module>cms-dependencies</module>
-  </modules>
 
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-release</artifactId>
-    <version>13.0.2</version>
+    <version>13.2.3</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -33,7 +30,6 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <hippo.release.version>13.0.2</hippo.release.version>
     <hippo.maven.plugin.l10n>2.2.2</hippo.maven.plugin.l10n>
     <forge.feed.version>4.0.1</forge.feed.version>
     <freemarker.version>2.3.28</freemarker.version>
@@ -110,20 +106,6 @@
 
   <dependencyManagement>
     <dependencies>
-
-      <dependency>
-        <groupId>org.onehippo.cms7</groupId>
-        <artifactId>hippo-cms7-release</artifactId>
-        <version>${hippo.release.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.onehippo.cms7</groupId>
-        <artifactId>hippo-essentials-plugin-sdk-api</artifactId>
-        <version>${essentials.version}</version>
-      </dependency>
 
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
@@ -349,6 +331,7 @@
       <modules>
         <module>repository-data</module>
         <module>cms</module>
+        <module>cms-dependencies</module>
         <module>cms-deb</module>
         <module>essentials</module>
         <module>repository</module>
@@ -431,6 +414,10 @@
                 <files>
                   <file>
                     <file>${project.basedir}/repository-data/development/target/gov-scot-repository-data-development-${project.version}.jar</file>
+                    <todir>${development-module-deploy-dir}</todir>
+                  </file>
+                  <file>
+                    <file>${project.basedir}/repository-data/site-development/target/gov-scot-repository-data-site-development-${project.version}.jar</file>
                     <todir>${development-module-deploy-dir}</todir>
                   </file>
                 </files>

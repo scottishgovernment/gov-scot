@@ -188,3 +188,4 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-validators/govscot-slug:
       jcr:primaryType: frontend:plugin
       plugin.class: scot.gov.www.validation.SlugValidator
+      scope: field

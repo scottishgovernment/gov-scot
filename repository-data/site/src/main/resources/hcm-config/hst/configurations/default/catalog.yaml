@@ -8,4 +8,3 @@ definitions:
         hst:iconpath: images/essentials/catalog-component-icons/simple-content.png
         hst:label: Simple Content
         hst:template: contentpage-main
-        hst:xtype: hst.item

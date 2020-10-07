@@ -8,4 +8,3 @@
   hst:parametervalues: ['govscot:contentdocument', '', desc, 'off', 'on', '',
     '10']
   hst:template: contentlist-main-contentlist
-  hst:xtype: hst.item
