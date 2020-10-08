@@ -177,15 +177,3 @@ definitions:
       width: 330
     /hippo:configuration/hippo:frontend/cms/cms-pickers/documents/navigator/browser.options:
       list.page.size: '50'
-    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug-spaces:
-      jcr:primaryType: frontend:plugin
-      plugin.class: org.hippoecm.frontend.editor.validator.plugins.RegExCmsValidator
-      regex_pattern: ^\S*$
-    /hippo:configuration/hippo:frontend/cms/cms-validators/publication-slug-dots:
-      jcr:primaryType: frontend:plugin
-      plugin.class: org.hippoecm.frontend.editor.validator.plugins.RegExCmsValidator
-      regex_pattern: ^(?!.*\.).+$
-    /hippo:configuration/hippo:frontend/cms/cms-validators/govscot-slug:
-      jcr:primaryType: frontend:plugin
-      plugin.class: scot.gov.www.validation.SlugValidator
-      scope: field
