@@ -12,7 +12,7 @@ public class PublicationPage extends BaseDocument {
 
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:content")

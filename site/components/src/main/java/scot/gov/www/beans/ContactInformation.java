@@ -9,36 +9,36 @@ import org.hippoecm.hst.content.beans.standard.HippoCompound;
 public class ContactInformation extends HippoCompound {
     @HippoEssentialsGenerated(internalName = "govscot:email")
     public String getEmail() {
-        return getProperty("govscot:email");
+        return getSingleProperty("govscot:email");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:twitter")
     public String getTwitter() {
-        return getProperty("govscot:twitter");
+        return getSingleProperty("govscot:twitter");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:flickr")
     public String getFlickr() {
-        return getProperty("govscot:flickr");
+        return getSingleProperty("govscot:flickr");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:website")
     public String getWebsite() {
-        return getProperty("govscot:website");
+        return getSingleProperty("govscot:website");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:facebook")
     public String getFacebook() {
-        return getProperty("govscot:facebook");
+        return getSingleProperty("govscot:facebook");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:youtube")
     public String getYoutube() {
-        return getProperty("govscot:youtube");
+        return getSingleProperty("govscot:youtube");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:blog")
     public String getBlog() {
-        return getProperty("govscot:blog");
+        return ("govscot:blog");
     }
 }

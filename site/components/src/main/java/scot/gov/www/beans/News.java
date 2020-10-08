@@ -20,28 +20,28 @@ public class News extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     @SyndicationElement(type = FeedType.RSS, name = "title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "description", converter = StringToDescriptionConverter.class)
     @HippoEssentialsGenerated(internalName = "govscot:summary")
     public String getSummary() {
-        return getProperty("govscot:summary");
+        return getSingleProperty("govscot:summary");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:seoTitle")
     public String getSeoTitle() {
-        return getProperty("govscot:seoTitle");
+        return getSingleProperty("govscot:seoTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:metaDescription")
     public String getMetaDescription() {
-        return getProperty("govscot:metaDescription");
+        return getSingleProperty("govscot:metaDescription");
     }
 
     @HippoEssentialsGenerated(internalName = "hippostd:tags")
     public String[] getTags() {
-        return getProperty("hippostd:tags");
+        return getMultipleProperty("hippostd:tags");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:background")
@@ -57,17 +57,17 @@ public class News extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:publicationDate")
     @SyndicationElement(type = FeedType.RSS, name = "pubDate", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
-        return getProperty("govscot:publicationDate");
+        return getSingleProperty("govscot:publicationDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:externalId")
     public String getExternalId() {
-        return getProperty("govscot:externalId");
+        return getSingleProperty("govscot:externalId");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:updatedDate")
     public Calendar getUpdatedDate() {
-        return getProperty("govscot:updatedDate");
+        return getSingleProperty("govscot:updatedDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:attachments")
@@ -82,7 +82,7 @@ public class News extends SimpleContent {
 
     @HippoEssentialsGenerated(internalName = "govscot:policyTags")
     public String[] getPolicyTags() {
-        return getProperty("govscot:policyTags");
+        return getMultipleProperty("govscot:policyTags");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:orgRole")
@@ -111,11 +111,11 @@ public class News extends SimpleContent {
 
     @SyndicationElement(type = FeedType.RSS, name = "link", transformer = PathLinkResolver.class)
     public String getURL() {
-        return "news/".concat(getProperty("govscot:prglooslug"));
+        return "news/".concat(getSingleProperty("govscot:prglooslug"));
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:reportingTags")
     public String[] getReportingTags() {
-        return getProperty("govscot:reportingTags");
+        return getMultipleProperty("govscot:reportingTags");
     }
 }

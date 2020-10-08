@@ -9,11 +9,11 @@ import org.hippoecm.hst.content.beans.standard.HippoCompound;
 public class ExternalLink extends HippoCompound {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:url")
     public String getUrl() {
-        return getProperty("govscot:url");
+        return getSingleProperty("govscot:url");
     }
 }

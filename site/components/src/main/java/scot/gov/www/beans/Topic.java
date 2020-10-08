@@ -29,7 +29,7 @@ public class Topic extends SimpleContent {
 
     @HippoEssentialsGenerated(internalName = "govscot:sme")
     public String getSme() {
-        return getProperty("govscot:sme");
+        return getSingleProperty("govscot:sme");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:AdditionalContent")

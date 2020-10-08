@@ -8,6 +8,6 @@ import org.hippoecm.hst.content.beans.Node;
 public class Migration extends BaseDocument {
     @HippoEssentialsGenerated(internalName = "govscot:migrationId")
     public String getMigrationId() {
-        return getProperty("govscot:migrationId");
+        return getSingleProperty("govscot:migrationId");
     }
 }

@@ -94,7 +94,7 @@ TopicComponent extends BaseHstComponent {
 
         // now add them to a list and sort them by name
         List<HippoBean> directorates = directoratesById.values().stream()
-                .sorted(comparing(bean -> bean.getProperty("govscot:title"))).collect(toList());
+                .sorted(comparing(bean -> bean.getSingleProperty("govscot:title"))).collect(toList());
         request.setAttribute("directorates", directorates);
     }
 

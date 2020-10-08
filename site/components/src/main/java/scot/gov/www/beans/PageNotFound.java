@@ -12,37 +12,37 @@ import java.util.List;
 public class PageNotFound extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:archiveTitle")
     public String getArchiveTitle() {
-        return getProperty("govscot:archiveTitle");
+        return getSingleProperty("govscot:archiveTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:archiveUrl")
     public String getArchiveUrl() {
-        return getProperty("govscot:archiveUrl");
+        return getSingleProperty("govscot:archiveUrl");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:summary")
     public String getSummary() {
-        return getProperty("govscot:summary");
+        return getSingleProperty("govscot:summary");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:seoTitle")
     public String getSeoTitle() {
-        return getProperty("govscot:seoTitle");
+        return getSingleProperty("govscot:seoTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:metaDescription")
     public String getMetaDescription() {
-        return getProperty("govscot:metaDescription");
+        return getSingleProperty("govscot:metaDescription");
     }
 
     @HippoEssentialsGenerated(internalName = "hippostd:tags")
     public String[] getTags() {
-        return getProperty("hippostd:tags");
+        return getMultipleProperty("hippostd:tags");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:background")
@@ -57,17 +57,17 @@ public class PageNotFound extends SimpleContent {
 
     @HippoEssentialsGenerated(internalName = "govscot:publicationDate")
     public Calendar getPublicationDate() {
-        return getProperty("govscot:publicationDate");
+        return getSingleProperty("govscot:publicationDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:externalId")
     public String getExternalId() {
-        return getProperty("govscot:externalId");
+        return getSingleProperty("govscot:externalId");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:updatedDate")
     public Calendar getUpdatedDate() {
-        return getProperty("govscot:updatedDate");
+        return getSingleProperty("govscot:updatedDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:attachments")
@@ -82,7 +82,7 @@ public class PageNotFound extends SimpleContent {
 
     @HippoEssentialsGenerated(internalName = "govscot:policyTags")
     public String[] getPolicyTags() {
-        return getProperty("govscot:policyTags");
+        return getMultipleProperty("govscot:policyTags");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:orgRole")

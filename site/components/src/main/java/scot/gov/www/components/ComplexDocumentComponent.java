@@ -106,7 +106,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
         }
 
         // we are showing the document so we only need to display the link of there are more than one documents
-        if (publication.getProperty("govscot:displayPrimaryDocument")) {
+        if (publication.getSingleProperty("govscot:displayPrimaryDocument")) {
             return documents.size() > 1;
         }
 

@@ -11,12 +11,12 @@ import java.util.Calendar;
 public class Minutes extends Publication {
     @HippoEssentialsGenerated(internalName = "govscot:location")
     public String getLocation() {
-        return getProperty("govscot:location");
+        return getSingleProperty("govscot:location");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:nextMeetingDate")
     public Calendar getNextMeetingDate() {
-        return getProperty("govscot:nextMeetingDate");
+        return getSingleProperty("govscot:nextMeetingDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:attendees")

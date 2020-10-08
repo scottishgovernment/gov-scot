@@ -8,11 +8,11 @@ import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerat
 public class SpeechOrStatement extends Publication {
     @HippoEssentialsGenerated(internalName = "govscot:location")
     public String getLocation() {
-        return getProperty("govscot:location");
+        return getSingleProperty("govscot:location");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:speechDeliveredBy")
     public String getSpeechDeliveredBy() {
-        return getProperty("govscot:speechDeliveredBy");
+        return getSingleProperty("govscot:speechDeliveredBy");
     }
 }

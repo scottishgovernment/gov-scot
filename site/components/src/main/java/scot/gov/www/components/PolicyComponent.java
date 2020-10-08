@@ -92,13 +92,13 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     Calendar dateToCompare(HippoBean bean) {
-        Calendar publicationDate = bean.getProperty("govscot:publicationDate");
+        Calendar publicationDate = bean.getSingleProperty("govscot:publicationDate");
         if (publicationDate != null) {
             return publicationDate;
         }
 
         // this bean has no publication date, default to the hippostdpubwf:publicationDate
-        return bean.getProperty("hippostdpubwf:publicationDate");
+        return bean.getSingleProperty("hippostdpubwf:publicationDate");
     }
 
     private List<HippoBean> getLatestNews(HstRequest request, Policy policy) {
@@ -207,7 +207,7 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     private void addTags(Set<String> reportingTags, HippoBean document) {
-        String [] tags = document.getProperty("govscot:reportingTags");
+        String [] tags = document.getMultipleProperty("govscot:reportingTags");
         if (tags != null) {
             reportingTags.addAll(Arrays.asList(tags));
         }

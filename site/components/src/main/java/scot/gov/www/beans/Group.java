@@ -12,27 +12,27 @@ import java.util.List;
 public class Group extends AttributableContent {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:summary")
     public String getSummary() {
-        return getProperty("govscot:summary");
+        return getSingleProperty("govscot:summary");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:seoTitle")
     public String getSeoTitle() {
-        return getProperty("govscot:seoTitle");
+        return getSingleProperty("govscot:seoTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:metaDescription")
     public String getMetaDescription() {
-        return getProperty("govscot:metaDescription");
+        return getSingleProperty("govscot:metaDescription");
     }
 
     @HippoEssentialsGenerated(internalName = "hippostd:tags")
     public String[] getTags() {
-        return getProperty("hippostd:tags");
+        return getMultipleProperty("hippostd:tags");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:content")
