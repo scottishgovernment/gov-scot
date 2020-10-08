@@ -1,17 +1,17 @@
 package scot.gov.www.beans;
 
+import java.util.Calendar;
+import java.util.List;
+
+import org.bloomreach.forge.feed.api.FeedType;
+import org.bloomreach.forge.feed.api.annot.SyndicationElement;
+import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
+import org.bloomreach.forge.feed.api.transform.PathLinkResolver;
+import org.bloomreach.forge.feed.api.transform.rss.StringToDescriptionConverter;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
-import org.onehippo.forge.feed.api.FeedType;
-import org.onehippo.forge.feed.api.annot.SyndicationElement;
-import org.onehippo.forge.feed.api.transform.CalendarToDateConverter;
-import org.onehippo.forge.feed.api.transform.PathLinkResolver;
-import org.onehippo.forge.feed.api.transform.rss.StringToDescriptionConverter;
-
-import java.util.Calendar;
-import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:News")
 @Node(jcrType = "govscot:News")

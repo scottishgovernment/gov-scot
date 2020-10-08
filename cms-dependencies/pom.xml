@@ -82,18 +82,18 @@
     <dependency>
       <groupId>org.bloomreach.forge.embargo</groupId>
       <artifactId>embargo-cms</artifactId>
-      <version>5.1.0</version>
+      <version>${forge.embargo.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.bloomreach.forge.embargo</groupId>
       <artifactId>embargo-repository</artifactId>
-      <version>5.1.0</version>
+      <version>${forge.embargo.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.onehippo.forge</groupId>
-      <artifactId>feed-cms-addon</artifactId>
+      <groupId>org.bloomreach.forge.feed</groupId>
+      <artifactId>feed-repository</artifactId>
       <version>${forge.feed.version}</version>
     </dependency>
     

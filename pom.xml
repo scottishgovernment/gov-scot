@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-release</artifactId>
-    <version>13.3.1</version>
+    <version>13.4.5</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -31,7 +31,8 @@
 
     <!-- Hippo versions -->
     <hippo.maven.plugin.l10n>2.2.2</hippo.maven.plugin.l10n>
-    <forge.feed.version>4.0.1</forge.feed.version>
+    <forge.feed.version>5.0.0</forge.feed.version>
+    <forge.embargo.version>5.1.0</forge.embargo.version>
     <freemarker.version>2.3.28</freemarker.version>
 
     <essentials.version>13.0.2</essentials.version>

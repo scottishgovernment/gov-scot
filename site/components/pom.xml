@@ -25,7 +25,7 @@
     </dependency>
 
     <dependency>
-      <groupId>org.onehippo.forge</groupId>
+      <groupId>org.bloomreach.forge.feed</groupId>
       <artifactId>feed-hst</artifactId>
       <version>${forge.feed.version}</version>
     </dependency>
