@@ -67,7 +67,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
         LOG.debug("{} created {} breadcrumb items: {}", this.getClass().getName(), breadcrumbItems.size(),
                 breadcrumbItems.stream().map(BreadcrumbItem::getTitle).toArray());
 
-        return new Breadcrumb(breadcrumbItems, getSeparator());
+        return new Breadcrumb(breadcrumbItems, getSeparator(), null);
     }
 
     /**

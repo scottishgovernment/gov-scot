@@ -33,6 +33,7 @@
     <hippo.maven.plugin.l10n>2.2.2</hippo.maven.plugin.l10n>
     <forge.feed.version>5.0.0</forge.feed.version>
     <forge.embargo.version>5.1.0</forge.embargo.version>
+    <forge.breadcrumb.version>3.0.0</forge.breadcrumb.version>
     <freemarker.version>2.3.28</freemarker.version>
 
     <essentials.version>13.0.2</essentials.version>
