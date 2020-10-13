@@ -1,6 +1,6 @@
 ## Running locally
 
-This project uses the Maven Cargo plugin to run Essentials, the CMS and site locally in Tomcat.
+This project uses the Maven Cargo plugin to run Essentials, the CMS, and site locally in Tomcat.
 From the project root folder, execute:
 
     mvn clean verify
@@ -8,8 +8,7 @@ From the project root folder, execute:
 
 By default this includes and bootstraps repository data from the repository-data/development module,
 which is deployed by cargo to the Tomcat shared/lib.
-If you want or need to start *without* bootstrapping the development data, for example when testing
-against an existing repository, you can specify the *additional* Maven profile without-development-data to do so:
+To start *without* bootstrapping the development data like testing against an existing repository, you can specify the *additional* Maven profile without-development-data like below:
 
     mvn -P cargo.run,without-development-data
 
@@ -23,8 +22,8 @@ Logs are located in target/tomcat8x/logs
 Best Practice for development
 =============================
 
-Use the option -Drepo.path=/some/path/to/repository during start up. This will avoid
-your repository to be cleared when you do a mvn clean.
+Use the option -Drepo.path=/some/path/to/repository during start up. This will prevent
+your repository from being cleared when you do a mvn clean.
 
 For example start your project with:
 
