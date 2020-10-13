@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/document-unlocker:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:system: true

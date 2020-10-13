@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/topics-issues-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:system: true
