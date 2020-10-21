@@ -24,7 +24,7 @@ definitions:
             hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [required, non-empty]
+            hipposysedit:validators: [required]
           /summary:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -33,7 +33,7 @@ definitions:
             hipposysedit:path: govscot:summary
             hipposysedit:primary: false
             hipposysedit:type: Text
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
           /content:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -50,7 +50,7 @@ definitions:
             hipposysedit:path: govscot:seoTitle
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
           /metaDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -59,7 +59,7 @@ definitions:
             hipposysedit:path: govscot:metaDescription
             hipposysedit:primary: false
             hipposysedit:type: Text
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
           /notes:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -185,8 +185,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: UpdateHistory
             field: UpdateHistory
-            hint: Details of the last updated date and a brief descriptions of the content
-              update
+            hint: Details of the last updated date and a brief descriptions of the
+              content update
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

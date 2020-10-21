@@ -13,7 +13,6 @@ public class EnrichRoleDaemonModule extends DaemonModuleBase {
 
     public static final String PUBLICATION_INTERACTION = "default:handle:publish";
 
-
     public boolean canHandleEvent(HippoWorkflowEvent event) {
         return event.success() && PUBLICATION_INTERACTION.equals(event.interaction());
     }

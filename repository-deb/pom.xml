@@ -55,7 +55,6 @@
       <plugin>
         <artifactId>jdeb</artifactId>
         <groupId>org.vafer</groupId>
-        <extensions>true</extensions>
         <configuration>
           <dataSet>
             <data>

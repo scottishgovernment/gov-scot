@@ -16,4 +16,4 @@ repository-data/application/src/main/resources/hcm-content/content/gallery
 repository-data/application/src/main/resources/hcm-content/content/assets
 repository-data/webfiles/src/main/resources/site/assets/
 repository-data/webfiles/test/coverage
-site/src/main/webapp/assets/mygov/
+site/webapp/src/main/webapp/assets/mygov/

@@ -1,0 +1,13 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/validation/hippo:moduleconfig/publication-slug-spaces:
+      jcr:primaryType: hipposys:moduleconfig
+      hipposys:className: org.onehippo.cms.services.validation.validator.RegExpValidator
+      regexp.pattern: ^\S*$
+    /hippo:configuration/hippo:modules/validation/hippo:moduleconfig/publication-slug-dots:
+      jcr:primaryType: hipposys:moduleconfig
+      hipposys:className: org.onehippo.cms.services.validation.validator.RegExpValidator
+      regexp.pattern: ^(?!.*\.).+$
+    /hippo:configuration/hippo:modules/validation/hippo:moduleconfig/govscot-slug:
+      jcr:primaryType: hipposys:moduleconfig
+      hipposys:className: scot.gov.www.validation.SlugValidator

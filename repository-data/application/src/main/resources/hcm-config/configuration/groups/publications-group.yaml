@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/publications:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal

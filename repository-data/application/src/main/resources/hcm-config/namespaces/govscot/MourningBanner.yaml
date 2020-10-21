@@ -3,11 +3,11 @@ definitions:
     /hippo:namespaces/govscot/MourningBanner:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: a0e0bd91-977c-48be-8755-8a7539e11f62
+      jcr:uuid: a0e0bd91-977c-48be-8755-8a7539e11f34
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: dd2aa4f6-f4fa-445d-85a4-a8ddf3186d69
+        jcr:uuid: dd2aa4f6-f4fa-445d-85a4-a8ddf3186da3
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']

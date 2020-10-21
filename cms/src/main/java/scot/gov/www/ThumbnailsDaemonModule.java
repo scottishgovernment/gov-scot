@@ -1,11 +1,11 @@
 package scot.gov.www;
 
-import scot.gov.imageprocessing.exif.Exif;
 import org.apache.commons.io.FileUtils;
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.imageprocessing.exif.Exif;
 import scot.gov.imageprocessing.thumbnails.FileType;
 import scot.gov.imageprocessing.thumbnails.ThumbnailsProvider;
 import scot.gov.imageprocessing.thumbnails.ThumbnailsProviderException;
@@ -17,11 +17,7 @@ import javax.jcr.RepositoryException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Event listener to generate thumbnails whenever a document is edited.
@@ -70,7 +66,7 @@ public class ThumbnailsDaemonModule extends DaemonModuleBase {
         String filename = documentNode.getProperty("hippo:filename").getString();
 
         if (mimeType == null) {
-            LOG.warn("A document has been uploded with no mimetype: {}", documentNode.getPath());
+            LOG.warn("A document has been uploaded with no mimetype: {}", documentNode.getPath());
         }
 
         Map<Integer, File> thumbnails = ThumbnailsProvider.thumbnails(data.getStream(), mimeType);
