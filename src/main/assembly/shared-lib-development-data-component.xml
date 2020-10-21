@@ -5,5 +5,9 @@
       <source>repository-data/development/target/gov-scot-repository-data-development-${project.version}.jar</source>
       <outputDirectory>shared/lib</outputDirectory>
     </file>
+    <file>
+      <source>repository-data/site-development/target/gov-scot-repository-data-site-development-${project.version}.jar</source>
+      <outputDirectory>shared/lib</outputDirectory>
+    </file>
   </files>
 </component>

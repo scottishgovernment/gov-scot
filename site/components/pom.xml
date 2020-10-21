@@ -26,6 +26,12 @@
 
     <dependency>
       <groupId>org.onehippo.forge</groupId>
+      <artifactId>breadcrumb</artifactId>
+      <version>${forge.breadcrumb.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bloomreach.forge.feed</groupId>
       <artifactId>feed-hst</artifactId>
       <version>${forge.feed.version}</version>
     </dependency>
@@ -125,6 +131,12 @@
            when your application container provides
            javax.annotation.security package. -->
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
     </dependency>
 
   </dependencies>

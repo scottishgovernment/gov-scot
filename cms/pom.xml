@@ -35,11 +35,6 @@
       <artifactId>jackrabbit-aws-ext</artifactId>
     </dependency>
 
-    <!--<dependency>-->
-      <!--<groupId>org.onehippo.cms7</groupId>-->
-      <!--<artifactId>hippo-plugin-sitemap-hcm-site</artifactId>-->
-    <!--</dependency>-->
-
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>publications-rest</artifactId>

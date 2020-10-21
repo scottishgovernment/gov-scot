@@ -203,16 +203,17 @@ definitions:
         \ for all requests determine the available request actions and report them\
         \ through the special 'requests'\r\n                 feedback map variable\
         \ -->\r\n            <!-- for document workflow requests: -->\r\n        \
-        \    <if cond=\"request.workflowRequest\">\r\n              <if cond=\"workflowContext.isGranted(request,\
-        \ 'hippo:editor')\">\r\n                <!-- editor users (granted hippo:editor)\
-        \ may reject and accept as well as cancel requests -->\r\n               \
-        \ <if cond=\"request.workflowType!='rejected'\">\r\n                  <!--\
-        \ if request not rejected yet, enable reject operation -->\r\n           \
-        \       <hippo:requestAction identifierExpr=\"request.identity\" action=\"\
-        rejectRequest\" enabledExpr=\"true\"/>\r\n                </if>\r\n      \
-        \          <if cond=\"request.workflowType=='delete'\">\r\n              \
-        \    <!-- if request for delete: enable accept operation if not live and not\
-        \ editing -->\r\n                  <hippo:requestAction identifierExpr=\"\
+        \    <hippo:requestAction identifierExpr=\"request.identity\" action=\"infoRequest\"\
+        \ enabledExpr=\"true\"/>\r\n            <if cond=\"request.workflowRequest\"\
+        >\r\n              <if cond=\"workflowContext.isGranted(request, 'hippo:editor')\"\
+        >\r\n                <!-- editor users (granted hippo:editor) may reject and\
+        \ accept as well as cancel requests -->\r\n                <if cond=\"request.workflowType!='rejected'\"\
+        >\r\n                  <!-- if request not rejected yet, enable reject operation\
+        \ -->\r\n                  <hippo:requestAction identifierExpr=\"request.identity\"\
+        \ action=\"rejectRequest\" enabledExpr=\"true\"/>\r\n                </if>\r\
+        \n                <if cond=\"request.workflowType=='delete'\">\r\n       \
+        \           <!-- if request for delete: enable accept operation if not live\
+        \ and not editing -->\r\n                  <hippo:requestAction identifierExpr=\"\
         request.identity\" action=\"acceptRequest\" enabledExpr=\"!live and !editing\"\
         />\r\n                <elseif cond=\"request.workflowType=='publish'\">\r\n\
         \                  <!-- if request for publish: enable accept operation if\

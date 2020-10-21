@@ -1,5 +1,5 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/main/News:
-  .meta:order-before: Consultations
+  .meta:order-before: Publications
   jcr:primaryType: hst:sitemenuitem
   hst:referencesitemapitem: news
   hst:repobased: false

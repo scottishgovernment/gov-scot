@@ -71,7 +71,7 @@ definitions:
             hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [required, non-empty]
+            hipposysedit:validators: [required]
           /summary:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -80,7 +80,7 @@ definitions:
             hipposysedit:path: govscot:summary
             hipposysedit:primary: false
             hipposysedit:type: Text
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:

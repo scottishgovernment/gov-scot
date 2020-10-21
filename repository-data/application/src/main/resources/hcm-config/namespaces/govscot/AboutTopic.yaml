@@ -3,15 +3,15 @@ definitions:
     /hippo:namespaces/govscot/AboutTopic:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: e07c2ae9-a752-4029-8800-8d9f8903ccda
+      jcr:uuid: e07c2ae9-a752-4029-8800-8d9f8903aada
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 45d490f6-afa8-45c9-bdc5-680a6de19d5a
+        jcr:uuid: 45d490f6-afa8-45c9-bdc5-684a6de19d5a
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: ea33c2a1-0af0-441c-b2c8-8d0898f43e4f
+          jcr:uuid: ea33c2a1-0af0-441c-a5c8-8d0898f43e4f
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Topic', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -78,7 +78,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 6b7ba91a-cd96-4f9c-9d29-bb6fe717968d
+          jcr:uuid: 6b7ba91a-cd96-4f9c-9d29-bb6fe427968d
           hippostdpubwf:lastModificationDate: 2018-01-26T11:27:44.600Z
           hippostdpubwf:creationDate: 2018-01-26T11:27:44.600Z
           govscot:sme: ''

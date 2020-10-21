@@ -18,12 +18,12 @@ public class CollectionGroup extends HippoCompound {
 
     @HippoEssentialsGenerated(internalName = "govscot:groupTitle")
     public String getGroupTitle() {
-        return getProperty("govscot:groupTitle");
+        return getSingleProperty("govscot:groupTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:order")
     public Boolean getOrder() {
-        return getProperty("govscot:order");
+        return getSingleProperty("govscot:order");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:description")
@@ -41,7 +41,7 @@ public class CollectionGroup extends HippoCompound {
 
     @HippoEssentialsGenerated(internalName = "govscot:highlight")
     public Boolean getHighlight() {
-        return getProperty("govscot:highlight");
+        return getSingleProperty("govscot:highlight");
     }
 
     List<HippoBean> sortedDocuments(List<HippoBean> unordered) {
@@ -56,13 +56,13 @@ public class CollectionGroup extends HippoCompound {
     }
 
     Calendar dateToCompare(HippoBean bean) {
-        Calendar publicationDate = bean.getProperty("govscot:publicationDate");
+        Calendar publicationDate = bean.getSingleProperty("govscot:publicationDate");
         if (publicationDate != null) {
             return publicationDate;
         }
 
         // this bean has no publication date, default to the hippostdpubwf:lastModificationDate
-        return bean.getProperty("hippostdpubwf:lastModificationDate");
+        return bean.getSingleProperty("hippostdpubwf:lastModificationDate");
     }
 
 }

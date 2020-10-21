@@ -10,11 +10,11 @@ import java.util.Calendar;
 public class UpdateHistory extends HippoCompound {
     @HippoEssentialsGenerated(internalName = "govscot:lastUpdated")
     public Calendar getLastUpdated() {
-        return getProperty("govscot:lastUpdated");
+        return getSingleProperty("govscot:lastUpdated");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:updateText")
     public String getUpdateText() {
-        return getProperty("govscot:updateText");
+        return getSingleProperty("govscot:updateText");
     }
 }

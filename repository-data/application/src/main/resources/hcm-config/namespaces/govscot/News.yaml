@@ -80,7 +80,7 @@ definitions:
             hipposysedit:path: govscot:slug
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required, govscot-slug]
+            hipposysedit:validators: [required, govscot-slug]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:

@@ -98,13 +98,13 @@ public class IssueComponent extends BaseHstComponent {
     }
 
     Calendar dateToCompare(HippoBean bean) {
-        Calendar publicationDate = bean.getProperty(PUBLICATIONDATE);
+        Calendar publicationDate = bean.getSingleProperty(PUBLICATIONDATE);
         if (publicationDate != null) {
             return publicationDate;
         }
 
         // this bean has no publication date, default to the hippostdpubwf:lastModificationDate
-        return bean.getProperty("hippostdpubwf:lastModificationDate");
+        return bean.getSingleProperty("hippostdpubwf:lastModificationDate");
     }
 
     private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass) {

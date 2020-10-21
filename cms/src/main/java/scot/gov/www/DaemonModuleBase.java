@@ -1,18 +1,14 @@
 package scot.gov.www;
 
-import org.onehippo.cms7.services.eventbus.HippoEventBus;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+
 import org.onehippo.cms7.services.eventbus.HippoEventListenerRegistry;
 import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-
-import static org.onehippo.cms7.services.HippoServiceRegistry.registerService;
-import static org.onehippo.cms7.services.HippoServiceRegistry.unregisterService;
 
 /**
  * Base class intended for out event handlers. Logs start and end time and provides a simple template

@@ -11,6 +11,6 @@ public class PolicyInDetail extends SimpleContent {
 
     @HippoEssentialsGenerated(internalName = "govscot:policyTags")
     public String[] getPolicyTags() {
-        return getProperty("govscot:policyTags");
+        return getMultipleProperty("govscot:policyTags");
     }
 }

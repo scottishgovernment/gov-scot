@@ -53,7 +53,7 @@ public class AtoZComponent extends BaseHstComponent {
         // sort each sublist.
         lettersAndBeans.stream()
                 .map(LettersAndBeans::getBeans)
-                .forEach(list -> list.sort(comparing(item -> item.getProperty("govscot:title"))));
+                .forEach(list -> list.sort(comparing(item -> item.getSingleProperty("govscot:title"))));
 
         return lettersAndBeans;
     }
@@ -105,7 +105,7 @@ public class AtoZComponent extends BaseHstComponent {
     }
 
     private String firstLetter(HippoBean bean) {
-        String title = bean.getProperty("govscot:title");
+        String title = bean.getSingleProperty("govscot:title");
         String upperCaseTitle = title.toUpperCase();
         char firstLetter = upperCaseTitle.charAt(0);
         return String.format("%s", firstLetter);

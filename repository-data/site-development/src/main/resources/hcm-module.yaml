@@ -1,0 +1,6 @@
+site: gov-scot
+group: gov-scot
+project: gov-scot
+module:
+  name: gov-scot-repository-data-site-development
+  after: gov-scot-repository-data-site

@@ -11,22 +11,22 @@ import java.util.Calendar;
 public class FOI extends Publication {
     @HippoEssentialsGenerated(internalName = "govscot:foiNumber")
     public String getFoiNumber() {
-        return getProperty("govscot:foiNumber");
+        return getSingleProperty("govscot:foiNumber");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:dateReceived")
     public Calendar getDateReceived() {
-        return getProperty("govscot:dateReceived");
+        return getSingleProperty("govscot:dateReceived");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:dateResponded")
     public Calendar getDateResponded() {
-        return getProperty("govscot:dateResponded");
+        return getSingleProperty("govscot:dateResponded");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:sme")
     public String getSme() {
-        return getProperty("govscot:sme");
+        return getSingleProperty("govscot:sme");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:request")

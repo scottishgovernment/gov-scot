@@ -24,7 +24,7 @@ definitions:
             hipposysedit:path: govscot:organisationName
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [required, non-empty]
+            hipposysedit:validators: [required]
           /organisationDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -41,7 +41,7 @@ definitions:
             hipposysedit:path: govscot:secondaryOrganisationName
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [required, non-empty]
+            hipposysedit:validators: [required]
           /secondaryOrganisationDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false

@@ -1,10 +1,8 @@
 definitions:
   config:
     /hippo:configuration/hippo:modules/autoexport/hippo:moduleconfig:
-      autoexport:modules:
-        operation: add
-        type: string
-        value: [repository-data/development]
+      autoexport:modules: ['repository-data/application:/', repository-data/development,
+        'repository-data/site-development:gov-scot', 'repository-data/site:gov-scot:/hst:govscot']
     /hippo:configuration/hippo:groups/author:
       hipposys:members:
         operation: add

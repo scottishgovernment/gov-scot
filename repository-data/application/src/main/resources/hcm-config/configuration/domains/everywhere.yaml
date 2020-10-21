@@ -1,0 +1,18 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/everywhere/publications:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [publications]
+      hipposys:role: admin
+    /hippo:configuration/hippo:domains/everywhere/apsimporter:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [apsimporter]
+      hipposys:role: admin
+    /hippo:configuration/hippo:domains/everywhere/news:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [news]
+      hipposys:role: admin
+    /hippo:configuration/hippo:domains/everywhere/migration:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups: [migration]
+      hipposys:role: admin

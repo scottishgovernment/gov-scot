@@ -127,7 +127,7 @@ public class SitemapComponent extends BaseSitemapComponent {
     Calendar getLastModifiedDate(HippoBean bean) throws RepositoryException {
         return frequentlyChanging(bean)
                 ? Calendar.getInstance()
-                : bean.getProperty("hippostdpubwf:lastModificationDate");
+                : bean.getSingleProperty("hippostdpubwf:lastModificationDate");
     }
 
     boolean frequentlyChanging(HippoBean bean) throws RepositoryException {

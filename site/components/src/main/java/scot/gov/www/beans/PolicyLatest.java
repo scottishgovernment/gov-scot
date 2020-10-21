@@ -12,12 +12,12 @@ import java.util.List;
 public class PolicyLatest extends BaseDocument {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:metaDescription")
     public String getMetaDescription() {
-        return getProperty("govscot:metaDescription");
+        return getSingleProperty("govscot:metaDescription");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:content")

@@ -108,7 +108,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
     private boolean includePage(HippoBean page) {
         // do not include pages that have been marked as a contents page by the migration
-        return !page.getProperty("govscot:contentsPage", false);
+        return !page.getSingleProperty("govscot:contentsPage", false);
     }
 
 

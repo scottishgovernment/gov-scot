@@ -10,12 +10,12 @@ import java.util.List;
 public class DocumentInformation extends BaseDocument {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:srcUrl")
     public String getSrcUrl() {
-        return getProperty("govscot:srcUrl");
+        return getSingleProperty("govscot:srcUrl");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:document")
@@ -31,21 +31,21 @@ public class DocumentInformation extends BaseDocument {
 
     @HippoEssentialsGenerated(internalName = "govscot:highlighted")
     public Boolean getHighlighted() {
-        return getProperty("govscot:highlighted");
+        return getSingleProperty("govscot:highlighted");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:accessible")
     public Boolean getAccessible() {
-        return getProperty("govscot:accessible");
+        return getSingleProperty("govscot:accessible");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:pageCount")
     public Long getPageCount() {
-        return getProperty("govscot:pageCount");
+        return getSingleProperty("govscot:pageCount");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:size")
     public Long getSize() {
-        return getProperty("govscot:size");
+        return getSingleProperty("govscot:size");
     }
 }

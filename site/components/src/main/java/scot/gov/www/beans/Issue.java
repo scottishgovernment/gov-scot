@@ -13,47 +13,47 @@ import java.util.List;
 public class Issue extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:featureDate")
     public Calendar getFeatureDate() {
-        return getProperty("govscot:featureDate");
+        return getSingleProperty("govscot:featureDate");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:featureDateTitle")
     public String getFeatureDateTitle() {
-        return getProperty("govscot:featureDateTitle");
+        return getSingleProperty("govscot:featureDateTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:featuredItemsTitle")
     public String getFeaturedItemsTitle() {
-        return getProperty("govscot:featuredItemsTitle");
+        return getSingleProperty("govscot:featuredItemsTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:contactTitle")
     public String getContactTitle() {
-        return getProperty("govscot:contactTitle");
+        return getSingleProperty("govscot:contactTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:includeTwitterReplies")
     public Boolean getIncludeTwitterReplies() {
-        return getProperty("govscot:includeTwitterReplies");
+        return getSingleProperty("govscot:includeTwitterReplies");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:includeFeedback")
     public Boolean getIncludeFeedback() {
-        return getProperty("govscot:includeFeedback");
+        return getSingleProperty("govscot:includeFeedback");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:showOnTopicsLandingPage")
     public Boolean getShowOnTopicsLandingPage() {
-        return getProperty("govscot:showOnTopicsLandingPage");
+        return getSingleProperty("govscot:showOnTopicsLandingPage");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:featureDateSummary")
     public String getFeatureDateSummary() {
-        return getProperty("govscot:featureDateSummary");
+        return getSingleProperty("govscot:featureDateSummary");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:socialMediaTitle")
     public String getSocialMediaTitle() {
-        return getProperty("govscot:socialMediaTitle");
+        return getSingleProperty("govscot:socialMediaTitle");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:phone")
@@ -87,5 +87,5 @@ public class Issue extends SimpleContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:newsTags")
-    public String[] getNewsTags() { return getProperty("govscot:newsTags"); }
+    public String[] getNewsTags() { return getMultipleProperty("govscot:newsTags"); }
 }

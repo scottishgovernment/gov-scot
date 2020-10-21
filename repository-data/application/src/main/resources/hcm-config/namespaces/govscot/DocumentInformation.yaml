@@ -23,7 +23,7 @@ definitions:
             hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
           /document:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -32,7 +32,7 @@ definitions:
             hipposysedit:path: govscot:document
             hipposysedit:primary: false
             hipposysedit:type: hippo:resource
-            hipposysedit:validators: [resource-required]
+            hipposysedit:validators: [required]
           /highlighted:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
