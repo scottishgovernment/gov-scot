@@ -360,3 +360,8 @@ definitions:
         hst:componentconfigurationid: hst:pages/statisticslistpage
         hst:relativecontentpath: publications/statistics-and-research
         hst:sitemapitemhandlerids: [trailing-slash]
+      /covid-restrictions-lookup:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/covidrestrictionslookup
+        hst:sitemapitemhandlerids: [trailing-slash]
+        hst:relativecontentpath: covid-restrictions-lookup

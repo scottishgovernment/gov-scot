@@ -137,3 +137,5 @@
 
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
 
+[govscot:CovidRestrictionsLookup] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
