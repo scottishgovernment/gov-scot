@@ -129,5 +129,11 @@
 
 [govscot:UpdateHistory] > hippo:compound, hippostd:relaxed
 
+[govscot:covidlevel] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:covidrestriction] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
 
