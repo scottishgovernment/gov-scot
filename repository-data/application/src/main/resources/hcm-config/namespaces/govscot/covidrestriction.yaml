@@ -53,7 +53,7 @@ definitions:
             hipposysedit:validators: [required]
           /level:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
+            hipposysedit:mandatory: true
             hipposysedit:multiple: false
             hipposysedit:ordered: false
             hipposysedit:path: govscot:level
@@ -132,7 +132,7 @@ definitions:
               source: /content/documents/govscot/valuelists/covidrestrictiontypes
           /description:
             jcr:primaryType: frontend:plugin
-            caption: Html
+            caption: Description
             field: description
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field

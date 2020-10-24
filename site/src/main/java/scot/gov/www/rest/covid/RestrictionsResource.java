@@ -114,7 +114,6 @@ public class RestrictionsResource {
     }
 
     String getDescription(Node node) throws RepositoryException {
-        LOG.info("getDescription {}", node.getPath());
         return node.hasNode("govscot:description")
                 ? node.getNode("govscot:description").getProperty("hippostd:content").getString()
                 : "";

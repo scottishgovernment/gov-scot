@@ -17,7 +17,7 @@ definitions:
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /title:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
+            hipposysedit:mandatory: true
             hipposysedit:multiple: false
             hipposysedit:ordered: false
             hipposysedit:path: govscot:title
@@ -33,7 +33,7 @@ definitions:
             hipposysedit:type: hippostd:html
           /link:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
+            hipposysedit:mandatory: true
             hipposysedit:multiple: false
             hipposysedit:ordered: false
             hipposysedit:path: govscot:link
@@ -41,7 +41,7 @@ definitions:
             hipposysedit:type: hippo:mirror
           /level:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
+            hipposysedit:mandatory: true
             hipposysedit:multiple: false
             hipposysedit:ordered: false
             hipposysedit:path: govscot:level
