@@ -21,7 +21,7 @@ const global = {
     compensateAnchorOffsetForStickyElements: function () {
         // IE8 doesn't support window.pageYOffset
         if (window.pageXOffset !== undefined) {
-            if (window.location.hash && $(window.location.hash).length) {
+            if (window.location.hash && !window.location.hash.match(/^#!\//) && $(window.location.hash).length) {
                 window.setTimeout(function () {
                     window.scrollTo(window.pageXOffset, parseInt($(window.location.hash).offset().top, 10) - 100);
                 }, 300);
