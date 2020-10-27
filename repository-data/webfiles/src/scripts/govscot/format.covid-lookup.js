@@ -1,36 +1,24 @@
 'use strict';
 
+const locationTitleTemplate = function (restriction) {
+    let titleParts = [];
+    titleParts.push(`<span data-${restriction.type}="${restriction.title}">${restriction.title}</span>`);
+    if (restriction.parent) {
+        titleParts.push(`<span data-${restriction.parent.type}="${restriction.parent.title}">${restriction.parent.title}</span>`);
+    }
+    return titleParts.join(', ');
+};
+
 const resultTemplate = function (templateData) {
-    return `<h1>Local COVID Alert Level: ${templateData.localRestrictions.level.title}</h1>
-    <p>We've matched the postcode <strong>${templateData.searchTerm}</strong> to <strong data-${templateData.localRestrictions.type}="${templateData.localRestrictions.title}">${templateData.localRestrictions.title}</strong>.
+    return `<h1>Local COVID Alert Level: ${templateData.restriction.level.title}</h1>
+    <p>We've matched the postcode <strong>${templateData.searchTerm}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
 
     <h2>Current Local COVID Alert Level</h2>
-    <p>This area is in Local COVID Alert Level: ${templateData.localRestrictions.level.title}.</p>
-    <p><a href="/${templateData.localRestrictions.level.link}">Read more about the protection level in your area.</a></p>
-
-    <div id="restrictions-detail">
-    </div>
+    <p>This area is in Local COVID Alert Level: ${templateData.restriction.level.title}.</p>
+    <p><a href="/${templateData.restriction.level.link}">Read more about the protection level in your area.</a></p>
 
     <h2>Find information about somewhere else</h2>
     <p><a href="#" class="js-enter-another">Enter another postcode.</a></p>`;
-};
-
-const restrictionsDetailTemplate = function (templateData) {
-    return `<div data-module="ds-accordion" class="ds_accordion">
-        <div class="ds_accordion-item">
-            <input aria-labelledby="panel-720627-heading" id="panel-720627" type="checkbox" class="ds_accordion-item__control hidden">
-            <div class="ds_accordion-item__header">
-                <h3 id="panel-720627-heading" class="ds_accordion-item__title">What you can and cannot do</h3>
-
-                <div class="ds_accordion-item__indicator">&nbsp;</div>
-                <label for="panel-720627" class="ds_accordion-item__label"><span class="hidden">Show this section</span></label>
-            </div>
-
-            <div class="ds_accordion-item__body">
-                ${templateData.body}
-            </div>
-        </div>
-    </div>`;
 };
 
 const covidLookup = {
@@ -42,8 +30,8 @@ const covidLookup = {
                 this.checkCurrentView();
             });
 
-        this.landingSection = document.querySelector('#lookup-landing');
-        this.resultsSection = document.querySelector('#lookup-results');
+        this.landingSection = document.querySelector('#covid-restrictions-lookup-landing');
+        this.resultsSection = document.querySelector('#covid-restrictions-lookup-results');
 
         this.resultsSection.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-enter-another')) {
@@ -90,7 +78,7 @@ const covidLookup = {
     },
 
     enableSearchForm: function () {
-        const searchForm = document.querySelector('#covid-lookup');
+        const searchForm = document.querySelector('#covid-restrictions-lookup-form');
         searchForm.classList.remove('hidden');
 
         searchForm.addEventListener('submit', (event) => {
@@ -138,47 +126,48 @@ const covidLookup = {
     },
 
     showResult: function (wardId, districtId, searchTerm) {
-        let localRestrictions = false;
+        let localRestrictions = [];
 
         const wardRestrictions = this.currentRestrictions.filter((restriction) => restriction.type === 'electoral-ward');
         const authorityRestrictions = this.currentRestrictions.filter((restriction) => restriction.type === 'local-authority');
 
         for (let i = 0, il = wardRestrictions.length; i < il; i++) {
             if (wardRestrictions[i].id === wardId) {
-                localRestrictions = wardRestrictions[i];
+                localRestrictions.push(wardRestrictions[i]);
                 break;
             }
         }
 
-        if (!localRestrictions) {
-            for (let i = 0, il = this.currentRestrictions.length; i < il; i++) {
-                if (authorityRestrictions[i].id === districtId) {
-                    localRestrictions = authorityRestrictions[i];
-                    break;
-                }
+        for (let i = 0, il = this.currentRestrictions.length; i < il; i++) {
+            if (authorityRestrictions[i].id === districtId) {
+                localRestrictions.push(authorityRestrictions[i]);
+                break;
             }
         }
 
-        if (!localRestrictions) {
+        const templateData = {
+            restriction: localRestrictions[0],
+            searchTerm: searchTerm
+        };
+
+        if (localRestrictions[1]) {
+            templateData.restriction.parent = localRestrictions[1];
+        }
+
+        if (!localRestrictions.length) {
             console.warn('no restrictions found');
             return false;
         }
 
         this.landingSection.classList.add('hidden');
         this.resultsSection.classList.remove('hidden');
-        this.resultsSection.innerHTML = resultTemplate({searchTerm: searchTerm, localRestrictions: localRestrictions});
+
+        this.resultsSection.innerHTML = resultTemplate(templateData);
         window.setTimeout(() => {
             if (!this.isInViewport(this.resultsSection)) {
                 this.resultsSection.scrollIntoView();
             }
         }, 0);
-
-        // this.requestLocalRestrictionDetails('/' + localRestrictions.level.link)
-        //     .then((data) => {
-        //         const tempDiv = document.createElement('div');
-        //         tempDiv.innerHTML = data.responseText;
-        //         this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content').innerHTML });
-        //     });
     },
 
     setErrorMessage: function (valid, message, errortype, field) {
