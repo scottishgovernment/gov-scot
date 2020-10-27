@@ -7,14 +7,20 @@ definitions:
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /secondaryContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:secondaryContent
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -30,10 +36,12 @@ definitions:
           govscot:title: ''
           govscot:summary: ''
           jcr:mixinTypes: ['mix:referenceable']
-
           hippostdpubwf:lastModificationDate: 2019-10-08T12:20:08.113+01:00
           hippostdpubwf:creationDate: 2019-10-08T12:20:08.113+01:00
           /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:secondaryContent:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -75,6 +83,15 @@ definitions:
             caption: Content
             field: content
             hint: The main content area for this page.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /secondaryContent:
+            jcr:primaryType: frontend:plugin
+            caption: Secondary content
+            field: secondaryContent
+            hint: The secondary content area for this page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
