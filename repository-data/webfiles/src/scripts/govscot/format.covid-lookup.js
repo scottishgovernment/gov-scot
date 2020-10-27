@@ -1,14 +1,12 @@
-/* global window */
-
 'use strict';
 
 const resultTemplate = function (templateData) {
     return `<h1>Local COVID Alert Level: ${templateData.localRestrictions.level.title}</h1>
-    <p>We've matched the postcode <strong>${templateData.searchTerm}</strong> to <strong>${templateData.localRestrictions.title}</strong>.
+    <p>We've matched the postcode <strong>${templateData.searchTerm}</strong> to <strong data-${templateData.localRestrictions.type}="${templateData.localRestrictions.title}">${templateData.localRestrictions.title}</strong>.
 
     <h2>Current Local COVID Alert Level</h2>
     <p>This area is in Local COVID Alert Level: ${templateData.localRestrictions.level.title}.</p>
-    <p><a href="/${templateData.localRestrictions.level.link}">What you can and cannot do.</a></p>
+    <p><a href="/${templateData.localRestrictions.level.link}">Read more about the protection level in your area.</a></p>
 
     <div id="restrictions-detail">
     </div>
@@ -17,23 +15,23 @@ const resultTemplate = function (templateData) {
     <p><a href="#" class="js-enter-another">Enter another postcode.</a></p>`;
 };
 
-// const restrictionsDetailTemplate = function (templateData) {
-//     return `<div data-module="ds-accordion" class="ds_accordion">
-//         <div class="ds_accordion-item">
-//             <input aria-labelledby="panel-720627-heading" id="panel-720627" type="checkbox" class="ds_accordion-item__control hidden">
-//             <div class="ds_accordion-item__header">
-//                 <h3 id="panel-720627-heading" class="ds_accordion-item__title">What you can and cannot do</h3>
+const restrictionsDetailTemplate = function (templateData) {
+    return `<div data-module="ds-accordion" class="ds_accordion">
+        <div class="ds_accordion-item">
+            <input aria-labelledby="panel-720627-heading" id="panel-720627" type="checkbox" class="ds_accordion-item__control hidden">
+            <div class="ds_accordion-item__header">
+                <h3 id="panel-720627-heading" class="ds_accordion-item__title">What you can and cannot do</h3>
 
-//                 <div class="ds_accordion-item__indicator">&nbsp;</div>
-//                 <label for="panel-720627" class="ds_accordion-item__label"><span class="hidden">Show this section</span></label>
-//             </div>
+                <div class="ds_accordion-item__indicator">&nbsp;</div>
+                <label for="panel-720627" class="ds_accordion-item__label"><span class="hidden">Show this section</span></label>
+            </div>
 
-//             <div class="ds_accordion-item__body">
-//                 ${templateData.body}
-//             </div>
-//         </div>
-//     </div>`;
-// };
+            <div class="ds_accordion-item__body">
+                ${templateData.body}
+            </div>
+        </div>
+    </div>`;
+};
 
 const covidLookup = {
     init: function () {
@@ -53,7 +51,11 @@ const covidLookup = {
                 this.landingSection.classList.remove('hidden');
                 this.resultsSection.classList.add('hidden');
                 window.history.pushState({}, '', '#!/');
-                window.setTimeout(() => this.landingSection.scrollIntoView(), 0);
+                window.setTimeout(() => {
+                    if (!this.isInViewport(this.landingSection)) {
+                        this.landingSection.scrollIntoView();
+                    }
+                }, 0);
             }
         });
 
@@ -99,32 +101,40 @@ const covidLookup = {
             const postcodeField = searchForm.querySelector('#postcode');
             const postcode = postcodeField.value.trim().toUpperCase().replace(/\s+/g, '');
             const isValid = this.validatePostcode(postcode);
+            const findButton = searchForm.querySelector('[type="submit"]');
+            const fieldset = searchForm.querySelector('fieldset');
 
-            this.setErrorMessage(isValid, 'Please enter a valid postcode', postcodeField);
+            if (postcode === '') {
+                this.setErrorMessage(isValid, 'Please enter a postcode', 'required-postcode', postcodeField);
+            } else {
+                this.setErrorMessage(isValid, 'Please enter a valid postcode', 'invalid-postcode', postcodeField);
+            }
 
             if (isValid) {
+                fieldset.disabled = true;
+
                 this.getLoctionForPostcode(postcode)
-                    .then((data) => {
+                    .then(data => {
                         const response = JSON.parse(data.response);
                         const wardId = response.ward;
                         const districtId = response.district;
                         this.showResult(wardId, districtId, postcode);
                         window.history.pushState({}, '', `#!/${postcode}`);
-                    }).catch((e)=>console.log(e));
+
+                        fieldset.disabled = false;
+                    }, error => {
+                        if (error.status === 404) {
+                            this.setErrorMessage(false, 'Enter a full valid postcode in Scotland', 'invalid-postcode', postcodeField);
+                        } else {
+                            this.setErrorMessage(false, 'Sorry, we have a problem at our side. Please try again later.', 'service-unavailable', findButton);
+                        }
+
+                        fieldset.disabled = false;
+                    }).catch(() => {
+                        fieldset.disabled = false;
+                    });
             }
         });
-    },
-
-    getLoctionForPostcode: function (postcode) {
-        return this.promiseRequest(`/service/geosearch/postcodes/${postcode}`);
-    },
-
-    requestCurrentRestrictions: function () {
-        return this.promiseRequest('/rest/covid/restrictions');
-    },
-
-    requestLocalRestrictionDetails: function (url) {
-        return this.promiseRequest(url);
     },
 
     showResult: function (wardId, districtId, searchTerm) {
@@ -157,14 +167,50 @@ const covidLookup = {
         this.landingSection.classList.add('hidden');
         this.resultsSection.classList.remove('hidden');
         this.resultsSection.innerHTML = resultTemplate({searchTerm: searchTerm, localRestrictions: localRestrictions});
-        window.setTimeout(() => this.resultsSection.scrollIntoView(), 0);
+        window.setTimeout(() => {
+            if (!this.isInViewport(this.resultsSection)) {
+                this.resultsSection.scrollIntoView();
+            }
+        }, 0);
 
-        // this.requestLocalRestrictionDetails('/' + localRestrictions.level.link)
-        //     .then((data) => {
-        //         const tempDiv = document.createElement('div');
-        //         tempDiv.innerHTML = data.responseText;
-        //         this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content').innerHTML });
-        //     });
+        this.requestLocalRestrictionDetails('/' + localRestrictions.level.link)
+            .then((data) => {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = data.responseText;
+                this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content').innerHTML });
+            });
+    },
+
+    setErrorMessage: function (valid, message, errortype, field) {
+        const question = field.closest('.ds_question');
+        const errorMessageElement = field.parentNode.querySelector('.ds_question__error-message');
+
+        if (valid) {
+            question.classList.remove('ds_question--error');
+            field.classList.remove('ds_input--error');
+            field.removeAttribute('aria-invalid', 'true');
+            errorMessageElement.classList.add('hidden');
+            errorMessageElement.dataset.form = '';
+        } else {
+            question.classList.add('ds_question--error');
+            field.classList.add('ds_input--error');
+            field.setAttribute('aria-invalid', 'true');
+            errorMessageElement.dataset.form = `error-${errortype}`;
+            errorMessageElement.classList.remove('hidden');
+            errorMessageElement.innerText = message;
+        }
+    },
+
+    getLoctionForPostcode: function (postcode) {
+        return this.promiseRequest(`/service/geosearch/postcodes/${postcode}`);
+    },
+
+    requestCurrentRestrictions: function () {
+        return this.promiseRequest('/rest/covid/restrictions');
+    },
+
+    requestLocalRestrictionDetails: function (url) {
+        return this.promiseRequest(url);
     },
 
     promiseRequest: (url, method = 'GET') => {
@@ -200,22 +246,12 @@ const covidLookup = {
         return valid;
     },
 
-    setErrorMessage: function (valid, message, field) {
-        const question = field.closest('.ds_question');
-        const errorMessageElement = field.parentNode.querySelector('.ds_question__error-message');
-
-        if (valid) {
-            question.classList.remove('ds_question--error');
-            field.classList.remove('ds_input--error');
-            field.removeAttribute('aria-invalid', 'true');
-            errorMessageElement.classList.add('hidden');
-        } else {
-            question.classList.add('ds_question--error');
-            field.classList.add('ds_input--error');
-            field.setAttribute('aria-invalid', 'true');
-            errorMessageElement.classList.remove('hidden');
-            errorMessageElement.innerText = message;
-        }
+    isInViewport: function (element) {
+        const bounding = element.getBoundingClientRect();
+        return (bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight) &&
+            bounding.right <= (window.innerWidth));
     }
 };
 

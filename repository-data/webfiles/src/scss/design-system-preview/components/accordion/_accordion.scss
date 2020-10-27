@@ -98,7 +98,8 @@ h1,h2,h3 {
         display: none;
         padding: 21px 50px 42px 15px;
 
-        > :last-child {
+        > :last-child,
+        > :first-child {
             margin-bottom: 0;
         }
     }
@@ -141,10 +142,6 @@ h1,h2,h3 {
         }
 
         transition: max-height $transition-in-time, padding $transition-in-time;
-
-        > :first-child {
-            margin-top: 0;
-        }
     }
 
     &__control:checked ~ .#{$pl-prefix}accordion-item__body {

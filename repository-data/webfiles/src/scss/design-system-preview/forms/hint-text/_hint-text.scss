@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    HINT TEXT
+\*------------------------------------*/
+
+.#{$pl_prefix}hint-text {
+    color: $colour__text--secondary;
+    margin-bottom: 16px;
+
+    > * {
+        margin-bottom: 8px;
+    }
+}
