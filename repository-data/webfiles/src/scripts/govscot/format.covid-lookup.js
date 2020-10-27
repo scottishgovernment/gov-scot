@@ -173,12 +173,12 @@ const covidLookup = {
             }
         }, 0);
 
-        this.requestLocalRestrictionDetails('/' + localRestrictions.level.link)
-            .then((data) => {
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = data.responseText;
-                this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content').innerHTML });
-            });
+        // this.requestLocalRestrictionDetails('/' + localRestrictions.level.link)
+        //     .then((data) => {
+        //         const tempDiv = document.createElement('div');
+        //         tempDiv.innerHTML = data.responseText;
+        //         this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content').innerHTML });
+        //     });
     },
 
     setErrorMessage: function (valid, message, errortype, field) {
