@@ -1,10 +1,10 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/covid-restrictions-admin:
+    /hippo:configuration/hippo:domains/covid-restrictions-editor:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [cmsadmin, covidadmin]
+        hipposys:groups: [cmsadmin, covidrestrictionseditor]
         hipposys:role: editor
       /covid-restrictions-documents:
         jcr:primaryType: hipposys:domainrule
