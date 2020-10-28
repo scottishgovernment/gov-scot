@@ -13,7 +13,7 @@
 </script>
 </@hst.headContribution>
 
-<#assign gtmAuthDev = "0gwH66LRTpDbpRlyEGUv0Q" />
+<#assign gtmAuthDev = "dLPjkzRtdQ0YqBmSCJ0GfA" />
 <#assign gtmEnvDev = "58" />
 
 <@hst.headContribution category="googleTagManager">
