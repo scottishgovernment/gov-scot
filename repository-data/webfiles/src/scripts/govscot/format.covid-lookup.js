@@ -25,7 +25,7 @@ const errorSummaryTemplate = function (templateData) {
     return `<h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
 
         <ul class="ds_error-summary__list">
-            ${templateData.messages.map(message => `<li><a href="${message.fieldId}">${message.content}</a></li>`)}
+            ${templateData.messages.map(message => `<li><a class="js-error-link" data-fieldid="${message.fieldId}" href="#${message.fieldId}">${message.content}</a></li>`)}
         </ul>`;
 };
 
@@ -41,6 +41,17 @@ const covidLookup = {
         this.landingSection = document.querySelector('#covid-restrictions-lookup-landing');
         this.resultsSection = document.querySelector('#covid-restrictions-lookup-results');
         this.searchForm = document.querySelector('#covid-restrictions-lookup-form');
+        this.errorSummary = document.querySelector('#covid-restrictions-error-summary');
+        this.postcodeField = this.searchForm.querySelector('#postcode');
+
+        this.errorSummary.addEventListener('click', (event) => {
+            if (event.target.classList.contains('js-error-link')) {
+                event.preventDefault();
+                const targetField = document.getElementById(event.target.dataset.fieldid);
+                targetField.focus();
+                targetField.scrollIntoView({behaviour: 'smooth', block: 'center', inline: 'nearest'});
+            }
+        });
 
         this.resultsSection.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-enter-another')) {
@@ -65,6 +76,7 @@ const covidLookup = {
         // do we have a particular view?
         if (window.location.hash.match(/^#!\//)) {
             const postcode = window.location.hash.substring(3);
+            this.postcodeField.value = postcode;
 
             if (this.validatePostcode(postcode)) {
                 this.getLoctionForPostcode(postcode)
@@ -94,16 +106,15 @@ const covidLookup = {
 
             this.resultsSection.innerHTML = '';
 
-            const postcodeField = this.searchForm.querySelector('#postcode');
-            const postcode = postcodeField.value.trim().toUpperCase().replace(/\s+/g, '');
+            const postcode = this.postcodeField.value.trim().toUpperCase().replace(/\s+/g, '');
             const isValid = this.validatePostcode(postcode);
             const findButton = this.searchForm.querySelector('[type="submit"]');
             const fieldset = this.searchForm.querySelector('fieldset');
 
             if (postcode === '') {
-                this.setErrorMessage(isValid, 'Enter a full valid postcode in Scotland', 'required-postcode', postcodeField);
+                this.setErrorMessage(isValid, 'Enter a full valid postcode in Scotland', 'required-postcode', this.postcodeField);
             } else {
-                this.setErrorMessage(isValid, 'Enter a full valid postcode in Scotland', 'invalid-postcode', postcodeField);
+                this.setErrorMessage(isValid, 'Enter a full valid postcode in Scotland', 'invalid-postcode', this.postcodeField);
             }
 
             if (isValid) {
@@ -120,7 +131,7 @@ const covidLookup = {
                         fieldset.disabled = false;
                     }, error => {
                         if (error.status === 404) {
-                            this.setErrorMessage(false, 'Enter a full valid postcode in Scotland', 'invalid-postcode', postcodeField);
+                            this.setErrorMessage(false, 'Enter a full valid postcode in Scotland', 'invalid-postcode', this.postcodeField);
                         } else {
                             this.setErrorMessage(false, 'Sorry, we have a problem at our side. Please try again later.', 'service-unavailable', findButton);
                         }
@@ -146,7 +157,7 @@ const covidLookup = {
             }
         }
 
-        for (let i = 0, il = this.currentRestrictions.length; i < il; i++) {
+        for (let i = 0, il = authorityRestrictions.length; i < il; i++) {
             if (authorityRestrictions[i].id === districtId) {
                 localRestrictions.push(authorityRestrictions[i]);
                 break;
@@ -163,7 +174,7 @@ const covidLookup = {
         }
 
         if (!localRestrictions.length) {
-            console.warn('no restrictions found');
+            this.setErrorMessage(false, 'We have been unable to determine the restrictions for your area', 'no-restrictions', this.postcodeField);
             return false;
         }
 
@@ -173,7 +184,7 @@ const covidLookup = {
         this.resultsSection.innerHTML = resultTemplate(templateData);
         window.setTimeout(() => {
             if (!this.isInViewport(this.resultsSection)) {
-                this.resultsSection.scrollIntoView();
+                this.resultsSection.scrollIntoView({behaviour: 'smooth', block: 'center', inline: 'nearest'});
             }
         }, 0);
     },
@@ -197,7 +208,6 @@ const covidLookup = {
             errorMessageElement.innerText = message;
         }
 
-        const errorSummaryElement = document.getElementById('covid-restrictions-error-summary');
         const errorQuestions = [].slice.call(this.searchForm.querySelectorAll('.ds_question--error'));
         if (errorQuestions.length) {
             // display error summary
@@ -210,12 +220,18 @@ const covidLookup = {
                 });
             });
 
-            errorSummaryElement.innerHTML = errorSummaryTemplate({ messages: errorMessages });
-            errorSummaryElement.classList.remove('fully-hidden');
+            this.errorSummary.innerHTML = errorSummaryTemplate({ messages: errorMessages });
+            this.errorSummary.classList.remove('fully-hidden');
+
+            this.errorSummary.scrollIntoView();
+            this.errorSummary.classList.add('flashable--flash');
+            window.setTimeout(() => {
+                this.errorSummary.classList.remove('flashable--flash');
+            }, 200);
         } else {
             // remove error summary
-            errorSummaryElement.innerHTML = '';
-            errorSummaryElement.classList.add('fully-hidden');
+            this.errorSummary.innerHTML = '';
+            this.errorSummary.classList.add('fully-hidden');
         }
     },
 
