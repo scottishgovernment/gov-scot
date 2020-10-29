@@ -1,6 +1,7 @@
 'use strict';
 
 import 'promise-polyfill/src/polyfill';
+import 'classlist-polyfill/src/index';
 
 // polyfill for element.closest
 if (!Element.prototype.matches) {
@@ -10,7 +11,7 @@ if (!Element.prototype.matches) {
 }
 
 if (!Element.prototype.closest) {
-    Element.prototype.closest = function(s) {
+    Element.prototype.closest = function (s) {
         var el = this;
 
         do {
@@ -68,16 +69,20 @@ const covidLookup = {
         this.postcodeField = this.searchForm.querySelector('#postcode');
 
         // we'll want to insert this into the results page later
-        const resultsPageContentContainer = document.querySelector('#covid-restrictions-lookup-results-content')
+        const resultsPageContentContainer = document.querySelector('#covid-restrictions-lookup-results-content');
         this.resultsPageContent = resultsPageContentContainer.innerHTML;
-        resultsPageContentContainer.parentNode.removeChild(resultsPageContentContainer);
+        // resultsPageContentContainer.parentNode.removeChild(resultsPageContentContainer);
 
         this.errorSummary.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-error-link')) {
                 event.preventDefault();
                 const targetField = document.getElementById(event.target.dataset.fieldid);
                 targetField.focus();
-                targetField.scrollIntoView({behaviour: 'smooth', block: 'center', inline: 'nearest'});
+                targetField.scrollIntoView({
+                    behaviour: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
             }
         });
 
@@ -213,7 +218,11 @@ const covidLookup = {
         this.resultsSection.innerHTML = resultTemplate(templateData);
         window.setTimeout(() => {
             if (!this.isInViewport(this.resultsSection)) {
-                this.resultsSection.scrollIntoView({behaviour: 'smooth', block: 'center', inline: 'nearest'});
+                this.resultsSection.scrollIntoView({
+                    behaviour: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
             }
         }, 0);
     },
@@ -249,7 +258,9 @@ const covidLookup = {
                 });
             });
 
-            this.errorSummary.innerHTML = errorSummaryTemplate({ messages: errorMessages });
+            this.errorSummary.innerHTML = errorSummaryTemplate({
+                messages: errorMessages
+            });
             this.errorSummary.classList.remove('fully-hidden');
 
             this.errorSummary.scrollIntoView();
