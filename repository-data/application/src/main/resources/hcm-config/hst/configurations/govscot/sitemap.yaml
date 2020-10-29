@@ -360,8 +360,8 @@ definitions:
         hst:componentconfigurationid: hst:pages/statisticslistpage
         hst:relativecontentpath: publications/statistics-and-research
         hst:sitemapitemhandlerids: [trailing-slash]
-      /covid-restrictions-lookup:
+      /find-your-local-covid-level:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/covidrestrictionslookup
         hst:sitemapitemhandlerids: [trailing-slash]
-        hst:relativecontentpath: covid-restrictions-lookup
+        hst:relativecontentpath: find-your-local-covid-level
