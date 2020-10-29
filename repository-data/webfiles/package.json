@@ -39,11 +39,13 @@
     "karma-jasmine-matchers": "^4.0.1",
     "karma-webpack": "^4.0.0-rc.6",
     "pikaday": "^1.4.0",
+    "promise-polyfill": "^8.2.0",
     "requirejs": "^2.1.0",
     "sealant": "0.0.2",
     "svg-sprite": "^1.4.0",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
-  }
+  },
+  "dependencies": {}
 }

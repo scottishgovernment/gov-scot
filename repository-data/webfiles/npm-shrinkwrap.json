@@ -105,7 +105,7 @@
     "@babel/helper-define-map": {
       "version": "7.10.5",
       "dev": true,
-      "integrity": "sha512-fMw4kgFB720aQFXSVaXr79pjjcW5puTCM16+rECJ/plGS+zByelE8l9nCpV1GibxTnFVmUuYG9U8wYfQHdzOEQ==",
+      "integrity": "sha1-tTwQ23imQIABUmkrEzkxR6y5uzA=",
       "requires": {
         "@babel/helper-function-name": "7.1.0",
         "@babel/types": "7.4.0",
@@ -390,7 +390,7 @@
     "@babel/plugin-transform-classes": {
       "version": "7.10.4",
       "dev": true,
-      "integrity": "sha512-2oZ9qLjt161dn1ZE0Ms66xBncQH4In8Sqw1YWgBUZuGVJJS5c0OFZXL6dP2MRHrkU/eKhWg8CzFJhRQl50rQxA==",
+      "integrity": "sha1-QFE2rys+IYvEoZJiKLyRerGgrcc=",
       "requires": {
         "@babel/helper-annotate-as-pure": "7.0.0",
         "@babel/helper-define-map": "7.10.5",
@@ -1437,6 +1437,15 @@
       "dev": true,
       "integrity": "sha1-WYr+VHVbKGilMw0q/51Ou1Mgm2U="
     },
+    "bindings": {
+      "version": "1.5.0",
+      "dev": true,
+      "integrity": "sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==",
+      "optional": true,
+      "requires": {
+        "file-uri-to-path": "1.0.0"
+      }
+    },
     "blob": {
       "version": "0.0.5",
       "dev": true,
@@ -1761,6 +1770,7 @@
         "anymatch": "2.0.0",
         "async-each": "1.0.2",
         "braces": "2.3.2",
+        "fsevents": "1.2.13",
         "glob-parent": "3.1.0",
         "inherits": "2.0.3",
         "is-binary-path": "1.0.1",
@@ -3175,6 +3185,12 @@
       "dev": true,
       "integrity": "sha1-hiRwESkBxyeg5JWoB0S9W6odZ5A="
     },
+    "file-uri-to-path": {
+      "version": "1.0.0",
+      "dev": true,
+      "integrity": "sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==",
+      "optional": true
+    },
     "fileset": {
       "version": "2.0.3",
       "dev": true,
@@ -3387,6 +3403,16 @@
       "version": "1.0.0",
       "dev": true,
       "integrity": "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
+    },
+    "fsevents": {
+      "version": "1.2.13",
+      "dev": true,
+      "integrity": "sha1-8yXLBFVZJCi88Rs4M3DvcOO/zDg=",
+      "optional": true,
+      "requires": {
+        "bindings": "1.5.0",
+        "nan": "2.14.2"
+      }
     },
     "function-bind": {
       "version": "1.1.1",
@@ -5156,6 +5182,12 @@
       "dev": true,
       "integrity": "sha1-hzhV8jqoqVsVD7ltmDbtvFodJIo="
     },
+    "nan": {
+      "version": "2.14.2",
+      "dev": true,
+      "integrity": "sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==",
+      "optional": true
+    },
     "nanomatch": {
       "version": "1.2.13",
       "dev": true,
@@ -5762,6 +5794,11 @@
       "version": "1.0.1",
       "dev": true,
       "integrity": "sha1-mEcocL8igTL8vdhoEputEsPAKeM="
+    },
+    "promise-polyfill": {
+      "version": "8.2.0",
+      "dev": true,
+      "integrity": "sha512-k/TC0mIcPVF6yHhUvwAp7cvL6I2fFV7TzF1DuGPI8mBh4QQazf36xCKEHKTZKRysEoTQoQdKyP25J8MPJp7j5g=="
     },
     "proxy-addr": {
       "version": "2.0.4",

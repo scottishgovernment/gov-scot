@@ -1,5 +1,7 @@
 'use strict';
 
+import 'promise-polyfill/src/polyfill';
+
 const locationTitleTemplate = function (restriction) {
     let titleParts = [];
     titleParts.push(`<span data-${restriction.type}="${restriction.title}">${restriction.title}</span>`);
