@@ -24,7 +24,6 @@
     "@scottish-government/mygov-assets": "latest",
     "ajv": "^6.10.0",
     "babel-loader": "^8.0.5",
-    "classlist-polyfill": "^1.2.0",
     "html5shiv": "^3.7.3",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",

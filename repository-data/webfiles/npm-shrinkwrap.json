@@ -1828,11 +1828,6 @@
         "static-extend": "0.1.2"
       }
     },
-    "classlist-polyfill": {
-      "version": "1.2.0",
-      "dev": true,
-      "integrity": "sha1-k1vC39lFiodrJ5YXUUY4vKqWSi4="
-    },
     "cliui": {
       "version": "4.1.0",
       "dependencies": {

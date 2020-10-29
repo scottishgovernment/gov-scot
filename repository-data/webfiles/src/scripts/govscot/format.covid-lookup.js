@@ -1,7 +1,6 @@
 'use strict';
 
 import 'promise-polyfill/src/polyfill';
-import 'classlist-polyfill/src/index';
 
 // polyfill for element.closest
 if (!Element.prototype.matches) {
