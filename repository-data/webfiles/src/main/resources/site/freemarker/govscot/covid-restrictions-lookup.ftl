@@ -39,6 +39,12 @@
                             <@hst.html hippohtml=document.secondaryContent/>
                         </div>
                     </#if>
+
+                    <#if document.resultsContent??>
+                        <div id="covid-restrictions-lookup-results-content" class="hidden  hidden--hard">
+                            <@hst.html hippohtml=document.resultsContent/>
+                        </div>
+                    </#if>
                 </div>
             </section>
 

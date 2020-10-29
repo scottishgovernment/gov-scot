@@ -10,15 +10,14 @@ const locationTitleTemplate = function (restriction) {
 };
 
 const resultTemplate = function (templateData) {
-    return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">Local COVID Alert Level: ${templateData.restriction.level.title}</h1>
+    return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">COVID protection level: ${templateData.restriction.level.title}</h1>
     <p>We've matched the postcode <strong>${templateData.searchTerm}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
 
-    <h2>Current Local COVID Alert Level</h2>
-    <p>This area is in Local COVID Alert Level: ${templateData.restriction.level.title}.</p>
-    <p><a href="/${templateData.restriction.level.link}">Read more about the protection level in your area.</a></p>
+    ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
 
-    <h2>Find information about somewhere else</h2>
-    <p><a href="#" class="js-enter-another">Enter another postcode.</a></p>`;
+    <p><a href="/${templateData.restriction.level.link}">What you can and cannot do in protection level ${templateData.restriction.level.title}</a></p>
+
+    <p><a href="#" class="js-enter-another">Check another postcode level</a></p>`;
 };
 
 const errorSummaryTemplate = function (templateData) {
@@ -43,6 +42,11 @@ const covidLookup = {
         this.searchForm = document.querySelector('#covid-restrictions-lookup-form');
         this.errorSummary = document.querySelector('#covid-restrictions-error-summary');
         this.postcodeField = this.searchForm.querySelector('#postcode');
+
+        // we'll want to insert this into the results page later
+        const resultsPageContentContainer = document.querySelector('#covid-restrictions-lookup-results-content')
+        this.resultsPageContent = resultsPageContentContainer.innerHTML;
+        resultsPageContentContainer.parentNode.removeChild(resultsPageContentContainer);
 
         this.errorSummary.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-error-link')) {
@@ -166,7 +170,8 @@ const covidLookup = {
 
         const templateData = {
             restriction: localRestrictions[0],
-            searchTerm: searchTerm
+            searchTerm: searchTerm,
+            resultsPageContent: this.resultsPageContent || false
         };
 
         if (localRestrictions[1]) {

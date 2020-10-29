@@ -14,6 +14,11 @@ public class CovidRestrictionsLookup extends SimpleContent {
         return getHippoHtml("govscot:secondaryContent");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:resutsContent")
+    public HippoHtml getResultsContent() {
+        return getHippoHtml("govscot:resultsContent");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:updateHistory")
     public List<UpdateHistory> getUpdateHistory() {
         return getChildBeansByName("govscot:updateHistory", UpdateHistory.class);

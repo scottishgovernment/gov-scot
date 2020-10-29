@@ -21,6 +21,14 @@ definitions:
             hipposysedit:path: govscot:secondaryContent
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /resultsContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:resultsContent
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -42,6 +50,9 @@ definitions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
           /govscot:secondaryContent:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:resultsContent:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -92,6 +103,15 @@ definitions:
             caption: Secondary content
             field: secondaryContent
             hint: The secondary content area for this page.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /resultsContent:
+            jcr:primaryType: frontend:plugin
+            caption: Results page content
+            field: resultsContent
+            hint: Content placed above the protection level links on the results page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
