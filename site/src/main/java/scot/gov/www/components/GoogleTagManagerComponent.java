@@ -5,7 +5,6 @@ import org.hippoecm.hst.configuration.hosting.Mount;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
 import org.hippoecm.hst.configuration.components.HstComponentConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
