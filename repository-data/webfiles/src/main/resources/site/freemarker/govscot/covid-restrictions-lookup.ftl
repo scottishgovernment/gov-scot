@@ -19,7 +19,7 @@
                     <form id="covid-restrictions-lookup-form" class="hidden  hidden--hard  form-box" method="post">
                         <fieldset>
                             <div class="ds_question">
-                                <label class="ds_label" for="postcode">Enter your postcode</label>
+                                <label class="ds_label" for="postcode">Enter a postcode</label>
                                 <p class="ds_hint-text">You need to enter a full postcode. For example "EH1 3DG".</p>
                                 <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error"></p>
                                 <input class="ds_input" type="text" id="postcode" name="postcode">
