@@ -18,6 +18,7 @@ definitions:
           /hst:root:
             jcr:primaryType: hst:mount
             jcr:uuid: b284f3b2-400c-48bb-851b-84c1808848c8
+            jcr:uuid: b284f3b2-400c-48bb-851b-84c1808848c8
             hst:homepage: root
             hst:mountpoint: /hst:hst/hst:sites/govscot
             /rest:
@@ -142,7 +143,7 @@ definitions:
                 /hst:root:
                   jcr:primaryType: hst:mount
                   jcr:uuid: effbd3b8-756a-4b61-8f7d-ec03adc40ba2
-                  govscot:gtm: /content/documents/administration/analytics/live`
+                  govscot:gtm: /content/documents/administration/analytics/dev
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:nochannelinfo: true
