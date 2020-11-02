@@ -20,7 +20,7 @@
                         <fieldset>
                             <div class="ds_question">
                                 <label class="ds_label" for="postcode">Enter your postcode</label>
-                                <p class="ds_hint-text">You need to enter a full postcode.<br />For example EH5 2GG.</p>
+                                <p class="ds_hint-text">You need to enter a full postcode. For example "EH1 3DG".</p>
                                 <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error"></p>
                                 <input class="ds_input" type="text" id="postcode" name="postcode">
                             </div>

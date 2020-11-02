@@ -35,7 +35,7 @@ const locationTitleTemplate = function (restriction) {
 
 const resultTemplate = function (templateData) {
     return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">COVID protection level: ${templateData.restriction.level.title}</h1>
-    <p>We've matched the postcode <strong>${templateData.searchTerm}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
+    <p>We've matched the postcode <strong>${templateData.postcode}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
 
     ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
 
@@ -108,7 +108,7 @@ const covidLookup = {
         // do we have a particular view?
         if (window.location.hash.match(/^#!\//)) {
             const postcode = window.location.hash.substring(3);
-            this.postcodeField.value = postcode;
+            this.postcodeField.value = this.formatPostcode(postcode);
 
             if (this.validatePostcode(postcode)) {
                 this.getLoctionForPostcode(postcode)
@@ -116,7 +116,7 @@ const covidLookup = {
                         const response = JSON.parse(data.response);
                         const wardId = response.ward;
                         const districtId = response.district;
-                        this.showResult(wardId, districtId, postcode);
+                        this.showResult(wardId, districtId, this.formatPostcode(postcode));
                     });
             } else {
                 // display default view
@@ -138,7 +138,7 @@ const covidLookup = {
 
             this.resultsSection.innerHTML = '';
 
-            const postcode = this.postcodeField.value.trim().toUpperCase().replace(/\s+/g, '');
+            const postcode = this.postcodeField.value.trim();
             const isValid = this.validatePostcode(postcode);
             const findButton = this.searchForm.querySelector('[type="submit"]');
             const fieldset = this.searchForm.querySelector('fieldset');
@@ -157,8 +157,9 @@ const covidLookup = {
                         const response = JSON.parse(data.response);
                         const wardId = response.ward;
                         const districtId = response.district;
-                        this.showResult(wardId, districtId, postcode);
-                        window.history.pushState({}, '', `#!/${postcode}`);
+                        this.showResult(wardId, districtId, this.formatPostcode(postcode));
+                        window.history.pushState({}, '', `#!/${postcode.toUpperCase().replace(/\s+/g, '')}`);
+                        this.postcodeField.value = this.formatPostcode(postcode);
 
                         fieldset.disabled = false;
                     }, error => {
@@ -176,7 +177,7 @@ const covidLookup = {
         });
     },
 
-    showResult: function (wardId, districtId, searchTerm) {
+    showResult: function (wardId, districtId, postcode) {
         let localRestrictions = [];
 
         const wardRestrictions = this.currentRestrictions.filter((restriction) => restriction.type === 'electoral-ward');
@@ -198,7 +199,7 @@ const covidLookup = {
 
         const templateData = {
             restriction: localRestrictions[0],
-            searchTerm: searchTerm,
+            postcode: postcode,
             resultsPageContent: this.resultsPageContent || false
         };
 
@@ -213,6 +214,8 @@ const covidLookup = {
 
         this.landingSection.classList.add('hidden');
         this.resultsSection.classList.remove('hidden');
+
+        this.postcodeField.value = this.formatPostcode(postcode);
 
         this.resultsSection.innerHTML = resultTemplate(templateData);
         window.setTimeout(() => {
@@ -275,7 +278,7 @@ const covidLookup = {
     },
 
     getLoctionForPostcode: function (postcode) {
-        return this.promiseRequest(`/service/geosearch/postcodes/${postcode}`);
+        return this.promiseRequest(`/service/geosearch/postcodes/${postcode.toUpperCase().replace(/\s+/g, '')}`);
     },
 
     requestCurrentRestrictions: function () {
@@ -308,6 +311,11 @@ const covidLookup = {
             request.open(method, url, true);
             request.send();
         });
+    },
+
+    formatPostcode: function (postcode) {
+        postcode = postcode.trim().toUpperCase().replace(/\s+/g, '');
+        return postcode.substring(0, postcode.length - 3) + ' ' + postcode.slice(-3);
     },
 
     validatePostcode: function (postcode) {
