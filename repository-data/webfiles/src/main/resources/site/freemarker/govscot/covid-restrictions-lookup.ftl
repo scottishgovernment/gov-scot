@@ -9,7 +9,6 @@
         <article id="page-content" class="layout--site-item">
             <section id="covid-restrictions-lookup-landing" class="hidden--hard">
                 <div class="ds_error-summary  fully-hidden  flashable" id="covid-restrictions-error-summary" aria-labelledby="error-summary-title" role="alert"></div>
-
                 <h1 class="article-header  overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">${document.title}</h1>
                 <div class="body-content">
                     <noscript>
@@ -27,13 +26,12 @@
                         <#if document.content??>
                             <@hst.html hippohtml=document.content/>
                         </#if>
-
                         <form id="covid-restrictions-lookup-form" class="hidden  hidden--hard  form-box" method="post">
                             <fieldset>
                                 <div class="ds_question">
                                     <label class="ds_label" for="postcode">Enter a postcode</label>
-                                    <p class="ds_hint-text">You need to enter a full postcode. For example "EH1 3DG".</p>
-                                    <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error"></p>
+                                    <p class="ds_hint-text">${document.hintMessage}</p>
+                                    <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error">${document.errorMessage}</p>
                                     <input class="ds_input" type="text" id="postcode" name="postcode">
                                 </div>
 

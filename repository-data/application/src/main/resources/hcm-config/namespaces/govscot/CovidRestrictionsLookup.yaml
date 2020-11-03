@@ -37,6 +37,22 @@ definitions:
             hipposysedit:path: govscot:searchPageContent
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /errorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:errorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /hintMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:hintMessage
+            hipposysedit:primary: false
+            hipposysedit:type: Text
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -136,6 +152,29 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /errorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Error message
+            field: errorMessage
+            hint: 'This is the content of the error message to appear when a user enters
+              an invalid postcode.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /hintMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Hint message
+            field: hintMessage
+            hint: 'This is the content which appears as a hint for users within the
+              form (eg. You need to enter a full postcode.
+              For example EH6 6QQ.).'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

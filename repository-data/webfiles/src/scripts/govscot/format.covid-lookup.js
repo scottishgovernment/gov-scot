@@ -155,9 +155,9 @@ const covidLookup = {
             const fieldset = this.searchForm.querySelector('fieldset');
 
             if (postcode === '') {
-                this.setErrorMessage(isValid, 'Enter a full valid postcode in Scotland', 'required-postcode', this.postcodeField);
+                this.setErrorMessage(isValid, 'required-postcode', this.postcodeField);
             } else {
-                this.setErrorMessage(isValid, 'Enter a full valid postcode in Scotland', 'invalid-postcode', this.postcodeField);
+                this.setErrorMessage(isValid, 'invalid-postcode', this.postcodeField);
             }
 
             if (isValid) {
@@ -249,7 +249,7 @@ const covidLookup = {
             });
     },
 
-    setErrorMessage: function (valid, message, errortype, field) {
+    setErrorMessage: function (valid, errortype, field) {
         const question = field.closest('.ds_question');
         const errorMessageElement = field.parentNode.querySelector('.ds_question__error-message');
 
@@ -265,7 +265,6 @@ const covidLookup = {
             field.setAttribute('aria-invalid', 'true');
             errorMessageElement.dataset.form = `error-${errortype}`;
             errorMessageElement.classList.remove('hidden');
-            errorMessageElement.innerText = message;
         }
 
         const errorQuestions = [].slice.call(this.searchForm.querySelectorAll('.ds_question--error'));
