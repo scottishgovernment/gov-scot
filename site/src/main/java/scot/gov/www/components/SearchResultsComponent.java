@@ -39,9 +39,11 @@ import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES
 @ParametersInfo(type = EssentialsListComponentInfo.class)
 public class SearchResultsComponent extends EssentialsListComponent {
 
-    private static String PRIMARY_TYPE = "jcr:primaryType";
-    private static Collection<String> FIELD_NAMES = new ArrayList<>();
     private static final Logger LOG = LoggerFactory.getLogger(SearchResultsComponent.class);
+
+    private static String PRIMARY_TYPE = "jcr:primaryType";
+
+    private static Collection<String> FIELD_NAMES = new ArrayList<>();
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {

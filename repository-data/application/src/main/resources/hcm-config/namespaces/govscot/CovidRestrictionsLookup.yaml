@@ -29,6 +29,14 @@ definitions:
             hipposysedit:path: govscot:resultsContent
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /searchPageContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:searchPageContent
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -53,6 +61,9 @@ definitions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
           /govscot:resultsContent:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:searchPageContent:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -112,6 +123,15 @@ definitions:
             caption: Results page content
             field: resultsContent
             hint: Content placed above the protection level links on the results page.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /searchPageContent:
+            jcr:primaryType: frontend:plugin
+            caption: Search page content
+            field: searchPageContent
+            hint: Content placed on the serch results page when the user searches for a postcode
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
