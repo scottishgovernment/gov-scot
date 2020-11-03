@@ -12,6 +12,7 @@ const commonEntry = {
     'home':                         './src/scripts/govscot/format.home.js',
     'issue-hub':                    './src/scripts/govscot/format.issue-hub.js',
     'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
+    'search':                       './src/scripts/govscot/format.search.js',
     'topic':                        './src/scripts/govscot/format.topic.js',
     'publication':                  './src/scripts/govscot/format.publication.js',
     'policy':                       './src/scripts/govscot/format.policy.js',

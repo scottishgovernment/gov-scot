@@ -17,13 +17,11 @@
             <h1 class="article-header">${index.title?html}</h1>
 
             <#if isPostcode??>
-                <div class="body-content  leader--first-para">
+                <div class="info-note note">
                     <@hst.html hippohtml=covidLookupPage.searchPageContent/>
 
-                    Use the
-                    <a href="<@hst.link hippobean=covidLookupPage/>#!/${normalisedPostcode}">
-                        COVID postcode checker.
-                    </a>
+                    <p>Use the <a href="<@hst.link hippobean=covidLookupPage/>#!/${normalisedPostcode}">
+                        COVID postcode checker.</a></p>
                 </div>
             <#else>
                 <div class="body-content  leader--first-para">
@@ -57,10 +55,10 @@
 </div>
 
 <@hst.headContribution category="footerScripts">
-    <script type="module" src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>"></script>
+    <script type="module" src="<@hst.webfile path="/assets/scripts/search.js"/>"></script>
 </@hst.headContribution>
 <@hst.headContribution category="footerScripts">
-    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/filtered-list-page.es5.js"/>"></script>
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/search.es5.js"/>"></script>
 </@hst.headContribution>
 
 <#if index??>
