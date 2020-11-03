@@ -68,7 +68,20 @@ const global = {
 
     initAccordions: function () {
         const accordionModules = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"],[data-module="ds_accordion"]'));
-        accordionModules.forEach(accordion => new Accordion(accordion).init());
+
+        accordionModules.forEach(accordion => {
+            if (accordion.querySelectorAll('.js-open-all').length === 0) {
+                // insert the show/hide button
+
+                const showAllButton = document.createElement('button');
+                showAllButton.setAttribute('class', 'link  ds_accordion__open-all  js-open-all');
+                showAllButton.setAttribute('data-accordion', 'accordion-open-all');
+                showAllButton.innerHTML = 'Open all <span class="visually-hidden">sections</span>';
+                accordion.insertBefore(showAllButton, accordion.firstChild);
+            }
+
+            new Accordion(accordion).init();
+        });
     },
 
     initMobileMenu: function () {

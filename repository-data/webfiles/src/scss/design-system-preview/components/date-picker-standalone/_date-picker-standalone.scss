@@ -1,13 +1,5 @@
 $pl-prefix: "ds_";
 
-$large-size: 19px !default;
-$small-size: 14px !default;
-$tiny-size: 12px !default;
-
-$large-size--medium: 24px !default;
-$small-size--medium: 16px !default;
-$tiny-size--medium: 14px !default;
-
 $colour__link--disabled:             $colour__text !default;
 $colour__link--disabled__background: $colour__grey--light !default;
 
@@ -45,22 +37,6 @@ $colour__brand: $colour__blue--base;
 
 @mixin colpull($columns: 1, $total: 12) {
   margin-left: calc(100% * #{$columns/$total} * -1);
-}
-
-@mixin tiny-size {
-  font-size: $tiny-size;
-
-  @include media-query(medium) {
-      font-size: $tiny-size--medium;
-  }
-}
-
-@mixin small-size {
-  font-size: $small-size;
-
-  @include media-query(medium) {
-      font-size: $small-size--medium;
-  }
 }
 
 /**

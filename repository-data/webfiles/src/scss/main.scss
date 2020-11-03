@@ -245,15 +245,10 @@ $search-box__size--medium: $search-box__size;
 
 
 
-
 /**
  * DESIGN SYSTEM
  */
 $pl_prefix: 'ds_';
-$large-size: 1.1625em;
-$small-size: 0.85em;
-$small-size--fixed: 14px !default;
-$tiny-size: 0.75rem;
 $link__outline-width: 2px;
 $link__border-width: 3px;
 $color__gold--base:     #fdd522;
@@ -282,6 +277,32 @@ $colour__blocklink-bg--active: $colour__blocklink-bg--focus;
 
 $colour__link--focus__background: $colour__blue--light;
 $colour__link--focus__shadow: transparent;
+
+$large-size: 19px !default;
+$small-size: 14px !default;
+$tiny-size: 12px !default;
+
+$small-size--fixed: 14px !default;
+
+$large-size--medium: 24px !default;
+$small-size--medium: 16px !default;
+$tiny-size--medium: 14px !default;
+
+@mixin tiny-size {
+    font-size: $tiny-size;
+
+    @include media-query(medium) {
+        font-size: $tiny-size--medium;
+    }
+}
+
+@mixin small-size {
+    font-size: $small-size;
+
+    @include media-query(medium) {
+        font-size: $small-size--medium;
+    }
+}
 
 @import "design-system-preview/components/accordion/accordion";
 @import "design-system-preview/components/date-picker-standalone/date-picker-standalone";

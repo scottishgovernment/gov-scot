@@ -15,10 +15,17 @@ $accordion__header-colour: $colour__link !default;
 
     &__open-all {
         display: none;
-        position: absolute;
-        right: 0;
+        float: right;
+        position: relative;
+        top: -7px;
         text-decoration: none;
-        top: -35px;
+
+        font-weight: $bold;
+        @include small-size;
+
+        + * {
+            clear: both;
+        }
     }
 }
 
