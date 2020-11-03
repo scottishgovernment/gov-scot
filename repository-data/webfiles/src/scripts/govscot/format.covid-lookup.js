@@ -37,11 +37,17 @@ const resultTemplate = function (templateData) {
     return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">COVID protection level: ${templateData.restriction.level.title}</h1>
     <p>We've matched the postcode <strong>${templateData.postcode}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
 
+    <h2>COVID protection level: ${templateData.restriction.level.title}</h2>
+
+    <p><a href="/${templateData.restriction.level.link.substring(0, templateData.restriction.level.link.indexOf('/pages/'))}/">Find out more about local COVID protection levels.</a></p>
+
     ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
 
-    <p><a href="/${templateData.restriction.level.link}">What you can and cannot do in protection level ${templateData.restriction.level.title}</a></p>
+    <div id="restrictions-detail">
+    </div>
 
-    <p><a href="#" class="js-enter-another">Check another postcode level</a></p>`;
+    <h2>Find information about somewhere else</h2>
+    <p><a href="#" class="js-enter-another">Check another postcode protection level</a></p>`;
 };
 
 const errorSummaryTemplate = function (templateData) {
@@ -51,6 +57,11 @@ const errorSummaryTemplate = function (templateData) {
             ${templateData.messages.map(message => `<li><a class="js-error-link" data-fieldid="${message.fieldId}" href="#${message.fieldId}">${message.content}</a></li>`)}
         </ul>`;
 };
+
+const restrictionsDetailTemplate = function (templateData) {
+    return `<div>${templateData.body}</div>`;
+};
+
 
 const covidLookup = {
     init: function () {
@@ -227,6 +238,15 @@ const covidLookup = {
                 });
             }
         }, 0);
+
+        this.requestLocalRestrictionDetails('/' + localRestrictions[0].level.link)
+            .then((data) => {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = data.responseText;
+                this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content .ds_accordion').outerHTML });
+                const detailsAccordion = new window.DS.components.GovAccordion(this.resultsSection.querySelector('#restrictions-detail .ds_accordion'));
+                detailsAccordion.init();
+            });
     },
 
     setErrorMessage: function (valid, message, errortype, field) {

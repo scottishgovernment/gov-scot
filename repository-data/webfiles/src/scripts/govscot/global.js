@@ -17,6 +17,12 @@ import Accordion from '../../scss/design-system-preview/components/accordion/acc
 import MobileMenu from '../../scss/design-system-preview/components/site-navigation/site-navigation';
 import showHide from './component.showhide';
 
+window.DS = window.DS || {};
+window.DS.components = {
+    Accordion: Accordion,
+    MobileMenu: MobileMenu
+};
+
 const global = {
     compensateAnchorOffsetForStickyElements: function () {
         // IE8 doesn't support window.pageYOffset
@@ -69,7 +75,7 @@ const global = {
     initAccordions: function () {
         const accordionModules = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"],[data-module="ds_accordion"]'));
 
-        accordionModules.forEach(accordion => {
+        window.DS.components.GovAccordion = function (accordion) {
             if (accordion.querySelectorAll('.js-open-all').length === 0) {
                 // insert the show/hide button
 
@@ -80,7 +86,11 @@ const global = {
                 accordion.insertBefore(showAllButton, accordion.firstChild);
             }
 
-            new Accordion(accordion).init();
+            return new Accordion(accordion);
+        };
+
+        accordionModules.forEach(accordion => {
+            new window.DS.components.GovAccordion(accordion).init();
         });
     },
 

@@ -12,27 +12,40 @@
 
                 <h1 class="article-header  overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">${document.title}</h1>
                 <div class="body-content">
-                    <#if document.content??>
-                        <@hst.html hippohtml=document.content/>
-                    </#if>
+                    <noscript>
+                        <div class="info-note caution">You need JavaScript enabled in your browser to use the postcode search.</div>
+                    </noscript>
+                    <style>
+                    .visible-js {
+                        display: none;
+                    }
+                    .js-enabled .visible-js {
+                        display: block;
+                    }
+                    </style>
+                    <div class="visible-js">
+                        <#if document.content??>
+                            <@hst.html hippohtml=document.content/>
+                        </#if>
 
-                    <form id="covid-restrictions-lookup-form" class="hidden  hidden--hard  form-box" method="post">
-                        <fieldset>
-                            <div class="ds_question">
-                                <label class="ds_label" for="postcode">Enter a postcode</label>
-                                <p class="ds_hint-text">You need to enter a full postcode. For example "EH1 3DG".</p>
-                                <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error"></p>
-                                <input class="ds_input" type="text" id="postcode" name="postcode">
-                            </div>
+                        <form id="covid-restrictions-lookup-form" class="hidden  hidden--hard  form-box" method="post">
+                            <fieldset>
+                                <div class="ds_question">
+                                    <label class="ds_label" for="postcode">Enter a postcode</label>
+                                    <p class="ds_hint-text">You need to enter a full postcode. For example "EH1 3DG".</p>
+                                    <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error"></p>
+                                    <input class="ds_input" type="text" id="postcode" name="postcode">
+                                </div>
 
-                            <div class="ds_question">
-                                <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error" data-form="error-find"></p>
-                                <input id="covid-lookup-submit" type="submit" class="button  button--primary  button--primary--fluid  ds_no-margin" name="submit" data-button="button-find" value="Find">
-                            </div>
-                        </fieldset>
+                                <div class="ds_question">
+                                    <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error" data-form="error-find"></p>
+                                    <input id="covid-lookup-submit" type="submit" class="button  button--primary  button--primary--fluid  ds_no-margin" name="submit" data-button="button-find" value="Find">
+                                </div>
+                            </fieldset>
 
-                        <div><a href="https://www.royalmail.com/find-a-postcode">Do not know a postcode? Get it on Royal Mail.</a></div>
-                    </form>
+                            <div><a href="https://www.royalmail.com/find-a-postcode">Do not know a postcode? Get it on Royal Mail.</a></div>
+                        </form>
+                    </div>
 
                     <#if document.secondaryContent??>
                         <div>
@@ -68,6 +81,10 @@
     </@hst.headContribution>
     <@hst.headContribution>
     <meta name="description" content="${document.metaDescription?html}"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="noscriptHead">
+        <meta http-equiv="refresh" content="0;url=/publications/coronavirus-covid-19-protection-levels/" />
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

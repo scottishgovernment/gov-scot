@@ -69,7 +69,11 @@ $medium-h4-size: $medium-font-size - 1;
 $medium-h5-size: 14px;
 $large-h2-size: 32px;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.type";
-
+h3, .gamma {
+    &:first-child {
+        margin-top: 0;
+    }
+}
 
 
 
