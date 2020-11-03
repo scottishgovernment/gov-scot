@@ -84,7 +84,9 @@
     </@hst.headContribution>
 
     <@hst.headContribution category="noscriptHead">
-        <meta http-equiv="refresh" content="0;url=/publications/coronavirus-covid-19-protection-levels/" />
+        <noscript>
+            <meta http-equiv="refresh" content="0;url=/publications/coronavirus-covid-19-protection-levels/" />
+        </noscript>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

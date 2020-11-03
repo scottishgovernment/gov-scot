@@ -4,9 +4,7 @@
 <!--[if gt IE 9]><!--><html dir="ltr" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <noscript>
-        <@hst.headContributions categoryIncludes="noscriptHead"/>
-    </noscript>
+    <@hst.headContributions categoryIncludes="noscriptHead"/>
     <@hst.headContributions categoryIncludes="dataLayer"/>
     <!-- dataLayer code MUST be higher than google tag manager code -->
     <@hst.headContributions categoryIncludes="googleTagManager"/>
