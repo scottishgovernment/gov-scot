@@ -26,7 +26,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
-    <@hst.headContributions categoryExcludes="footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
+    <@hst.headContributions categoryExcludes="noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
 
 </head>
 <body class="fontawesome site-header__container" >
