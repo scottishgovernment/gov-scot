@@ -61,27 +61,29 @@ public class ResultsPageContentComponent extends BaseHstComponent {
     private void setIsPostcode(HstRequest request) {
         String term = param(request, "q");
 
-        if (term != null) {
-            String normalisedTerm = term.replaceAll("\\s","").toUpperCase();
-            boolean isPostcode = postcodePattern.matcher(normalisedTerm).matches();
+        if (term == null) {
+            return;
+        }
 
-            if (isPostcode) {
-                // set the covid search page as a n attrib
-                HstQueryBuilder builder = HstQueryBuilder.create(request.getRequestContext().getSiteContentBaseBean());
-                HstQuery query = builder.ofTypes(CovidRestrictionsLookup.class).build();
-                try {
-                    HstQueryResult result = query.execute();
-                    if (result.getHippoBeans().hasNext()) {
-                        HippoBean covidLookupPage = result.getHippoBeans().next();
-                        request.setAttribute("isPostcode", isPostcode);
-                        request.setAttribute("covidLookupPage", covidLookupPage);
-                        request.setAttribute("normalisedPostcode", normalisedTerm);
-                    } else {
-                        LOG.warn("No CovidRestrictionsLookup page is published");
-                    }
-                } catch (QueryException e) {
-                    LOG.error("Failed to find CovidRestrictionsLookup page", e);
+        String normalisedTerm = term.replaceAll("\\s","").toUpperCase();
+        boolean isPostcode = postcodePattern.matcher(normalisedTerm).matches();
+
+        if (isPostcode) {
+            // set the covid search page as a n attrib
+            HstQueryBuilder builder = HstQueryBuilder.create(request.getRequestContext().getSiteContentBaseBean());
+            HstQuery query = builder.ofTypes(CovidRestrictionsLookup.class).build();
+            try {
+                HstQueryResult result = query.execute();
+                if (result.getHippoBeans().hasNext()) {
+                    HippoBean covidLookupPage = result.getHippoBeans().next();
+                    request.setAttribute("isPostcode", isPostcode);
+                    request.setAttribute("covidLookupPage", covidLookupPage);
+                    request.setAttribute("normalisedPostcode", normalisedTerm);
+                } else {
+                    LOG.warn("No CovidRestrictionsLookup page is published");
                 }
+            } catch (QueryException e) {
+                LOG.error("Failed to find CovidRestrictionsLookup page", e);
             }
         }
     }
