@@ -155,9 +155,9 @@ const covidLookup = {
             const fieldset = this.searchForm.querySelector('fieldset');
 
             if (postcode === '') {
-                this.setErrorMessage(isValid, 'required-postcode', this.postcodeField);
+                this.setErrorMessage(isValid, window.errorMessages.badPostcode, 'required-postcode', this.postcodeField);
             } else {
-                this.setErrorMessage(isValid, 'invalid-postcode', this.postcodeField);
+                this.setErrorMessage(isValid, window.errorMessages.badPostcode, 'invalid-postcode', this.postcodeField);
             }
 
             if (isValid) {
@@ -175,9 +175,9 @@ const covidLookup = {
                         fieldset.disabled = false;
                     }, error => {
                         if (error.status === 404) {
-                            this.setErrorMessage(false, 'Enter a full valid postcode in Scotland', 'invalid-postcode', this.postcodeField);
+                            this.setErrorMessage(false, window.errorMessages.badPostcode, 'invalid-postcode', this.postcodeField);
                         } else {
-                            this.setErrorMessage(false, 'Sorry, we have a problem at our side. Please try again later.', 'service-unavailable', findButton);
+                            this.setErrorMessage(false, window.errorMessages.serviceUnavailable, 'service-unavailable', findButton);
                         }
 
                         fieldset.disabled = false;
@@ -219,7 +219,7 @@ const covidLookup = {
         }
 
         if (!localRestrictions.length) {
-            this.setErrorMessage(false, 'We have been unable to determine the restrictions for your area', 'no-restrictions', this.postcodeField);
+            this.setErrorMessage(false, window.errorMessages.restrictionMessage, 'no-restrictions', this.postcodeField);
             return false;
         }
 
@@ -249,7 +249,7 @@ const covidLookup = {
             });
     },
 
-    setErrorMessage: function (valid, errortype, field) {
+    setErrorMessage: function (valid, message, errortype, field) {
         const question = field.closest('.ds_question');
         const errorMessageElement = field.parentNode.querySelector('.ds_question__error-message');
 
@@ -265,6 +265,7 @@ const covidLookup = {
             field.setAttribute('aria-invalid', 'true');
             errorMessageElement.dataset.form = `error-${errortype}`;
             errorMessageElement.classList.remove('hidden');
+            errorMessageElement.innerText = message;
         }
 
         const errorQuestions = [].slice.call(this.searchForm.querySelectorAll('.ds_question--error'));

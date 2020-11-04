@@ -3,7 +3,13 @@
 <#if document??>
 
     <@hst.manageContent hippobean=document/>
-
+<script>
+    window.errorMessages = {
+        badPostcode: `${document.postcodeErrorMessage}`,
+        serviceUnavailable: `${document.serviceErrorMessage}`,
+        restrictionMessage: `${document.restrictionErrorMessage}`
+    };
+</script>
 <div class="grid"><!--
     --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
         <article id="page-content" class="layout--site-item">

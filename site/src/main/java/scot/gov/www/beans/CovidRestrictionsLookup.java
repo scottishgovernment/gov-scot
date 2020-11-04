@@ -13,19 +13,29 @@ public class CovidRestrictionsLookup extends SimpleContent {
         return getHippoHtml("govscot:secondaryContent");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:secondaryContent")
+    @HippoEssentialsGenerated(internalName = "govscot:searchPageContent")
     public HippoHtml getSearchPageContent() {
         return getHippoHtml("govscot:searchPageContent");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:resutsContent")
+    @HippoEssentialsGenerated(internalName = "govscot:resultsContent")
     public HippoHtml getResultsContent() {
         return getHippoHtml("govscot:resultsContent");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:errorMessage")
-    public String getErrorMessage() {
-        return getProperty("govscot:errorMessage");
+    @HippoEssentialsGenerated(internalName = "govscot:postcodeErrorMessage")
+    public String getPostcodeErrorMessage() {
+        return getProperty("govscot:postcodeErrorMessage");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:serviceErrorMessage")
+    public String getServiceErrorMessage() {
+        return getProperty("govscot:serviceErrorMessage");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:restrictionErrorMessage")
+    public String getRestrictionErrorMessage() {
+        return getProperty("govscot:restrictionErrorMessage");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:hintMessage")

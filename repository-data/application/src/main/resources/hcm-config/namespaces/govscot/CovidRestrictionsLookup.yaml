@@ -37,12 +37,28 @@ definitions:
             hipposysedit:path: govscot:searchPageContent
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
-          /errorMessage:
+          /postcodeErrorMessage:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:errorMessage
+            hipposysedit:path: govscot:postcodeErrorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /serviceErrorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:serviceErrorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /restrictionErrorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:restrictionErrorMessage
             hipposysedit:primary: false
             hipposysedit:type: Text
           /hintMessage:
@@ -152,12 +168,35 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /errorMessage:
+          /postcodeErrorMessage:
             jcr:primaryType: frontend:plugin
-            caption: Error message
-            field: errorMessage
+            caption: Postcode error message
+            field: postcodeErrorMessage
             hint: 'This is the content of the error message to appear when a user enters
               an invalid postcode.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /serviceErrorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Service error message
+            field: serviceErrorMessage
+            hint: 'This is the content of the error message to appear when the service is
+              unavailable when a users tries to search for a postcode. (eg. "Sorry, we have
+              a problem at our side. Please try again later.")'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /restrictionErrorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Restrictions error message
+            field: restrictionErrorMessage
+            hint: 'This is the content of the error message to appear when the checker cannot
+              find restrictions for the given postcode.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
