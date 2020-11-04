@@ -23,7 +23,6 @@ if (!Element.prototype.closest) {
     };
 }
 
-
 const locationTitleTemplate = function (restriction) {
     let titleParts = [];
     titleParts.push(`<span data-${restriction.type}="${restriction.title}">${restriction.title}</span>`);
@@ -35,11 +34,12 @@ const locationTitleTemplate = function (restriction) {
 
 const resultTemplate = function (templateData) {
     return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">COVID protection level: ${templateData.restriction.level.title}</h1>
+
     <p>We've matched the postcode <strong>${templateData.postcode}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
 
-    <h2>COVID protection level: ${templateData.restriction.level.title}</h2>
+    ${templateData.restriction.description}
 
-    <p><a href="/${templateData.restriction.level.link.substring(0, templateData.restriction.level.link.indexOf('/pages/'))}/">Find out more about local COVID protection levels.</a></p>
+    <p>Check what you can and cannot do in this area at protection level ${templateData.restriction.level.title}.</p>
 
     ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
 
@@ -50,18 +50,9 @@ const resultTemplate = function (templateData) {
     <p><a href="#" class="js-enter-another">Check another postcode protection level</a></p>`;
 };
 
-const errorSummaryTemplate = function (templateData) {
-    return `<h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
-
-        <ul class="ds_error-summary__list">
-            ${templateData.messages.map(message => `<li><a class="js-error-link" data-fieldid="${message.fieldId}" href="#${message.fieldId}">${message.content}</a></li>`)}
-        </ul>`;
-};
-
 const restrictionsDetailTemplate = function (templateData) {
     return `<div>${templateData.body}</div>`;
 };
-
 
 const covidLookup = {
     init: function () {
@@ -75,26 +66,12 @@ const covidLookup = {
         this.landingSection = document.querySelector('#covid-restrictions-lookup-landing');
         this.resultsSection = document.querySelector('#covid-restrictions-lookup-results');
         this.searchForm = document.querySelector('#covid-restrictions-lookup-form');
-        this.errorSummary = document.querySelector('#covid-restrictions-error-summary');
         this.postcodeField = this.searchForm.querySelector('#postcode');
 
         // we'll want to insert this into the results page later
         const resultsPageContentContainer = document.querySelector('#covid-restrictions-lookup-results-content');
         this.resultsPageContent = resultsPageContentContainer.innerHTML;
         // resultsPageContentContainer.parentNode.removeChild(resultsPageContentContainer);
-
-        this.errorSummary.addEventListener('click', (event) => {
-            if (event.target.classList.contains('js-error-link')) {
-                event.preventDefault();
-                const targetField = document.getElementById(event.target.dataset.fieldid);
-                targetField.focus();
-                targetField.scrollIntoView({
-                    behaviour: 'smooth',
-                    block: 'center',
-                    inline: 'nearest'
-                });
-            }
-        });
 
         this.resultsSection.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-enter-another')) {
@@ -227,7 +204,6 @@ const covidLookup = {
         this.resultsSection.classList.remove('hidden');
 
         this.postcodeField.value = this.formatPostcode(postcode);
-
         this.resultsSection.innerHTML = resultTemplate(templateData);
         window.setTimeout(() => {
             if (!this.isInViewport(this.resultsSection)) {
@@ -265,35 +241,7 @@ const covidLookup = {
             field.setAttribute('aria-invalid', 'true');
             errorMessageElement.dataset.form = `error-${errortype}`;
             errorMessageElement.classList.remove('hidden');
-            errorMessageElement.innerText = message;
-        }
-
-        const errorQuestions = [].slice.call(this.searchForm.querySelectorAll('.ds_question--error'));
-        if (errorQuestions.length) {
-            // display error summary
-            const errorMessages = [];
-
-            errorQuestions.forEach(question => {
-                errorMessages.push({
-                    fieldId: field.id,
-                    content: question.querySelector('.ds_question__error-message').innerHTML
-                });
-            });
-
-            this.errorSummary.innerHTML = errorSummaryTemplate({
-                messages: errorMessages
-            });
-            this.errorSummary.classList.remove('fully-hidden');
-
-            this.errorSummary.scrollIntoView();
-            this.errorSummary.classList.add('flashable--flash');
-            window.setTimeout(() => {
-                this.errorSummary.classList.remove('flashable--flash');
-            }, 200);
-        } else {
-            // remove error summary
-            this.errorSummary.innerHTML = '';
-            this.errorSummary.classList.add('fully-hidden');
+            errorMessageElement.innerHTML = message;
         }
     },
 

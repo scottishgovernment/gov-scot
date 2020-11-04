@@ -5,9 +5,9 @@
     <@hst.manageContent hippobean=document/>
 <script>
     window.errorMessages = {
-        badPostcode: `${document.postcodeErrorMessage}`,
-        serviceUnavailable: `${document.serviceErrorMessage}`,
-        restrictionMessage: `${document.restrictionErrorMessage}`
+        badPostcode: `<@hst.html hippohtml=document.postcodeErrorMessage/>`,
+        serviceUnavailable: `<@hst.html hippohtml=document.serviceErrorMessage/>`,
+        restrictionMessage: `<@hst.html hippohtml=document.restrictionErrorMessage/>`
     };
 </script>
 <div class="grid"><!--
