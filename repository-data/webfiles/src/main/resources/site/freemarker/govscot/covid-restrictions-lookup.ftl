@@ -3,13 +3,18 @@
 <#if document??>
 
     <@hst.manageContent hippobean=document/>
+
+<@hst.html var="badpostcode" hippohtml=document.postcodeErrorMessage/>
+<@hst.html var="serviceUnavailable" hippohtml=document.serviceErrorMessage/>
+<@hst.html var="restrictionMessage" hippohtml=document.restrictionErrorMessage/>
 <script>
     window.errorMessages = {
-        badPostcode: `<@hst.html hippohtml=document.postcodeErrorMessage/>`,
-        serviceUnavailable: `<@hst.html hippohtml=document.serviceErrorMessage/>`,
-        restrictionMessage: `<@hst.html hippohtml=document.restrictionErrorMessage/>`
+        badPostcode: '${badpostcode?js_string}',
+        serviceUnavailable: '${serviceUnavailable?js_string}',
+        restrictionMessage: '${restrictionMessage?js_string}'
     };
 </script>
+
 <div class="grid"><!--
     --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
         <article id="page-content" class="layout--site-item">
