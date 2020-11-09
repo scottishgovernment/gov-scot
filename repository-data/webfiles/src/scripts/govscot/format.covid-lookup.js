@@ -152,7 +152,8 @@ const covidLookup = {
                         fieldset.disabled = false;
                     }, error => {
                         if (error.status === 404) {
-                            this.setErrorMessage(false, window.errorMessages.badPostcode, 'invalid-postcode', this.postcodeField);
+                            let errorMessage = this.getPostcodeErrorMessage(postcode);
+                            this.setErrorMessage(false, errorMessage, 'invalid-postcode', this.postcodeField);
                         } else {
                             this.setErrorMessage(false, window.errorMessages.serviceUnavailable, 'service-unavailable', findButton);
                         }
@@ -293,6 +294,38 @@ const covidLookup = {
         let valid = postcode.match(postcodeRegExp) !== null;
 
         return valid;
+    },
+
+    getPostcodeErrorMessage : function (postcode) {
+        postcode = postcode.trim().toUpperCase().replace(/\s+/g, '');
+        if (this.isEnglishPostcode(postcode)) {
+            return window.errorMessages.englishPostcode;
+        }
+
+        if (this.isWelshPostcode(postcode)) {
+            return window.errorMessages.welshPostcode;
+        }
+
+        if (this.isNorthernIrishPostcode(postcode)) {
+            return window.errorMessages.northernIrishPostcode;
+        }
+
+        return window.errorMessages.unrecognisedPostcode;
+    },
+
+    isEnglishPostcode : function (postcode) {
+        let expression = /^(AL|B|B[ABDHLNRS]|C[ABHMORTVW]|D[AEHLNTY]|E|E[CNX]|FY|G[LUY]|H[ADGPUX]|I[GM‌​P]‌​|JE|KT|L|L[AENSU]|M|M[EK]|N|N[EGNRW]|O[LX]|P[ELOR]|R[GHM]|S|S[EGKLMNOPRSTW]|T[AFNQ‌​‌​RSW]|UB|W|W[ACDFNRSV]|YO)\d{1,2}\s?(\d[\w]{2})?/;
+        return expression.test(postcode);
+    },
+
+    isWelshPostcode : function (postcode) {
+        let expression = /^(LL|SY|LD|HR|NP|CF|SA)[0-9R][0-9A-Z]?[0-9][ABD-HJLNP-UW-Z]{2}$/;
+        return expression.test(postcode);
+    },
+
+    isNorthernIrishPostcode : function (postcode) {
+        let expression = /^(BT){1,2}[0-9R][0-9A-Z]?[0-9][ABD-HJLNP-UW-Z]{2}$/;
+        return expression.test(postcode);
     },
 
     isInViewport: function (element) {

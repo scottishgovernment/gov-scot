@@ -4,14 +4,23 @@
 
     <@hst.manageContent hippobean=document/>
 
-<@hst.html var="badpostcode" hippohtml=document.postcodeErrorMessage/>
-<@hst.html var="serviceUnavailable" hippohtml=document.serviceErrorMessage/>
-<@hst.html var="restrictionMessage" hippohtml=document.restrictionErrorMessage/>
+    <@hst.html var="badpostcode" hippohtml=document.postcodeErrorMessage/>
+    <@hst.html var="serviceUnavailable" hippohtml=document.serviceErrorMessage/>
+    <@hst.html var="restrictionMessage" hippohtml=document.restrictionErrorMessage/>
+    <@hst.html var="englishPostcode" hippohtml=document.englishPostcodeErrorMessage/>
+    <@hst.html var="welshPostcode" hippohtml=document.welshPostcodeErrorMessage/>
+    <@hst.html var="northernIrishPostcode" hippohtml=document.northernIrishPostcodeErrorMessage/>
+    <@hst.html var="unrecognisedPostcode" hippohtml=document.unrecognisedPostcodeErrorMessage/>
+
 <script>
     window.errorMessages = {
         badPostcode: '${badpostcode?js_string}',
         serviceUnavailable: '${serviceUnavailable?js_string}',
-        restrictionMessage: '${restrictionMessage?js_string}'
+        restrictionMessage: '${restrictionMessage?js_string}',
+        englishPostcode: '${englishPostcode?js_string}',
+        welshPostcode: '${welshPostcode?js_string}',
+        northernIrishPostcode: '${northernIrishPostcode?js_string}',
+        unrecognisedPostcode: '${unrecognisedPostcode?js_string}'
     };
 </script>
 

@@ -38,6 +38,26 @@ public class CovidRestrictionsLookup extends SimpleContent {
         return getHippoHtml("govscot:restrictionErrorMessage");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:englishPostcodeErrorMessage")
+    public HippoHtml getEnglishPostcodeErrorMessage() {
+        return getHippoHtml("govscot:englishPostcodeErrorMessage");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:welshPostcodeErrorMessage")
+    public HippoHtml getWelshPostcodeErrorMessage() {
+        return getHippoHtml("govscot:welshPostcodeErrorMessage");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:northernIrishPostcodeErrorMessage")
+    public HippoHtml getNorthernIrishPostcodeErrorMessage() {
+        return getHippoHtml("govscot:northernIrishPostcodeErrorMessage");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:unrecognisedPostcodeErrorMessage")
+    public HippoHtml getUnrecognisedPostcodeErrorMessage() {
+        return getHippoHtml("govscot:unrecognisedPostcodeErrorMessage");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:hintMessage")
     public String getHintMessage() {
         return getProperty("govscot:hintMessage");

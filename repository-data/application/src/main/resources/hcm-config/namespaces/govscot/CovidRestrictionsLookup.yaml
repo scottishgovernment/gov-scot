@@ -45,6 +45,38 @@ definitions:
             hipposysedit:path: govscot:postcodeErrorMessage
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /englishPostcodeErrorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:englishPostcodeErrorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /welshPostcodeErrorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:welshPostcodeErrorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /northernIrishPostcodeErrorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:northernIrishPostcodeErrorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /unrecognisedPostcodeErrorMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:unrecognisedPostcodeErrorMessage
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
           /serviceErrorMessage:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -105,6 +137,18 @@ definitions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
           /govscot:postcodeErrorMessage:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:englishPostcodeErrorMessage:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:welshPostcodeErrorMessage:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:northernIrishPostcodeErrorMessage:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:unrecognisedPostcodeErrorMessage:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -183,6 +227,51 @@ definitions:
             field: postcodeErrorMessage
             hint: 'This is the content of the error message to appear when a user enters
               an invalid postcode.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /englishPostcodeErrorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: English postcode error message
+            field: englishPostcodeErrorMessage
+            hint: 'This is the content of the error message to appear when a user enters
+              an English postcode.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /welshPostcodeErrorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Welsh postcode error message
+            field: welshPostcodeErrorMessage
+            hint: 'This is the content of the error message to appear when a user enters
+              a Welsh postcode.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /northernIrishPostcodeErrorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Northern Irish postcode error message
+            field: northernIrishPostcodeErrorMessage
+            hint: 'This is the content of the error message to appear when a user enters
+              a Northern Irish invalid postcode.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              maxlength: '300'
+          /unrecognisedPostcodeErrorMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Unrecognised postcode error message
+            field: unrecognisedPostcodeErrorMessage
+            hint: 'This is the content of the error message to appear when a user enters
+              an unrecognised postcode: i.e. it has the form of a postcode, but does not look like it is from
+              England, Wales or NI and cannot be founf'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
