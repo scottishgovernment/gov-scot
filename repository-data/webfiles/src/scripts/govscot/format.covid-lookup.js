@@ -99,7 +99,7 @@ const covidLookup = {
             this.postcodeField.value = this.formatPostcode(postcode);
 
             if (this.validatePostcode(postcode)) {
-                this.getLoctionForPostcode(postcode)
+                this.getLocationForPostcode(postcode)
                     .then((data) => {
                         const response = JSON.parse(data.response);
                         const wardId = response.ward;
@@ -140,13 +140,13 @@ const covidLookup = {
             if (isValid) {
                 fieldset.disabled = true;
 
-                this.getLoctionForPostcode(postcode)
+                this.getLocationForPostcode(postcode)
                     .then(data => {
                         const response = JSON.parse(data.response);
                         const wardId = response.ward;
                         const districtId = response.district;
                         this.showResult(wardId, districtId, this.formatPostcode(postcode));
-                        window.history.pushState({}, '', `#!/${postcode.toUpperCase().replace(/\s+/g, '')}`);
+                        window.history.pushState({}, '', `#!/${this.normalisePostcode(postcode)}`);
                         this.postcodeField.value = this.formatPostcode(postcode);
 
                         fieldset.disabled = false;
@@ -246,8 +246,8 @@ const covidLookup = {
         }
     },
 
-    getLoctionForPostcode: function (postcode) {
-        return this.promiseRequest(`/service/geosearch/postcodes/${postcode.toUpperCase().replace(/\s+/g, '')}`);
+    getLocationForPostcode: function (postcode) {
+        return this.promiseRequest(`/service/geosearch/postcodes/${this.normalisePostcode(postcode)}`);
     },
 
     requestCurrentRestrictions: function () {
@@ -283,12 +283,12 @@ const covidLookup = {
     },
 
     formatPostcode: function (postcode) {
-        postcode = postcode.trim().toUpperCase().replace(/\s+/g, '');
+        postcode = this.normalisePostcode(postcode);
         return postcode.substring(0, postcode.length - 3) + ' ' + postcode.slice(-3);
     },
 
     validatePostcode: function (postcode) {
-        postcode = postcode.trim().toUpperCase().replace(/\s+/g, '');
+        postcode = this.normalisePostcode(postcode);
 
         let postcodeRegExp = new RegExp('^[A-Z]{1,2}[0-9R][0-9A-Z]?[0-9][ABD-HJLNP-UW-Z]{2}$');
         let valid = postcode.match(postcodeRegExp) !== null;
@@ -297,7 +297,8 @@ const covidLookup = {
     },
 
     getPostcodeErrorMessage : function (postcode) {
-        postcode = postcode.trim().toUpperCase().replace(/\s+/g, '');
+        postcode = this.normalisePostcode(postcode);
+
         if (this.isEnglishPostcode(postcode)) {
             return window.errorMessages.englishPostcode;
         }
@@ -334,6 +335,10 @@ const covidLookup = {
             bounding.left >= 0 &&
             bounding.bottom <= (window.innerHeight) &&
             bounding.right <= (window.innerWidth));
+    },
+
+    normalisePostcode : function (postcode) {
+        return postcode.trim().toUpperCase().replace(/\s+/g, '');
     }
 };
 
