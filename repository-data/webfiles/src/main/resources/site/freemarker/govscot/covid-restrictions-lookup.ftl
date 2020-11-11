@@ -51,7 +51,7 @@
                                 <div class="ds_question">
                                     <label class="ds_label" for="postcode">Enter a postcode</label>
                                     <p class="ds_hint-text">${document.hintMessage}</p>
-                                    <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error">${document.errorMessage}</p>
+                                    <p class="ds_question__message  ds_question__error-message  hidden  hidden--hard  perf-error"></p>
                                     <input class="ds_input" type="text" id="postcode" name="postcode">
                                 </div>
 
