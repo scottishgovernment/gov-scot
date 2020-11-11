@@ -123,12 +123,7 @@ public class SplitPostcodesResource {
     public SplitPostcode getSplitPostcodes(@PathParam("postcode") String postcode) {
 
         LOG.info("getSplitPostcodes {}", postcode);
-
-        if (!splitPostcodes.containsKey(postcode)) {
-            throw new WebApplicationException(Response.status(NOT_FOUND).build());
-        }
-
-        return splitPostcodes.get(postcode);
+        return splitPostcodes.getOrDefault(postcode, new SplitPostcode(postcode));
     }
 
 }

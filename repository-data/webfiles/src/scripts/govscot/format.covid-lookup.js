@@ -23,23 +23,14 @@ if (!Element.prototype.closest) {
     };
 }
 
-const locationTitleTemplate = function (restriction) {
-    let titleParts = [];
-    titleParts.push(`<span data-${restriction.type}="${restriction.title}">${restriction.title}</span>`);
-    if (restriction.parent) {
-        titleParts.push(`<span data-${restriction.parent.type}="${restriction.parent.title}">${restriction.parent.title}</span>`);
-    }
-    return titleParts.join(', ');
-};
-
 const resultTemplate = function (templateData) {
-    return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">COVID protection level: ${templateData.restriction.level.title}</h1>
+    return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">${templateData.title}</h1>
 
-    <p>We've matched the postcode <strong>${templateData.postcode}</strong> to <strong>${locationTitleTemplate(templateData.restriction)}</strong>.
+    <p>We've matched the postcode <strong>${templateData.postcode}</strong> to ${templateData.locationsDescription}
 
     ${templateData.restriction.description}
 
-    <p>Check what you can and cannot do in this area at protection level ${templateData.restriction.level.title}.</p>
+    ${templateData.restrictionsSummary}
 
     ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
 
@@ -50,6 +41,7 @@ const resultTemplate = function (templateData) {
     <p><a href="#" class="js-enter-another">Check another postcode protection level</a></p>`;
 };
 
+
 const restrictionsDetailTemplate = function (templateData) {
     return `<div>${templateData.body}</div>`;
 };
@@ -58,7 +50,9 @@ const covidLookup = {
     init: function () {
         this.requestCurrentRestrictions()
             .then((data) => {
-                this.currentRestrictions = JSON.parse(data.response);
+                let restrictions = JSON.parse(data.response);
+                this.restrictionsById = {};
+                restrictions.forEach(restriction => this.restrictionsById[restriction.id] = restriction);
                 this.enableSearchForm();
                 this.checkCurrentView();
             });
@@ -100,12 +94,7 @@ const covidLookup = {
 
             if (this.validatePostcode(postcode)) {
                 this.getLocationForPostcode(postcode)
-                    .then((data) => {
-                        const response = JSON.parse(data.response);
-                        const wardId = response.ward;
-                        const districtId = response.district;
-                        this.showResult(wardId, districtId, this.formatPostcode(postcode));
-                    });
+                    .then((data) => this.showResult(data));
             } else {
                 // display default view
                 this.landingSection.classList.remove('hidden');
@@ -141,14 +130,10 @@ const covidLookup = {
                 fieldset.disabled = true;
 
                 this.getLocationForPostcode(postcode)
-                    .then(data => {
-                        const response = JSON.parse(data.response);
-                        const wardId = response.ward;
-                        const districtId = response.district;
-                        this.showResult(wardId, districtId, this.formatPostcode(postcode));
+                    .then(response => {
+                        this.showResult(response);
                         window.history.pushState({}, '', `#!/${this.normalisePostcode(postcode)}`);
                         this.postcodeField.value = this.formatPostcode(postcode);
-
                         fieldset.disabled = false;
                     }, error => {
                         if (error.status === 404) {
@@ -166,41 +151,21 @@ const covidLookup = {
         });
     },
 
-    showResult: function (wardId, districtId, postcode) {
-        let localRestrictions = [];
-
-        const wardRestrictions = this.currentRestrictions.filter((restriction) => restriction.type === 'electoral-ward');
-        const authorityRestrictions = this.currentRestrictions.filter((restriction) => restriction.type === 'local-authority');
-
-        for (let i = 0, il = wardRestrictions.length; i < il; i++) {
-            if (wardRestrictions[i].id === wardId) {
-                localRestrictions.push(wardRestrictions[i]);
-                break;
-            }
-        }
-
-        for (let i = 0, il = authorityRestrictions.length; i < il; i++) {
-            if (authorityRestrictions[i].id === districtId) {
-                localRestrictions.push(authorityRestrictions[i]);
-                break;
-            }
-        }
-
+    showResult: function (response) {
+        response.locations.forEach(restriction => this.addRestriction(restriction));
+        response.distinctLevelCount = this.getLevelCount(response);
+        let postcode = this.formatPostcode(response.postcode);
+        let title = this.resultsTitle(response);
+        let locationsDescription = this.describeLocations(response);
+        let restrictionsSummary = this.restrictionsSummary(response);
         const templateData = {
-            restriction: localRestrictions[0],
+            title: title,
+            restriction: response.locations[0].restriction,
             postcode: postcode,
+            locationsDescription: locationsDescription,
+            restrictionsSummary: restrictionsSummary,
             resultsPageContent: this.resultsPageContent || false
         };
-
-        if (localRestrictions[1]) {
-            templateData.restriction.parent = localRestrictions[1];
-        }
-
-        if (!localRestrictions.length) {
-            this.setErrorMessage(false, window.errorMessages.restrictionMessage, 'no-restrictions', this.postcodeField);
-            return false;
-        }
-
         this.landingSection.classList.add('hidden');
         this.resultsSection.classList.remove('hidden');
 
@@ -216,14 +181,96 @@ const covidLookup = {
             }
         }, 0);
 
-        this.requestLocalRestrictionDetails('/' + localRestrictions[0].level.link)
-            .then((data) => {
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = data.responseText;
-                this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({ body: tempDiv.querySelector('.body-content .ds_accordion').outerHTML });
-                const detailsAccordion = new window.DS.components.GovAccordion(this.resultsSection.querySelector('#restrictions-detail .ds_accordion'));
-                detailsAccordion.init();
-            });
+        // if there is only one level for the postcode and the postcode is not split on the scotlsand england border,
+        // fetch the content and display it inline
+        if (response.distinctLevelCount === 1 && response.splitWithEngland === false) {
+            this.requestLocalRestrictionDetails('/' + response.locations[0].restriction.level.link)
+                .then((data) => {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data.responseText;
+                    this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({body: tempDiv.querySelector('.body-content .ds_accordion').outerHTML});
+                    const detailsAccordion = new window.DS.components.GovAccordion(this.resultsSection.querySelector('#restrictions-detail .ds_accordion'));
+                    detailsAccordion.init();
+                });
+        }
+    },
+
+    resultsTitle : function (response) {
+        // the title is simplified either if it is split in such a way that more than one level might apply
+        let title = 'COVID protection level';
+
+        if (response.splitWithEngland) {
+            return title;
+        }
+
+        if (response.distinctLevelCount > 1) {
+            return title;
+        }
+
+        return `${title}: ${response.locations[0].restriction.level.title}`;
+    },
+
+    restrictionsSummary : function (response) {
+        if (response.splitWithEngland) {
+            // Do we need to make this link editable in the cms since it might change?
+            return `<p>Check what you can and cannot do in these following areas -</p>
+                    <ul>
+                        ${this.listItemForLocation(response.locations[0], response.splitWithEngland)}
+                        <li>England - current guidance in <a href="https://www.gov.uk/guidance/new-national-restrictions-from-5-november">England</a></li>
+                    </ul>
+                `;
+        }
+
+        // only one level
+        if (response.distinctLevelCount === 1) {
+            let levelTitle = response.locations[0].restriction.level.title;
+            return `<p>Check what you can and cannot do in this area at protection level ${levelTitle}.</p>`;
+        }
+
+        // more than one level ...
+        let listItems = response.locations.map(
+                location => this.listItemForLocation(location, response.splitWithEngland)).join('');
+        return `<p>Check what you can and cannot do in these following areas -</p>
+                    <ul>
+                        ${listItems}
+                    </ul>
+                `;
+    },
+
+    listItemForLocation : function(location, splitWithEngland) {
+        let title = this.restrictionTitle(location.restriction, splitWithEngland);
+        return `<li>
+                    ${title} - <a href="/${location.restriction.level.link}">
+                    protection level ${location.restriction.level.title}
+                    </a>
+                </li>`;
+    },
+
+    describeLocations : function (response) {
+        let titles = response.locations.map(loc => this.restrictionTitle(loc.restriction, response.splitWithEngland));
+        if (response.splitWithEngland === true) {
+            titles.push('England');
+        }
+        return titles.map(title => `<strong>${errortype}</strong>`).join(' and ');
+    },
+
+    restrictionTitle : function (restriction, splitWithEngland) {
+        return splitWithEngland ? restriction.title + ', Scotland' : restriction.title;
+    },
+
+    addRestriction : function (location) {
+        if (location.ward in this.restrictionsById) {
+            let wardRestriction = this.restrictionsById[location.ward];
+            let districtRescriction =  this.restrictionsById[location.district];
+            location.restriction = wardRestriction;
+            location.restriction.title = wardRestriction.title + ', ' + districtRescriction.title;
+            return;
+        }
+
+        if (location.district in this.restrictionsById) {
+            location.restriction = this.restrictionsById[location.district];
+            return;
+        }
     },
 
     setErrorMessage: function (valid, message, errortype, field) {
@@ -247,7 +294,39 @@ const covidLookup = {
     },
 
     getLocationForPostcode: function (postcode) {
-        return this.promiseRequest(`/service/geosearch/postcodes/${this.normalisePostcode(postcode)}`);
+
+        postcode = this.normalisePostcode(postcode);
+
+        // call both the geosearch and split postode endpoints and combine the result
+        return new Promise((resolve, reject) =>
+            Promise.all([
+                this.promiseRequest(`/service/geosearch/postcodes/${postcode}`),
+                this.promiseRequest(`/rest/split-postcodes/${postcode}`)
+            ]).then(
+                values => resolve(this.combineLocationResponses(values)),
+                error => reject(error))
+        );
+    },
+
+    combineLocationResponses : function (responses) {
+        const geoResponse = JSON.parse(responses[0].response);
+        const splitsResponse = JSON.parse(responses[1].response);
+
+        if (splitsResponse.splits.length > 0) {
+            geoResponse.locations = splitsResponse.splits;
+        } else {
+            geoResponse.locations = [{ ward : geoResponse.ward, district : geoResponse.district }];
+        }
+        // if the postcode is split on the England / Scotland border then there will be a single split element in the
+        // response from the split postcodes endpoint
+        geoResponse.splitWithEngland = splitsResponse.splits.length === 1;
+        return geoResponse;
+    },
+
+    getLevelCount : function (response) {
+        let levels = {};
+        response.locations.forEach(loc => levels[loc.restriction.level.level] = true);
+        return Object.keys(levels).length;
     },
 
     requestCurrentRestrictions: function () {
