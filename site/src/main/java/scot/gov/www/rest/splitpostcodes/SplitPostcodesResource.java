@@ -2,17 +2,12 @@ package scot.gov.www.rest.splitpostcodes;
 
 import com.google.common.base.Splitter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.io.*;
 import java.util.*;
 
 import static java.util.stream.Collectors.toSet;
-import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 /**
  * Provide access to split postcode data
@@ -30,8 +25,6 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
  */
 @Path("/split-postcodes/")
 public class SplitPostcodesResource {
-
-    private static final Logger LOG = LoggerFactory.getLogger(SplitPostcodesResource.class);
 
     private SortedMap<String, SplitPostcode> splitPostcodes = new TreeMap<>();
 
@@ -121,8 +114,6 @@ public class SplitPostcodesResource {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public SplitPostcode getSplitPostcodes(@PathParam("postcode") String postcode) {
-
-        LOG.info("getSplitPostcodes {}", postcode);
         return splitPostcodes.getOrDefault(postcode, new SplitPostcode(postcode));
     }
 
