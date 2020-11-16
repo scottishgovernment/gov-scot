@@ -251,7 +251,7 @@ const covidLookup = {
         if (response.splitWithEngland === true) {
             titles.push('England');
         }
-        return titles.map(title => `<strong>${errortype}</strong>`).join(' and ');
+        return titles.map(title => `<strong>${title}</strong>`).join(' and ');
     },
 
     restrictionTitle : function (restriction, splitWithEngland) {
