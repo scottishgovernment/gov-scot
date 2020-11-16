@@ -12,6 +12,8 @@
 
     <!--Exclude DocumentInformation nodes from the index.-->
     <index-rule nodeType="govscot:DocumentInformation" nodeScopeIndex="false"></index-rule>
+    <!--Exclude the search results page itself from being indexed. -->
+    <index-rule nodeType="govscot:SimpleContent" condition="@govscot:rubricId = 'GOV-8'" nodeScopeIndex="false"></index-rule>
 
     <!--
        This can be used to exclude specific fields from the nodeScopeIndex:
