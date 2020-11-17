@@ -233,7 +233,7 @@ const covidLookup = {
     describeMatch : function (postcode, response) {
         let locationsDescription = this.describeLocations(response);
         if (response.splitWithEngland) {
-            return `<p>The postcode <strong>${postcode}</strong> is covered by ${locationsDescription}</p>`;
+            return `<p>The postcode <strong>${postcode}</strong> is covered by ${locationsDescription}.</p>`;
         }
 
         if (response.locations.length === 1) {
@@ -272,7 +272,7 @@ const covidLookup = {
         // more than one level ...
         let listItems = response.locations.map(
             location => this.listItemForLocation(location, response.splitWithEngland)).join('');
-        return `<p>Check what you can and cannot do in these following areas -</p>
+        return `<p>Check what you can and cannot do in these areas -</p>
                 <ul>
                     ${listItems}
                 </ul>
@@ -307,7 +307,7 @@ const covidLookup = {
             location.restriction = wardRestriction;
             location.restriction.titleMarkup =
                 `
-                    <span data-ward="${wardRestriction.title}">${wardRestriction.title}</span>, 
+                    <span data-ward="${wardRestriction.title}">${wardRestriction.title}</span>,
                     <span data-local-authority="${districtRestriction.title}">${districtRestriction.title}</span>
                 `;
             return;
