@@ -46,6 +46,14 @@ const restrictionsDetailTemplate = function (templateData) {
     return `<div>${templateData.body}</div>`;
 };
 
+const errorSummaryTemplate = function (templateData) {
+    return `<h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
+
+        <ul class="ds_error-summary__list">
+            ${templateData.messages.map(message => `<li><a class="js-error-link" data-fieldid="${message.fieldId}" href="#${message.fieldId}">${message.content}</a></li>`)}
+        </ul>`;
+};
+
 const covidLookup = {
     init: function () {
         this.requestCurrentRestrictions()
@@ -60,12 +68,26 @@ const covidLookup = {
         this.landingSection = document.querySelector('#covid-restrictions-lookup-landing');
         this.resultsSection = document.querySelector('#covid-restrictions-lookup-results');
         this.searchForm = document.querySelector('#covid-restrictions-lookup-form');
+        this.errorSummary = document.querySelector('#covid-restrictions-error-summary');
         this.postcodeField = this.searchForm.querySelector('#postcode');
 
         // we'll want to insert this into the results page later
         const resultsPageContentContainer = document.querySelector('#covid-restrictions-lookup-results-content');
         this.resultsPageContent = resultsPageContentContainer.innerHTML;
         // resultsPageContentContainer.parentNode.removeChild(resultsPageContentContainer);
+
+        this.errorSummary.addEventListener('click', (event) => {
+            if (event.target.classList.contains('js-error-link')) {
+                event.preventDefault();
+                const targetField = document.getElementById(event.target.dataset.fieldid);
+                targetField.focus();
+                targetField.scrollIntoView({
+                    behaviour: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }
+        });
 
         this.resultsSection.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-enter-another')) {
@@ -249,7 +271,7 @@ const covidLookup = {
 
         // more than one level ...
         let listItems = response.locations.map(
-                location => this.listItemForLocation(location, response.splitWithEngland)).join('');
+            location => this.listItemForLocation(location, response.splitWithEngland)).join('');
         return `<p>Check what you can and cannot do in these following areas -</p>
                 <ul>
                     ${listItems}
@@ -317,6 +339,35 @@ const covidLookup = {
             errorMessageElement.classList.remove('hidden');
             errorMessageElement.innerHTML = message;
         }
+
+        const errorQuestions = [].slice.call(this.searchForm.querySelectorAll('.ds_question--error'));
+        if (errorQuestions.length) {
+            // display error summary
+            const errorMessages = [];
+
+            errorQuestions.forEach(question => {
+                errorMessages.push({
+                    fieldId: field.id,
+                    content: question.querySelector('.ds_question__error-message > *:first-child').innerHTML
+                });
+            });
+
+            this.errorSummary.innerHTML = errorSummaryTemplate({
+                messages: errorMessages
+            });
+            this.errorSummary.classList.remove('fully-hidden');
+
+            this.errorSummary.scrollIntoView();
+            this.errorSummary.classList.add('flashable--flash');
+            window.setTimeout(() => {
+                this.errorSummary.classList.remove('flashable--flash');
+            }, 200);
+        } else {
+            // remove error summary
+            this.errorSummary.innerHTML = '';
+            this.errorSummary.classList.add('fully-hidden');
+        }
+
     },
 
     getLocationForPostcode: function (postcode) {
