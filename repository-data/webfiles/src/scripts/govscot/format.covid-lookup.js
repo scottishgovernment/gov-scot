@@ -254,7 +254,7 @@ const covidLookup = {
             // Do we need to make this link editable in the cms since it might change?
             return `
                 <p>The protection level you need to follow depends on which country the address is in.</p>
-                <p>Check what you can and cannot do in these following areas:</p>
+                <p>Check what you can and cannot do in these areas:</p>
                 <ul>
                     ${this.listItemForLocation(response.locations[0], response.splitWithEngland)}
                     <li><a href="https://www.gov.uk/guidance/new-national-restrictions-from-5-november">COVID guidance for England</a></li>
