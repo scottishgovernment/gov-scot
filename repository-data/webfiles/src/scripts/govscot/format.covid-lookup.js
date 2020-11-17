@@ -26,7 +26,7 @@ if (!Element.prototype.closest) {
 const resultTemplate = function (templateData) {
     return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">${templateData.title}</h1>
 
-    <p>We've matched the postcode <strong>${templateData.postcode}</strong> to ${templateData.locationsDescription}
+    ${templateData.matchDescription}
 
     ${templateData.restriction.description}
 
@@ -156,13 +156,13 @@ const covidLookup = {
         response.distinctLevelCount = this.getLevelCount(response);
         let postcode = this.formatPostcode(response.postcode);
         let title = this.resultsTitle(response);
-        let locationsDescription = this.describeLocations(response);
+        let matchDescription = this.describeMatch(postcode, response);
         let restrictionsSummary = this.restrictionsSummary(response);
         const templateData = {
             title: title,
+            matchDescription: matchDescription,
             restriction: response.locations[0].restriction,
             postcode: postcode,
-            locationsDescription: locationsDescription,
             restrictionsSummary: restrictionsSummary,
             resultsPageContent: this.resultsPageContent || false
         };
@@ -197,27 +197,47 @@ const covidLookup = {
 
     resultsTitle : function (response) {
         // the title is simplified either if it is split in such a way that more than one level might apply
-        let title = 'COVID protection level';
-
         if (response.splitWithEngland) {
-            return title;
+            return 'There may be different protection levels in this area';
         }
 
         if (response.distinctLevelCount > 1) {
-            return title;
+            return 'There are different protection levels in this area';
         }
 
-        return `${title}: ${response.locations[0].restriction.level.title}`;
+        return `COVID protection level: ${response.locations[0].restriction.level.title}`;
+    },
+
+    describeMatch : function (postcode, response) {
+        let locationsDescription = this.describeLocations(response);
+        if (response.splitWithEngland) {
+            return `<p>The postcode <strong>${postcode}</strong> is covered by ${locationsDescription}</p>`;
+        }
+
+        if (response.locations.length === 1) {
+            return `<p>We've matched the postcode <strong>${postcode}</strong> to ${locationsDescription}.</p>`;
+        }
+
+        let levelTitle = response.locations[0].restriction.level.title;
+        let title = `<p>The postcode <strong>${postcode}</strong> is covered by 2 wards or councils: ${locationsDescription}.</p>`;
+        if (response.distinctLevelCount === 1) {
+            return title + `<p>Both these areas are in protection level ${levelTitle} right now.</p>`;
+        } else {
+            return title + '<p>There are different protection levels in each of these areas right now.</p>';
+        }
     },
 
     restrictionsSummary : function (response) {
         if (response.splitWithEngland) {
             // Do we need to make this link editable in the cms since it might change?
-            return `<p>Check what you can and cannot do in these following areas -</p>
-                    <ul>
-                        ${this.listItemForLocation(response.locations[0], response.splitWithEngland)}
-                        <li>England - current guidance in <a href="https://www.gov.uk/guidance/new-national-restrictions-from-5-november">England</a></li>
-                    </ul>
+            return `
+                <p>The protection level you need to follow depends on which country the address is in.</p>
+                <p>Check what you can and cannot do in these following areas:</p>
+                <ul>
+                    ${this.listItemForLocation(response.locations[0], response.splitWithEngland)}
+                    <li><a href="https://www.gov.uk/guidance/new-national-restrictions-from-5-november">COVID guidance for England</a></li>
+                </ul>
+                <p>If you’re unsure who covers the address, you can check with the <a href="https://www.mygov.scot/find-your-local-council/">local council in Scotland</a></p>
                 `;
         }
 
@@ -231,44 +251,50 @@ const covidLookup = {
         let listItems = response.locations.map(
                 location => this.listItemForLocation(location, response.splitWithEngland)).join('');
         return `<p>Check what you can and cannot do in these following areas -</p>
-                    <ul>
-                        ${listItems}
-                    </ul>
+                <ul>
+                    ${listItems}
+                </ul>
+                <p>The protection level you need to follow depends on each address in that postcode. The address decides which local council covers it. </p>
+                <p>If you’re unsure who covers the address, you should check <a href="https://www.mygov.scot/find-your-local-council/">with one of the councils.</a></p>
                 `;
     },
 
     listItemForLocation : function(location, splitWithEngland) {
         let title = this.restrictionTitle(location.restriction, splitWithEngland);
         return `<li>
-                    ${title} - <a href="/${location.restriction.level.link}">
-                    protection level ${location.restriction.level.title}
-                    </a>
+                    <a href="/${location.restriction.level.link}">${title}:  protection level ${location.restriction.level.title}</a>
                 </li>`;
     },
 
     describeLocations : function (response) {
         let titles = response.locations.map(loc => this.restrictionTitle(loc.restriction, response.splitWithEngland));
         if (response.splitWithEngland === true) {
-            titles.push('England');
+            titles.push('<span data-country="England">England</span>');
         }
         return titles.map(title => `<strong>${title}</strong>`).join(' and ');
     },
 
     restrictionTitle : function (restriction, splitWithEngland) {
-        return splitWithEngland ? restriction.title + ', Scotland' : restriction.title;
+        return splitWithEngland ? restriction.titleMarkup + ', Scotland' : restriction.titleMarkup;
     },
 
     addRestriction : function (location) {
         if (location.ward in this.restrictionsById) {
             let wardRestriction = this.restrictionsById[location.ward];
-            let districtRescriction =  this.restrictionsById[location.district];
+            let districtRestriction =  this.restrictionsById[location.district];
             location.restriction = wardRestriction;
-            location.restriction.title = wardRestriction.title + ', ' + districtRescriction.title;
+            location.restriction.titleMarkup =
+                `
+                    <span data-ward="${wardRestriction.title}">${wardRestriction.title}</span>, 
+                    <span data-local-authority="${districtRestriction.title}">${districtRestriction.title}</span>
+                `;
             return;
         }
 
         if (location.district in this.restrictionsById) {
+            let districtRestriction =  this.restrictionsById[location.district];
             location.restriction = this.restrictionsById[location.district];
+            location.restriction.titleMarkup = `<span data-local-authority="${districtRestriction.title}">${districtRestriction.title}</span>`;
             return;
         }
     },
