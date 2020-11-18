@@ -272,7 +272,7 @@ const covidLookup = {
         // more than one level ...
         let listItems = response.locations.map(
             location => this.listItemForLocation(location, response.splitWithEngland)).join('');
-        return `<p>Check what you can and cannot do in these areas -</p>
+        return `<p>Check what you can and cannot do in these areas:</p>
                 <ul>
                     ${listItems}
                 </ul>
