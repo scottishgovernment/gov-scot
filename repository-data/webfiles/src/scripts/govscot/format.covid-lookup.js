@@ -28,7 +28,7 @@ const resultTemplate = function (templateData) {
 
     ${templateData.matchDescription}
 
-    ${templateData.restriction.description}
+    ${templateData.restrictions.map(restriction => `${restriction.description}\n`).join('')}
 
     ${templateData.restrictionsSummary}
 
@@ -50,7 +50,7 @@ const errorSummaryTemplate = function (templateData) {
     return `<h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
 
         <ul class="ds_error-summary__list">
-            ${templateData.messages.map(message => `<li><a class="js-error-link" data-fieldid="${message.fieldId}" href="#${message.fieldId}">${message.content}</a></li>`)}
+            ${templateData.messages.map(message => `<li><a class="js-error-link" data-fieldid="${message.fieldId}" href="#${message.fieldId}">${message.content}</a></li>`).join('')}
         </ul>`;
 };
 
@@ -183,11 +183,12 @@ const covidLookup = {
         const templateData = {
             title: title,
             matchDescription: matchDescription,
-            restriction: response.locations[0].restriction,
+            restrictions: response.locations.map(location => location.restriction),
             postcode: postcode,
             restrictionsSummary: restrictionsSummary,
             resultsPageContent: this.resultsPageContent || false
         };
+
         this.landingSection.classList.add('hidden');
         this.resultsSection.classList.remove('hidden');
 
