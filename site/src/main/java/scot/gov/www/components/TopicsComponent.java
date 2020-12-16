@@ -9,10 +9,9 @@ import scot.gov.www.beans.SimpleContent;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.beans.TopicsAndLetter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.groupingBy;
 
 
@@ -35,6 +34,7 @@ public class TopicsComponent extends BaseHstComponent {
             topicAndLetter.setTopics(entry.getValue());
             topicsAndLetters.add(topicAndLetter);
         }
+        Collections.sort(topicsAndLetters, comparing(TopicsAndLetter::getLetter));
         request.setAttribute("topicsByLetter", topicsAndLetters);
     }
 
