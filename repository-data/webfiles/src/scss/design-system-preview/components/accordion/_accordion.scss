@@ -105,8 +105,7 @@ h1,h2,h3 {
         display: none;
         padding: 21px 50px 42px 15px;
 
-        > :last-child,
-        > :first-child {
+        > :last-child {
             margin-bottom: 0;
         }
     }
