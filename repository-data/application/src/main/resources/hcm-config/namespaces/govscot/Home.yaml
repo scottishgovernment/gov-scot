@@ -31,6 +31,30 @@ definitions:
             hipposysedit:path: govscot:featuredItems
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+          /flickrContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:flickrContent
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /twitterContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:twitterContent
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /youtubeContent:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:youtubeContent
+            hipposysedit:primary: false
+            hipposysedit:type: Text
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -46,6 +70,9 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
+          govscot:flickrContent: ''
+          govscot:twitterContent: ''
+          govscot:youtubeContent: ''
           jcr:uuid: eb3f5783-f71b-441e-93c8-9f4bdd666027
           hippostdpubwf:lastModificationDate: 2018-04-12T10:35:48.116+01:00
           hippostdpubwf:creationDate: 2018-04-12T10:35:48.117+01:00
@@ -122,6 +149,33 @@ definitions:
             hint: The stat box is controlled dynamically from the 'How government
               works' page and should not be edited.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /flickrContent:
+            jcr:primaryType: frontend:plugin
+            caption: Flickr card
+            field: flickrContent
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /twitterContent:
+            jcr:primaryType: frontend:plugin
+            caption: Twitter card
+            field: twitterContent
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /youtubeContent:
+            jcr:primaryType: frontend:plugin
+            caption: YouTube card
+            field: youtubeContent
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

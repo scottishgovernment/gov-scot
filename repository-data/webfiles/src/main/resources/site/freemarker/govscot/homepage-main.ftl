@@ -387,7 +387,7 @@
                 </div>
                 <div class="ds_card__content">
                     <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-flickr" href="http://www.flickr.com/scottishgovernment">Flickr</a></h2>
-                    <p>Follow Scottish Government on Flickr</p>
+                    <#if document??><p>${document.flickrContent}</p></#if>
                 </div>
             </div>
 
@@ -397,7 +397,7 @@
                 </div>
                 <div class="ds_card__content">
                     <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-youtube" href="https://www.youtube.com/user/scottishgovernment/">YouTube</a></h2>
-                    <p>Follow Scottish Government on YouTube</p>
+                    <#if document??><p>${document.youTubeContent}</p></#if>
                 </div>
             </div>
 
@@ -407,7 +407,7 @@
                 </div>
                 <div class="ds_card__content">
                     <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-twitter" href="https://twitter.com/scotgov">Twitter</a></h2>
-                    <p>Follow Scottish Government on Twitter</p>
+                    <#if document??><p>${document.twitterContent}</p></#if>
                 </div>
             </div>
 

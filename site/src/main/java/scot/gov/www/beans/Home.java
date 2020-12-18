@@ -18,4 +18,19 @@ public class Home extends SimpleContent {
     public List<HippoBean> getFeaturedItems() {
         return getLinkedBeans("govscot:featuredItems", HippoBean.class);
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:flickrContent")
+    public String getFlickrContent() {
+        return getProperty("govscot:flickrContent");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:twitterContent")
+    public String getTwitterContent() {
+        return getProperty("govscot:twitterContent");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:youtubeContent")
+    public String getYouTubeContent() {
+        return getProperty("govscot:youtubeContent");
+    }
 }
