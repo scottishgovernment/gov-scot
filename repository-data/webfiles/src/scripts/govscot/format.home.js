@@ -12,19 +12,10 @@ window.dataLayer = window.dataLayer || [];
 const homePage = {
 
     settings: {
-        youTubePublicKey: 'AIzaSyDGmgKDuodqUe8Sb59iNu39OQfEUc7h0PM'
     },
 
     init: function () {
         this.attachEventHandlers();
-
-        if (typeof IntersectionObserver === 'function') {
-            this.observeYouTube();
-            this.observeFlickr();
-        } else {
-            this.populateYouTube();
-            this.populateFlickr();
-        }
 
         this.initHeroItemAnalytics();
 
@@ -122,103 +113,6 @@ const homePage = {
 
     navigateToUrl: function (url) {
         window.location.href = url;
-    },
-
-    observeFlickr: function () {
-        const observer = new IntersectionObserver((entries, self) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.populateFlickr();
-                    self.unobserve(entry.target);
-                }
-            });
-        });
-
-        observer.observe(document.getElementById('flickr'));
-    },
-
-    populateFlickr: function () {
-        const data = {
-                method: 'flickr.people.getPublicPhotos',
-                api_key: '78be691bd8c8f9a67a6e8d448e974fd5',
-                user_id: '26320652@N02',
-                per_page: 4,
-                format: 'json',
-                nojsoncallback: 1
-            },
-            url = 'https://api.flickr.com/services/rest/';
-
-        $.get(url, data, function (response) {
-            $.each(response.photos.photo, function (key, value) {
-                // url format is: https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-                const img = $('<img alt="' + value.title + '" class="image-grid__image" src="https://farm' + value.farm + '.staticflickr.com/' + value.server + '/' + value.id + '_' + value.secret + '_q.jpg" />');
-
-                const link = $('<a href="https://www.flickr.com/photos/scottishgovernment/' + value.id + '"></a>');
-
-                const listItem = $('<li class="grid__item image-grid__item six-twelfths"></li>');
-
-                img.appendTo(link);
-                link.appendTo(listItem);
-                listItem.appendTo('#flickr-photos');
-            });
-        });
-    },
-
-    observeYouTube: function () {
-        const observer = new IntersectionObserver((entries, self) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.populateYouTube();
-                    self.unobserve(entry.target);
-                }
-            });
-        });
-
-        observer.observe(document.getElementById('youtube'));
-    },
-
-    populateYouTube: function () {
-        const that = this;
-
-        const data = {
-                part: 'contentDetails',
-                forUsername: 'scottishgovernment',
-                key: this.settings.youTubePublicKey
-            },
-            url = 'https://www.googleapis.com/youtube/v3/channels';
-
-        $.get(url, data)
-            .done(function (result) {
-                const uploadPlaylistId = result.items[0].contentDetails.relatedPlaylists.uploads;
-                that.fetchLatestYouTubeVideos(uploadPlaylistId);
-            });
-    },
-
-    fetchLatestYouTubeVideos: function (playlistId) {
-        const data = {
-                part: 'snippet',
-                playlistId: playlistId,
-                key: this.settings.youTubePublicKey,
-                maxResults: 1
-            },
-            url = 'https://www.googleapis.com/youtube/v3/playlistItems';
-
-        $.get(url, data, function (response) {
-            $.each(response.items, function (key, value) {
-                // using the medium thumbnail because it is not letterboxed
-                const thumbnailUrl = value.snippet.thumbnails.medium.url;
-
-                const img = $('<img alt="' + value.snippet.title + '" class="image-grid__image" src="' + thumbnailUrl + '" />');
-
-                const link = $('<a class="image-grid__link youtube-link" href="https://www.youtube.com/watch?v=' + value.snippet.resourceId.videoId + '"></a>');
-
-                const listItem = $('<li class="image-grid__item grid__item"></li>');
-
-                img.appendTo(link);
-                link.appendTo(listItem);
-                listItem.appendTo('#youtube-videos');
-            });
-        });
     }
 };
 

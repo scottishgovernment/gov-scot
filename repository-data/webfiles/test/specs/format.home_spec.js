@@ -12,14 +12,10 @@ describe('"Home" format', function () {
 
     it ('Should set up its various bits and pieces on init', function () {
         spyOn(Home, 'attachEventHandlers');
-        spyOn(Home, 'populateFlickr');
-        spyOn(Home, 'populateYouTube');
 
         Home.init();
 
         expect(Home.attachEventHandlers).toHaveBeenCalled();
-        expect(Home.populateFlickr).toHaveBeenCalled();
-        expect(Home.populateYouTube).toHaveBeenCalled();
     });
 
     describe('Policy block', function () {
@@ -46,18 +42,6 @@ describe('"Home" format', function () {
             $('#filters-search-term').val('foo');
             policySubmitButton.trigger('click');
             expect(Home.navigateToUrl).toHaveBeenCalledWith('/policies/?term=foo&topics=Economy;Education');
-        });
-    });
-
-    describe('Flickr block', function () {
-        it ('should populate a collection of Flickr photographs', function () {
-
-        });
-    });
-
-    describe('YouTube block', function () {
-        it ('should populate a collection of YouTube videos', function () {
-
         });
     });
 });

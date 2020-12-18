@@ -2,125 +2,63 @@
     #SOCIAL CHANNELS
 \*------------------------------------*/
 
-.layout---home .social-channels {
-  margin-bottom: -70px;
-}
-
 .social-channels {
-  + footer {
-    margin-top: 0;
+  > * {
+    margin-bottom: 28px;
+  }
+
+  .ds_card__content {
+    :last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
-.social-channel {
-  background: $color__white;
-  border: 1px solid $color__grey--light;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
-  margin-bottom: 35px;
-  padding: 14px 15px;
+@include media-query(medium-down) {
+  @supports(display: grid) {
+    .social-channels {
+      grid-gap: 14px;
 
-  &__header {
-    background: url() no-repeat right top transparent;
+      .ds_card {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
 
-    &--flickr {
-      background-image: url(../../../../assets/images/icons/social/flickr.png);
-      @include image-2x('../../../../assets/images/icons/social/flickr_@2x.png', 40px, 30px);
+      .ds_card__media {
+        margin: 14px 0 14px 14px;
+      }
+
+      .ds_card__content {
+        padding: 14px;
+      }
     }
-
-    &--twitter {
-      background-image: url(../../../../assets/images/icons/social/twitter.png);
-      @include image-2x('../../../../assets/images/icons/social/twitter_@2x.png', 40px, 30px);
-    }
-
-    &--youtube {
-      background-image: url(../../../../assets/images/icons/social/youtube.png);
-      @include image-2x('../../../../assets/images/icons/social/youtube_@2x.png', 40px, 30px);
-    }
-  }
-
-  &__intro {
-    color: $color__grey--text;
-    font-size: 12px;
-    line-height: 21px;
-    margin-bottom: 0;
-  }
-
-  &__link {
-    color: $color__body !important;
-    display: inline-block;
-    margin: 0 0 14px -15px;
-    padding: 7px 15px 0;
-    text-decoration: none !important;
-
-    &:hover .social-channel__title {
-      text-decoration: underline;
-    }
-  }
-
-  &__title {
-    font-size: 32px;
-    font-weight: 300;
-    line-height: 35px;
-    margin-top: 0;
   }
 }
-
-.image-grid {
-
-  &__image {
-    display: block;
-    width: 100%;
-  }
-
-  &__item {
-    margin: 0 0 10px 0;
-  }
-
-  &--full {
-    margin: 0 -15px;
-  }
-}
-
-.youtube-link {
-  display: block;
-  position: relative;
-
-  // center a YT "play" icon on the link
-  &:after {
-    background: url(../../../../assets/images/icons/social/youtube.png) no-repeat center transparent;;
-    bottom: 0;
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    @include image-2x('../../../../assets/images/icons/social/youtube_@2x.png', 40px, 30px);
-  }
-}
-
 
 @include media-query(medium) {
-  .social-channel {
-    &__body {
-      height: 189px;
-      overflow: auto;
+  .social-channels {
+    margin-right: -28px;
+    > * {
+      float: left;
+      width: calc(33.333333% - 28px);
+      margin-right: 28px;
     }
   }
 }
 
-@include media-query(large) {
-  .social-channel {
-    &__body {
-      height: 266px;
-    }
-  }
-}
+@supports(display: grid) {
+  @include media-query(medium) {
+  .social-channels {
+      display: grid;
+      grid-gap: 28px;
+      grid-template-columns: repeat(3, 4fr);
 
-@include media-query(xlarge) {
-  .social-channel {
-    &__body {
-      height: 329px;
+      margin-right: 0;
+
+      > * {
+        margin-right: 0;
+        width: auto;
+      }
     }
   }
 }

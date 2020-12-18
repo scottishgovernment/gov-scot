@@ -374,61 +374,44 @@
 </div>
 
 <!-- SOCIAL -->
-<div class="social-channels container container--grey container--last">
+<div class="container container--grey container--last">
     <div class="wrapper">
-        <section id="social-media">
-            <div class="grid"><!--
-                --><div class="grid__item medium--four-twelfths">
-                <!-- SOCIAL: FLICKR -->
-                <div class="social-channel" id="flickr">
-                    <header class="social-channel__header social-channel__header--flickr">
-                        <a class="social-channel__link" href="http://www.flickr.com/scottishgovernment">
-                            <p class="social-channel__intro">Scottish Government on</p>
-                            <h3 class="social-channel__title">Flickr</h3>
-                        </a>
-                    </header>
 
-                    <ul id="flickr-photos" class="social-channel__body image-grid grid grid--narrow"></ul>
+        <h2 class="emphasis homepage-block__title">Social</h2>
+
+        <div class="social-channels">
+
+            <div class="ds_card">
+                <div class="ds_card__media">
+                    <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/flickr-thumbnail.jpg'/>"/>
                 </div>
-            </div><!--
-
-                --><div class="grid__item medium--four-twelfths">
-                <!-- SOCIAL: YOUTUBE -->
-                <div class="social-channel" id="youtube">
-                    <header class="social-channel__header social-channel__header--youtube">
-                        <a class="social-channel__link" href="https://www.youtube.com/user/scottishgovernment/">
-                            <p class="social-channel__intro">Scottish Government on</p>
-                            <h3 class="social-channel__title">YouTube</h3>
-                        </a>
-                    </header>
-
-                    <ul id="youtube-videos" class="social-channel__body image-grid image-grid--full grid grid--full"></ul>
+                <div class="ds_card__content">
+                    <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-flickr" href="http://www.flickr.com/scottishgovernment">Flickr</a></h2>
+                    <p>Follow Scottish Government on Flickr</p>
                 </div>
-            </div><!--
+            </div>
 
-                --><div class="grid__item medium--four-twelfths">
-                <!-- SOCIAL: TWITTER -->
-                <div class="social-channel" id="twitter">
-                    <header class="social-channel__header social-channel__header--twitter">
-                        <a class="social-channel__link" href="https://twitter.com/scotgov">
-                            <p class="social-channel__intro">Scottish Government on</p>
-                            <h3 class="social-channel__title">Twitter</h3>
-                        </a>
-                    </header>
-
-                    <div class="social-channel__body">
-                        <a class="twitter-timeline"
-                           href="https://twitter.com/scotgov"
-                           data-tweet-limit="4"
-                           data-widget-id="673834609541521408"
-                           data-chrome="nofooter noborders noheader"
-                        >Tweets by @scotgov</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                    </div>
+            <div class="ds_card">
+                <div class="ds_card__media">
+                    <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/youtube-thumbnail.png'/>"/>
                 </div>
-            </div><!--
-            --></div>
-        </section>
+                <div class="ds_card__content">
+                    <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-youtube" href="https://www.youtube.com/user/scottishgovernment/">YouTube</a></h2>
+                    <p>Follow Scottish Government on YouTube</p>
+                </div>
+            </div>
+
+            <div class="ds_card">
+                <div class="ds_card__media">
+                    <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/twitter-thumbnail.png'/>"/>
+                </div>
+                <div class="ds_card__content">
+                    <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-twitter" href="https://twitter.com/scotgov">Twitter</a></h2>
+                    <p>Follow Scottish Government on Twitter</p>
+                </div>
+            </div>
+
+        </div>
 
 
         <div class="grid"><!--

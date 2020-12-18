@@ -3,8 +3,6 @@ script-src
   'unsafe-inline'
   'unsafe-eval'
   data:
-  https://cdn.syndication.twimg.com/
-  https://platform.twitter.com
   https://www.googletagmanager.com
   https://tagmanager.google.com/
   https://www.google-analytics.com
@@ -23,18 +21,13 @@ img-src
   https://www.gstatic.com
   https://translate.google.com
   https://translate.googleapis.com
-  https://*.staticflickr.com/
   https://*.ytimg.com/
-  https://*.twimg.com/
-  https://*.twitter.com/
 ;
 style-src
   'self'
   'unsafe-inline'
   https://fonts.googleapis.com
   https://maxcdn.bootstrapcdn.com
-  https://platform.twitter.com
-  https://ton.twimg.com/
   https://translate.google.com
   https://translate.googleapis.com
   https://tagmanager.google.com/
@@ -46,8 +39,6 @@ font-src
   https://maxcdn.bootstrapcdn.com
 ;
 frame-src
-  https://platform.twitter.com
-  https://syndication.twitter.com
   https://www.googletagmanager.com
   https://www.youtube.com
   https://youtu.be
