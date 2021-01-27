@@ -26,16 +26,6 @@ public class Issue extends SimpleContent {
         return getProperty("govscot:featuredItemsTitle");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:contactTitle")
-    public String getContactTitle() {
-        return getProperty("govscot:contactTitle");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:includeTwitterReplies")
-    public Boolean getIncludeTwitterReplies() {
-        return getProperty("govscot:includeTwitterReplies");
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:includeFeedback")
     public Boolean getIncludeFeedback() {
         return getProperty("govscot:includeFeedback");
@@ -51,29 +41,9 @@ public class Issue extends SimpleContent {
         return getProperty("govscot:featureDateSummary");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:socialMediaTitle")
-    public String getSocialMediaTitle() {
-        return getProperty("govscot:socialMediaTitle");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:phone")
-    public HippoHtml getPhone() {
-        return getHippoHtml("govscot:phone");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:postalAddress")
-    public HippoHtml getPostalAddress() {
-        return getHippoHtml("govscot:postalAddress");
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:overview")
     public HippoHtml getOverview() {
         return getHippoHtml("govscot:overview");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:ContactInformation")
-    public ContactInformation getContactInformation() {
-        return getBean("govscot:ContactInformation", ContactInformation.class);
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:featuredItems")

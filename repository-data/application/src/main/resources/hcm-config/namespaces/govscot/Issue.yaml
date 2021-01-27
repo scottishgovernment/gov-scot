@@ -47,30 +47,6 @@ definitions:
             hipposysedit:path: govscot:featuredItemsTitle
             hipposysedit:primary: false
             hipposysedit:type: String
-          /contactTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:contactTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /ContactInformation:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:ContactInformation
-            hipposysedit:primary: false
-            hipposysedit:type: govscot:ContactInformation
-          /includeTwitterReplies:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:includeTwitterReplies
-            hipposysedit:primary: false
-            hipposysedit:type: Boolean
           /showOnTopicsLandingPage:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -95,14 +71,6 @@ definitions:
             hipposysedit:path: govscot:featureDateSummary
             hipposysedit:primary: false
             hipposysedit:type: String
-          /socialMediaTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:socialMediaTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
           /image:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -111,22 +79,6 @@ definitions:
             hipposysedit:path: govscot:image
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
-          /postalAddress:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:postalAddress
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /html:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:phone
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
           /includeFeedback:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -167,8 +119,6 @@ definitions:
           govscot:summary: ''
           govscot:featureDate: 0001-01-01T12:00:00Z
           govscot:featuredItemsTitle: ''
-          govscot:contactTitle: ''
-          govscot:includeTwitterReplies: false
           govscot:showOnTopicsLandingPage: false
           govscot:title: ''
           jcr:uuid: 88f3114b-a115-4681-9da7-23e3b754cc94
@@ -176,22 +126,12 @@ definitions:
           hippostdpubwf:creationDate: 2018-04-23T13:01:39.688+01:00
           govscot:featureDateTitle: ''
           govscot:featureDateSummary: ''
-          govscot:socialMediaTitle: ''
           govscot:includeFeedback: false
           govscot:sme: ''
           govscot:newsTags: []
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:ContactInformation:
-            jcr:primaryType: govscot:ContactInformation
-            govscot:blog: ''
-            govscot:email: ''
-            govscot:facebook: ''
-            govscot:flickr: ''
-            govscot:twitter: ''
-            govscot:website: ''
-            govscot:youtube: ''
           /govscot:featuredItems:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -204,12 +144,6 @@ definitions:
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
-          /govscot:postalAddress:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:phone:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -323,62 +257,6 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
               base.path: /content/documents/govscot/
-          /socialMediaTitle:
-            jcr:primaryType: frontend:plugin
-            caption: Social media title
-            field: socialMediaTitle
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: 'Enter any social media hashtags associated with this issue.  E.g.
-              Connect: #Brexit'
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /ContactInformation:
-            jcr:primaryType: frontend:plugin
-            caption: Social media contacts
-            field: ContactInformation
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /contactTitle:
-            jcr:primaryType: frontend:plugin
-            caption: Contact title
-            field: contactTitle
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /postalAddress:
-            jcr:primaryType: frontend:plugin
-            caption: Postal address
-            field: postalAddress
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Provide a postal address for the content item or use the central
-              enquiry unit's contact details.
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /phone:
-            jcr:primaryType: frontend:plugin
-            caption: Phone
-            field: html
-            hint: Provide a contact telephone number for the issue.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /includeTwitterReplies:
-            jcr:primaryType: frontend:plugin
-            caption: Include twitter replies?
-            field: includeTwitterReplies
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Select the checkbox if you want twitter replies to be displayed
-              on the issue page.
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
           /showOnTopicsLandingPage:
             jcr:primaryType: frontend:plugin
             caption: Show on topics landing page?
