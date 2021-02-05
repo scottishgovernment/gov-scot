@@ -23,6 +23,19 @@
     <url>http://stash.digital.gov.uk/projects/MGV/repos/gov-scot/</url>
   </scm>
 
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Internal Releases</name>
+      <url>http://nexus/repository/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Internal Snapshots</name>
+      <url>http://nexus/repository/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <properties>
     <!-- Front end build -->
     <version.node>v6.12.3</version.node>
