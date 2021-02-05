@@ -2,7 +2,7 @@
 <project>
     <name>project-settings</name>
     <applicationSubModule>application</applicationSubModule>
-    <beansFolder>site/src/main/java</beansFolder>
+    <beansFolder>site/components/src/main/java</beansFolder>
     <cmsModule>cms</cmsModule>
     <confirmParams>false</confirmParams>
     <developmentSubModule>development</developmentSubModule>

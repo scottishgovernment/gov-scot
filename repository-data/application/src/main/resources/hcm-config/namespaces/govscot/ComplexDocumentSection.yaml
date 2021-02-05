@@ -24,7 +24,7 @@ definitions:
             hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [required, non-empty]
+            hipposysedit:validators: [required]
           /content:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -42,7 +42,7 @@ definitions:
             hipposysedit:path: govscot:seoTitle
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
           /metaDescription:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -51,7 +51,7 @@ definitions:
             hipposysedit:path: govscot:metaDescription
             hipposysedit:primary: false
             hipposysedit:type: String
-            hipposysedit:validators: [non-empty, required]
+            hipposysedit:validators: [required]
           /notes:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false

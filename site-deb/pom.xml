@@ -23,7 +23,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>gov-scot-site</artifactId>
+      <artifactId>gov-scot-webapp</artifactId>
       <version>${project.version}</version>
       <type>war</type>
       <scope>provided</scope>
@@ -54,11 +54,10 @@
       <plugin>
         <artifactId>jdeb</artifactId>
         <groupId>org.vafer</groupId>
-        <extensions>true</extensions>
         <configuration>
           <dataSet>
             <data>
-              <src>${project.build.directory}/dependency/gov-scot-site.war</src>
+              <src>${project.build.directory}/dependency/gov-scot-webapp.war</src>
               <dst>site.war</dst>
               <type>file</type>
               <mapper>

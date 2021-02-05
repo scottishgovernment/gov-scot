@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>scot.mygov</groupId>
-    <artifactId>mygov-parent</artifactId>
-    <version>4</version>
+    <groupId>org.onehippo.cms7</groupId>
+    <artifactId>hippo-cms7-release</artifactId>
+    <version>13.4.5</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -30,12 +30,13 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <hippo.release.version>12.6.3</hippo.release.version>
     <hippo.maven.plugin.l10n>2.2.2</hippo.maven.plugin.l10n>
-    <freemarker.version>2.3.24-incubating</freemarker.version>
-    <forge.feed.version>4.0.1</forge.feed.version>
+    <forge.feed.version>5.0.0</forge.feed.version>
+    <forge.embargo.version>5.1.0</forge.embargo.version>
+    <forge.breadcrumb.version>3.0.0</forge.breadcrumb.version>
+    <freemarker.version>2.3.28</freemarker.version>
 
-    <essentials.version>4.6.3</essentials.version>
+    <essentials.version>13.0.2</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
     <taglibs.version>1.2.5</taglibs.version>
     <xalan.version>2.7.2</xalan.version>
@@ -44,11 +45,11 @@
     <mockito.version>2.24.0</mockito.version>
 
     <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
-    <maven.plugin.cargo.version>1.6.10</maven.plugin.cargo.version>
+    <maven.plugin.cargo.version>1.7.0</maven.plugin.cargo.version>
     <maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
 
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
-    <hippo.cms.locales>nl,de,fr,es,zh</hippo.cms.locales>
+    <hippo.cms.locales/>
     <buildNumber>${maven.build.timestamp}</buildNumber>
 
     <index.configuration>cms/src/main/resources/org/hippoecm/repository/query/lucene/indexing_configuration.xml</index.configuration>
@@ -107,20 +108,6 @@
 
   <dependencyManagement>
     <dependencies>
-
-      <dependency>
-        <groupId>org.onehippo.cms7</groupId>
-        <artifactId>hippo-cms7-release</artifactId>
-        <version>${hippo.release.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.onehippo.cms7</groupId>
-        <artifactId>hippo-essentials-plugin-sdk-api</artifactId>
-        <version>${essentials.version}</version>
-      </dependency>
 
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
@@ -265,6 +252,13 @@
           <version>2.0.2</version>
         </plugin>
 
+        <plugin>
+          <groupId>org.vafer</groupId>
+          <artifactId>jdeb</artifactId>
+          <version>1.5</version>
+          <extensions>true</extensions>
+        </plugin>
+
         <!--
           This plugin configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.
         -->
@@ -339,12 +333,14 @@
       <modules>
         <module>repository-data</module>
         <module>cms</module>
+        <module>cms-dependencies</module>
         <module>cms-deb</module>
         <module>essentials</module>
         <module>repository</module>
         <module>repository-deb</module>
         <module>site</module>
         <module>site-deb</module>
+        <module>gov-scot-libs</module>
         <module>publications-rest</module>
         <module>imageprocessing</module>
       </modules>
@@ -421,6 +417,10 @@
                 <files>
                   <file>
                     <file>${project.basedir}/repository-data/development/target/gov-scot-repository-data-development-${project.version}.jar</file>
+                    <todir>${development-module-deploy-dir}</todir>
+                  </file>
+                  <file>
+                    <file>${project.basedir}/repository-data/site-development/target/gov-scot-repository-data-site-development-${project.version}.jar</file>
                     <todir>${development-module-deploy-dir}</todir>
                   </file>
                 </files>
@@ -515,7 +515,7 @@
                   <location>${project.basedir}/cms/target/cms.war</location>
                 </deployable>
                 <deployable>
-                  <location>${project.basedir}/site/target/site.war</location>
+                  <location>${project.basedir}/site/webapp/target/site.war</location>
                   <type>war</type>
                   <properties>
                     <context>/site</context>

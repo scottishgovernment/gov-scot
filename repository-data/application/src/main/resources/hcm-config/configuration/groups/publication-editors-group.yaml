@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/publication-editors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal

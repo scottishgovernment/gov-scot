@@ -1,0 +1,9 @@
+Package: gov-scot-libs
+Version: [[version]]
+Section: mygov
+Priority: optional
+Architecture: all
+Maintainer: martin.ellis@gov.scot
+Depends: java8-runtime-headless
+Description: www.gov.scot Shared Libraries
+Provides: hippo-libs

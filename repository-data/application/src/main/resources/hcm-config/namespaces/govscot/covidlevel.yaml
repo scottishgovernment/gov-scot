@@ -3,15 +3,12 @@ definitions:
     /hippo:namespaces/govscot/covidlevel:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: c7f847c0-e18e-4bbb-b5a7-02775e227ab8
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 1fbe2099-c6d6-43a5-9f24-f8ee933506bc
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 13323d88-a0a7-46d0-bf6c-d0fa52ab4235
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -59,7 +56,6 @@ definitions:
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
-          jcr:uuid: 0026fa97-3834-4be5-9c71-db899f52c025
           hippostdpubwf:lastModificationDate: 2020-10-23T15:03:07.782+01:00
           hippostdpubwf:creationDate: 2020-10-23T15:03:07.782+01:00
           govscot:level: ''

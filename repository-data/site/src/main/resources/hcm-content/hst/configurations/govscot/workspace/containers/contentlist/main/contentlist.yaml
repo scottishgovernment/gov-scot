@@ -1,0 +1,10 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:containers/contentlist/main/contentlist:
+  jcr:primaryType: hst:containeritemcomponent
+  jcr:uuid: 617a555a-cee9-4c69-af4b-3365e654e64f
+  hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsListComponent
+  hst:label: Content list
+  hst:parameternames: [documentTypes, sortField, sortOrder, includeSubtypes, showPagination,
+    path, pageSize]
+  hst:parametervalues: ['govscot:contentdocument', '', desc, 'off', 'on', '',
+    '10']
+  hst:template: contentlist-main-contentlist
