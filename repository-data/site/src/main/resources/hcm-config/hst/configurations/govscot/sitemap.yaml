@@ -328,9 +328,10 @@ definitions:
           hst:relativecontentpath: publications
       /collections:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/collectionpage
+        hst:componentconfigurationid: hst:pages/collectionspage
         hst:relativecontentpath: collections
         hst:sitemapitemhandlerids: [trailing-slash]
+        hst:refId: collections
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/collectionpage

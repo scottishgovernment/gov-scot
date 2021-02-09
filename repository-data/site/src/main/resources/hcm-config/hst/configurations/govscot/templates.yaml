@@ -155,3 +155,6 @@ definitions:
       /covid-restrictions-lookup:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/covid-restrictions-lookup.ftl
+      /collections-list:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/collections-list.ftl
