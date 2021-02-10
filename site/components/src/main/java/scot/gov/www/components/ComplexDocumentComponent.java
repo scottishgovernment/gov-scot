@@ -7,8 +7,8 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.ComplexDocumentSection;
 
+import javax.jcr.RepositoryException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,6 +116,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
 
     private void setChapters(HippoBean publication, HippoBean document, HstRequest request) {
         HippoBean publicationFolder = publication.getParentBean();
+
         boolean hasChapters = hasChapters(publicationFolder);
 
         if (!hasChapters){
@@ -145,7 +146,12 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
     }
 
     private boolean isSection(HippoBean document) {
-        return document.getClass() == ComplexDocumentSection.class;
+        try {
+            return document.getNode().isNodeType("govscot:ComplexDocumentSection");
+        } catch (RepositoryException e) {
+            LOG.warn("failed to determine node type", e);
+            return false;
+        }
     }
 
     private boolean hasChapters(HippoBean publicationParentFolder) {
