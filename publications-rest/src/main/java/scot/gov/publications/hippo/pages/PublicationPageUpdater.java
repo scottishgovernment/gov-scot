@@ -84,7 +84,7 @@ public class PublicationPageUpdater {
             PublicationLinkRewriter linkRewriter = new PublicationLinkRewriter(publicationFolder.getName(), nodesByEntryname);
             linkRewriter.rewrite(publicationFolder);
         } catch (IOException | RepositoryException e) {
-            throw new ApsZipImporterException("Failed too upload pages", e);
+            throw new ApsZipImporterException("Failed to upload pages", e);
         }
     }
 
