@@ -122,12 +122,12 @@ public class SearchResultsComponent extends EssentialsListComponent {
             }
 
             // populate parent publication for Complex Document sections
-            if (item.getClass() == ComplexDocumentSection.class){
+            if (item instanceof ComplexDocumentSection){
                 populateComplexDocParent((ComplexDocumentSection) item);
             }
 
             // populate parent publication for Publication pages
-            if (item.getClass() == PublicationPage.class){
+            if (item instanceof PublicationPage){
                 populatePublicationParent((PublicationPage) item);
             }
         }
