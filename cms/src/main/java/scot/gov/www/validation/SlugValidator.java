@@ -14,7 +14,6 @@ import org.onehippo.cms.services.validation.api.ValidationContext;
 import org.onehippo.cms.services.validation.api.ValidationContextException;
 import org.onehippo.cms.services.validation.api.Validator;
 import org.onehippo.cms.services.validation.api.Violation;
-import org.slf4j.LoggerFactory;
 
 /**
  * Validate that the govscot:slug is unique.
@@ -23,8 +22,6 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class SlugValidator implements Validator<String> {
-
-    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SlugValidator.class);
 
     public SlugValidator(final Node config) {
 
@@ -50,7 +47,6 @@ public class SlugValidator implements Validator<String> {
         Session session = UserSession.get().getJcrSession();
         String sql = String.format("SELECT * FROM %s WHERE govscot:slug = '%s'", documentType, candidateSlug);
         Query query = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL);
-        LOG.info("Query being run: {}", sql);
         QueryResult result = query.execute();
 
         // if any of the results do not belong to the same handle then this slug is already used elsewhere
