@@ -117,7 +117,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
             HippoBean item = it.nextHippoBean();
 
             // populate Collections for Publication type items
-            if (item.getClass().getSuperclass() == AttributableContent.class || item.getClass().getSuperclass() == Publication.class){
+            if (item instanceof AttributableContent){
                 populateCollectionAttribution(request, (AttributableContent) item);
             }
 
