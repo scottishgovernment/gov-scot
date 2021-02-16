@@ -4,7 +4,7 @@
   <parent>
     <artifactId>gov-scot</artifactId>
     <groupId>scot.gov.www</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1016</version>
   </parent>
 
   <artifactId>gov-scot-cms-dependencies</artifactId>
