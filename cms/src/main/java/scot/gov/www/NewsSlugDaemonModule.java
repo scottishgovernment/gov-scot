@@ -1,8 +1,6 @@
 package scot.gov.www;
 
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -14,8 +12,6 @@ import javax.jcr.RepositoryException;
  */
 public class NewsSlugDaemonModule extends SlugDaemonModule {
 
-    private static final Logger LOG = LoggerFactory.getLogger(NewsSlugDaemonModule.class);
-
     private static final String DOCUMENT_TYPE = "govscot:News";
 
     protected static final String PRGLOO_SLUG_PROPERTY = "govscot:prglooslug";
@@ -23,18 +19,27 @@ public class NewsSlugDaemonModule extends SlugDaemonModule {
     private static final String PREFIX = "/content/documents/govscot/news/";
 
     public boolean canHandleEvent(HippoWorkflowEvent event) {
-        return event.success() && event.subjectPath().startsWith(PREFIX);
+        return
+            "add".equals(event.action())
+            && event.success()
+            && isNewsPath(event.result());
+    }
+
+    /**
+     * Is this a news item path? For example
+     *
+     * /content/documents/govscot/news/2018/12/test
+     */
+    private boolean isNewsPath(String path) {
+        // the length should be 9 (the leading slash means the first entry is the empty string)
+        return path.startsWith(PREFIX) && path.split("/").length == 9;
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
-
-        Node handle = session.getNode(event.returnValue()).getParent();
-
-        if (handle == null) {
-            LOG.info("handle was null: {}", event.subjectPath());
+        Node news = session.getNode(event.result());
+        if (news == null) {
             return;
         }
-        Node news = getLatestVariant(handle);
         assignSlug(news);
     }
 
@@ -45,7 +50,6 @@ public class NewsSlugDaemonModule extends SlugDaemonModule {
         }
 
         String slug = allocate(name, DOCUMENT_TYPE);
-        LOG.info("assignSlug {} -> {}", newsNode.getPath(), slug);
         newsNode.setProperty(GOVSCOT_SLUG_PROPERTY, slug);
         session.save();
     }
