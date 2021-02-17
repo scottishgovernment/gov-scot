@@ -165,9 +165,7 @@ definitions:
             jcr:primaryType: hst:virtualhost
             /publishing:
               jcr:primaryType: hst:virtualhost
-              /www:
-                jcr:primaryType: hst:virtualhost
-                /hst:root:
-                  jcr:primaryType: hst:mount
-                  hst:ismapped: false
-                  hst:namedpipeline: WebApplicationInvokingPipeline
+              /hst:root:
+                jcr:primaryType: hst:mount
+                hst:ismapped: false
+                hst:namedpipeline: WebApplicationInvokingPipeline
