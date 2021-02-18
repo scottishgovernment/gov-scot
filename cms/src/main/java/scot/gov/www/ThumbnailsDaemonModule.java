@@ -38,6 +38,7 @@ public class ThumbnailsDaemonModule extends DaemonModuleBase {
             if (!"govscot:document".equals(subject.getName())) {
                 return;
             }
+
             LOG.info("updating thumbnails for {}", subject.getPath());
             deleteExistingThumbnails(subject);
             createThumbnails(subject);
@@ -61,8 +62,12 @@ public class ThumbnailsDaemonModule extends DaemonModuleBase {
             throws RepositoryException, FileNotFoundException, ThumbnailsProviderException {
 
         Node documentInformationNode = documentNode.getParent();
-        Binary data = documentNode.getProperty("jcr:data").getBinary();
         String mimeType = documentNode.getProperty("jcr:mimeType").getString();
+        if (!"application/pdf".equals(mimeType)) {
+            LOG.info("Not a pdf {} {}", documentInformationNode.getPath(), mimeType);
+            return;
+        }
+        Binary data = documentNode.getProperty("jcr:data").getBinary();
         String filename = documentNode.getProperty("hippo:filename").getString();
 
         if (mimeType == null) {

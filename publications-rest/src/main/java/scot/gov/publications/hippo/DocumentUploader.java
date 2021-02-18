@@ -129,7 +129,10 @@ public class DocumentUploader {
 
         long pageCount = exif.pageCount(resourceNode.getProperty(JCR_DATA).getBinary(), mimeType);
         documentInfoNode.setProperty(GOVSCOT_PAGE_COUNT, pageCount);
-        createThumbnails(resourceNode);
+
+        if ("application/pdf".equals(mimeType)) {
+            createThumbnails(resourceNode);
+        }
         return resourceNode;
     }
 
