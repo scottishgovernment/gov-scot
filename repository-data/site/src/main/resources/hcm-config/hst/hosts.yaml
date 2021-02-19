@@ -49,7 +49,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: a87f4492-9703-4eb5-a3e4-b2261c9af124
@@ -82,7 +81,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: 9e1f2dd6-7907-4862-aff4-363b2c1a49f2
@@ -115,7 +113,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: 357892e3-53d4-4f5d-b624-b4e71e500cee
@@ -148,7 +145,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: 5755b33d-a061-43f5-8f4f-965235434fb8
@@ -181,7 +177,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: 7f9aebd1-d88a-4db6-92d9-083f329bad8a
@@ -214,7 +209,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: 91c3a6f5-cfc0-4d4a-b1b8-9c2dbd50d8e7
@@ -247,7 +241,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: b09280f0-30cc-466a-9422-44ec5ab78a65
@@ -280,7 +273,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: a8d043d2-a834-4243-b1a0-e80301ef7b33
@@ -313,7 +305,6 @@ definitions:
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
-                  hst:nochannelinfo: true
                   /rest:
                     jcr:primaryType: hst:mount
                     jcr:uuid: af925e21-c6a4-4563-a7c9-0a200607a1c9
@@ -343,7 +334,6 @@ definitions:
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:schemeagnostic: true
-                hst:nochannelinfo: true
                 /rest:
                   jcr:primaryType: hst:mount
                   jcr:uuid: dbe48fcd-a3a3-4736-b338-1ef0fdf25983
