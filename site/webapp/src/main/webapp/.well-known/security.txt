@@ -1,0 +1,5 @@
+# Our security address
+Contact: mailto:vulnerabilitydisclosures@gov.scot
+
+# Our security policy
+Policy:  https://www.gov.scot/publications/vulnerability-disclosure-policy/

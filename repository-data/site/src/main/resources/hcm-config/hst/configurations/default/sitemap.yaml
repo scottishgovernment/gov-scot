@@ -20,3 +20,6 @@ definitions:
       jcr:primaryType: hst:sitemapitem
       hst:namedpipeline: JaxrsRestFeedPipeline
       hst:relativecontentpath: ${1}
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/_any_security.txt:
+      jcr:primaryType: hst:sitemapitem
+      hst:containerresource: true
