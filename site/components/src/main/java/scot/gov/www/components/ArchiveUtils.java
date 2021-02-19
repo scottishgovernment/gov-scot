@@ -73,6 +73,7 @@ public class ArchiveUtils {
         return Arrays.stream(path.split("/"))
                 .filter(segment -> !StringUtils.equals(segment, ".."))
                 .map(Text::escapeIllegalJcrChars)
+                .map(StringUtils::deleteWhitespace)
                 .collect(joining("/"));
     }
 

@@ -23,7 +23,6 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
-import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
 
 /**
  * Component used to support the redirect behaviour of gov.scot: if the sitemap does not match any other entry then this
