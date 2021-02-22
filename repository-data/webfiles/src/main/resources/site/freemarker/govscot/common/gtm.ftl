@@ -7,7 +7,7 @@
     window.dataLayer.push({
         'gtm.whitelist': ['google', 'jsm', 'lcl'],
             <#if gtmName??>'format' : '${gtmName}',</#if>
-            <#if gtmId??>'siteid' : '${gtmId}'</#if>
+            <#if gtmId??>'siteid' : '${gtmId?js_string}'</#if>
     });
 </script>
 </@hst.headContribution>
