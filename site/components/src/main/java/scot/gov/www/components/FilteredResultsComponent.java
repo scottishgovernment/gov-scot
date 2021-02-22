@@ -137,7 +137,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HippoBeanIterator it = execute.getHippoBeans();
         while (it.hasNext()) {
             HippoBean item = it.nextHippoBean();
-            if (item.getClass().getSuperclass() == AttributableContent.class || item.getClass().getSuperclass() == Publication.class){
+            if (item instanceof AttributableContent){
                 populateCollectionAttribution(request, (AttributableContent) item);
             }
         }
