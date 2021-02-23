@@ -1,6 +1,5 @@
 package scot.gov.www.filters;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.servlet.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
