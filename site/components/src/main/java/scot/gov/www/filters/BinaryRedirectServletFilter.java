@@ -1,5 +1,6 @@
 package scot.gov.www.filters;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.servlet.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,6 +70,10 @@ public class BinaryRedirectServletFilter implements Filter {
      * use the context path and redirect path.
      */
     private String getUrl(HttpServletRequest req, String newPath) {
+        if (isUrl(newPath)) {
+            return newPath;
+        }
+
         if (hasForwardingHeaders(req)) {
             String host = req.getHeader(X_FORWARDED_HOST);
             String proto = req.getHeader(X_FORWARDED_PROTO);
@@ -76,6 +81,11 @@ public class BinaryRedirectServletFilter implements Filter {
         } else {
             return String.format("%s%s", req.getContextPath(), newPath);
         }
+    }
+
+    boolean isUrl(String path) {
+        /// is this a redirect to another site?
+        return startsWith(path, "https://") || startsWith(path, "http://");
     }
 
     private boolean hasForwardingHeaders(HttpServletRequest req) {
