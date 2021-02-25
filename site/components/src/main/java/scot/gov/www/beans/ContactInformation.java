@@ -39,6 +39,6 @@ public class ContactInformation extends HippoCompound {
 
     @HippoEssentialsGenerated(internalName = "govscot:blog")
     public String getBlog() {
-        return ("govscot:blog");
+        return getSingleProperty("govscot:blog");
     }
 }
