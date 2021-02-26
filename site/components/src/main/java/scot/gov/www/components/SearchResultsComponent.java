@@ -96,9 +96,10 @@ public class SearchResultsComponent extends EssentialsListComponent {
         final int page = getCurrentPage(request);
         final int offset = (page - 1) * pageSize;
 
-//      Sorts by jcr:score by default.
-        HstQueryBuilder builder = HstQueryBuilder.create(scope);
-        return builder.where(constraints(request, null))
+        // Sorts by jcr:score by default.
+        return HstQueryBuilder
+                .create(scope)
+                .where(constraints(request, null))
                 .limit(pageSize)
                 .offset(offset)
                 .build();
@@ -219,8 +220,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
     private void addTermConstraints(List<Constraint> constraints, HstRequest request) {
         String term = param(request, "q");
         String parsedTerm = SearchInputParsingUtils.parse(term, false);
-
-        if (StringUtils.isBlank(term)) {
+        if (StringUtils.isBlank(parsedTerm)) {
             return;
         }
         constraints.add(or(fieldConstraints(parsedTerm)));
@@ -237,7 +237,6 @@ public class SearchResultsComponent extends EssentialsListComponent {
     }
 
     private Constraint [] fieldConstraints(String term) {
-
         List<Constraint> constraints = FIELD_NAMES
                 .stream()
                 .map(field -> constraint(field).contains(term))
