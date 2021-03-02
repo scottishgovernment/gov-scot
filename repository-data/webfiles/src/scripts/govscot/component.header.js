@@ -53,7 +53,7 @@ const header = {
             if ($('#' + $(this).attr('aria-controls')).attr('aria-expanded') === 'false') {
                 that.closeMenuItem('nav');
                 that.openMenuItem('search');
-                $('#search-box-mobile').focus();
+                $('#search-box-mobile')[0].focus();
             } else {
                 that.closeMenuItem('search');
             }
