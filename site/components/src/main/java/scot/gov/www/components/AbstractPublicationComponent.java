@@ -132,6 +132,7 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
     }
 
     protected boolean hasDocuments(HippoBean publicationParentFolder) {
+
         return hasChildBeans(publicationParentFolder.getChildBeansByName(DOCUMENTS));
     }
 

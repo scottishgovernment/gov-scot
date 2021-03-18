@@ -285,9 +285,14 @@ definitions:
                   hst:sitemapitemhandlerids: [trailing-slash]
                 /documents:
                   jcr:primaryType: hst:sitemapitem
-                  hst:componentconfigurationid: hst:pages/complexdocumentpage
-                  hst:relativecontentpath: ${parent}
+                  hst:componentconfigurationid: hst:pages/publicationdocument
+                  hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/documents
                   hst:sitemapitemhandlerids: [trailing-slash]
+                  /_default_:
+                    jcr:primaryType: hst:sitemapitem
+                    hst:componentconfigurationid: hst:pages/publicationdocument
+                    hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/documents/${5}
+                    hst:sitemapitemhandlerids: [trailing-slash]
                 /downloads:
                   jcr:primaryType: hst:sitemapitem
                   hst:componentconfigurationid: hst:pages/publicationpage
