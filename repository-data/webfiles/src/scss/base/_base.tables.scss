@@ -12,3 +12,22 @@ caption {
         line-height: 28px;
     }
 }
+
+
+table.datatable {
+    text-align: right;
+}
+
+tr, th, td {
+    &.cAlign {
+        text-align: center;
+    }
+
+    &.lAlign {
+        text-align: left;
+    }
+
+    &.rAlign {
+        text-align: right;
+    }
+}
