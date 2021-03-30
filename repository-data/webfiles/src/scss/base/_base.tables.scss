@@ -31,3 +31,8 @@ tr, th, td {
         text-align: right;
     }
 }
+
+// override
+.datatable tr:first-child td, th {
+    text-align: right;
+}
