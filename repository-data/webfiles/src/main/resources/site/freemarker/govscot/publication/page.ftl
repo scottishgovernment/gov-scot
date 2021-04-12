@@ -48,25 +48,22 @@
                                     <div class="hidden-xsmall">
                                         <#include 'header-document-info.ftl'/>
                                     </div>
-                                </#if>
 
-                                <div class="publication-info__header">
-                                    <a href="#files-list" class="js-expand-downloads publication-info__preamble publication-info__preamble--icon publication-info__preamble--icon--pdf visible-xsmall">
+                                    <div class="publication-info__header">
+                                        <a href="#files-list" class="js-expand-downloads publication-info__preamble publication-info__preamble--icon publication-info__preamble--icon--pdf visible-xsmall">
 
-                                        <span class="publication-info__file-icon file-icon file-icon--gen"></span>
-                                        This publication is available to download in other formats. <span class="publication-info__preamble-expand">More</span>&hellip;
+                                            <span class="publication-info__file-icon file-icon file-icon--gen"></span>
+                                            This publication is available to download in other formats. <span class="publication-info__preamble-expand">More</span>&hellip;
+                                        </a>
+                                    </div>
 
-                                    </a>
-                                </div>
-
-                                <div class="publication-info__body visible-xsmall">
-                                    <section id="files-list" class="publication-info__section publication-info__collapsible publication-info__collapsible--collapsed-initial publication-info__collapsible--not-tablet">
-                                        <#if documents?has_content>
+                                    <div class="publication-info__body visible-xsmall">
+                                        <section id="files-list" class="publication-info__section publication-info__collapsible publication-info__collapsible--collapsed-initial publication-info__collapsible--not-tablet">
                                             <#include 'header-document-info.ftl'/>
                                             <#include 'supporting-files.ftl'/>
-                                        </#if>
-                                    </section>
-                                </div>
+                                        </section>
+                                    </div>
+                                </#if>
                             </#if>
                         </div><!--
                  --></div>
