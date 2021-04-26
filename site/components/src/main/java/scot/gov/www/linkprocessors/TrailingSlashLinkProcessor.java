@@ -7,6 +7,8 @@ import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.linking.HstLinkProcessorTemplate;
 
+import static org.apache.commons.lang.StringUtils.contains;
+
 public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
 
     protected HstLink doPostProcess(final HstLink link) {
@@ -19,7 +21,6 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
         // if the path ends in a slasg then leave it alone
         if (link.getPath().endsWith("/")) {
             return link;
-
         }
 
         // wrap the link in order to add a trailing slash
@@ -76,18 +77,16 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
         @Override
         public String toUrlForm(HstRequestContext requestContext, boolean fullyQualified) {
             String linkStr =  link.toUrlForm(requestContext, fullyQualified);
-            return linkStr == null ? null : linkStr.endsWith("/") ? linkStr : addUrlToPath(linkStr);
+            return linkStr == null ? null : linkStr.endsWith("/") ? linkStr : addSlash(linkStr);
         }
 
-        String addUrlToPath(String linkStr) {
-            int questionMarkIndex = linkStr.indexOf("?");
+        String addSlash(String linkStr) {
+            int questionMarkIndex = linkStr.indexOf('?');
             if (questionMarkIndex == -1) {
                 return linkStr + "/";
             }
 
-            String pathPart = linkStr.substring(0, questionMarkIndex - 1);
-            String params = linkStr.substring(questionMarkIndex, linkStr.length());
-            return pathPart + '/' + params;
+            return contains(linkStr, "/?") ? linkStr : StringUtils.replace(linkStr, "?", "/?");
         }
 
         @Override
