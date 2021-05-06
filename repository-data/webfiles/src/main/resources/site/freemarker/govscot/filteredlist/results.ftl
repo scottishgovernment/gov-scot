@@ -34,7 +34,6 @@
 
         <p class="search-results__count  search-results-header__left">
             <#if hasActiveParameters == true>
-                HERE
                 Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
                 <#if parameters['term']??>
