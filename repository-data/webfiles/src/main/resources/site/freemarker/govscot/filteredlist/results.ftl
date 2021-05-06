@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
@@ -33,6 +34,7 @@
 
         <p class="search-results__count  search-results-header__left">
             <#if hasActiveParameters == true>
+                HERE
                 Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
                 <#if parameters['term']??>
@@ -107,12 +109,12 @@
                         </div>
 
                         <h2 class="gamma listed-content-item__title">
-                            <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a>
+                            <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title}</a>
                         </h2>
                     </header>
                     <#if item.summary??>
                         <p class="listed-content-item__summary">
-                            ${item.summary?html}
+                            ${item.summary}
                         </p>
                     </#if>
                     <#if item.collections?has_content>
