@@ -9,7 +9,7 @@
             <input name="cat" value="sitesearch" hidden>
 
             <button type="submit" title="search" class="search-box__button button button--primary">
-                <svg class="ds_icon  ds_site-search__icon" role="img"><use xlink:href="${iconspath}#search"></use></svg>
+                <svg class="ds_icon  ds_site-search__icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#search"></use></svg>
                 <span class="hidden">Search gov.scot</span>
             </button>
         </div>
