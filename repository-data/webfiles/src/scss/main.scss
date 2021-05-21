@@ -55,6 +55,8 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
 $images-path: '../../../../assets/mygov/';
+$transition-in-time: 0.2s;
+$transition-out-time: 0.2s;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
 $base-h1-size: 35px; // 2.1875em;
 $base-h2-size: 22px; // 1.375em;
@@ -349,3 +351,5 @@ $tiny-size--medium: 14px !default;
 @import "trumps/trump.person.govscot";
 @import "trumps/trump.search-box.govscot";
 @import "trumps/trump.topic-expandable";
+
+@import "trumps/trump.focus-visible";
