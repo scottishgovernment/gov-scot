@@ -2,7 +2,7 @@
 
 <#-- @ftlvariable name="breadcrumb" type="org.onehippo.forge.breadcrumb.om.Breadcrumb" -->
 
-    <ol role="navigation" class="breadcrumbs">
+    <ol class="breadcrumbs">
         <li class="breadcrumbs__item" itemprop="url">
             <a class="breadcrumbs__link" href="<@hst.link path='/'/>" data-gtm="bread-1">
                 <span class="breadcrumbs__title" itemprop="title">Home</span><!--
