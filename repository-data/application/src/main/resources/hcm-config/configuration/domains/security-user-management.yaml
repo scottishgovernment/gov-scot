@@ -1,0 +1,30 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/security-user-management/groups/exclude-webmaster-group:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: webmaster
+    /hippo:configuration/hippo:domains/security-user-management/groups/exclude-cmsadmin-group:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: cmsadmin
+    /hippo:configuration/hippo:domains/security-user-management/groups/exclude-cms-admin-group:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: cms-admin
+    /hippo:configuration/hippo:domains/security-user-management/groups/exclude-admin-group:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: admin
