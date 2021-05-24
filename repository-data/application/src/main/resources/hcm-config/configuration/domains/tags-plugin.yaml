@@ -1,0 +1,33 @@
+#TODO Remove after https://issues.onehippo.com/browse/CMS-13026 is fixed
+#However, keep in mind adding any custom groups that need access to tags
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/tags-plugin:
+      jcr:primaryType: hipposys:domain
+      /tags-plugin:
+        jcr:primaryType: hipposys:domainrule
+        /tags-node:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:type: Reference
+          hipposys:value: /tags
+      /read-tags-user:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          operation: override
+          type: string
+          value: [economic-action-plan-authors, economic-action-plan-editors, mygov-authors, mygov-editors, trading-nation-authors, trading-nation-editors]
+        hipposys:role: readwrite
+        hipposys:userrole:
+          .meta:category: system
+          type: string
+          value: xm.content.author
+        hipposys:users:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          operation: override
+          type: string
+          value: []

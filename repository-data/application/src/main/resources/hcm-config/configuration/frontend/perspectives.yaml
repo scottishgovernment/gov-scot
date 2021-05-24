@@ -3,7 +3,8 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-static:
       /feedbackPerspective:
         jcr:primaryType: frontend:plugin
+        jcr:mixinTypes: ['frontend:navigationitem']
+        frontend:appPath: feedback
+        hipposys:userrole: xm.cms.user
         plugin.class: scot.gov.perspectives.FeedbackPerspective
         wicket.id: service.tab
-        browser.id: service.browse
-        option.location: ""

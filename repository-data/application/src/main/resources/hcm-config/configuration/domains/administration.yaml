@@ -8,20 +8,6 @@ definitions:
         hipposys:role: editor
       /administration-documents:
         jcr:primaryType: hipposys:domainrule
-        /hide-prototypes:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodename
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: hipposysedit:prototype
-        /nodetype-hippo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: true
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: hippo:document
         /include-administration-folder:
           jcr:primaryType: hipposys:facetrule
           hipposys:equals: true
