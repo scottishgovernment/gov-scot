@@ -166,7 +166,7 @@ input:focus+label.fancy-radio:before {
 }
 
 
-a.file-icon {
+a.file-icon:focus {
     @include focus-highlight(true, false)
 }
 
