@@ -144,6 +144,8 @@ input:focus+label.fancy-radio:before {
         @include focus-highlight;
         background-color: gold !important;
         border-color: transparent;
+        outline: 0;
+        box-shadow: 0 3px 0 black;
 
         a {
             color: black;
@@ -168,6 +170,12 @@ input:focus+label.fancy-radio:before {
 
 a.file-icon:focus {
     @include focus-highlight(true, false)
+}
+
+.document-info__thumbnail-link:focus {
+    @include focus-highlight(true, false);
+    position: relative;
+    z-index: 1;
 }
 
 .expandable-item__header:focus {
