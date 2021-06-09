@@ -6,7 +6,7 @@
 
 <div class="grid"><!--
     --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
-        <h1 class="article-header">${paymentResult.title}</h1>
+        <h1 class="article-header">${paymentResult.title} ${paymentResult.id}</h1>
         <div class="body-content">
             ${paymentResult.content?html}
         </div>
@@ -23,12 +23,12 @@
 </#if>
 
 <#if paymentResult??>
+
+    <link rel="canonical" href="https://www.gov.scot/payment/${paymentResult.id}/>
+
     <@hst.headContribution category="pageTitle">
     <title>${paymentResult.title?html} - gov.scot</title>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" hippobean=paymentResult canonical=true/>
-    <#include "common/canonical.ftl" />
 
-    <#include "common/gtm-datalayer.ftl"/>
 </#if>
