@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <@hst.headContribution category="googleTagManager">
@@ -6,7 +7,7 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         'gtm.whitelist': ['google', 'jsm', 'lcl'],
-            <#if gtmName??>'format' : '${gtmName}',</#if>
+            <#if gtmName??>'format' : '${gtmName?js_string}',</#if>
             <#if gtmId??>'siteid' : '${gtmId?js_string}'</#if>
     });
 </script>
