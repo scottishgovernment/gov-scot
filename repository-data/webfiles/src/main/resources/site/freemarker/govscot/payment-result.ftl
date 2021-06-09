@@ -23,12 +23,12 @@
 </#if>
 
 <#if paymentResult??>
+
+    <link rel="canonical" href="https://www.gov.scot/payment/${paymentResult.id}/>
+
     <@hst.headContribution category="pageTitle">
     <title>${paymentResult.title?html} - gov.scot</title>
     </@hst.headContribution>
 
-    <@hst.link var="canonicalitem" hippobean=paymentResult canonical=true/>
-    <#include "common/canonical.ftl" />
 
-    <#include "common/gtm-datalayer.ftl"/>
 </#if>
