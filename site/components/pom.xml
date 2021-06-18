@@ -20,6 +20,12 @@
   <dependencies>
 
     <dependency>
+      <groupId>com.onehippo.cms7</groupId>
+      <artifactId>hippo-enterprise-package-site-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>javax.servlet.jsp</groupId>
       <artifactId>jsp-api</artifactId>
     </dependency>

@@ -15,6 +15,12 @@
   <dependencies>
 
     <dependency>
+      <groupId>com.onehippo.cms7</groupId>
+      <artifactId>hippo-enterprise-package-cms-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>gov-scot-repository-data-application</artifactId>
       <version>${project.version}</version>
