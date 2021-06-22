@@ -9,9 +9,9 @@ $ds_colour__link--hover__background: red;
 $ds_colour__link--focus__background: gold;
 
 .#{$site-prefix}supporting-documents {
-    // legacy fix/hack
-    .gov_document-info__thumbnail-link {
-        width: auto !important;
+    &__thumbnail {
+        display: block;
+        width: 100%;
     }
 
     &__thumbnail-link {
@@ -19,10 +19,6 @@ $ds_colour__link--focus__background: gold;
         display: none;
         position: relative;
         z-index: 1;
-    }
-
-    &__thumbnail {
-        width: 100%;
     }
 
     &__button {
