@@ -47,10 +47,10 @@
                                     </@hst.link>
 
                                     <#if filenameExtension == "PDF">
-                                        <a class="gov_document-info__thumbnail-link" href="${baseurl + 'documents/'}">
+                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
                                             <img
                                                 alt="View supporting documents"
-                                                class="gov_document-info__thumbnail-image"
+                                                class="gov_supporting-documents__thumbnail"
                                                 src="<@hst.link hippobean=mainDocument.thumbnails[0]/>"
                                                 srcset="
                                                     <#list mainDocument.thumbnails as thumbnail>
@@ -59,7 +59,12 @@
                                                 sizes="(min-width: 768px) 165px, 107px" />
                                         </a>
                                     <#else>
-                                        <a aria-hidden="true" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="hidden-small  gov_document-info__thumbnail-link  file-icon  file-icon--large  file-icon--${filenameExtension}"></a>
+                                        <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                            <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                                <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                            </svg>
+                                            <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                        </a>
                                     </#if>
 
                                     <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">

@@ -38,6 +38,7 @@
     "karma-jasmine-jquery-2": "^0.1.1",
     "karma-jasmine-matchers": "^4.0.1",
     "karma-webpack": "^4.0.0-rc.6",
+    "node-sass": "^6.0.0",
     "pikaday": "^1.4.0",
     "promise-polyfill": "^8.2.0",
     "requirejs": "^2.1.0",
