@@ -9,7 +9,6 @@ import displayToggle from './component.display-toggle';
 import stickyBackToTop from './component.sticky-back-to-top';
 import '../shared/component.sticky-document-info';
 import './component.expandable';
-import SideNavigation from '../../scss/design-system-preview/components/side-navigation/side-navigation';
 
 const publicationPage = {},
     pages = {},
@@ -19,8 +18,6 @@ publicationPage.init = function() {
     this.initExpandables();
     this.initAsyncNavigation();
     this.initStickyInfoInteractivity();
-    this.initSidebarHeight();
-    this.initSideNavigation();
     displayToggle.init();
     stickyBackToTop.init();
 };
@@ -42,25 +39,6 @@ publicationPage.initExpandables = function () {
             this.attr('aria-expanded', false);
         }
     });
-};
-
-publicationPage.initSidebarHeight = function () {
-    publicationPage.setSidebarHeight();
-
-    $(window).on('resize', function() {
-        publicationPage.setSidebarHeight();
-    });
-};
-
-publicationPage.setSidebarHeight = function () {
-    const publicationBody = $('.publication-info__body');
-    let targetHeight = 0;
-
-    if (window.innerWidth >= 768) {
-        targetHeight = Math.min($('.js-content-wrapper').height(), window.innerHeight);
-    }
-
-    publicationBody.css({minHeight: targetHeight});
 };
 
 publicationPage.initStickyInfoInteractivity = function() {
@@ -205,12 +183,6 @@ publicationPage.loadHtml = function (url) {
     }
 
     return deferred.promise();
-};
-
-publicationPage.initSideNavigation = function () {
-    const sideNavigationModule = document.querySelector('[data-module="ds-side-navigation"]');
-    this.sideNavigationModule = new SideNavigation(sideNavigationModule);
-    this.sideNavigationModule.init();
 };
 
 /**

@@ -7,10 +7,6 @@
 'use strict';
 
 import $ from 'jquery';
-import CharacterCount from '../../scss/design-system-preview/forms/character-count/character-count';
-
-const characterCountModules = [].slice.call(document.querySelectorAll('[data-module="ds-character-count"]'));
-characterCountModules.forEach(characterCount => new CharacterCount(characterCount).init());
 
 const Payment = {
     settings: {

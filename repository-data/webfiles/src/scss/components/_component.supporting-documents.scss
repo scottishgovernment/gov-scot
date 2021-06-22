@@ -1,0 +1,84 @@
+/*------------------------------------*\
+    SUPPORTING DOCUMENTS
+\*------------------------------------*/
+
+$site-prefix: 'gov_';
+$ds_colour__border: $color__border--base;
+$ds_colour__white: $color__white;
+$ds_colour__link--hover__background: red;
+$ds_colour__link--focus__background: gold;
+
+.#{$site-prefix}supporting-documents {
+    &__thumbnail {
+        display: block;
+        width: 100%;
+    }
+
+    &__thumbnail-link {
+        border: 1px solid $ds_colour__border;
+        display: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__button {
+        padding: 8px;
+
+        &-icon {
+            background-color: currentColor;
+            border-radius: 100%;
+            display: none;
+            height: 36px;
+            padding: 8px;
+            pointer-events: none;
+            width: 36px;
+
+            > svg {
+                fill: $ds_colour__white;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        &:hover:not(:focus) &-icon > svg {
+            fill: $ds_colour__link--hover__background;
+        }
+
+        &:focus &-icon > svg {
+            fill: $ds_colour__link--focus__background;
+        }
+    }
+}
+
+@include media-query(medium) {
+    .#{$site-prefix}supporting-documents {
+        &__thumbnail-link {
+            display: block;
+        }
+    }
+}
+
+@supports(display: inline-flex) {
+    .#{$site-prefix}supporting-documents__button {
+        align-items: center;
+        display: inline-flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+
+        &-icon {
+            display: block;
+        }
+
+        &-text {
+            padding: 0 8px;
+        }
+
+        @include media-query(medium) {
+            width: 100%;
+
+            &-text {
+                width: min-content;
+            }
+        }
+    }
+}

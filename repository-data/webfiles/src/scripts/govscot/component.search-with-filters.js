@@ -10,7 +10,7 @@ import displayToggle from './component.display-toggle';
 import expandable from './component.expandable';
 import dates from '../utils/dates';
 import $ from 'jquery';
-import DSDatePicker from '../../scss/design-system-preview/components/date-picker-standalone/datepicker';
+import DSDatePicker from '../../../node_modules/@scottish-government/pattern-library/src/components/date-picker/date-picker';
 
 window.dataLayer = window.dataLayer || [];
 
