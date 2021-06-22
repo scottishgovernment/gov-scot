@@ -1,54 +1,77 @@
 <#-- @ftlvariable name="contactInformation" type="scot.gov.www.beans.ContactInformation" -->
 <#-- @ftlvariable name="postalAddress" type="org.hippoecm.hst.content.beans.standard.HippoHtml" -->
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<#include "../../include/imports.ftl">
 
-<aside class="contact-information">
-    <#if contactInformation??>
-        <div class="contact-information__group">
-            <h2 class="gamma  emphasis  contact-information__title">Connect</h2>
-            <ul class="external-links">
-                <#if contactInformation.twitter?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="http://twitter.com/${contactInformation.twitter}"><span class="external-links__icon fa fa-twitter"></span>${contactInformation.twitter}</a>
-                    </li>
-                </#if>
-                <#if contactInformation.flickr?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="${contactInformation.flickr}"><span class="external-links__icon fa fa-flickr"></span>Flickr images</a>
-                    </li>
-                </#if>
-                <#if contactInformation.website?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="${contactInformation.website}"><span class="external-links__icon fa fa-link"></span>Website</a>
-                    </li>
-                </#if>
-                <#if contactInformation.email?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="mailto:${contactInformation.email}"><span class="external-links__icon fa fa-envelope"></span>Email</a>
-                    </li>
-                </#if>
-                <#if contactInformation.facebook?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="${contactInformation.facebook}"><span class="external-links__icon fa fa-facebook-square"></span>Facebook</a>
-                    </li>
-                </#if>
-                <#if contactInformation.youtube?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="${contactInformation.youtube}"><span class="external-links__icon fa fa-youtube-square"></span>Youtube</a>
-                    </li>
-                </#if>
-                <#if contactInformation.blog?has_content>
-                    <li class="external-links__item">
-                        <a class="external-links__link" href="${contactInformation.blog}"><span class="external-links__icon fa fa-comment"></span>Blog</a>
-                    </li>
-                </#if>
-            </ul>
-        </div>
-    </#if>
+<#if contactInformation??>
+<div class="ds_contact-details">
 
-    <#if postalAddress??>
-        <div class="contact-information__group">
-            <h2 class="gamma  emphasis  contact-information__title">Contact</h2>
-            <@hst.html hippohtml=postalAddress/>
+    <h2 class="ds_contact-details__title">Contact</h2>
+
+    <dl class="ds_contact-details__list">
+        <#if postalAddress??>
+            <div class="ds_contact-details__item">
+
+                <dt>Address</dt>
+                <dd translate="no">
+                    <address>
+                        <@hst.html hippohtml=postalAddress/>
+                    </address>
+                </dd>
+            </div>
+        </#if>
+
+        <#if contactInformation.email?has_content>
+            <div class="ds_contact-details__item">
+                <dt>Email</dt>
+                <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
+            </div>
+        </#if>
+
+        <div class="ds_contact-details__item  ds_contact-details__social">
+            <dt class="visually-hidden">Connect</dt>
+            <#if contactInformation.facebook?has_content>
+            <dd class="ds_contact-details__social-item">
+                <a class="ds_contact-details__social-link" href="${contactInformation.facebook}">
+                    <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#facebook"></use></svg>
+                    Facebook
+                </a>
+            </dd>
+            </#if>
+            <#if contactInformation.twitter?has_content>
+            <dd class="ds_contact-details__social-item">
+                <a class="ds_contact-details__social-link" href="http://twitter.com/${contactInformation.twitter}">
+                    <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#twitter"></use></svg>
+                    ${contactInformation.twitter}
+                </a>
+            </dd>
+            </#if>
+            <#if contactInformation.flickr?has_content>
+            <dd class="ds_contact-details__social-item">
+                <a class="ds_contact-details__social-link" href="#${contactInformation.flickr}">
+                    <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#flickr"></use></svg>
+                    Flickr
+                </a>
+            </dd>
+            </#if>
+            <#if contactInformation.youtube?has_content>
+            <dd class="ds_contact-details__social-item">
+                <a class="ds_contact-details__social-link" href="${contactInformation.youtube}">
+                    <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#youtube"></use></svg>
+                    YouTube
+                </a>
+            </dd>
+            </#if>
+            <#if contactInformation.blog?has_content>
+            <dd class="ds_contact-details__social-item">
+                <a class="ds_contact-details__social-link" href="${contactInformation.blog}">
+                    <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#blog"></use></svg>
+                    Blog
+                </a>
+            </dd>
+            </#if>
         </div>
-    </#if>
-</aside>
+    </dl>
+
+</div>
+</#if>

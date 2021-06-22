@@ -7,27 +7,24 @@
         <#assign description = '${collections?size} collections'/>
     </#if>
 
-    <div class="expandable collection-expandable">
-        <div class="expandable-item">
-            <button class="expandable-item__header  js-toggle-expand" role="tab" id="collections-heading" data-toggle="collapse" aria-expanded="false" aria-controls="collections-body">
-                <h3 class="expandable-item__title  gamma">
-                    <span class="link-text">This document is part of ${description}</span>
+    <div class="ds_accordion" data-module="ds-accordion">
+        <div class="ds_accordion-item">
+            <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-collections" aria-labelledby="panel-collections-heading" />
+            <div class="ds_accordion-item__header">
+                <h3 id="panel-collections-heading" class="ds_accordion-item__title">
+                    <img src="../../../../assets/images/icons/collection_@2x.png" style="
+                        width: 32px;vertical-align: middle;margin-right: 16px;
+                    ">
+                    This document is part of ${description}
                 </h3>
-                <span class="expandable-item__icon">
-                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
-                        <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                    </svg>
-                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
-                        <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                    </svg>
-                </span>
-            </button>
-
-            <div id="collections-body" class="expandable-item__body" role="tabpanel" aria-expanded="false" aria-labelledby="collections-heading">
-                <ul class="contents-list">
+                <span class="ds_accordion-item__indicator"></span>
+                <label class="ds_accordion-item__label" for="panel-collections"><span class="visually-hidden">Show this section</span></label>
+            </div>
+            <div class="ds_accordion-item__body">
+                <ul class="no-bullets">
                     <#list collections as collection>
 
-                        <li class="contents-list__item">
+                        <li>
                             <a class="contents-list__link" href="<@hst.link hippobean=collection/>">${collection.title}</a>
                         </li>
 

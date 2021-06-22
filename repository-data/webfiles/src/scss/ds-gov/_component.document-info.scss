@@ -1,0 +1,145 @@
+/*------------------------------------*\
+    DOCUMENT INFO
+\*------------------------------------*/
+
+$document-info__border-color: $ds_colour__border--light;
+$document-info__background-color: $ds_colour__grey--lighter !default;
+$document-info__preview__border: $ds_colour__border;
+$document-info__preview__background: $ds_colour__grey--light !default;
+$document-info__preview__background--focus: $ds_colour__blocklink-bg--focus;
+$document-info__text-margin: 16px;
+
+
+.#{$site-prefix}document-info-cell {
+    &:not(:last-child) {
+        border-bottom: 1px solid $document-info__border-color;
+        padding-bottom: 31px; // 32px - border
+    }
+}
+
+.#{$site-prefix}document-info {
+    @include block-margins;
+    clear: both;
+    position: relative;
+
+    @extend .#{$site-prefix}document-info-cell;
+
+    &::after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+
+    &:not(&--highlight) {
+        padding-left: 32px;
+    }
+
+    &__title {
+        font-weight: $normal;
+        margin-top: 0;
+
+        a:not(:focus) {
+            text-decoration: underline;
+        }
+
+        &--upper {
+            display: block;
+        }
+        &--lower {
+            display: none;
+        }
+  }
+
+  &__text {
+      margin-left: 72px + $document-info__text-margin;
+  }
+
+  &--highlight &__text {
+      margin-left: 104px + $document-info__text-margin;
+  }
+
+  &__thumbnail {
+    float: left;
+    margin: 0 $document-info__text-margin 0 0;
+    position: relative;
+    width: 72px;
+
+    &--main {
+      padding-bottom: 48px;
+    }
+  }
+
+  &--highlight &__thumbnail {
+      width: 104px;
+  }
+
+  &__thumbnail-link {
+    background-color: $document-info__preview__background;
+    border: 1px solid $document-info__preview__border;
+    display: block;
+    width: 100%;
+
+    &::before {
+      font-size: 26px;
+      left: 0;
+      line-height: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 50%;
+
+      transition: opacity $transition-in-time;
+    }
+  }
+
+  &__thumbnail-image {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  &__file-details {
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+
+  &__page-count,
+  &__file-size {
+    margin: 0 0 16px;
+    padding: 0 8px;
+  }
+
+  &__disclaimer {
+    @include small-size;
+    color: $ds_colour__text--secondary;
+    line-height: 24px;
+  }
+
+  &__inline-title {
+    text-transform: uppercase;
+  }
+
+  &__download-wrapper {
+    display: none;
+  }
+}
+
+.#{$site-prefix}document-info .ds_button {
+    width: 100%;
+}
+
+@include media-query(medium) {
+  .#{$site-prefix}document-info {
+    margin-bottom: 32px;
+
+    &__download {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &__text {
+        margin-right: 197px;
+    }
+  }
+}

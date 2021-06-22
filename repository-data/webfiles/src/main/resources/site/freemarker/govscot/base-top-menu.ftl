@@ -2,7 +2,7 @@
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <header class="ds_site-header" role="banner" id="page-top">
-    <div class="wrapper">
+    <div class="ds_wrapper">
         <div class="ds_site-header__content">
             <div class="ds_site-branding">
                 <@hst.link var="home" siteMapItemRefId="root" />
@@ -11,7 +11,9 @@
                 </a>
 
             </div>
+            <#assign siteHeaderSearch = true/>
             <@hst.include ref="search"/>
+            <#assign siteHeaderSearch = false/>
         </div>
 
         <nav role="navigation" data-module="ds-site-navigation">
@@ -88,7 +90,7 @@
     <#if menu??>
         <#if menu.siteMenuItems??>
             <div class="ds_site-header__navigation">
-                <div class="wrapper">
+                <div class="ds_wrapper">
                     <nav class="ds_site-navigation">
                         <ul class="ds_site-navigation__list"><!--
                             <#list menu.siteMenuItems as item>
@@ -124,10 +126,3 @@
             </#if>
     </#if>
 </header>
-
-
-
-
-
-<div class="mobile-layer__overlay js-mobile-search-overlay mobile-layer__overlay--grey js-mobile-search-toggle"></div>
-<div class="mobile-layer__overlay js-mobile-nav-overlay mobile-layer__overlay--grey js-mobile-nav-toggle"></div>

@@ -1,43 +1,34 @@
 <#include "../../include/imports.ftl">
 
 <#if document??>
-    <article id="page-content" class="layout--policy">
-    <@hst.manageContent hippobean=document/>
-        <div class="grid"><!--
-         --><div class="grid__item medium--eight-twelfths">
-                <header class="article-header">
-                    <@hst.link var="link" hippobean=index />
-                    <p class="article-header__label">Policy<#if latest??> - Latest</#if></p>
-                    <h1 class="article-header__title">${index.title?html}</h1>
+<div class="ds_wrapper">
+    <main id="main-content" class="ds_layout  gov_layout--policy">
+        <div class="ds_layout__header">
+            <@hst.link var="link" hippobean=index />
+            <header class="ds_page-header">
+                <span class="ds_page-header__label  ds_content-label">Policy<#if latest??> - Latest</#if></span>
+                <h1 class="ds_page-header__title">${index.title?html}</h1>
+                <#include '../common/content-data.ftl'/>
+            </header>
+        </div>
 
-                    <section class="content-data">
-                        <#include '../common/content-data.ftl'/>
-                    </section>
-                </header>
-            </div><!--
-     --></div>
-    </article>
-
-    <div class="grid"><!--
-     --><div class="grid__item medium--four-twelfths large--three-twelfths">
+        <div class="ds_layout__sidebar">
             <#include 'side-menu.ftl'>
-        </div><!--
+        </div>
 
-     --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
+        <div class="ds_layout__content">
             <#if latest??>
                 <#include 'latest.ftl'/>
             <#else>
                 <#include 'content.ftl'/>
             </#if>
-        </div><!--
- --></div>
+        </div>
 
-    <div class="grid"><!--
-        --><div class="grid__item  push--medium--four-twelfths  push--large--three-twelfths  medium--eight-twelfths  large--seven-twelfths">
+        <div class="ds_layout__feedback">
             <#include '../common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
-
+        </div>
+    </main>
+</div>
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>
   <div>

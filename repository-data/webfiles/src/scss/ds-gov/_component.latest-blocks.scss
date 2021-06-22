@@ -1,0 +1,124 @@
+/*------------------------------------*\
+    LATEST BLOCKS
+\*------------------------------------*/
+
+.#{$site-prefix}latest-feeds {
+  @include layout();
+  @include block-margins;
+
+  @supports (display: grid) {
+    grid-template-areas: 'a' 'b' 'c' 'd';
+
+    > .#{$site-prefix}latest-feed {
+      width: auto !important;
+    }
+  }
+
+  @include media-query(medium) {
+    > .#{$site-prefix}latest-feed:nth-child(-n+3) {
+      float: left;
+      @include colwidth(4);
+    }
+
+    > .#{$site-prefix}latest-feed:nth-child(4) {
+        clear: left;
+        @include colwidth(12);
+    }
+
+    @supports (display: grid) {
+      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-areas:
+          'a b c'
+          'd d d';
+
+      > .#{$site-prefix}latest-feed:nth-child(4) {
+        grid-area: d;
+      }
+    }
+  }
+}
+
+.#{$site-prefix}latest-feed {
+  margin-bottom: 32px;
+  position: relative;
+
+  @supports(display: grid) {
+    display: grid;
+    grid-gap: 32px;
+    grid-template-rows: 1fr auto;
+  }
+}
+
+.#{$site-prefix}latest-feed:nth-child(4) .#{$site-prefix}latest-feed__items {
+  @include layout();
+
+  @include media-query(medium) {
+    > .#{$site-prefix}latest-feed__item {
+      float: left;
+      @include colwidth(4);
+    }
+
+    @supports(display: grid) {
+      grid-template-columns: repeat(3, 1fr);
+
+      > .#{$site-prefix}latest-feed__item {
+        width: auto !important;
+      }
+    }
+  }
+}
+
+.#{$site-prefix}latest-feed__item {
+  margin-bottom: 32px;
+
+  position: relative;
+
+  &__title {
+    @include h4-size;
+    font-weight: 400;
+    margin: 0 0 8px;
+    overflow: hidden;
+  }
+
+  &__topics {
+    @include tiny-size;
+    color: $ds_colour__text--secondary;
+    font-style: italic;
+    line-height: 24px;
+    list-style-type: none;
+    margin: 8px 0;
+
+    li {
+      display: inline;
+      margin-left: 0;
+
+      &:not(:last-child) {
+        &:after {
+          content: ',';
+        }
+      }
+    }
+  }
+
+  &__date {
+    @include tiny-size;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 0;
+  }
+}
+
+.#{$site-prefix}latest-feed:nth-child(-n+3) .#{$site-prefix}latest-feed__item {
+  &:not(:first-of-type) {
+    padding-top: 32px;
+
+    &:before {
+      border-bottom: 2px dotted $ds_colour__border--light;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 30%;
+    }
+  }
+}

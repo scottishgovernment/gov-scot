@@ -1,0 +1,115 @@
+/*------------------------------------*\
+    TOPIC HEADER
+\*------------------------------------*/
+
+.#{$site-prefix}topic-header {
+    &__image {
+        height: 128px;
+        margin: 0 -16px;
+        max-width: calc(100% + 32px);
+    }
+}
+
+@include media-query(medium-down) {
+    .#{$site-prefix}topic-header {
+        &__title + &__image {
+            margin-top: -16px;
+        }
+    }
+}
+
+@include media-query(medium) {
+    .#{$site-prefix}topic-header {
+        margin-bottom: 32px;
+        padding-top: 48px;
+        position: relative;
+
+        &__title {
+            padding-bottom: 16px;
+            padding-right: 24px;
+            max-width: 67%;
+        }
+
+        &__image {
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            position: absolute;
+
+            height: 172px;
+        }
+
+        &--has-image {
+            padding-bottom: 24.56%;
+            padding-top: 20px;
+        }
+
+        &--has-image &__title {
+            background: $ds_colour__white;
+            left: 0;
+            margin-top: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+    }
+}
+
+@include media-query(large) {
+    .#{$site-prefix}topic-header {
+        &__title {
+            max-width: 50%;
+        }
+
+        &__image {
+            height: 232px;
+        }
+    }
+}
+
+@include media-query(xlarge) {
+    .#{$site-prefix}topic-header {
+        &__image {
+            height: 280px;
+        }
+    }
+}
+
+
+
+
+/* support for new svg topic/issue images */
+/* this needs a follow-up cleanup task once svg images are in use on the site */
+.#{$site-prefix}topic-header__image {
+    height: 100%;
+    max-width: 9999px;
+    width: calc(100% + 32px);
+}
+
+@include media-query(medium)  {
+    .#{$site-prefix}topic-header__image {
+        width: 100%;
+    }
+
+    .#{$site-prefix}topic-header--has-image [src*=".svg"] + .#{$site-prefix}topic-header__title {
+        background: transparent;
+        left: 24px;
+        line-height: 48px;
+        padding-right: 0;
+        right: 55%;
+        top: 24px;
+    }
+}
+
+@include media-query(large)  {
+    .#{$site-prefix}topic-header--has-image [src*=".svg"] + .#{$site-prefix}topic-header__title {
+        font-size: 48px;
+    }
+}
+
+@include media-query(xlarge) {
+    .#{$site-prefix}topic-header--has-image [src*=".svg"] + .#{$site-prefix}topic-header__title {
+        font-size: 56px;
+    }
+}

@@ -1,33 +1,36 @@
 <#include "../include/imports.ftl">
 
 <#if menu??>
-<aside class="page-group page-group--section-nav page-grouppage-subnav--tablet">
-    <ul class="page-group__list">
+<nav class="ds_side-navigation">
+    <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
+    <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
+
+    <ul class="ds_side-navigation__list">
         <#if menu.siteMenuItems??>
             <#list menu.siteMenuItems as item>
                 <#if item.selected || item.expanded>
-                    <li class="page-group__item page-group__item--level-0">
+                    <li class="ds_side-navigation__item">
 
                         <#if item.selected>
-                        <span href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-0  page-group__link--selected">
+                        <span href="<@hst.link link=item.hstLink/>" class="ds_side-navigation__link  ds_current">
                             ${item.name?html}
                         </span>
                         <#else>
-                        <a href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-0">
+                        <a href="<@hst.link link=item.hstLink/>" class="ds_side-navigation">
                             ${item.name?html}
                         </a>
                         </#if>
 
                         <#if item.childMenuItems??>
-                            <ul class="page-group__list">
+                            <ul class="ds_side-navigation__list">
                                 <#list item.childMenuItems as item>
-                                    <li class="page-group__item page-group__item--level-1">
+                                    <li class="ds_side-navigation__item">
                                         <#if item.selected>
-                                        <span href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-1  page-group__link--selected">
+                                        <span href="<@hst.link link=item.hstLink/>" class="ds_side-navigation  ds_current">
                                             ${item.name?html}
                                         </span>
                                         <#else>
-                                        <a href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-1">
+                                        <a href="<@hst.link link=item.hstLink/>" class="ds_side-navigation">
                                             ${item.name?html}
                                         </a>
                                         </#if>
@@ -40,5 +43,5 @@
             </#list>
         </#if>
     </ul>
-</aside>
+</nav>
 </#if>

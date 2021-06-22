@@ -1,15 +1,20 @@
 <#include "../include/imports.ftl">
 
-<article id="page-content" class="layout--groups-list">
+<div class="ds_wrapper">
+    <main id="main-content" class="ds_layout  ds_layout--article">
+        <div class="ds_layout__header">
+            <header class="ds_page-header">
+                <h1 class="ds_page-header__title">Groups</h1>
+            </header>
+        </div>
 
-    <div class="grid"><!--
-        --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
-            <h1>Groups</h1>
+        <div class="ds_layout__content">
+            <@hst.html hippohtml=document.content />
 
             <#include 'common/a-z-list.ftl' />
-        </div><!--
-    --></div>
-</article>
+        </div>
+    </main>
+</div>
 
 <@hst.headContribution category="pageTitle"><title>Groups - gov.scot</title></@hst.headContribution>
 <#if document??>

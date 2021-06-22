@@ -17,9 +17,9 @@
                     <#if attachedDocument.document.filename??>
                         <div class="supporting-file">
                             <#if supportingFilenameExtension == 'CSV'>
-                                <a href="${documentdownload}" class="supporting-file__icon file-icon file-icon--${supportingFilenameExtension}"></a>
+                                <a href="${documentdownload}" class="supporting-file__icon gov_file-icon file-icon--${supportingFilenameExtension}"></a>
                             <#else>
-                                <a href="<@hst.link hippobean=attachedDocument.document/>?inline-true" class="supporting-file__icon file-icon file-icon--${supportingFilenameExtension}"></a>
+                                <a href="<@hst.link hippobean=attachedDocument.document/>?inline-true" class="supporting-file__icon gov_file-icon gov_file-icon--${supportingFilenameExtension}"></a>
                             </#if>
 
                             <span class="supporting-file__link-wrap">

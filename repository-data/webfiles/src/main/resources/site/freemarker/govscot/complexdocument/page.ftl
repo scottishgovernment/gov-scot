@@ -16,199 +16,224 @@
     <#assign isHomePage = true/>
 </#if>
 
+<@hst.link hippobean=prev var="prevlink"/>
+<@hst.link hippobean=next var="nextlink"/>
+<@hst.link hippobean=document var="baseurl" canonical=true/>
+
 <@hst.manageContent hippobean=document/>
-
-    <header class="article-header   has-icon  has-icon--guide">
-    <p class="article-header__label">Publication - ${document.label}</p>
-        <div class="grid"><!--
-            --><div class="grid__item  large--two-twelfths  hidden-small  hidden-xsmall  hidden-medium">
-                <svg class="svg-icon  mg-icon  mg-icon--full  article-header__icon">
-                    <use xlink:href="${iconspath}#format-publication"></use>
-                </svg>
-            </div><!--
-            --><div class="grid__item  large--seven-twelfths">
-
-                <h1 class="article-header__title">${document.title}</h1>
-                <p>${document.summary}</p>
-
-                <#include '../common/collections-list.ftl'/>
-            </div><!--
-        --></div>
-    </header>
-</div>
-<!-- exit a wrapper set in base-layout so we can make the document navigation span the whole width -->
-
-<div class="section-marker  <#if isHomePage??>visible-xsmall  visible-small</#if>">
-    <div class="section-marker__part  section-marker__document-title">
-        <div class="wrapper">
-            <div class="grid"><!--
-                --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
-                    <div class="section-marker__text-line" title="${document.title}">${document.title}</div>
-                </div><!--
-            --></div>
-        </div>
-    </div>
-    <div class="section-marker__part  section-marker__section-title">
-        <div class="wrapper">
-            <div class="grid"><!--
-                --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
-                    <div class="section-marker__text-line">${subsectionTitle}</div>
-                </div><!--
-            --></div>
-        </div>
-    </div>
-</div>
-
-<nav class="document-nav  document-nav--sticky">
-    <div class="wrapper">
-        <div class="grid"><!--
-            --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
-                <@hst.link hippobean=prev var="prevlink"/>
-                <<#if prevlink??>a<#else>span disabled</#if> class="document-nav__button  button--primary  button" href="<@hst.link hippobean=prev/>" title="Previous page">
-                    <svg class="svg-icon  mg-icon  document-nav__icon">
-                        <use xlink:href="${iconspath}#sharp-chevron_left-24px"></use>
-                    </svg>
-                    <span aria-hidden="true">Prev</span> <span class="hidden">Previous</span>
-                <<#if prevlink??>/a<#else>/span</#if>><!--
-
-                <@hst.link hippobean=document var="baseurl" canonical=true/>
-                --><<#if disableMenuButton??>span disabled<#else>a</#if> class="document-nav__button  button--primary  button" href="${baseurl}" title="Menu">
-                    <svg class="svg-icon  mg-icon  document-nav__icon">
-                        <use xlink:href="${iconspath}#sharp-menu-24px"></use>
-                    </svg>
-                    Menu<<#if disableMenuButton??>/span<#else>/a</#if>><!--
-
-                <@hst.link hippobean=next var="nextlink"/>
-                --><<#if nextlink??>a<#else>span disabled</#if> class="document-nav__button  button--primary  button" href="<@hst.link hippobean=next/>" title="Next page">
-                    <svg class="svg-icon  mg-icon  document-nav__icon">
-                        <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
-                    </svg>
-                    Next<<#if nextlink??>/a<#else>/span</#if>>
-            </div><!--
-        --></div>
-    </div>
-</nav>
-
-<!-- reopen the wrapper in base-layout -->
-<div class="wrapper" id="document-content">
-
-    <#if isAboutPage??>
-
-        <div class="grid"><!--
-            --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
-
-                <h2><b>About this publication</b></h2>
-
-                <dl class="content-data  content-data__list">
-                    <dt class="content-data__label">Published:</dt>
-                    <dd class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMM yyyy"/></strong></dd>
-
-                    <#if document.responsibleRole??>
-                        <dt class="content-data__label">From:</dt>
-
-                        <dd class="content-data__value">
-                            <@hst.link var="link" hippobean=document.responsibleRole/>
-                            <a href="${link}">${document.responsibleRole.title}</a><!--
-
-                        --><#if document.secondaryResponsibleRole?first??><!--
-                        -->, <!--
-                            --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
-                                &#43;${document.secondaryResponsibleRole?size}&nbsp;more&nbsp;&hellip;</a>
-
-                                <span id="secondary-responsible-roles" class="content-data__additional">
-                                    <#list document.secondaryResponsibleRole as secondaryRole>
-
-                                        <@hst.link var="link" hippobean=secondaryRole/>
-                                        <a href="${link}">${secondaryRole.title}</a><#sep>, </#sep>
-                                    </#list>
-                                </span>
-
-                        </#if>
-                        </dd>
-                    </#if>
-
-                    <#if document.responsibleDirectorate??>
-                        <dt class="content-data__label">Directorate:</dt>
-
-                        <dd class="content-data__value">
-                            <@hst.link var="link" hippobean=document.responsibleDirectorate/>
-                            <a href="${link}">${document.responsibleDirectorate.title}</a><!--
-                            --><#if document.secondaryResponsibleDirectorate?has_content><!--
-                            -->, <!--
-                            --><a href="#secondary-responsible-directorates" class="content-data__expand  js-display-toggle">
-                            &#43;${document.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
-
-                                <span id="secondary-responsible-directorates" class="content-data__additional">
-                                    <#list document.secondaryResponsibleDirectorate as secondaryDirectorate>
-
-                                        <@hst.link var="link" hippobean=secondaryDirectorate/>
-                                        <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
-                                    </#list>
-                                </span>
-                            </#if>
-                        </dd>
-                    </#if>
-
-                    <#if document.topics?first??>
-                        <dt class="content-data__label">Part of:</dt>
-
-                        <dd class="content-data__value">
-                            <#list document.topics?sort_by("title") as topic>
-                                <@hst.link var="link" hippobean=topic/>
-                                <a href="${link}">${topic.title}</a><#sep>, </#sep>
-                            </#list>
-                        </dd>
-                    </#if>
-
-                    <#if document.isbn?has_content>
-                        <dt class="content-data__label"><abbr title="International Standard Book Number">ISBN</abbr>:</dt>
-                        <dd class="content-data__value">${document.isbn}</dd>
-                    </#if>
-                </dl>
-
-                <@hst.html hippohtml=document.content/>
-
-                <#if documents?has_content>
-                    <div class="documents">
-                        <#assign attachedDocument = documents[0]/>
-                        <#assign useCoverPage = true/>
-                        <#include '../publication/body-document-info.ftl'/>
+<!-- this outer div allows us to break the sticky header out of the layout grid -->
+<div>
+    <div class="ds_wrapper">
+        <div class="ds_layout  gov_layout--publication">
+            <div class="ds_layout__header">
+                <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
+                    <div class="gov_sublayout__title">
+                        <span class="ds_page-header__label  ds_content-label">Publication - ${document.label}</span>
+                        <h1 class="ds_page-header__title">${document.title}</h1>
                     </div>
-                </#if>
 
-                <@hst.html hippohtml=document.revisions var="docRevisions"/>
-                <#if docRevisions?has_content>
-                    <div class="expandable">
-                        <div class="expandable-item">
-                            <button class="expandable-item__header  js-toggle-expand" role="tab" id="revisions-heading" data-toggle="collapse" aria-expanded="false" aria-controls="revisions-body">
-                                <h3 class="expandable-item__title  gamma"><span class="link-text">Revisions</span></h3>
-                                <span class="expandable-item__icon">
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
-                                        <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                    </svg>
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
-                                        <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                                    </svg>
-                                </span>
-                            </button>
+                    <div class="gov_sublayout__metadata">
+                        <#include '../publication/metadata.ftl'/>
+                    </div>
 
-                            <div id="revisions-body" class="expandable-item__body  expandable-item__body--with-padding" role="tabpanel" aria-expanded="false" aria-labelledby="revisions-heading">
-                                ${docRevisions}
+                    <div class="gov_sublayout__content">
+                        <#if document.summary??>
+                            <p class="ds_leader">${document.summary}</p>
+                        </#if>
+
+                        <#include '../common/collections-list.ftl'/>
+                    </div>
+
+                    <div class="gov_sublayout__document">
+                        <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
+                            <div class="gov_supporting-documents">
+                                <#if documents??>
+                                    <#assign firstDocument = documents[0]/>
+                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                    <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                                </#if>
+                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                    <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                        <#if document.coverimage?has_content>
+                                            <img
+                                                alt="View supporting documents"
+                                                class="gov_supporting-documents__thumbnail"
+                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        <#else>
+                                            <img
+                                                class="gov_supporting-documents__thumbnail"
+                                                alt="View supporting documents"
+                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                                srcset="
+                                                <#list firstDocument.thumbnails as thumbnail>
+                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                </#list>"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        </#if>
+                                    </a>
+                                <#else>
+                                    <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                        <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                            <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                        </svg>
+                                        <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                    </a>
+                                </#if>
+
+                                <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                                    <span class="gov_supporting-documents__button-icon">
+                                        <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                                    </span>
+                                    <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                                </a>
+                            </div>
+                        </#if>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <div class="gov_document-banner">
+        <div class="ds_wrapper">
+            <div class="ds_layout  gov_layout--publication">
+                <div class="ds_layout__content">
+                    <#if isDocumentsPage?? || currentPage == document>
+                    <#else>
+                        <div class="gov_document-banner__title">
+                            <span class="gov_document-banner__title-main">${document.title}</span>
+                            <span class="gov_document-banner__title-sub">${subsectionTitle}</span>
+                        </div>
+                    </#if>
+                    <div class="gov_document-banner__nav">
+                        <#if prevlink??>
+                            <a href="${prevlink}" class="ds_button  gov_document-banner__button">
+                                <svg class="ds_icon  gov_document-banner__button-icon">
+                                    <use xlink:href="${iconspath}#chevron-left"></use>
+                                </svg>
+                                <span aria-hidden="true">Prev</span> <span class="visually-hidden">Previous</span>
+                            </a>
+                        <#else>
+                            <span class="ds_button  gov_document-banner__button  ds_current">
+                                <svg class="ds_icon  gov_document-banner__button-icon">
+                                    <use xlink:href="${iconspath}#chevron-left"></use>
+                                </svg>
+                                <span aria-hidden="true">Prev</span> <span class="visually-hidden">Previous</span>
+                            </span>
+                        </#if>
+
+                        <#if !disableMenuButton??>
+                            <a href="${baseurl}" class="ds_button  gov_document-banner__button">
+                                <svg class="ds_icon  gov_document-banner__button-icon">
+                                    <use xlink:href="${iconspath}#menu"></use>
+                                </svg>
+                                Menu
+                            </a>
+                        <#else>
+                            <span class="ds_button  gov_document-banner__button  ds_current">
+                                <svg class="ds_icon  gov_document-banner__button-icon">
+                                    <use xlink:href="${iconspath}#menu"></use>
+                                </svg>
+                                Menu
+                            </span>
+                        </#if>
+
+                        <#if nextlink??>
+                            <a href="${nextlink}" class="ds_button  gov_document-banner__button">
+                                <svg class="ds_icon  gov_document-banner__button-icon">
+                                    <use xlink:href="${iconspath}#chevron-right"></use>
+                                </svg>
+                                Next
+                            </a>
+                        <#else>
+                            <span class="ds_button  gov_document-banner__button  ds_current">
+                                <svg class="ds_icon  gov_document-banner__button-icon">
+                                    <use xlink:href="${iconspath}#chevron-right"></use>
+                                </svg>
+                                Next
+                            </span>
+                        </#if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getOffsetFromDocumentTop(element) {
+            let offset = element.offsetTop;
+
+            while (element.offsetParent) {
+                element = element.offsetParent;
+                offset = offset + element.offsetTop
+            }
+
+            return offset;
+        }
+
+        const element = document.querySelector('.gov_document-banner');
+        const observer = new IntersectionObserver(
+            function ([e]) {
+                window.foo = e.isIntersecting;
+                if (!e.isIntersecting && getOffsetFromDocumentTop(element) - 10 < window.scrollY) {
+                    e.target.classList.add('is-pinned');
+                } else {
+                    e.target.classList.remove('is-pinned');
+                }
+            },
+            { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
+        );
+
+        observer.observe(element);
+    </script>
+    <style>
+
+    </style>
+
+    <div class="ds_wrapper">
+        <div class="ds_layout  gov_layout--publication">
+            <div class="ds_layout__content">
+                <#if isAboutPage??>
+                    <h2>About this publication</h2>
+
+                    <#include '../publication/metadata.ftl'/>
+
+                    <@hst.html hippohtml=document.content/>
+
+                    <#if documents?has_content>
+                        <div>
+                            <#assign attachedDocument = documents[0]/>
+                            <#assign useCoverPage = true/>
+                            <#include '../publication/body-document-info.ftl'/>
+                        </div>
+                    </#if>
+
+                    <@hst.html hippohtml=document.revisions var="docRevisions"/>
+                    <#if docRevisions?has_content>
+                        <div class="ds_accordion" data-module="ds-accordion">
+                            <div class="ds_accordion-item">
+                                <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-revisions" aria-labelledby="panel-revisions-heading" />
+                                <div class="ds_accordion-item__header">
+                                    <h3 id="panel-revisions-heading" class="ds_accordion-item__title">
+                                        Revisions
+                                    </h3>
+                                    <span class="ds_accordion-item__indicator"></span>
+                                    <label class="ds_accordion-item__label" for="panel-revisions"><span class="visually-hidden">Show this section</span></label>
+                                </div>
+                                <div class="ds_accordion-item__body">
+                                    ${docRevisions}
+                                </div>
                             </div>
                         </div>
-                        <!-- /end .expandable-item -->
-                    </div>
-                </#if>
-            </div><!--
-        --></div>
+                    </#if>
+                <#elseif isDocumentsPage??>
+                    <h2>Supporting documents</h2>
 
-    <#elseif isDocumentsPage??>
-        <div class="grid"><!--
-            --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
-
-                <h2><b>Supporting documents</b></h2>
-
-                <#if documents?? && documents?size gt 0>
+                    <#if documents?? && documents?size gt 0>
                         <section class="document-section">
                             <#list documents as attachedDocument>
                                 <#if attachedDocument?index == 0>
@@ -220,187 +245,88 @@
                                 <#assign useCoverPage = false/>
                             </#list>
                         </section>
-                </#if>
+                    </#if>
 
-                <#if groupedDocumentFolders??>
-                    <#list groupedDocumentFolders as folder>
-                        <#if folder.documents?has_content>
-                        <section class="document-section">
-                            <h2>${folder.displayName}</h2>
-                            <#list folder.documents as attachedDocument>
-                                <#include '../publication/body-document-info.ftl'/>
-                            </#list>
-                        </section>
-                        </#if>
-                    </#list>
-                </#if>
-            </div><!--
-        --></div>
+                    <#if groupedDocumentFolders??>
+                        <#list groupedDocumentFolders as folder>
+                            <#if folder.documents?has_content>
+                            <section class="document-section">
+                                <h2>${folder.displayName}</h2>
+                                <#list folder.documents as attachedDocument>
+                                    <#include '../publication/body-document-info.ftl'/>
+                                </#list>
+                            </section>
+                            </#if>
+                        </#list>
+                    </#if>
+                <#elseif currentPage == document>
+                    <h2>Contents</h2>
 
-    <#elseif currentPage == document>
-        <div class="grid"><!--
-            --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
-                <h2><b>Contents</b></h2>
+                    <div class="ds_accordion" data-module="ds-accordion">
+                        <button data-accordion="accordion-open-all" type="button" class="ds_link  ds_accordion__open-all  js-open-all">Open all <span class="visually-hidden">sections</span></button>
 
-                <div class="grid"><!--
-                    --><div class="grid__item  medium--seven-tenths  xlarge--eight-tenths">
-
-                        <div class="expandable  contents-expandable">
-                            <button class="button  button--secondary  button--small  button--no-margin  expand-all-button  js-expand-all">
-                                <span class="expand-all-button__text  js-button-text">Expand all</span>
-                                <span class="expand-all-button__icon-container">
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more  expand-all-button__icon">
-                                        <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                    </svg>
-                                    <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less  expand-all-button__icon">
-                                        <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                                    </svg>
-                                </span>
-                            </button>
-
-                            <#list chapters as chapter>
-                                <div class="expandable-item">
-                                    <button class="expandable-item__header  js-toggle-expand" role="tab" id="${chapter.name}-heading" data-toggle="collapse" aria-expanded="false" aria-controls="${chapter.name}-body">
-                                        <h3 class="expandable-item__title  gamma"><span class="link-text">${chapter.displayName}</span></h3>
-                                        <span class="expandable-item__icon">
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-more">
-                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                            </svg>
-                                            <svg class="svg-icon  mg-icon  mg-icon--full  optional-icon  icon-less">
-                                                <use xlink:href="${iconspath}#sharp-expand_less-24px"></use>
-                                            </svg>
-                                        </span>
-                                    </button>
-
-                                    <div id="${chapter.name}-body" class="expandable-item__body" role="tabpanel" aria-expanded="false" aria-labelledby="${chapter.name}-heading">
-                                        <ul class="contents-list">
+                        <#list chapters as chapter>
+                            <div class="ds_accordion-item">
+                                <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-{chapter.name}" aria-labelledby="panel-{chapter.name}-heading" />
+                                <div class="ds_accordion-item__header">
+                                    <h3 id="panel-{chapter.name}-heading" class="ds_accordion-item__title">
+                                        ${chapter.displayName}
+                                    </h3>
+                                    <span class="ds_accordion-item__indicator"></span>
+                                    <label class="ds_accordion-item__label" for="panel-{chapter.name}"><span class="visually-hidden">Show this section</span></label>
+                                </div>
+                                <div class="ds_accordion-item__body">
+                                    <nav role="navigation" class="ds_contents-nav" aria-label="Sections">
+                                        <ul class="ds_contents-nav__list">
                                             <#list chapter.documents as section>
-
-                                                <li class="contents-list__item">
-                                                    <svg class="svg-icon  mg-icon  contents-list__icon">
-                                                        <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
-                                                    </svg>
-                                                    <a class="contents-list__link" href="<@hst.link hippobean=section/>">${section.title}</a>
+                                                <li class="ds_contents-nav__item">
+                                                    <a class="ds_contents-nav__link" href="<@hst.link hippobean=section/>">${section.title}</a>
                                                 </li>
-
                                             </#list>
                                         </ul>
-                                    </div>
+                                    </nav>
                                 </div>
-                                <!-- /end .expandable-item -->
-                            </#list>
-                        </div>
-
-                    </div><!--
-                    --><div class="grid__item  medium--three-tenths  xlarge--two-tenths">
-                        <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
-                            <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
-                                <#if documents??>
-                                    <#assign firstDocument = documents[0]/>
-                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                                    <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
-                                </#if>
-                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                    <a data-title="${document.title}" class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
-                                        <#if document.coverimage?has_content>
-                                            <img
-                                                alt="View this document"
-                                                class="document-info__thumbnail-image"
-                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        <#else>
-                                            <img
-                                                class="document-info__thumbnail-image"
-                                                alt="View this document"
-                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                                srcset="
-                                                <#list firstDocument.thumbnails as thumbnail>
-                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                </#list>"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        </#if>
-                                    </a>
-                                <#else>
-                                    <a data-title="${document.title}" title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
-                                </#if>
                             </div>
+                        </#list>
+                    </div>
+                <#else>
+                    <article class="complex-document">
+                        <h3>${currentPage.title}</h3>
 
-                            <a data-title="${document.title}" class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'about/'}">
-                                <div class="icon-button__content">
-                                    <span class="icon-button__icon">
-                                        <svg class="svg-icon  mg-icon">
-                                            <use xlink:href="${iconspath}#sharp-info_no_circle-24px"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="icon-button__text">
-                                        About this publication
-                                    </span>
-                                </div>
-                            </a>
-                        </#if>
+                        <@hst.html hippohtml=currentPage.content/>
 
-                        <#if (displaySupportingDocuments?? && displaySupportingDocuments == true)>
-                            <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
-                                <div class="icon-button__content">
-                                        <span class="icon-button__icon">
-                                            <svg class="svg-icon  mg-icon">
-                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="icon-button__text">
-                                            Supporting documents
-                                        </span>
-                                </div>
-                            </a>
-                        </#if>
-
-                    </div><!--
-                --></div>
-            </div><!--
-        --></div>
-    <#else>
-        <article class="complex-document">
-            <div class="grid"><!--
-                --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
-                    <h3 class="complex-document__title">${currentPage.title}</h3>
-
-                    <@hst.html hippohtml=currentPage.content/>
-
-
-                    <div class="grid  page-nav"><!--
-                        --><div class="grid__item  push--medium--six-twelfths  medium--six-twelfths  page-nav__item">
-                            <#if next??>
-                                <a title="Next page" href="<@hst.link hippobean=next/>" class="page-nav__button  page-nav__button--right  js-next">
-                                    <span data-label="next" class="page-nav__text">${next.title}</span>
-                                </a>
-                            </#if>
-                        </div><!--
-                        --><div class="grid__item  medium--six-twelfths  pull--medium--six-twelfths  page-nav__item">
+                        <nav class="ds_sequential-nav" aria-label="Article navigation">
                             <#if prev??>
-                                <a title="Previous page" href="<@hst.link hippobean=prev/>" class="page-nav__button  page-nav__button--left  js-previous">
-                                    <span data-label="previous" class="page-nav__text">${prev.title}</span>
-                                </a>
+                                <@hst.link var="link" hippobean=prev/>
+                                <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
+                                    <a title="Previous section" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+                                        <span class="ds_sequential-nav__text" data-label="previous">
+                                            ${prev.title}
+                                        </span>
+                                    </a>
+                                </div>
                             </#if>
-                        </div><!--
-                    --></div>
-                </div><!--
-            --></div>
-        </article>
-    </#if>
-</div>
-<!-- /end .wrapper -->
 
+                            <#if next??>
+                                <@hst.link var="link" hippobean=next/>
+                                <div class="ds_sequential-nav__item  ds_sequential-nav__item--next">
+                                    <a title="Next section" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right">
+                                        <span class="ds_sequential-nav__text" data-label="next">
+                                            ${next.title}
+                                        </span>
+                                    </a>
+                                </div>
+                            </#if>
+                        </nav>
+                    </article>
+                </#if>
+            </div>
 
-<div class="wrapper">
-    <div class="grid"><!--
-        --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
-            <#include '../common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
+            <div class="ds_layout__feedback">
+                <#include '../common/feedback-wrapper.ftl'>
+            </div>
+        </div>
+    </div>
 </div>
 
 </#if>

@@ -21,18 +21,18 @@
 <#if pageable??>
 <#-- this div is here to make use of 'pageable' -->
 <div class="filter-buttons--sticky">
-    <button class="button  button--secondary  button--no-margin  button--left  button--xsmall  js-show-filters">Filter</button>
+    <button class="ds_button  ds_button--secondary  ds_button--small  ds_no-margin  js-show-filters">Filter</button>
 
     <span class="search-results__count js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${pageable.total}</b> items</span>
 
     <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  button button--xsmall button--cancel button--right">Clear</a>
 </div>
 
-<section id="search-results" class="search-results">
-    <header class="search-results__header">
-        <h2 class="hidden">Search results</h2>
+<section id="search-results" class="ds_search-results">
+    <header style="outline: 4px dashed red">
+        <h2 class="visually-hidden">Search results</h2>
 
-        <p class="search-results__count  search-results-header__left">
+        <p class="ds_search-results__count js-search-results-count">
             <#if hasActiveParameters == true>
                 Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
@@ -86,83 +86,84 @@
                 Showing all <b>${pageable.total}</b> ${searchTermPlural}
             </#if>
         </p>
-        <button type="button" name="filters-clear" class="hidden visible-xsmall button button--small button--secondary js-clear-filters search-results-header__right clear-button">Clear</button>
+
+        <button type="button" name="filters-clear" class="visually-hidden  ds_button  ds_button--cancel  ds_button--small  js-clear-filters">Clear</button>
     </header>
 
-    <ol id="search-results-list" class="search-results__list">
+    <ol id="search-results-list" class="ds_search-results__list">
         <#list pageable.items as item>
             <@hst.link var="link" hippobean=item/>
-            <li class="search-results__item  listed-content-item">
-                <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if>">
-                    <header class="listed-content-item__header">
-                        <div class="listed-content-item__meta">
-                            <span class="listed-content-item__label">${item.label}</span>
+            <li class="gov_search-result">
+                <div class="gov_search-result__main">
+                    <header class="gov_search-result__header">
+                        <dl class="gov_search-result__metadata  ds_metadata  ds_metadata--inline">
+                            <span class="ds_metadata__item">
+                                <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
+                            </span>
 
                             <#if item.publicationDate??>
-                                <#assign dateFormat = "dd MMM yyyy">
-                                <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                    <#assign dateFormat = "dd MMM yyyy HH:mm">
-                                </#if>
-                                <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
+                                <span class="ds_metadata__item">
+                                    <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                                    <#assign dateFormat = "dd MMM yyyy">
+                                    <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                        <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                    </#if>
+                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></dd>
+                                </span>
                             </#if>
-                        </div>
+                        </dl>
 
-                        <h2 class="gamma listed-content-item__title">
-                            <a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title}</a>
+                        <h2 class="gamma gov_search-result__title">
+                            <a class="gov_search-result__link" href="${link}">${item.title}</a>
                         </h2>
                     </header>
+
                     <#if item.summary??>
-                        <p class="listed-content-item__summary">
+                        <p class="gov_search-result__summary">
                             ${item.summary}
                         </p>
                     </#if>
-                    <#if item.collections?has_content>
-                        <#if item.collections?size == 1>
-                            <#assign description = 'a collection'/>
-                        <#else>
-                            <#assign description = '${item.collections?size} collections'/>
-                        </#if>
-                        <p class="listed-content-item__collections">This publication is part of ${description}:&nbsp;
-                            <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
+                </div>
 
-                         --><#if item.collections?size gt 1><!--
-                             -->,&nbsp;<!--
-                             --><a href="#content-item-${item?index}-collections" class="content-data__expand js-display-toggle">
-                                    &#43;${item.collections?size - 1}&nbsp;more&nbsp;&hellip;</a>
-
-                                <span id="content-item-${item?index}-collections" class="content-data__additional">
-                                    <#list item.collections as collection>
-                                        <#if collection?index != 0>
-                                            <@hst.link var="link" hippobean=collection/>
-                                            <a href="${link}">${collection.title}</a><#sep>,&nbsp;</#sep>
-                                        </#if>
-                                    </#list>
-                                </span>
-                            </#if>
-                        </p>
+                <#if item.collections?has_content>
+                    <#if item.collections?size == 1>
+                        <#assign description = 'a collection'/>
+                    <#else>
+                        <#assign description = '${item.collections?size} collections'/>
                     </#if>
-                </article>
+                    <p class="gov_search-result__supplemental">
+                        <img src="../../../../assets/images/icons/collection_@2x.png" style="
+                            width: 32px;vertical-align: middle;margin-right: 16px;
+                        ">
+
+                        This publication is part of ${description}:&nbsp;
+                        <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
+
+                        --><#if item.collections?size gt 1><!--
+                            -->,&nbsp;<!--
+                            --><a href="#content-item-${item?index}-collections">
+                                &#43;${item.collections?size - 1}&nbsp;more&nbsp;&hellip;</a>
+
+                            <span id="content-item-${item?index}-collections">
+                                <#list item.collections as collection>
+                                    <#if collection?index != 0>
+                                        <@hst.link var="link" hippobean=collection/>
+                                        <a href="${link}">${collection.title}</a><#sep>,&nbsp;</#sep>
+                                    </#if>
+                                </#list>
+                            </span>
+                        </#if>
+                    </p>
+                </#if>
             </li>
         </#list>
     </ol>
 
-    <div id="pagination" class="search-results__pagination pagination">
+    <div id="pagination">
         <#assign gtmslug = relativeContentPath />
-        <#if cparam.showPagination>
+        <#if cparam.showPagination??>
             <#include "../../include/pagination.ftl">
-        </#if>
-
-        <#assign pageNumber = 1/>
-        <#if parameters['page']??>
-            <#list parameters['page'] as nested>
-                <#assign pageNumber = nested?number/>
-            </#list>
-        </#if>
-
-        <#if pageable.currentPage < pageable.totalPages>
-            <div class="search-results__pagination  search-results__pagination--small  pagination">
-                <button data-page-start="${pageNumber + 1}" id="load-more" class="js-load-more-results  button  button--primary">Load more</button>
-            </div>
         </#if>
     </div>
 </section>

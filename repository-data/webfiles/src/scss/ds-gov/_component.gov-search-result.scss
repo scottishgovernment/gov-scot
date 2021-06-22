@@ -1,0 +1,76 @@
+/*------------------------------------*\
+    SEARCH RESULT
+    replacement of Design System search result to allow inclusion of the "supplemental" block
+\*------------------------------------*/
+
+
+
+
+$person-image-size: 80px;
+$person-image-size--medium: 136px;
+
+
+
+
+.#{$site-prefix}search-result {
+    @extend %x#{$pl-prefix}search-result__outer;
+
+    &__main {
+        @extend %x#{$pl-prefix}search-result__inner;
+
+        @include blocklink('.#{$site-prefix}search-result__link');
+
+        + &__supplemental {
+            padding-bottom: 8px;
+        }
+    }
+
+    &__supplemental {
+        @include tiny-size;
+        background-repeat: no-repeat;
+        color: $ds_colour__link;
+        min-height: 56px;
+        line-height: 24px;
+        margin-bottom: 0px;
+        padding: 8px 16px;
+    }
+
+    &__label {
+        @extend .#{$pl-prefix}search-result__label;
+    }
+
+    &__date {
+        @extend .#{$pl-prefix}search-result__date;
+    }
+
+    &__title {
+        @extend .#{$pl-prefix}search-result__title;
+    }
+
+    &--has-image {
+        .#{$pl-prefix}search-result__header,
+        .#{$pl-prefix}search-result__summary {
+            padding-right: ($person-image-size + 16px);
+        }
+    }
+
+    &__image {
+        float: right;
+        max-height: $person-image-size;
+        max-width: $person-image-size;
+    }
+}
+
+@include media-query(medium) {
+    .#{$site-prefix}search-result--has-image {
+        .#{$pl-prefix}search-result__header,
+        .#{$pl-prefix}search-result__summary {
+            padding-right: ($person-image-size--medium + 16px);
+        }
+    }
+
+    .#{$site-prefix}search-result__image {
+        max-height: $person-image-size--medium;
+        max-width: $person-image-size--medium;
+    }
+}

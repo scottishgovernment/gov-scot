@@ -1,26 +1,27 @@
-@charset "utf-8";
-
-/*------------------------------------*\
-    #GOV.SCOT
-\*------------------------------------*/
-body {font-family: Arial, Helvetica, sans-serif;}
-
+/**
+ * PATTERN LIBRARY VALUES
+ */
+$iconsfile: "../images/icons/icons.stack.svg";
+$site-prefix: "gov_";
 
 
- $base-line-height: 7px;
- $base-font-size: 16px;
+/**
+ * BASE STYLES FROM PATTERN LIBRARY
+ */
+@import "../../node_modules/@scottish-government/pattern-library/src/base/all-base";
+@import "../../node_modules/@scottish-government/pattern-library/src/forms/all-forms";
+@import "ds-gov/base.gov-layouts";
+
+/**
+ * COMPONENTS FROM PATTERN LIBRARY
+ */
+@import "../../node_modules/@scottish-government/pattern-library/src/components/all-components";
+
+.js-enabled .fully-hidden-if-js {
+    display: none;
+}
 
 
-
-
- /**
-  * GRID/LAYOUT
-  */
-
- // CSS Wizardry grids settings
-$gutter: 30px;
-$pull: true;
-$push: true;
 
 // same breakpoints as mygov.scot
 $breakpoints: (
@@ -35,321 +36,259 @@ $breakpoints: (
     'medium-to-large' '(min-width: 768px) and (max-width: 991px)',
     'large-to-xlarge' '(min-width: 992px) and (max-width: 1199px)',
     'xlarge-up' '(min-width: 1200px)' );
-$breakpoint-has-widths: ('small', 'medium', 'large', 'xlarge');
-$breakpoint-has-push: ('small', 'medium', 'large', 'xlarge');
-$breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
-@import "utilities/csswizardry-grids.scss";
 
-// some overrides for csswizardry grids
-.grid--narrow {
-    margin-left: $gutter / -3;
-
-    > .grid__item {
-        padding-left: $gutter / 3;
-    }
-}
-
-/**
- * SETTINGS
- */
-@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
 $images-path: '../../../../assets/mygov/';
-$transition-in-time: 0.2s;
-$transition-out-time: 0.2s;
-@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
-$base-h1-size: 35px; // 2.1875em;
-$base-h2-size: 22px; // 1.375em;
-$base-h3-size: 18px; // 1.125em;
-$base-h4-size: 15px; // 0.9375em
-$medium-font-size: 18px;
-//$medium-milli-size: 16px;
-$medium-h1-size: 56px;
-$medium-h2-size: 28px;
-$medium-h3-size: 21px;
-$medium-h4-size: $medium-font-size - 1;
-$medium-h5-size: 14px;
-$large-h2-size: 32px;
-@import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.type";
-h3, .gamma {
-    &:first-child {
-        margin-top: 0;
-    }
-}
-
-
 
 /**
  * TOOLS
  */
-@import "tools/tools.animation";
-@import "tools/tools.hit-target";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/tools/tools.mixins";
-@import "tools/tools.mixins";
-@import "tools/tools.placeholder-selectors";
-
-
-
-
-/**
- * GENERIC
- */
-@import "../../node_modules/@scottish-government/mygov-assets/scss/generic/generic.normalize";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/generic/generic.box-sizing";
-
-
-
-
-/**
- * HELPERS
- */
-@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.bleed";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.visibility";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/helpers/helper.wrappers";
-
-
-
-
-/**
- * BASE
- */
-$button__padding: 7px 20px;
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.buttons";
-@import "base/base.govscot-buttons";
-$external-link__excluded-sites: ('.gov.scot', '.scotland.gov.uk');
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.external-links";
-@import "base/base.forms";
-@import "base/base.headings";
-@import "base/base.icons";
-@import "base/base.lists";
-@import "base/base.large-list";
-
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.rules";
-$table__border-color--header: $color__grey--light;
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/base.tables";
-@import "base/base.tables";
-@import "base/base.type";
-
-
-/* BASE: TYPE */
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.body";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.header-emphasis";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.leader";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.links";
-
-
-
-/* FORMS */
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/forms/forms.radio-buttons";
-
-
+// @import "tools/tools.animation";
+// @import "tools/tools.hit-target";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/tools/tools.mixins";
+// @import "tools/tools.mixins";
+// @import "tools/tools.placeholder-selectors";
 
 /**
  * OBJECTS
  */
-@import "objects/object.column-list";
-@import "objects/object.containers";
-@import "objects/object.dividers";
-@import "objects/object.layers";
-@import "objects/object.media";
-@import "objects/object.narrow";
-@import "objects/object.overflows";
-@import "objects/object.scrollable";
-@import "objects/object.svg-icon";
-
-
-
-
-/**
- * PLUGINS
- */
-@import "../../node_modules/pikaday/scss/pikaday.scss";
-@import "components/plugin.pikaday";
-
-
-
+// @import "objects/object.column-list";
+// @import "objects/object.containers";
+// @import "objects/object.dividers";
+// @import "objects/object.layers";
+// @import "objects/object.media";
+// @import "objects/object.narrow";
+// @import "objects/object.overflows";
+// @import "objects/object.scrollable";
+// @import "objects/object.svg-icon";
 
 /**
  * COMPONENTS
  */
-@import "components/component.aps-publication";
-@import "components/component.article";
-@import "components/component.article-header";
-@import "components/component.article-external-link";
-@import "components/component.az-list";
-$breadcrumbs__font-size: 12px;
-$breadcrumbs__font-size--medium: 13px;
-$breadcrumbs__font-size--large: 14px;
-$breadcrumbs__margin: 0 0 28px;
-$breadcrumbs__margin--medium: -3px 0 25px;
-$breadcrumbs__margin--large: $breadcrumbs__margin--medium;
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.breadcrumbs";
-@import "components/component.contact-information";
-@import "components/component.content-data";
-@import "components/component.contents-list";
-@import "components/component.crossbar-header";
-@import "components/component.directorate-list";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
-@import "components/component.document-nav";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
-@import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
-$expandable__title-size: 16px;
-@import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expandable';
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.external-links";
-@import "components/component.feedback";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
-@import "components/component.form-box";
-@import "components/component.history-list";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.informational-notes";
-@import "components/component.issue-callout";
-@import "components/component.list-controls";
-@import "components/component.listed-content-item";
-@import "components/component.multipage-nav";
-@import "components/component.notification";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.page-nav";
-@import "components/component.page-group";
-@import "components/component.pagination";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.person";
-@import "components/component.person-grid";
-@import "components/component.policy-list";
-@import "components/component.publication-info";
-$search-box__border-radius: 0;
-$search-box__background-color: $color__grey--lighter;
-$search-box__font-size: 16px;
-$search-box__font-size--medium: 17px;
-$search-box__font-size--large: $search-box__font-size--medium;
-$search-box__size: 56px;
-$search-box__size--medium: $search-box__size;
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.search-box";
-@import "components/component.search-results";
-@import "components/component.section-marker";
-@import "components/component.see-all-button";
-@import "components/component.sidebar-block";
-@import "components/component.site-footer";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.skip-links";
-@import "components/component.social-channels";
-@import "components/component.stat-box";
-@import "components/component.sticky-back-to-top";
-@import "components/component.sticky-document-info";
-@import "components/component.supporting-files";
-@import "components/component.topic-block";
-@import "components/component.topic-header";
-@import "components/component.utility-link";
-@import "components/component.update-history";
-@import "components/component.welcome";
+// @import "components/component.aps-publication";
+// @import "components/component.article";
+// @import "components/component.article-header";
+// @import "components/component.article-external-link";
+// @import "components/component.az-list";
+// $breadcrumbs__font-size: 12px;
+// $breadcrumbs__font-size--medium: 13px;
+// $breadcrumbs__font-size--large: 14px;
+// $breadcrumbs__margin: 0 0 28px;
+// $breadcrumbs__margin--medium: -3px 0 25px;
+// $breadcrumbs__margin--large: $breadcrumbs__margin--medium;
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.breadcrumbs";
+// @import "components/component.contact-information";
+// @import "components/component.content-data";
+// @import "components/component.contents-list";
+// @import "components/component.crossbar-header";
+// @import "components/component.directorate-list";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
+// @import "components/component.document-nav";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
+// @import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
+// $expandable__title-size: 16px;
+// @import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expandable';
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.external-links";
+// @import "components/component.feedback";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
+// @import "components/component.form-box";
+// @import "components/component.history-list";
+// @import "components/component.issue-callout";
+// @import "components/component.list-controls";
+// @import "components/component.listed-content-item";
+// @import "components/component.multipage-nav";
+// @import "components/component.notification";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.page-nav";
+// @import "components/component.page-group";
+// @import "components/component.pagination";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.person";
+// @import "components/component.person-grid";
+// @import "components/component.policy-list";
+// @import "components/component.publication-info";
+// $search-box__border-radius: 0;
+// $search-box__background-color: $color__grey--lighter;
+// $search-box__font-size: 16px;
+// $search-box__font-size--medium: 17px;
+// $search-box__font-size--large: $search-box__font-size--medium;
+// $search-box__size: 56px;
+// $search-box__size--medium: $search-box__size;
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.search-box";
+// @import "components/component.search-results";
+// @import "components/component.section-marker";
+// @import "components/component.see-all-button";
+// @import "components/component.sidebar-block";
+// // @import "components/component.site-footer";
+// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.skip-links";
+// @import "components/component.social-channels";
+// @import "components/component.stat-box";
+// @import "components/component.sticky-back-to-top";
+// @import "components/component.sticky-document-info";
+// @import "components/component.supporting-files";
+// @import "components/component.topic-block";
+// @import "components/component.topic-header";
+// @import "components/component.utility-link";
+// @import "components/component.update-history";
+// @import "components/component.welcome";
 
 
 
 
-@import "components/homepage/component.homepage-about";
-@import "components/homepage/component.homepage-block";
+// @import "components/homepage/component.homepage-about";
+// @import "components/homepage/component.homepage-block";
 
-@import "components/homepage/component.homepage-news";
-@import "components/homepage/component.homepage-publication";
-@import "components/homepage/component.homepage-stats";
+// @import "components/homepage/component.homepage-news";
+// @import "components/homepage/component.homepage-publication";
+// @import "components/homepage/component.homepage-stats";
 
 
 
-/**
- * DESIGN SYSTEM
- */
-$pl_prefix: 'ds_';
-$link__outline-width: 2px;
-$link__border-width: 3px;
-$color__gold--base:     #fdd522;
-$color__input--hover__border:       $color__grey--medium !default;
-$color__input--focus__background:   $color__blue--lighter !default;
-$color__input--focus__outline:      $color__gold--base !default;
-$color__input--active__background:  $color__input--focus__background !default;
-$color__input--spot:                $color__body !default;
+/*
+ need:
+ stat box
+ homepage gubbins
+ overflow
+ person (for roles styling)
+ expand (civil service page roles are borked)
+ listed content item (featured topic item) (should be card now)
+ topic block / latest feeds
+ publication body (??)
+ document info
 
-$colour__brand--primary: $color__blue--base;
-$colour__brand--secondary: $color__blue--dark;
-@import "design-system-preview/base/helpers/helper.no-margin";
-@import "design-system-preview/base/helpers/helper.visibility";
-@import "design-system-preview/base/settings/settings.colours";
-@import "design-system-preview/base/settings/settings.grid";
-@import "design-system-preview/base/tools/tool.mixins";
-@import "design-system-preview/base/icon";
-$colour__link--hover__background: $colour__grey--lighter;
-$colour__link--current__background: $colour__blue--lighter;
-$colour__link--active__background: $colour__blue--light;
-$transition-in-time: 0.2s;
-$transition-out-time: 0.2s;
+ still to do:
+ filters not styled
+ complex doc
+ - prev/next/menu
+ - sticky doc styling
+ sticky doc info
+*/
+@import "ds-gov/helper.visibility";
 
-$colour__blocklink-bg--focus: $colour__blue--light;
-$colour__blocklink-bg--active: $colour__blocklink-bg--focus;
+@import "ds-gov/object.column-list";
+@import "ds-gov/object.scrollable";
 
-$colour__link--focus__background: $colour__blue--light;
-$colour__link--focus__shadow: transparent;
+@import "ds-gov/component.az-list";
+@import "ds-gov/component.document-info";
+@import "ds-gov/component.document-banner";
+@import "ds-gov/component.featured-item";
+@import "ds-gov/component.feedback";
+@import "ds-gov/component.file-icon";
+@import "ds-gov/component.filters";
+@import "ds-gov/component.gov-search-result";
+@import "ds-gov/component.homepage-block";
+@import "ds-gov/component.homepage-hero";
+@import "ds-gov/component.issue-callout";
+@import "ds-gov/component.latest-blocks";
+@import "ds-gov/component.policy-list";
+@import "ds-gov/component.social-channels";
+@import "ds-gov/component.stat-box";
+@import "ds-gov/component.supporting-documents";
+@import "ds-gov/component.topic-header";
 
-$large-size: 19px !default;
-$small-size: 14px !default;
-$tiny-size: 12px !default;
 
-$small-size--fixed: 14px !default;
 
-$large-size--medium: 24px !default;
-$small-size--medium: 16px !default;
-$tiny-size--medium: 14px !default;
 
-@mixin tiny-size {
-    font-size: $tiny-size;
 
-    @include media-query(medium) {
-        font-size: $tiny-size--medium;
+// full-width-image: TODO turn into a component
+.full-width-image {
+    // allow the image to break out of layout; by design
+    @include media-query(medium-down) {
+        margin-left: -16px;
+        max-width: none;
+        margin-right: -16px;
+        width: calc(100% + 32px);
+    }
+
+    display: block;
+    max-width: 100%;
+}
+
+
+
+.person-grid {
+    @include layout();
+
+    list-style-type: none;
+    margin-left: 0;
+}
+
+@include media-query(medium) {
+    .person-grid__item {
+        float: left;
+        @include colwidth(6);
+
+        &:nth-child(2n+1) {
+            clear: left;
+        }
     }
 }
 
-@mixin small-size {
-    font-size: $small-size;
+@include media-query(large) {
+    .person-grid__item {
+        float: left;
+        @include colwidth(4);
 
-    @include media-query(medium) {
-        font-size: $small-size--medium;
+        &:nth-child(2n+1) {
+            clear: none;
+        }
+        &:nth-child(3n+1) {
+            clear: left;
+        }
     }
 }
 
-@import "design-system-preview/components/accordion/accordion";
-@import "design-system-preview/components/card/card";
-@import "design-system-preview/components/date-picker-standalone/date-picker-standalone";
-@import "design-system-preview/components/notification-banner/notification-banner";
-@import "design-system-preview/components/side-navigation/side-navigation";
-@import "design-system-preview/components/site-branding/site-branding";
-@import "design-system-preview/components/site-header/site-header";
-@import "design-system-preview/components/site-navigation/site-navigation";
-@import "design-system-preview/components/site-search/site-search";
-
-@import "design-system-preview/forms/form.settings";
-@import "design-system-preview/forms/form.mixins";
-@import "design-system-preview/forms/form.base";
-@import "design-system-preview/forms/currency/currency";
-@import "design-system-preview/forms/error-summary/error-summary";
-@import "design-system-preview/forms/field-group/field-group";
-@import "design-system-preview/forms/hint-text/hint-text";
-@import "design-system-preview/forms/label/label";
-@import "design-system-preview/forms/question/question";
-@import "design-system-preview/forms/text-input/text-input";
-
-@import "components/homepage/component.homepage-hero";
+@supports (display: grid) {
+    .person-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
 
-/**
- * TRUMPS
- */
-@import "trumps/trump.collection-expandable";
-@import "trumps/trump.collections-list";
-@import "trumps/trump.complex-document-content";
-@import "trumps/trump.contents-expandable";
-@import "trumps/trump.display-toggle";
-@import "trumps/trump.external-links.govscot";
-@import "trumps/trump.fancy-radio";
-@import "trumps/trump.fontawesome";
-@import "trumps/trump.govscot-expandable";
-@import "trumps/trump.margins";
-@import "trumps/trump.mg-icon";
-@import "trumps/trump.pikaday";
-@import "trumps/trump.person.govscot";
-@import "trumps/trump.search-box.govscot";
-@import "trumps/trump.topic-expandable";
 
-@import "trumps/trump.focus-visible";
+
+.body-content table {
+    @extend .ds_table;
+
+    th h4,
+    th h3,
+    th h2,
+    th h1 {
+        margin: 0;
+    }
+}
+
+
+.gov_page-bottom {
+    background-color: $ds_colour__grey--lighter;
+    border-top: 1px solid $ds_colour__border--light;
+    padding-bottom: 72px;
+}
+
+
+// .ds_reversed *:not(:focus) {color: white !important}
+// @supports (display: grid) {
+//     .ds_reversed:focus-within * {color: black !important}
+// }
+
+
+
+// patch in fully and visibly hidden over old hidden and hidden hard
+.hidden {
+    @include visually-hidden;
+}
+
+.hidden.hidden--hard {
+    display: none !important;
+}
+
+// patch for inset text
+.info-note.note {
+    @extend .ds_inset-text;
+}
+
+// debug: highlight unmigrated olds
+.info-note {
+    outline: 4px dashed rgba(255,0,0,0.5);
+}
+
+.ds_input__wrapper .ds_input {
+    margin-bottom: 0;
+}

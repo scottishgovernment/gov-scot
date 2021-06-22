@@ -24,21 +24,28 @@ if (!Element.prototype.closest) {
 }
 
 const resultTemplate = function (templateData) {
-    return `<h1 class="overflow--medium--three-twelfths  overflow--large--two-twelfths  overflow--xlarge--two-twelfths">${templateData.title}</h1>
-
-    ${templateData.matchDescription}
-
-    ${templateData.restrictions.map(restriction => `${restriction.description}\n`).join('')}
-
-    ${templateData.restrictionsSummary}
-
-    ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
-
-    <div id="restrictions-detail">
+    return `<div class="ds_layout__header">
+        <div class="ds_error-summary  fully-hidden  flashable" id="covid-restrictions-error-summary" aria-labelledby="error-summary-title" role="alert"></div>
+        <header class="ds_page-header">
+            <h1 class="ds_page-header__title">${templateData.title}</h1>
+        </header>
     </div>
 
-    <h2>Find information about somewhere else</h2>
-    <p><a href="#" class="js-enter-another">Check another postcode protection level</a></p>`;
+    <div class="ds_layout__content">
+        ${templateData.matchDescription}
+
+        ${templateData.restrictions.map(restriction => `${restriction.description}\n`).join('')}
+
+        ${templateData.restrictionsSummary}
+
+        ${templateData.resultsPageContent ? templateData.resultsPageContent : ''}
+
+        <div id="restrictions-detail">
+        </div>
+
+        <h2>Find information about somewhere else</h2>
+        <p><a href="#" class="js-enter-another">Check another postcode protection level</a></p>
+    </div>`;
 };
 
 
@@ -92,8 +99,8 @@ const covidLookup = {
         this.resultsSection.addEventListener('click', (event) => {
             if (event.target.classList.contains('js-enter-another')) {
                 event.preventDefault();
-                this.landingSection.classList.remove('hidden');
-                this.resultsSection.classList.add('hidden');
+                this.landingSection.classList.remove('fully-hidden');
+                this.resultsSection.classList.add('fully-hidden');
                 window.history.pushState({}, '', '#!/');
                 window.setTimeout(() => {
                     if (!this.isInViewport(this.landingSection)) {
@@ -119,18 +126,18 @@ const covidLookup = {
                     .then((data) => this.showResult(data));
             } else {
                 // display default view
-                this.landingSection.classList.remove('hidden');
-                this.resultsSection.classList.add('hidden');
+                this.landingSection.classList.remove('fully-hidden');
+                this.resultsSection.classList.add('fully-hidden');
             }
         } else {
             // display default view
-            this.landingSection.classList.remove('hidden');
-            this.resultsSection.classList.add('hidden');
+            this.landingSection.classList.remove('fully-hidden');
+            this.resultsSection.classList.add('fully-hidden');
         }
     },
 
     enableSearchForm: function () {
-        this.searchForm.classList.remove('hidden');
+        this.searchForm.classList.remove('fully-hidden');
 
         this.searchForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -189,8 +196,8 @@ const covidLookup = {
             resultsPageContent: this.resultsPageContent || false
         };
 
-        this.landingSection.classList.add('hidden');
-        this.resultsSection.classList.remove('hidden');
+        this.landingSection.classList.add('fully-hidden');
+        this.resultsSection.classList.remove('fully-hidden');
 
         this.postcodeField.value = this.formatPostcode(postcode);
         this.resultsSection.innerHTML = resultTemplate(templateData);
@@ -212,7 +219,7 @@ const covidLookup = {
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = data.responseText;
                     this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({body: tempDiv.querySelector('.body-content').innerHTML});
-                    const detailsAccordion = new window.DS.components.GovAccordion(this.resultsSection.querySelector('#restrictions-detail .ds_accordion'));
+                    const detailsAccordion = new window.DS.components.Accordion(this.resultsSection.querySelector('#restrictions-detail .ds_accordion'));
                     detailsAccordion.init();
                 });
         }
@@ -330,14 +337,14 @@ const covidLookup = {
             question.classList.remove('ds_question--error');
             field.classList.remove('ds_input--error');
             field.removeAttribute('aria-invalid', 'true');
-            errorMessageElement.classList.add('hidden');
+            errorMessageElement.classList.add('fully-hidden');
             errorMessageElement.dataset.form = '';
         } else {
             question.classList.add('ds_question--error');
             field.classList.add('ds_input--error');
             field.setAttribute('aria-invalid', 'true');
             errorMessageElement.dataset.form = `error-${errortype}`;
-            errorMessageElement.classList.remove('hidden');
+            errorMessageElement.classList.remove('fully-hidden');
             errorMessageElement.innerHTML = message;
         }
 

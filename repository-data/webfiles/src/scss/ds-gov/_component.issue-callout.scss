@@ -1,0 +1,136 @@
+/*------------------------------------*\
+    ISSUE CALLOUT
+\*------------------------------------*/
+
+// dev note: this doesn't really belong here
+.body-content {
+    position: relative;
+}
+
+.#{$site-prefix}issue-callout {
+    background: $ds_colour__white;
+    color: $ds_colour__brand;
+    margin: 0 -16px 32px;
+    padding: 16px;
+    text-align: center;
+
+    &__inner {
+        border: 1px solid currentColor;
+        overflow: hidden;
+        padding: 8px 16px;
+        position: relative;
+
+        &:before,
+        &:after {
+            background: $ds_colour__white;
+            bottom: 0;
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 16px;
+            z-index: 2;
+        }
+
+        &:after {
+            right: 0;
+        }
+
+        &:before {
+            left: 0;
+        }
+    }
+
+    &__alpha {
+        display: inline-block;
+        font-size: 26px;
+        line-height: 32px;
+        margin: 0 0 16px;
+        position: relative;
+
+        &:before,
+        &:after {
+            background: $ds_colour__brand;
+            content: '';
+            height: 1px;
+
+            position: absolute;
+            top: 50%;
+        }
+
+        &:before {
+            left: -24px;
+            right: calc(100% + 8px);
+        }
+
+        &:after {
+            left: calc(100% + 8px);
+            right: -25px;
+        }
+    }
+
+    &__beta {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 16px 0 16px;
+    }
+
+    &__gamma {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 0 0 24px;
+    }
+}
+
+@include media-query(medium) {
+    .#{$site-prefix}issue-callout {
+        box-shadow: 0px 4px 6px 1px rgba(0,0,0,0.1);
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: -80px;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        width: calc(33.333333% - 20px);
+        z-index: 1;
+    }
+
+    .#{$site-prefix}displace-by-issue-callout {
+        padding-top: 160px;
+    }
+}
+
+@include media-query(large) {
+
+    .#{$site-prefix}displace-by-issue-callout {
+        padding-top: 128px;
+    }
+}
+
+@supports(--css: variables) {
+    .#{$site-prefix}displace-by-issue-callout {
+        padding-top: var(--issue-callout-offset);
+    }
+}
+
+
+
+.old-ie {
+    @include media-query(medium) {
+        .#{$site-prefix}issue-callout {
+            width: 230px;
+        }
+    }
+
+    @include media-query(large) {
+        .#{$site-prefix}issue-callout {
+            width: 300px;
+        }
+    }
+
+    @include media-query(xlarge) {
+        .#{$site-prefix}issue-callout {
+            width: 370px;
+        }
+    }
+}

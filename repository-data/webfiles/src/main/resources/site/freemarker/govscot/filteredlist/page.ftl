@@ -1,31 +1,33 @@
 <#include "../../include/imports.ftl">
 
-<div class="layout--filtered-list">
-
 <#-- @ftlvariable name="index" type="scot.gov.www.beans.SimpleContent" -->
 <#if index??>
-    <div class="grid" id="page-content"><!--
-        --><div class="grid__item medium--eight-twelfths">
-            <h1 class="article-header">${index.title?html}</h1>
+    <div class="ds_wrapper">
+        <main id="main-content" class="ds_layout  gov_layout--filter-search">
+            <div class="ds_layout__header">
+                <header class="ds_page-header">
+                    <h1 class="ds_page-header__title">${index.title?html}</h1>
+                </header>
 
-            <#if index.content.content?has_content>
-                <@hst.html hippohtml=index.content/>
-            </#if>
+                <#if index.content.content?has_content>
+                    <@hst.html hippohtml=index.content/>
+                </#if>
+            </div>
 
-        </div><!--
-    --></div>
+            <div class="ds_layout__sidebar">
+                <@hst.include ref="side-filter"/>
+            </div>
+
+            <div class="ds_layout__content">
+                <@hst.include ref="results"/>
+            </div>
+
+            <div class="ds_layout__feedback">
+                <#include '../common/feedback-wrapper.ftl'>
+            </div>
+        </main>
+    </div>
 </#if>
-
-<div class="grid"><!--
-    --><div class="grid__item medium--four-twelfths large--three-twelfths">
-        <@hst.include ref="side-filter"/>
-    </div><!--
-    --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
-        <@hst.include ref="results"/>
-    </div><!--
---></div>
-
-</div>
 
 <@hst.headContribution category="footerScripts">
     <script type="module" src="<@hst.webfile path="/assets/scripts/filtered-list-page.js"/>"></script>

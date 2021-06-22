@@ -1,15 +1,15 @@
 'use strict';
 
-let SVGSpriter = require('svg-sprite');
-let path = require('path');
-let mkdirp = require('mkdirp');
-let fs = require('fs');
-let File = require('vinyl');
-let glob = require('glob');
+const SVGSpriter = require('svg-sprite');
+const path = require('path');
+const mkdirp = require('mkdirp');
+const fs = require('fs');
+const File = require('vinyl');
+const glob = require('glob');
 
-let destpath = path.resolve('src/main/resources/site/assets/images/icons');
+const destpath = path.resolve('src/main/resources/site/assets/images/icons');
 
-let config = {
+const config = {
     "log": "",
     "shape": {
         "id": {
@@ -24,30 +24,36 @@ let config = {
     }
 };
 
-let spriter = new SVGSpriter(config);
+const spritePaths = [
+    'node_modules/@scottish-government/pattern-library/src/images/icons/svg/',
+    '../../site/webapp/src/main/webapp/assets/images/icons/svg/',
+    'src/main/resources/images/icons/svg/'
+];
 
-// Register some SVG files with the spriter
-let cwd = path.resolve('../../site/webapp/src/main/webapp/assets/images/icons/svg/');
-glob.glob('**/*.svg', { cwd: cwd }, function (err, files) {
-    console.info(`Combining ${files.length} images`);
-    files.forEach(function (file, index) {
-        console.info(file);
+const spriter = new SVGSpriter(config);
+
+spritePaths.forEach(spritePath => {
+    const cwd = path.resolve(spritePath);
+
+    // Register some SVG files with the spriter
+    glob.sync('**/*.svg', { cwd: cwd }).forEach(function (file, index) {
+        console.log(file)
         spriter.add(new File({
             path: path.join(cwd, file),
             base: cwd,
             contents: fs.readFileSync(path.join(cwd, file))
         }));
     });
+});
 
-    // Compile the sprite
-    spriter.compile(function(error, result, cssData) {
-        // Run through all configured output modes
-        for (var mode in result) {
-            // Run through all created resources and write them to disk
-            for (var type in result[mode]) {
-                mkdirp.sync(path.dirname(result[mode][type].path));
-                fs.writeFileSync(result[mode][type].path, result[mode][type].contents);
-            }
+// Compile the sprite
+spriter.compile(function(error, result, cssData) {
+    // Run through all configured output modes
+    for (var mode in result) {
+        // Run through all created resources and write them to disk
+        for (var type in result[mode]) {
+            mkdirp.sync(path.dirname(result[mode][type].path));
+            fs.writeFileSync(result[mode][type].path, result[mode][type].contents);
         }
-    });
+    }
 });

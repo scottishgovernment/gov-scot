@@ -2,24 +2,24 @@
 
 <#if paymentResult??>
 
-<article id="page-content" class="layout--site-item">
+<div class="ds_wrapper">
+    <main id="main-content" class="ds_layout  ds_layout--article">
+        <div class="ds_layout__header">
+            <header class="ds_page-header">
+                <h1 class="ds_page-header__title">${paymentResult.title}</h1>
+            </header>
+        </div>
 
-<div class="grid"><!--
-    --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
-        <h1 class="article-header">${paymentResult.title}</h1>
-        <div class="body-content">
+        <div class="ds_layout__content">
             ${paymentResult.content?html}
         </div>
-    </div><!--
---></div>
 
-</article>
+        <div class="ds_layout__feedback">
+            <#include 'common/feedback-wrapper.ftl'>
+        </div>
+    </main>
+</div>
 
-<div class="grid"><!--
-        --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
-    <#include 'common/feedback-wrapper.ftl'>
-</div><!--
-    --></div>
 </#if>
 
 <#if paymentResult??>

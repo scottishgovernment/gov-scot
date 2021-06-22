@@ -1,0 +1,91 @@
+/*------------------------------------*\
+    FILTERS
+\*------------------------------------*/
+
+$filters-panel-background: $ds_colour__grey--lighter;
+
+.#{$site-prefix}filters {
+    background-color: $ds_colour__grey--lighter;
+    font-size: 16px;
+    padding: 16px 16px 0 !important;
+    position: relative;
+
+    &__title {
+        @include h3-size;
+        line-height: 32px;
+    }
+
+    &--tab-title {
+        border-top: 1px solid $ds_colour__border;
+        margin-top: 48px;
+    }
+
+    &--tab-title &__title {
+        @include h3-size;
+        background-color: $ds_colour__grey--lighter;
+        border-top: 1px solid $ds_colour__border;
+        bottom: 100%;
+        left: 0;
+        margin: 0;
+        padding: 7px 16px 8px;
+        position: absolute;
+
+        &::after,
+        &::before {
+            border-bottom: 48px solid $ds_colour__grey--lighter;
+            border-right: 16px solid transparent;
+            content: '';
+            left:100%;
+            position:absolute;
+            top: 0;
+        }
+
+        &::before {
+            content: '';
+            border-color: $ds_colour__border;
+            border-right: 16px solid transparent;
+            top: -1px;
+        }
+    }
+
+    fieldset {
+        margin: 0;
+    }
+
+    .ds_accordion {
+        margin: 0 -16px;
+    }
+
+    .ds_accordion.js-initialised .ds_accordion-item__body {
+        padding-right: 16px;
+    }
+
+    .ds_accordion-item__header:not(:focus):not(:hover),
+    .ds_accordion-item__header-button:not(:focus):not(:hover) {
+        background-color: transparent;
+        color: currentColor;
+    }
+
+    .ds_field-group--checkboxes,
+    .ds_field-group--checkboxes {
+        margin-top: 0;
+
+        .ds_checkbox,
+        .ds_radio {
+            margin-bottom: 0;
+        }
+    }
+
+    .ds_input__wrapper .ds_button:not(:focus) {
+        background-color: transparent;
+        color: currentColor;
+
+        &:hover:not(:focus) {
+            background-color: $ds_colour__blocklink-bg--hover;
+        }
+    }
+
+    .ds_checkbox__label {
+        padding: 8px 4px;
+    }
+}

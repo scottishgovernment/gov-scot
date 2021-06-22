@@ -1,0 +1,66 @@
+/*------------------------------------*\
+    FILE ICON
+\*------------------------------------*/
+
+
+
+$color__icon--default: $ds_colour__text--secondary;
+$color__icon--image: $color__icon--default;
+$color__icon--word: $ds_colour__blue;
+$color__icon--pdf: $color__icon--default;
+$color__icon--excel: $ds_colour__green;
+$color__icon--ppt: $ds_colour__orange;
+$color__icon--txt: $color__icon--default;
+$color__icon--rtf: $color__icon--default;
+$color__icon--xml: $color__icon--default;
+$color__icon--geo: $color__icon--default;
+$color__icon--csv: $ds_colour__green;
+
+$filetypegroups: (
+    (gif png jpg jpeg) $color__icon--image,
+    (doc docx) $color__icon--word,
+    (pdf) $color__icon--pdf,
+    (xls xlsx xlsm) $color__icon--excel,
+    (ppt pptx pps ppsx) $color__icon--ppt,
+    (rtf) $color__icon--rtf,
+    (txt) $color__icon--txt,
+    (xml, xsd) $color__icon--xml,
+    (csv) csv $color__icon--csv,
+    (kml, kmz) $color__icon--geo
+) !default;
+
+@each $filetypegroup in $filetypegroups {
+    $iconcolor: nth($filetypegroup, 2);
+
+    @each $extension in nth($filetypegroup, 1) {
+        .#{$site-prefix}file-icon--#{to-upper-case($extension)} {
+            color: $iconcolor;
+        }
+    }
+}
+
+.#{$site-prefix}file-icon {
+    display: block;
+    width: 100%;
+    padding-bottom: calc(297/210 * 100%);
+    position: relative;
+    z-index: 1;
+
+    &__label {
+        position: absolute;
+    }
+
+    &__image {
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+
+    &:focus {
+        &__label,
+        &__image {
+            fill: $ds_colour__link--focus;
+        }
+    }
+}

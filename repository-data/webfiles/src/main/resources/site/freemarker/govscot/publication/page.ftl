@@ -1,283 +1,337 @@
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if document??>
-</div>
+
+<@hst.link hippobean=document var="baseurl" canonical=true/>
 
 <@hst.manageContent hippobean=document/>
+<!-- this outer div allows us to break the sticky header out of the layout grid -->
+<div>
+    <div class="ds_wrapper">
+        <div class="ds_layout  gov_layout--publication">
+            <div class="ds_layout__header">
+                <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
+                    <div class="gov_sublayout__title">
+                        <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
+                        <h1 class="ds_page-header__title">${document.title?html}</h1>
+                    </div>
 
-<article id="page-content" class="layout--publication">
+                    <div class="gov_sublayout__metadata">
+                        <#include 'metadata.ftl'/>
+                    </div>
 
-    <#--------------------- HEADER SECTION --------------------->
-    <div class="top-matter">
-        <div class="wrapper">
-            <header class="article-header no-bottom-margin">
-                <#if isMultiPagePublication>
+                    <div class="gov_sublayout__content">
+                        <#if document.summary??>
+                            <#list document.summary?split("\n") as summaryParagraph>
+                                <p class="ds_leader">${summaryParagraph}</p>
+                            </#list>
+                        </#if>
 
-                    <div class="grid"><!--
-                     --><div class="grid__item">
-                            <p class="article-header__label">Publication<#if document.label??> - ${document.label}</#if></p>
-                        </div><!--
-                 --></div>
-                    <div class="grid"><!--
-                     --><div class="grid__item medium--nine-twelfths">
-                            <div class="grid"><!--
-                                <#if document.title??>
-                                --><div class="grid__item"><h1 class="article-header__title">${document.title}</h1></div><!--
+                        <#include '../common/collections-list.ftl'/>
+                    </div>
 
-                                --><div class="grid__item large--four-twelfths">
-                                    <#include 'metadata.ftl'/>
-                                </div><!--
-                                </#if>
-                                <#if document.summary??>
-                                --><div class="grid__item large--eight-twelfths">
-                                    <#list document.summary?split("\n") as summaryParagraph>
-                                        <p class="leader">${summaryParagraph}</p>
-                                    </#list>
-
-                                    <#include '../common/collections-list.ftl'/>
-                                </div><!--
-                                </#if>
-                         --></div>
-                        </div><!--
-
-                     --><div class="grid__item  push--large--one-twelfth medium--three-twelfths large--two-twelfths">
+                    <div class="gov_sublayout__document">
+                        <div class="gov_supporting-documents">
                             <#if pages?has_content>
-
                                 <#if documents?has_content>
-                                    <div class="hidden-xsmall">
-                                        <#include 'header-document-info.ftl'/>
-                                    </div>
+                                    <#assign mainDocument = documents[0]/>
+                                    <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
 
-                                    <div class="publication-info__header">
-                                        <a href="#files-list" class="js-expand-downloads publication-info__preamble publication-info__preamble--icon publication-info__preamble--icon--pdf visible-xsmall">
+                                    <@hst.link var="documentdownload" hippobean=mainDocument.document>
+                                        <@hst.param name="forceDownload" value="true"/>
+                                    </@hst.link>
 
-                                            <span class="publication-info__file-icon file-icon file-icon--gen"></span>
-                                            This publication is available to download in other formats. <span class="publication-info__preamble-expand">More</span>&hellip;
+                                    <@hst.link var="documentinline" hippobean=mainDocument.document>
+                                    </@hst.link>
+
+                                    <#if filenameExtension == "PDF">
+                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                            <img
+                                                alt="View supporting documents"
+                                                class="gov_supporting-documents__thumbnail"
+                                                src="<@hst.link hippobean=mainDocument.thumbnails[0]/>"
+                                                srcset="
+                                                    <#list mainDocument.thumbnails as thumbnail>
+                                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                    </#list>"
+                                                sizes="(min-width: 768px) 165px, 107px" />
                                         </a>
-                                    </div>
+                                    <#else>
+                                        <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                            <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                                <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                            </svg>
+                                            <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                        </a>
+                                    </#if>
 
-                                    <div class="publication-info__body visible-xsmall">
-                                        <section id="files-list" class="publication-info__section publication-info__collapsible publication-info__collapsible--collapsed-initial publication-info__collapsible--not-tablet">
-                                            <#include 'header-document-info.ftl'/>
-                                            <#include 'supporting-files.ftl'/>
-                                        </section>
-                                    </div>
+                                    <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                                        <span class="gov_supporting-documents__button-icon">
+                                            <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                                        </span>
+                                        <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                                    </a>
                                 </#if>
                             </#if>
-                        </div><!--
-                 --></div>
-
-                <#else>
-
-                    <div class="grid"><!--
-                     --><div class="grid__item large--ten-twelfths">
-                            <p class="article-header__label">Publication - ${document.label}</p>
-                            <h1 class="article-header__title">${document.title}</h1>
-                        </div><!--
-                 --></div>
-                    <div class="grid"><!--
-                     --><div class="grid__item  large--three-twelfths">
-                            <#include 'metadata.ftl'/>
-                        </div><!--
-
-                     --><div class="grid__item  large--seven-twelfths">
-                            <div class="leader  leader--first-para">
-                                <#if document.summary??>
-                                    <#list document.summary?split("\n") as summaryParagraph>
-                                        <p>${summaryParagraph}</p>
-                                    </#list>
-                                </#if>
-
-                                <#include '../common/collections-list.ftl'/>
-                            </div>
-                        </div><!--
-                 --></div>
-
-                </#if>
-            </header>
+                        </div>
+                    </div>
+                </header>
+            </div>
         </div>
     </div>
 
-    <#include 'sticky-document-info.ftl'/>
+    <div class="gov_sticky-document-title">
+        <div class="ds_wrapper">
+            <div class="ds_layout  gov_layout--publication">
+                <div class="ds_layout__content">
+                    <div>
+                        <span class="doctitle">${document.title}</span>
+                        ${currentPage.title}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getOffsetFromDocumentTop(element) {
+            let offset = element.offsetTop;
 
-    <#--------------------- BODY SECTION --------------------->
-    <div class="inner-shadow-top  js-sticky-header-position <#if isMultiPagePublication>inner-shadow-top--no-mobile</#if>">
+            while (element.offsetParent) {
+                element = element.offsetParent;
+                offset = offset + element.offsetTop
+            }
 
-        <div class="wrapper js-content-wrapper">
-            <div class="grid"><!--
+            return offset;
+        }
 
-             --><div class="grid__item  medium--four-twelfths  large--three-twelfths <#if !isMultiPagePublication>hidden-xsmall  hidden-small  hidden-medium</#if>">
-                    <#if pages??>
-                        <#include 'side-menu.ftl'/>
-                    </#if>
-                </div><!--
+        const element = document.querySelector('.gov_sticky-document-title');
+        const observer = new IntersectionObserver(
+            function ([e]) {
+                if (!e.isIntersecting && getOffsetFromDocumentTop(element) - 10 < window.scrollY) {
+                    e.target.classList.add('is-pinned');
+                } else {
+                    e.target.classList.remove('is-pinned');
+                }
+            },
+            { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
+        );
 
+        observer.observe(element);
+    </script>
+    <style>
+        .gov_sticky-document-title {
+            position: sticky;
+            top: -1px;
+            background: #ebebeb;
+            padding: 16px;
+            z-index: 2
+        }
+
+        .gov_sticky-document-title::after {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0));
+            bottom: -8px;
+            content: '';
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+
+            transition: opacity 0.2s;
+        }
+
+        .gov_sticky-document-title .doctitle {
+            display: none;
+            font-weight: 400;
+        }
+
+        .gov_sticky-document-title .doctitle::after {
+            content: '—';
+            margin: 0 0.35em 0 0.5em;
+        }
+
+        .gov_sticky-document-title.is-pinned .doctitle {
+            display: inline;
+        }
+
+        .gov_sticky-document-title.is-pinned {
+            border-top: 1px solid transparent;
+        }
+
+        .gov_sticky-document-title.is-pinned::after {
+            opacity: 1;
+        }
+    </style>
+
+    <div class="ds_wrapper">
+        <div class="ds_layout  gov_layout--publication">
+            <div class="ds_layout__sidebar">
+                <#if pages??>
+                    <#include 'side-menu.ftl'/>
+                </#if>
+            </div>
+
+            <div class="ds_layout__content">
                 <#if isMultiPagePublication>
-                 --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
+                    <div class="body-content publication-content js-content-wrapper">
+                        <@hst.html hippohtml=currentPage.content/>
+                    </div>
 
-                        <div class="body-content publication-content js-content-wrapper inner-shadow-top  inner-shadow-top--no-desktop ">
-                            <@hst.html hippohtml=currentPage.content/>
-                        </div>
-
-                        <div class="grid  page-nav"><!--
-                         --><div class="grid__item  push--medium--six-twelfths  medium--six-twelfths  page-nav__item">
-                                <#if next??>
-                                    <a title="Next page" href="<@hst.link hippobean=next/>" class="page-nav__button  page-nav__button--right  js-next">
-                                        <span data-label="next" class="page-nav__text">${next.title}</span>
-                                    </a>
-                                </#if>
-                            </div><!--
-                         --><div class="grid__item  medium--six-twelfths  pull--medium--six-twelfths  page-nav__item">
-                                <#if prev??>
-                                    <a title="Previous page" href="<@hst.link hippobean=prev/>" class="page-nav__button  page-nav__button--left  js-previous">
-                                        <span data-label="previous" class="page-nav__text">${prev.title}</span>
-                                    </a>
-                                </#if>
-                            </div><!--
-                     --></div>
-
-                        <hr>
-
-                        <@hst.html hippohtml=document.contact var="contact"/>
-                        <#if contact?has_content>
-                            <section class="publication-info__section publication-info__contact">
-                                <h3 class="emphasis">Contact</h3>
-                                ${contact}
-                            </section>
-                        </#if>
-
-                        <#if document.updateHistory?has_content>
-                            <section>
-                                <#include '../common/update-history.ftl'/>
-                            </section>
-                        </#if>
-
-                    </div><!--
-                <#else>
-                 --><div class="grid__item large--seven-twelfths">
-
-                        <div id="preamble">
-                            <div class="body-content publication-body">
-                                <@hst.html hippohtml=document.content var="content"/>
-                                <#if content?has_content>
-                                    <#if content?contains("</")>
-                                        <#--  CONTAINS CLOSING TAG  -->
-                                        ${content}
-                                    <#else>
-                                        <#--  DOES NOT HAVE CLOSING TAG  -->
-                                        <#list content?split("\\n") as contentParagraph>
-                                            <p>${contentParagraph}</p>
-                                        </#list>
-                                    </#if>
-                                </#if>
-
-                                <#--! BEGIN 'minutes' format-specific fields-->
-                                <@hst.html hippohtml=document.attendees var="attendees"/>
-                                <#if attendees?has_content>
-                                    <h2>Attendees and apologies</h2>
-                                    ${attendees}
-                                </#if>
-
-                                <@hst.html hippohtml=document.actions var="actions"/>
-                                <#if actions?has_content>
-                                    <h2>Items and actions</h2>
-                                    ${actions}
-                                </#if>
-                                <#--! END 'minutes' format-specific fields-->
-
-                                <#--! BEGIN 'FOI/EIR release' format-specific fields-->
-                                <#if document.foiNumber?has_content>
-                                    <strong>FOI reference:</strong> ${document.foiNumber}<br>
-                                </#if>
-
-                                <#if document.dateReceived?has_content>
-                                    <strong>Date received:</strong> <@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/><br>
-                                </#if>
-
-                                <#if document.dateResponded?has_content>
-                                    <strong>Date responded:</strong> <@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/><br>
-                                </#if>
-
-                                <@hst.html hippohtml=document.request var="request"/>
-                                <#if request?has_content>
-                                    <div class="body-content publication-body">
-                                        <strong>Information requested</strong><br>
-                                        ${request}
-                                    </div>
-                                </#if>
-
-                                <@hst.html hippohtml=document.response var="response"/>
-                                <#if response?has_content>
-                                    <strong>Response</strong><br>
-                                    ${response}
-                                </#if>
-                                <#--! END 'FOI/EIR release' format-specific fields-->
+                    <nav class="ds_sequential-nav" aria-label="Article navigation">
+                        <#if prev??>
+                            <@hst.link var="link" hippobean=prev/>
+                            <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
+                                <a title="Previous page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+                                    <span class="ds_sequential-nav__text" data-label="previous">
+                                        ${prev.title}
+                                    </span>
+                                </a>
                             </div>
-                        </div>
+                        </#if>
 
-                        <#if documents??>
-                            <#assign hasAttachedDocument = '' />
-                            <#list documents as attachedDocument>
-                                <#assign hasAttachedDocument = true />
-                            </#list>
+                        <#if next??>
+                            <@hst.link var="link" hippobean=next/>
+                            <div class="ds_sequential-nav__item  ds_sequential-nav__item--next">
+                                <a title="Next page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right">
+                                    <span class="ds_sequential-nav__text" data-label="next">
+                                        ${next.title}
+                                    </span>
+                                </a>
+                            </div>
+                        </#if>
+                    </nav>
 
-                            <#if hasAttachedDocument?has_content>
-                                <section class="document-section">
-                                    <#list documents as attachedDocument>
-                                        <#include 'body-document-info.ftl'/>
+                    <hr>
+
+                    <@hst.html hippohtml=document.contact var="contact"/>
+                    <#if contact?has_content>
+                        <section class="publication-info__section publication-info__contact">
+                            <h3 class="emphasis">Contact</h3>
+                            ${contact}
+                        </section>
+                    </#if>
+
+                    <#if document.updateHistory?has_content>
+                        <section>
+                            <#include '../common/update-history.ftl'/>
+                        </section>
+                    </#if>
+                <#else>
+                    <div id="preamble">
+                        <div class="body-content publication-body">
+                            <@hst.html hippohtml=document.content var="content"/>
+                            <#if content?has_content>
+                                <#if content?contains("</")>
+                                    <#--  CONTAINS CLOSING TAG  -->
+                                    ${content}
+                                <#else>
+                                    <#--  DOES NOT HAVE CLOSING TAG  -->
+                                    <#list content?split("\\n") as contentParagraph>
+                                        <p>${contentParagraph}</p>
                                     </#list>
-                                </section>
+                                </#if>
                             </#if>
 
-                            <#if groupedDocumentFolders??>
-                                <#list groupedDocumentFolders as folder>
+                            <#--! BEGIN 'minutes' format-specific fields-->
+                            <@hst.html hippohtml=document.attendees var="attendees"/>
+                            <#if attendees?has_content>
+                                <h2>Attendees and apologies</h2>
+                                ${attendees}
+                            </#if>
+
+                            <@hst.html hippohtml=document.actions var="actions"/>
+                            <#if actions?has_content>
+                                <h2>Items and actions</h2>
+                                ${actions}
+                            </#if>
+                            <#--! END 'minutes' format-specific fields-->
+
+                            <#--! BEGIN 'FOI/EIR release' format-specific fields-->
+                            <#if document.foiNumber?has_content>
+                                <strong>FOI reference:</strong> ${document.foiNumber}<br>
+                            </#if>
+
+                            <#if document.dateReceived?has_content>
+                                <strong>Date received:</strong> <@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/><br>
+                            </#if>
+
+                            <#if document.dateResponded?has_content>
+                                <strong>Date responded:</strong> <@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/><br>
+                            </#if>
+
+                            <@hst.html hippohtml=document.request var="request"/>
+                            <#if request?has_content>
+                                <div class="body-content publication-body">
+                                    <strong>Information requested</strong><br>
+                                    ${request}
+                                </div>
+                            </#if>
+
+                            <@hst.html hippohtml=document.response var="response"/>
+                            <#if response?has_content>
+                                <strong>Response</strong><br>
+                                ${response}
+                            </#if>
+                            <#--! END 'FOI/EIR release' format-specific fields-->
+
+                            <#if documents??>
+                                <#assign hasAttachedDocument = '' />
+                                <#list documents as attachedDocument>
+                                    <#assign hasAttachedDocument = true />
+                                </#list>
+
+                                <#if hasAttachedDocument?has_content>
                                     <section class="document-section">
-                                        <h2>${folder.displayName}</h2>
-                                        <#list folder.documents as attachedDocument>
+                                        <#list documents as attachedDocument>
                                             <#include 'body-document-info.ftl'/>
                                         </#list>
                                     </section>
-                                </#list>
+                                </#if>
+
+                                <#if groupedDocumentFolders??>
+                                    <#list groupedDocumentFolders as folder>
+                                        <section class="document-section">
+                                            <h2>${folder.displayName}</h2>
+                                            <#list folder.documents as attachedDocument>
+                                                <#include 'body-document-info.ftl'/>
+                                            </#list>
+                                        </section>
+                                    </#list>
+                                </#if>
                             </#if>
-                        </#if>
 
-                        <@hst.html hippohtml=document.epilogue var="epilogue"/>
-                        <#if epilogue?has_content>
-                        <div id="epilogue">
-                            ${epilogue}
-                        </div>
-                        </#if>
-
-                        <@hst.html hippohtml=document.contact var="contact"/>
-                        <#if contact?has_content>
-                            <div class="publication-info__contact">
-                                <h3 class="emphasis">Contact</h3>
-                                ${contact}
+                            <@hst.html hippohtml=document.epilogue var="epilogue"/>
+                            <#if epilogue?has_content>
+                            <div id="epilogue">
+                                ${epilogue}
                             </div>
-                        </#if>
+                            </#if>
 
-                        <#if document.updateHistory?has_content>
-                            <#include '../common/update-history.ftl'/>
-                        </#if>
+                            <@hst.html hippohtml=document.contact var="contact"/>
+                            <#if contact?has_content>
+                                <div class="publication-info__contact">
+                                    <h3 class="emphasis">Contact</h3>
+                                    ${contact}
+                                </div>
+                            </#if>
 
-                    </div><!--
+                            <#if document.updateHistory?has_content>
+                                <#include '../common/update-history.ftl'/>
+                            </#if>
+                        </div>
+                    </div>
                 </#if>
+            </div>
 
-         --></div>
-
+            <div class="ds_layout__feedback">
+                <#include '../common/feedback-wrapper.ftl'>
+            </div>
         </div>
     </div>
-</article>
-
-<div class="wrapper">
-    <div class="grid"><!--
-        --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
-            <#include '../common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
 </div>
-
 </#if>
 
 <#include "../common/schema.article.ftl"/>

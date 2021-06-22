@@ -185,11 +185,11 @@ function attachEventHandlers () {
 
     let t;
 
-    $('.checkbox-group').on('change', 'input[type=checkbox]', function () {
+    $('.ds_field-group').on('change', 'input[type=checkbox]', function () {
 
         let containerType = $(this)
-            .closest('.expandable-item')
-            .find('.expandable-item__title')
+            .closest('.ds_accordion-item')
+            .find('.ds_accordion-item__title')
             .text()
             .toLowerCase();
 
@@ -252,14 +252,19 @@ function attachEventHandlers () {
 }
 
 function enableJSFilters () {
-    $('.checkbox-group input[type="radio"]')
+    $('.ds_field-group--checkboxes input[type="radio"]')
         .attr('type', 'checkbox')
+        .removeClass('ds_radio__input')
+        .addClass('ds_checkbox__input')
         .next('label')
-        .removeClass('fancy-radio fancy-radio--min')
-        .addClass('fancy-checkbox');
+            .removeClass('ds_radio__label')
+            .addClass('ds_checkbox__label')
+        .parent()
+            .removeClass('ds_radio').removeClass('ds_radio--small')
+            .addClass('ds_checkbox').addClass('ds_checkbox--small');
 
     // populate checkboxes from searchParams
-    $('.checkbox-group input[data-checkedonload]').prop('checked', true);
+    $('.field-group--checkboxes input[data-checkedonload]').prop('checked', true);
 
     // date pickers display
     $('.js-show-calendar').removeClass('hidden  hidden--hard');

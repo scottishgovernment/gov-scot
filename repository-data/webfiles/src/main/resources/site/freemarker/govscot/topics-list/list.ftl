@@ -1,21 +1,19 @@
 <#include "../../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
-<div class="az-list">
+<ul class="gov_az-list">
     <#list topicsByLetter as letter>
-      <div class="grid"><!--
-        --><div class="grid__item two-twelfths medium--one-ninth az-list__chunkName" id="az-list__${letter.letter}">${letter.letter}</div><!--
-        --><div class="grid__item ten-twelfths medium--seven-ninths az-list__chunk">
-          <ul class="az-list__list grid"><!--
-            <#list letter.topics as topic>
-              --><li class="az-list__item grid__item ">
-                    <a class="az-list__link" href="<@hst.link hippobean=topic />">${topic.title}</a>
-              </li><!--
-            </#list>
-            <#-- end letter.topics loop -->
-          --></ul>
-        </div><!--
-      --></div>
+        <li class="gov_az-list__item" id="gov_az-list__${letter.letter}">
+            <h2 class="gov_az-list__letter">${letter.letter}</h2>
+
+            <ul class="gov_az-list__list">
+                <#list letter.topics as bean>
+                    <li class="gov_az-list__list__item">
+                        <@hst.link var="link" hippobean=bean/>
+                        <a class="gov_az-list__link" href="${link}">${bean.title}</a>
+                    </li>
+                </#list>
+            </ul>
+        </li>
     </#list>
-    <#-- end topicsByLetter loop -->
-</div>
+</ul>

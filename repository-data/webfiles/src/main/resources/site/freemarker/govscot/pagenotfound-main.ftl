@@ -2,33 +2,33 @@
 
 <#-- @ftlvariable name="archiveUrl" type="java.lang.String" -->
 
-<div class="layout--page-not-found">
-
-    <#if document??>
-        <div class="grid"><!--
-        --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
-
+<main id="main-content" class="ds_layout  ds_layout--article">
+    <div class="ds_layout__header">
+        <header class="ds_page-header">
             <#if archiveUrl??>
-                <h1 class="article-header">${document.archiveTitle}</h1>
-                <@hst.html hippohtml=document.archiveContent/>
-                <p>
-                    <a href="${archiveUrl}">${archiveUrl}</a>
-                </p>
-                <@hst.html hippohtml=document.archiveContentEpilogue/>
+                <h1 class="ds_page-header__title">${document.archiveTitle}</h1>
             <#else>
-                <h1 class="article-header">${document.title}</h1>
-                <@hst.html hippohtml=document.content/>
+                <h1 class="ds_page-header__title">${document.title}</h1>
             </#if>
-        </div><!--
-    --></div>
-    </#if>
+        </header>
+    </div>
 
-    <div class="grid"><!--
-        --><div class="grid__item  medium--nine-twelfths  xlarge--seven-twelfths">
-            <#include 'common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
-</div>
+    <div class="ds_layout__content">
+        <#if archiveUrl??>
+            <@hst.html hippohtml=document.archiveContent/>
+            <p>
+                <a href="${archiveUrl}">${archiveUrl}</a>
+            </p>
+            <@hst.html hippohtml=document.archiveContentEpilogue/>
+        <#else>
+            <@hst.html hippohtml=document.content/>
+        </#if>
+    </div>
+
+    <div class="ds_layout__feedback">
+        <#include 'common/feedback-wrapper.ftl'>
+    </div>
+</main>
 
 <@hst.headContribution category="pageTitle">
     <title>${document.title?html} - gov.scot</title>

@@ -1,33 +1,22 @@
 // ISSUE HUB FORMAT
 
+'use strict';
+
 /* global window */
-
-import $ from 'jquery';
-
 const issueHubPage = {};
 
-issueHubPage.init = function() {
-    this.initIssueCalloutDisplacement();
-};
+issueHubPage.init = () => {
+    issueHubPage.displaceSidebar();
 
-// nudge the sidebar down if necessary
-// recheck on resize
-issueHubPage.initIssueCalloutDisplacement = function () {
-    displaceSidebar();
-
-    $(window).on('resize', function () {
-        displaceSidebar();
+    window.addEventListener('resize', () => {
+        issueHubPage.displaceSidebar();
     });
 };
 
-function displaceSidebar () {
-    const calloutBox = $('.issue-callout'),
-        elementToDisplace = $('.displace-by-issue-callout');
-
-    const amountToDisplace = calloutBox.height() + 56 - 50;
-
-    elementToDisplace.css({paddingTop: amountToDisplace});
-}
+issueHubPage.displaceSidebar = () => {
+    const calloutBox = document.querySelector('.issue-callout');
+    document.documentElement.style.setProperty('--issue-callout-offset', (calloutBox.scrollHeight - 80) + 'px');
+};
 
 window.format = issueHubPage;
 window.format.init();

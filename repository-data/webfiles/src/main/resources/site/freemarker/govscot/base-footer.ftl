@@ -3,28 +3,40 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 
-<footer id="site-footer" class="site-footer  ">
-    <div class="wrapper">
-        <div class="grid"><!--
-            <#if pageable?? && pageable.items??>
-             --><div class="grid__item medium--four-twelfths large--four-twelfths">
-                    <ul class="site-items site-footer__list">
-                        <#list pageable.items as item>
-                            <li>
-                                <#if item.externalLink?? && item.externalLink.url?has_content>
-                                    <#assign href>${item.externalLink.url}</#assign>
-                                <#else>
-                                    <#assign href><@hst.link hippobean=item /></#assign>
-                                </#if>
 
-                                <a class="site-items__link site-footer__link" href="${href}" data-gtm="link-footer">${item.title}</a>
-                            </li>
-                        </#list>
-                    </ul>
-                </div><!--
-            </#if>
-             --><div class="grid__item medium--seven-twelfths large--seven-twelfths">
-                <ul class="social-links site-footer__list">
+<footer class="ds_site-footer  ds_reversed">
+    <div class="ds_wrapper">
+        <div class="ds_site-footer__content">
+            <ul class="ds_site-footer__site-items">
+                <#list pageable.items as item>
+                    <li class="ds_site-items__item">
+                        <#if item.externalLink?? && item.externalLink.url?has_content>
+                            <#assign href>${item.externalLink.url}</#assign>
+                        <#else>
+                            <#assign href><@hst.link hippobean=item /></#assign>
+                        </#if>
+
+                        <a href="${href}" data-gtm="link-footer">${item.title}</a>
+                    </li>
+                </#list>
+            </ul>
+
+            <div class="ds_site-footer__copyright">
+                <a class="ds_site-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">
+                    <img src="/assets/images/logos/ogl.svg" alt="Open Government License" />
+                </a>
+                <p>All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>, except for graphic assets and where otherwise stated</p>
+                <p>&copy; Crown Copyright</p>
+            </div>
+
+            <div class="ds_site-footer__org">
+                <a class="ds_site-footer__org-link" title="The Scottish Government" href="http://www.gov.scot/">
+                    <img class="ds_site-footer__org-logo" src="/assets/images/logos/scottish-government.svg" alt="gov.scot" />
+                </a>
+            </div>
+        </div>
+
+        <ul class="social-links site-footer__list">
                     <li class="social-links__item">
                         <a title="Facebook" class="social-links__link" href="https://www.facebook.com/TheScottishGovernment/timeline/" data-gtm="social">
                             <span class="fa fa-facebook" aria-hidden="true"></span>
@@ -51,7 +63,5 @@
                         </a>
                     </li>
                 </ul>
-            </div><!--
-         --></div>
     </div>
 </footer>

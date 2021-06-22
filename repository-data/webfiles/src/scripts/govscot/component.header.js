@@ -6,38 +6,9 @@
 
 import $ from 'jquery';
 
-let siteHeader = $('.site-header'),
-    autoThreshold = 768;
-
 const header = {
     init: function () {
         let that = this;
-
-        $(window).on('scroll', function () {
-
-            if (window.innerWidth >= autoThreshold) {
-                $(window).trigger('unstickheader');
-                return;
-            }
-
-            let pageTop = $('#main-wrapper').offset().top;
-
-            if ($(window).scrollTop() > pageTop) {
-                $(window).trigger('stickheader');
-            } else {
-                $(window).trigger('unstickheader');
-            }
-        });
-
-        $(window).on('stickheader', function () {
-            // when it sticks, it shrinks
-            siteHeader.addClass('site-header--scaled');
-        });
-
-        $(window).on('unstickheader', function () {
-            // when it unsticks, it unshrinks
-            siteHeader.removeClass('site-header--scaled');
-        });
 
         $('.js-mobile-nav-toggle').on('click', function () {
             if ($('#' + $(this).attr('aria-controls')).attr('aria-expanded') === 'false') {
@@ -58,13 +29,6 @@ const header = {
                 that.closeMenuItem('search');
             }
         });
-    },
-
-    storedScrollPos: 0,
-
-    scrollToMoveHeaderToTop: function() {
-        let totalHeight = parseInt($('.notification-wrapper').css('height'));
-        window.scrollTo(0, totalHeight);
     },
 
     openMenuItem: function (menuItemType) {

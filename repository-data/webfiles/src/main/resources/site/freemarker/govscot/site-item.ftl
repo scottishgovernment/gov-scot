@@ -2,27 +2,28 @@
 
 <#if document??>
 
-    <@hst.manageContent hippobean=document/>
+<@hst.manageContent hippobean=document/>
 
-    <article id="page-content" class="layout--site-item">
+<div class="ds_wrapper">
+    <main id="main-content" class="ds_layout  ds_layout--article">
+        <div class="ds_layout__header">
+            <header class="ds_page-header">
+                <h1 class="ds_page-header__title">${document.title}</h1>
+            </header>
+        </div>
 
-        <div class="grid"><!--
-         --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
-                <h1 class="article-header">${document.title}</h1>
+        <div class="ds_layout__content">
+            <div class="ds_leader--first-paragraph">
+                <@hst.html hippohtml=document.content/>
+            </div>
+        </div>
 
-                <div class="body-content  leader--first-para">
-                    <@hst.html hippohtml=document.content/>
-                </div>
-            </div><!--
-     --></div>
-
-    </article>
-
-    <div class="grid"><!--
-        --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+        <div class="ds_layout__feedback">
             <#include 'common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
+        </div>
+    </main>
+</div>
+
 </#if>
 
 <#if document??>

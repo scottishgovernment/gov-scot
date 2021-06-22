@@ -1,34 +1,35 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
-    <article id="page-content" class="layout--role">
-        <@hst.manageContent hippobean=document/>
-        <#if document.incumbent??>
-            <#if document.incumbent.contactInformation??>
-                <#assign contactInformation = document.incumbent.contactInformation/>
-            </#if>
-            <#if document.incumbent.postalAddress??>
-                <#assign postalAddress = document.incumbent.postalAddress/>
-            </#if>
+    <@hst.manageContent hippobean=document/>
+
+    <#if document.incumbent??>
+        <#if document.incumbent.contactInformation??>
+            <#assign contactInformation = document.incumbent.contactInformation/>
         </#if>
+        <#if document.incumbent.postalAddress??>
+            <#assign postalAddress = document.incumbent.postalAddress/>
+        </#if>
+    </#if>
 
-        <div class="grid"><!--
-            --><div class="grid__item medium--eight-twelfths">
-                <header class="article-header">
-                    <h1 class="article-header__title">${document.title}</h1>
-                    <#if document.incumbent??>
-                        <p class="article-header__subtitle">Current role holder:
-                            <b class=article-header__subtitle__b>${document.incumbent.title}</b>
-                        </p>
-                    </#if>
+    <div class="ds_wrapper">
+        <main id="main-content" class="ds_layout  gov_layout--role">
+            <div class="ds_layout__header">
+                <header class="ds_page-header">
+                    <h1 class="ds_page-header__title">${document.title}</h1>
+                    <dl class="ds_page-header__metadata  ds_metadata">
+                        <#if document.incumbent??>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Current role holder</dt>
+                                <dd class="ds_metadata__value">${document.incumbent.title}</dd>
+                            </div>
+                        </#if>
+                    </dl>
+                    <#include "common/metadata.ftl"/>
                 </header>
+            </div>
 
-                <#include "common/metadata.ftl"/>
-            </div><!--
-        --></div>
-
-        <div class="grid"><!--
-            --><div class="grid__item medium--four-twelfths large--three-twelfths">
+            <div class="ds_layout__sidebar">
                 <#if document.incumbent??>
                     <div class="person person--bordered-mobile">
                         <div class="person__image-container person__image-container--centred-mobile">
@@ -54,57 +55,47 @@
                         <#include 'common/contact-information.ftl' />
                     </div>
                 </#if>
+            </div>
 
-            </div><!--
-            --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
-
-                <div class="body-content">
-
-                    <#if document.incumbent??>
-                        <#if document.incumbent.content?has_content>
-                        <div class="leader  leader--first-para">
+            <div class="ds_layout__content">
+                <#if document.incumbent??>
+                    <#if document.incumbent.content?has_content>
+                        <div>
                             <@hst.html hippohtml=document.incumbent.content var="biography"/>
                             ${biography?trim?keep_before("\n")}
                         </div>
-                        </#if>
                     </#if>
+                </#if>
 
-                    <h2>Responsibilities</h2>
-                    <@hst.html hippohtml=document.content/>
+                <h2>Responsibilities</h2>
 
-                    <#if document.incumbent??>
-                        <#if document.incumbent.content?has_content>
+                <@hst.html hippohtml=document.content/>
+
+                <#if document.incumbent??>
+                    <#if document.incumbent.content?has_content>
                         <h2>Biography</h2>
+
                         ${biography?trim?keep_after("\n")}
-                        </#if>
                     </#if>
+                </#if>
 
 
-                    <div class="visible-xsmall">
-                        <#include 'common/contact-information.ftl' />
-                    </div>
+                <div class="visible-xsmall">
+                    <#include 'common/contact-information.ftl' />
+                </div>
 
-                    <#if document.updateHistory?has_content>
+                <#if document.updateHistory?has_content>
                     <div class="update-history">
                         <#include 'common/update-history.ftl'/>
                     </div>
-                    </#if>
+                </#if>
+            </div>
 
-                </div>
-                <!-- /end .body-content -->
-            </div><!--
-            --><div class="grid__item medium--three-twelfths large--two-twelfths">
-                <!-- RIGHT SIDE (BLANK) -->
-            </div><!--
-        --></div>
-
-    </article>
-
-    <div class="grid"><!--
-        --><div class="grid__item  push--medium--four-twelfths  push--large--three-twelfths  medium--eight-twelfths  large--seven-twelfths">
-            <#include 'common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
+            <div class="ds_layout__feedback">
+                <#include 'common/feedback-wrapper.ftl'>
+            </div>
+        </main>
+    </div>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>

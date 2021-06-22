@@ -1,30 +1,23 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
-    <article id="page-content" class="layout--person">
-        <@hst.manageContent hippobean=document/>
-        <#if document.contactInformation??>
-            <#assign contactInformation = document.contactInformation/>
-        </#if>
-        <#if document.postalAddress??>
-            <#assign postalAddress = document.postalAddress/>
-        </#if>
-
-        <div class="grid"><!--
-            --><div class="grid__item medium--eight-twelfths">
-                <header class="article-header">
-                    <h1 class="article-header__title">${document.title}</h1>
-
-                    <#if document.roleTitle??>
-                        <p class="article-header__subtitle">${document.roleTitle}</p>
-                    </#if>
+    <div class="ds_wrapper">
+        <main id="main-content" class="ds_layout  gov_layout--role">
+            <div class="ds_layout__header">
+                <header class="ds_page-header">
+                    <h1 class="ds_page-header__title">${document.title}</h1>
+                    <dl class="ds_page-header__metadata  ds_metadata">
+                        <#if document.roleTitle??>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Role</dt>
+                                <dd class="ds_metadata__value">${document.roleTitle}</dd>
+                            </div>
+                        </#if>
+                    </dl>
                 </header>
-            </div><!--
-        --></div>
+            </div>
 
-        <div class="grid"><!--
-            --><div class="grid__item medium--four-twelfths large--three-twelfths">
-
+            <div class="ds_layout__sidebar">
                 <div class="person person--bordered-mobile">
                     <div class="person__image-container person__image-container--centred-mobile">
                         <#if document.image??>
@@ -48,34 +41,23 @@
                 <div class="hidden-xsmall">
                     <#include 'common/contact-information.ftl' />
                 </div>
+            </div>
 
-            </div><!--
-            --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
-
-                <div class="body-content">
-
-                    <div class="leader leader--first-para">
-                        <@hst.html hippohtml=document.content/>
-                    </div>
-
-                    <div class="visible-xsmall">
-                        <#include 'common/contact-information.ftl' />
-                    </div>
+            <div class="ds_layout__content">
+                <div class="ds_leader--first-paragraph">
+                    <@hst.html hippohtml=document.content/>
                 </div>
-                <!-- /end .body-content -->
-            </div><!--
-            --><div class="grid__item medium--three-twelfths large--two-twelfths">
-                <!-- RIGHT SIDE (BLANK) -->
-            </div><!--
-        --></div>
 
-    </article>
+                <div class="visible-xsmall">
+                    <#include 'common/contact-information.ftl' />
+                </div>
+            </div>
 
-    <div class="grid"><!--
-        --><div class="grid__item  push--medium--four-twelfths  push--large--three-twelfths  medium--eight-twelfths  large--seven-twelfths">
-            <#include 'common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
+            <div class="ds_layout__feedback">
+                <#include 'common/feedback-wrapper.ftl'>
+            </div>
+        </main>
+    </div>
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>
   <div>

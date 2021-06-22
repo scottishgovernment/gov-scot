@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    A-Z List
+    a segmented a-z list, built with az-list helper
+\*------------------------------------*/
+
+.#{$site-prefix}az-list {
+    list-style-type: none;
+    margin: 0;
+
+    &__item {
+        @include layout(16px);
+    }
+
+    &__letter {
+        float: left;
+        white-space: nowrap;
+        @include colwidth(2, 12, 16px);
+    }
+
+    &__list {
+        float: left;
+        list-style-type: none;
+        margin: 0 0 56px;
+        @include colwidth(10, 12, 16px);
+    }
+}
+
+@include media-query(medium) {
+    .#{$site-prefix}az-list {
+        &__letter {
+            float: left;
+            @include colwidth(1, 9, 16px);
+        }
+
+        &__list {
+            float: left;
+            @include colwidth(7, 9, 16px);
+        }
+    }
+}
+
+@supports (display: grid) {
+    .#{$site-prefix}az-list {
+        &__item {
+            display: grid;
+            grid-template-columns: 2fr 10fr;
+        }
+    }
+
+    @include media-query(medium) {
+        .#{$site-prefix}az-list {
+            &__item {
+                display: grid;
+                grid-template-columns: 1fr 7fr 1fr;
+            }
+        }
+    }
+}

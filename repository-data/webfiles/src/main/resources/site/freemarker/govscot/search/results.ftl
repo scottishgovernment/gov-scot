@@ -11,18 +11,24 @@
 
 <#if pageable??>
 <section id="search-results" class="search-results">
-    <h2 class="hidden">Search results</h2>
-    <p class="search-results__count js-search-results-count">Showing <b>${pageable.total}</b> <#if pageable.total == 1>result<#else>results</#if></p>
+    <h2 class="visually-hidden">Search results</h2>
 
-    <ol id="search-results-list" class="search-results__list">
+    <p class="ds_search-results__count  js-search-results-count">Showing <b>${pageable.total}</b> <#if pageable.total == 1>result<#else>results</#if></p>
+
+    <ol id="search-results-list" class="ds_search-results__list" data-total="${pageable.total}">
         <#list pageable.items as item>
             <@hst.manageContent hippobean=item/>
             <@hst.link var="link" hippobean=item/>
-            <li class="search-results__item  listed-content-item">
+            <#if ((hst.isBeanType(item, "scot.gov.www.beans.Role") && item.incumbent??) || hst.isBeanType(item, "scot.gov.www.beans.Person")) && item.image??>
+                <li class="gov_search-result  gov_search-result--role  gov_search-result--has-image">
+            <#else>
+                <li class="gov_search-result">
+            </#if>
+                <#assign position = item_index + ((pageable.currentPage-1) * pageable.pageSize) />
                 <#if ((hst.isBeanType(item, "scot.gov.www.beans.Role") && item.incumbent??) || hst.isBeanType(item, "scot.gov.www.beans.Person")) && item.image??>
-                    <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if> listed-content-item__article--role listed-content-item__article--has-image ">
-                        <img alt=""
-                            class="listed-content-item__image"
+                <div class="gov_search-result__main">
+                    <img alt=""
+                            class="gov_search-result__image"
                             src="<@hst.link hippobean=item.image.large />"
                             srcset="<@hst.link hippobean=item.image.small/> 84w,
                             <@hst.link hippobean=item.image.smalldoubled/> 168w,
@@ -30,58 +36,81 @@
                             <@hst.link hippobean=item.image.largedoubled/> 288w"
                             sizes="(min-width:768px) 144px, 84px">
 
-                    <div class="listed-content-item__wrapper">
-                        <header class="listed-content-item__heading">
-                            <#if item.roleTitle??><h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.roleTitle}</a></h2></#if>
-                            <p class="listed-content-item__role">${item.name}</p>
-                        </header>
+                    <header class="gov_search-result__header">
+                    <#--  <dl class="gov_search-result__metadata  ds_metadata  ds_metadata--inline">
+                        <span class="ds_metadata__item">
+                            <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                            <dd class="ds_metadata__value  ds_content-label">Policy</dd>
+                        </span>
+                    </dl>  -->
 
-                        <p class="listed-content-item__summary js-truncate" title="Role and biography." style="max-height: 56px; word-wrap: break-word;">
-                            ${item.summary}
-                        </p>
-                    </div>
-                    </article>
-                <#else>
-                    <article class="listed-content-item__article <#if item?is_first>listed-content-item__article--top-border</#if> ">
-                        <header class="listed-content-item__heading">
-                            <#if item.publicationDate?? || item.label?has_content>
-                                <div class="listed-content-item__meta">
-                                    <#if item.label?has_content>
-                                        <span class="listed-content-item__label">${item.label}</span>
-                                    </#if>
-                                    <#if item.publicationDate??>
-                                        <#assign dateFormat = "dd MMM yyyy">
-                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                            <#assign dateFormat = "dd MMM yyyy HH:mm">
-                                        </#if>
-                                        <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
-                                    </#if>
-                                </div>
-                            </#if>
-                            <h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a></h2>
-                        </header>
-
-                        <#if item.summary??>
-                            <p class="listed-content-item__summary js-truncate" title="${item.summary?html}" style="max-height: 56px; word-wrap: break-word;">
-                                ${item.summary?html}
-                            </p>
+                        <#if item.roleTitle??>
+                            <h2 class="gamma  gov_search-result__title">
+                                <a class="gov_search-result__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.roleTitle}</a>
+                            </h2>
                         </#if>
 
-                        <#if item.collections?has_content>
-                            <#if item.collections?size == 1>
-                                <#assign description = 'a collection'/>
-                            <#else>
-                                <#assign description = '${item.collections?size} collections'/>
-                            </#if>
-                            <p class="listed-content-item__collections">This publication is part of ${description}:&nbsp;
-                                <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
+                        <dl class="gov_search-result__metadata  ds_metadata  ds_metadata--inline">
+                            <span class="ds_metadata__item">
+                                <dt class="ds_metadata__key  visually-hidden">Role</dt>
+                                <dd class="ds_metadata__value  ds_content-label">${item.name}</dd>
+                            </span>
+                        </dl>
+                    </header>
 
-                         --><#if item.collections?size gt 1><!--
-                             -->,&nbsp;<!--
-                             --><a href="#content-item-${item?index}-collections" class="content-data__expand js-display-toggle">
+                    <p class="gov_search-result__summary">${item.summary}</p>
+                </div>
+                <#else>
+                <div class="gov_search-result__main">
+                    <header class="gov_search-result__header">
+                        <#if item.publicationDate?? || item.label?has_content>
+                            <dl class="gov_search-result__metadata  ds_metadata  ds_metadata--inline">
+                                <#if item.label?has_content>
+                                <span class="ds_metadata__item">
+                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                    <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
+                                </span>
+                                </#if>
+
+                                <#if item.publicationDate??>
+                                    <#assign dateFormat = "dd MMM yyyy">
+                                    <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                        <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                    </#if>
+                                    <span class="ds_metadata__item">
+                                        <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
+                                        <dd class="ds_metadata__value  ds_content-label"><@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></dd>
+                                    </span>
+                                </#if>
+                            </dl>
+                        </#if>
+                        <h2 class="gamma  gov_search-result__title">
+                            <a class="gov_search-result__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a>
+                        </h2>
+                    </header>
+
+                    <#if item.summary??>
+                        <p class="gov_search-result__summary" title="${item.summary?html}">
+                            ${item.summary?html}
+                        </p>
+                    </#if>
+                </div>
+
+                    <#if item.collections?has_content>
+                        <#if item.collections?size == 1>
+                            <#assign description = 'a collection'/>
+                        <#else>
+                            <#assign description = '${item.collections?size} collections'/>
+                        </#if>
+                        <div class="gov_search-result__supplemental">This publication is part of ${description}:&nbsp;
+                            <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
+
+                        --><#if item.collections?size gt 1><!--
+                            -->,&nbsp;<!--
+                            --><a href="#content-item-${item?index}-collections">
                                     &#43;${item.collections?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
-                                <span id="content-item-${item?index}-collections" class="content-data__additional">
+                                <span id="content-item-${item?index}-collections">
                                     <#list item.collections as collection>
                                         <#if collection?index != 0>
                                             <@hst.link var="link" hippobean=collection/>
@@ -89,37 +118,22 @@
                                         </#if>
                                     </#list>
                                 </span>
-                                </#if>
-                            </p>
-                        </#if>
-                        <#if item.parent??>
-                            <p class="listed-content-item__publication">This page is part of a publication:&nbsp;
-                                <a href="<@hst.link hippobean=item.parent/>">${item.parent.title}</a>
-                            </p>
-                        </#if>
-                    </article>
+                            </#if>
+                        </div>
+                    </#if>
+                    <#if item.parent??>
+                        <div class="gov_search-result__supplemental">This page is part of a publication:&nbsp;
+                            <a href="<@hst.link hippobean=item.parent/>">${item.parent.title}</a>
+                        </div>
+                    </#if>
                 </#if>
             </li>
         </#list>
     </ol>
 
-    <div id="pagination" class="search-results__pagination pagination">
-    <#if cparam.showPagination>
-        <#assign gtmslug = relativeContentPath />
-        <#include "../../include/pagination.ftl">
-    </#if>
-
-    <#assign pageNumber = 1/>
-    <#if parameters['page']??>
-        <#list parameters['page'] as nested>
-            <#assign pageNumber = nested?number/>
-        </#list>
-    </#if>
-
-        <#if pageable.currentPage < pageable.totalPages>
-            <div class="search-results__pagination  search-results__pagination--small  pagination">
-                <button data-page-start="${pageNumber + 1}" id="load-more" class="js-load-more-results  button  button--primary">Load more</button>
-            </div>
+    <div id="pagination">
+        <#if cparam.showPagination??>
+            <#include "../../include/pagination.ftl">
         </#if>
     </div>
 </section>

@@ -3,15 +3,15 @@
 
 <h1 class="article-header">${document.title}</h1>
 
-<div class="body-content  leader--first-para">
+<div class="body-content  ds_leader--first-paragraph">
     <#if document.summary?has_content>
             <p>${document.summary}</p>
     </#if>
 </div>
 
     <#if document.image??>
-        <header class="topic-header  <#if document.image??>topic-header--has-image</#if>" id="page-content">
-            <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="topic-header__image">
+        <header class="gov_topic-header  <#if document.image??>gov_topic-header--has-image</#if>" id="page-content">
+            <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="gov_topic-header__image">
         </header>
     </#if>
 

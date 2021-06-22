@@ -1,7 +1,9 @@
+<#ftl output_format="HTML">
+<#assign hst=JspTaglibs["http://www.hippoecm.org/jsp/hst/core"] >
+
 <!doctype html>
 <#include "../include/imports.ftl">
-<!--[if lte IE 9]><html dir="ltr" lang="en" class="old-ie"><![endif]-->
-<!--[if gt IE 9]><!--><html dir="ltr" lang="en"><!--<![endif]-->
+<html dir="ltr" lang="en">
 <head>
     <meta charset="UTF-8">
     <@hst.headContributions categoryIncludes="noscriptHead"/>
@@ -14,7 +16,6 @@
 
     <link rel="stylesheet" type="text/css" href="<@hst.webfile path="/assets/css/main.css"/>"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,400italic' rel='stylesheet' type='text/css'>
 
     <link rel="shortcut icon" href='<@hst.link path="favicon.ico" />' type="image/x-icon" />
@@ -25,60 +26,59 @@
     <meta name="msapplication-TileColor" content="#0065bd">
     <meta name="theme-color" content="#ffffff">
 
-    <#--  <@hst.headContributions categoryIncludes="htmlHead" xhtml=true/>  -->
     <@hst.headContributions categoryExcludes="noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
 
-</head>
-<body class="fontawesome site-header__container" >
-    <@hst.include ref="googletagmanager"/>
+    <script>
+        BR = window.BR || {};
+        BR.webfile = function(path) {
+            return '<@hst.webfile path="/"/>' + path;
+        };
+    </script>
+    <script>
+        var htmlClass = document.documentElement.getAttribute('class') || '';
+        document.documentElement.setAttribute('class', (htmlClass ? htmlClass + ' ' : '') + 'js-enabled');
+    </script>
+
     <script src="<@hst.link path='/assets/scripts/vendor/jquery.min.js'/>"></script>
+</head>
+<body>
+    <@hst.include ref="googletagmanager"/>
 
     <#include 'common/accessibility-links.ftl' />
-    <#include 'common/notifications.ftl' />
 
-    <div id="main-wrapper">
 
-        <@hst.include ref="menu"/>
+    <span id="page-top"></span>
 
-        <#if !(isHomepage!false)>
-        <div class="wrapper">
-            <!-- search & breadcrumbs -->
-            <!-- only show when not on homepage -->
-                <div class="breadcrumbs__container">
+    <div class="ds_page">
+        <div class="ds_page__top">
+            <#include 'common/notifications.ftl' />
+            <@hst.include ref="menu"/>
 
-                    <div class="grid"><!--
+            <#if !(isSearchpage!true)>
+                <@hst.include ref="search"/>
+            </#if>
+        </div>
 
-                        --><div class="grid__item medium--four-twelfths large--three-twelfths push--medium--eight-twelfths push--large--nine-twelfths hidden-xsmall">
-                            <#if !(isSearchpage!true)>
-                            <@hst.include ref="search"/>
-                            </#if>
-                        </div><!--
-
-                        --><div class="grid__item medium--seven-twelfths large--seven-twelfths pull--medium--four-twelfths pull--large--three-twelfths">
-                            <#if !(isPageNotFound!false)>
-                            <nav role="navigation">
-                                <@hst.include ref="breadcrumb"/>
-                            </nav>
-                            </#if>
-                        </div><!--
-                    --></div>
+        <div class="ds_page__middle">
+            <#if !(isPageNotFound!false)>
+                <div class="ds_wrapper">
+                    <nav role="navigation">
+                        <@hst.include ref="breadcrumb"/>
+                    </nav>
                 </div>
             </#if>
-
-        <!-- body / main -->
             <@hst.include ref="main"/>
-        <#if !(isHomepage!false)>
-            </div>
-        </#if>
+        </div>
 
+        <#include "common/back-to-top.ftl" />
+
+        <div class="ds_page__bottom">
+            <@hst.include ref="footer"/>
+        </div>
     </div>
 
-    <!-- footer -->
 
-    <@hst.include ref="footer"/>
-
-    <#if isHomepage??><script>var headerSearch = document.querySelector('.ds_site-header__search'); headerSearch.parentNode.removeChild(headerSearch);</script></#if>
-    <#if isSearchpage??><script>var headerSearch = document.querySelector('.ds_site-header__search'); headerSearch.parentNode.removeChild(headerSearch);</script></#if>
+    <#include "breakpoint-tests.ftl">
 
     <script type="module" src="<@hst.webfile path="/assets/scripts/global.js"/>"></script>
     <script nomodule="true" src="<@hst.webfile path="/assets/scripts/global.es5.js"/>"></script>
