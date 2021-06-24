@@ -1,0 +1,243 @@
+
+// better focusing
+@mixin focus-highlight ($background:true, $outline:true) {
+    @if $outline {
+        outline: gold solid 3px;
+        outline-offset: 0;
+        box-shadow: -3px 6px 0 black, 3px 6px 0 black;
+    } @else {
+        outline: 0;
+        box-shadow: 0 3px 0 black;
+    }
+
+    transition-duration: 0s;
+    border-color: transparent;
+
+    @if $background {
+        background-color: gold;
+        color: black !important;
+    }
+}
+
+// links
+
+a:focus,
+.link:focus {
+    @include focus-highlight;
+    text-decoration: none !important;
+}
+
+button:focus,
+.button:focus,
+.ds_button:focus {
+    @include focus-highlight(true, false);
+
+}
+
+a.stat-box:focus {
+    @include focus-highlight;
+}
+
+a.ds_site-branding__logo:focus {
+    outline-width: 0;
+}
+
+.ds_card__cover-link:focus {
+    color: black;
+
+    &::after {
+        @include focus-highlight;
+    }
+}
+
+.button--tertiary:focus {
+    @include focus-highlight;
+    border-bottom-color: transparent;
+}
+
+.person__link:focus {
+    box-shadow: 0 8px 0 gold;
+    outline-width: 0;
+}
+
+// inputs
+
+input[type=text]:focus,
+input[type=radio]:focus,
+input[type=checkbox]:focus,
+textarea:focus,
+select:focus {
+    @include focus-highlight(false);
+}
+
+.search-box__input[type=text]:focus {
+    @include focus-highlight(false);
+}
+
+input:focus+label.fancy-checkbox:before,
+input:focus+label.fancy-radio:before {
+    background-color: gold;
+    border: 2px solid black;
+    color: black !important;
+}
+
+// components
+
+.ds_icon {
+    display: block;
+}
+
+.expand:focus {
+    background: transparent;
+    outline: none;
+}
+.expand:focus .expand__icon {
+    background-color: gold;
+    border-color: black;
+    border-width: 2px;
+
+    &::before {
+        background-color: black;
+        left: 3px;
+        top: 9px;
+    }
+
+    &::after {
+        background-color: black;
+        top: 3px;
+        left: 9px;
+    }
+}
+
+.page-group__link:focus {
+    @include focus-highlight(true, false);
+    z-index: 1;
+    position: relative;
+}
+
+.policy-list__link:focus {
+    @include focus-highlight(true,false);
+    box-shadow: none;
+    position: relative;
+    margin: 0 -3px;
+    padding-left: 3px;
+
+    &:after {
+        content: '';
+        background: black;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0px;
+        height: 3px;
+    }
+}
+
+.listed-content-item__link:focus {
+    background-color: transparent;
+    color: black !important;
+}
+
+.listed-content-item,
+.listed-content-item--dark {
+    .listed-content-item__article:focus-within {
+        @include focus-highlight;
+        background-color: gold !important;
+        border-color: transparent;
+        outline: 0;
+        box-shadow: 0 3px 0 black;
+
+        a {
+            color: black;
+            box-shadow: none;
+        }
+
+        .listed-content-item__date {
+            color: black !important;
+        }
+
+        .listed-content-item__collections {
+            color: black;
+
+            &:focus-within {
+                background-color: white;
+                outline: 5px solid white;
+            }
+        }
+    }
+}
+
+
+a.file-icon:focus {
+    @include focus-highlight(true, false)
+}
+
+.document-info__thumbnail-link:focus {
+    @include focus-highlight(true, false);
+    position: relative;
+    z-index: 1;
+}
+
+.expandable-item__header:focus {
+    @include focus-highlight(true, false)
+}
+
+.sticky-document-info__trigger:focus {
+    @include focus-highlight(true, false)
+}
+
+.ds_accordion-item__header:focus, .ds_accordion-item__header-button:focus {
+    @include focus-highlight(true, false)
+}
+
+.ds_site-navigation__link:focus {
+    @include focus-highlight(true, false)
+}
+
+.ds_site-navigation__link.ds_current:focus {
+    background-color: gold;
+}
+
+.ds_site-navigation__link::after {
+    content: none !important;
+}
+
+a.ds_site-branding__logo:focus {
+    outline-width: 3px;
+}
+
+.hero-item__media > a {
+    display: block;
+}
+
+.homepage-publication__title,
+.homepage-news__title {
+    overflow: visible;
+}
+
+.document-nav__button:focus {
+    box-shadow: none;
+    border: 3px solid black;
+
+    > .document-nav__icon {
+        margin-top: -3px;
+    }
+}
+
+.page-nav__button {
+    border-radius: 0;
+
+    &:focus,
+    &:focus:hover {
+        box-shadow: 0 3px 0 black;
+        background-color: gold;
+
+        &::before {
+            background-color: black;
+        }
+
+        .page-nav__text {
+            text-decoration: none;
+        }
+    }
+}

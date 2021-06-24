@@ -56,7 +56,7 @@ public class OrgRolesComponent  extends BaseHstComponent {
         List<Person> peopleWithRoles = new ArrayList<>();
         for (HippoBean bean : roles) {
             Person incumbent = incumbent(bean);
-            if (!seen.contains(incumbent.getTitle())) {
+            if (incumbent != null && !seen.contains(incumbent.getTitle())) {
                 incumbent.setRoles(orgRoleByIncumbent.get(incumbent.getTitle()));
                 peopleWithRoles.add(incumbent);
                 seen.add(incumbent.getTitle());
@@ -102,7 +102,7 @@ public class OrgRolesComponent  extends BaseHstComponent {
         }
 
         HippoBean incumbent = incumbent(bean);
-        return ((SimpleContent) incumbent).getTitle();
+        return incumbent == null ? "No incumbent" : ((SimpleContent) incumbent).getTitle();
     }
 
 }

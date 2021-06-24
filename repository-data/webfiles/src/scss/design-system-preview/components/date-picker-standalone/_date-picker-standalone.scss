@@ -52,7 +52,7 @@ $colour__brand: $colour__blue--base;
   outline: 0 !important;
 
   &:focus {
-      background-color: $colour__blocklink-bg--focus;
+      background-color: gold;
       box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
   }
 
@@ -112,7 +112,7 @@ $colour__brand: $colour__blue--base;
 
               &:focus {
                   &::after {
-                      background-color: $colour__blocklink-bg--focus;
+                      background-color: gold;
                       box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
                   }
               }
@@ -188,7 +188,7 @@ $colour__brand: $colour__blue--base;
       &__table {
 
           tbody:focus-within {
-              outline: 2px solid $colour__link--focus__background;
+              outline: 2px solid gold;
           }
 
           td {
@@ -214,6 +214,10 @@ $colour__brand: $colour__blue--base;
               width: 40px;
 
               @include blocklink;
+
+              &:focus {
+                  background: gold;
+              }
 
               &[disabled="true"] {
                   background-color: $colour__link--disabled__background;
@@ -409,7 +413,7 @@ $button__secondary-border-width--active: 3px !default;
 
         &:focus {
             color: $color__body;
-            background-color: $color__blue--lighter;
+            background-color: gold;
         }
 
         &:hover {

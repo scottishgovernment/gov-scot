@@ -22,6 +22,7 @@ import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
 /**
@@ -53,6 +54,7 @@ public class RedirectComponent extends BaseHstComponent {
         String url = findAlias(request);
         if (url != null) {
             LOG.info("Redirecting to url alias {} -> {}", request.getPathInfo(), url);
+            // if the incoming url has url paramaters and the outgoing one does nto then pass them on...
             HstResponseUtils.sendPermanentRedirect(request, response, url);
             return;
         }
@@ -78,21 +80,35 @@ public class RedirectComponent extends BaseHstComponent {
         response.setStatus(404);
     }
 
+
     private String findAlias(HstRequest request)  {
         try {
-            Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects/Aliases%s", ArchiveUtils.escapeJcrPath(request.getPathInfo()));
-            if (session.nodeExists(path)) {
-                Node node = session.getNode(path);
-                if (node.hasProperty(GOVSCOT_URL)) {
-                    return node.getProperty(GOVSCOT_URL).getString();
-                }
-            }
-            return null;
+           return doFindAlias(request);
         } catch (RepositoryException e) {
             LOG.error("Failed to find url alias {}", request.getPathInfo(), e);
             return null;
         }
+    }
+
+    private String doFindAlias(HstRequest request) throws RepositoryException {
+
+        Session session = request.getRequestContext().getSession();
+        String path = String.format("/content/redirects/Aliases%s", ArchiveUtils.escapeJcrPath(request.getPathInfo()));
+        if (!session.nodeExists(path)) {
+            return null;
+        }
+        Node node = session.getNode(path);
+        if (!node.hasProperty(GOVSCOT_URL)) {
+            return null;
+        }
+        String url = node.getProperty(GOVSCOT_URL).getString();
+
+        // if the incoming url has parameters and the outgoing one does not then add
+        // the params to the redirect
+        if (!url.contains("?") && isNotBlank(request.getQueryString())) {
+            url = new StringBuilder(url).append('?').append(request.getQueryString()).toString();
+        }
+        return url;
     }
 
     private boolean isOldStylePublicationUrl(HstRequest request) {

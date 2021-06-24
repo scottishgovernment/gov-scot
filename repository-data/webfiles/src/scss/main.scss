@@ -7,8 +7,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
- $base-line-height: 7px;
- $base-font-size: 16px;
+$base-line-height: 7px;
+$base-font-size: 16px;
 
 
 
@@ -55,6 +55,8 @@ $breakpoint-has-pull: ('small', 'medium', 'large', 'xlarge');
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.base-spacing";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.colors";
 $images-path: '../../../../assets/mygov/';
+$transition-in-time: 0.2s;
+$transition-out-time: 0.2s;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.transition";
 $base-h1-size: 35px; // 2.1875em;
 $base-h2-size: 22px; // 1.375em;
@@ -229,6 +231,7 @@ $search-box__size--medium: $search-box__size;
 @import "components/component.stat-box";
 @import "components/component.sticky-back-to-top";
 @import "components/component.sticky-document-info";
+@import "components/component.supporting-documents";
 @import "components/component.supporting-files";
 @import "components/component.topic-block";
 @import "components/component.topic-header";
@@ -349,3 +352,5 @@ $tiny-size--medium: 14px !default;
 @import "trumps/trump.person.govscot";
 @import "trumps/trump.search-box.govscot";
 @import "trumps/trump.topic-expandable";
+
+@import "trumps/trump.focus-visible";

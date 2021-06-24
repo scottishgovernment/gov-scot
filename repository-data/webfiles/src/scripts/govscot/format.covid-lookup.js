@@ -211,7 +211,7 @@ const covidLookup = {
                 .then((data) => {
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = data.responseText;
-                    this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({body: tempDiv.querySelector('.body-content .ds_accordion').outerHTML});
+                    this.resultsSection.querySelector('#restrictions-detail').innerHTML = restrictionsDetailTemplate({body: tempDiv.querySelector('.body-content').innerHTML});
                     const detailsAccordion = new window.DS.components.GovAccordion(this.resultsSection.querySelector('#restrictions-detail .ds_accordion'));
                     detailsAccordion.init();
                 });

@@ -11,7 +11,7 @@
 
     .expandable-item__icon {
         background-image: none !important;
-        color: $color__grey--medium;
+        color: currentColor;
 
         .optional-icon {display: none;}
         .optional-icon:not(.icon-less) {

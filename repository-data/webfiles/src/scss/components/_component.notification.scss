@@ -217,7 +217,7 @@ $notification_padding: 14px;
 
   &--mourning {
     background-color: $color__black;
-    height: 56px;
+    min-height: 56px;
     color: $color__white;
     font-weight: bold;
   }

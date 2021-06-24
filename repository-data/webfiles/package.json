@@ -11,7 +11,7 @@
     "postshrinkwrap": "node_modules/.bin/sealant @scottish-government/mygov-assets",
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
-    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
+    "sass": "./node_modules/node-sass/bin/node-sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
     "webpack": "./node_modules/.bin/webpack -p --config webpack.config.js",
     "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
@@ -38,6 +38,7 @@
     "karma-jasmine-jquery-2": "^0.1.1",
     "karma-jasmine-matchers": "^4.0.1",
     "karma-webpack": "^4.0.0-rc.6",
+    "node-sass": "^6.0.0",
     "pikaday": "^1.4.0",
     "promise-polyfill": "^8.2.0",
     "requirejs": "^2.1.0",

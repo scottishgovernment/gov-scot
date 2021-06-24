@@ -5,6 +5,7 @@
 </div>
 
 <@hst.manageContent hippobean=document/>
+<@hst.link hippobean=document var="baseurl" canonical=true/>
 
 <article id="page-content" class="layout--publication">
 
@@ -42,32 +43,49 @@
                         </div><!--
 
                      --><div class="grid__item  push--large--one-twelfth medium--three-twelfths large--two-twelfths">
-                            <#if pages?has_content>
+                            <div class="gov_supporting-documents">
+                                <#if pages?has_content>
+                                    <#if documents?has_content>
+                                        <#assign mainDocument = documents[0]/>
+                                        <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
 
-                                <#if documents?has_content>
-                                    <div class="hidden-xsmall">
-                                        <#include 'header-document-info.ftl'/>
-                                    </div>
-                                </#if>
+                                        <@hst.link var="documentdownload" hippobean=mainDocument.document>
+                                            <@hst.param name="forceDownload" value="true"/>
+                                        </@hst.link>
 
-                                <div class="publication-info__header">
-                                    <a href="#files-list" class="js-expand-downloads publication-info__preamble publication-info__preamble--icon publication-info__preamble--icon--pdf visible-xsmall">
+                                        <@hst.link var="documentinline" hippobean=mainDocument.document>
+                                        </@hst.link>
 
-                                        <span class="publication-info__file-icon file-icon file-icon--gen"></span>
-                                        This publication is available to download in other formats. <span class="publication-info__preamble-expand">More</span>&hellip;
-
-                                    </a>
-                                </div>
-
-                                <div class="publication-info__body visible-xsmall">
-                                    <section id="files-list" class="publication-info__section publication-info__collapsible publication-info__collapsible--collapsed-initial publication-info__collapsible--not-tablet">
-                                        <#if documents?has_content>
-                                            <#include 'header-document-info.ftl'/>
-                                            <#include 'supporting-files.ftl'/>
+                                        <#if filenameExtension == "PDF">
+                                            <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                                <img
+                                                    alt="View supporting documents"
+                                                    class="gov_supporting-documents__thumbnail"
+                                                    src="<@hst.link hippobean=mainDocument.thumbnails[0]/>"
+                                                    srcset="
+                                                        <#list mainDocument.thumbnails as thumbnail>
+                                                            <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                        </#list>"
+                                                    sizes="(min-width: 768px) 165px, 107px" />
+                                            </a>
+                                        <#else>
+                                            <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                                <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                                    <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                                </svg>
+                                                <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                            </a>
                                         </#if>
-                                    </section>
-                                </div>
-                            </#if>
+
+                                        <a href="${baseurl + 'documents/'}" class="button  button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                                            <span class="gov_supporting-documents__button-icon">
+                                                <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                                            </span>
+                                            <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                                        </a>
+                                    </#if>
+                                </#if>
+                            </div>
                         </div><!--
                  --></div>
 
