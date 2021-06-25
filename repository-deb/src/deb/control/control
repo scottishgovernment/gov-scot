@@ -4,5 +4,6 @@ Section: mygov
 Priority: optional
 Architecture: all
 Maintainer: martin.ellis@gov.scot
+Pre-Depends: gov-scot-libs
 Depends: java8-runtime-headless
 Description: Rubric Repository

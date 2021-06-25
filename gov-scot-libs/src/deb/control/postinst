@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+restart_flag=/opt/hippo/temp/.restart
+
+process_triggers() {
+  if [ -f "$restart_flag" ]; then
+    rm "$restart_flag"
+    if systemctl is-enabled --quiet hippo 2>/dev/null; then
+      systemctl restart hippo
+    fi
+  fi
+}
+
+case "$1" in
+  configure|triggered)
+    process_triggers
+  ;;
+esac

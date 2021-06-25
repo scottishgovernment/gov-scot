@@ -93,6 +93,16 @@
                                 <prefix>${install.path}</prefix>
                             </mapper>
                         </data>
+                        <data>
+                            <src>src/main/bin</src>
+                            <dst>${install.path}/bin</dst>
+                            <type>directory</type>
+                            <mapper>
+                                <type>perm</type>
+                                <prefix>${install.path}/bin</prefix>
+                                <filemode>0755</filemode>
+                            </mapper>
+                        </data>
                     </dataSet>
                 </configuration>
             </plugin>
