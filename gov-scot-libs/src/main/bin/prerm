@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+
+schedule_restart() {
+  if systemctl is-active --quiet hippo; then
+    systemctl stop hippo || true
+    touch /opt/hippo/temp/.restart
+  fi
+}
+
+case "$1" in
+    remove|upgrade|deconfigure)
+      schedule_restart
+    ;;
+
+    failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
