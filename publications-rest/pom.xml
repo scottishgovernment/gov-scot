@@ -33,7 +33,7 @@
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>imageprocessing</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>${project.version}</version>
     </dependency>
 
     <dependency>
