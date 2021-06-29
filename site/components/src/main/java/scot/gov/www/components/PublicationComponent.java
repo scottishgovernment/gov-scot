@@ -30,15 +30,16 @@ public class PublicationComponent extends AbstractPublicationComponent {
     }
 
     protected HippoBean getPublication(HippoBean document) {
-        LOG.info("document is {}", document.getPath());
 
         if (document.isHippoFolderBean()) {
             if ("documents".equals(document.getName())) {
-                LOG.info("doc is the documents folder");
                 document = document.getParentBean();
             }
 
             List<HippoBean> publications = document.getChildBeans("govscot:Publication");
+            if (publications.isEmpty()) {
+                publications = document.getChildBeans("govscot:ComplexDocument2");
+            }
             if (publications.size() > 1) {
                 LOG.warn("Multiple publications found in folder {}, will use first", document.getPath());
             }
@@ -62,7 +63,6 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
         HippoBean publicationFolder = publication.getParentBean();
         if (!hasDocuments(publication.getParentBean())) {
-            LOG.info("pub has no docs");
             return;
         }
 
