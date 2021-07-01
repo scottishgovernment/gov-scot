@@ -2,12 +2,7 @@
     <div class="wrapper">
         <div class="grid"><!--
             <#if isMultiPagePublication>
-              --><div class="grid__item medium--four-twelfths  large--three-twelfths hidden-xsmall">
-                    <div class="sticky-document-info__cell">
-                        <div class="sticky-document-info__label">Contents</div>
-                    </div>
-                </div><!--
-             --><div class="grid__item  eight-twelfths  medium--five-twelfths large--seven-twelfths">
+                --><div class="grid__item  eight-twelfths  medium--five-twelfths large--seven-twelfths">
                     <div class="sticky-document-info__cell  sticky-document-info--visible-if-sticky">
                         <div class="sticky-document-info__title">
                             ${document.title}
@@ -17,24 +12,14 @@
                         </div>
                     </div>
                 </div><!--
-             --><div class="grid__item  hidden-xsmall  medium--three-twelfths large--two-twelfths  sticky-document-info__panel-container">
-                    <#if documents??>
-                        <button class="sticky-document-info__trigger">Supporting files</button>
-
-                        <div class="sticky-document-info__panel ">
-
-                            <div class="primary-doc">
-                                <#if documents?size gt 0>
-                                    <#include 'header-document-info.ftl'/>
-                                </#if>
-                            </div>
-                            <div>
-                                <#include 'supporting-files.ftl'/>
-                            </div>
+                <#if hasSupportingDocs>
+                    --><div class="grid__item  hidden-xsmall  push--medium--four-twelfths  push--large--three-twelfths  medium--three-twelfths xlarge--two-twelfths  sticky-document-info__panel-container">
+                        <div class="sticky-document-info__cell  sticky-document-info--visible-if-sticky">
+                            <a class="small" href="${baseurl + 'documents/'}">Supporting documents</a>
                         </div>
-                    </#if>
-                </div><!--
-             --><div class="grid__item  four-twelfths hidden-medium hidden-large hidden-xlarge">
+                    </div><!--
+                </#if>
+                --><div class="grid__item  four-twelfths hidden-medium hidden-large hidden-xlarge">
                     <div class="sticky-document-info__cell sticky-document-info__cell--text-right">
                         <button class="button button--primary  button--xsmall js-mobile-toc-trigger-open" title="Show table of contents">Contents</button>
                         <button class="button button--clear  button--xsmall  button--cancel js-mobile-toc-trigger-close" title="Close table of contents">Close</button>
