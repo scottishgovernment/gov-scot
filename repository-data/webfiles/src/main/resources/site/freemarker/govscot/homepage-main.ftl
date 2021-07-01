@@ -87,151 +87,151 @@
 <div class="wrapper">
     <div class="grid"><!--
         --><div class="grid__item medium--four-twelfths push--medium--eight-twelfths">
-        <!-- TOPICS -->
-        <section id="topics" class="js-topics homepage-block homepage-block--highlight narrow">
-            <h2 class="emphasis homepage-block__title"><a class="homepage-block__title-link"
-                                                          href="<@hst.link path='/topics/'/>"
-                                                          data-gtm="panel-pols">Topics</a></h2>
+            <!-- TOPICS -->
+            <section id="topics" class="js-topics homepage-block homepage-block--highlight narrow">
+                <h2 class="emphasis homepage-block__title"><a class="homepage-block__title-link"
+                                                            href="<@hst.link path='/topics/'/>"
+                                                            data-gtm="panel-pols">Topics</a></h2>
 
-            <p class="homepage-block__intro">Look for a policy using keywords or filtering by available topic areas.</p>
+                <p class="homepage-block__intro">Look for a policy using keywords or filtering by available topic areas.</p>
 
-            <form class="scrollable">
+                <form class="scrollable">
 
-                <fieldset id="filter-search" class="filters__fieldset filter-search">
-                    <legend class="filters__legend">Keyword search</legend>
-                    <label class="filters__label" for="filters-search-term">Filter by keyword</label>
-                    <div class="filters-input__wrapper">
-                        <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="filters__input--search-term-home filters__input--search-term" />
-                        <a href="<@hst.link path='/policies/' />" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
-                    </div>
-                </fieldset>
-
-                <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by topic</h3>
-
-                <div class="scrollable__content checkbox-group scrollable__content--homepage-policies">
-                    <fieldset>
-                        <legend class="hidden">Topics</legend>
-                        <#list topics as topic>
-                            <#assign slugifyTitle=topic.title?lower_case?replace(' ', '-')?replace(',', '')>
-                            <input id="${slugifyTitle}" name="topics[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="${topic.title}"/><label for="${slugifyTitle}" class="checkbox-group__label fancy-checkbox">${topic.title}</label>
-                        </#list>
+                    <fieldset id="filter-search" class="filters__fieldset filter-search">
+                        <legend class="filters__legend">Keyword search</legend>
+                        <label class="filters__label" for="filters-search-term">Filter by keyword</label>
+                        <div class="filters-input__wrapper">
+                            <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="filters__input--search-term-home filters__input--search-term" />
+                            <a href="<@hst.link path='/policies/' />" title="Submit" class="filter-search__button filter-search__button--home filter-search__button--submit  js-policy-form-submit button button--clear"></a>
+                        </div>
                     </fieldset>
-                </div>
 
-                <button href="<@hst.link path='/policies/' />" class="js-policy-form-submit button button--primary homepage-block__button">Go</button>
+                    <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by topic</h3>
 
-            </form>
-        </section>
+                    <div class="scrollable__content checkbox-group scrollable__content--homepage-policies">
+                        <fieldset>
+                            <legend class="hidden">Topics</legend>
+                            <#list topics as topic>
+                                <#assign slugifyTitle=topic.title?lower_case?replace(' ', '-')?replace(',', '')>
+                                <input id="${slugifyTitle}" name="topics[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="${topic.title}"/><label for="${slugifyTitle}" class="checkbox-group__label fancy-checkbox">${topic.title}</label>
+                            </#list>
+                        </fieldset>
+                    </div>
 
-        <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/topics/'/>"
-           data-gtm="all-topics">
-            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="${iconspath}#3x3grid"></use>
-            </svg>
-            See all topics
-        </a>
-    </div><!--
+                    <button href="<@hst.link path='/policies/' />" class="js-policy-form-submit button button--primary homepage-block__button">Go</button>
 
-        --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
-        <!-- PUBLICATIONS -->
-        <section id="publications" class="homepage-block">
-            <h2 class="emphasis homepage-block__title homepage-block__title--icon
-                homepage-block__title--icon--publication"><a class="homepage-block__title-link"
-                                                             href="<@hst.link path='/publications/'/>"
-                                                             data-gtm="panel-pubs">Publications</a></h2>
-            <#list publications as publication>
-                <article class="homepage-publication">
-                    <h3 class="js-truncate homepage-publication__title"><a href="<@hst.link hippobean=publication />"
-                                                                           data-gtm="pubs-${publication?index + 1}" title="${publication.title}">${publication.title}</a></h3>
-                    <ul class="homepage-publication__topics">
-                        <#list publication.topics as topic>
-                        <li>${topic.title}</li>
-                        </#list>
-                    </ul>
-                    <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                </article>
-            </#list>
+                </form>
+            </section>
 
-        </section>
-
-        <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/'/>"
-           data-gtm="all-pubs">
-            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="${iconspath}#3x3grid"></use>
-            </svg>
-            See all publications
-        </a>
-    </div><!--
+            <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
+            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/topics/'/>"
+            data-gtm="all-topics">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all topics
+            </a>
+        </div><!--
 
         --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
-        <!-- CONSULTATIONS -->
-        <section id="consultations" class="homepage-block">
-            <h2 class="emphasis homepage-block__title homepage-block__title--icon
-                homepage-block__title--icon--consultation"><a class="homepage-block__title-link"
-                                                              href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
-                                                              data-gtm="panel-cons">Consultations</a></h2>
+            <!-- PUBLICATIONS -->
+            <section id="publications" class="homepage-block">
+                <h2 class="emphasis homepage-block__title homepage-block__title--icon
+                    homepage-block__title--icon--publication"><a class="homepage-block__title-link"
+                                                                href="<@hst.link path='/publications/'/>"
+                                                                data-gtm="panel-pubs">Publications</a></h2>
+                <#list publications as publication>
+                    <article class="homepage-publication">
+                        <h3 class="js-truncate homepage-publication__title"><a href="<@hst.link hippobean=publication />"
+                                                                            data-gtm="pubs-${publication?index + 1}" title="${publication.title}">${publication.title}</a></h3>
+                        <ul class="homepage-publication__topics">
+                            <#list publication.topics as topic>
+                            <li>${topic.title}</li>
+                            </#list>
+                        </ul>
+                        <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                    </article>
+                </#list>
 
-            <#list consultations as consultation>
-                <article class="homepage-publication">
-                    <h3 class="js-truncate homepage-publication__title">
-                        <a href="<@hst.link hippobean=consultation />" data-gtm="cons-${consultation?index + 1}" title="${consultation.title}">${consultation.title}</a></h3>
-                    <ul class="homepage-publication__topics">
-                        <#list consultation.topics as topic>
-                        <li>${topic.title}</li>
-                        </#list>
-                    </ul>
-                    <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                </article>
-            </#list>
+            </section>
 
-        </section>
+            <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
+            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/'/>"
+            data-gtm="all-pubs">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all publications
+            </a>
+        </div><!--
 
-        <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-        <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
-           data-gtm="all-cons">
-            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="${iconspath}#3x3grid"></use>
-            </svg>
-            See all consultations
-        </a>
-    </div><!--
+        --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
+            <!-- CONSULTATIONS -->
+            <section id="consultations" class="homepage-block">
+                <h2 class="emphasis homepage-block__title homepage-block__title--icon
+                    homepage-block__title--icon--consultation"><a class="homepage-block__title-link"
+                                                                href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
+                                                                data-gtm="panel-cons">Consultations</a></h2>
+
+                <#list consultations as consultation>
+                    <article class="homepage-publication">
+                        <h3 class="js-truncate homepage-publication__title">
+                            <a href="<@hst.link hippobean=consultation />" data-gtm="cons-${consultation?index + 1}" title="${consultation.title}">${consultation.title}</a></h3>
+                        <ul class="homepage-publication__topics">
+                            <#list consultation.topics as topic>
+                            <li>${topic.title}</li>
+                            </#list>
+                        </ul>
+                        <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                    </article>
+                </#list>
+
+            </section>
+
+            <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
+            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
+            data-gtm="all-cons">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all consultations
+            </a>
+        </div><!--
     --></div>
 
     <div class="grid hidden-xsmall"><!--
         --><div class="grid__item medium--four-twelfths push--medium--eight-twelfths">
-        <!-- if you're changing this link remember to also change the mobile equivalent above -->
-        <a class="button  button--tertiary  tst-all-topics" href="<@hst.link path='/topics/'/>"
-           data-gtm="all-topics"><svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-            <use xlink:href="${iconspath}#3x3grid"></use>
-        </svg>
-            See all topics
-        </a>
-    </div><!--
-
-        --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
-        <!-- if you're changing this link remember to also change the mobile equivalent above -->
-        <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/'/>"
-           data-gtm="all-pubs">
-            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+            <!-- if you're changing this link remember to also change the mobile equivalent above -->
+            <a class="button  button--tertiary  tst-all-topics" href="<@hst.link path='/topics/'/>"
+            data-gtm="all-topics"><svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                 <use xlink:href="${iconspath}#3x3grid"></use>
             </svg>
-            See all publications
-        </a>
-    </div><!--
+                See all topics
+            </a>
+        </div><!--
 
         --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
-        <!-- if you're changing this link remember to also change the mobile equivalent above -->
-        <a class="button  button--tertiary  tst-all-cons"
-           href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
-           data-gtm="all-cons">
-            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="${iconspath}#3x3grid"></use>
-            </svg>
-            See all consultations
-        </a>
-    </div><!--
+            <!-- if you're changing this link remember to also change the mobile equivalent above -->
+            <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/'/>"
+            data-gtm="all-pubs">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all publications
+            </a>
+        </div><!--
+
+        --><div class="grid__item medium--four-twelfths pull--medium--four-twelfths">
+            <!-- if you're changing this link remember to also change the mobile equivalent above -->
+            <a class="button  button--tertiary  tst-all-cons"
+            href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
+            data-gtm="all-cons">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all consultations
+            </a>
+        </div><!--
     --></div>
 
     <!-- NEWS -->
@@ -276,44 +276,44 @@
         </a>
     </section>
 
-<!-- STATISTICS AND RESEARCH -->
-<#if homeStatsPanelEnabled == true>
-    <section id="stats" class="homepage-block">
-        <h2 class="emphasis homepage-block__title">
-            <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-stats">Statistics and research</a>
-        </h2>
+    <!-- STATISTICS AND RESEARCH -->
+    <#if homeStatsPanelEnabled == true>
+        <section id="stats" class="homepage-block">
+            <h2 class="emphasis homepage-block__title">
+                <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-stats">Statistics and research</a>
+            </h2>
 
-        <h3 class="homepage-about__title">Latest</h3>
-        <div class="grid"><!--
+            <h3 class="homepage-about__title">Latest</h3>
+            <div class="grid"><!--
 
-            <#list statisticsAndResearch as statsItem>
-             --><div class="grid__item medium--four-twelfths homepage-news__item">
-                    <article class="narrow">
-                        <h3 class="js-truncate homepage-news__title">
-                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index + 1}" title="${statsItem.title}">${statsItem.title}</a>
-                        </h3>
-                            <ul class="homepage-publication__topics">
-                                    <li>${statsItem.label}</li>
-                            </ul>
+                <#list statisticsAndResearch as statsItem>
+                --><div class="grid__item medium--four-twelfths homepage-news__item">
+                        <article class="narrow">
+                            <h3 class="js-truncate homepage-news__title">
+                                <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index + 1}" title="${statsItem.title}">${statsItem.title}</a>
+                            </h3>
+                                <ul class="homepage-publication__topics">
+                                        <li>${statsItem.label}</li>
+                                </ul>
 
-                            <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                    </article>
-                </div><!--
-            </#list>
+                                <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                        </article>
+                    </div><!--
+                </#list>
 
-        --></div>
+            --></div>
 
-        <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
-           data-gtm="all-statistics">
-            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                <use xlink:href="${iconspath}#3x3grid"></use>
-            </svg>
-            See all Statistics and research
-        </a>
-    </section>
-</#if>
+            <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
+            data-gtm="all-statistics">
+                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                    <use xlink:href="${iconspath}#3x3grid"></use>
+                </svg>
+                See all Statistics and research
+            </a>
+        </section>
+    </#if>
 
-<!-- END STATISTICS AND REASEARCH  -->
+    <!-- END STATISTICS AND REASEARCH  -->
 
 
 
@@ -371,55 +371,12 @@
             </#if>
         --></div>
     </section>
-</div>
 
-<!-- SOCIAL -->
-<div class="container container--grey container--last">
-    <div class="wrapper">
-
-        <h2 class="emphasis homepage-block__title">Social</h2>
-
-        <div class="social-channels">
-
-            <div class="ds_card">
-                <div class="ds_card__media">
-                    <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/flickr-thumbnail.jpg'/>"/>
-                </div>
-                <div class="ds_card__content">
-                    <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-flickr" href="http://www.flickr.com/scottishgovernment">Flickr</a></h2>
-                    <#if document??><p>${document.flickrContent}</p></#if>
-                </div>
-            </div>
-
-            <div class="ds_card">
-                <div class="ds_card__media">
-                    <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/youtube-thumbnail.png'/>"/>
-                </div>
-                <div class="ds_card__content">
-                    <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-youtube" href="https://www.youtube.com/user/scottishgovernment/">YouTube</a></h2>
-                    <#if document??><p>${document.youTubeContent}</p></#if>
-                </div>
-            </div>
-
-            <div class="ds_card">
-                <div class="ds_card__media">
-                    <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/twitter-thumbnail.png'/>"/>
-                </div>
-                <div class="ds_card__content">
-                    <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-twitter" href="https://twitter.com/scotgov">Twitter</a></h2>
-                    <#if document??><p>${document.twitterContent}</p></#if>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="grid"><!--
-            --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
-                <#include 'common/feedback-wrapper.ftl'>
-            </div><!--
-        --></div>
-    </div>
+    <div class="grid"><!--
+        --><div class="grid__item  medium--nine-twelfths  large--seven-twelfths">
+            <#include 'common/feedback-wrapper.ftl'>
+        </div><!--
+    --></div>
 </div>
 </div>
 
