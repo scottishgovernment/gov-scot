@@ -331,44 +331,6 @@
 <div class="gov_page-bottom">
     <div class="ds_wrapper">
         <div class="ds_layout  gov_layout--home">
-            <div class="ds_layout__content">
-                <div class="gov_content-block">
-                    <h2 class="gov_content-block__title">Social</h2>
-
-                    <div class="gov_social-channels">
-                        <div class="ds_card">
-                            <div class="ds_card__media">
-                                <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/flickr-thumbnail.jpg'/>"/>
-                            </div>
-                            <div class="ds_card__content">
-                                <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-flickr" href="http://www.flickr.com/scottishgovernment">Flickr</a></h2>
-                                <#if document??><p>${document.flickrContent}</p></#if>
-                            </div>
-                        </div>
-
-                        <div class="ds_card">
-                            <div class="ds_card__media">
-                                <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/youtube-thumbnail.png'/>"/>
-                            </div>
-                            <div class="ds_card__content">
-                                <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-youtube" href="https://www.youtube.com/user/scottishgovernment/">YouTube</a></h2>
-                                <#if document??><p>${document.youTubeContent}</p></#if>
-                            </div>
-                        </div>
-
-                        <div class="ds_card">
-                            <div class="ds_card__media">
-                                <img alt="" class="ds_card__image" src="<@hst.link path='/assets/images/graphics/twitter-thumbnail.png'/>"/>
-                            </div>
-                            <div class="ds_card__content">
-                                <h2 class="gamma"><a class="ds_card__cover-link" data-navigation="social-item-twitter" href="https://twitter.com/scotgov">Twitter</a></h2>
-                                <#if document??><p>${document.twitterContent}</p></#if>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="ds_layout__feedback">
                 <#include 'common/feedback-wrapper.ftl'>
             </div>
