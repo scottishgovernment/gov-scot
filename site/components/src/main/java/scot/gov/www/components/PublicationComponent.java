@@ -7,6 +7,7 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.DocumentInformation;
 import scot.gov.www.beans.PublicationPage;
 
 import java.util.List;
@@ -23,21 +24,30 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
     @Override
     protected void populateRequest(HippoBean publication, HippoBean document, HstRequest request, HstResponse response) {
-        setDocuments(publication, request);
+        setDocuments(publication, document, request);
         setPages(publication, document, request);
         request.setAttribute("document", publication);
     }
 
     protected HippoBean getPublication(HippoBean document) {
+
         if (document.isHippoFolderBean()) {
+            if ("documents".equals(document.getName())) {
+                document = document.getParentBean();
+            }
+
             List<HippoBean> publications = document.getChildBeans("govscot:Publication");
+            if (publications.isEmpty()) {
+                publications = document.getChildBeans("govscot:ComplexDocument2");
+            }
             if (publications.size() > 1) {
                 LOG.warn("Multiple publications found in folder {}, will use first", document.getPath());
             }
             return publications.isEmpty() ? null : publications.get(0);
         }
 
-        if (isPage(document)) {
+
+        if (isPage(document) || document instanceof DocumentInformation) {
             HippoBean publicationFolder = document.getParentBean().getParentBean();
             List<HippoBean> publications = publicationFolder.getChildBeans("govscot:Publication");
             if (publications.size() > 1) {
@@ -49,7 +59,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
         return document;
     }
 
-    private void setDocuments(HippoBean publication, HstRequest request) {
+    private void setDocuments(HippoBean publication, HippoBean document, HstRequest request) {
 
         HippoBean publicationFolder = publication.getParentBean();
         if (!hasDocuments(publication.getParentBean())) {
@@ -66,6 +76,10 @@ public class PublicationComponent extends AbstractPublicationComponent {
             List<HippoFolderBean> folders = documentFolder.getFolders()
                     .stream().filter(this::hasDocuments).collect(toList());
             request.setAttribute("groupedDocumentFolders", folders);
+        }
+
+        if (document instanceof DocumentInformation) {
+            request.setAttribute("doc", document);
         }
     }
 
@@ -99,7 +113,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
     }
 
     private boolean isPage(HippoBean document) {
-        return document.getClass() == PublicationPage.class;
+        return document instanceof PublicationPage;
     }
 
     private List<HippoDocumentBean> pagestoInclude(HippoFolderBean pagesFolder) {

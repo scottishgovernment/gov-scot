@@ -1,0 +1,109 @@
+/*------------------------------------*\
+    SUPPORTING DOCUMENTS
+\*------------------------------------*/
+
+$site-prefix: 'gov_';
+$ds_colour__border: $color__border--base;
+$ds_colour__white: white;
+$ds_colour__link--hover__background: $color__grey--lighter;
+$ds_colour__link--focus__background: gold;
+
+.#{$site-prefix}supporting-documents {
+    &__thumbnail-link {
+        border: 1px solid $ds_colour__border;
+        display: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__thumbnail {
+        width: 100%;
+    }
+
+    &__button {
+        padding: 8px;
+
+        &-icon {
+            background-color: currentColor;
+            border-radius: 100%;
+            display: none;
+            height: 36px;
+            padding: 8px;
+            pointer-events: none;
+            width: 36px;
+
+            > svg {
+                fill: $ds_colour__white;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        &:hover:not(:focus) &-icon > svg {
+            fill: $ds_colour__link--hover__background;
+        }
+
+        &:focus &-icon > svg {
+            fill: $ds_colour__link--focus__background;
+        }
+
+        &:hover {
+            padding: 7px
+        }
+    }
+}
+
+
+
+
+// supporting docs list
+.gov_supporting-documents-list {
+    .gov-supporting-document {
+        .gov_supporting-document__thumb {
+            margin-left: 37px;
+        }
+
+        .gov_supporting-document__text {
+            margin-left: 127px;
+        }
+
+        &--highlight {
+            .gov_supporting-document__thumb {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@include media-query(medium) {
+    .#{$site-prefix}supporting-documents {
+        &__thumbnail-link {
+            display: block;
+        }
+    }
+}
+
+@supports(display: inline-flex) {
+    .#{$site-prefix}supporting-documents__button {
+        align-items: center;
+        display: inline-flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+
+        &-icon {
+            display: block;
+        }
+
+        &-text {
+            padding: 0 8px;
+        }
+
+        @include media-query(medium) {
+            width: 100%;
+
+            &-text {
+                width: min-content;
+            }
+        }
+    }
+}

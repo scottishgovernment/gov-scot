@@ -113,7 +113,9 @@ const global = {
         this.initNotifications();
         this.initAccordions();
         this.initMobileMenu();
-        showHide.init(document.querySelector('#page-content'));
+        if (document.querySelector('#page-content')) {
+            showHide.init(document.querySelector('#page-content'));
+        }
     }
 };
 

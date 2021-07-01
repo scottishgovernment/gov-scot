@@ -16,22 +16,80 @@
     <#assign isHomePage = true/>
 </#if>
 
+<@hst.link hippobean=document var="baseurl" canonical=true/>
+
 <@hst.manageContent hippobean=document/>
-
-    <header class="article-header   has-icon  has-icon--guide">
-    <p class="article-header__label">Publication - ${document.label}</p>
+    <header class="article-header  gov_sublayout  gov_sublayout--publication-header">
         <div class="grid"><!--
-            --><div class="grid__item  large--two-twelfths  hidden-small  hidden-xsmall  hidden-medium">
-                <svg class="svg-icon  mg-icon  mg-icon--full  article-header__icon">
-                    <use xlink:href="${iconspath}#format-publication"></use>
-                </svg>
+            --><div class="grid__item  medium--nine-twelfths">
+                <div class="grid"><!--
+                    --><div class="grid__item">
+                        <div class="gov_sublayout__title">
+                            <span class="article-header__label">Publication - ${document.label}</span>
+                            <h1 class="article-header__title">${document.title}</h1>
+                        </div>
+                    </div><!--
+                    --><div class="grid__item  large--three-ninths">
+                        <div class="gov_sublayout__metadata">
+                            <#include '../publication/metadata.ftl'/>
+                        </div>
+                    </div><!--
+                    --><div class="grid__item large--six-ninths">
+                        <div class="gov_sublayout__content">
+                            <#if document.summary??>
+                                <p class="leader">${document.summary}</p>
+                            </#if>
+                            <#include '../common/collections-list.ftl'/>
+                        </div>
+                    </div><!--
+                --></div>
             </div><!--
-            --><div class="grid__item  large--seven-twelfths">
+            --><div class="grid__item  medium--three-twelfths  large--two-twelfths  push--large--one-twelfth">
+                <div class="gov_sublayout__document">
+                    <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
+                        <div class="gov_supporting-documents">
+                            <#if documents??>
+                                <#assign firstDocument = documents[0]/>
+                                <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                            </#if>
+                            <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                    <#if document.coverimage?has_content>
+                                        <img
+                                            alt="View supporting documents"
+                                            class="gov_supporting-documents__thumbnail"
+                                            src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                            srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                            sizes="(min-width: 768px) 165px, 107px" />
+                                    <#else>
+                                        <img
+                                            class="gov_supporting-documents__thumbnail"
+                                            alt="View supporting documents"
+                                            src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                            srcset="
+                                            <#list firstDocument.thumbnails as thumbnail>
+                                                <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                            </#list>"
+                                            sizes="(min-width: 768px) 165px, 107px" />
+                                    </#if>
+                                </a>
+                            <#else>
+                                <a data-title="${document.title}" title="View supporting documents" href="${baseurl + 'documents/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
+                            </#if>
 
-                <h1 class="article-header__title">${document.title}</h1>
-                <p>${document.summary}</p>
-
-                <#include '../common/collections-list.ftl'/>
+                            <a href="${baseurl + 'documents/'}" class="button  button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                                <span class="gov_supporting-documents__button-icon">
+                                    <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                                </span>
+                                <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                            </a>
+                        </div>
+                    </#if>
+                </div>
             </div><!--
         --></div>
     </header>
@@ -42,7 +100,7 @@
     <div class="section-marker__part  section-marker__document-title">
         <div class="wrapper">
             <div class="grid"><!--
-                --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
+                --><div class="grid__item  large--ten-twelfths  push--large--three-twelfths">
                     <div class="section-marker__text-line" title="${document.title}">${document.title}</div>
                 </div><!--
             --></div>
@@ -51,7 +109,7 @@
     <div class="section-marker__part  section-marker__section-title">
         <div class="wrapper">
             <div class="grid"><!--
-                --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
+                --><div class="grid__item  large--ten-twelfths  push--large--three-twelfths">
                     <div class="section-marker__text-line">${subsectionTitle}</div>
                 </div><!--
             --></div>
@@ -62,7 +120,7 @@
 <nav class="document-nav  document-nav--sticky">
     <div class="wrapper">
         <div class="grid"><!--
-            --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
+            --><div class="grid__item  large--nine-twelfths  push--large--three-twelfths">
                 <@hst.link hippobean=prev var="prevlink"/>
                 <<#if prevlink??>a<#else>span disabled</#if> class="document-nav__button  button--primary  button" href="<@hst.link hippobean=prev/>" title="Previous page">
                     <svg class="svg-icon  mg-icon  document-nav__icon">
@@ -90,81 +148,12 @@
 </nav>
 
 <!-- reopen the wrapper in base-layout -->
-<div class="wrapper" id="document-content">
+<div class="wrapper" id="page-content">
 
     <#if isAboutPage??>
 
         <div class="grid"><!--
-            --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
-
-                <h2><b>About this publication</b></h2>
-
-                <dl class="content-data  content-data__list">
-                    <dt class="content-data__label">Published:</dt>
-                    <dd class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMM yyyy"/></strong></dd>
-
-                    <#if document.responsibleRole??>
-                        <dt class="content-data__label">From:</dt>
-
-                        <dd class="content-data__value">
-                            <@hst.link var="link" hippobean=document.responsibleRole/>
-                            <a href="${link}">${document.responsibleRole.title}</a><!--
-
-                        --><#if document.secondaryResponsibleRole?first??><!--
-                        -->, <!--
-                            --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
-                                &#43;${document.secondaryResponsibleRole?size}&nbsp;more&nbsp;&hellip;</a>
-
-                                <span id="secondary-responsible-roles" class="content-data__additional">
-                                    <#list document.secondaryResponsibleRole as secondaryRole>
-
-                                        <@hst.link var="link" hippobean=secondaryRole/>
-                                        <a href="${link}">${secondaryRole.title}</a><#sep>, </#sep>
-                                    </#list>
-                                </span>
-
-                        </#if>
-                        </dd>
-                    </#if>
-
-                    <#if document.responsibleDirectorate??>
-                        <dt class="content-data__label">Directorate:</dt>
-
-                        <dd class="content-data__value">
-                            <@hst.link var="link" hippobean=document.responsibleDirectorate/>
-                            <a href="${link}">${document.responsibleDirectorate.title}</a><!--
-                            --><#if document.secondaryResponsibleDirectorate?has_content><!--
-                            -->, <!--
-                            --><a href="#secondary-responsible-directorates" class="content-data__expand  js-display-toggle">
-                            &#43;${document.secondaryResponsibleDirectorate?size}&nbsp;more&nbsp;&hellip;</a>
-
-                                <span id="secondary-responsible-directorates" class="content-data__additional">
-                                    <#list document.secondaryResponsibleDirectorate as secondaryDirectorate>
-
-                                        <@hst.link var="link" hippobean=secondaryDirectorate/>
-                                        <a href="${link}">${secondaryDirectorate.title}</a><#sep>, </#sep>
-                                    </#list>
-                                </span>
-                            </#if>
-                        </dd>
-                    </#if>
-
-                    <#if document.topics?first??>
-                        <dt class="content-data__label">Part of:</dt>
-
-                        <dd class="content-data__value">
-                            <#list document.topics?sort_by("title") as topic>
-                                <@hst.link var="link" hippobean=topic/>
-                                <a href="${link}">${topic.title}</a><#sep>, </#sep>
-                            </#list>
-                        </dd>
-                    </#if>
-
-                    <#if document.isbn?has_content>
-                        <dt class="content-data__label"><abbr title="International Standard Book Number">ISBN</abbr>:</dt>
-                        <dd class="content-data__value">${document.isbn}</dd>
-                    </#if>
-                </dl>
+            --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
 
                 <@hst.html hippohtml=document.content/>
 
@@ -204,7 +193,7 @@
 
     <#elseif isDocumentsPage??>
         <div class="grid"><!--
-            --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
+            --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
 
                 <h2><b>Supporting documents</b></h2>
 
@@ -212,11 +201,11 @@
                         <section class="document-section">
                             <#list documents as attachedDocument>
                                 <#if attachedDocument?index == 0>
-                                    <#assign isLimelitItem = true/>
+                                    <#assign isHighlightedItem = true/>
                                     <#assign useCoverPage = true/>
                                 </#if>
                                 <#include '../publication/body-document-info.ftl'/>
-                                <#assign isLimelitItem = false/>
+                                <#assign isHighlightedItem = false/>
                                 <#assign useCoverPage = false/>
                             </#list>
                         </section>
@@ -228,6 +217,7 @@
                         <section class="document-section">
                             <h2>${folder.displayName}</h2>
                             <#list folder.documents as attachedDocument>
+                                <#assign isHighlightedItem = attachedDocument?is_first/>
                                 <#include '../publication/body-document-info.ftl'/>
                             </#list>
                         </section>
@@ -239,7 +229,7 @@
 
     <#elseif currentPage == document>
         <div class="grid"><!--
-            --><div class="grid__item  large--ten-twelfths  push--large--two-twelfths">
+            --><div class="grid__item  large--ten-twelfths  push--large--three-twelfths">
                 <h2><b>Contents</b></h2>
 
                 <div class="grid"><!--
@@ -292,80 +282,13 @@
                         </div>
 
                     </div><!--
-                    --><div class="grid__item  medium--three-tenths  xlarge--two-tenths">
-                        <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
-                            <div class="document-info  document-info--old-style  hidden-small  hidden-xsmall">
-                                <#if documents??>
-                                    <#assign firstDocument = documents[0]/>
-                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                                    <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
-                                </#if>
-                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                    <a data-title="${document.title}" class="document-info__thumbnail-link" href="${baseurl + 'about/'}">
-                                        <#if document.coverimage?has_content>
-                                            <img
-                                                alt="View this document"
-                                                class="document-info__thumbnail-image"
-                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        <#else>
-                                            <img
-                                                class="document-info__thumbnail-image"
-                                                alt="View this document"
-                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                                srcset="
-                                                <#list firstDocument.thumbnails as thumbnail>
-                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                </#list>"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        </#if>
-                                    </a>
-                                <#else>
-                                    <a data-title="${document.title}" title="View this document" href="${baseurl + 'about/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
-                                </#if>
-                            </div>
-
-                            <a data-title="${document.title}" class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'about/'}">
-                                <div class="icon-button__content">
-                                    <span class="icon-button__icon">
-                                        <svg class="svg-icon  mg-icon">
-                                            <use xlink:href="${iconspath}#sharp-info_no_circle-24px"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="icon-button__text">
-                                        About this publication
-                                    </span>
-                                </div>
-                            </a>
-                        </#if>
-
-                        <#if (displaySupportingDocuments?? && displaySupportingDocuments == true)>
-                            <a class="button  button--secondary  button--full-width  button--small-margin  icon-button" href="${baseurl + 'documents/'}">
-                                <div class="icon-button__content">
-                                        <span class="icon-button__icon">
-                                            <svg class="svg-icon  mg-icon">
-                                                <use xlink:href="${iconspath}#sharp-expand_more-24px"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="icon-button__text">
-                                            Supporting documents
-                                        </span>
-                                </div>
-                            </a>
-                        </#if>
-
-                    </div><!--
                 --></div>
             </div><!--
         --></div>
     <#else>
         <article class="complex-document">
             <div class="grid"><!--
-                --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
+                --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
                     <h3 class="complex-document__title">${currentPage.title}</h3>
 
                     <@hst.html hippohtml=currentPage.content/>

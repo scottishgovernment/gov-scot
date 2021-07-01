@@ -5,6 +5,7 @@
 </div>
 
 <@hst.manageContent hippobean=document/>
+<@hst.link hippobean=document var="baseurl" canonical=true/>
 
 <article id="page-content" class="layout--publication">
 
@@ -12,89 +13,73 @@
     <div class="top-matter">
         <div class="wrapper">
             <header class="article-header no-bottom-margin">
-                <#if isMultiPagePublication>
 
-                    <div class="grid"><!--
-                     --><div class="grid__item">
-                            <p class="article-header__label">Publication<#if document.label??> - ${document.label}</#if></p>
-                        </div><!--
-                 --></div>
-                    <div class="grid"><!--
-                     --><div class="grid__item medium--nine-twelfths">
-                            <div class="grid"><!--
-                                <#if document.title??>
-                                --><div class="grid__item"><h1 class="article-header__title">${document.title}</h1></div><!--
-
-                                --><div class="grid__item large--four-twelfths">
-                                    <#include 'metadata.ftl'/>
-                                </div><!--
-                                </#if>
-                                <#if document.summary??>
-                                --><div class="grid__item large--eight-twelfths">
-                                    <#list document.summary?split("\n") as summaryParagraph>
-                                        <p class="leader">${summaryParagraph}</p>
-                                    </#list>
-
-                                    <#include '../common/collections-list.ftl'/>
-                                </div><!--
-                                </#if>
-                         --></div>
-                        </div><!--
-
-                     --><div class="grid__item  push--large--one-twelfth medium--three-twelfths large--two-twelfths">
-                            <#if pages?has_content>
-
-                                <#if documents?has_content>
-                                    <div class="hidden-xsmall">
-                                        <#include 'header-document-info.ftl'/>
-                                    </div>
-
-                                    <div class="publication-info__header">
-                                        <a href="#files-list" class="js-expand-downloads publication-info__preamble publication-info__preamble--icon publication-info__preamble--icon--pdf visible-xsmall">
-
-                                            <span class="publication-info__file-icon file-icon file-icon--gen"></span>
-                                            This publication is available to download in other formats. <span class="publication-info__preamble-expand">More</span>&hellip;
-                                        </a>
-                                    </div>
-
-                                    <div class="publication-info__body visible-xsmall">
-                                        <section id="files-list" class="publication-info__section publication-info__collapsible publication-info__collapsible--collapsed-initial publication-info__collapsible--not-tablet">
-                                            <#include 'header-document-info.ftl'/>
-                                            <#include 'supporting-files.ftl'/>
-                                        </section>
-                                    </div>
-                                </#if>
-                            </#if>
-                        </div><!--
-                 --></div>
-
-                <#else>
-
-                    <div class="grid"><!--
-                     --><div class="grid__item large--ten-twelfths">
-                            <p class="article-header__label">Publication - ${document.label}</p>
-                            <h1 class="article-header__title">${document.title}</h1>
-                        </div><!--
-                 --></div>
-                    <div class="grid"><!--
-                     --><div class="grid__item  large--three-twelfths">
-                            <#include 'metadata.ftl'/>
-                        </div><!--
-
-                     --><div class="grid__item  large--seven-twelfths">
-                            <div class="leader  leader--first-para">
-                                <#if document.summary??>
-                                    <#list document.summary?split("\n") as summaryParagraph>
-                                        <p>${summaryParagraph}</p>
-                                    </#list>
-                                </#if>
+                <div class="grid"><!--
+                    --><div class="grid__item  medium--nine-twelfths"><!--
+                        --><div class="grid"><!--
+                            --><div class="grid__item">
+                                <p class="article-header__label">Publication<#if document.label??> - ${document.label}</#if></p>
+                                <h1 class="article-header__title">${document.title}</h1>
+                            </div><!--
+                            --><div class="grid__item  large--three-ninths">
+                                <#include 'metadata.ftl'/>
+                            </div><!--
+                            --><div class="grid__item  large--six-ninths">
+                                <#list document.summary?split("\n") as summaryParagraph>
+                                    <p class="leader">${summaryParagraph}</p>
+                                </#list>
 
                                 <#include '../common/collections-list.ftl'/>
-                            </div>
-                        </div><!--
-                 --></div>
+                            </div><!--
+                        --></div><!--
+                    --></div><!--
+                    --><div class="grid__item  medium--three-twelfths  large--two-twelfths  push--large--one-twelfth">
+                        <div class="gov_supporting-documents">
+                            <#if pages?has_content>
+                                <#if documents?has_content>
+                                    <#assign hasSupportingDocs = true />
+                                    <#assign mainDocument = documents[0]/>
+                                    <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
 
-                </#if>
+                                    <@hst.link var="documentdownload" hippobean=mainDocument.document>
+                                        <@hst.param name="forceDownload" value="true"/>
+                                    </@hst.link>
+
+                                    <@hst.link var="documentinline" hippobean=mainDocument.document>
+                                    </@hst.link>
+
+                                    <#if filenameExtension == "PDF">
+                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                            <img
+                                                alt="View supporting documents"
+                                                class="gov_supporting-documents__thumbnail"
+                                                src="<@hst.link hippobean=mainDocument.thumbnails[0]/>"
+                                                srcset="
+                                                    <#list mainDocument.thumbnails as thumbnail>
+                                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                    </#list>"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        </a>
+                                    <#else>
+                                        <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                            <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                                <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                            </svg>
+                                            <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                        </a>
+                                    </#if>
+
+                                    <a href="${baseurl + 'documents/'}" class="button  button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                                        <span class="gov_supporting-documents__button-icon">
+                                            <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                                        </span>
+                                        <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                                    </a>
+                                </#if>
+                            </#if>
+                        </div>
+                    </div><!--
+                --></div>
             </header>
         </div>
     </div>
@@ -225,6 +210,7 @@
                             <#if hasAttachedDocument?has_content>
                                 <section class="document-section">
                                     <#list documents as attachedDocument>
+                                        <#assign isHighlightedItem = attachedDocument?is_first/>
                                         <#include 'body-document-info.ftl'/>
                                     </#list>
                                 </section>
@@ -235,6 +221,7 @@
                                     <section class="document-section">
                                         <h2>${folder.displayName}</h2>
                                         <#list folder.documents as attachedDocument>
+                                        <#assign isHighlightedItem = attachedDocument?is_first/>
                                             <#include 'body-document-info.ftl'/>
                                         </#list>
                                     </section>
