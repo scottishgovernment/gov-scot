@@ -5,6 +5,7 @@
 </div>
 
     <@hst.manageContent hippobean=document/>
+    <@hst.link hippobean=document var="baseurl" canonical=true/>
 
 <article id="page-content" class="layout--publication">
 
@@ -12,8 +13,6 @@
     <div class="top-matter">
         <div class="wrapper">
             <header class="article-header no-bottom-margin">
-
-
                     <div class="grid"><!--
                      --><div class="grid__item large--ten-twelfths">
                         <p class="article-header__label">Publication - ${document.label}</p>
@@ -42,39 +41,40 @@
         </div>
     </div>
 
-<#--------------------- BODY SECTION --------------------->
-    <div class="inner-shadow-top  js-sticky-header-position">
+    <#--------------------- BODY SECTION --------------------->
+    <div class="wrapper js-content-wrapper">
+        <div class="body-content publication-body">
 
-        <div class="wrapper js-content-wrapper">
-            <div class="body-content publication-body">
+            <div class="grid"><!--
 
-                <div class="grid"><!--
+                --><div class="grid__item large--eight-twelfths">
 
-             --><div class="grid__item  medium--four-twelfths  large--three-twelfths hidden-xsmall  hidden-small  hidden-medium">
-                </div><!--
-
-                 --><div class="grid__item large--seven-twelfths">
+                    <h2>Supporting documents</h2>
 
                     <#list documents as attachedDocument>
-                        <#if doc = attachedDocument>
-                            <h2>THIS ONE</h2>
-                        </#if>
+                        <#assign isTargetedItem = doc == attachedDocument/>
+                        <#assign isHighlightedItem = attachedDocument?is_first/>
                         <#include 'body-document-info.ftl'/>
                     </#list>
-                    <#--<#assign attachedDocument=doc/>-->
-                    <#--<#include 'body-document-info.ftl'/>-->
 
+
+                    <div class="grid  page-nav"><!--
+                         --><div class="grid__item  medium--six-twelfths  page-nav__item">
+                                <a href="${baseurl}" class="page-nav__button  page-nav__button--left">
+                                    <span data-label="Return" class="page-nav__text">Main publication</span>
+                                </a>
+                            </div><!--
+                     --></div>
                 </div><!--
 
-         --></div>
-            </div>
+            --></div>
         </div>
     </div>
 </article>
 
 <div class="wrapper">
     <div class="grid"><!--
-        --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
+        --><div class="grid__item  large--eight-twelfths">
         <#include '../common/feedback-wrapper.ftl'>
     </div><!--
     --></div>

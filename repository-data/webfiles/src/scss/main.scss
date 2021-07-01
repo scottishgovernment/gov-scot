@@ -136,6 +136,7 @@ $table__border-color--header: $color__grey--light;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.header-emphasis";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.leader";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.links";
+@import "../../node_modules/@scottish-government/mygov-assets/scss/base/type/type.small";
 
 
 
@@ -189,7 +190,6 @@ $breadcrumbs__margin--large: $breadcrumbs__margin--medium;
 @import "components/component.contents-list";
 @import "components/component.crossbar-header";
 @import "components/component.directorate-list";
-@import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
 @import "components/component.document-nav";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
 @import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
@@ -199,6 +199,7 @@ $expandable__title-size: 16px;
 @import "components/component.feedback";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
 @import "components/component.form-box";
+@import "components/component.gov-document-info";
 @import "components/component.history-list";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.informational-notes";
 @import "components/component.issue-callout";

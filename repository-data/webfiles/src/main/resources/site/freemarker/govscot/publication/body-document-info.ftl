@@ -1,5 +1,5 @@
 <#if attachedDocument.document??>
-<div class="document-info <#if attachedDocument.highlighted || (isLimelitItem)!false>document-info--limelight</#if>">
+<div class="gov_document-info  <#if attachedDocument.highlighted || (isHighlightedItem)!false>gov_document-info--highlight</#if>  <#if isTargetedItem!false>gov_document-info--targeted</#if>">
 
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?upper_case/>
     <#assign filenameWithoutExtension = attachedDocument.document.filename?keep_before_last(".")/>
@@ -11,14 +11,13 @@
     <@hst.link var="documentinline" hippobean=attachedDocument.document>
     </@hst.link>
 
-    <div class="document-info__body">
-        <div class="document-info__thumbnail  document-info__thumbnail--pdf">
+    <div class="gov_document-info__icon">
         <#if filenameExtension == "PDF">
-            <a data-title="${attachedDocument.title}" class="document-info__thumbnail-link" href="${documentinline}">
+            <a data-title="${attachedDocument.title}" class="gov_document-info__thumbnail-link" href="${documentinline}">
                 <#if ((useCoverPage)!false) && document.coverimage?has_content>
                     <img
                         alt="View this document"
-                        class="document-info__thumbnail-image"
+                        class="gov_document-info__thumbnail-image"
                         src="<@hst.link hippobean=document.coverimage.smallcover/>"
                         srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
                                 <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
@@ -28,7 +27,7 @@
                 <#else>
                     <img
                         alt="View this document"
-                        class="document-info__thumbnail-image"
+                        class="gov_document-info__thumbnail-image"
                         src="<@hst.link hippobean=attachedDocument.thumbnails[0]/>"
                         srcset="
                                 <#list attachedDocument.thumbnails as thumbnail>
@@ -38,30 +37,28 @@
                 </#if>
             </a>
         <#else>
-            <a data-title="${attachedDocument.title}" title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="file-icon--<#if attachedDocument.highlighted || (isLimelitItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
+            <a data-title="${attachedDocument.title}" title="View this document" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="gov_document-info__thumbnail-link  file-icon--<#if attachedDocument.highlighted || (isHighlightedItem)!false>large<#else>medium</#if>  file-icon  file-icon--${filenameExtension}"></a>
         </#if>
-        </div>
     </div>
 
-    <div class="document-info__text">
+    <div class="gov_document-info__info">
+        <h3 class="gov_document-info__title"><a class="no-icon" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>">${attachedDocument.title}</a></h3>
 
-        <h3 class="document-info__title"><a class="no-icon" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>">${attachedDocument.title}</a></h3>
-
-        <div class="document-info__file-details">
-            <dl class="document-info__meta">
+        <div class="gov_document-info__file-details">
+            <dl>
                 <dt class="hidden">File type</dt>
                 <dd><b><#if attachedDocument.pageCount?has_content && attachedDocument.pageCount gt 0>${attachedDocument.pageCount} page </#if>${filenameExtension}</b></dd>
                 <dd><@formatFileSize document=attachedDocument/></dd>
             </dl>
         </div>
+    </div>
 
-        <div class="document-info__download">
-            <a data-title="${attachedDocument.title}" href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isLimelitItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
-                <span class="link-text">
-                    Download
-                </span>
-            </a>
-        </div>
+    <div class="gov_document-info__download">
+        <a data-title="${attachedDocument.title}" href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isHighlightedItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
+            <span class="link-text">
+                Download
+            </span>
+        </a>
     </div>
 </div>
 </#if>
