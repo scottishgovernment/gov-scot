@@ -51,12 +51,24 @@
 
                     <h2>Supporting documents</h2>
 
-                    <#list documents as attachedDocument>
-                        <#assign isTargetedItem = doc == attachedDocument/>
-                        <#assign isHighlightedItem = attachedDocument?is_first/>
-                        <#include 'body-document-info.ftl'/>
-                    </#list>
-
+                    <#if groupedDocumentFolders??>
+                        <#list groupedDocumentFolders as folder>
+                            <section class="document-section">
+                                <h2>${folder.displayName}</h2>
+                                <#list folder.documents as attachedDocument>
+                                    <#assign isTargetedItem = doc == attachedDocument/>
+                                    <#assign isHighlightedItem = attachedDocument?is_first/>
+                                    <#include 'body-document-info.ftl'/>
+                                </#list>
+                            </section>
+                        </#list>
+                    <#else>
+                        <#list documents as attachedDocument>
+                            <#assign isTargetedItem = doc == attachedDocument/>
+                            <#assign isHighlightedItem = attachedDocument?is_first/>
+                            <#include 'body-document-info.ftl'/>
+                        </#list>
+                    </#if>
 
                     <div class="grid  page-nav"><!--
                          --><div class="grid__item  medium--six-twelfths  page-nav__item">

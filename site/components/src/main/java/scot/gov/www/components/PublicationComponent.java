@@ -32,31 +32,42 @@ public class PublicationComponent extends AbstractPublicationComponent {
     protected HippoBean getPublication(HippoBean document) {
 
         if (document.isHippoFolderBean()) {
-            if ("documents".equals(document.getName())) {
+            if (isDocumentsFolder(document)) {
                 document = document.getParentBean();
             }
-
-            List<HippoBean> publications = document.getChildBeans("govscot:Publication");
-            if (publications.isEmpty()) {
-                publications = document.getChildBeans("govscot:ComplexDocument2");
-            }
-            if (publications.size() > 1) {
-                LOG.warn("Multiple publications found in folder {}, will use first", document.getPath());
-            }
-            return publications.isEmpty() ? null : publications.get(0);
+            return getPublicationFromFolder(document);
         }
 
+        if (isPage(document)) {
+            return getPublicationFromFolder(document.getParentBean().getParentBean());
+        }
 
-        if (isPage(document) || document instanceof DocumentInformation) {
-            HippoBean publicationFolder = document.getParentBean().getParentBean();
-            List<HippoBean> publications = publicationFolder.getChildBeans("govscot:Publication");
-            if (publications.size() > 1) {
-                LOG.warn("Multiple publications found in folder {}, will use first", publicationFolder.getPath());
-            }
-            return publications.isEmpty() ? null : publications.get(0);
+        if (document instanceof DocumentInformation) {
+            HippoBean documentsFolder = getDocumentsFolder(document);
+            return getPublicationFromFolder(documentsFolder.getParentBean());
         }
 
         return document;
+    }
+
+    HippoBean getDocumentsFolder(HippoBean document) {
+        HippoBean folder = document.getParentBean();
+        return isDocumentsFolder(folder) ? folder : getDocumentsFolder(folder);
+    }
+
+    boolean isDocumentsFolder(HippoBean document) {
+        return "documents".equals(document.getName());
+    }
+
+    HippoBean getPublicationFromFolder(HippoBean folder) {
+        List<HippoBean> publications = folder.getChildBeans("govscot:Publication");
+        if (publications.isEmpty()) {
+            publications = folder.getChildBeans("govscot:ComplexDocument2");
+        }
+        if (publications.size() > 1) {
+            LOG.warn("Multiple publications found in folder {}, will use first", folder.getPath());
+        }
+        return publications.isEmpty() ? null : publications.get(0);
     }
 
     private void setDocuments(HippoBean publication, HippoBean document, HstRequest request) {
