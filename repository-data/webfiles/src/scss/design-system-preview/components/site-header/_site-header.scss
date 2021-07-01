@@ -108,11 +108,23 @@ $site-header__top-band-colour: $colour__brand--primary;
     }
 }
 
+.#{$pl-prefix}site-header__content > * {
+    float: left;
+
+    &:last-child {
+        float: right;
+    }
+}
+
 @supports (display: flex) {
     .#{$pl-prefix}site-header__content {
         align-items: center;
         display: flex;
         justify-content: space-between;
+
+        > * {
+            float: none;
+        }
     }
 }
 

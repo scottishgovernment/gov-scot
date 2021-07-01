@@ -8,10 +8,10 @@
     line-height: 56px;
     position: relative;
     text-align: center;
-    
+
     &--sticky {
         @include sticky();
-        z-index: 1000; /* same as .site-header */
+        z-index: 9;
     }
 
     //box-shadow: 0 3px 10px 0px rgba(114,114,114,0.25);
