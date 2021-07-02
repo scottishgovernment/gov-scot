@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
@@ -14,7 +15,7 @@
 <div class="grid" id="page-content">
     <div class="grid__item medium--nine-twelfths large--seven-twelfths">
         <#if index??>
-            <h1 class="article-header">${index.title?html}</h1>
+            <h1 class="article-header">${index.title}</h1>
 
             <#if isPostcode??>
                 <div class="info-note note">
