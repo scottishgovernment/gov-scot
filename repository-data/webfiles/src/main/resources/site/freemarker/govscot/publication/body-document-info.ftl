@@ -54,7 +54,7 @@
     </div>
 
     <div class="gov_document-info__download">
-        <a data-title="${attachedDocument.title}" href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isHighlightedItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
+        <a data-title="${attachedDocument.title}" href="${documentdownload}" class="button  <#if attachedDocument.highlighted || (isHighlightedItem)!false || (isTargetedItem)!false>button--primary<#else>button--secondary  button--medium</#if>  button--no-margin">
             <span class="link-text">
                 Download
             </span>

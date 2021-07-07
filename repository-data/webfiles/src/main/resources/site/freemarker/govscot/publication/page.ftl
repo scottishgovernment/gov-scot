@@ -210,7 +210,6 @@
                             <#if hasAttachedDocument?has_content>
                                 <section class="document-section">
                                     <#list documents as attachedDocument>
-                                        <#assign isHighlightedItem = attachedDocument?is_first/>
                                         <#include 'body-document-info.ftl'/>
                                     </#list>
                                 </section>
@@ -221,7 +220,6 @@
                                     <section class="document-section">
                                         <h2>${folder.displayName}</h2>
                                         <#list folder.documents as attachedDocument>
-                                        <#assign isHighlightedItem = attachedDocument?is_first/>
                                             <#include 'body-document-info.ftl'/>
                                         </#list>
                                     </section>
