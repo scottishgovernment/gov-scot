@@ -56,7 +56,11 @@
                             <section class="document-section">
                                 <h2>${folder.displayName}</h2>
                                 <#list folder.documents as attachedDocument>
-                                    <#assign isTargetedItem = doc == attachedDocument/>
+                                    <#assign isTargetedItem = false/>
+                                    <#if doc = attachedDocument>
+                                        <#assign isTargetedItem = true/>
+                                    </#if>
+
                                     <#assign isHighlightedItem = attachedDocument?is_first/>
                                     <#include 'body-document-info.ftl'/>
                                 </#list>
@@ -64,7 +68,10 @@
                         </#list>
                     <#else>
                         <#list documents as attachedDocument>
-                            <#assign isTargetedItem = doc == attachedDocument/>
+                            <#assign isTargetedItem = false/>
+                            <#if doc = attachedDocument>
+                                <#assign isTargetedItem = true/>
+                            </#if>
                             <#assign isHighlightedItem = attachedDocument?is_first/>
                             <#include 'body-document-info.ftl'/>
                         </#list>
