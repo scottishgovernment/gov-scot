@@ -52,6 +52,15 @@
     &__title {
         // from mygov-assets
         font-weight: normal;
+
+        a {
+            word-break: break-all;
+
+            @supports (overflow-wrap: anywhere) {
+                overflow-wrap: anywhere;
+                word-break: normal;
+            }
+        }
     }
 
     &__file-details {
@@ -119,12 +128,12 @@
         display: grid;
         grid-gap: 16px;
         grid-template-areas: 'icon info' 'download download';
-        grid-template-columns: auto 1fr;
+        grid-template-columns: auto minmax(0, 1fr);
 
 
         @include media-query(medium) {
             grid-template-areas: 'icon info download';
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: auto minmax(0, 1fr) auto;
         }
 
         &__icon,
@@ -132,6 +141,7 @@
         &__download {
             float: none;
             margin: 0;
+            width: auto;
         }
 
         &--highlight &__info {
