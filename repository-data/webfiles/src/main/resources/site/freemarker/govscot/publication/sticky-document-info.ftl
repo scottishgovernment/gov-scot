@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div><!--
-                <#if hasSupportingDocs>
+                <#if hasSupportingDocs?? && hasSupportingDocs>
                     --><div class="grid__item  hidden-xsmall  push--medium--four-twelfths  push--large--three-twelfths  medium--three-twelfths xlarge--two-twelfths  sticky-document-info__panel-container">
                         <div class="sticky-document-info__cell  sticky-document-info--visible-if-sticky">
                             <a class="small" href="${baseurl + 'documents/'}">Supporting documents</a>

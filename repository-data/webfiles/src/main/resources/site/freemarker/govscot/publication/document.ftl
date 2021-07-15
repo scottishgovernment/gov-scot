@@ -69,7 +69,8 @@
                     <#else>
                         <#list documents as attachedDocument>
                             <#assign isTargetedItem = false/>
-                            <#if doc = attachedDocument>
+
+                            <#if doc?? && doc = attachedDocument>
                                 <#assign isTargetedItem = true/>
                             </#if>
                             <#assign isHighlightedItem = attachedDocument?is_first/>
