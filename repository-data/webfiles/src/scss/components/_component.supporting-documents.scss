@@ -9,6 +9,11 @@ $ds_colour__link--hover__background: red;
 $ds_colour__link--focus__background: gold;
 
 .#{$site-prefix}supporting-documents {
+    // legacy fix/hack
+    .gov_document-info__thumbnail-link {
+        width: auto !important;
+    }
+
     &__thumbnail-link {
         border: 1px solid $ds_colour__border;
         display: none;
