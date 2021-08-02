@@ -29,6 +29,7 @@
     <@hst.headContributions categoryExcludes="noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
 
 </head>
+
 <body class="fontawesome site-header__container" >
     <@hst.include ref="googletagmanager"/>
     <script src="<@hst.link path='/assets/scripts/vendor/jquery.min.js'/>"></script>
