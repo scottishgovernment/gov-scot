@@ -9,8 +9,6 @@ import org.hippoecm.frontend.plugin.IPluginContext;
 import org.hippoecm.frontend.plugin.config.IPluginConfig;
 import org.hippoecm.frontend.plugins.jquery.upload.FileUploadViolationException;
 import org.hippoecm.frontend.plugins.jquery.upload.single.FileUploadPanel;
-import org.hippoecm.frontend.plugins.yui.upload.processor.DefaultFileUploadPreProcessorService;
-import org.hippoecm.frontend.plugins.yui.upload.processor.FileUploadPreProcessorService;
 import org.hippoecm.frontend.plugins.yui.upload.validation.DefaultUploadValidationService;
 import org.hippoecm.frontend.plugins.yui.upload.validation.FileUploadValidationService;
 import org.hippoecm.frontend.service.IEditor.Mode;
@@ -42,10 +40,10 @@ public class DocumentUploadPlugin extends ResourceUploadPlugin {
     }
 
     private FileUploadPanel createFileUploadPanel() {
-        final FileUploadPanel panel = new FileUploadPanel("fileUpload", this.getPluginConfig(), this.getValidationService(), this.getPreProcessorService()) {
+        final FileUploadPanel panel = new FileUploadPanel("fileUpload", getPluginConfig(), getValidationService()) {
             @Override
             public void onFileUpload ( final FileUpload fileUpload) throws FileUploadViolationException {
-                DocumentUploadPlugin.this.handleUpload(fileUpload);
+                handleUpload(fileUpload);
             }
         };
         panel.setVisible(mode == Mode.EDIT);
@@ -55,10 +53,6 @@ public class DocumentUploadPlugin extends ResourceUploadPlugin {
     private FileUploadValidationService getValidationService() {
         return DefaultUploadValidationService.getValidationService(getPluginContext(), getPluginConfig(),
                 DEFAULT_ASSET_VALIDATION_SERVICE_ID);
-    }
-
-    private FileUploadPreProcessorService getPreProcessorService() {
-        return DefaultFileUploadPreProcessorService.getPreProcessorService(this.getPluginContext(), this.getPluginConfig());
     }
 
     /**

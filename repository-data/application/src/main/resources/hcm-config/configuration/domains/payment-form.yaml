@@ -19,3 +19,10 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: govscot:PaymentForm
+        /hide-prototypes:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: hipposysedit:prototype
