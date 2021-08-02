@@ -2,14 +2,5 @@ definitions:
   config:
     /hippo:configuration/hippo:groups/statistics-editors:
       jcr:primaryType: hipposys:group
+      hipposys:members: []
       hipposys:securityprovider: internal
-      hipposys:userroles:
-        .meta:category: system
-        .meta:add-new-system-values: true
-        type: string
-        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
-      hipposys:members:
-        .meta:category: system
-        .meta:add-new-system-values: true
-        type: string
-        value: []
