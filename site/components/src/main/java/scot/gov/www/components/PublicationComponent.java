@@ -82,11 +82,12 @@ public class PublicationComponent extends AbstractPublicationComponent {
         request.setAttribute(DOCUMENTS, documentFolder.getDocuments());
 
         // look for grouped documents which are stored in their own named sub-folders
-        if (!documentFolder.getFolders().isEmpty()) {
-            // only include folders that have visible documents.
-            List<HippoFolderBean> folders = documentFolder.getFolders()
-                    .stream().filter(this::hasDocuments).collect(toList());
-            request.setAttribute("groupedDocumentFolders", folders);
+        List<HippoFolderBean> nonEmptyFolders = documentFolder.getFolders()
+                .stream()
+                .filter(this::hasDocuments)
+                .collect(toList());
+        if (!nonEmptyFolders.isEmpty()) {
+            request.setAttribute("groupedDocumentFolders", nonEmptyFolders);
         }
 
         if (document instanceof DocumentInformation) {
