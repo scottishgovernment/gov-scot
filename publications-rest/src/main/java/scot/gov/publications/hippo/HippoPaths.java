@@ -1,16 +1,15 @@
 package scot.gov.publications.hippo;
 
 import com.github.slugify.Slugify;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.Arrays.asList;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
  * Creates nodes in the repository for given hippoPaths.
@@ -60,9 +59,10 @@ public class HippoPaths {
 
     public static String slugify(String pathElement) {
         String slug = slugify.slugify(pathElement);
+
         StringBuilder simplifiedSlug = new StringBuilder();
         for(String word : slug.split("-")) {
-            if(!stopWords.contains(word)) {
+            if(isNotEmpty(word) && !stopWords.contains(word)) {
                 simplifiedSlug.append(word).append('-');
             }
         }
