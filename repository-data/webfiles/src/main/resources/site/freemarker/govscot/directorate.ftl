@@ -113,7 +113,7 @@
                                     <#if role.incumbent??>
                                         <a class="person__role-link" href="${link}">${role.title}</a>
                                     <#else>
-                                        ${role.roleTitle}
+                                        ${role.title}
                                     </#if>
                                 </p>
 
@@ -139,8 +139,7 @@
         ||   document.contactInformation.email?has_content
         ||   document.contactInformation.facebook?has_content
         ||   document.contactInformation.youtube?has_content
-        ||   document.contactInformation.blog?has_content
-        ||   document.contactInformation.postalAddress.content?has_content>
+        ||   document.contactInformation.blog?has_content>
             <#assign contactInformation = document.contactInformation/>
         <section class="sidebar-block">
             <#include 'common/contact-information.ftl' />
