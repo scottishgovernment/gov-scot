@@ -8,7 +8,6 @@ import javax.jcr.RepositoryException;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 

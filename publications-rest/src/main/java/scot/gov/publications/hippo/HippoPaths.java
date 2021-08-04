@@ -1,7 +1,6 @@
 package scot.gov.publications.hippo;
 
 import com.github.slugify.Slugify;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
