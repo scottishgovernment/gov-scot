@@ -1,10 +1,16 @@
 package scot.gov.www;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.joining;
 
 /**
  * Created by z441571 on 22/04/2020.
@@ -14,6 +20,9 @@ public abstract class SlugDaemonModule extends DaemonModuleBase {
     protected static final String GOVSCOT_SLUG_PROPERTY = "govscot:slug";
 
     protected String allocate(String slug, String docType) throws RepositoryException {
+
+        slug = removeDuplicateHyphens(slug);
+
         // If it does not already exist then just use this slug.
         if (!slugAlreadyExists(slug, docType)) {
             return slug;
@@ -53,4 +62,9 @@ public abstract class SlugDaemonModule extends DaemonModuleBase {
         return variant;
     }
 
+    private String removeDuplicateHyphens(String str) {
+        return Arrays.stream(str.split("-"))
+                .filter(StringUtils::isNotEmpty)
+                .collect(joining("-"));
+    }
 }
