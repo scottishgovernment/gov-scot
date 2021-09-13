@@ -71,6 +71,16 @@ const Payment = {
             spacesMessage.classList.remove('hidden');
         }
 
+        // value: min £0.01
+        if (parseFloat(amountInput.value) < 0.01) {
+            errors.push({message: 'Amount cannot be less than £0.01', element: amountInput});
+            amountInputQuestion.classList.add('ds_question--error');
+            amountInput.classList.add('ds_input--error');
+
+            const amountMinMessage = amountInputQuestion.querySelector('#amount-min');
+            amountMinMessage.classList.remove('hidden');
+        }
+
         // value: max £5000
         if (parseFloat(amountInput.value) > 5000.00) {
             errors.push({message: 'Amount cannot be more than £5000.00', element: amountInput});

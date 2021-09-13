@@ -36,9 +36,10 @@
 
             <div class="ds_question">
                 <label class="ds_label" for="amount">Amount</label>
+                <p class="ds_question__message  hidden  hidden--hard" id="amount-min">Amount cannot be less than £0.01</p>
                 <p class="ds_question__message  hidden  hidden--hard" id="amount-max">Amount cannot be more than £5000.00</p>
                 <div class="ds_currency-wrapper" data-symbol="£">
-                    <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" required />
+                    <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" min="0.01" max="5000.00" required />
                 </div>
             </div>
 
