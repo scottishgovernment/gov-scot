@@ -22,7 +22,9 @@ import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import java.io.IOException;
+import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.joining;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
 /**
@@ -35,7 +37,10 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
 
-        String isbn = isbn(request);
+        String [] pathElements = request.getPathInfo().split("/");
+        String isbn = pathElements[2];
+        isbn = isbn.toLowerCase().replaceAll("\\s", "").replaceAll("-", "");
+
         HstRequestContext context = request.getRequestContext();
 
         // first try to find the isbn in imported publications
@@ -43,8 +48,17 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
 
         if (bean != null) {
             final HstLink link = context.getHstLinkCreator().create(bean, context);
-            LOG.info("Redirecting to ISBN {} -> {}", isbn, link.getPath());
-            HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
+
+            // if the path has anything after the publication slug, add it back onto the end of the redirect url
+            String path = link.getPath();
+            if (pathElements.length >= 3) {
+                String remaining = IntStream.range(3, pathElements.length)
+                        .mapToObj(i -> pathElements[i])
+                        .collect(joining("/"));
+                path = path + remaining;
+            }
+            LOG.info("Redirecting to ISBN {} -> {}", request.getPathInfo(), path);
+            HstResponseUtils.sendPermanentRedirect(request, response, path);
             return;
         }
 
@@ -67,8 +81,9 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
     }
 
     private String isbn(HstRequest request) {
+        LOG.info("isbn ... {}", request.getPathInfo());
         String [] pathElements = request.getPathInfo().split("/");
-        String isbn = pathElements[pathElements.length - 1];
+        String isbn = pathElements[2];
         return isbn.toLowerCase().replaceAll("\\s", "").replaceAll("-", "");
     }
 

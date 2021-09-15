@@ -313,7 +313,7 @@ definitions:
       /isbn:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
-        /_default_:
+        /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications
@@ -330,7 +330,7 @@ definitions:
       /ISBN:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
-        /_default_:
+        /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications
