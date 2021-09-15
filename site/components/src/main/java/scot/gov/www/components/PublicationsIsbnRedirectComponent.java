@@ -80,13 +80,6 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
         }
     }
 
-    private String isbn(HstRequest request) {
-        LOG.info("isbn ... {}", request.getPathInfo());
-        String [] pathElements = request.getPathInfo().split("/");
-        String isbn = pathElements[2];
-        return isbn.toLowerCase().replaceAll("\\s", "").replaceAll("-", "");
-    }
-
     private HippoBean findByIsbn(String isbn, HstRequestContext requestContext) {
         HstQuery query = HstQueryBuilder
                 .create(requestContext.getSiteContentBaseBean())
