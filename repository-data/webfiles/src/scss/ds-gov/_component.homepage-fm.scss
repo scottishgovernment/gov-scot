@@ -1,0 +1,70 @@
+/*------------------------------------*\
+    #HOMEPAGE: ABOUT
+\*------------------------------------*/
+
+.#{$site-prefix}homepage-fm {
+  &__image > img {
+    display: block;
+    margin: 0 -16px 16px;
+    max-width: unset;
+    width: calc(100% + 32px);
+  }
+}
+
+@include media-query(medium) {
+  .#{$site-prefix}homepage-fm {
+    &__image > img {
+      margin: 0 0 16px;
+      width: 100%;
+    }
+  }
+}
+
+@include media-query(large) {
+  @include layout();
+
+  .#{$site-prefix}homepage-fm {
+    &__title {
+      @include colwidth(12);
+    }
+
+    &__image {
+      float: left;
+      @include colwidth(4);
+      margin-right: 32px;
+    }
+
+    &__content {
+      float: left;
+      @include colwidth(8);
+    }
+  }
+}
+
+@supports(display: grid) {
+  .#{$site-prefix}homepage-fm {
+    > * {
+      float: none;
+      width: auto;
+    }
+
+    &__title {
+      grid-area: t;
+    }
+
+    &__image {
+      grid-area: i;
+      margin-right: 0;
+    }
+
+    &__content {
+      grid-area: c;
+    }
+
+    @include media-query(large) {
+      display: grid;
+      grid-gap: 0 $grid-gap-x;
+      grid-template-areas: 't t' 'i c';
+    }
+  }
+}
