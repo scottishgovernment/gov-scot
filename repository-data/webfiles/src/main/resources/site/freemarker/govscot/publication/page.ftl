@@ -49,7 +49,7 @@
                                     </@hst.link>
 
                                     <#if filenameExtension == "PDF">
-                                        <a class="gov_document-info__thumbnail-link" href="${baseurl + 'documents/'}">
+                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
                                             <img
                                                 alt="View supporting documents"
                                                 class="gov_document-info__thumbnail-image"
