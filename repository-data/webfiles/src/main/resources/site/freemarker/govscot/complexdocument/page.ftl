@@ -46,39 +46,41 @@
             </div><!--
             --><div class="grid__item  medium--three-twelfths  large--two-twelfths  push--large--one-twelfth">
                 <div class="gov_sublayout__document">
-                    <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
+                    <#if documents?? && documents?size gt 0>
                         <div class="gov_supporting-documents">
-                            <#if documents??>
-                                <#assign firstDocument = documents[0]/>
-                                <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                                <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
-                            </#if>
-                            <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
-                                    <#if document.coverimage?has_content>
-                                        <img
-                                            alt="View supporting documents"
-                                            class="gov_supporting-documents__thumbnail"
-                                            src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                            srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                            sizes="(min-width: 768px) 165px, 107px" />
-                                    <#else>
-                                        <img
-                                            class="gov_supporting-documents__thumbnail"
-                                            alt="View supporting documents"
-                                            src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                            srcset="
-                                            <#list firstDocument.thumbnails as thumbnail>
-                                                <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                            </#list>"
-                                            sizes="(min-width: 768px) 165px, 107px" />
-                                    </#if>
-                                </a>
-                            <#else>
-                                <a data-title="${document.title}" title="View supporting documents" href="${baseurl + 'documents/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
+                            <#if document.displayPrimaryDocument == true>
+                                <#if documents??>
+                                    <#assign firstDocument = documents[0]/>
+                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                    <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                                </#if>
+                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                    <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                        <#if document.coverimage?has_content>
+                                            <img
+                                                alt="View supporting documents"
+                                                class="gov_supporting-documents__thumbnail"
+                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        <#else>
+                                            <img
+                                                class="gov_supporting-documents__thumbnail"
+                                                alt="View supporting documents"
+                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                                srcset="
+                                                <#list firstDocument.thumbnails as thumbnail>
+                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                </#list>"
+                                                sizes="(min-width: 768px) 165px, 107px" />
+                                        </#if>
+                                    </a>
+                                <#else>
+                                    <a data-title="${document.title}" title="View supporting documents" href="${baseurl + 'documents/'}" class="file-icon--large  file-icon  file-icon--${filenameExtension!''}"></a>
+                                </#if>
                             </#if>
 
                             <a href="${baseurl + 'documents/'}" class="button  button--secondary  ds_no-margin--top  gov_supporting-documents__button">
