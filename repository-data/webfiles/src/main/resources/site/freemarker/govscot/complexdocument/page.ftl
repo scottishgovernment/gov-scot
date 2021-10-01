@@ -45,46 +45,47 @@
                     </div>
 
                     <div class="gov_sublayout__document">
-                        <#if document.displayPrimaryDocument == true && (documents?? && documents?size gt 0)>
+                        <#if documents?? && documents?size gt 0>
                             <div class="gov_supporting-documents">
-                                <#if documents??>
-                                    <#assign firstDocument = documents[0]/>
-                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                                    <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                                <#if document.displayPrimaryDocument == true>
+                                    <#if documents??>
+                                        <#assign firstDocument = documents[0]/>
+                                        <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                        <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                                    </#if>
+                                    <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                            <#if document.coverimage?has_content>
+                                                <img
+                                                    alt="View supporting documents"
+                                                    class="gov_supporting-documents__thumbnail"
+                                                    src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                                    srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                        <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                        <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                        <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                                    sizes="(min-width: 768px) 165px, 107px" />
+                                            <#else>
+                                                <img
+                                                    class="gov_supporting-documents__thumbnail"
+                                                    alt="View supporting documents"
+                                                    src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                                    srcset="
+                                                    <#list firstDocument.thumbnails as thumbnail>
+                                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                                    </#list>"
+                                                    sizes="(min-width: 768px) 165px, 107px" />
+                                            </#if>
+                                        </a>
+                                    <#else>
+                                        <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                            <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                                <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                            </svg>
+                                            <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                        </a>
+                                    </#if>
                                 </#if>
-                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                    <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
-                                        <#if document.coverimage?has_content>
-                                            <img
-                                                alt="View supporting documents"
-                                                class="gov_supporting-documents__thumbnail"
-                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        <#else>
-                                            <img
-                                                class="gov_supporting-documents__thumbnail"
-                                                alt="View supporting documents"
-                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                                srcset="
-                                                <#list firstDocument.thumbnails as thumbnail>
-                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                </#list>"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        </#if>
-                                    </a>
-                                <#else>
-                                    <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
-                                        <svg class="gov_file-icon__label" viewBox="0 0 210 297">
-                                            <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
-                                        </svg>
-                                        <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
-                                    </a>
-                                </#if>
-
                                 <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                     <span class="gov_supporting-documents__button-icon">
                                         <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
