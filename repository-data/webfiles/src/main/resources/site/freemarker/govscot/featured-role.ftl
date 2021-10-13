@@ -46,8 +46,51 @@
                             </#if>
                         </div>
                     </div>
-                </div>
-            </div><!--
+                </div><!--
+                --><div class="grid"><!--
+
+                    --><section id="latest-news" class="topic-block">
+                        <h2 class="emphasis  topic-block__title">
+                            News
+                        </h2>
+
+                        <div id="news-container">
+                            <#if news?has_content>
+                                <#list news as newsItem>
+                                    <article class="homepage-publication">
+                                    <h3 class="js-truncate  homepage-publication__title">
+                                        <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
+                                    </h3>
+                                    <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                    </article>
+                                </#list>
+                            <#else>
+                                <p>There are no news items to display.</p>
+                            </#if>
+                        </div>
+                    </section>
+                    <section id="latest-news" class="topic-block">
+                        <h2 class="emphasis  topic-block__title">
+                            Speeches and statements
+                        </h2>
+
+                        <div id="news-container">
+                            <#if speeches?has_content>
+                                <#list speeches as speech>
+                                    <article class="homepage-publication">
+                                    <h3 class="js-truncate  homepage-publication__title">
+                                        <a href="<@hst.link hippobean=speech />" data-gtm="news-${speech?index + 1}" title="${speech.title}">${speech.title}</a>
+                                    </h3>
+                                    <p class="homepage-publication__date"><@fmt.formatDate value=speech.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                    </article>
+                                </#list>
+                            <#else>
+                                <p>There are no speeches or statements to display.</p>
+                            </#if>
+                        </div>
+                    </section>
+                </div><!--
+            --></div><!--
 
             --><div class="grid__item  medium--three-twelfths  pull--medium--nine-twelfths">
                 <div>
@@ -60,7 +103,6 @@
 
 
             </div><!--
-
         --></div>
     </article>
 
