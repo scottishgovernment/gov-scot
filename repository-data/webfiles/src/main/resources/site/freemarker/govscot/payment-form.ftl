@@ -12,7 +12,7 @@
         </div>
 
         <div class="ds_layout__content">
-            <div class="ds_leader--first-paragraph">
+            <div class="ds_leader-first-paragraph">
                 <p>${document.summary}</p>
             </div>
             <#if document.content??>

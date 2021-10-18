@@ -13,7 +13,7 @@
         </div>
 
         <div class="ds_layout__content">
-            <div class="ds_leader--first-paragraph">
+            <div class="ds_leader-first-paragraph">
                 <@hst.html hippohtml=document.content/>
             </div>
         </div>

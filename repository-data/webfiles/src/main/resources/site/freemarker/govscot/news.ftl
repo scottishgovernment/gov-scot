@@ -29,13 +29,13 @@
 
             <div class="ds_layout__content">
                 <#if document.summary != ''>
-                    <div class="ds_leader--first-paragraph">
+                    <div class="ds_leader-first-paragraph">
                         <p>${document.summary}</p>
                     </div>
 
                     <@hst.html hippohtml=document.content/>
                 <#else>
-                    <div class="ds_leader--first-paragraph">
+                    <div class="ds_leader-first-paragraph">
                         <@hst.html hippohtml=document.content/>
                     </div>
                 </#if>

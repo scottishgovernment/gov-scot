@@ -3,7 +3,7 @@
 
 <h1 class="article-header">${document.title}</h1>
 
-<div class="body-content  ds_leader--first-paragraph">
+<div class="body-content  ds_leader-first-paragraph">
     <#if document.summary?has_content>
             <p>${document.summary}</p>
     </#if>

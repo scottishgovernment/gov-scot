@@ -4,6 +4,6 @@
 
 <#include "../common/metadata.ftl"/>
 
-<div class="body-content  ds_leader--first-paragraph">
+<div class="body-content  ds_leader-first-paragraph">
     <@hst.html hippohtml=document.content/>
 </div>

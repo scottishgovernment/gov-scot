@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 <#else>
-                    <div class="ds_leader--first-paragraph">
+                    <div class="ds_leader-first-paragraph">
                         <@hst.html hippohtml=index.content/>
                     </div>
                 </#if>
