@@ -2,7 +2,6 @@ package scot.gov.www.beans;
 
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
-import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import java.util.List;
 import scot.gov.www.beans.UpdateHistory;
 import scot.gov.www.beans.RelatedArticle;
