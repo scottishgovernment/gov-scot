@@ -1,0 +1,25 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-govscot-ColumnImage-image:
+      jcr:primaryType: hippostd:templatequery
+      hippostd:modify: [./_name, $name, ./_node/_name, $name]
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-govscot-ColumnImage-image/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /image:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 4391fea0-9046-434f-8e09-2e3aba6ab793
+          /image:
+            jcr:primaryType: hippogallery:imageset
+            jcr:mixinTypes: ['mix:versionable']
+            jcr:uuid: a7369c13-86a5-4c0d-8202-00dd5ae1a531
+            /hippogallery:thumbnail:
+              jcr:primaryType: hippogallery:image
+              jcr:data:
+                type: binary
+                resource: /configuration/queries/templates/new-govscot-ColumnImage-image/templates/image/image_thumbnail.jpg
+              jcr:encoding: UTF-8
+              jcr:lastModified: 2008-03-26T12:03:00+01:00
+              jcr:mimeType: image/jpeg

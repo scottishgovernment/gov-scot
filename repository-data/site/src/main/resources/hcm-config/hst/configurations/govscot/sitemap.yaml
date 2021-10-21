@@ -84,18 +84,23 @@ definitions:
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: about/${1}/${2}
             hst:sitemapitemhandlerids: [trailing-slash]
+            hst:componentconfigurationmappingvalues: ['hst:pages/featuredrolepage-old']
+            hst:componentconfigurationmappingnames: ['govscot:Role']
             /_index_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
-              hst:componentconfigurationmappingnames: ['govscot:OrgRoles']
-              hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage']
+              hst:componentconfigurationmappingnames: ['govscot:OrgRoles', 'govscot:FeaturedRole']
+              hst:componentconfigurationmappingvalues: ['hst:pages/orgrolespage',
+                'hst:pages/featuredrolepage']
               hst:relativecontentpath: ${parent}/index
               hst:sitemapitemhandlerids: [trailing-slash]
             /_default_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
-              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person']
-              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage']
+              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:Person',
+                'govscot:FeaturedRoleArticle', 'govscot:FeaturedRoleBiography']
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/personpage',
+                'hst:pages/featuredrolearticlepage', 'hst:pages/featuredrolebiographypage']
               hst:relativecontentpath: about/${1}/${2}/${3}
               hst:sitemapitemhandlerids: [trailing-slash]
               /_index_:
@@ -113,11 +118,6 @@ definitions:
                   'hst:pages/rolepage']
                 hst:relativecontentpath: about/${1}/${2}/${3}/${4}
                 hst:sitemapitemhandlerids: [trailing-slash]
-          /first-minister:
-            jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/featuredrolepage
-            hst:relativecontentpath: ${parent}/first-minister
-            hst:sitemapitemhandlerids: [trailing-slash]
         /how-government-is-run:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage

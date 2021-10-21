@@ -7,7 +7,7 @@ $blocklink__outline-width: 0;
 
 
 
-@mixin media-query($mq) {
+@mixin ds_media-query($mq) {
     $breakpoint-found: false;
 
     // Loop through the list of breakpoints we’ve provided in our settings file.
@@ -62,11 +62,14 @@ $blocklink__outline-width: 0;
     width: $linesize;
 }
 
-/**
- * Mixin to enforce consistency on block-style links, e.g. search results,
- * category items, etc
- */
-@mixin blocklink ($link-selector: null) {
+/// Blocklink
+///
+/// Mixin to enforce consistency on block-style links, e.g. search results, category items, etc
+///
+/// @param {string} $link-selector - child element that is used as the link, optional
+/// @param {boolean} $hover - whether to apply a hover state
+
+@mixin ds_blocklink ($link-selector: null, $hover: true) {
     display: block;
     position: relative;
     transition: background-color $transition-out-time, outline-color $transition-out-time;
@@ -77,95 +80,65 @@ $blocklink__outline-width: 0;
     &:focus {
         background-color: $colour__blocklink-bg--focus;
         box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
+        color: $colour__link--focus;
     }
 
-    &:hover:not(:focus) {
-        background-color: $colour__blocklink-bg--hover;
-    }
-
-    &:active {
-        background-color: $colour__blocklink-bg--active;
+    @if $hover {
+        &:hover:not(:focus) {
+            background-color: $colour__blocklink-bg--hover;
+        }
     }
 
     @if $link-selector {
-        &:hover:not(:focus) {
-            background: transparent;
-        }
-
         #{$link-selector} {
-            &::after {
-                content: "";
-                height: 100%;
-                left: 0px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-                z-index: 0;
-
-                transition: background-color $transition-in-time;
-            }
-
-            &:focus,
-            &:active {
-                &::after {
-                    transition-duration: 0s;
-                }
-            }
-
             &:focus:hover {
                 text-decoration: none;
             }
         }
 
-        // apply the background colour in browsers that support blend modes, so we don't obscure the text
-        @supports(mix-blend-mode: darken) {
+        /*
+            supports grid is a hack as a proxy for supports :focus-within
+        */
+        @supports (display: grid) {
             #{$link-selector} {
-                outline: 0;
+                background-color: transparent;
+                outline: none;
 
                 &::after {
-                    mix-blend-mode: darken;
-                }
-
-                &:hover {
-                    &::after {
-                        background-color: $colour__blocklink-bg--hover;
-                    }
-                }
-
-                &:focus,
-                &:active {
-                    background-color: transparent;
-                    box-shadow: none;
-                    text-decoration: underline;
+                    content: "";
+                    height: 100%;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    width: 100%;
+                    z-index: 0;
                 }
 
                 &:focus {
                     &::after {
-                        background-color: $colour__blocklink-bg--focus;
-                        box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
+                        transition-duration: 0s;
                     }
                 }
+            }
 
-                &:active {
-                    &::after {
-                        background-color: $colour__blocklink-bg--active;
-                        box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--active__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--active__shadow;
+            &:focus-within {
+                background-color: $colour__blocklink-bg--focus !important;
+                box-shadow: inset 0 -3px #333333, inset 0 -3px #333333;
+                transition-duration: 0s;
+
+                #{$link-selector} {
+                    &:focus {
+                        box-shadow: none;
+                        background-color: transparent;
                     }
-                }
-
-                &:focus:hover {
-                    text-decoration: underline;
                 }
             }
         }
     }
 }
 
-/**
- * blocklink variant
- */
-@mixin blocklink--solid($link-selector: null) {
-    @include blocklink($link-selector);
+@mixin ds_blocklink--solid($link-selector: null) {
+    @include ds_blocklink($link-selector);
 
     background-color: $colour__white;
 }
@@ -230,4 +203,134 @@ $blocklink__outline-width: 0;
 @mixin indicator--open ($topOffset: 20px) {
     @include chevron(up);
     top: $topOffset;
+}
+
+@mixin last-child-no-margin {
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin ds_box-shadow {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+///
+/// Heading size mixins
+///
+@mixin ds_h1-size {
+    font-size: $h1-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h1-size--medium;
+    }
+}
+
+@mixin ds_h2-size {
+    font-size: $h2-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h2-size--medium;
+    }
+}
+
+@mixin ds_h3-size {
+    font-size: $h3-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h3-size--medium;
+    }
+}
+
+@mixin ds_h4-size {
+    font-size: $h4-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h4-size--medium;
+    }
+}
+
+@mixin ds_h5-size {
+    font-size: $h5-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h5-size--medium;
+    }
+}
+
+@mixin ds_large-size {
+    font-size: $large-size;
+
+    @include ds_media-query(medium) {
+        font-size: $large-size--medium;
+    }
+}
+
+@mixin ds_small-size {
+    font-size: $small-size;
+
+    @include ds_media-query(medium) {
+        font-size: $small-size--medium;
+    }
+}
+
+///
+/// Heading style mixins
+///
+@mixin ds_h1-style {
+    @include ds_h1-size;
+    font-weight: $bold;
+    line-height: 40px;
+    margin-bottom: 32px;
+
+    @include ds_media-query(medium) {
+        line-height: 56px;
+    }
+}
+
+@mixin ds_h2-style {
+    @include ds_h2-size;
+    font-weight: $bold;
+    line-height: 32px;
+    margin-bottom: 8px;
+
+    @include ds_media-query(medium) {
+        line-height: 40px;
+        margin-bottom: 16px;
+    }
+}
+
+@mixin ds_h3-style {
+    @include ds_h3-size;
+    font-weight: $bold;
+    line-height: 24px;
+    margin-bottom: 8px;
+
+    @include ds_media-query(medium) {
+        line-height: 32px;
+    }
+}
+
+@mixin ds_h4-style {
+    @include ds_h4-size;
+    font-weight: $bold;
+    line-height: 24px;
+}
+
+@mixin ds_h5-style {
+    @include ds_h5-size;
+    font-weight: $bold;
+    line-height: 24px;
+}
+
+
+
+
+/// legacy non-prefixed names
+@mixin blocklink($link-selector: null, $hover: true) {
+    @include ds_blocklink($link-selector, hover);
+}
+
+@mixin blocklink--solid($link-selector: null) {
+    @include ds_blocklink--solid($link-selector);
 }

@@ -70,6 +70,22 @@ $medium-h3-size: 21px;
 $medium-h4-size: $medium-font-size - 1;
 $medium-h5-size: 14px;
 $large-h2-size: 32px;
+
+/// from DS
+// heading sizes
+$h1-size: 35px !default;
+$h2-size: 22px !default;
+$h3-size: 18px !default;
+$h4-size: 15px !default;
+$h5-size: 14px !default;
+
+// heading sizes at medium breakpoint
+$h1-size--medium: 56px !default;
+$h2-size--medium: 28px !default;
+$h3-size--medium: 21px !default;
+$h4-size--medium: 17px !default;
+$h5-size--medium: 14px !default;
+
 @import "../../node_modules/@scottish-government/mygov-assets/scss/settings/settings.type";
 h3, .gamma {
     &:first-child {
@@ -200,6 +216,9 @@ $expandable__title-size: 16px;
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
 @import "components/component.form-box";
 @import "components/component.gov-document-info";
+@import "components/component.gov-feature-cards";
+@import "components/component.gov-feature-header";
+@import "components/component.gov-sidebar-feature";
 @import "components/component.history-list";
 @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.informational-notes";
 @import "components/component.issue-callout";
@@ -311,6 +330,7 @@ $tiny-size--medium: 14px !default;
 }
 
 @import "design-system-preview/components/accordion/accordion";
+@import "design-system-preview/components/aspect-box/aspect-box";
 @import "design-system-preview/components/card/card";
 @import "design-system-preview/components/date-picker-standalone/date-picker-standalone";
 @import "design-system-preview/components/notification-banner/notification-banner";

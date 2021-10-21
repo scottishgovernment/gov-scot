@@ -1,0 +1,38 @@
+/// [1] default aspect ratio is 16:9
+.ds_aspect-box {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: calc(900%/16); /// [1]
+
+    // 1:1 aspect ratio
+    &--square {
+        padding-bottom: 100%;
+    }
+
+    // 4:3 aspect ratio
+    &--43 {
+        padding-bottom: calc(300%/4);
+    }
+
+    // 2.35:1 (anamorphic widescreen) aspect ratio
+    &--235 {
+        padding-bottom: calc(10000%/235);
+    }
+
+    &--fallback {
+        background: center / cover no-repeat url();
+    }
+
+    &--fallback &__inner {
+        display: none;
+    }
+
+    &__inner {
+        height: 100%;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        right: 0;
+    }
+}

@@ -1,0 +1,30 @@
+.gov_feature-header {
+    align-items: center;
+    background-color: $color__grey--light;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    min-height: 216px;
+    padding: 8px 24px;
+    position: relative;
+}
+
+.gov_feature-header__image {
+    align-self: end;
+    max-height: 200px;
+    margin: 0 auto -8px;
+}
+
+.gov_feature-header__title {
+    margin-bottom: 8px;
+}
+
+.gov_feature-header__content {
+    flex-grow: 1;
+    margin: 16px 0;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}

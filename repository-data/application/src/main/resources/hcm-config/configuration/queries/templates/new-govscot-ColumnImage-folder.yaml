@@ -1,0 +1,15 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-govscot-ColumnImage-folder:
+      jcr:primaryType: hippostd:templatequery
+      hippostd:modify: [./_name, $name]
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-govscot-ColumnImage-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /image gallery:
+          jcr:primaryType: hippogallery:stdImageGallery
+          jcr:mixinTypes: ['mix:versionable']
+          jcr:uuid: 40616d46-6381-4f23-83a8-68a508a5b010
+          hippostd:foldertype: [new-govscot-ColumnImage-folder]
+          hippostd:gallerytype: ['govscot:ColumnImage']

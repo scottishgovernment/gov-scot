@@ -1,0 +1,106 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/RelatedArticle:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: b2ea1655-3d5b-42fa-abce-975bd9760b46
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: b184c860-b163-42da-accf-eb52bcc2dc07
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: 91fd745c-02eb-4d05-9cf5-c62b9ee5bc0a
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippo:compound', 'hippostd:relaxed']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /title:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:title
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /content:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:content
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /image:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:image
+            hipposysedit:primary: false
+            hipposysedit:type: hippogallerypicker:imagelink
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:RelatedArticle
+          govscot:title: ''
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:image:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /title:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: title
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /content:
+            jcr:primaryType: frontend:plugin
+            caption: Content
+            field: content
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              ckeditor.config.appended.json: "{\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
+                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
+                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
+                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
+                : \"mygov\"\t}],\t\"extraPlugins\": \"mygov_infonote,simple_tables,accordion\"\
+                ,        \"contentsCss\": [                \"ckeditor/hippocontents.css\"\
+                ,                \"ckeditor/ckeditorstyle.css\"        ],       \"\
+                youtube_responsive\": true,       \"youtube_privacy\": true,     \
+                \  \"youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\"\
+                , \"txtEmbed\", \"chkOlderCode\"],       \"extraAllowedContent\":\
+                \ { \"span\": { \"attributes\": \"class\", classes: \"*\" } }}"
+          /image:
+            jcr:primaryType: frontend:plugin
+            caption: Image
+            field: image
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
