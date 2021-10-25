@@ -11,18 +11,10 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 5a2b6610-f8d7-420f-9fd7-5ef4ed51eafc
+          jcr:uuid: 9c266990-239a-4791-be0f-7393795d5a99
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /responsibilities:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:responsibilities
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
           /incumbent:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -60,7 +52,7 @@ definitions:
         /hipposysedit:prototype:
           jcr:primaryType: govscot:FeaturedRole
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: f68f4444-e0f1-418d-ad98-99264eb1aba0
+          jcr:uuid: b55a5abe-0c97-4cab-8fb0-c101815e2e14
           govscot:metaDescription: ''
           govscot:reportingTags: []
           govscot:seoTitle: ''
@@ -74,9 +66,6 @@ definitions:
           hippostdpubwf:lastModifiedBy: ''
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
-          /govscot:responsibilities:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
           /govscot:incumbent:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -159,18 +148,9 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
-            caption: Role description
+            caption: Role description/responsibilities
             field: content
             hint: Provide a description of the role.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /responsibilities:
-            jcr:primaryType: frontend:plugin
-            caption: Role responsibilities
-            field: responsibilities
-            hint: Provide detail on the responsibilities of the role.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

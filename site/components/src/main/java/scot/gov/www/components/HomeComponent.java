@@ -45,7 +45,7 @@ public class HomeComponent extends BaseHstComponent {
         // get the First Minister page
         ObjectBeanManager beanManager = context.getObjectBeanManager();
         try {
-            Object firstMinister = beanManager.getObject("/content/documents/govscot/about/who-runs-government/first-minister/");
+            Object firstMinister = beanManager.getObject("/content/documents/govscot/about/who-runs-government/first-minister/index/");
             request.setAttribute("firstMinister", firstMinister);
         } catch (ObjectBeanManagerException e) {
             LOG.warn("Unable to get First Minister details {}", e);

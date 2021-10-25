@@ -42,13 +42,7 @@
 
             --><div class="grid__item  medium--four-twelfths">
                 <#if document.feature.title?has_content>
-                    <#if document.feature.internallink??>
-                        <@hst.link var="featureLink" hippobean=document.feature.internallink/>
-                    <#elseif document.feature.externallink?has_content>
-                        <#assign featureLink = document.feature.externallink/>
-                    </#if>
-
-                    <aside class="ds_card  ds_card--grey  <#if featureLink??>ds_card--hover</#if>  gov_feature-card">
+                    <aside class="ds_card  ds_card--grey  <#if document.feature.externallink?? || document.feature.internallink??>ds_card--hover</#if>  gov_feature-card">
                         <#if document.feature.image??>
                             <div class="ds_card__media">
                                 <div class="ds_aspect-box">
@@ -69,8 +63,12 @@
 
                         <div class="ds_card__content">
                             <h2 class="ds_card__title">
-                                <#if featureLink??>
-                                    <a href="${featureLink}" class="ds_card__link--cover">
+                                <#if document.feature.internallink??>
+                                    <a href="<@hst.link hippobean=document.feature.internallink/>" class="ds_card__link--cover">
+                                        ${document.feature.title}
+                                    </a>
+                                <#elseif document.feature.externallink?has_content>
+                                    <a href="${document.feature.externallink}" class="ds_card__link--cover">
                                         ${document.feature.title}
                                     </a>
                                 <#else>
@@ -81,8 +79,7 @@
                             ${document.feature.content}
                         </div>
                     </aside>
-                    <#-- unassign -->
-                    <#assign featureLink = ""/>
+
                 </#if>
             </div><!--
 
@@ -151,47 +148,45 @@
                 <div class="grid"><!--
                     --><div class="grid__item  gov_feature-cards">
                         <#list document.featurelist as feature>
-                            <#if feature.internallink??>
-                                <@hst.link var="featureLink" hippobean=feature.internallink/>
-                            <#elseif feature.externallink?has_content>
-                                <#assign featureLink = feature.externallink/>
-                            </#if>
-
-                            <div class="ds_card  ds_card--grey  <#if featureLink??>ds_card--hover</#if>  gov_feature-card">
-                                <#if feature.image??>
-                                    <div class="ds_card__media">
-                                        <div class="ds_aspect-box">
-                                            <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
-                                            src="<@hst.link hippobean=feature.image.largefourcolumns/>"
-                                            srcset="<@hst.link hippobean=feature.image.small/> 360w,
-                                                <@hst.link hippobean=feature.image.smalldoubled/> 720w,
-                                                <@hst.link hippobean=feature.image.mediumfourcolumns/> 220w,
-                                                <@hst.link hippobean=feature.image.mediumfourcolumnsdoubled/> 440w,
-                                                <@hst.link hippobean=feature.image.largefourcolumns/> 294w,
-                                                <@hst.link hippobean=feature.image.largefourcolumnsdoubled/> 588w,
-                                                <@hst.link hippobean=feature.image.xlargefourcolumns/> 360w,
-                                                <@hst.link hippobean=feature.image.xlargefourcolumnsdoubled/> 720w"
-                                            sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 360px" />
+                            <#if feature.title?has_content>
+                                <div class="ds_card  ds_card--grey  <#if feature.externallink?? || feature.internallink??>ds_card--hover</#if>  gov_feature-card">
+                                    <#if feature.image??>
+                                        <div class="ds_card__media">
+                                            <div class="ds_aspect-box">
+                                                <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
+                                                src="<@hst.link hippobean=feature.image.largefourcolumns/>"
+                                                srcset="<@hst.link hippobean=feature.image.small/> 360w,
+                                                    <@hst.link hippobean=feature.image.smalldoubled/> 720w,
+                                                    <@hst.link hippobean=feature.image.mediumfourcolumns/> 220w,
+                                                    <@hst.link hippobean=feature.image.mediumfourcolumnsdoubled/> 440w,
+                                                    <@hst.link hippobean=feature.image.largefourcolumns/> 294w,
+                                                    <@hst.link hippobean=feature.image.largefourcolumnsdoubled/> 588w,
+                                                    <@hst.link hippobean=feature.image.xlargefourcolumns/> 360w,
+                                                    <@hst.link hippobean=feature.image.xlargefourcolumnsdoubled/> 720w"
+                                                sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 360px" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </#if>
+                                    </#if>
 
-                                <div class="ds_card__content">
-                                    <h2 class="ds_card__title">
-                                        <#if featureLink??>
-                                            <a href="${featureLink}" class="ds_card__link--cover">
+                                    <div class="ds_card__content">
+                                        <h2 class="ds_card__title">
+                                            <#if feature.internallink??>
+                                                <a href="<@hst.link hippobean=feature.internallink/>" class="ds_card__link--cover">
+                                                    ${feature.title}
+                                                </a>
+                                            <#elseif feature.externallink?has_content>
+                                                <a href="${feature.externallink}" class="ds_card__link--cover">
+                                                    ${feature.title}
+                                                </a>
+                                            <#else>
                                                 ${feature.title}
-                                            </a>
-                                        <#else>
-                                            ${feature.title}
-                                        </#if>
-                                    </h2>
+                                            </#if>
+                                        </h2>
 
-                                    ${feature.content}
+                                        ${feature.content}
+                                    </div>
                                 </div>
-                            </div>
-                            <#-- unassign -->
-                            <#assign featureLink = ""/>
+                            </#if>
                         </#list>
                     </div><!--
                 --></div>
