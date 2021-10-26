@@ -146,6 +146,7 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:ColumnImage']
           /content:
             jcr:primaryType: frontend:plugin
             caption: Role description/responsibilities

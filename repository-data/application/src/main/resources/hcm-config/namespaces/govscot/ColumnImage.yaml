@@ -137,6 +137,30 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:smallcolumnsdoubled
             hipposysedit:type: hippogallery:image
+          /mediumsixcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumsixcolumns
+            hipposysedit:type: hippogallery:image
+          /mediumsixcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumsixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /largesixcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largesixcolumns
+            hipposysedit:type: hippogallery:image
+          /largesixcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largesixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /xlargesixcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargesixcolumns
+            hipposysedit:type: hippogallery:image
+          /xlargesixcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargesixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -353,5 +377,41 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: smallcolumnsdoubled
             field: smallcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumsixcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: mediumsixcolumns
+            field: mediumsixcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumsixcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumsixcolumnsdoubled
+            field: mediumsixcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largesixcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: largesixcolumns
+            field: largesixcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largesixcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largesixcolumnsdoubled
+            field: largesixcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargesixcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: xlargesixcolumns
+            field: xlargesixcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargesixcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargesixcolumnsdoubled
+            field: xlargesixcolumnsdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field

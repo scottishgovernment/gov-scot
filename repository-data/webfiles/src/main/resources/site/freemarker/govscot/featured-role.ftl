@@ -19,12 +19,21 @@
                     </div>
 
                     <#if document.image??>
-                        <img class="gov_feature-header__image"
-                            src="<@hst.link hippobean=document.image/>"
-                            xsrcset="<@hst.link path='/assets/images/people/first_minister_mob.jpg'/> 767w,
-                                <@hst.link path='/assets/images/people/first_minister_desktop.jpg'/> 848w,
-                                <@hst.link path='/assets/images/people/first_minister_desktop_@2x.jpg'/> 1696w"
-                            alt="" />
+                        <div class="gov_feature-header__media">
+                            <div class="ds_aspect-box">
+                                <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
+                                    src="<@hst.link hippobean=document.image.largesixcolumns/>"
+                                    srcset="<@hst.link hippobean=document.image.smallcolumns/> 130w,
+                                        <@hst.link hippobean=document.image.smallcolumnsdoubled/> 260w,
+                                        <@hst.link hippobean=document.image.mediumsixcolumns/> 344w,
+                                        <@hst.link hippobean=document.image.mediumsixcolumnsdoubled/> 688w,
+                                        <@hst.link hippobean=document.image.largesixcolumns/> 454w,
+                                        <@hst.link hippobean=document.image.largesixcolumnsdoubled/> 908w,
+                                        <@hst.link hippobean=document.image.xlargesixcolumns/> 554w,
+                                        <@hst.link hippobean=document.image.xlargesixcolumnsdoubled/> 1108w"
+                                    sizes="(min-width:1200px) 554px, (min-width:920px) 454px, (min-width:768px) 344px, 130px" />
+                            </div>
+                        </div>
                     </#if>
                 </header>
             </div><!--
@@ -48,15 +57,15 @@
                                 <div class="ds_aspect-box">
                                     <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
                                     src="<@hst.link hippobean=document.feature.image.largefourcolumns/>"
-                                    srcset="<@hst.link hippobean=document.feature.image.small/> 130w,
-                                        <@hst.link hippobean=document.feature.image.smalldoubled/> 260w,
-                                        <@hst.link hippobean=document.feature.image.mediumfourcolumns/> 220w,
-                                        <@hst.link hippobean=document.feature.image.mediumfourcolumnsdoubled/> 440w,
-                                        <@hst.link hippobean=document.feature.image.largefourcolumns/> 294w,
-                                        <@hst.link hippobean=document.feature.image.largefourcolumnsdoubled/> 588w,
-                                        <@hst.link hippobean=document.feature.image.xlargefourcolumns/> 360w,
-                                        <@hst.link hippobean=document.feature.image.xlargefourcolumnsdoubled/> 720w"
-                                    sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 130px" />
+                                    srcset="<@hst.link hippobean=document.feature.image.smallcolumns/> 130w,
+                                        <@hst.link hippobean=document.feature.image.smallcolumnsdoubled/> 260w,
+                                        <@hst.link hippobean=document.feature.image.mediumfourcolumns/> 250w,
+                                        <@hst.link hippobean=document.feature.image.mediumfourcolumnsdoubled/> 500w,
+                                        <@hst.link hippobean=document.feature.image.largefourcolumns/> 323w,
+                                        <@hst.link hippobean=document.feature.image.largefourcolumnsdoubled/> 646w,
+                                        <@hst.link hippobean=document.feature.image.xlargefourcolumns/> 380w,
+                                        <@hst.link hippobean=document.feature.image.xlargefourcolumnsdoubled/> 780w"
+                                    sizes="(min-width:1200px) 380px, (min-width:920px) 323px, (min-width:768px) 250px, 130px" />
                                 </div>
                             </div>
                         </#if>
@@ -155,15 +164,15 @@
                                             <div class="ds_aspect-box">
                                                 <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
                                                 src="<@hst.link hippobean=feature.image.largefourcolumns/>"
-                                                srcset="<@hst.link hippobean=feature.image.small/> 360w,
-                                                    <@hst.link hippobean=feature.image.smalldoubled/> 720w,
-                                                    <@hst.link hippobean=feature.image.mediumfourcolumns/> 220w,
-                                                    <@hst.link hippobean=feature.image.mediumfourcolumnsdoubled/> 440w,
-                                                    <@hst.link hippobean=feature.image.largefourcolumns/> 294w,
-                                                    <@hst.link hippobean=feature.image.largefourcolumnsdoubled/> 588w,
-                                                    <@hst.link hippobean=feature.image.xlargefourcolumns/> 360w,
-                                                    <@hst.link hippobean=feature.image.xlargefourcolumnsdoubled/> 720w"
-                                                sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 360px" />
+                                                srcset="<@hst.link hippobean=feature.image.smallcolumns/> 130w,
+                                                    <@hst.link hippobean=feature.image.smallcolumnsdoubled/> 260w,
+                                                    <@hst.link hippobean=feature.image.mediumfourcolumns/> 250w,
+                                                    <@hst.link hippobean=feature.image.mediumfourcolumnsdoubled/> 500w,
+                                                    <@hst.link hippobean=feature.image.largefourcolumns/> 323w,
+                                                    <@hst.link hippobean=feature.image.largefourcolumnsdoubled/> 646w,
+                                                    <@hst.link hippobean=feature.image.xlargefourcolumns/> 380w,
+                                                    <@hst.link hippobean=feature.image.xlargefourcolumnsdoubled/> 780w"
+                                                sizes="(min-width:1200px) 380px, (min-width:920px) 323px, (min-width:768px) 250px, 130px" />
                                             </div>
                                         </div>
                                     </#if>

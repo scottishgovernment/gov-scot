@@ -25,8 +25,8 @@
                     <#if document.image??>
                         <img class="gov_sidebar-feature__image" alt="" aria-hidden="true"
                             src="<@hst.link hippobean=document.image.largefourcolumns/>"
-                            srcset="<@hst.link hippobean=document.image.small/> 360w,
-                                <@hst.link hippobean=document.image.smalldoubled/> 720w,
+                            srcset="<@hst.link hippobean=document.image.smallcolumns/> 360w,
+                                <@hst.link hippobean=document.image.smallcolumnsdoubled/> 720w,
                                 <@hst.link hippobean=document.image.mediumfourcolumns/> 220w,
                                 <@hst.link hippobean=document.image.mediumfourcolumnsdoubled/> 440w,
                                 <@hst.link hippobean=document.image.largefourcolumns/> 294w,

@@ -23,8 +23,8 @@ public class FeaturedRole extends SimpleContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:image")
-    public HippoGalleryImageSet getImage() {
-        return getLinkedBean("govscot:image", HippoGalleryImageSet.class);
+    public ColumnImage getImage() {
+        return getLinkedBean("govscot:image", ColumnImage.class);
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:feature")

@@ -1,7 +1,6 @@
 definitions:
   config:
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:small:
-      .meta:order-before: govscot:medium
       jcr:primaryType: frontend:pluginconfig
       height: 130
       upscaling: false
@@ -9,7 +8,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smalldoubled:
-      .meta:order-before: govscot:medium
       jcr:primaryType: frontend:pluginconfig
       height: 260
       upscaling: false
@@ -17,7 +15,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:medium:
-      .meta:order-before: govscot:large
       jcr:primaryType: frontend:pluginconfig
       height: 213
       upscaling: false
@@ -25,7 +22,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumdoubled:
-      .meta:order-before: govscot:large
       jcr:primaryType: frontend:pluginconfig
       height: 426
       upscaling: false
@@ -33,7 +29,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:large:
-      .meta:order-before: govscot:bannermobile
       jcr:primaryType: frontend:pluginconfig
       height: 220
       upscaling: false
@@ -41,7 +36,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largedoubled:
-      .meta:order-before: govscot:bannermobile
       jcr:primaryType: frontend:pluginconfig
       height: 440
       upscaling: false
@@ -49,7 +43,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlarge:
-      .meta:order-before: govscot:bannermobile
       jcr:primaryType: frontend:pluginconfig
       height: 263
       upscaling: false
@@ -57,7 +50,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargedoubled:
-      .meta:order-before: govscot:bannermobile
       jcr:primaryType: frontend:pluginconfig
       height: 526
       upscaling: false
@@ -65,7 +57,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:bannermobile:
-      .meta:order-before: govscot:bannerdesktop
       jcr:primaryType: frontend:pluginconfig
       height: 126
       upscaling: false
@@ -73,7 +64,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:bannermobiledoubled:
-      .meta:order-before: govscot:bannerdesktop
       jcr:primaryType: frontend:pluginconfig
       height: 252
       upscaling: false
@@ -81,7 +71,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:bannertablet:
-      .meta:order-before: govscot:bannerdesktop
       jcr:primaryType: frontend:pluginconfig
       height: 175
       upscaling: false
@@ -89,7 +78,6 @@ definitions:
       compression: 1.0
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:bannertabletdoubled:
-      .meta:order-before: govscot:bannerdesktop
       jcr:primaryType: frontend:pluginconfig
       height: 350
       upscaling: false
@@ -129,9 +117,7 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
       country: sc
     /hippo:configuration/hippo:frontend/cms/cms-static/root:
-      wicket.skin:
-        - skin/document-editor.css
-        - skin/cms-design-tweaks.css
+      wicket.skin: [skin/document-editor.css, skin/cms-design-tweaks.css]
     /hippo:configuration/hippo:frontend/cms/cms-dashshortcuts/gotoShortcut:
       option.location: /content/documents/govscot
     /hippo:configuration/hippo:frontend/cms:
@@ -146,7 +132,6 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-services/assetValidationService:
       max.file.size: 25M
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcover:
-      .meta:order-before: govscot:mediumcover
       jcr:primaryType: frontend:pluginconfig
       compression: 1.0
       height: 0
@@ -154,7 +139,6 @@ definitions:
       upscaling: false
       width: 107
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumcover:
-      .meta:order-before: govscot:largecover
       jcr:primaryType: frontend:pluginconfig
       compression: 1.0
       height: 0
@@ -169,7 +153,6 @@ definitions:
       upscaling: false
       width: 214
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargecover:
-      .meta:order-before: govscot:mediumonecolumn
       jcr:primaryType: frontend:pluginconfig
       compression: 1.0
       height: 0
@@ -179,206 +162,200 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-pickers/documents/navigator/browser.options:
       list.page.size: '50'
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumonecolumn:
-      .meta:order-before: govscot:mediumfourcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 36
       upscaling: false
       width: 63
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumtwocolumns:
-      .meta:order-before: govscot:mediumthreecolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 70
       upscaling: false
       width: 125
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumthreecolumns:
-      .meta:order-before: govscot:mediumfourcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 105
       upscaling: false
       width: 188
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumfourcolumns:
-      .meta:order-before: govscot:largeonecolumn
       jcr:primaryType: frontend:pluginconfig
-      # height: 141
       upscaling: false
       width: 250
-      compression: 0.9
+      compression: 0.8
+      optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumsixcolumns:
+      jcr:primaryType: frontend:pluginconfig
+      height: 0
+      upscaling: false
+      width: 344
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largeonecolumn:
-      .meta:order-before: govscot:largefourcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 46
       upscaling: false
       width: 81
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largetwocolumns:
-      .meta:order-before: govscot:largethreecolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 91
       upscaling: false
       width: 162
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largethreecolumns:
-      .meta:order-before: govscot:largefourcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 142
       upscaling: false
       width: 253
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largefourcolumns:
       jcr:primaryType: frontend:pluginconfig
-      # height: 182
       upscaling: false
       width: 323
-      compression: 0.9
+      compression: 0.8
+      optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largesixcolumns:
+      jcr:primaryType: frontend:pluginconfig
+      height: 0
+      upscaling: false
+      width: 454
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargeonecolumn:
-      .meta:order-before: govscot:xlargefourcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 55
       upscaling: false
       width: 98
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargetwocolumns:
-      .meta:order-before: govscot:xlargethreecolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 110
       upscaling: false
       width: 195
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargethreecolumns:
-      .meta:order-before: govscot:xlargefourcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 165
       upscaling: false
       width: 293
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargefourcolumns:
-      .meta:order-before: govscot:mediumonecolumndoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 219
       upscaling: false
       width: 390
-      compression: 0.9
+      compression: 0.8
+      optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargesixcolumns:
+      jcr:primaryType: frontend:pluginconfig
+      height: 0
+      upscaling: false
+      width: 554
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumonecolumndoubled:
-      .meta:order-before: govscot:mediumfourcolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 70
       upscaling: false
       width: 125
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumtwocolumnsdoubled:
-      .meta:order-before: govscot:mediumthreecolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 141
       upscaling: false
       width: 250
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumthreecolumnsdoubled:
-      .meta:order-before: govscot:mediumfourcolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 210
       upscaling: false
       width: 375
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumfourcolumnsdoubled:
-      .meta:order-before: govscot:largeonecolumndoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 281
       upscaling: false
       width: 500
-      compression: 0.9
+      compression: 0.8
+      optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumsixcolumnsdoubled:
+      jcr:primaryType: frontend:pluginconfig
+      height: 0
+      upscaling: false
+      width: 688
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largeonecolumndoubled:
-      .meta:order-before: govscot:largefourcolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 91
       upscaling: false
       width: 162
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largetwocolumnsdoubled:
-      .meta:order-before: govscot:largethreecolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 182
       upscaling: false
       width: 323
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largethreecolumnsdoubled:
-      .meta:order-before: govscot:largefourcolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 284
       upscaling: false
       width: 505
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largefourcolumnsdoubled:
       jcr:primaryType: frontend:pluginconfig
-      # height: 363
       upscaling: false
       width: 646
-      compression: 0.9
+      compression: 0.8
+      optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:largesixcolumnsdoubled:
+      jcr:primaryType: frontend:pluginconfig
+      height: 0
+      upscaling: false
+      width: 908
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargeonecolumndoubled:
-      .meta:order-before: govscot:xlargefourcolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 110
       upscaling: false
       width: 195
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargetwocolumnsdoubled:
-      .meta:order-before: govscot:xlargethreecolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 219
       upscaling: false
       width: 390
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargethreecolumnsdoubled:
-      .meta:order-before: govscot:xlargefourcolumnsdoubled
       jcr:primaryType: frontend:pluginconfig
-      # height: 329
       upscaling: false
       width: 585
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargefourcolumnsdoubled:
-      .meta:order-before: govscot:smallcolumns
       jcr:primaryType: frontend:pluginconfig
-      # height: 439
       upscaling: false
       width: 780
-      compression: 0.9
+      compression: 0.8
+      optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:xlargesixcolumnsdoubled:
+      jcr:primaryType: frontend:pluginconfig
+      height: 0
+      upscaling: false
+      width: 1108
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcolumns:
       jcr:primaryType: frontend:pluginconfig
-      # height: 203
       upscaling: false
       width: 360
-      compression: 0.9
+      compression: 0.8
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcolumnsdoubled:
       jcr:primaryType: frontend:pluginconfig
-      # height: 405
       upscaling: false
       width: 720
-      compression: 0.9
+      compression: 0.8
       optimize: quality

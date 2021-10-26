@@ -23,7 +23,7 @@
                     <#if document.relatedarticle.image??>
                         <img class="gov_sidebar-feature__image" alt="" aria-hidden="true"
                             src="<@hst.link hippobean=document.relatedarticle.image.largefourcolumns/>"
-                            srcset="<@hst.link hippobean=document.relatedarticle.image.small/> 360w,
+                            srcset="<@hst.link hippobean=document.relatedarticle.image.smallcolumns/> 360w,
                                 <@hst.link hippobean=document.relatedarticle.image.smalldoubled/> 720w,
                                 <@hst.link hippobean=document.relatedarticle.image.mediumfourcolumns/> 220w,
                                 <@hst.link hippobean=document.relatedarticle.image.mediumfourcolumnsdoubled/> 440w,
