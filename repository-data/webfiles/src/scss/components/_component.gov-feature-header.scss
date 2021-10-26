@@ -1,7 +1,5 @@
 .gov_feature-header {
-    align-items: center;
     background-color: #ebebeb;
-    display: grid;
     margin-bottom: 64px;
 
     &__title {
@@ -22,8 +20,9 @@
 
 @include media-query('medium') {
     .gov_feature-header {
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 32px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
 
         &__title {
             font-size: 44px;
@@ -32,6 +31,10 @@
 
         &__content {
             padding-left: 24px;
+        }
+
+        &__media {
+            width: calc(50% - 16px);
         }
     }
 }

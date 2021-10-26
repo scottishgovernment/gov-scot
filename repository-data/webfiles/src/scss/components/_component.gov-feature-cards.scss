@@ -1,10 +1,15 @@
 .gov_feature-cards {
-    display: grid;
-    grid-gap: 32px;
+    display: flex;
     margin-bottom: 48px; /// from ds responsive scale
 
     .gov_feature-card {
         margin-bottom: 0;
+        margin-right: 32px;
+        width: calc(33.33333% - 21px);
+
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }
 
@@ -20,5 +25,23 @@
 
     .gov_feature-card {
         margin-bottom: 64px; /// from ds responsive scale
+    }
+}
+
+@supports (display: grid) {
+    .gov_feature-cards {
+        display: grid;
+        grid-gap: 32px;
+
+        .gov_feature-card {
+            margin-right: 0;
+            width: auto;
+        }
+    }
+
+     @include media-query('medium') {
+        .gov_feature-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 }
