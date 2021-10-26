@@ -5,7 +5,6 @@ import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import java.util.List;
-import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import scot.gov.www.beans.NavigationCard;
 import scot.gov.www.beans.UpdateHistory;
 
