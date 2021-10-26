@@ -128,7 +128,7 @@
 
 
             --><div class="grid__item">
-                <section id="latest-news" class="topic-block">
+                <section id="latest-speeches-statements" class="topic-block">
                     <h2 class="emphasis  topic-block__title">
                         Speeches and statements
                     </h2>
