@@ -306,7 +306,7 @@ definitions:
               Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
           /secondaryResponsibleRole:
@@ -319,7 +319,7 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
           /seoTitle:

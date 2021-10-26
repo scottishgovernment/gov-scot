@@ -265,7 +265,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
           /secondaryResponsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Secondary responsible role(s)
@@ -278,7 +278,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title
