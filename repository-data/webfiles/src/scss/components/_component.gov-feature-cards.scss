@@ -3,10 +3,10 @@
     margin-bottom: 48px; /// from ds responsive scale
 
     .gov_feature-card {
-        margin-bottom: 0;
+        margin-bottom: 32px;
 
         &:last-child {
-            margin-right: 0;
+            margin-bottom: 0;
         }
     }
 }
@@ -17,10 +17,13 @@
 
 @include media-query('medium') {
     .gov_feature-cards {
+        display: flex;
         margin-bottom: 64px; /// from ds responsive scale
 
         .gov_feature-card {
             margin-bottom: 0;
+            margin-right: 32px;
+            width: calc(33.33333% - 21px);
 
             &:last-child {
                 margin-right: 0;
