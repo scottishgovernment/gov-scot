@@ -53,16 +53,7 @@
 
 @include media-query(medium-down) {
   .homepage-news__item {
-    display: none;
-    margin-bottom: 42px;
-
-    &:nth-child(-n + 1) {
-      margin-bottom: 35px;
-    }
-
-    &:nth-child(-n + 2) {
-      display: inline-block;
-    }
+    margin-bottom: 35px;
   }
 }
 

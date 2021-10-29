@@ -55,16 +55,6 @@
   }
 }
 
-@include media-query(medium-down) {
-  .homepage-publication {
-    display: none;
-
-    &:nth-child(-n + 3) {
-      display: block;
-    }
-  }
-}
-
 @include media-query(medium) {
   .homepage-publication {
     &__title {
