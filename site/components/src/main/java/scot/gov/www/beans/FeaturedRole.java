@@ -17,8 +17,8 @@ public class FeaturedRole extends SimpleContent {
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:incumbent")
-    public HippoBean getIncumbent() {
-        return getLinkedBean("govscot:incumbent", HippoBean.class);
+    public Person getIncumbent() {
+        return getLinkedBean("govscot:incumbent", Person.class);
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:image")
