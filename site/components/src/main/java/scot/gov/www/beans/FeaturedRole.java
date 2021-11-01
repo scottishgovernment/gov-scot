@@ -3,10 +3,7 @@ package scot.gov.www.beans;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import org.hippoecm.hst.content.beans.standard.HippoBean;
 import java.util.List;
-import scot.gov.www.beans.NavigationCard;
-import scot.gov.www.beans.UpdateHistory;
 
 @HippoEssentialsGenerated(internalName = "govscot:FeaturedRole")
 @Node(jcrType = "govscot:FeaturedRole")
