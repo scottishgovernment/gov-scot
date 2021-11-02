@@ -1,7 +1,7 @@
 <#include "../../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
-<div class="<#if siteHeaderSearch??>ds_site-header__search  ds_no-margin</#if>  ds_site-search">
+<div class="ds_site-search">
     <form role="search" class="ds_site-search__form" method="GET" action="<@hst.link path='/search/'/>">
         <label class="ds_label  visually-hidden" for="site-search">Search</label>
 

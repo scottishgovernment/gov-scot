@@ -1,4 +1,4 @@
-<#include "include/imports.ftl">
+<#include "../../include/imports.ftl">
 
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 <div class="ds_back-to-top" data-module="ds-back-to-top">

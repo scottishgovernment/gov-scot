@@ -18,7 +18,7 @@
 @include media-query(medium) {
     .#{$site-prefix}layout {
         &--about {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__banner {
                     @include colwidth(9);
                     @include colpush(3);
@@ -49,7 +49,7 @@
         }
 
         &--filter-search {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__header {
                     @include colwidth(8);
                     @include colpush(3);
@@ -74,7 +74,7 @@
         }
 
         &--policy {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__header {
                     @include colwidth(8);
                 }
@@ -98,7 +98,7 @@
         }
 
         &--issue {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__banner {
                     @include colwidth(12);
                 }
@@ -122,7 +122,7 @@
 
         &--collection,
         &--publication {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__header {
                     @include colwidth(8);
                 }
@@ -146,7 +146,7 @@
         }
 
         &--role {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__header {
                     @include colwidth(8);
                 }
@@ -194,7 +194,7 @@
         }
 
         &--publication-header {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__title {
                     @include colwidth(12);
                 }
@@ -216,7 +216,7 @@
 @include media-query(large) {
     .#{$site-prefix}layout {
         &--about {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__banner {
                     @include colwidth(7);
                 }
@@ -236,7 +236,7 @@
         }
 
         &--filter-search {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__content {
                     @include colwidth(7);
                     @include colpush(3);
@@ -255,7 +255,7 @@
         }
 
         &--policy {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__content {
                     float: left;
                     @include colwidth(7);
@@ -274,7 +274,7 @@
 
         &--collection,
         &--publication {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__content {
                     float: left;
                     @include colwidth(7);
@@ -292,7 +292,7 @@
         }
 
         &--role {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__header {
                     @include colwidth(8);
                 }
@@ -327,7 +327,7 @@
         }
 
         &--publication-header {
-            > .#{$pl-prefix}layout {
+            > .ds_layout {
                 &__title {
                     @include colwidth(10);
                 }
@@ -377,7 +377,7 @@
     $grid-subarea-content:      sc;
     $grid-subarea-document:     sd;
 
-    .#{$pl-prefix}layout {
+    .ds_layout {
         grid-template-rows: auto auto 1fr;
 
         &__about {

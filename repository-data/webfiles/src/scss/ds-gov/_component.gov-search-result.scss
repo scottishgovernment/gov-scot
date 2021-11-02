@@ -36,20 +36,20 @@ $person-image-size--medium: 136px;
     }
 
     &__label {
-        @extend .#{$pl-prefix}search-result__label;
+        @extend .ds_search-result__label;
     }
 
     &__date {
-        @extend .#{$pl-prefix}search-result__date;
+        @extend .ds_search-result__date;
     }
 
     &__title {
-        @extend .#{$pl-prefix}search-result__title;
+        @extend .ds_search-result__title;
     }
 
     &--has-image {
-        .#{$pl-prefix}search-result__header,
-        .#{$pl-prefix}search-result__summary {
+        .ds_search-result__header,
+        .ds_search-result__summary {
             padding-right: ($person-image-size + 16px);
         }
     }
@@ -63,8 +63,8 @@ $person-image-size--medium: 136px;
 
 @include media-query(medium) {
     .#{$site-prefix}search-result--has-image {
-        .#{$pl-prefix}search-result__header,
-        .#{$pl-prefix}search-result__summary {
+        .ds_search-result__header,
+        .ds_search-result__summary {
             padding-right: ($person-image-size--medium + 16px);
         }
     }

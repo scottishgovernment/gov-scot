@@ -16,12 +16,12 @@
         @include tiny-size;
         margin-bottom: 8px;
 
-        .#{$pl-prefix}content-label {
+        .ds_content-label {
             @include tiny-size;
             font-weight: $bold;
         }
 
-        .#{$pl-prefix}metadata__value {
+        .ds_metadata__value {
             font-weight: $normal;
         }
     }

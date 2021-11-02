@@ -46,7 +46,6 @@
 
     <#include 'common/accessibility-links.ftl' />
 
-
     <span id="page-top"></span>
 
     <div class="ds_page">
@@ -76,9 +75,6 @@
             <@hst.include ref="footer"/>
         </div>
     </div>
-
-
-    <#include "breakpoint-tests.ftl">
 
     <script type="module" src="<@hst.webfile path="/assets/scripts/global.js"/>"></script>
     <script nomodule="true" src="<@hst.webfile path="/assets/scripts/global.es5.js"/>"></script>
