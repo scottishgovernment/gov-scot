@@ -1,0 +1,46 @@
+.gov_feature-header {
+    background-color: #ebebeb;
+    margin-bottom: 64px;
+
+    &__title {
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 35px;
+        margin-bottom: 8px;
+    }
+
+    &__content {
+        padding: 32px 16px;
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@include media-query('medium') {
+    .gov_feature-header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        &__title {
+            font-size: 44px;
+            line-height: 56px;
+        }
+
+        &__content {
+            padding-left: 24px;
+        }
+
+        &__media {
+            width: calc(50% - 16px);
+        }
+    }
+}
+
+@include media-query('large') {
+    .gov_feature-header__content {
+        padding-left: 48px;
+    }
+}

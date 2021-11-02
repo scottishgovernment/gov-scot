@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 3cb62f80-b116-447f-a3f7-37be906397db
+          jcr:uuid: bdc4629b-944a-4003-8c1a-140495c1628c
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -94,7 +94,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 4f428f4e-c1ee-4705-8469-246da4c02fdf
+          jcr:uuid: c31dc970-5fa6-4ef6-8481-ceb19fb8e43c
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           govscot:sme: ''
@@ -191,7 +191,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/who-runs-government/cabinet-and-ministers/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Role']
+              nodetypes: ['govscot:Role, govscot:FeaturedRole']
           /secondaryOrgRole:
             jcr:primaryType: frontend:plugin
             caption: Civil service role(s)
@@ -203,7 +203,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/how-government-is-run/civil-service/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible role
@@ -214,7 +214,7 @@ definitions:
               Secretary for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
               base.path: /content/documents/govscot/about
               last.visited.enabled: 'false'
           /secondaryResponsibleRole:
@@ -227,7 +227,7 @@ definitions:
               Minister for …
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-              nodetypes: ['govscot:Role', 'govscot:Person']
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
               base.path: /content/documents/govscot/about
               last.visited.enabled: 'false'
           /relatedNews:
@@ -282,8 +282,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: UpdateHistory
             field: UpdateHistory
-            hint: Details of the last updated date and a brief descriptions of the content
-              update
+            hint: Details of the last updated date and a brief descriptions of the
+              content update
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

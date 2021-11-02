@@ -84,6 +84,8 @@ definitions:
             hst:componentconfigurationid: hst:pages/aboutpage
             hst:relativecontentpath: about/${1}/${2}
             hst:sitemapitemhandlerids: [trailing-slash]
+            hst:componentconfigurationmappingvalues: ['hst:pages/featuredrolepage-old']
+            hst:componentconfigurationmappingnames: ['govscot:Role']
             /_index_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
@@ -115,9 +117,26 @@ definitions:
                 hst:sitemapitemhandlerids: [trailing-slash]
           /first-minister:
             jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/featuredrolepage
-            hst:relativecontentpath: ${parent}/first-minister
+            hst:componentconfigurationid: hst:pages/featuredrolepage-old
             hst:sitemapitemhandlerids: [trailing-slash]
+            hst:relativecontentpath: ${parent}/first-minister
+            /_index_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/aboutpage
+              hst:componentconfigurationmappingnames: ['govscot:FeaturedRole', 'govscot:Role']
+              hst:componentconfigurationmappingvalues: ['hst:pages/featuredrolepage',
+                'hst:pages/featuredrolepage-old']
+              hst:relativecontentpath: ${parent}/index
+              hst:sitemapitemhandlerids: [trailing-slash]
+            /_default_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/featuredrolearticlepage
+              hst:componentconfigurationmappingnames: ['govscot:Role', 'govscot:FeaturedRoleBiography',
+                'govscot:FeaturedRole']
+              hst:componentconfigurationmappingvalues: ['hst:pages/rolepage', 'hst:pages/featuredrolebiographypage',
+                'hst:pages/featuredrolepage']
+              hst:relativecontentpath: about/${1}/first-minister/${2}
+              hst:sitemapitemhandlerids: [trailing-slash]
         /how-government-is-run:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/aboutpage
@@ -312,9 +331,8 @@ definitions:
           hst:sitemapitemhandlerids: [trailing-slash]
       /isbn:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/publicationlistpage
-        hst:relativecontentpath: publications
-        /_default_:
+        hst:componentconfigurationid: hst:pages/pagenotfound
+        /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications
@@ -330,9 +348,8 @@ definitions:
         hst:relativecontentpath: ../administration/robots
       /ISBN:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/publicationlistpage
-        hst:relativecontentpath: publications
-        /_default_:
+        hst:componentconfigurationid: hst:pages/pagenotfound
+        /_any_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications

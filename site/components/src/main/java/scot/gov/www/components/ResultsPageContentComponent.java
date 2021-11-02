@@ -79,8 +79,6 @@ public class ResultsPageContentComponent extends BaseHstComponent {
                     request.setAttribute("isPostcode", isPostcode);
                     request.setAttribute("covidLookupPage", covidLookupPage);
                     request.setAttribute("normalisedPostcode", normalisedTerm);
-                } else {
-                    LOG.warn("No CovidRestrictionsLookup page is published");
                 }
             } catch (QueryException e) {
                 LOG.error("Failed to find CovidRestrictionsLookup page", e);

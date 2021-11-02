@@ -61,7 +61,7 @@
 <meta property="og:title" content="${document.title?json_string}" />
 </@hst.headContribution>
 
-<#if contentBean.metaDescription??>
+<#if document.metaDescription??>
 <@hst.headContribution category="facebookMeta">
 <meta property="og:description" content="${document.metaDescription?json_string}" />
 </@hst.headContribution>

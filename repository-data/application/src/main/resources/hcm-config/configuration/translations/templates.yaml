@@ -22,6 +22,9 @@ definitions:
       new-org-roles: New organisational roles
       new-directorate-folder: New directorate folder
       new-role: New role
+      new-featured-role: New featured role
+      new-featured-role-article: New featured role article
+      new-featured-role-biography: New featured role biography
       new-directorate: New directorate
       new-featured-item: New featured item
       new-minutes-folder: New minutes folder
@@ -64,3 +67,5 @@ definitions:
       new-about-topic: New About Topic
       new-covid-restrictions-lookup: New covid restrictions lookup
       new-covidrestriction: New covid restriction
+      new-govscot-ColumnImage-image: New column image
+      new-govscot-ColumnImage-folder: New column image folder

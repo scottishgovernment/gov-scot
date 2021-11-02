@@ -19,7 +19,7 @@
     <#include '../common/content-data.ftl'/>
 
     <#--! BEGIN 'minutes' format-specific fields-->
-    <#if document.publicationType?lower_case == "minutes">
+    <#if document.publicationType?lower_case! == "minutes">
         <#if document.officialdate?has_content>
             <div class="ds_metadata__item">
                 <span class="ds_metadata__key">Date of meeting</span>
@@ -44,7 +44,7 @@
     <#--! END 'minutes' format-specific fields-->
 
     <#--! BEGIN 'speech or statement' format-specific fields-->
-    <#if document.publicationType?lower_case == "speech-statement">
+    <#if document.publicationType?lower_case! == "speech-statement">
         <#if document.officialdate?has_content>
             <div class="ds_metadata__item">
                 <span class="ds_metadata__key">Date of speech</span>

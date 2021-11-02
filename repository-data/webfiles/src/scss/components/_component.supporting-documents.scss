@@ -4,14 +4,14 @@
 
 $site-prefix: 'gov_';
 $ds_colour__border: $color__border--base;
-$ds_colour__white: $color__white;
-$ds_colour__link--hover__background: red;
+$ds_colour__white: white;
+$ds_colour__link--hover__background: $color__grey--lighter;
 $ds_colour__link--focus__background: gold;
 
 .#{$site-prefix}supporting-documents {
-    &__thumbnail {
-        display: block;
-        width: 100%;
+    // legacy fix/hack
+    .gov_document-info__thumbnail-link {
+        width: auto !important;
     }
 
     &__thumbnail-link {

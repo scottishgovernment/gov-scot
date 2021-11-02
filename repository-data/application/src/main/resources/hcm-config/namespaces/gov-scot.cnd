@@ -31,6 +31,8 @@
 [govscot:CollectionGroup] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:ColumnImage] > hippogallery:imageset, hippogallery:relaxed
+
 [govscot:ComplexDocument] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -65,6 +67,18 @@
 
 [govscot:FeaturedItems] > hippogallery:imageset, hippogallery:relaxed
 
+[govscot:FeaturedRole] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:FeaturedRoleArticle] > govscot:SimpleContent, hippostd:relaxed, hippostd:taggable, hippotranslation:translated
+  orderable
+
+[govscot:FeaturedRoleBiography] > govscot:SimpleContent, hippostd:relaxed, hippostd:taggable, hippotranslation:translated
+  orderable
+
+[govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:Group] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -89,6 +103,9 @@
 [govscot:MourningBanner] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:NavigationCard] > hippo:compound, hippostd:relaxed
+  orderable
+
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -103,9 +120,6 @@
 
 [govscot:People] > hippogallery:imageset, hippogallery:relaxed
 
-[govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
-  orderable
-
 [govscot:Policy] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -119,6 +133,9 @@
   orderable
 
 [govscot:PublicationPage] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:RelatedArticle] > hippo:compound, hippostd:relaxed
   orderable
 
 [govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
@@ -142,4 +159,3 @@
   orderable
 
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
-

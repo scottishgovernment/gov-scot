@@ -12,12 +12,7 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.ContentBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.Directorate;
-import scot.gov.www.beans.OrgRoles;
-import scot.gov.www.beans.Person;
-
-import scot.gov.www.beans.Role;
-import scot.gov.www.beans.SimpleContent;
+import scot.gov.www.beans.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -91,9 +86,18 @@ public class OrgRolesComponent  extends BaseHstComponent {
         if (bean instanceof Person) {
             return (Person) bean;
         }
-        Role role = (Role) bean;
-        return role.getIncumbent();
 
+        if (bean instanceof Role) {
+            Role role = (Role) bean;
+            return role.getIncumbent();
+        }
+
+        if (bean instanceof FeaturedRole) {
+            FeaturedRole role = (FeaturedRole) bean;
+            return role.getIncumbent();
+        }
+
+        return null;
     }
 
     private String incumbentTitle(HippoBean bean) {

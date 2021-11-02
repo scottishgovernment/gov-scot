@@ -1,0 +1,417 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/ColumnImage:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: eaaba3fd-095a-4f72-843d-45cfa234db52
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: fd25fce5-c5be-4b65-84f4-17f072a8db91
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['hipposysedit:remodel']
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippogallery:imageset', 'hippogallery:relaxed']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /filename:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:filename
+            hipposysedit:type: String
+          /description:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:description
+            hipposysedit:type: String
+          /thumbnail:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:autocreated: true
+            hipposysedit:mandatory: true
+            hipposysedit:path: hippogallery:thumbnail
+            hipposysedit:primary: true
+            hipposysedit:type: hippogallery:image
+          /original:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: hippogallery:original
+            hipposysedit:type: hippogallery:image
+          /mediumonecolumn:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumonecolumn
+            hipposysedit:type: hippogallery:image
+          /mediumtwocolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumtwocolumns
+            hipposysedit:type: hippogallery:image
+          /mediumthreecolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumthreecolumns
+            hipposysedit:type: hippogallery:image
+          /mediumfourcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumfourcolumns
+            hipposysedit:type: hippogallery:image
+          /largeonecolumn:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largeonecolumn
+            hipposysedit:type: hippogallery:image
+          /largetwocolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largetwocolumns
+            hipposysedit:type: hippogallery:image
+          /largethreecolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largethreecolumns
+            hipposysedit:type: hippogallery:image
+          /largefourcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largefourcolumns
+            hipposysedit:type: hippogallery:image
+          /xlargeonecolumn:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargeonecolumn
+            hipposysedit:type: hippogallery:image
+          /xlargetwocolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargetwocolumns
+            hipposysedit:type: hippogallery:image
+          /xlargethreecolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargethreecolumns
+            hipposysedit:type: hippogallery:image
+          /xlargefourcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargefourcolumns
+            hipposysedit:type: hippogallery:image
+          /mediumonecolumndoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumonecolumndoubled
+            hipposysedit:type: hippogallery:image
+          /mediumtwocolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumtwocolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /mediumthreecolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumthreecolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /mediumfourcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumfourcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /largeonecolumndoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largeonecolumndoubled
+            hipposysedit:type: hippogallery:image
+          /largetwocolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largetwocolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /largethreecolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largethreecolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /largefourcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largefourcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /xlargeonecolumndoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargeonecolumndoubled
+            hipposysedit:type: hippogallery:image
+          /xlargetwocolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargetwocolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /xlargethreecolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargethreecolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /xlargefourcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargefourcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /smallcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:smallcolumns
+            hipposysedit:type: hippogallery:image
+          /smallcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:smallcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /mediumsixcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumsixcolumns
+            hipposysedit:type: hippogallery:image
+          /mediumsixcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumsixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /largesixcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largesixcolumns
+            hipposysedit:type: hippogallery:image
+          /largesixcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largesixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /xlargesixcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargesixcolumns
+            hipposysedit:type: hippogallery:image
+          /xlargesixcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargesixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:ColumnImage
+          jcr:mixinTypes: ['mix:versionable']
+          jcr:uuid: d1b1b8e0-ff97-47b9-9358-c75cea3bde82
+          /hippogallery:thumbnail:
+            jcr:primaryType: hippogallery:image
+            jcr:data:
+              type: binary
+              resource: /namespaces/govscot/ColumnImage/prototypes/prototype/thumbnail/thumbnail.gif
+            jcr:lastModified: 1970-01-01T00:00:00Z
+            jcr:mimeType: image/gif
+          /hippogallery:original:
+            jcr:primaryType: hippogallery:image
+            hippogallery:height: 0
+            hippogallery:width: 0
+            jcr:data:
+              type: binary
+              resource: /namespaces/govscot/ColumnImage/prototypes/prototype/original/original.gif
+            jcr:lastModified: 1970-01-01T00:00:00Z
+            jcr:mimeType: image/gif
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [model.compareTo, wicket.model, engine]
+          frontend:services: [wicket.id]
+          mode: edit
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /filename:
+            jcr:primaryType: frontend:plugin
+            caption: file name
+            field: filename
+            plugin.class: org.hippoecm.frontend.plugins.gallery.editor.FileNameDisplayPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /description:
+            jcr:primaryType: frontend:plugin
+            caption: description
+            field: description
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /thumbnail:
+            jcr:primaryType: frontend:plugin
+            caption: thumbnail
+            field: thumbnail
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /original:
+            jcr:primaryType: frontend:plugin
+            caption: original
+            field: original
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumonecolumn:
+            jcr:primaryType: frontend:plugin
+            caption: mediumonecolumn
+            field: mediumonecolumn
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumtwocolumns:
+            jcr:primaryType: frontend:plugin
+            caption: mediumtwocolumns
+            field: mediumtwocolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumthreecolumns:
+            jcr:primaryType: frontend:plugin
+            caption: mediumthreecolumns
+            field: mediumthreecolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumfourcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: mediumfourcolumns
+            field: mediumfourcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largeonecolumn:
+            jcr:primaryType: frontend:plugin
+            caption: largeonecolumn
+            field: largeonecolumn
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largetwocolumns:
+            jcr:primaryType: frontend:plugin
+            caption: largetwocolumns
+            field: largetwocolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largethreecolumns:
+            jcr:primaryType: frontend:plugin
+            caption: largethreecolumns
+            field: largethreecolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largefourcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: largefourcolumns
+            field: largefourcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargeonecolumn:
+            jcr:primaryType: frontend:plugin
+            caption: xlargeonecolumn
+            field: xlargeonecolumn
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargetwocolumns:
+            jcr:primaryType: frontend:plugin
+            caption: xlargetwocolumns
+            field: xlargetwocolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargethreecolumns:
+            jcr:primaryType: frontend:plugin
+            caption: xlargethreecolumns
+            field: xlargethreecolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargefourcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: xlargefourcolumns
+            field: xlargefourcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumonecolumndoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumonecolumndoubled
+            field: mediumonecolumndoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumtwocolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumtwocolumnsdoubled
+            field: mediumtwocolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumthreecolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumthreecolumnsdoubled
+            field: mediumthreecolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumfourcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumfourcolumnsdoubled
+            field: mediumfourcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largeonecolumndoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largeonecolumndoubled
+            field: largeonecolumndoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largetwocolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largetwocolumnsdoubled
+            field: largetwocolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largethreecolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largethreecolumnsdoubled
+            field: largethreecolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largefourcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largefourcolumnsdoubled
+            field: largefourcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargeonecolumndoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargeonecolumndoubled
+            field: xlargeonecolumndoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargetwocolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargetwocolumnsdoubled
+            field: xlargetwocolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargethreecolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargethreecolumnsdoubled
+            field: xlargethreecolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargefourcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargefourcolumnsdoubled
+            field: xlargefourcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /smallcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: smallcolumns
+            field: smallcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /smallcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: smallcolumnsdoubled
+            field: smallcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumsixcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: mediumsixcolumns
+            field: mediumsixcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /mediumsixcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: mediumsixcolumnsdoubled
+            field: mediumsixcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largesixcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: largesixcolumns
+            field: largesixcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largesixcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largesixcolumnsdoubled
+            field: largesixcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargesixcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: xlargesixcolumns
+            field: xlargesixcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargesixcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargesixcolumnsdoubled
+            field: xlargesixcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field

@@ -1,0 +1,336 @@
+/*------------------------------------*\
+    MIXINS
+\*------------------------------------*/
+
+$blocklink__outline-width: 0;
+
+
+
+
+@mixin ds_media-query($mq) {
+    $breakpoint-found: false;
+
+    // Loop through the list of breakpoints we’ve provided in our settings file.
+    @each $breakpoint in $breakpoints {
+
+        // Grab the alias and the condition from their respective locations in
+        // the list.
+        $alias:     nth($breakpoint, 1);
+        $condition: nth($breakpoint, 2);
+
+        // If the media query we’ve specified has an alias and a condition...
+        @if $mq == $alias and $condition {
+            // ...tell the mixin that we’ve found it...
+            $breakpoint-found: true;
+
+            // ...and spit it out here.
+            @media #{$condition} {
+                @content;
+            }
+        }
+    }
+
+    // If the user specifies a non-exitent alias, send them a warning.
+    @if $breakpoint-found == false{
+        @warn "Oops! Breakpoint ‘#{$mq}’ does not exist."
+    }
+}
+
+@mixin chevron($orientation: down, $size: 1em, $width: 3px) {
+    $rotate: 0;
+    @if $orientation == up {
+        $rotate: -45deg;
+    } @else if $orientation == right {
+        $rotate: 45deg;
+    } @else if $orientation == down {
+        $rotate: 135deg;
+    } @else if $orientation == left {
+        $rotate: 225deg;
+    }
+
+    $linesize: #{$size * 1.414214 * 0.5};
+
+    border: $width solid currentColor;
+    border-width: $width $width 0 0;
+    content: "";
+    display: inline-block;
+    height: $linesize;
+    -webkit-transform: rotateX(0) rotateZ(#{$rotate});
+    -ms-transform: rotate(#{$rotate});
+    transform: rotateX(0) rotateZ(#{$rotate});
+    transition: transform 0.2s, top 0.2s;
+    width: $linesize;
+}
+
+/// Blocklink
+///
+/// Mixin to enforce consistency on block-style links, e.g. search results, category items, etc
+///
+/// @param {string} $link-selector - child element that is used as the link, optional
+/// @param {boolean} $hover - whether to apply a hover state
+
+@mixin ds_blocklink ($link-selector: null, $hover: true) {
+    display: block;
+    position: relative;
+    transition: background-color $transition-out-time, outline-color $transition-out-time;
+    z-index: 1;
+
+    outline: 0 !important;
+
+    &:focus {
+        background-color: $colour__blocklink-bg--focus;
+        box-shadow: inset #{$blocklink__outline-width * -1} #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow, inset $blocklink__outline-width #{$blocklink__outline-width + $link__border-width * -1} $colour__link--focus__shadow;
+        color: $colour__link--focus;
+    }
+
+    @if $hover {
+        &:hover:not(:focus) {
+            background-color: $colour__blocklink-bg--hover;
+        }
+    }
+
+    @if $link-selector {
+        #{$link-selector} {
+            &:focus:hover {
+                text-decoration: none;
+            }
+        }
+
+        /*
+            supports grid is a hack as a proxy for supports :focus-within
+        */
+        @supports (display: grid) {
+            #{$link-selector} {
+                background-color: transparent;
+                outline: none;
+
+                &::after {
+                    content: "";
+                    height: 100%;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    width: 100%;
+                    z-index: 0;
+                }
+
+                &:focus {
+                    &::after {
+                        transition-duration: 0s;
+                    }
+                }
+            }
+
+            &:focus-within {
+                background-color: $colour__blocklink-bg--focus !important;
+                box-shadow: inset 0 -3px #333333, inset 0 -3px #333333;
+                transition-duration: 0s;
+
+                #{$link-selector} {
+                    &:focus {
+                        box-shadow: none;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin ds_blocklink--solid($link-selector: null) {
+    @include ds_blocklink($link-selector);
+
+    background-color: $colour__white;
+}
+
+/**
+ * Animated underscore used on logo images
+ */
+@mixin fancy-underscore($width: 1px) {
+    position: relative;
+    transition-duration: 0s !important;
+
+    &:active {
+        background: $colour__link--active__background;
+    }
+
+    &::after {
+        background-color: currentColor;
+        bottom: -6px;
+        content: '';
+        height: $width;
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        right: 50%;
+        transition: left $transition-in-time, right $transition-in-time, opacity $transition-in-time;
+    }
+
+    &:hover::after,
+    &:active::after {
+        left: 15px;
+        opacity: 1;
+        right: 15px;
+    }
+}
+
+/**
+ * Mixin to enforce consistent margins on "block" elements, e.g. blockquotes,
+ * info notes, accordions, etc
+ */
+@mixin block-margins {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+@mixin box-shadow {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/**
+ * Mixin to enforce consistent open/close icons,
+ * mobile section nav, accordions, etc
+ */
+@mixin indicator ($topOffset: 16px) {
+    @include chevron();
+
+    color: currentColor;
+    right: 21px;
+    position: absolute;
+    top: $topOffset;
+}
+
+@mixin indicator--open ($topOffset: 20px) {
+    @include chevron(up);
+    top: $topOffset;
+}
+
+@mixin last-child-no-margin {
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin ds_box-shadow {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+///
+/// Heading size mixins
+///
+@mixin ds_h1-size {
+    font-size: $h1-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h1-size--medium;
+    }
+}
+
+@mixin ds_h2-size {
+    font-size: $h2-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h2-size--medium;
+    }
+}
+
+@mixin ds_h3-size {
+    font-size: $h3-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h3-size--medium;
+    }
+}
+
+@mixin ds_h4-size {
+    font-size: $h4-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h4-size--medium;
+    }
+}
+
+@mixin ds_h5-size {
+    font-size: $h5-size;
+
+    @include ds_media-query(medium) {
+        font-size: $h5-size--medium;
+    }
+}
+
+@mixin ds_large-size {
+    font-size: $large-size;
+
+    @include ds_media-query(medium) {
+        font-size: $large-size--medium;
+    }
+}
+
+@mixin ds_small-size {
+    font-size: $small-size;
+
+    @include ds_media-query(medium) {
+        font-size: $small-size--medium;
+    }
+}
+
+///
+/// Heading style mixins
+///
+@mixin ds_h1-style {
+    @include ds_h1-size;
+    font-weight: $bold;
+    line-height: 40px;
+    margin-bottom: 32px;
+
+    @include ds_media-query(medium) {
+        line-height: 56px;
+    }
+}
+
+@mixin ds_h2-style {
+    @include ds_h2-size;
+    font-weight: $bold;
+    line-height: 32px;
+    margin-bottom: 8px;
+
+    @include ds_media-query(medium) {
+        line-height: 40px;
+        margin-bottom: 16px;
+    }
+}
+
+@mixin ds_h3-style {
+    @include ds_h3-size;
+    font-weight: $bold;
+    line-height: 24px;
+    margin-bottom: 8px;
+
+    @include ds_media-query(medium) {
+        line-height: 32px;
+    }
+}
+
+@mixin ds_h4-style {
+    @include ds_h4-size;
+    font-weight: $bold;
+    line-height: 24px;
+}
+
+@mixin ds_h5-style {
+    @include ds_h5-size;
+    font-weight: $bold;
+    line-height: 24px;
+}
+
+
+
+
+/// legacy non-prefixed names
+@mixin blocklink($link-selector: null, $hover: true) {
+    @include ds_blocklink($link-selector, hover);
+}
+
+@mixin blocklink--solid($link-selector: null) {
+    @include ds_blocklink--solid($link-selector);
+}

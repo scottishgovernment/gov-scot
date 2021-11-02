@@ -6,6 +6,7 @@ import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoFolderBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
@@ -31,25 +32,32 @@ import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES
 public class FilteredResultsSideComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsSideComponent.class);
-    private static final String TOPICS = "topics";
 
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
         super.doBeforeRender(request, response);
+
         FilteredResultsSideComponentInfo info = getComponentParametersInfo(request);
-
-        HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
-
-        HstQuery query = HstQueryBuilder.create(baseBean)
-                .ofTypes(Issue.class, Topic.class).orderByAscending("govscot:title").build();
-
         request.setAttribute("term", true);
+        request.setAttribute("searchType", info.getSearchType());
         if (info.getIncludeDateFilter()) {
             request.setAttribute("dates", true);
             request.setAttribute("fromDate", info.getFromDate());
         }
+        if (info.getLocaleRequired()) {
+            request.setAttribute("locale", request.getLocale());
+        }
+        populatePublicationTypes(request);
+        populateTopics(request);
 
+        Map<String, Set<String>> params =
+                sanitiseParameterMap(request, request.getRequestContext().getServletRequest().getParameterMap());
+        request.setAttribute("parameters", params);
+    }
+
+    private void populatePublicationTypes(HstRequest request) {
+        FilteredResultsSideComponentInfo info = getComponentParametersInfo(request);
         ValueList publicationValueList = SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
         if (info.getIncludePublicationTypesFilter()) {
             request.setAttribute("publicationTypes", publicationValueList.getItems());
@@ -63,30 +71,21 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
                 typeMap.put("key", keyLabel[0]);
                 typeMap.put("label", keyLabel[1]);
                 pubTypes.add(typeMap);
-
             }
 
             request.setAttribute("publicationTypes", pubTypes);
         }
-
-        if (info.getLocaleRequired()) {
-            request.setAttribute("locale", request.getLocale());
-        }
-        executeQueryLoggingException(query, request, TOPICS);
-        request.setAttribute("searchType", info.getSearchType());
-
-        Map<String, Set<String>> params = sanitiseParameterMap(request,
-            request.getRequestContext().getServletRequest().getParameterMap());
-        request.setAttribute("parameters", params);
-
     }
 
-    private void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
+    private void populateTopics(HstRequest request) {
+        HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
+        HippoFolderBean topicsFolder = baseBean.getBean("topics", HippoFolderBean.class);
+        HstQuery query = HstQueryBuilder.create(topicsFolder).ofTypes(Issue.class, Topic.class).orderByAscending("govscot:title").build();
         try {
             HstQueryResult result = query.execute();
-            request.setAttribute(name, result.getHippoBeans());
+            request.setAttribute("topics", result.getHippoBeans());
         } catch (QueryException e) {
-            LOG.error("Failed to get {}", name, e);
+            LOG.error("Failed to get topics", e);
         }
     }
 

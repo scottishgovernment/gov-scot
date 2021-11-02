@@ -45,7 +45,7 @@ public class MetadataResource {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public MetadataResponse getRoles() {
-        return getMetadata("govscot:Role", "govscot:Person");
+        return getMetadata("govscot:Role", "govscot:FeaturedRole");
     }
 
     @Path("topics")

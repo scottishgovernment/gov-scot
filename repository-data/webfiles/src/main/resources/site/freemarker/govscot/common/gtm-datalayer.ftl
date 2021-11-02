@@ -15,7 +15,7 @@
     window.dataLayer.push({
         <#if document.responsibleRole??>
             <#if document.responsibleRole?is_sequence>
-                'responsibleRole': [<#list document.responsibleRole as role>'${role.title?js_string}'<#sep>, </#sep></#list>]
+                'responsibleRole': [<#list document.responsibleRole as role>'${role.title?js_string}'<#sep>, </#sep></#list>],
             <#else>
                 'responsibleRole': '${document.responsibleRole.title?js_string}',
             </#if>
@@ -25,7 +25,7 @@
         </#if>
         <#if document.responsibleDirectorate??>
             <#if document.responsibleDirectorate?is_sequence>
-                    [<#list document.responsibleDirectorate as dir>'${dir.title?js_string}'<#sep>, </#sep></#list>]
+                    [<#list document.responsibleDirectorate as dir>'${dir.title?js_string}'<#sep>, </#sep></#list>],
             <#else>
             'responsibleDirectorate': '${document.responsibleDirectorate.title?js_string}',
             </#if>

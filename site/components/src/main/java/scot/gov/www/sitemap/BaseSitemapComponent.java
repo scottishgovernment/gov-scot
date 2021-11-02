@@ -5,6 +5,7 @@ import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoFolderBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 
@@ -24,9 +25,11 @@ public abstract class BaseSitemapComponent extends BaseHstComponent {
     HstQuery allPagesQuery(HstRequest request, int offset, int limit) {
         HstRequestContext context = request.getRequestContext();
         HippoBean baseBean = context.getSiteContentBaseBean();
+        HippoFolderBean featuredItemsFolder = baseBean.getBean("featured-items");
         HstQueryBuilder builder = HstQueryBuilder.create(baseBean);
         return builder
                 .ofTypes(types())
+                .excludeScopes(featuredItemsFolder)
                 .where(constraints())
                 .limit(limit)
                 .offset(offset)

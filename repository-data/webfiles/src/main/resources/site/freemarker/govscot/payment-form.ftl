@@ -26,10 +26,12 @@
                     <div class="error-summary-message"></div>
                 </div>
 
-                <div class="ds_question" data-threshold="80" data-module="ds-character-count">
-                    <label class="ds_label" for="orderCode">Payment Reference</label>
-                    <p class="ds_question__message  hidden  hidden--hard" id="payment-ref-spaces">Payment Reference cannot contain spaces</p>
-                    <input maxlength="64" class="ds_input" type="text" id="orderCode" name="orderCode" required placeholder="Customer ID - invoice number">
+            <div class="ds_question">
+                <label class="ds_label" for="amount">Amount</label>
+                <p class="ds_question__message  hidden  hidden--hard" id="amount-min">Amount cannot be less than £0.01</p>
+                <p class="ds_question__message  hidden  hidden--hard" id="amount-max">Amount cannot be more than £5000.00</p>
+                <div class="ds_currency-wrapper" data-symbol="£">
+                    <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" min="0.01" max="5000.00" required />
                 </div>
 
                 <div class="ds_question">

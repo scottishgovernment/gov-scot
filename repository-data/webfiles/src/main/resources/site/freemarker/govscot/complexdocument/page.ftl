@@ -238,11 +238,11 @@
                         <section class="document-section">
                             <#list documents as attachedDocument>
                                 <#if attachedDocument?index == 0>
-                                    <#assign isLimelitItem = true/>
+                                    <#assign isHighlightedItem = true/>
                                     <#assign useCoverPage = true/>
                                 </#if>
                                 <#include '../publication/body-document-info.ftl'/>
-                                <#assign isLimelitItem = false/>
+                                <#assign isHighlightedItem = false/>
                                 <#assign useCoverPage = false/>
                             </#list>
                         </section>

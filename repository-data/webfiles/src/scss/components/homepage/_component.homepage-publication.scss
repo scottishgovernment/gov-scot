@@ -1,0 +1,74 @@
+/*------------------------------------*\
+    #HOMEPAGE: PUBLICATION
+\*------------------------------------*/
+
+.homepage-publication {
+  margin-bottom: 28px;
+
+  position: relative;
+
+  &__title {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 7px;
+    max-height: 42px;
+    overflow: hidden;
+  }
+
+  &__topics {
+    color: $color__grey--text;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 21px;
+    list-style-type: none;
+    margin: 7px 0;
+
+    li {
+      display: inline;
+      margin-left: 0;
+
+      &:not(:last-child) {
+        &:after {
+          content: ',';
+        }
+      }
+    }
+  }
+
+  &__date {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 0;
+  }
+
+  &:not(:first-of-type) {
+    padding-top: 28px;
+
+    &:before {
+      border-bottom: 2px dotted $color__grey--pale;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 30%;
+    }
+  }
+}
+
+@include media-query(medium) {
+  .homepage-publication {
+    &__title {
+      max-height: 56px;
+    }
+  }
+}
+
+@include media-query(large) {
+  .homepage-publication {
+    &__title {
+      font-size: 18px;
+      line-height: 28px;
+      max-height: 56px;
+    }
+  }
+}
