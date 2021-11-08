@@ -6,8 +6,6 @@
 'use strict';
 
 import searchUtils from './search-utils';
-import displayToggle from './component.display-toggle';
-import expandable from './component.expandable';
 import dates from '../utils/dates';
 import $ from 'jquery';
 import DSDatePicker from '../../../node_modules/@scottish-government/pattern-library/src/components/date-picker/date-picker';
@@ -50,7 +48,6 @@ function init() {
     let that = this;
     this.searchParams = this.gatherParams(true);
 
-    displayToggle.init();
     this.attachEventHandlers();
     this.enableJSFilters();
     this.hideFilters = hideFilters;
@@ -175,7 +172,6 @@ function attachEventHandlers () {
     $('.js-show-filters').on('click', function (event) {
         event.preventDefault();
         that.showFilters();
-        expandable.showAllExpandableItems();
     });
 
     $('.js-cancel-filters').on('click', function (event) {

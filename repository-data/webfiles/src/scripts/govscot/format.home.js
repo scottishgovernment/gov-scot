@@ -4,7 +4,6 @@
 
 'use strict';
 
-import TextTruncate from './tool.text-truncate';
 import $ from 'jquery';
 
 window.dataLayer = window.dataLayer || [];
@@ -16,10 +15,7 @@ const homePage = {
 
     init: function () {
         this.attachEventHandlers();
-
         this.initHeroItemAnalytics();
-
-        TextTruncate();
     },
 
     initHeroItemAnalytics: function () {

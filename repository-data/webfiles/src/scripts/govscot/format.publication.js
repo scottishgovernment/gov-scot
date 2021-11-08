@@ -5,100 +5,13 @@
 'use strict';
 
 import $ from 'jquery';
-import displayToggle from './component.display-toggle';
-import stickyBackToTop from './component.sticky-back-to-top';
-import '../shared/component.sticky-document-info';
-import './component.expandable';
 
 const publicationPage = {},
     pages = {},
     isMobile = $('.toc-mobile-trigger').is(':visible');
 
 publicationPage.init = function() {
-    this.initExpandables();
     this.initAsyncNavigation();
-    this.initStickyInfoInteractivity();
-    displayToggle.init();
-    stickyBackToTop.init();
-};
-
-publicationPage.initExpandables = function () {
-    $('.js-expand-downloads').on('click', function (event) {
-        event.preventDefault();
-
-        const target = $($(this).attr('href')),
-            linkText = $(this).find('span.publication-info__preamble-expand');
-
-        target.slideToggle(200);
-
-        if (linkText.text() === 'More') {
-            linkText.text('Less');
-            this.attr('aria-expanded', true);
-        } else {
-            linkText.text('More');
-            this.attr('aria-expanded', false);
-        }
-    });
-};
-
-publicationPage.initStickyInfoInteractivity = function() {
-
-    function scrollListTop() {
-        const offset = $('.ds_side-navigation').offset().top + 3; /** MAGIC NUM!! */
-        window.scrollTo(null, offset);
-    }
-
-    /**
-     * Open or close the contents list with buttons in sticky doc info
-     */
-    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-open', () => {
-        this.sideNavigationModule.openSideNav();
-        $('.js-mobile-toc-trigger-close').css('display', 'inline-block');
-        $('.js-mobile-toc-trigger-open').hide();
-        scrollListTop();
-    });
-    $('.sticky-document-info').on('click', '.js-mobile-toc-trigger-close', () => {
-        this.sideNavigationModule.closeSideNav();
-        $('.js-mobile-toc-trigger-open').css('display', 'inline-block');
-        $('.js-mobile-toc-trigger-close').hide();
-        scrollListTop();
-    });
-
-    /* Hide close button to start with */
-    $('.js-mobile-toc-trigger-close').hide();
-
-    $('.sticky-document-info').on('click', '.sticky-document-info__trigger', function(){
-        const button = $(this),
-            expandClass = 'sticky-document-info__trigger--expanded',
-            panel = button.next(),
-            openClass = 'sticky-document-info__panel--open',
-            isOpen = panel.hasClass(openClass),
-            isSticky = $('.sticky-document-info').hasClass('sticky-document-info--is-sticky');
-        let buttonText;
-
-        if (isSticky) {
-            buttonText = 'All files';
-            panel.find('.primary-doc').show()
-                .next().find('h3').show();
-        } else {
-            buttonText = 'Supporting files';
-            panel.find('.primary-doc').hide()
-                .next().find('h3').hide();
-        }
-        button.text(buttonText);
-
-        if ( !isOpen ) {
-            // Add classes
-            panel.addClass(openClass);
-            button.addClass(expandClass);
-        } else {
-            // Remove classes
-            panel.removeClass(openClass);
-            button.removeClass(expandClass);
-            // blur button
-            button.blur();
-        }
-    });
 };
 
 /**

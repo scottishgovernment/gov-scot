@@ -1,12 +1,10 @@
 // DEFAULT FORMAT
 
-/* global window */
-
 'use strict';
 
-const defaultPage = {};
-
-defaultPage.init = function () {
+const defaultPage = {
+    init: function() {
+    }
 };
 
 window.format = defaultPage;

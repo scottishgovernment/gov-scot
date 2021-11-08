@@ -10,7 +10,7 @@ $site-prefix: "gov_";
  */
 @import "../../node_modules/@scottish-government/pattern-library/src/base/all-base";
 @import "../../node_modules/@scottish-government/pattern-library/src/forms/all-forms";
-@import "ds-gov/base.gov-layouts";
+@import "base/base.gov-layouts";
 
 /**
  * COMPONENTS FROM PATTERN LIBRARY
@@ -37,152 +37,38 @@ $breakpoints: (
     'large-to-xlarge' '(min-width: 992px) and (max-width: 1199px)',
     'xlarge-up' '(min-width: 1200px)' );
 
-$images-path: '../../../../assets/mygov/';
-
-/**
- * TOOLS
- */
-// @import "tools/tools.animation";
-// @import "tools/tools.hit-target";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/tools/tools.mixins";
-// @import "tools/tools.mixins";
-// @import "tools/tools.placeholder-selectors";
-
-/**
- * OBJECTS
- */
-// @import "objects/object.column-list";
-// @import "objects/object.containers";
-// @import "objects/object.dividers";
-// @import "objects/object.layers";
-// @import "objects/object.media";
-// @import "objects/object.narrow";
-// @import "objects/object.overflows";
-// @import "objects/object.scrollable";
-// @import "objects/object.svg-icon";
-
-/**
- * COMPONENTS
- */
-// @import "components/component.aps-publication";
-// @import "components/component.article";
-// @import "components/component.article-header";
-// @import "components/component.article-external-link";
-// @import "components/component.az-list";
-// $breadcrumbs__font-size: 12px;
-// $breadcrumbs__font-size--medium: 13px;
-// $breadcrumbs__font-size--large: 14px;
-// $breadcrumbs__margin: 0 0 28px;
-// $breadcrumbs__margin--medium: -3px 0 25px;
-// $breadcrumbs__margin--large: $breadcrumbs__margin--medium;
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.breadcrumbs";
-// @import "components/component.contact-information";
-// @import "components/component.content-data";
-// @import "components/component.contents-list";
-// @import "components/component.crossbar-header";
-// @import "components/component.directorate-list";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-info";
-// @import "components/component.document-nav";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.document-section";
-// @import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expand';
-// $expandable__title-size: 16px;
-// @import '../../node_modules/@scottish-government/mygov-assets/scss/components/component.expandable';
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.external-links";
-// @import "components/component.feedback";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.file-icon";
-// @import "components/component.form-box";
-// @import "components/component.history-list";
-// @import "components/component.issue-callout";
-// @import "components/component.list-controls";
-// @import "components/component.listed-content-item";
-// @import "components/component.multipage-nav";
-// @import "components/component.notification";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.page-nav";
-// @import "components/component.page-group";
-// @import "components/component.pagination";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.person";
-// @import "components/component.person-grid";
-// @import "components/component.policy-list";
-// @import "components/component.publication-info";
-// $search-box__border-radius: 0;
-// $search-box__background-color: $color__grey--lighter;
-// $search-box__font-size: 16px;
-// $search-box__font-size--medium: 17px;
-// $search-box__font-size--large: $search-box__font-size--medium;
-// $search-box__size: 56px;
-// $search-box__size--medium: $search-box__size;
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.search-box";
-// @import "components/component.search-results";
-// @import "components/component.section-marker";
-// @import "components/component.see-all-button";
-// @import "components/component.sidebar-block";
-// // @import "components/component.site-footer";
-// @import "../../node_modules/@scottish-government/mygov-assets/scss/components/component.skip-links";
-// @import "components/component.social-channels";
-// @import "components/component.stat-box";
-// @import "components/component.sticky-back-to-top";
-// @import "components/component.sticky-document-info";
-// @import "components/component.supporting-files";
-// @import "components/component.topic-block";
-// @import "components/component.topic-header";
-// @import "components/component.utility-link";
-// @import "components/component.update-history";
-// @import "components/component.welcome";
 
 
 
+@import "helpers/helper.visibility";
 
-// @import "components/homepage/component.homepage-about";
-// @import "components/homepage/component.homepage-block";
+@import "objects/object.column-list";
+@import "objects/object.overflows";
+@import "objects/object.scrollable";
 
-// @import "components/homepage/component.homepage-news";
-// @import "components/homepage/component.homepage-publication";
-// @import "components/homepage/component.homepage-stats";
+@import "components/component.az-list";
+@import "components/component.document-info";
+@import "components/component.document-banner";
+@import "components/component.featured-item";
+@import "components/component.feedback";
+@import "components/component.file-icon";
+@import "components/component.filters";
+@import "components/component.gov-feature-cards";
+@import "components/component.gov-feature-header";
+@import "components/component.gov-search-result";
+@import "components/component.gov-sidebar-feature";
+@import "components/component.homepage-block";
+@import "components/component.homepage-hero";
+@import "components/component.issue-callout";
+@import "components/component.latest-blocks";
+@import "components/component.person";
+@import "components/component.person-grid";
+@import "components/component.policy-list";
+@import "components/component.stat-box";
+@import "components/component.supporting-documents";
 
-
-
-/*
- need:
- stat box
- homepage gubbins
- overflow
- person (for roles styling)
- expand (civil service page roles are borked)
- listed content item (featured topic item) (should be card now)
- topic block / latest feeds
- publication body (??)
- document info
-
- still to do:
- filters not styled
- complex doc
- - prev/next/menu
- - sticky doc styling
- sticky doc info
-*/
-@import "ds-gov/helper.visibility";
-
-@import "ds-gov/object.column-list";
-@import "ds-gov/object.scrollable";
-
-@import "ds-gov/component.az-list";
-@import "ds-gov/component.document-info";
-@import "ds-gov/component.document-banner";
-@import "ds-gov/component.featured-item";
-@import "ds-gov/component.feedback";
-@import "ds-gov/component.file-icon";
-@import "ds-gov/component.filters";
-@import "ds-gov/component.gov-search-result";
-@import "ds-gov/component.homepage-block";
-@import "ds-gov/component.homepage-hero";
-@import "ds-gov/component.issue-callout";
-@import "ds-gov/component.latest-blocks";
-@import "ds-gov/component.policy-list";
-@import "ds-gov/component.social-channels";
-@import "ds-gov/component.stat-box";
-@import "ds-gov/component.supporting-documents";
-@import "ds-gov/component.topic-header";
-
+@import "overrides/override.card";
+@import "overrides/override.aps-tables";
 
 
 
@@ -190,7 +76,7 @@ $images-path: '../../../../assets/mygov/';
 // full-width-image: TODO turn into a component
 .full-width-image {
     // allow the image to break out of layout; by design
-    @include media-query(medium-down) {
+    @include ds_media-query(medium-down) {
         margin-left: -16px;
         max-width: none;
         margin-right: -16px;
@@ -200,48 +86,6 @@ $images-path: '../../../../assets/mygov/';
     display: block;
     max-width: 100%;
 }
-
-
-
-.person-grid {
-    @include layout();
-
-    list-style-type: none;
-    margin-left: 0;
-}
-
-@include media-query(medium) {
-    .person-grid__item {
-        float: left;
-        @include colwidth(6);
-
-        &:nth-child(2n+1) {
-            clear: left;
-        }
-    }
-}
-
-@include media-query(large) {
-    .person-grid__item {
-        float: left;
-        @include colwidth(4);
-
-        &:nth-child(2n+1) {
-            clear: none;
-        }
-        &:nth-child(3n+1) {
-            clear: left;
-        }
-    }
-}
-
-@supports (display: grid) {
-    .person-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-
 
 
 .body-content table {
@@ -291,4 +135,41 @@ $images-path: '../../../../assets/mygov/';
 
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
+}
+
+
+
+
+
+
+
+.ds_accordion-item--small {
+    .ds_accordion-item__button, .ds_accordion-item__header-button {
+        @include small-size;
+        padding: 12px 36px 12px 8px;
+    }
+
+    .ds_accordion-item__indicator {
+        right: 12px;
+        top: 14px;
+
+        @include media-query(medium) {
+            right: 16px;
+        }
+    }
+}
+
+
+
+.ds_accordion.js-initialised .ds_accordion-item__body {
+    padding: 0 8px;
+}
+
+.ds_accordion-item--small .ds_accordion-item__body,
+.ds_accordion.js-initialised .ds_accordion-item--small .ds_accordion-item__control:checked ~ .ds_accordion-item__body {
+    padding-left: 8px;
+    padding-right: 8px;
+
+    @include ds_responsive-padding(2, top);
+    @include ds_responsive-padding(3, bottom);
 }

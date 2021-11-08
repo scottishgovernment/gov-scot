@@ -1,0 +1,86 @@
+/*------------------------------------*\
+    #STAT BOX
+\*------------------------------------*/
+
+.stat-boxes {
+  @include ds_responsive-margin(2, bottom);
+
+  overflow: auto;
+}
+
+.stat-box {
+  @include ds_responsive-margin(2, bottom);
+
+  border: 1px solid currentColor;
+  border-width: 1px 0;
+  color: $ds_colour__text;
+  display: block;
+  min-height: 104px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  @include ds_blocklink;
+
+  float: left;
+  width: 30%;
+  margin-left: 5%;
+
+  &:nth-child(3n+1) {
+    margin-left: 0;
+  }
+
+  &__value {
+    display: block;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 80px;
+  }
+
+  &__label {
+    top: 64px;
+    display: table;
+    min-height: 32px;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__label-text {
+    display: table-cell;
+    @include ds_tiny-size;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+a.stat-box {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:active {
+    outline: 0;
+  }
+}
+
+@include ds_media-query(medium) {
+  .stat-box {
+    min-height: 132px;
+
+    &__value {
+      font-size: 70px;
+      line-height: 96px;
+    }
+
+    &__label {
+      top: 80px;
+    }
+
+    &__label-text {
+      line-height: 24px;
+    }
+  }
+}

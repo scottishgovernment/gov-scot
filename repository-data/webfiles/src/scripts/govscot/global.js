@@ -5,14 +5,9 @@
 'use strict';
 
 import $ from 'jquery';
-import banner from './component.banner';
-import cookieNotice from './component.cookie-notice';
-import expand from './component.expand';
 import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
-import NotificationBanner from './component.notification';
-import showHide from './component.showhide';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
@@ -55,12 +50,8 @@ const global = {
         this.initPubsub();
         this.svgFallback();
 
-        banner.init('staging-banner');
-        cookieNotice.init();
-        expand.init();
         this.initNotifications();
         this.initDesignSystemComponents();
-        showHide.init(document.querySelector('#page-content'));
     },
 
     initDesignSystemComponents: function () {

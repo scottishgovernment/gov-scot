@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    FEATURED ITEM
+\*------------------------------------*/
+
+/// used on issue and topic pages
+
+.#{$site-prefix}featured-item {
+    @include small-size;
+    @include blocklink('.#{$site-prefix}featured-item__link', false);
+
+    line-height: 24px;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+
+    &__metadata {
+        @include tiny-size;
+        margin-bottom: 8px;
+
+        .ds_content-label {
+            @include tiny-size;
+            font-weight: $bold;
+        }
+
+        .ds_metadata__value {
+            font-weight: $normal;
+        }
+    }
+
+    &--sidebar {
+        background-color: $ds_colour__grey--lighter;
+        box-shadow: inset 4px 0 0 $ds_colour__brand;
+        padding: 16px;
+    }
+}
+
+h3.#{$site-prefix}featured-item__title {
+    @include h4-size;
+
+    line-height: 24px;
+    margin-top: 0;
+}
+
+@supports (display: grid) {
+    .#{$site-prefix}featured-item {
+        display: grid;
+        grid-template-rows: max-content;
+    }
+}

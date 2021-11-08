@@ -36,14 +36,6 @@
   </div>
 </#if>
 
-<@hst.headContribution category="footerScripts">
-    <script type="module" src="<@hst.webfile path="/assets/scripts/policy.js"/>"></script>
-</@hst.headContribution>
-<@hst.headContribution category="footerScripts">
-    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/policy.es5.js"/>"></script>
-</@hst.headContribution>
-
-
 <#if document??>
     <@hst.headContribution category="pageTitle">
         <title>${index.title?html}<#if document.title != index.title>: ${document.title?html}</#if> - gov.scot</title>

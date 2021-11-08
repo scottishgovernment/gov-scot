@@ -1,0 +1,94 @@
+/*------------------------------------*\
+    VISIBILITY
+\*------------------------------------*/
+
+/**
+* responsive visibility, cribbed from Bootstrap 3
+*/
+@include ds_media-query(medium-down) {
+    .hidden-xsmall {
+        display: none !important;
+    }
+}
+
+@include ds_media-query(small-to-medium) {
+    .hidden-small {
+        display: none !important;
+    }
+}
+
+@include ds_media-query(medium-to-large) {
+    .hidden-medium {
+        display: none !important;
+    }
+}
+
+@include ds_media-query(large-to-xlarge) {
+    .hidden-large {
+        display: none !important;
+    }
+}
+
+@include ds_media-query(xlarge-up) {
+    .hidden-xlarge {
+        display: none !important;
+    }
+}
+
+.visible-xsmall,
+.visible-small,
+.visible-medium,
+.visible-large,
+.visible-xlarge {
+    display: none !important;
+}
+
+@include ds_media-query(medium-down) {
+    .visible-xsmall {
+        display: block !important;
+    }
+
+    .visible-xsmall--inline {
+        display: inline !important;
+    }
+}
+
+@include ds_media-query(small-to-medium) {
+    .visible-small {
+        display: block !important;
+    }
+
+    .visible-small--inline {
+        display: inline !important;
+    }
+}
+
+@include ds_media-query(medium-to-large) {
+    .visible-medium {
+        display: block !important;
+    }
+
+    .visible-medium--inline {
+        display: inline !important;
+    }
+}
+
+@include ds_media-query(large-to-xlarge) {
+    .visible-large {
+        display: block !important;
+    }
+
+    .visible-large--inline {
+        display: inline !important;
+    }
+}
+
+@include ds_media-query(xlarge-up) {
+    .visible-xlarge {
+        display: block !important;
+    }
+
+    .visible-xlarge--inline {
+        display: inline !important;
+    }
+}

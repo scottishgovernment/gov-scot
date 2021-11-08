@@ -1,46 +1,121 @@
 .gov_feature-header {
+    @include ds_responsive-margin(8, bottom);
+
     background-color: #ebebeb;
-    margin-bottom: 64px;
 
     &__title {
-        font-size: 30px;
+        @include ds_h1-style;
+        @include ds_responsive-margin(1, bottom);
+
         font-weight: 300;
-        line-height: 35px;
-        margin-bottom: 8px;
     }
 
     &__content {
         padding: 32px 16px;
+        position: relative;
+        z-index: 2;
 
         > :last-child {
             margin-bottom: 0;
         }
-    }
-}
 
-@include media-query('medium') {
-    .gov_feature-header {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-
-        &__title {
-            font-size: 44px;
-            line-height: 56px;
-        }
-
-        &__content {
+        @include media-query(medium) {
             padding-left: 24px;
         }
 
-        &__media {
-            width: calc(50% - 16px);
+        @include media-query(large) {
+            padding-left: 48px;
         }
+    }
+
+    &__media {
+        position: relative;
+        z-index: 1;
+
+        &--full > img {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    @include media-query(medium) {
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 32px;
+
+        &__content {
+            grid-area: 1/1/2/2;
+        }
+
+        &__media {
+            grid-area: 1/2/2/3;
+        }
+
+        &__media--full {
+            grid-area: 1/1/2/3;
+        }
+    }
+
+    &--issue,
+    &--topic {
+        background-color: transparent;
+    }
+
+    &--issue &__media,
+    &--topic &__media {
+        margin: 0 -16px 8px -16px;
+
+        @include media-query(medium) {
+            margin: 0;
+        }
+    }
+
+    &--issue &__content,
+    &--topic &__content {
+        @include media-query(medium-down) {
+            padding: 0;
+        }
+    }
+
+    &--issue &__content {
+        align-self: start;
+    }
+
+    &--issue &__content &__title {
+        background: $ds_colour__white;
+        display: inline-block;
+        padding: 0 16px 8px 0;
     }
 }
 
-@include media-query('large') {
-    .gov_feature-header__content {
-        padding-left: 48px;
+
+
+
+// ie
+.gov_feature-header {
+    @include media-query(medium) {
+        display: -ms-grid;
+        -ms-grid-columns: 1fr 1fr;
+
+        &__content {
+            -ms-grid-column: 1;
+            -ms-grid-row-align: center;
+            margin-right: 16px;
+        }
+
+        &__media {
+            -ms-grid-column: 2;
+        }
+
+        &__media--full {
+            -ms-grid-column: 1;
+            -ms-grid-column-span: 2;
+        }
+
+        &--issue &__content {
+            -ms-grid-row-align: start;
+            padding: 0;
+        }
     }
 }

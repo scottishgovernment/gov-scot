@@ -6,19 +6,13 @@ const commonEntry = {
     'global':                       './src/scripts/govscot/global.js',
 
     // format-specific entry points
-    'about':                        './src/scripts/govscot/format.about.js',
-    'collection':                   './src/scripts/govscot/format.collection.js',
     'complex-document':             './src/scripts/govscot/format.complex-document.js',
     'home':                         './src/scripts/govscot/format.home.js',
-    'issue-hub':                    './src/scripts/govscot/format.issue-hub.js',
     'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
     'search':                       './src/scripts/govscot/format.search.js',
-    'topic':                        './src/scripts/govscot/format.topic.js',
     'publication':                  './src/scripts/govscot/format.publication.js',
-    'policy':                       './src/scripts/govscot/format.policy.js',
     'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
     'covid-lookup':                 './src/scripts/govscot/format.covid-lookup.js'
-
 };
 
 const commonMode = 'development';
@@ -37,10 +31,7 @@ const commonResolve = {
 
     // equivalent to requirejs paths
     alias: {
-        'jquery': aliasPath + 'jquery.min',
-        'jquery.dotdotdot': aliasPath + 'jquery.dotdotdot.min',
-        'moment': aliasPath + 'moment',
-        'hammer': aliasPath + 'hammer.min',
+        'jquery': aliasPath + 'jquery.min'
     }
 };
 

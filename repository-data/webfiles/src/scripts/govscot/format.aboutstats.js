@@ -4,8 +4,6 @@
 
 'use strict';
 
-import TextTruncate from './tool.text-truncate';
-import 'jquery.dotdotdot';
 import $ from 'jquery';
 
 window.dataLayer = window.dataLayer || [];
@@ -14,8 +12,6 @@ const homePage = {
 
     init: function () {
         this.attachEventHandlers();
-
-        TextTruncate();
     },
 
     attachEventHandlers: function () {
@@ -29,7 +25,7 @@ const homePage = {
 
             that.submitstatsForm($(this).attr('href'));
 
-        });   
+        });
     },
 
         submitstatsForm: function (destinationUrl) {
@@ -43,7 +39,7 @@ const homePage = {
         });
 
           // build querystring
-      
+
         queryStringParams.push('cat=filter');
 
         if (pubtype.length > 0) {
@@ -62,12 +58,7 @@ const homePage = {
 
     navigateToUrl: function (url) {
         window.location.href = url;
-    },
-
-    navigateToUrl: function (url) {
-        window.location.href = url;
-    },
-
+    }
 };
 
 window.format = homePage;

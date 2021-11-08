@@ -2,42 +2,46 @@
     #PERSON GRID
 \*------------------------------------*/
 
-h1 + .person-grid {
-    margin-top: -28px;
+.#{$site-prefix}person-grid {
+  @include ds_layout();
+
+  list-style-type: none;
+  margin-left: 0;
 }
 
-.person-grid {
-  /**
-   * 1. With the margin bottom of the last .person of 56px, we get a total of 128px.
-   * 2. This affects <li> elements that are used as grid-item and so should not have
-   *    a margin.
-   */
-  margin-bottom: 56px; /* [1] */
+@include ds_media-query(medium) {
+  .#{$site-prefix}person-grid__item {
+      float: left;
+      @include ds_colwidth(6);
 
-  &__intro {
-    margin-bottom: 56px;
-  }
-
-  &__people > li {
-    margin-bottom: 0; /* [2] */
-    margin-left: 0;
-  }
-
-  + .person-grid {
-    border-top: 1px solid $color__grey--dark;
-    margin-top: 63px;
-    padding-top: 21px;
+      &:nth-child(2n+1) {
+          clear: left;
+      }
   }
 }
 
-@include media-query(medium) {
-    h1 + .person-grid {
-        margin-top: -35px;
+@include ds_media-query(large) {
+  .#{$site-prefix}person-grid__item {
+      float: left;
+      @include ds_colwidth(4);
+
+      &:nth-child(2n+1) {
+          clear: none;
+      }
+      &:nth-child(3n+1) {
+          clear: left;
+      }
+  }
+}
+
+@supports (display: grid) {
+  .#{$site-prefix}person-grid {
+    @include ds_media-query(medium) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .person-grid {
-        + .person-grid {
-            padding-top: 42px;
-        }
+    @include ds_media-query(large) {
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 }

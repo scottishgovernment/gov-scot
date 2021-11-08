@@ -301,13 +301,6 @@
     </div>
 </#if>
 
-<@hst.headContribution category="footerScripts">
-    <script type="module" src="<@hst.webfile path="/assets/scripts/topic.js"/>"></script>
-</@hst.headContribution>
-<@hst.headContribution category="footerScripts">
-    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/topic.es5.js"/>"></script>
-</@hst.headContribution>
-
 <#if document??>
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>

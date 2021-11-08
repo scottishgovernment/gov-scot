@@ -1,0 +1,902 @@
+/*------------------------------------*\
+    SITE PAGE LAYOUTS
+\*------------------------------------*/
+
+.#{$site-prefix}layout {
+
+}
+
+.#{$site-prefix}sublayout {
+    @include ds_layout();
+    margin-bottom: 32px;
+
+    &--threecols {
+        margin-left: 0;
+    }
+
+    &--publication-header {
+        > * {
+            @include ds_responsive-margin(4, bottom);
+        }
+    }
+}
+
+@include ds_media-query(medium) {
+    .#{$site-prefix}layout {
+        &--about {
+            > .ds_layout {
+                &__banner {
+                    @include ds_colwidth(9);
+                    @include ds_colpush(3);
+                }
+
+                &__header {
+                    @include ds_colwidth(9);
+                    @include ds_colpush(3);
+                }
+
+                &__content {
+                    @include ds_colwidth(9);
+                    @include ds_colpush(3);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(9);
+                    @include ds_colpush(3);
+                    @include ds_colpush(3);
+                }
+
+                &__sidebar {
+                    float: left;
+                    @include ds_colwidth(3);
+                }
+            }
+        }
+
+        &--filter-search {
+            > .ds_layout {
+                &__header {
+                    @include ds_colwidth(8);
+                    @include ds_colpush(3);
+                }
+
+                &__content {
+                    @include ds_colwidth(8);
+                    @include ds_colpush(3);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(8);
+                    @include ds_colpush(4);
+                }
+
+                &__sidebar {
+                    float: left;
+                    @include ds_colwidth(4);
+                }
+            }
+        }
+
+        &--policy {
+            > .ds_layout {
+                &__header {
+                    @include ds_colwidth(8);
+                }
+
+                &__content {
+                    float: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(8);
+                    @include ds_colpush(4);
+                }
+
+                &__sidebar {
+                    float: left;
+                    @include ds_colwidth(4);
+                }
+            }
+        }
+
+        &--issue {
+            > .ds_layout {
+                &__banner {
+                    @include ds_colwidth(12);
+                }
+
+                &__content {
+                    float: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__sidebar,
+                &__sidebar-B {
+                    float: left;
+                    @include ds_colwidth(4);
+                }
+            }
+        }
+
+        &--collection,
+        &--publication {
+            > .ds_layout {
+                &__header {
+                    @include ds_colwidth(12);
+                }
+
+                &__content {
+                    float: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(8);
+                    @include ds_colpush(4);
+                }
+
+                &__sidebar {
+                    float: left;
+                    @include ds_colwidth(4);
+                }
+            }
+        }
+
+        &--role {
+            > .ds_layout {
+                &__header {
+                    @include ds_colwidth(8);
+                }
+
+                &__content {
+                    float: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(8);
+                    @include ds_colpush(4);
+                }
+
+                &__sidebar,
+                &__sidebar-B {
+                    clear: left;
+                    float: left;
+                    @include ds_colwidth(4);
+                }
+            }
+        }
+
+        &--featured-role {
+            > .ds_layout {
+                &__content {
+                    float: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__latest,
+                &__featured,
+                &__connect {
+                    clear: left;
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__sidebar {
+                    float: left;
+                    @include ds_colwidth(4);
+                }
+            }
+        }
+    }
+
+    .#{$site-prefix}sublayout {
+        &--twocols {
+            > * {
+                float: left;
+                @include ds_colwidth(6);
+
+                &:nth-child(2n+1) {
+                    clear: left;
+                }
+            }
+        }
+
+        &--threecols {
+            > * {
+                float: left;
+                @include ds_colwidth(4);
+
+                &:nth-child(3n+1) {
+                    clear: left;
+                }
+            }
+        }
+
+        &--publication-header {
+            > .gov_sublayout {
+                &__title {
+                    @include ds_colwidth(10);
+                }
+
+                &__metadata {
+                    @include ds_colwidth(10);
+                }
+
+                &__content {
+                    float: left;
+                    @include ds_colwidth(8);
+                }
+
+                &__document {
+                    float: right;
+                    @include ds_colwidth(3);
+                }
+            }
+        }
+    }
+}
+
+@include ds_media-query(large) {
+    .#{$site-prefix}layout {
+        &--about {
+            > .ds_layout {
+                &__banner {
+                    @include ds_colwidth(7);
+                }
+
+                &__header {
+                    @include ds_colwidth(7);
+                }
+
+                &__content {
+                    @include ds_colwidth(7);
+                }
+
+                &__feedback {
+                    @include ds_colwidth(7);
+                }
+            }
+        }
+
+        &--filter-search {
+            > .ds_layout {
+                &__content {
+                    @include ds_colwidth(7);
+                    @include ds_colpush(3);
+                }
+
+                &__feedback {
+                    clear: left;
+                    @include ds_colwidth(7);
+                    @include ds_colpush(3);
+                }
+
+                &__sidebar {
+                    @include ds_colwidth(3);
+                }
+            }
+        }
+
+        &--policy {
+            > .ds_layout {
+                &__content {
+                    float: left;
+                    @include ds_colwidth(7);
+                }
+
+                &__feedback {
+                    @include ds_colwidth(7);
+                    @include ds_colpush(3);
+                }
+
+                &__sidebar {
+                    @include ds_colwidth(3);
+                }
+            }
+        }
+
+        &--collection,
+        &--publication {
+            > .ds_layout {
+                &__content {
+                    float: left;
+                    @include ds_colwidth(7);
+                }
+
+                &__feedback {
+                    @include ds_colwidth(7);
+                    @include ds_colpush(3);
+                }
+
+                &__sidebar {
+                    @include ds_colwidth(3);
+                }
+            }
+        }
+
+        &--role {
+            > .ds_layout {
+                &__header {
+                    @include ds_colwidth(8);
+                }
+
+                &__content {
+                    @include ds_colwidth(7);
+                }
+
+                &__feedback {
+                    @include ds_colwidth(7);
+                    @include ds_colpush(3);
+                }
+
+                &__sidebar,
+                &__sidebar-B {
+                    @include ds_colwidth(3);
+                }
+            }
+        }
+    }
+
+    .#{$site-prefix}sublayout {
+        &--firstminister {
+            > *:first-child {
+                float: left;
+                @include ds_colwidth(2, 6);
+            }
+
+            > *:last-child {
+                float: left;
+                @include ds_colwidth(4, 6);
+            }
+        }
+
+        &--publication-header {
+            > .gov_sublayout {
+                &__title {
+                    @include ds_colwidth(10);
+                }
+
+                &__metadata {
+                    float: left;
+                    @include ds_colwidth(3);
+                }
+
+                &__content {
+                    float: left;
+                    @include ds_colwidth(7);
+                }
+
+                &__document {
+                    @include ds_colwidth(2);
+                }
+            }
+        }
+    }
+}
+
+@supports(display: grid) {
+    /**
+     * GRID KEY
+     * c: content
+     * f: feedback
+     * h: header
+     * l: list (e.g. category items, search results)
+     * n: navigation (e.g. subpages of a publication or guide)
+     * p: partner branding
+     * s: sidebar
+
+     * b: banner
+     * d: directorates
+     * F: featured items
+     * l: latest (news/collections/etc)
+     * P: policies
+    */
+    $grid-area-about:           a;
+    $grid-area-banner:          b;
+    $grid-area-contact:         C;
+    $grid-area-directorates:    d;
+    $grid-area-featured:        F;
+    $grid-area-latest:          l;
+    $grid-area-policies:        P;
+    $grid-area-search:          S;
+    $grid-area-sidebar-b:       s2;
+
+    .ds_layout {
+        grid-template-rows: auto auto 1fr;
+
+        &__about {
+            grid-area: $grid-area-about;
+        }
+
+        &__banner {
+            grid-area: $grid-area-banner;
+        }
+
+        &__contact {
+            grid-area: $grid-area-contact;
+        }
+
+        &__directorates {
+            grid-area: $grid-area-directorates;
+        }
+
+        &__featured {
+            grid-area: $grid-area-featured;
+        }
+
+        &__latest {
+            grid-area: $grid-area-latest;
+        }
+
+        &__policies {
+            grid-area: $grid-area-policies;
+        }
+
+        &__search {
+            grid-area: $grid-area-search;
+        }
+
+        &__sidebar-B {
+            grid-area: $grid-area-sidebar-b;
+        }
+    }
+
+    .#{$site-prefix}layout {
+        &--about {
+            grid-template-areas:
+                'b b'
+                's s'
+                'h h'
+                'c c'
+                'f f';
+        }
+
+        &--filter-search {
+            grid-template-areas:
+                's s'
+                'h h'
+                'c c'
+                'f f';
+        }
+
+        &--role {
+            grid-template-areas:
+                'h h'
+                's s'
+                'c c'
+                's2 s2'
+                'f f';
+        }
+
+        &--policy {
+            grid-template-areas:
+                'h h'
+                's s'
+                'c c'
+                'f f';
+        }
+
+        &--topic {
+            grid-template-areas:
+                'b b'
+                'c c'
+                'P P'
+                'F F'
+                'l l'
+                'd d'
+                'f f';
+        }
+
+        &--issue {
+            grid-template-areas:
+                'b  b'
+                's2 s2'
+                'c  c'
+                's  s'
+                'f  f';
+        }
+
+        &--collection,
+        &--publication,
+        &--publication--no-sidebar {
+            grid-template-areas:
+                'h h'
+                's s'
+                'c c'
+                'f f';
+        }
+
+        &--home {
+            grid-template-areas:
+                'h h'
+                'S S'
+                'c c'
+                'f f';
+        }
+
+        &--featured-role {
+            grid-template-areas:
+                'h h'
+                'c c'
+                's s'
+                'l l'
+                'F F'
+                'C C'
+                'f f';
+        }
+
+        &--featured-role-article {
+            grid-template-areas:
+                'h h'
+                'c c'
+                's s'
+                'f f';
+        }
+    }
+
+    @include ds_media-query(small) {
+        .#{$site-prefix}layout {
+            &--about {
+                grid-template-areas:
+                    'b b b b b b'
+                    's s s s s s'
+                    'h h h h h h'
+                    'c c c c c c'
+                    'f f f f f f';
+            }
+
+            &--filter-search {
+                grid-template-areas:
+                    's s s s s s'
+                    'h h h h h h'
+                    'c c c c c c'
+                    'f f f f f f';
+            }
+
+            &--policy {
+                grid-template-areas:
+                    'h h h h h h'
+                    's s s s s s'
+                    'c c c c c c'
+                    'f f f f f f';
+            }
+
+            &--topic {
+                grid-template-areas:
+                    'b b b b b b'
+                    'c c c c c c'
+                    'P P P P P P'
+                    'F F F F F F'
+                    'l l l l l l'
+                    'd d d d d d'
+                    'f f f f f f';
+            }
+
+            &--issue {
+                grid-template-areas:
+                    'b  b  b  b  b  b'
+                    's2 s2 s2 s2 s2 s2'
+                    'c  c  c  c  c  c'
+                    's  s  s  s  s  s'
+                    'f  f  f  f  f  f';
+            }
+
+            &--collection,
+            &--publication,
+            &--publication--no-sidebar {
+                grid-template-areas:
+                    'h h h h h h'
+                    's s s s s s'
+                    'c c c c c c'
+                    'f f f f f f';
+            }
+
+            &--role {
+                grid-template-areas:
+                    'h h h h h h'
+                    's s s s s s'
+                    'c c c c c c'
+                    's2 s2 s2 s2 s2 s2'
+                    'f f f f f f';
+            }
+
+            &--home {
+                grid-template-areas:
+                    'h h h h h h'
+                    'S S S S S S'
+                    'c c c c c c'
+                    'f f f f f f';
+            }
+
+            &--featured-role {
+                grid-template-areas:
+                    'h h h h h h'
+                    'c c c c c c'
+                    's s s s s s'
+                    'l l l l l l'
+                    'F F F F F F'
+                    'C C C C C C'
+                    'f f f f f f';
+            }
+
+            &--featured-role-article {
+                grid-template-areas:
+                    'h h h h h h'
+                    'c c c c c c'
+                    's s s s s s'
+                    'f f f f f f';
+            }
+        }
+    }
+
+    @include ds_media-query(medium) {
+        .#{$site-prefix}layout {
+            &--about {
+                grid-template-areas:
+                    's s s b b b b b b b b b'
+                    's s s h h h h h h h h h'
+                    's s s c c c c c c c c c'
+                    '. . . f f f f f f f f f';
+            }
+
+            &--filter-search {
+                grid-template-areas:
+                    'h h h h h h h h . . . .'
+                    's s s s c c c c c c c c'
+                    '. . . . f f f f f f f f';
+            }
+
+            &--policy {
+                grid-template-areas:
+                    'h h h h h h h h . . . .'
+                    's s s s c c c c c c c c'
+                    '. . . . f f f f f f f f';
+            }
+
+            &--topic {
+                grid-template-areas:
+                    'b b b b b b b b b b b b'
+                    'c c c c c c c c c . . .'
+                    'P P P P P P P P P P P P'
+                    'F F F F F F F F F F F F'
+                    'l l l l l l l l l l l l'
+                    'd d d d d d d d d d d d'
+                    'f f f f f f f f f . . .';
+            }
+
+            &--issue {
+                grid-template-areas:
+                    'b  b  b  b  b  b  b  b  b  b  b  b'
+                    'c  c  c  c  c  c  c  c  s2 s2 s2 s2'
+                    'c  c  c  c  c  c  c  c  s  s  s  s'
+                    'f  f  f  f  f  f  f  f  .  .  .  .';
+            }
+
+            &--collection,
+            &--publication {
+                grid-template-areas:
+                    'h h h h h h h h h h h h'
+                    's s s s c c c c c c c c'
+                    '. . . . f f f f f f f f';
+            }
+
+            &--publication--no-sidebar {
+                grid-template-areas:
+                    'h h h h h h h h h h h h'
+                    'c c c c c c c c c c c c'
+                    'f f f f f f f f f f f f';
+            }
+
+            &--role {
+                grid-template-areas:
+                    'h  h  h  h  h  h  h  h  .  .  .  .'
+                    's  s  s  s  c  c  c  c  c  c  c  c'
+                    's2 s2 s2 s2 c  c  c  c  c  c  c  c'
+                    '.  .  .  .  f  f  f  f  f  f  f  f';
+            }
+
+            &--home {
+                grid-template-areas:
+                    'h h h h h h h . S S S S'
+                    'c c c c c c c c c c c c'
+                    'f f f f f f f f . . . .';
+            }
+
+            &--featured-role {
+                grid-template-areas:
+                    'h h h h h h h h h h h h'
+                    'c c c c c c c c s s s s'
+                    'l l l l l l l l l l l l'
+                    'F F F F F F F F F F F F'
+                    'C C C C C C C C C C C C'
+                    'f f f f f f f f . . . .';
+            }
+
+            &--featured-role-article {
+                grid-template-areas:
+                    'h h h h h h h h s s s s'
+                    'c c c c c c c c s s s s'
+                    'f f f f f f f f . . . .';
+            }
+        }
+    }
+
+    @include ds_media-query(large) {
+        .#{$site-prefix}layout {
+            &--about {
+                grid-template-areas:
+                    's s s b b b b b b b . .'
+                    's s s h h h h h h h . .'
+                    's s s c c c c c c c . .'
+                    '. . . f f f f f f f . .';
+            }
+
+            &--filter-search {
+                grid-template-areas:
+                    'h h h h h h h h . . . .'
+                    's s s c c c c c c c . .'
+                    '. . . f f f f f f f . .';
+            }
+
+            &--policy {
+                grid-template-areas:
+                    'h h h h h h h h . . . .'
+                    's s s c c c c c c c . .'
+                    '. . . f f f f f f f . .';
+            }
+
+            &--topic {
+                grid-template-areas:
+                    'b b b b b b b b b b b b'
+                    'c c c c c c c . . . . .'
+                    'P P P P P P P P P P P P'
+                    'F F F F F F F F F F F F'
+                    'l l l l l l l l l l l l'
+                    'd d d d d d d d d d d d'
+                    'f f f f f f f . . . . .';
+            }
+
+            &--collection,
+            &--publication,
+            &--publication--no-sidebar {
+                grid-template-areas:
+                    'h h h h h h h h h h h h'
+                    's s s c c c c c c c . .'
+                    '. . . f f f f f f f . .';
+            }
+
+            &--role {
+                grid-template-areas:
+                    'h  h  h  h  h  h  h  h  .  .  .  .'
+                    's  s  s  c  c  c  c  c  c  c  .  .'
+                    's2 s2 s2 c  c  c  c  c  c  c  .  .'
+                    '.  .  .  f  f  f  f  f  f  f  .  .';
+            }
+
+            &--featured-role-article {
+                grid-template-areas:
+                    'h h h h h h h . s s s s'
+                    'c c c c c c c . s s s s'
+                    'f f f f f f f . . . . .';
+            }
+        }
+    }
+
+    @include ds_media-query(xlarge) {
+        .#{$site-prefix}layout {
+
+        }
+    }
+
+    .#{$site-prefix}sublayout {
+        grid-gap: $grid-gap-y $grid-gap-x;
+
+        &--twocols,
+        &--threecols {
+            grid-template-areas: none;
+        }
+
+        &--publication-header {
+            > * {
+                margin-bottom: 0;
+            }
+        }
+
+        &--firstminister {
+            grid-template-areas: none;
+        }
+    }
+
+    @include ds_media-query(small) {
+        .#{$site-prefix}sublayout {
+            &--threecols {
+                grid-template-columns: repeat(2, 6fr);
+            }
+
+            &--publication-header {
+                .gov_sublayout__title,
+                .gov_sublayout__metadata,
+                .gov_sublayout__content,
+                .gov_sublayout__document {
+                    grid-column: 1 / -1;
+                }
+            }
+        }
+    }
+
+    @include ds_media-query(medium) {
+        .#{$site-prefix}sublayout {
+            &--twocols {
+                grid-template-columns:repeat(2, 6fr);
+            }
+
+            &--threecols {
+                grid-template-columns:repeat(3, 4fr);
+            }
+
+            &--publication-header {
+                grid-template-columns: repeat(12, 1fr);
+
+                .gov_sublayout__title {
+                    grid-column: 1 / 10;
+                }
+
+                .gov_sublayout__metadata {
+                    grid-column: 1 / 10;
+                }
+
+                .gov_sublayout__content {
+                    grid-column: 1 / 10;
+                }
+
+                .gov_sublayout__document {
+                    grid-column: 10 / 13;
+                    grid-row: 1 / 4;
+                }
+            }
+        }
+    }
+
+    @include ds_media-query(large) {
+        .#{$site-prefix}sublayout {
+            &--firstminister {
+                grid-template-areas: none;
+                grid-template-columns: 2fr 4fr;
+            }
+
+            &--publication-header {
+                .gov_sublayout__title {
+                    grid-column: 1 / 10;
+                }
+
+                .gov_sublayout__metadata {
+                    grid-column: 1 / 4;
+                }
+
+                .gov_sublayout__content {
+                    grid-column: 4 / 10;
+                }
+
+                .gov_sublayout__document {
+                    grid-column: 11 / 13;
+                    grid-row: 1 / 3;
+                }
+            }
+        }
+    }
+}

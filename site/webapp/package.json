@@ -6,8 +6,5 @@
     "name": "mygov.scot team",
     "email": "dleepdigmsgb@scotland.gsi.gov.uk",
     "url": "http://www.gov.scot/"
-  },
-  "devDependencies": {
-    "@scottish-government/mygov-assets": "latest"
   }
 }

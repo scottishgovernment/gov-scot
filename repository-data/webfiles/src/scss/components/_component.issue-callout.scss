@@ -1,33 +1,28 @@
 /*------------------------------------*\
-    #ISSUE CALLOUT
+    ISSUE CALLOUT
 \*------------------------------------*/
 
-// dev note: this doesn't really belong here
-.body-content {
-    position: relative;
-}
-
-.issue-callout {
-    background: $color__white;
-    color: $color__blue--base;
-    margin: 0 -15px 35px;
-    padding: 14px 15px;
+.#{$site-prefix}issue-callout {
+    background: $ds_colour__white;
+    color: $ds_colour__brand;
+    margin: -48px -16px 32px;
+    padding: 16px;
     text-align: center;
 
     &__inner {
-        border: 1px solid $color__blue--base;
+        border: 1px solid currentColor;
         overflow: hidden;
-        padding: 7px 15px;
+        padding: 8px 16px;
         position: relative;
 
         &:before,
         &:after {
-            background: $color__white;
+            background: $ds_colour__white;
             bottom: 0;
             content: '';
             position: absolute;
             top: 0;
-            width: 15px;
+            width: 16px;
             z-index: 2;
         }
 
@@ -43,14 +38,13 @@
     &__alpha {
         display: inline-block;
         font-size: 26px;
-        font-weight: 300;
-        line-height: 35px;
-        margin: 0 0 14px;
+        line-height: 32px;
+        margin: 0 0 16px;
         position: relative;
 
         &:before,
         &:after {
-            background: $color__blue--base;
+            background: $ds_colour__brand;
             content: '';
             height: 1px;
 
@@ -59,7 +53,7 @@
         }
 
         &:before {
-            left: -25px;
+            left: -24px;
             right: calc(100% + 8px);
         }
 
@@ -72,65 +66,28 @@
     &__beta {
         font-size: 22px;
         font-weight: 700;
-        margin: 16px 0 14px;
+        margin: 16px 0 16px;
     }
 
     &__gamma {
         font-size: 14px;
         font-weight: 700;
-        line-height: 21px;
-        margin: 0 0 27px;
+        line-height: 24px;
+        margin: 0 0 24px;
     }
 }
 
-@include media-query(medium-down) {
-    .displace-by-issue-callout {
-        padding-top: 0 !important;
-    }
-}
-
-@include media-query(medium) {
-    .issue-callout {
-        box-shadow: 0px 4px 6px 1px rgba(0,0,0,0.1);
+@include ds_media-query(medium) {
+    .#{$site-prefix}issue-callout {
+        @include ds_box-shadow;
         margin-left: 0;
         margin-right: 0;
-        margin-top: -50px;
-        position: absolute;
-        right: 0;
-        top: 100%;
-        width: calc(33.333333% - 20px);
+        margin-top: -128px;
+        position: relative;
         z-index: 1;
     }
 
-    .displace-by-issue-callout {
-        padding-top: 125px;
-    }
-}
-
-@include media-query(large) {
-    .displace-by-issue-callout {
-        padding-top: 97px;
-    }
-}
-
-
-
-.old-ie {
-    @include media-query(medium) {
-        .issue-callout {
-            width: 230px;
-        }
-    }
-
-    @include media-query(large) {
-        .issue-callout {
-            width: 300px;
-        }
-    }
-
-    @include media-query(xlarge) {
-        .issue-callout {
-            width: 370px;
-        }
+    .#{$site-prefix}displace-by-issue-callout {
+        padding-top: 160px;
     }
 }

@@ -4,57 +4,16 @@
 
 'use strict';
 
-import displayToggle from './component.display-toggle';
 import $ from 'jquery';
-import './component.expandable';
 
 const complexDocumentPage = {};
 
 complexDocumentPage.init = function () {
-    displayToggle.init();
-    checkDocumentTitleSticky();
     tweakComplexDocumentMarkup();
-
-    $(window).on('scroll resize', function () {
-        checkDocumentTitleSticky();
-    });
 };
 
 window.format = complexDocumentPage;
 window.format.init();
-
-function checkDocumentTitleSticky () {
-
-    let documentNavSticky = $('.document-nav--sticky');
-
-    if (documentNavSticky.length && documentNavSticky.css('position').match(/sticky/).length) {
-        let stickyPropertyName = documentNavSticky.css('position');
-
-        // set top offset of section marker (height of site-header--scaled)
-        // set top offset of document nav (section marker height + site header height)
-        let headerHeight = 0;
-        if ($('.site-header--scaled').length) {
-            headerHeight = parseInt($('.site-header--scaled').css('height'), 10);
-        }
-
-        const sectionMarker = $('.section-marker');
-        sectionMarker.css({top: headerHeight});
-        $('.document-nav').css({top: headerHeight + sectionMarker.height()});
-
-        sectionMarker.css({position: 'static'});
-        const triggerPoint = sectionMarker.offset().top - headerHeight;
-        sectionMarker.css({position: stickyPropertyName});
-
-
-
-
-        if ($(window).scrollTop() > triggerPoint) {
-            $('.section-marker__document-title').addClass('section-marker__document-title--visible');
-        } else {
-            $('.section-marker__document-title').removeClass('section-marker__document-title--visible');
-        }
-    }
-}
 
 function tweakComplexDocumentMarkup () {
     // 1. add overflow class to image containers

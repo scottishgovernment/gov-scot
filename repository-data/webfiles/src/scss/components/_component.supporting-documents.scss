@@ -2,16 +2,10 @@
     SUPPORTING DOCUMENTS
 \*------------------------------------*/
 
-$site-prefix: 'gov_';
-$ds_colour__border: $color__border--base;
-$ds_colour__white: white;
-$ds_colour__link--hover__background: $color__grey--lighter;
-$ds_colour__link--focus__background: gold;
-
 .#{$site-prefix}supporting-documents {
-    // legacy fix/hack
-    .gov_document-info__thumbnail-link {
-        width: auto !important;
+    &__thumbnail {
+        display: block;
+        width: 100%;
     }
 
     &__thumbnail-link {
@@ -50,29 +44,7 @@ $ds_colour__link--focus__background: gold;
     }
 }
 
-
-
-
-// supporting docs list
-.gov_supporting-documents-list {
-    .gov-supporting-document {
-        .gov_supporting-document__thumb {
-            margin-left: 37px;
-        }
-
-        .gov_supporting-document__text {
-            margin-left: 127px;
-        }
-
-        &--highlight {
-            .gov_supporting-document__thumb {
-                margin-left: 0;
-            }
-        }
-    }
-}
-
-@include media-query(medium) {
+@include ds_media-query(medium) {
     .#{$site-prefix}supporting-documents {
         &__thumbnail-link {
             display: block;
@@ -95,7 +67,7 @@ $ds_colour__link--focus__background: gold;
             padding: 0 8px;
         }
 
-        @include media-query(medium) {
+        @include ds_media-query(medium) {
             width: 100%;
 
             &-text {

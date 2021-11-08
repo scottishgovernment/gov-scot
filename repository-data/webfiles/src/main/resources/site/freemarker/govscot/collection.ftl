@@ -124,13 +124,6 @@ todo: make a layout for collections instead of just using ds_layout--article. it
 
     </@hst.headContribution>
 
-    <@hst.headContribution category="footerScripts">
-    <script type="module" src="<@hst.webfile path="/assets/scripts/collection.js"/>"></script>
-    </@hst.headContribution>
-    <@hst.headContribution category="footerScripts">
-    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/collection.es5.js"/>"></script>
-    </@hst.headContribution>
-
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />
 

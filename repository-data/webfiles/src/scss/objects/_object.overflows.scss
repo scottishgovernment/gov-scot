@@ -3,13 +3,13 @@
     Extend the current container across additional columns
 \*------------------------------------*/
 
-$overflow-gutter-width: 30px !default;
-$overflow-base-width: 750px !default;
-$overflow-large-width: 970px !default;
-$overflow-xlarge-width: 1170px !default;
+$overflow-gutter-width: 32px !default;
+$overflow-base-width: 736px !default;
+$overflow-large-width: 928px !default;
+$overflow-xlarge-width: 1120px !default;
 
-$overflow-column-width: $overflow-base-width / 12;
-@include media-query(medium) {
+$overflow-column-width: ($overflow-base-width + $overflow-gutter-width) / 12;
+@include ds_media-query(medium) {
   .overflow--medium--one-twelfth {
     margin-right: $overflow-column-width * -1
   }
@@ -24,8 +24,8 @@ $overflow-column-width: $overflow-base-width / 12;
   }
 }
 
-$overflow-column-width: $overflow-large-width / 12;
-@include media-query(large) {
+$overflow-column-width: ($overflow-large-width + $overflow-gutter-width) / 12;
+@include ds_media-query(large) {
   .overflow--large--one-twelfth {
     margin-right: $overflow-column-width * -1
   }
@@ -34,14 +34,14 @@ $overflow-column-width: $overflow-large-width / 12;
   }
   .overflow--large--three-twelfths {
     margin-right: $overflow-column-width * -3
-  }
+}
   .overflow--large--four-twelfths {
     margin-right: $overflow-column-width * -4
   }
 }
 
-$overflow-column-width: $overflow-xlarge-width / 12;
-@include media-query(xlarge) {
+$overflow-column-width: ($overflow-xlarge-width + $overflow-gutter-width) / 12;
+@include ds_media-query(xlarge) {
   .overflow--xlarge--one-twelfth {
     margin-right: $overflow-column-width * -1
   }

@@ -1,9 +1,0 @@
-/*
- * Position: sticky fallback for browsers that do not support position: sticky
- * (makes sticky elements relatively positioned instead)
- */
-@mixin sticky() {
-  position: relative;
-  position: -webkit-sticky;
-  position: sticky;
-}

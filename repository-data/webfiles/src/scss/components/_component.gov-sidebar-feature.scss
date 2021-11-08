@@ -1,21 +1,9 @@
 .gov_sidebar-feature {
-    margin-bottom: 48px; /// from ds responsive scale
+    @include ds_responsive-margin(8, top);
 
     &__image {
         display: block;
-        margin-bottom: 40px; /// from ds responsive scale
-        width: 100%;
-    }
-}
-
-@include media-query('medium') {
-    .gov_sidebar-feature {
-        margin-bottom: 64px; /// from ds responsive scale
-    }
-
-    &__image {
-        display: block;
-        margin-bottom: 48px; /// from ds responsive scale
+        @include ds_responsive-margin(6, top);
         width: 100%;
     }
 }
