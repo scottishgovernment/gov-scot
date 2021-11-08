@@ -10,7 +10,7 @@
         <#assign latestUpdate = document.updateHistory[0].lastUpdated>
         <div class="ds_metadata__item">
             <span class="ds_metadata__key">Last updated</span>
-            <span class="ds_metadata__value"><strong><@fmt.formatDate value=latestUpdate.time type="both" pattern="d MMM yyyy"/></strong> - <a href="#history">see all updates</a></span>
+            <span class="ds_metadata__value"><strong><@fmt.formatDate value=latestUpdate.time type="both" pattern="d MMM yyyy"/></strong> - <a href="#full-history">see all updates</a></span>
         </div>
     </#if>
 

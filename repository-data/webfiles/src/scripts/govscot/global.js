@@ -8,6 +8,7 @@ import $ from 'jquery';
 import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
+import UpdateHistory from './component.update-history';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
@@ -123,6 +124,14 @@ const global = {
             const mobileTables = new window.DS.components.MobileTables();
             mobileTables.init();
         }
+
+        const updateHistory = document.querySelector('[data-module="gov-update-history"]');
+        if (updateHistory) {
+            const updateHistoryModule = new UpdateHistory(updateHistory);
+            updateHistoryModule.init();
+        }
+
+
     },
 };
 

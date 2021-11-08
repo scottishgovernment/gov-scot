@@ -1,0 +1,31 @@
+.gov_history-list {
+    display: block;
+    margin-top: 16px;
+    position: relative;
+
+    &::before {
+        background: $ds_colour__grey--medium;
+        bottom: 36px;
+        content: '';
+        left: 3px;
+        position: absolute;
+        top: 12px;
+        width: 2px;
+    }
+}
+
+.gov_history-list__item {
+    padding-left: 16px;
+    position: relative;
+
+    &::before {
+        background: $ds_colour__grey--medium;
+        border-radius: 10px;
+        content: '';
+        height: 8px;
+        left: 0;
+        position: absolute;
+        top: 8px;
+        width: 8px;
+    }
+}
