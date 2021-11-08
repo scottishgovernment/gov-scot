@@ -1,12 +1,14 @@
 <#include "../../include/imports.ftl">
 
 <#if mourningBanner??>
-    <div id="mourning-banner" class="notification  notification--mourning  above-overlay">
+    <div id="mourning-banner" class="ds_notification  ds_notification--mourning">
         <div class="wrapper">
-            <div class="notification__main-content">
+            <div class="ds_notification__content">
                 <@hst.html var="content" hippohtml=mourningBanner.content/>
                 <#if content?has_content>
-                    ${content}
+                    <div class="ds_notification__text">
+                        ${content}
+                    </div>
                 </#if>
             </div>
         </div>

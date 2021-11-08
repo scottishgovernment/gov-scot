@@ -1,0 +1,13 @@
+.ds_notification {
+    &--black {
+        background-color: $ds_colour__black;
+    }
+
+    &__content {
+        min-height: 23px; /// compensate for 1px bottom margin
+
+        @include ds_media-query(medium) {
+            min-height: 63px; /// compensate for 1px bottom margin
+        }
+    }
+}
