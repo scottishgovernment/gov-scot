@@ -65,7 +65,7 @@ todo: make a layout for collections instead of just using ds_layout--article. it
                 <ul class="collections-list">
                     <#list group.collectionItems as item>
                         <#if group.highlight == true && item?index == 0>
-                            <li class="listed-content-item listed-content-item--highlight listed-content-item--compact">
+                            <li class="listed-content-item  listed-content-item--highlight  listed-content-item--compact">
                                 <article class="listed-content-item__article ">
                                     <header class="listed-content-item__header">
                                         <div class="listed-content-item__meta">

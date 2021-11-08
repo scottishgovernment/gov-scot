@@ -68,7 +68,7 @@
 
                             <div class="ds_question">
                                 <p class="ds_question__message  ds_question__error-message  fully-hidden  perf-error" data-form="error-find"></p>
-                                <button id="covid-lookup-submit" type="submit" class="button  button--primary  button--primary--fluid  ds_no-margin" name="submit" data-button="button-find">Find</button>
+                                <button id="covid-lookup-submit" type="submit" class="ds_button  ds_no-margin" name="submit" data-button="button-find">Find</button>
                             </div>
                         </fieldset>
 
@@ -83,7 +83,7 @@
                 </#if>
 
                 <#if document.resultsContent??>
-                    <div id="covid-restrictions-lookup-results-content" class="hidden  hidden--hard">
+                    <div id="covid-restrictions-lookup-results-content" class="fully-hidden">
                         <@hst.html hippohtml=document.resultsContent/>
                     </div>
                 </#if>

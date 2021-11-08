@@ -3,7 +3,7 @@
 
 <#if document??>
 <div class="ds_wrapper">
-    <article id="main-content" class="ds_layout  gov_layout--featured-role-article">
+    <main id="main-content" class="ds_layout  gov_layout--featured-role-article">
         <@hst.manageContent hippobean=document/>
         <#assign contactInformation = document.person.contactInformation />
         <#assign postalAddress = document.person.postalAddress />
@@ -124,7 +124,7 @@
         <div class="ds_layout__feedback">
             <#include 'common/feedback-wrapper.ftl'>
         </div>
-    </article>
+    </main>
 </div>
 
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->

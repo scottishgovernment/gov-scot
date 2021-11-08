@@ -23,7 +23,7 @@
 <div class="filter-buttons--sticky">
     <button class="ds_button  ds_button--secondary  ds_button--small  ds_no-margin  js-show-filters">Filter</button>
 
-    <span class="search-results__count js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${pageable.total}</b> items</span>
+    <span class="search-results__count  js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${pageable.total}</b> items</span>
 
     <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  button button--xsmall button--cancel button--right">Clear</a>
 </div>
@@ -32,7 +32,7 @@
     <header style="outline: 4px dashed red">
         <h2 class="visually-hidden">Search results</h2>
 
-        <p class="ds_search-results__count js-search-results-count">
+        <p class="ds_search-results__count  js-search-results-count">
             <#if hasActiveParameters == true>
                 Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
@@ -114,7 +114,7 @@
                             </#if>
                         </dl>
 
-                        <h2 class="gamma gov_search-result__title">
+                        <h2 class="gamma  gov_search-result__title">
                             <a class="gov_search-result__link" href="${link}">${item.title}</a>
                         </h2>
                     </header>

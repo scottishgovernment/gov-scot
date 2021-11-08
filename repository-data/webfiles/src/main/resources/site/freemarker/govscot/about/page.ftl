@@ -10,14 +10,6 @@
             <div class="ds_layout__header">
                 <header class="ds_page-header">
                     <h1 class="ds_page-header__title">${document.title?html}</h1>
-                    <dl class="ds_page-header__metadata  ds_metadata">
-                        <#if document.lastUpdatedDate??>
-                            <div class="ds_metadata__item">
-                                <dt class="ds_metadata__key">Last updated</dt>
-                                <dd class="ds_metadata__value"><@fmt.formatDate value=document.lastUpdatedDate.time type="both" pattern="d MMM yyyy"/></dd>
-                            </div>
-                        </#if>
-                    </dl>
                     <#include "../common/metadata.ftl"/>
                 </header>
             </div>

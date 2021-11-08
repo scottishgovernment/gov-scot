@@ -1,8 +1,8 @@
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
-ad
+
 <h1 class="article-header">${document.title}</h1>
-aaa
+
 <div class="body-content  ds_leader-first-paragraph">
     <#if document.summary?has_content>
             <p>${document.summary}</p>
@@ -38,11 +38,11 @@ aaa
         --><div class="grid__item  medium--six-twelfths"><!--
 
               --><div id="publications-container">
-                <h3 class="filter-search__subtitle homepage-block__subtitle">Latest</h3>
+                <h3 class="filter-search__subtitle  homepage-block__subtitle">Latest</h3>
                     <#if statisticsAndResearch?has_content>
                         <#list statisticsAndResearch as statsItem>
                             <article class="homepage-publication">
-                        <h3 class="js-truncate homepage-news__title">
+                        <h3 class="js-truncate  homepage-news__title">
                             <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index}" title="${statsItem.title}">${statsItem.title}</a>
                         </h3>
                             <ul class="homepage-publication__topics">
@@ -58,7 +58,7 @@ aaa
                  </div>
 
                 <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-                <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
+                <a class="ds_button  tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
                 data-gtm="all-stats">
                     <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
                         <use xlink:href="${iconspath}#3x3grid"></use>
@@ -69,19 +69,17 @@ aaa
 
          --><div class="grid__item  medium--six-twelfths"><!--
              --><div id="publications-container">
-                    <h3 class="filter-search__subtitle homepage-block__subtitle">Filter by type</h3>
+                    <h3 class="filter-search__subtitle  homepage-block__subtitle">Filter by type</h3>
                     <p>Look for either statistics or research that have been published by the Scottish Government.</p>
                     <form>
                         <div class="checkbox-group">
                             <fieldset>
-                                <legend class="hidden">Publication type</legend>
-
-                                        <input id="research" name="pubtype[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="research-and-analysis"/><label for="research" class="checkbox-group__label fancy-checkbox">Research and analysis</label>
-                                        <input id="statistics" name="pubtype[]" class="fancy-checkbox checkbox-group__input" type="checkbox" value="statistics"/><label for="statistics" class="checkbox-group__label fancy-checkbox">Statistics</label>
-
+                                <legend class="visually-hidden">Publication type</legend>
+                                <input id="research" name="pubtype[]" class="fancy-checkbox  checkbox-group__input" type="checkbox" value="research-and-analysis"/><label for="research" class="checkbox-group__label  fancy-checkbox">Research and analysis</label>
+                                <input id="statistics" name="pubtype[]" class="fancy-checkbox  checkbox-group__input" type="checkbox" value="statistics"/><label for="statistics" class="checkbox-group__label  fancy-checkbox">Statistics</label>
                             </fieldset>
                         </div>
-                        <button href="<@hst.link path='/statistics-and-research/'/>" class="js-stats-form-submit button button--primary homepage-block__button">Go</button>
+                        <button href="<@hst.link path='/statistics-and-research/'/>" class="js-stats-form-submit  ds_button  homepage-block__button">Go</button>
                     </form>
             </div><!--
     --></section><!--

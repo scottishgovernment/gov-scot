@@ -1,7 +1,7 @@
 <#include "../../include/imports.ftl">
 
 <article class="body-content">
-    <div class="page-group__content body-content inner-shadow-top inner-shadow-top--no-desktop">
+    <div class="body-content">
     <#if document != index>
         <h2>${document.title}</h2>
     </#if>

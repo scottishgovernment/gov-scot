@@ -2,8 +2,8 @@
 
 <#if aboutMenuItem??>
     <nav aria-label="Sections" class="ds_side-navigation" data-module="ds-side-navigation">
-        <input type="checkbox" class="fully-hidden js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
-        <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation"><span class="hidden">Show all</span> Pages in this section <span class="ds_side-navigation__expand-indicator"></span></label>
+        <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
+        <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation"><span class="visually-hidden">Show all</span> Pages in this section <span class="ds_side-navigation__expand-indicator"></span></label>
 
         <ul class="ds_side-navigation__list" id="side-navigation-root">
             <li class="ds_side-navigation__item">

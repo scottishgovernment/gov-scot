@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="ds_accordion-item__body">
                                             <#if person.roles??>
-                                                <ul class="gov_person__responsibilities-list ds_no-bullets">
+                                                <ul class="gov_person__responsibilities-list  ds_no-bullets">
                                                     <#list responsibilities as directorate>
                                                         <li>
                                                             <@hst.link var="directoratelink" hippobean=directorate/>

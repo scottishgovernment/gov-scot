@@ -53,7 +53,7 @@
                     <input class="ds_input" type="text" id="email" name="email" required placeholder="Your email address for payment confirmation"></input>
                 </div>
 
-                <input type="submit" class="button  button--primary" name="submit" value="Submit Payment" >
+                <input type="submit" class="ds_button" name="submit" value="Submit Payment" >
             </form>
         </div>
 

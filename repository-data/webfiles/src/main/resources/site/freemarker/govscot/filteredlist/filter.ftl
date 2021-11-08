@@ -37,7 +37,7 @@
         <h2 class="gov_filters__title">Filters</h2>
 
         <#if term??>
-            <fieldset id="filter-search" class="filters__fieldset filter-search">
+            <fieldset id="filter-search" class="filters__fieldset  filter-search">
                 <legend class="visually-hidden">Keyword search</legend>
                 <label class="ds_label" for="filters-search-term">Keyword</label>
 
@@ -176,78 +176,8 @@
         </#if>
 
         <div id="filter-actions">
-            <button type="button" id="cancel-filters" name="cancel-filters" class="visible-xsmall  button button--medium button--cancel filter-actions__cancel js-cancel-filters">Cancel</button>
-            <button type="submit" id="apply-filters" name="apply-filters" class="button button--medium button--primary filter-actions__apply js-apply-filters">Apply</button>
+            <button type="button" id="cancel-filters" name="cancel-filters" class="visible-xsmall  ds_button  ds_button--cancel  filter-actions__cancel  js-cancel-filters">Cancel</button>
+            <button type="submit" id="apply-filters" name="apply-filters" class="ds_button  filter-actions__apply  js-apply-filters">Apply</button>
         </div>
     </div>
 </form>
-
-
-
-<!--
-<form id="filters" action="#" method="GET">
-    <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />" />
-
-    <fieldset id="filters-fields">
-        <legend class="hidden-xsmall gamma filters-container__title">Filters</legend>
-
-        <div class="buttons filter-buttons visible-xsmall">
-            <button type="button" class="button  button--primary  js-show-filters">Show filters</button>
-        </div>
-
-        <div class="mobile-layer mobile-layer--show-tablet mobile-layer--highest mobile-layer--dark filters-layer">
-            <div class="mobile-layer__overlay"></div>
-            <div class="mobile-layer__content">
-                <div class="filters-container">
-
-                    <button type="button" class="button filters-container__close js-cancel-filters visible-xsmall">
-                        <svg class="svg-icon  mg-icon  mg-icon--full  mg-icon--inline">
-                            <use xlink:href="${iconspath}#close"></use>
-                        </svg>
-                        <span class="hidden">Close</span>
-                    </button>
-
-                    <div class="filters">
-
-                        <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  filters__button--clear  button button--cancel  button--xsmall">Clear</a>
-
-                        <#if term??>
-                        <fieldset id="filter-search" class="filters__fieldset filter-search">
-                            <legend class="filters__legend">Keyword search</legend>
-                            <label class="filters__label" for="filters-search-term">Keyword</label>
-                            <div class="filters-input__wrapper">
-                                <input placeholder="Search ${searchType}" type="text" title="Filter by keyword" name="term" id="filters-search-term" maxlength="160" class="filter-search__input filters__input--search-term" value="${term}" />
-                                <button type="submit" title="Submit" id="filters-search-submit" class="filter-search__button filter-search__button--submit js-filter-search-submit button button--clear"></button>
-                            </div>
-                        </fieldset>
-                        </#if>
-
-                        <#if dates??>
-                            <fieldset id="filter-date-range" class="filters__fieldset">
-                                <legend class="filters__legend">Filter by date</legend>
-                                <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
-                                    <label class="filters__label" for="date-from">Date from</label>
-                                    <div class="ds_input__wrapper">
-                                        <input placeholder="dd/mm/yyyy" id="date-from" style="margin-bottom: 21px;" type="text" value="${begin}" data-form="textinput-date-from" />
-                                    </div>
-                                </div>
-
-                                <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
-                                    <label class="filters__label" for="date-to">Date to</label>
-                                    <div class="ds_input__wrapper">
-                                        <input placeholder="dd/mm/yyyy" id="date-to" style="margin-bottom: 21px;" type="text" value="${end}" data-form="textinput-date-from" />
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </#if>
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-</form>
--->

@@ -11,7 +11,7 @@
                 <a href="${link}">${index.allResponsibleRoles[0].title}</a><!--
                 --><#if index.allResponsibleRoles?size gt 1><!--
                 -->, <!--
-                --><a href="#secondary-responsible-roles" class="content-data__expand js-display-toggle">
+                --><a href="#secondary-responsible-roles" class="content-data__expand  js-display-toggle">
                     &#43;${index.allResponsibleRoles?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                     <span id="secondary-responsible-roles" class="content-data__additional">
@@ -34,7 +34,7 @@
                 <a href="${link}">${index.allDirectorates[0].title}</a><!--
                 --><#if index.allDirectorates?size gt 1><!--
                 -->, <!--
-                --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
+                --><a href="#secondary-responsible-directorates" class="content-data__expand  js-display-toggle">
                 &#43;${index.allDirectorates?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                     <span id="secondary-responsible-directorates" class="content-data__additional">
@@ -60,7 +60,7 @@
                     </#if><!--
             --></#list><!--
             --><#if index.topics?size gt 3><!--
-                --><a href="#secondary-topics" class="content-data__expand js-display-toggle">
+                --><a href="#secondary-topics" class="content-data__expand  js-display-toggle">
                     &#43;${index.topics?size - 3}&nbsp;more&nbsp;&hellip;</a>
                     <span id="secondary-topics" class="content-data__additional">
                         <#list index.topics?sort_by("title") as topic>

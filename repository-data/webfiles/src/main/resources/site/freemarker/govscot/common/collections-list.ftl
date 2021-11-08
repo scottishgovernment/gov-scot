@@ -21,13 +21,11 @@
                 <label class="ds_accordion-item__label" for="panel-collections"><span class="visually-hidden">Show this section</span></label>
             </div>
             <div class="ds_accordion-item__body">
-                <ul class="no-bullets">
+                <ul class="ds_no-bullets">
                     <#list collections as collection>
-
                         <li>
                             <a class="contents-list__link" href="<@hst.link hippobean=collection/>">${collection.title}</a>
                         </li>
-
                     </#list>
                 </ul>
             </div>

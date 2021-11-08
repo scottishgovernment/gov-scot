@@ -29,7 +29,7 @@
                     <section id="policies" class="gov_content-block">
                         <h2 class="gov_content-block__title">Policies</h2>
 
-                        <ul class="gov_policy-list gov_column-list  gov_column-list--not-small  gov_column-list--3">
+                        <ul class="gov_policy-list  gov_column-list  gov_column-list--not-small  gov_column-list--3">
                             <#list policies as policy>
                                 <li class="gov_policy-list__item  gov_column-list__item">
                                     <a data-gtm="policy-${policy?index + 1}" class="gov_policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>

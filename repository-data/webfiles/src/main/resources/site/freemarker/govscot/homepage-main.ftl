@@ -4,7 +4,7 @@
 
 <div class="ds_wrapper">
 
-    <div class="ds_layout  gov_layout--home">
+    <main id="main-content" class="ds_layout  gov_layout--home">
         <#if document??>
             <div class="ds_layout__header">
                 <@hst.html hippohtml=document.content />
@@ -99,7 +99,7 @@
                         <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/publications/'/>"
                         data-gtm="all-pubs">
                             <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all publications
                         </a>
@@ -141,7 +141,7 @@
                         <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/consultations/'/>"
                         data-gtm="all-cons">
                             <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all consultations
                         </a>
@@ -202,7 +202,7 @@
 
                     <div>
                         <a href="<@hst.link path='/topics/'/>" class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left">
-                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#3x3grid"></use></svg>
+                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#list"></use></svg>
                             See all topics
                         </a>
                     </div>
@@ -246,7 +246,7 @@
                         <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/news/'/>"
                         data-gtm="all-news">
                             <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all news
                         </a>
@@ -280,7 +280,7 @@
                         <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/statistics-and-research/'/>"
                         data-gtm="all-stats">
                             <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all Statistics and research
                         </a>
@@ -323,7 +323,7 @@
                         <div>
                             <h3>How government works</h3>
 
-                            <div class="ds_leader homepage-about__leader">
+                            <div class="ds_leader  homepage-about__leader">
                                 <@hst.html hippohtml=document.howGovernmentWorks />
                             </div>
                         </div>
@@ -331,7 +331,7 @@
                 </div>
             </section>
         </div>
-    </div>
+    </main>
 </div>
 
 <div class="gov_page-bottom">

@@ -104,7 +104,7 @@
                                         </a>
 
                                         <div class="person__text-container">
-                                            <h4 class="person__name person__name--link">${role.title}</h4>
+                                            <h4 class="person__name  person__name--link">${role.title}</h4>
 
                                             <p class="person__roles">
                                                 <#-- todo: allow for multiple here -->
