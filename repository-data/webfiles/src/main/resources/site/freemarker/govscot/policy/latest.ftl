@@ -1,49 +1,58 @@
 <#include "../../include/imports.ftl">
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
-<div class="body-content page-group__content inner-shadow-top inner-shadow-top--no-desktop">
+<div class="body-content">
 
     <@hst.html hippohtml=document.content/>
 
-    <section class="search-results">
-        <ol id="search-results-list" class="search-results__list no-top-margin">
+    <div class="ds_search-results">
+        <ol id="search-results-list" class="ds_search-results__list   ds_no-margin--top">
             <#list latest as item>
-                <li class="search-results__item listed-content-item">
+                <li class="gov_search-result">
+
                     <@hst.link var="link" hippobean=item/>
-                    <article class="listed-content-item__article <#if item == latest?last>listed-content-item__article--no-border</#if>">
-                        <header class="listed-content-item__header">
-
-                            <#if item.label == "news">
-                                <div class="listed-content-item__meta">
-                                    <p class="listed-content-item__label">NEWS</p>
-                                    <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
-                                </div>
-                            <#else>
-                                <div class="listed-content-item__meta listed-content-item__meta--has-icon">
-                                    <span class="listed-content-item__icon file-icon file-icon--TXT"></span>
-                                    <p class="listed-content-item__label">${item.label}</p>
-                                    <p class="listed-content-item__date">
-                                        <#if item.publicationDate??>
-                                            <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy"/>
+                    <div class="gov_search-result__main">
+                        <header class="gov_search-result__header">
+                            <dl class="gov_search-result__metadata  ds_metadata  ds_metadata--inline">
+                                <span class="ds_metadata__item">
+                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                    <dd class="ds_metadata__value  ds_content-label">
+                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")><#else>
+                                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#description"></use></svg>
                                         </#if>
-                                    </p>
-                                </div>
-                            </#if>
+                                        ${item.label}
+                                    </dd>
+                                </span>
 
-                            <h2 class="gamma listed-content-item__title">
-                                <a href="${link}" class="listed-content-item__link" title="${item.title}" data-gtm="search-pos-${latest?seq_index_of(item) + 1}">
-                                    ${item.title}
-                                </a>
+                                <#if item.publicationDate??>
+                                    <span class="ds_metadata__item">
+                                        <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                                        <#assign dateFormat = "dd MMM yyyy">
+                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                            <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                        <#else>
+                                            <#assign dateFormat = "dd MMM yyyy">
+                                        </#if>
+                                        <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></dd>
+                                    </span>
+                                </#if>
+                            </dl>
+
+                            <h2 class="gamma  gov_search-result__title">
+                                <a class="gov_search-result__link" href="${link}">${item.title}</a>
                             </h2>
                         </header>
 
-                        <p class="listed-content-item__summary">${item.summary}</p>
-                    </article>
+                        <#if item.summary??>
+                            <p class="gov_search-result__summary">
+                                ${item.summary}
+                            </p>
+                        </#if>
+                    </div>
                 </li>
             </#list>
-
         </ol>
-    </section>
-
+    </div>
 </div>
 
 <nav class="ds_sequential-nav" aria-label="Article navigation">
