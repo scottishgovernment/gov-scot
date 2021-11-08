@@ -59,11 +59,9 @@
         </div>
 
         <div class="ds_page__middle">
-            <#if !(isPageNotFound!false)>
+            <#if !(isPageNotFound!false) && !(isHomepage!false)>
                 <div class="ds_wrapper">
-                    <nav role="navigation">
-                        <@hst.include ref="breadcrumb"/>
-                    </nav>
+                    <@hst.include ref="breadcrumb"/>
                 </div>
             </#if>
             <@hst.include ref="main"/>

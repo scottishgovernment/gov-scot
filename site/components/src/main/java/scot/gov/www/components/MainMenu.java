@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.hippoecm.hst.configuration.components.HstComponentConfiguration;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
@@ -7,6 +8,8 @@ import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
 import org.onehippo.cms7.essentials.components.EssentialsMenuComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsMenuComponentInfo;
+
+import static org.apache.commons.lang3.StringUtils.equalsAny;
 
 /**
  * Subclass the standard menu component in order to feature flag items.
@@ -29,6 +32,15 @@ public class MainMenu extends EssentialsMenuComponent {
             boolean enabled = FeatureFlags.isEnabled(flagName, request.getRequestContext(), true);
             request.setAttribute(flagName, enabled);
         }
+
+        HstComponentConfiguration componentConfig = request
+                .getRequestContext()
+                .getResolvedSiteMapItem()
+                .getHstComponentConfiguration();
+        String formatName = componentConfig.getName();
+
+        // hide search for home or search pages
+        request.setAttribute("hideSearch", equalsAny(formatName, "homepage", "searchpage"));
     }
 
     String flagname(HstSiteMenuItem menuItem) {

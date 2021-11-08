@@ -48,9 +48,12 @@
                 </#if>
             </#if>
 
-            <div class="ds_site-header__search">
-                <@hst.include ref="search"/>
-            </div>
+            <#if hideSearch>
+            <#else>
+                <div class="ds_site-header__search">
+                    <@hst.include ref="search"/>
+                </div>
+            </#if>
         </div>
     </div>
 
