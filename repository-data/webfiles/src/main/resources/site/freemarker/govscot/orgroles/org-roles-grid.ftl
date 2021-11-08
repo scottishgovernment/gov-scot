@@ -7,7 +7,7 @@
     </#if>
 
     <div class="overflow--large--two-twelfths  overflow--xlarge--two-twelfths">
-        <ul class="person-grid">
+        <ul class="gov_person-grid">
             <#list people as person>
                 <#if person.roles??>
                     <@hst.link var="link" hippobean=person.roles[0]/>
@@ -15,38 +15,36 @@
                     <@hst.link var="link" hippobean=person/>
                 </#if>
 
-                <li class="person-grid__item">
-                    <div class=person>
-                        <a class="person__link" href="${link}">
-                            <div class="person__image-container">
-                                <div class="person__image-container">
-                                    <#if person.image??>
-                                    <img alt="${person.title}" class="person__image"
-                                    src="<@hst.link hippobean=person.image.xlarge/>"
-                                    srcset="<@hst.link hippobean=person.image.small/> 130w,
-                                        <@hst.link hippobean=person.image.smalldoubled/> 260w,
-                                        <@hst.link hippobean=person.image.medium/> 220w,
-                                        <@hst.link hippobean=person.image.mediumdoubled/> 440w,
-                                        <@hst.link hippobean=person.image.large/> 213w,
-                                        <@hst.link hippobean=person.image.largedoubled/> 426w,
-                                        <@hst.link hippobean=person.image.xlarge/> 263w,
-                                        <@hst.link hippobean=person.image.xlargedoubled/> 526w"
-                                    sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px">
-                                    <#else>
-                                    <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
-                                    </#if>
-                                </div>
-                            </div>
-                        </a>
+                <li class="gov_person-grid__item">
+                    <div class="gov_person  gov_person--flex">
+                        <div class="gov_person__image-container">
+                            <a class="gov_person__link" href="${link}">
+                                <#if person.image??>
+                                <img alt="${person.title}" class="gov_person__image"
+                                src="<@hst.link hippobean=person.image.xlarge/>"
+                                srcset="<@hst.link hippobean=person.image.small/> 148w,
+                                    <@hst.link hippobean=person.image.smalldoubled/> 296w,
+                                    <@hst.link hippobean=person.image.medium/> 224w,
+                                    <@hst.link hippobean=person.image.mediumdoubled/> 448w,
+                                    <@hst.link hippobean=person.image.large/> 208w,
+                                    <@hst.link hippobean=person.image.largedoubled/> 416w,
+                                    <@hst.link hippobean=person.image.xlarge/> 256w,
+                                    <@hst.link hippobean=person.image.xlargedoubled/> 512w"
+                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                <#else>
+                                <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
+                                </#if>
+                            </a>
+                        </div>
 
-                        <div class="person__text-container">
-                            <h3 class="person__name person__name--link">${person.title}</h3>
+                        <div class="gov_person__text-container">
+                            <h3 class="gov_person__name">${person.title}</h3>
 
-                            <p class="person__roles">
+                            <p class="gov_person__roles">
                                 <#if person.roles??>
                                     <#list person.roles as role>
                                         <@hst.link var="rolelink" hippobean=role/>
-                                        <#if !role?is_first>and</#if> <a class="person__role-link" href="${rolelink}">${role.title}</a>
+                                        <#if !role?is_first>and</#if> <a class="gov_person__role-link" href="${rolelink}">${role.title}</a>
                                     </#list>
                                 <#else>
                                     ${person.roleTitle}
@@ -66,31 +64,39 @@
 
                             <@hst.link var="documentlink" hippobean=document/>
                             <#if documentlink?contains("civil-service") && hasDirectorates>
-                                <div class="person__responsibilities">
-                                    <button class="link  js-expand  expand  person__responsibilities-toggle"
-                                        data-target-selector="#${person.canonicalUUID}-responsibilities"
-                                        title="Show responsibilities">
-                                        <span class="expand__icon"></span>
-                                    </button>
+                                <div class="gov_person__responsibilities">
+                                    <#assign responsibilities = []/>
+                                    <#list person.roles as role>
+                                        <#list role.directorates as directorate>
+                                            <#assign responsibilities = responsibilities + [directorate]/>
+                                        </#list>
+                                        <#-- end role.directorates loop -->
+                                    </#list>
 
-                                    <h4 class="person__responsibilities-title">Responsibilities</h4>
 
-                                    <div id="${person.canonicalUUID}-responsibilities">
-                                        <#if person.roles??>
-                                            <ul class="person__responsibilities-list ds_no-bullets">
-                                                <#list person.roles as role>
-                                                    <#list role.directorates as directorate>
+                                    <div class="ds_accordion-item  ds_accordion-item--small">
+                                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-${person.canonicalUUID}" aria-labelledby="panel-${person.canonicalUUID}-heading" />
+                                        <div class="ds_accordion-item__header">
+                                            <h3 id="panel-${person.canonicalUUID}-heading" class="ds_accordion-item__title">
+                                                Responsibilities (${responsibilities?size})
+                                            </h3>
+                                            <span class="ds_accordion-item__indicator"></span>
+                                            <label class="ds_accordion-item__label" for="panel-${person.canonicalUUID}"><span class="visually-hidden">Show this section</span></label>
+                                        </div>
+                                        <div class="ds_accordion-item__body">
+                                            <#if person.roles??>
+                                                <ul class="gov_person__responsibilities-list ds_no-bullets">
+                                                    <#list responsibilities as directorate>
                                                         <li>
                                                             <@hst.link var="directoratelink" hippobean=directorate/>
                                                             <a href="${directoratelink}">${directorate.title}</a>
                                                         </li>
                                                     </#list>
-                                                    <#-- end role.directorates loop -->
-                                                </#list>
-                                                <#-- end person.roles loop -->
-                                            </ul>
-                                        </#if>
-                                        <#-- end person.roles condition -->
+                                                    <#-- end directorates loop -->
+                                                </ul>
+                                            </#if>
+                                            <#-- end person.roles condition -->
+                                        </div>
                                     </div>
                                 </div>
                             </#if>

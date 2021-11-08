@@ -1,6 +1,6 @@
 <#include "../../include/imports.ftl">
 
-<nav class="ds_side-navigation" data-module="ds-side-navigation">
+<nav class="ds_side-navigation  ds_no-margin--top" data-module="ds-side-navigation">
     <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
     <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
 
@@ -32,8 +32,8 @@
         </li>
 
         <li class="ds_side-navigation__item">
-            <span class="ds_side-navigation__link  ds_current">
-                Policy actions
+            <span class="ds_side-navigation__link">
+                <b>Policy actions:</b>
             </span>
 
             <ul class="ds_side-navigation__list">

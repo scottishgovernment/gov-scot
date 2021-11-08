@@ -1,20 +1,22 @@
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
+
 <div class="ds_wrapper">
+
     <div class="ds_layout  gov_layout--home">
-        <div class="ds_layout__header">
-            <#if document??>
+        <#if document??>
+            <div class="ds_layout__header">
                 <@hst.html hippohtml=document.content />
-            </#if>
-        </div>
+            </div>
+        </#if>
 
         <div class="ds_layout__search">
             <#include "common/search.ftl" />
         </div>
 
         <div class="ds_layout__content">
-            <#if document??>
+            <#if document?? && document.featuredItems>
                 <div class="gov_homepage-hero  gov_homepage-hero--${document.featuredItems?size}">
                     <div class="gov_homepage-hero__main">
                         <#assign featuredItem = document.featuredItems?first>
@@ -94,7 +96,7 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/publications/'/>"
+                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/publications/'/>"
                         data-gtm="all-pubs">
                             <svg class="ds_icon">
                                 <use xlink:href="${iconspath}#3x3grid"></use>
@@ -136,8 +138,8 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/consultations/'/>"
-                        data-gtm="all-pubs">
+                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/consultations/'/>"
+                        data-gtm="all-cons">
                             <svg class="ds_icon">
                                 <use xlink:href="${iconspath}#3x3grid"></use>
                             </svg>
@@ -199,7 +201,7 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/topics/'/>" class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left">
+                        <a href="<@hst.link path='/topics/'/>" class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left">
                             <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#3x3grid"></use></svg>
                             See all topics
                         </a>
@@ -241,7 +243,7 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/news/'/>"
+                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/news/'/>"
                         data-gtm="all-news">
                             <svg class="ds_icon">
                                 <use xlink:href="${iconspath}#3x3grid"></use>
@@ -275,7 +277,7 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/statistics-and-research/'/>"
+                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/statistics-and-research/'/>"
                         data-gtm="all-stats">
                             <svg class="ds_icon">
                                 <use xlink:href="${iconspath}#3x3grid"></use>
@@ -294,34 +296,38 @@
                 </h2>
 
                 <div class="gov_sublayout  gov_sublayout--twocols">
-                    <div class="gov_sublayout  gov_sublayout--firstminister">
+                    <#if firstMinister??>
+                        <div class="gov_sublayout  gov_sublayout--firstminister">
+                            <div>
+                                <h3>${firstMinister.title}</h3>
+
+                                <picture>
+                                    <source srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x" media="(max-width: 767px)">
+                                    <source srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x" media="(max-width: 991px)">
+                                    <source srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x" media="(max-width: 1199px)">
+
+                                    <img src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
+                                </picture>
+                            </div>
+
+                            <div>
+                                <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
+                                ${firstMinisterContent?trim?keep_before("\n")}
+
+                                <p><a class="homepage-about__read-more" data-gtm="read-more" href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
+                            </div>
+                        </div>
+                    </#if>
+
+                    <#if document??>
                         <div>
-                            <h3>${firstMinister.title}</h3>
+                            <h3>How government works</h3>
 
-                            <picture>
-                                <source srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x" media="(max-width: 767px)">
-                                <source srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x" media="(max-width: 991px)">
-                                <source srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x" media="(max-width: 1199px)">
-
-                                <img src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
-                            </picture>
+                            <div class="ds_leader homepage-about__leader">
+                                <@hst.html hippohtml=document.howGovernmentWorks />
+                            </div>
                         </div>
-
-                        <div>
-                            <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
-                            ${firstMinisterContent?trim?keep_before("\n")}
-
-                            <p><a class="homepage-about__read-more" data-gtm="read-more" href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3>How government works</h3>
-
-                        <div class="ds_leader homepage-about__leader">
-                            <@hst.html hippohtml=document.howGovernmentWorks />
-                        </div>
-                    </div>
+                    </#if>
                 </div>
             </section>
         </div>
@@ -337,6 +343,7 @@
         </div>
     </div>
 </div>
+
 
 <@hst.headContribution category="footerScripts">
     <script type="module" src="<@hst.webfile path="/assets/scripts/home.js"/>"></script>

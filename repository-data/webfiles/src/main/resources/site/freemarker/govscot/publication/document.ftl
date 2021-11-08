@@ -2,110 +2,87 @@
 <#include "../common/macros/format-file-size.ftl">
 
 <#if document??>
+
+<@hst.manageContent hippobean=document/>
+<@hst.link hippobean=document var="baseurl" canonical=true/>
+
+<div class="ds_wrapper">
+    <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
+        <div class="gov_sublayout__title">
+            <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
+            <h1 class="ds_page-header__title">${document.title?html}</h1>
+        </div>
+
+        <div class="gov_sublayout__metadata">
+            <#include 'metadata.ftl'/>
+        </div>
+
+        <div class="gov_sublayout__content">
+            <#if document.summary??>
+                <#list document.summary?split("\n") as summaryParagraph>
+                    <p class="ds_leader  ds_no-margin--bottom">${summaryParagraph}</p>
+                </#list>
+            </#if>
+
+            <#include '../common/collections-list.ftl'/>
+        </div>
+    </header>
 </div>
 
-    <@hst.manageContent hippobean=document/>
-    <@hst.link hippobean=document var="baseurl" canonical=true/>
+<div class="ds_wrapper"><hr /></div>
 
-<article id="page-content" class="layout--publication">
+<div class="ds_wrapper">
+    <div class="ds_layout  gov_layout--publication--no-sidebar">
+        <div class="ds_layout__content">
+            <h2>Supporting documents</h2>
 
-<#--------------------- HEADER SECTION --------------------->
-    <div class="top-matter">
-        <div class="wrapper">
-            <header class="article-header no-bottom-margin">
-                    <div class="grid"><!--
-                     --><div class="grid__item large--ten-twelfths">
-                        <p class="article-header__label">Publication - ${document.label}</p>
-                        <h1 class="article-header__title">${document.title}</h1>
-                    </div><!--
-                 --></div>
-                    <div class="grid"><!--
-                     --><div class="grid__item  large--three-twelfths">
-                        <#include 'metadata.ftl'/>
-                    </div><!--
-
-                     --><div class="grid__item  large--seven-twelfths">
-                        <div class="leader  leader--first-para">
-                            <#if document.summary??>
-                                <#list document.summary?split("\n") as summaryParagraph>
-                                    <p>${summaryParagraph}</p>
-                                </#list>
-                            </#if>
-
-                            <#include '../common/collections-list.ftl'/>
-                        </div>
-                    </div><!--
-                 --></div>
-
-            </header>
-        </div>
-    </div>
-
-    <#--------------------- BODY SECTION --------------------->
-    <div class="wrapper js-content-wrapper">
-        <div class="body-content publication-body">
-
-            <div class="grid"><!--
-
-                --><div class="grid__item large--eight-twelfths">
-
-                    <h2>Supporting documents</h2>
-
-                    <#if groupedDocumentFolders??>
-                        <#list groupedDocumentFolders as folder>
-                            <section class="document-section">
-                                <h2>${folder.displayName}</h2>
-                                <#list folder.documents as attachedDocument>
-                                    <#assign isTargetedItem = false/>
-                                    <#if doc = attachedDocument>
-                                        <#assign isTargetedItem = true/>
-                                    </#if>
-
-                                    <#assign isHighlightedItem = attachedDocument?is_first/>
-                                    <#include 'body-document-info.ftl'/>
-                                </#list>
-                            </section>
-                        </#list>
-                    <#else>
-                        <#list documents as attachedDocument>
+            <#if groupedDocumentFolders??>
+                <#list groupedDocumentFolders as folder>
+                    <section class="document-section">
+                        <h2>${folder.displayName}</h2>
+                        <#list folder.documents as attachedDocument>
                             <#assign isTargetedItem = false/>
-
-                            <#if doc?? && doc = attachedDocument>
+                            <#if doc = attachedDocument>
                                 <#assign isTargetedItem = true/>
                             </#if>
+
                             <#assign isHighlightedItem = attachedDocument?is_first/>
                             <#include 'body-document-info.ftl'/>
                         </#list>
+                    </section>
+                </#list>
+            <#else>
+                <#list documents as attachedDocument>
+                    <#assign isTargetedItem = false/>
+
+                    <#if doc?? && doc = attachedDocument>
+                        <#assign isTargetedItem = true/>
                     </#if>
+                    <#assign isHighlightedItem = attachedDocument?is_first/>
+                    <#include 'body-document-info.ftl'/>
+                </#list>
+            </#if>
 
-                    <div class="grid  page-nav"><!--
-                         --><div class="grid__item  medium--six-twelfths  page-nav__item">
-                                <a href="${baseurl}" class="page-nav__button  page-nav__button--left">
-                                    <span data-label="Return" class="page-nav__text">Main publication</span>
-                                </a>
-                            </div><!--
-                     --></div>
+            <nav class="ds_sequential-nav" aria-label="Article navigation">
+                <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
+                    <a title="Previous page" href="${baseurl}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+                        <span class="ds_sequential-nav__text" data-label="return">
+                            Main publication
+                        </span>
+                    </a>
+                </div>
+            </nav>
 
-                    <#if document.updateHistory?has_content>
-                        <div class="update-history">
-                            <#include '../common/update-history.ftl'/>
-                        </div>
-                    </#if>
-                </div><!--
+            <#if document.updateHistory?has_content>
+                <#include '../common/update-history.ftl'/>
+            </#if>
+        </div>
 
-            --></div>
+        <div class="ds_layout__feedback">
+            <#include '../common/feedback-wrapper.ftl'>
         </div>
     </div>
-</article>
-
-<div class="wrapper">
-    <div class="grid"><!--
-        --><div class="grid__item  large--eight-twelfths">
-        <#include '../common/feedback-wrapper.ftl'>
-    </div><!--
-    --></div>
 </div>
-
 </#if>
 
 <#include "../common/schema.article.ftl"/>

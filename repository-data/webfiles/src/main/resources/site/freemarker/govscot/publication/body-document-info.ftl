@@ -71,11 +71,10 @@
         </div>
     </div>
 
-        <div class="gov_document-info__download">
-            <a data-title="${attachedDocument.title}" href="${documentdownload}" class="ds_button  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
-                Download
-            </a>
-        </div>
+    <div class="gov_document-info__download">
+        <a data-title="${attachedDocument.title}" href="${documentdownload}" class="ds_button  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
+            Download
+        </a>
     </div>
 </div>
 </#if>

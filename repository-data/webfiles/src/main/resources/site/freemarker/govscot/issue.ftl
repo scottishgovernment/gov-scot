@@ -7,27 +7,17 @@
         <input id="topicName" type="hidden" value="${document.title}"/>
         <main id="main-content" class="ds_layout  gov_layout--issue">
             <div class="ds_layout__banner">
-                <div class="gov_topic-header  <#if document.image??>gov_topic-header--has-image</#if>" id="page-content">
+                <header class="gov_feature-header  gov_feature-header--issue" id="page-content">
                     <#if document.image??>
-                        <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="gov_topic-header__image">
-                    </#if>
-
-                    <header class="ds_page-header  gov_topic-header__title">
-                        <h1 class="ds_page-header__title">${document.title}</h1>
-                    </header>
-
-                    <#if document.featureDateTitle?has_content ||
-                    document.featureDate?has_content ||
-                    document.featureDateSummary?has_content >
-                    <aside class="gov_issue-callout">
-                        <div class="gov_issue-callout__inner">
-                            <#if document.featureDateTitle?has_content><h3 class="gov_issue-callout__beta">${document.featureDateTitle}</h3></#if>
-                            <#if document.featureDate?has_content><div class="gov_issue-callout__alpha"><@fmt.formatDate value=document.featureDate.time type="both" pattern="d MMM yyyy"/></div></#if>
-                            <#if document.featureDateSummary?has_content><div class="gov_issue-callout__gamma">${document.featureDateSummary}</div></#if>
+                        <div class="gov_feature-header__media  gov_feature-header__media--full">
+                            <img alt="" aria-hidden="true" src="<@hst.link hippobean=document.image.bannerdesktop/>" />
                         </div>
-                    </aside>
                     </#if>
-                </div>
+
+                    <div class="gov_feature-header__content">
+                        <h1 class="gov_feature-header__title">${document.title}</h1>
+                    </div>
+                </header>
             </div>
 
             <div class="ds_layout__content">
@@ -40,10 +30,22 @@
                 </div>
             </div>
 
-            <div class="ds_layout__sidebar">
-                <div <#if document.featureDateTitle?has_content ||
+            <div class="ds_layout__sidebar-B">
+                <#if document.featureDateTitle?has_content ||
                     document.featureDate?has_content ||
-                    document.featureDateSummary?has_content >class="gov_displace-by-issue-callout"</#if>>
+                    document.featureDateSummary?has_content >
+                    <aside class="gov_issue-callout">
+                        <div class="gov_issue-callout__inner">
+                            <#if document.featureDateTitle?has_content><h3 class="gov_issue-callout__beta">${document.featureDateTitle}</h3></#if>
+                            <#if document.featureDate?has_content><div class="gov_issue-callout__alpha"><@fmt.formatDate value=document.featureDate.time type="both" pattern="d MMM yyyy"/></div></#if>
+                            <#if document.featureDateSummary?has_content><div class="gov_issue-callout__gamma">${document.featureDateSummary}</div></#if>
+                        </div>
+                    </aside>
+                </#if>
+            </div>
+
+            <div class="ds_layout__sidebar">
+                <div>
                     <#if document.featuredItems?has_content>
                         <section id="featured-items">
 

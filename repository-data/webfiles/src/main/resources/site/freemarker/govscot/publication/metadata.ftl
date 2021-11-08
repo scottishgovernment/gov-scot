@@ -68,4 +68,24 @@
     </#if>
     <#--! END 'speech or statement' format-specific fields-->
 
-</section>
+    <#--! BEGIN 'FOI/EIR release' format-specific fields-->
+    <#if document.foiNumber?has_content>
+        <div class="ds_metadata__item">
+            <span class="ds_metadata__key">FOI reference</span>
+            <span class="ds_metadata__value">${document.foiNumber}</span>
+        </div>
+    </#if>
+    <#if document.dateReceived?has_content>
+        <div class="ds_metadata__item">
+            <span class="ds_metadata__key">Date received</span>
+            <span class="ds_metadata__value"><@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/></span>
+        </div>
+    </#if>
+    <#if document.dateResponded?has_content>
+        <div class="ds_metadata__item">
+            <span class="ds_metadata__key">Date responded</span>
+            <span class="ds_metadata__value"><@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/></span>
+        </div>
+    </#if>
+    <#--! END 'FOI/EIR release' format-specific fields-->
+</dl>

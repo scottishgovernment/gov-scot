@@ -1,54 +1,57 @@
 <#include "../include/imports.ftl">
 
 <#if document??>
-    <article id="page-content" class="layout--role">
+<div class="ds_wrapper">
+    <article id="main-content" class="ds_layout  gov_layout--featured-role-article">
         <@hst.manageContent hippobean=document/>
 
-        <div class="grid"><!--
-            --><div class="grid__item  medium--eight-twelfths  large--seven-twelfths">
-                <header class="article-header">
-                    <h1 class="article-header__title">${document.title}</h1>
-                </header>
+        <div class="ds_layout__header">
+            <header class="ds_page-header">
+                <h1 class="ds_page-header__title">${document.title}</h1>
+            </header>
+        </div>
 
-                <@hst.html hippohtml=document.content/>
+        <div class="ds_layout__content">
+            <@hst.html hippohtml=document.content/>
 
-                <div class="page-nav">
-                    <a title="Previous page" href="../" class="page-nav__button  page-nav__button--left">
-                        <span data-label="previous" class="page-nav__text">First Minister</span>
+            <nav class="ds_sequential-nav" aria-label="Article navigation">
+                <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
+                    <a title="Previous section" href="../" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+                        <span class="ds_sequential-nav__text" data-label="previous">
+                            First Minister
+                        </span>
                     </a>
                 </div>
-            </div><!--
-            --><div class="grid__item  medium--four-twelfths  push--large--one-twelfth">
-                <aside class="gov_sidebar-feature">
-                    <#if document.relatedarticle.image??>
-                        <img class="gov_sidebar-feature__image" alt="" aria-hidden="true"
-                            src="<@hst.link hippobean=document.relatedarticle.image.largefourcolumns/>"
-                            srcset="<@hst.link hippobean=document.relatedarticle.image.smallcolumns/> 360w,
-                                <@hst.link hippobean=document.relatedarticle.image.smalldoubled/> 720w,
-                                <@hst.link hippobean=document.relatedarticle.image.mediumfourcolumns/> 220w,
-                                <@hst.link hippobean=document.relatedarticle.image.mediumfourcolumnsdoubled/> 440w,
-                                <@hst.link hippobean=document.relatedarticle.image.largefourcolumns/> 294w,
-                                <@hst.link hippobean=document.relatedarticle.image.largefourcolumnsdoubled/> 588w,
-                                <@hst.link hippobean=document.relatedarticle.image.xlargefourcolumns/> 360w,
-                                <@hst.link hippobean=document.relatedarticle.image.xlargefourcolumnsdoubled/> 720w"
-                            sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 360px" />
-                    </#if>
+            </nav>
+        </div>
 
-                    <h2 class="emphasis  contact-information__title">${document.relatedarticle.title}</h2>
+        <div class="ds_layout__sidebar">
+            <aside class="gov_sidebar-feature">
+                <#if document.relatedarticle.image??>
+                    <img class="gov_sidebar-feature__image" alt="" aria-hidden="true"
+                        src="<@hst.link hippobean=document.relatedarticle.image.largefourcolumns/>"
+                        srcset="<@hst.link hippobean=document.relatedarticle.image.smallcolumns/> 360w,
+                            <@hst.link hippobean=document.relatedarticle.image.smallcolumnsdoubled/> 720w,
+                            <@hst.link hippobean=document.relatedarticle.image.mediumfourcolumns/> 220w,
+                            <@hst.link hippobean=document.relatedarticle.image.mediumfourcolumnsdoubled/> 440w,
+                            <@hst.link hippobean=document.relatedarticle.image.largefourcolumns/> 294w,
+                            <@hst.link hippobean=document.relatedarticle.image.largefourcolumnsdoubled/> 588w,
+                            <@hst.link hippobean=document.relatedarticle.image.xlargefourcolumns/> 360w,
+                            <@hst.link hippobean=document.relatedarticle.image.xlargefourcolumnsdoubled/> 720w"
+                        sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 360px" />
+                </#if>
 
-                    <@hst.html hippohtml=document.relatedarticle.content/>
-                </aside>
-            </div><!--
-        --></div>
+                <h2 class="emphasis  contact-information__title">${document.relatedarticle.title}</h2>
 
-    </article>
+                <@hst.html hippohtml=document.relatedarticle.content/>
+            </aside>
+        </div>
 
-    <div class="grid"><!--
-        --><div class="grid__item  medium--eight-twelfths  large--seven-twelfths">
+        <div class="ds_layout__feedback">
             <#include 'common/feedback-wrapper.ftl'>
-        </div><!--
-    --></div>
-
+        </div>
+    </article>
+</div>
 <#-- @ftlvariable name="editMode" type="java.lang.Boolean"-->
 <#elseif editMode>
   <div>

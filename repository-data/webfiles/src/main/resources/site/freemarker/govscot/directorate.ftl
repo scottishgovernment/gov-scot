@@ -18,43 +18,41 @@
                 <h3>Cabinet Secretary and Ministers</h3>
 
                 <div>
-                    <ul class="person-grid">
+                    <ul class="gov_person-grid">
                         <#if document.orgRole??>
                             <#list document.orgRole as role>
                                 <#assign person = role.incumbent />
                                 <@hst.link var="link" hippobean=role/>
 
-                                <li class="person-grid__item">
-                                    <div class=person>
-                                        <a class="person__link" href="${link}">
-                                            <div class="person__image-container">
-                                                <div class="person__image-container">
-                                                    <#if person.image??>
-                                                    <img alt="${person.title}" class="person__image"
-                                                    src="<@hst.link hippobean=person.image.xlarge/>"
-                                                    srcset="<@hst.link hippobean=person.image.small/> 130w,
-                                                        <@hst.link hippobean=person.image.smalldoubled/> 260w,
-                                                        <@hst.link hippobean=person.image.medium/> 220w,
-                                                        <@hst.link hippobean=person.image.mediumdoubled/> 440w,
-                                                        <@hst.link hippobean=person.image.large/> 213w,
-                                                        <@hst.link hippobean=person.image.largedoubled/> 426w,
-                                                        <@hst.link hippobean=person.image.xlarge/> 263w,
-                                                        <@hst.link hippobean=person.image.xlargedoubled/> 526w"
-                                                    sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px">
-                                                    <#else>
-                                                    <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
-                                                    </#if>
-                                                </div>
+                                <li class="gov_person-grid__item">
+                                    <div class=gov_person>
+                                        <a class="gov_person__link" href="${link}">
+                                            <div class="gov_person__image-container">
+                                                <#if person.image??>
+                                                <img alt="${person.title}" class="gov_person__image"
+                                                src="<@hst.link hippobean=person.image.xlarge/>"
+                                                srcset="<@hst.link hippobean=person.image.small/> 148w,
+                                                    <@hst.link hippobean=person.image.smalldoubled/> 296w,
+                                                    <@hst.link hippobean=person.image.medium/> 224w,
+                                                    <@hst.link hippobean=person.image.mediumdoubled/> 448w,
+                                                    <@hst.link hippobean=person.image.large/> 208w,
+                                                    <@hst.link hippobean=person.image.largedoubled/> 416w,
+                                                    <@hst.link hippobean=person.image.xlarge/> 256w,
+                                                    <@hst.link hippobean=person.image.xlargedoubled/> 512w"
+                                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                                <#else>
+                                                <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
+                                                </#if>
                                             </div>
                                         </a>
 
-                                        <div class="person__text-container">
-                                            <h4 class="person__name person__name--link">${role.title}</h4>
+                                        <div class="gov_person__text-container">
+                                            <h4 class="gov_person__name">${role.title}</h4>
 
-                                            <p class="person__roles">
+                                            <p class="gov_person__roles">
                                                 <#-- todo: allow for multiple here -->
                                                 <#if role.incumbent??>
-                                                    <a class="person__role-link" href="${link}">${role.title}</a>
+                                                    <a class="gov_person__role-link" href="${link}">${role.title}</a>
                                                 <#else>
                                                     ${role.roleTitle}
                                                 </#if>
@@ -71,40 +69,37 @@
 
                 <div>
 
-                    <ul class="person-grid">
+                    <ul class="gov_person-grid">
                         <#if document.secondaryOrgRole??>
                             <#list document.secondaryOrgRole as role>
                                 <#assign person = role.incumbent />
                                 <@hst.link var="link" hippobean=role/>
 
-                                <li class="person-grid__item">
-                                    <div class=person>
-                                        <a class="person__link" href="${link}">
-                                            <div class="person__image-container">
-                                                <div class="person__image-container">
+                                <li class="gov_person-grid__item">
+                                    <div class="gov_person">
+                                        <a class="gov_person__link" href="${link}">
+                                            <div class="gov_person__image-container">
+                                                <#if role.incumbent??>
+                                                    <#assign person = role.incumbent/>
+                                                <#else>
+                                                    <#assign person = role/>
+                                                </#if>
 
-                                                    <#if role.incumbent??>
-                                                        <#assign person = role.incumbent/>
-                                                    <#else>
-                                                        <#assign person = role/>
-                                                    </#if>
-
-                                                    <#if person.image??>
-                                                    <img alt="${person.title}" class="person__image"
-                                                    src="<@hst.link hippobean=person.image.xlarge/>"
-                                                    srcset="<@hst.link hippobean=person.image.small/> 130w,
-                                                        <@hst.link hippobean=person.image.smalldoubled/> 260w,
-                                                        <@hst.link hippobean=person.image.medium/> 220w,
-                                                        <@hst.link hippobean=person.image.mediumdoubled/> 440w,
-                                                        <@hst.link hippobean=person.image.large/> 213w,
-                                                        <@hst.link hippobean=person.image.largedoubled/> 426w,
-                                                        <@hst.link hippobean=person.image.xlarge/> 263w,
-                                                        <@hst.link hippobean=person.image.xlargedoubled/> 526w"
-                                                    sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px">
-                                                    <#else>
-                                                    <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
-                                                    </#if>
-                                                </div>
+                                                <#if person.image??>
+                                                <img alt="${person.title}" class="gov_person__image"
+                                                src="<@hst.link hippobean=person.image.xlarge/>"
+                                                srcset="<@hst.link hippobean=person.image.small/> 148w,
+                                                    <@hst.link hippobean=person.image.smalldoubled/> 296w,
+                                                    <@hst.link hippobean=person.image.medium/> 224w,
+                                                    <@hst.link hippobean=person.image.mediumdoubled/> 448w,
+                                                    <@hst.link hippobean=person.image.large/> 208w,
+                                                    <@hst.link hippobean=person.image.largedoubled/> 416w,
+                                                    <@hst.link hippobean=person.image.xlarge/> 256w,
+                                                    <@hst.link hippobean=person.image.xlargedoubled/> 512w"
+                                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                                <#else>
+                                                <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
+                                                </#if>
                                             </div>
                                         </a>
 

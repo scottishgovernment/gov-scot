@@ -10,169 +10,200 @@
 <!-- this outer div allows us to break the sticky header out of the layout grid -->
 <div>
     <div class="ds_wrapper">
-        <div class="ds_layout  gov_layout--publication">
-            <div class="ds_layout__header">
-                <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
-                    <div class="gov_sublayout__title">
-                        <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
-                        <h1 class="ds_page-header__title">${document.title?html}</h1>
-                    </div>
+        <#if pages?has_content && documents?has_content>
+            <#assign hasDocuments = true>
+        </#if>
+        <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
+            <div class="gov_sublayout__title">
+                <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
+                <h1 class="ds_page-header__title">${document.title?html}</h1>
+            </div>
 
-                    <div class="gov_sublayout__metadata">
-                        <#include 'metadata.ftl'/>
-                    </div>
+            <div class="gov_sublayout__metadata">
+                <#include 'metadata.ftl'/>
+            </div>
 
-                    <div class="gov_sublayout__content">
-                        <#if document.summary??>
-                            <#list document.summary?split("\n") as summaryParagraph>
-                                <p class="ds_leader">${summaryParagraph}</p>
-                            </#list>
+            <div class="gov_sublayout__content">
+                <#if document.summary??>
+                    <#list document.summary?split("\n") as summaryParagraph>
+                        <p class="ds_leader  ds_no-margin--bottom">${summaryParagraph}</p>
+                    </#list>
+                </#if>
+
+                <#include '../common/collections-list.ftl'/>
+            </div>
+
+            <#if hasDocuments!false>
+                <div class="gov_sublayout__document">
+                    <div class="gov_supporting-documents">
+
+                        <#assign mainDocument = documents[0]/>
+                        <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
+
+                        <@hst.link var="documentdownload" hippobean=mainDocument.document>
+                            <@hst.param name="forceDownload" value="true"/>
+                        </@hst.link>
+
+                        <@hst.link var="documentinline" hippobean=mainDocument.document>
+                        </@hst.link>
+
+                        <#if filenameExtension == "PDF">
+                            <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                <img
+                                    alt="View supporting documents"
+                                    class="gov_supporting-documents__thumbnail"
+                                    src="<@hst.link hippobean=mainDocument.thumbnails[0]/>"
+                                    srcset="
+                                        <#list mainDocument.thumbnails as thumbnail>
+                                            <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                        </#list>"
+                                    sizes="(min-width: 768px) 165px, 107px" />
+                            </a>
+                        <#else>
+                            <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                    <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                </svg>
+                                <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                            </a>
                         </#if>
 
-                        <#include '../common/collections-list.ftl'/>
+                        <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                            <span class="gov_supporting-documents__button-icon">
+                                <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                            </span>
+                            <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                        </a>
                     </div>
-
-                    <div class="gov_sublayout__document">
-                        <div class="gov_supporting-documents">
-                            <#if pages?has_content>
-                                <#if documents?has_content>
-                                    <#assign mainDocument = documents[0]/>
-                                    <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
-
-                                    <@hst.link var="documentdownload" hippobean=mainDocument.document>
-                                        <@hst.param name="forceDownload" value="true"/>
-                                    </@hst.link>
-
-                                    <@hst.link var="documentinline" hippobean=mainDocument.document>
-                                    </@hst.link>
-
-                                    <#if filenameExtension == "PDF">
-                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
-                                            <img
-                                                alt="View supporting documents"
-                                                class="gov_supporting-documents__thumbnail"
-                                                src="<@hst.link hippobean=mainDocument.thumbnails[0]/>"
-                                                srcset="
-                                                    <#list mainDocument.thumbnails as thumbnail>
-                                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                    </#list>"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        </a>
-                                    <#else>
-                                        <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
-                                            <svg class="gov_file-icon__label" viewBox="0 0 210 297">
-                                                <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
-                                            </svg>
-                                            <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
-                                        </a>
-                                    </#if>
-
-                                    <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
-                                        <span class="gov_supporting-documents__button-icon">
-                                            <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
-                                        </span>
-                                        <span class="gov_supporting-documents__button-text">Supporting documents</span>
-                                    </a>
-                                </#if>
-                            </#if>
-                        </div>
-                    </div>
-                </header>
-            </div>
-        </div>
+                </div>
+            </#if>
+        </header>
     </div>
 
-    <div class="gov_sticky-document-title">
+    <div class="ds_wrapper"><hr /></div>
+
+<#--  <style>
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 0;
+}
+
+.sticky-header__inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+}
+
+.sticky-header__content {
+    width: 100%;
+}
+
+.sticky-header__title {
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sticky-header__subtitle {
+    color: #888;
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sticky-header__controls {
+    text-align: right;
+    padding-left: 24px;
+}
+
+.sticky-header__inner {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s;
+}
+
+.sticky-header.is-pinned::after {
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0));
+    content: '';
+    left: 0;
+    right: 0;
+    height: 8px;
+    bottom: -8px;
+    pointer-events: none;
+    position: absolute;
+}
+
+.sticky-header.is-pinned .sticky-header__inner {
+    opacity: 1;
+    pointer-events: all;
+}
+</style>
+    <div class="sticky-header" aria-hidden="true">
         <div class="ds_wrapper">
-            <div class="ds_layout  gov_layout--publication">
-                <div class="ds_layout__content">
-                    <div>
-                        <span class="doctitle">${document.title}</span>
+            <div class="sticky-header__inner">
+                <div class="sticky-header__content">
+                    <p class="sticky-header__title">
+                        ${document.title?html}
+                    </p>
+
+                    <p class="sticky-header__subtitle">
                         ${currentPage.title}
-                    </div>
+                    </p>
+                </div>
+
+                <div class="sticky-header__controls">
+
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function getOffsetFromDocumentTop(element) {
-            let offset = element.offsetTop;
+<script>
+    function getOffsetFromDocumentTop(element) {
+        let offset = element.offsetTop;
 
-            while (element.offsetParent) {
-                element = element.offsetParent;
-                offset = offset + element.offsetTop
+        while (element.offsetParent) {
+            element = element.offsetParent;
+            offset = offset + element.offsetTop
+        }
+
+        return offset;
+    }
+
+    const element = document.querySelector('.sticky-header');
+    const observer = new IntersectionObserver(
+        function ([e]) {
+            if (!e.isIntersecting && getOffsetFromDocumentTop(element) - 10 < window.scrollY) {
+                e.target.classList.add('is-pinned');
+            } else {
+                e.target.classList.remove('is-pinned');
             }
+        },
+        { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
+    );
 
-            return offset;
-        }
+    observer.observe(element);
+</script>  -->
 
-        const element = document.querySelector('.gov_sticky-document-title');
-        const observer = new IntersectionObserver(
-            function ([e]) {
-                if (!e.isIntersecting && getOffsetFromDocumentTop(element) - 10 < window.scrollY) {
-                    e.target.classList.add('is-pinned');
-                } else {
-                    e.target.classList.remove('is-pinned');
-                }
-            },
-            { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
-        );
 
-        observer.observe(element);
-    </script>
-    <style>
-        .gov_sticky-document-title {
-            position: sticky;
-            top: -1px;
-            background: #ebebeb;
-            padding: 16px;
-            z-index: 2
-        }
-
-        .gov_sticky-document-title::after {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0));
-            bottom: -8px;
-            content: '';
-            left: 0;
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-
-            transition: opacity 0.2s;
-        }
-
-        .gov_sticky-document-title .doctitle {
-            display: none;
-            font-weight: 400;
-        }
-
-        .gov_sticky-document-title .doctitle::after {
-            content: '—';
-            margin: 0 0.35em 0 0.5em;
-        }
-
-        .gov_sticky-document-title.is-pinned .doctitle {
-            display: inline;
-        }
-
-        .gov_sticky-document-title.is-pinned {
-            border-top: 1px solid transparent;
-        }
-
-        .gov_sticky-document-title.is-pinned::after {
-            opacity: 1;
-        }
-    </style>
 
     <div class="ds_wrapper">
-        <div class="ds_layout  gov_layout--publication">
-            <div class="ds_layout__sidebar">
-                <#if pages??>
+        <#if pages??>
+            <#assign hasSidebar = true/>
+        </#if>
+        <div class="ds_layout  <#if hasSidebar!false>gov_layout--publication<#else>gov_layout--publication--no-sidebar</#if>">
+            <#if pages??>
+                <div class="ds_layout__sidebar">
                     <#include 'side-menu.ftl'/>
-                </#if>
-            </div>
+                </div>
+            </#if>
 
             <div class="ds_layout__content">
                 <#if isMultiPagePublication>
@@ -204,12 +235,10 @@
                         </#if>
                     </nav>
 
-                    <hr>
-
                     <@hst.html hippohtml=document.contact var="contact"/>
                     <#if contact?has_content>
-                        <section class="publication-info__section publication-info__contact">
-                            <h3 class="emphasis">Contact</h3>
+                        <section class="gov_content-block">
+                            <h3 class="gov_content-block__title">Contact</h3>
                             ${contact}
                         </section>
                     </#if>
@@ -250,29 +279,17 @@
                             <#--! END 'minutes' format-specific fields-->
 
                             <#--! BEGIN 'FOI/EIR release' format-specific fields-->
-                            <#if document.foiNumber?has_content>
-                                <strong>FOI reference:</strong> ${document.foiNumber}<br>
-                            </#if>
-
-                            <#if document.dateReceived?has_content>
-                                <strong>Date received:</strong> <@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/><br>
-                            </#if>
-
-                            <#if document.dateResponded?has_content>
-                                <strong>Date responded:</strong> <@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/><br>
-                            </#if>
-
                             <@hst.html hippohtml=document.request var="request"/>
                             <#if request?has_content>
                                 <div class="body-content publication-body">
-                                    <strong>Information requested</strong><br>
+                                    <h2>Information requested</h2>
                                     ${request}
                                 </div>
                             </#if>
 
                             <@hst.html hippohtml=document.response var="response"/>
                             <#if response?has_content>
-                                <strong>Response</strong><br>
+                                <h2>Response</h2>
                                 ${response}
                             </#if>
                             <#--! END 'FOI/EIR release' format-specific fields-->
@@ -312,8 +329,8 @@
 
                             <@hst.html hippohtml=document.contact var="contact"/>
                             <#if contact?has_content>
-                                <div class="publication-info__contact">
-                                    <h3 class="emphasis">Contact</h3>
+                                <div class="gov_content-block">
+                                    <h3 class="gov_content-block__title">Contact</h3>
                                     ${contact}
                                 </div>
                             </#if>

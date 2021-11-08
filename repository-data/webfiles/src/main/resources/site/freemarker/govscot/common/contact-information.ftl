@@ -6,7 +6,7 @@
 <#if contactInformation??>
 <div class="ds_contact-details">
 
-    <h2 class="ds_contact-details__title">Contact</h2>
+    <h2 class="ds_contact-details__title  <#if contactInformationHeadingModifier??>${contactInformationHeadingModifier}</#if>">Contact</h2>
 
     <dl class="ds_contact-details__list">
         <#if postalAddress??>

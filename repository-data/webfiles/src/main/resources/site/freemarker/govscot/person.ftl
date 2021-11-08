@@ -18,28 +18,30 @@
             </div>
 
             <div class="ds_layout__sidebar">
-                <div class="person person--bordered-mobile">
-                    <div class="person__image-container person__image-container--centred-mobile">
+                <div class="gov_person  gov_person--flex">
+                    <div class="gov_person__image-container">
                         <#if document.image??>
-                        <img alt="${document.title}" class="person__image"
+                        <img alt="${document.title}" class="gov_person__image"
                             src="<@hst.link hippobean=document.image.xlarge/>"
-                            srcset="<@hst.link hippobean=document.image.small/> 130w,
-                                <@hst.link hippobean=document.image.smalldoubled/> 260w,
-                                <@hst.link hippobean=document.image.medium/> 220w,
-                                <@hst.link hippobean=document.image.mediumdoubled/> 440w,
-                                <@hst.link hippobean=document.image.large/> 213w,
-                                <@hst.link hippobean=document.image.largedoubled/> 426w,
-                                <@hst.link hippobean=document.image.xlarge/> 263w,
-                                <@hst.link hippobean=document.image.xlargedoubled/> 526w"
-                            sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px"/>
+                            srcset="<@hst.link hippobean=document.image.small/> 148w,
+                                <@hst.link hippobean=document.image.smalldoubled/> 296w,
+                                <@hst.link hippobean=document.image.medium/> 224w,
+                                <@hst.link hippobean=document.image.mediumdoubled/> 448w,
+                                <@hst.link hippobean=document.image.large/> 208w,
+                                <@hst.link hippobean=document.image.largedoubled/> 416w,
+                                <@hst.link hippobean=document.image.xlarge/> 256w,
+                                <@hst.link hippobean=document.image.xlargedoubled/> 512w"
+                            sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                         <#else>
-                        <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">
+                        <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">
                         </#if>
                     </div>
-                </div>
 
-                <div class="hidden-xsmall">
-                    <#include 'common/contact-information.ftl' />
+                    <div class="gov_person__text-container">
+                        <#assign contactInformationHeadingModifier = 'gamma' />
+                        <#assign contactInformation = document.contactInformation />
+                        <#include 'common/contact-information.ftl' />
+                    </div>
                 </div>
             </div>
 
@@ -48,9 +50,6 @@
                     <@hst.html hippohtml=document.content/>
                 </div>
 
-                <div class="visible-xsmall">
-                    <#include 'common/contact-information.ftl' />
-                </div>
             </div>
 
             <div class="ds_layout__feedback">

@@ -7,15 +7,17 @@
         <input id="topicName" type="hidden" value="${document.title}"/>
         <main id="main-content" class="ds_layout  gov_layout--topic">
             <div class="ds_layout__banner">
-                <div class="gov_topic-header  <#if document.image??>gov_topic-header--has-image</#if>" id="page-content">
+                <header class="gov_feature-header  gov_feature-header--topic" id="page-content">
                     <#if document.image??>
-                        <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="gov_topic-header__image">
+                        <div class="gov_feature-header__media  gov_feature-header__media--full">
+                            <img alt="" aria-hidden="true" src="<@hst.link hippobean=document.image.bannerdesktop/>" />
+                        </div>
                     </#if>
 
-                    <header class="ds_page-header  gov_topic-header__title">
-                        <h1 class="ds_page-header__title">${document.title}</h1>
-                    </header>
-                </div>
+                    <div class="gov_feature-header__content">
+                        <h1 class="gov_feature-header__title">${document.title}</h1>
+                    </div>
+                </header>
             </div>
 
             <div class="ds_layout__content">
@@ -24,26 +26,28 @@
 
             <#if policies?has_content>
                 <div class="ds_layout__policies">
-                    <h2>Policies</h2>
+                    <section id="policies" class="gov_content-block">
+                        <h2 class="gov_content-block__title">Policies</h2>
 
-                    <ul class="gov_policy-list gov_column-list  gov_column-list--not-small  gov_column-list--3">
-                        <#list policies as policy>
-                            <li class="gov_policy-list__item  gov_column-list__item">
-                                <a data-gtm="policy-${policy?index + 1}" class="gov_policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
-                            </li>
-                        </#list>
-                    </ul>
+                        <ul class="gov_policy-list gov_column-list  gov_column-list--not-small  gov_column-list--3">
+                            <#list policies as policy>
+                                <li class="gov_policy-list__item  gov_column-list__item">
+                                    <a data-gtm="policy-${policy?index + 1}" class="gov_policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
+                                </li>
+                            </#list>
+                        </ul>
+                    </section>
                 </div>
             </#if>
 
             <#if document.featuredItems?has_content>
                 <div class="ds_layout__featured">
-                    <section id="featured-items" class="topic-block">
-                        <h2 class="emphasis  topic-block__title">Featured</h2>
+                    <section id="featured-items" class="gov_content-block">
+                        <h2 class="gov_content-block__title">Featured</h2>
 
-                        <ul class="gov_sublayout  gov_sublayout--threecols">
+                        <div class="gov_feature-cards">
                             <#list document.featuredItems as item>
-                                <li class="ds_card  ds_card--no-padding  ds_card--dark  gov_featured-item  ds_reversed">
+                                <div class="ds_card  ds_card--grey  ds_card--hover  gov_feature-card">
                                     <#assign imgLabel = 'news'/>
                                     <#if item.label == 'news'>
                                         <#assign imgLabel = 'news'/>
@@ -83,27 +87,28 @@
                                             </dl>
                                         </#if>
 
-                                        <h3 class="gov_featured-item__title">
-                                            <a data-gtm="featured-item-${item?index + 1}" href="<@hst.link hippobean=item/>" class="gov_featured-item__link">
+                                        <h3 class="ds_card__title">
+                                            <a data-gtm="featured-item-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
                                                 ${item.title}
                                             </a>
                                         </h3>
 
-                                        <p class="gov_featured-item__summary">
+                                        <p>
                                             ${item.summary}
                                         </p>
                                     </article>
-                                </li>
+                                </div>
                             </#list>
-                        </ul>
+                        </div>
+
                     </section>
                 </div>
             </#if>
 
             <div class="ds_layout__latest  gov_latest-feeds">
-                <section id="latest-publications" class="gov_latest-feed">
+                <section id="latest-publications" class="gov_content-block  gov_latest-feed">
                     <div>
-                        <h2 class="emphasis  topic-block__title">
+                        <h2 class="gov_content-block__title">
                             Publications
                         </h2>
 
@@ -134,9 +139,9 @@
                     </div>
                 </section>
 
-                <section id="latest-consultations" class="gov_latest-feed">
+                <section id="latest-consultations" class="gov_content-block  gov_latest-feed">
                     <div>
-                        <h2 class="emphasis  topic-block__title">
+                        <h2 class="gov_content-block__title">
                             Consultations
                         </h2>
 
@@ -168,9 +173,9 @@
 
                 </section>
 
-                <section id="latest-stats-research" class="gov_latest-feed">
+                <section id="latest-stats-research" class="gov_content-block  gov_latest-feed">
                     <div>
-                        <h2 class="emphasis  topic-block__title">
+                        <h2 class="gov_content-block__title">
                             Statistics and research
                         </h2>
 
@@ -201,9 +206,9 @@
                     </div>
                 </section>
 
-                <section id="latest-news" class="gov_latest-feed">
+                <section id="latest-news" class="gov_content-block  gov_latest-feed">
                     <div>
-                        <h2 class="emphasis  topic-block__title">
+                        <h2 class="gov_content-block__title">
                             News
                         </h2>
 
@@ -237,8 +242,8 @@
             </div>
 
             <div class="ds_layout__directorates">
-                <section class="topic-block" id="people-and-directorates">
-                    <h2 class="emphasis  topic-block__title">People and directorates</h2>
+                <section id="people-and-directorates" class="gov_content-block">
+                    <h2 class="gov_content-block__title">People and directorates</h2>
 
                     <div class="ds_accordion" data-module="ds-accordion">
                         <button data-accordion="accordion-open-all" type="button" class="ds_link  ds_accordion__open-all  js-open-all">Open all <span class="visually-hidden">sections</span></button>
@@ -255,11 +260,11 @@
                             <div class="ds_accordion-item__body">
                                 <ul class="person-list  gov_column-list  gov_column-list--not-small  gov_column-list--2">
                                     <#list document.responsibleRoles as role>
-                                        <li class="person  person--small  gov_column-list__item">
+                                        <li class="gov_person  gov_person--small  gov_column-list__item">
                                             <#if role.incumbent??>
-                                                <h4 class="person__name">${role.incumbent.title}</h4>
+                                                <h4 class="gov_person__name">${role.incumbent.title}</h4>
                                             </#if>
-                                            <p class="person__roles"><a href="<@hst.link hippobean=role/>" data-gtm="person-${role?index + 1}">${role.title}</a></p>
+                                            <p class="gov_person__roles"><a href="<@hst.link hippobean=role/>" data-gtm="person-${role?index + 1}">${role.title}</a></p>
                                         </li>
                                     </#list>
                                 </ul>

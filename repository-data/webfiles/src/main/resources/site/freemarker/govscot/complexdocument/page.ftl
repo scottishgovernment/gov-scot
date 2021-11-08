@@ -24,179 +24,121 @@
 <!-- this outer div allows us to break the sticky header out of the layout grid -->
 <div>
     <div class="ds_wrapper">
-        <div class="ds_layout  gov_layout--publication">
-            <div class="ds_layout__header">
-                <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
-                    <div class="gov_sublayout__title">
-                        <span class="ds_page-header__label  ds_content-label">Publication - ${document.label}</span>
-                        <h1 class="ds_page-header__title">${document.title}</h1>
-                    </div>
+        <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
+            <div class="gov_sublayout__title">
+                <span class="ds_page-header__label  ds_content-label">Publication - ${document.label}</span>
+                <h1 class="ds_page-header__title">${document.title}</h1>
+            </div>
 
-                    <div class="gov_sublayout__metadata">
-                        <#include '../publication/metadata.ftl'/>
-                    </div>
+            <div class="gov_sublayout__metadata">
+                <#include '../publication/metadata.ftl'/>
+            </div>
 
-                    <div class="gov_sublayout__content">
-                        <#if document.summary??>
-                            <p class="ds_leader">${document.summary}</p>
-                        </#if>
+            <div class="gov_sublayout__content">
+                <#if document.summary??>
+                    <p class="ds_leader  ds_no-margin">${document.summary}</p>
+                </#if>
 
-                        <#include '../common/collections-list.ftl'/>
-                    </div>
+                <#include '../common/collections-list.ftl'/>
+            </div>
 
-                    <div class="gov_sublayout__document">
-                        <#if documents?? && documents?size gt 0>
-                            <div class="gov_supporting-documents">
-                                <#if document.displayPrimaryDocument == true>
-                                    <#if documents??>
-                                        <#assign firstDocument = documents[0]/>
-                                        <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
-                                        <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
-                                    </#if>
-                                    <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
-                                        <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
-                                            <#if document.coverimage?has_content>
-                                                <img
-                                                    alt="View supporting documents"
-                                                    class="gov_supporting-documents__thumbnail"
-                                                    src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                                    srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                        <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                        <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                        <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                                    sizes="(min-width: 768px) 165px, 107px" />
-                                            <#else>
-                                                <img
-                                                    class="gov_supporting-documents__thumbnail"
-                                                    alt="View supporting documents"
-                                                    src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                                    srcset="
-                                                    <#list firstDocument.thumbnails as thumbnail>
-                                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                    </#list>"
-                                                    sizes="(min-width: 768px) 165px, 107px" />
-                                            </#if>
-                                        </a>
+            <div class="gov_sublayout__document">
+                <#if documents?? && documents?size gt 0>
+                    <div class="gov_supporting-documents">
+                        <#if document.displayPrimaryDocument == true>
+                            <#if documents??>
+                                <#assign firstDocument = documents[0]/>
+                                <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
+                            </#if>
+                            <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
+                                    <#if document.coverimage?has_content>
+                                        <img
+                                            alt="View supporting documents"
+                                            class="gov_supporting-documents__thumbnail"
+                                            src="<@hst.link hippobean=document.coverimage.smallcover/>"
+                                            srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
+                                                <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
+                                                <@hst.link hippobean=document.coverimage.largecover/> 214w,
+                                                <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
+                                            sizes="(min-width: 768px) 165px, 107px" />
                                     <#else>
-                                        <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
-                                            <svg class="gov_file-icon__label" viewBox="0 0 210 297">
-                                                <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
-                                            </svg>
-                                            <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
-                                        </a>
+                                        <img
+                                            class="gov_supporting-documents__thumbnail"
+                                            alt="View supporting documents"
+                                            src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                            srcset="
+                                            <#list firstDocument.thumbnails as thumbnail>
+                                                <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                            </#list>"
+                                            sizes="(min-width: 768px) 165px, 107px" />
                                     </#if>
-                                </#if>
-                                <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
-                                    <span class="gov_supporting-documents__button-icon">
-                                        <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
-                                    </span>
-                                    <span class="gov_supporting-documents__button-text">Supporting documents</span>
                                 </a>
-                            </div>
+                            <#else>
+                                <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
+                                    <svg class="gov_file-icon__label" viewBox="0 0 210 297">
+                                        <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
+                                    </svg>
+                                    <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                </a>
+                            </#if>
                         </#if>
+                        <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
+                            <span class="gov_supporting-documents__button-icon">
+                                <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                            </span>
+                            <span class="gov_supporting-documents__button-text">Supporting documents</span>
+                        </a>
                     </div>
-                </header>
+                </#if>
             </div>
-        </div>
+        </header>
     </div>
 
-    <div class="gov_document-banner">
-        <div class="ds_wrapper">
-            <div class="ds_layout  gov_layout--publication">
-                <div class="ds_layout__content">
-                    <#if isDocumentsPage?? || currentPage == document>
-                    <#else>
-                        <div class="gov_document-banner__title">
-                            <span class="gov_document-banner__title-main">${document.title}</span>
-                            <span class="gov_document-banner__title-sub">${subsectionTitle}</span>
-                        </div>
-                    </#if>
-                    <div class="gov_document-banner__nav">
-                        <#if prevlink??>
-                            <a href="${prevlink}" class="ds_button  gov_document-banner__button">
-                                <svg class="ds_icon  gov_document-banner__button-icon">
-                                    <use xlink:href="${iconspath}#chevron-left"></use>
-                                </svg>
-                                <span aria-hidden="true">Prev</span> <span class="visually-hidden">Previous</span>
-                            </a>
-                        <#else>
-                            <span class="ds_button  gov_document-banner__button  ds_current">
-                                <svg class="ds_icon  gov_document-banner__button-icon">
-                                    <use xlink:href="${iconspath}#chevron-left"></use>
-                                </svg>
-                                <span aria-hidden="true">Prev</span> <span class="visually-hidden">Previous</span>
-                            </span>
-                        </#if>
-
-                        <#if !disableMenuButton??>
-                            <a href="${baseurl}" class="ds_button  gov_document-banner__button">
-                                <svg class="ds_icon  gov_document-banner__button-icon">
-                                    <use xlink:href="${iconspath}#menu"></use>
-                                </svg>
-                                Menu
-                            </a>
-                        <#else>
-                            <span class="ds_button  gov_document-banner__button  ds_current">
-                                <svg class="ds_icon  gov_document-banner__button-icon">
-                                    <use xlink:href="${iconspath}#menu"></use>
-                                </svg>
-                                Menu
-                            </span>
-                        </#if>
-
-                        <#if nextlink??>
-                            <a href="${nextlink}" class="ds_button  gov_document-banner__button">
-                                <svg class="ds_icon  gov_document-banner__button-icon">
-                                    <use xlink:href="${iconspath}#chevron-right"></use>
-                                </svg>
-                                Next
-                            </a>
-                        <#else>
-                            <span class="ds_button  gov_document-banner__button  ds_current">
-                                <svg class="ds_icon  gov_document-banner__button-icon">
-                                    <use xlink:href="${iconspath}#chevron-right"></use>
-                                </svg>
-                                Next
-                            </span>
-                        </#if>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function getOffsetFromDocumentTop(element) {
-            let offset = element.offsetTop;
-
-            while (element.offsetParent) {
-                element = element.offsetParent;
-                offset = offset + element.offsetTop
-            }
-
-            return offset;
-        }
-
-        const element = document.querySelector('.gov_document-banner');
-        const observer = new IntersectionObserver(
-            function ([e]) {
-                window.foo = e.isIntersecting;
-                if (!e.isIntersecting && getOffsetFromDocumentTop(element) - 10 < window.scrollY) {
-                    e.target.classList.add('is-pinned');
-                } else {
-                    e.target.classList.remove('is-pinned');
-                }
-            },
-            { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
-        );
-
-        observer.observe(element);
-    </script>
-    <style>
-
-    </style>
+    <div class="ds_wrapper"><hr /></div>
 
     <div class="ds_wrapper">
         <div class="ds_layout  gov_layout--publication">
+            <div class="ds_layout__sidebar">
+                <nav class="ds_side-navigation  ds_no-margin--top" data-module="ds-side-navigation">
+                    <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
+                    <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
+
+                    <ul class="ds_side-navigation__list" id="side-navigation-root">
+                        <#list chapters as chapter>
+                            <#if chapter == currentChapter>
+                                <span class="ds_side-navigation__link  ds_side-navigation__link--inactive">
+                                    <b>${chapter.displayName}</b>
+                                </span>
+
+                                <ul class="ds_side-navigation__list">
+                                    <#list chapter.documents as page>
+                                        <li class="ds_side-navigation__item">
+                                            <#if page == currentPage>
+                                                <span class="ds_side-navigation__link  ds_current">
+                                                    ${page.title}
+                                                </span>
+                                            <#else>
+                                                <a class="ds_side-navigation__link" href="<@hst.link hippobean=page/>">
+                                                    ${page.title}
+                                                </a>
+                                            </#if>
+
+                                        </li>
+                                    </#list>
+                                </ul>
+                            <#else>
+                                <@hst.link var="link" hippobean=chapter.documents?first/>
+                                <a class="ds_side-navigation__link" href="${link}">
+                                    ${chapter.displayName}
+                                </a>
+                            </#if>
+                        </#list>
+                    </ul>
+                </nav>
+            </div>
+
             <div class="ds_layout__content">
                 <#if isAboutPage??>
                     <h2>About this publication</h2>
@@ -232,7 +174,7 @@
                         </div>
                     </#if>
                 <#elseif isDocumentsPage??>
-                    <h2>Supporting documents</h2>
+                    <h2>Supporting documentsqqq</h2>
 
                     <#if documents?? && documents?size gt 0>
                         <section class="document-section">

@@ -31,28 +31,35 @@
 
             <div class="ds_layout__sidebar">
                 <#if document.incumbent??>
-                    <div class="person person--bordered-mobile">
-                        <div class="person__image-container person__image-container--centred-mobile">
+                    <div class="gov_person">
+                        <div class="gov_person__image-container  gov_person__image-container--centered-mobile">
                             <#if document.incumbent.image??>
-                            <img alt="${document.incumbent.title}" class="person__image"
+                            <img alt="${document.incumbent.title}" class="gov_person__image"
                                 src="<@hst.link hippobean=document.incumbent.image.xlarge/>"
-                                srcset="<@hst.link hippobean=document.incumbent.image.small/> 130w,
-                                    <@hst.link hippobean=document.incumbent.image.smalldoubled/> 260w,
-                                    <@hst.link hippobean=document.incumbent.image.medium/> 220w,
-                                    <@hst.link hippobean=document.incumbent.image.mediumdoubled/> 440w,
-                                    <@hst.link hippobean=document.incumbent.image.large/> 213w,
-                                    <@hst.link hippobean=document.incumbent.image.largedoubled/> 426w,
-                                    <@hst.link hippobean=document.incumbent.image.xlarge/> 263w,
-                                    <@hst.link hippobean=document.incumbent.image.xlargedoubled/> 526w"
-                                sizes="(min-width:1200px) 263px, (min-width:920px) 213px, (min-width:768px) 220px, 130px" />
+                                srcset="<@hst.link hippobean=document.incumbent.image.small/> 148w,
+                                    <@hst.link hippobean=document.incumbent.image.smalldoubled/> 296w,
+                                    <@hst.link hippobean=document.incumbent.image.medium/> 224w,
+                                    <@hst.link hippobean=document.incumbent.image.mediumdoubled/> 448w,
+                                    <@hst.link hippobean=document.incumbent.image.large/> 208w,
+                                    <@hst.link hippobean=document.incumbent.image.largedoubled/> 416w,
+                                    <@hst.link hippobean=document.incumbent.image.xlarge/> 256w,
+                                    <@hst.link hippobean=document.incumbent.image.xlargedoubled/> 512w"
+                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                             <#else>
-                            <img class="person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
+                            <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
                             </#if>
                         </div>
                     </div>
+                </#if>
+            </div>
 
-                    <div class="hidden-xsmall">
-                        <#include 'common/contact-information.ftl' />
+            <div class="ds_layout__sidebar-B">
+                <#if document.incumbent??>
+                    <div class="gov_person">
+                        <div class="gov_person__text-container">
+                            <#assign contactInformationHeadingModifier = 'gamma' />
+                            <#include 'common/contact-information.ftl' />
+                        </div>
                     </div>
                 </#if>
             </div>
@@ -60,7 +67,7 @@
             <div class="ds_layout__content">
                 <#if document.incumbent??>
                     <#if document.incumbent.content?has_content>
-                        <div>
+                        <div class="ds_leader-first-paragraph">
                             <@hst.html hippohtml=document.incumbent.content var="biography"/>
                             ${biography?trim?keep_before("\n")}
                         </div>
@@ -78,11 +85,6 @@
                         ${biography?trim?keep_after("\n")}
                     </#if>
                 </#if>
-
-
-                <div class="visible-xsmall">
-                    <#include 'common/contact-information.ftl' />
-                </div>
 
                 <#if document.updateHistory?has_content>
                     <div class="update-history">
