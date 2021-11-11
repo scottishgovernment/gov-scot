@@ -114,7 +114,7 @@ const Feedback = {
             $('#feedback-form').addClass('hidden');
 
             // show thanks
-            $('.feedback-thanks').removeClass('hidden');
+            $('.feedback__thanks').removeClass('hidden');
 
             // Log the event to analytics.
             window.dataLayer = window.dataLayer || [];
@@ -124,28 +124,12 @@ const Feedback = {
                 'event' : 'feedbackSubmit'
             });
         }, function(err) {
-            if (err.status === 201) {
-                // hide form
-                $('#feedback-form').addClass('hidden');
+            const submit = $('#feedback-form').find('[type=submit]');
 
-                // show thanks
-                $('.feedback__thanks').removeClass('hidden');
-
-                // Log the event to analytics.
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    'type' : feedback.type,
-                    'reason' : feedback.reason,
-                    'event' : 'feedbackSubmit'
-                });
-            } else {
-                const submit = $('#feedback-form').find('[type=submit]');
-
-                that.addError(
-                    that.settings.badServer,
-                    submit.parent()
-                );
-            }
+            that.addError(
+                that.settings.badServer,
+                submit.parent()
+            );
         });
     },
 
