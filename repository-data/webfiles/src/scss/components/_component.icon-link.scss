@@ -1,0 +1,17 @@
+.gov_icon-link {
+    @include ds_blocklink;
+    @include ds_small-size;
+
+    border-bottom: 1px solid currentColor;
+    display: inline-block;
+    margin-top: 24px;
+    padding: 8px 8px 8px 40px;
+    position: relative;
+    text-decoration: none;
+
+    .ds_icon {
+        left: 4px;
+        position: absolute;
+        top: 8px;
+    }
+}

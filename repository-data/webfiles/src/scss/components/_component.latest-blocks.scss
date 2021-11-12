@@ -40,13 +40,28 @@
 }
 
 .#{$site-prefix}latest-feed {
-  @include ds_responsive-margin(9, bottom);
   position: relative;
 
   @supports(display: grid) {
     display: grid;
     grid-gap: 32px;
     grid-template-rows: 1fr auto;
+  }
+
+  &__see-all {
+    @include ds_blocklink;
+
+    border-bottom: 1px solid currentColor;
+    display: inline-block;
+    padding: 8px 8px 8px 40px;
+    position: relative;
+    text-decoration: none;
+
+    .ds_icon {
+      left: 4px;
+      position: absolute;
+      top: 6px;
+    }
   }
 }
 
@@ -80,6 +95,10 @@
   &__title {
     @include ds_h4-style;
     font-weight: 400;
+
+    @include ds_media-query(medium) {
+      line-height: 28px;
+    }
   }
 
   &__topics {

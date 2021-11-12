@@ -9,6 +9,7 @@ import './component.google-analytics';
 import './component.feedback';
 import './component.payment';
 import UpdateHistory from './component.update-history';
+import ToggleLink from './component.toggle-link';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
@@ -39,19 +40,12 @@ const global = {
         window.pubsub = $;
     },
 
-    initNotifications: function () {
-        const notificationBanners = [].slice.call(document.querySelectorAll('[data-module="ds-notification"]'));
-        notificationBanners.forEach(notificationBanner => new NotificationBanner(notificationBanner).init());
-    },
-
 
     init: function () {
         document.documentElement.classList.add('js-enabled');
 
         this.initPubsub();
         this.svgFallback();
-
-        this.initNotifications();
         this.initDesignSystemComponents();
     },
 
@@ -131,6 +125,8 @@ const global = {
             updateHistoryModule.init();
         }
 
+        const toggleLinks = [].slice.call(document.querySelectorAll('[data-module="gov-toggle-link"]'));
+        toggleLinks.forEach(toggleLink => new ToggleLink(toggleLink).init());
 
     },
 };

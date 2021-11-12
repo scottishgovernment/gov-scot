@@ -16,7 +16,7 @@
 
     <#assign index=document/>
     <#assign metadataChildrenOnly = true/>
-    <#include '../common/content-data.ftl'/>
+    <#include '../common/content-metadata.ftl'/>
 
     <#--! BEGIN 'minutes' format-specific fields-->
     <#if document.publicationType?lower_case! == "minutes">

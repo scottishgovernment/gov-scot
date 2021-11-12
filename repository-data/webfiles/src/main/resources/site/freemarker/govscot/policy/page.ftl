@@ -8,7 +8,7 @@
             <header class="ds_page-header">
                 <span class="ds_page-header__label  ds_content-label">Policy<#if latest??> - Latest</#if></span>
                 <h1 class="ds_page-header__title">${index.title?html}</h1>
-                <#include '../common/content-data.ftl'/>
+                <#include '../common/content-metadata.ftl'/>
             </header>
         </div>
 

@@ -47,6 +47,7 @@ $breakpoints: (
 @import "objects/object.scrollable";
 
 @import "components/component.az-list";
+@import "components/component.content-block";
 @import "components/component.document-info";
 @import "components/component.document-banner";
 @import "components/component.featured-item";
@@ -58,15 +59,17 @@ $breakpoints: (
 @import "components/component.gov-search-result";
 @import "components/component.gov-sidebar-feature";
 @import "components/component.history-list";
-@import "components/component.homepage-block";
 @import "components/component.homepage-hero";
+@import "components/component.icon-link";
 @import "components/component.issue-callout";
 @import "components/component.latest-blocks";
 @import "components/component.person";
 @import "components/component.person-grid";
 @import "components/component.policy-list";
+@import "components/component.secondary-footer";
 @import "components/component.stat-box";
 @import "components/component.supporting-documents";
+@import "components/component.toggle-link";
 
 @import "overrides/override.aps-tables";
 @import "overrides/override.card";
@@ -100,14 +103,6 @@ $breakpoints: (
         margin: 0;
     }
 }
-
-
-.gov_page-bottom {
-    background-color: $ds_colour__grey--lighter;
-    border-top: 1px solid $ds_colour__border--light;
-    padding-bottom: 72px;
-}
-
 
 // .ds_reversed *:not(:focus) {color: white !important}
 // @supports (display: grid) {

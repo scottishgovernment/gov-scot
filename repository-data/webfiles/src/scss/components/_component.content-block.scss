@@ -1,0 +1,77 @@
+/*------------------------------------*\
+    CONTENT BLOCK
+    // used on homepage and topic pages
+\*------------------------------------*/
+
+$content-block-top-margin: 80px;
+$content-block-highlight-padding: 16px;
+
+.#{$site-prefix}content-block {
+    @include ds_small-size;
+    @include ds_responsive-margin(9, bottom);
+
+    line-height: 24px;
+    position: relative;
+
+    &__highlight {
+        background-color: $ds_colour__grey--lighter;
+        margin-top: #{$content-block-highlight-padding * -1};
+        padding: $content-block-highlight-padding;
+    }
+
+    &__title {
+        display: inline-block;
+        position: relative;
+        padding-top: 8px;
+
+        &::before {
+            background-color: $ds_colour__brand;
+            content: '';
+            height: 4px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        &--consultations,
+        &--publications {
+            &::after {
+                background: url() no-repeat center top transparent;
+                content: '';
+                margin-left: 16px;
+                position: absolute;
+                top: 0;
+            }
+        }
+
+        &--publications::after {
+            background-image: url(../../../../assets/images/graphics/home-publications.svg);
+            height: 31px;
+            width: 24px;
+
+            @include ds_media-query(medium) {
+                height: 38px;
+                width: 27px;
+            }
+        }
+
+        &--consultations::after {
+            background-image: url(../../../../assets/images/graphics/home-consultations.svg);
+            height: 31px;
+            width: 37px;
+
+            @include ds_media-query(medium) {
+                height: 38px;
+                width: 46px;
+            }
+        }
+    }
+
+    &__title-link {
+        color: currentColor;
+    }
+
+    &__subtitle {
+        font-size: inherit;
+    }
+}

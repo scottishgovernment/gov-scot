@@ -1,0 +1,10 @@
+/// with JS disabled, the "show" link is hidden and the target is visible
+/// with JS enabled, the "show link" is visible and the target is hidden until shown
+
+html:not(.js-enabled) .gov_toggle-link {
+    display: none;
+}
+
+html.js-enabled .gov_toggle-link__target:not(.gov_toggle-link__target--visible) {
+    display: none;
+}

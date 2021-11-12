@@ -8,28 +8,39 @@ class ToggleLink {
     }
 
     init() {
+        // force the aria-expanded attribute
+        this.toggleLink.setAttribute('aria-expanded', this.expanded);
+
         this.toggleLink.addEventListener('click', (event) => {
             event.preventDefault();
 
             if (this.expanded) {
-                this.setClosed();
+                this.setHidden();
             } else {
-                this.setOpen();
-                this.toggleTarget.scrollIntoViewIfNeeded();
+                this.setVisible();
+
+                const rect = this.toggleTarget.getBoundingClientRect();
+                if (rect.top + 32 > window.innerHeight) {
+                    window.scrollTo(window.scrollX, window.scrollY + rect.top / 2);
+                }
             }
         });
     }
 
-    setOpen() {
-        this.toggleTarget.classList.remove('fully-hidden');
+    setVisible() {
+        this.toggleTarget.classList.add('gov_toggle-link__target--visible');
         this.toggleLink.innerText = this.closeText;
 
         this.expanded = !this.expanded;
         this.toggleLink.setAttribute('aria-expanded', this.expanded);
+
+        if (this.closeText === '') {
+            this.toggleLink.parentNode.removeChild(this.toggleLink);
+        }
     }
 
-    setClosed() {
-        this.toggleTarget.classList.add('fully-hidden');
+    setHidden() {
+        this.toggleTarget.classList.remove('gov_toggle-link__target--visible');
         this.toggleLink.innerText = this.openText;
 
         this.expanded = !this.expanded;

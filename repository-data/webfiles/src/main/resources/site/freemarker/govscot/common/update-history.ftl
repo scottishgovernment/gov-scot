@@ -11,12 +11,14 @@
         <div class="ds_metadata__item">
             <dt class="ds_metadata__key">Last updated</dt>
             <dd class="ds_metadata__value">
-                <strong><@fmt.formatDate value=latestUpdate.time type="both" pattern="d MMM yyyy"/></strong> -
-                <a href="#full-history" data-module="gov-toggle-link" aria-controls="full-history" data-toggled-text="hide all updates">show all updates</a>
+                <strong><@fmt.formatDate value=latestUpdate.time type="both" pattern="d MMM yyyy"/></strong>
+                <span class="gov_toggle-link">
+                    - <a href="#full-history" data-module="gov-toggle-link" aria-controls="full-history" data-toggled-text="hide all updates">show all updates</a>
+                </span>
             </dd>
         </div>
 
-        <div id="full-history" data-module="gov-update-history" class="ds_metadata__item  fully-hidden">
+        <div id="full-history" data-module="gov-update-history" class="ds_metadata__item  gov_toggle-link__target">
             <dt class="ds_metadata__key  visually-hidden">All updates</dt>
             <dd class="ds_metadata__value  gov_history-list">
                 <ol class="ds_no-bullets">

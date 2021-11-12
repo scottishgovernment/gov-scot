@@ -11,10 +11,10 @@
                 <a href="${link}">${index.allResponsibleRoles[0].title}</a><!--
                 --><#if index.allResponsibleRoles?size gt 1><!--
                 -->, <!--
-                --><a href="#secondary-responsible-roles" class="content-data__expand  js-display-toggle">
+                --><a href="#secondary-responsible-roles" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-responsible-roles" class="gov_toggle-link">
                     &#43;${index.allResponsibleRoles?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
-                    <span id="secondary-responsible-roles" class="content-data__additional">
+                    <span id="secondary-responsible-roles" class="gov_toggle-link__target">
                         <#list index.allResponsibleRoles as role>
                             <#if role?index != 0>
                                 <@hst.link var="link" hippobean=role/>
@@ -34,10 +34,10 @@
                 <a href="${link}">${index.allDirectorates[0].title}</a><!--
                 --><#if index.allDirectorates?size gt 1><!--
                 -->, <!--
-                --><a href="#secondary-responsible-directorates" class="content-data__expand  js-display-toggle">
+                --><a href="#secondary-responsible-directorates" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-responsible-directorates" class="gov_toggle-link">
                 &#43;${index.allDirectorates?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
-                    <span id="secondary-responsible-directorates" class="content-data__additional">
+                    <span id="secondary-responsible-directorates" class="gov_toggle-link__target">
                         <#list index.allDirectorates as directorate>
                             <#if directorate?index != 0>
                                 <@hst.link var="link" hippobean=directorate/>
@@ -60,9 +60,9 @@
                     </#if><!--
             --></#list><!--
             --><#if index.topics?size gt 3><!--
-                --><a href="#secondary-topics" class="content-data__expand  js-display-toggle">
+                --><a href="#secondary-topics" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-topics" class="gov_toggle-link">
                     &#43;${index.topics?size - 3}&nbsp;more&nbsp;&hellip;</a>
-                    <span id="secondary-topics" class="content-data__additional">
+                    <span id="secondary-topics" class="gov_toggle-link__target">
                         <#list index.topics?sort_by("title") as topic>
                             <#if topic?index gt 2>
                                 <@hst.link var="link" hippobean=topic/>
