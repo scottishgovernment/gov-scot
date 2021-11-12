@@ -4,146 +4,91 @@
 
 'use strict';
 
-import $ from 'jquery';
+import temporaryFocus from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/temporary-focus/temporary-focus';
+const PolyPromise = require('../vendor/promise-polyfill').default;
 
-const publicationPage = {},
-    pages = {},
-    isMobile = $('.toc-mobile-trigger').is(':visible');
+const publicationPage = {
+    init: function () {
+        this.initAsyncNavigation();
+    },
 
-publicationPage.init = function() {
-    this.initAsyncNavigation();
-};
+    initAsyncNavigation: function () {
+        this.pages = {};
+        this.pages[window.location.href] = document.documentElement.outerHTML;
 
-/**
- * Init the async navigation in progressive enhancement approach
- */
-publicationPage.initAsyncNavigation = function () {
-    /* We initially prevent default action, but if we encounter an error
-        * loading the data/page then we fallback to redirecting to the clicked
-        * link.
-        */
+        document.addEventListener('click', event => {
+            if (event.target.classList.contains('js-publication-navigation')) {
+                event.preventDefault();
 
-    $('.js-content-wrapper').on('click', '.js-contents a, .js-previous, .js-next', function (event) {
-        const linkEl = $(this),
-            url = linkEl.attr('href');
-        if (url) {
-            event.preventDefault();
+                const url = event.target.href;
 
-            publicationPage.loadSubPageHtml(url)
-                .done(function(){
-                    linkEl.blur();
-                    if (isMobile && linkEl.hasClass('page-group__link')) {
-                        this.sideNavigationModule.closeSideNav();
-                    }
-                })
-                .fail(function(){
-                    window.location = url;
-                });
-        }
-    });
+                this.loadSubPageHtml(url)
+                    .then(value => {
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = value;
 
-    /**
-     * Catch changes in state
-     */
-    window.onpopstate = function(e){
-        if(e.state){
-            const url = e.target.location.pathname;
-            publicationPage.loadSubPageHtml(url, false)
-                .fail(function(){
-                    window.location = url;
-                });
-        }
-    };
+                        const newPageContent = tempDiv.querySelector('.js-content-wrapper');
+                        const newPageSeqNav = tempDiv.querySelector('.ds_sequential-nav');
+                        const newSideNav = tempDiv.querySelector('.ds_side-navigation__list');
 
-    /**
-     * Add a class to pinpoint the top edge of the subpage for scrolling
-     * to the right location after page loaded.
-     */
-    if ( isMobile ) {
-        $('.publication-content').addClass('js-subpage-top-edge');
-    } else {
-        $('.js-sticky-header-position ').addClass('js-subpage-top-edge');
-    }
-};
+                        const contentElement = document.querySelector('.js-content-wrapper');
+                        const seqNavElement = document.querySelector('.ds_sequential-nav');
+                        const sideNavElement = document.querySelector('.ds_side-navigation__list');
 
-/**
- * Load the HTML for the page and caches it in a local variable.
- * Returns a promise that will return successful if the request was
- * successful or there already was a hit in the cache.
- */
-publicationPage.loadHtml = function (url) {
+                        contentElement.innerHTML = newPageContent.innerHTML;
+                        seqNavElement.innerHTML = newPageSeqNav.innerHTML;
+                        sideNavElement.innerHTML = newSideNav.innerHTML;
 
-    const deferred = $.Deferred();
+                        const rect = contentElement.getBoundingClientRect();
+                        if (rect.top + 32 > window.innerHeight) {
+                            window.scrollTo(window.scrollX, window.scrollY + rect.top / 2);
+                        } else if (rect.top < 0) {
+                            contentElement.scrollIntoView();
+                        }
 
-    if (pages[url]) {
-        deferred.resolve(pages[url]);
-    } else {
-        let request = new XMLHttpRequest();
-        request.open('GET', url, true);
+                        temporaryFocus(contentElement);
 
-        request.onreadystatechange = function() {
-            if (this.readyState === 4) {
-                if (this.status >= 200 && this.status < 400) {
-                    pages[url] = this.responseText;
-                    deferred.resolve(pages[url]);
-                } else {
-                    deferred.reject();
-                }
+                        // Update the URL and history
+                        if (window.history.pushState) {
+                            window.history.pushState({},'', url);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        window.location = event.target.href;
+                    });
             }
-        };
-
-        request.send();
-    }
-
-    return deferred.promise();
-};
-
-/**
- * Loads the given subpage
- * @param url
- * @param updateHistory
- */
-publicationPage.loadSubPageHtml = function (url, updateHistory) {
-    const deferred = $.Deferred();
-
-    if (typeof(updateHistory) === 'undefined') {
-        updateHistory = true;
-    }
-
-    this.loadHtml(url)
-        .done(function (data) {
-            const bodyContentWrapper = document.querySelector('.js-content-wrapper');
-
-            // parse the HTML string and extract the parts we want
-            const element = document.createElement('div');
-            element.insertAdjacentHTML('beforeend', data);
-            const newContents = element.querySelector('.js-content-wrapper');
-            const newStickyHeader = element.querySelector('.sticky-document-info');
-
-            // insert new HTML
-            bodyContentWrapper.innerHTML = newContents.innerHTML;
-            document.querySelector('.sticky-document-info').innerHTML = newStickyHeader.innerHTML;
-            $('.js-mobile-toc-trigger-close').hide();
-
-            // scroll to top of content
-            const targetOffset = $('.js-content-wrapper').offset().top - parseInt($('.sticky-document-info').height(), 10);
-            if (window.scrollY > targetOffset) {
-                window.scrollTo(window.scrollX, targetOffset);
-            }
-
-            // Update the URL and history
-            if (updateHistory && window.history.pushState) {
-                window.history.pushState({
-                    'html': 'inner html?',
-                    'pageTitle': 'updated page title'
-                },'', url);
-            }
-        })
-        .fail(function () {
-            deferred.reject();
         });
+    },
 
-    return deferred.promise();
+    loadSubPageHtml(url) {
+        return new PolyPromise((resolve, reject) => {
+            if (this.pages[url]) {
+                resolve(this.pages[url]);
+            } else {
+                const request = new XMLHttpRequest();
+
+                request.onreadystatechange = () => {
+                    if (request.readyState !== 4) {
+                        return;
+                    }
+
+                    if (request.status >= 200 && request.status < 300) {
+                        this.pages[url] = request.responseText;
+                        resolve(request.responseText);
+                    } else {
+                        reject({
+                            status: request.status,
+                            statusText: request.statusText
+                        });
+                    }
+                };
+
+                request.open('GET', url, true);
+                request.send();
+            }
+        });
+    }
 };
 
 window.format = publicationPage;
