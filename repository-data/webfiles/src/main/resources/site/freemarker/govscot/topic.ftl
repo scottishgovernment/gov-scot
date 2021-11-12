@@ -129,12 +129,11 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/publications/?topics=${document.title}'/>"
-                        data-gtm="all-pubs">
-                            <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                        <a href="<@hst.link path='/publications/?topics=${document.title}'/>" class="gov_latest-feed__see-all">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
-                            See all publications
+                            See all publications <span class="visually-hidden">about ${document.title}</span>
                         </a>
                     </div>
                 </section>
@@ -162,12 +161,11 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>"
-                        data-gtm="all-cons">
-                            <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                        <a href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>" class="gov_latest-feed__see-all">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
-                            See all consultations
+                            See all consultations <span class="visually-hidden">about ${document.title}</span>
                         </a>
                     </div>
 
@@ -196,12 +194,11 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
-                        data-gtm="all-stats">
-                            <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                        <a href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>" class="gov_latest-feed__see-all">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
-                            See all Statistics and research
+                            See all Statistics and research <span class="visually-hidden">about ${document.title}</span>
                         </a>
                     </div>
                 </section>
@@ -230,12 +227,11 @@
                     </div>
 
                     <div>
-                        <a class="ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/news/?topics=${document.title}'/>"
-                        data-gtm="all-news">
-                            <svg class="ds_icon">
-                                <use xlink:href="${iconspath}#3x3grid"></use>
+                        <a href="<@hst.link path='/news/?topics=${document.title}'/>" class="gov_latest-feed__see-all">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
                             </svg>
-                            See all news
+                            See all news <span class="visually-hidden">about ${document.title}</span>
                         </a>
                     </div>
                 </section>

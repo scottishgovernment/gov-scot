@@ -96,9 +96,9 @@
                     </div>
 
                     <div>
-                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/publications/'/>"
+                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/publications/'/>"
                         data-gtm="all-pubs">
-                            <svg class="ds_icon">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
                                 <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all publications
@@ -138,9 +138,9 @@
                     </div>
 
                     <div>
-                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/consultations/'/>"
+                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/consultations/'/>"
                         data-gtm="all-cons">
-                            <svg class="ds_icon">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
                                 <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all consultations
@@ -148,8 +148,8 @@
                     </div>
                 </section>
 
-                <section id="topics" class="gov_latest-feed">
-                    <div class="gov_content-block  gov_content-block--highlight">
+                <section id="topics" class="gov_content-block  gov_latest-feed">
+                    <div class="gov_content-block__highlight">
                         <h2 class="gov_content-block__title">
                             <a class="gov_content-block__title-link"
                                 href="<@hst.link path='/topics/'/>"
@@ -201,8 +201,8 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/topics/'/>" class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left">
-                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#list"></use></svg>
+                        <a href="<@hst.link path='/topics/'/>" class="gov_latest-feed__see-all">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img"><use xlink:href="${iconspath}#list"></use></svg>
                             See all topics
                         </a>
                     </div>
@@ -243,9 +243,9 @@
                     </div>
 
                     <div>
-                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/news/'/>"
+                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/news/'/>"
                         data-gtm="all-news">
-                            <svg class="ds_icon">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
                                 <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all news
@@ -277,9 +277,9 @@
                     </div>
 
                     <div>
-                        <a class="ds_no-margin  ds_button  ds_button--secondary  ds_button--has-icon  ds_button--has-icon--left" href="<@hst.link path='/statistics-and-research/'/>"
+                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/statistics-and-research/'/>"
                         data-gtm="all-stats">
-                            <svg class="ds_icon">
+                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
                                 <use xlink:href="${iconspath}#list"></use>
                             </svg>
                             See all Statistics and research
@@ -331,19 +331,12 @@
                 </div>
             </section>
         </div>
+
+        <div class="ds_layout__feedback">
+            <#include 'common/feedback-wrapper.ftl'>
+        </div>
     </main>
 </div>
-
-<div class="gov_page-bottom">
-    <div class="ds_wrapper">
-        <div class="ds_layout  gov_layout--home">
-            <div class="ds_layout__feedback">
-                <#include 'common/feedback-wrapper.ftl'>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <@hst.headContribution category="footerScripts">
     <script type="module" src="<@hst.webfile path="/assets/scripts/home.js"/>"></script>

@@ -71,7 +71,7 @@
 
                             <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                 <span class="gov_supporting-documents__button-icon">
-                                    <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
+                                    <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#expand_more"></use></svg>
                                 </span>
                                 <span class="gov_supporting-documents__button-text">Supporting documents</span>
                             </a>
@@ -102,7 +102,7 @@
                             <#if prev??>
                                 <@hst.link var="link" hippobean=prev/>
                                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
-                                    <a title="Previous page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+                                    <a title="Previous page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left  js-publication-navigation">
                                         <span class="ds_sequential-nav__text" data-label="previous">
                                             ${prev.title}
                                         </span>
@@ -113,7 +113,7 @@
                             <#if next??>
                                 <@hst.link var="link" hippobean=next/>
                                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--next">
-                                    <a title="Next page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right">
+                                    <a title="Next page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right  js-publication-navigation">
                                         <span class="ds_sequential-nav__text" data-label="next">
                                             ${next.title}
                                         </span>

@@ -12,19 +12,19 @@
             <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-collections" aria-labelledby="panel-collections-heading" />
             <div class="ds_accordion-item__header">
                 <h3 id="panel-collections-heading" class="ds_accordion-item__title">
-                    <img src="../../../../assets/images/icons/collection_@2x.png" style="
-                        width: 32px;vertical-align: middle;margin-right: 16px;
-                    ">
+                    <svg class="ds_icon ds_!_margin-right--1">
+                        <use xlink:href="${iconspath}#document"></use>
+                    </svg>
                     This document is part of ${description}
                 </h3>
                 <span class="ds_accordion-item__indicator"></span>
                 <label class="ds_accordion-item__label" for="panel-collections"><span class="visually-hidden">Show this section</span></label>
             </div>
             <div class="ds_accordion-item__body">
-                <ul class="ds_no-bullets">
+                <ul class="ds_contents-nav__list">
                     <#list collections as collection>
-                        <li>
-                            <a class="contents-list__link" href="<@hst.link hippobean=collection/>">${collection.title}</a>
+                        <li class="ds_contents-nav__item">
+                            <a class="ds_contents-nav__link" href="<@hst.link hippobean=collection/>">${collection.title}</a>
                         </li>
                     </#list>
                 </ul>

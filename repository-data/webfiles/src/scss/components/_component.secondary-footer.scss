@@ -1,0 +1,27 @@
+.gov_secondary-footer {
+    background-color: $ds_colour__grey--light;
+    padding: 16px 0;
+}
+
+.gov_social-links {
+    display: flex;
+    justify-content: end;
+    list-style-type: none;
+    margin: -10px 0;
+    min-height: 44px;
+    text-align: right;
+
+    &__item {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    &__link {
+        color: $ds_colour__text;
+        height: 44px;
+        display: block;
+        min-width: 44px;
+        padding: 10px;
+        text-decoration: none;
+    }
+}

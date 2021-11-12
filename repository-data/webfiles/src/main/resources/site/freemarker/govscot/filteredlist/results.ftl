@@ -1,5 +1,6 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
+<@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 <#-- @ftlvariable name="parameters" type="java.util.Map" -->
@@ -133,9 +134,9 @@
                         <#assign description = '${item.collections?size} collections'/>
                     </#if>
                     <p class="gov_search-result__supplemental">
-                        <img src="../../../../assets/images/icons/collection_@2x.png" style="
-                            width: 32px;vertical-align: middle;margin-right: 16px;
-                        ">
+                        <svg class="ds_icon ds_!_margin-right--1">
+                            <use xlink:href="${iconspath}#document"></use>
+                        </svg>
 
                         This publication is part of ${description}:&nbsp;
                         <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
