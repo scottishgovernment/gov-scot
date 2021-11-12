@@ -1,5 +1,6 @@
 .ds_card {
     @include ds_small-size;
+    line-height: 24px;
 
     &--grey {
         background-color: $ds_colour__grey--light;

@@ -45,92 +45,104 @@
             </div>
 
             <div class="ds_layout__sidebar">
-                <div>
-                    <#if document.featuredItems?has_content>
-                        <section id="featured-items">
+                <#if document.featuredItems?has_content>
+                    <section class="gov_content-block" id="featured-items">
 
-                            <h2 class="crossbar-header"><span class="crossbar-header__text"><#if document.featuredItemsTitle?has_content>${document.featuredItemsTitle}<#else>Featured</#if></span></h2>
+                        <h2 class="gamma  visually-hidden"><#if document.featuredItemsTitle?has_content>${document.featuredItemsTitle}<#else>Featured</#if></h2>
 
-                            <ul class="ds_no-bullets">
-                                <#list document.featuredItems as item>
-                                    <li class="gov_featured-item  gov_featured-item--sidebar">
-                                        <article>
-                                            <dl class="ds_metadata  gov_featured-item__metadata">
-                                                <#if item.label??>
-                                                    <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">Type</dt>
-                                                        <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
-                                                    </div>
-                                                </#if>
+                        <ul class="ds_no-bullets">
+                            <#list document.featuredItems as item>
+                                <li class="gov_featured-item  gov_featured-item--sidebar">
+                                    <article>
+                                        <dl class="ds_metadata  gov_featured-item__metadata">
+                                            <#if item.label??>
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                                    <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
+                                                </div>
+                                            </#if>
 
-                                                <#if item.label == 'news'>
-                                                    <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">Date</dt>
-                                                        <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></dd>
-                                                    </div>
-                                                <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
-                                                    <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">Link</dt>
-                                                        <dd class="ds_metadata__value">${document.url}</dd>
-                                                    </div>
-                                                <#elseif item.publicationDate??>
-                                                    <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
-                                                        <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></dd>
-                                                    </div>
-                                                </#if>
-                                            </dl>
+                                            <#if item.label == 'news'>
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></dd>
+                                                </div>
+                                            <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">Link</dt>
+                                                    <dd class="ds_metadata__value">${document.url}</dd>
+                                                </div>
+                                            <#elseif item.publicationDate??>
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
+                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></dd>
+                                                </div>
+                                            </#if>
+                                        </dl>
 
-                                            <h3 class="gov_featured-item__title  ds_no-margin--bottom">
-                                                <a class="gov_featured-item__link" data-gtm="featured-item-${item?index + 1}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>">
-                                                    ${item.title}
-                                                </a>
-                                            </h3>
-                                        </article>
-                                    </li>
-                                </#list>
-                            </ul>
-                        </section>
-                    </#if>
+                                        <h3 class="gov_featured-item__title  ds_no-margin--bottom">
+                                            <a class="gov_featured-item__link" data-gtm="featured-item-${item?index + 1}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>">
+                                                ${item.title}
+                                            </a>
+                                        </h3>
+                                    </article>
+                                </li>
+                            </#list>
+                        </ul>
+                    </section>
+                </#if>
 
-                    <div>
-                    <#if news?has_content>
-                        <section class="ds_article-aside" id="related-news">
-                            <h2>News</h2>
-                            <ul class="ds_no-bullets">
-                                <#list news as newsItem>
-                                    <li><a data-gtm="news-${newsItem?index + 1}" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
-                                </#list>
-                            </ul>
-                            <a href="<@hst.link path='/news/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all news</a>
-                        </section>
-                    </#if>
+                <#if news?has_content>
+                    <section class="gov_content-block" id="related-news">
+                        <h2 class="gov_content-block__title  gamma">News</h2>
+                        <ul class="ds_no-bullets">
+                            <#list news as newsItem>
+                                <li><a data-gtm="news-${newsItem?index + 1}" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
+                            </#list>
+                        </ul>
 
-                    <#if policies?has_content>
-                        <section class="ds_article-aside" id="related-policies">
-                            <h2>Policies</h2>
-                            <ul class="ds_no-bullets">
-                                <#list policies as policy>
-                                    <li><a data-gtm="policy-${policy?index + 1}" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
-                                </#list>
-                            </ul>
-                            <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all policies</a>
-                        </section>
-                    </#if>
+                        <a href="<@hst.link path='/news/?topics=' + document.title/>" class="gov_icon-link">
+                            <svg class="ds_icon  ds_icon--24" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
+                            </svg>
+                            See all news <span class="visually-hidden">about ${document.title}</span>
+                        </a>
+                    </section>
+                </#if>
 
-                    <#if publications?has_content>
-                        <section class="ds_article-aside" id="related-publications">
-                            <h2>Publications</h2>
-                            <ul class="ds_no-bullets">
-                                <#list publications as publication>
-                                    <li><a data-gtm="publications-${publication?index + 1}" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
-                                </#list>
-                            </ul>
-                            <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="see-all-button  see-all-button--icon  see-all-button--icon-grid"><span></span> See all publications</a>
-                        </section>
-                    </#if>
-                    </div>
-                </div>
+                <#if policies?has_content>
+                    <section class="gov_content-block" id="related-policies">
+                        <h2 class="gov_content-block__title  gamma">Policies</h2>
+                        <ul class="ds_no-bullets">
+                            <#list policies as policy>
+                                <li><a data-gtm="policy-${policy?index + 1}" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
+                            </#list>
+                        </ul>
+                        <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="gov_icon-link">
+                            <svg class="ds_icon  ds_icon--24" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
+                            </svg>
+                            See all policies <span class="visually-hidden">about ${document.title}</span>
+                        </a>
+                    </section>
+                </#if>
+
+                <#if publications?has_content>
+                    <section class="gov_content-block" id="related-publications">
+                        <h2 class="gov_content-block__title  gamma">Publications</h2>
+                        <ul class="ds_no-bullets">
+                            <#list publications as publication>
+                                <li><a data-gtm="publications-${publication?index + 1}" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
+                            </#list>
+                        </ul>
+                        <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="gov_icon-link">
+                            <svg class="ds_icon  ds_icon--24" aria-hidden="true" role="img">
+                                <use xlink:href="${iconspath}#list"></use>
+                            </svg>
+                            See all publications <span class="visually-hidden">about ${document.title}</span>
+                        </a>
+                    </section>
+                </#if>
             </div>
 
             <div class="ds_layout__feedback">
