@@ -211,10 +211,10 @@ definitions:
                 : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
                 ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
                 \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
-                : \"mygov\"\t}],\t\"extraPlugins\": \"mygov_infonote,simple_tables\"\
+                : \"mygov\"\t}],\t\"extraPlugins\": \"dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
                 ,        \"contentsCss\": [                \"ckeditor/hippocontents.css\"\
                 ,                \"ckeditor/ckeditorstyle.css\"        ],       \"\
                 youtube_responsive\": true,       \"youtube_privacy\": true,     \
                 \  \"youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\"\
                 , \"txtEmbed\", \"chkOlderCode\"],       \"extraAllowedContent\":\
-                \ { \"span\": { \"attributes\": \"class\", classes: \"*\" } }}"
+                \ \"table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate]\"}"

@@ -16,6 +16,15 @@
 .fully-hidden,
 .hidden.hidden-hard {display: none;}
 
+/* CKEditor widget labels */
+.cke_button__accordion_label,
+.cke_button__callout_label,
+.cke_button__contentblock_label,
+.cke_button__inset-text_label,
+.cke_button__warning-text_label {
+    display: inline-block;
+}
+
 /*------------------------------------*\
     #INSET TEXT PLUGIN
 \*------------------------------------*/
@@ -29,7 +38,7 @@
     margin-bottom: 0.3em;
 }
 
-.ds_inset-text__text > :last-child {
+.ds_inset-text__text> :last-child {
     margin-bottom: 0;
 }
 
@@ -39,23 +48,6 @@
 \*------------------------------------*/
 
 /* edit mode styles */
-.cke_inner .ds_accordion {
-    border: 1px dashed black;
-}
-
-.cke_inner .ds_accordion-item {
-    outline: 1px dotted black;
-}
-
-.cke_inner .ds_accordion::after {
-    background: #333;
-    color: white;
-    content: '+ add accordion panel';
-    cursor: pointer;
-    display: block;
-    padding: 7px 15px;
-}
-
 .cke_inner .ds_accordion-item__title,
 .cke_inner .ds_accordion-item__body {
     border: 1px dashed #cccccc;
@@ -117,7 +109,7 @@
 \*------------------------------------*/
 
 .ds_warning-text {
-    border : 1px solid currentColor;
+    border: 1px solid currentColor;
     border-width: 1px 0;
     padding: 14px 15px 14px 65px;
     position: relative;
@@ -127,7 +119,7 @@
     margin-bottom: 0.3em;
 }
 
-.ds_warning-text__text > :last-child {
+.ds_warning-text__text> :last-child {
     margin-bottom: 0;
 }
 
@@ -145,4 +137,106 @@
     text-align: center;
     top: 9px;
     width: 35px;
+}
+
+/*------------------------------------*\
+    #BUTTON PLUGIN
+\*------------------------------------*/
+
+.ds_button {
+    background: #0065bd;
+    border: 0;
+    border-radius: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    outline-width: 0;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.ds_reversed .ds_button {
+    background-color: #ffffff;
+    color: #0065bd;
+}
+
+.ds_reversed .ds_button:focus,
+.ds_reversed .ds_button:hover:focus {
+    background-color: #fdd522;
+}
+
+.ds_reversed .ds_button:hover {
+    background-color: #d9effc;
+}
+
+.ds_reversed .ds_button--secondary {
+    background-color: transparent;
+    border-color: currentColor;
+    color: #ffffff;
+}
+
+.ds_reversed .ds_button--secondary:hover:not(:focus) {
+    background-color: rgba(0, 101, 189, 0.3);
+    color: #ffffff;
+}
+
+.ds_button--secondary {
+    background-color: transparent;
+    color: #0065bd;
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.ds_button--secondary:hover:not(:focus) {
+    background-color: #d9effc;
+    color: #00437e;
+}
+
+.ds_button--cancel {
+    background-color: transparent;
+    color: #333333;
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.ds_button--cancel:hover:not(:focus) {
+    background-color: #ebebeb;
+    color: #333333;
+}
+
+.ds_button--fixed {
+    width: 200px;
+}
+
+.ds_button--fixed.ds_button--small {
+    width: 160px;
+}
+
+.ds_button--max {
+    max-width: 480px;
+    width: 100%;
+}
+
+/* editor style overrides */
+.cke_wysiwyg_div.cke_editable a.ds_button,
+.hippo-richtext a.ds_button {
+    color: #fff;
+    text-decoration: none;
+}
+
+.cke_wysiwyg_div.cke_editable a.ds_button--secondary,
+.hippo-richtext a.ds_button--secondary {
+    color: #0065bd;
+}
+
+.cke_wysiwyg_div.cke_editable a.ds_button--cancel,
+.hippo-richtext a.ds_button--cancel {
+    color: #333333;
 }
