@@ -245,6 +245,12 @@ definitions:
           hst:componentconfigurationid: hst:pages/siteitempage
           hst:relativecontentpath: ${parent}/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
+        /cookies:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/cookiepreferences
+          hst:refId: cookies
+          hst:relativecontentpath: siteitems/cookies
+          hst:sitemapitemhandlerids: [trailing-slash]
       /people:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist

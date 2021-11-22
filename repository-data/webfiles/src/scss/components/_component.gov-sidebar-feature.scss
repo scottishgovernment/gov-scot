@@ -11,11 +11,11 @@
 @include media-query('medium') {
     .gov_sidebar-feature {
         margin-bottom: 64px; /// from ds responsive scale
-    }
 
-    &__image {
-        display: block;
-        margin-bottom: 48px; /// from ds responsive scale
-        width: 100%;
+        &__image {
+            display: block;
+            margin-bottom: 48px; /// from ds responsive scale
+            width: 100%;
+        }
     }
 }

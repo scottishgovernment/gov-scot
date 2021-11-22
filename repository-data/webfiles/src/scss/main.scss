@@ -374,3 +374,20 @@ $tiny-size--medium: 14px !default;
 @import "trumps/trump.topic-expandable";
 
 @import "trumps/trump.focus-visible";
+
+
+
+
+.form-message {
+    padding: 14px 10px;
+    margin-bottom: 28px;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.form-message--success {
+    background-color: $colour__state--positive;
+    color: $colour__white;
+}

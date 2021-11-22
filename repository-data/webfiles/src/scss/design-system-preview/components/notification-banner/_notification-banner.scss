@@ -5,6 +5,8 @@
 // fixed vars
 $notification-banner__close-padding: 5px;
 $notification-banner__icon-padding: $notification-banner__close-padding;
+$cookie-notification__background-colour: $colour__grey--light !default;
+$cookie-notification__background-colour--success: $colour__state--positive !default;
 
 
 
@@ -42,11 +44,15 @@ $notification-banner__icon-padding: $notification-banner__close-padding;
     }
 
     &__actions {
-        display: inline-block;
-        margin: 21px -10px -7px 0;
+        margin-bottom: -14px;
+        margin-top: 28px;
+        text-align: center;
 
         > * {
-            margin: 0 10px 14px 0;
+            margin-bottom: 14px;
+            margin-top: 0;
+            white-space: nowrap;
+            width: 100%;
         }
     }
 
@@ -150,7 +156,15 @@ $notification-banner__icon-padding: $notification-banner__close-padding;
 
 @include media-query(medium) {
     .#{$pl-prefix}notification__actions {
-        margin: 0 0 -14px;
+        text-align: left;
+
+        > * {
+            width: auto;
+        }
+
+        > *:not(last-child) {
+            margin-right: 14px;
+        }
     }
 
     .#{$pl-prefix}notification__close {
@@ -161,13 +175,14 @@ $notification-banner__icon-padding: $notification-banner__close-padding;
 
 @supports(display: flex) {
     .#{$pl-prefix}notification__actions {
-        display: flex;
+        align-items: center;
+        display: inline-flex;
         flex-wrap: wrap;
-        margin-top: 7px;
+        width: auto;
 
         > * {
-            flex-basis: 0;
-            flex-grow: 1;
+            flex-basis: auto;
+            flex-grow: initial;
         }
     }
 
@@ -188,4 +203,21 @@ $notification-banner__icon-padding: $notification-banner__close-padding;
     .#{$pl-prefix}notification__close {
         display: block;
     }
+}
+
+
+
+
+.ds_notification.ds_notification--cookie {
+    background: $cookie-notification__background-colour;
+    color: $colour__text;
+
+    .ds_notification__content {
+        padding-top: 24px;
+        padding-bottom: 32px;
+    }
+}
+
+.ds_notification.ds_notification--cookie-success {
+    background: $cookie-notification__background-colour--success;
 }

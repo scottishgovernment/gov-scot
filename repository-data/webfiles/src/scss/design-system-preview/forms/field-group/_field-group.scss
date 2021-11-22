@@ -3,8 +3,8 @@
 \*------------------------------------*/
 
 .#{$pl_prefix}field-group {
-    margin-top: 14px;
-    margin-bottom: -21px;
+    margin-top: -21px;
+    margin-bottom: 28px;
 
     &--inline {
         display: flex;
@@ -12,6 +12,18 @@
     }
 
     &--inline > div:not(:last-child) {
-        margin-right: 15px;
+        margin-right: 25px;
     }
+}
+
+
+//specificity hack until DS version
+
+.ds_field-group .checkbox-group__label {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.ds_field-group input:checked + label.fancy-radio:after {
+    top: 10px;
 }

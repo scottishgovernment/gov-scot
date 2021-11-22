@@ -6,7 +6,7 @@
 
 import $ from 'jquery';
 import banner from './component.banner';
-import cookieNotice from './component.cookie-notice';
+import CookieNotification from '../design-system-preview/cookie-notification';
 import expand from './component.expand';
 import header from './component.header';
 import './component.google-analytics';
@@ -16,6 +16,7 @@ import NotificationBanner from './component.notification';
 import Accordion from '../../scss/design-system-preview/components/accordion/accordion';
 import MobileMenu from '../../scss/design-system-preview/components/site-navigation/site-navigation';
 import showHide from './component.showhide';
+import storage from './storage';
 
 window.DS = window.DS || {};
 window.DS.components = {
@@ -99,6 +100,29 @@ const global = {
         mobileMenuModules.forEach(mobileMenu => new MobileMenu(mobileMenu).init());
     },
 
+    initCookieNotification: function () {
+        const cookieNotificationEl = document.querySelector('[data-module="ds-cookie-notification"]');
+        if (cookieNotificationEl) {
+            const cookieNotification = new CookieNotification(cookieNotificationEl);
+            cookieNotification.init();
+        }
+    },
+
+    setInitialCookiePermissions: function () {
+        const permissionsString = storage.getCookie('cookiePermissions') || '';
+
+        if (!storage.isJsonString(permissionsString)) {
+            const permissions = {};
+            permissions.statistics = true;
+            permissions.preferences = true;
+
+            storage.setCookie(storage.categories.necessary,
+                'cookiePermissions',
+                JSON.stringify(permissions)
+            );
+        }
+    },
+
     init: function () {
         document.documentElement.classList.add('js-enabled');
 
@@ -107,10 +131,11 @@ const global = {
         this.compensateAnchorOffsetForStickyElements();
 
         banner.init('staging-banner');
-        cookieNotice.init();
         expand.init();
         header.init();
         this.initNotifications();
+        this.setInitialCookiePermissions();
+        this.initCookieNotification();
         this.initAccordions();
         this.initMobileMenu();
         if (document.querySelector('#page-content')) {

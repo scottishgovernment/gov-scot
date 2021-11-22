@@ -170,3 +170,6 @@ definitions:
       /featured-role-biography:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/featured-role-biography.ftl
+      /cookiepreferences-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/cookie-preferences-main.ftl
