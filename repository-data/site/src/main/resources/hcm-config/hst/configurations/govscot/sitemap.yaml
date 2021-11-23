@@ -242,15 +242,10 @@ definitions:
         hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/siteitempage
           hst:relativecontentpath: ${parent}/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
-        /cookies:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/cookiepreferences
-          hst:refId: cookies
-          hst:relativecontentpath: siteitems/cookies
-          hst:sitemapitemhandlerids: [trailing-slash]
+          hst:componentconfigurationmappingvalues: ['hst:pages/siteitempage', 'hst:pages/cookiepreferences']
+          hst:componentconfigurationmappingnames: ['govscot:SiteItem', 'govscot:CookiePage']
       /people:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
