@@ -7,11 +7,13 @@
     <article id="page-content" class="layout--site-item">
 
         <div class="grid"><!--
-         --><div class="grid__item medium--nine-twelfths large--seven-twelfths <#if document.additionalContent?has_content>push--medium--three-twelfths</#if>">
+         --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
                 <h1 class="article-header">${document.title}</h1>
 
                 <div class="body-content  leader--first-para">
                     <@hst.html hippohtml=document.content/>
+
+                    <@hst.html hippohtml=document.additionalContent/>
                 </div>
             </div><!--
      --></div>
