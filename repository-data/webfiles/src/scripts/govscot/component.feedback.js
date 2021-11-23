@@ -102,7 +102,7 @@ const Feedback = {
 
     sendFeedback: function (feedback) {
         const that = this;
-
+        
         $.ajax({
             type: 'POST',
             url: that.settings.feedbackUrl,
@@ -110,26 +110,34 @@ const Feedback = {
             contentType: 'application/json; charset=utf-8',
             dataType: 'json'
         }).then(function() {
-            // hide form
-            $('#feedback-form').addClass('hidden');
-
-            // show thanks
-            $('.feedback__thanks').removeClass('hidden');
-
-            // Log the event to analytics.
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'type' : feedback.type,
-                'reason' : feedback.reason,
-                'event' : 'feedbackSubmit'
-            });
+            that.handleSuccess(feedback);
         }, function(err) {
-            const submit = $('#feedback-form').find('[type=submit]');
+            if (err.status === 201) {
+                that.handleSuccess(feedback);
+            } else {
+                const submit = $('#feedback-form').find('[type=submit]');
 
-            that.addError(
-                that.settings.badServer,
-                submit.parent()
-            );
+                that.addError(
+                    that.settings.badServer,
+                    submit.parent()
+                );
+            }
+        });
+    },
+
+    handleSuccess : function (feedback) {
+        // hide form
+        $('#feedback-form').addClass('hidden');
+
+        // show thanks
+        $('.feedback__thanks').removeClass('hidden');
+
+        // Log the event to analytics.
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'type' : feedback.type,
+            'reason' : feedback.reason,
+            'event' : 'feedbackSubmit'
         });
     },
 
