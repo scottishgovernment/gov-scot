@@ -87,7 +87,7 @@
 }
 
 .#{$site-prefix}latest-feed__item {
-  @include last-child-no-margin;
+  @include ds_last-child-no-margin;
 
   margin-bottom: 32px;
   position: relative;

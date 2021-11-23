@@ -4,7 +4,7 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 
-<footer class="ds_site-footer">
+<footer class="ds_site-footer  ds_reversed">
     <aside class="gov_secondary-footer">
         <div class="ds_wrapper">
             <h2 class="visually-hidden">
@@ -46,7 +46,7 @@
     </aside>
 
     <div class="ds_wrapper">
-        <div class="ds_site-footer__content  ds_reversed">
+        <div class="ds_site-footer__content">
             <ul class="ds_site-footer__site-items">
                 <#list pageable.items as item>
                     <li class="ds_site-items__item">
