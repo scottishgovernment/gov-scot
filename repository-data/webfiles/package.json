@@ -8,11 +8,10 @@
     "url": "http://www.gov.scot/"
   },
   "scripts": {
-    "postshrinkwrap": "node_modules/.bin/sealant @scottish-government/mygov-assets",
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
-    "sass": "sass --no-source-map ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style=expanded",
-    "webpack": "./node_modules/.bin/webpack --config webpack.config.js",
+    "sass": "sass --no-source-map ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style=compressed",
+    "webpack": "./node_modules/.bin/webpack -p --config webpack.config.js",
     "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
   "devDependencies": {
@@ -40,7 +39,7 @@
     "pikaday": "^1.4.0",
     "promise-polyfill": "^8.2.0",
     "requirejs": "^2.1.0",
-    "sass": "^1.32.13",
+    "sass": "^1.43.5",
     "sealant": "0.0.2",
     "svg-sprite": "^1.4.0",
     "webpack": "^4.28.3",
