@@ -10,7 +10,7 @@
   "scripts": {
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
-    "sass": "node_modules/.bin/sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style=compressed --no-source-map",
+    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
     "webpack": "./node_modules/.bin/webpack -p --config webpack.config.js",
     "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
@@ -39,7 +39,6 @@
     "pikaday": "^1.4.0",
     "promise-polyfill": "^8.2.0",
     "requirejs": "^2.1.0",
-    "sass": "^1.32.13",
     "sealant": "0.0.2",
     "svg-sprite": "^1.4.0",
     "webpack": "^4.28.3",
