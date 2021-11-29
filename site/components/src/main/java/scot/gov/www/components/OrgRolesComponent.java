@@ -36,6 +36,7 @@ public class OrgRolesComponent  extends BaseHstComponent {
         request.setAttribute("document", document);
         request.setAttribute("primaryPeople", peopleWithRoles(baseBean, document.getOrgRole()));
         request.setAttribute("secondaryPeople", peopleWithRoles(baseBean, document.getSecondaryOrgRole()));
+        request.setAttribute("tertiaryPeople", peopleWithRoles(baseBean, document.getTertiaryOrgRole()));
     }
 
     private List<Person> peopleWithRoles(HippoBean baseBean, List<HippoBean> roles) {
