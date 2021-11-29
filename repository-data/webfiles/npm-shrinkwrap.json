@@ -13850,8 +13850,8 @@
       "dev": true
     },
     "sass": {
-      "version": "1.43.5",
-      "integrity": "sha512-WuNm+eAryMgQluL7Mbq9M4EruyGGMyal7Lu58FfnRMVWxgUzIvI7aSn60iNt3kn5yZBMR7G84fAGDcwqOF5JOg==",
+      "version": "1.32.13",
+      "integrity": "sha512-dEgI9nShraqP7cXQH+lEXVf73WOPCse0QlFzSD8k+1TcOxCMwVXfQlr0jtoluZysQOyJGnfr21dLvYKDJq8HkA==",
       "dev": true,
       "requires": {
         "chokidar": ">=3.0.0 <4.0.0"
