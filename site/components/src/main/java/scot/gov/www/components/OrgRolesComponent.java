@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -103,7 +104,9 @@ public class OrgRolesComponent  extends BaseHstComponent {
 
     private String incumbentTitle(HippoBean bean) {
         if (bean instanceof Person) {
-            return ((Person) bean).getRoleTitle();
+            String roleTitle = ((Person) bean).getRoleTitle();
+            // convert a null role title to be an empty string
+            return StringUtils.isBlank(roleTitle) ? "" : roleTitle;
         }
 
         HippoBean incumbent = incumbent(bean);
