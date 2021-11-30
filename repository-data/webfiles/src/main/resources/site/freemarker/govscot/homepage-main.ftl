@@ -243,7 +243,7 @@
         <div class="homepage-subscribe">
             <span class="hidden-xsmall">Get all the latest news from gov.scot&hellip;</span>
 
-            <a data-gtm="link-note-sub" class="homepage-subscribe__link button  button--tertiary" href="http://register.scotland.gov.uk/Subscribe/Step1" data-gtm="news-subscribe">
+            <a data-gtm="link-note-sub" class="homepage-subscribe__link button  button--tertiary" href="https://eepurl.com/gEp6KP" data-gtm="news-subscribe">
                 <svg class="svg-icon  mg-icon  mg-icon--absolute  mg-icon--medium--material  mg-icon--right">
                     <use xlink:href="${iconspath}#sharp-chevron_right-24px"></use>
                 </svg>
