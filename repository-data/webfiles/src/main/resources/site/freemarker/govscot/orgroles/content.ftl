@@ -28,7 +28,7 @@
 
                 <#assign orgName = document.tertiaryOrginisationName/>
                 <#assign orgDescription = document.tertiaryOrganisationDescription/>
-                <#if tertiaryPeople?? && document.tertiaryOrginisationName??>
+                <#if tertiaryPeople?? && document.tertiaryOrginisationName?? && document.tertiaryOrginisationName?has_content >
                     <#assign people = tertiaryPeople/>
                     <#include 'org-roles-grid.ftl' />
                 </#if>
