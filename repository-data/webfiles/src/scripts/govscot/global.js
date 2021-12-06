@@ -6,8 +6,8 @@
 
 import $ from 'jquery';
 import './component.google-analytics';
-import './component.feedback';
 import './component.payment';
+import feedback from './component.feedback';
 import UpdateHistory from './component.update-history';
 import ToggleLink from './component.toggle-link';
 
@@ -44,6 +44,7 @@ const global = {
     init: function () {
         document.documentElement.classList.add('js-enabled');
 
+        feedback.init();
         this.initPubsub();
         this.svgFallback();
         this.initDesignSystemComponents();
