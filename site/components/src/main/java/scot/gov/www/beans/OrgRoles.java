@@ -1,8 +1,11 @@
 package scot.gov.www.beans;
 
+import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
+
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:OrgRoles")
 @Node(jcrType = "govscot:OrgRoles")
@@ -62,5 +65,31 @@ public class OrgRoles extends AttributableContent {
         return getSingleProperty("govscot:secondaryOrganisationDescription");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:tertiaryOrganisationName")
+    public String getTertiaryOrganisationName() {
+        return getSingleProperty("govscot:tertiaryOrganisationName");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:tertiaryOrganisationDescription")
+    public String getTertiaryOrganisationDescription() {
+        return getSingleProperty("govscot:tertiaryOrganisationDescription");
+    }
+
     public String getLabel() { return ""; }
+
+    @HippoEssentialsGenerated(internalName = "govscot:orgRole")
+    public List<HippoBean> getOrgRole() {
+        return getLinkedBeans("govscot:orgRole", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:secondaryOrgRole")
+    public List<HippoBean> getSecondaryOrgRole() {
+        return getLinkedBeans("govscot:secondaryOrgRole", HippoBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:tertiaryOrgRole")
+    public List<HippoBean> getTertiaryOrgRole() {
+        return getLinkedBeans("govscot:tertiaryOrgRole", HippoBean.class);
+    }
+
 }

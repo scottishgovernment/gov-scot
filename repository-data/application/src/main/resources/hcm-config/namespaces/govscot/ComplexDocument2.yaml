@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 531ce956-ae92-4b31-bced-682bf1e467cd
+          jcr:uuid: 69dab6d1-7ec8-42a1-b799-0bd87f1097d1
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -46,7 +46,7 @@ definitions:
         /hipposysedit:prototype:
           jcr:primaryType: govscot:ComplexDocument2
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 0032ada4-4430-43d3-8297-e02e14644116
+          jcr:uuid: d5b64352-8fa1-4df2-b9b1-4ba95f292343
           govscot:isbn: ''
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
@@ -306,26 +306,9 @@ definitions:
           /updateHistory:
             jcr:primaryType: frontend:plugin
             caption: Update History
-            field: updateHistory
-            hint: Details of the last updated date and a brief descriptions of the  content
-              update
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /tags:
-            jcr:primaryType: frontend:plugin
-            mixin: hippostd:taggable
-            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /notes:
-            jcr:primaryType: frontend:plugin
-            caption: Notes
-            field: notes
-            hint: The content of the notes field is not displayed.  It should be used
-              for additional information about this content.
+            field: UpdateHistory
+            hint: Details of the last updated date and a brief descriptions of the
+              content update
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -341,6 +324,15 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /tags:
+            jcr:primaryType: frontend:plugin
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            caption: Internal search tags
+            hint: These tags are used to inform the internal search.  Please enter
+              all the tags relevant to this content.
+            type: hippostd:taggable
+            field: tags
           /reportingTags:
             jcr:primaryType: frontend:plugin
             caption: Reporting Tags
@@ -355,3 +347,27 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               source: /content/documents/govscot/valuelists/reportingTags
+          /notes:
+            jcr:primaryType: frontend:plugin
+            caption: Notes
+            field: notes
+            hint: The content of the notes field is not displayed.  It should be used
+              for additional information about this content.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              ckeditor.config.appended.json: "{\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
+                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
+                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
+                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
+                : \"mygov\"\t}],\t\"extraPlugins\": \"mygov_infonote,simple_tables,accordion\"\
+                ,        \"contentsCss\": [                \"ckeditor/hippocontents.css\"\
+                ,                \"ckeditor/ckeditorstyle.css\"        ],       \"\
+                youtube_responsive\": true,       \"youtube_privacy\": true,     \
+                \  \"youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\"\
+                , \"txtEmbed\", \"chkOlderCode\"],       \"extraAllowedContent\":\
+                \ { \"span\": { \"attributes\": \"class\", classes: \"*\" } }}"

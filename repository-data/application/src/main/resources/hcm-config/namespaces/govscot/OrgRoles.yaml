@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 4332d6f1-06fa-482a-b9be-ce392b219ea6
+          jcr:uuid: 5e8224c2-c83f-4ca1-b7c9-4499408c467b
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -50,6 +50,30 @@ definitions:
             hipposysedit:path: govscot:secondaryOrganisationDescription
             hipposysedit:primary: false
             hipposysedit:type: Text
+          /tertiaryOrgRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:tertiaryOrgRole
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /tertiaryOrginisationName:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:tertiaryOrginisationName
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /text:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:tertiaryOrganisationDescription
+            hipposysedit:primary: false
+            hipposysedit:type: Text
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -65,7 +89,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: ae40812e-fbfe-42be-8d47-8ac341073171
+          jcr:uuid: e4c3dc2b-bcd5-4ee8-a816-1c2db55ae12a
           hippostdpubwf:lastModificationDate: 2018-02-15T16:34:09.353Z
           hippostdpubwf:creationDate: 2018-02-15T16:34:09.353Z
           govscot:secondaryOrganisationName: ''
@@ -73,9 +97,14 @@ definitions:
           govscot:organisationDescription: ''
           govscot:organisationName: ''
           govscot:reportingTags: []
+          govscot:tertiaryOrginisationName: ''
+          govscot:tertiaryOrganisationDescription: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:tertiaryOrgRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -181,6 +210,35 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
               base.path: /content/documents/govscot/about/
+              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
+          /tertiaryOrginisationName:
+            jcr:primaryType: frontend:plugin
+            caption: Tertiary organisation name
+            field: tertiaryOrginisationName
+            hint: Enter the name of the tertiary organisation to be displayed on this
+              page e.g. Ministers or Non Executive Directors
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /tertiaryOrganisationDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Tertiary organisation description
+            field: text
+            hint: Enter a brief description of what the secondary organisation does.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /tertiaryOrgRole:
+            jcr:primaryType: frontend:plugin
+            caption: Tertiary organisation role(s)
+            field: tertiaryOrgRole
+            hint: Add all the roles that belong to the tertiary organisation.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
           /seoTitle:
             jcr:primaryType: frontend:plugin
