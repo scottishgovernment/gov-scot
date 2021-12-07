@@ -20,7 +20,7 @@
     "@babel/plugin-transform-classes": "^7.10.4",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
-    "@scottish-government/pattern-library": "0.0.213",
+    "@scottish-government/pattern-library": "0.0.215",
     "ajv": "^6.10.0",
     "babel-loader": "^8.0.5",
     "istanbul-instrumenter-loader": "^3.0.1",
