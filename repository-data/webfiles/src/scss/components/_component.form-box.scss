@@ -1,0 +1,24 @@
+/*------------------------------------*\
+    #FORM BOX
+\*------------------------------------*/
+
+.form-box {
+    background-color: $ds_colour__grey--lighter;
+    box-sizing: border-box;
+
+    margin: 32px -16px;
+    padding: 24px 16px;
+}
+
+.form-box:first-child {
+    margin-top: 0;
+}
+
+@include ds_media-query(medium) {
+    .form-box {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}

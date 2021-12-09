@@ -48,6 +48,12 @@
 [govscot:ContactInformation] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:SiteItem] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:CookiePage] > govscot:SiteItem, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:CoverImage] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:CovidRestrictionsLookup] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
@@ -74,9 +80,6 @@
   orderable
 
 [govscot:FeaturedRoleBiography] > govscot:SimpleContent, hippostd:relaxed, hippostd:taggable, hippotranslation:translated
-  orderable
-
-[govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:Group] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
@@ -120,6 +123,9 @@
 
 [govscot:People] > hippogallery:imageset, hippogallery:relaxed
 
+[govscot:Person] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:Policy] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -141,9 +147,6 @@
 [govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:SiteItem] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
-  orderable
-
 [govscot:SpeechOrStatement] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -159,3 +162,4 @@
   orderable
 
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+

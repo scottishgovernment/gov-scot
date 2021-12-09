@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: bdc4629b-944a-4003-8c1a-140495c1628c
+          jcr:uuid: 647fd335-3edd-4489-bc6c-a28815ae37ee
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -94,7 +94,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: c31dc970-5fa6-4ef6-8481-ceb19fb8e43c
+          jcr:uuid: a3380808-03c1-49fa-8615-3922f2e77d98
           hippostdpubwf:lastModificationDate: 2018-02-09T08:51:27.133Z
           hippostdpubwf:creationDate: 2018-02-09T08:51:27.133Z
           govscot:sme: ''
@@ -191,7 +191,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/who-runs-government/cabinet-and-ministers/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Role, govscot:FeaturedRole']
+              nodetypes: ['govscot:Role', 'govscot:FeaturedRole', 'govscot:Person']
           /secondaryOrgRole:
             jcr:primaryType: frontend:plugin
             caption: Civil service role(s)

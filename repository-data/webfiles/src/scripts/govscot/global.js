@@ -4,12 +4,15 @@
 
 'use strict';
 
+
+
 import $ from 'jquery';
 import './component.google-analytics';
 import './component.payment';
+
 import feedback from './component.feedback';
-import UpdateHistory from './component.update-history';
 import ToggleLink from './component.toggle-link';
+import UpdateHistory from './component.update-history';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
@@ -47,6 +50,7 @@ const global = {
         feedback.init();
         this.initPubsub();
         this.svgFallback();
+        this.setInitialCookiePermissions();
         this.initDesignSystemComponents();
         this.addTracking();
     },
@@ -155,6 +159,21 @@ const global = {
         toggleLinks.forEach(toggleLink => new ToggleLink(toggleLink).init());
 
     },
+
+    setInitialCookiePermissions: function () {
+        const permissionsString = storage.getCookie('cookiePermissions') || '';
+
+        if (!storage.isJsonString(permissionsString)) {
+            const permissions = {};
+            permissions.statistics = true;
+            permissions.preferences = true;
+
+            storage.setCookie(storage.categories.necessary,
+                'cookiePermissions',
+                JSON.stringify(permissions)
+            );
+        }
+    }
 };
 
 global.init();
