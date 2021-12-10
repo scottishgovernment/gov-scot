@@ -117,15 +117,13 @@ definitions:
                 hst:sitemapitemhandlerids: [trailing-slash]
           /first-minister:
             jcr:primaryType: hst:sitemapitem
-            hst:componentconfigurationid: hst:pages/featuredrolepage-old
             hst:sitemapitemhandlerids: [trailing-slash]
             hst:relativecontentpath: ${parent}/first-minister
             /_index_:
               jcr:primaryType: hst:sitemapitem
               hst:componentconfigurationid: hst:pages/aboutpage
-              hst:componentconfigurationmappingnames: ['govscot:FeaturedRole', 'govscot:Role']
-              hst:componentconfigurationmappingvalues: ['hst:pages/featuredrolepage',
-                'hst:pages/featuredrolepage-old']
+              hst:componentconfigurationmappingnames: ['govscot:FeaturedRole']
+              hst:componentconfigurationmappingvalues: ['hst:pages/featuredrolepage']
               hst:relativecontentpath: ${parent}/index
               hst:sitemapitemhandlerids: [trailing-slash]
             /_default_:
