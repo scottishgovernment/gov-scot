@@ -10,7 +10,7 @@
         filePattern="${sys:catalina.base}/logs/hippo-cms.log.%i"
         createOnDemand="true">
       <LookupFilter key="jndi:logging/contextName" value="cms" onMatch="ACCEPT"/>
-      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
+      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m{nolookups}%n"/>
       <Policies>
         <SizeBasedTriggeringPolicy size="10MB"/>
       </Policies>
@@ -24,7 +24,7 @@
         filePattern="${sys:catalina.base}/logs/hippo-site.log.yyyy-MM-dd"
         createOnDemand="true">
       <LookupFilter key="jndi:logging/contextName" value="site" onMatch="ACCEPT"/>
-      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
+      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m{nolookups}%n"/>
       <Policies>
         <SizeBasedTriggeringPolicy size="10MB"/>
       </Policies>
@@ -37,7 +37,7 @@
         fileName="${sys:catalina.base}/logs/hippo-audit.log"
         filePattern="${sys:catalina.base}/logs/hippo-audit.log.%d{yyyy-MM-dd}"
         createOnDemand="true">
-      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
+      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m{nolookups}%n"/>
       <Policies>
         <TimeBasedTriggeringPolicy/>
       </Policies>
@@ -50,7 +50,7 @@
         filePattern="${sys:catalina.base}/logs/hippo-repo.log.yyyy-MM-dd"
         createOnDemand="true">
       <LookupFilter key="jndi:logging/contextName" value="repository" onMatch="ACCEPT"/>
-      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
+      <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m{nolookups}%n"/>
       <Policies>
         <SizeBasedTriggeringPolicy size="10MB"/>
       </Policies>
