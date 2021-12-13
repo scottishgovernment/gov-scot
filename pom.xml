@@ -67,6 +67,8 @@
 
     <index.configuration>cms/src/main/resources/org/hippoecm/repository/query/lucene/indexing_configuration.xml</index.configuration>
 
+    <log4j2.version>2.15.0</log4j2.version>
+
     <cargo.debug.address>8000</cargo.debug.address>
     <cargo.debug.suspend>n</cargo.debug.suspend>
     <cargo.tomcat.major.version>8</cargo.tomcat.major.version>
