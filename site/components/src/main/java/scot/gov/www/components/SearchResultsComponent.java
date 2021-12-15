@@ -1,6 +1,5 @@
 package scot.gov.www.components;
 
-import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -33,6 +32,7 @@ import java.util.Collection;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
+import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES;
 
@@ -71,26 +71,26 @@ public class SearchResultsComponent extends EssentialsListComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
-
         super.doBeforeRender(request, response);
-
         Map<String, Set<String>> params = sanitiseParameterMap(request,
                 request.getRequestContext().getServletRequest().getParameterMap());
 
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
         request.setAttribute("relativeContentPath", relativeContentPath);
-
         request.setAttribute("parameters", params);
-
         ValueList publicationValueList =
                 SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, RequestContextProvider.get());
-
         request.setAttribute("publicationTypes", SelectionUtil.valueListAsMap(publicationValueList));
     }
 
     @Override
     protected <T extends EssentialsListComponentInfo>
     HstQuery buildQuery(final HstRequest request, final T paramInfo, final HippoBean scope) {
+
+        String term = param(request, "q");
+        if (isBlank(term)) {
+            return null;
+        }
 
         final int pageSize = getPageSize(request, paramInfo);
         final int page = getCurrentPage(request);
@@ -220,7 +220,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
     private void addTermConstraints(List<Constraint> constraints, HstRequest request) {
         String term = param(request, "q");
         String parsedTerm = SearchInputParsingUtils.parse(term, false);
-        if (StringUtils.isBlank(parsedTerm)) {
+        if (isBlank(parsedTerm)) {
             return;
         }
         constraints.add(or(fieldConstraints(parsedTerm)));

@@ -8,10 +8,10 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.Role" -->
 
 <#-- this div is here to make use of 'pageable' -->
-
+<h2 class="hidden">Search results</h2>
 <#if pageable??>
 <section id="search-results" class="search-results">
-    <h2 class="hidden">Search results</h2>
+
     <p class="search-results__count js-search-results-count">Showing <b>${pageable.total}</b> <#if pageable.total == 1>result<#else>results</#if></p>
 
     <ol id="search-results-list" class="search-results__list">
@@ -123,4 +123,7 @@
         </#if>
     </div>
 </section>
+<#else>
+<p class="search-results__count js-search-results-count">
+<b>0</b> results, please fill in the search field
 </#if>
