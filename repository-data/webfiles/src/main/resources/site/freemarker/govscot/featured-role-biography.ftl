@@ -46,9 +46,29 @@
 
                 <#if contactInformation??>
                     <div class="ds_contact-details">
+                        <h2 class="ds_contact-details__title">Contact</h2>
+
                         <dl class="ds_contact-details__list">
+                            <#if postalAddress??>
+                                <div class="ds_contact-details__item">
+                                    <dt>Address</dt>
+                                    <dd translate="no">
+                                        <address>
+                                            <@hst.html hippohtml=postalAddress/>
+                                        </address>
+                                    </dd>
+                                </div>
+                            </#if>
+
+                            <#if contactInformation.email?has_content>
+                                <div class="ds_contact-details__item">
+                                    <dt>Email</dt>
+                                    <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
+                                </div>
+                            </#if>
+
                             <div class="ds_contact-details__item  ds_contact-details__social">
-                                <dt class="beta  ds_contact-details__title">Connect</dt>
+                                <dt class="visually-hidden  ds_contact-details__title">Social media</dt>
                                 <#if contactInformation.facebook?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="${contactInformation.facebook}">
@@ -90,31 +110,6 @@
                                 </dd>
                                 </#if>
                             </div>
-                        </dl>
-                    </div>
-                </#if>
-
-                <#if postalAddress?? || contactInformation.email?has_content>
-                    <div class="ds_contact-details">
-                        <h2 class="ds_contact-details__title">Contact</h2>
-                        <dl class="ds_contact-details__list">
-                            <#if postalAddress??>
-                                <div class="ds_contact-details__item">
-                                    <dt>Address</dt>
-                                    <dd translate="no">
-                                        <address>
-                                            <@hst.html hippohtml=postalAddress/>
-                                        </address>
-                                    </dd>
-                                </div>
-                            </#if>
-
-                            <#if contactInformation.email?has_content>
-                                <div class="ds_contact-details__item">
-                                    <dt>Email</dt>
-                                    <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
-                                </div>
-                            </#if>
                         </dl>
                     </div>
                 </#if>

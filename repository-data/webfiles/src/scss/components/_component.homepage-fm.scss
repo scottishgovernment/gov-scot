@@ -5,9 +5,8 @@
 .#{$site-prefix}homepage-fm {
   &__image > img {
     display: block;
-    margin: 0 -16px 16px;
-    max-width: unset;
-    width: calc(100% + 32px);
+    margin-bottom: 16px;
+    width: 100%;
   }
 }
 
@@ -43,6 +42,13 @@
 
 @supports(display: grid) {
   .#{$site-prefix}homepage-fm {
+    &__image > img {
+      margin-left: -16px;
+      margin-right: -16px;
+      max-width: unset;
+      width: calc(100% + 32px);
+    }
+
     > * {
       float: none;
       width: auto;
@@ -65,6 +71,12 @@
       display: grid;
       grid-gap: 0 $grid-gap-x;
       grid-template-areas: 't t' 'i c';
+
+      &__image > img {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
     }
   }
 }

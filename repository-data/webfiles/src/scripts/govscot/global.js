@@ -137,6 +137,9 @@ const global = {
         const mobileMenus = [].slice.call(document.querySelectorAll('[data-module="ds-mobile-navigation-menu"]'));
         mobileMenus.forEach(mobileMenu =>  new window.DS.components.MobileMenu(mobileMenu).init());
 
+        const notificationBanners = [].slice.call(document.querySelectorAll('[data-module="ds-notification"]'));
+        notificationBanners.forEach(notificationBanner => new window.DS.components.NotificationBanner(notificationBanner).init());
+
         const searchBoxes = [].slice.call(document.querySelectorAll('[data-module="ds-site-search"]'));
         searchBoxes.forEach(searchBox => new window.DS.components.CollapsibleSearchBox(searchBox).init());
 

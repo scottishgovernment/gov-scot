@@ -40,8 +40,10 @@
         </div>
 
         <div class="ds_layout__content">
-            <h2 class="ds_no-margin--top">Responsibilities</h2>
-            <@hst.html hippohtml=document.content />
+            <div class="ds_!_margin-bottom--9">
+                <h2 class="ds_no-margin--top">Responsibilities</h2>
+                <@hst.html hippohtml=document.content />
+            </div>
         </div>
 
         <div class="ds_layout__sidebar">
@@ -94,14 +96,14 @@
                 </h2>
 
                 <#if news?has_content>
-                <div class="gov_latest-feed__items  ds_layout  gov_sublayout--threecols">
+                    <div class="gov_latest-feed__items  ds_layout  gov_sublayout--threecols">
                         <#list news as newsItem>
                             <article class="gov_latest-feed__item">
+                                <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
                                     <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}">${newsItem.title}</a>
                                 </h3>
-                                <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
-                                <p>${newsItem.summary}</p>
+                                <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                             </article>
                         </#list>
                     </div>
@@ -180,12 +182,36 @@
         </div>
 
         <div class="ds_layout__contact">
-            <div class="ds_layout  gov_sublayout--threecols">
-                <#if contactInformation??>
-                    <div class="ds_contact-details">
+            <h2 class="ds_contact-details__title">Contact</h2>
+
+            <div class="ds_contact-details">
+                <div class="ds_layout  gov_sublayout--threecols">
+                    <#if postalAddress?? || contactInformation.email?has_content>
                         <dl class="ds_contact-details__list">
+                            <#if postalAddress??>
+                                <div class="ds_contact-details__item">
+                                    <dt>Address</dt>
+                                    <dd translate="no">
+                                        <address>
+                                            <@hst.html hippohtml=postalAddress/>
+                                        </address>
+                                    </dd>
+                                </div>
+                            </#if>
+                        </dl>
+                    </#if>
+
+                    <#if contactInformation??>
+                        <dl class="ds_contact-details__list">
+                            <#if contactInformation.email?has_content>
+                                <div class="ds_contact-details__item">
+                                    <dt>Email</dt>
+                                    <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
+                                </div>
+                            </#if>
+
                             <div class="ds_contact-details__item  ds_contact-details__social">
-                                <dt class="beta  ds_contact-details__title">Connect</dt>
+                                <dt>Social media</dt>
                                 <#if contactInformation.facebook?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="${contactInformation.facebook}">
@@ -228,33 +254,8 @@
                                 </#if>
                             </div>
                         </dl>
-                    </div>
-                </#if>
-
-                <#if postalAddress?? || contactInformation.email?has_content>
-                    <div class="ds_contact-details">
-                        <h2 class="ds_contact-details__title">Contact</h2>
-                        <dl class="ds_contact-details__list">
-                            <#if postalAddress??>
-                                <div class="ds_contact-details__item">
-                                    <dt>Address</dt>
-                                    <dd translate="no">
-                                        <address>
-                                            <@hst.html hippohtml=postalAddress/>
-                                        </address>
-                                    </dd>
-                                </div>
-                            </#if>
-
-                            <#if contactInformation.email?has_content>
-                                <div class="ds_contact-details__item">
-                                    <dt>Email</dt>
-                                    <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
-                                </div>
-                            </#if>
-                        </dl>
-                    </div>
-                </#if>
+                    </#if>
+                </div>
             </div>
         </div>
 

@@ -60,6 +60,7 @@ $breakpoints: (
 @import "components/component.gov-search-result";
 @import "components/component.gov-sidebar-feature";
 @import "components/component.history-list";
+@import "components/component.homepage-fm";
 @import "components/component.homepage-hero";
 @import "components/component.icon-link";
 @import "components/component.issue-callout";
@@ -157,9 +158,7 @@ $breakpoints: (
     }
 }
 
-
-
-.ds_accordion.js-initialised .ds_accordion-item__body {
+.ds_accordion.js-initialised .ds_accordion-item--small .ds_accordion-item__body {
     padding: 0 8px;
 }
 
@@ -170,4 +169,8 @@ $breakpoints: (
 
     @include ds_responsive-padding(2, top);
     @include ds_responsive-padding(3, bottom);
+}
+
+.ds_accordion.js-initialised .ds_accordion-item--small .ds_accordion-item__control:checked ~ .ds_accordion-item__header-button .ds_accordion-item__indicator {
+    top: 20px;
 }

@@ -7,7 +7,9 @@
     <main id="main-content" class="ds_layout  gov_layout--home">
         <#if document??>
             <div class="ds_layout__header">
-                <@hst.html hippohtml=document.content />
+                <div class="ds_page-header">
+                    <@hst.html hippohtml=document.content />
+                </div>
             </div>
         </#if>
 
@@ -16,7 +18,7 @@
         </div>
 
         <div class="ds_layout__content">
-            <#if document?? && document.featuredItems>
+            <#if document?? && document.featuredItems??>
                 <div class="gov_homepage-hero  gov_homepage-hero--${document.featuredItems?size}">
                     <div class="gov_homepage-hero__main">
                         <#assign featuredItem = document.featuredItems?first>
@@ -231,11 +233,11 @@
                             <#if news?has_content>
                                 <#list news as newsItem>
                                     <article class="gov_latest-feed__item">
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                         <h3 class="gov_latest-feed__item__title">
                                             <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
                                         </h3>
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
-                                        <p>${newsItem.summary}</p>
+                                        <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                                     </article>
                                 </#list>
                             </#if>
@@ -297,20 +299,20 @@
 
                 <div class="gov_sublayout  gov_sublayout--twocols">
                     <#if firstMinister??>
-                        <div class="gov_sublayout  gov_sublayout--firstminister">
-                            <div>
-                                <h3>${firstMinister.title}</h3>
+                        <div class="gov_homepage-fm">
 
-                                <picture>
-                                    <source srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x" media="(max-width: 767px)">
-                                    <source srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x" media="(max-width: 991px)">
-                                    <source srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x" media="(max-width: 1199px)">
+                            <h3 class="gov_homepage-fm__title">${firstMinister.title}</h3>
 
-                                    <img src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
-                                </picture>
-                            </div>
+                            <picture class="gov_homepage-fm__image">
+                                <source srcset="<@hst.link path='/assets/images/people/first_minister_home_mob.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_mob_@2x.jpg'/> 2x" media="(max-width: 767px)">
+                                <source srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x" media="(max-width: 991px)">
+                                <source srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x" media="(max-width: 1199px)">
 
-                            <div>
+                                <img src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
+                            </picture>
+
+
+                            <div class="gov_homepage-fm__content">
                                 <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
                                 ${firstMinisterContent?trim?keep_before("\n")}
 
