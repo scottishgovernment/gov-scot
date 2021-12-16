@@ -12,7 +12,7 @@
         <p><strong>Thanks for your feedback</strong></p>
     </div>
 
-    <form id="feedback-form">
+    <form id="feedbackForm">
         <input id="page-category" type="hidden" value="${layoutName}" />
 
         <fieldset id="feedbacktype">
