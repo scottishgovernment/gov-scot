@@ -22,8 +22,6 @@ public class IssueComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(IssueComponent.class);
 
-    private static final String PUBLICATIONDATE = "govscot:publicationDate";
-
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -54,8 +52,7 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populateNews(HippoBean base, Issue issue, HstRequest request) {
         // Search for news with this issue's prgloo tag
-        HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class);
-        taggedQuery.setLimit(4);
+        HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, 4);
         try {
             StopWatch stopWatch = new StopWatch();
             stopWatch.start();
@@ -71,43 +68,17 @@ public class IssueComponent extends BaseHstComponent {
     }
 
     private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
-        HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class);
-        ArrayList<HippoBean> allLinkedPublications = new ArrayList<HippoBean>();
-
+        HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, 5);
         try {
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
-
-            while(publications.hasNext()) {
-                HippoBean publication = publications.next();
-                allLinkedPublications.add(publication);
-            }
-
-            allLinkedPublications.sort(Comparator.comparing(this::dateToCompare));
-            Collections.reverse(allLinkedPublications);
-            List<HippoBean> latestPublications = allLinkedPublications;
-
-            if (allLinkedPublications.size() > 5){
-                latestPublications = allLinkedPublications.subList(0, 5);
-            }
-
-            request.setAttribute("publications", latestPublications);
+            request.setAttribute("publications", publications);
 
         } catch (QueryException e) {
             LOG.error("Unable to get Publications for issue {}", issue.getPath(), e);
         }
     }
 
-    Calendar dateToCompare(HippoBean bean) {
-        Calendar publicationDate = bean.getSingleProperty(PUBLICATIONDATE);
-        if (publicationDate != null) {
-            return publicationDate;
-        }
-
-        // this bean has no publication date, default to the hippostdpubwf:lastModificationDate
-        return bean.getSingleProperty("hippostdpubwf:lastModificationDate");
-    }
-
-    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass) {
+    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass, int limit) {
         try {
             HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
                     issue,
@@ -115,7 +86,10 @@ public class IssueComponent extends BaseHstComponent {
                     "*/@hippo:docbase",
                     linkedClass,
                     true);
-            query.addOrderByDescending(PUBLICATIONDATE);
+            query.setLimit(limit);
+            query.addOrderByDescending("govscot:latestUpdateDate");
+            query.addOrderByDescending("govscot:publicationDate");
+            query.addOrderByDescending("hippostdpubwf:lastModificationDate");
             return query;
         } catch (QueryException e) {
             LOG.warn("Unable to get linked beans for issue {}", issue.getPath(), e);

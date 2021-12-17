@@ -41,6 +41,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
@@ -117,9 +118,15 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HippoBean scopeFolder = scope.isHippoFolderBean() ? scope : scope.getParentBean();
 
         HstQueryBuilder builder = HstQueryBuilder.create(scopeFolder);
+
+        String [] sortFields =
+                Arrays.stream(paramInfo.getSortField().split(","))
+                        .map(StringUtils::trim)
+                        .collect(Collectors.toList()).toArray(new String[0]);
+
         return builder.ofTypes(types)
                 .where(constraints(request, PUBLICATION_DATE))
-                .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), paramInfo.getSortField())
+                .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), sortFields)
                 .limit(pageSize)
                 .offset(offset)
                 .build();

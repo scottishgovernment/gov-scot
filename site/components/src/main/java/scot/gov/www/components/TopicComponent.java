@@ -188,6 +188,7 @@ TopicComponent extends BaseHstComponent {
                     "*/@hippo:docbase",
                     linkedClass,
                     true);
+            query.addOrderByDescending("govscot:latestUpdateDate");
             query.addOrderByDescending("govscot:publicationDate");
             query.setLimit(3);
             return query;
