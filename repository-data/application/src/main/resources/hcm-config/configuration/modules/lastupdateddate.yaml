@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/lastupdateddate:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.LastUpdatedDateDaemonModule
+      hipposys:cmsonly: true

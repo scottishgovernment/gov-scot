@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d74669a6-d919-4793-9305-0c86b011feb2
+          jcr:uuid: fedc3bc0-aecc-42f7-a7b9-0b47f37d9de8
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -91,10 +91,18 @@ definitions:
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
               publication-slug-dots]
+          /latestUpdateDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:latestUpdateDate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
         /hipposysedit:nodetype[2]:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: fedc3bc0-aecc-42f7-a7b9-0b47f37d9de8
+          jcr:uuid: 00ac6194-7b94-4b37-8805-235d4825ea01
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -173,6 +181,14 @@ definitions:
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
               publication-slug-dots]
+          /latestUpdateDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:latestUpdateDate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -189,7 +205,7 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: 979095fb-e4a2-492f-b30b-c69c27c20dd6
+          jcr:uuid: b7c94609-8ab5-4cd4-aee1-fa464a4f7368
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -197,6 +213,7 @@ definitions:
           govscot:sme: ''
           govscot:slug: ''
           govscot:reportingTags: []
+          govscot:latestUpdateDate: 0001-01-01T12:00:00Z
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -219,8 +236,9 @@ definitions:
           jcr:primaryType: nt:unstructured
           jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
             'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
-          jcr:uuid: ce0a6ae8-6f8c-47d7-b8b4-967bc6e2b004
+          jcr:uuid: 1ef2193b-11f3-43e2-af9e-bf239b5f03e3
           govscot:isbn: ''
+          govscot:latestUpdateDate: 0001-01-01T12:00:00Z
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -238,7 +256,6 @@ definitions:
           hippostdpubwf:lastModifiedBy: ''
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
-          govscot:publicationType: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -514,3 +531,13 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               source: /content/documents/govscot/valuelists/reportingTags
+          /latestUpdateDate:
+            jcr:primaryType: frontend:plugin
+            caption: Latest update date
+            field: latestUpdateDate
+            hint: the dat the publication was last updated. This is derived from the
+              Update History and should not be manually edited.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

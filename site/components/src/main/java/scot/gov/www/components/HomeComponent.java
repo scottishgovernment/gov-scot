@@ -116,11 +116,12 @@ public class HomeComponent extends BaseHstComponent {
         return HstQueryBuilder.create(scope)
                 .ofTypes(Publication.class)
                 .limit(3)
-                .orderByDescending("govscot:publicationDate");
+                .orderByDescending("govscot:latestUpdateDate", "govscot:publicationDate");
     }
 
     static void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {
         try {
+            LOG.info("home xpath {}", query.toString());
             HstQueryResult result = query.execute();
             LOG.debug("executeQueryLoggingException {}, {}", name, result.getSize());
 
