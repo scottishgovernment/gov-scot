@@ -1,8 +1,7 @@
 package scot.gov.www;
 
+import org.apache.commons.lang.StringUtils;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.Node;
@@ -16,8 +15,6 @@ import java.util.Calendar;
  */
 public class LastUpdatedDateDaemonModule extends DaemonModuleBase {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LastUpdatedDateDaemonModule.class);
-
     private static final String PREFIX = "/content/documents/govscot/publications/";
 
     private static final String UPDATE_HISTORY = "govscot:updateHistory";
@@ -26,7 +23,7 @@ public class LastUpdatedDateDaemonModule extends DaemonModuleBase {
     public boolean canHandleEvent(HippoWorkflowEvent event) {
         return event.success()
                 && event.subjectPath().startsWith(PREFIX)
-                && event.action().equals("publish")
+                && StringUtils.equals(event.action(), "publish")
                 && !event.interaction().startsWith("embargo:");
     }
 
@@ -64,7 +61,7 @@ public class LastUpdatedDateDaemonModule extends DaemonModuleBase {
             return;
         }
 
-        Calendar lastUpdated = publication.getProperty("govscot:latestUpdateDate").getDate();
+        Calendar lastUpdated = publication.getProperty(LATEST_UPDATE_DATE).getDate();
 
         // only do a save if the latest dat ahas actually changed
         if (!mostRecentUpdateDate.equals(lastUpdated)) {
