@@ -47,9 +47,10 @@ public class LastUpdatedDateDaemonModule extends DaemonModuleBase {
         // update the last modified date if there are any
         if (!publication.hasNode(UPDATE_HISTORY)) {
             // if a latest update date exists then clear it...
-            new HippoUtils().apply(publication.getNodes(publication.getName()),
+            new HippoUtils().apply(publication.getParent().getNodes(publication.getName()),
                     p -> p.hasProperty(LATEST_UPDATE_DATE),
                     p -> p.getProperty(LATEST_UPDATE_DATE).remove());
+            session.save();
             return;
         }
 
