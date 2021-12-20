@@ -47,20 +47,24 @@ import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
 import static org.apache.commons.lang3.StringUtils.isAnyBlank;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
 public class FilteredResultsComponent extends EssentialsListComponent {
 
-    private static final String PUBLICATION_DATE = "govscot:publicationDate";
-    private static final String GOVSCOT_TITLE = "govscot:title";
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
+    private static final String PUBLICATION_DATE = "govscot:publicationDate";
+    private static final String LATEST_UPDATE_DATE = "govscot:latestUpdateDate";
+    private static final String GOVSCOT_TITLE = "govscot:title";
     public static final String PUBLICATION_TYPES = "publicationTypes";
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     private Collection<String> fieldNames = new ArrayList<>();
+
     private FilteredResultsComponentInfo paramInfo;
 
     @Override
@@ -125,7 +129,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                         .collect(Collectors.toList()).toArray(new String[0]);
 
         return builder.ofTypes(types)
-                .where(constraints(request, PUBLICATION_DATE))
+                .where(constraints(request))
                 .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), sortFields)
                 .limit(pageSize)
                 .offset(offset)
@@ -138,6 +142,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         final int pageSize = getPageSize(request, paramInfo);
         final int page = getCurrentPage(request);
 
+        LOG.info("query: {}", query);
         final HstQueryResult execute = query.execute();
 
         // populate Collections for Publication type items
@@ -215,12 +220,12 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         return sanitisedMap;
     }
 
-    private Constraint constraints(HstRequest request, String searchField) {
+    private Constraint constraints(HstRequest request) {
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, request);
         addTopicsConstraint(constraints, request);
         addPublicationTypeConstraint(constraints, request);
-        addDateConstraint(constraints, request, searchField);
+        addDateConstraint(constraints, request);
         return and(constraints.toArray(new Constraint[] {}));
     }
 
@@ -228,7 +233,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String term = param(request, "term");
         String parsedTerm = SearchInputParsingUtils.parse(term, false);
 
-        if (StringUtils.isBlank(term)) {
+        if (isBlank(term)) {
             return;
         }
         constraints.add(or(fieldConstraints(parsedTerm)));
@@ -353,40 +358,57 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         return titleProperty.getString();
     }
 
-    private void addDateConstraint(List<Constraint> constraints, HstRequest request, String searchField) {
-        if (searchField == null) {
-            return;
-        }
+    private void addDateConstraint(List<Constraint> constraints, HstRequest request) {
         String begin = param(request, "begin");
         String end = param(request, "end");
         if (isNoneBlank(begin, end)) {
             Calendar beginCal = getCalendar(begin);
             Calendar endCal = getCalendar(end);
-            constraints.add(and(constraint(searchField).between(beginCal, endCal, DateTools.Resolution.DAY)));
+            constraints.add(
+                    and(
+                        or(
+                            and (constraint(LATEST_UPDATE_DATE).notExists(), constraint(PUBLICATION_DATE).between(beginCal, endCal, DateTools.Resolution.DAY)),
+                            constraint(LATEST_UPDATE_DATE).between(beginCal, endCal, DateTools.Resolution.DAY))
+                        )
+                    );
             return;
         }
 
-        addBeginFilter(constraints, searchField, begin);
-        addEndFilter(constraints, searchField, end);
+        addBeginFilter(constraints, begin);
+        addEndFilter(constraints, end);
 
     }
 
-    private void addBeginFilter(List<Constraint> constraints, String searchField, String begin) {
-        if (isAnyBlank(searchField, begin)) {
+    private void addBeginFilter(List<Constraint> constraints, String begin) {
+        if (isBlank(begin)) {
             return;
         }
 
         Calendar calendar = getCalendar(begin);
-        constraints.add(and(constraint(searchField).greaterOrEqualThan(calendar, DateTools.Resolution.DAY)));
+        constraints.add(
+            and(
+                or(
+                    and (constraint(LATEST_UPDATE_DATE).notExists(), constraint(PUBLICATION_DATE).greaterOrEqualThan(calendar, DateTools.Resolution.DAY)),
+                    constraint(LATEST_UPDATE_DATE).greaterOrEqualThan(calendar, DateTools.Resolution.DAY)
+                )
+            )
+        );
     }
 
-    private void addEndFilter(List<Constraint> constraints, String searchField, String end) {
-        if (isAnyBlank(searchField, end)) {
+    private void addEndFilter(List<Constraint> constraints, String end) {
+        if (isBlank(end)) {
             return;
         }
 
         Calendar calendar = getCalendar(end);
-        constraints.add(and(constraint(searchField).lessOrEqualThan(calendar, DateTools.Resolution.DAY)));
+        constraints.add(
+            and(
+                or(
+                    and (constraint(LATEST_UPDATE_DATE).notExists(), constraint(PUBLICATION_DATE).lessOrEqualThan(calendar, DateTools.Resolution.DAY)),
+                    constraint(LATEST_UPDATE_DATE).lessOrEqualThan(calendar, DateTools.Resolution.DAY)
+                )
+            )
+        );
     }
 
     private Calendar getCalendar(String param) {
