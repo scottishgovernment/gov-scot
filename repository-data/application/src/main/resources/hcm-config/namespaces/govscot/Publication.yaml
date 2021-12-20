@@ -539,5 +539,6 @@ definitions:
               Update History and should not be manually edited.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            mode: view
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
