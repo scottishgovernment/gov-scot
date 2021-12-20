@@ -62,7 +62,7 @@
 
                             <header class="listed-content-item__heading">
                                 <#if item.label?has_content>
-                                    <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
+                                    <#assign date = (item.latestUpdateDate.time)!(item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
                                     <div class="listed-content-item__meta">
                                         <div class="listed-content-item__meta-right">
                                             <p class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></p>
@@ -138,7 +138,8 @@
                             <h3 class="js-truncate  homepage-publication__title">
                                 <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
                             </h3>
-                            <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                            <#assign latestDate = (publication.latestUpdateDate.time)!(publication.publicationDate.time) />
+                            <p class="homepage-publication__date"><@fmt.formatDate value=latestDate type="both" pattern="dd MMM yyyy"/></p>
                         </article>
                     </#list>
                 <#else>
@@ -172,7 +173,8 @@
                             <h3 class="js-truncate  homepage-publication__title">
                                 <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index + 1}" title="${consultation.title}">${consultation.title}</a>
                             </h3>
-                            <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                            <#assign latestDate = (consultation.latestUpdateDate.time)!(consultation.publicationDate.time) />
+                            <p class="homepage-publication__date"><@fmt.formatDate value=latestDate type="both" pattern="dd MMM yyyy"/></p>
                         </article>
                     </#list>
                 <#else>

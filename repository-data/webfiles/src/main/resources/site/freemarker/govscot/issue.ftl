@@ -63,6 +63,8 @@
                                                         <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></p>
                                                     <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
                                                         <p class="listed-content-item__date">${document.url}</p>
+                                                    <#elseif item.latestUpdateDate??>
+                                                        <p class="listed-content-item__date"><@fmt.formatDate value=item.latestUpdateDate.time type="both" pattern="d MMM yyyy"/></p>
                                                     <#elseif item.publicationDate??>
                                                         <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></p>
                                                     </#if>

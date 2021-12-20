@@ -51,10 +51,13 @@
                                     </#if>
                                     <#if item.publicationDate??>
                                         <#assign dateFormat = "dd MMM yyyy">
+                                        <#assign latestDate = item.publicationDate.time />
                                         <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                                             <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                        <#elseif hst.isBeanType(item, "scot.gov.www.beans.Publication")>
+                                            <#assign latestDate = (item.latestUpdateDate.time)!(item.publicationDate.time) />
                                         </#if>
-                                        <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
+                                        <span class="listed-content-item__date">| <@fmt.formatDate value=latestDate type="both" pattern=dateFormat /></span>
                                     </#if>
                                 </div>
                             </#if>
