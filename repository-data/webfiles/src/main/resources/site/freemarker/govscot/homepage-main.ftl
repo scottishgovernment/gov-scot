@@ -149,8 +149,8 @@
                             <li>${topic.title}</li>
                             </#list>
                         </ul>
-                        <#assign latestUpdateDate = (publication.latestUpdateDate)!(publication.publicationDate) />
-                        <p class="homepage-publication__date"><@fmt.formatDate value=latestUpdateDate.time type="both" pattern="dd MMM yyyy"/></p>
+                        <#assign publishedDate = (publication.latestUpdateDate.time)!(publication.publicationDate.time) />
+                        <p class="homepage-publication__date"><@fmt.formatDate value=publishedDate type="both" pattern="dd MMM yyyy"/></p>
                     </article>
                 </#list>
 
@@ -183,8 +183,8 @@
                             <li>${topic.title}</li>
                             </#list>
                         </ul>
-                        <#assign publishedDate = (consultation.latestUpdateDate)!(consultation.publicationDate) />
-                        <p class="homepage-publication__date"><@fmt.formatDate value=publishedDate.time type="both" pattern="dd MMM yyyy"/></p>
+                        <#assign publishedDate = (consultation.latestUpdateDate.time)!(consultation.publicationDate.time) />
+                        <p class="homepage-publication__date"><@fmt.formatDate value=publishedDate type="both" pattern="dd MMM yyyy"/></p>
                     </article>
                 </#list>
 
