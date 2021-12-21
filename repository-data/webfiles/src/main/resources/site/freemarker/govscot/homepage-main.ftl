@@ -183,7 +183,7 @@
                             <li>${topic.title}</li>
                             </#list>
                         </ul>
-                        <#assign publishedDate = (consultation.latestUpdateDate)!(c onsultation.publishedDate) />
+                        <#assign publishedDate = (consultation.latestUpdateDate)!(consultation.publishedDate) />
                         <p class="homepage-publication__date"><@fmt.formatDate value=publishedDate.time type="both" pattern="dd MMM yyyy"/></p>
                     </article>
                 </#list>
