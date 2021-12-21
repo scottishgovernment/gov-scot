@@ -401,7 +401,7 @@ definitions:
               source: /content/documents/govscot/valuelists/reportingTags
           /displayDate:
             jcr:primaryType: frontend:plugin
-            caption: Display Date
+            caption: Display date
             field: displayDate
             hint: The date used to sort and filter publications.  Also used as the
               date present in search results.
