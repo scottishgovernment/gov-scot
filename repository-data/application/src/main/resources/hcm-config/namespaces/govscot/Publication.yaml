@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: fedc3bc0-aecc-42f7-a7b9-0b47f37d9de8
+          jcr:uuid: 93614c75-1236-4d81-9167-40d345cb6d13
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -115,7 +115,7 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: dff07b9c-0a4b-45d4-ae75-dbb019d9216d
+          jcr:uuid: d1f9bcc9-1238-413c-af58-8b9d7910907f
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -401,11 +401,12 @@ definitions:
               source: /content/documents/govscot/valuelists/reportingTags
           /displayDate:
             jcr:primaryType: frontend:plugin
-            caption: Date
+            caption: Display Date
             field: displayDate
-            hint: the date used to sort and filter publications.  Also used as the
+            hint: The date used to sort and filter publications.  Also used as the
               date present in search results.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            mode: view
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
