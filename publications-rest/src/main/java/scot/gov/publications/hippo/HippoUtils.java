@@ -29,19 +29,29 @@ public class HippoUtils {
     }
 
     public boolean hasPublishedVariant(Node node) throws RepositoryException {
-        Node variant = getVariant(node.getNodes());
+        Node variant = getVariant(node);
         return
                 "published".equals(variant.getProperty(HIPPOSTD_STATE).getString())
                 && "live".equals(variant.getProperty("hippostd:stateSummary").getString());
     }
 
+    public Node getVariant(Node node) throws RepositoryException {
+        return getVariant(node.getNodes(node.getName()));
+    }
+
     public Node getVariant(NodeIterator it) throws RepositoryException {
         Map<String, Node> byState = new HashMap<>();
-        apply(it, node -> node.hasProperty(HIPPOSTD_STATE), node -> byState.put(node.getProperty(HIPPOSTD_STATE).getString(), node));
+        apply(it,
+                this::hasState,
+                node -> byState.put(node.getProperty(HIPPOSTD_STATE).getString(), node));
         return firstNonNull(
                 byState.get("published"),
                 byState.get("unpublished"),
                 byState.get("draft"));
+    }
+
+    boolean hasState(Node node) throws RepositoryException {
+        return node.hasProperty(HIPPOSTD_STATE);
     }
 
     public void apply(NodeIterator it, ThrowingPredicate predicate, ThrowingConsumer consumer) throws RepositoryException {
