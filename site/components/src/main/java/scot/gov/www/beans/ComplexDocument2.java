@@ -11,7 +11,7 @@ import org.onehippo.forge.selection.hst.util.SelectionUtil;
 
 @HippoEssentialsGenerated(internalName = "govscot:ComplexDocument2")
 @Node(jcrType = "govscot:ComplexDocument2")
-public class ComplexDocument2 extends AttributableContent {
+public class ComplexDocument2 extends Publication {
     @HippoEssentialsGenerated(internalName = "govscot:isbn")
     public String getIsbn() {
         return getSingleProperty("govscot:isbn");

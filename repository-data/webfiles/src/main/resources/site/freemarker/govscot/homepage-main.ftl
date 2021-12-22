@@ -149,7 +149,7 @@
                             <li>${topic.title}</li>
                             </#list>
                         </ul>
-                        <p class="homepage-publication__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                        <p class="homepage-publication__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                     </article>
                 </#list>
 
@@ -182,7 +182,7 @@
                             <li>${topic.title}</li>
                             </#list>
                         </ul>
-                        <p class="homepage-publication__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                        <p class="homepage-publication__date"><@fmt.formatDate value=consultation.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                     </article>
                 </#list>
 
@@ -296,7 +296,7 @@
                                         <li>${statsItem.label}</li>
                                 </ul>
 
-                                <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                         </article>
                     </div><!--
                 </#list>
