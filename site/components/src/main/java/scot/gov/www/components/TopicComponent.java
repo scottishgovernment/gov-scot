@@ -36,6 +36,8 @@ TopicComponent extends BaseHstComponent {
 
     private static final String PUBLICATIONTYPE = "govscot:publicationType";
 
+    private static final String DISPLAY_DATE = "govscot:displayDate";
+
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -67,8 +69,7 @@ TopicComponent extends BaseHstComponent {
 
     private void populatePoliciesAndDirectorates(HippoBean base, Topic topic, HstRequest request) {
         try {
-            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(topic, base, "*/@hippo:docbase", Policy.class,
-                    false);
+            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(topic, base, "*/@hippo:docbase", Policy.class, false);
             query.addOrderByAscending("govscot:title");
             HippoBeanIterator policies = executeQueryLoggingException(query, request, "policies");
             populateDirectorates(policies, request);
@@ -99,7 +100,7 @@ TopicComponent extends BaseHstComponent {
     }
 
     private void populateNews(HippoBean base, Topic topic, HstRequest request) {
-        HstQuery query = topicLinkedBeansQuery(topic, base, News.class);
+        HstQuery query = topicLinkedBeansQuery(topic, base, News.class, "govscot:publicationDate");
 
         try {
             executeQueryLoggingException(query, request, "news");
@@ -109,7 +110,7 @@ TopicComponent extends BaseHstComponent {
     }
 
     private void populateConsultations(HippoBean base, Topic topic, HstRequest request) {
-        HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
+        HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class, DISPLAY_DATE);
         if (query == null) {
             return;
         }
@@ -129,7 +130,7 @@ TopicComponent extends BaseHstComponent {
     }
 
     void populatePublications(HippoBean base, Topic topic, HstRequest request) {
-        HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
+        HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class, DISPLAY_DATE);
         if (query == null) {
             return;
         }
@@ -151,7 +152,7 @@ TopicComponent extends BaseHstComponent {
 
     private void populateStatsAndResearch(HippoBean base, Topic topic, HstRequest request) {
 
-        HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class);
+        HstQuery query = topicLinkedBeansQuery(topic, base, Publication.class, DISPLAY_DATE);
         if (query == null) {
             return;
         }
@@ -180,7 +181,7 @@ TopicComponent extends BaseHstComponent {
         return filter;
     }
 
-    private HstQuery topicLinkedBeansQuery(Topic topic, HippoBean base, Class linkedClass) {
+    private HstQuery topicLinkedBeansQuery(Topic topic, HippoBean base, Class linkedClass, String orderBy) {
         try {
             HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
                     topic,
@@ -188,7 +189,7 @@ TopicComponent extends BaseHstComponent {
                     "*/@hippo:docbase",
                     linkedClass,
                     true);
-            query.addOrderByDescending("govscot:publicationDate");
+            query.addOrderByDescending(orderBy);
             query.setLimit(3);
             return query;
         } catch (QueryException e) {

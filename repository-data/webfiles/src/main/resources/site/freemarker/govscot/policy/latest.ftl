@@ -22,8 +22,8 @@
 									<span class="listed-content-item__icon file-icon file-icon--TXT"></span>
 									<p class="listed-content-item__label">${item.label}</p>
 									<p class="listed-content-item__date">
-										<#if item.publicationDate??>
-											<@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy"/>
+										<#if item.displayDate??>
+											<@fmt.formatDate value=item.displayDate.time type="both" pattern="dd MMM yyyy"/>
 										</#if>
 									</p>
 								</div>

@@ -64,7 +64,7 @@
                                                     <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
                                                         <p class="listed-content-item__date">${document.url}</p>
                                                     <#elseif item.publicationDate??>
-                                                        <p class="listed-content-item__date"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></p>
+                                                        <p class="listed-content-item__date"><@fmt.formatDate value=item.displayDate.time type="both" pattern="d MMM yyyy"/></p>
                                                     </#if>
                                                 </div>
 

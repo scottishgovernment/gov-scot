@@ -88,17 +88,24 @@ public class PolicyComponent extends BaseHstComponent {
     }
 
     private int compareDate(HippoBean left, HippoBean right) {
-        return ObjectUtils.compare(dateToCompare(left), dateToCompare(right));
+        String [] dateProperties = {
+                "govscot:displayDate",
+                "govscot:publicationDate",
+                "hippostdpubwf:publicationDate"
+        };
+        return ObjectUtils.compare(
+                firstDate(left, dateProperties),
+                firstDate(right, dateProperties));
     }
 
-    Calendar dateToCompare(HippoBean bean) {
-        Calendar publicationDate = bean.getSingleProperty("govscot:publicationDate");
-        if (publicationDate != null) {
-            return publicationDate;
+    Calendar firstDate(HippoBean bean, String ... props) {
+        for (String prop : props) {
+            Calendar date = bean.getSingleProperty(prop);
+            if (date != null) {
+                return date;
+            }
         }
-
-        // this bean has no publication date, default to the hippostdpubwf:publicationDate
-        return bean.getSingleProperty("hippostdpubwf:publicationDate");
+        return null;
     }
 
     private List<HippoBean> getLatestNews(HstRequest request, Policy policy) {

@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: d74669a6-d919-4793-9305-0c86b011feb2
+          jcr:uuid: 93614c75-1236-4d81-9167-40d345cb6d13
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -91,88 +91,14 @@ definitions:
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
               publication-slug-dots]
-        /hipposysedit:nodetype[2]:
-          jcr:primaryType: hipposysedit:nodetype
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: fedc3bc0-aecc-42f7-a7b9-0b47f37d9de8
-          hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
-            'hippotranslation:translated']
-          /isbn:
+          /displayDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:isbn
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /publicationDate:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:publicationDate
+            hipposysedit:path: govscot:displayDate
             hipposysedit:primary: false
             hipposysedit:type: Date
-          /dynamicdropdown:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:publicationType
-            hipposysedit:primary: false
-            hipposysedit:type: DynamicDropdown
-            hipposysedit:validators: [required]
-          /officialdate:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:officialdate
-            hipposysedit:primary: false
-            hipposysedit:type: CalendarDate
-          /html_:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:contact
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /executveSummary:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:executiveSummary
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /html:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:epilogue
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /sme:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:sme
-            hipposysedit:primary: false
-            hipposysedit:type: Text
-          /slug:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:slug
-            hipposysedit:primary: false
-            hipposysedit:type: String
-            hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
-              publication-slug-dots]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -189,7 +115,7 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: 979095fb-e4a2-492f-b30b-c69c27c20dd6
+          jcr:uuid: d1f9bcc9-1238-413c-af58-8b9d7910907f
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -197,48 +123,7 @@ definitions:
           govscot:sme: ''
           govscot:slug: ''
           govscot:reportingTags: []
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:responsibleDirectorate:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:responsibleRole:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:contact:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:epilogue:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:executiveSummary:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-        /hipposysedit:prototype[2]:
-          jcr:primaryType: nt:unstructured
-          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
-            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
-          jcr:uuid: ce0a6ae8-6f8c-47d7-b8b4-967bc6e2b004
-          govscot:isbn: ''
-          govscot:metaDescription: ''
-          govscot:officialdate: 0001-01-01T12:00:00Z
-          govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:reportingTags: []
-          govscot:seoTitle: ''
-          govscot:slug: ''
-          govscot:sme: ''
-          govscot:summary: ''
-          govscot:title: ''
-          hippostd:holder: holder
-          hippostd:state: draft
-          hippostdpubwf:createdBy: ''
-          hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
-          hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
-          hippostdpubwf:lastModifiedBy: ''
-          hippotranslation:id: document-type-locale-id
-          hippotranslation:locale: document-type-locale
-          govscot:publicationType: ''
+          govscot:displayDate: 0001-01-01T12:00:00Z
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -514,3 +399,14 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               source: /content/documents/govscot/valuelists/reportingTags
+          /displayDate:
+            jcr:primaryType: frontend:plugin
+            caption: Display date
+            field: displayDate
+            hint: The date used to sort and filter publications.  Also used as the
+              date present in search results.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            mode: view
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

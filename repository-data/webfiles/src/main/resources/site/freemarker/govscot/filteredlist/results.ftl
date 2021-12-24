@@ -103,7 +103,8 @@
                                 <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                                     <#assign dateFormat = "dd MMM yyyy HH:mm">
                                 </#if>
-                                <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
+                                <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
+                                <span class="listed-content-item__date">| <@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></span>
                             </#if>
                         </div>
 

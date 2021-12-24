@@ -56,7 +56,7 @@ public class CollectionGroup extends HippoCompound {
     }
 
     Calendar dateToCompare(HippoBean bean) {
-        Calendar publicationDate = bean.getSingleProperty("govscot:publicationDate");
+        Calendar publicationDate = bean.getSingleProperty("govscot:displayDate");
         if (publicationDate != null) {
             return publicationDate;
         }
