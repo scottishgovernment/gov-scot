@@ -2,8 +2,6 @@ package scot.gov.www;
 
 import org.apache.commons.lang.StringUtils;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.Node;
@@ -16,8 +14,6 @@ import java.util.Calendar;
  * updateHistory.
  */
 public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
-
-    private static final Logger LOG = LoggerFactory.getLogger(PublicationDisplayDateDaemonModule.class);
 
     private static final String PREFIX = "/content/documents/govscot/publications/";
 
@@ -81,8 +77,6 @@ public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
 
     Calendar getDisplayDate( Node publication) throws RepositoryException {
 
-        LOG.info("getDisplayDate has hsit? {} {}", publication.getPath(), publication.hasProperty(UPDATE_HISTORY));
-
         return publication.hasNode(UPDATE_HISTORY)
                 ? getMostRecentDateFromUpdateHistory(publication)
                 : first(publication,
@@ -104,7 +98,6 @@ public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
     }
 
     Calendar getMostRecentDateFromUpdateHistory(Node publication) throws RepositoryException {
-        LOG.info("getMostRecentDateFromUpdateHistory");
         NodeIterator it = publication.getNodes(UPDATE_HISTORY);
         Node mostRecent = it.nextNode();
         while (it.hasNext()) {
