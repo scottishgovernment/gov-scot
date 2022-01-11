@@ -98,12 +98,9 @@
                     </div>
 
                     <div>
-                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/publications/'/>"
-                        data-gtm="all-pubs">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all publications
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/'/>" data-gtm="all-pubs">
+                            <span class="gov_icon-link__text">See all publications</span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
                 </section>
@@ -140,12 +137,9 @@
                     </div>
 
                     <div>
-                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/consultations/'/>"
-                        data-gtm="all-cons">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all consultations
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/consultations/'/>" data-gtm="all-cons">
+                            <span class="gov_icon-link__text">See all consultations</span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
                 </section>
@@ -203,91 +197,87 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/topics/'/>" class="gov_latest-feed__see-all">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img"><use xlink:href="${iconspath}#list"></use></svg>
-                            See all topics
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/topics/'/>" data-gtm="all-topics">
+                            <span class="gov_icon-link__text">See all topics</span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
                 </section>
 
-                <section id="latest-news" class="gov_latest-feed  gov_content-block">
-                    <div>
-                        <h2 class="gov_content-block__title">
-                            <a class="gov_content-block__title-link"
-                                href="<@hst.link path='/news/'/>"
-                                data-gtm="panel-news">
-                                News
+                <div>
+                    <section id="latest-news" class="gov_latest-feed  gov_content-block">
+                        <div>
+                            <h2 class="gov_content-block__title">
+                                <a class="gov_content-block__title-link"
+                                    href="<@hst.link path='/news/'/>"
+                                    data-gtm="panel-news">
+                                    News
+                                </a>
+                            </h2>
+
+                            <div class="gov_homepage-subscribe">
+                                <span class="gov_homepage-subscribe__text">Get all the latest news from gov.scot</span>
+
+                                <a class="gov_homepage-subscribe__link  gov_icon-link" href="http://register.scotland.gov.uk/Subscribe/Step1">
+                                    <span class="gov_icon-link__text">Subscribe</span>
+                                    <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
+                                </a>
+                            </div>
+
+                            <div id="news-container" class="gov_latest-feed__items">
+                                <#if news?has_content>
+                                    <#list news as newsItem>
+                                        <article class="gov_latest-feed__item">
+                                            <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                            <h3 class="gov_latest-feed__item__title">
+                                                <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
+                                            </h3>
+                                            <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
+                                        </article>
+                                    </#list>
+                                </#if>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/'/>" data-gtm="all-news">
+                                <span class="gov_icon-link__text">See all news</span>
+                                <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>
-                        </h2>
+                        </div>
+                    </section>
 
-                        <div class="homepage-subscribe">
-                            <span class="hidden-xsmall">Get all the latest news from gov.scot&hellip;</span>
+                    <section id="latest-stats-research" class="gov_latest-feed  gov_content-block">
+                        <div>
+                            <h2 class="gov_content-block__title">
+                                Statistics and research
+                            </h2>
 
-                            <a data-gtm="news-subscribe" href="http://register.scotland.gov.uk/Subscribe/Step1">
-                                Subscribe
-                                <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron_right"></use></svg>
+                            <div id="statistics-container" class="gov_latest-feed__items">
+                                <#if statsAndResearch?has_content>
+                                    <#list statsAndResearch as publication>
+                                        <article class="gov_latest-feed__item">
+                                            <h3 class="gov_latest-feed__item__title">
+                                                <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
+                                            </h3>
+                                            <ul class="gov_latest-feed__item__topics">
+                                                    <li>${publication.label}</li>
+                                            </ul>
+                                            <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        </article>
+                                    </#list>
+                                </#if>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="all-stats">
+                                <span class="gov_icon-link__text">See all Statistics and research</span>
+                                <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>
                         </div>
-
-                        <div id="news-container" class="gov_latest-feed__items">
-                            <#if news?has_content>
-                                <#list news as newsItem>
-                                    <article class="gov_latest-feed__item">
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
-                                        <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
-                                        </h3>
-                                        <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
-                                    </article>
-                                </#list>
-                            </#if>
-                        </div>
-                    </div>
-
-                    <div>
-                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/news/'/>"
-                        data-gtm="all-news">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all news
-                        </a>
-                    </div>
-                </section>
-
-                <section id="latest-stats-research" class="gov_latest-feed  gov_content-block">
-                    <div>
-                        <h2 class="gov_content-block__title">
-                            Statistics and research
-                        </h2>
-
-                        <div id="statistics-container" class="gov_latest-feed__items">
-                            <#if statsAndResearch?has_content>
-                                <#list statsAndResearch as publication>
-                                    <article class="gov_latest-feed__item">
-                                        <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
-                                        </h3>
-                                        <ul class="gov_latest-feed__item__topics">
-                                                <li>${publication.label}</li>
-                                        </ul>
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
-                                    </article>
-                                </#list>
-                            </#if>
-                        </div>
-                    </div>
-
-                    <div>
-                        <a class="gov_latest-feed__see-all" href="<@hst.link path='/statistics-and-research/'/>"
-                        data-gtm="all-stats">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all Statistics and research
-                        </a>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
 
             <section id="about" class="gov_content-block">
@@ -316,7 +306,10 @@
                                 <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
                                 ${firstMinisterContent?trim?keep_before("\n")}
 
-                                <p><a class="homepage-about__read-more" data-gtm="read-more" href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
+                                <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link hippobean=firstMinister/>">
+                                    <span class="gov_icon-link__text">Read more <span class="visually-hidden">about the First Minister</span></span>
+                                    <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
+                                </a>
                             </div>
                         </div>
                     </#if>
@@ -325,9 +318,7 @@
                         <div>
                             <h3>How government works</h3>
 
-                            <div class="ds_leader  homepage-about__leader">
-                                <@hst.html hippohtml=document.howGovernmentWorks />
-                            </div>
+                            <@hst.html hippohtml=document.howGovernmentWorks />
                         </div>
                     </#if>
                 </div>

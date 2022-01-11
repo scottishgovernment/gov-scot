@@ -101,11 +101,9 @@
                             </#list>
                         </ul>
 
-                        <a href="<@hst.link path='/news/?topics=' + document.title/>" class="gov_icon-link">
-                            <svg class="ds_icon  ds_icon--24" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all news <span class="visually-hidden">about ${document.title}</span>
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=' + document.title/>" data-gtm="all-news">
+                            <span class="gov_icon-link__text">See all news <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </section>
                 </#if>
@@ -118,11 +116,10 @@
                                 <li><a data-gtm="policy-${policy?index + 1}" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
                             </#list>
                         </ul>
-                        <a href="<@hst.link path='/policies/?topics=' + document.title/>" class="gov_icon-link">
-                            <svg class="ds_icon  ds_icon--24" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all policies <span class="visually-hidden">about ${document.title}</span>
+
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/?topics=' + document.title/>" data-gtm="all-policies">
+                            <span class="gov_icon-link__text">See all policies <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </section>
                 </#if>
@@ -135,11 +132,10 @@
                                 <li><a data-gtm="publications-${publication?index + 1}" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
                             </#list>
                         </ul>
-                        <a href="<@hst.link path='/publications/?topics=' + document.title/>" class="gov_icon-link">
-                            <svg class="ds_icon  ds_icon--24" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all publications <span class="visually-hidden">about ${document.title}</span>
+
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=' + document.title/>" data-gtm="all-pubs">
+                            <span class="gov_icon-link__text">See all publications <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </section>
                 </#if>

@@ -1,17 +1,67 @@
-.gov_icon-link {
-    @include ds_blocklink;
-    @include ds_small-size;
+$icon-spacing: 1.5em;
 
-    border-bottom: 1px solid currentColor;
-    display: inline-block;
-    margin-top: 24px;
-    padding: 8px 8px 8px 40px;
+.gov_icon-link {
     position: relative;
     text-decoration: none;
+    padding-right: $icon-spacing;
 
-    .ds_icon {
-        left: 4px;
-        position: absolute;
-        top: 8px;
+    &__text {
+        text-decoration: underline;
     }
+
+    &__icon {
+        margin-top: calc(-2em/3);
+        position: absolute;
+        top: 50%;
+        right: 0;
+    }
+
+    &__icon--chevron {
+        @include ds_chevron(right, 0.583333em);
+
+        margin-top: -0.25em;
+        right: 0.333333em;
+    }
+
+    &:focus &__text {
+        text-decoration: none;
+    }
+
+    &--icon-left {
+        padding-right: 0;
+        padding-left: $icon-spacing;
+    }
+
+    &--icon-left &__icon {
+        left: 0;
+        right: auto;
+
+        &--chevron {
+            @include ds_chevron(left, 0.583333em);
+
+            left: 0.333333em;
+        }
+    }
+
+    &--major {
+        display: inline-block;
+        border-bottom: px-to-em(2px) solid currentColor;
+        font-weight: $bold;
+        padding-top: 6px;
+        padding-bottom: 2px;
+
+        &:focus {
+            border-bottom-color: transparent;
+        }
+
+        &::after {
+            margin-top: -0.25em;
+        }
+    }
+
+    &--major &__text {
+        text-decoration: none;
+    }
+
+
 }

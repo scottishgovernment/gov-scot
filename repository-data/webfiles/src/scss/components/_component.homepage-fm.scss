@@ -67,16 +67,18 @@
       grid-area: c;
     }
 
-    @include ds_media-query(large) {
-      display: grid;
-      grid-gap: 0 $grid-gap-x;
-      grid-template-areas: 't t' 'i c';
-
+    @include ds_media-query(medium) {
       &__image > img {
         margin-left: 0;
         margin-right: 0;
         width: 100%;
       }
+    }
+
+    @include ds_media-query(large) {
+      display: grid;
+      grid-gap: 0 $grid-gap-x;
+      grid-template-areas: 't t' 'i c';
     }
   }
 }

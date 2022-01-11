@@ -32,7 +32,7 @@
           'a b c'
           'd d d';
 
-      > .#{$site-prefix}latest-feed:nth-child(4) {
+      > :nth-child(4) {
         grid-area: d;
       }
     }

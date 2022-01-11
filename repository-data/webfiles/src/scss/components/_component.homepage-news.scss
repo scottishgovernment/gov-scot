@@ -2,7 +2,26 @@
     #HOMEPAGE: NEWS
 \*------------------------------------*/
 
+
+.gov_homepage-subscribe {
+    &__text + &__link {
+      margin-left: 20px;
+      position: relative;
+
+      &::before {
+        content: '';
+        top: 2px;
+        bottom: 2px;
+        background: $ds_colour__text--secondary;
+        position: absolute;
+        width: 1px;
+        left: -12px;
+      }
+    }
+}
+
 /// not currently used but should be?????
+
 
 
 .gov_homepage-news__date {
