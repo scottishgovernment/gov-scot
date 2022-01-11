@@ -190,6 +190,10 @@
                         <!-- /end .expandable-item -->
                     </div>
                 </#if>
+
+                <#if document.updateHistory?has_content>
+                    <#include '../common/update-history.ftl'/>
+                </#if>
             </div><!--
         --></div>
 
@@ -225,6 +229,10 @@
                         </section>
                         </#if>
                     </#list>
+                </#if>
+
+                <#if document.updateHistory?has_content>
+                    <#include '../common/update-history.ftl'/>
                 </#if>
             </div><!--
         --></div>
@@ -283,6 +291,10 @@
                             </#list>
                         </div>
 
+                        <#if document.updateHistory?has_content>
+                            <#include '../common/update-history.ftl'/>
+                        </#if>
+
                     </div><!--
                 --></div>
             </div><!--
@@ -312,6 +324,10 @@
                             </#if>
                         </div><!--
                     --></div>
+
+                    <#if document.updateHistory?has_content>
+                        <#include '../common/update-history.ftl'/>
+                    </#if>
                 </div><!--
             --></div>
         </article>
@@ -322,7 +338,7 @@
 
 <div class="wrapper">
     <div class="grid"><!--
-        --><div class="grid__item  large--seven-twelfths  push--large--two-twelfths">
+        --><div class="grid__item  large--seven-twelfths  push--large--three-twelfths">
             <#include '../common/feedback-wrapper.ftl'>
         </div><!--
     --></div>
