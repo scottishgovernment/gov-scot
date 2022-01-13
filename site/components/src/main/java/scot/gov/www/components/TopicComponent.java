@@ -63,8 +63,6 @@ TopicComponent extends BaseHstComponent {
         populateConsultations(base, topic, request);
         populatePublications(base, topic, request);
         populateStatsAndResearch(base, topic, request);
-        boolean topicsStatsPanel = FeatureFlags.isEnabled("topicsStatsPanel", request.getRequestContext());
-        request.setAttribute("topicsStatsPanelEnabled", topicsStatsPanel);
     }
 
     private void populatePoliciesAndDirectorates(HippoBean base, Topic topic, HstRequest request) {

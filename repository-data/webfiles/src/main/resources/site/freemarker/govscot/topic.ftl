@@ -91,40 +91,6 @@
     </#if>
 
     <div class="grid"><!--
-
-        --><#if topicsStatsPanelEnabled == false><div class="grid__item  medium--four-twelfths">
-        <section id="latest-news" class="topic-block">
-            <h2 class="emphasis  topic-block__title">
-                News
-            </h2>
-
-            <div id="news-container">
-                <#if news?has_content>
-                    <#list news as newsItem>
-                        <article class="homepage-publication">
-                        <h3 class="js-truncate  homepage-publication__title">
-                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
-                        </h3>
-                        <p class="homepage-publication__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
-                        </article>
-                    </#list>
-                <#else>
-                    <p>There are no news items relating to this topic.</p>
-                </#if>
-            </div>
-
-            <!-- if you're changing this link remember to also change the non-mobile equivalent below -->
-            <a class="button  button--tertiary  visible-xsmall  visible-xsmall--inline" href="<@hst.link path='/news/?topics=${document.title}'/>"
-            data-gtm="all-news">
-                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="${iconspath}#3x3grid"></use>
-                </svg>
-                See all news
-            </a>
-        </section>
-    </div></#if><!--
-
-
         --><div class="grid__item  medium--four-twelfths">
         <section id="latest-publications" class="topic-block">
             <h2 class="emphasis  topic-block__title">
@@ -192,7 +158,7 @@
         </section>
         </div><!--
 
-        --><#if topicsStatsPanelEnabled == true><div class="grid__item  medium--four-twelfths">
+        --><div class="grid__item  medium--four-twelfths">
         <section id="latest-stats-research" class="topic-block">
             <h2 class="emphasis  topic-block__title">
                 Statistics and research
@@ -226,7 +192,7 @@
             </a>
 
         </section>
-        </div></#if><!--
+        </div><!--
 
 
 
@@ -235,16 +201,7 @@
 
     <div class="topic-block  topic-block--negate-top-margin  hidden-xsmall">
         <div class="grid">
-            <#if topicsStatsPanelEnabled == false><div class="grid__item medium--four-twelfths">
-                <!-- if you're changing this link remember to also change the mobile equivalent above -->
-                 <a class="button  button--tertiary  tst-all-news" href="<@hst.link path='/news/?topics=${document.title}'/>"
-                data-gtm="all-news">
-                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="${iconspath}#3x3grid"></use>
-                </svg>
-                See all news
-            </a>
-            </div></#if><div class="grid__item medium--four-twelfths">
+            <div class="grid__item medium--four-twelfths">
                 <!-- if you're changing this link remember to also change the mobile equivalent above -->
                 <a class="button  button--tertiary  tst-all-pubs" href="<@hst.link path='/publications/?topics=${document.title}'/>"
                 data-gtm="all-pubs">
@@ -263,7 +220,7 @@
                     </svg>
                     See all consultations
                 </a>
-            </div><#if topicsStatsPanelEnabled == true><div class="grid__item medium--four-twelfths">
+            </div><div class="grid__item medium--four-twelfths">
                 <!-- if you're changing this link remember to also change the mobile equivalent above -->
                 <a class="button  button--tertiary  tst-all-stats" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>"
                 data-gtm="all-stats">
@@ -272,14 +229,12 @@
                     </svg>
                     See all Statistics and research
                 </a>
-            </div></#if>
+            </div>
         </div>
     </div>
 
 
 <!-- start news -->
-
-<#if topicsStatsPanelEnabled == true>
 <section id="latest-news" class="topic-block">
     <h2 class="emphasis  topic-block__title">
         News
@@ -323,7 +278,6 @@
             </div>
         </div>
 </div>
-</#if>
 
 <!-- close news -->
 

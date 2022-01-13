@@ -39,24 +39,27 @@
 <div class="wrapper">
     <div class="homepage-hero  homepage-hero--${document.featuredItems?size}">
         <div class="homepage-hero__main">
-            <#assign featuredItem = document.featuredItems?first>
-            <div class="hero-item">
-                <div class="hero-item__media">
-                    <a data-gtm="hero-item-1" href="${featuredItem.link.url}">
-                        <div class="hero-item__figure">
-                            <img class="hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
-                        </div>
-                    </a>
-                </div>
 
-                <div class="hero-item__content">
-                    <h2 class="hero-item__title">
-                        <a data-gtm="hero-item-1" href="${featuredItem.link.url}">${featuredItem.title}</a>
-                    </h2>
+            <#if document.featuredItems?has_content>
+                <#assign featuredItem = document.featuredItems?first>
+                <div class="hero-item">
+                    <div class="hero-item__media">
+                        <a data-gtm="hero-item-1" href="${featuredItem.link.url}">
+                            <div class="hero-item__figure">
+                                <img class="hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
+                            </div>
+                        </a>
+                    </div>
 
-                    <@hst.html hippohtml=featuredItem.teaserText/>
+                    <div class="hero-item__content">
+                        <h2 class="hero-item__title">
+                            <a data-gtm="hero-item-1" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                        </h2>
+
+                        <@hst.html hippohtml=featuredItem.teaserText/>
+                    </div>
                 </div>
-            </div>
+            </#if>
         </div>
 
         <div class="homepage-hero__sub">
@@ -277,41 +280,40 @@
     </section>
 
     <!-- STATISTICS AND RESEARCH -->
-    <#if homeStatsPanelEnabled == true>
-        <section id="stats" class="homepage-block">
-            <h2 class="emphasis homepage-block__title">
-                <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-stats">Statistics and research</a>
-            </h2>
 
-            <h3 class="homepage-about__title">Latest</h3>
-            <div class="grid"><!--
+    <section id="stats" class="homepage-block">
+        <h2 class="emphasis homepage-block__title">
+            <a class="homepage-block__title-link" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="panel-stats">Statistics and research</a>
+        </h2>
 
-                <#list statisticsAndResearch as statsItem>
-                --><div class="grid__item medium--four-twelfths homepage-news__item">
-                        <article class="narrow">
-                            <h3 class="js-truncate homepage-news__title">
-                                <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index + 1}" title="${statsItem.title}">${statsItem.title}</a>
-                            </h3>
-                                <ul class="homepage-publication__topics">
-                                        <li>${statsItem.label}</li>
-                                </ul>
+        <h3 class="homepage-about__title">Latest</h3>
+        <div class="grid"><!--
 
-                                <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
-                        </article>
-                    </div><!--
-                </#list>
+            <#list statisticsAndResearch as statsItem>
+            --><div class="grid__item medium--four-twelfths homepage-news__item">
+                    <article class="narrow">
+                        <h3 class="js-truncate homepage-news__title">
+                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index + 1}" title="${statsItem.title}">${statsItem.title}</a>
+                        </h3>
+                            <ul class="homepage-publication__topics">
+                                    <li>${statsItem.label}</li>
+                            </ul>
 
-            --></div>
+                            <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                    </article>
+                </div><!--
+            </#list>
 
-            <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
-            data-gtm="all-statistics">
-                <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
-                    <use xlink:href="${iconspath}#3x3grid"></use>
-                </svg>
-                See all Statistics and research
-            </a>
-        </section>
-    </#if>
+        --></div>
+
+        <a class="button  button--tertiary tst-all-stats" href="<@hst.link path='/statistics-and-research/'/>"
+        data-gtm="all-statistics">
+            <svg class="svg-icon  mg-icon  mg-icon--medium  mg-icon--inline">
+                <use xlink:href="${iconspath}#3x3grid"></use>
+            </svg>
+            See all Statistics and research
+        </a>
+    </section>
 
     <!-- END STATISTICS AND REASEARCH  -->
 

@@ -22,16 +22,5 @@ public class MainMenu extends EssentialsMenuComponent {
         if (menu == null) {
             return;
         }
-
-        // set feature flags for site items
-        for (HstSiteMenuItem siteMenuItem : menu.getSiteMenuItems()) {
-            String flagName = flagname(siteMenuItem);
-            boolean enabled = FeatureFlags.isEnabled(flagName, request.getRequestContext(), true);
-            request.setAttribute(flagName, enabled);
-        }
-    }
-
-    String flagname(HstSiteMenuItem menuItem) {
-        return menuItem.getName().replaceAll(" ", "") + "Menu";
     }
 }

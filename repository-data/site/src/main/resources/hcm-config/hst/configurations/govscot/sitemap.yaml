@@ -7,6 +7,7 @@ definitions:
         hst:componentconfigurationid: hst:pages/homepage
         hst:refId: root
         hst:sitemapitemhandlerids: [trailing-slash]
+        hst:relativecontentpath: home
       /_any_:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
