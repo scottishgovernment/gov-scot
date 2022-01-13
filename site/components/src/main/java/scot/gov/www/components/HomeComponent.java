@@ -1,8 +1,6 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-import org.hippoecm.hst.content.beans.ObjectBeanManagerException;
-import org.hippoecm.hst.content.beans.manager.ObjectBeanManager;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
@@ -85,7 +83,7 @@ public class HomeComponent extends BaseHstComponent {
                         )
                 )
                 .build();
-        executeQueryLoggingException(query, request, "publications");
+        executeQueryLoggingException(query, request, PUBLICATIONS);
     }
 
 

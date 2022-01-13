@@ -4,7 +4,6 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
-import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
 import org.onehippo.cms7.essentials.components.EssentialsMenuComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsMenuComponentInfo;
 
