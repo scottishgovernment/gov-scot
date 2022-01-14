@@ -10,17 +10,17 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 public class NavigationCard extends HippoCompound {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getProperty("govscot:title");
+        return getSingleProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:content")
     public String getContent() {
-        return getProperty("govscot:content");
+        return getSingleProperty("govscot:content");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:externallink")
     public String getExternallink() {
-        return getProperty("govscot:externallink");
+        return getSingleProperty("govscot:externallink");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:image")
