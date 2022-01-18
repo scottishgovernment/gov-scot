@@ -39,7 +39,7 @@ public class HomeComponent extends BaseHstComponent {
         populateConsultations(scope.getBean(PUBLICATIONS), request);
         populatePublications(scope.getBean(PUBLICATIONS), request);
         populateTopicsList(scope.getBean("topics"), request);
-        request.setAttribute("firstMinister", scope.getBean("/content/documents/govscot/about/who-runs-government/first-minister/index"));
+        request.setAttribute("firstMinister", scope.getBean("about/who-runs-government/first-minister/index"));
         request.setAttribute("document", context.getContentBean());
     }
 
