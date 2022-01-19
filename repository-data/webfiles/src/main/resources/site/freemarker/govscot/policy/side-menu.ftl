@@ -39,7 +39,7 @@
 
         <#list policyDetails as policyDetail>
             <li class="page-group__item page-group__item--level-1">
-                <#if document.title == policyDetail.title>
+                <#if document == policyDetail>
                     <span class="page-group__link page-group__link--level-1 page-group__link--selected page-group__link--level-1--selected">
                         <span class="page-group__text">${policyDetail.title}</span>
                     </span>
