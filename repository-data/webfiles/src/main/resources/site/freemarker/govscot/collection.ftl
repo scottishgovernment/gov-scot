@@ -34,7 +34,9 @@
                     <h2 class="gamma">On this page:</h2>
                     <ul class="no-left-margin">
                         <#list document.groups as group>
+                            <#if group.collectionItems?has_content>
                             <li><a href="#${group.groupTitle?lower_case?replace(" ","")}" data-navigation-index="${group?index}">${group.groupTitle}</a></li>
+                            </#if>
                         </#list>
                     </ul>
                 </nav>
