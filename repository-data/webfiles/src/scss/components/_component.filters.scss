@@ -4,56 +4,52 @@
 
 $filters-panel-background: $ds_colour__grey--lighter;
 
+.js-loading-inactive {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 .#{$site-prefix}filters {
-    background-color: $ds_colour__grey--lighter;
-    font-size: 16px;
-    padding: 16px 16px 0 !important;
     position: relative;
-
-    &__title {
-        @include h3-size;
-        line-height: 32px;
-    }
-
-    &--tab-title {
-        border-top: 1px solid $ds_colour__border;
-        margin-top: 48px;
-    }
-
-    &--tab-title &__title {
-        @include h3-size;
-        background-color: $ds_colour__grey--lighter;
-        border-top: 1px solid $ds_colour__border;
-        bottom: 100%;
-        left: 0;
-        margin: 0;
-        padding: 7px 16px 8px;
-        position: absolute;
-
-        &::after,
-        &::before {
-            border-bottom: 48px solid $ds_colour__grey--lighter;
-            border-right: 16px solid transparent;
-            content: '';
-            left:100%;
-            position:absolute;
-            top: 0;
-        }
-
-        &::before {
-            content: '';
-            border-color: $ds_colour__border;
-            border-right: 16px solid transparent;
-            top: -1px;
-        }
-    }
 
     fieldset {
         margin: 0;
     }
 
-    .ds_accordion {
-        margin: 0 -16px;
+    &__scrollable {
+        margin-left: -8px;
+        max-height: 25vh;
+        overflow-y:auto;
+        padding-left: 10px;
+
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.5);
+        }
+    }
+
+    &__filter-info {
+        font-weight: normal;
+
+        &--count {
+            display: none;
+
+            &[data-count] {
+                display: block;
+            }
+
+            &[data-count]::after {
+                content: '(' attr(data-count) ' selected)';
+                display: block;
+            }
+        }
     }
 
     .ds_accordion.js-initialised .ds_accordion-item__body {
@@ -87,5 +83,117 @@ $filters-panel-background: $ds_colour__grey--lighter;
 
     .ds_checkbox__label {
         padding: 8px 4px;
+    }
+
+    &__clear {
+        @include ds_responsive-margin(2, bottom);
+        margin-top: 0;
+    }
+}
+
+
+
+
+.gov_filters {
+    @include ds_responsive-margin(4, bottom);
+    @include ds_small-size;
+
+    border: 1px solid $ds_colour__border--light;
+    position: relative;
+
+    &__expand {
+        @include ds_blocklink;
+
+        background-color: $ds_colour__white;
+        color: $side-nav__expand-colour;
+        cursor: pointer;
+        font-weight: $bold;
+        margin: 0;
+        padding: 16px 40px 16px 16px;
+        position: sticky;
+        text-align: left;
+        text-decoration: none;
+        top: 0;
+        transition: background-color $transition-in-time, box-shadow $transition-in-time;
+        width: 100%;
+        z-index: 2;
+
+        &--shadow {
+            box-shadow: 0px 5px 5px rgba(0,0,0,0.15);
+        }
+
+        &:hover:not(:focus) {
+            background-color: $ds_colour__link--hover__background;
+        }
+
+        &:hover .side-navigation__expand-indicator {
+            color: $ds_colour__link--hover;
+        }
+
+        &--shadow:focus {
+            box-shadow: 0 3px #333333, 0px 8px 5px rgba(0,0,0,0.15);
+        }
+    }
+
+    &__expand-indicator {
+        @include ds_chevron(down, 0.75em);
+        border-width: 0px 0px 3px 3px;
+        position: absolute;
+        right: 24px;
+        top: 20px;
+        transition: transform 0.2s, top 0.2s;
+        pointer-events: none;
+    }
+}
+
+.gov_filters__form {
+    display: none;
+    list-style-type: none;
+    margin: 8px 16px;
+}
+
+#show-filters:checked ~ .gov_filters__form {
+    display: block;
+}
+
+@include ds_media-query(medium-down) {
+    .js-initialised.gov_filters > .gov_filters__form {
+        margin-left: 0;
+        margin-right: 0;
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        transition: max-height $transition-in-time, padding $transition-in-time;
+    }
+
+    .js-initialised.gov_filters #show-filters:checked ~ .gov_filters__form {
+        padding-bottom: 8px;
+        padding-top: 8px;
+    }
+}
+
+@include ds_media-query(medium) {
+    .gov_filters {
+        border-width: 0;
+        line-height: 24px;
+
+        &--tab-title &__title {
+            display: block;
+        }
+
+        &__form {
+            display: block !important;
+            margin: 0;
+            max-height: unset !important;
+        }
+
+        &__expand {
+            display: none;
+        }
+
+        #show-filters {
+            display: none;
+        }
     }
 }

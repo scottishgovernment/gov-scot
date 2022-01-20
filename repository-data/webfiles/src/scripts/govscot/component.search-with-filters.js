@@ -9,6 +9,8 @@ import searchUtils from './search-utils';
 import dates from '../utils/dates';
 import $ from 'jquery';
 import DSDatePicker from '../../../node_modules/@scottish-government/pattern-library/src/components/date-picker/date-picker';
+import GovFilters from './component.filters';
+import breakpointCheck from '../../../node_modules/@scottish-government/pattern-library/src/base/utilities/breakpoint-check/breakpoint-check';
 
 window.dataLayer = window.dataLayer || [];
 
@@ -25,9 +27,6 @@ function getParameterByName(name, url) {
 const SearchWithFilters = function (settings) {
 
     this.settings = {
-        responsiveWidthThreshold: 767,
-        autoscaleThreshold: 786,
-        autoscalePollingFrequency: 50,
         maxDate: new Date(),
         minDate: new Date(1999, 5, 1)
     };
@@ -35,25 +34,26 @@ const SearchWithFilters = function (settings) {
     this.settings = $.extend(this.settings, settings);
 
     this.attachEventHandlers = attachEventHandlers;
+    this.clearErrors = clearErrors;
     this.enableJSFilters = enableJSFilters;
     this.gatherParams = gatherParams;
     this.hasActiveSearch = hasActiveSearch;
     this.initDateFilters = initDateFilters;
-    this.initStickyFilterButtons = initStickyFilterButtons;
     this.init = init;
     this.validateDateInput = validateDateInput;
 };
 
 function init() {
+    const govFilterEl = document.querySelector('[data-module="gov-filters"]');
+    this.govFilters = new GovFilters(govFilterEl);
+    this.govFilters.init();
+
     let that = this;
     this.searchParams = this.gatherParams(true);
 
     this.attachEventHandlers();
     this.enableJSFilters();
-    this.hideFilters = hideFilters;
     this.initDateFilters();
-    this.initStickyFilterButtons();
-    this.showFilters = showFilters;
     this.searchUtils = searchUtils;
     this.submitSearch = function (options) {
         options = options || {};
@@ -79,14 +79,10 @@ function attachEventHandlers () {
         let currentParams = that.gatherParams();
         let newQueryString = searchUtils.getNewQueryString(currentParams);
 
-        // insert "loading" message
-        let searchResults = $('#search-results');
-        searchResults.css({position: 'relative'});
-        let overlay = $('<div class="search-results-overlay"></div>');
-        overlay.appendTo(searchResults);
-
-        // disable form
-        $('#filters-fields').prop('disabled',true);
+        const resultsContainer = document.querySelector('#search-results');
+        const filtersContainer = document.querySelector('#filters');
+        resultsContainer.classList.add('js-loading-inactive');
+        filtersContainer.classList.add('js-loading-inactive');
 
         $.ajax({
             url: window.location.pathname + newQueryString
@@ -115,15 +111,26 @@ function attachEventHandlers () {
             }
 
             // remove "loading" message
-            $('.search-results-overlay').remove();
-
-            // enable form
-            $('#filters-fields').prop('disabled',false);
+            resultsContainer.classList.remove('js-loading-inactive');
+            filtersContainer.classList.remove('js-loading-inactive');
 
             // update count for mobile
             $('.js-search-results-count').html($('#search-results .search-results__count').html());
 
-            that.hideFilters();
+            const publicationTypesCount = document.querySelector('.js-publication-types-count');
+            const topicsCount = document.querySelector('.js-topics-count');
+            if (currentParams.publicationTypes) {
+                publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
+            } else {
+                delete publicationTypesCount.dataset.count;
+            }
+            if (currentParams.topics) {
+                topicsCount.dataset.count = currentParams.topics.length;
+            } else {
+                delete topicsCount.dataset.count;
+            }
+
+            that.govFilters.closeFilters();
 
             // scroll to the top of the page if we are changing page
             if (that.isChangingPage) {
@@ -167,21 +174,9 @@ function attachEventHandlers () {
         });
     });
 
-    // show/hide filters
-    $('.js-show-filters').on('click', function (event) {
-        event.preventDefault();
-        that.showFilters();
-    });
-
-    $('.js-cancel-filters').on('click', function (event) {
-        event.preventDefault();
-        that.hideFilters();
-    });
-
     let t;
 
     $('.ds_field-group').on('change', 'input[type=checkbox]', function () {
-
         let containerType = $(this)
             .closest('.ds_accordion-item')
             .find('.ds_accordion-item__title')
@@ -196,7 +191,7 @@ function attachEventHandlers () {
         });
 
         // If on mobile don't do the search automatically.
-        if ($(window).innerWidth() > that.settings.responsiveWidthThreshold) {
+        if (breakpointCheck('medium')) {
             clearTimeout(t);
 
             // do search on a small timeout to allow user to select multiple items without making multiple requests
@@ -228,6 +223,7 @@ function attachEventHandlers () {
         delete that.searchParams.page;
 
         that.submitSearch();
+        that.clearErrors();
     });
 
     $('#search-results').on('click', '.pagination__page', function (event) {
@@ -243,7 +239,20 @@ function attachEventHandlers () {
             changingPage: true,
             popstate: true
         });
-    }
+    };
+}
+
+function clearErrors() {
+    // clear any error states on filter fields
+    // quick & dirty, will be replaced by enterprise search
+    const filterContainer = document.querySelector('#filters');
+    const inputs = [].slice.call(filterContainer.querySelectorAll('.ds_input--error'));
+    const messages = [].slice.call(filterContainer.querySelectorAll('.ds_question__error-message'));
+    const questions = [].slice.call(filterContainer.querySelectorAll('.ds_question--error'));
+
+    inputs.forEach(element => element.classList.remove('ds_input--error'));
+    messages.forEach(element => element.parentNode.removeChild(element));
+    questions.forEach(element => element.classList.remove('ds_question--error'));
 }
 
 function enableJSFilters () {
@@ -259,7 +268,7 @@ function enableJSFilters () {
             .addClass('ds_checkbox').addClass('ds_checkbox--small');
 
     // populate checkboxes from searchParams
-    $('.field-group--checkboxes input[data-checkedonload]').prop('checked', true);
+    $('.ds_field-group--checkboxes input[data-checkedonload]').prop('checked', true);
 
     // date pickers display
     $('.js-show-calendar').removeClass('hidden  hidden--hard');
@@ -341,13 +350,6 @@ function hasActiveSearch(params) {
     return hasActiveSearch;
 }
 
-function hideFilters() {
-    $('.filters-container').removeClass('filters-container--open').closest('.mobile-layer').removeClass('mobile-layer--open');
-    if ($(window).innerWidth() <= this.settings.responsiveWidthThreshold) {
-        window.scrollTo(0, $('.filter-buttons').offset().top - 64);
-    }
-}
-
 function initDateFilters() {
     const imagePath = document.getElementById('imagePath').value;
     const fromDatePickerElement = document.querySelector('#fromDatePicker');
@@ -362,7 +364,7 @@ function initDateFilters() {
         fromDatePickerElement.addEventListener('change', () => {
             if (this.validateDateInput($(fromDatePicker.inputElement))) {
                 toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
-                if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                if (breakpointCheck('medium')) {
                     delete this.searchParams.page;
                     this.submitSearch();
                 }
@@ -374,7 +376,7 @@ function initDateFilters() {
         toDatePickerElement.addEventListener('change', () => {
             if (this.validateDateInput($(toDatePicker.inputElement))) {
                 fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
-                if ($(window).innerWidth() > this.settings.responsiveWidthThreshold) {
+                if (breakpointCheck('medium')) {
                     delete this.searchParams.page;
                     this.submitSearch();
                 }
@@ -383,99 +385,13 @@ function initDateFilters() {
     }
 }
 
-function initStickyFilterButtons() {
-    let interval,
-        that = this;
-
-    let init = function() {
-        let windowWidth = $(window).width();
-
-        // Reset autoscaling
-        clearInterval(interval);
-        interval = null;
-
-        // Only run the autoscaling on small screens.
-        if (windowWidth < that.settings.autoscaleThreshold) {
-            // Polling often is the best practice for catching
-            // scrolling events due to the inconsistencies in how
-            // browsers handle the scrolling event.
-            interval = setInterval(function() {
-                let position = $(window).scrollTop(),
-                    targetTopOffset;
-
-                if ($('.search-results-header__right').offset()) {
-                    targetTopOffset = $('.search-results-header__right').offset().top - $('.site-header').height();
-                } else {
-                    targetTopOffset = 0;
-                }
-
-                // Perform scaling
-                if (position > targetTopOffset) {
-                    $('.filter-buttons--sticky').addClass('filter-buttons--sticky--show');
-                }
-                else {
-                    $('.filter-buttons--sticky').removeClass('filter-buttons--sticky--show');
-                }
-            }, that.settings.autoscalePollingFrequency);
-        } else {
-            // Ensure that header is scaled up if window is wide.
-            $('.filter-buttons--sticky').removeClass('filter-buttons--sticky--show');
-        }
-    };
-    $(window).resize(function() {
-        init();
-    });
-    init();
-}
-
-function showFilters() {
-    $('.filters-container')
-        .addClass('filters-container--open')
-        .closest('.mobile-layer')
-        .addClass('mobile-layer--open');
-
-    window.scrollTo(0, $('.filter-buttons').offset().top - 64);
-}
-
-function validateDateInput (element) {
+function validateDateInput(element) {
     let isValid = true;
 
     // 1) is the date in an allowed format?
-    let dateRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/[0-9]{4}$/;
-    let inputGroup = element.closest('.ds_datepicker');
-    searchUtils.removeError(inputGroup);
-
-
-    if (!element.val().match(dateRegex)) {
-        const errorId = 'error-' + parseInt(Math.random() * 1000000);
-        searchUtils.addError('Please enter date in dd/mm/yyyy format', inputGroup, errorId);
+    if (!searchUtils.validateInput(element[0], [searchUtils.dateRegex])) {
         isValid = false;
-        element.attr('aria-invalid', true);
-        element.attr('aria-describedby', errorId);
         return isValid;
-    }
-
-    // 2) does the date conflict?
-    // expect date TO to be later than date FROM
-    let dateFrom = dates.translateDate($('#date-from').val());
-    let dateTo = dates.translateDate($('#date-to').val());
-
-    dateFrom = dateFrom ? new Date(dateFrom) : this.settings.minDate;
-    dateTo = dateTo ? new Date(dateTo) : this.settings.maxDate;
-
-    if (dateTo.getTime() < dateFrom.getTime()) {
-        const errorId = 'error-' + parseInt(Math.random() * 1000000);
-        searchUtils.addError('\'Date from\' must be earlier than \'Date to\'', inputGroup, errorId);
-        isValid = false;
-        element.attr('aria-invalid', true);
-        element.attr('aria-describedby', errorId)
-    } else {
-        // searchUtils.removeError($('#date-from').closest('.date-entry__input-group'));
-        // searchUtils.removeError($('#date-to').closest('.date-entry__input-group'));
-        searchUtils.removeError($('#date-to').closest('.ds_datepicker'));
-        searchUtils.removeError($('#date-from').closest('.ds_datepicker'));
-        $('#date-to').removeAttr('aria-invalid');
-        $('#date-from').removeAttr('aria-invalid');
     }
 
     return isValid;

@@ -20,75 +20,71 @@
 </#if>
 
 <#if pageable??>
-<#-- this div is here to make use of 'pageable' -->
-<div class="filter-buttons--sticky">
-    <button class="ds_button  ds_button--secondary  ds_button--small  ds_no-margin  js-show-filters">Filter</button>
-
-    <span class="search-results__count  js-search-results-count">Showing <#if hasActiveParameters == false>all</#if> <b>${pageable.total}</b> items</span>
-
-    <a href="?" class="<#if hasActiveParameters == false>hidden  </#if>js-clear-filters  button button--xsmall button--cancel button--right">Clear</a>
-</div>
 
 <section id="search-results" class="ds_search-results">
-    <header style="outline: 4px dashed red">
+    <header>
         <h2 class="visually-hidden">Search results</h2>
 
-        <p class="ds_search-results__count  js-search-results-count">
+        <div class="ds_search-results__count">
             <#if hasActiveParameters == true>
-                Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
+                <p class="js-search-results-count">
+                    Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
-                <#if parameters['term']??>
-                    <#list parameters['term'] as nested>
-                        <#assign term = nested/>
-                    </#list>
+                    <#if parameters['term']??>
+                        <#list parameters['term'] as nested>
+                            <#assign term = nested/>
+                        </#list>
 
-                    <#if term?has_content>
-                        containing <b>${term}</b>
+                        <#if term?has_content>
+                            containing <b>${term}</b>
+                        </#if>
                     </#if>
-                </#if>
 
-                <#if parameters['begin']??>
-                    <#list parameters['begin'] as nested>
-                        <#assign begin = nested/>
-                    </#list>
+                    <#if parameters['begin']??>
+                        <#list parameters['begin'] as nested>
+                            <#assign begin = nested/>
+                        </#list>
 
-                    <#if begin?has_content>
-                        from <b>${begin}</b>
+                        <#if begin?has_content>
+                            from <b>${begin}</b>
+                        </#if>
                     </#if>
-                </#if>
 
-                <#if parameters['end']??>
-                    <#list parameters['end'] as nested>
-                        <#assign end = nested/>
-                    </#list>
+                    <#if parameters['end']??>
+                        <#list parameters['end'] as nested>
+                            <#assign end = nested/>
+                        </#list>
 
-                    <#if end?has_content>
-                        to <b>${end}</b>
+                        <#if end?has_content>
+                            to <b>${end}</b>
+                        </#if>
                     </#if>
-                </#if>
 
-                <#if parameters['topics']??>
-                    about
-                    <#list parameters['topics'] as nested>
-                        <b>${nested}</b>
-                        <#sep>or</#sep>
-                    </#list>
-                </#if>
+                    <#if parameters['topics']??>
+                        about
+                        <#list parameters['topics'] as nested>
+                            <b>${nested}</b>
+                            <#sep>or</#sep>
+                        </#list>
+                    </#if>
 
-                <#if parameters['publicationTypes']??>
-                    of type
-                    <#list parameters['publicationTypes'] as nested>
-                        <b>${publicationTypes[nested]}</b>
-                        <#sep>or</#sep>
-                    </#list>
-                </#if>
+                    <#if parameters['publicationTypes']??>
+                        of type
+                        <#list parameters['publicationTypes'] as nested>
+                            <b>${publicationTypes[nested]}</b>
+                            <#sep>or</#sep>
+                        </#list>
+                    </#if>
+                </p>
 
+                <button class="js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
+                    Clear all filters
+                    <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#close"></use></svg>
+                </button>
             <#else>
-                Showing all <b>${pageable.total}</b> ${searchTermPlural}
+                <p>Showing all <b>${pageable.total}</b> ${searchTermPlural}</p>
             </#if>
-        </p>
-
-        <button type="button" name="filters-clear" class="visually-hidden  ds_button  ds_button--cancel  ds_button--small  js-clear-filters">Clear</button>
+        </div>
     </header>
 
     <ol id="search-results-list" class="ds_search-results__list">

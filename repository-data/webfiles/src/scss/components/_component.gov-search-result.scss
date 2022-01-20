@@ -62,6 +62,11 @@ $person-image-size--medium: 136px;
 }
 
 @include ds_media-query(medium) {
+    .gov_search-result {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
     .#{$site-prefix}search-result--has-image {
         .ds_search-result__header,
         .ds_search-result__summary {
