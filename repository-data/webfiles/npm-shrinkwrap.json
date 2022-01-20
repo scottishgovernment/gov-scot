@@ -1075,9 +1075,9 @@
       }
     },
     "@scottish-government/pattern-library": {
-      "version": "0.0.215",
-      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/pattern-library/-/pattern-library-0.0.215.tgz",
-      "integrity": "sha512-n253tCiiwBQEfaMcZdhaPinyjNVHKhPlRU2y62X/R0XbDBz2NQ2SPtA96vj2jkFWzruYWezdSDaemdMDd2W9Yg==",
+      "version": "0.0.219",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/pattern-library/-/pattern-library-0.0.219.tgz",
+      "integrity": "sha512-nFFbh/Q18aYkqgXtHMgkFDXZ0piLHtUx9fgT0X8fTvUQ2L0lMr4Jutz7yyCps26UcEBt2Ir4PbYaV7G3Yf0kmg==",
       "dev": true,
       "dependencies": {
         "@babel/cli": {
@@ -5816,7 +5816,6 @@
                 "anymatch": "^2.0.0",
                 "async-each": "^1.0.1",
                 "braces": "^2.3.2",
-                "fsevents": "^1.2.7",
                 "glob-parent": "^3.1.0",
                 "inherits": "^2.0.3",
                 "is-binary-path": "^1.0.0",
@@ -9120,7 +9119,6 @@
                 "anymatch": "^2.0.0",
                 "async-each": "^1.0.1",
                 "braces": "^2.3.2",
-                "fsevents": "^1.2.7",
                 "glob-parent": "^3.1.0",
                 "inherits": "^2.0.3",
                 "is-binary-path": "^1.0.0",
@@ -10306,6 +10304,7 @@
       "version": "1.5.0",
       "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz",
       "integrity": "sha1-EDU8npRTNLwFEabZCzj7x8nFBN8=",
+      "dev": true,
       "optional": true,
       "requires": {
         "file-uri-to-path": "1.0.0"
@@ -12271,6 +12270,7 @@
       "version": "1.0.0",
       "resolved": "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz",
       "integrity": "sha1-VTp7hEb/b2hDWcRF8eN6BdrMM90=",
+      "dev": true,
       "optional": true
     },
     "fileset": {
@@ -12516,6 +12516,7 @@
       "version": "1.2.13",
       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz",
       "integrity": "sha1-8yXLBFVZJCi88Rs4M3DvcOO/zDg=",
+      "dev": true,
       "optional": true,
       "requires": {
         "bindings": "^1.5.0",
@@ -14515,8 +14516,9 @@
     },
     "nan": {
       "version": "2.15.0",
-      "resolved": false,
-      "integrity": "sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.15.0.tgz",
+      "integrity": "sha1-PzSkc/8Y4VwbVia2KQO1rW5mX+4=",
+      "dev": true,
       "optional": true
     },
     "nanomatch": {

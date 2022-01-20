@@ -33,6 +33,10 @@ $filters-panel-background: $ds_colour__grey--lighter;
             border-radius: 4px;
             background-color: rgba(0,0,0,0.5);
         }
+
+        &--fixed {
+            max-height: 200px;
+        }
     }
 
     &__filter-info {
