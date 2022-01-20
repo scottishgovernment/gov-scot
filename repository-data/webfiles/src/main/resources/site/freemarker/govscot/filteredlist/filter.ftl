@@ -32,7 +32,7 @@
 
 <div class="gov_filters" data-module="gov-filters">
     <input type="checkbox" class="fully-hidden  js-toggle-filters" id="show-filters" aria-controls="filters" />
-    <label class="gov_filters__expand  ds_link" for="show-filters">Show filters <span class="gov_filters__expand-indicator"></span></label>
+    <label class="gov_filters__expand  ds_link" for="show-filters"><span class="js-show-filters-text">Show search filters</span> <span class="gov_filters__expand-indicator"></span></label>
 
     <form id="filters" action="#" method="GET" class="gov_filters__form  gov_filters--tab-title">
         <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />" />

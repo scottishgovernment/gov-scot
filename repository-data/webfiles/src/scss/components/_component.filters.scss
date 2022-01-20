@@ -104,8 +104,8 @@ $filters-panel-background: $ds_colour__grey--lighter;
     &__expand {
         @include ds_blocklink;
 
-        background-color: $ds_colour__white;
-        color: $side-nav__expand-colour;
+        background-color: $ds_colour__button__background;
+        color: $ds_colour__button;
         cursor: pointer;
         font-weight: $bold;
         margin: 0;
@@ -123,11 +123,8 @@ $filters-panel-background: $ds_colour__grey--lighter;
         }
 
         &:hover:not(:focus) {
-            background-color: $ds_colour__link--hover__background;
-        }
-
-        &:hover .side-navigation__expand-indicator {
-            color: $ds_colour__link--hover;
+            background-color: $ds_colour__button--hover__background;
+            color: $ds_colour__button;
         }
 
         &--shadow:focus {
@@ -154,6 +151,11 @@ $filters-panel-background: $ds_colour__grey--lighter;
 
 #show-filters:checked ~ .gov_filters__form {
     display: block;
+}
+
+#show-filters:checked ~ .gov_filters__expand .gov_filters__expand-indicator {
+    top: 24px;
+    transform: rotate(-225deg);
 }
 
 @include ds_media-query(medium-down) {

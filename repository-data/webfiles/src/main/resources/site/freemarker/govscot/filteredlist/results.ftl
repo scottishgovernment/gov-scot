@@ -132,7 +132,7 @@
                     </#if>
                     <p class="gov_search-result__supplemental">
                         <svg class="ds_icon ds_!_margin-right--1">
-                            <use xlink:href="${iconspath}#document"></use>
+                            <use xlink:href="${iconspath}#topic"></use>
                         </svg>
 
                         This publication is part of ${description}:&nbsp;

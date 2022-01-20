@@ -43,8 +43,10 @@ class GovFilters {
 
             if (!isOpen) {
                 this.openFilters();
+                filtersExpandButton.querySelector('.js-show-filters-text').innerText = 'Hide search filters';
             } else {
                 this.closeFilters();
+                filtersExpandButton.querySelector('.js-show-filters-text').innerText = 'Show search filters';
             }
 
             filtersExpandButton.setAttribute('aria-expanded', !isOpen);
