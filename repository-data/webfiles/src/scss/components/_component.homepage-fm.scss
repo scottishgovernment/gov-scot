@@ -79,6 +79,7 @@
       display: grid;
       grid-gap: 0 $grid-gap-x;
       grid-template-areas: 't t' 'i c';
+      grid-template-rows: auto 1fr;
     }
   }
 }

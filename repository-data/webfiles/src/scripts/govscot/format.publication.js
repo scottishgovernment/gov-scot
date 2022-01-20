@@ -39,6 +39,10 @@ const publicationPage = {
                         seqNavElement.innerHTML = newPageSeqNav.innerHTML;
                         sideNavElement.innerHTML = newSideNav.innerHTML;
 
+                        // apply tracking attribs to new elements
+                        // there may be value in splitting this into just sidenav and seqnav specifically
+                        window.DS.tracking.init();
+
                         const rect = contentElement.getBoundingClientRect();
                         if (rect.top + 32 > window.innerHeight) {
                             window.scrollTo(window.scrollX, window.scrollY + rect.top / 2);
