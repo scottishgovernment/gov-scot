@@ -24,18 +24,17 @@
                                     </dd>
                                 </span>
 
-                                <#if item.publicationDate??>
-                                    <span class="ds_metadata__item">
-                                        <dt class="ds_metadata__key  visually-hidden">Date</dt>
-                                        <#assign dateFormat = "dd MMM yyyy">
+                                <span class="ds_metadata__item">
+                                    <dt class="ds_metadata__key  visually-hidden">Date</dt>
+
+                                    <dd class="ds_metadata__value">
                                         <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                            <#assign dateFormat = "dd MMM yyyy HH:mm">
-                                        <#else>
-                                            <#assign dateFormat = "dd MMM yyyy">
+                                            <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/>
+                                        <#elseif item.displayDate>
+                                            <@fmt.formatDate value=item.displayDate.time type="both" pattern="dd MMM yyyy"/>
                                         </#if>
-                                        <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></dd>
-                                    </span>
-                                </#if>
+                                    </dd>
+                                </span>
                             </dl>
 
                             <h2 class="gamma  gov_search-result__title">

@@ -61,7 +61,7 @@
 
                     <div class="ds_question">
                         <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
-                            <label class="ds_label  ds_no-margin--bottom" for="date-from">Published after</label>
+                            <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
                             <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                             <div class="ds_input__wrapper">
                                 <input id="date-from" class="ds_input" type="text" value="${begin}" data-form="textinput-date-from" />
@@ -71,7 +71,7 @@
 
                     <div class="ds_question">
                         <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
-                            <label class="ds_label  ds_no-margin--bottom" for="date-to">Published before</label>
+                            <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
                             <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                             <div class="ds_input__wrapper">
                                 <input id="date-to" class="ds_input" type="text" value="${end}" data-form="textinput-date-from" />

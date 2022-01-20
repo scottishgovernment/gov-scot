@@ -26,6 +26,9 @@ function getParameterByName(name, url) {
 
 const SearchWithFilters = function (settings) {
 
+    this.filtersContainer = document.getElementById('filters');
+    this.resultsContainer = document.querySelector('#search-results');
+
     this.settings = {
         maxDate: new Date(),
         minDate: new Date(1999, 5, 1)
@@ -44,11 +47,16 @@ const SearchWithFilters = function (settings) {
 };
 
 function init() {
+    let that = this;
+
+    if (!this.filtersContainer) {
+        return;
+    }
+
     const govFilterEl = document.querySelector('[data-module="gov-filters"]');
     this.govFilters = new GovFilters(govFilterEl);
     this.govFilters.init();
 
-    let that = this;
     this.searchParams = this.gatherParams(true);
 
     this.attachEventHandlers();
@@ -79,10 +87,8 @@ function attachEventHandlers () {
         let currentParams = that.gatherParams();
         let newQueryString = searchUtils.getNewQueryString(currentParams);
 
-        const resultsContainer = document.querySelector('#search-results');
-        const filtersContainer = document.querySelector('#filters');
-        resultsContainer.classList.add('js-loading-inactive');
-        filtersContainer.classList.add('js-loading-inactive');
+        that.resultsContainer.classList.add('js-loading-inactive');
+        that.filtersContainer.classList.add('js-loading-inactive');
 
         $.ajax({
             url: window.location.pathname + newQueryString
@@ -111,8 +117,8 @@ function attachEventHandlers () {
             }
 
             // remove "loading" message
-            resultsContainer.classList.remove('js-loading-inactive');
-            filtersContainer.classList.remove('js-loading-inactive');
+            that.resultsContainer.classList.remove('js-loading-inactive');
+            that.filtersContainer.classList.remove('js-loading-inactive');
 
             // update count for mobile
             $('.js-search-results-count').html($('#search-results .search-results__count').html());
@@ -177,6 +183,7 @@ function attachEventHandlers () {
     let t;
 
     $('.ds_field-group').on('change', 'input[type=checkbox]', function () {
+        console.log('checkbox change')
         let containerType = $(this)
             .closest('.ds_accordion-item')
             .find('.ds_accordion-item__title')
@@ -211,19 +218,17 @@ function attachEventHandlers () {
         });
 
         // clear all filters
-        let filtersForm = $('#filters');
-        filtersForm.find('input[type="checkbox"]').prop('checked', false);
-        filtersForm.find('input[type="text"]').val('');
-        filtersForm.find('input[aria-invalid], textarea[aria-invalid]').removeAttr('aria-invalid');
+        const checkboxes = [].slice.call(that.filtersContainer.querySelectorAll('input[type="checkbox"]'));
+        const textInputs = [].slice.call(that.filtersContainer.querySelectorAll('input[type="text"]'));
 
-        // remove date errors
-        searchUtils.removeError($('#date-to').closest('.ds_datepicker'));
-        searchUtils.removeError($('#date-from').closest('.ds_datepicker'));
+        checkboxes.forEach(element => element.checked = false);
+        textInputs.forEach(element => element.value = '');
+
+        that.clearErrors();
 
         delete that.searchParams.page;
 
         that.submitSearch();
-        that.clearErrors();
     });
 
     $('#search-results').on('click', '.pagination__page', function (event) {
@@ -245,12 +250,16 @@ function attachEventHandlers () {
 function clearErrors() {
     // clear any error states on filter fields
     // quick & dirty, will be replaced by enterprise search
-    const filterContainer = document.querySelector('#filters');
-    const inputs = [].slice.call(filterContainer.querySelectorAll('.ds_input--error'));
-    const messages = [].slice.call(filterContainer.querySelectorAll('.ds_question__error-message'));
-    const questions = [].slice.call(filterContainer.querySelectorAll('.ds_question--error'));
+    const that = this;
 
-    inputs.forEach(element => element.classList.remove('ds_input--error'));
+    const inputs = [].slice.call(that.filtersContainer.querySelectorAll('.ds_input--error'));
+    const messages = [].slice.call(that.filtersContainer.querySelectorAll('.ds_question__error-message'));
+    const questions = [].slice.call(that.filtersContainer.querySelectorAll('.ds_question--error'));
+
+    inputs.forEach(element => {
+        element.classList.remove('ds_input--error');
+        element.removeAttribute('aria-invalid');
+    });
     messages.forEach(element => element.parentNode.removeChild(element));
     questions.forEach(element => element.classList.remove('ds_question--error'));
 }

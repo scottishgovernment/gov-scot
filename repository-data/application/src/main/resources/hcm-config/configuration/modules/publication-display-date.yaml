@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/publication-display-date:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.PublicationDisplayDateDaemonModule
+      hipposys:cmsonly: true

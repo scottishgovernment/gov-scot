@@ -75,7 +75,7 @@
                                             <#elseif item.publicationDate??>
                                                 <div class="ds_metadata__item">
                                                     <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
-                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy"/></dd>
+                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.displayDate.time type="both" pattern="d MMM yyyy"/></dd>
                                                 </div>
                                             </#if>
                                         </dl>

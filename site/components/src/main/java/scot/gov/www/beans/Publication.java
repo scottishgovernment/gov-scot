@@ -89,4 +89,8 @@ public class Publication extends AttributableContent {
         return getHippoHtml("govscot:epilogue");
     }
 
+    public Calendar getDisplayDate() {
+        return getSingleProperty("govscot:displayDate");
+    }
+
 }

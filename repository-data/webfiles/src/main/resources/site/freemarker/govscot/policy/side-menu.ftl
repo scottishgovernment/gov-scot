@@ -39,7 +39,7 @@
             <ul class="ds_side-navigation__list">
                 <#list policyDetails as policyDetail>
                     <li class="ds_side-navigation__item">
-                        <#if document.title == policyDetail.title>
+                        <#if document == policyDetail>
                             <span class="ds_side-navigation__link  ds_current">
                                 ${policyDetail.title}
                             </span>

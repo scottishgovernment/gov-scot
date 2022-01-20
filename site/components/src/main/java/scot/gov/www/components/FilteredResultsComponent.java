@@ -52,14 +52,16 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
 public class FilteredResultsComponent extends EssentialsListComponent {
 
-    private static final String PUBLICATION_DATE = "govscot:publicationDate";
-    private static final String GOVSCOT_TITLE = "govscot:title";
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
+
+    private static final String GOVSCOT_TITLE = "govscot:title";
 
     public static final String PUBLICATION_TYPES = "publicationTypes";
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     private Collection<String> fieldNames = new ArrayList<>();
+
     private FilteredResultsComponentInfo paramInfo;
 
     @Override
@@ -118,7 +120,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
         HstQueryBuilder builder = HstQueryBuilder.create(scopeFolder);
         return builder.ofTypes(types)
-                .where(constraints(request, PUBLICATION_DATE))
+                .where(constraints(request, paramInfo.getSortField()))
                 .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), paramInfo.getSortField())
                 .limit(pageSize)
                 .offset(offset)

@@ -25,22 +25,19 @@
                     <nav id="mobile-navigation" class="ds_site-navigation  ds_site-navigation--mobile" data-module="ds-mobile-navigation-menu">
                         <ul class="ds_site-navigation__list">
                             <#list menu.siteMenuItems as item>
-                                <#if item.name == 'Statistics and research' && StatisticsandresearchMenu?? && StatisticsandresearchMenu == false>
+                                <#if item.hstLink??>
+                                    <#assign href><@hst.link link=item.hstLink /></#assign>
+                                <#elseif item.externalLink??>
+                                    <#assign href>${item.externalLink}</#assign>
+                                </#if>
+                                <#if item.selected || item.expanded>
+                                    <li class="ds_site-navigation__item">
+                                        <a class="ds_site-navigation__link  ds_current" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                    </li>
                                 <#else>
-                                    <#if item.hstLink??>
-                                        <#assign href><@hst.link link=item.hstLink /></#assign>
-                                    <#elseif item.externalLink??>
-                                        <#assign href>${item.externalLink}</#assign>
-                                    </#if>
-                                    <#if item.selected || item.expanded>
                                     <li class="ds_site-navigation__item">
-                                            <a class="ds_site-navigation__link  ds_current" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
-                                        </li>
-                                    <#else>
-                                    <li class="ds_site-navigation__item">
-                                            <a class="ds_site-navigation__link" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
-                                        </li>
-                                    </#if>
+                                        <a class="ds_site-navigation__link" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                    </li>
                                 </#if>
                             </#list>
                         </ul>

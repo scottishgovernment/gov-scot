@@ -174,6 +174,10 @@
                                 </div>
                             </div>
                         </#if>
+
+                        <#if document.updateHistory?has_content>
+                            <#include '../common/update-history.ftl'/>
+                        </#if>
                     <#elseif isDocumentsPage??>
                         <h2>Supporting documentsqqq</h2>
 
@@ -203,6 +207,11 @@
                                 </#if>
                             </#list>
                         </#if>
+
+                        <#if document.updateHistory?has_content>
+                            <#include '../common/update-history.ftl'/>
+                        </#if>
+
                     <#elseif currentPage == document>
                         <h2>Contents</h2>
 

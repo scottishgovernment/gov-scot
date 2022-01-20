@@ -32,9 +32,11 @@
 
                 <ul class="ds_contents-nav__list">
                     <#list document.groups as group>
-                        <li class="ds_contents-nav__item">
-                            <a href="#${group.groupTitle?lower_case?replace(" ","")}" class="ds_contents-nav__link" data-navigation-index="${group?index}">${group.groupTitle}</a>
-                        </li>
+                        <#if group.collectionItems?has_content>
+                            <li class="ds_contents-nav__item">
+                                <a href="#${group.groupTitle?lower_case?replace(" ","")}" class="ds_contents-nav__link" data-navigation-index="${group?index}">${group.groupTitle}</a>
+                            </li>
+                        </#if>
                     </#list>
                 </ul>
             </nav>
@@ -50,47 +52,49 @@
             </#if>
 
             <#list document.groups as group>
-                <div class="ds_!_margin-bottom--6">
-                    <h2 class="gamma" id="${group.groupTitle?lower_case?replace(" ","")}">${group.groupTitle}</h2>
+                <#if group.collectionItems?has_content>
+                    <div class="ds_!_margin-bottom--6">
+                        <h2 class="gamma" id="${group.groupTitle?lower_case?replace(" ","")}">${group.groupTitle}</h2>
 
-                    <@hst.html hippohtml=group.description var="description"/>
-                    <#if description?has_content>
-                        ${description}
-                    </#if>
+                        <@hst.html hippohtml=group.description var="description"/>
+                        <#if description?has_content>
+                            ${description}
+                        </#if>
 
-                    <ul class="collections-list">
-                        <#list group.collectionItems as item>
-                            <#if group.highlight == true && item?index == 0>
-                                <li class="listed-content-item  listed-content-item--highlight  listed-content-item--compact">
-                                    <article class="listed-content-item__article ">
-                                        <header class="listed-content-item__header">
-                                            <div class="listed-content-item__meta">
-                                                <span class="listed-content-item__label">${item.label}</span>
+                        <ul class="collections-list">
+                            <#list group.collectionItems as item>
+                                <#if group.highlight == true && item?index == 0>
+                                    <li class="listed-content-item  listed-content-item--highlight  listed-content-item--compact">
+                                        <article class="listed-content-item__article ">
+                                            <header class="listed-content-item__header">
+                                                <div class="listed-content-item__meta">
+                                                    <span class="listed-content-item__label">${item.label}</span>
 
-                                                <#if item.publicationDate??>
-                                                    <#assign dateFormat = "dd MMM yyyy">
-                                                    <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                                        <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                                    <#if item.publicationDate??>
+                                                        <#assign dateFormat = "dd MMM yyyy">
+                                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                                            <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                                        </#if>
+                                                        <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
                                                     </#if>
-                                                    <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
-                                                </#if>
-                                            </div>
+                                                </div>
 
-                                            <h3 class="gamma  listed-content-item__title" title="${item.title}">
-                                                <a href="<@hst.link hippobean=item/>" class="listed-content-item__link" title="${item.title}">${item.title}</a>
-                                            </h3>
-                                        </header>
-                                        <p class="listed-content-item__summary">${item.summary}</p>
-                                    </article>
-                                </li>
-                            <#else>
-                                <#if item.title??>
-                                    <li><a href="<@hst.link hippobean=item/>">${item.title}</a></li>
+                                                <h3 class="gamma  listed-content-item__title" title="${item.title}">
+                                                    <a href="<@hst.link hippobean=item/>" class="listed-content-item__link" title="${item.title}">${item.title}</a>
+                                                </h3>
+                                            </header>
+                                            <p class="listed-content-item__summary">${item.summary}</p>
+                                        </article>
+                                    </li>
+                                <#else>
+                                    <#if item.title??>
+                                        <li><a href="<@hst.link hippobean=item/>">${item.title}</a></li>
+                                    </#if>
                                 </#if>
-                            </#if>
-                        </#list>
-                    </ul>
-                </div>
+                            </#list>
+                        </ul>
+                    </div>
+                </#if>
             </#list>
 
             <@hst.html hippohtml=document.contact var="contact"/>

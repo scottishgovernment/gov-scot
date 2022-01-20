@@ -1,8 +1,6 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-import org.hippoecm.hst.content.beans.ObjectBeanManagerException;
-import org.hippoecm.hst.content.beans.manager.ObjectBeanManager;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
@@ -27,37 +25,22 @@ public class HomeComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(DirectorateComponent.class);
     private static final String PUBLICATIONTYPE = "govscot:publicationType";
-    private static final String PUBLICATIONS = "publications/";
+    private static final String PUBLICATIONS = "publications";
 
     @Override
-    public void doBeforeRender(final HstRequest request,
-                               final HstResponse response) {
-        boolean homeStatsPanelEnabled = FeatureFlags.isEnabled("homeStatsPanel", request.getRequestContext());
+    public void doBeforeRender(HstRequest request, HstResponse response) {
+        super.doBeforeRender(request, response);
+
         request.setAttribute("isHomepage", true);
-        request.setAttribute("homeStatsPanelEnabled", homeStatsPanelEnabled);
         HstRequestContext context = request.getRequestContext();
         HippoBean scope = context.getSiteContentBaseBean();
-        populateNews(scope.getBean("news/"), request);
+        populateNews(scope.getBean("news"), request);
         populateStatsAndResearch(scope.getBean(PUBLICATIONS), request);
         populateConsultations(scope.getBean(PUBLICATIONS), request);
         populatePublications(scope.getBean(PUBLICATIONS), request);
-        populateTopicsList(scope.getBean("topics/"), request);
-        // get the First Minister page
-        ObjectBeanManager beanManager = context.getObjectBeanManager();
-        try {
-            Object firstMinister = beanManager.getObject("/content/documents/govscot/about/who-runs-government/first-minister/index/");
-            request.setAttribute("firstMinister", firstMinister);
-        } catch (ObjectBeanManagerException e) {
-            LOG.warn("Unable to get First Minister details {}", e);
-        }
-
-        // get the Home page
-        try {
-            Object homeContent = beanManager.getObject("/content/documents/govscot/home/");
-            request.setAttribute("document", homeContent);
-        } catch (ObjectBeanManagerException e) {
-            LOG.warn("Unable to get Home content item details {}", e);
-        }
+        populateTopicsList(scope.getBean("topics"), request);
+        request.setAttribute("firstMinister", scope.getBean("about/who-runs-government/first-minister/index"));
+        request.setAttribute("document", context.getContentBean());
     }
 
     private void populateNews(HippoBean scope, HstRequest request) {
@@ -100,7 +83,7 @@ public class HomeComponent extends BaseHstComponent {
                         )
                 )
                 .build();
-        executeQueryLoggingException(query, request, "publications");
+        executeQueryLoggingException(query, request, PUBLICATIONS);
     }
 
 
@@ -116,7 +99,7 @@ public class HomeComponent extends BaseHstComponent {
         return HstQueryBuilder.create(scope)
                 .ofTypes(Publication.class)
                 .limit(3)
-                .orderByDescending("govscot:publicationDate");
+                .orderByDescending("govscot:displayDate");
     }
 
     static void executeQueryLoggingException(HstQuery query, HstRequest request, String name) {

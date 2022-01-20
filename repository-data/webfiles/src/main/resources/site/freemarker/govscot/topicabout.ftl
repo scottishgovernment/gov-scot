@@ -49,7 +49,7 @@
                                     <li>${statsItem.label}</li>
                             </ul>
 
-                            <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                            <p class="homepage-publication__date"><@fmt.formatDate value=statsItem.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                     </article>
                         </#list>
                         <#else>

@@ -5,7 +5,6 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
-import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
 import org.onehippo.cms7.essentials.components.EssentialsMenuComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsMenuComponentInfo;
 
@@ -26,13 +25,6 @@ public class MainMenu extends EssentialsMenuComponent {
             return;
         }
 
-        // set feature flags for site items
-        for (HstSiteMenuItem siteMenuItem : menu.getSiteMenuItems()) {
-            String flagName = flagname(siteMenuItem);
-            boolean enabled = FeatureFlags.isEnabled(flagName, request.getRequestContext(), true);
-            request.setAttribute(flagName, enabled);
-        }
-
         HstComponentConfiguration componentConfig = request
                 .getRequestContext()
                 .getResolvedSiteMapItem()
@@ -41,9 +33,5 @@ public class MainMenu extends EssentialsMenuComponent {
 
         // hide search for home or search pages
         request.setAttribute("hideSearch", equalsAny(formatName, "homepage", "searchpage"));
-    }
-
-    String flagname(HstSiteMenuItem menuItem) {
-        return menuItem.getName().replaceAll(" ", "") + "Menu";
     }
 }

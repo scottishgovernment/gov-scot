@@ -90,7 +90,7 @@
                                             </#list>
                                         </ul>
 
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
                                 </#list>
                             </#if>
@@ -129,7 +129,7 @@
                                             </#list>
                                         </ul>
 
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
                                 </#list>
                             </#if>
@@ -263,7 +263,7 @@
                                             <ul class="gov_latest-feed__item__topics">
                                                     <li>${publication.label}</li>
                                             </ul>
-                                            <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                            <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                         </article>
                                     </#list>
                                 </#if>

@@ -106,7 +106,8 @@
                                     <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                                         <#assign dateFormat = "dd MMM yyyy HH:mm">
                                     </#if>
-                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></dd>
+                                    <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
+                                    <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
                                 </span>
                             </#if>
                         </dl>
