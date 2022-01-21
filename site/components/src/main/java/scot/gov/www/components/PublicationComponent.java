@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.DocumentInformation;
 import scot.gov.www.beans.PublicationPage;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -74,6 +75,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
         HippoBean publicationFolder = publication.getParentBean();
         if (!hasDocuments(publication.getParentBean())) {
+            request.setAttribute(DOCUMENTS, Collections.emptyList());
             return;
         }
 
