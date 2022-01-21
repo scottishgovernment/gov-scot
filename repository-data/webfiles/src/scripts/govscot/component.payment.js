@@ -6,29 +6,30 @@
 
 'use strict';
 
-import $ from 'jquery';
-
 const Payment = {
     settings: {
         paymentUrl: '/service/payment'
     },
 
     init: function () {
-        this.attachEventHandlers();
+        this.paymentForm = document.getElementById('payment-form');
+        if (this.paymentForm) {
+            this.attachEventHandlers();
+        }
     },
 
     attachEventHandlers: function () {
         const that = this;
         // validate on form submission
-        $('#payment-form').on('submit', function (event) {
+        this.paymentForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
             // submit the payment request
             const payment = {
-                orderCode: $('#orderCode').val(),
-                amount: $('#amount').val(),
-                description: $('#description').val(),
-                emailAddress: $('#email').val()
+                orderCode: document.gerElementById('orderCode').value,
+                amount: document.gerElementById('amount').value,
+                description: document.gerElementById('description').value,
+                emailAddress: document.gerElementById('email').value
             };
 
             that.removeErrorMessages();
@@ -142,20 +143,27 @@ const Payment = {
     sendPayment: function (payment) {
         const that = this;
 
-        $.ajax({
-            type: 'POST',
-            url: this.settings.paymentUrl,
-            data: JSON.stringify(payment),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json'
-        }).done(function(data) {
-            window.location.href = data.paymentUrl;
-        }).fail(function () {
-            const errorSummary = document.getElementById('error-summary');
-            errorSummary.querySelector('.error-summary-message').innerText = 'Sorry, we are currently unable to submit your request. Please try again later.';
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', this.settings.paymentUrl, true);
 
-            that.showErrorSummary();
-        });
+        xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8'");
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === XMLHttpRequest.DONE) {
+                if (this.status === 200) {
+                    // success
+                    window.location.href = data.paymentUrl;
+                } else {
+                    // fail
+                    const errorSummary = document.getElementById('error-summary');
+                    errorSummary.querySelector('.error-summary-message').innerText = 'Sorry, we are currently unable to submit your request. Please try again later.';
+
+                    that.showErrorSummary();
+                }
+            }
+        };
+
+        xhr.send(JSON.stringify(payment));
     },
 
     removeErrorMessages: function () {

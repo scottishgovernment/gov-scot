@@ -125,15 +125,21 @@ function attachEventHandlers () {
 
             const publicationTypesCount = document.querySelector('.js-publication-types-count');
             const topicsCount = document.querySelector('.js-topics-count');
-            if (currentParams.publicationTypes) {
-                publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
-            } else {
-                delete publicationTypesCount.dataset.count;
+
+            if (publicationTypesCount) {
+                if (currentParams.publicationTypes) {
+                    publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
+                } else {
+                    delete publicationTypesCount.dataset.count;
+                }
             }
-            if (currentParams.topics) {
-                topicsCount.dataset.count = currentParams.topics.length;
-            } else {
-                delete topicsCount.dataset.count;
+
+            if (topicsCount) {
+                if (currentParams.topics) {
+                    topicsCount.dataset.count = currentParams.topics.length;
+                } else {
+                    delete topicsCount.dataset.count;
+                }
             }
 
             that.govFilters.closeFilters();
@@ -183,7 +189,6 @@ function attachEventHandlers () {
     let t;
 
     $('.ds_field-group').on('change', 'input[type=checkbox]', function () {
-        console.log('checkbox change')
         let containerType = $(this)
             .closest('.ds_accordion-item')
             .find('.ds_accordion-item__title')

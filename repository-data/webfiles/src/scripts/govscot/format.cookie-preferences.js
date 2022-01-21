@@ -2,7 +2,7 @@
 
 'use strict';
 
-import cookieForm from '../design-system-preview/cookie-form';
+import cookieForm from './cookie-form';
 
 const cookiePreferences = {};
 

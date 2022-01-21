@@ -4,52 +4,21 @@
 
 'use strict';
 
-
-
-import $ from 'jquery';
-import './component.google-analytics';
+import './usertype';
 import './component.payment';
 
 import feedback from './component.feedback';
 import ToggleLink from './component.toggle-link';
 import UpdateHistory from './component.update-history';
+import storage from './storage';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
 const global = {
-    svgFallback: function () {
-        if (!document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
-            $('img[src$=".svg"]').each(function () {
-                $(this).attr('src', $(this).attr('src').replace(/\.svg$/, '.png'));
-            });
-        }
-    },
-
-    initPubsub: function () {
-        const o = $({});
-
-        $.subscribe = function() {
-            o.on.apply(o, arguments);
-        };
-
-        $.unsubscribe = function() {
-            o.off.apply(o, arguments);
-        };
-
-        $.publish = function() {
-            o.trigger.apply(o, arguments);
-        };
-
-        window.pubsub = $;
-    },
-
-
     init: function () {
         document.documentElement.classList.add('js-enabled');
 
         feedback.init();
-        this.initPubsub();
-        this.svgFallback();
         this.setInitialCookiePermissions();
         this.initDesignSystemComponents();
         this.addTracking();

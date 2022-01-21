@@ -4,8 +4,6 @@
 
 'use strict';
 
-import $ from 'jquery';
-
 window.dataLayer = window.dataLayer || [];
 
 const homePage = {
@@ -38,16 +36,20 @@ const homePage = {
     },
 
     attachAnalyticsEvents: function () {
-        $('.js-topics').on('change', 'input[type=checkbox]', function () {
-            window.dataLayer.push({
-                'filter': 'topics',
-                'interaction': this.checked ? 'check': 'uncheck',
-                'value': this.value,
-                'event': 'filters'
+        const topicCheckboxes = [].slice.call(document.querySelectorAll('.js-topics input[type=checkbox]'));
+
+        topicCheckboxes.forEach(element => {
+            element.addEventListener('change', function () {
+                window.dataLayer.push({
+                    'filter': 'topics',
+                    'interaction': this.checked ? 'check' : 'uncheck',
+                    'value': this.value,
+                    'event': 'filters'
+                });
             });
         });
 
-        $('.js-policy-form-submit').on('click', function () {
+        document.querySelector('.js-policy-form-submit').addEventListener('click', function () {
             window.dataLayer.push({
                 'event': 'policies-go'
             });
@@ -55,23 +57,22 @@ const homePage = {
     },
 
     attachEventHandlers: function () {
-        const that = this;
-
-        const policySubmitLink = $('.js-policy-form-submit');
+        const policySubmitLinkElement = document.querySelector('.js-policy-form-submit');
+        const policySubmitLinkHref = policySubmitLinkElement.getAttribute('href');
 
         // submit policy form on press of enter on keyword input
-        $('#filters-search-term').on('keypress', function (event) {
+        document.querySelector('#filters-search-term').addEventListener('keypress', event => {
             if (event.keyCode === 13) {
                 event.preventDefault();
 
-                that.submitPolicyForm(policySubmitLink.attr('href'));
+                this.submitPolicyForm(policySubmitLinkHref);
             }
         });
 
-        policySubmitLink.on('click', function (event) {
+        policySubmitLinkElement.addEventListener('click', event => {
             event.preventDefault();
 
-            that.submitPolicyForm($(this).attr('href'));
+            this.submitPolicyForm(policySubmitLinkHref);
         });
 
         this.attachAnalyticsEvents();
@@ -79,11 +80,13 @@ const homePage = {
 
     submitPolicyForm: function (destinationUrl) {
         const queryStringParams = [],
-            term = $('#filters-search-term').val(),
+            term = document.querySelector('#filters-search-term').value,
             topics = [];
         let queryString;
 
-        $.each($('input[name="topics[]"]:checked'), function (index, checkbox) {
+        const checkboxes = [].slice.call(document.querySelectorAll('input[name="topics[]"]')).filter(item => item.checked);
+
+        checkboxes.forEach(checkbox => {
             topics.push(checkbox.value);
         });
 

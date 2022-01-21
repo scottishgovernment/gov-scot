@@ -4,8 +4,6 @@
 
 'use strict';
 
-import $ from 'jquery';
-
 window.dataLayer = window.dataLayer || [];
 
 const homePage = {
@@ -17,29 +15,28 @@ const homePage = {
     attachEventHandlers: function () {
         const that = this;
 
-        const statsSubmitLink = $('.js-stats-form-submit');
+        const statsSubmitLink = document.querySelector('.js-stats-form-submit');
 
         // submit stats form on press of enter on keyword input
-        statsSubmitLink.on('click', function (event) {
+        statsSubmitLink.addEventListener('click', event => {
             event.preventDefault();
 
-            that.submitstatsForm($(this).attr('href'));
-
+            this.submitstatsForm(event.target.getAttribute('href'));
         });
     },
 
-        submitstatsForm: function (destinationUrl) {
-            const queryStringParams = [],
-            pubtype = [];
+    submitstatsForm: function (destinationUrl) {
+        const queryStringParams = [],
+        pubtype = [];
         let queryString;
 
-        $.each($('input[name="pubtype[]"]:checked'), function (index, checkbox) {
-            pubtype.push(checkbox.value);
+        const checkboxes = [].slice.call(document.querySelectorAll('input[name="pubtype[]"]')).filter(item => item.checked);
 
+        checkboxes.forEach(checkbox => {
+            pubtype.push(checkbox.value);
         });
 
-          // build querystring
-
+        // build querystring
         queryStringParams.push('cat=filter');
 
         if (pubtype.length > 0) {
