@@ -79,8 +79,8 @@
                                                     </#if>
                                                 </div>
 
-                                                <h3 class="gamma  listed-content-item__title" title="${item.title}">
-                                                    <a href="<@hst.link hippobean=item/>" class="listed-content-item__link" title="${item.title}">${item.title}</a>
+                                                <h3 class="gamma  listed-content-item__title">
+                                                    <a href="<@hst.link hippobean=item/>" class="listed-content-item__link">${item.title}</a>
                                                 </h3>
                                             </header>
                                             <p class="listed-content-item__summary">${item.summary}</p>

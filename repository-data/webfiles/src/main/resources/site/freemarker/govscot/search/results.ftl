@@ -82,7 +82,7 @@
                     </header>
 
                     <#if item.summary??>
-                        <p class="gov_search-result__summary" title="${item.summary?html}">
+                        <p class="gov_search-result__summary">
                             ${item.summary?html}
                         </p>
                     </#if>
