@@ -99,12 +99,13 @@
                     <div class="gov_latest-feed__items  ds_layout  gov_sublayout--threecols">
                         <#list news as newsItem>
                             <article class="gov_latest-feed__item">
-                                <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
                                     <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}">${newsItem.title}</a>
                                 </h3>
                                 <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                             </article>
+                            <article class="gov_latest-feed__item">
                         </#list>
                     </div>
                 <#else>
@@ -121,11 +122,11 @@
                     <div class="gov_latest-feed__items  ds_layout  gov_sublayout--threecols">
                         <#list speeches as speech>
                             <article class="gov_latest-feed__item">
+                                <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=speech.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
                                     <a href="<@hst.link hippobean=speech />" data-gtm="speech-${speech?index + 1}">${speech.title}</a>
                                 </h3>
-                                <p class="gov_latest-feed__item__date"><@fmt.formatDate value=speech.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
-                                <p>${speech.summary}</p>
+                                <p class="gov_latest-feed__item__summary">${speech.summary}</p>
                             </article>
                         </#list>
                     </div>

@@ -7,20 +7,18 @@
   @include ds_block-margins;
 
   @supports (display: grid) {
-    grid-template-areas: 'a' 'b' 'c' 'd';
-
     > .#{$site-prefix}latest-feed {
       width: auto !important;
     }
   }
 
   @include ds_media-query(medium) {
-    > .#{$site-prefix}latest-feed:nth-child(-n+3) {
+    > .#{$site-prefix}latest-feed {
       float: left;
       @include ds_colwidth(4);
     }
 
-    > .#{$site-prefix}latest-feed:nth-child(4) {
+    > .#{$site-prefix}latest-feed--horizontal {
         clear: left;
         @include ds_colwidth(12);
     }
@@ -28,12 +26,9 @@
     @supports (display: grid) {
       grid-template-columns: repeat(3, 1fr);
 
-      grid-template-areas:
-          'a b c'
-          'd d d';
-
-      > :nth-child(4) {
-        grid-area: d;
+      > .#{$site-prefix}latest-feed--horizontal {
+        grid-column-start: 1;
+        grid-column-end: 4;
       }
     }
   }
@@ -65,7 +60,7 @@
   }
 }
 
-.#{$site-prefix}latest-feed:nth-child(4) .#{$site-prefix}latest-feed__items {
+.#{$site-prefix}latest-feed--horizontal .#{$site-prefix}latest-feed__items {
   @include ds_layout();
 
   @include ds_media-query(medium) {
@@ -94,11 +89,7 @@
 
   &__title {
     @include ds_h4-style;
-    font-weight: 400;
-
-    @include ds_media-query(medium) {
-      line-height: 28px;
-    }
+    margin-top: 0 !important;
   }
 
   &__topics {
@@ -125,11 +116,30 @@
     @include ds_tiny-size;
     font-weight: 400;
     line-height: 24px;
-    margin-bottom: 0;
+    margin-bottom: 8px;
+
+    &--bar {
+      position: relative;
+      padding-left: 8px;
+
+      &::before {
+        background-color: currentColor;
+        bottom: 4px;
+        content: '';
+        left: 0;
+        position: absolute;
+        top: 4px;
+        width: 2px;
+      }
+    }
+  }
+
+  &__summary {
+    @include ds_small-size;
   }
 }
 
-.#{$site-prefix}latest-feed:nth-child(-n+3) .#{$site-prefix}latest-feed__item {
+.#{$site-prefix}latest-feed:not(.#{$site-prefix}latest-feed--horizontal) .#{$site-prefix}latest-feed__item {
   &:not(:first-of-type) {
     padding-top: 32px;
 

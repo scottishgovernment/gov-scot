@@ -42,8 +42,8 @@
                     <#if statisticsAndResearch?has_content>
                         <#list statisticsAndResearch as statsItem>
                             <article class="homepage-publication">
-                        <h3 class="js-truncate  homepage-news__title">
-                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index}" title="${statsItem.title}">${statsItem.title}</a>
+                        <h3 class="homepage-news__title">
+                            <a href="<@hst.link hippobean=statsItem/>" data-gtm="stats-${statsItem?index}">${statsItem.title}</a>
                         </h3>
                             <ul class="homepage-publication__topics">
                                     <li>${statsItem.label}</li>
@@ -121,19 +121,19 @@
                                             <p class="listed-content-item__date"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></p>
                                         </div>
                                         <div class="listed-content-item__meta-left">
-                                            <p class="listed-content-item__label  js-truncate" data-lines="1">${item.label}</p>
+                                            <p class="listed-content-item__label">${item.label}</p>
                                         </div>
                                     </div>
                                 </#if>
 
-                                <h3 class="listed-content-item__title  js-truncate" title="${item.title}">
-                                    <a href="<@hst.link hippobean=item/>" title="${item.title}" class="listed-content-item__link" data-gtm="featured-item-${item?index + 1}">
+                                <h3 class="listed-content-item__title">
+                                    <a href="<@hst.link hippobean=item/>" class="listed-content-item__link" data-gtm="featured-item-${item?index + 1}">
                                         ${item.title}
                                     </a>
                                 </h3>
                             </header>
 
-                            <p class="listed-content-item__summary  hidden-small  hidden-xsmall  js-truncate" title="${item.summary}">
+                            <p class="listed-content-item__summary  hidden-small  hidden-xsmall
                                 ${item.summary}
                             </p>
                         </article>

@@ -117,7 +117,7 @@
                                 <#list publications as publication>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
+                                            <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index + 1}">${publication.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
@@ -129,11 +129,9 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/publications/?topics=${document.title}'/>" class="gov_latest-feed__see-all">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all publications <span class="visually-hidden">about ${document.title}</span>
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}'/>">
+                            <span class="gov_icon-link__text">See all publications <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
                 </section>
@@ -149,7 +147,7 @@
                                 <#list consultations as consultation>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index + 1}" title="${consultation.title}">${consultation.title}</a>
+                                            <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index + 1}">${consultation.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
@@ -161,11 +159,9 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>" class="gov_latest-feed__see-all">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all consultations <span class="visually-hidden">about ${document.title}</span>
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>">
+                            <span class="gov_icon-link__text">See all consultations <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
 
@@ -182,7 +178,7 @@
                                 <#list statsAndResearch as publication>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}" title="${publication.title}">${publication.title}</a>
+                                            <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}">${publication.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
@@ -194,11 +190,9 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>" class="gov_latest-feed__see-all">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all Statistics and research <span class="visually-hidden">about ${document.title}</span>
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>">
+                            <span class="gov_icon-link__text">See all Statistics and research <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
                 </section>
@@ -209,13 +203,13 @@
                             News
                         </h2>
 
-                        <div id="news-container" class="gov_latest-feed__items">
+                        <div class="gov_latest-feed__items">
                             <#if news?has_content>
                                 <#list news as newsItem>
                                     <article class="gov_latest-feed__item">
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                        <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}" title="${newsItem.title}">${newsItem.title}</a>
+                                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}">${newsItem.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                                     </article>
@@ -227,11 +221,9 @@
                     </div>
 
                     <div>
-                        <a href="<@hst.link path='/news/?topics=${document.title}'/>" class="gov_latest-feed__see-all">
-                            <svg class="ds_icon  ds_icon--28" aria-hidden="true" role="img">
-                                <use xlink:href="${iconspath}#list"></use>
-                            </svg>
-                            See all news <span class="visually-hidden">about ${document.title}</span>
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=${document.title}'/>">
+                            <span class="gov_icon-link__text">See all news <span class="visually-hidden">about ${document.title}</span></span>
+                            <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
                 </section>

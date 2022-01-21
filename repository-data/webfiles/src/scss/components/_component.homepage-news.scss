@@ -20,26 +20,8 @@
     }
 }
 
-/// not currently used but should be?????
-
-
-
-.gov_homepage-news__date {
-  border-left: 2px solid currentColor;
-  margin-bottom: 8px;
-  padding-left: 10px;
-}
-
-.gov_homepage-news-all {
-  @include ds_media-query(medium) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
 .gov_homepage-subscribe {
   @include ds_small-size;
 
-  margin: 16px 0;
+  margin: 4px 0 20px;
 }
