@@ -4,7 +4,8 @@
 <#if document??>
 </div>
 
-<@hst.manageContent hippobean=document/>
+
+<@hst.manageContent hippobean=document />
 <@hst.link hippobean=document var="baseurl" canonical=true/>
 
 <article id="page-content" class="layout--publication">
@@ -97,6 +98,7 @@
                  --><div class="grid__item medium--eight-twelfths large--seven-twelfths">
 
                         <div class="body-content publication-content js-content-wrapper inner-shadow-top  inner-shadow-top--no-desktop ">
+                            <@hst.manageContent hippobean=currentPage />
                             <@hst.html hippohtml=currentPage.content/>
                         </div>
 
