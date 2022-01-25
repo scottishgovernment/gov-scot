@@ -17,7 +17,6 @@ definitions:
             'research-and-analysis,statistics']
           hst:template: filteredlist.results
           hst:xtype: hst.item
-          hippo:identifier: 9a095722-81cc-4e4d-85df-3d214f0a7cd7
         /side-filter:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.www.components.FilteredResultsSideComponent
