@@ -28,7 +28,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.AttributableContent;
 import scot.gov.www.beans.Issue;
-import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
@@ -119,12 +118,20 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HippoBean scopeFolder = scope.isHippoFolderBean() ? scope : scope.getParentBean();
 
         HstQueryBuilder builder = HstQueryBuilder.create(scopeFolder);
-        return builder.ofTypes(types)
+
+        // order by needs to be multi valued
+
+        HstQueryBuilder queryBuilder=  builder.ofTypes(types)
                 .where(constraints(request, paramInfo.getSortField()))
-                .orderBy(HstQueryBuilder.Order.fromString(paramInfo.getSortOrder()), paramInfo.getSortField())
                 .limit(pageSize)
-                .offset(offset)
-                .build();
+                .offset(offset);
+
+        String [] sortFields = paramInfo.getSortField().split(",");
+        String [] sortOrders = paramInfo.getSortOrder().split(",");
+        for (int i = 0; i < sortFields.length; i++) {
+           queryBuilder.orderBy(HstQueryBuilder.Order.fromString(sortOrders[i]), sortFields[i]);
+        }
+        return queryBuilder.build();
     }
 
     @Override
