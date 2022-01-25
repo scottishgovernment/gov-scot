@@ -12,10 +12,11 @@ definitions:
           hst:label: Filtered Results List
           hst:parameternames: [sortField, sortOrder, includeSubtypes, showPagination,
             path, pageSize, documentTypes, searchTermPlural, searchTermSingular]
-          hst:parametervalues: ['govscot:displayDate', desc, 'off', 'on', '', '10',
-            'govscot:Publication', publications, publication]
+          hst:parametervalues: ['govscot:displayDate,govscot:title', 'desc,asc', 'off',
+            'on', '', '10', 'govscot:Publication', publications, publication]
           hst:template: filteredlist.results
           hst:xtype: hst.item
+          hippo:identifier: 39a4ac91-8431-415b-af67-7cfb564b4243
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter
