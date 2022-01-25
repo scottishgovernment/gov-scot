@@ -16,7 +16,6 @@ definitions:
             'on', '', '10', 'govscot:News', news items, news item]
           hst:template: filteredlist.results
           hst:xtype: hst.item
-          hippo:identifier: b8d8f06f-49e1-4847-83c5-dc7f79fcde94
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter
