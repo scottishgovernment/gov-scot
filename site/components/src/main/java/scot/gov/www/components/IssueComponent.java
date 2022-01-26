@@ -47,7 +47,7 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populateNews(HippoBean base, Issue issue, HstRequest request) {
         try {
-            HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, 4, "govscot:publicationDate", TITLE);
+            HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, 4, "govscot:publicationDate");
             HippoBeanIterator taggedNews = taggedQuery.execute().getHippoBeans();
             request.setAttribute("news", taggedNews);
         } catch (QueryException e) {
@@ -58,7 +58,7 @@ public class IssueComponent extends BaseHstComponent {
     private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
 
         try {
-            HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, 5, DISPLAY_DATE, TITLE);
+            HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, 5, DISPLAY_DATE);
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
             request.setAttribute("publications", publications);
         } catch (QueryException e) {
@@ -66,13 +66,12 @@ public class IssueComponent extends BaseHstComponent {
         }
     }
 
-    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass, int limit, String ... sortFields)
+    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass, int limit, String sortField)
             throws QueryException {
 
         HstQuery query = ContentBeanUtils.createIncomingBeansQuery(issue, base, "*/@hippo:docbase", linkedClass, true);
-        for (String sortField : sortFields) {
-            query.addOrderByDescending(sortField);
-        }
+        query.addOrderByDescending(sortField);
+        query.addOrderByAscending(TITLE);
         query.setLimit(limit);
         return query;
     }
