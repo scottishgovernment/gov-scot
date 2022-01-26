@@ -84,7 +84,7 @@
                                             <#assign roleperson = role/>
                                         </#if>
 
-                                        <#if role.incumbent??>
+                                        <#if roleperson.image??>
                                         <img alt="${roleperson.title}" class="person__image"
                                         src="<@hst.link hippobean=roleperson.image.xlarge/>"
                                         srcset="<@hst.link hippobean=roleperson.image.small/> 130w,
