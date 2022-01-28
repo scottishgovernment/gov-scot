@@ -120,14 +120,15 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HstQueryBuilder builder = HstQueryBuilder.create(scopeFolder);
 
         // order by needs to be multi valued
+        String [] sortFields = paramInfo.getSortField().split(",");
+        String [] sortOrders = paramInfo.getSortOrder().split(",");
 
-        HstQueryBuilder queryBuilder=  builder.ofTypes(types)
-                .where(constraints(request, paramInfo.getSortField()))
+        // use the first field (date field) to determine the constraint
+        HstQueryBuilder queryBuilder = builder.ofTypes(types)
+                .where(constraints(request, sortFields[0]))
                 .limit(pageSize)
                 .offset(offset);
 
-        String [] sortFields = paramInfo.getSortField().split(",");
-        String [] sortOrders = paramInfo.getSortOrder().split(",");
         for (int i = 0; i < sortFields.length; i++) {
            queryBuilder.orderBy(HstQueryBuilder.Order.fromString(sortOrders[i]), sortFields[i]);
         }
