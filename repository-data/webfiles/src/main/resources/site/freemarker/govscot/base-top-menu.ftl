@@ -32,11 +32,11 @@
                                 </#if>
                                 <#if item.selected || item.expanded>
                                     <li class="ds_site-navigation__item">
-                                        <a class="ds_site-navigation__link  ds_current" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                        <a class="ds_site-navigation__link  ds_current" href="${href}">${item.name?html}</a>
                                     </li>
                                 <#else>
                                     <li class="ds_site-navigation__item">
-                                        <a class="ds_site-navigation__link" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                        <a class="ds_site-navigation__link" href="${href}">${item.name?html}</a>
                                     </li>
                                 </#if>
                             </#list>
@@ -70,11 +70,11 @@
                                     </#if>
                                     <#if item.selected || item.expanded>
                                         <li class="ds_site-navigation__item">
-                                            <a class="ds_site-navigation__link  ds_current" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                            <a class="ds_site-navigation__link  ds_current" href="${href}">${item.name?html}</a>
                                         </li>
                                     <#else>
                                         <li class="ds_site-navigation__item">
-                                            <a class="ds_site-navigation__link" href="${href}" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                            <a class="ds_site-navigation__link" href="${href}">${item.name?html}</a>
                                         </li>
                                     </#if>
                                 </#if>

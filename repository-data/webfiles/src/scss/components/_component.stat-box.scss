@@ -17,7 +17,7 @@
 
   background-color: $ds_colour__grey--lighter;
   line-height: 20px;
-  padding: 16px 16px 8px;
+  padding: 16px;
   text-align: center;
   text-decoration: none;
 
@@ -40,6 +40,11 @@
     color: $ds_colour__text;
     display: inline-block;
     min-height: 40px;
+    text-decoration: underline;
+  }
+
+  &:focus &__label {
+    text-decoration: none;
   }
 }
 

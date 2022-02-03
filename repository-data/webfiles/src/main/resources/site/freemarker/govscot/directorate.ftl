@@ -26,8 +26,8 @@
 
                                 <li class="gov_person-grid__item">
                                     <div class=gov_person>
-                                        <a class="gov_person__link" href="${link}">
-                                            <div class="gov_person__image-container">
+                                        <div class="gov_person__image-container">
+                                            <a class="gov_person__link" href="${link}">
                                                 <#if person.image??>
                                                 <img alt="${person.title}" class="gov_person__image"
                                                 src="<@hst.link hippobean=person.image.xlarge/>"
@@ -43,8 +43,8 @@
                                                 <#else>
                                                 <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
 
                                         <div class="gov_person__text-container">
                                             <h4 class="gov_person__name">${role.title}</h4>
@@ -77,8 +77,8 @@
 
                                 <li class="gov_person-grid__item">
                                     <div class="gov_person">
-                                        <a class="gov_person__link" href="${link}">
-                                            <div class="gov_person__image-container">
+                                        <div class="gov_person__image-container">
+                                            <a class="gov_person__link" href="${link}">
                                                 <#if role.incumbent??>
                                                     <#assign person = role.incumbent/>
                                                 <#else>
@@ -100,8 +100,8 @@
                                                 <#else>
                                                 <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
 
                                         <div class="person__text-container">
                                             <h4 class="person__name  person__name--link">${role.title}</h4>
@@ -151,7 +151,7 @@
                             <#list document.relatedNews as newsItem>
                                 <li>
                                     <@hst.link var="link" hippobean=newsItem/>
-                                    <a href="${link}">${newsItem.title}</a>
+                                    <a data-navigation="news-${newsItem?index + 1}" href="${link}">${newsItem.title}</a>
                                 </li>
                             </#list>
                         </ul>
@@ -165,7 +165,7 @@
                             <#list document.relatedPublications as publication>
                                 <li>
                                     <@hst.link var="link" hippobean=publication/>
-                                    <a href="${link}">${publication.title}</a>
+                                    <a data-navigation="publication-${publication?index + 1}" href="${link}">${publication.title}</a>
                                 </li>
                             </#list>
                         </ul>
@@ -179,7 +179,7 @@
                             <#list policies as policy>
                                 <li>
                                     <@hst.link var="link" hippobean=policy/>
-                                    <a data-gtm="policies-${policy?index + 1}"  href="${link}">${policy.title}</a>
+                                    <a data-navigation="policies-${policy?index + 1}" href="${link}">${policy.title}</a>
                                 </li>
                             </#list>
                         </ul>

@@ -81,7 +81,7 @@
                                         </dl>
 
                                         <h3 class="gov_featured-item__title  ds_no-margin--bottom">
-                                            <a class="gov_featured-item__link" data-gtm="featured-item-${item?index + 1}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>">
+                                            <a class="gov_featured-item__link" data-navigation="featured-${item?index + 1}" href="<#if item.class == 'scot.gov.www.beans.ExternalLink'>${item.url}<#else><@hst.link hippobean=item/></#if>">
                                                 ${item.title}
                                             </a>
                                         </h3>
@@ -97,11 +97,11 @@
                         <h2 class="gov_content-block__title  gamma">News</h2>
                         <ul class="ds_no-bullets">
                             <#list news as newsItem>
-                                <li><a data-gtm="news-${newsItem?index + 1}" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
+                                <li><a data-navigation="news-${newsItem?index + 1}" href="<@hst.link hippobean=newsItem/>">${newsItem.title}</a></li>
                             </#list>
                         </ul>
 
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=' + document.title/>" data-gtm="all-news">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=' + document.title/>" data-navigation="news-all">
                             <span class="gov_icon-link__text">See all news <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -113,11 +113,11 @@
                         <h2 class="gov_content-block__title  gamma">Policies</h2>
                         <ul class="ds_no-bullets">
                             <#list policies as policy>
-                                <li><a data-gtm="policy-${policy?index + 1}" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
+                                <li><a data-navigation="policy-${policy?index + 1}" href="<@hst.link hippobean=policy/>">${policy.title}</a></li>
                             </#list>
                         </ul>
 
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/?topics=' + document.title/>" data-gtm="all-policies">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/?topics=' + document.title/>" data-navigation="policies-all">
                             <span class="gov_icon-link__text">See all policies <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -129,11 +129,11 @@
                         <h2 class="gov_content-block__title  gamma">Publications</h2>
                         <ul class="ds_no-bullets">
                             <#list publications as publication>
-                                <li><a data-gtm="publications-${publication?index + 1}" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
+                                <li><a data-navigation="publications-${publication?index + 1}" href="<@hst.link hippobean=publication/>">${publication.title}</a></li>
                             </#list>
                         </ul>
 
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=' + document.title/>" data-gtm="all-pubs">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=' + document.title/>" data-navigation="publications-all">
                             <span class="gov_icon-link__text">See all publications <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>

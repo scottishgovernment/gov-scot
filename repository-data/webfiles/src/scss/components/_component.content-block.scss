@@ -17,6 +17,8 @@ $content-block-highlight-padding: 16px;
     }
 
     &__title {
+        @include ds_responsive-margin(3, bottom);
+
         display: inline-block;
         position: relative;
         padding-top: 8px;
@@ -26,7 +28,7 @@ $content-block-highlight-padding: 16px;
             content: '';
             height: 4px;
             position: absolute;
-            top: 0;
+            top: -4px;
             width: 100%;
         }
     }

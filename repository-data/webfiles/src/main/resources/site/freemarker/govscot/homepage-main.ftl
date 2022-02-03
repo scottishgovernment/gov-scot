@@ -5,16 +5,12 @@
 <div class="ds_wrapper">
 
     <main id="main-content" class="ds_layout  gov_layout--home">
-        <#if document??>
-            <div class="ds_layout__header">
-                <div class="ds_page-header">
+        <div class="ds_layout__header">
+            <div class="ds_page-header">
+                <#if document??>
                     <@hst.html hippohtml=document.content />
-                </div>
+                </#if>
             </div>
-        </#if>
-
-        <div class="ds_layout__search">
-            <#include "common/search.ftl" />
         </div>
 
         <div class="ds_layout__content">
@@ -24,7 +20,7 @@
                         <#assign featuredItem = document.featuredItems?first>
                         <div class="gov_hero-item">
                             <div class="gov_hero-item__media">
-                                <a data-gtm="gov_hero-item-1" href="${featuredItem.link.url}">
+                                <a data-navigation="hero-1-image" href="${featuredItem.link.url}">
                                     <div class="gov_hero-item__figure">
                                         <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                                     </div>
@@ -33,7 +29,7 @@
 
                             <div class="gov_hero-item__content">
                                 <h2 class="gov_hero-item__title">
-                                    <a data-gtm="gov_hero-item-1" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                                    <a data-navigation="hero-1-title" href="${featuredItem.link.url}">${featuredItem.title}</a>
                                 </h2>
 
                                 <@hst.html hippohtml=featuredItem.teaserText/>
@@ -45,7 +41,7 @@
                         <#list document.featuredItems[1..] as featuredItem>
                             <div class="gov_hero-item">
                                 <div class="gov_hero-item__media">
-                                    <a data-gtm="gov_hero-item-${featuredItem?index + 2}" href="${featuredItem.link.url}">
+                                    <a data-navigation="hero-${featuredItem?index + 2}-image" href="${featuredItem.link.url}">
                                         <div class="gov_hero-item__figure">
                                             <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
                                         </div>
@@ -54,7 +50,7 @@
 
                                 <div class="gov_hero-item__content">
                                     <h2 class="gov_hero-item__title">
-                                        <a data-gtm="gov_hero-item-${featuredItem?index + 2}" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                                        <a data-navigation="hero-${featuredItem?index + 2}-title" href="${featuredItem.link.url}">${featuredItem.title}</a>
                                     </h2>
 
                                     <@hst.html hippohtml=featuredItem.teaserText/>
@@ -71,7 +67,7 @@
                         <h2 class="gov_content-block__title  gov_content-block__title--publications">
                             <a class="gov_content-block__title-link"
                                 href="<@hst.link path='/publications/'/>"
-                                data-gtm="panel-pubs">
+                                data-navigation="publications-title">
                                 Publications
                             </a>
                         </h2>
@@ -81,7 +77,7 @@
                                 <#list publications as publication>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index + 1}">${publication.title}</a>
+                                            <a href="<@hst.link hippobean=publication />" data-navigation="publications-${publication?index + 1}">${publication.title}</a>
                                         </h3>
 
                                         <ul class="gov_latest-feed__item__topics">
@@ -98,7 +94,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/'/>" data-gtm="all-pubs">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/'/>" data-navigation="publications-all">
                             <span class="gov_icon-link__text">See all publications</span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -110,7 +106,7 @@
                         <h2 class="gov_content-block__title  gov_content-block__title--consultations">
                             <a class="gov_content-block__title-link"
                                 href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
-                                data-gtm="panel-cons">
+                                data-navigation="consultations-title">
                                 Consultations
                             </a>
                         </h2>
@@ -120,7 +116,7 @@
                                 <#list consultations as consultation>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index + 1}">${consultation.title}</a>
+                                            <a href="<@hst.link hippobean=consultation />" data-navigation="consultations-${consultation?index + 1}">${consultation.title}</a>
                                         </h3>
 
                                         <ul class="gov_latest-feed__item__topics">
@@ -137,7 +133,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/consultations/'/>" data-gtm="all-cons">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/consultations/'/>" data-navigation="consultations-all">
                             <span class="gov_icon-link__text">See all consultations</span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -149,7 +145,7 @@
                         <h2 class="gov_content-block__title">
                             <a class="gov_content-block__title-link"
                                 href="<@hst.link path='/topics/'/>"
-                                data-gtm="panel-pols">
+                                data-title="topics-title">
                                 Topics
                             </a>
                         </h2>
@@ -164,10 +160,10 @@
 
                                 <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
                                     <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
-                                    <a href="<@hst.link path='/policies/' />" title="Submit" class="ds_button  js-policy-form-submit" title="Submit" id="filters-search-submit" >
+                                    <button data-href="<@hst.link path='/policies/' />" class="ds_button  js-policy-form-submit" title="Submit" id="filters-search-submit" >
                                         <span class="visually-hidden">Search</span>
                                         <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#search"></use></svg>
-                                    </a>
+                                    </button>
                                 </div>
                             </fieldset>
 
@@ -201,7 +197,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/topics/'/>" data-gtm="all-topics">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/topics/'/>" data-navigation="topics-all">
                             <span class="gov_icon-link__text">See all topics</span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -213,7 +209,7 @@
                         <h2 class="gov_content-block__title">
                             <a class="gov_content-block__title-link"
                                 href="<@hst.link path='/news/'/>"
-                                data-gtm="panel-news">
+                                data-navigation="news-title">
                                 News
                             </a>
                         </h2>
@@ -221,7 +217,7 @@
                         <div class="gov_homepage-subscribe">
                             <span class="gov_homepage-subscribe__text">Get all the latest news from gov.scot</span>
 
-                            <a class="gov_homepage-subscribe__link  gov_icon-link" href="http://register.scotland.gov.uk/Subscribe/Step1">
+                            <a data-navigation="news-subscribe" class="gov_homepage-subscribe__link  gov_icon-link" href="http://register.scotland.gov.uk/Subscribe/Step1">
                                 <span class="gov_icon-link__text">Subscribe</span>
                                 <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>
@@ -233,7 +229,7 @@
                                     <article class="gov_latest-feed__item">
                                         <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}">${newsItem.title}</a>
+                                            <a href="<@hst.link hippobean=newsItem />" data-navigation="news-${newsItem?index + 1}">${newsItem.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                                     </article>
@@ -243,7 +239,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/'/>" data-gtm="all-news">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/'/>" data-navigation="news-all">
                             <span class="gov_icon-link__text">See all news</span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -257,24 +253,22 @@
                         </h2>
 
                         <div id="statistics-container" class="gov_latest-feed__items">
-                            <#if statsAndResearch?has_content>
-                                <#list statsAndResearch as publication>
-                                    <article class="gov_latest-feed__item">
-                                        <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}">${publication.title}</a>
-                                        </h3>
-                                        <ul class="gov_latest-feed__item__topics">
-                                                <li>${publication.label}</li>
-                                        </ul>
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
-                                    </article>
-                                </#list>
-                            </#if>
+                            <#list statisticsAndResearch as publication>
+                                <article class="gov_latest-feed__item">
+                                    <h3 class="gov_latest-feed__item__title">
+                                        <a href="<@hst.link hippobean=publication />" data-navigation="statistics-${publication?index + 1}">${publication.title}</a>
+                                    </h3>
+                                    <ul class="gov_latest-feed__item__topics">
+                                            <li>${publication.label}</li>
+                                    </ul>
+                                    <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                </article>
+                            </#list>
                         </div>
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/'/>" data-gtm="all-stats">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/'/>" data-navigation="statistics-all">
                             <span class="gov_icon-link__text">See all Statistics and research</span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -284,7 +278,7 @@
 
             <section id="about" class="gov_content-block">
                 <h2 class="gov_content-block__title">
-                    <a class="gov_content-block__title-link" href="<@hst.link path='/about/'/>" data-gtm="panel-govt">
+                    <a class="gov_content-block__title-link" href="<@hst.link path='/about/'/>" data-navigation="about-title">
                         About government
                     </a>
                 </h2>

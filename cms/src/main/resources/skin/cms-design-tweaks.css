@@ -5,16 +5,18 @@
     color: #666;
 }
 
-.visually-hidden,
-.hidden {
+.visually-hidden {
     clip: rect(1px, 1px, 1px, 1px);
-    height: 1px; width: 1px;
+    height: 1px;
+    width: 1px;
     overflow: hidden;
     position: absolute !important;
 }
 
-.fully-hidden,
-.hidden.hidden-hard {display: none;}
+.fully-hidden {
+    display: none;
+}
+
 
 /* CKEditor widget labels */
 .cke_button__accordion_label,
@@ -24,6 +26,9 @@
 .cke_button__warning-text_label {
     display: inline-block;
 }
+
+
+
 
 /*------------------------------------*\
     #INSET TEXT PLUGIN
@@ -41,6 +46,8 @@
 .ds_inset-text__text> :last-child {
     margin-bottom: 0;
 }
+
+
 
 
 /*------------------------------------*\
@@ -104,6 +111,9 @@
     background: #f3f3f3;
 }
 
+
+
+
 /*------------------------------------*\
     #WARNING TEXT PLUGIN
 \*------------------------------------*/
@@ -138,6 +148,78 @@
     top: 9px;
     width: 35px;
 }
+
+
+
+
+/*------------------------------------*\
+    #TABLE IN CKEDITOR
+\*------------------------------------*/
+
+.ds_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.ds_table tbody,
+.ds_table thead,
+.ds_table tfoot {
+    border: 1px solid #b3b3b3;
+}
+
+.ds_table th {
+    background-color: #ebebeb;
+    font-weight: bold;
+    position: relative;
+    text-align: left;
+}
+
+.ds_table th,
+.ds_table td {
+    vertical-align: top;
+}
+
+.ds_table th[colspan] {
+    border: 1px solid #b3b3b3;
+}
+
+.ds_table th:not(:first-child)::before {
+    border-left: 1px solid #b3b3b3;
+    bottom: 8px;
+    content: '';
+    left: -1px;
+    position: absolute;
+    top: 8px;
+}
+
+.ds_table tr>* {
+    padding: 8px 16px 8px 8px;
+}
+
+.ds_table tr {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.ds_table tr:last-child {
+    border-bottom-color: #b3b3b3;
+}
+
+.ds_table thead>tr:last-child {
+    border-bottom-width: 0;
+}
+
+.ds_table tbody>tr>td {
+    background-color: #ffffff;
+}
+
+.ds_table caption {
+    font-weight: 700;
+    text-align: left;
+}
+
+
+
 
 /*------------------------------------*\
     #BUTTON PLUGIN
@@ -240,3 +322,85 @@
 .hippo-richtext a.ds_button--cancel {
     color: #333333;
 }
+
+
+
+
+/*------------------------------------*\
+    #STAT BOX
+    This is a compiled version of the gov css component.
+\*------------------------------------*/
+
+/*------------------------------------*\
+    #STAT BOX
+\*------------------------------------*/
+.stat-boxes {
+    margin-bottom: 16px;
+    overflow: auto;
+    margin-right: -16px;
+  }
+
+  .stat-box {
+    display: block;
+    position: relative;
+    transition: background-color 0.2s, outline-color 0.2s;
+    z-index: 1;
+    outline: 0 !important;
+    margin-bottom: 16px;
+    font-size: 14px;
+    background-color: #fafafa;
+    line-height: 20px;
+    padding: 16px 16px 8px;
+    text-align: center;
+    text-decoration: none;
+    float: left;
+    margin-right: 16px;
+    width: calc(100%/3 - 16px);
+  }
+
+  .stat-box:focus {
+    background-color: #333;
+    box-shadow: inset 0 -3px #333, inset 0 -3px #333;
+    color: #333;
+  }
+
+  .stat-box:hover:not(:focus) {
+    background-color: #d9effc;
+  }
+
+  .stat-box:last-child {
+    margin-right: 0;
+  }
+
+  .stat-box__value {
+    display: block;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-box__label {
+    color: #333;
+    display: inline-block;
+    min-height: 40px;
+  }
+
+  @supports (display: grid) {
+    .stat-boxes {
+      display: grid;
+      grid-gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-right: 0;
+    }
+    .stat-box {
+      align-items: center;
+      display: grid;
+      grid-template-rows: min-content 1fr;
+      float: none;
+      margin-right: 0;
+      width: 100%;
+    }
+    .stat-box__label {
+      min-height: 0;
+    }
+  }

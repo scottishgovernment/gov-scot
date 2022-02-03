@@ -648,10 +648,10 @@
         .#{$site-prefix}layout {
             &--about {
                 grid-template-areas:
-                    's s s b b b b b b b b b'
-                    's s s h h h h h h h h h'
-                    's s s c c c c c c c c c'
-                    '. . . f f f f f f f f f';
+                    's s s s b b b b b b b b'
+                    's s s s h h h h h h h h'
+                    's s s s c c c c c c c c'
+                    '. . . . f f f f f f f f';
             }
 
             &--filter-search {

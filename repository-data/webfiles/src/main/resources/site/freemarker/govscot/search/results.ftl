@@ -37,7 +37,7 @@
                     <header class="gov_search-result__header">
                         <#if item.roleTitle??>
                             <h2 class="gamma  gov_search-result__title">
-                                <a class="gov_search-result__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.roleTitle}</a>
+                                <a class="gov_search-result__link" href="${link}">${item.roleTitle}</a>
                             </h2>
                         </#if>
 
@@ -77,7 +77,7 @@
                             </dl>
                         </#if>
                         <h2 class="gamma  gov_search-result__title">
-                            <a class="gov_search-result__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a>
+                            <a class="gov_search-result__link" href="${link}">${item.title?html}</a>
                         </h2>
                     </header>
 

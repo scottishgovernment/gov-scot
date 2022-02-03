@@ -1,5 +1,5 @@
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
-<#include "../../imports.ftl">
+<#include "./imports.ftl">
 <#if pageable??>
     <@hst.setBundle basename="essentials.pagination"/>
 

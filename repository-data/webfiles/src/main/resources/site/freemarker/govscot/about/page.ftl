@@ -15,7 +15,7 @@
             </div>
 
             <div class="ds_layout__content">
-                <@hst.html hippohtml=document.content/>
+                <@hst.include ref="content"/>
 
                 <#if document.updateHistory?has_content>
                     <div class="update-history">

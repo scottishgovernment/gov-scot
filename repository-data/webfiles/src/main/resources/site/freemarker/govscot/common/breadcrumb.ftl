@@ -20,3 +20,27 @@
         </#if>
     </ol>
 </nav>
+
+<@hst.headContribution category="schema">
+<#if breadcrumbs??>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            <#list breadcrumbs as item>
+            <@hst.link var="link" link=item.link/>
+            {
+                "@type": "ListItem",
+                "position": ${item?index + 1},
+                "item": {
+                    "@id": "${link}",
+                    "name": "${item.title?json_string}"
+                }
+            },
+            </#list>
+        ]
+    }
+</script>
+</#if>
+</@hst.headContribution>

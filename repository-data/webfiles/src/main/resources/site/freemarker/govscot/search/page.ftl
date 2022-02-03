@@ -15,7 +15,7 @@
         <main id="main-content" class="ds_layout  ds_layout--article">
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <h1 class="ds_page-header__title">${index.title?html}</h1>
+                    <h1 class="ds_page-header__title">${index.title}</h1>
                 </header>
             </div>
 
@@ -38,8 +38,6 @@
                 <#include "../common/search.ftl" />
 
                 <@hst.include ref="results"/>
-
-
             </div>
         </main>
     </div>

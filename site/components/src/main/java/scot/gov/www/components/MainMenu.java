@@ -32,6 +32,6 @@ public class MainMenu extends EssentialsMenuComponent {
         String formatName = componentConfig.getName();
 
         // hide search for home or search pages
-        request.setAttribute("hideSearch", equalsAny(formatName, "homepage", "searchpage"));
+        request.setAttribute("hideSearch", equalsAny(formatName, "searchpage"));
     }
 }

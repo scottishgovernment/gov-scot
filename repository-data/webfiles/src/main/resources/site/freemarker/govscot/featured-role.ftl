@@ -70,11 +70,11 @@
                     <div class="ds_card__content">
                         <h2 class="ds_card__title">
                             <#if document.feature.internallink??>
-                                <a href="<@hst.link hippobean=document.feature.internallink/>" class="ds_card__link--cover">
+                                <a data-navigation="feature-main" href="<@hst.link hippobean=document.feature.internallink/>" class="ds_card__link--cover">
                                     ${document.feature.title}
                                 </a>
                             <#elseif document.feature.externallink?has_content>
-                                <a href="${document.feature.externallink}" class="ds_card__link--cover">
+                                <a data-navigation="feature-main" href="${document.feature.externallink}" class="ds_card__link--cover">
                                     ${document.feature.title}
                                 </a>
                             <#else>
@@ -101,7 +101,7 @@
                             <article class="gov_latest-feed__item">
                                 <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
-                                    <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}">${newsItem.title}</a>
+                                    <a href="<@hst.link hippobean=newsItem />" data-navigation="news-${newsItem?index + 1}">${newsItem.title}</a>
                                 </h3>
                                 <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                             </article>
@@ -124,7 +124,7 @@
                             <article class="gov_latest-feed__item">
                                 <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=speech.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
-                                    <a href="<@hst.link hippobean=speech />" data-gtm="speech-${speech?index + 1}">${speech.title}</a>
+                                    <a href="<@hst.link hippobean=speech />" data-navigation="speech-${speech?index + 1}">${speech.title}</a>
                                 </h3>
                                 <p class="gov_latest-feed__item__summary">${speech.summary}</p>
                             </article>
@@ -162,11 +162,11 @@
                             <div class="ds_card__content">
                                 <h2 class="ds_card__title">
                                     <#if feature.internallink??>
-                                        <a href="<@hst.link hippobean=feature.internallink/>" class="ds_card__link--cover">
+                                        <a data-navigation="featured-item-${feature?index + 1}"  href="<@hst.link hippobean=feature.internallink/>" class="ds_card__link--cover">
                                             ${feature.title}
                                         </a>
                                     <#elseif feature.externallink?has_content>
-                                        <a href="${feature.externallink}" class="ds_card__link--cover">
+                                        <a data-navigation="featured-item-${feature?index + 1}"  href="${feature.externallink}" class="ds_card__link--cover">
                                             ${feature.title}
                                         </a>
                                     <#else>

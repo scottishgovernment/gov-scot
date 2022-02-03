@@ -32,7 +32,7 @@
                         <ul class="gov_policy-list  gov_column-list  gov_column-list--not-small  gov_column-list--3">
                             <#list policies as policy>
                                 <li class="gov_policy-list__item  gov_column-list__item">
-                                    <a data-gtm="policy-${policy?index + 1}" class="gov_policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
+                                    <a data-navigation="policy-${policy?index + 1}" class="gov_policy-list__link" href="<@hst.link hippobean=policy/>">${policy.title}</a>
                                 </li>
                             </#list>
                         </ul>
@@ -88,7 +88,7 @@
                                         </#if>
 
                                         <h3 class="ds_card__title">
-                                            <a data-gtm="featured-item-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
+                                            <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
                                                 ${item.title}
                                             </a>
                                         </h3>
@@ -117,7 +117,7 @@
                                 <#list publications as publication>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="publications-${publication?index + 1}">${publication.title}</a>
+                                            <a href="<@hst.link hippobean=publication />" data-navigation="publications-${publication?index + 1}">${publication.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
@@ -129,7 +129,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}'/>">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}'/>" data-navigation="publications-all">
                             <span class="gov_icon-link__text">See all publications <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -147,7 +147,7 @@
                                 <#list consultations as consultation>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=consultation />" data-gtm="consultations-${consultation?index + 1}">${consultation.title}</a>
+                                            <a href="<@hst.link hippobean=consultation />" data-navigation="consultations-${consultation?index + 1}">${consultation.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
@@ -159,7 +159,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>" data-navigation="consultations-all">
                             <span class="gov_icon-link__text">See all consultations <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -178,7 +178,7 @@
                                 <#list statsAndResearch as publication>
                                     <article class="gov_latest-feed__item">
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=publication />" data-gtm="statistics-${publication?index + 1}">${publication.title}</a>
+                                            <a href="<@hst.link hippobean=publication />" data-navigation="statistics-${publication?index + 1}">${publication.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
                                     </article>
@@ -190,7 +190,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>" data-navigation="statistics-all">
                             <span class="gov_icon-link__text">See all Statistics and research <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -209,7 +209,7 @@
                                     <article class="gov_latest-feed__item">
                                         <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
                                         <h3 class="gov_latest-feed__item__title">
-                                            <a href="<@hst.link hippobean=newsItem />" data-gtm="news-${newsItem?index + 1}">${newsItem.title}</a>
+                                            <a href="<@hst.link hippobean=newsItem />" data-navigation="news-${newsItem?index + 1}">${newsItem.title}</a>
                                         </h3>
                                         <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                                     </article>
@@ -221,7 +221,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=${document.title}'/>">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=${document.title}'/>" data-navigation="news-all">
                             <span class="gov_icon-link__text">See all news <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -252,7 +252,7 @@
                                             <#if role.incumbent??>
                                                 <h4 class="gov_person__name">${role.incumbent.title}</h4>
                                             </#if>
-                                            <p class="gov_person__roles"><a href="<@hst.link hippobean=role/>" data-gtm="person-${role?index + 1}">${role.title}</a></p>
+                                            <p class="gov_person__roles"><a href="<@hst.link hippobean=role/>" data-navigation="person-${role?index + 1}">${role.title}</a></p>
                                         </li>
                                     </#list>
                                 </ul>
@@ -272,7 +272,7 @@
                                 <ul class="directorate-list  gov_column-list  gov_column-list--not-small  gov_column-list--2">
                                     <#list directorates as directorate>
                                         <li class="directorate-list__item  gov_column-list__item">
-                                            <a class="directorate-list__link" data-gtm="directorate-${directorate?index + 1}" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
+                                            <a class="directorate-list__link" data-navigation="directorate-${directorate?index + 1}" href="<@hst.link hippobean=directorate/>">${directorate.title}</a>
                                         </li>
                                     </#list>
                                 </ul>
