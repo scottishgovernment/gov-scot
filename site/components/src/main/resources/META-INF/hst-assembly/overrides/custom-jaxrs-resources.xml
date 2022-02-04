@@ -22,18 +22,6 @@
                         <bean class="scot.gov.www.rest.metadata.MetadataResource" />
                     </constructor-arg>
                 </bean>
-
-                <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
-                    <constructor-arg>
-                        <bean class="scot.gov.www.rest.covid.RestrictionsResource" />
-                    </constructor-arg>
-                </bean>
-
-                <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
-                    <constructor-arg>
-                        <bean class="scot.gov.www.rest.splitpostcodes.SplitPostcodesResource" />
-                    </constructor-arg>
-                </bean>
             </list>
         </property>
     </bean>

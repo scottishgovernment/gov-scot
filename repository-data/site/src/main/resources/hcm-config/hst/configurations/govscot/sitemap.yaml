@@ -388,8 +388,3 @@ definitions:
         hst:componentconfigurationid: hst:pages/statisticslistpage
         hst:relativecontentpath: publications/statistics-and-research
         hst:sitemapitemhandlerids: [trailing-slash]
-      /check-local-covid-level:
-        jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:pages/covidrestrictionslookup
-        hst:sitemapitemhandlerids: [trailing-slash]
-        hst:relativecontentpath: check-local-covid-level
