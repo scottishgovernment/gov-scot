@@ -17,7 +17,6 @@ const commonEntry = {
     'publication':                  './src/scripts/govscot/format.publication.js',
     'policy':                       './src/scripts/govscot/format.policy.js',
     'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
-    'covid-lookup':                 './src/scripts/govscot/format.covid-lookup.js',
     'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js'
 };
 
