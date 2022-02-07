@@ -19,7 +19,7 @@
                             <dd class="ds_metadata__value">
                                 <#list document.topics as topic>
                                     <@hst.link var="link" hippobean=topic/>
-                                    <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                                    <a data-navigation="topic-${topic?index + 1}" href="${link}">${topic.title}</a><#sep>, </#sep>
                                 </#list>
                             </dd>
                         </div>

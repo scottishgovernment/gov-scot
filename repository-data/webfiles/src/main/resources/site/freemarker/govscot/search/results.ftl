@@ -95,18 +95,18 @@
                         <#assign description = '${item.collections?size} collections'/>
                     </#if>
                     <div class="gov_search-result__supplemental">This publication is part of ${description}:&nbsp;
-                        <a href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
+                        <a data-navigation="collections-1" href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
 
                     --><#if item.collections?size gt 1><!--
                         -->,&nbsp;<!--
-                        --><a href="#content-item-${item?index}-collections">
+                        --><a data-navigation="collections-all" href="#content-item-${item?index}-collections">
                                 &#43;${item.collections?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                             <span id="content-item-${item?index}-collections">
                                 <#list item.collections as collection>
                                     <#if collection?index != 0>
                                         <@hst.link var="link" hippobean=collection/>
-                                        <a href="${link}">${collection.title}</a><#sep>,&nbsp;</#sep>
+                                        <a data-navigation="collections-${collection?index + 2}" href="${link}">${collection.title}</a><#sep>,&nbsp;</#sep>
                                     </#if>
                                 </#list>
                             </span>

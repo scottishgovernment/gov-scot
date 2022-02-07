@@ -340,8 +340,8 @@
     },
     "@babel/helper-validator-identifier": {
       "version": "7.15.7",
-      "resolved": false,
-      "integrity": "sha512-K4JvCtQqad9OY2+yTU8w+E82ywk/fe+ELNlt1G8z3bVGlZfn/hOcQQsUhGhW/N+tb3fxK800wLtKOE/aM0m72w==",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@babel/helper-validator-identifier/-/helper-validator-identifier-7.15.7.tgz",
+      "integrity": "sha1-Ig35k7/pBKSmsCq08zhaXr9uI4k=",
       "dev": true
     },
     "@babel/helper-wrap-function": {
@@ -687,8 +687,8 @@
         },
         "debug": {
           "version": "4.3.2",
-          "resolved": false,
-          "integrity": "sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-4.3.2.tgz",
+          "integrity": "sha1-8KScGKyHeeMdSgxgKd+3aHPHQos=",
           "dev": true,
           "requires": {
             "ms": "2.1.2"
@@ -1075,9 +1075,9 @@
       }
     },
     "@scottish-government/pattern-library": {
-      "version": "0.0.219",
-      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/pattern-library/-/pattern-library-0.0.219.tgz",
-      "integrity": "sha512-nFFbh/Q18aYkqgXtHMgkFDXZ0piLHtUx9fgT0X8fTvUQ2L0lMr4Jutz7yyCps26UcEBt2Ir4PbYaV7G3Yf0kmg==",
+      "version": "0.0.222",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/pattern-library/-/pattern-library-0.0.222.tgz",
+      "integrity": "sha512-QmzdbGB/2JGk8IV5AVnNLCUe8sJQtV8rgkPVIQx7zQhnM3C+aU12zVEoARkjzsp+6YUgYa2Y2KJjIaNVnnN5dg==",
       "dev": true,
       "dependencies": {
         "@babel/cli": {
@@ -5816,6 +5816,7 @@
                 "anymatch": "^2.0.0",
                 "async-each": "^1.0.1",
                 "braces": "^2.3.2",
+                "fsevents": "^1.2.7",
                 "glob-parent": "^3.1.0",
                 "inherits": "^2.0.3",
                 "is-binary-path": "^1.0.0",
@@ -9119,6 +9120,7 @@
                 "anymatch": "^2.0.0",
                 "async-each": "^1.0.1",
                 "braces": "^2.3.2",
+                "fsevents": "^1.2.7",
                 "glob-parent": "^3.1.0",
                 "inherits": "^2.0.3",
                 "is-binary-path": "^1.0.0",
@@ -10304,7 +10306,6 @@
       "version": "1.5.0",
       "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz",
       "integrity": "sha1-EDU8npRTNLwFEabZCzj7x8nFBN8=",
-      "dev": true,
       "optional": true,
       "requires": {
         "file-uri-to-path": "1.0.0"
@@ -12270,7 +12271,6 @@
       "version": "1.0.0",
       "resolved": "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz",
       "integrity": "sha1-VTp7hEb/b2hDWcRF8eN6BdrMM90=",
-      "dev": true,
       "optional": true
     },
     "fileset": {
@@ -12516,7 +12516,6 @@
       "version": "1.2.13",
       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz",
       "integrity": "sha1-8yXLBFVZJCi88Rs4M3DvcOO/zDg=",
-      "dev": true,
       "optional": true,
       "requires": {
         "bindings": "^1.5.0",
@@ -14518,7 +14517,6 @@
       "version": "2.15.0",
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.15.0.tgz",
       "integrity": "sha1-PzSkc/8Y4VwbVia2KQO1rW5mX+4=",
-      "dev": true,
       "optional": true
     },
     "nanomatch": {

@@ -8,17 +8,17 @@
             <dt class="ds_metadata__key">From</dt>
             <dd class="ds_metadata__value">
                 <@hst.link var="link" hippobean=index.allResponsibleRoles[0]/>
-                <a href="${link}">${index.allResponsibleRoles[0].title}</a><!--
+                <a data-navigation="roles-1" href="${link}">${index.allResponsibleRoles[0].title}</a><!--
                 --><#if index.allResponsibleRoles?size gt 1><!--
                 -->, <!--
-                --><a href="#secondary-responsible-roles" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-responsible-roles" class="gov_toggle-link">
+                --><a data-navigation="roles-all" href="#secondary-responsible-roles" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-responsible-roles" class="gov_toggle-link">
                     &#43;${index.allResponsibleRoles?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                     <span id="secondary-responsible-roles" class="gov_toggle-link__target">
                         <#list index.allResponsibleRoles as role>
                             <#if role?index != 0>
                                 <@hst.link var="link" hippobean=role/>
-                                <a href="${link}">${role.title}</a><#sep>, </#sep>
+                                <a data-navigation="roles-${role?index + 2}" href="${link}">${role.title}</a><#sep>, </#sep>
                             </#if>
                         </#list>
                     </span>
@@ -31,17 +31,17 @@
             <dt class="ds_metadata__key">Directorate</dt>
             <dd class="ds_metadata__value">
                 <@hst.link var="link" hippobean=index.allDirectorates[0]/>
-                <a href="${link}">${index.allDirectorates[0].title}</a><!--
+                <a data-navigation="directorates-1" href="${link}">${index.allDirectorates[0].title}</a><!--
                 --><#if index.allDirectorates?size gt 1><!--
                 -->, <!--
-                --><a href="#secondary-responsible-directorates" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-responsible-directorates" class="gov_toggle-link">
+                --><a data-navigation="directorates-all" href="#secondary-responsible-directorates" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-responsible-directorates" class="gov_toggle-link">
                 &#43;${index.allDirectorates?size - 1}&nbsp;more&nbsp;&hellip;</a>
 
                     <span id="secondary-responsible-directorates" class="gov_toggle-link__target">
                         <#list index.allDirectorates as directorate>
                             <#if directorate?index != 0>
                                 <@hst.link var="link" hippobean=directorate/>
-                                <a href="${link}">${directorate.title}</a><#sep>, </#sep>
+                                <a data-navigation="directorates-${directorate?index + 2}" href="${link}">${directorate.title}</a><#sep>, </#sep>
                             </#if>
                         </#list>
                     </span>
@@ -56,17 +56,17 @@
                 <#list index.topics?sort_by("title") as topic>
                     <#if topic?index lte 2>
                         <@hst.link var="link" hippobean=topic/>
-                        <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                        <a data-navigation="topics-${topic?index + 1}"href="${link}">${topic.title}</a><#sep>, </#sep>
                     </#if><!--
             --></#list><!--
             --><#if index.topics?size gt 3><!--
-                --><a href="#secondary-topics" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-topics" class="gov_toggle-link">
+                --><a data-navigation="topics-all" href="#secondary-topics" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-topics" class="gov_toggle-link">
                     &#43;${index.topics?size - 3}&nbsp;more&nbsp;&hellip;</a>
                     <span id="secondary-topics" class="gov_toggle-link__target">
                         <#list index.topics?sort_by("title") as topic>
                             <#if topic?index gt 2>
                                 <@hst.link var="link" hippobean=topic/>
-                                <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                                <a data-navigation="topics-${topic?index + 1}" href="${link}">${topic.title}</a><#sep>, </#sep>
                             </#if>
                         </#list>
                     </span>

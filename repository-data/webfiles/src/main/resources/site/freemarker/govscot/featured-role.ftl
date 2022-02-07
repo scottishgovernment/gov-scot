@@ -105,7 +105,6 @@
                                 </h3>
                                 <p class="gov_latest-feed__item__summary">${newsItem.summary}</p>
                             </article>
-                            <article class="gov_latest-feed__item">
                         </#list>
                     </div>
                 <#else>
@@ -204,15 +203,19 @@
 
                     <#if contactInformation??>
                         <dl class="ds_contact-details__list">
-                            <#if contactInformation.email?has_content>
-                                <div class="ds_contact-details__item">
-                                    <dt>Email</dt>
-                                    <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
-                                </div>
-                            </#if>
 
                             <div class="ds_contact-details__item  ds_contact-details__social">
-                                <dt>Social media</dt>
+                                <dt class="visually-hidden">Email and social media</dt>
+
+                                <#if contactInformation.email?has_content>
+                                <dd class="ds_contact-details__social-item">
+                                    <a class="ds_contact-details__social-link" href="mailto:${contactInformation.email}">
+                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#email"></use></svg>
+                                        <span class="visually-hidden">Email: </span>${contactInformation.email}
+                                    </a>
+                                </dd>
+                                </#if>
+
                                 <#if contactInformation.facebook?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="${contactInformation.facebook}">

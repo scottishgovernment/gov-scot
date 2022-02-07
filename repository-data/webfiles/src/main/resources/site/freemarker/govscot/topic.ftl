@@ -74,7 +74,7 @@
                                         <#if item.label?has_content>
                                             <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
 
-                                            <dl class="ds_metadata  gov_featured-item__metadata">
+                                            <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
                                                 <div class="ds_metadata__item">
                                                     <dt class="ds_metadata__key  visually-hidden">Type</dt>
                                                     <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
