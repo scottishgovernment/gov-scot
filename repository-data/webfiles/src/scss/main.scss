@@ -17,9 +17,6 @@ $site-prefix: "gov_";
  */
 @import "../../node_modules/@scottish-government/pattern-library/src/components/all-components";
 
-.js-enabled .fully-hidden-if-js {
-    display: none;
-}
 
 
 
@@ -34,8 +31,7 @@ $breakpoints: (
     'large-down' '(max-width: 991px)',
     'small-to-medium' '(min-width: 480px) and (max-width: 767px)',
     'medium-to-large' '(min-width: 768px) and (max-width: 991px)',
-    'large-to-xlarge' '(min-width: 992px) and (max-width: 1199px)',
-    'xlarge-up' '(min-width: 1200px)' );
+    'large-to-xlarge' '(min-width: 992px) and (max-width: 1199px)' );
 
 
 
@@ -52,7 +48,6 @@ $breakpoints: (
 @import "components/component.document-banner";
 @import "components/component.featured-item";
 @import "components/component.feedback";
-@import "components/component.file-icon";
 @import "components/component.filters";
 @import "components/component.form-box";
 @import "components/component.gov-feature-cards";
@@ -74,104 +69,18 @@ $breakpoints: (
 @import "components/component.supporting-documents";
 @import "components/component.toggle-link";
 
-@import "overrides/override.aps-tables";
+@import "overrides/override.accordion";
 @import "overrides/override.card";
 @import "overrides/override.notification-banner";
+@import "overrides/override.tables";
 
 
 
-
-// full-width-image: TODO turn into a component
-.full-width-image {
-    // allow the image to break out of layout; by design
-    @include ds_media-query(medium-down) {
-        margin-left: -16px;
-        max-width: none;
-        margin-right: -16px;
-        width: calc(100% + 32px);
-    }
-
-    display: block;
-    max-width: 100%;
-}
-
-
-.body-content table {
-    @extend .ds_table;
-
-    th h4,
-    th h3,
-    th h2,
-    th h1 {
-        margin: 0;
-    }
-}
-
-// .ds_reversed *:not(:focus) {color: white !important}
-// @supports (display: grid) {
-//     .ds_reversed:focus-within * {color: black !important}
-// }
-
-
-
-// patch in fully and visibly hidden over old hidden and hidden hard
-.hidden {
-    @include visually-hidden;
-}
-
-.hidden.hidden--hard {
-    display: none !important;
-}
-
-// patch for inset text
-.info-note.note {
-    @extend .ds_inset-text;
-}
-
-// debug: highlight unmigrated olds
-.info-note {
-    outline: 4px dashed rgba(255,0,0,0.5);
-}
 
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
 }
 
-
-
-
-
-
-
-.ds_accordion-item--small {
-    .ds_accordion-item__button, .ds_accordion-item__header-button {
-        @include small-size;
-        padding: 12px 36px 12px 8px;
-    }
-
-    .ds_accordion-item__indicator {
-        right: 12px;
-        top: 14px;
-
-        @include media-query(medium) {
-            right: 16px;
-        }
-    }
-}
-
-.ds_accordion.js-initialised .ds_accordion-item--small .ds_accordion-item__body {
-    padding: 0 8px;
-}
-
-.ds_accordion-item--small .ds_accordion-item__body,
-.ds_accordion.js-initialised .ds_accordion-item--small .ds_accordion-item__control:checked ~ .ds_accordion-item__body {
-    padding-left: 8px;
-    padding-right: 8px;
-
-    @include ds_responsive-padding(2, top);
-    @include ds_responsive-padding(3, bottom);
-}
-
-.ds_accordion.js-initialised .ds_accordion-item--small .ds_accordion-item__control:checked ~ .ds_accordion-item__header-button .ds_accordion-item__indicator {
-    top: 20px;
+.ds_site-footer {
+    @include ds_responsive-margin(9, top);
 }

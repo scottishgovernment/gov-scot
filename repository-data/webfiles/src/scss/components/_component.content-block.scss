@@ -1,12 +1,12 @@
 /*------------------------------------*\
     CONTENT BLOCK
-    // used on homepage and topic pages
+    used on homepage and topic pages
 \*------------------------------------*/
 
 $content-block-highlight-padding: 16px;
 
 .#{$site-prefix}content-block {
-    @include ds_responsive-margin(9, bottom);
+    @include ds_responsive-margin(6, bottom);
 
     position: relative;
 

@@ -92,3 +92,12 @@
         display: inline !important;
     }
 }
+
+// patch in fully and visibly hidden over old hidden and hidden hard
+.hidden {
+    @include visually-hidden;
+}
+
+.hidden.hidden--hard {
+    display: none !important;
+}

@@ -1,3 +1,8 @@
+/*------------------------------------*\
+    CARD OVERRIDES
+    overhaul of how cards work
+\*------------------------------------*/
+
 .ds_card {
     @include ds_small-size;
     line-height: 24px;
@@ -33,6 +38,7 @@
     &__title {
         @include ds_h3-style;
         margin-bottom: 24px;
+        margin-top: 0 !important;
     }
 
     &__link--cover:after {

@@ -1,3 +1,7 @@
+/*------------------------------------*\
+    HOMEPAGE HERO PANEL
+\*------------------------------------*/
+
 .#{$site-prefix}hero-item {
     @include ds_responsive-margin(4, bottom);
 
@@ -88,7 +92,7 @@
 // layout
 .#{$site-prefix}homepage-hero {
     @include ds_layout();
-    @include ds_responsive-margin(9, bottom);
+    @include ds_responsive-margin(8, bottom);
 
     @include ds_media-query(large) {
         &--2 &__main,
