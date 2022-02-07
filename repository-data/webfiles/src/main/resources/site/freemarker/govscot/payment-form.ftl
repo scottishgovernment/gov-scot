@@ -19,41 +19,44 @@
                 <@hst.html hippohtml=document.content/>
             </#if>
 
-            <form id="payment-form" class="form-box" method="post">
-                <div id="error-summary" class="ds_error-summary  hidden  hidden--hard  flashable" aria-labelledby="error-summary-title" role="alert">
+            <form id="payment-form" method="post">
+
+                <div id="error-summary" class="ds_error-summary  fully-hidden  flashable" aria-labelledby="error-summary-title" role="alert">
                     <h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
 
                     <div class="error-summary-message"></div>
                 </div>
 
-            <div class="ds_question">
-                <label class="ds_label" for="amount">Amount</label>
-                <p class="ds_question__message  hidden  hidden--hard" id="amount-min">Amount cannot be less than £0.01</p>
-                <p class="ds_question__message  hidden  hidden--hard" id="amount-max">Amount cannot be more than £5000.00</p>
-                <div class="ds_currency-wrapper" data-symbol="£">
-                    <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" min="0.01" max="5000.00" required />
+                <div class="ds_question" data-threshold="80" data-module="ds-character-count">
+                    <label class="ds_label" for="orderCode">Payment Reference</label>
+                    <p class="ds_hint-text">Customer ID - invoice number</p>
+                    <p class="ds_question__error-message  fully-hidden" id="payment-ref-spaces">Payment Reference cannot contain spaces</p>
+                    <input maxlength="64" class="ds_input" type="text" id="orderCode" name="orderCode" required>
                 </div>
 
                 <div class="ds_question">
                     <label class="ds_label" for="amount">Amount</label>
-                    <p class="ds_question__message  hidden  hidden--hard" id="amount-max">Amount cannot be more than £5000.00</p>
+                    <p class="ds_question__error-message  fully-hidden" id="amount-min">Amount cannot be less than £0.01</p>
+                    <p class="ds_question__error-message  fully-hidden" id="amount-max">Amount cannot be more than £5000.00</p>
                     <div class="ds_currency-wrapper" data-symbol="£">
-                        <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" required />
+                        <input class="ds_input  ds_input--fixed-10" step="0.01" placeholder="0.00" type="number" id="amount" name="amount" min="0.01" max="5000.00" required />
                     </div>
                 </div>
 
                 <div class="ds_question">
                     <label class="ds_label" for="description">Description</label>
-                    <textarea rows="2" class="ds_input" type="text" id="description" name="description" required placeholder="please advise of reason for payment if non-invoiced item"></textarea>
+                    <p class="ds_hint-text">Please advise of reason for payment if non-invoiced item.</p>
+                    <textarea rows="2" class="ds_input" type="text" id="description" name="description" required></textarea>
                 </div>
 
                 <div class="ds_question">
                     <label class="ds_label" for="email">Email address</label>
-                    <p class="ds_question__message  hidden  hidden--hard" id="invalid-email">Email address is not in a valid format</p>
-                    <input class="ds_input" type="text" id="email" name="email" required placeholder="Your email address for payment confirmation"></input>
+                    <p class="ds_hint-text">Your email address for payment confirmation.</p>
+                    <p class="ds_question__error-message  fully-hidden" id="invalid-email">Email address is not in a valid format</p>
+                    <input class="ds_input" type="text" id="email" name="email" required></input>
                 </div>
 
-                <input type="submit" class="ds_button" name="submit" value="Submit Payment" >
+                <button id="submit-payment" class="ds_button" name="submit">Submit payment</button>
             </form>
         </div>
 
@@ -63,6 +66,13 @@
     </main>
 </div>
 </#if>
+
+<@hst.headContribution category="footerScripts">
+    <script type="module" src="<@hst.webfile path="/assets/scripts/payment-form.js"/>"></script>
+</@hst.headContribution>
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/payment-form.es5.js"/>"></script>
+</@hst.headContribution>
 
 <#if document??>
     <@hst.headContribution category="pageTitle">

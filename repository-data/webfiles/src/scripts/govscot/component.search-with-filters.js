@@ -6,7 +6,6 @@
 'use strict';
 
 import searchUtils from './search-utils';
-import dates from '../utils/dates';
 import $ from 'jquery';
 import DSDatePicker from '../../../node_modules/@scottish-government/pattern-library/src/components/date-picker/date-picker';
 import GovFilters from './component.filters';
@@ -146,41 +145,10 @@ function attachEventHandlers () {
 
             // scroll to the top of the page if we are changing page
             if (that.isChangingPage) {
-                let pageContent = document.getElementById('page-content');
+                let pageContent = document.getElementById('main-content');
                 window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
             }
             that.isChangingPage = false;
-        }).fail(function () {
-            window.location.search = newQueryString;
-        });
-    });
-
-    $('#search-results').on('click', '.js-load-more-results', function (event) {
-        event.preventDefault();
-
-        let startPage = +event.target.getAttribute('data-page-start');
-        let qsArray = window.location.search.substring(1).replace(/page=\d+/, '').split('&');
-        if (qsArray[0] === '') {
-            qsArray = [];
-        }
-
-        qsArray = qsArray.filter(function (item) {return item !== ''});
-
-        qsArray.push('page=' + startPage);
-        let newQueryString = '?' + qsArray.join('&');
-
-        $.ajax({
-            url: window.location.pathname + newQueryString
-        }).done(function (response) {
-            // update querystring
-            if (window.history.pushState) {
-                window.history.pushState('', '', newQueryString);
-            }
-
-            // update results (incl pagination)
-            $('#search-results-list').append($(response).find('#search-results-list').html());
-            $('#pagination').html($(response).find('#pagination').html());
-            $('#load-more').attr('data-page-start', startPage + 1);
         }).fail(function () {
             window.location.search = newQueryString;
         });
@@ -236,7 +204,7 @@ function attachEventHandlers () {
         that.submitSearch();
     });
 
-    $('#search-results').on('click', '.pagination__page', function (event) {
+    $('#search-results').on('click', '.ds_pagination__page', function (event) {
         event.preventDefault();
 
         that.searchParams.page = getParameterByName('page', event.target.href);

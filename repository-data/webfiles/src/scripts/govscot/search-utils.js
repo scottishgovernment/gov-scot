@@ -2,8 +2,6 @@
 
 'use strict';
 
-import $ from 'jquery';
-
 const searchUtils = {
     /**
      * Validates $field (newer version)
@@ -174,8 +172,10 @@ const searchUtils = {
         let errorContainer = inputGroup.find('.ds_question--error-message');
 
         if (errorContainer.length === 0) {
-            errorContainer = $(`<div id="${errorId}" class="ds_question--error-message"></div>`);
-            errorContainer.prependTo(inputGroup);
+            errorContainer = document.createElement('div');
+            errorContainer.id = errorId;
+            errorContainer.classList.add('ds_question--error-message');
+            inputGroup.insertBefore(errorContainer, inputGroup.firstChild);
         }
 
         errorContainer.text(message);

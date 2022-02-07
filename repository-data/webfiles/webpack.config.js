@@ -6,14 +6,14 @@ const commonEntry = {
     'global':                       './src/scripts/govscot/global.js',
 
     // format-specific entry points
-    'complex-document':             './src/scripts/govscot/format.complex-document.js',
-    'home':                         './src/scripts/govscot/format.home.js',
-    'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
-    'search':                       './src/scripts/govscot/format.search.js',
-    'publication':                  './src/scripts/govscot/format.publication.js',
     'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
+    'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js',
     'covid-lookup':                 './src/scripts/govscot/format.covid-lookup.js',
-    'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js'
+    'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
+    'home':                         './src/scripts/govscot/format.home.js',
+    'payment-form':                 './src/scripts/govscot/format.payment-form.js',
+    'publication':                  './src/scripts/govscot/format.publication.js',
+    'search':                       './src/scripts/govscot/format.search.js'
 };
 
 const commonMode = 'development';

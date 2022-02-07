@@ -5,7 +5,6 @@
 'use strict';
 
 import './usertype';
-import './component.payment';
 
 import feedback from './component.feedback';
 import ToggleLink from './component.toggle-link';

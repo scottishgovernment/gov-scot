@@ -6,7 +6,7 @@
 
 'use strict';
 
-const Payment = {
+const paymentForm = {
     settings: {
         paymentUrl: '/service/payment'
     },
@@ -26,10 +26,10 @@ const Payment = {
 
             // submit the payment request
             const payment = {
-                orderCode: document.gerElementById('orderCode').value,
-                amount: document.gerElementById('amount').value,
-                description: document.gerElementById('description').value,
-                emailAddress: document.gerElementById('email').value
+                orderCode: document.getElementById('orderCode').value,
+                amount: document.getElementById('amount').value,
+                description: document.getElementById('description').value,
+                emailAddress: document.getElementById('email').value
             };
 
             that.removeErrorMessages();
@@ -65,7 +65,7 @@ const Payment = {
             orderCodeInput.classList.add('ds_input--error');
 
             const spacesMessage = orderCodeInputQuestion.querySelector('#payment-ref-spaces');
-            spacesMessage.classList.remove('hidden');
+            spacesMessage.classList.remove('fully-hidden');
         }
 
         // value: min £0.01
@@ -75,7 +75,7 @@ const Payment = {
             amountInput.classList.add('ds_input--error');
 
             const amountMinMessage = amountInputQuestion.querySelector('#amount-min');
-            amountMinMessage.classList.remove('hidden');
+            amountMinMessage.classList.remove('fully-hidden');
         }
 
         // value: max £5000
@@ -85,7 +85,7 @@ const Payment = {
             amountInput.classList.add('ds_input--error');
 
             const amountMaxMessage = amountInputQuestion.querySelector('#amount-max');
-            amountMaxMessage.classList.remove('hidden');
+            amountMaxMessage.classList.remove('fully-hidden');
         }
 
         // email must be valid format
@@ -100,7 +100,7 @@ const Payment = {
                 emailInput.classList.add('ds_input--error');
 
                 const invalidEmailMessage = emailInputQuestion.querySelector('#invalid-email');
-                invalidEmailMessage.classList.remove('hidden');
+                invalidEmailMessage.classList.remove('fully-hidden');
             }
         }
 
@@ -142,6 +142,8 @@ const Payment = {
 
     sendPayment: function (payment) {
         const that = this;
+        const submitButton = document.querySelector('#submit-payment');
+        submitButton.setAttribute('disabled', 'disabled');
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', this.settings.paymentUrl, true);
@@ -152,7 +154,7 @@ const Payment = {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
                     // success
-                    window.location.href = data.paymentUrl;
+                    window.location.href = JSON.parse(this.responseText).paymentUrl;
                 } else {
                     // fail
                     const errorSummary = document.getElementById('error-summary');
@@ -160,6 +162,8 @@ const Payment = {
 
                     that.showErrorSummary();
                 }
+
+                submitButton.removeAttribute('disabled');
             }
         };
 
@@ -172,17 +176,17 @@ const Payment = {
 
         [].slice.call(errorSummary.querySelectorAll('ul')).forEach(ul => ul.parentNode.removeChild(ul));
 
-        errorSummary.classList.add('hidden');
+        errorSummary.classList.add('fully-hidden');
 
         [].slice.call(document.querySelectorAll('.ds_question--error')).forEach(question => question.classList.remove('ds_question--error'));
         [].slice.call(document.querySelectorAll('.ds_input--error')).forEach(input => input.classList.remove('ds_input--error'));
-        [].slice.call(document.querySelectorAll('.ds_question__message')).forEach(message => message.classList.add('hidden'));
+        [].slice.call(document.querySelectorAll('.ds_question__error-message')).forEach(message => message.classList.add('fully-hidden'));
     },
 
     showErrorSummary: function () {
         const errorSummary = document.getElementById('error-summary');
 
-        errorSummary.classList.remove('hidden');
+        errorSummary.classList.remove('fully-hidden');
         errorSummary.scrollIntoView();
         errorSummary.classList.add('flashable--flash');
         window.setTimeout(function () {
@@ -191,7 +195,4 @@ const Payment = {
     }
 };
 
-// auto-initialize
-Payment.init();
-
-export default Payment;
+export default paymentForm;
