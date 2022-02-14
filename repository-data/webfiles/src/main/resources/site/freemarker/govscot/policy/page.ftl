@@ -20,7 +20,9 @@
 
     <div class="grid"><!--
      --><div class="grid__item medium--four-twelfths large--three-twelfths">
+            <!--noindex-->
             <#include 'side-menu.ftl'>
+            <!--endnoindex-->
         </div><!--
 
      --><div class="grid__item medium--eight-twelfths large--seven-twelfths">

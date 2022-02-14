@@ -65,12 +65,14 @@
                                         <a aria-hidden="true" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>" class="hidden-small  gov_document-info__thumbnail-link  file-icon  file-icon--large  file-icon--${filenameExtension}"></a>
                                     </#if>
 
+                                    <!--noindex-->
                                     <a href="${baseurl + 'documents/'}" class="button  button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                         <span class="gov_supporting-documents__button-icon">
                                             <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
                                         </span>
                                         <span class="gov_supporting-documents__button-text">Supporting documents</span>
                                     </a>
+                                    <!--endnoindex-->
                                 </#if>
                             </#if>
                         </div>
@@ -80,7 +82,9 @@
         </div>
     </div>
 
+    <!--noindex-->
     <#include 'sticky-document-info.ftl'/>
+    <!--endnoindex-->
 
     <#--------------------- BODY SECTION --------------------->
     <div class="inner-shadow-top  js-sticky-header-position <#if isMultiPagePublication>inner-shadow-top--no-mobile</#if>">
@@ -90,7 +94,9 @@
 
              --><div class="grid__item  medium--four-twelfths  large--three-twelfths <#if !isMultiPagePublication>hidden-xsmall  hidden-small  hidden-medium</#if>">
                     <#if pages??>
+                        <!--noindex-->
                         <#include 'side-menu.ftl'/>
+                        <!--endnoindex-->
                     </#if>
                 </div><!--
 
@@ -102,6 +108,7 @@
                             <@hst.html hippohtml=currentPage.content/>
                         </div>
 
+                        <!--noindex-->
                         <div class="grid  page-nav"><!--
                          --><div class="grid__item  push--medium--six-twelfths  medium--six-twelfths  page-nav__item">
                                 <#if next??>
@@ -118,6 +125,7 @@
                                 </#if>
                             </div><!--
                      --></div>
+                     <!--endnoindex-->
 
                         <hr>
 

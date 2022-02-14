@@ -147,6 +147,7 @@
     </#if>
 
     <#if document.relatedNews?has_content>
+    <!--noindex-->
         <section class="sidebar-block">
             <h3 class="gamma emphasis sidebar-block__heading">News</h3>
             <ul class="no-bullets">
@@ -158,9 +159,11 @@
                 </#list>
             </ul>
         </section>
+    <!--endnoindex-->
     </#if>
 
     <#if document.relatedPublications?has_content>
+    <!--noindex-->
         <section class="sidebar-block">
             <h3 class="gamma emphasis sidebar-block__heading">Publications</h3>
             <ul class="no-bullets">
@@ -172,9 +175,11 @@
                 </#list>
             </ul>
         </section>
+    <!--endnoindex-->
     </#if>
 
     <#if policies?has_content>
+    <!--noindex-->
         <section class="sidebar-block">
             <h3 class="gamma emphasis sidebar-block__heading">Policies</h3>
             <ul class="no-bullets">
@@ -186,6 +191,7 @@
                 </#list>
             </ul>
         </section>
+    <!--endnoindex-->
     </#if>
 
 </div><!--

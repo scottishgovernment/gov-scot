@@ -33,6 +33,7 @@
     </#if>
     </div>
 
+    <!--noindex-->
     <nav class="multipage-nav visible-xsmall">
         <div class="grid"><!--
                -->
@@ -60,4 +61,5 @@
             </div><!--
      --></div>
     </nav>
+    <!--endnoindex-->
 </article>

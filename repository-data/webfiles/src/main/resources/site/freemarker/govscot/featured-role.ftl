@@ -99,6 +99,7 @@
 
 
             --><div class="grid__item">
+                <!--noindex-->
                 <section id="latest-news" class="topic-block">
                     <h2 class="emphasis  topic-block__title">
                         News
@@ -122,12 +123,14 @@
                         <p>There are no news items to display.</p>
                     </#if>
                 </section>
+                <!--endnoindex-->
             </div><!--
 
 
 
 
             --><div class="grid__item">
+                <!--noindex-->
                 <section id="latest-speeches-statements" class="topic-block">
                     <h2 class="emphasis  topic-block__title">
                         Speeches and statements
@@ -151,6 +154,7 @@
                         <p>There are no speeches or statements to display.</p>
                     </#if>
                 </section>
+                <!--endnoindex-->
             </div><!--
 
 

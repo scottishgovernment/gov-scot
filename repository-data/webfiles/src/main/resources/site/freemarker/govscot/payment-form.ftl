@@ -19,7 +19,7 @@
                 </#if>
             </div>
         </article>
-
+        <!--noindex-->
         <form id="payment-form" class="layout--site-item" method="post">
 
             <div id="error-summary" class="ds_error-summary  hidden  hidden--hard  flashable" aria-labelledby="error-summary-title" role="alert">
@@ -56,6 +56,7 @@
 
             <input type="submit" class="button  button--primary" name="submit" value="Submit Payment" >
         </form>
+        <!--endnoindex-->
     </div><!--
 --></div>
 
