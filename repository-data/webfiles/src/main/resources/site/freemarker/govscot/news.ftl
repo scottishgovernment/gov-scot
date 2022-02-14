@@ -48,7 +48,7 @@
                             <@hst.html hippohtml=document.content/>
                         </div>
                     </#if>
-
+                    <!--noindex-->
                     <aside class="visible-xsmall visible-medium">
                         <div class="sidebar-block no-bullets">
                             <h2 class="gamma  emphasis  sidebar-block__heading">Contact</h2>
@@ -78,12 +78,13 @@
                             </div>
                         </#if>
                     </aside>
-
+                    <!--endnoindex-->
                 </div><!--
 
          --></div><!--
 
          --><div class="grid__item medium--three-twelfths push--medium--one-twelfth push--xlarge--two-twelfths">
+                <!--noindex-->
                 <aside class="hidden-xsmall hidden-medium">
                     <div class="sidebar-block no-bullets">
                         <h3 class="emphasis sidebar-block__heading no-top-margin">Contact</h3>
@@ -113,6 +114,7 @@
                         </div>
                     </#if>
                 </aside>
+                <!--endnoindex-->
             </div><!--
      --></div>
 

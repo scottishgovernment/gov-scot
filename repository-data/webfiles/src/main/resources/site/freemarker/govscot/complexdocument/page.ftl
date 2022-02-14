@@ -83,12 +83,14 @@
                                 </#if>
                             </#if>
 
+                            <!--noindex-->
                             <a href="${baseurl + 'documents/'}" class="button  button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                 <span class="gov_supporting-documents__button-icon">
                                     <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron-right"></use></svg>
                                 </span>
                                 <span class="gov_supporting-documents__button-text">Supporting documents</span>
                             </a>
+                            <!--endnoindex-->
                         </div>
                     </#if>
                 </div>
@@ -98,6 +100,7 @@
 </div>
 <!-- exit a wrapper set in base-layout so we can make the document navigation span the whole width -->
 
+<!--noindex-->
 <div class="section-marker  <#if isHomePage??>visible-xsmall  visible-small</#if>">
     <div class="section-marker__part  section-marker__document-title">
         <div class="wrapper">
@@ -148,6 +151,7 @@
         --></div>
     </div>
 </nav>
+<!--endnoindex-->
 
 <!-- reopen the wrapper in base-layout -->
 <div class="wrapper" id="page-content">

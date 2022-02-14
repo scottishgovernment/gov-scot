@@ -49,7 +49,9 @@
 
                 --><div class="grid__item large--eight-twelfths">
 
+                    <!--noindex-->
                     <h2>Supporting documents</h2>
+                    <!--endnoindex-->
 
                     <#if groupedDocumentFolders??>
                         <#list groupedDocumentFolders as folder>

@@ -53,6 +53,7 @@
 
          --><div class="grid__item medium--nine-twelfths large--three-twelfths push--large--two-twelfths">
             <#if document.relatedPolicies?has_content>
+                <!--noindex-->
                 <section class="sidebar-block">
                     <h3 class="gamma emphasis issue-sidebar-block__heading">Policies</h3>
 
@@ -65,6 +66,7 @@
                         </#list>
                     </ul>
                 </section>
+                <!--endnoindex-->
             </#if>
 
             <@hst.html hippohtml=document.contactDetails var="contactDetails"/>

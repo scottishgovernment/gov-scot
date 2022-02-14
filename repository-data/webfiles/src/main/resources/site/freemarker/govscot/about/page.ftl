@@ -5,7 +5,9 @@
     <@hst.manageContent hippobean=document/>
      <div class="grid"><!--
         --><div class="grid__item medium--three-twelfths large--three-twelfths">
+                <!--noindex-->
                 <@hst.include ref="side-menu"/>
+                <!--endnoindex-->
             </div><!--
         --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
                 <@hst.include ref="content"/>

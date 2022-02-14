@@ -33,16 +33,17 @@
 <body class="fontawesome site-header__container" >
     <@hst.include ref="googletagmanager"/>
     <script src="<@hst.link path='/assets/scripts/vendor/jquery.min.js'/>"></script>
-
+    <!--noindex-->
     <#include 'common/accessibility-links.ftl' />
     <#include 'common/notifications.ftl' />
-
+    <!--endnoindex-->
     <div id="main-wrapper">
-
+        <!--noindex-->
         <@hst.include ref="menu"/>
-
+        <!--endnoindex-->
         <#if !(isHomepage!false)>
         <div class="wrapper">
+            <!--noindex-->
             <!-- search & breadcrumbs -->
             <!-- only show when not on homepage -->
                 <div class="breadcrumbs__container">
@@ -64,6 +65,7 @@
                         </div><!--
                     --></div>
                 </div>
+                <!--endnoindex-->
             </#if>
 
         <!-- body / main -->
@@ -75,9 +77,9 @@
     </div>
 
     <!-- footer -->
-
+    <!--noindex-->
     <@hst.include ref="footer"/>
-
+    <!--endnoindex-->
     <#if isHomepage??><script>var headerSearch = document.querySelector('.ds_site-header__search'); headerSearch.parentNode.removeChild(headerSearch);</script></#if>
     <#if isSearchpage??><script>var headerSearch = document.querySelector('.ds_site-header__search'); headerSearch.parentNode.removeChild(headerSearch);</script></#if>
 
