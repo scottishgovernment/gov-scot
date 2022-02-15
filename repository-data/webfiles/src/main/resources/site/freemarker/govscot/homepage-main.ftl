@@ -133,7 +133,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/consultations/'/>" data-navigation="consultations-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>" data-navigation="consultations-all">
                             <span class="gov_icon-link__text">See all consultations</span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>

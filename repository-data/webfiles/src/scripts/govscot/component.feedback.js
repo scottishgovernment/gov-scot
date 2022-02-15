@@ -237,6 +237,13 @@
              break;
 
          case 'yesbut':
+            if (feedback.reason === '') {
+                feedback.errors.push({
+                    field: this.fields.yesbut.reason,
+                    message: 'Please select a reason'
+                });
+            }
+
              if (!feedback.freetext) {
                  feedback.errors.push({
                      field: this.fields.yesbut.comments,
