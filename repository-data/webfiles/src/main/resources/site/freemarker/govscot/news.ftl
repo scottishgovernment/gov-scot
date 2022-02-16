@@ -26,7 +26,7 @@
                                 <dd class="content-data__value">
                                     <#list document.topics as topic>
                                         <@hst.link var="link" hippobean=topic/>
-                                        <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                                        <a href="${link}" class="sg-meta__topic">${topic.title}</a><#sep>, </#sep>
                                     </#list>
                                 </dd>
                             </dl>
