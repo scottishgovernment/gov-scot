@@ -9,7 +9,7 @@ import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:PolicyLatest")
 @Node(jcrType = "govscot:PolicyLatest")
-public class PolicyLatest extends BaseDocument {
+public class PolicyLatest extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
         return getSingleProperty("govscot:title");

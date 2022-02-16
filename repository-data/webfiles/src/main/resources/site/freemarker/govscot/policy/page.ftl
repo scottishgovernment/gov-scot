@@ -1,6 +1,22 @@
 <#include "../../include/imports.ftl">
 
 <#if document??>
+    <#if title??>
+        <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${title}"/>
+        </@hst.headContribution>
+    <#else>
+        <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+        </@hst.headContribution>
+    </#if>
+
+    <#if parentTitle??>
+        <@hst.headContribution category="dcMeta">
+        <meta name="dc.title.series" content="${parentTitle}"/>
+        </@hst.headContribution>
+    </#if>
+
     <article id="page-content" class="layout--policy">
     <@hst.manageContent hippobean=document/>
         <div class="grid"><!--
