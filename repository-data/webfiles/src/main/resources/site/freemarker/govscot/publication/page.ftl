@@ -19,7 +19,7 @@
                     --><div class="grid__item  medium--nine-twelfths"><!--
                         --><div class="grid"><!--
                             --><div class="grid__item">
-                                <p class="article-header__label">Publication<#if document.label??> - ${document.label}</#if></p>
+                                <p class="article-header__label">Publication<#if document.label??> - <span id="sg-meta__publication-type">${document.label}</span></#if></p>
                                 <h1 class="article-header__title">${document.title}</h1>
                             </div><!--
                             --><div class="grid__item  large--three-ninths">
@@ -178,15 +178,15 @@
 
                                 <#--! BEGIN 'FOI/EIR release' format-specific fields-->
                                 <#if document.foiNumber?has_content>
-                                    <strong>FOI reference:</strong> ${document.foiNumber}<br>
+                                    <strong>FOI reference:</strong> <span id="sg-meta__foi-number">${document.foiNumber}</span><br>
                                 </#if>
 
                                 <#if document.dateReceived?has_content>
-                                    <strong>Date received:</strong> <@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/><br>
+                                    <strong>Date received:</strong> <span id="sg-meta__foi-received-date"><@fmt.formatDate value=document.dateReceived.time type="both" pattern="d MMM yyyy"/></span><br>
                                 </#if>
 
                                 <#if document.dateResponded?has_content>
-                                    <strong>Date responded:</strong> <@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/><br>
+                                    <strong>Date responded:</strong> <span id="sg-meta__foi-responded-date"><@fmt.formatDate value=document.dateResponded.time type="both" pattern="d MMM yyyy"/></span><br>
                                 </#if>
 
                                 <@hst.html hippohtml=document.request var="request"/>

@@ -28,7 +28,7 @@
                     <#list collections as collection>
 
                         <li class="contents-list__item">
-                            <a class="contents-list__link" href="<@hst.link hippobean=collection/>">${collection.title}</a>
+                            <a class="contents-list__link sg-meta__collection" href="<@hst.link hippobean=collection/>">${collection.title}</a>
                         </li>
 
                     </#list>

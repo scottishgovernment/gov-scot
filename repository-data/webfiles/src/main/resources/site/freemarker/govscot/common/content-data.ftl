@@ -23,7 +23,7 @@
                     <#list index.allResponsibleRoles as role>
                         <#if role?index != 0>
                             <@hst.link var="link" hippobean=role/>
-                            <a href="${link}">${role.title}</a><#sep>, </#sep>
+                            <a href="${link}" class="sg-meta__role">${role.title}</a><#sep>, </#sep>
                         </#if>
                     </#list>
                 </span>
@@ -35,7 +35,7 @@
 
         <dd class="content-data__value">
             <@hst.link var="link" hippobean=index.allDirectorates[0]/>
-            <a href="${link}">${index.allDirectorates[0].title}</a><!--
+            <a href="${link}" class="sg-meta__directorate">${index.allDirectorates[0].title}</a><!--
              --><#if index.allDirectorates?size gt 1><!--
              -->, <!--
              --><a href="#secondary-responsible-directorates" class="content-data__expand js-display-toggle">
@@ -45,7 +45,7 @@
                     <#list index.allDirectorates as directorate>
                         <#if directorate?index != 0>
                             <@hst.link var="link" hippobean=directorate/>
-                            <a href="${link}">${directorate.title}</a><#sep>, </#sep>
+                            <a href="${link}" class="sg-meta__directorate">${directorate.title}</a><#sep>, </#sep>
                         </#if>
                     </#list>
                 </span>
@@ -69,7 +69,7 @@
                     <#list index.topics?sort_by("title") as topic>
                         <#if topic?index gt 2>
                             <@hst.link var="link" hippobean=topic/>
-                            <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                            <a href="${link}" class="sg-meta__topic">${topic.title}</a><#sep>, </#sep>
                         </#if>
                     </#list>
                 </span>
@@ -78,7 +78,7 @@
     </#if>
     <#if index.isbn?has_content>
         <dt class="content-data__label">ISBN:</dt>
-        <dd class="content-data__value">${index.isbn}</dd>
+        <dd class="content-data__value" id="sg-meta__isbn">${index.isbn}</dd>
     </#if>
     </dl>
 </div>
