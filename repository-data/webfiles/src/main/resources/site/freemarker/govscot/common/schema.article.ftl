@@ -120,19 +120,9 @@
         <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
     </@hst.headContribution>
 </#if>
-<#if document.lastUpdatedDate??>
+<#if document.displayDate??>
     <@hst.headContribution category="dcMeta">
-        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.lastUpdatedDate.time type="both" pattern="YYYY-MM-dd"/>"/>
-    </@hst.headContribution>
-</#if>
-<#if document.updateHistory?has_content>
-    <#assign latestUpdate = document.updateHistory[0].lastUpdated>
-    <@hst.headContribution category="dcMeta">
-        <meta name="dc.date.modified" content="<@fmt.formatDate value=latestUpdate.time type="both" pattern="YYYY-MM-dd"/>"/>
-    </@hst.headContribution>
-<#elseif document.publicationDate??>
-    <@hst.headContribution category="dcMeta">
-        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.publicationDate.time type="both" pattern="YYYY-MM-dd"/>"/>
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.displayDate.time type="both" pattern="YYYY-MM-dd"/>"/>
     </@hst.headContribution>
 </#if>
 
