@@ -95,9 +95,23 @@
 </@hst.headContribution>
 
 <!-- DC Meta Tags -->
+
+<#if title??>
+<@hst.headContribution category="dcMeta">
+    <meta name="dc.title" content="${title}"/>
+</@hst.headContribution>
+<#else>
 <@hst.headContribution category="dcMeta">
     <meta name="dc.title" content="${document.title}"/>
 </@hst.headContribution>
+</#if>
+
+<#if parentTitle??>
+    <@hst.headContribution category="dcMeta">
+    <meta name="dc.title.series" content="${parentTitle}"/>
+    </@hst.headContribution>
+</#if>
+
 <@hst.headContribution category="dcMeta">
     <meta name="dc.description" content="${document.summary}"/>
 </@hst.headContribution>
