@@ -4,14 +4,14 @@
         <#assign latestUpdate = document.updateHistory[0].lastUpdated>
         <div class="content-data__list">
             <span class="content-data__label">Last updated:</span>
-            <span class="content-data__value"><strong><@fmt.formatDate value=latestUpdate.time type="both" pattern="d MMM yyyy"/></strong> - <a href="#history">see all updates</a></span>
+            <span class="content-data__value"><strong id="sg-meta__last-updated-date"><@fmt.formatDate value=latestUpdate.time type="both" pattern="d MMM yyyy"/></strong> - <a href="#history">see all updates</a></span>
         </div>
     </#if>
 
     <#if document.publicationDate??>
         <div class="content-data__list">
             <span class="content-data__label">Published:</span>
-            <span class="content-data__value"><strong><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></strong></span>
+            <span class="content-data__value"><strong id="sg-meta__publication-date"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="d MMM yyyy"/></strong></span>
         </div>
     </#if>
 
@@ -23,7 +23,7 @@
         <#if document.officialdate?has_content>
             <div class="content-data__list">
                 <span class="content-data__label">Date of meeting:</span>
-                <span class="content-data__value"><strong><@fmt.formatDate value=document.officialdate.time type="both" pattern="d MMM yyyy"/></strong></span>
+                <span class="content-data__value"><strong id="sg-meta__meeting-date"><@fmt.formatDate value=document.officialdate.time type="both" pattern="d MMM yyyy"/></strong></span>
             </div>
         </#if>
 
@@ -48,7 +48,7 @@
         <#if document.officialdate?has_content>
             <div class="content-data__list">
                 <span class="content-data__label">Date of speech:</span>
-                <span class="content-data__value"><strong><@fmt.formatDate value=document.officialdate.time type="both" pattern="d MMM yyyy"/></strong></span>
+                <span class="content-data__value"><strong id="sg-meta__official-date"><@fmt.formatDate value=document.officialdate.time type="both" pattern="d MMM yyyy"/></strong></span>
             </div>
         </#if>
 

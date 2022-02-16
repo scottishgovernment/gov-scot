@@ -13,10 +13,10 @@
             --><div class="grid__item">
                 <header class="gov_feature-header" id="page-content">
                     <div class="gov_feature-header__content">
-                        <h1 class="gov_feature-header__title">${document.title}</h1>
+                        <h1 class="gov_feature-header__title" id="sg-meta__person-role">${document.title}</h1>
                         <#if document.incumbent??>
                             <p class="gov_feature-header__subtitle">Current role holder:
-                                <b>${document.incumbent.title}</b>
+                                <b id="sg-meta__person-name">${document.incumbent.title}</b>
                             </p>
                         </#if>
                     </div>
@@ -281,12 +281,32 @@
 </#if>
 
 <#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>    
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Featured role"/>
+    </@hst.headContribution>
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
+
+    <#if document.image??>    
+    <@hst.headContribution category="facebookMeta">
+        <meta property="og:image" content="<@hst.link hippobean=document.image.xlargesixcolumnsdoubled fullyQualified=true/>" />
+    </@hst.headContribution>
+    </#if>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "common/canonical.ftl" />
