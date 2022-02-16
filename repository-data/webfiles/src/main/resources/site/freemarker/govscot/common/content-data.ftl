@@ -12,7 +12,7 @@
 
         <dd class="content-data__value">
             <@hst.link var="link" hippobean=index.allResponsibleRoles[0]/>
-            <a href="${link}">${index.allResponsibleRoles[0].title}</a><!--
+            <a href="${link}" class="sg-meta__role">${index.allResponsibleRoles[0].title}</a><!--
 
          --><#if index.allResponsibleRoles?size gt 1><!--
          -->, <!--
@@ -59,7 +59,7 @@
             <#list index.topics?sort_by("title") as topic>
                 <#if topic?index lte 2>
                     <@hst.link var="link" hippobean=topic/>
-                    <a href="${link}">${topic.title}</a><#sep>, </#sep>
+                    <a href="${link}" class="sg-meta__topic">${topic.title}</a><#sep>, </#sep>
                 </#if><!--
          --></#list><!--
          --><#if index.topics?size gt 3><!--
