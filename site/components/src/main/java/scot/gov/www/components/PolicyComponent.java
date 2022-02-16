@@ -14,10 +14,7 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.News;
-import scot.gov.www.beans.Policy;
-import scot.gov.www.beans.PolicyInDetail;
-import scot.gov.www.beans.PolicyLatest;
+import scot.gov.www.beans.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -37,7 +34,7 @@ public class PolicyComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HippoBean document;
-
+LOG.info("doBeforeRender {}", request.getPathInfo());
         try {
             document = request.getRequestContext().getContentBean();
             if(document == null) {
@@ -75,6 +72,7 @@ public class PolicyComponent extends BaseHstComponent {
         request.setAttribute("policyDetails", details);
         request.setAttribute("prev", prev);
         request.setAttribute("next", next);
+        populateTitles(request, policy, document);
 
         // if this is the latest page then also include latest info
         if (request.getPathInfo().endsWith("/latest/")) {
@@ -85,6 +83,17 @@ public class PolicyComponent extends BaseHstComponent {
             Collections.reverse(all);
             request.setAttribute(LATEST, all);
         }
+    }
+
+    private void populateTitles(HstRequest request, HippoBean policy, HippoBean document) {
+        String policyTitle = ((SimpleContent) policy).getTitle();
+        String documentTitle = ((SimpleContent) document).getTitle();
+        if (policy.isSelf(document)) {
+            request.setAttribute("title", policyTitle + "HERE");
+            return;
+        }
+        request.setAttribute("title", documentTitle);
+        request.setAttribute("parentTitle", policyTitle);
     }
 
     private int compareDate(HippoBean left, HippoBean right) {
