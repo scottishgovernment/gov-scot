@@ -36,6 +36,8 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
 
     private static final String COLLECTIONS = "collections";
 
+    private static final String TITLE = "title";
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
@@ -176,20 +178,19 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
         String publicationTitle = ((Publication) publication).getTitle();
 
         if (document.isSelf(publication)) {
-            request.setAttribute("title", publicationTitle);
+            request.setAttribute(TITLE, publicationTitle);
             return;
         }
 
         request.setAttribute("parentTitle", publicationTitle);
-
-        if (document.isHippoFolderBean() && "documents".equals(document.getName())) {
-            request.setAttribute("title", "Supporting documents");
+        if (document.isHippoFolderBean() && DOCUMENTS.equals(document.getName())) {
+            request.setAttribute(TITLE, "Supporting documents");
             return;
         }
 
         try {
             String title = document.getNode().getProperty("govscot:title").getString();
-            request.setAttribute("title", title);
+            request.setAttribute(TITLE, title);
         } catch (RepositoryException e) {
             LOG.error("Failed to get title of {}", document.getPath(), e);
         }
