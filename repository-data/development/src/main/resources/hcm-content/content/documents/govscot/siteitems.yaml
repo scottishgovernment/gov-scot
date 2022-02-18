@@ -1,0 +1,1695 @@
+/content/documents/govscot/siteitems:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: 21d0a495-0e31-4a94-96ed-8e79223da72b
+  hippo:name: Site items
+  hippostd:foldertype: [new-site-item]
+  /about-beta:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: d3cc25f6-df20-436a-9bbe-774a0d770aa9
+    hippo:name: About this site
+    /about-beta[1]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: d67d8b26-257a-4a8b-b122-13bb6834f2ed
+      govscot:metaDescription: Information about the Scottish Government's beta website
+        and how to provide feedback.
+      govscot:rubricId: GOV-238
+      govscot:seoTitle: About beta.gov.scot
+      govscot:summary: Information about our beta website and how to provide feedback.
+      govscot:title: About this site
+      hippo:availability: []
+      hippo:name: About this site
+      hippostd:state: published
+      hippostd:tags: [beta test website feedback beta.gov.scot]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-13T10:07:57+01:00
+      hippostdpubwf:lastModificationDate: 2017-11-14T16:50:04Z
+      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippotranslation:id: 44b620c0-300c-4de3-977e-d66f32bdb0df
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head>\n <body>\n  <p>This is the first\
+          \ version of our new website. It aims to explain how we work, what we are\
+          \ doing and how we are performing, in a simple and intuitive way.</p> \n\
+          \  <p>This is a 'beta' or test version released for user testing and feedback.\
+          \ The website:</p> \n  <ul> \n   <li>should make our work easier to understand</li>\
+          \ \n   <li>contains less information presented in a simpler, more consistent\
+          \ way</li> \n   <li>has been optimised to work well on desktops, tablets\
+          \ and mobile phones</li> \n  </ul> \n  <p>We're still working on it and\
+          \ will be releasing content in phases so please don't rely on the site being\
+          \ fully comprehensive. If you can't find what you're looking for then try\
+          \ our current site: <a href=\"http://www.gov.scot\">www.gov.scot</a></p>\
+          \ \n  <h2 id=\"archive\">Archive</h2> \n  <p>As we move content from gov.scot\
+          \ to beta.gov.scot we will be archiving historic material. See <a href=\"\
+          https://www.webarchive.org.uk/wayback/archive/20170401010058*/http://www.gov.scot/\"\
+          >archived versions of gov.scot</a></p> \n  <h2 id=\"feedback\">Feedback</h2>\
+          \ \n  <p>You can provide feedback about this website by using the 'Was this\
+          \ helpful?' option which can be found at the bottom of each page.</p> \n\
+          \  <p>We don't respond to individual comments so please do not enter any\
+          \ personal information.</p> \n  <p>If you have a question or wish to get\
+          \ in touch with the Scottish Government see the <a href=\"contact-information\"\
+          >contact information section</a>. </p> \n  <p>Beta content follows the same\
+          \ rules for <a href=\"accessibility\">accessibility</a>, <a href=\"cookies\"\
+          >cookies</a> and <a href=\"privacy\">privacy</a> as the existing gov.scot\
+          \ site.</p> \n </body>\n</html>"
+        /contact-information:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: a187125c-0390-4cbe-afb1-8da826de66e5
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /accessibility:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 61f555f6-968e-48d6-9583-f674a5f44cc5
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /cookies:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 80cbd9fb-c509-4c92-b9c9-d3bfec9f0a3a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /privacy:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 711698ef-32dd-4378-89cd-3b8a5e1d515a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+    /about-beta[2]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 31f3306d-2bcb-4af3-92aa-262621b69dd7
+      govscot:metaDescription: Information about the Scottish Government's beta website
+        and how to provide feedback.
+      govscot:rubricId: GOV-238
+      govscot:seoTitle: About beta.gov.scot
+      govscot:summary: Information about our beta website and how to provide feedback.
+      govscot:title: About this site
+      hippo:availability: [preview]
+      hippo:name: About this site
+      hippostd:state: unpublished
+      hippostd:tags: [beta test website feedback beta.gov.scot]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-13T10:07:57+01:00
+      hippostdpubwf:lastModificationDate: 2019-03-06T12:01:38.527Z
+      hippostdpubwf:lastModifiedBy: david.sinclair@gov.scot
+      hippotranslation:id: 44b620c0-300c-4de3-977e-d66f32bdb0df
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head>\n <body>\n  <p>This is the first\
+          \ version of our new website. It aims to explain how we work, what we are\
+          \ doing and how we are performing, in a simple and intuitive way.</p> \n\
+          \  <p>This is a 'beta' or test version released for user testing and feedback.\
+          \ The website:</p> \n  <ul> \n   <li>should make our work easier to understand</li>\
+          \ \n   <li>contains less information presented in a simpler, more consistent\
+          \ way</li> \n   <li>has been optimised to work well on desktops, tablets\
+          \ and mobile phones</li> \n  </ul> \n  <p>We're still working on it and\
+          \ will be releasing content in phases so please don't rely on the site being\
+          \ fully comprehensive. If you can't find what you're looking for then try\
+          \ our current site: <a href=\"http://www.gov.scot\">www.gov.scot</a></p>\
+          \ \n  <h2 id=\"archive\">Archive</h2> \n  <p>As we move content from gov.scot\
+          \ to beta.gov.scot we will be archiving historic material. See <a href=\"\
+          https://www.webarchive.org.uk/wayback/archive/20170401010058*/http://www.gov.scot/\"\
+          >archived versions of gov.scot</a></p> \n  <h2 id=\"feedback\">Feedback</h2>\
+          \ \n  <p>You can provide feedback about this website by using the 'Was this\
+          \ helpful?' option which can be found at the bottom of each page.</p> \n\
+          \  <p>We don't respond to individual comments so please do not enter any\
+          \ personal information.</p> \n  <p>If you have a question or wish to get\
+          \ in touch with the Scottish Government see the <a href=\"contact-information\"\
+          >contact information section</a>. </p> \n  <p>Beta content follows the same\
+          \ rules for <a href=\"accessibility\">accessibility</a>, <a href=\"cookies\"\
+          >cookies</a> and <a href=\"privacy\">privacy</a> as the existing gov.scot\
+          \ site.</p> \n </body>\n</html>"
+        /contact-information:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: a187125c-0390-4cbe-afb1-8da826de66e5
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /accessibility:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 61f555f6-968e-48d6-9583-f674a5f44cc5
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /cookies:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 80cbd9fb-c509-4c92-b9c9-d3bfec9f0a3a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /privacy:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 711698ef-32dd-4378-89cd-3b8a5e1d515a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+    /about-beta[3]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 014c8fd9-63d3-41e4-9535-bb32ad59a4dc
+      govscot:metaDescription: Information about the Scottish Government's beta website
+        and how to provide feedback.
+      govscot:rubricId: GOV-238
+      govscot:seoTitle: About beta.gov.scot
+      govscot:summary: Information about our beta website and how to provide feedback.
+      govscot:title: About this site
+      hippo:name: About this site
+      hippostd:state: draft
+      hippostd:tags: [beta test website feedback beta.gov.scot]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-13T10:07:57+01:00
+      hippostdpubwf:lastModificationDate: 2017-11-14T16:50:04Z
+      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippotranslation:id: 44b620c0-300c-4de3-977e-d66f32bdb0df
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head>\n <body>\n  <p>This is the first\
+          \ version of our new website. It aims to explain how we work, what we are\
+          \ doing and how we are performing, in a simple and intuitive way.</p> \n\
+          \  <p>This is a 'beta' or test version released for user testing and feedback.\
+          \ The website:</p> \n  <ul> \n   <li>should make our work easier to understand</li>\
+          \ \n   <li>contains less information presented in a simpler, more consistent\
+          \ way</li> \n   <li>has been optimised to work well on desktops, tablets\
+          \ and mobile phones</li> \n  </ul> \n  <p>We're still working on it and\
+          \ will be releasing content in phases so please don't rely on the site being\
+          \ fully comprehensive. If you can't find what you're looking for then try\
+          \ our current site: <a href=\"http://www.gov.scot\">www.gov.scot</a></p>\
+          \ \n  <h2 id=\"archive\">Archive</h2> \n  <p>As we move content from gov.scot\
+          \ to beta.gov.scot we will be archiving historic material. See <a href=\"\
+          https://www.webarchive.org.uk/wayback/archive/20170401010058*/http://www.gov.scot/\"\
+          >archived versions of gov.scot</a></p> \n  <h2 id=\"feedback\">Feedback</h2>\
+          \ \n  <p>You can provide feedback about this website by using the 'Was this\
+          \ helpful?' option which can be found at the bottom of each page.</p> \n\
+          \  <p>We don't respond to individual comments so please do not enter any\
+          \ personal information.</p> \n  <p>If you have a question or wish to get\
+          \ in touch with the Scottish Government see the <a href=\"contact-information\"\
+          >contact information section</a>. </p> \n  <p>Beta content follows the same\
+          \ rules for <a href=\"accessibility\">accessibility</a>, <a href=\"cookies\"\
+          >cookies</a> and <a href=\"privacy\">privacy</a> as the existing gov.scot\
+          \ site.</p> \n </body>\n</html>"
+        /contact-information:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: a187125c-0390-4cbe-afb1-8da826de66e5
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /accessibility:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 61f555f6-968e-48d6-9583-f674a5f44cc5
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /cookies:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 80cbd9fb-c509-4c92-b9c9-d3bfec9f0a3a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /privacy:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 711698ef-32dd-4378-89cd-3b8a5e1d515a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /accessibility:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: d3901063-a188-4c63-8dd2-5ea8393b4661
+    hippo:name: Accessibility
+    hippo:versionHistory: 31f3eb79-0032-457b-b183-9ab502c439b3
+    /accessibility[1]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 61f555f6-968e-48d6-9583-f674a5f44cc5
+      govscot:metaDescription: We are working to make gov.scot as accessible and usable
+        as possible.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-292
+      govscot:seoTitle: Accessibility
+      govscot:sme: ''
+      govscot:summary: We are working to make gov.scot as accessible and usable as
+        possible.
+      govscot:title: Accessibility
+      hippo:availability: [live]
+      hippo:name: Accessibility
+      hippostd:state: published
+      hippostd:tags: []
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-28T14:57:42+01:00
+      hippostdpubwf:lastModificationDate: 2021-11-11T17:51:30.135Z
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippostdpubwf:publicationDate: 2021-11-11T17:51:49.392Z
+      hippotranslation:id: 93a28f90-53e9-4652-b579-7e26c1e952c9
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>We're continuously working to make gov.scot as accessible and usable as possible for all abilities and disabilities. This includes older audiences and those with visual, hearing, cognitive or motor impairments.</span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>We try to make our site easy to use with assistive technologies by using:</span></span></p>
+
+          <ul>
+           <li><span><span><span>easier-to-read colours</span></span></span></li>
+           <li><span><span><span>larger fonts</span></span></span></li>
+           <li><span><span><span>plain English</span></span></span></li>
+           <li><span><span><span>keyboard-only navigation</span></span></span></li>
+          </ul>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Feedback</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>If you cannot access any part of this site or want to report an accessibility problem, please&nbsp;contact us at:&nbsp;<a style="color:#0563c1; text-decoration:underline" href="mailto:website@gov.scot">website@gov.scot</a>.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Enforcement procedure</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>The Equality and Human Rights Commission enforces the&nbsp;<a style="color:#0563c1; text-decoration:underline" href="http://www.legislation.gov.uk/uksi/2018/952/regulation/4/made">accessibility regulations</a>&nbsp;(the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018).</span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>If you're not happy with how we respond to your feedback,&nbsp;<a style="color:#0563c1; text-decoration:underline" href="https://www.equalityadvisoryservice.com/">contact the Equality Advisory and Support Service</a>. They are an independent advice service. They will advise you on what to do next.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Compliance status</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span><span><span>Scottish Government is committed to making its websites accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</span></span></span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span><span><span>This accessibility statement applies to gov.scot.</span></span></span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>This website partially complies with the&nbsp;<a style="color:#0563c1; text-decoration:underline" href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines version 2.1</a>&nbsp;(WCAG) A and AA success criteria, with the below exceptions.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Non-accessible content</span></span></span></h3>
+
+          <p><span><span><span>The content listed below is non-accessible for the following reasons.</span></span></span></p>
+
+          <h4>Non-compliance with the accessibility regulations</h4>
+
+          <p><span><span><span><span>PDFs and other documents</span></span></span></span></p>
+
+          <p><span><span><span><span>Some document formats on gov.scot such as PDF, MS Word and Excel may not be fully accessible. Where possible we make documents accessible and/or provide a suitable HTML alternative.</span></span></span></span></p>
+
+          <h4><span><span><span><span>Not within the scope of the regulations</span></span></span></span></h4>
+
+          <p><span><span><span><span>The accessibility regulations do not cover PDF or other documents published before 23 September 2018 if they're not essential to providing our services</span></span></span></span></p>
+
+          <p><span><span><span><span>Preparation of this accessibility statement</span></span></span></span></p>
+
+          <p><span><span><span><span>This statement was prepared on 23 September 2020. It was last reviewed on 11 October 2021.</span></span></span></span></p>
+
+          <p><span><span><span><span>An external accessibility audit was carried out on this website in March 2019. The audit followed the <a style="color:#005ea5; text-decoration:none" href="https://www.w3.org/TR/WCAG-EM/">WCAG Evaluation Methodology</a>. Ongoing internal reviews are conducted on content published to this website and design system components used to construct the site.</span></span></span></span></p>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+    /accessibility[2]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 30a5464c-aefd-4ceb-aa9d-c4c2ecfc438e
+      govscot:metaDescription: We are working to make gov.scot as accessible and usable
+        as possible.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-292
+      govscot:seoTitle: Accessibility
+      govscot:sme: ''
+      govscot:summary: We are working to make gov.scot as accessible and usable as
+        possible.
+      govscot:title: Accessibility
+      hippo:availability: [preview]
+      hippo:name: Accessibility
+      hippostd:state: unpublished
+      hippostd:tags: []
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-28T14:57:42+01:00
+      hippostdpubwf:lastModificationDate: 2021-11-11T17:51:30.135Z
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippotranslation:id: 93a28f90-53e9-4652-b579-7e26c1e952c9
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>We're continuously working to make gov.scot as accessible and usable as possible for all abilities and disabilities. This includes older audiences and those with visual, hearing, cognitive or motor impairments.</span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>We try to make our site easy to use with assistive technologies by using:</span></span></p>
+
+          <ul>
+           <li><span><span><span>easier-to-read colours</span></span></span></li>
+           <li><span><span><span>larger fonts</span></span></span></li>
+           <li><span><span><span>plain English</span></span></span></li>
+           <li><span><span><span>keyboard-only navigation</span></span></span></li>
+          </ul>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Feedback</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>If you cannot access any part of this site or want to report an accessibility problem, please&nbsp;contact us at:&nbsp;<a style="color:#0563c1; text-decoration:underline" href="mailto:website@gov.scot">website@gov.scot</a>.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Enforcement procedure</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>The Equality and Human Rights Commission enforces the&nbsp;<a style="color:#0563c1; text-decoration:underline" href="http://www.legislation.gov.uk/uksi/2018/952/regulation/4/made">accessibility regulations</a>&nbsp;(the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018).</span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>If you're not happy with how we respond to your feedback,&nbsp;<a style="color:#0563c1; text-decoration:underline" href="https://www.equalityadvisoryservice.com/">contact the Equality Advisory and Support Service</a>. They are an independent advice service. They will advise you on what to do next.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Compliance status</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span><span><span>Scottish Government is committed to making its websites accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</span></span></span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span><span><span>This accessibility statement applies to gov.scot.</span></span></span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>This website partially complies with the&nbsp;<a style="color:#0563c1; text-decoration:underline" href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines version 2.1</a>&nbsp;(WCAG) A and AA success criteria, with the below exceptions.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Non-accessible content</span></span></span></h3>
+
+          <p><span><span><span>The content listed below is non-accessible for the following reasons.</span></span></span></p>
+
+          <h4>Non-compliance with the accessibility regulations</h4>
+
+          <p><span><span><span><span>PDFs and other documents</span></span></span></span></p>
+
+          <p><span><span><span><span>Some document formats on gov.scot such as PDF, MS Word and Excel may not be fully accessible. Where possible we make documents accessible and/or provide a suitable HTML alternative.</span></span></span></span></p>
+
+          <h4><span><span><span><span>Not within the scope of the regulations</span></span></span></span></h4>
+
+          <p><span><span><span><span>The accessibility regulations do not cover PDF or other documents published before 23 September 2018 if they're not essential to providing our services</span></span></span></span></p>
+
+          <p><span><span><span><span>Preparation of this accessibility statement</span></span></span></span></p>
+
+          <p><span><span><span><span>This statement was prepared on 23 September 2020. It was last reviewed on 11 October 2021.</span></span></span></span></p>
+
+          <p><span><span><span><span>An external accessibility audit was carried out on this website in March 2019. The audit followed the <a style="color:#005ea5; text-decoration:none" href="https://www.w3.org/TR/WCAG-EM/">WCAG Evaluation Methodology</a>. Ongoing internal reviews are conducted on content published to this website and design system components used to construct the site.</span></span></span></span></p>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+    /accessibility[3]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 9e6f5d91-7bd7-4b66-bd47-a9e1ec699cbc
+      govscot:metaDescription: We are working to make gov.scot as accessible and usable
+        as possible.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-292
+      govscot:seoTitle: Accessibility
+      govscot:sme: ''
+      govscot:summary: We are working to make gov.scot as accessible and usable as
+        possible.
+      govscot:title: Accessibility
+      hippo:availability: []
+      hippo:name: Accessibility
+      hippostd:state: draft
+      hippostd:tags: []
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-28T14:57:42+01:00
+      hippostdpubwf:lastModificationDate: 2021-11-11T17:45:06.944Z
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippotranslation:id: 93a28f90-53e9-4652-b579-7e26c1e952c9
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>We're continuously working to make gov.scot as accessible and usable as possible for all abilities and disabilities. This includes older audiences and those with visual, hearing, cognitive or motor impairments.</span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>We try to make our site easy to use with assistive technologies by using:</span></span></p>
+
+          <ul>
+           <li><span><span><span>easier-to-read colours</span></span></span></li>
+           <li><span><span><span>larger fonts</span></span></span></li>
+           <li><span><span><span>plain English</span></span></span></li>
+           <li><span><span><span>keyboard-only navigation</span></span></span></li>
+          </ul>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Feedback</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>If you cannot access any part of this site or want to report an accessibility problem, please&nbsp;contact us at:&nbsp;<a style="color:#0563c1; text-decoration:underline" href="mailto:website@gov.scot">website@gov.scot</a>.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Enforcement procedure</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>The Equality and Human Rights Commission enforces the&nbsp;<a style="color:#0563c1; text-decoration:underline" href="http://www.legislation.gov.uk/uksi/2018/952/regulation/4/made">accessibility regulations</a>&nbsp;(the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018).</span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>If you're not happy with how we respond to your feedback,&nbsp;<a style="color:#0563c1; text-decoration:underline" href="https://www.equalityadvisoryservice.com/">contact the Equality Advisory and Support Service</a>. They are an independent advice service. They will advise you on what to do next.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Compliance status</span></span></span></h3>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span><span><span>Scottish Government is committed to making its websites accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</span></span></span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span><span><span>This accessibility statement applies to gov.scot.</span></span></span></span></p>
+
+          <p style="margin-left:0cm; margin-right:0cm"><span><span>This website partially complies with the&nbsp;<a style="color:#0563c1; text-decoration:underline" href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines version 2.1</a>&nbsp;(WCAG) A and AA success criteria, with the below exceptions.</span></span></p>
+
+          <h3 style="margin-left:0cm; margin-right:0cm"><span><span><span>Non-accessible content</span></span></span></h3>
+
+          <p><span><span><span>The content listed below is non-accessible for the following reasons.</span></span></span></p>
+
+          <h4>Non-compliance with the accessibility regulations</h4>
+
+          <p><span><span><span><span>PDFs and other documents</span></span></span></span></p>
+
+          <p><span><span><span><span>Some document formats on gov.scot such as PDF, MS Word and Excel may not be fully accessible. Where possible we make documents accessible and/or provide a suitable HTML alternative.</span></span></span></span></p>
+
+          <h4><span><span><span><span>Not within the scope of the regulations</span></span></span></span></h4>
+
+          <p><span><span><span><span>The accessibility regulations do not cover PDF or other documents published before 23 September 2018 if they're not essential to providing our services</span></span></span></span></p>
+
+          <p><span><span><span><span>Preparation of this accessibility statement</span></span></span></span></p>
+
+          <p><span><span><span><span>This statement was prepared on 23 September 2020. It was last reviewed on 11 October 2021.</span></span></span></span></p>
+
+          <p><span><span><span><span>An external accessibility audit was carried out on this website in March 2019. The audit followed the <a style="color:#005ea5; text-decoration:none" href="https://www.w3.org/TR/WCAG-EM/">WCAG Evaluation Methodology</a>. Ongoing internal reviews are conducted on content published to this website and design system components used to construct the site.</span></span></span></span></p>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+  /archive:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 67f1789e-1515-4724-b359-6707e0a90766
+    hippo:name: Archive
+    hippo:versionHistory: bb5df126-2c28-41ac-a2d6-db6638ad4909
+    /archive[1]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: a27a34c7-826e-4785-90eb-7cecdfcb955b
+      govscot:metaDescription: How to find old versions of gov.scot.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-737
+      govscot:seoTitle: Archive
+      govscot:sme: ''
+      govscot:summary: How to find old versions of gov.scot.
+      govscot:title: Archive
+      hippo:availability: [live]
+      hippo:name: Archive
+      hippostd:state: published
+      hippostd:tags: [scottish government website archive, gov.scot archive]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2017-08-23T10:27:14+01:00
+      hippostdpubwf:lastModificationDate: 2021-05-24T09:58:06.445+01:00
+      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippostdpubwf:publicationDate: 2021-05-24T09:59:07.357+01:00
+      hippotranslation:id: 1ecbf2e4-d9ba-4aad-a87b-1cd22873b64c
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>The Scottish Government website gov.scot is archived for the public record by the National Library of Scotland (NLS).</p>
+
+          <p>You can:</p>
+
+          <ul>
+           <li><a href="https://www.webarchive.org.uk/wayback/archive/*?url=www.gov.scot">browse old versions of the gov.scot site by date</a></li>
+           <li><a href="https://www.webarchive.org.uk/wayback/archive/">view an archive version of a specific web address</a></li>
+          </ul>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+    /archive[2]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 38925b7e-0983-460f-bcfb-cd26edb0eaee
+      govscot:metaDescription: How to find old versions of gov.scot.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-737
+      govscot:seoTitle: Archive
+      govscot:sme: ''
+      govscot:summary: How to find old versions of gov.scot.
+      govscot:title: Archive
+      hippo:availability: [preview]
+      hippo:name: Archive
+      hippostd:state: unpublished
+      hippostd:tags: [scottish government website archive, gov.scot archive]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2017-08-23T10:27:14+01:00
+      hippostdpubwf:lastModificationDate: 2021-05-24T09:58:06.445+01:00
+      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippotranslation:id: 1ecbf2e4-d9ba-4aad-a87b-1cd22873b64c
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>The Scottish Government website gov.scot is archived for the public record by the National Library of Scotland (NLS).</p>
+
+          <p>You can:</p>
+
+          <ul>
+           <li><a href="https://www.webarchive.org.uk/wayback/archive/*?url=www.gov.scot">browse old versions of the gov.scot site by date</a></li>
+           <li><a href="https://www.webarchive.org.uk/wayback/archive/">view an archive version of a specific web address</a></li>
+          </ul>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+    /archive[3]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 0eae1ee6-749c-4228-ae2e-890dfc2885fb
+      govscot:metaDescription: How to find old versions of gov.scot.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-737
+      govscot:seoTitle: Archive
+      govscot:sme: ''
+      govscot:summary: How to find old versions of gov.scot.
+      govscot:title: Archive
+      hippo:availability: []
+      hippo:name: Archive
+      hippostd:state: draft
+      hippostd:tags: [scottish government website archive, gov.scot archive]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2017-08-23T10:27:14+01:00
+      hippostdpubwf:lastModificationDate: 2021-05-24T09:53:16.029+01:00
+      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippotranslation:id: 1ecbf2e4-d9ba-4aad-a87b-1cd22873b64c
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>The Scottish Government website gov.scot is archived for the public record by the National Library of Scotland (NLS).</p>
+
+          <p>You can:</p>
+
+          <ul>
+           <li><a href="https://www.webarchive.org.uk/wayback/archive/*?url=www.gov.scot">browse old versions of the gov.scot site by date</a></li>
+           <li><a href="https://www.webarchive.org.uk/wayback/archive/">view an archive version of a specific web address</a></li>
+          </ul>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+  /crown-copyright:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 7797a9c4-f6c4-4edc-9535-de64fa5f47ee
+    hippo:name: Crown Copyright
+    /crown-copyright:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: a866e022-0eb9-4cf1-95ba-34ef85a2d8bc
+      govscot:metaDescription: Crown Copyright Information for gov.scot.
+      govscot:rubricId: GOV-1118
+      govscot:seoTitle: Crown Copyright
+      govscot:summary: Crown Copyright information
+      govscot:title: Crown Copyright
+      hippo:availability: [live, preview]
+      hippo:name: Crown Copyright
+      hippostd:state: published
+      hippostd:tags: [Crown Copyright, Bibliographic, publications]
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2018-07-11T09:31:47+01:00
+      hippostdpubwf:lastModificationDate: 2018-07-11T10:08:31+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippotranslation:id: 9d250188-4353-4412-94c4-a95e5c659c8e
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |+
+          <h2 id="re-using-crown-copyright-material">Re-using Crown copyright material</h2>
+          <p>You may use and re-use the information featured on this website (not including logos) free of charge in any format or medium, under the terms of the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/">Open Government Licence</a>.</p>
+          <p>Any enquiries regarding the use and re-use of this information resource should be sent to: <a href="mailto:psi@nationalarchives.gsi.gov.uk">psi@nationalarchives.gsi.gov.uk</a></p>
+          <h4 id="re-using-third-party-material">Re-using third party material</h4>
+          <p>Any material on this site which is identified as the copyright of a third party is not covered by Crown copyright. This the case with some photographs. Authorisation to reproduce such material must be obtained from the copyright holders concerned. The copyright status of items can be checked in advance of use by contacting <a href="mailto:website@gov.scot">website@gov.scot</a>.</p>
+          <h4 id="linking-to-the-scottish-government-website">Linking to the Scottish Government website</h4>
+          <p>The Scottish Government encourages users to establish links to the site. You don&#39;t have to ask for permission to do this.</p>
+          <h4 id="images-photography-and-video">Images, photography and video</h4>
+          <p>Images and photographs on this site are subject to Crown copyright protection unless otherwise indicated. You may re-use Crown copyright images subject to the conditions stated above. Images and videos on the <a href="https://www.flickr.com/photos/scottishgovernment">Scottish Government&#39;s Flickr site</a> and <a href="https://www.youtube.com/user/scottishgovernment">Scottish Government&#39;s You Tube channel</a> are subject to the licence restrictions shown on those sites, but are normally available to be re-used with attribution for non-commercial purposes only.</p>
+          <h4 id="further-information">Further information</h4>
+          <p>For further information on Crown copyright policy and licensing arrangements, see the <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">National Archives</a> guidance.</p>
+          <h3 id="publications">Publications</h3>
+          <p>The Scottish Government publishes over 1,000 items each year. Decisions on what is published and publication design is devolved to the departments. Current corporate policy is for all of the publications to be available on the Scottish Government website. Many of them are web-based only but some are also available as paper publications from BookSource (see below).</p>
+          <p><strong>Please note</strong>: Scottish Government publications are no longer available from Blackwell&#39;s Bookshop.</p>
+          <h3 id="finding-a-publication">Finding a publication</h3>
+          <p>All publications are available in both HTML and PDF formats. On the website publications are listed under <a href="https://beta.gov.scot/publications/">Publications</a> and <a href="https://consult.gov.scot/">Consultations</a>. The Publications archive allows searching by date, subject, topic and keyword.</p>
+          <p>The consultations are searchable by Current and Closed consultations. Details of Scottish Government publications are also available on UK-wide official publications listings such as UKOP.</p>
+          <h3 id="bibliographic-control">Bibliographic control</h3>
+          <p>Bibliographic details for publications, including ISBNs, can be obtained from both print and PDF versions of the publication. Current corporate policy is for an ISBN to be allocated to all publications whether available in printed or web-only format.</p>
+          <p>HTML versions of publications may differ from print/PDF versions for example in exclusion of graphics/tables etc. References made using the HTML version should ensure that HTML referencing guidance is followed to minimise confusion.</p>
+          <p>Where possible HTML versions will contain references to the ISBN of the print/PDF version to ensure the relationship is clear.</p>
+          <h3 id="coverage-of-the-publication-listings">Coverage of the publication listings</h3>
+          <p>The website publication pages and related listings do not include Bills, Acts, Statutory Instruments or papers presented to the Scottish Parliament by the Scottish Government other than those prepared by the Scottish Government. This material is available either through the <a href="http://www.parliament.scot/">Scottish Parliament website</a> or <a href="https://www.legislation.gov.uk/">legislation.gov.uk</a>.</p>
+          <p>Publications from Scottish Government or other related, but external, bodies may not be available on the website.</p>
+          <h3 id="publications-are-available-from-booksource">Publications are available from BookSource</h3>
+          <p>Publications, for both individuals and trade are available from BookSource. APS Group is responsible for selling and distributing Scottish Government publications and makes them available to the public via BookSource:</p>
+          <p>BookSource<br>50 Cambuslang Road<br>Cambuslang Investment Park<br>Glasgow G32 8NB<br>Phone: 0845 370 0067<br>Fax: 0845 370 0068<br><a href="mailto:scottishgovernment@booksource.net">scottishgovernment@booksource.net</a>  </p>
+          <p>Postage is payable on all Scottish Government publications distributed by Booksource. You can see the price list here. The public library discount is available on all priced publications published by the Scottish Government.</p>
+          <h3 id="loan-copies">Loan copies</h3>
+          <p>Loan copies of publications may be available from your organisation&#39;s library service or your local public library via the National Library of Scotland, the British Library or other co-operative inter-library loan schemes.</p>
+          <h3 id="consultation-paper-responses">Consultation Paper Responses</h3>
+          <p>All consultation papers are available for viewing on the Scottish Government website. When a consultation exercise is completed, consultation responses are also available for viewing on the Scottish Government website.</p>
+
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /privacy:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 1e421de1-cb09-406a-ae80-b924ef3549f5
+    hippo:name: Privacy
+    hippo:versionHistory: 1aa95c35-17b0-45ba-8ab6-4881282b2172
+    /privacy[1]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 711698ef-32dd-4378-89cd-3b8a5e1d515a
+      govscot:metaDescription: The privacy policy for gov.scot.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-293
+      govscot:seoTitle: Privacy policy
+      govscot:sme: ''
+      govscot:summary: The privacy policy for gov.scot.
+      govscot:title: Privacy
+      hippo:availability: [live]
+      hippo:name: Privacy
+      hippostd:state: published
+      hippostd:tags: [privacy, privacy policy]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-28T15:33:30+01:00
+      hippostdpubwf:lastModificationDate: 2020-11-26T15:40:16.292Z
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:publicationDate: 2020-11-26T15:40:18.663Z
+      hippotranslation:id: 8e0bd546-9b8c-4a1b-a732-44cd0d2ca3f8
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>This privacy policy tells you what to expect when the Scottish Government collects your personal information.</p>
+
+          <h2>Why we collect personal data</h2>
+
+          <p>We gather this information in order to:</p>
+
+          <ul>
+           <li>improve the site by monitoring how you use it</li>
+           <li>respond to any feedback you send us, if you've asked us to</li>
+           <li>send out email alerts to those who have requested them</li>
+           <li>record and/or publish your response to a survey or consultation</li>
+           <li>publish your comment on a blog or discussion site</li>
+          </ul>
+
+          <p>The personal data you send us can be viewed by authorised people in the Scottish government, supplier organisations, agencies and public bodies.</p>
+
+          <h2>Data we collect</h2>
+
+          <h3>1. Visitors to our websites</h3>
+
+          <p>We use a third party service, Google Analytics, to collect information on how you use the site, using cookies and page tagging techniques.</p>
+
+          <p>The information we - and Google - collect doesn't identify anyone, and is kept for a maximum of 38 months. If we do want to collect personally identifiable information through the site, we will be up front about it.</p>
+
+          <h3>2. Email alerts</h3>
+
+          <p>We collect your email address, name and subscription preferences when you sign up to our email alerts. We also track how our emails are used - for example whether you open them and which links you click on.</p>
+
+          <p>If you've signed up for email alerts, you can unsubscribe or change your settings at any time by selecting the 'unsubscribe' link that appears in every email.</p>
+
+          <p>Once you have unsubscribed, your details will be deleted immediately from the system. Read our&nbsp;<a href="index_1">subscriptions privacy notice</a>.</p>
+
+          <h3>3. Feedback</h3>
+
+          <p>If you contact us asking a question or giving feedback, we collect your email address and any other personal data contained in your message. If you contact us asking for information, we may need to contact other government bodies to find that information.</p>
+
+          <h3>4. Consultations</h3>
+
+          <p>We collect names and email addresses with every response we receive through our consultation platform <a href="http://consult.gov.scot">http://consult.gov.scot</a>.</p>
+
+          <p>Email addresses are used to send an acknowledgement of response following submission. They may also be used to contact you in the future in relation to the consultation exercise if you give consent to be contacted.</p>
+
+          <p>Where permission is given, we publish responses. We include personal data where permission has been given to do so. We never publish email or postal addresses.</p>
+
+          <h3>5. Blogs and discussion sites</h3>
+
+          <p>We collect names or usernames, and email addresses with each comment. This data is kept as long as the blog post or dialogue remains published.</p>
+
+          <h4>Links to other websites</h4>
+
+          <p>When we link to other websites, we encourage you to read the privacy policy statements contained on those sites.</p>
+
+          <h2>Your rights</h2>
+
+          <p>You have a right of access to any <a href="personal-data">personal data</a> we hold about you, by making a <a href="index">Subject Access Request (SAR)</a>.</p>
+
+          <p>In addition, if you believe that the data we hold is inaccurate or incomplete you can ask us to update our records. If you are unhappy with the way in which we process your personal data you can request that we stop or restrict the processing we complete using your personal data or ask us to delete the personal data we hold about you.</p>
+
+          <p>Find out more about <a href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/">your rights on the Information Commissioner's site</a>.</p>
+
+          <p>In some circumstances we may not be able to comply with your request. This is because some of these rights are conditional and can only be applied in certain circumstances and/or where there is no compelling reason to continue to process your personal data.</p>
+
+          <h3>Contact</h3>
+
+          <p>Data Protection Officer<br />
+          Victoria Quay<br />
+          Commercial Street<br />
+          Edinburgh<br />
+          EH6 6QQ</p>
+
+          <p>Email: <a href="mailto:DataProtectionOfficer@gov.scot">DataProtectionOfficer@gov.scot</a></p>
+
+          <h2>Complaints</h2>
+
+          <p>If you feel we have been unable, or unwilling, to resolve your information rights concern, you have the right to lodge a complaint with the Information Commissioner's Office (ICO). The ICO are the supervisory authority responsible for data protection in the UK.</p>
+
+          <p>For further information, including independent data protection advice and information in relation to your rights, you can contact the Information Commissioner at:</p>
+
+          <p>The Information Commissioner<br />
+          Wycliffe House<br />
+          Water Lane<br />
+          Wilmslow<br />
+          Cheshire<br />
+          SK9 5AF</p>
+
+          <p>Tel: 08456 30 60 60<br />
+          Website: <a href="http://www.ico.org.uk">www.ico.org.uk</a></p>
+
+          <p>You can also report any concerns here: <a href="https://ico.org.uk/concerns/handling/">https://ico.org.uk/concerns/handling/</a></p>
+        /personal-data:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 583d6da8-3caf-4f96-b550-ecd7ea38f26f
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: a760664f-806e-4f7e-ba9b-722bc4d8ad99
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index_1:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 2326aa5b-43de-47ba-ab2f-9a01553e00ca
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+    /privacy[2]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: bb354ed0-28ea-43a1-9682-8f21cebf5df9
+      govscot:metaDescription: The privacy policy for gov.scot.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-293
+      govscot:seoTitle: Privacy policy
+      govscot:sme: ''
+      govscot:summary: The privacy policy for gov.scot.
+      govscot:title: Privacy
+      hippo:availability: [preview]
+      hippo:name: Privacy
+      hippostd:state: unpublished
+      hippostd:tags: [privacy, privacy policy]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-28T15:33:30+01:00
+      hippostdpubwf:lastModificationDate: 2020-11-26T15:40:16.292Z
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippotranslation:id: 8e0bd546-9b8c-4a1b-a732-44cd0d2ca3f8
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>This privacy policy tells you what to expect when the Scottish Government collects your personal information.</p>
+
+          <h2>Why we collect personal data</h2>
+
+          <p>We gather this information in order to:</p>
+
+          <ul>
+           <li>improve the site by monitoring how you use it</li>
+           <li>respond to any feedback you send us, if you've asked us to</li>
+           <li>send out email alerts to those who have requested them</li>
+           <li>record and/or publish your response to a survey or consultation</li>
+           <li>publish your comment on a blog or discussion site</li>
+          </ul>
+
+          <p>The personal data you send us can be viewed by authorised people in the Scottish government, supplier organisations, agencies and public bodies.</p>
+
+          <h2>Data we collect</h2>
+
+          <h3>1. Visitors to our websites</h3>
+
+          <p>We use a third party service, Google Analytics, to collect information on how you use the site, using cookies and page tagging techniques.</p>
+
+          <p>The information we - and Google - collect doesn't identify anyone, and is kept for a maximum of 38 months. If we do want to collect personally identifiable information through the site, we will be up front about it.</p>
+
+          <h3>2. Email alerts</h3>
+
+          <p>We collect your email address, name and subscription preferences when you sign up to our email alerts. We also track how our emails are used - for example whether you open them and which links you click on.</p>
+
+          <p>If you've signed up for email alerts, you can unsubscribe or change your settings at any time by selecting the 'unsubscribe' link that appears in every email.</p>
+
+          <p>Once you have unsubscribed, your details will be deleted immediately from the system. Read our&nbsp;<a href="index_1">subscriptions privacy notice</a>.</p>
+
+          <h3>3. Feedback</h3>
+
+          <p>If you contact us asking a question or giving feedback, we collect your email address and any other personal data contained in your message. If you contact us asking for information, we may need to contact other government bodies to find that information.</p>
+
+          <h3>4. Consultations</h3>
+
+          <p>We collect names and email addresses with every response we receive through our consultation platform <a href="http://consult.gov.scot">http://consult.gov.scot</a>.</p>
+
+          <p>Email addresses are used to send an acknowledgement of response following submission. They may also be used to contact you in the future in relation to the consultation exercise if you give consent to be contacted.</p>
+
+          <p>Where permission is given, we publish responses. We include personal data where permission has been given to do so. We never publish email or postal addresses.</p>
+
+          <h3>5. Blogs and discussion sites</h3>
+
+          <p>We collect names or usernames, and email addresses with each comment. This data is kept as long as the blog post or dialogue remains published.</p>
+
+          <h4>Links to other websites</h4>
+
+          <p>When we link to other websites, we encourage you to read the privacy policy statements contained on those sites.</p>
+
+          <h2>Your rights</h2>
+
+          <p>You have a right of access to any <a href="personal-data">personal data</a> we hold about you, by making a <a href="index">Subject Access Request (SAR)</a>.</p>
+
+          <p>In addition, if you believe that the data we hold is inaccurate or incomplete you can ask us to update our records. If you are unhappy with the way in which we process your personal data you can request that we stop or restrict the processing we complete using your personal data or ask us to delete the personal data we hold about you.</p>
+
+          <p>Find out more about <a href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/">your rights on the Information Commissioner's site</a>.</p>
+
+          <p>In some circumstances we may not be able to comply with your request. This is because some of these rights are conditional and can only be applied in certain circumstances and/or where there is no compelling reason to continue to process your personal data.</p>
+
+          <h3>Contact</h3>
+
+          <p>Data Protection Officer<br />
+          Victoria Quay<br />
+          Commercial Street<br />
+          Edinburgh<br />
+          EH6 6QQ</p>
+
+          <p>Email: <a href="mailto:DataProtectionOfficer@gov.scot">DataProtectionOfficer@gov.scot</a></p>
+
+          <h2>Complaints</h2>
+
+          <p>If you feel we have been unable, or unwilling, to resolve your information rights concern, you have the right to lodge a complaint with the Information Commissioner's Office (ICO). The ICO are the supervisory authority responsible for data protection in the UK.</p>
+
+          <p>For further information, including independent data protection advice and information in relation to your rights, you can contact the Information Commissioner at:</p>
+
+          <p>The Information Commissioner<br />
+          Wycliffe House<br />
+          Water Lane<br />
+          Wilmslow<br />
+          Cheshire<br />
+          SK9 5AF</p>
+
+          <p>Tel: 08456 30 60 60<br />
+          Website: <a href="http://www.ico.org.uk">www.ico.org.uk</a></p>
+
+          <p>You can also report any concerns here: <a href="https://ico.org.uk/concerns/handling/">https://ico.org.uk/concerns/handling/</a></p>
+        /personal-data:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 583d6da8-3caf-4f96-b550-ecd7ea38f26f
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: a760664f-806e-4f7e-ba9b-722bc4d8ad99
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index_1:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 2326aa5b-43de-47ba-ab2f-9a01553e00ca
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+    /privacy[3]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 3a61e1a4-f8f1-44a8-96e5-91f1200d08d4
+      govscot:metaDescription: The privacy policy for gov.scot.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-293
+      govscot:seoTitle: Privacy policy
+      govscot:sme: ''
+      govscot:summary: The privacy policy for gov.scot.
+      govscot:title: Privacy
+      hippo:availability: []
+      hippo:name: Privacy
+      hippostd:state: draft
+      hippostd:tags: [privacy, privacy policy]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2016-04-28T15:33:30+01:00
+      hippostdpubwf:lastModificationDate: 2020-11-26T15:37:27.594Z
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippotranslation:id: 8e0bd546-9b8c-4a1b-a732-44cd0d2ca3f8
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>This privacy policy tells you what to expect when the Scottish Government collects your personal information.</p>
+
+          <h2>Why we collect personal data</h2>
+
+          <p>We gather this information in order to:</p>
+
+          <ul>
+           <li>improve the site by monitoring how you use it</li>
+           <li>respond to any feedback you send us, if you've asked us to</li>
+           <li>send out email alerts to those who have requested them</li>
+           <li>record and/or publish your response to a survey or consultation</li>
+           <li>publish your comment on a blog or discussion site</li>
+          </ul>
+
+          <p>The personal data you send us can be viewed by authorised people in the Scottish government, supplier organisations, agencies and public bodies.</p>
+
+          <h2>Data we collect</h2>
+
+          <h3>1. Visitors to our websites</h3>
+
+          <p>We use a third party service, Google Analytics, to collect information on how you use the site, using cookies and page tagging techniques.</p>
+
+          <p>The information we - and Google - collect doesn't identify anyone, and is kept for a maximum of 38 months. If we do want to collect personally identifiable information through the site, we will be up front about it.</p>
+
+          <h3>2. Email alerts</h3>
+
+          <p>We collect your email address, name and subscription preferences when you sign up to our email alerts. We also track how our emails are used - for example whether you open them and which links you click on.</p>
+
+          <p>If you've signed up for email alerts, you can unsubscribe or change your settings at any time by selecting the 'unsubscribe' link that appears in every email.</p>
+
+          <p>Once you have unsubscribed, your details will be deleted immediately from the system. Read our&nbsp;<a href="index_1">subscriptions privacy notice</a>.</p>
+
+          <h3>3. Feedback</h3>
+
+          <p>If you contact us asking a question or giving feedback, we collect your email address and any other personal data contained in your message. If you contact us asking for information, we may need to contact other government bodies to find that information.</p>
+
+          <h3>4. Consultations</h3>
+
+          <p>We collect names and email addresses with every response we receive through our consultation platform <a href="http://consult.gov.scot">http://consult.gov.scot</a>.</p>
+
+          <p>Email addresses are used to send an acknowledgement of response following submission. They may also be used to contact you in the future in relation to the consultation exercise if you give consent to be contacted.</p>
+
+          <p>Where permission is given, we publish responses. We include personal data where permission has been given to do so. We never publish email or postal addresses.</p>
+
+          <h3>5. Blogs and discussion sites</h3>
+
+          <p>We collect names or usernames, and email addresses with each comment. This data is kept as long as the blog post or dialogue remains published.</p>
+
+          <h4>Links to other websites</h4>
+
+          <p>When we link to other websites, we encourage you to read the privacy policy statements contained on those sites.</p>
+
+          <h2>Your rights</h2>
+
+          <p>You have a right of access to any <a href="personal-data">personal data</a> we hold about you, by making a <a href="index">Subject Access Request (SAR)</a>.</p>
+
+          <p>In addition, if you believe that the data we hold is inaccurate or incomplete you can ask us to update our records. If you are unhappy with the way in which we process your personal data you can request that we stop or restrict the processing we complete using your personal data or ask us to delete the personal data we hold about you.</p>
+
+          <p>Find out more about <a href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/">your rights on the Information Commissioner's site</a>.</p>
+
+          <p>In some circumstances we may not be able to comply with your request. This is because some of these rights are conditional and can only be applied in certain circumstances and/or where there is no compelling reason to continue to process your personal data.</p>
+
+          <h3>Contact</h3>
+
+          <p>Data Protection Officer<br />
+          Victoria Quay<br />
+          Commercial Street<br />
+          Edinburgh<br />
+          EH6 6QQ</p>
+
+          <p>Email: <a href="mailto:DataProtectionOfficer@gov.scot">DataProtectionOfficer@gov.scot</a></p>
+
+          <h2>Complaints</h2>
+
+          <p>If you feel we have been unable, or unwilling, to resolve your information rights concern, you have the right to lodge a complaint with the Information Commissioner's Office (ICO). The ICO are the supervisory authority responsible for data protection in the UK.</p>
+
+          <p>For further information, including independent data protection advice and information in relation to your rights, you can contact the Information Commissioner at:</p>
+
+          <p>The Information Commissioner<br />
+          Wycliffe House<br />
+          Water Lane<br />
+          Wilmslow<br />
+          Cheshire<br />
+          SK9 5AF</p>
+
+          <p>Tel: 08456 30 60 60<br />
+          Website: <a href="http://www.ico.org.uk">www.ico.org.uk</a></p>
+
+          <p>You can also report any concerns here: <a href="https://ico.org.uk/concerns/handling/">https://ico.org.uk/concerns/handling/</a></p>
+        /personal-data:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 583d6da8-3caf-4f96-b550-ecd7ea38f26f
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: a760664f-806e-4f7e-ba9b-722bc4d8ad99
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index_1:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 2326aa5b-43de-47ba-ab2f-9a01553e00ca
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: ''
+        govscot:url: ''
+  /contact:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 0d8f8c0a-2f88-4b09-a69d-310801ccec77
+    hippo:name: Contact
+    hippo:versionHistory: 73929a80-c4ca-43cc-b907-29a07879d27a
+    /contact[1]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 52f43fb1-ea34-459c-971a-169f3923fc95
+      govscot:metaDescription: Contact the Scottish Government by telephone, email
+        and post.
+      govscot:reportingTags: []
+      govscot:seoTitle: Contact information
+      govscot:sme: ''
+      govscot:summary: Contact the Scottish Government by telephone, email and post.
+      govscot:title: Contact
+      hippo:availability: []
+      hippostd:state: draft
+      hippostd:tags: [contacts, contact us, central enquiry unit, enquiries, feedback]
+      hippostdpubwf:createdBy: jyothish.sathyan@gov.scot
+      hippostdpubwf:creationDate: 2018-08-16T11:15:26.403+01:00
+      hippostdpubwf:lastModificationDate: 2020-12-23T15:49:47.610Z
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippotranslation:id: cf5c0546-2a11-4051-af5f-a46cf34f3ae6
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <div class="info-note note">Coronavirus (COVID-19):&nbsp;<span><span>If your enquiry is about COVID-19 then please see our <a href="https://www.gov.scot/collections/coronavirus-covid-19-guidance/">collection of guidance including guidance for business, healthcare, education and housing</a>. </span></span></div>
+
+          <h2>General enquiries</h2>
+
+          <p>Our Central Enquiry Unit will pass on your enquiry to the appropriate area.</p>
+
+          <h3>Telephone</h3>
+
+          <p>Office hours: Monday to Friday - 8.30am to 5pm.<br />
+          From the UK: 0300 244 4000 (0300 numbers are geographically neutral)</p>
+
+          <p>International callers: +44 131 244 4000</p>
+
+          <p>Text Relay Service: 18001+ 0300 244 4000 (service for the hard of hearing)</p>
+
+          <p>If you are a British Sign Language (BSL) user, you can contact us via our national BSL video relay service Contact Scotland-BSL. For more information, please <a href="http://contactscotland-bsl.org/device-direct/">visit our Website</a>.</p>
+
+          <h3>Email</h3>
+
+          <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a></p>
+
+          <h3>Post</h3>
+
+          <p>Scottish Government<br />
+          St. Andrew's House<br />
+          Regent Road<br />
+          Edinburgh<br />
+          EH1 3DG</p>
+
+          <div class="info-note note">See privacy note about <a href="index">how we handle your data</a>.&nbsp;</div>
+
+          <h2>Unacceptable behaviour</h2>
+
+          <p>We welcome feedback and use it to help improve our service.</p>
+
+          <p>However, we ask that you respect our staff and refrain from the following behaviour:</p>
+
+          <ul>
+           <li>aggressive or abusive behaviour – for example swearing, threats or derogatory remarks</li>
+           <li>unreasonable demands – where requests place unreasonable conditions on officials which dilutes our ability to provide a service for others</li>
+           <li>unreasonable persistence – repeated requests on the same or similar issue which disrupts our ability to fulfil our functions as a government</li>
+          </ul>
+
+          <p>You can find out more detailed information on our approach to the above in our <a href="index_1">unacceptable actions policy</a>.</p>
+
+          <h3>Gàidhlig</h3>
+
+          <h2>Ceistean Àbhaisteach</h2>
+
+          <p>Cuiridh ar n-Aonad airson Ceistean Àbhaisteach ur ceist air adhart dhan raon-obrach a fhreagras.</p>
+
+          <h3>Fòn</h3>
+
+          <p>Uairean oifise: Diluain gu Dihaoine – 8.30m gu 5f.</p>
+
+          <p>Bhon Rìoghachd Aonaichte: 0300 244 4000 (Chan eil àireaman fòn 0300 a' buineadh do dh'àite sam bith)</p>
+
+          <p>Luchd-conaltraidh eadar-nàiseanta: +44 131 244 4000</p>
+
+          <p>Seirbheis Teacsa (Beurla): 18001+ 0300 244 4000 (seirbheis airson daoine aig a bheil laigse sa chlaisneachd)</p>
+
+          <p>Faodaidh luchd-cleachdaidh Cainn-soighnidh Bhreatainn (BSL) fios a chuir thugainn tron t-seirbheis mìneachaidh air-loidhne: <a href="http://contactscotland-bsl.org/">làrach-lìn contactSCOTLAND</a>.</p>
+
+          <h3>Post-d</h3>
+
+          <p>Post-d: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a></p>
+
+          <h3>Post</h3>
+
+          <p>Riaghaltas na h-Alba<br />
+          Taigh Naomh Anndrais<br />
+          Rathad Regent<br />
+          Dùn Èideann<br />
+          EH1 3DG</p>
+
+          <h2>Giùlan ris nach gabhar</h2>
+
+          <p>Tha sinn a' cur fàilte air beachdan mu dheidhinn ur seirbheisean agus bidh sinn gan cleachdadh gus an dèanamh nas fheàrr.</p>
+
+          <p>Tha sinn a' faighneachd, ge-tà, gun seall sibh urram dha ar luchd-obrach le bhith seachnadh na rudan a leanas:</p>
+
+          <ul>
+           <li>giùlan ionnsaigheach no droch-dhìolach – mar eisimpleir droch chainnt no cainnt a tha a' cur sìos air dhaoine</li>
+           <li>iarrtasan mi-reusanta – ma tha iarrtasan a' cur impidh mi-reusanta air oifigearan, a bhuaileas air an t-seirbheis a bheir iad seachad do chàch</li>
+           <li>ath-iarraidh mi-reusanta – a' cur iarrtasan thugainn a-rithist air an aon chuspair, no cuspair coltach ris, le droch bhuaidh air mar a dh'obraicheas sinn mar riaghaltas</li>
+          </ul>
+
+          <p>Faodar fiosrachadh nas mionaidiche fhaighinn air ar dòigh-obrach a thaobh na tha gu h-àrd anns am <a href="index">poileasaidh againn a thaobh giùlan ris nach gabhar</a>.</p>
+        /index:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 63066347-280a-448e-8bcf-07d468c42a3a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index_1:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: ee7781af-041b-4800-9890-3300a5f4faa1
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: Contact
+        govscot:url: /about/contact-information/
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+    /contact[2]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 76896a65-3af6-413b-8e08-b1b19ba80eaf
+      govscot:metaDescription: Contact the Scottish Government by telephone, email
+        and post.
+      govscot:reportingTags: []
+      govscot:seoTitle: Contact information
+      govscot:sme: ''
+      govscot:summary: Contact the Scottish Government by telephone, email and post.
+      govscot:title: Contact
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostd:tags: [contacts, contact us, central enquiry unit, enquiries, feedback]
+      hippostdpubwf:createdBy: jyothish.sathyan@gov.scot
+      hippostdpubwf:creationDate: 2018-08-16T11:15:26.403+01:00
+      hippostdpubwf:lastModificationDate: 2020-12-23T15:49:58.423Z
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippotranslation:id: cf5c0546-2a11-4051-af5f-a46cf34f3ae6
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <div class="info-note note">Coronavirus (COVID-19):&nbsp;<span><span>If your enquiry is about COVID-19 then please see our <a href="https://www.gov.scot/collections/coronavirus-covid-19-guidance/">collection of guidance including guidance for business, healthcare, education and housing</a>. </span></span></div>
+
+          <h2>General enquiries</h2>
+
+          <p>Our Central Enquiry Unit will pass on your enquiry to the appropriate area.</p>
+
+          <h3>Telephone</h3>
+
+          <p>Office hours: Monday to Friday - 8.30am to 5pm.<br />
+          From the UK: 0300 244 4000 (0300 numbers are geographically neutral)</p>
+
+          <p>International callers: +44 131 244 4000</p>
+
+          <p>Text Relay Service: 18001+ 0300 244 4000 (service for the hard of hearing)</p>
+
+          <p>If you are a British Sign Language (BSL) user, you can contact us via our national BSL video relay service Contact Scotland-BSL. For more information, please <a href="http://contactscotland-bsl.org/device-direct/">visit our Website</a>.</p>
+
+          <h3>Email</h3>
+
+          <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a></p>
+
+          <h3>Post</h3>
+
+          <p>Scottish Government<br />
+          St. Andrew's House<br />
+          Regent Road<br />
+          Edinburgh<br />
+          EH1 3DG</p>
+
+          <div class="info-note note">See privacy note about <a href="index">how we handle your data</a>.&nbsp;</div>
+
+          <h2>Unacceptable behaviour</h2>
+
+          <p>We welcome feedback and use it to help improve our service.</p>
+
+          <p>However, we ask that you respect our staff and refrain from the following behaviour:</p>
+
+          <ul>
+           <li>aggressive or abusive behaviour – for example swearing, threats or derogatory remarks</li>
+           <li>unreasonable demands – where requests place unreasonable conditions on officials which dilutes our ability to provide a service for others</li>
+           <li>unreasonable persistence – repeated requests on the same or similar issue which disrupts our ability to fulfil our functions as a government</li>
+          </ul>
+
+          <p>You can find out more detailed information on our approach to the above in our <a href="index_1">unacceptable actions policy</a>.</p>
+
+          <h3>Gàidhlig</h3>
+
+          <h2>Ceistean Àbhaisteach</h2>
+
+          <p>Cuiridh ar n-Aonad airson Ceistean Àbhaisteach ur ceist air adhart dhan raon-obrach a fhreagras.</p>
+
+          <h3>Fòn</h3>
+
+          <p>Uairean oifise: Diluain gu Dihaoine – 8.30m gu 5f.</p>
+
+          <p>Bhon Rìoghachd Aonaichte: 0300 244 4000 (Chan eil àireaman fòn 0300 a' buineadh do dh'àite sam bith)</p>
+
+          <p>Luchd-conaltraidh eadar-nàiseanta: +44 131 244 4000</p>
+
+          <p>Seirbheis Teacsa (Beurla): 18001+ 0300 244 4000 (seirbheis airson daoine aig a bheil laigse sa chlaisneachd)</p>
+
+          <p>Faodaidh luchd-cleachdaidh Cainn-soighnidh Bhreatainn (BSL) fios a chuir thugainn tron t-seirbheis mìneachaidh air-loidhne: <a href="http://contactscotland-bsl.org/">làrach-lìn contactSCOTLAND</a>.</p>
+
+          <h3>Post-d</h3>
+
+          <p>Post-d: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a></p>
+
+          <h3>Post</h3>
+
+          <p>Riaghaltas na h-Alba<br />
+          Taigh Naomh Anndrais<br />
+          Rathad Regent<br />
+          Dùn Èideann<br />
+          EH1 3DG</p>
+
+          <h2>Giùlan ris nach gabhar</h2>
+
+          <p>Tha sinn a' cur fàilte air beachdan mu dheidhinn ur seirbheisean agus bidh sinn gan cleachdadh gus an dèanamh nas fheàrr.</p>
+
+          <p>Tha sinn a' faighneachd, ge-tà, gun seall sibh urram dha ar luchd-obrach le bhith seachnadh na rudan a leanas:</p>
+
+          <ul>
+           <li>giùlan ionnsaigheach no droch-dhìolach – mar eisimpleir droch chainnt no cainnt a tha a' cur sìos air dhaoine</li>
+           <li>iarrtasan mi-reusanta – ma tha iarrtasan a' cur impidh mi-reusanta air oifigearan, a bhuaileas air an t-seirbheis a bheir iad seachad do chàch</li>
+           <li>ath-iarraidh mi-reusanta – a' cur iarrtasan thugainn a-rithist air an aon chuspair, no cuspair coltach ris, le droch bhuaidh air mar a dh'obraicheas sinn mar riaghaltas</li>
+          </ul>
+
+          <p>Faodar fiosrachadh nas mionaidiche fhaighinn air ar dòigh-obrach a thaobh na tha gu h-àrd anns am <a href="index">poileasaidh againn a thaobh giùlan ris nach gabhar</a>.</p>
+        /index:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 63066347-280a-448e-8bcf-07d468c42a3a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index_1:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: ee7781af-041b-4800-9890-3300a5f4faa1
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: Contact
+        govscot:url: /about/contact-information/
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+    /contact[3]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: f9d95162-f9b9-4c31-a8fc-fa63fc1c8455
+      govscot:metaDescription: Contact the Scottish Government by telephone, email
+        and post.
+      govscot:reportingTags: []
+      govscot:seoTitle: Contact information
+      govscot:sme: ''
+      govscot:summary: Contact the Scottish Government by telephone, email and post.
+      govscot:title: Contact
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostd:tags: [contacts, contact us, central enquiry unit, enquiries, feedback]
+      hippostdpubwf:createdBy: jyothish.sathyan@gov.scot
+      hippostdpubwf:creationDate: 2018-08-16T11:15:26.403+01:00
+      hippostdpubwf:lastModificationDate: 2020-12-23T15:49:58.423Z
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:publicationDate: 2020-12-23T15:50:00.800Z
+      hippotranslation:id: cf5c0546-2a11-4051-af5f-a46cf34f3ae6
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <div class="info-note note">Coronavirus (COVID-19):&nbsp;<span><span>If your enquiry is about COVID-19 then please see our <a href="https://www.gov.scot/collections/coronavirus-covid-19-guidance/">collection of guidance including guidance for business, healthcare, education and housing</a>. </span></span></div>
+
+          <h2>General enquiries</h2>
+
+          <p>Our Central Enquiry Unit will pass on your enquiry to the appropriate area.</p>
+
+          <h3>Telephone</h3>
+
+          <p>Office hours: Monday to Friday - 8.30am to 5pm.<br />
+          From the UK: 0300 244 4000 (0300 numbers are geographically neutral)</p>
+
+          <p>International callers: +44 131 244 4000</p>
+
+          <p>Text Relay Service: 18001+ 0300 244 4000 (service for the hard of hearing)</p>
+
+          <p>If you are a British Sign Language (BSL) user, you can contact us via our national BSL video relay service Contact Scotland-BSL. For more information, please <a href="http://contactscotland-bsl.org/device-direct/">visit our Website</a>.</p>
+
+          <h3>Email</h3>
+
+          <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a></p>
+
+          <h3>Post</h3>
+
+          <p>Scottish Government<br />
+          St. Andrew's House<br />
+          Regent Road<br />
+          Edinburgh<br />
+          EH1 3DG</p>
+
+          <div class="info-note note">See privacy note about <a href="index">how we handle your data</a>.&nbsp;</div>
+
+          <h2>Unacceptable behaviour</h2>
+
+          <p>We welcome feedback and use it to help improve our service.</p>
+
+          <p>However, we ask that you respect our staff and refrain from the following behaviour:</p>
+
+          <ul>
+           <li>aggressive or abusive behaviour – for example swearing, threats or derogatory remarks</li>
+           <li>unreasonable demands – where requests place unreasonable conditions on officials which dilutes our ability to provide a service for others</li>
+           <li>unreasonable persistence – repeated requests on the same or similar issue which disrupts our ability to fulfil our functions as a government</li>
+          </ul>
+
+          <p>You can find out more detailed information on our approach to the above in our <a href="index_1">unacceptable actions policy</a>.</p>
+
+          <h3>Gàidhlig</h3>
+
+          <h2>Ceistean Àbhaisteach</h2>
+
+          <p>Cuiridh ar n-Aonad airson Ceistean Àbhaisteach ur ceist air adhart dhan raon-obrach a fhreagras.</p>
+
+          <h3>Fòn</h3>
+
+          <p>Uairean oifise: Diluain gu Dihaoine – 8.30m gu 5f.</p>
+
+          <p>Bhon Rìoghachd Aonaichte: 0300 244 4000 (Chan eil àireaman fòn 0300 a' buineadh do dh'àite sam bith)</p>
+
+          <p>Luchd-conaltraidh eadar-nàiseanta: +44 131 244 4000</p>
+
+          <p>Seirbheis Teacsa (Beurla): 18001+ 0300 244 4000 (seirbheis airson daoine aig a bheil laigse sa chlaisneachd)</p>
+
+          <p>Faodaidh luchd-cleachdaidh Cainn-soighnidh Bhreatainn (BSL) fios a chuir thugainn tron t-seirbheis mìneachaidh air-loidhne: <a href="http://contactscotland-bsl.org/">làrach-lìn contactSCOTLAND</a>.</p>
+
+          <h3>Post-d</h3>
+
+          <p>Post-d: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a></p>
+
+          <h3>Post</h3>
+
+          <p>Riaghaltas na h-Alba<br />
+          Taigh Naomh Anndrais<br />
+          Rathad Regent<br />
+          Dùn Èideann<br />
+          EH1 3DG</p>
+
+          <h2>Giùlan ris nach gabhar</h2>
+
+          <p>Tha sinn a' cur fàilte air beachdan mu dheidhinn ur seirbheisean agus bidh sinn gan cleachdadh gus an dèanamh nas fheàrr.</p>
+
+          <p>Tha sinn a' faighneachd, ge-tà, gun seall sibh urram dha ar luchd-obrach le bhith seachnadh na rudan a leanas:</p>
+
+          <ul>
+           <li>giùlan ionnsaigheach no droch-dhìolach – mar eisimpleir droch chainnt no cainnt a tha a' cur sìos air dhaoine</li>
+           <li>iarrtasan mi-reusanta – ma tha iarrtasan a' cur impidh mi-reusanta air oifigearan, a bhuaileas air an t-seirbheis a bheir iad seachad do chàch</li>
+           <li>ath-iarraidh mi-reusanta – a' cur iarrtasan thugainn a-rithist air an aon chuspair, no cuspair coltach ris, le droch bhuaidh air mar a dh'obraicheas sinn mar riaghaltas</li>
+          </ul>
+
+          <p>Faodar fiosrachadh nas mionaidiche fhaighinn air ar dòigh-obrach a thaobh na tha gu h-àrd anns am <a href="index">poileasaidh againn a thaobh giùlan ris nach gabhar</a>.</p>
+        /index:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 63066347-280a-448e-8bcf-07d468c42a3a
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /index_1:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: ee7781af-041b-4800-9890-3300a5f4faa1
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: Contact
+        govscot:url: /about/contact-information/
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /jobs-and-vacancies:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: b9e949fb-3685-4ad9-b084-28b43d4b0bb0
+    hippo:name: Jobs and vacancies
+    /jobs-and-vacancies[1]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: ae22f6dd-d9a4-4132-80a7-b7e6a829239d
+      govscot:metaDescription: Jobs and vacancies at the Scottish Government
+      govscot:seoTitle: Jobs and vacancies at the Scottish Government
+      govscot:summary: Jobs and vacancies at the Scottish Government
+      govscot:title: Jobs and vacancies
+      hippo:availability: []
+      hippostd:state: draft
+      hippostd:tags: [Jobs and vacancies, work for scotland]
+      hippostdpubwf:createdBy: jyothish.sathyan@gov.scot
+      hippostdpubwf:creationDate: 2018-08-16T11:19:20.784+01:00
+      hippostdpubwf:lastModificationDate: 2018-09-11T18:30:32.554+01:00
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippotranslation:id: a4a66235-c29d-4b28-b815-52b84deca28d
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <h1>Jobs and vacancies</h1>
+
+          <p>We play a part in every issue that matters to people in Scotland – from health, education, housing and crime, to transport, agriculture, culture and the economy, plus many more.</p>
+
+          <p>We employ people from all walks of life, people with all sorts of skills, strengths and talents.</p>
+
+          <p>For information about working for us and to access job vacancies and opportunities go to:&nbsp;<a href="http://www.work-for-scotland.org/">http://www.work-for-scotland.org</a></p>
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: Jobs and vacancies
+        govscot:url: /about/contact-information/jobs-vacancies
+    /jobs-and-vacancies[2]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 9831813f-b4d9-479b-92e1-b6fd82f3dbdb
+      govscot:metaDescription: Jobs and vacancies at the Scottish Government
+      govscot:seoTitle: Jobs and vacancies at the Scottish Government
+      govscot:summary: Jobs and vacancies at the Scottish Government
+      govscot:title: Jobs and vacancies
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostd:tags: [Jobs and vacancies, work for scotland]
+      hippostdpubwf:createdBy: jyothish.sathyan@gov.scot
+      hippostdpubwf:creationDate: 2018-08-16T11:19:20.784+01:00
+      hippostdpubwf:lastModificationDate: 2018-09-11T18:30:45.346+01:00
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippotranslation:id: a4a66235-c29d-4b28-b815-52b84deca28d
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <h1>Jobs and vacancies</h1>
+
+          <p>We play a part in every issue that matters to people in Scotland – from health, education, housing and crime, to transport, agriculture, culture and the economy, plus many more.</p>
+
+          <p>We employ people from all walks of life, people with all sorts of skills, strengths and talents.</p>
+
+          <p>For information about working for us and to access job vacancies and opportunities go to:&nbsp;<a href="http://www.work-for-scotland.org/">http://www.work-for-scotland.org</a></p>
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: Jobs and vacancies
+        govscot:url: /about/contact-information/jobs-vacancies
+    /jobs-and-vacancies[3]:
+      jcr:primaryType: govscot:SiteItem
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 74406ea1-54c4-4a05-81f4-1bbbc42afc2a
+      govscot:metaDescription: Jobs and vacancies at the Scottish Government
+      govscot:seoTitle: Jobs and vacancies at the Scottish Government
+      govscot:summary: Jobs and vacancies at the Scottish Government
+      govscot:title: Jobs and vacancies
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostd:tags: [Jobs and vacancies, work for scotland]
+      hippostdpubwf:createdBy: jyothish.sathyan@gov.scot
+      hippostdpubwf:creationDate: 2018-08-16T11:19:20.784+01:00
+      hippostdpubwf:lastModificationDate: 2018-09-11T18:30:45.346+01:00
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippostdpubwf:publicationDate: 2018-09-11T18:30:48.927+01:00
+      hippotranslation:id: a4a66235-c29d-4b28-b815-52b84deca28d
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <h1>Jobs and vacancies</h1>
+
+          <p>We play a part in every issue that matters to people in Scotland – from health, education, housing and crime, to transport, agriculture, culture and the economy, plus many more.</p>
+
+          <p>We employ people from all walks of life, people with all sorts of skills, strengths and talents.</p>
+
+          <p>For information about working for us and to access job vacancies and opportunities go to:&nbsp;<a href="http://www.work-for-scotland.org/">http://www.work-for-scotland.org</a></p>
+      /govscot:ExternalLink:
+        jcr:primaryType: govscot:ExternalLink
+        govscot:title: Jobs and vacancies
+        govscot:url: /about/contact-information/jobs-vacancies
+  /cookies:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 29bda5e4-ff30-4919-a925-23b2aea26cee
+    hippo:name: Cookies
+    /cookies:
+      jcr:primaryType: govscot:CookiePage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: af26ce38-4910-48fd-b9bd-36eb40799be8
+      govscot:metaDescription: Cookie Information for gov.scot.
+      govscot:seoTitle: Cookies
+      govscot:slug: cookies
+      govscot:summary: Cookie Information for gov.scot.
+      govscot:title: Cookies
+      hippo:availability: [live, preview]
+      hippo:name: Cookies
+      hippostd:state: published
+      hippostd:tags: [mouseflow, cookies, privacy, google]
+      hippostdpubwf:createdBy: migration
+      hippostdpubwf:creationDate: 2021-12-09T11:27:01.652Z
+      hippostdpubwf:lastModificationDate: 2021-12-09T11:27:01.652Z
+      hippostdpubwf:lastModifiedBy: migration
+      hippotranslation:id: 3cf91e52-ca6f-42c3-b2f6-c19e6434433d
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |2
+
+          <p>A cookie lets a website recognise your device and store some information about your preferences or interactions.</p>
+
+          <h2>Why we use cookies</h2>
+
+          <p>We use gov.scot cookie tracking data to make informed decisions on whether the site is meeting your needs, which leads to us making improvements. For example, we monitor how much traffic each part of the site gets and work to improve areas which are not being found when they should be.</p>
+
+          <div class="note info-note">The cookies that we set on gov.scot cannot be used to identify you personally. <a href="https://ico.org.uk/your-data-matters/online/cookies/">Find out more about how to manage cookies for all websites</a></div>
+
+          <h2>Turn cookies on or off</h2>
+
+          <p>We use 3 main types of cookie on our website. You can choose which cookies you're happy for us to use. Any data collected is anonymous.</p>
+      /govscot:additionalContent:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |2-
+
+          <h2>Google Analytics</h2>
+
+          <p>We use Google Analytics to collect information about how you use gov.scot.</p>
+
+          <p>We store information about:</p>
+
+          <ul>
+              <li>the pages you visit and how long you spend on each page</li>
+              <li>how you got to gov.scot</li>
+              <li>what you click on while you're visiting gov.scot</li>
+          </ul>
+
+          <p>We do not:</p>
+
+          <ul>
+              <li>collect information that can be used to identify you; for example, we never receive your name or address</li>
+              <li>make any attempt to find out the identities of people visiting gov.scot</li>
+              <li>allow the tools that we use to find out the identities of people visiting gov.scot</li>
+              <li>sell, trade or give your details to third parties, unless we are required to do it by law</li>
+          </ul>
+
+          <p>All information we get through cookies and analytics will be treated in confidence.</p>
+
+          <p>We anonymise the last 3 digits of all gov.scot user IP addresses for Google Analytics, so that we can ensure that you are protected (<a href="https://support.google.com/analytics/answer/2763052?hl=en">you can read more about how this works here</a>). We can only see a general overview of which regions and cities you may come from, not where individuals access from.</p>
+
+          <p><a href="https://support.google.com/analytics/answer/2838718?hl=en-GB">Find out more about security and privacy in Google Analytics.</a></p>
+
+          <p>You can <a href="https://tools.google.com/dlpage/gaoptout">opt out of Google Analytics</a> cookies.</p>
+
+          <table class="ds_table">
+              <caption>Google Analytics' cookies</caption>
+              <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Information</th>
+                  <th>Expiry</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>_ga</td>
+                  <td>This is used to understand and differentiate between different users.</td>
+                  <td>38 Months</td>
+              </tr>
+              <tr>
+                  <td>_gid</td>
+                  <td>_gid has a different ID for each page set on, and a timestamp. This assists with plotting user journeys.</td>
+                  <td>24 Hours</td>
+              </tr>
+              <tr>
+                  <td>_gat</td>
+                  <td>We use Google Tag Manager to tailor our tracking in case we have different elements that are being tested. For example, setting a tag to track how far a user is having to scroll down a long page. The _gat tag pushes the request rate through quicker.</td>
+                  <td>1 Minute</td>
+              </tr>
+              </tbody>
+          </table>
+
+          <h2>YouTube</h2>
+
+          <p>Pages on gov.scot which contain YouTube videos will not set third-party cookies (we use YouTube-nocookie.com — <a href="https://support.google.com/youtube/answer/171780?hl=en-GB">you can read more here</a>).</p>
+
+          <h2>Further information</h2>
+
+          <p>You can email the performance team for further information. Email: <a href="mailto:performance@gov.scot">performance@gov.scot</a></p>
+
+          <p>All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>, except for graphic assets and where otherwise stated</p>
+
+          <p>&copy; Crown Copyright</p>

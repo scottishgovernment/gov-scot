@@ -1,0 +1,195 @@
+/content/documents/govscot/feed:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: a83d6447-c0e6-421f-9ab1-8c434c1c944a
+  hippo:name: Feed
+  hippostd:foldertype: [new-rss-feed]
+  /news:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 60fcbf85-8bc2-4282-a678-248535a1d580
+    hippo:name: News
+    hippo:versionHistory: f3a43202-1cfd-44c4-ad94-6bd1f5cb12f0
+    /news[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: aa9a70c3-b869-4e3a-8b0d-771e57d9049c
+      feed:category: ['']
+      feed:copyright: ''
+      feed:description: News from Scottish Government
+      feed:documentType: govscot:News
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: govscot:publicationDate
+      feed:title: Scottish Government News - News
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2020-04-23T16:08:50.210+01:00
+      hippostdpubwf:lastModificationDate: 2020-04-23T16:10:20.762+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /news[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: ed0d01f7-ad0e-4ffd-a8b9-b7b87e1c6b68
+      feed:category: ['']
+      feed:copyright: ''
+      feed:description: News from Scottish Government
+      feed:documentType: govscot:News
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: govscot:publicationDate
+      feed:title: Scottish Government News - News
+      feed:webMaster: ''
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2020-04-23T16:08:50.210+01:00
+      hippostdpubwf:lastModificationDate: 2020-04-23T16:08:50.453+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /news[3]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 10f1f30d-c2e6-4817-ab1a-318605b51d0b
+      feed:category: ['']
+      feed:copyright: ''
+      feed:description: News from Scottish Government
+      feed:documentType: govscot:News
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: govscot:publicationDate
+      feed:title: Scottish Government News - News
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2020-04-23T16:08:50.210+01:00
+      hippostdpubwf:lastModificationDate: 2020-04-23T16:10:20.762+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:publicationDate: 2020-04-23T16:10:24.098+01:00
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /marine-news:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 02ce039f-e018-46a4-bf43-a9debf05af32
+    hippo:name: Marine news
+    hippo:versionHistory: 1d8e82bd-12c8-4e28-a4a4-62249848b2af
+    /marine-news[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 0b013e4e-e72d-4c6b-b210-3a2e9ad40a33
+      feed:category: []
+      feed:copyright: ''
+      feed:description: Marine news from Scottish Government
+      feed:documentType: govscot:News
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: govscot:publicationDate
+      feed:title: Scottish Government News - Marine News
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2020-05-28T11:13:33.860+01:00
+      hippostdpubwf:lastModificationDate: 2020-05-28T11:36:34.197+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /marine-news[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 4be20949-89e5-47bd-940c-0f1a90c62d6e
+      feed:category: []
+      feed:copyright: ''
+      feed:description: Marine news from Scottish Government
+      feed:documentType: govscot:News
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: govscot:publicationDate
+      feed:title: Scottish Government News - Marine News
+      feed:webMaster: ''
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2020-05-28T11:13:33.860+01:00
+      hippostdpubwf:lastModificationDate: 2020-05-28T11:36:15.919+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /marine-news[3]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: db36039f-02e5-4f62-a671-02d25441bd07
+      feed:category: [Marine]
+      feed:copyright: ''
+      feed:description: Marine news from Scottish Government
+      feed:documentType: govscot:News
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: govscot:publicationDate
+      feed:title: Scottish Government News - Marine News
+      feed:webMaster: ''
+      hippo:availability: []
+      hippostd:state: published
+      hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:creationDate: 2020-05-28T11:13:33.860+01:00
+      hippostdpubwf:lastModificationDate: 2020-05-28T11:18:07.488+01:00
+      hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+      hippostdpubwf:publicationDate: 2020-05-28T11:18:11.439+01:00
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []

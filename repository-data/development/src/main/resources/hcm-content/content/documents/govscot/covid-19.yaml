@@ -1,0 +1,82 @@
+/content/documents/govscot/covid-19:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+  jcr:uuid: 5a51d9d3-4fdf-47d0-aefc-744fed135b40
+  hippo:name: COVID-19
+  hippo:versionHistory: 433b35ca-ebac-4470-a82c-63d9c5a7480e
+  /covid-19[1]:
+    jcr:primaryType: govscot:ImportantBanner
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: b5003eee-484c-494e-8740-0d326e306e75
+    hippo:availability: []
+    hippostd:state: draft
+    hippostdpubwf:createdBy: christian.storstein@gov.scot
+    hippostdpubwf:creationDate: 2020-03-18T17:18:07.169Z
+    hippostdpubwf:lastModificationDate: 2021-04-09T14:34:11.634+01:00
+    hippostdpubwf:lastModifiedBy: kenneth.mccalman@gov.scot
+    hippotranslation:id: 4ef0ab8c-d707-47be-a794-03aad657a483
+    hippotranslation:locale: document-type-locale
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: '<p><a href="coronavirus-covid-19">Coronavirus (COVID-19):
+        what you need to know</a>&nbsp;</p>'
+      /coronavirus-covid-19:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 0172b667-78d2-406a-a590-6478d878caaa
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:suppressed:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: 0172b667-78d2-406a-a590-6478d878caaa
+  /covid-19[2]:
+    jcr:primaryType: govscot:ImportantBanner
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: 37b2a8d4-557d-4f34-83c6-217aacd18528
+    hippo:availability: [preview]
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: christian.storstein@gov.scot
+    hippostdpubwf:creationDate: 2020-03-18T17:18:07.169Z
+    hippostdpubwf:lastModificationDate: 2020-03-20T15:42:14.955Z
+    hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
+    hippotranslation:id: 4ef0ab8c-d707-47be-a794-03aad657a483
+    hippotranslation:locale: document-type-locale
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: '<p><a href="coronavirus-covid-19">Coronavirus (COVID-19):
+        what you need to know</a>&nbsp;</p>'
+      /coronavirus-covid-19:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 0172b667-78d2-406a-a590-6478d878caaa
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:suppressed:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: 0172b667-78d2-406a-a590-6478d878caaa
+  /covid-19[3]:
+    jcr:primaryType: govscot:ImportantBanner
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 89f0066b-c524-48b8-8222-a12add984fae
+    hippo:availability: [live]
+    hippostd:state: published
+    hippostdpubwf:createdBy: christian.storstein@gov.scot
+    hippostdpubwf:creationDate: 2020-03-18T17:18:07.169Z
+    hippostdpubwf:lastModificationDate: 2020-03-20T15:42:14.955Z
+    hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
+    hippostdpubwf:publicationDate: 2021-04-09T14:47:45.933+01:00
+    hippotranslation:id: 4ef0ab8c-d707-47be-a794-03aad657a483
+    hippotranslation:locale: document-type-locale
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: '<p><a href="coronavirus-covid-19">Coronavirus (COVID-19):
+        what you need to know</a>&nbsp;</p>'
+      /coronavirus-covid-19:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 0172b667-78d2-406a-a590-6478d878caaa
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:suppressed:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: 0172b667-78d2-406a-a590-6478d878caaa

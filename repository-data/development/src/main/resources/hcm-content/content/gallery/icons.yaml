@@ -1,0 +1,6 @@
+/content/gallery/icons:
+  jcr:primaryType: hippogallery:stdImageGallery
+  jcr:mixinTypes: ['mix:versionable']
+  jcr:uuid: 5ff6e661-d69c-4855-8b0e-fecaebb82284
+  hippostd:foldertype: [new-image-folder]
+  hippostd:gallerytype: ['hippogallery:imageset']

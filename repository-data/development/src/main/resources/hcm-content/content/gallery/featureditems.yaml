@@ -1,0 +1,8 @@
+/content/gallery/featureditems:
+  .meta:order-before: banners
+  jcr:primaryType: hippogallery:stdImageGallery
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: 33ed2f93-ecf2-4cd1-a7dd-ebdf4cf9ee79
+  hippo:name: Featured items
+  hippostd:foldertype: [new-govscot-FeaturedItems-folder]
+  hippostd:gallerytype: ['govscot:FeaturedItems']
