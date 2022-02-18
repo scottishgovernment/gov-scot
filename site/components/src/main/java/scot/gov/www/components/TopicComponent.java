@@ -38,6 +38,8 @@ TopicComponent extends BaseHstComponent {
 
     private static final String DISPLAY_DATE = "govscot:displayDate";
 
+    private static final String TITLE = "govscot:title";
+
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -68,7 +70,7 @@ TopicComponent extends BaseHstComponent {
     private void populatePoliciesAndDirectorates(HippoBean base, Topic topic, HstRequest request) {
         try {
             HstQuery query = ContentBeanUtils.createIncomingBeansQuery(topic, base, "*/@hippo:docbase", Policy.class, false);
-            query.addOrderByAscending("govscot:title");
+            query.addOrderByAscending(TITLE);
             HippoBeanIterator policies = executeQueryLoggingException(query, request, "policies");
             populateDirectorates(policies, request);
         } catch (QueryException e) {
@@ -93,7 +95,7 @@ TopicComponent extends BaseHstComponent {
 
         // now add them to a list and sort them by name
         List<HippoBean> directorates = directoratesById.values().stream()
-                .sorted(comparing(bean -> bean.getSingleProperty("govscot:title"))).collect(toList());
+                .sorted(comparing(bean -> bean.getSingleProperty(TITLE))).collect(toList());
         request.setAttribute("directorates", directorates);
     }
 
@@ -179,7 +181,7 @@ TopicComponent extends BaseHstComponent {
         return filter;
     }
 
-    private HstQuery topicLinkedBeansQuery(Topic topic, HippoBean base, Class linkedClass, String orderBy) {
+    private HstQuery topicLinkedBeansQuery(Topic topic, HippoBean base, Class linkedClass, String dateField) {
         try {
             HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
                     topic,
@@ -187,7 +189,8 @@ TopicComponent extends BaseHstComponent {
                     "*/@hippo:docbase",
                     linkedClass,
                     true);
-            query.addOrderByDescending(orderBy);
+            query.addOrderByDescending(dateField);
+            query.addOrderByAscending(TITLE);
             query.setLimit(3);
             return query;
         } catch (QueryException e) {

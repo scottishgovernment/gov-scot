@@ -79,18 +79,33 @@
 
 </#if>
 
-
 <#if document??>
     <@hst.headContribution category="footerScripts">
         <script type="module" src="<@hst.webfile path="/assets/scripts/cookie-preferences.js"/>"></script>
     </@hst.headContribution>
+
     <@hst.headContribution category="footerScripts">
         <script nomodule="true" src="<@hst.webfile path="/assets/scripts/cookie-preferences.es5.js"/>"></script>
     </@hst.headContribution>
 
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>

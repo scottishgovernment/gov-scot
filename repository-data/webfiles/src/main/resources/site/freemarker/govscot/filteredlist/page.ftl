@@ -40,6 +40,7 @@
     <@hst.headContribution category="pageTitle">
         <title>${index.title} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${index.metaDescription}"/>
     </@hst.headContribution>

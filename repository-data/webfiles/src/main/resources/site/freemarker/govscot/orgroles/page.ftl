@@ -13,7 +13,9 @@
             </div>
 
             <div class="ds_layout__sidebar">
+                <!--noindex-->
                 <@hst.include ref="side-menu"/>
+                <!--endnoindex-->
             </div>
 
             <div class="ds_layout__content">
@@ -41,9 +43,24 @@
 </#if>
 
 <#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>

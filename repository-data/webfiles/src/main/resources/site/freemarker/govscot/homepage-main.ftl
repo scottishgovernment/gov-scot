@@ -297,6 +297,13 @@
                                 <img src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
                             </picture>
 
+                            <#--  <picture class="gov_homepage-fm__image">
+                                <source srcset="<@hst.link hippobean=document.fmImageLandscape.smallcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.smallcolumnsdoubled/> 2x" media="(max-width: 767px)">
+                                <source srcset="<@hst.link hippobean=document.fmImageLandscape.mediumsixcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.mediumsixcolumnsdoubled/> 2x" media="(max-width: 991px)">
+                                <source srcset="<@hst.link hippobean=document.fmImagePortrait.largetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.largetwocolumnsdoubled/> 2x" media="(max-width: 1199px)">
+
+                                <img src="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/>" srcset="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.xlargetwocolumnsdoubled/> 2x">
+                            </picture>  -->
 
                             <div class="gov_homepage-fm__content">
                                 <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />

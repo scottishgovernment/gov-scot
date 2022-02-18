@@ -19,6 +19,7 @@
                 <@hst.html hippohtml=document.content/>
             </#if>
 
+            <!--noindex-->
             <form id="payment-form" method="post">
 
                 <div id="error-summary" class="ds_error-summary  fully-hidden  flashable" aria-labelledby="error-summary-title" role="alert">
@@ -58,6 +59,7 @@
 
                 <button id="submit-payment" class="ds_button" name="submit">Submit payment</button>
             </form>
+            <!--endnoindex-->
         </div>
 
         <div class="ds_layout__feedback">
@@ -75,11 +77,26 @@
 </@hst.headContribution>
 
 <#if document??>
-    <@hst.headContribution category="pageTitle">
-    <title>${document.title?html} - gov.scot</title>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
     </@hst.headContribution>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
+    <@hst.headContribution category="pageTitle">
+        <title>${document.title?html} - gov.scot</title>
+    </@hst.headContribution>
+
     <@hst.headContribution>
-    <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

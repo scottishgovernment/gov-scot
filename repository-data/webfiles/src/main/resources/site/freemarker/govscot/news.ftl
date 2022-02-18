@@ -19,7 +19,7 @@
                             <dd class="ds_metadata__value">
                                 <#list document.topics as topic>
                                     <@hst.link var="link" hippobean=topic/>
-                                    <a data-navigation="topic-${topic?index + 1}" href="${link}">${topic.title}</a><#sep>, </#sep>
+                                    <a data-navigation="topic-${topic?index + 1}" href="${link}" class="sg-meta__topic">${topic.title}</a><#sep>, </#sep>
                                 </#list>
                             </dd>
                         </div>
@@ -42,6 +42,7 @@
             </div>
 
             <div class="ds_layout__sidebar">
+                <!--noindex-->
                 <div class="ds_article-aside">
                     <h2>Contact</h2>
                     <p>
@@ -69,6 +70,7 @@
                         </ul>
                     </div>
                 </#if>
+                <!--endnoindex-->
             </div>
 
             <div class="ds_layout__feedback">
@@ -86,9 +88,14 @@
 <#if document??>
     <#include "common/schema.article.ftl"/>
 
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="News"/>
+    </@hst.headContribution>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>

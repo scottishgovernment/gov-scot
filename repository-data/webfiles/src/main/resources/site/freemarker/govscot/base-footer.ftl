@@ -3,7 +3,7 @@
 
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
-
+<!--noindex-->
 <footer class="ds_site-footer  ds_reversed">
     <aside class="gov_secondary-footer">
         <div class="ds_wrapper">
@@ -85,3 +85,4 @@
         </div>
     </div>
 </footer>
+<!--endnoindex-->

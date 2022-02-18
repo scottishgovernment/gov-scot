@@ -94,4 +94,43 @@
 <meta name="twitter:image" content="${imagelink}" />
 </@hst.headContribution>
 
+<!-- DC Meta Tags -->
+
+<#if title??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${title}"/>
+    </@hst.headContribution>
+<#else>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
+</#if>
+
+<#if parentTitle??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title.series" content="${parentTitle}"/>
+    </@hst.headContribution>
+</#if>
+
+<@hst.headContribution category="dcMeta">
+    <meta name="dc.description" content="${document.summary}"/>
+</@hst.headContribution>
+
+<#if document.tags??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+    </@hst.headContribution>
+</#if>
+
+<#if document.displayDate??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.displayDate.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+    </@hst.headContribution>
+<#elseif document.publicationDate??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.publicationDate.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+     </@hst.headContribution>
+ </#if>
+
+
 </#if>

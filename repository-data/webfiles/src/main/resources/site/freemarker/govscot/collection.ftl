@@ -32,7 +32,7 @@
 
                 <ul class="ds_contents-nav__list">
                     <#list document.groups as group>
-                        <#if group.collectionItems?has_content>
+                        <#if group.collectionItems?has_content || group.groupTitle?has_content>
                             <li class="ds_contents-nav__item">
                                 <a href="#${group.groupTitle?lower_case?replace(" ","")}" class="ds_contents-nav__link" data-navigation-index="${group?index}">${group.groupTitle}</a>
                             </li>
@@ -112,17 +112,32 @@
     </main>
 </div>
 
-
-
-    <@hst.headContribution category="pageTitle">
-    <title>${document.title?html} - gov.scot</title>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
     </@hst.headContribution>
-    <@hst.headContribution>
 
-    <#if document.metaDescription??>
-        <meta name="description" content="${document.metaDescription?html}"/>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
     </#if>
 
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Collection"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="pageTitle">
+        <title>${document.title?html} - gov.scot</title>
+    </@hst.headContribution>
+
+    <@hst.headContribution>
+        <#if document.metaDescription??>
+            <meta name="description" content="${document.metaDescription?html}"/>
+        </#if>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

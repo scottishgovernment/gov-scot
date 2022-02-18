@@ -11,10 +11,10 @@
         <div class="ds_layout__header">
             <header class="gov_feature-header" id="page-content">
                 <div class="gov_feature-header__content">
-                    <h1 class="gov_feature-header__title">${document.title}</h1>
+                    <h1 class="gov_feature-header__title" id="sg-meta__person-role">${document.title}</h1>
                     <#if document.incumbent??>
                         <p class="gov_feature-header__subtitle">Current role holder:
-                            <b>${document.incumbent.title}</b>
+                            <b id="sg-meta__person-name">${document.incumbent.title}</b>
                         </p>
                     </#if>
                 </div>
@@ -90,6 +90,7 @@
         </div>
 
         <div class="ds_layout__latest">
+            <!--noindex-->
             <section id="latest-news" class="gov_content-block">
                 <h2 class="gov_content-block__title">
                     News
@@ -111,7 +112,9 @@
                     <p>There are no news items to display.</p>
                 </#if>
             </section>
+            <!--endnoindex-->
 
+            <!--noindex-->
             <section id="latest-speeches-statements" class="gov_content-block">
                 <h2 class="gov_content-block__title">
                     Speeches and statements
@@ -133,6 +136,7 @@
                     <p>There are no speeches or statements to display.</p>
                 </#if>
             </section>
+            <!--endnoindex-->
         </div>
 
         <div class="ds_layout__featured">
@@ -277,12 +281,37 @@
 </#if>
 
 <#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Featured role"/>
+    </@hst.headContribution>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
+
+    <#if document.image??>
+        <@hst.headContribution category="facebookMeta">
+            <meta property="og:image" content="<@hst.link hippobean=document.image.xlargesixcolumnsdoubled fullyQualified=true/>" />
+        </@hst.headContribution>
+    </#if>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "common/canonical.ftl" />

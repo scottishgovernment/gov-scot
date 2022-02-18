@@ -85,12 +85,15 @@
                                     </a>
                                 </#if>
                             </#if>
+
+                            <!--noindex-->
                             <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                 <span class="gov_supporting-documents__button-icon">
                                     <svg aria-hidden="true" role="img"><use xlink:href="${iconspath}#expand_more"></use></svg>
                                 </span>
                                 <span class="gov_supporting-documents__button-text">Supporting documents</span>
                             </a>
+                            <!--endnoindex-->
                         </div>
                     </#if>
                 </div>
@@ -101,6 +104,7 @@
             <div class="ds_layout  gov_layout--publication">
                 <div class="ds_layout__sidebar">
                     <#if currentPage != document>
+                        <!--noindex-->
                         <nav class="ds_side-navigation  ds_no-margin--top" data-module="ds-side-navigation">
                             <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
                             <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
@@ -137,6 +141,7 @@
                                 </#list>
                             </ul>
                         </nav>
+                        <!--endnoindex-->
                     </#if>
                 </div>
 
@@ -248,6 +253,7 @@
 
                             <@hst.html hippohtml=currentPage.content/>
 
+                            <!--noindex-->
                             <nav class="ds_sequential-nav" aria-label="Article navigation">
                                 <#if prev??>
                                     <@hst.link var="link" hippobean=prev/>
@@ -271,6 +277,7 @@
                                     </div>
                                 </#if>
                             </nav>
+                            <!--endnoindex-->
                         </article>
                     </#if>
                 </div>
@@ -295,9 +302,14 @@
 </@hst.headContribution>
 
 <#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Publication"/>
+    </@hst.headContribution>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>

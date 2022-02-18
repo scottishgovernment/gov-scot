@@ -33,6 +33,7 @@
     </#if>
     </div>
 
+    <!--noindex-->
     <nav class="ds_sequential-nav" aria-label="Article navigation">
         <#if prev??>
             <@hst.link var="link" hippobean=prev/>
@@ -56,4 +57,5 @@
             </div>
         </#if>
     </nav>
+    <!--endnoindex-->
 </article>

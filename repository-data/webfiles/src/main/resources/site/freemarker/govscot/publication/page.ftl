@@ -16,7 +16,7 @@
             </#if>
             <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
                 <div class="gov_sublayout__title">
-                    <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
+                    <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - <span id="sg-meta__publication-type">${document.label}</span></#if></span>
                     <h1 class="ds_page-header__title">${document.title?html}</h1>
                 </div>
 
@@ -48,6 +48,7 @@
                             <@hst.link var="documentinline" hippobean=mainDocument.document>
                             </@hst.link>
 
+                            <!--noindex-->
                             <#if filenameExtension == "PDF">
                                 <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
                                     <img
@@ -68,6 +69,7 @@
                                     <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
                                 </a>
                             </#if>
+                            <!--endnoindex-->
 
                             <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                 <span class="gov_supporting-documents__button-icon">
@@ -87,17 +89,21 @@
             </#if>
             <div class="ds_layout  <#if hasSidebar!false>gov_layout--publication<#else>gov_layout--publication--no-sidebar</#if>">
                 <#if pages??>
+                    <!--noindex-->
                     <div class="ds_layout__sidebar">
                         <#include 'side-menu.ftl'/>
                     </div>
+                    <!--endnoindex-->
                 </#if>
 
                 <div class="ds_layout__content">
                     <#if isMultiPagePublication>
                         <div class="body-content  publication-content  js-content-wrapper">
+                            <@hst.manageContent hippobean=currentPage />
                             <@hst.html hippohtml=currentPage.content/>
                         </div>
 
+                        <!--noindex-->
                         <nav class="ds_sequential-nav" aria-label="Article navigation">
                             <#if prev??>
                                 <@hst.link var="link" hippobean=prev/>
@@ -121,6 +127,7 @@
                                 </div>
                             </#if>
                         </nav>
+                        <!--endnoindex-->
 
                         <@hst.html hippohtml=document.contact var="contact"/>
                         <#if contact?has_content>
@@ -165,7 +172,6 @@
                                 </#if>
                                 <#--! END 'minutes' format-specific fields-->
 
-                                <#--! BEGIN 'FOI/EIR release' format-specific fields-->
                                 <@hst.html hippohtml=document.request var="request"/>
                                 <#if request?has_content>
                                     <h2>Information requested</h2>
@@ -247,11 +253,15 @@
 </@hst.headContribution>
 
 <#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Publication"/>
+    </@hst.headContribution>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
-    <@hst.headContribution>
 
+    <@hst.headContribution>
         <#if document.metaDescription??>
             <meta name="description" content="${document.metaDescription?html}"/>
         </#if>

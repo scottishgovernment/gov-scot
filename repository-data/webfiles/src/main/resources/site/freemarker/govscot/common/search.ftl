@@ -5,7 +5,7 @@
 <#if parameters?? && parameters['q']??>
     <#assign term = parameters['q'][0]?j_string />
 </#if>
-
+<!--noindex-->
 <div class="ds_site-search">
     <form role="search" class="ds_site-search__form" method="GET" action="<@hst.link path='/search/'/>">
         <label class="ds_label  visually-hidden" for="site-search">Search</label>
@@ -21,3 +21,4 @@
         </div>
     </form>
 </div>
+<!--endnoindex-->

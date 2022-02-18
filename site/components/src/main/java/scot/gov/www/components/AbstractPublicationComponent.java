@@ -15,9 +15,9 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.ContentBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.PolicyLatest;
-import scot.gov.www.beans.Collection;
+import scot.gov.www.beans.*;
 
+import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +36,8 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
 
     private static final String COLLECTIONS = "collections";
 
+    private static final String TITLE = "title";
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HstRequestContext context = request.getRequestContext();
@@ -44,6 +46,7 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
             send404(request, response);
             return;
         }
+
         HippoBean publication = getPublication(document);
         if (publication == null) {
             send404(request, response);
@@ -53,6 +56,7 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
         populateRequest(publication, document, request, response);
         populatePolicyAttribution(request, publication);
         populateCollectionAttribution(request, publication);
+        populateTitles(document, publication, request);
     }
 
     /**
@@ -166,5 +170,31 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
 
         return pages.get(index + 1);
     }
+
+    /**
+     * populate the title and parent title attributes used to expose metatdata for funnelback.
+     */
+    protected void populateTitles(HippoBean document, HippoBean publication, HstRequest request) {
+        String publicationTitle = ((Publication) publication).getTitle();
+
+        if (document.isSelf(publication)) {
+            request.setAttribute(TITLE, publicationTitle);
+            return;
+        }
+
+        request.setAttribute("parentTitle", publicationTitle);
+        if (document.isHippoFolderBean() && DOCUMENTS.equals(document.getName())) {
+            request.setAttribute(TITLE, "Supporting documents");
+            return;
+        }
+
+        try {
+            String title = document.getNode().getProperty("govscot:title").getString();
+            request.setAttribute(TITLE, title);
+        } catch (RepositoryException e) {
+            LOG.error("Failed to get title of {}", document.getPath(), e);
+        }
+    }
+
 
 }

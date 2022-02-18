@@ -24,7 +24,7 @@
                 <ul class="ds_contents-nav__list">
                     <#list collections as collection>
                         <li class="ds_contents-nav__item">
-                            <a class="ds_contents-nav__link" href="<@hst.link hippobean=collection/>">${collection.title}</a>
+                            <a class="ds_contents-nav__link  sg-meta__collection" href="<@hst.link hippobean=collection/>">${collection.title}</a>
                         </li>
                     </#list>
                 </ul>

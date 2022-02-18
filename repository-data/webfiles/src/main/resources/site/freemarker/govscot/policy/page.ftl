@@ -13,7 +13,9 @@
         </div>
 
         <div class="ds_layout__sidebar">
+            <!--noindex-->
             <#include 'side-menu.ftl'>
+            <!--endnoindex-->
         </div>
 
         <div class="ds_layout__content">
@@ -37,9 +39,40 @@
 </#if>
 
 <#if document??>
+    <#if title??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.title" content="${title}"/>
+        </@hst.headContribution>
+    <#else>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.title" content="${document.title}"/>
+        </@hst.headContribution>
+    </#if>
+
+    <#if parentTitle??>
+        <@hst.headContribution category="dcMeta">
+        <meta name="dc.title.series" content="${parentTitle}"/>
+        </@hst.headContribution>
+    </#if>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Policy"/>
+    </@hst.headContribution>
+
     <@hst.headContribution category="pageTitle">
         <title>${index.title?html}<#if document.title != index.title>: ${document.title?html}</#if> - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>

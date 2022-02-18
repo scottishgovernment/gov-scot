@@ -3,3 +3,6 @@ Contact: mailto:vulnerabilitydisclosures@gov.scot
 
 # Our security policy
 Policy:  https://www.gov.scot/publications/vulnerability-disclosure-policy/
+
+# Expiry date
+Expires: 2023-02-28T00:00:00.000Z

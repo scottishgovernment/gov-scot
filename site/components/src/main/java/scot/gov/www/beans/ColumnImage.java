@@ -152,4 +152,37 @@ public class ColumnImage extends HippoGalleryImageSet {
         return getBean("govscot:smallcolumnsdoubled",
                 HippoGalleryImageBean.class);
     }
+
+    @HippoEssentialsGenerated(internalName = "govscot:mediumsixcolumns")
+    public HippoGalleryImageBean getMediumsixcolumns() {
+        return getBean("govscot:mediumsixcolumns", HippoGalleryImageBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:mediumsixcolumnsdoubled")
+    public HippoGalleryImageBean getMediumsixcolumnsdoubled() {
+        return getBean("govscot:mediumsixcolumnsdoubled",
+                HippoGalleryImageBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:largesixcolumns")
+    public HippoGalleryImageBean getLargesixcolumns() {
+        return getBean("govscot:largesixcolumns", HippoGalleryImageBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:largesixcolumnsdoubled")
+    public HippoGalleryImageBean getLargesixcolumnsdoubled() {
+        return getBean("govscot:largesixcolumnsdoubled",
+                HippoGalleryImageBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:xlargesixcolumns")
+    public HippoGalleryImageBean getXlargesixcolumns() {
+        return getBean("govscot:xlargesixcolumns", HippoGalleryImageBean.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:xlargesixcolumnsdoubled")
+    public HippoGalleryImageBean getXlargesixcolumnsdoubled() {
+        return getBean("govscot:xlargesixcolumnsdoubled",
+                HippoGalleryImageBean.class);
+    }
 }

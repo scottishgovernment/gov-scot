@@ -56,9 +56,6 @@
 
 [govscot:CoverImage] > hippogallery:imageset, hippogallery:relaxed
 
-[govscot:CovidRestrictionsLookup] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
-  orderable
-
 [govscot:Directorate] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -153,12 +150,6 @@
 [govscot:UpdateHistory] > hippo:compound, hippostd:relaxed
 
 [govscot:analytics] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
-  orderable
-
-[govscot:covidlevel] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
-  orderable
-
-[govscot:covidrestriction] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated

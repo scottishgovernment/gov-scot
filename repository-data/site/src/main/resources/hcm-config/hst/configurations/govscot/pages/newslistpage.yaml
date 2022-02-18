@@ -12,8 +12,8 @@ definitions:
           hst:label: Filtered Results List
           hst:parameternames: [sortField, sortOrder, includeSubtypes, showPagination,
             path, pageSize, documentTypes, searchTermPlural, searchTermSingular]
-          hst:parametervalues: ['govscot:publicationDate', desc, 'off', 'on', '',
-            '10', 'govscot:News', news items, news item]
+          hst:parametervalues: ['govscot:publicationDate,govscot:title', 'desc,asc', 'off',
+            'on', '', '10', 'govscot:News', news items, news item]
           hst:template: filteredlist.results
           hst:xtype: hst.item
         /side-filter:

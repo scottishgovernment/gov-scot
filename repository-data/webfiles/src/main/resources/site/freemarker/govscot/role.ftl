@@ -16,12 +16,12 @@
         <main id="main-content" class="ds_layout  gov_layout--role">
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <h1 class="ds_page-header__title">${document.title}</h1>
+                    <h1 class="ds_page-header__title" id="sg-meta__person-role">${document.title}</h1>
                     <dl class="ds_page-header__metadata  ds_metadata">
                         <#if document.incumbent??>
                             <div class="ds_metadata__item">
                                 <dt class="ds_metadata__key">Current role holder</dt>
-                                <dd class="ds_metadata__value">${document.incumbent.title}</dd>
+                                <dd class="ds_metadata__value" id="sg-meta__person-name">${document.incumbent.title}</dd>
                             </div>
                         </#if>
                     </dl>
@@ -107,12 +107,38 @@
 </#if>
 
 <#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Role"/>
+    </@hst.headContribution>
+
     <@hst.headContribution category="pageTitle">
         <title>${document.title?html} - gov.scot</title>
     </@hst.headContribution>
+
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>
+
+    <#if document.incumbent.image??>
+        <@hst.link var="ogimage" path='/assets/images/logos/SGLogo1200x630.png' fullyQualified=true/>
+        <@hst.headContribution category="facebookMeta">
+            <meta property="og:image" content="<@hst.link hippobean=document.incumbent.image.xlargedoubled fullyQualified=true/>" />
+        </@hst.headContribution>
+    </#if>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />

@@ -23,7 +23,7 @@
         fileName="${sys:catalina.base}/logs/hippo-site.log"
         filePattern="${sys:catalina.base}/logs/hippo-site.log.yyyy-MM-dd"
         createOnDemand="true">
-      <!-- LookupFilter key="jndi:logging/contextName" value="site" onMatch="ACCEPT"/ -->
+      <LookupFilter key="jndi:logging/contextName" value="site" onMatch="ACCEPT"/>
       <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
       <Policies>
         <SizeBasedTriggeringPolicy size="10MB"/>

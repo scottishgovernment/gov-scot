@@ -20,6 +20,8 @@ public class IssueComponent extends BaseHstComponent {
 
     private static final String DISPLAY_DATE = "govscot:displayDate";
 
+    private static final String TITLE = "govscot:title";
+
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
@@ -35,7 +37,7 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populatePolicies(HippoBean base, Issue issue, HstRequest request) {
         try {
-            HstQuery query = issueLinkedBeansQuery(issue, base, Policy.class, "govscot:title", -1);
+            HstQuery query = issueLinkedBeansQuery(issue, base, Policy.class, -1, TITLE);
             HstQueryResult result = query.execute();
             request.setAttribute("policies", result.getHippoBeans());
         } catch (QueryException e) {
@@ -45,7 +47,7 @@ public class IssueComponent extends BaseHstComponent {
 
     private void populateNews(HippoBean base, Issue issue, HstRequest request) {
         try {
-            HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, "govscot:publicationDate", 4);
+            HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, 4, "govscot:publicationDate");
             HippoBeanIterator taggedNews = taggedQuery.execute().getHippoBeans();
             request.setAttribute("news", taggedNews);
         } catch (QueryException e) {
@@ -56,8 +58,7 @@ public class IssueComponent extends BaseHstComponent {
     private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
 
         try {
-            HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, DISPLAY_DATE, 5);
-            LOG.info("publicationsQuery {}", publicationsQuery);
+            HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, 5, DISPLAY_DATE);
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
             request.setAttribute("publications", publications);
         } catch (QueryException e) {
@@ -65,11 +66,12 @@ public class IssueComponent extends BaseHstComponent {
         }
     }
 
-    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass, String sortField, int limit)
+    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass, int limit, String sortField)
             throws QueryException {
 
         HstQuery query = ContentBeanUtils.createIncomingBeansQuery(issue, base, "*/@hippo:docbase", linkedClass, true);
         query.addOrderByDescending(sortField);
+        query.addOrderByAscending(TITLE);
         query.setLimit(limit);
         return query;
     }

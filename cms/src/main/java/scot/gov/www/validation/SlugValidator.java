@@ -15,17 +15,12 @@ import org.onehippo.cms.services.validation.api.ValidationContextException;
 import org.onehippo.cms.services.validation.api.Validator;
 import org.onehippo.cms.services.validation.api.Violation;
 
+import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
+
 /**
- * Validate that the govscot:slug is unique.
- *
- * https://documentation.bloomreach.com/library/concepts/plugins/create-a-custom-field-validator.html
- *
+ * Validate that the govscot:slug is unique and only contains lowerc ase letters or hyphens
  */
 public class SlugValidator implements Validator<String> {
-
-    public SlugValidator(final Node config) {
-
-    }
 
     @Override
     public Optional<Violation> validate(final ValidationContext context, final String value) {
@@ -44,6 +39,10 @@ public class SlugValidator implements Validator<String> {
      * (with the exception of ones that share the same handle).
      */
     public boolean isValid(String documentType, String candidateSlug, Node node) throws RepositoryException {
+        if (containsInvalidCharacters(candidateSlug)) {
+            return false;
+        }
+
         Session session = UserSession.get().getJcrSession();
         String sql = String.format("SELECT * FROM %s WHERE govscot:slug = '%s'", documentType, candidateSlug);
         Query query = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL);
@@ -58,5 +57,11 @@ public class SlugValidator implements Validator<String> {
             }
         }
         return true;
+    }
+
+    public boolean containsInvalidCharacters(String slug) {
+        String withoutHyphens = slug.replace("-", "");
+        String lowercase = withoutHyphens.toLowerCase();
+        return !isAlphanumeric(lowercase) || !lowercase.equals(withoutHyphens);
     }
 }

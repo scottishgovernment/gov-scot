@@ -8,7 +8,6 @@ const commonEntry = {
     // format-specific entry points
     'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
     'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js',
-    'covid-lookup':                 './src/scripts/govscot/format.covid-lookup.js',
     'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
     'home':                         './src/scripts/govscot/format.home.js',
     'payment-form':                 './src/scripts/govscot/format.payment-form.js',

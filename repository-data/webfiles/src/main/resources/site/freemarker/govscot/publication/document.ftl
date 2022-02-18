@@ -34,7 +34,9 @@
 <div class="ds_wrapper">
     <div class="ds_layout  gov_layout--publication--no-sidebar">
         <div class="ds_layout__content">
+            <!--noindex-->
             <h2>Supporting documents</h2>
+            <!--endnoindex-->
 
             <#if groupedDocumentFolders??>
                 <#list groupedDocumentFolders as folder>
@@ -95,13 +97,17 @@
 </@hst.headContribution>
 
 <#if document??>
-    <@hst.headContribution category="pageTitle">
-    <title>${document.title?html} - gov.scot</title>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.format" content="Publication"/>
     </@hst.headContribution>
-    <@hst.headContribution>
 
+    <@hst.headContribution category="pageTitle">
+        <title>${document.title?html} - gov.scot</title>
+    </@hst.headContribution>
+
+    <@hst.headContribution>
         <#if document.metaDescription??>
-        <meta name="description" content="${document.metaDescription?html}"/>
+            <meta name="description" content="${document.metaDescription?html}"/>
         </#if>
     </@hst.headContribution>
 

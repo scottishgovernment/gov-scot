@@ -1,5 +1,5 @@
 <#include "../../include/imports.ftl">
-
+<!--noindex-->
 <#-- @ftlvariable name="breadcrumb" type="org.onehippo.forge.breadcrumb.om.Breadcrumb" -->
 <nav aria-label="Breadcrumb">
     <ol class="ds_breadcrumbs">
@@ -20,6 +20,7 @@
         </#if>
     </ol>
 </nav>
+<!--endnoindex-->
 
 <@hst.headContribution category="schema">
 <#if breadcrumbs??>

@@ -3,7 +3,9 @@
 <div class="ds_wrapper">
     <main id="main-content" class="ds_layout  gov_layout--about">
         <div class="ds_layout__sidebar">
+            <!--noindex-->
             <@hst.include ref="side-menu"/>
+            <!--endnoindex-->
         </div>
 
         <div class="ds_layout__header">
