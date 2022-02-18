@@ -347,6 +347,16 @@
                                     srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x"/>
                                 <img alt="The First Minister" class="homepage-about__image visible-xlarge" src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>"
                                     srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x"/>
+
+                                <#--  <img alt="The First Minister" class="homepage-about__image visible-xsmall" src="<@hst.link hippobean=document.fmImageLandscape.smallcolumns/>"
+                                    srcset="<@hst.link hippobean=document.fmImageLandscape.smallcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.smallcolumnsdoubled/> 2x"/>
+                                <img alt="The First Minister" class="homepage-about__image visible-medium" src="<@hst.link hippobean=document.fmImageLandscape.mediumsixcolumns/>"
+                                    srcset="<@hst.link hippobean=document.fmImageLandscape.mediumsixcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.mediumsixcolumnsdoubled/> 2x"/>
+                                <img alt="The First Minister" class="homepage-about__image visible-large" src="<@hst.link hippobean=document.fmImagePortrait.largetwocolumns/>"
+                                    srcset="<@hst.link hippobean=document.fmImagePortrait.largetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.largetwocolumnsdoubled/> 2x"/>
+                                <img alt="The First Minister" class="homepage-about__image visible-xlarge" src="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/>"
+                                    srcset="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.xlargetwocolumnsdoubled/> 2x"/>  -->
+
                             </div>
                         </div><!--
 
