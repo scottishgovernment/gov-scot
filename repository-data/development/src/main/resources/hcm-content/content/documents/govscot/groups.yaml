@@ -1,0 +1,380 @@
+/content/documents/govscot/groups:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  jcr:uuid: 8d2a19b8-d97b-4472-81dc-c547e94e20ab
+  hippo:name: Groups
+  hippostd:foldertype: [new-group]
+  /access-delivery-group:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 706f6e38-e976-4cee-bc95-f03c81b305de
+    hippo:name: Access Delivery Group
+    hippo:versionHistory: 8db8958f-320c-4b48-aab8-05c547dc5aae
+    /access-delivery-group[1]:
+      jcr:primaryType: govscot:Group
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: f167a4ab-c4f6-4335-9b71-4870158a2e92
+      govscot:metaDescription: Responsible for ensuring the whole education system
+        works together to widen access.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-746
+      govscot:seoTitle: Access Delivery Group
+      govscot:sme: ''
+      govscot:summary: Responsible for ensuring the whole education system works together
+        to widen access to higher education.
+      govscot:title: Access Delivery Group
+      hippo:availability: [live]
+      hippo:name: Access Delivery Group
+      hippostd:state: published
+      hippostd:tags: [education, ADG, socioeconomic inequality, access delivery group,
+        disadvantaged students]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
+      hippostdpubwf:lastModificationDate: 2022-02-11T10:59:25.126Z
+      hippostdpubwf:lastModifiedBy: Eniola.Onafowokan@gov.scot
+      hippostdpubwf:publicationDate: 2022-02-11T11:00:00.145Z
+      hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>To help the Scottish Government meet its goal of tackling
+          socioeconomic inequality in higher education by leading on the implementation
+          of the recommendations contained in the <a href="/publications/blueprint-fairness-final-report-commission-widening-access/">final
+          report of the Commission on Widening Access A Blueprint for Fairness</a>.</p>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: c132b69f-c60a-4f64-aa39-e8e0ddaf0266
+      /govscot:contactDetails:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><a href="mailto:Karen.Frew@gov.scot">Karen.Frew@gov.scot</a></p>
+
+          <p>0131 24 46737</p>
+
+          <p>Advanced Learning and Science Directorate<br />
+          7th Floor<br />
+          5 Atlantic Quay<br />
+          150 Broomielaw<br />
+          Glasgow<br />
+          G2 8LU</p>
+      /govscot:members:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <ul>
+           <li>Jamie Hepburn, Minister for Higher Education and Further Education, Youth Employment and Training (chair)</li>
+           <li>Peter Scott, Commissioner for Fair Access</li>
+           <li>Susan Stewart, Open University in Scotland</li>
+           <li>Sally Mapstone, University of St Andrews</li>
+           <li>Alastair Sim, Universities Scotland</li>
+           <li>Kirsty Conlon, Head of Learning and Teaching and Widening Access Policy</li>
+           <li>Jim Thewliss, School Leaders Scotland</li>
+           <li>Greg Dempster, Association of Head Teacher and Deputes in Scotland&nbsp;</li>
+           <li>Lydia Rohmer, Colleges Scotland</li>
+           <li>Andy Witty, College Scotland</li>
+           <li>Steph McKendry, Framework for Fair Access Governance Group</li>
+           <li>Toni Giugliano, NUS Scotland</li>
+           <li>Sofia Khan, NUS Scotland</li>
+           <li>Murdo Mathison, UCU Scotland</li>
+           <li>Vikki Boliver, Durham University</li>
+           <li><span><span><span>Andrew Creamer</span></span></span>, Education Scotland</li>
+           <li>Neil Croll, University of Glasgow</li>
+           <li>Russell Gunson, The Robertson Trust,</li>
+           <li>Linda O’Neill, CELCIS</li>
+           <li>Fiona Burns, SFC</li>
+           <li>James Dunphy, SFC</li>
+           <li>Lauren McNamara, SAAS</li>
+          </ul>
+
+          <p>Scottish Government officials:</p>
+
+          <ul>
+           <li>Shazia Razzaq</li>
+           <li>Debbie Browett</li>
+           <li>Karen Frew</li>
+           <li>Jonathon Sewell</li>
+           <li>Elaine Drennan</li>
+          </ul>
+      /govscot:relatedPublications[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: de0f8f65-61f8-46b4-9bbf-b2ae8056edc6
+      /govscot:relatedPublications[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: fdaa5fa7-8c13-4a3e-b911-e4f841c0f410
+      /govscot:relatedPublications[3]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: dbc30829-ffd1-40b1-a29d-6c47a70a422b
+      /govscot:relatedPublications[4]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 98dd5b63-e6a9-4806-9ac7-0e56c50f9505
+      /govscot:relatedPublications[5]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 356ee0b0-616d-42cc-8458-0d3aaec509f6
+      /govscot:relatedPublications[6]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 2bc4f45d-7cf1-42a1-8621-46dc3e15372b
+      /govscot:relatedPublications[7]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 8190b10b-7d23-454b-9240-c11750519cb0
+      /govscot:relatedPublications[8]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 9be60d53-c77e-4ea9-bc0c-e588db207d33
+      /govscot:relatedPublications[9]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: d365ad54-d336-4022-8697-c63ee562d607
+      /govscot:relatedPolicies[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 7a6e37fa-1b58-42a4-9d1a-63d9f7e71563
+      /govscot:relatedPolicies[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 06835768-a8b0-4559-b012-8f14af2f3a8b
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+    /access-delivery-group[2]:
+      jcr:primaryType: govscot:Group
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: ccd3dd6f-1498-4d0d-8282-c70cb19c2450
+      govscot:metaDescription: Responsible for ensuring the whole education system
+        works together to widen access.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-746
+      govscot:seoTitle: Access Delivery Group
+      govscot:sme: ''
+      govscot:summary: Responsible for ensuring the whole education system works together
+        to widen access to higher education.
+      govscot:title: Access Delivery Group
+      hippo:availability: [preview]
+      hippo:name: Access Delivery Group
+      hippostd:state: unpublished
+      hippostd:tags: [education, ADG, socioeconomic inequality, access delivery group,
+        disadvantaged students]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
+      hippostdpubwf:lastModificationDate: 2022-02-11T10:59:25.126Z
+      hippostdpubwf:lastModifiedBy: Eniola.Onafowokan@gov.scot
+      hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>To help the Scottish Government meet its goal of tackling
+          socioeconomic inequality in higher education by leading on the implementation
+          of the recommendations contained in the <a href="/publications/blueprint-fairness-final-report-commission-widening-access/">final
+          report of the Commission on Widening Access A Blueprint for Fairness</a>.</p>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: c132b69f-c60a-4f64-aa39-e8e0ddaf0266
+      /govscot:contactDetails:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><a href="mailto:Karen.Frew@gov.scot">Karen.Frew@gov.scot</a></p>
+
+          <p>0131 24 46737</p>
+
+          <p>Advanced Learning and Science Directorate<br />
+          7th Floor<br />
+          5 Atlantic Quay<br />
+          150 Broomielaw<br />
+          Glasgow<br />
+          G2 8LU</p>
+      /govscot:members:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <ul>
+           <li>Jamie Hepburn, Minister for Higher Education and Further Education, Youth Employment and Training (chair)</li>
+           <li>Peter Scott, Commissioner for Fair Access</li>
+           <li>Susan Stewart, Open University in Scotland</li>
+           <li>Sally Mapstone, University of St Andrews</li>
+           <li>Alastair Sim, Universities Scotland</li>
+           <li>Kirsty Conlon, Head of Learning and Teaching and Widening Access Policy</li>
+           <li>Jim Thewliss, School Leaders Scotland</li>
+           <li>Greg Dempster, Association of Head Teacher and Deputes in Scotland&nbsp;</li>
+           <li>Lydia Rohmer, Colleges Scotland</li>
+           <li>Andy Witty, College Scotland</li>
+           <li>Steph McKendry, Framework for Fair Access Governance Group</li>
+           <li>Toni Giugliano, NUS Scotland</li>
+           <li>Sofia Khan, NUS Scotland</li>
+           <li>Murdo Mathison, UCU Scotland</li>
+           <li>Vikki Boliver, Durham University</li>
+           <li><span><span><span>Andrew Creamer</span></span></span>, Education Scotland</li>
+           <li>Neil Croll, University of Glasgow</li>
+           <li>Russell Gunson, The Robertson Trust,</li>
+           <li>Linda O’Neill, CELCIS</li>
+           <li>Fiona Burns, SFC</li>
+           <li>James Dunphy, SFC</li>
+           <li>Lauren McNamara, SAAS</li>
+          </ul>
+
+          <p>Scottish Government officials:</p>
+
+          <ul>
+           <li>Shazia Razzaq</li>
+           <li>Debbie Browett</li>
+           <li>Karen Frew</li>
+           <li>Jonathon Sewell</li>
+           <li>Elaine Drennan</li>
+          </ul>
+      /govscot:relatedPublications[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: de0f8f65-61f8-46b4-9bbf-b2ae8056edc6
+      /govscot:relatedPublications[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: fdaa5fa7-8c13-4a3e-b911-e4f841c0f410
+      /govscot:relatedPublications[3]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: dbc30829-ffd1-40b1-a29d-6c47a70a422b
+      /govscot:relatedPublications[4]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 98dd5b63-e6a9-4806-9ac7-0e56c50f9505
+      /govscot:relatedPublications[5]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 356ee0b0-616d-42cc-8458-0d3aaec509f6
+      /govscot:relatedPublications[6]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 2bc4f45d-7cf1-42a1-8621-46dc3e15372b
+      /govscot:relatedPublications[7]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 8190b10b-7d23-454b-9240-c11750519cb0
+      /govscot:relatedPublications[8]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 9be60d53-c77e-4ea9-bc0c-e588db207d33
+      /govscot:relatedPublications[9]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: d365ad54-d336-4022-8697-c63ee562d607
+      /govscot:relatedPolicies[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 7a6e37fa-1b58-42a4-9d1a-63d9f7e71563
+      /govscot:relatedPolicies[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 06835768-a8b0-4559-b012-8f14af2f3a8b
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+    /access-delivery-group[3]:
+      jcr:primaryType: govscot:Group
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: b19bac35-336e-44e6-ba51-d9ff20f66e9d
+      govscot:metaDescription: Responsible for ensuring the whole education system
+        works together to widen access.
+      govscot:reportingTags: []
+      govscot:rubricId: GOV-746
+      govscot:seoTitle: Access Delivery Group
+      govscot:sme: ''
+      govscot:summary: Responsible for ensuring the whole education system works together
+        to widen access to higher education.
+      govscot:title: Access Delivery Group
+      hippo:availability: []
+      hippo:name: Access Delivery Group
+      hippostd:state: draft
+      hippostd:tags: [education, ADG, socioeconomic inequality, access delivery group,
+        disadvantaged students]
+      hippostdpubwf:createdBy: claire.delaney@gov.scot
+      hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
+      hippostdpubwf:lastModificationDate: 2022-02-11T10:58:45.011Z
+      hippostdpubwf:lastModifiedBy: Eniola.Onafowokan@gov.scot
+      hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>To help the Scottish Government meet its goal of tackling
+          socioeconomic inequality in higher education by leading on the implementation
+          of the recommendations contained in the <a href="/publications/blueprint-fairness-final-report-commission-widening-access/">final
+          report of the Commission on Widening Access A Blueprint for Fairness</a>.</p>
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: c132b69f-c60a-4f64-aa39-e8e0ddaf0266
+      /govscot:contactDetails:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><a href="mailto:Karen.Frew@gov.scot">Karen.Frew@gov.scot</a></p>
+
+          <p>0131 24 46737</p>
+
+          <p>Advanced Learning and Science Directorate<br />
+          7th Floor<br />
+          5 Atlantic Quay<br />
+          150 Broomielaw<br />
+          Glasgow<br />
+          G2 8LU</p>
+      /govscot:members:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <ul>
+           <li>Jamie Hepburn, Minister for Higher Education and Further Education, Youth Employment and Training (chair)</li>
+           <li>Peter Scott, Commissioner for Fair Access</li>
+           <li>Susan Stewart, Open University in Scotland</li>
+           <li>Sally Mapstone, University of St Andrews</li>
+           <li>Alastair Sim, Universities Scotland</li>
+           <li>Kirsty Conlon, Head of Learning and Teaching and Widening Access Policy</li>
+           <li>Jim Thewliss, School Leaders Scotland</li>
+           <li>Greg Dempster, Association of Head Teacher and Deputes in Scotland&nbsp;</li>
+           <li>Lydia Rohmer, Colleges Scotland</li>
+           <li>Andy Witty, College Scotland</li>
+           <li>Steph McKendry, Framework for Fair Access Governance Group</li>
+           <li>Toni Giugliano, NUS Scotland</li>
+           <li>Sofia Khan, NUS Scotland</li>
+           <li>Murdo Mathison, UCU Scotland</li>
+           <li>Vikki Boliver, Durham University</li>
+           <li><span><span><span>Andrew Creamer</span></span></span>, Education Scotland</li>
+           <li>Neil Croll, University of Glasgow</li>
+           <li>Russell Gunson, The Robertson Trust,</li>
+           <li>Linda O’Neill, CELCIS</li>
+           <li>Fiona Burns, SFC</li>
+           <li>James Dunphy, SFC</li>
+           <li>Lauren McNamara, SAAS</li>
+          </ul>
+
+          <p>Scottish Government officials:</p>
+
+          <ul>
+           <li>Shazia Razzaq</li>
+           <li>Debbie Browett</li>
+           <li>Karen Frew</li>
+           <li>Jonathon Sewell</li>
+           <li>Elaine Drennan</li>
+          </ul>
+      /govscot:relatedPublications[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: de0f8f65-61f8-46b4-9bbf-b2ae8056edc6
+      /govscot:relatedPublications[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: fdaa5fa7-8c13-4a3e-b911-e4f841c0f410
+      /govscot:relatedPublications[3]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: dbc30829-ffd1-40b1-a29d-6c47a70a422b
+      /govscot:relatedPublications[4]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 98dd5b63-e6a9-4806-9ac7-0e56c50f9505
+      /govscot:relatedPublications[5]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 356ee0b0-616d-42cc-8458-0d3aaec509f6
+      /govscot:relatedPublications[6]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 2bc4f45d-7cf1-42a1-8621-46dc3e15372b
+      /govscot:relatedPublications[7]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 8190b10b-7d23-454b-9240-c11750519cb0
+      /govscot:relatedPublications[8]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 9be60d53-c77e-4ea9-bc0c-e588db207d33
+      /govscot:relatedPublications[9]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: d365ad54-d336-4022-8697-c63ee562d607
+      /govscot:relatedPolicies[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 7a6e37fa-1b58-42a4-9d1a-63d9f7e71563
+      /govscot:relatedPolicies[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 06835768-a8b0-4559-b012-8f14af2f3a8b
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe

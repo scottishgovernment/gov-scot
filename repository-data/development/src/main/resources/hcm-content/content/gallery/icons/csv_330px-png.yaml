@@ -1,0 +1,28 @@
+/content/gallery/icons/csv_330px-png:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: 0be62f02-d575-494c-980b-e0b30c4ff354
+  hippo:name: csv_330px.png
+  /csv_330px-png:
+    jcr:primaryType: hippogallery:imageset
+    hippo:availability: [live, preview]
+    hippogallery:filename: csv_330px.png
+    /hippogallery:thumbnail:
+      jcr:primaryType: hippogallery:image
+      hippo:filename: csv_330px.png
+      hippogallery:height: 59
+      hippogallery:width: 42
+      jcr:data:
+        type: binary
+        resource: /content/gallery/icons/csv_330px-png/csv_330px_thumbnail.png
+      jcr:lastModified: 2021-02-10T08:52:25.884Z
+      jcr:mimeType: image/png
+    /hippogallery:original:
+      jcr:primaryType: hippogallery:image
+      hippogallery:height: 470
+      hippogallery:width: 330
+      jcr:data:
+        type: binary
+        resource: /content/gallery/icons/csv_330px-png/csv_330px_original.png
+      jcr:lastModified: 2021-02-10T08:52:25.884Z
+      jcr:mimeType: image/png

@@ -1,0 +1,2868 @@
+/content/documents/govscot/policies:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  jcr:uuid: 28dad370-f337-4b2f-b8a0-1bbafaa57a63
+  hippo:name: Policies
+  hippostd:foldertype: [new-policy-folder]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 60bb1b0c-a313-4b35-b88e-9920b589061a
+    hippo:name: Policies
+    /index[1]:
+      jcr:primaryType: govscot:SimpleContent
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: ca6ce09e-156d-4803-b504-09bb5d6a3b77
+      govscot:metaDescription: Scottish Government action to improve the lives of
+        the people of Scotland. Use the filters to show results that match your interests.
+      govscot:rubricId: GOV-87
+      govscot:seoTitle: Policies
+      govscot:summary: Scottish Government action to improve the lives of the people
+        of Scotland. Use the filters to show results that match your interests.
+      govscot:title: Policies
+      hippo:availability: [live]
+      hippo:name: Policies
+      hippostd:state: published
+      hippostd:tags: [policy]
+      hippostdpubwf:createdBy: build.api@mygov.scot
+      hippostdpubwf:creationDate: 2015-10-08T11:53:22+01:00
+      hippostdpubwf:lastModificationDate: 2018-09-11T18:50:42.218+01:00
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippostdpubwf:publicationDate: 2018-09-11T18:50:45.793+01:00
+      hippotranslation:id: fcf5aed5-e2f4-4248-b192-ea9dea71c7b6
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Not all content has moved here yet. If you can't find
+          what you're looking for, visit our topics page to see where information
+          can be located.</p>
+    /index[2]:
+      jcr:primaryType: govscot:SimpleContent
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 09d7e022-4fb5-416f-bd3f-3d3ee33049ea
+      govscot:metaDescription: Scottish Government action to improve the lives of
+        the people of Scotland. Use the filters to show results that match your interests.
+      govscot:rubricId: GOV-87
+      govscot:seoTitle: Policies
+      govscot:summary: Scottish Government action to improve the lives of the people
+        of Scotland. Use the filters to show results that match your interests.
+      govscot:title: Policies
+      hippo:availability: [preview]
+      hippo:name: Policies
+      hippostd:state: unpublished
+      hippostd:tags: [policy]
+      hippostdpubwf:createdBy: build.api@mygov.scot
+      hippostdpubwf:creationDate: 2015-10-08T11:53:22+01:00
+      hippostdpubwf:lastModificationDate: 2018-09-11T18:50:42.218+01:00
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippotranslation:id: fcf5aed5-e2f4-4248-b192-ea9dea71c7b6
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Not all content has moved here yet. If you can't find
+          what you're looking for, visit our topics page to see where information
+          can be located.</p>
+    /index[3]:
+      jcr:primaryType: govscot:SimpleContent
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: ae2ed145-2297-48c8-b96c-563f682aed77
+      govscot:metaDescription: Scottish Government action to improve the lives of
+        the people of Scotland. Use the filters to show results that match your interests.
+      govscot:rubricId: GOV-87
+      govscot:seoTitle: Policies
+      govscot:summary: Scottish Government action to improve the lives of the people
+        of Scotland. Use the filters to show results that match your interests.
+      govscot:title: Policies
+      hippo:availability: []
+      hippo:name: Policies
+      hippostd:state: draft
+      hippostd:tags: [policy]
+      hippostdpubwf:createdBy: build.api@mygov.scot
+      hippostdpubwf:creationDate: 2015-10-08T11:53:22+01:00
+      hippostdpubwf:lastModificationDate: 2018-09-11T18:50:26.834+01:00
+      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
+      hippotranslation:id: fcf5aed5-e2f4-4248-b192-ea9dea71c7b6
+      hippotranslation:locale: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Not all content has moved here yet. If you can't find
+          what you're looking for, visit our topics page to see where information
+          can be located.</p>
+  /access-to-justice:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: dd0783a2-4bba-4048-8c09-ebaa2a8ce17c
+    hippo:name: Access to justice
+    hippostd:foldertype: [new-policy-detail]
+    /index:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: cb27f1e3-91b2-4f49-befb-cd96ac7ca924
+      hippo:name: Access to justice
+      hippo:versionHistory: 962f2bf6-23dc-409c-8f99-83371439fdb9
+      /index[1]:
+        jcr:primaryType: govscot:Policy
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: f39c61e8-e0f2-4fa4-9109-e25cb75a8606
+        govscot:metaDescription: We want to provide a justice system that is fair
+          and equitable for everyone in Scotland.
+        govscot:newsTags: [5a5f199de850d21b684439cd]
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-629
+        govscot:seoTitle: Access to justice
+        govscot:sme: ''
+        govscot:summary: Actions we are taking to improve access to justice for everyone
+          in Scotland.
+        govscot:title: Access to justice
+        hippo:availability: [live]
+        hippo:name: Access to justice
+        hippostd:state: published
+        hippostd:tags: [legal services market, it innovation courts, solving disputes
+            outside court, access to justice, legal aid, courts, tribunals, arbitration,
+          the law, justice, mediation, legal information, alternative dispute resolution,
+          scottish legal system]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2019-09-09T13:34:33.227+01:00
+        hippostdpubwf:lastModifiedBy: david.sinclair@gov.scot
+        hippostdpubwf:publicationDate: 2021-12-22T15:41:28.210Z
+        hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
+            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
+
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Laura Sexton</p>
+
+            <p>**</p>
+
+            <p>Third bullet point to be added after 'We have also':</p>
+
+            <ul>
+             <li>held a consultation on <a href="alternative-business-structures">alternative business structures </a>to review regulations and guidance in relation to approved regulator complaints</li>
+            </ul>
+
+            <p>&nbsp;</p>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:responsibleRole:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 262fbf86-f93e-4179-a899-f02dc2d906b5
+        /govscot:responsibleDirectorate:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2f0eb43f-0187-4ecd-afb1-d33f64c15b4b
+        /govscot:topics[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4375c59d-b7ca-4771-82cf-4660fe0fa897
+        /govscot:topics[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c5b1d940-71d7-4b18-a545-687a389da974
+        /govscot:topics[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
+        /govscot:background:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually. </p>
+            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
+
+        /govscot:billsAndLegislation:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
+            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
+            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
+            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
+
+        /govscot:contact:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br>Phone: 0300 244 4000</p>
+            <p>Post:<br>General Enquiries<br>Scottish Government<br>St Andrews House<br>Regent Road<br>Edinburgh<br>EH1 3DG</p>
+            <h3 id="connect">Connect</h3>
+            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br>Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
+
+        /govscot:actions:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are:</p>
+
+            <ul>
+             <li>encouraging people to <a href="/policies/access-to-justice/dispute-resolution/">resolve disputes outside court</a> through services like mediation and arbitration</li>
+             <li>simplifying the <a href="/policies/access-to-justice/tribunals-system/">tribunals system</a> to make sure it's independent and user-friendly</li>
+             <li>using digital technology and IT innovation to <a href="/policies/access-to-justice/improving-justice-systems-processes/">improve processes within the justice system</a></li>
+             <li>improving <a href="/policies/access-to-justice/improving-information-and-advice/">public information and advice</a> about issues like housing, debt and benefits, to help people avoid problems or resolve disputes as quickly as possible</li>
+             <li>working to introduce <a href="alternative-business-structures">alternative business structures in the legal services market</a> to improve customer choice</li>
+            </ul>
+
+            <p>We have also:</p>
+
+            <ul>
+             <li>carried out a review into the <a href="/policies/access-to-justice/legal-aid/">legal aid system</a> to ensure it is simpler, user-focused and more flexible</li>
+             <li>set up an independent review into the <a href="/policies/access-to-justice/regulation-legal-services/">regulation of legal services</a> to identify opportunities for change and improvement</li>
+            </ul>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /index[2]:
+        jcr:primaryType: govscot:Policy
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 6a213e24-ecaa-45a7-9038-04b3a33c5eaf
+        govscot:metaDescription: We want to provide a justice system that is fair
+          and equitable for everyone in Scotland.
+        govscot:newsTags: [5a5f199de850d21b684439cd]
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-629
+        govscot:seoTitle: Access to justice
+        govscot:sme: ''
+        govscot:summary: Actions we are taking to improve access to justice for everyone
+          in Scotland.
+        govscot:title: Access to justice
+        hippo:availability: [preview]
+        hippo:name: Access to justice
+        hippostd:state: unpublished
+        hippostd:tags: [legal services market, it innovation courts, solving disputes
+            outside court, access to justice, legal aid, courts, tribunals, arbitration,
+          the law, justice, mediation, legal information, alternative dispute resolution,
+          scottish legal system]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2019-09-09T13:34:33.227+01:00
+        hippostdpubwf:lastModifiedBy: david.sinclair@gov.scot
+        hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
+            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
+
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Laura Sexton</p>
+
+            <p>**</p>
+
+            <p>Third bullet point to be added after 'We have also':</p>
+
+            <ul>
+             <li>held a consultation on <a href="alternative-business-structures">alternative business structures </a>to review regulations and guidance in relation to approved regulator complaints</li>
+            </ul>
+
+            <p>&nbsp;</p>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:responsibleRole:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 262fbf86-f93e-4179-a899-f02dc2d906b5
+        /govscot:responsibleDirectorate:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2f0eb43f-0187-4ecd-afb1-d33f64c15b4b
+        /govscot:topics[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4375c59d-b7ca-4771-82cf-4660fe0fa897
+        /govscot:topics[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c5b1d940-71d7-4b18-a545-687a389da974
+        /govscot:topics[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
+        /govscot:background:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually. </p>
+            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
+
+        /govscot:billsAndLegislation:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
+            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
+            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
+            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
+
+        /govscot:contact:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br>Phone: 0300 244 4000</p>
+            <p>Post:<br>General Enquiries<br>Scottish Government<br>St Andrews House<br>Regent Road<br>Edinburgh<br>EH1 3DG</p>
+            <h3 id="connect">Connect</h3>
+            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br>Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
+
+        /govscot:actions:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are:</p>
+
+            <ul>
+             <li>encouraging people to <a href="/policies/access-to-justice/dispute-resolution/">resolve disputes outside court</a> through services like mediation and arbitration</li>
+             <li>simplifying the <a href="/policies/access-to-justice/tribunals-system/">tribunals system</a> to make sure it's independent and user-friendly</li>
+             <li>using digital technology and IT innovation to <a href="/policies/access-to-justice/improving-justice-systems-processes/">improve processes within the justice system</a></li>
+             <li>improving <a href="/policies/access-to-justice/improving-information-and-advice/">public information and advice</a> about issues like housing, debt and benefits, to help people avoid problems or resolve disputes as quickly as possible</li>
+             <li>working to introduce <a href="alternative-business-structures">alternative business structures in the legal services market</a> to improve customer choice</li>
+            </ul>
+
+            <p>We have also:</p>
+
+            <ul>
+             <li>carried out a review into the <a href="/policies/access-to-justice/legal-aid/">legal aid system</a> to ensure it is simpler, user-focused and more flexible</li>
+             <li>set up an independent review into the <a href="/policies/access-to-justice/regulation-legal-services/">regulation of legal services</a> to identify opportunities for change and improvement</li>
+            </ul>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /index[3]:
+        jcr:primaryType: govscot:Policy
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 6a32ff44-7abe-4f66-8ad0-2e75b1a7ea0e
+        govscot:metaDescription: We want to provide a justice system that is fair
+          and equitable for everyone in Scotland.
+        govscot:newsTags: [5a5f199de850d21b684439cd]
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-629
+        govscot:seoTitle: Access to justice
+        govscot:sme: ''
+        govscot:summary: Actions we are taking to improve access to justice for everyone
+          in Scotland.
+        govscot:title: Access to justice
+        hippo:availability: []
+        hippo:name: Access to justice
+        hippostd:state: draft
+        hippostd:tags: [legal services market, it innovation courts, solving disputes
+            outside court, access to justice, legal aid, courts, tribunals, arbitration,
+          the law, justice, mediation, legal information, alternative dispute resolution,
+          scottish legal system]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2021-08-27T09:56:45.092+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
+            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
+
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Laura Sexton</p>
+
+            <p>**</p>
+
+            <p>Third bullet point to be added after 'We have also':</p>
+
+            <ul>
+             <li>held a consultation on <a href="alternative-business-structures">alternative business structures </a>to review regulations and guidance in relation to approved regulator complaints</li>
+            </ul>
+
+            <p>&nbsp;</p>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:responsibleRole:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 262fbf86-f93e-4179-a899-f02dc2d906b5
+        /govscot:responsibleDirectorate:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2f0eb43f-0187-4ecd-afb1-d33f64c15b4b
+        /govscot:topics[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4375c59d-b7ca-4771-82cf-4660fe0fa897
+        /govscot:topics[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c5b1d940-71d7-4b18-a545-687a389da974
+        /govscot:topics[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
+        /govscot:background:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually. </p>
+            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
+
+        /govscot:billsAndLegislation:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
+            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
+            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
+            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
+
+        /govscot:contact:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br>Phone: 0300 244 4000</p>
+            <p>Post:<br>General Enquiries<br>Scottish Government<br>St Andrews House<br>Regent Road<br>Edinburgh<br>EH1 3DG</p>
+            <h3 id="connect">Connect</h3>
+            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br>Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
+
+        /govscot:actions:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are:</p>
+
+            <ul>
+             <li>encouraging people to <a href="/policies/access-to-justice/dispute-resolution/">resolve disputes outside court</a> through services like mediation and arbitration</li>
+             <li>simplifying the <a href="/policies/access-to-justice/tribunals-system/">tribunals system</a> to make sure it's independent and user-friendly</li>
+             <li>using digital technology and IT innovation to <a href="/policies/access-to-justice/improving-justice-systems-processes/">improve processes within the justice system</a></li>
+             <li>improving <a href="/policies/access-to-justice/improving-information-and-advice/">public information and advice</a> about issues like housing, debt and benefits, to help people avoid problems or resolve disputes as quickly as possible</li>
+             <li>working to introduce <a href="alternative-business-structures">alternative business structures in the legal services market</a> to improve customer choice</li>
+            </ul>
+
+            <p>We have also:</p>
+
+            <ul>
+             <li>carried out a review into the <a href="/policies/access-to-justice/legal-aid/">legal aid system</a> to ensure it is simpler, user-focused and more flexible</li>
+             <li>set up an independent review into the <a href="/policies/access-to-justice/regulation-legal-services/">regulation of legal services</a> to identify opportunities for change and improvement</li>
+            </ul>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+    /dispute-resolution:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 6473aa9e-885b-4a56-a8b1-efd2c78d48ac
+      hippo:name: Solving disputes outside court
+      hippo:versionHistory: 92697abf-79ab-45b1-a9b6-e4f2b2900bed
+      /dispute-resolution[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 042412d7-1a2e-4b37-b47f-a4d45d6c5cb7
+        govscot:metaDescription: How the Scottish Government is encouraging the use
+          of resolution services.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-665
+        govscot:seoTitle: Solving disputes outside court in Scotland
+        govscot:sme: ''
+        govscot:summary: How we are encouraging the use of resolution services.
+        govscot:title: Solving disputes outside court
+        hippo:availability: [live]
+        hippo:name: Solving disputes outside court
+        hippostd:state: published
+        hippostd:tags: [alternatives to court, settling a dispute without going to
+            court, Scottish Arbitration Centre, mediation, resolving disputes outwith
+            court, Scottish Mediation Network, arbitration, settle a dispute without
+            going to court, alternative dispute resolution, resolving disputes]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-07-24T15:37:04+01:00
+        hippostdpubwf:lastModificationDate: 2019-12-10T09:20:36.777Z
+        hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+        hippostdpubwf:publicationDate: 2019-12-10T09:20:41.354Z
+        hippotranslation:id: badca06b-9949-4ba8-b879-af358b0c1c42
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We work to encourage the use of resolution services like 'mediation' and 'arbitration' which can be cheaper and less time consuming than going to court. &nbsp;</p>
+
+            <p>Arbitration is a type of alternative dispute resolution. It's a legal way of settling disputes without having to go to court.</p>
+
+            <p>Those involved in a dispute can refer it to one or more neutral third parties (the 'arbitrators' or 'arbitral tribunal'), and they agree to be bound by their decision.<br />
+            Mediation is a voluntary process in which a neutral third party works to bring disputing parties to a settlement.</p>
+
+            <h3>Scottish Arbitration Centre</h3>
+
+            <p>The <a href="https://scottisharbitrationcentre.org/">Scottish Arbitration Centre</a> promotes arbitration in Scotland, and also Scotland as a seat of international arbitration.</p>
+
+            <p>It builds on the <a href="http://www.legislation.gov.uk/asp/2010/1/contents">Arbitration (Scotland) Act 2010</a> which provides a modern framework for domestic and international arbitration in Scotland.</p>
+
+            <p>We currently give the Scottish Arbitration Centre £115,000 a year in grant-funding.</p>
+
+            <h3>Scottish Mediation&nbsp;</h3>
+
+            <p><a href="https://www.scottishmediation.org.uk/">Scottish Mediation</a> focuses on embedding mediation into the way that conflict and disputes are handled in Scotland.</p>
+
+            <p>It aims to:</p>
+
+            <ul>
+             <li>promote wider understanding of the appropriate use of mediation and other related forms of conflict management and prevention</li>
+             <li>support and promote education, training and research in skills and best practice</li>
+             <li>create and encourage links between mediators and Scottish public, private, voluntary and community organisations</li>
+             <li>promote and organise standards of professional conduct and training</li>
+            </ul>
+
+            <p>Since 2013-2014, we have given the Scottish Mediation Network £100,000 a year of grant-funding.</p>
+
+            <h3>Independent Review of Mediation in Scotland</h3>
+
+            <p>In 2018, the Scottish Government commissioned Scottish Mediation to undertake an independent review of the use of mediation in the civil justice system in Scotland.</p>
+
+            <p>The report was published in June 2019. &nbsp;It identifies a number of structural and cultural challenges to be overcome in “normalising” the use of mediation. &nbsp;It sets out 27 recommendations on how this could be achieved.&nbsp; Read <a href="http://www.gov.scot/ISBN/9781839603983">our response to the report and its findings</a>.</p>
+
+            <h3>Alternative dispute resolution</h3>
+
+            <p>Find more information about mediation and arbitration services on the <a href="https://www.mygov.scot/alternatives-to-court/">mygov.scot website</a>.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Laura Sexton</p>
+
+      /dispute-resolution[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: bbefc2cd-eac8-4563-ace5-76eb1f45ce16
+        govscot:metaDescription: How the Scottish Government is encouraging the use
+          of resolution services.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-665
+        govscot:seoTitle: Solving disputes outside court in Scotland
+        govscot:sme: ''
+        govscot:summary: How we are encouraging the use of resolution services.
+        govscot:title: Solving disputes outside court
+        hippo:availability: [preview]
+        hippo:name: Solving disputes outside court
+        hippostd:state: unpublished
+        hippostd:tags: [alternatives to court, settling a dispute without going to
+            court, Scottish Arbitration Centre, mediation, resolving disputes outwith
+            court, Scottish Mediation Network, arbitration, settle a dispute without
+            going to court, alternative dispute resolution, resolving disputes]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-07-24T15:37:04+01:00
+        hippostdpubwf:lastModificationDate: 2019-12-10T09:20:36.777Z
+        hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+        hippotranslation:id: badca06b-9949-4ba8-b879-af358b0c1c42
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We work to encourage the use of resolution services like 'mediation' and 'arbitration' which can be cheaper and less time consuming than going to court. &nbsp;</p>
+
+            <p>Arbitration is a type of alternative dispute resolution. It's a legal way of settling disputes without having to go to court.</p>
+
+            <p>Those involved in a dispute can refer it to one or more neutral third parties (the 'arbitrators' or 'arbitral tribunal'), and they agree to be bound by their decision.<br />
+            Mediation is a voluntary process in which a neutral third party works to bring disputing parties to a settlement.</p>
+
+            <h3>Scottish Arbitration Centre</h3>
+
+            <p>The <a href="https://scottisharbitrationcentre.org/">Scottish Arbitration Centre</a> promotes arbitration in Scotland, and also Scotland as a seat of international arbitration.</p>
+
+            <p>It builds on the <a href="http://www.legislation.gov.uk/asp/2010/1/contents">Arbitration (Scotland) Act 2010</a> which provides a modern framework for domestic and international arbitration in Scotland.</p>
+
+            <p>We currently give the Scottish Arbitration Centre £115,000 a year in grant-funding.</p>
+
+            <h3>Scottish Mediation&nbsp;</h3>
+
+            <p><a href="https://www.scottishmediation.org.uk/">Scottish Mediation</a> focuses on embedding mediation into the way that conflict and disputes are handled in Scotland.</p>
+
+            <p>It aims to:</p>
+
+            <ul>
+             <li>promote wider understanding of the appropriate use of mediation and other related forms of conflict management and prevention</li>
+             <li>support and promote education, training and research in skills and best practice</li>
+             <li>create and encourage links between mediators and Scottish public, private, voluntary and community organisations</li>
+             <li>promote and organise standards of professional conduct and training</li>
+            </ul>
+
+            <p>Since 2013-2014, we have given the Scottish Mediation Network £100,000 a year of grant-funding.</p>
+
+            <h3>Independent Review of Mediation in Scotland</h3>
+
+            <p>In 2018, the Scottish Government commissioned Scottish Mediation to undertake an independent review of the use of mediation in the civil justice system in Scotland.</p>
+
+            <p>The report was published in June 2019. &nbsp;It identifies a number of structural and cultural challenges to be overcome in “normalising” the use of mediation. &nbsp;It sets out 27 recommendations on how this could be achieved.&nbsp; Read <a href="http://www.gov.scot/ISBN/9781839603983">our response to the report and its findings</a>.</p>
+
+            <h3>Alternative dispute resolution</h3>
+
+            <p>Find more information about mediation and arbitration services on the <a href="https://www.mygov.scot/alternatives-to-court/">mygov.scot website</a>.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Laura Sexton</p>
+
+      /dispute-resolution[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 323bad9b-a13d-4797-9e78-ad7e34b6a125
+        govscot:metaDescription: How the Scottish Government is encouraging the use
+          of resolution services.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-665
+        govscot:seoTitle: Solving disputes outside court in Scotland
+        govscot:sme: ''
+        govscot:summary: How we are encouraging the use of resolution services.
+        govscot:title: Solving disputes outside court
+        hippo:availability: []
+        hippo:name: Solving disputes outside court
+        hippostd:state: draft
+        hippostd:tags: [alternatives to court, settling a dispute without going to
+            court, Scottish Arbitration Centre, mediation, resolving disputes outwith
+            court, Scottish Mediation Network, arbitration, settle a dispute without
+            going to court, alternative dispute resolution, resolving disputes]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-07-24T15:37:04+01:00
+        hippostdpubwf:lastModificationDate: 2019-12-10T09:20:11.656Z
+        hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+        hippotranslation:id: badca06b-9949-4ba8-b879-af358b0c1c42
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We work to encourage the use of resolution services like 'mediation' and 'arbitration' which can be cheaper and less time consuming than going to court. &nbsp;</p>
+
+            <p>Arbitration is a type of alternative dispute resolution. It's a legal way of settling disputes without having to go to court.</p>
+
+            <p>Those involved in a dispute can refer it to one or more neutral third parties (the 'arbitrators' or 'arbitral tribunal'), and they agree to be bound by their decision.<br />
+            Mediation is a voluntary process in which a neutral third party works to bring disputing parties to a settlement.</p>
+
+            <h3>Scottish Arbitration Centre</h3>
+
+            <p>The <a href="https://scottisharbitrationcentre.org/">Scottish Arbitration Centre</a> promotes arbitration in Scotland, and also Scotland as a seat of international arbitration.</p>
+
+            <p>It builds on the <a href="http://www.legislation.gov.uk/asp/2010/1/contents">Arbitration (Scotland) Act 2010</a> which provides a modern framework for domestic and international arbitration in Scotland.</p>
+
+            <p>We currently give the Scottish Arbitration Centre £115,000 a year in grant-funding.</p>
+
+            <h3>Scottish Mediation&nbsp;</h3>
+
+            <p><a href="https://www.scottishmediation.org.uk/">Scottish Mediation</a> focuses on embedding mediation into the way that conflict and disputes are handled in Scotland.</p>
+
+            <p>It aims to:</p>
+
+            <ul>
+             <li>promote wider understanding of the appropriate use of mediation and other related forms of conflict management and prevention</li>
+             <li>support and promote education, training and research in skills and best practice</li>
+             <li>create and encourage links between mediators and Scottish public, private, voluntary and community organisations</li>
+             <li>promote and organise standards of professional conduct and training</li>
+            </ul>
+
+            <p>Since 2013-2014, we have given the Scottish Mediation Network £100,000 a year of grant-funding.</p>
+
+            <h3>Independent Review of Mediation in Scotland</h3>
+
+            <p>In 2018, the Scottish Government commissioned Scottish Mediation to undertake an independent review of the use of mediation in the civil justice system in Scotland.</p>
+
+            <p>The report was published in June 2019. &nbsp;It identifies a number of structural and cultural challenges to be overcome in “normalising” the use of mediation. &nbsp;It sets out 27 recommendations on how this could be achieved.&nbsp; Read <a href="http://www.gov.scot/ISBN/9781839603983">our response to the report and its findings</a>.</p>
+
+            <h3>Alternative dispute resolution</h3>
+
+            <p>Find more information about mediation and arbitration services on the <a href="https://www.mygov.scot/alternatives-to-court/">mygov.scot website</a>.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Laura Sexton</p>
+
+    /tribunals-system:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 0ebff27c-bc16-4704-a338-3fa7b138e1ce
+      hippo:name: Tribunals system
+      hippo:versionHistory: 649473a1-200e-4b8c-a782-18781b86a58c
+      /tribunals-system[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: ee477d54-f0bd-4c1b-a2af-7f50631d959e
+        govscot:metaDescription: How the Scottish Government is simplifying and streamlining
+          the tribunals landscape.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-740
+        govscot:seoTitle: Tribunals system
+        govscot:sme: ''
+        govscot:summary: How we are simplifying and streamlining the tribunals landscape.
+        govscot:title: Tribunals system
+        hippo:availability: [live]
+        hippo:name: Tribunals system
+        hippostd:state: published
+        hippostd:tags: [tribunal reform, tribunals scotland act 2014]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-08-23T15:54:56+01:00
+        hippostdpubwf:lastModificationDate: 2020-11-23T15:56:33.384Z
+        hippostdpubwf:lastModifiedBy: joanna.orourke@gov.scot
+        hippostdpubwf:publicationDate: 2020-11-23T15:56:35.567Z
+        hippotranslation:id: 4849f06f-2841-41ea-9914-7d8d524e68a1
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Tribunals are a central part of the Scottish justice system and play a vital role in protecting people's rights. People can go to a tribunal if they want to challenge a decision that affects them. Tribunals tend to be less formal and more accessible than the courts.</p>
+
+            <p>Some tribunals deal with matters that are reserved to the UK Parliament, like employment and immigration. Other tribunals deal with matters that are devolved to the Scottish Parliament, such as mental health and housing.</p>
+
+            <p>Specialist panels deal with these cases which include amongst others, the compulsory care and treatment of people with mental health disorders; disputes between tenants and landlords; disputes involving land and property; and cases concerning children and young people with additional support needs.</p>
+
+            <h3>Tribunal reform</h3>
+
+            <p>Over the years, tribunals were created and developed independently of one another, so their practices and procedures can vary significantly.</p>
+
+            <p>We are restructuring Scotland's tribunals to make sure they are easier to understand and more user-friendly.</p>
+
+            <p>This will also promote more consistency across the tribunals landscape, particularly in their practices and procedures.</p>
+
+            <p>The <a href="http://www.legislation.gov.uk/asp/2014/10/enacted">Tribunals (Scotland) Act 2014</a> paved the way for tribunals to be brought under one umbrella – <a href="https://www.scotcourts.gov.uk/the-courts/the-tribunals/about-scottish-tribunals">the Scottish Tribunals</a>.</p>
+
+            <p>This has two-tiers. A First-tier Tribunal, which makes decisions on cases previously heard by the individual tribunals, and an <a href="https://www.scotcourts.gov.uk/the-courts/court-locations/the-upper-tribunal-for-scotland">Upper Tribunal</a> that hears appeals against decisions of the First-tier.</p>
+
+            <p>The First-tier Tribunal is divided into Chambers, each of which hears cases relating to particular subjects, like housing and property or tax.</p>
+
+            <p>Each of the existing tribunals will over time transfer into the appropriate Chamber - <a href="/publications/structure-tribunals-chambers/">this diagram shows the Chamber structure</a>. This means that none of the expertise the tribunals built up before the reforms started will be lost.</p>
+
+            <p>Administrative support for the Scottish Tribunals is provided by the <a href="https://www.scotcourts.gov.uk/">Scottish Courts and Tribunals Service</a>.</p>
+
+            <h3>Timeframe for reform</h3>
+
+            <p>The tribunals listed below have been transferred into the appropriate Chambers of the First-tier Tribunal:</p>
+
+            <table>
+             <thead>
+              <tr>
+               <th>Tribunal</th>
+               <th>Chamber</th>
+               <th>Transfer date</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td>The Private Rented Housing (prhp) and Homeowner Housing Panels (HOHP)</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>December 2016</td>
+              </tr>
+              <tr>
+               <td>The Scottish Tax Tribunals</td>
+               <td><a href="http://www.taxtribunals.scot/">Tax</a></td>
+               <td>April 2017</td>
+              </tr>
+              <tr>
+               <td>Private Rented Sector (PRS) and private Residential Tenancies +</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>December 2017</td>
+              </tr>
+              <tr>
+               <td>Letting Agents ++</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>January 2018</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.healthandeducationchamber.scot/additional-support-needs/12">Additional Support Needs Tribunal for Scotland (ASNTS)</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>January 2018</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.generalregulatorychamber.scot/scottish-charity-appeals-panel">Scottish Charity Appeals Panel (SCAP)</a></td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>January 2018</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <p>+Private Rented Sector cases were transferred to the First-tier Tribunal from the Sheriff Court. <a href="/policies/private-renting/private-tenancy-reform/">Private Residential Tenancies</a> is a new function reflecting changes to the legislation about tenancy agreements.</p>
+
+            <p>++<a href="/policies/private-renting/regulation/">Letting agents</a> is a new function arising from a new framework for the regulation of letting agents introduced through Part 4 of the <a href="http://www.legislation.gov.uk/asp/2014/14/part/4">Housing (Scotland) Act 2014</a>.</p>
+
+            <p>The transfer programme will continue until 2022. Below is a list of the remaining tribunals and their proposed transfer dates:</p>
+
+            <table>
+             <thead>
+              <tr>
+               <th>Tribunal</th>
+               <th>Chamber</th>
+               <th>Proposed transfer date</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td><a href="https://www.mhtscotland.gov.uk/mhts/Contact_Us/Contact_Us">Mental Health Tribunal for Scotland (MHTS)</a></td>
+               <td>Mental Health</td>
+               <td>November 18</td>
+              </tr>
+              <tr>
+               <td>Police Appeals Tribunal</td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>April 19</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.generalregulatorychamber.scot/home/parkingandbuslaneappeals"><span><span><span>Parking and Bus Lane Tribunal for Scotland</span></span></span></a></td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>1 April 2020</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.lands-tribunal-scotland.org.uk/contact/office-and-staff">Lands Tribunal for Scotland (LTS)</a></td>
+               <td><a href="https://www.scotcourts.gov.uk/the-courts/court-locations/the-upper-tribunal-for-scotland">Upper Tribunal</a></td>
+               <td>October 19</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.nhstribunal.scot.nhs.uk/">NHS Tribunal</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 20</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.gov.scot/Publications/2003/01/16174/16513">NHS National Appeal Panel for Entry to the Pharmaceutical List</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 20</td>
+              </tr>
+              <tr>
+               <td>Education Appeals Committees (EACs)</td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 21</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.mygov.scot/business-rates-appeals/the-valuation-appeal-committee/">Valuation Appeals Committees (VACs)</a></td>
+               <td><a href="http://www.taxtribunals.scot/">Tax</a></td>
+               <td>April 22</td>
+              </tr>
+              <tr>
+               <td>Social Security Appeals</td>
+               <td>Social Security</td>
+               <td>2018 to 19</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <p>People who already have a case before a tribunal when it transfers to the new structure will not notice the change as the case will still be dealt with by the same tribunal members.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Policy lead: Stephen Bruce</p>
+
+      /tribunals-system[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 84704504-d0f1-4de6-baec-f1ab4cad0e23
+        govscot:metaDescription: How the Scottish Government is simplifying and streamlining
+          the tribunals landscape.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-740
+        govscot:seoTitle: Tribunals system
+        govscot:sme: ''
+        govscot:summary: How we are simplifying and streamlining the tribunals landscape.
+        govscot:title: Tribunals system
+        hippo:availability: [preview]
+        hippo:name: Tribunals system
+        hippostd:state: unpublished
+        hippostd:tags: [tribunal reform, tribunals scotland act 2014]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-08-23T15:54:56+01:00
+        hippostdpubwf:lastModificationDate: 2020-11-23T15:56:33.384Z
+        hippostdpubwf:lastModifiedBy: joanna.orourke@gov.scot
+        hippotranslation:id: 4849f06f-2841-41ea-9914-7d8d524e68a1
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Tribunals are a central part of the Scottish justice system and play a vital role in protecting people's rights. People can go to a tribunal if they want to challenge a decision that affects them. Tribunals tend to be less formal and more accessible than the courts.</p>
+
+            <p>Some tribunals deal with matters that are reserved to the UK Parliament, like employment and immigration. Other tribunals deal with matters that are devolved to the Scottish Parliament, such as mental health and housing.</p>
+
+            <p>Specialist panels deal with these cases which include amongst others, the compulsory care and treatment of people with mental health disorders; disputes between tenants and landlords; disputes involving land and property; and cases concerning children and young people with additional support needs.</p>
+
+            <h3>Tribunal reform</h3>
+
+            <p>Over the years, tribunals were created and developed independently of one another, so their practices and procedures can vary significantly.</p>
+
+            <p>We are restructuring Scotland's tribunals to make sure they are easier to understand and more user-friendly.</p>
+
+            <p>This will also promote more consistency across the tribunals landscape, particularly in their practices and procedures.</p>
+
+            <p>The <a href="http://www.legislation.gov.uk/asp/2014/10/enacted">Tribunals (Scotland) Act 2014</a> paved the way for tribunals to be brought under one umbrella – <a href="https://www.scotcourts.gov.uk/the-courts/the-tribunals/about-scottish-tribunals">the Scottish Tribunals</a>.</p>
+
+            <p>This has two-tiers. A First-tier Tribunal, which makes decisions on cases previously heard by the individual tribunals, and an <a href="https://www.scotcourts.gov.uk/the-courts/court-locations/the-upper-tribunal-for-scotland">Upper Tribunal</a> that hears appeals against decisions of the First-tier.</p>
+
+            <p>The First-tier Tribunal is divided into Chambers, each of which hears cases relating to particular subjects, like housing and property or tax.</p>
+
+            <p>Each of the existing tribunals will over time transfer into the appropriate Chamber - <a href="/publications/structure-tribunals-chambers/">this diagram shows the Chamber structure</a>. This means that none of the expertise the tribunals built up before the reforms started will be lost.</p>
+
+            <p>Administrative support for the Scottish Tribunals is provided by the <a href="https://www.scotcourts.gov.uk/">Scottish Courts and Tribunals Service</a>.</p>
+
+            <h3>Timeframe for reform</h3>
+
+            <p>The tribunals listed below have been transferred into the appropriate Chambers of the First-tier Tribunal:</p>
+
+            <table>
+             <thead>
+              <tr>
+               <th>Tribunal</th>
+               <th>Chamber</th>
+               <th>Transfer date</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td>The Private Rented Housing (prhp) and Homeowner Housing Panels (HOHP)</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>December 2016</td>
+              </tr>
+              <tr>
+               <td>The Scottish Tax Tribunals</td>
+               <td><a href="http://www.taxtribunals.scot/">Tax</a></td>
+               <td>April 2017</td>
+              </tr>
+              <tr>
+               <td>Private Rented Sector (PRS) and private Residential Tenancies +</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>December 2017</td>
+              </tr>
+              <tr>
+               <td>Letting Agents ++</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>January 2018</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.healthandeducationchamber.scot/additional-support-needs/12">Additional Support Needs Tribunal for Scotland (ASNTS)</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>January 2018</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.generalregulatorychamber.scot/scottish-charity-appeals-panel">Scottish Charity Appeals Panel (SCAP)</a></td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>January 2018</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <p>+Private Rented Sector cases were transferred to the First-tier Tribunal from the Sheriff Court. <a href="/policies/private-renting/private-tenancy-reform/">Private Residential Tenancies</a> is a new function reflecting changes to the legislation about tenancy agreements.</p>
+
+            <p>++<a href="/policies/private-renting/regulation/">Letting agents</a> is a new function arising from a new framework for the regulation of letting agents introduced through Part 4 of the <a href="http://www.legislation.gov.uk/asp/2014/14/part/4">Housing (Scotland) Act 2014</a>.</p>
+
+            <p>The transfer programme will continue until 2022. Below is a list of the remaining tribunals and their proposed transfer dates:</p>
+
+            <table>
+             <thead>
+              <tr>
+               <th>Tribunal</th>
+               <th>Chamber</th>
+               <th>Proposed transfer date</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td><a href="https://www.mhtscotland.gov.uk/mhts/Contact_Us/Contact_Us">Mental Health Tribunal for Scotland (MHTS)</a></td>
+               <td>Mental Health</td>
+               <td>November 18</td>
+              </tr>
+              <tr>
+               <td>Police Appeals Tribunal</td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>April 19</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.generalregulatorychamber.scot/home/parkingandbuslaneappeals"><span><span><span>Parking and Bus Lane Tribunal for Scotland</span></span></span></a></td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>1 April 2020</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.lands-tribunal-scotland.org.uk/contact/office-and-staff">Lands Tribunal for Scotland (LTS)</a></td>
+               <td><a href="https://www.scotcourts.gov.uk/the-courts/court-locations/the-upper-tribunal-for-scotland">Upper Tribunal</a></td>
+               <td>October 19</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.nhstribunal.scot.nhs.uk/">NHS Tribunal</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 20</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.gov.scot/Publications/2003/01/16174/16513">NHS National Appeal Panel for Entry to the Pharmaceutical List</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 20</td>
+              </tr>
+              <tr>
+               <td>Education Appeals Committees (EACs)</td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 21</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.mygov.scot/business-rates-appeals/the-valuation-appeal-committee/">Valuation Appeals Committees (VACs)</a></td>
+               <td><a href="http://www.taxtribunals.scot/">Tax</a></td>
+               <td>April 22</td>
+              </tr>
+              <tr>
+               <td>Social Security Appeals</td>
+               <td>Social Security</td>
+               <td>2018 to 19</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <p>People who already have a case before a tribunal when it transfers to the new structure will not notice the change as the case will still be dealt with by the same tribunal members.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Policy lead: Stephen Bruce</p>
+
+      /tribunals-system[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 869f926b-c7fb-4b70-a667-7c9a6e270eb8
+        govscot:metaDescription: How the Scottish Government is simplifying and streamlining
+          the tribunals landscape.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-740
+        govscot:seoTitle: Tribunals system
+        govscot:sme: ''
+        govscot:summary: How we are simplifying and streamlining the tribunals landscape.
+        govscot:title: Tribunals system
+        hippo:availability: []
+        hippo:name: Tribunals system
+        hippostd:state: draft
+        hippostd:tags: [tribunal reform, tribunals scotland act 2014]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-08-23T15:54:56+01:00
+        hippostdpubwf:lastModificationDate: 2020-11-23T15:55:37.853Z
+        hippostdpubwf:lastModifiedBy: joanna.orourke@gov.scot
+        hippotranslation:id: 4849f06f-2841-41ea-9914-7d8d524e68a1
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Tribunals are a central part of the Scottish justice system and play a vital role in protecting people's rights. People can go to a tribunal if they want to challenge a decision that affects them. Tribunals tend to be less formal and more accessible than the courts.</p>
+
+            <p>Some tribunals deal with matters that are reserved to the UK Parliament, like employment and immigration. Other tribunals deal with matters that are devolved to the Scottish Parliament, such as mental health and housing.</p>
+
+            <p>Specialist panels deal with these cases which include amongst others, the compulsory care and treatment of people with mental health disorders; disputes between tenants and landlords; disputes involving land and property; and cases concerning children and young people with additional support needs.</p>
+
+            <h3>Tribunal reform</h3>
+
+            <p>Over the years, tribunals were created and developed independently of one another, so their practices and procedures can vary significantly.</p>
+
+            <p>We are restructuring Scotland's tribunals to make sure they are easier to understand and more user-friendly.</p>
+
+            <p>This will also promote more consistency across the tribunals landscape, particularly in their practices and procedures.</p>
+
+            <p>The <a href="http://www.legislation.gov.uk/asp/2014/10/enacted">Tribunals (Scotland) Act 2014</a> paved the way for tribunals to be brought under one umbrella – <a href="https://www.scotcourts.gov.uk/the-courts/the-tribunals/about-scottish-tribunals">the Scottish Tribunals</a>.</p>
+
+            <p>This has two-tiers. A First-tier Tribunal, which makes decisions on cases previously heard by the individual tribunals, and an <a href="https://www.scotcourts.gov.uk/the-courts/court-locations/the-upper-tribunal-for-scotland">Upper Tribunal</a> that hears appeals against decisions of the First-tier.</p>
+
+            <p>The First-tier Tribunal is divided into Chambers, each of which hears cases relating to particular subjects, like housing and property or tax.</p>
+
+            <p>Each of the existing tribunals will over time transfer into the appropriate Chamber - <a href="/publications/structure-tribunals-chambers/">this diagram shows the Chamber structure</a>. This means that none of the expertise the tribunals built up before the reforms started will be lost.</p>
+
+            <p>Administrative support for the Scottish Tribunals is provided by the <a href="https://www.scotcourts.gov.uk/">Scottish Courts and Tribunals Service</a>.</p>
+
+            <h3>Timeframe for reform</h3>
+
+            <p>The tribunals listed below have been transferred into the appropriate Chambers of the First-tier Tribunal:</p>
+
+            <table>
+             <thead>
+              <tr>
+               <th>Tribunal</th>
+               <th>Chamber</th>
+               <th>Transfer date</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td>The Private Rented Housing (prhp) and Homeowner Housing Panels (HOHP)</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>December 2016</td>
+              </tr>
+              <tr>
+               <td>The Scottish Tax Tribunals</td>
+               <td><a href="http://www.taxtribunals.scot/">Tax</a></td>
+               <td>April 2017</td>
+              </tr>
+              <tr>
+               <td>Private Rented Sector (PRS) and private Residential Tenancies +</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>December 2017</td>
+              </tr>
+              <tr>
+               <td>Letting Agents ++</td>
+               <td><a href="https://www.housingandpropertychamber.scot/">Housing and Property</a></td>
+               <td>January 2018</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.healthandeducationchamber.scot/additional-support-needs/12">Additional Support Needs Tribunal for Scotland (ASNTS)</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>January 2018</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.generalregulatorychamber.scot/scottish-charity-appeals-panel">Scottish Charity Appeals Panel (SCAP)</a></td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>January 2018</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <p>+Private Rented Sector cases were transferred to the First-tier Tribunal from the Sheriff Court. <a href="/policies/private-renting/private-tenancy-reform/">Private Residential Tenancies</a> is a new function reflecting changes to the legislation about tenancy agreements.</p>
+
+            <p>++<a href="/policies/private-renting/regulation/">Letting agents</a> is a new function arising from a new framework for the regulation of letting agents introduced through Part 4 of the <a href="http://www.legislation.gov.uk/asp/2014/14/part/4">Housing (Scotland) Act 2014</a>.</p>
+
+            <p>The transfer programme will continue until 2022. Below is a list of the remaining tribunals and their proposed transfer dates:</p>
+
+            <table>
+             <thead>
+              <tr>
+               <th>Tribunal</th>
+               <th>Chamber</th>
+               <th>Proposed transfer date</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td><a href="https://www.mhtscotland.gov.uk/mhts/Contact_Us/Contact_Us">Mental Health Tribunal for Scotland (MHTS)</a></td>
+               <td>Mental Health</td>
+               <td>November 18</td>
+              </tr>
+              <tr>
+               <td>Police Appeals Tribunal</td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>April 19</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.generalregulatorychamber.scot/home/parkingandbuslaneappeals"><span><span><span>Parking and Bus Lane Tribunal for Scotland</span></span></span></a></td>
+               <td><a href="http://www.generalregulatorychamber.scot/">General Regulatory</a></td>
+               <td>1 April 2020</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.lands-tribunal-scotland.org.uk/contact/office-and-staff">Lands Tribunal for Scotland (LTS)</a></td>
+               <td><a href="https://www.scotcourts.gov.uk/the-courts/court-locations/the-upper-tribunal-for-scotland">Upper Tribunal</a></td>
+               <td>October 19</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.nhstribunal.scot.nhs.uk/">NHS Tribunal</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 20</td>
+              </tr>
+              <tr>
+               <td><a href="http://www.gov.scot/Publications/2003/01/16174/16513">NHS National Appeal Panel for Entry to the Pharmaceutical List</a></td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 20</td>
+              </tr>
+              <tr>
+               <td>Education Appeals Committees (EACs)</td>
+               <td><a href="https://www.healthandeducationchamber.scot/">Health and Education</a></td>
+               <td>April 21</td>
+              </tr>
+              <tr>
+               <td><a href="https://www.mygov.scot/business-rates-appeals/the-valuation-appeal-committee/">Valuation Appeals Committees (VACs)</a></td>
+               <td><a href="http://www.taxtribunals.scot/">Tax</a></td>
+               <td>April 22</td>
+              </tr>
+              <tr>
+               <td>Social Security Appeals</td>
+               <td>Social Security</td>
+               <td>2018 to 19</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <p>People who already have a case before a tribunal when it transfers to the new structure will not notice the change as the case will still be dealt with by the same tribunal members.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |+
+            <p>Policy lead: Stephen Bruce</p>
+
+    /improving-justice-systems-processes:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: a3c9d228-8b1b-4b2c-ae2d-ac73a0640136
+      hippo:name: Improving justice systems and processes
+      hippo:versionHistory: d919a293-8bac-42f8-8357-ffda32786a99
+      /improving-justice-systems-processes[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: c7fff819-4cd1-4048-a8f0-1a727c69abf0
+        govscot:metaDescription: How the Scottish Government is using digital technology
+          to improve justice systems and processes.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-775
+        govscot:seoTitle: Improving justice systems and processes in Scotland
+        govscot:sme: ''
+        govscot:summary: How we are using digital technology to improve justice systems
+          and processes
+        govscot:title: Improving justice systems and processes
+        hippo:availability: [live]
+        hippo:name: Improving justice systems and processes
+        hippostd:state: published
+        hippostd:tags: []
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-09-25T15:30:20+01:00
+        hippostdpubwf:lastModificationDate: 2020-01-10T11:44:33.806Z
+        hippostdpubwf:lastModifiedBy: gary.carmichael@gov.scot
+        hippostdpubwf:publicationDate: 2020-01-10T11:44:48.468Z
+        hippotranslation:id: d7050b72-8a53-4d19-a427-d364ff60d49e
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We live in a digital world, influenced by technology. Our justice systems are changing, and we want to use new technologies to shape them.</p>
+
+            <p>In the 2017 to 2018 Programme for Government, we made a commitment to invest in the development of a Digital Evidence Sharing Capability (DESC).</p>
+
+            <p>This will improve how evidence is accessed across the justice system, making it easier to share and cases to be resolved more quickly.</p>
+
+            <p>DESC aims to improve the creation, storage and access of digital evidence, such as images, video and documentation, across the justice sector.</p>
+
+            <p>We plan to do testing this year. We are also going to roll out a new system in local areas with our partners in Police Scotland, and prosecution and defence lawyers, later this year and during 2019.</p>
+
+            <p>We have also worked with criminal justice organisations to increase the use of TV links for the imprisoned accused in criminal court cases.</p>
+
+            <p>And we have put new legislation in place which will allow greater use of technology such as electronic signature and service of documents.</p>
+
+            <h2>Improving online information and access to services</h2>
+
+            <p><a href="https://www.mygov.scot">mygov.scot</a> translates government legislation and policy into clear and easy to understand information for the public.</p>
+
+            <p>It's designed around users' needs, and aims to make it as easy as possible for individuals and businesses to find what they want quickly, (without having to know how the public sector in Scotland is organised.)</p>
+
+            <p>mygov.scot is evolving as the single point of access for finding out about public services in Scotland.</p>
+
+            <p>Civil and criminal justice issues on mygov.scot include:</p>
+
+            <ul>
+             <li><a href="https://www.mygov.scot/support-money/">debt</a></li>
+             <li><a href="https://www.mygov.scot/repossession/">housing repossession</a></li>
+             <li>support for <a href="https://www.mygov.scot/victim-witness-rights/">victims and witnesses of crime</a></li>
+             <li><a href="https://www.mygov.scot/support-after-separation/">financial advice after a relationship break-up</a></li>
+            </ul>
+
+            <p>We're taking this work a step further through our <a href="https://civtech.atlassian.net/wiki/spaces/CIV/pages/45904817/Challenge+5+How+can+we+use+technology+to+provide+better+access+to+public+services+through+mygov.scot">CivTech data challenge</a>.</p>
+
+            <p>It's focused on using technology to create an interactive experience that helps users find relevant public services quickly.</p>
+
+            <p>It will make it easier for people to find the information they need when they're in crisis. Or if they don't know which organisations will be able to give them advice and support.</p>
+
+            <p>The first topic will be relationship breakdown.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+      /improving-justice-systems-processes[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 80d23f63-3146-42ff-b4e0-a52a5e25eaaf
+        govscot:metaDescription: How the Scottish Government is using digital technology
+          to improve justice systems and processes.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-775
+        govscot:seoTitle: Improving justice systems and processes in Scotland
+        govscot:sme: ''
+        govscot:summary: How we are using digital technology to improve justice systems
+          and processes
+        govscot:title: Improving justice systems and processes
+        hippo:availability: [preview]
+        hippo:name: Improving justice systems and processes
+        hippostd:state: unpublished
+        hippostd:tags: []
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-09-25T15:30:20+01:00
+        hippostdpubwf:lastModificationDate: 2020-01-10T11:44:33.806Z
+        hippostdpubwf:lastModifiedBy: gary.carmichael@gov.scot
+        hippotranslation:id: d7050b72-8a53-4d19-a427-d364ff60d49e
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We live in a digital world, influenced by technology. Our justice systems are changing, and we want to use new technologies to shape them.</p>
+
+            <p>In the 2017 to 2018 Programme for Government, we made a commitment to invest in the development of a Digital Evidence Sharing Capability (DESC).</p>
+
+            <p>This will improve how evidence is accessed across the justice system, making it easier to share and cases to be resolved more quickly.</p>
+
+            <p>DESC aims to improve the creation, storage and access of digital evidence, such as images, video and documentation, across the justice sector.</p>
+
+            <p>We plan to do testing this year. We are also going to roll out a new system in local areas with our partners in Police Scotland, and prosecution and defence lawyers, later this year and during 2019.</p>
+
+            <p>We have also worked with criminal justice organisations to increase the use of TV links for the imprisoned accused in criminal court cases.</p>
+
+            <p>And we have put new legislation in place which will allow greater use of technology such as electronic signature and service of documents.</p>
+
+            <h2>Improving online information and access to services</h2>
+
+            <p><a href="https://www.mygov.scot">mygov.scot</a> translates government legislation and policy into clear and easy to understand information for the public.</p>
+
+            <p>It's designed around users' needs, and aims to make it as easy as possible for individuals and businesses to find what they want quickly, (without having to know how the public sector in Scotland is organised.)</p>
+
+            <p>mygov.scot is evolving as the single point of access for finding out about public services in Scotland.</p>
+
+            <p>Civil and criminal justice issues on mygov.scot include:</p>
+
+            <ul>
+             <li><a href="https://www.mygov.scot/support-money/">debt</a></li>
+             <li><a href="https://www.mygov.scot/repossession/">housing repossession</a></li>
+             <li>support for <a href="https://www.mygov.scot/victim-witness-rights/">victims and witnesses of crime</a></li>
+             <li><a href="https://www.mygov.scot/support-after-separation/">financial advice after a relationship break-up</a></li>
+            </ul>
+
+            <p>We're taking this work a step further through our <a href="https://civtech.atlassian.net/wiki/spaces/CIV/pages/45904817/Challenge+5+How+can+we+use+technology+to+provide+better+access+to+public+services+through+mygov.scot">CivTech data challenge</a>.</p>
+
+            <p>It's focused on using technology to create an interactive experience that helps users find relevant public services quickly.</p>
+
+            <p>It will make it easier for people to find the information they need when they're in crisis. Or if they don't know which organisations will be able to give them advice and support.</p>
+
+            <p>The first topic will be relationship breakdown.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+      /improving-justice-systems-processes[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 2b446200-6016-43de-bc41-1482674b627c
+        govscot:metaDescription: How the Scottish Government is using digital technology
+          to improve justice systems and processes.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-775
+        govscot:seoTitle: Improving justice systems and processes in Scotland
+        govscot:sme: ''
+        govscot:summary: How we are using digital technology to improve justice systems
+          and processes
+        govscot:title: Improving justice systems and processes
+        hippo:availability: []
+        hippo:name: Improving justice systems and processes
+        hippostd:state: draft
+        hippostd:tags: []
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-09-25T15:30:20+01:00
+        hippostdpubwf:lastModificationDate: 2020-01-10T11:44:19.265Z
+        hippostdpubwf:lastModifiedBy: gary.carmichael@gov.scot
+        hippotranslation:id: d7050b72-8a53-4d19-a427-d364ff60d49e
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We live in a digital world, influenced by technology. Our justice systems are changing, and we want to use new technologies to shape them.</p>
+
+            <p>In the 2017 to 2018 Programme for Government, we made a commitment to invest in the development of a Digital Evidence Sharing Capability (DESC).</p>
+
+            <p>This will improve how evidence is accessed across the justice system, making it easier to share and cases to be resolved more quickly.</p>
+
+            <p>DESC aims to improve the creation, storage and access of digital evidence, such as images, video and documentation, across the justice sector.</p>
+
+            <p>We plan to do testing this year. We are also going to roll out a new system in local areas with our partners in Police Scotland, and prosecution and defence lawyers, later this year and during 2019.</p>
+
+            <p>We have also worked with criminal justice organisations to increase the use of TV links for the imprisoned accused in criminal court cases.</p>
+
+            <p>And we have put new legislation in place which will allow greater use of technology such as electronic signature and service of documents.</p>
+
+            <h2>Improving online information and access to services</h2>
+
+            <p><a href="https://www.mygov.scot">mygov.scot</a> translates government legislation and policy into clear and easy to understand information for the public.</p>
+
+            <p>It's designed around users' needs, and aims to make it as easy as possible for individuals and businesses to find what they want quickly, (without having to know how the public sector in Scotland is organised.)</p>
+
+            <p>mygov.scot is evolving as the single point of access for finding out about public services in Scotland.</p>
+
+            <p>Civil and criminal justice issues on mygov.scot include:</p>
+
+            <ul>
+             <li><a href="https://www.mygov.scot/support-money/">debt</a></li>
+             <li><a href="https://www.mygov.scot/repossession/">housing repossession</a></li>
+             <li>support for <a href="https://www.mygov.scot/victim-witness-rights/">victims and witnesses of crime</a></li>
+             <li><a href="https://www.mygov.scot/support-after-separation/">financial advice after a relationship break-up</a></li>
+            </ul>
+
+            <p>We're taking this work a step further through our <a href="https://civtech.atlassian.net/wiki/spaces/CIV/pages/45904817/Challenge+5+How+can+we+use+technology+to+provide+better+access+to+public+services+through+mygov.scot">CivTech data challenge</a>.</p>
+
+            <p>It's focused on using technology to create an interactive experience that helps users find relevant public services quickly.</p>
+
+            <p>It will make it easier for people to find the information they need when they're in crisis. Or if they don't know which organisations will be able to give them advice and support.</p>
+
+            <p>The first topic will be relationship breakdown.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+    /improving-information-and-advice:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 7858200a-0fb6-44c0-a8b8-06728dc5a8cc
+      hippo:name: Improving information and advice
+      hippo:versionHistory: a497a159-65d8-49dd-bb22-03e98fe064c3
+      /improving-information-and-advice[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: ccdf4aa2-5221-4978-a7c4-ba2b79eaf361
+        govscot:metaDescription: The Scottish Government's work to improve the standard
+          of information and advice relating to issues such as housing, money debt
+          and welfare.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-655
+        govscot:seoTitle: Producing high quality information and advice in Scotland
+        govscot:sme: ''
+        govscot:summary: Our work to improve the standard of information and advice
+          on housing, money, debt and welfare issues.
+        govscot:title: Improving information and advice
+        hippo:availability: [live]
+        hippo:name: Improving information and advice
+        hippostd:state: published
+        hippostd:tags: [SNSIAP, SNSIAP accreditation, SNSIAP support, Framework for
+            information services, information and advice providers, Scottish National
+            Standards for Information and Advice Providers, information and advice
+            standards, advice for citizens, legal advice, debt advice, welfare advice,
+          housing advice, money advice]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-12T17:26:17+01:00
+        hippostdpubwf:lastModificationDate: 2020-10-08T12:26:53.725+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippostdpubwf:publicationDate: 2020-10-08T12:27:00.298+01:00
+        hippotranslation:id: 7756583f-e4b2-46aa-a4b3-83b214cae9ad
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are working to improve the quality of information and advice provided to people on issues such as housing, money, debt and welfare, by developing and promoting national standards.</p>
+
+            <h3>Scottish National Standards for Information and Advice Providers (SNSIAP)</h3>
+
+            <p>The <a href="index_3">Scottish National Standards for Information and Advice Providers</a> (2009) were developed in recognition that people choose to access information and advice from various sources. Some agencies specialise in advice whereas others provide advice as part of a wider service.</p>
+
+            <p>The national standards, which are backed up by an accreditation system, can be used by any advice provider to improve the quality of its service.</p>
+
+            <p>The standards divide advice and information into three types:</p>
+
+            <ol>
+             <li>
+             <p>Active information, sign-posting and explanation - activities such as providing information either orally or in writing, sign-posting or referring the user to other available resources or services, and, the explanation of technical terms or clarifying an official document, such as a tenancy agreement or a possession order.</p>
+             </li>
+             <li>
+             <p>Casework - includes interviewing people to find out what their issue is, explaining their options to them and helping them to deal with that issue. This can include negotiating with the other side in a dispute, providing practical help with letters or forms or helping the client to sort out their problem themselves.</p>
+             </li>
+             <li>
+             <p>Advocacy, representation and mediation at tribunal or court action level - covers situations where advisers represents a client in a tribunal or court or mediates on their behalf with a third party. It includes some activities that can only be undertaken by a solicitor.</p>
+             </li>
+            </ol>
+
+            <h3>The new accreditation model</h3>
+
+            <p>A redesigned accreditation model for information and advice providers is being implemented following a 2014 review by the Scottish Legal Aid Board (SLAB). The aim of the new model is to support advice providers to continuously improve.</p>
+
+            <p>Advice providers can go through the new process of accreditation, or re-accreditation, free of charge</p>
+
+            <p>The new model of accreditation, as with the previous scheme, focuses on both the organisational and technical quality of advice. It separates out the audit of evidence provided by the organisation from the peer review of casework.</p>
+
+            <p>Peer review takes place prior to audit for organisations providing Type 2 (casework) and Type 3 (representation or mediation at court/tribunal) advice based on the competences defined in the SNSIAP framework.</p>
+
+            <p>The <a href="/publications/scottish-national-standards-information-advice-providers-quality-assurance-framework-2009/">SNSIAP framework</a> itself has not changed, although we have updated the <a href="index_1">competencies for advisers</a> (section 2) to ensure they reflect current legislation.</p>
+
+            <h3>Accreditation process</h3>
+
+            <p>Accreditation is formal third party recognition that the organisation applying has been assessed as meeting the standards framework.</p>
+
+            <p>The accreditation process differs for agencies providing type 1 advice, type 2/3 advice and Citizens Advice Bureaux (see above for different advice types).</p>
+
+            <p>See SLAB's website for more information on <a href="https://slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/">how to apply for accreditation</a>, what the process involves and how to prepare for this.</p>
+
+            <h3>Accredited agencies</h3>
+
+            <p>All agencies accredited under the current process are listed on the <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/list-of-agencies-already-accredited/">Scottish Legal Aid Board’s website</a>.</p>
+
+            <p>The list of accredited agencies under the previous process can be found <a href="index_2">here</a>.&nbsp;</p>
+
+            <h3>Self assessment</h3>
+
+            <p>To prepare for accreditation, advice providers must self-assess against the <a href="index">SNSIAP framework</a>. Do not use section 2 as this has been updated. See the <a href="index_4">updated section 2 (competencies).</a></p>
+
+            <p>We will review and republish the quality assurance framework in its entirety as soon as possible.</p>
+
+            <p>SLAB has developed separate self assessment tools and guidance for <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/type-1-accreditation/">Type I advice providers</a>, <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/type-2-3-accreditation/">Type II and III advice providers</a>, and <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/cab-accreditation/">Citizens Advice Bureaux</a>.</p>
+
+            <h3>Contact</h3>
+
+            <p>For further information:</p>
+
+            <p>Email: <span><span><a style="color:#0563c1; text-decoration:underline" href="mailto:SNSIAP@slab.org.uk">SNSIAP@slab.org.uk</a> </span></span><br />
+            &nbsp;</p>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 5b473982-06e0-4c1c-862b-39d8fef78669
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_1:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a64007f8-4052-40b4-b945-cd276727bde3
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_3:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 5b473982-06e0-4c1c-862b-39d8fef78669
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_4:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a64007f8-4052-40b4-b945-cd276727bde3
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_2:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: d378669c-a8ec-43f7-968f-94d1323e9660
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Reece - changes made 8/9/17 at request of Laura McDavitt during fact check.<br />
+            Claire - updated 2/10 as content does not meet site style.</p>
+
+            <p>&nbsp;</p>
+      /improving-information-and-advice[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: b169fe54-d397-4cef-91ea-984b93d12773
+        govscot:metaDescription: The Scottish Government's work to improve the standard
+          of information and advice relating to issues such as housing, money debt
+          and welfare.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-655
+        govscot:seoTitle: Producing high quality information and advice in Scotland
+        govscot:sme: ''
+        govscot:summary: Our work to improve the standard of information and advice
+          on housing, money, debt and welfare issues.
+        govscot:title: Improving information and advice
+        hippo:availability: [preview]
+        hippo:name: Improving information and advice
+        hippostd:state: unpublished
+        hippostd:tags: [SNSIAP, SNSIAP accreditation, SNSIAP support, Framework for
+            information services, information and advice providers, Scottish National
+            Standards for Information and Advice Providers, information and advice
+            standards, advice for citizens, legal advice, debt advice, welfare advice,
+          housing advice, money advice]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-12T17:26:17+01:00
+        hippostdpubwf:lastModificationDate: 2020-10-08T12:26:53.725+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippotranslation:id: 7756583f-e4b2-46aa-a4b3-83b214cae9ad
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are working to improve the quality of information and advice provided to people on issues such as housing, money, debt and welfare, by developing and promoting national standards.</p>
+
+            <h3>Scottish National Standards for Information and Advice Providers (SNSIAP)</h3>
+
+            <p>The <a href="index_3">Scottish National Standards for Information and Advice Providers</a> (2009) were developed in recognition that people choose to access information and advice from various sources. Some agencies specialise in advice whereas others provide advice as part of a wider service.</p>
+
+            <p>The national standards, which are backed up by an accreditation system, can be used by any advice provider to improve the quality of its service.</p>
+
+            <p>The standards divide advice and information into three types:</p>
+
+            <ol>
+             <li>
+             <p>Active information, sign-posting and explanation - activities such as providing information either orally or in writing, sign-posting or referring the user to other available resources or services, and, the explanation of technical terms or clarifying an official document, such as a tenancy agreement or a possession order.</p>
+             </li>
+             <li>
+             <p>Casework - includes interviewing people to find out what their issue is, explaining their options to them and helping them to deal with that issue. This can include negotiating with the other side in a dispute, providing practical help with letters or forms or helping the client to sort out their problem themselves.</p>
+             </li>
+             <li>
+             <p>Advocacy, representation and mediation at tribunal or court action level - covers situations where advisers represents a client in a tribunal or court or mediates on their behalf with a third party. It includes some activities that can only be undertaken by a solicitor.</p>
+             </li>
+            </ol>
+
+            <h3>The new accreditation model</h3>
+
+            <p>A redesigned accreditation model for information and advice providers is being implemented following a 2014 review by the Scottish Legal Aid Board (SLAB). The aim of the new model is to support advice providers to continuously improve.</p>
+
+            <p>Advice providers can go through the new process of accreditation, or re-accreditation, free of charge</p>
+
+            <p>The new model of accreditation, as with the previous scheme, focuses on both the organisational and technical quality of advice. It separates out the audit of evidence provided by the organisation from the peer review of casework.</p>
+
+            <p>Peer review takes place prior to audit for organisations providing Type 2 (casework) and Type 3 (representation or mediation at court/tribunal) advice based on the competences defined in the SNSIAP framework.</p>
+
+            <p>The <a href="/publications/scottish-national-standards-information-advice-providers-quality-assurance-framework-2009/">SNSIAP framework</a> itself has not changed, although we have updated the <a href="index_1">competencies for advisers</a> (section 2) to ensure they reflect current legislation.</p>
+
+            <h3>Accreditation process</h3>
+
+            <p>Accreditation is formal third party recognition that the organisation applying has been assessed as meeting the standards framework.</p>
+
+            <p>The accreditation process differs for agencies providing type 1 advice, type 2/3 advice and Citizens Advice Bureaux (see above for different advice types).</p>
+
+            <p>See SLAB's website for more information on <a href="https://slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/">how to apply for accreditation</a>, what the process involves and how to prepare for this.</p>
+
+            <h3>Accredited agencies</h3>
+
+            <p>All agencies accredited under the current process are listed on the <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/list-of-agencies-already-accredited/">Scottish Legal Aid Board’s website</a>.</p>
+
+            <p>The list of accredited agencies under the previous process can be found <a href="index_2">here</a>.&nbsp;</p>
+
+            <h3>Self assessment</h3>
+
+            <p>To prepare for accreditation, advice providers must self-assess against the <a href="index">SNSIAP framework</a>. Do not use section 2 as this has been updated. See the <a href="index_4">updated section 2 (competencies).</a></p>
+
+            <p>We will review and republish the quality assurance framework in its entirety as soon as possible.</p>
+
+            <p>SLAB has developed separate self assessment tools and guidance for <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/type-1-accreditation/">Type I advice providers</a>, <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/type-2-3-accreditation/">Type II and III advice providers</a>, and <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/cab-accreditation/">Citizens Advice Bureaux</a>.</p>
+
+            <h3>Contact</h3>
+
+            <p>For further information:</p>
+
+            <p>Email: <span><span><a style="color:#0563c1; text-decoration:underline" href="mailto:SNSIAP@slab.org.uk">SNSIAP@slab.org.uk</a> </span></span><br />
+            &nbsp;</p>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 5b473982-06e0-4c1c-862b-39d8fef78669
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_1:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a64007f8-4052-40b4-b945-cd276727bde3
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_3:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 5b473982-06e0-4c1c-862b-39d8fef78669
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_4:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a64007f8-4052-40b4-b945-cd276727bde3
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_2:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: d378669c-a8ec-43f7-968f-94d1323e9660
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Reece - changes made 8/9/17 at request of Laura McDavitt during fact check.<br />
+            Claire - updated 2/10 as content does not meet site style.</p>
+
+            <p>&nbsp;</p>
+      /improving-information-and-advice[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 8c8e545e-9e93-4abe-8594-344a1ddcc21e
+        govscot:metaDescription: The Scottish Government's work to improve the standard
+          of information and advice relating to issues such as housing, money debt
+          and welfare.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-655
+        govscot:seoTitle: Producing high quality information and advice in Scotland
+        govscot:sme: ''
+        govscot:summary: Our work to improve the standard of information and advice
+          on housing, money, debt and welfare issues.
+        govscot:title: Improving information and advice
+        hippo:availability: []
+        hippo:name: Improving information and advice
+        hippostd:state: draft
+        hippostd:tags: [SNSIAP, SNSIAP accreditation, SNSIAP support, Framework for
+            information services, information and advice providers, Scottish National
+            Standards for Information and Advice Providers, information and advice
+            standards, advice for citizens, legal advice, debt advice, welfare advice,
+          housing advice, money advice]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-12T17:26:17+01:00
+        hippostdpubwf:lastModificationDate: 2020-10-08T12:26:03.794+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippotranslation:id: 7756583f-e4b2-46aa-a4b3-83b214cae9ad
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are working to improve the quality of information and advice provided to people on issues such as housing, money, debt and welfare, by developing and promoting national standards.</p>
+
+            <h3>Scottish National Standards for Information and Advice Providers (SNSIAP)</h3>
+
+            <p>The <a href="index_3">Scottish National Standards for Information and Advice Providers</a> (2009) were developed in recognition that people choose to access information and advice from various sources. Some agencies specialise in advice whereas others provide advice as part of a wider service.</p>
+
+            <p>The national standards, which are backed up by an accreditation system, can be used by any advice provider to improve the quality of its service.</p>
+
+            <p>The standards divide advice and information into three types:</p>
+
+            <ol>
+             <li>
+             <p>Active information, sign-posting and explanation - activities such as providing information either orally or in writing, sign-posting or referring the user to other available resources or services, and, the explanation of technical terms or clarifying an official document, such as a tenancy agreement or a possession order.</p>
+             </li>
+             <li>
+             <p>Casework - includes interviewing people to find out what their issue is, explaining their options to them and helping them to deal with that issue. This can include negotiating with the other side in a dispute, providing practical help with letters or forms or helping the client to sort out their problem themselves.</p>
+             </li>
+             <li>
+             <p>Advocacy, representation and mediation at tribunal or court action level - covers situations where advisers represents a client in a tribunal or court or mediates on their behalf with a third party. It includes some activities that can only be undertaken by a solicitor.</p>
+             </li>
+            </ol>
+
+            <h3>The new accreditation model</h3>
+
+            <p>A redesigned accreditation model for information and advice providers is being implemented following a 2014 review by the Scottish Legal Aid Board (SLAB). The aim of the new model is to support advice providers to continuously improve.</p>
+
+            <p>Advice providers can go through the new process of accreditation, or re-accreditation, free of charge</p>
+
+            <p>The new model of accreditation, as with the previous scheme, focuses on both the organisational and technical quality of advice. It separates out the audit of evidence provided by the organisation from the peer review of casework.</p>
+
+            <p>Peer review takes place prior to audit for organisations providing Type 2 (casework) and Type 3 (representation or mediation at court/tribunal) advice based on the competences defined in the SNSIAP framework.</p>
+
+            <p>The <a href="/publications/scottish-national-standards-information-advice-providers-quality-assurance-framework-2009/">SNSIAP framework</a> itself has not changed, although we have updated the <a href="index_1">competencies for advisers</a> (section 2) to ensure they reflect current legislation.</p>
+
+            <h3>Accreditation process</h3>
+
+            <p>Accreditation is formal third party recognition that the organisation applying has been assessed as meeting the standards framework.</p>
+
+            <p>The accreditation process differs for agencies providing type 1 advice, type 2/3 advice and Citizens Advice Bureaux (see above for different advice types).</p>
+
+            <p>See SLAB's website for more information on <a href="https://slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/">how to apply for accreditation</a>, what the process involves and how to prepare for this.</p>
+
+            <h3>Accredited agencies</h3>
+
+            <p>All agencies accredited under the current process are listed on the <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/list-of-agencies-already-accredited/">Scottish Legal Aid Board’s website</a>.</p>
+
+            <p>The list of accredited agencies under the previous process can be found <a href="index_2">here</a>.&nbsp;</p>
+
+            <h3>Self assessment</h3>
+
+            <p>To prepare for accreditation, advice providers must self-assess against the <a href="index">SNSIAP framework</a>. Do not use section 2 as this has been updated. See the <a href="index_4">updated section 2 (competencies).</a></p>
+
+            <p>We will review and republish the quality assurance framework in its entirety as soon as possible.</p>
+
+            <p>SLAB has developed separate self assessment tools and guidance for <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/type-1-accreditation/">Type I advice providers</a>, <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/type-2-3-accreditation/">Type II and III advice providers</a>, and <a href="https://www.slab.org.uk/advice-agencies/scottish-national-standards-for-information-and-advice-partners/cab-accreditation/">Citizens Advice Bureaux</a>.</p>
+
+            <h3>Contact</h3>
+
+            <p>For further information:</p>
+
+            <p>Email: <span><span><a style="color:#0563c1; text-decoration:underline" href="mailto:SNSIAP@slab.org.uk">SNSIAP@slab.org.uk</a> </span></span><br />
+            &nbsp;</p>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 5b473982-06e0-4c1c-862b-39d8fef78669
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_1:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a64007f8-4052-40b4-b945-cd276727bde3
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_3:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 5b473982-06e0-4c1c-862b-39d8fef78669
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_4:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a64007f8-4052-40b4-b945-cd276727bde3
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /index_2:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: d378669c-a8ec-43f7-968f-94d1323e9660
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Reece - changes made 8/9/17 at request of Laura McDavitt during fact check.<br />
+            Claire - updated 2/10 as content does not meet site style.</p>
+
+            <p>&nbsp;</p>
+    /alternative-business-structures:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+      jcr:uuid: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+      hippo:name: 'Legal services: alternative business structures'
+      hippo:versionHistory: 9d4fb4db-fedf-4f89-a9f6-913489756f35
+      /alternative-business-structures[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: ee49e0fd-c3f3-46ec-8a7e-d4be7c129fe6
+        govscot:metaDescription: Our work to introduce alternative business structures
+          in the legal services market, to improve customer choice.
+        govscot:reportingTags: []
+        govscot:seoTitle: Alternative business structures
+        govscot:sme: Graham Thomson
+        govscot:summary: Our work to introduce alternative business structures in
+          the legal services market, to improve customer choice.
+        govscot:title: 'Legal services: alternative business structures'
+        hippo:availability: []
+        hippostd:state: draft
+        hippostd:tags: [legal services act, legal services, ABS, licensed legal service
+            providers]
+        hippostdpubwf:createdBy: juliet.langton@gov.scot
+        hippostdpubwf:creationDate: 2018-09-21T16:20:38.456+01:00
+        hippostdpubwf:lastModificationDate: 2021-12-22T15:39:54.813Z
+        hippostdpubwf:lastModifiedBy: joanna.baird@gov.scot
+        hippotranslation:id: 10ebf74c-16e3-4c41-9907-3f3e9c796056
+        hippotranslation:locale: document-type-locale
+        /govscot:responsibilities:
+          jcr:primaryType: hippostd:html
+          hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p style="margin-left:0px; margin-right:0px">We are working towards the introduction of alternative business structures in the legal services market, to help improve customer choice and widen access to justice.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The <a href="https://www.legislation.gov.uk/asp/2010/16/contents">Legal Services (Scotland) Act 2010 </a>allows solicitors to enter business relationships with non-solicitors to provide legal services to the public for a fee, under a licence issued by an approved regulator.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">Also known as licensed legal services providers, ABS must be 51% owned by lawyers or other regulated professionals.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">Clients will be able to expect the same standards of service, advice and consumer protection as existing solicitor practices.</p>
+
+            <h3 style="margin-left:0px; margin-right:0px">Regulatory framework</h3>
+
+            <p style="margin-left:0px; margin-right:0px">There will be a new regulatory framework for licensed legal service providers.</p>
+
+            <p style="margin-left:0px; margin-right:0px">Service providers will be licensed and regulated by a regulator approved by Scottish Ministers.</p>
+
+            <p style="margin-left:0px; margin-right:0px">There is a two-step process for becoming an approved regulator. If granted authorisation, an approved regulator must make and implement a regulatory scheme for its licensed legal service providers.</p>
+
+            <h3><span><span><span><span><span><span><span class="msoIns"><span>Register of approved regulators</span></span></span></span></span></span></span></span></h3>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Section 82 of the Legal Services (Scotland) Act 2010 requires Scottish Ministers to keep and publish a register of approved regulators.</span></span></span></span></span><span class="msoIns"><span> </span></span><span><span><span><span class="msoIns"><span>The register is to include the following information in relation to each approved regulator. Currently there is only one approved regulator.</span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>The Law Society of Scotland</span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Address: Atria One, 144 Morrison St, Edinburgh, EH3 8EX </span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Telephone: 0131 226 7411</span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Website: <a style="color:#0563c1; text-decoration:underline" href="https://www.lawscot.org.uk">https://www.lawscot.org.uk</a></span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Email: &nbsp;<a style="color:#0563c1; text-decoration:underline" href="mailto:lawscot@lawscot.org.uk">lawscot@lawscot.org.uk</a> </span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Approved by Scottish Ministers under section 7 of the Legal Services (Scotland) Act 2010 on 17 January 2017</span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Authorised by Scottish Ministers to exercise its regulatory functions as an approved regulator of licensed legal services providers, under section 10 of the Legal Services (Scotland) Act 2010 on 22 December 2021.</span></span></span></span></span></span></span></span></p>
+
+            <h3 style="margin-left:0px; margin-right:0px">Approved regulators: complaints handling</h3>
+
+            <p style="margin-left:0px; margin-right:0px">We carried out a targeted stakeholder consultation between June and August 2018, with the purpose of creating a regulatory framework for handling complaints against approved regulators of licensed legal service providers.</p>
+
+            <ul>
+             <li><a href="index_1">approved regulator complaints: consultation document and responses</a></li>
+            </ul>
+
+            <p style="margin-left:0px; margin-right:0px">A partial business and regulatory impact assessment (BRIA) has been completed with a purpose to establish a framework for the investigation of a complaint about an approved regulator of licensed legal services providers.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">The<a href="http://www.legislation.gov.uk/ssi/2018/341/contents/made"> Licensed Legal Services (Complaints About Approved Regulators) (Scotland) Regulations 2018 </a>make further provision setting out the statutory requirements for: &nbsp;&nbsp;</p>
+
+            <ul>
+             <li>investigation of multiple complaints against an approved regulator</li>
+             <li>interim report arrangements&nbsp;&nbsp;</li>
+            </ul>
+          /index_1:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: d26286f8-b84c-4655-bbe7-0d546a3e1eae
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /alternative-business-structures[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: ae5d54eb-b8c5-4359-bcc8-add6f5f59c97
+        govscot:metaDescription: Our work to introduce alternative business structures
+          in the legal services market, to improve customer choice.
+        govscot:reportingTags: []
+        govscot:seoTitle: Alternative business structures
+        govscot:sme: Graham Thomson
+        govscot:summary: Our work to introduce alternative business structures in
+          the legal services market, to improve customer choice.
+        govscot:title: 'Legal services: alternative business structures'
+        hippo:availability: [preview]
+        hippostd:state: unpublished
+        hippostd:tags: [legal services act, legal services, ABS, licensed legal service
+            providers]
+        hippostdpubwf:createdBy: juliet.langton@gov.scot
+        hippostdpubwf:creationDate: 2018-09-21T16:20:38.456+01:00
+        hippostdpubwf:lastModificationDate: 2021-12-22T15:41:19.180Z
+        hippostdpubwf:lastModifiedBy: joanna.baird@gov.scot
+        hippotranslation:id: 10ebf74c-16e3-4c41-9907-3f3e9c796056
+        hippotranslation:locale: document-type-locale
+        /govscot:responsibilities:
+          jcr:primaryType: hippostd:html
+          hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p style="margin-left:0px; margin-right:0px">We are working towards the introduction of alternative business structures in the legal services market, to help improve customer choice and widen access to justice.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The <a href="https://www.legislation.gov.uk/asp/2010/16/contents">Legal Services (Scotland) Act 2010 </a>allows solicitors to enter business relationships with non-solicitors to provide legal services to the public for a fee, under a licence issued by an approved regulator.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">Also known as licensed legal services providers, ABS must be 51% owned by lawyers or other regulated professionals.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">Clients will be able to expect the same standards of service, advice and consumer protection as existing solicitor practices.</p>
+
+            <h3 style="margin-left:0px; margin-right:0px">Regulatory framework</h3>
+
+            <p style="margin-left:0px; margin-right:0px">There will be a new regulatory framework for licensed legal service providers.</p>
+
+            <p style="margin-left:0px; margin-right:0px">Service providers will be licensed and regulated by a regulator approved by Scottish Ministers.</p>
+
+            <p style="margin-left:0px; margin-right:0px">There is a two-step process for becoming an approved regulator. If granted authorisation, an approved regulator must make and implement a regulatory scheme for its licensed legal service providers.</p>
+
+            <h3><span><span><span><span><span><span><span class="msoIns"><span>Register of approved regulators</span></span></span></span></span></span></span></span></h3>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Section 82 of the Legal Services (Scotland) Act 2010 requires Scottish Ministers to keep and publish a register of approved regulators.</span></span></span></span></span><span class="msoIns"><span> </span></span><span><span><span><span class="msoIns"><span>The register is to include the following information in relation to each approved regulator. Currently there is only one approved regulator.</span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>The Law Society of Scotland</span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Address: Atria One, 144 Morrison St, Edinburgh, EH3 8EX </span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Telephone: 0131 226 7411</span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Website: <a style="color:#0563c1; text-decoration:underline" href="https://www.lawscot.org.uk">https://www.lawscot.org.uk</a></span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Email: &nbsp;<a style="color:#0563c1; text-decoration:underline" href="mailto:lawscot@lawscot.org.uk">lawscot@lawscot.org.uk</a> </span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Approved by Scottish Ministers under section 7 of the Legal Services (Scotland) Act 2010 on 17 January 2017</span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Authorised by Scottish Ministers to exercise its regulatory functions as an approved regulator of licensed legal services providers, under section 10 of the Legal Services (Scotland) Act 2010 on 22 December 2021.</span></span></span></span></span></span></span></span></p>
+
+            <h3 style="margin-left:0px; margin-right:0px">Approved regulators: complaints handling</h3>
+
+            <p style="margin-left:0px; margin-right:0px">We carried out a targeted stakeholder consultation between June and August 2018, with the purpose of creating a regulatory framework for handling complaints against approved regulators of licensed legal service providers.</p>
+
+            <ul>
+             <li><a href="index_1">approved regulator complaints: consultation document and responses</a></li>
+            </ul>
+
+            <p style="margin-left:0px; margin-right:0px">A partial business and regulatory impact assessment (BRIA) has been completed with a purpose to establish a framework for the investigation of a complaint about an approved regulator of licensed legal services providers.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">The<a href="http://www.legislation.gov.uk/ssi/2018/341/contents/made"> Licensed Legal Services (Complaints About Approved Regulators) (Scotland) Regulations 2018 </a>make further provision setting out the statutory requirements for: &nbsp;&nbsp;</p>
+
+            <ul>
+             <li>investigation of multiple complaints against an approved regulator</li>
+             <li>interim report arrangements&nbsp;&nbsp;</li>
+            </ul>
+          /index_1:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: d26286f8-b84c-4655-bbe7-0d546a3e1eae
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /alternative-business-structures[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: e8e51d68-0851-4c27-bc64-f71533add21f
+        govscot:metaDescription: Our work to introduce alternative business structures
+          in the legal services market, to improve customer choice.
+        govscot:reportingTags: []
+        govscot:seoTitle: Alternative business structures
+        govscot:sme: Graham Thomson
+        govscot:summary: Our work to introduce alternative business structures in
+          the legal services market, to improve customer choice.
+        govscot:title: 'Legal services: alternative business structures'
+        hippo:availability: [live]
+        hippostd:state: published
+        hippostd:tags: [legal services act, legal services, ABS, licensed legal service
+            providers]
+        hippostdpubwf:createdBy: juliet.langton@gov.scot
+        hippostdpubwf:creationDate: 2018-09-21T16:20:38.456+01:00
+        hippostdpubwf:lastModificationDate: 2021-12-22T15:41:19.180Z
+        hippostdpubwf:lastModifiedBy: joanna.baird@gov.scot
+        hippostdpubwf:publicationDate: 2021-12-22T15:41:22.025Z
+        hippotranslation:id: 10ebf74c-16e3-4c41-9907-3f3e9c796056
+        hippotranslation:locale: document-type-locale
+        /govscot:responsibilities:
+          jcr:primaryType: hippostd:html
+          hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p style="margin-left:0px; margin-right:0px">We are working towards the introduction of alternative business structures in the legal services market, to help improve customer choice and widen access to justice.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The <a href="https://www.legislation.gov.uk/asp/2010/16/contents">Legal Services (Scotland) Act 2010 </a>allows solicitors to enter business relationships with non-solicitors to provide legal services to the public for a fee, under a licence issued by an approved regulator.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">Also known as licensed legal services providers, ABS must be 51% owned by lawyers or other regulated professionals.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">Clients will be able to expect the same standards of service, advice and consumer protection as existing solicitor practices.</p>
+
+            <h3 style="margin-left:0px; margin-right:0px">Regulatory framework</h3>
+
+            <p style="margin-left:0px; margin-right:0px">There will be a new regulatory framework for licensed legal service providers.</p>
+
+            <p style="margin-left:0px; margin-right:0px">Service providers will be licensed and regulated by a regulator approved by Scottish Ministers.</p>
+
+            <p style="margin-left:0px; margin-right:0px">There is a two-step process for becoming an approved regulator. If granted authorisation, an approved regulator must make and implement a regulatory scheme for its licensed legal service providers.</p>
+
+            <h3><span><span><span><span><span><span><span class="msoIns"><span>Register of approved regulators</span></span></span></span></span></span></span></span></h3>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Section 82 of the Legal Services (Scotland) Act 2010 requires Scottish Ministers to keep and publish a register of approved regulators.</span></span></span></span></span><span class="msoIns"><span> </span></span><span><span><span><span class="msoIns"><span>The register is to include the following information in relation to each approved regulator. Currently there is only one approved regulator.</span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>The Law Society of Scotland</span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Address: Atria One, 144 Morrison St, Edinburgh, EH3 8EX </span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Telephone: 0131 226 7411</span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Website: <a style="color:#0563c1; text-decoration:underline" href="https://www.lawscot.org.uk">https://www.lawscot.org.uk</a></span></span></span></span></span></span></span></span><br />
+            <span><span><span><span><span><span><span class="msoIns"><span>Email: &nbsp;<a style="color:#0563c1; text-decoration:underline" href="mailto:lawscot@lawscot.org.uk">lawscot@lawscot.org.uk</a> </span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Approved by Scottish Ministers under section 7 of the Legal Services (Scotland) Act 2010 on 17 January 2017</span></span></span></span></span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span class="msoIns"><span>Authorised by Scottish Ministers to exercise its regulatory functions as an approved regulator of licensed legal services providers, under section 10 of the Legal Services (Scotland) Act 2010 on 22 December 2021.</span></span></span></span></span></span></span></span></p>
+
+            <h3 style="margin-left:0px; margin-right:0px">Approved regulators: complaints handling</h3>
+
+            <p style="margin-left:0px; margin-right:0px">We carried out a targeted stakeholder consultation between June and August 2018, with the purpose of creating a regulatory framework for handling complaints against approved regulators of licensed legal service providers.</p>
+
+            <ul>
+             <li><a href="index_1">approved regulator complaints: consultation document and responses</a></li>
+            </ul>
+
+            <p style="margin-left:0px; margin-right:0px">A partial business and regulatory impact assessment (BRIA) has been completed with a purpose to establish a framework for the investigation of a complaint about an approved regulator of licensed legal services providers.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">The<a href="http://www.legislation.gov.uk/ssi/2018/341/contents/made"> Licensed Legal Services (Complaints About Approved Regulators) (Scotland) Regulations 2018 </a>make further provision setting out the statutory requirements for: &nbsp;&nbsp;</p>
+
+            <ul>
+             <li>investigation of multiple complaints against an approved regulator</li>
+             <li>interim report arrangements&nbsp;&nbsp;</li>
+            </ul>
+          /index_1:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: d26286f8-b84c-4655-bbe7-0d546a3e1eae
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+    /legal-aid:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 2b477104-a11e-4a19-8f5e-5ac90018a8ab
+      hippo:name: Legal aid
+      hippo:versionHistory: eb25ecd1-32c9-4cdc-9bea-61301ebd5594
+      /legal-aid[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 9bf564d1-0950-4fd6-92ac-10c1a144b17e
+        govscot:metaDescription: How we are improving the legal aid system in Scotland.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-876
+        govscot:seoTitle: Legal aid
+        govscot:sme: ''
+        govscot:summary: How we are improving the legal aid system in Scotland.
+        govscot:title: Legal aid
+        hippo:availability: [live]
+        hippo:name: Legal aid
+        hippostd:state: published
+        hippostd:tags: [criminal legal aid, legal aid review, legal aid]
+        hippostdpubwf:createdBy: claire.delaney@gov.scot
+        hippostdpubwf:creationDate: 2018-01-17T11:46:45Z
+        hippostdpubwf:lastModificationDate: 2021-08-27T09:58:19.777+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippostdpubwf:publicationDate: 2021-08-27T10:05:25.891+01:00
+        hippotranslation:id: 08e92722-1219-4967-9d2d-e316f5689b14
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>The legal aid system provides publicly funded legal advice and representation for those most in need. It is a key part of providing access to justice.</p>
+
+            <p>The majority of legal aid fund expenditure is on legal services provided by solicitors in private practice who are paid on a case by case basis.</p>
+
+            <h3>Review of legal aid</h3>
+
+            <p>An independent review of the legal aid system was carried out in 2017, to ensure it is simpler, user-focused and more flexible - as well as sustainable and cost-effective.</p>
+
+            <p>The review, chaired by Carnegie UK Trust Chief Executive Martyn Evans, published its report - <a href="/publications/rethinking-legal-aid-an-independent-strategic-review/">Rethinking Legal Aid: an independent strategic review</a> - in February 2018.</p>
+
+            <p>The report sets out a 10 year vision and makes 67 recommendations, including:</p>
+
+            <ul>
+             <li>putting the user at the centre including creating a consumer panel</li>
+             <li>developing a new system for setting fees paid to solicitors conducting legal aid work</li>
+             <li>establishing a new arm's length body responsible for delivery of publicly-funded legal assistance</li>
+            </ul>
+
+            <p>We will publish our response to the report in due course.</p>
+
+            <p>For <a href="https://www.webarchive.org.uk/wayback/archive/20170702002743/http://www.gov.scot/About/Review/legal-aid-review">background, minutes of meetings and evidence</a> go to the gov.scot/archive.</p>
+
+            <h3><span><span><strong><span><span>Legal Aid Business Support and Recovery Fund </span></span></strong></span></span></h3>
+
+            <p><span><span><span><span>The <a href="index">Legal Aid Business Support and Recovery Fund</a> recognises the critical role legal aid firms play in the justice sector as Scotland recovers from COVID-19. It also ensures the availability of legal services for those most affected by the pandemic.</span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span><span><span><span><span><span><span>The fund has been established following close consultation with the legal profession and will be distributed to legal aid practices as part of the Scottish Government’s Recover, Renew and Transform programme to support the justice sector.</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+            <h3>Criminal legal aid fee structures</h3>
+
+            <p>We are also working with the Scottish Legal Aid Board (SLAB), which manages and administers legal aid, and the Law Society of Scotland to streamline and modernise the way criminal legal aid fees are structured.</p>
+
+            <p>This will help make the system more effective by reducing unnecessary costs.</p>
+
+            <h3>Code of Practice for criminal legal assistance</h3>
+
+            <p>Solicitors and firms who want to carry out criminal legal assistance must be registered with SLAB and comply with the Code of Practice for Criminal Legal Assistance.</p>
+
+            <p>The code protects people who require criminal legal assistance by ensuring the solicitors comply with all legal, ethical and professional obligations.</p>
+
+            <p>An <a href="https://www.slab.org.uk/providers/mailshots/newsfeed/criminalcodepublished.html">updated version of the code</a> came into effect in January 2018.</p>
+
+            <div class="info-note note">For information on how to get help with legal costs go to: <a href="https://www.slab.org.uk/public/">https://www.slab.org.uk/public/</a></div>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: bb2613ee-b264-4e87-aee3-16eafc220525
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+      /legal-aid[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: dcd48074-2374-45ef-937f-8302ab01b310
+        govscot:metaDescription: How we are improving the legal aid system in Scotland.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-876
+        govscot:seoTitle: Legal aid
+        govscot:sme: ''
+        govscot:summary: How we are improving the legal aid system in Scotland.
+        govscot:title: Legal aid
+        hippo:availability: [preview]
+        hippo:name: Legal aid
+        hippostd:state: unpublished
+        hippostd:tags: [criminal legal aid, legal aid review, legal aid]
+        hippostdpubwf:createdBy: claire.delaney@gov.scot
+        hippostdpubwf:creationDate: 2018-01-17T11:46:45Z
+        hippostdpubwf:lastModificationDate: 2021-08-27T09:58:19.777+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippotranslation:id: 08e92722-1219-4967-9d2d-e316f5689b14
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>The legal aid system provides publicly funded legal advice and representation for those most in need. It is a key part of providing access to justice.</p>
+
+            <p>The majority of legal aid fund expenditure is on legal services provided by solicitors in private practice who are paid on a case by case basis.</p>
+
+            <h3>Review of legal aid</h3>
+
+            <p>An independent review of the legal aid system was carried out in 2017, to ensure it is simpler, user-focused and more flexible - as well as sustainable and cost-effective.</p>
+
+            <p>The review, chaired by Carnegie UK Trust Chief Executive Martyn Evans, published its report - <a href="/publications/rethinking-legal-aid-an-independent-strategic-review/">Rethinking Legal Aid: an independent strategic review</a> - in February 2018.</p>
+
+            <p>The report sets out a 10 year vision and makes 67 recommendations, including:</p>
+
+            <ul>
+             <li>putting the user at the centre including creating a consumer panel</li>
+             <li>developing a new system for setting fees paid to solicitors conducting legal aid work</li>
+             <li>establishing a new arm's length body responsible for delivery of publicly-funded legal assistance</li>
+            </ul>
+
+            <p>We will publish our response to the report in due course.</p>
+
+            <p>For <a href="https://www.webarchive.org.uk/wayback/archive/20170702002743/http://www.gov.scot/About/Review/legal-aid-review">background, minutes of meetings and evidence</a> go to the gov.scot/archive.</p>
+
+            <h3><span><span><strong><span><span>Legal Aid Business Support and Recovery Fund </span></span></strong></span></span></h3>
+
+            <p><span><span><span><span>The <a href="index">Legal Aid Business Support and Recovery Fund</a> recognises the critical role legal aid firms play in the justice sector as Scotland recovers from COVID-19. It also ensures the availability of legal services for those most affected by the pandemic.</span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span><span><span><span><span><span><span>The fund has been established following close consultation with the legal profession and will be distributed to legal aid practices as part of the Scottish Government’s Recover, Renew and Transform programme to support the justice sector.</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+            <h3>Criminal legal aid fee structures</h3>
+
+            <p>We are also working with the Scottish Legal Aid Board (SLAB), which manages and administers legal aid, and the Law Society of Scotland to streamline and modernise the way criminal legal aid fees are structured.</p>
+
+            <p>This will help make the system more effective by reducing unnecessary costs.</p>
+
+            <h3>Code of Practice for criminal legal assistance</h3>
+
+            <p>Solicitors and firms who want to carry out criminal legal assistance must be registered with SLAB and comply with the Code of Practice for Criminal Legal Assistance.</p>
+
+            <p>The code protects people who require criminal legal assistance by ensuring the solicitors comply with all legal, ethical and professional obligations.</p>
+
+            <p>An <a href="https://www.slab.org.uk/providers/mailshots/newsfeed/criminalcodepublished.html">updated version of the code</a> came into effect in January 2018.</p>
+
+            <div class="info-note note">For information on how to get help with legal costs go to: <a href="https://www.slab.org.uk/public/">https://www.slab.org.uk/public/</a></div>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: bb2613ee-b264-4e87-aee3-16eafc220525
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+      /legal-aid[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: d6b445f8-a739-4002-9aa7-8100ade46f77
+        govscot:metaDescription: How we are improving the legal aid system in Scotland.
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-876
+        govscot:seoTitle: Legal aid
+        govscot:sme: ''
+        govscot:summary: How we are improving the legal aid system in Scotland.
+        govscot:title: Legal aid
+        hippo:availability: []
+        hippo:name: Legal aid
+        hippostd:state: draft
+        hippostd:tags: [criminal legal aid, legal aid review, legal aid]
+        hippostdpubwf:createdBy: claire.delaney@gov.scot
+        hippostdpubwf:creationDate: 2018-01-17T11:46:45Z
+        hippostdpubwf:lastModificationDate: 2021-08-27T09:56:54.286+01:00
+        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippotranslation:id: 08e92722-1219-4967-9d2d-e316f5689b14
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>The legal aid system provides publicly funded legal advice and representation for those most in need. It is a key part of providing access to justice.</p>
+
+            <p>The majority of legal aid fund expenditure is on legal services provided by solicitors in private practice who are paid on a case by case basis.</p>
+
+            <h3>Review of legal aid</h3>
+
+            <p>An independent review of the legal aid system was carried out in 2017, to ensure it is simpler, user-focused and more flexible - as well as sustainable and cost-effective.</p>
+
+            <p>The review, chaired by Carnegie UK Trust Chief Executive Martyn Evans, published its report - <a href="/publications/rethinking-legal-aid-an-independent-strategic-review/">Rethinking Legal Aid: an independent strategic review</a> - in February 2018.</p>
+
+            <p>The report sets out a 10 year vision and makes 67 recommendations, including:</p>
+
+            <ul>
+             <li>putting the user at the centre including creating a consumer panel</li>
+             <li>developing a new system for setting fees paid to solicitors conducting legal aid work</li>
+             <li>establishing a new arm's length body responsible for delivery of publicly-funded legal assistance</li>
+            </ul>
+
+            <p>We will publish our response to the report in due course.</p>
+
+            <p>For <a href="https://www.webarchive.org.uk/wayback/archive/20170702002743/http://www.gov.scot/About/Review/legal-aid-review">background, minutes of meetings and evidence</a> go to the gov.scot/archive.</p>
+
+            <h3><span><span><strong><span><span>Legal Aid Business Support and Recovery Fund </span></span></strong></span></span></h3>
+
+            <p><span><span><span><span>The <a href="index">Legal Aid Business Support and Recovery Fund</a> recognises the critical role legal aid firms play in the justice sector as Scotland recovers from COVID-19. It also ensures the availability of legal services for those most affected by the pandemic.</span></span></span></span></p>
+
+            <p><span><span><span><span><span><span><span><span><span><span><span><span><span>The fund has been established following close consultation with the legal profession and will be distributed to legal aid practices as part of the Scottish Government’s Recover, Renew and Transform programme to support the justice sector.</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+            <h3>Criminal legal aid fee structures</h3>
+
+            <p>We are also working with the Scottish Legal Aid Board (SLAB), which manages and administers legal aid, and the Law Society of Scotland to streamline and modernise the way criminal legal aid fees are structured.</p>
+
+            <p>This will help make the system more effective by reducing unnecessary costs.</p>
+
+            <h3>Code of Practice for criminal legal assistance</h3>
+
+            <p>Solicitors and firms who want to carry out criminal legal assistance must be registered with SLAB and comply with the Code of Practice for Criminal Legal Assistance.</p>
+
+            <p>The code protects people who require criminal legal assistance by ensuring the solicitors comply with all legal, ethical and professional obligations.</p>
+
+            <p>An <a href="https://www.slab.org.uk/providers/mailshots/newsfeed/criminalcodepublished.html">updated version of the code</a> came into effect in January 2018.</p>
+
+            <div class="info-note note">For information on how to get help with legal costs go to: <a href="https://www.slab.org.uk/public/">https://www.slab.org.uk/public/</a></div>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: bb2613ee-b264-4e87-aee3-16eafc220525
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+    /regulation-legal-services:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 00ab25e2-bf99-4d4e-8c06-9f21c10cd03b
+      hippo:name: Regulation of legal services
+      /regulation-legal-services[1]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 606493a1-d8b0-420f-9c48-a65bf24fec12
+        govscot:metaDescription: Work to protect consumer interests and promote a
+          flourishing legal sector.
+        govscot:rubricId: GOV-691
+        govscot:seoTitle: Regulation of legal services in Scotland
+        govscot:sme: ''
+        govscot:summary: Work to protect consumer interests and promote a flourishing
+          legal sector.
+        govscot:title: Regulation of legal services
+        hippo:availability: [live]
+        hippo:name: Regulation of legal services
+        hippostd:state: published
+        hippostd:tags: [new kinds of legal businesses, new types of legal businesses,
+          business models for solicitors]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-08-03T16:53:49+01:00
+        hippostdpubwf:lastModificationDate: 2018-11-19T11:34:39.150Z
+        hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+        hippostdpubwf:publicationDate: 2018-11-19T11:34:43.442Z
+        hippotranslation:id: 35f1313b-4c4b-463d-8083-d1cf52c95cc0
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p style="margin-left:0px; margin-right:0px">We launched an independent review of how legal services are regulated in April 2017.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The review considered what changes were needed to the statutory framework for the regulation of legal services to protect consumer interests and promote a flourishing legal sector. That included ensuring that consumers understand the options available to them when something goes wrong.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px"><a href="index">Fit for the Future: report of the independent review of legal services regulation in Scotland</a> was published in October 2018.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The report makes 40 recommendations to Scottish Ministers on reforming the way in which legal services are regulated and complaints handled.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">The primary recommendation is that 'there should be a single regulator for all providers of legal services in Scotland. It should be independent of both government and those it regulates. It should be responsible for the whole system of regulation including entry, standards and monitoring, complaints and redress. Regulation should cover individuals, entities and activities and the single regulator should be a body accountable to the Scottish Parliament and subject to scrutiny by Audit Scotland.'</p>
+
+            <p style="margin-left:0px; margin-right:0px">We are considering the recommendations in detail and will respond in due course. &nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 362cccc6-c34a-4ead-b8b8-96fe66c61cb5
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: <p>Laura Sexton</p>
+      /regulation-legal-services[2]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 0a69ed46-e1be-4dd4-a579-6ad39709c7a7
+        govscot:metaDescription: Work to protect consumer interests and promote a
+          flourishing legal sector.
+        govscot:rubricId: GOV-691
+        govscot:seoTitle: Regulation of legal services in Scotland
+        govscot:sme: ''
+        govscot:summary: Work to protect consumer interests and promote a flourishing
+          legal sector.
+        govscot:title: Regulation of legal services
+        hippo:availability: [preview]
+        hippo:name: Regulation of legal services
+        hippostd:state: unpublished
+        hippostd:tags: [new kinds of legal businesses, new types of legal businesses,
+          business models for solicitors]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-08-03T16:53:49+01:00
+        hippostdpubwf:lastModificationDate: 2018-11-19T11:34:39.150Z
+        hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+        hippotranslation:id: 35f1313b-4c4b-463d-8083-d1cf52c95cc0
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p style="margin-left:0px; margin-right:0px">We launched an independent review of how legal services are regulated in April 2017.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The review considered what changes were needed to the statutory framework for the regulation of legal services to protect consumer interests and promote a flourishing legal sector. That included ensuring that consumers understand the options available to them when something goes wrong.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px"><a href="index">Fit for the Future: report of the independent review of legal services regulation in Scotland</a> was published in October 2018.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The report makes 40 recommendations to Scottish Ministers on reforming the way in which legal services are regulated and complaints handled.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">The primary recommendation is that 'there should be a single regulator for all providers of legal services in Scotland. It should be independent of both government and those it regulates. It should be responsible for the whole system of regulation including entry, standards and monitoring, complaints and redress. Regulation should cover individuals, entities and activities and the single regulator should be a body accountable to the Scottish Parliament and subject to scrutiny by Audit Scotland.'</p>
+
+            <p style="margin-left:0px; margin-right:0px">We are considering the recommendations in detail and will respond in due course. &nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 362cccc6-c34a-4ead-b8b8-96fe66c61cb5
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: <p>Laura Sexton</p>
+      /regulation-legal-services[3]:
+        jcr:primaryType: govscot:PolicyInDetail
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 5c731849-ad20-4931-b0b0-fe65d2ab6a27
+        govscot:metaDescription: Work to protect consumer interests and promote a
+          flourishing legal sector.
+        govscot:rubricId: GOV-691
+        govscot:seoTitle: Regulation of legal services in Scotland
+        govscot:sme: ''
+        govscot:summary: Work to protect consumer interests and promote a flourishing
+          legal sector.
+        govscot:title: Regulation of legal services
+        hippo:availability: []
+        hippo:name: Regulation of legal services
+        hippostd:state: draft
+        hippostd:tags: [new kinds of legal businesses, new types of legal businesses,
+          business models for solicitors]
+        hippostdpubwf:createdBy: dawn.kofie@gov.scot
+        hippostdpubwf:creationDate: 2017-08-03T16:53:49+01:00
+        hippostdpubwf:lastModificationDate: 2018-11-19T11:34:43.620Z
+        hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+        hippotranslation:id: 35f1313b-4c4b-463d-8083-d1cf52c95cc0
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p style="margin-left:0px; margin-right:0px">We launched an independent review of how legal services are regulated in April 2017.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The review considered what changes were needed to the statutory framework for the regulation of legal services to protect consumer interests and promote a flourishing legal sector. That included ensuring that consumers understand the options available to them when something goes wrong.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px"><a href="index">Fit for the Future: report of the independent review of legal services regulation in Scotland</a> was published in October 2018.</p>
+
+            <p style="margin-left:0px; margin-right:0px">The report makes 40 recommendations to Scottish Ministers on reforming the way in which legal services are regulated and complaints handled.&nbsp;</p>
+
+            <p style="margin-left:0px; margin-right:0px">The primary recommendation is that 'there should be a single regulator for all providers of legal services in Scotland. It should be independent of both government and those it regulates. It should be responsible for the whole system of regulation including entry, standards and monitoring, complaints and redress. Regulation should cover individuals, entities and activities and the single regulator should be a body accountable to the Scottish Parliament and subject to scrutiny by Audit Scotland.'</p>
+
+            <p style="margin-left:0px; margin-right:0px">We are considering the recommendations in detail and will respond in due course. &nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+          /index:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 362cccc6-c34a-4ead-b8b8-96fe66c61cb5
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: <p>Laura Sexton</p>
+    /latest:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+      jcr:uuid: 45a0fc81-a992-4448-a978-56e6c461d879
+      hippo:name: Latest
+      hippo:versionHistory: da8f2f07-f4f7-49b0-8be7-2c0d5d1bcb9c
+      /latest[1]:
+        jcr:primaryType: govscot:PolicyLatest
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 683b772c-05ed-4356-b7a6-b39abd972c7f
+        govscot:metaDescription: ''
+        govscot:title: Latest
+        hippo:availability: [live]
+        hippo:name: Latest
+        hippostd:state: published
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2021-09-14T14:19:09.230+01:00
+        hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+        hippostdpubwf:publicationDate: 2021-09-14T14:19:11.986+01:00
+        hippotranslation:id: 69feeac8-831d-4247-992f-43f04e11f363
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+        /govscot:relatedItems[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e88b79f5-268b-497a-ba82-f9a558dc9a47
+        /govscot:relatedItems[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ed68e06b-ecc2-4f10-bc71-f46237abf96f
+        /govscot:relatedItems[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 8bd0812b-5b23-4086-9426-93ecc31a0b9b
+        /govscot:relatedItems[4]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 1935be86-60bc-4b94-924c-482c557bca64
+        /govscot:relatedItems[5]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 91a4333f-a532-43fb-9c61-3b5077f14b93
+        /govscot:relatedItems[6]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 18fa63e8-5dcb-48bc-a9d7-8d9e17b69c3e
+        /govscot:relatedItems[7]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c80908c9-1aa8-495d-aae9-333043a1f175
+        /govscot:relatedItems[8]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 17b16f97-82e2-4a30-8d9f-a6bd804fb3fc
+        /govscot:relatedItems[9]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 87c49015-f857-4fcc-9889-d47c002ac668
+        /govscot:relatedItems[10]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 123e2181-33c2-4589-bea4-c3b6cd057a55
+        /govscot:relatedItems[11]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e0604859-6aff-4222-879e-b9aba50699c7
+        /govscot:relatedItems[12]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 6bb3aab2-68fe-4857-9840-94428c5a9cb5
+        /govscot:relatedItems[13]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 3f435b91-e500-4adf-8dad-8d2f0a9662d6
+        /govscot:relatedItems[14]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ac9913e1-7f71-48a3-9c13-d19d586ef590
+        /govscot:relatedItems[15]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 25108b30-272a-4655-b033-f0db8f944d15
+        /govscot:relatedItems[16]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 772a1ced-4799-4a56-81d7-862fcca576ab
+        /govscot:relatedItems[17]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 14f46fd6-b862-4770-8c04-44a141b0b7cf
+        /govscot:relatedItems[18]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 962e48cc-ea84-4176-82e3-28c0c5aea5ad
+        /govscot:relatedItems[19]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 505c5023-62d4-49c8-b5d6-0a1895e341c4
+        /govscot:relatedItems[20]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ba2cfba1-fe27-430b-a56b-cb1fb9a7556e
+        /govscot:relatedItems[21]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 5ed3c9c3-2449-48d9-8a19-adb5fa8a85f0
+        /govscot:relatedItems[22]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 24fe3458-9f9f-4647-bf9b-a0f9fb5fbdc3
+        /govscot:relatedItems[23]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 96e6fbf6-4344-4a2b-ba0f-280dbac82477
+        /govscot:relatedItems[24]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: b2de15fa-d99f-491f-aca6-d83e14542690
+        /govscot:relatedItems[25]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: adacbf45-2ff8-497c-9b7f-62770b9ef5f5
+        /govscot:relatedItems[26]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 37c424b9-97fe-4516-8dcc-e512c54b2477
+        /govscot:relatedItems[27]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 591e2c3b-19bf-4df5-9c27-8fbce5dd54c7
+        /govscot:relatedItems[28]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2088154e-a30c-4a80-b907-fcc7a6685014
+        /govscot:relatedItems[29]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4f766d96-77b6-4a1a-b6ab-ff18ac17d005
+        /govscot:relatedItems[30]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: f3351357-55de-40d4-aadc-7069a30e0dd1
+        /govscot:relatedItems[31]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cb252063-f8c3-4850-81f3-3eb120a111d2
+        /govscot:relatedItems[32]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 74d4eb88-2bf6-4826-868c-75c9006a411b
+        /govscot:relatedItems[33]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e4e62d5a-fb51-4707-b8b5-e09f0f1c56b8
+        /govscot:relatedItems[34]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: d9907e8c-e10e-4b81-87f2-3e181d764091
+        /govscot:relatedItems[35]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 46507ca1-077f-4af3-9795-aee6ab91cb05
+        /govscot:relatedItems[36]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ce5e4cc4-b02c-4d1f-8e22-5ad879a1b33c
+        /govscot:relatedItems[37]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: a7884dff-24b8-4774-9662-828355d3a085
+        /govscot:relatedItems[38]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ea37a35c-ba4d-49b6-ae2e-161c2c0b3577
+        /govscot:relatedItems[39]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c14e9c67-0b54-4bb6-b762-5d3cc6e8cadb
+        /govscot:relatedItems[40]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: b6563236-afae-4fbe-b8b7-73f62da2c824
+        /govscot:relatedItems[41]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 52389380-a596-4fdb-aecb-296d81a229c9
+        /govscot:relatedItems[42]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 0b18476a-6252-48f2-8fec-750c79501823
+        /govscot:relatedItems[43]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: aec825f7-1d94-4a42-a0db-b969466fbc4f
+        /govscot:relatedItems[44]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c34d2712-2057-44a2-b4c9-bac65521e91b
+        /govscot:relatedItems[45]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 11d016b0-0bd8-4f1a-9235-12f252070795
+        /govscot:relatedItems[46]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e6703c1c-a6f5-4a3b-a74b-022a7f8e49ca
+        /govscot:relatedItems[47]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 8aa395e9-190f-4a69-8199-fd19d89f9ff1
+        /govscot:relatedItems[48]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 47ce2266-cb71-4f35-9278-3ed0bee294f6
+        /govscot:relatedItems[49]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 205363cc-5406-4d8f-9460-cc20dc7e0074
+        /govscot:relatedItems[50]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c8828929-0718-4865-adb5-5a7d4e717b45
+        /govscot:relatedItems[51]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: f192340b-5609-4634-99c6-21b976a38624
+        /govscot:relatedItems[52]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: bb85b858-b7b7-42a0-bc9e-acdd8a9abe2c
+        /govscot:relatedItems[53]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 833c19da-59fc-45f7-b236-96598bc91306
+        /govscot:relatedItems[54]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cfe5c0fe-0eeb-4141-a40d-2162e852c0df
+        /govscot:relatedItems[55]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 580785ea-3b42-4817-b085-c58121789a69
+        /govscot:relatedItems[56]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 653d9d83-6798-4614-847d-c34ad750f1cb
+        /govscot:relatedItems[57]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 8c2d11c5-564d-4a4d-8166-5bb8fa458002
+        /govscot:relatedItems[58]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: a11170a7-98c7-47cd-9f73-00e171600fe4
+        /govscot:relatedItems[59]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e26bd063-3fed-493a-ae5b-e35a278b31b3
+        /govscot:relatedItems[60]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: f349b34f-b34c-4872-b035-ff60b3afd542
+        /govscot:relatedItems[61]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 48e89a15-295d-480b-a180-46bc3a9114a2
+        /govscot:relatedItems[62]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: f49d34fa-749a-4375-821b-284c360f1495
+        /govscot:relatedItems[63]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: db741d93-b031-472b-9d19-8ac3cdb83577
+        /govscot:relatedItems[64]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: dce6640a-a626-473b-9a89-c991e9031d19
+        /govscot:relatedItems[65]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 41d341c8-969c-47ff-bc05-d8486759436e
+        /govscot:relatedItems[66]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cf0786f3-3447-45dc-900b-b63da139c4c1
+        /govscot:relatedItems[67]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 19f6683d-bfa9-41c9-b263-0f38acf8b37e
+        /govscot:relatedItems[68]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: b4767c44-69b2-48f5-84eb-8507cbcabe6b
+      /latest[2]:
+        jcr:primaryType: govscot:PolicyLatest
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 9c39fa49-5986-42d0-8104-6bc0f5452138
+        govscot:metaDescription: ''
+        govscot:title: Latest
+        hippo:availability: [preview]
+        hippo:name: Latest
+        hippostd:state: unpublished
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2021-09-14T14:19:09.230+01:00
+        hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+        hippotranslation:id: 69feeac8-831d-4247-992f-43f04e11f363
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+        /govscot:relatedItems[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e88b79f5-268b-497a-ba82-f9a558dc9a47
+        /govscot:relatedItems[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ed68e06b-ecc2-4f10-bc71-f46237abf96f
+        /govscot:relatedItems[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 8bd0812b-5b23-4086-9426-93ecc31a0b9b
+        /govscot:relatedItems[4]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 1935be86-60bc-4b94-924c-482c557bca64
+        /govscot:relatedItems[5]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 91a4333f-a532-43fb-9c61-3b5077f14b93
+        /govscot:relatedItems[6]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 18fa63e8-5dcb-48bc-a9d7-8d9e17b69c3e
+        /govscot:relatedItems[7]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c80908c9-1aa8-495d-aae9-333043a1f175
+        /govscot:relatedItems[8]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 17b16f97-82e2-4a30-8d9f-a6bd804fb3fc
+        /govscot:relatedItems[9]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 87c49015-f857-4fcc-9889-d47c002ac668
+        /govscot:relatedItems[10]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 123e2181-33c2-4589-bea4-c3b6cd057a55
+        /govscot:relatedItems[11]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e0604859-6aff-4222-879e-b9aba50699c7
+        /govscot:relatedItems[12]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 6bb3aab2-68fe-4857-9840-94428c5a9cb5
+        /govscot:relatedItems[13]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 3f435b91-e500-4adf-8dad-8d2f0a9662d6
+        /govscot:relatedItems[14]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ac9913e1-7f71-48a3-9c13-d19d586ef590
+        /govscot:relatedItems[15]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 25108b30-272a-4655-b033-f0db8f944d15
+        /govscot:relatedItems[16]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 772a1ced-4799-4a56-81d7-862fcca576ab
+        /govscot:relatedItems[17]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 14f46fd6-b862-4770-8c04-44a141b0b7cf
+        /govscot:relatedItems[18]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 962e48cc-ea84-4176-82e3-28c0c5aea5ad
+        /govscot:relatedItems[19]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 505c5023-62d4-49c8-b5d6-0a1895e341c4
+        /govscot:relatedItems[20]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ba2cfba1-fe27-430b-a56b-cb1fb9a7556e
+        /govscot:relatedItems[21]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 5ed3c9c3-2449-48d9-8a19-adb5fa8a85f0
+        /govscot:relatedItems[22]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 24fe3458-9f9f-4647-bf9b-a0f9fb5fbdc3
+        /govscot:relatedItems[23]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 96e6fbf6-4344-4a2b-ba0f-280dbac82477
+        /govscot:relatedItems[24]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: b2de15fa-d99f-491f-aca6-d83e14542690
+        /govscot:relatedItems[25]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: adacbf45-2ff8-497c-9b7f-62770b9ef5f5
+        /govscot:relatedItems[26]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 37c424b9-97fe-4516-8dcc-e512c54b2477
+        /govscot:relatedItems[27]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 591e2c3b-19bf-4df5-9c27-8fbce5dd54c7
+        /govscot:relatedItems[28]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2088154e-a30c-4a80-b907-fcc7a6685014
+        /govscot:relatedItems[29]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4f766d96-77b6-4a1a-b6ab-ff18ac17d005
+        /govscot:relatedItems[30]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: f3351357-55de-40d4-aadc-7069a30e0dd1
+      /latest[3]:
+        jcr:primaryType: govscot:PolicyLatest
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 474e6d96-34e1-4828-9350-cd2b1462bd6f
+        govscot:metaDescription: ''
+        govscot:title: Latest
+        hippo:availability: []
+        hippo:name: Latest
+        hippostd:state: draft
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2022-02-08T08:24:55.985Z
+        hippostdpubwf:lastModifiedBy: Max.Meres@gov.scot
+        hippotranslation:id: 69feeac8-831d-4247-992f-43f04e11f363
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+        /govscot:relatedItems[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e88b79f5-268b-497a-ba82-f9a558dc9a47
+        /govscot:relatedItems[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ed68e06b-ecc2-4f10-bc71-f46237abf96f
+        /govscot:relatedItems[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 8bd0812b-5b23-4086-9426-93ecc31a0b9b
+        /govscot:relatedItems[4]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 1935be86-60bc-4b94-924c-482c557bca64
+        /govscot:relatedItems[5]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 91a4333f-a532-43fb-9c61-3b5077f14b93
+        /govscot:relatedItems[6]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 18fa63e8-5dcb-48bc-a9d7-8d9e17b69c3e
+        /govscot:relatedItems[7]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c80908c9-1aa8-495d-aae9-333043a1f175
+        /govscot:relatedItems[8]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 17b16f97-82e2-4a30-8d9f-a6bd804fb3fc
+        /govscot:relatedItems[9]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 87c49015-f857-4fcc-9889-d47c002ac668
+        /govscot:relatedItems[10]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 123e2181-33c2-4589-bea4-c3b6cd057a55
+        /govscot:relatedItems[11]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: e0604859-6aff-4222-879e-b9aba50699c7
+        /govscot:relatedItems[12]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 6bb3aab2-68fe-4857-9840-94428c5a9cb5
+        /govscot:relatedItems[13]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 3f435b91-e500-4adf-8dad-8d2f0a9662d6
+        /govscot:relatedItems[14]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ac9913e1-7f71-48a3-9c13-d19d586ef590
+        /govscot:relatedItems[15]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 25108b30-272a-4655-b033-f0db8f944d15
+        /govscot:relatedItems[16]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 772a1ced-4799-4a56-81d7-862fcca576ab
+        /govscot:relatedItems[17]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 14f46fd6-b862-4770-8c04-44a141b0b7cf
+        /govscot:relatedItems[18]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 962e48cc-ea84-4176-82e3-28c0c5aea5ad
+        /govscot:relatedItems[19]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 505c5023-62d4-49c8-b5d6-0a1895e341c4
+        /govscot:relatedItems[20]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: ba2cfba1-fe27-430b-a56b-cb1fb9a7556e
+        /govscot:relatedItems[21]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 5ed3c9c3-2449-48d9-8a19-adb5fa8a85f0
+        /govscot:relatedItems[22]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 24fe3458-9f9f-4647-bf9b-a0f9fb5fbdc3
+        /govscot:relatedItems[23]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 96e6fbf6-4344-4a2b-ba0f-280dbac82477
+        /govscot:relatedItems[24]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: b2de15fa-d99f-491f-aca6-d83e14542690
+        /govscot:relatedItems[25]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: adacbf45-2ff8-497c-9b7f-62770b9ef5f5
+        /govscot:relatedItems[26]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 37c424b9-97fe-4516-8dcc-e512c54b2477
+        /govscot:relatedItems[27]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 591e2c3b-19bf-4df5-9c27-8fbce5dd54c7
+        /govscot:relatedItems[28]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2088154e-a30c-4a80-b907-fcc7a6685014
+        /govscot:relatedItems[29]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4f766d96-77b6-4a1a-b6ab-ff18ac17d005
+        /govscot:relatedItems[30]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: f3351357-55de-40d4-aadc-7069a30e0dd1

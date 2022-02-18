@@ -1,0 +1,166 @@
+/content/documents/govscot/404:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: b3b418d8-7ebf-453e-b33c-17e1ce55550e
+  hippo:name: 404 - Not Found
+  hippo:versionHistory: 03e7777a-8c5f-4e6a-a29f-0d6efc59d6d9
+  /404[1]:
+    jcr:primaryType: govscot:PageNotFound
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 4ed32f44-0e2c-4ee5-b2d7-6846e12a81cf
+    govscot:archiveTitle: 404 - Page has been archived
+    govscot:archiveUrl: https://www.webarchive.org.uk/wayback/archive/3000/https://www.gov.scot/
+    govscot:metaDescription: 404 page for Gov.scot
+    govscot:reportingTags: []
+    govscot:rubricId: GOV-382
+    govscot:seoTitle: 404 - not found
+    govscot:summary: 404 page for Gov.scot
+    govscot:title: 404 - not found
+    hippo:availability: [live]
+    hippo:name: 404 - Not Found
+    hippostd:state: published
+    hippostd:tags: []
+    hippostdpubwf:createdBy: build.api@mygov.scot
+    hippostdpubwf:creationDate: 2016-08-29T17:40:53+01:00
+    hippostdpubwf:lastModificationDate: 2020-11-04T09:07:47.007Z
+    hippostdpubwf:lastModifiedBy: jonathan.ellis@gov.scot
+    hippostdpubwf:publicationDate: 2020-11-04T09:08:06.989Z
+    hippotranslation:id: 8272f93b-c04a-452c-95c4-c8d426a32c98
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>Sorry, but the page you were trying to view does not exist.</p>
+
+        <p>This could be the result of either:</p>
+
+        <ul>
+         <li>a mistyped address</li>
+         <li>an out of date link</li>
+        </ul>
+
+        <p>&nbsp;</p>
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+    /govscot:archiveContent:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p style="margin-left:0px; margin-right:0px"><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>This<span>&nbsp;content</span>&nbsp;is not on<span>&nbsp;this site, i</span>t can be found at the link below.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+        <p style="margin-left:0px; margin-right:0px"><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>Alternatively, you can use the search box above or <a href="index">contact us</a>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+      /index:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: f961cc78-6fd2-4adb-9fe7-825b26c0d3d5
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:archiveContentEpilogue:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+  /404[2]:
+    jcr:primaryType: govscot:PageNotFound
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: 3a167123-f0c4-4cc1-8ddb-735440270a3d
+    govscot:archiveTitle: 404 - Page has been archived
+    govscot:archiveUrl: https://www.webarchive.org.uk/wayback/archive/3000/https://www.gov.scot/
+    govscot:metaDescription: 404 page for Gov.scot
+    govscot:reportingTags: []
+    govscot:rubricId: GOV-382
+    govscot:seoTitle: 404 - not found
+    govscot:summary: 404 page for Gov.scot
+    govscot:title: 404 - not found
+    hippo:availability: [preview]
+    hippo:name: 404 - Not Found
+    hippostd:state: unpublished
+    hippostd:tags: []
+    hippostdpubwf:createdBy: build.api@mygov.scot
+    hippostdpubwf:creationDate: 2016-08-29T17:40:53+01:00
+    hippostdpubwf:lastModificationDate: 2020-11-04T09:07:47.007Z
+    hippostdpubwf:lastModifiedBy: jonathan.ellis@gov.scot
+    hippotranslation:id: 8272f93b-c04a-452c-95c4-c8d426a32c98
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>Sorry, but the page you were trying to view does not exist.</p>
+
+        <p>This could be the result of either:</p>
+
+        <ul>
+         <li>a mistyped address</li>
+         <li>an out of date link</li>
+        </ul>
+
+        <p>&nbsp;</p>
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+    /govscot:archiveContent:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p style="margin-left:0px; margin-right:0px"><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>This<span>&nbsp;content</span>&nbsp;is not on<span>&nbsp;this site, i</span>t can be found at the link below.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+        <p style="margin-left:0px; margin-right:0px"><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>Alternatively, you can use the search box above or <a href="index">contact us</a>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+      /index:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: f961cc78-6fd2-4adb-9fe7-825b26c0d3d5
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:archiveContentEpilogue:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+  /404[3]:
+    jcr:primaryType: govscot:PageNotFound
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 34103d36-607d-45ff-8068-533e250b4e84
+    govscot:archiveTitle: 404 - Page has been archived
+    govscot:archiveUrl: https://www.webarchive.org.uk/wayback/archive/3000/https://www.gov.scot/
+    govscot:metaDescription: 404 page for Gov.scot
+    govscot:reportingTags: []
+    govscot:rubricId: GOV-382
+    govscot:seoTitle: 404 - not found
+    govscot:summary: 404 page for Gov.scot
+    govscot:title: 404 - not found
+    hippo:availability: []
+    hippo:name: 404 - Not Found
+    hippostd:state: draft
+    hippostd:tags: []
+    hippostdpubwf:createdBy: build.api@mygov.scot
+    hippostdpubwf:creationDate: 2016-08-29T17:40:53+01:00
+    hippostdpubwf:lastModificationDate: 2021-09-01T09:37:57.675+01:00
+    hippostdpubwf:lastModifiedBy: gio.macdonald@gov.scot
+    hippotranslation:id: 8272f93b-c04a-452c-95c4-c8d426a32c98
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>Sorry, but the page you were trying to view does not exist.</p>
+
+        <p>This could be the result of either:</p>
+
+        <ul>
+         <li>a mistyped address</li>
+         <li>an out of date link</li>
+        </ul>
+
+        <p>&nbsp;</p>
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+    /govscot:archiveContent:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p style="margin-left:0px; margin-right:0px"><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>This<span>&nbsp;content</span>&nbsp;is not on<span>&nbsp;this site, i</span>t can be found at the link below.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+        <p style="margin-left:0px; margin-right:0px"><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>Alternatively, you can use the search box above or <a href="index">contact us</a>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+      /index:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: f961cc78-6fd2-4adb-9fe7-825b26c0d3d5
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:archiveContentEpilogue:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''

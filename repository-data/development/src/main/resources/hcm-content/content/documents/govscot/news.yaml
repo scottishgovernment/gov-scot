@@ -1,0 +1,187 @@
+/content/documents/govscot/news:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  jcr:uuid: f757c1b9-1457-447c-87a8-9c07bf52f6a9
+  hippo:name: News
+  hippostd:foldertype: [new-document, new-folder]
+  /2013:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable']
+    jcr:uuid: cf7c3c48-e117-4371-9c17-7d996af6d927
+    hippo:name: '2013'
+    hippostd:foldertype: [new-news-month-folder]
+    /06:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable']
+      jcr:uuid: 69c1d96f-9bbd-43d5-9b32-120f723aba59
+      hippo:name: '06'
+      hippostd:foldertype: [new-news-document]
+      /health-board-boundaries:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        jcr:uuid: 24c2b3d4-4106-46f4-8dfc-f9aba6b4d25e
+        hippo:name: Health board boundaries
+        /health-board-boundaries:
+          jcr:primaryType: govscot:News
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: d1646b09-c986-48db-99fd-e0c401fcf07a
+          govscot:externalId: 5813816319ffee17b0ac08ec
+          govscot:metaDescription: Shift will help ensure more care can be provided
+            at home.
+          govscot:policyTags: []
+          govscot:prglooslug: health-board-boundaries
+          govscot:publicationDate: 2013-06-04T11:54:00+01:00
+          govscot:seoTitle: Health board boundaries
+          govscot:slug: health-board-boundaries
+          govscot:summary: Shift will help ensure more care can be provided at home.
+          govscot:title: Health board boundaries
+          govscot:updatedDate: 2019-07-10T15:55:23.266+01:00
+          hippo:availability: [live, preview]
+          hippo:name: Health board boundaries
+          hippostd:state: published
+          hippostd:tags: []
+          hippostdpubwf:createdBy: news
+          hippostdpubwf:creationDate: 2019-07-10T16:00:17.147+01:00
+          hippostdpubwf:lastModificationDate: 2019-07-10T16:00:17.151+01:00
+          hippostdpubwf:lastModifiedBy: news
+          hippotranslation:id: dda4509a-e6d8-49ba-8bb1-3e892da0730f
+          hippotranslation:locale: en
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <p>Health board boundaries will be aligned with local authority areas to help ensure older people can receive the care they need at home.<br /><br />Speaking today in parliament, Health Secretary Alex Neil revealed that catchment areas for health boards will be realigned with council boundaries, to help them work closer together in the provision of care in the local community.<br /><br />The announcement comes the week after a new bill designed to ensure that the health and social care systems work together effectively to improve the provision of care in our communities was published.<br /><br />Mr Neil said: <br /><br />&ldquo;People in Scotland are living longer, healthier lives and this means that services need to adapt in order to meet the challenges of a rapidly ageing population. <br /><br />&ldquo;That is why we are bringing health and social care together, to improve care for people in communities, helping to anticipate their needs and reaching them before they need to be admitted to hospital or institutional care.<br /><br />&ldquo;However, any mismatch of health board and local authority boundaries presents an administrative barrier to closer integrated working, complicating the planning and delivery of health and social care services.<br /><br />&ldquo;We want to ensure that the responsibility for delivering health care matches the geographical boundaries of local authority partners.<br /><br />&ldquo;These changes will help improve the quality and consistency of care for older people and people with complex care needs.&rdquo;<br /><br />The boundary changes will come into effect from April 2014.<br /><br />These are administrative changes and patients will stay with the same GP practice and continue to receive treatment in their local hospital, even if their catchment area has changed</p>
+              <p><br />Contact: Emma Keenan 0131 244 3092 <a href="mailto:emma.keenan@scotland.gsi.gov.uk">emma.keenan@scotland.gsi.gov.uk</a></p>
+              <p><strong>&nbsp;</strong></p>
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+    /07:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable']
+      jcr:uuid: c0d0bac4-f2fe-48e1-8740-e8e3ff67055f
+      hippo:name: '07'
+      hippostd:foldertype: [new-news-document]
+      /report-on-revitalising-town-centres-published:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        jcr:uuid: ae0950bd-c716-46fe-8546-e82ca7d0b18f
+        hippo:name: Report on revitalising town centres published
+        /report-on-revitalising-town-centres-published:
+          jcr:primaryType: govscot:News
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 4239ac2c-3fea-4266-9f55-f18f87239b78
+          govscot:externalId: 5813817519ffee17b0ac0935
+          govscot:metaDescription: Deputy First Minister Nicola Sturgeon today welcomed
+            an independent report which details key recommendations for reenergising
+            Scotland’s town centres.
+          govscot:policyTags: []
+          govscot:prglooslug: report-on-revitalising-town-centres-published
+          govscot:publicationDate: 2013-07-04T09:30:00+01:00
+          govscot:seoTitle: Report on revitalising town centres published
+          govscot:slug: report-on-revitalising-town-centres-published
+          govscot:summary: Deputy First Minister Nicola Sturgeon today welcomed an
+            independent report which details key recommendations for reenergising
+            Scotland’s town centres.
+          govscot:title: Report on revitalising town centres published
+          govscot:updatedDate: 2021-01-27T13:58:24.666Z
+          hippo:availability: [live, preview]
+          hippo:name: Report on revitalising town centres published
+          hippostd:state: published
+          hippostd:tags: ['Building, planning and design', Energy, Equality and Rights]
+          hippostdpubwf:createdBy: news
+          hippostdpubwf:creationDate: 2021-01-27T14:00:14.874Z
+          hippostdpubwf:lastModificationDate: 2021-01-27T14:00:14.876Z
+          hippostdpubwf:lastModifiedBy: news
+          hippotranslation:id: 69eda950-247c-4bcb-b649-61eb936fb13d
+          hippotranslation:locale: en
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: '<p>Deputy First Minister Nicola Sturgeon today welcomed
+              an independent report which details  key recommendations for reenergising
+              Scotland’s town centres.</p><p>The report by an external advisory group
+              taking forward the National Review of Town Centres includes a number
+              of proposals  to help breathe new life into town centres.  </p><p>These
+              include:</p><p></p><ul><li>A ‘town centre first’ principle whereby public
+              bodies will consider how they can support town centres before considering
+              development elsewhere</li><li>Working with housing providers to bring
+              empty town centre properties back into use as affordable housing</li><li>A
+              town centre focus to review current business rates incentivisation schemes</li><li>A
+              recommendation that public bodies should consider the impact of proposals
+              to relocate services out of town centres</li><li>Broadening the appeal
+              of town centres with a mix of leisure, public facilities and homes</li></ul><p></p><p>Leading
+              Scottish architect Malcolm Fraser chaired the review, which included
+              an independent panel of advisors from a range of organisations including
+              a community representative, Creative Scotland, the Association of Town
+              Centre Management, Ernst and Young, GVA, Architecture Design Scotland,
+              Stirling University, SLAED and Federation of Small Business.</p><p>Welcoming
+              the report, Deputy First Minister and Cabinet Secretary for Infrastructure,
+              Investment and Cities, Nicola Sturgeon said:</p><p>“I would like to
+              extend my thanks to Malcolm Fraser and the rest of the external advisory
+              group for their hard work and commitment on this report.</p><p>“The
+              Scottish Government is determined to ensure that our town centres are
+              vibrant places where local people and visitors alike want to spend their
+              time and money. They should be accessible places which invite business
+              start-ups and inspire innovative ideas from all walks of the community.  The
+              work of this independent review will play a crucial role in the regeneration
+              of high streets across Scotland.</p><p>“We recognise the national review
+              group’s passion for finding a future for our town centres and welcome
+              their succinct and insightful review which outlines practical ideas
+              for reenergising these areas.</p><p>“Town centres are the lifeblood
+              of our communities, functioning as places of social interaction and
+              enterprise. By diversifying our high streets we will make them even
+              better places to live, work and socialise.</p><p>“I look forward to
+              the next phase of the work getting underway, with the first step being
+              a government action plan in the autumn which will take forward the Expert
+              Groups recommendation.” </p><p>Chairman of the National Review of Town
+              Centres Malcolm Fraser said:</p><p>“Our Review offers the Scottish Government,
+              and the people of Scotland, a range of measures to bring investment
+              and footfall into the heart of our communities. </p><p>"Town centres
+              offer a rich mix of live, work and play and we want to enhance that
+              bustle and diversity: more people living there, encouragement for communities,
+              businesses and local authorities and supportive planning and digital
+              initiatives. There''s wide agreement on the need for action and optimism
+              that the changes proposed can help foster a renewed sense of community
+              and enterprise.” </p><p>Welcoming the report, Society of Chief Officers
+              of Transportation in Scotland (SCOTS) Chairman, Ewan Wallace said:</p><p>"SCOTS
+              welcomes the publication of the Town Centres Review report and the indication
+              that the professional associations for Transportation and Planning will
+              have a key role in contributing to any further work on town centre futures
+              and planning for change.   </p><p>“The report highlights the critical
+              role of effective and sustainable accessibility and connectivity in
+              ensuring that our town centres are economically and socially vibrant
+              places.  SCOTS has undertaken and contributed to a wide range of relevant
+              policy and technical research and guidance, including Designing Streets
+              and recent production of a  supporting Roads Development Guide.   </p><p>"We
+              look forward to working with Scottish Government and other partners
+              in developing these and other aspects of the Town Centres report and
+              recommendations."</p><p>Commenting on the release of the Scottish Town
+              Centre Review, Alasdair Morrison, Associate at GVA Property Consultancy
+              and a member of the Scottish Government’s External Advisory Group for
+              the National Review of Scottish Town Centres said:</p><p>“It has been
+              a privilege to have had the opportunity to contribute in an advisory
+              capacity to the Scottish Government’s National Review of Town Centres.
+              I am pleased to see that the recommendations encourage the public sector,
+              in particular, to take a more proactive and strategic approach. They
+              have a vital role to play in regenerating our town centres.      </p><p>“However,
+              new developments are often difficult to get off the ground, or stall,
+              because of problems with development finance. The Review makes a number
+              of recommendations in this respect. We now have an unprecedented opportunity
+              for all interested parties to work together to ensure our town centres
+              not only survive, but thrive.”</p><div class="notes-to-editors"><b>Notes
+              to editors</b><p>Link to the review on the Scottish Government website:
+              <a href="http://www.scotland.gov.uk/Publications/2013/07/7250">http://www.scotland.gov.uk/Publications/2013/07/7250</a><br><br>The
+              Scottish Government will respond to the report with a town centre action
+              plan in the autumn of 2013.</p></div>'
+          /govscot:topics[1]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 0071f7c5-e0fe-40e7-802b-73e04d83eec6
+          /govscot:topics[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 132605de-787b-4eec-b68f-f8e22b8da461
+          /govscot:topics[3]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: c5b1d940-71d7-4b18-a545-687a389da974
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
