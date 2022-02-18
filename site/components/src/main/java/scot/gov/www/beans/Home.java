@@ -4,8 +4,8 @@ import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
-
 import java.util.List;
+import scot.gov.www.beans.ColumnImage;
 
 @HippoEssentialsGenerated(internalName = "govscot:Home")
 @Node(jcrType = "govscot:Home")
@@ -33,5 +33,15 @@ public class Home extends SimpleContent {
     @HippoEssentialsGenerated(internalName = "govscot:youtubeContent")
     public String getYouTubeContent() {
         return getSingleProperty("govscot:youtubeContent");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:fmImagePortrait")
+    public ColumnImage getFmImagePortrait() {
+        return getLinkedBean("govscot:fmImagePortrait", ColumnImage.class);
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:fmImageLandscape")
+    public ColumnImage getFmImageLandscape() {
+        return getLinkedBean("govscot:fmImageLandscape", ColumnImage.class);
     }
 }

@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 0fb8afcd-0be1-4cf4-a723-7fe0c4e504d5
+          jcr:uuid: 2504e1a1-83b2-4d0d-acc0-811ac6d1e286
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -55,6 +55,22 @@ definitions:
             hipposysedit:path: govscot:youtubeContent
             hipposysedit:primary: false
             hipposysedit:type: Text
+          /fmImagePortrait:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:fmImagePortrait
+            hipposysedit:primary: false
+            hipposysedit:type: hippogallerypicker:imagelink
+          /fmImageLandscape:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:fmImageLandscape
+            hipposysedit:primary: false
+            hipposysedit:type: hippogallerypicker:imagelink
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -73,7 +89,7 @@ definitions:
           govscot:flickrContent: ''
           govscot:twitterContent: ''
           govscot:youtubeContent: ''
-          jcr:uuid: eb3f5783-f71b-441e-93c8-9f4bdd666027
+          jcr:uuid: f96f3ad0-1463-4fc1-8ce1-b39829e52442
           hippostdpubwf:lastModificationDate: 2018-04-12T10:35:48.116+01:00
           hippostdpubwf:creationDate: 2018-04-12T10:35:48.117+01:00
           /govscot:content:
@@ -85,6 +101,18 @@ definitions:
           /govscot:featuredItems:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:fmImagePortrait:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+          /govscot:fmImageLandscape:
+            jcr:primaryType: hippogallerypicker:imagelink
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -220,3 +248,23 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /fmImagePortrait:
+            jcr:primaryType: frontend:plugin
+            caption: FM image (portrait)
+            field: fmImagePortrait
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:ColumnImage']
+          /fmImageLandscape:
+            jcr:primaryType: frontend:plugin
+            caption: FM image (landscape)
+            field: fmImageLandscape
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:ColumnImage']
