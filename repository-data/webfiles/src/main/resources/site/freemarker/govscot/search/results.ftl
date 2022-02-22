@@ -8,7 +8,7 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.Role" -->
 
 <#if pageable??>
-<section id="search-results" class="search-results">
+<section id="search-results" class="ds_search-results">
     <h2 class="visually-hidden">Search results</h2>
 
     <p class="ds_search-results__count  js-search-results-count">Showing <b>${pageable.total}</b> <#if pageable.total == 1>result<#else>results</#if></p>

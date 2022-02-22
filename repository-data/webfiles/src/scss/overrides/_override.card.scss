@@ -8,7 +8,7 @@
     line-height: 24px;
 
     &--grey {
-        background-color: $ds_colour__grey--light;
+        background-color: $ds_colour__grey--lighter;
         box-shadow: none;
         color: $ds_colour__text;
 
@@ -35,9 +35,13 @@
         }
     }
 
+    &__content {
+        padding: 16px;
+    }
+
     &__title {
         @include ds_h3-style;
-        margin-bottom: 24px;
+        margin-bottom: 8px;
         margin-top: 0 !important;
     }
 
@@ -49,5 +53,23 @@
         top: 0px;
         width: 100%;
         z-index: 0;
+    }
+}
+
+
+
+
+
+.ds_card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    &__content {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+    }
+
+    &__content-footer {
+        align-self: end;
     }
 }

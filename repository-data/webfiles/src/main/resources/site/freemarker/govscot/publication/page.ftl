@@ -39,7 +39,7 @@
                         <div class="gov_supporting-documents">
 
                             <#assign mainDocument = documents[0]/>
-                            <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?upper_case/>
+                            <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?lower_case/>
 
                             <@hst.link var="documentdownload" hippobean=mainDocument.document>
                                 <@hst.param name="forceDownload" value="true"/>
@@ -47,6 +47,53 @@
 
                             <@hst.link var="documentinline" hippobean=mainDocument.document>
                             </@hst.link>
+
+                            <#switch filenameExtension>
+                                <#case "csv">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/csv.svg' />
+                                    <#break>
+                                <#case "xls">
+                                <#case "xlsx">
+                                <#case "xlsm">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/excel.svg' />
+                                    <#break>
+                                <#case "kml">
+                                <#case "kmz">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/geodata.svg' />
+                                    <#break>
+                                <#case "gif">
+                                <#case "jpg">
+                                <#case "jpeg">
+                                <#case "png">
+                                <#case "svg">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/image.svg' />
+                                    <#break>
+                                <#case "pdf">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/pdf.svg' />
+                                    <#break>
+                                <#case "ppt">
+                                <#case "pptx">
+                                <#case "pps">
+                                <#case "ppsx">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/ppt.svg' />
+                                    <#break>
+                                <#case "rtf">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/rtf.svg' />
+                                    <#break>
+                                <#case "txt">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/txt.svg' />
+                                    <#break>
+                                <#case "doc">
+                                <#case "docx">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/word.svg' />
+                                    <#break>
+                                <#case "xml">
+                                <#case "xsd">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/xml.svg' />
+                                    <#break>
+                                <#default>
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/generic.svg' />
+                            </#switch>
 
                             <!--noindex-->
                             <#if filenameExtension == "PDF">
@@ -59,14 +106,11 @@
                                             <#list mainDocument.thumbnails as thumbnail>
                                                 <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
                                             </#list>"
-                                        sizes="(min-width: 768px) 165px, 107px" />
+                                        sizes="(min-width: 768px) 104px, 72px" />
                                 </a>
                             <#else>
-                                <a aria-hidden="true" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
-                                    <svg class="gov_file-icon__label" viewBox="0 0 210 297">
-                                        <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
-                                    </svg>
-                                    <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                <a class="gov_supporting-documents__thumbnail-link" aria-hidden="true" href="${baseurl + 'documents/'}">
+                                    <img src="<@hst.link path=fileThumbnailPath />" alt=""/>
                                 </a>
                             </#if>
                             <!--endnoindex-->

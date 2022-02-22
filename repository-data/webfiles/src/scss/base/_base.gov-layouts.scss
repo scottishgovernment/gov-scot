@@ -58,7 +58,6 @@
             > .ds_layout {
                 &__header {
                     @include ds_colwidth(8);
-                    @include ds_colpush(3);
                 }
 
                 &__content {
@@ -137,6 +136,7 @@
                 &__content {
                     float: left;
                     @include ds_colwidth(8);
+                    @include ds_colpush(4);
                 }
 
                 &__feedback {

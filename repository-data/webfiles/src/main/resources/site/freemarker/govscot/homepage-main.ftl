@@ -145,7 +145,7 @@
                         <h2 class="gov_content-block__title">
                             <a class="gov_content-block__title-link"
                                 href="<@hst.link path='/topics/'/>"
-                                data-title="topics-title">
+                                data-navigation="topics-title">
                                 Topics
                             </a>
                         </h2>
@@ -177,7 +177,7 @@
 
                                             <div class="ds_checkbox  ds_checkbox--small">
                                                 <input
-                                                    id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${item.title}">
+                                                    id="${slugifyTitle}" name="topics" class="ds_checkbox__input" type="checkbox" value="${item.title}">
                                                 <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
                                             </div>
 
@@ -249,7 +249,11 @@
                 <section id="latest-stats-research" class="gov_latest-feed  gov_latest-feed--horizontal  gov_content-block">
                     <div>
                         <h2 class="gov_content-block__title">
-                            Statistics and research
+                            <a class="gov_content-block__title-link"
+                                href="<@hst.link path='/statistics-and-research/'/>"
+                                data-navigation="statistics-title">
+                                Statistics and research
+                            </a>
                         </h2>
 
                         <div id="statistics-container" class="gov_latest-feed__items">

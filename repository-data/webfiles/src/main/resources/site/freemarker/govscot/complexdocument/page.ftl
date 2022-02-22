@@ -225,13 +225,13 @@
 
                             <#list chapters as chapter>
                                 <div class="ds_accordion-item">
-                                    <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-{chapter.name}" aria-labelledby="panel-{chapter.name}-heading" />
+                                    <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-${chapter.name}" aria-labelledby="panel-${chapter.name}-heading" />
                                     <div class="ds_accordion-item__header">
-                                        <h3 id="panel-{chapter.name}-heading" class="ds_accordion-item__title">
+                                        <h3 id="panel-${chapter.name}-heading" class="ds_accordion-item__title">
                                             ${chapter.displayName}
                                         </h3>
                                         <span class="ds_accordion-item__indicator"></span>
-                                        <label class="ds_accordion-item__label" for="panel-{chapter.name}"><span class="visually-hidden">Show this section</span></label>
+                                        <label class="ds_accordion-item__label" for="panel-${chapter.name}"><span class="visually-hidden">Show this section</span></label>
                                     </div>
                                     <div class="ds_accordion-item__body">
                                         <nav role="navigation" class="ds_contents-nav" aria-label="Sections">

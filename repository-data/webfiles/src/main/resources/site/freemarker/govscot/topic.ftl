@@ -70,23 +70,6 @@
                                     </#if>
 
                                     <article class="ds_card__content">
-
-                                        <#if item.label?has_content>
-                                            <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
-
-                                            <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
-                                                <div class="ds_metadata__item">
-                                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
-                                                    <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
-                                                </div>
-
-                                                <div class="ds_metadata__item">
-                                                    <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
-                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></dd>
-                                                </div>
-                                            </dl>
-                                        </#if>
-
                                         <h3 class="ds_card__title">
                                             <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
                                                 ${item.title}
@@ -96,6 +79,27 @@
                                         <p>
                                             ${item.summary}
                                         </p>
+
+                                        <#if item.label?has_content>
+                                            <div class="ds_card__content-footer">
+                                                <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
+
+                                                <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
+                                                    <div class="ds_metadata__item">
+                                                        <dt class="ds_metadata__key  visually-hidden">
+                                                            Publication date</dt>
+                                                        <dd class="ds_metadata__value">
+                                                            <@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/>
+                                                        </dd>
+                                                    </div>
+
+                                                    <div class="ds_metadata__item">
+                                                        <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                                        <dd class="ds_metadata__value">${item.label}</dd>
+                                                    </div>
+                                                </dl>
+                                            </div>
+                                        </#if>
                                     </article>
                                 </div>
                             </#list>

@@ -25,7 +25,7 @@ const global = {
 
     addTracking: function () {
         if (window.DS.tracking) {
-            window.DS.tracking.add.backtotop = function (scope = document) {
+            window.DS.tracking.add.backToTop = function (scope = document) {
                 const backToTops = [].slice.call(scope.querySelectorAll('.ds_back-to-top__button'));
                 backToTops.forEach(backToTop => {
                     if (!backToTop.classList.contains('js-has-tracking-event')) {
@@ -40,7 +40,38 @@ const global = {
                         backToTop.classList.add('js-has-tracking-event');
                     }
                 });
-                window.DS.tracking.add.backToTop(scope);
+            };
+
+            window.DS.tracking.add.searchResults = function (scope = document) {
+                const searchResultsSets = window.DS.tracking.gatherElements('ds_search-results', scope);
+                searchResultsSets.forEach(searchResults => {
+                    const list = searchResults.querySelector('.ds_search-results__list');
+
+                    if (!list) {
+                        return;
+                    }
+
+                    const items = [].slice.call(searchResults.querySelectorAll('.gov_search-result'));
+
+                    let start = 1;
+                    if (list.getAttribute('start')) {
+                        start = +list.getAttribute('start');
+                    }
+
+                    items.forEach((item, index) => {
+                        const link = item.querySelector('.gov_search-result__link');
+                        let count;
+                        if (list.getAttribute('data-total')) {
+                            count = list.getAttribute('data-total');
+                        }
+
+                        let attributeValue = `search-result-${start + index}`;
+                        if (count) {
+                            attributeValue += `/${count}`;
+                        }
+                        link.setAttribute('data-search', attributeValue);
+                    });
+                });
             };
 
             window.DS.tracking.init();

@@ -87,7 +87,7 @@
         </div>
     </header>
 
-    <ol id="search-results-list" class="ds_search-results__list">
+    <ol id="search-results-list" class="ds_search-results__list" data-total="${pageable.total}">
         <#list pageable.items as item>
             <@hst.link var="link" hippobean=item/>
             <li class="gov_search-result">
