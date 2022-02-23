@@ -57,13 +57,20 @@
 
 
 <#if document??>
+
     <#if title??>
         <@hst.headContribution category="dcMeta">
-        <meta name="dc.title" content="${title}"/>
+            <meta name="dc.title" content="${title}"/>
+        </@hst.headContribution>
+        <@hst.headContribution category="pageTitle">
+            <title>${title} <#if parentTitle??>- ${parentTitle} </#if>- gov.scot</title>
         </@hst.headContribution>
     <#else>
         <@hst.headContribution category="dcMeta">
-        <meta name="dc.title" content="${document.title}"/>
+            <meta name="dc.title" content="${document.title}"/>
+        </@hst.headContribution>
+        <@hst.headContribution category="pageTitle">
+            <title>${document.title}  <#if parentTitle??>- ${parentTitle} </#if>- gov.scot</title>
         </@hst.headContribution>
     </#if>
 
@@ -82,9 +89,6 @@
     </#if>
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Policy"/>
-    </@hst.headContribution>
-    <@hst.headContribution category="pageTitle">
-        <title>${index.title?html}<#if document.title != index.title>: ${document.title?html}</#if> - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>

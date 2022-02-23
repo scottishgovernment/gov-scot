@@ -138,9 +138,6 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="News"/>
     </@hst.headContribution>
-    <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
-    </@hst.headContribution>
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription?html}"/>
     </@hst.headContribution>

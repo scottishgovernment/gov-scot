@@ -283,9 +283,6 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Publication"/>
     </@hst.headContribution>
-    <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
-    </@hst.headContribution>
     <@hst.headContribution>
 
         <#if document.metaDescription??>

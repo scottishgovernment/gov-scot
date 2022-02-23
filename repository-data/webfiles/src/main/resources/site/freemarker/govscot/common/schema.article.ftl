@@ -96,15 +96,21 @@
 
 <!-- DC Meta Tags -->
 
-<#if title??>
-<@hst.headContribution category="dcMeta">
-    <meta name="dc.title" content="${title}"/>
-</@hst.headContribution>
-<#else>
-<@hst.headContribution category="dcMeta">
-    <meta name="dc.title" content="${document.title}"/>
-</@hst.headContribution>
-</#if>
+    <#if title??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.title" content="${title}"/>
+        </@hst.headContribution>
+        <@hst.headContribution category="pageTitle">
+            <title>${title} <#if parentTitle??>- ${parentTitle} </#if>- gov.scot</title>
+        </@hst.headContribution>
+    <#else>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.title" content="${document.title}"/>
+        </@hst.headContribution>
+        <@hst.headContribution category="pageTitle">
+            <title>${document.title}  <#if parentTitle??>- ${parentTitle} </#if>- gov.scot</title>
+        </@hst.headContribution>
+    </#if>
 
 <#if parentTitle??>
     <@hst.headContribution category="dcMeta">
