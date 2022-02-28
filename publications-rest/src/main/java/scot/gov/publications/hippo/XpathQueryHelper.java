@@ -10,10 +10,18 @@ public class XpathQueryHelper {
     }
 
     public static String directorateHandleQuery(String directorate) {
+        return folderWithIndexHandleQuery("govscot:Directorate", directorate);
+    }
+
+    public static String featuredRoleHandleQuery(String role) {
+        return folderWithIndexHandleQuery("govscot:FeaturedRole", role);
+    }
+
+    public static String folderWithIndexHandleQuery(String type, String name) {
         // find the directorate that is in a folder with the name 'directorate'
         return new StringBuilder("/jcr:root/content/documents/govscot//")
-                .append(element(directorate, "hippostd:folder")).append("//")
-                .append(element("*", "govscot:Directorate"))
+                .append(element(name, "hippostd:folder")).append("//")
+                .append(element("*", type))
                 .append(publishedPredicate())
                 .append("/..")
                 .toString();
