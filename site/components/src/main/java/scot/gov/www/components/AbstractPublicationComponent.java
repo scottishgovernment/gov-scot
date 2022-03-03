@@ -182,7 +182,7 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
             return;
         }
 
-        request.setAttribute("parentTitle", publicationTitle);
+        request.setAttribute("parent", publication);
         if (document.isHippoFolderBean() && DOCUMENTS.equals(document.getName())) {
             request.setAttribute(TITLE, "Supporting documents");
             return;

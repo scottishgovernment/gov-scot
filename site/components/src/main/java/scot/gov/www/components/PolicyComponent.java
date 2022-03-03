@@ -93,7 +93,7 @@ LOG.info("doBeforeRender {}", request.getPathInfo());
             return;
         }
         request.setAttribute("title", documentTitle);
-        request.setAttribute("parentTitle", policyTitle);
+        request.setAttribute("parent", policy);
     }
 
     private int compareDate(HippoBean left, HippoBean right) {
