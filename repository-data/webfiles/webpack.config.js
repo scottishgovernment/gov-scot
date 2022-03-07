@@ -1,74 +1,85 @@
 const path = require('path');
 const aliasPath = '../vendor/';
 
-const commonEntry = {
-    'default':                      './src/scripts/govscot/format.default.js',
-    'global':                       './src/scripts/govscot/global.js',
+const commonItems = {
+    mode: 'development',
 
-    // format-specific entry points
-    'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
-    'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js',
-    'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
-    'home':                         './src/scripts/govscot/format.home.js',
-    'payment-form':                 './src/scripts/govscot/format.payment-form.js',
-    'publication':                  './src/scripts/govscot/format.publication.js',
-    'search':                       './src/scripts/govscot/format.search.js'
-};
+    entry: {
+        'default':                      './src/scripts/govscot/format.default.js',
+        'global':                       './src/scripts/govscot/global.js',
 
-const commonMode = 'development';
+        // format-specific entry points
+        'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
+        'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js',
+        'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
+        'home':                         './src/scripts/govscot/format.home.js',
+        'payment-form':                 './src/scripts/govscot/format.payment-form.js',
+        'publication':                  './src/scripts/govscot/format.publication.js',
+        'search':                       './src/scripts/govscot/format.search.js'
+    },
 
-const commonExternals = {
-    jquery: 'jQuery'
-};
+    externals: {
+        jquery: 'jQuery'
+    },
 
-const commonResolve = {
-    modules: [
-        './src/main/resources/site/assets/scripts',
-        'node_modules'
-    ],
+    resolve: {
+        modules: [
+            './src/main/resources/site/assets/scripts',
+            'node_modules'
+        ],
 
-    extensions: ['.js'],
+        extensions: ['.js'],
 
-    // equivalent to requirejs paths
-    alias: {
-        'jquery': aliasPath + 'jquery.min'
+        // equivalent to requirejs paths
+        alias: {
+            'jquery': aliasPath + 'jquery.min'
+        }
+    },
+
+    module: {
+        rules: []
     }
 };
 
 
 // Packs JS files & deps into bundles
 module.exports = [{
-    mode: commonMode,
-    entry: commonEntry,
-    externals: commonExternals,
-    resolve: commonResolve,
+    mode: commonItems.mode,
+    entry: commonItems.entry,
+    externals: commonItems.externals,
+    resolve: commonItems.resolve,
 
     output: {
         path: path.resolve(__dirname, 'src/main/resources/site/assets/scripts'),
         filename: '[name].js'
     }
 }, {
-    mode: commonMode,
-    entry: commonEntry,
-    externals: commonExternals,
-    resolve: commonResolve,
-
-    output: {
-        path: path.resolve(__dirname, 'src/main/resources/site/assets/scripts'),
-        filename: '[name].es5.js'
-    },
+    mode: commonItems.mode,
+    entry: commonItems.entry,
+    externals: commonItems.externals,
+    resolve: commonItems.resolve,
 
     module: {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/env'],
-                    plugins: ['@babel/plugin-transform-classes']
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                        // plugins: [
+                        //     '@babel/plugin-transform-classes',
+                        //     // '@babel/plugin-transform-runtime',
+                        // ]
+                    }
                 }
             }
         ]
+    },
+
+    output: {
+        path: path.resolve(__dirname, 'src/main/resources/site/assets/scripts'),
+        filename: '[name].es5.js'
     }
 }];
