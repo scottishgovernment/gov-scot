@@ -251,7 +251,8 @@ public class PublicationNodeUpdater {
     private Node findRoleOrPerson(String roleOrPerson) throws RepositoryException {
         return firstNonNull(
                 hippoUtils.findOneXPath(session, roleHandleQuery(roleOrPerson)),
-                hippoUtils.findOneXPath(session, personHandleQuery(roleOrPerson)));
+                hippoUtils.findOneXPath(session, personHandleQuery(roleOrPerson)),
+                hippoUtils.findOneXPath(session, featuredRoleHandleQuery(roleOrPerson)));
     }
 
     /**

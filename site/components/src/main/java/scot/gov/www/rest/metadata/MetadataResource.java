@@ -45,7 +45,7 @@ public class MetadataResource {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public MetadataResponse getRoles() {
-        return getMetadata("govscot:Role", "govscot:FeaturedRole");
+        return getMetadata(this::getRoleInfo, "govscot:Role", "govscot:FeaturedRole");
     }
 
     @Path("topics")
@@ -136,6 +136,18 @@ public class MetadataResource {
         MetadataItem metadataItem = new MetadataItem();
         metadataItem.setKey(node.getParent().getParent().getName());
         metadataItem.setValue(node.getProperty(GOVSCOT_TITLE).getString());
+        return metadataItem;
+    }
+
+    MetadataItem getRoleInfo(Node node) throws RepositoryException {
+        MetadataItem metadataItem = new MetadataItem();
+        if (node.isNodeType("govscot:FeaturedRole")) {
+            metadataItem.setKey(node.getParent().getParent().getName());
+            metadataItem.setValue(node.getProperty(GOVSCOT_TITLE).getString());
+        } else {
+            metadataItem = getMetadata(node);
+        }
+
         return metadataItem;
     }
 

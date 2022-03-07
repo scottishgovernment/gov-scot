@@ -39,19 +39,29 @@
 </#if>
 
 <#if document??>
+
     <#if title??>
         <@hst.headContribution category="dcMeta">
             <meta name="dc.title" content="${title}"/>
+        </@hst.headContribution>
+        <@hst.headContribution category="pageTitle">
+            <title>${title} <#if parent??>- ${parent.title} </#if>- gov.scot</title>
         </@hst.headContribution>
     <#else>
         <@hst.headContribution category="dcMeta">
             <meta name="dc.title" content="${document.title}"/>
         </@hst.headContribution>
+        <@hst.headContribution category="pageTitle">
+            <title>${document.title}  <#if parent??>- ${parent.title} </#if>- gov.scot</title>
+        </@hst.headContribution>
     </#if>
 
-    <#if parentTitle??>
+    <#if parent??>
         <@hst.headContribution category="dcMeta">
-        <meta name="dc.title.series" content="${parentTitle}"/>
+        <meta name="dc.title.series" content="${parent.title}"/>
+        </@hst.headContribution>
+        <@hst.headContribution category="dcMeta">
+        <meta name="dc.title.series.link" content="<@hst.link hippobean=parent/>"/>
         </@hst.headContribution>
     </#if>
 
@@ -67,10 +77,6 @@
 
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Policy"/>
-    </@hst.headContribution>
-
-    <@hst.headContribution category="pageTitle">
-        <title>${index.title?html}<#if document.title != index.title>: ${document.title?html}</#if> - gov.scot</title>
     </@hst.headContribution>
 
     <@hst.headContribution>

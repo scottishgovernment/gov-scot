@@ -89,11 +89,11 @@ LOG.info("doBeforeRender {}", request.getPathInfo());
         String policyTitle = ((SimpleContent) policy).getTitle();
         String documentTitle = ((SimpleContent) document).getTitle();
         if (policy.isSelf(document)) {
-            request.setAttribute("title", policyTitle + "HERE");
+            request.setAttribute("title", policyTitle);
             return;
         }
         request.setAttribute("title", documentTitle);
-        request.setAttribute("parentTitle", policyTitle);
+        request.setAttribute("parent", policy);
     }
 
     private int compareDate(HippoBean left, HippoBean right) {
