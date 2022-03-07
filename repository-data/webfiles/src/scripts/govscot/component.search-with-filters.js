@@ -370,10 +370,24 @@ function initDateFilters() {
 function validateDateInput(element) {
     let isValid = true;
 
+    const afterElement = document.getElementById('date-from');
+    const beforeElement = document.getElementById('date-to');
+
     // 1) is the date in an allowed format?
     if (!searchUtils.validateInput(element[0], [searchUtils.dateRegex])) {
         isValid = false;
-        return isValid;
+    }
+
+    if (afterElement.value && beforeElement.value) {
+        // 2) is before later than after
+        if (afterElement && !searchUtils.afterDate(afterElement, searchUtils.stringToDate(beforeElement.value))) {
+            isValid = false;
+        }
+
+        // 3) is after earlier than before
+        if (beforeElement && !searchUtils.beforeDate(beforeElement, searchUtils.stringToDate(afterElement.value))) {
+            isValid = false;
+        }
     }
 
     return isValid;

@@ -4,6 +4,32 @@
 
 const searchUtils = {
     /**
+     * prepends zeroes to a number, up to a set length
+     * @param {number} value - number to prepend zeroes to
+     * @param {number} length - desired length of number
+     * @returns {string}
+     */
+     leadingZeroes: function (value, length) {
+        let ret = value.toString();
+
+        while (ret.length < length) {
+            ret = '0' + ret.toString();
+        }
+
+        return ret;
+    },
+
+    /**
+     * Takes a date string in the format we use in forms (dd/MM/yyyy) and returns a date object
+     * @param {string}
+     * @returns {date}
+     */
+    stringToDate: function (string) {
+        let fragments = string.split('/');
+        return new Date(`${fragments[1]}/${fragments[0]}/${fragments[2]}`);
+    },
+
+    /**
      * Validates $field (newer version)
      *
      * @param {object} $field - the form field to validate
@@ -142,31 +168,55 @@ const searchUtils = {
         return valid;
     },
 
-    // afterDate: function (field, minDate) {
-    //     const trimmedValue = field.value.trim();
-    //     const fieldName = commonForms.getLabelText(field);
-    //     const message = `This date must be after ${commonForms.leadingZeroes(minDate.getDate(), 2)}/${commonForms.leadingZeroes((minDate.getMonth() + 1), 2)}/${minDate.getFullYear()}`;
-    //     let valid = false;
+    afterDate: function (field, minDate) {
+        const trimmedValue = field.value.trim();
+        const fieldName = document.querySelector(`label[for="${field.id}"]`).innerText;
+        const message = `This date must be after ${searchUtils.leadingZeroes(minDate.getDate(), 2)}/${searchUtils.leadingZeroes((minDate.getMonth() + 1), 2)}/${minDate.getFullYear()}`;
+        let valid = false;
 
-    //     if (commonForms.dateRegex(field) && trimmedValue.length) {
-    //         const day = parseInt(trimmedValue.slice(0, 2));
-    //         const month = parseInt(trimmedValue.slice(3, 5));
-    //         const year = parseInt(trimmedValue.slice(6, 10));
+        if (searchUtils.dateRegex(field) && trimmedValue.length) {
+            const day = parseInt(trimmedValue.slice(0, 2));
+            const month = parseInt(trimmedValue.slice(3, 5));
+            const year = parseInt(trimmedValue.slice(6, 10));
 
-    //         const date = new Date(`${month}/${day}/${year}`);
+            const date = new Date(`${month}/${day}/${year}`);
 
-    //         date.setHours(23);
-    //         date.setMinutes(59);
-    //         date.setSeconds(59);
+            date.setHours(23);
+            date.setMinutes(59);
+            date.setSeconds(59);
 
-    //         valid = date >= minDate;
+            valid = date >= minDate;
 
-    //         commonForms.toggleFormErrors(field, valid, 'invalid-after-date', fieldName, message);
-    //         commonForms.toggleCurrentErrors(field, valid, 'invalid-after-date', message);
-    //     }
+            searchUtils.toggleCurrentErrors(field, valid, 'invalid-after-date', message);
+        }
 
-    //     return valid;
-    // },
+        return valid;
+    },
+
+    beforeDate: function (field, maxDate) {
+        const trimmedValue = field.value.trim();
+        const fieldName = document.querySelector(`label[for="${field.id}"]`).innerText;
+        const message = `This date must be before ${searchUtils.leadingZeroes(maxDate.getDate(), 2)}/${searchUtils.leadingZeroes((maxDate.getMonth() + 1), 2)}/${maxDate.getFullYear()}`;
+        let valid = false;
+
+        if (searchUtils.dateRegex(field) && trimmedValue.length) {
+            const day = parseInt(trimmedValue.slice(0, 2));
+            const month = parseInt(trimmedValue.slice(3, 5));
+            const year = parseInt(trimmedValue.slice(6, 10));
+
+            const date = new Date(`${month}/${day}/${year}`);
+
+            date.setHours(23);
+            date.setMinutes(59);
+            date.setSeconds(59);
+
+            valid = date < maxDate;
+
+            searchUtils.toggleCurrentErrors(field, valid, 'invalid-before-date', message);
+        }
+
+        return valid;
+    },
 
     addError: function (message, inputGroup, errorId) {
         let errorContainer = inputGroup.find('.ds_question--error-message');

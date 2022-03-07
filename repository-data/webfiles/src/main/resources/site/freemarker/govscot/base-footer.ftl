@@ -4,7 +4,7 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 <!--noindex-->
-<footer class="ds_site-footer  ds_reversed">
+<footer class="ds_site-footer">
     <aside class="gov_secondary-footer">
         <div class="ds_wrapper">
             <h2 class="visually-hidden">
@@ -80,7 +80,7 @@
             </div>
 
             <div class="ds_site-footer__org">
-                <img class="ds_site-footer__org-logo" src="<@hst.link path='/assets/images/logos/scottish-government--min--reversed.svg' />" alt="gov.scot" />
+                <img class="ds_site-footer__org-logo" src="<@hst.link path='/assets/images/logos/scottish-government--min.svg' />" alt="gov.scot" />
             </div>
         </div>
     </div>
