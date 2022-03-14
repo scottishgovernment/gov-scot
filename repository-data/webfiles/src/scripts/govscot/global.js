@@ -5,6 +5,7 @@
 'use strict';
 
 import './usertype';
+import '../vendor/polyfills';
 
 import feedback from './component.feedback';
 import ToggleLink from './component.toggle-link';
@@ -25,7 +26,7 @@ const global = {
 
     addTracking: function () {
         if (window.DS.tracking) {
-            window.DS.tracking.add.backToTop = function (scope = document) {
+            window.DS.tracking.add.backToTopEvent = function (scope = document) {
                 const backToTops = [].slice.call(scope.querySelectorAll('.ds_back-to-top__button'));
                 backToTops.forEach(backToTop => {
                     if (!backToTop.classList.contains('js-has-tracking-event')) {

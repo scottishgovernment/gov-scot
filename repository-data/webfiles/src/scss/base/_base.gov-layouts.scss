@@ -150,6 +150,16 @@
                     @include ds_colwidth(4);
                 }
             }
+
+            &--no-sidebar {
+                > .ds_layout {
+                    &__header,
+                    &__content,
+                    &__feedback {
+                        @include ds_colwidth(12);
+                    }
+                }
+            }
         }
 
         &--role {
@@ -316,6 +326,7 @@
                 &__content {
                     float: left;
                     @include ds_colwidth(7);
+                    @include ds_colpush(0);
                 }
 
                 &__feedback {
@@ -325,6 +336,20 @@
 
                 &__sidebar {
                     @include ds_colwidth(3);
+                }
+            }
+
+            &--no-sidebar {
+                > .ds_layout {
+                    &__header {
+                        @include ds_colwidth(12);
+                    }
+
+                    &__content,
+                    &__feedback {
+                        @include ds_colwidth(7);
+                        @include ds_colpush(3);
+                    }
                 }
             }
         }

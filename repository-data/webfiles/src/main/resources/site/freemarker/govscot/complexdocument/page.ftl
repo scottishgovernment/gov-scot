@@ -101,10 +101,10 @@
 
             <hr />
 
-            <div class="ds_layout  gov_layout--publication">
-                <div class="ds_layout__sidebar">
-                    <#if currentPage != document>
-                        <!--noindex-->
+            <div class="ds_layout  gov_layout--publication  <#if currentPage == document>gov_layout--publication</#if>">
+                <#if currentPage != document>
+                    <!--noindex-->
+                    <div class="ds_layout__sidebar">
                         <nav class="ds_side-navigation  ds_no-margin--top" data-module="ds-side-navigation">
                             <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
                             <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
@@ -141,9 +141,9 @@
                                 </#list>
                             </ul>
                         </nav>
-                        <!--endnoindex-->
-                    </#if>
-                </div>
+                    </div>
+                    <!--endnoindex-->
+                </#if>
 
                 <div class="ds_layout__content">
                     <#if isAboutPage??>

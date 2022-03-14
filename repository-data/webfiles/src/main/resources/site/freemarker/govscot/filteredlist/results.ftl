@@ -19,6 +19,10 @@
     <#assign hasActiveParameters = true/>
 </#if>
 
+<#if hstRequestContext.servletRequest.getParameter("page")??>
+    <#assign start = (hstRequestContext.servletRequest.getParameter("page")?number - 1) * 10 + 1/>
+</#if>
+
 <#if pageable??>
 
 <section id="search-results" class="ds_search-results">
@@ -87,42 +91,38 @@
         </div>
     </header>
 
-    <ol id="search-results-list" class="ds_search-results__list" data-total="${pageable.total}">
+    <ol id="search-results-list" <#if start??>start="${start}"</#if> class="ds_search-results__list" data-total="${pageable.total}">
         <#list pageable.items as item>
             <@hst.link var="link" hippobean=item/>
-            <li class="gov_search-result">
-                <div class="gov_search-result__main">
-                    <header class="gov_search-result__header">
-                        <dl class="gov_search-result__metadata  ds_metadata  ds_metadata--inline">
-                            <span class="ds_metadata__item">
-                                <dt class="ds_metadata__key  visually-hidden">Type</dt>
-                                <dd class="ds_metadata__value  ds_content-label">${item.label}</dd>
-                            </span>
+            <li class="ds_search-result">
+                <h3 class="ds_search-result__title">
+                    <a class="ds_search-result__link" href="${link}">${item.title}</a>
+                </h3>
 
-                            <#if item.publicationDate??>
-                                <span class="ds_metadata__item">
-                                    <dt class="ds_metadata__key  visually-hidden">Date</dt>
-                                    <#assign dateFormat = "dd MMM yyyy">
-                                    <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                        <#assign dateFormat = "dd MMM yyyy HH:mm">
-                                    </#if>
-                                    <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
-                                    <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
-                                </span>
+                <#if item.summary??>
+                    <p class="ds_search-result__summary">
+                        ${item.summary}
+                    </p>
+                </#if>
+
+                <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
+                    <span class="ds_metadata__item">
+                        <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                        <dd class="ds_metadata__value">${item.label?cap_first}</dd>
+                    </span>
+
+                    <#if item.publicationDate??>
+                        <span class="ds_metadata__item">
+                            <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                            <#assign dateFormat = "dd MMM yyyy">
+                            <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                <#assign dateFormat = "dd MMM yyyy HH:mm">
                             </#if>
-                        </dl>
-
-                        <h2 class="gamma  gov_search-result__title">
-                            <a class="gov_search-result__link" href="${link}">${item.title}</a>
-                        </h2>
-                    </header>
-
-                    <#if item.summary??>
-                        <p class="gov_search-result__summary">
-                            ${item.summary}
-                        </p>
+                            <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
+                            <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
+                        </span>
                     </#if>
-                </div>
+                </dl>
 
                 <#if item.collections?has_content>
                     <#if item.collections?size == 1>
@@ -130,35 +130,21 @@
                     <#else>
                         <#assign description = '${item.collections?size} collections'/>
                     </#if>
-                    <p class="gov_search-result__supplemental">
-                        <svg class="ds_icon ds_!_margin-right--1">
-                            <use xlink:href="${iconspath}#topic"></use>
-                        </svg>
-
-                        This publication is part of ${description}:&nbsp;
-                        <a data-navigation="collections-1" href="<@hst.link hippobean=item.collections[0]/>">${item.collections[0].title}</a><!--
-
-                        --><#if item.collections?size gt 1><!--
-                            -->,&nbsp;<!--
-                            --><a data-navigation="collections-all" href="#content-item-${item?index}-collections">
-                                &#43;${item.collections?size - 1}&nbsp;more&nbsp;&hellip;</a>
-
-                            <span id="content-item-${item?index}-collections">
-                                <#list item.collections as collection>
-                                    <#if collection?index != 0>
-                                        <@hst.link var="link" hippobean=collection/>
-                                        <a data-navigation="collections-${collection?index + 2}" href="${link}">${collection.title}</a><#sep>,&nbsp;</#sep>
-                                    </#if>
-                                </#list>
-                            </span>
-                        </#if>
-                    </p>
+                    <dl class="ds_search-result__context">
+                        <dt class="ds_search-result__context-key">Part of:</dt>
+                        <#list item.collections as collection>
+                            <@hst.link var="link" hippobean=collection/>
+                            <dd class="ds_search-result__context-value">
+                                <a data-navigation="collections-${collection?index + 1}" href="${link}">${collection.title}</a>
+                            </dd>
+                        </#list>
+                    </dl>
                 </#if>
             </li>
         </#list>
     </ol>
 
-    <div id="pagination">
+    <div>
         <#assign gtmslug = relativeContentPath />
         <#if cparam.showPagination??>
             <#include "../../include/pagination.ftl">

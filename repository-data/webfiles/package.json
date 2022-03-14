@@ -11,17 +11,13 @@
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
     "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --cache-location target/.sass-cache",
-    "webpack": "./node_modules/.bin/webpack -p --config webpack.config.js",
+    "webpack": "./node_modules/.bin/webpack -p --config ./webpack.config.js",
     "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.6.4",
-    "@babel/plugin-transform-classes": "^7.10.4",
-    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.6.3",
-    "@scottish-government/pattern-library": "0.0.232",
-    "ajv": "^6.10.0",
+    "@scottish-government/pattern-library": "0.0.235",
     "babel-loader": "^8.0.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",
@@ -36,14 +32,10 @@
     "karma-jasmine-jquery-2": "^0.1.1",
     "karma-jasmine-matchers": "^4.0.1",
     "karma-webpack": "^4.0.0-rc.6",
-    "pikaday": "^1.4.0",
-    "promise-polyfill": "^8.2.0",
-    "requirejs": "^2.1.0",
     "sealant": "0.0.2",
     "svg-sprite": "^1.4.0",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-cli": "^3.2.1"
   },
   "dependencies": {}
 }

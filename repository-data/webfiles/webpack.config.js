@@ -5,17 +5,17 @@ const commonItems = {
     mode: 'development',
 
     entry: {
-        'default':                      './src/scripts/govscot/format.default.js',
-        'global':                       './src/scripts/govscot/global.js',
+        'global':                       path.resolve(__dirname, './src/scripts/govscot/global.js'),
 
-        // format-specific entry points
-        'aboutstats':                   './src/scripts/govscot/format.aboutstats.js',
-        'cookie-preferences':           './src/scripts/govscot/format.cookie-preferences.js',
-        'filtered-list-page':           './src/scripts/govscot/format.filtered-list-page.js',
-        'home':                         './src/scripts/govscot/format.home.js',
-        'payment-form':                 './src/scripts/govscot/format.payment-form.js',
-        'publication':                  './src/scripts/govscot/format.publication.js',
-        'search':                       './src/scripts/govscot/format.search.js'
+        // format-specific entry point)s
+        'aboutstats':                   path.resolve(__dirname, './src/scripts/govscot/format.aboutstats.js'),
+        'cookie-preferences':           path.resolve(__dirname, './src/scripts/govscot/format.cookie-preferences.js'),
+        'default':                      path.resolve(__dirname, './src/scripts/govscot/format.default.js'),
+        'filtered-list-page':           path.resolve(__dirname, './src/scripts/govscot/format.filtered-list-page.js'),
+        'home':                         path.resolve(__dirname, './src/scripts/govscot/format.home.js'),
+        'payment-form':                 path.resolve(__dirname, './src/scripts/govscot/format.payment-form.js'),
+        'publication':                  path.resolve(__dirname, './src/scripts/govscot/format.publication.js'),
+        'search':                       path.resolve(__dirname, './src/scripts/govscot/format.search.js')
     },
 
     externals: {
@@ -24,16 +24,16 @@ const commonItems = {
 
     resolve: {
         modules: [
-            './src/main/resources/site/assets/scripts',
+            './app/assets/scripts',
             'node_modules'
         ],
 
         extensions: ['.js'],
 
         // equivalent to requirejs paths
-        alias: {
-            'jquery': aliasPath + 'jquery.min'
-        }
+        // alias: {
+        //     'jquery': aliasPath + 'jquery.min'
+        // }
     },
 
     module: {
@@ -63,16 +63,8 @@ module.exports = [{
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules)/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                        // plugins: [
-                        //     '@babel/plugin-transform-classes',
-                        //     // '@babel/plugin-transform-runtime',
-                        // ]
-                    }
+                    loader: 'babel-loader'
                 }
             }
         ]

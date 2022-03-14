@@ -43,15 +43,17 @@ class GovFilters {
 
             if (!isOpen) {
                 this.openFilters();
-                filtersExpandButton.querySelector('.js-show-filters-text').innerText = 'Hide search filters';
+
             } else {
                 this.closeFilters();
-                filtersExpandButton.querySelector('.js-show-filters-text').innerText = 'Show search filters';
+
             }
 
             filtersExpandButton.setAttribute('aria-expanded', !isOpen);
             this.filtersControl.checked = !isOpen;
         });
+
+        this.filtersExpandButton = filtersExpandButton;
 
         this.govFilters.classList.add('js-initialised');
     }
@@ -63,6 +65,7 @@ class GovFilters {
             this.filtersForm.style.maxHeight = 'unset';
             this.filtersControl.checked = true;
         }, 200);
+        this.filtersExpandButton.querySelector('.js-show-filters-text').innerText = 'Hide search filters';
     }
 
     closeFilters() {
@@ -71,6 +74,7 @@ class GovFilters {
             this.filtersForm.style.display = 'none';
             this.filtersControl.checked = false;
         }, 200);
+        this.filtersExpandButton.querySelector('.js-show-filters-text').innerText = 'Show search filters';
     }
 }
 
