@@ -17,7 +17,7 @@ public class ThumbnailsProvider {
     private static final List<Integer> SIZES = new ArrayList<>();
 
     static {
-        Collections.addAll(SIZES, 330, 214, 165, 107);
+        Collections.addAll(SIZES, 320, 256, 160, 144, 128, 72);
     }
 
     private ThumbnailsProvider() {
