@@ -1,0 +1,906 @@
+/content/documents/govscot/valuelists:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: fd33ed57-e43b-4fad-ab15-9c69f61fe8e3
+  hippo:name: valuelists
+  hippostd:foldertype: [new-valuelist]
+  /publicationTypes:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: de941bf5-9a2f-4cc6-a5ca-415a8f85d9e6
+    hippo:name: publicationTypes
+    /publicationTypes:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: e4f6f915-50ba-4acf-b3f8-062ccc103955
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: advice-and-guidance
+        selection:label: Advice and guidance
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: agreement
+        selection:label: Agreement
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: consultation-analysis
+        selection:label: Consultation analysis
+      /selection:listitem[4]:
+        jcr:primaryType: selection:listitem
+        selection:key: consultation-paper
+        selection:label: Consultation paper
+      /selection:listitem[5]:
+        jcr:primaryType: selection:listitem
+        selection:key: corporate-report
+        selection:label: Corporate report
+      /selection:listitem[6]:
+        jcr:primaryType: selection:listitem
+        selection:key: correspondence
+        selection:label: Correspondence
+      /selection:listitem[7]:
+        jcr:primaryType: selection:listitem
+        selection:key: foi-eir-release
+        selection:label: FOI/EIR release
+      /selection:listitem[8]:
+        jcr:primaryType: selection:listitem
+        selection:key: factsheet
+        selection:label: Factsheet
+      /selection:listitem[9]:
+        jcr:primaryType: selection:listitem
+        selection:key: form
+        selection:label: Form
+      /selection:listitem[10]:
+        jcr:primaryType: selection:listitem
+        selection:key: impact-assessment
+        selection:label: Impact assessment
+      /selection:listitem[11]:
+        jcr:primaryType: selection:listitem
+        selection:key: independent-report
+        selection:label: Independent report
+      /selection:listitem[12]:
+        jcr:primaryType: selection:listitem
+        selection:key: map
+        selection:label: Map
+      /selection:listitem[13]:
+        jcr:primaryType: selection:listitem
+        selection:key: minutes
+        selection:label: Minutes
+      /selection:listitem[14]:
+        jcr:primaryType: selection:listitem
+        selection:key: progress-report
+        selection:label: Progress report
+      /selection:listitem[15]:
+        jcr:primaryType: selection:listitem
+        selection:key: regulation-directive-order
+        selection:label: Regulation/directive/order
+      /selection:listitem[16]:
+        jcr:primaryType: selection:listitem
+        selection:key: research-and-analysis
+        selection:label: Research and analysis
+      /selection:listitem[17]:
+        jcr:primaryType: selection:listitem
+        selection:key: speech-statement
+        selection:label: Speech/statement
+      /selection:listitem[18]:
+        jcr:primaryType: selection:listitem
+        selection:key: statistics
+        selection:label: Statistics
+      /selection:listitem[19]:
+        jcr:primaryType: selection:listitem
+        selection:key: strategy-plan
+        selection:label: Strategy/plan
+      /selection:listitem[20]:
+        jcr:primaryType: selection:listitem
+        selection:key: transparency-data
+        selection:label: Transparency data
+  /aps-blocklist:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: 66ba99fa-9784-49c6-b3d5-2cbdbbd50561
+    hippo:name: APS blocklist
+    /aps-blocklist:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 1ebf903f-339f-4c94-b215-83d1adf0efc2
+      hippo:availability: [live, preview]
+      hippotranslation:id: 2e6f0384-29eb-458f-9cc4-7cd856e3b53c
+      hippotranslation:locale: inherited - from query
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: '329376'
+        selection:label: '329376'
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: '330877'
+        selection:label: '330877'
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: '331319'
+        selection:label: '331319'
+      /selection:listitem[4]:
+        jcr:primaryType: selection:listitem
+        selection:key: '341931'
+        selection:label: '341931'
+      /selection:listitem[5]:
+        jcr:primaryType: selection:listitem
+        selection:key: '334005'
+        selection:label: '334005'
+      /selection:listitem[6]:
+        jcr:primaryType: selection:listitem
+        selection:key: '340399'
+        selection:label: '340399'
+      /selection:listitem[7]:
+        jcr:primaryType: selection:listitem
+        selection:key: '347902'
+        selection:label: '347902'
+      /selection:listitem[8]:
+        jcr:primaryType: selection:listitem
+        selection:key: '347964'
+        selection:label: '347964'
+      /selection:listitem[9]:
+        jcr:primaryType: selection:listitem
+        selection:key: '340303'
+        selection:label: '340303'
+      /selection:listitem[10]:
+        jcr:primaryType: selection:listitem
+        selection:key: '348816'
+        selection:label: '348816'
+      /selection:listitem[11]:
+        jcr:primaryType: selection:listitem
+        selection:key: '361800'
+        selection:label: '361800'
+      /selection:listitem[12]:
+        jcr:primaryType: selection:listitem
+        selection:key: '357175'
+        selection:label: '357175'
+      /selection:listitem[13]:
+        jcr:primaryType: selection:listitem
+        selection:key: '362106'
+        selection:label: '362106'
+      /selection:listitem[14]:
+        jcr:primaryType: selection:listitem
+        selection:key: '362055'
+        selection:label: '362055'
+      /selection:listitem[15]:
+        jcr:primaryType: selection:listitem
+        selection:key: '361736'
+        selection:label: '361736'
+      /selection:listitem[16]:
+        jcr:primaryType: selection:listitem
+        selection:key: '361803'
+        selection:label: '361803'
+      /selection:listitem[17]:
+        jcr:primaryType: selection:listitem
+        selection:key: '352163'
+        selection:label: '352163'
+      /selection:listitem[18]:
+        jcr:primaryType: selection:listitem
+        selection:key: '306528'
+        selection:label: '306528'
+  /reportingTags:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 9d6080f3-f575-4e75-b124-8801495a7818
+    hippo:name: reportingTags
+    /reportingTags:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: dff08868-3eed-4561-b70e-c655b3caa7b4
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: Adults with incapacity
+        selection:label: Adults with incapacity
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: deleteme
+        selection:label: Delete tagged publication
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: fixme
+        selection:label: Fix broken publication
+  /topicTags:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 3f87912b-62db-4007-8568-610b07fe060b
+    hippo:name: topicTags
+    /topicTags:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 52a244c7-fc19-46c7-9a81-b9ab4c6f48b1
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe49d
+        selection:label: Arts, culture and sport
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: 594a583c43ffea1a54d6fcb0
+        selection:label: Brexit
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a2fed95b637f10e84ce8fb1
+        selection:label: Budget 2018
+      /selection:listitem[4]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e29788918fe235548a38a9b
+        selection:label: Budget 2020
+      /selection:listitem[5]:
+        jcr:primaryType: selection:listitem
+        selection:key: 60213a74af4afe20cc5e1c1a
+        selection:label: Budget 2021
+      /selection:listitem[6]:
+        jcr:primaryType: selection:listitem
+        selection:key: 61acbdd3a4b0e24c1831a117
+        selection:label: Budget 2022
+      /selection:listitem[7]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4ac
+        selection:label: Building, planning and design
+      /selection:listitem[8]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe49f
+        selection:label: Business, industry and innovation
+      /selection:listitem[9]:
+        jcr:primaryType: selection:listitem
+        selection:key: 6176b04d16728016a0abc69e
+        selection:label: COP26
+      /selection:listitem[10]:
+        jcr:primaryType: selection:listitem
+        selection:key: 58bfdb3c622d760a4093c7e0
+        selection:label: Children and families
+      /selection:listitem[11]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57ff617d65a26906cc73e229
+        selection:label: Communities and Third Sector
+      /selection:listitem[12]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4ae
+        selection:label: Constitution and democracy
+      /selection:listitem[13]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e5e60eaa02c3518e478808d
+        selection:label: Coronavirus
+      /selection:listitem[14]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a0
+        selection:label: Economy
+      /selection:listitem[15]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a1
+        selection:label: Education
+      /selection:listitem[16]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57ff617d65a26906cc73e22c
+        selection:label: Energy
+      /selection:listitem[17]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a2
+        selection:label: Environment and climate change
+      /selection:listitem[18]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4ab
+        selection:label: Equality and Rights
+      /selection:listitem[19]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe49c
+        selection:label: Farming and rural
+      /selection:listitem[20]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a3
+        selection:label: First Minister
+      /selection:listitem[21]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a6
+        selection:label: Health and social care
+      /selection:listitem[22]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a7
+        selection:label: Housing
+      /selection:listitem[23]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a8
+        selection:label: International
+      /selection:listitem[24]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4a9
+        selection:label: Law and order
+      /selection:listitem[25]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4aa
+        selection:label: Marine and Fisheries
+      /selection:listitem[26]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b7eb411321a78167cd0eb5a
+        selection:label: Money and tax
+      /selection:listitem[27]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57c93b4887003b083cdbe4ad
+        selection:label: Public Sector
+      /selection:listitem[28]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5834330320ae430d60fd2819
+        selection:label: Public safety and emergencies
+      /selection:listitem[29]:
+        jcr:primaryType: selection:listitem
+        selection:key: 58d29dbb24ae450f000069f0
+        selection:label: Referendum
+      /selection:listitem[30]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57ff617d65a26906cc73e228
+        selection:label: Research
+      /selection:listitem[31]:
+        jcr:primaryType: selection:listitem
+        selection:key: 60213a5caf4afe20cc5e1c17
+        selection:label: Scottish Budget
+      /selection:listitem[32]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57ff617d65a26906cc73e22b
+        selection:label: Statistics
+      /selection:listitem[33]:
+        jcr:primaryType: selection:listitem
+        selection:key: 57ff617d65a26906cc73e22e
+        selection:label: Transport
+      /selection:listitem[34]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5834330320ae430d60fd281a
+        selection:label: Work and skills
+      /selection:listitem[35]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a26b3bf2eb0191268ea8673
+        selection:label: Year of Young People 2018
+  /policyTags:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 624af01a-5dc1-4179-8779-2d388014e0cd
+    hippo:name: policyTags
+    /policyTags:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 184d0d95-ffcd-4f41-8e52-35a8c373c8ee
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a5f199de850d21b684439cd
+        selection:label: Access to justice
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d0a1fa63500d20e4c98874a
+        selection:label: Adverse childhood experiences
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c531c10ae22913228434af8
+        selection:label: Agricultural careers
+      /selection:listitem[4]:
+        jcr:primaryType: selection:listitem
+        selection:key: 60545f9005994d57902f7cc1
+        selection:label: Agricultural holdings
+      /selection:listitem[5]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c531b50ae22913228434ae9
+        selection:label: Agriculture and the environment
+      /selection:listitem[6]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c7fee97aeecf518d41c601d
+        selection:label: Alcohol and drugs
+      /selection:listitem[7]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c25ff0206adf6175c9e12f9
+        selection:label: Animal health and welfare
+      /selection:listitem[8]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e663c595131d106c8a06403
+        selection:label: Aquaculture
+      /selection:listitem[9]:
+        jcr:primaryType: selection:listitem
+        selection:key: 592e9dc748a214080cc88778
+        selection:label: Arts culture and heritage
+      /selection:listitem[10]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c127d7ab065634040ac0bc3
+        selection:label: Biodiversity
+      /selection:listitem[11]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e654
+        selection:label: Building standards
+      /selection:listitem[12]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e655
+        selection:label: Business support
+      /selection:listitem[13]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c25ff0206adf6175c9e12fa
+        selection:label: CAP - common agricultural policy
+      /selection:listitem[14]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d665538ec4f426aec5f9d53
+        selection:label: Carer support
+      /selection:listitem[15]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59566721c0e9250a105fb200
+        selection:label: Child protection
+      /selection:listitem[16]:
+        jcr:primaryType: selection:listitem
+        selection:key: 590b29c4f45e0c0730486436
+        selection:label: Cities and regions
+      /selection:listitem[17]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5aa8f49fe90c0803d89aa086
+        selection:label: Civil law and legal system
+      /selection:listitem[18]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b03d8ca91aa8323c037cc8b
+        selection:label: Climate change
+      /selection:listitem[19]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59afbb3c91ae921d20939801
+        selection:label: Colleges
+      /selection:listitem[20]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59d3aa9e572d7f22d8df9516
+        selection:label: Community empowerment
+      /selection:listitem[21]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d1239093500d27d9401c55f
+        selection:label: Community safety
+      /selection:listitem[22]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e656
+        selection:label: Consumers and competition
+      /selection:listitem[23]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e5e3208a02c3518e4787caa
+        selection:label: Coronavirus
+      /selection:listitem[24]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e657
+        selection:label: Creative industries
+      /selection:listitem[25]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ca1df493500d21d30107cdb
+        selection:label: Crime prevention and reduction
+      /selection:listitem[26]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d711fd9b3791d1bd449554a
+        selection:label: Criminal law
+      /selection:listitem[27]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a02e1faf6ad6e20a08ba3b4
+        selection:label: Cyber resilience
+      /selection:listitem[28]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c9b5a003dffcd16f40947ce
+        selection:label: Death and end of life
+      /selection:listitem[29]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e658
+        selection:label: Digital
+      /selection:listitem[30]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59395aa843ffea1ec87ea3f6
+        selection:label: Disability
+      /selection:listitem[31]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59566721c0e9250a105fb201
+        selection:label: Early years
+      /selection:listitem[32]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e659
+        selection:label: Economic growth
+      /selection:listitem[33]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a26b2ca2eb0191268ea866e
+        selection:label: Employment support
+      /selection:listitem[34]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ae981a257c59a16882863eb
+        selection:label: Energy efficiency
+      /selection:listitem[35]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c459d1506adf6462495e60e
+        selection:label: Energy infrastructure
+      /selection:listitem[36]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e65a
+        selection:label: Equality
+      /selection:listitem[37]:
+        jcr:primaryType: selection:listitem
+        selection:key: 598aff14b85dc13f6c1f7fc1
+        selection:label: Europe
+      /selection:listitem[38]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e65b
+        selection:label: European Structural Funds
+      /selection:listitem[39]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59395aa843ffea1ec87ea3f7
+        selection:label: Faith and belief
+      /selection:listitem[40]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ca1e46c3500d21d30107d17
+        selection:label: Family law
+      /selection:listitem[41]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c531bd7ae22913228434af7
+        selection:label: Farm tenancies
+      /selection:listitem[42]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e65c
+        selection:label: Financial and business services
+      /selection:listitem[43]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d39659aec4f421f804e6178
+        selection:label: Fire and rescue
+      /selection:listitem[44]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e65d
+        selection:label: Food and drink
+      /selection:listitem[45]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b4734ea39e4ad212cc5d722
+        selection:label: Forestry
+      /selection:listitem[46]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59566721c0e9250a105fb202
+        selection:label: GIRFEC
+      /selection:listitem[47]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59395aa843ffea1ec87ea3f8
+        selection:label: Gender
+      /selection:listitem[48]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b4734ea39e4ad212cc5d723
+        selection:label: Government finance
+      /selection:listitem[49]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59395aa843ffea1ec87ea3f9
+        selection:label: Gypsy/Travellers
+      /selection:listitem[50]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c8bcf12aeecf518d41c8ab3
+        selection:label: Health improvement
+      /selection:listitem[51]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d665538ec4f426aec5f9d54
+        selection:label: Health workforce
+      /selection:listitem[52]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5df0ffc5321f0c171496e909
+        selection:label: Healthcare standards
+      /selection:listitem[53]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5cb6e7583500d23688471eaa
+        selection:label: Home energy and fuel poverty
+      /selection:listitem[54]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e660
+        selection:label: Homelessness
+      /selection:listitem[55]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e65f
+        selection:label: Homeowners
+      /selection:listitem[56]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e661
+        selection:label: Human rights
+      /selection:listitem[57]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a54d98be850d21aa045e6a7
+        selection:label: Human trafficking
+      /selection:listitem[58]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d025ad63500d20e4c98740b
+        selection:label: Illnesses and conditions
+      /selection:listitem[59]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a2a6642b637f10e84ce8b17
+        selection:label: Improving public services
+      /selection:listitem[60]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e662
+        selection:label: Independent living
+      /selection:listitem[61]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e4411b2665ef830d0d3ba32
+        selection:label: Inshore fisheries
+      /selection:listitem[62]:
+        jcr:primaryType: selection:listitem
+        selection:key: 598aff14b85dc13f6c1f7fc2
+        selection:label: International development
+      /selection:listitem[63]:
+        jcr:primaryType: selection:listitem
+        selection:key: 598aff14b85dc13f6c1f7fc3
+        selection:label: International relations
+      /selection:listitem[64]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e663
+        selection:label: International trade and investment
+      /selection:listitem[65]:
+        jcr:primaryType: selection:listitem
+        selection:key: 610259ed30ad76768ca8b196
+        selection:label: Investment finance
+      /selection:listitem[66]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59395aa843ffea1ec87ea3fa
+        selection:label: LGBTI
+      /selection:listitem[67]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a85702864da9e12dc00120b
+        selection:label: Land reform
+      /selection:listitem[68]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c127d7ab065634040ac0bc4
+        selection:label: Landscape and outdoor access
+      /selection:listitem[69]:
+        jcr:primaryType: selection:listitem
+        selection:key: 592e9dc748a214080cc88779
+        selection:label: Languages
+      /selection:listitem[70]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ad867291dd4ba0fc0e28b42
+        selection:label: Local government
+      /selection:listitem[71]:
+        jcr:primaryType: selection:listitem
+        selection:key: 592e9ebd48a214080cc88781
+        selection:label: Looked after children
+      /selection:listitem[72]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b7eb453321a78167cd0eb5d
+        selection:label: Managing waste
+      /selection:listitem[73]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5aa67c5233afa60f7c2c83db
+        selection:label: Manufacturing
+      /selection:listitem[74]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ed39648a063462630de6a88
+        selection:label: Marine and fisheries grants
+      /selection:listitem[75]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5f607bd7ea1f6915b4552243
+        selection:label: Marine and fisheries licensing
+      /selection:listitem[76]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e465c45665ef8165889b276
+        selection:label: Marine environment
+      /selection:listitem[77]:
+        jcr:primaryType: selection:listitem
+        selection:key: 598aff14b85dc13f6c1f7fc4
+        selection:label: Maternal and child health
+      /selection:listitem[78]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c7fad45aeecf518d41c5d89
+        selection:label: Mental health
+      /selection:listitem[79]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e664
+        selection:label: More homes (housing supply)
+      /selection:listitem[80]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5bfbc129b0656314e89a7adb
+        selection:label: Nuclear energy
+      /selection:listitem[81]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5e4d0db3493ad22a18a9117b
+        selection:label: Offshore fisheries
+      /selection:listitem[82]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5bfbc14fb0656314e89a7adc
+        selection:label: Oil and gas
+      /selection:listitem[83]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e665
+        selection:label: Planning and architecture
+      /selection:listitem[84]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59ca1710572d7f22d8df7c49
+        selection:label: Planning and environmental appeals
+      /selection:listitem[85]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d1b2dc03500d27d9401e271
+        selection:label: Plant health
+      /selection:listitem[86]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d1347b03500d27d9401c79e
+        selection:label: Police
+      /selection:listitem[87]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b0400ad91aa8323c037cd9d
+        selection:label: Pollution
+      /selection:listitem[88]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e666
+        selection:label: Poverty and social justice
+      /selection:listitem[89]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d248bed3500d28fd0a1b84b
+        selection:label: Primary care services
+      /selection:listitem[90]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e667
+        selection:label: Private renting
+      /selection:listitem[91]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b4734ea39e4ad212cc5d724
+        selection:label: Public bodies
+      /selection:listitem[92]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b5f2b25fdd45c1084750d1a
+        selection:label: Public sector pay
+      /selection:listitem[93]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5af1b1a857c59a1688287ddb
+        selection:label: Public sector procurement
+      /selection:listitem[94]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59395aa843ffea1ec87ea3fb
+        selection:label: Race
+      /selection:listitem[95]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5dd3cb601bf2324d104f8de6
+        selection:label: Reducing reoffending
+      /selection:listitem[96]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e668
+        selection:label: Refugees and asylum seekers
+      /selection:listitem[97]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5846d81f82a21e1dd0019e43
+        selection:label: Regeneration
+      /selection:listitem[98]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ba2458e89b6072c28243ec1
+        selection:label: Renewable and low carbon energy
+      /selection:listitem[99]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a54b461e850d21aa045e5d9
+        selection:label: Schools
+      /selection:listitem[100]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5846d75195ae4439fcd620a2
+        selection:label: Science and research
+      /selection:listitem[101]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5c87ccbcaeecf518d41c78ae
+        selection:label: Smoking
+      /selection:listitem[102]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5d665538ec4f426aec5f9d55
+        selection:label: Social care
+      /selection:listitem[103]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e66a
+        selection:label: Social housing
+      /selection:listitem[104]:
+        jcr:primaryType: selection:listitem
+        selection:key: 595e606342ffec1034aaad59
+        selection:label: Social security
+      /selection:listitem[105]:
+        jcr:primaryType: selection:listitem
+        selection:key: 595e606342ffec1034aaad5a
+        selection:label: Social work
+      /selection:listitem[106]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5818833e95ae440eb41db73a
+        selection:label: Sport and physical activity
+      /selection:listitem[107]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5bc0a3163accd11d205cead0
+        selection:label: Sustainable performance
+      /selection:listitem[108]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5b7eb453321a78167cd0eb5e
+        selection:label: Tax
+      /selection:listitem[109]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a0190a2f6ad6e20a08ba082
+        selection:label: Third sector
+      /selection:listitem[110]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e66b
+        selection:label: Tourism and events
+      /selection:listitem[111]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a018660f6ad6e20a08ba016
+        selection:label: Transport
+      /selection:listitem[112]:
+        jcr:primaryType: selection:listitem
+        selection:key: 59afbb3c91ae921d20939802
+        selection:label: Universities
+      /selection:listitem[113]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e66c
+        selection:label: Veterans and armed forces
+      /selection:listitem[114]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a5f199de850d21b684439ce
+        selection:label: Victims and witnesses
+      /selection:listitem[115]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5808b67565a26906cc73e66d
+        selection:label: Violence against women and girls
+      /selection:listitem[116]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5846d75195ae4439fcd620a3
+        selection:label: Water
+      /selection:listitem[117]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5ba2431489b6072c28243e88
+        selection:label: Wildlife management
+      /selection:listitem[118]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a26b2ca2eb0191268ea866f
+        selection:label: 'Young people: training and employment'
+      /selection:listitem[119]:
+        jcr:primaryType: selection:listitem
+        selection:key: 5a60b237e850d21b68443d40
+        selection:label: Youth justice
+  /featureflags:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 4c473ec3-481c-4315-af20-b422dcecb9d6
+    hippo:name: featureflags
+    /featureflags:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 012b4311-6e3c-4999-95f8-8d2e13c742a5
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: homeStatsPanel
+        selection:label: 'true'
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: StatisticsandresearchMenu
+        selection:label: 'true'
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: topicsStatsPanel
+        selection:label: 'true'
+  /covidlevels:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: 52ff8073-b437-4bed-bda7-4c848c5f80ed
+    hippo:name: covidlevels
+    /covidlevels:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 26771f23-69b6-47bd-9dbb-dc8628bafb3f
+      hippotranslation:id: 0d6dce5e-cdc1-44f8-b4e0-a5119395fcb3
+      hippotranslation:locale: inherited - from query
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: level0
+        selection:label: Level 0
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: level1
+        selection:label: Level 1
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: level2
+        selection:label: Level 2
+      /selection:listitem[4]:
+        jcr:primaryType: selection:listitem
+        selection:key: level3
+        selection:label: Level 3
+      /selection:listitem[5]:
+        jcr:primaryType: selection:listitem
+        selection:key: level4
+        selection:label: Level 4
+  /covidrestrictiontypes:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: 349e1cc2-c914-4608-bee7-53286a3a46b8
+    hippo:name: covidrestrictiontypes
+    /covidrestrictiontypes:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 2d503a67-ddf6-4d48-964f-ed484e24a8c3
+      hippotranslation:id: 2aba423a-5646-44ca-814c-82d7a450bab6
+      hippotranslation:locale: inherited - from query
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: electoral-ward
+        selection:label: Electoral ward
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: local-authority
+        selection:label: Local authority

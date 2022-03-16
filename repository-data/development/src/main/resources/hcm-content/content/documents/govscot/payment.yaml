@@ -1,0 +1,110 @@
+/content/documents/govscot/payment:
+  .meta:order-before: home
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+  jcr:uuid: 8b354ff9-579e-4367-b9f1-24c089da6b2f
+  hippo:name: Payments
+  hippo:versionHistory: 0e5c9e6d-d963-42f5-8763-d3fbe1b61733
+  /payment[1]:
+    jcr:primaryType: govscot:PaymentForm
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: eea2f1ec-5a7d-4bb7-8e76-a524a786096d
+    govscot:metaDescription: The Scottish Government receive payments from various
+      bodies in respect of both invoiced and non-invoiced items.
+    govscot:seoTitle: Payment
+    govscot:summary: The Scottish Government receive payments from various bodies
+      in respect of both invoiced and non-invoiced items.
+    govscot:title: Payments
+    hippo:availability: []
+    hippostd:state: draft
+    hippostdpubwf:createdBy: katie.baigrie@gov.scot
+    hippostdpubwf:creationDate: 2020-01-13T14:32:14.903Z
+    hippostdpubwf:lastModificationDate: 2020-12-14T14:38:25.425Z
+    hippostdpubwf:lastModifiedBy: katie.baigrie@gov.scot
+    hippotranslation:id: fcc5693b-8381-4a56-99b4-06f387c9a0d9
+    hippotranslation:locale: document-type-locale
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>To enable us to identify your payment we require some information. It would be helpful if you could complete the appropriate fields below before being transferred to the&nbsp;Worldpay site where your payment details will be taken.</p>
+
+        <p>We accept DEBIT and CREDIT CARD payments with a value limit of £5,000. It should be noted that the Scottish Government do not hold any personal or card details.</p>
+
+        <p><strong>Contact</strong><br />
+        St Andrew's House<br />
+        Regent Road<br />
+        Edinburgh<br />
+        EH1 3DG</p>
+
+        <p>Tel: 0131 244 7325</p>
+
+        <p>Email:&nbsp;<a href="mailto:online_payments@gov.scot">online_payments@gov.scot</a></p>
+  /payment[2]:
+    jcr:primaryType: govscot:PaymentForm
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: e704e8e8-3369-4796-9850-8f271d4ff280
+    govscot:metaDescription: The Scottish Government receive payments from various
+      bodies in respect of both invoiced and non-invoiced items.
+    govscot:seoTitle: Payment
+    govscot:summary: The Scottish Government receive payments from various bodies
+      in respect of both invoiced and non-invoiced items.
+    govscot:title: Payments
+    hippo:availability: [preview]
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: katie.baigrie@gov.scot
+    hippostdpubwf:creationDate: 2020-01-13T14:32:14.903Z
+    hippostdpubwf:lastModificationDate: 2020-12-14T14:37:29.978Z
+    hippostdpubwf:lastModifiedBy: katie.baigrie@gov.scot
+    hippotranslation:id: fcc5693b-8381-4a56-99b4-06f387c9a0d9
+    hippotranslation:locale: document-type-locale
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>To enable us to identify your payment we require some information. It would be helpful if you could complete the appropriate fields below before being transferred to the&nbsp;Worldpay site where your payment details will be taken.</p>
+
+        <p>We accept DEBIT and CREDIT CARD payments with a value limit of £5,000. It should be noted that the Scottish Government do not hold any personal or card details.</p>
+
+        <p><strong>Contact</strong><br />
+        St Andrew's House<br />
+        Regent Road<br />
+        Edinburgh<br />
+        EH1 3DG</p>
+
+        <p>Tel: 0131 244 7325</p>
+
+        <p>Email:&nbsp;<a href="mailto:online_payments@gov.scot">online_payments@gov.scot</a></p>
+  /payment[3]:
+    jcr:primaryType: govscot:PaymentForm
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: b93228bf-aa7f-452c-998a-f3bfc8a34eb4
+    govscot:metaDescription: The Scottish Government receive payments from various
+      bodies in respect of both invoiced and non-invoiced items.
+    govscot:seoTitle: Payment
+    govscot:summary: The Scottish Government receive payments from various bodies
+      in respect of both invoiced and non-invoiced items.
+    govscot:title: Payments
+    hippo:availability: [live]
+    hippostd:state: published
+    hippostdpubwf:createdBy: katie.baigrie@gov.scot
+    hippostdpubwf:creationDate: 2020-01-13T14:32:14.903Z
+    hippostdpubwf:lastModificationDate: 2020-12-14T14:37:29.978Z
+    hippostdpubwf:lastModifiedBy: katie.baigrie@gov.scot
+    hippostdpubwf:publicationDate: 2020-12-14T14:39:16.468Z
+    hippotranslation:id: fcc5693b-8381-4a56-99b4-06f387c9a0d9
+    hippotranslation:locale: document-type-locale
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>To enable us to identify your payment we require some information. It would be helpful if you could complete the appropriate fields below before being transferred to the&nbsp;Worldpay site where your payment details will be taken.</p>
+
+        <p>We accept DEBIT and CREDIT CARD payments with a value limit of £5,000. It should be noted that the Scottish Government do not hold any personal or card details.</p>
+
+        <p><strong>Contact</strong><br />
+        St Andrew's House<br />
+        Regent Road<br />
+        Edinburgh<br />
+        EH1 3DG</p>
+
+        <p>Tel: 0131 244 7325</p>
+
+        <p>Email:&nbsp;<a href="mailto:online_payments@gov.scot">online_payments@gov.scot</a></p>

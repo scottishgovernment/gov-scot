@@ -1,0 +1,182 @@
+/content/documents/govscot/home:
+  .meta:order-before: covid-19
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: 46f1c8b6-6b5e-4150-9eb6-08d919777914
+  hippo:name: The Scottish Government
+  hippo:versionHistory: 143964a3-5f65-410f-83d9-ff77ce373a0f
+  /home[1]:
+    jcr:primaryType: govscot:Home
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 390e110f-04a0-4d41-bca9-5c79b6948338
+    govscot:flickrContent: ''
+    govscot:metaDescription: 'The devolved government for Scotland has a range of
+      responsibilities that include: the economy, education, health, justice, rural
+      affairs, housing, environment, equal opportunities, consumer advocacy and advice,
+      transport and taxation.'
+    govscot:rubricId: GOV-1
+    govscot:seoTitle: The Scottish Government
+    govscot:summary: 'The devolved government for Scotland has a range of responsibilities
+      that include: the economy, education, health, justice, rural affairs, housing,
+      environment, equal opportunities, consumer advocacy and advice, transport and
+      taxation.'
+    govscot:title: The Scottish Government
+    govscot:twitterContent: ''
+    govscot:youtubeContent: ''
+    hippo:availability: [live]
+    hippo:name: The Scottish Government
+    hippostd:state: published
+    hippostd:tags: []
+    hippostdpubwf:createdBy: build.api@mygov.scot
+    hippostdpubwf:creationDate: 2015-06-16T10:52:43+01:00
+    hippostdpubwf:lastModificationDate: 2021-12-08T14:26:39.187Z
+    hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+    hippostdpubwf:publicationDate: 2021-12-09T16:06:16.770Z
+    hippotranslation:id: 5de2f3dd-7daa-49f9-9579-a92269e5e2be
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: <h1>The Scottish Government</h1>
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+    /govscot:howGovernmentWorks:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>The Scottish Government is made up of:</p>
+
+        <div class="stat-boxes"><a href="first-minister" class="stat-box"><span class="stat-box__value">1</span><span class="stat-box__label"><span class="stat-box__label-text">First Minister</span></span></a> <a href="cabinet-and-ministers" class="stat-box"><span class="stat-box__value">9</span><span class="stat-box__label"><span class="stat-box__label-text">Cabinet Secretaries</span></span></a> <a href="cabinet-and-ministers" class="stat-box"><span class="stat-box__value">17</span><span class="stat-box__label"><span class="stat-box__label-text">Other Ministers</span></span></a></div>
+      /first-minister:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 19b138f5-3e06-4b0f-8222-5a9f3ff237cd
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /cabinet-and-ministers:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 01b58df1-6354-464a-ab9c-8ed12bc893b4
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:featuredItems[1]:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: ba68e79d-1b82-466a-953a-0216285d0ef3
+    /govscot:featuredItems[2]:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: 45f53c57-8932-4f9f-b6cd-b01357d02055
+  /home[2]:
+    jcr:primaryType: govscot:Home
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: 8e388ab6-aca0-48a9-956c-973ad6c8224d
+    govscot:flickrContent: ''
+    govscot:metaDescription: 'The devolved government for Scotland has a range of
+      responsibilities that include: the economy, education, health, justice, rural
+      affairs, housing, environment, equal opportunities, consumer advocacy and advice,
+      transport and taxation.'
+    govscot:rubricId: GOV-1
+    govscot:seoTitle: The Scottish Government
+    govscot:summary: 'The devolved government for Scotland has a range of responsibilities
+      that include: the economy, education, health, justice, rural affairs, housing,
+      environment, equal opportunities, consumer advocacy and advice, transport and
+      taxation.'
+    govscot:title: The Scottish Government
+    govscot:twitterContent: ''
+    govscot:youtubeContent: ''
+    hippo:availability: [preview]
+    hippo:name: The Scottish Government
+    hippostd:state: unpublished
+    hippostd:tags: []
+    hippostdpubwf:createdBy: build.api@mygov.scot
+    hippostdpubwf:creationDate: 2015-06-16T10:52:43+01:00
+    hippostdpubwf:lastModificationDate: 2021-12-08T14:26:39.187Z
+    hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+    hippotranslation:id: 5de2f3dd-7daa-49f9-9579-a92269e5e2be
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: <h1>The Scottish Government</h1>
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+    /govscot:howGovernmentWorks:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>The Scottish Government is made up of:</p>
+
+        <div class="stat-boxes"><a href="first-minister" class="stat-box"><span class="stat-box__value">1</span><span class="stat-box__label"><span class="stat-box__label-text">First Minister</span></span></a> <a href="cabinet-and-ministers" class="stat-box"><span class="stat-box__value">9</span><span class="stat-box__label"><span class="stat-box__label-text">Cabinet Secretaries</span></span></a> <a href="cabinet-and-ministers" class="stat-box"><span class="stat-box__value">17</span><span class="stat-box__label"><span class="stat-box__label-text">Other Ministers</span></span></a></div>
+      /first-minister:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 19b138f5-3e06-4b0f-8222-5a9f3ff237cd
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /cabinet-and-ministers:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 01b58df1-6354-464a-ab9c-8ed12bc893b4
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:featuredItems[1]:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: ba68e79d-1b82-466a-953a-0216285d0ef3
+    /govscot:featuredItems[2]:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: 45f53c57-8932-4f9f-b6cd-b01357d02055
+  /home[3]:
+    jcr:primaryType: govscot:Home
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 08fcc25b-9af7-4fbc-8d3f-1da3824577a9
+    govscot:flickrContent: ''
+    govscot:metaDescription: 'The devolved government for Scotland has a range of
+      responsibilities that include: the economy, education, health, justice, rural
+      affairs, housing, environment, equal opportunities, consumer advocacy and advice,
+      transport and taxation.'
+    govscot:rubricId: GOV-1
+    govscot:seoTitle: The Scottish Government
+    govscot:summary: 'The devolved government for Scotland has a range of responsibilities
+      that include: the economy, education, health, justice, rural affairs, housing,
+      environment, equal opportunities, consumer advocacy and advice, transport and
+      taxation.'
+    govscot:title: The Scottish Government
+    govscot:twitterContent: ''
+    govscot:youtubeContent: ''
+    hippo:availability: []
+    hippo:name: The Scottish Government
+    hippostd:state: draft
+    hippostd:tags: []
+    hippostdpubwf:createdBy: build.api@mygov.scot
+    hippostdpubwf:creationDate: 2015-06-16T10:52:43+01:00
+    hippostdpubwf:lastModificationDate: 2021-12-08T14:26:21.692Z
+    hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+    hippotranslation:id: 5de2f3dd-7daa-49f9-9579-a92269e5e2be
+    hippotranslation:locale: en
+    /govscot:content:
+      jcr:primaryType: hippostd:html
+      hippostd:content: <h1>The Scottish Government</h1>
+    /govscot:notes:
+      jcr:primaryType: hippostd:html
+      hippostd:content: ''
+    /govscot:howGovernmentWorks:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <p>The Scottish Government is made up of:</p>
+
+        <div class="stat-boxes"><a href="first-minister" class="stat-box"><span class="stat-box__value">1</span><span class="stat-box__label"><span class="stat-box__label-text">First Minister</span></span></a> <a href="cabinet-and-ministers" class="stat-box"><span class="stat-box__value">9</span><span class="stat-box__label"><span class="stat-box__label-text">Cabinet Secretaries</span></span></a> <a href="cabinet-and-ministers" class="stat-box"><span class="stat-box__value">17</span><span class="stat-box__label"><span class="stat-box__label-text">Other Ministers</span></span></a></div>
+      /first-minister:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 19b138f5-3e06-4b0f-8222-5a9f3ff237cd
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /cabinet-and-ministers:
+        jcr:primaryType: hippo:facetselect
+        hippo:docbase: 01b58df1-6354-464a-ab9c-8ed12bc893b4
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /govscot:featuredItems[1]:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: ba68e79d-1b82-466a-953a-0216285d0ef3
+    /govscot:featuredItems[2]:
+      jcr:primaryType: hippo:mirror
+      hippo:docbase: 45f53c57-8932-4f9f-b6cd-b01357d02055
