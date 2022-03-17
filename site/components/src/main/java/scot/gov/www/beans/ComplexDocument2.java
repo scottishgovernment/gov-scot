@@ -93,8 +93,4 @@ public class ComplexDocument2 extends Publication {
         return SelectionUtil.valueListAsMap(publicationValueList).getOrDefault(getPublicationType(), "Publication");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:coverimage")
-    public CoverImage getCoverimage() {
-        return getLinkedBean("govscot:coverimage", CoverImage.class);
-    }
 }

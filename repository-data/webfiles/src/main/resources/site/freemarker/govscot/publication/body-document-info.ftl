@@ -72,25 +72,14 @@
         <div class="ds_file-info__thumbnail">
             <#if filenameExtension == "PDF">
                 <a class="ds_file-info__thumbnail-link" tabindex="-1" href="${documentinline}">
-                    <#if ((useCoverPage)!false) && document.coverimage?has_content>
-                        <img
-                            alt="View this document"
-                            src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                            srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                            sizes="(min-width: 768px) 104px, 72px" />
-                    <#else>
-                        <img
-                            alt="View this document"
-                            src="<@hst.link hippobean=attachedDocument.thumbnails[0]/>"
-                            srcset="
-                                    <#list attachedDocument.thumbnails as thumbnail>
-                                        <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                    </#list>"
-                            sizes="(min-width: 768px) 104px, 72px" />
-                    </#if>
+                    <img
+                        alt="View this document"
+                        src="<@hst.link hippobean=attachedDocument.thumbnails[0]/>"
+                        srcset="
+                                <#list attachedDocument.thumbnails as thumbnail>
+                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                </#list>"
+                        sizes="(min-width: 768px) 104px, 72px" />
                 </a>
             <#else>
                 <a class="ds_file-info__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>">

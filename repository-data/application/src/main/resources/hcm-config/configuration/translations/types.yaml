@@ -36,7 +36,5 @@ definitions:
       jcr:primaryType: hipposys:resourcebundles
     /hippo:configuration/hippo:translations/hippo:types/govscot:FeaturedItems:
       jcr:primaryType: hipposys:resourcebundles
-    /hippo:configuration/hippo:translations/hippo:types/govscot:CoverImage:
-      jcr:primaryType: hipposys:resourcebundles
     /hippo:configuration/hippo:translations/hippo:types/govscot:ColumnImage:
       jcr:primaryType: hipposys:resourcebundles

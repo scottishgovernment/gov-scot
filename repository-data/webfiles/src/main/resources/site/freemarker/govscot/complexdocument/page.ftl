@@ -52,29 +52,17 @@
                                     <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
                                     <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
                                 </#if>
-                                <#if (filenameExtension!'') == "PDF" || document.coverimage?has_content>
+                                <#if (filenameExtension!'') == "PDF">
                                     <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
-                                        <#if document.coverimage?has_content>
-                                            <img
-                                                alt="View supporting documents"
-                                                class="gov_supporting-documents__thumbnail"
-                                                src="<@hst.link hippobean=document.coverimage.smallcover/>"
-                                                srcset="<@hst.link hippobean=document.coverimage.smallcover/> 107w,
-                                                    <@hst.link hippobean=document.coverimage.mediumcover/> 165w,
-                                                    <@hst.link hippobean=document.coverimage.largecover/> 214w,
-                                                    <@hst.link hippobean=document.coverimage.xlargecover/> 330w"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        <#else>
-                                            <img
-                                                class="gov_supporting-documents__thumbnail"
-                                                alt="View supporting documents"
-                                                src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
-                                                srcset="
-                                                <#list firstDocument.thumbnails as thumbnail>
-                                                    <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
-                                                </#list>"
-                                                sizes="(min-width: 768px) 165px, 107px" />
-                                        </#if>
+                                        <img
+                                            class="gov_supporting-documents__thumbnail"
+                                            alt="View supporting documents"
+                                            src="<@hst.link hippobean=firstDocument.thumbnails[0]/>"
+                                            srcset="
+                                            <#list firstDocument.thumbnails as thumbnail>
+                                                <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
+                                            </#list>"
+                                            sizes="(min-width: 768px) 165px, 107px" />
                                     </a>
                                 <#else>
                                     <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">

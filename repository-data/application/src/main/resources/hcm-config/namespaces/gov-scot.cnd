@@ -54,8 +54,6 @@
 [govscot:CookiePage] > govscot:SiteItem, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:CoverImage] > hippogallery:imageset, hippogallery:relaxed
-
 [govscot:Directorate] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

@@ -55,8 +55,6 @@ definitions:
       new-complex-document-folder: New multisectioned publication
       new-complex-document-section: New section
       new-chapter-folder: New chapter
-      new-govscot-CoverImage-image: New cover image
-      new-govscot-CoverImage-folder: New cover images folder
       new-foi-folder: New FOI/EIR folder
       new-document-collection: new Collection
       new-payment-form: New payment form
