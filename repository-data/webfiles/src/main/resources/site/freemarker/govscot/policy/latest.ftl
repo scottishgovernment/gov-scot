@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <div class="body-content page-group__content inner-shadow-top inner-shadow-top--no-desktop">

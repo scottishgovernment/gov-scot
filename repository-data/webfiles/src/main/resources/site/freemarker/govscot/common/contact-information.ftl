@@ -1,6 +1,6 @@
 <#-- @ftlvariable name="contactInformation" type="scot.gov.www.beans.ContactInformation" -->
 <#-- @ftlvariable name="postalAddress" type="org.hippoecm.hst.content.beans.standard.HippoHtml" -->
-
+<#ftl output_format="HTML">
 <aside class="contact-information">
     <#if contactInformation??>
         <div class="contact-information__group">

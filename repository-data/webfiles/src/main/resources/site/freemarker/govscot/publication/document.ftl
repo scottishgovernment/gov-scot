@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
 
@@ -126,7 +127,7 @@
     <@hst.headContribution>
 
         <#if document.metaDescription??>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
         </#if>
     </@hst.headContribution>
 

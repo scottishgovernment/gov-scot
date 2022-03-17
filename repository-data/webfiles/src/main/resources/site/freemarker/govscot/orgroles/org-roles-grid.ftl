@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <div id="${orgName?lower_case?replace(' ', '-', 'r')}" class="person-grid">
     <div class="person-grid__intro">
         <h2 class="no-top-margin">${orgName}</h2>

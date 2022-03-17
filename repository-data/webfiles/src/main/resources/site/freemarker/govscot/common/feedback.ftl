@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#if feedbackIsEnabled?? && feedbackIsEnabled = true>
 
 <section id="feedback" class="feedback">

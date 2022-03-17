@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
@@ -59,12 +60,12 @@
                                     </#if>
                                 </div>
                             </#if>
-                            <h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title?html}</a></h2>
+                            <h2 class="gamma listed-content-item__title"><a class="listed-content-item__link" href="${link}" data-gtm="search-pos-${item?index + 1}">${item.title}</a></h2>
                         </header>
 
                         <#if item.summary??>
-                            <p class="listed-content-item__summary js-truncate" title="${item.summary?html}" style="max-height: 56px; word-wrap: break-word;">
-                                ${item.summary?html}
+                            <p class="listed-content-item__summary js-truncate" title="${item.summary}" style="max-height: 56px; word-wrap: break-word;">
+                                ${item.summary}
                             </p>
                         </#if>
 

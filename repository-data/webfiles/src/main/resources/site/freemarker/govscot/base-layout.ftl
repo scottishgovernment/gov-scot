@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <!doctype html>
 <#include "../include/imports.ftl">
 <!--[if lte IE 9]><html dir="ltr" lang="en" class="old-ie"><![endif]-->

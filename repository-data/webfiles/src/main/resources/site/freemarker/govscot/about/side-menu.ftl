@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#if aboutMenuItem??>
@@ -8,9 +9,9 @@
         <ul class="page-group__list  ds_side-navigation__list  ds_side-navigation__list--root" id="side-navigation-root">
             <li class="page-group__item page-group__item--level-0">
                 <#if aboutMenuItem.selected>
-                        <span class="page-group__link page-group__link--level-0 page-group__link--selected">${aboutMenuItem.name?html}</span>
+                        <span class="page-group__link page-group__link--level-0 page-group__link--selected">${aboutMenuItem.name}</span>
                 <#else>
-                        <a class="page-group__link page-group__link--level-0" href="<@hst.link link=aboutMenuItem.hstLink/>">${aboutMenuItem.name?html}</a>
+                        <a class="page-group__link page-group__link--level-0" href="<@hst.link link=aboutMenuItem.hstLink/>">${aboutMenuItem.name}</a>
                 </#if>
 
                 <#if aboutMenuItem.childMenuItems?has_content>
@@ -18,9 +19,9 @@
                         <#list aboutMenuItem.childMenuItems as level1Item>
                             <li class="page-group__item page-group__item--level-1">
                                 <#if level1Item.selected>
-                                    <span class="page-group__link page-group__link--level-1 page-group__link--selected">${level1Item.name?html}</span>
+                                    <span class="page-group__link page-group__link--level-1 page-group__link--selected">${level1Item.name}</span>
                                 <#else>
-                                    <a class="page-group__link page-group__link--level-1" href="<@hst.link link=level1Item.hstLink/>">${level1Item.name?html}</a>
+                                    <a class="page-group__link page-group__link--level-1" href="<@hst.link link=level1Item.hstLink/>">${level1Item.name}</a>
                                 </#if>
 
                                 <#if level1Item.childMenuItems?has_content>
@@ -28,9 +29,9 @@
                                         <#list level1Item.childMenuItems as level2Item>
                                             <li class="page-group__item page-group__item--level-2">
                                                 <#if level2Item.selected>
-                                                    <span class="page-group__link page-group__link--level-2 page-group__link--selected">${level2Item.name?html}</span>
+                                                    <span class="page-group__link page-group__link--level-2 page-group__link--selected">${level2Item.name}</span>
                                                 <#else>
-                                                    <a class="page-group__link page-group__link--level-2" href="<@hst.link link=level2Item.hstLink/>">${level2Item.name?html}</a>
+                                                    <a class="page-group__link page-group__link--level-2" href="<@hst.link link=level2Item.hstLink/>">${level2Item.name}</a>
                                                 </#if>
                                             </li>
                                         </#list>

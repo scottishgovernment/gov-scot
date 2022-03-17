@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <article id="page-content" class="layout--groups-list">
@@ -14,7 +15,7 @@
 <@hst.headContribution category="pageTitle"><title>Groups - gov.scot</title></@hst.headContribution>
 <#if document??>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 </#if>
 

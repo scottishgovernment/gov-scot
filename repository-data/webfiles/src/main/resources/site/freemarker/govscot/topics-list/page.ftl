@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <div class="layout--topics-list">
@@ -32,10 +33,10 @@
         <meta name="dc.format" content="Topic"/>
     </@hst.headContribution>
   <@hst.headContribution category="pageTitle">
-    <title>${document.title?html} - gov.scot</title>
+    <title>${document.title} - gov.scot</title>
   </@hst.headContribution>
   <@hst.headContribution>
-    <meta name="description" content="${document.metaDescription?html}"/>
+    <meta name="description" content="${document.metaDescription}"/>
   </@hst.headContribution>
 
   <@hst.link var="canonicalitem" hippobean=document canonical=true/>

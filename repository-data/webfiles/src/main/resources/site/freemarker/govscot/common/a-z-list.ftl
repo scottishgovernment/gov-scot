@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <div class="az-list">
     <#list beansByLetter as letter>
         <div class="grid"><!--

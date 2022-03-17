@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <div class="layout--filtered-list">
@@ -6,7 +7,7 @@
 <#if index??>
     <div class="grid" id="page-content"><!--
         --><div class="grid__item medium--eight-twelfths">
-            <h1 class="article-header">${index.title?html}</h1>
+            <h1 class="article-header">${index.title}</h1>
 
             <#if index.content.content?has_content>
                 <@hst.html hippohtml=index.content/>

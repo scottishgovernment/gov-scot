@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <section class="content-data">
 
     <#if document.updateHistory?has_content>

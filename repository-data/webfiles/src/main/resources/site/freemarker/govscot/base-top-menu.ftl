@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
@@ -55,11 +56,11 @@
                                         </#if>
                                         <#if item.selected || item.expanded>
                                         --><li class="ds_mobile-navigation__item">
-                                                <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                                <a class="ds_mobile-navigation__link ds_current" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name}</a>
                                             </li><!--
                                         <#else>
                                         --><li class="ds_mobile-navigation__item">
-                                                <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                                <a class="ds_mobile-navigation__link" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name}</a>
                                             </li><!--
                                         </#if>
                                     </#list>
@@ -99,11 +100,11 @@
                                     </#if>
                                     <#if item.selected || item.expanded>
                                  --><li class="ds_site-navigation__item">
-                                        <a class="ds_site-navigation__link ds_current" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                        <a class="ds_site-navigation__link ds_current" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name}</a>
                                     </li><!--
                                     <#else>
                                  --><li class="ds_site-navigation__item">
-                                        <a class="ds_site-navigation__link" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name?html}</a>
+                                        <a class="ds_site-navigation__link" href="${href}" itemprop="url" data-header="header-link-${item?index + 1}" data-gtm="nav-main">${item.name}</a>
                                     </li><!--
                                     </#if>
                                 </#if>

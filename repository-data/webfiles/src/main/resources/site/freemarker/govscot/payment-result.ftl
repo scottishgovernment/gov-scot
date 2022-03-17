@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if paymentResult??>
@@ -8,7 +9,7 @@
     --><div class="grid__item medium--nine-twelfths large--seven-twelfths">
         <h1 class="article-header">${paymentResult.title}</h1>
         <div class="body-content">
-            ${paymentResult.content?html}
+            ${paymentResult.content}
         </div>
     </div><!--
 --></div>
@@ -27,7 +28,7 @@
     <link rel="canonical" href="https://www.gov.scot/payment/${paymentResult.id}/>
 
     <@hst.headContribution category="pageTitle">
-    <title>${paymentResult.title?html} - gov.scot</title>
+    <title>${paymentResult.title} - gov.scot</title>
     </@hst.headContribution>
 
 

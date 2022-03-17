@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if menu??>
@@ -10,11 +11,11 @@
 
                         <#if item.selected>
                         <span href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-0  page-group__link--selected">
-                            ${item.name?html}
+                            ${item.name}
                         </span>
                         <#else>
                         <a href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-0">
-                            ${item.name?html}
+                            ${item.name}
                         </a>
                         </#if>
 
@@ -24,11 +25,11 @@
                                     <li class="page-group__item page-group__item--level-1">
                                         <#if item.selected>
                                         <span href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-1  page-group__link--selected">
-                                            ${item.name?html}
+                                            ${item.name}
                                         </span>
                                         <#else>
                                         <a href="<@hst.link link=item.hstLink/>" class="page-group__link  page-group__link--level-1">
-                                            ${item.name?html}
+                                            ${item.name}
                                         </a>
                                         </#if>
                                     </li>

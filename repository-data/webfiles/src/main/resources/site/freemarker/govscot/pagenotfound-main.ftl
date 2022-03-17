@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#-- @ftlvariable name="archiveUrl" type="java.lang.String" -->
@@ -31,8 +32,8 @@
 </div>
 
 <@hst.headContribution category="pageTitle">
-    <title>${document.title?html} - gov.scot</title>
+    <title>${document.title} - gov.scot</title>
 </@hst.headContribution>
 <@hst.headContribution>
-    <meta name="description" content="${document.metaDescription?html}"/>
+    <meta name="description" content="${document.metaDescription}"/>
 </@hst.headContribution>

@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="breadcrumb" type="org.onehippo.forge.breadcrumb.om.Breadcrumb" -->
@@ -13,7 +14,7 @@
                 <li class="breadcrumbs__item" itemprop="url">
                     <@hst.link var="link" link=item.link/>
                     <a class="breadcrumbs__link" data-gtm="bread-${item?index + 2}" href="${link}">
-                        <span class="breadcrumbs__title" itemprop="title">${item.title?html}</span><!--
+                        <span class="breadcrumbs__title" itemprop="title">${item.title}</span><!--
                  --></a>
                 </li>
             </#list>

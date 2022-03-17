@@ -1,4 +1,5 @@
-<#include "../../include/imports.ftl">
+  <#ftl output_format="HTML">
+  <#include "../../include/imports.ftl">
 
 <article class="body-content">
     <div class="page-group__content body-content inner-shadow-top inner-shadow-top--no-desktop">
@@ -33,6 +34,7 @@
     </#if>
     </div>
 
+  
     <!--noindex-->
     <nav class="multipage-nav visible-xsmall">
         <div class="grid"><!--

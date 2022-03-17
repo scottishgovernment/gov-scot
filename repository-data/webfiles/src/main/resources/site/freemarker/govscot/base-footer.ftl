@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.SiteItem" -->

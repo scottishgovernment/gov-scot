@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#if document??>
@@ -9,7 +10,7 @@
                 <header class="article-header">
                     <@hst.link var="link" hippobean=index />
                     <p class="article-header__label">Policy<#if latest??> - Latest</#if></p>
-                    <h1 class="article-header__title">${index.title?html}</h1>
+                    <h1 class="article-header__title">${index.title}</h1>
 
                     <section class="content-data">
                         <#include '../common/content-data.ftl'/>
@@ -94,7 +95,7 @@
         <meta name="dc.format" content="Policy"/>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

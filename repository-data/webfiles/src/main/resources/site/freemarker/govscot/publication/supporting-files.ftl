@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#if documents?size gt 1>
 <div class="supporting-files">
     <h3 class="supporting-files__title">Supporting files</h3>

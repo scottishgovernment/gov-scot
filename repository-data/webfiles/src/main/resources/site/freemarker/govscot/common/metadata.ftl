@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#if document.updateHistory?has_content>
 <section class="content-data">
     <#assign latestUpdate = document.updateHistory[0].lastUpdated>

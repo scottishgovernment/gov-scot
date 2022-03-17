@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <div class="js-show-hide" id="history">
     <div class="content-data__list">
     <#if document.publicationDate??>

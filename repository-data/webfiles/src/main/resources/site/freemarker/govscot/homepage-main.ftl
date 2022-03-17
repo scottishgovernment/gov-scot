@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
@@ -363,7 +364,7 @@
                         --><div class="grid__item large--eight-twelfths">
                             <div class="narrow">
                                 <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
-                                ${firstMinisterContent?trim?keep_before("\n")}
+                                ${firstMinisterContent?trim?keep_before("\n")?no_esc}
 
                                 <p><a class="homepage-about__read-more" data-gtm="read-more" href="<@hst.link hippobean=firstMinister/>">Read more</a></p>
                             </div>
@@ -401,10 +402,10 @@
 
 <#if document??>
     <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" path="/" canonical=true/>

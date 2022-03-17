@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 <#include "../include/imports.ftl">
 <#if pageable??>
@@ -15,7 +16,7 @@
                             <@hst.param name="page" value="${pageable.previousPage}"/>
                         </@hst.renderURL>
                         --><li class="pagination__item ">
-                            <a data-gtm="${gtmslug}-p-prev" class="pagination__page" href="${pageUrlPrevious}"><@fmt.message key="page.previous" var="prev"/>${prev?html}</a>
+                            <a data-gtm="${gtmslug}-p-prev" class="pagination__page" href="${pageUrlPrevious}"><@fmt.message key="page.previous" var="prev"/>${prev}</a>
                         </li><!--
                     </#if>
                     <#if pageable.currentPage == pageNr>
@@ -33,7 +34,7 @@
                             <@hst.param name="page" value="${pageable.nextPage}"/>
                         </@hst.renderURL>
                         --><li class="pagination__item ">
-                            <a data-gtm="${gtmslug}-p-next" class="pagination__page" href="${pageUrlNext}"><@fmt.message key="page.next" var="next"/>${next?html}</a>
+                            <a data-gtm="${gtmslug}-p-next" class="pagination__page" href="${pageUrlNext}"><@fmt.message key="page.next" var="next"/>${next}</a>
                         </li><!--
                     </#if>
                 </#list>

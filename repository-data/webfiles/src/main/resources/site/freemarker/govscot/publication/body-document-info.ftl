@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#if attachedDocument.document??>
 <div class="gov_document-info  <#if attachedDocument.highlighted || (isHighlightedItem)!false>gov_document-info--highlight</#if>  <#if isTargetedItem!false>gov_document-info--targeted</#if>">
 

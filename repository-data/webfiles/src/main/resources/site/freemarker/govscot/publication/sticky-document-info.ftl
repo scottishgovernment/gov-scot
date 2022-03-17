@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <div class="sticky-document-info  sticky-document-info--animate  <#if !isMultiPagePublication>sticky-document-info--visible-if-sticky</#if>">
     <div class="wrapper">
         <div class="grid"><!--

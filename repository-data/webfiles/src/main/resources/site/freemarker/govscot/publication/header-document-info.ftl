@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <div class="document-info  document-info--old-style">
 
     <div class="document-info__body">

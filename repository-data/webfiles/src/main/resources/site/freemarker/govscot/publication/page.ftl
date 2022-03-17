@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
 
@@ -133,7 +134,7 @@
                         <#if contact?has_content>
                             <section class="publication-info__section publication-info__contact">
                                 <h3 class="emphasis">Contact</h3>
-                                ${contact}
+                                ${contact?no_esc}
                             </section>
                         </#if>
 
@@ -153,7 +154,7 @@
                                 <#if content?has_content>
                                     <#if content?contains("</")>
                                         <#--  CONTAINS CLOSING TAG  -->
-                                        ${content}
+                                        ${content?no_esc}
                                     <#else>
                                         <#--  DOES NOT HAVE CLOSING TAG  -->
                                         <#list content?split("\\n") as contentParagraph>
@@ -166,13 +167,13 @@
                                 <@hst.html hippohtml=document.attendees var="attendees"/>
                                 <#if attendees?has_content>
                                     <h2>Attendees and apologies</h2>
-                                    ${attendees}
+                                    ${attendees?no_esc}
                                 </#if>
 
                                 <@hst.html hippohtml=document.actions var="actions"/>
                                 <#if actions?has_content>
                                     <h2>Items and actions</h2>
-                                    ${actions}
+                                    ${actions?no_esc}
                                 </#if>
                                 <#--! END 'minutes' format-specific fields-->
 
@@ -193,14 +194,14 @@
                                 <#if request?has_content>
                                     <div class="body-content publication-body">
                                         <strong>Information requested</strong><br>
-                                        ${request}
+                                        ${request?no_esc}
                                     </div>
                                 </#if>
 
                                 <@hst.html hippohtml=document.response var="response"/>
                                 <#if response?has_content>
                                     <strong>Response</strong><br>
-                                    ${response}
+                                    ${response?no_esc}
                                 </#if>
                                 <#--! END 'FOI/EIR release' format-specific fields-->
                             </div>
@@ -235,7 +236,7 @@
                         <@hst.html hippohtml=document.epilogue var="epilogue"/>
                         <#if epilogue?has_content>
                         <div id="epilogue">
-                            ${epilogue}
+                            ${epilogue?no_esc}
                         </div>
                         </#if>
 
@@ -243,7 +244,7 @@
                         <#if contact?has_content>
                             <div class="publication-info__contact">
                                 <h3 class="emphasis">Contact</h3>
-                                ${contact}
+                                ${contact?no_esc}
                             </div>
                         </#if>
 
@@ -286,7 +287,7 @@
     <@hst.headContribution>
 
         <#if document.metaDescription??>
-            <meta name="description" content="${document.metaDescription?html}"/>
+            <meta name="description" content="${document.metaDescription}"/>
         </#if>
     </@hst.headContribution>
 

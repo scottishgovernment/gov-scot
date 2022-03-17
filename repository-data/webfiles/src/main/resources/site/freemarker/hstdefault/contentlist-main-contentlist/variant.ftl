@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
@@ -10,7 +11,7 @@
         <div class="media-body">
           <h4 class="media-heading">
             <@hst.link var="link" hippobean=item/>
-            <a href="${link}">${item.title?html}</a>
+            <a href="${link}">${item.title}</a>
             <#if item.publicationDate?? && item.publicationDate.time??>
               <span class="label label-success pull-right">
                 <@fmt.formatDate value=item.publicationDate.time type="both" dateStyle="medium" timeStyle="short"/>
@@ -18,7 +19,7 @@
             </#if>
           </h4>
           <#if item.introduction??>
-            <p>${item.introduction?html}</p>
+            <p>${item.introduction}</p>
           </#if>
         </div>
       </div>
