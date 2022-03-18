@@ -16,7 +16,7 @@
                             <@hst.param name="page" value="${pageable.previousPage}"/>
                         </@hst.renderURL>
                         --><li class="pagination__item ">
-                            <a data-gtm="${gtmslug}-p-prev" class="pagination__page" href="${pageUrlPrevious}"><@fmt.message key="page.previous" var="prev"/>${prev}</a>
+                            <a data-gtm="${gtmslug}-p-prev" class="pagination__page" href="${pageUrlPrevious?no_esc}"><@fmt.message key="page.previous" var="prev"/>${prev}</a>
                         </li><!--
                     </#if>
                     <#if pageable.currentPage == pageNr>
@@ -25,7 +25,7 @@
                         </li><!--
                     <#else >
                         --><li class="pagination__item ">
-                            <a data-gtm="${gtmslug}-p-${pageNr}" class="pagination__page" href="${pageUrl}">${pageNr}</a>
+                            <a data-gtm="${gtmslug}-p-${pageNr}" class="pagination__page" href="${pageUrl?no_esc}">${pageNr}</a>
                         </li><!--
                     </#if>
 
@@ -34,7 +34,7 @@
                             <@hst.param name="page" value="${pageable.nextPage}"/>
                         </@hst.renderURL>
                         --><li class="pagination__item ">
-                            <a data-gtm="${gtmslug}-p-next" class="pagination__page" href="${pageUrlNext}"><@fmt.message key="page.next" var="next"/>${next}</a>
+                            <a data-gtm="${gtmslug}-p-next" class="pagination__page" href="${pageUrlNext?no_esc}"><@fmt.message key="page.next" var="next"/>${next}</a>
                         </li><!--
                     </#if>
                 </#list>
