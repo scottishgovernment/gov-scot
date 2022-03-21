@@ -100,7 +100,7 @@
                     <div class="gov_latest-feed__items  ds_layout  gov_sublayout--threecols">
                         <#list news as newsItem>
                             <article class="gov_latest-feed__item">
-                                <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
                                     <a href="<@hst.link hippobean=newsItem />" data-navigation="news-${newsItem?index + 1}">${newsItem.title}</a>
                                 </h3>
@@ -124,7 +124,7 @@
                     <div class="gov_latest-feed__items  ds_layout  gov_sublayout--threecols">
                         <#list speeches as speech>
                             <article class="gov_latest-feed__item">
-                                <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=speech.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=speech.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></p>
                                 <h3 class="gov_latest-feed__item__title">
                                     <a href="<@hst.link hippobean=speech />" data-navigation="speech-${speech?index + 1}">${speech.title}</a>
                                 </h3>

@@ -71,9 +71,9 @@
                                                     <span class="listed-content-item__label">${item.label}</span>
 
                                                     <#if item.publicationDate??>
-                                                        <#assign dateFormat = "dd MMM yyyy">
+                                                        <#assign dateFormat = "dd MMMM yyyy">
                                                         <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                                            <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                                            <#assign dateFormat = "dd MMMM yyyy HH:mm">
                                                         </#if>
                                                         <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
                                                     </#if>

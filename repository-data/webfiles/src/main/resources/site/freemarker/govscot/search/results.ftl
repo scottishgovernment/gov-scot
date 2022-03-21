@@ -72,10 +72,10 @@
                             </#if>
 
                             <#if item.publicationDate??>
-                                <#assign dateFormat = "dd MMM yyyy">
+                                <#assign dateFormat = "dd MMMM yyyy">
                                 <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
                                 <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                    <#assign dateFormat = "dd MMM yyyy HH:mm">
+                                    <#assign dateFormat = "dd MMMM yyyy HH:mm">
                                 </#if>
                                 <span class="ds_metadata__item">
                                     <dt class="ds_metadata__key  visually-hidden">Publication date</dt>

@@ -37,7 +37,7 @@
                     <aside class="gov_issue-callout">
                         <div class="gov_issue-callout__inner">
                             <#if document.featureDateTitle?has_content><h3 class="gov_issue-callout__beta">${document.featureDateTitle}</h3></#if>
-                            <#if document.featureDate?has_content><div class="gov_issue-callout__alpha"><@fmt.formatDate value=document.featureDate.time type="both" pattern="d MMM yyyy"/></div></#if>
+                            <#if document.featureDate?has_content><div class="gov_issue-callout__alpha"><@fmt.formatDate value=document.featureDate.time type="both" pattern="d MMMM yyyy"/></div></#if>
                             <#if document.featureDateSummary?has_content><div class="gov_issue-callout__gamma">${document.featureDateSummary}</div></#if>
                         </div>
                     </aside>
@@ -65,7 +65,7 @@
                                             <#if item.label == 'news'>
                                                 <div class="ds_metadata__item">
                                                     <dt class="ds_metadata__key  visually-hidden">Date</dt>
-                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMM yyyy HH:mm"/></dd>
+                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.publicationDate.time type="both" pattern="d MMMM yyyy HH:mm"/></dd>
                                                 </div>
                                             <#elseif item.class == 'scot.gov.www.beans.ExternalLink'>
                                                 <div class="ds_metadata__item">
@@ -75,7 +75,7 @@
                                             <#elseif item.publicationDate??>
                                                 <div class="ds_metadata__item">
                                                     <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
-                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.displayDate.time type="both" pattern="d MMM yyyy"/></dd>
+                                                    <dd class="ds_metadata__value"><@fmt.formatDate value=item.displayDate.time type="both" pattern="d MMMM yyyy"/></dd>
                                                 </div>
                                             </#if>
                                         </dl>

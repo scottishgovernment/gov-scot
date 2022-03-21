@@ -378,18 +378,6 @@ function validateDateInput(element) {
         isValid = false;
     }
 
-    if (afterElement.value && beforeElement.value) {
-        // 2) is before later than after
-        if (afterElement && !searchUtils.afterDate(afterElement, searchUtils.stringToDate(beforeElement.value))) {
-            isValid = false;
-        }
-
-        // 3) is after earlier than before
-        if (beforeElement && !searchUtils.beforeDate(beforeElement, searchUtils.stringToDate(afterElement.value))) {
-            isValid = false;
-        }
-    }
-
     return isValid;
 }
 

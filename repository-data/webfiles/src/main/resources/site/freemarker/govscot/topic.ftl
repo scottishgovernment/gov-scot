@@ -89,7 +89,7 @@
                                                         <dt class="ds_metadata__key  visually-hidden">
                                                             Publication date</dt>
                                                         <dd class="ds_metadata__value">
-                                                            <@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/>
+                                                            <@fmt.formatDate value=date type="both" pattern="dd MMMM yyyy"/>
                                                         </dd>
                                                     </div>
 
@@ -123,7 +123,7 @@
                                         <h3 class="gov_latest-feed__item__title">
                                             <a href="<@hst.link hippobean=publication />" data-navigation="publications-${publication?index + 1}">${publication.title}</a>
                                         </h3>
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                     </article>
                                 </#list>
                             <#else>
@@ -153,7 +153,7 @@
                                         <h3 class="gov_latest-feed__item__title">
                                             <a href="<@hst.link hippobean=consultation />" data-navigation="consultations-${consultation?index + 1}">${consultation.title}</a>
                                         </h3>
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.publicationDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                     </article>
                                 </#list>
                             <#else>
@@ -184,7 +184,7 @@
                                         <h3 class="gov_latest-feed__item__title">
                                             <a href="<@hst.link hippobean=publication />" data-navigation="statistics-${publication?index + 1}">${publication.title}</a>
                                         </h3>
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                     </article>
                                 </#list>
                             <#else>
@@ -211,7 +211,7 @@
                             <#if news?has_content>
                                 <#list news as newsItem>
                                     <article class="gov_latest-feed__item">
-                                        <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                        <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></p>
                                         <h3 class="gov_latest-feed__item__title">
                                             <a href="<@hst.link hippobean=newsItem />" data-navigation="news-${newsItem?index + 1}">${newsItem.title}</a>
                                         </h3>

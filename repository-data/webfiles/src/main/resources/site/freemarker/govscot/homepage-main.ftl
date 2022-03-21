@@ -86,7 +86,7 @@
                                             </#list>
                                         </ul>
 
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                     </article>
                                 </#list>
                             </#if>
@@ -125,7 +125,7 @@
                                             </#list>
                                         </ul>
 
-                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                        <p class="gov_latest-feed__item__date"><@fmt.formatDate value=consultation.displayDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                     </article>
                                 </#list>
                             </#if>
@@ -227,7 +227,7 @@
                             <#if news?has_content>
                                 <#list news as newsItem>
                                     <article class="gov_latest-feed__item">
-                                        <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></p>
+                                        <p class="gov_latest-feed__item__date  gov_latest-feed__item__date--bar"><@fmt.formatDate value=newsItem.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></p>
                                         <h3 class="gov_latest-feed__item__title">
                                             <a href="<@hst.link hippobean=newsItem />" data-navigation="news-${newsItem?index + 1}">${newsItem.title}</a>
                                         </h3>
@@ -265,7 +265,7 @@
                                     <ul class="gov_latest-feed__item__topics">
                                             <li>${publication.label}</li>
                                     </ul>
-                                    <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                    <p class="gov_latest-feed__item__date"><@fmt.formatDate value=publication.displayDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                 </article>
                             </#list>
                         </div>

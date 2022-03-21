@@ -62,7 +62,7 @@
 
                 &__content {
                     @include ds_colwidth(8);
-                    @include ds_colpush(3);
+                    @include ds_colpush(4);
                 }
 
                 &__feedback {

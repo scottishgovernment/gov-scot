@@ -49,7 +49,7 @@
                                         <li>${statsItem.label}</li>
                                     </ul>
 
-                                    <p class="gov_latest-feed__item__date"><@fmt.formatDate value=statsItem.displayDate.time type="both" pattern="dd MMM yyyy"/></p>
+                                    <p class="gov_latest-feed__item__date"><@fmt.formatDate value=statsItem.displayDate.time type="both" pattern="dd MMMM yyyy"/></p>
                                 </article>
                             </#list>
                         </div>
@@ -141,7 +141,7 @@
 
                                     <div class="ds_metadata__item">
                                         <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
-                                        <dd class="ds_metadata__value"><@fmt.formatDate value=date type="both" pattern="dd MMM yyyy"/></dd>
+                                        <dd class="ds_metadata__value"><@fmt.formatDate value=date type="both" pattern="dd MMMM yyyy"/></dd>
                                     </div>
                                 </dl>
                             </#if>

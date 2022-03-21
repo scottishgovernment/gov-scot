@@ -11,7 +11,7 @@
                     <dl class="ds_page-header__metadata  ds_metadata">
                         <div class="ds_metadata__item">
                             <dt class="ds_metadata__key">Published</dt>
-                            <dd class="ds_metadata__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMM yyyy HH:mm"/></dd>
+                            <dd class="ds_metadata__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></dd>
                         </div>
                         <div class="ds_metadata__item">
                             <dt class="ds_metadata__key">Part of</dt>

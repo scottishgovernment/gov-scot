@@ -140,6 +140,8 @@
                     ||   document.contactInformation.blog?has_content
                     ||   document.contactInformation.postalAddress.content?has_content>
                         <#assign contactInformation = document.contactInformation/>
+                        <#assign postalAddress = document.postalAddress />
+                        <#assign contactInformationHeadingModifier = 'gamma' />
                     <section>
                         <#include 'common/contact-information.ftl' />
                     </section>
