@@ -11,7 +11,7 @@
                 <header class="gov_feature-header  gov_feature-header--topic" id="page-content">
                     <#if document.image??>
                         <div class="gov_feature-header__media  gov_feature-header__media--full">
-                            <img alt="" aria-hidden="true" src="<@hst.link hippobean=document.image.bannerdesktop/>" />
+                            <img alt="" aria-hidden="true" src="<@hst.link hippobean=document.image.xlargetwelvecolumnsdoubledfourone/>" />
                         </div>
                     </#if>
 

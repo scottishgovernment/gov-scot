@@ -10,7 +10,7 @@
 
 <#if document.image??>
     <header class="gov_topic-header  <#if document.image??>gov_topic-header--has-image</#if>" id="page-content">
-        <img alt="" src="<@hst.link hippobean=document.image.bannerdesktop/>" class="gov_topic-header__image">
+        <img alt="" src="<@hst.link hippobean=document.image.xlargetwelvecolumnsdoubledfourone/>" class="gov_topic-header__image">
     </header>
 </#if>
 

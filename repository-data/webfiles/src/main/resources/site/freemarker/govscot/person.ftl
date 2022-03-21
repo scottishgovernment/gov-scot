@@ -23,15 +23,15 @@
                     <div class="gov_person__image-container">
                         <#if document.image??>
                         <img alt="${document.title}" class="gov_person__image"
-                            src="<@hst.link hippobean=document.image.xlarge/>"
-                            srcset="<@hst.link hippobean=document.image.small/> 148w,
-                                <@hst.link hippobean=document.image.smalldoubled/> 296w,
-                                <@hst.link hippobean=document.image.medium/> 224w,
-                                <@hst.link hippobean=document.image.mediumdoubled/> 448w,
-                                <@hst.link hippobean=document.image.large/> 208w,
-                                <@hst.link hippobean=document.image.largedoubled/> 416w,
-                                <@hst.link hippobean=document.image.xlarge/> 256w,
-                                <@hst.link hippobean=document.image.xlargedoubled/> 512w"
+                            src="<@hst.link hippobean=document.image.xlargethreecolumnssquare/>"
+                            srcset="<@hst.link hippobean=document.image.smalltwocolumnssquare/> 53w,
+                                <@hst.link hippobean=document.image.smalltwocolumnsdoubledsquare/> 106w,
+                                <@hst.link hippobean=document.image.mediumfourcolumnssquare/> 224w,
+                                <@hst.link hippobean=document.image.mediumfourcolumnsdoubledsquare/> 448w,
+                                <@hst.link hippobean=document.image.largethreecolumnssquare/> 208w,
+                                <@hst.link hippobean=document.image.largethreecolumnsdoubledsquare/> 416w,
+                                <@hst.link hippobean=document.image.xlargethreecolumnssquare/> 256w,
+                                <@hst.link hippobean=document.image.xlargethreecolumnsdoubledsquare/> 512w"
                             sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                         <#else>
                         <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">

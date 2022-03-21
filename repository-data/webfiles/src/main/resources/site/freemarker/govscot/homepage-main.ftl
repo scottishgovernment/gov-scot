@@ -23,7 +23,7 @@
                             <div class="gov_hero-item__media">
                                 <a data-navigation="hero-1-image" href="${featuredItem.link.url}">
                                     <div class="gov_hero-item__figure">
-                                        <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
+                                        <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.xlargeeightcolumnsdoubled/>" />
                                     </div>
                                 </a>
                             </div>
@@ -44,7 +44,7 @@
                                 <div class="gov_hero-item__media">
                                     <a data-navigation="hero-${featuredItem?index + 2}-image" href="${featuredItem.link.url}">
                                         <div class="gov_hero-item__figure">
-                                            <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.featuredlarge/>" />
+                                            <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.xlargetwocolumns/>" />
                                         </div>
                                     </a>
                                 </div>
