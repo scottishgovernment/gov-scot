@@ -35,6 +35,10 @@
           <groupId>commons-logging</groupId>
           <artifactId>commons-logging</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.onehippo.cms7</groupId>
+          <artifactId>spring-boot</artifactId>
+        </exclusion>
       </exclusions>
     </dependency>
 
