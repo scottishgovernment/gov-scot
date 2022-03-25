@@ -11,7 +11,8 @@ import $ from 'jquery';
 const Feedback = {
     settings: {
         feedbackUrl: '/service/feedback/',
-        badServer: 'I\'m sorry, we have a problem at our side, please try again later'
+        badServer: 'I\'m sorry, we have a problem at our side, please try again later',
+        tooManyRequests: 'Too many requests have been submitted, please try again later'
     },
 
     init: function () {
@@ -114,6 +115,13 @@ const Feedback = {
         }, function(err) {
             if (err.status === 201) {
                 that.handleSuccess(feedback);
+            } else if (err.status === 429) {
+                const submit = $('#feedback-form').find('[type=submit]');
+
+                that.addError(
+                    that.settings.tooManyRequests,
+                    submit.parent()
+                );
             } else {
                 const submit = $('#feedback-form').find('[type=submit]');
 
