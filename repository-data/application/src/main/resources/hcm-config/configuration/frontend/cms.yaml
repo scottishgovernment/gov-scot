@@ -359,3 +359,5 @@ definitions:
       width: 720
       compression: 0.8
       optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-advanced-search/genericFilters:
+      document.type.namespaces: [ 'govscot' ]
