@@ -32,7 +32,7 @@ public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
         Node subject = session.getNodeByIdentifier(event.subjectId());
 
         Node publication = null;
-        if (subject.isNodeType("govscot:Publication") || subject.isNodeType("govscot:ComplexDocument")) {
+        if (subject.isNodeType("govscot:Publication")) {
             publication = subject;
         }
 
