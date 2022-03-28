@@ -238,16 +238,21 @@ function clearErrors() {
 }
 
 function enableJSFilters () {
-    $('.ds_field-group--checkboxes input[type="radio"]')
-        .attr('type', 'checkbox')
-        .removeClass('ds_radio__input')
-        .addClass('ds_checkbox__input')
-        .next('label')
-            .removeClass('ds_radio__label')
-            .addClass('ds_checkbox__label')
-        .parent()
-            .removeClass('ds_radio').removeClass('ds_radio--small')
-            .addClass('ds_checkbox').addClass('ds_checkbox--small');
+    [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[type="radio"]')).forEach((item => {
+        item.classList.remove('ds_radio__input');
+        item.classList.add('ds_checkbox__input');
+        item.dataset.form = item.dataset.form.replace('radio-', 'checkbox-');
+
+        const label = item.nextElementSibling;
+        label.classList.remove('ds_radio__label');
+        label.classList.add('ds_checkbox__label');
+
+        const parent = item.parentNode;
+        parent.classList.remove('ds_radio');
+        parent.classList.remove('ds_radio--small');
+        parent.classList.add('ds_checkbox');
+        parent.classList.add('ds_checkbox--small');
+    }));
 
     // populate checkboxes from searchParams
     $('.ds_field-group--checkboxes input[data-checkedonload]').prop('checked', true);

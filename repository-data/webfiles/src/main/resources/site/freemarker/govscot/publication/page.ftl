@@ -96,7 +96,7 @@
                             </#switch>
 
                             <!--noindex-->
-                            <#if filenameExtension == "PDF">
+                            <#if filenameExtension == "pdf" &&mainDocument.thumbnails[0]??>
                                 <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
                                     <img
                                         alt="View supporting documents"
@@ -109,8 +109,8 @@
                                         sizes="(min-width: 768px) 104px, 72px" />
                                 </a>
                             <#else>
-                                <a class="gov_supporting-documents__thumbnail-link" aria-hidden="true" href="${baseurl + 'documents/'}">
-                                    <img src="<@hst.link path=fileThumbnailPath />" alt=""/>
+                                <a class="ds_file-info__thumbnail-link  gov_supporting-documents__thumbnail-link" aria-hidden="true" href="${baseurl + 'documents/'}">
+                                    <img class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                                 </a>
                             </#if>
                             <!--endnoindex-->

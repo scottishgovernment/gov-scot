@@ -286,18 +286,18 @@
         &--filter-search {
             > .ds_layout {
                 &__content {
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_colwidth(9);
+                    @include ds_colpush(3);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_colwidth(9);
+                    @include ds_colpush(3);
                 }
 
                 &__sidebar {
-                    @include ds_colwidth(4);
+                    @include ds_colwidth(3);
                 }
             }
         }
@@ -774,8 +774,8 @@
             &--filter-search {
                 grid-template-areas:
                     'h h h h h h h h . . . .'
-                    's s s s c c c c c c c c '
-                    '. . . . f f f f f f f f';
+                    's s s c c c c c c c c c '
+                    '. . . f f f f f f f f f';
             }
 
             &--policy {

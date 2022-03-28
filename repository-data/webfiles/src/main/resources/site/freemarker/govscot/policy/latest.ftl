@@ -28,7 +28,7 @@
                                     <dt class="ds_metadata__key  visually-hidden">Date</dt>
 
                                     <dd class="ds_metadata__value">
-                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
+                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")??>
                                             <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/>
                                         <#elseif item.displayDate>
                                             <@fmt.formatDate value=item.displayDate.time type="both" pattern="dd MMMM yyyy"/>

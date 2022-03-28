@@ -70,9 +70,10 @@
     <div class="ds_file-info  <#if attachedDocument.highlighted || (isLimelitItem)!false>ds_file-info--highlighted</#if>">
         <!--noindex-->
         <div class="ds_file-info__thumbnail">
-            <#if filenameExtension == "PDF">
+            <#if filenameExtension == "pdf" && attachedDocument.thumbnails[0]??>
                 <a class="ds_file-info__thumbnail-link" tabindex="-1" href="${documentinline}">
                     <img
+                        class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--cover"
                         alt="View this document"
                         src="<@hst.link hippobean=attachedDocument.thumbnails[0]/>"
                         srcset="
@@ -82,8 +83,8 @@
                         sizes="(min-width: 768px) 104px, 72px" />
                 </a>
             <#else>
-                <a class="ds_file-info__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>">
-                    <img src="<@hst.link path=fileThumbnailPath />" alt=""/>
+                <a class="ds_file-info__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "csv">${documentdownload}<#else>${documentinline}</#if>">
+                    <img class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                 </a>
             </#if>
         </div>

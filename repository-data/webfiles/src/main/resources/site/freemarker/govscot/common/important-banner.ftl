@@ -2,7 +2,7 @@
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if importantBanner??>
-    <div class="ds_notification  ds_reversed" data-module="ds-notification">
+    <div id="important-banner" class="ds_notification  ds_reversed  visually-hidden" data-module="ds-notification">
         <div class="ds_wrapper">
             <div class="ds_notification__content  ds_notification__content--has-close">
                 <div role="heading" class="visually-hidden">Information</div>

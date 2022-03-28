@@ -8,9 +8,10 @@ import './usertype';
 import '../vendor/polyfills';
 
 import feedback from './component.feedback';
+import Notification from './component.notification';
 import ToggleLink from './component.toggle-link';
 import UpdateHistory from './component.update-history';
-import storage from './storage';
+import storage from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/storage/storage';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
@@ -21,6 +22,11 @@ const global = {
         feedback.init();
         this.setInitialCookiePermissions();
         this.initDesignSystemComponents();
+
+        //non-DS code for notification banner
+        const notificationBanners = [].slice.call(document.querySelectorAll('[data-module="ds-notification"]'));
+        notificationBanners.forEach(notificationBanner => new Notification(notificationBanner, true).init());
+
         this.addTracking();
     },
 
@@ -104,9 +110,6 @@ const global = {
 
         const mobileMenus = [].slice.call(document.querySelectorAll('[data-module="ds-mobile-navigation-menu"]'));
         mobileMenus.forEach(mobileMenu =>  new window.DS.components.MobileMenu(mobileMenu).init());
-
-        const notificationBanners = [].slice.call(document.querySelectorAll('[data-module="ds-notification"]'));
-        notificationBanners.forEach(notificationBanner => new window.DS.components.NotificationBanner(notificationBanner).init());
 
         const searchBoxes = [].slice.call(document.querySelectorAll('[data-module="ds-site-search"]'));
         searchBoxes.forEach(searchBox => new window.DS.components.CollapsibleSearchBox(searchBox).init());

@@ -49,10 +49,69 @@
                             <#if document.displayPrimaryDocument == true>
                                 <#if documents??>
                                     <#assign firstDocument = documents[0]/>
-                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?upper_case/>
+                                    <#assign filenameExtension = firstDocument.document.filename?keep_after_last(".")?lower_case/>
                                     <#assign filenameWithoutExtension = firstDocument.document.filename?keep_before_last(".")/>
                                 </#if>
-                                <#if (filenameExtension!'') == "PDF">
+
+                                <#switch filenameExtension>
+                                    <#case "csv">
+                                        <#assign fileDescription = "CSV file" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/csv.svg' />
+                                        <#break>
+                                    <#case "xls">
+                                    <#case "xlsx">
+                                    <#case "xlsm">
+                                        <#assign fileDescription = "Excel document" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/excel.svg' />
+                                        <#break>
+                                    <#case "kml">
+                                    <#case "kmz">
+                                        <#assign fileDescription = "${filenameExtension} data" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/geodata.svg' />
+                                        <#break>
+                                    <#case "gif">
+                                    <#case "jpg">
+                                    <#case "jpeg">
+                                    <#case "png">
+                                    <#case "svg">
+                                        <#assign fileDescription = "Image" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/image.svg' />
+                                        <#break>
+                                    <#case "pdf">
+                                        <#assign fileDescription = "PDF" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/pdf.svg' />
+                                        <#break>
+                                    <#case "ppt">
+                                    <#case "pptx">
+                                    <#case "pps">
+                                    <#case "ppsx">
+                                        <#assign fileDescription = "Powerpoint document" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/ppt.svg' />
+                                        <#break>
+                                    <#case "rtf">
+                                        <#assign fileDescription = "Rich text file" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/rtf.svg' />
+                                        <#break>
+                                    <#case "txt">
+                                        <#assign fileDescription = "Text file" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/txt.svg' />
+                                        <#break>
+                                    <#case "doc">
+                                    <#case "docx">
+                                        <#assign fileDescription = "Word document" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/word.svg' />
+                                        <#break>
+                                    <#case "xml">
+                                    <#case "xsd">
+                                        <#assign fileDescription = "${filenameExtension} file" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/xml.svg' />
+                                        <#break>
+                                    <#default>
+                                        <#assign fileDescription = "${filenameExtension} file" />
+                                        <#assign fileThumbnailPath = '/assets/images/documents/svg/generic.svg' />
+                                </#switch>
+
+                                <#if (filenameExtension!'') == "pdf" && firstDocument.thumbnails[0]??>
                                     <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
                                         <img
                                             class="gov_supporting-documents__thumbnail"
@@ -65,11 +124,8 @@
                                             sizes="(min-width: 768px) 165px, 107px" />
                                     </a>
                                 <#else>
-                                    <a aria-hidden="true" data-title="${document.title}" href="${baseurl + 'documents/'}" class="gov_file-icon  gov_file-icon--${filenameExtension!''}">
-                                        <svg class="gov_file-icon__label" viewBox="0 0 210 297">
-                                            <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="3em">${filenameExtension!''}</text>
-                                        </svg>
-                                        <svg class="gov_file-icon__image" role="img"><use xlink:href="${iconspath}#file-icon"></use></svg>
+                                    <a class="ds_file-info__thumbnail-link  gov_supporting-documents__thumbnail-link" aria-hidden="true" href="${baseurl + 'documents/'}"">
+                                        <img class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                                     </a>
                                 </#if>
                             </#if>
@@ -172,7 +228,7 @@
                             <#include '../common/update-history.ftl'/>
                         </#if>
                     <#elseif isDocumentsPage??>
-                        <h2>Supporting documentsqqq</h2>
+                        <h2>Supporting documents</h2>
 
                         <#if documents?? && documents?size gt 0>
                             <section class="document-section">
@@ -235,9 +291,13 @@
                                 </div>
                             </#list>
                         </div>
+
+                        <#if document.updateHistory?has_content>
+                            <#include '../common/update-history.ftl'/>
+                        </#if>
                     <#else>
                         <article class="complex-document">
-                            <h3>${currentPage.title}</h3>
+                            <h2>${currentPage.title}</h2>
 
                             <@hst.html hippohtml=currentPage.content/>
 
@@ -267,6 +327,10 @@
                             </nav>
                             <!--endnoindex-->
                         </article>
+
+                        <#if document.updateHistory?has_content>
+                            <#include '../common/update-history.ftl'/>
+                        </#if>
                     </#if>
                 </div>
 

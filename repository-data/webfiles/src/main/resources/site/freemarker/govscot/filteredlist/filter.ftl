@@ -26,6 +26,26 @@
     <#assign end = nested?j_string />
 </#list>
 
+<#function strSlug title separator="-" idSafe=true>
+  <#local flipped = "_" />
+  <#if seperator == "_">
+    <#local flipped = "-" />
+  </#if>
+
+  <#local string = title?replace("[" + flipped + "]+", separator, "r") />
+  <#local string = string?lower_case />
+  <#local string = string?replace("[ \t\n\x0B\f\r]+", separator, "r") />
+  <#local string = string?replace("[^" + separator + "a-z0-9]+", separator, "r") />
+
+  <#if idSafe == true>
+    <#local string = string?replace("^" + separator, "", "r") />
+  </#if>
+
+  <#local string = string?replace("[" + separator + "]+", separator, "r") />
+
+  <#return string />
+</#function>
+
 <#-- @ftlvariable name="publicationTypes" type="org.onehippo.forge.selection.hst.contentbean.ValueList" -->
 <#-- @ftlvariable name="type" type="org.onehippo.forge.selection.hst.contentbean.ValueListItem" -->
 <#-- @ftlvariable name="topic" type="scot.gov.www.beans.Topic" -->
@@ -121,8 +141,8 @@
                                                             </#if>
                                                             data-checkedonload=true
                                                         </#if>
-                                                        id="${item.key}" name="publicationTypes" value="${item.key}" class="ds_radio__input" type="radio" />
-                                                    <label for="${item.key}" class="ds_radio__label">${item.label?replace('/', ' / ')}</label>
+                                                        id="${strSlug(item.label)}" name="publicationTypes" value="${item.key}" class="ds_radio__input" type="radio" />
+                                                    <label for="${strSlug(item.label)}" class="ds_radio__label">${item.label?replace('/', ' / ')}</label>
                                                 </div>
 
                                                 <#if itemsTrigger>
@@ -174,8 +194,8 @@
                                                             </#if>
                                                             data-checkedonload=true
                                                         </#if>
-                                                        id="${item.canonicalPath}" name="topics" class="ds_radio__input" type="radio" value="${item.title}">
-                                                    <label for="${item.canonicalPath}" class="ds_radio__label">${item.title}</label>
+                                                        id="${strSlug(item.title)}" name="topics" class="ds_radio__input" type="radio" value="${item.title}">
+                                                    <label for="${strSlug(item.title)}" class="ds_radio__label">${item.title}</label>
                                                 </div>
 
                                                 <#if itemsTrigger>
