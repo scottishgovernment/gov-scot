@@ -125,11 +125,6 @@
                 </dl>
 
                 <#if item.collections?has_content>
-                    <#if item.collections?size == 1>
-                        <#assign description = 'a collection'/>
-                    <#else>
-                        <#assign description = '${item.collections?size} collections'/>
-                    </#if>
                     <dl class="ds_search-result__context">
                         <dt class="ds_search-result__context-key">Part of:</dt>
                         <#list item.collections as collection>
