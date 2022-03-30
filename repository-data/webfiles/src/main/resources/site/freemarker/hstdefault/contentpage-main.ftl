@@ -1,10 +1,11 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#-- @ftlvariable name="document" type="org.example.beans.ContentDocument" -->
 <#if document??>
   <article class="has-edit-button">
     <@hst.manageContent hippobean=document/>
-    <h1>${document.title?html}</h1>
+    <h1>${document.title}</h1>
     <#if document.publicationDate??>
       <p>
         <@fmt.formatDate value=document.publicationDate.time type="both" dateStyle="medium" timeStyle="short"/>
@@ -12,7 +13,7 @@
     </#if>
     <#if document.introduction??>
       <p>
-        ${document.introduction?html}
+        ${document.introduction}
       </p>
     </#if>
     <@hst.html hippohtml=document.content/>

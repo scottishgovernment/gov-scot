@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="index" type="scot.gov.www.beans.SimpleContent" -->
@@ -6,7 +7,7 @@
         <main id="main-content" class="ds_layout  gov_layout--filter-search">
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <h1 class="ds_page-header__title">${index.title?html}</h1>
+                    <h1 class="ds_page-header__title">${index.title}</h1>
                 </header>
 
                 <#if index.content.content?has_content>

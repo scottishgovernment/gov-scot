@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if document??>
@@ -32,7 +33,7 @@
             <@hst.html hippohtml=document.members var="members" />
             <#if members?has_content>
                 <h2>Members</h2>
-            ${members}
+                ${members?no_esc}
             </#if>
 
             <#if document.relatedPublications?has_content>
@@ -71,7 +72,7 @@
             <#if contactDetails?has_content>
                 <section class="ds_article-aside">
                     <h3>Contact</h3>
-                    ${contactDetails}
+                    ${contactDetails?no_esc}
                 </section>
             </#if>
         </div>
@@ -109,11 +110,11 @@
     </@hst.headContribution>
 
     <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
 
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

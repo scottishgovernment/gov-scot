@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
@@ -311,7 +312,7 @@
 
                             <div class="gov_homepage-fm__content">
                                 <@hst.html var="firstMinisterContent" hippohtml=firstMinister.content />
-                                ${firstMinisterContent?trim?keep_before("\n")}
+                                ${firstMinisterContent?trim?keep_before("\n")?no_esc}
 
                                 <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link hippobean=firstMinister/>">
                                     <span class="gov_icon-link__text">Read more <span class="visually-hidden">about the First Minister</span></span>
@@ -347,10 +348,10 @@
 
 <#if document??>
     <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" path="/" canonical=true/>

@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#-- @ftlvariable name="contactInformation" type="scot.gov.www.beans.ContactInformation" -->
 <#-- @ftlvariable name="postalAddress" type="org.hippoecm.hst.content.beans.standard.HippoHtml" -->
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>

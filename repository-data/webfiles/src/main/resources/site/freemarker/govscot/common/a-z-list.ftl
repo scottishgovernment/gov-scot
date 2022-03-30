@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <ul class="gov_az-list">
     <#list beansByLetter as letter>
         <li class="gov_az-list__item" id="gov_az-list__${letter.label}">

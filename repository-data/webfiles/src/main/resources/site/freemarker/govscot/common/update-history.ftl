@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <div id="history">
     <dl class="ds_metadata">
         <#if document.publicationDate??>

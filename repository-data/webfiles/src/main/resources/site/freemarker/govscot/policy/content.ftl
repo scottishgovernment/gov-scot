@@ -1,4 +1,5 @@
-<#include "../../include/imports.ftl">
+  <#ftl output_format="HTML">
+  <#include "../../include/imports.ftl">
 
 <article class="body-content">
     <div class="body-content">
@@ -11,28 +12,29 @@
     <@hst.html hippohtml=document.actions var="actions"/>
     <#if actions?has_content>
         <h3>Actions</h3>
-        ${actions}
+        ${actions?no_esc}
     </#if>
 
     <@hst.html hippohtml=document.background var="background"/>
     <#if background?has_content>
         <h3>Background</h3>
-        ${background}
+        ${background?no_esc}
     </#if>
 
     <@hst.html hippohtml=document.billsAndLegislation var="billsAndLegislation"/>
     <#if billsAndLegislation?has_content>
         <h3>Bills and legislation</h3>
-        ${billsAndLegislation}
+        ${billsAndLegislation?no_esc}
     </#if>
 
     <@hst.html hippohtml=document.contact var="contact"/>
     <#if contact?has_content>
         <h3>Contact</h3>
-        ${contact}
+        ${contact?no_esc}
     </#if>
     </div>
 
+  
     <!--noindex-->
     <nav class="ds_sequential-nav" aria-label="Article navigation">
         <#if prev??>

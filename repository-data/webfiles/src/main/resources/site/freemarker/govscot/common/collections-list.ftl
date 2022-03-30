@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if collections?has_content>

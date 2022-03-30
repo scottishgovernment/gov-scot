@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if menu??>
@@ -13,11 +14,11 @@
 
                         <#if item.selected>
                         <span href="<@hst.link link=item.hstLink/>" class="ds_side-navigation__link  ds_current">
-                            ${item.name?html}
+                            ${item.name}
                         </span>
                         <#else>
                         <a href="<@hst.link link=item.hstLink/>" class="ds_side-navigation">
-                            ${item.name?html}
+                            ${item.name}
                         </a>
                         </#if>
 
@@ -27,11 +28,11 @@
                                     <li class="ds_side-navigation__item">
                                         <#if item.selected>
                                         <span href="<@hst.link link=item.hstLink/>" class="ds_side-navigation  ds_current">
-                                            ${item.name?html}
+                                            ${item.name}
                                         </span>
                                         <#else>
                                         <a href="<@hst.link link=item.hstLink/>" class="ds_side-navigation">
-                                            ${item.name?html}
+                                            ${item.name}
                                         </a>
                                         </#if>
                                     </li>

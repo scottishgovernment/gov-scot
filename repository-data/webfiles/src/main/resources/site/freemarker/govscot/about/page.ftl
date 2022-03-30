@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#if document??>
     <@hst.manageContent hippobean=document/>
@@ -11,7 +12,7 @@
 
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <h1 class="ds_page-header__title">${document.title?html}</h1>
+                    <h1 class="ds_page-header__title">${document.title}</h1>
                     <#include "../common/metadata.ftl"/>
                 </header>
             </div>
@@ -55,10 +56,10 @@
     </#if>
 
     <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
 

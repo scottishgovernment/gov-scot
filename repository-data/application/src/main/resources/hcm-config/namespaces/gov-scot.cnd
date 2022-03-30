@@ -33,9 +33,6 @@
 
 [govscot:ColumnImage] > hippogallery:imageset, hippogallery:relaxed
 
-[govscot:ComplexDocument] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
-  orderable
-
 [govscot:Publication] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

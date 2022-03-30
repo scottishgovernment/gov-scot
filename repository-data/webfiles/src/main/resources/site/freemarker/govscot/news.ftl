@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if document??>
@@ -7,7 +8,7 @@
                 <header class="ds_page-header">
                     <span class="ds_page-header__label  ds_content-label">News</span>
 
-                    <h1 class="ds_page-header__title">${document.title?html}</h1>
+                    <h1 class="ds_page-header__title">${document.title}</h1>
                     <dl class="ds_page-header__metadata  ds_metadata">
                         <div class="ds_metadata__item">
                             <dt class="ds_metadata__key">Published</dt>
@@ -93,7 +94,7 @@
     </@hst.headContribution>
 
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

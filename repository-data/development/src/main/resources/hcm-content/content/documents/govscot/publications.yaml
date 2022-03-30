@@ -1,0 +1,646 @@
+/content/documents/govscot/publications:
+  .meta:order-before: '404'
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  jcr:uuid: 59b8b907-80e7-4ad0-a036-a77b27a0554f
+  hippo:name: Publications
+  hippostd:foldertype: [new-document, new-folder]
+  /advice-and-guidance:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: 6e09ce54-5eb1-4038-a35c-94fc3307a52e
+    govscot:publicationType: advice-and-guidance
+    hippo:name: Advice and guidance
+    hippostd:foldertype: [new-publication-year-folder]
+    /2020:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 644fd954-e718-47da-a43a-29bef6e22efa
+      hippostd:foldertype: [new-publication-month-folder]
+      /01:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: bfb62545-1813-4851-afa5-df6cff067c18
+        hippostd:foldertype: [new-publication-folder, new-complex-document-folder]
+        /consultations-in-the-scottish-government-guidance:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+          jcr:uuid: cc9f6489-db57-4308-9467-2f56fd5394fa
+          hippo:name: 'Consultations in the Scottish Government: guidance'
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: a71ff4dd-e647-436c-84c9-09362b68a7fd
+            hippo:name: 'Consultations in the Scottish Government: guidance'
+            hippo:versionHistory: 5b6c7525-8913-4e8f-8b7c-739e653a805d
+            /index[1]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+              jcr:uuid: 6c205c6e-68b6-4620-bea6-d31bb2806c74
+              govscot:displayDate: 2022-01-24T00:00:00Z
+              govscot:isbn: ''
+              govscot:metaDescription: Public guidance for consultations.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2022-01-24T00:00:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: 'Consultations in the Scottish Government: guidance'
+              govscot:slug: consultations-in-the-scottish-government-guidance
+              govscot:sme: ''
+              govscot:summary: Public guidance for consultations.
+              govscot:title: 'Consultations in the Scottish Government: guidance'
+              hippo:availability: [preview]
+              hippostd:state: unpublished
+              hippostd:tags: [consultations, research, guidance, advice, data protection,
+                reporting]
+              hippostdpubwf:createdBy: joanne.logan@gov.scot
+              hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
+              hippostdpubwf:lastModificationDate: 2022-01-24T09:44:18.381Z
+              hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:locale: en
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: <p>Public guidance for consultations.</p>
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <ul>
+                   <li><a href="#consultations and what they can be used for">consultations and what they can be used for</a></li>
+                   <li><a href="#What we do with consultation responses">what we do with consultation responses</a></li>
+                   <li><a href="#How we report consultation findings">how we report consultation findings</a></li>
+                   <li><a href="#Benefits and limitations of a consultation&nbsp;">benefits and limitations of a consultation</a>&nbsp; &nbsp;</li>
+                  </ul>
+
+                  <p>We use consultation as one way of gathering the views of both the public and professional experts. This short note outlines our approach to consultations. It provides an overview of what consultations are, the principles a good consultation is based on and what processes are involved. The note is aimed at anybody who is interested in the consultation process.&nbsp;</p>
+
+                  <h3><a name="consultations and what they can be used for" id="consultations and what they can be used for"></a>Consultations and what they can be used for</h3>
+
+                  <p>A consultation is an opportunity for members of the public to comment on plans or ideas which are being considered, and share experiences, knowledge or ideas that help inform decision-makers.</p>
+
+                  <p>When done well, a consultation provides valuable evidence of the range of experiences and opinions, knowledge and ideas regarding a given issue. This can help policymakers improve their decision making.&nbsp;</p>
+
+                  <p>Watch a <a href="https://www.youtube.com/watch?v=Lo0_O-LUIR0&amp;feature=youtu.be">short video summary</a>.</p>
+
+                  <p>Consultations are open for all citizens to reply to. They can vary in size and type, depending on their aims. “General” consultations often attract responses from a wide audience with a general interest in the topic, and can receive a high number of responses. Other consultations are very specific and are only of interest to a small number of professional stakeholders.&nbsp;These are sometimes referred to as “technical” consultations. Only a limited number of people respond to these, often stakeholders, professionals and policy officials with a high level of understanding of the issue.&nbsp;</p>
+
+                  <p>For all consultations, those people who respond actively choose to participate because they have an interest in the consultation topic. Accordingly, a consultation process cannot be used to indicate levels of public support for a proposal or represent the views of the wider public.&nbsp;</p>
+
+                  <h4>Why we consult</h4>
+
+                  <p>Engaging with people and stakeholder organisations is a key part of the Scottish approach to policymaking. Consultation is an essential and important aspect of our public engagement.</p>
+
+                  <p>Consultations can be used to:</p>
+
+                  <ul>
+                   <li>inform the development of a particular policy</li>
+                   <li>help decisions to be made between alternative policy proposals</li>
+                   <li>finalise new legislation before it is implemented</li>
+                  </ul>
+
+                  <p>Consultation enables us to ask a lot of different people about their views. This should &nbsp;improve the policy or law being developed and make sure that it works in the real world. It can expand the pool of expertise contributing to the policymaking process and provides a richer evidence base. It also promotes transparency and legitimacy in the process.&nbsp;</p>
+
+                  <h4>How we consult</h4>
+
+                  <p>A good consultation should be accessible for people. The consultation should clearly explain what it is seeking people’s views on and make sure that people are able to respond.&nbsp;</p>
+
+                  <p>There are many ways in which we consult Scottish citizens and organisations. Consultation can be done using written papers, public meetings, focus groups, questionnaires or online discussion forums. Traditionally, one of the most common ways of consulting is through a written consultation paper. However, this is only one of many ways that policymakers can ask, listen to, and act on, the views of citizens and stakeholders.&nbsp;</p>
+
+                  <p>The UK Government sets out 11 <a href="https://www.gov.uk/government/publications/consultation-principles-guidance">principles of good consultation</a>. There are also <a href="https://law.gov.wales/constitution-government/public-admin/intro-admin-law/welsh-government-guidance-on-making-good-decisions/has-any-consultation-been-carried-out-fairly-and-properly/what-are-the-requirements-for-any-consultation-that-is-carried-out/?lang=en">minimum legal standards</a> called The Gunning Principles that a fair and worthwhile exercise must follow. We are committed to being open and transparent via the <a href="https://nationalperformance.gov.scot/">National Performance Framework</a> and the <a href="index">Open Government Action Plan</a>.&nbsp;</p>
+
+                  <p>Our consultations are mainly done online using our <a href="https://consult.gov.scot/">consultation hub</a>. The consultation hub is a user friendly tool, designed to improve the accessibility and transparency of our consultations. A full listing of open and closed consultations are available on the hub. In addition to that, consultations might be promoted on our social media channels such as Facebook and Twitter and via our <a href="https://consult.gov.scot/about/">mailing list</a>. Sometimes stakeholder groups with an interest in a consultation will let their members know about a consultation and we are often able to accept non-digital responses.&nbsp;</p>
+
+                  <p>Typically, written consultations present a report laying out the issues under consideration and ask specific questions or for more general views about the topic. Written consultations should provide adequate time for response. &nbsp;</p>
+
+                  <p>Following the closing date, all responses are analysed and an analysis report is published on <a href="https://www.gov.scot/publications/">our website</a> and the consultation hub.&nbsp;</p>
+
+                  <h4>What we consult on</h4>
+
+                  <p>We consult on a wide range of policies, draft bills and regulations. These can include broad policy areas such <a href="https://consult.gov.scot/energy-and-climate-change-directorate/fracking-unconventional-oil-and-gas/">fracking</a>, and <a href="https://consult.gov.scot/animal-welfare/animal-health-welfare-act-amendment-2019/">animal health and welfare</a> as well as more specific issues such as <a href="https://consult.gov.scot/managing-flood-risk/reservoirs-amendment/">amendments to regulations on reservoirs</a> and the <a href="index_1">Land and Buildings Transaction Tax Group Relief</a>. On average, we publish 100 consultations per year.&nbsp;</p>
+
+                  <h4>When we consult</h4>
+
+                  <p>Consultations can occur at different stages in the policy process, from the development of initial policy ideas through to the finalisation of legislation. There is no set time to hold a consultation – the important thing is that the consultation takes place at an appropriate time, so that responses received can meaningfully inform the decision being made. Consultation will always happen before a final policy decision has been taken.&nbsp;</p>
+
+                  <h4>Who we consult</h4>
+
+                  <p>A written consultation is open to all people and organisations who wish to express their opinions on a proposed area of work. In other words, anyone who is interested in contributing their views, is encouraged to do so.&nbsp;We use other methods to ensure that people who have an interest in the policy area but do not have the means or opportunity to send a written response, have an opportunity to give views.&nbsp;</p>
+
+                  <h4>How to respond to a consultation</h4>
+
+                  <p>If you want to respond to a consultation, the most common way to do so is online through our&nbsp;consultation hub. However, it is usually possible to respond in other ways too, such as by email or letter. If consultation events are being held, you might prefer to attend an event rather than provide a written response. Closing dates are clearly advertised on the consultation paper and on the consultation hub website.&nbsp;</p>
+
+                  <p>Sometimes consultations are available in alternative formats, such as “easy read”, British Sign Language or languages other than English.&nbsp;</p>
+
+                  <p>The consultation will provide a brief overview of the policy issue being consulted on. It will then ask specific questions or ask for your views on the proposal. Sometimes they include a glossary to make sure people understand the terms being used.</p>
+
+                  <p>If you are completing the consultation on our consultation hub you are able to save and come back to your response. You do not need to complete it all in one go. &nbsp;</p>
+
+                  <h3><a name="What we do with consultation responses" id="What we do with consultation responses"></a>What we do with consultation responses</h3>
+
+                  <h4>Analysis of consultation responses&nbsp;</h4>
+
+                  <p>Once the consultation has closed and responses have been submitted, we need to make sense of the responses so these can inform the policy.&nbsp;</p>
+
+                  <p>Analysis of responses is necessary to capture and summarise the results. This can be done either internally (within the Scottish Government) or using an external research contractor. Consultation responses will be analysed fairly, rigorously and systematically, regardless of whether they are analysed internally or externally. Consultation analysis findings are normally presented in a written report which is published on our website. &nbsp;</p>
+
+                  <p>The analysis, and analysis report, reflects the range and breadth of views expressed during the consultation. It&nbsp;identifies key themes emerging from the responses and the arguments behind these. It also describes how many responses were received and provides details on the respondents’ profile if available. &nbsp;</p>
+
+                  <h4>All valid responses are analysed&nbsp;</h4>
+
+                  <p>A response to a consultation is usually considered valid if it is relevant to the subject matter of the consultation.&nbsp;</p>
+
+                  <h4>Moderation policy&nbsp;</h4>
+
+                  <p>We moderate all responses to ensure that they are appropriate and not offensive or harmful to others. We will analyse all responses, but we will not publish responses which contain material which:</p>
+
+                  <ul>
+                   <li>raises concerns about data protection or copyright</li>
+                   <li>is potentially defamatory</li>
+                   <li>has offensive material&nbsp;</li>
+                   <li>contains references to on-going court cases</li>
+                   <li>impersonates or falsely claims to represent another person or organisation</li>
+                  </ul>
+
+                  <h4>Publishing responses</h4>
+
+                  <p>Everyone who responds to a written consultation (the “respondent”) will be asked to fill out a Respondent Information Form (RIF). If responding online, this is on the “About You” page. This asks respondents if they give us permission to publish their response. Respondents can choose to:&nbsp;</p>
+
+                  <ul>
+                   <li>publish response with name</li>
+                   <li>publish response only (without name)</li>
+                   <li>do not publish response</li>
+                  </ul>
+
+                  <p>We will only ever publish a response where we have been given permission to do so. &nbsp;</p>
+
+                  <p>These responses will usually be made available to the public at <a href="http://consult.gov.scot">http://consult.gov.scot</a>, alongside the analysis report.</p>
+
+                  <p>The names of organisations responding to consultations will be published.&nbsp;</p>
+
+                  <h4>How we handle personal data</h4>
+
+                  <p>We collect names and email addresses with every response we receive through our <a href="http://consult.gov.scot">consultation platform</a>.</p>
+
+                  <p>Email addresses are used to send an acknowledgement of response following submission. They may also be used to contact you in the future in relation to the consultation exercise if you give consent to be contacted.&nbsp;</p>
+
+                  <p>Where permission is given, we publish responses. We include <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/what-is-personal-data/what-is-personal-data/">personal data</a> where permission has been given to do so. We never publish email or postal addresses and will delete personal data when the consultation is finished.&nbsp;</p>
+
+                  <p>For information on how we collect&nbsp;and process&nbsp;your data please see our main <a href="https://www.gov.scot/privacy/">privacy policy</a>.&nbsp;</p>
+
+                  <h3><a name="How we report consultation findings" id="How we report consultation findings"></a>How we report consultation findings</h3>
+
+                  <p>A good consultation should be transparent in showing what people have said and how these views have been considered by decision-makers. &nbsp;</p>
+
+                  <p>One of the main ways we do this is on the “<a href="https://consult.gov.scot/we_asked_you_said/">We Asked, You Said, We Did” section</a> of our consultation website. This briefly summaries the main points of the consultation (We Asked”), how many responses there were and key messages coming out of the responses (“You Said”) and what we have done, or plan to do as a result of the consultation (“We did”).&nbsp;</p>
+
+                  <p>More detail on the responses received will be found in the full consultation analysis report which will be published and available on our website. Most recently published consultation reports are highlighted in our <a href="https://consult.gov.scot/about/">mailing list</a>. In addition, where permission was given to publish them, individual consultation responses are normally made available on our consultation hub.&nbsp;</p>
+
+                  <p>We aim to report back within the same length of time as people were given to respond to the consultation,.&nbsp;</p>
+
+                  <p>The way consultation responses shape decisions and are reported varies depending on the type of the consultation. A single consultation may need a number of different outputs to meet the needs of the policy process, the needs of the audience and to provide effective feedback to respondents.&nbsp;</p>
+
+                  <p>Once the consultation responses have been analysed, we will publish a statement of what has been done or is going to be done and why and how the consultation has informed these decisions. This publication could be, for example, the final version of a new strategy, the announcement of a new policy position, or plans for new legislation. The output from the analysis of your consultation responses will be used by the Scottish Parliament, its committees and other external groups to scrutinise the consultation exercise.&nbsp;</p>
+
+                  <h3><a name="Benefits and limitations of a consultation&nbsp;" id="Benefits and limitations of a consultation&nbsp;"></a>Benefits and limitations of a consultation&nbsp;</h3>
+
+                  <p>A consultation can tell us about the broad range of views that exist on a particular policy issue. It can also give us lots of detail about why respondents hold those views. Consultations allow respondents to comment on proposed options – telling us what aspects are of the most importance to them, and letting us know if they have any concerns, or what the benefits might be. Respondents can also suggest alternative options. The information collected during a consultation is valuable in shaping policy decisions but needs to also be considered alongside other sources of evidence. &nbsp;&nbsp;</p>
+
+                  <p>It can be tempting to think that if a lot of people give their views in a consultation, then this will be representative of the wider population. This is not the case. Respondents to a consultation have actively chosen to participate because they have an interest in the topic. In contrast a representative survey will capture the views of wider spread of citizens with different levels of interest in the topic.&nbsp;</p>
+                /index:
+                  jcr:primaryType: hippo:facetselect
+                  hippo:docbase: 1b13c9ad-b0a8-4158-a244-acdd84d767fb
+                  hippo:facets: []
+                  hippo:modes: []
+                  hippo:values: []
+                /index_1:
+                  jcr:primaryType: hippo:facetselect
+                  hippo:docbase: d39995d1-0607-4514-b735-bce5907af8a2
+                  hippo:facets: []
+                  hippo:modes: []
+                  hippo:values: []
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cdc006d9-3deb-4c17-b733-df061db13cfb
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+            /index[2]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: a8285974-1685-4267-b847-b719573720c8
+              govscot:displayDate: 2022-01-24T00:00:00Z
+              govscot:isbn: ''
+              govscot:metaDescription: Public guidance for consultations.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2022-01-24T00:00:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: 'Consultations in the Scottish Government: guidance'
+              govscot:slug: consultations-in-the-scottish-government-guidance
+              govscot:sme: ''
+              govscot:summary: Public guidance for consultations.
+              govscot:title: 'Consultations in the Scottish Government: guidance'
+              hippo:availability: []
+              hippostd:state: draft
+              hippostd:tags: [consultations, research, guidance, advice, data protection,
+                reporting]
+              hippostdpubwf:createdBy: joanne.logan@gov.scot
+              hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
+              hippostdpubwf:lastModificationDate: 2022-01-24T09:44:10.904Z
+              hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:locale: en
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: <p>Public guidance for consultations.</p>
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <ul>
+                   <li><a href="#consultations and what they can be used for">consultations and what they can be used for</a></li>
+                   <li><a href="#What we do with consultation responses">what we do with consultation responses</a></li>
+                   <li><a href="#How we report consultation findings">how we report consultation findings</a></li>
+                   <li><a href="#Benefits and limitations of a consultation&nbsp;">benefits and limitations of a consultation</a>&nbsp; &nbsp;</li>
+                  </ul>
+
+                  <p>We use consultation as one way of gathering the views of both the public and professional experts. This short note outlines our approach to consultations. It provides an overview of what consultations are, the principles a good consultation is based on and what processes are involved. The note is aimed at anybody who is interested in the consultation process.&nbsp;</p>
+
+                  <h3><a name="consultations and what they can be used for" id="consultations and what they can be used for"></a>Consultations and what they can be used for</h3>
+
+                  <p>A consultation is an opportunity for members of the public to comment on plans or ideas which are being considered, and share experiences, knowledge or ideas that help inform decision-makers.</p>
+
+                  <p>When done well, a consultation provides valuable evidence of the range of experiences and opinions, knowledge and ideas regarding a given issue. This can help policymakers improve their decision making.&nbsp;</p>
+
+                  <p>Watch a <a href="https://www.youtube.com/watch?v=Lo0_O-LUIR0&amp;feature=youtu.be">short video summary</a>.</p>
+
+                  <p>Consultations are open for all citizens to reply to. They can vary in size and type, depending on their aims. “General” consultations often attract responses from a wide audience with a general interest in the topic, and can receive a high number of responses. Other consultations are very specific and are only of interest to a small number of professional stakeholders.&nbsp;These are sometimes referred to as “technical” consultations. Only a limited number of people respond to these, often stakeholders, professionals and policy officials with a high level of understanding of the issue.&nbsp;</p>
+
+                  <p>For all consultations, those people who respond actively choose to participate because they have an interest in the consultation topic. Accordingly, a consultation process cannot be used to indicate levels of public support for a proposal or represent the views of the wider public.&nbsp;</p>
+
+                  <h4>Why we consult</h4>
+
+                  <p>Engaging with people and stakeholder organisations is a key part of the Scottish approach to policymaking. Consultation is an essential and important aspect of our public engagement.</p>
+
+                  <p>Consultations can be used to:</p>
+
+                  <ul>
+                   <li>inform the development of a particular policy</li>
+                   <li>help decisions to be made between alternative policy proposals</li>
+                   <li>finalise new legislation before it is implemented</li>
+                  </ul>
+
+                  <p>Consultation enables us to ask a lot of different people about their views. This should &nbsp;improve the policy or law being developed and make sure that it works in the real world. It can expand the pool of expertise contributing to the policymaking process and provides a richer evidence base. It also promotes transparency and legitimacy in the process.&nbsp;</p>
+
+                  <h4>How we consult</h4>
+
+                  <p>A good consultation should be accessible for people. The consultation should clearly explain what it is seeking people’s views on and make sure that people are able to respond.&nbsp;</p>
+
+                  <p>There are many ways in which we consult Scottish citizens and organisations. Consultation can be done using written papers, public meetings, focus groups, questionnaires or online discussion forums. Traditionally, one of the most common ways of consulting is through a written consultation paper. However, this is only one of many ways that policymakers can ask, listen to, and act on, the views of citizens and stakeholders.&nbsp;</p>
+
+                  <p>The UK Government sets out 11 <a href="https://www.gov.uk/government/publications/consultation-principles-guidance">principles of good consultation</a>. There are also <a href="https://law.gov.wales/constitution-government/public-admin/intro-admin-law/welsh-government-guidance-on-making-good-decisions/has-any-consultation-been-carried-out-fairly-and-properly/what-are-the-requirements-for-any-consultation-that-is-carried-out/?lang=en">minimum legal standards</a> called The Gunning Principles that a fair and worthwhile exercise must follow. We are committed to being open and transparent via the <a href="https://nationalperformance.gov.scot/">National Performance Framework</a> and the <a href="index">Open Government Action Plan</a>.&nbsp;</p>
+
+                  <p>Our consultations are mainly done online using our <a href="https://consult.gov.scot/">consultation hub</a>. The consultation hub is a user friendly tool, designed to improve the accessibility and transparency of our consultations. A full listing of open and closed consultations are available on the hub. In addition to that, consultations might be promoted on our social media channels such as Facebook and Twitter and via our <a href="https://consult.gov.scot/about/">mailing list</a>. Sometimes stakeholder groups with an interest in a consultation will let their members know about a consultation and we are often able to accept non-digital responses.&nbsp;</p>
+
+                  <p>Typically, written consultations present a report laying out the issues under consideration and ask specific questions or for more general views about the topic. Written consultations should provide adequate time for response. &nbsp;</p>
+
+                  <p>Following the closing date, all responses are analysed and an analysis report is published on <a href="https://www.gov.scot/publications/">our website</a> and the consultation hub.&nbsp;</p>
+
+                  <h4>What we consult on</h4>
+
+                  <p>We consult on a wide range of policies, draft bills and regulations. These can include broad policy areas such <a href="https://consult.gov.scot/energy-and-climate-change-directorate/fracking-unconventional-oil-and-gas/">fracking</a>, and <a href="https://consult.gov.scot/animal-welfare/animal-health-welfare-act-amendment-2019/">animal health and welfare</a> as well as more specific issues such as <a href="https://consult.gov.scot/managing-flood-risk/reservoirs-amendment/">amendments to regulations on reservoirs</a> and the <a href="index_1">Land and Buildings Transaction Tax Group Relief</a>. On average, we publish 100 consultations per year.&nbsp;</p>
+
+                  <h4>When we consult</h4>
+
+                  <p>Consultations can occur at different stages in the policy process, from the development of initial policy ideas through to the finalisation of legislation. There is no set time to hold a consultation – the important thing is that the consultation takes place at an appropriate time, so that responses received can meaningfully inform the decision being made. Consultation will always happen before a final policy decision has been taken.&nbsp;</p>
+
+                  <h4>Who we consult</h4>
+
+                  <p>A written consultation is open to all people and organisations who wish to express their opinions on a proposed area of work. In other words, anyone who is interested in contributing their views, is encouraged to do so.&nbsp;We use other methods to ensure that people who have an interest in the policy area but do not have the means or opportunity to send a written response, have an opportunity to give views.&nbsp;</p>
+
+                  <h4>How to respond to a consultation</h4>
+
+                  <p>If you want to respond to a consultation, the most common way to do so is online through our&nbsp;consultation hub. However, it is usually possible to respond in other ways too, such as by email or letter. If consultation events are being held, you might prefer to attend an event rather than provide a written response. Closing dates are clearly advertised on the consultation paper and on the consultation hub website.&nbsp;</p>
+
+                  <p>Sometimes consultations are available in alternative formats, such as “easy read”, British Sign Language or languages other than English.&nbsp;</p>
+
+                  <p>The consultation will provide a brief overview of the policy issue being consulted on. It will then ask specific questions or ask for your views on the proposal. Sometimes they include a glossary to make sure people understand the terms being used.</p>
+
+                  <p>If you are completing the consultation on our consultation hub you are able to save and come back to your response. You do not need to complete it all in one go. &nbsp;</p>
+
+                  <h3><a name="What we do with consultation responses" id="What we do with consultation responses"></a>What we do with consultation responses</h3>
+
+                  <h4>Analysis of consultation responses&nbsp;</h4>
+
+                  <p>Once the consultation has closed and responses have been submitted, we need to make sense of the responses so these can inform the policy.&nbsp;</p>
+
+                  <p>Analysis of responses is necessary to capture and summarise the results. This can be done either internally (within the Scottish Government) or using an external research contractor. Consultation responses will be analysed fairly, rigorously and systematically, regardless of whether they are analysed internally or externally. Consultation analysis findings are normally presented in a written report which is published on our website. &nbsp;</p>
+
+                  <p>The analysis, and analysis report, reflects the range and breadth of views expressed during the consultation. It&nbsp;identifies key themes emerging from the responses and the arguments behind these. It also describes how many responses were received and provides details on the respondents’ profile if available. &nbsp;</p>
+
+                  <h4>All valid responses are analysed&nbsp;</h4>
+
+                  <p>A response to a consultation is usually considered valid if it is relevant to the subject matter of the consultation.&nbsp;</p>
+
+                  <h4>Moderation policy&nbsp;</h4>
+
+                  <p>We moderate all responses to ensure that they are appropriate and not offensive or harmful to others. We will analyse all responses, but we will not publish responses which contain material which:</p>
+
+                  <ul>
+                   <li>raises concerns about data protection or copyright</li>
+                   <li>is potentially defamatory</li>
+                   <li>has offensive material&nbsp;</li>
+                   <li>contains references to on-going court cases</li>
+                   <li>impersonates or falsely claims to represent another person or organisation</li>
+                  </ul>
+
+                  <h4>Publishing responses</h4>
+
+                  <p>Everyone who responds to a written consultation (the “respondent”) will be asked to fill out a Respondent Information Form (RIF). If responding online, this is on the “About You” page. This asks respondents if they give us permission to publish their response. Respondents can choose to:&nbsp;</p>
+
+                  <ul>
+                   <li>publish response with name</li>
+                   <li>publish response only (without name)</li>
+                   <li>do not publish response</li>
+                  </ul>
+
+                  <p>We will only ever publish a response where we have been given permission to do so. &nbsp;</p>
+
+                  <p>These responses will usually be made available to the public at <a href="http://consult.gov.scot">http://consult.gov.scot</a>, alongside the analysis report.</p>
+
+                  <p>The names of organisations responding to consultations will be published.&nbsp;</p>
+
+                  <h4>How we handle personal data</h4>
+
+                  <p>We collect names and email addresses with every response we receive through our <a href="http://consult.gov.scot">consultation platform</a>.</p>
+
+                  <p>Email addresses are used to send an acknowledgement of response following submission. They may also be used to contact you in the future in relation to the consultation exercise if you give consent to be contacted.&nbsp;</p>
+
+                  <p>Where permission is given, we publish responses. We include <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/what-is-personal-data/what-is-personal-data/">personal data</a> where permission has been given to do so. We never publish email or postal addresses and will delete personal data when the consultation is finished.&nbsp;</p>
+
+                  <p>For information on how we collect&nbsp;and process&nbsp;your data please see our main <a href="https://www.gov.scot/privacy/">privacy policy</a>.&nbsp;</p>
+
+                  <h3><a name="How we report consultation findings" id="How we report consultation findings"></a>How we report consultation findings</h3>
+
+                  <p>A good consultation should be transparent in showing what people have said and how these views have been considered by decision-makers. &nbsp;</p>
+
+                  <p>One of the main ways we do this is on the “<a href="https://consult.gov.scot/we_asked_you_said/">We Asked, You Said, We Did” section</a> of our consultation website. This briefly summaries the main points of the consultation (We Asked”), how many responses there were and key messages coming out of the responses (“You Said”) and what we have done, or plan to do as a result of the consultation (“We did”).&nbsp;</p>
+
+                  <p>More detail on the responses received will be found in the full consultation analysis report which will be published and available on our website. Most recently published consultation reports are highlighted in our <a href="https://consult.gov.scot/about/">mailing list</a>. In addition, where permission was given to publish them, individual consultation responses are normally made available on our consultation hub.&nbsp;</p>
+
+                  <p>We aim to report back within the same length of time as people were given to respond to the consultation,.&nbsp;</p>
+
+                  <p>The way consultation responses shape decisions and are reported varies depending on the type of the consultation. A single consultation may need a number of different outputs to meet the needs of the policy process, the needs of the audience and to provide effective feedback to respondents.&nbsp;</p>
+
+                  <p>Once the consultation responses have been analysed, we will publish a statement of what has been done or is going to be done and why and how the consultation has informed these decisions. This publication could be, for example, the final version of a new strategy, the announcement of a new policy position, or plans for new legislation. The output from the analysis of your consultation responses will be used by the Scottish Parliament, its committees and other external groups to scrutinise the consultation exercise.&nbsp;</p>
+
+                  <h3><a name="Benefits and limitations of a consultation&nbsp;" id="Benefits and limitations of a consultation&nbsp;"></a>Benefits and limitations of a consultation&nbsp;</h3>
+
+                  <p>A consultation can tell us about the broad range of views that exist on a particular policy issue. It can also give us lots of detail about why respondents hold those views. Consultations allow respondents to comment on proposed options – telling us what aspects are of the most importance to them, and letting us know if they have any concerns, or what the benefits might be. Respondents can also suggest alternative options. The information collected during a consultation is valuable in shaping policy decisions but needs to also be considered alongside other sources of evidence. &nbsp;&nbsp;</p>
+
+                  <p>It can be tempting to think that if a lot of people give their views in a consultation, then this will be representative of the wider population. This is not the case. Respondents to a consultation have actively chosen to participate because they have an interest in the topic. In contrast a representative survey will capture the views of wider spread of citizens with different levels of interest in the topic.&nbsp;</p>
+                /index:
+                  jcr:primaryType: hippo:facetselect
+                  hippo:docbase: 1b13c9ad-b0a8-4158-a244-acdd84d767fb
+                  hippo:facets: []
+                  hippo:modes: []
+                  hippo:values: []
+                /index_1:
+                  jcr:primaryType: hippo:facetselect
+                  hippo:docbase: d39995d1-0607-4514-b735-bce5907af8a2
+                  hippo:facets: []
+                  hippo:modes: []
+                  hippo:values: []
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cdc006d9-3deb-4c17-b733-df061db13cfb
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+            /index[3]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 4175ab9e-45fb-4b01-8b1b-bee79acffefc
+              govscot:displayDate: 2022-01-24T00:00:00Z
+              govscot:isbn: ''
+              govscot:metaDescription: Public guidance for consultations.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2022-01-24T00:00:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: 'Consultations in the Scottish Government: guidance'
+              govscot:slug: consultations-in-the-scottish-government-guidance
+              govscot:sme: ''
+              govscot:summary: Public guidance for consultations.
+              govscot:title: 'Consultations in the Scottish Government: guidance'
+              hippo:availability: [live]
+              hippostd:state: published
+              hippostd:tags: [consultations, research, guidance, advice, data protection,
+                reporting]
+              hippostdpubwf:createdBy: joanne.logan@gov.scot
+              hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
+              hippostdpubwf:lastModificationDate: 2022-01-24T09:44:18.381Z
+              hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+              hippostdpubwf:publicationDate: 2022-01-24T09:44:44.117Z
+              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:locale: en
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: <p>Public guidance for consultations.</p>
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <ul>
+                   <li><a href="#consultations and what they can be used for">consultations and what they can be used for</a></li>
+                   <li><a href="#What we do with consultation responses">what we do with consultation responses</a></li>
+                   <li><a href="#How we report consultation findings">how we report consultation findings</a></li>
+                   <li><a href="#Benefits and limitations of a consultation&nbsp;">benefits and limitations of a consultation</a>&nbsp; &nbsp;</li>
+                  </ul>
+
+                  <p>We use consultation as one way of gathering the views of both the public and professional experts. This short note outlines our approach to consultations. It provides an overview of what consultations are, the principles a good consultation is based on and what processes are involved. The note is aimed at anybody who is interested in the consultation process.&nbsp;</p>
+
+                  <h3><a name="consultations and what they can be used for" id="consultations and what they can be used for"></a>Consultations and what they can be used for</h3>
+
+                  <p>A consultation is an opportunity for members of the public to comment on plans or ideas which are being considered, and share experiences, knowledge or ideas that help inform decision-makers.</p>
+
+                  <p>When done well, a consultation provides valuable evidence of the range of experiences and opinions, knowledge and ideas regarding a given issue. This can help policymakers improve their decision making.&nbsp;</p>
+
+                  <p>Watch a <a href="https://www.youtube.com/watch?v=Lo0_O-LUIR0&amp;feature=youtu.be">short video summary</a>.</p>
+
+                  <p>Consultations are open for all citizens to reply to. They can vary in size and type, depending on their aims. “General” consultations often attract responses from a wide audience with a general interest in the topic, and can receive a high number of responses. Other consultations are very specific and are only of interest to a small number of professional stakeholders.&nbsp;These are sometimes referred to as “technical” consultations. Only a limited number of people respond to these, often stakeholders, professionals and policy officials with a high level of understanding of the issue.&nbsp;</p>
+
+                  <p>For all consultations, those people who respond actively choose to participate because they have an interest in the consultation topic. Accordingly, a consultation process cannot be used to indicate levels of public support for a proposal or represent the views of the wider public.&nbsp;</p>
+
+                  <h4>Why we consult</h4>
+
+                  <p>Engaging with people and stakeholder organisations is a key part of the Scottish approach to policymaking. Consultation is an essential and important aspect of our public engagement.</p>
+
+                  <p>Consultations can be used to:</p>
+
+                  <ul>
+                   <li>inform the development of a particular policy</li>
+                   <li>help decisions to be made between alternative policy proposals</li>
+                   <li>finalise new legislation before it is implemented</li>
+                  </ul>
+
+                  <p>Consultation enables us to ask a lot of different people about their views. This should &nbsp;improve the policy or law being developed and make sure that it works in the real world. It can expand the pool of expertise contributing to the policymaking process and provides a richer evidence base. It also promotes transparency and legitimacy in the process.&nbsp;</p>
+
+                  <h4>How we consult</h4>
+
+                  <p>A good consultation should be accessible for people. The consultation should clearly explain what it is seeking people’s views on and make sure that people are able to respond.&nbsp;</p>
+
+                  <p>There are many ways in which we consult Scottish citizens and organisations. Consultation can be done using written papers, public meetings, focus groups, questionnaires or online discussion forums. Traditionally, one of the most common ways of consulting is through a written consultation paper. However, this is only one of many ways that policymakers can ask, listen to, and act on, the views of citizens and stakeholders.&nbsp;</p>
+
+                  <p>The UK Government sets out 11 <a href="https://www.gov.uk/government/publications/consultation-principles-guidance">principles of good consultation</a>. There are also <a href="https://law.gov.wales/constitution-government/public-admin/intro-admin-law/welsh-government-guidance-on-making-good-decisions/has-any-consultation-been-carried-out-fairly-and-properly/what-are-the-requirements-for-any-consultation-that-is-carried-out/?lang=en">minimum legal standards</a> called The Gunning Principles that a fair and worthwhile exercise must follow. We are committed to being open and transparent via the <a href="https://nationalperformance.gov.scot/">National Performance Framework</a> and the <a href="index">Open Government Action Plan</a>.&nbsp;</p>
+
+                  <p>Our consultations are mainly done online using our <a href="https://consult.gov.scot/">consultation hub</a>. The consultation hub is a user friendly tool, designed to improve the accessibility and transparency of our consultations. A full listing of open and closed consultations are available on the hub. In addition to that, consultations might be promoted on our social media channels such as Facebook and Twitter and via our <a href="https://consult.gov.scot/about/">mailing list</a>. Sometimes stakeholder groups with an interest in a consultation will let their members know about a consultation and we are often able to accept non-digital responses.&nbsp;</p>
+
+                  <p>Typically, written consultations present a report laying out the issues under consideration and ask specific questions or for more general views about the topic. Written consultations should provide adequate time for response. &nbsp;</p>
+
+                  <p>Following the closing date, all responses are analysed and an analysis report is published on <a href="https://www.gov.scot/publications/">our website</a> and the consultation hub.&nbsp;</p>
+
+                  <h4>What we consult on</h4>
+
+                  <p>We consult on a wide range of policies, draft bills and regulations. These can include broad policy areas such <a href="https://consult.gov.scot/energy-and-climate-change-directorate/fracking-unconventional-oil-and-gas/">fracking</a>, and <a href="https://consult.gov.scot/animal-welfare/animal-health-welfare-act-amendment-2019/">animal health and welfare</a> as well as more specific issues such as <a href="https://consult.gov.scot/managing-flood-risk/reservoirs-amendment/">amendments to regulations on reservoirs</a> and the <a href="index_1">Land and Buildings Transaction Tax Group Relief</a>. On average, we publish 100 consultations per year.&nbsp;</p>
+
+                  <h4>When we consult</h4>
+
+                  <p>Consultations can occur at different stages in the policy process, from the development of initial policy ideas through to the finalisation of legislation. There is no set time to hold a consultation – the important thing is that the consultation takes place at an appropriate time, so that responses received can meaningfully inform the decision being made. Consultation will always happen before a final policy decision has been taken.&nbsp;</p>
+
+                  <h4>Who we consult</h4>
+
+                  <p>A written consultation is open to all people and organisations who wish to express their opinions on a proposed area of work. In other words, anyone who is interested in contributing their views, is encouraged to do so.&nbsp;We use other methods to ensure that people who have an interest in the policy area but do not have the means or opportunity to send a written response, have an opportunity to give views.&nbsp;</p>
+
+                  <h4>How to respond to a consultation</h4>
+
+                  <p>If you want to respond to a consultation, the most common way to do so is online through our&nbsp;consultation hub. However, it is usually possible to respond in other ways too, such as by email or letter. If consultation events are being held, you might prefer to attend an event rather than provide a written response. Closing dates are clearly advertised on the consultation paper and on the consultation hub website.&nbsp;</p>
+
+                  <p>Sometimes consultations are available in alternative formats, such as “easy read”, British Sign Language or languages other than English.&nbsp;</p>
+
+                  <p>The consultation will provide a brief overview of the policy issue being consulted on. It will then ask specific questions or ask for your views on the proposal. Sometimes they include a glossary to make sure people understand the terms being used.</p>
+
+                  <p>If you are completing the consultation on our consultation hub you are able to save and come back to your response. You do not need to complete it all in one go. &nbsp;</p>
+
+                  <h3><a name="What we do with consultation responses" id="What we do with consultation responses"></a>What we do with consultation responses</h3>
+
+                  <h4>Analysis of consultation responses&nbsp;</h4>
+
+                  <p>Once the consultation has closed and responses have been submitted, we need to make sense of the responses so these can inform the policy.&nbsp;</p>
+
+                  <p>Analysis of responses is necessary to capture and summarise the results. This can be done either internally (within the Scottish Government) or using an external research contractor. Consultation responses will be analysed fairly, rigorously and systematically, regardless of whether they are analysed internally or externally. Consultation analysis findings are normally presented in a written report which is published on our website. &nbsp;</p>
+
+                  <p>The analysis, and analysis report, reflects the range and breadth of views expressed during the consultation. It&nbsp;identifies key themes emerging from the responses and the arguments behind these. It also describes how many responses were received and provides details on the respondents’ profile if available. &nbsp;</p>
+
+                  <h4>All valid responses are analysed&nbsp;</h4>
+
+                  <p>A response to a consultation is usually considered valid if it is relevant to the subject matter of the consultation.&nbsp;</p>
+
+                  <h4>Moderation policy&nbsp;</h4>
+
+                  <p>We moderate all responses to ensure that they are appropriate and not offensive or harmful to others. We will analyse all responses, but we will not publish responses which contain material which:</p>
+
+                  <ul>
+                   <li>raises concerns about data protection or copyright</li>
+                   <li>is potentially defamatory</li>
+                   <li>has offensive material&nbsp;</li>
+                   <li>contains references to on-going court cases</li>
+                   <li>impersonates or falsely claims to represent another person or organisation</li>
+                  </ul>
+
+                  <h4>Publishing responses</h4>
+
+                  <p>Everyone who responds to a written consultation (the “respondent”) will be asked to fill out a Respondent Information Form (RIF). If responding online, this is on the “About You” page. This asks respondents if they give us permission to publish their response. Respondents can choose to:&nbsp;</p>
+
+                  <ul>
+                   <li>publish response with name</li>
+                   <li>publish response only (without name)</li>
+                   <li>do not publish response</li>
+                  </ul>
+
+                  <p>We will only ever publish a response where we have been given permission to do so. &nbsp;</p>
+
+                  <p>These responses will usually be made available to the public at <a href="http://consult.gov.scot">http://consult.gov.scot</a>, alongside the analysis report.</p>
+
+                  <p>The names of organisations responding to consultations will be published.&nbsp;</p>
+
+                  <h4>How we handle personal data</h4>
+
+                  <p>We collect names and email addresses with every response we receive through our <a href="http://consult.gov.scot">consultation platform</a>.</p>
+
+                  <p>Email addresses are used to send an acknowledgement of response following submission. They may also be used to contact you in the future in relation to the consultation exercise if you give consent to be contacted.&nbsp;</p>
+
+                  <p>Where permission is given, we publish responses. We include <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/what-is-personal-data/what-is-personal-data/">personal data</a> where permission has been given to do so. We never publish email or postal addresses and will delete personal data when the consultation is finished.&nbsp;</p>
+
+                  <p>For information on how we collect&nbsp;and process&nbsp;your data please see our main <a href="https://www.gov.scot/privacy/">privacy policy</a>.&nbsp;</p>
+
+                  <h3><a name="How we report consultation findings" id="How we report consultation findings"></a>How we report consultation findings</h3>
+
+                  <p>A good consultation should be transparent in showing what people have said and how these views have been considered by decision-makers. &nbsp;</p>
+
+                  <p>One of the main ways we do this is on the “<a href="https://consult.gov.scot/we_asked_you_said/">We Asked, You Said, We Did” section</a> of our consultation website. This briefly summaries the main points of the consultation (We Asked”), how many responses there were and key messages coming out of the responses (“You Said”) and what we have done, or plan to do as a result of the consultation (“We did”).&nbsp;</p>
+
+                  <p>More detail on the responses received will be found in the full consultation analysis report which will be published and available on our website. Most recently published consultation reports are highlighted in our <a href="https://consult.gov.scot/about/">mailing list</a>. In addition, where permission was given to publish them, individual consultation responses are normally made available on our consultation hub.&nbsp;</p>
+
+                  <p>We aim to report back within the same length of time as people were given to respond to the consultation,.&nbsp;</p>
+
+                  <p>The way consultation responses shape decisions and are reported varies depending on the type of the consultation. A single consultation may need a number of different outputs to meet the needs of the policy process, the needs of the audience and to provide effective feedback to respondents.&nbsp;</p>
+
+                  <p>Once the consultation responses have been analysed, we will publish a statement of what has been done or is going to be done and why and how the consultation has informed these decisions. This publication could be, for example, the final version of a new strategy, the announcement of a new policy position, or plans for new legislation. The output from the analysis of your consultation responses will be used by the Scottish Parliament, its committees and other external groups to scrutinise the consultation exercise.&nbsp;</p>
+
+                  <h3><a name="Benefits and limitations of a consultation&nbsp;" id="Benefits and limitations of a consultation&nbsp;"></a>Benefits and limitations of a consultation&nbsp;</h3>
+
+                  <p>A consultation can tell us about the broad range of views that exist on a particular policy issue. It can also give us lots of detail about why respondents hold those views. Consultations allow respondents to comment on proposed options – telling us what aspects are of the most importance to them, and letting us know if they have any concerns, or what the benefits might be. Respondents can also suggest alternative options. The information collected during a consultation is valuable in shaping policy decisions but needs to also be considered alongside other sources of evidence. &nbsp;&nbsp;</p>
+
+                  <p>It can be tempting to think that if a lot of people give their views in a consultation, then this will be representative of the wider population. This is not the case. Respondents to a consultation have actively chosen to participate because they have an interest in the topic. In contrast a representative survey will capture the views of wider spread of citizens with different levels of interest in the topic.&nbsp;</p>
+                /index:
+                  jcr:primaryType: hippo:facetselect
+                  hippo:docbase: 1b13c9ad-b0a8-4158-a244-acdd84d767fb
+                  hippo:facets: []
+                  hippo:modes: []
+                  hippo:values: []
+                /index_1:
+                  jcr:primaryType: hippo:facetselect
+                  hippo:docbase: d39995d1-0607-4514-b735-bce5907af8a2
+                  hippo:facets: []
+                  hippo:modes: []
+                  hippo:values: []
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cdc006d9-3deb-4c17-b733-df061db13cfb
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-page]
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]

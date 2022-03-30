@@ -154,7 +154,11 @@
                      that.formElement.classList.add('fully-hidden');
 
                  } else if (this.status >= 400) {
-                     that.errorSummary.querySelector('.ds_error-summary__content').innerHTML = '<p>Sorry, we have a problem at our side. Please try again later.</p>';
+                     if (this.status === 429) {
+                        that.errorSummary.querySelector('.ds_error-summary__content').innerHTML = '<p>Too many requests have been submitted, please try again later.</p>';
+                     } else {
+                         that.errorSummary.querySelector('.ds_error-summary__content').innerHTML = '<p>Sorry, we have a problem at our side. Please try again later.</p>';
+                     }
                      that.errorSummary.classList.remove('fully-hidden');
                      that.errorSummary.scrollIntoView();
                  }

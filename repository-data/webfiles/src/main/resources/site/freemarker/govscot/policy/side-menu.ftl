@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <nav class="ds_side-navigation  ds_no-margin--top" data-module="ds-side-navigation">

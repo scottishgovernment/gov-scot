@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <@hst.link var="cookieprefslink" path="/cookies"/>

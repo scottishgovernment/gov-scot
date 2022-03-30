@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <div class="ds_wrapper">
@@ -23,7 +24,7 @@
 <@hst.headContribution category="pageTitle"><title>Directorates - gov.scot</title></@hst.headContribution>
 <#if document??>
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 </#if>
 

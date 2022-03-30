@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if document??>
@@ -69,7 +70,7 @@
                     <#if document.incumbent.content?has_content>
                         <div class="ds_leader-first-paragraph">
                             <@hst.html hippohtml=document.incumbent.content var="biography"/>
-                            ${biography?trim?keep_before("\n")}
+                            ${biography?trim?keep_before("\n")?no_esc}
                         </div>
                     </#if>
                 </#if>
@@ -82,7 +83,7 @@
                     <#if document.incumbent.content?has_content>
                         <h2>Biography</h2>
 
-                        ${biography?trim?keep_after("\n")}
+                        ${biography?trim?keep_after("\n")?no_esc}
                     </#if>
                 </#if>
 
@@ -126,11 +127,11 @@
     </@hst.headContribution>
 
     <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
 
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <#if document.incumbent.image??>

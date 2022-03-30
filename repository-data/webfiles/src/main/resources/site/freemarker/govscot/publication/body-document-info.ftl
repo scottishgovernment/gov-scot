@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#if attachedDocument.document??>
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?lower_case/>
     <#assign filenameWithoutExtension = attachedDocument.document.filename?keep_before_last(".")/>

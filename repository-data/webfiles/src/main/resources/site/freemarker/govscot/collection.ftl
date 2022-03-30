@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 
 <#if document??>
@@ -8,7 +9,7 @@
             <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
                 <div class="gov_sublayout__title">
                     <span class="ds_page-header__label  ds_content-label">Collection</span>
-                    <h1 class="ds_page-header__title">${document.title?html}</h1>
+                    <h1 class="ds_page-header__title">${document.title}</h1>
                 </div>
 
                 <div class="gov_sublayout__metadata">
@@ -47,7 +48,7 @@
             <#if content?has_content>
                 <div class="ds_!_margin-bottom--6">
                     <h2 class="gamma">Introduction</h2>
-                    ${content}
+                    ${content?no_esc}
                 </div>
             </#if>
 
@@ -58,7 +59,7 @@
 
                         <@hst.html hippohtml=group.description var="description"/>
                         <#if description?has_content>
-                            ${description}
+                            ${description?no_esc}
                         </#if>
 
                         <ul class="collections-list">
@@ -101,7 +102,7 @@
             <#if contact?has_content>
                 <div class="publication-info__contact">
                     <h3 class="emphasis">Contact</h3>
-                ${contact}
+                    ${contact?no_esc}
                 </div>
             </#if>
         </div>
@@ -131,12 +132,12 @@
     </@hst.headContribution>
 
     <@hst.headContribution category="pageTitle">
-        <title>${document.title?html} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
 
     <@hst.headContribution>
         <#if document.metaDescription??>
-            <meta name="description" content="${document.metaDescription?html}"/>
+            <meta name="description" content="${document.metaDescription}"/>
         </#if>
     </@hst.headContribution>
 

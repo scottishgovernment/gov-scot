@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
@@ -218,7 +219,7 @@
                                         <label class="ds_accordion-item__label" for="panel-revisions"><span class="visually-hidden">Show this section</span></label>
                                     </div>
                                     <div class="ds_accordion-item__body">
-                                        ${docRevisions}
+                                        ${docRevisions?no_esc}
                                     </div>
                                 </div>
                             </div>
@@ -359,7 +360,7 @@
     </@hst.headContribution>
 
     <@hst.headContribution>
-        <meta name="description" content="${document.metaDescription?html}"/>
+        <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>

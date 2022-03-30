@@ -1,6 +1,4 @@
 <#ftl output_format="HTML">
-<#assign hst=JspTaglibs["http://www.hippoecm.org/jsp/hst/core"] >
-
 <!doctype html>
 <#include "../include/imports.ftl">
 <html dir="ltr" lang="en">

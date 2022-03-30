@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#if mourningBanner??>
@@ -7,7 +8,7 @@
                 <@hst.html var="content" hippohtml=mourningBanner.content/>
                 <#if content?has_content>
                     <div class="ds_notification__text">
-                        ${content}
+                        ${content?no_esc}
                     </div>
                 </#if>
             </div>

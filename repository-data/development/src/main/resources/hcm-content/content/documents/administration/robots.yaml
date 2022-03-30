@@ -1,0 +1,50 @@
+/content/documents/administration/robots:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['mix:referenceable']
+  jcr:uuid: 4019a3fc-b99d-4758-a529-9fcb79c882c0
+  /robots[1]:
+    jcr:primaryType: robotstxt:robotstxt
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: 4443d483-f2d5-4e84-8b8a-04c6b3666bb4
+    hippo:availability: [preview]
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-06-06T13:17:14.872+01:00
+    hippostdpubwf:lastModificationDate: 2018-06-06T13:19:13.900+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    robotstxt:sitemap: ['https://www.gov.scot/sitemap.xml']
+    /robotstxt:section:
+      jcr:primaryType: robotstxt:section
+      robotstxt:disallow: [/search/]
+      robotstxt:useragent: '*'
+  /robots[2]:
+    jcr:primaryType: robotstxt:robotstxt
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 412ea29c-cc1f-4b8e-96e1-868382e52a2d
+    hippo:availability: []
+    hippostd:state: draft
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-06-06T13:17:14.872+01:00
+    hippostdpubwf:lastModificationDate: 2018-06-06T13:59:29.609+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    robotstxt:sitemap: ['https://www.gov.scot/sitemap.xml']
+    /robotstxt:section:
+      jcr:primaryType: robotstxt:section
+      robotstxt:disallow: [/search/]
+      robotstxt:useragent: '*'
+  /robots[3]:
+    jcr:primaryType: robotstxt:robotstxt
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: edc35e96-e20b-403d-8b71-443aad53aacc
+    hippo:availability: [live]
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2018-06-06T13:17:14.872+01:00
+    hippostdpubwf:lastModificationDate: 2018-06-06T13:19:13.900+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippostdpubwf:publicationDate: 2018-06-06T13:19:16.690+01:00
+    robotstxt:sitemap: ['https://www.gov.scot/sitemap.xml']
+    /robotstxt:section:
+      jcr:primaryType: robotstxt:section
+      robotstxt:disallow: [/search/]
+      robotstxt:useragent: '*'

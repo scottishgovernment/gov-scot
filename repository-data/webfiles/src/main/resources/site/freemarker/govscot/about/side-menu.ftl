@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#if aboutMenuItem??>
@@ -8,9 +9,9 @@
         <ul class="ds_side-navigation__list" id="side-navigation-root">
             <li class="ds_side-navigation__item">
                 <#if aboutMenuItem.selected>
-                        <span class="ds_side-navigation__link  ds_current">${aboutMenuItem.name?html}</span>
+                        <span class="ds_side-navigation__link  ds_current">${aboutMenuItem.name}</span>
                 <#else>
-                        <a class="ds_side-navigation__link" href="<@hst.link link=aboutMenuItem.hstLink/>">${aboutMenuItem.name?html}</a>
+                        <a class="ds_side-navigation__link" href="<@hst.link link=aboutMenuItem.hstLink/>">${aboutMenuItem.name}</a>
                 </#if>
 
                 <#if aboutMenuItem.childMenuItems?has_content>
@@ -18,9 +19,9 @@
                         <#list aboutMenuItem.childMenuItems as level1Item>
                             <li class="ds_side-navigation__item">
                                 <#if level1Item.selected>
-                                    <span class="ds_side-navigation__link  ds_current">${level1Item.name?html}</span>
+                                    <span class="ds_side-navigation__link  ds_current">${level1Item.name}</span>
                                 <#else>
-                                    <a class="ds_side-navigation__link" href="<@hst.link link=level1Item.hstLink/>">${level1Item.name?html}</a>
+                                    <a class="ds_side-navigation__link" href="<@hst.link link=level1Item.hstLink/>">${level1Item.name}</a>
                                 </#if>
 
                                 <#if level1Item.childMenuItems?has_content>
@@ -28,9 +29,9 @@
                                         <#list level1Item.childMenuItems as level2Item>
                                             <li class="ds_side-navigation__item">
                                                 <#if level2Item.selected>
-                                                    <span class="ds_side-navigation__link  ds_current">${level2Item.name?html}</span>
+                                                    <span class="ds_side-navigation__link  ds_current">${level2Item.name}</span>
                                                 <#else>
-                                                    <a class="ds_side-navigation__link" href="<@hst.link link=level2Item.hstLink/>">${level2Item.name?html}</a>
+                                                    <a class="ds_side-navigation__link" href="<@hst.link link=level2Item.hstLink/>">${level2Item.name}</a>
                                                 </#if>
                                             </li>
                                         </#list>

@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
@@ -54,11 +55,11 @@
                     </div>
                 <#else>
                     <h3 class="ds_search-result__title">
-                        <a class="ds_search-result__link" href="${link}">${item.title?html}</a>
+                        <a class="ds_search-result__link" href="${link}">${item.title}</a>
                     </h3>
                     <#if item.summary??>
                         <p class="ds_search-result__summary">
-                            ${item.summary?html}
+                            ${item.summary}
                         </p>
                     </#if>
 

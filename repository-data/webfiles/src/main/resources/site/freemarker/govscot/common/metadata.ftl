@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <dl class="ds_page-header__metadata  ds_metadata">
     <#if document.updateHistory?has_content>
         <#assign latestUpdate = document.updateHistory[0].lastUpdated>

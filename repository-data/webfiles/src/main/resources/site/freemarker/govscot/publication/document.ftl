@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
 
@@ -10,7 +11,7 @@
     <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
         <div class="gov_sublayout__title">
             <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
-            <h1 class="ds_page-header__title">${document.title?html}</h1>
+            <h1 class="ds_page-header__title">${document.title}</h1>
         </div>
 
         <div class="gov_sublayout__metadata">
@@ -103,7 +104,7 @@
 
     <@hst.headContribution>
         <#if document.metaDescription??>
-            <meta name="description" content="${document.metaDescription?html}"/>
+            <meta name="description" content="${document.metaDescription}"/>
         </#if>
     </@hst.headContribution>
 
