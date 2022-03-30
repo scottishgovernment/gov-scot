@@ -83,7 +83,7 @@
                             </#if>
                         </h2>
 
-                        ${document.feature.content}
+                        ${document.feature.content?no_esc}
                     </div>
                 </aside>
 

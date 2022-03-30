@@ -1,19 +1,8 @@
-<#function strSlug title separator="-" idSafe=true>
-  <#local flipped = "_" />
-  <#if seperator == "_">
-    <#local flipped = "-" />
-  </#if>
-
-  <#local string = title?replace("[" + flipped + "]+", separator, "r") />
+<#function strSlug string>
   <#local string = string?lower_case />
-  <#local string = string?replace("[ \t\n\x0B\f\r]+", separator, "r") />
-  <#local string = string?replace("[^" + separator + "a-z0-9]+", separator, "r") />
-
-  <#if idSafe == true>
-    <#local string = string?replace("^" + separator, "", "r") />
-  </#if>
-
-  <#local string = string?replace("[" + separator + "]+", separator, "r") />
+  <#local string = string?replace("[ \t\n\x0B\f\r]+", "-", "r") />
+  <#local string = string?replace("[^-a-z0-9]+", "-", "r") />
+  <#local string = string?replace("(-)+", "-", "r") />
 
   <#return string />
 </#function>
