@@ -188,6 +188,11 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
             return;
         }
 
+        if (document.isHippoFolderBean()) {
+            request.setAttribute(TITLE, publicationTitle);
+            return;
+        }
+
         try {
             String title = document.getNode().getProperty("govscot:title").getString();
             request.setAttribute(TITLE, title);
