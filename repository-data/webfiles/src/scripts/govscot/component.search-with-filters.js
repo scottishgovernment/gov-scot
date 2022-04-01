@@ -239,6 +239,7 @@ function clearErrors() {
 
 function enableJSFilters () {
     [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[type="radio"]')).forEach((item => {
+        item.type = 'checkbox';
         item.classList.remove('ds_radio__input');
         item.classList.add('ds_checkbox__input');
         item.dataset.form = item.dataset.form.replace('radio-', 'checkbox-');
