@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:reports/facet-createdby:
+      hippofacnav:filters: ['hippo:availability = preview', 'hippostdpubwf:createdBy
+          != publications', 'hippostdpubwf:createdBy != migration', 'hippostdpubwf:createdBy
+          != news', 'hippostdpubwf:createdBy != build.api@mygov.scot']
