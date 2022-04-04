@@ -181,10 +181,6 @@
                                                     id="${slugifyTitle}" name="topics" class="ds_checkbox__input" type="checkbox" value="${item.title}">
                                                 <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
                                             </div>
-
-                                            <#if itemsTrigger>
-                                                <#assign noItems = false />
-                                            </#if>
                                         </#list>
                                     </div>
                                 </div>
