@@ -1,7 +1,7 @@
 <#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
-
+<!--noindex-->
 <header class="ds_site-header" role="banner" id="page-top">
     <div class="ds_wrapper">
         <div class="ds_site-header__content">
@@ -93,3 +93,4 @@
         </#if>
     </#if>
 </header>
+<!--endnoindex-->
