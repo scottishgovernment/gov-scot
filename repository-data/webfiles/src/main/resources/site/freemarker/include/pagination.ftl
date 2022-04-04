@@ -25,7 +25,7 @@
                         </li>
                     <#else>
                         <li class="ds_pagination__item ">
-                            <a class="ds_pagination__link" href="${pageUrl}">${pageNr}</a>
+                            <a class="ds_pagination__link" href="${pageUrl?no_esc}">${pageNr}</a>
                         </li>
                     </#if>
 
