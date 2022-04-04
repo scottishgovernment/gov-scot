@@ -37,13 +37,14 @@ const homePage = {
 
     attachEventHandlers: function () {
         const policySubmitLinkElements = [].slice.call(document.querySelectorAll('.js-policy-form-submit'));
+        const keywordSearchInputElement = document.querySelector('#filters-search-term');
 
         // submit policy form on press of enter on keyword input
-        document.querySelector('#filters-search-term').addEventListener('keypress', event => {
+        keywordSearchInputElement.addEventListener('keypress', event => {
             if (event.keyCode === 13) {
                 event.preventDefault();
 
-                this.submitPolicyForm(policySubmitLinkHref);
+                this.submitPolicyForm(keywordSearchInputElement.parentNode.querySelector('.js-policy-form-submit').dataset.href);
             }
         });
 
@@ -54,7 +55,7 @@ const homePage = {
 
                 this.submitPolicyForm(element.dataset.href);
             });
-        })
+        });
     },
 
     submitPolicyForm: function (destinationUrl) {
@@ -90,7 +91,6 @@ const homePage = {
     },
 
     navigateToUrl: function (url) {
-        console.log(2222, url)
         window.location.href = url;
     }
 };

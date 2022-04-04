@@ -160,7 +160,7 @@
                                 <label class="ds_label" for="filters-search-term">Keyword</label>
 
                                 <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
-                                    <input type="text" title="Filter by keyword" name="filters-search-term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
+                                    <input type="text" title="Filter by keyword" name="term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
                                     <button data-href="<@hst.link path='/policies/' />" class="ds_button  js-policy-form-submit" title="Submit" id="filters-search-submit" >
                                         <span class="visually-hidden">Search</span>
                                         <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#search"></use></svg>
@@ -178,7 +178,7 @@
 
                                             <div class="ds_checkbox  ds_checkbox--small">
                                                 <input
-                                                    id="${slugifyTitle}" name="topics" class="ds_checkbox__input" type="checkbox" value="${item.title}">
+                                                    id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${item.title}">
                                                 <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
                                             </div>
                                         </#list>
