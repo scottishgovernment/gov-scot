@@ -10,8 +10,6 @@
         </div>
 
         <div class="ds_layout__content">
-            <@hst.html hippohtml=document.content />
-
             <#include 'common/a-z-list.ftl' />
         </div>
     </main>
