@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: a29878e4-2346-4da8-95bd-c79de8e21aa9
+          jcr:uuid: c4d3ceb7-cc04-4d09-a3cd-bbacef307a60
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -47,6 +47,14 @@ definitions:
             hipposysedit:path: govscot:metaDescription
             hipposysedit:primary: false
             hipposysedit:type: String
+          /summary:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:summary
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -60,9 +68,10 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable']
           govscot:metaDescription: ''
           govscot:title: ''
-          jcr:uuid: fa80827a-0caa-4896-9cce-c9f89405d9eb
+          jcr:uuid: 14923ea0-9599-4266-992c-c7267f926c26
           hippostdpubwf:lastModificationDate: 2019-03-12T10:22:24.204Z
           hippostdpubwf:creationDate: 2019-03-12T10:22:24.204Z
+          govscot:summary: ''
           /govscot:relatedItems:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -117,3 +126,15 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:News', 'govscot:Publication', 'govscot:SpeechOrStatement',
                 'govscot:Minutes']
+          /summary:
+            jcr:primaryType: frontend:plugin
+            caption: Summary
+            field: summary
+            hint: 'The summary is used by the internal search and category list pages.  The
+              summary should be a short description of the content item (300 characters
+              - approx. 50 words).  Note: longer summaries will be truncated to two
+              lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
