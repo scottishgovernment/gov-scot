@@ -1,0 +1,4 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/breadcrumb/Collections:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: collections
+  hst:repobased: false
