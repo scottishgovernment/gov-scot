@@ -20,9 +20,9 @@
 }
 
 @include ds_media-query(large) {
-  @include ds_layout();
-
   .#{$site-prefix}homepage-fm {
+    @include ds_layout();
+
     &__title {
       @include ds_colwidth(12);
     }
