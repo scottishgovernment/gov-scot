@@ -231,7 +231,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String term = param(request, "term");
         String parsedTerm = SearchInputParsingUtils.parse(term, false);
 
-        if (StringUtils.isBlank(term)) {
+        if (StringUtils.isBlank(parsedTerm)) {
             return;
         }
         constraints.add(or(fieldConstraints(parsedTerm)));
