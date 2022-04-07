@@ -138,10 +138,8 @@
                     ||   document.contactInformation.email?has_content
                     ||   document.contactInformation.facebook?has_content
                     ||   document.contactInformation.youtube?has_content
-                    ||   document.contactInformation.blog?has_content
-                    ||   document.contactInformation.postalAddress.content?has_content>
+                    ||   document.contactInformation.blog?has_content>
                         <#assign contactInformation = document.contactInformation/>
-                        <#assign postalAddress = document.postalAddress />
                         <#assign contactInformationHeadingModifier = 'gamma' />
                     <section>
                         <#include 'common/contact-information.ftl' />
@@ -193,7 +191,7 @@
             </div>
 
             <div class="ds_layout__feedback">
-                <#include '../common/feedback-wrapper.ftl'>
+                <#include './common/feedback-wrapper.ftl'>
             </div>
         </main>
     </div>

@@ -25,17 +25,20 @@
                                     </dd>
                                 </span>
 
-                                <span class="ds_metadata__item">
-                                    <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                                <#if (hst.isBeanType(item, "scot.gov.www.beans.News")?? && item.publicationDate)
+                                     || (!hst.isBeanType(item, "scot.gov.www.beans.News")?? && item.displayDate)>
+                                    <span class="ds_metadata__item">
+                                        <dt class="ds_metadata__key  visually-hidden">Date</dt>
 
-                                    <dd class="ds_metadata__value">
-                                        <#if hst.isBeanType(item, "scot.gov.www.beans.News")??>
-                                            <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/>
-                                        <#elseif item.displayDate>
-                                            <@fmt.formatDate value=item.displayDate.time type="both" pattern="dd MMMM yyyy"/>
-                                        </#if>
-                                    </dd>
-                                </span>
+                                        <dd class="ds_metadata__value">
+                                            <#if hst.isBeanType(item, "scot.gov.www.beans.News")??>
+                                                <@fmt.formatDate value=item.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/>
+                                            <#elseif item.displayDate>
+                                                <@fmt.formatDate value=item.displayDate.time type="both" pattern="dd MMMM yyyy"/>
+                                            </#if>
+                                        </dd>
+                                    </span>
+                                </#if>
                             </dl>
 
                             <h2 class="gamma  gov_search-result__title">
