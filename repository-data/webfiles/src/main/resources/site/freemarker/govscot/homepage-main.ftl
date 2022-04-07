@@ -163,7 +163,7 @@
                                     <input type="text" title="Filter by keyword" name="term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
                                     <button data-href="<@hst.link path='/policies/' />" class="ds_button  js-policy-form-submit" title="Submit" id="filters-search-submit" >
                                         <span class="visually-hidden">Search</span>
-                                        <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#search"></use></svg>
+                                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
                                     </button>
                                 </div>
                             </fieldset>
@@ -188,7 +188,7 @@
 
                             <button data-href="<@hst.link path='/policies/' />" class="js-policy-form-submit  ds_button  ds_button--fixed  ds_button--has-icon  ds_no-margin--bottom">
                                 Search policies
-                                <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron_right"></use></svg>
+                                <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
                             </button>
                         </form>
                     </div>

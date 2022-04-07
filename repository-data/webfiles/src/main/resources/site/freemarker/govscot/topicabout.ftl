@@ -91,7 +91,7 @@
 
                         <button class="js-stats-form-submit  ds_button  ds_button--fixed  ds_button--has-icon  ds_no-margin--bottom" data-button="button-search-stats">
                             Search
-                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#chevron_right"></use></svg>
+                            <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
                         </button>
                     </form>
                 </div>

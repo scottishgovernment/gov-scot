@@ -83,7 +83,7 @@
 
                 <button class="js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
                     Clear all filters
-                    <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#close"></use></svg>
+                    <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
                 </button>
             <#else>
                 <p>Showing all <b>${pageable.total}</b> ${searchTermPlural}</p>

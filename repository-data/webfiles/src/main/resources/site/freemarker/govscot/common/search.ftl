@@ -15,7 +15,7 @@
 
             <button type="submit" class="ds_button  js-site-search-button">
                 <span class="visually-hidden">Search gov.scot</span>
-                <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#search"></use></svg>
+                <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
             </button>
         </div>
     </form>

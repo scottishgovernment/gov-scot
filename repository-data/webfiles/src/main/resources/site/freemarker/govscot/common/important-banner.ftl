@@ -9,7 +9,7 @@
                 <div role="heading" class="visually-hidden">Information</div>
 
                 <span class="ds_notification__icon  ds_notification__icon--inverse  ds_notification__icon--colour" aria-hidden="true">
-                    <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img"><use xlink:href="${iconspath}#priority_high"></use></svg>
+                    <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img"><use href="${iconspath}#priority_high"></use></svg>
                 </span>
                 <div class="ds_notification__text">
                     <@hst.html var="content" hippohtml=importantBanner.content/>
@@ -20,7 +20,7 @@
 
                 <button class="ds_notification__close  js-close-notification" type="button">
                     <span class="visually-hidden">Close this notification</span>
-                    <svg class="ds_icon  ds_icon--fill" role="img"><use xlink:href="${iconspath}#close"></use></svg>
+                    <svg class="ds_icon  ds_icon--fill" role="img"><use href="${iconspath}#close"></use></svg>
                 </button>
             </div>
         </div>

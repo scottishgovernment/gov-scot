@@ -73,7 +73,7 @@
                                 <#if contactInformation.facebook?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="${contactInformation.facebook}">
-                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#facebook"></use></svg>
+                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#facebook"></use></svg>
                                         Facebook
                                     </a>
                                 </dd>
@@ -81,7 +81,7 @@
                                 <#if contactInformation.twitter?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="http://twitter.com/${contactInformation.twitter}">
-                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#twitter"></use></svg>
+                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#twitter"></use></svg>
                                         ${contactInformation.twitter}
                                     </a>
                                 </dd>
@@ -89,7 +89,7 @@
                                 <#if contactInformation.flickr?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="#${contactInformation.flickr}">
-                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#flickr"></use></svg>
+                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#flickr"></use></svg>
                                         Flickr
                                     </a>
                                 </dd>
@@ -97,7 +97,7 @@
                                 <#if contactInformation.youtube?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="${contactInformation.youtube}">
-                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#youtube"></use></svg>
+                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#youtube"></use></svg>
                                         YouTube
                                     </a>
                                 </dd>
@@ -105,7 +105,7 @@
                                 <#if contactInformation.blog?has_content>
                                 <dd class="ds_contact-details__social-item">
                                     <a class="ds_contact-details__social-link" href="${contactInformation.blog}">
-                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#blog"></use></svg>
+                                        <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#blog"></use></svg>
                                         Blog
                                     </a>
                                 </dd>

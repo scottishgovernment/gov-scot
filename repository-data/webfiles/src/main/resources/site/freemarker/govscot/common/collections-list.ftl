@@ -14,7 +14,7 @@
             <div class="ds_accordion-item__header">
                 <h3 id="panel-collections-heading" class="ds_accordion-item__title">
                     <svg class="ds_icon ds_!_margin-right--1">
-                        <use xlink:href="${iconspath}#topic"></use>
+                        <use href="${iconspath}#topic"></use>
                     </svg>
                     This document is part of ${description}
                 </h3>

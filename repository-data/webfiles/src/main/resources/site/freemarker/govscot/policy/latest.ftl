@@ -19,7 +19,7 @@
                                     <dt class="ds_metadata__key  visually-hidden">Type</dt>
                                     <dd class="ds_metadata__value  ds_content-label">
                                         <#if hst.isBeanType(item, "scot.gov.www.beans.News")><#else>
-                                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#description"></use></svg>
+                                            <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#description"></use></svg>
                                         </#if>
                                         ${item.label}
                                     </dd>

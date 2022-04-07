@@ -58,7 +58,7 @@
                         <input class="ds_input" type="text" id="filters-search-term" maxlength="160" value="${term}" />
                         <button class="ds_button  js-filter-search-submit" type="submit" title="Submit" id="filters-search-submit" >
                             <span class="visually-hidden">Search</span>
-                            <svg class="ds_icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#search"></use></svg>
+                            <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
                         </button>
                     </div>
                 </fieldset>

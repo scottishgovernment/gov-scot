@@ -15,8 +15,8 @@
             <div class="ds_site-header__controls">
                 <label aria-controls="mobile-navigation" class="ds_site-header__control  js-toggle-menu" for="menu">
                     <span class="ds_site-header__control-text">Menu</span>
-                    <svg class="ds_icon  ds_site-header__control-icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#menu"></use></svg>
-                    <svg class="ds_icon  ds_site-header__control-icon  ds_site-header__control-icon--active-icon" aria-hidden="true" role="img"><use xlink:href="${iconspath}#close"></use></svg>
+                    <svg class="ds_icon  ds_site-header__control-icon" aria-hidden="true" role="img"><use href="${iconspath}#menu"></use></svg>
+                    <svg class="ds_icon  ds_site-header__control-icon  ds_site-header__control-icon--active-icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
                 </label>
             </div>
 
