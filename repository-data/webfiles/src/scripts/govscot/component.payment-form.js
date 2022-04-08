@@ -29,7 +29,7 @@ const paymentForm = {
                 orderCode: document.getElementById('orderCode').value,
                 amount: document.getElementById('amount').value,
                 description: document.getElementById('description').value,
-                emailAddress: document.getElementById('email').value
+                emailAddress: document.getElementById('email-address').value
             };
 
             that.removeErrorMessages();
@@ -46,7 +46,7 @@ const paymentForm = {
         const orderCodeInputQuestion = orderCodeInput.parentNode;
         const amountInput = document.getElementById('amount');
         const amountInputQuestion = amountInput.parentNode.parentNode;
-        const emailInput = document.getElementById('email');
+        const emailInput = document.getElementById('email-address');
         const emailInputQuestion = emailInput.parentNode;
         const errorSummary = document.getElementById('error-summary');
 

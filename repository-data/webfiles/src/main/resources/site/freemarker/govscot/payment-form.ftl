@@ -52,10 +52,10 @@
                 </div>
 
                 <div class="ds_question">
-                    <label class="ds_label" for="email">Email address</label>
+                    <label class="ds_label" for="email-address">Email address</label>
                     <p class="ds_hint-text">Your email address for payment confirmation.</p>
                     <p class="ds_question__error-message  fully-hidden" id="invalid-email">Email address is not in a valid format</p>
-                    <input class="ds_input" type="text" id="email" name="email" required></input>
+                    <input class="ds_input" type="text" id="email-address" name="email" required>
                 </div>
 
                 <button id="submit-payment" class="ds_button" name="submit">Submit payment</button>

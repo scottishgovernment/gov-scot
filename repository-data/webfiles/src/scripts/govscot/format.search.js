@@ -15,11 +15,22 @@ const filteredListPage = new SearchWithFilters ({
     }
 });
 
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
 window.format = filteredListPage;
 
 window.format.redactPostcodesInDataLayer = function () {
-    const params = new URLSearchParams(window.location.search);
-    const query = params.get('q');
+    const query = getQueryVariable('q');
     if (query) {
         const nospacequery = query.replace(/\s/g, '');
 
