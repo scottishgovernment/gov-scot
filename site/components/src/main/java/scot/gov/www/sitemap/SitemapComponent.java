@@ -87,8 +87,10 @@ public class SitemapComponent extends BaseSitemapComponent {
     }
 
     private int getOffsetFromRequestPath(String path) {
-        String stripped = StringUtils.substringBefore(substringAfter(path, "/sitemap_"), ".xml");
-        int index = Integer.valueOf(stripped);
+        String filename = StringUtils.substringAfterLast(path, "/");
+        String indexStr = StringUtils.substringBefore(filename, ".xml");
+        //String stripped = StringUtils.substringBefore(substringAfter(path, "/sitemap_"), ".xml");
+        int index = Integer.valueOf(indexStr);
         return index * MAX_SITEMAP_SIZE;
     }
 

@@ -377,9 +377,6 @@ definitions:
       /sitemap_latest.xml:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:components/sitemapLatest
-      /sitemap_default_.xml:
-        jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:components/sitemap
       /sitemap.xml:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:components/sitemapIndex
@@ -388,3 +385,8 @@ definitions:
         hst:componentconfigurationid: hst:pages/statisticslistpage
         hst:relativecontentpath: publications/statistics-and-research
         hst:sitemapitemhandlerids: [trailing-slash]
+      /sitemap:
+        jcr:primaryType: hst:sitemapitem
+        /_default_.xml:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:components/sitemap

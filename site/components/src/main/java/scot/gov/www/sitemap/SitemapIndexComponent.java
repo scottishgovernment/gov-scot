@@ -58,7 +58,7 @@ public class SitemapIndexComponent extends BaseSitemapComponent {
     }
 
     TSitemap tsitemap(HstRequest request, int i) {
-        String filename = String.format("sitemap_%d.xml", i);
+        String filename = String.format("sitemap/%d.xml", i);
         return tsitemap(request, filename);
     }
 
