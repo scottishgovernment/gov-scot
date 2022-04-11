@@ -89,8 +89,7 @@ public class SitemapComponent extends BaseSitemapComponent {
     private int getOffsetFromRequestPath(String path) {
         String filename = StringUtils.substringAfterLast(path, "/");
         String indexStr = StringUtils.substringBefore(filename, ".xml");
-        //String stripped = StringUtils.substringBefore(substringAfter(path, "/sitemap_"), ".xml");
-        int index = Integer.valueOf(indexStr);
+        int index = Integer.parseInt(indexStr);
         return index * MAX_SITEMAP_SIZE;
     }
 
@@ -137,7 +136,7 @@ public class SitemapComponent extends BaseSitemapComponent {
     }
 
     boolean isQueryBackedType(HippoBean bean) throws RepositoryException {
-        return QUERY_BACKED_TYPES.contains(bean.getNode().getPrimaryNodeType());
+        return QUERY_BACKED_TYPES.contains(bean.getNode().getPrimaryNodeType().getName());
     }
 
     boolean isIndexFile(HippoBean bean) throws RepositoryException {
