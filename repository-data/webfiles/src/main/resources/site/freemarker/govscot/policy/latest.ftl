@@ -25,8 +25,8 @@
                                     </dd>
                                 </span>
 
-                                <#if (hst.isBeanType(item, "scot.gov.www.beans.News")?? && item.publicationDate)
-                                     || (!hst.isBeanType(item, "scot.gov.www.beans.News")?? && item.displayDate)>
+                                <#if (hst.isBeanType(item, "scot.gov.www.beans.News")?? && item.publicationDate??)
+                                     || (!hst.isBeanType(item, "scot.gov.www.beans.News")?? && item.displayDate??)>
                                     <span class="ds_metadata__item">
                                         <dt class="ds_metadata__key  visually-hidden">Date</dt>
 

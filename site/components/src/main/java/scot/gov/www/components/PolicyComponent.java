@@ -34,7 +34,6 @@ public class PolicyComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
         HippoBean document;
-LOG.info("doBeforeRender {}", request.getPathInfo());
         try {
             document = request.getRequestContext().getContentBean();
             if(document == null) {
