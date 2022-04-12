@@ -33,37 +33,37 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: hippogallery:original
             hipposysedit:type: hippogallery:image
-          /smallfullfourone:
+          /bannermobile:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:smallfullfourone
+            hipposysedit:path: govscot:bannermobile
             hipposysedit:type: hippogallery:image
-          /smallfulldoubledfourone:
+          /bannermobiledoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:smallfulldoubledfourone
+            hipposysedit:path: govscot:bannermobiledoubled
             hipposysedit:type: hippogallery:image
-          /mediumtwelvecolumnsfourone:
+          /bannertablet:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:mediumtwelvecolumnsfourone
+            hipposysedit:path: govscot:bannertablet
             hipposysedit:type: hippogallery:image
-          /mediumtwelvecolumnsdoubledfourone:
+          /bannertabletdoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:mediumtwelvecolumnsdoubledfourone
+            hipposysedit:path: govscot:bannertabletdoubled
             hipposysedit:type: hippogallery:image
-          /largetwelvecolumnsfourone:
+          /bannerdesktop:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:largetwelvecolumnsfourone
+            hipposysedit:path: govscot:bannerdesktop
             hipposysedit:type: hippogallery:image
-          /largetwelvecolumnsdoubledfourone:
+          /bannerdesktopdoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:largetwelvecolumnsdoubledfourone
+            hipposysedit:path: govscot:bannerdesktopdoubled
             hipposysedit:type: hippogallery:image
-          /xlargetwelvecolumnsfourone:
+          /bannerdesktophd:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:xlargetwelvecolumnsfourone
+            hipposysedit:path: govscot:bannerdesktophd
             hipposysedit:type: hippogallery:image
-          /xlargetwelvecolumnsdoubledfourone:
+          /bannerdesktophddoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:xlargetwelvecolumnsdoubledfourone
+            hipposysedit:path: govscot:bannerdesktophddoubled
             hipposysedit:type: hippogallery:image
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
@@ -127,51 +127,51 @@ definitions:
             field: original
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /smallfullfourone:
+          /bannermobile:
             jcr:primaryType: frontend:plugin
-            caption: smallfullfourone
-            field: smallfullfourone
+            caption: Banner - mobile
+            field: bannermobile
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /smallfulldoubledfourone:
+          /bannermobiledoubled:
             jcr:primaryType: frontend:plugin
-            caption: smallfulldoubledfourone
-            field: smallfulldoubledfourone
+            caption: Banner - mobile doubled
+            field: bannermobiledoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /mediumtwelvecolumnsfourone:
+          /bannertablet:
             jcr:primaryType: frontend:plugin
-            caption: mediumtwelvecolumnsfourone
-            field: mediumtwelvecolumnsfourone
+            caption: Banner - tablet
+            field: bannertablet
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /mediumtwelvecolumnsdoubledfourone:
+          /bannertabletdoubled:
             jcr:primaryType: frontend:plugin
-            caption: mediumtwelvecolumnsdoubledfourone
-            field: mediumtwelvecolumnsdoubledfourone
+            caption: Banner - tablet doubled
+            field: bannertabletdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /largetwelvecolumnsfourone:
+          /bannerdesktop:
             jcr:primaryType: frontend:plugin
-            caption: largetwelvecolumnsfourone
-            field: largetwelvecolumnsfourone
+            caption: Banner - desktop
+            field: bannerdesktop
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /largetwelvecolumnsdoubledfourone:
+          /bannerdesktopdoubled:
             jcr:primaryType: frontend:plugin
-            caption: largetwelvecolumnsdoubledfourone
-            field: largetwelvecolumnsdoubledfourone
+            caption: Banner - desktop doubled
+            field: bannerdesktopdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /xlargetwelvecolumnsfourone:
+          /bannerdesktophd:
             jcr:primaryType: frontend:plugin
-            caption: xlargetwelvecolumnsfourone
-            field: xlargetwelvecolumnsfourone
+            caption: Banner - desktop HD
+            field: bannerdesktophd
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /xlargetwelvecolumnsdoubledfourone:
+          /bannerdesktophddoubled:
             jcr:primaryType: frontend:plugin
-            caption: xlargetwelvecolumnsdoubledfourone
-            field: xlargetwelvecolumnsdoubledfourone
+            caption: Banner - desktop HD doubled
+            field: bannerdesktophddoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
