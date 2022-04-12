@@ -29,17 +29,17 @@
                         <div class="gov_person__image-container">
                             <a class="gov_person__link" href="${link}">
                                 <#if person.image??>
-                                    <img alt="${person.title}" class="gov_person__image"
-                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
-                                         srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
-                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
-                                <@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
-                                <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
-                                <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
-                                <@hst.link hippobean=person.image.largethreecolumnsdoubledsquare/> 416w,
-                                <@hst.link hippobean=person.image.xlargethreecolumnssquare/> 256w,
-                                <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
-                                         sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                <img alt="${person.title}" class="gov_person__image"
+                                src="<@hst.link hippobean=person.image.xlarge/>"
+                                srcset="<@hst.link hippobean=person.image.small/> 148w,
+                                    <@hst.link hippobean=person.image.smalldoubled/> 296w,
+                                    <@hst.link hippobean=person.image.medium/> 224w,
+                                    <@hst.link hippobean=person.image.mediumdoubled/> 448w,
+                                    <@hst.link hippobean=person.image.large/> 208w,
+                                    <@hst.link hippobean=person.image.largedoubled/> 416w,
+                                    <@hst.link hippobean=person.image.xlarge/> 256w,
+                                    <@hst.link hippobean=person.image.xlargedoubled/> 512w"
+                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                                 <#else>
                                 <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
                                 </#if>

@@ -33,37 +33,37 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: hippogallery:original
             hipposysedit:type: hippogallery:image
-          /smalltwocolumnssquare:
+          /small:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:smalltwocolumnssquare
+            hipposysedit:path: govscot:small
             hipposysedit:type: hippogallery:image
-          /smalltwocolumnsdoubledsquare:
+          /smalldoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:smalltwocolumnsdoubledsquare
+            hipposysedit:path: govscot:smalldoubled
             hipposysedit:type: hippogallery:image
-          /mediumfourcolumnssquare:
+          /medium:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:mediumfourcolumnssquare
+            hipposysedit:path: govscot:medium
             hipposysedit:type: hippogallery:image
-          /mediumfourcolumnsdoubledsquare:
+          /mediumdoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:mediumfourcolumnsdoubledsquare
+            hipposysedit:path: govscot:mediumdoubled
             hipposysedit:type: hippogallery:image
-          /largethreecolumnssquare:
+          /large:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:largethreecolumnssquare
+            hipposysedit:path: govscot:large
             hipposysedit:type: hippogallery:image
-          /largethreecolumnsdoubledsquare:
+          /largedoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:largethreecolumnsdoubledsquare
+            hipposysedit:path: govscot:largedoubled
             hipposysedit:type: hippogallery:image
-          /xlargethreecolumnssquare:
+          /xlarge:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:xlargethreecolumnssquare
+            hipposysedit:path: govscot:xlarge
             hipposysedit:type: hippogallery:image
-          /xlargethreecolumnsdoubledsquare:
+          /xlargedoubled:
             jcr:primaryType: hipposysedit:field
-            hipposysedit:path: govscot:xlargethreecolumnsdoubledsquare
+            hipposysedit:path: govscot:xlargedoubled
             hipposysedit:type: hippogallery:image
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
@@ -127,51 +127,51 @@ definitions:
             field: original
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /smalltwocolumnssquare:
+          /small:
             jcr:primaryType: frontend:plugin
-            caption: smalltwocolumnssquare
-            field: smalltwocolumnssquare
+            caption: Small
+            field: small
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /smalltwocolumnsdoubledsquare:
+          /smalldoubled:
             jcr:primaryType: frontend:plugin
-            caption: smalltwocolumnsdoubledsquare
-            field: smalltwocolumnsdoubledsquare
+            caption: Small doubled
+            field: smalldoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /mediumfourcolumnssquare:
+          /medium:
             jcr:primaryType: frontend:plugin
-            caption: mediumfourcolumnssquare
-            field: mediumfourcolumnssquare
+            caption: Medium
+            field: medium
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /mediumfourcolumnsdoubledsquare:
+          /mediumdoubled:
             jcr:primaryType: frontend:plugin
-            caption: mediumfourcolumnsdoubledsquare
-            field: mediumfourcolumnsdoubledsquare
+            caption: Medium doubled
+            field: mediumdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /largethreecolumnssquare:
+          /large:
             jcr:primaryType: frontend:plugin
-            caption: largethreecolumnssquare
-            field: largethreecolumnssquare
+            caption: Large
+            field: large
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /largethreecolumnsdoubledsquare:
+          /largedoubled:
             jcr:primaryType: frontend:plugin
-            caption: largethreecolumnsdoubledsquare
-            field: largethreecolumnsdoubledsquare
+            caption: Large doubled
+            field: largedoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /xlargethreecolumnssquare:
+          /xlarge:
             jcr:primaryType: frontend:plugin
-            caption: xlargethreecolumnssquare
-            field: xlargethreecolumnssquare
+            caption: Extra large
+            field: xlarge
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-          /xlargethreecolumnsdoubledsquare:
+          /xlargedoubled:
             jcr:primaryType: frontend:plugin
-            caption: xlargethreecolumnsdoubledsquare
-            field: xlargethreecolumnsdoubledsquare
+            caption: Extra large doubled
+            field: xlargedoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
