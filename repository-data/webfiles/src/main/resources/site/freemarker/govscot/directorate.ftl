@@ -82,16 +82,16 @@
                             <#list document.secondaryOrgRole as role>
                                 <@hst.link var="link" hippobean=role/>
 
-                                <#if role.incumbent??>
-                                    <#assign person = role.incumbent/>
-                                <#else>
-                                    <#assign person = role/>
-                                </#if>
-
                                 <li class="gov_person-grid__item">
                                     <div class="gov_person">
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
+                                                <#if role.incumbent??>
+                                                    <#assign person = role.incumbent/>
+                                                <#else>
+                                                    <#assign person = role/>
+                                                </#if>
+
                                                 <#if hst.isBeanType(role, "scot.gov.www.beans.Person")>
                                                     <#if person.image??>
                                                         <img alt="${person.title}" class="gov_person__image"
@@ -109,12 +109,7 @@
                                                         <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                     </#if>
                                                 <#else>
-                                                    <#if person.image??>
-                                                        <img alt="${person.title}" class="gov_person__image"
-                                                        src="<@hst.link hippobean=person.image/>" />
-                                                    <#else>
-                                                        <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
-                                                    </#if>
+                                                    <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
                                             </a>
                                         </div>

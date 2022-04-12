@@ -11,17 +11,7 @@
                 <header class="gov_feature-header  gov_feature-header--topic" id="page-content">
                     <#if document.image??>
                         <div class="gov_feature-header__media  gov_feature-header__media--full">
-                            <img alt="" aria-hidden="true"
-                                src="<@hst.link hippobean=document.image.xlargetwelvecolumnsfourone/>"
-                                srcset="<@hst.link hippobean=document.image.smallfullfourone/> 448w,
-                                    <@hst.link hippobean=document.image.smallfulldoubledfourone/> 896w,
-                                    <@hst.link hippobean=document.image.mediumtwelvecolumnsfourone/> 736w,
-                                    <@hst.link hippobean=document.image.mediumtwelvecolumnsdoubledfourone/> 1472w,
-                                    <@hst.link hippobean=document.image.largetwelvecolumnsfourone/> 928w,
-                                    <@hst.link hippobean=document.image.largetwelvecolumnsdoubledfourone/> 1856w,
-                                    <@hst.link hippobean=document.image.xlargetwelvecolumnsfourone/> 1120w,
-                                    <@hst.link hippobean=document.image.xlargetwelvecolumnsdoubledfourone/> 2240w"
-                                sizes="(min-width:1200px) 1120px, (min-width:992px) 928px, (min-width:768px) 763px, 448px" />
+                            <img alt="" aria-hidden="true" src="<@hst.link hippobean=document.image.xlargetwelvecolumnsdoubledfourone/>" />
                         </div>
                     </#if>
 
@@ -70,13 +60,13 @@
                                     <#if imgLabel??>
                                         <div class="ds_card__media">
                                             <img src="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/>"
-                                            srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  224w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 448w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 288w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 576w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 352w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 708w"
-                                            sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width:768px) 224px, 360px" alt="" class="ds_card__image">
+                                            srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
+                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
+                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
+                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
+                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
+                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
+                                            sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px" alt="" class="ds_card__image">
                                         </div>
                                     </#if>
 

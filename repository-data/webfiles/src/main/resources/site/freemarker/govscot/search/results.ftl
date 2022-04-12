@@ -36,11 +36,11 @@
                                         aria-hidden="true"
                                         class="ds_aspect-box__inner"
                                         src="<@hst.link hippobean=item.image.large />"
-                                        srcset="<@hst.link hippobean=item.image.small/> 96w,
-                                        <@hst.link hippobean=item.image.smalldoubled/> 192w,
-                                        <@hst.link hippobean=item.image.large/> 128w,
-                                        <@hst.link hippobean=item.image.largedoubled/> 256w"
-                                        sizes="(min-width:992px) 128px, 96px">
+                                        srcset="<@hst.link hippobean=item.image.small/> 84w,
+                                        <@hst.link hippobean=item.image.smalldoubled/> 168w,
+                                        <@hst.link hippobean=item.image.large/> 144w,
+                                        <@hst.link hippobean=item.image.largedoubled/> 288w"
+                                        sizes="(min-width:768px) 144px, 84px">
                                 </a>
                             </div>
                         </div>
