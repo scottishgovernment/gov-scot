@@ -11,7 +11,17 @@
                 <header class="gov_feature-header  gov_feature-header--issue" id="page-content">
                     <#if document.image??>
                         <div class="gov_feature-header__media  gov_feature-header__media--full">
-                            <img alt="" aria-hidden="true" src="<@hst.link hippobean=document.image.xlargetwelvecolumnsdoubledfourone/>" />
+                            <img alt="" aria-hidden="true"
+                                src="<@hst.link hippobean=document.image.xlargetwelvecolumnsfourone/>"
+                                srcset="<@hst.link hippobean=document.image.smallfullfourone/> 448w,
+                                    <@hst.link hippobean=document.image.smallfulldoubledfourone/> 896w,
+                                    <@hst.link hippobean=document.image.mediumtwelvecolumnsfourone/> 736w,
+                                    <@hst.link hippobean=document.image.mediumtwelvecolumnsdoubledfourone/> 1472w,
+                                    <@hst.link hippobean=document.image.largetwelvecolumnsfourone/> 928w,
+                                    <@hst.link hippobean=document.image.largetwelvecolumnsdoubledfourone/> 1856w,
+                                    <@hst.link hippobean=document.image.xlargetwelvecolumnsfourone/> 1120w,
+                                    <@hst.link hippobean=document.image.xlargetwelvecolumnsdoubledfourone/> 2240w"
+                                sizes="(min-width:1200px) 1120px, (min-width:992px) 928px, (min-width:768px) 763px, 448px" />
                         </div>
                     </#if>
 

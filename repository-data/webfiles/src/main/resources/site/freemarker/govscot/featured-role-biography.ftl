@@ -32,17 +32,17 @@
         <div class="ds_layout__sidebar">
             <aside class="gov_sidebar-feature">
                 <#if document.image??>
-                    <img class="gov_sidebar-feature__image" alt="" aria-hidden="true"
+                    <img alt="" aria-hidden="true" class="gov_sidebar-feature__image"
                         src="<@hst.link hippobean=document.image.largefourcolumns/>"
                         srcset="<@hst.link hippobean=document.image.smallcolumns/> 360w,
                             <@hst.link hippobean=document.image.smallcolumnsdoubled/> 720w,
-                            <@hst.link hippobean=document.image.mediumfourcolumns/> 220w,
-                            <@hst.link hippobean=document.image.mediumfourcolumnsdoubled/> 440w,
-                            <@hst.link hippobean=document.image.largefourcolumns/> 294w,
-                            <@hst.link hippobean=document.image.largefourcolumnsdoubled/> 588w,
-                            <@hst.link hippobean=document.image.xlargefourcolumns/> 360w,
-                            <@hst.link hippobean=document.image.xlargefourcolumnsdoubled/> 720w"
-                        sizes="(min-width:1200px) 360px, (min-width:920px) 294px, (min-width:768px) 220px, 360px" />
+                            <@hst.link hippobean=document.image.mediumfourcolumns/> 224w,
+                            <@hst.link hippobean=document.image.mediumfourcolumnsdoubled/> 488w,
+                            <@hst.link hippobean=document.image.largefourcolumns/> 288w,
+                            <@hst.link hippobean=document.image.largefourcolumnsdoubled/> 576w,
+                            <@hst.link hippobean=document.image.xlargefourcolumns/> 352w,
+                            <@hst.link hippobean=document.image.xlargefourcolumnsdoubled/> 708w"
+                        sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width:768px) 224px, 360px" />
                 </#if>
 
                 <#if contactInformation??>
