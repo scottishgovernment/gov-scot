@@ -81,6 +81,14 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:largethreecolumnsdoubled
             hipposysedit:type: hippogallery:image
+          /largefourcolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largefourcolumns
+            hipposysedit:type: hippogallery:image
+          /largefourcolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largefourcolumnsdoubled
+            hipposysedit:type: hippogallery:image
           /largesevencolumns:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:largesevencolumns
@@ -120,6 +128,14 @@ definitions:
           /xlargesixcolumnsdoubled:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:xlargesixcolumnsdoubled
+            hipposysedit:type: hippogallery:image
+          /xlargesevencolumns:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargesevencolumns
+            hipposysedit:type: hippogallery:image
+          /xlargesevencolumnsdoubled:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:xlargesevencolumnsdoubled
             hipposysedit:type: hippogallery:image
           /xlargeeightcolumns:
             jcr:primaryType: hipposysedit:field
@@ -263,6 +279,18 @@ definitions:
             field: largethreecolumnsdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+          /largefourcolumns:
+            jcr:primaryType: frontend:plugin
+            caption: largefourcolumns
+            field: largefourcolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /largefourcolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: largefourcolumnsdoubled
+            field: largefourcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
           /largesevencolumns:
             jcr:primaryType: frontend:plugin
             caption: largesevencolumns
@@ -321,6 +349,18 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: xlargesixcolumnsdoubled
             field: xlargesixcolumnsdoubled
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargesevencolumns:
+            jcr:primaryType: frontend:plugin
+            caption: xlargesevencolumns
+            field: xlargesevencolumns
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+          /xlargesevencolumnsdoubled:
+            jcr:primaryType: frontend:plugin
+            caption: xlargesevencolumnsdoubled
+            field: xlargesevencolumnsdoubled
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
           /xlargeeightcolumns:
