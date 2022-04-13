@@ -29,18 +29,18 @@
                                     <div class=gov_person>
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
-                                                <#if person.image??>
-                                                <img alt="${person.title}" class="gov_person__image"
-                                                src="<@hst.link hippobean=person.image.xlarge/>"
-                                                srcset="<@hst.link hippobean=person.image.small/> 148w,
-                                                    <@hst.link hippobean=person.image.smalldoubled/> 296w,
-                                                    <@hst.link hippobean=person.image.medium/> 224w,
-                                                    <@hst.link hippobean=person.image.mediumdoubled/> 448w,
-                                                    <@hst.link hippobean=person.image.large/> 208w,
-                                                    <@hst.link hippobean=person.image.largedoubled/> 416w,
-                                                    <@hst.link hippobean=person.image.xlarge/> 256w,
-                                                    <@hst.link hippobean=person.image.xlargedoubled/> 512w"
-                                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                                <#if person.image?? && person.image.xlargethreecolumnssquare??>
+                                                    <img alt="${person.title}" class="gov_person__image"
+                                                        src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
+                                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
+                                                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
+                                                                <@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
+                                                                <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
+                                                                <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
+                                                                <@hst.link hippobean=person.image.largethreecolumnsdoubledsquare/> 416w,
+                                                                <@hst.link hippobean=person.image.xlargethreecolumnssquare/> 256w,
+                                                                <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
+                                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                                                 <#else>
                                                 <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
@@ -48,7 +48,14 @@
                                         </div>
 
                                         <div class="gov_person__text-container">
-                                            <h4 class="gov_person__name">${role.title}</h4>
+
+                                            <h4 class="gov_person__name">
+                                                <#if role.incumbent??>
+                                                    ${role.incumbent.title}
+                                                <#else>
+                                                    ${role.title}
+                                                </#if>
+                                            </h4>
 
                                             <p class="gov_person__roles">
                                                 <#-- todo: allow for multiple here -->
@@ -73,39 +80,38 @@
                     <ul class="gov_person-grid">
                         <#if document.secondaryOrgRole??>
                             <#list document.secondaryOrgRole as role>
-                                <#assign person = role.incumbent />
                                 <@hst.link var="link" hippobean=role/>
+
+                                <#if role.incumbent??>
+                                    <#assign person = role.incumbent/>
+                                <#else>
+                                    <#assign person = role/>
+                                </#if>
 
                                 <li class="gov_person-grid__item">
                                     <div class="gov_person">
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
-                                                <#if role.incumbent??>
-                                                    <#assign person = role.incumbent/>
+                                                <#if person.image?? && person.image.xlargethreecolumnssquare??>
+                                                    <img alt="${person.title}" class="gov_person__image"
+                                                        src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
+                                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
+                                                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
+                                                                <@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
+                                                                <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
+                                                                <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
+                                                                <@hst.link hippobean=person.image.largethreecolumnsdoubledsquare/> 416w,
+                                                                <@hst.link hippobean=person.image.xlargethreecolumnssquare/> 256w,
+                                                                <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
+                                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                                                 <#else>
-                                                    <#assign person = role/>
-                                                </#if>
-
-                                                <#if person.image??>
-                                                <img alt="${person.title}" class="gov_person__image"
-                                                src="<@hst.link hippobean=person.image.xlarge/>"
-                                                srcset="<@hst.link hippobean=person.image.small/> 148w,
-                                                    <@hst.link hippobean=person.image.smalldoubled/> 296w,
-                                                    <@hst.link hippobean=person.image.medium/> 224w,
-                                                    <@hst.link hippobean=person.image.mediumdoubled/> 448w,
-                                                    <@hst.link hippobean=person.image.large/> 208w,
-                                                    <@hst.link hippobean=person.image.largedoubled/> 416w,
-                                                    <@hst.link hippobean=person.image.xlarge/> 256w,
-                                                    <@hst.link hippobean=person.image.xlargedoubled/> 512w"
-                                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
-                                                <#else>
-                                                <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
+                                                    <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
                                             </a>
                                         </div>
 
                                         <div class="person__text-container">
-                                            <h4 class="person__name  person__name--link">${role.title}</h4>
+                                            <h4 class="person__name  person__name--link">${person.title}</h4>
 
                                             <p class="person__roles">
                                                 <#-- todo: allow for multiple here -->
@@ -141,14 +147,14 @@
                     ||   document.contactInformation.blog?has_content>
                         <#assign contactInformation = document.contactInformation/>
                         <#assign contactInformationHeadingModifier = 'gamma' />
-                    <section>
+                    <section class="gov_content-block">
                         <#include 'common/contact-information.ftl' />
                     </section>
                 </#if>
 
                 <#if document.relatedNews?has_content>
-                    <section>
-                        <h3>News</h3>
+                    <section class="gov_content-block">
+                        <h3 class="gov_content-block__title">News</h3>
                         <ul class="ds_no-bullets">
                             <#list document.relatedNews as newsItem>
                                 <li>
@@ -161,8 +167,8 @@
                 </#if>
 
                 <#if document.relatedPublications?has_content>
-                    <section>
-                        <h3>Publications</h3>
+                    <section class="gov_content-block">
+                        <h3 class="gov_content-block__title">Publications</h3>
                         <ul class="ds_no-bullets">
                             <#list document.relatedPublications as publication>
                                 <li>
@@ -175,8 +181,8 @@
                 </#if>
 
                 <#if policies?has_content>
-                    <section>
-                        <h3>Policies</h3>
+                    <section class="gov_content-block">
+                        <h3 class="gov_content-block__title">Policies</h3>
                         <ul class="ds_no-bullets">
                             <#list policies as policy>
                                 <li>
