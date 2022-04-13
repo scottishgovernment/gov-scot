@@ -41,7 +41,7 @@ const publicationPage = {
         window.onpopstate = (event) => {
             const url = event.target.window.location.href;
 
-            if (this.pages[url]) {
+            if (event.state && url !== window.location.href && this.pages[url]) {
                 this.loadSubPageHtml(url)
                     .then(value => {
                         this.populatePage(value);
