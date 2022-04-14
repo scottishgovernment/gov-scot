@@ -146,7 +146,7 @@
 
             <hr />
 
-            <div class="ds_layout  gov_layout--publication  <#if currentPage == document>gov_layout--publication</#if>">
+            <div class="ds_layout  gov_layout--publication  <#if currentPage == document>gov_layout--publication--no-sidebar</#if>">
                 <#if currentPage != document>
                     <!--noindex-->
                     <div class="ds_layout__sidebar">
@@ -155,34 +155,43 @@
                             <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">Choose section <span class="ds_side-navigation__expand-indicator"></span></label>
 
                             <ul class="ds_side-navigation__list" id="side-navigation-root">
+                                <li class="ds_side-navigation__item">
+                                    <a class="ds_side-navigation__link" href="${baseurl}">
+                                        <b>Table of contents</b>
+                                    </a>
+                                </li>
+
                                 <#list chapters as chapter>
-                                    <#if chapter == currentChapter>
-                                        <span class="ds_side-navigation__link  ds_side-navigation__link--inactive">
-                                            <b>${chapter.displayName}</b>
-                                        </span>
+                                    <li class="ds_side-navigation__item">
+                                        <#if chapter == currentChapter>
+                                            <span class="ds_side-navigation__link  ds_side-navigation__link--inactive">
+                                                <b>${chapter.displayName}</b>
+                                            </span>
 
-                                        <ul class="ds_side-navigation__list">
-                                            <#list chapter.documents as page>
-                                                <li class="ds_side-navigation__item">
-                                                    <#if page == currentPage>
-                                                        <span class="ds_side-navigation__link  ds_current">
-                                                            ${page.title}
-                                                        </span>
-                                                    <#else>
-                                                        <a class="ds_side-navigation__link" href="<@hst.link hippobean=page/>">
-                                                            ${page.title}
-                                                        </a>
-                                                    </#if>
+                                            <ul class="ds_side-navigation__list">
+                                                <#list chapter.documents as page>
+                                                    <li class="ds_side-navigation__item">
+                                                        <#if page == currentPage>
+                                                            <span class="ds_side-navigation__link  ds_current">
+                                                                ${page.title}
+                                                            </span>
+                                                        <#else>
+                                                            <a class="ds_side-navigation__link" href="<@hst.link hippobean=page/>">
+                                                                ${page.title}
+                                                            </a>
+                                                        </#if>
 
-                                                </li>
-                                            </#list>
-                                        </ul>
-                                    <#else>
-                                        <@hst.link var="link" hippobean=chapter.documents?first/>
-                                        <a class="ds_side-navigation__link" href="${link}">
-                                            ${chapter.displayName}
-                                        </a>
-                                    </#if>
+                                                    </li>
+                                                </#list>
+                                            </ul>
+                                        <#else>
+
+                                            <@hst.link var="link" hippobean=chapter.documents?first/>
+                                            <a class="ds_side-navigation__link" href="${link}">
+                                                ${chapter.displayName}
+                                            </a>
+                                        </#if>
+                                    </li>
                                 </#list>
                             </ul>
                         </nav>
