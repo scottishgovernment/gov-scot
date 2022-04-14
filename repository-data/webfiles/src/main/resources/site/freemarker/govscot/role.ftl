@@ -36,15 +36,15 @@
                         <div class="gov_person__image-container  gov_person__image-container--centered-mobile">
                             <#if document.incumbent.image??>
                             <img alt="${document.incumbent.title}" class="gov_person__image"
-                                src="<@hst.link hippobean=document.incumbent.image.xlarge/>"
-                                srcset="<@hst.link hippobean=document.incumbent.image.small/> 148w,
-                                    <@hst.link hippobean=document.incumbent.image.smalldoubled/> 296w,
-                                    <@hst.link hippobean=document.incumbent.image.medium/> 224w,
-                                    <@hst.link hippobean=document.incumbent.image.mediumdoubled/> 448w,
-                                    <@hst.link hippobean=document.incumbent.image.large/> 208w,
-                                    <@hst.link hippobean=document.incumbent.image.largedoubled/> 416w,
-                                    <@hst.link hippobean=document.incumbent.image.xlarge/> 256w,
-                                    <@hst.link hippobean=document.incumbent.image.xlargedoubled/> 512w"
+                                src="<@hst.link hippobean=document.incumbent.image.xlargethreecolumnssquare/>"
+                                srcset="<@hst.link hippobean=document.incumbent.image.smalltwocolumnssquare/> 148w,
+                                    <@hst.link hippobean=document.incumbent.image.smalltwocolumnsdoubledsquare/> 296w,
+                                    <@hst.link hippobean=document.incumbent.image.mediumfourcolumnssquare/> 224w,
+                                    <@hst.link hippobean=document.incumbent.image.mediumfourcolumnsdoubledsquare/> 448w,
+                                    <@hst.link hippobean=document.incumbent.image.largethreecolumnssquare/> 208w,
+                                    <@hst.link hippobean=document.incumbent.image.largethreecolumnsdoubledsquare/> 416w,
+                                    <@hst.link hippobean=document.incumbent.image.xlargethreecolumnssquare/> 256w,
+                                    <@hst.link hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare/> 512w"
                                 sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                             <#else>
                             <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
