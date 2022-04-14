@@ -30,7 +30,7 @@
                                             <@hst.link hippobean=featuredItem.image.largeeightcolumns/> 608w,
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumnsdoubled/> 1472w,
                                             <@hst.link hippobean=featuredItem.image.largeeightcolumnsdoubled/> 1216w"
-                                            sizes="(min-width:1200px) 736px, (min-width:992px) 608px, 736px" />
+                                            sizes="(min-width:1200px) 736px, (min-width:992px) 608px, 736px"
                                         <#elseif document.featuredItems?size == 2>
                                             srcset="
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumns/> 736w,
@@ -39,7 +39,7 @@
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumnsdoubled/> 1472w,
                                             <@hst.link hippobean=featuredItem.image.largeeightcolumnsdoubled/> 1216w,
                                             <@hst.link hippobean=featuredItem.image.xlargesevencolumnsdoubled/> 1280w"
-                                            sizes="(min-width:1200px) 640px, (min-width:992px) 608px, 736px" />
+                                            sizes="(min-width:1200px) 640px, (min-width:992px) 608px, 736px"
                                         <#elseif document.featuredItems?size == 3>
                                             srcset="
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumns/> 736w,
@@ -48,7 +48,7 @@
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumnsdoubled/> 1472w,
                                             <@hst.link hippobean=featuredItem.image.largeeightcolumnsdoubled/> 1216w,
                                             <@hst.link hippobean=featuredItem.image.xlargesevencolumnsdoubled/> 1280w"
-                                            sizes="(min-width:1200px) 640px, (min-width:992px) 608px, 736px" />
+                                            sizes="(min-width:1200px) 640px, (min-width:992px) 608px, 736px"
                                         <#else>
                                             srcset="
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumns/> 736w,
@@ -57,7 +57,7 @@
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumnsdoubled/> 736w,
                                             <@hst.link hippobean=featuredItem.image.largesevencolumnsdoubled/> 1054w,
                                             <@hst.link hippobean=featuredItem.image.xlargesixcolumnsdoubled/> 1088w"
-                                            sizes="(min-width:1200px) 544px, (min-width:992px) 528px, 736px" />
+                                            sizes="(min-width:1200px) 544px, (min-width:992px) 528px, 736px"
                                         </#if>
                                         >
                                     </div>
@@ -89,7 +89,7 @@
                                                     <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
                                                     <@hst.link hippobean=featuredItem.image.largefourcolumnsdoubled/> 576w,
                                                     <@hst.link hippobean=featuredItem.image.xlargethreecolumnsdoubled/> 512w"
-                                                    sizes="(min-width:1200px) 256px, (min-width:992px) 288px, 224px" />
+                                                    sizes="(min-width:1200px) 256px, (min-width:992px) 288px, 224px"
                                                 <#elseif document.featuredItems?size == 3>
                                                     srcset="
                                                     <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
@@ -98,7 +98,7 @@
                                                     <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
                                                     <@hst.link hippobean=featuredItem.image.largethreecolumnsdoubled/> 416w,
                                                     <@hst.link hippobean=featuredItem.image.xlargethreecolumnsdoubled/> 512w"
-                                                    sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px" />
+                                                    sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px"
                                                 <#else>
                                                     srcset="
                                                     <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
@@ -107,7 +107,7 @@
                                                     <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
                                                     <@hst.link hippobean=featuredItem.image.largetwocolumnsdoubled/> 256w,
                                                     <@hst.link hippobean=featuredItem.image.xlargetwocolumnsdoubled/> 320w"
-                                                    sizes="(min-width:1200px) 160px, (min-width:992px) 128px, 224px" />
+                                                    sizes="(min-width:1200px) 160px, (min-width:992px) 128px, 224px"
                                                 </#if>
                                             >
                                         </div>
