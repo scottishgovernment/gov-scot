@@ -28,6 +28,7 @@
                     <h3 class="ds_search-result__title">
                         <a class="ds_search-result__link" href="${link}">${item.roleTitle}</a>
                     </h3>
+
                     <div class="ds_search-result__has-media">
                         <div class="ds_search-result__media-wrapper">
                             <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
@@ -35,12 +36,13 @@
                                     <img alt=""
                                         aria-hidden="true"
                                         class="ds_aspect-box__inner"
-                                        src="<@hst.link hippobean=item.image.large />"
-                                        srcset="<@hst.link hippobean=item.image.small/> 96w,
-                                        <@hst.link hippobean=item.image.smalldoubled/> 192w,
-                                        <@hst.link hippobean=item.image.large/> 128w,
-                                        <@hst.link hippobean=item.image.largedoubled/> 256w"
-                                        sizes="(min-width:992px) 128px, 96px">
+                                        src="<@hst.link hippobean=item.image.largethreecolumnssquare />"
+                                        srcset="
+                                        <@hst.link hippobean=item.image.mediumfourcolumnssquare/> 224,
+                                        <@hst.link hippobean=item.image.mediumfourcolumnsdoubledsquare/> 448,
+                                        <@hst.link hippobean=item.image.largethreecolumnssquare/> 208,
+                                        <@hst.link hippobean=item.image.largethreecolumnsdoubledsquare/> 416"
+                                        sizes="(min-width:992px) 208px, (min-width:768px) 224px, 106px">
                                 </a>
                             </div>
                         </div>
