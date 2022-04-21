@@ -151,8 +151,8 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:mediumtwocolumnsdoubledsquare:
       jcr:primaryType: frontend:pluginconfig
       upscaling: false
-      width: 128
-      height: 128
+      width: 192
+      height: 192
       compression: 0.6
       optimize: quality
       cropping: true

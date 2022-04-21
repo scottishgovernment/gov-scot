@@ -41,6 +41,14 @@ definitions:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:smalltwocolumnsdoubledsquare
             hipposysedit:type: hippogallery:image
+          /mediumtwocolumnssquare:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumtwocolumnssquare
+            hipposysedit:type: hippogallery:image
+          /mediumtwocolumnsdoubledsquare:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:mediumtwocolumnsdoubledsquare
+            hipposysedit:type: hippogallery:image
           /mediumfourcolumnssquare:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:mediumfourcolumnssquare
@@ -48,6 +56,14 @@ definitions:
           /mediumfourcolumnsdoubledsquare:
             jcr:primaryType: hipposysedit:field
             hipposysedit:path: govscot:mediumfourcolumnsdoubledsquare
+            hipposysedit:type: hippogallery:image
+          /largetwocolumnssquare:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largetwocolumnssquare
+            hipposysedit:type: hippogallery:image
+          /largetwocolumnsdoubledsquare:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:path: govscot:largetwocolumnsdoubledsquare
             hipposysedit:type: hippogallery:image
           /largethreecolumnssquare:
             jcr:primaryType: hipposysedit:field
