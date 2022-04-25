@@ -30,6 +30,9 @@
             <aside class="gov_sidebar-feature">
                 <#if document.relatedarticle.image??>
                     <img alt="" aria-hidden="true" class="gov_sidebar-feature__image"
+                        width="${document.relatedarticle.image.xlargefourcolumnsdoubled.width?c}"
+                        height="${document.relatedarticle.image.xlargefourcolumnsdoubled.height?c}"
+                        loading="lazy"
                         src="<@hst.link hippobean=document.relatedarticle.image.largefourcolumns/>"
                         srcset="<@hst.link hippobean=document.relatedarticle.image.smallcolumns/> 360w,
                             <@hst.link hippobean=document.relatedarticle.image.smallcolumnsdoubled/> 720w,

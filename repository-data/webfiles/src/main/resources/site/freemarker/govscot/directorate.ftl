@@ -31,6 +31,9 @@
                                             <a class="gov_person__link" href="${link}">
                                                 <#if person.image?? && person.image.xlargethreecolumnssquare??>
                                                     <img alt="${person.title}" class="gov_person__image"
+                                                        width="${person.image.xlargethreecolumnsdoubledsquare.width?c}"
+                                                        height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
+                                                        loading="lazy"
                                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
                                                         srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
                                                                 <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
@@ -42,7 +45,7 @@
                                                                 <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
                                                         sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                                                 <#else>
-                                                <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
+                                                    <img width="256" height="256" loading=lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
                                             </a>
                                         </div>
@@ -94,6 +97,9 @@
                                             <a class="gov_person__link" href="${link}">
                                                 <#if person.image?? && person.image.xlargethreecolumnssquare??>
                                                     <img alt="${person.title}" class="gov_person__image"
+                                                        width="${person.image.xlargethreecolumnsdoubledsquare.width?c}"
+                                                        height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
+                                                        loading="lazy"
                                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
                                                         srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
                                                                 <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
@@ -105,7 +111,7 @@
                                                                 <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
                                                         sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                                                 <#else>
-                                                    <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
+                                                    <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>
                                             </a>
                                         </div>

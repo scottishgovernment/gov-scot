@@ -24,6 +24,9 @@
                     <div class="gov_feature-header__media">
                         <div class="ds_aspect-box">
                             <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
+                                width="${document.image.xlargesixcolumnsdoubled.width?c}"
+                                height="${document.image.xlargesixcolumnsdoubled.height?c}"
+                                loading="lazy"
                                 src="<@hst.link hippobean=document.image.largesixcolumns/>"
                                 srcset="<@hst.link hippobean=document.image.smallcolumns/> 130w,
                                     <@hst.link hippobean=document.image.smallcolumnsdoubled/> 260w,

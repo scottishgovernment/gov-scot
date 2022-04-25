@@ -36,6 +36,9 @@
                                     <img alt=""
                                         aria-hidden="true"
                                         class="ds_aspect-box__inner"
+                                        width="${item.image.largetwocolumnsdoubledsquare.width?c}"
+                                        height="${item.image.largetwocolumnsdoubledsquare.height?c}"
+                                        loading="lazy"
                                         src="<@hst.link hippobean=item.image.largetwocolumnssquare />"
                                         srcset="
                                         <@hst.link hippobean=item.image.mediumtwocolumnssquare/> 96w,

@@ -85,7 +85,7 @@
                 </a>
             <#else>
                 <a class="ds_file-info__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "csv">${documentdownload}<#else>${documentinline}</#if>">
-                    <img class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
+                    <img width="104" height="152" loading="lazy" class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                 </a>
             </#if>
         </div>

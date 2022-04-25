@@ -12,6 +12,9 @@
                     <#if document.image??>
                         <div class="gov_feature-header__media  gov_feature-header__media--full">
                             <img alt="" aria-hidden="true"
+                                width="${document.image.xlargetwelvecolumnsdoubledfourone.width?c}"
+                                height="${document.image.xlargetwelvecolumnsdoubledfourone.height?c}"
+                                loading="lazy"
                                 src="<@hst.link hippobean=document.image.xlargetwelvecolumnsfourone/>"
                                 srcset="<@hst.link hippobean=document.image.smallfullfourone/> 448w,
                                     <@hst.link hippobean=document.image.smallfulldoubledfourone/> 896w,

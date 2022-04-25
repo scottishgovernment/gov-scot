@@ -22,7 +22,10 @@
                 <div class="gov_person  gov_person--flex">
                     <div class="gov_person__image-container">
                         <#if document.image??>
-                             <img alt="${document.title}" class="gov_person__image"
+                            <img alt="${document.title}" class="gov_person__image"
+                            width="256"
+                            height="256"
+                            loading="lazy"
                             src="<@hst.link hippobean=document.image.xlargethreecolumnssquare/>"
                             srcset="<@hst.link hippobean=document.image.smalltwocolumnssquare/> 148w,
                                 <@hst.link hippobean=document.image.smalltwocolumnsdoubledsquare/> 296w,
@@ -34,7 +37,7 @@
                                 <@hst.link hippobean=document.image.xlargethreecolumnsdoubledsquare/> 512w"
                             sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                         <#else>
-                        <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">
+                        <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">
                         </#if>
                     </div>
 

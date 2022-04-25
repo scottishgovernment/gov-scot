@@ -74,14 +74,14 @@
 
             <div class="ds_site-footer__copyright">
                 <a class="ds_site-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">
-                    <img src="<@hst.link path='assets/images/logos/ogl.svg' />" alt="Open Government License" />
+                    <img width="300" height="121" src="<@hst.link path='assets/images/logos/ogl.svg' />" alt="Open Government License" loading="lazy" />
                 </a>
                 <p>All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>, except for graphic assets and where otherwise stated</p>
                 <p>&copy; Crown Copyright</p>
             </div>
 
             <div class="ds_site-footer__org">
-                <img class="ds_site-footer__org-logo" src="<@hst.link path='/assets/images/logos/scottish-government--min.svg' />" alt="gov.scot" />
+                <img width="300" height="55" class="ds_site-footer__org-logo" src="<@hst.link path='/assets/images/logos/scottish-government--min.svg' />" alt="gov.scot" loading="lazy" />
             </div>
         </div>
     </div>

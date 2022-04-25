@@ -126,7 +126,7 @@
                                     </a>
                                 <#else>
                                     <a class="ds_file-info__thumbnail-link  gov_supporting-documents__thumbnail-link" aria-hidden="true" href="${baseurl + 'documents/'}"">
-                                        <img class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
+                                        <img width="104" height="152" class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                                     </a>
                                 </#if>
                             </#if>

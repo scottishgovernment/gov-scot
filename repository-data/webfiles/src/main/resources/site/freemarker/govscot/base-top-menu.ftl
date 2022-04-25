@@ -8,7 +8,7 @@
             <div class="ds_site-branding">
                 <@hst.link var="home" siteMapItemRefId="root" />
                 <a data-header="header-logo" class="ds_site-branding__logo  ds_site-branding__link" href="${home}">
-                    <img class="ds_site-branding__logo-image" alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
+                    <img width="213" height="40" class="ds_site-branding__logo-image" alt="Scottish Government" src="<@hst.link path='assets/images/logos/scotgovlogo.svg' />"/>
                 </a>
             </div>
 

@@ -12,6 +12,9 @@
                     <#if document.image??>
                         <div class="gov_feature-header__media  gov_feature-header__media--full">
                             <img alt="" aria-hidden="true"
+                                width="${document.image.xlargetwelvecolumnsdoubledfourone.width?c}"
+                                height="${document.image.xlargetwelvecolumnsdoubledfourone.height?c}"
+                                loading="lazy"
                                 src="<@hst.link hippobean=document.image.xlargetwelvecolumnsfourone/>"
                                 srcset="<@hst.link hippobean=document.image.smallfullfourone/> 448w,
                                     <@hst.link hippobean=document.image.smallfulldoubledfourone/> 896w,
@@ -69,14 +72,17 @@
                                     </#if>
                                     <#if imgLabel??>
                                         <div class="ds_card__media">
-                                            <img src="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/>"
-                                            srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
-                                            <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
-                                            sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px" alt="" class="ds_card__image">
+                                            <div class="ds_aspect-box">
+                                                <img alt="" class="ds_aspect-box__inner" src="/assets/images/placeholders/thistles.jpg" width="1600" height="900"
+                                                    srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
+                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
+                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
+                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
+                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
+                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
+                                                    sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px"
+                                                />
+                                            </div>
                                         </div>
                                     </#if>
 

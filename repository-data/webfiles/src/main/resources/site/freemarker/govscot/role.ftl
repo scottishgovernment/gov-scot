@@ -36,6 +36,9 @@
                         <div class="gov_person__image-container  gov_person__image-container--centered-mobile">
                             <#if document.incumbent.image??>
                             <img alt="${document.incumbent.title}" class="gov_person__image"
+                                width="256"
+                                height="256"
+                                loading="lazy"
                                 src="<@hst.link hippobean=document.incumbent.image.xlargethreecolumnssquare/>"
                                 srcset="<@hst.link hippobean=document.incumbent.image.smalltwocolumnssquare/> 148w,
                                     <@hst.link hippobean=document.incumbent.image.smalltwocolumnsdoubledsquare/> 296w,
@@ -47,7 +50,7 @@
                                     <@hst.link hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare/> 512w"
                                 sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
                             <#else>
-                            <img class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
+                            <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
                             </#if>
                         </div>
                     </div>

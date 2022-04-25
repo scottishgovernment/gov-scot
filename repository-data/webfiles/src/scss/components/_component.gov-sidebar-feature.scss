@@ -5,8 +5,9 @@
 .gov_sidebar-feature {
     &__image {
         display: block;
-        @include ds_responsive-margin(4, bottom);
+        height: auto;
         width: 100%;
+        @include ds_responsive-margin(4, bottom);
     }
 }
 

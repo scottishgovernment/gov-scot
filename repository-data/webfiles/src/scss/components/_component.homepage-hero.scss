@@ -6,7 +6,7 @@
     @include ds_responsive-margin(4, bottom);
 
     &__figure {
-        background: $ds_colour__text;
+        background: $ds_colour__grey--light;
         margin-bottom: 0;
         overflow: hidden;
         padding-bottom: calc(900%/16);

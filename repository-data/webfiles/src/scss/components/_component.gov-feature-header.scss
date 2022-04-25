@@ -38,8 +38,9 @@
         z-index: 1;
 
         &--full > img {
-            width: 100%;
             display: block;
+            height: auto;
+            width: 100%;
         }
     }
 

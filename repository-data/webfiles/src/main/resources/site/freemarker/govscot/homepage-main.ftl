@@ -19,11 +19,14 @@
                 <div class="gov_homepage-hero  gov_homepage-hero--${document.featuredItems?size}">
                     <div class="gov_homepage-hero__main">
                         <#assign featuredItem = document.featuredItems?first>
+
                         <div class="gov_hero-item">
                             <div class="gov_hero-item__media">
                                 <a data-navigation="hero-1-image" href="${featuredItem.link.url}">
                                     <div class="gov_hero-item__figure">
                                         <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.xlargeeightcolumnsdoubled/>"
+                                            width="${featuredItem.image.xlargesevencolumns.width?c}"
+                                            height="${featuredItem.image.xlargesevencolumns.height?c}"
                                         <#if document.featuredItems?size == 1>
                                             srcset="
                                             <@hst.link hippobean=featuredItem.image.mediumtwelvecolumns/> 736w,
@@ -81,6 +84,8 @@
                                     <a data-navigation="hero-${featuredItem?index + 2}-image" href="${featuredItem.link.url}">
                                         <div class="gov_hero-item__figure">
                                             <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.xlargetwocolumns/>"
+                                                width="${featuredItem.image.xlargethreecolumns.width?c}"
+                                                height="${featuredItem.image.xlargethreecolumns.height?c}"
                                                 <#if document.featuredItems?size == 2>
                                                     srcset="
                                                     <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
@@ -360,15 +365,15 @@
                                 <source srcset="<@hst.link path='/assets/images/people/first_minister_home_768.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_768_@2x.jpg'/> 2x" media="(max-width: 991px)">
                                 <source srcset="<@hst.link path='/assets/images/people/first_minister_home_1024.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_1024_@2x.jpg'/> 2x" media="(max-width: 1199px)">
 
-                                <img src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
+                                <img loading="lazy" src="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/>" srcset="<@hst.link path='/assets/images/people/first_minister_home_hd.jpg'/> 1x, <@hst.link path='/assets/images/people/first_minister_home_hd_@2x.jpg'/> 2x">
                             </picture>
 
                             <#--  <picture class="gov_homepage-fm__image">
-                                <source srcset="<@hst.link hippobean=document.fmImageLandscape.smallcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.smallcolumnsdoubled/> 2x" media="(max-width: 767px)">
-                                <source srcset="<@hst.link hippobean=document.fmImageLandscape.mediumsixcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.mediumsixcolumnsdoubled/> 2x" media="(max-width: 991px)">
-                                <source srcset="<@hst.link hippobean=document.fmImagePortrait.largetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.largetwocolumnsdoubled/> 2x" media="(max-width: 1199px)">
+                                <source width="${document.fmImageLandscape.smallcolumns.width?c}" height="${document.fmImageLandscape.smallcolumns.height?c}" srcset="<@hst.link hippobean=document.fmImageLandscape.smallcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.smallcolumnsdoubled/> 2x" media="(max-width: 767px)">
+                                <source width="${document.fmImageLandscape.mediumsixcolumns.width?c}" height="${document.fmImageLandscape.mediumsixcolumns.height?c}" srcset="<@hst.link hippobean=document.fmImageLandscape.mediumsixcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.mediumsixcolumnsdoubled/> 2x" media="(max-width: 991px)">
+                                <source width="${document.fmImageLandscape.largetwocolumns.width?c}" height="${document.fmImageLandscape.largetwocolumns.height?c}" srcset="<@hst.link hippobean=document.fmImagePortrait.largetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.largetwocolumnsdoubled/> 2x" media="(max-width: 1199px)">
 
-                                <img src="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/>" srcset="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.xlargetwocolumnsdoubled/> 2x">
+                                <img loading="lazy" width="${document.fmImagePortrait.xlargetwocolumns.width?c}" height="${document.fmImagePortrait.xlargetwocolumns.height?c}" src="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/>" srcset="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.xlargetwocolumnsdoubled/> 2x">
                             </picture>  -->
 
                             <div class="gov_homepage-fm__content">
