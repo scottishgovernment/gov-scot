@@ -14,6 +14,6 @@ definitions:
         ,\r\n                \"ckeditor/ckeditorstyle.css\"\r\n        ],\r\n\r\n\
         \       \"youtube_responsive\": true,\r\n       \"youtube_privacy\": true,\r\
         \n       \"youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\",\
-        \ \"txtEmbed\", \"chkOlderCode\"],\r\n       \"extraAllowedContent\": \"table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate]\"\r\n\r\n}"
+        \ \"txtEmbed\", \"chkOlderCode\"],\r\n       \"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate]\"\r\n\r\n}"
       ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
         \r\n}"
