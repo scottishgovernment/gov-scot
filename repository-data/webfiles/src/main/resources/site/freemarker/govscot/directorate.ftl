@@ -22,14 +22,20 @@
                     <ul class="gov_person-grid">
                         <#if document.orgRole??>
                             <#list document.orgRole as role>
-                                <#assign person = role.incumbent />
+
+                                <#if role.incumbent??>
+                                    <#assign person = role.incumbent/>
+                                <#else>
+                                    <#assign person = role/>
+                                </#if>
+
                                 <@hst.link var="link" hippobean=role/>
 
                                 <li class="gov_person-grid__item">
                                     <div class=gov_person>
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
-                                                <#if person.image?? && person.image.xlargethreecolumnssquare??>
+                                                <#if role.incumbent?? && person.image?? && person.image.xlargethreecolumnssquare??>
                                                     <img alt="${person.title}" class="gov_person__image"
                                                         width="${person.image.xlargethreecolumnsdoubledsquare.width?c}"
                                                         height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
@@ -95,7 +101,7 @@
                                     <div class="gov_person">
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
-                                                <#if person.image?? && person.image.xlargethreecolumnssquare??>
+                                                <#if role.incumbent?? && person.image?? && person.image.xlargethreecolumnssquare??>
                                                     <img alt="${person.title}" class="gov_person__image"
                                                         width="${person.image.xlargethreecolumnsdoubledsquare.width?c}"
                                                         height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
