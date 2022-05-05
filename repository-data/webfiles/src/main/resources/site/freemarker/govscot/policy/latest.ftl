@@ -30,7 +30,7 @@
                                 <#if hst.isBeanType(item, "scot.gov.www.beans.News")><#else>
                                     <svg class="ds_icon  ds_icon--20" aria-hidden="true" role="img"><use href="${iconspath}#description"></use></svg>
                                 </#if>
-                                ${item.label}
+                                ${item.label?cap_first}
                             </dd>
                         </span>
 
