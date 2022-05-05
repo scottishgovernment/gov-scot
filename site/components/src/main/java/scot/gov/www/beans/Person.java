@@ -79,4 +79,8 @@ public class Person extends AttributableContent {
     }
 
     public String getName() { return getTitle(); }
+
+    public Boolean getExcludeFromSearchIndex() {
+        return getSingleProperty("govscot:excludeFromSearchIndex");
+    }
 }

@@ -38,4 +38,5 @@ public class Role extends SimpleContent {
     public String getName() { return getIncumbent() != null ? getIncumbent().getTitle() : ""; }
 
     public String getRoleTitle() { return getTitle(); }
+
 }

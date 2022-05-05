@@ -69,6 +69,12 @@
 </#if>
 
 <#if document??>
+
+    <#if document.excludeFromSearchIndex?? && document.excludeFromSearchIndex = true>
+        <@hst.headContribution category="noindex">
+            <meta name="robots" content="noindex"/>
+        </@hst.headContribution>
+    </#if>
     <@hst.headContribution category="dcMeta">
         <meta name="dc.title" content="${document.title}"/>
     </@hst.headContribution>
