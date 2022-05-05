@@ -23,6 +23,14 @@ definitions:
             hipposysedit:path: govscot:ContactInformation
             hipposysedit:primary: false
             hipposysedit:type: govscot:ContactInformation
+          /postalAddress:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:postalAddress
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
           /orgRoles:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -178,6 +186,15 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /postalAddress:
+            jcr:primaryType: frontend:plugin
+            caption: Postal address
+            field: postalAddress
+            hint: Please enter the postal address for this directorate.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /orgRole:
