@@ -17,23 +17,22 @@
         <property name="sourceList">
             <list>
                 <!-- Wrap JAX-RS component by SingletonResourceProvider. -->
+                <!--<bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">-->
+                    <!--<constructor-arg>-->
+                        <!--<bean class="scot.gov.www.rest.sitemap.SitemapResource" />-->
+                    <!--</constructor-arg>-->
+                <!--</bean>-->
+                <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
+                    <constructor-arg>
+                        <bean class="scot.gov.www.rest.sitemap.SitemapResource" />
+                    </constructor-arg>
+                </bean>
                 <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
                     <constructor-arg>
                         <bean class="scot.gov.www.rest.metadata.MetadataResource" />
                     </constructor-arg>
                 </bean>
             </list>
-        </property>
-    </bean>
-
-    <!-- Your custom JAX-RS REST Content/Context Aware Resource Providers
-         will be added into the following list !!! -->
-    <bean id="customRestContentResourceProviders"
-          class="org.springframework.beans.factory.config.ListFactoryBean">
-        <property name="sourceList">
-            <list>
-            </list>
-            <!---->
         </property>
     </bean>
 

@@ -1,6 +1,8 @@
 package scot.gov.publications.hippo;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.*;
 import javax.jcr.query.Query;
@@ -13,6 +15,8 @@ import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static scot.gov.publications.hippo.Constants.HIPPOSTD_STATE;
 
 public class HippoUtils {
+
+    private static final Logger LOG = LoggerFactory.getLogger(HippoUtils.class);
 
     @FunctionalInterface
     public interface ThrowingPredicate {
@@ -180,6 +184,7 @@ public class HippoUtils {
 
     public Node findOneQuery(Session session, String queryTemplate, String type, Object... args) throws RepositoryException {
         String sql = String.format(queryTemplate, args);
+        LOG.info("findOneQuery {}", sql);
         Query queryObj = session.getWorkspace().getQueryManager().createQuery(sql, type);
         QueryResult result = queryObj.execute();
         if (result.getNodes().getSize() == 1) {

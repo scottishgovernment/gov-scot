@@ -1,0 +1,11 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/sitemap:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.SitemapEventListener
+      hipposys:cmsonly: true
+      /hippo:moduleconfig:
+        jcr:primaryType: hipposys:moduleconfig
+        govscot:excludedTypes: ['govscot:PublicationPage', 'govscot:ComplexDocumentSection',
+          'govscot:DocumentInformation', 'govscot:HomeFeaturedItem', 'feed:rss20descriptor',
+          'selection:valuelist', 'govscot:Home', 'govscot:ImportantBanner', 'govscot:PageNotFound']

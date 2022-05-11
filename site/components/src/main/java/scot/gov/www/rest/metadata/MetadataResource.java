@@ -25,7 +25,7 @@ import java.util.function.Predicate;
  * - list of available Topics
  * - list of available Policies (including what topics they should be listed under)
  */
-@Path("/metadata/")
+@Path("/rest/metadata/")
 public class MetadataResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(MetadataResource.class);

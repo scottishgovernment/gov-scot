@@ -239,6 +239,7 @@ definitions:
         hst:componentconfigurationid: hst:pages/contentlist
         hst:relativecontentpath: siteitems
         hst:sitemapitemhandlerids: [trailing-slash]
+        hst:hiddeninchannelmanager: true
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:relativecontentpath: ${parent}/${1}
@@ -374,12 +375,11 @@ definitions:
           hst:componentconfigurationid: hst:pages/paymentresult
           hst:relativecontentpath: payment/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
-      /sitemap_latest.xml:
-        jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:components/sitemapLatest
       /sitemap.xml:
         jcr:primaryType: hst:sitemapitem
-        hst:componentconfigurationid: hst:components/sitemapIndex
+        hst:namedpipeline: JaxrsRestPlainPipeline
+        hst:hiddeninchannelmanager: true
+        hst:excludedforlinkrewriting: true
       /statistics-and-research:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/statisticslistpage
@@ -387,6 +387,34 @@ definitions:
         hst:sitemapitemhandlerids: [trailing-slash]
       /sitemap:
         jcr:primaryType: hst:sitemapitem
-        /_default_.xml:
+        hst:hiddeninchannelmanager: true
+        hst:excludedforlinkrewriting: true
+        /_any_.xml:
           jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:components/sitemap
+          hst:namedpipeline: JaxrsRestPlainPipeline
+        /latest.xml:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:components/sitemapLatest
+      /rest:
+        jcr:primaryType: hst:sitemapitem
+        hst:hiddeninchannelmanager: true
+        hst:excludedforlinkrewriting: true
+        /internal:
+          jcr:primaryType: hst:sitemapitem
+          hst:excludedforlinkrewriting: true
+          /_any_.xml:
+            jcr:primaryType: hst:sitemapitem
+            hst:namedpipeline: JaxrsRestPlainPipeline
+            hst:excludedforlinkrewriting: true
+        /metadata:
+          jcr:primaryType: hst:sitemapitem
+          hst:excludedforlinkrewriting: true
+          /_any_:
+            jcr:primaryType: hst:sitemapitem
+            hst:namedpipeline: JaxrsRestPlainPipeline
+            hst:excludedforlinkrewriting: true
+      /sitemap_latest.xml:
+        jcr:primaryType: hst:sitemapitem
+        hst:excludedforlinkrewriting: true
+        hst:hiddeninchannelmanager: true
+        hst:namedpipeline: JaxrsRestPlainPipeline
