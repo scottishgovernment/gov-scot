@@ -43,3 +43,7 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.ImportantBannerComponent
         hst:template: important-banner
+      /preview-indicator:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.PreviewIndicatorComponent
+        hst:template: preview-indicator

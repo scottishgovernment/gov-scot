@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org/">
+<head>
+<title>Preview Date Picker</title>
+</head>
+<wicket:extend>
+  <div class="preview-generation-dialog">
+    <h1>Select an expiration date</h1>
+    <form wicket:id="form" class="preview-generation-form">
+      <input type="text" wicket:id="expiration-date" class="preview-input-date" readonly="true"/>
+      <div class="preview-date-reset" wicket:id="expiration-date-reset-container">
+        <img alt="date-reset" wicket:id="expiration-date-reset"/>
+      </div>
+    </form>
+    <span class="preview-generation-warning" wicket:id="counttext"/>
+  </div>
+</wicket:extend>
+</html>

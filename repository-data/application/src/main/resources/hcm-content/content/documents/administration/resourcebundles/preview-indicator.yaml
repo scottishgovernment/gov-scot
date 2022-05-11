@@ -1,0 +1,49 @@
+/content/documents/administration/resourcebundles/preview-indicator:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+  jcr:uuid: 09754f75-2908-4099-9d08-3e41fdc55332
+  hippo:name: Preview indicator
+  hippo:versionHistory: c2bc7f55-424c-4360-8c1c-665d62fd87dd
+  /preview-indicator[1]:
+    jcr:primaryType: resourcebundle:resourcebundle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: b3e139c3-a817-4abc-b0a0-ae2be7ca9f88
+    hippo:availability: [live]
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2014-08-21T14:30:14.382+02:00
+    hippostdpubwf:lastModificationDate: 2020-08-31T19:26:11.261+03:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippostdpubwf:publicationDate: 2020-08-31T19:26:13.197+03:00
+    resourcebundle:descriptions: ['', '']
+    resourcebundle:id: preview.indicator
+    resourcebundle:keys: [indicator.content, indicator.disclaimer]
+    resourcebundle:messages: [This is a preview site., This feature uses cookies.]
+  /preview-indicator[2]:
+    jcr:primaryType: resourcebundle:resourcebundle
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: a2561236-8202-4862-b0de-93af1fef0f5b
+    hippo:availability: [preview]
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2014-08-21T14:30:14.382+02:00
+    hippostdpubwf:lastModificationDate: 2020-08-31T19:26:11.261+03:00
+    hippostdpubwf:lastModifiedBy: admin
+    resourcebundle:descriptions: ['', '']
+    resourcebundle:id: preview.indicator
+    resourcebundle:keys: [indicator.content, indicator.disclaimer]
+    resourcebundle:messages: [This is a preview site., This feature uses cookies.]
+  /preview-indicator[3]:
+    jcr:primaryType: resourcebundle:resourcebundle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 55c5f1a3-ada7-4afd-a093-1d986138eab7
+    hippo:availability: []
+    hippostd:state: draft
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2014-08-21T14:30:14.382+02:00
+    hippostdpubwf:lastModificationDate: 2020-08-31T19:26:02.362+03:00
+    hippostdpubwf:lastModifiedBy: admin
+    resourcebundle:descriptions: ['', '']
+    resourcebundle:id: preview.indicator
+    resourcebundle:keys: [indicator.content, indicator.disclaimer]
+    resourcebundle:messages: [This is a preview site., This feature uses cookies.]

@@ -1,5 +1,5 @@
 /content/documents/govscot/policies:
-  .meta:order-before: '404'
+  .meta:order-before: topics
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['hippo:named', 'mix:versionable']
   jcr:uuid: 28dad370-f337-4b2f-b8a0-1bbafaa57a63

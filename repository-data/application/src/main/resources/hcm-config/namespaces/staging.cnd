@@ -1,0 +1,9 @@
+<'staging'='http://www.staging.com/staging/nt/1.0'>
+<'hippo'='http://www.onehippo.org/jcr/hippo/nt/2.0.4'>
+
+[staging:preview] > hippo:compound
+  - staging:key (string)
+  - staging:url (string)
+  - staging:user (string)
+  - staging:creationdate (date)
+  - staging:expirationdate (date)

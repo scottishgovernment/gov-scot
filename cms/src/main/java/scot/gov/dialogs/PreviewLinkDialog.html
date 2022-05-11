@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org/">
+<head>
+<title>Preview Link Overview</title>
+</head>
+<wicket:extend>
+  <div class="document-preview-links-table">
+    <table des>
+      <tr wicket:id="listview" class="preview-link-row">
+        <td>
+          <div class="preview-item">
+            <span class="preview-link" wicket:id="name"></span>
+            <span class="copy-button" wicket:id="copy-button">
+              <span wicket:id="copy-icon"></span>
+            </span>
+          </div>
+          <p style="margin-top: 10px" wicket:id="preview-info"></p>
+          <p class="expired-notification" wicket:id="expired-notification"></p>
+        </td>
+        <td style="margin-left: 20px;">
+          <div class="link-delete">
+            <a wicket:id="delete">
+              <span wicket:id="delete-icon"></span>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div class="remove-button">
+      <a wicket:id="remove-all" class="btn btn-br-primary delete">Remove all</a>
+    </div>
+  </div>
+</wicket:extend>
+</html>

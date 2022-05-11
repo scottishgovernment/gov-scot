@@ -133,6 +133,12 @@
       <artifactId>feed-repository</artifactId>
       <version>${forge.feed.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.wicketstuff</groupId>
+      <artifactId>wicketstuff-clipboardjs</artifactId>
+      <version>7.14.0</version>
+    </dependency>
     
   </dependencies>
 

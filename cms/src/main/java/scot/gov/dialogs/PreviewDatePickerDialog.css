@@ -1,0 +1,37 @@
+.preview-generation-dialog{
+    padding: 16px;
+}
+
+.preview-generation-form{
+    display: flex;
+    align-items: center;
+}
+.preview-date-reset{
+    margin-left: 15px;
+}
+
+.preview-input-date{
+    cursor: pointer;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    padding: 8px 16px;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 5px 0 0;
+    width: 79px;
+}
+
+.preview-generation-warning{
+    display: block;
+    margin-top: 20px;
+    padding: 16px;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #faebcc;
+    border-left: 0;
+    line-height: 16px;
+    background-color: #fcf8e3;
+    color: #331d00;
+    text-align: center;
+}

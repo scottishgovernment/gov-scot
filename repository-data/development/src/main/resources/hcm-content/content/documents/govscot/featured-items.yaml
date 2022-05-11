@@ -1,5 +1,5 @@
 /content/documents/govscot/featured-items:
-  .meta:order-before: '404'
+  .meta:order-before: news
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 6c4cd630-70f1-4f11-9846-f47aadf586d5

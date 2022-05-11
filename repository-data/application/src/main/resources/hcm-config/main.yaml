@@ -3,3 +3,6 @@ definitions:
     govscot:
       uri: http://www.onehippo.org/govscot/nt/1.0
       cnd: namespaces/gov-scot.cnd
+    staging:
+      uri: http://www.staging.com/staging/nt/1.0
+      cnd: namespaces/staging.cnd

@@ -42,6 +42,8 @@
 <body>
     <@hst.include ref="googletagmanager"/>
 
+    <@hst.include ref="preview-indicator"/>
+
     <#include 'common/accessibility-links.ftl' />
 
     <span id="page-top"></span>

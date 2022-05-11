@@ -1,4 +1,16 @@
 definitions:
   config:
     /hippo:configuration/hippo:workflows/threepane/folder:
-      hipposys:privileges: ['hippo:author']
+      hipposys:privileges: [ 'hippo:author' ]
+    /hippo:configuration/hippo:workflows/threepane/folder/frontend:renderer/generatePreview:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.mygov.publishing.plugins.PreviewFolderMenuItemPlugin
+      wicket.id: ${item}
+    /hippo:configuration/hippo:workflows/threepane/folder-extended/frontend:renderer/generatePreview:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.mygov.publishing.plugins.PreviewFolderMenuItemPlugin
+      wicket.id: ${item}
+    /hippo:configuration/hippo:workflows/threepane/folder-permissions/frontend:renderer/generatePreview:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.mygov.publishing.plugins.PreviewFolderMenuItemPlugin
+      wicket.id: ${item}
