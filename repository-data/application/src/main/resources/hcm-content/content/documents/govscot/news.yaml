@@ -1,7 +1,0 @@
-/content/documents/govscot/news:
-  .meta:order-before: featureditems
-  jcr:primaryType: hippostd:folder
-  jcr:mixinTypes: ['hippo:lockable', 'hippo:named', 'mix:lockable', 'mix:versionable']
-  jcr:uuid: feb757b8-ed5b-4ff1-b9c5-266f490d6ae0
-  hippo:name: News
-  hippostd:foldertype: []

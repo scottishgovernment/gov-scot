@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/collections:
+    /hippo:configuration/hippo:domains/collections-domain:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
