@@ -48,7 +48,7 @@
     <forge.breadcrumb.version>4.0.0</forge.breadcrumb.version>
     <freemarker.version>2.3.28</freemarker.version>
 
-    <h2.database.version>1.4.199</h2.database.version>
+    <h2.database.version>2.1.210</h2.database.version>
     <essentials.version>14.7.3</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
     <taglibs.version>1.2.5</taglibs.version>
