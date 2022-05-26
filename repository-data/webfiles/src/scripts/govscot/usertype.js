@@ -10,7 +10,7 @@
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/service/usertype', true);
 
-    xhr.timeout = 1000;
+    xhr.timeout = 2000;
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
