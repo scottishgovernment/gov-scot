@@ -28,7 +28,7 @@
     },
 
     "headline": "${document.title?json_string}",
-    "dateModified": "<@fmt.formatDate value=document.getSingleProperty('hippostdpubwf:lastModificationDate').time type="Date" pattern="yyyy-MM-dd" />",
+    "dateModified": "<@fmt.formatDate value=document.getProperty('hippostdpubwf:lastModificationDate').time type="Date" pattern="yyyy-MM-dd" />",
     <#if document.publicationDate??>
         "datePublished": "<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="yyyy-MM-dd" />",
     </#if>

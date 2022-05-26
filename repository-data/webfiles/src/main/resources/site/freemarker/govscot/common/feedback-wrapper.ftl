@@ -1,6 +1,6 @@
 <!--noindex-->
 <#if document??>
-    <#assign documentUuid = document.getSingleProperty('jcr:uuid')/>
+    <#assign documentUuid = document.getProperty('jcr:uuid')/>
 <#else>
     <#assign documentUuid = ""/>
 </#if>

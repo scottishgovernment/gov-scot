@@ -10,7 +10,7 @@ import org.hippoecm.hst.content.beans.standard.HippoHtml;
 public class RelatedArticle extends HippoCompound {
     @HippoEssentialsGenerated(internalName = "govscot:title")
     public String getTitle() {
-        return getSingleProperty("govscot:title");
+        return getProperty("govscot:title");
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:content")

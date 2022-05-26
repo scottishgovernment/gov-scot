@@ -113,11 +113,6 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
         public void setNotFound(boolean b) {
             link.setNotFound(b);
         }
-
-        @Override
-        public boolean representsIndex() {
-            return link.representsIndex();
-        }
     }
 
 }

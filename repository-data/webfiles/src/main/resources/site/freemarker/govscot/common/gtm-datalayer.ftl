@@ -4,11 +4,11 @@
 <@hst.headContribution category="dataLayer">
 <script id="datalayerPush">
 
-    <#if !dateCreated??><#assign dateCreated = document.getSingleProperty('hippostdpubwf:creationDate')/></#if>
-    <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
-    <#if !uuid??><#assign uuid = document.getSingleProperty('jcr:uuid')/></#if>
-    <#if !reportingTags?? && document.getMultipleProperty('govscot:reportingTags')??>
-      <#assign reportingTags = document.getMultipleProperty('govscot:reportingTags')/>
+    <#if !dateCreated??><#assign dateCreated = document.getProperty('hippostdpubwf:creationDate')/></#if>
+    <#if !lastUpdated??><#assign lastUpdated = document.getProperty('hippostdpubwf:lastModificationDate')/></#if>
+    <#if !uuid??><#assign uuid = document.getProperty('jcr:uuid')/></#if>
+    <#if !reportingTags?? && document.getProperty('govscot:reportingTags')??>
+      <#assign reportingTags = document.getProperty('govscot:reportingTags')/>
     </#if>
 
     window.dataLayer = window.dataLayer || [];
