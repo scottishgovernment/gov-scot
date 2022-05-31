@@ -3,62 +3,58 @@
 \*------------------------------------*/
 
 .gov_secondary-footer {
-    background-color: $ds_colour__blue--dark;
+    font-size: 14px;
 }
 
 .gov_social-links {
+    border-bottom: 1px solid rgba(0,0,0,.2);
     display: flex;
-    justify-content: start;
+    flex-wrap: wrap;
     list-style-type: none;
-    margin: -10px 0;
-    min-height: 44px;
-    text-align: right;
+    margin: 0;
+    padding: 16px 0 0 0;
 
     &__item {
-        display: block;
-        margin-bottom: 0;
-    }
+        margin: 0 24px 15px 0;
 
-    &__link {
-        color: $ds_colour__text;
-        height: 44px;
-        display: block;
-        margin-left: -8px;
-        min-width: 44px;
-        padding: 9px;
-        text-decoration: none;
-
-        .ds_icon {
-            vertical-align: unset;
+        &:last-child {
+            margin-bottom: 15px;
         }
     }
 
+    &__link {
+        display: block;
+    }
+
     &__link-inner {
-        background: $ds_colour__white;
-        border-radius: 16px;
-        color: $ds_colour__blue--dark;
-        height: 26px;
-        padding: 4px;
-        min-width: 26px;
-        transition: background-color 0.2s;
+        align-items: center;
+        display: flex;
     }
 
-    // &__link:hover &__link-inner {
-    //     background-color: $ds_colour__link--hover__background;
-    // }
+    &__icon {
+        align-items: center;
+        background: currentColor;
+        border-radius: 100%;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        margin-right: 8px;
+        width: 32px;
 
-    // &__link:focus {
-    //     background-color: transparent;
-    //     box-shadow: none;
-    // }
-
-    &__link:focus &__link-inner {
-        background-color: transparent;
-        color: $ds_colour__link--focus;
-        transition-duration: 0s;
+        .ds_icon {
+            color: $ds_colour__white;
+            padding: 2px;
+        }
     }
+}
 
-    &__link:hover:not(:focus) &__link-inner {
-        background-color: $ds_colour__link--hover__background;
+@include media-query(medium) {
+    .gov_social-links {
+        padding: 12px 0 0 0;
+
+        &__item,
+        &__item:last-child {
+            margin-bottom: 11px;
+        }
     }
 }

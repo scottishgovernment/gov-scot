@@ -15,40 +15,40 @@
                 <li class="gov_social-links__item">
                     <a title="Facebook" class="gov_social-links__link" href="https://www.facebook.com/TheScottishGovernment/timeline/" data-footer="social-1">
                         <div class="gov_social-links__link-inner">
-                            <span class="visually-hidden">Facebook</span>
-                            <svg class="ds_icon  ds_icon--16" aria-hidden="true" role="img"><use href="${iconspath}#facebook"></use></svg>
+                            <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#facebook"></use></svg></span>
+                            <span>Facebook</span>
                         </div>
                     </a>
                 </li>
                 <li class="gov_social-links__item">
                     <a title="Twitter" class="gov_social-links__link" href="https://twitter.com/scotgov" data-footer="social-2">
                         <div class="gov_social-links__link-inner">
-                            <span class="visually-hidden">Twitter</span>
-                            <svg class="ds_icon  ds_icon--16" aria-hidden="true" role="img"><use href="${iconspath}#twitter"></use></svg>
+                            <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#twitter"></use></svg></span>
+                            <span>Twitter</span>
                         </div>
                     </a>
                 </li>
                 <li class="gov_social-links__item">
                     <a title="Flickr" class="gov_social-links__link" href="https://www.flickr.com/photos/26320652@N02" data-footer="social-3">
                         <div class="gov_social-links__link-inner">
-                            <span class="visually-hidden">Flickr</span>
-                            <svg class="ds_icon  ds_icon--16" aria-hidden="true" role="img"><use href="${iconspath}#flickr"></use></svg>
+                            <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#flickr"></use></svg></span>
+                            <span>Flickr</span>
                         </div>
                     </a>
                 </li>
                 <li class="gov_social-links__item">
                     <a title="YouTube" class="gov_social-links__link" href="https://www.youtube.com/user/scottishgovernment" data-footer="social-4">
                         <div class="gov_social-links__link-inner">
-                            <span class="visually-hidden">YouTube</span>
-                            <svg class="ds_icon  ds_icon--16" aria-hidden="true" role="img"><use href="${iconspath}#youtube"></use></svg>
+                            <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#youtube"></use></svg></span>
+                            <span>YouTube</span>
                         </div>
                     </a>
                 </li>
                 <li class="gov_social-links__item">
                     <a title="Instagram" class="gov_social-links__link" href="https://www.instagram.com/scotgov/" data-footer="social-5">
                         <div class="gov_social-links__link-inner">
-                            <span class="visually-hidden">Instagram</span>
-                            <svg class="ds_icon  ds_icon--16" aria-hidden="true" role="img"><use href="${iconspath}#instagram"></use></svg>
+                            <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#instagram"></use></svg></span>
+                            <span>Instagram</span>
                         </div>
                     </a>
                 </li>
