@@ -7,18 +7,17 @@
 }
 
 .gov_social-links {
-    border-bottom: 1px solid rgba(0,0,0,.2);
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
-    padding: 16px 0 0 0;
+    padding: 0;
 
     &__item {
-        margin: 0 24px 15px 0;
+        margin: 0 24px 16px 0;
 
         &:last-child {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
     }
 
@@ -44,17 +43,6 @@
         .ds_icon {
             color: $ds_colour__white;
             padding: 2px;
-        }
-    }
-}
-
-@include media-query(medium) {
-    .gov_social-links {
-        padding: 12px 0 0 0;
-
-        &__item,
-        &__item:last-child {
-            margin-bottom: 11px;
         }
     }
 }
