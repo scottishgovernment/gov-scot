@@ -203,7 +203,7 @@ const paymentForm = {
                         const violation = responseJSON.violations[i];
 
                         const field = document.getElementById(violation.field);
-                        const question = field.parentNode;
+                        const question = field.parentNode.classList.contains('ds_question') ? field.parentNode : field.parentNode.parentNode;
 
                         if (field.value.length === 0) {
                             errors.push({message: violation.message, element: field});
@@ -214,6 +214,20 @@ const paymentForm = {
                     }
 
                     that.showErrors(errors);
+                } else if (responseJSON.success === false && responseJSON.error) {
+                    that.removeErrorMessages();
+
+                    // just show error summary with no highlighted fields
+                    const errorSummary = document.getElementById('error-summary');
+                    const errorList = document.createElement('ul');
+                    const errorItem = document.createElement('li');
+
+                    errorList.classList.add('ds_error-summary__list');
+                    errorItem.innerText = responseJSON.error;
+                    errorList.appendChild(errorItem);
+                    errorSummary.appendChild(errorList);
+
+                    that.showErrorSummary();
                 } else {
                     // fail
                     const errorSummary = document.getElementById('error-summary');
