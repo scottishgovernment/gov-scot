@@ -205,12 +205,10 @@ const paymentForm = {
                         const field = document.getElementById(violation.field);
                         const question = field.parentNode.classList.contains('ds_question') ? field.parentNode : field.parentNode.parentNode;
 
-                        if (field.value.length === 0) {
-                            errors.push({message: violation.message, element: field});
+                        errors.push({ message: violation.message, element: field });
 
-                            question.classList.add('ds_question--error');
-                            field.classList.add('ds_input--error');
-                        }
+                        question.classList.add('ds_question--error');
+                        field.classList.add('ds_input--error');
                     }
 
                     that.showErrors(errors);
