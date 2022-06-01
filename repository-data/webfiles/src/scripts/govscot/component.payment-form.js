@@ -26,10 +26,10 @@ const paymentForm = {
 
             // submit the payment request
             const payment = {
-                orderCode: document.getElementById('orderCode').value,
-                amount: document.getElementById('amount').value,
-                description: document.getElementById('description').value,
-                emailAddress: document.getElementById('email-address').value
+                orderCode: document.getElementById('orderCode').value.trim(),
+                amount: document.getElementById('amount').value.trim(),
+                description: document.getElementById('description').value.trim(),
+                emailAddress: document.getElementById('email-address').value.trim()
             };
 
             that.removeErrorMessages();
