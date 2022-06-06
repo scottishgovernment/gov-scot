@@ -59,7 +59,7 @@
     <div class="ds_wrapper">
         <div class="ds_site-footer__content">
             <ul class="ds_site-footer__site-items">
-                <#list pageable.items as item>
+                <#list children as item>
                     <li class="ds_site-items__item">
                         <#if item.externalLink?? && item.externalLink.url?has_content>
                             <#assign href>${item.externalLink.url}</#assign>
