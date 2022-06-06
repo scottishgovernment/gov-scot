@@ -25,6 +25,7 @@ img-src
   https://*.ytimg.com
 ;
 connect-src
+    'self'
     https://*.google-analytics.com
     https://*.analytics.google.com
 ;
