@@ -568,3 +568,9 @@ definitions:
       document.type.namespaces: [ 'govscot' ]
       document.type.excluded: [ 'govscot:ComplexDocument', 'govscot:covidlevel', 'govscot:covidrestriction',
         'govscot:CovidRestrictionsLookup', 'govscot:publicationjob']
+    /hippo:configuration/hippo:frontend/cms/cms-admin/groups:
+      hipposys:userrole: xm.security.application-admin
+    /hippo:configuration/hippo:frontend/cms/cms-admin/permissions:
+      hipposys:userrole: xm.security.application-admin
+    /hippo:configuration/hippo:frontend/cms/cms-admin/userroles:
+      hipposys:userrole: xm.security.application-admin
