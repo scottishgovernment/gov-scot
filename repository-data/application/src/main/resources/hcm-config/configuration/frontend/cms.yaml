@@ -359,3 +359,9 @@ definitions:
       width: 720
       compression: 0.8
       optimize: quality
+    /hippo:configuration/hippo:frontend/cms/cms-admin/groups:
+      hipposys:userrole: xm.security.application-admin
+    /hippo:configuration/hippo:frontend/cms/cms-admin/permissions:
+      hipposys:userrole: xm.security.application-admin
+    /hippo:configuration/hippo:frontend/cms/cms-admin/userroles:
+      hipposys:userrole: xm.security.application-admin
