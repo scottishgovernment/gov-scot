@@ -1,5 +1,0 @@
-definitions:
-  config:
-    /hippo:configuration/hippo:groups/apsimporter:
-      jcr:primaryType: hipposys:group
-      hipposys:securityprovider: internal
