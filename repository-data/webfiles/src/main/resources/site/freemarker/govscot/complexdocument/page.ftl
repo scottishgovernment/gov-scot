@@ -356,13 +356,6 @@
 
 <#include "../common/schema.article.ftl"/>
 
-<@hst.headContribution category="footerScripts">
-    <script type="module" src="<@hst.webfile path="/assets/scripts/complex-document.js"/>"></script>
-</@hst.headContribution>
-<@hst.headContribution category="footerScripts">
-    <script nomodule="true" src="<@hst.webfile path="/assets/scripts/complex-document.es5.js"/>"></script>
-</@hst.headContribution>
-
 <#if document??>
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Publication"/>
