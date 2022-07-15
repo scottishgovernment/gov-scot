@@ -146,7 +146,7 @@
       <dependency>
         <groupId>com.amazonaws</groupId>
         <artifactId>aws-java-sdk-s3</artifactId>
-        <version>1.11.376</version>
+        <version>1.12.261</version>
       </dependency>
 
       <!-- other predefined runtime scope versioned dependencies -->
