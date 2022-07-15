@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/admin:
+      hipposys:system: true
+    /hippo:configuration/hippo:groups/author:
+      hipposys:system: true
+    /hippo:configuration/hippo:groups/editor:
+      hipposys:system: true
+    /hippo:configuration/hippo:groups/webmaster:
+      hipposys:system: true
+    /hippo:configuration/hippo:groups/cms-admin:
+      hipposys:system: true

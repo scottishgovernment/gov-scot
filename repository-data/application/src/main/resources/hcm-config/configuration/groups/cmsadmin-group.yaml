@@ -1,6 +1,7 @@
 definitions:
   config:
     /hippo:configuration/hippo:groups/cmsadmin:
+      hipposys:system: true
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
       hipposys:userroles:
