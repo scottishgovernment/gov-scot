@@ -3,3 +3,4 @@ definitions:
     /hippo:configuration/hippo:groups/migration:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
+      hipposys:system: true
