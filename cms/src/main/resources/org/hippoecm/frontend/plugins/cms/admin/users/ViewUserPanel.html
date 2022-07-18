@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This file is duplicated from the equivalent file in the 'hippo-cms-perspectives'
+    library, following the same file path:
+    hippo-cms-perspectives-14.7.3.jar!/org/hippoecm/frontend/plugins/cms/admin/users/ViewUserPanel.html
+
+    It removes the userrole markup in order to prevent our useradmins from being able
+    to assign userroles to users. Without this, user privileges can be escalated by
+    addition of userroles unrelated to their permission group memberships.
+
+    For as long as this functionality needs to be overridden in this manner, this file
+    should be monitored during upgrades.
+
+-->
+<html xmlns:wicket="http://wicket.apache.org/">
+<wicket:extend>
+    <h2><label wicket:id="view-user-panel-title"></label></h2>
+    <h3>
+        <wicket:message key="user-view-actions-title"/>
+    </h3>
+    <ul class="hippo-controlpanel-options">
+        <li wicket:id="edit-user"><a href="#">
+            <wicket:message key="user-edit"/>
+        </a></li>
+        <li wicket:id="set-user-password"><a href="#">
+            <wicket:message key="user-set-password"/>
+        </a></li>
+        <li class="delete" wicket:id="delete-user"/>
+    </ul>
+    <div class="hippo-controlpanel-form">
+        <div>
+            <h3>
+                <wicket:message key="user-properties"/>
+            </h3>
+            <table class="details-table">
+                <tr>
+                    <td>
+                        <wicket:message key="user-username"/>
+                    </td>
+                    <td><label wicket:id="username"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="user-firstname"/>
+                    </td>
+                    <td><label wicket:id="firstName"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="user-lastname"/>
+                    </td>
+                    <td><label wicket:id="lastName"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="user-email"/>
+                    </td>
+                    <td><label wicket:id="email"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="user-active"/>
+                    </td>
+                    <td><label wicket:id="active"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="user-password-expired"/>
+                    </td>
+                    <td><label wicket:id="expired"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="user-provider"/>
+                    </td>
+                    <td><label wicket:id="provider"/></td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <br/>
+
+        <!--Remove userroles markup to prevent privilege escalation-->
+
+        <!--<h3><wicket:message key="userrole-overview-title"/></h3>-->
+        <!--<span><wicket:message key="user-userroles-label"/></span>-->
+        <!--<table class="hippo-list-details hippo-controlpanel-table-default">-->
+            <!--<tr>-->
+                <!--<th><wicket:message key="userrole-name"/></th>-->
+                <!--<th><wicket:message key="userrole-description"/></th>-->
+                <!--<th><wicket:message key="table-header-actions"/></th>-->
+            <!--</tr>-->
+            <!--<tr wicket:id="userroles">-->
+                <!--<td><span wicket:id="name"/></td>-->
+                <!--<td><span wicket:id="description"/></td>-->
+                <!--<td><span wicket:id="remove-userrole"/></td>-->
+            <!--</tr>-->
+        <!--</table>-->
+        <!--<span wicket:id="add-userroles"></span>-->
+        <!--<br/>-->
+        <!--<br/>-->
+
+        <h3 class="hippo-controlpanel-section-title">
+            <wicket:message key="user-permissions"/>
+        </h3>
+        <br/>
+        <table class="hippo-list-details hippo-controlpanel-table-default">
+            <tr>
+                <th>
+                    <wicket:message key="permissions-domain-header"/>
+                </th>
+                <th>
+                    <wicket:message key="permissions-column-folder-header"/>
+                </th>
+                <th>
+                    <wicket:message key="permissions-permission-header"/>
+                </th>
+                <th>
+                    <wicket:message key="permissions-role-header"/>
+                </th>
+            </tr>
+            <tr wicket:id="permissions">
+                <td><a href="#" wicket:id="securityDomain"><span wicket:id="label">[[label]]</span></a></td>
+                <td><span wicket:id="domain-folder"/></td>
+                <td><span wicket:id="permission"/></td>
+                <td><label wicket:id="role"/></td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <h3>
+            <wicket:message key="user-memberships"/>
+        </h3>
+        <wicket:enclosure child="properties-label">
+            <label wicket:id="properties-label"/>
+            <table class="hippo-controlpanel-table-default hippo-list-details">
+                <tr wicket:id="properties">
+                    <td><label wicket:id="key"/>:</td>
+                    <td><label wicket:id="value"/></td>
+                </tr>
+            </table>
+        </wicket:enclosure>
+        <span wicket:id="set-member-ship-panel"></span>
+    </div>
+</wicket:extend>
+</html>
