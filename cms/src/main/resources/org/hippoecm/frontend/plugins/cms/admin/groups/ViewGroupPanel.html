@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This file is duplicated from the equivalent file in the 'hippo-cms-perspectives'
+    library, following the same file path:
+    hippo-cms-perspectives-14.7.3.jar!/org/hippoecm/frontend/plugins/cms/admin/groups/ViewGroupPanel.html
+
+    It removes the userrole markup in order to prevent our useradmins from being able
+    to assign userroles to users. Without this, user privileges can be escalated by
+    addition of userroles unrelated to their permission group memberships.
+
+    Since we hide the groups admin view, the only way to access this markup is by
+    clicking a user's group in the user admin view.
+
+    For as long as this functionality needs to be overridden in this manner, this file
+    should be monitored during upgrades.
+
+-->
+<html xmlns:wicket="http://wicket.apache.org/">
+<wicket:extend>
+    <h2><label wicket:id="view-group-panel-title"></label></h2>
+    <h3>
+        <wicket:message key="group-view-actions-title"/>
+    </h3>
+    <ul class="hippo-controlpanel-options">
+        <li><a wicket:id="edit-group">
+            <wicket:message key="group-edit"/>
+        </a></li>
+        <li><a wicket:id="set-group-members">
+            <wicket:message key="group-set-members"/>
+        </a></li>
+        <li class="delete" wicket:id="delete-group"/>
+    </ul>
+    <div>
+        <h3>
+            <wicket:message key="group-properties"/>
+        </h3>
+        <table class="hippo-controlpanel-form details-table">
+            <tr>
+                <td>
+                    <wicket:message key="group-groupname"/>
+                </td>
+                <td><label wicket:id="groupname"/></td>
+            </tr>
+            <tr>
+                <td>
+                    <wicket:message key="group-description"/>
+                </td>
+                <td><label wicket:id="description"/></td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <br/>
+
+    <!--Remove userroles markup to prevent privilege escalation-->
+
+    <!--<h3><wicket:message key="userrole-overview-title"/></h3>-->
+    <!--<span><wicket:message key="group-userroles-label"/></span>-->
+    <!--<table class="hippo-list-details hippo-controlpanel-table-default">-->
+        <!--<tr>-->
+            <!--<th><wicket:message key="userrole-name"/></th>-->
+            <!--<th><wicket:message key="userrole-description"/></th>-->
+            <!--<th><wicket:message key="table-header-actions"/></th>-->
+        <!--</tr>-->
+        <!--<tr wicket:id="userroles">-->
+            <!--<td><span wicket:id="name"/></td>-->
+            <!--<td><span wicket:id="description"/></td>-->
+            <!--<td><span wicket:id="remove-userrole"/></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+    <!--<span wicket:id="add-userroles"></span>-->
+    <!--<br/>-->
+    <!--<br/>-->
+
+
+    <h3 class="hippo-controlpanel-section-title">
+        <wicket:message key="group-permissions"/>
+    </h3>
+    <br/>
+    <table class="hippo-list-details hippo-controlpanel-table-default">
+        <tr>
+            <th>
+                <wicket:message key="permissions-domain-header"/>
+            </th>
+            <th>
+                <wicket:message key="permissions-column-folder-header"/>
+            </th>
+            <th>
+                <wicket:message key="permissions-permission-header"/>
+            </th>
+            <th>
+                <wicket:message key="permissions-role-header"/>
+            </th>
+        </tr>
+        <tr wicket:id="permissions">
+            <td><a href="#" wicket:id="securityDomain"><span wicket:id="label">[[label]]</span></a></td>
+            <td><span wicket:id="domain-folder"/></td>
+            <td><span wicket:id="permission"/></td>
+            <td><label wicket:id="role"/></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <h3><label wicket:id="group-members-label"/></h3>
+    <br/>
+    <table class="hippo-list-details hippo-controlpanel-table-default">
+        <tr>
+            <th>
+                <wicket:message key="user-username"/>
+            </th>
+            <th>
+                <wicket:message key="table-header-actions"/>
+            </th>
+        </tr>
+        <tr wicket:id="groupmembers">
+            <td><span wicket:id="username"/></td>
+            <td><span wicket:id="remove"/></td>
+        </tr>
+    </table>
+    <form wicket:id="back-form">
+        <div class="hippo-controlpanel-actions">
+            <input type="submit" class="btn btn-default" wicket:message="value:user-back-action" wicket:id="back-button"/>
+        </div>
+    </form>
+</wicket:extend>
+</html>
