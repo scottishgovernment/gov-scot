@@ -3,3 +3,9 @@ definitions:
     /hippo:configuration/hippo:groups/cmsadmin:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [xm.dashboard.user, xm.cms.user, xm.report.user, xm.repository.reader,
+                xm.channel.admin, xm.content.admin, xm.security.user-admin]

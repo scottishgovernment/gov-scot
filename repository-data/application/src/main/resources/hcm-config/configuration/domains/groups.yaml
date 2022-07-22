@@ -2,40 +2,6 @@ definitions:
   config:
     /hippo:configuration/hippo:domains/groups:
       jcr:primaryType: hipposys:domain
-      /admin:
-        jcr:primaryType: hipposys:authrole
-        hipposys:groups: [cmsadmin, useradmin]
-        hipposys:role: admin
-      /group:
-        jcr:primaryType: hipposys:domainrule
-        /nodetype-group:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: true
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: hipposys:group
-        /exclude-admin-group:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodename
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: admin
-        /exclude-webmaster-group:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodename
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: webmaster
-        /exclude-cmsadmin-group:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodename
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: cmsadmin
       /current-groups:
         jcr:primaryType: hipposys:domainrule
         /nodetype-group:
@@ -52,3 +18,19 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: __group__
+      /readwrite:
+        jcr:primaryType: hipposys:authrole
+        hipposys:role: readwrite
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [cmsadmin, cms-admin]
+      /groups:
+        jcr:primaryType: hipposys:domainrule
+        /groups-and-descendants:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:type: Reference
+          hipposys:value: /hippo:configuration/hippo:groups

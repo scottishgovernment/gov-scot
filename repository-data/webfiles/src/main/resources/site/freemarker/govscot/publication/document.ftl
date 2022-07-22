@@ -110,9 +110,9 @@
 
     <#if isMultiPagePublication && (currentPage != pages[0])>
         <@hst.link var="canonicalitem" hippobean=currentPage canonical=true/>
-        <#assign uuid = currentPage.getProperty('jcr:uuid')/>
-        <#assign lastUpdated = currentPage.getProperty('hippostdpubwf:lastModificationDate')/>
-        <#assign dateCreated = currentPage.getProperty('hippostdpubwf:creationDate')/>
+        <#assign uuid = currentPage.getSingleProperty('jcr:uuid')/>
+        <#assign lastUpdated = currentPage.getSingleProperty('hippostdpubwf:lastModificationDate')/>
+        <#assign dateCreated = currentPage.getSingleProperty('hippostdpubwf:creationDate')/>
         <#include "../common/gtm-datalayer.ftl"/>
     <#else>
         <@hst.link var="canonicalitem" hippobean=document canonical=true/>
