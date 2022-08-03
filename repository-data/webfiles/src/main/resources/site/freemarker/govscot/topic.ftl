@@ -73,7 +73,7 @@
                                     <#if imgLabel??>
                                         <div class="ds_card__media">
                                             <div class="ds_aspect-box">
-                                                <img alt="" class="ds_aspect-box__inner" src="/assets/images/placeholders/thistles.jpg" width="1600" height="900"
+                                                <img alt="" class="ds_aspect-box__inner" src="/assets/images/graphics/featured-${imgLabel}-hd.jpg" width="1600" height="900"
                                                     srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
                                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
                                                     <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
