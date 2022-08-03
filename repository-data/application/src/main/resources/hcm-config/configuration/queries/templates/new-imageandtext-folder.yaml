@@ -1,0 +1,13 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-imageandtext-folder:
+      jcr:primaryType: hippostd:templatequery
+      hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
+        $inherited]
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-imageandtext-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /hippostd:folder:
+          jcr:primaryType: hippostd:folder
+          hippostd:foldertype: [new-imageandtext-document, new-imageandtext-folder]
