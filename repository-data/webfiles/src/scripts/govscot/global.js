@@ -95,6 +95,9 @@ const global = {
         const accordions = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"]'));
         accordions.forEach(accordion => new window.DS.components.Accordion(accordion).init());
 
+        const aspectBoxes = [].slice.call(document.querySelectorAll('.ds_aspect-box:not(.ds_aspect-box--fallback)'));
+        aspectBoxes.forEach(aspectBox => new window.DS.components.AspectBox(aspectBox).init());
+
         const cookieNotificationEl = document.querySelector('[data-module="ds-cookie-notification"]');
         if (cookieNotificationEl) {
             const cookieNotification = new window.DS.components.CookieNotification(cookieNotificationEl);
@@ -131,7 +134,6 @@ const global = {
 
         const toggleLinks = [].slice.call(document.querySelectorAll('[data-module="gov-toggle-link"]'));
         toggleLinks.forEach(toggleLink => new ToggleLink(toggleLink).init());
-
     },
 
     setInitialCookiePermissions: function () {
