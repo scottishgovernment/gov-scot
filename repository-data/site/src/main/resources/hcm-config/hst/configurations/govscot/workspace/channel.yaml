@@ -5,3 +5,4 @@ definitions:
       jcr:primaryType: hst:channel
       hst:name: www.gov.scot
       hst:type: website
+      hst:channelinfoclass: scot.gov.www.channels.WebsiteInfo

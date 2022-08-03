@@ -4,3 +4,51 @@ definitions:
       jcr:primaryType: hst:catalog
       /govscot-catalog:
         jcr:primaryType: hst:containeritempackage
+        /divider:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.DividerComponent
+          hst:iconpath: icons/divider.svg
+          hst:label: Divider
+          hst:template: divider
+        /header:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.HeaderComponent
+          hst:iconpath: icons/header.svg
+          hst:label: Header
+          hst:template: header
+        /imageandtext:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.ImageAndTextComponent
+          hst:iconpath: icons/imageandtext.svg
+          hst:label: Image and text
+          hst:template: imageandtext
+        /video:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.VideoComponent
+          hst:iconpath: icons/video.svg
+          hst:label: Video
+          hst:template: video
+        /threeimagecards:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.ThreeImageCardsComponent
+          hst:iconpath: icons/threeimagecards.svg
+          hst:label: 3 image cards
+          hst:template: threeimagecards
+        /text:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.TextComponent
+          hst:iconpath: icons/text.svg
+          hst:label: Text
+          hst:template: text
+        /doubletext:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.DoubleTextComponent
+          hst:iconpath: icons/doubletext.svg
+          hst:label: Double text
+          hst:template: doubletext
+        /pageheading:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.PageheadingComponent
+          hst:iconpath: icons/pageheader.svg
+          hst:label: Page Header
+          hst:template: pageheader
