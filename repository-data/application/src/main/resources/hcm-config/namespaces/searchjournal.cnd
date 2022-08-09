@@ -1,0 +1,10 @@
+<'searchjournal'='http://www.staging.com/searchjournal/nt/1.0'>
+<'hippo'='http://www.onehippo.org/jcr/hippo/nt/2.0.4'>
+
+[searchjournal:entry] > hippo:compound
+  - searchjournal:id (string)
+  - searchjournal:url (string)
+  - searchjournal:timestamp (date)
+  - searchjournal:collection (string)
+  - searchjournal:action (string)
+  - searchjournal:attempt (long)

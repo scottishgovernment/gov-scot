@@ -44,6 +44,7 @@
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>redirects-rest</artifactId>
+      <artifactId>searchjournal-rest</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
