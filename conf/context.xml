@@ -17,4 +17,13 @@
     <!--
     <Parameter name="output-wicketpaths" value="true"/>
     -->
+    <!-- proxy server to use to confiure outgoing http requests -->
+    <Parameter name="apache-http-client-proxy-url" value="" override="false"/>
+
+    <!--  api key to use when communicating with funnelback -->
+    <Parameter name="funnelback-api-key" value="" override="false"/>
+
+    <!--  base url for communicating with funnelback -->
+    <Parameter name="funnelback-api-url" value="https://dev-scotgov-admin.clients.uk.funnelback.com/" override="false"/>
+
 </Context>

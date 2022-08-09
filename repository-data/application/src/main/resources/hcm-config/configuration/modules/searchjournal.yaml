@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/searchjournal:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.searchjournal.SearchJournalEventListener
+      hipposys:cmsonly: true

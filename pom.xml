@@ -359,6 +359,7 @@
         <module>gov-scot-libs</module>
         <module>publications-rest</module>
         <module>redirects-rest</module>
+        <module>searchjournal-rest</module>
         <module>imageprocessing</module>
       </modules>
     </profile>

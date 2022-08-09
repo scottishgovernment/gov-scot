@@ -19,6 +19,8 @@
     <sonar.exclusions>
       src/main/java/org/hippoecm/frontend/plugins/reviewedactions/EditingWorkflowPlugin.java
     </sonar.exclusions>
+    <sonar.coverage.exclusions>
+    </sonar.coverage.exclusions>
   </properties>
 
   <dependencies>
@@ -44,6 +46,12 @@
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>redirects-rest</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.www</groupId>
+      <artifactId>searchjournal-rest</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
@@ -91,7 +99,7 @@
         <groupId>org.onehippo.cms.l10n</groupId>
         <artifactId>hippo-cms-l10n-maven-plugin</artifactId>
       </plugin>
-      
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>

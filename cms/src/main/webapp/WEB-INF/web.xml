@@ -13,6 +13,10 @@
     <listener-class>org.hippoecm.hst.platform.container.HstCmsContextLoaderListener</listener-class>
   </listener>
 
+  <listener>
+    <listener-class>scot.gov.httpclient.HttpClientInitializer</listener-class>
+  </listener>
+
   <context-param>
     <description>The address of the repository</description>
     <param-name>repository-address</param-name>
