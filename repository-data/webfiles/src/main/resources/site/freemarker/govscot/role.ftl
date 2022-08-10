@@ -40,15 +40,13 @@
                                 height="256"
                                 loading="lazy"
                                 src="<@hst.link hippobean=document.incumbent.image.xlargethreecolumnssquare/>"
-                                srcset="<@hst.link hippobean=document.incumbent.image.smalltwocolumnssquare/> 148w,
-                                    <@hst.link hippobean=document.incumbent.image.smalltwocolumnsdoubledsquare/> 296w,
-                                    <@hst.link hippobean=document.incumbent.image.mediumfourcolumnssquare/> 224w,
+                                srcset="<@hst.link hippobean=document.incumbent.image.mediumfourcolumnssquare/> 224w,
                                     <@hst.link hippobean=document.incumbent.image.mediumfourcolumnsdoubledsquare/> 448w,
                                     <@hst.link hippobean=document.incumbent.image.largethreecolumnssquare/> 208w,
                                     <@hst.link hippobean=document.incumbent.image.largethreecolumnsdoubledsquare/> 416w,
                                     <@hst.link hippobean=document.incumbent.image.xlargethreecolumnssquare/> 256w,
                                     <@hst.link hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare/> 512w"
-                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px" />
                             <#else>
                             <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.incumbent.title}">
                             </#if>

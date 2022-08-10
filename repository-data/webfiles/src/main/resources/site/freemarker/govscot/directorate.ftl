@@ -32,7 +32,7 @@
                                 <@hst.link var="link" hippobean=role/>
 
                                 <li class="gov_person-grid__item">
-                                    <div class=gov_person>
+                                    <div class="gov_person  gov_person--flex">
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
                                                 <#if person.image?? && person.image.xlargethreecolumnssquare??>
@@ -41,8 +41,8 @@
                                                         height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
                                                         loading="lazy"
                                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
-                                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
-                                                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
+                                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 48w,
+                                                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 96w,
                                                                 <@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
                                                                 <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
                                                                 <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
@@ -98,7 +98,7 @@
                                 </#if>
 
                                 <li class="gov_person-grid__item">
-                                    <div class="gov_person">
+                                    <div class="gov_person  gov_person--flex">
                                         <div class="gov_person__image-container">
                                             <a class="gov_person__link" href="${link}">
                                                 <#if person.image?? && person.image.xlargethreecolumnssquare??>
@@ -107,15 +107,15 @@
                                                         height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
                                                         loading="lazy"
                                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
-                                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
-                                                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
+                                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 48w,
+                                                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 96w,
                                                                 <@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
                                                                 <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
                                                                 <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
                                                                 <@hst.link hippobean=person.image.largethreecolumnsdoubledsquare/> 416w,
                                                                 <@hst.link hippobean=person.image.xlargethreecolumnssquare/> 256w,
                                                                 <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
-                                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 48px" />
                                                 <#else>
                                                     <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${role.title}">
                                                 </#if>

@@ -41,10 +41,10 @@
                                         loading="lazy"
                                         src="<@hst.link hippobean=item.image.largetwocolumnssquare />"
                                         srcset="
-                                        <@hst.link hippobean=item.image.mediumtwocolumnssquare/> 96w,
-                                        <@hst.link hippobean=item.image.largetwocolumnssquare/> 128w,
-                                        <@hst.link hippobean=item.image.mediumtwocolumnsdoubledsquare/> 192w,
-                                        <@hst.link hippobean=item.image.largetwocolumnsdoubledsquare/> 256w"
+                                            <@hst.link hippobean=item.image.mediumtwocolumnssquare/> 96w,
+                                            <@hst.link hippobean=item.image.largetwocolumnssquare/> 128w,
+                                            <@hst.link hippobean=item.image.mediumtwocolumnsdoubledsquare/> 192w,
+                                            <@hst.link hippobean=item.image.largetwocolumnsdoubledsquare/> 256w"
                                         sizes="(min-width:480px) 128px, 96px">
                                 </a>
                             </div>

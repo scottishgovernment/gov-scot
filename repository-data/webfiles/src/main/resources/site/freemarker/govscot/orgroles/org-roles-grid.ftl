@@ -34,15 +34,13 @@
                                         height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
                                         loading="lazy"
                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
-                                        srcset="<@hst.link hippobean=person.image.smalltwocolumnssquare/> 53w,
-                                <@hst.link hippobean=person.image.smalltwocolumnsdoubledsquare/> 106w,
-                                <@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
-                                <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
-                                <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
-                                <@hst.link hippobean=person.image.largethreecolumnsdoubledsquare/> 416w,
-                                <@hst.link hippobean=person.image.xlargethreecolumnssquare/> 256w,
-                                <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
-                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, (min-width:768px) 224px, 148px" />
+                                        srcset="<@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
+                                            <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
+                                            <@hst.link hippobean=person.image.largethreecolumnssquare/> 208w,
+                                            <@hst.link hippobean=person.image.largethreecolumnsdoubledsquare/> 416w,
+                                            <@hst.link hippobean=person.image.xlargethreecolumnssquare/> 256w,
+                                            <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
+                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px" />
                                 <#else>
                                     <img width="300" height="300" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
                                 </#if>
