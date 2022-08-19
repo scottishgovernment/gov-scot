@@ -1,0 +1,60 @@
+/*------------------------------------*\
+    FEATURE HEADER OVERRIDES
+\*------------------------------------*/
+
+.ds_feature-header {
+    &__primary {
+        padding-right: 2rem;
+    }
+
+    &--topic {
+        background-color: transparent;
+    }
+
+    &--full-image &__secondary {
+        grid-area: 1/1/2/13;
+        margin: 0 px-to-rem(-16px) px-to-rem(8px);
+
+        @include media-query(medium) {
+            margin: 0;
+        }
+    }
+
+    &--full-image &__primary{
+        @include media-query(medium-down) {
+            padding: 0;
+        }
+    }
+
+    &--full-image {
+        padding: 0;
+    }
+
+    &--issue &__primary {
+        align-self: start;
+        padding-top: 0;
+    }
+
+    &--issue &__title {
+        padding: 0 px-to-rem(16px) px-to-rem(8px) 0;
+    }
+
+    &--issue &__primary > * {
+        background: $ds_colour__white;
+        display: inline-block;
+    }
+}
+
+// ie
+.ds_feature-header {
+    @include media-query(medium) {
+        &--full-image &__secondary {
+            -ms-grid-column: 1;
+            -ms-grid-column-span: 2;
+        }
+
+        &--issue &__primary {
+            -ms-grid-row-align: start;
+        }
+    }
+}

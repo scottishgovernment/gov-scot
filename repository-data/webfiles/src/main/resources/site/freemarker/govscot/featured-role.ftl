@@ -10,18 +10,18 @@
         <#assign postalAddress = document.incumbent.postalAddress/>
 
         <div class="ds_layout__header">
-            <header class="gov_feature-header" id="page-content">
-                <div class="gov_feature-header__content">
-                    <h1 class="gov_feature-header__title" id="sg-meta__person-role">${document.title}</h1>
+            <header class="ds_feature-header  ds_feature-header--background" id="page-content">
+                <div class="ds_feature-header__primary">
+                    <h1 class="ds_feature-header__title" id="sg-meta__person-role">${document.title}</h1>
                     <#if document.incumbent??>
-                        <p class="gov_feature-header__subtitle">Current role holder:
+                        <p class="ds_feature-header__subtitle">Current role holder:
                             <b id="sg-meta__person-name">${document.incumbent.title}</b>
                         </p>
                     </#if>
                 </div>
 
                 <#--  <#if document.image??>  -->
-                    <div class="gov_feature-header__media">
+                    <div class="ds_feature-header__secondary">
                         <div class="ds_aspect-box">
                             <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
                                 width="${document.image.xlargesixcolumnsdoubled.width?c}"

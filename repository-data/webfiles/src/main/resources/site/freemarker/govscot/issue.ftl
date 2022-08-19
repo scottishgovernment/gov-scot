@@ -8,10 +8,10 @@
         <input id="topicName" type="hidden" value="${document.title}"/>
         <main id="main-content" class="ds_layout  gov_layout--issue">
             <div class="ds_layout__banner">
-                <header class="gov_feature-header  gov_feature-header--issue" id="page-content">
+                <header class="ds_feature-header  ds_feature-header--full-image  ds_feature-header--issue" id="page-content">
                     <#if document.image??>
-                        <div class="gov_feature-header__media  gov_feature-header__media--full">
-                            <img alt="" aria-hidden="true"
+                        <div class="ds_feature-header__secondary">
+                            <img class="ds_feature-header__image" alt="" aria-hidden="true"
                                 width="${document.image.xlargetwelvecolumnsdoubledfourone.width?c}"
                                 height="${document.image.xlargetwelvecolumnsdoubledfourone.height?c}"
                                 loading="lazy"
@@ -28,8 +28,8 @@
                         </div>
                     </#if>
 
-                    <div class="gov_feature-header__content">
-                        <h1 class="gov_feature-header__title">${document.title}</h1>
+                    <div class="ds_feature-header__primary">
+                        <h1 class="ds_feature-header__title">${document.title}</h1>
                     </div>
                 </header>
             </div>
