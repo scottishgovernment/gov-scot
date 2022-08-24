@@ -1,0 +1,22 @@
+/content/documents/administration/search-settings:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: 78436351-67c2-4e9c-b1f7-2bb29526ea02
+  hippo:name: Search settings
+  /search-settings:
+    jcr:primaryType: search:searchsettings
+    jcr:mixinTypes: ['hippo:container', 'hippostd:container', 'hippostd:relaxed',
+      'mix:referenceable']
+    jcr:uuid: 97370ea0-b90f-4a18-8b5e-546ca39aae93
+    hippo:availability: [live, preview]
+    hippo:name: Search settings
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2022-09-30T09:56:29.669+01:00
+    hippostdpubwf:lastModificationDate: 2022-09-30T09:56:29.669+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: d4f9c077-c6ff-4f32-b9fa-dc22ac5c3cde
+    hippotranslation:locale: document-type-locale
+    search:enabled: true
+    search:searchtype: resilient
+    search:timeoutMillis: 250

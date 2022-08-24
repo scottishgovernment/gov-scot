@@ -16,3 +16,4 @@ definitions:
           hst:parametervalues: ['on', 'on', '10', content/documents/govscot]
           hst:template: search.results
           hst:xtype: hst.item
+          hippo:identifier: cd2d88be-23cb-4355-a5a4-37264f10d040

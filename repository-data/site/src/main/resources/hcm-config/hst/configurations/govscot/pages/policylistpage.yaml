@@ -16,6 +16,7 @@ definitions:
             policies, policy]
           hst:template: filteredlist.results
           hst:xtype: hst.item
+          hippo:identifier: ea058b4b-a431-41ec-a3e9-a116978d08a2
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter

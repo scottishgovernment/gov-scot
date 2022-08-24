@@ -16,6 +16,7 @@ definitions:
             'on', '', '10', 'govscot:Publication', publications, publication]
           hst:template: filteredlist.results
           hst:xtype: hst.item
+          hippo:identifier: fd47d6a1-5fc4-4e38-b20e-4ecc7415b85a
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter
