@@ -158,9 +158,12 @@
                     ||   document.contactInformation.youtube?has_content
                     ||   document.contactInformation.blog?has_content
                     ||   document.postalAddress?has_content>
+
                         <#assign contactInformation = document.contactInformation/>
                         <#assign contactInformationHeadingModifier = 'gamma' />
-                        <#assign postalAddress = document.postalAddress />
+                        <#if document.postalAddress?has_content>
+                            <#assign postalAddress = document.postalAddress />
+                        </#if>
                     <section class="gov_content-block">
                         <#include 'common/contact-information.ftl' />
                     </section>
