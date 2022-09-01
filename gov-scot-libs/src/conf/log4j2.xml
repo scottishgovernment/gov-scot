@@ -100,6 +100,7 @@
     <Logger name="org.apache.wicket.Localizer" level="error"/>
 
     <!-- more info wanted -->
+    <Logger name="org.apache.jackrabbit.core.journal.DatabaseJournal" level="debug"/>
     <Logger name="org.apache.jackrabbit.core.persistence.bundle" level="info"/>
     <Logger name="org.hippoecm.repository.updater" level="info"/>
     <Logger name="org.apache.jackrabbit.core.query.lucene.MultiIndex" level="info"/>
