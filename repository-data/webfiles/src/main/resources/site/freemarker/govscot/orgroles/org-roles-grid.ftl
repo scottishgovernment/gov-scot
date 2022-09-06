@@ -32,7 +32,6 @@
                                     <img alt="${person.title}" class="gov_person__image"
                                         width="${person.image.xlargethreecolumnsdoubledsquare.width?c}"
                                         height="${person.image.xlargethreecolumnsdoubledsquare.height?c}"
-                                        loading="lazy"
                                         src="<@hst.link hippobean=person.image.xlargethreecolumnssquare/>"
                                         srcset="<@hst.link hippobean=person.image.mediumfourcolumnssquare/> 224w,
                                             <@hst.link hippobean=person.image.mediumfourcolumnsdoubledsquare/> 448w,
@@ -42,7 +41,7 @@
                                             <@hst.link hippobean=person.image.xlargethreecolumnsdoubledsquare/> 512w"
                                         sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px" />
                                 <#else>
-                                    <img width="300" height="300" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
+                                    <img width="300" height="300" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${person.title}">
                                 </#if>
                             </a>
                         </div>
