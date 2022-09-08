@@ -2,7 +2,7 @@
 <#include "../../include/imports.ftl">
 
 <#if mourningBanner??>
-    <div id="mourning-banner" class="ds_notification  ds_notification--mourning">
+    <div id="mourning-banner" class="ds_notification  ds_reversed">
         <div class="ds_wrapper">
             <div class="ds_notification__content">
                 <@hst.html var="content" hippohtml=mourningBanner.content/>
