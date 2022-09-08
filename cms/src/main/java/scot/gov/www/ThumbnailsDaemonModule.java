@@ -91,7 +91,6 @@ public class ThumbnailsDaemonModule extends DaemonModuleBase {
             FileUtils.deleteQuietly(thumbnail);
         }
 
-        documentInformationNode.setProperty("govscot:size", data.getSize());
         if (FileType.forMimeType(mimeType) == FileType.PDF) {
             documentInformationNode.setProperty("govscot:pageCount", Exif.pageCount(data));
         } else {
