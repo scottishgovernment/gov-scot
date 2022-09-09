@@ -1,0 +1,20 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/image-gallery:
+      jcr:primaryType: hipposys:domain
+      /content-domain:
+        jcr:primaryType: hipposys:domainrule
+        /hippogallery-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:type: Reference
+          hipposys:value: /content/gallery
+      /admin:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [cmsadmin, editor, author, useradmin, image-editors]
+        hipposys:role: admin
