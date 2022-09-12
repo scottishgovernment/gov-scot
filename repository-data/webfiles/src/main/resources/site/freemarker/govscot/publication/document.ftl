@@ -50,6 +50,7 @@
                             </#if>
 
                             <#assign isHighlightedItem = attachedDocument?is_first/>
+                            <#assign docindex = "group-" + folder?counter />
                             <#include 'body-document-info.ftl'/>
                         </#list>
                     </section>
@@ -62,6 +63,7 @@
                         <#assign isTargetedItem = true/>
                     </#if>
                     <#assign isHighlightedItem = attachedDocument?is_first/>
+                    <#assign docindex= attachedDocument?counter />
                     <#include 'body-document-info.ftl'/>
                 </#list>
             </#if>

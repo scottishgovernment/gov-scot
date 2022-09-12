@@ -10,6 +10,7 @@
 <@hst.manageContent hippobean=document/>
 <!-- this outer div allows us to break the sticky header out of the layout grid -->
 <div>
+
     <div class="ds_wrapper">
         <main id="main-content">
             <#if pages?has_content && documents?has_content>
@@ -239,6 +240,7 @@
                                     <#if hasAttachedDocument?has_content>
                                         <section class="document-section">
                                             <#list documents as attachedDocument>
+                                                <#assign docindex = "main"/>
                                                 <#include 'body-document-info.ftl'/>
                                             </#list>
                                         </section>
@@ -246,9 +248,11 @@
 
                                     <#if groupedDocumentFolders??>
                                         <#list groupedDocumentFolders as folder>
+                                            <#assign groupindex = folder?counter + '-'/>
                                             <section class="document-section">
                                                 <h2>${folder.displayName}</h2>
                                                 <#list folder.documents as attachedDocument>
+                                                    <#assign docindex = groupindex + attachedDocument?counter />
                                                     <#include 'body-document-info.ftl'/>
                                                 </#list>
                                             </section>

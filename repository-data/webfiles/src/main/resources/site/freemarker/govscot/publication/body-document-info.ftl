@@ -68,11 +68,11 @@
             <#assign fileThumbnailPath = '/assets/images/documents/svg/generic.svg' />
     </#switch>
 
-    <div class="ds_file-info  <#if attachedDocument.highlighted || (isLimelitItem)!false>ds_file-info--highlighted</#if>">
+    <div class="ds_file-download  <#if attachedDocument.highlighted || (isLimelitItem)!false>ds_file-download--highlighted</#if>">
         <!--noindex-->
-        <div class="ds_file-info__thumbnail">
+        <div class="ds_file-download__thumbnail">
             <#if filenameExtension == "pdf" && attachedDocument.thumbnails[0]??>
-                <a class="ds_file-info__thumbnail-link" tabindex="-1" href="${documentinline}">
+                <a data-button="document-cover" class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="${documentinline}">
                     <img
                         class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--cover"
                         alt="View this document"
@@ -84,19 +84,17 @@
                         sizes="(min-width: 768px) 104px, 72px" />
                 </a>
             <#else>
-                <a class="ds_file-info__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "csv">${documentdownload}<#else>${documentinline}</#if>">
-                    <img width="104" height="152" loading="lazy" class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
+                <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "csv">${documentdownload}<#else>${documentinline}</#if>">
+                    <img width="104" height="152" loading="lazy" class="ds_file-download__thumbnail-image  ds_file-download__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                 </a>
             </#if>
         </div>
         <!--endnoindex-->
 
-        <div class="ds_file-info__content">
-            <h3 class="ds_file-info__title">
-                <a href="<#if filenameExtension == "CSV">${documentdownload}<#else>${documentinline}</#if>">${attachedDocument.title}</a>
-            </h3>
+        <div class="ds_file-download__content">
+            <p class="ds_file-download__title" id="${docindex}">${attachedDocument.title}</p>
 
-            <div class="ds_file-info__details">
+            <div id="file-download-${docindex}" class="ds_file-download__details">
                 <dl class="ds_metadata  ds_metadata--inline">
                     <div class="ds_metadata__item">
                         <dt class="ds_metadata__key  visually-hidden">File type</dt>
@@ -116,7 +114,7 @@
             </div>
 
             <div>
-                <a data-title="${attachedDocument.title}" href="${documentdownload}" class="ds_file-info__download  ds_button  ds_button--small  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
+                <a aria-labelledby="file-title-${docindex}" aria-describedby="file-download-${docindex}" data-title="${attachedDocument.title}" href="${documentdownload}" class="ds_file-download__download  ds_button  ds_button--small  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
                     Download
                 </a>
             </div>
