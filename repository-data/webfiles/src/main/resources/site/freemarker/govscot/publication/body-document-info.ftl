@@ -3,10 +3,6 @@
     <#assign filenameExtension = attachedDocument.document.filename?keep_after_last(".")?lower_case/>
     <#assign filenameWithoutExtension = attachedDocument.document.filename?keep_before_last(".")/>
 
-    <@hst.link var="documentdownload" hippobean=attachedDocument.document>
-        <@hst.param name="forceDownload" value="true"/>
-    </@hst.link>
-
     <@hst.link var="documentinline" hippobean=attachedDocument.document>
     </@hst.link>
 
@@ -84,7 +80,7 @@
                         sizes="(min-width: 768px) 104px, 72px" />
                 </a>
             <#else>
-                <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="<#if filenameExtension == "csv">${documentdownload}<#else>${documentinline}</#if>">
+                <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="${documentinline}">
                     <img width="104" height="152" loading="lazy" class="ds_file-download__thumbnail-image  ds_file-download__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                 </a>
             </#if>
@@ -114,7 +110,7 @@
             </div>
 
             <div>
-                <a aria-labelledby="file-title-${docindex}" aria-describedby="file-download-${docindex}" data-title="${attachedDocument.title}" href="${documentdownload}" class="ds_file-download__download  ds_button  ds_button--small  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
+                <a aria-labelledby="file-title-${docindex}" aria-describedby="file-download-${docindex}" data-title="${attachedDocument.title}" href="${documentinline}" class="ds_file-download__download  ds_button  ds_button--small  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
                     Download
                 </a>
             </div>
