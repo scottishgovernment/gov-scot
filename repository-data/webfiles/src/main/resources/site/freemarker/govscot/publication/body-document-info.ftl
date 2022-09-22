@@ -6,6 +6,11 @@
     <@hst.link var="documentinline" hippobean=attachedDocument.document>
     </@hst.link>
 
+    <#if docindex??>
+    <#else>
+        <#assign docindex = 0 />
+    </#if>
+
     <#switch filenameExtension>
         <#case "csv">
             <#assign fileDescription = "CSV file" />
@@ -70,7 +75,7 @@
             <#if filenameExtension == "pdf" && attachedDocument.thumbnails[0]??>
                 <a data-button="document-cover" class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="${documentinline}">
                     <img
-                        class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--cover"
+                        class="ds_file-download__thumbnail-image"
                         alt="View this document"
                         src="<@hst.link hippobean=attachedDocument.thumbnails[0]/>"
                         srcset="
@@ -88,7 +93,7 @@
         <!--endnoindex-->
 
         <div class="ds_file-download__content">
-            <p class="ds_file-download__title" id="${docindex}">${attachedDocument.title}</p>
+            <p class="ds_file-download__title" id="file-title-${docindex}">${attachedDocument.title}</p>
 
             <div id="file-download-${docindex}" class="ds_file-download__details">
                 <dl class="ds_metadata  ds_metadata--inline">

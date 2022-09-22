@@ -40,9 +40,11 @@
                     </div>
 
                     <div class="gov_person__text-container">
-                        <#assign contactInformationHeadingModifier = 'gamma' />
-                        <#assign contactInformation = document.contactInformation />
-                        <#include 'common/contact-information.ftl' />
+                        <#if document.contactInformation??>
+                            <#assign contactInformationHeadingModifier = 'gamma' />
+                            <#assign contactInformation = document.contactInformation />
+                            <#include 'common/contact-information.ftl' />
+                        </#if>
                     </div>
                 </div>
             </div>

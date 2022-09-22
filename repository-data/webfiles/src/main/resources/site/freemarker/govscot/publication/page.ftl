@@ -240,7 +240,7 @@
                                     <#if hasAttachedDocument?has_content>
                                         <section class="document-section">
                                             <#list documents as attachedDocument>
-                                                <#assign docindex = "main"/>
+                                                <#assign docindex= attachedDocument?counter />
                                                 <#include 'body-document-info.ftl'/>
                                             </#list>
                                         </section>

@@ -211,6 +211,7 @@
                             <div>
                                 <#assign attachedDocument = documents[0]/>
                                 <#assign useCoverPage = true/>
+                                <#assign docindex = "main" />
                                 <#include '../publication/body-document-info.ftl'/>
                             </div>
                         </#if>
@@ -247,6 +248,7 @@
                                         <#assign isHighlightedItem = true/>
                                         <#assign useCoverPage = true/>
                                     </#if>
+                                    <#assign docindex = attachedDocument?counter />
                                     <#include '../publication/body-document-info.ftl'/>
                                     <#assign isHighlightedItem = false/>
                                     <#assign useCoverPage = false/>
@@ -260,6 +262,7 @@
                                 <section class="document-section">
                                     <h2>${folder.displayName}</h2>
                                     <#list folder.documents as attachedDocument>
+                                        <#assign docindex = attachedDocument?counter />
                                         <#include '../publication/body-document-info.ftl'/>
                                     </#list>
                                 </section>
