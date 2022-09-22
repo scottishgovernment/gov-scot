@@ -78,7 +78,3 @@ $breakpoints: (
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
 }
-
-.ds_site-footer {
-    @include ds_responsive-margin(9, top);
-}
