@@ -32,6 +32,7 @@ definitions:
             hipposysedit:path: govscot:publicationDate
             hipposysedit:primary: false
             hipposysedit:type: Date
+            hipposysedit:validators: [required]
           /dynamicdropdown:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
