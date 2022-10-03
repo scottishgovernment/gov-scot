@@ -27,15 +27,6 @@ import java.util.*;
 
 /**
  * Reconciliation loop to read the search journal index index content in funnelback.
- *
- *
- * TODO:
- * try configuring http://tinyproxy.github.io/
- * - put together tickets andconfluence page to document intended behaviour
- *
- * - need Martins help on writing context.xml>
- *    - in the meantime make sure there is defined behaviour for if the credentials ate not available.
- *      theor absence could act as a sort of feature flag
  */
 public class FunnelbackReconciliationLoop implements RepositoryJob {
 
@@ -68,6 +59,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
         if (!featureFlag.isEnabled()) {
             LOG.info("FunnelbackReconciliationLoop is disabled");
+            session.logout();
             return;
         }
 
@@ -92,10 +84,6 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     }
 
     boolean isReady() {
-        if (FunnelbackConfigurationInitializer.getConfiguration() == null) {
-            LOG.warn("FunnelbackConfiguration has not been initialised");
-            return false;
-        }
 
         if (!pingUrlResponding()) {
             LOG.warn("Ping url not responding yet");

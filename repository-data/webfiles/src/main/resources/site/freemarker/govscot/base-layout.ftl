@@ -54,9 +54,9 @@
             <#include 'common/notifications.ftl' />
             <@hst.include ref="menu"/>
 
-            <#if !(isSearchpage!true)>
-                <@hst.include ref="search"/>
-            </#if>
+            <#--<#if !(isSearchpage!true)>-->
+                <#--<@hst.include ref="search"/>-->
+            <#--</#if>-->
         </div>
 
         <div class="ds_page__middle">

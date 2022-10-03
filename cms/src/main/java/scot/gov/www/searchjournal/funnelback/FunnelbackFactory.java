@@ -1,5 +1,6 @@
 package scot.gov.www.searchjournal.funnelback;
 
+import org.hippoecm.hst.site.HstServices;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,8 @@ public class FunnelbackFactory {
     public static Funnelback newFunnelback(RepositoryJobExecutionContext context) {
 
         // decide what kind of funnelback instance to create based on the job context.
-        FunnelbackConfiguration configuration = FunnelbackConfigurationInitializer.getConfiguration();
         String filters = filters(context);
-        Funnelback funnelback = new FunnelbackImpl(configuration, filters);
+        Funnelback funnelback = new FunnelbackImpl(configuration(), filters);
 
         LOG.info("filters: {}", filters);
         // for testing error conditions it is possible to configure the repository to add artificial errors to our
@@ -39,6 +39,16 @@ public class FunnelbackFactory {
         }
 
         return new MetricsCollectingFunnelbackImpl(funnelback);
+    }
+
+    static FunnelbackConfiguration configuration() {
+        FunnelbackConfiguration configuration = new FunnelbackConfiguration();
+        String url = HstServices.getComponentManager().getContainerConfiguration().getString("funnelback.url");
+        String token = HstServices.getComponentManager().getContainerConfiguration().getString("funnelback.pushtoken");
+        configuration.setApiUrl(url);
+        configuration.setApiKey(token);
+
+        return configuration;
     }
 
     static String filters(RepositoryJobExecutionContext context) {

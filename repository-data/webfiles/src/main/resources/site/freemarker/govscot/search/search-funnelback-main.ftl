@@ -24,6 +24,3 @@
         </main>
     </div>
 </div>
-
-<#assign scriptName="search">
-<#include 'scripts.ftl'/>

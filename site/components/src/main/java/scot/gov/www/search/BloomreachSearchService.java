@@ -51,6 +51,25 @@ public class BloomreachSearchService implements SearchService {
 
     private static final int PAGE_SIZE = 10;
 
+    /**
+     * - clear outr curator content for gov
+     * X - emove postcode recognition code in search page
+     * - sort params in api
+     * - filter by content type filter in api
+     * - add the auto completer stuff ...
+     *   ... backend rest is available
+     *   ... flagging based on search settings
+     *       ... header
+     *       ... search page
+     *   ... probably best to ask Jonathan to do front end
+     *
+     * - once we have token for push colections, devise strategy for indexing all content
+     *    - migration to create the curator changes do in gov
+     *    - determine how long migration takes to run
+     *    - probably check everythign in and then run the migration in one release, and then swtich to funnelk back once content has been indexed?
+     * - test things are indexed properly and render correctly in the search results
+
+     */
     static {
         Collections.addAll(FIELD_NAMES,
                 "govscot:title",
@@ -213,6 +232,7 @@ public class BloomreachSearchService implements SearchService {
         ResultsSummary resultsSummary = buildResultsSummary(result, offset);
         response.getResultPacket().setResultsSummary(resultsSummary);
         searchResponse.setResponse(response);
+        response.getResultPacket().setQueryHighlightRegex(query);
 
         Pagination pagination = new PaginationBuilder(url).getPagination(resultsSummary, query);
         searchResponse.setPagination(pagination);
