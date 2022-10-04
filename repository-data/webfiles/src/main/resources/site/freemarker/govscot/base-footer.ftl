@@ -81,7 +81,7 @@
             </div>
 
             <div class="ds_site-footer__org">
-                <img width="300" height="55" class="ds_site-footer__org-logo" src="<@hst.link path='/assets/images/logos/scottish-government--min.svg' />" alt="gov.scot" loading="lazy" />
+                <img width="300" height="57" class="ds_site-footer__org-logo" src="<@hst.link path='/assets/images/logos/scottish-government--min.svg' />" alt="gov.scot" loading="lazy" />
             </div>
         </div>
     </div>
