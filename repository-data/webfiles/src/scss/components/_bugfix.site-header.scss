@@ -1,0 +1,17 @@
+.ds_site-header {
+    .ds_site-branding__logo-image {
+        max-width: 100%;
+    }
+
+    .ds_site-branding__logo {
+        display: block;
+    }
+
+    .ds_site-header__content {
+        grid-template-columns: auto auto;
+    }
+
+    .ds_site-header .ds_site-header__controls {
+        justify-self: end;
+    }
+}
