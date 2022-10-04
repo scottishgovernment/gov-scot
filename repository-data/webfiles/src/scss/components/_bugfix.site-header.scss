@@ -7,11 +7,13 @@
         display: block;
     }
 
-    .ds_site-header__content {
-        grid-template-columns: auto auto;
-    }
-
     .ds_site-header__controls {
         justify-self: end;
+    }
+}
+
+@include ds_media-query(medium-down) {
+    .ds_site-header .ds_site-header__content {
+        grid-template-columns: auto auto;
     }
 }
