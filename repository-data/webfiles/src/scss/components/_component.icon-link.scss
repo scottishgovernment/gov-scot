@@ -8,6 +8,7 @@ $icon-spacing: 1.5em;
     position: relative;
     text-decoration: none;
     padding-right: $icon-spacing;
+    white-space: nowrap;
 
     &__text {
         text-decoration: underline;
