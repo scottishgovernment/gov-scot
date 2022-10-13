@@ -1,0 +1,49 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-dynamic-issue-folder:
+      jcr:primaryType: hippostd:templatequery
+      jcr:mixinTypes: ['hipposys:implementation']
+      hippostd:icon: addfolder_ico
+      hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
+        $inherited, './index/index/govscot:title', $localName, './index/hippo:name',
+        $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
+        $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
+        $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
+        $localName]
+      hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-dynamic-issue-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /hippostd:folder:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['mix:versionable']
+          jcr:uuid: 7e97e1d5-38be-4a56-b4e9-1c4fc9b79906
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+            jcr:uuid: afdcea4a-5e2a-45c3-afae-0e8d1cd6b18d
+            hippo:name: Dynamic issue name
+            /index:
+              jcr:primaryType: govscot:DynamicIssue
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 930d4f9a-f082-4d58-aaa5-477f71bc52e2
+              govscot:metaDescription: ''
+              govscot:seoTitle: ''
+              govscot:summary: ''
+              govscot:title: ''
+              hippo:availability: [preview]
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
+              hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 234760b4-4b20-403b-b75f-0c2caf5f8583
+              hippotranslation:locale: en
+          /components:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-dynamic-issue-component]
+          /images:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-dynamic-issue-image]

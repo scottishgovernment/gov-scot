@@ -4,7 +4,7 @@
   jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 82348aac-65e3-47c1-8131-a8739d1e2d9f
   hippo:name: Topics and issues
-  hippostd:foldertype: [new-topic, new-issue]
+  hippostd:foldertype: [new-topic, new-issue, new-dynamic-issue-folder]
   /cop26:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
@@ -7269,3 +7269,36 @@
         hippo:facets: []
         hippo:modes: []
         hippo:values: []
+  /dynamic-issue:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+    jcr:uuid: 6eefcccb-d44f-4ccb-8177-fbd821d495d4
+    hippo:name: Dynamic Issue
+    hippostd:foldertype: []
+    /index:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+      jcr:uuid: 8e42b053-5013-4aa8-bbfc-ba8250743a18
+      hippo:name: Dynamic Issue
+      /index:
+        jcr:primaryType: govscot:DynamicIssue
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 22822d0c-2186-49b9-9a77-7f66fcb4dec1
+        govscot:metaDescription: ''
+        govscot:seoTitle: Dynamic Issue
+        govscot:summary: ''
+        govscot:title: Dynamic Issue
+        hippo:availability: [preview]
+        hippostd:state: unpublished
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2022-10-11T16:16:23.014+01:00
+        hippostdpubwf:lastModificationDate: 2022-10-11T16:16:23.014+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 234760b4-4b20-403b-b75f-0c2caf5f8583
+        hippotranslation:locale: en
+    /components:
+      jcr:primaryType: hippostd:folder
+      hippostd:foldertype: [new-dynamic-issue-component]
+    /images:
+      jcr:primaryType: hippostd:folder
+      hippostd:foldertype: [new-dynamic-issue-image]
