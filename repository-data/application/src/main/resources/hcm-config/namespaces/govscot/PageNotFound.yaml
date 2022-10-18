@@ -202,19 +202,3 @@ definitions:
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              ckeditor.config.appended.json: "{\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
-                }"
-              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
-                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
-                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
-                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
-                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
-                : \"mygov\"\t}],\t\"extraPlugins\": \"dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
-                ,        \"contentsCss\": [                \"ckeditor/hippocontents.css\"\
-                ,                \"ckeditor/ckeditorstyle.css\"        ],       \"\
-                youtube_responsive\": true,       \"youtube_privacy\": true,     \
-                \  \"youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\"\
-                , \"txtEmbed\", \"chkOlderCode\"],       \"extraAllowedContent\":\
-                \ \"table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate]\"}"
