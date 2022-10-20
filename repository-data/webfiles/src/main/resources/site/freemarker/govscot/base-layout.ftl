@@ -41,6 +41,7 @@
     <script src="<@hst.link path='/assets/scripts/vendor/jquery.min.js'/>"></script>
 </head>
 <body>
+    <input type="hidden" id="site-root-path" value="<@hst.link path="/"/>" />
     <@hst.include ref="googletagmanager"/>
 
     <#include 'common/accessibility-links.ftl' />
@@ -54,9 +55,9 @@
             <#include 'common/notifications.ftl' />
             <@hst.include ref="menu"/>
 
-            <#--<#if !(isSearchpage!true)>-->
-                <#--<@hst.include ref="search"/>-->
-            <#--</#if>-->
+            <#if !(isSearchpage!true)>
+                <@hst.include ref="search"/>
+            </#if>
         </div>
 
         <div class="ds_page__middle">
