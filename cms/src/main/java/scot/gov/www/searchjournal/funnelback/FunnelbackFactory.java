@@ -1,5 +1,6 @@
 package scot.gov.www.searchjournal.funnelback;
 
+import org.hippoecm.hst.core.container.ContainerConfiguration;
 import org.hippoecm.hst.site.HstServices;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
@@ -43,8 +44,9 @@ public class FunnelbackFactory {
 
     static FunnelbackConfiguration configuration() {
         FunnelbackConfiguration configuration = new FunnelbackConfiguration();
-        String url = HstServices.getComponentManager().getContainerConfiguration().getString("funnelback.url");
-        String token = HstServices.getComponentManager().getContainerConfiguration().getString("funnelback.pushtoken");
+        ContainerConfiguration containerConfiguration = HstServices.getComponentManager().getContainerConfiguration();
+        String url = containerConfiguration.getString("funnelback.url");
+        String token = containerConfiguration.getString("funnelback.token");
         configuration.setApiUrl(url);
         configuration.setApiKey(token);
 

@@ -51,6 +51,7 @@ public class FunnelbackImpl implements Funnelback {
         funnelBackUri = URI.create(configuration.getApiUrl());
         funnelbackHost = new HttpHost(funnelBackUri.getHost(), funnelBackUri.getPort(), funnelBackUri.getScheme());
         this.positionUrl = funnelbackCollectionUrl(FunnelbackCollection.JOURNAL.getCollectionName(), "https://www.gov.scot/journalposition");
+        LOG.info("positionUrl {}", positionUrl);
         httpClient = HttpClientSource.newClient();
     }
 
@@ -127,7 +128,7 @@ public class FunnelbackImpl implements Funnelback {
                     encodedKey,
                     encodedFilters);
         } catch (UnsupportedEncodingException e) {
-            throw new IllegalArgumentException("UnsupportedEncodingException trying to encode poition key", e);
+            throw new IllegalArgumentException("UnsupportedEncodingException trying to encode position key", e);
         }
     }
 
@@ -171,7 +172,9 @@ public class FunnelbackImpl implements Funnelback {
                 return null;
             }
             String content = jsonNode.get("pushContent").get("content").asText();
-            return new String(Base64.getDecoder().decode(content));
+            String decodedContent =  new String(Base64.getDecoder().decode(content));
+            LOG.info("fetchJournalPosition {}", decodedContent);
+            return decodedContent;
         } finally {
             response.close();
         }
@@ -184,6 +187,7 @@ public class FunnelbackImpl implements Funnelback {
             return;
         }
 
+        LOG.info("storeJournalPosition {}", url);
         HttpPut request = new HttpPut(url);
         request.addHeader(SECURITY_TOKEN, configuration.getApiKey());
         GregorianCalendar cal = (GregorianCalendar) position;

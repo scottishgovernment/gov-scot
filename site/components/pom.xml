@@ -60,7 +60,7 @@
 
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
-      <artifactId>hippo-govscot-hst-funnelback</artifactId>
+      <artifactId>hippo-govscot-funnelback-hst</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 

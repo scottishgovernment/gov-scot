@@ -73,8 +73,6 @@ public class SearchJournalEventListener implements DaemonModule {
         }
 
         try {
-
-
             SearchJournalEntry entry = journalEntry(event);
             if (entry != null) {
                 searchJournal.record(entry);

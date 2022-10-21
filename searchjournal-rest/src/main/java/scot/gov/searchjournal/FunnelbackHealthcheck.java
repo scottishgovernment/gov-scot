@@ -53,6 +53,7 @@ public class FunnelbackHealthcheck {
         return Response.status(200).entity(new ObjectMapper().writeValueAsString(healthinfo)).build();
     }
 
+
     void addMetricsInformation(HealthInfo healthinfo) {
         MetricRegistry metricRegistry = FunnelbackMetricRegistry.getInstance();
         Meter requestRate = metricRegistry.meter(MetricName.REQUEST_RATE.getMetricName());

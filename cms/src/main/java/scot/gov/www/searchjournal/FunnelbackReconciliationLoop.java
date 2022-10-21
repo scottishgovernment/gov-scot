@@ -23,6 +23,9 @@ import scot.gov.www.searchjournal.funnelback.*;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
@@ -65,7 +68,13 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
         LOG.info("Starting FunnelbackReconciliationLoop");
         Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
+
         try {
+            FeatureFlag resetJournalPositionFlag = new FeatureFlag(session, "ResetJournalPosition");
+            if (resetJournalPositionFlag.isEnabled()) {
+                resetJournalPosition(funnelback);
+            }
+
             fetchAndProcessPendingJournalEntries(funnelback, session, featureFlag);
         } catch (RepositoryException e) {
             LOG.error("RepositoryException during funnelback reconciliation", e);
@@ -81,6 +90,14 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             }
             session.logout();
         }
+    }
+
+    void resetJournalPosition(Funnelback funnelback) throws FunnelbackException {
+        ZonedDateTime zdt = LocalDate.of(2019, 1, 1).atStartOfDay(ZoneId.systemDefault());
+        Date date = Date.from(zdt.toInstant());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        funnelback.storeJournalPosition(calendar);
     }
 
     boolean isReady() {
@@ -127,7 +144,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             return;
         }
 
-        LOG.info("{} pending journal entries to process", pendingEntries.size());
+        LOG.info("{} pending journal entries to process, journal position is {}", pendingEntries.size(), journalPosition);
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         Timer.Context timerContext = jobTimer.time();

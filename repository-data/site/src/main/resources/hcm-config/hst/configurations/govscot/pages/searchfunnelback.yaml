@@ -3,6 +3,8 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/searchfunnelback:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
+      hst:parameternames: [hideSearchToolbar]
+      hst:parametervalues: ['true']
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.SearchComponent
