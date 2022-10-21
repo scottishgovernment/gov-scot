@@ -1,6 +1,5 @@
 package scot.gov.www.rest.sitemap;
 
-
 import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.forge.sitemap.components.model.Url;
@@ -32,6 +31,10 @@ public class SitemapResource {
 
     static final String LAST_MOD = "govscot:lastMod";
 
+    static final String LATEST_LAST_MOD = "govscot:latestLastMod";
+
+    static final String LATEST_PATH = "sitemap/latest.xml";
+
     @Context
     private UriInfo uriInfo;
 
@@ -48,6 +51,18 @@ public class SitemapResource {
                 "/sitemap.xml",
                 this::getSitemapRootNode,
                 this::generateSitemapIndex);
+    }
+
+    @Path(LATEST_PATH)
+    @Produces(APPLICATION_XML)
+    @GET
+    public Response getLatestSitemap() {
+
+        String path = uriInfo.getPathParameters().getFirst("path");
+        return processRequest(
+                path,
+                this::getSitemapNodeForLatest,
+                this::generateLatestSitemap);
     }
 
     @Path("{path: .+}")
@@ -68,7 +83,7 @@ public class SitemapResource {
             if (node == null) {
                 return Response.status(404).entity("Sitemap not found").build();
             }
-            Calendar lastModified = getLastModifiedDate(node);
+            Calendar lastModified = getLastModifiedDate(path, node);
             Response.ResponseBuilder responseBuilder = request.evaluatePreconditions(lastModified.getTime());
             if (responseBuilder != null) {
                 return responseBuilder.build();
@@ -82,12 +97,12 @@ public class SitemapResource {
         }
     }
 
-    Calendar getLastModifiedDate(Node node) throws RepositoryException {
-        if (node.hasProperty(LAST_MOD)) {
-            return node.getProperty(LAST_MOD).getDate();
-        }
+    Calendar getLastModifiedDate(String path, Node node) throws RepositoryException {
 
-        return node.getProperty("hippostdpubwf:lastModificationDate").getDate();
+        if (LATEST_PATH.equals(path)) {
+            return node.getParent().getProperty(LATEST_LAST_MOD).getDate();
+        }
+        return node.getProperty(LAST_MOD).getDate();
     }
 
     Node getSitemapRootNode() throws RepositoryException {
@@ -154,12 +169,24 @@ public class SitemapResource {
         return session.nodeExists(repositoryPath) ? session.getNode(repositoryPath) : null;
     }
 
+    Node getSitemapNodeForLatest() throws RepositoryException {
+        Session session = RequestContextProvider.get().getSession();
+        String siteName = getSiteName();
+        String yearString = Integer.toString(LocalDate.now().getYear());
+        String monthString = Integer.toString(LocalDate.now().getMonthValue());
+        String repositoryPath = new StringBuffer(SITEMAP_ROOT_PATH)
+                .append('/')
+                .append(siteName)
+                .append('/')
+                .append(yearString)
+                .append('/')
+                .append(monthString)
+                .toString();
+        return session.nodeExists(repositoryPath) ? session.getNode(repositoryPath) : null;
+    }
+
     String getRepositoryPathFromRequestPath(String siteName, String requestPath) {
-        if (isLatestRequest()) {
-            String yearString = Integer.toString(LocalDate.now().getYear());
-            String monthString = Integer.toString(LocalDate.now().getMonthValue());
-            requestPath = requestPath.replace("latest", yearString + '/' + monthString);
-        }
+
         requestPath = substringAfter(substringBefore(requestPath, ".xml"), "sitemap/");
         return new StringBuffer(SITEMAP_ROOT_PATH)
                 .append('/')
@@ -178,18 +205,16 @@ public class SitemapResource {
             Url url = buildUrl(child, rootUrl);
             urlset.getUrls().add(url);
         }
-
-        if (isLatestRequest()) {
-            Urlset latestUrlset = sitemapLatestGenerator.generateSitemap(node);
-            urlset.getUrls().addAll(latestUrlset.getUrls());
-        }
-
         return urlset;
     }
 
-    boolean isLatestRequest() {
-        String path = uriInfo.getPathParameters().getFirst("path");
-        return "sitemap/latest.xml".equals(path);
+    Urlset generateLatestSitemap(Node node) throws RepositoryException {
+        Urlset latestUrlset = sitemapLatestGenerator.generateSitemap(node);
+        if (node != null) {
+            Urlset urlset = generateSitemap(node);
+            latestUrlset.getUrls().addAll(urlset.getUrls());
+        }
+        return latestUrlset;
     }
 
     Url buildUrl(Node node, String rootUrl) throws RepositoryException {

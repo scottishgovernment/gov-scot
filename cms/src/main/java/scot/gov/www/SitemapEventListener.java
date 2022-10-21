@@ -32,6 +32,8 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     private static final String LAST_MOD = "govscot:lastMod";
 
+    private static final String LATEST_LAST_MOD = "govscot:latestLastMod";
+
     private static final String NT_UNSTRUCTURED = "nt:unstructured";
 
     private static final String EXCLUDED_TYPES = "govscot:excludedTypes";
@@ -70,22 +72,51 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
         }
 
         try {
-            Node handle = session.getNodeByIdentifier(event.subjectId());
-            Node node = hippoUtils.getVariant(handle);
+            handleEventWithLogging(event);
+        } catch (RepositoryException e) {
+            LOG.error("Exception when calling session.refresh(false)", e);
+        } catch (Exception t) {
+            LOG.error("{} Unexpected exception", this.getClass().getName(), t);
+            throw t;
+        }
+    }
 
-            if (isExcludedType(node)) {
-                return;
-            }
+    void handleEventWithLogging(HippoWorkflowEvent event) throws RepositoryException {
 
-            String url = urlSource.url(node);
-            removeExistingSitemapNode(url, node);
-            if (PUBLISH_INTERACTION.equals(event.interaction())) {
-                ensureSitemapEntry(node, url);
-            }
-            session.save();
+        // handle the event and ensure that session.refresh(false) is called id there is a RepositoryException
+        try {
+            doHandleEvent(event);
         } catch (RepositoryException e) {
             LOG.error("RepositoryException trying to index {}", event.subjectId(), e);
+            session.refresh(false);
+        } catch (Exception t) {
+            LOG.error("{} Unexpected exception", this.getClass().getName(), t);
+            throw t;
         }
+    }
+
+    public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
+
+        Node handle = session.getNodeByIdentifier(event.subjectId());
+        Node node = hippoUtils.getVariant(handle);
+        updateSitemapLatestDate(node);
+        if (isExcludedType(node)) {
+            session.save();
+            return;
+        }
+
+        String url = urlSource.url(node);
+        removeExistingSitemapNode(url, node);
+        if (PUBLISH_INTERACTION.equals(event.interaction())) {
+            ensureSitemapEntry(node, url);
+        }
+        session.save();
+    }
+
+    void updateSitemapLatestDate(Node node) throws RepositoryException {
+        Node sitemapNode = getSitemapSiteNode(node);
+        LOG.info("updateSitemapLatestDate {}", node.getPath());
+        sitemapNode.setProperty(LATEST_LAST_MOD, Calendar.getInstance());
     }
 
     boolean isExcludedType(Node node) throws RepositoryException {
@@ -126,6 +157,7 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
         urlNode.setProperty("govscot:loc", url);
         urlNode.setProperty(LAST_MOD, lastModified);
         if (!hasMonthSitemap) {
+            // we created a new month node which means that sitemap.xml has changed
             sitemapNode.setProperty(LAST_MOD, Calendar.getInstance());
         }
     }

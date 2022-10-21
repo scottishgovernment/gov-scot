@@ -392,9 +392,6 @@ definitions:
         /_any_.xml:
           jcr:primaryType: hst:sitemapitem
           hst:namedpipeline: JaxrsRestPlainPipeline
-        /latest.xml:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:components/sitemapLatest
       /rest:
         jcr:primaryType: hst:sitemapitem
         hst:hiddeninchannelmanager: true
@@ -413,8 +410,3 @@ definitions:
             jcr:primaryType: hst:sitemapitem
             hst:namedpipeline: JaxrsRestPlainPipeline
             hst:excludedforlinkrewriting: true
-      /sitemap_latest.xml:
-        jcr:primaryType: hst:sitemapitem
-        hst:excludedforlinkrewriting: true
-        hst:hiddeninchannelmanager: true
-        hst:namedpipeline: JaxrsRestPlainPipeline
