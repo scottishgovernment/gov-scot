@@ -904,3 +904,26 @@
         jcr:primaryType: selection:listitem
         selection:key: local-authority
         selection:label: Local authority
+  /siteverificationtype:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: bc6fbe40-70bc-4dc0-aacf-6c39ecea97fe
+    /siteverificationtype:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 224cd7b7-da1b-496c-b04e-88d917832f11
+      hippo:availability: [live, preview]
+      hippotranslation:id: d18903fd-ba5a-43c8-ad56-33563937e9e2
+      hippotranslation:locale: inherited - from query
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: facebook-domain-verification
+        selection:label: Facebook
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: google-site-verification
+        selection:label: Google
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: msvalidate.01
+        selection:label: Bing

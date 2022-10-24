@@ -149,3 +149,6 @@
 
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
 
+[govscot:siteverification] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+

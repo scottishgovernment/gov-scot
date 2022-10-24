@@ -167,3 +167,6 @@ definitions:
       /cookiepreferences-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/cookie-preferences-main.ftl
+      /site-verification:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/site-verification.ftl

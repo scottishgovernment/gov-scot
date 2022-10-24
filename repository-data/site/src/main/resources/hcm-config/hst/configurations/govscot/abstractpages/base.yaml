@@ -39,3 +39,8 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.ImportantBannerComponent
         hst:template: important-banner
+      /siteverification:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.SiteVerificationComponent
+        hst:suppresswastemessage: true
+        hst:template: site-verification

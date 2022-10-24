@@ -1,5 +1,6 @@
 /content/documents/administration:
+  .meta:order-before: govscot
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['mix:referenceable']
   jcr:uuid: 0954a7ca-093e-43bb-a2cc-fa21acdd409b
-  hippostd:foldertype: [new-resource-bundle, new-untranslated-folder]
+  hippostd:foldertype: [new-resource-bundle, new-untranslated-folder, new-siteverification-document]
