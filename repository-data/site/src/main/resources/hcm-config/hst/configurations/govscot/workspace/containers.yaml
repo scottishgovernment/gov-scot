@@ -9,11 +9,13 @@ definitions:
           jcr:primaryType: hst:containercomponent
           hst:label: Top
           hst:xtype: hst.vbox
+          hippo:identifier: 00fa0d6e-3503-48ef-9e4e-066ba0f5ea49
         /footer:
           .meta:residual-child-node-category: content
           jcr:primaryType: hst:containercomponent
           hst:label: Footer
           hst:xtype: hst.vbox
+          hippo:identifier: 9ac35b44-2671-45ae-96fb-9cce37c573d9
       /homepage:
         jcr:primaryType: hst:containercomponentfolder
         /main:
@@ -21,6 +23,7 @@ definitions:
           jcr:primaryType: hst:containercomponent
           hst:label: Home Page Main
           hst:xtype: hst.vbox
+          hippo:identifier: 0f36d4f9-8157-428a-85ac-139f0b54a4dd
       /pagenotfound:
         jcr:primaryType: hst:containercomponentfolder
         /main:
@@ -28,6 +31,7 @@ definitions:
           jcr:primaryType: hst:containercomponent
           hst:label: Page-Not-Found Main
           hst:xtype: hst.vbox
+          hippo:identifier: 4fff7a99-ccb3-4a8e-a3ed-c78ce0568b2e
       /contentlist:
         jcr:primaryType: hst:containercomponentfolder
         /main:
@@ -35,6 +39,7 @@ definitions:
           jcr:primaryType: hst:containercomponent
           hst:label: Content List Main
           hst:xtype: hst.vbox
+          hippo:identifier: b9fa2618-7f30-48e2-b566-25120f678306
       /contentpage:
         jcr:primaryType: hst:containercomponentfolder
         /main:

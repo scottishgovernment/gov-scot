@@ -1,2 +1,5 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:channel/hst:channelinfo:
   jcr:primaryType: hst:channelinfo
+  hst:channelinfoclass: scot.gov.www.channel.WebsiteInfo
+  searchEnabled: false
+  siteTitle: The Scottish Government

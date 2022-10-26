@@ -5,3 +5,8 @@ definitions:
       jcr:primaryType: hst:channel
       hst:name: www.gov.scot
       hst:type: website
+      hst:channelinfoclass: scot.gov.www.channel.WebsiteInfo
+      hst:lastmodifiedby: admin
+      hst:defaultdevice: default
+      hst:devices: []
+      hst:lastmodified: 2022-10-26T09:10:40.495+01:00
