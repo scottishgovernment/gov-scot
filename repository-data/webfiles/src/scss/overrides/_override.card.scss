@@ -73,3 +73,13 @@
         align-self: end;
     }
 }
+
+
+
+
+.gov_collection-item-card {
+    list-style-type: none;
+    margin-left: -24px;
+    @include ds_responsive-margin(3, top);
+    @include ds_responsive-margin(3, bottom);
+}

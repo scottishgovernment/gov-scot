@@ -64,26 +64,39 @@
                     <ul class="collections-list">
                         <#list group.collectionItems as item>
                             <#if group.highlight == true && item?index == 0>
-                                <li class="listed-content-item  listed-content-item--highlight  listed-content-item--compact">
-                                    <article class="listed-content-item__article ">
-                                        <header class="listed-content-item__header">
-                                            <div class="listed-content-item__meta">
-                                                <span class="listed-content-item__label">${item.label}</span>
+                                <li class="ds_card  ds_card--grey  gov_collection-item-card">
+                                    <article class="ds_card__content">
+                                        <h3 class="ds_card__title">
+                                            <a href="<@hst.link hippobean=item/>" class="listed-content-item__link">${item.title}</a>
+                                        </h3>
 
+                                        <p>
+                                            ${item.summary}
+                                        </p>
+
+                                        <div class="ds_card__content-footer">
+                                            <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
                                                 <#if item.publicationDate??>
                                                     <#assign dateFormat = "dd MMMM yyyy">
                                                     <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                                                         <#assign dateFormat = "dd MMMM yyyy HH:mm">
                                                     </#if>
-                                                    <span class="listed-content-item__date">| <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat /></span>
+                                                    <div class="ds_metadata__item">
+                                                        <dt class="ds_metadata__key  visually-hidden">
+                                                            Publication date
+                                                        </dt>
+                                                        <dd class="ds_metadata__value">
+                                                            <@fmt.formatDate value=item.publicationDate.time type="both" pattern=dateFormat />
+                                                        </dd>
+                                                    </div>
                                                 </#if>
-                                            </div>
 
-                                            <h3 class="gamma  listed-content-item__title">
-                                                <a href="<@hst.link hippobean=item/>" class="listed-content-item__link">${item.title}</a>
-                                            </h3>
-                                        </header>
-                                        <p class="listed-content-item__summary">${item.summary}</p>
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                                    <dd class="ds_metadata__value">${item.label}</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
                                     </article>
                                 </li>
                             <#else>
