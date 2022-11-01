@@ -173,3 +173,6 @@ definitions:
       /schema-website:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/schema-website.ftl
+      /preview-indicator:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/preview-indicator.ftl

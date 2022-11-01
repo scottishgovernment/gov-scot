@@ -47,6 +47,8 @@
 
     <span id="page-top"></span>
 
+    <@hst.include ref="preview-indicator"/>
+
     <div class="ds_page">
         <div class="ds_page__top">
             <#include 'common/notifications.ftl' />

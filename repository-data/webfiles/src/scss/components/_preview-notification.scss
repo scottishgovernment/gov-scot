@@ -1,0 +1,34 @@
+.dp_preview-notification {
+    background-color: $ds_colour__state--negative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.dp_preview-notification + * {
+    margin-top: 64px;
+    display: block;
+}
+
+@supports (position: sticky) {
+    .dp_preview-notification {
+        position: sticky;
+    }
+
+    .dp_preview-notification + * {
+        margin-top: 0;
+    }
+}
+
+.dp_preview-notification::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    outline: 8px solid $ds_colour__state--negative;
+    outline-offset: -8px;
+    pointer-events: none;
+}

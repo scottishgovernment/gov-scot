@@ -48,3 +48,7 @@ definitions:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.SchemaWebsiteComponent
         hst:template: schema-website
+      /preview-indicator:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.publishing.staging.components.PreviewIndicatorComponent
+        hst:template: preview-indicator
