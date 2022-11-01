@@ -24,6 +24,14 @@ definitions:
               hst:ismapped: false
               hst:namedpipeline: JaxrsRestPlainPipeline
               hst:types: [rest]
+            /govscot-preview:
+              .meta:residual-child-node-category: content
+              jcr:primaryType: hst:mount
+              hst:alias: gov-staging
+              hst:mountpoint: /hst:hst/hst:sites/govscot
+              hst:type: preview
+              preview-cookie-httponly: 'false'
+              preview-cookie-secure: 'false'
       /lcl:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 544c5ec1-ab0a-4679-97c3-f31733622081
@@ -56,6 +64,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /lcl:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /dev:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: f7b6c86f-9563-425f-8ee4-7178e2f9bb88
@@ -88,6 +111,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /dev:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /int:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 0521f988-3aac-4cb6-a7ea-7a9aa57be9cc
@@ -120,6 +158,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /int:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /exp:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: ffe7fea6-a812-43da-ad2d-42696cb231ef
@@ -152,6 +205,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /exp:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /uat:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: abdd297c-3e6b-45e1-8a2a-cee80c6fd01d
@@ -184,6 +252,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /uat:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /per:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: da91618e-3baf-4b3a-a626-5d6c8cf19ac3
@@ -216,6 +299,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /per:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /tst:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 3ae553dc-bdfa-4031-b000-1ba35c40252d
@@ -248,6 +346,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /tst:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/dev
       /blu:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 5caac298-8d0c-428e-871d-19485e750b9e
@@ -280,6 +393,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /blu:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/live
       /grn:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 89ec4560-1b8e-44cc-91b5-22a688900f43
@@ -312,6 +440,21 @@ definitions:
                     hst:ismapped: false
                     hst:namedpipeline: JaxrsRestPlainPipeline
                     hst:types: [rest]
+            /publishing:
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                jcr:primaryType: hst:virtualhost
+                /grn:
+                  jcr:primaryType: hst:virtualhost
+                  /hst:root:
+                    jcr:primaryType: hst:mount
+                    hst:alias: govscot-staging
+                    hst:mountpoint: /hst:hst/hst:sites/govscot
+                    hst:schemeagnostic: true
+                    hst:type: preview
+                    preview-cookie-httponly: 'false'
+                    preview-cookie-secure: 'false'
+                    govscot:gtm: /content/documents/administration/analytics/live
       /www:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: d33f10c9-a0fd-441c-a69e-e01854859852
@@ -341,3 +484,19 @@ definitions:
                   hst:ismapped: false
                   hst:namedpipeline: JaxrsRestPlainPipeline
                   hst:types: [rest]
+            /publishing:
+              .meta:residual-child-node-category: content
+              jcr:primaryType: hst:virtualhost
+              /preview:
+                .meta:residual-child-node-category: content
+                jcr:primaryType: hst:virtualhost
+                /hst:root:
+                  .meta:residual-child-node-category: content
+                  jcr:primaryType: hst:mount
+                  govscot:gtm: /content/documents/administration/analytics/live
+                  hst:alias: govscot-staging
+                  hst:mountpoint: /hst:hst/hst:sites/govscot
+                  hst:schemeagnostic: true
+                  hst:type: preview
+                  preview-cookie-httponly: 'false'
+                  preview-cookie-secure: 'false'

@@ -1,4 +1,5 @@
 /content/documents/administration/payment:
+  .meta:order-before: resourcebundles
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['mix:versionable']
   jcr:uuid: 22976f3e-d2b6-40c1-a952-a05b6df311cb

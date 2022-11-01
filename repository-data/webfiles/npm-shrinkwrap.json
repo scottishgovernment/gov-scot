@@ -4065,7 +4065,7 @@
     "fsevents": {
       "version": "1.2.13",
       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz",
-      "integrity": "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==",
+      "integrity": "sha1-8yXLBFVZJCi88Rs4M3DvcOO/zDg=",
       "dev": true,
       "optional": true,
       "requires": {

@@ -1,4 +1,5 @@
 /content/documents/administration/labels:
+  .meta:order-before: payment
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['mix:referenceable']
   jcr:uuid: 5f3ff168-1fd6-487d-ad8a-eb7486616f74
