@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: e4bc5ffd-52f8-4ad8-8b80-a7ce814136bf
+          jcr:uuid: 61dd8052-b3c9-44c0-b72a-90aff2e714b7
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -78,6 +78,14 @@ definitions:
             hipposysedit:path: govscot:displayDate
             hipposysedit:primary: false
             hipposysedit:type: Date
+          /contentitemlanguage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contentitemlanguage
+            hipposysedit:primary: false
+            hipposysedit:type: DynamicDropdown
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -100,9 +108,11 @@ definitions:
           govscot:dateResponded: 0001-01-01T12:00:00Z
           govscot:seoTitle: ''
           govscot:metaDescription: ''
-          jcr:uuid: 2d14b582-fcac-4b00-9a7e-dca33d396be3
+          jcr:uuid: 0dfcee7f-0cbc-4098-b3b4-5b13f5798a2a
           hippostdpubwf:lastModificationDate: 2019-01-24T13:41:25.409Z
           hippostdpubwf:creationDate: 2019-01-24T13:41:25.409Z
+          govscot:reportingTags: []
+          govscot:contentitemlanguage: en
           /govscot:epilogue:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -255,6 +265,17 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /contentitemlanguage:
+            jcr:primaryType: frontend:plugin
+            caption: Content language
+            field: contentitemlanguage
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              showDefault: 'false'
+              source: /content/documents/govscot/valuelists/contentitemlanguages
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible directorate

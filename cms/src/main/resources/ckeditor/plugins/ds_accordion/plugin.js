@@ -31,7 +31,7 @@ const accordionPlugin = function () {
                     title: {
                         selector: '.ds_accordion-item__title',
                         pathName: 'accordionTitle',
-                        allowedContent: 'strong;em;abbr',
+                        allowedContent: 'strong;em;abbr;span[lang,dir]',
                         disallowedContent: ''
                     },
                     content: {

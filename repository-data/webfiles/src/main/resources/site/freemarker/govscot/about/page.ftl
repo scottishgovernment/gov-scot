@@ -1,9 +1,11 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
+<#include "../common/macros/lang-attributes.ftl">
+
 <#if document??>
     <@hst.manageContent hippobean=document/>
     <div class="ds_wrapper">
-        <main id="main-content" class="ds_layout  gov_layout--about">
+        <main <@lang document/> id="main-content" class="ds_layout  gov_layout--about">
             <div class="ds_layout__sidebar">
                 <!--noindex-->
                 <@hst.include ref="side-menu"/>
@@ -27,7 +29,7 @@
                 </#if>
             </div>
 
-            <div class="ds_layout__feedback">
+            <div <@revertlang document /> class="ds_layout__feedback">
                 <#include '../common/feedback-wrapper.ftl'>
             </div>
         </main>

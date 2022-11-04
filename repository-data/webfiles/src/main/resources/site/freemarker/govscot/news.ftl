@@ -1,15 +1,16 @@
 <#ftl output_format="HTML">
 <#include "../include/imports.ftl">
+<#include "./common/macros/lang-attributes.ftl">
 
 <#if document??>
     <div class="ds_wrapper">
-        <main id="main-content" class="ds_layout  ds_layout--article">
+        <main <@lang document/> id="main-content" class="ds_layout  ds_layout--article">
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <span class="ds_page-header__label  ds_content-label">News</span>
+                    <span <@revertlang document /> class="ds_page-header__label  ds_content-label">News</span>
 
                     <h1 class="ds_page-header__title">${document.title}</h1>
-                    <dl class="ds_page-header__metadata  ds_metadata">
+                    <dl <@revertlang document /> class="ds_page-header__metadata  ds_metadata">
                         <div class="ds_metadata__item">
                             <dt class="ds_metadata__key">Published</dt>
                             <dd class="ds_metadata__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></dd>
@@ -44,7 +45,7 @@
 
             <div class="ds_layout__sidebar">
                 <!--noindex-->
-                <div class="ds_article-aside">
+                <div <@revertlang document /> class="ds_article-aside">
                     <h2>Contact</h2>
                     <p>
                         <a href="/about/contact-information/media-enquiries/">Media enquiries</a>
@@ -52,7 +53,7 @@
                 </div>
 
                 <#if document.heroImage?? || (document.attachments?? && document.attachments?size > 0)>
-                    <div class="ds_article-aside">
+                    <div <@revertlang document /> class="ds_article-aside">
                         <h2>Media</h2>
 
                         <ul class="ds_no-bullets">
@@ -74,7 +75,7 @@
                 <!--endnoindex-->
             </div>
 
-            <div class="ds_layout__feedback">
+            <div <@revertlang document /> class="ds_layout__feedback">
                 <#include 'common/feedback-wrapper.ftl'>
             </div>
         </main>

@@ -8,13 +8,16 @@ definitions:
         name\": \"cleanup\"\r\n\t}, {\r\n\t\t\"name\": \"undo\"\r\n\t}, {\r\n\t\t\"\
         name\": \"listindentalign\",\r\n\t\t\"groups\": [\"list\"]\r\n\t}, {\r\n\t\
         \t\"name\": \"links\"\r\n\t}, {\r\n\t\t\"name\": \"insert\"\r\n\t}, {\r\n\t\
-        \t\"name\": \"tools\"\r\n\t}, {\r\n\t\t\"name\": \"mygov\"\r\n\t}],\r\n\t\"\
-        disallowedContent\": \"*[style]{*}\",\r\n\t\"extraPlugins\": \"dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
+        \t\"name\": \"tools\"\r\n\t}, {\r\n\t\t\"name\": \"mygov\"\r\n\t}, {\r\n \
+        \               \"name\": \"bidi\"\r\n        }],\r\n\t\"disallowedContent\"\
+        : \"*[style]{*}\",\r\n\t\"extraPlugins\": \"language,dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
         ,\r\n\r\n\t\"contentsCss\": [\r\n\t\t\"ckeditor/hippocontents.css\",\r\n\t\
         \t\"ckeditor/ckeditorstyle.css\"\r\n\t],\r\n\r\n\t\"youtube_responsive\":\
         \ true,\r\n\t\"youtube_privacy\": true,\r\n\t\"youtube_disabled_fields\":\
         \ [\"chkResponsive\", \"chkPrivacy\", \"txtEmbed\", \"chkOlderCode\"],\r\n\
         \t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate]\"\
-        \r\n\r\n}"
+        ,\r\n        \"language_list\": [\r\n            \"en:English\",\r\n     \
+        \       \"gd:Gaelic (Scottish)\",\r\n            \"ru:Russian\",\r\n     \
+        \       \"uk:Ukrainian\"\r\n        ]\r\n}"
       ckeditor.config.appended.json: "{\r\n\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
         \r\n}"

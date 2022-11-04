@@ -1,13 +1,14 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
+<#include "../common/macros/lang-attributes.ftl">
 
 <#if document??>
 <div class="ds_wrapper">
-    <main id="main-content" class="ds_layout  gov_layout--policy">
+    <main <@lang index/> id="main-content" class="ds_layout  gov_layout--policy">
         <div class="ds_layout__header">
             <@hst.link var="link" hippobean=index />
             <header class="ds_page-header">
-                <span class="ds_page-header__label  ds_content-label">Policy<#if latest??> - Latest</#if></span>
+                <span <@revertlang index /> class="ds_page-header__label  ds_content-label">Policy<#if latest??> - Latest</#if></span>
                 <h1 class="ds_page-header__title">${index.title}</h1>
                 <#include '../common/content-metadata.ftl'/>
             </header>
@@ -27,7 +28,7 @@
             </#if>
         </div>
 
-        <div class="ds_layout__feedback">
+        <div <@revertlang index />class="ds_layout__feedback">
             <#include '../common/feedback-wrapper.ftl'>
         </div>
     </main>

@@ -1,5 +1,5 @@
 <#ftl output_format="HTML">
-<div id="history">
+<div <@revertlang document /> id="history">
     <dl class="ds_metadata">
         <#if document.publicationDate??>
             <div class="ds_metadata__item">

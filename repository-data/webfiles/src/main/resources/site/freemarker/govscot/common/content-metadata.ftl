@@ -1,7 +1,8 @@
 <#include "../../include/imports.ftl">
+<#include "macros/lang-attributes.ftl">
 
 <#if !metadataChildrenOnly??>
-<dl class="ds_page-header__metadata  ds_metadata">
+<dl <@revertlang index /> class="ds_page-header__metadata  ds_metadata">
 </#if>
     <#if index.allResponsibleRoles?has_content>
         <div class="ds_metadata__item">

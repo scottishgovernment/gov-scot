@@ -6,7 +6,7 @@
     <ul class="ds_side-navigation__list" id="side-navigation-root">
         <#list pages as page>
             <li class="ds_side-navigation__item">
-                <a class="ds_side-navigation__link  <#if page == currentPage>ds_current</#if>  js-publication-navigation" href="<@hst.link hippobean=page/>" data-page-index="${page?index}">
+                <a <@langcompare page document /> class="ds_side-navigation__link  <#if page == currentPage>ds_current</#if>  js-publication-navigation" href="<@hst.link hippobean=page/>" data-page-index="${page?index}">
                     ${page.title}
                 </a>
             </li>

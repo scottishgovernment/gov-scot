@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: e05e5f68-721c-4506-bb98-a2c087f88072
+          jcr:uuid: baf409fc-ef4a-4618-9f6f-c3e05465952f
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -103,6 +103,14 @@ definitions:
             hipposysedit:path: govscot:newsTags
             hipposysedit:primary: false
             hipposysedit:type: String
+          /contentitemlanguage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contentitemlanguage
+            hipposysedit:primary: false
+            hipposysedit:type: DynamicDropdown
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -118,11 +126,13 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: f4336ab9-def7-4c79-8eb3-ae4f367fa5cf
+          jcr:uuid: 70e58bd9-6cfb-4225-b6ce-9146d3b9523e
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:sme: ''
           govscot:newsTags: []
+          govscot:reportingTags: []
+          govscot:contentitemlanguage: en
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
@@ -243,6 +253,17 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /contentitemlanguage:
+            jcr:primaryType: frontend:plugin
+            caption: Content language
+            field: contentitemlanguage
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              showDefault: 'false'
+              source: /content/documents/govscot/valuelists/contentitemlanguages
           /newsTags:
             jcr:primaryType: frontend:plugin
             caption: News Tags
@@ -386,18 +407,3 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               source: /content/documents/govscot/valuelists/reportingTags
-          /newsTags:
-            jcr:primaryType: frontend:plugin
-            caption: News Tags
-            field: newsTags
-            multiselect.type: palette
-            palette.alloworder: false
-            palette.maxrows: '8'
-            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
-            selectlist.maxrows: '8'
-            valuelist.provider: service.valuelist.default
-            wicket.id: ${cluster.id}.field
-            hint: Select the tags associated with this issue
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              source: /content/documents/govscot/valuelists/policyTags

@@ -1,5 +1,6 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
+<#include "../common/macros/lang-attributes.ftl">
 
 <nav class="ds_side-navigation  ds_no-margin--top" data-module="ds-side-navigation">
     <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root" />
@@ -41,12 +42,12 @@
                 <#list policyDetails as policyDetail>
                     <li class="ds_side-navigation__item">
                         <#if document == policyDetail>
-                            <span class="ds_side-navigation__link  ds_current">
+                            <span <@langcompare policyDetail document/> class="ds_side-navigation__link  ds_current">
                                 ${policyDetail.title}
                             </span>
                         <#else>
                             <@hst.link var="link" hippobean=policyDetail/>
-                            <a class="ds_side-navigation__link" href="${link}">
+                            <a <@langcompare policyDetail document/> class="ds_side-navigation__link" href="${link}">
                                 ${policyDetail.title}
                             </a>
                         </#if>

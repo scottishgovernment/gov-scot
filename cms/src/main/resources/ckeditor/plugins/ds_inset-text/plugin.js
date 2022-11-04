@@ -16,7 +16,7 @@ CKEDITOR.plugins.add('ds_inset-text', {
                 content: {
                     selector: '.ds_inset-text__text',
                     pathName: 'inner',
-                    allowedContent: 'p br ul ol li strong em; a[href]; a[data-uuid]'
+                    allowedContent: 'p br ul ol li strong em; span[lang,dir]; a[href]; a[data-uuid]'
                 },
             },
 

@@ -8,3 +8,6 @@ definitions:
         attributes: [class, for]
       /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/div:
         attributes: [class, dir, id, lang, style, title, data-module]
+      /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/span:
+       jcr:primaryType: hipposys:moduleconfig
+       attributes: [aria-hidden, class, lang, dir]

@@ -927,3 +927,49 @@
         jcr:primaryType: selection:listitem
         selection:key: msvalidate.01
         selection:label: Bing
+  /contentitemlanguage:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 9a9e6b28-038f-48fc-a37a-245700a7a99d
+    /contentitemlanguage:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 9f446fcd-a4b4-4285-8134-4d1dcbd3ef2d
+      hippo:availability: [live, preview]
+      hippotranslation:id: 7514d2d8-8fa9-4901-96f6-1226353bc4cd
+      hippotranslation:locale: inherited - from query
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: en
+        selection:label: English
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: gd
+        selection:label: Gaelic (Scottish)
+  /contentitemlanguages:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: b5c64290-c9b1-4aa9-958d-05070395df02
+    /contentitemlanguages:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+      jcr:uuid: 2839a893-2408-4306-a12c-c83cfe4a59b2
+      hippo:availability: [live, preview]
+      hippotranslation:id: f1da42a1-7d75-4525-993c-997935ad6145
+      hippotranslation:locale: inherited - from query
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: en
+        selection:label: English
+      /selection:listitem[2]:
+        jcr:primaryType: selection:listitem
+        selection:key: gd
+        selection:label: Gaelic (Scottish)
+      /selection:listitem[3]:
+        jcr:primaryType: selection:listitem
+        selection:key: ru
+        selection:label: Russian
+      /selection:listitem[4]:
+        jcr:primaryType: selection:listitem
+        selection:key: uk
+        selection:label: Ukrainian

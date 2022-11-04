@@ -1,5 +1,7 @@
 <#ftl output_format="HTML">
-<dl class="ds_page-header__metadata  ds_metadata">
+<#include "../common/macros/lang-attributes.ftl">
+
+<dl <@revertlang document/> class="ds_page-header__metadata  ds_metadata">
     <#if document.updateHistory?has_content>
         <#assign latestUpdate = document.updateHistory[0].lastUpdated>
         <div class="ds_metadata__item">

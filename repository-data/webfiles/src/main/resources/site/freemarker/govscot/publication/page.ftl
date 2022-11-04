@@ -1,6 +1,8 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
+<#include "../common/macros/lang-attributes.ftl">
+
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
 <#if document??>
@@ -12,13 +14,13 @@
 <div>
 
     <div class="ds_wrapper">
-        <main id="main-content">
+        <main <@lang document/> id="main-content">
             <#if pages?has_content && documents?has_content>
                 <#assign hasDocuments = true>
             </#if>
             <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
                 <div class="gov_sublayout__title">
-                    <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - <span id="sg-meta__publication-type">${document.label}</span></#if></span>
+                    <span <@revertlang document /> class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - <span id="sg-meta__publication-type">${document.label}</span></#if></span>
                     <h1 class="ds_page-header__title">${document.title}</h1>
                 </div>
 
@@ -38,7 +40,7 @@
 
                 <#if hasDocuments!false>
                     <div class="gov_sublayout__document">
-                        <div class="gov_supporting-documents">
+                        <div <@revertlang document /> class="gov_supporting-documents">
 
                             <#assign mainDocument = documents[0]/>
                             <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?lower_case/>
@@ -144,9 +146,12 @@
 
                 <div class="ds_layout__content">
                     <#if isMultiPagePublication>
-                        <div class="body-content  publication-content  js-content-wrapper">
-                            <@hst.manageContent hippobean=currentPage />
-                            <@hst.html hippohtml=currentPage.content/>
+                        <@hst.manageContent hippobean=currentPage />
+
+                        <div  class="body-content  publication-content  js-content-wrapper">
+                            <div <@langcompare currentPage document />>
+                                <@hst.html hippohtml=currentPage.content/>
+                            </div>
                         </div>
 
                         <!--noindex-->
@@ -154,7 +159,7 @@
                             <#if prev??>
                                 <@hst.link var="link" hippobean=prev/>
                                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
-                                    <a title="Previous page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left  js-publication-navigation">
+                                    <a <@langcompare prev document /> title="Previous page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left  js-publication-navigation">
                                         <span class="ds_sequential-nav__text" data-label="previous">
                                             ${prev.title}
                                         </span>
@@ -165,7 +170,7 @@
                             <#if next??>
                                 <@hst.link var="link" hippobean=next/>
                                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--next">
-                                    <a title="Next page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right  js-publication-navigation">
+                                    <a <@langcompare next document /> title="Next page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right  js-publication-navigation">
                                         <span class="ds_sequential-nav__text" data-label="next">
                                             ${next.title}
                                         </span>
@@ -177,14 +182,14 @@
 
                         <@hst.html hippohtml=document.contact var="contact"/>
                         <#if contact?has_content>
-                            <section class="gov_content-block">
+                            <section <@revertlang document /> class="gov_content-block">
                                 <h3 class="gov_content-block__title">Contact</h3>
                                 ${contact?no_esc}
                             </section>
                         </#if>
 
                         <#if document.updateHistory?has_content>
-                            <section>
+                            <section <@revertlang document />>
                                 <#include '../common/update-history.ftl'/>
                             </section>
                         </#if>
@@ -207,26 +212,26 @@
                                 <#--! BEGIN 'minutes' format-specific fields-->
                                 <@hst.html hippohtml=document.attendees var="attendees"/>
                                 <#if attendees?has_content>
-                                    <h2>Attendees and apologies</h2>
+                                    <h2 <@revertlang document />>Attendees and apologies</h2>
                                     ${attendees?no_esc}
                                 </#if>
 
                                 <@hst.html hippohtml=document.actions var="actions"/>
                                 <#if actions?has_content>
-                                    <h2>Items and actions</h2>
+                                    <h2 <@revertlang document />>Items and actions</h2>
                                     ${actions?no_esc}
                                 </#if>
                                 <#--! END 'minutes' format-specific fields-->
 
                                 <@hst.html hippohtml=document.request var="request"/>
                                 <#if request?has_content>
-                                    <h2>Information requested</h2>
+                                    <h2 <@revertlang document />>Information requested</h2>
                                     ${request?no_esc}
                                 </#if>
 
                                 <@hst.html hippohtml=document.response var="response"/>
                                 <#if response?has_content>
-                                    <h2>Response</h2>
+                                    <h2 <@revertlang document />>Response</h2>
                                     ${response?no_esc}
                                 </#if>
                                 <#--! END 'FOI/EIR release' format-specific fields-->
@@ -238,7 +243,7 @@
                                     </#list>
 
                                     <#if hasAttachedDocument?has_content>
-                                        <section class="document-section">
+                                        <section <@revertlang document /> class="document-section">
                                             <#list documents as attachedDocument>
                                                 <#assign docindex= attachedDocument?counter />
                                                 <#include 'body-document-info.ftl'/>
@@ -249,7 +254,7 @@
                                     <#if groupedDocumentFolders??>
                                         <#list groupedDocumentFolders as folder>
                                             <#assign groupindex = folder?counter + '-'/>
-                                            <section class="document-section">
+                                            <section <@revertlang document /> class="document-section">
                                                 <h2>${folder.displayName}</h2>
                                                 <#list folder.documents as attachedDocument>
                                                     <#assign docindex = groupindex + attachedDocument?counter />
@@ -269,7 +274,7 @@
 
                                 <@hst.html hippohtml=document.contact var="contact"/>
                                 <#if contact?has_content>
-                                    <div class="gov_content-block">
+                                    <div <@revertlang document /> class="gov_content-block">
                                         <h3 class="gov_content-block__title">Contact</h3>
                                         ${contact?no_esc}
                                     </div>
@@ -283,7 +288,7 @@
                     </#if>
                 </div>
 
-                <div class="ds_layout__feedback">
+                <div <@revertlang document /> class="ds_layout__feedback">
                     <#include '../common/feedback-wrapper.ftl'>
                 </div>
             </div>

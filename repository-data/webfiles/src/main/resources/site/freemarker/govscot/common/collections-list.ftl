@@ -1,5 +1,6 @@
 <#ftl output_format="HTML">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<#include "./macros/lang-attributes.ftl">
 
 <#if collections?has_content>
     <#if collections?size == 1>
@@ -8,7 +9,7 @@
         <#assign description = '${collections?size} collections'/>
     </#if>
 
-    <div class="ds_accordion" data-module="ds-accordion">
+    <div <@revertlang document/> class="ds_accordion" data-module="ds-accordion">
         <div class="ds_accordion-item">
             <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-collections" aria-labelledby="panel-collections-heading" />
             <div class="ds_accordion-item__header">
