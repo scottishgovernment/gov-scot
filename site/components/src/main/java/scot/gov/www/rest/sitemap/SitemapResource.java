@@ -61,7 +61,7 @@ public class SitemapResource {
         String path = uriInfo.getPathParameters().getFirst("path");
         return processRequest(
                 path,
-                this::getSitemapNodeForLatest,
+                this::getSitemapRootNode,
                 this::generateLatestSitemap);
     }
 
@@ -100,7 +100,7 @@ public class SitemapResource {
     Calendar getLastModifiedDate(String path, Node node) throws RepositoryException {
 
         if (LATEST_PATH.equals(path)) {
-            return node.getParent().getProperty(LATEST_LAST_MOD).getDate();
+            return node.getProperty(LATEST_LAST_MOD).getDate();
         }
         return node.getProperty(LAST_MOD).getDate();
     }
@@ -169,22 +169,6 @@ public class SitemapResource {
         return session.nodeExists(repositoryPath) ? session.getNode(repositoryPath) : null;
     }
 
-    Node getSitemapNodeForLatest() throws RepositoryException {
-        Session session = RequestContextProvider.get().getSession();
-        String siteName = getSiteName();
-        String yearString = Integer.toString(LocalDate.now().getYear());
-        String monthString = Integer.toString(LocalDate.now().getMonthValue());
-        String repositoryPath = new StringBuffer(SITEMAP_ROOT_PATH)
-                .append('/')
-                .append(siteName)
-                .append('/')
-                .append(yearString)
-                .append('/')
-                .append(monthString)
-                .toString();
-        return session.nodeExists(repositoryPath) ? session.getNode(repositoryPath) : null;
-    }
-
     String getRepositoryPathFromRequestPath(String siteName, String requestPath) {
 
         requestPath = substringAfter(substringBefore(requestPath, ".xml"), "sitemap/");
@@ -210,11 +194,29 @@ public class SitemapResource {
 
     Urlset generateLatestSitemap(Node node) throws RepositoryException {
         Urlset latestUrlset = sitemapLatestGenerator.generateSitemap(node);
-        if (node != null) {
-            Urlset urlset = generateSitemap(node);
+        // add the urls from the most recent month
+        Node latestMonth = latestMonthNode();
+        if (latestMonth != null) {
+            Urlset urlset = generateSitemap(latestMonth);
             latestUrlset.getUrls().addAll(urlset.getUrls());
         }
         return latestUrlset;
+    }
+
+    Node latestMonthNode() throws RepositoryException {
+        Session session = RequestContextProvider.get().getSession();
+        String siteName = getSiteName();
+        String yearString = Integer.toString(LocalDate.now().getYear());
+        String monthString = Integer.toString(LocalDate.now().getMonthValue());
+        String repositoryPath = new StringBuffer(SITEMAP_ROOT_PATH)
+                .append('/')
+                .append(siteName)
+                .append('/')
+                .append(yearString)
+                .append('/')
+                .append(monthString)
+                .toString();
+        return session.nodeExists(repositoryPath) ? session.getNode(repositoryPath) : null;
     }
 
     Url buildUrl(Node node, String rootUrl) throws RepositoryException {

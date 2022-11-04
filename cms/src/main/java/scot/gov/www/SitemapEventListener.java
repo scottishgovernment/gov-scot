@@ -32,7 +32,7 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     private static final String LAST_MOD = "govscot:lastMod";
 
-    private static final String LATEST_LAST_MOD = "govscot:latestLastMod";
+    protected static final String LATEST_LAST_MOD = "govscot:latestLastMod";
 
     private static final String NT_UNSTRUCTURED = "nt:unstructured";
 

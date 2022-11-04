@@ -1,5 +1,8 @@
 package scot.gov.www.rest.sitemap;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import org.hippoecm.hst.configuration.hosting.Mount;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
@@ -22,6 +25,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
@@ -41,12 +45,29 @@ public class SitemapLatestGenerator {
                 "/", "/search/", "/about/how-government-is-run/directorates/", "/groups/", "/collections");
     }
 
-    Node getMostRecentModifiedNode() throws RepositoryException {
-        HippoBeanIterator it = getPublishedNodesForRequest(1);
-        return it.nextHippoBean().getNode();
-    }
+    CacheLoader<Calendar, Urlset> cacheLoader = new CacheLoader<Calendar, Urlset>() {
+        @Override
+        public Urlset load(Calendar cal) throws RepositoryException {
+            return doGenerateSitemap();
+        }
+    };
+
+    LoadingCache<Calendar, Urlset> cache = CacheBuilder.<Calendar, Urlset>newBuilder().maximumSize(1).build(cacheLoader);
 
     Urlset generateSitemap(Node node) throws RepositoryException {
+
+        // govscot:latestLastMod is maintained as the most recent publish / unpublish date.  If the cache contains the
+        // Urlset for that data then we can reuse it to avoid the expensive query
+        Calendar lastModified = node.getProperty("govscot:latestLastMod").getDate();
+        try {
+            return cache.get(lastModified);
+        } catch (ExecutionException e) {
+            LOG.error("Failed to generate sitemap");
+            throw new RepositoryException(e);
+        }
+    }
+
+    Urlset doGenerateSitemap() throws RepositoryException {
         HstRequestContext requestContext = RequestContextProvider.get();
         HippoBeanIterator it = getPublishedNodesForRequest(500);
         HstLinkCreator linkCreator = requestContext.getHstLinkCreator();
@@ -88,7 +109,7 @@ public class SitemapLatestGenerator {
     }
 
     boolean isIndexFile(HippoBean bean) throws RepositoryException {
-        // if the type is simpel content and the name is index then this is one of the landing pages
+        // if the type is simple content and the name is index then this is one of the landing pages
         Node node = bean.getNode();
         return "index".equals(node.getName())
                 && "govscot:SimpleContent".equals(node.getPrimaryNodeType().getName());
@@ -99,10 +120,8 @@ public class SitemapLatestGenerator {
     }
 
     HippoBeanIterator getPublishedNodesForRequest(int limit) throws RepositoryException {
-        LOG.info("getPublishedNodesForRequest, {}", limit);
         HstRequestContext context = RequestContextProvider.get();
         HippoBean baseBean = context.getSiteContentBaseBean();
-        LOG.info("baseBean is {}", baseBean.getPath());
         HstQueryBuilder builder = HstQueryBuilder.create(baseBean);
         HstQuery query = builder
                 .ofTypes(types())
@@ -111,9 +130,7 @@ public class SitemapLatestGenerator {
                 .offset(0)
                 .orderByDescending("hippostdpubwf:lastModificationDate")
                 .build();
-        //*[(@hippo:paths='b4f9e4d3-3499-4787-92d7-a76615baa2f9') and (@hippo:availability='live') and not(@jcr:primaryType='nt:frozenNode') and ((not(@govscot:contentsPage)) or (@govscot:contentsPage != 'true')) and ((@jcr:primaryType='govscot:PublicationPage' or @jcr:primaryType='govscot:ComplexDocumentSection'))] order by @hippostdpubwf:lastModificationDate descending
         try {
-            LOG.info("query: {}", query.toString());
             return query.execute().getHippoBeans();
         } catch (QueryException e) {
             throw new RepositoryException(e);
