@@ -1,7 +1,7 @@
 <#ftl output_format="HTML">
 <#include "../include/imports.ftl">
 <@hst.link var="sitelink" hippobean=baseBean canonical=true fullyQualified=true/>
-<@hst.headContribution category="title">
+<@hst.headContribution category="schema">
 <script type="application/ld+json">
 {
   "@context" : "https://schema.org",

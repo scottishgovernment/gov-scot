@@ -4,7 +4,7 @@
 <@hst.link var="imagelink" path='/assets/images/logos/SGLogo1200x630.png' fullyQualified=true/>
 <@hst.link var="link" canonical=true fullyQualified=true/>
 
-<@hst.headContribution category="articleschema">
+<@hst.headContribution category="schema">
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",

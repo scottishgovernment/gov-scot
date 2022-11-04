@@ -9,6 +9,7 @@
     <!-- dataLayer code MUST be higher than google tag manager code -->
     <@hst.headContributions categoryIncludes="googleTagManager"/>
     <@hst.headContributions categoryIncludes="pageTitle"/>
+    <@hst.headContributions categoryIncludes="schema"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,7 +27,7 @@
 
     <@hst.headContributions categoryIncludes="siteverification"/>
 
-    <@hst.headContributions categoryExcludes="noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
+    <@hst.headContributions categoryExcludes="schema, noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
 
     <script>
         BR = window.BR || {};
