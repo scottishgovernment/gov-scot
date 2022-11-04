@@ -12,7 +12,7 @@
     "@type": "SearchAction",
     "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "${sitelink}search?q={search_term_string}&cat=googlesearch"
+        "urlTemplate": "${sitelink}search?q={search_term_string}&amp;cat=googlesearch"
     },
     "query-input": "required name=search_term_string"
   }
