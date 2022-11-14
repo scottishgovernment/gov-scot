@@ -284,7 +284,7 @@
                         <div class="gov_homepage-subscribe">
                             <span class="gov_homepage-subscribe__text">Get all the latest news from gov.scot</span>
 
-                            <a data-navigation="news-subscribe" class="gov_homepage-subscribe__link  gov_icon-link" href="http://register.scotland.gov.uk/Subscribe/Step1">
+                            <a data-navigation="news-subscribe" class="gov_homepage-subscribe__link  gov_icon-link" href="https://eepurl.com/gEp6KP">
                                 <span class="gov_icon-link__text">Subscribe</span>
                                 <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>
