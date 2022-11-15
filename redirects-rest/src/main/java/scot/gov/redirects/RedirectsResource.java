@@ -46,9 +46,9 @@ public class RedirectsResource {
             redirectsRepository.createRedirects(redirects);
             return Response.status(Response.Status.OK).entity(redirects).build();
         } catch (RepositoryException e) {
-            LOG.error("Failed to create redirects", e);
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Unexpected exception creating redirect").build();
+            String error = "Unexpected exception uploading redirects";
+            LOG.error(error, e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
         }
     }
 
@@ -68,9 +68,9 @@ public class RedirectsResource {
             redirectsRepository.createRedirects(redirects);
             return Response.status(Response.Status.OK).entity(redirects).build();
         } catch (IOException | RepositoryException e) {
-            LOG.error("Unexpected exception creating redirect", e);
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Unexpected exception creating redirect").build();
+            String error = "Unexpected exception uploading csv";
+            LOG.error(error, e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
         }
     }
 
@@ -109,9 +109,9 @@ public class RedirectsResource {
                 return Response.status(Response.Status.OK).entity(result).build();
             }
         } catch (RepositoryException e) {
-            LOG.error("Unexpected exception fetching redirects", e);
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Unexpected exception fetching redirects").build();
+            String error = "Unexpected exception fetching redirects";
+            LOG.error(error, e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
         }
     }
 
@@ -128,9 +128,9 @@ public class RedirectsResource {
                 return Response.status(Response.Status.NOT_FOUND).entity("no redirect found").build();
             }
         } catch (RepositoryException e) {
-            LOG.error("Unexpected exception deleting redirect", e);
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Unexpected exception deleting redirect " + path).build();
+            String error = "Unexpected exception deleting redirect";
+            LOG.error(error, e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
         }
     }
 
