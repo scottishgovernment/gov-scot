@@ -1,7 +1,7 @@
 definitions:
   config:
     /hippo:configuration/hippo:groups/cmsadmin:
-      hipposys:system: true
+      hipposys:system: false
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
       hipposys:userroles:
@@ -9,4 +9,9 @@ definitions:
         .meta:add-new-system-values: true
         type: string
         value: [xm.dashboard.user, xm.cms.user, xm.report.user, xm.repository.reader,
-                xm.channel.admin, xm.content.admin, xm.security.user-admin]
+          xm.channel.admin, xm.content.admin, xm.security.user-admin]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: []

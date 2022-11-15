@@ -43,6 +43,12 @@
 
     <dependency>
       <groupId>scot.gov.www</groupId>
+      <artifactId>redirects-rest</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.www</groupId>
       <artifactId>imageprocessing</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>

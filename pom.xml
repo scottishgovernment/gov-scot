@@ -358,6 +358,7 @@
         <module>site-deb</module>
         <module>gov-scot-libs</module>
         <module>publications-rest</module>
+        <module>redirects-rest</module>
         <module>imageprocessing</module>
       </modules>
     </profile>
