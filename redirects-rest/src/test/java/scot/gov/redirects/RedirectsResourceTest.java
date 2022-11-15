@@ -53,7 +53,7 @@ public class RedirectsResourceTest {
         Response response = sut.upload(singletonList(validRedirect));
 
         // ASSERT
-        assertEquals("Unexpected exception creating redirect", (String) response.getEntity());
+        assertEquals("Unexpected exception uploading redirects", (String) response.getEntity());
         assertEquals(500, response.getStatus());
     }
 
