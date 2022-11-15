@@ -16,6 +16,15 @@
   <name>www.gov.scot redirects REST</name>
   <description>www.gov.scot Redirects REST</description>
 
+  <properties>
+    <sonar.exclusions>
+    </sonar.exclusions>
+    <sonar.coverage.exclusions>
+      **/RedirectsModule.class,
+      **/RedirectsRepository.class
+    </sonar.coverage.exclusions>
+  </properties>
+
   <dependencies>
 
     <dependency>

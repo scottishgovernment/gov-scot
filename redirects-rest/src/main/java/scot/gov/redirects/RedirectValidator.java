@@ -7,8 +7,6 @@ import java.util.List;
 
 import static net.logstash.logback.encoder.org.apache.commons.lang.StringUtils.containsNone;
 import static net.logstash.logback.encoder.org.apache.commons.lang.StringUtils.isBlank;
-import static net.logstash.logback.encoder.org.apache.commons.lang.StringUtils.startsWith;
-import static org.apache.commons.validator.routines.UrlValidator.ALLOW_LOCAL_URLS;
 
 public class RedirectValidator extends UrlValidator {
 

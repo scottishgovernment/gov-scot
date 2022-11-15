@@ -27,7 +27,7 @@ public class RedirectsResource {
     RedirectValidator redirectValidator = new RedirectValidator();
 
     @Context
-    private UriInfo uriInfo;
+    UriInfo uriInfo;
 
     public RedirectsResource(RedirectsRepository redirectsRepository) {
         this.redirectsRepository = redirectsRepository;
