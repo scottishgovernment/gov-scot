@@ -20,8 +20,9 @@
     <sonar.exclusions>
     </sonar.exclusions>
     <sonar.coverage.exclusions>
-      **/RedirectsModule.class,
-      **/RedirectsRepository.class
+      **/RedirectsModule.java,
+      **/RedirectsRepository.java,
+      **/RedirectsResource.java
     </sonar.coverage.exclusions>
   </properties>
 
