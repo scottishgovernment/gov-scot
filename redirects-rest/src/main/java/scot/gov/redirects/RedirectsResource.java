@@ -58,8 +58,7 @@ public class RedirectsResource {
     @Produces({ MediaType.APPLICATION_JSON })
     public Response uploadCsv(@Multipart("file") File file) throws IOException {
         try (Reader in = new FileReader(file);
-             CSVParser csvParser = new CSVParser(in, CSVFormat.DEFAULT))
-        {
+             CSVParser csvParser = new CSVParser(in, CSVFormat.DEFAULT)) {
             List<CSVRecord> records = csvParser.getRecords();
             List<Redirect> redirects = records.stream().map(this::toRedirect).collect(Collectors.toList());
             List<String> violations = redirectValidator.validateRedirects(redirects);
@@ -69,6 +68,7 @@ public class RedirectsResource {
             redirectsRepository.createRedirects(redirects);
             return Response.status(Response.Status.OK).entity(redirects).build();
         } catch (IOException | RepositoryException e) {
+            LOG.error("Unexpected exception creating redirect", e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Unexpected exception creating redirect").build();
         }
@@ -109,6 +109,7 @@ public class RedirectsResource {
                 return Response.status(Response.Status.OK).entity(result).build();
             }
         } catch (RepositoryException e) {
+            LOG.error("Unexpected exception fetching redirects", e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Unexpected exception fetching redirects").build();
         }
