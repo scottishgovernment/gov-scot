@@ -19,7 +19,8 @@ definitions:
           jcr:primaryType: hippostd:folder
           jcr:mixinTypes: ['mix:versionable']
           jcr:uuid: 7e97e1d5-38be-4a56-b4e9-1c4fc9b79906
-          hippostd:foldertype: []
+          hippostd:foldertype: [new-text-document, new-imageandtext-document, new-pageheading-document,
+            newvideo-document]
           /index:
             jcr:primaryType: hippo:handle
             jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
@@ -41,9 +42,3 @@ definitions:
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: 234760b4-4b20-403b-b75f-0c2caf5f8583
               hippotranslation:locale: en
-          /components:
-            jcr:primaryType: hippostd:folder
-            hippostd:foldertype: [new-dynamic-issue-component]
-          /images:
-            jcr:primaryType: hippostd:folder
-            hippostd:foldertype: [new-dynamic-issue-image]

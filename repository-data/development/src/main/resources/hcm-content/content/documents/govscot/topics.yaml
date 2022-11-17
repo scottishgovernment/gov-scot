@@ -7302,3 +7302,30 @@
     /images:
       jcr:primaryType: hippostd:folder
       hippostd:foldertype: [new-dynamic-issue-image]
+  /test:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['mix:versionable']
+    jcr:uuid: a7d3520e-3431-42e2-9d80-ea0280ec6c78
+    hippostd:foldertype: [new-text-document, new-imageandtext-document, new-pageheading-document,
+      newvideo-document]
+    /index:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+      jcr:uuid: cda3e068-32b7-4f44-a519-f77ea8fecb56
+      hippo:name: test
+      /index:
+        jcr:primaryType: govscot:DynamicIssue
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 0ae3ee27-efcd-4850-a9fb-08b0542b9b40
+        govscot:metaDescription: ''
+        govscot:seoTitle: test
+        govscot:summary: ''
+        govscot:title: test
+        hippo:availability: [preview]
+        hippostd:state: unpublished
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2022-11-15T14:51:21.601Z
+        hippostdpubwf:lastModificationDate: 2022-11-15T14:51:21.601Z
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 234760b4-4b20-403b-b75f-0c2caf5f8583
+        hippotranslation:locale: en
