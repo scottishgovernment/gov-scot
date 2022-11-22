@@ -22,7 +22,7 @@ public class RedirectsRepository {
 
     private static final String DESCRIPTION = "govscot:description";
 
-    private static final String REDIRECT_ROOT = "/content/redirects";
+    private static final String ALIASES_ROOT = "/content/redirects/" + ALIASES;
 
     Session session;
 
@@ -98,7 +98,7 @@ public class RedirectsRepository {
 
     void populateRedirect(Redirect redirect, Node node) throws RepositoryException {
         String path = node.getPath();
-        redirect.setFrom(substringAfter(path, REDIRECT_ROOT));
+        redirect.setFrom(substringAfter(path, ALIASES_ROOT));
         redirect.setTo(node.hasProperty(URL) ? node.getProperty(URL).getString() : "");
         redirect.setDescription(node.hasProperty(DESCRIPTION) ? node.getProperty(DESCRIPTION).getString() : "");
     }
