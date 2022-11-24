@@ -10,3 +10,4 @@ definitions:
         jcr:primaryType: hst:containercomponent
         hst:label: Content Page Main
         hst:xtype: hst.vbox
+        hippo:identifier: 469e5bdd-6fa9-4222-86f4-d0fed89d43d9

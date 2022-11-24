@@ -1,0 +1,17 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemap/topics:
+  jcr:primaryType: hst:sitemapitem
+  hst:componentconfigurationid: hst:pages/topicslistpage
+  hst:relativecontentpath: topics
+  hst:sitemapitemhandlerids: [trailing-slash]
+  /_default_:
+    jcr:primaryType: hst:sitemapitem
+    hst:componentconfigurationid: hst:pages/topicpage
+    hst:componentconfigurationmappingnames: ['govscot:Issue']
+    hst:componentconfigurationmappingvalues: ['hst:pages/issuepage']
+    hst:relativecontentpath: topics/${1}
+    hst:sitemapitemhandlerids: [trailing-slash]
+  /_index_:
+    jcr:primaryType: hst:sitemapitem
+    hst:componentconfigurationid: hst:pages/topicslistpage
+    hst:relativecontentpath: ${parent}/index
+    hst:sitemapitemhandlerids: [trailing-slash]

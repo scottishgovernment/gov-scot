@@ -6,3 +6,7 @@ definitions:
       hst:name: www.gov.scot
       hst:type: website
       hst:channelinfoclass: scot.gov.www.channels.WebsiteInfo
+      hst:lastmodifiedby: admin
+      hst:defaultdevice: default
+      hst:devices: []
+      hst:lastmodified: 2022-11-22T10:22:17.861Z

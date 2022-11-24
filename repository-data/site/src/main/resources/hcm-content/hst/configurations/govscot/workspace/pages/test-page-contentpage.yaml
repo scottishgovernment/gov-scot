@@ -1,0 +1,48 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:pages/test-page-contentpage:
+  jcr:primaryType: hst:component
+  hst:lastmodified: 2022-11-22T10:18:26.895Z
+  hst:referencecomponent: hst:abstractpages/base
+  /main:
+    jcr:primaryType: hst:containercomponent
+    hippo:identifier: 469e5bdd-6fa9-4222-86f4-d0fed89d43d9
+    hst:label: Content Page Main
+    hst:lastmodified: 2022-11-22T10:22:36.440Z
+    hst:xtype: hst.vbox
+    /header:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.HeaderComponent
+      hst:iconpath: icons/header.svg
+      hst:label: Header
+      hst:parameternames: [weight, text, position, foregroundcolor, fullwidth, backgroundcolor]
+      hst:parametervalues: [h2, Test page header, left, '', 'on', '']
+      hst:template: header
+    /pageheading:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.PageheadingComponent
+      hst:iconpath: icons/pageheader.svg
+      hst:label: Page Header
+      hst:template: pageheader
+    /divider:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.DividerComponent
+      hst:iconpath: icons/divider.svg
+      hst:label: Divider
+      hst:template: divider
+    /text:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.TextComponent
+      hst:iconpath: icons/text.svg
+      hst:label: Text
+      hst:template: text
+    /divider1:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.DividerComponent
+      hst:iconpath: icons/divider.svg
+      hst:label: Divider
+      hst:template: divider
+    /imageandtext:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.ImageAndTextComponent
+      hst:iconpath: icons/imageandtext.svg
+      hst:label: Image and text
+      hst:template: imageandtext

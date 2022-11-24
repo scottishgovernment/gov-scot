@@ -191,3 +191,6 @@ definitions:
       /video:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/content-blocks/video.ftl
+      /seo:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/common/seo.ftl

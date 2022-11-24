@@ -1,0 +1,29 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:prototypepages/dynamicissuepage:
+      jcr:primaryType: hst:component
+      jcr:mixinTypes: ['hst:prototypemeta']
+      hst:displayname: Dynamic Issue Page
+      hst:primarycontainer: main
+      hst:referencecomponent: hst:abstractpages/base
+      /main:
+        jcr:primaryType: hst:containercomponent
+        hippo:identifier: 469e5bdd-6fa9-4222-86f4-d0fed89d43d9
+        hst:label: Dynamic Issue Main
+        hst:xtype: hst.vbox
+        /pageheading:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.PageheadingComponent
+          hst:iconpath: icons/header.svg
+          hst:label: Page Header
+          hst:parameternames: [document, foregroundcolor, fullwidth, backgroundcolor]
+          hst:parametervalues: ['', '', 'on', '']
+          hst:template: pageheader
+        /seo:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.SEOComponent
+          hst:iconpath: icons/seo.svg
+          hst:label: SEO
+          hst:parameternames: [document]
+          hst:parametervalues: ['']
+          hst:template: seo

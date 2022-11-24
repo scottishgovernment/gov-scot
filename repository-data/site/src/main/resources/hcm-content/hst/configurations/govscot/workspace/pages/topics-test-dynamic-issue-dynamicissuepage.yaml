@@ -1,0 +1,18 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:pages/topics-test-dynamic-issue-dynamicissuepage:
+  jcr:primaryType: hst:component
+  hst:lastmodified: 2022-11-23T09:17:38.546Z
+  hst:referencecomponent: hst:abstractpages/base
+  /main:
+    jcr:primaryType: hst:containercomponent
+    hippo:identifier: 469e5bdd-6fa9-4222-86f4-d0fed89d43d9
+    hst:label: Dynamic Issue Main
+    hst:lastmodified: 2022-11-23T09:17:53.640Z
+    hst:xtype: hst.vbox
+    /seo:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.SEOComponent
+      hst:iconpath: icons/seo.svg
+      hst:label: SEO
+      hst:parameternames: [document]
+      hst:parametervalues: ['']
+      hst:template: seo
