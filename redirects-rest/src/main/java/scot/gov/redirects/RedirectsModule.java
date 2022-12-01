@@ -28,7 +28,7 @@ public class RedirectsModule extends AbstractReconfigurableDaemonModule {
     protected void doConfigure(Node moduleConfig) throws RepositoryException {
         this.modulePath = moduleConfig.getParent().getPath();
         this.enabled = moduleConfig.getProperty("enabled").getBoolean();
-        LOG.error("modulePath {}, enabled {}", modulePath, enabled);
+        LOG.info("modulePath {}, enabled {}", modulePath, enabled);
 
     }
 

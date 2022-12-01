@@ -123,7 +123,7 @@
     </Logger>
 
     <!-- project logging -->
-    <Logger name="scot.gov.www" level="debug"/>
+    <Logger name="scot.gov" level="debug"/>
 
     <Root level="warn">
       <AppenderRef ref="site"/>

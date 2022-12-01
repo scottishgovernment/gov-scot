@@ -18,6 +18,8 @@ import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 public class RedirectsResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(RedirectsResource.class);
@@ -44,6 +46,7 @@ public class RedirectsResource {
 
         try {
             redirectsRepository.createRedirects(redirects);
+            logRedirects(redirects);
             return Response.status(Response.Status.OK).entity(redirects).build();
         } catch (RepositoryException e) {
             String error = "Unexpected exception uploading redirects";
@@ -54,7 +57,7 @@ public class RedirectsResource {
 
     @POST
     @Path("csv")
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Consumes("text/csv")
     @Produces({ MediaType.APPLICATION_JSON })
     public Response uploadCsv(@Multipart("file") File file) throws IOException {
         try (Reader in = new FileReader(file);
@@ -66,6 +69,7 @@ public class RedirectsResource {
                 return Response.status(Response.Status.BAD_REQUEST).entity(violations).build();
             }
             redirectsRepository.createRedirects(redirects);
+            logRedirects(redirects);
             return Response.status(Response.Status.OK).entity(redirects).build();
         } catch (IOException | RepositoryException e) {
             String error = "Unexpected exception uploading csv";
@@ -123,6 +127,7 @@ public class RedirectsResource {
         try {
             boolean deleted = redirectsRepository.deleteRedirect(path);
             if (deleted) {
+                LOG.info("deleted redirect \'{}\'", path);
                 return Response.status(Response.Status.OK).entity("deleted").build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).entity("no redirect found").build();
@@ -132,6 +137,18 @@ public class RedirectsResource {
             LOG.error(error, e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
         }
+    }
+
+    void logRedirects(List<Redirect> redirects) {
+        for (Redirect redirect : redirects) {
+            LOG.info("adding redirect  \'{}\' -> '{}' ({})", redirect.getFrom(), redirect.getTo(), description(redirect));
+        }
+    }
+
+    String description(Redirect redirect) {
+        return isBlank(redirect.getDescription())
+                ? "no description"
+                : redirect.getDescription();
     }
 
 }

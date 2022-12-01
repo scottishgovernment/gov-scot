@@ -81,7 +81,7 @@
     <Logger name="org.apache.jackrabbit.core.query.lucene.ConsistencyCheck" level="info"/>
 
     <!-- project logging -->
-    <Logger name="scot.gov.www" level="info"/>
+    <Logger name="scot.gov" level="info"/>
 
     <Root level="warn">
       <AppenderRef ref="site"/>
