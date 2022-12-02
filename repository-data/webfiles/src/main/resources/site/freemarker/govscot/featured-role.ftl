@@ -194,19 +194,18 @@
 
             <div class="ds_contact-details">
                 <div class="ds_layout  gov_sublayout--threecols">
-                    <#if postalAddress?? || contactInformation.email?has_content>
-                        <dl class="ds_contact-details__list">
-                            <#if postalAddress??>
-                                <div class="ds_contact-details__item">
-                                    <dt>Address</dt>
-                                    <dd translate="no">
-                                        <address>
-                                            <@hst.html hippohtml=postalAddress/>
-                                        </address>
-                                    </dd>
-                                </div>
-                            </#if>
-                        </dl>
+                    <@hst.html var="htmladdress" hippohtml=postalAddress/>
+                    <#if htmladdress?has_content>
+                    <dl class="ds_contact-details__list">
+                        <div class="ds_contact-details__item">
+                            <dt>Address</dt>
+                            <dd translate="no">
+                                <address>
+                                    <@hst.html hippohtml=postalAddress/>
+                                </address>
+                            </dd>
+                        </div>
+                    </dl>
                     </#if>
 
                     <#if contactInformation??>
