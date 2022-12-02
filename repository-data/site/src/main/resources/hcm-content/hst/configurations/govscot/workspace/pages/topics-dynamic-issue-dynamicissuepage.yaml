@@ -1,0 +1,34 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:pages/topics-dynamic-issue-dynamicissuepage:
+  jcr:primaryType: hst:component
+  hst:lastmodified: 2022-12-02T14:14:03.808Z
+  hst:referencecomponent: hst:abstractpages/base
+  /main:
+    jcr:primaryType: hst:containercomponent
+    hippo:identifier: 469e5bdd-6fa9-4222-86f4-d0fed89d43d9
+    hst:label: Dynamic Issue Main
+    hst:lastmodified: 2022-12-02T14:48:18.843Z
+    hst:xtype: hst.vbox
+    /pageheading:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.PageheadingComponent
+      hst:iconpath: icons/header.svg
+      hst:label: Page Header
+      hst:parameternames: [document, foregroundcolor, fullwidth, backgroundcolor]
+      hst:parametervalues: ['', '', 'on', '']
+      hst:template: pageheader
+    /seo:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.SEOComponent
+      hst:iconpath: icons/seo.svg
+      hst:label: SEO
+      hst:parameternames: [document]
+      hst:parametervalues: ['']
+      hst:template: seo
+    /dynamicissue:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.DynamicIssueComponent
+      hst:iconpath: icons/pageheader.svg
+      hst:label: Dynamic Issue
+      hst:parameternames: [document]
+      hst:parametervalues: [topics/dynamic-issue/index]
+      hst:template: dynamic-issue

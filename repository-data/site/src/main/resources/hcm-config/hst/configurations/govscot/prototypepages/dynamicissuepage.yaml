@@ -27,3 +27,11 @@ definitions:
           hst:parameternames: [document]
           hst:parametervalues: ['']
           hst:template: seo
+        /dynamicissue:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.DynamicIssueComponent
+          hst:iconpath: icons/pageheader.svg
+          hst:label: Dynamic Issue
+          hst:parameternames: [document]
+          hst:parametervalues: ['']
+          hst:template: dynamic-issue

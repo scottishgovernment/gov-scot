@@ -194,3 +194,6 @@ definitions:
       /seo:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/common/seo.ftl
+      /dynamic-issue:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/dynamic-issue.ftl
