@@ -53,7 +53,8 @@
                         <h2 class="ds_contact-details__title">Contact</h2>
 
                         <dl class="ds_contact-details__list">
-                            <#if postalAddress??>
+                            <@hst.html var="htmladdress" hippohtml=postalAddress/>
+                            <#if htmladdress?has_content>
                                 <div class="ds_contact-details__item">
                                     <dt>Address</dt>
                                     <dd translate="no">
