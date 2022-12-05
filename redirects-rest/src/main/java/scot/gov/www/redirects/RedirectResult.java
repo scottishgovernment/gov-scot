@@ -1,4 +1,4 @@
-package scot.gov.redirects;
+package scot.gov.www.redirects;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -111,7 +111,6 @@
 
     <!-- project logging -->
     <Logger name="scot.gov.www" level="info"/>
-    <Logger name="scot.gov.redirects" level="info"/>
 
     <Root level="warn">
       <AppenderRef ref="cms"/>

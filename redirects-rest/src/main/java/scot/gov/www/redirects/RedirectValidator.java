@@ -1,4 +1,4 @@
-package scot.gov.redirects;
+package scot.gov.www.redirects;
 
 import org.apache.commons.validator.routines.UrlValidator;
 

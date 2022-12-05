@@ -1,12 +1,9 @@
-package scot.gov.redirects;
+package scot.gov.www.redirects;
 
-import com.fasterxml.jackson.annotation.JsonTypeId;
-import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import javax.jcr.RepositoryException;
-import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.Collections;
 import java.util.List;

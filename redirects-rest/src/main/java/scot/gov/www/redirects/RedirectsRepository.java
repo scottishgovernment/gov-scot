@@ -1,4 +1,4 @@
-package scot.gov.redirects;
+package scot.gov.www.redirects;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;

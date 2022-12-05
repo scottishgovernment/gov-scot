@@ -2,7 +2,7 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/redirects-rest:
       jcr:primaryType: hipposys:module
-      hipposys:className: scot.gov.redirects.RedirectsModule
+      hipposys:className: scot.gov.www.redirects.RedirectsModule
       hipposys:cmsonly: true
       /hippo:moduleconfig:
         jcr:primaryType: hipposys:moduleconfig
