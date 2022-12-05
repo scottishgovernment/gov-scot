@@ -8,7 +8,7 @@ script-src
   https://www.google-analytics.com
   https://translate.google.com
   https://translate.googleapis.com
-  https://www.youtube.com/iframe_api
+  https://www.youtube.com
   https://s.ytimg.com
 ;
 img-src
