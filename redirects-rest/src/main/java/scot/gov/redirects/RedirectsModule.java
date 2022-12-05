@@ -22,23 +22,13 @@ public class RedirectsModule extends AbstractReconfigurableDaemonModule {
 
     private String modulePath;
 
-    private boolean enabled;
-
     @Override
     protected void doConfigure(Node moduleConfig) throws RepositoryException {
         this.modulePath = moduleConfig.getParent().getPath();
-        this.enabled = moduleConfig.getProperty("enabled").getBoolean();
-        LOG.info("modulePath {}, enabled {}", modulePath, enabled);
-
     }
 
     @Override
     protected void doInitialize(Session session) throws RepositoryException {
-        if (!enabled) {
-            LOG.info("RedirectsModule is disabled, not registering rest service");
-            return;
-        }
-
         LOG.info("Initialising redirects rest api");
         RedirectsRepository redirectsRepository = new RedirectsRepository(session);
         RedirectsResource resource = new RedirectsResource(redirectsRepository);
