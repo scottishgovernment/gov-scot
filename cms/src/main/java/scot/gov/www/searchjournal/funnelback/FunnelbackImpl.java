@@ -50,7 +50,7 @@ public class FunnelbackImpl implements Funnelback {
         this.filters = filters;
         funnelBackUri = URI.create(configuration.getApiUrl());
         funnelbackHost = new HttpHost(funnelBackUri.getHost(), funnelBackUri.getPort(), funnelBackUri.getScheme());
-        this.positionUrl = funnelbackCollectionUrl(FunnelbackCollection.JOURNAL.getCollectionName(), "https://www.gov.scot/journalposition");
+        this.positionUrl = funnelbackCollectionUrl(FunnelbackCollection.JOURNAL.getCollectionName(), "https://www.gov.scot/journalposition", "");
         LOG.info("positionUrl {}", positionUrl);
         httpClient = HttpClientSource.newClient();
     }
@@ -65,9 +65,11 @@ public class FunnelbackImpl implements Funnelback {
 
     public void publish(String collection, String key, String html) throws FunnelbackException {
         String url = funnelbackCollectionUrl(collection, key);
-        LOG.info("publish {}", url);
+        LOG.debug("publish {}", url);
+
         try {
             HttpPut request = new HttpPut(url);
+            request.addHeader("Content-Type", "text/html; charset=UTF-8");
             request.setEntity(new StringEntity(html));
             execute(request);
         } catch (IOException e) {
@@ -117,7 +119,7 @@ public class FunnelbackImpl implements Funnelback {
         }
     }
 
-    String funnelbackCollectionUrl(String collection, String key) {
+    String funnelbackCollectionUrl(String collection, String key, String filters) {
         try {
             String encodedKey = URLEncoder.encode(key, "UTF-8");
             String encodedFilters = URLEncoder.encode(filters, "UTF-8");
@@ -132,20 +134,35 @@ public class FunnelbackImpl implements Funnelback {
         }
     }
 
+    String funnelbackCollectionUrl(String collection, String key) {
+        try {
+            String encodedKey = URLEncoder.encode(key, "UTF-8");
+            String encodedFilters = URLEncoder.encode(filters, "UTF-8");
+            return String.format(
+                    "/push-api/v2/collections/%s/documents?filters=%s&key=%s",
+                    collection,
+                    encodedFilters,
+                    encodedKey
+                    );
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException("UnsupportedEncodingException trying to encode position key", e);
+        }
+    }
+
     void execute(HttpRequestBase request) throws IOException, FunnelbackException {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         request.addHeader(SECURITY_TOKEN, configuration.getApiKey());
-
         CloseableHttpResponse response = httpClient.execute(funnelbackHost, request);
+        LOG.debug("execute statusLine: {}", response.getStatusLine());
         try {
-            if (response.getStatusLine().getStatusCode() != 200) {
-                throw new FunnelbackException("HTTP request to funnelback not successful: " + response.getStatusLine());
-            }
-
             HttpEntity entity = response.getEntity();
             String entityString = EntityUtils.toString(entity);
-            LOG.debug("entity {}", entityString);
+
+            if (response.getStatusLine().getStatusCode() != 200) {
+                LOG.error("error entity {}", entityString);
+                throw new FunnelbackException("HTTP request to funnelback not successful: " + response.getStatusLine());
+            }
         } finally {
             stopWatch.stop();
             LOG.debug("{} execute took {}", request.getURI(), stopWatch.getTime());
