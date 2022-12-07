@@ -15,7 +15,7 @@ definitions:
         \t\"ckeditor/ckeditorstyle.css\"\r\n\t],\r\n\r\n\t\"youtube_responsive\":\
         \ true,\r\n\t\"youtube_privacy\": true,\r\n\t\"youtube_disabled_fields\":\
         \ [\"chkResponsive\", \"chkPrivacy\", \"txtEmbed\", \"chkOlderCode\"],\r\n\
-        \t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate]\"\
+        \t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]\"\
         ,\r\n\t\"language_list\": [\r\n\t\t\"en:English\",\r\n\t\t\"gd:Gaelic (Scottish)\"\
         ,\r\n\t\t\"ru:Russian\",\r\n\t\t\"uk:Ukrainian\"\r\n\t]\r\n}"
       ckeditor.config.appended.json: "{\r\n\t\"toolbarGroups\": [{\r\n\t\t\"name\"\
