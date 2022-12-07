@@ -44,7 +44,7 @@ definitions:
         hst:componentclassname: scot.gov.www.components.SiteVerificationComponent
         hst:suppresswastemessage: true
         hst:template: site-verification
-      /schema-webstie:
+      /schema-website:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.SchemaWebsiteComponent
         hst:template: schema-website
