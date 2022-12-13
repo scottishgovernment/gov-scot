@@ -32,6 +32,13 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
     protected HippoBean getPublication(HippoBean document) {
 
+        if (document.isHippoFolderBean()) {
+            if (isDocumentsFolder(document)) {
+                document = document.getParentBean();
+            }
+            return getPublicationFromFolder(document);
+        }
+
         if (isPage(document)) {
             return getPublicationFromFolder(document.getParentBean().getParentBean());
         }
