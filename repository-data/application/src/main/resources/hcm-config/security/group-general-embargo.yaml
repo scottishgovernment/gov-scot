@@ -1,7 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:groups/General Embargo:
+    /hippo:configuration/hippo:groups/general-embargo:
       jcr:primaryType: hipposys:group
-      hipposys:description: General Embargo
-      hipposys:members: [embargo-editor]
+      hipposys:members: []
       hipposys:securityprovider: internal
