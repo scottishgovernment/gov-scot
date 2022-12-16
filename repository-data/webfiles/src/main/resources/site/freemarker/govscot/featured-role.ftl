@@ -301,6 +301,11 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Featured role"/>
     </@hst.headContribution>
+    
+    <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+    </@hst.headContribution>
 
     <@hst.headContribution category="pageTitle">
         <title>${document.title} - gov.scot</title>

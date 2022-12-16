@@ -80,6 +80,11 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Policy"/>
     </@hst.headContribution>
+    
+    <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+    </@hst.headContribution>
 
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription}"/>

@@ -197,4 +197,9 @@
             <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
         </@hst.headContribution>
     </#if>
+    
+    <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+    </@hst.headContribution>
 </#if>
