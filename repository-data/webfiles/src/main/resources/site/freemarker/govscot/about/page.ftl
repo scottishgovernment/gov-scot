@@ -51,7 +51,7 @@
         <meta name="dc.description" content="${document.summary}"/>
     </@hst.headContribution>
 
-    <#if document.tags??>
+    <#if document.tags?size gt 0>
         <@hst.headContribution category="dcMeta">
             <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
         </@hst.headContribution>
