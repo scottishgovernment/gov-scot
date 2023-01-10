@@ -15,7 +15,7 @@ public class UrlSource {
 
     private static final Logger LOG = LoggerFactory.getLogger(UrlSource.class);
 
-    private static final String URL_BASE = "https://www.gov.scot/";
+    static final String URL_BASE = "https://www.gov.scot/";
 
     String newsUrl(Node node) throws RepositoryException {
         return slugUrl("news", node);

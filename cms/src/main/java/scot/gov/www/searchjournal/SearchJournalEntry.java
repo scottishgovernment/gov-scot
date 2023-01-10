@@ -1,5 +1,7 @@
 package scot.gov.www.searchjournal;
 
+import scot.gov.www.searchjournal.funnelback.FunnelbackCollection;
+
 import java.util.Calendar;
 
 public class SearchJournalEntry {
@@ -52,5 +54,15 @@ public class SearchJournalEntry {
 
     public void setAttempt(long attempt) {
         this.attempt = attempt;
+    }
+
+    public static SearchJournalEntry publishEntry(String url, String collection, Calendar timestamp) {
+        SearchJournalEntry entry = new SearchJournalEntry();
+        entry.setAction("publish");
+        entry.setAttempt(0);
+        entry.setTimestamp(timestamp);
+        entry.setUrl(url);
+        entry.setCollection(collection);
+        return entry;
     }
 }

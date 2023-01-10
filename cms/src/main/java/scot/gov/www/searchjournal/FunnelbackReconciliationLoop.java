@@ -73,6 +73,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             FeatureFlag resetJournalPositionFlag = new FeatureFlag(session, "ResetJournalPosition");
             if (resetJournalPositionFlag.isEnabled()) {
                 resetJournalPosition(funnelback);
+                return;
             }
 
             fetchAndProcessPendingJournalEntries(funnelback, session, featureFlag);
@@ -93,14 +94,15 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     }
 
     void resetJournalPosition(Funnelback funnelback) throws FunnelbackException {
-        ZonedDateTime zdt = LocalDate.of(2019, 1, 1).atStartOfDay(ZoneId.systemDefault());
+        ZonedDateTime zdt = LocalDate.of(1990, 1, 1).atStartOfDay(ZoneId.systemDefault());
         Date date = Date.from(zdt.toInstant());
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+        LOG.info("resetJournalPosition");
         funnelback.storeJournalPosition(calendar);
     }
 
-    boolean isReady() {
+    static boolean isReady() {
 
         if (!pingUrlResponding()) {
             LOG.warn("Ping url not responding yet");
@@ -110,7 +112,8 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         return true;
     }
 
-    boolean pingUrlResponding() {
+    static boolean pingUrlResponding() {
+        CloseableHttpClient httpClient = HttpClientSource.newClient();
         HttpGet request = new HttpGet("http://localhost:8080/site/ping");
         try {
             CloseableHttpResponse response = httpClient.execute(request);

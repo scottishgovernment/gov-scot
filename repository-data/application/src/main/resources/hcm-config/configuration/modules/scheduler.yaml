@@ -1,0 +1,29 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/FunnelbackReconciliationLoop:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: [maxitems, minutestolive, filters]
+      hipposched:attributeValues: ['50000', '-1', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.searchjournal.FunnelbackReconciliationLoop
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
+          hipposched:cronExpression: 0 0/1 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2023-01-25T09:35:00Z
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationLoop:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:enabled: false
+      hipposched:repositoryJobClass: scot.gov.www.searchjournal.JournalPopulationLoop
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: 238e21d7-bc8b-4cc0-85a1-d3674261d146
+          hipposched:cronExpression: 0 0/1 * * * ?
+          hipposched:enabled: true

@@ -50,6 +50,18 @@ public class SearchJournal {
         return record;
     }
 
+    public SearchJournalEntry mostRecentEntry() throws RepositoryException {
+        String xpath = "//element(*, searchjournal:entry) order by @searchjournal:timestamp descending";
+        Query query = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH);
+        query.setLimit(1);
+        QueryResult queryResult = query.execute();
+        if (!queryResult.getNodes().hasNext()) {
+            return null;
+        }
+        Node node = queryResult.getNodes().nextNode();
+        return entryForNode(node);
+    }
+
     public List<SearchJournalEntry> getPendingEntries(Calendar position, int limit) throws RepositoryException {
         Query query = query(position, limit);
         QueryResult queryResult = query.execute();
@@ -112,4 +124,7 @@ public class SearchJournal {
         return parent.hasNode(candidate) ? uniquename(parent) : candidate;
     }
 
+    public Session getSession() {
+        return session;
+    }
 }

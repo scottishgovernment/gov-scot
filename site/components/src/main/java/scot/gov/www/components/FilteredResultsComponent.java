@@ -132,7 +132,9 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         for (int i = 0; i < sortFields.length; i++) {
            queryBuilder.orderBy(HstQueryBuilder.Order.fromString(sortOrders[i]), sortFields[i]);
         }
-        return queryBuilder.build();
+        HstQuery q = queryBuilder.build();
+        LOG.info("q: {}", q.toString());
+        return q;
     }
 
     @Override
