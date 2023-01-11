@@ -83,7 +83,7 @@
                             <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
                             <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                             <div class="ds_input__wrapper">
-                                <input id="date-to" class="ds_input" type="text" value="${end}" data-form="textinput-date-from" />
+                                <input id="date-to" class="ds_input" type="text" value="${end}" data-form="textinput-date-to" />
                             </div>
                         </div>
                     </div>
