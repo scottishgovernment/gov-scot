@@ -315,9 +315,9 @@
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
-    <#if document.image??>
+    <#if document.incumbent.image??>
         <@hst.headContribution category="facebookMeta">
-            <meta property="og:image" content="<@hst.link hippobean=document.image.xlargesixcolumnsdoubled fullyQualified=true/>" />
+            <meta property="og:image" content="<@hst.link hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>" />
         </@hst.headContribution>
     </#if>
 

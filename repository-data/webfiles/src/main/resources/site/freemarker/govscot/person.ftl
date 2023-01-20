@@ -108,7 +108,7 @@
 
     <#if document.image??>
         <@hst.headContribution category="facebookMeta">
-            <meta property="og:image" content="<@hst.link hippobean=document.image.xlargedoubled fullyQualified=true/>" />
+            <meta property="og:image" content="<@hst.link hippobean=document.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>" />
         </@hst.headContribution>
     </#if>
 

@@ -141,9 +141,8 @@
     </@hst.headContribution>
 
     <#if document.incumbent?? && document.incumbent.image??>
-        <@hst.link var="ogimage" path='/assets/images/logos/SGLogo1200x630.png' fullyQualified=true/>
         <@hst.headContribution category="facebookMeta">
-            <meta property="og:image" content="<@hst.link hippobean=document.incumbent.image.xlargedoubled fullyQualified=true/>" />
+            <meta property="og:image" content="<@hst.link hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>" />
         </@hst.headContribution>
     </#if>
 
