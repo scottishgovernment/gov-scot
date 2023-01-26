@@ -2,6 +2,7 @@ package scot.gov.www.searchjournal.funnelback;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.CharSet;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Base64;
@@ -70,7 +72,7 @@ public class FunnelbackImpl implements Funnelback {
         try {
             HttpPut request = new HttpPut(url);
             request.addHeader("Content-Type", "text/html; charset=UTF-8");
-            request.setEntity(new StringEntity(html));
+            request.setEntity(new StringEntity(html, Charset.forName("UTF-8")));
             execute(request);
         } catch (IOException e) {
             throw new FunnelbackException("Failed to index content", e);

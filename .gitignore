@@ -11,7 +11,6 @@ node_modules/
 *.stack.svg
 repository-data/application/src/main/resources/hcm-content/content/documents/govscot/
 repository-data/application/src/main/resources/hcm-content/content/documents/administration/migrations.yaml
-repository-data/application/src/main/resources/hcm-config/configuration/modules/scheduler.yaml
 repository-data/application/src/main/resources/hcm-content/content/gallery
 repository-data/application/src/main/resources/hcm-content/content/assets
 repository-data/webfiles/src/main/resources/site/assets/
