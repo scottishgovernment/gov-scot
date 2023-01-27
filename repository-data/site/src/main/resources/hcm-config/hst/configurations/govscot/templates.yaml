@@ -173,3 +173,9 @@ definitions:
       /preview-indicator:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/preview-indicator.ftl
+      /search-funnelback-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/search/search-funnelback-main.ftl
+      /search-funnelback-results:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/search/search-funnelback-results.ftl

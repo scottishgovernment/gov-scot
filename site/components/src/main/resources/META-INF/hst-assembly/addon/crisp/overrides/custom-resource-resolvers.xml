@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    <bean id="funnelback" parent="abstractCrispSimpleJacksonRestTemplateResourceResolver"
+          class="org.onehippo.cms7.crisp.core.resource.jackson.SimpleJacksonRestTemplateResourceResolver">
+        <property name="cacheEnabled" value="true" />
+        <property name="baseUri" value="${funnelback.url}" />
+        <property name="restTemplate">
+            <bean class="org.springframework.web.client.RestTemplate">
+                <property name="interceptors">
+                    <list>
+                        <bean class="scot.gov.publishing.hippo.funnelback.client.SecurityTokenInterceptor">
+                            <property name="token" value="${funnelback.token}" />
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+
+        <property name="resourceDataCache">
+            <bean class="org.onehippo.cms7.crisp.core.resource.SpringResourceDataCache">
+                <constructor-arg>
+                    <bean class="org.springframework.cache.ehcache.EhCacheCache">
+                        <constructor-arg>
+                            <bean parent="abstractCrispResourceEhCache">
+                                <property name="cacheName" value="funnelbackSearch" />
+                                <property name="maxEntriesLocalHeap" value="1000" />
+                                <property name="maxEntriesLocalDisk" value="0" />
+                                <property name="timeToLiveSeconds" value="60" />
+                                <property name="timeToIdleSeconds" value="60" />
+                            </bean>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
+
+    </bean>
+
+</beans>

@@ -342,6 +342,54 @@ definitions:
         hst:componentconfigurationid: hst:pages/searchpage
         hst:relativecontentpath: search
         hst:sitemapitemhandlerids: [trailing-slash]
+        /suggestions:
+          jcr:primaryType: hst:sitemapitem
+          hst:excludedforlinkrewriting: true
+          hst:hiddeninchannelmanager: true
+          hst:namedpipeline: JaxrsRestPlainPipeline
+      /_search:
+        jcr:primaryType: hst:sitemapitem
+        hst:hiddeninchannelmanager: true
+        hst:relativecontentpath: site-furniture/search/search-results
+        hst:sitemapitemhandlerids: [trailing-slash]
+        /funnelback:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/searchfunnelback
+          hst:relativecontentpath: search/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /funnelbackresults:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/searchfunnelbackresults
+          hst:parameternames: [searchtype]
+          hst:parametervalues: [resilient]
+          hst:relativecontentpath: search/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /bloomreach:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/searchbloomreach
+          hst:relativecontentpath: search/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /bloomreachresults:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/searchbloomreachresults
+          hst:relativecontentpath: search/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /resilient:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/searchresilient
+          hst:relativecontentpath: search/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /resilientresults:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/searchresilientresults
+          hst:relativecontentpath: search/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /health:
+          jcr:primaryType: hst:sitemapitem
+          hst:cacheable: false
+          hst:excludedforlinkrewriting: true
+          hst:hiddeninchannelmanager: true
+          hst:namedpipeline: JaxrsRestPlainPipeline
       /robots.txt:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/robotstxt

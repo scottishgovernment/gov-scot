@@ -4,6 +4,8 @@ definitions:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
       hst:componentclassname: scot.gov.www.components.ResultsPageContentComponent
+      hst:parameternames: [hideSearchToolbar]
+      hst:parametervalues: ['true']
       /main:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.ResultsPageContentComponent
@@ -16,3 +18,4 @@ definitions:
           hst:parametervalues: ['on', 'on', '10', content/documents/govscot]
           hst:template: search.results
           hst:xtype: hst.item
+          hippo:identifier: d5d55cfa-5cdd-4fb8-9e37-b143dc451fe2

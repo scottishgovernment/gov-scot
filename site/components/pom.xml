@@ -58,6 +58,12 @@
       <artifactId>taglibs-standard-impl</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-funnelback-hst</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
     <!-- the following xalan dependencies are required by apache standard taglibs implementation -->
     <dependency>
       <groupId>xalan</groupId>
@@ -133,6 +139,21 @@
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-sitemap-component</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-addon-crisp-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-addon-crisp-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-addon-crisp-hst</artifactId>
     </dependency>
 
     <dependency>

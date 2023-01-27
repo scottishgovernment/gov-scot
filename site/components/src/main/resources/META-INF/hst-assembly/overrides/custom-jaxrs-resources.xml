@@ -26,6 +26,18 @@
                         <bean class="scot.gov.www.rest.metadata.MetadataResource" />
                     </constructor-arg>
                 </bean>
+
+                <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
+                    <constructor-arg>
+                        <bean class="scot.gov.publishing.hippo.funnelback.component.SuggestionsResource" />
+                    </constructor-arg>
+                </bean>
+
+                <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
+                    <constructor-arg>
+                        <bean class="scot.gov.publishing.hippo.funnelback.component.HealthResource" />
+                    </constructor-arg>
+                </bean>
             </list>
         </property>
     </bean>

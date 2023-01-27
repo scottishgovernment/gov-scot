@@ -1,0 +1,19 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:pages/searchbloomreach:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:abstractpages/base
+      hst:parameternames: [hideSearchToolbar]
+      hst:parametervalues: ['true']
+      /main:
+        jcr:primaryType: hst:component
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:parameternames: []
+        hst:parametervalues: []
+        hst:template: search-funnelback-main
+        /results:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent
+          hst:parameternames: [searchtype]
+          hst:parametervalues: [bloomreach]
+          hst:template: search-funnelback-results
