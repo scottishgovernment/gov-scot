@@ -75,7 +75,7 @@
 
                     <div class="ds_reveal-content">
                         <div class="ds_question">
-                            <label class="ds_label" for="reason-no">Choose a reason for your feedback</label>
+                            <label class="ds_label" for="reason-yesbut">Choose a reason for your feedback</label>
                             <div class="ds_select-wrapper">
                                 <select id="reason-yesbut" class="ds_select">
                                     <option value="" selected disabled>Please select a reason</option>
