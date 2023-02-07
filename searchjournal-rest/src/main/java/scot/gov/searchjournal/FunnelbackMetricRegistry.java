@@ -9,6 +9,10 @@ public class FunnelbackMetricRegistry {
 
     private static MetricRegistry metricRegistry = new MetricRegistry();
 
+    private FunnelbackMetricRegistry() {
+        // hide public constructor
+    }
+
     public static MetricRegistry getInstance() {
         return metricRegistry;
     }
