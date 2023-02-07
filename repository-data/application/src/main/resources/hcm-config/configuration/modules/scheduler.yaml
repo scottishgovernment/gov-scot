@@ -14,7 +14,7 @@ definitions:
           jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/1 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2023-02-07T09:36:00Z
+          hipposched:nextFireTime: 2023-02-07T10:52:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SearchJournalCleanupJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -23,9 +23,9 @@ definitions:
       hipposched:repositoryJobClass: scot.gov.www.searchjournal.SearchJournalCleanupJob
       /hipposched:triggers:
         jcr:primaryType: hipposched:triggers
-        /nightly:
+        /daily:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
           jcr:uuid: 535ff94d-e234-43c2-8158-71df0ee91196
-          hipposched:cronExpression: 0 0 5 * * ?
+          hipposched:cronExpression: 0 30 9 * * ?
           hipposched:enabled: true
