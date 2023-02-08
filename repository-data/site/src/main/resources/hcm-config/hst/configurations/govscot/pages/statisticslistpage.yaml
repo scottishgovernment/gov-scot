@@ -24,4 +24,4 @@ definitions:
             includePublicationTypesFilter, publicationTypes]
           hst:parametervalues: [publications, 'true', 'true', '2002-01-01', 'false',
             'research-and-analysis:Research and analysis,statistics:Statistics']
-          hst:template: filteredlist.side-filter:q
+          hst:template: filteredlist.side-filter
