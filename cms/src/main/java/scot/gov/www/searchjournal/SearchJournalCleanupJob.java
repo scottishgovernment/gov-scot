@@ -1,6 +1,7 @@
 package scot.gov.www.searchjournal;
 
 import org.hippoecm.repository.util.DateTools;
+import org.joda.time.DateTime;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
@@ -13,27 +14,38 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.time.Duration;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
- * Delete search journal entries older than 30 days.
+ * Delete search journal entries older than 30 days (default, can be configured)
  */
 public class SearchJournalCleanupJob implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(SearchJournalCleanupJob.class);
 
+    private static final String CUTOFF_MILLIS = "cutoffMillis";
+
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
 
         Session session = context.createSystemSession();
-        FeatureFlag enabled = new FeatureFlag(session, "SearchJournalCleanupJob");
-
-        if (!enabled.isEnabled()) {
-            return;
+        try {
+            FeatureFlag enabled = new FeatureFlag(session, "SearchJournalCleanupJob");
+            if (enabled.isEnabled()) {
+                long cutoff = getCuttoffMillis(context);
+                doExecute(session, cutoff);
+            }
+        } finally {
+            session.logout();
         }
+    }
 
-        LOG.info("Running SearchJournalCleanupJob");
-        NodeIterator nodeIterator = nodesToDelete(session);
+    void doExecute(Session session, long cutoff) throws RepositoryException {
+        LOG.info("Running SearchJournalCleanupJob with cutoff {} millis", cutoff);
+
+        NodeIterator nodeIterator = nodesToDelete(session, cutoff);
         int count = 0;
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.nextNode();
@@ -44,8 +56,24 @@ public class SearchJournalCleanupJob implements RepositoryJob {
         LOG.info("Finished SearchJournalCleanupJob, {} deleted", count);
     }
 
-    NodeIterator nodesToDelete(Session session) throws RepositoryException {
-        Query query = query(session);
+    long getCuttoffMillis(RepositoryJobExecutionContext context) {
+        if (context.getAttributeNames().contains(CUTOFF_MILLIS)) {
+            String cutoffString = context.getAttribute(CUTOFF_MILLIS);
+            try {
+                long cutoff = Long.parseLong(cutoffString);
+                LOG.info("Using cutoff of {} millis", cutoff);
+                return cutoff;
+            } catch (NumberFormatException e) {
+                LOG.error("Cutoff configured for SearchJournalCleanupJob is not parsable as a long: {}, will use default", cutoffString);
+            }
+        }
+
+        LOG.info("Using cutoff of 30 days");
+        return Duration.ofDays(30).toMillis();
+    }
+
+    NodeIterator nodesToDelete(Session session, long cuttoff) throws RepositoryException {
+        Query query = query(session, cuttoff);
         query.setLimit(20000);
         QueryResult result = query.execute();
         LOG.info("{} old entries to delete", result.getNodes().getSize());
@@ -75,18 +103,19 @@ public class SearchJournalCleanupJob implements RepositoryJob {
         }
     }
 
-    Query query(Session session) throws RepositoryException {
+    Query query(Session session, long cutoffMillis) throws RepositoryException {
         String template = "//element(*, searchjournal:entry)[@searchjournal:timestamp < %s] order by @searchjournal:timestamp";
-        String xpath = String.format(template, DateTools.createXPathConstraint(session, cutoff()));
+        String xpath = String.format(template, DateTools.createXPathConstraint(session, cutoff(cutoffMillis)));
         Query query = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH);
+        LOG.info("query: {}", xpath);
         query.setLimit(10000);
         return query;
     }
 
-    Calendar cutoff() {
-        Calendar cutoff = Calendar.getInstance();
-        cutoff.add(Calendar.DATE, -30);
-        return cutoff;
+    Calendar cutoff(long cuttoffMillis) {
+        return DateTime.now()
+                .minus(cuttoffMillis)
+                .toCalendar(Locale.getDefault());
     }
 
 }
