@@ -29,6 +29,8 @@
             </div>
         </#if>
 
+
+        <#if contactInformation.facebook?has_content || contactInformation.twitter?has_content || contactInformation.flickr?has_content || contactInformation.youtube?has_content || contactInformation.blog?has_content>
         <div class="ds_contact-details__item  ds_contact-details__social">
             <dt class="visually-hidden">Connect</dt>
             <#if contactInformation.facebook?has_content>
@@ -72,6 +74,7 @@
             </dd>
             </#if>
         </div>
+        </#if>
     </dl>
 
 </div>
