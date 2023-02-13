@@ -23,9 +23,6 @@ import scot.gov.www.searchjournal.funnelback.*;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
@@ -59,20 +56,15 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
 
         Session session = context.createSystemSession();
-        FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
-        if (!featureFlag.isEnabled()) {
-            LOG.info("FunnelbackReconciliationLoop is disabled");
-            session.logout();
-            return;
-        }
 
         LOG.info("Starting FunnelbackReconciliationLoop");
         Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
 
         try {
-            FeatureFlag resetJournalPositionFlag = new FeatureFlag(session, "ResetJournalPosition");
-            if (resetJournalPositionFlag.isEnabled()) {
-                resetJournalPosition(funnelback);
+            FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
+            if (!featureFlag.isEnabled()) {
+                LOG.info("FunnelbackReconciliationLoop is disabled");
+                session.logout();
                 return;
             }
 
@@ -93,17 +85,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
     }
 
-    void resetJournalPosition(Funnelback funnelback) throws FunnelbackException {
-        ZonedDateTime zdt = LocalDate.of(1990, 1, 1).atStartOfDay(ZoneId.systemDefault());
-        Date date = Date.from(zdt.toInstant());
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        LOG.info("resetJournalPosition");
-        funnelback.storeJournalPosition(calendar);
-    }
-
     static boolean isReady() {
-
         if (!pingUrlResponding()) {
             LOG.warn("Ping url not responding yet");
             return false;
@@ -266,7 +248,8 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             return;
         }
 
-        LOG.info("doHandleFailure {}", entry.getAttempt());
+        LOG.info("reconciliation failed {} {} {}, attempt {}",
+                entry.getAction(), entry.getCollection(), entry.getUrl(), entry.getAttempt());
         long newAttempt = entry.getAttempt() + 1;
         SearchJournalEntry newEntry = new SearchJournalEntry();
         newEntry.setUrl(entry.getUrl());
