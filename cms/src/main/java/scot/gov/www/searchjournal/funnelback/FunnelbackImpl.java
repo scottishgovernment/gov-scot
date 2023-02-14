@@ -71,7 +71,7 @@ public class FunnelbackImpl implements Funnelback {
         LOG.info("publish {}", url);
         try {
             HttpPut request = new HttpPut(url);
-            request.setEntity(new StringEntity(html));
+            request.addHeader("Content-Type", "text/html; charset=UTF-8");
             request.setEntity(new StringEntity(html, Charset.forName(CHARSET)));
             execute(request);
         } catch (IOException e) {
