@@ -68,11 +68,11 @@ public class SearchJournalEventListener implements DaemonModule {
             return;
         }
 
-        if (!shouldHandleEvent(event)) {
-            return;
-        }
-
         try {
+            if (!shouldHandleEvent(event)) {
+                return;
+            }
+
             SearchJournalEntry entry = journalEntry(event);
             if (entry != null) {
                 searchJournal.record(entry);
@@ -85,7 +85,7 @@ public class SearchJournalEventListener implements DaemonModule {
     /**
      * we are only interested in successful publish and depublish events for news and publications
      */
-    boolean shouldHandleEvent(HippoWorkflowEvent event) {
+    boolean shouldHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
         if (!event.success()) {
             return false;
         }
@@ -94,7 +94,20 @@ public class SearchJournalEventListener implements DaemonModule {
             return false;
         }
 
+        // if this is a publications contents page then do not handle it
+        if (isPublicaitonContentsPage(event)) {
+            return false;
+        }
+
         return StringUtils.equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION);
+    }
+
+    boolean isPublicaitonContentsPage(HippoWorkflowEvent event) throws RepositoryException {
+        Node handle = session.getNodeByIdentifier(event.subjectId());
+        Node variant = hippoUtils.getVariant(handle);
+        return variant != null
+                && variant.hasProperty("govscot:contentsPage")
+                && variant.getProperty("govscot:contentsPage").getBoolean();
     }
 
     SearchJournalEntry journalEntry(HippoWorkflowEvent event) throws RepositoryException {

@@ -34,9 +34,12 @@ public class HippoUtils {
 
     public boolean hasPublishedVariant(Node node) throws RepositoryException {
         Node variant = getVariant(node);
-        return
-                "published".equals(variant.getProperty(HIPPOSTD_STATE).getString())
-                && "live".equals(variant.getProperty("hippostd:stateSummary").getString());
+        return isPublished(variant);
+    }
+
+    boolean isPublished(Node node) throws RepositoryException {
+        return "published".equals(node.getProperty(HIPPOSTD_STATE).getString())
+                && "live".equals(node.getProperty("hippostd:stateSummary").getString());
     }
 
     public Node getVariant(Node node) throws RepositoryException {
@@ -52,6 +55,11 @@ public class HippoUtils {
                 byState.get("published"),
                 byState.get("unpublished"),
                 byState.get("draft"));
+    }
+
+    public Node getPublishedVariant(Node node) throws RepositoryException {
+        Node variant = getVariant(node);
+        return isPublished(variant) ? variant : null;
     }
 
     boolean hasState(Node node) throws RepositoryException {
