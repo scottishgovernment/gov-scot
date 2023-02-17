@@ -38,7 +38,7 @@
 
         <#if document.location?has_content>
             <div class="ds_metadata__item">
-                <span class="ds_metadata__key">Location:</span>
+                <span class="ds_metadata__key">Location</span>
                 <span class="ds_metadata__value"><strong>${document.location}</strong></span>
             </div>
         </#if>
