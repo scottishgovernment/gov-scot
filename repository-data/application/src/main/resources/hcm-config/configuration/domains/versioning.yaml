@@ -1,4 +1,0 @@
-definitions:
-  config:
-    /hippo:configuration/hippo:domains/versioning/editor:
-      hipposys:groups: [cmsadmin, editor, useradmin]
