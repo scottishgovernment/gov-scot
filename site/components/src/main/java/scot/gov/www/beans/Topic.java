@@ -5,7 +5,6 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 
 import java.util.List;
-import scot.gov.www.beans.AdditionalContent;
 
 @HippoEssentialsGenerated(internalName = "govscot:Topic")
 @Node(jcrType = "govscot:Topic")
