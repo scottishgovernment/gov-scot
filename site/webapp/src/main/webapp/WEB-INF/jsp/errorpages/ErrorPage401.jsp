@@ -24,7 +24,6 @@
 <head>
   <meta charset="utf-8"/>
   <title><fmt:message key="label.authen.required"/></title>
-  <meta http-equiv="refresh" content='<%=autoRedirectSeconds%>;url=${loginFormUrl}'/>
   <link rel="stylesheet" type="text/css" href="<hst:link path='/login/hst/security/skin/screen.css'/>"/>
 </head>
 <body class="hippo-root">
