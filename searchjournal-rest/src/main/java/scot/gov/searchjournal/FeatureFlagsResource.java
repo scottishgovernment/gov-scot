@@ -45,9 +45,11 @@ public class FeatureFlagsResource {
 
         try {
             Node flagsNode = getFlagsNode();
-            boolean isEnabled = flagsNode.hasProperty(flag)
-                    ? flagsNode.getProperty(flag).getBoolean()
-                    : false;
+
+            boolean isEnabled = false;
+            if (flagsNode.hasProperty(flag)) {
+                isEnabled = flagsNode.getProperty(flag).getBoolean();
+            }
             return Response.status(Response.Status.OK).entity(Boolean.toString(isEnabled)).build();
         } catch (RepositoryException e) {
             LOG.error("Failed to get enabled flag for FunnelbackReconciliationLoop", e);
