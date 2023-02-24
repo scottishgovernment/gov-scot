@@ -17,6 +17,7 @@ const instrumentationConfig = {
 };
 
 webpackConfig.mode = 'development';
+webpackConfig.module = webpackConfig.module || { rules: [] };
 webpackConfig.module.rules.push(instrumentationConfig);
 
 module.exports = function (config) {
