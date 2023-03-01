@@ -10,7 +10,7 @@
 <div class="ds_wrapper">
     <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
         <div class="gov_sublayout__title">
-            <span class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - ${document.label}</#if></span>
+            <span <@revertlang document /> class="ds_page-header__label  ds_content-label">Publication<#if document.label??> - <span id="sg-meta__publication-type">${document.label}</span></#if></span>
             <h1 class="ds_page-header__title">${document.title}</h1>
         </div>
 
