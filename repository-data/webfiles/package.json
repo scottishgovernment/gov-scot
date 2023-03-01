@@ -17,7 +17,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "@scottish-government/pattern-library": "0.0.329",
+    "@scottish-government/pattern-library": "^0.0.334",
     "babel-loader": "^8.0.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",

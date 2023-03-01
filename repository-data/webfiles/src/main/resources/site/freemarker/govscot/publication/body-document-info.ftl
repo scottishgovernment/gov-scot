@@ -86,14 +86,14 @@
                 </a>
             <#else>
                 <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="${documentinline}">
-                    <img width="104" height="152" loading="lazy" class="ds_file-download__thumbnail-image  ds_file-download__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
+                    <img width="104" height="152" loading="lazy" class="ds_file-download__thumbnail-image" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                 </a>
             </#if>
         </div>
         <!--endnoindex-->
 
         <div class="ds_file-download__content">
-            <p class="ds_file-download__title" id="file-title-${docindex}">${attachedDocument.title}</p>
+            <a href="${documentinline}" class="ds_file-download__title" aria-describedby="file-download-${docindex}">${attachedDocument.title}</a>
 
             <div id="file-download-${docindex}" class="ds_file-download__details">
                 <dl class="ds_metadata  ds_metadata--inline">
@@ -112,12 +112,6 @@
                         </div>
                     </#if>
                 </dl>
-            </div>
-
-            <div>
-                <a aria-labelledby="file-title-${docindex}" aria-describedby="file-download-${docindex}" data-title="${attachedDocument.title}" href="${documentinline}" class="ds_file-download__download  ds_button  ds_button--small  <#if attachedDocument.highlighted || (isLimelitItem)!false><#else>ds_button--secondary</#if>  ds_no-margin">
-                    Download
-                </a>
             </div>
         </div>
     </div>
