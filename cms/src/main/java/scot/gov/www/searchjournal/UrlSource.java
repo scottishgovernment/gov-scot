@@ -39,7 +39,7 @@ public class UrlSource {
 
         if (variant.isNodeType("govscot:PublicationPage")) {
             // if this is the first published non contents page then use the publication url
-            return firstPage(variant) ?
+            return isFirstVisiblePage(variant, event.action().equals("publish")) ?
                     publicationUrl :
                     new StringBuilder(publicationUrl)
                             .append(PAGES).append('/').append(variant.getName()).append('/')
@@ -78,26 +78,34 @@ public class UrlSource {
         return pagesfolder.getNodes().hasNext();
     }
 
-    boolean firstPage(Node variant) throws RepositoryException {
+    /**
+     * Determine if the node is the first visible page of the publication.  If it is then it will use the url of
+     * the publication since this will be its canonical url and will avoid the same content being in funnelback twice.
+     *
+     * if this is a publish event then the page does not have to be published since the event has not taken effect yet.
+     */
+    boolean isFirstVisiblePage(Node variant, boolean publishEvent) throws RepositoryException {
         Node pagesfolder = variant.getParent().getParent();
         NodeIterator it = pagesfolder.getNodes();
-        Node firstNonContentsPage = hippoUtils.find(it, this::isPublishedNonContentPage);
-        return variant.getParent().isSame(firstNonContentsPage);
-    }
-
-    boolean isPublishedNonContentPage(Node handle) throws RepositoryException {
-        Node published = hippoUtils.getPublishedVariant(handle);
-        if (published == null) {
-            return false;
+        while (it.hasNext()) {
+            Node nextHandle = it.nextNode();
+            if (!isContentPage(nextHandle)) {
+                if (publishEvent && variant.getParent().isSame(nextHandle.getParent())) {
+                    return true;
+                }
+                Node published = hippoUtils.getPublishedVariant(nextHandle);
+                if (published != null) {
+                    return variant.getParent().isSame(nextHandle);
+                }
+            }
         }
 
-        return !isContentPage(published);
+        return false;
     }
 
-    boolean isContentPage(Node published) throws RepositoryException {
-        return published != null
-                && published.hasProperty("govscot:contentsPage")
-                && published.getProperty("govscot:contentsPage").getBoolean();
+    boolean isContentPage(Node handle) throws RepositoryException {
+        Node variant = handle.getNode(handle.getName());
+        return variant.hasProperty("govscot:contentsPage") && variant.getProperty("govscot:contentsPage").getBoolean();
     }
 
     String slugUrl(String type, Node node) throws RepositoryException {
