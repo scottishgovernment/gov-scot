@@ -220,6 +220,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     String getHtml(SearchJournalEntry entry) throws IOException {
         String localUrl = getLocalUrl(entry.getUrl());
         HttpGet request = new HttpGet(localUrl);
+        request.setHeader("X-Forwarded-Host", "www.gov.scot");
         CloseableHttpResponse response = httpClient.execute(request);
 
         // if this is not a OK response then LOG and return null
