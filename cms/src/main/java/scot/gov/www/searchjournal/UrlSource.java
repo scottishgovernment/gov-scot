@@ -39,7 +39,7 @@ public class UrlSource {
 
         if (variant.isNodeType("govscot:PublicationPage")) {
             // if this is the first published non contents page then use the publication url
-            return isFirstVisiblePage(variant, event.action().equals("publish")) ?
+            return isFirstVisiblePage(variant, "publish".equals(event.action())) ?
                     publicationUrl :
                     new StringBuilder(publicationUrl)
                             .append(PAGES).append('/').append(variant.getName()).append('/')
