@@ -17,6 +17,7 @@ import scot.gov.www.searchjournal.funnelback.FunnelbackCollection;
 
 import java.util.Calendar;
 
+import static org.apache.commons.lang3.StringUtils.startsWith;
 import static org.apache.commons.lang3.StringUtils.startsWithAny;
 
 /**
@@ -35,6 +36,8 @@ public class SearchJournalEventListener implements DaemonModule {
     private static final String PUBLICATIONS_PATH_PREFIX = "/content/documents/govscot/publications";
 
     private static final String NEWS_PATH_PREFIX = "/content/documents/govscot/news";
+
+    private static final String POLICY_PATH_PREFIX = "/content/documents/govscot/policies";
 
     private static final int PUBLICATION_FOLDER_DEPTH = 8;
 
@@ -90,44 +93,76 @@ public class SearchJournalEventListener implements DaemonModule {
             return false;
         }
 
-        if (!startsWithAny(event.subjectPath(), PUBLICATIONS_PATH_PREFIX, NEWS_PATH_PREFIX)) {
+        if (!startsWithAny(event.subjectPath(), PUBLICATIONS_PATH_PREFIX, NEWS_PATH_PREFIX, POLICY_PATH_PREFIX)) {
             return false;
         }
 
-        // if this is a publications contents page then do not handle it
-        if (isPublicaitonContentsPage(event)) {
+        // check if it is an excluded page (eg policy latest, publicaiton contents
+        if (isExcludedPage(event)) {
             return false;
         }
 
         return StringUtils.equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION);
     }
 
-    boolean isPublicaitonContentsPage(HippoWorkflowEvent event) throws RepositoryException {
+    boolean isExcludedPage(HippoWorkflowEvent event) throws RepositoryException {
         Node handle = session.getNodeByIdentifier(event.subjectId());
         Node variant = hippoUtils.getVariant(handle);
-        return variant != null
-                && variant.hasProperty("govscot:contentsPage")
-                && variant.getProperty("govscot:contentsPage").getBoolean();
+        if (variant == null) {
+            return false;
+        }
+        return isPublicaitonContentsPage(variant) || isPolicyLatestPage(variant);
+    }
+
+    boolean isPublicaitonContentsPage(Node variant) throws RepositoryException {
+        return variant.hasProperty("govscot:contentsPage")
+            && variant.getProperty("govscot:contentsPage").getBoolean();
+    }
+
+    boolean isPolicyLatestPage(Node variant) throws RepositoryException {
+        return variant.isNodeType("govscot:PolicyLatest");
+    }
+
+    Node getVariant(HippoWorkflowEvent event) throws RepositoryException {
+        Node handle = session.getNodeByIdentifier(event.subjectId());
+        return hippoUtils.getVariant(handle);
     }
 
     SearchJournalEntry journalEntry(HippoWorkflowEvent event) throws RepositoryException {
-        Node handle = session.getNodeByIdentifier(event.subjectId());
-        Node variant = hippoUtils.getVariant(handle);
+        Node variant = getVariant(event);
         SearchJournalEntry journalEntry = new SearchJournalEntry();
         journalEntry.setAttempt(0);
         journalEntry.setAction(event.action());
         journalEntry.setTimestamp(Calendar.getInstance());
+
         if (variant.isNodeType("govscot:News")) {
             journalEntry.setUrl(urlSource.newsUrl(variant));
             journalEntry.setCollection(FunnelbackCollection.NEWS.getCollectionName());
-        } else {
-            Node publication = getPublication(variant);
-            String publicationType = publication.getProperty("govscot:publicationType").getString();
-            FunnelbackCollection collection = getCollectionByPublicationType(publicationType);
-            journalEntry.setCollection(collection.getCollectionName());
-            journalEntry.setUrl(urlSource.publicationUrl(publication, variant, event));
+            return journalEntry;
         }
+
+        if (isAnyNodeType(variant, "govscot:Policy", "govscot:PolicyInDetail")) {
+            journalEntry.setUrl(urlSource.policyUrl(variant));
+            journalEntry.setCollection(FunnelbackCollection.POLICY.getCollectionName());
+            return journalEntry;
+        }
+
+        // handle document cover pages that have no pages
+        Node publication = getPublication(variant);
+        String publicationType = publication.getProperty("govscot:publicationType").getString();
+        FunnelbackCollection collection = getCollectionByPublicationType(publicationType);
+        journalEntry.setCollection(collection.getCollectionName());
+        journalEntry.setUrl(urlSource.publicationUrl(publication, variant, event));
         return journalEntry;
+    }
+
+    boolean isAnyNodeType(Node variant, String ... types) throws RepositoryException {
+        for (String type : types) {
+            if (variant.isNodeType(type)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     Node getPublication(Node node) throws RepositoryException {
@@ -153,10 +188,10 @@ public class SearchJournalEventListener implements DaemonModule {
     }
 
     FunnelbackCollection getCollectionByPublicationType(String publicationType) {
-
         switch (publicationType) {
+            case "minutes":
             case "foi-eir-release":
-                return FunnelbackCollection.FOI;
+                return FunnelbackCollection.PUBLICATIONS_OTHER;
             case "statistics":
             case "research-and-analysis":
                 return FunnelbackCollection.STATS_AND_RESEARCH;

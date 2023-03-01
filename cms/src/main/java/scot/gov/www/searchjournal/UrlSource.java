@@ -15,7 +15,16 @@ public class UrlSource {
 
     static final String URL_BASE = "https://www.gov.scot/";
 
+    private static final String PAGES = "pages";
+
     private HippoUtils hippoUtils = new HippoUtils();
+
+    String policyUrl(Node node) throws RepositoryException {
+        String path = StringUtils.substringAfter(node.getParent().getPath(), "/content/documents/govscot/");
+        path = StringUtils.substringBefore(path, "/index");
+
+        return new StringBuilder(URL_BASE).append(path).append('/').toString();
+    }
 
     String newsUrl(Node node) throws RepositoryException {
         return slugUrl("news", node);
@@ -33,14 +42,20 @@ public class UrlSource {
             return firstPage(variant) ?
                     publicationUrl :
                     new StringBuilder(publicationUrl)
-                            .append("pages").append('/').append(variant.getName()).append('/')
+                            .append(PAGES).append('/').append(variant.getName()).append('/')
                             .toString();
         }
 
         if (variant.isNodeType("govscot:DocumentInformation")) {
-            // we do not index individual document information pages, but a change to one means that the /documents/
-            // page needs to be reindexd
-            return new StringBuilder(publicationUrl).append("documents").append('/').toString();
+
+            // if this publication does not have any pages then we jurts want to index the publication itself
+            if (!hasPages(publication)) {
+                return publicationUrl;
+            } else {
+                // we do not index individual document information pages, but a change to one means that the /documents/
+                // page needs to be reindexd
+                return new StringBuilder(publicationUrl).append("documents").append('/').toString();
+            }
         }
 
         if (variant.isNodeType("govscot:ComplexDocumentSection")) {
@@ -51,6 +66,16 @@ public class UrlSource {
         // should never get here
         throw new IllegalArgumentException("Unexpected node type trying to maintain search journal :"
                 + variant.getPrimaryNodeType().getName());
+    }
+
+    boolean hasPages(Node publication) throws RepositoryException {
+        Node publicationFolder = publication.getParent().getParent();
+        if (!publicationFolder.hasNode(PAGES)) {
+            return false;
+        }
+
+        Node pagesfolder = publicationFolder.getNode(PAGES);
+        return pagesfolder.getNodes().hasNext();
     }
 
     boolean firstPage(Node variant) throws RepositoryException {

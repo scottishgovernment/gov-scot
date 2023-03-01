@@ -64,7 +64,6 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
             if (!featureFlag.isEnabled()) {
                 LOG.info("FunnelbackReconciliationLoop is disabled");
-                session.logout();
                 return;
             }
 
@@ -199,7 +198,9 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
                 break;
             case "publish":
                 String html = getHtml(entry);
-                funnelback.publish(entry.getCollection(), entry.getUrl(), html);
+                if (html != null) {
+                    funnelback.publish(entry.getCollection(), entry.getUrl(), html);
+                }
                 break;
             default:
                 LOG.error("Unexpected action {}", entry.getAction());
@@ -220,6 +221,13 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         String localUrl = getLocalUrl(entry.getUrl());
         HttpGet request = new HttpGet(localUrl);
         CloseableHttpResponse response = httpClient.execute(request);
+
+        // if this is not a OK response then LOG and return null
+        if (response.getStatusLine().getStatusCode() != 200) {
+            LOG.error("{} fetching {}", response.getStatusLine().getStatusCode(), localUrl);
+            return null;
+        }
+
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         try {
