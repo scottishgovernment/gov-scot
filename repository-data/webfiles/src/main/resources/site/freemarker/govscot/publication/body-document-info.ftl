@@ -85,7 +85,7 @@
                         sizes="(min-width: 768px) 104px, 72px" />
                 </a>
             <#else>
-                <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="${documentinline}">
+                <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="${documentinline}" tabindex="-1">
                     <img width="104" height="152" loading="lazy" class="ds_file-download__thumbnail-image" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                 </a>
             </#if>
