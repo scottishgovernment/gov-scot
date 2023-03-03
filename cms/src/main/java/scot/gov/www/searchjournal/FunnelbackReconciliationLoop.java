@@ -15,9 +15,11 @@ import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.httpclient.HttpClientSource;
+import scot.gov.publishing.searchjounal.FeatureFlag;
+import scot.gov.publishing.searchjounal.SearchJournal;
+import scot.gov.publishing.searchjounal.SearchJournalEntry;
 import scot.gov.searchjournal.FunnelbackMetricRegistry;
 import scot.gov.searchjournal.MetricName;
-import scot.gov.www.FeatureFlag;
 import scot.gov.www.searchjournal.funnelback.*;
 
 import javax.jcr.RepositoryException;
@@ -121,6 +123,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             return;
         }
 
+        LOG.info("Journal position is {}", journalPosition);
         List<SearchJournalEntry> pendingEntries = journal.getPendingEntries(journalPosition, maxJournalEntriesToFetch);
         if (pendingEntries.isEmpty()) {
             LOG.info("No journal entries to process");

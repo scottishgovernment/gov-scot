@@ -12,6 +12,7 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.httpclient.HttpClientSource;
+import scot.gov.publishing.searchjounal.FunnelbackCollection;
 import scot.gov.searchjournal.JournalPositionSource;
 
 import java.io.IOException;
@@ -73,7 +74,10 @@ public class FunnelbackImpl implements Funnelback {
             HttpPut request = new HttpPut(url);
             request.addHeader("Content-Type", "text/html; charset=UTF-8");
             request.setEntity(new StringEntity(html, Charset.forName(CHARSET)));
-            execute(request);
+            int status = execute(request);
+            if (status != 200) {
+                throw new FunnelbackException("publish to funnelback not successful: " + status);
+            }
         } catch (IOException e) {
             throw new FunnelbackException("Failed to index content", e);
         }
@@ -82,7 +86,12 @@ public class FunnelbackImpl implements Funnelback {
     public void depublish(String collection, String key) throws FunnelbackException {
         String url = funnelbackCollectionUrl(collection, key);
         try {
-            execute(new HttpDelete(url));
+            int status = execute(new HttpDelete(url));
+
+            // treat a 404 or 200 as ok ...
+            if (status != 200 && status != 404) {
+                throw new FunnelbackException("depublish to funnelback not successful: " + status);
+            }
         } catch (IOException e) {
             throw new FunnelbackException("Failed to index content", e);
         }
@@ -136,20 +145,17 @@ public class FunnelbackImpl implements Funnelback {
         }
     }
 
-    void execute(HttpRequestBase request) throws IOException, FunnelbackException {
+    int execute(HttpRequestBase request) throws IOException, FunnelbackException {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         request.addHeader(SECURITY_TOKEN, configuration.getApiKey());
 
         CloseableHttpResponse response = httpClient.execute(funnelbackHost, request);
         try {
-            if (response.getStatusLine().getStatusCode() != 200) {
-                throw new FunnelbackException("HTTP request to funnelback not successful: " + response.getStatusLine());
-            }
-
             HttpEntity entity = response.getEntity();
             String entityString = EntityUtils.toString(entity);
-            LOG.debug("entity {}", entityString);
+            LOG.debug("status {}, entity {}", response.getStatusLine().getStatusCode(), entityString);
+            return response.getStatusLine().getStatusCode();
         } finally {
             stopWatch.stop();
             LOG.debug("{} execute took {}", request.getURI(), stopWatch.getTime());

@@ -1,5 +1,7 @@
 package scot.gov.www.searchjournal;
 
+import scot.gov.publishing.searchjounal.SearchJournalEntry;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

@@ -12,13 +12,17 @@ import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.www.FeatureFlag;
-import scot.gov.www.searchjournal.funnelback.FunnelbackCollection;
+import scot.gov.publishing.searchjounal.FeatureFlag;
+import scot.gov.publishing.searchjounal.SearchJournal;
+import scot.gov.publishing.searchjounal.SearchJournalEntry;
+import scot.gov.publishing.searchjounal.FunnelbackCollection;
 
 import java.util.Calendar;
 
-import static org.apache.commons.lang3.StringUtils.startsWith;
 import static org.apache.commons.lang3.StringUtils.startsWithAny;
+import static scot.gov.publishing.searchjounal.FunnelbackCollection.NEWS;
+import static scot.gov.publishing.searchjounal.FunnelbackCollection.POLICY;
+import static scot.gov.publishing.searchjounal.FunnelbackCollection.getCollectionByPublicationType;
 
 /**
  * Listen to publish and unpublish events in order to maintain the search journal.
@@ -137,13 +141,13 @@ public class SearchJournalEventListener implements DaemonModule {
 
         if (variant.isNodeType("govscot:News")) {
             journalEntry.setUrl(urlSource.newsUrl(variant));
-            journalEntry.setCollection(FunnelbackCollection.NEWS.getCollectionName());
+            journalEntry.setCollection(NEWS.getCollectionName());
             return journalEntry;
         }
 
         if (isAnyNodeType(variant, "govscot:Policy", "govscot:PolicyInDetail")) {
             journalEntry.setUrl(urlSource.policyUrl(variant));
-            journalEntry.setCollection(FunnelbackCollection.POLICY.getCollectionName());
+            journalEntry.setCollection(POLICY.getCollectionName());
             return journalEntry;
         }
 
@@ -185,19 +189,6 @@ public class SearchJournalEventListener implements DaemonModule {
             return node;
         }
         return publicationFolder(node.getParent());
-    }
-
-    FunnelbackCollection getCollectionByPublicationType(String publicationType) {
-        switch (publicationType) {
-            case "minutes":
-            case "foi-eir-release":
-                return FunnelbackCollection.PUBLICATIONS_OTHER;
-            case "statistics":
-            case "research-and-analysis":
-                return FunnelbackCollection.STATS_AND_RESEARCH;
-            default:
-                return FunnelbackCollection.PUBLICATIONS;
-        }
     }
 
 }
