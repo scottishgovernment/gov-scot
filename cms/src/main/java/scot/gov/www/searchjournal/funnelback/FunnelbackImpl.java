@@ -145,7 +145,7 @@ public class FunnelbackImpl implements Funnelback {
         }
     }
 
-    int execute(HttpRequestBase request) throws IOException, FunnelbackException {
+    int execute(HttpRequestBase request) throws IOException {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         request.addHeader(SECURITY_TOKEN, configuration.getApiKey());
