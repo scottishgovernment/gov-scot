@@ -73,7 +73,7 @@
         <!--noindex-->
         <div class="ds_file-download__thumbnail">
             <#if filenameExtension == "pdf" && attachedDocument.thumbnails[0]??>
-                <a data-button="document-cover" class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="${documentinline}">
+                <a data-button="document-cover" title="${attachedDocument.title}" class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="${documentinline}">
                     <img
                         class="ds_file-download__thumbnail-image"
                         alt="View this document"
