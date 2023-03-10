@@ -29,7 +29,7 @@
                             <label class="ds_label" for="comments-yes">Your comments</label><br>
                             <textarea rows="5" maxlength="250" class="ds_input" id="comments-yes"></textarea>
 
-                            <p><strong>Note:</strong> Your feedback will help us make improvements on this site. Please do not provide any <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/key-definitions/what-is-personal-data/">personal information</a></p>
+                            <p>Your feedback helps us to improve this website. Do not give any personal information because we cannot reply to you directly.</p>
                         </div>
 
                         <button type="submit" class="ds_button  ds_no-margin">Send feedback</button>
@@ -62,7 +62,7 @@
                             <label class="ds_label" for="comments-no">Your comments</label><br>
                             <textarea rows="5" maxlength="250" class="ds_input" id="comments-no"></textarea>
 
-                            <p><strong>Note:</strong> Your feedback will help us make improvements on this site. Please do not provide any <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/key-definitions/what-is-personal-data/">personal information</a></p>
+                            <p>Your feedback helps us to improve this website. Do not give any personal information because we cannot reply to you directly.</p>
                         </div>
 
                         <button type="submit" class="ds_button  ds_no-margin">Send feedback</button>
