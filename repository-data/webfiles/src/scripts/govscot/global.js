@@ -181,12 +181,11 @@ const global = {
             } else {
                 videoElement.innerHTML = `
                     <div class="youtube-embed-wrapper__consent">
-                        <h2 class="ds_h3">Permission required to view YouTube content</h2>
-
-                        <p>This video content is hosted on YouTube and we require permission before loading as there may be cookies and/or other technologies used not covered by <a href="/cookies">this site's cookie preferences</a>.</p>
-                        <p>We advise reading Google's <a href="https://policies.google.com/privacy?hl=en">privacy policy</a> before accepting.</p>
-                        <p>To consent to display this content click the ‘Accept and continue’ button below.</p>
-
+                        <h2 class="ds_h3">We need your permission to load YouTube content</h2>
+                        <p>This video is hosted on YouTube and we need your permission to load it.</p>
+                        <p>It may use cookies and/or other technologies not covered by <a href="/cookies">gov.scot cookie preferences</a>.</p>
+                        <p>You should read <a href="https://policies.google.com/privacy?hl=en">Google's privacy policy</a>  before you agree.</p>
+                        <p>Select the 'accept and continue' button to load the content.</p>
                         <button class="ds_button  ds_!_margin-bottom--2  js-video-opt-in" type="button">Accept and continue</button>
                     </div>
                 `;
