@@ -19,7 +19,6 @@
   <bean id="org.onehippo.forge.selection.hst.manager.ValueListManager" class="org.onehippo.forge.selection.hst.manager.DefaultValueListManager"> 
     <constructor-arg> 
       <map>
-        <!--<entry key="name" value="/absolute/repository/path"/>-->
         <entry key="publicationTypes" value="/content/documents/govscot/valuelists/publicationTypes"/>
         <entry key="featureFlags" value="/content/documents/govscot/valuelists/featureflags"/>
       </map> 
