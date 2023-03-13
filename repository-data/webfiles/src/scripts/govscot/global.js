@@ -28,6 +28,7 @@ const global = {
         notificationBanners.forEach(notificationBanner => new Notification(notificationBanner, true).init());
 
         this.addTracking();
+        this.checkVideoConsent();
     },
 
     addTracking: function () {
@@ -167,6 +168,60 @@ const global = {
                 JSON.stringify(permissions)
             );
         }
+    },
+
+    checkVideoConsent: function () {
+        const videoElements = [].slice.call(document.querySelectorAll('.youtube-embed-wrapper'));
+
+        videoElements.forEach(videoElement => {
+
+            if (storage.hasPermission(storage.categories.marketing)) {
+                videoElement.innerHTML = `
+                <iframe width="${videoElement.dataset.width}" height="${videoElement.dataset.height}" src="${videoElement.dataset.src}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                videoElement.innerHTML = `
+                    <div class="youtube-embed-wrapper__consent">
+                        <h2 class="ds_h3">Permission required to view YouTube content</h2>
+
+                        <p>This video content is hosted on YouTube and we require permission before loading as there may be cookies and/or other technologies used not covered by <a href="/cookies">this site's cookie preferences</a>.</p>
+                        <p>We advise reading Google's <a href="https://policies.google.com/privacy?hl=en">privacy policy</a> before accepting.</p>
+                        <p>To consent to display this content click the ‘Accept and continue’ button below.</p>
+
+                        <button class="ds_button  ds_!_margin-bottom--2  js-video-opt-in" type="button">Accept and continue</button>
+                    </div>
+                `;
+
+                videoElement.addEventListener('click', event => {
+                    if (event.target.classList.contains('js-video-opt-in')) {
+
+                        const permissionsString = storage.getCookie('cookiePermissions') || '';
+
+                        let permissions;
+
+                        if (!storage.isJsonString(permissionsString)) {
+                            permissions = {};
+
+
+                            storage.setCookie(storage.categories.necessary,
+                                'cookiePermissions',
+                                JSON.stringify(permissions)
+                            );
+                        } else {
+                            permissions = JSON.parse(permissionsString);
+                        }
+
+                        permissions.marketing = true;
+
+                        storage.setCookie(storage.categories.necessary,
+                            'cookiePermissions',
+                            JSON.stringify(permissions)
+                        );
+
+                        this.checkVideoConsent();
+                    }
+                });
+            }
+        });
     }
 };
 

@@ -7,7 +7,7 @@ definitions:
         jcr:primaryType: hipposys:moduleconfig
         attributes: [class, for]
       /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/div:
-        attributes: [class, dir, id, lang, style, title, data-module]
+        attributes: [class, dir, id, lang, style, title, data-module, data-width, data-height, data-src]
       /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/span:
        jcr:primaryType: hipposys:moduleconfig
        attributes: [aria-hidden, class, lang, dir]
