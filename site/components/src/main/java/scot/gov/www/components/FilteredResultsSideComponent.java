@@ -91,7 +91,7 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
         if (parameterMap == null) {
-            return null;
+            return Collections.emptyMap();
         }
         Map<String, Set<String>> sanitisedMap = new HashMap();
         for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {

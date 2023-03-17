@@ -202,7 +202,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
         if (parameterMap == null) {
-            return null;
+            return Collections.emptyMap();
         }
 
         Map<String, Set<String>> sanitisedMap = new HashMap();
