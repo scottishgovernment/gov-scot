@@ -28,6 +28,7 @@ const global = {
         notificationBanners.forEach(notificationBanner => new Notification(notificationBanner, true).init());
 
         this.addTracking();
+        this.checkVideoConsent();
     },
 
     addTracking: function () {
@@ -167,6 +168,59 @@ const global = {
                 JSON.stringify(permissions)
             );
         }
+    },
+
+    checkVideoConsent: function () {
+        const videoElements = [].slice.call(document.querySelectorAll('.youtube-embed-wrapper'));
+
+        videoElements.forEach(videoElement => {
+
+            if (storage.hasPermission(storage.categories.marketing)) {
+                videoElement.innerHTML = `
+                <iframe width="${videoElement.dataset.width}" height="${videoElement.dataset.height}" src="${videoElement.dataset.src}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                videoElement.innerHTML = `
+                    <div class="youtube-embed-wrapper__consent">
+                        <h2 class="ds_h3">We need your permission to load YouTube content</h2>
+                        <p>This video is hosted on YouTube and we need your permission to load it.</p>
+                        <p>It may use cookies and/or other technologies not covered by <a href="/cookies">gov.scot cookie preferences</a>.</p>
+                        <p>You should read <a href="https://policies.google.com/privacy?hl=en">Google's privacy policy</a>  before you agree.</p>
+                        <p>Select the 'accept and continue' button to load the content.</p>
+                        <button class="ds_button  ds_!_margin-bottom--2  js-video-opt-in" type="button">Accept and continue</button>
+                    </div>
+                `;
+
+                videoElement.addEventListener('click', event => {
+                    if (event.target.classList.contains('js-video-opt-in')) {
+
+                        const permissionsString = storage.getCookie('cookiePermissions') || '';
+
+                        let permissions;
+
+                        if (!storage.isJsonString(permissionsString)) {
+                            permissions = {};
+
+
+                            storage.setCookie(storage.categories.necessary,
+                                'cookiePermissions',
+                                JSON.stringify(permissions)
+                            );
+                        } else {
+                            permissions = JSON.parse(permissionsString);
+                        }
+
+                        permissions.marketing = true;
+
+                        storage.setCookie(storage.categories.necessary,
+                            'cookiePermissions',
+                            JSON.stringify(permissions)
+                        );
+
+                        this.checkVideoConsent();
+                    }
+                });
+            }
+        });
     }
 };
 
