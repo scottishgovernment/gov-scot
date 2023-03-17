@@ -72,8 +72,8 @@
     <div class="ds_file-download  <#if attachedDocument.highlighted || (isLimelitItem)!false>ds_file-download--highlighted</#if>">
         <!--noindex-->
         <div class="ds_file-download__thumbnail">
-            <#if filenameExtension == "pdf" && attachedDocument.thumbnails[0]??>
-                <a data-button="document-cover" title="${attachedDocument.title}" class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="${documentinline}">
+            <a data-button="document-cover" title="${attachedDocument.title}" class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="${documentinline}">
+                <#if filenameExtension == "pdf" && attachedDocument.thumbnails[0]??>
                     <img
                         class="ds_file-download__thumbnail-image"
                         alt="View this document"
@@ -83,12 +83,10 @@
                                     <@hst.link hippobean=thumbnail/> ${thumbnail.filename?keep_before_last(".")?keep_after_last("_")}w<#sep>, </#sep>
                                 </#list>"
                         sizes="(min-width: 768px) 104px, 72px" />
-                </a>
-            <#else>
-                <a class="ds_file-download__thumbnail-link" aria-hidden="true" href="${documentinline}" tabindex="-1">
+                <#else>
                     <img width="104" height="152" loading="lazy" class="ds_file-download__thumbnail-image" src="<@hst.link path=fileThumbnailPath />" alt=""/>
-                </a>
-            </#if>
+                </#if>
+            </a>
         </div>
         <!--endnoindex-->
 
