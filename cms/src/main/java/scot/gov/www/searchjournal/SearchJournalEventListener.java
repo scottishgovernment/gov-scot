@@ -19,6 +19,7 @@ import scot.gov.publishing.searchjounal.FunnelbackCollection;
 
 import java.util.Calendar;
 
+import static org.apache.commons.lang3.StringUtils.equalsAny;
 import static org.apache.commons.lang3.StringUtils.startsWithAny;
 import static scot.gov.publishing.searchjounal.FunnelbackCollection.NEWS;
 import static scot.gov.publishing.searchjounal.FunnelbackCollection.POLICY;
@@ -101,12 +102,15 @@ public class SearchJournalEventListener implements DaemonModule {
             return false;
         }
 
-        // check if it is an excluded page (eg policy latest, publicaiton contents
+        // check if it is an excluded page (eg policy latest, publication contents
         if (isExcludedPage(event)) {
             return false;
         }
 
-        return StringUtils.equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION);
+        // it is a publish or a depublish with no arguments.  If the even has arguments it means it is scheduled
+        // when the page is actually published we will get a no arguments event.
+        return equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION) &&
+                event.arguments() == null;
     }
 
     boolean isExcludedPage(HippoWorkflowEvent event) throws RepositoryException {
@@ -120,7 +124,7 @@ public class SearchJournalEventListener implements DaemonModule {
 
     boolean isPublicaitonContentsPage(Node variant) throws RepositoryException {
         return variant.hasProperty("govscot:contentsPage")
-            && variant.getProperty("govscot:contentsPage").getBoolean();
+                && variant.getProperty("govscot:contentsPage").getBoolean();
     }
 
     boolean isPolicyLatestPage(Node variant) throws RepositoryException {
