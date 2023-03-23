@@ -12,6 +12,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.httpclient.HttpClientSource;
@@ -64,12 +65,9 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
         try {
             FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
-            if (!featureFlag.isEnabled()) {
-                LOG.info("FunnelbackReconciliationLoop is disabled");
-                return;
+            if (featureFlag.isEnabled()) {
+                fetchAndProcessPendingJournalEntries(funnelback, session, featureFlag);
             }
-
-            fetchAndProcessPendingJournalEntries(funnelback, session, featureFlag);
         } catch (RepositoryException e) {
             LOG.error("RepositoryException during funnelback reconciliation", e);
             throw e;

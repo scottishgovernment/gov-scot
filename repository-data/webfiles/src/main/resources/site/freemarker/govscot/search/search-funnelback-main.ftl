@@ -25,5 +25,10 @@
     </div>
 </div>
 
-<#assign scriptName="search">
-<#include 'scripts.ftl'/>
+<@hst.headContribution category="footerScripts">
+        <script type="module" src='<@hst.webfile path="assets/scripts/search-page.js"/>'></script>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="footerScripts">
+        <script nomodule="true" src='<@hst.webfile path="assets/scripts/search-page.es5.js"/>'></script>
+    </@hst.headContribution>

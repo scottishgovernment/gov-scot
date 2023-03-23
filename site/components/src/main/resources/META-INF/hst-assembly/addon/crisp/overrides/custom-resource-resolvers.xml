@@ -2,12 +2,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
+
+    <bean id="loggingHttpRequestFactory" class="scot.gov.publishing.hippo.funnelback.client.LoggingHttpComponentsClientHttpRequestFactory"/>
+
     <bean id="funnelback" parent="abstractCrispSimpleJacksonRestTemplateResourceResolver"
           class="org.onehippo.cms7.crisp.core.resource.jackson.SimpleJacksonRestTemplateResourceResolver">
         <property name="cacheEnabled" value="true" />
         <property name="baseUri" value="${funnelback.url}" />
+
         <property name="restTemplate">
             <bean class="org.springframework.web.client.RestTemplate">
+
+                <constructor-arg index="0" ref="loggingHttpRequestFactory" />
+
                 <property name="interceptors">
                     <list>
                         <bean class="scot.gov.publishing.hippo.funnelback.client.SecurityTokenInterceptor">

@@ -80,7 +80,9 @@ public class UrlSource {
 
     /**
      * Determine if the node is the first visible page of the publication.  If it is then it will use the url of
-     * the publication since this will be its canonical url and will avoid the same content being in funnelback twice.
+     * the publicaitons since this will be its canonical url and will avoif the same content being in funnelback twice.
+     *
+     * we skip over contents pages
      *
      * if this is a publish event then the page does not have to be published since the event has not taken effect yet.
      */

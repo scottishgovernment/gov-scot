@@ -89,43 +89,12 @@
     </#if>
 
     <#if bloomreachresults??>
-        <#list bloomreachresults as result>
-            <li class="ds_search-result">
-                <h3 class="ds_search-result__title">
-                    <@hst.link var="link" hippobean=result/>
-                    <a class="ds_search-result__link"href="${link}">${result.title}</a>
-                </h3>
-                <p class="ds_search-result__summary">
-                    ${result.summary}
-                </p>
-            </li>
+        <#list bloomreachresults as item>
+            <#include "bloomreach-search-result.ftl">
         </#list>
     <#else>
         <#list response.resultPacket.results as result>
-            <li class="ds_search-result">
-                <h3 class="ds_search-result__title">
-                    <a class="ds_search-result__link" href="${result.liveUrl}">
-                    <#if (result.listMetadata["dcTitle"]?first)?has_content>
-                        ${result.listMetadata["dcTitle"]?first!}
-                    <#else>
-                        ${result.listMetadata["t"]?first!}   
-                    </#if>
-                    </a>
-                </h3>
-
-                <p class="ds_search-result__summary">
-                    <@highlightSearchTerm result.listMetadata["c"]?first />
-                </p>
-
-                <#if (result.listMetadata["titleSeriesLink"]?first)!?has_content>
-                    <dl class="ds_search-result__context">
-                        <dt class="ds_search-result__context-key">Part of:</dt>
-                        <dd class="ds_search-result__context-value">
-                            <a href="${(result.listMetadata["titleSeriesLink"]?first)!}">${(result.listMetadata["titleSeries"]?first)!}</a>
-                        </dd>
-                    </dl>
-                </#if>
-            </li>
+            <#include "funnelback-search-result.ftl">
         </#list>
     </#if>
 </ol>
