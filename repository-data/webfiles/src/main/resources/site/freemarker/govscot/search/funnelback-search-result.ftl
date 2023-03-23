@@ -70,7 +70,8 @@
             </#if>
         </dl>
     <#elseif result.listMetadata["f"]?first = 'News'
-    || result.listMetadata["f"]?first = 'Policy'>
+    || result.listMetadata["f"]?first = 'Policy'
+    || result.listMetadata["f"]?first = 'Collection'>
         <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
             <span class="ds_metadata__item">
                 <dt class="ds_metadata__key  visually-hidden">Format</dt>
