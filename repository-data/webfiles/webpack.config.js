@@ -15,7 +15,8 @@ const commonItems = {
         'home':                         path.resolve(__dirname, './src/scripts/govscot/format.home.js'),
         'payment-form':                 path.resolve(__dirname, './src/scripts/govscot/format.payment-form.js'),
         'publication':                  path.resolve(__dirname, './src/scripts/govscot/format.publication.js'),
-        'search':                       path.resolve(__dirname, './src/scripts/govscot/format.search.js')
+        'search':                       path.resolve(__dirname, './src/scripts/govscot/format.search.js'),
+        'search-page':                  path.resolve(__dirname, './src/scripts/govscot/format.searchpage.js')
     },
 
     externals: {

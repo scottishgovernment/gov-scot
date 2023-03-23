@@ -10,6 +10,8 @@ import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.onehippo.cms7.essentials.components.EssentialsListComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
 import org.onehippo.cms7.essentials.components.paging.Pageable;
+import scot.gov.publishing.hippo.funnelback.component.Search;
+import scot.gov.publishing.hippo.funnelback.component.SearchBuilder;
 import scot.gov.www.search.BloomreachSearchService;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
@@ -26,10 +28,14 @@ public class SearchResultsComponent extends EssentialsListComponent {
             return null;
         }
 
-        int pageSize = getPageSize(request, paramInfo);
         int page = getCurrentPage(request);
-        int offset = (page - 1) * pageSize;
-        return new BloomreachSearchService().query(term, offset, request);
+        Search search = new SearchBuilder()
+                .query(term)
+                .page(page)
+                .request(request)
+                .build();
+        return new BloomreachSearchService().query(search);
+
     }
 
     @Override
@@ -46,7 +52,5 @@ public class SearchResultsComponent extends EssentialsListComponent {
                 pageSize,
                 page);
     }
-
-
 
 }

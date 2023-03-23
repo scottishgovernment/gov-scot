@@ -8,7 +8,6 @@ import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
-import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.ContentBeanUtils;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
@@ -18,10 +17,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import scot.gov.publishing.hippo.funnelback.component.Search;
-import scot.gov.publishing.hippo.funnelback.component.SearchResponse;
-import scot.gov.publishing.hippo.funnelback.component.SearchService;
-import scot.gov.publishing.hippo.funnelback.component.SearchSettings;
+import scot.gov.publishing.hippo.funnelback.component.*;
 import scot.gov.publishing.hippo.funnelback.component.postprocess.PaginationBuilder;
 import scot.gov.publishing.hippo.funnelback.model.Pagination;
 import scot.gov.publishing.hippo.funnelback.model.Question;
@@ -44,8 +40,6 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 public class BloomreachSearchService implements SearchService {
 
     private static final Logger LOG = LoggerFactory.getLogger(scot.gov.www.search.BloomreachSearchService.class);
-
-    private static final String PRIMARY_TYPE = "jcr:primaryType";
 
     private static final Collection<String> FIELD_NAMES = new ArrayList<>();
 
@@ -74,14 +68,13 @@ public class BloomreachSearchService implements SearchService {
     @Override
     public SearchResponse performSearch(Search search, SearchSettings searchsettings) {
 
-        String query = defaultIfBlank(search.getQuery(), "");
         int offset = (search.getPage() - 1) * PAGE_SIZE;
 
-        HstQuery hstQuery = query(query, offset, search.getRequest());
+        HstQuery hstQuery = query(search);
         try {
             HstQueryResult result = hstQuery.execute();
             postProcessResults(result.getHippoBeans());
-            return response(result, query, offset, search.getRequestUrl());
+            return response(result, search, offset, search.getRequestUrl());
         } catch (QueryException e) {
             LOG.error("Query exceptions in fallback", e);
             return null;
@@ -155,10 +148,13 @@ public class BloomreachSearchService implements SearchService {
         item.setParent(parent);
     }
 
-    public HstQuery query(String queryStr, int offset, HstRequest request) {
-        String parsedQueryStr = SearchInputParsingUtils.parse(queryStr, false);
-        HstRequestContext context = request.getRequestContext();
-        return HstQueryBuilder.create(context.getSiteContentBaseBean())
+    public HstQuery query(Search search) {
+        String query = defaultIfBlank(search.getQuery(), "");
+        String parsedQueryStr = SearchInputParsingUtils.parse(query, false);
+        int offset = (search.getPage() - 1) * 10;
+        HstRequestContext context = search.getRequest().getRequestContext();
+        HstQueryBuilder queryBuilder = HstQueryBuilder.create(context.getSiteContentBaseBean());
+        return queryBuilder
                 .where(constraints(parsedQueryStr))
                 .limit(PAGE_SIZE)
                 .offset(offset)
@@ -169,7 +165,6 @@ public class BloomreachSearchService implements SearchService {
 
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, searchField);
-        addContentTypeConstraints(constraints);
         constraints.add(
                 or(
                         constraint("govscot:excludeFromSearchIndex").equalTo(false),
@@ -184,16 +179,6 @@ public class BloomreachSearchService implements SearchService {
         constraints.add(or(fieldConstraints(queryString)));
     }
 
-    private void addContentTypeConstraints(List<Constraint> constraints) {
-        constraints.add(
-                and(
-                    constraint(PRIMARY_TYPE).notEqualTo("govscot:HomeFeaturedItem"),
-                    constraint(PRIMARY_TYPE).notEqualTo("govscot:DocumentInformation"),
-                    constraint(PRIMARY_TYPE).notEqualTo("govscot:SiteItem")
-                )
-        );
-    }
-
     private Constraint [] fieldConstraints(String term) {
         List<Constraint> constraints = FIELD_NAMES
                 .stream()
@@ -202,11 +187,11 @@ public class BloomreachSearchService implements SearchService {
         return constraints.toArray(new Constraint[constraints.size()]);
     }
 
-    SearchResponse response(HstQueryResult result, String query, int offset, String url) {
+    SearchResponse response(HstQueryResult result, Search search, int offset, String url) {
         SearchResponse searchResponse = new SearchResponse();
         searchResponse.setType(SearchResponse.Type.BLOOMREACH);
 
-        Question question = getQuestion(query);
+        Question question = getQuestion(search.getQuery());
         searchResponse.setQuestion(question);
 
         Response response = new Response();
@@ -214,7 +199,7 @@ public class BloomreachSearchService implements SearchService {
         response.getResultPacket().setResultsSummary(resultsSummary);
         searchResponse.setResponse(response);
 
-        Pagination pagination = new PaginationBuilder(url).getPagination(resultsSummary, query);
+        Pagination pagination = new PaginationBuilder(url).getPagination(resultsSummary, search.getQuery());
         searchResponse.setPagination(pagination);
         searchResponse.setBloomreachResults(result.getHippoBeans());
 

@@ -4,12 +4,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
-import org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
-import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
@@ -27,14 +25,8 @@ import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.AttributableContent;
-import scot.gov.www.beans.Issue;
-import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
-import javax.jcr.Node;
-import javax.jcr.Property;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -53,7 +45,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsComponent.class);
 
-    private static final String GOVSCOT_TITLE = "govscot:title";
+    public static final String GOVSCOT_TITLE = "govscot:title";
 
     public static final String PUBLICATION_TYPES = "publicationTypes";
 
@@ -213,6 +205,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             }
 
             Set<String> splitParamaters = splitParameters(request, entry.getKey());
+
             sanitisedMap.put(entry.getKey(), splitParamaters);
         }
         return sanitisedMap;
@@ -247,88 +240,23 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     private void addTopicsConstraint(List<Constraint> constraints, HstRequest request) {
-        List<String> topicIds = topicIds(request);
-        if (topicIds.isEmpty()) {
-            return;
-        }
-
-        List<Constraint> constraintList = new ArrayList<>();
-        for (String topicId : topicIds) {
-            constraintList.add(or(constraint("govscot:topics/@hippo:docbase").equalTo(topicId)));
-        }
-
-        Constraint orConstraint = ConstraintBuilder.or(constraintList.toArray(new Constraint[constraintList.size()]));
-        constraints.add(orConstraint);
-    }
-
-    private List<String> topicIds(HstRequest request) {
-        List<String> topicIds = new ArrayList<>();
         Set<String> topics = splitParameters(request, "topics");
-        try {
-            Session session = request.getRequestContext().getSession();
-
-            Node topicsNode = session.getNode("/content/documents/govscot/topics");
-
-            if (topicsNode == null) {
-                return Collections.emptyList();
-            }
-
-            populateTopics(topicIds, topicsNode, topics);
-
-            return topicIds;
-        } catch (RepositoryException e) {
-            throw new HstComponentException("Failed to get topics", e);
+        if (!topics.isEmpty()) {
+            Constraint constraint = ConstraintUtils.topicsConstraint(topics);
+            constraints.add(constraint);
         }
     }
 
-    private void populateTopics(List<String> topicIds, Node topicsNode, Set<String> topics) throws RepositoryException {
-        try {
-            HstQuery query = HstQueryBuilder.create(topicsNode)
-                    .ofTypes(Topic.class, Issue.class)
-                    .orderByAscending(GOVSCOT_TITLE)
-                    .build();
-
-            HstQueryResult result = query.execute();
-            HippoBeanIterator hippoBeans = result.getHippoBeans();
-
-            while (hippoBeans.hasNext()) {
-                Node topicNode = hippoBeans.nextHippoBean().getNode();
-
-                if (isRequired(topicNode, topics)) {
-                    topicIds.add(topicNode.getParent().getIdentifier());
-                }
-            }
-        } catch (QueryException e) {
-            LOG.error("Failed to get topics", e);
-        }
-    }
-
-    private void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
+    void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
         // check for publication type constraints in both the request query parameters and the component parameters
         Set<String> publicationTypeQueryParams = splitParameters(request, PUBLICATION_TYPES);
         Set<String> publicationTypeComponentParams = SiteUtils.parseCommaSeparatedValueAsSet(paramInfo.getPublicationTypes());
-
-        if (publicationTypeQueryParams.isEmpty() && publicationTypeComponentParams.isEmpty()) {
-            return;
+        Collection<String> publicationTypes = !publicationTypeQueryParams.isEmpty()
+                ? publicationTypeQueryParams
+                :  publicationTypeComponentParams;
+        if (!publicationTypes.isEmpty()) {
+            constraints.add(ConstraintUtils.publicationTypeConstraint(publicationTypes));
         }
-
-        if (!publicationTypeQueryParams.isEmpty()){
-            buildConstraint(constraints, publicationTypeQueryParams);
-        }
-
-        if (!publicationTypeComponentParams.isEmpty()){
-            buildConstraint(constraints, publicationTypeComponentParams);
-        }
-    }
-
-    private void buildConstraint(List<Constraint> constraints, Set<String> params) {
-        List<Constraint> queryConstraintList = new ArrayList<>();
-        for (String typeId : params) {
-            queryConstraintList.add(or(constraint("govscot:publicationType").equalTo(typeId)));
-        }
-
-        Constraint orConstraint = ConstraintBuilder.or(queryConstraintList.toArray(new Constraint[queryConstraintList.size()]));
-        constraints.add(orConstraint);
     }
 
     private String param(HstRequest request, String param) {
@@ -344,16 +272,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         }
         String [] topicTitleArray = parameters.split("\\;");
         return new HashSet<>(asList(topicTitleArray));
-    }
-
-    private boolean isRequired(Node topicNode, Set<String> requiredTitles) throws RepositoryException {
-        String title = nodeTitle(topicNode);
-        return requiredTitles.contains(title);
-    }
-
-    private String nodeTitle(Node node) throws RepositoryException {
-        Property titleProperty = node.getProperty(GOVSCOT_TITLE);
-        return titleProperty.getString();
     }
 
     private void addDateConstraint(List<Constraint> constraints, HstRequest request, String searchField) {
