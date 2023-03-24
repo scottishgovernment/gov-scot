@@ -9,9 +9,6 @@ import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.core.component.HstComponentException;
-import org.hippoecm.hst.core.component.HstRequest;
-import org.hippoecm.repository.util.DateTools;
-import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.Issue;
@@ -24,8 +21,6 @@ import javax.jcr.Session;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.apache.commons.lang3.StringUtils.isAnyBlank;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.and;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 import static scot.gov.www.components.FilteredResultsComponent.GOVSCOT_TITLE;
@@ -33,6 +28,10 @@ import static scot.gov.www.components.FilteredResultsComponent.GOVSCOT_TITLE;
 public class ConstraintUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ConstraintUtils.class);
+
+    private ConstraintUtils() {
+        // hide public constructor
+    }
 
     public static Constraint topicsConstraint(Collection<String> topics) {
         List<String> topicIds = topicIds(topics);
