@@ -54,7 +54,7 @@ public class RedirectValidatorTest {
         assertTrue(sut.validTo(withTo("/localpathUppercaseChars/")));
         assertTrue(sut.validTo(withTo("/localpath?with=param")));
         assertTrue(sut.validTo(withTo("/localpathWithFilename.pdf")));
-
+        assertTrue(sut.validTo(withTo("/pubications/page/#anchor")));
         assertTrue(sut.validTo(withTo("https://www.google.com/")));
         assertTrue(sut.validTo(withTo("https://www.google.com/?q=searchterm")));
     }
@@ -74,7 +74,7 @@ public class RedirectValidatorTest {
     }
 
     @Test
-    public void invalidFromReturnsViloation() {
+    public void invalidFromReturnsViolation() {
         // ARRANGE
         Redirect redirect = new Redirect();
         redirect.setFrom("invalidfrom");

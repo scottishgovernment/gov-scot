@@ -180,26 +180,6 @@ public class RedirectsResourceTest {
         assertEquals(500, response.getStatus());
     }
 
-    //
-//
-//    @DELETE
-//    @Path("{path: .+}")
-//    @Produces({ MediaType.APPLICATION_JSON })
-//    public Response delete() {
-//        String path = uriInfo.getPathParameters().getFirst("path");
-//        try {
-//            boolean deleted = redirectsRepository.deleteRedirect(path);
-//            if (deleted) {
-//                return Response.status(Response.Status.OK).entity("deleted").build();
-//            } else {
-//                return Response.status(Response.Status.NOT_FOUND).entity("no redirect found").build();
-//            }
-//        } catch (RepositoryException e) {
-//            LOG.error("Unexpected exception deleting redirect", e);
-//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-//                    .entity("Unexpected exception deleting redirect " + path).build();
-//        }
-//    }
     Redirect invalidRedirect() {
         Redirect redirect = new Redirect();
         redirect.setTo("invalidto");

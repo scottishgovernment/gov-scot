@@ -38,7 +38,18 @@ public class RedirectValidator extends UrlValidator {
     }
 
     boolean validTo(Redirect redirect) {
-        return isValid(redirect.getTo()) || isValidPath(redirect.getTo());
+        if (isBlank(redirect.getTo())) {
+            return false;
+        }
+
+        if (isValid(redirect.getTo())) {
+            return true;
+        }
+
+        String [] pathAndAnchor = redirect.getTo().split("#");
+        return pathAndAnchor.length == 1
+                ? isValidPath(pathAndAnchor[0])
+                : isValidFragment(pathAndAnchor[1]);
     }
 
 }
