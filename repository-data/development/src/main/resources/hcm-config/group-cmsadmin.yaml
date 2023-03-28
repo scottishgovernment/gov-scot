@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/cmsadmin:
+      hipposys:members: [cmsadmin-user]

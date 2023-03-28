@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/asd-stats-embargo-group-2:
+      hipposys:members: [stats-embargo-user-2]

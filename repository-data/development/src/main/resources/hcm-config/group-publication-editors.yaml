@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/publication-editors:
+      hipposys:members: [general-embargo-user, stats-embargo-user-2]

@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/topics-issues-editors:
+      hipposys:members: [general-embargo-user]
