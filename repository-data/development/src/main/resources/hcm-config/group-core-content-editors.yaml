@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/core-content-editors:
+      hipposys:members: [general-embargo-user]
