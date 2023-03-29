@@ -82,11 +82,19 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
 
         String addSlash(String linkStr) {
             int questionMarkIndex = linkStr.indexOf('?');
-            if (questionMarkIndex == -1) {
-                return linkStr + "/";
+            if (questionMarkIndex != -1) {
+                return slashBeforeChar(linkStr, '?');
             }
+            return slashBeforeChar(linkStr, '#');
+        }
 
-            return contains(linkStr, "/?") ? linkStr : StringUtils.replace(linkStr, "?", "/?");
+        String slashBeforeChar(String url, char ch) {
+            int index = url.indexOf(ch);
+            if (index == -1) {
+                return url + "/";
+            }
+            String slashCh = "/" + ch;
+            return contains(url, slashCh) ? url : StringUtils.replace(url, "#", slashCh);
         }
 
         @Override
