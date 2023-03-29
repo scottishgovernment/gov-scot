@@ -15,16 +15,19 @@
                             <dt class="ds_metadata__key">Published</dt>
                             <dd class="ds_metadata__value"><@fmt.formatDate value=document.publicationDate.time type="both" pattern="dd MMMM yyyy HH:mm"/></dd>
                         </div>
-                        <div class="ds_metadata__item">
-                            <dt class="ds_metadata__key">Part of</dt>
 
-                            <dd class="ds_metadata__value">
-                                <#list document.topics as topic>
-                                    <@hst.link var="link" hippobean=topic/>
-                                    <a data-navigation="topic-${topic?index + 1}" href="${link}" class="sg-meta__topic">${topic.title}</a><#sep>, </#sep>
-                                </#list>
-                            </dd>
-                        </div>
+                        <#if document.topics?size gt 0>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Part of</dt>
+
+                                <dd class="ds_metadata__value">
+                                    <#list document.topics as topic>
+                                        <@hst.link var="link" hippobean=topic/>
+                                        <a data-navigation="topic-${topic?index + 1}" href="${link}" class="sg-meta__topic">${topic.title}</a><#sep>, </#sep>
+                                    </#list>
+                                </dd>
+                            </div>
+                        </#if>
                     </dl>
                  </header>
             </div>
