@@ -2,26 +2,14 @@
 <#include "../../include/imports.ftl">
 
 <@hst.headContribution category="googleTagManager">
-<!-- Google Tag Manager (GTM) -->
-<script id="gtm-datalayer">
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'gtm.whitelist': ['google', 'jsm', 'lcl'],
-            <#if gtmName??>'format' : '${gtmName?js_string}',</#if>
-            <#if gtmId??>'siteid' : '${gtmId?js_string}'</#if>
-    });
-</script>
-</@hst.headContribution>
-
-<@hst.headContribution category="googleTagManager">
-<script id="gtm-script">
-    initGTM = function () {
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl+'<#if gtmAuth?has_content>&amp;gtm_auth=${gtmAuth}</#if><#if gtmEnv?has_content>&amp;gtm_preview=${gtmEnv}&amp;gtm_cookies_win=x</#if>';f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${gtmContainerId}');
-    }
+<script id="gtm-script"
+    src='<@hst.webfile path="assets/scripts/gtm.js"/>'
+    data-containerId="${gtmContainerId?js_string}"
+    <#if gtmEnv?has_content>data-env="${gtmEnv?js_string}"</#if>
+    <#if gtmAuth?has_content>data-auth="${gtmAuth?js_string}"</#if>
+    <#if gtmName??>data-format="${gtmName?js_string}"</#if>
+    <#if gtmId??>data-siteid="${gtmId?js_string}"</#if>
+>
 </script>
 </@hst.headContribution>
 

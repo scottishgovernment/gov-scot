@@ -1,11 +1,12 @@
 const path = require('path');
-const aliasPath = '../vendor/';
 
 const commonItems = {
     mode: 'development',
 
     entry: {
         'global':                       path.resolve(__dirname, './src/scripts/govscot/global.js'),
+        'gtm':                          path.resolve(__dirname, './src/scripts/govscot/gtm.js'),
+        'dataLayer':                    path.resolve(__dirname, './src/scripts/govscot/datalayer.js'),
 
         // format-specific entry point)s
         'aboutstats':                   path.resolve(__dirname, './src/scripts/govscot/format.aboutstats.js'),
