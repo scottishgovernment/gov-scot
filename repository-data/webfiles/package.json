@@ -10,14 +10,14 @@
   "scripts": {
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
-    "sass": "node_modules/.bin/sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed",
-    "webpack": "./node_modules/.bin/webpack -p --config ./webpack.config.js",
-    "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
+    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed",
+    "webpack": "webpack -p --config ./webpack.config.js",
+    "test": "karma start ./test/karma.conf.js"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "@scottish-government/pattern-library": "^0.0.334",
+    "@scottish-government/pattern-library": "^0.0.337",
     "babel-loader": "^8.0.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",

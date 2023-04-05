@@ -4,6 +4,12 @@
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 <#include "../../include/imports.ftl">
 
+<#function insertWbrAtCamelCaseWordBreaks(s)>
+  <#return s
+    ?replace('([a-z])([A-Z])', '$1<wbr>$2', 'r')
+    ?replace('(.)@(.)', '$1<wbr>@$2', 'r')>
+</#function>
+
 <#if contactInformation??>
 <div class="ds_contact-details">
 
@@ -25,10 +31,9 @@
         <#if contactInformation.email?has_content>
             <div class="ds_contact-details__item">
                 <dt>Email</dt>
-                <dd><a href="mailto:${contactInformation.email}">${contactInformation.email}</a></dd>
+                <dd><a class="ds_break-word" href="mailto:${contactInformation.email}">${insertWbrAtCamelCaseWordBreaks(contactInformation.email)?no_esc}</a></dd>
             </div>
         </#if>
-
 
         <#if contactInformation.facebook?has_content || contactInformation.twitter?has_content || contactInformation.flickr?has_content || contactInformation.youtube?has_content || contactInformation.blog?has_content>
         <div class="ds_contact-details__item  ds_contact-details__social">
