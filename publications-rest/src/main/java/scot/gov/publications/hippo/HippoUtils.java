@@ -39,7 +39,23 @@ public class HippoUtils {
 
     boolean isPublished(Node node) throws RepositoryException {
         return "published".equals(node.getProperty(HIPPOSTD_STATE).getString())
-                && "live".equals(node.getProperty("hippostd:stateSummary").getString());
+                && contains(node.getProperty("hippo:availability").getValues(), "live");
+    }
+
+    public boolean contains(Node node, String property, String value) throws RepositoryException {
+        if (!node.hasProperty(property)) {
+            return false;
+        }
+        Value [] values = node.getProperty(property).getValues();
+        return contains(values, value);
+    }
+    public boolean contains(Value [] values, String str) throws RepositoryException {
+        for (Value value : values) {
+            if (str.equals(value.getString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Node getVariant(Node node) throws RepositoryException {
@@ -272,4 +288,32 @@ public class HippoUtils {
         mirror.setProperty("hippo:docbase", handle.getIdentifier());
     }
 
+    public long executeXpathQuery(
+            Session session,
+            String query,
+            ThrowingConsumer consumer) throws RepositoryException {
+        return executeQuery(session, query, Query.XPATH, node -> true, consumer);
+    }
+
+    public long executeQuery(
+            Session session,
+            String query,
+            String queryType,
+            ThrowingPredicate predicate,
+            ThrowingConsumer consumer) throws RepositoryException {
+        Query queryObj = session
+                .getWorkspace()
+                .getQueryManager()
+                .createQuery(query, queryType);
+        queryObj.setLimit(250000);
+        QueryResult result = queryObj.execute();
+        NodeIterator nodeIt = result.getNodes();
+        while (nodeIt.hasNext()) {
+            Node node = nodeIt.nextNode();
+            if (predicate.test(node)) {
+                consumer.accept(node);
+            }
+        }
+        return nodeIt.getSize();
+    }
 }

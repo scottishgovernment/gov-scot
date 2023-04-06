@@ -13,7 +13,7 @@ import javax.jcr.RepositoryException;
  */
 public class UrlSource {
 
-    static final String URL_BASE = "https://www.gov.scot/";
+    public static final String URL_BASE = "https://www.gov.scot/";
 
     private static final String PAGES = "pages";
 
@@ -22,7 +22,6 @@ public class UrlSource {
     String policyUrl(Node node) throws RepositoryException {
         String path = StringUtils.substringAfter(node.getParent().getPath(), "/content/documents/govscot/");
         path = StringUtils.substringBefore(path, "/index");
-
         return new StringBuilder(URL_BASE).append(path).append('/').toString();
     }
 
@@ -31,19 +30,22 @@ public class UrlSource {
     }
 
     String publicationUrl(Node publication, Node variant, HippoWorkflowEvent event) throws RepositoryException {
-        String publicationUrl = slugUrl("publications", publication);
+        return publicationUrl(publication, variant, event.action(), event.subjectPath());
+    }
+
+    String publicationUrl(Node publication) throws RepositoryException {
+        return slugUrl("publications", publication);
+    }
+
+    String publicationUrl(Node publication, Node variant, String action, String path) throws RepositoryException {
+        String publicationUrl = publicationUrl(publication);
 
         if (variant.isNodeType("govscot:Publication")) {
             return publicationUrl;
         }
 
         if (variant.isNodeType("govscot:PublicationPage")) {
-            // if this is the first published non contents page then use the publication url
-            return isFirstVisiblePage(variant, "publish".equals(event.action())) ?
-                    publicationUrl :
-                    new StringBuilder(publicationUrl)
-                            .append(PAGES).append('/').append(variant.getName()).append('/')
-                            .toString();
+            return publicationPageUrl(publication, variant, action);
         }
 
         if (variant.isNodeType("govscot:DocumentInformation")) {
@@ -59,7 +61,7 @@ public class UrlSource {
         }
 
         if (variant.isNodeType("govscot:ComplexDocumentSection")) {
-            String chapterPath = StringUtils.substringAfter(event.subjectPath(), "/chapters/");
+            String chapterPath = StringUtils.substringAfter(path, "/chapters/");
             return new StringBuilder(publicationUrl).append(chapterPath).append('/').toString();
         }
 
@@ -67,6 +69,18 @@ public class UrlSource {
         throw new IllegalArgumentException("Unexpected node type trying to maintain search journal :"
                 + variant.getPrimaryNodeType().getName());
     }
+
+    String publicationPageUrl(Node publication, Node page, String action) throws RepositoryException {
+        String publicationUrl = slugUrl("publications", publication);
+        // if this is the first published non contents page then use the publication url
+        return isFirstVisiblePage(page, "publish".equals(action)) ?
+                publicationUrl :
+                new StringBuilder(publicationUrl)
+                        .append(PAGES).append('/').append(page.getName()).append('/')
+                        .toString();
+    }
+
+
 
     boolean hasPages(Node publication) throws RepositoryException {
         Node publicationFolder = publication.getParent().getParent();

@@ -26,6 +26,7 @@ import scot.gov.www.searchjournal.funnelback.*;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
@@ -39,7 +40,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     private int saveInterval = 100;
 
     // the maximum number of journal entries to fetch each time the job runs
-    private int maxJournalEntriesToFetch = 5000;
+    private int maxJournalEntriesToFetch = 2000;
 
     private CloseableHttpClient httpClient = HttpClientSource.newClient();
 
@@ -59,13 +60,11 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
 
         Session session = context.createSystemSession();
-
-        LOG.info("Starting FunnelbackReconciliationLoop");
         Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
-
         try {
             FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
             if (featureFlag.isEnabled()) {
+                LOG.info("Starting FunnelbackReconciliationLoop");
                 fetchAndProcessPendingJournalEntries(funnelback, session, featureFlag);
             }
         } catch (RepositoryException e) {
@@ -121,7 +120,9 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             return;
         }
 
-        LOG.info("Journal position is {}", journalPosition);
+        GregorianCalendar cal = (GregorianCalendar) journalPosition;
+        ZonedDateTime zdt = cal.toZonedDateTime();
+
         List<SearchJournalEntry> pendingEntries = journal.getPendingEntries(journalPosition, maxJournalEntriesToFetch);
         if (pendingEntries.isEmpty()) {
             LOG.info("No journal entries to process");
@@ -224,21 +225,17 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         request.setHeader("X-Forwarded-Host", "www.gov.scot");
         CloseableHttpResponse response = httpClient.execute(request);
 
-        // if this is not a OK response then LOG and return null
-        if (response.getStatusLine().getStatusCode() != 200) {
-            LOG.error("{} fetching {}", response.getStatusLine().getStatusCode(), localUrl);
-            return null;
-        }
-
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
         try {
-            HttpEntity entity = response.getEntity();
-            return EntityUtils.toString(entity);
+            // if this is not a OK response then LOG and return null
+            if (response.getStatusLine().getStatusCode() != 200) {
+                LOG.error("{} fetching {}", response.getStatusLine().getStatusCode(), localUrl);
+                return null;
+            } else {
+                HttpEntity entity = response.getEntity();
+                return EntityUtils.toString(entity);
+            }
         } finally {
             response.close();
-            stopWatch.stop();
-            LOG.debug("fetching {}, took {}", localUrl, stopWatch.getTime());
         }
     }
 

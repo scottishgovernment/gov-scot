@@ -25,8 +25,6 @@ public class DocumentHelper {
         this.nodeFactory = new HippoNodeFactory(session);
     }
 
-    // TODO: embargo stuff?
-
     public void ensurePublicationState(
             DocumentManager documentManager,
             Node node,

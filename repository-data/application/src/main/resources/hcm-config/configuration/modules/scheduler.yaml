@@ -14,18 +14,34 @@ definitions:
           jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/1 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2023-03-23T16:46:00Z
+          hipposched:nextFireTime: 2023-03-29T11:19:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SearchJournalCleanupJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
       hipposched:attributeValues: []
-      hipposched:enabled: false
-      hipposched:repositoryJobClass: scot.gov.www.searchjournal.SearchJournalCleanupJob
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.searchjournal.JournalPopulationLoop
       /hipposched:triggers:
         jcr:primaryType: hipposched:triggers
-        /daily:
+        /every5Mins:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
           jcr:uuid: 535ff94d-e234-43c2-8158-71df0ee91196
-          hipposched:cronExpression: 0 30 9 * * ?
+          hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
+          hipposched:nextFireTime: 2023-03-29T11:20:00+01:00
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationJob:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.searchjournal.JournalPopulationJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: bab7b6ec-1d9d-4474-990e-fafdc2b20e67
+          hipposched:cronExpression: 0 0/2 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2023-03-29T11:20:00+01:00

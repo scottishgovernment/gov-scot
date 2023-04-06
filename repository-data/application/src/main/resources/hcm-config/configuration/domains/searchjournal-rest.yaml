@@ -1,0 +1,21 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/searchjournal-rest:
+      jcr:primaryType: hipposys:domain
+      /restuser:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [cmsadmin]
+        hipposys:role: restuser
+      /searchjournalrest-module:
+        jcr:primaryType: hipposys:domainrule
+        /searchjournalrest-module:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /hippo:configuration/hippo:modules/searchjournalrest

@@ -36,6 +36,11 @@ public class HippoUtils {
     }
 
     @FunctionalInterface
+    public interface ThrowingConsumer {
+        void accept(Node t) throws RepositoryException;
+    }
+
+    @FunctionalInterface
     public interface ThrowingPredicate {
         boolean test(Node t) throws RepositoryException;
     }
