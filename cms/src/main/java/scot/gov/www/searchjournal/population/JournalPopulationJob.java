@@ -19,13 +19,17 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.lock.Lock;
+import javax.jcr.lock.LockManager;
 import java.util.*;
 
 public class JournalPopulationJob implements RepositoryJob {
 
-    private static final Logger LOG = LoggerFactory.getLogger(scot.gov.www.searchjournal.population.JournalPopulationJob.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JournalPopulationJob.class);
 
     private static final String PAGES = "pages";
+
+    private static final String LOCK_PATH = "/content/journal-population-lock";
 
     private HippoUtils hippoUtils = new HippoUtils();
 
@@ -33,27 +37,52 @@ public class JournalPopulationJob implements RepositoryJob {
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
 
         Session session = context.createSystemSession();
-        FeatureFlag featureFlag = new FeatureFlag(session, "PublicationsJournalPopulationJob");
-        if (!featureFlag.isEnabled()) {
-            LOG.info("PublicationsJournalPopulationJob disabled");
-            session.logout();
-            return;
-        }
-
-        LOG.info("PublicationsJournalPopulationJob enabled ...");
+        Lock lock = null;
         try {
+            FeatureFlag featureFlag = new FeatureFlag(session, "PublicationsJournalPopulationJob");
+            if (!featureFlag.isEnabled()) {
+                LOG.info("PublicationsJournalPopulationJob disabled");
+                return;
+            }
+
+            lock = getLock(session);
+            if (lock == null) {
+                LOG.info("PublicationsJournalPopulationJob locked");
+                return;
+            }
+
+            LOG.info("PublicationsJournalPopulationJob running ...");
             resetJournalPosition(context);
-            populate(session, context);
+            populate(session, lock, context);
             deactivateJob(context);
         } catch (FunnelbackException e) {
             LOG.error("FunnelbackException", e);
         } catch (RepositoryException e) {
             LOG.error("RepositoryException", e);
         } finally {
+            if (lock != null) {
+                session.getWorkspace().getLockManager().unlock(LOCK_PATH);
+            }
             session.logout();
         }
     }
 
+    Lock getLock(Session session) throws RepositoryException {
+        LockManager lockManager = session.getWorkspace().getLockManager();
+        if (lockManager.isLocked(LOCK_PATH)) {
+            Lock lock = lockManager.getLock(LOCK_PATH);
+            LOG.info("lock remaining {}", lock.getSecondsRemaining());
+            return null;
+        }
+
+        // the lock timeout is set to 5 minutes, so we need to call refresh to ensure it is maintained
+        return lockManager.lock(
+                LOCK_PATH,
+                false,
+                false,
+                5 * 60,
+                "Journal population job");
+    }
     void resetJournalPosition(RepositoryJobExecutionContext context) throws FunnelbackException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date(0));
@@ -69,8 +98,9 @@ public class JournalPopulationJob implements RepositoryJob {
         session.save();
     }
 
-    void populate(Session session, RepositoryJobExecutionContext context) throws RepositoryException {
+    void populate(Session session, Lock lock, RepositoryJobExecutionContext context) throws RepositoryException {
         for (String path : getPublicationMonthFolders(session)) {
+            lock.refresh();
             populatePublicationsFolder(path, context);
         }
     }
@@ -81,7 +111,6 @@ public class JournalPopulationJob implements RepositoryJob {
                 session,
                 "/jcr:root/content/documents/govscot/publications/*/*/element(*, hippostd:folder)",
                 n -> paths.add(n.getPath()));
-        session.logout();
         LOG.info("found {} paths", paths.size());
         return paths;
     }
