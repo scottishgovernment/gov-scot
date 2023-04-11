@@ -122,6 +122,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
         GregorianCalendar cal = (GregorianCalendar) journalPosition;
         ZonedDateTime zdt = cal.toZonedDateTime();
+        LOG.info("Journal position is {}", zdt.toString());
 
         List<SearchJournalEntry> pendingEntries = journal.getPendingEntries(journalPosition, maxJournalEntriesToFetch);
         if (pendingEntries.isEmpty()) {
