@@ -6,7 +6,7 @@ const commonItems = {
     entry: {
         'global':                       path.resolve(__dirname, './src/scripts/govscot/global.js'),
         'gtm':                          path.resolve(__dirname, './src/scripts/govscot/gtm.js'),
-        'dataLayer':                    path.resolve(__dirname, './src/scripts/govscot/datalayer.js'),
+        'datalayer':                    path.resolve(__dirname, './src/scripts/govscot/datalayer.js'),
 
         // format-specific entry point)s
         'aboutstats':                   path.resolve(__dirname, './src/scripts/govscot/format.aboutstats.js'),
