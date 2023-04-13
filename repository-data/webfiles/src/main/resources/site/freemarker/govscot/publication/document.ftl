@@ -1,6 +1,7 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <#include "../common/macros/format-file-size.ftl">
+<#include "../common/macros/lang-attributes.ftl">
 
 <#if document??>
 

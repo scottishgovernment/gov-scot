@@ -71,7 +71,7 @@
         <meta name="dc.description" content="${document.summary}"/>
     </@hst.headContribution>
 
-    <#if document.tags?size gt 0>
+    <#if document.tags??>
         <@hst.headContribution category="dcMeta">
             <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
         </@hst.headContribution>
@@ -80,7 +80,7 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Policy"/>
     </@hst.headContribution>
-    
+
     <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
     <@hst.headContribution category="dcMeta">
         <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>

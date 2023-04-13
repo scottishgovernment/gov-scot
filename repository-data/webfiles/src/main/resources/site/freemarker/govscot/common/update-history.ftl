@@ -1,4 +1,7 @@
 <#ftl output_format="HTML">
+
+<#include "macros/lang-attributes.ftl">
+
 <div <@revertlang document /> id="history">
     <dl class="ds_metadata">
         <#if document.publicationDate??>
