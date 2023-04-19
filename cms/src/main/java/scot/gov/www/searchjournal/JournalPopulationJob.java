@@ -1,6 +1,5 @@
-package scot.gov.www.searchjournal.population;
+package scot.gov.www.searchjournal;
 
-import org.apache.commons.lang3.StringUtils;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import scot.gov.publishing.searchjounal.FeatureFlag;
 import scot.gov.publishing.searchjounal.FunnelbackCollection;
 import scot.gov.publishing.searchjounal.SearchJournal;
 import scot.gov.publishing.searchjounal.SearchJournalEntry;
-import scot.gov.www.searchjournal.UrlSource;
 import scot.gov.www.searchjournal.funnelback.Funnelback;
 import scot.gov.www.searchjournal.funnelback.FunnelbackException;
 import scot.gov.www.searchjournal.funnelback.FunnelbackFactory;
@@ -19,9 +17,10 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.lock.Lock;
-import javax.jcr.lock.LockManager;
+
 import java.util.*;
+
+import static org.apache.commons.lang3.StringUtils.substringAfter;
 
 public class JournalPopulationJob implements RepositoryJob {
 
@@ -29,60 +28,37 @@ public class JournalPopulationJob implements RepositoryJob {
 
     private static final String PAGES = "pages";
 
-    private static final String LOCK_PATH = "/content/journal-population-lock";
-
     private HippoUtils hippoUtils = new HippoUtils();
 
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
 
         Session session = context.createSystemSession();
-        Lock lock = null;
         try {
-            FeatureFlag featureFlag = new FeatureFlag(session, "PublicationsJournalPopulationJob");
-            if (!featureFlag.isEnabled()) {
-                LOG.info("PublicationsJournalPopulationJob disabled");
-                return;
+            FeatureFlag featureFlag = new FeatureFlag(session, "JournalPopulationJob");
+            if (featureFlag.isEnabled()) {
+                LOG.info("PublicationsJournalPopulationJob running");
+                populate(session, context);
+                resetJournalPosition(context);
+                deactivateJob(context);
+                activateReconciliationJob(context);
+                LOG.info("PublicationsJournalPopulationJob finished");
             }
-
-            lock = getLock(session);
-            if (lock == null) {
-                LOG.info("PublicationsJournalPopulationJob locked");
-                return;
-            }
-
-            LOG.info("PublicationsJournalPopulationJob running ...");
-            resetJournalPosition(context);
-            populate(session, lock, context);
-            deactivateJob(context);
         } catch (FunnelbackException e) {
-            LOG.error("FunnelbackException", e);
+            LOG.error("FunnelbackExceptionin JournalPopulationJob", e);
         } catch (RepositoryException e) {
-            LOG.error("RepositoryException", e);
+            LOG.error("RepositoryException in JournalPopulationJob", e);
         } finally {
-            if (lock != null) {
-                session.getWorkspace().getLockManager().unlock(LOCK_PATH);
-            }
             session.logout();
         }
     }
 
-    Lock getLock(Session session) throws RepositoryException {
-        LockManager lockManager = session.getWorkspace().getLockManager();
-        if (lockManager.isLocked(LOCK_PATH)) {
-            Lock lock = lockManager.getLock(LOCK_PATH);
-            LOG.info("lock remaining {}", lock.getSecondsRemaining());
-            return null;
+    void populate(Session session, RepositoryJobExecutionContext context) throws RepositoryException {
+        for (String path : getPublicationMonthFolders(session)) {
+            populatePublicationsFolder(path, context);
         }
-
-        // the lock timeout is set to 5 minutes, so we need to call refresh to ensure it is maintained
-        return lockManager.lock(
-                LOCK_PATH,
-                false,
-                false,
-                5 * 60,
-                "Journal population job");
     }
+
     void resetJournalPosition(RepositoryJobExecutionContext context) throws FunnelbackException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date(0));
@@ -93,16 +69,17 @@ public class JournalPopulationJob implements RepositoryJob {
     void deactivateJob(RepositoryJobExecutionContext context) throws RepositoryException {
         LOG.info("Deactivating JournalPopulationJob");
         Session session = context.createSystemSession();
-        FeatureFlag featureFlag = new FeatureFlag(session, "PublicationsJournalPopulationJob");
+        FeatureFlag featureFlag = new FeatureFlag(session, "JournalPopulationJob");
         featureFlag.setEnabled(false);
         session.save();
     }
 
-    void populate(Session session, Lock lock, RepositoryJobExecutionContext context) throws RepositoryException {
-        for (String path : getPublicationMonthFolders(session)) {
-            lock.refresh();
-            populatePublicationsFolder(path, context);
-        }
+    void activateReconciliationJob(RepositoryJobExecutionContext context) throws RepositoryException {
+        LOG.info("Activating FunnelbackReconciliationLoop");
+        Session session = context.createSystemSession();
+        FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
+        featureFlag.setEnabled(true);
+        session.save();
     }
 
     List<String> getPublicationMonthFolders(Session session) throws RepositoryException {
@@ -172,14 +149,16 @@ public class JournalPopulationJob implements RepositoryJob {
         journal.record(publishEntry(publicationUrl, collection, timestamp));
         Node folder = publication.getParent().getParent();
 
-        if (publication.isNodeType("govscot:Publication")) {
-            boolean addedPages = processPublicationPages(publication, slug, collection, timestamp, journal);
-            if (addedPages && hasDocuments(folder)) {
-                String url = publicationUrl + "documents/";
-                journal.record(publishEntry(url, collection, timestamp));
-            }
-        } else {
+        boolean addedPages = false;
+        if (publication.isNodeType("govscot:ComplexDocument2")) {
             processComplexDocumentChapters(publication, slug, collection, timestamp, journal);
+            addedPages = true;
+        } else {
+            addedPages = processPublicationPages(publication, slug, collection, timestamp, journal);
+        }
+        if (addedPages && hasDocuments(folder)) {
+            String url = publicationUrl + "documents/";
+            journal.record(publishEntry(url, collection, timestamp));
         }
     }
 
@@ -193,7 +172,13 @@ public class JournalPopulationJob implements RepositoryJob {
     }
 
     boolean hasDocuments(Node folder) throws RepositoryException {
-        return folder.hasNode("documents") && folder.getNode("documents").getNodes().hasNext();
+        if (!folder.hasNode("documents")) {
+            return false;
+        }
+
+        Node documents = folder.getNode("documents");
+        Node firstPublishedDoc = hippoUtils.find(documents.getNodes(), handle -> publishedVariant(handle) != null);
+        return firstPublishedDoc != null;
     }
 
     boolean processPublicationPages(Node publication, String slug, String collection, Calendar timestamp, SearchJournal journal) throws RepositoryException {
@@ -220,6 +205,7 @@ public class JournalPopulationJob implements RepositoryJob {
         }
         return addedPages;
     }
+
     boolean publishedNonContentPage(Node handle) throws RepositoryException {
         Node publishedVariant = publishedVariant(handle);
         return publishedVariant != null && !isContentsPage(handle);
@@ -233,26 +219,23 @@ public class JournalPopulationJob implements RepositoryJob {
 
     void processComplexDocumentChapters(Node publication, String slug, String collection, Calendar timestamp, SearchJournal journal) throws RepositoryException {
         Node pagesFolder = publication.getParent().getParent().getNode("chapters");
-        NodeIterator it = pagesFolder.getNodes();
-        while (it.hasNext()) {
-            Node folder = it.nextNode();
-            processComplexDocumentChapterFolder(folder, slug, collection, timestamp, journal);
-        }
-    }
-
-    void processComplexDocumentChapterFolder(Node folder, String slug, String collection, Calendar timestamp, SearchJournal journal) throws RepositoryException {
-        hippoUtils.apply(folder.getNodes(),
-                chapterHandle -> indexChapter(chapterHandle, slug, collection, timestamp, journal));
+        hippoUtils.apply(pagesFolder.getNodes(),
+                folder -> hippoUtils.apply(folder.getNodes(),
+                    chapterHandle -> indexChapter(chapterHandle, slug, collection, timestamp, journal)));
     }
 
     void indexChapter(Node chapterHandle, String slug, String collection, Calendar timestamp, SearchJournal journal) throws RepositoryException {
+        if (publishedVariant(chapterHandle) == null) {
+            return;
+        }
         String url = chapterUrl(slug, chapterHandle);
         journal.record(publishEntry(url, collection, timestamp));
     }
+
     String chapterUrl(String slug, Node handle) throws RepositoryException {
         String pubUrl = publicationUrl(slug);
         String handlePath = handle.getPath();
-        return pubUrl + "chapters/" + StringUtils.substringAfter(handlePath, "chapters");
+        return pubUrl + substringAfter(handlePath, "chapters/") + "/";
     }
 
     Calendar getTimestamp(Node node) throws RepositoryException {

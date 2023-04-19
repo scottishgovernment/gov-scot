@@ -42,8 +42,6 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     // the maximum number of journal entries to fetch each time the job runs
     private int maxJournalEntriesToFetch = 2000;
 
-    private CloseableHttpClient httpClient = HttpClientSource.newClient();
-
     private RetryPolicy retryPolicy = new RetryPolicy();
 
     private Counter failureCounter = FunnelbackMetricRegistry.getInstance().counter(MetricName.FAILURES.getName());
@@ -60,25 +58,15 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
 
         Session session = context.createSystemSession();
-        Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
         try {
             FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
             if (featureFlag.isEnabled()) {
-                LOG.info("Starting FunnelbackReconciliationLoop");
-                fetchAndProcessPendingJournalEntries(funnelback, session, featureFlag);
+                doExecute(context, session, featureFlag);
             }
         } catch (RepositoryException e) {
             LOG.error("RepositoryException during funnelback reconciliation", e);
             throw e;
-        } catch (FunnelbackException e) {
-            LOG.error("FunnelbackException during funnelback reconciliation", e);
         } finally {
-            funnelback.close();
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-                LOG.error("Failed to close http client", e);
-            }
             session.logout();
         }
     }
@@ -90,6 +78,24 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
 
         return true;
+    }
+
+    void doExecute(RepositoryJobExecutionContext context, Session session, FeatureFlag featureFlag) throws RepositoryException {
+        Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
+        CloseableHttpClient httpClient = HttpClientSource.newClient();
+
+        try {
+            fetchAndProcessPendingJournalEntries(funnelback, httpClient, session, featureFlag);
+        } catch (FunnelbackException e) {
+            LOG.error("FunnelbackException during funnelback reconciliation", e);
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                LOG.error("Failed to close http client", e);
+            }
+            funnelback.close();
+        }
     }
 
     static boolean pingUrlResponding() {
@@ -110,6 +116,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
     void fetchAndProcessPendingJournalEntries(
             Funnelback funnelback,
+            CloseableHttpClient httpClient,
             Session session,
             FeatureFlag featureFlag) throws RepositoryException, FunnelbackException {
 
@@ -134,7 +141,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         Timer.Context timerContext = jobTimer.time();
-        int count = processPendingEntries(pendingEntries, funnelback, journal, featureFlag);
+        int count = processPendingEntries(pendingEntries, funnelback, httpClient, journal, featureFlag);
         timerContext.stop();
         stopWatch.stop();
         LOG.info("reconciliation loop took {} to process {} journal entries", stopWatch.getTime(), count);
@@ -143,8 +150,10 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     int processPendingEntries(
             List<SearchJournalEntry> pendingEntries,
             Funnelback funnelback,
+            CloseableHttpClient httpClient,
             SearchJournal journal,
             FeatureFlag featureFlag) throws FunnelbackException {
+
 
         Map<String, List<SearchJournalEntry>> pendingEntriesByUrl = new HashMap<>();
         for (SearchJournalEntry entry : pendingEntries) {
@@ -165,7 +174,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
                 LOG.info("more recent entries exits for {}, skipping", entry.getUrl());
                 newJournalPosition = entry.getTimestamp();
             } else {
-                processEntry(funnelback, journal, entry);
+                processEntry(funnelback, httpClient, journal, entry);
                 count++;
                 newJournalPosition = entry.getTimestamp();
                 periodicSave(funnelback, newJournalPosition, count);
@@ -181,9 +190,9 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         return entriesForUrl.size() > 1 && entry.getTimestamp().before(mostrecententry.getTimestamp());
     }
 
-    void processEntry(Funnelback funnelback, SearchJournal journal, SearchJournalEntry entry) {
+    void processEntry(Funnelback funnelback, CloseableHttpClient httpClient, SearchJournal journal, SearchJournalEntry entry) {
         try {
-            doProcessEntry(funnelback, entry);
+            doProcessEntry(funnelback, httpClient, entry);
         } catch (IOException e) {
             LOG.error("Failed to fetch HTML for journal entry {} ", entry.getUrl(), e);
             handleFailure(entry, journal);
@@ -193,14 +202,14 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
     }
 
-    void doProcessEntry(Funnelback funnelback, SearchJournalEntry entry) throws IOException, FunnelbackException{
-        LOG.info("processing {} {} {} {}", ((GregorianCalendar)entry.getTimestamp()).toZonedDateTime(), entry.getAction(), entry.getUrl(), entry.getCollection());
+    void doProcessEntry(Funnelback funnelback, CloseableHttpClient httpClient, SearchJournalEntry entry) throws IOException, FunnelbackException{
+        LOG.info("processing {} {} {} {} attempt {}", ((GregorianCalendar)entry.getTimestamp()).toZonedDateTime(), entry.getAction(), entry.getUrl(), entry.getCollection(), entry.getAttempt());
         switch (entry.getAction()) {
             case "depublish":
                 funnelback.depublish(entry.getCollection(), entry.getUrl());
                 break;
             case "publish":
-                String html = getHtml(entry);
+                String html = getHtml(entry, httpClient);
                 if (html != null) {
                     funnelback.publish(entry.getCollection(), entry.getUrl(), html);
                 }
@@ -220,7 +229,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         return StringUtils.replace(url, "https://www.gov.scot/", "http://localhost:8080/site/");
     }
 
-    String getHtml(SearchJournalEntry entry) throws IOException {
+    String getHtml(SearchJournalEntry entry, CloseableHttpClient httpClient) throws IOException {
         String localUrl = getLocalUrl(entry.getUrl());
         HttpGet request = new HttpGet(localUrl);
         request.setHeader("X-Forwarded-Host", "www.gov.scot");
