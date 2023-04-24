@@ -217,6 +217,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         addTopicsConstraint(constraints, request);
         addPublicationTypeConstraint(constraints, request);
         addDateConstraint(constraints, request, searchField);
+        constraints = constraints.stream().filter(Objects::nonNull).collect(toList());
         return and(constraints.toArray(new Constraint[] {}));
     }
 
