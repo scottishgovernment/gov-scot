@@ -25,12 +25,13 @@
 <#if enabled>
 <#if response??>
     <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
-    response.resultPacket.resultsSummary.totalMatching == 0>
-    <section id="search-results" class="ds_search-results">
+    response.resultPacket.resultsSummary.totalMatching == 0 &&
+    !(response.curator.simpleHtmlExhibits)?has_content &&
+    !(response.curator.advertExhibits)?has_content>
 
         <h2 class="visually-hidden">Search</h2>
 
-        <div class="ds_no-search-results">
+        <div id="no-search-results" class="ds_no-search-results">
             <p><strong>There are no matching results.</strong></p>
 
             <p>Improve your search results by:</p>
@@ -40,7 +41,18 @@
                 <li>searching for something less specific</li>
             </ul>
         </div>
-    </section>
+    </#if>
+
+    <#if pagination??>
+        <#if pagination.currentPageIndex = 1>
+            <#list response.curator.simpleHtmlExhibits as exhibit>
+                <div class="ds_inset-text">
+                    <div class="ds_inset-text__text">
+                        ${exhibit.messageHtml?no_esc}
+                    </div>
+                </div>
+            </#list>
+        </#if>
     </#if>
 
     <#if (response.resultPacket.qsups)!?size &gt; 0>
@@ -76,12 +88,12 @@
 <#if pagination??>
 <ol start="${response.resultPacket.resultsSummary.currStart?c}" id="search-results-list" class="ds_search-results__list" data-total="${response.resultPacket.resultsSummary.totalMatching?c}">
     <#if pagination.currentPageIndex = 1>
-        <#list response.curator.exhibits as exhibit>
+        <#list response.curator.advertExhibits as exhibit>
             <li class="ds_search-result  ds_search-result--promoted">
                 <div class="ds_search-result--promoted-content">
                     <header class="ds_search-result--promoted-title">Recommended</header>
                     <h3 class="ds_search-result__title">
-                    ${exhibit.category} <a class="ds_search-result__link" href="${exhibit.linkUrl}">${exhibit.titleHtml?no_esc}</a>
+                    <a class="ds_search-result__link" href="${exhibit.linkUrl}">${exhibit.titleHtml?no_esc}</a>
                     </h3>
 
                     <p class="ds_search-result__summary">
@@ -103,6 +115,7 @@
     </#if>
 </ol>
 
+<#if pagination.pages?has_content>
 <nav id="pagination" class="ds_pagination" aria-label="Search result pages">
     <ul class="ds_pagination__list">
         <#if pagination.previous??>
@@ -160,6 +173,8 @@
         </#if>
     </ul>
 </nav>
+</#if>
+
 </#if>
     <#if (response.resultPacket.contextualNavigation.categories)!?size &gt; 0>
     <aside class="ds_search-results__related" aria-labelledby="search-results__related-title">
