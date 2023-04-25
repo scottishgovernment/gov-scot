@@ -20,7 +20,7 @@ definitions:
       hipposched:attributeNames: []
       hipposched:attributeValues: []
       hipposched:enabled: true
-      hipposched:repositoryJobClass: scot.gov.www.searchjournal.JournalPopulationLoop
+      hipposched:repositoryJobClass: scot.gov.www.searchjournal.SearchJournalCleanupJob
       /hipposched:triggers:
         jcr:primaryType: hipposched:triggers
         /every5Mins:
