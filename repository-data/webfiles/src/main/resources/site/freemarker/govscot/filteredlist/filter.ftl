@@ -98,7 +98,7 @@
                             <div class="ds_accordion-item__header">
                                 <h3 id="panel-types-heading" class="ds_accordion-item__title">
                                     Publication type
-                                    <div <#if parameters['publicationTypes']??>data-count="${parameters['publicationTypes']?size}"</#if> class="js-publication-types-count  gov_filters__filter-info  gov_filters__filter-info--count"></div>
+                                    <div class="js-publication-types-count  gov_filters__filter-info  gov_filters__filter-info--count"></div>
                                 </h3>
                                 <span class="ds_accordion-item__indicator"></span>
                                 <label class="ds_accordion-item__label" for="panel-types"><span class="visually-hidden">Show this section</span></label>
@@ -151,7 +151,7 @@
                             <div class="ds_accordion-item__header">
                                 <h3 id="panel-topics-heading" class="ds_accordion-item__title">
                                     Topics
-                                    <div <#if parameters['topics']??>data-count="${parameters['topics']?size}"</#if> class="js-topics-count  gov_filters__filter-info  gov_filters__filter-info--count"></div>
+                                    <div class="js-topics-count  gov_filters__filter-info  gov_filters__filter-info--count"></div>
                                 </h3>
                                 <span class="ds_accordion-item__indicator"></span>
                                 <label class="ds_accordion-item__label" for="panel-topics"><span class="visually-hidden">Show this section</span></label>

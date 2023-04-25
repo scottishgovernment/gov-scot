@@ -68,12 +68,17 @@ function init() {
         if (options.popstate) {that.isPopstate = true;}
         $('#filters').submit();
     };
+    updateFilterCounts(this.gatherParams());
 }
 
 function attachEventHandlers () {
     let that = this;
 
     $('#filters').on('submit', function (event) {
+        if (!that.resultsContainer) {
+            return;
+        }
+
         event.preventDefault();
 
         // do not proceed if there are errors
@@ -122,24 +127,7 @@ function attachEventHandlers () {
             // update count for mobile
             $('.js-search-results-count').html($('#search-results .search-results__count').html());
 
-            const publicationTypesCount = document.querySelector('.js-publication-types-count');
-            const topicsCount = document.querySelector('.js-topics-count');
-
-            if (publicationTypesCount) {
-                if (currentParams.publicationTypes) {
-                    publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
-                } else {
-                    delete publicationTypesCount.dataset.count;
-                }
-            }
-
-            if (topicsCount) {
-                if (currentParams.topics) {
-                    topicsCount.dataset.count = currentParams.topics.length;
-                } else {
-                    delete topicsCount.dataset.count;
-                }
-            }
+            updateFilterCounts(currentParams);
 
             that.govFilters.closeFilters();
 
@@ -385,6 +373,27 @@ function validateDateInput(element) {
     }
 
     return isValid;
+}
+
+function updateFilterCounts(currentParams) {
+    const publicationTypesCount = document.querySelector('.js-publication-types-count');
+    const topicsCount = document.querySelector('.js-topics-count');
+
+    if (publicationTypesCount) {
+        if (currentParams.publicationTypes) {
+            publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
+        } else {
+            delete publicationTypesCount.dataset.count;
+        }
+    }
+
+    if (topicsCount) {
+        if (currentParams.topics) {
+            topicsCount.dataset.count = currentParams.topics.length;
+        } else {
+            delete topicsCount.dataset.count;
+        }
+    }
 }
 
 export default SearchWithFilters;
