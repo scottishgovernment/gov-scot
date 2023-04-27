@@ -37,15 +37,15 @@ public class JournalPopulationJob implements RepositoryJob {
         try {
             FeatureFlag featureFlag = new FeatureFlag(session, "JournalPopulationJob");
             if (featureFlag.isEnabled()) {
-                LOG.info("PublicationsJournalPopulationJob running");
+                LOG.info("JournalPopulationJob running");
                 populate(session, context);
                 resetJournalPosition(context);
                 deactivateJob(context);
                 activateReconciliationJob(context);
-                LOG.info("PublicationsJournalPopulationJob finished");
+                LOG.info("JournalPopulationJob finished");
             }
         } catch (FunnelbackException e) {
-            LOG.error("FunnelbackExceptionin JournalPopulationJob", e);
+            LOG.error("FunnelbackException in JournalPopulationJob", e);
         } catch (RepositoryException e) {
             LOG.error("RepositoryException in JournalPopulationJob", e);
         } finally {
@@ -134,7 +134,7 @@ public class JournalPopulationJob implements RepositoryJob {
     }
 
     boolean isPublication(Node variant) throws RepositoryException {
-         return variant.isNodeType("govscot:Publication");
+        return variant.isNodeType("govscot:Publication");
     }
 
     void processPublicationOrComplexDocument(Node publication, SearchJournal journal) throws RepositoryException {
@@ -176,9 +176,24 @@ public class JournalPopulationJob implements RepositoryJob {
             return false;
         }
 
-        Node documents = folder.getNode("documents");
-        Node firstPublishedDoc = hippoUtils.find(documents.getNodes(), handle -> publishedVariant(handle) != null);
-        return firstPublishedDoc != null;
+        // account for the fact that the documents folder can hav nested folders
+        Node documentsFolder = folder.getNode("documents");
+        return null != hippoUtils.find(documentsFolder.getNodes(),
+                node -> isHandleWithPublishedVariant(node) || isFolderWithPublishedDocs(node));
+    }
+
+    boolean isFolderWithPublishedDocs(Node node) throws RepositoryException {
+        if (!node.isNodeType("hippostd:folder")) {
+            return false;
+        }
+        return null != hippoUtils.find(node.getNodes(), handle -> isHandleWithPublishedVariant(handle));
+    }
+
+    boolean isHandleWithPublishedVariant(Node node) throws RepositoryException {
+        if (!node.isNodeType("hippo:handle")) {
+            return false;
+        }
+        return publishedVariant(node) != null;
     }
 
     boolean processPublicationPages(Node publication, String slug, String collection, Calendar timestamp, SearchJournal journal) throws RepositoryException {
