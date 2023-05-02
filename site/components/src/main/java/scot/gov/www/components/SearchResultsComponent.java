@@ -45,7 +45,7 @@ public class SearchResultsComponent extends EssentialsListComponent {
         int page = getCurrentPage(request);
         HstQueryResult execute = query.execute();
         HippoBeanIterator it = execute.getHippoBeans();
-        new BloomreachSearchService().postProcessResults(it);
+        new BloomreachSearchService().postProcessResults(it, request);
         return getPageableFactory().createPageable(
                 execute.getHippoBeans(),
                 execute.getTotalSize(),

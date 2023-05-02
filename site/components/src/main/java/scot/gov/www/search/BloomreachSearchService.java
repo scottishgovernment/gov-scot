@@ -1,15 +1,17 @@
 package scot.gov.www.search;
 
-import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
+import org.hippoecm.hst.content.beans.query.HstQueryManager;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
+import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
+import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
+import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.util.ContentBeanUtils;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,11 +71,10 @@ public class BloomreachSearchService implements SearchService {
     public SearchResponse performSearch(Search search, SearchSettings searchsettings) {
 
         int offset = (search.getPage() - 1) * PAGE_SIZE;
-
-        HstQuery hstQuery = query(search);
         try {
+            HstQuery hstQuery = query(search);
             HstQueryResult result = hstQuery.execute();
-            postProcessResults(result.getHippoBeans());
+            postProcessResults(result.getHippoBeans(), search.getRequest());
             return response(result, search, offset, search.getRequestUrl());
         } catch (QueryException e) {
             LOG.error("Query exceptions in fallback", e);
@@ -81,17 +82,18 @@ public class BloomreachSearchService implements SearchService {
         }
     }
 
-    public void postProcessResults(HippoBeanIterator it) {
+    public void postProcessResults(HippoBeanIterator it, HstRequest request) {
         while (it.hasNext()) {
             HippoBean item = it.nextHippoBean();
-            postProcessResult(item);
+            postProcessResult(item, request);
         }
     }
 
-    void postProcessResult(HippoBean item) {
+    void postProcessResult(HippoBean item, HstRequest request) {
+
         // populate Collections for Publication type items
         if (item instanceof AttributableContent) {
-            populateCollectionAttribution((AttributableContent) item);
+            populateCollectionAttribution((AttributableContent) item, request);
         }
 
         // populate parent publication for Complex Document sections
@@ -105,20 +107,37 @@ public class BloomreachSearchService implements SearchService {
         }
     }
 
-    public void populateCollectionAttribution(AttributableContent item) {
+    public void populateCollectionAttribution(AttributableContent item, HstRequest request) {
+
         try {
             // find any Collection documents that link to the content bean in this request
-            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
+            HstRequestContext context = request.getRequestContext();
+            HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
+            HstQuery query = createIncomingBeansQuery(
                     item,
-                    RequestContextProvider.get().getSiteContentBaseBean(),
+                    baseBean,
                     "*/*/@hippo:docbase",
                     scot.gov.www.beans.Collection.class,
-                    false);
+                    context.getQueryManager());
             HstQueryResult result = query.execute();
             item.setCollections(collectionsBeans(result));
         } catch (QueryException e) {
             LOG.warn("Unable to get collections for content item {}", item.getTitle(), e);
         }
+    }
+
+    private HstQuery createIncomingBeansQuery(HippoDocumentBean bean,
+                                                    HippoBean scope,
+                                                    String linkPath,
+                                                    Class<? extends HippoBean> beanMappingClass,
+                                                    HstQueryManager queryManager) throws QueryException {
+
+        String canonicalHandleUUID = bean.getCanonicalHandleUUID();
+        HstQuery query = queryManager.createQuery(scope, beanMappingClass, false);
+        Filter filter = query.createFilter();
+        filter.addEqualTo(linkPath, canonicalHandleUUID);
+        query.setFilter(filter);
+        return query;
     }
 
     private List<HippoBean> collectionsBeans(HstQueryResult result) {
@@ -158,7 +177,7 @@ public class BloomreachSearchService implements SearchService {
                 .where(constraints(parsedQueryStr))
                 .limit(PAGE_SIZE)
                 .offset(offset)
-                .build();
+                .build(context.getQueryManager());
     }
 
     private Constraint constraints(String searchField) {
