@@ -149,14 +149,14 @@ public class JournalPopulationJob implements RepositoryJob {
         journal.record(publishEntry(publicationUrl, collection, timestamp));
         Node folder = publication.getParent().getParent();
 
-        boolean addedPages = false;
+        boolean hasPages = false;
         if (publication.isNodeType("govscot:ComplexDocument2")) {
             processComplexDocumentChapters(publication, slug, collection, timestamp, journal);
-            addedPages = true;
+            hasPages = true;
         } else {
-            addedPages = processPublicationPages(publication, slug, collection, timestamp, journal);
+            hasPages = processPublicationPages(publication, slug, collection, timestamp, journal);
         }
-        if (addedPages && hasDocuments(folder)) {
+        if (hasPages && hasDocuments(folder)) {
             String url = publicationUrl + "documents/";
             journal.record(publishEntry(url, collection, timestamp));
         }
@@ -202,7 +202,6 @@ public class JournalPopulationJob implements RepositoryJob {
             return false;
         }
 
-        boolean addedPages = false;
         boolean seenFirstPage = false;
         Node pagesFolder = publication.getParent().getParent().getNode(PAGES);
         NodeIterator it = pagesFolder.getNodes();
@@ -214,11 +213,10 @@ public class JournalPopulationJob implements RepositoryJob {
                 } else {
                     String url = pageUrl(slug, pageHandle);
                     journal.record(publishEntry(url, collection, timestamp));
-                    addedPages = true;
                 }
             }
         }
-        return addedPages;
+        return seenFirstPage;
     }
 
     boolean publishedNonContentPage(Node handle) throws RepositoryException {
