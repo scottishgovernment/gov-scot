@@ -15,6 +15,7 @@
                 <@hst.html hippohtml=document.content/>
 
                 <#assign ds_autocomplete = true />
+                <#assign searchpagepath = hstRequestContext.servletRequest.pathInfo />
                 <#include 'search.ftl'/>
 
                 <section id="search-results" class="ds_search-results">

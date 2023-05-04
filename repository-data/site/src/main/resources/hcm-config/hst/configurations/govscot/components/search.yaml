@@ -3,3 +3,4 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:components/search:
       jcr:primaryType: hst:component
       hst:template: search-box
+      hst:componentclassname: scot.gov.www.components.SearchBarComponent
