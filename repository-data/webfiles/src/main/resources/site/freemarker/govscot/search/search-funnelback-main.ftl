@@ -17,6 +17,8 @@
                 <#if autoCompleteEnabled>
                     <#assign ds_autocomplete = true />
                 </#if>
+                <#assign ds_autocomplete = true />
+                <#assign searchpagepath = hstRequestContext.servletRequest.pathInfo />
 
                 <#include 'search.ftl'/>
 
