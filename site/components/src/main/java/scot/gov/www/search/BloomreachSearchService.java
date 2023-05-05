@@ -235,10 +235,11 @@ public class BloomreachSearchService implements SearchService {
     ResultsSummary buildResultsSummary(HstQueryResult result, int offset) {
         ResultsSummary resultsSummary = new ResultsSummary();
         resultsSummary.setCurrStart(offset + 1);
-        resultsSummary.setCurrEnd(resultsSummary.getCurrStart() + PAGE_SIZE);
+        resultsSummary.setCurrEnd(Math.min(resultsSummary.getCurrStart() + PAGE_SIZE, result.getTotalSize()));
         resultsSummary.setNumRanks(PAGE_SIZE);
         resultsSummary.setTotalMatching(result.getTotalSize());
         resultsSummary.setFullyMatching(result.getTotalSize());
         return resultsSummary;
     }
+
 }
