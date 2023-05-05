@@ -3,13 +3,13 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/searchfunnelback:
       jcr:primaryType: hst:component
       hst:referencecomponent: hst:abstractpages/base
-      hst:parameternames: [hideSearchToolbar]
-      hst:parametervalues: ['true']
+      hst:parameternames: [hideSearchToolbar, searchtype]
+      hst:parametervalues: ['true', funnelback]
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
-        hst:parameternames: []
-        hst:parametervalues: []
+        hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.SearchComponent
+        hst:parameternames: [searchtype]
+        hst:parametervalues: [funnelback]
         hst:template: search-funnelback-main
         /results:
           jcr:primaryType: hst:component

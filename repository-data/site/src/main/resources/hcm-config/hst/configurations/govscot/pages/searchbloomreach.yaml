@@ -7,9 +7,9 @@ definitions:
       hst:parametervalues: ['true']
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
-        hst:parameternames: []
-        hst:parametervalues: []
+        hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.SearchComponent
+        hst:parameternames: [searchtype]
+        hst:parametervalues: [bloomreach]
         hst:template: search-funnelback-main
         /results:
           jcr:primaryType: hst:component
