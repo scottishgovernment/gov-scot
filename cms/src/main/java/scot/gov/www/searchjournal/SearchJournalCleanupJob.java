@@ -25,8 +25,6 @@ public class SearchJournalCleanupJob implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(SearchJournalCleanupJob.class);
 
-    private static final String CUTOFF_MILLIS = "cutoffMillis";
-
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
 
@@ -57,24 +55,11 @@ public class SearchJournalCleanupJob implements RepositoryJob {
     }
 
     long getCuttoffMillis(RepositoryJobExecutionContext context) {
-        if (context.getAttributeNames().contains(CUTOFF_MILLIS)) {
-            String cutoffString = context.getAttribute(CUTOFF_MILLIS);
-            try {
-                long cutoff = Long.parseLong(cutoffString);
-                LOG.info("Using cutoff of {} millis", cutoff);
-                return cutoff;
-            } catch (NumberFormatException e) {
-                LOG.error("Cutoff configured for SearchJournalCleanupJob is not parsable as a long: {}, will use default", cutoffString);
-            }
-        }
-
-        LOG.info("Using cutoff of 30 days");
-        return Duration.ofDays(30).toMillis();
+        return Duration.ofDays(10).toMillis();
     }
 
     NodeIterator nodesToDelete(Session session, long cuttoff) throws RepositoryException {
         Query query = query(session, cuttoff);
-        query.setLimit(20000);
         QueryResult result = query.execute();
         LOG.info("{} old entries to delete", result.getNodes().getSize());
         return result.getNodes();
@@ -108,7 +93,7 @@ public class SearchJournalCleanupJob implements RepositoryJob {
         String xpath = String.format(template, DateTools.createXPathConstraint(session, cutoff(cutoffMillis)));
         Query query = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH);
         LOG.info("query: {}", xpath);
-        query.setLimit(10000);
+        query.setLimit(20000);
         return query;
     }
 
