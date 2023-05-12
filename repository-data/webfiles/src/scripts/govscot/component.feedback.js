@@ -185,8 +185,6 @@
              reason = this.fields.no.reason.value;
          } else if (type === 'yesbut') {
              reason = this.fields.yesbut.reason.value;
-         } else {
-             reason = '';
          }
 
          return reason;
@@ -203,7 +201,7 @@
              freeText = this.fields.yes.comments.value || '';
          }
 
-         return freeText;
+         return freeText.substring(0, 250);
      },
 
      removeErrorMessages: function () {
