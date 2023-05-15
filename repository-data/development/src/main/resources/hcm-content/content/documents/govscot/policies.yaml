@@ -109,11 +109,12 @@
       jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
       jcr:uuid: cb27f1e3-91b2-4f49-befb-cd96ac7ca924
       hippo:name: Access to justice
-      hippo:versionHistory: 962f2bf6-23dc-409c-8f99-83371439fdb9
+      hippo:versionHistory: c24edc48-77e8-435d-98e9-374c5805af71
       /index[1]:
         jcr:primaryType: govscot:Policy
         jcr:mixinTypes: ['mix:referenceable']
         jcr:uuid: f39c61e8-e0f2-4fa4-9109-e25cb75a8606
+        govscot:contentitemlanguage: en
         govscot:metaDescription: We want to provide a justice system that is fair
           and equitable for everyone in Scotland.
         govscot:newsTags: [5a5f199de850d21b684439cd]
@@ -126,6 +127,7 @@
         govscot:title: Access to justice
         hippo:availability: [live]
         hippo:name: Access to justice
+        hippostd:retainable: false
         hippostd:state: published
         hippostd:tags: [legal services market, it innovation courts, solving disputes
             outside court, access to justice, legal aid, courts, tribunals, arbitration,
@@ -133,17 +135,17 @@
           scottish legal system]
         hippostdpubwf:createdBy: reece.cargan@gov.scot
         hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
-        hippostdpubwf:lastModificationDate: 2019-09-09T13:34:33.227+01:00
-        hippostdpubwf:lastModifiedBy: david.sinclair@gov.scot
-        hippostdpubwf:publicationDate: 2021-12-22T15:41:28.210Z
+        hippostdpubwf:lastModificationDate: 2023-05-16T08:17:49.886+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippostdpubwf:publicationDate: 2023-05-16T08:17:54.021+01:00
         hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
         hippotranslation:locale: en
         /govscot:content:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
+          hippostd:content: |-
             <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
-            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
 
+            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
         /govscot:notes:
           jcr:primaryType: hippostd:html
           hippostd:content: |-
@@ -181,141 +183,38 @@
           hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
         /govscot:background:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually. </p>
-            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
+          hippostd:content: |-
+            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually.</p>
 
+            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
         /govscot:billsAndLegislation:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
+          hippostd:content: |-
             <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
-            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
-            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
-            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
 
+            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
+
+            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
+
+            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
         /govscot:contact:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br>Phone: 0300 244 4000</p>
-            <p>Post:<br>General Enquiries<br>Scottish Government<br>St Andrews House<br>Regent Road<br>Edinburgh<br>EH1 3DG</p>
-            <h3 id="connect">Connect</h3>
-            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br>Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
-
-        /govscot:actions:
-          jcr:primaryType: hippostd:html
           hippostd:content: |-
-            <p>We are:</p>
+            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br />
+            Phone: 0300 244 4000</p>
 
-            <ul>
-             <li>encouraging people to <a href="/policies/access-to-justice/dispute-resolution/">resolve disputes outside court</a> through services like mediation and arbitration</li>
-             <li>simplifying the <a href="/policies/access-to-justice/tribunals-system/">tribunals system</a> to make sure it's independent and user-friendly</li>
-             <li>using digital technology and IT innovation to <a href="/policies/access-to-justice/improving-justice-systems-processes/">improve processes within the justice system</a></li>
-             <li>improving <a href="/policies/access-to-justice/improving-information-and-advice/">public information and advice</a> about issues like housing, debt and benefits, to help people avoid problems or resolve disputes as quickly as possible</li>
-             <li>working to introduce <a href="alternative-business-structures">alternative business structures in the legal services market</a> to improve customer choice</li>
-            </ul>
+            <p>Post:<br />
+            General Enquiries<br />
+            Scottish Government<br />
+            St Andrews House<br />
+            Regent Road<br />
+            Edinburgh<br />
+            EH1 3DG</p>
 
-            <p>We have also:</p>
+            <h3>Connect</h3>
 
-            <ul>
-             <li>carried out a review into the <a href="/policies/access-to-justice/legal-aid/">legal aid system</a> to ensure it is simpler, user-focused and more flexible</li>
-             <li>set up an independent review into the <a href="/policies/access-to-justice/regulation-legal-services/">regulation of legal services</a> to identify opportunities for change and improvement</li>
-            </ul>
-          /alternative-business-structures:
-            jcr:primaryType: hippo:facetselect
-            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-      /index[2]:
-        jcr:primaryType: govscot:Policy
-        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
-        jcr:uuid: 6a213e24-ecaa-45a7-9038-04b3a33c5eaf
-        govscot:metaDescription: We want to provide a justice system that is fair
-          and equitable for everyone in Scotland.
-        govscot:newsTags: [5a5f199de850d21b684439cd]
-        govscot:reportingTags: []
-        govscot:rubricId: GOV-629
-        govscot:seoTitle: Access to justice
-        govscot:sme: ''
-        govscot:summary: Actions we are taking to improve access to justice for everyone
-          in Scotland.
-        govscot:title: Access to justice
-        hippo:availability: [preview]
-        hippo:name: Access to justice
-        hippostd:state: unpublished
-        hippostd:tags: [legal services market, it innovation courts, solving disputes
-            outside court, access to justice, legal aid, courts, tribunals, arbitration,
-          the law, justice, mediation, legal information, alternative dispute resolution,
-          scottish legal system]
-        hippostdpubwf:createdBy: reece.cargan@gov.scot
-        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
-        hippostdpubwf:lastModificationDate: 2019-09-09T13:34:33.227+01:00
-        hippostdpubwf:lastModifiedBy: david.sinclair@gov.scot
-        hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
-        hippotranslation:locale: en
-        /govscot:content:
-          jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
-            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
-
-        /govscot:notes:
-          jcr:primaryType: hippostd:html
-          hippostd:content: |-
-            <p>Laura Sexton</p>
-
-            <p>**</p>
-
-            <p>Third bullet point to be added after 'We have also':</p>
-
-            <ul>
-             <li>held a consultation on <a href="alternative-business-structures">alternative business structures </a>to review regulations and guidance in relation to approved regulator complaints</li>
-            </ul>
-
-            <p>&nbsp;</p>
-          /alternative-business-structures:
-            jcr:primaryType: hippo:facetselect
-            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-        /govscot:responsibleRole:
-          jcr:primaryType: hippo:mirror
-          hippo:docbase: 262fbf86-f93e-4179-a899-f02dc2d906b5
-        /govscot:responsibleDirectorate:
-          jcr:primaryType: hippo:mirror
-          hippo:docbase: 2f0eb43f-0187-4ecd-afb1-d33f64c15b4b
-        /govscot:topics[1]:
-          jcr:primaryType: hippo:mirror
-          hippo:docbase: 4375c59d-b7ca-4771-82cf-4660fe0fa897
-        /govscot:topics[2]:
-          jcr:primaryType: hippo:mirror
-          hippo:docbase: c5b1d940-71d7-4b18-a545-687a389da974
-        /govscot:topics[3]:
-          jcr:primaryType: hippo:mirror
-          hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
-        /govscot:background:
-          jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually. </p>
-            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
-
-        /govscot:billsAndLegislation:
-          jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
-            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
-            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
-            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
-
-        /govscot:contact:
-          jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br>Phone: 0300 244 4000</p>
-            <p>Post:<br>General Enquiries<br>Scottish Government<br>St Andrews House<br>Regent Road<br>Edinburgh<br>EH1 3DG</p>
-            <h3 id="connect">Connect</h3>
-            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br>Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
-
+            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br />
+            Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
         /govscot:actions:
           jcr:primaryType: hippostd:html
           hippostd:content: |-
@@ -355,10 +254,14 @@
           staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
           staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
           staging:user: admin
-      /index[3]:
+        /govscot:topics[4]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+      /index[2]:
         jcr:primaryType: govscot:Policy
-        jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 6a32ff44-7abe-4f66-8ad0-2e75b1a7ea0e
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 6a213e24-ecaa-45a7-9038-04b3a33c5eaf
+        govscot:contentitemlanguage: en
         govscot:metaDescription: We want to provide a justice system that is fair
           and equitable for everyone in Scotland.
         govscot:newsTags: [5a5f199de850d21b684439cd]
@@ -369,25 +272,26 @@
         govscot:summary: Actions we are taking to improve access to justice for everyone
           in Scotland.
         govscot:title: Access to justice
-        hippo:availability: []
+        hippo:availability: [preview]
         hippo:name: Access to justice
-        hippostd:state: draft
+        hippostd:retainable: false
+        hippostd:state: unpublished
         hippostd:tags: [legal services market, it innovation courts, solving disputes
             outside court, access to justice, legal aid, courts, tribunals, arbitration,
           the law, justice, mediation, legal information, alternative dispute resolution,
           scottish legal system]
         hippostdpubwf:createdBy: reece.cargan@gov.scot
         hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
-        hippostdpubwf:lastModificationDate: 2021-08-27T09:56:45.092+01:00
-        hippostdpubwf:lastModifiedBy: kayleigh.ross@gov.scot
+        hippostdpubwf:lastModificationDate: 2023-05-16T08:17:49.886+01:00
+        hippostdpubwf:lastModifiedBy: admin
         hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
         hippotranslation:locale: en
         /govscot:content:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
+          hippostd:content: |-
             <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
-            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
 
+            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
         /govscot:notes:
           jcr:primaryType: hippostd:html
           hippostd:content: |-
@@ -425,26 +329,38 @@
           hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
         /govscot:background:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually. </p>
-            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
+          hippostd:content: |-
+            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually.</p>
 
+            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
         /govscot:billsAndLegislation:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
+          hippostd:content: |-
             <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
-            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
-            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
-            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
 
+            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
+
+            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
+
+            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
         /govscot:contact:
           jcr:primaryType: hippostd:html
-          hippostd:content: |+
-            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br>Phone: 0300 244 4000</p>
-            <p>Post:<br>General Enquiries<br>Scottish Government<br>St Andrews House<br>Regent Road<br>Edinburgh<br>EH1 3DG</p>
-            <h3 id="connect">Connect</h3>
-            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br>Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
+          hippostd:content: |-
+            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br />
+            Phone: 0300 244 4000</p>
 
+            <p>Post:<br />
+            General Enquiries<br />
+            Scottish Government<br />
+            St Andrews House<br />
+            Regent Road<br />
+            Edinburgh<br />
+            EH1 3DG</p>
+
+            <h3>Connect</h3>
+
+            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br />
+            Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
         /govscot:actions:
           jcr:primaryType: hippostd:html
           hippostd:content: |-
@@ -470,6 +386,169 @@
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
+        /previewId[1]:
+          jcr:primaryType: staging:preview
+          staging:creationdate: 2022-11-01T08:55:57.261Z
+          staging:expirationdate: 2022-11-22T00:00:00Z
+          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
+          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
+          staging:user: admin
+        /previewId[2]:
+          jcr:primaryType: staging:preview
+          staging:creationdate: 2022-11-01T14:57:08.326Z
+          staging:expirationdate: 2022-11-22T00:00:00Z
+          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
+          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
+          staging:user: admin
+        /govscot:topics[4]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+      /index[3]:
+        jcr:primaryType: govscot:Policy
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 6a32ff44-7abe-4f66-8ad0-2e75b1a7ea0e
+        govscot:contentitemlanguage: en
+        govscot:metaDescription: We want to provide a justice system that is fair
+          and equitable for everyone in Scotland.
+        govscot:newsTags: [5a5f199de850d21b684439cd]
+        govscot:reportingTags: []
+        govscot:rubricId: GOV-629
+        govscot:seoTitle: Access to justice
+        govscot:sme: ''
+        govscot:summary: Actions we are taking to improve access to justice for everyone
+          in Scotland.
+        govscot:title: Access to justice
+        hippo:availability: []
+        hippo:name: Access to justice
+        hippostd:retainable: false
+        hippostd:state: draft
+        hippostd:tags: [legal services market, it innovation courts, solving disputes
+            outside court, access to justice, legal aid, courts, tribunals, arbitration,
+          the law, justice, mediation, legal information, alternative dispute resolution,
+          scottish legal system]
+        hippostdpubwf:createdBy: reece.cargan@gov.scot
+        hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
+        hippostdpubwf:lastModificationDate: 2023-05-16T08:17:38.799+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 66456fdd-14cc-4ab5-9432-c02992771943
+        hippotranslation:locale: en
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We want to provide a justice system that is up-to-date, fair and respects the rights and diverse needs of users.</p>
+
+            <p>Improving access to justice means providing better information and advice, giving people more options to resolve disputes without going to court, and having a flourishing legal services market.</p>
+        /govscot:notes:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Laura Sexton</p>
+
+            <p>**</p>
+
+            <p>Third bullet point to be added after 'We have also':</p>
+
+            <ul>
+             <li>held a consultation on <a href="alternative-business-structures">alternative business structures </a>to review regulations and guidance in relation to approved regulator complaints</li>
+            </ul>
+
+            <p>&nbsp;</p>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /govscot:responsibleRole:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 262fbf86-f93e-4179-a899-f02dc2d906b5
+        /govscot:responsibleDirectorate:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 2f0eb43f-0187-4ecd-afb1-d33f64c15b4b
+        /govscot:topics[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 4375c59d-b7ca-4771-82cf-4660fe0fa897
+        /govscot:topics[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: c5b1d940-71d7-4b18-a545-687a389da974
+        /govscot:topics[3]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 375ac20b-f77f-4076-9bee-12f222cac1c0
+        /govscot:background:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p><a href="/publications/justice-scotland-vision-priorities/">Justice in Scotland: Vision and Priorities</a>, 2017 to 2020, sets out our vision for a modern justice system to meet the needs of people in Scotland. We will review this annually.</p>
+
+            <p>An accompanying <a href="/publications/justice-vision-priorities-delivery-plan-2017-18/">delivery plan</a> sets out the key actions that we, justice organisations and partners are taking during 2017 and 2018.</p>
+        /govscot:billsAndLegislation:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p><a href="http://www.legislation.gov.uk/asp/2010/16/2010-11-10">The Legal Services (Scotland) Act 2010</a> contains provisions relating to legal services including regulating the supply of legal services by alternative business structures.</p>
+
+            <p><a href="http://www.legislation.gov.uk/asp/2007/5/contents">The Legal Profession and Legal Aid Scotland Act 2007</a> aims to broaden access to legal services by allowing the creation of new business structures that, like existing solicitor practices, will be able to provide legal advice and services for clients.</p>
+
+            <p><a href="http://www.legislation.gov.uk/ukpga/1986/47/contents">The Legal Aid (Scotland) Act 1986</a> is the main piece of legislation concerning legal aid in Scotland.</p>
+
+            <p><a href="http://www.legislation.gov.uk/ukpga/1980/46">The Solicitors (Scotland) Act 1980</a> contains specific information relating to solicitors and notaries public in Scotland.</p>
+        /govscot:contact:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Email: <a href="mailto:ceu@gov.scot">ceu@gov.scot</a><br />
+            Phone: 0300 244 4000</p>
+
+            <p>Post:<br />
+            General Enquiries<br />
+            Scottish Government<br />
+            St Andrews House<br />
+            Regent Road<br />
+            Edinburgh<br />
+            EH1 3DG</p>
+
+            <h3>Connect</h3>
+
+            <p><a href="https://blogs.gov.scot/justice-safety">Justice and safety blog</a><br />
+            Twitter: <a href="https://twitter.com/ScotgovJustice">@ScotGovJustice</a></p>
+        /govscot:actions:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>We are:</p>
+
+            <ul>
+             <li>encouraging people to <a href="/policies/access-to-justice/dispute-resolution/">resolve disputes outside court</a> through services like mediation and arbitration</li>
+             <li>simplifying the <a href="/policies/access-to-justice/tribunals-system/">tribunals system</a> to make sure it's independent and user-friendly</li>
+             <li>using digital technology and IT innovation to <a href="/policies/access-to-justice/improving-justice-systems-processes/">improve processes within the justice system</a></li>
+             <li>improving <a href="/policies/access-to-justice/improving-information-and-advice/">public information and advice</a> about issues like housing, debt and benefits, to help people avoid problems or resolve disputes as quickly as possible</li>
+             <li>working to introduce <a href="alternative-business-structures">alternative business structures in the legal services market</a> to improve customer choice</li>
+            </ul>
+
+            <p>We have also:</p>
+
+            <ul>
+             <li>carried out a review into the <a href="/policies/access-to-justice/legal-aid/">legal aid system</a> to ensure it is simpler, user-focused and more flexible</li>
+             <li>set up an independent review into the <a href="/policies/access-to-justice/regulation-legal-services/">regulation of legal services</a> to identify opportunities for change and improvement</li>
+            </ul>
+          /alternative-business-structures:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: a3f03f02-c2a0-4cd9-a1e8-044bc825250e
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+        /previewId[1]:
+          jcr:primaryType: staging:preview
+          staging:creationdate: 2022-11-01T08:55:57.261Z
+          staging:expirationdate: 2022-11-22T00:00:00Z
+          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
+          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
+          staging:user: admin
+        /previewId[2]:
+          jcr:primaryType: staging:preview
+          staging:creationdate: 2022-11-01T14:57:08.326Z
+          staging:expirationdate: 2022-11-22T00:00:00Z
+          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
+          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
+          staging:user: admin
+        /govscot:topics[4]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
     /dispute-resolution:
       jcr:primaryType: hippo:handle
       jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']

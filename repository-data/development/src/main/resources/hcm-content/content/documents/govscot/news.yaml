@@ -19,43 +19,212 @@
       hippostd:foldertype: [new-news-document]
       /health-board-boundaries:
         jcr:primaryType: hippo:handle
-        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
         jcr:uuid: 24c2b3d4-4106-46f4-8dfc-f9aba6b4d25e
         hippo:name: Health board boundaries
-        /health-board-boundaries:
+        hippo:versionHistory: b85a1465-bead-4d2a-8fac-5f95866ab2dd
+        /health-board-boundaries[1]:
           jcr:primaryType: govscot:News
           jcr:mixinTypes: ['mix:referenceable']
           jcr:uuid: d1646b09-c986-48db-99fd-e0c401fcf07a
+          govscot:contentitemlanguage: en
           govscot:externalId: 5813816319ffee17b0ac08ec
           govscot:metaDescription: Shift will help ensure more care can be provided
             at home.
           govscot:policyTags: []
           govscot:prglooslug: health-board-boundaries
           govscot:publicationDate: 2013-06-04T11:54:00+01:00
+          govscot:reportingTags: []
           govscot:seoTitle: Health board boundaries
           govscot:slug: health-board-boundaries
           govscot:summary: Shift will help ensure more care can be provided at home.
           govscot:title: Health board boundaries
-          govscot:updatedDate: 2019-07-10T15:55:23.266+01:00
-          hippo:availability: [live, preview]
+          govscot:updatedDate: 2019-07-10T15:55:00+01:00
+          hippo:availability: [live]
           hippo:name: Health board boundaries
+          hippostd:retainable: false
           hippostd:state: published
           hippostd:tags: []
           hippostdpubwf:createdBy: news
           hippostdpubwf:creationDate: 2019-07-10T16:00:17.147+01:00
-          hippostdpubwf:lastModificationDate: 2019-07-10T16:00:17.151+01:00
-          hippostdpubwf:lastModifiedBy: news
+          hippostdpubwf:lastModificationDate: 2023-05-16T08:20:40.315+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2023-05-16T08:20:42.360+01:00
           hippotranslation:id: dda4509a-e6d8-49ba-8bb1-3e892da0730f
           hippotranslation:locale: en
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: |-
-              <p>Health board boundaries will be aligned with local authority areas to help ensure older people can receive the care they need at home.<br /><br />Speaking today in parliament, Health Secretary Alex Neil revealed that catchment areas for health boards will be realigned with council boundaries, to help them work closer together in the provision of care in the local community.<br /><br />The announcement comes the week after a new bill designed to ensure that the health and social care systems work together effectively to improve the provision of care in our communities was published.<br /><br />Mr Neil said: <br /><br />&ldquo;People in Scotland are living longer, healthier lives and this means that services need to adapt in order to meet the challenges of a rapidly ageing population. <br /><br />&ldquo;That is why we are bringing health and social care together, to improve care for people in communities, helping to anticipate their needs and reaching them before they need to be admitted to hospital or institutional care.<br /><br />&ldquo;However, any mismatch of health board and local authority boundaries presents an administrative barrier to closer integrated working, complicating the planning and delivery of health and social care services.<br /><br />&ldquo;We want to ensure that the responsibility for delivering health care matches the geographical boundaries of local authority partners.<br /><br />&ldquo;These changes will help improve the quality and consistency of care for older people and people with complex care needs.&rdquo;<br /><br />The boundary changes will come into effect from April 2014.<br /><br />These are administrative changes and patients will stay with the same GP practice and continue to receive treatment in their local hospital, even if their catchment area has changed</p>
-              <p><br />Contact: Emma Keenan 0131 244 3092 <a href="mailto:emma.keenan@scotland.gsi.gov.uk">emma.keenan@scotland.gsi.gov.uk</a></p>
+              <p>Health board boundaries will be aligned with local authority areas to help ensure older people can receive the care they need at home.<br />
+              <br />
+              Speaking today in parliament, Health Secretary Alex Neil revealed that catchment areas for health boards will be realigned with council boundaries, to help them work closer together in the provision of care in the local community.<br />
+              <br />
+              The announcement comes the week after a new bill designed to ensure that the health and social care systems work together effectively to improve the provision of care in our communities was published.<br />
+              <br />
+              Mr Neil said:<br />
+              <br />
+              “People in Scotland are living longer, healthier lives and this means that services need to adapt in order to meet the challenges of a rapidly ageing population.<br />
+              <br />
+              “That is why we are bringing health and social care together, to improve care for people in communities, helping to anticipate their needs and reaching them before they need to be admitted to hospital or institutional care.<br />
+              <br />
+              “However, any mismatch of health board and local authority boundaries presents an administrative barrier to closer integrated working, complicating the planning and delivery of health and social care services.<br />
+              <br />
+              “We want to ensure that the responsibility for delivering health care matches the geographical boundaries of local authority partners.<br />
+              <br />
+              “These changes will help improve the quality and consistency of care for older people and people with complex care needs.”<br />
+              <br />
+              The boundary changes will come into effect from April 2014.<br />
+              <br />
+              These are administrative changes and patients will stay with the same GP practice and continue to receive treatment in their local hospital, even if their catchment area has changed</p>
+
+              <p><br />
+              Contact: Emma Keenan 0131 244 3092 <a href="mailto:emma.keenan@scotland.gsi.gov.uk">emma.keenan@scotland.gsi.gov.uk</a></p>
+
               <p><strong>&nbsp;</strong></p>
           /govscot:background:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:heroImage:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:title: ''
+            govscot:url: ''
+          /govscot:topics:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+        /health-board-boundaries[2]:
+          jcr:primaryType: govscot:News
+          jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+          jcr:uuid: d71a0221-4859-4e12-8aa2-075506299757
+          govscot:contentitemlanguage: en
+          govscot:externalId: 5813816319ffee17b0ac08ec
+          govscot:metaDescription: Shift will help ensure more care can be provided
+            at home.
+          govscot:policyTags: []
+          govscot:prglooslug: health-board-boundaries
+          govscot:publicationDate: 2013-06-04T11:54:00+01:00
+          govscot:reportingTags: []
+          govscot:seoTitle: Health board boundaries
+          govscot:slug: health-board-boundaries
+          govscot:summary: Shift will help ensure more care can be provided at home.
+          govscot:title: Health board boundaries
+          govscot:updatedDate: 2019-07-10T15:55:00+01:00
+          hippo:availability: [preview]
+          hippo:name: Health board boundaries
+          hippostd:retainable: false
+          hippostd:state: unpublished
+          hippostd:tags: []
+          hippostdpubwf:createdBy: news
+          hippostdpubwf:creationDate: 2019-07-10T16:00:17.147+01:00
+          hippostdpubwf:lastModificationDate: 2023-05-16T08:20:40.315+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippotranslation:id: dda4509a-e6d8-49ba-8bb1-3e892da0730f
+          hippotranslation:locale: en
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <p>Health board boundaries will be aligned with local authority areas to help ensure older people can receive the care they need at home.<br />
+              <br />
+              Speaking today in parliament, Health Secretary Alex Neil revealed that catchment areas for health boards will be realigned with council boundaries, to help them work closer together in the provision of care in the local community.<br />
+              <br />
+              The announcement comes the week after a new bill designed to ensure that the health and social care systems work together effectively to improve the provision of care in our communities was published.<br />
+              <br />
+              Mr Neil said:<br />
+              <br />
+              “People in Scotland are living longer, healthier lives and this means that services need to adapt in order to meet the challenges of a rapidly ageing population.<br />
+              <br />
+              “That is why we are bringing health and social care together, to improve care for people in communities, helping to anticipate their needs and reaching them before they need to be admitted to hospital or institutional care.<br />
+              <br />
+              “However, any mismatch of health board and local authority boundaries presents an administrative barrier to closer integrated working, complicating the planning and delivery of health and social care services.<br />
+              <br />
+              “We want to ensure that the responsibility for delivering health care matches the geographical boundaries of local authority partners.<br />
+              <br />
+              “These changes will help improve the quality and consistency of care for older people and people with complex care needs.”<br />
+              <br />
+              The boundary changes will come into effect from April 2014.<br />
+              <br />
+              These are administrative changes and patients will stay with the same GP practice and continue to receive treatment in their local hospital, even if their catchment area has changed</p>
+
+              <p><br />
+              Contact: Emma Keenan 0131 244 3092 <a href="mailto:emma.keenan@scotland.gsi.gov.uk">emma.keenan@scotland.gsi.gov.uk</a></p>
+
+              <p><strong>&nbsp;</strong></p>
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:heroImage:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:title: ''
+            govscot:url: ''
+          /govscot:topics:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+        /health-board-boundaries[3]:
+          jcr:primaryType: govscot:News
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: b264d843-8b40-47fb-b3c1-2f237ffb2bee
+          govscot:contentitemlanguage: en
+          govscot:externalId: 5813816319ffee17b0ac08ec
+          govscot:metaDescription: Shift will help ensure more care can be provided
+            at home.
+          govscot:policyTags: []
+          govscot:prglooslug: health-board-boundaries
+          govscot:publicationDate: 2013-06-04T11:54:00+01:00
+          govscot:reportingTags: []
+          govscot:seoTitle: Health board boundaries
+          govscot:slug: health-board-boundaries
+          govscot:summary: Shift will help ensure more care can be provided at home.
+          govscot:title: Health board boundaries
+          govscot:updatedDate: 2019-07-10T15:55:00+01:00
+          hippo:availability: []
+          hippo:name: Health board boundaries
+          hippostd:retainable: false
+          hippostd:state: draft
+          hippostd:tags: []
+          hippostdpubwf:createdBy: news
+          hippostdpubwf:creationDate: 2019-07-10T16:00:17.147+01:00
+          hippostdpubwf:lastModificationDate: 2023-05-16T08:20:21.181+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippotranslation:id: dda4509a-e6d8-49ba-8bb1-3e892da0730f
+          hippotranslation:locale: en
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <p>Health board boundaries will be aligned with local authority areas to help ensure older people can receive the care they need at home.<br />
+              <br />
+              Speaking today in parliament, Health Secretary Alex Neil revealed that catchment areas for health boards will be realigned with council boundaries, to help them work closer together in the provision of care in the local community.<br />
+              <br />
+              The announcement comes the week after a new bill designed to ensure that the health and social care systems work together effectively to improve the provision of care in our communities was published.<br />
+              <br />
+              Mr Neil said:<br />
+              <br />
+              “People in Scotland are living longer, healthier lives and this means that services need to adapt in order to meet the challenges of a rapidly ageing population.<br />
+              <br />
+              “That is why we are bringing health and social care together, to improve care for people in communities, helping to anticipate their needs and reaching them before they need to be admitted to hospital or institutional care.<br />
+              <br />
+              “However, any mismatch of health board and local authority boundaries presents an administrative barrier to closer integrated working, complicating the planning and delivery of health and social care services.<br />
+              <br />
+              “We want to ensure that the responsibility for delivering health care matches the geographical boundaries of local authority partners.<br />
+              <br />
+              “These changes will help improve the quality and consistency of care for older people and people with complex care needs.”<br />
+              <br />
+              The boundary changes will come into effect from April 2014.<br />
+              <br />
+              These are administrative changes and patients will stay with the same GP practice and continue to receive treatment in their local hospital, even if their catchment area has changed</p>
+
+              <p><br />
+              Contact: Emma Keenan 0131 244 3092 <a href="mailto:emma.keenan@scotland.gsi.gov.uk">emma.keenan@scotland.gsi.gov.uk</a></p>
+
+              <p><strong>&nbsp;</strong></p>
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:heroImage:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:title: ''
+            govscot:url: ''
+          /govscot:topics:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
     /07:
       jcr:primaryType: hippostd:folder
       jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable']

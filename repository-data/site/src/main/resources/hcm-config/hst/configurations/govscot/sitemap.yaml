@@ -22,17 +22,16 @@ definitions:
         hst:componentconfigurationid: hst:pages/topicslistpage
         hst:relativecontentpath: topics
         hst:sitemapitemhandlerids: [trailing-slash]
-        /_default_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/topicpage
-          hst:relativecontentpath: topics/${1}
-          hst:componentconfigurationmappingvalues: ['hst:pages/issuepage']
-          hst:componentconfigurationmappingnames: ['govscot:Issue']
-          hst:sitemapitemhandlerids: [trailing-slash]
         /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/topicslistpage
           hst:relativecontentpath: ${parent}/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationmappingnames: ['govscot:Issue', 'govscot:Topic']
+          hst:componentconfigurationmappingvalues: ['hst:pages/issuepage', 'hst:pages/topicpage']
+          hst:relativecontentpath: topics/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
       /news:
         jcr:primaryType: hst:sitemapitem

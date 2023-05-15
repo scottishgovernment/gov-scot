@@ -1,0 +1,6 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemap/indyref2:
+  jcr:primaryType: hst:sitemapitem
+  hst:componentconfigurationid: hst:pages/indyref2-contentpage
+  hst:lastmodified: 2023-05-16T09:31:16.423+01:00
+  hst:pagetitle: indyref2
+  hst:relativecontentpath: topics/indyref2-issue

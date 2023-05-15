@@ -4,10 +4,7 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import scot.gov.www.beans.Issue;
-import scot.gov.www.beans.SimpleContent;
-import scot.gov.www.beans.Topic;
-import scot.gov.www.beans.TopicsAndLetter;
+import scot.gov.www.beans.*;
 
 import java.util.*;
 
@@ -43,6 +40,10 @@ public class TopicsComponent extends BaseHstComponent {
             return true;
         }
 
+        if (item instanceof DynamicIssue) {
+            DynamicIssue issue = (DynamicIssue) item;
+            return issue.getShowOnTopicsLandingPage();
+        }
         if (item instanceof Issue) {
             Issue issue = (Issue) item;
             return issue.getShowOnTopicsLandingPage();

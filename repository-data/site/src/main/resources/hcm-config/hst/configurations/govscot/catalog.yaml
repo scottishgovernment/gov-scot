@@ -52,3 +52,9 @@ definitions:
           hst:iconpath: icons/pageheader.svg
           hst:label: Page Header
           hst:template: pageheader
+        /issue:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.DynamicIssueComponent
+          hst:iconpath: icons/divider.svg
+          hst:label: Dynamic Issue
+          hst:template: dynamicissue

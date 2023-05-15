@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 61dd8052-b3c9-44c0-b72a-90aff2e714b7
+          jcr:uuid: 712282da-9cc2-42f4-8e82-6d2220b94cfe
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -108,7 +108,7 @@ definitions:
           govscot:dateResponded: 0001-01-01T12:00:00Z
           govscot:seoTitle: ''
           govscot:metaDescription: ''
-          jcr:uuid: 0dfcee7f-0cbc-4098-b3b4-5b13f5798a2a
+          jcr:uuid: b9d215b6-8dff-48e6-be5a-5de716ee09b3
           hippostdpubwf:lastModificationDate: 2019-01-24T13:41:25.409Z
           hippostdpubwf:creationDate: 2019-01-24T13:41:25.409Z
           govscot:reportingTags: []
@@ -310,6 +310,8 @@ definitions:
               item, e.g. Brexit or Year of Young People 2018.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible role

@@ -4,7 +4,7 @@
   jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 82348aac-65e3-47c1-8131-a8739d1e2d9f
   hippo:name: Topics and issues
-  hippostd:foldertype: [new-topic, new-issue]
+  hippostd:foldertype: [new-topic, new-issue, new-DynamicIssue-document, new-dynamic-issue-folder]
   /cop26:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
@@ -6535,6 +6535,76 @@
       /govscot:featuredItems:
         jcr:primaryType: hippo:mirror
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+  /text1:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 3ffa4670-cf20-43c3-95f2-dedbac5c1aae
+    hippo:versionHistory: 6257b8b6-c477-43c5-81f0-8cad70bcb89d
+    /text1[1]:
+      jcr:primaryType: govscot:text
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 3ae25876-967a-4b03-8722-ce7b4280a5a7
+      hippo:availability: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostd:transferable: false
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-15T12:18:31.654+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-15T12:27:50.197+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 50bedb38-4d4c-4705-8da5-444b4cdf59a3
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>The prospect could enfranchise about&nbsp;<a href="https://www.gov.uk/government/statistics/eu-settlement-scheme-quarterly-statistics-december-2022/eu-settlement-scheme-quarterly-statistics-december-2022">5 million EU citizens over the age of 18</a>&nbsp;living in the UK with settled status.</p>
+
+          <p>Starmer has said it does not pass the “common sense test” that settled migrants who have worked in the UK for decades do not have full voting rights.</p>
+
+          <p>He said: “The thinking behind it is if someone’s been here say 10, 20, 30 years, contributing to this economy, contributing to the community, they ought to be able to vote.</p>
+    /text1[2]:
+      jcr:primaryType: govscot:text
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 7dfedf65-82f5-4d6d-b190-30c76edb3bc5
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-15T12:18:31.654+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-15T12:27:50.161+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 50bedb38-4d4c-4705-8da5-444b4cdf59a3
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>The prospect could enfranchise about&nbsp;<a href="https://www.gov.uk/government/statistics/eu-settlement-scheme-quarterly-statistics-december-2022/eu-settlement-scheme-quarterly-statistics-december-2022">5 million EU citizens over the age of 18</a>&nbsp;living in the UK with settled status.</p>
+
+          <p>Starmer has said it does not pass the “common sense test” that settled migrants who have worked in the UK for decades do not have full voting rights.</p>
+
+          <p>He said: “The thinking behind it is if someone’s been here say 10, 20, 30 years, contributing to this economy, contributing to the community, they ought to be able to vote.</p>
+    /text1[3]:
+      jcr:primaryType: govscot:text
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: e5efd2a4-73f9-4347-93d3-1f883ceec394
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-15T12:18:31.654+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-15T12:27:50.161+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2023-05-15T12:28:54.477+01:00
+      hippotranslation:id: 50bedb38-4d4c-4705-8da5-444b4cdf59a3
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p>The prospect could enfranchise about&nbsp;<a href="https://www.gov.uk/government/statistics/eu-settlement-scheme-quarterly-statistics-december-2022/eu-settlement-scheme-quarterly-statistics-december-2022">5 million EU citizens over the age of 18</a>&nbsp;living in the UK with settled status.</p>
+
+          <p>Starmer has said it does not pass the “common sense test” that settled migrants who have worked in the UK for decades do not have full voting rights.</p>
+
+          <p>He said: “The thinking behind it is if someone’s been here say 10, 20, 30 years, contributing to this economy, contributing to the community, they ought to be able to vote.</p>
   /thequeen:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'mix:referenceable']

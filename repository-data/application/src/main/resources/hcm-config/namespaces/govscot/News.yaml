@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 7476f8fc-0589-44b2-9aed-a4422d374fe1
+          jcr:uuid: 7b54a608-3605-4499-9c2d-f731c75d54ab
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -104,7 +104,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 3dd44924-4331-42b6-ab04-43cfc11f1883
+          jcr:uuid: 049387fa-91ba-4b4a-bf7a-6c5874557690
           hippostdpubwf:lastModificationDate: 2018-01-26T13:27:12.677Z
           hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
           govscot:updatedDate: 0001-01-01T12:00:00Z
@@ -237,7 +237,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Topic', 'govscot:Issue']
+              nodetypes: ['govscot:Topic', 'govscot:Issue', 'govscot:DynamicIssue']
           /policyTags:
             jcr:primaryType: frontend:plugin
             caption: Policy tags

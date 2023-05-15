@@ -1,0 +1,19 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-dynamic-issue-folder:
+      jcr:primaryType: hippostd:templatequery
+      jcr:mixinTypes: ['hipposys:implementation']
+      hippostd:icon: addfolder_ico
+      hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
+        $inherited]
+      hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-dynamic-issue-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /hippostd:folder:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 687a77fa-23d2-4ce5-b913-be3a4055ba8f
+          hippostd:foldertype: [new-pageheading-document, new-text-document, new-imageandtext-document,
+            new-video-document, new-navigationcard-document]

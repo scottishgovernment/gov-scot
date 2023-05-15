@@ -6,6 +6,7 @@ import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
+import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -35,7 +36,7 @@ public class IssueComponent extends BaseHstComponent {
         populatePublications(base, issue, request);
     }
 
-    private void populatePolicies(HippoBean base, Issue issue, HstRequest request) {
+    static void populatePolicies(HippoBean base, HippoDocumentBean issue, HstRequest request) {
         try {
             HstQuery query = issueLinkedBeansQuery(issue, base, Policy.class, -1, TITLE);
             HstQueryResult result = query.execute();
@@ -45,7 +46,7 @@ public class IssueComponent extends BaseHstComponent {
         }
     }
 
-    private void populateNews(HippoBean base, Issue issue, HstRequest request) {
+    static void populateNews(HippoBean base, HippoDocumentBean issue, HstRequest request) {
         try {
             HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, 4, "govscot:publicationDate");
             HippoBeanIterator taggedNews = taggedQuery.execute().getHippoBeans();
@@ -55,7 +56,7 @@ public class IssueComponent extends BaseHstComponent {
         }
     }
 
-    private void populatePublications(HippoBean base, Issue issue, HstRequest request) {
+    static void populatePublications(HippoBean base, HippoDocumentBean issue, HstRequest request) {
 
         try {
             HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, 5, DISPLAY_DATE);
@@ -66,7 +67,7 @@ public class IssueComponent extends BaseHstComponent {
         }
     }
 
-    private HstQuery issueLinkedBeansQuery(Issue issue, HippoBean base, Class linkedClass, int limit, String sortField)
+    static HstQuery issueLinkedBeansQuery(HippoDocumentBean issue, HippoBean base, Class linkedClass, int limit, String sortField)
             throws QueryException {
 
         HstQuery query = ContentBeanUtils.createIncomingBeansQuery(issue, base, "*/@hippo:docbase", linkedClass, true);

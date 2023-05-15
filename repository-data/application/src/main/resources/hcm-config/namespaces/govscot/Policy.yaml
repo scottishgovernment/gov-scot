@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: baf409fc-ef4a-4618-9f6f-c3e05465952f
+          jcr:uuid: 7c586bd3-e612-4fa7-95bd-f4edde02ea31
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated', 'hippostd:taggable']
@@ -126,7 +126,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: 70e58bd9-6cfb-4225-b6ce-9146d3b9523e
+          jcr:uuid: 5a175b00-f877-4719-823c-c769f6bcd9ec
           hippostdpubwf:lastModificationDate: 2018-02-12T11:00:27.740Z
           hippostdpubwf:creationDate: 2018-02-12T11:00:27.740Z
           govscot:sme: ''
@@ -292,7 +292,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Topic', 'govscot:Issue']
+              nodetypes: ['govscot:Topic', 'govscot:Issue', 'govscot:DynamicIssue']
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible directorate

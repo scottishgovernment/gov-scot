@@ -1,5 +1,8 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:channel/hst:channelinfo:
   jcr:primaryType: hst:channelinfo
+  color1: ''
+  color2: ''
+  defaultCardImage: ''
   hst:channelinfoclass: scot.gov.www.channel.WebsiteInfo
   searchEnabled: false
   siteTitle: The Scottish Government

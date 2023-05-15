@@ -57,6 +57,9 @@
 [govscot:DocumentInformation] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:DynamicIssue] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:ExternalLink] > hippo:compound, hippostd:relaxed
   orderable
 
@@ -147,19 +150,20 @@
 [govscot:analytics] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:imageandtext] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:pageheading] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:publicationjob] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
 
 [govscot:siteverification] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:text] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+[govscot:text] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:imageandtext] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+[govscot:video] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:pageheading] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
-  orderable
-
-[govscot:video] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
-  orderable

@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: fe55cbcc-0a59-46e6-b7d7-6ec699eed268
+          jcr:uuid: aeae505a-fa7e-4888-87f8-dd9fca1df1a6
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -124,7 +124,7 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: adc9e214-09ca-4726-adbe-360f277e0841
+          jcr:uuid: bcee3887-78e4-4216-a8c8-d07792c181df
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -317,7 +317,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Topic', 'govscot:Issue']
+              nodetypes: ['govscot:Topic', 'govscot:Issue', 'govscot:DynamicIssue']
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible role

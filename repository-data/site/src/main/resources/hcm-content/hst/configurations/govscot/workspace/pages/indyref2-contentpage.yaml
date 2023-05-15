@@ -1,0 +1,18 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:pages/indyref2-contentpage:
+  jcr:primaryType: hst:component
+  hst:lastmodified: 2023-05-16T09:23:18.554+01:00
+  hst:referencecomponent: hst:abstractpages/base
+  /main:
+    jcr:primaryType: hst:containercomponent
+    hippo:identifier: 783a78eb-f51c-4c84-8ba2-e2e56635c19b
+    hst:label: Content Page Main
+    hst:lastmodified: 2023-05-16T09:27:56.175+01:00
+    hst:xtype: hst.vbox
+    /issue:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.DynamicIssueComponent
+      hst:iconpath: icons/divider.svg
+      hst:label: Dynamic Issue
+      hst:parameternames: [showPublications, document, showNews, showPolicies]
+      hst:parametervalues: ['on', topics/indyref2-issue, 'on', 'on']
+      hst:template: dynamicissue

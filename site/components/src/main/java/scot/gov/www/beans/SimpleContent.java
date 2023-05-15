@@ -12,7 +12,7 @@ import java.util.List;
 @Node(jcrType = "govscot:SimpleContent")
 public class SimpleContent extends BaseDocument {
     @HippoEssentialsGenerated(internalName = "govscot:title")
-    public String getTitle() {
+    public String   getTitle() {
         return getSingleProperty("govscot:title");
     }
 
