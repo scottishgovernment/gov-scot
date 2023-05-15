@@ -152,3 +152,14 @@
 [govscot:siteverification] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:text] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+  orderable
+
+[govscot:imageandtext] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+  orderable
+
+[govscot:pageheading] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+  orderable
+
+[govscot:video] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+  orderable

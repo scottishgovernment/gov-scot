@@ -1,0 +1,5 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemap/mypage:
+  jcr:primaryType: hst:sitemapitem
+  hst:componentconfigurationid: hst:pages/mypage-contentpage
+  hst:lastmodified: 2023-05-15T11:57:42.354+01:00
+  hst:pagetitle: mypage

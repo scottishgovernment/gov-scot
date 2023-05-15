@@ -1,0 +1,44 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:pages/mypage-contentpage:
+  jcr:primaryType: hst:component
+  hst:lastmodified: 2023-05-15T11:57:42.354+01:00
+  hst:referencecomponent: hst:abstractpages/base
+  /main:
+    jcr:primaryType: hst:containercomponent
+    hippo:identifier: 91ee9701-6b50-41b5-b448-79602f10c1b5
+    hst:label: Content Page Main
+    hst:lastmodified: 2023-05-15T12:30:26.886+01:00
+    hst:xtype: hst.vbox
+    /pageheading:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.PageheadingComponent
+      hst:iconpath: icons/pageheader.svg
+      hst:label: Page Header
+      hst:parameternames: [document, foregroundcolor, fullwidth, backgroundcolor]
+      hst:parametervalues: [collections/heading1, '', 'on', darkblue]
+      hst:template: pageheader
+    /imageandtext:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.ImageAndTextComponent
+      hst:iconpath: icons/imageandtext.svg
+      hst:label: Image and text
+      hst:parameternames: [document, foregroundcolor, org.hippoecm.hst.core.component.template,
+        fullwidth, backgroundcolor]
+      hst:parametervalues: [collections/imageandtext1, '', 'webfile:/freemarker/govscot/content-blocks/imageandtext.ftl',
+        'on', '']
+      hst:template: imageandtext
+    /divider:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.DividerComponent
+      hst:iconpath: icons/divider.svg
+      hst:label: Divider
+      hst:parameternames: [foregroundcolor, fullwidth, backgroundcolor]
+      hst:parametervalues: [blue, 'on', '']
+      hst:template: divider
+    /text:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentclassname: scot.gov.www.components.TextComponent
+      hst:iconpath: icons/text.svg
+      hst:label: Text
+      hst:parameternames: [document, position, foregroundcolor, fullwidth, backgroundcolor]
+      hst:parametervalues: [collections/text1, left, '', 'on', '']
+      hst:template: text

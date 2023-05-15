@@ -1,0 +1,73 @@
+.hippo-overlay {
+    // the CMS buttons are inheriting some things we set in the DS button styles, so let's just reset everything
+    button {
+        background: initial;
+        border: initial;
+        border-radius: initial;
+        color: initial;
+        cursor: initial;
+        display: initial;
+        font-size: initial;
+        font-weight: initial;
+        line-height: initial;
+        margin-bottom: initial;
+        margin-top: initial;
+        min-height: initial;
+        min-width: initial;
+        outline-width: initial;
+        padding: initial;
+        position: initial;
+        text-align: initial;
+        text-decoration: initial;
+        transition: initial;
+    }
+}
+
+.cms-blank {
+    opacity: 0.5;
+}
+
+.cms-placeholder-text > :last-child:not(:first-child) {
+    width: 60%;
+}
+
+.cms-text {
+    background: currentColor;
+    border-radius: 2px;
+    display: inline-block;
+    height: 0.66em;
+    opacity: 0.25;
+    width: 86%;
+
+    &:nth-child(2n) {
+        width: 93%;
+    }
+
+    &:nth-child(3n) {
+        width: 87%;
+    }
+
+    &:nth-child(3n):nth-child(2n) {
+        width: 91%;
+    }
+
+    &:nth-child(4n):nth-child(2n) {
+        width: 89%;
+    }
+
+    &:nth-child(4n):nth-child(3n) {
+        width: 88%;
+    }
+}
+
+.cms-display-grid {
+    display: grid;
+    min-height: 50px;
+}
+
+.cms-visible-if-show-components {
+    display: none;
+}
+.hippo-show-components .cms-visible-if-show-components {
+    display: block;
+}

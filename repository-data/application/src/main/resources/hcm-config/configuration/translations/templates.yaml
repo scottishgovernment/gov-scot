@@ -68,3 +68,11 @@ definitions:
       new-govscot-ColumnImage-image: New column image
       new-govscot-ColumnImage-folder: New column image folder
       new-siteverification-document: new siteverification document
+      new-imageandtext-document: new imageandtext document
+      new-imageandtext-folder: new imageandtext folder
+      new-pageheading-document: new pageheading document
+      new-pageheading-folder: new pageheading folder
+      new-text-document: new text document
+      new-text-folder: new text folder
+      new-video-document: new video document
+      new-video-folder: new video folder

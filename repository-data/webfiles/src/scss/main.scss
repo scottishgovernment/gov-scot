@@ -44,6 +44,7 @@ $breakpoints: (
 
 @import "components/component.az-list";
 @import "components/component.content-block";
+@import "components/component.content-blocks";
 @import "components/component.document-banner";
 @import "components/component.featured-item";
 @import "components/component.feedback";
@@ -81,3 +82,9 @@ $breakpoints: (
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
 }
+
+/**
+ * CMS STYLES
+ */
+ @import "./cms.experience-manager";
+ .ds_cb__inner .hst-fab {width: 40px !important;}
