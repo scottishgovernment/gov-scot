@@ -185,3 +185,97 @@
           /govscot:background:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+  /news:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 3abd16dc-8c07-4a63-85c9-494f543e5bef
+    hippo:name: News
+    hippo:versionHistory: 5f1eb3aa-3683-46ea-9e8a-597869db54cc
+    /news[1]:
+      jcr:primaryType: govscot:SimpleContent
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: acc0e72f-5aca-42a0-9bcd-c72748af499e
+      govscot:contentitemlanguage: en
+      govscot:metaDescription: News description
+      govscot:reportingTags: []
+      govscot:seoTitle: News title
+      govscot:summary: Summary of news
+      govscot:title: News
+      hippo:availability: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostd:tags: []
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-17T15:30:10.138+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-17T15:30:10.138+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a8913652-169a-4b51-a5c7-2684812c8604
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibilities:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+    /news[2]:
+      jcr:primaryType: govscot:SimpleContent
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 9c6bf836-0407-48c0-9c29-1b0714a79331
+      govscot:contentitemlanguage: en
+      govscot:metaDescription: News description
+      govscot:reportingTags: []
+      govscot:seoTitle: News title
+      govscot:summary: Summary of news
+      govscot:title: News
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostd:tags: []
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-17T15:30:10.138+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-17T15:30:50.443+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a8913652-169a-4b51-a5c7-2684812c8604
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibilities:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+    /news[3]:
+      jcr:primaryType: govscot:SimpleContent
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 8d00e191-f5c7-47c1-983b-7e101520a17b
+      govscot:contentitemlanguage: en
+      govscot:metaDescription: News description
+      govscot:reportingTags: []
+      govscot:seoTitle: News title
+      govscot:summary: Summary of news
+      govscot:title: News
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostd:tags: []
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-17T15:30:10.138+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-17T15:30:50.443+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2023-05-17T15:30:53.553+01:00
+      hippotranslation:id: a8913652-169a-4b51-a5c7-2684812c8604
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibilities:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"

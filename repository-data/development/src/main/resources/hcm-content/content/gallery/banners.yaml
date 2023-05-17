@@ -1,4 +1,5 @@
 /content/gallery/banners:
+  .meta:order-before: govscot
   jcr:primaryType: hippogallery:stdImageGallery
   jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
   jcr:uuid: 52b7904c-04ab-4c52-aae4-760362233c99

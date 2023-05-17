@@ -2,6 +2,7 @@
 <#include "../include/imports.ftl">
 
 <#-- @ftlvariable name="archiveUrl" type="java.lang.String" -->
+<#if document??>
 <div class="ds_wrapper">
     <main id="main-content" class="ds_layout  ds_layout--article">
         <div class="ds_layout__header">
@@ -38,3 +39,6 @@
 <@hst.headContribution>
     <meta name="description" content="${document.metaDescription}"/>
 </@hst.headContribution>
+    
+    <#include "common/metadata.social.ftl"/>
+</#if>

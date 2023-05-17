@@ -70,3 +70,103 @@
       /govscot:contact:
         jcr:primaryType: hippostd:html
         hippostd:content: ''
+  /collections:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: e98ec718-266b-41bd-9082-fcab6ae9710e
+    hippo:name: Collections
+    hippo:versionHistory: 1a241b9e-5f43-4513-b930-79237180975b
+    /collections[1]:
+      jcr:primaryType: govscot:Collection
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: f15d1008-e3b1-4cdf-9cf2-888f4dd5948c
+      govscot:metaDescription: Collections meta description
+      govscot:reportingTags: []
+      govscot:seoTitle: Collections
+      govscot:sme: ''
+      govscot:summary: Collections summary
+      govscot:title: Collections
+      hippo:availability: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-16T12:48:22.300+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-16T12:48:22.300+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a19e4c18-fbab-4bfb-8543-7738a7e1df67
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:contact:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+    /collections[2]:
+      jcr:primaryType: govscot:Collection
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: ad992df4-3a30-447a-b792-158875a35c18
+      govscot:metaDescription: Collections meta description
+      govscot:reportingTags: []
+      govscot:seoTitle: Collections
+      govscot:sme: ''
+      govscot:summary: Collections summary
+      govscot:title: Collections
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-16T12:48:22.300+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-16T12:48:56.291+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a19e4c18-fbab-4bfb-8543-7738a7e1df67
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:contact:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+    /collections[3]:
+      jcr:primaryType: govscot:Collection
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 8b650bc0-5aee-476f-8aeb-8fb797b33b46
+      govscot:metaDescription: Collections meta description
+      govscot:reportingTags: []
+      govscot:seoTitle: Collections
+      govscot:sme: ''
+      govscot:summary: Collections summary
+      govscot:title: Collections
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2023-05-16T12:48:22.300+01:00
+      hippostdpubwf:lastModificationDate: 2023-05-16T12:48:56.291+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2023-05-16T12:49:01.552+01:00
+      hippotranslation:id: a19e4c18-fbab-4bfb-8543-7738a7e1df67
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:contact:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
