@@ -1,6 +1,7 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
+<#if document??>
 <div class="cms-editable">
     <div class="ds_wrapper">
         <main id="main-content" class="ds_layout  ds_layout--article">
@@ -29,10 +30,20 @@
     </div>
 </div>
 
-<@hst.headContribution category="footerScripts">
-        <script type="module" src='<@hst.webfile path="assets/scripts/search-page.js"/>'></script>
-    </@hst.headContribution>
+<@hst.headContribution category="pageTitle">
+    <title>${document.title} - gov.scot</title>
+</@hst.headContribution>
 
-    <@hst.headContribution category="footerScripts">
-        <script nomodule="true" src='<@hst.webfile path="assets/scripts/search-page.es5.js"/>'></script>
-    </@hst.headContribution>
+<@hst.headContribution>
+    <meta name="description" content="${document.metaDescription}"/>
+</@hst.headContribution>
+
+</#if>
+
+<@hst.headContribution category="footerScripts">
+    <script type="module" src='<@hst.webfile path="assets/scripts/search-page.js"/>'></script>
+</@hst.headContribution>
+
+<@hst.headContribution category="footerScripts">
+    <script nomodule="true" src='<@hst.webfile path="assets/scripts/search-page.es5.js"/>'></script>
+</@hst.headContribution>
