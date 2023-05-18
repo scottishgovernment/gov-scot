@@ -16,7 +16,7 @@ import org.onehippo.cms7.essentials.components.CommonComponent;
 @ParametersInfo(type = ThreeImageCardsComponentInfo.class)
 public class ThreeImageCardsComponent extends CommonComponent {
 
-    static final String TYPE = "govscot:navigationcard";
+    static final String TYPE = "govscot:navigationcardcontentblock";
 
     static final String INITIAL_PATH = "navigationcards";
 

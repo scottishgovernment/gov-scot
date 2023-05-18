@@ -12,7 +12,25 @@
         <div class="ds_cb__inner">
             <#if document??>
                 <div class="ds_cb__poster">
-                    <img src="<@hst.link hippobean=document.image />" alt="${document.alt}"/>
+                    <#if document.image.xlargesixcolumns??>
+                        <img alt="${document.alt}" src="<@hst.link hippobean=document.image.xlargesixcolumns />"
+                            width="${document.image.xlargesixcolumns.width?c}"
+                            height="${document.image.xlargesixcolumns.height?c}"
+                            loading="lazy"
+                            srcset="
+                            <@hst.link hippobean=document.image.smallcolumns/> 360w,
+                            <@hst.link hippobean=document.image.smallcolumnsdoubled/> 720w,
+                            <@hst.link hippobean=document.image.mediumsixcolumns/> 352w,
+                            <@hst.link hippobean=document.image.mediumsixcolumnsdoubled/> 704w,
+                            <@hst.link hippobean=document.image.largesixcolumns/> 448w,
+                            <@hst.link hippobean=document.image.largesixcolumnsdoubled/> 896w,
+                            <@hst.link hippobean=document.image.xlargesixcolumns/> 544w,
+                            <@hst.link hippobean=document.image.xlargesixcolumnsdoubled/> 1088w"
+                            sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"
+                            >
+                    <#else>
+                        <img loading="lazy" src="<@hst.link hippobean=document.image />" alt="${document.alt}"/>
+                    </#if>
                 </div>
 
                 <div class="ds_cb__text">

@@ -16,5 +16,14 @@ public class PageheadingComponent extends EssentialsDocumentComponent {
         request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
         request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
+        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
+        request.setAttribute("widetext", paramInfo.getWideText());
+        request.setAttribute("verticalalign", paramInfo.getVerticalAlign());
+        request.setAttribute("lightheader", paramInfo.getLightHeader());
+        request.setAttribute("medianomargin", paramInfo.getMediaNoMargin());
+        request.setAttribute("mediaaligndesktop", paramInfo.getMediaAlignDesktop());
+        request.setAttribute("mediaalignmobile", paramInfo.getMediaAlignMobile());
+        request.setAttribute("asidebackgroundcolor", paramInfo.getAsideBackgroundColor());
+        request.setAttribute("hideasideicon", paramInfo.getHideAsideIcon());
     }
 }

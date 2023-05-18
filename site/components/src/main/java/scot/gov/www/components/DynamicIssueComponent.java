@@ -22,6 +22,10 @@ public class DynamicIssueComponent extends CommonComponent {
         HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
         HippoDocumentBean documentBean =   baseBean.getBean(paramInfo.getDocument());
 
+        request.setAttribute("showPolicies", paramInfo.getShowPolicies());
+        request.setAttribute("showNews", paramInfo.getShowNews());
+        request.setAttribute("showPublications", paramInfo.getShowPublications());
+
         if (paramInfo.getShowPolicies().booleanValue()) {
             IssueComponent.populatePolicies(baseBean, documentBean, request);
         }

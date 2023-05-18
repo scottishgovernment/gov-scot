@@ -1,0 +1,50 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:abstractpages/base-no-breadcrumb:
+      jcr:primaryType: hst:component
+      hst:template: base-layout
+      /menu:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.MainMenu
+        hst:parameternames: [selectedMenu, level, menu]
+        hst:parametervalues: ['on', '1', main]
+        hst:template: base-top-menu
+        /about-menu:
+          jcr:primaryType: hst:component
+          hst:componentclassname: scot.gov.www.components.AboutMenu
+          hst:parameternames: [mobile]
+          hst:parametervalues: ['true']
+          hst:suppresswastemessage: true
+          hst:template: about.side-menu
+        /search:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/search
+          hst:suppresswastemessage: true
+      /footer:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.FooterComponent
+        hst:template: base-footer
+      /mourning-banner:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.MourningBannerComponent
+        hst:template: mourning-banner
+      /googletagmanager:
+        jcr:primaryType: hst:component
+        hst:referencecomponent: hst:components/googletagmanager
+      /important-banner:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.ImportantBannerComponent
+        hst:template: important-banner
+      /siteverification:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.SiteVerificationComponent
+        hst:suppresswastemessage: true
+        hst:template: site-verification
+      /schema-website:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.SchemaWebsiteComponent
+        hst:template: schema-website
+      /preview-indicator:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.publishing.staging.components.PreviewIndicatorComponent
+        hst:template: preview-indicator

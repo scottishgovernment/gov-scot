@@ -76,5 +76,7 @@ definitions:
       new-text-folder: new text folder
       new-video-document: new video document
       new-video-folder: new video folder
-      new-DynamicIssue-document: new DynamicIssue document
+      new-navigationcardcontentblock-document: new navigationcard document
+      new-navigationcardcontentblock-folder: new navigationcard folder
+      new-DynamicIssue-document: new Dynamic Issue document
       new-dynamic-issue-folder: New dynamic issue folder

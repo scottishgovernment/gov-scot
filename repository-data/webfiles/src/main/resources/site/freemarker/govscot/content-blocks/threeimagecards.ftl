@@ -2,9 +2,9 @@
 <#include "../../include/imports.ftl">
 <#include "../../include/cms-placeholders.ftl">
 
-<#-- @ftlvariable name="document1" type="scot.gov.www.beans.navigationcard" -->
-<#-- @ftlvariable name="document2" type="scot.gov.www.beans.navigationcard" -->
-<#-- @ftlvariable name="document3" type="scot.gov.www.beans.navigationcard" -->
+<#-- @ftlvariable name="document1" type="scot.gov.www.beans.navigationcardcotentblock" -->
+<#-- @ftlvariable name="document2" type="scot.gov.www.beans.navigationcardcotentblock" -->
+<#-- @ftlvariable name="document3" type="scot.gov.www.beans.navigationcardcotentblock" -->
 
 <div class="ds_cb  ds_cb--cards  ds_cb--bg-grey  <#if fullwidth>ds_cb--fullwidth</#if>">
     <div class="ds_wrapper">
@@ -32,7 +32,7 @@
                         <div class="ds_category-item__summary">${document1.text}</div>
                     </div>
 
-                    <@hst.manageContent hippobean=document1 documentTemplateQuery="new-navigationcard-document" parameterName="document1" rootPath="navigationcards"/>
+                    <@hst.manageContent hippobean=document1 documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document1" rootPath="navigationcards2"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_card  cms-blank">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <@hst.manageContent documentTemplateQuery="new-navigationcard-document" parameterName="document1" rootPath="navigationcards"/>
+                    <@hst.manageContent documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document1" rootPath="navigationcards2"/>
                 </div>
             </#if>
 
@@ -78,7 +78,7 @@
                         <div class="ds_category-item__summary">${document2.text}</div>
                     </div>
 
-                    <@hst.manageContent hippobean=document1 documentTemplateQuery="new-navigationcard-document" parameterName="document2" rootPath="navigationcards"/>
+                    <@hst.manageContent hippobean=document2 documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document2" rootPath="navigationcards2"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_card  cms-blank">
@@ -97,7 +97,7 @@
                         </div>
                     </div>
 
-                    <@hst.manageContent documentTemplateQuery="new-navigationcard-document" parameterName="document2" rootPath="navigationcards"/>
+                    <@hst.manageContent documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document2" rootPath="navigationcards2"/>
                 </div>
             </#if>
 
@@ -124,7 +124,7 @@
                         <div class="ds_category-item__summary">${document3.text}</div>
                     </div>
 
-                    <@hst.manageContent hippobean=document1 documentTemplateQuery="new-navigationcard-document" parameterName="document3" rootPath="navigationcards"/>
+                    <@hst.manageContent hippobean=document3 documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document3" rootPath="navigationcards2"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_card  cms-blank">
@@ -143,7 +143,7 @@
                         </div>
                     </div>
 
-                    <@hst.manageContent documentTemplateQuery="new-navigationcard-document" parameterName="document3" rootPath="navigationcards"/>
+                    <@hst.manageContent documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document3" rootPath="navigationcards2"/>
                 </div>
             </#if>
         </div>

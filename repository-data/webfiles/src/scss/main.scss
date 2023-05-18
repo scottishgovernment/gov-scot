@@ -44,7 +44,6 @@ $breakpoints: (
 
 @import "components/component.az-list";
 @import "components/component.content-block";
-@import "components/component.content-blocks";
 @import "components/component.document-banner";
 @import "components/component.featured-item";
 @import "components/component.feedback";
@@ -68,6 +67,9 @@ $breakpoints: (
 @import "components/component.toggle-link";
 @import "components/component.video-wrapper";
 @import "components/preview-notification";
+
+@import "content-blocks/all-content-blocks";
+
 @import "overrides/override.accordion";
 @import "overrides/override.card";
 @import "overrides/override.feature-header";

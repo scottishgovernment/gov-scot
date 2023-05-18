@@ -1,29 +1,20 @@
 definitions:
   config:
-    /hippo:namespaces/govscot/pageheading:
+    /hippo:namespaces/govscot/navigationcardcontentblock:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 2da7c6a2-d91e-45ab-985a-c3fc6c59207d
+      jcr:uuid: b4d25818-1f08-4749-905d-021bb79715e0
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: ee9cb2ba-cc5f-4428-853a-2a1b3f29a4cb
+        jcr:uuid: f9ea623f-d64a-47bf-b642-97376a02bbef
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 4e278dbe-832c-455f-a2c2-af4b8b1069ca
+          jcr:uuid: 1d037c80-b880-4c61-9c8e-486b60cfb0b5
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed',
-            'hippotranslation:translated']
+          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /description:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:description
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
           /title:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -33,14 +24,15 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [required]
-          /alt:
+          /text:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:alt
+            hipposysedit:path: govscot:text
             hipposysedit:primary: false
-            hipposysedit:type: String
+            hipposysedit:type: Text
+            hipposysedit:validators: [required]
           /image:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -49,14 +41,7 @@ definitions:
             hipposysedit:path: govscot:image
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
-          /cta:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:cta
-            hipposysedit:primary: false
-            hipposysedit:type: String
+            hipposysedit:validators: [required]
           /link:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -65,6 +50,15 @@ definitions:
             hipposysedit:path: govscot:link
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+          /alt:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:alt
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required]
           /externalLink:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -73,42 +67,68 @@ definitions:
             hipposysedit:path: govscot:externalLink
             hipposysedit:primary: false
             hipposysedit:type: String
-          /videoImage:
+        /hipposysedit:nodetype[2]:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: b4fd9638-92ad-41ae-ad5b-7663240a1c6e
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
+          /title:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:videoImage
-            hipposysedit:primary: false
-            hipposysedit:type: hippogallerypicker:imagelink
-          /videoUrl:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:videoUrl
+            hipposysedit:path: govscot:title
             hipposysedit:primary: false
             hipposysedit:type: String
-          /aside:
+            hipposysedit:validators: [required]
+          /text:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:aside
+            hipposysedit:path: govscot:text
             hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /asideIcon:
+            hipposysedit:type: Text
+            hipposysedit:validators: [required]
+          /image:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:asideIcon
+            hipposysedit:path: govscot:image
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
+            hipposysedit:validators: [required]
+          /link:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:link
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /alt:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:alt
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required]
+          /externalLink:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:externalLink
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
-          jcr:primaryType: govscot:pageheading
+          jcr:primaryType: govscot:navigationcardcontentblock
           hippostd:holder: holder
           hippostd:state: draft
           hippostdpubwf:createdBy: ''
@@ -116,14 +136,13 @@ definitions:
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
+          govscot:text: ''
           govscot:title: ''
           govscot:alt: ''
-          jcr:uuid: f9c99aea-7701-41c4-aa1b-fae943ef51f3
-          hippostdpubwf:lastModificationDate: 2021-07-29T10:15:50.235+01:00
-          hippostdpubwf:creationDate: 2021-07-29T10:15:50.235+01:00
-          /govscot:description:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
+          jcr:uuid: ccd2a44b-72a8-4821-80f6-96a56c4fb910
+          hippostdpubwf:lastModificationDate: 2021-07-28T15:52:30.106+01:00
+          hippostdpubwf:creationDate: 2021-07-28T15:52:30.106+01:00
+          govscot:externalLink: ''
           /govscot:image:
             jcr:primaryType: hippogallerypicker:imagelink
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -133,21 +152,32 @@ definitions:
           /govscot:link:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:videoImage:
+        /hipposysedit:prototype[2]:
+          jcr:primaryType: nt:unstructured
+          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostdpubwf:document',
+            'hippotranslation:translated', 'mix:referenceable']
+          jcr:uuid: 2e967fbb-0e9c-4c15-a3a2-93ff1f6f72f5
+          govscot:alt: ''
+          govscot:externalLink: ''
+          govscot:text: ''
+          govscot:title: ''
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2021-07-28T15:52:30.106+01:00
+          hippostdpubwf:lastModificationDate: 2021-07-28T15:52:30.106+01:00
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          /govscot:image:
             jcr:primaryType: hippogallerypicker:imagelink
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
-          /govscot:aside:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:asideIcon:
-            jcr:primaryType: hippogallerypicker:imagelink
+          /govscot:link:
+            jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -163,96 +193,51 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /text:
+            jcr:primaryType: frontend:plugin
+            caption: Text
+            field: text
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /image:
             jcr:primaryType: frontend:plugin
             caption: Image
             field: image
-            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /alt:
             jcr:primaryType: frontend:plugin
-            caption: Alt
+            caption: Image alt text
             field: alt
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /description:
-            jcr:primaryType: frontend:plugin
-            caption: Description
-            field: description
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /cta:
-            jcr:primaryType: frontend:plugin
-            caption: Call to action label
-            field: cta
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /link:
             jcr:primaryType: frontend:plugin
-            caption: Call to action link
+            caption: Link
             field: link
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /externalLink:
             jcr:primaryType: frontend:plugin
-            caption: Call to action external link
+            caption: External link
             field: externalLink
+            hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /videoImage:
-            jcr:primaryType: frontend:plugin
-            caption: Video image
-            field: videoImage
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /videoUrl:
-            jcr:primaryType: frontend:plugin
-            caption: Video URL to link to
-            field: videoUrl
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /aside:
-            jcr:primaryType: frontend:plugin
-            caption: Aside
-            field: aside
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              ckeditor.config.overlayed.json: '{ disallowedContent: ''*[style]{*}'',
-                removePlugins: ''sourcearea,codemirror,youtube,specialchar'', removeButtons:
-                ''Styles,Table,PickImage,Underline,Strike,Subscript,Superscript,Indent,Outdent''}'
-          /asideIcon:
-            jcr:primaryType: frontend:plugin
-            caption: Aside icon
-            field: asideIcon
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Use SVG file format
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              nodetypes: []

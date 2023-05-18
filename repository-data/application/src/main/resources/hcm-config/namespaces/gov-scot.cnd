@@ -167,3 +167,5 @@
 [govscot:video] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:navigationcardcontentblock] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
+  orderable

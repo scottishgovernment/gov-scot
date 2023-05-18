@@ -5,6 +5,9 @@ definitions:
       /base-layout:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/base-layout.ftl
+      /base-layout-no-breadcrumb:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/base-layout-no-breadcrumb.ftl
       /base-top-menu:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/base-top-menu.ftl
@@ -185,6 +188,9 @@ definitions:
       /doubletext:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/content-blocks/doubletext.ftl
+      /pageheader:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/content-blocks/pageheader.ftl
       /header:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/content-blocks/header.ftl
