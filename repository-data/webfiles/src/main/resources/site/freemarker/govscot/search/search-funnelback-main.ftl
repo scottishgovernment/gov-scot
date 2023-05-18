@@ -26,6 +26,10 @@
                     <@hst.include ref="results"/>
                 </section>
             </div>
+
+            <div class="ds_layout__feedback">
+                <#include '../common/feedback-wrapper.ftl'>
+            </div>
         </main>
     </div>
 </div>

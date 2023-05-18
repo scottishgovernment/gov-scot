@@ -17,3 +17,6 @@ definitions:
           hst:parameternames: [searchtype]
           hst:parametervalues: [bloomreach]
           hst:template: search-funnelback-results
+        /feedback:
+          jcr:primaryType: hst:component
+          hst:referencecomponent: hst:components/feedback

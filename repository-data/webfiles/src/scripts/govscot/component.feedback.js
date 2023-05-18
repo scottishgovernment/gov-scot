@@ -85,6 +85,16 @@
              contentItem: document.getElementById('documentUuid').value
          };
 
+         const urlParams = new URLSearchParams(window.location.search);
+         if (urlParams.has('q')) {
+             feedback.searchTerm = urlParams.get('q');
+         }
+         if (urlParams.has('cat')) {
+             feedback.searchCat = urlParams.get('cat');
+         }
+         if (urlParams.has('page')) {
+            feedback.searchPage = urlParams.get('page');
+         }
          const errorSummaryEl = document.getElementById('feedbackErrorSummary');
          const errorSummaryContentEl = errorSummaryEl.querySelector('.ds_error-summary__content');
          errorSummaryContentEl.innerHTML = '';
