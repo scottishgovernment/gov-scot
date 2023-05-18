@@ -21,6 +21,7 @@ import javax.jcr.RepositoryException;
 
 import java.io.IOException;
 
+import static org.apache.commons.lang.StringUtils.substringAfter;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
 /**
@@ -112,7 +113,7 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
         // form the letters of the slug into a path e.g. myslug -> /m/y/s/l/u/g/
         StringBuilder path = new StringBuilder("/content/redirects/prgloo/");
         slug = ArchiveUtils.escapeJcrPath(slug);
-        for(char c : slug.toCharArray()) {
+        for(char c : substringAfter(slug, "/").toCharArray()) {
             path.append(c).append("/");
         }
 
