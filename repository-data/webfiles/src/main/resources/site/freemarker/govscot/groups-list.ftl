@@ -15,11 +15,15 @@
     </main>
 </div>
 
-<@hst.headContribution category="pageTitle"><title>Groups - gov.scot</title></@hst.headContribution>
+<@hst.headContribution category="pageTitle">
+    <title>Groups - gov.scot</title>
+</@hst.headContribution>
 <#if document??>
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
+
+    <#include "common/metadata.social.ftl"/>
 </#if>
 
 <@hst.link var="canonicalitem" siteMapItemRefId="groups" canonical=true/>

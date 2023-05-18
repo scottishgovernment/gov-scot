@@ -1063,7 +1063,7 @@
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
         jcr:uuid: 19b138f5-3e06-4b0f-8222-5a9f3ff237cd
         hippo:name: First Minister
-        hippo:versionHistory: 668ad35a-349b-4d3e-9b49-6a1782aaa313
+        hippo:versionHistory: f2f4e9eb-1e12-49b7-8688-4c0bcc3158c1
         /index[1]:
           jcr:primaryType: govscot:FeaturedRole
           jcr:mixinTypes: ['mix:referenceable']
@@ -1076,16 +1076,17 @@
             has ultimate responsibility for all policy and decisions.
           govscot:title: First Minister
           hippo:availability: []
+          hippostd:retainable: false
           hippostd:state: draft
           hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
           hippostdpubwf:creationDate: 2021-10-28T16:15:51.131+01:00
-          hippostdpubwf:lastModificationDate: 2021-10-29T11:44:14.109+01:00
-          hippostdpubwf:lastModifiedBy: Max.Meres@gov.scot
+          hippostdpubwf:lastModificationDate: 2023-05-16T17:00:27.480+01:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: 12e2b1f1-2e00-4e69-b3fa-003b4d9b52b5
           hippotranslation:locale: document-type-locale
           /govscot:incumbent:
             jcr:primaryType: hippo:mirror
-            hippo:docbase: 47873761-1d06-49d3-b6dd-8711cce5ac69
+            hippo:docbase: 981bf9a7-b1d8-4e3b-9b2a-565e107cddaa
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: |-
@@ -1190,16 +1191,17 @@
             has ultimate responsibility for all policy and decisions.
           govscot:title: First Minister
           hippo:availability: [preview]
+          hippostd:retainable: false
           hippostd:state: unpublished
           hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
           hippostdpubwf:creationDate: 2021-10-28T16:15:51.131+01:00
-          hippostdpubwf:lastModificationDate: 2021-10-29T09:49:29.528+01:00
-          hippostdpubwf:lastModifiedBy: Max.Meres@gov.scot
+          hippostdpubwf:lastModificationDate: 2023-05-16T17:04:52.302+01:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: 12e2b1f1-2e00-4e69-b3fa-003b4d9b52b5
           hippotranslation:locale: document-type-locale
           /govscot:incumbent:
             jcr:primaryType: hippo:mirror
-            hippo:docbase: 47873761-1d06-49d3-b6dd-8711cce5ac69
+            hippo:docbase: 981bf9a7-b1d8-4e3b-9b2a-565e107cddaa
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: |-
@@ -1304,17 +1306,18 @@
             has ultimate responsibility for all policy and decisions.
           govscot:title: First Minister
           hippo:availability: [live]
+          hippostd:retainable: false
           hippostd:state: published
           hippostdpubwf:createdBy: kenneth.mccalman@gov.scot
           hippostdpubwf:creationDate: 2021-10-28T16:15:51.131+01:00
-          hippostdpubwf:lastModificationDate: 2021-10-29T09:49:29.528+01:00
-          hippostdpubwf:lastModifiedBy: Max.Meres@gov.scot
-          hippostdpubwf:publicationDate: 2021-10-29T11:54:51.139+01:00
+          hippostdpubwf:lastModificationDate: 2023-05-16T17:04:52.302+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2023-05-16T17:04:54.421+01:00
           hippotranslation:id: 12e2b1f1-2e00-4e69-b3fa-003b4d9b52b5
           hippotranslation:locale: document-type-locale
           /govscot:incumbent:
             jcr:primaryType: hippo:mirror
-            hippo:docbase: 47873761-1d06-49d3-b6dd-8711cce5ac69
+            hippo:docbase: 981bf9a7-b1d8-4e3b-9b2a-565e107cddaa
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: |-
@@ -4060,7 +4063,7 @@
           'mix:versionable']
         jcr:uuid: 981bf9a7-b1d8-4e3b-9b2a-565e107cddaa
         hippo:name: Humza Yousaf  MSP
-        hippo:versionHistory: 422c065d-d2b6-43a8-8bf9-80afc2781d9e
+        hippo:versionHistory: d2090d42-3026-4399-b382-17b409bd3356
         /humza-yousaf[1]:
           jcr:primaryType: govscot:Person
           jcr:mixinTypes: ['mix:referenceable']
@@ -4076,14 +4079,15 @@
           govscot:title: Humza Yousaf  MSP
           hippo:availability: [live]
           hippo:name: Humza Yousaf  MSP
+          hippostd:retainable: false
           hippostd:state: published
           hippostd:tags: [humza yousaf msp, minister, islands, transport, biography,
             health, social care, cabinet secretary]
           hippostdpubwf:createdBy: build.api@mygov.scot
           hippostdpubwf:creationDate: 2015-09-25T14:36:40+01:00
-          hippostdpubwf:lastModificationDate: 2021-09-13T14:31:20.617+01:00
-          hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
-          hippostdpubwf:publicationDate: 2021-09-13T14:31:22.606+01:00
+          hippostdpubwf:lastModificationDate: 2023-05-16T17:04:31.671+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2023-05-16T17:04:34.228+01:00
           hippotranslation:id: 0f3b61e9-a444-43e8-b003-99545630ac55
           hippotranslation:locale: en
           /govscot:content:
@@ -4121,7 +4125,7 @@
             govscot:youtube: ''
           /govscot:image:
             jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: dc5555f5-0d47-454f-aa3e-9fefefa05e79
+            hippo:docbase: eae96fd3-d058-4b01-9029-d498e1afa3c9
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
@@ -4140,13 +4144,14 @@
           govscot:title: Humza Yousaf  MSP
           hippo:availability: [preview]
           hippo:name: Humza Yousaf  MSP
+          hippostd:retainable: false
           hippostd:state: unpublished
           hippostd:tags: [humza yousaf msp, minister, islands, transport, biography,
             health, social care, cabinet secretary]
           hippostdpubwf:createdBy: build.api@mygov.scot
           hippostdpubwf:creationDate: 2015-09-25T14:36:40+01:00
-          hippostdpubwf:lastModificationDate: 2021-09-13T14:31:20.617+01:00
-          hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+          hippostdpubwf:lastModificationDate: 2023-05-16T17:04:31.671+01:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: 0f3b61e9-a444-43e8-b003-99545630ac55
           hippotranslation:locale: en
           /govscot:content:
@@ -4184,7 +4189,7 @@
             govscot:youtube: ''
           /govscot:image:
             jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: dc5555f5-0d47-454f-aa3e-9fefefa05e79
+            hippo:docbase: eae96fd3-d058-4b01-9029-d498e1afa3c9
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
@@ -4203,13 +4208,14 @@
           govscot:title: Humza Yousaf  MSP
           hippo:availability: []
           hippo:name: Humza Yousaf  MSP
+          hippostd:retainable: false
           hippostd:state: draft
           hippostd:tags: [humza yousaf msp, minister, islands, transport, biography,
             health, social care, cabinet secretary]
           hippostdpubwf:createdBy: build.api@mygov.scot
           hippostdpubwf:creationDate: 2015-09-25T14:36:40+01:00
-          hippostdpubwf:lastModificationDate: 2021-09-13T14:31:12.585+01:00
-          hippostdpubwf:lastModifiedBy: joanne.logan@gov.scot
+          hippostdpubwf:lastModificationDate: 2023-05-16T17:04:24.397+01:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: 0f3b61e9-a444-43e8-b003-99545630ac55
           hippotranslation:locale: en
           /govscot:content:
@@ -4247,7 +4253,7 @@
             govscot:youtube: ''
           /govscot:image:
             jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: dc5555f5-0d47-454f-aa3e-9fefefa05e79
+            hippo:docbase: eae96fd3-d058-4b01-9029-d498e1afa3c9
             hippo:facets: []
             hippo:modes: []
             hippo:values: []

@@ -124,6 +124,10 @@
     </main>
 </div>
 
+<#include "common/metadata.social.ftl"/>
+
+    <!-- DC Meta Tags -->
+
     <@hst.headContribution category="dcMeta">
         <meta name="dc.title" content="${document.title}"/>
     </@hst.headContribution>
@@ -156,6 +160,8 @@
             <meta name="description" content="${document.metaDescription}"/>
         </#if>
     </@hst.headContribution>
+
+    <#include "common/metadata.social.ftl"/>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />

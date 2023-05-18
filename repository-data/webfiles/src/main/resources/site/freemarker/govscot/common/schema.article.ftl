@@ -48,51 +48,8 @@
     </script>
 </@hst.headContribution>
 
-<#-- Facebook meta tags -->
-<@hst.headContribution category="facebookMeta">
-<meta property="og:url" content="${link}" />
-</@hst.headContribution>
 
-<@hst.headContribution category="facebookMeta">
-<meta property="og:type" content="website" />
-</@hst.headContribution>
-
-<@hst.headContribution category="facebookMeta">
-<meta property="og:title" content="${document.title?json_string}" />
-</@hst.headContribution>
-
-<#if document.metaDescription??>
-<@hst.headContribution category="facebookMeta">
-<meta property="og:description" content="${document.metaDescription?json_string}" />
-</@hst.headContribution>
-</#if>
-
-<@hst.headContribution category="facebookMeta">
-<meta property="og:image" content="${imagelink}" />
-</@hst.headContribution>
-
-<#-- Twitter Meta Tags -->
-<@hst.headContribution category="twitterMeta">
-<meta name="twitter:card" content="summary_large_image"/>
-</@hst.headContribution>
-
-<@hst.headContribution category="twitterMeta">
-<meta property="twitter:url" content="${link}"/>
-</@hst.headContribution>
-
-<@hst.headContribution category="twitterMeta">
-<meta name="twitter:title" content="${document.title?json_string}"/>
-</@hst.headContribution>
-
-<#if document.metaDescription??>
-<@hst.headContribution category="twitterMeta">
-<meta name="twitter:description" content="${document.metaDescription?json_string}"/>
-</@hst.headContribution>
-</#if>
-
-<@hst.headContribution category="twitterMeta">
-<meta name="twitter:image" content="${imagelink}" />
-</@hst.headContribution>
+<#include "metadata.social.ftl"/>
 
 <!-- DC Meta Tags -->
 

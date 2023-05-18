@@ -107,10 +107,12 @@
     </@hst.headContribution>
 
     <#if document.image??>
-        <@hst.headContribution category="facebookMeta">
-            <meta property="og:image" content="<@hst.link hippobean=document.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>" />
-        </@hst.headContribution>
+        <@hst.link var="imagelink" hippobean=document.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>
+    <#else>
+        <#assign imageBlank = true>
     </#if>
+
+    <#include "common/metadata.social.ftl"/>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />

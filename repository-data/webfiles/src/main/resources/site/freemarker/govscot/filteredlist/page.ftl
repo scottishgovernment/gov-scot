@@ -46,6 +46,8 @@
         <meta name="description" content="${index.metaDescription}"/>
     </@hst.headContribution>
 
+    <#include "common/metadata.social.ftl"/>
+
     <@hst.link var="canonicalitem" hippobean=index canonical=true/>
 
     <#assign canonicalitem = canonicalitem?remove_ending("index/")/>

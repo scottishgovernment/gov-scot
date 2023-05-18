@@ -193,6 +193,8 @@
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
+    
+    <#include "common/metadata.social.ftl"/>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />

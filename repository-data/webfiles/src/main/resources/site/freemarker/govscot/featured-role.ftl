@@ -284,6 +284,7 @@
 </#if>
 
 <#if document??>
+
     <@hst.headContribution category="dcMeta">
         <meta name="dc.title" content="${document.title}"/>
     </@hst.headContribution>
@@ -314,12 +315,12 @@
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
-
+ 
     <#if document.incumbent.image??>
-        <@hst.headContribution category="facebookMeta">
-            <meta property="og:image" content="<@hst.link hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>" />
-        </@hst.headContribution>
+        <@hst.link var="imagelink" hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>
     </#if>
+
+    <#include "common/metadata.social.ftl"/>
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "common/canonical.ftl" />

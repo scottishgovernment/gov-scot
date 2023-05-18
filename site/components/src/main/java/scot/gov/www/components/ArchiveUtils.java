@@ -70,11 +70,13 @@ public class ArchiveUtils {
     }
 
     public static String escapeJcrPath(String path) {
-        return Arrays.stream(path.split("/"))
+        String escaped = Arrays.stream(path.split("/"))
                 .filter(segment -> !StringUtils.equals(segment, ".."))
+                .filter(StringUtils::isNotBlank)
                 .map(Text::escapeIllegalJcrChars)
                 .map(StringUtils::deleteWhitespace)
                 .collect(joining("/"));
+        return "/" + escaped;
     }
 
     private static String archiveBaseUrl(HstRequest request) {
