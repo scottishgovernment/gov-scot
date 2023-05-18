@@ -6,7 +6,7 @@
 
 <div class="ds_cb  ds_cb--link-list">
     <div class="ds_wrapper">
-        <#if showNews>
+        <#if showNews && news?has_content>
             <section class="gov_latest-feed  gov_latest-feed--horizontal  gov_content-block">
                 <div>
                     <h2>
@@ -37,7 +37,7 @@
             </section>
         </#if>
 
-        <#if showPublications>
+        <#if showPublications && publications?has_content>
             <section class="gov_latest-feed  gov_latest-feed--horizontal  gov_content-block">
                 <div>
                     <h2>
@@ -74,7 +74,7 @@
             </section>
         </#if>
 
-        <#if showPolicies>
+        <#if showPolicies && policies?has_content>
             <section class="gov_latest-feed  gov_latest-feed--horizontal  gov_content-block">
                 <div>
                     <h2>
