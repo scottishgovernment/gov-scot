@@ -10,7 +10,7 @@
     <div class="ds_wrapper">
         <div class="ds_cb__inner">
             <#if document1??>
-                <div class="ds_card  ds_card--has-hover">
+                <div class="ds_card">
                     <#if showimages>
                         <div class="ds_card__media  <#if smallvariant>ds_card__media--small-mobile</#if>">
                             <div class="ds_aspect-box">
@@ -56,7 +56,7 @@
             </#if>
 
             <#if document2??>
-                <div class="ds_card  ds_card--has-hover">
+                <div class="ds_card">
                     <#if showimages>
                         <div class="ds_card__media  <#if smallvariant>ds_card__media--small-mobile</#if>">
                             <div class="ds_aspect-box">
@@ -102,7 +102,7 @@
             </#if>
 
             <#if document3??>
-                <div class="ds_card  ds_card--has-hover">
+                <div class="ds_card">
                     <#if showimages>
                         <div class="ds_card__media  <#if smallvariant>ds_card__media--small-mobile</#if>">
                             <div class="ds_aspect-box">
