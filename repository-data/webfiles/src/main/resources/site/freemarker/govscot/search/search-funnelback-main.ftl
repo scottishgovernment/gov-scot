@@ -8,7 +8,7 @@
 
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <h1>${document.title}</h1>
+                    <h1 class="ds_page-header__title">${document.title}</h1>
                 </header>
             </div>
 
