@@ -113,7 +113,7 @@
 
                 <@hst.manageContent hippobean=document documentTemplateQuery="new-text-document" parameterName="document" rootPath="content-blocks/text"/>
             <#elseif editMode>
-                <@hst.manageContent documentTemplateQuery="new-DynamicIssue-document" parameterName="issue" rootPath="content-blocks/text"/>
+                <@hst.manageContent documentTemplateQuery="new-dynamic-issue-document" parameterName="issue" rootPath="content-blocks/text"/>
             </#if>
         </div>
     </div>
