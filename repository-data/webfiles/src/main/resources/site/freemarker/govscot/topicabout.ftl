@@ -202,4 +202,6 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
     </@hst.headContribution>
+
+    <#include "common/metadata.social.ftl"/>
 </#if>
