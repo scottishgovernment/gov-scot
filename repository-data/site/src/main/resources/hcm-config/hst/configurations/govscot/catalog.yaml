@@ -55,6 +55,12 @@ definitions:
         /issue:
           jcr:primaryType: hst:containeritemcomponent
           hst:componentclassname: scot.gov.www.components.DynamicIssueComponent
-          hst:iconpath: icons/divider.svg
+          hst:iconpath: icons/dynamicissue.svg
           hst:label: Dynamic Issue
           hst:template: dynamicissue
+        /featuregrid:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.FeatureGridComponent
+          hst:iconpath: icons/featuregrid.svg
+          hst:label: Feature grid (2-4 items)
+          hst:template: featuregrid

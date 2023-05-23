@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" version="1.1" viewBox="0 0 160 160">
+  <style>
+    .st3,.st4{fill:none;stroke:#ccc;stroke-width:2;stroke-miterlimit:10}.st4{stroke-dasharray:9.1224,4.0544}
+  </style>
+  <text fill="#b3b3b3" font-family="Roboto-Regular" font-size="49.93" transform="translate(20.48 94.6)">Issue</text>
+  <path d="M159 154.5v4.5h-4.5" class="st3"/>
+  <path d="M150.4 159H7.5" class="st4"/>
+  <path d="M5.5 159H1v-4.5" class="st3"/>
+  <path d="M1 150.4V7.5" class="st4"/>
+  <path d="M1 5.5V1h4.5" class="st3"/>
+  <path d="M9.6 1h142.9" class="st4"/>
+  <path d="M154.5 1h4.5v4.5" class="st3"/>
+  <path d="M159 9.6v142.9" class="st4"/>
+</svg>
