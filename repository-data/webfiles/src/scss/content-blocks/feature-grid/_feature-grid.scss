@@ -7,6 +7,11 @@
 
     @include ds_responsive-padding(4, bottom);
 
+    &__item {
+        // for proper placement of CMS orange buttons
+        position: relative;
+    }
+
     // 2 items
     .ds_cb__inner {
 
@@ -20,9 +25,9 @@
             @supports(display: grid) {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-            
+
         }
-    
+
     }
 
     // 3 items
@@ -31,18 +36,18 @@
         .ds_cb__inner {
 
             @include ds_media-query(medium) {
-    
+
                 > * {
                     float: left;
                     @include ds_colwidth(4);
                 }
-    
+
                 @supports(display: grid) {
                     grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
-                
+
             }
-        
+
         }
 
     }
@@ -53,7 +58,7 @@
         .ds_cb__inner {
 
             @include ds_media-query(medium) {
-    
+
                 > * {
                     float: left;
                     @include ds_colwidth(6);
@@ -62,26 +67,26 @@
                         clear: left;
                     }
                 }
-    
+
                 @supports(display: grid) {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
-                
+
             }
 
             @include ds_media-query(large) {
-    
+
                 > * {
                     float: left;
                     @include ds_colwidth(3);
                 }
-    
+
                 @supports(display: grid) {
                     grid-template-columns: repeat(4, minmax(0, 1fr));
                 }
-                
+
             }
-        
+
         }
 
     }
@@ -90,7 +95,7 @@
         @include ds_responsive-padding(3, top);
         @include ds_responsive-padding(4, bottom);
         margin: 0;
-        
+
         &-media {
             @include ds_media-query (medium-down) {
                 &--small-mobile {
@@ -98,7 +103,7 @@
                 }
             }
         }
-        
+
         &-title {
             margin: 0;
             @include ds_responsive-margin(3, top, true);
@@ -114,6 +119,6 @@
 
 
 
-    
+
 
 }
