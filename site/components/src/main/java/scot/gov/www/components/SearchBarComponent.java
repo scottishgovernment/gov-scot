@@ -25,6 +25,7 @@ public class SearchBarComponent extends BaseHstComponent {
                 .getHstComponentConfiguration();
         String formatName = componentConfig.getName();
         request.setAttribute("hideSearch", equalsAny(formatName, "home") || formatName.startsWith("search"));
+        request.setAttribute("searchcategory", "sitesearch");
     }
 
     /**
