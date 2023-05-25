@@ -19,9 +19,8 @@
         <div id="autocomplete-status" class="visually-hidden"></div>
         <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
 
-        <#if searchcategory??>
-            <input type="hidden" name="cat" value="${searchcategory}">
-        </#if>
+        <input type="hidden" name="cat" value="sitesearch">
+
         <#if ds_autocomplete??>
             <input
                     aria-autocomplete="list"
