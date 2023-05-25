@@ -5,11 +5,11 @@ definitions:
       jcr:mixinTypes: ['hipposys:implementation']
       hippostd:icon: addfolder_ico
       hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
-        $inherited, './index/index/govscot:title', $localName, './index/hippo:name',
-        $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
-        $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
-        $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
-        $localName]
+                        $inherited, './index/index/govscot:title', $localName, './index/hippo:name',
+                        $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
+                        $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
+                        $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
+                        $localName]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
       jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-speech-or-statement-folder/hippostd:templates/node()
@@ -34,6 +34,7 @@ definitions:
               jcr:uuid: ed51ef1b-3188-48c2-a3b5-049ac5feefac
               govscot:isbn: ''
               govscot:metaDescription: ''
+              govscot:publicationType: speech-statement
               govscot:seoTitle: ''
               govscot:summary: ''
               govscot:title: ''
