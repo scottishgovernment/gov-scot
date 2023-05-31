@@ -15,7 +15,7 @@ definitions:
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed',
             'hippotranslation:translated']
-          hipposysedit:uri: http://www.govscot.com/govscot/nt/1.0
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /Title:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
