@@ -12,12 +12,14 @@ import scot.gov.publishing.searchjounal.SearchJournalEntry;
 import scot.gov.www.searchjournal.funnelback.Funnelback;
 import scot.gov.www.searchjournal.funnelback.FunnelbackException;
 import scot.gov.www.searchjournal.funnelback.FunnelbackFactory;
+import scot.gov.www.searchjournal.funnelback.JournalPosition;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import java.time.ZonedDateTime;
 import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.substringAfter;
@@ -60,10 +62,14 @@ public class JournalPopulationJob implements RepositoryJob {
     }
 
     void resetJournalPosition(RepositoryJobExecutionContext context) throws FunnelbackException {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date(0));
         Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
-        funnelback.storeJournalPosition(cal);
+        ZonedDateTime position = ZonedDateTime.now().withYear(2013).withDayOfYear(1).withHour(0).withMinute(0);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Date.from(position.toInstant()));
+        LOG.info("Journal position is {}", position);
+        JournalPosition journalPosition = new JournalPosition();
+        journalPosition.setPosition(cal);
+        funnelback.storeJournalPosition(journalPosition);
     }
 
     void deactivateJob(RepositoryJobExecutionContext context) throws RepositoryException {
@@ -143,9 +149,6 @@ public class JournalPopulationJob implements RepositoryJob {
         Calendar timestamp = getTimestamp(publication);
         String slug = publication.getProperty("govscot:slug").getString();
         String publicationUrl = publicationUrl(slug);
-        Calendar now = Calendar.getInstance();
-        timestamp.set(Calendar.SECOND, now.get(Calendar.SECOND));
-        timestamp.set(Calendar.MILLISECOND, now.get(Calendar.MILLISECOND));
         journal.record(publishEntry(publicationUrl, collection, timestamp));
         Node folder = publication.getParent().getParent();
 
@@ -158,17 +161,26 @@ public class JournalPopulationJob implements RepositoryJob {
         }
         if (hasPages && hasDocuments(folder)) {
             String url = publicationUrl + "documents/";
+            timestamp.setTimeInMillis(timestamp.getTimeInMillis() + 1);
             journal.record(publishEntry(url, collection, timestamp));
         }
     }
+
 
     SearchJournalEntry publishEntry(String url, String collection, Calendar timestamp) {
         SearchJournalEntry entry = new SearchJournalEntry();
         entry.setUrl(url);
         entry.setAction("publish");
         entry.setCollection(collection);
-        entry.setTimestamp(timestamp);
+        entry.setTimestamp(boundTimestamp(timestamp));
         return entry;
+    }
+
+    Calendar boundTimestamp(Calendar timestamp) {
+        if (timestamp.get(Calendar.YEAR) < 2013) {
+            timestamp.set(Calendar.YEAR, 2013);
+        }
+        return timestamp;
     }
 
     boolean hasDocuments(Node folder) throws RepositoryException {
@@ -212,6 +224,7 @@ public class JournalPopulationJob implements RepositoryJob {
                     seenFirstPage = true;
                 } else {
                     String url = pageUrl(slug, pageHandle);
+                    timestamp.setTimeInMillis(timestamp.getTimeInMillis() + 1);
                     journal.record(publishEntry(url, collection, timestamp));
                 }
             }
@@ -242,6 +255,7 @@ public class JournalPopulationJob implements RepositoryJob {
             return;
         }
         String url = chapterUrl(slug, chapterHandle);
+        timestamp.setTimeInMillis(timestamp.getTimeInMillis() + 1);
         journal.record(publishEntry(url, collection, timestamp));
     }
 
@@ -252,10 +266,14 @@ public class JournalPopulationJob implements RepositoryJob {
     }
 
     Calendar getTimestamp(Node node) throws RepositoryException {
+        Calendar timestamp;
         if (node.hasProperty("govscot:displayDate")) {
-            return node.getProperty("govscot:displayDate").getDate();
+            timestamp = node.getProperty("govscot:displayDate").getDate();
+        } else {
+            timestamp =node.getProperty("hippostdpubwf:lastModificationDate").getDate();
         }
-        return node.getProperty("hippostdpubwf:lastModificationDate").getDate();
+
+        return timestamp;
     }
 
     String publicationUrl(String slug) {

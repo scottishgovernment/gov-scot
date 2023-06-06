@@ -7,4 +7,5 @@
   - searchjournal:timestamp (date)
   - searchjournal:collection (string)
   - searchjournal:action (string)
+  - searchjournal:sequence (long)
   - searchjournal:attempt (long)

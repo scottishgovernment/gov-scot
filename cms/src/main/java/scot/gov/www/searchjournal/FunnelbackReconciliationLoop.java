@@ -26,7 +26,6 @@ import scot.gov.www.searchjournal.funnelback.*;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
-import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
@@ -121,17 +120,15 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             FeatureFlag featureFlag) throws RepositoryException, FunnelbackException {
 
         SearchJournal journal = new SearchJournal(session);
-        Calendar journalPosition = funnelback.getJournalPosition();
+        JournalPosition journalPosition = funnelback.getJournalPosition();
         if (journalPosition == null) {
             LOG.info("No journal position found ... skipping this run.");
             return;
         }
 
-        GregorianCalendar cal = (GregorianCalendar) journalPosition;
-        ZonedDateTime zdt = cal.toZonedDateTime();
-        LOG.info("Journal position is {}", zdt.toString());
-
-        List<SearchJournalEntry> pendingEntries = journal.getPendingEntries(journalPosition, maxJournalEntriesToFetch);
+        LOG.info("Journal position is {}", journalPosition);
+        List<SearchJournalEntry> pendingEntries =
+                journal.getPendingEntries(journalPosition.getPosition(), journalPosition.getSequence(), maxJournalEntriesToFetch);
         if (pendingEntries.isEmpty()) {
             LOG.info("No journal entries to process");
             return;
@@ -161,8 +158,8 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             pendingEntriesByUrl.get(entry.getUrl()).add(entry);
         }
 
-        Calendar newJournalPosition = null;
         int count = 0;
+        SearchJournalEntry lastEntry = null;
         for (SearchJournalEntry entry : pendingEntries) {
 
             if (!featureFlag.isEnabled()) {
@@ -172,15 +169,19 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
             if (moreRecentEntryForUrl(entry, pendingEntriesByUrl)) {
                 LOG.info("more recent entries exits for {}, skipping", entry.getUrl());
-                newJournalPosition = entry.getTimestamp();
             } else {
                 processEntry(funnelback, httpClient, journal, entry);
                 count++;
-                newJournalPosition = entry.getTimestamp();
-                periodicSave(funnelback, newJournalPosition, count);
+                periodicSave(funnelback, entry, count);
             }
+            lastEntry = entry;
         }
-        funnelback.storeJournalPosition(newJournalPosition);
+        if (lastEntry != null) {
+            JournalPosition position = new JournalPosition();
+            position.setPosition(lastEntry.getTimestamp());
+            position.setSequence(lastEntry.getSequence());
+            funnelback.storeJournalPosition(position);
+        }
         return count;
     }
 
@@ -219,9 +220,12 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         }
     }
 
-    void periodicSave(Funnelback funnelback, Calendar position, int count) throws FunnelbackException {
+    void periodicSave(Funnelback funnelback, SearchJournalEntry entry, int count) throws FunnelbackException {
         if (count % saveInterval == 0) {
-            funnelback.storeJournalPosition(position);
+            JournalPosition journalPosition = new JournalPosition();
+            journalPosition.setPosition(entry.getTimestamp());
+            journalPosition.setSequence(entry.getSequence());
+            funnelback.storeJournalPosition(journalPosition);
         }
     }
 

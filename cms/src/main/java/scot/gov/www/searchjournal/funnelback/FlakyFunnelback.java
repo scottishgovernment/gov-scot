@@ -1,7 +1,5 @@
 package scot.gov.www.searchjournal.funnelback;
 
-import java.util.Calendar;
-
 /**
  * Wrap a funnelback implementation in order to introduce errors.
  */
@@ -34,12 +32,12 @@ public class FlakyFunnelback implements Funnelback {
     }
 
     @Override
-    public Calendar getJournalPosition() throws FunnelbackException {
+    public JournalPosition getJournalPosition() throws FunnelbackException {
         return funnelback.getJournalPosition();
     }
 
     @Override
-    public void storeJournalPosition(Calendar position) throws FunnelbackException {
+    public void storeJournalPosition(JournalPosition position) throws FunnelbackException {
         funnelback.storeJournalPosition(position);
     }
 

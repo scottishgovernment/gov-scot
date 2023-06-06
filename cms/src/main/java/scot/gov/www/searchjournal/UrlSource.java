@@ -50,13 +50,13 @@ public class UrlSource {
 
         if (variant.isNodeType("govscot:DocumentInformation")) {
 
-            // if this publication does not have any pages then we jurts want to index the publication itself
+            // if this publication does not have any pages then we just want to index the publication itself
             if (!hasPages(publication)) {
                 return publicationUrl;
             } else {
                 // we do not index individual document information pages, but a change to one means that the /documents/
                 // page needs to be reindexd
-                return new StringBuilder(publicationUrl).append("documents").append('/').toString();
+                return documentsUrl(publicationUrl);
             }
         }
 
@@ -70,8 +70,17 @@ public class UrlSource {
                 + variant.getPrimaryNodeType().getName());
     }
 
+    String documentsUrl(Node publication) throws RepositoryException {
+        String publicationUrl = publicationUrl(publication);
+        return documentsUrl(publicationUrl);
+    }
+
+    String documentsUrl(String  publicationUrl) {
+        return new StringBuilder(publicationUrl).append("documents").append('/').toString();
+    }
     String publicationPageUrl(Node publication, Node page, String action) throws RepositoryException {
         String publicationUrl = slugUrl("publications", publication);
+
         // if this is the first published non contents page then use the publication url
         return isFirstVisiblePage(page, "publish".equals(action)) ?
                 publicationUrl :
@@ -94,7 +103,7 @@ public class UrlSource {
 
     /**
      * Determine if the node is the first visible page of the publication.  If it is then it will use the url of
-     * the publicaitons since this will be its canonical url and will avoif the same content being in funnelback twice.
+     * the publicaitons since this will be its canonical url and will avoid the same content being in funnelback twice.
      *
      * we skip over contents pages
      *
@@ -105,12 +114,15 @@ public class UrlSource {
         NodeIterator it = pagesfolder.getNodes();
         while (it.hasNext()) {
             Node nextHandle = it.nextNode();
-            if (!isContentPage(nextHandle)) {
+
+            boolean isContentsPage = isContentPage(nextHandle);
+            if (!isContentsPage) {
                 if (publishEvent && variant.getParent().isSame(nextHandle.getParent())) {
                     return true;
                 }
-                Node published = hippoUtils.getPublishedVariant(nextHandle);
-                if (published != null) {
+
+                Node handleVariant = hippoUtils.getVariant(nextHandle);
+                if (handleVariant != null) {
                     return variant.getParent().isSame(nextHandle);
                 }
             }

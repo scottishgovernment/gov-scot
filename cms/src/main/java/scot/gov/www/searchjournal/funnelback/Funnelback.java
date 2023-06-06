@@ -1,7 +1,5 @@
 package scot.gov.www.searchjournal.funnelback;
 
-import java.util.Calendar;
-
 public interface Funnelback {
 
     void close();
@@ -10,8 +8,8 @@ public interface Funnelback {
 
     void depublish(String collection, String key) throws FunnelbackException;
 
-    Calendar getJournalPosition() throws FunnelbackException;
+    JournalPosition getJournalPosition() throws FunnelbackException;
 
-    void storeJournalPosition(Calendar position) throws FunnelbackException;
+    void storeJournalPosition(JournalPosition position) throws FunnelbackException;
 
 }

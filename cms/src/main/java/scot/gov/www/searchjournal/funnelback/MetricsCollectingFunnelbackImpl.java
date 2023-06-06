@@ -7,8 +7,6 @@ import com.codahale.metrics.Timer;
 import scot.gov.searchjournal.FunnelbackMetricRegistry;
 import scot.gov.searchjournal.MetricName;
 
-import java.util.Calendar;
-
 /**
  * Wrap a Funnlback opbject in order to collect metrics.
  */
@@ -74,12 +72,12 @@ public class MetricsCollectingFunnelbackImpl implements Funnelback {
     }
 
     @Override
-    public Calendar getJournalPosition() throws FunnelbackException {
+    public JournalPosition getJournalPosition() throws FunnelbackException {
         try {
             Timer.Context timer = requestTimes.time();
             requestCounter.inc();
             requestMeter.mark();
-            Calendar position = funnelback.getJournalPosition();
+            JournalPosition position = funnelback.getJournalPosition();
             timer.stop();
             return position;
         } catch (FunnelbackException e) {
@@ -90,7 +88,7 @@ public class MetricsCollectingFunnelbackImpl implements Funnelback {
     }
 
     @Override
-    public void storeJournalPosition(Calendar position) throws FunnelbackException {
+    public void storeJournalPosition(JournalPosition position) throws FunnelbackException {
         try {
             Timer.Context timer = requestTimes.time();
             requestCounter.inc();

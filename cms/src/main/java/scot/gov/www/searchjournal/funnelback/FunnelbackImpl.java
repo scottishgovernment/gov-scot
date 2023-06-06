@@ -2,6 +2,7 @@ package scot.gov.www.searchjournal.funnelback;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -23,7 +24,6 @@ import java.nio.charset.Charset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Base64;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -97,7 +97,7 @@ public class FunnelbackImpl implements Funnelback {
         }
     }
 
-    public Calendar getJournalPosition() throws FunnelbackException {
+    public JournalPosition getJournalPosition() throws FunnelbackException {
         String position;
         try {
             position = fetchJournalPosition(positionUrl);
@@ -111,20 +111,29 @@ public class FunnelbackImpl implements Funnelback {
         }
 
         try {
-            ZonedDateTime dt = ZonedDateTime.parse(position);
-            LOG.info("journal position is {}", dt);
-            return GregorianCalendar.from(dt);
+            String dateString = StringUtils.substringBefore(position, "!");
+            String sequenceString = StringUtils.substringAfter(position, "!");
+            long sequence = 0;
+            if (StringUtils.isNotBlank(sequenceString)) {
+                sequence = Long.parseLong(sequenceString);
+            }
+            ZonedDateTime dt = ZonedDateTime.parse(dateString);
+            LOG.info("journal position is {}, {}", dt, sequence);
+            JournalPosition journalPosition = new JournalPosition();
+            journalPosition.setPosition(GregorianCalendar.from(dt));
+            journalPosition.setSequence(sequence);
+            return journalPosition;
         } catch (DateTimeParseException e) {
             LOG.error("Invalid position {}", position);
             throw new FunnelbackException("Invalid position " + position, e);
         }
     }
 
-    public void storeJournalPosition(Calendar position) throws FunnelbackException {
+    public void storeJournalPosition(JournalPosition position) throws FunnelbackException {
 
         try {
             storeJournalPosition(positionUrl, position);
-            JournalPositionSource.getInstance().setLastJournalPosition(position);
+            JournalPositionSource.getInstance().setLastJournalPosition(position.getPosition());
         } catch (IOException e) {
             throw new FunnelbackException("failed to store journal position", e);
         }
@@ -190,7 +199,7 @@ public class FunnelbackImpl implements Funnelback {
         }
     }
 
-    void storeJournalPosition(String url, Calendar position) throws IOException, FunnelbackException {
+    void storeJournalPosition(String url, JournalPosition position) throws IOException, FunnelbackException {
 
         if (position == null) {
             LOG.warn("No journal position to store.");
@@ -200,11 +209,12 @@ public class FunnelbackImpl implements Funnelback {
         LOG.info("storeJournalPosition {}", url);
         HttpPut request = new HttpPut(url);
         request.addHeader(SECURITY_TOKEN, configuration.getApiKey());
-        GregorianCalendar cal = (GregorianCalendar) position;
+        GregorianCalendar cal = (GregorianCalendar) position.getPosition();
         ZonedDateTime zdt = cal.toZonedDateTime();
-        LOG.info("storeJournalPosition {}", zdt);
-        request.setEntity(new StringEntity(zdt.toString()));
-        request.setHeader("X-Journal-Position", zdt.toString());
+        String positionString = zdt + "!" + position.getSequence();
+        LOG.info("storeJournalPosition {}", positionString);
+        request.setEntity(new StringEntity(positionString));
+        request.setHeader("X-Journal-Position", positionString.toString());
         CloseableHttpResponse response = httpClient.execute(funnelbackHost, request);
         try {
             if (response.getStatusLine().getStatusCode() != 200) {
