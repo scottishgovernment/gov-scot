@@ -218,7 +218,7 @@ public class BloomreachSearchService implements SearchService {
         response.getResultPacket().setResultsSummary(resultsSummary);
         searchResponse.setResponse(response);
 
-        Pagination pagination = new PaginationBuilder(url).getPagination(resultsSummary, search.getQuery());
+        Pagination pagination = new PaginationBuilder(search).getPagination(resultsSummary, search.getQuery());
         searchResponse.setPagination(pagination);
         searchResponse.setBloomreachResults(result.getHippoBeans());
 
