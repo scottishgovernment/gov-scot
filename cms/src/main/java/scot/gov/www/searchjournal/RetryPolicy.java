@@ -1,6 +1,6 @@
 package scot.gov.www.searchjournal;
 
-import scot.gov.publishing.searchjounal.SearchJournalEntry;
+import scot.gov.publishing.searchjournal.SearchJournalEntry;
 
 import java.util.HashMap;
 import java.util.Map;

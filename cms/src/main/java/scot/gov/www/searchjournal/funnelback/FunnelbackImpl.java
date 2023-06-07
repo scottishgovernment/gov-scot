@@ -13,7 +13,7 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.httpclient.HttpClientSource;
-import scot.gov.publishing.searchjounal.FunnelbackCollection;
+import scot.gov.publishing.searchjournal.FunnelbackCollection;
 import scot.gov.searchjournal.JournalPositionSource;
 
 import java.io.IOException;

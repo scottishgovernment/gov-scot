@@ -13,16 +13,16 @@ import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.publishing.searchjounal.FeatureFlag;
-import scot.gov.publishing.searchjounal.SearchJournal;
-import scot.gov.publishing.searchjounal.SearchJournalEntry;
+import scot.gov.publishing.searchjournal.FeatureFlag;
+import scot.gov.publishing.searchjournal.SearchJournal;
+import scot.gov.publishing.searchjournal.SearchJournalEntry;
 
 import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.*;
-import static scot.gov.publishing.searchjounal.FunnelbackCollection.NEWS;
-import static scot.gov.publishing.searchjounal.FunnelbackCollection.POLICY;
-import static scot.gov.publishing.searchjounal.FunnelbackCollection.getCollectionByPublicationType;
+import static scot.gov.publishing.searchjournal.FunnelbackCollection.NEWS;
+import static scot.gov.publishing.searchjournal.FunnelbackCollection.POLICY;
+import static scot.gov.publishing.searchjournal.FunnelbackCollection.getCollectionByPublicationType;
 
 /**
  * Listen to publish and unpublish events in order to maintain the search journal.
