@@ -147,6 +147,10 @@
     <listener-class>org.hippoecm.hst.site.container.session.HttpSessionEventPublisher</listener-class>
   </listener>
 
+  <listener>
+    <listener-class>scot.gov.publishing.hippo.funnelback.component.FunnelbackInitialisingServletContextListener</listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>BinariesServlet</servlet-name>
     <servlet-class>org.hippoecm.hst.servlet.BinariesServlet</servlet-class>
