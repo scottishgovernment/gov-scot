@@ -43,3 +43,18 @@ definitions:
           jcr:uuid: bab7b6ec-1d9d-4474-990e-fafdc2b20e67
           hipposched:cronExpression: 0 0/2 * * * ?
           hipposched:enabled: true
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PollFunnelbackCurator:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: [pollPath]
+      hipposched:attributeValues: [/admin-api/curator/v2/collections/govscot~sp-govscot/profiles/_default/curator/]
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.publishing.hippo.funnelback.scheduler.PollFunnelbackCurator
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: d2b951cd-b467-4ffa-afb8-e7aed9dc4db4
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2022-11-09T16:45:00Z

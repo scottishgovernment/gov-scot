@@ -1,0 +1,51 @@
+/content/documents/administration/funnelback-curator-changes:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+  jcr:uuid: b1a4e756-8817-4da7-af74-5b6832b98b2b
+  hippo:versionHistory: 109705e3-a368-42ff-baac-b9883c20a579
+  /funnelback-curator-changes[1]:
+    jcr:primaryType: search:funnelbackcuratorchanges
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 783794ff-4381-4e93-9131-a74199f955d8
+    hippo:availability: []
+    hippostd:retainable: false
+    hippostd:state: draft
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2022-10-11T14:04:32.391+01:00
+    hippostdpubwf:lastModificationDate: 2022-10-31T09:05:00.670Z
+    hippostdpubwf:lastModifiedBy: system
+    hippotranslation:id: 5cd7d262-f44d-45d7-966d-de2451c7e372
+    hippotranslation:locale: document-type-locale
+    search:hash: 4941dfa097eba4e170db9ddbc1fc2b35b258ad85
+    search:lastchangedate: 2022-10-31T09:05:00.682Z
+  /funnelback-curator-changes[2]:
+    jcr:primaryType: search:funnelbackcuratorchanges
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: 058c01ef-52cf-4df5-8f64-f8ead461c4b7
+    hippo:availability: [preview]
+    hippostd:retainable: false
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2022-10-11T14:04:32.391+01:00
+    hippostdpubwf:lastModificationDate: 2022-10-31T09:05:00.898Z
+    hippostdpubwf:lastModifiedBy: system
+    hippotranslation:id: 5cd7d262-f44d-45d7-966d-de2451c7e372
+    hippotranslation:locale: document-type-locale
+    search:hash: 4941dfa097eba4e170db9ddbc1fc2b35b258ad85
+    search:lastchangedate: 2022-10-31T09:05:00.682Z
+  /funnelback-curator-changes[3]:
+    jcr:primaryType: search:funnelbackcuratorchanges
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: a56d6fb8-82fd-4f10-97ee-1be98b8cdbb8
+    hippo:availability: [live]
+    hippostd:retainable: false
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2022-10-11T14:04:32.391+01:00
+    hippostdpubwf:lastModificationDate: 2022-10-31T09:05:00.898Z
+    hippostdpubwf:lastModifiedBy: system
+    hippostdpubwf:publicationDate: 2022-10-31T09:05:01.183Z
+    hippotranslation:id: 5cd7d262-f44d-45d7-966d-de2451c7e372
+    hippotranslation:locale: document-type-locale
+    search:hash: 4941dfa097eba4e170db9ddbc1fc2b35b258ad85
+    search:lastchangedate: 2022-10-31T09:05:00.682Z
