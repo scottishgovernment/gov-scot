@@ -2,8 +2,8 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/FunnelbackReconciliationLoop:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: [maxitems, minutestolive, filters]
-      hipposched:attributeValues: ['50000', '-1', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
+      hipposched:attributeNames: [maxJournalEntriesToFetch, interRequestPause, filters]
+      hipposched:attributeValues: ['2000', '100', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
       hipposched:enabled: true
       hipposched:repositoryJobClass: scot.gov.www.searchjournal.FunnelbackReconciliationLoop
       /hipposched:triggers:
@@ -14,7 +14,7 @@ definitions:
           jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/1 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2023-05-17T15:50:00+01:00
+          hipposched:nextFireTime: 2023-06-12T15:32:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SearchJournalCleanupJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -57,4 +57,4 @@ definitions:
           jcr:uuid: d2b951cd-b467-4ffa-afb8-e7aed9dc4db4
           hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2022-11-09T16:45:00Z
+          hipposched:nextFireTime: 2023-06-12T15:35:00+01:00
