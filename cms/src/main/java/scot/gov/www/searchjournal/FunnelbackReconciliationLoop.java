@@ -27,6 +27,7 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Reconciliation loop to read the search journal index index content in funnelback.
@@ -35,8 +36,15 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(FunnelbackReconciliationLoop.class);
 
+    private static final String BATCH_SIZE_ATTRIBUTE = "maxJournalEntriesToFetch";
+
+    private static final String REQUEST_PAUSE_ATTRIBUTE = "interRequestPause";
+
     // dictates how often the journal position is stored in funnelback
     private int saveInterval = 100;
+
+    // length of time to pause between requests to funnelback
+    private long interRequestPause = 100;
 
     // the maximum number of journal entries to fetch each time the job runs
     private int maxJournalEntriesToFetch = 2000;
@@ -55,6 +63,7 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
         if (!isReady()) {
             return;
         }
+        configure(context);
 
         Session session = context.createSystemSession();
         try {
@@ -67,6 +76,26 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             throw e;
         } finally {
             session.logout();
+        }
+    }
+
+    void configure(RepositoryJobExecutionContext context) {
+        if (context.getAttributeNames().contains(BATCH_SIZE_ATTRIBUTE)) {
+            String maxJournalEntriesToFetchString = context.getAttribute(BATCH_SIZE_ATTRIBUTE);
+            try {
+                maxJournalEntriesToFetch = Integer.parseInt(maxJournalEntriesToFetchString);
+            } catch (NumberFormatException e) {
+                LOG.error("Invalid value of {}: \"{}\", defaulting to 2000", BATCH_SIZE_ATTRIBUTE, maxJournalEntriesToFetchString);
+            }
+        }
+
+        if (context.getAttributeNames().contains(REQUEST_PAUSE_ATTRIBUTE)) {
+            String interRequestPauseString = context.getAttribute(REQUEST_PAUSE_ATTRIBUTE);
+            try {
+                interRequestPause = Long.parseLong(interRequestPauseString);
+            } catch (NumberFormatException e) {
+                LOG.error("Invalid value of {}: \"{}\", defaulting to 2000", REQUEST_PAUSE_ATTRIBUTE, interRequestPauseString, interRequestPause);
+            }
         }
     }
 
@@ -194,12 +223,15 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
     void processEntry(Funnelback funnelback, CloseableHttpClient httpClient, SearchJournal journal, SearchJournalEntry entry) {
         try {
             doProcessEntry(funnelback, httpClient, entry);
+            TimeUnit.MILLISECONDS.sleep(interRequestPause);
         } catch (IOException e) {
             LOG.error("Failed to fetch HTML for journal entry {} ", entry.getUrl(), e);
             handleFailure(entry, journal);
         } catch (FunnelbackException e) {
             LOG.error("Failed index content for {} ", entry.getUrl(), e);
             handleFailure(entry, journal);
+        } catch (InterruptedException e) {
+            LOG.error("Interrupted while pausing after {}", entry.getUrl(), e);
         }
     }
 
