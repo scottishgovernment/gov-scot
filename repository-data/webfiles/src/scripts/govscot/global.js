@@ -102,7 +102,7 @@ const global = {
         const autocompletes = [].slice.call(document.querySelectorAll('[data-module="ds-autocomplete"]'));
         autocompletes.forEach(autocomplete => {
             let url = window.location.origin + document.getElementById('site-root-path').value;
-            url += '/search/suggestions?partial_query=';
+            url += 'search/suggestions?partial_query=';
             const mapping = ppp => {
                 const suggestionsObj = JSON.parse(ppp.responseText);
                 return suggestionsObj.map(suggestionsObj => ({
