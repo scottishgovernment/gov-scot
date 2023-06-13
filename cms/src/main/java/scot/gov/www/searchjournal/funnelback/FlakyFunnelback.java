@@ -1,9 +1,13 @@
 package scot.gov.www.searchjournal.funnelback;
 
+import java.security.SecureRandom;
+
 /**
  * Wrap a funnelback implementation in order to introduce errors.
  */
 public class FlakyFunnelback implements Funnelback {
+
+    private SecureRandom secureRandom = new SecureRandom();
 
     private Funnelback funnelback;
 
@@ -48,7 +52,7 @@ public class FlakyFunnelback implements Funnelback {
     }
 
     boolean shouldCreateError() {
-        return Math.random() < errorRate;
+        return secureRandom.nextDouble() < errorRate;
     }
 
 }
