@@ -116,7 +116,6 @@ public class DocumentUploader {
         documentInfoNode.setProperty(GOVSCOT_TITLE, title);
         documentInfoNode.setProperty("govscot:accessible", false);
         documentInfoNode.setProperty("govscot:highlighted", false);
-        documentInfoNode.setProperty("govscot:size", zipEntry.getSize());
 
         String mimeType = detectContentType(manifestEntry.getFriendlyFilename());
         Node resourceNode = nodeFactory.newResourceNode(
