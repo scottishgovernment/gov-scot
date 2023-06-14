@@ -16,6 +16,7 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.DynamicIssue;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsSideComponentInfo;
@@ -80,7 +81,7 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
     private void populateTopics(HstRequest request) {
         HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
         HippoFolderBean topicsFolder = baseBean.getBean("topics", HippoFolderBean.class);
-        HstQuery query = HstQueryBuilder.create(topicsFolder).ofTypes(Issue.class, Topic.class).orderByAscending("govscot:title").build();
+        HstQuery query = HstQueryBuilder.create(topicsFolder).ofTypes(Issue.class, Topic.class, DynamicIssue.class).orderByAscending("govscot:title").build();
         try {
             HstQueryResult result = query.execute();
             request.setAttribute("topics", result.getHippoBeans());
