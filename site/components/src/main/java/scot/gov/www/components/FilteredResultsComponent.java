@@ -132,7 +132,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     Pageable<HippoBean> executeQuery(final HstRequest request, final T paramInfo, final HstQuery query) throws QueryException {
         final int pageSize = getPageSize(request, paramInfo);
         final int page = getCurrentPage(request);
-
         final HstQueryResult execute = query.execute();
 
         // populate Collections for Publication type items

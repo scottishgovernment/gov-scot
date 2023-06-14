@@ -11,6 +11,7 @@ import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.DynamicIssue;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 
@@ -82,7 +83,7 @@ public class ConstraintUtils {
     private static void populateTopics(List<String> topicIds, Node topicsNode, Collection<String> topics) throws RepositoryException {
         try {
             HstQuery query = HstQueryBuilder.create(topicsNode)
-                    .ofTypes(Topic.class, Issue.class)
+                    .ofTypes(Topic.class, Issue.class, DynamicIssue.class)
                     .orderByAscending(GOVSCOT_TITLE)
                     .build();
 
