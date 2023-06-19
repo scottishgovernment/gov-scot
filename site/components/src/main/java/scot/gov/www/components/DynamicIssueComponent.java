@@ -10,6 +10,8 @@ import org.onehippo.cms7.essentials.components.CommonComponent;
 @ParametersInfo(type = DynamicIssueInfo.class)
 public class DynamicIssueComponent extends CommonComponent {
 
+    private static final int LIMIT = 3;
+
     @Override
     public void doBeforeRender(HstRequest request, HstResponse response) {
         super.doBeforeRender(request, response);
@@ -25,15 +27,15 @@ public class DynamicIssueComponent extends CommonComponent {
         request.setAttribute("showPublications", paramInfo.getShowPublications());
 
         if (paramInfo.getShowPolicies().booleanValue()) {
-            IssueComponent.populatePolicies(baseBean, documentBean, request);
+            IssueComponent.populatePolicies(baseBean, documentBean, request, LIMIT);
         }
 
         if (paramInfo.getShowNews().booleanValue()) {
-            IssueComponent.populateNews(baseBean, documentBean, request);
+            IssueComponent.populateNews(baseBean, documentBean, request, LIMIT);
         }
 
         if (paramInfo.getShowPublications().booleanValue()) {
-            IssueComponent.populatePublications(baseBean, documentBean, request);
+            IssueComponent.populatePublications(baseBean, documentBean, request, LIMIT);
         }
     }
 
