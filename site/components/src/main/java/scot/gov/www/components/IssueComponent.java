@@ -37,8 +37,12 @@ public class IssueComponent extends BaseHstComponent {
     }
 
     static void populatePolicies(HippoBean base, HippoDocumentBean issue, HstRequest request) {
+        populatePolicies(base, issue, request, -1);
+    }
+
+    static void populatePolicies(HippoBean base, HippoDocumentBean issue, HstRequest request, int limit) {
         try {
-            HstQuery query = issueLinkedBeansQuery(issue, base, Policy.class, -1, TITLE);
+            HstQuery query = issueLinkedBeansQuery(issue, base, Policy.class, limit, TITLE);
             HstQueryResult result = query.execute();
             request.setAttribute("policies", result.getHippoBeans());
         } catch (QueryException e) {
@@ -47,8 +51,12 @@ public class IssueComponent extends BaseHstComponent {
     }
 
     static void populateNews(HippoBean base, HippoDocumentBean issue, HstRequest request) {
+        populateNews(base, issue, request, 4);
+    }
+
+    static void populateNews(HippoBean base, HippoDocumentBean issue, HstRequest request, int limit) {
         try {
-            HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, 4, "govscot:publicationDate");
+            HstQuery taggedQuery = issueLinkedBeansQuery(issue, base, News.class, limit, "govscot:publicationDate");
             HippoBeanIterator taggedNews = taggedQuery.execute().getHippoBeans();
             request.setAttribute("news", taggedNews);
         } catch (QueryException e) {
@@ -56,10 +64,15 @@ public class IssueComponent extends BaseHstComponent {
         }
     }
 
+
     static void populatePublications(HippoBean base, HippoDocumentBean issue, HstRequest request) {
+        populatePublications(base, issue, request, 5);
+    }
+
+    static void populatePublications(HippoBean base, HippoDocumentBean issue, HstRequest request, int limit) {
 
         try {
-            HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, 5, DISPLAY_DATE);
+            HstQuery publicationsQuery = issueLinkedBeansQuery(issue, base, Publication.class, limit, DISPLAY_DATE);
             HippoBeanIterator publications = publicationsQuery.execute().getHippoBeans();
             request.setAttribute("publications", publications);
         } catch (QueryException e) {
