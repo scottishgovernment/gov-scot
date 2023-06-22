@@ -410,6 +410,17 @@ definitions:
         hst:relativecontentpath: search/index
         hst:sitemapitemhandlerids: [trailing-slash]
         hst:componentconfigurationid: hst:pages/searchresilient
+        /suggestions:
+          jcr:primaryType: hst:sitemapitem
+          hst:excludedforlinkrewriting: true
+          hst:hiddeninchannelmanager: true
+          hst:namedpipeline: JaxrsRestPlainPipeline
+      /_search:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/searchresilient
+        hst:hiddeninchannelmanager: true
+        hst:relativecontentpath: search/index
+        hst:sitemapitemhandlerids: [trailing-slash]
         /funnelback:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/searchfunnelback
@@ -445,11 +456,6 @@ definitions:
         /health:
           jcr:primaryType: hst:sitemapitem
           hst:cacheable: false
-          hst:excludedforlinkrewriting: true
-          hst:hiddeninchannelmanager: true
-          hst:namedpipeline: JaxrsRestPlainPipeline
-        /suggestions:
-          jcr:primaryType: hst:sitemapitem
           hst:excludedforlinkrewriting: true
           hst:hiddeninchannelmanager: true
           hst:namedpipeline: JaxrsRestPlainPipeline
