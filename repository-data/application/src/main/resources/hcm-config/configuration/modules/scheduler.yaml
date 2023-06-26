@@ -3,7 +3,7 @@ definitions:
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/FunnelbackReconciliationLoop:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [maxJournalEntriesToFetch, interRequestPause, filters]
-      hipposched:attributeValues: ['2000', '100', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
+      hipposched:attributeValues: ['2000', '1000', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
       hipposched:enabled: true
       hipposched:repositoryJobClass: scot.gov.www.searchjournal.FunnelbackReconciliationLoop
       /hipposched:triggers:
