@@ -65,7 +65,7 @@ public class SitemapResource {
                 this::generateLatestSitemap);
     }
 
-    @Path("{path: .+}")
+    @Path("{path: sitemap/.+}")
     @Produces(APPLICATION_XML)
     @GET
     public Response getSitemap() {
@@ -80,9 +80,11 @@ public class SitemapResource {
 
         try {
             Node node = nodeSupplier.getNode();
+
             if (node == null) {
-                return Response.status(404).entity("Sitemap not found").build();
+                return Response.status(404).type(MediaType.TEXT_PLAIN).entity("Sitemap not found").build();
             }
+
             Calendar lastModified = getLastModifiedDate(path, node);
             Response.ResponseBuilder responseBuilder = request.evaluatePreconditions(lastModified.getTime());
             if (responseBuilder != null) {
@@ -170,7 +172,6 @@ public class SitemapResource {
     }
 
     String getRepositoryPathFromRequestPath(String siteName, String requestPath) {
-
         requestPath = substringAfter(substringBefore(requestPath, ".xml"), "sitemap/");
         return new StringBuffer(SITEMAP_ROOT_PATH)
                 .append('/')
