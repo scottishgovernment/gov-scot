@@ -121,7 +121,38 @@
 
 </#if>
 
+<#if document??>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.title" content="${document.title}"/>
+    </@hst.headContribution>
 
-<@hst.headContribution category="pageTitle">
-    <title>${document.title} - gov.scot</title>
-</@hst.headContribution>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.description" content="${document.summary}"/>
+    </@hst.headContribution>
+
+    <#if document.tags??>
+        <@hst.headContribution category="dcMeta">
+            <meta name="dc.subject" content="<#list document.tags as tag>${tag}<#sep>, </#sep></#list>"/>
+        </@hst.headContribution>
+    </#if>
+
+    <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
+    <@hst.headContribution category="dcMeta">
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+    </@hst.headContribution>
+
+    <@hst.headContribution category="pageTitle">
+        <title>${document.title} - gov.scot</title>
+    </@hst.headContribution>
+
+    <@hst.headContribution>
+        <meta name="description" content="${document.metaDescription}"/>
+    </@hst.headContribution>
+
+    <#include "../common/metadata.social.ftl"/>
+
+    <@hst.link var="canonicalitem" hippobean=document canonical=true/>
+    <#include "../common/canonical.ftl" />
+
+    <#include "../common/gtm-datalayer.ftl"/>
+</#if>
