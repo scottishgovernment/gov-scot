@@ -38,14 +38,19 @@
 </@hst.headContribution>
 
 <#if index??>
+    <#if index.title?has_content>
     <@hst.headContribution category="pageTitle">
         <title>${index.title} - gov.scot</title>
     </@hst.headContribution>
+    </#if>
 
+    <#if index.metaDescription?has_content>
     <@hst.headContribution>
         <meta name="description" content="${index.metaDescription}"/>
     </@hst.headContribution>
+    </#if>
 
+    <#assign document = index/>
     <#include "../common/metadata.social.ftl"/>
 
     <@hst.link var="canonicalitem" hippobean=index canonical=true/>
