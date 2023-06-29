@@ -10,9 +10,11 @@
 <meta property="og:type" content="website" />
 </@hst.headContribution>
 
+<#if document.title??>
 <@hst.headContribution category="facebookMeta">
 <meta property="og:title" content="${document.title?json_string}" />
 </@hst.headContribution>
+</#if>
 
 <#if document.metaDescription??>
 <@hst.headContribution category="facebookMeta">
@@ -44,9 +46,11 @@
 <meta property="twitter:url" content="${link}"/>
 </@hst.headContribution>
 
+<#if document.title??>
 <@hst.headContribution category="twitterMeta">
 <meta name="twitter:title" content="${document.title?json_string}"/>
 </@hst.headContribution>
+</#if>
 
 <#if document.metaDescription??>
 <@hst.headContribution category="twitterMeta">
