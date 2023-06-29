@@ -123,9 +123,6 @@
         </div>
     </main>
 </div>
-
-<#include "common/metadata.social.ftl"/>
-
     <!-- DC Meta Tags -->
 
     <@hst.headContribution category="dcMeta">
