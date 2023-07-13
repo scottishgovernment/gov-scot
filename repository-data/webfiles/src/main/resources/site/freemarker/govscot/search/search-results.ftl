@@ -59,7 +59,7 @@
         <#list response.resultPacket.qsups as qsup>
         <nav class="ds_search-suggestions" aria-label="Alternative search suggestions">
             <h2 class="visually-hidden">Also showing results for ${qsup.query}</h2>
-            <p><span aria-hidden="true">Also showing results for</span> <a aria-label="Show results only for ${qsup.query}" href="?q=${qsup.query?url('UTF-8')}">${qsup.query}<#if qsup_has_next>, </#if></a><br />
+            <p><span aria-hidden="true">Also showing results for</span> <a aria-label="Show results only for ${qsup.query}" href="?q=${qsup.query?url('UTF-8')}&amp;cat=sitesearch">${qsup.query}<#if qsup_has_next>, </#if></a><br />
                <span aria-hidden="true">Show results only for</span> <a aria-label="Show results only for ${question.originalQuery}" href="?${queryString}&amp;qsup=off">${question.originalQuery}</a></p>
         </nav>
         </#list>
