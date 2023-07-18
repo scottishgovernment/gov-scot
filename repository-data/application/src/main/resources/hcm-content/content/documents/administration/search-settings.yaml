@@ -3,7 +3,7 @@
   jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 78436351-67c2-4e9c-b1f7-2bb29526ea02
   hippo:name: Search settings
-  hippo:versionHistory: 48cbf334-133d-4123-a8a4-dbc2e100e77e
+  hippo:versionHistory: fd6ebca8-f509-4153-a584-210a9c996232
   /search-settings[1]:
     jcr:primaryType: search:searchsettings
     jcr:mixinTypes: ['hippo:container', 'hippostd:container', 'hippostd:relaxed',
@@ -15,15 +15,16 @@
     hippostd:state: published
     hippostdpubwf:createdBy: admin
     hippostdpubwf:creationDate: 2022-09-30T09:56:29.669+01:00
-    hippostdpubwf:lastModificationDate: 2023-05-04T13:31:11.808+01:00
+    hippostdpubwf:lastModificationDate: 2023-07-18T14:52:58.239+01:00
     hippostdpubwf:lastModifiedBy: admin
-    hippostdpubwf:publicationDate: 2023-05-04T13:31:13.566+01:00
+    hippostdpubwf:publicationDate: 2023-07-18T14:53:00.413+01:00
     hippotranslation:id: d4f9c077-c6ff-4f32-b9fa-dc22ac5c3cde
     hippotranslation:locale: document-type-locale
     search:bloomreachErrorRate: 0.0
     search:enabled: true
     search:funnelbackErrorRate: 0.0
     search:searchtype: resilient
+    search:suggestTimeoutMillis: 500
     search:timeoutMillis: 2000
   /search-settings[2]:
     jcr:primaryType: search:searchsettings
@@ -36,7 +37,7 @@
     hippostd:state: unpublished
     hippostdpubwf:createdBy: admin
     hippostdpubwf:creationDate: 2022-09-30T09:56:29.669+01:00
-    hippostdpubwf:lastModificationDate: 2023-05-04T13:31:11.808+01:00
+    hippostdpubwf:lastModificationDate: 2023-07-18T14:52:58.239+01:00
     hippostdpubwf:lastModifiedBy: admin
     hippotranslation:id: d4f9c077-c6ff-4f32-b9fa-dc22ac5c3cde
     hippotranslation:locale: document-type-locale
@@ -44,6 +45,7 @@
     search:enabled: true
     search:funnelbackErrorRate: 0.0
     search:searchtype: resilient
+    search:suggestTimeoutMillis: 500
     search:timeoutMillis: 2000
   /search-settings[3]:
     jcr:primaryType: search:searchsettings
@@ -56,7 +58,7 @@
     hippostd:state: draft
     hippostdpubwf:createdBy: admin
     hippostdpubwf:creationDate: 2022-09-30T09:56:29.669+01:00
-    hippostdpubwf:lastModificationDate: 2023-05-04T13:31:09.063+01:00
+    hippostdpubwf:lastModificationDate: 2023-07-18T14:52:52.976+01:00
     hippostdpubwf:lastModifiedBy: admin
     hippotranslation:id: d4f9c077-c6ff-4f32-b9fa-dc22ac5c3cde
     hippotranslation:locale: document-type-locale
@@ -64,4 +66,5 @@
     search:enabled: true
     search:funnelbackErrorRate: 0.0
     search:searchtype: resilient
+    search:suggestTimeoutMillis: 500
     search:timeoutMillis: 2000
