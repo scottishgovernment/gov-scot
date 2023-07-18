@@ -32,6 +32,7 @@ import scot.gov.www.beans.PublicationPage;
 
 import java.util.*;
 
+import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
@@ -80,6 +81,11 @@ public class BloomreachSearchService implements SearchService {
             LOG.error("Query exceptions in fallback", e);
             return null;
         }
+    }
+
+    @Override
+    public List<String> getSuggestions(String s, SearchSettings searchSettings) {
+        return emptyList();
     }
 
     public void postProcessResults(HippoBeanIterator it, HstRequest request) {
