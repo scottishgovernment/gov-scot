@@ -69,6 +69,7 @@
                 </#list>
             </#if>
 
+            <!--noindex-->
             <nav class="ds_sequential-nav" aria-label="Article navigation">
                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
                     <a title="Previous page" href="${baseurl}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
@@ -78,7 +79,8 @@
                     </a>
                 </div>
             </nav>
-
+            <!--endnoindex-->
+            
             <#if document.updateHistory?has_content>
                 <#include '../common/update-history.ftl'/>
             </#if>
