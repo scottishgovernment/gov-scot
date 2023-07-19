@@ -117,7 +117,6 @@
                                     <img width="104" height="152" class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                                 </a>
                             </#if>
-                            <!--endnoindex-->
 
                             <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                 <span class="gov_supporting-documents__button-icon">
@@ -125,6 +124,7 @@
                                 </span>
                                 <span class="gov_supporting-documents__button-text">Supporting documents</span>
                             </a>
+                            <!--endnoindex-->
                         </div>
                     </div>
                 </#if>

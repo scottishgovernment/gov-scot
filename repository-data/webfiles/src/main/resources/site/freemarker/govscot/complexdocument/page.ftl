@@ -112,6 +112,7 @@
                                         <#assign fileThumbnailPath = '/assets/images/documents/svg/generic.svg' />
                                 </#switch>
 
+                                <!--noindex-->
                                 <#if (filenameExtension!'') == "pdf" && firstDocument.thumbnails[0]??>
                                     <a class="gov_supporting-documents__thumbnail-link" href="${baseurl + 'documents/'}">
                                         <img
@@ -131,7 +132,6 @@
                                 </#if>
                             </#if>
 
-                            <!--noindex-->
                             <a href="${baseurl + 'documents/'}" class="ds_button  ds_button--secondary  ds_no-margin--top  gov_supporting-documents__button">
                                 <span class="gov_supporting-documents__button-icon">
                                     <svg aria-hidden="true" role="img"><use href="${iconspath}#expand_more"></use></svg>
