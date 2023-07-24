@@ -112,7 +112,7 @@ public class DocumentUploader {
                 title,
                 "govscot:DocumentInformation",
                 metadata.getPublicationDateWithTimezone(),
-                metadata.shoudlEmbargo());
+                metadata.shouldEmbargo());
         documentInfoNode.setProperty(GOVSCOT_TITLE, title);
         documentInfoNode.setProperty("govscot:accessible", false);
         documentInfoNode.setProperty("govscot:highlighted", false);
