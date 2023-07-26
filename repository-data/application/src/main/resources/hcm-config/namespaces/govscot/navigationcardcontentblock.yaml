@@ -11,68 +11,10 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 1d037c80-b880-4c61-9c8e-486b60cfb0b5
+          jcr:uuid: d9cdc87a-447f-4b3b-bd45-fd3b889e0019
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /title:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:title
-            hipposysedit:primary: false
-            hipposysedit:type: String
-            hipposysedit:validators: [required]
-          /text:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:text
-            hipposysedit:primary: false
-            hipposysedit:type: Text
-            hipposysedit:validators: [required]
-          /image:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:image
-            hipposysedit:primary: false
-            hipposysedit:type: hippogallerypicker:imagelink
-            hipposysedit:validators: [required]
-          /link:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:link
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
-          /alt:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:alt
-            hipposysedit:primary: false
-            hipposysedit:type: String
-            hipposysedit:validators: [required]
-          /externalLink:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:externalLink
-            hipposysedit:primary: false
-            hipposysedit:type: String
-        /hipposysedit:nodetype[2]:
-          jcr:primaryType: hipposysedit:nodetype
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: b4fd9638-92ad-41ae-ad5b-7663240a1c6e
-          hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           /title:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -139,36 +81,10 @@ definitions:
           govscot:text: ''
           govscot:title: ''
           govscot:alt: ''
-          jcr:uuid: ccd2a44b-72a8-4821-80f6-96a56c4fb910
+          jcr:uuid: 1a52df34-fc79-473d-899a-2caf6e8513ec
           hippostdpubwf:lastModificationDate: 2021-07-28T15:52:30.106+01:00
           hippostdpubwf:creationDate: 2021-07-28T15:52:30.106+01:00
           govscot:externalLink: ''
-          /govscot:image:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-          /govscot:link:
-            jcr:primaryType: hippo:mirror
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-        /hipposysedit:prototype[2]:
-          jcr:primaryType: nt:unstructured
-          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostdpubwf:document',
-            'hippotranslation:translated', 'mix:referenceable']
-          jcr:uuid: 2e967fbb-0e9c-4c15-a3a2-93ff1f6f72f5
-          govscot:alt: ''
-          govscot:externalLink: ''
-          govscot:text: ''
-          govscot:title: ''
-          hippostd:holder: holder
-          hippostd:state: draft
-          hippostdpubwf:createdBy: ''
-          hippostdpubwf:creationDate: 2021-07-28T15:52:30.106+01:00
-          hippostdpubwf:lastModificationDate: 2021-07-28T15:52:30.106+01:00
-          hippostdpubwf:lastModifiedBy: ''
-          hippotranslation:id: document-type-locale-id
-          hippotranslation:locale: document-type-locale
           /govscot:image:
             jcr:primaryType: hippogallerypicker:imagelink
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
@@ -212,8 +128,11 @@ definitions:
             field: image
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:ColumnImage']
+              base.uuid: 33ed2f93-ecf2-4cd1-a7dd-ebdf4cf9ee79
           /alt:
             jcr:primaryType: frontend:plugin
             caption: Image alt text
