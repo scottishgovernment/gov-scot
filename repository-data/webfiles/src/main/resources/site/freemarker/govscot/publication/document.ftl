@@ -124,5 +124,7 @@
         <#include "../common/gtm-datalayer.ftl"/>
     </#if>
 
-    <link rel="canonical" href="https://www.gov.scot${canonicalitem?replace("^/site/", "/", "r")}documents/"/>
+    <@hst.headContribution>
+        <link rel="canonical" href="https://www.gov.scot${canonicalitem?replace("^/site/", "/", "r")}documents/"/>
+    </@hst.headContribution>
 </#if>
