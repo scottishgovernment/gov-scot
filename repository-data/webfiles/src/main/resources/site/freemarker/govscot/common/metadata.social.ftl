@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <@hst.link var="imagelinkDefault" path='/assets/images/logos/SGLogo1200x630.png' fullyQualified=true/>
 <@hst.link var="link" canonical=true fullyQualified=true/>
 
