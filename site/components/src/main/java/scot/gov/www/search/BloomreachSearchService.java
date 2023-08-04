@@ -84,7 +84,7 @@ public class BloomreachSearchService implements SearchService {
     }
 
     @Override
-    public List<String> getSuggestions(String s, SearchSettings searchSettings) {
+    public List<String> getSuggestions(String s, String mount, SearchSettings searchSettings) {
         return emptyList();
     }
 
