@@ -21,7 +21,6 @@ public interface PageheadingComponentInfo extends EssentialsDocumentComponentInf
     @JcrPath(
             isRelative = true,
             pickerConfiguration = "cms-pickers/documents-only",
-            pickerInitialPath = "pageheadings",
             pickerSelectableNodeTypes = "govscot:pageheading"
     )
     String getDocument();

@@ -29,10 +29,12 @@
 
         <!-- set link where internal link has priority over external link -->
         <#assign link>
-        <#if item.link??>
-            <@hst.link hippobean=item.link/>
-        <#elseif item.externalLink?has_content>
-            ${item.externalLink}
+        <#if item != ''>
+            <#if item.link??>
+                <@hst.link hippobean=item.link/>
+            <#elseif item.externalLink?has_content>
+                ${item.externalLink}
+            </#if>
         </#if>
         </#assign>
 
