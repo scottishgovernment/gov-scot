@@ -10,9 +10,6 @@ import org.onehippo.cms7.essentials.components.CommonComponent;
 public class FeatureGridComponent extends CommonComponent {
 
     static final String TYPE = "govscot:featuregriditem";
-
-    static final String INITIAL_PATH = "featuregriditems";
-
     static final String CMS_PICKERS_DOCUMENTS_ONLY = "cms-pickers/documents-only";
 
     @Override

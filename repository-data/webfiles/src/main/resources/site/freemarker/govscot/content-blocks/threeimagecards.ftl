@@ -75,7 +75,7 @@
                         </#if>
                     </div>
 
-                    <@hst.manageContent hippobean=card documentTemplateQuery="new-navigationcard-document" parameterName="card" rootPath="navigationcards"/>
+                    <@hst.manageContent hippobean=card documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document${card?index+1}" rootPath="navigationcards"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_card  cms-blank">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <@hst.manageContent documentTemplateQuery="new-navigationcard-document" parameterName="card" rootPath="navigationcards"/>
+                    <@hst.manageContent documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document${card?index+1}" rootPath="navigationcards"/>
                 </div>
             </#if>
 

@@ -18,8 +18,6 @@ public class ThreeImageCardsComponent extends CommonComponent {
 
     static final String TYPE = "govscot:navigationcardcontentblock";
 
-    static final String INITIAL_PATH = "navigationcards";
-
     static final String CMS_PICKERS_DOCUMENTS_ONLY = "cms-pickers/documents-only";
 
     @Override
@@ -34,6 +32,8 @@ public class ThreeImageCardsComponent extends CommonComponent {
         request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("showimages", paramInfo.getShowImages());
         request.setAttribute("smallvariant", paramInfo.getSmallVariant());
+        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
+        request.setAttribute("greycards", paramInfo.getGreyCards());
     }
 
     HippoDocument getHippoDocument(String id) {

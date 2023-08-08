@@ -7,7 +7,6 @@ import org.hippoecm.hst.core.parameters.JcrPath;
 import org.hippoecm.hst.core.parameters.Parameter;
 
 import static scot.gov.www.components.FeatureGridComponent.CMS_PICKERS_DOCUMENTS_ONLY;
-import static scot.gov.www.components.FeatureGridComponent.INITIAL_PATH;
 import static scot.gov.www.components.FeatureGridComponent.TYPE;
 
 @FieldGroupList({
@@ -20,7 +19,6 @@ public interface FeatureGridComponentInfo {
     @Parameter(name = "document1", required = true)
     @JcrPath(
             isRelative = true,
-            pickerInitialPath = INITIAL_PATH,
             pickerSelectableNodeTypes = {TYPE},
             pickerConfiguration = CMS_PICKERS_DOCUMENTS_ONLY)
     String getImage1();
@@ -28,7 +26,6 @@ public interface FeatureGridComponentInfo {
     @Parameter(name = "document2", required = true)
     @JcrPath(
             isRelative = true,
-            pickerInitialPath = INITIAL_PATH,
             pickerSelectableNodeTypes = {TYPE},
             pickerConfiguration = CMS_PICKERS_DOCUMENTS_ONLY)
     String getImage2();
@@ -36,7 +33,6 @@ public interface FeatureGridComponentInfo {
     @Parameter(name = "document3")
     @JcrPath(
             isRelative = true,
-            pickerInitialPath = INITIAL_PATH,
             pickerSelectableNodeTypes = {TYPE},
             pickerConfiguration = CMS_PICKERS_DOCUMENTS_ONLY)
     String getImage3();
@@ -44,7 +40,6 @@ public interface FeatureGridComponentInfo {
     @Parameter(name = "document4")
     @JcrPath(
             isRelative = true,
-            pickerInitialPath = INITIAL_PATH,
             pickerSelectableNodeTypes = {TYPE},
             pickerConfiguration = CMS_PICKERS_DOCUMENTS_ONLY)
     String getImage4();
