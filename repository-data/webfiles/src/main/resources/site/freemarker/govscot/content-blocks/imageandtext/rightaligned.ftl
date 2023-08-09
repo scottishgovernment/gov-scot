@@ -37,7 +37,7 @@
                     <@hst.html hippohtml=document.content/>
                 </div>
 
-                <@hst.manageContent hippobean=document documentTemplateQuery="new-imageandtext-document" parameterName="document" rootPath="images"/>
+                <@hst.manageContent hippobean=document documentTemplateQuery="new-imageandtext-document" parameterName="document"/>
             <#elseif editMode>
                 <div class="ds_cb__poster cms-blank">
                     <@placeholderimage/>
@@ -47,7 +47,7 @@
                     <@placeholdertext lines=7/>
                 </div>
 
-                <@hst.manageContent documentTemplateQuery="new-imageandtext-document" parameterName="document" rootPath="images"/>
+                <@hst.manageContent documentTemplateQuery="new-imageandtext-document" parameterName="document"/>
             </#if>
         </div>
     </div>

@@ -45,7 +45,7 @@
                     <@hst.html hippohtml=document.content/>
                 </div>
 
-                <@hst.manageContent hippobean=document documentTemplateQuery="new-video-document" parameterName="document" rootPath="videos"/>
+                <@hst.manageContent hippobean=document documentTemplateQuery="new-video-document" parameterName="document"/>
             <#elseif editMode>
                 <div class="ds_cb__poster cms-blank">
                     <@placeholdervideo/>
@@ -55,7 +55,7 @@
                     <@placeholdertext lines=7/>
                 </div>
 
-                <@hst.manageContent documentTemplateQuery="new-video-document" parameterName="document" rootPath="videos"/>
+                <@hst.manageContent documentTemplateQuery="new-video-document" parameterName="document"/>
             </#if>
         </div>
     </div>

@@ -60,7 +60,7 @@
                     </picture>
                 </div>
                 </#if>
-            <@hst.manageContent hippobean=document documentTemplateQuery="new-pageheading-document" parameterName="document" rootPath="pageheadings"/>
+            <@hst.manageContent hippobean=document documentTemplateQuery="new-pageheading-document" parameterName="document"/>
 
             <#elseif editMode>
                 <div class="ds_cb__text  ds_cb__content">
@@ -75,7 +75,7 @@
                     <@placeholderimage/>
                 </div>
 
-                <@hst.manageContent documentTemplateQuery="new-pageheading-document" parameterName="document" rootPath="pageheadings"/>
+                <@hst.manageContent documentTemplateQuery="new-pageheading-document" parameterName="document"/>
             </#if>
             </div>
         </div>
