@@ -14,13 +14,13 @@
                 <div class="ds_cb__text" style="position: relative">
                     <@hst.html hippohtml=document1.content/>
 
-                    <@hst.manageContent hippobean=document1 documentTemplateQuery="new-text-document" parameterName="document1" rootPath="text"/>
+                    <@hst.manageContent hippobean=document1 documentTemplateQuery="new-text-document" parameterName="document1"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_cb__text  cms-blank">
                     <@placeholdertext lines=7/>
 
-                    <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document1" rootPath="text"/>
+                    <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document1"/>
                 </div>
             </#if>
 
@@ -28,13 +28,13 @@
                 <div class="ds_cb__text">
                     <@hst.html hippohtml=document2.content/>
 
-                    <@hst.manageContent hippobean=document2 documentTemplateQuery="new-text-document" parameterName="document2" rootPath="text"/>
+                    <@hst.manageContent hippobean=document2 documentTemplateQuery="new-text-document" parameterName="document2"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_cb__text  cms-blank">
                     <@placeholdertext lines=7/>
 
-                    <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document2" rootPath="text"/>
+                    <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document2"/>
                 </div>
             </#if>
         </div>

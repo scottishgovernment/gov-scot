@@ -111,9 +111,9 @@
                     </section>
                 </#if>
 
-                <@hst.manageContent hippobean=document documentTemplateQuery="new-text-document" parameterName="document" rootPath="content-blocks/text"/>
+                <@hst.manageContent hippobean=document documentTemplateQuery="new-text-document" parameterName="document"/>
             <#elseif editMode>
-                <@hst.manageContent documentTemplateQuery="new-dynamic-issue-document" parameterName="issue" rootPath="content-blocks/text"/>
+                <@hst.manageContent documentTemplateQuery="new-dynamic-issue-document" parameterName="issue"/>
             </#if>
         </div>
     </div>

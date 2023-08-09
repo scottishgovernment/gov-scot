@@ -15,13 +15,13 @@
                     <@hst.html hippohtml=document.content/>
                 </div>
 
-                <@hst.manageContent hippobean=document documentTemplateQuery="new-text-document" parameterName="document" rootPath="content-blocks/text"/>
+                <@hst.manageContent hippobean=document documentTemplateQuery="new-text-document" parameterName="document"/>
             <#elseif editMode>
                 <div class="cms-blank  ds_cb__text  <#if position??>ds_cb__text--${position}</#if>">
                     <@placeholdertext lines=7/>
                 </div>
 
-                <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document" rootPath="content-blocks/text"/>
+                <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document"/>
             </#if>
         </div>
     </div>

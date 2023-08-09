@@ -94,7 +94,7 @@
                     </div>
                     </#if>
 
-                    <@hst.manageContent hippobean=item documentTemplateQuery="new-featuregriditem-document" parameterName="document${item?index + 1}" rootPath="featuregriditems"/>
+                    <@hst.manageContent hippobean=item documentTemplateQuery="new-featuregriditem-document" parameterName="document${item?index + 1}"/>
                 </div>
             <#elseif editMode>
                 <div class="ds_cb--feature-grid__item  cms-blank">
@@ -110,7 +110,7 @@
                         <@placeholdertext lines=4/>
                     </div>
 
-                    <@hst.manageContent documentTemplateQuery="new-featuregriditem-document" parameterName="document${item?index + 1}" rootPath="featuregriditems"/>
+                    <@hst.manageContent documentTemplateQuery="new-featuregriditem-document" parameterName="document${item?index + 1}"/>
                 </div>
             </#if>
 
