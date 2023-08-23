@@ -6,10 +6,10 @@
 'use strict';
 
 import searchUtils from './search-utils';
-import $ from 'jquery';
 import DSDatePicker from '../../../node_modules/@scottish-government/pattern-library/src/components/date-picker/date-picker';
 import GovFilters from './component.filters';
 import breakpointCheck from '../../../node_modules/@scottish-government/pattern-library/src/base/utilities/breakpoint-check/breakpoint-check';
+import PromiseRequest from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/promise-request/promise-request';
 
 window.dataLayer = window.dataLayer || [];
 
@@ -23,376 +23,402 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-const SearchWithFilters = function (settings) {
-
-    this.filtersContainer = document.getElementById('filters');
-    this.resultsContainer = document.querySelector('#search-results');
-
-    this.settings = {
-        maxDate: new Date(),
-        minDate: new Date(1999, 5, 1)
-    };
-
-    this.settings = $.extend(this.settings, settings);
-
-    this.attachEventHandlers = attachEventHandlers;
-    this.clearErrors = clearErrors;
-    this.enableJSFilters = enableJSFilters;
-    this.gatherParams = gatherParams;
-    this.hasActiveSearch = hasActiveSearch;
-    this.initDateFilters = initDateFilters;
-    this.init = init;
-    this.validateDateInput = validateDateInput;
-};
-
-function init() {
-    let that = this;
-
-    if (!this.filtersContainer) {
-        return;
+// simple replacement of jQuery.extend
+function extend(a, b){
+    for (let key in b) {
+        if (b.hasOwnProperty(key)) {
+            a[key] = b[key];
+        }
     }
-
-    const govFilterEl = document.querySelector('[data-module="gov-filters"]');
-    this.govFilters = new GovFilters(govFilterEl);
-    this.govFilters.init();
-
-    this.searchParams = this.gatherParams(true);
-
-    this.attachEventHandlers();
-    this.enableJSFilters();
-    this.initDateFilters();
-    this.searchUtils = searchUtils;
-    this.submitSearch = function (options) {
-        options = options || {};
-        if (options.changingPage) {that.isChangingPage = true;}
-        if (options.popstate) {that.isPopstate = true;}
-        $('#filters').submit();
-    };
-    updateFilterCounts(this.gatherParams());
+    return a;
 }
 
-function attachEventHandlers () {
-    let that = this;
+class SearchWithFilters {
+    constructor(settings) {
+        this.filtersContainer = document.getElementById('filters');
+        this.resultsContainer = document.querySelector('#search-results');
 
-    $('#filters').on('submit', function (event) {
-        if (!that.resultsContainer) {
+        this.settings = {
+            maxDate: new Date(),
+            minDate: new Date(1999, 5, 1)
+        };
+
+        this.settings = extend(this.settings, settings);
+    }
+
+    init() {
+        if (!this.filtersContainer) {
             return;
         }
 
-        event.preventDefault();
+        const govFilterEl = document.querySelector('[data-module="gov-filters"]');
+        this.govFilters = new GovFilters(govFilterEl);
+        this.govFilters.init();
+
+        this.searchParams = this.gatherParams(true);
+
+        this.enableJSFilters();
+        this.attachEventHandlers();
+        this.initDateFilters();
+        this.searchUtils = searchUtils;
+        this.submitSearch = options => {
+            options = options || {};
+            if (options.changingPage) { this.isChangingPage = true; }
+            if (options.popstate) { this.isPopstate = true; }
+            this.doSearch();
+        };
+        this.updateFilterCounts(this.gatherParams());
+    }
+
+    attachEventHandlers () {
+        let t;
+
+        const fieldGroups = [].slice.call(this.filtersContainer.querySelectorAll('.ds_field-group'));
+        fieldGroups.forEach(fieldGroup => {
+            const inputs = [].slice.call(fieldGroup.querySelectorAll('input[type=checkbox]'));
+
+            inputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    let containerType = input
+                        .closest('.ds_accordion-item')
+                        .querySelector('.ds_accordion-item__header-button')
+                        .innerText
+                        .toLowerCase();
+
+                    dataLayer.push({
+                        'filter': containerType,
+                        'interaction': input.checked ? 'check' : 'uncheck',
+                        'value': input.value,
+                        'event': 'filters'
+                    });
+
+                    // If on mobile don't do the search automatically.
+                    if (breakpointCheck('medium')) {
+                        clearTimeout(t);
+
+                        // do search on a small timeout to allow user to select multiple items without making multiple requests
+                        t = setTimeout(() => {
+                            delete this.searchParams.page;
+                            this.submitSearch();
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        document.querySelector('.js-filter-search-submit').addEventListener('click', (event) => {
+            event.preventDefault();
+            this.submitSearch();
+        });
+
+
+        // clear filters
+        this.resultsContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('js-clear-filters')) {
+                event.preventDefault();
+
+                dataLayer.push({
+                    'event': 'filters-clear'
+                });
+
+                // clear all filters
+                const checkboxes = [].slice.call(this.filtersContainer.querySelectorAll('input[type="checkbox"]'));
+                const textInputs = [].slice.call(this.filtersContainer.querySelectorAll('input[type="text"]'));
+
+                checkboxes.forEach(element => element.checked = false);
+                textInputs.forEach(element => element.value = '');
+
+                this.clearErrors();
+
+                delete this.searchParams.page;
+
+                this.submitSearch();
+            }
+        });
+
+        const paginationLinks = [].slice.call(document.querySelectorAll('.ds_pagination__page'));
+        paginationLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                this.searchParams.page = getParameterByName('page', event.target.href);
+                this.submitSearch({changingPage: true});
+            });
+        })
+
+        window.onpopstate = () => {
+            this.searchParams.page = getParameterByName('page');
+            this.submitSearch({
+                changingPage: true,
+                popstate: true
+            });
+        };
+    }
+
+    clearErrors() {
+        // clear any error states on filter fields
+        // quick & dirty, will be replaced by enterprise search
+        const inputs = [].slice.call(this.filtersContainer.querySelectorAll('.ds_input--error'));
+        const messages = [].slice.call(this.filtersContainer.querySelectorAll('.ds_question__error-message'));
+        const questions = [].slice.call(this.filtersContainer.querySelectorAll('.ds_question--error'));
+
+        inputs.forEach(element => {
+            element.classList.remove('ds_input--error');
+            element.removeAttribute('aria-invalid');
+        });
+        messages.forEach(element => element.parentNode.removeChild(element));
+        questions.forEach(element => element.classList.remove('ds_question--error'));
+    }
+
+    doSearch() {
+        if (!this.resultsContainer) {
+            return;
+        }
 
         // do not proceed if there are errors
         if (document.querySelectorAll('#filters [aria-invalid="true"]').length) {
             return false;
         }
 
-        if (!that.isChangingPage) {that.searchParams.page = 1;}
+        if (!this.isChangingPage) {this.searchParams.page = 1;}
 
-        let currentParams = that.gatherParams();
+        let currentParams = this.gatherParams();
         let newQueryString = searchUtils.getNewQueryString(currentParams);
 
-        that.resultsContainer.classList.add('js-loading-inactive');
-        that.filtersContainer.classList.add('js-loading-inactive');
+        this.resultsContainer.classList.add('js-loading-inactive');
+        this.filtersContainer.classList.add('js-loading-inactive');
 
-        $.ajax({
-            url: window.location.pathname + newQueryString
-        }).done(function (response) {
-
-            // skip this if we're on popstate
-            if (that.isPopstate){
-                delete that.isPopstate;
-            } else {
-                // update querystring
-                try {
-                    window.history.pushState('', '', newQueryString);
-                } catch(error) {
-                    // history API not supported
+        this.loadResults(window.location.pathname + newQueryString)
+            .then(data => {
+                // skip this if we're on popstate
+                if (this.isPopstate) {
+                    delete this.isPopstate;
+                } else {
+                    // update querystring
+                    try {
+                        window.history.pushState('', '', newQueryString);
+                    } catch(error) {
+                        // history API not supported
+                    }
                 }
-            }
 
-            // update results (incl pagination and status readout)
-            $('#search-results').html($(response).find('#search-results').html());
+                const clearFiltersElement = document.querySelector('.js-clear-filters');
 
-            // update display status of "clear" buttons
-            if (that.hasActiveSearch(currentParams)) {
-                $('.js-clear-filters').removeClass('hidden');
-            } else {
-                $('.js-clear-filters').addClass('hidden');
-            }
+                // temporary container for the search results so we can query a DOM tree
+                const tempContainer = document.createElement('div');
+                tempContainer.innerHTML = data.response;
 
-            // remove "loading" message
-            that.resultsContainer.classList.remove('js-loading-inactive');
-            that.filtersContainer.classList.remove('js-loading-inactive');
+                this.resultsContainer.innerHTML = tempContainer.querySelector('#search-results').innerHTML;
 
-            // update count for mobile
-            $('.js-search-results-count').html($('#search-results .search-results__count').html());
+                // update display status of "clear" buttons
+                if (clearFiltersElement) {
+                    if (this.hasActiveSearch(currentParams)) {
+                        clearFiltersElement.classList.remove('hidden');
+                    } else {
+                        clearFiltersElement.classList.add('hidden');
+                    }
+                }
 
-            updateFilterCounts(currentParams);
+                // remove "loading" message
+                this.resultsContainer.classList.remove('js-loading-inactive');
+                this.filtersContainer.classList.remove('js-loading-inactive');
 
-            that.govFilters.closeFilters();
+                this.updateFilterCounts(currentParams);
 
-            // scroll to the top of the page if we are changing page
-            if (that.isChangingPage) {
-                let pageContent = document.getElementById('main-content');
-                window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
-            }
-            that.isChangingPage = false;
-        }).fail(function () {
-            window.location.search = newQueryString;
+                this.govFilters.closeFilters();
+
+                // scroll to the top of the page if we are changing page
+                if (this.isChangingPage) {
+                    let pageContent = document.getElementById('main-content');
+                    window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
+                }
+                this.isChangingPage = false;
+            })
+            .catch(error => {
+                window.location.search = newQueryString;
+            });
+    }
+
+    enableJSFilters () {
+        [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[type="radio"]')).forEach((item => {
+            item.type = 'checkbox';
+            item.classList.remove('ds_radio__input');
+            item.classList.add('ds_checkbox__input');
+            item.dataset.form = item.dataset.form.replace('radio-', 'checkbox-');
+
+            const label = item.nextElementSibling;
+            label.classList.remove('ds_radio__label');
+            label.classList.add('ds_checkbox__label');
+
+            const parent = item.parentNode;
+            parent.classList.remove('ds_radio');
+            parent.classList.remove('ds_radio--small');
+            parent.classList.add('ds_checkbox');
+            parent.classList.add('ds_checkbox--small');
+        }));
+
+        // populate checkboxes from searchParams
+        const checkedOnLoad = [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[data-checkedonload]'));
+        checkedOnLoad.forEach(checkbox => {
+            checkbox.checked = true;
+        })
+
+        // date pickers display
+        const datePickerButtons = [].slice.call(document.querySelectorAll('.js-show-calendar'));
+        datePickerButtons.forEach(button => {
+            button.classList.remove('hidden');
+            button.classList.remove('hidden--hard');
         });
-    });
 
-    let t;
+        // filter button display
+        document.querySelector('#filter-actions').classList.add('filter-actions');
+        document.querySelector('#filter-actions').classList.add('visible-xsmall');
+    }
 
-    $('.ds_field-group').on('change', 'input[type=checkbox]', function () {
-        let containerType = $(this)
-            .closest('.ds_accordion-item')
-            .find('.ds_accordion-item__title')
-            .text()
-            .toLowerCase();
+    gatherParams (initial) {
+        let searchParams = this.searchParams || {};
+        const searchTermElement = document.getElementById('filters-search-term');
 
-        dataLayer.push({
-            'filter': containerType,
-            'interaction': this.checked ? 'check': 'uncheck',
-            'value': this.value,
-            'event': 'filters'
-        });
-
-        // If on mobile don't do the search automatically.
-        if (breakpointCheck('medium')) {
-            clearTimeout(t);
-
-            // do search on a small timeout to allow user to select multiple items without making multiple requests
-            t = setTimeout(function() {
-                delete that.searchParams.page;
-                that.submitSearch();
-            }, 300);
+        // KEYWORD / TERM
+        if (window.location.href.indexOf('/search/') !== -1) {
+            searchParams.q = searchTermElement.value;
+            searchParams.cat = 'sitesearch';
+        } else {
+            searchParams.term = searchTermElement.value;
+            searchParams.cat = 'filter';
         }
-    });
 
-    // clear filters
-    $('body').on('click', '.js-clear-filters', function (e) {
-        e.preventDefault();
+        // PAGINATION
+        if (initial) {
+            searchParams.page = getParameterByName('page') || 1;
+            searchParams.size = getParameterByName('size') || 10;
+        }
 
-        dataLayer.push({
-            'event': 'filters-clear'
+        // TOPICS
+        searchParams.topics = [];
+        const checkedTopicCheckboxes = [].slice.call(document.querySelectorAll('input[name="topics"]:checked'));
+        checkedTopicCheckboxes.forEach(checkbox => {
+            searchParams.topics.push(checkbox.value);
         });
+        if (searchParams.topics.length === 0) {
+            delete searchParams.topics;
+        }
 
-        // clear all filters
-        const checkboxes = [].slice.call(that.filtersContainer.querySelectorAll('input[type="checkbox"]'));
-        const textInputs = [].slice.call(that.filtersContainer.querySelectorAll('input[type="text"]'));
-
-        checkboxes.forEach(element => element.checked = false);
-        textInputs.forEach(element => element.value = '');
-
-        that.clearErrors();
-
-        delete that.searchParams.page;
-
-        that.submitSearch();
-    });
-
-    $('#search-results').on('click', '.ds_pagination__page', function (event) {
-        event.preventDefault();
-
-        that.searchParams.page = getParameterByName('page', event.target.href);
-        that.submitSearch({changingPage: true});
-    });
-
-    window.onpopstate = function () {
-        that.searchParams.page = getParameterByName('page');
-        that.submitSearch({
-            changingPage: true,
-            popstate: true
+        // PUBLICATION TYPES
+        searchParams.publicationTypes = [];
+        const checkedPublicationTypeCheckboxes = [].slice.call(document.querySelectorAll('input[name="publicationTypes"]:checked'));
+        checkedPublicationTypeCheckboxes.forEach(checkbox => {
+            searchParams.publicationTypes.push(checkbox.value);
         });
-    };
-}
+        if (searchParams.publicationTypes.length === 0) {
+            delete searchParams.publicationTypes;
+        }
 
-function clearErrors() {
-    // clear any error states on filter fields
-    // quick & dirty, will be replaced by enterprise search
-    const that = this;
+        // DATE RANGES
+        if (document.getElementById('filter-date-range')) {
+            searchParams.date = searchParams.date || {};
 
-    const inputs = [].slice.call(that.filtersContainer.querySelectorAll('.ds_input--error'));
-    const messages = [].slice.call(that.filtersContainer.querySelectorAll('.ds_question__error-message'));
-    const questions = [].slice.call(that.filtersContainer.querySelectorAll('.ds_question--error'));
+            searchParams.date.begin = encodeURI(document.getElementById('date-from').value);
+            searchParams.date.end = encodeURI(document.getElementById('date-to').value);
+        }
 
-    inputs.forEach(element => {
-        element.classList.remove('ds_input--error');
-        element.removeAttribute('aria-invalid');
-    });
-    messages.forEach(element => element.parentNode.removeChild(element));
-    questions.forEach(element => element.classList.remove('ds_question--error'));
-}
-
-function enableJSFilters () {
-    [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[type="radio"]')).forEach((item => {
-        item.type = 'checkbox';
-        item.classList.remove('ds_radio__input');
-        item.classList.add('ds_checkbox__input');
-        item.dataset.form = item.dataset.form.replace('radio-', 'checkbox-');
-
-        const label = item.nextElementSibling;
-        label.classList.remove('ds_radio__label');
-        label.classList.add('ds_checkbox__label');
-
-        const parent = item.parentNode;
-        parent.classList.remove('ds_radio');
-        parent.classList.remove('ds_radio--small');
-        parent.classList.add('ds_checkbox');
-        parent.classList.add('ds_checkbox--small');
-    }));
-
-    // populate checkboxes from searchParams
-    $('.ds_field-group--checkboxes input[data-checkedonload]').prop('checked', true);
-
-    // date pickers display
-    $('.js-show-calendar').removeClass('hidden  hidden--hard');
-
-    // filter button display
-    $('#filter-actions').addClass('visible-xsmall  filter-actions');
-}
-
-function gatherParams (initial) {
-    let searchParams = this.searchParams || {};
-
-    // KEYWORD / TERM
-    if (window.location.href.indexOf('/search/') !== -1) {
-        searchParams.q = encodeURI($('#filters-search-term').val());
-        searchParams.cat = 'sitesearch';
-    } else {
-        searchParams.term = encodeURI($('#filters-search-term').val());
-        searchParams.cat = 'filter';
+        return searchParams;
     }
 
-    // PAGINATION
-    if (initial) {
-        searchParams.page = getParameterByName('page') || 1;
-        searchParams.size = getParameterByName('size') || 10;
-    }
-
-    // TOPICS
-    searchParams.topics = [];
-    $.each( $('input[name="topics"]:checked') , function (index, checkbox) {
-        searchParams.topics.push(checkbox.value);
-    });
-    if (searchParams.topics.length === 0) {
-        delete searchParams.topics;
-    }
-
-    // PUBLICATION TYPES
-    searchParams.publicationTypes = [];
-    $.each( $('input[name="publicationTypes"]:checked') , function (index, checkbox) {
-        searchParams.publicationTypes.push(checkbox.value);
-    });
-    if (searchParams.publicationTypes.length === 0) {
-        delete searchParams.publicationTypes;
-    }
-
-    // DATE RANGES
-    if ($('#filter-date-range').length) {
-        searchParams.date = searchParams.date || {};
-
-        searchParams.date.begin = encodeURI($('#date-from').val());
-        searchParams.date.end = encodeURI($('#date-to').val());
-    }
-
-    return searchParams;
-}
-
-/**
+    /**
     * Determines whether or not there is an active search
     * @param params
     * @returns {boolean}
     */
-function hasActiveSearch(params) {
-    let hasActiveSearch = false;
+    hasActiveSearch(params) {
+        let hasActiveSearch = false;
 
-    for (let key in params) {
-        if (!params.hasOwnProperty(key)) {
-            continue;
-        }
+        for(let key in params) {
+            if (!params.hasOwnProperty(key)) {
+                continue;
+            }
 
-        let value = params[key];
-        if (key === 'topics' || key === 'term' || key === 'publicationTypes') {
-            if (value !== '') {
+            let value = params[key];
+            if (key === 'topics' || key === 'term' || key === 'publicationTypes') {
+                if (value !== '') {
+                    hasActiveSearch = true;
+                }
+            } else if (key === 'date' && (value.begin || value.end)) {
                 hasActiveSearch = true;
             }
-        } else if (key === 'date' && (value.begin || value.end)) {
-            hasActiveSearch = true;
         }
+
+        return hasActiveSearch;
     }
 
-    return hasActiveSearch;
-}
+    initDateFilters() {
+        const imagePath = document.getElementById('imagePath').value;
+        const fromDatePickerElement = document.querySelector('#fromDatePicker');
+        const toDatePickerElement = document.querySelector('#toDatePicker');
+        const fromDatePicker = new DSDatePicker(fromDatePickerElement, { imagePath: imagePath, maxDate: new Date() });
+        const toDatePicker = new DSDatePicker(toDatePickerElement, { imagePath: imagePath, maxDate: new Date() });
 
-function initDateFilters() {
-    const imagePath = document.getElementById('imagePath').value;
-    const fromDatePickerElement = document.querySelector('#fromDatePicker');
-    const toDatePickerElement = document.querySelector('#toDatePicker');
-    const fromDatePicker = new DSDatePicker(fromDatePickerElement, {imagePath: imagePath, maxDate: new Date()});
-    const toDatePicker = new DSDatePicker(toDatePickerElement, { imagePath: imagePath, maxDate: new Date()});
+        fromDatePicker.init();
+        toDatePicker.init();
 
-    fromDatePicker.init();
-    toDatePicker.init();
-
-    if (fromDatePickerElement) {
-        fromDatePickerElement.addEventListener('change', () => {
-            if (this.validateDateInput($(fromDatePicker.inputElement))) {
-                toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
-                if (breakpointCheck('medium')) {
-                    delete this.searchParams.page;
-                    this.submitSearch();
+        if (fromDatePickerElement) {
+            fromDatePickerElement.addEventListener('change', () => {
+                if (this.validateDateInput(fromDatePicker.inputElement)) {
+                    toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
+                    if (breakpointCheck('medium')) {
+                        delete this.searchParams.page;
+                        this.submitSearch();
+                    }
                 }
-            }
-        });
-    }
+            });
+        }
 
-    if (toDatePickerElement) {
-        toDatePickerElement.addEventListener('change', () => {
-            if (this.validateDateInput($(toDatePicker.inputElement))) {
-                fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
-                if (breakpointCheck('medium')) {
-                    delete this.searchParams.page;
-                    this.submitSearch();
+        if (toDatePickerElement) {
+            toDatePickerElement.addEventListener('change', () => {
+                if (this.validateDateInput(toDatePicker.inputElement)) {
+                    fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
+                    if (breakpointCheck('medium')) {
+                        delete this.searchParams.page;
+                        this.submitSearch();
+                    }
                 }
+            });
+        }
+    }
+
+    loadResults(url) {
+        return PromiseRequest(url);
+    }
+
+    updateFilterCounts(currentParams) {
+        const publicationTypesCount = document.querySelector('.js-publication-types-count');
+        const topicsCount = document.querySelector('.js-topics-count');
+
+        if (publicationTypesCount) {
+            if (currentParams.publicationTypes) {
+                publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
+            } else {
+                delete publicationTypesCount.dataset.count;
             }
-        });
-    }
-}
+        }
 
-function validateDateInput(element) {
-    let isValid = true;
-
-    const afterElement = document.getElementById('date-from');
-    const beforeElement = document.getElementById('date-to');
-
-    // 1) is the date in an allowed format?
-    if (!searchUtils.validateInput(element[0], [searchUtils.dateRegex])) {
-        isValid = false;
-    }
-
-    return isValid;
-}
-
-function updateFilterCounts(currentParams) {
-    const publicationTypesCount = document.querySelector('.js-publication-types-count');
-    const topicsCount = document.querySelector('.js-topics-count');
-
-    if (publicationTypesCount) {
-        if (currentParams.publicationTypes) {
-            publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
-        } else {
-            delete publicationTypesCount.dataset.count;
+        if (topicsCount) {
+            if (currentParams.topics) {
+                topicsCount.dataset.count = currentParams.topics.length;
+            } else {
+                delete topicsCount.dataset.count;
+            }
         }
     }
 
-    if (topicsCount) {
-        if (currentParams.topics) {
-            topicsCount.dataset.count = currentParams.topics.length;
-        } else {
-            delete topicsCount.dataset.count;
+    validateDateInput(element) {
+        let isValid = true;
+
+        if (!searchUtils.validateInput(element, [searchUtils.dateRegex])) {
+            isValid = false;
         }
+
+        return isValid;
     }
 }
 
