@@ -20,22 +20,13 @@ const commonItems = {
         'search-page':                  path.resolve(__dirname, './src/scripts/govscot/format.searchpage.js')
     },
 
-    externals: {
-        jquery: 'jQuery'
-    },
-
     resolve: {
         modules: [
             './app/assets/scripts',
             'node_modules'
         ],
 
-        extensions: ['.js'],
-
-        // equivalent to requirejs paths
-        // alias: {
-        //     'jquery': aliasPath + 'jquery.min'
-        // }
+        extensions: ['.js']
     },
 
     module: {
