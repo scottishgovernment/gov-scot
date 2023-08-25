@@ -46,7 +46,7 @@
                         <h2>${folder.displayName}</h2>
                         <#list folder.documents as attachedDocument>
                             <#assign isTargetedItem = false/>
-                            <#if doc = attachedDocument>
+                            <#if doc?? && doc = attachedDocument>
                                 <#assign isTargetedItem = true/>
                             </#if>
 
