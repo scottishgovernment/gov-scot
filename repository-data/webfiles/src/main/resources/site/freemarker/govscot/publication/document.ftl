@@ -56,7 +56,7 @@
                         </#list>
                     </section>
                 </#list>
-            <#else>
+            <#elseif documents?? && documents?size &gt; 0>
                 <#list documents as attachedDocument>
                     <#assign isTargetedItem = false/>
 
@@ -67,6 +67,10 @@
                     <#assign docindex= attachedDocument?counter />
                     <#include 'body-document-info.ftl'/>
                 </#list>
+            <#else>
+            <!--noindex-->
+            <p>There are no supporting documents for this publication.</p>
+            <!--endnoindex-->
             </#if>
 
             <!--noindex-->
