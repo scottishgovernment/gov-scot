@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 2504e1a1-83b2-4d0d-acc0-811ac6d1e286
+          jcr:uuid: efd0a4c2-940b-4b92-9a5b-3a8a35d0dda9
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -71,6 +71,14 @@ definitions:
             hipposysedit:path: govscot:fmImageLandscape
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
+          /fmImageAlt:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:fmImageAlt
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -89,9 +97,10 @@ definitions:
           govscot:flickrContent: ''
           govscot:twitterContent: ''
           govscot:youtubeContent: ''
-          jcr:uuid: f96f3ad0-1463-4fc1-8ce1-b39829e52442
+          jcr:uuid: f2c064a2-6868-46ca-b6bb-e5a37fe7b2d2
           hippostdpubwf:lastModificationDate: 2018-04-12T10:35:48.116+01:00
           hippostdpubwf:creationDate: 2018-04-12T10:35:48.117+01:00
+          govscot:fmImageAlt: Portrait of the First Minister
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -268,3 +277,12 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: ['govscot:ColumnImage']
+          /fmImageAlt:
+            jcr:primaryType: frontend:plugin
+            caption: FM image alt text
+            field: fmImageAlt
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

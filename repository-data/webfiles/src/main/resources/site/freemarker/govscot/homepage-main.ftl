@@ -365,7 +365,7 @@
                                 <source width="${document.fmImageLandscape.mediumsixcolumns.width?c}" height="${document.fmImageLandscape.mediumsixcolumns.height?c}" srcset="<@hst.link hippobean=document.fmImageLandscape.mediumsixcolumns/> 1x, <@hst.link hippobean=document.fmImageLandscape.mediumsixcolumnsdoubled/> 2x" media="(max-width: 991px)">
                                 <source width="${document.fmImageLandscape.largetwocolumns.width?c}" height="${document.fmImageLandscape.largetwocolumns.height?c}" srcset="<@hst.link hippobean=document.fmImagePortrait.largetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.largetwocolumnsdoubled/> 2x" media="(max-width: 1199px)">
 
-                                <img loading="lazy" width="${document.fmImagePortrait.xlargetwocolumns.width?c}" height="${document.fmImagePortrait.xlargetwocolumns.height?c}" src="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/>" srcset="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.xlargetwocolumnsdoubled/> 2x">
+                                <img alt="${document.fmImageAlt}" loading="lazy" width="${document.fmImagePortrait.xlargetwocolumns.width?c}" height="${document.fmImagePortrait.xlargetwocolumns.height?c}" src="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/>" srcset="<@hst.link hippobean=document.fmImagePortrait.xlargetwocolumns/> 1x, <@hst.link hippobean=document.fmImagePortrait.xlargetwocolumnsdoubled/> 2x">
                             </picture>
 
                             <div class="gov_homepage-fm__content">
@@ -411,7 +411,7 @@
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
-    
+
     <#include "common/metadata.social.ftl"/>
 
     <@hst.link var="canonicalitem" path="/" canonical=true/>
