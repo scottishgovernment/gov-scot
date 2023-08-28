@@ -281,10 +281,10 @@ class SearchWithFilters {
 
         // KEYWORD / TERM
         if (window.location.href.indexOf('/search/') !== -1) {
-            searchParams.q = searchTermElement.value;
+            searchParams.q = encodeURIComponent(searchTermElement.value);
             searchParams.cat = 'sitesearch';
         } else {
-            searchParams.term = searchTermElement.value;
+            searchParams.term = encodeURIComponent(searchTermElement.value);
             searchParams.cat = 'filter';
         }
 
