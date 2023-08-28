@@ -48,10 +48,10 @@
     <#if item.publicationDate?? || item.label?has_content>
     <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
         <#if item.label?has_content>
-            <span class="ds_metadata__item">
-                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
-                                    <dd class="ds_metadata__value">${item.label?cap_first}</dd>
-                                </span>
+            <div class="ds_metadata__item">
+                <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                <dd class="ds_metadata__value">${item.label?cap_first}</dd>
+            </div>
         </#if>
 
         <#if item.publicationDate??>
@@ -60,10 +60,10 @@
             <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                 <#assign dateFormat = "dd MMMM yyyy HH:mm">
             </#if>
-            <span class="ds_metadata__item">
-                                    <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
-                                    <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
-                                </span>
+            <div class="ds_metadata__item">
+                <dt class="ds_metadata__key  visually-hidden">Publication date</dt>
+                <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
+            </div>
         </#if>
     </dl>
     </#if>

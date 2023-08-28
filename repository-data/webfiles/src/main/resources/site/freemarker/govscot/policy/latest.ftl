@@ -24,7 +24,7 @@
                     </#if>
 
                     <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
-                        <span class="ds_metadata__item">
+                        <div class="ds_metadata__item">
                             <dt class="ds_metadata__key  visually-hidden">Type</dt>
                             <dd class="ds_metadata__value  ds_content-label">
                                 <#if hst.isBeanType(item, "scot.gov.www.beans.News")><#else>
@@ -32,11 +32,11 @@
                                 </#if>
                                 ${item.label?cap_first}
                             </dd>
-                        </span>
+                        </div>
 
                         <#if (hst.isBeanType(item, "scot.gov.www.beans.News") && item.publicationDate??)
                                 || (!hst.isBeanType(item, "scot.gov.www.beans.News") && item.displayDate??)>
-                            <span class="ds_metadata__item">
+                            <div class="ds_metadata__item">
                                 <dt class="ds_metadata__key  visually-hidden">Date</dt>
 
                                 <dd class="ds_metadata__value">
@@ -46,7 +46,7 @@
                                         <@fmt.formatDate value=item.displayDate.time type="both" pattern="dd MMMM yyyy"/>
                                     </#if>
                                 </dd>
-                            </span>
+                            </div>
                         </#if>
                     </dl>
                 </li>
