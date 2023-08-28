@@ -67,7 +67,7 @@
 
     <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
     response.resultPacket.resultsSummary.totalMatching &gt; 0>
-        <h2 class="ds_search-results__title">
+        <h2 aria-live="polite" class="ds_search-results__title">
             <#if response.resultPacket.resultsSummary.fullyMatching <= response.resultPacket.resultsSummary.numRanks ||
             response.resultPacket.resultsSummary.currStart <= response.resultPacket.resultsSummary.numRanks >
 
