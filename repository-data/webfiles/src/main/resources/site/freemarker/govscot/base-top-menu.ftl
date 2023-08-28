@@ -2,7 +2,7 @@
 <#include "../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 <!--noindex-->
-<header class="ds_site-header" role="banner" id="page-top">
+<header class="ds_site-header" role="banner">
     <div class="ds_wrapper">
         <div class="ds_site-header__content">
             <div class="ds_site-branding">
