@@ -53,40 +53,40 @@
     <#if result.listMetadata["f"]?first = 'Publication'>
         <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
             <#if result.listMetadata["publicationType"]!?has_content>
-            <span class="ds_metadata__item">
+            <div class="ds_metadata__item">
                 <dt class="ds_metadata__key  visually-hidden">Publication type</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata["publicationType"]?first!}
                 </dd>
-            </span>
+            </div>
             </#if>
             <#if (result.listMetadata["d"]?first)!?has_content>
-            <span class="ds_metadata__item">
+            <div class="ds_metadata__item">
                 <dt class="ds_metadata__key  visually-hidden">Date</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata.displayDate}
                 </dd>
-            </span>
+            </div>
             </#if>
         </dl>
     <#elseif result.listMetadata["f"]?first = 'News'
     || result.listMetadata["f"]?first = 'Policy'
     || result.listMetadata["f"]?first = 'Collection'>
         <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
-            <span class="ds_metadata__item">
+            <div class="ds_metadata__item">
                 <dt class="ds_metadata__key  visually-hidden">Format</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata["f"]?first!}
                 </dd>
-            </span>
+            </div>
             <#if (result.listMetadata["d"]?first)!?has_content
             && result.listMetadata["f"]?first = 'News'>
-            <span class="ds_metadata__item">
+            <div class="ds_metadata__item">
                 <dt class="ds_metadata__key  visually-hidden">Date</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata.displayDateTime}
                 </dd>
-            </span>
+            </div>
             </#if>
         </dl>
     </#if>
@@ -106,6 +106,6 @@
             </dd>
             </#list>
         </dl>
-    </#if> 
+    </#if>
 </#if>
 </li>
