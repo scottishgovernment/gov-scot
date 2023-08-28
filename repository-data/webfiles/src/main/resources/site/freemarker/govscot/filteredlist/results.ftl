@@ -106,13 +106,13 @@
                 </#if>
 
                 <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
-                    <span class="ds_metadata__item">
+                    <div class="ds_metadata__item">
                         <dt class="ds_metadata__key  visually-hidden">Type</dt>
                         <dd class="ds_metadata__value">${item.label?cap_first}</dd>
-                    </span>
+                    </div>
 
                     <#if item.publicationDate??>
-                        <span class="ds_metadata__item">
+                        <div class="ds_metadata__item">
                             <dt class="ds_metadata__key  visually-hidden">Date</dt>
                             <#assign dateFormat = "dd MMMM yyyy">
                             <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
@@ -120,7 +120,7 @@
                             </#if>
                             <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
                             <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
-                        </span>
+                        </div>
                     </#if>
                 </dl>
 
