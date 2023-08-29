@@ -11,10 +11,9 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 4e278dbe-832c-455f-a2c2-af4b8b1069ca
+          jcr:uuid: e54cca51-de92-4bb5-b64b-549e8d2ae574
           hipposysedit:node: true
-          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed',
-            'hippotranslation:translated']
+          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /description:
             jcr:primaryType: hipposysedit:field
@@ -105,6 +104,14 @@ definitions:
             hipposysedit:path: govscot:asideIcon
             hipposysedit:primary: false
             hipposysedit:type: hippogallerypicker:imagelink
+          /videoAlt:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:videoAlt
+            hipposysedit:primary: false
+            hipposysedit:type: String
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -118,9 +125,13 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
           govscot:alt: ''
-          jcr:uuid: f9c99aea-7701-41c4-aa1b-fae943ef51f3
+          jcr:uuid: d57476e0-9d86-4ede-abf2-c85aae4a3c63
           hippostdpubwf:lastModificationDate: 2021-07-29T10:15:50.235+01:00
           hippostdpubwf:creationDate: 2021-07-29T10:15:50.235+01:00
+          govscot:externalLink: ''
+          govscot:cta: ''
+          govscot:videoUrl: ''
+          govscot:videoAlt: ''
           /govscot:description:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -179,7 +190,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /alt:
             jcr:primaryType: frontend:plugin
-            caption: Alt
+            caption: Alt text for image
             field: alt
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
@@ -199,6 +210,7 @@ definitions:
             field: cta
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /link:
@@ -223,6 +235,15 @@ definitions:
             field: videoImage
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /videoAlt:
+            jcr:primaryType: frontend:plugin
+            caption: Alt text for video image
+            field: videoAlt
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
