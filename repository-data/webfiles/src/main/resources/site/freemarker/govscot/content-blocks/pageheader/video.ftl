@@ -37,7 +37,7 @@
                     <div class="ds_cb__poster<#if medianomargin>  ds_cb__poster--no-margin</#if><#if mediaaligndesktop??>  ds_cb__poster--${mediaaligndesktop}</#if><#if mediaalignmobile??>  ds_cb__poster--${mediaalignmobile}-mobile</#if>">
                         <a target="_blank" class="ds_cb__poster__link" href="${document.videoUrl}">
                             <#if document.videoImage.xlargesixcolumns??>
-                                <img alt="${document.alt}" src="<@hst.link hippobean=document.videoImage.xlargesixcolumns />"
+                                <img alt="${document.videoAlt}" src="<@hst.link hippobean=document.videoImage.xlargesixcolumns />"
                                     class="ds_cb__poster-video"
                                     width="${document.videoImage.xlargesixcolumns.width?c}"
                                     height="${document.videoImage.xlargesixcolumns.height?c}"
