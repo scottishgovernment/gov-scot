@@ -33,6 +33,7 @@ definitions:
           hst:componentconfigurationmappingvalues: ['hst:pages/issuepage', 'hst:pages/topicpage']
           hst:relativecontentpath: topics/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
+          hst:componentconfigurationid: hst:pages/issuepage
       /news:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/newslistpage

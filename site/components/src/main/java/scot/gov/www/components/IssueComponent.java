@@ -11,11 +11,12 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.ContentBeanUtils;
+import org.onehippo.cms7.essentials.components.CommonComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.*;
 
-public class IssueComponent extends BaseHstComponent {
+public class IssueComponent extends CommonComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(IssueComponent.class);
 
@@ -26,9 +27,15 @@ public class IssueComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
+        super.doBeforeRender(request, response);
+
         HstRequestContext context = request.getRequestContext();
         HippoBean base = context.getSiteContentBaseBean();
         Issue issue = context.getContentBean(Issue.class);
+        if (issue == null) {
+            pageNotFound(response);
+            return;
+        }
         request.setAttribute("document", issue);
 
         populatePolicies(base, issue, request);
