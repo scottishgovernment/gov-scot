@@ -53,7 +53,7 @@
                                     sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"
                                     >
                             <#else>
-                                <img class="ds_cb__poster-video" src="<@hst.link hippobean=document.videoImage />" alt="" width="${document.videoImage.original.width?c}" height="${document.videoImage.original.height?c}">
+                                <img class="ds_cb__poster-video" src="<@hst.link hippobean=document.videoImage />" alt="${document.videoAlt}" width="${document.videoImage.original.width?c}" height="${document.videoImage.original.height?c}">
                             </#if>
 
                             <svg class="ds_cb__poster__overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
