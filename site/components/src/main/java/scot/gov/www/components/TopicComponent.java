@@ -15,6 +15,7 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.ContentBeanUtils;
+import org.onehippo.cms7.essentials.components.CommonComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +31,7 @@ import static java.util.stream.Collectors.toList;
 
 public class
 
-TopicComponent extends BaseHstComponent {
+TopicComponent extends CommonComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(TopicComponent.class);
 
@@ -43,23 +44,16 @@ TopicComponent extends BaseHstComponent {
     @Override
     public void doBeforeRender(final HstRequest request,
                                final HstResponse response) {
+        super.doBeforeRender(request, response);
+
         HstRequestContext context = request.getRequestContext();
         HippoBean base = context.getSiteContentBaseBean();
-        Topic topic;
-
-        try {
-            topic = context.getContentBean(Topic.class);
-            if (topic == null) {
-                LOG.info("404 for {}", request.getRequestURL());
-                response.setStatus(404);
-                response.forward("/pagenotfound");
-                return;
-            }
-            request.setAttribute("document", topic);
-        } catch (IOException e) {
-            throw new HstComponentException("forward failed", e);
+        Topic topic = context.getContentBean(Topic.class);
+        if (topic == null) {
+            pageNotFound(response);
+            return;
         }
-
+        request.setAttribute("document", topic);
         populatePoliciesAndDirectorates(base, topic, request);
         populateNews(base, topic, request);
         populateConsultations(base, topic, request);
