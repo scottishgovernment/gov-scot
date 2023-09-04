@@ -4,7 +4,7 @@
   <parent>
     <artifactId>gov-scot</artifactId>
     <groupId>scot.gov.www</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1432</version>
   </parent>
 
   <artifactId>gov-scot-cms-dependencies</artifactId>
@@ -141,25 +141,25 @@
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-staging-cms</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.82</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-staging-repository</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.82</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-funnelback-repository</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.82</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-funnelback-cms</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.82</version>
     </dependency>
   </dependencies>
 
