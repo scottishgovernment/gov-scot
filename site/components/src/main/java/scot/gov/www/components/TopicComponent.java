@@ -1,7 +1,5 @@
 package scot.gov.www.components;
 
-import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.FilterException;
@@ -10,7 +8,6 @@ import org.hippoecm.hst.content.beans.query.filter.BaseFilter;
 import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
-import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -21,7 +18,6 @@ import org.slf4j.LoggerFactory;
 
 import scot.gov.www.beans.*;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
