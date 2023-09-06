@@ -4,6 +4,7 @@
 
 'use strict';
 
+import breakpointCheck from '../../../node_modules/@scottish-government/pattern-library/src/base/utilities/breakpoint-check/breakpoint-check';
 import temporaryFocus from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/temporary-focus/temporary-focus';
 const PolyPromise = require('../vendor/promise-polyfill').default;
 
@@ -75,9 +76,15 @@ const publicationPage = {
         window.DS.tracking.init();
 
         const rect = contentElement.getBoundingClientRect();
-        if (rect.top + 32 > window.innerHeight) {
-            window.scrollTo(window.scrollX, window.scrollY + rect.top / 2);
-        } else if (rect.top < 0) {
+        if (breakpointCheck('medium')) {
+            if (rect.top + 32 > window.innerHeight) {
+                window.scrollTo(window.scrollX, window.scrollY + rect.top / 2);
+            } else if (rect.top < 0) {
+                window.setTimeout(function () {
+                    contentElement.scrollIntoView();
+                }, 0);
+            }
+        } else {
             window.setTimeout(function () {
                 contentElement.scrollIntoView();
             }, 0);
