@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="userTypeValve" class="scot.gov.publishing.hippo.hst.request.UserTypeValve">
+    <property name="valveName" value="userTypeValve" />
+    <property name="afterValves" value="securityValve" />
+    <property name="beforeValves" value="pageCachingValve" />
+  </bean>
+
+  <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+    <property name="targetObject">
+      <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="org.hippoecm.hst.core.container.Pipelines" />
+        <property name="targetMethod" value="getPipeline" />
+        <property name="arguments">
+          <value>DefaultSitePipeline</value>
+        </property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="addProcessingValve" />
+    <property name="arguments">
+      <ref bean="userTypeValve" />
+    </property>
+  </bean>
+
+</beans>

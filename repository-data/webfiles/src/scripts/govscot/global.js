@@ -4,7 +4,6 @@
 
 'use strict';
 
-import './usertype';
 import '../vendor/polyfills';
 
 import feedback from './component.feedback';
