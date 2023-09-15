@@ -35,6 +35,10 @@ definitions:
       /googletagmanager:
         jcr:primaryType: hst:component
         hst:referencecomponent: hst:components/googletagmanager
+      /plausibleanalytics:
+        jcr:primaryType: hst:component
+        hst:componentclassname: scot.gov.www.components.PlausibleAnalyticsComponent
+        hst:template: base-plausibleanalytics
       /important-banner:
         jcr:primaryType: hst:component
         hst:componentclassname: scot.gov.www.components.ImportantBannerComponent

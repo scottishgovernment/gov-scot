@@ -34,8 +34,6 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleTagManagerComponent.class);
 
-    private HippoUtils hippoUtils = new HippoUtils();
-
     @Override
     public void doBeforeRender(HstRequest request, HstResponse response) {
         super.doBeforeRender(request, response);
@@ -100,7 +98,7 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
         }
 
         try {
-            Node gtmNode = getGtmNode(request, gtmPath);
+            Node gtmNode = getGtmNode(request);
             if (gtmNode == null) {
                 setEmptyGtmValues(request);
                 return;
@@ -125,7 +123,28 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
         setGtmValues(request, "", "", "");
     }
 
-    Node getGtmNode(HstRequest request, String path) throws RepositoryException {
+    static Node getGtmNode(HstRequest request) throws RepositoryException {
+        Mount mount = request
+                .getRequestContext()
+                .getResolvedSiteMapItem()
+                .getResolvedMount()
+                .getMount();
+        String gtmPath = mount.getProperty("govscot:gtm");
+
+        if (isBlank(gtmPath)) {
+            LOG.error("Mount has no publishing:gtm: {}", mount.getName());
+            return null;
+        }
+
+        try {
+            return getGtmNodeForPath(request, gtmPath);
+        } catch (RepositoryException e) {
+            LOG.error("Unexpected repository exception trying to set gtm values, gtmPath is {}", gtmPath, e);
+            return null;
+        }
+    }
+
+    static Node getGtmNodeForPath(HstRequest request, String path) throws RepositoryException {
         HstRequestContext requestContext = request.getRequestContext();
         Session session = requestContext.getSession();
 
@@ -135,7 +154,7 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
         }
 
         Node gtmHandle = session.getNode(path);
-        Node gtmNode = hippoUtils.getPublishedVariant(gtmHandle);
+        Node gtmNode = new HippoUtils().getPublishedVariant(gtmHandle);
         if (gtmNode == null) {
             LOG.info("No published gtm document for path: {}", path);
         }

@@ -1,0 +1,6 @@
+/content/documents/administration/analytics:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: dcd50521-1074-4042-b5a8-a10251517cbd
+  hippo:name: analytics
+  hippostd:foldertype: []

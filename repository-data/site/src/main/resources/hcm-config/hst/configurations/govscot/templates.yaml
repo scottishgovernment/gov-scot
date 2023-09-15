@@ -212,3 +212,6 @@ definitions:
       /dynamicissue:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/content-blocks/dynamicissue.ftl
+      /base-plausibleanalytics:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/base-plausibleanalytics.ftl

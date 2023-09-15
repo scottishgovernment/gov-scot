@@ -1,0 +1,61 @@
+/content/documents/administration/analytics/dev:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+  jcr:uuid: 44606e61-8c26-4c24-b8dc-b104fd8cfbf4
+  hippo:name: dev
+  hippo:versionHistory: cff83aeb-fe91-4a12-8cd3-3598a8312850
+  /dev[1]:
+    jcr:primaryType: govscot:analytics
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 46785f18-3af5-4671-9411-29dfce479757
+    govscot:auth: ''
+    govscot:containerid: GTM-5S47S9Z
+    govscot:env: ''
+    govscot:plausibleAnalyticsDomains: [dev.www.gov.scot]
+    hippo:availability: [live]
+    hippo:name: dev
+    hippostd:retainable: false
+    hippostd:state: published
+    hippostdpubwf:createdBy: migration
+    hippostdpubwf:creationDate: 2020-11-05T15:22:18.841Z
+    hippostdpubwf:lastModificationDate: 2023-09-14T15:58:25.881+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippostdpubwf:publicationDate: 2023-09-14T15:58:41.293+01:00
+    hippotranslation:id: 2d99e1e0-e036-4fee-a247-97d89f03bcef
+    hippotranslation:locale: en
+  /dev[2]:
+    jcr:primaryType: govscot:analytics
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: f8d0fff1-475f-4031-ac7f-304f4a2918bc
+    govscot:auth: ''
+    govscot:containerid: GTM-5S47S9Z
+    govscot:env: ''
+    govscot:plausibleAnalyticsDomains: [dev.www.gov.scot]
+    hippo:availability: [preview]
+    hippo:name: dev
+    hippostd:retainable: false
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: migration
+    hippostdpubwf:creationDate: 2020-11-05T15:22:18.841Z
+    hippostdpubwf:lastModificationDate: 2023-09-14T15:58:25.881+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 2d99e1e0-e036-4fee-a247-97d89f03bcef
+    hippotranslation:locale: en
+  /dev[3]:
+    jcr:primaryType: govscot:analytics
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 5693b47d-03f4-467b-82de-10ac311edc96
+    govscot:auth: ''
+    govscot:containerid: GTM-5S47S9Z
+    govscot:env: ''
+    govscot:plausibleAnalyticsDomains: [dev.www.gov.scot]
+    hippo:availability: []
+    hippo:name: dev
+    hippostd:retainable: false
+    hippostd:state: draft
+    hippostdpubwf:createdBy: migration
+    hippostdpubwf:creationDate: 2020-11-05T15:22:18.841Z
+    hippostdpubwf:lastModificationDate: 2023-09-14T15:58:10.839+01:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 2d99e1e0-e036-4fee-a247-97d89f03bcef
+    hippotranslation:locale: en
