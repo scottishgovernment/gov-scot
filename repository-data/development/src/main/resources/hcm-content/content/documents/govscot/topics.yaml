@@ -1407,13 +1407,15 @@
         hippo:docbase: 5a9d8d77-ada5-4707-bad1-ff03ad05cb4c
   /children-and-families:
     jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
+    jcr:mixinTypes: ['embargo:handle', 'hippo:named', 'hippo:versionInfo', 'mix:referenceable',
+      'mix:versionable']
     jcr:uuid: afa5193a-cbd1-4c48-bf4a-c0f6e19ac086
+    embargo:groups: [general-embargo]
     hippo:name: Children and families
     hippo:versionHistory: a8eb660b-aef7-4292-b5f8-2dbeeb944692
     /children-and-families[1]:
       jcr:primaryType: govscot:Topic
-      jcr:mixinTypes: ['mix:referenceable']
+      jcr:mixinTypes: ['embargo:document', 'mix:referenceable']
       jcr:uuid: d94300c9-e80a-42e9-aa23-15845a118633
       govscot:metaDescription: All policies, publications, consultations and news
         relating to children and families.
@@ -1480,7 +1482,7 @@
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
     /children-and-families[2]:
       jcr:primaryType: govscot:Topic
-      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:mixinTypes: ['embargo:document', 'mix:referenceable', 'mix:versionable']
       jcr:uuid: c5e2288a-6177-40d1-9175-085d6556124c
       govscot:metaDescription: All policies, publications, consultations and news
         relating to children and families.
@@ -1546,7 +1548,7 @@
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
     /children-and-families[3]:
       jcr:primaryType: govscot:Topic
-      jcr:mixinTypes: ['mix:referenceable']
+      jcr:mixinTypes: ['embargo:document', 'mix:referenceable']
       jcr:uuid: ec9b59f4-37c6-453e-9703-9703732b208c
       govscot:metaDescription: All policies, publications, consultations and news
         relating to children and families.

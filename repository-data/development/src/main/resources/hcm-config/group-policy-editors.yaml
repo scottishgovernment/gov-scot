@@ -1,4 +1,4 @@
 definitions:
   config:
     /hippo:configuration/hippo:groups/policy-editors:
-      hipposys:members: [stats-embargo-user-1]
+      hipposys:members: [general-embargo-user, stats-embargo-user-1]

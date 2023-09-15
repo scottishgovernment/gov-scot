@@ -659,3 +659,1260 @@
           /documents:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+  /statistics:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: 41a92e1f-e2a6-40d3-812a-3eb008d2d944
+    govscot:publicationType: statistics
+    hippo:name: Statistics
+    hippostd:foldertype: [new-publication-year-folder]
+    /2023:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 0d09e71f-e253-4f7b-b1cf-1405977711b8
+      hippostd:foldertype: [new-publication-month-folder]
+      /08:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: d50d3014-0a48-489b-a1fc-2ca9ac0bedb9
+        hippostd:foldertype: [new-publication-folder, new-complex-document-folder]
+        /bics-weighted-scotland-estimates-data-to-wave-87:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+          jcr:uuid: a263b6e7-a97f-4409-96cc-41a43a1fc372
+          hippo:name: 'BICS weighted Scotland estimates: data to wave 87'
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+            jcr:uuid: 2a5de1be-bdf4-426e-8724-9cfc558859f5
+            hippo:name: 'BICS weighted Scotland estimates: data to wave 87'
+            /index[1]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 38448dd4-4cf7-4d6b-b924-185239e81f57
+              govscot:isbn: ''
+              govscot:metaDescription: ''
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 0001-01-01T12:00:00Z
+              govscot:publicationType: statistics
+              govscot:seoTitle: 'BICS weighted Scotland estimates: data to wave 87'
+              govscot:slug: bics-weighted-scotland-estimates-data-to-wave-87
+              govscot:summary: ''
+              govscot:title: 'BICS weighted Scotland estimates: data to wave 87'
+              hippo:availability: [preview]
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2023-09-14T16:23:28.275+01:00
+              hippostdpubwf:lastModificationDate: 2023-09-14T16:23:28.275+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:locale: en
+            /index[2]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 0e33f64f-e9d8-4de4-8b7e-8cfbf8cafffe
+              govscot:isbn: ''
+              govscot:metaDescription: ''
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 0001-01-01T12:00:00Z
+              govscot:publicationType: statistics
+              govscot:seoTitle: 'BICS weighted Scotland estimates: data to wave 87'
+              govscot:slug: bics-weighted-scotland-estimates-data-to-wave-87
+              govscot:summary: ''
+              govscot:title: 'BICS weighted Scotland estimates: data to wave 87'
+              hippo:availability: [live]
+              hippostd:state: published
+              hippostdpubwf:createdBy: stats-embargo-user-2
+              hippostdpubwf:creationDate: 2023-09-14T16:23:28.275+01:00
+              hippostdpubwf:lastModificationDate: 2023-09-14T16:23:28.275+01:00
+              hippostdpubwf:lastModifiedBy: stats-embargo-user-2
+              hippostdpubwf:publicationDate: 2023-09-14T16:27:03.266+01:00
+              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:locale: en
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+            /bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: e7dda85a-8248-40c9-a97f-29d45debc7a5
+              hippo:name: 'BICS weighted Scotland estimates: data to wave 87 - tables
+                - time series'
+              hippo:versionHistory: 6763b001-62ae-4942-826c-7a035a97ceed
+              /bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[1]:
+                jcr:primaryType: govscot:DocumentInformation
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 64747ad6-a47c-417b-9041-ba1678610c41
+                govscot:accessible: false
+                govscot:displayDate: 2023-09-14T16:27:03.305+01:00
+                govscot:highlighted: false
+                govscot:title: 'BICS weighted Scotland estimates: data to wave 87
+                  - tables - time series'
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: stats-embargo-user-2
+                hippostdpubwf:creationDate: 2023-09-14T16:25:54.040+01:00
+                hippostdpubwf:lastModificationDate: 2023-09-14T16:25:54.040+01:00
+                hippostdpubwf:lastModifiedBy: stats-embargo-user-2
+                hippotranslation:id: ac26b2a5-6a81-4683-8058-0aab78f42c82
+                hippotranslation:locale: document-type-locale
+                /govscot:document:
+                  jcr:primaryType: hippo:resource
+                  hippo:filename: BICS Weighted Scotland Estimates - Data to Wave
+                    87- Tables - Time - Series.xlsx
+                  hippo:text:
+                    type: binary
+                    resource: /content/documents/govscot/publications/statistics/2023/08/bics-weighted-scotland-estimates-data-to-wave-87/documents/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[1]/document/BICS-Weighted-Scotland-Estimates---Data-to-Wave-87--Tables---Time---Series.xlsx
+                  jcr:data:
+                    type: binary
+                    resource: /content/documents/govscot/publications/statistics/2023/08/bics-weighted-scotland-estimates-data-to-wave-87/documents/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[1]/document/BICS-Weighted-Scotland-Estimates---Data-to-Wave-87--Tables---Time---Series-1.xlsx
+                  jcr:encoding: UTF-8
+                  jcr:lastModified: 2023-09-14T16:26:35.366+01:00
+                  jcr:mimeType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+              /bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[2]:
+                jcr:primaryType: govscot:DocumentInformation
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: eee67fbf-ec0c-4500-85c2-a7e5352903df
+                govscot:accessible: false
+                govscot:displayDate: 2023-09-14T16:27:03.305+01:00
+                govscot:highlighted: false
+                govscot:title: 'BICS weighted Scotland estimates: data to wave 87
+                  - tables - time series'
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: stats-embargo-user-2
+                hippostdpubwf:creationDate: 2023-09-14T16:25:54.040+01:00
+                hippostdpubwf:lastModificationDate: 2023-09-14T16:26:38.176+01:00
+                hippostdpubwf:lastModifiedBy: stats-embargo-user-2
+                hippotranslation:id: ac26b2a5-6a81-4683-8058-0aab78f42c82
+                hippotranslation:locale: document-type-locale
+                /govscot:document:
+                  jcr:primaryType: hippo:resource
+                  hippo:filename: BICS Weighted Scotland Estimates - Data to Wave
+                    87- Tables - Time - Series.xlsx
+                  hippo:text:
+                    type: binary
+                    resource: /content/documents/govscot/publications/statistics/2023/08/bics-weighted-scotland-estimates-data-to-wave-87/documents/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[2]/document/BICS-Weighted-Scotland-Estimates---Data-to-Wave-87--Tables---Time---Series.xlsx
+                  jcr:data:
+                    type: binary
+                    resource: /content/documents/govscot/publications/statistics/2023/08/bics-weighted-scotland-estimates-data-to-wave-87/documents/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[2]/document/BICS-Weighted-Scotland-Estimates---Data-to-Wave-87--Tables---Time---Series-1.xlsx
+                  jcr:encoding: UTF-8
+                  jcr:lastModified: 2023-09-14T16:26:35.366+01:00
+                  jcr:mimeType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+              /bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[3]:
+                jcr:primaryType: govscot:DocumentInformation
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: a59fd2e4-c35b-4df3-973f-cf777f1cf129
+                govscot:accessible: false
+                govscot:displayDate: 2023-09-14T16:27:03.305+01:00
+                govscot:highlighted: false
+                govscot:title: 'BICS weighted Scotland estimates: data to wave 87
+                  - tables - time series'
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: stats-embargo-user-2
+                hippostdpubwf:creationDate: 2023-09-14T16:25:54.040+01:00
+                hippostdpubwf:lastModificationDate: 2023-09-14T16:26:38.176+01:00
+                hippostdpubwf:lastModifiedBy: stats-embargo-user-2
+                hippostdpubwf:publicationDate: 2023-09-14T16:27:03.305+01:00
+                hippotranslation:id: ac26b2a5-6a81-4683-8058-0aab78f42c82
+                hippotranslation:locale: document-type-locale
+                /govscot:document:
+                  jcr:primaryType: hippo:resource
+                  hippo:filename: BICS Weighted Scotland Estimates - Data to Wave
+                    87- Tables - Time - Series.xlsx
+                  hippo:text:
+                    type: binary
+                    resource: /content/documents/govscot/publications/statistics/2023/08/bics-weighted-scotland-estimates-data-to-wave-87/documents/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[3]/document/BICS-Weighted-Scotland-Estimates---Data-to-Wave-87--Tables---Time---Series.xlsx
+                  jcr:data:
+                    type: binary
+                    resource: /content/documents/govscot/publications/statistics/2023/08/bics-weighted-scotland-estimates-data-to-wave-87/documents/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series/bics-weighted-scotland-estimates-data-to-wave-87---tables---time-series[3]/document/BICS-Weighted-Scotland-Estimates---Data-to-Wave-87--Tables---Time---Series-1.xlsx
+                  jcr:encoding: UTF-8
+                  jcr:lastModified: 2023-09-14T16:26:35.366+01:00
+                  jcr:mimeType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-page]
+            /latest-main-findings:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: d10530a3-f46a-4b40-928e-b27a2873a74e
+              hippo:name: Latest main findings
+              hippo:versionHistory: b54655be-c53e-4f60-93d9-5de57e1ba0d7
+              /latest-main-findings[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 5be143e6-a6bb-46ac-814e-0188424bc5bc
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:00.456+01:00
+                govscot:title: Latest main findings
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:23:44.171+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:27:42.850+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: aa7dfb63-9a49-4e39-ba9a-c30abb075922
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Latest main findings for businesses with 10+ employees and a presence in Scotland</span></span></span></h3>
+
+                    <ul>
+                     <li><span><span><span><span>in the period 10 July to 23 July 2023 (Wave 87), 39.4% of businesses reported experiencing a shortage of workers - rising to 48.1% in the Construction industry sector, and 46.1% in the Accommodation &amp; Food Services industry sector</span></span></span></span></li>
+                     <li><span><span><span><span>in Wave 87, 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours</span></span></span></span></li>
+                     <li><span><span><span><span>the main concerns for businesses for August 2023 were inflation of goods and services prices (20.9%) and energy prices (19.3%)</span></span></span></span></li>
+                     <li><span><span><span><span>of businesses currently trading that have exported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more</span></span></span></span></li>
+                     <li><span><span><span><span>the exporting and importing challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing</span></span></span></span></li>
+                    </ul>
+              /latest-main-findings[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: a1b9e876-a793-4592-a76c-0b147f9fc06c
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:00.456+01:00
+                govscot:title: Latest main findings
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:23:44.171+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:27:42.795+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: aa7dfb63-9a49-4e39-ba9a-c30abb075922
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Latest main findings for businesses with 10+ employees and a presence in Scotland</span></span></span></h3>
+
+                    <ul>
+                     <li><span><span><span><span>in the period 10 July to 23 July 2023 (Wave 87), 39.4% of businesses reported experiencing a shortage of workers - rising to 48.1% in the Construction industry sector, and 46.1% in the Accommodation &amp; Food Services industry sector</span></span></span></span></li>
+                     <li><span><span><span><span>in Wave 87, 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours</span></span></span></span></li>
+                     <li><span><span><span><span>the main concerns for businesses for August 2023 were inflation of goods and services prices (20.9%) and energy prices (19.3%)</span></span></span></span></li>
+                     <li><span><span><span><span>of businesses currently trading that have exported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more</span></span></span></span></li>
+                     <li><span><span><span><span>the exporting and importing challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing</span></span></span></span></li>
+                    </ul>
+              /latest-main-findings[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: a1f170df-63ee-431f-a6b5-44dea55a3824
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:00.456+01:00
+                govscot:title: Latest main findings
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:23:44.171+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:27:42.795+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:00.456+01:00
+                hippotranslation:id: aa7dfb63-9a49-4e39-ba9a-c30abb075922
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Latest main findings for businesses with 10+ employees and a presence in Scotland</span></span></span></h3>
+
+                    <ul>
+                     <li><span><span><span><span>in the period 10 July to 23 July 2023 (Wave 87), 39.4% of businesses reported experiencing a shortage of workers - rising to 48.1% in the Construction industry sector, and 46.1% in the Accommodation &amp; Food Services industry sector</span></span></span></span></li>
+                     <li><span><span><span><span>in Wave 87, 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours</span></span></span></span></li>
+                     <li><span><span><span><span>the main concerns for businesses for August 2023 were inflation of goods and services prices (20.9%) and energy prices (19.3%)</span></span></span></span></li>
+                     <li><span><span><span><span>of businesses currently trading that have exported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more</span></span></span></span></li>
+                     <li><span><span><span><span>the exporting and importing challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing</span></span></span></span></li>
+                    </ul>
+            /introduction:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: d3596580-8de2-4401-8ae5-a4ff975c8d26
+              hippo:name: Introduction
+              hippo:versionHistory: 235c6795-61b1-4391-afe7-bce727f5266a
+              /introduction[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 0df54aa7-1ae5-4695-b9d1-c3f26e39a678
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:00.548+01:00
+                govscot:title: Introduction
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:27:56.832+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:30:16.078+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 076aa1e8-83af-48bc-a78e-b14280a29119
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Introduction</span></span></span></h3>
+
+                    <p><span><span>This is the 69th publication of weighted Scotland estimates from the ONS’ Business Insights and Conditions Survey (BICS).&nbsp; The ONS’ BICS is a voluntary fortnightly business survey, which captures businesses’ responses on how their turnover, workforce, prices, trade and business resilience have been affected by current conditions.</span></span></p>
+
+                    <h3><span><span><span>An Experimental Statistics Publication for Scotland</span></span></span></h3>
+
+                    <p><span><span>The statistics in this publication have been designated as experimental statistics. Experimental statistics are a subset of newly developed or innovative official statistics undergoing evaluation. They are published to involve users and stakeholders in the assessment of their suitability and quality at an early stage. All results are provisional and subject to revision.</span></span></p>
+
+                    <p><span><span><span><span>Further information on Experimental Statistics is published by the <a href="https://uksa.statisticsauthority.gov.uk/about-the-authority/uk-statistical-system/types-of-official-statistics/">UK Statistics Authority</a>.</span></span></span></span></p>
+              /introduction[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 133c2557-b1a7-4ebf-b10b-10f159d3d8dc
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:00.548+01:00
+                govscot:title: Introduction
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:27:56.832+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:30:16.022+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 076aa1e8-83af-48bc-a78e-b14280a29119
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Introduction</span></span></span></h3>
+
+                    <p><span><span>This is the 69th publication of weighted Scotland estimates from the ONS’ Business Insights and Conditions Survey (BICS).&nbsp; The ONS’ BICS is a voluntary fortnightly business survey, which captures businesses’ responses on how their turnover, workforce, prices, trade and business resilience have been affected by current conditions.</span></span></p>
+
+                    <h3><span><span><span>An Experimental Statistics Publication for Scotland</span></span></span></h3>
+
+                    <p><span><span>The statistics in this publication have been designated as experimental statistics. Experimental statistics are a subset of newly developed or innovative official statistics undergoing evaluation. They are published to involve users and stakeholders in the assessment of their suitability and quality at an early stage. All results are provisional and subject to revision.</span></span></p>
+
+                    <p><span><span><span><span>Further information on Experimental Statistics is published by the <a href="https://uksa.statisticsauthority.gov.uk/about-the-authority/uk-statistical-system/types-of-official-statistics/">UK Statistics Authority</a>.</span></span></span></span></p>
+              /introduction[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 1f7ec61e-16a6-4811-a0d6-ad17e4e2cda1
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:00.548+01:00
+                govscot:title: Introduction
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:27:56.832+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:30:16.022+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:00.548+01:00
+                hippotranslation:id: 076aa1e8-83af-48bc-a78e-b14280a29119
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Introduction</span></span></span></h3>
+
+                    <p><span><span>This is the 69th publication of weighted Scotland estimates from the ONS’ Business Insights and Conditions Survey (BICS).&nbsp; The ONS’ BICS is a voluntary fortnightly business survey, which captures businesses’ responses on how their turnover, workforce, prices, trade and business resilience have been affected by current conditions.</span></span></p>
+
+                    <h3><span><span><span>An Experimental Statistics Publication for Scotland</span></span></span></h3>
+
+                    <p><span><span>The statistics in this publication have been designated as experimental statistics. Experimental statistics are a subset of newly developed or innovative official statistics undergoing evaluation. They are published to involve users and stakeholders in the assessment of their suitability and quality at an early stage. All results are provisional and subject to revision.</span></span></p>
+
+                    <p><span><span><span><span>Further information on Experimental Statistics is published by the <a href="https://uksa.statisticsauthority.gov.uk/about-the-authority/uk-statistical-system/types-of-official-statistics/">UK Statistics Authority</a>.</span></span></span></span></p>
+            /trading-status:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 5568729b-81a6-4e35-aaad-80dae932b171
+              hippo:name: Trading Status
+              hippo:versionHistory: 073eda17-b6c2-4523-93a7-4b028a082f1c
+              /trading-status[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 323ad3cf-77c5-44fb-9a9d-0b6ecb0ad659
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.388+01:00
+                govscot:title: Trading Status
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:30:31.231+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:30:40.911+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 9d501b3f-5215-496a-b871-abaca221a980
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Trading Status</span></span></span></h3>
+
+                    <p><span><span><span>The BICS asks businesses about their trading status. Businesses were asked for their current trading status at the time of completion of the survey questionnaire (10 July to 23 July 2023 in Wave 87).</span></span></span></p>
+
+                    <p><span><span><span>Overall, the share of businesses ‘currently trading’ was estimated at 99.4% in Wave 87. The share of businesses reporting that they were fully trading was estimated at 94.1%. Accommodation &amp; Food Services was the industry sector with the lowest share of “fully trading” businesses, estimated at 84.4%.</span></span></span></p>
+              /trading-status[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 1cdf8601-ebb2-4c5a-8be7-4290ae5e74da
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.388+01:00
+                govscot:title: Trading Status
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:30:31.231+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:30:40.851+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 9d501b3f-5215-496a-b871-abaca221a980
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Trading Status</span></span></span></h3>
+
+                    <p><span><span><span>The BICS asks businesses about their trading status. Businesses were asked for their current trading status at the time of completion of the survey questionnaire (10 July to 23 July 2023 in Wave 87).</span></span></span></p>
+
+                    <p><span><span><span>Overall, the share of businesses ‘currently trading’ was estimated at 99.4% in Wave 87. The share of businesses reporting that they were fully trading was estimated at 94.1%. Accommodation &amp; Food Services was the industry sector with the lowest share of “fully trading” businesses, estimated at 84.4%.</span></span></span></p>
+              /trading-status[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: c8a18e2c-27aa-4ad8-9e1e-01bafefbafdd
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.388+01:00
+                govscot:title: Trading Status
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:30:31.231+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:30:40.851+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:09.388+01:00
+                hippotranslation:id: 9d501b3f-5215-496a-b871-abaca221a980
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Trading Status</span></span></span></h3>
+
+                    <p><span><span><span>The BICS asks businesses about their trading status. Businesses were asked for their current trading status at the time of completion of the survey questionnaire (10 July to 23 July 2023 in Wave 87).</span></span></span></p>
+
+                    <p><span><span><span>Overall, the share of businesses ‘currently trading’ was estimated at 99.4% in Wave 87. The share of businesses reporting that they were fully trading was estimated at 94.1%. Accommodation &amp; Food Services was the industry sector with the lowest share of “fully trading” businesses, estimated at 84.4%.</span></span></span></p>
+            /worker-shortages:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: f3d41492-aa32-4975-8149-029e13457995
+              hippo:name: Worker Shortages
+              hippo:versionHistory: 031ec667-c921-4e87-9fe3-df763a7df0c3
+              /worker-shortages[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: a44ccb28-f5cf-4771-9857-1420fbc1b111
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.671+01:00
+                govscot:title: Worker Shortages
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:31:08.464+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:13:50.688+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 84b272f8-3afc-497c-be2e-c5f365595fcd
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Worker Shortages</span></span></span></h3>
+
+                    <p><span><span><span>In Wave 87, businesses were asked whether they are currently experiencing a shortage of workers. An estimated 39.4% of businesses were experiencing a shortage of workers - rising to 48.1% in the Construction industry sector, and 46.1% in the Accommodation &amp; Food Services industry sector.</span></span></span></p>
+
+                    <p><span><span><span>The BICS also asks businesses that are experiencing a shortage of workers, about how their businesses has been affected by this – the specific question asked is shown below.</span></span></span></p>
+
+                    <p><span><span><span>Worker Shortage question: How has the shortage of workers affected your business?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>employees working increased hours</span></span></span></li>
+                     <li><span><span><span>had to pause trading entirely</span></span></span></li>
+                     <li><span><span><span>had to pause trading some of the business</span></span></span></li>
+                     <li><span><span><span>had to recruit temporary workers</span></span></span></li>
+                     <li><span><span><span>unable to meet demands</span></span></span></li>
+                     <li><span><span><span>other</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                     <li><span><span><span>business has not been affected</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 1:&nbsp; In Wave 87, 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours. The next most commonly reported impacts were that businesses were unable to meet demands (40.3%) and had to recruit temporary workers (21.7%).</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by impact of worker shortage. Businesses not permanently stopped trading, with 10+ employees and a presence in Scotland. Wave 87 - 10 July to 23 July 2023.</span></span></p>
+
+                    <p><img src="bics-wave-87---figure-1---worker-shortages-svg/{_document}/hippogallery:original" alt="A bar chart showing that 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours." /></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 1 data see table ‘WorkerShortageAffected’.</span></span></span></p>
+                  /bics-wave-87---figure-1---worker-shortages-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: b1f2771f-cbc4-452b-9dfe-2c0af8cdfb0e
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+              /worker-shortages[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 4e840b60-cf31-4227-a8b8-36b2257baa7a
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.671+01:00
+                govscot:title: Worker Shortages
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:31:08.464+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:13:50.636+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 84b272f8-3afc-497c-be2e-c5f365595fcd
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Worker Shortages</span></span></span></h3>
+
+                    <p><span><span><span>In Wave 87, businesses were asked whether they are currently experiencing a shortage of workers. An estimated 39.4% of businesses were experiencing a shortage of workers - rising to 48.1% in the Construction industry sector, and 46.1% in the Accommodation &amp; Food Services industry sector.</span></span></span></p>
+
+                    <p><span><span><span>The BICS also asks businesses that are experiencing a shortage of workers, about how their businesses has been affected by this – the specific question asked is shown below.</span></span></span></p>
+
+                    <p><span><span><span>Worker Shortage question: How has the shortage of workers affected your business?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>employees working increased hours</span></span></span></li>
+                     <li><span><span><span>had to pause trading entirely</span></span></span></li>
+                     <li><span><span><span>had to pause trading some of the business</span></span></span></li>
+                     <li><span><span><span>had to recruit temporary workers</span></span></span></li>
+                     <li><span><span><span>unable to meet demands</span></span></span></li>
+                     <li><span><span><span>other</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                     <li><span><span><span>business has not been affected</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 1:&nbsp; In Wave 87, 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours. The next most commonly reported impacts were that businesses were unable to meet demands (40.3%) and had to recruit temporary workers (21.7%).</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by impact of worker shortage. Businesses not permanently stopped trading, with 10+ employees and a presence in Scotland. Wave 87 - 10 July to 23 July 2023.</span></span></p>
+
+                    <p><img src="bics-wave-87---figure-1---worker-shortages-svg/{_document}/hippogallery:original" alt="A bar chart showing that 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours." /></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 1 data see table ‘WorkerShortageAffected’.</span></span></span></p>
+                  /bics-wave-87---figure-1---worker-shortages-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: b1f2771f-cbc4-452b-9dfe-2c0af8cdfb0e
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+              /worker-shortages[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: b4f9f1e4-5056-4254-94b9-27c3633c2620
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.671+01:00
+                govscot:title: Worker Shortages
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:31:08.464+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:13:50.636+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:09.671+01:00
+                hippotranslation:id: 84b272f8-3afc-497c-be2e-c5f365595fcd
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Worker Shortages</span></span></span></h3>
+
+                    <p><span><span><span>In Wave 87, businesses were asked whether they are currently experiencing a shortage of workers. An estimated 39.4% of businesses were experiencing a shortage of workers - rising to 48.1% in the Construction industry sector, and 46.1% in the Accommodation &amp; Food Services industry sector.</span></span></span></p>
+
+                    <p><span><span><span>The BICS also asks businesses that are experiencing a shortage of workers, about how their businesses has been affected by this – the specific question asked is shown below.</span></span></span></p>
+
+                    <p><span><span><span>Worker Shortage question: How has the shortage of workers affected your business?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>employees working increased hours</span></span></span></li>
+                     <li><span><span><span>had to pause trading entirely</span></span></span></li>
+                     <li><span><span><span>had to pause trading some of the business</span></span></span></li>
+                     <li><span><span><span>had to recruit temporary workers</span></span></span></li>
+                     <li><span><span><span>unable to meet demands</span></span></span></li>
+                     <li><span><span><span>other</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                     <li><span><span><span>business has not been affected</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 1:&nbsp; In Wave 87, 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours. The next most commonly reported impacts were that businesses were unable to meet demands (40.3%) and had to recruit temporary workers (21.7%).</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by impact of worker shortage. Businesses not permanently stopped trading, with 10+ employees and a presence in Scotland. Wave 87 - 10 July to 23 July 2023.</span></span></p>
+
+                    <p><img src="bics-wave-87---figure-1---worker-shortages-svg/{_document}/hippogallery:original" alt="A bar chart showing that 55.4% of businesses reported that the shortage of workers has resulted in employees working increased hours." /></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 1 data see table ‘WorkerShortageAffected’.</span></span></span></p>
+                  /bics-wave-87---figure-1---worker-shortages-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: b1f2771f-cbc4-452b-9dfe-2c0af8cdfb0e
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+            /business-concerns:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 451e362d-454d-4372-a034-e52accf57b65
+              hippo:name: Business Concerns
+              hippo:versionHistory: 07a935fa-596b-432b-86a3-5a08081d7c55
+              /business-concerns[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: d90db15d-6b5e-4787-bea0-973f70f6db0d
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.520+01:00
+                govscot:title: Business Concerns
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:31:40.971+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:15:41.358+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: b604f4d3-4cc1-4e57-9c50-7c5304b15664
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Business Concerns</span></span></span></h3>
+
+                    <p><span><span><span>In Wave 87, the BICS asked businesses about their main concerns in August 2023.</span></span></span></p>
+
+                    <p><span><span><span>Business concern question: Which of the following, if any, will be the main concern for your business in August 2023?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>business rates</span></span></span></li>
+                     <li><span><span><span>competition with other UK businesses</span></span></span></li>
+                     <li><span><span><span>energy prices</span></span></span></li>
+                     <li><span><span><span>exchange rates</span></span></span></li>
+                     <li><span><span><span>inflation of goods and services prices</span></span></span></li>
+                     <li><span><span><span>interest rates (including mortgages)</span></span></span></li>
+                     <li><span><span><span>property rental costs</span></span></span></li>
+                     <li><span><span><span>supply chain disruption</span></span></span></li>
+                     <li><span><span><span>taxation</span></span></span></li>
+                     <li><span><span><span>falling demand of goods and services</span></span></span></li>
+                     <li><span><span><span>other</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                     <li><span><span><span>no concerns for my business</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 2:&nbsp; The top three concerns for businesses for August 2023 were inflation of goods and services prices (20.9%), energy prices (19.3%) and falling demand for goods and services (15.0%). Comparing to the previous month, fewer businesses are now reporting energy prices as their main concern.&nbsp; </strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by main concern for August 2023. Businesses currently trading, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-2---business-concerns-svg/{_document}/hippogallery:original" alt="A bar chart showing that the main concerns for businesses for August 2023 were inflation of goods and services prices and energy prices." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 2 data see table ‘BusinessConcern’.</span></span></span></p>
+                  /bics-wave-87---figure-2---business-concerns-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: c2013bac-743e-4c39-a861-d07d2afefe72
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+              /business-concerns[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 6c6e83f1-45bb-4c05-b7cd-a87393b3830b
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.520+01:00
+                govscot:title: Business Concerns
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:31:40.971+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:15:41.313+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: b604f4d3-4cc1-4e57-9c50-7c5304b15664
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Business Concerns</span></span></span></h3>
+
+                    <p><span><span><span>In Wave 87, the BICS asked businesses about their main concerns in August 2023.</span></span></span></p>
+
+                    <p><span><span><span>Business concern question: Which of the following, if any, will be the main concern for your business in August 2023?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>business rates</span></span></span></li>
+                     <li><span><span><span>competition with other UK businesses</span></span></span></li>
+                     <li><span><span><span>energy prices</span></span></span></li>
+                     <li><span><span><span>exchange rates</span></span></span></li>
+                     <li><span><span><span>inflation of goods and services prices</span></span></span></li>
+                     <li><span><span><span>interest rates (including mortgages)</span></span></span></li>
+                     <li><span><span><span>property rental costs</span></span></span></li>
+                     <li><span><span><span>supply chain disruption</span></span></span></li>
+                     <li><span><span><span>taxation</span></span></span></li>
+                     <li><span><span><span>falling demand of goods and services</span></span></span></li>
+                     <li><span><span><span>other</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                     <li><span><span><span>no concerns for my business</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 2:&nbsp; The top three concerns for businesses for August 2023 were inflation of goods and services prices (20.9%), energy prices (19.3%) and falling demand for goods and services (15.0%). Comparing to the previous month, fewer businesses are now reporting energy prices as their main concern.&nbsp; </strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by main concern for August 2023. Businesses currently trading, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-2---business-concerns-svg/{_document}/hippogallery:original" alt="A bar chart showing that the main concerns for businesses for August 2023 were inflation of goods and services prices and energy prices." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 2 data see table ‘BusinessConcern’.</span></span></span></p>
+                  /bics-wave-87---figure-2---business-concerns-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: c2013bac-743e-4c39-a861-d07d2afefe72
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+              /business-concerns[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 5239e8b5-f3f7-4237-888e-2b2c082ebd6a
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.520+01:00
+                govscot:title: Business Concerns
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:31:40.971+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:15:41.313+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:09.520+01:00
+                hippotranslation:id: b604f4d3-4cc1-4e57-9c50-7c5304b15664
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Business Concerns</span></span></span></h3>
+
+                    <p><span><span><span>In Wave 87, the BICS asked businesses about their main concerns in August 2023.</span></span></span></p>
+
+                    <p><span><span><span>Business concern question: Which of the following, if any, will be the main concern for your business in August 2023?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>business rates</span></span></span></li>
+                     <li><span><span><span>competition with other UK businesses</span></span></span></li>
+                     <li><span><span><span>energy prices</span></span></span></li>
+                     <li><span><span><span>exchange rates</span></span></span></li>
+                     <li><span><span><span>inflation of goods and services prices</span></span></span></li>
+                     <li><span><span><span>interest rates (including mortgages)</span></span></span></li>
+                     <li><span><span><span>property rental costs</span></span></span></li>
+                     <li><span><span><span>supply chain disruption</span></span></span></li>
+                     <li><span><span><span>taxation</span></span></span></li>
+                     <li><span><span><span>falling demand of goods and services</span></span></span></li>
+                     <li><span><span><span>other</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                     <li><span><span><span>no concerns for my business</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 2:&nbsp; The top three concerns for businesses for August 2023 were inflation of goods and services prices (20.9%), energy prices (19.3%) and falling demand for goods and services (15.0%). Comparing to the previous month, fewer businesses are now reporting energy prices as their main concern.&nbsp; </strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by main concern for August 2023. Businesses currently trading, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-2---business-concerns-svg/{_document}/hippogallery:original" alt="A bar chart showing that the main concerns for businesses for August 2023 were inflation of goods and services prices and energy prices." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 2 data see table ‘BusinessConcern’.</span></span></span></p>
+                  /bics-wave-87---figure-2---business-concerns-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: c2013bac-743e-4c39-a861-d07d2afefe72
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+            /exporting-and-importing-challenges:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 05b4864e-8d2b-408f-a129-7ce0071a0c1d
+              hippo:name: Exporting and Importing Challenges
+              hippo:versionHistory: d575090a-f784-485c-83b2-1ea708c55ef2
+              /exporting-and-importing-challenges[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: ab36e45a-3049-425d-bbf6-be7c895311a3
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.909+01:00
+                govscot:title: Exporting and Importing Challenges
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:32:11.433+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:18:46.442+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 06ba71dd-7342-4e30-93c9-4e8f05cb8867
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Exporting and Importing Challenges</span></span></span></h3>
+
+                    <p><span><span><span>The BICS asks businesses that are currently trading about how current conditions, including the end of the EU transition period, have impacted on their exporting and importing – the specific questions asked are shown below.</span></span></span></p>
+
+                    <p><span><span><span>Question: How did your business's exporting compare with this calendar month last year?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>exported/imported more</span></span></span></li>
+                     <li><span><span><span>exporting/importing stayed the same</span></span></span></li>
+                     <li><span><span><span>exported/imported less</span></span></span></li>
+                     <li><span><span><span>business was unable to export / import</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 3:&nbsp; Of businesses currently trading that have exported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more. An estimated 9.4% of applicable businesses have imported less in June 2023 compared to June 2022, and 16.7% have imported more.</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by exporting / importing change in June 2023 compared to June 2022. Businesses currently trading and exported / imported in last 12 months, with 10+ employees and a presence in Scotland. Wave 87.&nbsp;</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-3---exportimport-change-svg/{_document}/hippogallery:original" alt="A bar chart showing that of businesses currently trading that have exported/imported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 3 data see tables ‘ExportingChangeOverYear’ and ‘ImportingChangeOverYear’.</span></span></span></p>
+
+                    <p><span><span><span><span>Currently trading businesses that have exported or imported in the last 12 months, and reported on how exporting compared to the previous year, were asked if they had experienced an increase in exporting/importing challenges over the last month.</span></span></span></span></p>
+
+                    <p><span><span><strong>Figure 4:&nbsp; The challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing. However, an estimated 53.2% of exporters and 46.3% of importers reported that they did not experience an increase in exporting/importing challenges in June 2023 compared with May 2023.</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by increase in exporting / importing challenge in June 2023, compared with May 2023. Businesses currently trading and exported / imported in last 12 months, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-4---exportimport-challenges-svg/{_document}/hippogallery:original" alt="A bar chart showing the challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 4 data see tables ‘ExportChallengeIncrease’ and ‘ImportChallengeIncrease’.</span></span></span></p>
+
+                    <p><span><span><span><span>Businesses that reported challenges to exporting/importing were asked about the main cause of these exporting/importing challenges.</span></span></span></span></p>
+
+                    <p><span><span><strong>Figure 5:&nbsp; In Wave 87, 37.2% of applicable exporters reported that the end of the EU transition period was the main cause of their exporting challenges.&nbsp; This was also the most frequently reported cause of importing challenges (56.3%). The end of the EU transition period combined with the COVID-19 pandemic was reported as the main cause of challenges for a further 21.1% of exporters and 19.1% of importers.&nbsp; </strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by main cause of exporting / importing challenges. Businesses currently trading and exported / imported in last 12 months and experienced challenges, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><img src="bics-wave-87---figure-5---exportimport-challenge-cause-svg/{_document}/hippogallery:original" alt="A bar chart showing that in Wave 87, the end of the EU transition period was the main cause of both exporting and importing challenges" /></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government </span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 5 data see tables ‘ExportingChallengeYMainCause’ and ‘ImportingChallengeYMainCause’.</span></span></span></p>
+                  /bics-wave-87---figure-3---exportimport-change-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: 9a9bacc7-2a00-4d1b-a9e8-7a86ab70fea1
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+                  /bics-wave-87---figure-4---exportimport-challenges-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: eb19f720-4047-4c06-8a62-e64eca160297
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+                  /bics-wave-87---figure-5---exportimport-challenge-cause-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: 8ea6d052-b10b-4dc9-9c0e-1835f69c491d
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+              /exporting-and-importing-challenges[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: a237887a-2e03-4116-8d40-c7292fd342c4
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.909+01:00
+                govscot:title: Exporting and Importing Challenges
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:32:11.433+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:16:58.793+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 06ba71dd-7342-4e30-93c9-4e8f05cb8867
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Exporting and Importing Challenges</span></span></span></h3>
+
+                    <p><span><span><span>The BICS asks businesses that are currently trading about how current conditions, including the end of the EU transition period, have impacted on their exporting and importing – the specific questions asked are shown below.</span></span></span></p>
+
+                    <p><span><span><span>Question: How did your business's exporting compare with this calendar month last year?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>exported/imported more</span></span></span></li>
+                     <li><span><span><span>exporting/importing stayed the same</span></span></span></li>
+                     <li><span><span><span>exported/imported less</span></span></span></li>
+                     <li><span><span><span>business was unable to export / import</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 3:&nbsp; Of businesses currently trading that have exported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more. An estimated 9.4% of applicable businesses have imported less in June 2023 compared to June 2022, and 16.7% have imported more.</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by exporting / importing change in June 2023 compared to June 2022. Businesses currently trading and exported / imported in last 12 months, with 10+ employees and a presence in Scotland. Wave 87.&nbsp;</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-3---exportimport-change-svg/{_document}/hippogallery:original" alt="A bar chart showing that of businesses currently trading that have exported/imported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 3 data see tables ‘ExportingChangeOverYear’ and ‘ImportingChangeOverYear’.</span></span></span></p>
+
+                    <p><span><span><span><span>Currently trading businesses that have exported or imported in the last 12 months, and reported on how exporting compared to the previous year, were asked if they had experienced an increase in exporting/importing challenges over the last month.</span></span></span></span></p>
+
+                    <p><span><span><strong>Figure 4:&nbsp; The challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing. However, an estimated 53.2% of exporters and 46.3% of importers reported that they did not experience an increase in exporting/importing challenges in June 2023 compared with May 2023.</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by increase in exporting / importing challenge in June 2023, compared with May 2023. Businesses currently trading and exported / imported in last 12 months, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-4---exportimport-challenges-svg/{_document}/hippogallery:original" alt="A bar chart showing the challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 4 data see tables ‘ExportChallengeIncrease’ and ‘ImportChallengeIncrease’.</span></span></span></p>
+
+                    <p><span><span><span><span>Businesses that reported challenges to exporting/importing were asked about the main cause of these exporting/importing challenges.</span></span></span></span></p>
+
+                    <p><span><span><strong>Figure 5:&nbsp; In Wave 87, 37.2% of applicable exporters reported that the end of the EU transition period was the main cause of their exporting challenges.&nbsp; This was also the most frequently reported cause of importing challenges (56.3%). The end of the EU transition period combined with the COVID-19 pandemic was reported as the main cause of challenges for a further 21.1% of exporters and 19.1% of importers.&nbsp; </strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by main cause of exporting / importing challenges. Businesses currently trading and exported / imported in last 12 months and experienced challenges, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><img src="bics-wave-87---figure-5---exportimport-challenge-cause-svg/{_document}/hippogallery:original" alt="A bar chart showing that in Wave 87, the end of the EU transition period was the main cause of both exporting and importing challenges" /></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government </span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 5 data see tables ‘ExportingChallengeYMainCause’ and ‘ImportingChallengeYMainCause’.</span></span></span></p>
+                  /bics-wave-87---figure-3---exportimport-change-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: 9a9bacc7-2a00-4d1b-a9e8-7a86ab70fea1
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+                  /bics-wave-87---figure-4---exportimport-challenges-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: eb19f720-4047-4c06-8a62-e64eca160297
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+                  /bics-wave-87---figure-5---exportimport-challenge-cause-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: 8ea6d052-b10b-4dc9-9c0e-1835f69c491d
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+              /exporting-and-importing-challenges[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 8bd9fe92-0eb2-4977-9c15-89e88bb2d608
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:09.909+01:00
+                govscot:title: Exporting and Importing Challenges
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:32:11.433+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T14:16:58.793+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:09.909+01:00
+                hippotranslation:id: 06ba71dd-7342-4e30-93c9-4e8f05cb8867
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Exporting and Importing Challenges</span></span></span></h3>
+
+                    <p><span><span><span>The BICS asks businesses that are currently trading about how current conditions, including the end of the EU transition period, have impacted on their exporting and importing – the specific questions asked are shown below.</span></span></span></p>
+
+                    <p><span><span><span>Question: How did your business's exporting compare with this calendar month last year?</span></span></span></p>
+
+                    <ul>
+                     <li><span><span><span>exported/imported more</span></span></span></li>
+                     <li><span><span><span>exporting/importing stayed the same</span></span></span></li>
+                     <li><span><span><span>exported/imported less</span></span></span></li>
+                     <li><span><span><span>business was unable to export / import</span></span></span></li>
+                     <li><span><span><span>not sure</span></span></span></li>
+                    </ul>
+
+                    <p><span><span><strong>Figure 3:&nbsp; Of businesses currently trading that have exported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more. An estimated 9.4% of applicable businesses have imported less in June 2023 compared to June 2022, and 16.7% have imported more.</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by exporting / importing change in June 2023 compared to June 2022. Businesses currently trading and exported / imported in last 12 months, with 10+ employees and a presence in Scotland. Wave 87.&nbsp;</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-3---exportimport-change-svg/{_document}/hippogallery:original" alt="A bar chart showing that of businesses currently trading that have exported/imported in the last 12 months, 23.8% reported exporting less in June 2023 compared to June 2022, and 16.2% reported exporting more." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 3 data see tables ‘ExportingChangeOverYear’ and ‘ImportingChangeOverYear’.</span></span></span></p>
+
+                    <p><span><span><span><span>Currently trading businesses that have exported or imported in the last 12 months, and reported on how exporting compared to the previous year, were asked if they had experienced an increase in exporting/importing challenges over the last month.</span></span></span></span></p>
+
+                    <p><span><span><strong>Figure 4:&nbsp; The challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing. However, an estimated 53.2% of exporters and 46.3% of importers reported that they did not experience an increase in exporting/importing challenges in June 2023 compared with May 2023.</strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by increase in exporting / importing challenge in June 2023, compared with May 2023. Businesses currently trading and exported / imported in last 12 months, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><span><span><img src="bics-wave-87---figure-4---exportimport-challenges-svg/{_document}/hippogallery:original" alt="A bar chart showing the challenges that were most commonly reported to have increased in June 2023 were changes in transportation costs, changes in exchange rates and additional paperwork– this was the case for both exporting and importing." /></span></span></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government</span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 4 data see tables ‘ExportChallengeIncrease’ and ‘ImportChallengeIncrease’.</span></span></span></p>
+
+                    <p><span><span><span><span>Businesses that reported challenges to exporting/importing were asked about the main cause of these exporting/importing challenges.</span></span></span></span></p>
+
+                    <p><span><span><strong>Figure 5:&nbsp; In Wave 87, 37.2% of applicable exporters reported that the end of the EU transition period was the main cause of their exporting challenges.&nbsp; This was also the most frequently reported cause of importing challenges (56.3%). The end of the EU transition period combined with the COVID-19 pandemic was reported as the main cause of challenges for a further 21.1% of exporters and 19.1% of importers.&nbsp; </strong></span></span></p>
+
+                    <p><span><span>Estimated share of businesses by main cause of exporting / importing challenges. Businesses currently trading and exported / imported in last 12 months and experienced challenges, with 10+ employees and a presence in Scotland. Wave 87.</span></span></p>
+
+                    <p><img src="bics-wave-87---figure-5---exportimport-challenge-cause-svg/{_document}/hippogallery:original" alt="A bar chart showing that in Wave 87, the end of the EU transition period was the main cause of both exporting and importing challenges" /></p>
+
+                    <p><span><span><span>Source: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">BICS Weighted Scotland Estimates - Wave 87</a> from the Scottish Government </span></span></span></p>
+
+                    <p><span><span><span><a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/">Download the data for this publication (.xlsx, 6.1MB):</a> for Figure 5 data see tables ‘ExportingChallengeYMainCause’ and ‘ImportingChallengeYMainCause’.</span></span></span></p>
+                  /bics-wave-87---figure-3---exportimport-change-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: 9a9bacc7-2a00-4d1b-a9e8-7a86ab70fea1
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+                  /bics-wave-87---figure-4---exportimport-challenges-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: eb19f720-4047-4c06-8a62-e64eca160297
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+                  /bics-wave-87---figure-5---exportimport-challenge-cause-svg:
+                    jcr:primaryType: hippo:facetselect
+                    hippo:docbase: 8ea6d052-b10b-4dc9-9c0e-1835f69c491d
+                    hippo:facets: []
+                    hippo:modes: []
+                    hippo:values: []
+            /data-and-methodology:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: f452e78e-e66c-4dcc-9b0d-7b78202c2b64
+              hippo:name: Data and Methodology
+              hippo:versionHistory: ee44d9e0-c4f8-4c1d-ae1f-fd7c7ffbb348
+              /data-and-methodology[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 2bfc155e-de12-4df0-acad-1fdbbc48f746
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:32:33.908+01:00
+                govscot:title: Data and Methodology
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:32:44.098+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-04T09:32:27.664+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 22156948-0148-47f7-8103-aa418f3e077b
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Data and Methodology</span></span></span></h3>
+
+                    <p><span><span><span>BICS stands for the Business Insights and Conditions Survey (BICS) – previous to Wave 24, the survey was called "Business Impact of Coronavirus (COVID-19) Survey". The BICS was renamed to reflect the current question set, which goes wider than the impact of the coronavirus (COVID-19). <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/articles/businessimpactofcovid19surveyquestions/previousReleases">The questions for each wave are published by the ONS.</a></span></span></span></p>
+
+                    <p><span><span><span>Currently, the main <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/output/datasets/businessinsightsandimpactontheukeconomy">Scottish BICS results published by the Office for National Statistics</a> are unweighted which means that we can only make inferences about the businesses that have responded. Weighting the BICS responses enables us to produce estimates for Scottish businesses more generally, not just those that have responded. The ONS has provided the Scottish Government with the BICS microdata, which we have used to develop the weighted Scotland estimates. More information on the weighting method we have used for these estimates is provided here: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-12/">BICS weighted Scotland estimates: data to wave 12.</a></span></span></span></p>
+
+                    <p><span><span><span>The weighted Scotland estimates, in this publication, are for businesses with 10 or more employees. The weighted Scotland estimates are for businesses that have a presence in Scotland, as opposed to only those businesses headquartered in Scotland. Having a presence in Scotland means that the business has a local unit or site (e.g. shop, office, factory) in Scotland. <span><span>In terms of the base of the estimates, 9,846 businesses responded to the Wave 86 BICS UK-wide, and 10,762 businesses responded in Wave 87. In Wave 86, 1,061 of these businesses had a presence in Scotland (1,230 businesses in Wave 87). Excluding the micro businesses (those with less than 10 employees) takes the base down to 977 responding businesses in Wave 86, and 1,140 in Wave 87. </span></span>The weighted Scotland estimates are derived from results collected from UK businesses for the UK as a whole, but weighted by business counts or employment in Scotland - no account is being made for regional differences between business sites.</span></span></span></p>
+
+                    <p><span><span><span>Note that on the 16th of February 2023 ONS published <a href="https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/businessinsightsandimpactontheukandsubnationaleconomy/latest">Business insights and impact on the UK subnational single-site economy - Office for National Statistics (ons.gov.uk)</a> – this provides an analysis of weighted data for areas within the UK (including Scotland). This latest ONS sub-national analysis focusses on single-site businesses. This differs to the approach taken for the Scottish Government estimates presented here which include single-site and multi-site businesses together, and the Scottish Government estimates are constrained to businesses with 10 or more employees.</span></span></span></p>
+
+                    <p><span><span><span>The coverage of the ONS BICS includes most sectors of the Scottish economy; however, the public sector is excluded, as is ‘Section A – Agriculture, forestry &amp; fishing’, ‘Section D – Electricity, gas, steam &amp; air conditioning supply’ and ‘Section K – Financial &amp; insurance activities’.</span></span></span></p>
+
+                    <p><span><span><span><span>The data collected for this publication are available via <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/"><span lang="EN-US">background tables</span></a>. Data can also be accessed, by accredited researchers, via the <a href="https://www.ons.gov.uk/aboutus/whatwedo/statistics/requestingstatistics/secureresearchservice">Secure Research Service (SRS)</a>.</span></span></span></span></p>
+              /data-and-methodology[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 6d44e911-4ea9-44b0-956a-0f5d89e05bb8
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:32:33.908+01:00
+                govscot:title: Data and Methodology
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:32:44.098+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-04T09:32:27.597+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 22156948-0148-47f7-8103-aa418f3e077b
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Data and Methodology</span></span></span></h3>
+
+                    <p><span><span><span>BICS stands for the Business Insights and Conditions Survey (BICS) – previous to Wave 24, the survey was called "Business Impact of Coronavirus (COVID-19) Survey". The BICS was renamed to reflect the current question set, which goes wider than the impact of the coronavirus (COVID-19). <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/articles/businessimpactofcovid19surveyquestions/previousReleases">The questions for each wave are published by the ONS.</a></span></span></span></p>
+
+                    <p><span><span><span>Currently, the main <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/output/datasets/businessinsightsandimpactontheukeconomy">Scottish BICS results published by the Office for National Statistics</a> are unweighted which means that we can only make inferences about the businesses that have responded. Weighting the BICS responses enables us to produce estimates for Scottish businesses more generally, not just those that have responded. The ONS has provided the Scottish Government with the BICS microdata, which we have used to develop the weighted Scotland estimates. More information on the weighting method we have used for these estimates is provided here: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-12/">BICS weighted Scotland estimates: data to wave 12.</a></span></span></span></p>
+
+                    <p><span><span><span>The weighted Scotland estimates, in this publication, are for businesses with 10 or more employees. The weighted Scotland estimates are for businesses that have a presence in Scotland, as opposed to only those businesses headquartered in Scotland. Having a presence in Scotland means that the business has a local unit or site (e.g. shop, office, factory) in Scotland. <span><span>In terms of the base of the estimates, 9,846 businesses responded to the Wave 86 BICS UK-wide, and 10,762 businesses responded in Wave 87. In Wave 86, 1,061 of these businesses had a presence in Scotland (1,230 businesses in Wave 87). Excluding the micro businesses (those with less than 10 employees) takes the base down to 977 responding businesses in Wave 86, and 1,140 in Wave 87. </span></span>The weighted Scotland estimates are derived from results collected from UK businesses for the UK as a whole, but weighted by business counts or employment in Scotland - no account is being made for regional differences between business sites.</span></span></span></p>
+
+                    <p><span><span><span>Note that on the 16th of February 2023 ONS published <a href="https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/businessinsightsandimpactontheukandsubnationaleconomy/latest">Business insights and impact on the UK subnational single-site economy - Office for National Statistics (ons.gov.uk)</a> – this provides an analysis of weighted data for areas within the UK (including Scotland). This latest ONS sub-national analysis focusses on single-site businesses. This differs to the approach taken for the Scottish Government estimates presented here which include single-site and multi-site businesses together, and the Scottish Government estimates are constrained to businesses with 10 or more employees.</span></span></span></p>
+
+                    <p><span><span><span>The coverage of the ONS BICS includes most sectors of the Scottish economy; however, the public sector is excluded, as is ‘Section A – Agriculture, forestry &amp; fishing’, ‘Section D – Electricity, gas, steam &amp; air conditioning supply’ and ‘Section K – Financial &amp; insurance activities’.</span></span></span></p>
+
+                    <p><span><span><span><span>The data collected for this publication are available via <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/"><span lang="EN-US">background tables</span></a>. Data can also be accessed, by accredited researchers, via the <a href="https://www.ons.gov.uk/aboutus/whatwedo/statistics/requestingstatistics/secureresearchservice">Secure Research Service (SRS)</a>.</span></span></span></span></p>
+              /data-and-methodology[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: c356e898-21a4-429b-a5ac-8fec10bba970
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:32:33.908+01:00
+                govscot:title: Data and Methodology
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:32:44.098+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-04T09:32:27.597+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:32:33.908+01:00
+                hippotranslation:id: 22156948-0148-47f7-8103-aa418f3e077b
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Data and Methodology</span></span></span></h3>
+
+                    <p><span><span><span>BICS stands for the Business Insights and Conditions Survey (BICS) – previous to Wave 24, the survey was called "Business Impact of Coronavirus (COVID-19) Survey". The BICS was renamed to reflect the current question set, which goes wider than the impact of the coronavirus (COVID-19). <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/articles/businessimpactofcovid19surveyquestions/previousReleases">The questions for each wave are published by the ONS.</a></span></span></span></p>
+
+                    <p><span><span><span>Currently, the main <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/output/datasets/businessinsightsandimpactontheukeconomy">Scottish BICS results published by the Office for National Statistics</a> are unweighted which means that we can only make inferences about the businesses that have responded. Weighting the BICS responses enables us to produce estimates for Scottish businesses more generally, not just those that have responded. The ONS has provided the Scottish Government with the BICS microdata, which we have used to develop the weighted Scotland estimates. More information on the weighting method we have used for these estimates is provided here: <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-12/">BICS weighted Scotland estimates: data to wave 12.</a></span></span></span></p>
+
+                    <p><span><span><span>The weighted Scotland estimates, in this publication, are for businesses with 10 or more employees. The weighted Scotland estimates are for businesses that have a presence in Scotland, as opposed to only those businesses headquartered in Scotland. Having a presence in Scotland means that the business has a local unit or site (e.g. shop, office, factory) in Scotland. <span><span>In terms of the base of the estimates, 9,846 businesses responded to the Wave 86 BICS UK-wide, and 10,762 businesses responded in Wave 87. In Wave 86, 1,061 of these businesses had a presence in Scotland (1,230 businesses in Wave 87). Excluding the micro businesses (those with less than 10 employees) takes the base down to 977 responding businesses in Wave 86, and 1,140 in Wave 87. </span></span>The weighted Scotland estimates are derived from results collected from UK businesses for the UK as a whole, but weighted by business counts or employment in Scotland - no account is being made for regional differences between business sites.</span></span></span></p>
+
+                    <p><span><span><span>Note that on the 16th of February 2023 ONS published <a href="https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/businessinsightsandimpactontheukandsubnationaleconomy/latest">Business insights and impact on the UK subnational single-site economy - Office for National Statistics (ons.gov.uk)</a> – this provides an analysis of weighted data for areas within the UK (including Scotland). This latest ONS sub-national analysis focusses on single-site businesses. This differs to the approach taken for the Scottish Government estimates presented here which include single-site and multi-site businesses together, and the Scottish Government estimates are constrained to businesses with 10 or more employees.</span></span></span></p>
+
+                    <p><span><span><span>The coverage of the ONS BICS includes most sectors of the Scottish economy; however, the public sector is excluded, as is ‘Section A – Agriculture, forestry &amp; fishing’, ‘Section D – Electricity, gas, steam &amp; air conditioning supply’ and ‘Section K – Financial &amp; insurance activities’.</span></span></span></p>
+
+                    <p><span><span><span><span>The data collected for this publication are available via <a href="https://www.gov.scot/publications/bics-weighted-scotland-estimates-data-to-wave-87/documents/"><span lang="EN-US">background tables</span></a>. Data can also be accessed, by accredited researchers, via the <a href="https://www.ons.gov.uk/aboutus/whatwedo/statistics/requestingstatistics/secureresearchservice">Secure Research Service (SRS)</a>.</span></span></span></span></p>
+            /tell-us-what-you-think:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: dc8e3545-762d-4a77-9024-0404f0121e55
+              hippo:name: Tell us what you think
+              hippo:versionHistory: 487b8d7f-1fe1-41c5-ae13-19ecf5a2ba45
+              /tell-us-what-you-think[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 329313bd-862e-4e04-a96b-d5b6d2749879
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:11.691+01:00
+                govscot:title: Tell us what you think
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:33:15.083+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:33:36.568+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 37b6b6b7-c2da-4ece-8803-4f4568739d29
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Tell us what you think</span></span></span></h3>
+
+                    <p><span><span>We are always interested to hear from our users about how our statistics are used, and how they can be improved.</span></span></p>
+
+                    <h3><span><span><span><span><span><strong><span>Feedback survey</span></strong></span></span></span></span></span></h3>
+
+                    <p><span><span>We’d appreciate it if you would complete our short <a href="https://consult.gov.scot/digital-communications/95832709/">feedback survey</a> on this publication.</span></span></p>
+
+                    <h3><span><span><span>Join our mailing list</span></span></span></h3>
+
+                    <p><span><span><span><span>If you would like to receive notification about statistical publications, or find out about consultations on our statistics please join the <a href="http://www.gov.scot/scotstat">ScotStat mailing list</a>. </span></span></span></span></p>
+
+                    <h3><span><span><span>Future publications</span></span></span></h3>
+
+                    <p><span><span><span><span>Details of future publications can be found on our <a href="https://www.gov.scot/publications/official-statistics-forthcoming-publications/">forthcoming publications</a> page.</span></span></span></span></p>
+
+                    <p><span><span><span>The Scottish Government is developing these estimates on an ongoing basis, and is grateful to the ONS which has shared the BICS data.</span></span></span></p>
+              /tell-us-what-you-think[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 1b7b9815-d8c5-490c-8044-f90702ff587d
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:11.691+01:00
+                govscot:title: Tell us what you think
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:33:15.083+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:33:36.511+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippotranslation:id: 37b6b6b7-c2da-4ece-8803-4f4568739d29
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Tell us what you think</span></span></span></h3>
+
+                    <p><span><span>We are always interested to hear from our users about how our statistics are used, and how they can be improved.</span></span></p>
+
+                    <h3><span><span><span><span><span><strong><span>Feedback survey</span></strong></span></span></span></span></span></h3>
+
+                    <p><span><span>We’d appreciate it if you would complete our short <a href="https://consult.gov.scot/digital-communications/95832709/">feedback survey</a> on this publication.</span></span></p>
+
+                    <h3><span><span><span>Join our mailing list</span></span></span></h3>
+
+                    <p><span><span><span><span>If you would like to receive notification about statistical publications, or find out about consultations on our statistics please join the <a href="http://www.gov.scot/scotstat">ScotStat mailing list</a>. </span></span></span></span></p>
+
+                    <h3><span><span><span>Future publications</span></span></span></h3>
+
+                    <p><span><span><span><span>Details of future publications can be found on our <a href="https://www.gov.scot/publications/official-statistics-forthcoming-publications/">forthcoming publications</a> page.</span></span></span></span></p>
+
+                    <p><span><span><span>The Scottish Government is developing these estimates on an ongoing basis, and is grateful to the ONS which has shared the BICS data.</span></span></span></p>
+              /tell-us-what-you-think[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: f960f067-649e-40e0-9d68-058d15ac62fe
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2023-08-04T09:30:11.691+01:00
+                govscot:title: Tell us what you think
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:creationDate: 2023-08-02T11:33:15.083+01:00
+                hippostdpubwf:lastModificationDate: 2023-08-02T11:33:36.511+01:00
+                hippostdpubwf:lastModifiedBy: Rachel.Dickie@gov.scot
+                hippostdpubwf:publicationDate: 2023-08-04T09:30:11.691+01:00
+                hippotranslation:id: 37b6b6b7-c2da-4ece-8803-4f4568739d29
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h3><span><span><span>Tell us what you think</span></span></span></h3>
+
+                    <p><span><span>We are always interested to hear from our users about how our statistics are used, and how they can be improved.</span></span></p>
+
+                    <h3><span><span><span><span><span><strong><span>Feedback survey</span></strong></span></span></span></span></span></h3>
+
+                    <p><span><span>We’d appreciate it if you would complete our short <a href="https://consult.gov.scot/digital-communications/95832709/">feedback survey</a> on this publication.</span></span></p>
+
+                    <h3><span><span><span>Join our mailing list</span></span></span></h3>
+
+                    <p><span><span><span><span>If you would like to receive notification about statistical publications, or find out about consultations on our statistics please join the <a href="http://www.gov.scot/scotstat">ScotStat mailing list</a>. </span></span></span></span></p>
+
+                    <h3><span><span><span>Future publications</span></span></span></h3>
+
+                    <p><span><span><span><span>Details of future publications can be found on our <a href="https://www.gov.scot/publications/official-statistics-forthcoming-publications/">forthcoming publications</a> page.</span></span></span></span></p>
+
+                    <p><span><span><span>The Scottish Government is developing these estimates on an ongoing basis, and is grateful to the ONS which has shared the BICS data.</span></span></span></p>
