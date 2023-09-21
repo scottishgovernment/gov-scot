@@ -29,4 +29,9 @@ definitions:
       hipposys:groups: [cmsadmin, document-unlocker]
       hipposys:role: unlocker
     /hippo:configuration/hippo:domains/content/embargo:
-      hipposys:groups: [general-embargo, admin]
+      hipposys:groups:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [general-embargo, admin, asd-stats-embargo-group-1, asd-stats-embargo-group-2,
+          asd-stats-embargo-group-3, asd-stats-embargo-group-4, asd-stats-embargo-group-5]

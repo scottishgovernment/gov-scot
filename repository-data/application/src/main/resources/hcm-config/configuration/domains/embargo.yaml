@@ -3,6 +3,16 @@ definitions:
     /hippo:configuration/hippo:domains/embargo/author:
       hipposys:groups: []
     /hippo:configuration/hippo:domains/embargo/editor:
-      hipposys:groups: [general-embargo]
+      hipposys:groups:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [general-embargo, asd-stats-embargo-group-1, asd-stats-embargo-group-2,
+          asd-stats-embargo-group-3, asd-stats-embargo-group-4, asd-stats-embargo-group-5]
     /hippo:configuration/hippo:domains/embargo/embargo:
-      hipposys:groups: [general-embargo]
+      hipposys:groups:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [general-embargo, asd-stats-embargo-group-1, asd-stats-embargo-group-2,
+          asd-stats-embargo-group-3, asd-stats-embargo-group-4, asd-stats-embargo-group-5]

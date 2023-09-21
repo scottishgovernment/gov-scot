@@ -13,3 +13,10 @@ definitions:
           publication-authors, publication-editors, statistics-authors, statistics-editors,
           topics-issues-authors, topics-issues-editors]
       hipposys:role: modify
+    /hippo:configuration/hippo:domains/preview-documents/hippo-document/hide-embargo-handle:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodetype
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: embargo:handle

@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/embargo-workflow-module/hippo:moduleconfig:
+      embargoGroups: [general-embargo, asd-stats-embargo-group-1, asd-stats-embargo-group-2,
+        asd-stats-embargo-group-3, asd-stats-embargo-group-4, asd-stats-embargo-group-5]
