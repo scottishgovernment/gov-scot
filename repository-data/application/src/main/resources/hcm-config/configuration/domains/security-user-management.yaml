@@ -28,3 +28,11 @@ definitions:
       hipposys:filter: false
       hipposys:type: Name
       hipposys:value: admin
+    /hippo:configuration/hippo:domains/security-user-management/security:
+      jcr:primaryType: hipposys:domainrule
+      /security-and-descendants:
+        jcr:primaryType: hipposys:facetrule
+        hipposys:equals: true
+        hipposys:facet: jcr:path
+        hipposys:type: Reference
+        hipposys:value: /hippo:configuration/hippo:security
