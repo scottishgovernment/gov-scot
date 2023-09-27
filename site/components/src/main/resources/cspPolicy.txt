@@ -10,6 +10,7 @@ script-src
   https://translate.googleapis.com
   https://www.youtube.com
   https://s.ytimg.com
+  https://plausible.io
 ;
 img-src
   'self'
@@ -29,6 +30,7 @@ connect-src
     'self'
     https://*.google-analytics.com
     https://*.analytics.google.com
+    https://plausible.io
 ;
 style-src
   'self'
