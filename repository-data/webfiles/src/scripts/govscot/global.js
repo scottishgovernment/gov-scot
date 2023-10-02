@@ -11,6 +11,7 @@ import Notification from './component.notification';
 import ToggleLink from './component.toggle-link';
 import UpdateHistory from './component.update-history';
 import storage from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/storage/storage';
+import removeDisallowedCookies from '../tools/remove-disallowed-cookies';
 
 import '../../../node_modules/@scottish-government/pattern-library/src/all';
 
@@ -120,6 +121,13 @@ const global = {
         if (cookieNotificationEl) {
             const cookieNotification = new window.DS.components.CookieNotification(cookieNotificationEl);
             cookieNotification.init();
+
+
+            cookieNotificationEl.addEventListener('click', function (event) {
+                if (event.target.classList.contains('js-accept-essential-cookies')) {
+                    removeDisallowedCookies();
+                }
+            });
         }
 
         // this one is handled differently because it applies an event to the whole body and we only want that event once

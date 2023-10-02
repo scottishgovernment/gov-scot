@@ -1,6 +1,7 @@
 'use strict';
 
 import storage from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/storage/storage';
+import removeDisallowedCookies from '../tools/remove-disallowed-cookies';
 
 const cookieForm = {
 
@@ -76,8 +77,9 @@ const cookieForm = {
             cookieNotice.classList.add('notification--confirmed');
             cookieNotice.parentNode.querySelector('.js-initial-cookie-content').classList.add('fully-hidden');
             cookieNotice.parentNode.querySelector('.js-confirm-cookie-content').classList.remove('fully-hidden');
-        });
 
+            removeDisallowedCookies();
+        });
     }
 };
 
