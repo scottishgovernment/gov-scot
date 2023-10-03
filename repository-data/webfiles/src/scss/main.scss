@@ -9,14 +9,6 @@ $site-prefix: "gov_";
  * BASE STYLES FROM PATTERN LIBRARY
  */
 @import "../../node_modules/@scottish-government/pattern-library/src/base/all-base";
-
-
-// override the px-to-rem function to use sass interpolation
-@function px-to-rem ($px, $base: $root-font-size) {
-    @return (#{$px/$base}) * 1rem;
-}
-
-
 @import "../../node_modules/@scottish-government/pattern-library/src/forms/all-forms";
 @import "base/base.gov-layouts";
 
