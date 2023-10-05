@@ -3,6 +3,7 @@
 
 <@hst.headContribution category="googleTagManager">
 <script id="gtm-script"
+    defer="true"
     src='<@hst.webfile path="assets/scripts/gtm.js"/>'
     data-containerId="${gtmContainerId?js_string}"
     <#if gtmEnv?has_content>data-env="${gtmEnv?js_string}"</#if>
@@ -10,8 +11,7 @@
     <#if gtmName??>data-format="${gtmName?js_string}"</#if>
     <#if gtmId??>data-siteid="${gtmId?js_string}"</#if>
     <#if userType??>data-usertype="${userType?js_string}"</#if>
->
-</script>
+></script>
 </@hst.headContribution>
 
 <!-- Google Tag Manager (noscript) -->
