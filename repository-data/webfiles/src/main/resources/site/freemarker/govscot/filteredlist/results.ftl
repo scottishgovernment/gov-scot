@@ -29,9 +29,9 @@
     <header>
         <h2 class="visually-hidden">Search results</h2>
 
-        <div aria-live="polite" class="ds_search-results__count">
+        <div class="ds_search-results__count">
             <#if hasActiveParameters == true>
-                <p class="js-search-results-count">
+                <p aria-live="polite" class="js-search-results-count">
                     Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
                     <#if parameters['term']??>
