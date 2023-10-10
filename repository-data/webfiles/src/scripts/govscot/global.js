@@ -10,10 +10,10 @@ import feedback from './component.feedback';
 import Notification from './component.notification';
 import ToggleLink from './component.toggle-link';
 import UpdateHistory from './component.update-history';
-import storage from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/storage/storage';
+import storage from '../../../node_modules/@scottish-government/design-system/src/base/tools/storage/storage';
 import removeDisallowedCookies from '../tools/remove-disallowed-cookies';
 
-import '../../../node_modules/@scottish-government/pattern-library/src/all';
+import '../../../node_modules/@scottish-government/design-system/src/all';
 
 const global = {
     init: function () {

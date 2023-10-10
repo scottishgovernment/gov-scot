@@ -6,10 +6,10 @@
 'use strict';
 
 import searchUtils from './search-utils';
-import DSDatePicker from '../../../node_modules/@scottish-government/pattern-library/src/components/date-picker/date-picker';
+import DSDatePicker from '../../../node_modules/@scottish-government/design-system/src/components/date-picker/date-picker';
 import GovFilters from './component.filters';
-import breakpointCheck from '../../../node_modules/@scottish-government/pattern-library/src/base/utilities/breakpoint-check/breakpoint-check';
-import PromiseRequest from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/promise-request/promise-request';
+import breakpointCheck from '../../../node_modules/@scottish-government/design-system/src/base/utilities/breakpoint-check/breakpoint-check';
+import PromiseRequest from '../../../node_modules/@scottish-government/design-system/src/base/tools/promise-request/promise-request';
 
 window.dataLayer = window.dataLayer || [];
 
@@ -81,7 +81,7 @@ class SearchWithFilters {
                 input.addEventListener('change', () => {
                     let containerType = input
                         .closest('.ds_accordion-item')
-                        .querySelector('.ds_accordion-item__header-button')
+                        .querySelector('.ds_accordion-item__button')
                         .innerText
                         .toLowerCase();
 

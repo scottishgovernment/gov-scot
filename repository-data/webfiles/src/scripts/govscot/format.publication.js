@@ -4,8 +4,8 @@
 
 'use strict';
 
-import breakpointCheck from '../../../node_modules/@scottish-government/pattern-library/src/base/utilities/breakpoint-check/breakpoint-check';
-import temporaryFocus from '../../../node_modules/@scottish-government/pattern-library/src/base/tools/temporary-focus/temporary-focus';
+import breakpointCheck from '../../../node_modules/@scottish-government/design-system/src/base/utilities/breakpoint-check/breakpoint-check';
+import temporaryFocus from '../../../node_modules/@scottish-government/design-system/src/base/tools/temporary-focus/temporary-focus';
 const PolyPromise = require('../vendor/promise-polyfill').default;
 
 const publicationPage = {

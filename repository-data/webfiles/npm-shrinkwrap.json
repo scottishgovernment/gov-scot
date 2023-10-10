@@ -1133,10 +1133,10 @@
         "@jridgewell/sourcemap-codec": "^1.4.10"
       }
     },
-    "@scottish-government/pattern-library": {
-      "version": "0.0.379",
-      "resolved": "https://registry.npmjs.org/@scottish-government/pattern-library/-/pattern-library-0.0.379.tgz",
-      "integrity": "sha512-PA6RJrthE9SjhYzmsQDJMaerNiUz8ovJTM9roGAE6zyJgnZ9kKpLF9vR7RntI2aoKoVUDYL11f2Uep31iTHibw==",
+    "@scottish-government/design-system": {
+      "version": "0.2.0",
+      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-0.2.0.tgz",
+      "integrity": "sha512-7nyuy3rJwXY3a9wUgg21La7IYfM7n9M+Tn+Opc3haekJFLPqMxPq0xcLwKayXwFBQBN6MqjhoNjU05cdBMh46Q==",
       "dev": true
     },
     "@socket.io/component-emitter": {
