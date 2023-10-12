@@ -3,7 +3,6 @@
 
 <@hst.headContribution category="googleTagManager">
 <script id="gtm-script"
-    defer="true"
     src='<@hst.webfile path="assets/scripts/gtm.js"/>'
     data-containerId="${gtmContainerId?js_string}"
     <#if gtmEnv?has_content>data-env="${gtmEnv?js_string}"</#if>
