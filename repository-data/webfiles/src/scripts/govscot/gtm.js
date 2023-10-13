@@ -13,6 +13,7 @@ const gtmScript = {
     },
 
     initDataLayer: function () {
+        const userType = this.gtmScriptElement.dataset.usertype;
         const format = this.gtmScriptElement.dataset.format;
         const siteid = this.gtmScriptElement.dataset.siteid;
 
@@ -24,6 +25,10 @@ const gtmScript = {
 
         function present(item) {
             return item && !!item.length;
+        }
+
+        if (present(userType)) {
+            obj.userType = userType;
         }
 
         if (present(siteid)) {

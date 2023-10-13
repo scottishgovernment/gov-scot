@@ -1,6 +1,5 @@
 (function () {
     function setUserType(userType) {
-        window.dataLayer[0].userType = userType;
         document.body.classList.add(`usertype-${userType}`);
     }
 
