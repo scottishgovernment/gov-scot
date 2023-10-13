@@ -61,7 +61,7 @@ $filters-panel-background: $ds_colour__grey--lighter;
     }
 
     .ds_accordion-item__header:not(:focus):not(:hover),
-    .ds_accordion-item__header-button:not(:focus):not(:hover) {
+    .ds_accordion-item__button:not(:focus):not(:hover) {
         background-color: transparent;
         color: currentColor;
     }

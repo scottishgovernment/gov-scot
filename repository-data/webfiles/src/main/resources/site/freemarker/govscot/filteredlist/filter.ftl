@@ -91,9 +91,9 @@
             </#if>
 
             <#if publicationTypes?? || topics??>
-                <div class="ds_accordion  ds_no-margin" data-module="ds-accordion">
+                <div class="ds_accordion  ds_accordion--small  ds_no-margin" data-module="ds-accordion">
                     <#if publicationTypes??>
-                        <div class="ds_accordion-item  ds_accordion-item--small">
+                        <div class="ds_accordion-item">
                             <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-types" aria-labelledby="panel-types-heading" />
                             <div class="ds_accordion-item__header">
                                 <h3 id="panel-types-heading" class="ds_accordion-item__title">
@@ -146,7 +146,7 @@
                     </#if>
 
                     <#if topics??>
-                        <div class="ds_accordion-item  ds_accordion-item--small">
+                        <div class="ds_accordion-item">
                             <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-topics" aria-labelledby="panel-topics-heading" />
                             <div class="ds_accordion-item__header">
                                 <h3 id="panel-topics-heading" class="ds_accordion-item__title">

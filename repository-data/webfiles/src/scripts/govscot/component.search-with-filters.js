@@ -122,7 +122,7 @@ class SearchWithFilters {
                 });
 
                 // clear all filters
-                const checkboxes = [].slice.call(this.filtersContainer.querySelectorAll('input[type="checkbox"]'));
+                const checkboxes = [].slice.call(this.filtersContainer.querySelectorAll('.ds_field-group--checkboxes input[type="checkbox"]'));
                 const textInputs = [].slice.call(this.filtersContainer.querySelectorAll('input[type="text"]'));
 
                 checkboxes.forEach(element => element.checked = false);
@@ -142,9 +142,9 @@ class SearchWithFilters {
                 event.preventDefault();
 
                 this.searchParams.page = getParameterByName('page', event.target.href);
-                this.submitSearch({changingPage: true});
+                this.submitSearch({ changingPage: true });
             });
-        })
+        });
 
         window.onpopstate = () => {
             this.searchParams.page = getParameterByName('page');
