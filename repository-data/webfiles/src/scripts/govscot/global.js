@@ -3,14 +3,13 @@
 /* global window, document */
 
 'use strict';
-
-import './usertype';
 import '../vendor/polyfills';
 
 import feedback from './component.feedback';
 import Notification from './component.notification';
 import ToggleLink from './component.toggle-link';
 import UpdateHistory from './component.update-history';
+import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions';
 import storage from '../../../node_modules/@scottish-government/design-system/src/base/tools/storage/storage';
 import removeDisallowedCookies from '../tools/remove-disallowed-cookies';
 
@@ -21,7 +20,9 @@ const global = {
         document.documentElement.classList.add('js-enabled');
 
         feedback.init();
-        this.setInitialCookiePermissions();
+
+        // this is a little redundant because it's also called in gtm.js but we do need to be sure it's run
+        setInitialCookiePermissions();
         this.initDesignSystemComponents();
 
         //non-DS code for notification banner
@@ -172,21 +173,6 @@ const global = {
 
         const toggleLinks = [].slice.call(document.querySelectorAll('[data-module="gov-toggle-link"]'));
         toggleLinks.forEach(toggleLink => new ToggleLink(toggleLink).init());
-    },
-
-    setInitialCookiePermissions: function () {
-        const permissionsString = storage.getCookie('cookiePermissions') || '';
-
-        if (!storage.isJsonString(permissionsString)) {
-            const permissions = {};
-            permissions.statistics = true;
-            permissions.preferences = true;
-
-            storage.setCookie(storage.categories.necessary,
-                'cookiePermissions',
-                JSON.stringify(permissions)
-            );
-        }
     },
 
     checkVideoConsent: function () {

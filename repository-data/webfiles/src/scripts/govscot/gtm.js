@@ -1,5 +1,7 @@
 'use strict';
 
+import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions';
+
 const gtmScript = {
     init: function () {
         this.gtmScriptElement = document.getElementById('gtm-script');
@@ -9,7 +11,7 @@ const gtmScript = {
         }
 
         this.initDataLayer();
-        this.setupInitGTM();
+        this.initGTM();
     },
 
     initDataLayer: function () {
@@ -42,22 +44,7 @@ const gtmScript = {
         window.dataLayer.push(obj);
     },
 
-    setupInitGTM: function () {
-        const containerId = this.gtmScriptElement.dataset.containerid;
-        const auth = this.gtmScriptElement.dataset.auth;
-        const env = this.gtmScriptElement.dataset.env;
-
-        let authString = '';
-        let envString = '';
-
-        if (auth && !!auth.length) {
-            authString = `&gtm_auth=${auth}`;
-        }
-
-        if (env && !!env.length) {
-            envString = `&gtm_preview=${env}&gtm_cookies_win=x`;
-        }
-
+    initGTM: function () {
         function getCookie(name) {
             const cookie = {};
             document.cookie.split(';').forEach(function (el) {
@@ -67,25 +54,34 @@ const gtmScript = {
             return cookie[name];
         }
 
-        window.initGTM = function () {
-            let statisticsEnabled;
-            try {
-                statisticsEnabled = JSON.parse(atob(getCookie('cookiePermissions'))).statistics !== false;
-            } catch (err) {
-                statisticsEnabled = false;
+        setInitialCookiePermissions();
+        const cookiePermissions = getCookie('cookiePermissions');
+
+        if (JSON.parse(atob(cookiePermissions)).statistics !== false) {
+            const containerId = this.gtmScriptElement.dataset.containerid;
+            const auth = this.gtmScriptElement.dataset.auth;
+            const env = this.gtmScriptElement.dataset.env;
+
+            let authString = '';
+            let envString = '';
+
+            if (auth && !!auth.length) {
+                authString = `&gtm_auth=${auth}`;
             }
 
-            if (statisticsEnabled) {
-                (function (w, d, s, l, i) {
-                    w[l] = w[l] || []; w[l].push({
-                        'gtm.start':
-                            new Date().getTime(), event: 'gtm.js'
-                    }); let f = d.getElementsByTagName(s)[0],
-                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl + authString + envString; f.parentNode.insertBefore(j, f);
-                })(window, document, 'script', 'dataLayer', containerId);
+            if (env && !!env.length) {
+                envString = `&gtm_preview=${env}&gtm_cookies_win=x`;
             }
-        };
+
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); let f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl + authString + envString; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', containerId);
+        }
     }
 };
 
