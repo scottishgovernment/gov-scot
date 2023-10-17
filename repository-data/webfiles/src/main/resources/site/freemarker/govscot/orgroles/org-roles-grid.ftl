@@ -83,8 +83,8 @@
                                         <#-- end role.directorates loop -->
                                     </#list>
 
-                                    <div class="ds_accordion" data-module="ds-accordion" data-name="${strSlug(person.title)}">
-                                        <div class="ds_accordion-item  ds_accordion-item--small">
+                                    <div class="ds_accordion  ds_accordion--small" data-module="ds-accordion" data-name="${strSlug(person.title)}">
+                                        <div class="ds_accordion-item">
                                             <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-${person.canonicalUUID}" aria-labelledby="panel-${person.canonicalUUID}-heading" />
                                             <div class="ds_accordion-item__header">
                                                 <h3 id="panel-${person.canonicalUUID}-heading" class="ds_accordion-item__title">
