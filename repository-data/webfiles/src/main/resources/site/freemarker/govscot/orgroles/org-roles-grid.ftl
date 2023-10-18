@@ -83,32 +83,24 @@
                                         <#-- end role.directorates loop -->
                                     </#list>
 
-                                    <div class="ds_accordion  ds_accordion--small" data-module="ds-accordion" data-name="${strSlug(person.title)}">
-                                        <div class="ds_accordion-item">
-                                            <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-${person.canonicalUUID}" aria-labelledby="panel-${person.canonicalUUID}-heading" />
-                                            <div class="ds_accordion-item__header">
-                                                <h3 id="panel-${person.canonicalUUID}-heading" class="ds_accordion-item__title">
-                                                    Responsibilities (${responsibilities?size})
-                                                </h3>
-                                                <span class="ds_accordion-item__indicator"></span>
-                                                <label class="ds_accordion-item__label" for="panel-${person.canonicalUUID}"><span class="visually-hidden">Show this section</span></label>
-                                            </div>
-                                            <div class="ds_accordion-item__body">
-                                                <#if person.roles??>
-                                                    <ul class="gov_person__responsibilities-list  ds_no-bullets">
-                                                        <#list responsibilities as directorate>
-                                                            <li>
-                                                                <@hst.link var="directoratelink" hippobean=directorate/>
-                                                                <a href="${directoratelink}">${directorate.title}</a>
-                                                            </li>
-                                                        </#list>
-                                                        <#-- end directorates loop -->
-                                                    </ul>
-                                                </#if>
-                                                <#-- end person.roles condition -->
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <details class="ds_details  ds_no-margin" data-module="ds-details">
+                                        <summary class="ds_details__summary">
+                                            Responsibilities (${responsibilities?size})
+                                        </summary>
+                                        <div class="ds_details__text">
+                                        <#if person.roles??>
+                                            <ul class="gov_person__responsibilities-list  ds_no-bullets">
+                                                <#list responsibilities as directorate>
+                                                    <li>
+                                                        <@hst.link var="directoratelink" hippobean=directorate/>
+                                                        <a href="${directoratelink}">${directorate.title}</a>
+                                                    </li>
+                                                </#list>
+                                                <#-- end directorates loop -->
+                                            </ul>
+                                        </#if>
+                                        <#-- end person.roles condition -->
+                                    </details>
                                 </div>
                             </#if>
                             <#-- end url condition -->

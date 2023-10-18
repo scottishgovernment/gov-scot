@@ -70,16 +70,12 @@ $breakpoints: (
 
 @import "content-blocks/all-content-blocks";
 
-@import "overrides/override.accordion";
 @import "overrides/override.card";
 @import "overrides/override.feature-header";
 @import "overrides/override.notification-banner";
 @import "overrides/override.tables";
 
 @import "components/bugfix.site-header";
-
-
-
 
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
