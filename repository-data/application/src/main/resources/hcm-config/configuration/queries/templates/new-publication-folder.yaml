@@ -9,7 +9,7 @@ definitions:
         $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
         $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
         $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
-        $localName]
+        $localName, './index/index/hippotranslation:id', $uuid]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
       jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-publication-folder/hippostd:templates/node()
@@ -43,7 +43,7 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:id: ''
               hippotranslation:locale: en
           /pages:
             jcr:primaryType: hippostd:folder

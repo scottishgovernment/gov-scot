@@ -565,8 +565,8 @@ definitions:
       compression: 0.6
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-advanced-search/genericFilters:
-      document.type.namespaces: [ 'govscot' ]
-      document.type.excluded: [ 'govscot:ComplexDocument', 'govscot:covidlevel', 'govscot:covidrestriction',
+      document.type.namespaces: [govscot]
+      document.type.excluded: ['govscot:ComplexDocument', 'govscot:covidlevel', 'govscot:covidrestriction',
         'govscot:CovidRestrictionsLookup', 'govscot:publicationjob']
     /hippo:configuration/hippo:frontend/cms/cms-admin/groups:
       hipposys:userrole: xm.security.application-admin
@@ -574,3 +574,5 @@ definitions:
       hipposys:userrole: xm.security.application-admin
     /hippo:configuration/hippo:frontend/cms/cms-admin/userroles:
       hipposys:userrole: xm.security.application-admin
+    /hippo:configuration/hippo:frontend/cms/cms-folder-views/hippostd:folder/translationColumns:
+      .meta:delete: true

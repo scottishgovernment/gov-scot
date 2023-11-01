@@ -9,7 +9,8 @@ definitions:
         $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
         $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
         $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
-        $localName]
+        $localName, './index/index/hippotranslation:id', $uuid, './latest/latest/hippotranslation:id',
+        $uuid]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
       jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-policy-folder/hippostd:templates/node()
@@ -37,7 +38,7 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
+              hippotranslation:id: ''
               hippotranslation:locale: en
               govscot:policyTags: []
               govscot:seoTitle: ''
@@ -59,7 +60,7 @@ definitions:
               hippostdpubwf:creationDate: 2017-07-03T16:37:14+01:00
               hippostdpubwf:lastModificationDate: 2018-11-29T14:50:35.339Z
               hippostdpubwf:lastModifiedBy: agne.drumelyte@gov.scot
-              hippotranslation:id: 4e7da127-fd27-4de3-9902-026226b5f5c9
+              hippotranslation:id: ''
               hippotranslation:locale: en
               /govscot:content:
                 jcr:primaryType: hippostd:html
