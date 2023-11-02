@@ -9,7 +9,7 @@ definitions:
         $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
         $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
         $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
-        $localName]
+        $localName, './index/index/hippotranslation:id', $uuid]
       hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
       jcr:language: xpath
       jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-speech-or-statement-folder/hippostd:templates/node()
@@ -44,7 +44,7 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: 71c26f38-74d4-4018-b4bd-ce0f3240dfe5
+              hippotranslation:id: ''
               hippotranslation:locale: en
               /govscot:epilogue:
                 jcr:primaryType: hippostd:html

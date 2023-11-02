@@ -8,19 +8,19 @@
   /advice-and-guidance:
     jcr:primaryType: hippostd:folder
     jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
-    jcr:uuid: 6e09ce54-5eb1-4038-a35c-94fc3307a52e
+    jcr:uuid: 81d2855b-b20e-4df7-b1f3-0fb691ea260a
     govscot:publicationType: advice-and-guidance
     hippo:name: Advice and guidance
     hippostd:foldertype: [new-publication-year-folder]
     /2020:
       jcr:primaryType: hippostd:folder
       jcr:mixinTypes: ['mix:versionable']
-      jcr:uuid: 644fd954-e718-47da-a43a-29bef6e22efa
+      jcr:uuid: a1c52888-7e07-48af-bdb9-dfe5696d778d
       hippostd:foldertype: [new-publication-month-folder]
       /01:
         jcr:primaryType: hippostd:folder
         jcr:mixinTypes: ['mix:versionable']
-        jcr:uuid: bfb62545-1813-4851-afa5-df6cff067c18
+        jcr:uuid: 1fa45297-686d-4d9d-a847-b3deb2de8036
         hippostd:foldertype: [new-publication-folder, new-complex-document-folder]
         /consultations-in-the-scottish-government-guidance:
           jcr:primaryType: hippostd:folder
@@ -659,3 +659,20 @@
           /documents:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+  /speech-statement:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: 6e09ce54-5eb1-4038-a35c-94fc3307a52e
+    govscot:publicationType: advice-and-guidance
+    hippo:name: Speech/statement
+    hippostd:foldertype: [new-publication-year-folder]
+    /2020:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 644fd954-e718-47da-a43a-29bef6e22efa
+      hippostd:foldertype: [new-publication-month-folder]
+      /01:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: bfb62545-1813-4851-afa5-df6cff067c18
+        hippostd:foldertype: [new-speech-or-statement-folder]
