@@ -5,5 +5,5 @@ Priority: optional
 Architecture: all
 Maintainer: martin.ellis@gov.scot
 Pre-Depends: gov-scot-libs
-Depends: java8-runtime-headless, graphicsmagick, exiftool
+Depends: java11-runtime-headless, graphicsmagick, exiftool
 Description: Rubric CMS

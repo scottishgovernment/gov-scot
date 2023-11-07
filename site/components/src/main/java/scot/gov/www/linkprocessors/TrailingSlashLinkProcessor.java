@@ -109,7 +109,7 @@ public class TrailingSlashLinkProcessor extends HstLinkProcessorTemplate {
 
         @Override
         public HstSiteMapItem getHstSiteMapItem() {
-            return null;
+            return link.getHstSiteMapItem();
         }
 
         @Override

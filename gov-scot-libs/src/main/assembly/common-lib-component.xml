@@ -9,7 +9,6 @@
         <include>org.postgresql:postgresql</include>
         <include>javax.jcr:jcr</include>
         <include>org.apache.geronimo.specs:geronimo-jta_1.1_spec</include>
-        <include>javax.mail:mail</include>
       </includes>
     </dependencySet>
   </dependencySets>

@@ -337,6 +337,10 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/isbnpage
+          hst:relativecontentpath: publications
       /robots.txt:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/robotstxt
@@ -346,6 +350,10 @@ definitions:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/pagenotfound
         /_any_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/isbnpage
+          hst:relativecontentpath: publications
+        /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/isbnpage
           hst:relativecontentpath: publications

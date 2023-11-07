@@ -52,6 +52,7 @@ definitions:
               jcr:mixinTypes: ['mix:referenceable']
               jcr:uuid: 54bfe335-af36-4d3f-bc0d-9c12e5ecef87
               govscot:metaDescription: ''
+              govscot:summary: ''
               govscot:title: Latest
               hippo:availability: [preview]
               hippo:name: Latest
