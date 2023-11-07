@@ -1,5 +1,4 @@
 /content/documents/govscot/groups:
-  .meta:order-before: '404'
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['hippo:named', 'mix:versionable']
   jcr:uuid: 8d2a19b8-d97b-4472-81dc-c547e94e20ab

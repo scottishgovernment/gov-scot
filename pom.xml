@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>14.7.3</version>
+    <version>15.4.0</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -40,22 +40,20 @@
     <!-- Front end build -->
     <version.node>v10.19.0</version.node>
     <version.npm>6.14.4</version.npm>
-    <version.aws>1.12.436</version.aws>
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <forge.feed.version>6.0.0</forge.feed.version>
-    <forge.embargo.version>6.0.0</forge.embargo.version>
-    <forge.breadcrumb.version>4.0.0</forge.breadcrumb.version>
+    <forge.feed.version>7.0.0</forge.feed.version>
+    <forge.embargo.version>7.0.0</forge.embargo.version>
+    <forge.breadcrumb.version>5.0.0</forge.breadcrumb.version>
     <freemarker.version>2.3.28</freemarker.version>
 
-    <h2.database.version>2.1.210</h2.database.version>
-    <essentials.version>14.7.3</essentials.version>
+    <essentials.version>15.4.0</essentials.version>
     <jsp-api.version>2.2</jsp-api.version>
     <taglibs.version>1.2.5</taglibs.version>
     <junit.version>4.13.1</junit.version>
     <easymock.version>3.4</easymock.version>
-    <mockito.version>2.24.0</mockito.version>
+    <mockito.version>2.22.0</mockito.version>
 
     <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
     <maven.plugin.cargo.version>1.7.0</maven.plugin.cargo.version>
@@ -114,22 +112,10 @@
       <artifactId>jcr</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-    </dependency>
-
   </dependencies>
 
   <dependencyManagement>
     <dependencies>
-
-      <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <version>${h2.database.version}</version>
-        <scope>runtime</scope>
-      </dependency>
 
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
@@ -141,19 +127,13 @@
       <dependency>
         <groupId>org.apache.jackrabbit</groupId>
         <artifactId>jackrabbit-aws-ext</artifactId>
-        <version>2.17.1</version>
+        <version>${hippo.jackrabbit.version}</version>
         <exclusions>
           <exclusion>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-data</artifactId>
           </exclusion>
         </exclusions>
-      </dependency>
-
-      <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-s3</artifactId>
-        <version>${version.aws}</version>
       </dependency>
 
       <!-- other predefined runtime scope versioned dependencies -->
@@ -381,6 +361,31 @@
           <artifactId>log4j-core</artifactId>
           <scope>provided</scope>
         </dependency>
+        <dependency>
+          <groupId>jakarta.xml.bind</groupId>
+          <artifactId>jakarta.xml.bind-api</artifactId>
+          <scope>compile</scope>
+        </dependency>
+        <dependency>
+          <groupId>jakarta.xml.ws</groupId>
+          <artifactId>jakarta.xml.ws-api</artifactId>
+          <scope>compile</scope>
+        </dependency>
+        <dependency>
+          <groupId>javax.annotation</groupId>
+          <artifactId>javax.annotation-api</artifactId>
+          <scope>compile</scope>
+        </dependency>
+        <dependency>
+          <groupId>jakarta.activation</groupId>
+          <artifactId>jakarta.activation-api</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.glassfish.jaxb</groupId>
+          <artifactId>jaxb-runtime</artifactId>
+          <scope>runtime</scope>
+        </dependency>
       </dependencies>
       <build>
         <defaultGoal>initialize</defaultGoal>
@@ -468,11 +473,6 @@
                   <dependency>
                     <groupId>javax.jcr</groupId>
                     <artifactId>jcr</artifactId>
-                    <classpath>extra</classpath>
-                  </dependency>
-                  <dependency>
-                    <groupId>javax.mail</groupId>
-                    <artifactId>mail</artifactId>
                     <classpath>extra</classpath>
                   </dependency>
                   <dependency>

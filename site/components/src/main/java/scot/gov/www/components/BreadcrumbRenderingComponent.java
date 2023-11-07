@@ -2,13 +2,15 @@ package scot.gov.www.components;
 
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.ComponentConfiguration;
 import org.onehippo.forge.breadcrumb.components.BreadcrumbComponent;
+import org.onehippo.forge.breadcrumb.components.BreadcrumbParametersInfo;
 import org.onehippo.forge.breadcrumb.components.BreadcrumbProvider;
 
 import javax.servlet.ServletContext;
 
-
+@ParametersInfo(type = BreadcrumbParametersInfo.class)
 public class BreadcrumbRenderingComponent extends BreadcrumbComponent {
 
     private BreadcrumbProvider breadcrumbProvider;

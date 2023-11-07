@@ -20,6 +20,9 @@ definitions:
       /pagenotfound-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/pagenotfound-main.ftl
+      /sitemap.ftl:
+        jcr:primaryType: hst:template
+        hst:script: '<#ftl attributes={"content_type": "application/xml"} />${sitemap}'
       /contentlist-main-contentlist:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/hstdefault/contentlist-main-contentlist.ftl
