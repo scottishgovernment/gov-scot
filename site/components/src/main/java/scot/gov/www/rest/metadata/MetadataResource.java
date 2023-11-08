@@ -55,6 +55,13 @@ public class MetadataResource {
         return getMetadata("govscot:Topic", "govscot:Issue", "govscot:DynamicIssue");
     }
 
+    @Path("collections")
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public MetadataResponse getCollections() {
+        return getMetadata("govscot:Collection");
+    }
+
     @Path("publicationtypes")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
