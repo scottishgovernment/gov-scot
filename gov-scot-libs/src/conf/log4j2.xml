@@ -109,6 +109,9 @@
 
     <Logger name="org.onehippo.cm.engine.ConfigurationServiceImpl" level="info"/>
 
+    <!-- Advanced Search -->
+    <Logger name="org.onehippo.cms7.services.search.jcr.service.HippoJcrSearchService" level="info"/>
+
     <!-- project logging -->
     <Logger name="scot.gov.www" level="info"/>
 
