@@ -21,7 +21,7 @@
     <RollingFile
         name="site"
         fileName="${sys:catalina.base}/logs/hippo-site.log"
-        filePattern="${sys:catalina.base}/logs/hippo-site.log.yyyy-MM-dd"
+        filePattern="${sys:catalina.base}/logs/hippo-site.log.%d{yyyy-MM-dd}"
         createOnDemand="true">
       <LookupFilter key="jndi:logging/contextName" value="site" onMatch="ACCEPT"/>
       <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
@@ -47,7 +47,7 @@
     <RollingFile
         name="repo"
         fileName="${sys:catalina.base}/logs/hippo-repo.log"
-        filePattern="${sys:catalina.base}/logs/hippo-repo.log.yyyy-MM-dd"
+        filePattern="${sys:catalina.base}/logs/hippo-repo.log.%d{yyyy-MM-dd}"
         createOnDemand="true">
       <LookupFilter key="jndi:logging/contextName" value="repository" onMatch="ACCEPT"/>
       <PatternLayout pattern="%d{DEFAULT}{UTC} [%t] %-5p [%C.%M():%L] %m%n"/>
