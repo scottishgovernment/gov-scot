@@ -34,3 +34,4 @@
 
 <@hst.link var="canonicalitem" siteMapItemRefId="directorates" canonical=true/>
 <#include "common/canonical.ftl">
+<#include "common/gtm-datalayer.ftl"/>
