@@ -1,7 +1,5 @@
 package scot.gov.www.searchjournal;
 
-import org.hippoecm.repository.util.DateTools;
-import org.joda.time.DateTime;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
@@ -12,18 +10,18 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryResult;
-import java.time.Duration;
-import java.util.Calendar;
-import java.util.Locale;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 
 /**
- * Delete search journal entries older than 30 days (default, can be configured)
+ * Delete old search journal entries. The journal is deleted at the mont resolution and at least a months entries will be kept.
  */
 public class SearchJournalCleanupJob implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(SearchJournalCleanupJob.class);
+
+    private static final int MONTH_LIMIT = 24;
 
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
@@ -32,75 +30,86 @@ public class SearchJournalCleanupJob implements RepositoryJob {
         try {
             FeatureFlag enabled = new FeatureFlag(session, "SearchJournalCleanupJob");
             if (enabled.isEnabled()) {
-                long cutoff = getCuttoffMillis(context);
-                doExecute(session, cutoff);
+                doExecute(session);
             }
         } finally {
             session.logout();
         }
     }
 
-    void doExecute(Session session, long cutoff) throws RepositoryException {
-        LOG.info("Running SearchJournalCleanupJob with cutoff {} millis", cutoff);
-
-        NodeIterator nodeIterator = nodesToDelete(session, cutoff);
-        int count = 0;
-        while (nodeIterator.hasNext()) {
-            Node node = nodeIterator.nextNode();
-            deleteEntry(node);
-            intermittentSave(session, count++);
-        }
-        session.save();
-        LOG.info("Finished SearchJournalCleanupJob, {} deleted", count);
-    }
-
-    long getCuttoffMillis(RepositoryJobExecutionContext context) {
-        return Duration.ofDays(10).toMillis();
-    }
-
-    NodeIterator nodesToDelete(Session session, long cuttoff) throws RepositoryException {
-        Query query = query(session, cuttoff);
-        QueryResult result = query.execute();
-        LOG.info("{} old entries to delete", result.getNodes().getSize());
-        return result.getNodes();
-    }
-
-    void deleteEntry(Node entry) throws RepositoryException {
-        Node day = entry.getParent();
-        Node month = day.getParent();
-        Node year = month.getParent();
-        entry.remove();
-        deleteIfEmpty(day);
-        deleteIfEmpty(month);
-        deleteIfEmpty(year);
-    }
-
-    void deleteIfEmpty(Node node) throws RepositoryException {
-        if (!node.hasNodes()) {
-            node.remove();
-        }
-    }
-
-    void intermittentSave(Session session, int count) throws RepositoryException {
-        if (count % 500 == 0) {
-            LOG.info("saving, count is {}", count);
+    void doExecute(Session session) throws RepositoryException {
+        Calendar cutoff = getCutoff();
+        for (Node monthNode : getMonthsToDelete(session, cutoff)) {
+            LOG.info("removing month {}", monthNode.getPath());
+            Node yearNode = monthNode.getParent();
+            monthNode.remove();
+            if (!yearNode.hasNodes()) {
+                LOG.info("removing year {}", yearNode.getPath());
+                yearNode.remove();
+            }
             session.save();
         }
     }
 
-    Query query(Session session, long cutoffMillis) throws RepositoryException {
-        String template = "//element(*, searchjournal:entry)[@searchjournal:timestamp < %s] order by @searchjournal:timestamp";
-        String xpath = String.format(template, DateTools.createXPathConstraint(session, cutoff(cutoffMillis)));
-        Query query = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH);
-        LOG.info("query: {}", xpath);
-        query.setLimit(20000);
-        return query;
+    List<Node> getMonthsToDelete(Session session, Calendar cutoff) throws RepositoryException {
+        Node root = session.getNode("/content/searchjournal");
+        List<Node> yearNodes = sortedYears(root);
+        List<Node> allMonthNodes = new ArrayList<>();
+        for (Node yearNode : yearNodes) {
+            allMonthNodes.addAll(sortedMonthsForYear(yearNode, cutoff));
+        }
+        return allMonthNodes.subList(0, Math.min(MONTH_LIMIT, allMonthNodes.size()));
     }
 
-    Calendar cutoff(long cuttoffMillis) {
-        return DateTime.now()
-                .minus(cuttoffMillis)
-                .toCalendar(Locale.getDefault());
+    List<Node> sortedYears(Node root) throws RepositoryException {
+        List<Node> yearNodes = new ArrayList<>();
+        NodeIterator yearit = root.getNodes();
+        while (yearit.hasNext()) {
+            yearNodes.add(yearit.nextNode());
+        }
+        Collections.sort(yearNodes, this::compareNodeNameAsLong);
+        return yearNodes;
+    }
+
+    List<Node> sortedMonthsForYear(Node year, Calendar cutoff) throws RepositoryException {
+        List<Node> monthNodes = new ArrayList<>();
+        NodeIterator monthit = year.getNodes();
+        while (monthit.hasNext()) {
+            Node month = monthit.nextNode();
+            if (includeMonth(month, cutoff)) {
+                monthNodes.add(month);
+            }
+        }
+        Collections.sort(monthNodes, this::compareNodeNameAsLong);
+        return monthNodes;
+    }
+
+    Calendar getCutoff() {
+        LocalDateTime cutoff = LocalDateTime.now().minusDays(31);
+        Date date = Date.from(cutoff.atZone(ZoneId.systemDefault()).toInstant());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    }
+
+    int compareNodeNameAsLong(Node left, Node right) {
+        try {
+            Long leftValue = Long.parseLong(left.getName());
+            Long rightValue = Long.parseLong(right.getName());
+            return leftValue.compareTo(rightValue);
+        } catch (RepositoryException e) {
+            LOG.error("compareNodeNameAsLong failed to compare nodes", e);
+            return 0;
+        }
+    }
+
+    boolean includeMonth(Node monthNode, Calendar cutoff) throws RepositoryException {
+        long monthFromNode = Long.parseLong(monthNode.getName());
+        long yearFromNode = Long.parseLong(monthNode.getParent().getName());
+        if (yearFromNode == cutoff.get(Calendar.YEAR)) {
+            return monthFromNode < cutoff.get(Calendar.MONTH);
+        }
+        return yearFromNode < cutoff.get(Calendar.YEAR);
     }
 
 }
