@@ -416,4 +416,6 @@
 
     <@hst.link var="canonicalitem" path="/" canonical=true/>
     <#include "common/canonical.ftl" />
+
+    <#include "common/gtm-datalayer.ftl"/>
 </#if>

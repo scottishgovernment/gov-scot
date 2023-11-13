@@ -58,4 +58,6 @@
     <#assign canonicalitem = canonicalitem?remove_ending("index/")/>
 
     <#include "../common/canonical.ftl" />
+
+    <#include "../common/gtm-datalayer.ftl"/>
 </#if>
