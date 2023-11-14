@@ -1,5 +1,6 @@
 package scot.gov.www.searchjournal;
 
+import org.hippoecm.hst.core.jcr.RuntimeRepositoryException;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
@@ -32,7 +33,9 @@ public class SearchJournalCleanupJob implements RepositoryJob {
             if (enabled.isEnabled()) {
                 doExecute(session);
             }
-        } finally {
+        } catch (RuntimeRepositoryException e) {
+            LOG.error("RuntimeRepositoryException executing SearchJournalCleanupJob", e);
+        } finally{
             session.logout();
         }
     }
@@ -98,8 +101,7 @@ public class SearchJournalCleanupJob implements RepositoryJob {
             Long rightValue = Long.parseLong(right.getName());
             return leftValue.compareTo(rightValue);
         } catch (RepositoryException e) {
-            LOG.error("compareNodeNameAsLong failed to compare nodes", e);
-            return 0;
+            throw new RuntimeRepositoryException("compareNodeNameAsLong failed to compare nodes", e);
         }
     }
 
