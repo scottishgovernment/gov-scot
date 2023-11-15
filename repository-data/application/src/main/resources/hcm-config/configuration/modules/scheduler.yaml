@@ -14,7 +14,7 @@ definitions:
           jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/1 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2023-09-21T09:39:00+01:00
+          hipposched:nextFireTime: 2023-11-15T14:21:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SearchJournalCleanupJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -27,7 +27,7 @@ definitions:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
           jcr:uuid: 535ff94d-e234-43c2-8158-71df0ee91196
-          hipposched:cronExpression: 0 0 10 * * ?
+          hipposched:cronExpression: 0 15 16 * * ?
           hipposched:enabled: false
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
@@ -57,4 +57,4 @@ definitions:
           jcr:uuid: d2b951cd-b467-4ffa-afb8-e7aed9dc4db4
           hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2023-09-21T09:40:00+01:00
+          hipposched:nextFireTime: 2023-11-15T14:25:00Z
