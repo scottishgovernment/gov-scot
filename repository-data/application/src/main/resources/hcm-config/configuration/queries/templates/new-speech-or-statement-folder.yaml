@@ -17,7 +17,7 @@ definitions:
         jcr:primaryType: hippostd:templates
         /hippostd:folder:
           jcr:primaryType: hippostd:folder
-          jcr:mixinTypes: ['mix:versionable']
+          jcr:mixinTypes: ['mix:versionable', 'bulkpublish:bulkpublishdirectory']
           jcr:uuid: 95d1f035-d350-42ee-ba52-84e2b4aed258
           hippostd:foldertype: []
           /documents:

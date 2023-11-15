@@ -15,3 +15,15 @@ definitions:
         jcr:primaryType: frontend:plugin
         plugin.class: scot.gov.publishing.staging.plugins.PreviewFolderMenuItemPlugin
         wicket.id: ${item}
+    /hippo:configuration/hippo:workflows/threepane/folder/frontend:renderer/scheduled:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.gov.publishing.bulkpublish.ScheduledWorkflowPlugin
+      wicket.id: ${item}
+    /hippo:configuration/hippo:workflows/threepane/folder-extended/frontend:renderer/scheduled:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.gov.publishing.bulkpublish.ScheduledWorkflowPlugin
+      wicket.id: ${item}
+    /hippo:configuration/hippo:workflows/threepane/folder-permissions/frontend:renderer/scheduled:
+      jcr:primaryType: frontend:plugin
+      plugin.class: scot.gov.publishing.bulkpublish.ScheduledWorkflowPlugin
+      wicket.id: ${item}

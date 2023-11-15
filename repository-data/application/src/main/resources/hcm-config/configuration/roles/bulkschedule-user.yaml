@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:roles/bulkschedule-user:
+      jcr:primaryType: hipposys:role
+      hipposys:privileges: ['bulkschedule:user']

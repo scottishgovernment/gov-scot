@@ -23,7 +23,7 @@
         hippostd:foldertype: [new-publication-folder, new-complex-document-folder]
         /consultations-in-the-scottish-government-guidance:
           jcr:primaryType: hippostd:folder
-          jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable']
           jcr:uuid: cc9f6489-db57-4308-9467-2f56fd5394fa
           hippo:name: 'Consultations in the Scottish Government: guidance'
           hippostd:foldertype: []
@@ -32,7 +32,7 @@
             jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
             jcr:uuid: a71ff4dd-e647-436c-84c9-09362b68a7fd
             hippo:name: 'Consultations in the Scottish Government: guidance'
-            hippo:versionHistory: 702a235e-0f18-4650-96cf-585baa5ba1cc
+            hippo:versionHistory: f847487b-cbd8-48e8-9b33-43137002ba61
             /index[1]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -462,7 +462,7 @@
               govscot:sme: ''
               govscot:summary: Public guidance for consultations.
               govscot:title: 'Consultations in the Scottish Government: guidance'
-              hippo:availability: [live]
+              hippo:availability: []
               hippostd:retainable: false
               hippostd:state: published
               hippostd:tags: [consultations, research, guidance, advice, data protection,
@@ -652,6 +652,19 @@
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+            /hippo:request:
+              jcr:primaryType: hipposched:workflowjob
+              hipposched:attributeNames: ['hipposched:subjectId', 'hipposched:methodName']
+              hipposched:attributeValues: [a71ff4dd-e647-436c-84c9-09362b68a7fd, publish]
+              hipposched:repositoryJobClass: org.onehippo.repository.documentworkflow.task.ScheduleWorkflowTask$WorkflowJob
+              /hipposched:triggers:
+                jcr:primaryType: hipposched:triggers
+                /default:
+                  jcr:primaryType: hipposched:simpletrigger
+                  jcr:mixinTypes: ['mix:lockable']
+                  jcr:uuid: b4a8198c-e8a3-4bdf-a50f-abce889832e8
+                  hipposched:nextFireTime: 2023-11-17T16:19:00Z
+                  hipposched:startTime: 2023-11-17T16:19:00Z
           /pages:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-page]

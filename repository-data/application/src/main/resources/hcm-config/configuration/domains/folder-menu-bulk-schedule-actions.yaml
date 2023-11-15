@@ -1,0 +1,31 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/folder-menu-bulk-schedule-actions:
+      jcr:primaryType: hipposys:domain
+      /publications-domain:
+        jcr:primaryType: hipposys:domainrule
+        /bulkpublish-directories:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:type: Name
+          hipposys:value: bulkpublish:bulkpublishdirectory
+      /bulk-schedule-user:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          operation: override
+          type: string
+          value: [publication-editors]
+        hipposys:role: bulkschedule-user
+        hipposys:users:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          operation: override
+          type: string
+          value: []
+        hipposys:userrole:
+          .meta:category: system
+          type: string
+          value: xm.content.editor
