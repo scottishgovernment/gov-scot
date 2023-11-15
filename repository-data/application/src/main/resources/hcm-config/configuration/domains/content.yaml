@@ -17,8 +17,11 @@ definitions:
       hipposys:type: Reference
       hipposys:value: /content/documents/administration
     /hippo:configuration/hippo:domains/content/readonly:
-      hipposys:groups: [asd-stats-embargo-group-1, asd-stats-embargo-group-2, asd-stats-embargo-group-3,
-        asd-stats-embargo-group-4, asd-stats-embargo-group-5, general-embargo, cmsadmin, collection-authors,
+      hipposys:groups: [
+        embargo-social-security-analysis, embargo-energy-statistics, embargo-gdp, embargo-general-labour-market,
+        embargo-labour-market–lfs-aps, embargo-public-sector-employment, mbargo-social-security-analysis,
+        embargo-trade-statistics,
+        cmsadmin, collection-authors,
         collection-editors, core-content-authors, core-content-editors, document-unlocker, foi-authors,
         foi-editors, group-authors, group-editors, image-editors, mourning-banner,
         news-editors, policy-authors, policy-editors, previewusers, publication-authors,
@@ -33,5 +36,6 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [general-embargo, admin, asd-stats-embargo-group-1, asd-stats-embargo-group-2,
-          asd-stats-embargo-group-3, asd-stats-embargo-group-4, asd-stats-embargo-group-5]
+        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-gdp, embargo-general-labour-market,
+          embargo-labour-market–lfs-aps, embargo-public-sector-employment, mbargo-social-security-analysis,
+          embargo-trade-statistics]

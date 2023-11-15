@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:groups/asd-stats-embargo-group-1:
+    /hippo:configuration/hippo:groups/embargo-children-and-families-analysis:
       jcr:primaryType: hipposys:group
       hipposys:members: []
       hipposys:securityprovider: internal

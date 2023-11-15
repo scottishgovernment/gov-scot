@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:groups/asd-stats-embargo-group-5:
+    /hippo:configuration/hippo:groups/embargo-labour-market–lfs-aps:
       jcr:primaryType: hipposys:group
       hipposys:members: []
       hipposys:securityprovider: internal
