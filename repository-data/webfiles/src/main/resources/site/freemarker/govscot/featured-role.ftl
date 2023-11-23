@@ -315,7 +315,7 @@
     <@hst.headContribution>
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
- 
+
     <#if document.incumbent.image??>
         <@hst.link var="imagelink" hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>
     </#if>
@@ -324,6 +324,4 @@
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true />
     <#include "common/canonical.ftl" />
-
-    <#include "common/gtm-datalayer.ftl"/>
 </#if>

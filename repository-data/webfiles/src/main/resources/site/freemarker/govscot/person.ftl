@@ -116,6 +116,4 @@
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />
-
-    <#include "common/gtm-datalayer.ftl"/>
 </#if>

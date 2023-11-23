@@ -142,7 +142,7 @@
     <@hst.headContribution category="dcMeta">
         <meta name="dc.format" content="Collection"/>
     </@hst.headContribution>
-    
+
     <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
     <@hst.headContribution category="dcMeta">
         <meta name="dc.date.modified" content="<@fmt.formatDate value=lastUpdated.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
@@ -162,6 +162,4 @@
 
     <@hst.link var="canonicalitem" hippobean=document canonical=true/>
     <#include "common/canonical.ftl" />
-
-    <#include "common/gtm-datalayer.ftl"/>
 </#if>
