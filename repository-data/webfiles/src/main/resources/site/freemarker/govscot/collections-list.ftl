@@ -29,4 +29,3 @@
 
 <@hst.link var="canonicalitem" siteMapItemRefId="collections" canonical=true/>
 <#include "common/canonical.ftl" />
-<#include "common/gtm-datalayer.ftl"/>

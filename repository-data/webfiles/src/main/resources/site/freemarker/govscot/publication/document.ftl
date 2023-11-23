@@ -84,7 +84,7 @@
                 </div>
             </nav>
             <!--endnoindex-->
-            
+
             <#if document.updateHistory?has_content>
                 <#include '../common/update-history.ftl'/>
             </#if>
@@ -122,10 +122,8 @@
         <#assign uuid = currentPage.getSingleProperty('jcr:uuid')/>
         <#assign lastUpdated = currentPage.getSingleProperty('hippostdpubwf:lastModificationDate')/>
         <#assign dateCreated = currentPage.getSingleProperty('hippostdpubwf:creationDate')/>
-        <#include "../common/gtm-datalayer.ftl"/>
     <#else>
         <@hst.link var="canonicalitem" hippobean=document canonical=true/>
-        <#include "../common/gtm-datalayer.ftl"/>
     </#if>
 
     <@hst.headContribution>

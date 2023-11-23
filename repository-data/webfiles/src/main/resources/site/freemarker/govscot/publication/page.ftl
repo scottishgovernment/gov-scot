@@ -322,10 +322,8 @@
         <#assign uuid = currentPage.getSingleProperty('jcr:uuid')/>
         <#assign lastUpdated = currentPage.getSingleProperty('hippostdpubwf:lastModificationDate')/>
         <#assign dateCreated = currentPage.getSingleProperty('hippostdpubwf:creationDate')/>
-        <#include "../common/gtm-datalayer.ftl"/>
     <#else>
         <@hst.link var="canonicalitem" hippobean=document canonical=true/>
-        <#include "../common/gtm-datalayer.ftl"/>
     </#if>
 
     <#include "../common/canonical.ftl" />
