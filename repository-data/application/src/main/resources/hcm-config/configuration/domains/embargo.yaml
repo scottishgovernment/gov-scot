@@ -7,14 +7,14 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-gdp, embargo-general-labour-market,
-                embargo-labour-market–lfs-aps, embargo-public-sector-employment, mbargo-social-security-analysis,
-                embargo-trade-statistics]
+        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
+                embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
+                embargo-labour-market–lfs-aps, embargo-general-labour-market]
     /hippo:configuration/hippo:domains/embargo/embargo:
       hipposys:groups:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-gdp, embargo-general-labour-market,
-                embargo-labour-market–lfs-aps, embargo-public-sector-employment, mbargo-social-security-analysis,
-                embargo-trade-statistics]
+        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
+                embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
+                embargo-labour-market–lfs-aps, embargo-general-labour-market]

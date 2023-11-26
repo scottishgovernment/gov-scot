@@ -18,9 +18,9 @@ definitions:
       hipposys:value: /content/documents/administration
     /hippo:configuration/hippo:domains/content/readonly:
       hipposys:groups: [
-        embargo-social-security-analysis, embargo-energy-statistics, embargo-gdp, embargo-general-labour-market,
-        embargo-labour-market–lfs-aps, embargo-public-sector-employment, mbargo-social-security-analysis,
-        embargo-trade-statistics,
+        embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
+        embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
+        embargo-labour-market–lfs-aps, embargo-general-labour-market,
         cmsadmin, collection-authors,
         collection-editors, core-content-authors, core-content-editors, document-unlocker, foi-authors,
         foi-editors, group-authors, group-editors, image-editors, mourning-banner,
@@ -36,6 +36,6 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-gdp, embargo-general-labour-market,
-          embargo-labour-market–lfs-aps, embargo-public-sector-employment, mbargo-social-security-analysis,
-          embargo-trade-statistics]
+        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
+                 embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
+                 embargo-labour-market–lfs-aps, embargo-general-labour-market]
