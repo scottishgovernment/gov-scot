@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+<title>add buttibe extended panel</title>
+</head>
+  <wicket:panel>
+    <div class="hippo-editor-field">
+      <wicket:container wicket:id="field-title"/>
+      <div class="hippo-editor-field-nritems">
+        <span wicket:id="nrItemsLabel">[1 of 3]</span>
+      </div>
+      <a class="add-link btn btn-default" wicket:id="add">
+        <span wicket:id="add-icon">[ add icon ]</span>
+        <span class="button-label" wicket:id="add-label">[ add label ]</span>
+      </a>
+      <div class="hippo-editor-field-subfield" wicket:id="view">
+        <wicket:container wicket:id="fieldContainer"/>
+      </div>
+    </div>
+  </wicket:panel>
+</html>

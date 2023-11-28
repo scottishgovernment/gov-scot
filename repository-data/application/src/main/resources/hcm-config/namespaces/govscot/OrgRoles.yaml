@@ -270,7 +270,7 @@ definitions:
             field: UpdateHistory
             hint: Details of the last updated date and a brief descriptions of the
               content update
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            plugin.class: scot.gov.plugins.field.ExtendedNodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

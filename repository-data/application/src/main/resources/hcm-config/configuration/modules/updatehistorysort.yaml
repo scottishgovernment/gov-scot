@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/updatehistorysort:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.UpdateHistoryDaemonModule
+      hipposys:cmsonly: true
