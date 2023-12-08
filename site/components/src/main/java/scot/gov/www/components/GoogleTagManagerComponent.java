@@ -2,6 +2,7 @@ package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.configuration.hosting.Mount;
+import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -42,6 +43,11 @@ public class GoogleTagManagerComponent extends BaseHstComponent {
         setGtmId(request);
         setUserType(request);
         setMountDependentAttributes(request);
+
+        HstRequestContext context = request.getRequestContext();
+        HippoBean document = context.getContentBean(HippoBean.class);
+
+        request.setAttribute("document", document);
     }
 
     /**
