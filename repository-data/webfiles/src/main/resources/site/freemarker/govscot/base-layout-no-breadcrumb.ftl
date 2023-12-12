@@ -26,7 +26,7 @@
     <meta name="msapplication-TileColor" content="#0065bd">
     <meta name="theme-color" content="#ffffff">
 
-    <@hst.headContributions categoryExcludes="schema, noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager" xhtml=true/>
+    <@hst.headContributions categoryExcludes="schema, noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager, googleTagManagerDataLayer" xhtml=true/>
 
     <script>
         BR = window.BR || {};
