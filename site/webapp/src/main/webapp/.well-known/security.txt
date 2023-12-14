@@ -1,5 +1,5 @@
 # Our security address
-Contact: mailto:vulnerabilitydisclosures@gov.scot
+Contact: https://hackerone.com/291b7ece-5c82-4a77-b2b8-db6b2a4f6528/embedded_submissions/new
 
 # Our security policy
 Policy:  https://www.gov.scot/publications/vulnerability-disclosure-policy/
