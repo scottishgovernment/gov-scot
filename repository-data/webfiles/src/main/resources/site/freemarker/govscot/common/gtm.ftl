@@ -24,6 +24,9 @@
         data-lastupdated='<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />'
         data-datecreated='<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />'
         data-uuid="${uuid}"
+        <#if gtmName??>data-format="${gtmName?js_string}"</#if>
+        <#if gtmId??>data-siteid="${gtmId?js_string}"</#if>
+        <#if userType??>data-usertype="${userType?js_string}"</#if>
         >
     </script>
     </@hst.headContribution>
@@ -35,9 +38,6 @@
     data-containerId="${gtmContainerId?js_string}"
     <#if gtmEnv?has_content>data-env="${gtmEnv?js_string}"</#if>
     <#if gtmAuth?has_content>data-auth="${gtmAuth?js_string}"</#if>
-    <#if gtmName??>data-format="${gtmName?js_string}"</#if>
-    <#if gtmId??>data-siteid="${gtmId?js_string}"</#if>
-    <#if userType??>data-usertype="${userType?js_string}"</#if>
 ></script>
 </@hst.headContribution>
 
