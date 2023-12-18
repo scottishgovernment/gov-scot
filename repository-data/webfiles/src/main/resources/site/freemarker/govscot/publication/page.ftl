@@ -327,4 +327,5 @@
     </#if>
 
     <#include "../common/canonical.ftl" />
+    <#include "../common/gtm-datalayer.ftl"/>
 </#if>

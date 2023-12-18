@@ -377,4 +377,6 @@
         <#assign lastUpdated = currentPage.getSingleProperty('hippostdpubwf:lastModificationDate')/>
         <#assign dateCreated = currentPage.getSingleProperty('hippostdpubwf:creationDate')/>
     </#if>
+
+    <#include "../common/gtm-datalayer.ftl"/>
 </#if>

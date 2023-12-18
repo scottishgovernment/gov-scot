@@ -99,4 +99,5 @@
     <#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/>
     <#assign dateCreated = document.getSingleProperty('hippostdpubwf:creationDate')/>
     <#assign document = index/>
+    <#include "../common/gtm-datalayer.ftl"/>
 </#if>
