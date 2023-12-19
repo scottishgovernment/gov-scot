@@ -474,3 +474,8 @@ definitions:
             hst:excludedforlinkrewriting: true
             hst:hiddeninchannelmanager: true
             hst:namedpipeline: JaxrsRestPlainPipeline
+      /searchresults:
+        jcr:primaryType: hst:sitemapitem
+        hst:componentconfigurationid: hst:pages/searchresilientresults
+        hst:relativecontentpath: search/index
+        hst:sitemapitemhandlerids: [trailing-slash]
