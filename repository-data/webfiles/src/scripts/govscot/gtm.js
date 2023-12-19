@@ -6,6 +6,10 @@ import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions
     const auth = gtmScriptElement.dataset.auth;
     const env = gtmScriptElement.dataset.env;
 
+    const userType = gtmScriptElement.dataset.usertype;
+    const format = gtmScriptElement.dataset.format;
+    const siteid = gtmScriptElement.dataset.siteid;
+
     let authString = '';
     let envString = '';
 
@@ -46,4 +50,31 @@ import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl+authString+envString;f.parentNode.insertBefore(j,f);
         })(window, document, 'script', 'dataLayer', containerId);
     }
+
+
+
+
+    // datalayer:
+    window.dataLayer = window.dataLayer || [];
+
+    const obj = {};
+
+    function present(value) {
+        return value && !!value.length;
+    }
+
+    if (present(userType)) {
+        obj.userType = userType;
+    }
+
+    if (present(siteid)) {
+        obj.siteid = siteid;
+    }
+
+    if (present(format)) {
+        obj.format = format;
+    }
+
+    window.dataLayer.push(obj);
+
 })();

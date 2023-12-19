@@ -18,9 +18,6 @@
     const lastUpdated = datalayerScriptElement.dataset.lastupdated;
     const dateCreated = datalayerScriptElement.dataset.datecreated;
     const uuid = datalayerScriptElement.dataset.uuid;
-    const userType = datalayerScriptElement.dataset.usertype;
-    const format = datalayerScriptElement.dataset.format;
-    const siteid = datalayerScriptElement.dataset.siteid;
 
     window.dataLayer = window.dataLayer || [];
 
@@ -78,18 +75,6 @@
 
     if (present(uuid)) {
         obj.uuid = uuid;
-    }
-
-    if (present(userType)) {
-        obj.userType = userType;
-    }
-
-    if (present(siteid)) {
-        obj.siteid = siteid;
-    }
-
-    if (present(format)) {
-        obj.format = format;
     }
 
     window.dataLayer.push(obj);
