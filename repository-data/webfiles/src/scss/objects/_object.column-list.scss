@@ -5,6 +5,7 @@
 \*------------------------------------*/
 
 /// used on topic.ftl
+@use "sass:math";
 
 $gutter: 32px !default;
 
@@ -51,7 +52,7 @@ $gutter: 32px !default;
 
     @while $columns > 1 {
         &--#{$columns} .#{$site-prefix}column-list__item {
-            width: (100% / $columns);
+            width: math.div(100%, $columns);
         }
 
         &--#{$columns} .#{$site-prefix}column-list__item:nth-child(#{$columns}n+1) {

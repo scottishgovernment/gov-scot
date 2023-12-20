@@ -1134,9 +1134,9 @@
       }
     },
     "@scottish-government/design-system": {
-      "version": "0.2.0",
-      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-0.2.0.tgz",
-      "integrity": "sha512-7nyuy3rJwXY3a9wUgg21La7IYfM7n9M+Tn+Opc3haekJFLPqMxPq0xcLwKayXwFBQBN6MqjhoNjU05cdBMh46Q==",
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-1.2.0.tgz",
+      "integrity": "sha512-gNzXm7h+qxTl8oRoAQ5zjjxMYLT25dd1rPnzS5/9GKMUE9PBxDbUE2fZJuPB2vp8I2yOKxn+OU4i/xY6DwlBwQ==",
       "dev": true
     },
     "@socket.io/component-emitter": {
