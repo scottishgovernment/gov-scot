@@ -3,6 +3,7 @@
 <#include "./imports.ftl">
 <#if pageable??>
     <@hst.setBundle basename="essentials.pagination"/>
+    <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
     <nav id="pagination" class="ds_pagination" aria-label="Search pages">
         <ul class="ds_pagination__list">
@@ -16,16 +17,25 @@
                             <@hst.param name="page" value="${pageable.previousPage}"/>
                         </@hst.renderURL>
                         <li class="ds_pagination__item">
-                            <a class="ds_pagination__link  ds_pagination__link--text" href="${pageUrlPrevious?no_esc}"><@fmt.message key="page.previous" var="prev"/>${prev}</a>
+                            <a aria-label="Previous page" class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pageUrlPrevious?no_esc}">
+                                <svg class="ds_icon" aria-hidden="true" role="img">
+                                    <use href="${iconspath}#chevron_left"></use>
+                                </svg>
+                                <span class="ds_pagination__link-label"><@fmt.message key="page.previous" var="prev"/>${prev}</span>
+                            </a>
                         </li>
                     </#if>
                     <#if pageable.currentPage == pageNr>
-                        <li class="ds_pagination__item" aria-current="page">
-                            <span class="ds_pagination__link  ds_current">${pageNr}</span>
+                        <li class="ds_pagination__item">
+                            <a aria-label="Page ${pageNr}" aria-current="page" class="ds_pagination__link  ds_current" href="${pageUrl?no_esc}">
+                                <span class="ds_pagination__link-label">${pageNr}</span>
+                            </a>
                         </li>
                     <#else>
-                        <li class="ds_pagination__item ">
-                            <a class="ds_pagination__link" href="${pageUrl?no_esc}">${pageNr}</a>
+                        <li class="ds_pagination__item">
+                            <a aria-label="Page ${pageNr}" class="ds_pagination__link" href="${pageUrl?no_esc}">
+                                <span class="ds_pagination__link-label">${pageNr}</span>
+                            </a>
                         </li>
                     </#if>
 
@@ -34,7 +44,12 @@
                             <@hst.param name="page" value="${pageable.nextPage}"/>
                         </@hst.renderURL>
                         <li class="ds_pagination__item ">
-                            <a class="ds_pagination__link  ds_pagination__link--text" href="${pageUrlNext?no_esc}"><@fmt.message key="page.next" var="next"/>${next}</a>
+                            <a aria-label="Next page" class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pageUrlNext?no_esc}">
+                                <span class="ds_pagination__link-label"><@fmt.message key="page.next" var="next"/>${next}</span>
+                                <svg class="ds_icon" aria-hidden="true" role="img">
+                                    <use href="${iconspath}#chevron_right"></use>
+                                </svg>
+                            </a>
                         </li>
                     </#if>
                 </#list>

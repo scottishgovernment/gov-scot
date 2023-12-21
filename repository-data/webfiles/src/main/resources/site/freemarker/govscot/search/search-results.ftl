@@ -120,7 +120,7 @@
     <ul class="ds_pagination__list">
         <#if pagination.previous??>
             <li class="ds_pagination__item">
-                <a class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pagination.previous.url}">
+                <a aria-label="Previous page" class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pagination.previous.url}">
                     <svg class="ds_icon" aria-hidden="true" role="img">
                         <use href="${iconspath}#chevron_left"></use>
                     </svg>
@@ -131,7 +131,7 @@
 
         <#if pagination.first??>
             <li class="ds_pagination__item">
-                <a class="ds_pagination__link" href="${pagination.first.url}">
+                <a aria-label="Page ${pagination.first.label}" class="ds_pagination__link" href="${pagination.first.url}">
                     <span class="ds_pagination__link-label">${pagination.first.label}</span>
                 </a>
             </li>
@@ -143,12 +143,14 @@
         <#list pagination.pages as page>
             <li class="ds_pagination__item">
                 <#if page.selected>
-                    <span class="ds_pagination__link  ds_current">${page.label}</span>
-                <#else>
-                    <a class="ds_pagination__link" href="${page.url}">
+                    <a aria-label="Page ${page.label}" aria-current="page" class="ds_pagination__link  ds_current" href="${page.url}">
                         <span class="ds_pagination__link-label">${page.label}</span>
                     </a>
-                </#if>
+                <#else>
+                    <a aria-label="Page ${page.label}" class="ds_pagination__link" href="${page.url}">
+                        <span class="ds_pagination__link-label">${page.label}</span>
+                    </a>
+                </#if>    
             </li>
         </#list>
 
@@ -157,13 +159,13 @@
                 <span class="ds_pagination__link  ds_pagination__link--ellipsis">&hellip;</span>
             </li>
             <li class="ds_pagination__item">
-                <a class="ds_pagination__link" href="${pagination.last.url}">${pagination.last.label}</a>
+                <a aria-label="Last page, page ${pagination.last.label}" class="ds_pagination__link" href="${pagination.last.url}">${pagination.last.label}</a>
             </li>
         </#if>
 
         <#if pagination.next??>
             <li class="ds_pagination__item">
-                <a class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pagination.next.url}">
+                <a aria-label="Next page" class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pagination.next.url}">
                     <span class="ds_pagination__link-label">${pagination.next.label}</span>
                     <svg class="ds_icon" aria-hidden="true" role="img">
                         <use href="${iconspath}#chevron_right"></use>
