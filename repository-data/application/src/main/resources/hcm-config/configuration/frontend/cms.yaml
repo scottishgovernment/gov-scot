@@ -14,9 +14,11 @@ definitions:
       list.page.size: '50'
     /hippo:configuration/hippo:frontend/cms/cms-services/assetValidationService:
       max.file.size: 25M
-      extensions.allowed: ['*.csv', '*.doc', '*.docx', '*.docm', '*.gif', '*.html', '*.htm', '*.jpg', '*.jpeg', '*.json',
-                           '*.kml', '*.kmz', '*.md', '*.msg', '*.odt', '*.ods', '*.odp', '*.pdf', '*.png', '*.ppt',
-                           '*.pptm','*.pps','*.pptx','*.ppsx','*.rtf','*.txt','*.xsd','*.xml','*.xls','*.xlsm','*.xlsx']
+      extensions.allowed: ['*.csv', '*.doc', '*.docx', '*.docm',
+                           '*.html', '*.jpg', '*.msg', '*.ods', '*.pdf', '*.png',
+                           '*.ppt', '*.pptm', '*.pptx', '*.rtf', '*.txt',
+                           '*.xls', '*.xlsb', '*.xlsm', '*.xlsx'
+                           '*.xlt', '*.xltx', '*.xml', '*.xsd']
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcover:
       jcr:primaryType: frontend:pluginconfig
       compression: 0.8
