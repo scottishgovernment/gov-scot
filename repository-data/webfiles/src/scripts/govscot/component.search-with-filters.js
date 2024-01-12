@@ -233,6 +233,8 @@ class SearchWithFilters {
                     window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
                 }
                 this.isChangingPage = false;
+
+                window.DS.tracking.init(this.resultsContainer);
             })
             .catch(error => {
                 window.location.search = newQueryString;
