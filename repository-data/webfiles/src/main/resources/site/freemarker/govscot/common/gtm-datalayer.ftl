@@ -1,5 +1,5 @@
 <#ftl output_format="HTML">
-<#include "../../include/imports.ftl">
+
 <#if document??>
     <#if !dateCreated??><#assign dateCreated = document.getSingleProperty('hippostdpubwf:creationDate')/></#if>
     <#if !lastUpdated??><#assign lastUpdated = document.getSingleProperty('hippostdpubwf:lastModificationDate')/></#if>
@@ -8,7 +8,7 @@
         <#assign reportingTags = document.getMultipleProperty('govscot:reportingTags')/>
     </#if>
 
-    <@hst.headContribution category="googleTagManagerDataLayer">
+    <@hst.headContribution category="dataLayer">
     <script id="gtm-datalayer"
         src='<@hst.webfile path="assets/scripts/datalayer.js"/>'
         <#if document.responsibleRole??>data-role="<#if document.responsibleRole?is_sequence><#list document.responsibleRole as item>${item.title?js_string}<#sep>|</#sep></#list><#else>${document.responsibleRole.title?js_string}</#if>"</#if>
