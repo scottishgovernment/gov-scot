@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: c3facb89-8cf9-4659-a668-bd476128f936
+          jcr:uuid: ae4816d6-b070-4655-9c2f-27b68099af58
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -108,7 +108,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: d6c8bbd6-6d69-4224-b676-f7aadf889167
+          jcr:uuid: 49360c76-2e6b-4be4-821d-58daaa9449c8
           hippostdpubwf:lastModificationDate: 2018-04-12T15:41:01.916+01:00
           hippostdpubwf:creationDate: 2018-04-12T15:41:01.916+01:00
           govscot:speechDeliveredBy: ''
@@ -317,7 +317,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
-              nodetypes: ['govscot:Topic', 'govscot:Issue', 'govscit:DynamicIssue']
+              nodetypes: ['govscot:Topic', 'govscot:Issue', 'govscot:DynamicIssue']
           /responsibleRole:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible role
