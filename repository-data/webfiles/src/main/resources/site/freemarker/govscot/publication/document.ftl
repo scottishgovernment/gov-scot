@@ -130,5 +130,5 @@
         <link rel="canonical" href="https://www.gov.scot${canonicalitem?replace("^/site/", "/", "r")}documents/"/>
     </@hst.headContribution>
 
-    <#include "common/gtm-datalayer.ftl"/>
+    <#include "../common/gtm-datalayer.ftl"/>
 </#if>
