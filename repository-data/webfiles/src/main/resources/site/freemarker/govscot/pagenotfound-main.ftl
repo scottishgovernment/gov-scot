@@ -3,15 +3,13 @@
 
 <#-- @ftlvariable name="archiveUrl" type="java.lang.String" -->
 <#if document??>
+<#assign pagetitle><#if archiveUrl??>${document.archiveTitle}<#else>${document.title}</#if></#assign>
+
 <div class="ds_wrapper">
     <main id="main-content" class="ds_layout  ds_layout--article">
         <div class="ds_layout__header">
             <header class="ds_page-header">
-                <#if archiveUrl??>
-                    <h1 class="ds_page-header__title">${document.archiveTitle}</h1>
-                <#else>
-                    <h1 class="ds_page-header__title">${document.title}</h1>
-                </#if>
+                <h1 class="ds_page-header__title">${pagetitle}</h1>
             </header>
         </div>
 
@@ -34,7 +32,7 @@
 </div>
 
 <@hst.headContribution category="pageTitle">
-    <title>${document.title} - gov.scot</title>
+    <title>${pagetitle} - gov.scot</title>
 </@hst.headContribution>
 <@hst.headContribution>
     <meta name="description" content="${document.metaDescription}"/>
