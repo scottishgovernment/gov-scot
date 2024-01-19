@@ -38,10 +38,6 @@
     <title>${document.title} - gov.scot</title>
 </@hst.headContribution>
 
-<@hst.headContribution>
-    <meta name="description" content="${document.metaDescription}"/>
-</@hst.headContribution>
-
 </#if>
 
 <@hst.headContribution category="footerScripts">

@@ -1,0 +1,137 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/SearchResultsPage:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: 372bd139-d326-4624-9a12-14f78ca01953
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 02af1f37-9074-4731-b6ac-264bd78c4896
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: 11d3453f-b47a-4bd6-849f-bdff4350b46d
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /title:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:title
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required]
+          /content:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:content
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /noResultsMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:noResultsMessage
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /blankSearchQueryMessage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:blankSearchQueryMessage
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:SearchResultsPage
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          jcr:mixinTypes: ['mix:referenceable']
+          govscot:title: ''
+          jcr:uuid: df830726-8102-44be-a24f-19e612ae80d2
+          hippostdpubwf:lastModificationDate: 2024-01-18T12:51:03.723Z
+          hippostdpubwf:creationDate: 2024-01-18T12:51:03.723Z
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:noResultsMessage:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:blankSearchQueryMessage:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /title:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: title
+            hint: Title for the search results page
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /content:
+            jcr:primaryType: frontend:plugin
+            caption: Content
+            field: content
+            hint: Content that should appear before the search results.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /noResultsMessage:
+            jcr:primaryType: frontend:plugin
+            caption: No results message
+            field: noResultsMessage
+            hint: Content that is shown if no results are found
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /blankSearchQueryMessage:
+            jcr:primaryType: frontend:plugin
+            caption: Blank search query message
+            field: blankSearchQueryMessage
+            hint: Content that is shown is no search term has been supplied
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              ckeditor.config.appended.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"bidi\"\t}],\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
+                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
+                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
+                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
+                : \"mygov\"\t}, {\t\t\"name\": \"bidi\"\t}],\t\"disallowedContent\"\
+                : \"*[style]{*}\",\t\"extraPlugins\": \"language,youtube_enablejsapi,dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
+                ,\t\"contentsCss\": [\t\t\"ckeditor/hippocontents.css\",\t\t\"ckeditor/ckeditorstyle.css\"\
+                \t],\t\"youtube_responsive\": true,\t\"youtube_privacy\": true,\t\"\
+                youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\", \"\
+                txtEmbed\", \"chkOlderCode\"],\t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]\"\
+                ,\t\"language_list\": [\t\t\"en:English\",\t\t\"gd:Gaelic (Scottish)\"\
+                ,\t\t\"ru:Russian\",\t\t\"uk:Ukrainian\"\t]}"
