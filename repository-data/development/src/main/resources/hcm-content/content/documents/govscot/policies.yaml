@@ -3,100 +3,110 @@
   jcr:mixinTypes: ['hippo:named', 'mix:versionable']
   jcr:uuid: 28dad370-f337-4b2f-b8a0-1bbafaa57a63
   hippo:name: Policies
-  hippostd:foldertype: [new-policy-folder]
+  hippostd:foldertype: [new-policy-folder, new-SearchResultsPage-document]
   /index:
     jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
-    jcr:uuid: 60bb1b0c-a313-4b35-b88e-9920b589061a
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 029b0651-c8de-4ccd-b097-0dcc09b1370f
     hippo:name: Policies
+    hippo:versionHistory: b02f8640-9021-44ef-98cb-6dc5aaaa4ea5
     /index[1]:
-      jcr:primaryType: govscot:SimpleContent
+      jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: ca6ce09e-156d-4803-b504-09bb5d6a3b77
-      govscot:metaDescription: Scottish Government action to improve the lives of
-        the people of Scotland. Use the filters to show results that match your interests.
-      govscot:rubricId: GOV-87
-      govscot:seoTitle: Policies
-      govscot:summary: Scottish Government action to improve the lives of the people
-        of Scotland. Use the filters to show results that match your interests.
-      govscot:title: Policies
-      hippo:availability: [live]
-      hippo:name: Policies
-      hippostd:state: published
-      hippostd:tags: [policy]
-      hippostdpubwf:createdBy: build.api@mygov.scot
-      hippostdpubwf:creationDate: 2015-10-08T11:53:22+01:00
-      hippostdpubwf:lastModificationDate: 2018-09-11T18:50:42.218+01:00
-      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
-      hippostdpubwf:publicationDate: 2018-09-11T18:50:45.793+01:00
-      hippotranslation:id: fcf5aed5-e2f4-4248-b192-ea9dea71c7b6
-      hippotranslation:locale: en
-      /govscot:content:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:notes:
-        jcr:primaryType: hippostd:html
-        hippostd:content: <p>Not all content has moved here yet. If you can't find
-          what you're looking for, visit our topics page to see where information
-          can be located.</p>
-    /index[2]:
-      jcr:primaryType: govscot:SimpleContent
-      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
-      jcr:uuid: 09d7e022-4fb5-416f-bd3f-3d3ee33049ea
-      govscot:metaDescription: Scottish Government action to improve the lives of
-        the people of Scotland. Use the filters to show results that match your interests.
-      govscot:rubricId: GOV-87
-      govscot:seoTitle: Policies
-      govscot:summary: Scottish Government action to improve the lives of the people
-        of Scotland. Use the filters to show results that match your interests.
-      govscot:title: Policies
-      hippo:availability: [preview]
-      hippo:name: Policies
-      hippostd:state: unpublished
-      hippostd:tags: [policy]
-      hippostdpubwf:createdBy: build.api@mygov.scot
-      hippostdpubwf:creationDate: 2015-10-08T11:53:22+01:00
-      hippostdpubwf:lastModificationDate: 2018-09-11T18:50:42.218+01:00
-      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
-      hippotranslation:id: fcf5aed5-e2f4-4248-b192-ea9dea71c7b6
-      hippotranslation:locale: en
-      /govscot:content:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:notes:
-        jcr:primaryType: hippostd:html
-        hippostd:content: <p>Not all content has moved here yet. If you can't find
-          what you're looking for, visit our topics page to see where information
-          can be located.</p>
-    /index[3]:
-      jcr:primaryType: govscot:SimpleContent
-      jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: ae2ed145-2297-48c8-b96c-563f682aed77
-      govscot:metaDescription: Scottish Government action to improve the lives of
-        the people of Scotland. Use the filters to show results that match your interests.
-      govscot:rubricId: GOV-87
-      govscot:seoTitle: Policies
-      govscot:summary: Scottish Government action to improve the lives of the people
-        of Scotland. Use the filters to show results that match your interests.
+      jcr:uuid: e7c53b3b-3ae9-4461-9cbb-bf28a63be652
       govscot:title: Policies
       hippo:availability: []
-      hippo:name: Policies
+      hippostd:retainable: false
       hippostd:state: draft
-      hippostd:tags: [policy]
-      hippostdpubwf:createdBy: build.api@mygov.scot
-      hippostdpubwf:creationDate: 2015-10-08T11:53:22+01:00
-      hippostdpubwf:lastModificationDate: 2018-09-11T18:50:26.834+01:00
-      hippostdpubwf:lastModifiedBy: jennifer.ianson@gov.scot
-      hippotranslation:id: fcf5aed5-e2f4-4248-b192-ea9dea71c7b6
-      hippotranslation:locale: en
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-26T16:15:20.061Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:25.652Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: fb39a310-c0d0-49aa-89f4-8cdc744e72ef
+      hippotranslation:locale: document-type-locale
       /govscot:content:
         jcr:primaryType: hippostd:html
         hippostd:content: ''
-      /govscot:notes:
+      /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>Not all content has moved here yet. If you can't find
-          what you're looking for, visit our topics page to see where information
-          can be located.</p>
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /index[2]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 9f17d12f-8041-4d0d-b463-7a1f8da7773b
+      govscot:title: Policies
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-26T16:15:20.061Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:45:58.568Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: fb39a310-c0d0-49aa-89f4-8cdc744e72ef
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /index[3]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 560fb0d7-2ddc-40e0-b386-9f84477be187
+      govscot:title: Policies
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-26T16:15:20.061Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:45:58.568Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-01-30T10:46:00.265Z
+      hippotranslation:id: fb39a310-c0d0-49aa-89f4-8cdc744e72ef
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
   /access-to-justice:
     jcr:primaryType: hippostd:folder
     jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']

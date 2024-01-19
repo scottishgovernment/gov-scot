@@ -30,69 +30,83 @@
         <h2 class="visually-hidden">Search results</h2>
 
         <div class="ds_search-results__count">
-            <#if hasActiveParameters == true>
-                <p aria-live="polite" class="js-search-results-count">
-                    Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
+            <#if pageable.total = 0>
+                <@hst.html hippohtml=document.noResultsMessage/>
+                    <button class="gov-clear-filters-button  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
+                        Clear all filters
+                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
+                    </button>
 
-                    <#if parameters['term']??>
-                        <#list parameters['term'] as nested>
-                            <#assign term = nested/>
-                        </#list>
-
-                        <#if term?has_content>
-                            containing <b>${term}</b>
-                        </#if>
-                    </#if>
-
-                    <#if parameters['begin']??>
-                        <#list parameters['begin'] as nested>
-                            <#assign begin = nested/>
-                        </#list>
-
-                        <#if begin?has_content>
-                            from <b>${begin}</b>
-                        </#if>
-                    </#if>
-
-                    <#if parameters['end']??>
-                        <#list parameters['end'] as nested>
-                            <#assign end = nested/>
-                        </#list>
-
-                        <#if end?has_content>
-                            to <b>${end}</b>
-                        </#if>
-                    </#if>
-
-                    <#if parameters['topics']??>
-                        about
-                        <#list parameters['topics'] as nested>
-                            <b>${nested}</b>
-                            <#sep>or</#sep>
-                        </#list>
-                    </#if>
-
-                    <#if parameters['publicationTypes']??>
-                        of type
-                        <#list parameters['publicationTypes'] as nested>
-                            <b>${publicationTypes[nested]}</b>
-                            <#sep>or</#sep>
-                        </#list>
-                    </#if>
-                </p>
-
-                <button class="gov-clear-filters-button  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
-                    Clear all filters
-                    <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
-                </button>
-
-                <a href="." class="gov-clear-filters-link  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
-                    Clear all filters
-                    <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
-                </a>
+                    <a href="." class="gov-clear-filters-link  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
+                        Clear all filters
+                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
+                    </a>
             <#else>
-                <p>Showing all <b>${pageable.total}</b> ${searchTermPlural}</p>
+                <#if hasActiveParameters == true>
+                    <p aria-live="polite" class="js-search-results-count">
+                        Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
+
+                        <#if parameters['term']??>
+                            <#list parameters['term'] as nested>
+                                <#assign term = nested/>
+                            </#list>
+
+                            <#if term?has_content>
+                                containing <b>${term}</b>
+                            </#if>
+                        </#if>
+
+                        <#if parameters['begin']??>
+                            <#list parameters['begin'] as nested>
+                                <#assign begin = nested/>
+                            </#list>
+
+                            <#if begin?has_content>
+                                from <b>${begin}</b>
+                            </#if>
+                        </#if>
+
+                        <#if parameters['end']??>
+                            <#list parameters['end'] as nested>
+                                <#assign end = nested/>
+                            </#list>
+
+                            <#if end?has_content>
+                                to <b>${end}</b>
+                            </#if>
+                        </#if>
+
+                        <#if parameters['topics']??>
+                            about
+                            <#list parameters['topics'] as nested>
+                                <b>${nested}</b>
+                                <#sep>or</#sep>
+                            </#list>
+                        </#if>
+
+                        <#if parameters['publicationTypes']??>
+                            of type
+                            <#list parameters['publicationTypes'] as nested>
+                                <b>${publicationTypes[nested]}</b>
+                                <#sep>or</#sep>
+                            </#list>
+                        </#if>
+                    </p>
+
+                    <button class="gov-clear-filters-button  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
+                        Clear all filters
+                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
+                    </button>
+
+                    <a href="." class="gov-clear-filters-link  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
+                        Clear all filters
+                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
+                    </a>
+                <#else>
+                    <p>Showing all <b>${pageable.total}</b> ${searchTermPlural}</p>
+                </#if>
             </#if>
+
         </div>
     </header>
 

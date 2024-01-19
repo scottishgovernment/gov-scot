@@ -3,95 +3,113 @@
   jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 9c8999b0-1438-487d-9c32-b925a170281e
   hippo:name: Search
-  hippostd:foldertype: []
+  hippostd:foldertype: [new-SearchResultsPage-document]
   /index:
     jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
-    jcr:uuid: 4e73f06a-c26e-401d-b111-8c46a6e35b96
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 9783d712-d3b4-4d41-8ce8-ac2a99fae902
     hippo:name: Search results
-    hippo:versionHistory: 0aa312a3-b89e-4567-8904-dc4c2ada5a14
+    hippo:versionHistory: 68a9c058-052a-46f8-b175-f6c172a7e68b
     /index[1]:
-      jcr:primaryType: govscot:SimpleContent
+      jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: 72892eb2-8d47-4fa5-a18b-1150506b2ccb
-      govscot:metaDescription: Search results page for the Scottish Government website
-        www.gov.scot.
-      govscot:reportingTags: []
-      govscot:rubricId: GOV-8
-      govscot:seoTitle: Search results
-      govscot:summary: Search results page for the Scottish Government website www.gov.scot.
-      govscot:title: Search results
-      hippo:availability: [live]
-      hippo:name: Search results
-      hippostd:state: published
-      hippostd:tags: []
-      hippostdpubwf:createdBy: build.api@mygov.scot
-      hippostdpubwf:creationDate: 2015-06-16T10:51:14+01:00
-      hippostdpubwf:lastModificationDate: 2021-08-23T11:16:59.359+01:00
-      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
-      hippostdpubwf:publicationDate: 2021-08-23T11:17:01.406+01:00
-      hippotranslation:id: 2c4a3bba-7d80-42ab-b209-2644d8ea2b2e
-      hippotranslation:locale: en
-      /govscot:content:
-        jcr:primaryType: hippostd:html
-        hippostd:content: <p>See the&nbsp;<a href="https://www.gov.scot/coronavirus-covid-19/">coronavirus
-          section</a>&nbsp;for information and updates on COVID-19.</p>
-      /govscot:notes:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
-    /index[2]:
-      jcr:primaryType: govscot:SimpleContent
-      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
-      jcr:uuid: 5cd5881b-b471-4358-ba79-db1c0d51bfbd
-      govscot:metaDescription: Search results page for the Scottish Government website
-        www.gov.scot.
-      govscot:reportingTags: []
-      govscot:rubricId: GOV-8
-      govscot:seoTitle: Search results
-      govscot:summary: Search results page for the Scottish Government website www.gov.scot.
-      govscot:title: Search results
-      hippo:availability: [preview]
-      hippo:name: Search results
-      hippostd:state: unpublished
-      hippostd:tags: []
-      hippostdpubwf:createdBy: build.api@mygov.scot
-      hippostdpubwf:creationDate: 2015-06-16T10:51:14+01:00
-      hippostdpubwf:lastModificationDate: 2021-08-23T11:16:59.359+01:00
-      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
-      hippotranslation:id: 2c4a3bba-7d80-42ab-b209-2644d8ea2b2e
-      hippotranslation:locale: en
-      /govscot:content:
-        jcr:primaryType: hippostd:html
-        hippostd:content: <p>See the&nbsp;<a href="https://www.gov.scot/coronavirus-covid-19/">coronavirus
-          section</a>&nbsp;for information and updates on COVID-19.</p>
-      /govscot:notes:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
-    /index[3]:
-      jcr:primaryType: govscot:SimpleContent
-      jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: ffd1c4e5-84d4-4313-8d6f-a7ed3a3e40a6
-      govscot:metaDescription: Search results page for the Scottish Government website
-        www.gov.scot.
-      govscot:reportingTags: []
-      govscot:rubricId: GOV-8
-      govscot:seoTitle: Search results
-      govscot:summary: Search results page for the Scottish Government website www.gov.scot.
-      govscot:title: Search results
+      jcr:uuid: 7ce89f63-18d5-4277-9127-551c94597824
+      govscot:title: Search title
       hippo:availability: []
-      hippo:name: Search results
+      hippostd:retainable: false
       hippostd:state: draft
-      hippostd:tags: []
-      hippostdpubwf:createdBy: build.api@mygov.scot
-      hippostdpubwf:creationDate: 2015-06-16T10:51:14+01:00
-      hippostdpubwf:lastModificationDate: 2021-08-23T11:16:53.208+01:00
-      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
-      hippotranslation:id: 2c4a3bba-7d80-42ab-b209-2644d8ea2b2e
-      hippotranslation:locale: en
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:29.202Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
+      hippotranslation:locale: document-type-locale
       /govscot:content:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>See the&nbsp;<a href="https://www.gov.scot/coronavirus-covid-19/">coronavirus
-          section</a>&nbsp;for information and updates on COVID-19.</p>
-      /govscot:notes:
+        hippostd:content: <p>Content in here</p>
+      /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+
+          <p>&nbsp;</p>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /index[2]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: e497d4e2-905f-4f58-9f4f-10954937c56b
+      govscot:title: Search title
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:43.362Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Content in here</p>
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+
+          <p>&nbsp;</p>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /index[3]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: daf55a04-cc49-4341-b9ca-e67020f00aa4
+      govscot:title: Search title
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:43.362Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-01-30T10:42:45.399Z
+      hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Content in here</p>
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+
+          <p>&nbsp;</p>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>

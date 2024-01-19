@@ -142,6 +142,9 @@
 [govscot:Role] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:SearchResultsPage] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:SpeechOrStatement] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -150,7 +153,13 @@
 [govscot:analytics] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:featuregriditem] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:imageandtext] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:navigationcardcontentblock] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
 [govscot:pageheading] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
@@ -167,8 +176,3 @@
 [govscot:video] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
-[govscot:featuregriditem] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
-  orderable
-
-[govscot:navigationcardcontentblock] > hippostd:relaxed, hippotranslation:translated, govscot:basedocument
-  orderable

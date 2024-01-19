@@ -32,14 +32,17 @@
         <h2 class="visually-hidden">Search</h2>
 
         <div id="no-search-results" class="ds_no-search-results">
-            <p><strong>There are no matching results.</strong></p>
+                <@hst.html hippohtml=document.noResultsMessage/>
+        </div>
+    </#if>
 
-            <p>Improve your search results by:</p>
-            <ul>
-                <li>double-checking your spelling</li>
-                <li>using fewer keywords</li>
-                <li>searching for something less specific</li>
-            </ul>
+    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching == -1 &&
+        !(response.curator.simpleHtmlExhibits)?has_content &&
+        !(response.curator.advertExhibits)?has_content>
+        <h2 class="visually-hidden">Search</h2>
+        <div id="no-search-results" class="ds_no-search-results">
+            <@hst.html hippohtml=document.blankSearchQueryMessage/>
         </div>
     </#if>
 
@@ -86,6 +89,10 @@
     </#if>
 
 <#if pagination??>
+    <#if ((response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching &gt; 0 ) ||
+        (response.curator.simpleHtmlExhibits)?has_content ||
+        (response.curator.advertExhibits)?has_content > 
 <ol start="${response.resultPacket.resultsSummary.currStart?c}" id="search-results-list" class="ds_search-results__list" data-total="${response.resultPacket.resultsSummary.totalMatching?c}">
     <#if pagination.currentPageIndex = 1>
         <#list response.curator.advertExhibits as exhibit>
@@ -114,6 +121,7 @@
         </#list>
     </#if>
 </ol>
+    </#if>
 
 <#if pagination.pages?has_content>
 <nav id="pagination" class="ds_pagination" aria-label="Search result pages">

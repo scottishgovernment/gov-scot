@@ -1,17 +1,16 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 
-<#-- @ftlvariable name="index" type="scot.gov.www.beans.SimpleContent" -->
-<#if index??>
+<#if document??>
     <div class="ds_wrapper">
         <main id="main-content" class="ds_layout  gov_layout--filter-search">
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <h1 class="ds_page-header__title">${index.title}</h1>
+                    <h1 class="ds_page-header__title">${document.title}</h1>
                 </header>
 
-                <#if index.content.content?has_content>
-                    <@hst.html hippohtml=index.content/>
+                <#if document.content?has_content>
+                    <@hst.html hippohtml=document.content/>
                 </#if>
             </div>
 
@@ -37,25 +36,18 @@
     <script nomodule="true" src="<@hst.webfile path="/assets/scripts/filtered-list-page.es5.js"/>"></script>
 </@hst.headContribution>
 
-<#if index??>
-    <#if index.title?has_content>
+<#if document??>
+    <#if document.title?has_content>
     <@hst.headContribution category="pageTitle">
-        <title>${index.title} - gov.scot</title>
+        <title>${document.title} - gov.scot</title>
     </@hst.headContribution>
     </#if>
 
-    <#if index.metaDescription?has_content>
-    <@hst.headContribution>
-        <meta name="description" content="${index.metaDescription}"/>
-    </@hst.headContribution>
-    </#if>
-
-    <#assign document = index/>
     <#include "../common/metadata.social.ftl"/>
 
-    <@hst.link var="canonicalitem" hippobean=index canonical=true/>
+    <@hst.link var="canonicalitem" hippobean=document canonical=true/>
 
-    <#assign canonicalitem = canonicalitem?remove_ending("index/")/>
+    <#assign canonicalitem = canonicalitem?remove_ending("document/")/>
 
     <#include "../common/canonical.ftl" />
     <#include "../common/gtm-datalayer.ftl"/>

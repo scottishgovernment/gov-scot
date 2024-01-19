@@ -1,11 +1,9 @@
 package scot.gov.www.components;
 
-import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import scot.gov.www.beans.SimpleContent;
+import org.onehippo.cms7.essentials.components.EssentialsContentComponent;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -16,9 +14,7 @@ import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
 /**
  * Created by z441571 on 09/04/2018.
  */
-public class ResultsPageContentComponent extends BaseHstComponent {
-
-    private static final String INDEX = "index";
+public class ResultsPageContentComponent extends EssentialsContentComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request,
@@ -27,18 +23,8 @@ public class ResultsPageContentComponent extends BaseHstComponent {
 
         Map<String, Set<String>> params = sanitiseParameterMap(request,
             request.getRequestContext().getServletRequest().getParameterMap());
-
         request.setAttribute("parameters", params);
         request.setAttribute("isSearchpage", true);
-
-        HippoBean bean = request.getRequestContext().getContentBean();
-        SimpleContent index = bean.getBean(INDEX, SimpleContent.class);
-
-        if (index != null){
-            request.setAttribute(INDEX, index);
-        } else {
-            request.setAttribute(INDEX, bean);
-        }
     }
 
     private Map<String, Set<String>> sanitiseParameterMap(HstRequest request, Map<String, String[]> parameterMap) {
