@@ -55,7 +55,7 @@
                     <label class="ds_label" for="filters-search-term">Search</label>
 
                     <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
-                        <input class="ds_input" type="text" id="filters-search-term" maxlength="160" value="${term}" />
+                        <input class="ds_input" type="text" name="term" id="filters-search-term" maxlength="160" value="${term}" />
                         <button class="ds_button  js-filter-search-submit" type="submit" title="Submit" id="filters-search-submit" >
                             <span class="visually-hidden">Search</span>
                             <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
@@ -73,7 +73,7 @@
                             <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
                             <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                             <div class="ds_input__wrapper">
-                                <input id="date-from" class="ds_input" type="text" value="${begin}" data-form="textinput-date-from" />
+                                <input id="date-from" name="begin" class="ds_input" type="text" value="${begin}" data-form="textinput-date-from" />
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                             <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
                             <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                             <div class="ds_input__wrapper">
-                                <input id="date-to" class="ds_input" type="text" value="${end}" data-form="textinput-date-to" />
+                                <input id="date-to" name="end" class="ds_input" type="text" value="${end}" data-form="textinput-date-to" />
                             </div>
                         </div>
                     </div>

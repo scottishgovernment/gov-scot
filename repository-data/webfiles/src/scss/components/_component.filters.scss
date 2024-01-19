@@ -203,3 +203,12 @@ $filters-panel-background: $ds_colour__grey--lighter;
         }
     }
 }
+
+
+html:not(.js-enabled) .gov-clear-filters-button {
+    display: none;
+}
+
+html.js-enabled .gov-clear-filters-link {
+    display: none;
+}
