@@ -9,6 +9,7 @@
     <@hst.headContributions categoryIncludes="dataLayer"/>
     <@hst.headContributions categoryIncludes="googleTagManager"/>
     <@hst.include ref="plausibleanalytics"/>
+    <@hst.include ref="schema-website"/>
     <@hst.headContributions categoryIncludes="pageTitle"/>
     <@hst.headContributions categoryIncludes="schema"/>
 
