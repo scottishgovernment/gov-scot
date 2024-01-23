@@ -80,3 +80,30 @@
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
         hippostd:content: <p>Blank query message</p>
+  /dummy:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 0dbc9713-c21e-4354-baf2-4df90e6318e5
+    /dummy:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 8c6a914f-61b0-475b-a020-7fb6fb71a366
+      govscot:title: ''
+      hippo:availability: []
+      hippostd:holder: admin
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-19T13:35:55.105Z
+      hippostdpubwf:lastModificationDate: 2024-01-19T13:35:55.107Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 2868a6c1-3b24-492c-b67d-478126511091
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
