@@ -3,7 +3,7 @@
   jcr:mixinTypes: ['hippo:named', 'mix:versionable']
   jcr:uuid: 59b8b907-80e7-4ad0-a036-a77b27a0554f
   hippo:name: Publications
-  hippostd:foldertype: [new-document, new-folder]
+  hippostd:foldertype: [new-SearchResultsPage-document]
   /advice-and-guidance:
     jcr:primaryType: hippostd:folder
     jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
@@ -675,3 +675,218 @@
         jcr:mixinTypes: ['mix:versionable']
         jcr:uuid: bfb62545-1813-4851-afa5-df6cff067c18
         hippostd:foldertype: [new-speech-or-statement-folder]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: d6db7ad9-bb61-4a3d-a024-bc182ae2a70b
+    hippo:name: Publications
+    hippo:versionHistory: ef79bd54-01a6-4d6f-b0bf-729e1cacd78d
+    /index[1]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 92b629a5-9e35-4b04-beac-97e4a2380ea1
+      govscot:displayDate: 2024-01-30T10:43:50.009Z
+      govscot:title: Publicaitons
+      hippo:availability: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-26T16:07:16.096Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:49.772Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 1f22d31a-5080-46cf-9257-ed5d6d1bc01a
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /index[2]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 5a54bfc7-7b53-4608-974f-d650d0aff92a
+      govscot:displayDate: 2024-01-30T10:43:50.009Z
+      govscot:title: Publicaitons
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-26T16:07:16.096Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:43:48.140Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 1f22d31a-5080-46cf-9257-ed5d6d1bc01a
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /index[3]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: c0f64021-7f5b-4770-baa1-9c0d367862c7
+      govscot:displayDate: 2024-01-30T10:43:50.009Z
+      govscot:title: Publicaitons
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-26T16:07:16.096Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:43:48.140Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-01-30T10:43:50.009Z
+      hippotranslation:id: 1f22d31a-5080-46cf-9257-ed5d6d1bc01a
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+  /statistics-and-research:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 0c4b8ce4-0a27-4b94-a5f5-289c23f931bc
+    hippo:name: Statistics and research
+    hippo:versionHistory: 43ae04fe-e329-4c80-9232-b65748a9e8bf
+    /statistics-and-research[1]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 5ae98c0c-09b5-44bc-9b8a-247fcd95bfc0
+      govscot:displayDate: 2024-01-30T10:43:36.145Z
+      govscot:title: Statistics and research
+      hippo:availability: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-29T08:55:38.829Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:43:03.600Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 01a4cf5b-5458-4f10-a94c-42c3007b5dcd
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
+          and research in the Scottish Government</a>.&nbsp;</p>
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /statistics-and-research[2]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: badd7a3a-fd4c-419c-b9dd-b183b748fcd8
+      govscot:displayDate: 2024-01-30T10:43:36.145Z
+      govscot:title: Statistics and research
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-29T08:55:38.829Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:43:33.963Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 01a4cf5b-5458-4f10-a94c-42c3007b5dcd
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
+          and research in the Scottish Government</a>.&nbsp;</p>
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>
+    /statistics-and-research[3]:
+      jcr:primaryType: govscot:SearchResultsPage
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: a133cf1e-08d7-42f7-9e48-6fa63b2a2132
+      govscot:displayDate: 2024-01-30T10:43:36.145Z
+      govscot:title: Statistics and research
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2024-01-29T08:55:38.829Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:43:33.963Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-01-30T10:43:36.145Z
+      hippotranslation:id: 01a4cf5b-5458-4f10-a94c-42c3007b5dcd
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
+          and research in the Scottish Government</a>.&nbsp;</p>
+      /govscot:noResultsMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>Enter a search term</p>

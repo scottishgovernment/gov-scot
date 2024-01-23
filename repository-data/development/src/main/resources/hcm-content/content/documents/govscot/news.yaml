@@ -3,7 +3,7 @@
   jcr:mixinTypes: ['hippo:named', 'mix:versionable']
   jcr:uuid: f757c1b9-1457-447c-87a8-9c07bf52f6a9
   hippo:name: News
-  hippostd:foldertype: [new-document, new-folder]
+  hippostd:foldertype: [new-document, new-folder, new-SearchResultsPage-document]
   /2013:
     jcr:primaryType: hippostd:folder
     jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable']
@@ -353,97 +353,109 @@
           /govscot:background:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-  /news:
+  /index:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
-    jcr:uuid: 3abd16dc-8c07-4a63-85c9-494f543e5bef
+    jcr:uuid: 7e872980-0eeb-41ad-9082-d4c8a8305bcc
     hippo:name: News
-    hippo:versionHistory: 5f1eb3aa-3683-46ea-9e8a-597869db54cc
-    /news[1]:
-      jcr:primaryType: govscot:SimpleContent
+    hippo:versionHistory: 6e8c2d0c-1902-4d6f-a958-56b3703e16b1
+    /index[1]:
+      jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: acc0e72f-5aca-42a0-9bcd-c72748af499e
-      govscot:contentitemlanguage: en
-      govscot:metaDescription: News description
-      govscot:reportingTags: []
-      govscot:seoTitle: News title
-      govscot:summary: Summary of news
+      jcr:uuid: ea891776-6b29-4e24-9aaf-a8e4fe9b0555
       govscot:title: News
       hippo:availability: []
       hippostd:retainable: false
       hippostd:state: draft
-      hippostd:tags: []
       hippostdpubwf:createdBy: admin
-      hippostdpubwf:creationDate: 2023-05-17T15:30:10.138+01:00
-      hippostdpubwf:lastModificationDate: 2023-05-17T15:30:10.138+01:00
+      hippostdpubwf:creationDate: 2024-01-26T16:16:43.661Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:00.048Z
       hippostdpubwf:lastModifiedBy: admin
-      hippotranslation:id: a8913652-169a-4b51-a5c7-2684812c8604
+      hippotranslation:id: c9b12a1b-12d2-4fd0-aeb7-042c374fc146
       hippotranslation:locale: document-type-locale
       /govscot:content:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:notes:
+        hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
+          and research in the Scottish Government</a>.&nbsp;</p>
+      /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:responsibilities:
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
-    /news[2]:
-      jcr:primaryType: govscot:SimpleContent
+        hippostd:content: <p>Enter a search term</p>
+    /index[2]:
+      jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
-      jcr:uuid: 9c6bf836-0407-48c0-9c29-1b0714a79331
-      govscot:contentitemlanguage: en
-      govscot:metaDescription: News description
-      govscot:reportingTags: []
-      govscot:seoTitle: News title
-      govscot:summary: Summary of news
+      jcr:uuid: 8297cd20-778b-45e8-9ee1-a94fa89e6ab2
       govscot:title: News
       hippo:availability: [preview]
       hippostd:retainable: false
       hippostd:state: unpublished
-      hippostd:tags: []
       hippostdpubwf:createdBy: admin
-      hippostdpubwf:creationDate: 2023-05-17T15:30:10.138+01:00
-      hippostdpubwf:lastModificationDate: 2023-05-17T15:30:50.443+01:00
+      hippostdpubwf:creationDate: 2024-01-26T16:16:43.661Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:18.756Z
       hippostdpubwf:lastModifiedBy: admin
-      hippotranslation:id: a8913652-169a-4b51-a5c7-2684812c8604
+      hippotranslation:id: c9b12a1b-12d2-4fd0-aeb7-042c374fc146
       hippotranslation:locale: document-type-locale
       /govscot:content:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:notes:
+        hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
+          and research in the Scottish Government</a>.&nbsp;</p>
+      /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:responsibilities:
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
-    /news[3]:
-      jcr:primaryType: govscot:SimpleContent
+        hippostd:content: <p>Enter a search term</p>
+    /index[3]:
+      jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: 8d00e191-f5c7-47c1-983b-7e101520a17b
-      govscot:contentitemlanguage: en
-      govscot:metaDescription: News description
-      govscot:reportingTags: []
-      govscot:seoTitle: News title
-      govscot:summary: Summary of news
+      jcr:uuid: b6424e98-9a05-4a7a-8700-031a80cc5ece
       govscot:title: News
       hippo:availability: [live]
       hippostd:retainable: false
       hippostd:state: published
-      hippostd:tags: []
       hippostdpubwf:createdBy: admin
-      hippostdpubwf:creationDate: 2023-05-17T15:30:10.138+01:00
-      hippostdpubwf:lastModificationDate: 2023-05-17T15:30:50.443+01:00
+      hippostdpubwf:creationDate: 2024-01-26T16:16:43.661Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:18.756Z
       hippostdpubwf:lastModifiedBy: admin
-      hippostdpubwf:publicationDate: 2023-05-17T15:30:53.553+01:00
-      hippotranslation:id: a8913652-169a-4b51-a5c7-2684812c8604
+      hippostdpubwf:publicationDate: 2024-01-30T10:44:20.833Z
+      hippotranslation:id: c9b12a1b-12d2-4fd0-aeb7-042c374fc146
       hippotranslation:locale: document-type-locale
       /govscot:content:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:notes:
+        hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
+          and research in the Scottish Government</a>.&nbsp;</p>
+      /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:responsibilities:
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+      /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"
+        hippostd:content: <p>Enter a search term</p>

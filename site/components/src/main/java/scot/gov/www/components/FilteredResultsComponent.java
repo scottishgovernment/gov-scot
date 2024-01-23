@@ -69,6 +69,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
        paramInfo = getComponentParametersInfo(request);
 
         super.doBeforeRender(request, response);
+        setContentBeanWith404(request, response);
 
         Map<String, Set<String>> params = sanitiseParameterMap(request,
                 request.getRequestContext().getServletRequest().getParameterMap());

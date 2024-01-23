@@ -49,7 +49,7 @@ definitions:
           hst:componentconfigurationid: hst:pages/newspageprgloo
           hst:relativecontentpath: news
           hst:sitemapitemhandlerids: [trailing-slash]
-        /index:
+        /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/newslistpage
           hst:relativecontentpath: ${parent}/index
@@ -229,7 +229,7 @@ definitions:
             hst:componentconfigurationid: hst:pages/policypage
             hst:relativecontentpath: ${parent}/index
             hst:sitemapitemhandlerids: [trailing-slash]
-        /index:
+        /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/policylistpage
           hst:relativecontentpath: ${parent}/index
@@ -325,10 +325,10 @@ definitions:
                   hst:componentconfigurationmappingvalues: ['hst:pages/complexdocumentpage']
                   hst:relativecontentpath: publications/${1}/${2}/${3}/${4}/index
                   hst:sitemapitemhandlerids: [trailing-slash]
-        /index:
+        /_index_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/publicationlistpage
-          hst:relativecontentpath: publications
+          hst:relativecontentpath: ${parent}/index
           hst:sitemapitemhandlerids: [trailing-slash]
       /isbn:
         jcr:primaryType: hst:sitemapitem

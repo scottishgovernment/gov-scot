@@ -9,7 +9,7 @@
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
     jcr:uuid: 9783d712-d3b4-4d41-8ce8-ac2a99fae902
     hippo:name: Search results
-    hippo:versionHistory: 271791e5-a5c3-4a4d-a3d7-029db32239e5
+    hippo:versionHistory: 68a9c058-052a-46f8-b175-f6c172a7e68b
     /index[1]:
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
@@ -20,7 +20,7 @@
       hippostd:state: draft
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
-      hippostdpubwf:lastModificationDate: 2024-01-18T16:52:59.564Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:29.202Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
       hippotranslation:locale: document-type-locale
@@ -29,10 +29,21 @@
         hippostd:content: <p>Content in here</p>
       /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>No results message</p>
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+
+          <p>&nbsp;</p>
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>Blank query message</p>
+        hippostd:content: <p>Enter a search term</p>
     /index[2]:
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -43,7 +54,7 @@
       hippostd:state: unpublished
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
-      hippostdpubwf:lastModificationDate: 2024-01-18T16:53:27.437Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:43.362Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
       hippotranslation:locale: document-type-locale
@@ -52,10 +63,21 @@
         hippostd:content: <p>Content in here</p>
       /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>No results message</p>
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+
+          <p>&nbsp;</p>
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>Blank query message</p>
+        hippostd:content: <p>Enter a search term</p>
     /index[3]:
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
@@ -66,9 +88,9 @@
       hippostd:state: published
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
-      hippostdpubwf:lastModificationDate: 2024-01-18T16:53:27.437Z
+      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:43.362Z
       hippostdpubwf:lastModifiedBy: admin
-      hippostdpubwf:publicationDate: 2024-01-18T16:53:29.520Z
+      hippostdpubwf:publicationDate: 2024-01-30T10:42:45.399Z
       hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
       hippotranslation:locale: document-type-locale
       /govscot:content:
@@ -76,34 +98,18 @@
         hippostd:content: <p>Content in here</p>
       /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>No results message</p>
+        hippostd:content: |-
+          <p><strong>There are no matching results.</strong></p>
+
+          <p>Improve your search results by:</p>
+
+          <ul>
+           <li>double-checking your spelling</li>
+           <li>using fewer keywords</li>
+           <li>searching for something less specific</li>
+          </ul>
+
+          <p>&nbsp;</p>
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
-        hippostd:content: <p>Blank query message</p>
-  /dummy:
-    jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['mix:referenceable']
-    jcr:uuid: 0dbc9713-c21e-4354-baf2-4df90e6318e5
-    /dummy:
-      jcr:primaryType: govscot:SearchResultsPage
-      jcr:mixinTypes: ['mix:referenceable']
-      jcr:uuid: 8c6a914f-61b0-475b-a020-7fb6fb71a366
-      govscot:title: ''
-      hippo:availability: []
-      hippostd:holder: admin
-      hippostd:state: draft
-      hippostdpubwf:createdBy: admin
-      hippostdpubwf:creationDate: 2024-01-19T13:35:55.105Z
-      hippostdpubwf:lastModificationDate: 2024-01-19T13:35:55.107Z
-      hippostdpubwf:lastModifiedBy: admin
-      hippotranslation:id: 2868a6c1-3b24-492c-b67d-478126511091
-      hippotranslation:locale: document-type-locale
-      /govscot:content:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:noResultsMessage:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
-      /govscot:blankSearchQueryMessage:
-        jcr:primaryType: hippostd:html
-        hippostd:content: ''
+        hippostd:content: <p>Enter a search term</p>
