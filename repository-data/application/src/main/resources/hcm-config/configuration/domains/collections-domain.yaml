@@ -33,3 +33,11 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: embargo:document
+      /embargo:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [collection-authors, collection-editors]
+        hipposys:role: embargo

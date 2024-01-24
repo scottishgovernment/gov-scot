@@ -6,8 +6,7 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [
-          cmsadmin, useradmin,
+        value: [cmsadmin, useradmin,
           collection-authors, collection-editors, core-content-authors, core-content-editors,
           foi-authors, foi-editors, group-authors, group-editors, news-editors, policy-authors, policy-editors,
           publication-authors, publication-editors, statistics-authors, statistics-editors,

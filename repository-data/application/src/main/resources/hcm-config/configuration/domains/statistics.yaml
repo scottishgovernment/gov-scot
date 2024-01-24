@@ -56,3 +56,13 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: embargo:handle
+      /embargo:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [embargo-children-and-families-analysis, embargo-energy-statistics,
+                  embargo-gdp, embargo-general-labour-market, embargo-labour-market–lfs-aps,
+                  embargo-public-sector-employment, embargo-social-security-analysis, embargo-trade-statistics]
+        hipposys:role: embargo
