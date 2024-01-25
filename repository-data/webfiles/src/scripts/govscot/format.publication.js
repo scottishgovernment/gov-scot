@@ -42,16 +42,14 @@ const publicationPage = {
         window.onpopstate = (event) => {
             const url = event.target.window.location.href;
 
-            if (event.state && url !== window.location.href && this.pages[url]) {
-                this.loadSubPageHtml(url)
-                    .then(value => {
-                        this.populatePage(value);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        window.location = event.target.href;
-                    });
-            }
+            this.loadSubPageHtml(url)
+                .then(value => {
+                    this.populatePage(value);
+                })
+                .catch(error => {
+                    console.log(error);
+                    window.location = event.target.href;
+                });
         };
     },
 
