@@ -106,7 +106,7 @@ class SearchWithFilters {
             });
         });
 
-        document.querySelector('.js-filter-search-submit').addEventListener('click', (event) => {
+        document.querySelector('#filters').addEventListener('submit', (event) => {
             event.preventDefault();
             this.submitSearch();
         });
@@ -131,7 +131,6 @@ class SearchWithFilters {
                 this.clearErrors();
 
                 delete this.searchParams.page;
-
                 this.submitSearch();
             }
         });
