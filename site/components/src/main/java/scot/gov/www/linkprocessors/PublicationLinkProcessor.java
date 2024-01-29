@@ -6,6 +6,9 @@ import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.sluglookup.PathForSlugSource;
+import scot.gov.publishing.sluglookup.PathSourceFactory;
+import scot.gov.www.linkprocessors.pathlookup.*;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -17,9 +20,13 @@ import static org.apache.commons.lang3.ArrayUtils.removeElements;
 
 public class PublicationLinkProcessor extends SlugProcessor {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PublicationLinkProcessor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SlugProcessor.class);
 
     public static final String PUBLICATIONS = "publications/";
+
+    public static final String SLUG = "govscot:slug";
+
+    PathForSlugSource pathSource = PathSourceFactory.withFallback(new QueryPathSource(PUBLICATIONS));
 
     @Override
     protected HstLink doPostProcess(HstLink link) {
@@ -53,12 +60,12 @@ public class PublicationLinkProcessor extends SlugProcessor {
                 LOG.warn("Unable to find publication node for path {}", link.getPath());
                 return null;
             }
-            if (!publicationNode.hasProperty("govscot:slug")) {
+            if (!publicationNode.hasProperty(SLUG)) {
                 LOG.warn("result has no slug property: {}", publicationNode.getPath());
                 return null;
             }
 
-            return publicationNode.getProperty("govscot:slug").getString();
+            return publicationNode.getProperty(SLUG).getString();
         } catch (RepositoryException e) {
             LOG.error("Unable to get the publication slug", e);
             return link.getPathElements()[4];
@@ -83,6 +90,9 @@ public class PublicationLinkProcessor extends SlugProcessor {
     }
 
     private HstLink preProcessPublicationsLink(HstLink link) {
+
+
+
         /**
          * Turn a publication link into a path that the document can be fetched from.
          * Some examples:
@@ -92,32 +102,28 @@ public class PublicationLinkProcessor extends SlugProcessor {
         try {
             // the slug is in element 1 (/publications/slug)
             String slug = link.getPathElements()[1];
-
             // remove /publications/slug and remember any remaining path elements
             String [] remaining = removeElements(link.getPathElements(),
                     link.getPathElements()[0],
                     link.getPathElements()[1]);
 
             //get the publication by the publication slug
-            Node publication = getNodeBySlug(slug, PUBLICATIONS);
-            if(publication == null) {
+            String pubPath = pathSource.get(slug, "govscot", "publications", link.getMount().getType());
+
+            if(pubPath == null) {
+                LOG.info("no publication");
                 link.setNotFound(true);
                 link.setPath("/pagenotfound");
                 return link;
             }
-
-            Node handle = publication.getParent();
-            String pubPath = StringUtils.substringAfter(handle.getPath(), PUBLICATIONS);
 
             if (remaining.length > 0) {
                 // if there is more then one element then remove the 'index' part
                 String lastPathElement = StringUtils.substringAfterLast(pubPath, "/");
                 pubPath = StringUtils.substringBeforeLast(pubPath, lastPathElement);
             }
-
             String escapedRemaining = remaining.length == 0 ? "" : Arrays.stream(remaining).map(Text::escapeIllegalJcr10Chars).collect(joining("/"));
             String path = determinePath(pubPath, escapedRemaining);
-
             if (path == null) {
                 link.setNotFound(true);
                 link.setPath("/pagenotfound");
@@ -132,10 +138,9 @@ public class PublicationLinkProcessor extends SlugProcessor {
     }
 
     String determinePath(String pubPath, String escapedRemaining) throws RepositoryException {
-        String path = String.format("publications/%s%s", pubPath, escapedRemaining);
-        String chapterPath = String.format("publications/%schapters/%s", pubPath, escapedRemaining);
+        String path = String.format("%s%s", pubPath, escapedRemaining);
+        String chapterPath = String.format("%schapters/%s", pubPath, escapedRemaining);
         String stripped = stripAboutAndDownloads(path);
-
         if (anyExist(path, stripped, chapterPath)) {
             return path;
         } else {
@@ -151,7 +156,7 @@ public class PublicationLinkProcessor extends SlugProcessor {
     boolean anyExist(String ...paths) throws RepositoryException {
         Session session = RequestContextProvider.get().getSession();
         for (String path : paths) {
-            String testPath = "/content/documents/govscot/" + path;
+            String testPath = "/content/documents/govscot" + path;
 
             // we test that it is not a folder because we do not want a 200 for /chapters, /pages etc.
             if (session.nodeExists(testPath) && findPublishedNode(session.getNode(testPath).getNodes()) != null) {

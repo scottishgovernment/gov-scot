@@ -1,9 +1,11 @@
 package scot.gov.www.linkprocessors;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.sluglookup.PathForSlugSource;
+import scot.gov.publishing.sluglookup.PathSourceFactory;
+import scot.gov.www.linkprocessors.pathlookup.QueryPathSource;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -13,6 +15,8 @@ public class NewsLinkProcessor extends SlugProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(NewsLinkProcessor.class);
 
     public static final String NEWS = "news/";
+
+    PathForSlugSource pathSource = PathSourceFactory.withFallback(new QueryPathSource(NEWS));
 
     @Override
     protected HstLink doPostProcess(HstLink link) {
@@ -59,16 +63,14 @@ public class NewsLinkProcessor extends SlugProcessor {
     private HstLink preProcessNewsLink(HstLink link) {
         try {
             String slug = link.getPathElements()[link.getPathElements().length - 1];
-            Node newsNode = getNodeBySlug(slug, NEWS);
 
-            if (newsNode == null) {
+            String path = pathSource.get(slug, "govscot", "news", link.getMount().getType());
+
+            if (path == null) {
                 return link;
             }
 
-            Node handle = newsNode.getParent();
-            String newsPath = StringUtils.substringAfter(handle.getPath(), "govscot/");
-
-            link.setPath(newsPath);
+            link.setPath(path);
             return link;
         } catch (RepositoryException e) {
             LOG.warn("Exception trying to process link: {}", link.getPath(), e);

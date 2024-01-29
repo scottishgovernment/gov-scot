@@ -37,9 +37,15 @@ public class HippoUtils {
         return isPublished(variant);
     }
 
-    boolean isPublished(Node node) throws RepositoryException {
-        return "published".equals(node.getProperty(HIPPOSTD_STATE).getString())
-                && contains(node.getProperty("hippo:availability").getValues(), "live");
+    public boolean isPublished(Node node) throws RepositoryException {
+        if (!"published".equals(node.getProperty(HIPPOSTD_STATE).getString())) {
+            return false;
+        }
+
+        if (!node.hasProperty("hippo:availability")) {
+            return false;
+        }
+        return contains(node.getProperty("hippo:availability").getValues(), "live");
     }
 
     public boolean contains(Node node, String property, String value) throws RepositoryException {

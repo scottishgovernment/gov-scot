@@ -459,3 +459,4 @@
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
         hippostd:content: <p>Enter a search term</p>
+        hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n</html>"

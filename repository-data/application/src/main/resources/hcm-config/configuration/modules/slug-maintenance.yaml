@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/slug-maintenance:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.SlugMaintenanceListener
+      hipposys:cmsonly: true

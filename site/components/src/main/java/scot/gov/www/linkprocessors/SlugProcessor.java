@@ -1,6 +1,5 @@
 package scot.gov.www.linkprocessors;
 
-import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
@@ -10,8 +9,6 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryResult;
 
 /**
  * Created by z441571 on 21/04/2020.
@@ -72,20 +69,4 @@ public abstract class SlugProcessor extends HstLinkProcessorTemplate {
         return link.getPath().startsWith(typePath) && link.getPathElements().length == pathLength;
     }
 
-    protected Node getNodeBySlug(String slug, String typePath) throws RepositoryException {
-        HstRequestContext req = RequestContextProvider.get();
-        Session session = req.getSession();
-        String escapedSlug = Text.escapeIllegalJcr10Chars(slug);
-
-        String template =
-                "/jcr:root/content/documents/govscot/%s/element(*, govscot:SimpleContent)[govscot:slug = '%s']";
-        String sql = String.format(template, typePath, escapedSlug);
-        QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.XPATH).execute();
-        if (result.getNodes().getSize() == 0) {
-            return null;
-        }
-
-        // find the index in the results folder
-        return findPublishedNode(result.getNodes());
-    }
 }
