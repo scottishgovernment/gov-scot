@@ -16,3 +16,17 @@ definitions:
       jcr:primaryType: hipposys:authrole
       hipposys:groups: [migration]
       hipposys:role: admin
+    /hippo:configuration/hippo:domains/everywhere/all-nodes/hide-embargo-document:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodetype
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: embargo:document
+    /hippo:configuration/hippo:domains/everywhere/all-nodes/hide-embargo-handle:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodetype
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: embargo:handle
