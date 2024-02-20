@@ -29,7 +29,7 @@ const publicationPage = {
 
                         // Update the URL and history
                         if (window.history.pushState) {
-                            window.history.pushState({},'', url);
+                            window.history.pushState({type:'subpage'},'', url);
                         }
                     })
                     .catch(error => {
@@ -40,16 +40,18 @@ const publicationPage = {
         });
 
         window.onpopstate = (event) => {
-            const url = event.target.window.location.href;
+            if (event.state && event.state.type === 'subpage') {
+                const url = event.target.window.location.href;
 
-            this.loadSubPageHtml(url)
-                .then(value => {
-                    this.populatePage(value);
-                })
-                .catch(error => {
-                    console.log(error);
-                    window.location = event.target.href;
-                });
+                this.loadSubPageHtml(url)
+                    .then(value => {
+                        this.populatePage(value);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        window.location = event.target.href;
+                    });
+            }
         };
     },
 
