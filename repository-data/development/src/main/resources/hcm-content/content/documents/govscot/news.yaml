@@ -444,7 +444,7 @@
         jcr:primaryType: hippostd:html
         hippostd:content: <p>Find out more about&nbsp;<a href="statistics-and-research">statistics
           and research in the Scottish Government</a>.&nbsp;</p>
-      /govscot:noResultsMessage:h
+      /govscot:noResultsMessage:
         jcr:primaryType: hippostd:html
         hippostd:content: |-
           <p><strong>There are no matching results.</strong></p>
