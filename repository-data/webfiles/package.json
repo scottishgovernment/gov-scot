@@ -11,7 +11,7 @@
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
     "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed",
-    "webpack": "webpack -p --config ./webpack.config.js",
+    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack -p --config ./webpack.config.js",
     "test": "karma start ./test/karma.conf.js"
   },
   "devDependencies": {
