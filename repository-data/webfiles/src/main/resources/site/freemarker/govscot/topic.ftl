@@ -62,30 +62,6 @@
                         <div class="gov_feature-cards">
                             <#list document.featuredItems as item>
                                 <div class="ds_card  ds_card--grey  ds_card--hover  gov_feature-card">
-                                    <#assign imgLabel = 'news'/>
-                                    <#if item.label == 'news'>
-                                        <#assign imgLabel = 'news'/>
-                                    <#elseif item.label?contains('Consultation')>
-                                        <#assign imgLabel = 'cons'/>
-                                    <#elseif item.publicationType??>
-                                        <#assign imgLabel = 'pubs'/>
-                                    </#if>
-                                    <#if imgLabel??>
-                                        <div class="ds_card__media">
-                                            <div class="ds_aspect-box">
-                                                <img alt="" class="ds_aspect-box__inner" src="/assets/images/graphics/featured-${imgLabel}-hd.jpg" width="1600" height="900"
-                                                    srcset="<@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet.jpg'/>  220w,
-                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-tablet_@2x.jpg'/> 440w,
-                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop.jpg'/> 293w,
-                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-desktop_@2x.jpg'/> 586w,
-                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd.jpg'/> 360w,
-                                                    <@hst.link path='/assets/images/graphics/featured-${imgLabel}-hd_@2x.jpg'/> 720w"
-                                                    sizes="(min-width:1200px) 360px, (min-width:992px) 293px, (min-width:768px) 220px, 360px"
-                                                />
-                                            </div>
-                                        </div>
-                                    </#if>
-
                                     <article class="ds_card__content">
                                         <h3 class="ds_card__title">
                                             <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
@@ -97,26 +73,24 @@
                                             ${item.summary}
                                         </p>
 
-                                        <#if item.label?has_content>
-                                            <div class="ds_card__content-footer">
-                                                <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
+                                        <div class="ds_card__content-footer">
+                                            <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
 
-                                                <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
-                                                    <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">
-                                                            Publication date</dt>
-                                                        <dd class="ds_metadata__value">
-                                                            <@fmt.formatDate value=date type="both" pattern="dd MMMM yyyy"/>
-                                                        </dd>
-                                                    </div>
+                                            <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">
+                                                        Publication date</dt>
+                                                    <dd class="ds_metadata__value">
+                                                        <@fmt.formatDate value=date type="both" pattern="dd MMMM yyyy"/>
+                                                    </dd>
+                                                </div>
 
-                                                    <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">Type</dt>
-                                                        <dd class="ds_metadata__value">${item.label}</dd>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </#if>
+                                                <div class="ds_metadata__item">
+                                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                                    <dd class="ds_metadata__value">${item.label}</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
                                     </article>
                                 </div>
                             </#list>

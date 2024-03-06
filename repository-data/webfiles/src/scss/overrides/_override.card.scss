@@ -1,85 +1,17 @@
 /*------------------------------------*\
     CARD OVERRIDES
-    overhaul of how cards work
 \*------------------------------------*/
 
 .ds_card {
-    @include ds_small-size;
-    line-height: 24px;
+    grid-template-rows: unset;
+}
 
-    &--grey {
-        background-color: $ds_colour__grey--lighter;
-        box-shadow: none;
-        color: $ds_colour__text;
-
-        &:focus-within {
-            color: $ds_colour__link--focus;
-        }
-    }
-
-    &--hover {
-        &:hover:not(:focus) {
-            background-color: $ds_colour__link--hover__background;
-        }
-
-        &:focus-within {
-            background-color: $ds_colour__link--focus__background !important;
-            box-shadow: inset 0 -3px $ds_colour__link--focus__shadow, inset 0 -3px $ds_colour__link--focus__shadow;
-            transition-duration: 0s;
-
-            .ds_card__link--cover {
-                background-color: transparent;
-                box-shadow: none;
-                outline: none;
-            }
-        }
-    }
-
-    &__content {
-        padding: 16px;
-    }
-
-    &__title {
-        @include ds_h3-style;
-        margin-bottom: 8px;
-        margin-top: 0 !important;
-    }
-
-    &__link--cover:after {
-        content: "";
-        height: 100%;
-        left: 0px;
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        z-index: 0;
+.ds_card:has(.ds_card__content-footer) {
+    .ds_card__content {
+        padding-bottom: 16px;
     }
 }
 
-
-
-
-
-.ds_card {
-    display: grid;
+.ds_card:has(.ds_card__media) {
     grid-template-rows: auto 1fr;
-
-    &__content {
-        display: grid;
-        grid-template-rows: auto auto 1fr;
-    }
-
-    &__content-footer {
-        align-self: end;
-    }
-}
-
-
-
-
-.gov_collection-item-card {
-    list-style-type: none;
-    margin-left: -24px;
-    @include ds_responsive-margin(3, top);
-    @include ds_responsive-margin(3, bottom);
 }
