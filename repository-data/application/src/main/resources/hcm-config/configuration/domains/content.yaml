@@ -20,7 +20,7 @@ definitions:
       hipposys:groups: [embargo-social-security-analysis, embargo-energy-statistics,
         embargo-trade-statistics, embargo-children-and-families-analysis, embargo-gdp,
         embargo-public-sector-employment, embargo-labour-market–lfs-aps, embargo-general-labour-market,
-        embargo-shcs,
+        embargo-shcs, embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
         cmsadmin,
         collection-authors, collection-editors,
         core-content-authors, core-content-editors,

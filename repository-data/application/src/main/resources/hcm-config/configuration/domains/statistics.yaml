@@ -65,5 +65,6 @@ definitions:
           value: [embargo-children-and-families-analysis, embargo-energy-statistics,
                   embargo-gdp, embargo-general-labour-market, embargo-labour-market–lfs-aps,
                   embargo-public-sector-employment, embargo-social-security-analysis,
-                  embargo-trade-statistics, embargo-shcs]
+                  embargo-trade-statistics, embargo-shcs,
+                  embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics]
         hipposys:role: embargo

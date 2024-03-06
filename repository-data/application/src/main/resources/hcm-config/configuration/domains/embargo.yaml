@@ -9,7 +9,8 @@ definitions:
         type: string
         value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
                 embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
-                embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs]
+                embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
+                embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics]
     /hippo:configuration/hippo:domains/embargo/embargo:
       hipposys:groups:
         .meta:category: system
@@ -17,4 +18,5 @@ definitions:
         type: string
         value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
                 embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
-                embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs]
+                embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
+                embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics]
