@@ -13,5 +13,6 @@
 }
 
 .ds_card:has(.ds_card__media) {
+    align-content: start;
     grid-template-rows: auto 1fr;
 }
