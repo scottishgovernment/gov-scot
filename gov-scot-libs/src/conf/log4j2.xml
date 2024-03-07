@@ -113,7 +113,7 @@
     <Logger name="org.onehippo.cms7.services.search.jcr.service.HippoJcrSearchService" level="info"/>
 
     <!-- project logging -->
-    <Logger name="scot.gov.www" level="info"/>
+    <Logger name="scot.gov" level="info"/>
 
     <Root level="warn">
       <AppenderRef ref="cms"/>
