@@ -182,7 +182,7 @@ const global = {
 
             if (storage.hasPermission(storage.categories.marketing)) {
                 videoElement.innerHTML = `
-                <iframe width="${videoElement.dataset.width}" height="${videoElement.dataset.height}" src="${videoElement.dataset.src}" frameborder="0" allowfullscreen></iframe>`;
+                <iframe title="Embedded video" width="${videoElement.dataset.width}" height="${videoElement.dataset.height}" src="${videoElement.dataset.src}" frameborder="0" allowfullscreen></iframe>`;
             } else {
                 videoElement.innerHTML = `
                     <div class="youtube-embed-wrapper__consent">
