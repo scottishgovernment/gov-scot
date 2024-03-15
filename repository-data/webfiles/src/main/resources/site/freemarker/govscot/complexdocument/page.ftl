@@ -126,7 +126,7 @@
                                             sizes="(min-width: 768px) 165px, 107px" />
                                     </a>
                                 <#else>
-                                    <a class="ds_file-info__thumbnail-link  gov_supporting-documents__thumbnail-link" aria-hidden="true" tanindex="-1" href="${baseurl + 'documents/'}"">
+                                    <a class="ds_file-info__thumbnail-link  gov_supporting-documents__thumbnail-link" aria-hidden="true" tabindex="-1" href="${baseurl + 'documents/'}"">
                                         <img width="104" height="152" class="ds_file-info__thumbnail-image  ds_file-info__thumbnail-image--generic" src="<@hst.link path=fileThumbnailPath />" alt=""/>
                                     </a>
                                 </#if>
