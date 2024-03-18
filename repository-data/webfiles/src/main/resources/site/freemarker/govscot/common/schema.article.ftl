@@ -19,6 +19,7 @@
 
     "author": {
         "@type": "Organization",
+
         "name": "The Scottish Government",
         "url": "https://www.gov.scot",
         "logo": {
@@ -28,10 +29,8 @@
     },
 
     "headline": "${document.title?json_string}",
-    "dateModified": "<@fmt.formatDate value=document.getSingleProperty('hippostdpubwf:lastModificationDate').time type="Date" pattern="yyyy-MM-dd" />",
-    <#if document.publicationDate??>
-        "datePublished": "<@fmt.formatDate value=document.publicationDate.time type="Date" pattern="yyyy-MM-dd" />",
-    </#if>
+    "dateModified": "${document.getSingleProperty('hippostdpubwf:lastModificationDate').time?datetime?iso_local}",
+    <#if document.publicationDate??>"datePublished": "${document.publicationDate.time?datetime?iso_local}",</#if>
     <#if document.metaDescription??>
     "description": "${document.metaDescription?json_string}",
     </#if>
