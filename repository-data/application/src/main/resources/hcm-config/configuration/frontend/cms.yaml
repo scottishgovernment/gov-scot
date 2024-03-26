@@ -571,8 +571,7 @@ definitions:
       optimize: quality
     /hippo:configuration/hippo:frontend/cms/cms-advanced-search/genericFilters:
       document.type.namespaces: [govscot]
-      document.type.excluded: ['govscot:ComplexDocument', 'govscot:covidlevel', 'govscot:covidrestriction',
-        'govscot:CovidRestrictionsLookup', 'govscot:publicationjob']
+      document.type.excluded: ['govscot:ComplexDocument', 'govscot:publicationjob']
     /hippo:configuration/hippo:frontend/cms/cms-admin/groups:
       hipposys:userrole: xm.security.application-admin
     /hippo:configuration/hippo:frontend/cms/cms-admin/permissions:

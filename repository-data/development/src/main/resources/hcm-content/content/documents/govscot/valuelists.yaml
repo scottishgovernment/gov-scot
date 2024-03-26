@@ -853,56 +853,6 @@
         jcr:primaryType: selection:listitem
         selection:key: topicsStatsPanel
         selection:label: 'true'
-  /covidlevels:
-    jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
-    jcr:uuid: 52ff8073-b437-4bed-bda7-4c848c5f80ed
-    hippo:name: covidlevels
-    /covidlevels:
-      jcr:primaryType: selection:valuelist
-      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
-      jcr:uuid: 26771f23-69b6-47bd-9dbb-dc8628bafb3f
-      hippotranslation:id: 0d6dce5e-cdc1-44f8-b4e0-a5119395fcb3
-      hippotranslation:locale: inherited - from query
-      /selection:listitem[1]:
-        jcr:primaryType: selection:listitem
-        selection:key: level0
-        selection:label: Level 0
-      /selection:listitem[2]:
-        jcr:primaryType: selection:listitem
-        selection:key: level1
-        selection:label: Level 1
-      /selection:listitem[3]:
-        jcr:primaryType: selection:listitem
-        selection:key: level2
-        selection:label: Level 2
-      /selection:listitem[4]:
-        jcr:primaryType: selection:listitem
-        selection:key: level3
-        selection:label: Level 3
-      /selection:listitem[5]:
-        jcr:primaryType: selection:listitem
-        selection:key: level4
-        selection:label: Level 4
-  /covidrestrictiontypes:
-    jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
-    jcr:uuid: 349e1cc2-c914-4608-bee7-53286a3a46b8
-    hippo:name: covidrestrictiontypes
-    /covidrestrictiontypes:
-      jcr:primaryType: selection:valuelist
-      jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
-      jcr:uuid: 2d503a67-ddf6-4d48-964f-ed484e24a8c3
-      hippotranslation:id: 2aba423a-5646-44ca-814c-82d7a450bab6
-      hippotranslation:locale: inherited - from query
-      /selection:listitem[1]:
-        jcr:primaryType: selection:listitem
-        selection:key: electoral-ward
-        selection:label: Electoral ward
-      /selection:listitem[2]:
-        jcr:primaryType: selection:listitem
-        selection:key: local-authority
-        selection:label: Local authority
   /siteverificationtype:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['mix:referenceable']
