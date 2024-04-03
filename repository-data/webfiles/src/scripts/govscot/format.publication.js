@@ -16,6 +16,7 @@ const publicationPage = {
     initAsyncNavigation: function () {
         this.pages = {};
         this.pages[window.location.href] = document.documentElement.outerHTML;
+        window.history.replaceState({type:'subpage'},'', window.location.href);
 
         document.addEventListener('click', event => {
             if (event.target.classList.contains('js-publication-navigation')) {
