@@ -2,6 +2,7 @@ package scot.gov.www.beans;
 
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.Node;
+import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
@@ -9,6 +10,7 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 
 import java.util.Calendar;
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:Publication")
 @Node(jcrType = "govscot:Publication")
@@ -91,6 +93,11 @@ public class Publication extends AttributableContent {
 
     public Calendar getDisplayDate() {
         return getSingleProperty("govscot:displayDate");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:group")
+    public List<HippoBean> getGroup() {
+        return getLinkedBeans("govscot:group", HippoBean.class);
     }
 
 }

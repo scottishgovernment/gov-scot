@@ -1,9 +1,36 @@
 <#include "../../include/imports.ftl">
 <#include "macros/lang-attributes.ftl">
 
+
 <#if !metadataChildrenOnly??>
 <dl <@revertlang index /> class="ds_page-header__metadata  ds_metadata">
 </#if>
+
+    <#if index.group?has_content>
+        <div class="ds_metadata__item">
+            <dt class="ds_metadata__key">Group</dt>
+            <dd class="ds_metadata__value">
+                <#list index.group as grp>
+                    <#if grp?index lte 2>
+                        <@hst.link var="link" hippobean=grp/>
+                        <a data-navigation="groups-${grp?index + 1}"href="${link}" class="sg-meta__group">${grp.title}</a><#sep>, </#sep>
+                    </#if><!--
+            --></#list><!--
+            --><#if index.group?size gt 3><!--
+                --><a data-navigation="groups-all" href="#secondary-groups" data-module="gov-toggle-link" data-toggled-text="" aria-controls="secondary-groups" class="gov_toggle-link">
+                    &#43;${index.group?size - 3}&nbsp;more&nbsp;&hellip;</a>
+                    <span id="secondary-groups" class="gov_toggle-link__target">
+                        <#list index.group?sort_by("title") as grp>
+                            <#if grp?index gt 2>
+                                <@hst.link var="link" hippobean=grp/>
+                                <a data-navigation="topics-${grp?index + 1}" href="${link}" class="sg-meta__group">${grp.title}</a><#sep>, </#sep>
+                            </#if>
+                        </#list>
+                    </span>
+                </#if>
+            </dd>
+        </div>
+    </#if>
     <#if index.allResponsibleRoles?has_content>
         <div class="ds_metadata__item">
             <dt class="ds_metadata__key">From</dt>

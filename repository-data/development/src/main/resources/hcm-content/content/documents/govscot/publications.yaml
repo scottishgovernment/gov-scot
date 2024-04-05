@@ -57,7 +57,7 @@
                 reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2023-05-16T08:20:13.440+01:00
+              hippostdpubwf:lastModificationDate: 2024-03-19T11:14:56.960Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -239,6 +239,9 @@
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
             /index[2]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
@@ -263,7 +266,7 @@
                 reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2023-05-15T16:28:59.318+01:00
+              hippostdpubwf:lastModificationDate: 2024-03-28T14:52:47.001Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -445,6 +448,9 @@
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
             /index[3]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
@@ -469,9 +475,9 @@
                 reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2023-05-16T08:20:13.440+01:00
+              hippostdpubwf:lastModificationDate: 2024-03-19T11:14:56.960Z
               hippostdpubwf:lastModifiedBy: admin
-              hippostdpubwf:publicationDate: 2024-03-07T10:39:11.903Z
+              hippostdpubwf:publicationDate: 2024-03-19T11:14:58.976Z
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
               /govscot:executiveSummary:
@@ -652,6 +658,9 @@
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
           /pages:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-page]
@@ -890,3 +899,391 @@
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
         hippostd:content: <p>Enter a search term</p>
+  /minutes:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: 2a4e3415-c833-4dc8-a30c-c9094b18d263
+    govscot:publicationType: advice-and-guidance
+    hippo:name: Minutes
+    hippostd:foldertype: [new-publication-year-folder]
+    /2020:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 021e9fdd-1f80-4a56-8e64-80b53d9673a1
+      hippostd:foldertype: [new-publication-month-folder]
+      /01:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: 8a399bb5-081d-4185-b393-6a90776263ec
+        hippostd:foldertype: [new-minutes-folder]
+        /access-delivery-minutes-feb-2020:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable']
+          jcr:uuid: 2d6e4e24-ca18-4a78-baaf-312ba020019c
+          hippo:name: Access Delivery Minutes Feb 2020
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: c8fbbce0-e313-4e1d-bf46-1cfbd1b5ae8e
+            hippo:name: Access Delivery Minutes Feb 2020
+            hippo:versionHistory: d5ce28cf-846a-4995-af13-4df0f1a884fd
+            /index[1]:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+              jcr:uuid: c191162a-246b-4f7d-b578-b247fa434caa
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-03-28T14:56:00Z
+              govscot:isbn: ''
+              govscot:location: ''
+              govscot:metaDescription: Access Delivery Minutes Feb 2020
+              govscot:nextMeetingDate: 2024-03-28T14:56:00Z
+              govscot:officialdate: 2024-03-28T00:00:00Z
+              govscot:publicationDate: 2024-03-28T14:56:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Access Delivery Minutes Feb 2020
+              govscot:slug: access-delivery-minutes-feb-2020
+              govscot:sme: ''
+              govscot:summary: Access Delivery Minutes Feb 2020
+              govscot:title: Access Delivery Minutes Feb 2020
+              hippo:availability: [preview]
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-03-28T14:56:35.880Z
+              hippostdpubwf:lastModificationDate: 2024-04-02T09:31:40.546+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: <p>Access Delivery Minutes Feb 2020&nbsp;</p>
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 81445f5a-c869-4cc2-a8e4-0be040e6e25d
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:attendees:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:actions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 489c004b-8ecd-47a7-b0ae-efca72268577
+            /index[2]:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: d5b8aebe-46da-4f49-82c8-99d3944b113d
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-03-28T14:56:00Z
+              govscot:isbn: ''
+              govscot:location: ''
+              govscot:metaDescription: Access Delivery Minutes Feb 2020
+              govscot:nextMeetingDate: 2024-03-28T14:56:00Z
+              govscot:officialdate: 2024-03-28T00:00:00Z
+              govscot:publicationDate: 2024-03-28T14:56:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Access Delivery Minutes Feb 2020
+              govscot:slug: access-delivery-minutes-feb-2020
+              govscot:sme: ''
+              govscot:summary: Access Delivery Minutes Feb 2020
+              govscot:title: Access Delivery Minutes Feb 2020
+              hippo:availability: []
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-03-28T14:56:35.880Z
+              hippostdpubwf:lastModificationDate: 2024-04-02T09:42:47.570+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: <p>Access Delivery Minutes Feb 2020&nbsp;</p>
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 81445f5a-c869-4cc2-a8e4-0be040e6e25d
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:attendees:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:actions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 489c004b-8ecd-47a7-b0ae-efca72268577
+            /index[3]:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 8a692732-908a-4e8d-9f9b-8128b606d6e8
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-03-28T14:56:00Z
+              govscot:isbn: ''
+              govscot:location: ''
+              govscot:metaDescription: Access Delivery Minutes Feb 2020
+              govscot:nextMeetingDate: 2024-03-28T14:56:00Z
+              govscot:officialdate: 2024-03-28T00:00:00Z
+              govscot:publicationDate: 2024-03-28T14:56:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Access Delivery Minutes Feb 2020
+              govscot:slug: access-delivery-minutes-feb-2020
+              govscot:sme: ''
+              govscot:summary: Access Delivery Minutes Feb 2020
+              govscot:title: Access Delivery Minutes Feb 2020
+              hippo:availability: [live]
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-03-28T14:56:35.880Z
+              hippostdpubwf:lastModificationDate: 2024-04-02T09:31:40.546+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippostdpubwf:publicationDate: 2024-04-02T09:31:42.542+01:00
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: <p>Access Delivery Minutes Feb 2020&nbsp;</p>
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 81445f5a-c869-4cc2-a8e4-0be040e6e25d
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:attendees:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:actions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 489c004b-8ecd-47a7-b0ae-efca72268577
+        /access-delivery-minutes-jan-2020:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable']
+          jcr:uuid: bb30323f-58ff-4db6-86b0-474ba95b17d2
+          hippo:name: Access Delivery Minutes Jan 2020
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: 3cda9220-1fa3-409d-ba32-3217a2e3a720
+            hippo:name: Access Delivery Minutes Jan 2020
+            hippo:versionHistory: 287a9bd2-8ebd-4655-a834-27fc8c913ec7
+            /index[1]:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+              jcr:uuid: 11e10a4a-3116-4397-92af-02904615e045
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-03-28T14:55:00Z
+              govscot:isbn: ''
+              govscot:location: ''
+              govscot:metaDescription: Access Delivery Minutes Jan 2020
+              govscot:nextMeetingDate: 2024-03-28T14:56:00Z
+              govscot:officialdate: 2024-03-28T00:00:00Z
+              govscot:publicationDate: 2024-03-28T14:55:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Access Delivery Minutes Jan 2020
+              govscot:slug: access-delivery-minutes-jan-2020
+              govscot:sme: ''
+              govscot:summary: Access Delivery Minutes Jan 2020
+              govscot:title: Access Delivery Minutes Jan 2020
+              hippo:availability: [preview]
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-03-28T14:55:49.492Z
+              hippostdpubwf:lastModificationDate: 2024-03-28T14:56:19.666Z
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:attendees:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:actions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
+            /index[2]:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: f9a117f3-329b-4640-91ec-a2ec70e00a33
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-03-28T14:55:00Z
+              govscot:isbn: ''
+              govscot:location: ''
+              govscot:metaDescription: Access Delivery Minutes Jan 2020
+              govscot:nextMeetingDate: 2024-03-28T14:56:00Z
+              govscot:officialdate: 2024-03-28T00:00:00Z
+              govscot:publicationDate: 2024-03-28T14:55:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Access Delivery Minutes Jan 2020
+              govscot:slug: access-delivery-minutes-jan-2020
+              govscot:sme: ''
+              govscot:summary: Access Delivery Minutes Jan 2020
+              govscot:title: Access Delivery Minutes Jan 2020
+              hippo:availability: []
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-03-28T14:55:49.492Z
+              hippostdpubwf:lastModificationDate: 2024-03-28T14:55:53.205Z
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:attendees:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:actions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
+            /index[3]:
+              jcr:primaryType: govscot:Minutes
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 47bee5de-2cea-49c4-ad66-90ceb660aecc
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-03-28T14:55:00Z
+              govscot:isbn: ''
+              govscot:location: ''
+              govscot:metaDescription: Access Delivery Minutes Jan 2020
+              govscot:nextMeetingDate: 2024-03-28T14:56:00Z
+              govscot:officialdate: 2024-03-28T00:00:00Z
+              govscot:publicationDate: 2024-03-28T14:55:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Access Delivery Minutes Jan 2020
+              govscot:slug: access-delivery-minutes-jan-2020
+              govscot:sme: ''
+              govscot:summary: Access Delivery Minutes Jan 2020
+              govscot:title: Access Delivery Minutes Jan 2020
+              hippo:availability: [live]
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-03-28T14:55:49.492Z
+              hippostdpubwf:lastModificationDate: 2024-03-28T14:56:19.666Z
+              hippostdpubwf:lastModifiedBy: admin
+              hippostdpubwf:publicationDate: 2024-03-28T14:56:21.681Z
+              hippotranslation:id: 4fc194a9-c591-4e91-bef5-fc50788dc115
+              hippotranslation:locale: en
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:attendees:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:actions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:group:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de

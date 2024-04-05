@@ -249,20 +249,6 @@
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.261Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.326Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
         /govscot:topics[4]:
           jcr:primaryType: hippo:mirror
           hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
@@ -395,20 +381,6 @@
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.261Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.326Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
         /govscot:topics[4]:
           jcr:primaryType: hippo:mirror
           hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
@@ -541,20 +513,6 @@
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.261Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.326Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
         /govscot:topics[4]:
           jcr:primaryType: hippo:mirror
           hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
@@ -709,20 +667,6 @@
           hippostd:content: |+
             <p>Laura Sexton</p>
 
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.278Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/dispute-resolution/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.340Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/dispute-resolution/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /dispute-resolution[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -1130,20 +1074,6 @@
           hippostd:content: |+
             <p>Policy lead: Stephen Bruce</p>
 
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.219Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/tribunals-system/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.222Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/tribunals-system/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /tribunals-system[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -1449,20 +1379,6 @@
         /govscot:notes:
           jcr:primaryType: hippostd:html
           hippostd:content: ''
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.230Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/improving-justice-systems-processes/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.238Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/improving-justice-systems-processes/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /improving-justice-systems-processes[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -1797,20 +1713,6 @@
             Claire - updated 2/10 as content does not meet site style.</p>
 
             <p>&nbsp;</p>
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.312Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/improving-information-and-advice/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.364Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/improving-information-and-advice/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /improving-information-and-advice[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -2107,20 +2009,6 @@
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.326Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/alternative-business-structures/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.377Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/alternative-business-structures/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /alternative-business-structures[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -2363,20 +2251,6 @@
         /govscot:notes:
           jcr:primaryType: hippostd:html
           hippostd:content: ''
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.292Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/legal-aid/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.352Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/legal-aid/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /legal-aid[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -2455,13 +2329,6 @@
         /govscot:notes:
           jcr:primaryType: hippostd:html
           hippostd:content: ''
-        /previewId:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.292Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/legal-aid/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
     /regulation-legal-services:
       jcr:primaryType: hippo:handle
       jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
@@ -2568,20 +2435,6 @@
         /govscot:notes:
           jcr:primaryType: hippostd:html
           hippostd:content: <p>Laura Sexton</p>
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.189Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/regulation-legal-services/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.203Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/regulation-legal-services/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /regulation-legal-services[3]:
         jcr:primaryType: govscot:PolicyInDetail
         jcr:mixinTypes: ['mix:referenceable']
@@ -2969,20 +2822,6 @@
         /govscot:relatedItems[30]:
           jcr:primaryType: hippo:mirror
           hippo:docbase: f3351357-55de-40d4-aadc-7069a30e0dd1
-        /previewId[1]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T08:55:57.245Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/latest/?previewkey=d6a95cec-f68a-4b1b-ae4a-04e6d6955bdb
-          staging:user: admin
-        /previewId[2]:
-          jcr:primaryType: staging:preview
-          staging:creationdate: 2022-11-01T14:57:08.251Z
-          staging:expirationdate: 2022-11-22T00:00:00Z
-          staging:key: 5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:url: http://localhost:8080/site/govscot-preview/policies/access-to-justice/latest/?previewkey=5636fc42-b40f-4245-9848-db3d6e3ca32a
-          staging:user: admin
       /latest[3]:
         jcr:primaryType: govscot:PolicyLatest
         jcr:mixinTypes: ['mix:referenceable']
