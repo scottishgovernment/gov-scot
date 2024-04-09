@@ -20,8 +20,8 @@ import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.util.*;
-import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
 import static scot.gov.www.components.FilteredResultsComponent.GOVSCOT_TITLE;
@@ -33,7 +33,6 @@ public class ConstraintUtils {
     private ConstraintUtils() {
         // hide public constructor
     }
-
     public static Constraint topicsConstraint(Collection<String> topics) {
         List<String> topicIds = topicIds(topics);
         if (topicIds.isEmpty()) {
@@ -48,14 +47,17 @@ public class ConstraintUtils {
         return ConstraintBuilder.or(constraintList.toArray(new Constraint[constraintList.size()]));
     }
 
-    public static Constraint publicationTypeConstraint(Collection<String> publicationTypes) {
-
+    public static Constraint [] publicationTypeConstraints(Collection<String> publicationTypes) {
         if (publicationTypes.isEmpty()) {
-            return null;
+            return new Constraint[0];
         }
 
-        List<Constraint> constraints = publicationTypes.stream().map(ConstraintUtils::publicationTypeContraint).collect(Collectors.toList());
-        return ConstraintBuilder.or(constraints.toArray(new Constraint[constraints.size()]));
+        List<Constraint> constraints = publicationTypes.stream().map(ConstraintUtils::publicationTypeContraint).collect(toList());
+        return constraints.toArray(new Constraint[constraints.size()]);
+    }
+
+    public static Constraint publicationTypeConstraint(Collection<String> publicationTypes) {
+        return publicationTypes.isEmpty() ? null : ConstraintBuilder.or(publicationTypeConstraints(publicationTypes));
     }
 
     static Constraint publicationTypeContraint(String publicationType) {

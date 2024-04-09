@@ -1,15 +1,12 @@
 package scot.gov.www.search;
 
 import org.hippoecm.hst.content.beans.query.HstQuery;
-import org.hippoecm.hst.content.beans.query.HstQueryManager;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
-import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
-import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
@@ -29,6 +26,8 @@ import scot.gov.www.beans.AttributableContent;
 import scot.gov.www.beans.ComplexDocument2;
 import scot.gov.www.beans.ComplexDocumentSection;
 import scot.gov.www.beans.PublicationPage;
+import scot.gov.www.components.ConstraintUtils;
+import scot.gov.www.components.FilteredResultsComponent;
 
 import java.util.*;
 
@@ -36,6 +35,7 @@ import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
+import static scot.gov.www.components.FilteredResultsComponent.*;
 
 @Service
 @Component("scot.gov.publishing.hippo.funnelback.component.BloomreachSearchService")
@@ -99,7 +99,7 @@ public class BloomreachSearchService implements SearchService {
 
         // populate Collections for Publication type items
         if (item instanceof AttributableContent) {
-            populateCollectionAttribution((AttributableContent) item, request);
+            FilteredResultsComponent.populateCollectionAttribution(request, (AttributableContent) item);
         }
 
         // populate parent publication for Complex Document sections
@@ -111,50 +111,6 @@ public class BloomreachSearchService implements SearchService {
         if (item instanceof PublicationPage) {
             populatePublicationParent((PublicationPage) item);
         }
-    }
-
-    public void populateCollectionAttribution(AttributableContent item, HstRequest request) {
-
-        try {
-            // find any Collection documents that link to the content bean in this request
-            HstRequestContext context = request.getRequestContext();
-            HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
-            HstQuery query = createIncomingBeansQuery(
-                    item,
-                    baseBean,
-                    "*/*/@hippo:docbase",
-                    scot.gov.www.beans.Collection.class,
-                    context.getQueryManager());
-            HstQueryResult result = query.execute();
-            item.setCollections(collectionsBeans(result));
-        } catch (QueryException e) {
-            LOG.warn("Unable to get collections for content item {}", item.getTitle(), e);
-        }
-    }
-
-    private HstQuery createIncomingBeansQuery(HippoDocumentBean bean,
-                                                    HippoBean scope,
-                                                    String linkPath,
-                                                    Class<? extends HippoBean> beanMappingClass,
-                                                    HstQueryManager queryManager) throws QueryException {
-
-        String canonicalHandleUUID = bean.getCanonicalHandleUUID();
-        HstQuery query = queryManager.createQuery(scope, beanMappingClass, false);
-        Filter filter = query.createFilter();
-        filter.addEqualTo(linkPath, canonicalHandleUUID);
-        query.setFilter(filter);
-        return query;
-    }
-
-    private List<HippoBean> collectionsBeans(HstQueryResult result) {
-        // convert the iterator to a list of hippo beans - otherwise size method fails
-        List<HippoBean> collectionsBeans = new ArrayList<>();
-        HippoBeanIterator it = result.getHippoBeans();
-        while (it.hasNext()) {
-            HippoBean collection = it.nextHippoBean();
-            collectionsBeans.add(collection);
-        }
-        return collectionsBeans;
     }
 
     public void populateComplexDocParent(ComplexDocumentSection item) {
@@ -180,28 +136,59 @@ public class BloomreachSearchService implements SearchService {
         HstRequestContext context = search.getRequest().getRequestContext();
         HstQueryBuilder queryBuilder = HstQueryBuilder.create(context.getSiteContentBaseBean());
         return queryBuilder
-                .where(constraints(parsedQueryStr))
+                .where(constraints(parsedQueryStr, search.getRequest()))
                 .limit(PAGE_SIZE)
                 .offset(offset)
                 .build(context.getQueryManager());
     }
 
-    private Constraint constraints(String searchField) {
-
+    private Constraint constraints(String searchField, HstRequest request) {
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, searchField);
-        constraints.add(
-                or(
-                        constraint("govscot:excludeFromSearchIndex").equalTo(false),
-                        constraint("govscot:excludeFromSearchIndex").notExists()
-                )
-        );
-
+        addTopicsConstraint(constraints, request);
+        addDateConstraint(constraints, request, searchField);
+        addPublicationTypeConstraint(constraints, request);
+        constraints.add(or(
+                constraint("govscot:excludeFromSearchIndex").equalTo(false),
+                constraint("govscot:excludeFromSearchIndex").notExists()));
         return and(constraints.toArray(new Constraint[] {}));
     }
 
     private void addTermConstraints(List<Constraint> constraints, String queryString) {
         constraints.add(or(fieldConstraints(queryString)));
+    }
+
+    public static void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
+        Set<String> publicationTypes = splitParameters(request, PUBLICATION_TYPES);
+        if (publicationTypes.isEmpty()) {
+            return;
+        }
+
+        List<Constraint> typeConstraints = new ArrayList<>();
+
+        // convert the publication type 'news' to query for documents with the type 'govscot:News'
+        if (publicationTypes.contains("news")) {
+            typeConstraints.add(typeConstraint("govscot:News"));
+        }
+
+        // convert the publication type 'policy' to query for documents with one of the types 'govscot:Policy' or
+        // 'govscot:PolicyInDetail'
+        if (publicationTypes.contains("policy")) {
+            typeConstraints.add(or(typeConstraint("govscot:Policy"), typeConstraint("govscot:PolicyInDetail")));
+        }
+
+        publicationTypes.remove("news");
+        publicationTypes.remove("policy");
+        Collections.addAll(typeConstraints, ConstraintUtils.publicationTypeConstraints(publicationTypes));
+
+        if (!typeConstraints.isEmpty()) {
+            // we need to 'or' the three potential constraint together
+            constraints.add(or(typeConstraints.toArray(new Constraint[typeConstraints.size()])));
+        }
+    }
+
+    static Constraint typeConstraint(String type) {
+        return constraint("@jcr:primaryType").equalTo(type);
     }
 
     private Constraint [] fieldConstraints(String term) {
@@ -224,7 +211,7 @@ public class BloomreachSearchService implements SearchService {
         response.getResultPacket().setResultsSummary(resultsSummary);
         searchResponse.setResponse(response);
 
-        Pagination pagination = new PaginationBuilder(search).getPagination(resultsSummary, search.getQuery());
+        Pagination pagination = new PaginationBuilder().getPagination(resultsSummary, search);
         searchResponse.setPagination(pagination);
         searchResponse.setBloomreachResults(result.getHippoBeans());
 

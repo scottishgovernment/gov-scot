@@ -63,7 +63,7 @@
         <nav class="ds_search-suggestions" aria-label="Alternative search suggestions">
             <h2 class="visually-hidden">Also showing results for ${qsup.query}</h2>
             <p><span aria-hidden="true">Also showing results for</span> <a aria-label="Show results only for ${qsup.query}" href="?q=${qsup.query?url('UTF-8')}&amp;cat=sitesearch">${qsup.query}<#if qsup_has_next>, </#if></a><br />
-               <span aria-hidden="true">Show results only for</span> <a aria-label="Show results only for ${question.originalQuery}" href="?${queryString}&amp;qsup=off">${question.originalQuery}</a></p>
+               <span aria-hidden="true">Show results only for</span> <a aria-label="Show results only for ${question.originalQuery}" href="${qsup.url}">${question.originalQuery}</a></p>
         </nav>
         </#list>
     </#if>
@@ -193,7 +193,7 @@
             <#list response.resultPacket.contextualNavigation.categories as category>
                 <#list category.clusters as cluster>
                     <li>
-                        <a href="?q=%60${cluster.query?url}%60">${cluster.query}</a>
+                        <a href="?${cluster.query}">${cluster.label}</a>
                     </li>
                 </#list>
             </#list>

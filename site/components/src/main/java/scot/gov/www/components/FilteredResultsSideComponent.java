@@ -13,6 +13,7 @@ import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
+import org.onehippo.forge.selection.hst.contentbean.ValueListItem;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,8 @@ import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES
  * Created by z441571 on 09/04/2018.
  */
 @ParametersInfo(type = FilteredResultsSideComponentInfo.class)
-public class FilteredResultsSideComponent extends BaseHstComponent {
+public class
+FilteredResultsSideComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteredResultsSideComponent.class);
 
@@ -49,7 +51,7 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
         if (info.getLocaleRequired()) {
             request.setAttribute("locale", request.getLocale());
         }
-        populatePublicationTypes(request);
+        populatePublicationTypes(request, info.getUseExtendedPublicationType());
         populateTopics(request);
 
         Map<String, Set<String>> params =
@@ -57,11 +59,18 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
         request.setAttribute("parameters", params);
     }
 
-    private void populatePublicationTypes(HstRequest request) {
+    private void populatePublicationTypes(HstRequest request, boolean useExtendedPublicationType) {
         FilteredResultsSideComponentInfo info = getComponentParametersInfo(request);
         ValueList publicationValueList = SelectionUtil.getValueListByIdentifier(PUBLICATION_TYPES, request.getRequestContext());
         if (info.getIncludePublicationTypesFilter()) {
-            request.setAttribute("publicationTypes", publicationValueList.getItems());
+            List<ValueListItem> items = publicationValueList.getItems();
+            if (useExtendedPublicationType) {
+                items.add(new ExtendedValueListItem("News", "News"));
+                items.add(new ExtendedValueListItem("Policy", "Policy"));
+                // TODO: designs show these ate the bottom, do users distinguish them?
+                //items.sort(Comparator.comparing(ValueListItem::getLabel));
+            }
+            request.setAttribute("publicationTypes", items);
         } else if (!info.getPublicationTypes().isEmpty()) {
             String[] types = SiteUtils.parseCommaSeparatedValue(info.getPublicationTypes());
             ArrayList<HashMap> pubTypes = new ArrayList<>();
@@ -73,11 +82,27 @@ public class FilteredResultsSideComponent extends BaseHstComponent {
                 typeMap.put("label", keyLabel[1]);
                 pubTypes.add(typeMap);
             }
-
             request.setAttribute("publicationTypes", pubTypes);
         }
     }
 
+    class ExtendedValueListItem extends ValueListItem {
+        String key;
+
+        String label;
+
+        ExtendedValueListItem(String key, String label) {
+            this.key = key;
+            this.label = label;
+        }
+        public String getKey() {
+            return key;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+    }
     private void populateTopics(HstRequest request) {
         HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
         HippoFolderBean topicsFolder = baseBean.getBean("topics", HippoFolderBean.class);

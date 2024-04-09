@@ -12,6 +12,10 @@
                 </header>
             </div>
 
+            <div class="ds_layout__sidebar">
+                <@hst.include ref="side-filter"/>
+            </div>
+
             <div class="ds_layout__content">
                 <@hst.html hippohtml=document.content/>
 

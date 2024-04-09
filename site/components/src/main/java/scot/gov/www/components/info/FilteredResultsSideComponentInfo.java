@@ -27,4 +27,7 @@ public interface FilteredResultsSideComponentInfo {
     @Parameter(name = "publicationTypes")
     String getPublicationTypes();
 
+    @Parameter(name = "useExtendedPublicationType", defaultValue = "false", required = true)
+    Boolean getUseExtendedPublicationType();
+
 }
