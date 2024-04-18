@@ -5,4 +5,4 @@ Contact: https://hackerone.com/291b7ece-5c82-4a77-b2b8-db6b2a4f6528/embedded_sub
 Policy:  https://www.gov.scot/publications/vulnerability-disclosure-policy/
 
 # Expiry date
-Expires: 2024-02-28T00:00:00.000Z
+Expires: 2026-04-08T00:00:00.000Z
