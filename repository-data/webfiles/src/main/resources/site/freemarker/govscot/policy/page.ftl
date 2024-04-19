@@ -8,7 +8,7 @@
         <div class="ds_layout__header">
             <@hst.link var="link" hippobean=index />
             <header class="ds_page-header">
-                <span <@revertlang index /> class="ds_page-header__label  ds_content-label">Policy<#if latest??> - Latest</#if></span>
+                <span <@revertlang index /> class="ds_page-header__label  ds_content-label "><span id="sg-meta__publication-type">Policy</span><#if latest??> - Latest</#if></span>
                 <h1 class="ds_page-header__title">${index.title}</h1>
                 <#include '../common/content-metadata.ftl'/>
             </header>

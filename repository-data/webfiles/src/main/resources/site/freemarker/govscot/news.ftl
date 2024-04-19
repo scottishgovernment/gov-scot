@@ -7,7 +7,7 @@
         <main <@lang document/> id="main-content" class="ds_layout  ds_layout--article">
             <div class="ds_layout__header">
                 <header class="ds_page-header">
-                    <span <@revertlang document /> class="ds_page-header__label  ds_content-label">News</span>
+                    <span <@revertlang document /> class="ds_page-header__label  ds_content-label"><span id="sg-meta__publication-type">News</span></span>
 
                     <h1 class="ds_page-header__title">${document.title}</h1>
                     <dl <@revertlang document /> class="ds_page-header__metadata  ds_metadata">
