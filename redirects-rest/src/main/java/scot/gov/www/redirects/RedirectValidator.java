@@ -5,8 +5,8 @@ import org.apache.commons.validator.routines.UrlValidator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.logstash.logback.encoder.org.apache.commons.lang.StringUtils.containsNone;
-import static net.logstash.logback.encoder.org.apache.commons.lang.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.containsNone;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class RedirectValidator extends UrlValidator {
 

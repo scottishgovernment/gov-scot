@@ -7,8 +7,8 @@ import javax.jcr.Session;
 import java.util.*;
 
 import static java.util.Arrays.asList;
-import static net.logstash.logback.encoder.org.apache.commons.lang.StringUtils.isBlank;
-import static org.apache.commons.lang.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class RedirectsRepository {
 
