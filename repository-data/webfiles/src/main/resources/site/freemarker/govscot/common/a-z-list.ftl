@@ -9,6 +9,7 @@
                     <li class="gov_az-list__list__item">
                         <@hst.link var="link" hippobean=bean/>
                         <a class="gov_az-list__link" href="${link}">${bean.title}</a>
+                        <#if !bean.active><span><strong> Inactive</strong></span></#if>
                     </li>
                 </#list>
             </ul>

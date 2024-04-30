@@ -11,6 +11,13 @@
             <header class="ds_page-header">
                 <h1 class="ds_page-header__title">${document.title}</h1>
             </header>
+            <#if !document.active>
+                <div class="ds_inset-text">
+                    <div class="ds_inset-text__text">
+                        <p>This group is no longer active.</p>
+                    </div>
+                </div>
+            </#if>
         </div>
 
         <div class="ds_layout__content">

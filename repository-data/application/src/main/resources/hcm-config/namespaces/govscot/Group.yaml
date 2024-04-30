@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 9978c828-8e47-4f1d-8c38-3681fe25c9bb
+          jcr:uuid: 84183e62-ce9c-4002-b96c-4569854f48ce
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -73,6 +73,15 @@ definitions:
             hipposysedit:path: govscot:sme
             hipposysedit:primary: false
             hipposysedit:type: Text
+          /active:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:active
+            hipposysedit:primary: false
+            hipposysedit:type: Boolean
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -88,9 +97,12 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 1eb351df-21e6-475a-9d23-91eb30e999a8
+          jcr:uuid: f5455ec3-fd38-4b70-ab3e-b2ab03149af3
           hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
           hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
+          govscot:sme: ''
+          govscot:active: true
+          govscot:reportingTags: []
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
@@ -147,6 +159,16 @@ definitions:
               summary should be a short description of the content item (300 characters
               - approx. 50 words).  Note: longer summaries will be truncated to two
               lines of text on search result and category listing pages.'
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /active:
+            jcr:primaryType: frontend:plugin
+            caption: Active group?
+            field: active
+            hint: Used to indicate that a group no longer meets.  Inactive groups
+              will be labelled.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
