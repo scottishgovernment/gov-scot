@@ -80,8 +80,15 @@
         <includes>
           <include>**/*.html</include>
           <include>**/*.properties</include>
+          <include>**/*.css</include>
+          <include>**/*.png</include>
         </includes>
       </resource>
+      <resource>
+        <filtering>true</filtering>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+
     </resources>
     <plugins>
 
