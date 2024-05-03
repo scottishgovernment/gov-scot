@@ -9,11 +9,12 @@
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
     jcr:uuid: 706f6e38-e976-4cee-bc95-f03c81b305de
     hippo:name: Access Delivery Group
-    hippo:versionHistory: 8db8958f-320c-4b48-aab8-05c547dc5aae
+    hippo:versionHistory: 25c133e6-ee35-4abc-872d-92a8cca7eb6d
     /access-delivery-group[1]:
       jcr:primaryType: govscot:Group
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: f167a4ab-c4f6-4335-9b71-4870158a2e92
+      govscot:active: false
       govscot:metaDescription: Responsible for ensuring the whole education system
         works together to widen access.
       govscot:reportingTags: []
@@ -25,14 +26,15 @@
       govscot:title: Access Delivery Group
       hippo:availability: [live]
       hippo:name: Access Delivery Group
+      hippostd:retainable: false
       hippostd:state: published
       hippostd:tags: [education, ADG, socioeconomic inequality, access delivery group,
         disadvantaged students]
       hippostdpubwf:createdBy: claire.delaney@gov.scot
       hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
-      hippostdpubwf:lastModificationDate: 2022-02-11T10:59:25.126Z
-      hippostdpubwf:lastModifiedBy: Eniola.Onafowokan@gov.scot
-      hippostdpubwf:publicationDate: 2022-02-11T11:00:00.145Z
+      hippostdpubwf:lastModificationDate: 2024-05-03T10:48:50.522+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-05-03T10:48:53.664+01:00
       hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
       hippotranslation:locale: en
       /govscot:content:
@@ -137,6 +139,7 @@
       jcr:primaryType: govscot:Group
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: ccd3dd6f-1498-4d0d-8282-c70cb19c2450
+      govscot:active: false
       govscot:metaDescription: Responsible for ensuring the whole education system
         works together to widen access.
       govscot:reportingTags: []
@@ -148,13 +151,14 @@
       govscot:title: Access Delivery Group
       hippo:availability: [preview]
       hippo:name: Access Delivery Group
+      hippostd:retainable: false
       hippostd:state: unpublished
       hippostd:tags: [education, ADG, socioeconomic inequality, access delivery group,
         disadvantaged students]
       hippostdpubwf:createdBy: claire.delaney@gov.scot
       hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
-      hippostdpubwf:lastModificationDate: 2022-02-11T10:59:25.126Z
-      hippostdpubwf:lastModifiedBy: Eniola.Onafowokan@gov.scot
+      hippostdpubwf:lastModificationDate: 2024-05-03T10:48:50.522+01:00
+      hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
       hippotranslation:locale: en
       /govscot:content:
@@ -259,6 +263,7 @@
       jcr:primaryType: govscot:Group
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: b19bac35-336e-44e6-ba51-d9ff20f66e9d
+      govscot:active: false
       govscot:metaDescription: Responsible for ensuring the whole education system
         works together to widen access.
       govscot:reportingTags: []
@@ -270,13 +275,14 @@
       govscot:title: Access Delivery Group
       hippo:availability: []
       hippo:name: Access Delivery Group
+      hippostd:retainable: false
       hippostd:state: draft
       hippostd:tags: [education, ADG, socioeconomic inequality, access delivery group,
         disadvantaged students]
       hippostdpubwf:createdBy: claire.delaney@gov.scot
       hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
-      hippostdpubwf:lastModificationDate: 2022-02-11T10:58:45.011Z
-      hippostdpubwf:lastModifiedBy: Eniola.Onafowokan@gov.scot
+      hippostdpubwf:lastModificationDate: 2024-05-03T10:48:47.715+01:00
+      hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
       hippotranslation:locale: en
       /govscot:content:

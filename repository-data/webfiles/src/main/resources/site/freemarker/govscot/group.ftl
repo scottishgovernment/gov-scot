@@ -14,6 +14,7 @@
             <#if !document.active>
                 <div class="ds_inset-text">
                     <div class="ds_inset-text__text">
+                        <strong class="ds_tag  gov_tag--secondary">Inactive</strong>
                         <p>This group is no longer active.</p>
                     </div>
                 </div>
