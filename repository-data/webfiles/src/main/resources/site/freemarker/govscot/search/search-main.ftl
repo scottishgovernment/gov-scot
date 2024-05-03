@@ -47,3 +47,4 @@
 <@hst.headContribution category="footerScripts">
     <script nomodule="true" src='<@hst.webfile path="assets/scripts/search-page.es5.js"/>'></script>
 </@hst.headContribution>
+<#include "../common/gtm-datalayer.ftl"/>
