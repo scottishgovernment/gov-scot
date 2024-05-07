@@ -3,7 +3,8 @@
 \*------------------------------------*/
 
 .gov_secondary-footer {
-    font-size: 14px;
+    font-size: $small-size--fixed;
+    line-height: line-height-on-grid($small-size--fixed);
 }
 
 .gov_social-links {
@@ -14,11 +15,7 @@
     padding: 0;
 
     &__item {
-        margin: 0 24px 16px 0;
-
-        &:last-child {
-            margin-bottom: 16px;
-        }
+        margin: px-to-rem(15px) px-to-rem(24px) px-to-rem(1px) 0;
     }
 
     &__link {

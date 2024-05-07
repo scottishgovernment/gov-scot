@@ -54,7 +54,7 @@
         <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
             <#if result.listMetadata["publicationType"]!?has_content>
             <div class="ds_metadata__item">
-                <dt class="ds_metadata__key  visually-hidden">Publication type</dt>
+                <dt class="ds_metadata__key">Publication type</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata["publicationType"]?first!}
                 </dd>
@@ -62,7 +62,7 @@
             </#if>
             <#if (result.listMetadata["d"]?first)!?has_content>
             <div class="ds_metadata__item">
-                <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                <dt class="ds_metadata__key">Date</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata.displayDate}
                 </dd>
@@ -74,7 +74,7 @@
     || result.listMetadata["f"]?first = 'Collection'>
         <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
             <div class="ds_metadata__item">
-                <dt class="ds_metadata__key  visually-hidden">Format</dt>
+                <dt class="ds_metadata__key">Format</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata["f"]?first!}
                 </dd>
@@ -82,7 +82,7 @@
             <#if (result.listMetadata["d"]?first)!?has_content
             && result.listMetadata["f"]?first = 'News'>
             <div class="ds_metadata__item">
-                <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                <dt class="ds_metadata__key">Date</dt>
                 <dd class="ds_metadata__value">
                 ${result.listMetadata.displayDateTime}
                 </dd>

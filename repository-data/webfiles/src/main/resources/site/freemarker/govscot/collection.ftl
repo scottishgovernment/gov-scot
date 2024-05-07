@@ -82,7 +82,7 @@
                                                         <#assign dateFormat = "dd MMMM yyyy HH:mm">
                                                     </#if>
                                                     <div class="ds_metadata__item">
-                                                        <dt class="ds_metadata__key  visually-hidden">
+                                                        <dt class="ds_metadata__key">
                                                             Publication date
                                                         </dt>
                                                         <dd class="ds_metadata__value">
@@ -92,7 +92,7 @@
                                                 </#if>
 
                                                 <div class="ds_metadata__item">
-                                                    <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                                                    <dt class="ds_metadata__key">Type</dt>
                                                     <dd class="ds_metadata__value">${item.label}</dd>
                                                 </div>
                                             </dl>

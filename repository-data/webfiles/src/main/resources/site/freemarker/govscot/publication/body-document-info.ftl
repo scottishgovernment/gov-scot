@@ -96,7 +96,7 @@
             <div id="file-download-${docindex}" class="ds_file-download__details">
                 <dl class="ds_metadata  ds_metadata--inline">
                     <div class="ds_metadata__item">
-                        <dt class="ds_metadata__key  visually-hidden">File type</dt>
+                        <dt class="ds_metadata__key">File type</dt>
                         <dd class="ds_metadata__value"><#if attachedDocument.pageCount?has_content && attachedDocument.pageCount gt 0>${attachedDocument.pageCount} page </#if>${fileDescription}</b></dd>
                     </div>
 
@@ -105,7 +105,7 @@
                     </#assign>
                     <#if fileSize?has_content>
                         <div class="ds_metadata__item">
-                            <dt class="ds_metadata__key  visually-hidden">File size</dt>
+                            <dt class="ds_metadata__key">File size</dt>
                             <dd class="ds_metadata__value">${fileSize}</dd>
                         </div>
                     </#if>

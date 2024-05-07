@@ -126,13 +126,13 @@
 
                 <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
                     <div class="ds_metadata__item">
-                        <dt class="ds_metadata__key  visually-hidden">Type</dt>
+                        <dt class="ds_metadata__key">Type</dt>
                         <dd class="ds_metadata__value">${item.label?cap_first}</dd>
                     </div>
 
                     <#if item.publicationDate??>
                         <div class="ds_metadata__item">
-                            <dt class="ds_metadata__key  visually-hidden">Date</dt>
+                            <dt class="ds_metadata__key">Date</dt>
                             <#assign dateFormat = "dd MMMM yyyy">
                             <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
                                 <#assign dateFormat = "dd MMMM yyyy HH:mm">
