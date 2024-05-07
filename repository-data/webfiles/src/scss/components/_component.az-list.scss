@@ -23,6 +23,10 @@
         @include ds_responsive-margin(7, bottom);
         @include ds_colwidth(10, 12, 16px);
     }
+
+    &__link {
+        margin-right: px-to-rem(8px);
+    }
 }
 
 @include ds_media-query(medium) {
