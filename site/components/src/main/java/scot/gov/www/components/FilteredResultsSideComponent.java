@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import com.google.common.collect.Lists;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -17,6 +18,7 @@ import org.onehippo.forge.selection.hst.contentbean.ValueListItem;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import scot.gov.www.beans.DynamicIssue;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
@@ -109,7 +111,8 @@ FilteredResultsSideComponent extends BaseHstComponent {
         HstQuery query = HstQueryBuilder.create(topicsFolder).ofTypes(Issue.class, Topic.class, DynamicIssue.class).orderByAscending("govscot:title").build();
         try {
             HstQueryResult result = query.execute();
-            request.setAttribute("topics", result.getHippoBeans());
+            List<HippoBean> topicsList = Lists.newArrayList(result.getHippoBeans());
+            request.setAttribute("topics", topicsList);
         } catch (QueryException e) {
             LOG.error("Failed to get topics", e);
         }
