@@ -82,23 +82,19 @@
             <#if response.resultPacket.resultsSummary.fullyMatching <= response.resultPacket.resultsSummary.numRanks ||
             response.resultPacket.resultsSummary.currStart <= response.resultPacket.resultsSummary.numRanks >
 
-            ${response.resultPacket.resultsSummary.totalMatching} results for <span class="ds_search-results__title-query">${question.originalQuery}</span>
+            ${response.resultPacket.resultsSummary.totalMatching} <#if response.resultPacket.resultsSummary.totalMatching gt 1>results<#else>result</#if> for <span class="ds_search-results__title-query">${question.originalQuery}</span>
                 <#if (response.resultPacket.qsups)!?size &gt; 0>
                     <#list response.resultPacket.qsups as qsup>or <span class="ds_search-results__title-query">${qsup.query}</span></#list>
                 </#if>
             <#else>
                 Showing ${response.resultPacket.resultsSummary.currStart} to ${response.resultPacket.resultsSummary.currEnd}
-                of ${response.resultPacket.resultsSummary.totalMatching} results for <span class="ds_search-results__title-query">${question.originalQuery}</span>
+                of ${response.resultPacket.resultsSummary.totalMatching} <#if response.resultPacket.resultsSummary.totalMatching gt 1>results<#else>result</#if> for <span class="ds_search-results__title-query">${question.originalQuery}</span>
                 <#if (response.resultPacket.qsups)!?size &gt; 0>
                     <#list response.resultPacket.qsups as qsup>or <span class="ds_search-results__title-query">${qsup.query}</span></#list>
                 </#if>
             </#if>
         </h2>
     </#if>
-
-    <div style="outline: 2px dashed deeppink;padding: 16px;margin: 16px 0;">
-todo: sort field is lost when removing facets. this seems to be a case sensitivity issue. sort values that work are uppercase, sort values that are in the remove facet buttons are lowercase
-</div>
 
     <div class="ds_skip-links  ds_skip-links--static">
         <ul class="ds_skip-links__list">
@@ -131,7 +127,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                                 <span class="ds_facet">
                                     ${item.label}
 
-                                    <a href="?${item.url}" aria-label="Remove '${item.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="${strSlug(item.label)}">
+                                    <a href="?${item.url}" role="button" aria-label="Remove '${item.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="${strSlug(item.label)}">
                                         <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
                                     </a>
                                 </span>
@@ -150,7 +146,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                                 <span class="ds_facet">
                                     ${item.label}
 
-                                    <a href="?${item.url}" aria-label="Remove '${item.label}' filter" class="ds_facet__button  js-remove-facet">
+                                    <a href="?${item.url}" role="button" aria-label="Remove '${item.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="${strSlug(item.label)}">
                                         <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
                                     </a>
                                 </span>
@@ -178,7 +174,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                                 <span class="ds_facet">
                                     ${filterButtons.dates.begin.label}
 
-                                    <a href="?${filterButtons.dates.begin.url}" aria-label="Remove 'updated after ${filterButtons.dates.begin.label}' filter" class="ds_facet__button  js-remove-facet">
+                                    <a href="?${filterButtons.dates.begin.url}" aria-label="Remove 'updated after ${filterButtons.dates.begin.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-from">
                                         <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
                                     </a>
                                 </span> and
@@ -188,7 +184,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                                 <span class="ds_facet">
                                     ${filterButtons.dates.end.label}
 
-                                    <a href="?${filterButtons.dates.end.url}" aria-label="Remove 'updated before ${filterButtons.dates.end.label}' filter" class="ds_facet__button  js-remove-facet">
+                                    <a href="?${filterButtons.dates.end.url}" aria-label="Remove 'updated before ${filterButtons.dates.end.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-to">
                                         <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
                                     </a>
                                 </span>
@@ -198,7 +194,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                                 <span class="ds_facet">
                                     ${filterButtons.dates.begin.label}
 
-                                    <a href="?${filterButtons.dates.begin.url}" aria-label="Remove 'updated after ${filterButtons.dates.begin.label}' filter" class="ds_facet__button  js-remove-facet">
+                                    <a href="?${filterButtons.dates.begin.url}" role="button" aria-label="Remove 'updated after ${filterButtons.dates.begin.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-from">
                                         <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
                                     </a>
                                 </span>
@@ -208,7 +204,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                                 <span class="ds_facet">
                                     ${filterButtons.dates.end.label}
 
-                                    <a href="?${filterButtons.dates.end.url}" aria-label="Remove 'updated before ${filterButtons.dates.end.label}' filter" class="ds_facet__button  js-remove-facet">
+                                    <a href="?${filterButtons.dates.end.url}" role="button" aria-label="Remove 'updated before ${filterButtons.dates.end.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-to">
                                         <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
                                     </a>
                                 </span>
@@ -218,7 +214,7 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
                 </#if>
             </dl>
 
-            <a href="?q=${RequestParameters.q}" class="ds_facets__clear-button  ds_button  ds_button--secondary">
+            <a href="?q=${RequestParameters.q}" role="button" class="ds_facets__clear-button  ds_button  ds_button--secondary  js-clear-filters">
                 Clear all filters
                 <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
             </a>
@@ -232,14 +228,14 @@ todo: sort field is lost when removing facets. this seems to be a case sensitivi
             <label class="ds_label" for="sort-by">Sort by</label>
             <span class="ds_select-wrapper">
                 <select form="filters" name="sort" class="ds_select  js-sort-by" id="sort-by">
-                    <option <#if hstRequest.request.getParameter('sort') == "RELEVANCE">selected</#if> value="RELEVANCE">Most relevant</option>
-                    <option <#if hstRequest.request.getParameter('sort') == "DATE">selected</#if> value="DATE">Most recent first</option>
-                    <option <#if hstRequest.request.getParameter('sort') == "ADATE">selected</#if> value="ADATE">Earliest first</option>
+                    <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "relevance">selected</#if> value="relevance">Most relevant</option>
+                    <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "date">selected</#if> value="date">Most recent first</option>
+                    <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "adate">selected</#if> value="adate">Earliest first</option>
                 </select>
                 <span class="ds_select-arrow" aria-hidden="true"></span>
             </span>
 
-            <button form="filters" class="ds_button  ds_button--secondary  ds_button--small" type="submit" data-button="button-apply-sort">Apply sort</button>
+            <button form="filters" class="ds_button  ds_button--secondary  ds_button--small  js-apply-sort" type="submit" data-button="button-apply-sort">Apply sort</button>
         </div>
     </div>
 

@@ -26,6 +26,15 @@
     <#assign end = nested?j_string />
 </#list>
 
+<!-- todo: pull this into a separate stylesheet -->
+<style>
+
+.js-disabled-search {
+    opacity: 0.5;
+    pointer-events: none;
+}
+</style>
+
 <div class="ds_search-filters">
     <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />">
 
@@ -197,7 +206,7 @@
                                         <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
                                         <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                                         <div class="ds_input__wrapper">
-                                            <input value="${begin}" name="begin" id="date-from" class="ds_input  ds_input--fixed-10" type="text">
+                                            <input value="<#if begin??>${begin}</#if>" name="begin" id="date-from" class="ds_input  ds_input--fixed-10" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +216,7 @@
                                         <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
                                         <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
                                         <div class="ds_input__wrapper">
-                                            <input value="${end}" name="end" id="date-to" class="ds_input  ds_input--fixed-10" type="text">
+                                            <input value="<#if end??>${end}</#if>" name="end" id="date-to" class="ds_input  ds_input--fixed-10" type="text">
                                         </div>
                                     </div>
                                 </div>

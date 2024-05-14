@@ -2,7 +2,7 @@
 
 jasmine.getFixtures().fixturesPath = 'base/test/fixtures';
 
-import SearchWithFilters from '../../src/scripts/govscot/component.search-with-filters';
+import SearchWithFilters from '../../src/scripts/govscot/component.landing-filters';
 import dates from '../../src/scripts/utils/dates';
 
 describe('"Search with filters" component', function() {
