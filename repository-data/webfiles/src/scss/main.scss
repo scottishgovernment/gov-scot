@@ -77,6 +77,10 @@ $breakpoints: (
 
 @import "components/bugfix.site-header";
 
+@import "design-system-preview/search-results/search-facets";
+@import "design-system-preview/search-results/search-filters";
+@import "design-system-preview/search-results/search-results";
+
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
 }
