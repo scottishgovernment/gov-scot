@@ -67,10 +67,9 @@ FilteredResultsSideComponent extends BaseHstComponent {
         if (info.getIncludePublicationTypesFilter()) {
             List<ValueListItem> items = publicationValueList.getItems();
             if (useExtendedPublicationType) {
-                items.add(new ExtendedValueListItem("News", "News"));
-                items.add(new ExtendedValueListItem("Policy", "Policy"));
-                // TODO: designs show these ate the bottom, do users distinguish them?
-                //items.sort(Comparator.comparing(ValueListItem::getLabel));
+                items.add(new ExtendedValueListItem("news", "News"));
+                items.add(new ExtendedValueListItem("policy", "Policy"));
+                items.sort(Comparator.comparing(ValueListItem::getLabel));
             }
             request.setAttribute("publicationTypes", items);
         } else if (!info.getPublicationTypes().isEmpty()) {
@@ -105,6 +104,7 @@ FilteredResultsSideComponent extends BaseHstComponent {
             return label;
         }
     }
+
     private void populateTopics(HstRequest request) {
         HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
         HippoFolderBean topicsFolder = baseBean.getBean("topics", HippoFolderBean.class);

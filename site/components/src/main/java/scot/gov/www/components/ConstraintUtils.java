@@ -16,7 +16,6 @@ import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 
 import javax.jcr.Node;
-import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.util.*;
@@ -34,13 +33,8 @@ public class ConstraintUtils {
         // hide public constructor
     }
     public static Constraint topicsConstraint(Collection<String> topics) {
-        List<String> topicIds = topicIds(topics);
-        if (topicIds.isEmpty()) {
-            return null;
-        }
-
         List<Constraint> constraintList = new ArrayList<>();
-        for (String topicId : topicIds) {
+        for (String topicId : topicIds(topics)) {
             constraintList.add(or(constraint("govscot:topics/@hippo:docbase").equalTo(topicId)));
         }
 
@@ -62,6 +56,10 @@ public class ConstraintUtils {
 
     static Constraint publicationTypeContraint(String publicationType) {
         return constraint("govscot:publicationType").equalTo(publicationType);
+    }
+
+    private static boolean isRequired(Node topicNode, Collection<String> requiredIds) throws RepositoryException {
+        return requiredIds.contains(topicNode.getName());
     }
 
     private static List<String> topicIds(Collection<String> topics) {
@@ -104,14 +102,4 @@ public class ConstraintUtils {
         }
     }
 
-
-    private static boolean isRequired(Node topicNode, Collection<String> requiredTitles) throws RepositoryException {
-        String title = nodeTitle(topicNode);
-        return requiredTitles.contains(title);
-    }
-
-    private static String nodeTitle(Node node) throws RepositoryException {
-        Property titleProperty = node.getProperty(GOVSCOT_TITLE);
-        return titleProperty.getString();
-    }
 }

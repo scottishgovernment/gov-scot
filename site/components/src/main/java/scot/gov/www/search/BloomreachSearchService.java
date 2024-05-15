@@ -33,7 +33,6 @@ import java.util.*;
 
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
-import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 import static scot.gov.www.components.FilteredResultsComponent.*;
 
@@ -130,24 +129,22 @@ public class BloomreachSearchService implements SearchService {
     }
 
     public HstQuery query(Search search) {
-        String query = defaultIfBlank(search.getQuery(), "");
-        String parsedQueryStr = SearchInputParsingUtils.parse(query, false);
         int offset = (search.getPage() - 1) * 10;
         HstRequestContext context = search.getRequest().getRequestContext();
         HstQueryBuilder queryBuilder = HstQueryBuilder.create(context.getSiteContentBaseBean());
         return queryBuilder
-                .where(constraints(parsedQueryStr, search.getRequest()))
+                .where(constraints(search))
                 .limit(PAGE_SIZE)
                 .offset(offset)
                 .build(context.getQueryManager());
     }
 
-    private Constraint constraints(String searchField, HstRequest request) {
+    private Constraint constraints(Search search) {
         List<Constraint> constraints = new ArrayList<>();
-        addTermConstraints(constraints, searchField);
-        addTopicsConstraint(constraints, request);
-        addDateConstraint(constraints, request, searchField);
-        addPublicationTypeConstraint(constraints, request);
+        addTermConstraints(constraints, search.getQuery());
+        addTopicsConstraint(constraints, search);
+        addDateConstraint(constraints, search);
+        addPublicationTypeConstraint(constraints, search);
         constraints.add(or(
                 constraint("govscot:excludeFromSearchIndex").equalTo(false),
                 constraint("govscot:excludeFromSearchIndex").notExists()));
@@ -155,31 +152,36 @@ public class BloomreachSearchService implements SearchService {
     }
 
     private void addTermConstraints(List<Constraint> constraints, String queryString) {
-        constraints.add(or(fieldConstraints(queryString)));
+        String parsedQueryStr = SearchInputParsingUtils.parse(queryString, false);
+        constraints.add(or(fieldConstraints(parsedQueryStr)));
     }
 
-    public static void addPublicationTypeConstraint(List<Constraint> constraints, HstRequest request) {
-        Set<String> publicationTypes = splitParameters(request, PUBLICATION_TYPES);
-        if (publicationTypes.isEmpty()) {
+    public static void addTopicsConstraint(List<Constraint> constraints, Search search) {
+        if (search.getTopics().isEmpty()) {
             return;
         }
+        constraints.add(ConstraintUtils.topicsConstraint(search.getTopics().keySet()));
+    }
+
+    public static void addPublicationTypeConstraint(List<Constraint> constraints, Search search) {
 
         List<Constraint> typeConstraints = new ArrayList<>();
 
         // convert the publication type 'news' to query for documents with the type 'govscot:News'
-        if (publicationTypes.contains("news")) {
+        if (search.getPublicationTypes().containsKey("news")) {
             typeConstraints.add(typeConstraint("govscot:News"));
         }
 
         // convert the publication type 'policy' to query for documents with one of the types 'govscot:Policy' or
         // 'govscot:PolicyInDetail'
-        if (publicationTypes.contains("policy")) {
+        if (search.getPublicationTypes().containsKey("policy")) {
             typeConstraints.add(or(typeConstraint("govscot:Policy"), typeConstraint("govscot:PolicyInDetail")));
         }
 
+        Set<String> publicationTypes = new HashSet<>(search.getPublicationTypes().keySet());
         publicationTypes.remove("news");
         publicationTypes.remove("policy");
-        Collections.addAll(typeConstraints, ConstraintUtils.publicationTypeConstraints(publicationTypes));
+        Collections.addAll(typeConstraints, ConstraintUtils.publicationTypeConstraints(search.getPublicationTypes().keySet()));
 
         if (!typeConstraints.isEmpty()) {
             // we need to 'or' the three potential constraint together
