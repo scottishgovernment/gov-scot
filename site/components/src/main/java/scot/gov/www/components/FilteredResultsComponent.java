@@ -107,15 +107,17 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         Map<String, String> typesMap = publicationTypes();
         String publicationTypes = param(request, PUBLICATION_TYPES);
         searchBuilder.publicationTypes(publicationTypes, typesMap);
+
         String [] types = request.getParameterMap().get("type");
-
-        // publication types from the param info, this is used by the stats page to make sure it filters by the specified publication types
-        searchBuilder.publicationTypes( paramInfo.getPublicationTypes(), ",", typesMap);
-
         if (types != null) {
             for (String type : types) {
                 searchBuilder.publicationTypes(type, typesMap);
             }
+        }
+
+        if (!searchBuilder.hasPublicationTypes()) {
+            // publication types from the param info, this is used by the stats page to make sure it filters by the specified publication types
+            searchBuilder.publicationTypes(paramInfo.getPublicationTypes(), ",", typesMap);
         }
     }
 
