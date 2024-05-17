@@ -10,6 +10,10 @@
         <div class="ds_layout__header">
             <header class="ds_page-header">
                 <h1 class="ds_page-header__title">${document.title}</h1>
+                <#if termsOfReference??>
+                    <@hst.link var="link" hippobean=termsOfReference />
+                    <a href="${link}">Terms of Reference</a>
+                </#if>
             </header>
             <#if !document.active>
                 <div class="ds_inset-text">
@@ -21,8 +25,11 @@
             </#if>
         </div>
 
+
+
         <div class="ds_layout__content">
             <h2>Overview</h2>
+
             <@hst.html hippohtml=document.content/>
 
             <#if document.relatedGroups?has_content>
@@ -44,17 +51,46 @@
                 ${members?no_esc}
             </#if>
 
-            <#if document.relatedPublications?has_content>
-                <h2>Documents</h2>
+            <#if hasPublications>
+                <h2>Publications</h2>
 
-                <ul>
-                    <#list document.relatedPublications as document>
-                        <li>
-                            <@hst.link var="link" hippobean=document />
-                            <a href="${link}">${document.title}</a>
-                        </li>
-                    </#list>
-                </ul>
+                <#if document.publicationsDescription?has_content>
+                    <@hst.html hippohtml=document.publicationsDescription/>
+                </#if>
+
+                <#list document.keyPublications as publication>
+                    <p>
+                        <@hst.link var="link" hippobean=publication />
+                        <a href="${link}">${publication.title}</a>
+                    </p>
+                </#list>
+
+                <#list groupedPublications as yeargroup>
+                    <div>
+                        <h3>${yeargroup.label}</h3>
+                        <ul>
+                            <#list yeargroup.publications as publication>
+                                <li>
+                                    <@hst.link var="link" hippobean=publication />
+                                    <a href="${link}">${publication.title}</a>
+                                </li>
+                            </#list>
+                            <#list yeargroup.subgroups as monthgroup>
+                                <div>
+                                   <h3>${monthgroup.label}</h3>
+                                   <ul>
+                                       <#list monthgroup.publications as publication2>
+                                           <li>
+                                               <@hst.link var="link" hippobean=publication2 />
+                                               <a href="${link}">${publication2.title}</a>
+                                           </li>
+                                       </#list>
+                                   </ul>
+                                </div>
+                            </#list>
+                        </ul>
+                    </div>
+                </#list>
             </#if>
         </div>
 

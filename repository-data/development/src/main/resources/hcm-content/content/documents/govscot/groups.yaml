@@ -9,7 +9,7 @@
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
     jcr:uuid: 706f6e38-e976-4cee-bc95-f03c81b305de
     hippo:name: Access Delivery Group
-    hippo:versionHistory: 25c133e6-ee35-4abc-872d-92a8cca7eb6d
+    hippo:versionHistory: cc90615f-3647-40dc-b151-b516f24d8251
     /access-delivery-group[1]:
       jcr:primaryType: govscot:Group
       jcr:mixinTypes: ['mix:referenceable']
@@ -32,9 +32,9 @@
         disadvantaged students]
       hippostdpubwf:createdBy: claire.delaney@gov.scot
       hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
-      hippostdpubwf:lastModificationDate: 2024-05-03T10:48:50.522+01:00
+      hippostdpubwf:lastModificationDate: 2024-05-13T09:05:03.013+01:00
       hippostdpubwf:lastModifiedBy: admin
-      hippostdpubwf:publicationDate: 2024-05-03T10:48:53.664+01:00
+      hippostdpubwf:publicationDate: 2024-05-13T09:05:05.195+01:00
       hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
       hippotranslation:locale: en
       /govscot:content:
@@ -135,6 +135,9 @@
       /govscot:responsibleRole:
         jcr:primaryType: hippo:mirror
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:publicationsDescription:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>this is the description</p>
     /access-delivery-group[2]:
       jcr:primaryType: govscot:Group
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -157,7 +160,7 @@
         disadvantaged students]
       hippostdpubwf:createdBy: claire.delaney@gov.scot
       hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
-      hippostdpubwf:lastModificationDate: 2024-05-03T10:48:50.522+01:00
+      hippostdpubwf:lastModificationDate: 2024-05-13T09:05:03.013+01:00
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
       hippotranslation:locale: en
@@ -259,6 +262,9 @@
       /govscot:responsibleRole:
         jcr:primaryType: hippo:mirror
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:publicationsDescription:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>this is the description</p>
     /access-delivery-group[3]:
       jcr:primaryType: govscot:Group
       jcr:mixinTypes: ['mix:referenceable']
@@ -281,7 +287,7 @@
         disadvantaged students]
       hippostdpubwf:createdBy: claire.delaney@gov.scot
       hippostdpubwf:creationDate: 2017-08-31T11:22:36+01:00
-      hippostdpubwf:lastModificationDate: 2024-05-03T10:48:47.715+01:00
+      hippostdpubwf:lastModificationDate: 2024-05-13T09:04:49.027+01:00
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: 6c660548-6e0f-4b60-9f52-2331605a7ef5
       hippotranslation:locale: en
@@ -383,3 +389,6 @@
       /govscot:responsibleRole:
         jcr:primaryType: hippo:mirror
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:publicationsDescription:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>this is the description</p>

@@ -11,10 +11,10 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: aeae505a-fa7e-4888-87f8-dd9fca1df1a6
+          jcr:uuid: fc2592c4-468c-4229-9455-7e4f2c1bc8e4
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
-            'hippotranslation:translated']
+                                   'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
           /isbn:
             jcr:primaryType: hipposysedit:field
@@ -66,6 +66,7 @@ definitions:
             hipposysedit:path: govscot:executiveSummary
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+
           /html:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -91,7 +92,7 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
-              publication-slug-dots]
+                                      publication-slug-dots]
           /displayDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -108,6 +109,14 @@ definitions:
             hipposysedit:path: govscot:contentitemlanguage
             hipposysedit:primary: false
             hipposysedit:type: DynamicDropdown
+          /group:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:group
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -124,7 +133,7 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: bcee3887-78e4-4216-a8c8-d07792c181df
+          jcr:uuid: 4879486d-e3ab-4478-ba56-8b9bf4deeb54
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -152,6 +161,9 @@ definitions:
           /govscot:executiveSummary:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:group:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -344,6 +356,17 @@ definitions:
               last.visited.enabled: 'false'
               base.path: /content/documents/govscot/about/
               nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
+          /group:
+            jcr:primaryType: frontend:plugin
+            caption: Group(s)
+            field: group
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Select any Groups that are related to this content item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: govscot:Group
+              base.path: /content/documents/govscot/groups/
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

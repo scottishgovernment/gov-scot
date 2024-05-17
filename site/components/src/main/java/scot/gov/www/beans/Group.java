@@ -40,6 +40,11 @@ public class Group extends AttributableContent {
         return getHippoHtml("govscot:content");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:content")
+    public HippoHtml getPublicationsDescription() {
+        return getHippoHtml("govscot:publicationsDescription");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:notes")
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");
@@ -65,9 +70,9 @@ public class Group extends AttributableContent {
         return getLinkedBeans("govscot:relatedGroups", HippoBean.class);
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:relatedPublications")
-    public List<HippoBean> getRelatedPublications() {
-        return getLinkedBeans("govscot:relatedPublications", HippoBean.class);
+    @HippoEssentialsGenerated(internalName = "govscot:relatedGroups")
+    public List<HippoBean> getKeyPublications() {
+        return getLinkedBeans("govscot:keyPublications", HippoBean.class);
     }
 
     public String getLabel() { return ""; }

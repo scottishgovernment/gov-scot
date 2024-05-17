@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 84183e62-ce9c-4002-b96c-4569854f48ce
+          jcr:uuid: 8f2f6f0b-cc2c-46a7-854c-b4ff72ba8185
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -48,14 +48,6 @@ definitions:
             hipposysedit:path: govscot:relatedGroups
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
-          /relatedPublications:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: true
-            hipposysedit:ordered: true
-            hipposysedit:path: govscot:relatedPublications
-            hipposysedit:primary: false
-            hipposysedit:type: hippo:mirror
           /content:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -82,6 +74,23 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: Boolean
             hipposysedit:validators: [required]
+          /publicationsDescription:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:publicationsDescription
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [optional]
+          /keyPublications:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:keyPublications
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -97,7 +106,7 @@ definitions:
           govscot:summary: ''
           govscot:title: ''
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: f5455ec3-fd38-4b70-ab3e-b2ab03149af3
+          jcr:uuid: 090cc368-bfda-4940-a6f5-e2e4c7c908e6
           hippostdpubwf:lastModificationDate: 2018-02-14T08:54:31.644Z
           hippostdpubwf:creationDate: 2018-02-14T08:54:31.644Z
           govscot:sme: ''
@@ -127,7 +136,10 @@ definitions:
           /govscot:relatedGroups:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:relatedPublications:
+          /govscot:publicationsDescription:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:keyPublications:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
@@ -163,16 +175,6 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /active:
-            jcr:primaryType: frontend:plugin
-            caption: Active group?
-            field: active
-            hint: Used to indicate that a group no longer meets.  Inactive groups
-              will be labelled.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
           /content:
             jcr:primaryType: frontend:plugin
             caption: Overview
@@ -180,6 +182,15 @@ definitions:
             hint: Provide a brief description of the group's role, independent review
               or inquiry.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /active:
+            jcr:primaryType: frontend:plugin
+            caption: Active?
+            field: active
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
@@ -202,6 +213,42 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /publicationsDescription:
+            jcr:primaryType: frontend:plugin
+            caption: Publications description
+            field: publicationsDescription
+            hint: Optional description of the publications for this Group.  This can
+              be used to link to publications listed elsewhere if required.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              ckeditor.config.appended.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"bidi\"\t}],\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
+                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
+                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
+                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
+                : \"mygov\"\t}, {\t\t\"name\": \"bidi\"\t}],\t\"disallowedContent\"\
+                : \"*[style]{*}\",\t\"extraPlugins\": \"language,youtube_enablejsapi,dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
+                ,\t\"contentsCss\": [\t\t\"ckeditor/hippocontents.css\",\t\t\"ckeditor/ckeditorstyle.css\"\
+                \t],\t\"youtube_responsive\": true,\t\"youtube_privacy\": true,\t\"\
+                youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\", \"\
+                txtEmbed\", \"chkOlderCode\"],\t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]\"\
+                ,\t\"language_list\": [\t\t\"en:English\",\t\t\"gd:Gaelic (Scottish)\"\
+                ,\t\t\"ru:Russian\",\t\t\"uk:Ukrainian\"\t]}"
+          /keyPublications:
+            jcr:primaryType: frontend:plugin
+            caption: Key Publications
+            field: keyPublications
+            hint: Key Publications are displayed before the other publications
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['govscot:Publication', 'govscot:ComplexDocument']
           /topics:
             jcr:primaryType: frontend:plugin
             caption: Topics and issues
@@ -290,18 +337,6 @@ definitions:
               base.path: /content/documents/govscot/groups/
               last.visited.enabled: 'false'
               nodetypes: govscot:Group
-          /relatedPublications:
-            jcr:primaryType: frontend:plugin
-            caption: Related publications
-            field: relatedPublications
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Select one or more publications related to this content item.
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              base.path: /content/documents/govscot/publications/
-              last.visited.enabled: 'false'
-              nodetypes: ['govscot:Publication', 'govscot:Minutes', 'govscot:SpeechOrStatement']
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

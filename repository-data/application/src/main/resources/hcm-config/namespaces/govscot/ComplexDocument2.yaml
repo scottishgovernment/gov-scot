@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 531ce956-ae92-4b31-bced-682bf1e467cd
+          jcr:uuid: a80d95d1-20d4-497c-81ac-11a4a4958bb6
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -40,7 +40,7 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
-              publication-slug-dots]
+                                      publication-slug-dots]
           /displayDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -54,7 +54,7 @@ definitions:
         /hipposysedit:prototype:
           jcr:primaryType: govscot:ComplexDocument2
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 0032ada4-4430-43d3-8297-e02e14644116
+          jcr:uuid: 927f19b3-f2b8-4a4f-9043-2c3aabff8e4f
           govscot:isbn: ''
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
@@ -277,6 +277,15 @@ definitions:
               base.path: /content/documents/govscot/about/
               last.visited.enabled: 'false'
               nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
+          /group:
+            jcr:primaryType: frontend:plugin
+            caption: Group(s)
+            field: group
+            hint: Select any Groups that are related to this content item
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /seoTitle:
             jcr:primaryType: frontend:plugin
             caption: SEO title

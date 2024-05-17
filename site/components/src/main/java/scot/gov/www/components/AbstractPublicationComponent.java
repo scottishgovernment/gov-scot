@@ -96,7 +96,11 @@ public abstract class AbstractPublicationComponent extends BaseHstComponent {
                     Collection.class,
                     false);
             HstQueryResult result = query.execute();
-            request.setAttribute(COLLECTIONS, collectionsBeans(result));
+
+            // combine collections and groups into the Part of attribute
+            List<HippoBean> collections = collectionsBeans(result);
+            collections.addAll(((Publication) publication).getGroup());
+            request.setAttribute(COLLECTIONS, collections);
         } catch (QueryException e) {
             LOG.warn("Unable to get collections for content item {}", request.getRequestURI(), e);
             request.setAttribute(COLLECTIONS, Collections.emptyList());

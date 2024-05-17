@@ -14,7 +14,7 @@ definitions:
           jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/1 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-03-26T11:05:00Z
+          hipposched:nextFireTime: 2024-05-13T15:48:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SearchJournalCleanupJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -46,7 +46,7 @@ definitions:
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PollFunnelbackCurator:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [pollPaths]
-      hipposched:attributeValues: ['/admin-api/curator/v2/collections/govscot~sp-govscot/profiles/search/curator/']
+      hipposched:attributeValues: [/admin-api/curator/v2/collections/govscot~sp-govscot/profiles/search/curator/]
       hipposched:enabled: true
       hipposched:repositoryJobClass: scot.gov.publishing.hippo.funnelback.scheduler.PollFunnelbackCurator
       /hipposched:triggers:
@@ -57,7 +57,7 @@ definitions:
           jcr:uuid: d2b951cd-b467-4ffa-afb8-e7aed9dc4db4
           hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-03-26T11:05:00Z
+          hipposched:nextFireTime: 2024-05-13T15:50:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PreviewLinksCleanup:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [batchsize]
@@ -72,7 +72,7 @@ definitions:
           jcr:uuid: ba851e5f-b012-43e4-8877-c41fe545e669
           hipposched:cronExpression: 0 0 2 ? * * *
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-03-07T02:00:00Z
+          hipposched:nextFireTime: 2024-05-14T02:00:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SlugLookupsPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -87,4 +87,4 @@ definitions:
           jcr:uuid: 4c842ed6-c970-429d-844c-b40cedd184c9
           hipposched:cronExpression: 0 0/10 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2023-12-18T11:30:00Z
+          hipposched:nextFireTime: 2024-05-13T15:50:00+01:00

@@ -54,7 +54,7 @@
         </dd>
     </#if>
     <#if index.topics?has_content>
-        <dt class="content-data__label">Part of:</dt>
+        <dt class="content-data__label">Topic:</dt>
 
         <dd class="content-data__value">
             <#list index.topics?sort_by("title") as topic>

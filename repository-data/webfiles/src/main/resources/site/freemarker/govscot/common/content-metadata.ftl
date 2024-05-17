@@ -1,9 +1,11 @@
 <#include "../../include/imports.ftl">
 <#include "macros/lang-attributes.ftl">
 
+
 <#if !metadataChildrenOnly??>
 <dl <@revertlang index /> class="ds_page-header__metadata  ds_metadata">
 </#if>
+
     <#if index.allResponsibleRoles?has_content>
         <div class="ds_metadata__item">
             <dt class="ds_metadata__key">From</dt>
@@ -52,7 +54,7 @@
     </#if>
     <#if index.topics?has_content>
         <div class="ds_metadata__item">
-            <dt class="ds_metadata__key">Part of</dt>
+            <dt class="ds_metadata__key">Topic</dt>
             <dd class="ds_metadata__value">
                 <#list index.topics?sort_by("title") as topic>
                     <#if topic?index lte 2>

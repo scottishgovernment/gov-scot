@@ -18,7 +18,7 @@
 
                         <#if document.topics?size gt 0>
                             <div class="ds_metadata__item">
-                                <dt class="ds_metadata__key">Part of</dt>
+                                <dt class="ds_metadata__key">Topic</dt>
 
                                 <dd class="ds_metadata__value">
                                     <#list document.topics as topic>
