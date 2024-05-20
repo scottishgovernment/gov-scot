@@ -189,6 +189,9 @@ class SearchFilters {
 
                 // update "selected" count
                 this.updateSelectedFilterCounts();
+
+                // add DS tracking
+                window.DS.tracking.init();
             })
             .catch((error) => {
                 window.location.href = url;
