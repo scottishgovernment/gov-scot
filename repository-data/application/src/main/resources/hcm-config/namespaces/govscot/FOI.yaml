@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 879886d3-d3b4-435c-99c4-77415b97ee66
+          jcr:uuid: 810c1ca7-fe01-4ab5-adc7-b5a84b66492d
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -69,7 +69,7 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
-                                      publication-slug-dots]
+              publication-slug-dots]
           /displayDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -108,7 +108,7 @@ definitions:
           govscot:dateResponded: 0001-01-01T12:00:00Z
           govscot:seoTitle: ''
           govscot:metaDescription: ''
-          jcr:uuid: bb8c7c5c-d168-4a41-b162-62fb03fbba8f
+          jcr:uuid: 69a617e6-e140-4088-a37a-0ce84fa3f8c4
           hippostdpubwf:lastModificationDate: 2019-01-24T13:41:25.409Z
           hippostdpubwf:creationDate: 2019-01-24T13:41:25.409Z
           govscot:reportingTags: []
@@ -332,7 +332,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Group(s)
             field: group
-            hint: Select any Groups that are related to this content item
+            hint: Associate this Publication with a Group. This will make it appear
+              on the Group page and also link to the Group from the publication page.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
