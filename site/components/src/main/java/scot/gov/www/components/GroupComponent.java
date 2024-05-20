@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
@@ -59,10 +60,17 @@ public class GroupComponent extends EssentialsContentComponent {
         }
         groupYearsByMonth(groups);
         request.setAttribute("groupedPublications", groups.values());
-        boolean hasPublications = !groups.isEmpty() || !group.getKeyPublications().isEmpty() || group.getPublicationsDescription() != null;
+        boolean hasPublications = !groups.isEmpty() || !group.getKeyPublications().isEmpty() || hasPublicationsDescription(group);
         request.setAttribute("hasPublications", hasPublications);
     }
 
+    boolean hasPublicationsDescription(Group group) {
+        if (group.getPublicationsDescription() == null) {
+            return false;
+        }
+
+        return StringUtils.isNotBlank(group.getPublicationsDescription().getContent());
+    }
     Calendar date(Publication publication) {
         if (publication.getOfficialdate() != null) {
             return publication.getOfficialdate();
