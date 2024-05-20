@@ -43,3 +43,10 @@ definitions:
       hipposys:role: unlocker
     /hippo:configuration/hippo:domains/content/embargo:
       .meta:delete: true
+    /hippo:configuration/hippo:domains/content/content-domain/exclude-resetpassword-folder:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: jcr:path
+      hipposys:filter: false
+      hipposys:type: Reference
+      hipposys:value: /content/documents/resetpassword

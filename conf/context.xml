@@ -26,4 +26,11 @@
     <!--  base url for communicating with funnelback -->
     <Parameter name="funnelback-api-url" value="https://dev-scotgov-admin.clients.uk.funnelback.com/" override="false"/>
 
+    <Resource name="mail/Session"
+              auth="Container"
+              type="javax.mail.Session"
+              mail.smtp.host="127.0.0.1"
+              mail.smtp.port= "2525"
+    />
+
 </Context>
