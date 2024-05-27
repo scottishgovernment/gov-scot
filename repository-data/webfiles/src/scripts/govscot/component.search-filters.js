@@ -224,7 +224,9 @@ class SearchFilters {
 
         // sort
         const sortField = document.querySelector('.js-sort-by');
-        searchParams.sort = sortField.value;
+        if (sortField) {
+            searchParams.sort = sortField.value;
+        }
 
         // term
         searchParams.q = getParameterByName('q');
