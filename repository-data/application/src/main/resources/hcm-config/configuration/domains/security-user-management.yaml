@@ -28,6 +28,20 @@ definitions:
       hipposys:filter: false
       hipposys:type: Name
       hipposys:value: admin
+    /hippo:configuration/hippo:domains/security-user-management/users/exclude-admin-user:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: admin
+    /hippo:configuration/hippo:domains/security-user-management/users/exclude-pwreset-user:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: resetpassword
     /hippo:configuration/hippo:domains/security-user-management/security:
       jcr:primaryType: hipposys:domainrule
       /security-and-descendants:
