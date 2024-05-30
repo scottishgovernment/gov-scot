@@ -46,6 +46,7 @@
     <forge.feed.version>7.0.0</forge.feed.version>
     <forge.embargo.version>7.0.2</forge.embargo.version>
     <forge.breadcrumb.version>5.0.0</forge.breadcrumb.version>
+    <forge.resetpassword.version>6.0.0</forge.resetpassword.version>
     <freemarker.version>2.3.28</freemarker.version>
 
     <essentials.version>15.4.0</essentials.version>
