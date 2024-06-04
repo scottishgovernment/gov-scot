@@ -1,17 +1,5 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/preview-documents/modify:
-      jcr:primaryType: hipposys:authrole
-      hipposys:groups:
-        .meta:category: system
-        .meta:add-new-system-values: true
-        type: string
-        value: [cmsadmin, useradmin,
-          collection-authors, collection-editors, core-content-authors, core-content-editors,
-          foi-authors, foi-editors, group-authors, group-editors, news-editors, policy-authors, policy-editors,
-          publication-authors, publication-editors, statistics-authors, statistics-editors,
-          topics-issues-authors, topics-issues-editors]
-      hipposys:role: modify
     /hippo:configuration/hippo:domains/preview-documents/hippo-document/hide-embargo-handle:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false
