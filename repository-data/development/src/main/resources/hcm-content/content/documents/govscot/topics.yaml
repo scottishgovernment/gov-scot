@@ -1988,7 +1988,7 @@
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
     jcr:uuid: 0172b667-78d2-406a-a590-6478d878caaa
     hippo:name: Coronavirus in Scotland
-    hippo:versionHistory: 1c14e9cf-a842-4020-bf67-9983ce2bfa81
+    hippo:versionHistory: e9e17ae5-dd99-4712-afb3-f6d874687e55
     /coronavirus-covid-19[1]:
       jcr:primaryType: govscot:Issue
       jcr:mixinTypes: ['mix:referenceable']
@@ -2014,6 +2014,7 @@
         data, how to get tested, and links to support and guidance.
       govscot:title: Coronavirus in Scotland
       hippo:availability: []
+      hippostd:retainable: false
       hippostd:state: draft
       hippostd:tags: [coronavirus, covid-19, SGoRR, COBRA, COBR, wuhan, flu, CMO,
         corona virus, corona numbers, health, coronovirus, coronabirus, corono virus,
@@ -2028,8 +2029,8 @@
         travel]
       hippostdpubwf:createdBy: gillian.fisher@gov.scot
       hippostdpubwf:creationDate: 2020-03-03T10:57:16.022Z
-      hippostdpubwf:lastModificationDate: 2022-02-03T11:15:47.227Z
-      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippostdpubwf:lastModificationDate: 2024-05-28T15:46:37.619+01:00
+      hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: a1c2d8c5-44c8-4bab-9e9d-81224665e9a3
       hippotranslation:locale: document-type-locale
       /govscot:content:
@@ -2319,6 +2320,7 @@
         data, how to get tested, and links to support and guidance.
       govscot:title: Coronavirus in Scotland
       hippo:availability: [preview]
+      hippostd:retainable: false
       hippostd:state: unpublished
       hippostd:tags: [coronavirus, covid-19, SGoRR, COBRA, COBR, wuhan, flu, CMO,
         corona virus, corona numbers, health, coronovirus, coronabirus, corono virus,
@@ -2333,8 +2335,8 @@
         travel]
       hippostdpubwf:createdBy: gillian.fisher@gov.scot
       hippostdpubwf:creationDate: 2020-03-03T10:57:16.022Z
-      hippostdpubwf:lastModificationDate: 2022-02-03T11:18:42.211Z
-      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+      hippostdpubwf:lastModificationDate: 2024-05-28T15:46:48.740+01:00
+      hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: a1c2d8c5-44c8-4bab-9e9d-81224665e9a3
       hippotranslation:locale: document-type-locale
       /govscot:content:
@@ -2624,6 +2626,7 @@
         data, how to get tested, and links to support and guidance.
       govscot:title: Coronavirus in Scotland
       hippo:availability: [live]
+      hippostd:retainable: false
       hippostd:state: published
       hippostd:tags: [coronavirus, covid-19, SGoRR, COBRA, COBR, wuhan, flu, CMO,
         corona virus, corona numbers, health, coronovirus, coronabirus, corono virus,
@@ -2638,9 +2641,9 @@
         travel]
       hippostdpubwf:createdBy: gillian.fisher@gov.scot
       hippostdpubwf:creationDate: 2020-03-03T10:57:16.022Z
-      hippostdpubwf:lastModificationDate: 2022-01-31T14:11:57.576Z
-      hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
-      hippostdpubwf:publicationDate: 2022-01-31T14:12:00.735Z
+      hippostdpubwf:lastModificationDate: 2024-05-28T15:46:48.740+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-05-28T15:46:51.459+01:00
       hippotranslation:id: a1c2d8c5-44c8-4bab-9e9d-81224665e9a3
       hippotranslation:locale: document-type-locale
       /govscot:content:
@@ -2816,12 +2819,16 @@
 
           <div class="ds_accordion-item"><input aria-labelledby="panel-793192-heading" id="panel-793192" type="checkbox" class="ds_accordion-item__control hidden" />
           <div class="ds_accordion-item__header">
-          <h3 id="panel-793192-heading" class="ds_accordion-item__title">Places of worship</h3>
+          <h3 id="panel-793192-heading" class="ds_accordion-item__title">Worship, weddings, civil partnerships and funerals</h3>
 
           <div class="ds_accordion-item__indicator">&nbsp;</div>
           <label for="panel-793192" class="ds_accordion-item__label"><span class="hidden">Show this section</span></label></div>
 
           <div class="ds_accordion-item__body">
+          <p>There are no limits on the number&nbsp;of people who can attend places of worship, weddings, civil partnerships and funerals.&nbsp;</p>
+
+          <p>Follow the <a href="https://www.gov.scot/publications/coronavirus-covid-19-public-use-of-face-coverings/">guidance on face coverings</a> and take a lateral flow test before you go.</p>
+
           <p>Read <a href="https://www.gov.scot/publications/coronavirus-covid-19-phase-3-guidance-for-the-safe-use-of-places-of-worship/">guidance on the safe use of places of worship</a>.&nbsp;</p>
           </div>
           </div>
@@ -7338,3 +7345,266 @@
         hippo:facets: []
         hippo:modes: []
         hippo:values: []
+  /cost-of-living-support:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: b19e1466-461b-4677-b65b-f58ea9ef4812
+    hippo:name: Cost of living crisis
+    hippo:versionHistory: 4c254367-9f8f-453a-8137-7cefbf5d4b88
+    /cost-of-living-support[1]:
+      jcr:primaryType: govscot:Issue
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: a27bb614-600c-47b0-b5f4-a2254ea91e34
+      govscot:featureDate: 0001-01-01T12:00:00Z
+      govscot:featureDateSummary: ''
+      govscot:featureDateTitle: ''
+      govscot:featuredItemsTitle: Featured
+      govscot:includeFeedback: false
+      govscot:metaDescription: Details of what the Scottish government is doing to
+        support people through the cost of living crisis.
+      govscot:newsTags: []
+      govscot:reportingTags: []
+      govscot:seoTitle: Cost of Living support
+      govscot:showOnTopicsLandingPage: true
+      govscot:sme: ''
+      govscot:summary: Details of what the Scottish government is doing to support
+        people through the cost of living crisis.
+      govscot:title: Cost of living crisis
+      hippo:availability: []
+      hippostd:holder: admin
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostd:transferable: false
+      hippostdpubwf:createdBy: christian.storstein@gov.scot
+      hippostdpubwf:creationDate: 2022-08-22T11:02:32.912+01:00
+      hippostdpubwf:lastModificationDate: 2024-05-28T15:48:56.331+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 569e83d8-440f-45eb-b674-ec085daf512a
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:featuredItems[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 9a3dca29-bc5a-4c65-91fb-148b557d3d36
+      /govscot:overview:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <div class="ds_inset-text">
+          <div class="ds_inset-text__text">
+          <p><a href="http://www.gov.scot"><strong></strong></a></p>
+
+          <p><strong>Find out what help is available via our <a href="https://costofliving.campaign.gov.scot/">cost of living crisis support website.</a></strong></p>
+
+          </div>
+          </div>
+
+          <p><span><span><span><span><span>People all across Scotland are being affected by the most severe economic crisis in a generation. The effects of this are being seen now as households and businesses are having to make difficult choices, despite the support that has been announced.</span></span></span></span></span></p>
+
+          <p><span><span><span><span><span>The Scottish Government is doing what it can with its limited powers to ensure people receive the help they need.</span></span></span></span></span></p>
+
+          <p>The <a href="https://www.gov.scot/publications/emergency-budget-review-2022-23/">Emergency Budget Review</a> identified funding of £35 million for a range of new measures, including:</p>
+
+          <ul>
+           <li>doubling the value of the December Scottish Child Bridging Payment to £260 per eligible child&nbsp;&nbsp;</li>
+           <li>a new £1.4 million Island Cost Crisis Emergency Fund&nbsp;</li>
+           <li>establishing a Joint Taskforce with business, COSLA, local authorities and agencies to consider the differing impacts of regulation on business</li>
+           <li>extending energy advice to businesses by investing £300,000 to expand the services of Business Energy Scotland, while doubling the value of the SME energy efficiency Loan and Cash Back Scheme for energy efficiency to £20,000</li>
+           <li>new payment break options to help protect those who have agreed to repay debt through the Debt Arrangement Scheme but face unexpected increases in the cost of living</li>
+          </ul>
+
+          <p><span><span><span><span><span>This is in addtion to measures set out in the latest <a href="programme-for-government">Programme for Government</a>:</span></span></span></span></span></p>
+
+          <ul>
+           <li><span><span><span><span><span>for anyone in receipt of the Scottish Child Payment, an automatic increase to £25 per week will be in place from 14 November. Applications for the Scottish Child Payment will also be open to all eligible under 16s from that date, with all payments backdated to the date of application.&nbsp; </span></span></span></span></span></li>
+           <li><span><span><span><span><span>the introduction of the new Winter Heating Payment allowance which guarantees a £50 annual payment to around 400,000 low income households</span></span></span></span></span></li>
+           <li><span><span><span><span><span>doubling of the Fuel Insecurity Fund to £20 million in 2022-23, to help households at risk of self-disconnection or self-rationing energy use</span></span></span></span></span></li>
+           <li><span><span><span><span><span>widening eligibility for the Tenant Grant Fund, to support those struggling with increasing costs</span></span></span></span></span></li>
+           <li><span><span><span><span><span>giving local authorities more flexibility to take account of energy bills in their prioritisation of households for Discretionary Housing Payments. We will also increase funding for Discretionary Housing Payments by £5 million.</span></span></span></span></span></li>
+          </ul>
+        /programme-for-government:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 800222ff-38c4-41ee-a1d0-9b9cdbd55320
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: 1f51a8bb-5984-4250-b7b4-660350cbea96
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /govscot:featuredItems[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: f20dac10-8030-4b9d-b3bb-44af550f7966
+    /cost-of-living-support[2]:
+      jcr:primaryType: govscot:Issue
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 1372ec50-64f8-45bb-ac3b-5a61825ec79c
+      govscot:featureDate: 0001-01-01T12:00:00Z
+      govscot:featureDateSummary: ''
+      govscot:featureDateTitle: ''
+      govscot:featuredItemsTitle: Featured
+      govscot:includeFeedback: false
+      govscot:metaDescription: Details of what the Scottish government is doing to
+        support people through the cost of living crisis.
+      govscot:newsTags: []
+      govscot:reportingTags: []
+      govscot:seoTitle: Cost of Living support
+      govscot:showOnTopicsLandingPage: true
+      govscot:sme: ''
+      govscot:summary: Details of what the Scottish government is doing to support
+        people through the cost of living crisis.
+      govscot:title: Cost of living crisis
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostd:transferable: false
+      hippostdpubwf:createdBy: christian.storstein@gov.scot
+      hippostdpubwf:creationDate: 2022-08-22T11:02:32.912+01:00
+      hippostdpubwf:lastModificationDate: 2024-05-28T13:28:49.942+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 569e83d8-440f-45eb-b674-ec085daf512a
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:featuredItems[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 9a3dca29-bc5a-4c65-91fb-148b557d3d36
+      /govscot:overview:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <div class="ds_inset-text">
+          <div class="ds_inset-text__text">
+          <p><a href="http://www.gov.scot"><strong></strong></a></p>
+
+          <p><strong>Find out what help is available via our <a href="https://costofliving.campaign.gov.scot/">cost of living crisis support website.</a></strong></p>
+
+          </div>
+          </div>
+
+          <p><span><span><span><span><span>People all across Scotland are being affected by the most severe economic crisis in a generation. The effects of this are being seen now as households and businesses are having to make difficult choices, despite the support that has been announced.</span></span></span></span></span></p>
+
+          <p><span><span><span><span><span>The Scottish Government is doing what it can with its limited powers to ensure people receive the help they need.</span></span></span></span></span></p>
+
+          <p>The <a href="https://www.gov.scot/publications/emergency-budget-review-2022-23/">Emergency Budget Review</a> identified funding of £35 million for a range of new measures, including:</p>
+
+          <ul>
+           <li>doubling the value of the December Scottish Child Bridging Payment to £260 per eligible child&nbsp;&nbsp;</li>
+           <li>a new £1.4 million Island Cost Crisis Emergency Fund&nbsp;</li>
+           <li>establishing a Joint Taskforce with business, COSLA, local authorities and agencies to consider the differing impacts of regulation on business</li>
+           <li>extending energy advice to businesses by investing £300,000 to expand the services of Business Energy Scotland, while doubling the value of the SME energy efficiency Loan and Cash Back Scheme for energy efficiency to £20,000</li>
+           <li>new payment break options to help protect those who have agreed to repay debt through the Debt Arrangement Scheme but face unexpected increases in the cost of living</li>
+          </ul>
+
+          <p><span><span><span><span><span>This is in addtion to measures set out in the latest <a href="programme-for-government">Programme for Government</a>:</span></span></span></span></span></p>
+
+          <ul>
+           <li><span><span><span><span><span>for anyone in receipt of the Scottish Child Payment, an automatic increase to £25 per week will be in place from 14 November. Applications for the Scottish Child Payment will also be open to all eligible under 16s from that date, with all payments backdated to the date of application.&nbsp; </span></span></span></span></span></li>
+           <li><span><span><span><span><span>the introduction of the new Winter Heating Payment allowance which guarantees a £50 annual payment to around 400,000 low income households</span></span></span></span></span></li>
+           <li><span><span><span><span><span>doubling of the Fuel Insecurity Fund to £20 million in 2022-23, to help households at risk of self-disconnection or self-rationing energy use</span></span></span></span></span></li>
+           <li><span><span><span><span><span>widening eligibility for the Tenant Grant Fund, to support those struggling with increasing costs</span></span></span></span></span></li>
+           <li><span><span><span><span><span>giving local authorities more flexibility to take account of energy bills in their prioritisation of households for Discretionary Housing Payments. We will also increase funding for Discretionary Housing Payments by £5 million.</span></span></span></span></span></li>
+          </ul>
+        /programme-for-government:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 800222ff-38c4-41ee-a1d0-9b9cdbd55320
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: 1f51a8bb-5984-4250-b7b4-660350cbea96
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /govscot:featuredItems[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: f20dac10-8030-4b9d-b3bb-44af550f7966
+    /cost-of-living-support[3]:
+      jcr:primaryType: govscot:Issue
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: e59f10fb-314d-4af6-baac-27e0f2007314
+      govscot:featureDate: 0001-01-01T12:00:00Z
+      govscot:featureDateSummary: ''
+      govscot:featureDateTitle: ''
+      govscot:featuredItemsTitle: Featured
+      govscot:includeFeedback: false
+      govscot:metaDescription: Details of what the Scottish government is doing to
+        support people through the cost of living crisis.
+      govscot:newsTags: []
+      govscot:reportingTags: []
+      govscot:seoTitle: Cost of Living support
+      govscot:showOnTopicsLandingPage: true
+      govscot:sme: ''
+      govscot:summary: Details of what the Scottish government is doing to support
+        people through the cost of living crisis.
+      govscot:title: Cost of living crisis
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostd:transferable: false
+      hippostdpubwf:createdBy: christian.storstein@gov.scot
+      hippostdpubwf:creationDate: 2022-08-22T11:02:32.912+01:00
+      hippostdpubwf:lastModificationDate: 2024-05-28T13:28:49.942+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2024-05-28T13:28:51.518+01:00
+      hippotranslation:id: 569e83d8-440f-45eb-b674-ec085daf512a
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:featuredItems[1]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: 9a3dca29-bc5a-4c65-91fb-148b557d3d36
+      /govscot:overview:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <div class="ds_inset-text">
+          <div class="ds_inset-text__text">
+          <p><a href="http://www.gov.scot"><strong></strong></a></p>
+
+          <p><strong>Find out what help is available via our <a href="https://costofliving.campaign.gov.scot/">cost of living crisis support website.</a></strong></p>
+
+          </div>
+          </div>
+
+          <p><span><span><span><span><span>People all across Scotland are being affected by the most severe economic crisis in a generation. The effects of this are being seen now as households and businesses are having to make difficult choices, despite the support that has been announced.</span></span></span></span></span></p>
+
+          <p><span><span><span><span><span>The Scottish Government is doing what it can with its limited powers to ensure people receive the help they need.</span></span></span></span></span></p>
+
+          <p>The <a href="https://www.gov.scot/publications/emergency-budget-review-2022-23/">Emergency Budget Review</a> identified funding of £35 million for a range of new measures, including:</p>
+
+          <ul>
+           <li>doubling the value of the December Scottish Child Bridging Payment to £260 per eligible child&nbsp;&nbsp;</li>
+           <li>a new £1.4 million Island Cost Crisis Emergency Fund&nbsp;</li>
+           <li>establishing a Joint Taskforce with business, COSLA, local authorities and agencies to consider the differing impacts of regulation on business</li>
+           <li>extending energy advice to businesses by investing £300,000 to expand the services of Business Energy Scotland, while doubling the value of the SME energy efficiency Loan and Cash Back Scheme for energy efficiency to £20,000</li>
+           <li>new payment break options to help protect those who have agreed to repay debt through the Debt Arrangement Scheme but face unexpected increases in the cost of living</li>
+          </ul>
+
+          <p><span><span><span><span><span>This is in addtion to measures set out in the latest <a href="programme-for-government">Programme for Government</a>:</span></span></span></span></span></p>
+
+          <ul>
+           <li><span><span><span><span><span>for anyone in receipt of the Scottish Child Payment, an automatic increase to £25 per week will be in place from 14 November. Applications for the Scottish Child Payment will also be open to all eligible under 16s from that date, with all payments backdated to the date of application.&nbsp; </span></span></span></span></span></li>
+           <li><span><span><span><span><span>the introduction of the new Winter Heating Payment allowance which guarantees a £50 annual payment to around 400,000 low income households</span></span></span></span></span></li>
+           <li><span><span><span><span><span>doubling of the Fuel Insecurity Fund to £20 million in 2022-23, to help households at risk of self-disconnection or self-rationing energy use</span></span></span></span></span></li>
+           <li><span><span><span><span><span>widening eligibility for the Tenant Grant Fund, to support those struggling with increasing costs</span></span></span></span></span></li>
+           <li><span><span><span><span><span>giving local authorities more flexibility to take account of energy bills in their prioritisation of households for Discretionary Housing Payments. We will also increase funding for Discretionary Housing Payments by £5 million.</span></span></span></span></span></li>
+          </ul>
+        /programme-for-government:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 800222ff-38c4-41ee-a1d0-9b9cdbd55320
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /govscot:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: 1f51a8bb-5984-4250-b7b4-660350cbea96
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /govscot:featuredItems[2]:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: f20dac10-8030-4b9d-b3bb-44af550f7966

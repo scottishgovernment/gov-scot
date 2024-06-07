@@ -99,6 +99,12 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
         Node handle = session.getNodeByIdentifier(event.subjectId());
         Node node = hippoUtils.getVariant(handle);
+        Node sitemapNode = getSitemapSiteNode(node);
+        // when running in cargo the sitempa node is not present, sop just return early
+        if (sitemapNode == null) {
+            LOG.warn("no sitemap node for {}", node.getPath());
+            return;
+        }
         updateSitemapLatestDate(node);
         if (isExcludedType(node)) {
             session.save();
@@ -163,7 +169,10 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
     }
 
     Node getSitemapSiteNode(Node node) throws RepositoryException {
-        Node sitemapRoot = session.getNode(SITEMAP_ROOT);
+        Node sitemapRoot = session.nodeExists(SITEMAP_ROOT) ? session.getNode(SITEMAP_ROOT) : null;
+        if (sitemapRoot == null) {
+            return null;
+        }
         String sitename = UrlSource.sitename(node);
         return sitemapRoot.getNode(sitename);
     }

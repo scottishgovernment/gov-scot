@@ -51,6 +51,12 @@
 
     <dependency>
       <groupId>scot.gov.www</groupId>
+      <artifactId>pressreleases-rest</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.www</groupId>
       <artifactId>searchjournal-rest</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>

@@ -146,6 +146,7 @@
     hippostd:holder: admin
     hippostd:state: draft
     hippostd:tags: []
+    hippostd:transferable: false
     hippostdpubwf:createdBy: build.api@mygov.scot
     hippostdpubwf:creationDate: 2015-06-16T10:52:43+01:00
     hippostdpubwf:lastModificationDate: 2024-04-18T09:44:33.091+01:00

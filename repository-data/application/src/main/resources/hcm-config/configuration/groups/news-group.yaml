@@ -3,3 +3,8 @@ definitions:
     /hippo:configuration/hippo:groups/news:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [admin]
