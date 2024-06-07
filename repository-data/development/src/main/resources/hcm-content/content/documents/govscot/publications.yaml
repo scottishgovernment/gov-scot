@@ -664,26 +664,72 @@
           /pages:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-page]
+            /testpage:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: f1c64af6-bd7d-4378-8cdf-169cac4f3efb
+              hippo:versionHistory: b0af17e8-8d23-4e1f-917a-d5ce7fe2ed4a
+              /testpage[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 7f5b0513-8c3e-41f8-8368-4a13fdec767b
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-05-29T13:21:30.336+01:00
+                govscot:title: testpage argle bargle
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-05-29T13:19:40.960+01:00
+                hippostdpubwf:lastModificationDate: 2024-05-29T13:21:20.466+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: dc683dbd-f439-4131-9ce6-d04254550cd5
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>argle bargle</p>
+              /testpage[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: e7c7afae-a118-466e-8b9a-1f36f2705be9
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-05-29T13:21:30.336+01:00
+                govscot:title: testpage argle bargle
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-05-29T13:19:40.960+01:00
+                hippostdpubwf:lastModificationDate: 2024-05-29T13:21:28.248+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: dc683dbd-f439-4131-9ce6-d04254550cd5
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>argle bargle</p>
+              /testpage[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 02587c88-563e-4edc-b319-b1b61a782bc7
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-05-29T13:21:30.336+01:00
+                govscot:title: testpage argle bargle
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-05-29T13:19:40.960+01:00
+                hippostdpubwf:lastModificationDate: 2024-05-29T13:21:28.248+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2024-05-29T13:21:30.336+01:00
+                hippotranslation:id: dc683dbd-f439-4131-9ce6-d04254550cd5
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>argle bargle</p>
           /documents:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
-  /speech-statement:
-    jcr:primaryType: hippostd:folder
-    jcr:mixinTypes: ['hippo:named', 'hipposys:unstructured', 'mix:versionable']
-    jcr:uuid: 6e09ce54-5eb1-4038-a35c-94fc3307a52e
-    govscot:publicationType: advice-and-guidance
-    hippo:name: Speech/statement
-    hippostd:foldertype: [new-publication-year-folder]
-    /2020:
-      jcr:primaryType: hippostd:folder
-      jcr:mixinTypes: ['mix:versionable']
-      jcr:uuid: 644fd954-e718-47da-a43a-29bef6e22efa
-      hippostd:foldertype: [new-publication-month-folder]
-      /01:
-        jcr:primaryType: hippostd:folder
-        jcr:mixinTypes: ['mix:versionable']
-        jcr:uuid: bfb62545-1813-4851-afa5-df6cff067c18
-        hippostd:foldertype: [new-speech-or-statement-folder]
   /index:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
@@ -899,3 +945,734 @@
       /govscot:blankSearchQueryMessage:
         jcr:primaryType: hippostd:html
         hippostd:content: <p>Enter a search term</p>
+  /correspondence:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: 573d4124-7548-4097-8b40-2b1ff91175bd
+    govscot:publicationType: correspondence
+    hippostd:foldertype: [new-publication-year-folder]
+    /2021:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 8557704a-5113-45ce-b8e6-4777e02031b4
+      hippostd:foldertype: [new-publication-month-folder]
+      /07:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: 2819a3fc-bb23-4596-aebc-5f7c46d92fa7
+        hippostd:foldertype: [new-publication-folder]
+  /speech-statement:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: 5e365a65-fc9d-4b91-9ed8-7086de428376
+    govscot:publicationType: speech-statement
+    hippostd:foldertype: [new-document, new-folder]
+    /2021:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 709b56fb-a127-4fc5-b885-f0d265f1c381
+      hippostd:foldertype: [new-publication-month-folder]
+      /07:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: 8dc55da3-902d-4591-9176-457668874083
+        hippostd:foldertype: [new-speech-or-statement-folder]
+        /speech11111:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'mix:versionable']
+          jcr:uuid: e860ef1f-4f31-4846-8927-7550ccd2053a
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: f76df65d-142a-4304-869e-c8f3cfa0b02f
+            hippo:name: speech11111
+            hippo:versionHistory: 2768d76a-ef54-4841-b7f8-5664aabf15d8
+            /index[1]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+              jcr:uuid: 84f1be86-f9e5-46e9-b705-37bbf9374ddd
+              govscot:displayDate: 2021-07-10T00:00:00Z
+              govscot:externalId: speech11111
+              govscot:isbn: ''
+              govscot:metaDescription: asdasdcorrespondence1111111
+              govscot:notes: notes
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: newone-seoname
+              govscot:publicationDate: 2021-07-10T00:00:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: speech11111
+              govscot:slug: speech11111
+              govscot:summary: asdasdcorrespondence1111111
+              govscot:title: speech11111
+              govscot:updatedDate: 2020-07-10T00:00:00Z
+              hippo:availability: [preview]
+              hippo:name: speech11111
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostd:tags: []
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-05-22T16:10:47.173+01:00
+              hippostdpubwf:lastModificationDate: 2024-05-22T16:10:51.095+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: a9b1ca76-0072-4066-abef-377a4ccc1c5c
+              hippotranslation:locale: en
+              /govscot:background:
+                jcr:primaryType: hippostd:html
+                hippostd:content: notes
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: asdasdcorrespondence
+            /index[2]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: 95293204-0ca2-4b6f-90c1-049855c09ea4
+              govscot:displayDate: 2021-07-10T00:00:00Z
+              govscot:externalId: speech11111
+              govscot:isbn: ''
+              govscot:metaDescription: asdasdcorrespondence1111111
+              govscot:notes: notes
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: newone-seoname
+              govscot:publicationDate: 2021-07-10T00:00:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: speech11111
+              govscot:slug: speech11111
+              govscot:summary: asdasdcorrespondence1111111
+              govscot:title: speech11111
+              govscot:updatedDate: 2020-07-10T00:00:00Z
+              hippo:availability: []
+              hippo:name: speech11111
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostd:tags: []
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-05-22T16:10:47.173+01:00
+              hippostdpubwf:lastModificationDate: 2024-05-22T16:10:51.217+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: a9b1ca76-0072-4066-abef-377a4ccc1c5c
+              hippotranslation:locale: en
+              /govscot:background:
+                jcr:primaryType: hippostd:html
+                hippostd:content: notes
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: asdasdcorrespondence
+            /index[3]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: ae08d04c-c307-4d0f-a5fe-1366a8474064
+              govscot:displayDate: 2021-07-10T00:00:00Z
+              govscot:externalId: speech11111
+              govscot:isbn: ''
+              govscot:metaDescription: asdasdcorrespondence1111111
+              govscot:notes: notes
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: newone-seoname
+              govscot:publicationDate: 2021-07-10T00:00:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: speech11111
+              govscot:slug: speech11111
+              govscot:summary: asdasdcorrespondence1111111
+              govscot:title: speech11111
+              govscot:updatedDate: 2020-07-10T00:00:00Z
+              hippo:availability: [live]
+              hippo:name: speech11111
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostd:tags: []
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-05-22T16:10:47.173+01:00
+              hippostdpubwf:lastModificationDate: 2024-05-22T16:10:51.095+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippostdpubwf:publicationDate: 2024-05-22T16:10:51.868+01:00
+              hippotranslation:id: a9b1ca76-0072-4066-abef-377a4ccc1c5c
+              hippotranslation:locale: en
+              /govscot:background:
+                jcr:primaryType: hippostd:html
+                hippostd:content: notes
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: asdasdcorrespondence
+    /2024:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: bd43343e-7d82-49b1-b8b9-3a7c9878ab14
+      hippostd:foldertype: [new-publication-month-folder]
+      /06:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: d0420c4a-8af6-4801-806b-2defe4aee17f
+        hippostd:foldertype: [new-speech-or-statement-folder]
+        /health-secretary-opening-speech-a-vision-for-health-and-social-care:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'mix:versionable']
+          jcr:uuid: e0329bcd-d704-4728-a4ef-6a7dab4bf91a
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: 5df09ed0-87c6-43c2-b6ec-79ecff51846e
+            hippo:name: Health Secretary opening speech - A vision for health and
+              social care
+            hippo:versionHistory: bf247641-086e-437e-af1c-3966f61fde8f
+            /index[1]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+              jcr:uuid: 09e146b8-5cef-4c5f-98c0-7903d57021f5
+              govscot:displayDate: 2024-06-04T16:08:00Z
+              govscot:externalId: 665f1b25cf129bb7a4563b46
+              govscot:isbn: ''
+              govscot:metaDescription: Health Secretary Neil Gray's speech to Scottish
+                Parliament - 4 June 2024
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: health-secretary-opening-speech-a-vision-for-health-and-social-care
+              govscot:publicationDate: 2024-06-04T16:08:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: Health Secretary opening speech - A vision for health
+                and social care
+              govscot:slug: health-secretary-opening-speech-a-vision-for-health-and-social-care
+              govscot:summary: Health Secretary Neil Gray's speech to Scottish Parliament
+                - 4 June 2024
+              govscot:title: Health Secretary opening speech - A vision for health
+                and social care
+              govscot:updatedDate: 2024-06-04T16:06:21.967Z
+              hippo:availability: [preview]
+              hippo:name: Health Secretary opening speech - A vision for health and
+                social care
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostd:tags: [Health and social care]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-06-07T08:31:32.602+01:00
+              hippostdpubwf:lastModificationDate: 2024-06-07T08:31:33.224+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: db526fc6-16af-47eb-9e71-4f0a4427a98c
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you very much indeed Presiding Officer.</p>
+                  <p>We have reached a critical point in our country’s health, we are seeing growing demand upon our health and social care services that needs addressed alongside an improvement in service performance.</p>
+                  <p>The growing demand based on our poor population health which both reduces the wellbeing of Scotland and impacts on the sustainability of our services.</p>
+                  <p>This Government is clear that the NHS in Scotland, and the values that underpin its work, is an institution of national pride.</p>
+                  <p>And I also recognise the vital role of the social care system in supporting people to manage their health within their communities to live well.</p>
+                  <p>The principles of a health service for everyone, owned by the people, and free at the point of delivery, are sacrosanct.</p>
+                  <p>Let me be clear that any consideration of abandoning those fundamental values lies beyond a red line that we will not cross.</p>
+                  <p>However, while those principles will not change, Scotland itself has changed.</p>
+                  <p>The NHS was established 76 years ago to address the health challenges of its time.</p>
+                  <p>Now, we live longer, medicines can do much more, technology has transformed the way we live, and our lifestyles have changed. And the treatment of people in hospitals when they are ill is only a small part of modern healthcare.</p>
+                  <p>And while this Government is making progress in addressing the challenges of waiting lists, our health and social care services are hard pressed to meet service demand.</p>
+                  <p>So today I seek to open a debate of openness, and in good faith, on how we can reform and improve our health services, and how we can collectively deliver a transformed system fit for the health challenges we face.</p>
+                  <p>Presiding Officer, I am a pragmatist.</p>
+                  <p>We have a clear vision for the direction of reform, which I will shortly outline, and a programme of improvements is already underway.</p>
+                  <p>But I am willing also to consider fresh ideas. I am here today asking this Chamber to consider how together we can seize the opportunity to reform health and social care for present and future generations.</p>
+                  <p>I have already outlined to my Cabinet colleagues an overarching vision which will guide our work.</p>
+                  <p>This vision is one with which no one here could argue: a Scotland where people live longer, healthy and fulfilling lives.</p>
+                  <p>This vision is supported by four key areas of work: improving population health, a focus on prevention and early intervention, providing quality services, and maximising access, with all of these underpinned by giving due consideration to the people at the heart of those services.</p>
+                  <p>In the short term we must ensure that our services are delivered in the best way we can within our current arrangements, and in the medium term, we need to begin to transform how we work.</p>
+                  <p>And we must keep our eyes on the horizon, because in the longer term we also need to fundamentally change how we think about the delivery of health and care, driving investment in prevention and early intervention.</p>
+                  <p>Because our vision also reveals the complexity of the task before us: without improving our nation’s general health, no end of service improvements or clinical strategies or refined operating models will be able to make us a healthier nation in the long run.</p>
+                  <p>That is why prevention is key.</p>
+                  <p>We want to shift the balance of care closer to people’s homes and drive a proactive approach of early intervention and prevention.</p>
+                  <p>This will be underpinned by the principles of accessibility, addressing health inequalities, maximising outcomes, and promoting innovation as well as value for money.</p>
+                  <p>In urgent and unscheduled care, a lot has already been done, working with the Scottish Ambulance Service, NHS 24 and through the creation of Flow Navigation Centres to manage demand.</p>
+                  <p>Our continued investment in Hospital at Home will help to increase the provision of acute care at home and ensure patients receive personalised care.</p>
+                  <p>We also need to look at the long-term reforms that are going to be required.</p>
+                  <p>We are developing a Population Health Framework, taking a cross-government, cross-sector approach to improve the key building blocks of health.</p>
+                  <p>We also must recognise the vital role of social care, and unpaid carers, supporting people to remain in their own homes for longer.</p>
+                  <p>And this is a cross govt preventative approach.</p>
+                  <p>We are supporting low income households, delivering the Scottish Child Payment, delivering Best Start Bright Futures to tackle child poverty, and expanding free school meals.</p>
+                  <p>We will continue minimum unit pricing and to take forward radical action to reduce the harm caused by smoking.</p>
+                  <p>I am also clear that, as a nation, all of us need to take personal responsibility and do what we can to mind our own health, pay due attention to nutrition, to our mental health and to exercise – whatever form that may take.</p>
+                  <p>Our service reforms must take a whole system approach, including social care and the planned National Care Service.</p>
+                  <p>Primary Care, the crucial bedrock of the NHS and the key to driving sustainable, effective, good value for money healthcare, has a well-established collaborative programme of reform and improvement already underway.</p>
+                  <p>Primary Care reform is focused around seeing the right person, in the right time, in the right place; and is key to realising a community first approach.</p>
+                  <p>So improving access to primary care and shifting care to the community is and must be a key focus of reform.</p>
+                  <p>This includes our NHS dental payment reform, free universal NHS-funded eye examinations, our NHS Pharmacy First service – signposting people with common conditions to local pharmacies for advice and treatment.</p>
+                  <p>To support general practice, we have significantly expanded the primary care multi-disciplinary team workforce, with over 4,700 staff working in services including physiotherapy, pharmacy and phlebotomy.</p>
+                  <p>We are supporting development of these teams through investment of £190m in the Primary Care Improvement Fund this year, as well as continuing to support practice learning time.</p>
+                  <p>There are ongoing issues we need to continue to address.</p>
+                  <p>People whose discharge from hospital is delayed are not receiving the best care that they need, and this can have significant consequences for them as well as the entire system.</p>
+                  <p>We have already put in place the Delayed Discharge and Hospital Occupancy Action Plan to help create necessary capacity.</p>
+                  <p>But we still need to improve the flow of patients through our hospitals and will work closely with all stakeholders to achieve this.</p>
+                  <p>In 2021 the Independent Review of Adult Social Care showed the clear need for change, recommending a reform of social care in Scotland and strengthening national accountability for social care support.</p>
+                  <p>The National Care Service Bill, which will ensure greater transparency in the delivery of community health and social care, improve standards, strengthen the role of the workforce and provide better support for unpaid carers, is the biggest public sector reform since Devolution.</p>
+                  <p>People are at the heart of this reform – ending the inconsistency of care provision across Scotland, ensuring those who need it have access to consistently high-quality care and support and instilling Fair Work principles for our workforce.</p>
+                  <p>Reform is also taking place within our mental health services, which we will continue to invest in, and will shortly see the publication of the Delivery Plan for the new Mental Health and Capacity Reform Programme.</p>
+                  <p>This is the first important step in ensuring that the law, and our policies and practices ensure that anyone who requires support is treated fairly and with dignity.</p>
+                  <p>This is just one aspect of our work to improve mental health support at all levels and we will continue to work closely with COLSA, health boards and other partners to implement the delivery plans we published last year.</p>
+                  <p>Our valued healthcare workforce is of course a key part to our vision for reform.</p>
+                  <p>In addition to the ongoing implementation of Agenda for Change, we are working with the BMA on junior doctor contract reform, and we have launched the Ministerial Taskforce on Nursing and Midwifery, which covers attraction, education and training, retention and staff wellbeing.</p>
+                  <p>The Health and Care (Staffing) (Scotland) Act 2019, introduced in April, is the first comprehensive, multi-disciplinary, workforce planning legislation in Scotland – the most comprehensive of its kind in the UK.</p>
+                  <p>And we have recognised the vital role of the social care workforce, with a pay uplift to £12 per hour for adult social care workers in commissioned services.</p>
+                  <p>Alongside that support for the workforce wellbeing productivity into service, our reforms can and must be accelerated and enriched by the transformative potential of scientific innovation.</p>
+                  <p>Last week, the Deputy First Minister and I co-chaired a roundtable on game-changing technologies.</p>
+                  <p>The event brought together key leaders from the life science industry as well as academics, the NHS and Government, to discuss advances in science and technology that can transform lives and the implementation of service.</p>
+                  <p>Medical research is moving faster than ever, and new preventative technologies are supporting people to better manage their own health better and prevent and mitigate disease.</p>
+                  <p>Wearable devices are helping people to take ownership over their own health, while new diagnostic and screening methods can support the NHS identify and treat disease before symptoms appear.</p>
+                  <p>There is a huge future potential in personalised and precision medicine and gene therapies as well as robotic surgery.</p>
+                  <p>So we will proceed with a new partnership based between Government, the NHS, our academic institutions, and the life sciences industry, focused on seizing opportunities to empower patients, liberate clinicians, drive efficiencies, and prevent ill health.</p>
+                  <p>And I am pleased today to announce that five Scottish institutions – the Universities of Aberdeen, Edinburgh, St Andrews and Strathclyde, as well as Public Health Scotland, have been awarded £1 million of funding each through the Chief Scientist Office to conduct major research programmes into areas of population health in Scotland.</p>
+                  <p>The five programmes awarded funding have the potential to make a significant impact.</p>
+                  <p>So Presiding Officer, I am aware there are voices in this Chamber who have already called for structural change but I think the urgency of the change required and the focus must be on the transformation of services <br>services within the current structures and maximising current assets.</p>
+                  <p>So I will work to implement an NHS Scotland approach, to harness greater levels of collaboration in our health boards and partners, resulting in better value, quality, and outcomes for patients and staff.</p>
+                  <p>And that will be led through a government-led national engagement which we must make sure we are fully committed to the series of engagement which will inform our plans, led through a person-centred approach but obviously making sure we utilise the incredible work of our workforce.</p>
+                  <p>We have established a Primary and Community Health Steering Group, bringing together a range of stakeholders partners.</p>
+                  <p>And an Expert Reference Group will be convened this autumn, providing independent input, advice and an additional independent international perspective.</p>
+                  <p>A Stakeholder Advisory Group will also bring together a cross-section of professional associations, COSLA, the ALLIANCE, regulators and others in service delivery. I look forward to hearing directly from them to translate the vision into delivery across the system.</p>
+                  <p>We will also listen to all voices and by the end of the year, I hope to have brought them to bear on the actions we take.</p>
+                  <p>In conclusion, Presiding Officer, there is no more important issue to a nation than the health of its people.</p>
+                  <p>I am not looking to publish another strategy. Our work is already being guided by multiple plans, notably the National Clinical Strategy of 2016.</p>
+                  <p>Our task now centres on listening, and delivery.</p>
+                  <p>So I am pleased and privileged to open this debate today and welcome all contributions and move the motion in my name.</p>
+                  <p>&nbsp;</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: e4b2db4c-fd8a-4b54-a44b-56bf75a3e3ad
+            /index[2]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: adfbc478-5741-428b-bb4a-0b4137597049
+              govscot:displayDate: 2024-06-04T16:08:00Z
+              govscot:externalId: 665f1b25cf129bb7a4563b46
+              govscot:isbn: ''
+              govscot:metaDescription: Health Secretary Neil Gray's speech to Scottish
+                Parliament - 4 June 2024
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: health-secretary-opening-speech-a-vision-for-health-and-social-care
+              govscot:publicationDate: 2024-06-04T16:08:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: Health Secretary opening speech - A vision for health
+                and social care
+              govscot:slug: health-secretary-opening-speech-a-vision-for-health-and-social-care
+              govscot:summary: Health Secretary Neil Gray's speech to Scottish Parliament
+                - 4 June 2024
+              govscot:title: Health Secretary opening speech - A vision for health
+                and social care
+              govscot:updatedDate: 2024-06-04T16:06:21.967Z
+              hippo:availability: []
+              hippo:name: Health Secretary opening speech - A vision for health and
+                social care
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostd:tags: [Health and social care]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-06-07T08:31:32.602+01:00
+              hippostdpubwf:lastModificationDate: 2024-06-07T08:31:33.026+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: db526fc6-16af-47eb-9e71-4f0a4427a98c
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you very much indeed Presiding Officer.</p>
+                  <p>We have reached a critical point in our country’s health, we are seeing growing demand upon our health and social care services that needs addressed alongside an improvement in service performance.</p>
+                  <p>The growing demand based on our poor population health which both reduces the wellbeing of Scotland and impacts on the sustainability of our services.</p>
+                  <p>This Government is clear that the NHS in Scotland, and the values that underpin its work, is an institution of national pride.</p>
+                  <p>And I also recognise the vital role of the social care system in supporting people to manage their health within their communities to live well.</p>
+                  <p>The principles of a health service for everyone, owned by the people, and free at the point of delivery, are sacrosanct.</p>
+                  <p>Let me be clear that any consideration of abandoning those fundamental values lies beyond a red line that we will not cross.</p>
+                  <p>However, while those principles will not change, Scotland itself has changed.</p>
+                  <p>The NHS was established 76 years ago to address the health challenges of its time.</p>
+                  <p>Now, we live longer, medicines can do much more, technology has transformed the way we live, and our lifestyles have changed. And the treatment of people in hospitals when they are ill is only a small part of modern healthcare.</p>
+                  <p>And while this Government is making progress in addressing the challenges of waiting lists, our health and social care services are hard pressed to meet service demand.</p>
+                  <p>So today I seek to open a debate of openness, and in good faith, on how we can reform and improve our health services, and how we can collectively deliver a transformed system fit for the health challenges we face.</p>
+                  <p>Presiding Officer, I am a pragmatist.</p>
+                  <p>We have a clear vision for the direction of reform, which I will shortly outline, and a programme of improvements is already underway.</p>
+                  <p>But I am willing also to consider fresh ideas. I am here today asking this Chamber to consider how together we can seize the opportunity to reform health and social care for present and future generations.</p>
+                  <p>I have already outlined to my Cabinet colleagues an overarching vision which will guide our work.</p>
+                  <p>This vision is one with which no one here could argue: a Scotland where people live longer, healthy and fulfilling lives.</p>
+                  <p>This vision is supported by four key areas of work: improving population health, a focus on prevention and early intervention, providing quality services, and maximising access, with all of these underpinned by giving due consideration to the people at the heart of those services.</p>
+                  <p>In the short term we must ensure that our services are delivered in the best way we can within our current arrangements, and in the medium term, we need to begin to transform how we work.</p>
+                  <p>And we must keep our eyes on the horizon, because in the longer term we also need to fundamentally change how we think about the delivery of health and care, driving investment in prevention and early intervention.</p>
+                  <p>Because our vision also reveals the complexity of the task before us: without improving our nation’s general health, no end of service improvements or clinical strategies or refined operating models will be able to make us a healthier nation in the long run.</p>
+                  <p>That is why prevention is key.</p>
+                  <p>We want to shift the balance of care closer to people’s homes and drive a proactive approach of early intervention and prevention.</p>
+                  <p>This will be underpinned by the principles of accessibility, addressing health inequalities, maximising outcomes, and promoting innovation as well as value for money.</p>
+                  <p>In urgent and unscheduled care, a lot has already been done, working with the Scottish Ambulance Service, NHS 24 and through the creation of Flow Navigation Centres to manage demand.</p>
+                  <p>Our continued investment in Hospital at Home will help to increase the provision of acute care at home and ensure patients receive personalised care.</p>
+                  <p>We also need to look at the long-term reforms that are going to be required.</p>
+                  <p>We are developing a Population Health Framework, taking a cross-government, cross-sector approach to improve the key building blocks of health.</p>
+                  <p>We also must recognise the vital role of social care, and unpaid carers, supporting people to remain in their own homes for longer.</p>
+                  <p>And this is a cross govt preventative approach.</p>
+                  <p>We are supporting low income households, delivering the Scottish Child Payment, delivering Best Start Bright Futures to tackle child poverty, and expanding free school meals.</p>
+                  <p>We will continue minimum unit pricing and to take forward radical action to reduce the harm caused by smoking.</p>
+                  <p>I am also clear that, as a nation, all of us need to take personal responsibility and do what we can to mind our own health, pay due attention to nutrition, to our mental health and to exercise – whatever form that may take.</p>
+                  <p>Our service reforms must take a whole system approach, including social care and the planned National Care Service.</p>
+                  <p>Primary Care, the crucial bedrock of the NHS and the key to driving sustainable, effective, good value for money healthcare, has a well-established collaborative programme of reform and improvement already underway.</p>
+                  <p>Primary Care reform is focused around seeing the right person, in the right time, in the right place; and is key to realising a community first approach.</p>
+                  <p>So improving access to primary care and shifting care to the community is and must be a key focus of reform.</p>
+                  <p>This includes our NHS dental payment reform, free universal NHS-funded eye examinations, our NHS Pharmacy First service – signposting people with common conditions to local pharmacies for advice and treatment.</p>
+                  <p>To support general practice, we have significantly expanded the primary care multi-disciplinary team workforce, with over 4,700 staff working in services including physiotherapy, pharmacy and phlebotomy.</p>
+                  <p>We are supporting development of these teams through investment of £190m in the Primary Care Improvement Fund this year, as well as continuing to support practice learning time.</p>
+                  <p>There are ongoing issues we need to continue to address.</p>
+                  <p>People whose discharge from hospital is delayed are not receiving the best care that they need, and this can have significant consequences for them as well as the entire system.</p>
+                  <p>We have already put in place the Delayed Discharge and Hospital Occupancy Action Plan to help create necessary capacity.</p>
+                  <p>But we still need to improve the flow of patients through our hospitals and will work closely with all stakeholders to achieve this.</p>
+                  <p>In 2021 the Independent Review of Adult Social Care showed the clear need for change, recommending a reform of social care in Scotland and strengthening national accountability for social care support.</p>
+                  <p>The National Care Service Bill, which will ensure greater transparency in the delivery of community health and social care, improve standards, strengthen the role of the workforce and provide better support for unpaid carers, is the biggest public sector reform since Devolution.</p>
+                  <p>People are at the heart of this reform – ending the inconsistency of care provision across Scotland, ensuring those who need it have access to consistently high-quality care and support and instilling Fair Work principles for our workforce.</p>
+                  <p>Reform is also taking place within our mental health services, which we will continue to invest in, and will shortly see the publication of the Delivery Plan for the new Mental Health and Capacity Reform Programme.</p>
+                  <p>This is the first important step in ensuring that the law, and our policies and practices ensure that anyone who requires support is treated fairly and with dignity.</p>
+                  <p>This is just one aspect of our work to improve mental health support at all levels and we will continue to work closely with COLSA, health boards and other partners to implement the delivery plans we published last year.</p>
+                  <p>Our valued healthcare workforce is of course a key part to our vision for reform.</p>
+                  <p>In addition to the ongoing implementation of Agenda for Change, we are working with the BMA on junior doctor contract reform, and we have launched the Ministerial Taskforce on Nursing and Midwifery, which covers attraction, education and training, retention and staff wellbeing.</p>
+                  <p>The Health and Care (Staffing) (Scotland) Act 2019, introduced in April, is the first comprehensive, multi-disciplinary, workforce planning legislation in Scotland – the most comprehensive of its kind in the UK.</p>
+                  <p>And we have recognised the vital role of the social care workforce, with a pay uplift to £12 per hour for adult social care workers in commissioned services.</p>
+                  <p>Alongside that support for the workforce wellbeing productivity into service, our reforms can and must be accelerated and enriched by the transformative potential of scientific innovation.</p>
+                  <p>Last week, the Deputy First Minister and I co-chaired a roundtable on game-changing technologies.</p>
+                  <p>The event brought together key leaders from the life science industry as well as academics, the NHS and Government, to discuss advances in science and technology that can transform lives and the implementation of service.</p>
+                  <p>Medical research is moving faster than ever, and new preventative technologies are supporting people to better manage their own health better and prevent and mitigate disease.</p>
+                  <p>Wearable devices are helping people to take ownership over their own health, while new diagnostic and screening methods can support the NHS identify and treat disease before symptoms appear.</p>
+                  <p>There is a huge future potential in personalised and precision medicine and gene therapies as well as robotic surgery.</p>
+                  <p>So we will proceed with a new partnership based between Government, the NHS, our academic institutions, and the life sciences industry, focused on seizing opportunities to empower patients, liberate clinicians, drive efficiencies, and prevent ill health.</p>
+                  <p>And I am pleased today to announce that five Scottish institutions – the Universities of Aberdeen, Edinburgh, St Andrews and Strathclyde, as well as Public Health Scotland, have been awarded £1 million of funding each through the Chief Scientist Office to conduct major research programmes into areas of population health in Scotland.</p>
+                  <p>The five programmes awarded funding have the potential to make a significant impact.</p>
+                  <p>So Presiding Officer, I am aware there are voices in this Chamber who have already called for structural change but I think the urgency of the change required and the focus must be on the transformation of services <br>services within the current structures and maximising current assets.</p>
+                  <p>So I will work to implement an NHS Scotland approach, to harness greater levels of collaboration in our health boards and partners, resulting in better value, quality, and outcomes for patients and staff.</p>
+                  <p>And that will be led through a government-led national engagement which we must make sure we are fully committed to the series of engagement which will inform our plans, led through a person-centred approach but obviously making sure we utilise the incredible work of our workforce.</p>
+                  <p>We have established a Primary and Community Health Steering Group, bringing together a range of stakeholders partners.</p>
+                  <p>And an Expert Reference Group will be convened this autumn, providing independent input, advice and an additional independent international perspective.</p>
+                  <p>A Stakeholder Advisory Group will also bring together a cross-section of professional associations, COSLA, the ALLIANCE, regulators and others in service delivery. I look forward to hearing directly from them to translate the vision into delivery across the system.</p>
+                  <p>We will also listen to all voices and by the end of the year, I hope to have brought them to bear on the actions we take.</p>
+                  <p>In conclusion, Presiding Officer, there is no more important issue to a nation than the health of its people.</p>
+                  <p>I am not looking to publish another strategy. Our work is already being guided by multiple plans, notably the National Clinical Strategy of 2016.</p>
+                  <p>Our task now centres on listening, and delivery.</p>
+                  <p>So I am pleased and privileged to open this debate today and welcome all contributions and move the motion in my name.</p>
+                  <p>&nbsp;</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: e4b2db4c-fd8a-4b54-a44b-56bf75a3e3ad
+            /index[3]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: 9366e40a-6032-4331-a626-ab619d7653f2
+              govscot:displayDate: 2024-06-04T16:08:00Z
+              govscot:externalId: 665f1b25cf129bb7a4563b46
+              govscot:isbn: ''
+              govscot:metaDescription: Health Secretary Neil Gray's speech to Scottish
+                Parliament - 4 June 2024
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: health-secretary-opening-speech-a-vision-for-health-and-social-care
+              govscot:publicationDate: 2024-06-04T16:08:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: Health Secretary opening speech - A vision for health
+                and social care
+              govscot:slug: health-secretary-opening-speech-a-vision-for-health-and-social-care
+              govscot:summary: Health Secretary Neil Gray's speech to Scottish Parliament
+                - 4 June 2024
+              govscot:title: Health Secretary opening speech - A vision for health
+                and social care
+              govscot:updatedDate: 2024-06-04T16:06:21.967Z
+              hippo:availability: [live]
+              hippo:name: Health Secretary opening speech - A vision for health and
+                social care
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostd:tags: [Health and social care]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-06-07T08:31:32.602+01:00
+              hippostdpubwf:lastModificationDate: 2024-06-07T08:31:33.224+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippostdpubwf:publicationDate: 2024-06-07T08:31:33.431+01:00
+              hippotranslation:id: db526fc6-16af-47eb-9e71-4f0a4427a98c
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you very much indeed Presiding Officer.</p>
+                  <p>We have reached a critical point in our country’s health, we are seeing growing demand upon our health and social care services that needs addressed alongside an improvement in service performance.</p>
+                  <p>The growing demand based on our poor population health which both reduces the wellbeing of Scotland and impacts on the sustainability of our services.</p>
+                  <p>This Government is clear that the NHS in Scotland, and the values that underpin its work, is an institution of national pride.</p>
+                  <p>And I also recognise the vital role of the social care system in supporting people to manage their health within their communities to live well.</p>
+                  <p>The principles of a health service for everyone, owned by the people, and free at the point of delivery, are sacrosanct.</p>
+                  <p>Let me be clear that any consideration of abandoning those fundamental values lies beyond a red line that we will not cross.</p>
+                  <p>However, while those principles will not change, Scotland itself has changed.</p>
+                  <p>The NHS was established 76 years ago to address the health challenges of its time.</p>
+                  <p>Now, we live longer, medicines can do much more, technology has transformed the way we live, and our lifestyles have changed. And the treatment of people in hospitals when they are ill is only a small part of modern healthcare.</p>
+                  <p>And while this Government is making progress in addressing the challenges of waiting lists, our health and social care services are hard pressed to meet service demand.</p>
+                  <p>So today I seek to open a debate of openness, and in good faith, on how we can reform and improve our health services, and how we can collectively deliver a transformed system fit for the health challenges we face.</p>
+                  <p>Presiding Officer, I am a pragmatist.</p>
+                  <p>We have a clear vision for the direction of reform, which I will shortly outline, and a programme of improvements is already underway.</p>
+                  <p>But I am willing also to consider fresh ideas. I am here today asking this Chamber to consider how together we can seize the opportunity to reform health and social care for present and future generations.</p>
+                  <p>I have already outlined to my Cabinet colleagues an overarching vision which will guide our work.</p>
+                  <p>This vision is one with which no one here could argue: a Scotland where people live longer, healthy and fulfilling lives.</p>
+                  <p>This vision is supported by four key areas of work: improving population health, a focus on prevention and early intervention, providing quality services, and maximising access, with all of these underpinned by giving due consideration to the people at the heart of those services.</p>
+                  <p>In the short term we must ensure that our services are delivered in the best way we can within our current arrangements, and in the medium term, we need to begin to transform how we work.</p>
+                  <p>And we must keep our eyes on the horizon, because in the longer term we also need to fundamentally change how we think about the delivery of health and care, driving investment in prevention and early intervention.</p>
+                  <p>Because our vision also reveals the complexity of the task before us: without improving our nation’s general health, no end of service improvements or clinical strategies or refined operating models will be able to make us a healthier nation in the long run.</p>
+                  <p>That is why prevention is key.</p>
+                  <p>We want to shift the balance of care closer to people’s homes and drive a proactive approach of early intervention and prevention.</p>
+                  <p>This will be underpinned by the principles of accessibility, addressing health inequalities, maximising outcomes, and promoting innovation as well as value for money.</p>
+                  <p>In urgent and unscheduled care, a lot has already been done, working with the Scottish Ambulance Service, NHS 24 and through the creation of Flow Navigation Centres to manage demand.</p>
+                  <p>Our continued investment in Hospital at Home will help to increase the provision of acute care at home and ensure patients receive personalised care.</p>
+                  <p>We also need to look at the long-term reforms that are going to be required.</p>
+                  <p>We are developing a Population Health Framework, taking a cross-government, cross-sector approach to improve the key building blocks of health.</p>
+                  <p>We also must recognise the vital role of social care, and unpaid carers, supporting people to remain in their own homes for longer.</p>
+                  <p>And this is a cross govt preventative approach.</p>
+                  <p>We are supporting low income households, delivering the Scottish Child Payment, delivering Best Start Bright Futures to tackle child poverty, and expanding free school meals.</p>
+                  <p>We will continue minimum unit pricing and to take forward radical action to reduce the harm caused by smoking.</p>
+                  <p>I am also clear that, as a nation, all of us need to take personal responsibility and do what we can to mind our own health, pay due attention to nutrition, to our mental health and to exercise – whatever form that may take.</p>
+                  <p>Our service reforms must take a whole system approach, including social care and the planned National Care Service.</p>
+                  <p>Primary Care, the crucial bedrock of the NHS and the key to driving sustainable, effective, good value for money healthcare, has a well-established collaborative programme of reform and improvement already underway.</p>
+                  <p>Primary Care reform is focused around seeing the right person, in the right time, in the right place; and is key to realising a community first approach.</p>
+                  <p>So improving access to primary care and shifting care to the community is and must be a key focus of reform.</p>
+                  <p>This includes our NHS dental payment reform, free universal NHS-funded eye examinations, our NHS Pharmacy First service – signposting people with common conditions to local pharmacies for advice and treatment.</p>
+                  <p>To support general practice, we have significantly expanded the primary care multi-disciplinary team workforce, with over 4,700 staff working in services including physiotherapy, pharmacy and phlebotomy.</p>
+                  <p>We are supporting development of these teams through investment of £190m in the Primary Care Improvement Fund this year, as well as continuing to support practice learning time.</p>
+                  <p>There are ongoing issues we need to continue to address.</p>
+                  <p>People whose discharge from hospital is delayed are not receiving the best care that they need, and this can have significant consequences for them as well as the entire system.</p>
+                  <p>We have already put in place the Delayed Discharge and Hospital Occupancy Action Plan to help create necessary capacity.</p>
+                  <p>But we still need to improve the flow of patients through our hospitals and will work closely with all stakeholders to achieve this.</p>
+                  <p>In 2021 the Independent Review of Adult Social Care showed the clear need for change, recommending a reform of social care in Scotland and strengthening national accountability for social care support.</p>
+                  <p>The National Care Service Bill, which will ensure greater transparency in the delivery of community health and social care, improve standards, strengthen the role of the workforce and provide better support for unpaid carers, is the biggest public sector reform since Devolution.</p>
+                  <p>People are at the heart of this reform – ending the inconsistency of care provision across Scotland, ensuring those who need it have access to consistently high-quality care and support and instilling Fair Work principles for our workforce.</p>
+                  <p>Reform is also taking place within our mental health services, which we will continue to invest in, and will shortly see the publication of the Delivery Plan for the new Mental Health and Capacity Reform Programme.</p>
+                  <p>This is the first important step in ensuring that the law, and our policies and practices ensure that anyone who requires support is treated fairly and with dignity.</p>
+                  <p>This is just one aspect of our work to improve mental health support at all levels and we will continue to work closely with COLSA, health boards and other partners to implement the delivery plans we published last year.</p>
+                  <p>Our valued healthcare workforce is of course a key part to our vision for reform.</p>
+                  <p>In addition to the ongoing implementation of Agenda for Change, we are working with the BMA on junior doctor contract reform, and we have launched the Ministerial Taskforce on Nursing and Midwifery, which covers attraction, education and training, retention and staff wellbeing.</p>
+                  <p>The Health and Care (Staffing) (Scotland) Act 2019, introduced in April, is the first comprehensive, multi-disciplinary, workforce planning legislation in Scotland – the most comprehensive of its kind in the UK.</p>
+                  <p>And we have recognised the vital role of the social care workforce, with a pay uplift to £12 per hour for adult social care workers in commissioned services.</p>
+                  <p>Alongside that support for the workforce wellbeing productivity into service, our reforms can and must be accelerated and enriched by the transformative potential of scientific innovation.</p>
+                  <p>Last week, the Deputy First Minister and I co-chaired a roundtable on game-changing technologies.</p>
+                  <p>The event brought together key leaders from the life science industry as well as academics, the NHS and Government, to discuss advances in science and technology that can transform lives and the implementation of service.</p>
+                  <p>Medical research is moving faster than ever, and new preventative technologies are supporting people to better manage their own health better and prevent and mitigate disease.</p>
+                  <p>Wearable devices are helping people to take ownership over their own health, while new diagnostic and screening methods can support the NHS identify and treat disease before symptoms appear.</p>
+                  <p>There is a huge future potential in personalised and precision medicine and gene therapies as well as robotic surgery.</p>
+                  <p>So we will proceed with a new partnership based between Government, the NHS, our academic institutions, and the life sciences industry, focused on seizing opportunities to empower patients, liberate clinicians, drive efficiencies, and prevent ill health.</p>
+                  <p>And I am pleased today to announce that five Scottish institutions – the Universities of Aberdeen, Edinburgh, St Andrews and Strathclyde, as well as Public Health Scotland, have been awarded £1 million of funding each through the Chief Scientist Office to conduct major research programmes into areas of population health in Scotland.</p>
+                  <p>The five programmes awarded funding have the potential to make a significant impact.</p>
+                  <p>So Presiding Officer, I am aware there are voices in this Chamber who have already called for structural change but I think the urgency of the change required and the focus must be on the transformation of services <br>services within the current structures and maximising current assets.</p>
+                  <p>So I will work to implement an NHS Scotland approach, to harness greater levels of collaboration in our health boards and partners, resulting in better value, quality, and outcomes for patients and staff.</p>
+                  <p>And that will be led through a government-led national engagement which we must make sure we are fully committed to the series of engagement which will inform our plans, led through a person-centred approach but obviously making sure we utilise the incredible work of our workforce.</p>
+                  <p>We have established a Primary and Community Health Steering Group, bringing together a range of stakeholders partners.</p>
+                  <p>And an Expert Reference Group will be convened this autumn, providing independent input, advice and an additional independent international perspective.</p>
+                  <p>A Stakeholder Advisory Group will also bring together a cross-section of professional associations, COSLA, the ALLIANCE, regulators and others in service delivery. I look forward to hearing directly from them to translate the vision into delivery across the system.</p>
+                  <p>We will also listen to all voices and by the end of the year, I hope to have brought them to bear on the actions we take.</p>
+                  <p>In conclusion, Presiding Officer, there is no more important issue to a nation than the health of its people.</p>
+                  <p>I am not looking to publish another strategy. Our work is already being guided by multiple plans, notably the National Clinical Strategy of 2016.</p>
+                  <p>Our task now centres on listening, and delivery.</p>
+                  <p>So I am pleased and privileged to open this debate today and welcome all contributions and move the motion in my name.</p>
+                  <p>&nbsp;</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: e4b2db4c-fd8a-4b54-a44b-56bf75a3e3ad
+        /stage-three-bankruptcy-and-diligence-scotland-bill-statement-by-minister-for-public-finance-on-6-june-2024:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'mix:versionable']
+          jcr:uuid: ba46d725-dd03-4c5d-8e8c-3a6453e0e787
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: 7342bb40-0a2b-402c-b006-c8d7a3d01208
+            hippo:name: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill - Statement
+              by Minister for Public Finance on 6 June 2024'
+            hippo:versionHistory: 190606c8-7c4d-4b44-ab33-384ae4dc256b
+            /index[1]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+              jcr:uuid: 2b6ad255-b89d-4a79-9497-fd8b0dc8c803
+              govscot:displayDate: 2024-06-06T15:20:00Z
+              govscot:externalId: 6661a3b0cf129bb7a45664d2
+              govscot:isbn: ''
+              govscot:metaDescription: A statement by Ivan McKee, Minister for Public
+                Finance, to the Scottish Parliament on 6 June 2024.
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: stage-3-bankruptcy-and-diligence-scotland-bill-opening-statement-by-the-minister-for-public-finance-ivan-mckee
+              govscot:publicationDate: 2024-06-06T15:20:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: 'Stage Three: Bankruptcy and Diligence (Scotland)
+                Bill - Statement by Minister for Public Finance on 6 June 2024'
+              govscot:slug: stage-three-bankruptcy-and-diligence-scotland-bill-statement-by-minister-for-public-finance-on-6-june-2024
+              govscot:summary: A statement by Ivan McKee, Minister for Public Finance,
+                to the Scottish Parliament on 6 June 2024.
+              govscot:title: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill
+                - Statement by Minister for Public Finance on 6 June 2024'
+              govscot:updatedDate: 2024-06-06T15:18:29.783Z
+              hippo:availability: [preview]
+              hippo:name: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill -
+                Statement by Minister for Public Finance on 6 June 2024'
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostd:tags: [Money and tax]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-06-07T08:31:34.218+01:00
+              hippostdpubwf:lastModificationDate: 2024-06-07T08:31:34.625+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: 59e8be90-cbf5-44bf-8343-173029764d10
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you, Presiding Officer for the opportunity to address the Chamber today on the Stage 3 debate on the Bankruptcy and Diligence (Scotland) Bill.</p>
+                  <p>I would like to thank the convener, and members of the Economy and Fair Work Committee for their assiduous scrutiny of the Bill during Stages 1 and 2, and for their ongoing support for the measures and small number of amendments we have made.</p>
+                  <p>I would also like to thank the Delegated Powers and Law Reform Committee for their input and everyone that gave evidence during the different stages of the Bill.</p>
+                  <p>Very importantly I would like to give a big thanks to Scottish Government officials – the accountant, bankruptcy and legal colleagues in the Scottish Government – for helping guide me through this process having picked up the Bill in its later stages.</p>
+                  <p>Finally, I would like to thank my predecessor, Tom Arthur, for his hard work, dedication and commitment to the development of this Bill.</p>
+                  <p>This is a focused Bill which makes small but important improvements. And I believe this is reflective of the fact that our bankruptcy system here in Scotland is widely perceived as meeting our needs.</p>
+                  <p>More importantly, however, it represents a chance to make things better for a number of individuals with both serious mental health issues and problem debt. By creating the enabling power to establish a Mental Health Moratorium through regulations, this will help improve the lives of those who are struggling with debt and serious mental health issues.</p>
+                  <p>The development of this Bill has been a good example of co-production.</p>
+                  <p>The initial provisions in the Bill were developed from the recommendations of stakeholder-led groups who reviewed each of the statutory debt solutions to determine what improvements could be made. The provisions have been subject to extensive public consultation and reflect stakeholder recommendations that have achieved a level of consensus.</p>
+                  <p>The Bill has been further developed during the stages of the Bill process where we have listened to feedback from Committee members, particularly in their Stage 1 report, and stakeholders to make further amendments to improve the Bill.</p>
+                  <p>For the Mental Health Moratorium, we promised and delivered a draft set of Regulations to the Economy and Fair Work Committee prior to stage 3 of this Bill. In doing so, we provided them with the opportunity to see the policy intention of the Mental Health Moratorium. In particular, we have listened to their concerns about the eligibility criteria – and have widened it to allow more people access to the scheme.</p>
+                  <p>We will continue to engage with stakeholders as we further develop the Regulations. This will include a public consultation giving stakeholders and Parliament the opportunity to continue to shape them into a scheme that will help the most vulnerable in our society. We will work with the advice and mental health sectors to develop clear guidance and training to ensure a successful delivery of the mental health moratorium. And we will work with them to ensure the tools they need are available.</p>
+                  <p>Furthermore, we lodged amendments which were agreed to today which ensure that Parliament has the opportunity to fully scrutinise the Regulations that will establish the Mental Health Moratorium. We have also made a statutory commitment in the Bill to a undertake a review of the Mental Health moratorium after 5 years of its introduction - where a full report will be published and presented to Scottish Ministers.</p>
+                  <p>We have implemented the Economy and Fair Work Committee’s recommendations and introduced provisions which will allow a private Insolvency Practitioner to be discharged as trustee where the debtor has been non-cooperative and there are no further actions the trustee can take. We have also clarified the law to provide that for a successful petition for recall within the first 6 months of a sequestration, debts can be paid in full without interest being charged but thereafter interest would have to be paid on those debts.</p>
+                  <p>We have listened to the witnesses who raised concerns with the Committee. After further engagement with sheriff officers we have developed the provisions that provides them with more time to cite the individual to appear at a sequestration hearing as well as allowing them to serve arrestment schedules electronically. This will help make the process more efficient, cost effective and up to date with modern times.</p>
+                  <p>We are aware that the topic of arrestment of funds is of great interest and the issue does require some clarity – particularly around protecting funds wholly derived from social security payments. As mentioned in our earlier session we commit to consult on this and take the time to consider all views to ensure that we get it right and ensure the measures taken do not have any unintended consequences.</p>
+                  <p>There are some other matters, raised by stakeholders in their evidence to the Committee which can be addressed through secondary legislation that we will continue to look at. This includes matters such as the minimum period for reapplying for bankruptcy under the Minimal Asset Process and the minimum protected balance for earnings arrestments. As my predecessor said to the Committee, these are things that can be addressed in secondary legislation and that, I think, is the best way to address them.</p>
+                  <p>It is also important to note that this Bill is part of a wider programme of reform, and we have commissioned an independent review to assess how far current statutory solutions meet the needs of a modern economy. This work is being taken forward by Yvonne MacDermid, OBE. Yvonne brings a wealth of experience to this work having served as Chief Executive at Money Advice Scotland for many years. Yvonne has now issued a public consultation document to receive feedback on the current solutions and will be reporting back to Scottish Ministers on the results in due course. I look forward to seeing this and continuing to work to make sure our statutory debt solutions are fit for purpose.</p>
+                  <p>Moving forward the real work starts here and I look forward to working with Parliament, members of the Committee and our stakeholders to help ensure that Scotland’s statutory debt solutions meet the needs of the people of Scotland. Particularly the most vulnerable in our society suffering from serious mental health issues with problem debt.</p>
+                  <p>I commend the Bill to Parliament and I move that the Parliament agrees to the Bankruptcy and Diligence (Scotland) Bill be passed.</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: ae633e6f-b6c4-47b2-9827-2c510250fc94
+            /index[2]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: c0d93210-7a6f-4031-8c65-4413892092b6
+              govscot:displayDate: 2024-06-06T15:20:00Z
+              govscot:externalId: 6661a3b0cf129bb7a45664d2
+              govscot:isbn: ''
+              govscot:metaDescription: A statement by Ivan McKee, Minister for Public
+                Finance, to the Scottish Parliament on 6 June 2024.
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: stage-3-bankruptcy-and-diligence-scotland-bill-opening-statement-by-the-minister-for-public-finance-ivan-mckee
+              govscot:publicationDate: 2024-06-06T15:20:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: 'Stage Three: Bankruptcy and Diligence (Scotland)
+                Bill - Statement by Minister for Public Finance on 6 June 2024'
+              govscot:slug: stage-three-bankruptcy-and-diligence-scotland-bill-statement-by-minister-for-public-finance-on-6-june-2024
+              govscot:summary: A statement by Ivan McKee, Minister for Public Finance,
+                to the Scottish Parliament on 6 June 2024.
+              govscot:title: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill
+                - Statement by Minister for Public Finance on 6 June 2024'
+              govscot:updatedDate: 2024-06-06T15:18:29.783Z
+              hippo:availability: []
+              hippo:name: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill -
+                Statement by Minister for Public Finance on 6 June 2024'
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostd:tags: [Money and tax]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-06-07T08:31:34.218+01:00
+              hippostdpubwf:lastModificationDate: 2024-06-07T08:31:34.438+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: 59e8be90-cbf5-44bf-8343-173029764d10
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you, Presiding Officer for the opportunity to address the Chamber today on the Stage 3 debate on the Bankruptcy and Diligence (Scotland) Bill.</p>
+                  <p>I would like to thank the convener, and members of the Economy and Fair Work Committee for their assiduous scrutiny of the Bill during Stages 1 and 2, and for their ongoing support for the measures and small number of amendments we have made.</p>
+                  <p>I would also like to thank the Delegated Powers and Law Reform Committee for their input and everyone that gave evidence during the different stages of the Bill.</p>
+                  <p>Very importantly I would like to give a big thanks to Scottish Government officials – the accountant, bankruptcy and legal colleagues in the Scottish Government – for helping guide me through this process having picked up the Bill in its later stages.</p>
+                  <p>Finally, I would like to thank my predecessor, Tom Arthur, for his hard work, dedication and commitment to the development of this Bill.</p>
+                  <p>This is a focused Bill which makes small but important improvements. And I believe this is reflective of the fact that our bankruptcy system here in Scotland is widely perceived as meeting our needs.</p>
+                  <p>More importantly, however, it represents a chance to make things better for a number of individuals with both serious mental health issues and problem debt. By creating the enabling power to establish a Mental Health Moratorium through regulations, this will help improve the lives of those who are struggling with debt and serious mental health issues.</p>
+                  <p>The development of this Bill has been a good example of co-production.</p>
+                  <p>The initial provisions in the Bill were developed from the recommendations of stakeholder-led groups who reviewed each of the statutory debt solutions to determine what improvements could be made. The provisions have been subject to extensive public consultation and reflect stakeholder recommendations that have achieved a level of consensus.</p>
+                  <p>The Bill has been further developed during the stages of the Bill process where we have listened to feedback from Committee members, particularly in their Stage 1 report, and stakeholders to make further amendments to improve the Bill.</p>
+                  <p>For the Mental Health Moratorium, we promised and delivered a draft set of Regulations to the Economy and Fair Work Committee prior to stage 3 of this Bill. In doing so, we provided them with the opportunity to see the policy intention of the Mental Health Moratorium. In particular, we have listened to their concerns about the eligibility criteria – and have widened it to allow more people access to the scheme.</p>
+                  <p>We will continue to engage with stakeholders as we further develop the Regulations. This will include a public consultation giving stakeholders and Parliament the opportunity to continue to shape them into a scheme that will help the most vulnerable in our society. We will work with the advice and mental health sectors to develop clear guidance and training to ensure a successful delivery of the mental health moratorium. And we will work with them to ensure the tools they need are available.</p>
+                  <p>Furthermore, we lodged amendments which were agreed to today which ensure that Parliament has the opportunity to fully scrutinise the Regulations that will establish the Mental Health Moratorium. We have also made a statutory commitment in the Bill to a undertake a review of the Mental Health moratorium after 5 years of its introduction - where a full report will be published and presented to Scottish Ministers.</p>
+                  <p>We have implemented the Economy and Fair Work Committee’s recommendations and introduced provisions which will allow a private Insolvency Practitioner to be discharged as trustee where the debtor has been non-cooperative and there are no further actions the trustee can take. We have also clarified the law to provide that for a successful petition for recall within the first 6 months of a sequestration, debts can be paid in full without interest being charged but thereafter interest would have to be paid on those debts.</p>
+                  <p>We have listened to the witnesses who raised concerns with the Committee. After further engagement with sheriff officers we have developed the provisions that provides them with more time to cite the individual to appear at a sequestration hearing as well as allowing them to serve arrestment schedules electronically. This will help make the process more efficient, cost effective and up to date with modern times.</p>
+                  <p>We are aware that the topic of arrestment of funds is of great interest and the issue does require some clarity – particularly around protecting funds wholly derived from social security payments. As mentioned in our earlier session we commit to consult on this and take the time to consider all views to ensure that we get it right and ensure the measures taken do not have any unintended consequences.</p>
+                  <p>There are some other matters, raised by stakeholders in their evidence to the Committee which can be addressed through secondary legislation that we will continue to look at. This includes matters such as the minimum period for reapplying for bankruptcy under the Minimal Asset Process and the minimum protected balance for earnings arrestments. As my predecessor said to the Committee, these are things that can be addressed in secondary legislation and that, I think, is the best way to address them.</p>
+                  <p>It is also important to note that this Bill is part of a wider programme of reform, and we have commissioned an independent review to assess how far current statutory solutions meet the needs of a modern economy. This work is being taken forward by Yvonne MacDermid, OBE. Yvonne brings a wealth of experience to this work having served as Chief Executive at Money Advice Scotland for many years. Yvonne has now issued a public consultation document to receive feedback on the current solutions and will be reporting back to Scottish Ministers on the results in due course. I look forward to seeing this and continuing to work to make sure our statutory debt solutions are fit for purpose.</p>
+                  <p>Moving forward the real work starts here and I look forward to working with Parliament, members of the Committee and our stakeholders to help ensure that Scotland’s statutory debt solutions meet the needs of the people of Scotland. Particularly the most vulnerable in our society suffering from serious mental health issues with problem debt.</p>
+                  <p>I commend the Bill to Parliament and I move that the Parliament agrees to the Bankruptcy and Diligence (Scotland) Bill be passed.</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: ae633e6f-b6c4-47b2-9827-2c510250fc94
+            /index[3]:
+              jcr:primaryType: govscot:SpeechOrStatement
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: fd49e77a-b133-4b25-8193-b2fdc5aeadc8
+              govscot:displayDate: 2024-06-06T15:20:00Z
+              govscot:externalId: 6661a3b0cf129bb7a45664d2
+              govscot:isbn: ''
+              govscot:metaDescription: A statement by Ivan McKee, Minister for Public
+                Finance, to the Scottish Parliament on 6 June 2024.
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: stage-3-bankruptcy-and-diligence-scotland-bill-opening-statement-by-the-minister-for-public-finance-ivan-mckee
+              govscot:publicationDate: 2024-06-06T15:20:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: 'Stage Three: Bankruptcy and Diligence (Scotland)
+                Bill - Statement by Minister for Public Finance on 6 June 2024'
+              govscot:slug: stage-three-bankruptcy-and-diligence-scotland-bill-statement-by-minister-for-public-finance-on-6-june-2024
+              govscot:summary: A statement by Ivan McKee, Minister for Public Finance,
+                to the Scottish Parliament on 6 June 2024.
+              govscot:title: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill
+                - Statement by Minister for Public Finance on 6 June 2024'
+              govscot:updatedDate: 2024-06-06T15:18:29.783Z
+              hippo:availability: [live]
+              hippo:name: 'Stage Three: Bankruptcy and Diligence (Scotland) Bill -
+                Statement by Minister for Public Finance on 6 June 2024'
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostd:tags: [Money and tax]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-06-07T08:31:34.218+01:00
+              hippostdpubwf:lastModificationDate: 2024-06-07T08:31:34.625+01:00
+              hippostdpubwf:lastModifiedBy: system
+              hippostdpubwf:publicationDate: 2024-06-07T08:31:34.983+01:00
+              hippotranslation:id: 59e8be90-cbf5-44bf-8343-173029764d10
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you, Presiding Officer for the opportunity to address the Chamber today on the Stage 3 debate on the Bankruptcy and Diligence (Scotland) Bill.</p>
+                  <p>I would like to thank the convener, and members of the Economy and Fair Work Committee for their assiduous scrutiny of the Bill during Stages 1 and 2, and for their ongoing support for the measures and small number of amendments we have made.</p>
+                  <p>I would also like to thank the Delegated Powers and Law Reform Committee for their input and everyone that gave evidence during the different stages of the Bill.</p>
+                  <p>Very importantly I would like to give a big thanks to Scottish Government officials – the accountant, bankruptcy and legal colleagues in the Scottish Government – for helping guide me through this process having picked up the Bill in its later stages.</p>
+                  <p>Finally, I would like to thank my predecessor, Tom Arthur, for his hard work, dedication and commitment to the development of this Bill.</p>
+                  <p>This is a focused Bill which makes small but important improvements. And I believe this is reflective of the fact that our bankruptcy system here in Scotland is widely perceived as meeting our needs.</p>
+                  <p>More importantly, however, it represents a chance to make things better for a number of individuals with both serious mental health issues and problem debt. By creating the enabling power to establish a Mental Health Moratorium through regulations, this will help improve the lives of those who are struggling with debt and serious mental health issues.</p>
+                  <p>The development of this Bill has been a good example of co-production.</p>
+                  <p>The initial provisions in the Bill were developed from the recommendations of stakeholder-led groups who reviewed each of the statutory debt solutions to determine what improvements could be made. The provisions have been subject to extensive public consultation and reflect stakeholder recommendations that have achieved a level of consensus.</p>
+                  <p>The Bill has been further developed during the stages of the Bill process where we have listened to feedback from Committee members, particularly in their Stage 1 report, and stakeholders to make further amendments to improve the Bill.</p>
+                  <p>For the Mental Health Moratorium, we promised and delivered a draft set of Regulations to the Economy and Fair Work Committee prior to stage 3 of this Bill. In doing so, we provided them with the opportunity to see the policy intention of the Mental Health Moratorium. In particular, we have listened to their concerns about the eligibility criteria – and have widened it to allow more people access to the scheme.</p>
+                  <p>We will continue to engage with stakeholders as we further develop the Regulations. This will include a public consultation giving stakeholders and Parliament the opportunity to continue to shape them into a scheme that will help the most vulnerable in our society. We will work with the advice and mental health sectors to develop clear guidance and training to ensure a successful delivery of the mental health moratorium. And we will work with them to ensure the tools they need are available.</p>
+                  <p>Furthermore, we lodged amendments which were agreed to today which ensure that Parliament has the opportunity to fully scrutinise the Regulations that will establish the Mental Health Moratorium. We have also made a statutory commitment in the Bill to a undertake a review of the Mental Health moratorium after 5 years of its introduction - where a full report will be published and presented to Scottish Ministers.</p>
+                  <p>We have implemented the Economy and Fair Work Committee’s recommendations and introduced provisions which will allow a private Insolvency Practitioner to be discharged as trustee where the debtor has been non-cooperative and there are no further actions the trustee can take. We have also clarified the law to provide that for a successful petition for recall within the first 6 months of a sequestration, debts can be paid in full without interest being charged but thereafter interest would have to be paid on those debts.</p>
+                  <p>We have listened to the witnesses who raised concerns with the Committee. After further engagement with sheriff officers we have developed the provisions that provides them with more time to cite the individual to appear at a sequestration hearing as well as allowing them to serve arrestment schedules electronically. This will help make the process more efficient, cost effective and up to date with modern times.</p>
+                  <p>We are aware that the topic of arrestment of funds is of great interest and the issue does require some clarity – particularly around protecting funds wholly derived from social security payments. As mentioned in our earlier session we commit to consult on this and take the time to consider all views to ensure that we get it right and ensure the measures taken do not have any unintended consequences.</p>
+                  <p>There are some other matters, raised by stakeholders in their evidence to the Committee which can be addressed through secondary legislation that we will continue to look at. This includes matters such as the minimum period for reapplying for bankruptcy under the Minimal Asset Process and the minimum protected balance for earnings arrestments. As my predecessor said to the Committee, these are things that can be addressed in secondary legislation and that, I think, is the best way to address them.</p>
+                  <p>It is also important to note that this Bill is part of a wider programme of reform, and we have commissioned an independent review to assess how far current statutory solutions meet the needs of a modern economy. This work is being taken forward by Yvonne MacDermid, OBE. Yvonne brings a wealth of experience to this work having served as Chief Executive at Money Advice Scotland for many years. Yvonne has now issued a public consultation document to receive feedback on the current solutions and will be reporting back to Scottish Ministers on the results in due course. I look forward to seeing this and continuing to work to make sure our statutory debt solutions are fit for purpose.</p>
+                  <p>Moving forward the real work starts here and I look forward to working with Parliament, members of the Committee and our stakeholders to help ensure that Scotland’s statutory debt solutions meet the needs of the people of Scotland. Particularly the most vulnerable in our society suffering from serious mental health issues with problem debt.</p>
+                  <p>I commend the Bill to Parliament and I move that the Parliament agrees to the Bankruptcy and Diligence (Scotland) Bill be passed.</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: ae633e6f-b6c4-47b2-9827-2c510250fc94

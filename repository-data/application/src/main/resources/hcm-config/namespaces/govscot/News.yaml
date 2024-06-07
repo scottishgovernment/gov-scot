@@ -89,6 +89,86 @@ definitions:
             hipposysedit:path: govscot:contentitemlanguage
             hipposysedit:primary: false
             hipposysedit:type: DynamicDropdown
+        /hipposysedit:nodetype[2]:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 2b5e457f-8376-4581-8fbd-f47aa15c22c6
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
+            'hippotranslation:translated']
+          /background:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:background
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /heroImage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:heroImage
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:ExternalLink
+          /attachments:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:attachments
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:ExternalLink
+          /publishedDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:publicationDate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
+          /string:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:externalId
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /updatedDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:updatedDate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
+          /policyTags:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:policyTags
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /slug:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:slug
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required, govscot-slug]
+          /contentitemlanguage:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:contentitemlanguage
+            hipposysedit:primary: false
+            hipposysedit:type: DynamicDropdown
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -113,6 +193,48 @@ definitions:
           govscot:slug: ''
           govscot:reportingTags: []
           govscot:contentitemlanguage: en
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:heroImage:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:string: ''
+            govscot:title: ''
+            govscot:url: ''
+          /govscot:attachments:
+            jcr:primaryType: govscot:ExternalLink
+            govscot:string: ''
+            govscot:title: ''
+            govscot:url: ''
+          /govscot:responsibilities:
+            jcr:primaryType: hippostd:html
+            hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
+        /hipposysedit:prototype[2]:
+          jcr:primaryType: nt:unstructured
+          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
+            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
+          jcr:uuid: 08bb27e0-ba58-428f-ade5-4f7d32b82892
+          govscot:contentitemlanguage: en
+          govscot:externalId: ''
+          govscot:metaDescription: ''
+          govscot:policyTags: []
+          govscot:publicationDate: 0001-01-01T12:00:00Z
+          govscot:reportingTags: []
+          govscot:seoTitle: ''
+          govscot:slug: ''
+          govscot:summary: ''
+          govscot:title: ''
+          govscot:updatedDate: 0001-01-01T12:00:00Z
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2018-01-26T13:27:12.677Z
+          hippostdpubwf:lastModificationDate: 2018-01-26T13:27:12.677Z
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
