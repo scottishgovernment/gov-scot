@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.*;
 
 import java.util.*;
+import java.util.Collection;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -99,7 +100,7 @@ public class GroupComponent extends EssentialsContentComponent {
 
     void groupByMonth(PublicationsGroup yearGroup) {
         SortedMap<Integer, PublicationsGroup> monthGroups = new TreeMap<>(Collections.reverseOrder());
-        for (HippoBean minute : yearGroup.getPublications()) {
+        for (Publication minute : yearGroup.getPublications()) {
             Publication publication = (Publication) minute;
             String monthString = date(publication).getDisplayName(Calendar.MONTH, Calendar.LONG_FORMAT, Locale.getDefault());
             Integer monthKey = date(publication).get(Calendar.MONTH);
@@ -111,8 +112,8 @@ public class GroupComponent extends EssentialsContentComponent {
         yearGroup.getSubgroups().addAll(monthGroups.values());
     }
 
-    public static class PublicationsGroup {
-        List<HippoBean> publications = new ArrayList<>();
+    public class PublicationsGroup {
+        SortedSet<Publication> publications = new TreeSet<>((l, r) -> date(l).compareTo(date(r)));
 
         List<PublicationsGroup> subgroups = new ArrayList<>();
 
@@ -122,12 +123,12 @@ public class GroupComponent extends EssentialsContentComponent {
             this.label = label;
         }
 
-        public List<HippoBean> getPublications() {
+        public Collection<Publication> getPublications() {
             return publications;
         }
 
-        public void setPublications(List<HippoBean> publications) {
-            this.publications = publications;
+        public void setPublications(List<Publication> publications) {
+            this.publications.addAll(publications);
         }
 
         public String getLabel() {
