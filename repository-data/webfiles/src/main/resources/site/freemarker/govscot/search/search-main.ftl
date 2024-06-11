@@ -4,7 +4,7 @@
 <#if document??>
 <div class="cms-editable">
     <div class="ds_wrapper">
-        <main id="main-content" class="ds_layout  ds_layout--article">
+        <main id="main-content" class="ds_layout  ds_layout--search-results--filters">
 
             <div class="ds_layout__header">
                 <header class="ds_page-header">
@@ -21,8 +21,14 @@
                 <#assign searchpagepath = hstRequestContext.servletRequest.pathInfo />
 
                 <#include 'search.ftl'/>
+            </div>
 
-                <section id="search-results" class="ds_search-results">
+            <div class="ds_layout__sidebar">
+                <@hst.include ref="side-filter"/>
+            </div>
+
+            <div class="ds_layout__list">
+                <section class="ds_search-results">
                     <@hst.include ref="results"/>
                 </section>
             </div>

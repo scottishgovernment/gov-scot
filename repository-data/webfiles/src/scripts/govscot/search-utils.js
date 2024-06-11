@@ -265,18 +265,33 @@ const searchUtils = {
             newQueryStringParams.push('publicationTypes=' + params.publicationTypes.join(';'));
         }
 
+        if (params.topic) {
+            params.topic.forEach(topic => {
+                newQueryStringParams.push('topic=' + topic);
+            });
+        }
+        if (params.type) {
+            params.type.forEach(type => {
+                newQueryStringParams.push('type=' + type);
+            });
+        }
+
         if (params.date) {
-            if (params.date.begin) {
+            if (params.date.begin && params.date.begin.length) {
                 newQueryStringParams.push('begin=' + params.date.begin);
             }
 
-            if (params.date.end) {
+            if (params.date.end && params.date.end.length) {
                 newQueryStringParams.push('end=' + params.date.end);
             }
         }
 
         if (params.page) {
             newQueryStringParams.push('page=' + params.page);
+        }
+
+        if (params.sort) {
+            newQueryStringParams.push('sort=' + params.sort);
         }
 
         if (newQueryStringParams.length > 0) {
