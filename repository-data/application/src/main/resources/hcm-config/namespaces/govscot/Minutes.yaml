@@ -23,6 +23,14 @@ definitions:
             hipposysedit:path: govscot:location
             hipposysedit:primary: false
             hipposysedit:type: String
+          /officialdate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: true
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:officialdate
+            hipposysedit:primary: false
+            hipposysedit:type: CalendarDate
           /nextMeetingDate:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
