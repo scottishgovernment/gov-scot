@@ -39,6 +39,7 @@ definitions:
             hipposysedit:path: govscot:nextMeetingDate
             hipposysedit:primary: false
             hipposysedit:type: Date
+            hipposysedit:validators: [required]
           /attendees:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
