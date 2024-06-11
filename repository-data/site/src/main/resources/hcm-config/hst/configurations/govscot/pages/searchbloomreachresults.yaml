@@ -3,6 +3,6 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/searchbloomreachresults:
       jcr:primaryType: hst:component
       hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent
-      hst:parameternames: [searchtype]
-      hst:parametervalues: [bloomreach]
+      hst:parameternames: [searchtype, supportedparams]
+      hst:parametervalues: [bloomreach, 'q,qsup,page,topics,publicationTypes,begin,end,sort']
       hst:template: search-funnelback-results

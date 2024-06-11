@@ -127,6 +127,7 @@
     jcr:mixinTypes: ['mix:referenceable']
     jcr:uuid: 08fcc25b-9af7-4fbc-8d3f-1da3824577a9
     govscot:flickrContent: ''
+    govscot:fmImageAlt: ''
     govscot:metaDescription: 'The devolved government for Scotland has a range of
       responsibilities that include: the economy, education, health, justice, rural
       affairs, housing, environment, equal opportunities, consumer advocacy and advice,
@@ -142,12 +143,13 @@
     govscot:youtubeContent: ''
     hippo:availability: []
     hippo:name: The Scottish Government
+    hippostd:holder: admin
     hippostd:state: draft
     hippostd:tags: []
     hippostdpubwf:createdBy: build.api@mygov.scot
     hippostdpubwf:creationDate: 2015-06-16T10:52:43+01:00
-    hippostdpubwf:lastModificationDate: 2021-12-08T14:26:21.692Z
-    hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+    hippostdpubwf:lastModificationDate: 2024-04-18T09:44:33.091+01:00
+    hippostdpubwf:lastModifiedBy: admin
     hippotranslation:id: 5de2f3dd-7daa-49f9-9579-a92269e5e2be
     hippotranslation:locale: en
     /govscot:content:
@@ -180,3 +182,15 @@
     /govscot:featuredItems[2]:
       jcr:primaryType: hippo:mirror
       hippo:docbase: 45f53c57-8932-4f9f-b6cd-b01357d02055
+    /govscot:fmImagePortrait:
+      jcr:primaryType: hippogallerypicker:imagelink
+      hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      hippo:facets: []
+      hippo:modes: []
+      hippo:values: []
+    /govscot:fmImageLandscape:
+      jcr:primaryType: hippogallerypicker:imagelink
+      hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      hippo:facets: []
+      hippo:modes: []
+      hippo:values: []

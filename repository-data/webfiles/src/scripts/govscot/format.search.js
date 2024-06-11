@@ -4,7 +4,7 @@
 
 'use strict';
 
-import SearchWithFilters from './component.search-with-filters';
+import SearchWithFilters from './component.landing-filters';
 
 window.dataLayer = window.dataLayer || [];
 

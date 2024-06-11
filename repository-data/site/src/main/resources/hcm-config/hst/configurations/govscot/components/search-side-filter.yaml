@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:components/search-side-filter:
+      jcr:primaryType: hst:component
+      hst:componentclassname: scot.gov.www.components.FilteredResultsSideComponent
+      hst:template: search.side-filter

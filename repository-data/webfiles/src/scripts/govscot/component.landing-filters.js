@@ -33,7 +33,7 @@ function extend(a, b){
     return a;
 }
 
-class SearchWithFilters {
+class LandingFilters {
     constructor(settings) {
         this.filtersContainer = document.getElementById('filters');
         this.resultsContainer = document.querySelector('#search-results');
@@ -110,7 +110,6 @@ class SearchWithFilters {
             event.preventDefault();
             this.submitSearch();
         });
-
 
         // clear filters
         this.resultsContainer.addEventListener('click', (event) => {
@@ -423,4 +422,4 @@ class SearchWithFilters {
     }
 }
 
-export default SearchWithFilters;
+export default LandingFilters;

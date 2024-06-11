@@ -32,7 +32,7 @@
             jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
             jcr:uuid: a71ff4dd-e647-436c-84c9-09362b68a7fd
             hippo:name: 'Consultations in the Scottish Government: guidance'
-            hippo:versionHistory: baa90352-eaa4-4d97-bed0-4b410a36cc1c
+            hippo:versionHistory: 08297f86-8916-4113-8a2d-e221377adff4
             /index[1]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -54,10 +54,10 @@
               hippostd:retainable: false
               hippostd:state: unpublished
               hippostd:tags: [consultations, research, guidance, advice, data protection,
-                reporting]
+                              reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2024-05-09T12:07:29.954+01:00
+              hippostdpubwf:lastModificationDate: 2024-04-18T13:09:45.524+01:00
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -263,7 +263,7 @@
               hippostd:retainable: false
               hippostd:state: draft
               hippostd:tags: [consultations, research, guidance, advice, data protection,
-                reporting]
+                              reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
               hippostdpubwf:lastModificationDate: 2024-05-09T12:07:10.377+01:00
@@ -472,7 +472,7 @@
               hippostd:retainable: false
               hippostd:state: published
               hippostd:tags: [consultations, research, guidance, advice, data protection,
-                reporting]
+                              reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
               hippostdpubwf:lastModificationDate: 2024-05-09T12:07:29.954+01:00

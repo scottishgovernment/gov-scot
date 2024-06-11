@@ -2,12 +2,12 @@
 
 'use strict';
 
-import AsyncSearch from './async-search';
+import SearchFilters from './component.search-filters';
 
 const searchPage = {
     init: function () {
-        this.asyncSearch = new AsyncSearch();
-        this.asyncSearch.init();
+        this.searchFilters = new SearchFilters();
+        this.searchFilters.init();
     }
 };
 
