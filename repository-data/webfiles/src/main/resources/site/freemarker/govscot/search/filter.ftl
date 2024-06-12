@@ -16,15 +16,6 @@
     <#assign end = nested?j_string />
 </#list>
 
-<!-- todo: pull this into a separate stylesheet -->
-<style>
-
-.js-disabled-search {
-    opacity: 0.5;
-    pointer-events: none;
-}
-</style>
-
 <div class="ds_search-filters">
     <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />">
 
