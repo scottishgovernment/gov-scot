@@ -15,7 +15,7 @@
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
-<#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['publicationTypes']?has_content>
+<#if search.query?has_content || search.fromDate?? || search.toDate?? || search.topics?? || search.publicationTypes??>
     <#assign hasActiveParameters = true/>
 </#if>
 
@@ -46,48 +46,34 @@
                     <p aria-live="polite" class="js-search-results-count">
                         Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
-                        <#if parameters['term']??>
-                            <#list parameters['term'] as nested>
-                                <#assign term = nested/>
-                            </#list>
+                        <#if search.query????>
 
-                            <#if term?has_content>
-                                containing <b>${term}</b>
+                            <#if search.query?has_content>
+                                containing <b>${search.query}</b>
                             </#if>
                         </#if>
 
-                        <#if parameters['begin']??>
-                            <#list parameters['begin'] as nested>
-                                <#assign begin = nested/>
-                            </#list>
-
-                            <#if begin?has_content>
-                                from <b>${begin}</b>
-                            </#if>
+                        <#if search.fromDate??>
+                            from <b>${filterButtons.dates.begin.label}</b>
                         </#if>
 
-                        <#if parameters['end']??>
-                            <#list parameters['end'] as nested>
-                                <#assign end = nested/>
-                            </#list>
-
-                            <#if end?has_content>
-                                to <b>${end}</b>
-                            </#if>
+                        <#if search.toDate??>
+                            to <b>${filterButtons.dates.end.label}</b>
                         </#if>
 
-                        <#if parameters['topics']??>
+                        <#if search.topics?size gt 0>
                             about
-                            <#list parameters['topics'] as nested>
-                                <b>${nested}</b>
+
+                            <#list search.topics?values as topic>
+                                <b>${topic}</b>
                                 <#sep>or</#sep>
                             </#list>
                         </#if>
 
-                        <#if parameters['publicationTypes']??>
+                        <#if search.publicationTypes?size gt 0>
                             of type
-                            <#list parameters['publicationTypes'] as nested>
-                                <b>${publicationTypes[nested]}</b>
+                            <#list search.publicationTypes?values as publicationType>
+                                <b>${publicationType}</b>
                                 <#sep>or</#sep>
                             </#list>
                         </#if>

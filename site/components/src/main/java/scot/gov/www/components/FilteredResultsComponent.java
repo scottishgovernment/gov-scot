@@ -75,6 +75,8 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         super.doBeforeRender(request, response);
         setContentBeanWith404(request, response);
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
+        request.setAttribute("search", search);
+        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
         request.setAttribute("relativeContentPath", relativeContentPath);
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
