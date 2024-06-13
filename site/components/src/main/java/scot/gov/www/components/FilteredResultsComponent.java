@@ -36,7 +36,6 @@ import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Null;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
