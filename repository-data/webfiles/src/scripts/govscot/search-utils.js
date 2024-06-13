@@ -232,10 +232,18 @@ const searchUtils = {
         inputGroup.addClass('input-group--has-error');
     },
 
-    removeError: function (inputGroup) {
-        inputGroup.find('.message').remove();
-        inputGroup.find('[aria-describedby]').removeAttr('aria-describedby');
-        inputGroup.removeClass('input-group--has-error');
+    removeError: function (question) {
+        if (question.classList.contains('ds_question--error')) {
+            question.querySelector('.ds_question__error-message').remove();
+            question.querySelector('[aria-describedby]').removeAttribute('aria-describedby');
+            question.classList.remove('ds_question--error');
+
+            const inputs = [].slice.call(question.querySelectorAll('.ds_input'));
+            inputs.forEach(input => {
+                input.classList.remove('ds_input--error');
+                input.removeAttribute('aria-invalid');
+            });
+        }
     },
 
     /**

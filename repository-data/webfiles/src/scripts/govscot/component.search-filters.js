@@ -153,13 +153,13 @@ class SearchFilters {
     }
 
     doSearch(url) {
-        // do not proceed if there are errors
-        if (document.querySelectorAll('.ds_search-filters [aria-invalid="true"]').length) {
-            return false;
-        }
-
         if (!url) {
             url = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams());
+
+            // do not proceed if there are errors
+            if (document.querySelectorAll('.ds_search-filters [aria-invalid="true"]').length) {
+                return false;
+            }
         }
 
         // disable search containers
@@ -249,8 +249,6 @@ class SearchFilters {
     }
 
     removeFacet(buttonElement) {
-        this.doSearch(buttonElement.href);
-
         // clear related input
         const input = document.querySelector('#' + buttonElement.dataset.slug);
 
@@ -259,6 +257,19 @@ class SearchFilters {
         } else {
             input.value = '';
         }
+
+        // if we're clearing a date input
+        // clear any errors from the date input
+        // reset the other date input to the current searhparam value (and remove any errors from that too)
+        const toElement = document.getElementById('date-to');
+        const fromElement = document.getElementById('date-from');
+        toElement.value = getParameterByName('end', buttonElement.href);
+        fromElement.value = getParameterByName('begin', buttonElement.href);
+
+        searchUtils.removeError(toElement.closest('.ds_question'));
+        searchUtils.removeError(fromElement.closest('.ds_question'));
+
+        this.doSearch(buttonElement.href);
     }
 
     updateSelectedFilterCounts() {
