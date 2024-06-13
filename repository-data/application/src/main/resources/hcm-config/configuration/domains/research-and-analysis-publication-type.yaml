@@ -1,0 +1,66 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/research-and-analysis-publication-type:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, research-and-analysis-publication-type-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [research-and-analysis-publication-type-authors]
+        hipposys:role: author
+      /research-and-analysis-documents-folder:
+        jcr:primaryType: hipposys:domainrule
+        /include-research-and-analysis-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/publications/research-and-analysis/
+        /hide-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle
+        /hide-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document
+      /research-and-analysis-publication-type:
+        jcr:primaryType: hipposys:domainrule
+        /include-research-and-analysis-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: govscot:publicationType
+          hipposys:filter: false
+          hipposys:type: String
+          hipposys:value: research-and-analysis
+        /hide-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle
+        /hide-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document
+      /embargo:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [research-and-analysis-publication-type-authors, research-and-analysis-publication-type-editors]
+        hipposys:role: embargo

@@ -1,0 +1,236 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/advice-and-guidance-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: []
+    /hippo:configuration/hippo:groups/agreement-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/consultation-analysis-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/consultation-paper-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/corporate-report-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/correspondence-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/factsheet-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/form-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/impact-assessment-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/independent-report-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/map-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/minutes-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/progress-report-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/regulation-directive-order-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/research-and-analysis-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/speech-statement-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/strategy-plan-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]
+    /hippo:configuration/hippo:groups/transparency-data-publication-type-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [ ]

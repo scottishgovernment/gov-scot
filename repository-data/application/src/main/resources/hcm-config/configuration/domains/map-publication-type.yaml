@@ -1,0 +1,66 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/map-publication-type:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, map-publication-type-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [map-publication-type-authors]
+        hipposys:role: author
+      /map-documents-folder:
+        jcr:primaryType: hipposys:domainrule
+        /include-map-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/publications/map/
+        /hide-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle
+        /hide-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document
+      /map-publication-type:
+        jcr:primaryType: hipposys:domainrule
+        /include-map-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: govscot:publicationType
+          hipposys:filter: false
+          hipposys:type: String
+          hipposys:value: map
+        /hide-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle
+        /hide-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document
+      /embargo:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [map-publication-type-authors, map-publication-type-editors]
+        hipposys:role: embargo
