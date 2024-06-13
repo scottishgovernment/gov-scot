@@ -14,10 +14,8 @@
 <#setting number_format="0.##">
 
 <#-- determine whether we have active parameters -->
-<#assign hasActiveParameters = false/>
-<#if search.query?has_content || search.fromDate?? || search.toDate?? || search.topics?? || search.publicationTypes??>
-    <#assign hasActiveParameters = true/>
-</#if>
+<#assign filtersCount = filterButtons.types?size +
+            filterButtons.topics?size + filterButtons.dates?size />
 
 <#if hstRequestContext.servletRequest.getParameter("page")??>
     <#assign start = (hstRequestContext.servletRequest.getParameter("page")?number - 1) * 10 + 1/>
@@ -27,7 +25,7 @@
 
 <section id="search-results" class="ds_search-results">
     <header>
-        <h2 class="visually-hidden">Search results</h2>
+        <h2 class="visually-hidden">Search results ${filtersCount}</h2>
 
         <div class="ds_search-results__count">
             <#if pageable.total = 0>
@@ -42,7 +40,7 @@
                         <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
                     </a>
             <#else>
-                <#if hasActiveParameters == true>
+                <#if filtersCount gt 0>
                     <p aria-live="polite" class="js-search-results-count">
                         Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 

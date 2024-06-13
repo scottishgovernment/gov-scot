@@ -36,6 +36,7 @@ import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Null;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -75,11 +76,10 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         super.doBeforeRender(request, response);
         setContentBeanWith404(request, response);
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
-        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
+        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search, "term"));
         request.setAttribute("relativeContentPath", relativeContentPath);
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
-        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
     }
 
     Search search(HstRequest request) {
