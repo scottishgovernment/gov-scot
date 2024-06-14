@@ -279,14 +279,14 @@ class LandingFilters {
         let searchParams = this.searchParams || {};
         const searchTermElement = document.getElementById('filters-search-term');
 
-        // KEYWORD / TERM
         if (window.location.href.indexOf('/search/') !== -1) {
-            searchParams.q = encodeURIComponent(searchTermElement.value);
             searchParams.cat = 'sitesearch';
         } else {
-            searchParams.term = encodeURIComponent(searchTermElement.value);
             searchParams.cat = 'filter';
         }
+
+        // KEYWORD / TERM
+        searchParams.q = encodeURIComponent(searchTermElement.value);
 
         // PAGINATION
         if (initial) {
@@ -321,6 +321,7 @@ class LandingFilters {
             searchParams.date.begin = encodeURI(document.getElementById('date-from').value);
             searchParams.date.end = encodeURI(document.getElementById('date-to').value);
         }
+        console.log(searchParams)
 
         return searchParams;
     }
