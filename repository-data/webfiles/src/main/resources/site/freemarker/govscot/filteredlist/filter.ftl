@@ -4,11 +4,11 @@
 
 <#-- determine whether we have active parameters -->
 <#assign hasActiveParameters = false/>
-<#if parameters['term']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['publicationTypes']?has_content>
+<#if parameters['q']?has_content || parameters['begin']?has_content || parameters['end']?has_content || parameters['topics']?has_content || parameters['publicationTypes']?has_content>
     <#assign hasActiveParameters = true/>
 </#if>
 
-<#assign termParam = parameters['term']![]/>
+<#assign termParam = parameters['q']![]/>
 <#assign beginParam = parameters['begin']![]/>
 <#assign endParam = parameters['end']![]/>
 

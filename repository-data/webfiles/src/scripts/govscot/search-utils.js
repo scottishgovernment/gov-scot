@@ -255,10 +255,6 @@ const searchUtils = {
         let newQueryStringParams = [],
             newQueryString;
 
-        if (params.term) {
-            newQueryStringParams.push('term=' + params.term);
-        }
-
         if (params.cat) {
             newQueryStringParams.push('cat=' + params.cat);
         }

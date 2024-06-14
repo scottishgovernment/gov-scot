@@ -45,7 +45,6 @@
                         Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
                         <#if search.query????>
-
                             <#if search.query?has_content>
                                 containing <b>${search.query}</b>
                             </#if>

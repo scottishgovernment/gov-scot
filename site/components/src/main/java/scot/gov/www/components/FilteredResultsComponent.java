@@ -75,14 +75,15 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
         Search search = search(request, false);
         request.setAttribute("search", search);
-        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search, "term"));
+        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
         request.setAttribute("relativeContentPath", relativeContentPath);
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
     }
 
+
     Search search(HstRequest request, boolean includeComponentParams) {
-        String query = param(request, "term");
+        String query = param(request, "q");
 
         int page = getCurrentPage(request);
 
