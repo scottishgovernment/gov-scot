@@ -40,7 +40,7 @@
                         <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
                     </a>
             <#else>
-                <#if filtersCount gt 0>
+                <#if filtersCount gt 0 || search.query?has_content>
                     <p aria-live="polite" class="js-search-results-count">
                         Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
 
@@ -62,7 +62,7 @@
                         <#if search.topics?size gt 0>
                             about
 
-                            <#list search.topics?values as topic>
+                            <#list search.topics?values?sort as topic>
                                 <b>${topic}</b>
                                 <#sep>or</#sep>
                             </#list>
@@ -70,7 +70,7 @@
 
                         <#if search.publicationTypes?size gt 0>
                             of type
-                            <#list search.publicationTypes?values as publicationType>
+                            <#list search.publicationTypes?values?sort as publicationType>
                                 <b>${publicationType}</b>
                                 <#sep>or</#sep>
                             </#list>
