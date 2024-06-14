@@ -7,6 +7,7 @@ import javax.jcr.*;
 import javax.jcr.query.Query;
 import java.util.*;
 
+import static org.apache.commons.lang3.StringUtils.equalsIgnoreCase;
 import static scot.gov.pressreleases.PressReleaseImporter.GOVSCOT_TITLE;
 import static scot.gov.pressreleases.PressReleaseImporter.HIPPO_DOCBASE;
 
@@ -38,7 +39,7 @@ public class Topics {
         while (it.hasNext()) {
             Node topic = it.nextNode();
             String title = topic.getProperty(GOVSCOT_TITLE).getString();
-            if (release.getTopics().containsValue(title)) {
+            if (releaseContainsTopic(release, title)) {
                 topicMap.put(title, topic.getParent().getIdentifier());
             }
         }
@@ -50,7 +51,7 @@ public class Topics {
             Node issue = it.nextNode();
             String title = issue.getProperty(GOVSCOT_TITLE).getString();
             String handleIdentifier = issue.getParent().getIdentifier();
-            if (release.getTopics().containsValue(title)) {
+            if (releaseContainsTopic(release, title)) {
                 topicMap.put(title, handleIdentifier);
                 continue;
             }
@@ -62,6 +63,10 @@ public class Topics {
                 }
             }
         }
+    }
+
+    boolean releaseContainsTopic(PressRelease release, String topic) {
+        return release.getTopics().values().stream().filter(s -> equalsIgnoreCase(s, topic)).findFirst().isPresent();
     }
 
     void addTopicNode(ContentNode contentNode, String identifier) {
