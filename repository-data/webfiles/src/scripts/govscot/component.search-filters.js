@@ -130,10 +130,16 @@ class SearchFilters {
             }
         });
 
-        // todo: "apply filter" button submits search
         this.filtersContainer.querySelector('.js-apply-filter').addEventListener('click', event => {
             event.preventDefault();
             this.doSearch();
+        });
+
+        window.addEventListener('popstate', event => {
+            const resultsUrl = window.location.href;
+            this.isPopstate = true;
+            this.doSearch(resultsUrl);
+            this.syncFiltersToUrl();
         });
     }
 
@@ -146,6 +152,7 @@ class SearchFilters {
             } else {
                 // clear filter textboxes
                 input.value = '';
+                searchUtils.removeError(input.closest('.ds_question'));
             }
         });
 
@@ -168,11 +175,15 @@ class SearchFilters {
 
         this.loadResults(url)
             .then(data => {
-                try {
-                    // update querystring
-                    window.history.pushState('', '', url);
-                } catch(error) {
-                    // history API not supported
+                if (this.isPopstate) {
+                    delete this.isPopstate;
+                } else {
+                    try {
+                        // update querystring
+                        window.history.pushState('', '', url);
+                    } catch (error) {
+                        // history API not supported
+                    }
                 }
 
                 // temporary container for the search results so we can query a DOM tree
@@ -270,6 +281,30 @@ class SearchFilters {
         searchUtils.removeError(fromElement.closest('.ds_question'));
 
         this.doSearch(buttonElement.href);
+    }
+
+    syncFiltersToUrl() {
+        const urlSearchParams = new URLSearchParams(window.location.href);
+
+        const types = urlSearchParams.getAll('type');
+        const topics = urlSearchParams.getAll('topic');
+        const begin = urlSearchParams.get('begin');
+        const end = urlSearchParams.get('end');
+        const sort = urlSearchParams.get('sort');
+
+        document.getElementById('date-from').value = begin;
+        document.getElementById('date-to').value = end;
+
+        [].slice.call(document.querySelectorAll('.ds_checkbox__input[name="topic"]')).forEach(checkbox => {
+            checkbox.checked = topics.includes(checkbox.id);
+        });
+
+        [].slice.call(document.querySelectorAll('.ds_checkbox__input[name="type"]')).forEach(checkbox => {
+            checkbox.checked = types.includes(checkbox.id);
+        });
+
+        const sortField = document.querySelector('.js-sort-by');
+        sortField.value = sort;
     }
 
     updateSelectedFilterCounts() {
