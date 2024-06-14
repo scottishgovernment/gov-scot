@@ -70,18 +70,18 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                                final HstResponse response) {
 
         paramInfo = getComponentParametersInfo(request);
-        Search search = search(request);
-        request.setAttribute("search", search);
         super.doBeforeRender(request, response);
         setContentBeanWith404(request, response);
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
+        Search search = search(request, false);
+        request.setAttribute("search", search);
         request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search, "term"));
         request.setAttribute("relativeContentPath", relativeContentPath);
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
     }
 
-    Search search(HstRequest request) {
+    Search search(HstRequest request, boolean includeComponentParams) {
         String query = param(request, "term");
 
         int page = getCurrentPage(request);
@@ -95,12 +95,12 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                 .fromDate(begin)
                 .toDate(end)
                 .request(request);
-        addPublicationTypes(request, searchBuilder);
+        addPublicationTypes(request, searchBuilder, includeComponentParams);
         addTopics(request, searchBuilder);
         return searchBuilder.build();
     }
 
-    void addPublicationTypes(HstRequest request, SearchBuilder searchBuilder) {
+    void addPublicationTypes(HstRequest request, SearchBuilder searchBuilder, boolean includeComponentParams) {
         // we support type publication types paramaters:
         //  - publicationsTypes: a ; separated list of publications types
         //  - type: multiple type params can be supplied and each one will be added
@@ -115,7 +115,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
             }
         }
 
-        if (!searchBuilder.hasPublicationTypes()) {
+        if (!searchBuilder.hasPublicationTypes() && includeComponentParams) {
             // publication types from the param info, this is used by the stats page to make sure it filters by the specified publication types
             searchBuilder.publicationTypes(paramInfo.getPublicationTypes(), ",", typesMap);
         }
@@ -187,7 +187,8 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String [] sortFields = paramInfo.getSortField().split(",");
         String [] sortOrders = paramInfo.getSortOrder().split(",");
 
-        Search search = (Search) request.getAttribute("search");
+        Search search = search(request, true);
+
         // use the first field (date field) to determine the constraint
         HstQueryBuilder queryBuilder = builder.ofTypes(types)
                 .where(constraints(search, sortFields))
