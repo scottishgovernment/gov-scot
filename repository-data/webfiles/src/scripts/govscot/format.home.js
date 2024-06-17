@@ -72,7 +72,7 @@ const homePage = {
 
         // build querystring
         if (term.length > 0) {
-            queryStringParams.push('term=' + term);
+            queryStringParams.push('q=' + term);
         }
         queryStringParams.push('cat=filter');
 

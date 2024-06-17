@@ -2,6 +2,11 @@
 <#include "../../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 
+<#assign term = ''/>
+<#if hstRequestContext.servletRequest.getParameter("q")??>
+    <#assign term = hstRequestContext.servletRequest.getParameter("q") />
+</#if>
+
 <#if !searchpagepath??>
     <#assign searchpagepath = "/search" />
 <#else>
@@ -29,9 +34,10 @@
                     required=""
                     spellcheck="false"
                     type="search"
+                    <#if includeSearchQParameter>value="${term}"</#if>
             />
         <#else>
-            <input name="q" required="" id="site-search" class="ds_input  ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
+            <input value="${term}" name="q" required="" id="site-search" class="ds_input  ds_site-search__input" type="text" placeholder="Search" autocomplete="off" />
         </#if>
 
             <button type="submit" class="ds_button  ds_button--icon-only  js-site-search-button">

@@ -19,7 +19,7 @@
                     <#assign ds_autocomplete = true />
                 </#if>
                 <#assign searchpagepath = hstRequestContext.servletRequest.pathInfo />
-
+                <#assign includeSearchQParameter = true />
                 <#include 'search.ftl'/>
             </div>
 
