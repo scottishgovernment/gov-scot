@@ -24,28 +24,6 @@
 
 <#if enabled>
 <#if response??>
-    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
-    response.resultPacket.resultsSummary.totalMatching == 0 &&
-    !(response.curator.simpleHtmlExhibits)?has_content &&
-    !(response.curator.advertExhibits)?has_content>
-
-        <h2 class="visually-hidden">Search</h2>
-
-        <div id="no-search-results" class="ds_no-search-results">
-                <@hst.html hippohtml=document.noResultsMessage/>
-        </div>
-    </#if>
-
-    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
-        response.resultPacket.resultsSummary.totalMatching == -1 &&
-        !(response.curator.simpleHtmlExhibits)?has_content &&
-        !(response.curator.advertExhibits)?has_content>
-        <h2 class="visually-hidden">Search</h2>
-        <div id="no-search-results" class="ds_no-search-results">
-            <@hst.html hippohtml=document.blankSearchQueryMessage/>
-        </div>
-    </#if>
-
     <#if pagination??>
         <#if pagination.currentPageIndex = 1>
             <#list response.curator.simpleHtmlExhibits as exhibit>
@@ -69,7 +47,7 @@
     </#if>
 
     <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
-    response.resultPacket.resultsSummary.totalMatching &gt; 0>
+        response.resultPacket.resultsSummary.totalMatching &gt; 0>
         <h2 aria-live="polite" class="ds_search-results__title">
             <#if response.resultPacket.resultsSummary.fullyMatching <= response.resultPacket.resultsSummary.numRanks ||
             response.resultPacket.resultsSummary.currStart <= response.resultPacket.resultsSummary.numRanks >
@@ -93,6 +71,7 @@
             <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results">Skip to results</a></li>
         </ul>
     </div>
+
     <div class="ds_search-controls">
         <#assign filtersCount = filterButtons.types?size +
             filterButtons.topics?size + filterButtons.dates?size />
@@ -216,20 +195,43 @@
 
         <hr class="ds_search-results__divider">
 
-        <div class="ds_sort-options">
-            <label class="ds_label" for="sort-by">Sort by</label>
-            <span class="ds_select-wrapper">
-                <select form="filters" name="sort" class="ds_select  js-sort-by" id="sort-by">
-                    <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "relevance">selected</#if> value="relevance">Most relevant</option>
-                    <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "date">selected</#if> value="date">Updated (newest)</option>
-                    <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "adate">selected</#if> value="adate">Updated (oldest)</option>
-                </select>
-                <span class="ds_select-arrow" aria-hidden="true"></span>
-            </span>
+        <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+            response.resultPacket.resultsSummary.totalMatching &gt; 0>
+            <div class="ds_sort-options">
+                <label class="ds_label" for="sort-by">Sort by</label>
+                <span class="ds_select-wrapper">
+                    <select form="filters" name="sort" class="ds_select  js-sort-by" id="sort-by">
+                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "relevance">selected</#if> value="relevance">Most relevant</option>
+                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "date">selected</#if> value="date">Updated (newest)</option>
+                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "adate">selected</#if> value="adate">Updated (oldest)</option>
+                    </select>
+                    <span class="ds_select-arrow" aria-hidden="true"></span>
+                </span>
 
-            <button form="filters" class="ds_button  ds_button--secondary  ds_button--small  js-apply-sort" type="submit" data-button="button-apply-sort">Apply sort</button>
-        </div>
+                <button form="filters" class="ds_button  ds_button--secondary  ds_button--small  js-apply-sort" type="submit" data-button="button-apply-sort">Apply sort</button>
+            </div>
+        </#if>
     </div>
+
+    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching == 0 &&
+        !(response.curator.simpleHtmlExhibits)?has_content &&
+        !(response.curator.advertExhibits)?has_content>
+        <h2 class="visually-hidden">Search</h2>
+        <div id="no-search-results" class="ds_no-search-results">
+                <@hst.html hippohtml=document.noResultsMessage/>
+        </div>
+    </#if>
+
+    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching == -1 &&
+        !(response.curator.simpleHtmlExhibits)?has_content &&
+        !(response.curator.advertExhibits)?has_content>
+        <h2 class="visually-hidden">Search</h2>
+        <div id="no-search-results" class="ds_no-search-results">
+            <@hst.html hippohtml=document.blankSearchQueryMessage/>
+        </div>
+    </#if>
 
 <#if pagination??>
     <#if ((response.resultPacket.resultsSummary.totalMatching)!?has_content &&
