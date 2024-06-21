@@ -1,8 +1,5 @@
 package scot.gov.www.beans;
 
-import java.util.Calendar;
-import java.util.List;
-
 import org.bloomreach.forge.feed.api.FeedType;
 import org.bloomreach.forge.feed.api.annot.SyndicationElement;
 import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
@@ -12,6 +9,9 @@ import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
+
+import java.util.Calendar;
+import java.util.List;
 
 @HippoEssentialsGenerated(internalName = "govscot:News")
 @Node(jcrType = "govscot:News")
@@ -111,7 +111,7 @@ public class News extends SimpleContent {
 
     @SyndicationElement(type = FeedType.RSS, name = "link", transformer = PathLinkResolver.class)
     public String getURL() {
-        return "news/".concat(getSingleProperty("govscot:prglooslug"));
+        return "news/".concat(getSingleProperty("govscot:slug"));
     }
 
     @HippoEssentialsGenerated(internalName = "govscot:reportingTags")
