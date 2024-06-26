@@ -8,7 +8,7 @@
                 <#list letter.beans as bean>
                     <li class="gov_az-list__list__item">
                         <@hst.link var="link" hippobean=bean/>
-                        <a class="gov_az-list__link" href="${link}">${bean.title}<#if !bean.active><span class="visually-hidden"> (inactive)</span></#if></a><#if !bean.active><strong class="ds_tag  gov_tag--secondary  gov_tag--small" aria-hidden="true">Inactive</strong></#if>
+                        <a class="gov_az-list__link" href="${link}">${bean.title}<#if bean.active?? && !bean.active><span class="visually-hidden"> (inactive)</span></#if></a><#if  bean.active?? && !bean.active><strong class="ds_tag  gov_tag--secondary  gov_tag--small" aria-hidden="true">Inactive</strong></#if>
                     </li>
                 </#list>
             </ul>
