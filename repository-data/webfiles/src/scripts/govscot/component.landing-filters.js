@@ -321,7 +321,6 @@ class LandingFilters {
             searchParams.date.begin = encodeURI(document.getElementById('date-from').value);
             searchParams.date.end = encodeURI(document.getElementById('date-to').value);
         }
-        console.log(searchParams)
 
         return searchParams;
     }
