@@ -68,5 +68,6 @@ definitions:
                   embargo-trade-statistics, embargo-shcs,
                   embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
                   embargo-agriculture-statistics, embargo-community-ownership-statistics,
-                  embargo-employability-statistics, embargo-sscq, embargo-temporary]
+                  embargo-employability-statistics, embargo-sscq, embargo-temporary,
+                  embargo-justice-system-monitoring-team]
         hipposys:role: embargo
