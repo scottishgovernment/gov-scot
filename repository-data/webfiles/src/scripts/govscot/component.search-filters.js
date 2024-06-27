@@ -111,6 +111,12 @@ class SearchFilters {
                 event.preventDefault();
                 this.clearFilters();
             }
+            
+            // pagination link submits search on click
+            if (event.target.classList.contains('ds_pagination__link')) {
+                event.preventDefault();
+                this.changePage(event.target);
+            }
         });
 
         this.resultsContainer.addEventListener('keypress', event => {
@@ -138,8 +144,8 @@ class SearchFilters {
         window.addEventListener('popstate', event => {
             const resultsUrl = window.location.href;
             this.isPopstate = true;
-            this.doSearch(resultsUrl);
             this.syncFiltersToUrl();
+            this.doSearch(resultsUrl);
         });
     }
 
@@ -159,14 +165,42 @@ class SearchFilters {
         this.doSearch();
     }
 
+    changePage(linkElement) {
+        const targetHref = linkElement.href;
+
+        this.doSearch(targetHref);
+    }
+
+    convertUrl (url) {
+        // change given url to use search results endpoint
+        const pathElements = url.pathname.split('/').filter(Boolean);
+        const lastPathElement = pathElements[pathElements.length - 1];
+        const urlWithReplacement = url.pathname.replace(lastPathElement, lastPathElement + 'results');
+
+        return urlWithReplacement + searchUtils.getNewQueryString(this.gatherParams(url));    
+    }
+
     doSearch(url) {
+        // Capture page url
+        const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams());
+
         if (!url) {
-            url = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams());
+           
+            url = this.convertUrl(window.location);
 
             // do not proceed if there are errors
             if (document.querySelectorAll('.ds_search-filters [aria-invalid="true"]').length) {
                 return false;
             }
+        } else {
+            try {
+                const definedUrl = new URL(url);
+                url = this.convertUrl(definedUrl);
+            }  catch (error) {
+                // invalid url
+                return false;
+            }
+        
         }
 
         // disable search containers
@@ -176,11 +210,15 @@ class SearchFilters {
         this.loadResults(url)
             .then(data => {
                 if (this.isPopstate) {
+
                     delete this.isPopstate;
+
+
                 } else {
                     try {
                         // update querystring
-                        window.history.pushState('', '', url);
+                        window.history.pushState('', '', pageUrl);
+
                     } catch (error) {
                         // history API not supported
                     }
@@ -190,13 +228,21 @@ class SearchFilters {
                 const tempContainer = document.createElement('div');
                 tempContainer.innerHTML = data.response;
 
-                this.resultsContainer.innerHTML = tempContainer.querySelector('.ds_search-results').innerHTML;
+                if (!!tempContainer.querySelector('.ds_search-results')) {
+                    this.resultsContainer.innerHTML = tempContainer.querySelector('.ds_search-results').innerHTML;
+                } else {
+                    this.resultsContainer.innerHTML = tempContainer.innerHTML;
+                }
 
                 // enable containers
                 containersToDisable.forEach(container => container.classList.remove('js-disabled-search'));
 
                 // focus
                 temporaryFocus(this.resultsContainer);
+
+                // scroll to top of results
+                const rect = this.resultsContainer.getBoundingClientRect();
+                window.scrollTo(window.scrollX, document.documentElement.scrollTop + rect.top);
 
                 // update "selected" count
                 this.updateSelectedFilterCounts();
@@ -205,11 +251,12 @@ class SearchFilters {
                 window.DS.tracking.init();
             })
             .catch((error) => {
-                window.location.href = url;
+                // Load full search page endpoint instead
+                window.location.href = pageUrl;
             });
     }
 
-    gatherParams(initial) {
+    gatherParams(url) {
         const searchParams = this.searchParams || {};
 
         // dates
@@ -218,10 +265,11 @@ class SearchFilters {
         searchParams.date.end = document.querySelector('input[name="end"]').value;
 
         // page
-        if (initial) {
-            searchParams.page = getParameterByName('page') || 1;
-            searchParams.size = getParameterByName('size') || 10;
-        }
+        searchParams.page = getParameterByName('page', url) || 1;
+        
+        // size
+        searchParams.size = getParameterByName('size') || 10;
+         
 
         // content types
         searchParams.type = [];
@@ -240,7 +288,10 @@ class SearchFilters {
         }
 
         // term
-        searchParams.q = getParameterByName('q');
+        searchParams.q = encodeURIComponent(getParameterByName('q'));
+
+        // cat
+        searchParams.cat = getParameterByName('cat');
 
         // topics
         searchParams.topic = [];
@@ -279,7 +330,6 @@ class SearchFilters {
 
         searchUtils.removeError(toElement.closest('.ds_question'));
         searchUtils.removeError(fromElement.closest('.ds_question'));
-
         this.doSearch(buttonElement.href);
     }
 
