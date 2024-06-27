@@ -66,5 +66,7 @@ definitions:
                   embargo-gdp, embargo-general-labour-market, embargo-labour-market–lfs-aps,
                   embargo-public-sector-employment, embargo-social-security-analysis,
                   embargo-trade-statistics, embargo-shcs,
-                  embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics]
+                  embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
+                  embargo-agriculture-statistics, embargo-community-ownership-statistics,
+                  embargo-employability-statistics, embargo-sscq, embargo-temporary]
         hipposys:role: embargo
