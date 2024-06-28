@@ -182,7 +182,7 @@ class SearchFilters {
 
     doSearch(url) {
         // Capture page url
-        const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams());
+        const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams(url));
 
         if (!url) {
            
@@ -354,7 +354,9 @@ class SearchFilters {
         });
 
         const sortField = document.querySelector('.js-sort-by');
-        sortField.value = sort;
+        if (sortField) {
+            sortField.value = sort;
+        }
     }
 
     updateSelectedFilterCounts() {
