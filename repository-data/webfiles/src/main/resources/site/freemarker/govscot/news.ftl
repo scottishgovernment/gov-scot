@@ -55,7 +55,7 @@
                     </p>
                 </div>
 
-                <#if document.heroImage?? || (document.attachments?? && document.attachments?size > 0)>
+                <#if document.heroImage.title?has_content || (document.attachments?? && document.attachments?size > 0)>
                     <div <@revertlang document /> class="ds_article-aside">
                         <h2>Media</h2>
 
