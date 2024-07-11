@@ -12,6 +12,8 @@ import javax.jcr.*;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 
+import static org.apache.commons.lang.StringUtils.isBlank;
+
 public class PressReleaseImporter {
 
     private static final Logger LOG = LoggerFactory.getLogger(PressReleaseImporter.class);
@@ -33,6 +35,7 @@ public class PressReleaseImporter {
         String location = locations.newsLocation(release, session);
         String updatedlocation = update(contentNode, location, session);
         ensureNewsFolderActions(updatedlocation, session);
+        detectMissingSlug(session, updatedlocation, release);
         return updatedlocation;
     }
 
@@ -93,6 +96,21 @@ public class PressReleaseImporter {
         setFolderType(year, yearType);
         removeExtraIndex(pub);
         session.save();
+    }
+
+    void detectMissingSlug(Session session, String location, PressRelease release) {
+        try {
+            Node handle = session.getNode(location);
+            NodeIterator nodeIterator = handle.getNodes(handle.getName());
+            while (nodeIterator.hasNext()) {
+                Node variant = nodeIterator.nextNode();
+                if (!variant.hasProperty("govscot:slug") || isBlank(variant.getProperty("govscot:slug").getString())) {
+                    LOG.warn("News item missing slug {}, {}", handle.getPath(), release);
+                }
+            }
+        } catch (RepositoryException e) {
+            LOG.error("exception detecting news slug", e);
+        }
     }
 
     void removeExtraIndex(Node pubfolder) throws RepositoryException {

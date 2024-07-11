@@ -1,6 +1,8 @@
 package scot.gov.www;
 
 import org.onehippo.repository.events.HippoWorkflowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -11,6 +13,8 @@ import javax.jcr.RepositoryException;
  * If the name already exists then disambiguate the slug by adding a number to the end.
  */
 public class NewsSlugDaemonModule extends SlugDaemonModule {
+
+    private static final Logger LOG = LoggerFactory.getLogger(NewsSlugDaemonModule.class);
 
     private static final String DOCUMENT_TYPE = "govscot:News";
 
@@ -38,6 +42,7 @@ public class NewsSlugDaemonModule extends SlugDaemonModule {
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
         Node news = session.getNode(event.result());
         if (news == null) {
+            LOG.warn("news is null for event, not allocating a slug {}, arguments {}", event.result(), event.arguments());
             return;
         }
         assignSlug(news);

@@ -147,4 +147,24 @@ public class PressRelease {
 
     public void setPublicationType(String publicationType) { this.publicationType = publicationType;  }
 
+    @Override
+    public String toString() {
+        return "PressRelease{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
+                ", body='" + body + '\'' +
+                ", notesToEditors='" + notesToEditors + '\'' +
+                ", dateTime=" + dateTime +
+                ", url='" + url + '\'' +
+                ", seoName='" + seoName + '\'' +
+                ", client='" + client + '\'' +
+                ", contacts=" + contacts +
+                ", policies=" + policies +
+                ", topics=" + topics +
+                ", mediaAttachments=" + mediaAttachments +
+                ", updatedDate=" + updatedDate +
+                ", publicationType='" + publicationType + '\'' +
+                '}';
+    }
 }

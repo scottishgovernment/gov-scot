@@ -5,10 +5,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.sluglookup.PathForSlugSource;
 import scot.gov.publishing.sluglookup.PathSourceFactory;
-import scot.gov.www.linkprocessors.pathlookup.QueryPathSource;
+import scot.gov.www.linkprocessors.pathlookup.PRGlooSlugLookupSource;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
+
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class NewsLinkProcessor extends SlugProcessor {
 
@@ -16,7 +18,7 @@ public class NewsLinkProcessor extends SlugProcessor {
 
     public static final String NEWS = "news/";
 
-    PathForSlugSource pathSource = PathSourceFactory.withFallback(new QueryPathSource(NEWS));
+    PathForSlugSource pathSource = PathSourceFactory.withFallback(new PRGlooSlugLookupSource());
 
     @Override
     protected HstLink doPostProcess(HstLink link) {
@@ -38,12 +40,8 @@ public class NewsLinkProcessor extends SlugProcessor {
                 LOG.warn("Unable to find publication node for path {}", link.getPath());
                 return null;
             }
-            if (!newsNode.hasProperty("govscot:slug")) {
-                LOG.warn("result has no slug property: {}", newsNode.getPath());
-                return null;
-            }
 
-            return newsNode.getProperty("govscot:slug").getString();
+            return slugProperty(newsNode);
         } catch (RepositoryException e) {
             LOG.error("Unable to get the news slug", e);
             return link.getPath();
@@ -51,6 +49,29 @@ public class NewsLinkProcessor extends SlugProcessor {
     }
 
 
+    String slugProperty(Node newsNode) throws RepositoryException {
+        String slug = prop(newsNode, "govscot:slug");
+        if (isNotBlank(slug)) {
+            return slug;
+        }
+
+        String prglooslug = prop(newsNode, "govscot:prglooslug");
+        if (isNotBlank(prglooslug)) {
+            LOG.warn("using govscot:prglooslug property for node {}", newsNode.getPath());
+            return prglooslug;
+        }
+
+        LOG.error("result has no govscot:slug or govscot:prglooslug property {}", newsNode.getPath());
+        return null;
+    }
+
+    String prop(Node node, String prop) throws RepositoryException {
+        if (!node.hasProperty(prop)) {
+            return null;
+        }
+
+        return node.getProperty(prop).getString();
+    }
 
     @Override
     protected HstLink doPreProcess(HstLink link) {
