@@ -4,7 +4,7 @@
   <parent>
     <artifactId>gov-scot-site</artifactId>
     <groupId>scot.gov.www</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1586</version>
   </parent>
 
   <artifactId>gov-scot-webapp</artifactId>
