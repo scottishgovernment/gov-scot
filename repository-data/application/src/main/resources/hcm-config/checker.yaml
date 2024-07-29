@@ -1,0 +1,5 @@
+definitions:
+  config:
+      /lost+found:
+        jcr:primaryType: nt:unstructured
+        jcr:uuid: 4f98a307-b960-44e6-acd2-3e7d39a86bcd
