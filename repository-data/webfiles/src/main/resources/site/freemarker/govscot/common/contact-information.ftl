@@ -48,8 +48,8 @@
             </#if>
             <#if contactInformation.twitter?has_content>
             <dd class="ds_contact-details__social-item">
-                <a class="ds_contact-details__social-link" href="http://twitter.com/${contactInformation.twitter}">
-                    <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#twitter"></use></svg>
+                <a class="ds_contact-details__social-link" href="http://x.com/${contactInformation.twitter}">
+                    <svg class="ds_contact-details__social-icon  ds_icon  ds_icon--20" aria-hidden="true" role="img"><use href="${iconspath}#x"></use></svg>
                     ${contactInformation.twitter}
                 </a>
             </dd>
