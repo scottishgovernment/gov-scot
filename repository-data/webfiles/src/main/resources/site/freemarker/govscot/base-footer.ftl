@@ -23,7 +23,7 @@
                 <li class="gov_social-links__item">
                     <a title="X" class="gov_social-links__link" href="https://x.com/scotgov" data-footer="social-2">
                         <div class="gov_social-links__link-inner">
-                            <span class="gov_social-links__icon"><svg class="ds_icon  ds_icon--20" aria-hidden="true" role="img"><use href="${iconspath}#x"></use></svg></span>
+                            <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#x"></use></svg></span>
                             <span>X</span>
                         </div>
                     </a>

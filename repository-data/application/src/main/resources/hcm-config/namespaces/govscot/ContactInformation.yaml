@@ -105,11 +105,11 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /twitter:
             jcr:primaryType: frontend:plugin
-            caption: Twitter handle
+            caption: X/Twitter handle
             field: twitter
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Enter the Twitter handle for this content item e.g. @scotgov
+            hint: Enter the X/Twitter handle for this content item e.g. @scotgov
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /flickr:

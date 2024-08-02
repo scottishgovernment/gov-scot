@@ -200,7 +200,7 @@ definitions:
               jcr:primaryType: frontend:pluginconfig
           /twitterContent:
             jcr:primaryType: frontend:plugin
-            caption: Twitter card
+            caption: X/Twitter card
             field: twitterContent
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
