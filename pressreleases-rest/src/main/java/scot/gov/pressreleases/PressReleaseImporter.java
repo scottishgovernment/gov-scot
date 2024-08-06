@@ -31,6 +31,7 @@ public class PressReleaseImporter {
     private ContentNodes contentNodes = new ContentNodes();
 
     public String importPressRelease(PressRelease release, Session session) throws RepositoryException {
+        LOG.info("importPressRelease {}", release);
         ContentNode contentNode = contentNodes.news(release, session);
         String location = locations.newsLocation(release, session);
         String updatedlocation = update(contentNode, location, session);

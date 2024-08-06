@@ -1,11 +1,14 @@
 package scot.gov.www;
 
 import org.onehippo.repository.events.HippoWorkflowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scot.gov.publishing.sluglookup.SlugLookups;
 
 import javax.jcr.*;
 
 import static org.apache.commons.lang3.StringUtils.substringAfter;
+import static org.apache.tika.utils.StringUtils.isBlank;
 
 /**
  * Maintain the data structure used to lookup slugs.
@@ -16,6 +19,8 @@ import static org.apache.commons.lang3.StringUtils.substringAfter;
  * having to do an expensive query.
  */
 public class SlugMaintenanceListener extends DaemonModuleBase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SlugMaintenanceListener.class);
 
     static final String SLUG = "govscot:slug";
 
@@ -66,6 +71,11 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
     void updateLookup(Node subject, String mount ) throws RepositoryException {
         String slug = slug(subject);
+        if (isBlank(slug)) {
+            LOG.warn("Slug is empty for {}", slug);
+            return;
+        }
+
         String site = sitename(subject);
         String path = substringAfter(subject.getPath(), site);
         String type = path.split("/")[1];
