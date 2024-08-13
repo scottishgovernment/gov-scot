@@ -5,7 +5,7 @@ export default function () {
 
     if (!storage.isJsonString(permissionsString)) {
         const permissions = {};
-        permissions.statistics = true;
+        permissions.statistics = false;
         permissions.preferences = true;
 
         storage.setCookie(storage.categories.necessary,

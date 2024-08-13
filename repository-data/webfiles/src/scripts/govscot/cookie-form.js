@@ -79,6 +79,7 @@ const cookieForm = {
             cookieNotice.parentNode.querySelector('.js-confirm-cookie-content').classList.remove('fully-hidden');
 
             removeDisallowedCookies();
+            window.initGTM();
         });
     }
 };

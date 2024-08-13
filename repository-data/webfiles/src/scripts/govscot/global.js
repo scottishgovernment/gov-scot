@@ -135,10 +135,14 @@ const global = {
             const cookieNotification = new window.DS.components.CookieNotification(cookieNotificationEl);
             cookieNotification.init();
 
-
             cookieNotificationEl.addEventListener('click', function (event) {
                 if (event.target.classList.contains('js-accept-essential-cookies')) {
                     removeDisallowedCookies();
+                }
+
+                if (event.target.classList.contains('js-accept-all-cookies')) {
+                    event.preventDefault();
+                    window.initGTM();
                 }
             });
         }
