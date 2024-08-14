@@ -15,6 +15,7 @@ definitions:
           /hst:root:
             jcr:primaryType: hst:mount
             jcr:uuid: b284f3b2-400c-48bb-851b-84c1808848c8
+            hst:alias: gov
             hst:homepage: root
             hst:mountpoint: /hst:hst/hst:sites/govscot
             /rest:
@@ -54,6 +55,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: b0c555dc-1a00-4bc7-a5e6-3a71b6e54387
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -101,6 +103,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: effbd3b8-756a-4b61-8f7d-ec03adc40ba2
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -148,6 +151,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: 7b221302-12b0-4058-8bb8-83fdc8e2543f
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -195,6 +199,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: c3442a85-7ad1-4664-be75-522e4072613c
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -242,6 +247,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: 491d36f2-0015-4e2f-9eda-59c41d7d39da
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -289,6 +295,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: 865f2039-e77d-4cb2-a70c-377d1b0e9d6b
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -336,6 +343,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: 5247df6a-4868-4479-a507-a4541c15b341
                   govscot:gtm: /content/documents/administration/analytics/dev
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -383,6 +391,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: 72700887-f31d-47f2-9a95-b0797e693f78
                   govscot:gtm: /content/documents/administration/analytics/live
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -430,6 +439,7 @@ definitions:
                   jcr:primaryType: hst:mount
                   jcr:uuid: 59bbee9b-31e5-4d6a-b289-571161093527
                   govscot:gtm: /content/documents/administration/analytics/live
+                  hst:alias: gov
                   hst:homepage: root
                   hst:mountpoint: /hst:hst/hst:sites/govscot
                   hst:schemeagnostic: true
@@ -474,6 +484,7 @@ definitions:
                 jcr:primaryType: hst:mount
                 jcr:uuid: 03157eb9-b5e4-466a-a6e7-9b135e23653d
                 govscot:gtm: /content/documents/administration/analytics/live
+                hst:alias: gov
                 hst:homepage: root
                 hst:mountpoint: /hst:hst/hst:sites/govscot
                 hst:schemeagnostic: true
