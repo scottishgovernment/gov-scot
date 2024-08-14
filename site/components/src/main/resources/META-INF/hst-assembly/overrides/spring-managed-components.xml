@@ -12,16 +12,6 @@
             base-package="scot.gov.publishing.hippo.funnelback.component" />
 
     <bean id="funnelbackSearchService" class="scot.gov.publishing.hippo.funnelback.component.FunnelbackSearchService">
-        <property name="sites">
-            <map>
-                <entry key="govscot">
-                    <list>
-                        <value>www.gov.scot</value>
-                    </list>
-                </entry>
-            </map>
-        </property>
-
         <property name="collections">
             <map>
                 <entry key="govscot" value="govscot~sp-govscot"/>
