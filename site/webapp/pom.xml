@@ -52,8 +52,9 @@
     </dependency>
 
     <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-hst</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
   </dependencies>
