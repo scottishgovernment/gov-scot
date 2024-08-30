@@ -6,7 +6,7 @@
   <parent>
     <groupId>scot.gov.www</groupId>
     <artifactId>gov-scot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1599</version>
   </parent>
 
   <artifactId>gov-scot-cms</artifactId>
@@ -40,37 +40,37 @@
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>publications-rest</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.1599</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>redirects-rest</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.1599</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>pressreleases-rest</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.1599</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>searchjournal-rest</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.1599</version>
     </dependency>
 
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>imageprocessing</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.1599</version>
     </dependency>
 
     <dependency>
         <groupId>scot.gov.publishing.hippo</groupId>
         <artifactId>hippo-govscot-sluglookup-cms</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.126</version>
         <scope>compile</scope>
     </dependency>
 
