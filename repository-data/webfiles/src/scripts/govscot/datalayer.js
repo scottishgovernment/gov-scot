@@ -2,9 +2,8 @@
 
 (function () {
     const datalayerScriptElement = document.getElementById('gtm-datalayer');
-    const gtmScriptElement = document.getElementById('gtm-script');
 
-    if (!datalayerScriptElement || !gtmScriptElement) {
+    if (!datalayerScriptElement) {
         return;
     }
 
@@ -21,10 +20,6 @@
     const dateCreated = datalayerScriptElement.dataset.datecreated;
     const uuid = datalayerScriptElement.dataset.uuid;
 
-    const userType = gtmScriptElement.dataset.usertype;
-    const format = gtmScriptElement.dataset.format;
-    const siteid = gtmScriptElement.dataset.siteid;
-
     window.dataLayer = window.dataLayer || [];
 
     const obj = {};
@@ -34,18 +29,6 @@
     }
 
     obj['gtm.whitelist'] = ['google', 'jsm', 'lcl'];
-
-    if (present(userType)) {
-        obj.userType = userType;
-    }
-
-    if (present(siteid)) {
-        obj.siteid = siteid;
-    }
-
-    if (present(format)) {
-        obj.format = format;
-    }
 
     if (present(role)) {
         obj.responsibleRole = role.split('|').length > 1 ? role.split('|') : role;

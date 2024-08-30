@@ -5,8 +5,47 @@ import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions
 (function () {
     setInitialCookiePermissions();
 
+    function gtmScriptDataLayer() {
+        const gtmScriptElement = document.getElementById('gtm-script');
+
+        if (!gtmScriptElement) {
+            return;
+        }
+
+        const format = gtmScriptElement.dataset.format;
+        const siteid = gtmScriptElement.dataset.siteid;
+        const userType = gtmScriptElement.dataset.usertype;
+
+        window.dataLayer = window.dataLayer || [];
+
+        const obj = {};
+
+        function present(value) {
+            return value && !!value.length;
+        }
+
+        if (present(userType)) {
+            obj.userType = userType;
+        }
+
+        if (present(siteid)) {
+            obj.siteid = siteid;
+        }
+
+        if (present(format)) {
+            obj.format = format;
+        }
+
+        window.dataLayer.push(obj);
+    }
+
     window.initGTM = function () {
         const gtmScriptElement = document.getElementById('gtm-script');
+
+        if (!gtmScriptElement) {
+            return;
+        }
+
         const containerId = gtmScriptElement.dataset.containerid;
         const auth = gtmScriptElement.dataset.auth;
         const env = gtmScriptElement.dataset.env;
@@ -56,4 +95,5 @@ import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions
     };
 
     window.initGTM();
+    gtmScriptDataLayer();
 })();
