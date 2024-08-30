@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:groups/bulk-schedule-publishing-group:
+    /hippo:configuration/hippo:groups/bulk-schedule-publishing:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
       hipposys:userroles:
