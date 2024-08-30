@@ -17,7 +17,7 @@ definitions:
           .meta:add-new-system-values: true
           operation: override
           type: string
-          value: [publication-editors]
+          value: [publication-editors, bulk-schedule-publishing-group]
         hipposys:role: bulkschedule-user
         hipposys:users:
           .meta:category: system
