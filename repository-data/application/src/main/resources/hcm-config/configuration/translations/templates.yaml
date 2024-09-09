@@ -81,3 +81,6 @@ definitions:
       new-featuregriditem-document: new featuregriditem document
       new-featuregriditem-folder: new featuregriditem folder
       new-SearchResultsPage-document: new SearchResultsPage document
+      new-Consultation-document: new Consultation document
+      new-Consultation-folder: new Consultation folder
+      new-consultation-folder: New consultation

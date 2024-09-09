@@ -10,8 +10,11 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.DocumentInformation;
 import scot.gov.www.beans.PublicationPage;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static java.util.stream.Collectors.toList;
 
@@ -28,6 +31,64 @@ public class PublicationComponent extends AbstractPublicationComponent {
         setDocuments(publication, document, request);
         setPages(publication, document, request);
         request.setAttribute("document", publication);
+
+        LOG.info("populateRequest {}", publication.getPath());
+        if (isConsultationWithDates(publication)) {
+            populateConsultationFields(publication, request);
+        }
+    }
+
+    boolean isConsultationWithDates(HippoBean publication) {
+        String publicationType = publication.getSingleProperty("govscot:publicationType");
+        LOG.info("isConsultationWithDates {}, {}",publication.getPath(), publicationType);
+        if (!"consultation-paper".equals(publicationType)) {
+            LOG.info("not a consultation: {}", publicationType);
+            return false;
+        }
+
+        Calendar closingDate = publication.getSingleProperty("govscot:closingDate");
+        LOG.info("closingDate {}", closingDate == null ? "no closing date" : closingDate);
+        return closingDate != null;
+    }
+
+    void populateConsultationFields(HippoBean publication, HstRequest request) {
+        LOG.info("populateConsultationFields {}", publication.getPath());
+        Calendar closingDate = publication.getSingleProperty("govscot:closingDate");
+        Calendar currentDate = Calendar.getInstance();
+        long diffInMillis = closingDate.getTimeInMillis() - currentDate.getTimeInMillis();
+        LOG.info("populateConsultationFields {}", diffInMillis);
+        request.setAttribute("diffInMillis", diffInMillis);
+        request.setAttribute("isOpen", diffInMillis > 0);
+        request.setAttribute("responseTime", responseTimeString(diffInMillis));
+    }
+
+    String responseTimeString(long diffInMillis) {
+        if (diffInMillis < 0) {
+            return "Closed";
+        }
+
+        long days = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+        if (days > 1) {
+            return days + " days to respond";
+        } else if (days == 1) {
+            return "1 day to respond";
+        }
+
+        long hours = TimeUnit.MILLISECONDS.toHours(diffInMillis) % 24;
+        if (hours > 1) {
+            return hours + " hours to respond";
+        } else if (hours == 1) {
+            return "1 hour to respond";
+        }
+
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis) % 60;
+        if (minutes > 1) {
+            return minutes + " minutes to respond";
+        } else if (minutes == 1) {
+            return "1 minute to respond";
+        }
+
+        return "Less than a minute to respond";
     }
 
     protected HippoBean getPublication(HippoBean document) {
@@ -61,14 +122,19 @@ public class PublicationComponent extends AbstractPublicationComponent {
     }
 
     HippoBean getPublicationFromFolder(HippoBean folder) {
-        List<HippoBean> publications = folder.getChildBeans("govscot:Publication");
-        if (publications.isEmpty()) {
-            publications = folder.getChildBeans("govscot:ComplexDocument2");
-        }
+        List<HippoBean> publications = getAllPublicaitons(folder);
         if (publications.size() > 1) {
             LOG.warn("Multiple publications found in folder {}, will use first", folder.getPath());
         }
         return publications.isEmpty() ? null : publications.get(0);
+    }
+
+    List<HippoBean> getAllPublicaitons(HippoBean folder) {
+        List<HippoBean> publications = new ArrayList<>();
+        publications.addAll(folder.getChildBeans("govscot:Publication"));
+        publications.addAll(folder.getChildBeans("govscot:ComplexDocument2"));
+        publications.addAll(folder.getChildBeans("govscot:Consultation"));
+        return publications;
     }
 
     private void setDocuments(HippoBean publication, HippoBean document, HstRequest request) {
