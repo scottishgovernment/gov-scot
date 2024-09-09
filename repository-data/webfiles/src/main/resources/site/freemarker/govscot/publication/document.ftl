@@ -17,6 +17,7 @@
 
         <div class="gov_sublayout__metadata">
             <#include 'metadata.ftl'/>
+            HERE1
         </div>
 
         <div class="gov_sublayout__content">
@@ -25,8 +26,24 @@
                     <p class="ds_leader  ds_no-margin--bottom">${summaryParagraph}</p>
                 </#list>
             </#if>
-
+HERE2
             <#include '../common/collections-list.ftl'/>
+HERE3
+            <#if document.contentType == "govscot:Consultation">
+                <div class="ds_inset-text">
+                    <div class="ds_inset-text__text">
+                        <div class="ds_tag">Open</div>
+                        <p>${daysToRespond} days to respond</p>
+                        <p>
+                            <a href="${document.responseUrl}">Respond online</a>
+                        </p>
+                        <p>
+                            Closes <strong><@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/></strong>
+                        </p>
+                    </div>
+                </div>
+            </#if>
+
         </div>
     </header>
 </div>

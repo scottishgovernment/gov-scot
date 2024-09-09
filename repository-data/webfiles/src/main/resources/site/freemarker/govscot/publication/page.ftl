@@ -36,6 +36,20 @@
                     </#if>
 
                     <#include '../common/collections-list.ftl'/>
+                    <#if document.contentType == "govscot:Consultation" && isOpen>
+                        <div class="ds_inset-text">
+                            <div class="ds_inset-text__text">
+                                <div class="ds_tag">Open</div><br/>
+                                ${responseTime}<br/>
+                                <a href="${document.responseUrl}">Respond online</a>
+                                <div class="ds_metadata__item">
+                                    <dt class="ds_metadata__key">Closes</dt>
+                                    <dd class="ds_metadata__value"><strong id="sg-meta__meeting-date"><@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/></strong></dd>
+                                </div>
+                            </div>
+                        </div>
+                    </#if>
+
                 </div>
 
                 <#if hasDocuments!false>
@@ -149,6 +163,26 @@
                         <@hst.manageContent hippobean=currentPage />
 
                         <div  class="body-content  publication-content  js-content-wrapper">
+                            <#if document.contentType == "govscot:Consultation" && currentPage.title?lower_case = 'respond'>
+
+                               <#if isOpen>
+                                    Submit your comments by
+                                    <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>,
+                                    in any of the following ways:
+
+                                    <h3>Online form</h3>
+                                    <a href="${document.responseUrl}" class="ds_button">Respond online</a>
+                                    <#list document.consultationResponseMethods as responseMethod>
+                                        <h3>${responseMethod.type}</h3>
+                                        <@hst.html hippohtml=responseMethod.content/>
+                                    </#list>
+                                <#else>
+                                    This consultation has now closed, it was open between
+                                    <@fmt.formatDate value=document.openingDate.time type="both" pattern="d MMMM yyyy"/>
+                                    and
+                                    <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>.
+                                </#if>
+                            </#if>
                             <div <@langcompare currentPage document />>
                                 <@hst.html hippohtml=currentPage.content/>
                             </div>
