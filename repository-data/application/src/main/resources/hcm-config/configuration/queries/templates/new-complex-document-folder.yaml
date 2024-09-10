@@ -44,7 +44,7 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: 0017de1c-4d77-45de-aed2-0cf00d9916b9
+              hippotranslation:id:
               hippotranslation:locale: en
           /chapters:
             jcr:primaryType: hippostd:folder

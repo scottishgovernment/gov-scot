@@ -44,7 +44,7 @@ definitions:
               hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
               hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippotranslation:id: 2fc490d3-3c1a-4155-9254-d6e4299bd52b
+              hippotranslation:id:
               hippotranslation:locale: en
               /govscot:responsibleDirectorate:
                 jcr:primaryType: hippo:mirror
