@@ -3,6 +3,7 @@ package scot.gov.www;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.onehippo.cms7.services.eventbus.HippoEventListenerRegistry;
 import org.onehippo.cms7.services.eventbus.Subscribe;
 import org.onehippo.repository.events.HippoWorkflowEvent;
@@ -50,8 +51,12 @@ public abstract class DaemonModuleBase implements DaemonModule {
     }
 
     void handleEventWithLogging(HippoWorkflowEvent event) throws RepositoryException {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         try {
             doHandleEvent(event);
+            stopWatch.stop();
+            LOG.info("event listener {} took {} millis", this.getClass().getName(), stopWatch.getTime());
         } catch (RepositoryException e) {
             LOG.error("{} Unexpected exception while doing simple JCR read operations, calling session.refresh(false), subject path is {}",
                     this.getClass().getName(), event.subjectPath(), e);

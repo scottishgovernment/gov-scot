@@ -49,10 +49,31 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
     }
 
     public boolean canHandleEvent(HippoWorkflowEvent event) {
-        return event.success();
+        return event.success(); /// probably doing this too many times, try juts add?
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
+
+        Node node = null;
+        Node parentfolder = null;
+        if ("add".equals(event.action())) {
+            node = session.getNode(event.result());
+            parentfolder = session.getNode(event.subjectPath());
+        }
+
+        if ("rename".equals(event.action())) {
+            node = session.getNode(event.result());
+            parentfolder = session.getNodeByIdentifier((event.subjectId()));
+        }
+
+        if ("setDisplayName".equals(event.action())) {
+            node = session.getNode(event.subjectPath());
+            parentfolder = session.getNode(event.subjectPath()).getParent();
+        }
+
+        if (parentfolder == null) {
+            return;
+        }
 
         HippoNode parentFolder = getParentFolder(event);
         if (parentFolder == null) {
@@ -66,8 +87,7 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
             return;
         }
 
-        sortChildren(parentFolder, sortOrder);
-        session.save();
+        sortChildren(parentFolder, node, sortOrder);
 
     }
 
@@ -101,21 +121,37 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
         return null;
     }
 
-    public void sortChildren(Node node, SortOrder sortOrder) throws RepositoryException {
+    public void sortChildren(Node folder, Node node, SortOrder sortOrder) throws RepositoryException {
 
-        LOG.info("sortChildren {}, {}", node.getPath(), sortOrder.name());
+        LOG.info("sortChildren {}, {}, {}", folder.getPath(), node.getPath(), sortOrder.name());
 
-        List<String> sortedNames = sortedNames(node.getNodes());
+        List<String> sortedNames = sortedNames(folder.getNodes());
+        LOG.info("sortedNames: {}", sortedNames);
         if (sortOrder == SortOrder.DESCENDING) {
             Collections.reverse(sortedNames);
         }
 
-        for (int i = sortedNames.size() - 1; i >= 0; i--) {
-            String before = sortedNames.get(i);
-            String after = i < sortedNames.size() - 1 ? sortedNames.get(i + 1) : null;
-            node.orderBefore(before, after);
+        int index = sortedNames.indexOf(node.getName());
+        LOG.info("index is {}", index);
+        if (sortOrder == SortOrder.ASCENDING && index == sortedNames.size() - 1) {
+            // we dont have to do anything
+            LOG.info("already in place 1");
+            return;
         }
+
+        if (sortOrder == SortOrder.DESCENDING && index == 0) {
+            // we dont have to do anything
+            LOG.info("already in place 2");
+            return;
+        }
+
+        String orderBefore = sortOrder == SortOrder.ASCENDING ?
+                sortedNames.get(index + 1) : sortedNames.get(index - 1);
+        LOG.info("order {} before {}", node.getName(), orderBefore);
+        folder.orderBefore(node.getName(), orderBefore);
+        session.save();
     }
+
 
     /**
      * Sort the nodes in an iterator, Folders in alphabetical order first then other documents in alphabetical order.
