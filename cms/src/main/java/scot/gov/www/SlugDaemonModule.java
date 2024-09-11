@@ -1,12 +1,11 @@
 package scot.gov.www;
 
 import org.apache.commons.lang3.StringUtils;
+import scot.gov.publishing.sluglookup.SlugLookupPaths;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryResult;
 import java.util.Arrays;
 
 import static java.util.stream.Collectors.joining;
@@ -46,10 +45,9 @@ public abstract class SlugDaemonModule extends DaemonModuleBase {
         // Recursive call to try the next number.
         return disambiguate(slug, docType, postfix + 1);
     }
-    private boolean slugAlreadyExists(String slug, String docType) throws RepositoryException {
-        String sql = String.format("SELECT * FROM %s WHERE govscot:slug = '%s'", docType, slug);
-        QueryResult result = session.getWorkspace().getQueryManager().createQuery(sql, Query.SQL).execute();
-        return result.getNodes().hasNext();
+    private boolean slugAlreadyExists(String slug, String type) throws RepositoryException {
+        String slugPath = SlugLookupPaths.slugLookupPath(slug, "govscot", type, "live");
+        return session.nodeExists(slugPath);
     }
 
     protected static Node getLatestVariant(Node handle) throws RepositoryException {

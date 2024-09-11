@@ -18,8 +18,6 @@ public class PublicationSlugDaemonModule extends SlugDaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationSlugDaemonModule.class);
 
-    private static final String PUBLICATION_DOCUMENT_TYPE = "govscot:Publication";
-
     private static final String INDEX = "index";
 
     private static final String PREFIX = "/content/documents/govscot/publications/";
@@ -71,7 +69,7 @@ public class PublicationSlugDaemonModule extends SlugDaemonModule {
 
     private void assignSlug(Node publication) throws RepositoryException {
         String folderName = folderName(publication);
-        String slug = allocate(folderName, PUBLICATION_DOCUMENT_TYPE);
+        String slug = allocate(folderName, "publications");
         LOG.info("assignSlug {} -> {}", publication.getPath(), slug);
         publication.setProperty(GOVSCOT_SLUG_PROPERTY, slug);
         session.save();

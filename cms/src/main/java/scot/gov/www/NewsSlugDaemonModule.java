@@ -16,17 +16,15 @@ public class NewsSlugDaemonModule extends SlugDaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(NewsSlugDaemonModule.class);
 
-    private static final String DOCUMENT_TYPE = "govscot:News";
-
     protected static final String PRGLOO_SLUG_PROPERTY = "govscot:prglooslug";
 
     private static final String PREFIX = "/content/documents/govscot/news/";
 
     public boolean canHandleEvent(HippoWorkflowEvent event) {
         return
-            "add".equals(event.action())
-            && event.success()
-            && isNewsPath(event.result());
+                "add".equals(event.action())
+                        && event.success()
+                        && isNewsPath(event.result());
     }
 
     /**
@@ -54,7 +52,7 @@ public class NewsSlugDaemonModule extends SlugDaemonModule {
             name = newsNode.getProperty(PRGLOO_SLUG_PROPERTY).getString();
         }
 
-        String slug = allocate(name, DOCUMENT_TYPE);
+        String slug = allocate(name, "news");
         newsNode.setProperty(GOVSCOT_SLUG_PROPERTY, slug);
         session.save();
     }
