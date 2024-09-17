@@ -2,8 +2,6 @@ package scot.gov.www;
 
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.jcr.*;
 import java.util.*;
@@ -19,8 +17,6 @@ import java.util.*;
  * directorates alpha ascending
  */
 public class DocumentOrderDaemonModule extends DaemonModuleBase {
-
-    private static final Logger LOG = LoggerFactory.getLogger(DocumentOrderDaemonModule.class);
 
     private Map<String, SortOrder> directionMap = new HashMap<>();
 
@@ -54,6 +50,27 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
 
+        Node node = null;
+        Node parentfolder = null;
+        if ("add".equals(event.action())) {
+            node = session.getNode(event.result());
+            parentfolder = session.getNode(event.subjectPath());
+        }
+
+        if ("rename".equals(event.action())) {
+            node = session.getNode(event.result());
+            parentfolder = session.getNodeByIdentifier((event.subjectId()));
+        }
+
+        if ("setDisplayName".equals(event.action())) {
+            node = session.getNode(event.subjectPath());
+            parentfolder = session.getNode(event.subjectPath()).getParent();
+        }
+
+        if (parentfolder == null) {
+            return;
+        }
+
         HippoNode parentFolder = getParentFolder(event);
         if (parentFolder == null) {
             return;
@@ -66,8 +83,7 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
             return;
         }
 
-        sortChildren(parentFolder, sortOrder);
-        session.save();
+        sortChildren(parentFolder, node, sortOrder);
 
     }
 
@@ -101,21 +117,28 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
         return null;
     }
 
-    public void sortChildren(Node node, SortOrder sortOrder) throws RepositoryException {
+    public void sortChildren(Node folder, Node node, SortOrder sortOrder) throws RepositoryException {
 
-        LOG.info("sortChildren {}, {}", node.getPath(), sortOrder.name());
-
-        List<String> sortedNames = sortedNames(node.getNodes());
+        List<String> sortedNames = sortedNames(folder.getNodes());
         if (sortOrder == SortOrder.DESCENDING) {
             Collections.reverse(sortedNames);
         }
 
-        for (int i = sortedNames.size() - 1; i >= 0; i--) {
-            String before = sortedNames.get(i);
-            String after = i < sortedNames.size() - 1 ? sortedNames.get(i + 1) : null;
-            node.orderBefore(before, after);
+        int index = sortedNames.indexOf(node.getName());
+        if (sortOrder == SortOrder.ASCENDING && index == sortedNames.size() - 1) {
+            return;
         }
+
+        if (sortOrder == SortOrder.DESCENDING && index == 0) {
+            return;
+        }
+
+        String orderBefore = sortOrder == SortOrder.ASCENDING ?
+                sortedNames.get(index + 1) : sortedNames.get(index - 1);
+        folder.orderBefore(node.getName(), orderBefore);
+        session.save();
     }
+
 
     /**
      * Sort the nodes in an iterator, Folders in alphabetical order first then other documents in alphabetical order.
