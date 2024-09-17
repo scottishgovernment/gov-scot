@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.jcr.Value;
+import javax.jcr.*;
 import javax.jcr.query.Query;
 
 import java.util.Calendar;
@@ -122,7 +119,11 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
     void updateSitemapLatestDate(Node node) throws RepositoryException {
         Node sitemapNode = getSitemapSiteNode(node);
         LOG.info("updateSitemapLatestDate {}", node.getPath());
-        sitemapNode.setProperty(LATEST_LAST_MOD, Calendar.getInstance());
+        try {
+            sitemapNode.setProperty(LATEST_LAST_MOD, Calendar.getInstance());
+        } catch (InvalidItemStateException e) {
+            LOG.warn("{} property has been modified externally", LATEST_LAST_MOD, e);
+        }
     }
 
     boolean isExcludedType(Node node) throws RepositoryException {
