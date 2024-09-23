@@ -2,6 +2,8 @@ package scot.gov.www;
 
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.repository.events.HippoWorkflowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.*;
 import java.util.*;
@@ -17,6 +19,8 @@ import java.util.*;
  * directorates alpha ascending
  */
 public class DocumentOrderDaemonModule extends DaemonModuleBase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DocumentOrderDaemonModule.class);
 
     private Map<String, SortOrder> directionMap = new HashMap<>();
 
@@ -77,14 +81,19 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
         }
 
         SortOrder sortOrder = determineSortOrder(parentFolder);
+        LOG.info("reorder sortOrder: {}", sortOrder);
+
         if (sortOrder == null) {
             // no sort order is specified so do not take any action
             // for example this is the case for the pages or documents folders of publications.
             return;
         }
 
-        sortChildren(parentFolder, node, sortOrder);
-
+        if (sortOrder == SortOrder.ASCENDING) {
+            reorderAscending(parentFolder, node);
+        } else{
+            reorderDescending(parentFolder, node);
+        }
     }
 
     HippoNode getParentFolder(HippoWorkflowEvent event) throws RepositoryException {
@@ -117,78 +126,28 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
         return null;
     }
 
-    public void sortChildren(Node folder, Node node, SortOrder sortOrder) throws RepositoryException {
-
-        List<String> sortedNames = sortedNames(folder.getNodes());
-        if (sortOrder == SortOrder.DESCENDING) {
-            Collections.reverse(sortedNames);
-        }
-
-        int index = sortedNames.indexOf(node.getName());
-        if (sortOrder == SortOrder.ASCENDING && index == sortedNames.size() - 1) {
-            return;
-        }
-
-        if (sortOrder == SortOrder.DESCENDING && index == 0) {
-            return;
-        }
-
-        String orderBefore = sortOrder == SortOrder.ASCENDING ?
-                sortedNames.get(index + 1) : sortedNames.get(index - 1);
-        folder.orderBefore(node.getName(), orderBefore);
-        session.save();
-    }
-
-
-    /**
-     * Sort the nodes in an iterator, Folders in alphabetical order first then other documents in alphabetical order.
-     */
-    List<String> sortedNames(NodeIterator it) throws RepositoryException {
-
-        // for each node work out what name we want to sort by and
-        // partition them into folders and 'others'
-        Map<String, String> nameMap = new HashMap<>();
-        List<String> folders = new ArrayList<>();
-
-        List<String> others = new ArrayList<>();
-        apply(it, node -> {
-            nameMap.put(node.getName(), name(node));
-            if (isHippoFolder(node)) {
-                folders.add(node.getName());
-            } else {
-                others.add(node.getName());
-            }
-        });
-
-        others.sort(compareNodeNames(nameMap));
-        folders.sort(compareNodeNames(nameMap));
-
-        List<String> names = new ArrayList<>();
-        names.addAll(others);
-        names.addAll(folders);
-        return names;
-    }
-
-    String name(Node node) throws RepositoryException {
-        return node.hasProperty("hippo:name") ? node.getProperty("hippo:name").getString() : node.getName();
-    }
-
-    Comparator<String> compareNodeNames(Map<String, String> nameMap) {
-        return (l, r) -> String.CASE_INSENSITIVE_ORDER.compare(nameMap.get(l), nameMap.get(r));
-    }
-
-    void apply(NodeIterator it, ThrowingConsumer consumer) throws RepositoryException {
+    public void reorderAscending(Node folder, Node newNode) throws RepositoryException {
+        NodeIterator it = folder.getNodes();
         while (it.hasNext()) {
-            consumer.accept(it.nextNode());
+            Node current = it.nextNode();
+            if (newNode.getName().compareTo(current.getName()) < 0) {
+                folder.orderBefore(newNode.getName(), current.getName());
+                session.save();
+                return;
+            }
         }
     }
 
-    @FunctionalInterface
-    public interface ThrowingConsumer {
-        void accept(Node t) throws RepositoryException;
+    public void reorderDescending(Node folder, Node newNode) throws RepositoryException {
+        NodeIterator it = folder.getNodes();
+        while (it.hasNext()) {
+            Node current = it.nextNode();
+            if (newNode.getName().compareTo(current.getName()) > 0) {
+                folder.orderBefore(newNode.getName(), current.getName());
+                session.save();
+                return;
+            }
+        }
     }
 
-    boolean isHippoFolder(Node node) throws RepositoryException {
-        return "hippostd:folder".equals(node.getPrimaryNodeType().getName());
-    }
 }
