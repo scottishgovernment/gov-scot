@@ -1,0 +1,10 @@
+// Bugfix for file download image height not working responsively if image size attributes included
+// To be fixed in future design system release
+
+.ds_file-download {
+
+    &__thumbnail-image {
+        height: auto;
+    }
+
+}
