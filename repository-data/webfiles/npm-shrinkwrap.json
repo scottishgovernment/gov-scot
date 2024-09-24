@@ -10,7 +10,7 @@
       "devDependencies": {
         "@babel/core": "^7.6.4",
         "@babel/preset-env": "^7.6.3",
-        "@scottish-government/design-system": "^2.1.0",
+        "@scottish-government/design-system": "^2.3.1",
         "babel-loader": "^8.0.5",
         "istanbul-instrumenter-loader": "^3.0.1",
         "jasmine-core": "^2.4.1",
@@ -1694,9 +1694,9 @@
       }
     },
     "node_modules/@scottish-government/design-system": {
-      "version": "2.1.0",
-      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/design-system/-/design-system-2.1.0.tgz",
-      "integrity": "sha512-nrxV9hWeRMcKeTIKxTE21fYkyi4Vp5ktS2DA/na4wke4NZ4Pm3fk0liSzgbFhw58Jg7h4Y+1cm4LnOrZEtPtAw==",
+      "version": "2.3.1",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/design-system/-/design-system-2.3.1.tgz",
+      "integrity": "sha512-807OH+uWgrfudAH3PBq4Yi6GcciEaUye7LJozlda6AzyniDhSTCctqw8z9hbV/A4lkvF9rQGLdFKMwtS63hKsA==",
       "dev": true,
       "license": "MIT"
     },

@@ -27,6 +27,10 @@
     &__link {
         margin-right: px-to-rem(8px);
     }
+
+    .ds_tag {
+        @include ds_small-size;
+    }
 }
 
 @include ds_media-query(medium) {
