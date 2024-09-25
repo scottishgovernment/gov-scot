@@ -69,26 +69,26 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
         long days = TimeUnit.MILLISECONDS.toDays(diffInMillis);
         if (days > 1) {
-            return days + " days to respond";
+            return days + " days left to respond";
         } else if (days == 1) {
-            return "1 day to respond";
+            return "1 day left to respond";
         }
 
         long hours = TimeUnit.MILLISECONDS.toHours(diffInMillis) % 24;
         if (hours > 1) {
-            return hours + " hours to respond";
+            return hours + " hours left to respond";
         } else if (hours == 1) {
-            return "1 hour to respond";
+            return "1 hour left to respond";
         }
 
         long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis) % 60;
         if (minutes > 1) {
-            return minutes + " minutes to respond";
+            return minutes + " minutes left to respond";
         } else if (minutes == 1) {
-            return "1 minute to respond";
+            return "1 minute left to respond";
         }
 
-        return "Less than a minute to respond";
+        return "Less than a minute left to respond";
     }
 
     protected HippoBean getPublication(HippoBean document) {

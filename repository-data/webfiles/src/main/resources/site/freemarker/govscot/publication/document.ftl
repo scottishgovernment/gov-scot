@@ -17,7 +17,6 @@
 
         <div class="gov_sublayout__metadata">
             <#include 'metadata.ftl'/>
-            HERE1
         </div>
 
         <div class="gov_sublayout__content">
@@ -26,31 +25,28 @@
                     <p class="ds_leader  ds_no-margin--bottom">${summaryParagraph}</p>
                 </#list>
             </#if>
-HERE2
             <#include '../common/collections-list.ftl'/>
-HERE3
-            <#if document.contentType == "govscot:Consultation">
-                <div class="ds_inset-text">
-                    <div class="ds_inset-text__text">
-                        <div class="ds_tag">Open</div>
-                        <p>${daysToRespond} days to respond</p>
-                        <p>
-                            <a href="${document.responseUrl}">Respond online</a>
-                        </p>
-                        <p>
-                            Closes <strong><@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/></strong>
-                        </p>
-                    </div>
-                </div>
-            </#if>
+            <#if document.contentType == "govscot:Consultation" && isOpen>
+                        <div class="ds_inset-text">
+                            <div class="ds_inset-text__text">
+                                <p>
+                                    <strong class="ds_tag">Open</strong><br/>
+                                    ${responseTime}<br/>
+                                    <a href="${document.responseUrl}">Respond online</a>
+                                </p>
+                                <dl class="ds_metadata">
+                                    <div class="ds_metadata__item">
+                                        <dt class="ds_metadata__key">Closes</dt>
+                                        <dd class="ds_metadata__value"><strong id="sg-meta__meeting-date"><@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/></strong></dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </#if>
 
         </div>
     </header>
-</div>
-
-<div class="ds_wrapper"><hr /></div>
-
-<div class="ds_wrapper">
+    <hr />
     <div class="ds_layout  gov_layout--publication--no-sidebar">
         <div class="ds_layout__content">
             <!--noindex-->
