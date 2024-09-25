@@ -100,4 +100,19 @@ public class Publication extends AttributableContent {
         return getLinkedBeans("govscot:group", HippoBean.class);
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:openingDate")
+    public Calendar getOpeningDate() {
+        return getSingleProperty("govscot:openingDate");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:closingDate")
+    public Calendar getClosingDate() {
+        return getSingleProperty("govscot:closingDate");
+    }
+
+    @HippoEssentialsGenerated(internalName = "govscot:responseUrl")
+    public String getResponseUrl() {
+        return getSingleProperty("govscot:responseUrl");
+    }
+
 }

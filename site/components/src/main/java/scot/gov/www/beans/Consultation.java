@@ -100,9 +100,4 @@ public class Consultation extends Publication {
         return getChildBeansByName("govscot:consultationResponseMethods", ConsultationResponseType.class);
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:isOpen")
-    public boolean getIsOpen() {
-        return getSingleProperty("govscot:isOpen");
-    }
-
 }
