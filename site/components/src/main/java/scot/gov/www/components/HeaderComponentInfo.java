@@ -1,6 +1,8 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.core.parameters.DropDownList;
+import org.hippoecm.hst.core.parameters.FieldGroup;
+import org.hippoecm.hst.core.parameters.FieldGroupList;
 import org.hippoecm.hst.core.parameters.Parameter;
 
 public interface HeaderComponentInfo {
@@ -25,4 +27,7 @@ public interface HeaderComponentInfo {
     @Parameter(name = "backgroundcolor", displayName = "Background colour")
     @DropDownList(valueListProvider = ComponentBackgroundColourValueListProvider.class)
     String getBackgroundColor();
+
+    @Parameter(name = "removebottompadding", displayName = "Remove bottom padding", defaultValue = "false")
+    Boolean getRemoveBottomPadding();
 }

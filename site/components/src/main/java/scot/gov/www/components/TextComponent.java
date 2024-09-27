@@ -18,6 +18,8 @@ public class TextComponent extends CommonComponent {
         request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
         request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
+        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
+        request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 
 }

@@ -14,6 +14,11 @@
     <div class="ds_wrapper">
         <div class="ds_cb__inner">
             <#if document??>
+
+                <div class="ds_cb__text">
+                    <@hst.html hippohtml=document.content/>
+                </div>
+                
                 <div class="ds_cb__poster">
                     <a target="_blank" class="ds_cb__poster__link" href="${document.videoUrl}">
                         <#if document.image.xlargesixcolumns??>
@@ -41,10 +46,6 @@
                             <path class="foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
                         </svg>
                     </a>
-                </div>
-
-                <div class="ds_cb__text">
-                    <@hst.html hippohtml=document.content/>
                 </div>
 
                 <@hst.manageContent hippobean=document documentTemplateQuery="new-video-document" parameterName="document"/>

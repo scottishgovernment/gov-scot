@@ -58,6 +58,12 @@ definitions:
           hst:iconpath: icons/dynamicissue.svg
           hst:label: Dynamic Issue
           hst:template: dynamicissue
+        /textandcard:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.TextAndCardComponent
+          hst:iconpath: icons/textandcard.svg
+          hst:label: Text and card
+          hst:template: textandcard
         /featuregrid:
           jcr:primaryType: hst:containeritemcomponent
           hst:componentclassname: scot.gov.www.components.FeatureGridComponent

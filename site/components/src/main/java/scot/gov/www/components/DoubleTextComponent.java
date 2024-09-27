@@ -22,6 +22,8 @@ public class DoubleTextComponent extends CommonComponent {
         request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
         request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
+        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
+        request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 
     void setDocument(String attr, String documentPath, HstRequest request) {
