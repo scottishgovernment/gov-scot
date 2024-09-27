@@ -10,6 +10,7 @@
       "devDependencies": {
         "@babel/core": "^7.6.4",
         "@babel/preset-env": "^7.6.3",
+        "@scottish-government-design-system/content-blocks": "^0.1.2",
         "@scottish-government/design-system": "^2.3.1",
         "babel-loader": "^8.0.5",
         "istanbul-instrumenter-loader": "^3.0.1",
@@ -1692,6 +1693,13 @@
         "@jridgewell/resolve-uri": "^3.1.0",
         "@jridgewell/sourcemap-codec": "^1.4.14"
       }
+    },
+    "node_modules/@scottish-government-design-system/content-blocks": {
+      "version": "0.1.2",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government-design-system/content-blocks/-/content-blocks-0.1.2.tgz",
+      "integrity": "sha512-fsswKTDM0sGNX2cm0eZwDu3ConDbsRxN5kKKmq9rmoEBPI6bEGaElzjiwfWSXl7AH5HJFLLHNHVXp3B7JwbeJQ==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/@scottish-government/design-system": {
       "version": "2.3.1",

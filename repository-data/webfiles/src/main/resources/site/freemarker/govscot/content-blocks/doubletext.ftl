@@ -8,7 +8,7 @@
     <#if fullwidth>ds_cb--fullwidth</#if>
 ">
     <div class="ds_wrapper">
-        <div class="ds_cb__inner">
+        <div class="ds_cb__inner <#if removebottompadding> ds_!_padding-bottom--0</#if>">
 
             <#if document1??>
                 <div class="ds_cb__text" style="position: relative">
