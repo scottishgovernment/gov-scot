@@ -29,6 +29,7 @@ public class FeatureGridComponent extends CommonComponent {
         request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
         request.setAttribute("showimages", paramInfo.getShowImages());
         request.setAttribute("smallvariant", paramInfo.getSmallVariant());
+        request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 
     HippoDocument getHippoDocument(String id) {

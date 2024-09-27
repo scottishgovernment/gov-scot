@@ -24,6 +24,21 @@ definitions:
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
             hipposysedit:validators: [required]
+        /hipposysedit:nodetype[2]:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 139c5421-b02d-4f54-b906-2a4abf3e37fd
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
+          /content:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:content
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -38,6 +53,22 @@ definitions:
           jcr:uuid: 6ae1857c-edc4-4eb2-83ac-805d4cad0fe0
           hippostdpubwf:lastModificationDate: 2021-07-19T14:12:24.729+01:00
           hippostdpubwf:creationDate: 2021-07-19T14:12:24.729+01:00
+          /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+        /hipposysedit:prototype[2]:
+          jcr:primaryType: nt:unstructured
+          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostdpubwf:document',
+            'hippotranslation:translated', 'mix:referenceable']
+          jcr:uuid: f3908330-5cbe-4c2e-9a1f-dcfe68d6fc5b
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2021-07-19T14:12:24.729+01:00
+          hippostdpubwf:lastModificationDate: 2021-07-19T14:12:24.729+01:00
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''

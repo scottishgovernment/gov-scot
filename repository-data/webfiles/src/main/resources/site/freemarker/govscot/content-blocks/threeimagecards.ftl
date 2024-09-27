@@ -27,7 +27,7 @@
 <#if cards?size != 0>
 <div class="ds_cb  ds_cb--cards  <#if !greycards>ds_cb--bg-grey</#if>  <#if fullwidth>ds_cb--fullwidth</#if>  <#if neutrallinks>ds_cb--neutral-links</#if>">
     <div class="ds_wrapper">
-        <div class="ds_cb__inner">
+        <div class="ds_cb__inner <#if removebottompadding> ds_!_padding-bottom--0</#if>">
 
         <#list cards as card>
 

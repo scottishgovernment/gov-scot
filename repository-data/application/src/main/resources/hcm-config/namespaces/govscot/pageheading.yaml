@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: e54cca51-de92-4bb5-b64b-549e8d2ae574
+          jcr:uuid: c8e5b511-4986-4a4c-8361-10335fbdfb18
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -72,44 +72,12 @@ definitions:
             hipposysedit:path: govscot:externalLink
             hipposysedit:primary: false
             hipposysedit:type: String
-          /videoImage:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:videoImage
-            hipposysedit:primary: false
-            hipposysedit:type: hippogallerypicker:imagelink
           /videoUrl:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
             hipposysedit:path: govscot:videoUrl
-            hipposysedit:primary: false
-            hipposysedit:type: String
-          /aside:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:aside
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /asideIcon:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:asideIcon
-            hipposysedit:primary: false
-            hipposysedit:type: hippogallerypicker:imagelink
-          /videoAlt:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:videoAlt
             hipposysedit:primary: false
             hipposysedit:type: String
       /hipposysedit:prototypes:
@@ -125,13 +93,12 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
           govscot:alt: ''
-          jcr:uuid: d57476e0-9d86-4ede-abf2-c85aae4a3c63
+          jcr:uuid: 78e9760d-6be0-4534-a848-4650013015d1
           hippostdpubwf:lastModificationDate: 2021-07-29T10:15:50.235+01:00
           hippostdpubwf:creationDate: 2021-07-29T10:15:50.235+01:00
           govscot:externalLink: ''
           govscot:cta: ''
           govscot:videoUrl: ''
-          govscot:videoAlt: ''
           /govscot:description:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -144,21 +111,6 @@ definitions:
           /govscot:link:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:videoImage:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-          /govscot:aside:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:asideIcon:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -196,6 +148,15 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
+          /videoUrl:
+            jcr:primaryType: frontend:plugin
+            caption: Video URL to link to
+            field: videoUrl
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
           /description:
             jcr:primaryType: frontend:plugin
             caption: Description
@@ -229,51 +190,3 @@ definitions:
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /videoImage:
-            jcr:primaryType: frontend:plugin
-            caption: Video image
-            field: videoImage
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /videoAlt:
-            jcr:primaryType: frontend:plugin
-            caption: Alt text for video image
-            field: videoAlt
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /videoUrl:
-            jcr:primaryType: frontend:plugin
-            caption: Video URL to link to
-            field: videoUrl
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /aside:
-            jcr:primaryType: frontend:plugin
-            caption: Aside
-            field: aside
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              ckeditor.config.overlayed.json: '{ disallowedContent: ''*[style]{*}'',
-                removePlugins: ''sourcearea,codemirror,youtube,specialchar'', removeButtons:
-                ''Styles,Table,PickImage,Underline,Strike,Subscript,Superscript,Indent,Outdent''}'
-          /asideIcon:
-            jcr:primaryType: frontend:plugin
-            caption: Aside icon
-            field: asideIcon
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Use SVG file format
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              nodetypes: []

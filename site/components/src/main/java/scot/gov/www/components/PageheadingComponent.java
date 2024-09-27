@@ -23,7 +23,5 @@ public class PageheadingComponent extends EssentialsDocumentComponent {
         request.setAttribute("medianomargin", paramInfo.getMediaNoMargin());
         request.setAttribute("mediaaligndesktop", paramInfo.getMediaAlignDesktop());
         request.setAttribute("mediaalignmobile", paramInfo.getMediaAlignMobile());
-        request.setAttribute("asidebackgroundcolor", paramInfo.getAsideBackgroundColor());
-        request.setAttribute("hideasideicon", paramInfo.getHideAsideIcon());
     }
 }

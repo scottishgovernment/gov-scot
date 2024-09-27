@@ -1,0 +1,83 @@
+/*------------------------------------*\
+    VIDEO OVERRIDES
+\*------------------------------------*/
+
+.ds_cb--video {
+
+    .ds_cb__poster {
+        // experimental video "play" overlay
+        // fix alignment issues
+        text-align: right;
+
+        &__link {
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+
+            &:has(.ds_cb__poster__overlay):focus,
+            &:has(.ds_cb__poster__overlay):hover {
+                box-shadow: none;
+                outline: 0;
+            }
+
+            .ds_cb__poster__overlay {
+                .background {
+                    fill: $ds_colour__button__background;
+                    transition: fill 0.2s;
+                }
+
+                .foreground {
+                    fill: $ds_colour__button;
+                }
+            }
+
+            &:hover {
+                .ds_cb__poster__overlay {
+                    .background {
+                        fill: $ds_colour__button--hover__background;
+                    }
+                }
+            }
+
+            &:focus,
+            &:active {
+                .ds_cb__poster__overlay {
+                    .background {
+                        fill: $ds_colour__button--focus__background;
+                        transition-duration: 0s;
+                    }
+
+                    .foreground {
+                        fill: $ds_colour__button--focus;
+                    }
+                }
+            }
+        }
+
+        &:first-of-type {
+            text-align: left;
+        }
+
+        &__overlay {
+            height: 100%;
+            position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            width: 100%;
+        }
+
+        // Mobile alignment fix (using center rather than middle now)
+        @include ds_media-query (medium-down) {
+            text-align: inherit;
+
+            &--center-mobile {
+                img {
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+}

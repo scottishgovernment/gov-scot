@@ -44,28 +44,8 @@ public class Pageheading extends BaseDocument {
         return getSingleProperty("govscot:externalLink");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:videoImage")
-    public HippoGalleryImageSet getVideoImage() {
-        return getLinkedBean("govscot:videoImage", HippoGalleryImageSet.class);
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:videoAlt")
-    public String getVideoAlt() {
-        return getSingleProperty("govscot:videoAlt");
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:videoUrl")
     public String getVideoUrl() {
         return getSingleProperty("govscot:videoUrl");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:aside")
-    public HippoHtml getAside() {
-        return getHippoHtml("govscot:aside");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:asideIcon")
-    public HippoGalleryImageSet getAsideIcon() {
-        return getLinkedBean("govscot:asideIcon", HippoGalleryImageSet.class);
     }
 }

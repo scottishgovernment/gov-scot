@@ -6,7 +6,7 @@
 
 <#if document?? || editMode>
 <header>
-    <div class="ds_cb  ds_cb--page-title
+    <div class="ds_cb  ds_cb--page-title  ds_cb--page-title--text-only
     <#if backgroundcolor?? && backgroundcolor?length gt 0>  ds_cb--bg-${backgroundcolor}</#if>
     <#if foregroundcolor?? && foregroundcolor?length gt 0>  ds_cb--fg-${foregroundcolor}</#if>
     <#if fullwidth>  ds_cb--fullwidth</#if>
@@ -41,7 +41,7 @@
                         <h1 class="ds_page-header__title"><@placeholdertext lines=2/></h1>
                     </div>
 
-                    <@placeholdertext lines=4/>
+                    <@placeholdertext lines=8/>
                 </div>
 
                 <@hst.manageContent documentTemplateQuery="new-pageheading-document" parameterName="document"/>
@@ -49,34 +49,5 @@
             </div>
         </div>
     </div>
-<#if document??>
-    <@hst.html var="htmlaside" hippohtml=document.aside/>
-    <#if htmlaside?has_content>
-    <aside class="ds_cb  ds_cb--page-title__aside
-    <#if asidebackgroundcolor?? && asidebackgroundcolor?length gt 0>  ds_cb--bg-${asidebackgroundcolor}</#if>
-    <#if fullwidth>  ds_cb--fullwidth</#if>
-    <#if neutrallinks>  ds_cb--neutral-links</#if>
-    ">
-        <div class="ds_wrapper">
-            <#if document.asideIcon?? && !hideasideicon>
-            <span class="ds_cb--page-title__aside-icon" aria-hidden="true">
-                <img src="<@hst.link hippobean=document.asideIcon.thumbnail />" loading="lazy" alt="">
-            </span>
-            </#if>
-            <@hst.html hippohtml=document.aside/>
-        </div>
-    </aside>
-    </#if>
-<#elseif editMode>
-    <aside class="ds_cb  ds_cb--page-title__aside
-    <#if asidebackgroundcolor?? && asidebackgroundcolor?length gt 0>  ds_cb--bg-${asidebackgroundcolor}</#if>
-    <#if fullwidth>  ds_cb--fullwidth</#if>
-    <#if neutrallinks>  ds_cb--neutral-links</#if>
-    ">
-        <div class="ds_wrapper">
-        <@placeholdertext lines=1/>
-        </div>
-    </aside>
-</#if>
 </header>
 </#if>

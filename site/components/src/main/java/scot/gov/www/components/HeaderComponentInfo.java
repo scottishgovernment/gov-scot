@@ -1,6 +1,8 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.core.parameters.DropDownList;
+import org.hippoecm.hst.core.parameters.FieldGroup;
+import org.hippoecm.hst.core.parameters.FieldGroupList;
 import org.hippoecm.hst.core.parameters.Parameter;
 
 public interface HeaderComponentInfo {
@@ -12,7 +14,7 @@ public interface HeaderComponentInfo {
     String getWeight();
 
     @Parameter(name = "position", displayName = "Position", required = true, defaultValue = "left")
-    @DropDownList({"left", "middle", "right"})
+    @DropDownList({"left", "center", "right"})
     String getPosition();
 
     @Parameter(name = "fullwidth", displayName = "Full-width background", defaultValue = "true")
@@ -25,4 +27,7 @@ public interface HeaderComponentInfo {
     @Parameter(name = "backgroundcolor", displayName = "Background colour")
     @DropDownList(valueListProvider = ComponentBackgroundColourValueListProvider.class)
     String getBackgroundColor();
+
+    @Parameter(name = "removebottompadding", displayName = "Remove bottom padding", defaultValue = "false")
+    Boolean getRemoveBottomPadding();
 }
