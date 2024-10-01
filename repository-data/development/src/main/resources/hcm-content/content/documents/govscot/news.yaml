@@ -4124,7 +4124,7 @@
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
         jcr:uuid: 180b7438-4cfa-475a-bdd5-1e134f2e8e40
         hippo:name: Record number of junior doctors take up posts
-        hippo:versionHistory: 04a2656f-1a8c-4c31-a17c-81e37ee5bc4e
+        hippo:versionHistory: ddf45697-67c5-46e6-bec0-62d3ed7fd6a1
         /record-number-of-junior-doctors-take-up-posts[1]:
           jcr:primaryType: govscot:News
           jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
@@ -4140,7 +4140,7 @@
           govscot:slug: record-number-of-junior-doctors-take-up-posts
           govscot:summary: Scotland excels in medical education and training.
           govscot:title: Record number of junior doctors take up posts
-          govscot:updatedDate: 2024-06-06T16:37:40.736Z
+          govscot:updatedDate: 2024-06-06T17:37:00+01:00
           hippo:availability: []
           hippo:name: Record number of junior doctors take up posts
           hippostd:retainable: false
@@ -4148,8 +4148,8 @@
           hippostd:tags: [Health and social care]
           hippostdpubwf:createdBy: system
           hippostdpubwf:creationDate: 2024-06-07T08:31:31.233+01:00
-          hippostdpubwf:lastModificationDate: 2024-06-07T08:50:57.772+01:00
-          hippostdpubwf:lastModifiedBy: system
+          hippostdpubwf:lastModificationDate: 2024-10-01T11:46:06.758+01:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: d2d99f13-64b4-42f4-ade0-d084489ec6db
           hippotranslation:locale: document-type-locale
           /govscot:content:
@@ -4166,13 +4166,19 @@
               <p>“We would strongly encourage school leavers and people looking to change jobs to consider careers in medicine, nursing and other health and care professions in Scotland."</p>
               <p><strong>Background</strong><br><a href="https://www.scotlanddeanery.nhs.scot/media/722388/2023-medical-trainee-recruitment-accurate-as-of-13-november-2023.xlsx" target="_blank" rel="noopener">NHS Education for Scotland figures on applications for medical training posts in Scotland.</a></p>
               <p><a href="https://www.careers.nhs.scot/explore-careers/">NHS Scotland careers.</a></p>
-          /govscot:topics:
+          /govscot:topics[1]:
             jcr:primaryType: hippo:mirror
             hippo:docbase: e4b2db4c-fd8a-4b54-a44b-56bf75a3e3ad
           /govscot:heroImage:
             jcr:primaryType: govscot:ExternalLink
             govscot:title: 2023 medical trainee recruitment
             govscot:url: https://cdn.prgloo.com/media/31f7ed3c9b854bcba600bfa18a8a7024
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:topics[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: bfd4ca14-774f-41d0-9d8a-26814f7b9dc1
         /record-number-of-junior-doctors-take-up-posts[2]:
           jcr:primaryType: govscot:News
           jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
@@ -4188,7 +4194,7 @@
           govscot:slug: record-number-of-junior-doctors-take-up-posts
           govscot:summary: Scotland excels in medical education and training.
           govscot:title: Record number of junior doctors take up posts
-          govscot:updatedDate: 2024-06-06T16:37:40.736Z
+          govscot:updatedDate: 2024-06-06T17:37:00+01:00
           hippo:availability: [preview]
           hippo:name: Record number of junior doctors take up posts
           hippostd:retainable: false
@@ -4196,8 +4202,8 @@
           hippostd:tags: [Health and social care]
           hippostdpubwf:createdBy: system
           hippostdpubwf:creationDate: 2024-06-07T08:31:31.233+01:00
-          hippostdpubwf:lastModificationDate: 2024-06-07T08:31:31.747+01:00
-          hippostdpubwf:lastModifiedBy: system
+          hippostdpubwf:lastModificationDate: 2024-10-01T11:46:20.989+01:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: d2d99f13-64b4-42f4-ade0-d084489ec6db
           hippotranslation:locale: document-type-locale
           /govscot:content:
@@ -4214,13 +4220,19 @@
               <p>“We would strongly encourage school leavers and people looking to change jobs to consider careers in medicine, nursing and other health and care professions in Scotland."</p>
               <p><strong>Background</strong><br><a href="https://www.scotlanddeanery.nhs.scot/media/722388/2023-medical-trainee-recruitment-accurate-as-of-13-november-2023.xlsx" target="_blank" rel="noopener">NHS Education for Scotland figures on applications for medical training posts in Scotland.</a></p>
               <p><a href="https://www.careers.nhs.scot/explore-careers/">NHS Scotland careers.</a></p>
-          /govscot:topics:
+          /govscot:topics[1]:
             jcr:primaryType: hippo:mirror
             hippo:docbase: e4b2db4c-fd8a-4b54-a44b-56bf75a3e3ad
           /govscot:heroImage:
             jcr:primaryType: govscot:ExternalLink
             govscot:title: 2023 medical trainee recruitment
             govscot:url: https://cdn.prgloo.com/media/31f7ed3c9b854bcba600bfa18a8a7024
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:topics[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: bfd4ca14-774f-41d0-9d8a-26814f7b9dc1
         /record-number-of-junior-doctors-take-up-posts[3]:
           jcr:primaryType: govscot:News
           jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
@@ -4236,7 +4248,7 @@
           govscot:slug: record-number-of-junior-doctors-take-up-posts
           govscot:summary: Scotland excels in medical education and training.
           govscot:title: Record number of junior doctors take up posts
-          govscot:updatedDate: 2024-06-06T16:37:40.736Z
+          govscot:updatedDate: 2024-06-06T17:37:00+01:00
           hippo:availability: [live]
           hippo:name: Record number of junior doctors take up posts
           hippostd:retainable: false
@@ -4244,9 +4256,9 @@
           hippostd:tags: [Health and social care]
           hippostdpubwf:createdBy: system
           hippostdpubwf:creationDate: 2024-06-07T08:31:31.233+01:00
-          hippostdpubwf:lastModificationDate: 2024-06-07T08:31:31.747+01:00
-          hippostdpubwf:lastModifiedBy: system
-          hippostdpubwf:publicationDate: 2024-06-07T08:31:32.014+01:00
+          hippostdpubwf:lastModificationDate: 2024-10-01T11:46:20.989+01:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2024-10-01T11:46:24.342+01:00
           hippotranslation:id: d2d99f13-64b4-42f4-ade0-d084489ec6db
           hippotranslation:locale: document-type-locale
           /govscot:content:
@@ -4263,10 +4275,16 @@
               <p>“We would strongly encourage school leavers and people looking to change jobs to consider careers in medicine, nursing and other health and care professions in Scotland."</p>
               <p><strong>Background</strong><br><a href="https://www.scotlanddeanery.nhs.scot/media/722388/2023-medical-trainee-recruitment-accurate-as-of-13-november-2023.xlsx" target="_blank" rel="noopener">NHS Education for Scotland figures on applications for medical training posts in Scotland.</a></p>
               <p><a href="https://www.careers.nhs.scot/explore-careers/">NHS Scotland careers.</a></p>
-          /govscot:topics:
+          /govscot:topics[1]:
             jcr:primaryType: hippo:mirror
             hippo:docbase: e4b2db4c-fd8a-4b54-a44b-56bf75a3e3ad
           /govscot:heroImage:
             jcr:primaryType: govscot:ExternalLink
             govscot:title: 2023 medical trainee recruitment
             govscot:url: https://cdn.prgloo.com/media/31f7ed3c9b854bcba600bfa18a8a7024
+          /govscot:background:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:topics[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: bfd4ca14-774f-41d0-9d8a-26814f7b9dc1
