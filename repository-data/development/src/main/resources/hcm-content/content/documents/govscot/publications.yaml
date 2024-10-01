@@ -32,7 +32,7 @@
             jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
             jcr:uuid: a71ff4dd-e647-436c-84c9-09362b68a7fd
             hippo:name: 'Consultations in the Scottish Government: guidance'
-            hippo:versionHistory: 08297f86-8916-4113-8a2d-e221377adff4
+            hippo:versionHistory: fa1d9a01-d1b4-46ea-966a-65cfb9f27a28
             /index[1]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -54,10 +54,10 @@
               hippostd:retainable: false
               hippostd:state: unpublished
               hippostd:tags: [consultations, research, guidance, advice, data protection,
-                              reporting]
+                reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2024-04-18T13:09:45.524+01:00
+              hippostdpubwf:lastModificationDate: 2024-10-01T11:47:32.099+01:00
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -238,7 +238,7 @@
                 hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
-                hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+                hippo:docbase: bfd4ca14-774f-41d0-9d8a-26814f7b9dc1
               /govscot:group:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
@@ -263,10 +263,10 @@
               hippostd:retainable: false
               hippostd:state: draft
               hippostd:tags: [consultations, research, guidance, advice, data protection,
-                              reporting]
+                reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2024-05-09T12:07:10.377+01:00
+              hippostdpubwf:lastModificationDate: 2024-10-01T11:47:22.978+01:00
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -447,7 +447,7 @@
                 hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
-                hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+                hippo:docbase: bfd4ca14-774f-41d0-9d8a-26814f7b9dc1
               /govscot:group:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
@@ -472,12 +472,12 @@
               hippostd:retainable: false
               hippostd:state: published
               hippostd:tags: [consultations, research, guidance, advice, data protection,
-                              reporting]
+                reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2024-05-09T12:07:29.954+01:00
+              hippostdpubwf:lastModificationDate: 2024-10-01T11:47:32.099+01:00
               hippostdpubwf:lastModifiedBy: admin
-              hippostdpubwf:publicationDate: 2024-05-09T12:07:32.360+01:00
+              hippostdpubwf:publicationDate: 2024-10-01T11:47:34.115+01:00
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
               /govscot:executiveSummary:
@@ -657,7 +657,7 @@
                 hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
               /govscot:topics[2]:
                 jcr:primaryType: hippo:mirror
-                hippo:docbase: 1505000d-4e4a-489b-ba91-65976940be6b
+                hippo:docbase: bfd4ca14-774f-41d0-9d8a-26814f7b9dc1
               /govscot:group:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
@@ -727,6 +727,133 @@
                 /govscot:content:
                   jcr:primaryType: hippostd:html
                   hippostd:content: <p>argle bargle</p>
+            /page2:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 44fe13b8-82d7-4901-a3b7-9246de195f33
+              hippo:versionHistory: aeebf25b-8a98-41a8-b2d8-d566a21bb981
+              /page2[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 97483dc7-7525-4a6b-a7f9-af71c95d9034
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-29T16:40:54.262+01:00
+                govscot:title: page2
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-29T16:40:47.910+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-29T16:40:47.910+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 3d3e2f12-97f3-4a6d-827c-c21893bcf3d8
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>page2</p>
+              /page2[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 00c176f5-60a5-4e66-8da3-f6e76c55851f
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-29T16:40:54.262+01:00
+                govscot:title: page2
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-29T16:40:47.910+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-29T16:40:51.900+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 3d3e2f12-97f3-4a6d-827c-c21893bcf3d8
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>page2</p>
+              /page2[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: a9790a00-bdc9-49f8-9be9-ea88fd30bd4b
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-29T16:40:54.262+01:00
+                govscot:title: page2
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-29T16:40:47.910+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-29T16:40:51.900+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2024-08-29T16:40:54.262+01:00
+                hippotranslation:id: 3d3e2f12-97f3-4a6d-827c-c21893bcf3d8
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>page2</p>
+            /respond:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 1a43b99d-60c2-4c01-acff-f1d9d5f3939c
+              hippo:name: Respond
+              hippo:versionHistory: dc1eeb24-6b5e-449c-b105-5448b4be9b2d
+              /respond[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 1e8d8fce-0ebc-499a-82bd-00891a92b4f4
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T08:20:08.448+01:00
+                govscot:title: Respond
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T08:19:57.253+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T08:19:57.253+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 512004fe-15a6-4486-aa66-2008dbb81b22
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>response text</p>
+              /respond[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: a0e21cf9-6851-4638-bf0e-8aa605453617
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T08:20:08.448+01:00
+                govscot:title: Respond
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T08:19:57.253+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T08:20:06.643+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 512004fe-15a6-4486-aa66-2008dbb81b22
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>response text</p>
+              /respond[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 641fb112-e0df-4987-bd83-25caab406d3c
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T08:20:08.448+01:00
+                govscot:title: Respond
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T08:19:57.253+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T08:20:06.643+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2024-08-30T08:20:08.448+01:00
+                hippotranslation:id: 512004fe-15a6-4486-aa66-2008dbb81b22
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>response text</p>
           /documents:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
@@ -1676,3 +1803,590 @@
               /govscot:topics:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: ae633e6f-b6c4-47b2-9827-2c510250fc94
+  /consultations:
+    jcr:primaryType: hippostd:folder
+    jcr:mixinTypes: ['hipposys:unstructured', 'mix:versionable']
+    jcr:uuid: a3b44667-3229-47bc-bf6f-bf3d954c3e8b
+    govscot:publicationType: consultation-paper
+    hippostd:foldertype: [new-document, new-folder]
+    /2024:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 9a3685e9-89d7-4877-a13e-51ef178e494a
+      hippostd:foldertype: [new-publication-month-folder]
+      /06:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: 54944b32-4aac-4be3-a147-9b37ac754dbd
+        hippostd:foldertype: [new-consultation-folder]
+        /charging-for-single-use-disposable-beverage-cups-consultation:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable']
+          jcr:uuid: 5bf796e6-5598-4a31-802e-724daaee9185
+          hippo:name: 'Charging for Single-Use Disposable Beverage Cups: Consultation'
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: e3958b0e-bda4-49e7-a7d0-9cbec0eab7cd
+            hippo:name: 'Charging for Single-Use Disposable Beverage Cups: Consultation'
+            hippo:versionHistory: 88bdf0bb-54bd-4eb5-a312-c93739f0f0f4
+            /index[1]:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+              jcr:uuid: 370cce12-d15a-400a-be19-792a637d066b
+              govscot:closingDate: 2024-09-25T12:47:00+01:00
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-08-15T09:39:00+01:00
+              govscot:isOpen: false
+              govscot:isbn: ''
+              govscot:metaDescription: A public consultation on the proposed implementation
+                of charging for single-use disposable beverage cups in Scotland.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:openingDate: 2024-08-01T00:00:00+01:00
+              govscot:publicationDate: 2024-08-15T09:39:00+01:00
+              govscot:publicationType: consultation-paper
+              govscot:reportingTags: []
+              govscot:responseUrl: https://consult.gov.scot/environment-forestry/charging-for-single-use-disposable-beverage-cups/
+              govscot:seoTitle: 'Charging for Single-Use Disposable Beverage Cups:
+                Consultation'
+              govscot:slug: charging-for-single-use-disposable-beverage-cups-consultation
+              govscot:summary: A public consultation on the proposed implementation
+                of charging for single-use disposable beverage cups in Scotland
+              govscot:title: 'Charging for Single-Use Disposable Beverage Cups: Consultation'
+              hippo:availability: [preview]
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-08-30T09:38:56.284+01:00
+              hippostdpubwf:lastModificationDate: 2024-09-25T11:48:01.667+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 9e064daa-07cc-4e60-824d-137828fa3309
+              hippotranslation:locale: en
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:consultationResponseMethods[1]:
+                jcr:primaryType: govscot:ConsultationResponseType
+                govscot:type: Post
+                /govscot:details:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>Print out the forms and blah blah&nbsp;</p>
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>sdfasdf</p>
+              /govscot:consultationResponseMethods[2]:
+                jcr:primaryType: govscot:ConsultationResponseType
+                govscot:type: Email
+                /govscot:details:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>Complete the attached form and blah blah&nbsp;</p>
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>asdfasdf</p>
+            /index[2]:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 31fa139c-610b-46e1-9578-bc3daa355a6c
+              govscot:closingDate: 2024-09-25T12:47:00+01:00
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-08-15T09:39:00+01:00
+              govscot:isOpen: false
+              govscot:isbn: ''
+              govscot:metaDescription: A public consultation on the proposed implementation
+                of charging for single-use disposable beverage cups in Scotland.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:openingDate: 2024-08-01T00:00:00+01:00
+              govscot:publicationDate: 2024-08-15T09:39:00+01:00
+              govscot:publicationType: consultation-paper
+              govscot:reportingTags: []
+              govscot:responseUrl: https://consult.gov.scot/environment-forestry/charging-for-single-use-disposable-beverage-cups/
+              govscot:seoTitle: 'Charging for Single-Use Disposable Beverage Cups:
+                Consultation'
+              govscot:slug: charging-for-single-use-disposable-beverage-cups-consultation
+              govscot:summary: A public consultation on the proposed implementation
+                of charging for single-use disposable beverage cups in Scotland
+              govscot:title: 'Charging for Single-Use Disposable Beverage Cups: Consultation'
+              hippo:availability: []
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-08-30T09:38:56.284+01:00
+              hippostdpubwf:lastModificationDate: 2024-09-25T11:47:52.432+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 9e064daa-07cc-4e60-824d-137828fa3309
+              hippotranslation:locale: en
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:consultationResponseMethods[1]:
+                jcr:primaryType: govscot:ConsultationResponseType
+                govscot:type: Post
+                /govscot:details:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>Print out the forms and blah blah&nbsp;</p>
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>sdfasdf</p>
+              /govscot:consultationResponseMethods[2]:
+                jcr:primaryType: govscot:ConsultationResponseType
+                govscot:type: Email
+                /govscot:details:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>Complete the attached form and blah blah&nbsp;</p>
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>asdfasdf</p>
+            /index[3]:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: ea115051-561a-42f8-9dc9-5e9401162654
+              govscot:closingDate: 2024-09-25T12:47:00+01:00
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-08-15T09:39:00+01:00
+              govscot:isOpen: false
+              govscot:isbn: ''
+              govscot:metaDescription: A public consultation on the proposed implementation
+                of charging for single-use disposable beverage cups in Scotland.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:openingDate: 2024-08-01T00:00:00+01:00
+              govscot:publicationDate: 2024-08-15T09:39:00+01:00
+              govscot:publicationType: consultation-paper
+              govscot:reportingTags: []
+              govscot:responseUrl: https://consult.gov.scot/environment-forestry/charging-for-single-use-disposable-beverage-cups/
+              govscot:seoTitle: 'Charging for Single-Use Disposable Beverage Cups:
+                Consultation'
+              govscot:slug: charging-for-single-use-disposable-beverage-cups-consultation
+              govscot:summary: A public consultation on the proposed implementation
+                of charging for single-use disposable beverage cups in Scotland
+              govscot:title: 'Charging for Single-Use Disposable Beverage Cups: Consultation'
+              hippo:availability: [live]
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-08-30T09:38:56.284+01:00
+              hippostdpubwf:lastModificationDate: 2024-09-25T11:48:01.667+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippostdpubwf:publicationDate: 2024-09-25T11:48:03.584+01:00
+              hippotranslation:id: 9e064daa-07cc-4e60-824d-137828fa3309
+              hippotranslation:locale: en
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:consultationResponseMethods[1]:
+                jcr:primaryType: govscot:ConsultationResponseType
+                govscot:type: Post
+                /govscot:details:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>Print out the forms and blah blah&nbsp;</p>
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>sdfasdf</p>
+              /govscot:consultationResponseMethods[2]:
+                jcr:primaryType: govscot:ConsultationResponseType
+                govscot:type: Email
+                /govscot:details:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>Complete the attached form and blah blah&nbsp;</p>
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>asdfasdf</p>
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-page]
+            /ministerial-foreword:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 835fe2e4-d75d-402c-88b8-4157e70ff742
+              hippo:name: Ministerial foreword
+              hippo:versionHistory: 010baf7f-293a-49bd-b0ef-21d7f3d70e4b
+              /ministerial-foreword[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: aa6e7735-7386-493d-a7b6-0007a8f6e415
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T09:41:17.066+01:00
+                govscot:title: Ministerial foreword
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T09:41:00.833+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T09:41:00.833+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 9e48c8b7-a21d-48f7-85ff-795ea250d3c0
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h2>Ministerial foreword</h2>
+
+                    <p>Addressing the climate emergency and nature crises are fundamental challenges we must all tackle together. Day-to-day we see the impacts they are having on our communities, our society, our economic wellbeing, and our environment – both here in Scotland and globally.</p>
+
+                    <p>How we view and treat our resources in Scotland is integral to addressing these crises. Around four-fifths of Scotland’s carbon footprint comes from the products and services we manufacture, use and throw away. While progress has been made, we still need to cut our emissions significantly and to achieve this we must drive a societal shift to reduce the demand for things we use and throw-away. The best way to reduce waste is to not create it in the first place and everyone can play a role in moving towards a circular economy where resources are kept in use for as long as possible.</p>
+
+                    <p>In recent years, there has been a significant increase in the use of single-use disposable beverage cups in Scotland, rising from around 200 million in 2018 to an estimated 388.7 million in 2021-22. This equates to 71 single-use disposable beverage cups per capita per year, one of the highest rates compared to nations in the&nbsp;EU. They create 5,400 tonnes of waste in Scotland each year, are a symbol of our throwaway culture and a visible sign of litter. Keep Scotland Beautiful’s Litter Survey in 2023 found the majority of people (53%) frequently see littered single-use disposable beverage cups<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[1]</a>.</p>
+
+                    <p>The Circular Economy (Scotland) Bill, passed unanimously by the Scottish Parliament in June 2024, gives Scottish Ministers new powers to require suppliers of single-use items to charge a minimum amount for such items, through the introduction of a new section 87A into the Climate Change (Scotland) Act 2009<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[2]</a>, with the policy aim of reducing consumption and therefore reducing the environmental harm caused<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[3]</a>. The Scottish Government intends that an early use of such powers will be to introduce a minimum charge on single-use disposable beverage cups. This is in line with our draft Circular Economy and Waste Route Map which includes ‘reduce and reuse’ as one of the four strategic aims, with a commitment to introduce a charge on single-use disposable beverage cups by the end of 2025.</p>
+
+                    <p>Our commitment to tackle consumption of these single-use items builds on the work of the independent Expert Panel on Environmental Charging and Other Measures. Its 2019 report made a number of recommendations to tackle the dependence on, and environmental impact of, single-use disposable beverage cups in Scotland, including the introduction of a national mandatory charge. Since then, we have worked with a range of stakeholders, including through the Single-Use Disposable Beverage Cups Charge Advisory Group, to help inform the development of this policy and I am grateful to them for working in partnership to inform initial proposals. We will continue to listen to stakeholders’ views to ensure any scheme is practical, effective and proportionate. This consultation will inform future decisions about our approach to the charge and how it will work in practice for consumers and businesses.</p>
+
+                    <p>We want to build on the success of the single use carrier bag charge introduced in 2014 – it demonstrated that a charge can raise awareness, change behaviour and promote responsible consumption. A charge for single-use disposable beverage cups will therefore be modelled on this approach, where appropriate, as it will be familiar and has been shown to be effective. I am also committed to implementing this in a way which aligns with our New Deal for Business principles, minimising any burdens as much as possible while achieving the overall objective of reducing our reliance on single-use items.</p>
+
+                    <p>This consultation will help us develop an approach to drive responsible consumption and reuse as part of our wider efforts to build a greener, more sustainable Scotland.</p>
+
+                    <p><strong>Gillian Martin&nbsp;MSP, Acting Cabinet Secretary for Net Zero and Energy</strong></p>
+              /ministerial-foreword[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: 84dd5865-9bb4-4d84-9bf9-97f84478f643
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T09:41:17.066+01:00
+                govscot:title: Ministerial foreword
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T09:41:00.833+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T09:41:15.111+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 9e48c8b7-a21d-48f7-85ff-795ea250d3c0
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h2>Ministerial foreword</h2>
+
+                    <p>Addressing the climate emergency and nature crises are fundamental challenges we must all tackle together. Day-to-day we see the impacts they are having on our communities, our society, our economic wellbeing, and our environment – both here in Scotland and globally.</p>
+
+                    <p>How we view and treat our resources in Scotland is integral to addressing these crises. Around four-fifths of Scotland’s carbon footprint comes from the products and services we manufacture, use and throw away. While progress has been made, we still need to cut our emissions significantly and to achieve this we must drive a societal shift to reduce the demand for things we use and throw-away. The best way to reduce waste is to not create it in the first place and everyone can play a role in moving towards a circular economy where resources are kept in use for as long as possible.</p>
+
+                    <p>In recent years, there has been a significant increase in the use of single-use disposable beverage cups in Scotland, rising from around 200 million in 2018 to an estimated 388.7 million in 2021-22. This equates to 71 single-use disposable beverage cups per capita per year, one of the highest rates compared to nations in the&nbsp;EU. They create 5,400 tonnes of waste in Scotland each year, are a symbol of our throwaway culture and a visible sign of litter. Keep Scotland Beautiful’s Litter Survey in 2023 found the majority of people (53%) frequently see littered single-use disposable beverage cups<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[1]</a>.</p>
+
+                    <p>The Circular Economy (Scotland) Bill, passed unanimously by the Scottish Parliament in June 2024, gives Scottish Ministers new powers to require suppliers of single-use items to charge a minimum amount for such items, through the introduction of a new section 87A into the Climate Change (Scotland) Act 2009<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[2]</a>, with the policy aim of reducing consumption and therefore reducing the environmental harm caused<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[3]</a>. The Scottish Government intends that an early use of such powers will be to introduce a minimum charge on single-use disposable beverage cups. This is in line with our draft Circular Economy and Waste Route Map which includes ‘reduce and reuse’ as one of the four strategic aims, with a commitment to introduce a charge on single-use disposable beverage cups by the end of 2025.</p>
+
+                    <p>Our commitment to tackle consumption of these single-use items builds on the work of the independent Expert Panel on Environmental Charging and Other Measures. Its 2019 report made a number of recommendations to tackle the dependence on, and environmental impact of, single-use disposable beverage cups in Scotland, including the introduction of a national mandatory charge. Since then, we have worked with a range of stakeholders, including through the Single-Use Disposable Beverage Cups Charge Advisory Group, to help inform the development of this policy and I am grateful to them for working in partnership to inform initial proposals. We will continue to listen to stakeholders’ views to ensure any scheme is practical, effective and proportionate. This consultation will inform future decisions about our approach to the charge and how it will work in practice for consumers and businesses.</p>
+
+                    <p>We want to build on the success of the single use carrier bag charge introduced in 2014 – it demonstrated that a charge can raise awareness, change behaviour and promote responsible consumption. A charge for single-use disposable beverage cups will therefore be modelled on this approach, where appropriate, as it will be familiar and has been shown to be effective. I am also committed to implementing this in a way which aligns with our New Deal for Business principles, minimising any burdens as much as possible while achieving the overall objective of reducing our reliance on single-use items.</p>
+
+                    <p>This consultation will help us develop an approach to drive responsible consumption and reuse as part of our wider efforts to build a greener, more sustainable Scotland.</p>
+
+                    <p><strong>Gillian Martin&nbsp;MSP, Acting Cabinet Secretary for Net Zero and Energy</strong></p>
+              /ministerial-foreword[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 43e3e9cc-3c19-45d7-8d91-a36058908eb8
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T09:41:17.066+01:00
+                govscot:title: Ministerial foreword
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T09:41:00.833+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T09:41:15.111+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2024-08-30T09:41:17.066+01:00
+                hippotranslation:id: 9e48c8b7-a21d-48f7-85ff-795ea250d3c0
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <h2>Ministerial foreword</h2>
+
+                    <p>Addressing the climate emergency and nature crises are fundamental challenges we must all tackle together. Day-to-day we see the impacts they are having on our communities, our society, our economic wellbeing, and our environment – both here in Scotland and globally.</p>
+
+                    <p>How we view and treat our resources in Scotland is integral to addressing these crises. Around four-fifths of Scotland’s carbon footprint comes from the products and services we manufacture, use and throw away. While progress has been made, we still need to cut our emissions significantly and to achieve this we must drive a societal shift to reduce the demand for things we use and throw-away. The best way to reduce waste is to not create it in the first place and everyone can play a role in moving towards a circular economy where resources are kept in use for as long as possible.</p>
+
+                    <p>In recent years, there has been a significant increase in the use of single-use disposable beverage cups in Scotland, rising from around 200 million in 2018 to an estimated 388.7 million in 2021-22. This equates to 71 single-use disposable beverage cups per capita per year, one of the highest rates compared to nations in the&nbsp;EU. They create 5,400 tonnes of waste in Scotland each year, are a symbol of our throwaway culture and a visible sign of litter. Keep Scotland Beautiful’s Litter Survey in 2023 found the majority of people (53%) frequently see littered single-use disposable beverage cups<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[1]</a>.</p>
+
+                    <p>The Circular Economy (Scotland) Bill, passed unanimously by the Scottish Parliament in June 2024, gives Scottish Ministers new powers to require suppliers of single-use items to charge a minimum amount for such items, through the introduction of a new section 87A into the Climate Change (Scotland) Act 2009<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[2]</a>, with the policy aim of reducing consumption and therefore reducing the environmental harm caused<a href="https://www.gov.scot/publications/charging-single-use-disposable-beverage-cups-consultation/pages/6/">[3]</a>. The Scottish Government intends that an early use of such powers will be to introduce a minimum charge on single-use disposable beverage cups. This is in line with our draft Circular Economy and Waste Route Map which includes ‘reduce and reuse’ as one of the four strategic aims, with a commitment to introduce a charge on single-use disposable beverage cups by the end of 2025.</p>
+
+                    <p>Our commitment to tackle consumption of these single-use items builds on the work of the independent Expert Panel on Environmental Charging and Other Measures. Its 2019 report made a number of recommendations to tackle the dependence on, and environmental impact of, single-use disposable beverage cups in Scotland, including the introduction of a national mandatory charge. Since then, we have worked with a range of stakeholders, including through the Single-Use Disposable Beverage Cups Charge Advisory Group, to help inform the development of this policy and I am grateful to them for working in partnership to inform initial proposals. We will continue to listen to stakeholders’ views to ensure any scheme is practical, effective and proportionate. This consultation will inform future decisions about our approach to the charge and how it will work in practice for consumers and businesses.</p>
+
+                    <p>We want to build on the success of the single use carrier bag charge introduced in 2014 – it demonstrated that a charge can raise awareness, change behaviour and promote responsible consumption. A charge for single-use disposable beverage cups will therefore be modelled on this approach, where appropriate, as it will be familiar and has been shown to be effective. I am also committed to implementing this in a way which aligns with our New Deal for Business principles, minimising any burdens as much as possible while achieving the overall objective of reducing our reliance on single-use items.</p>
+
+                    <p>This consultation will help us develop an approach to drive responsible consumption and reuse as part of our wider efforts to build a greener, more sustainable Scotland.</p>
+
+                    <p><strong>Gillian Martin&nbsp;MSP, Acting Cabinet Secretary for Net Zero and Energy</strong></p>
+            /respond:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 07c0a7b5-4ddc-4341-9dca-c24689674f9e
+              hippo:name: Respond
+              hippo:versionHistory: 459baf03-dfff-4e22-ba0c-cd8f7ab78dbc
+              /respond[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: d4438e06-d513-49b5-9121-9656225e6639
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T09:41:31.021+01:00
+                govscot:title: Respond
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T09:41:26.520+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T09:41:26.520+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: c6018dd6-3d0a-45d7-b971-6e44487bc818
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: ''
+              /respond[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: eceb83c9-0877-4a72-ae95-6560a8583631
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T09:41:31.021+01:00
+                govscot:title: Respond
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T09:41:26.520+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T09:41:29.129+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: c6018dd6-3d0a-45d7-b971-6e44487bc818
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: ''
+              /respond[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 1d7bab3e-e670-41d9-85d2-bbc005a57f8a
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-08-30T09:41:31.021+01:00
+                govscot:title: Respond
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-08-30T09:41:26.520+01:00
+                hippostdpubwf:lastModificationDate: 2024-08-30T09:41:29.129+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2024-08-30T09:41:31.021+01:00
+                hippotranslation:id: c6018dd6-3d0a-45d7-b971-6e44487bc818
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: ''
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+        /closed-should-be-open:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable']
+          jcr:uuid: 684f1479-ff28-4f44-8b6a-cbce350e1b25
+          hippo:name: Closed, should be open
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: 7e7455ca-3bd7-462f-a967-3b7e866cf121
+            hippo:name: Closed, should be open
+            hippo:versionHistory: 000c7a45-ae71-4808-8ca3-16073a772055
+            /index[1]:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+              jcr:uuid: f1b5b52b-fb14-40b1-ba64-29dbb68919ab
+              govscot:closingDate: 2024-09-05T16:46:00+01:00
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-09-05T08:29:00+01:00
+              govscot:isOpen: false
+              govscot:isbn: ''
+              govscot:metaDescription: closed-should-be-open
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:openingDate: 2024-09-05T15:52:00+01:00
+              govscot:publicationDate: 2024-09-05T08:29:00+01:00
+              govscot:publicationType: consultation-paper
+              govscot:reportingTags: []
+              govscot:responseUrl: https://consult.gov.scot/environment-forestry/charging-for-single-use-disposable-beverage-cups/
+              govscot:seoTitle: Closed, should be open
+              govscot:slug: closed-should-be-open
+              govscot:summary: closed-should-be-open
+              govscot:title: Closed, should be open
+              hippo:availability: [preview]
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-09-05T08:29:34.376+01:00
+              hippostdpubwf:lastModificationDate: 2024-09-05T16:43:29.180+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 82949da4-8765-4e59-ae3b-886f64366997
+              hippotranslation:locale: en
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            /index[2]:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: a4b1b3d4-5597-4a64-905d-09905fa150c2
+              govscot:closingDate: 2024-09-05T16:46:00+01:00
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-09-05T08:29:00+01:00
+              govscot:isOpen: false
+              govscot:isbn: ''
+              govscot:metaDescription: closed-should-be-open
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:openingDate: 2024-09-05T15:52:00+01:00
+              govscot:publicationDate: 2024-09-05T08:29:00+01:00
+              govscot:publicationType: consultation-paper
+              govscot:reportingTags: []
+              govscot:responseUrl: https://consult.gov.scot/environment-forestry/charging-for-single-use-disposable-beverage-cups/
+              govscot:seoTitle: Closed, should be open
+              govscot:slug: closed-should-be-open
+              govscot:summary: closed-should-be-open
+              govscot:title: Closed, should be open
+              hippo:availability: []
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-09-05T08:29:34.376+01:00
+              hippostdpubwf:lastModificationDate: 2024-09-05T16:43:18.674+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 82949da4-8765-4e59-ae3b-886f64366997
+              hippotranslation:locale: en
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            /index[3]:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 3d743ce4-6c0c-4fa9-8951-5091fd6ebcae
+              govscot:closingDate: 2024-09-05T16:46:00+01:00
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2024-09-05T08:29:00+01:00
+              govscot:isOpen: false
+              govscot:isbn: ''
+              govscot:metaDescription: closed-should-be-open
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:openingDate: 2024-09-05T15:52:00+01:00
+              govscot:publicationDate: 2024-09-05T08:29:00+01:00
+              govscot:publicationType: consultation-paper
+              govscot:reportingTags: []
+              govscot:responseUrl: https://consult.gov.scot/environment-forestry/charging-for-single-use-disposable-beverage-cups/
+              govscot:seoTitle: Closed, should be open
+              govscot:slug: closed-should-be-open
+              govscot:summary: closed-should-be-open
+              govscot:title: Closed, should be open
+              hippo:availability: [live]
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2024-09-05T08:29:34.376+01:00
+              hippostdpubwf:lastModificationDate: 2024-09-05T16:43:29.180+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippostdpubwf:publicationDate: 2024-09-05T16:43:31.142+01:00
+              hippotranslation:id: 82949da4-8765-4e59-ae3b-886f64366997
+              hippotranslation:locale: en
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-page]
+            /page1:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+              jcr:uuid: 3dcb5ab8-d117-4852-8e1d-3727eb8d7f1e
+              hippo:versionHistory: 0f94ea2e-f8ba-45f6-a8a2-f35b438c8827
+              /page1[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 368dcb12-28cd-490f-ad86-3d161b7d2261
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-09-05T08:30:55.683+01:00
+                govscot:title: page1
+                hippo:availability: []
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-09-05T08:30:51.096+01:00
+                hippostdpubwf:lastModificationDate: 2024-09-05T08:30:51.096+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 6415c70e-d3b7-4429-b291-5a66e3c298c8
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>sdfsdf</p>
+              /page1[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+                jcr:uuid: e595a41c-d7c6-45d2-a2c1-99a89bcc5d71
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-09-05T08:30:55.683+01:00
+                govscot:title: page1
+                hippo:availability: [preview]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-09-05T08:30:51.096+01:00
+                hippostdpubwf:lastModificationDate: 2024-09-05T08:30:53.932+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 6415c70e-d3b7-4429-b291-5a66e3c298c8
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>sdfsdf</p>
+              /page1[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: ['mix:referenceable']
+                jcr:uuid: 077f6bbe-b0bd-4f1f-9028-f8f9922bd154
+                govscot:contentitemlanguage: en
+                govscot:displayDate: 2024-09-05T08:30:55.683+01:00
+                govscot:title: page1
+                hippo:availability: [live]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2024-09-05T08:30:51.096+01:00
+                hippostdpubwf:lastModificationDate: 2024-09-05T08:30:53.932+01:00
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2024-09-05T08:30:55.683+01:00
+                hippotranslation:id: 6415c70e-d3b7-4429-b291-5a66e3c298c8
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <p>sdfsdf</p>
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]

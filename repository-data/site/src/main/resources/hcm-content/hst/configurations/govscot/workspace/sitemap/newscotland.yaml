@@ -1,0 +1,6 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemap/newscotland:
+  jcr:primaryType: hst:sitemapitem
+  hst:componentconfigurationid: hst:pages/newscotland-contentpagenobreadcrumbs
+  hst:lastmodified: 2024-10-01T09:48:06.613+01:00
+  hst:pagetitle: New Scotland
+  hst:relativecontentpath: topics/building-a-new-scotland-dynamic
