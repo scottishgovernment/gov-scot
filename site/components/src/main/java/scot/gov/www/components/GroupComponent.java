@@ -1,6 +1,7 @@
 package scot.gov.www.components;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
@@ -113,7 +114,7 @@ public class GroupComponent extends EssentialsContentComponent {
     }
 
     public class PublicationsGroup {
-        SortedSet<Publication> publications = new TreeSet<>((l, r) -> date(l).compareTo(date(r)));
+        SortedSet<Publication> publications = new TreeSet<>(this::compareTo);
 
         List<PublicationsGroup> subgroups = new ArrayList<>();
 
@@ -141,6 +142,14 @@ public class GroupComponent extends EssentialsContentComponent {
 
         public List<PublicationsGroup> getSubgroups() {
             return subgroups;
+        }
+
+        int compareTo(Publication l, Publication r) {
+            return new CompareToBuilder()
+                    .append(date(l), date(r))
+                    .append(l.getTitle(), r.getTitle())
+                    .append(l.getCanonicalPath(), r.getCanonicalPath())
+                    .toComparison();
         }
     }
 
