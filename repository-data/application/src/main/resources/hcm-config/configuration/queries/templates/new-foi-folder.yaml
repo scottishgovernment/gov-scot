@@ -67,7 +67,7 @@ definitions:
                 hippostd:content: "<p><strong>About FOI</strong></p>\r\n<p>The Scottish\
                   \ Government is committed to publishing all information released\
                   \ in response to Freedom of Information requests. View all FOI responses\
-                  \ at <a href=\"http://www.gov.scot/foi-responses\">http://www.gov.scot/foi-responses</a>.</p>"
+                  \ at <a href=\"https://www.gov.scot/foi-responses\">https://www.gov.scot/foi-responses</a>.</p>"
           /documents:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
