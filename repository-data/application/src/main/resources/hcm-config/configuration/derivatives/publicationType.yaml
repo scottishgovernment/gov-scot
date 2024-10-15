@@ -7,9 +7,9 @@ definitions:
       hipposys:serialver: 1
       /hipposys:accessed:
         jcr:primaryType: hipposys:propertyreferences
-        /publicationType:
-          jcr:primaryType: hipposys:resolvepropertyreference
-          hipposys:relPath: ../../../../../govscot:publicationType
+        /path:
+          jcr:primaryType: hipposys:relativepropertyreference
+          hipposys:relPath: path
       /hipposys:derived:
         jcr:primaryType: hipposys:propertyreferences
         /publicationType:

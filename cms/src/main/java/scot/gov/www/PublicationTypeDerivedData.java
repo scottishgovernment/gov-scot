@@ -15,14 +15,17 @@ public class PublicationTypeDerivedData extends DerivedDataFunction {
 
     static final String PUBLICATION_TYPE = "publicationType";
 
+    static final String PATH = "path";
+
     public Map<String,Value[]> compute(Map<String,Value[]> parameters) {
-        if (parameters.isEmpty()|| parameters.get(PUBLICATION_TYPE).length == 0){
+
+        if (parameters.isEmpty() || parameters.get(PATH).length == 0){
             return parameters;
         }
 
         try {
-            Value publicationTypeValue = parameters.get(PUBLICATION_TYPE)[0];
-            String publicationType = publicationTypeValue.getString();
+            Value pathValue = parameters.get(PATH)[0];
+            String publicationType = pathValue.getString().split("/")[5];
             parameters.put(PUBLICATION_TYPE, new Value[] {getValueFactory().createValue(publicationType)});
         } catch (RepositoryException e) {
             LOG.error("Couldn't set publication type via derived data, {}", e);
