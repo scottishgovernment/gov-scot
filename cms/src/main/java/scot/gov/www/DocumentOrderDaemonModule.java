@@ -2,8 +2,6 @@ package scot.gov.www;
 
 import org.hippoecm.repository.api.HippoNode;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.jcr.*;
 import java.util.*;
@@ -20,8 +18,6 @@ import java.util.*;
  */
 public class DocumentOrderDaemonModule extends DaemonModuleBase {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DocumentOrderDaemonModule.class);
-
     private Map<String, SortOrder> directionMap = new HashMap<>();
 
     enum SortOrder {
@@ -31,21 +27,10 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
     @Override
     public void initialize(final Session session) throws RepositoryException {
         super.initialize(session);
-
-        directionMap.put("new-publication-folder", SortOrder.ASCENDING);
-        directionMap.put("new-minutes-folder", SortOrder.ASCENDING);
-        directionMap.put("new-foi-folder", SortOrder.ASCENDING);
-        directionMap.put("new-speech-or-statement-folder", SortOrder.ASCENDING);
         directionMap.put("new-publication-month-folder", SortOrder.DESCENDING);
         directionMap.put("new-publication-year-folder", SortOrder.DESCENDING);
-        directionMap.put("new-directorate-folder", SortOrder.ASCENDING);
-        directionMap.put("new-policy-folder", SortOrder.ASCENDING);
         directionMap.put("new-news-month-folder", SortOrder.DESCENDING);
         directionMap.put("new-news-year-folder", SortOrder.DESCENDING);
-        directionMap.put("new-group", SortOrder.ASCENDING);
-        directionMap.put("new-topic", SortOrder.ASCENDING);
-        directionMap.put("new-issue", SortOrder.ASCENDING);
-        directionMap.put("new-news-document", SortOrder.ASCENDING);
     }
 
     public boolean canHandleEvent(HippoWorkflowEvent event) {
@@ -81,7 +66,6 @@ public class DocumentOrderDaemonModule extends DaemonModuleBase {
         }
 
         SortOrder sortOrder = determineSortOrder(parentFolder);
-        LOG.info("reorder sortOrder: {}", sortOrder);
 
         if (sortOrder == null) {
             // no sort order is specified so do not take any action
