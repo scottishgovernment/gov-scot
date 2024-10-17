@@ -17,7 +17,8 @@
 
   <properties>
     <sonar.exclusions>
-      src/main/java/org/hippoecm/frontend/plugins/reviewedactions/EditingWorkflowPlugin.java
+      src/main/java/org/hippoecm/frontend/plugins/reviewedactions/EditingWorkflowPlugin.java,
+      src/main/java/org/hippoecm/repository/deriveddata/RelativePropertyReference.java
     </sonar.exclusions>
     <sonar.coverage.exclusions>
     </sonar.coverage.exclusions>
