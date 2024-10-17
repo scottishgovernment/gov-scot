@@ -13,6 +13,6 @@ definitions:
         jcr:primaryType: hippostd:templates
         /hippostd:folder:
           jcr:primaryType: hippostd:folder
-          jcr:mixinTypes: ['mix:versionable']
+          jcr:mixinTypes: ['mix:versionable', 'frontend:orderChildFolders']
           jcr:uuid: 7d8f8f8d-d438-45c0-8e29-cd15e15b08f7
           hippostd:foldertype: [new-news-document]
