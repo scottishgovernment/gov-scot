@@ -4,7 +4,7 @@
 
 <#if showNews || showPolicies || showPublications>
 
-<div class="ds_cb  ds_cb--link-list">
+<div class="ds_cb  ds_cb--link-list<#if removebottompadding>  ds_!_padding-bottom--0</#if><#if neutrallinks>  ds_cb--neutral-links</#if>">
     <div class="ds_wrapper">
         <div class="ds_cb__inner">
             <#if document??>

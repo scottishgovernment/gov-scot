@@ -7694,3 +7694,343 @@
     hippo:name: newscotland documents
     hippostd:foldertype: [new-pageheading-document, new-text-document, new-imageandtext-document,
       new-video-document, new-navigationcardcontentblock-document, new-featuregriditem-document]
+    /test-card:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+      jcr:uuid: b6b31997-352f-4c74-ab25-b6fb9e519f64
+      hippo:name: Test card
+      /test-card:
+        jcr:primaryType: govscot:navigationcardcontentblock
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 867806de-9ec7-4bb5-a218-e17cdb858783
+        govscot:alt: ''
+        govscot:externalLink: ''
+        govscot:text: ''
+        govscot:title: ''
+        hippo:availability: []
+        hippostd:holder: admin
+        hippostd:retainable: true
+        hippostd:state: draft
+        hippostd:transferable: true
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:47:42.458+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T14:47:42.458+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 47efe5c1-a747-4647-a060-d3e74399cce1
+        hippotranslation:locale: document-type-locale
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:link:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+    /text-1:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+      jcr:uuid: 3cd428d9-bc2b-4445-8e7f-7e2735fa4abf
+      hippo:name: Text 1
+      hippo:versionHistory: 250f7848-6dfa-441d-b02d-cb772c2a3828
+      /text-1[1]:
+        jcr:primaryType: govscot:text
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: b51ec3a1-1e74-430d-9a1e-89324cae5a95
+        hippo:availability: []
+        hippostd:retainable: false
+        hippostd:state: draft
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:48:18.838+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T15:12:30.868+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: ccc47f42-d103-4872-851b-a2edc261ac77
+        hippotranslation:locale: document-type-locale
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <h2>Heading 2</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pretium eget ex at molestie. Ut malesuada massa eu ipsum lacinia facilisis. Donec sed velit vestibulum, vestibulum orci in, vestibulum velit. <a href="https://www.google.com">Mauris faucibus</a> dolor tortor, vel lacinia eros pharetra quis. Suspendisse potenti. Quisque eget magna sed risus sagittis rhoncus vel sed turpis. In nisl ipsum, ultricies in scelerisque quis, auctor et metus.</p>
+      /text-1[2]:
+        jcr:primaryType: govscot:text
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 535ee509-afcf-4f80-8c67-05990dac5083
+        hippo:availability: [preview]
+        hippostd:retainable: false
+        hippostd:state: unpublished
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:48:18.838+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T15:13:07.569+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: ccc47f42-d103-4872-851b-a2edc261ac77
+        hippotranslation:locale: document-type-locale
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <h2>Heading 2</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pretium eget ex at molestie. Ut malesuada massa eu ipsum lacinia facilisis. Donec sed velit vestibulum, vestibulum orci in, vestibulum velit. <a href="https://www.google.com">Mauris faucibus</a> dolor tortor, vel lacinia eros pharetra quis. Suspendisse potenti. Quisque eget magna sed risus sagittis rhoncus vel sed turpis. In nisl ipsum, ultricies in scelerisque quis, auctor et metus.</p>
+      /text-1[3]:
+        jcr:primaryType: govscot:text
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 77cfca26-5e45-4aeb-97d9-57be7bb1db31
+        hippo:availability: [live]
+        hippostd:retainable: false
+        hippostd:state: published
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:48:18.838+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T15:13:07.569+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippostdpubwf:publicationDate: 2024-10-01T15:13:09.705+01:00
+        hippotranslation:id: ccc47f42-d103-4872-851b-a2edc261ac77
+        hippotranslation:locale: document-type-locale
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <h2>Heading 2</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pretium eget ex at molestie. Ut malesuada massa eu ipsum lacinia facilisis. Donec sed velit vestibulum, vestibulum orci in, vestibulum velit. <a href="https://www.google.com">Mauris faucibus</a> dolor tortor, vel lacinia eros pharetra quis. Suspendisse potenti. Quisque eget magna sed risus sagittis rhoncus vel sed turpis. In nisl ipsum, ultricies in scelerisque quis, auctor et metus.</p>
+    /image-text-1:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+      jcr:uuid: 982e0649-f679-4d57-8bf9-9b180124aa1a
+      hippo:name: image text 1
+      hippo:versionHistory: 20fb1349-7b4b-4744-aeaf-758efd8f4e97
+      /image-text-1[1]:
+        jcr:primaryType: govscot:imageandtext
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 3e58b19d-0151-4c27-b3fa-b9fe752b7242
+        govscot:alt: image caption
+        hippo:availability: []
+        hippostd:retainable: false
+        hippostd:state: draft
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:49:08.756+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T16:22:52.783+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 63bad60f-f360-4b9b-93ef-dc689730f87f
+        hippotranslation:locale: document-type-locale
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: 6e41023b-b742-4de1-b992-dbc289b1519c
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <h3>Heading 3</h3>
+
+            <p><a href="home">Lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. Aenean pretium eget ex at molestie. Ut malesuada massa eu ipsum lacinia facilisis. Donec sed velit vestibulum, vestibulum orci in, vestibulum velit. Mauris faucibus dolor tortor, vel lacinia eros pharetra quis. Suspendisse potenti. Quisque eget magna sed risus sagittis rhoncus vel sed turpis. In nisl ipsum, ultricies in scelerisque quis, auctor et metus.</p>
+          /home:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 46f1c8b6-6b5e-4150-9eb6-08d919777914
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /image-text-1[2]:
+        jcr:primaryType: govscot:imageandtext
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: b8757b77-2ade-465a-ac81-2c993029ef4a
+        govscot:alt: image caption
+        hippo:availability: [preview]
+        hippostd:retainable: false
+        hippostd:state: unpublished
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:49:08.756+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T16:23:26.676+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 63bad60f-f360-4b9b-93ef-dc689730f87f
+        hippotranslation:locale: document-type-locale
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: 6e41023b-b742-4de1-b992-dbc289b1519c
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <h3>Heading 3</h3>
+
+            <p><a href="home">Lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. Aenean pretium eget ex at molestie. Ut malesuada massa eu ipsum lacinia facilisis. Donec sed velit vestibulum, vestibulum orci in, vestibulum velit. Mauris faucibus dolor tortor, vel lacinia eros pharetra quis. Suspendisse potenti. Quisque eget magna sed risus sagittis rhoncus vel sed turpis. In nisl ipsum, ultricies in scelerisque quis, auctor et metus.</p>
+          /home:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 46f1c8b6-6b5e-4150-9eb6-08d919777914
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+      /image-text-1[3]:
+        jcr:primaryType: govscot:imageandtext
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: b2a53dce-6ae9-44f8-809c-0fbdf8bdcc77
+        govscot:alt: image caption
+        hippo:availability: [live]
+        hippostd:retainable: false
+        hippostd:state: published
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:49:08.756+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-01T16:23:26.676+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippostdpubwf:publicationDate: 2024-10-01T16:23:29.652+01:00
+        hippotranslation:id: 63bad60f-f360-4b9b-93ef-dc689730f87f
+        hippotranslation:locale: document-type-locale
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: 6e41023b-b742-4de1-b992-dbc289b1519c
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:content:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <h3>Heading 3</h3>
+
+            <p><a href="home">Lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. Aenean pretium eget ex at molestie. Ut malesuada massa eu ipsum lacinia facilisis. Donec sed velit vestibulum, vestibulum orci in, vestibulum velit. Mauris faucibus dolor tortor, vel lacinia eros pharetra quis. Suspendisse potenti. Quisque eget magna sed risus sagittis rhoncus vel sed turpis. In nisl ipsum, ultricies in scelerisque quis, auctor et metus.</p>
+          /home:
+            jcr:primaryType: hippo:facetselect
+            hippo:docbase: 46f1c8b6-6b5e-4150-9eb6-08d919777914
+            hippo:facets: []
+            hippo:modes: []
+            hippo:values: []
+    /page-heading-1:
+      jcr:primaryType: hippo:handle
+      jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+      jcr:uuid: 95d5fadb-fd33-4b14-ae25-592055e92d3f
+      hippo:name: page heading 1
+      hippo:versionHistory: 2f718df6-02c5-49ff-aff8-ad9a935e54e0
+      /page-heading-1[1]:
+        jcr:primaryType: govscot:pageheading
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 1f8903ff-25ec-4130-81e6-4efe6c59eb45
+        govscot:alt: caption
+        govscot:cta: Click me
+        govscot:externalLink: https://www.google.com
+        govscot:title: Page heading
+        govscot:videoAlt: ''
+        govscot:videoUrl: https://www.google.com
+        hippo:availability: []
+        hippostd:retainable: false
+        hippostd:state: draft
+        hippostd:transferable: false
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:52:57.125+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-17T16:38:08.767+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 081f513b-2f04-45d8-ac12-8c4c6291db81
+        hippotranslation:locale: document-type-locale
+        /govscot:description:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Lorem ipsum dolor sit amet, consectetur<a href="http://www.google.com"> adipiscing elit.&nbsp;</a>&nbsp;This is more text on the same line to check overlap.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: 7582f54d-59a4-4597-a675-2bf88b9ae457
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:link:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /govscot:videoImage:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /page-heading-1[2]:
+        jcr:primaryType: govscot:pageheading
+        jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+        jcr:uuid: 07f615da-2c9b-4681-b290-48ca20ea02cc
+        govscot:alt: caption
+        govscot:cta: Click me
+        govscot:externalLink: https://www.google.com
+        govscot:title: Page heading
+        govscot:videoAlt: ''
+        govscot:videoUrl: https://www.google.com
+        hippo:availability: [preview]
+        hippostd:retainable: false
+        hippostd:state: unpublished
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:52:57.125+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-17T16:38:05.679+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippotranslation:id: 081f513b-2f04-45d8-ac12-8c4c6291db81
+        hippotranslation:locale: document-type-locale
+        /govscot:description:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Lorem ipsum dolor sit amet, consectetur<a href="http://www.google.com"> adipiscing elit.&nbsp;</a>&nbsp;This is more text on the same line to check overlap.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: 7582f54d-59a4-4597-a675-2bf88b9ae457
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:link:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /govscot:videoImage:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+      /page-heading-1[3]:
+        jcr:primaryType: govscot:pageheading
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 91520f53-644d-4c5b-915e-f1e7f2d0c0c3
+        govscot:alt: caption
+        govscot:cta: Click me
+        govscot:externalLink: https://www.google.com
+        govscot:title: Page heading
+        govscot:videoAlt: ''
+        govscot:videoUrl: https://www.google.com
+        hippo:availability: [live]
+        hippostd:retainable: false
+        hippostd:state: published
+        hippostdpubwf:createdBy: admin
+        hippostdpubwf:creationDate: 2024-10-01T14:52:57.125+01:00
+        hippostdpubwf:lastModificationDate: 2024-10-17T16:38:05.679+01:00
+        hippostdpubwf:lastModifiedBy: admin
+        hippostdpubwf:publicationDate: 2024-10-17T16:38:08.248+01:00
+        hippotranslation:id: 081f513b-2f04-45d8-ac12-8c4c6291db81
+        hippotranslation:locale: document-type-locale
+        /govscot:description:
+          jcr:primaryType: hippostd:html
+          hippostd:content: |-
+            <p>Lorem ipsum dolor sit amet, consectetur<a href="http://www.google.com"> adipiscing elit.&nbsp;</a>&nbsp;This is more text on the same line to check overlap.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</p>
+        /govscot:image:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: 7582f54d-59a4-4597-a675-2bf88b9ae457
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []
+        /govscot:link:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /govscot:videoImage:
+          jcr:primaryType: hippogallerypicker:imagelink
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          hippo:facets: []
+          hippo:modes: []
+          hippo:values: []

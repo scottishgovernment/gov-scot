@@ -22,7 +22,7 @@ public interface TextComponentInfo {
     String getDocument();
 
     @Parameter(name = "position", displayName = "Position", required = true, defaultValue = "left")
-    @DropDownList({"left", "middle", "right"})
+    @DropDownList({"left", "center", "right"})
     String getPosition();
 
     @Parameter(name = "fullwidth", displayName = "Full-width background", defaultValue = "true")

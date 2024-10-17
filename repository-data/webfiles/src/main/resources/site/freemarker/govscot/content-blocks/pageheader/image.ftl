@@ -16,7 +16,7 @@
         <div class="ds_wrapper">
             <div class="ds_cb__inner">
             <#if document??>
-                <div class="ds_cb__text  ds_cb__content<#if verticalalign??>  ds_cb__text--${verticalalign}</#if>">
+                <div class="ds_cb__text  ds_cb__content<#if verticalalign??>  ds_cb__text--${verticalalign}</#if> <#if mediaalignmobile??>  ds_cb__text--${mediaalignmobile}-mobile-spacing</#if>">
                     <div class="ds_page-header">
                         <h1 class="ds_page-header__title<#if lightheader>  ds_page-header__title--light</#if>">${document.title}</h1>
                     </div>

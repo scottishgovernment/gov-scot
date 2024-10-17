@@ -16,7 +16,7 @@ public interface TextAndCardComponentInfo {
             isRelative = true,
             pickerConfiguration = "cms-pickers/documents-only",
             pickerInitialPath = "text",
-            pickerSelectableNodeTypes = "publishing:text"
+            pickerSelectableNodeTypes = "govscot:text"
     )
     String getDocument();
 
@@ -24,8 +24,7 @@ public interface TextAndCardComponentInfo {
     @JcrPath(
             isRelative = true,
             pickerConfiguration = "cms-pickers/documents-only",
-            pickerInitialPath = "navigationcards",
-            pickerSelectableNodeTypes = "publishing:navigationcard"
+            pickerSelectableNodeTypes = "govscot:navigationcardcontentblock"
     )
     String getImage();
 
