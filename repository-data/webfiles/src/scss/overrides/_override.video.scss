@@ -1,23 +1,8 @@
 /*------------------------------------*\
-    PAGE TITLE OVERRIDES
-    Includes video play overlay - to be included in future version of npm package
+    VIDEO OVERRIDES
 \*------------------------------------*/
 
-.ds_cb--page-title {
-
-    // add spacing under text on mobile sizes if text only
-    @include ds_media-query (medium-down) {
-        &--text-only {
-            @include ds_responsive-padding(4, bottom);
-        }
-    }
-
-    // add spacing under text on mobile sizes if image is set to be hidden
-    @include ds_media-query (medium-down) {
-        .ds_cb__text--hidden-mobile-spacing {
-            @include ds_responsive-margin(4, bottom);
-        }
-    }
+.ds_cb--video {
 
     .ds_cb__poster {
         // experimental video "play" overlay
@@ -95,28 +80,4 @@
         }
     }
 
-    // Video specific layout fixes
-    &--video {
-        .ds_cb__poster {
-            // Mobile alignment - left by default
-            @include ds_media-query (medium-down) {
-                &--center-mobile {
-                    text-align: center;
-                }
-                &--right-mobile {
-                    text-align: right;
-                }
-            }
-
-            @include ds_media-query (medium) {
-                // Extra support for cover when video link
-                &--cover {
-                    .ds_cb__poster__link {
-                        height: 100%;
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
 }
