@@ -47,7 +47,7 @@ public class BloomreachSearchService implements SearchService {
 
     private static final int PAGE_SIZE = 10;
 
-    private static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDat" };
+    public static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDat" };
 
     static {
         Collections.addAll(FIELD_NAMES,
@@ -77,7 +77,7 @@ public class BloomreachSearchService implements SearchService {
             HstQuery hstQuery = query(search);
             HstQueryResult result = hstQuery.execute();
             postProcessResults(result.getHippoBeans(), search.getRequest());
-            return response(result, search, offset, search.getRequestUrl());
+            return response(result, search);
         } catch (QueryException e) {
             LOG.error("Query exceptions in fallback", e);
             return null;
@@ -212,7 +212,7 @@ public class BloomreachSearchService implements SearchService {
         return constraints.toArray(new Constraint[constraints.size()]);
     }
 
-    SearchResponse response(HstQueryResult result, Search search, int offset, String url) {
+    public static SearchResponse response(HstQueryResult result, Search search) {
         SearchResponse searchResponse = new SearchResponse();
         searchResponse.setType(SearchResponse.Type.BLOOMREACH);
 
@@ -220,6 +220,7 @@ public class BloomreachSearchService implements SearchService {
         searchResponse.setQuestion(question);
 
         Response response = new Response();
+        int offset = (search.getPage() - 1) * PAGE_SIZE;
         ResultsSummary resultsSummary = buildResultsSummary(result, offset);
         response.getResultPacket().setResultsSummary(resultsSummary);
         searchResponse.setResponse(response);
@@ -231,14 +232,14 @@ public class BloomreachSearchService implements SearchService {
         return searchResponse;
     }
 
-    Question getQuestion(String query) {
+    static Question getQuestion(String query) {
         Question question = new Question();
         question.setOriginalQuery(query);
         question.setQuery(query);
         return question;
     }
 
-    ResultsSummary buildResultsSummary(HstQueryResult result, int offset) {
+    public static ResultsSummary buildResultsSummary(HstQueryResult result, int offset) {
         ResultsSummary resultsSummary = new ResultsSummary();
         resultsSummary.setCurrStart(offset + 1);
         resultsSummary.setCurrEnd(Math.min(resultsSummary.getCurrStart() + PAGE_SIZE, result.getTotalSize()));

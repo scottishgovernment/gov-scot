@@ -25,14 +25,13 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.publishing.hippo.funnelback.component.FilterButtonGroups;
-import scot.gov.publishing.hippo.funnelback.component.Search;
-import scot.gov.publishing.hippo.funnelback.component.SearchBuilder;
+import scot.gov.publishing.hippo.funnelback.component.*;
 import scot.gov.www.beans.AttributableContent;
 import scot.gov.www.beans.DynamicIssue;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
+import scot.gov.www.search.BloomreachSearchService;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +43,7 @@ import java.util.*;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
+import static scot.gov.www.search.BloomreachSearchService.response;
 
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
 public class FilteredResultsComponent extends EssentialsListComponent {
@@ -98,7 +98,21 @@ public class FilteredResultsComponent extends EssentialsListComponent {
                 .request(request);
         addPublicationTypes(request, searchBuilder, includeComponentParams);
         addTopics(request, searchBuilder);
+        searchBuilder.sort(sort(request));
         return searchBuilder.build();
+    }
+
+    Sort sort(HstRequest request) {
+        String sortParam = getAnyParameter(request, "sort");
+        if (isBlank(sortParam)) {
+            return Sort.DATE;
+        }
+        try {
+            return Sort.valueOf(sortParam.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            LOG.error("Invalid sort value {}, defaulting to date", sortParam, e);
+            return Sort.DATE;
+        }
     }
 
     void addPublicationTypes(HstRequest request, SearchBuilder searchBuilder, boolean includeComponentParams) {
@@ -185,21 +199,27 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HstQueryBuilder builder = HstQueryBuilder.create(scopeFolder);
 
         // order by needs to be multi valued
-        String [] sortFields = paramInfo.getSortField().split(",");
-        String [] sortOrders = paramInfo.getSortOrder().split(",");
+        String [] dateFields = paramInfo.getSortField().split(",");
 
         Search search = search(request, true);
 
         // use the first field (date field) to determine the constraint
         HstQueryBuilder queryBuilder = builder.ofTypes(types)
-                .where(constraints(search, sortFields))
+                .where(constraints(search, dateFields))
                 .limit(pageSize)
                 .offset(offset);
-
-        for (int i = 0; i < sortFields.length; i++) {
-           queryBuilder.orderBy(HstQueryBuilder.Order.fromString(sortOrders[i]), sortFields[i]);
-        }
+        addOrderBy(queryBuilder, search.getSort());
         return queryBuilder.build();
+    }
+
+    void addOrderBy(HstQueryBuilder queryBuilder, Sort sort) {
+        if (sort == Sort.ADATE) {
+            queryBuilder.orderBy(HstQueryBuilder.Order.ASC, BloomreachSearchService.DATE_FIELDS);
+        }
+
+        if (sort == Sort.DATE) {
+            queryBuilder.orderBy(HstQueryBuilder.Order.DESC, BloomreachSearchService.DATE_FIELDS);
+        }
     }
 
     @Override
@@ -207,22 +227,32 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     Pageable<HippoBean> executeQuery(final HstRequest request, final T paramInfo, final HstQuery query) throws QueryException {
         final int pageSize = getPageSize(request, paramInfo);
         final int page = getCurrentPage(request);
-        final HstQueryResult execute = query.execute();
+        final HstQueryResult queryResult = query.execute();
 
         // populate Collections for Publication type items
-        HippoBeanIterator it = execute.getHippoBeans();
+        HippoBeanIterator it = queryResult.getHippoBeans();
         while (it.hasNext()) {
             HippoBean item = it.nextHippoBean();
             if (item instanceof AttributableContent){
                 populateCollectionAttribution(request, (AttributableContent) item);
             }
         }
+        populateResponse(request, queryResult);
 
         return getPageableFactory().createPageable(
-                execute.getHippoBeans(),
-                execute.getTotalSize(),
+                queryResult.getHippoBeans(),
+                queryResult.getTotalSize(),
                 pageSize,
                 page);
+    }
+
+    void populateResponse(HstRequest request, HstQueryResult queryResult) {
+        Search search = search(request, true);
+        SearchResponse searchResponse = response(queryResult, search);
+        request.setAttribute("question", searchResponse.getQuestion());
+        request.setAttribute("response", searchResponse.getResponse());
+        request.setAttribute("pagination", searchResponse.getPagination());
+        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
     }
 
     public static void populateCollectionAttribution(HstRequest request, AttributableContent item) {
@@ -252,12 +282,12 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         return collectionsBeans;
     }
 
-    private Constraint constraints(Search search, String [] sortFields) {
+    private Constraint constraints(Search search, String [] dateFields) {
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, search);
         addTopicsConstraint(constraints, search);
         addPublicationTypeConstraint(constraints, search);
-        addDateConstraint(constraints, search, sortFields);
+        addDateConstraint(constraints, search, dateFields);
         constraints = constraints.stream().filter(Objects::nonNull).collect(toList());
         return and(constraints.toArray(new Constraint[] {}));
     }

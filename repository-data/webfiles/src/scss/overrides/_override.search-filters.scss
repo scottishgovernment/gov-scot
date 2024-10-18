@@ -1,0 +1,10 @@
+/*------------------------------------*\
+    SEARCH FILTERS OVERRIDES
+\*------------------------------------*/
+
+.ds_search-filters {
+
+    &__scrollable {
+        min-height: 0;
+    }
+}
