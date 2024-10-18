@@ -5,86 +5,46 @@
 
 'use strict';
 
-import searchUtils from './search-utils';
-import DSDatePicker from '../../../node_modules/@scottish-government/design-system/src/components/date-picker/date-picker';
-import GovFilters from './component.filters';
 import breakpointCheck from '../../../node_modules/@scottish-government/design-system/src/base/utilities/breakpoint-check/breakpoint-check';
 import PromiseRequest from '../../../node_modules/@scottish-government/design-system/src/base/tools/promise-request/promise-request';
+import temporaryFocus from '../../../node_modules/@scottish-government/design-system/src/base/tools/temporary-focus/temporary-focus';
+import searchUtils from './search-utils';
 
 window.dataLayer = window.dataLayer || [];
 
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-// simple replacement of jQuery.extend
-function extend(a, b){
-    for (let key in b) {
-        if (b.hasOwnProperty(key)) {
-            a[key] = b[key];
-        }
-    }
-    return a;
-}
-
 class LandingFilters {
-    constructor(settings) {
-        this.filtersContainer = document.getElementById('filters');
-        this.resultsContainer = document.querySelector('#search-results');
+    constructor() {
+        this.filtersContainer = document.querySelector('.ds_search-filters');
+        this.resultsContainer = document.querySelector('.ds_search-results');
 
-        this.settings = {
-            maxDate: new Date(),
-            minDate: new Date(1999, 5, 1)
-        };
-
-        this.settings = extend(this.settings, settings);
+        this.timeoutDelay = 500;
     }
 
     init() {
-        if (!this.filtersContainer) {
-            return;
-        }
+        // set up date pickers
+        const imagePath = document.getElementById('imagePath').value;
+        const datePickers = [].slice.call(document.querySelectorAll('[data-module="ds-datepicker"]'));
+        datePickers.forEach(datePicker => new window.DS.components.DSDatePicker(datePicker, {imagePath: imagePath, maxDate: new Date()}).init());
 
-        const govFilterEl = document.querySelector('[data-module="gov-filters"]');
-        this.govFilters = new GovFilters(govFilterEl);
-        this.govFilters.init();
-
-        this.searchParams = this.gatherParams(true);
-
-        this.enableJSFilters();
+        // set up events
         this.attachEventHandlers();
-        this.initDateFilters();
-        this.searchUtils = searchUtils;
-        this.submitSearch = options => {
-            options = options || {};
-            if (options.changingPage) { this.isChangingPage = true; }
-            if (options.popstate) { this.isPopstate = true; }
-            this.doSearch();
-        };
-        this.updateFilterCounts(this.gatherParams());
+
+        // set initialised
+        this.filtersContainer.classList.add('js-initialised');
+        this.resultsContainer.classList.add('js-initialised');
     }
 
-    attachEventHandlers () {
+    attachEventHandlers() {
         let t;
 
-        const fieldGroups = [].slice.call(this.filtersContainer.querySelectorAll('.ds_field-group'));
-        fieldGroups.forEach(fieldGroup => {
-            const inputs = [].slice.call(fieldGroup.querySelectorAll('input[type=checkbox]'));
+        // checkbox change submits search on medium+ viewports
+        const checkboxGroups = [].slice.call(document.querySelectorAll('.ds_search-filters__checkboxes'));
+        checkboxGroups.forEach(checkboxGroup => {
+            const containerType = checkboxGroup.closest('.ds_accordion-item').querySelector('.ds_accordion-item__button').innerText.toLowerCase();
+            const inputs = [].slice.call(checkboxGroup.querySelectorAll('.ds_checkbox__input'));
 
             inputs.forEach(input => {
                 input.addEventListener('change', () => {
-                    let containerType = input
-                        .closest('.ds_accordion-item')
-                        .querySelector('.ds_accordion-item__button')
-                        .innerText
-                        .toLowerCase();
-
                     dataLayer.push({
                         'filter': containerType,
                         'interaction': input.checked ? 'check' : 'uncheck',
@@ -92,334 +52,377 @@ class LandingFilters {
                         'event': 'filters'
                     });
 
-                    // If on mobile don't do the search automatically.
                     if (breakpointCheck('medium')) {
                         clearTimeout(t);
 
-                        // do search on a small timeout to allow user to select multiple items without making multiple requests
                         t = setTimeout(() => {
-                            delete this.searchParams.page;
-                            this.submitSearch();
-                        }, 300);
-                    }
+                            this.doSearch(undefined, true);
+                        }, this.timeoutDelay);
+                    };
                 });
             });
         });
 
-        document.querySelector('#filters').addEventListener('submit', (event) => {
-            event.preventDefault();
-            this.submitSearch();
-        });
+        // date entry submits search on medium+ viewports
+        const fromDatePickerInputElement = document.querySelector('#fromDatePicker .ds_input');
+        const toDatePickerInputElement = document.querySelector('#toDatePicker .ds_input');
 
-        // clear filters
-        this.resultsContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('js-clear-filters')) {
+        if (fromDatePickerInputElement) {
+            fromDatePickerInputElement.addEventListener('change', () => {
+                if (this.validateDateInput(fromDatePickerInputElement)) {
+                    toDatePickerInputElement.dataset.mindate = fromDatePickerInputElement.value;
+                    if (breakpointCheck('medium')) {
+                        this.doSearch(undefined, true);
+                    }
+                }
+            });
+        }
+
+        if (toDatePickerInputElement) {
+            toDatePickerInputElement.addEventListener('change', () => {
+                if (this.validateDateInput(toDatePickerInputElement)) {
+                    fromDatePickerInputElement.dataset.maxdate = toDatePickerInputElement.value;
+                    if (breakpointCheck('medium')) {
+                        this.doSearch(undefined, true);
+                    }
+                }
+            });
+        }
+
+        // Submit filters if search term submitted or apply filters button clicked
+        const filtersForm = document.querySelector('#filters');
+        if(filtersForm) {
+            filtersForm.addEventListener('submit', (event) => {
                 event.preventDefault();
+                this.doSearch(undefined, true);
+            });
+        }
 
-                dataLayer.push({
-                    'event': 'filters-clear'
-                });
-
-                // clear all filters
-                const checkboxes = [].slice.call(this.filtersContainer.querySelectorAll('.ds_field-group--checkboxes input[type="checkbox"]'));
-                const textInputs = [].slice.call(this.filtersContainer.querySelectorAll('input[type="text"]'));
-
-                checkboxes.forEach(element => element.checked = false);
-                textInputs.forEach(element => element.value = '');
-
-                this.clearErrors();
-
-                delete this.searchParams.page;
-                this.submitSearch();
+        // sort dropdown change submits search
+        this.resultsContainer.addEventListener('change', event => {
+            if (event.target.classList.contains('js-sort-by')) {
+                this.doSearch(undefined, true);
             }
         });
 
-        const paginationLinks = [].slice.call(document.querySelectorAll('.ds_pagination__page'));
-        paginationLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
+        this.resultsContainer.addEventListener('click', event => {
+            // facet button submits search on click
+            if (event.target.classList.contains('js-remove-facet')) {
                 event.preventDefault();
+                this.removeFacet(event.target);
+            }
 
-                this.searchParams.page = getParameterByName('page', event.target.href);
-                this.submitSearch({ changingPage: true });
-            });
+            // "clear filters" button submits search on click
+            if (event.target.classList.contains('js-clear-filters')) {
+                event.preventDefault();
+                this.clearFilters();
+            }
+            
+            // pagination link submits search on click
+            if (event.target.classList.contains('ds_pagination__link')) {
+                event.preventDefault();
+                this.changePage(event.target);
+            }
         });
 
-        window.onpopstate = () => {
-            this.searchParams.page = getParameterByName('page');
-            this.submitSearch({
-                changingPage: true,
-                popstate: true
-            });
-        };
-    }
+        this.resultsContainer.addEventListener('keypress', event => {
+            if (event instanceof KeyboardEvent &&
+                (event.key == " " || event.key == "Enter")) {
+                // facet button submits search on "space" or "enter" keypress
+                if (event.target.classList.contains('js-remove-facet')) {
+                    event.preventDefault();
+                    this.removeFacet(event.target);
+                }
 
-    clearErrors() {
-        // clear any error states on filter fields
-        // quick & dirty, will be replaced by enterprise search
-        const inputs = [].slice.call(this.filtersContainer.querySelectorAll('.ds_input--error'));
-        const messages = [].slice.call(this.filtersContainer.querySelectorAll('.ds_question__error-message'));
-        const questions = [].slice.call(this.filtersContainer.querySelectorAll('.ds_question--error'));
-
-        inputs.forEach(element => {
-            element.classList.remove('ds_input--error');
-            element.removeAttribute('aria-invalid');
+                // "clear filters" button submits search on "space" or "enter" keypress
+                if (event.target.classList.contains('js-clear-filters')) {
+                    event.preventDefault();
+                    this.clearFilters();
+                }
+            }
         });
-        messages.forEach(element => element.parentNode.removeChild(element));
-        questions.forEach(element => element.classList.remove('ds_question--error'));
+
+        this.filtersContainer.querySelector('.js-apply-filter').addEventListener('click', event => {
+            event.preventDefault();
+            this.doSearch(undefined, true);
+        });
+
+        window.addEventListener('popstate', event => {
+            const resultsUrl = window.location.href;
+            this.isPopstate = true;
+            this.syncFiltersToUrl();
+            this.doSearch(resultsUrl);
+        });
     }
 
-    doSearch() {
-        if (!this.resultsContainer) {
-            return;
+    clearFilters() {
+        const filterInputs = [].slice.call(this.filtersContainer.querySelectorAll('.ds_input, .ds_checkbox__input, .ds_radio__input'));
+        filterInputs.forEach(input => {
+            if (input.id === 'filters-search-term') {
+                // Do nothing - Ignore search input
+            } else if (input.type === 'checkbox' || input.type === 'radio') {
+                // clear filter checkboxes/radios
+                input.checked = false;
+            } else {
+                // clear filter textboxes
+                input.value = '';
+                searchUtils.removeError(input.closest('.ds_question'));
+            }
+        });
+
+        this.doSearch(undefined, true);
+    }
+
+    changePage(linkElement) {
+        const targetHref = linkElement.href;
+
+        this.doSearch(targetHref);
+    }
+
+    convertUrl (url, newSearch) {
+        return url.pathname + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));    
+    }
+
+    doSearch(url, newSearch = false) {
+        // Capture page url
+        const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));
+
+        if (!url) {
+           
+            url = this.convertUrl(window.location, newSearch);
+
+            // do not proceed if there are errors
+            if (document.querySelectorAll('.ds_search-filters [aria-invalid="true"]').length) {
+                return false;
+            }
+        } else {
+            try {
+                const definedUrl = new URL(url);
+                url = this.convertUrl(definedUrl, newSearch);
+            }  catch (error) {
+                // invalid url
+                return false;
+            }
+        
         }
 
-        // do not proceed if there are errors
-        if (document.querySelectorAll('#filters [aria-invalid="true"]').length) {
-            return false;
-        }
+        // disable search containers
+        const containersToDisable = [].slice.call(document.querySelectorAll('.ds_search-filters, .ds_search-results'));
+        containersToDisable.forEach(container => container.classList.add('js-disabled-search'));
 
-        if (!this.isChangingPage) {this.searchParams.page = 1;}
-
-        let currentParams = this.gatherParams();
-        let newQueryString = searchUtils.getNewQueryString(currentParams);
-
-        this.resultsContainer.classList.add('js-loading-inactive');
-        this.filtersContainer.classList.add('js-loading-inactive');
-
-        this.loadResults(window.location.pathname + newQueryString)
+        this.loadResults(url)
             .then(data => {
-                // skip this if we're on popstate
                 if (this.isPopstate) {
+
                     delete this.isPopstate;
+
+
                 } else {
-                    // update querystring
                     try {
-                        window.history.pushState('', '', newQueryString);
-                    } catch(error) {
+                        // update querystring
+                        window.history.pushState('', '', pageUrl);
+
+                    } catch (error) {
                         // history API not supported
                     }
                 }
-
-                const clearFiltersElement = document.querySelector('.js-clear-filters');
 
                 // temporary container for the search results so we can query a DOM tree
                 const tempContainer = document.createElement('div');
                 tempContainer.innerHTML = data.response;
 
-                this.resultsContainer.innerHTML = tempContainer.querySelector('#search-results').innerHTML;
-
-                // update display status of "clear" buttons
-                if (clearFiltersElement) {
-                    if (this.hasActiveSearch(currentParams)) {
-                        clearFiltersElement.classList.remove('hidden');
-                    } else {
-                        clearFiltersElement.classList.add('hidden');
-                    }
+                if (!!tempContainer.querySelector('.ds_search-results')) {
+                    this.resultsContainer.innerHTML = tempContainer.querySelector('.ds_search-results').innerHTML;
+                } else {
+                    this.resultsContainer.innerHTML = tempContainer.innerHTML;
                 }
 
-                // remove "loading" message
-                this.resultsContainer.classList.remove('js-loading-inactive');
-                this.filtersContainer.classList.remove('js-loading-inactive');
+                // enable containers
+                containersToDisable.forEach(container => container.classList.remove('js-disabled-search'));
 
-                this.updateFilterCounts(currentParams);
+                // focus
+                temporaryFocus(this.resultsContainer);
 
-                this.govFilters.closeFilters();
+                // scroll to top of results
+                const rect = this.resultsContainer.getBoundingClientRect();
+                window.scrollTo(window.scrollX, document.documentElement.scrollTop + rect.top);
 
-                // scroll to the top of the page if we are changing page
-                if (this.isChangingPage) {
-                    let pageContent = document.getElementById('main-content');
-                    window.scrollTo(window.scrollX, pageContent.offsetTop + pageContent.offsetParent.offsetTop);
-                }
-                this.isChangingPage = false;
+                // update "selected" count
+                this.updateSelectedFilterCounts();
 
-                window.DS.tracking.init(this.resultsContainer);
+                // add DS tracking
+                window.DS.tracking.init();
             })
-            .catch(error => {
-                window.location.search = newQueryString;
+            .catch((error) => {
+                // Load full search page endpoint instead
+                window.location.href = pageUrl;
             });
     }
 
-    enableJSFilters () {
-        [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[type="radio"]')).forEach((item => {
-            item.type = 'checkbox';
-            item.classList.remove('ds_radio__input');
-            item.classList.add('ds_checkbox__input');
-            item.dataset.form = item.dataset.form.replace('radio-', 'checkbox-');
+    gatherParams(url, newSearch = false) {
+        const searchParams = this.searchParams || {};
 
-            const label = item.nextElementSibling;
-            label.classList.remove('ds_radio__label');
-            label.classList.add('ds_checkbox__label');
+        // dates
+        searchParams.date = {};
 
-            const parent = item.parentNode;
-            parent.classList.remove('ds_radio');
-            parent.classList.remove('ds_radio--small');
-            parent.classList.add('ds_checkbox');
-            parent.classList.add('ds_checkbox--small');
-        }));
+        const beginParam = document.querySelector('input[name="begin"]').value;
+        if(beginParam){
+            searchParams.date.begin = encodeURIComponent(beginParam);
+        }
 
-        // populate checkboxes from searchParams
-        const checkedOnLoad = [].slice.call(document.querySelectorAll('.ds_field-group--checkboxes input[data-checkedonload]'));
-        checkedOnLoad.forEach(checkbox => {
-            checkbox.checked = true;
-        })
+        const endParam = document.querySelector('input[name="end"]').value;
+        if(endParam){
+            searchParams.date.end = encodeURIComponent(endParam);
+        }
 
-        // date pickers display
-        const datePickerButtons = [].slice.call(document.querySelectorAll('.js-show-calendar'));
-        datePickerButtons.forEach(button => {
-            button.classList.remove('hidden');
-            button.classList.remove('hidden--hard');
-        });
-
-        // filter button display
-        document.querySelector('#filter-actions').classList.add('filter-actions');
-        document.querySelector('#filter-actions').classList.add('visible-xsmall');
-    }
-
-    gatherParams (initial) {
-        let searchParams = this.searchParams || {};
-        const searchTermElement = document.getElementById('filters-search-term');
-
-        if (window.location.href.indexOf('/search/') !== -1) {
-            searchParams.cat = 'sitesearch';
+        // page
+        if(newSearch){
+            searchParams.page = 1;
         } else {
-            searchParams.cat = 'filter';
+            const pageParam = searchUtils.getParameterByName('page', url) || 1;
+            if(pageParam){
+                searchParams.page = encodeURIComponent(pageParam);
+            }
         }
-
-        // KEYWORD / TERM
-        searchParams.q = encodeURIComponent(searchTermElement.value);
-
-        // PAGINATION
-        if (initial) {
-            searchParams.page = getParameterByName('page') || 1;
-            searchParams.size = getParameterByName('size') || 10;
+        
+        // size
+        const sizeParam = searchUtils.getParameterByName('size') || 10;
+        if(sizeParam){
+            searchParams.size = encodeURIComponent(sizeParam);
         }
+         
 
-        // TOPICS
-        searchParams.topics = [];
-        const checkedTopicCheckboxes = [].slice.call(document.querySelectorAll('input[name="topics"]:checked'));
-        checkedTopicCheckboxes.forEach(checkbox => {
-            searchParams.topics.push(checkbox.value);
-        });
-        if (searchParams.topics.length === 0) {
-            delete searchParams.topics;
-        }
-
-        // PUBLICATION TYPES
-        searchParams.publicationTypes = [];
-        const checkedPublicationTypeCheckboxes = [].slice.call(document.querySelectorAll('input[name="publicationTypes"]:checked'));
+        // content types
+        searchParams.type = [];
+        const checkedPublicationTypeCheckboxes = [].slice.call(document.querySelectorAll('input[name="type"]:checked'));
         checkedPublicationTypeCheckboxes.forEach(checkbox => {
-            searchParams.publicationTypes.push(checkbox.value);
+            searchParams.type.push(encodeURIComponent(checkbox.value));
         });
-        if (searchParams.publicationTypes.length === 0) {
-            delete searchParams.publicationTypes;
+        if (searchParams.type.length === 0) {
+            delete searchParams.type;
         }
 
-        // DATE RANGES
-        if (document.getElementById('filter-date-range')) {
-            searchParams.date = searchParams.date || {};
+        // sort
+        const sortField = document.querySelector('.js-sort-by');
+        if (sortField) {
+            searchParams.sort = encodeURIComponent(sortField.value);
+        }
 
-            searchParams.date.begin = encodeURI(document.getElementById('date-from').value);
-            searchParams.date.end = encodeURI(document.getElementById('date-to').value);
+        // term
+        if(newSearch) {
+            // If a new search then use the search term
+            const searchField = document.getElementById('filters-search-term');
+            if (searchField) {
+                searchParams.q = encodeURIComponent(searchField.value);
+            }
+        } else {
+            // Use the existing parameter if available - pagination action shouldn't submit new search input
+            const qParam = searchUtils.getParameterByName('q');
+            if(qParam){
+                searchParams.q = encodeURIComponent(qParam);
+            }
+        }
+
+        // cat 
+        const catParam = searchUtils.getParameterByName('cat');
+        if(catParam){
+            searchParams.cat = encodeURIComponent(catParam);
+        }
+
+        // topics
+        searchParams.topic = [];
+        const checkedTopicCheckboxes = [].slice.call(document.querySelectorAll('input[name="topic"]:checked'));
+        checkedTopicCheckboxes.forEach(checkbox => {
+            searchParams.topic.push(encodeURIComponent(checkbox.value));
+        });
+        if (searchParams.topic.length === 0) {
+            delete searchParams.topic;
         }
 
         return searchParams;
-    }
-
-    /**
-    * Determines whether or not there is an active search
-    * @param params
-    * @returns {boolean}
-    */
-    hasActiveSearch(params) {
-        let hasActiveSearch = false;
-
-        for(let key in params) {
-            if (!params.hasOwnProperty(key)) {
-                continue;
-            }
-
-            let value = params[key];
-            if (key === 'topics' || key === 'term' || key === 'publicationTypes') {
-                if (value !== '') {
-                    hasActiveSearch = true;
-                }
-            } else if (key === 'date' && (value.begin || value.end)) {
-                hasActiveSearch = true;
-            }
-        }
-
-        return hasActiveSearch;
-    }
-
-    initDateFilters() {
-        const imagePath = document.getElementById('imagePath').value;
-        const fromDatePickerElement = document.querySelector('#fromDatePicker');
-        const toDatePickerElement = document.querySelector('#toDatePicker');
-        const fromDatePicker = new DSDatePicker(fromDatePickerElement, { imagePath: imagePath, maxDate: new Date() });
-        const toDatePicker = new DSDatePicker(toDatePickerElement, { imagePath: imagePath, maxDate: new Date() });
-
-        fromDatePicker.init();
-        toDatePicker.init();
-
-        if (fromDatePickerElement) {
-            fromDatePickerElement.addEventListener('change', () => {
-                if (this.validateDateInput(fromDatePicker.inputElement)) {
-                    toDatePicker.inputElement.dataset.mindate = fromDatePicker.inputElement.value;
-                    if (breakpointCheck('medium')) {
-                        delete this.searchParams.page;
-                        this.submitSearch();
-                    }
-                }
-            });
-        }
-
-        if (toDatePickerElement) {
-            toDatePickerElement.addEventListener('change', () => {
-                if (this.validateDateInput(toDatePicker.inputElement)) {
-                    fromDatePicker.inputElement.dataset.maxdate = toDatePicker.inputElement.value;
-                    if (breakpointCheck('medium')) {
-                        delete this.searchParams.page;
-                        this.submitSearch();
-                    }
-                }
-            });
-        }
     }
 
     loadResults(url) {
         return PromiseRequest(url);
     }
 
-    updateFilterCounts(currentParams) {
-        const publicationTypesCount = document.querySelector('.js-publication-types-count');
-        const topicsCount = document.querySelector('.js-topics-count');
+    removeFacet(buttonElement) {
+        // clear related input
+        const input = document.querySelector('#' + buttonElement.dataset.slug);
 
-        if (publicationTypesCount) {
-            if (currentParams.publicationTypes) {
-                publicationTypesCount.dataset.count = currentParams.publicationTypes.length;
-            } else {
-                delete publicationTypesCount.dataset.count;
-            }
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = false;
+        } else {
+            input.value = '';
         }
 
-        if (topicsCount) {
-            if (currentParams.topics) {
-                topicsCount.dataset.count = currentParams.topics.length;
-            } else {
-                delete topicsCount.dataset.count;
-            }
+        // if we're clearing a date input
+        // clear any errors from the date input
+        // reset the other date input to the current searhparam value (and remove any errors from that too)
+        const toElement = document.getElementById('date-to');
+        const fromElement = document.getElementById('date-from');
+        toElement.value = searchUtils.getParameterByName('end', buttonElement.href);
+        fromElement.value = searchUtils.getParameterByName('begin', buttonElement.href);
+
+        searchUtils.removeError(toElement.closest('.ds_question'));
+        searchUtils.removeError(fromElement.closest('.ds_question'));
+        this.doSearch(buttonElement.href, true);
+    }
+
+    syncFiltersToUrl() {
+        const urlSearchParams = new URLSearchParams(window.location.href);
+
+        const types = urlSearchParams.getAll('type');
+        const topics = urlSearchParams.getAll('topic');
+        const begin = urlSearchParams.get('begin');
+        const end = urlSearchParams.get('end');
+        const sort = urlSearchParams.get('sort');
+
+        document.getElementById('date-from').value = begin;
+        document.getElementById('date-to').value = end;
+
+        [].slice.call(document.querySelectorAll('.ds_checkbox__input[name="topic"]')).forEach(checkbox => {
+            checkbox.checked = topics.includes(checkbox.id);
+        });
+
+        [].slice.call(document.querySelectorAll('.ds_checkbox__input[name="type"]')).forEach(checkbox => {
+            checkbox.checked = types.includes(checkbox.id);
+        });
+
+        const sortField = document.querySelector('.js-sort-by');
+        if (sortField) {
+            sortField.value = sort;
         }
+    }
+
+    updateSelectedFilterCounts() {
+        [].slice.call(this.filtersContainer.querySelectorAll('.ds_accordion-item__body')).forEach(filterGroup => {
+            const countElement = filterGroup.closest('.ds_accordion-item').querySelector('.ds_search-filters__filter-count');
+            let count = 0;
+
+            [].slice.call(filterGroup.querySelectorAll('.ds_checkbox__input, .ds_radio__input')).forEach(input => {
+                if (input.checked) {
+                    count++;
+                }
+            });
+
+            [].slice.call(filterGroup.querySelectorAll('.ds_input')).forEach(input => {
+                if (input.value.trim().length > 0) {
+                    count++;
+                }
+            });
+
+            if (count > 0) {
+                countElement.innerText = `(${count} selected)`;
+            } else {
+                countElement.innerText = '';
+            }
+        });
     }
 
     validateDateInput(element) {
-        let isValid = true;
-
-        if (!searchUtils.validateInput(element, [searchUtils.dateRegex])) {
-            isValid = false;
-        }
-
-        return isValid;
+        return searchUtils.validateInput(element, [searchUtils.dateRegex]);
     }
-}
+};
 
 export default LandingFilters;

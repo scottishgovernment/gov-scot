@@ -39,171 +39,216 @@
 <#-- @ftlvariable name="type" type="org.onehippo.forge.selection.hst.contentbean.ValueListItem" -->
 <#-- @ftlvariable name="topic" type="scot.gov.www.beans.Topic" -->
 
-<div class="gov_filters" data-module="gov-filters">
-    <input type="checkbox" class="fully-hidden  js-toggle-filters" id="show-filters" aria-controls="filters" />
-    <label class="gov_filters__expand  ds_link" for="show-filters"><span class="js-show-filters-text">Show search filters</span> <span class="gov_filters__expand-indicator"></span></label>
+<div class="ds_search-filters  gov_filters">
+    <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />">
 
-    <form id="filters" action="#" method="GET" class="gov_filters__form  gov_filters--tab-title">
-        <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />" />
+    <div class="ds_details  ds_no-margin" data-module="ds-details">
+        <input id="filters-toggle" type="checkbox" class="ds_details__toggle  visually-hidden">
 
-        <div class="ds_search-filters">
-            <h2 class="gov_filters__title  visually-hidden">Filters</h2>
+        <label for="filters-toggle" class="ds_details__summary">
+            <span class="visually-hidden">Show </span>Search filters
+        </label>
 
-            <#if term??>
-                <fieldset id="filter-search" class="filters__fieldset  filter-search">
-                    <legend class="visually-hidden">Keyword search</legend>
+        <div class="ds_skip-links  ds_skip-links--static">
+            <ul class="ds_skip-links__list">
+                <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results">Skip to results</a></li>
+            </ul>
+        </div>
+
+        <div class="ds_details__text">
+            <#if !searchpagepath??>
+                <#assign searchpagepath = "/search" />
+            <#else>
+                <#assign searchpagepath = "${searchpagepath}" />
+            </#if>
+            <form id="filters" method="GET" action="#">
+
+                <fieldset id="filter-search" class="gov_filters__search">
+                    <legend class="visually-hidden"><h3>Keyword search</h3></legend>
                     <label class="ds_label" for="filters-search-term">Search</label>
 
                     <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
-                        <input class="ds_input" type="text" name="term" id="filters-search-term" maxlength="160" value="${term}" />
-                        <button class="ds_button  js-filter-search-submit" type="submit" title="Submit" id="filters-search-submit" >
+                        <input class="ds_input" type="search" name="q" id="filters-search-term" maxlength="160" value="${term}" />
+                        <button class="ds_button  js-filter-search-submit" type="submit" title="Submit" id="filters-search-submit">
                             <span class="visually-hidden">Search</span>
                             <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
                         </button>
                     </div>
                 </fieldset>
-            </#if>
+                <h3 class="ds_search-filters__title  ds_h4  ds_!_padding-top--0">Filter by</h3>
 
-            <#if dates??>
-                <fieldset id="filter-date-range" class="filters__fieldset">
-                    <legend class="visually-hidden">Filter by date</legend>
-
-                    <div class="ds_question">
-                        <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
-                            <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
-                            <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
-                            <div class="ds_input__wrapper">
-                                <input id="date-from" name="begin" class="ds_input" type="text" value="${begin}" data-form="textinput-date-from" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="ds_question">
-                        <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
-                            <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
-                            <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
-                            <div class="ds_input__wrapper">
-                                <input id="date-to" name="end" class="ds_input" type="text" value="${end}" data-form="textinput-date-to" />
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-            </#if>
-
-            <#if publicationTypes?? || topics??>
-                <div class="ds_accordion  ds_accordion--small  ds_no-margin" data-module="ds-accordion">
-                    <#if publicationTypes??>
-                        <div class="ds_accordion-item">
-                            <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-types" aria-labelledby="panel-types-heading" />
-                            <div class="ds_accordion-item__header">
-                                <h3 id="panel-types-heading" class="ds_accordion-item__title">
-                                    Publication type
-                                    <div class="js-publication-types-count  gov_filters__filter-info  gov_filters__filter-info--count"></div>
-                                </h3>
-                                <span class="ds_accordion-item__indicator"></span>
-                                <label class="ds_accordion-item__label" for="panel-types"><span class="visually-hidden">Show this section</span></label>
-                            </div>
-                            <div class="ds_accordion-item__body">
-                                <fieldset>
-                                    <legend class="visually-hidden">Select which publication types you would like to see</legend>
-                                    <#assign noItems = true />
-                                    <#assign itemsTrigger = false />
-
-                                    <div class="gov_filters__scrollable">
-                                        <div class="ds_field-group  ds_field-group--checkboxes">
-                                            <#list publicationTypes as item>
-                                                <#assign isSelected = false/>
-                                                <#if parameters['publicationTypes']??>
-                                                    <#list parameters['publicationTypes'] as selectedItem>
-                                                        <#if selectedItem == item.key>
-                                                            <#assign isSelected = true/>
-                                                            <#assign itemsTrigger = true />
-                                                        </#if>
-                                                    </#list>
-                                                </#if>
-
-                                                <div class="ds_radio  ds_radio--small">
-                                                    <input
-                                                        <#if isSelected == true>
-                                                            <#if noItems == true>
-                                                                checked=true
-                                                            </#if>
-                                                            data-checkedonload=true
-                                                        </#if>
-                                                        id="${strSlug(item.label)}" name="publicationTypes" value="${item.key}" class="ds_radio__input" type="radio" />
-                                                    <label for="${strSlug(item.label)}" class="ds_radio__label">${item.label?replace('/', ' / ')}</label>
-                                                </div>
-
-                                                <#if itemsTrigger>
-                                                    <#assign noItems = false />
+                <div class="ds_accordion  ds_accordion--small  ds_!_margin-top--0" data-module="ds-accordion">
+                <#if publicationTypes??>
+                    <div class="ds_accordion-item">
+                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-1" aria-labelledby="panel-1-heading" />
+                        <div class="ds_accordion-item__header">
+                            <h3 id="panel-1-heading" class="ds_accordion-item__title">
+                                Content type
+                                <div class="ds_search-filters__filter-count">
+                                    <#assign count = 0/>
+                                    <#list publicationTypes as item>
+                                        <#if hstRequestContext.servletRequest.parameterMap["type"]??>
+                                            <#list hstRequestContext.servletRequest.parameterMap["type"] as selectedItem>
+                                                <#if selectedItem == item.key>
+                                                    <#assign count = count + 1 />
                                                 </#if>
                                             </#list>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
+                                        </#if>
+                                    </#list>
+                                    <#if count gt 0>
+                                        (${count} selected)
+                                    </#if>
+                                </div>
+                            </h3>
+                            <span class="ds_accordion-item__indicator"></span>
+                            <label class="ds_accordion-item__label" for="panel-1"><span class="visually-hidden">Show this section</span></label>
                         </div>
-                    </#if>
+                        <div class="ds_accordion-item__body">
+                            <fieldset>
+                                <legend class="visually-hidden">Select which publication types you would like to see</legend>
 
-                    <#if topics??>
-                        <div class="ds_accordion-item">
-                            <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-topics" aria-labelledby="panel-topics-heading" />
-                            <div class="ds_accordion-item__header">
-                                <h3 id="panel-topics-heading" class="ds_accordion-item__title">
-                                    Topics
-                                    <div class="js-topics-count  gov_filters__filter-info  gov_filters__filter-info--count"></div>
-                                </h3>
-                                <span class="ds_accordion-item__indicator"></span>
-                                <label class="ds_accordion-item__label" for="panel-topics"><span class="visually-hidden">Show this section</span></label>
-                            </div>
-                            <div class="ds_accordion-item__body">
-                                <fieldset>
-                                    <legend class="visually-hidden">Select which topics you would like to see</legend>
+                                <div class="ds_search-filters__scrollable">
+                                    <div class="ds_search-filters__checkboxes">
+                                        <#list publicationTypes as item>
+                                            <#assign isSelected = false/>
+                                            <#if hstRequestContext.servletRequest.parameterMap["type"]??>
+                                                <#list hstRequestContext.servletRequest.parameterMap["type"] as selectedItem>
+                                                    <#if selectedItem == item.key>
+                                                        <#assign isSelected = true/>
+                                                    </#if>
+                                                </#list>
+                                            </#if>
 
-                                    <div class="gov_filters__scrollable">
-                                        <div class="ds_field-group  ds_field-group--checkboxes">
-                                            <#assign noItems = true />
-                                            <#assign itemsTrigger = false />
-                                            <#list topics as item>
-                                                <#assign isSelected = false/>
-                                                <#if parameters['topics']??>
-                                                    <#list parameters['topics'] as selectedItem>
-                                                        <#if selectedItem == item.title>
-                                                            <#assign isSelected = true/>
-                                                            <#assign itemsTrigger = true />
-                                                        </#if>
-                                                    </#list>
-                                                </#if>
+                                            <div class="ds_checkbox  ds_checkbox--small">
+                                                <input
+                                                    <#if isSelected == true>
+                                                        checked=true
+                                                    </#if>
+                                                    id="${item.key}" name="type" value="${item.key}" class="ds_checkbox__input" type="checkbox" >
+                                                <label for="${item.key}" class="ds_checkbox__label">${(item.label)?replace("/","/<wbr>")?no_esc}</label>
+                                            </div>
+                                        </#list>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </#if>
 
-                                                <div class="ds_radio  ds_radio--small">
-                                                    <input
-                                                        <#if isSelected == true>
-                                                            <#if noItems == true>
-                                                                checked=true
-                                                            </#if>
-                                                            data-checkedonload=true
-                                                        </#if>
-                                                        id="${strSlug(item.title)}" name="topics" class="ds_radio__input" type="radio" value="${item.title}">
-                                                    <label for="${strSlug(item.title)}" class="ds_radio__label">${item.title}</label>
-                                                </div>
-
-                                                <#if itemsTrigger>
-                                                    <#assign noItems = false />
+                <#if topics??>
+                    <div class="ds_accordion-item">
+                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-2" aria-labelledby="panel-2-heading" />
+                        <div class="ds_accordion-item__header">
+                            <h3 id="panel-2-heading" class="ds_accordion-item__title">
+                                Topic
+                                <div class="ds_search-filters__filter-count">
+                                    <#assign count = 0/>
+                                    <#list topics as item>
+                                        <#if hstRequestContext.servletRequest.parameterMap["topic"]??>
+                                            <#list hstRequestContext.servletRequest.parameterMap["topic"] as selectedItem>
+                                                <#if selectedItem == item.node.name>
+                                                    <#assign count = count + 1 />
                                                 </#if>
                                             </#list>
+                                        </#if>
+                                    </#list>
+
+                                    <#if count gt 0>
+                                        (${count} selected)
+                                    </#if>
+                                </div>
+                            </h3>
+                            <span class="ds_accordion-item__indicator"></span>
+                            <label class="ds_accordion-item__label" for="panel-2"><span class="visually-hidden">Show this section</span></label>
+                        </div>
+                        <div class="ds_accordion-item__body">
+                            <fieldset>
+                                <legend class="visually-hidden">Select which topics you would like to see</legend>
+
+                                <div class="ds_search-filters__scrollable">
+                                    <div class="ds_search-filters__checkboxes">
+                                        <#list topics as item>
+                                            <#assign isSelected = false/>
+                                            <#if hstRequestContext.servletRequest.parameterMap["topic"]??>
+                                                <#list hstRequestContext.servletRequest.parameterMap["topic"] as selectedItem>
+                                                    <#if selectedItem == item.node.name>
+                                                        <#assign isSelected = true/>
+                                                    </#if>
+                                                </#list>
+                                            </#if>
+
+                                            <div class="ds_checkbox  ds_checkbox--small">
+                                                <input
+                                                    <#if isSelected == true>
+                                                        checked=true
+                                                    </#if>
+                                                    id="${item.node.name}" name="topic" value="${item.node.name}" class="ds_checkbox__input" type="checkbox">
+                                                <label for="${item.node.name}" class="ds_checkbox__label">${(item.title)?replace("/","/<wbr>")?no_esc}</label>
+                                            </div>
+                                        </#list>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </#if>
+
+                    <div class="ds_accordion-item">
+                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-3" aria-labelledby="panel-3-heading" />
+                        <div class="ds_accordion-item__header">
+                            <h3 id="panel-3-heading" class="ds_accordion-item__title">
+                                Updated
+
+                                <div class="ds_search-filters__filter-count">
+                                    <#assign count = 0/>
+                                    <#if begin?? && begin?length gt 0>
+                                        <#assign count = count + 1/>
+                                    </#if>
+                                    <#if end?? && end?length gt 0>
+                                        <#assign count = count + 1/>
+                                    </#if>
+
+                                    <#if count gt 0>
+                                        (${count} selected)
+                                    </#if>
+                                </div>
+                            </h3>
+                            <span class="ds_accordion-item__indicator"></span>
+                            <label class="ds_accordion-item__label" for="panel-3"><span class="visually-hidden">Show this section</span></label>
+                        </div>
+                        <div class="ds_accordion-item__body">
+                            <fieldset id="filter-date-range" class="filters__fieldset">
+                                <legend class="visually-hidden">Filter by date</legend>
+
+                                <div class="ds_question">
+                                    <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
+                                        <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
+                                        <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                                        <div class="ds_input__wrapper">
+                                            <input value="<#if begin??>${begin}</#if>" name="begin" id="date-from" class="ds_input  ds_input--fixed-10" type="text">
                                         </div>
                                     </div>
-                                </fieldset>
-                            </div>
+                                </div>
+
+                                <div class="ds_question">
+                                    <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
+                                        <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
+                                        <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                                        <div class="ds_input__wrapper">
+                                            <input value="<#if end??>${end}</#if>" name="end" id="date-to" class="ds_input  ds_input--fixed-10" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
-                    </#if>
+                    </div>
                 </div>
-            </#if>
 
-            <div id="filter-actions">
-                <#--  <button type="button" id="cancel-filters" name="cancel-filters" class="visible-xsmall  ds_button  ds_button--cancel  filter-actions__cancel  js-cancel-filters">Cancel</button>  -->
-                <button type="submit" id="apply-filters" name="apply-filters" class="ds_button  ds_button--max  ds_no-margin--bottom  filter-actions__apply  js-apply-filters">Apply</button>
-            </div>
+                <button class="ds_button  ds_button--primary  ds_button--small  ds_button--max  ds_no-margin  js-apply-filter">
+                    Apply filter
+                </button>
+
+            </form>
         </div>
-    </form>
+    </div>
 </div>

@@ -30,6 +30,22 @@ const searchUtils = {
     },
 
     /**
+     * Takes the parameter name and optional url and returns the value of the parameter
+     * @param {string} name - name of parameter
+     * @param {string} url - optional url to check for parameters
+     * @returns {string}
+     */
+    getParameterByName: function(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    },
+
+    /**
      * Validates $field (newer version)
      *
      * @param {object} $field - the form field to validate

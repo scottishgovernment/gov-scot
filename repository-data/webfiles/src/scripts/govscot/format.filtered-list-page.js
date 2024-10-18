@@ -7,14 +7,12 @@
 
 import SearchWithFilters from './component.landing-filters';
 
-window.dataLayer = window.dataLayer || [];
-
-const filteredListPage = new SearchWithFilters ({
-    filters: {
-        date: true,
-        topics: true
+const filteredListPage = {
+    init: function () {
+        this.SearchWithFilters = new SearchWithFilters();
+        this.SearchWithFilters.init();
     }
-});
+};
 
 window.format = filteredListPage;
 window.format.init();

@@ -1,6 +1,15 @@
 <#ftl output_format="HTML">
 <#include "../../include/imports.ftl">
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
+<#setting url_escaping_charset='utf-8'>
+<#macro highlightSearchTerm text>
+    <#if response.resultPacket.queryHighlightRegex??>
+        <#assign pattern = "(?i)(" + response.resultPacket.queryHighlightRegex?replace("(?i)","") + ")" />
+        ${text?replace(pattern, "<mark>$1</mark>", 'ri')?no_esc!}
+    <#else>
+        ${text}
+    </#if>
+</#macro>
 
 <#-- @ftlvariable name="pageable" type="org.onehippo.cms7.essentials.components.paging.Pageable" -->
 <#-- @ftlvariable name="parameters" type="java.util.Map" -->
@@ -13,139 +22,261 @@
 <#-- Set number format to exclude comma separators -->
 <#setting number_format="0.##">
 
-<#-- determine whether we have active parameters -->
-<#assign filtersCount = filterButtons.types?size +
+
+<#if response??>
+    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching &gt; 0>
+        <h2 aria-live="polite" class="ds_search-results__title">
+            <#if response.resultPacket.resultsSummary.fullyMatching <= response.resultPacket.resultsSummary.numRanks ||
+            response.resultPacket.resultsSummary.currStart <= response.resultPacket.resultsSummary.numRanks >
+
+            ${response.resultPacket.resultsSummary.totalMatching} <#if response.resultPacket.resultsSummary.totalMatching gt 1>results<#else>result</#if><#if question.originalQuery?has_content> for <span class="ds_search-results__title-query">${question.originalQuery}</span></#if>
+            <#else>
+                Showing ${response.resultPacket.resultsSummary.currStart} to ${response.resultPacket.resultsSummary.currEnd}
+                of ${response.resultPacket.resultsSummary.totalMatching} <#if response.resultPacket.resultsSummary.totalMatching gt 1>results<#else>result</#if><#if question.originalQuery?has_content> for <span class="ds_search-results__title-query">${question.originalQuery}</span></#if>
+            </#if>
+        </h2>
+    </#if>
+
+    <div class="ds_skip-links  ds_skip-links--static">
+        <ul class="ds_skip-links__list">
+            <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results">Skip to results</a></li>
+        </ul>
+    </div>
+
+    <div class="ds_search-controls">
+        <#assign filtersCount = filterButtons.types?size +
             filterButtons.topics?size + filterButtons.dates?size />
 
-<#if hstRequestContext.servletRequest.getParameter("page")??>
-    <#assign start = (hstRequestContext.servletRequest.getParameter("page")?number - 1) * 10 + 1/>
-</#if>
+        <#if filtersCount gt 0>
 
-<#if pageable??>
-
-<section id="search-results" class="ds_search-results">
-    <header>
-        <h2 class="visually-hidden">Search results ${filtersCount}</h2>
-
-        <div class="ds_search-results__count">
-            <#if pageable.total = 0>
-                <@hst.html hippohtml=document.noResultsMessage/>
-                    <button class="gov-clear-filters-button  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
-                        Clear all filters
-                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
-                    </button>
-
-                    <a href="." class="gov-clear-filters-link  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
-                        Clear all filters
-                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
-                    </a>
-            <#else>
-                <#if filtersCount gt 0 || search.query?has_content>
-                    <p aria-live="polite" class="js-search-results-count">
-                        Showing <b>${pageable.total}</b> <#if pageable.total == 1>${searchTermSingular}<#else>${searchTermPlural}</#if>
-
-                        <#if search.query????>
-                            <#if search.query?has_content>
-                                containing <b>${search.query}</b>
-                            </#if>
-                        </#if>
-
-                        <#if search.fromDate??>
-                            from <b>${filterButtons.dates.begin.label}</b>
-                        </#if>
-
-                        <#if search.toDate??>
-                            to <b>${filterButtons.dates.end.label}</b>
-                        </#if>
-
-                        <#if search.topics?size gt 0>
-                            about
-
-                            <#list search.topics?values?sort as topic>
-                                <b>${topic}</b>
-                                <#sep>or</#sep>
-                            </#list>
-                        </#if>
-
-                        <#if search.publicationTypes?size gt 0>
-                            of type
-                            <#list search.publicationTypes?values?sort as publicationType>
-                                <b>${publicationType}</b>
-                                <#sep>or</#sep>
-                            </#list>
-                        </#if>
-                    </p>
-
-                    <button class="gov-clear-filters-button  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
-                        Clear all filters
-                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
-                    </button>
-
-                    <a href="." class="gov-clear-filters-link  js-clear-filters  ds_button  ds_button--small  ds_button--cancel  ds_button--has-icon  gov_filters__clear">
-                        Clear all filters
-                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#close"></use></svg>
-                    </a>
+        <div class="ds_facets">
+            <p class="visually-hidden">
+                <#if filtersCount == 1>
+                    There is 1 search filter applied.
                 <#else>
-                    <p>Showing all <b>${pageable.total}</b> ${searchTermPlural}</p>
+                    There are ${filtersCount} search filters applied.
                 </#if>
-            </#if>
+            </p>
 
-        </div>
-    </header>
+            <dl class="ds_facets__list">
+                <#if filterButtons.types?? && filterButtons.types?size gt 0>
+                    <div class="ds_facet-group">
+                        <dt class="ds_facet__group-title">
+                            Content type:
+                        </dt>
+                        <#list filterButtons.types as item>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    ${item.label}
 
-    <ol id="search-results-list" <#if start??>start="${start}"</#if> class="ds_search-results__list" data-total="${pageable.total}">
-        <#list pageable.items as item>
-            <@hst.link var="link" hippobean=item/>
-            <li class="ds_search-result">
-                <h3 class="ds_search-result__title">
-                    <a class="ds_search-result__link" href="${link}">${item.title}</a>
-                </h3>
-
-                <#if item.summary??>
-                    <p class="ds_search-result__summary">
-                        ${item.summary}
-                    </p>
-                </#if>
-
-                <dl class="ds_search-result__metadata  ds_metadata  ds_metadata--inline">
-                    <div class="ds_metadata__item">
-                        <dt class="ds_metadata__key">Type</dt>
-                        <dd class="ds_metadata__value">${item.label?cap_first}</dd>
-                    </div>
-
-                    <#if item.publicationDate??>
-                        <div class="ds_metadata__item">
-                            <dt class="ds_metadata__key">Date</dt>
-                            <#assign dateFormat = "dd MMMM yyyy">
-                            <#if hst.isBeanType(item, "scot.gov.www.beans.News")>
-                                <#assign dateFormat = "dd MMMM yyyy HH:mm">
-                            </#if>
-                            <#assign displayDate = (item.displayDate.time)!(item.publicationDate.time)>
-                            <dd class="ds_metadata__value"><@fmt.formatDate value=displayDate type="both" pattern=dateFormat /></dd>
-                        </div>
-                    </#if>
-                </dl>
-
-                <#if item.collections?has_content>
-                    <dl class="ds_search-result__context">
-                        <dt class="ds_search-result__context-key">Part of:</dt>
-                        <#list item.collections as collection>
-                            <@hst.link var="link" hippobean=collection/>
-                            <dd class="ds_search-result__context-value">
-                                <a data-navigation="collections-${collection?index + 1}" href="${link}">${collection.title}</a>
+                                    <a href="?${item.url}" role="button" aria-label="Remove '${item.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="${item.id}">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+                                    </a>
+                                </span>
                             </dd>
                         </#list>
-                    </dl>
+                    </div>
                 </#if>
-            </li>
-        </#list>
-    </ol>
 
-    <div>
-        <#assign gtmslug = relativeContentPath />
-        <#if cparam.showPagination??>
-            <#include "../../include/pagination.ftl">
+                <#if filterButtons.topics?? && filterButtons.topics?size gt 0>
+                    <div class="ds_facet-group">
+                        <dt class="ds_facet__group-title">
+                            Topic:
+                        </dt>
+                        <#list filterButtons.topics as item>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    ${item.label}
+
+                                    <a href="?${item.url}" role="button" aria-label="Remove '${item.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="${item.id}">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+                                    </a>
+                                </span>
+                            </dd>
+                        </#list>
+                    </div>
+                </#if>
+
+                <#if filterButtons.dates?? && filterButtons.dates?size gt 0>
+                    <#if filterButtons.dates.begin?? && filterButtons.dates.end??>
+                        <#assign dateLabel = "Updated between"/>
+                    <#elseif filterButtons.dates.begin??>
+                        <#assign dateLabel = "Updated after"/>
+                    <#elseif filterButtons.dates.end??>
+                        <#assign dateLabel = "Updated before"/>
+                    </#if>
+
+                    <div class="ds_facet-group">
+                        <dt class="ds_facet__group-title">
+                            ${dateLabel}:
+                        </dt>
+
+                        <#if filterButtons.dates.begin?? && filterButtons.dates.end??>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    ${filterButtons.dates.begin.label}
+
+                                    <a href="?${filterButtons.dates.begin.url}" aria-label="Remove 'updated after ${filterButtons.dates.begin.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-from">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+                                    </a>
+                                </span> and
+                            </dd>
+
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    ${filterButtons.dates.end.label}
+
+                                    <a href="?${filterButtons.dates.end.url}" aria-label="Remove 'updated before ${filterButtons.dates.end.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-to">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+                                    </a>
+                                </span>
+                            </dd>
+                        <#elseif filterButtons.dates.begin??>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    ${filterButtons.dates.begin.label}
+
+                                    <a href="?${filterButtons.dates.begin.url}" role="button" aria-label="Remove 'updated after ${filterButtons.dates.begin.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-from">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+                                    </a>
+                                </span>
+                            </dd>
+                        <#elseif filterButtons.dates.end??>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    ${filterButtons.dates.end.label}
+
+                                    <a href="?${filterButtons.dates.end.url}" role="button" aria-label="Remove 'updated before ${filterButtons.dates.end.label}' filter" class="ds_facet__button  js-remove-facet" data-slug="date-to">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+                                    </a>
+                                </span>
+                            </dd>
+                        </#if>
+                    </div>
+                </#if>
+            </dl>
+
+            <a href="?q=${RequestParameters.q}" role="button" class="ds_facets__clear-button  ds_button  ds_button--secondary  js-clear-filters">
+                Clear all filters
+                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
+            </a>
+        </div>
+
+        </#if>
+
+        <hr class="ds_search-results__divider">
+
+        <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+            response.resultPacket.resultsSummary.totalMatching &gt; 0>
+            <div class="ds_sort-options">
+                <label class="ds_label" for="sort-by">Sort by</label>
+                <span class="ds_select-wrapper">
+                    <select form="filters" name="sort" class="ds_select  js-sort-by" id="sort-by">
+                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "date">selected</#if> value="date">Updated (newest)</option>
+                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "adate">selected</#if> value="adate">Updated (oldest)</option>
+                    </select>
+                    <span class="ds_select-arrow" aria-hidden="true"></span>
+                </span>
+
+                <button form="filters" class="ds_button  ds_button--secondary  ds_button--small  js-apply-sort" type="submit" data-button="button-apply-sort">Apply sort</button>
+            </div>
         </#if>
     </div>
-</section>
+
+    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching == 0 &&
+        !(response.curator.simpleHtmlExhibits)?has_content &&
+        !(response.curator.advertExhibits)?has_content>
+        <h2 class="visually-hidden">Search</h2>
+        <div id="no-search-results" class="ds_no-search-results">
+                <@hst.html hippohtml=document.noResultsMessage/>
+        </div>
+    </#if>
+
+    <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching == -1 &&
+        !(response.curator.simpleHtmlExhibits)?has_content &&
+        !(response.curator.advertExhibits)?has_content>
+        <h2 class="visually-hidden">Search</h2>
+        <div id="no-search-results" class="ds_no-search-results">
+            <@hst.html hippohtml=document.blankSearchQueryMessage/>
+        </div>
+    </#if>
+
+<#if pagination??>
+    <#if ((response.resultPacket.resultsSummary.totalMatching)!?has_content &&
+        response.resultPacket.resultsSummary.totalMatching &gt; 0 ) >
+    <ol start="${response.resultPacket.resultsSummary.currStart?c}" id="search-results" class="ds_search-results__list" data-total="${response.resultPacket.resultsSummary.totalMatching?c}">
+    <#-- Using same result template as search -->
+    <#list pageable.items as item>
+       <#include "../search/bloomreach-search-result.ftl">
+    </#list> 
+    </ol>
+    </#if>
+
+    <#if pagination.pages?has_content>
+    <nav id="pagination" class="ds_pagination" aria-label="Search result pages">
+        <ul class="ds_pagination__list">
+            <#if pagination.previous??>
+                <li class="ds_pagination__item">
+                    <a aria-label="Previous page" class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pagination.previous.url}">
+                        <svg class="ds_icon" aria-hidden="true" role="img">
+                            <use href="${iconspath}#chevron_left"></use>
+                        </svg>
+                        <span class="ds_pagination__link-label">${pagination.previous.label}</span>
+                    </a>
+                </li>
+            </#if>
+
+            <#if pagination.first??>
+                <li class="ds_pagination__item">
+                    <a aria-label="Page ${pagination.first.label}" class="ds_pagination__link" href="${pagination.first.url}">
+                        <span class="ds_pagination__link-label">${pagination.first.label}</span>
+                    </a>
+                </li>
+                <li class="ds_pagination__item" aria-hidden="true">
+                    <span class="ds_pagination__link  ds_pagination__link--ellipsis">&hellip;</span>
+                </li>
+            </#if>
+
+            <#list pagination.pages as page>
+                <li class="ds_pagination__item">
+                    <#if page.selected>
+                        <a aria-label="Page ${page.label}" aria-current="page" class="ds_pagination__link  ds_current" href="${page.url}">
+                            <span class="ds_pagination__link-label">${page.label}</span>
+                        </a>
+                    <#else>
+                        <a aria-label="Page ${page.label}" class="ds_pagination__link" href="${page.url}">
+                            <span class="ds_pagination__link-label">${page.label}</span>
+                        </a>
+                    </#if>
+                </li>
+            </#list>
+
+            <#if pagination.last??>
+                <li class="ds_pagination__item" aria-hidden="true">
+                    <span class="ds_pagination__link  ds_pagination__link--ellipsis">&hellip;</span>
+                </li>
+                <li class="ds_pagination__item">
+                    <a aria-label="Last page, page ${pagination.last.label}" class="ds_pagination__link" href="${pagination.last.url}">${pagination.last.label}</a>
+                </li>
+            </#if>
+
+            <#if pagination.next??>
+                <li class="ds_pagination__item">
+                    <a aria-label="Next page" class="ds_pagination__link  ds_pagination__link--text  ds_pagination__link--icon" href="${pagination.next.url}">
+                        <span class="ds_pagination__link-label">${pagination.next.label}</span>
+                        <svg class="ds_icon" aria-hidden="true" role="img">
+                            <use href="${iconspath}#chevron_right"></use>
+                        </svg>
+                    </a>
+                </li>
+            </#if>
+        </ul>
+    </nav>
+    </#if>
+
+</#if>
+
 </#if>
