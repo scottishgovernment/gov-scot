@@ -77,58 +77,60 @@
                         </div>
                     </div>
 
-                    <div class="gov_homepage-hero__sub">
-                        <#list document.featuredItems[1..] as featuredItem>
-                            <div class="gov_hero-item">
-                                <div class="gov_hero-item__media">
-                                    <a tabindex="-1" data-navigation="hero-${featuredItem?index + 2}-image" href="${featuredItem.link.url}">
-                                        <div class="gov_hero-item__figure">
-                                            <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.xlargetwocolumns/>"
-                                                width="${featuredItem.image.xlargethreecolumns.width?c}"
-                                                height="${featuredItem.image.xlargethreecolumns.height?c}"
-                                                <#if document.featuredItems?size == 2>
-                                                    srcset="
-                                                    <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
-                                                    <@hst.link hippobean=featuredItem.image.largefourcolumns/> 288w,
-                                                    <@hst.link hippobean=featuredItem.image.xlargethreecolumns/> 256w,
-                                                    <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
-                                                    <@hst.link hippobean=featuredItem.image.largefourcolumnsdoubled/> 576w,
-                                                    <@hst.link hippobean=featuredItem.image.xlargethreecolumnsdoubled/> 512w"
-                                                    sizes="(min-width:1200px) 256px, (min-width:992px) 288px, 224px"
-                                                <#elseif document.featuredItems?size == 3>
-                                                    srcset="
-                                                    <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
-                                                    <@hst.link hippobean=featuredItem.image.largethreecolumns/> 208w,
-                                                    <@hst.link hippobean=featuredItem.image.xlargethreecolumns/> 256w,
-                                                    <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
-                                                    <@hst.link hippobean=featuredItem.image.largethreecolumnsdoubled/> 416w,
-                                                    <@hst.link hippobean=featuredItem.image.xlargethreecolumnsdoubled/> 512w"
-                                                    sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px"
-                                                <#else>
-                                                    srcset="
-                                                    <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
-                                                    <@hst.link hippobean=featuredItem.image.largetwocolumns/> 128w,
-                                                    <@hst.link hippobean=featuredItem.image.xlargetwocolumns/> 160w,
-                                                    <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
-                                                    <@hst.link hippobean=featuredItem.image.largetwocolumnsdoubled/> 256w,
-                                                    <@hst.link hippobean=featuredItem.image.xlargetwocolumnsdoubled/> 320w"
-                                                    sizes="(min-width:1200px) 160px, (min-width:992px) 128px, 224px"
-                                                </#if>
-                                            >
-                                        </div>
-                                    </a>
-                                </div>
+                    <#if document.featuredItems?size gt 1>
+                        <div class="gov_homepage-hero__sub">
+                            <#list document.featuredItems[1..] as featuredItem>
+                                <div class="gov_hero-item">
+                                    <div class="gov_hero-item__media">
+                                        <a tabindex="-1" data-navigation="hero-${featuredItem?index + 2}-image" href="${featuredItem.link.url}">
+                                            <div class="gov_hero-item__figure">
+                                                <img class="gov_hero-item__image" alt="${featuredItem.title}" src="<@hst.link hippobean=featuredItem.image.xlargetwocolumns/>"
+                                                    width="${featuredItem.image.xlargethreecolumns.width?c}"
+                                                    height="${featuredItem.image.xlargethreecolumns.height?c}"
+                                                    <#if document.featuredItems?size == 2>
+                                                        srcset="
+                                                        <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
+                                                        <@hst.link hippobean=featuredItem.image.largefourcolumns/> 288w,
+                                                        <@hst.link hippobean=featuredItem.image.xlargethreecolumns/> 256w,
+                                                        <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
+                                                        <@hst.link hippobean=featuredItem.image.largefourcolumnsdoubled/> 576w,
+                                                        <@hst.link hippobean=featuredItem.image.xlargethreecolumnsdoubled/> 512w"
+                                                        sizes="(min-width:1200px) 256px, (min-width:992px) 288px, 224px"
+                                                    <#elseif document.featuredItems?size == 3>
+                                                        srcset="
+                                                        <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
+                                                        <@hst.link hippobean=featuredItem.image.largethreecolumns/> 208w,
+                                                        <@hst.link hippobean=featuredItem.image.xlargethreecolumns/> 256w,
+                                                        <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
+                                                        <@hst.link hippobean=featuredItem.image.largethreecolumnsdoubled/> 416w,
+                                                        <@hst.link hippobean=featuredItem.image.xlargethreecolumnsdoubled/> 512w"
+                                                        sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px"
+                                                    <#else>
+                                                        srcset="
+                                                        <@hst.link hippobean=featuredItem.image.mediumfourcolumns/> 224w,
+                                                        <@hst.link hippobean=featuredItem.image.largetwocolumns/> 128w,
+                                                        <@hst.link hippobean=featuredItem.image.xlargetwocolumns/> 160w,
+                                                        <@hst.link hippobean=featuredItem.image.mediumfourcolumnsdoubled/> 448w,
+                                                        <@hst.link hippobean=featuredItem.image.largetwocolumnsdoubled/> 256w,
+                                                        <@hst.link hippobean=featuredItem.image.xlargetwocolumnsdoubled/> 320w"
+                                                        sizes="(min-width:1200px) 160px, (min-width:992px) 128px, 224px"
+                                                    </#if>
+                                                >
+                                            </div>
+                                        </a>
+                                    </div>
 
-                                <div class="gov_hero-item__content">
-                                    <h2 class="gov_hero-item__title">
-                                        <a data-navigation="hero-${featuredItem?index + 2}-title" href="${featuredItem.link.url}">${featuredItem.title}</a>
-                                    </h2>
+                                    <div class="gov_hero-item__content">
+                                        <h2 class="gov_hero-item__title">
+                                            <a data-navigation="hero-${featuredItem?index + 2}-title" href="${featuredItem.link.url}">${featuredItem.title}</a>
+                                        </h2>
 
-                                    <@hst.html hippohtml=featuredItem.teaserText/>
+                                        <@hst.html hippohtml=featuredItem.teaserText/>
+                                    </div>
                                 </div>
-                            </div>
-                        </#list>
-                    </div>
+                            </#list>
+                        </div>
+                    </#if>
                 </div>
             </#if>
 
