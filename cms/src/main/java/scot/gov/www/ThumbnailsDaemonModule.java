@@ -27,7 +27,7 @@ public class ThumbnailsDaemonModule extends DaemonModuleBase {
     private static final Logger LOG = LoggerFactory.getLogger(ThumbnailsDaemonModule.class);
 
     public boolean canHandleEvent(HippoWorkflowEvent event) {
-        return event.success();
+        return event.success() && event.action().equals("commitEditableInstance");
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
