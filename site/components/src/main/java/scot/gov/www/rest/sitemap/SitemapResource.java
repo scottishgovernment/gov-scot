@@ -80,15 +80,8 @@ public class SitemapResource {
 
         try {
             Node node = nodeSupplier.getNode();
-
-            if (node == null) {
+            if (node == null || !node.hasNodes()) {
                 return Response.status(404).type(MediaType.TEXT_PLAIN).entity("Sitemap not found").build();
-            }
-
-            Calendar lastModified = getLastModifiedDate(path, node);
-            Response.ResponseBuilder responseBuilder = request.evaluatePreconditions(lastModified.getTime());
-            if (responseBuilder != null) {
-                return responseBuilder.build();
             }
             Object entity = entitySupplier.getEntity(node);
             return Response.status(Response.Status.OK).entity(entity).build();
@@ -97,14 +90,6 @@ public class SitemapResource {
         } catch (RepositoryException e) {
             return serverError("failed to generate sitemap", e);
         }
-    }
-
-    Calendar getLastModifiedDate(String path, Node node) throws RepositoryException {
-
-        if (LATEST_PATH.equals(path)) {
-            return node.getProperty(LATEST_LAST_MOD).getDate();
-        }
-        return node.getProperty(LAST_MOD).getDate();
     }
 
     Node getSitemapRootNode() throws RepositoryException {
@@ -147,7 +132,7 @@ public class SitemapResource {
     }
 
     boolean containsUrls(Node node) throws RepositoryException {
-        return node.hasNodes() && node.getNodes().nextNode().hasProperty("govscot:loc");
+        return node != null && node.hasNodes() && node.getNodes().nextNode().hasProperty("govscot:loc");
     }
 
     void addSitemap(Node node, SitemapIndex sitemapIndex, String siteName, String rootUrl) throws RepositoryException {

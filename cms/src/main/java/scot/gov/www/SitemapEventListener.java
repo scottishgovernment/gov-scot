@@ -29,8 +29,6 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     private static final String LAST_MOD = "govscot:lastMod";
 
-    protected static final String LATEST_LAST_MOD = "govscot:latestLastMod";
-
     private static final String NT_UNSTRUCTURED = "nt:unstructured";
 
     private static final String EXCLUDED_TYPES = "govscot:excludedTypes";
@@ -80,7 +78,7 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     void handleEventWithLogging(HippoWorkflowEvent event) throws RepositoryException {
 
-        // handle the event and ensure that session.refresh(false) is called id there is a RepositoryException
+        // handle the event and ensure that session.refresh(false) is called if there is a RepositoryException
         try {
             doHandleEvent(event);
         } catch (RepositoryException e) {
@@ -93,18 +91,17 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
-
         Node handle = session.getNodeByIdentifier(event.subjectId());
         Node node = hippoUtils.getVariant(handle);
         Node sitemapNode = getSitemapSiteNode(node);
-        // when running in cargo the sitempa node is not present, sop just return early
+
+        // when running in cargo the sitemap node is not present, so just return early
         if (sitemapNode == null) {
             LOG.warn("no sitemap node for {}", node.getPath());
             return;
         }
-        updateSitemapLatestDate(node);
+
         if (isExcludedType(node)) {
-            session.save();
             return;
         }
 
@@ -114,16 +111,6 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
             ensureSitemapEntry(node, url);
         }
         session.save();
-    }
-
-    void updateSitemapLatestDate(Node node) throws RepositoryException {
-        Node sitemapNode = getSitemapSiteNode(node);
-        LOG.info("updateSitemapLatestDate {}", node.getPath());
-        try {
-            sitemapNode.setProperty(LATEST_LAST_MOD, Calendar.getInstance());
-        } catch (InvalidItemStateException e) {
-            LOG.warn("{} property has been modified externally", LATEST_LAST_MOD, e);
-        }
     }
 
     boolean isExcludedType(Node node) throws RepositoryException {
@@ -142,31 +129,37 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
         Node currentNode = hippoUtils.findOneQuery(session, xpath, Query.XPATH, sitename, handleIdentifier);
         if (currentNode != null) {
             LOG.info("removing sitemap node for {}, {}", url, node.getPath());
-            // the sitemap that this url belongs to has changed
-            currentNode.getParent().setProperty(LAST_MOD, Calendar.getInstance());
-
-            // remove the old entry
             currentNode.remove();
         }
     }
 
     void ensureSitemapEntry(Node node, String url) throws RepositoryException {
-        Calendar lastModified = node.getProperty("hippostdpubwf:lastModificationDate").getDate();
-        Node sitemapNode = getSitemapSiteNode(node);
-        Node yearNode = yearNode(sitemapNode, lastModified);
-        String month = Integer.toString(lastModified.get(Calendar.MONTH) + 1);
-        boolean hasMonthSitemap = yearNode.hasNode(month);
-        Node monthNode =  hasMonthSitemap ? yearNode.getNode(month) : yearNode.addNode(month, NT_UNSTRUCTURED);
-        monthNode.setProperty(LAST_MOD, Calendar.getInstance());
 
+        Calendar lastModified = node.getProperty("hippostdpubwf:lastModificationDate").getDate();
+        Node monthNode = getMonthNode(node, lastModified);
         Node urlNode = monthNode.addNode("uuid-" + node.getParent().getIdentifier(), NT_UNSTRUCTURED);
         LOG.info("update sitemap node for {}, {}", url, urlNode.getPath());
         urlNode.setProperty("govscot:loc", url);
         urlNode.setProperty(LAST_MOD, lastModified);
-        if (!hasMonthSitemap) {
-            // we created a new month node which means that sitemap.xml has changed
-            sitemapNode.setProperty(LAST_MOD, Calendar.getInstance());
+    }
+
+    Node getMonthNode(Node node, Calendar lastModified) throws RepositoryException {
+        String year = Integer.toString(lastModified.get(Calendar.YEAR));
+        String month = Integer.toString(lastModified.get(Calendar.MONTH) + 1);
+
+        Node sitemapNode = getSitemapSiteNode(node);
+        if (!sitemapNode.hasNode(year)) {
+            LOG.warn("No year node {}, {}", sitemapNode.getPath(), year);
+            return null;
         }
+
+        Node yearNode = sitemapNode.getNode(year);
+        if (!yearNode.hasNode(month)) {
+            LOG.warn("No month node {}, {}", yearNode.getPath(), month);
+            return null;
+        }
+
+        return yearNode.getNode(month);
     }
 
     Node getSitemapSiteNode(Node node) throws RepositoryException {
@@ -176,13 +169,6 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
         }
         String sitename = UrlSource.sitename(node);
         return sitemapRoot.getNode(sitename);
-    }
-
-    Node yearNode(Node sitemapNode, Calendar lastModified) throws RepositoryException {
-        String year = Integer.toString(lastModified.get(Calendar.YEAR));
-        return sitemapNode.hasNode(year)
-                ? sitemapNode.getNode(year)
-                : sitemapNode.addNode(year, NT_UNSTRUCTURED);
     }
 
     /**
