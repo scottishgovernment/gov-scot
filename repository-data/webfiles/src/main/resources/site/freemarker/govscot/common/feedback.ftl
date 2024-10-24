@@ -46,13 +46,13 @@
                             <div class="ds_select-wrapper">
                                 <select id="reason-no" class="ds_select">
                                     <option value="" selected disabled>Please select a reason</option>
-                                    <option>It wasn't detailed enough</option>
-                                    <option>It's hard to understand</option>
-                                    <option>It's incorrect</option>
-                                    <option>It needs updating</option>
-                                    <option>There's a broken link</option>
-                                    <option>It wasn't what I was looking for</option>
-                                    <option>Other</option>
+                                    <option value="It wasn't detailed enough">It wasn't detailed enough</option>
+                                    <option value="It's hard to understand">It's hard to understand</option>
+                                    <option value="It's incorrect">It's incorrect</option>
+                                    <option value="It needs updating">It needs updating</option>
+                                    <option value="There's a broken link">There's a broken link</option>
+                                    <option value="It wasn't what I was looking for">It wasn't what I was looking for</option>
+                                    <option value="Other">Other</option>
                                 </select>
                                 <span class="ds_select-arrow" aria-hidden="true"></span>
                             </div>
@@ -79,11 +79,11 @@
                             <div class="ds_select-wrapper">
                                 <select id="reason-yesbut" class="ds_select">
                                     <option value="" selected disabled>Please select a reason</option>
-                                    <option>It needs updating</option>
-                                    <option>There's a spelling mistake</option>
-                                    <option>It's hard to understand</option>
-                                    <option>There's a broken link</option>
-                                    <option>Other</option>
+                                    <option value="It needs updating">It needs updating</option>
+                                    <option value="There's a spelling mistake">There's a spelling mistake</option>
+                                    <option value="It's hard to understand">It's hard to understand</option>
+                                    <option value="There's a broken link">There's a broken link</option>
+                                    <option value="Other">Other</option>
                                 </select>
                                 <span class="ds_select-arrow" aria-hidden="true"></span>
                             </div>
