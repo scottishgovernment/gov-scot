@@ -43,7 +43,7 @@
                             <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
                         </#if>
                         <#if document.image.xlargesixcolumns??>
-                            <img alt="${document.videoAlt}" src="<@hst.link hippobean=document.image.xlargesixcolumns />"
+                            <img alt="${document.alt}" src="<@hst.link hippobean=document.image.xlargesixcolumns />"
                                 class="ds_cb__poster-video"
                                 width="${document.image.xlargesixcolumns.width?c}"
                                 height="${document.image.xlargesixcolumns.height?c}"
