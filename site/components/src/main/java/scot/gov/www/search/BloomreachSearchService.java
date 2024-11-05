@@ -72,7 +72,6 @@ public class BloomreachSearchService implements SearchService {
     @Override
     public SearchResponse performSearch(Search search, SearchSettings searchsettings) {
 
-        int offset = (search.getPage() - 1) * PAGE_SIZE;
         try {
             HstQuery hstQuery = query(search);
             HstQueryResult result = hstQuery.execute();
