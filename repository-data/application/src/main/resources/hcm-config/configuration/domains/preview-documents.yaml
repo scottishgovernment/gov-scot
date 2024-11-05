@@ -6,11 +6,28 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [cmsadmin, useradmin,
-          collection-authors, collection-editors, core-content-authors, core-content-editors,
-          foi-authors, foi-editors, group-authors, group-editors, news-editors, policy-authors, policy-editors,
-          publication-authors, publication-editors, statistics-authors, statistics-editors,
-          topics-issues-authors, topics-issues-editors]
+        value: [cmsadmin, useradmin, collection-authors, collection-editors, core-content-authors,
+          core-content-editors, foi-authors, foi-editors, group-authors, group-editors,
+          news-editors, policy-authors, policy-editors, publication-authors, publication-editors,
+          statistics-authors, statistics-editors, topics-issues-authors, topics-issues-editors,
+          advice-and-guidance-publication-type-authors, agreement-publication-type-authors,
+          consultation-analysis-publication-type-authors, consultation-paper-publication-type-authors,
+          corporate-report-publication-type-authors, correspondence-publication-type-authors,
+          factsheet-publication-type-authors, form-publication-type-authors, impact-assessment-publication-type-authors,
+          independent-report-publication-type-authors, map-publication-type-authors,
+          minutes-publication-type-authors, progress-report-publication-type-authors,
+          regulation-directive-order-publication-type-authors, research-and-analysis-publication-type-authors,
+          speech-statement-publication-type-authors, strategy-plan-publication-type-authors,
+          transparency-data-publication-type-authors, advice-and-guidance-publication-type-editors,
+          agreement-publication-type-editors, consultation-analysis-publication-type-editors,
+          consultation-paper-publication-type-editors, corporate-report-publication-type-editors,
+          correspondence-publication-type-editors, factsheet-publication-type-editors,
+          form-publication-type-editors, impact-assessment-publication-type-editors,
+          independent-report-publication-type-editors, map-publication-type-editors,
+          minutes-publication-type-editors, progress-report-publication-type-editors,
+          regulation-directive-order-publication-type-editors, research-and-analysis-publication-type-editors,
+          speech-statement-publication-type-editors, strategy-plan-publication-type-editors,
+          transparency-data-publication-type-editors]
       hipposys:role: modify
     /hippo:configuration/hippo:domains/preview-documents/hippo-document/hide-embargo-handle:
       jcr:primaryType: hipposys:facetrule
@@ -19,3 +36,10 @@ definitions:
       hipposys:filter: false
       hipposys:type: Name
       hipposys:value: embargo:handle
+    /hippo:configuration/hippo:domains/preview-documents/hippo-document/exclude-resetpassword-folder:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: jcr:path
+      hipposys:filter: false
+      hipposys:type: Reference
+      hipposys:value: /content/documents/resetpassword
