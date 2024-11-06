@@ -327,6 +327,8 @@ class LandingFilters {
         const catParam = searchUtils.getParameterByName('cat');
         if(catParam){
             searchParams.cat = encodeURIComponent(catParam);
+        } else {
+            searchParams.cat = 'filter';
         }
 
         // topics
