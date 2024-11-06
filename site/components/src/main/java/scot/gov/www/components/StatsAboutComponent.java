@@ -11,31 +11,25 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 /**
  * the stats about page is very similar to a Topic page.  However, the publications should be as they are on the homepage
  * stats panel.
  */
 public class StatsAboutComponent extends TopicComponent {
 
-    
-    
     @Override
-
     public void doBeforeRender(HstRequest request, HstResponse response) {
         super.doBeforeRender(request, response);
-
-    HstRequestContext context = request.getRequestContext();
-    HippoBean scope = context.getSiteContentBaseBean();
-    topicsList(scope.getBean("topics/"), request);
-    
+        HstRequestContext context = request.getRequestContext();
+        HippoBean scope = context.getSiteContentBaseBean();
+        topicsList(scope.getBean("topics/"), request);
     }
 
-        void populatePublications(HippoBean base, Topic topic, HstRequest request) {
+    void populatePublications(HippoBean base, Topic topic, HstRequest request) {
         HomeComponent.populateStatsAndResearch(base, request);
-  
     }
-        void topicsList(HippoBean scope, HstRequest request) {
+
+    void topicsList(HippoBean scope, HstRequest request) {
         List<Topic> topics = scope.getChildBeans(Topic.class);
         Comparator<Topic> titleComparator = Comparator.comparing(Topic::getTitle);
                 Collections.sort(topics, titleComparator);

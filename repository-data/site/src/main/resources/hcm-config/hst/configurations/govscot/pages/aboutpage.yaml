@@ -6,11 +6,11 @@ definitions:
       /main:
         jcr:primaryType: hst:component
         hst:template: about.page
-        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+        hst:componentclassname: scot.gov.www.components.AboutPageComponent
         /content:
           jcr:primaryType: hst:component
           hst:template: about.content
-          hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsContentComponent
+          hst:componentclassname: scot.gov.www.components.AboutPageComponent
         /side-menu:
           jcr:primaryType: hst:component
           hst:template: about.side-menu
