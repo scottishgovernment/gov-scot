@@ -157,7 +157,12 @@
                 </#if>
             </dl>
 
-            <a href="?q=${RequestParameters.q}" role="button" class="ds_facets__clear-button  ds_button  ds_button--secondary  js-clear-filters">
+            <#if (RequestParameters.q)?has_content>
+                <#assign clearAll = "?q=" + RequestParameters.q/>
+            <#else>
+                <#assign clearAll = "."/>
+            </#if>
+            <a href="${clearAll}" role="button" class="ds_facets__clear-button  ds_button  ds_button--secondary  js-clear-filters">
                 Clear all filters
                 <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="${iconspath}#cancel"></use></svg>
             </a>
