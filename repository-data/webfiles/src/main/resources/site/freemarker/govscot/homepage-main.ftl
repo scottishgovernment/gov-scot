@@ -224,50 +224,51 @@
                         </h2>
 
                         <p class="gov_content-block__intro">Look for a policy using keywords or filtering by available topic areas.</p>
+                        <div class="ds_search-filters  gov_filters  ds_no-margin--bottom">
+                            <form class="ds_form">
+                                <div class="ds_form__content">
+                                    <div class="ds_question">
+                                    <fieldset id="filter-search">
+                                        <legend class="visually-hidden">Keyword search</legend>
+                                        <label class="ds_label" for="filters-search-term">Keyword</label>
 
-                        <form class="gov_filters  ds_no-margin--bottom ds_form">
-                            <div class="ds_form__content">
-                                <div class="ds_question">
-                                <fieldset id="filter-search">
-                                    <legend class="visually-hidden">Keyword search</legend>
-                                    <label class="ds_label" for="filters-search-term">Keyword</label>
-
-                                    <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
-                                        <input type="text" title="Filter by keyword" name="term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
-                                        <button data-href="<@hst.link path='/policies/' />" class="ds_button  js-policy-form-submit" title="Submit" id="filters-search-submit" >
-                                            <span class="visually-hidden">Search</span>
-                                            <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
-                                        </button>
-                                    </div>
-                                </fieldset>
-                                </div>
-                                <div class="ds_question">
-                                <fieldset>
-                                    <legend class="gov_content-block__subtitle">Filter by topic</legend>
-
-                                    <div class="gov_filters__scrollable  gov_filters__scrollable--fixed">
-                                        <div class="ds_field-group--checkboxes">
-                                            <#list topics as item>
-                                                <#assign slugifyTitle=item.title?lower_case?replace(' ', '-')?replace(',', '')>
-
-                                                <div class="ds_checkbox  ds_checkbox--small">
-                                                    <input
-                                                        id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${item.title}">
-                                                    <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
-                                                </div>
-                                            </#list>
+                                        <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
+                                            <input type="text" title="Filter by keyword" name="term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
+                                            <button data-href="<@hst.link path='/policies/' />" class="ds_button  js-policy-form-submit" title="Submit" id="filters-search-submit" >
+                                                <span class="visually-hidden">Search</span>
+                                                <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
+                                            </button>
                                         </div>
+                                    </fieldset>
                                     </div>
-                                </fieldset>
+                                    <div class="ds_question">
+                                    <fieldset>
+                                        <legend class="gov_content-block__subtitle">Filter by topic</legend>
+
+                                        <div class="ds_search-filters__scrollable  gov_filters__scrollable--fixed">
+                                            <div class="ds_field-group--checkboxes">
+                                                <#list topics as item>
+                                                    <#assign slugifyTitle=item.title?lower_case?replace(' ', '-')?replace(',', '')>
+
+                                                    <div class="ds_checkbox  ds_checkbox--small">
+                                                        <input
+                                                            id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${item.title}">
+                                                        <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
+                                                    </div>
+                                                </#list>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="ds_form__actions">
-                                <button type="button" data-href="<@hst.link path='/policies/' />" class="js-policy-form-submit  ds_button  ds_button--fixed  ds_button--has-icon  ds_no-margin--bottom">
-                                    Search policies
-                                    <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
-                                </button>
-                            </div>
-                        </form>
+                                <div class="ds_form__actions">
+                                    <button type="button" data-href="<@hst.link path='/policies/' />" class="js-policy-form-submit  ds_button  ds_button--fixed  ds_button--has-icon  ds_no-margin--bottom">
+                                        Search policies
+                                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                     <div>

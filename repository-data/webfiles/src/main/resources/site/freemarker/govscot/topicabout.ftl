@@ -61,7 +61,7 @@
                 </div>
 
                 <div>
-                    <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/'/>" data-navigation="statistics-all">
+                    <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/'/>" data-navigation="statistics-all">
                         <span class="gov_icon-link__text">See all Statistics and research</span>
                         <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                     </a>
@@ -73,27 +73,32 @@
                 <div>
                     <h3>Search by type</h3>
                     <p>Look for either statistics or research that have been published by the Scottish Government.</p>
-
-                    <form class="gov_filters  ds_no-margin--bottom">
-                        <div class="ds_field-group--checkboxes">
-                            <fieldset>
-                                <legend class="visually-hidden">Publication type</legend>
-                                <div class="ds_checkbox  ds_checkbox--small">
-                                    <input id="research" name="pubtype[]" class="ds_checkbox__input" type="checkbox" value="research-and-analysis"/>
-                                    <label for="research" class="ds_checkbox__label">Research and analysis</label>
-                                </div>
-                                <div class="ds_checkbox  ds_checkbox--small">
-                                    <input id="statistics" name="pubtype[]" class="ds_checkbox__input" type="checkbox" value="statistics"/>
-                                    <label for="statistics" class="ds_checkbox__label">Statistics</label>
-                                </div>
-                            </fieldset>
+                    <div class="ds_search-filters  gov_filters  ds_no-margin--bottom">
+                    <form class="ds_form" method="GET" action="<@hst.link path='/statistics-and-research/' />" >
+                        <input type="hidden" name="cat" value="filter"/>
+                        <div class="ds_form__content">
+                            <div class="ds_field-group--checkboxes">
+                                <fieldset>
+                                    <legend class="visually-hidden">Publication type</legend>
+                                    <div class="ds_checkbox  ds_checkbox--small">
+                                        <input id="research" name="type" class="ds_checkbox__input" type="checkbox" value="research-and-analysis"/>
+                                        <label for="research" class="ds_checkbox__label">Research and analysis</label>
+                                    </div>
+                                    <div class="ds_checkbox  ds_checkbox--small">
+                                        <input id="statistics" name="type" class="ds_checkbox__input" type="checkbox" value="statistics"/>
+                                        <label for="statistics" class="ds_checkbox__label">Statistics</label>
+                                    </div>
+                                </fieldset>
+                            </div>
                         </div>
-
-                        <button class="js-stats-form-submit  ds_button  ds_button--fixed  ds_button--has-icon  ds_no-margin--bottom" data-button="button-search-stats">
-                            Search
-                            <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
-                        </button>
+                        <div class="ds_form__actions">
+                            <button type="submit" class="js-stats-form-submit  ds_button  ds_button--fixed  ds_button--has-icon  ds_no-margin--bottom" data-button="button-search-stats">
+                                Search
+                                <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
+                            </button>
+                        </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,13 +182,6 @@
         </#list>
     </section>
 </#if>
-
-<@hst.headContribution category="footerScripts">
-<script type="module" src="<@hst.webfile path="/assets/scripts/aboutstats.js"/>"></script>
-</@hst.headContribution>
-<@hst.headContribution category="footerScripts">
-<script nomodule="true" src="<@hst.webfile path="/assets/scripts/aboutstats.es5.js"/>"></script>
-</@hst.headContribution>
 
 <#if document??>
     <@hst.headContribution category="dcMeta">
