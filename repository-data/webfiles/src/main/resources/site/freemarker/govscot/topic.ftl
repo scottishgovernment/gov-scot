@@ -124,7 +124,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}'/>" data-navigation="publications-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?cat=filter&topic=${document.title}'/>" data-navigation="publications-all">
                             <span class="gov_icon-link__text">See all publications <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -154,7 +154,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>" data-navigation="consultations-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?cat=filter&topic=${document.title}&publicationTypes=consultation-analysis;consultation-paper'/>" data-navigation="consultations-all">
                             <span class="gov_icon-link__text">See all consultations <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -185,7 +185,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/?topics=${document.title}'/>" data-navigation="statistics-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/statistics-and-research/?cat=filter&topic=${document.title}'/>" data-navigation="statistics-all">
                             <span class="gov_icon-link__text">See all Statistics and research <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -216,7 +216,7 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=${document.title}'/>" data-navigation="news-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?cat=filter&topic=${document.title}'/>" data-navigation="news-all">
                             <span class="gov_icon-link__text">See all news <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
