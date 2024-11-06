@@ -31,7 +31,7 @@
                         </div>
 
                         <div>
-                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/'/>?cat=filter&topics=${document.title}" data-navigation="news-all">
+                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/'/>?cat=filter&topic=${document.name}" data-navigation="news-all">
                                 <span class="gov_icon-link__text">See all news</span>
                                 <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div>
-                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/'/>?cat=filter&topics=${document.title}" data-navigation="publications-all">
+                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/'/>?cat=filter&topic=${document.name}" data-navigation="publications-all">
                                 <span class="gov_icon-link__text">See all publications</span>
                                 <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>
@@ -103,7 +103,7 @@
                         </div>
 
                         <div>
-                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/'/>?cat=filter&topics=${document.title}" data-navigation="policies-all">
+                            <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/'/>?cat=filter&topic=${document.name}" data-navigation="policies-all">
                                 <span class="gov_icon-link__text">See all policies</span>
                                 <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                             </a>

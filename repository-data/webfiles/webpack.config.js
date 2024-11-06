@@ -9,7 +9,6 @@ const commonItems = {
         'datalayer':                    path.resolve(__dirname, './src/scripts/govscot/datalayer.js'),
 
         // format-specific entry point)s
-        'aboutstats':                   path.resolve(__dirname, './src/scripts/govscot/format.aboutstats.js'),
         'cookie-preferences':           path.resolve(__dirname, './src/scripts/govscot/format.cookie-preferences.js'),
         'default':                      path.resolve(__dirname, './src/scripts/govscot/format.default.js'),
         'filtered-list-page':           path.resolve(__dirname, './src/scripts/govscot/format.filtered-list-page.js'),

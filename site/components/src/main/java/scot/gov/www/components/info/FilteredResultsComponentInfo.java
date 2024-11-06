@@ -17,4 +17,6 @@ public interface FilteredResultsComponentInfo extends EssentialsListComponentInf
     @Parameter(name = "publicationTypes")
     String getPublicationTypes();
 
+    @Parameter(name = "showSort")
+    boolean getShowSort();
 }

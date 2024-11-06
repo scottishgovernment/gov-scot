@@ -115,7 +115,7 @@
                             </#list>
                         </ul>
 
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?topics=' + document.title/>" data-navigation="news-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/news/?cat=filter&topic=' + document.name/>" data-navigation="news-all">
                             <span class="gov_icon-link__text">See all news <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -131,7 +131,7 @@
                             </#list>
                         </ul>
 
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/?topics=' + document.title/>" data-navigation="policies-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/policies/?cat=filter&topic=' + document.name/>" data-navigation="policies-all">
                             <span class="gov_icon-link__text">See all policies <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
@@ -147,7 +147,7 @@
                             </#list>
                         </ul>
 
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?topics=' + document.title/>" data-navigation="publications-all">
+                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?cat=filter&topic=' + document.name/>" data-navigation="publications-all">
                             <span class="gov_icon-link__text">See all publications <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>

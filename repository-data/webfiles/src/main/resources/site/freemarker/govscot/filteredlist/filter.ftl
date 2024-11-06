@@ -39,7 +39,7 @@
 <#-- @ftlvariable name="type" type="org.onehippo.forge.selection.hst.contentbean.ValueListItem" -->
 <#-- @ftlvariable name="topic" type="scot.gov.www.beans.Topic" -->
 
-<div class="ds_search-filters  gov_filters">
+<div class="ds_search-filters">
     <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />">
 
     <div class="ds_details  ds_no-margin" data-module="ds-details">
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                 </#if>
-
+                <#if dates??>
                     <div class="ds_accordion-item">
                         <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-3" aria-labelledby="panel-3-heading" />
                         <div class="ds_accordion-item__header">
@@ -242,6 +242,8 @@
                             </fieldset>
                         </div>
                     </div>
+                
+                </#if>
                 </div>
 
                 <button class="ds_button  ds_button--primary  ds_button--small  ds_button--max  ds_no-margin  js-apply-filter">

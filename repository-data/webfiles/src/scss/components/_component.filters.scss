@@ -2,8 +2,31 @@
     FILTERS
 \*------------------------------------*/
 
+.ds_filters {
+
+}
+
 .gov_filters {
+    @include ds_small-size;
+    
+    &__scrollable {
+
+        &--fixed {
+            max-height: 200px;
+        }
+    }
+
     &__search {
         margin-top: 0.5rem;
     }
+
+    .ds_field-group--checkboxes,
+    .ds_field-group--checkboxes {
+
+        .ds_checkbox,
+        .ds_radio {
+            margin-bottom: 0;
+        }
+    }
+
 }
