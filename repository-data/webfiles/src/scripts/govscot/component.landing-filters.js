@@ -265,14 +265,14 @@ class LandingFilters {
         // dates
         searchParams.date = {};
 
-        const beginParam = document.querySelector('input[name="begin"]').value;
+        const beginParam = document.querySelector('input[name="begin"]');
         if(beginParam){
-            searchParams.date.begin = encodeURIComponent(beginParam);
+            searchParams.date.begin = encodeURIComponent(beginParam.value);
         }
 
-        const endParam = document.querySelector('input[name="end"]').value;
+        const endParam = document.querySelector('input[name="end"]');
         if(endParam){
-            searchParams.date.end = encodeURIComponent(endParam);
+            searchParams.date.end = encodeURIComponent(endParam.value);
         }
 
         // page
@@ -363,11 +363,16 @@ class LandingFilters {
         // reset the other date input to the current searhparam value (and remove any errors from that too)
         const toElement = document.getElementById('date-to');
         const fromElement = document.getElementById('date-from');
-        toElement.value = searchUtils.getParameterByName('end', buttonElement.href);
-        fromElement.value = searchUtils.getParameterByName('begin', buttonElement.href);
 
-        searchUtils.removeError(toElement.closest('.ds_question'));
-        searchUtils.removeError(fromElement.closest('.ds_question'));
+        if(toElement){
+            toElement.value = searchUtils.getParameterByName('end', buttonElement.href);
+            searchUtils.removeError(toElement.closest('.ds_question'));
+        }
+        if(fromElement){
+            fromElement.value = searchUtils.getParameterByName('begin', buttonElement.href);
+            searchUtils.removeError(fromElement.closest('.ds_question'));
+        }
+
         this.doSearch(buttonElement.href, true);
     }
 
@@ -380,8 +385,14 @@ class LandingFilters {
         const end = urlSearchParams.get('end');
         const sort = urlSearchParams.get('sort');
 
-        document.getElementById('date-from').value = begin;
-        document.getElementById('date-to').value = end;
+        const toElement = document.getElementById('date-to');
+        const fromElement = document.getElementById('date-from');
+        if(fromElement){
+            document.getElementById('date-from').value = begin;
+        }
+        if(toElement){
+            document.getElementById('date-to').value = end;
+        }
 
         [].slice.call(document.querySelectorAll('.ds_checkbox__input[name="topic"]')).forEach(checkbox => {
             checkbox.checked = topics.includes(checkbox.id);
