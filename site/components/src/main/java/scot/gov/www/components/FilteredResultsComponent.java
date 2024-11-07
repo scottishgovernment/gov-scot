@@ -79,8 +79,10 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         request.setAttribute("relativeContentPath", relativeContentPath);
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
+        if (paramInfo.getShowSort()) {
+            request.setAttribute("showSort", true);
+        }
     }
-
 
     Search search(HstRequest request, boolean includeComponentParams) {
         String query = param(request, "q");

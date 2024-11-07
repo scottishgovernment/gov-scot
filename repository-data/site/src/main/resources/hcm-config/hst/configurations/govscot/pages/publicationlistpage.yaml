@@ -11,11 +11,12 @@ definitions:
           hst:componentclassname: scot.gov.www.components.FilteredResultsComponent
           hst:label: Filtered Results List
           hst:parameternames: [sortField, sortOrder, includeSubtypes, showPagination,
-            path, pageSize, documentTypes, searchTermPlural, searchTermSingular]
+            path, pageSize, documentTypes, searchTermPlural, searchTermSingular, showSort]
           hst:parametervalues: ['govscot:displayDate,govscot:title', 'desc,asc', 'off',
-            'on', '', '10', 'govscot:Publication', publications, publication]
+            'on', '', '10', 'govscot:Publication', publications, publication, 'true']
           hst:template: filteredlist.results
           hst:xtype: hst.item
+          hippo:identifier: 1d0468bb-53bc-439f-bfad-722d6f581092
         /side-filter:
           jcr:primaryType: hst:component
           hst:referencecomponent: hst:components/side-filter

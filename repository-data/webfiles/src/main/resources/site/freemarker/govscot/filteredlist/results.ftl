@@ -18,6 +18,7 @@
 <#-- @ftlvariable name="item" type="scot.gov.www.beans.Policy" -->
 <#-- @ftlvariable name="searchTermSingular" type="java.lang.String" -->
 <#-- @ftlvariable name="searchTermPlural" type="java.lang.String" -->
+<#-- @ftlvariable name="showSort" type="java.lang.Boolean" -->
 
 <#-- Set number format to exclude comma separators -->
 <#setting number_format="0.##">
@@ -174,18 +175,20 @@
 
         <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
             response.resultPacket.resultsSummary.totalMatching &gt; 0>
-            <div class="ds_sort-options">
-                <label class="ds_label" for="sort-by">Sort by</label>
-                <span class="ds_select-wrapper">
-                    <select form="filters" name="sort" class="ds_select  js-sort-by" id="sort-by">
-                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "date">selected</#if> value="date">Updated (newest)</option>
-                        <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "adate">selected</#if> value="adate">Updated (oldest)</option>
-                    </select>
-                    <span class="ds_select-arrow" aria-hidden="true"></span>
-                </span>
+            <#if showSort??>
+                <div class="ds_sort-options">
+                    <label class="ds_label" for="sort-by">Sort by</label>
+                    <span class="ds_select-wrapper">
+                        <select form="filters" name="sort" class="ds_select  js-sort-by" id="sort-by">
+                            <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "date">selected</#if> value="date">Updated (newest)</option>
+                            <option <#if hstRequest.request.getParameter('sort')?? && hstRequest.request.getParameter('sort') == "adate">selected</#if> value="adate">Updated (oldest)</option>
+                        </select>
+                        <span class="ds_select-arrow" aria-hidden="true"></span>
+                    </span>
 
-                <button form="filters" class="ds_button  ds_button--secondary  ds_button--small  js-apply-sort" type="submit" data-button="button-apply-sort">Apply sort</button>
-            </div>
+                    <button form="filters" class="ds_button  ds_button--secondary  ds_button--small  js-apply-sort" type="submit" data-button="button-apply-sort">Apply sort</button>
+                </div>
+            </#if>
         </#if>
     </div>
 
