@@ -47,7 +47,7 @@ public class BloomreachSearchService implements SearchService {
 
     private static final int PAGE_SIZE = 10;
 
-    public static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDat" };
+    public static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDate" };
 
     static {
         Collections.addAll(FIELD_NAMES,
