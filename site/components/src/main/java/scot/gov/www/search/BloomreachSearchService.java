@@ -138,14 +138,18 @@ public class BloomreachSearchService implements SearchService {
         return queryBuilder.build();
     }
 
-
     void addOrderBy(HstQueryBuilder queryBuilder, Sort sort) {
-        if (sort == Sort.ADATE) {
-            queryBuilder.orderBy(HstQueryBuilder.Order.ASC, DATE_FIELDS);
-        }
-
-        if (sort == Sort.DATE) {
-            queryBuilder.orderBy(HstQueryBuilder.Order.DESC, DATE_FIELDS);
+        switch (sort) {
+            case ADATE:
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, DATE_FIELDS);
+                break;
+            case DATE:
+                queryBuilder.orderBy(HstQueryBuilder.Order.DESC, DATE_FIELDS);
+                break;
+            case TITLE:
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, "govscot:title");
+                break;
+            default:
         }
     }
 

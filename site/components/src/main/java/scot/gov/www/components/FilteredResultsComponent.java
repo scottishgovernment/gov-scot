@@ -31,7 +31,6 @@ import scot.gov.www.beans.DynamicIssue;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
-import scot.gov.www.search.BloomreachSearchService;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +42,7 @@ import java.util.*;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
+import static scot.gov.www.search.BloomreachSearchService.DATE_FIELDS;
 import static scot.gov.www.search.BloomreachSearchService.response;
 
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
@@ -107,8 +107,11 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     Sort sort(HstRequest request) {
         String sortParam = getAnyParameter(request, "sort");
         if (isBlank(sortParam)) {
-            return Sort.DATE;
+            /// if there is no sort param then default to the one configured for this page
+            paramInfo = getComponentParametersInfo(request);
+            sortParam = paramInfo.getDefaultSort();
         }
+
         try {
             return Sort.valueOf(sortParam.toUpperCase());
         } catch (IllegalArgumentException e) {
@@ -215,12 +218,23 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     void addOrderBy(HstQueryBuilder queryBuilder, Sort sort) {
-        if (sort == Sort.ADATE) {
-            queryBuilder.orderBy(HstQueryBuilder.Order.ASC, BloomreachSearchService.DATE_FIELDS);
-        }
 
-        if (sort == Sort.DATE) {
-            queryBuilder.orderBy(HstQueryBuilder.Order.DESC, BloomreachSearchService.DATE_FIELDS);
+        LOG.info("addOrderBy {}", sort);
+        switch (sort) {
+            case ADATE:
+                LOG.info("addOrderBy 1");
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, DATE_FIELDS);
+                break;
+            case DATE:
+                LOG.info("addOrderBy 2");
+                queryBuilder.orderBy(HstQueryBuilder.Order.DESC, DATE_FIELDS);
+                break;
+            case TITLE:
+                LOG.info("addOrderBy 3");
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, GOVSCOT_TITLE);
+                break;
+            default:
+                LOG.info("addOrderBy default");
         }
     }
 
