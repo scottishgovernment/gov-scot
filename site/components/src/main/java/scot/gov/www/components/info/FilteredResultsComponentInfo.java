@@ -19,4 +19,7 @@ public interface FilteredResultsComponentInfo extends EssentialsListComponentInf
 
     @Parameter(name = "showSort")
     boolean getShowSort();
+
+    @Parameter(name = "defaultSort")
+    String getDefaultSort();
 }
