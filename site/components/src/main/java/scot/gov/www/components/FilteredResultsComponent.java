@@ -218,23 +218,17 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     }
 
     void addOrderBy(HstQueryBuilder queryBuilder, Sort sort) {
-
-        LOG.info("addOrderBy {}", sort);
         switch (sort) {
             case ADATE:
-                LOG.info("addOrderBy 1");
                 queryBuilder.orderBy(HstQueryBuilder.Order.ASC, DATE_FIELDS);
                 break;
             case DATE:
-                LOG.info("addOrderBy 2");
                 queryBuilder.orderBy(HstQueryBuilder.Order.DESC, DATE_FIELDS);
                 break;
             case TITLE:
-                LOG.info("addOrderBy 3");
                 queryBuilder.orderBy(HstQueryBuilder.Order.ASC, GOVSCOT_TITLE);
                 break;
             default:
-                LOG.info("addOrderBy default");
         }
     }
 
