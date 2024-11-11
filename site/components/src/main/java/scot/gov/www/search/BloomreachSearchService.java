@@ -71,7 +71,6 @@ public class BloomreachSearchService implements SearchService {
 
     @Override
     public SearchResponse performSearch(Search search, SearchSettings searchsettings) {
-
         try {
             HstQuery hstQuery = query(search);
             HstQueryResult result = hstQuery.execute();
@@ -135,10 +134,13 @@ public class BloomreachSearchService implements SearchService {
         HstQueryBuilder queryBuilder = HstQueryBuilder.create(context.getSiteContentBaseBean())
                 .where(constraints(search)).limit(PAGE_SIZE).offset(offset);
         addOrderBy(queryBuilder, search.getSort());
-        return queryBuilder.build();
+        return queryBuilder.build(context.getQueryManager());
     }
 
     void addOrderBy(HstQueryBuilder queryBuilder, Sort sort) {
+        if (sort == null) {
+            return;
+        }
         switch (sort) {
             case ADATE:
                 queryBuilder.orderBy(HstQueryBuilder.Order.ASC, DATE_FIELDS);
