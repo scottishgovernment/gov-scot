@@ -8,4 +8,7 @@ definitions:
         jcr:primaryType: hipposys:moduleconfig
         govscot:excludedTypes: ['govscot:PublicationPage', 'govscot:ComplexDocumentSection',
           'govscot:DocumentInformation', 'govscot:HomeFeaturedItem', 'feed:rss20descriptor',
-          'selection:valuelist', 'govscot:Home', 'govscot:ImportantBanner', 'govscot:PageNotFound']
+          'selection:valuelist', 'govscot:Home', 'govscot:ImportantBanner', 'govscot:PageNotFound',
+          'govscot:imageandtext', 'govscot:pageheading', 'govscot:text', 'govscot:video',
+          'govscot:siteverification', 'govscot:navigationcardcontentblock', 'govscot:featuregriditem',
+          'govscot:analytics']
