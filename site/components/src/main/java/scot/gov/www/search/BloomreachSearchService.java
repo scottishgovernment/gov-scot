@@ -47,11 +47,13 @@ public class BloomreachSearchService implements SearchService {
 
     private static final int PAGE_SIZE = 10;
 
-    public static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDate", "govscot:title" };
+    private static final String TITLE = "govscot:title";
+
+    public static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDate", TITLE };
 
     static {
         Collections.addAll(FIELD_NAMES,
-                "govscot:title",
+                TITLE,
                 "govscot:summary",
                 "govscot:content/hippostd:content",
                 "hippostd:tags",
@@ -149,7 +151,7 @@ public class BloomreachSearchService implements SearchService {
                 queryBuilder.orderBy(HstQueryBuilder.Order.DESC, DATE_FIELDS);
                 break;
             case TITLE:
-                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, "govscot:title");
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, TITLE);
                 break;
             default:
         }
