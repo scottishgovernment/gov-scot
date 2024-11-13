@@ -206,8 +206,9 @@
                     </div>
 
                     <div>
-                        <a class="gov_icon-link  gov_icon-link--major" href="<@hst.link path='/publications/?type=consultation-analysis&type=consultation-paper'/>" data-navigation="consultations-all">
-                            <span class="gov_icon-link__text">See all consultations</span>
+                        <@hst.link var="consultationsLink" path='/publications/'/>
+                        <a class="gov_icon-link  gov_icon-link--major" href="${consultationsLink}?cat=filter&topic=${document.name}&type=consultation-analysis&type=consultation-paper" data-navigation="consultations-all">
+                            <span class="gov_icon-link__text">See all consultations <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>
                         </a>
                     </div>
