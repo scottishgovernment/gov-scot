@@ -221,9 +221,11 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         switch (sort) {
             case ADATE:
                 queryBuilder.orderBy(HstQueryBuilder.Order.ASC, DATE_FIELDS);
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, GOVSCOT_TITLE);
                 break;
             case DATE:
                 queryBuilder.orderBy(HstQueryBuilder.Order.DESC, DATE_FIELDS);
+                queryBuilder.orderBy(HstQueryBuilder.Order.ASC, GOVSCOT_TITLE);
                 break;
             case TITLE:
                 queryBuilder.orderBy(HstQueryBuilder.Order.ASC, GOVSCOT_TITLE);
