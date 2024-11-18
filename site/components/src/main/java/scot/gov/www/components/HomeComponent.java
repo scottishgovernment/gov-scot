@@ -102,8 +102,8 @@ public class HomeComponent extends BaseHstComponent {
         return HstQueryBuilder.create(scope)
                 .ofTypes(Publication.class)
                 .limit(3)
-                .orderByDescending("govscot:publicationDate")
                 .orderByDescending("govscot:displayDate")
+                .orderByDescending("govscot:publicationDate")
                 .orderByDescending("hippostdpubwf:lastModificationDate")
                 .orderByAscending("govscot:title");
     }

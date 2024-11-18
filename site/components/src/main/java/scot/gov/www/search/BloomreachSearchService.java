@@ -49,7 +49,7 @@ public class BloomreachSearchService implements SearchService {
 
     private static final String TITLE = "govscot:title";
 
-    public static final String [] DATE_FIELDS = { "govscot:publicationDate", "govscot:displayDate", "hippostdpubwf:lastModificationDate" };
+    public static final String [] DATE_FIELDS = { "govscot:displayDate", "govscot:publicationDate", "hippostdpubwf:lastModificationDate" };
 
     static {
         Collections.addAll(FIELD_NAMES,
