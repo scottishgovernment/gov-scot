@@ -11,7 +11,7 @@
         "@babel/core": "^7.6.4",
         "@babel/preset-env": "^7.6.3",
         "@scottish-government-design-system/content-blocks": "^0.1.2",
-        "@scottish-government/design-system": "^2.3.1",
+        "@scottish-government/design-system": "^2.3.2",
         "babel-loader": "^8.0.5",
         "istanbul-instrumenter-loader": "^3.0.1",
         "jasmine-core": "^2.4.1",
@@ -1702,11 +1702,10 @@
       "license": "MIT"
     },
     "node_modules/@scottish-government/design-system": {
-      "version": "2.3.1",
-      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government/design-system/-/design-system-2.3.1.tgz",
-      "integrity": "sha512-807OH+uWgrfudAH3PBq4Yi6GcciEaUye7LJozlda6AzyniDhSTCctqw8z9hbV/A4lkvF9rQGLdFKMwtS63hKsA==",
-      "dev": true,
-      "license": "MIT"
+      "version": "2.3.2",
+      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-2.3.2.tgz",
+      "integrity": "sha512-KJ9BYv6rOtRLokALaZVSMpahzztt1oCRNevU5IOyZtZK9E40+H23NaW1P7U1KFX3cgjHUxuOQl16Bfwf4VZs9w==",
+      "dev": true
     },
     "node_modules/@socket.io/component-emitter": {
       "version": "3.1.0",

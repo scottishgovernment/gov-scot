@@ -18,7 +18,7 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@scottish-government-design-system/content-blocks": "^0.1.2",
-    "@scottish-government/design-system": "^2.3.1",
+    "@scottish-government/design-system": "^2.3.2",
     "babel-loader": "^8.0.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",
