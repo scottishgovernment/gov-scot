@@ -56,6 +56,7 @@
     <junit.version>4.13.1</junit.version>
     <easymock.version>3.4</easymock.version>
     <mockito.version>2.22.0</mockito.version>
+    <commons-io.version>2.14.0</commons-io.version>
 
     <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
     <maven.plugin.cargo.version>1.7.0</maven.plugin.cargo.version>
