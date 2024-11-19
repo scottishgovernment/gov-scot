@@ -63,9 +63,10 @@
                         </#if>
                         </picture>
                         <#if document.videoUrl?has_content>
-                            <svg class="ds_cb__poster__overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
-                                <circle class="background" cx="82" cy="45.5" r="16" fill="#0065db"/>
-                                <path class="foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+                            <svg class="ds_cb__poster__overlay" xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
+                                <path class="background" d="M104 52C104 80.7188 80.7188 104 52 104C23.2812 104 0 80.7188 0 52C0 23.2812 23.2812 0 52 0C80.7188 0 104 23.2812 104 52Z" fill="#0065BD"/>
+                                <path class="border" fill-rule="evenodd" clip-rule="evenodd" d="M52 100C78.5097 100 100 78.5097 100 52C100 25.4903 78.5097 4 52 4C25.4903 4 4 25.4903 4 52C4 78.5097 25.4903 100 52 100ZM52 104C80.7188 104 104 80.7188 104 52C104 23.2812 80.7188 0 52 0C23.2812 0 0 23.2812 0 52C0 80.7188 23.2812 104 52 104Z" fill="white"/>
+                                <path class="foreground" d="M74 52L41 76.2487L41 27.7513L74 52Z" fill="white"/>
                             </svg>
                         </a>
                         </#if>

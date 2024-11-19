@@ -41,7 +41,8 @@
                     transition: fill 0.2s;
                 }
 
-                .foreground {
+                .foreground,
+                .border {
                     fill: $ds_colour__button;
                 }
             }
@@ -57,7 +58,8 @@
             &:focus,
             &:active {
                 .ds_cb__poster__overlay {
-                    .background {
+                    .background,
+                    .border {
                         fill: $ds_colour__button--focus__background;
                         transition-duration: 0s;
                     }
@@ -74,13 +76,11 @@
         }
 
         &__overlay {
-            height: 100%;
             position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            width: 100%;
+                top: 50%;
+                left: 50%;
+            transform: translate(-50%,-50%);
+            width: 30%;
         }
 
         // Mobile alignment fix (using center rather than middle now)
