@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.*;
-import javax.jcr.query.Query;
 
 import java.util.Calendar;
 import java.util.HashSet;
@@ -124,13 +123,12 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     void removeExistingSitemapNode(String url, Node node) throws RepositoryException {
         String sitename = UrlSource.sitename(node);
-        String xpath = "/jcr:root/content/sitemaps/%s//uuid-%s";
         String handleIdentifier = node.getParent().getIdentifier();
-        Node currentNode = hippoUtils.findOneQuery(session, xpath, Query.XPATH, sitename, handleIdentifier);
-        if (currentNode != null) {
-            LOG.info("removing sitemap node for {}, {}", url, node.getPath());
+        String xpath = String.format("/jcr:root/content/sitemaps/%s//uuid-%s", sitename, handleIdentifier);
+        hippoUtils.executeXpathQuery(session, xpath, currentNode -> {
+            LOG.info("removing sitemap node for {}, {}, {}", url, node.getPath(), currentNode.getPath());
             currentNode.remove();
-        }
+        });
     }
 
     void ensureSitemapEntry(Node node, String url) throws RepositoryException {
