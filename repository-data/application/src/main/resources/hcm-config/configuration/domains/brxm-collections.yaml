@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/brxm-collections:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:userrole: xm.content.viewer
+        hipposys:role: editor
+      /collections:
+        jcr:primaryType: hipposys:domainrule
+        /include-collections-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /collections
