@@ -9,31 +9,18 @@
 
         <ul class="ds_side-navigation__list" id="side-navigation-root">
             <li class="ds_side-navigation__item">
-                <#if aboutMenuItem.selected>
-                        <span class="ds_side-navigation__link  ds_current">${aboutMenuItem.name}</span>
-                <#else>
-                        <a class="ds_side-navigation__link" href="<@hst.link link=aboutMenuItem.hstLink/>">${aboutMenuItem.name}</a>
-                </#if>
+                <a class="ds_side-navigation__link<#if aboutMenuItem.selected>  ds_current</#if>" href="<@hst.link link=aboutMenuItem.hstLink/>"<#if aboutMenuItem.selected> aria-current="page"</#if>>${aboutMenuItem.name}</a>
 
                 <#if aboutMenuItem.childMenuItems?has_content>
                     <ul class="ds_side-navigation__list">
                         <#list aboutMenuItem.childMenuItems as level1Item>
                             <li class="ds_side-navigation__item">
-                                <#if level1Item.selected>
-                                    <span class="ds_side-navigation__link  ds_current">${level1Item.name}</span>
-                                <#else>
-                                    <a class="ds_side-navigation__link" href="<@hst.link link=level1Item.hstLink/>">${level1Item.name}</a>
-                                </#if>
-
+                                <a class="ds_side-navigation__link<#if level1Item.selected>  ds_current</#if>" href="<@hst.link link=level1Item.hstLink/>"<#if level1Item.selected> aria-current="page"</#if>>${level1Item.name}</a>
                                 <#if level1Item.childMenuItems?has_content>
                                     <ul class="ds_side-navigation__list">
                                         <#list level1Item.childMenuItems as level2Item>
                                             <li class="ds_side-navigation__item">
-                                                <#if level2Item.selected>
-                                                    <span class="ds_side-navigation__link  ds_current">${level2Item.name}</span>
-                                                <#else>
-                                                    <a class="ds_side-navigation__link" href="<@hst.link link=level2Item.hstLink/>">${level2Item.name}</a>
-                                                </#if>
+                                                <a class="ds_side-navigation__link<#if level2Item.selected>  ds_current</#if>" href="<@hst.link link=level2Item.hstLink/>"<#if level2Item.selected> aria-current="page"</#if>>${level2Item.name}</a>
                                             </li>
                                         </#list>
                                     </ul>

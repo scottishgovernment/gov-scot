@@ -10,27 +10,15 @@
 
         <li class="ds_side-navigation__item">
             <@hst.link var="link" hippobean=index canonical=true/>
-            <#if document == index && !latest??>
-                <span class="ds_side-navigation__link  ds_current">
-                    Overview
-                </span>
-            <#else>
-                <a class="ds_side-navigation__link" href="${link}">
-                    Overview
-                </a>
-            </#if>
+            <a class="ds_side-navigation__link<#if document == index && !latest??>  ds_current</#if>" href="${link}"<#if document == index && !latest??> aria-current="page"</#if>>
+                Overview
+            </a>
         </li>
 
         <li class="ds_side-navigation__item">
-            <#if latest??>
-                <span class="ds_side-navigation__link  ds_current">
-                    Latest
-                </span>
-            <#else>
-                <a class="ds_side-navigation__link" href="${link + 'latest/'}">
-                    Latest
-                </a>
-            </#if>
+            <a class="ds_side-navigation__link<#if latest??>  ds_current</#if>" href="${link + 'latest/'}"<#if latest??> aria-current="page"</#if>>
+                Latest
+            </a>
         </li>
 
         <li class="ds_side-navigation__item">
@@ -41,16 +29,10 @@
             <ul class="ds_side-navigation__list">
                 <#list policyDetails as policyDetail>
                     <li class="ds_side-navigation__item">
-                        <#if document == policyDetail>
-                            <span <@langcompare policyDetail document/> class="ds_side-navigation__link  ds_current">
-                                ${policyDetail.title}
-                            </span>
-                        <#else>
-                            <@hst.link var="link" hippobean=policyDetail/>
-                            <a <@langcompare policyDetail document/> class="ds_side-navigation__link" href="${link}">
-                                ${policyDetail.title}
-                            </a>
-                        </#if>
+                        <@hst.link var="link" hippobean=policyDetail/>
+                        <a <@langcompare policyDetail document/> class="ds_side-navigation__link<#if document == policyDetail>  ds_current</#if>" href="${link}"<#if document == policyDetail> aria-current="page"</#if>>
+                            ${policyDetail.title}
+                        </a>
                     </li>
                 </#list>
             </ul>

@@ -33,7 +33,7 @@
                                 </#if>
                                 <#if item.selected || item.expanded>
                                     <li class="ds_site-navigation__item">
-                                        <a class="ds_site-navigation__link  ds_current" href="${href}">${item.name}</a>
+                                        <a class="ds_site-navigation__link  ds_current" href="${href}" aria-current="true">${item.name}</a>
                                     </li>
                                 <#else>
                                     <li class="ds_site-navigation__item">
@@ -71,7 +71,7 @@
                                     </#if>
                                     <#if item.selected || item.expanded>
                                         <li class="ds_site-navigation__item">
-                                            <a class="ds_site-navigation__link  ds_current" href="${href}">${item.name}</a>
+                                            <a class="ds_site-navigation__link  ds_current" href="${href}" aria-current="true">${item.name}</a>
                                         </li>
                                     <#else>
                                         <li class="ds_site-navigation__item">

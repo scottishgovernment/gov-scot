@@ -171,16 +171,9 @@
                                             <ul class="ds_side-navigation__list">
                                                 <#list chapter.documents as page>
                                                     <li class="ds_side-navigation__item">
-                                                        <#if page == currentPage>
-                                                            <span class="ds_side-navigation__link  ds_current">
-                                                                ${page.title}
-                                                            </span>
-                                                        <#else>
-                                                            <a class="ds_side-navigation__link" href="<@hst.link hippobean=page/>">
-                                                                ${page.title}
-                                                            </a>
-                                                        </#if>
-
+                                                        <a class="ds_side-navigation__link<#if page == currentPage>  ds_current</#if>" href="<@hst.link hippobean=page/>"<#if page == currentPage> aria-current="page"</#if>>
+                                                            ${page.title}
+                                                        </a>
                                                     </li>
                                                 </#list>
                                             </ul>
