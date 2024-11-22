@@ -69,6 +69,16 @@ const paymentForm = {
             spacesMessage.classList.remove('fully-hidden');
         }
 
+        if (orderCodeInput.value.indexOf('&') > -1) {
+            errors.push({message: 'Payment Reference cannot contain ampersand', element: orderCodeInput});
+
+            orderCodeInputQuestion.classList.add('ds_question--error');
+            orderCodeInput.classList.add('ds_input--error');
+
+            const spacesMessage = orderCodeInputQuestion.querySelector('#payment-ref-spaces');
+            spacesMessage.classList.remove('fully-hidden');
+        }
+
         // ref number is a required field
         // if (orderCodeInput.value.length === 0) {
         //     errors.push({message: 'Payment Reference is required', element: orderCodeInput});

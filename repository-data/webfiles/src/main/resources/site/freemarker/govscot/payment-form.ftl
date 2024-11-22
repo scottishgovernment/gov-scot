@@ -31,8 +31,12 @@
 
                     <div class="ds_question" data-threshold="80" data-module="ds-character-count">
                         <label class="ds_label" for="orderCode">Payment Reference</label>
-                        <p class="ds_hint-text">Customer ID - invoice number</p>
-                        <p class="ds_question__error-message  fully-hidden" id="payment-ref-spaces">Payment Reference cannot contain spaces</p>
+                        <p class="ds_hint-text">
+                            This may be your customer ID or invoice number.<br />
+                            Please enter one reference only with no spaces.<br />
+                            Additional invoice numbers can be entered in the description
+                        </p>
+                        <p class="ds_question__error-message  fully-hidden" id="payment-ref-spaces">Payment Reference cannot contain spaces or ampersand</p>
                         <input maxlength="64" class="ds_input" type="text" id="orderCode" name="orderCode" required>
                     </div>
 
