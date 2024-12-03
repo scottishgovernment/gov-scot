@@ -143,7 +143,7 @@
     govscot:youtubeContent: ''
     hippo:availability: []
     hippo:name: The Scottish Government
-    hippostd:holder: admin
+    hippostd:retainable: false
     hippostd:state: draft
     hippostd:tags: []
     hippostd:transferable: false

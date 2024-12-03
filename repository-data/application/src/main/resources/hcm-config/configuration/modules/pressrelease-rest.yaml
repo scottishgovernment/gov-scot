@@ -2,7 +2,7 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/pressrelease-rest:
       jcr:primaryType: hipposys:module
-      hipposys:className: scot.gov.pressreleases.PressReleasesModule
+      hipposys:className: scot.gov.pressreleases.PressReleaseModule
       hipposys:cmsonly: true
       /hippo:moduleconfig:
         jcr:primaryType: hipposys:moduleconfig
