@@ -1078,6 +1078,196 @@
     jcr:uuid: 573d4124-7548-4097-8b40-2b1ff91175bd
     govscot:publicationType: correspondence
     hippostd:foldertype: [new-publication-year-folder]
+    /2024:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 04e0ff3a-a6f5-4c9a-b74c-2fdc736d8560
+      hippostd:foldertype: [new-publication-month-folder]
+      /11:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['frontend:orderChildFolders', 'mix:versionable']
+        jcr:uuid: 5d78de17-4ece-47a0-97c7-bad063e9f44f
+        hippostd:foldertype: [new-publication-folder]
+        /voter-id-letter-to-uk-government:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'mix:versionable']
+          jcr:uuid: e074decd-c518-4895-9267-50ccd58508af
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: c307e397-0cdc-48d0-bfe6-7ce1f655457e
+            hippo:name: 'Voter ID: Letter to UK Government'
+            hippo:versionHistory: c96cb04a-ab2e-496d-8710-99a21ad00eaa
+            /index[1]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+              jcr:uuid: 9d93e820-c8f2-4544-b94a-6e87bde3520d
+              govscot:displayDate: 2024-11-17T00:01:00Z
+              govscot:externalId: 67376df201692c02b218696c
+              govscot:isbn: ''
+              govscot:metaDescription: Letter from Minister for Parliamentary Business
+                Jamie Hepburn to Rushanara Ali MP, Parliamentary Under Secretary of
+                State (Housing, Communities and Local Government).
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: voter-id-letter-to-uk-government
+              govscot:publicationDate: 2024-11-17T00:01:00Z
+              govscot:publicationType: correspondence
+              govscot:seoTitle: 'Voter ID: Letter to UK Government'
+              govscot:slug: voter-id-letter-to-uk-government
+              govscot:summary: Letter from Minister for Parliamentary Business Jamie
+                Hepburn to Rushanara Ali MP, Parliamentary Under Secretary of State
+                (Housing, Communities and Local Government).
+              govscot:title: 'Voter ID: Letter to UK Government'
+              govscot:updatedDate: 2024-11-15T15:56:51.815Z
+              hippo:availability: [preview]
+              hippo:name: 'Voter ID: Letter to UK Government'
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostd:tags: [Public Sector]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-17T00:05:02.091Z
+              hippostdpubwf:lastModificationDate: 2024-11-17T00:05:02.523Z
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: 907967b2-fefc-4ab8-b886-30245dd9aa4d
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p><strong>To:</strong> Parliamentary Under Secretary of State (Housing, Communities and Local Government)</p>
+                  <p><strong>From:</strong> Minister for Parliamentary Business</p>
+                  <p>&nbsp;</p>
+                  <p><strong>Voter ID</strong></p>
+                  <p>I understand that following a reshuffle of Ministerial responsibilities within your department you have assumed the lead on elections from Alex Norris MP. I recently had a very constructive meeting with Mr Norris, in which we discussed a range of elections topics, and I look forward to meeting you soon, and to working together on areas of shared interest to voters across the United Kingdom.&nbsp;</p>
+                  <p>One matter that Mr Norris and I agreed on is to reconvene as soon as possible the Inter-Ministerial Group on Elections and Registration, which provides a particularly useful forum to discuss issues of common interest across the four nations. I look forward to meeting you at that, and to discussions with Ministerial colleagues from across all Governments.&nbsp;&nbsp;</p>
+                  <p>In the meantime, I note that MPs will vote next Wednesday 13 November on changes the UK Government has brought forward to expand the list of IDs which can be used at UK Parliamentary elections to include the Scottish National Entitlement Card and the HM Forces Identity Card. While these additions are welcome, I continue to be concerned about the impact that the previous UK Government’s introduction of Voter ID has had on voters at UK General Elections.&nbsp;</p>
+                  <p>The Electoral Commission’s recent report on voter ID at the 2024 General Election raised several issues of concern. Of particular note is the finding that 4% of people who said they did not vote at the election stated their decision was related to the voter ID requirement. This confirms the view expressed by the Scottish Government, and others at the time of the changes, that it did indeed discourage some people from voting. The Commission also noted that of the people who tried to vote at a polling station, 0.08% were not able to because of the ID requirement. Although these numbers are small, anyone losing a vote is of concern, and furthermore no one knows how many did not vote due to not having relevant ID, or not knowing if they did. Tellingly, turnout on 4th July was 59.8%; down from 67.3% in 2019.&nbsp;&nbsp;</p>
+                  <p>You will be aware that the Scottish Government has not introduced voter ID for Scottish Parliament and local government elections. We remain strongly opposed to it and concerned about its impact on democracy by creating an unnecessary barrier to voting and disenfranchising some of our citizens. Furthermore, we are left with a concern that if voters in the Scottish Parliament election in May 2026 have the impression that voter ID is required for that election (even though it is not), they may be discouraged from voting. I have raised that concern directly with the Electoral Commission and I hope they will be able to mitigate it to some extent with their public awareness campaigns in the run up to the 2026 election.&nbsp;&nbsp;</p>
+                  <p>Of course, the best way of mitigating that particular concern and more fundamentally of removing those barriers to participation in the democratic process is for the Voter ID requirements to be scrapped. I hope this is something you might consider proposing as a policy change to your colleagues in the UK Government.&nbsp;</p>
+                  <p>I look forward to discussing this and other matters when we meet.&nbsp;&nbsp;</p>
+                  <p><strong>&nbsp;</strong></p>
+                  <p><strong>JAMIE HEPBURN</strong></p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+            /index[2]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: 56e2275f-5ec3-4f07-9dbc-be2c996c5e7b
+              govscot:displayDate: 2024-11-17T00:01:00Z
+              govscot:externalId: 67376df201692c02b218696c
+              govscot:isbn: ''
+              govscot:metaDescription: Letter from Minister for Parliamentary Business
+                Jamie Hepburn to Rushanara Ali MP, Parliamentary Under Secretary of
+                State (Housing, Communities and Local Government).
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: voter-id-letter-to-uk-government
+              govscot:publicationDate: 2024-11-17T00:01:00Z
+              govscot:publicationType: correspondence
+              govscot:seoTitle: 'Voter ID: Letter to UK Government'
+              govscot:slug: voter-id-letter-to-uk-government
+              govscot:summary: Letter from Minister for Parliamentary Business Jamie
+                Hepburn to Rushanara Ali MP, Parliamentary Under Secretary of State
+                (Housing, Communities and Local Government).
+              govscot:title: 'Voter ID: Letter to UK Government'
+              govscot:updatedDate: 2024-11-15T15:56:51.815Z
+              hippo:availability: []
+              hippo:name: 'Voter ID: Letter to UK Government'
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostd:tags: [Public Sector]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-17T00:05:02.091Z
+              hippostdpubwf:lastModificationDate: 2024-11-17T00:05:02.409Z
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: 907967b2-fefc-4ab8-b886-30245dd9aa4d
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p><strong>To:</strong> Parliamentary Under Secretary of State (Housing, Communities and Local Government)</p>
+                  <p><strong>From:</strong> Minister for Parliamentary Business</p>
+                  <p>&nbsp;</p>
+                  <p><strong>Voter ID</strong></p>
+                  <p>I understand that following a reshuffle of Ministerial responsibilities within your department you have assumed the lead on elections from Alex Norris MP. I recently had a very constructive meeting with Mr Norris, in which we discussed a range of elections topics, and I look forward to meeting you soon, and to working together on areas of shared interest to voters across the United Kingdom.&nbsp;</p>
+                  <p>One matter that Mr Norris and I agreed on is to reconvene as soon as possible the Inter-Ministerial Group on Elections and Registration, which provides a particularly useful forum to discuss issues of common interest across the four nations. I look forward to meeting you at that, and to discussions with Ministerial colleagues from across all Governments.&nbsp;&nbsp;</p>
+                  <p>In the meantime, I note that MPs will vote next Wednesday 13 November on changes the UK Government has brought forward to expand the list of IDs which can be used at UK Parliamentary elections to include the Scottish National Entitlement Card and the HM Forces Identity Card. While these additions are welcome, I continue to be concerned about the impact that the previous UK Government’s introduction of Voter ID has had on voters at UK General Elections.&nbsp;</p>
+                  <p>The Electoral Commission’s recent report on voter ID at the 2024 General Election raised several issues of concern. Of particular note is the finding that 4% of people who said they did not vote at the election stated their decision was related to the voter ID requirement. This confirms the view expressed by the Scottish Government, and others at the time of the changes, that it did indeed discourage some people from voting. The Commission also noted that of the people who tried to vote at a polling station, 0.08% were not able to because of the ID requirement. Although these numbers are small, anyone losing a vote is of concern, and furthermore no one knows how many did not vote due to not having relevant ID, or not knowing if they did. Tellingly, turnout on 4th July was 59.8%; down from 67.3% in 2019.&nbsp;&nbsp;</p>
+                  <p>You will be aware that the Scottish Government has not introduced voter ID for Scottish Parliament and local government elections. We remain strongly opposed to it and concerned about its impact on democracy by creating an unnecessary barrier to voting and disenfranchising some of our citizens. Furthermore, we are left with a concern that if voters in the Scottish Parliament election in May 2026 have the impression that voter ID is required for that election (even though it is not), they may be discouraged from voting. I have raised that concern directly with the Electoral Commission and I hope they will be able to mitigate it to some extent with their public awareness campaigns in the run up to the 2026 election.&nbsp;&nbsp;</p>
+                  <p>Of course, the best way of mitigating that particular concern and more fundamentally of removing those barriers to participation in the democratic process is for the Voter ID requirements to be scrapped. I hope this is something you might consider proposing as a policy change to your colleagues in the UK Government.&nbsp;</p>
+                  <p>I look forward to discussing this and other matters when we meet.&nbsp;&nbsp;</p>
+                  <p><strong>&nbsp;</strong></p>
+                  <p><strong>JAMIE HEPBURN</strong></p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+            /index[3]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: d794da2f-d14e-4935-8b5b-644c8e8b1e4c
+              govscot:displayDate: 2024-11-17T00:01:00Z
+              govscot:externalId: 67376df201692c02b218696c
+              govscot:isbn: ''
+              govscot:metaDescription: Letter from Minister for Parliamentary Business
+                Jamie Hepburn to Rushanara Ali MP, Parliamentary Under Secretary of
+                State (Housing, Communities and Local Government).
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:policyTags:
+                type: double
+                value: []
+              govscot:prglooslug: voter-id-letter-to-uk-government
+              govscot:publicationDate: 2024-11-17T00:01:00Z
+              govscot:publicationType: correspondence
+              govscot:seoTitle: 'Voter ID: Letter to UK Government'
+              govscot:slug: voter-id-letter-to-uk-government
+              govscot:summary: Letter from Minister for Parliamentary Business Jamie
+                Hepburn to Rushanara Ali MP, Parliamentary Under Secretary of State
+                (Housing, Communities and Local Government).
+              govscot:title: 'Voter ID: Letter to UK Government'
+              govscot:updatedDate: 2024-11-15T15:56:51.815Z
+              hippo:availability: [live]
+              hippo:name: 'Voter ID: Letter to UK Government'
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostd:tags: [Public Sector]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-17T00:05:02.091Z
+              hippostdpubwf:lastModificationDate: 2024-11-17T00:05:02.523Z
+              hippostdpubwf:lastModifiedBy: system
+              hippostdpubwf:publicationDate: 2024-11-17T00:05:02.704Z
+              hippotranslation:id: 907967b2-fefc-4ab8-b886-30245dd9aa4d
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p><strong>To:</strong> Parliamentary Under Secretary of State (Housing, Communities and Local Government)</p>
+                  <p><strong>From:</strong> Minister for Parliamentary Business</p>
+                  <p>&nbsp;</p>
+                  <p><strong>Voter ID</strong></p>
+                  <p>I understand that following a reshuffle of Ministerial responsibilities within your department you have assumed the lead on elections from Alex Norris MP. I recently had a very constructive meeting with Mr Norris, in which we discussed a range of elections topics, and I look forward to meeting you soon, and to working together on areas of shared interest to voters across the United Kingdom.&nbsp;</p>
+                  <p>One matter that Mr Norris and I agreed on is to reconvene as soon as possible the Inter-Ministerial Group on Elections and Registration, which provides a particularly useful forum to discuss issues of common interest across the four nations. I look forward to meeting you at that, and to discussions with Ministerial colleagues from across all Governments.&nbsp;&nbsp;</p>
+                  <p>In the meantime, I note that MPs will vote next Wednesday 13 November on changes the UK Government has brought forward to expand the list of IDs which can be used at UK Parliamentary elections to include the Scottish National Entitlement Card and the HM Forces Identity Card. While these additions are welcome, I continue to be concerned about the impact that the previous UK Government’s introduction of Voter ID has had on voters at UK General Elections.&nbsp;</p>
+                  <p>The Electoral Commission’s recent report on voter ID at the 2024 General Election raised several issues of concern. Of particular note is the finding that 4% of people who said they did not vote at the election stated their decision was related to the voter ID requirement. This confirms the view expressed by the Scottish Government, and others at the time of the changes, that it did indeed discourage some people from voting. The Commission also noted that of the people who tried to vote at a polling station, 0.08% were not able to because of the ID requirement. Although these numbers are small, anyone losing a vote is of concern, and furthermore no one knows how many did not vote due to not having relevant ID, or not knowing if they did. Tellingly, turnout on 4th July was 59.8%; down from 67.3% in 2019.&nbsp;&nbsp;</p>
+                  <p>You will be aware that the Scottish Government has not introduced voter ID for Scottish Parliament and local government elections. We remain strongly opposed to it and concerned about its impact on democracy by creating an unnecessary barrier to voting and disenfranchising some of our citizens. Furthermore, we are left with a concern that if voters in the Scottish Parliament election in May 2026 have the impression that voter ID is required for that election (even though it is not), they may be discouraged from voting. I have raised that concern directly with the Electoral Commission and I hope they will be able to mitigate it to some extent with their public awareness campaigns in the run up to the 2026 election.&nbsp;&nbsp;</p>
+                  <p>Of course, the best way of mitigating that particular concern and more fundamentally of removing those barriers to participation in the democratic process is for the Voter ID requirements to be scrapped. I hope this is something you might consider proposing as a policy change to your colleagues in the UK Government.&nbsp;</p>
+                  <p>I look forward to discussing this and other matters when we meet.&nbsp;&nbsp;</p>
+                  <p><strong>&nbsp;</strong></p>
+                  <p><strong>JAMIE HEPBURN</strong></p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-page]
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
     /2021:
       jcr:primaryType: hippostd:folder
       jcr:mixinTypes: ['mix:versionable']
@@ -1109,6 +1299,503 @@
       jcr:mixinTypes: ['mix:versionable']
       jcr:uuid: bd43343e-7d82-49b1-b8b9-3a7c9878ab14
       hippostd:foldertype: [new-publication-month-folder]
+      /11:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['frontend:orderChildFolders', 'mix:versionable']
+        jcr:uuid: a43e898c-0af0-45de-a7bc-eeec9b15ac1c
+        hippostd:foldertype: [new-speech-or-statement-folder]
+        /social-enterprise-scotland-summit-first-ministers-speech:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'mix:versionable']
+          jcr:uuid: 2544320d-ba4b-412f-ad88-bbffb0ead817
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: d613f74e-6629-49b4-8fd3-50afd5e84bfd
+            hippo:name: 'Social Enterprise Scotland Summit: First Minister''s speech'
+            hippo:versionHistory: d82c72a9-54ec-4133-ae32-16e165c87846
+            /index[1]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+              jcr:uuid: 617d78c3-fc87-4dca-bf40-95a656666ebf
+              govscot:displayDate: 2024-11-07T17:31:00Z
+              govscot:externalId: 672cf95101692c02b21787c0
+              govscot:isbn: ''
+              govscot:metaDescription: First Minister John Swinney's speech at the
+                Social Enterprise Scotland Summit at the Surgeons Quarter Quincentenary
+                Conference Centre on Thursday 7 November.
+              govscot:policyTags: [5808b67565a26906cc73e659, 5a2a6642b637f10e84ce8b17,
+                5af1b1a857c59a1688287ddb]
+              govscot:prglooslug: social-enterprise-scotland-summit-first-ministers-speech
+              govscot:publicationDate: 2024-11-07T17:31:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: 'Social Enterprise Scotland Summit: First Minister''s
+                speech'
+              govscot:slug: social-enterprise-scotland-summit-first-ministers-speech
+              govscot:summary: First Minister John Swinney's speech at the Social
+                Enterprise Scotland Summit at the Surgeons Quarter Quincentenary Conference
+                Centre on Thursday 7 November.
+              govscot:title: 'Social Enterprise Scotland Summit: First Minister''s
+                speech'
+              govscot:updatedDate: 2024-11-07T17:31:37.135Z
+              hippo:availability: [preview]
+              hippo:name: 'Social Enterprise Scotland Summit: First Minister''s speech'
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostd:tags: [First Minister, Public Sector, Economy]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-13T15:50:07.508Z
+              hippostdpubwf:lastModificationDate: 2024-11-13T15:50:07.918Z
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: 688f7ae9-a724-4d85-9beb-c65e2f744937
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Good afternoon everyone.</p>
+                  <p>It has been a great joy for me to watch the development and growth of the social enterprise sector. As I look out at this gathering today, it rather speaks for itself of the formidable strength that the sector has acquired over the years.</p>
+                  <p>I want to express first of all my thanks to all of you for the contribution you have made to Scottish society and to the Scottish economy, and for the vision you represent, which very closely aligns with the vision I have for Scottish society and the Scottish economy. I will share more on that in the course of my contribution today.</p>
+                  <p>Over the course of my parliamentary life, I have had a deep engagement with the social enterprise movement. When I was liberated from office as Deputy First Minister – voluntarily I might add – a year past March, my door was beaten down very quickly by Chris and Douglas to encourage me to take up a role as the Convenor of the Cross-Party Group on Social Enterprise.</p>
+                  <p>I really hoped that would be a longstanding commitment that I could give to the movement, to continue to provide some stewardship to the movement. That plan went hopelessly wrong because of my rather abrupt return to ministerial office, an office that I did not in all honesty really think I would have the privilege of holding.</p>
+                  <p>When I launched my bid to become leader of the my party, where did I go to do that? I went to the Grassmarket Community Project. Why? As I set out in the opening remarks I made to that event, I invited people to come to the Grassmarket Community Project because it spoke to who I am. It spoke about my values. It spoke about the fact that we have to offer hope to people in our society to allow them to make a contribution to our society and we also must be prepared to do business differently to how we have done it.</p>
+                  <p>It was a source of absolute privilege for me to go to the Grassmarket Community Project in a bid for the party leadership. I use that example to illustrate to you that as I go through the enormous privilege of being First Minister of Scotland, I carry with me the sentiment that drew me to the Grassmarket project.</p>
+                  <p>It is about that desire to try to find a space, a growing space, in Scottish society for this movement to reach people and make an impact on people’s lives, to open up opportunities for people and make a substantial economic and social contribution in every aspect of what you can do within our society.</p>
+                  <p>I want to make sure I do everything I can as First Minister to try to enable that to be the case as we take a course through many of the challenging times that lie in front of us. Please be assured that the social enterprise enthusiast that you knew before I became First Minister remains a social enterprise enthusiast now that I am the First Minister. I want to try to do all&nbsp; I can to help and to nurture the growth and the development of this sector.</p>
+                  <p>Why is that important? It is important because we are at a really quite pivotal moment in our society at the present moment. I delivered a speech a few weeks ago where I talked about the effects of what has been, in my view, a long, dark economic winter. It has been characterised by the implications of Brexit, of Covid, of the war in Europe, the resulting energy crisis and the inflation shock.</p>
+                  <p>Our communities have been through a long, dark economic winter, characterised also by enormous constraints in the public finances. That has made for very difficult choices for Government. It has made for very difficult choices for people in this room just now.</p>
+                  <p>I think we have reached a moment where we have to turn our back on the long, dark economic winter and start to focus on how to prepare the ground for spring.</p>
+                  <p>To be fair, the United Kingdom Government’s Budget from last week gives us some opportunities to plan for the spring. There are also some significant worries and anxieties that come with that Budget, not least of which is the implications of the increase in employers’ National Insurance contributions, which has a very real and tangible impact on the sustainability of many ventures in this room that are making a contribution to the delivery of public services.</p>
+                  <p>They are making a contribution to the delivery of the outcomes we achieve as a consequence of investment from public finances. We will feel a real strain from the increase in employers’ National Insurance contributions unless they are compensated for.</p>
+                  <p>That is one of the substantive points we are taking up with the United Kingdom Government arising out of the Budget about how far will there be scope for ensuring that organisations are compensated for the impact of the contributions increasing. That can be and will be a significant factor this sector has to wrestle with in the same with as the public sector has to wrestle with it.</p>
+                  <p>I do think we are at a moment where we have an opportunity to invest and to prepare for the spring that lies ahead. What does that look like for me? Well, for me, it is about ensuring we focus relentlessly on the four priorities that I have set out in Government. That we focus on the eradication of child poverty. That we focus on growing the economy. That we focus on making the transition to net zero. And that we focus on strengthening our public services so we deliver better outcomes for people in our society.</p>
+                  <p>In each of these different priorities, I do not want you to think in any way, shape or form that I have four compartments in my mind and that some how these are four distinct priorities and there is never any crossover between. For me, these four priorities are absolutely, totally, utterly interlinked.</p>
+                  <p>We need to create a strong and vibrant economy to make sure that we generate the revenues to invest in our transition to net zero, to the work of eradicating child poverty and making sure our public services meet the needs of the public.</p>
+                  <p>We also need to be prepared to reform the way our public services operate to ensure we deliver better outcomes for the people of Scotland. One of the central themes of the Programme for Government and its focus on eradicating child poverty is about recognising the importance of supporting families to overcome the challenges they face. To find ways to ensure that we provide the assistance, conveniently and supportively, to families to help them to navigate their way out of the challenges they face and to make an economic contribution.</p>
+                  <p>As I look at these four priorities and the links between them, I am constantly struck by the contribution that this sector can make to delivering the innovation that is required to ensure we are much more effectively achieving those objectives.</p>
+                  <p>I worry about public services being delivered in a transactional fashion. I worry that we do not truly engage public services around families and individuals to make sure that the best outcomes can be achieved. I often experience, from my constituency experience directly, but also from the privilege I have of visiting ventures and seeing constructive work around the country, that social enterprises have a structure and an ethos and a set of values underpinning them that enables us to maximise the effectiveness of those ventures in transforming the lives of individuals in our society.</p>
+                  <p>What I have got to try to do as First Minister, and believe me, I am trying to give this leadership to public services, is to enable a change to the ways of thinking and the ways of operating to try to create the space where we can make that more formidable impact on outcomes for people in our society.</p>
+                  <p>Only if we create that space will we be able to achieve the vision that I have set out to you this afternoon.</p>
+                  <p>What I am committed to is making sure that as we take forward our agenda, we work with you to create the space to enable you to make more of an impact on improving outcomes for people in our society and to help us to achieve those priorities of eradicating child poverty, strengthening the economy, delivering on our journey to net zero and improving our public services.</p>
+                  <p>In my view there is plenty of space for us to apply innovation to ensure that can be the case.</p>
+                  <p>That is easier said than done. There are so many institutional barriers, there are so many attitudes of mind, there are so many different obstacles to reforming the way in which we operate to ensure that we can achieve that vision. My commitment to you is to make sure that we achieve that journey because the improvement in the life chances and the opportunities for people in Scotland will be dependent on the success of that journey.</p>
+                  <p>Later on today there will be an event at Parliament that will be the presentation of the social enterprise awards in Scotland. I just want to take a moment to wish everybody that is taking part in those awards tonight every success.</p>
+                  <p>I had the great pleasure of being at the awards last year to see the Isle of Skye Ferry Community Interest Company being crowned the social enterprise of the year. If you have not used the Isle of Skye ferry, it is an absolutely magnificent dive into the past of Scotland and a wonderfully sustainable venture which is a magnificent journey.</p>
+                  <p>It is an illustration of the point I am making. That venture could have ended when the Skye Bridge was constructed, but tenacious people gave leadership that created an economic opportunity, which created a mystical approach to the island of Skye, and a wonderful and beautiful journey. It creates employment and community benefit into the bargain. What is not to like about all the positive impact of that?</p>
+                  <p>In so many different ventures around the country, you will be involved in exactly that. I am sure that tonight’s awards ceremony in the Scottish Parliament will be a happy and joyful occasion, and one that gives you an opportunity to celebrate the strength of the sector.</p>
+                  <p>In so doing, please be assured that the First Minister of Scotland and his Government are absolutely on your side, wanting to create the pathways that will allow you to make a greater contribution to Scottish society. If we succeed in that journey, Scotland will be better as a consequence.</p>
+              /govscot:topics[1]:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 384e34ce-a038-4973-a0c3-99f573e269bc
+              /govscot:topics[2]:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+            /index[2]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: bb7bd21d-7955-480e-9326-94adce5d53db
+              govscot:displayDate: 2024-11-07T17:31:00Z
+              govscot:externalId: 672cf95101692c02b21787c0
+              govscot:isbn: ''
+              govscot:metaDescription: First Minister John Swinney's speech at the
+                Social Enterprise Scotland Summit at the Surgeons Quarter Quincentenary
+                Conference Centre on Thursday 7 November.
+              govscot:policyTags: [5808b67565a26906cc73e659, 5a2a6642b637f10e84ce8b17,
+                5af1b1a857c59a1688287ddb]
+              govscot:prglooslug: social-enterprise-scotland-summit-first-ministers-speech
+              govscot:publicationDate: 2024-11-07T17:31:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: 'Social Enterprise Scotland Summit: First Minister''s
+                speech'
+              govscot:slug: social-enterprise-scotland-summit-first-ministers-speech
+              govscot:summary: First Minister John Swinney's speech at the Social
+                Enterprise Scotland Summit at the Surgeons Quarter Quincentenary Conference
+                Centre on Thursday 7 November.
+              govscot:title: 'Social Enterprise Scotland Summit: First Minister''s
+                speech'
+              govscot:updatedDate: 2024-11-07T17:31:37.135Z
+              hippo:availability: []
+              hippo:name: 'Social Enterprise Scotland Summit: First Minister''s speech'
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostd:tags: [First Minister, Public Sector, Economy]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-13T15:50:07.508Z
+              hippostdpubwf:lastModificationDate: 2024-11-14T10:10:09.915Z
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: 688f7ae9-a724-4d85-9beb-c65e2f744937
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Good afternoon everyone.</p>
+                  <p>It has been a great joy for me to watch the development and growth of the social enterprise sector. As I look out at this gathering today, it rather speaks for itself of the formidable strength that the sector has acquired over the years.</p>
+                  <p>I want to express first of all my thanks to all of you for the contribution you have made to Scottish society and to the Scottish economy, and for the vision you represent, which very closely aligns with the vision I have for Scottish society and the Scottish economy. I will share more on that in the course of my contribution today.</p>
+                  <p>Over the course of my parliamentary life, I have had a deep engagement with the social enterprise movement. When I was liberated from office as Deputy First Minister – voluntarily I might add – a year past March, my door was beaten down very quickly by Chris and Douglas to encourage me to take up a role as the Convenor of the Cross-Party Group on Social Enterprise.</p>
+                  <p>I really hoped that would be a longstanding commitment that I could give to the movement, to continue to provide some stewardship to the movement. That plan went hopelessly wrong because of my rather abrupt return to ministerial office, an office that I did not in all honesty really think I would have the privilege of holding.</p>
+                  <p>When I launched my bid to become leader of the my party, where did I go to do that? I went to the Grassmarket Community Project. Why? As I set out in the opening remarks I made to that event, I invited people to come to the Grassmarket Community Project because it spoke to who I am. It spoke about my values. It spoke about the fact that we have to offer hope to people in our society to allow them to make a contribution to our society and we also must be prepared to do business differently to how we have done it.</p>
+                  <p>It was a source of absolute privilege for me to go to the Grassmarket Community Project in a bid for the party leadership. I use that example to illustrate to you that as I go through the enormous privilege of being First Minister of Scotland, I carry with me the sentiment that drew me to the Grassmarket project.</p>
+                  <p>It is about that desire to try to find a space, a growing space, in Scottish society for this movement to reach people and make an impact on people’s lives, to open up opportunities for people and make a substantial economic and social contribution in every aspect of what you can do within our society.</p>
+                  <p>I want to make sure I do everything I can as First Minister to try to enable that to be the case as we take a course through many of the challenging times that lie in front of us. Please be assured that the social enterprise enthusiast that you knew before I became First Minister remains a social enterprise enthusiast now that I am the First Minister. I want to try to do all&nbsp; I can to help and to nurture the growth and the development of this sector.</p>
+                  <p>Why is that important? It is important because we are at a really quite pivotal moment in our society at the present moment. I delivered a speech a few weeks ago where I talked about the effects of what has been, in my view, a long, dark economic winter. It has been characterised by the implications of Brexit, of Covid, of the war in Europe, the resulting energy crisis and the inflation shock.</p>
+                  <p>Our communities have been through a long, dark economic winter, characterised also by enormous constraints in the public finances. That has made for very difficult choices for Government. It has made for very difficult choices for people in this room just now.</p>
+                  <p>I think we have reached a moment where we have to turn our back on the long, dark economic winter and start to focus on how to prepare the ground for spring.</p>
+                  <p>To be fair, the United Kingdom Government’s Budget from last week gives us some opportunities to plan for the spring. There are also some significant worries and anxieties that come with that Budget, not least of which is the implications of the increase in employers’ National Insurance contributions, which has a very real and tangible impact on the sustainability of many ventures in this room that are making a contribution to the delivery of public services.</p>
+                  <p>They are making a contribution to the delivery of the outcomes we achieve as a consequence of investment from public finances. We will feel a real strain from the increase in employers’ National Insurance contributions unless they are compensated for.</p>
+                  <p>That is one of the substantive points we are taking up with the United Kingdom Government arising out of the Budget about how far will there be scope for ensuring that organisations are compensated for the impact of the contributions increasing. That can be and will be a significant factor this sector has to wrestle with in the same with as the public sector has to wrestle with it.</p>
+                  <p>I do think we are at a moment where we have an opportunity to invest and to prepare for the spring that lies ahead. What does that look like for me? Well, for me, it is about ensuring we focus relentlessly on the four priorities that I have set out in Government. That we focus on the eradication of child poverty. That we focus on growing the economy. That we focus on making the transition to net zero. And that we focus on strengthening our public services so we deliver better outcomes for people in our society.</p>
+                  <p>In each of these different priorities, I do not want you to think in any way, shape or form that I have four compartments in my mind and that some how these are four distinct priorities and there is never any crossover between. For me, these four priorities are absolutely, totally, utterly interlinked.</p>
+                  <p>We need to create a strong and vibrant economy to make sure that we generate the revenues to invest in our transition to net zero, to the work of eradicating child poverty and making sure our public services meet the needs of the public.</p>
+                  <p>We also need to be prepared to reform the way our public services operate to ensure we deliver better outcomes for the people of Scotland. One of the central themes of the Programme for Government and its focus on eradicating child poverty is about recognising the importance of supporting families to overcome the challenges they face. To find ways to ensure that we provide the assistance, conveniently and supportively, to families to help them to navigate their way out of the challenges they face and to make an economic contribution.</p>
+                  <p>As I look at these four priorities and the links between them, I am constantly struck by the contribution that this sector can make to delivering the innovation that is required to ensure we are much more effectively achieving those objectives.</p>
+                  <p>I worry about public services being delivered in a transactional fashion. I worry that we do not truly engage public services around families and individuals to make sure that the best outcomes can be achieved. I often experience, from my constituency experience directly, but also from the privilege I have of visiting ventures and seeing constructive work around the country, that social enterprises have a structure and an ethos and a set of values underpinning them that enables us to maximise the effectiveness of those ventures in transforming the lives of individuals in our society.</p>
+                  <p>What I have got to try to do as First Minister, and believe me, I am trying to give this leadership to public services, is to enable a change to the ways of thinking and the ways of operating to try to create the space where we can make that more formidable impact on outcomes for people in our society.</p>
+                  <p>Only if we create that space will we be able to achieve the vision that I have set out to you this afternoon.</p>
+                  <p>What I am committed to is making sure that as we take forward our agenda, we work with you to create the space to enable you to make more of an impact on improving outcomes for people in our society and to help us to achieve those priorities of eradicating child poverty, strengthening the economy, delivering on our journey to net zero and improving our public services.</p>
+                  <p>In my view there is plenty of space for us to apply innovation to ensure that can be the case.</p>
+                  <p>That is easier said than done. There are so many institutional barriers, there are so many attitudes of mind, there are so many different obstacles to reforming the way in which we operate to ensure that we can achieve that vision. My commitment to you is to make sure that we achieve that journey because the improvement in the life chances and the opportunities for people in Scotland will be dependent on the success of that journey.</p>
+                  <p>Later on today there will be an event at Parliament that will be the presentation of the social enterprise awards in Scotland. I just want to take a moment to wish everybody that is taking part in those awards tonight every success.</p>
+                  <p>I had the great pleasure of being at the awards last year to see the Isle of Skye Ferry Community Interest Company being crowned the social enterprise of the year. If you have not used the Isle of Skye ferry, it is an absolutely magnificent dive into the past of Scotland and a wonderfully sustainable venture which is a magnificent journey.</p>
+                  <p>It is an illustration of the point I am making. That venture could have ended when the Skye Bridge was constructed, but tenacious people gave leadership that created an economic opportunity, which created a mystical approach to the island of Skye, and a wonderful and beautiful journey. It creates employment and community benefit into the bargain. What is not to like about all the positive impact of that?</p>
+                  <p>In so many different ventures around the country, you will be involved in exactly that. I am sure that tonight’s awards ceremony in the Scottish Parliament will be a happy and joyful occasion, and one that gives you an opportunity to celebrate the strength of the sector.</p>
+                  <p>In so doing, please be assured that the First Minister of Scotland and his Government are absolutely on your side, wanting to create the pathways that will allow you to make a greater contribution to Scottish society. If we succeed in that journey, Scotland will be better as a consequence.</p>
+              /govscot:topics[1]:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 384e34ce-a038-4973-a0c3-99f573e269bc
+              /govscot:topics[2]:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+            /index[3]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: 490a5747-241f-4f0b-bd29-71f629581411
+              govscot:displayDate: 2024-11-07T17:31:00Z
+              govscot:externalId: 672cf95101692c02b21787c0
+              govscot:isbn: ''
+              govscot:metaDescription: First Minister John Swinney's speech at the
+                Social Enterprise Scotland Summit at the Surgeons Quarter Quincentenary
+                Conference Centre on Thursday 7 November.
+              govscot:policyTags: [5808b67565a26906cc73e659, 5a2a6642b637f10e84ce8b17,
+                5af1b1a857c59a1688287ddb]
+              govscot:prglooslug: social-enterprise-scotland-summit-first-ministers-speech
+              govscot:publicationDate: 2024-11-07T17:31:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: 'Social Enterprise Scotland Summit: First Minister''s
+                speech'
+              govscot:slug: social-enterprise-scotland-summit-first-ministers-speech
+              govscot:summary: First Minister John Swinney's speech at the Social
+                Enterprise Scotland Summit at the Surgeons Quarter Quincentenary Conference
+                Centre on Thursday 7 November.
+              govscot:title: 'Social Enterprise Scotland Summit: First Minister''s
+                speech'
+              govscot:updatedDate: 2024-11-07T17:31:37.135Z
+              hippo:availability: [live]
+              hippo:name: 'Social Enterprise Scotland Summit: First Minister''s speech'
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostd:tags: [First Minister, Public Sector, Economy]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-13T15:50:07.508Z
+              hippostdpubwf:lastModificationDate: 2024-11-13T15:50:07.918Z
+              hippostdpubwf:lastModifiedBy: system
+              hippostdpubwf:publicationDate: 2024-11-13T15:50:08.130Z
+              hippotranslation:id: 688f7ae9-a724-4d85-9beb-c65e2f744937
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Good afternoon everyone.</p>
+                  <p>It has been a great joy for me to watch the development and growth of the social enterprise sector. As I look out at this gathering today, it rather speaks for itself of the formidable strength that the sector has acquired over the years.</p>
+                  <p>I want to express first of all my thanks to all of you for the contribution you have made to Scottish society and to the Scottish economy, and for the vision you represent, which very closely aligns with the vision I have for Scottish society and the Scottish economy. I will share more on that in the course of my contribution today.</p>
+                  <p>Over the course of my parliamentary life, I have had a deep engagement with the social enterprise movement. When I was liberated from office as Deputy First Minister – voluntarily I might add – a year past March, my door was beaten down very quickly by Chris and Douglas to encourage me to take up a role as the Convenor of the Cross-Party Group on Social Enterprise.</p>
+                  <p>I really hoped that would be a longstanding commitment that I could give to the movement, to continue to provide some stewardship to the movement. That plan went hopelessly wrong because of my rather abrupt return to ministerial office, an office that I did not in all honesty really think I would have the privilege of holding.</p>
+                  <p>When I launched my bid to become leader of the my party, where did I go to do that? I went to the Grassmarket Community Project. Why? As I set out in the opening remarks I made to that event, I invited people to come to the Grassmarket Community Project because it spoke to who I am. It spoke about my values. It spoke about the fact that we have to offer hope to people in our society to allow them to make a contribution to our society and we also must be prepared to do business differently to how we have done it.</p>
+                  <p>It was a source of absolute privilege for me to go to the Grassmarket Community Project in a bid for the party leadership. I use that example to illustrate to you that as I go through the enormous privilege of being First Minister of Scotland, I carry with me the sentiment that drew me to the Grassmarket project.</p>
+                  <p>It is about that desire to try to find a space, a growing space, in Scottish society for this movement to reach people and make an impact on people’s lives, to open up opportunities for people and make a substantial economic and social contribution in every aspect of what you can do within our society.</p>
+                  <p>I want to make sure I do everything I can as First Minister to try to enable that to be the case as we take a course through many of the challenging times that lie in front of us. Please be assured that the social enterprise enthusiast that you knew before I became First Minister remains a social enterprise enthusiast now that I am the First Minister. I want to try to do all&nbsp; I can to help and to nurture the growth and the development of this sector.</p>
+                  <p>Why is that important? It is important because we are at a really quite pivotal moment in our society at the present moment. I delivered a speech a few weeks ago where I talked about the effects of what has been, in my view, a long, dark economic winter. It has been characterised by the implications of Brexit, of Covid, of the war in Europe, the resulting energy crisis and the inflation shock.</p>
+                  <p>Our communities have been through a long, dark economic winter, characterised also by enormous constraints in the public finances. That has made for very difficult choices for Government. It has made for very difficult choices for people in this room just now.</p>
+                  <p>I think we have reached a moment where we have to turn our back on the long, dark economic winter and start to focus on how to prepare the ground for spring.</p>
+                  <p>To be fair, the United Kingdom Government’s Budget from last week gives us some opportunities to plan for the spring. There are also some significant worries and anxieties that come with that Budget, not least of which is the implications of the increase in employers’ National Insurance contributions, which has a very real and tangible impact on the sustainability of many ventures in this room that are making a contribution to the delivery of public services.</p>
+                  <p>They are making a contribution to the delivery of the outcomes we achieve as a consequence of investment from public finances. We will feel a real strain from the increase in employers’ National Insurance contributions unless they are compensated for.</p>
+                  <p>That is one of the substantive points we are taking up with the United Kingdom Government arising out of the Budget about how far will there be scope for ensuring that organisations are compensated for the impact of the contributions increasing. That can be and will be a significant factor this sector has to wrestle with in the same with as the public sector has to wrestle with it.</p>
+                  <p>I do think we are at a moment where we have an opportunity to invest and to prepare for the spring that lies ahead. What does that look like for me? Well, for me, it is about ensuring we focus relentlessly on the four priorities that I have set out in Government. That we focus on the eradication of child poverty. That we focus on growing the economy. That we focus on making the transition to net zero. And that we focus on strengthening our public services so we deliver better outcomes for people in our society.</p>
+                  <p>In each of these different priorities, I do not want you to think in any way, shape or form that I have four compartments in my mind and that some how these are four distinct priorities and there is never any crossover between. For me, these four priorities are absolutely, totally, utterly interlinked.</p>
+                  <p>We need to create a strong and vibrant economy to make sure that we generate the revenues to invest in our transition to net zero, to the work of eradicating child poverty and making sure our public services meet the needs of the public.</p>
+                  <p>We also need to be prepared to reform the way our public services operate to ensure we deliver better outcomes for the people of Scotland. One of the central themes of the Programme for Government and its focus on eradicating child poverty is about recognising the importance of supporting families to overcome the challenges they face. To find ways to ensure that we provide the assistance, conveniently and supportively, to families to help them to navigate their way out of the challenges they face and to make an economic contribution.</p>
+                  <p>As I look at these four priorities and the links between them, I am constantly struck by the contribution that this sector can make to delivering the innovation that is required to ensure we are much more effectively achieving those objectives.</p>
+                  <p>I worry about public services being delivered in a transactional fashion. I worry that we do not truly engage public services around families and individuals to make sure that the best outcomes can be achieved. I often experience, from my constituency experience directly, but also from the privilege I have of visiting ventures and seeing constructive work around the country, that social enterprises have a structure and an ethos and a set of values underpinning them that enables us to maximise the effectiveness of those ventures in transforming the lives of individuals in our society.</p>
+                  <p>What I have got to try to do as First Minister, and believe me, I am trying to give this leadership to public services, is to enable a change to the ways of thinking and the ways of operating to try to create the space where we can make that more formidable impact on outcomes for people in our society.</p>
+                  <p>Only if we create that space will we be able to achieve the vision that I have set out to you this afternoon.</p>
+                  <p>What I am committed to is making sure that as we take forward our agenda, we work with you to create the space to enable you to make more of an impact on improving outcomes for people in our society and to help us to achieve those priorities of eradicating child poverty, strengthening the economy, delivering on our journey to net zero and improving our public services.</p>
+                  <p>In my view there is plenty of space for us to apply innovation to ensure that can be the case.</p>
+                  <p>That is easier said than done. There are so many institutional barriers, there are so many attitudes of mind, there are so many different obstacles to reforming the way in which we operate to ensure that we can achieve that vision. My commitment to you is to make sure that we achieve that journey because the improvement in the life chances and the opportunities for people in Scotland will be dependent on the success of that journey.</p>
+                  <p>Later on today there will be an event at Parliament that will be the presentation of the social enterprise awards in Scotland. I just want to take a moment to wish everybody that is taking part in those awards tonight every success.</p>
+                  <p>I had the great pleasure of being at the awards last year to see the Isle of Skye Ferry Community Interest Company being crowned the social enterprise of the year. If you have not used the Isle of Skye ferry, it is an absolutely magnificent dive into the past of Scotland and a wonderfully sustainable venture which is a magnificent journey.</p>
+                  <p>It is an illustration of the point I am making. That venture could have ended when the Skye Bridge was constructed, but tenacious people gave leadership that created an economic opportunity, which created a mystical approach to the island of Skye, and a wonderful and beautiful journey. It creates employment and community benefit into the bargain. What is not to like about all the positive impact of that?</p>
+                  <p>In so many different ventures around the country, you will be involved in exactly that. I am sure that tonight’s awards ceremony in the Scottish Parliament will be a happy and joyful occasion, and one that gives you an opportunity to celebrate the strength of the sector.</p>
+                  <p>In so doing, please be assured that the First Minister of Scotland and his Government are absolutely on your side, wanting to create the pathways that will allow you to make a greater contribution to Scottish society. If we succeed in that journey, Scotland will be better as a consequence.</p>
+              /govscot:topics[1]:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 384e34ce-a038-4973-a0c3-99f573e269bc
+              /govscot:topics[2]:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6d3396ca-e5d9-410b-a1a1-5d547d36a7e7
+        /first-ministers-speech-agriscot-2024:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'mix:versionable']
+          jcr:uuid: bf2d18af-1922-4cf9-a5b3-5e7fd6147144
+          hippostd:foldertype: []
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: 7c159a6a-c238-4b95-a2ed-49d6c1c66a0a
+            hippo:name: First Minister's speech - AgriScot 2024
+            hippo:versionHistory: b8a67043-713c-46c6-8c79-7e29e62ed4af
+            /index[1]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+              jcr:uuid: 362fd6a2-e07a-45cb-ab8b-d033da04eacf
+              govscot:displayDate: 2024-11-13T15:44:00Z
+              govscot:externalId: 6734c95501692c02b2184089
+              govscot:isbn: ''
+              govscot:metaDescription: First Minister John Swinney's speech at the
+                AgriScot conference in Edinburgh on 13 November 2024.
+              govscot:policyTags: [5c531b50ae22913228434ae9]
+              govscot:prglooslug: first-ministers-speech-agriscot-2024
+              govscot:publicationDate: 2024-11-13T15:44:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: First Minister's speech - AgriScot 2024
+              govscot:slug: first-ministers-speech-agriscot-2024
+              govscot:summary: First Minister John Swinney's speech at the AgriScot
+                conference in Edinburgh on 13 November 2024.
+              govscot:title: First Minister's speech - AgriScot 2024
+              govscot:updatedDate: 2024-11-13T16:23:40.924Z
+              hippo:availability: [preview]
+              hippo:name: First Minister's speech - AgriScot 2024
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostd:tags: [First Minister, Farming and rural]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-13T15:50:08.516Z
+              hippostdpubwf:lastModificationDate: 2024-11-14T10:10:10.666Z
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: b74dd6ef-79cc-4b96-933d-017f39f8f7b7
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you very much, Robert, and you'll not be surprised to hear that I'm standing in front of you just now thinking, well, where on Earth to start after that long list of priorities. So Martin… but I'll start in the proper place, which is to thank you, Robert, for your leadership of AgriScot.</p>
+                  <p>As you said earlier on, it's the first time I've been to this event. I'm delighted to be the first First Minister to come to this event, and I can see readily the significance of this as a gathering place of the agricultural sector, but also a place where much business can be done to support and enhance the development of Scottish agriculture.</p>
+                  <p>So thank you very much for your leadership in developing and strengthening this event over the years and my good wishes to Gilmour in the leadership that he takes forward as well.</p>
+                  <p>It’s wonderful to be with you today, and it’s a welcome opportunity to express my warmest thanks to Martin Kennedy for his leadership of the National Farmers Union, and I intend to be at the NFUS Conference in the spring at which Martin will stand down and I’ll have an opportunity to reflect on his leadership – but from my perspective it’s been a real pleasure working with Martin over many years, as his Member of Parliament for the last 27 years, but then also to see at first hand the leadership he’s been able to deliver to farming in Scotland. I’ve greatly valued the advice and the counsel that Martin has given to me over the years and the deep understanding of the questions that are before us today.</p>
+                  <p>Before I move on from talking about presidents of the National Farmers Union - it's an absolute delight to see John Cameron of Balbuthie here, a previous serving President of the National Farmers Union, and John, it's absolutely a delight to see here today, and I hope I can catch a word with you before I leave this morning.</p>
+                  <p>As Martin said and as I've commented I have been a member of parliament, representing Perthshire for 27 years and in those 27 years I have learnt at first hand and listened carefully to the challenges and the issues that face the farming industry in my community, and then tried to reflect that in the priorities I have taken forward – either as an MP arguing the case for farming, or alternatively to take those decisions supportively within government over the years I have had the privilege to serve.</p>
+                  <p>So when I spoke to the QMS breakfast gathering at the Highland Show in June, I made a point that I hope was reassuring to the industry: when I walked in the door of Bute House, 27 years of experience of representing farming communities walked in with me, and influences the decision making I take forward.</p>
+                  <p>That will not mean that I can do everything you would want me to do, but I do give you the assurance that I recognise the importance of a sustainable future for agriculture in Scotland, because so much of the future in Scotland and the way in which we steward and utilise our land depends on there being a sustainable future for farming within Scotland. &nbsp;&nbsp;</p>
+                  <p>That approach underpins the approach taken forward by me as First Minister but also by my Cabinet Secretary for Rural Affairs Mairi Gougeon and my Minister for Agriculture Jim Fairlie. And it shapes the way in which we take forward the priorities of the of the Scottish Government in relation to farming. So what I want to do at the outset of my comments is to make clear to you the significance I attach to the work of the farming industry within Scotland, you are significant players in delivering economic growth.</p>
+                  <p>You are the foundations of some of our greatest export success stories as a country, our land. And that has to be reflected in the approach that is taken forward in public policy, and it will be the approach that is taken forward in the priorities of my government.</p>
+                  <p>I'm going to come on to talk in a moment about the implications of the autumn budget that Martin referred to, but I want to set the role of Scottish agriculture within the wider priorities of my government.</p>
+                  <p>In September, I set out my Programme for Government and my priorities to eradicate child poverty and to raise living standards by growing the Scottish economy. I want to grow the Scottish economy while we take action to protect the planet through our action on climate change, and I want to do all of that to improve our vital public services.</p>
+                  <p>So when you hear me talking about the work to eradicate child poverty as the focal point of the government's agenda, I don't want you to think of that as some compartmentalized policy commitment. It's at the heart of growing our economy, of ensuring that we generate the wealth in our society to support the public services that will enable us to eradicate child poverty and to take the measures necessary to invest to support climate action within our society, an action that is absolutely essential given the challenges that we face.</p>
+                  <p>So agriculture has an essential role to play in realizing those priorities, particularly when it comes to producing high quality food sustainably, to growing our economy and to protecting our planet. Agriculture is, after all, at the heart of the rural economy. You operate businesses that contribute to one of our most successful sectors, food and drink, and we must cherish and nurture that in the years that lie ahead. But I also acknowledge that the challenges facing the industry are incredibly significant. At this particular moment, we face a twin nature and climate crisis. The 2023 state of nature Scotland report found that monitored species have declined on average, by 15 per cent over the last 30 years.</p>
+                  <p>Last year, a study by the James Hutton Institute found that Scotland's climate is changing faster than anticipated, and you know better than me what that means from working on the front line of mitigating and adapting to climate change on your land.</p>
+                  <p>Martin made reference to some of the challenges that we faced in my own locality, and I met with Martin at the side of a field at Dowally in Perthshire last October, just over a year past October, a field where the River Tay had not burst its banks and had flooded at any moment earlier in recorded history, before December. That field, full of crop that was just about to be harvested, was flooded. The crop was completely destroyed by the flooding of the River Tay in an exceptional weather event on the seventh of October 2023.</p>
+                  <p>One illustration of the breaching of our expectations about the effect of the climate that was illustrated in my own community, which had a huge cost for the farmers that were involved in producing that crop.</p>
+                  <p>So I use that to illustrate the fact that there are issues that we have to confront which are not just about the farming industry there, but wider issues in public policy, where we have to take the action to recognize the effect of climate change in our society and to address those.</p>
+                  <p>But those are not the only pressures and uncertainties that you face - you face uncertainties arising from inflation and higher energy prices. I've been stunned by the effect on livelihoods in the farming sector by the spike in energy prices following the invasion of Ukraine, that has unimaginable proportions, which make the viability of farming enterprises significantly challenging. And all of these contribute to the very real strain on farmers and producers, which is why it's important you hear from me, and you will also hear it from Jim Fairlie regularly, of the appreciation that we have for the excellent work undertaken by RSABI in providing practical, emotional and financial support to people working within Scottish agriculture - which is deeply valued at this time.</p>
+                  <p>Recently, I have been reflecting on many of these challenges which have an effect on our economy, the effect of inflation, higher energy prices, the pressures on cost of living, the challenges of actually being able to support economic activity in our society. And I've reflected in recent weeks that the last few years, the combination of COVID, the effect of inflation, energy prices and all that's gone with it, has had the feeling of being a bit of a long, dark winter.</p>
+                  <p>After nearly two decades of economic volatility, here is one thing that we know - the climate and the economy are not going to remedy themselves. So therefore, what I appeal today for is a spirit of working together between government and the industry to prepare the ground for what I hope is a spring that can emerge from this difficult and challenging, dark winter. And there is so much strength within the agriculture sector in Scotland upon which we can build.</p>
+                  <p>The winners of the Scottish agriculture awards, organized in partnership with AgriScot, demonstrate the wealth of excellence and innovation that farmers and food producers in Scotland offer our nation and the world. You play a huge role in preserving traditional practices in tune with nature, like crofting and organic farming, while leading the way in forging new ones, using technology and innovation to improve your productivity and profitability.</p>
+                  <p>And so much of what the government tries to do through the support that we take forward for institutions that the James Hutton Institute and Moredun is about working with you in creating the new technologies and the advances that can be commercialised to enhance and strengthen the economic prospects and opportunities of the farming industry.</p>
+                  <p>But I do recognize the significant uncertainties that you face up to, and I now want to reflect on those in relation to the challenges arising out of the United Kingdom budget in the autumn.</p>
+                  <p>Funding certainty and market stability for farmers is absolutely crucial in the period that lies ahead, and I want to do all that I can to try to ensure that that is the case in Scotland.&nbsp; But the implications of the UK budget are very significant for the agricultural industry and very significant for the Scottish Government into the bargain.</p>
+                  <p>Funding for agriculture and marine activity in Scotland, which was previously ring fenced, has now been baselined into the Scottish block of funding. This means that the full amount allocated for 24-25 - £620 million for agriculture and £14 million for marine is to be included in the block grant. Now one of the comments Martin made was that this meant that all of this funding was now firmly and exclusively in Scottish government hands, and to an extent that point is correct.</p>
+                  <p>But what has to be recognized is that the Scottish block grant is significantly affected by decisions that are taken by the United Kingdom Government. So the overall size of the Scottish block grant is a product of changes in public expenditure undertaken by the United Kingdom Government, and that is now going to have an effect on the size of the resources available to the Scottish Government, which includes that funding which was previously ring fenced for agricultural support.</p>
+                  <p>So if there is a decline, for example, in the support available for agricultural support in England that will have a damaging effect and a negative effect on the Scottish block grant as a consequence of the application of the Barnett formula from the United Kingdom government.</p>
+                  <p>Everybody thinks the Barnett formula is a thing that generates, in all circumstances, increases in public expenditure. If a budget is reduced in England, where there is 100% compatibility factors in Scotland, the Scottish budget will go down as a consequence. So there are significant uncertainties that arise as a consequence of the decision that has been taken by the UK Government. And while I of course welcome that funding allocations will be a Scottish Government decision, unfortunately, it's clear this announcement comes with some very big catches that I've set out.</p>
+                  <p>Instead of long term funding certainty that was available during our EU membership, we now have an inadequate settlement within the United Kingdom. The announcement made by the UK Government on the 30th of October was for one year only. So however much I would like to deliver a multi annual settlement, we only have financial information for one financial year. And given the point I've just made about the uncertainty about the implications in our budget - that will constrain the ability of the Scottish Government to set out the multi annual certainty that everyone in the industry would like us to do, because we have no line of sight on any composition of our budget beyond the 31st of March 2026, at this particular stage.</p>
+                  <p>In the spring, there will be a UK Spending Review, which will give us, we think, three years of funding certainty. And obviously, we will provide as much certainty as we possibly can do in ensuring that the industry knows where it stands. In addition to those points, the UK government must provide clarity on the future of financial support for the sector, after confirming in the autumn budget the agricultural funding will be baselined.</p>
+                  <p>Because we are not yet certain what will be the direction of travel on agricultural support in England, and those challenges could have significant implications for Scotland. So as we take forward the work and the dialog in relation to the budget, I assure all of you, National Farmers Union especially, of the willingness of the Scottish Government to engage about the contents of the Scottish Government budget, and to ensure that the issues and the concerns of the agricultural sector are strongly reflected in the budget that we bring forward.</p>
+                  <p>I also make clear to you that the £46 million that the government has utilised for short term purposes to ensure that we could deal with the effects of inflation in other areas of the budget, will be returned to this portfolio for use in the agriculture sector, and I give you that cast iron commitment on behalf of the Scottish Government.</p>
+                  <p>One of the other issues that emerged from the UK Government's budget was the changes to remove exemptions of agricultural property relief for inheritance tax, and I know that this is already having a chilling effect on many businesses within the farming sector in Scotland and the UK Government must urgently commit to undertake and publish impact assessments of its budget proposals on farmers and crofters in Scotland.</p>
+                  <p>Fundamentally, my government would want to see a tax system that supports rather than hinders orderly succession planning and the transfer of land to the next generation of custodians. We are disappointed that the chancellor chose not to work with the Scottish Government before acting on this sensitive matter. This arbitrary decision has led to intolerable levels of stress, worry and uncertainty for you all, which clearly could have been avoided.</p>
+                  <p>And the implications of these changes are very significant for the orderly succession planning within the industry. And what I pledge today, we’ll have a debate in Parliament on the subject this afternoon, which has been called by the Conservatives, and the government will take an approach which will be to work constructively to revise these proposals. Because these proposals cannot be allowed to stand, because of the damaging effect they will have, and the ability of there to be an orderly approach to succession planning within farm family farms within Scotland. This has been ill thought through, and it needs to be reconsidered.</p>
+                  <p>So the implications of the United Kingdom budget do not give us the freedom to act on our own behalf. There are significant and negative implications, and we must work in dialog with the UK Government to address some of those questions.</p>
+                  <p>There are, of course, some specific decisions that we can take in Scotland, the 2024 payment strategy is on track with basic payments and greening payments, having started in September as planned. Over 16,000 businesses have received over 377 million pounds to date, and we are providing as much certainty and confidence as we can, and the Scottish Government will certainly be focused on delivering the four priorities that I set out of eradicating child poverty, growing the economy, protecting the planet and supporting our public services.</p>
+                  <p>And of course, right at the heart of that lies the important contribution that agriculture can make in that respect. Martin, in his speech, set out six questions for us to wrestle with. On the first question about funding, I've set out the challenges we have about line of sight in the future and the cast iron commitment about the return of the 46 million pounds to support the industry. I hope I have demonstrated to you my willingness and my commitment, secondly, to listen to people who work on the land. I have done it for 27 years, and I intend to do it in the future.</p>
+                  <p>On species management. thirdly, we will, of course, engage constructively with the farming sector on these questions, and there are points of statute that have to be followed in all of these processes. But again, we want to have a pragmatic approach to engagement on these questions. On the Bovine EID issue, if Martin will forgive me, I'll take that away, or I might defer it to Jim Fairlie for him to talk about.</p>
+                  <p>On public procurement. Many of these decisions are influenced by public policy choices at a local level that I get a row for interfering in. But I do endorse the sentiment that Martin expresses. &nbsp;If we've got the highest quality produce in our country or in the world, why on earth is it not on the plates of our school children in our schools? Pretty straightforward to me. So I'll evangelize about that on your behalf, where I possibly can do.</p>
+                  <p>And lastly, on the national park question in Galloway. I know this is sensitive. I know there's different opinions and the government is consulting upon that, and we'll come to conclusions once we've heard all of the impact, the contribution from everyone around the country.</p>
+                  <p>What I hope as we look forward, is that despite all the challenges that we face and across every sector of public policy, there are enormous challenges that we face in a very uncertain and volatile world. What I assure you about it today is that I cherish and value the role of Scottish agriculture. I acknowledge its significance and its centrality in the stewardship and the management of land in our country, in the generation of high quality produce upon which some of the significant taxation strengths of the United Kingdom are based, not least the whisky industry. And we must take steps to ensure that we secure the future of Scottish agriculture, and that will be upper most in my mind as First Minister, as I work with my ministers to deliver the best future I can for Scotland, and for Scottish agriculture. Thank you very much.</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 37330aaf-877f-40d4-9ec0-54f6c1f352e3
+            /index[2]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: 2166fbf5-7107-4935-9ffa-73cf323b0977
+              govscot:displayDate: 2024-11-13T15:44:00Z
+              govscot:externalId: 6734c95501692c02b2184089
+              govscot:isbn: ''
+              govscot:metaDescription: First Minister John Swinney's speech at the
+                AgriScot conference in Edinburgh on 13 November 2024.
+              govscot:policyTags: [5c531b50ae22913228434ae9]
+              govscot:prglooslug: first-ministers-speech-agriscot-2024
+              govscot:publicationDate: 2024-11-13T15:44:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: First Minister's speech - AgriScot 2024
+              govscot:slug: first-ministers-speech-agriscot-2024
+              govscot:summary: First Minister John Swinney's speech at the AgriScot
+                conference in Edinburgh on 13 November 2024.
+              govscot:title: First Minister's speech - AgriScot 2024
+              govscot:updatedDate: 2024-11-13T16:23:40.924Z
+              hippo:availability: []
+              hippo:name: First Minister's speech - AgriScot 2024
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostd:tags: [First Minister, Farming and rural]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-13T15:50:08.516Z
+              hippostdpubwf:lastModificationDate: 2024-11-15T12:30:05.250Z
+              hippostdpubwf:lastModifiedBy: system
+              hippotranslation:id: b74dd6ef-79cc-4b96-933d-017f39f8f7b7
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you very much, Robert, and you'll not be surprised to hear that I'm standing in front of you just now thinking, well, where on Earth to start after that long list of priorities. So Martin… but I'll start in the proper place, which is to thank you, Robert, for your leadership of AgriScot.</p>
+                  <p>As you said earlier on, it's the first time I've been to this event. I'm delighted to be the first First Minister to come to this event, and I can see readily the significance of this as a gathering place of the agricultural sector, but also a place where much business can be done to support and enhance the development of Scottish agriculture.</p>
+                  <p>So thank you very much for your leadership in developing and strengthening this event over the years and my good wishes to Gilmour in the leadership that he takes forward as well.</p>
+                  <p>It’s wonderful to be with you today, and it’s a welcome opportunity to express my warmest thanks to Martin Kennedy for his leadership of the National Farmers Union, and I intend to be at the NFUS Conference in the spring at which Martin will stand down and I’ll have an opportunity to reflect on his leadership – but from my perspective it’s been a real pleasure working with Martin over many years, as his Member of Parliament for the last 27 years, but then also to see at first hand the leadership he’s been able to deliver to farming in Scotland. I’ve greatly valued the advice and the counsel that Martin has given to me over the years and the deep understanding of the questions that are before us today.</p>
+                  <p>Before I move on from talking about presidents of the National Farmers Union - it's an absolute delight to see John Cameron of Balbuthie here, a previous serving President of the National Farmers Union, and John, it's absolutely a delight to see here today, and I hope I can catch a word with you before I leave this morning.</p>
+                  <p>As Martin said and as I've commented I have been a member of parliament, representing Perthshire for 27 years and in those 27 years I have learnt at first hand and listened carefully to the challenges and the issues that face the farming industry in my community, and then tried to reflect that in the priorities I have taken forward – either as an MP arguing the case for farming, or alternatively to take those decisions supportively within government over the years I have had the privilege to serve.</p>
+                  <p>So when I spoke to the QMS breakfast gathering at the Highland Show in June, I made a point that I hope was reassuring to the industry: when I walked in the door of Bute House, 27 years of experience of representing farming communities walked in with me, and influences the decision making I take forward.</p>
+                  <p>That will not mean that I can do everything you would want me to do, but I do give you the assurance that I recognise the importance of a sustainable future for agriculture in Scotland, because so much of the future in Scotland and the way in which we steward and utilise our land depends on there being a sustainable future for farming within Scotland. &nbsp;&nbsp;</p>
+                  <p>That approach underpins the approach taken forward by me as First Minister but also by my Cabinet Secretary for Rural Affairs Mairi Gougeon and my Minister for Agriculture Jim Fairlie. And it shapes the way in which we take forward the priorities of the of the Scottish Government in relation to farming. So what I want to do at the outset of my comments is to make clear to you the significance I attach to the work of the farming industry within Scotland, you are significant players in delivering economic growth.</p>
+                  <p>You are the foundations of some of our greatest export success stories as a country, our land. And that has to be reflected in the approach that is taken forward in public policy, and it will be the approach that is taken forward in the priorities of my government.</p>
+                  <p>I'm going to come on to talk in a moment about the implications of the autumn budget that Martin referred to, but I want to set the role of Scottish agriculture within the wider priorities of my government.</p>
+                  <p>In September, I set out my Programme for Government and my priorities to eradicate child poverty and to raise living standards by growing the Scottish economy. I want to grow the Scottish economy while we take action to protect the planet through our action on climate change, and I want to do all of that to improve our vital public services.</p>
+                  <p>So when you hear me talking about the work to eradicate child poverty as the focal point of the government's agenda, I don't want you to think of that as some compartmentalized policy commitment. It's at the heart of growing our economy, of ensuring that we generate the wealth in our society to support the public services that will enable us to eradicate child poverty and to take the measures necessary to invest to support climate action within our society, an action that is absolutely essential given the challenges that we face.</p>
+                  <p>So agriculture has an essential role to play in realizing those priorities, particularly when it comes to producing high quality food sustainably, to growing our economy and to protecting our planet. Agriculture is, after all, at the heart of the rural economy. You operate businesses that contribute to one of our most successful sectors, food and drink, and we must cherish and nurture that in the years that lie ahead. But I also acknowledge that the challenges facing the industry are incredibly significant. At this particular moment, we face a twin nature and climate crisis. The 2023 state of nature Scotland report found that monitored species have declined on average, by 15 per cent over the last 30 years.</p>
+                  <p>Last year, a study by the James Hutton Institute found that Scotland's climate is changing faster than anticipated, and you know better than me what that means from working on the front line of mitigating and adapting to climate change on your land.</p>
+                  <p>Martin made reference to some of the challenges that we faced in my own locality, and I met with Martin at the side of a field at Dowally in Perthshire last October, just over a year past October, a field where the River Tay had not burst its banks and had flooded at any moment earlier in recorded history, before December. That field, full of crop that was just about to be harvested, was flooded. The crop was completely destroyed by the flooding of the River Tay in an exceptional weather event on the seventh of October 2023.</p>
+                  <p>One illustration of the breaching of our expectations about the effect of the climate that was illustrated in my own community, which had a huge cost for the farmers that were involved in producing that crop.</p>
+                  <p>So I use that to illustrate the fact that there are issues that we have to confront which are not just about the farming industry there, but wider issues in public policy, where we have to take the action to recognize the effect of climate change in our society and to address those.</p>
+                  <p>But those are not the only pressures and uncertainties that you face - you face uncertainties arising from inflation and higher energy prices. I've been stunned by the effect on livelihoods in the farming sector by the spike in energy prices following the invasion of Ukraine, that has unimaginable proportions, which make the viability of farming enterprises significantly challenging. And all of these contribute to the very real strain on farmers and producers, which is why it's important you hear from me, and you will also hear it from Jim Fairlie regularly, of the appreciation that we have for the excellent work undertaken by RSABI in providing practical, emotional and financial support to people working within Scottish agriculture - which is deeply valued at this time.</p>
+                  <p>Recently, I have been reflecting on many of these challenges which have an effect on our economy, the effect of inflation, higher energy prices, the pressures on cost of living, the challenges of actually being able to support economic activity in our society. And I've reflected in recent weeks that the last few years, the combination of COVID, the effect of inflation, energy prices and all that's gone with it, has had the feeling of being a bit of a long, dark winter.</p>
+                  <p>After nearly two decades of economic volatility, here is one thing that we know - the climate and the economy are not going to remedy themselves. So therefore, what I appeal today for is a spirit of working together between government and the industry to prepare the ground for what I hope is a spring that can emerge from this difficult and challenging, dark winter. And there is so much strength within the agriculture sector in Scotland upon which we can build.</p>
+                  <p>The winners of the Scottish agriculture awards, organized in partnership with AgriScot, demonstrate the wealth of excellence and innovation that farmers and food producers in Scotland offer our nation and the world. You play a huge role in preserving traditional practices in tune with nature, like crofting and organic farming, while leading the way in forging new ones, using technology and innovation to improve your productivity and profitability.</p>
+                  <p>And so much of what the government tries to do through the support that we take forward for institutions that the James Hutton Institute and Moredun is about working with you in creating the new technologies and the advances that can be commercialised to enhance and strengthen the economic prospects and opportunities of the farming industry.</p>
+                  <p>But I do recognize the significant uncertainties that you face up to, and I now want to reflect on those in relation to the challenges arising out of the United Kingdom budget in the autumn.</p>
+                  <p>Funding certainty and market stability for farmers is absolutely crucial in the period that lies ahead, and I want to do all that I can to try to ensure that that is the case in Scotland.&nbsp; But the implications of the UK budget are very significant for the agricultural industry and very significant for the Scottish Government into the bargain.</p>
+                  <p>Funding for agriculture and marine activity in Scotland, which was previously ring fenced, has now been baselined into the Scottish block of funding. This means that the full amount allocated for 24-25 - £620 million for agriculture and £14 million for marine is to be included in the block grant. Now one of the comments Martin made was that this meant that all of this funding was now firmly and exclusively in Scottish government hands, and to an extent that point is correct.</p>
+                  <p>But what has to be recognized is that the Scottish block grant is significantly affected by decisions that are taken by the United Kingdom Government. So the overall size of the Scottish block grant is a product of changes in public expenditure undertaken by the United Kingdom Government, and that is now going to have an effect on the size of the resources available to the Scottish Government, which includes that funding which was previously ring fenced for agricultural support.</p>
+                  <p>So if there is a decline, for example, in the support available for agricultural support in England that will have a damaging effect and a negative effect on the Scottish block grant as a consequence of the application of the Barnett formula from the United Kingdom government.</p>
+                  <p>Everybody thinks the Barnett formula is a thing that generates, in all circumstances, increases in public expenditure. If a budget is reduced in England, where there is 100% compatibility factors in Scotland, the Scottish budget will go down as a consequence. So there are significant uncertainties that arise as a consequence of the decision that has been taken by the UK Government. And while I of course welcome that funding allocations will be a Scottish Government decision, unfortunately, it's clear this announcement comes with some very big catches that I've set out.</p>
+                  <p>Instead of long term funding certainty that was available during our EU membership, we now have an inadequate settlement within the United Kingdom. The announcement made by the UK Government on the 30th of October was for one year only. So however much I would like to deliver a multi annual settlement, we only have financial information for one financial year. And given the point I've just made about the uncertainty about the implications in our budget - that will constrain the ability of the Scottish Government to set out the multi annual certainty that everyone in the industry would like us to do, because we have no line of sight on any composition of our budget beyond the 31st of March 2026, at this particular stage.</p>
+                  <p>In the spring, there will be a UK Spending Review, which will give us, we think, three years of funding certainty. And obviously, we will provide as much certainty as we possibly can do in ensuring that the industry knows where it stands. In addition to those points, the UK government must provide clarity on the future of financial support for the sector, after confirming in the autumn budget the agricultural funding will be baselined.</p>
+                  <p>Because we are not yet certain what will be the direction of travel on agricultural support in England, and those challenges could have significant implications for Scotland. So as we take forward the work and the dialog in relation to the budget, I assure all of you, National Farmers Union especially, of the willingness of the Scottish Government to engage about the contents of the Scottish Government budget, and to ensure that the issues and the concerns of the agricultural sector are strongly reflected in the budget that we bring forward.</p>
+                  <p>I also make clear to you that the £46 million that the government has utilised for short term purposes to ensure that we could deal with the effects of inflation in other areas of the budget, will be returned to this portfolio for use in the agriculture sector, and I give you that cast iron commitment on behalf of the Scottish Government.</p>
+                  <p>One of the other issues that emerged from the UK Government's budget was the changes to remove exemptions of agricultural property relief for inheritance tax, and I know that this is already having a chilling effect on many businesses within the farming sector in Scotland and the UK Government must urgently commit to undertake and publish impact assessments of its budget proposals on farmers and crofters in Scotland.</p>
+                  <p>Fundamentally, my government would want to see a tax system that supports rather than hinders orderly succession planning and the transfer of land to the next generation of custodians. We are disappointed that the chancellor chose not to work with the Scottish Government before acting on this sensitive matter. This arbitrary decision has led to intolerable levels of stress, worry and uncertainty for you all, which clearly could have been avoided.</p>
+                  <p>And the implications of these changes are very significant for the orderly succession planning within the industry. And what I pledge today, we’ll have a debate in Parliament on the subject this afternoon, which has been called by the Conservatives, and the government will take an approach which will be to work constructively to revise these proposals. Because these proposals cannot be allowed to stand, because of the damaging effect they will have, and the ability of there to be an orderly approach to succession planning within farm family farms within Scotland. This has been ill thought through, and it needs to be reconsidered.</p>
+                  <p>So the implications of the United Kingdom budget do not give us the freedom to act on our own behalf. There are significant and negative implications, and we must work in dialog with the UK Government to address some of those questions.</p>
+                  <p>There are, of course, some specific decisions that we can take in Scotland, the 2024 payment strategy is on track with basic payments and greening payments, having started in September as planned. Over 16,000 businesses have received over 377 million pounds to date, and we are providing as much certainty and confidence as we can, and the Scottish Government will certainly be focused on delivering the four priorities that I set out of eradicating child poverty, growing the economy, protecting the planet and supporting our public services.</p>
+                  <p>And of course, right at the heart of that lies the important contribution that agriculture can make in that respect. Martin, in his speech, set out six questions for us to wrestle with. On the first question about funding, I've set out the challenges we have about line of sight in the future and the cast iron commitment about the return of the 46 million pounds to support the industry. I hope I have demonstrated to you my willingness and my commitment, secondly, to listen to people who work on the land. I have done it for 27 years, and I intend to do it in the future.</p>
+                  <p>On species management. thirdly, we will, of course, engage constructively with the farming sector on these questions, and there are points of statute that have to be followed in all of these processes. But again, we want to have a pragmatic approach to engagement on these questions. On the Bovine EID issue, if Martin will forgive me, I'll take that away, or I might defer it to Jim Fairlie for him to talk about.</p>
+                  <p>On public procurement. Many of these decisions are influenced by public policy choices at a local level that I get a row for interfering in. But I do endorse the sentiment that Martin expresses. &nbsp;If we've got the highest quality produce in our country or in the world, why on earth is it not on the plates of our school children in our schools? Pretty straightforward to me. So I'll evangelize about that on your behalf, where I possibly can do.</p>
+                  <p>And lastly, on the national park question in Galloway. I know this is sensitive. I know there's different opinions and the government is consulting upon that, and we'll come to conclusions once we've heard all of the impact, the contribution from everyone around the country.</p>
+                  <p>What I hope as we look forward, is that despite all the challenges that we face and across every sector of public policy, there are enormous challenges that we face in a very uncertain and volatile world. What I assure you about it today is that I cherish and value the role of Scottish agriculture. I acknowledge its significance and its centrality in the stewardship and the management of land in our country, in the generation of high quality produce upon which some of the significant taxation strengths of the United Kingdom are based, not least the whisky industry. And we must take steps to ensure that we secure the future of Scottish agriculture, and that will be upper most in my mind as First Minister, as I work with my ministers to deliver the best future I can for Scotland, and for Scottish agriculture. Thank you very much.</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 37330aaf-877f-40d4-9ec0-54f6c1f352e3
+            /index[3]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+              jcr:uuid: 9d99b11d-9a1d-4c9d-bdcd-989048fdd5ef
+              govscot:displayDate: 2024-11-13T15:44:00Z
+              govscot:externalId: 6734c95501692c02b2184089
+              govscot:isbn: ''
+              govscot:metaDescription: First Minister John Swinney's speech at the
+                AgriScot conference in Edinburgh on 13 November 2024.
+              govscot:policyTags: [5c531b50ae22913228434ae9]
+              govscot:prglooslug: first-ministers-speech-agriscot-2024
+              govscot:publicationDate: 2024-11-13T15:44:00Z
+              govscot:publicationType: speech-statement
+              govscot:seoTitle: First Minister's speech - AgriScot 2024
+              govscot:slug: first-ministers-speech-agriscot-2024
+              govscot:summary: First Minister John Swinney's speech at the AgriScot
+                conference in Edinburgh on 13 November 2024.
+              govscot:title: First Minister's speech - AgriScot 2024
+              govscot:updatedDate: 2024-11-13T16:23:40.924Z
+              hippo:availability: [live]
+              hippo:name: First Minister's speech - AgriScot 2024
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostd:tags: [First Minister, Farming and rural]
+              hippostdpubwf:createdBy: system
+              hippostdpubwf:creationDate: 2024-11-13T15:50:08.516Z
+              hippostdpubwf:lastModificationDate: 2024-11-14T10:10:10.666Z
+              hippostdpubwf:lastModifiedBy: system
+              hippostdpubwf:publicationDate: 2024-11-14T10:10:10.916Z
+              hippotranslation:id: b74dd6ef-79cc-4b96-933d-017f39f8f7b7
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Thank you very much, Robert, and you'll not be surprised to hear that I'm standing in front of you just now thinking, well, where on Earth to start after that long list of priorities. So Martin… but I'll start in the proper place, which is to thank you, Robert, for your leadership of AgriScot.</p>
+                  <p>As you said earlier on, it's the first time I've been to this event. I'm delighted to be the first First Minister to come to this event, and I can see readily the significance of this as a gathering place of the agricultural sector, but also a place where much business can be done to support and enhance the development of Scottish agriculture.</p>
+                  <p>So thank you very much for your leadership in developing and strengthening this event over the years and my good wishes to Gilmour in the leadership that he takes forward as well.</p>
+                  <p>It’s wonderful to be with you today, and it’s a welcome opportunity to express my warmest thanks to Martin Kennedy for his leadership of the National Farmers Union, and I intend to be at the NFUS Conference in the spring at which Martin will stand down and I’ll have an opportunity to reflect on his leadership – but from my perspective it’s been a real pleasure working with Martin over many years, as his Member of Parliament for the last 27 years, but then also to see at first hand the leadership he’s been able to deliver to farming in Scotland. I’ve greatly valued the advice and the counsel that Martin has given to me over the years and the deep understanding of the questions that are before us today.</p>
+                  <p>Before I move on from talking about presidents of the National Farmers Union - it's an absolute delight to see John Cameron of Balbuthie here, a previous serving President of the National Farmers Union, and John, it's absolutely a delight to see here today, and I hope I can catch a word with you before I leave this morning.</p>
+                  <p>As Martin said and as I've commented I have been a member of parliament, representing Perthshire for 27 years and in those 27 years I have learnt at first hand and listened carefully to the challenges and the issues that face the farming industry in my community, and then tried to reflect that in the priorities I have taken forward – either as an MP arguing the case for farming, or alternatively to take those decisions supportively within government over the years I have had the privilege to serve.</p>
+                  <p>So when I spoke to the QMS breakfast gathering at the Highland Show in June, I made a point that I hope was reassuring to the industry: when I walked in the door of Bute House, 27 years of experience of representing farming communities walked in with me, and influences the decision making I take forward.</p>
+                  <p>That will not mean that I can do everything you would want me to do, but I do give you the assurance that I recognise the importance of a sustainable future for agriculture in Scotland, because so much of the future in Scotland and the way in which we steward and utilise our land depends on there being a sustainable future for farming within Scotland. &nbsp;&nbsp;</p>
+                  <p>That approach underpins the approach taken forward by me as First Minister but also by my Cabinet Secretary for Rural Affairs Mairi Gougeon and my Minister for Agriculture Jim Fairlie. And it shapes the way in which we take forward the priorities of the of the Scottish Government in relation to farming. So what I want to do at the outset of my comments is to make clear to you the significance I attach to the work of the farming industry within Scotland, you are significant players in delivering economic growth.</p>
+                  <p>You are the foundations of some of our greatest export success stories as a country, our land. And that has to be reflected in the approach that is taken forward in public policy, and it will be the approach that is taken forward in the priorities of my government.</p>
+                  <p>I'm going to come on to talk in a moment about the implications of the autumn budget that Martin referred to, but I want to set the role of Scottish agriculture within the wider priorities of my government.</p>
+                  <p>In September, I set out my Programme for Government and my priorities to eradicate child poverty and to raise living standards by growing the Scottish economy. I want to grow the Scottish economy while we take action to protect the planet through our action on climate change, and I want to do all of that to improve our vital public services.</p>
+                  <p>So when you hear me talking about the work to eradicate child poverty as the focal point of the government's agenda, I don't want you to think of that as some compartmentalized policy commitment. It's at the heart of growing our economy, of ensuring that we generate the wealth in our society to support the public services that will enable us to eradicate child poverty and to take the measures necessary to invest to support climate action within our society, an action that is absolutely essential given the challenges that we face.</p>
+                  <p>So agriculture has an essential role to play in realizing those priorities, particularly when it comes to producing high quality food sustainably, to growing our economy and to protecting our planet. Agriculture is, after all, at the heart of the rural economy. You operate businesses that contribute to one of our most successful sectors, food and drink, and we must cherish and nurture that in the years that lie ahead. But I also acknowledge that the challenges facing the industry are incredibly significant. At this particular moment, we face a twin nature and climate crisis. The 2023 state of nature Scotland report found that monitored species have declined on average, by 15 per cent over the last 30 years.</p>
+                  <p>Last year, a study by the James Hutton Institute found that Scotland's climate is changing faster than anticipated, and you know better than me what that means from working on the front line of mitigating and adapting to climate change on your land.</p>
+                  <p>Martin made reference to some of the challenges that we faced in my own locality, and I met with Martin at the side of a field at Dowally in Perthshire last October, just over a year past October, a field where the River Tay had not burst its banks and had flooded at any moment earlier in recorded history, before December. That field, full of crop that was just about to be harvested, was flooded. The crop was completely destroyed by the flooding of the River Tay in an exceptional weather event on the seventh of October 2023.</p>
+                  <p>One illustration of the breaching of our expectations about the effect of the climate that was illustrated in my own community, which had a huge cost for the farmers that were involved in producing that crop.</p>
+                  <p>So I use that to illustrate the fact that there are issues that we have to confront which are not just about the farming industry there, but wider issues in public policy, where we have to take the action to recognize the effect of climate change in our society and to address those.</p>
+                  <p>But those are not the only pressures and uncertainties that you face - you face uncertainties arising from inflation and higher energy prices. I've been stunned by the effect on livelihoods in the farming sector by the spike in energy prices following the invasion of Ukraine, that has unimaginable proportions, which make the viability of farming enterprises significantly challenging. And all of these contribute to the very real strain on farmers and producers, which is why it's important you hear from me, and you will also hear it from Jim Fairlie regularly, of the appreciation that we have for the excellent work undertaken by RSABI in providing practical, emotional and financial support to people working within Scottish agriculture - which is deeply valued at this time.</p>
+                  <p>Recently, I have been reflecting on many of these challenges which have an effect on our economy, the effect of inflation, higher energy prices, the pressures on cost of living, the challenges of actually being able to support economic activity in our society. And I've reflected in recent weeks that the last few years, the combination of COVID, the effect of inflation, energy prices and all that's gone with it, has had the feeling of being a bit of a long, dark winter.</p>
+                  <p>After nearly two decades of economic volatility, here is one thing that we know - the climate and the economy are not going to remedy themselves. So therefore, what I appeal today for is a spirit of working together between government and the industry to prepare the ground for what I hope is a spring that can emerge from this difficult and challenging, dark winter. And there is so much strength within the agriculture sector in Scotland upon which we can build.</p>
+                  <p>The winners of the Scottish agriculture awards, organized in partnership with AgriScot, demonstrate the wealth of excellence and innovation that farmers and food producers in Scotland offer our nation and the world. You play a huge role in preserving traditional practices in tune with nature, like crofting and organic farming, while leading the way in forging new ones, using technology and innovation to improve your productivity and profitability.</p>
+                  <p>And so much of what the government tries to do through the support that we take forward for institutions that the James Hutton Institute and Moredun is about working with you in creating the new technologies and the advances that can be commercialised to enhance and strengthen the economic prospects and opportunities of the farming industry.</p>
+                  <p>But I do recognize the significant uncertainties that you face up to, and I now want to reflect on those in relation to the challenges arising out of the United Kingdom budget in the autumn.</p>
+                  <p>Funding certainty and market stability for farmers is absolutely crucial in the period that lies ahead, and I want to do all that I can to try to ensure that that is the case in Scotland.&nbsp; But the implications of the UK budget are very significant for the agricultural industry and very significant for the Scottish Government into the bargain.</p>
+                  <p>Funding for agriculture and marine activity in Scotland, which was previously ring fenced, has now been baselined into the Scottish block of funding. This means that the full amount allocated for 24-25 - £620 million for agriculture and £14 million for marine is to be included in the block grant. Now one of the comments Martin made was that this meant that all of this funding was now firmly and exclusively in Scottish government hands, and to an extent that point is correct.</p>
+                  <p>But what has to be recognized is that the Scottish block grant is significantly affected by decisions that are taken by the United Kingdom Government. So the overall size of the Scottish block grant is a product of changes in public expenditure undertaken by the United Kingdom Government, and that is now going to have an effect on the size of the resources available to the Scottish Government, which includes that funding which was previously ring fenced for agricultural support.</p>
+                  <p>So if there is a decline, for example, in the support available for agricultural support in England that will have a damaging effect and a negative effect on the Scottish block grant as a consequence of the application of the Barnett formula from the United Kingdom government.</p>
+                  <p>Everybody thinks the Barnett formula is a thing that generates, in all circumstances, increases in public expenditure. If a budget is reduced in England, where there is 100% compatibility factors in Scotland, the Scottish budget will go down as a consequence. So there are significant uncertainties that arise as a consequence of the decision that has been taken by the UK Government. And while I of course welcome that funding allocations will be a Scottish Government decision, unfortunately, it's clear this announcement comes with some very big catches that I've set out.</p>
+                  <p>Instead of long term funding certainty that was available during our EU membership, we now have an inadequate settlement within the United Kingdom. The announcement made by the UK Government on the 30th of October was for one year only. So however much I would like to deliver a multi annual settlement, we only have financial information for one financial year. And given the point I've just made about the uncertainty about the implications in our budget - that will constrain the ability of the Scottish Government to set out the multi annual certainty that everyone in the industry would like us to do, because we have no line of sight on any composition of our budget beyond the 31st of March 2026, at this particular stage.</p>
+                  <p>In the spring, there will be a UK Spending Review, which will give us, we think, three years of funding certainty. And obviously, we will provide as much certainty as we possibly can do in ensuring that the industry knows where it stands. In addition to those points, the UK government must provide clarity on the future of financial support for the sector, after confirming in the autumn budget the agricultural funding will be baselined.</p>
+                  <p>Because we are not yet certain what will be the direction of travel on agricultural support in England, and those challenges could have significant implications for Scotland. So as we take forward the work and the dialog in relation to the budget, I assure all of you, National Farmers Union especially, of the willingness of the Scottish Government to engage about the contents of the Scottish Government budget, and to ensure that the issues and the concerns of the agricultural sector are strongly reflected in the budget that we bring forward.</p>
+                  <p>I also make clear to you that the £46 million that the government has utilised for short term purposes to ensure that we could deal with the effects of inflation in other areas of the budget, will be returned to this portfolio for use in the agriculture sector, and I give you that cast iron commitment on behalf of the Scottish Government.</p>
+                  <p>One of the other issues that emerged from the UK Government's budget was the changes to remove exemptions of agricultural property relief for inheritance tax, and I know that this is already having a chilling effect on many businesses within the farming sector in Scotland and the UK Government must urgently commit to undertake and publish impact assessments of its budget proposals on farmers and crofters in Scotland.</p>
+                  <p>Fundamentally, my government would want to see a tax system that supports rather than hinders orderly succession planning and the transfer of land to the next generation of custodians. We are disappointed that the chancellor chose not to work with the Scottish Government before acting on this sensitive matter. This arbitrary decision has led to intolerable levels of stress, worry and uncertainty for you all, which clearly could have been avoided.</p>
+                  <p>And the implications of these changes are very significant for the orderly succession planning within the industry. And what I pledge today, we’ll have a debate in Parliament on the subject this afternoon, which has been called by the Conservatives, and the government will take an approach which will be to work constructively to revise these proposals. Because these proposals cannot be allowed to stand, because of the damaging effect they will have, and the ability of there to be an orderly approach to succession planning within farm family farms within Scotland. This has been ill thought through, and it needs to be reconsidered.</p>
+                  <p>So the implications of the United Kingdom budget do not give us the freedom to act on our own behalf. There are significant and negative implications, and we must work in dialog with the UK Government to address some of those questions.</p>
+                  <p>There are, of course, some specific decisions that we can take in Scotland, the 2024 payment strategy is on track with basic payments and greening payments, having started in September as planned. Over 16,000 businesses have received over 377 million pounds to date, and we are providing as much certainty and confidence as we can, and the Scottish Government will certainly be focused on delivering the four priorities that I set out of eradicating child poverty, growing the economy, protecting the planet and supporting our public services.</p>
+                  <p>And of course, right at the heart of that lies the important contribution that agriculture can make in that respect. Martin, in his speech, set out six questions for us to wrestle with. On the first question about funding, I've set out the challenges we have about line of sight in the future and the cast iron commitment about the return of the 46 million pounds to support the industry. I hope I have demonstrated to you my willingness and my commitment, secondly, to listen to people who work on the land. I have done it for 27 years, and I intend to do it in the future.</p>
+                  <p>On species management. thirdly, we will, of course, engage constructively with the farming sector on these questions, and there are points of statute that have to be followed in all of these processes. But again, we want to have a pragmatic approach to engagement on these questions. On the Bovine EID issue, if Martin will forgive me, I'll take that away, or I might defer it to Jim Fairlie for him to talk about.</p>
+                  <p>On public procurement. Many of these decisions are influenced by public policy choices at a local level that I get a row for interfering in. But I do endorse the sentiment that Martin expresses. &nbsp;If we've got the highest quality produce in our country or in the world, why on earth is it not on the plates of our school children in our schools? Pretty straightforward to me. So I'll evangelize about that on your behalf, where I possibly can do.</p>
+                  <p>And lastly, on the national park question in Galloway. I know this is sensitive. I know there's different opinions and the government is consulting upon that, and we'll come to conclusions once we've heard all of the impact, the contribution from everyone around the country.</p>
+                  <p>What I hope as we look forward, is that despite all the challenges that we face and across every sector of public policy, there are enormous challenges that we face in a very uncertain and volatile world. What I assure you about it today is that I cherish and value the role of Scottish agriculture. I acknowledge its significance and its centrality in the stewardship and the management of land in our country, in the generation of high quality produce upon which some of the significant taxation strengths of the United Kingdom are based, not least the whisky industry. And we must take steps to ensure that we secure the future of Scottish agriculture, and that will be upper most in my mind as First Minister, as I work with my ministers to deliver the best future I can for Scotland, and for Scottish agriculture. Thank you very much.</p>
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 37330aaf-877f-40d4-9ec0-54f6c1f352e3
       /06:
         jcr:primaryType: hippostd:folder
         jcr:mixinTypes: ['mix:versionable']

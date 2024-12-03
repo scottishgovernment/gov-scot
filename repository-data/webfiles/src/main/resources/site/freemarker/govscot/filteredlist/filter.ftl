@@ -70,7 +70,7 @@
                     <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
                         <input class="ds_input" type="search" name="q" id="filters-search-term" maxlength="160" value="${term}" />
                         <button class="ds_button  js-filter-search-submit" type="submit" title="Submit" id="filters-search-submit">
-                            <span class="visually-hidden">Search</span>
+                            <span class="visually-hidden">Search ${document.title}</span>
                             <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#search"></use></svg>
                         </button>
                     </div>

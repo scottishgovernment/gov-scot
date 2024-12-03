@@ -14,7 +14,7 @@ definitions:
           jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/2 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-10-24T08:46:00+01:00
+          hipposched:nextFireTime: 2024-12-03T10:42:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SitemapJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -29,7 +29,7 @@ definitions:
           jcr:uuid: a4c6df3f-c537-4458-9870-9243df54b133
           hipposched:cronExpression: 0 0 9 * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-10-24T09:00:00+01:00
+          hipposched:nextFireTime: 2024-12-04T09:00:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SearchJournalCleanupJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -72,7 +72,7 @@ definitions:
           jcr:uuid: d2b951cd-b467-4ffa-afb8-e7aed9dc4db4
           hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-10-23T10:35:00+01:00
+          hipposched:nextFireTime: 2024-12-03T10:45:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PreviewLinksCleanup:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [batchsize]
@@ -87,7 +87,7 @@ definitions:
           jcr:uuid: ba851e5f-b012-43e4-8877-c41fe545e669
           hipposched:cronExpression: 0 0 2 ? * * *
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-10-03T02:00:00+01:00
+          hipposched:nextFireTime: 2024-12-03T02:00:00Z
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SlugLookupsPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
@@ -102,4 +102,34 @@ definitions:
           jcr:uuid: 4c842ed6-c970-429d-844c-b40cedd184c9
           hipposched:cronExpression: 0 0/10 * * * ?
           hipposched:enabled: true
-          hipposched:nextFireTime: 2024-10-23T10:40:00+01:00
+          hipposched:nextFireTime: 2024-12-03T10:50:00Z
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PressReleaseImporter:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.pressreleases.PressReleaseImporterJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: a91475f8-57cd-41ab-b5ef-d1232d77c7cb
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2024-12-03T10:45:00Z
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PressReleaseTagsImporter:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.pressreleases.TagImporterJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: 6fb462a1-347a-45ab-8c0c-c8d7ee2d8c81
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2024-12-03T10:45:00Z
