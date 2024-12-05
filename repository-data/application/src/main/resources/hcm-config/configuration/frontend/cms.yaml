@@ -18,7 +18,7 @@ definitions:
                            '*.html', '*.jpg', '*.msg', '*.ods', '*.pdf', '*.png',
                            '*.ppt', '*.pptm', '*.pptx', '*.rtf', '*.txt',
                            '*.xls', '*.xlsb', '*.xlsm', '*.xlsx',
-                           '*.xlt', '*.xltx', '*.xml', '*.xsd']
+                           '*.xlt', '*.xltx', '*.xml', '*.xsd', '*.zip']
     /hippo:configuration/hippo:frontend/cms/cms-services/galleryProcessorService/govscot:smallcover:
       jcr:primaryType: frontend:pluginconfig
       compression: 0.8
