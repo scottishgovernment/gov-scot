@@ -73,7 +73,7 @@ $breakpoints: (
  * CONTENT BLOCKS FROM DESIGN SYSTEM CONTENT BLOCKS
  */
  @import "../../node_modules/@scottish-government-design-system/content-blocks/src/content-blocks/all-content-blocks";
- 
+
  @import "overrides/override.page-title";
  @import "overrides/override.video";
 
@@ -87,6 +87,14 @@ $breakpoints: (
 
 .ds_input__wrapper .ds_input {
     margin-bottom: 0;
+}
+
+#payment-form.ds_form {
+    display: none;
+}
+
+.js-enabled #payment-form.ds_form {
+    display: block;
 }
 
 /**

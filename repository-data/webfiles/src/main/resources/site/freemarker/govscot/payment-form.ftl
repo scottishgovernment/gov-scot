@@ -16,6 +16,18 @@
             <div class="ds_leader-first-paragraph">
                 <p>${document.summary}</p>
             </div>
+
+            <noscript>
+                <div class="ds_warning-text">
+                    <strong class="ds_warning-text__icon" aria-hidden="true"></strong>
+                    <strong class="visually-hidden">Warning</strong>
+                    <div class="ds_warning-text__text">
+                        We've detected from your browser that JavaScript is disabled.
+                        Please enable JavaScript to use this page.
+                    </div>
+                </div>
+            </noscript>
+
             <#if document.content??>
                 <@hst.html hippohtml=document.content/>
             </#if>
