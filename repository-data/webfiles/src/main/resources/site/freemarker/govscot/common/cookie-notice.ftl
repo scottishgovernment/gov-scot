@@ -16,7 +16,7 @@
             </div>
 
             <div class="ds_button-group">
-                <button class="ds_button  ds_button--small  js-accept-all-cookies">Accept all cookies</button>
+                <button class="ds_button  ds_button--small  ds_button--secondary  js-accept-all-cookies">Accept all cookies</button>
                 <button class="ds_button  ds_button--small  ds_button--secondary  js-accept-essential-cookies">Use essential cookies only</button>
                 <#if cookieprefslink??>
                     <a href="${cookieprefslink}">Set cookie preferences</a>
