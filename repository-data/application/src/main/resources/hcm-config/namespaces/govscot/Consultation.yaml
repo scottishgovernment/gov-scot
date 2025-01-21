@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 3cc06c30-e6fb-4105-bc31-a34c1d81f305
+          jcr:uuid: 02860813-2f0d-467a-97c1-69865aed8654
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -100,8 +100,9 @@ definitions:
           hippostdpubwf:creationDate: 2019-01-24T13:41:25.409Z
           govscot:reportingTags: []
           govscot:contentitemlanguage: en
-          jcr:uuid: 1b3d88ad-c2f5-4381-8fb4-29ff8aa99c19
+          jcr:uuid: 1bebf4d5-69c0-409e-9c11-adb5c8c34579
           govscot:responseUrl: ''
+          govscot:publicationType: hipposysedit:prototype
           /govscot:epilogue:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -124,6 +125,9 @@ definitions:
             jcr:primaryType: govscot:ConsultationResponseType
             govscot:type: ''
             /govscot:details:
+              jcr:primaryType: hippostd:html
+              hippostd:content: ''
+            /govscot:content:
               jcr:primaryType: hippostd:html
               hippostd:content: ''
       /editor:templates:
@@ -167,6 +171,15 @@ definitions:
               - approx. 50 words).  Note: longer summaries will be truncated to two
               lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /executiveSummary:
+            jcr:primaryType: frontend:plugin
+            caption: Executive summary
+            field: executveSummary
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
