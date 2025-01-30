@@ -29,6 +29,8 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
     private static final String ISMULTIPAGE = "isMultiPagePublication";
 
+    private static final String TIME_TO_RESPOND_STRING = "timeToRespondString";
+
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("d MMMM yyyy");
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm, d MMMM yyyy");
@@ -67,7 +69,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
         if (closingDate.isAfter(tomorrow)) {
             Duration duration = Duration.between(now, closingDate);
             long daysToRespond = duration.toDays();
-            request.setAttribute("timeToRespondString", daysToRespond + " days to respond");
+            request.setAttribute(TIME_TO_RESPOND_STRING, daysToRespond + " days to respond");
             request.setAttribute("closingDateTime", closingDate.format(DATE_FORMATTER));
             return ;
         }
@@ -75,11 +77,11 @@ public class PublicationComponent extends AbstractPublicationComponent {
         request.setAttribute("closingDateTime", closingDate.format(DATE_TIME_FORMATTER));
 
         if (closingDate.toLocalDate().equals(tomorrow.toLocalDate())) {
-            request.setAttribute("timeToRespondString", "Closes tomorrow");
+            request.setAttribute(TIME_TO_RESPOND_STRING "Closes tomorrow");
             return ;
         }
 
-        request.setAttribute("timeToRespondString", "Closes today");
+        request.setAttribute(TIME_TO_RESPOND_STRING, "Closes today");
     }
 
 
