@@ -8,8 +8,8 @@ definitions:
       /hipposys:accessed:
         jcr:primaryType: hipposys:propertyreferences
         /path:
-          jcr:primaryType: hipposys:relativepropertyreference
-          hipposys:relPath: path
+          jcr:primaryType: hipposys:builtinpropertyreference
+          hipposys:method: path
       /hipposys:derived:
         jcr:primaryType: hipposys:propertyreferences
         /publicationType:
