@@ -42,6 +42,12 @@
 [govscot:ComplexDocumentSection] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:Consultation] > govscot:Publication, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:ConsultationResponseType] > hippo:compound, hippostd:relaxed
+  orderable
+
 [govscot:ContactInformation] > hippo:compound, hippostd:relaxed
   orderable
 

@@ -35,6 +35,10 @@ public class FolderTypesDaemonModule extends DaemonModuleBase {
         if ("foi-eir-release".equals(typeFolder.getName())) {
             setFolderType(newFolder, "new-foi-folder");
         }
+
+        if ("consultation-paper".equals(typeFolder.getName())) {
+            setFolderType(newFolder, "new-consultation-folder");
+        }
     }
 
     private void setFolderType(Node node, String type) throws RepositoryException {

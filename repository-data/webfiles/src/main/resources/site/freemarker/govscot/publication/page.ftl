@@ -36,6 +36,39 @@
                     </#if>
 
                     <#include '../common/collections-list.ftl'/>
+                    <#if document.contentType == "govscot:Consultation">
+                <#if isOpen>
+                    <div class="ds_inset-text">
+                        <div class="ds_inset-text__text">
+                            <p>
+                                <strong class="ds_tag">Open</strong><br/>
+                                ${timeToRespondString}<br/>
+                                <a href="${document.responseUrl}">Respond online</a>
+                            </p>
+                            <dl class="ds_metadata">
+                                <div class="ds_metadata__item">
+                                    <dt class="ds_metadata__key">Closes</dt>
+                                    <dd class="ds_metadata__value">
+                                        <strong id="sg-meta__meeting-date">
+                                            ${closingDateTime}
+                                        </strong>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                <#else>
+                    <div class="ds_inset-text">
+                        <div class="ds_inset-text__text">
+                            <p>
+                                <strong class="ds_tag ds_tag--grey">Closed</strong><br>
+                                This consultation ended <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>
+                            </p>
+                        </div>
+                    </div>
+                </#if>
+            </#if>
+
                 </div>
 
                 <#if hasDocuments!false>
@@ -149,6 +182,32 @@
                         <@hst.manageContent hippobean=currentPage />
 
                         <div  class="body-content  publication-content  js-content-wrapper">
+                            <#if document.contentType == "govscot:Consultation" && currentPage.title?lower_case = 'how to respond'>
+                                <h2>How to respond</h2>
+                                <#if isOpen>
+                                    <p>Submit your comments by
+                                    <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>,
+                                    in any of the following ways:
+                                    </p>
+                                    <h3>Online form</h3>
+                                    <p>
+                                        <a href="${document.responseUrl}" class="ds_button ds_button--has-icon  ds_no-margin--bottom">
+                                        Respond online
+                                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
+                                        </a>
+                                    </p>
+                                    <#list document.consultationResponseMethods as responseMethod>
+                                        <h3>${responseMethod.type}</h3>
+                                        <@hst.html hippohtml=responseMethod.content/>
+                                    </#list>
+                                <#else>
+                                    This consultation has now closed, it was open between
+                                    <@fmt.formatDate value=document.openingDate.time type="both" pattern="d MMMM yyyy"/>
+                                    and
+                                    <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>.
+                                </#if>
+                                <hr>
+                            </#if>
                             <div <@langcompare currentPage document />>
                                 <@hst.html hippohtml=currentPage.content/>
                             </div>

@@ -10,6 +10,12 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.DocumentInformation;
 import scot.gov.www.beans.PublicationPage;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,11 +29,62 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
     private static final String ISMULTIPAGE = "isMultiPagePublication";
 
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm, d MMMM yyyy");
+
     @Override
     protected void populateRequest(HippoBean publication, HippoBean document, HstRequest request, HstResponse response) {
         setDocuments(publication, document, request);
         setPages(publication, document, request);
         request.setAttribute("document", publication);
+        if (isConsultationWithDates(publication)) {
+            populateConsultationFields(publication, request);
+        }
+    }
+
+    boolean isConsultationWithDates(HippoBean publication) {
+        String publicationType = publication.getSingleProperty("govscot:publicationType");
+        if (!"consultation-paper".equals(publicationType)) {
+            return false;
+        }
+
+        Calendar closingDate = publication.getSingleProperty("govscot:closingDate");
+        return closingDate != null;
+    }
+
+    void populateConsultationFields(HippoBean publication, HstRequest request) {
+        LocalDateTime closingDate = convertCalendarToLocalDateTime(publication.getSingleProperty("govscot:closingDate"));
+        LocalDateTime now = LocalDateTime.now();
+        boolean open = now.isBefore(closingDate);
+        request.setAttribute("isOpen", open);
+
+        if (!open) {
+            return;
+        }
+
+        LocalDateTime tomorrow = now.plusDays(1);
+        if (closingDate.isAfter(tomorrow)) {
+            Duration duration = Duration.between(now, closingDate);
+            long daysToRespond = duration.toDays();
+            request.setAttribute("timeToRespondString", daysToRespond + " days to respond");
+            request.setAttribute("closingDateTime", closingDate.format(DATE_FORMATTER));
+            return ;
+        }
+
+        request.setAttribute("closingDateTime", closingDate.format(DATE_TIME_FORMATTER));
+
+        if (closingDate.toLocalDate().equals(tomorrow.toLocalDate())) {
+            request.setAttribute("timeToRespondString", "Closes tomorrow");
+            return ;
+        }
+
+        request.setAttribute("timeToRespondString", "Closes today");
+    }
+
+
+    public static LocalDateTime convertCalendarToLocalDateTime(Calendar calendar) {
+        return LocalDateTime.ofInstant(calendar.toInstant(), ZoneId.systemDefault());
     }
 
     protected HippoBean getPublication(HippoBean document) {
@@ -61,14 +118,19 @@ public class PublicationComponent extends AbstractPublicationComponent {
     }
 
     HippoBean getPublicationFromFolder(HippoBean folder) {
-        List<HippoBean> publications = folder.getChildBeans("govscot:Publication");
-        if (publications.isEmpty()) {
-            publications = folder.getChildBeans("govscot:ComplexDocument2");
-        }
+        List<HippoBean> publications = getAllPublicaitons(folder);
         if (publications.size() > 1) {
             LOG.warn("Multiple publications found in folder {}, will use first", folder.getPath());
         }
         return publications.isEmpty() ? null : publications.get(0);
+    }
+
+    List<HippoBean> getAllPublicaitons(HippoBean folder) {
+        List<HippoBean> publications = new ArrayList<>();
+        publications.addAll(folder.getChildBeans("govscot:Publication"));
+        publications.addAll(folder.getChildBeans("govscot:ComplexDocument2"));
+        publications.addAll(folder.getChildBeans("govscot:Consultation"));
+        return publications;
     }
 
     private void setDocuments(HippoBean publication, HippoBean document, HstRequest request) {

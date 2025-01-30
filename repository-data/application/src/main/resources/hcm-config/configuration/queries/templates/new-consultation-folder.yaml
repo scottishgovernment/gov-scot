@@ -1,0 +1,52 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:queries/hippo:templates/new-consultation-folder:
+      jcr:primaryType: hippostd:templatequery
+      jcr:mixinTypes: ['hipposys:implementation']
+      hippostd:icon: addfolder_ico
+      hippostd:modify: [./_name, $name, './hippotranslation:id', $uuid, './hippotranslation:locale',
+        $inherited, './index/index/govscot:title', $localName, './index/hippo:name',
+        $localName, './index/index/hippo:name', $localName, './index/index/hippostdpubwf:createdBy',
+        $holder, './index/index/hippostdpubwf:lastModifiedBy', $holder, './index/index/hippostdpubwf:creationDate',
+        $now, './index/index/hippostdpubwf:lastModificationDate', $now, './index/index/govscot:seoTitle',
+        $localName, './index/index/hippotranslation:id', $uuid]
+      hipposys:classname: org.hippoecm.repository.impl.query.DirectPath
+      jcr:language: xpath
+      jcr:statement: /jcr:root/hippo:configuration/hippo:queries/hippo:templates/new-consultation-folder/hippostd:templates/node()
+      /hippostd:templates:
+        jcr:primaryType: hippostd:templates
+        /hippostd:folder:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['mix:versionable', 'bulkpublish:bulkpublishdirectory']
+          jcr:uuid: cdce0580-402e-4589-a0f0-264c38e4d6c0
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+            jcr:uuid: 24f7e032-4958-478f-abcf-1853cad12d9d
+            hippo:name: Publication name
+            /index:
+              jcr:primaryType: govscot:Consultation
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 7d063f6c-5f63-466d-8452-1e6e6f825492
+              govscot:isbn: ''
+              govscot:metaDescription: ''
+              govscot:seoTitle: ''
+              govscot:summary: ''
+              govscot:title: ''
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2018-07-13T15:30:45.811+01:00
+              hippostdpubwf:lastModificationDate: 2018-07-13T15:30:45.812+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: 6be16cfb-c727-49ad-ad72-ede6909a308b
+              hippotranslation:locale: en
+              govscot:publicationDate: 0001-01-01T12:00:00Z
+              hippo:availability: [preview]
+              govscot:officialdate: 0001-01-01T12:00:00Z
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-page]
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-publication-document-info, new-publication-documents-folder]
