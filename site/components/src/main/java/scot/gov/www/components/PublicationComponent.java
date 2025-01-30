@@ -77,7 +77,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
         request.setAttribute("closingDateTime", closingDate.format(DATE_TIME_FORMATTER));
 
         if (closingDate.toLocalDate().equals(tomorrow.toLocalDate())) {
-            request.setAttribute(TIME_TO_RESPOND_STRING "Closes tomorrow");
+            request.setAttribute(TIME_TO_RESPOND_STRING, "Closes tomorrow");
             return ;
         }
 
