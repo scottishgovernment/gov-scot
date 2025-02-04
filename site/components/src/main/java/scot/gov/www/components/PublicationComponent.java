@@ -66,7 +66,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
         }
 
         LocalDateTime tomorrow = now.plusDays(1);
-        if (closingDate.isAfter(tomorrow)) {
+        if (closingDate.toLocalDate().isAfter(tomorrow.toLocalDate())) {
             Duration duration = Duration.between(now, closingDate);
             long daysToRespond = duration.toDays();
             request.setAttribute(TIME_TO_RESPOND_STRING, daysToRespond + " days to respond");
