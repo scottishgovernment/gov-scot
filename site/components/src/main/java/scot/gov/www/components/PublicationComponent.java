@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.beans.DocumentInformation;
 import scot.gov.www.beans.PublicationPage;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -67,8 +67,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
         LocalDateTime tomorrow = now.plusDays(1);
         if (closingDate.toLocalDate().isAfter(tomorrow.toLocalDate())) {
-            Duration duration = Duration.between(now, closingDate);
-            long daysToRespond = duration.toDays();
+            long daysToRespond = ChronoUnit.DAYS.between(now.toLocalDate(), closingDate.toLocalDate());
             request.setAttribute(TIME_TO_RESPOND_STRING, daysToRespond + " days to respond");
             request.setAttribute("closingDateTime", closingDate.format(DATE_FORMATTER));
             return ;
