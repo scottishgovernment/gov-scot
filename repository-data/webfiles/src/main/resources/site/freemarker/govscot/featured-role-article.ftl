@@ -17,7 +17,7 @@
 
             <nav class="ds_sequential-nav" aria-label="Article navigation">
                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
-                    <a title="Previous section" href="../" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+                    <a href="../" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
                         <span class="ds_sequential-nav__text" data-label="previous">
                             First Minister
                         </span>

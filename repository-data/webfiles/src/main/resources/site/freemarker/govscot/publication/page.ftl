@@ -186,7 +186,7 @@
                             <#if prev??>
                                 <@hst.link var="link" hippobean=prev/>
                                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
-                                    <a <@langcompare prev document /> title="Previous page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left  js-publication-navigation">
+                                    <a <@langcompare prev document /> href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left  js-publication-navigation">
                                         <span class="ds_sequential-nav__text" data-label="previous">
                                             ${prev.title}
                                         </span>
@@ -197,7 +197,7 @@
                             <#if next??>
                                 <@hst.link var="link" hippobean=next/>
                                 <div class="ds_sequential-nav__item  ds_sequential-nav__item--next">
-                                    <a <@langcompare next document /> title="Next page" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right  js-publication-navigation">
+                                    <a <@langcompare next document /> href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right  js-publication-navigation">
                                         <span class="ds_sequential-nav__text" data-label="next">
                                             ${next.title}
                                         </span>

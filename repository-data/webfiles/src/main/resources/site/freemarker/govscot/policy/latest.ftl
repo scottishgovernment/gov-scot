@@ -60,7 +60,7 @@
     <#if prev??>
         <@hst.link var="link" hippobean=prev/>
         <div class="ds_sequential-nav__item  ds_sequential-nav__item--prev">
-            <a title="Previous section" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
+            <a href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--left">
                 <span class="ds_sequential-nav__text" data-label="previous">
                     ${prev.title}
                 </span>
@@ -71,7 +71,7 @@
     <#if next??>
         <@hst.link var="link" hippobean=next/>
         <div class="ds_sequential-nav__item  ds_sequential-nav__item--next">
-            <a title="Next section" href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right">
+            <a href="${link}" class="ds_sequential-nav__button  ds_sequential-nav__button--right">
                 <span class="ds_sequential-nav__text" data-label="next">
                     ${next.title}
                 </span>
