@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 9f2798d1-8480-4bb1-b429-89f9865430da
+          jcr:uuid: 3c1d94b4-bf2a-49f9-bf68-6575c0ca52bf
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -108,7 +108,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: ce708642-6e36-4eda-805f-537524a0388d
+          jcr:uuid: 3f1052af-fee2-47f8-8cc9-6e50977ea28d
           hippostdpubwf:lastModificationDate: 2018-04-12T15:41:01.916+01:00
           hippostdpubwf:creationDate: 2018-04-12T15:41:01.916+01:00
           govscot:speechDeliveredBy: ''
@@ -116,6 +116,7 @@ definitions:
           govscot:slug: ''
           govscot:reportingTags: []
           govscot:contentitemlanguage: en
+          govscot:publicationType: hipposysedit:prototype
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -428,6 +429,15 @@ definitions:
               date present in search results.
             mode: view
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /featuredLinks:
+            jcr:primaryType: frontend:plugin
+            caption: Featured links
+            field: featuredLinks
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
