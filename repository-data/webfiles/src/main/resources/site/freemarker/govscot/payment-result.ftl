@@ -25,7 +25,10 @@
 
 <#if paymentResult??>
 
-    <link rel="canonical" href="https://www.gov.scot/payment/${paymentResult.id}/>
+    
+    <@hst.headContribution>
+    <link rel="canonical" href="https://www.gov.scot/payment/${paymentResult.id}"/> 
+    </@hst.headContribution>
 
     <@hst.headContribution category="pageTitle">
     <title>${paymentResult.title} - gov.scot</title>
