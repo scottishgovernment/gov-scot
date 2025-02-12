@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:derivatives/publicationType:
+    /hippo:configuration/hippo:derivatives/derivedPublicationType:
       jcr:primaryType: hipposys:deriveddefinition
       hipposys:classname: scot.gov.www.PublicationTypeDerivedData
       hipposys:nodetype: govscot:Publication
@@ -8,8 +8,8 @@ definitions:
       /hipposys:accessed:
         jcr:primaryType: hipposys:propertyreferences
         /path:
-          jcr:primaryType: hipposys:relativepropertyreference
-          hipposys:relPath: path
+          jcr:primaryType: hipposys:builtinpropertyreference
+          hipposys:method: path
       /hipposys:derived:
         jcr:primaryType: hipposys:propertyreferences
         /publicationType:
