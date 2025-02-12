@@ -59,7 +59,7 @@ class SearchFilters {
                         clearTimeout(t);
 
                         t = setTimeout(() => {
-                            this.doSearch();
+                            this.doSearch(undefined, true);
                         }, this.timeoutDelay);
                     };
                 });
@@ -75,7 +75,7 @@ class SearchFilters {
                 if (this.validateDateInput(fromDatePickerInputElement)) {
                     toDatePickerInputElement.dataset.mindate = fromDatePickerInputElement.value;
                     if (breakpointCheck('medium')) {
-                        this.doSearch();
+                        this.doSearch(undefined, true);
                     }
                 }
             });
@@ -86,16 +86,16 @@ class SearchFilters {
                 if (this.validateDateInput(toDatePickerInputElement)) {
                     fromDatePickerInputElement.dataset.maxdate = toDatePickerInputElement.value;
                     if (breakpointCheck('medium')) {
-                        this.doSearch();
+                        this.doSearch(undefined, true);
                     }
                 }
             });
         }
 
-        // sort dropdown change submits search on medium+ viewports
+        // sort dropdown change submits search
         this.resultsContainer.addEventListener('change', event => {
             if (event.target.classList.contains('js-sort-by')) {
-                this.doSearch();
+                this.doSearch(undefined, true);
             }
         });
 
@@ -138,7 +138,7 @@ class SearchFilters {
 
         this.filtersContainer.querySelector('.js-apply-filter').addEventListener('click', event => {
             event.preventDefault();
-            this.doSearch();
+            this.doSearch(undefined, true);
         });
 
         window.addEventListener('popstate', event => {
@@ -162,7 +162,7 @@ class SearchFilters {
             }
         });
 
-        this.doSearch();
+        this.doSearch(undefined, true);
     }
 
     changePage(linkElement) {
@@ -171,22 +171,22 @@ class SearchFilters {
         this.doSearch(targetHref);
     }
 
-    convertUrl (url) {
+    convertUrl (url, newSearch) {
         // change given url to use search results endpoint
         const pathElements = url.pathname.split('/').filter(Boolean);
         const lastPathElement = pathElements[pathElements.length - 1];
         const urlWithReplacement = url.pathname.replace(lastPathElement, lastPathElement + 'results');
 
-        return urlWithReplacement + searchUtils.getNewQueryString(this.gatherParams(url));    
+        return urlWithReplacement + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));    
     }
 
-    doSearch(url) {
+    doSearch(url, newSearch = false) {
         // Capture page url
-        const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams(url));
+        const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));
 
         if (!url) {
            
-            url = this.convertUrl(window.location);
+            url = this.convertUrl(window.location, newSearch);
 
             // do not proceed if there are errors
             if (document.querySelectorAll('.ds_search-filters [aria-invalid="true"]').length) {
@@ -195,7 +195,7 @@ class SearchFilters {
         } else {
             try {
                 const definedUrl = new URL(url);
-                url = this.convertUrl(definedUrl);
+                url = this.convertUrl(definedUrl, newSearch);
             }  catch (error) {
                 // invalid url
                 return false;
@@ -256,26 +256,43 @@ class SearchFilters {
             });
     }
 
-    gatherParams(url) {
+    gatherParams(url, newSearch = false) {
         const searchParams = this.searchParams || {};
 
         // dates
         searchParams.date = {};
-        searchParams.date.begin = document.querySelector('input[name="begin"]').value;
-        searchParams.date.end = document.querySelector('input[name="end"]').value;
+
+        const beginParam = document.querySelector('input[name="begin"]');
+        if(beginParam){
+            searchParams.date.begin = encodeURIComponent(beginParam.value);
+        }
+
+        const endParam = document.querySelector('input[name="end"]');
+        if(endParam){
+            searchParams.date.end = encodeURIComponent(endParam.value);
+        }
 
         // page
-        searchParams.page = getParameterByName('page', url) || 1;
+        if(newSearch){
+            searchParams.page = 1;
+        } else {
+            const pageParam = searchUtils.getParameterByName('page', url) || 1;
+            if(pageParam){
+                searchParams.page = encodeURIComponent(pageParam);
+            }
+        }
         
         // size
-        searchParams.size = getParameterByName('size') || 10;
-         
+        const sizeParam = searchUtils.getParameterByName('size') || 10;
+        if(sizeParam){
+            searchParams.size = encodeURIComponent(sizeParam);
+        }
 
         // content types
         searchParams.type = [];
         const checkedPublicationTypeCheckboxes = [].slice.call(document.querySelectorAll('input[name="type"]:checked'));
         checkedPublicationTypeCheckboxes.forEach(checkbox => {
-            searchParams.type.push(checkbox.value);
+            searchParams.type.push(encodeURIComponent(checkbox.value));
         });
         if (searchParams.type.length === 0) {
             delete searchParams.type;
@@ -284,20 +301,26 @@ class SearchFilters {
         // sort
         const sortField = document.querySelector('.js-sort-by');
         if (sortField) {
-            searchParams.sort = sortField.value;
+            searchParams.sort = encodeURIComponent(sortField.value);
         }
 
         // term
-        searchParams.q = encodeURIComponent(getParameterByName('q'));
+        const qParam = searchUtils.getParameterByName('q');
+        if(qParam){
+            searchParams.q = encodeURIComponent(qParam);
+        }
 
-        // cat
-        searchParams.cat = getParameterByName('cat');
+        // cat 
+        const catParam = searchUtils.getParameterByName('cat');
+        if(catParam){
+            searchParams.cat = encodeURIComponent(catParam);
+        }
 
         // topics
         searchParams.topic = [];
         const checkedTopicCheckboxes = [].slice.call(document.querySelectorAll('input[name="topic"]:checked'));
         checkedTopicCheckboxes.forEach(checkbox => {
-            searchParams.topic.push(checkbox.value);
+            searchParams.topic.push(encodeURIComponent(checkbox.value));
         });
         if (searchParams.topic.length === 0) {
             delete searchParams.topic;
@@ -330,7 +353,7 @@ class SearchFilters {
 
         searchUtils.removeError(toElement.closest('.ds_question'));
         searchUtils.removeError(fromElement.closest('.ds_question'));
-        this.doSearch(buttonElement.href);
+        this.doSearch(buttonElement.href, true);
     }
 
     syncFiltersToUrl() {
