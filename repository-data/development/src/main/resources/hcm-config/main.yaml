@@ -1,6 +1,10 @@
 definitions:
   config:
     /hippo:configuration/hippo:modules/autoexport/hippo:moduleconfig:
+      autoexport:excluded:
+        operation: add
+        type: string
+        value: ['/hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/**']
       autoexport:modules: ['repository-data/application:/', repository-data/development,
         'repository-data/site-development:gov-scot', 'repository-data/site:gov-scot:/hst:govscot']
     /hippo:configuration/hippo:groups/author:
