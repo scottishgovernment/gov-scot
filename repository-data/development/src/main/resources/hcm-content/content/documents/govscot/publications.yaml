@@ -32,7 +32,7 @@
             jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
             jcr:uuid: a71ff4dd-e647-436c-84c9-09362b68a7fd
             hippo:name: 'Consultations in the Scottish Government: guidance'
-            hippo:versionHistory: 9a407645-95c3-4634-9f86-86ca025ebf49
+            hippo:versionHistory: 3bfdf780-e512-425d-a297-2ea328ebd7b5
             /index[1]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -57,7 +57,7 @@
                 reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2025-02-10T14:28:57.285Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T11:13:01.839Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -242,16 +242,6 @@
               /govscot:group:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
-              /govscot:featuredLinks:
-                jcr:primaryType: govscot:FeaturedLinks
-                govscot:label: Consultation
-                /govscot:link:
-                  jcr:primaryType: govscot:DescribedLink
-                  govscot:customLinkText: ''
-                  govscot:description: ''
-                  /govscot:link:
-                    jcr:primaryType: hippo:mirror
-                    hippo:docbase: 5df09ed0-87c6-43c2-b6ec-79ecff51846e
             /index[2]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
@@ -276,7 +266,7 @@
                 reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2025-02-10T14:28:49.493Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T11:12:52.606Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
@@ -461,16 +451,6 @@
               /govscot:group:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
-              /govscot:featuredLinks:
-                jcr:primaryType: govscot:FeaturedLinks
-                govscot:label: Consultation
-                /govscot:link:
-                  jcr:primaryType: govscot:DescribedLink
-                  govscot:customLinkText: ''
-                  govscot:description: ''
-                  /govscot:link:
-                    jcr:primaryType: hippo:mirror
-                    hippo:docbase: 5df09ed0-87c6-43c2-b6ec-79ecff51846e
             /index[3]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
@@ -495,9 +475,9 @@
                 reporting]
               hippostdpubwf:createdBy: joanne.logan@gov.scot
               hippostdpubwf:creationDate: 2022-01-18T14:07:01.059Z
-              hippostdpubwf:lastModificationDate: 2025-02-10T14:28:57.285Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T11:13:01.839Z
               hippostdpubwf:lastModifiedBy: admin
-              hippostdpubwf:publicationDate: 2025-02-10T14:28:59.403Z
+              hippostdpubwf:publicationDate: 2025-02-17T11:13:03.529Z
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
               /govscot:executiveSummary:
@@ -681,16 +661,6 @@
               /govscot:group:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: 706f6e38-e976-4cee-bc95-f03c81b305de
-              /govscot:featuredLinks:
-                jcr:primaryType: govscot:FeaturedLinks
-                govscot:label: Consultation
-                /govscot:link:
-                  jcr:primaryType: govscot:DescribedLink
-                  govscot:customLinkText: ''
-                  govscot:description: ''
-                  /govscot:link:
-                    jcr:primaryType: hippo:mirror
-                    hippo:docbase: 5df09ed0-87c6-43c2-b6ec-79ecff51846e
           /pages:
             jcr:primaryType: hippostd:folder
             hippostd:foldertype: [new-publication-page]
@@ -1833,7 +1803,7 @@
               hippostd:state: draft
               hippostdpubwf:createdBy: admin
               hippostdpubwf:creationDate: 2024-08-30T09:38:56.284+01:00
-              hippostdpubwf:lastModificationDate: 2025-02-10T13:57:28.412Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T08:59:21.307Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: 9e064daa-07cc-4e60-824d-137828fa3309
               hippotranslation:locale: en
@@ -2374,7 +2344,7 @@
               'mix:simpleVersionable']
             jcr:uuid: c58bcde3-a31d-4a96-a719-3ed457a5089d
             hippo:name: 'Media reporting on child homicide victims: consultation analysis'
-            hippo:versionHistory: c03a2069-ab28-44e4-ac1b-4501b70337b2
+            hippo:versionHistory: cc1f7048-ba58-4b50-9681-e4c3d06f5003
             /index[1]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -2410,7 +2380,7 @@
               hippostd:tags: ['"anonymity"']
               hippostdpubwf:createdBy: publications
               hippostdpubwf:creationDate: 2025-01-21T10:29:00.691Z
-              hippostdpubwf:lastModificationDate: 2025-02-10T14:33:51.022Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T11:12:32.470Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: f60e2a17-8cd5-48e6-99b5-20ce0914dda8
               hippotranslation:locale: en
@@ -2456,10 +2426,10 @@
                 govscot:label: Consultation
                 /govscot:link:
                   jcr:primaryType: govscot:DescribedLink
-                  govscot:description: two
+                  govscot:customLinkText: ''
                   /govscot:link:
                     jcr:primaryType: hippo:mirror
-                    hippo:docbase: a71ff4dd-e647-436c-84c9-09362b68a7fd
+                    hippo:docbase: e3958b0e-bda4-49e7-a7d0-9cbec0eab7cd
             /index[2]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
@@ -2495,9 +2465,9 @@
               hippostd:tags: ['"anonymity"']
               hippostdpubwf:createdBy: publications
               hippostdpubwf:creationDate: 2025-01-21T10:29:00.691Z
-              hippostdpubwf:lastModificationDate: 2025-02-10T14:33:51.022Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T11:12:32.470Z
               hippostdpubwf:lastModifiedBy: admin
-              hippostdpubwf:publicationDate: 2025-02-10T14:34:40.429Z
+              hippostdpubwf:publicationDate: 2025-02-17T11:12:33.856Z
               hippotranslation:id: f60e2a17-8cd5-48e6-99b5-20ce0914dda8
               hippotranslation:locale: en
               /govscot:content:
@@ -2542,10 +2512,10 @@
                 govscot:label: Consultation
                 /govscot:link:
                   jcr:primaryType: govscot:DescribedLink
-                  govscot:description: two
+                  govscot:customLinkText: ''
                   /govscot:link:
                     jcr:primaryType: hippo:mirror
-                    hippo:docbase: a71ff4dd-e647-436c-84c9-09362b68a7fd
+                    hippo:docbase: e3958b0e-bda4-49e7-a7d0-9cbec0eab7cd
             /index[3]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
@@ -2581,7 +2551,7 @@
               hippostd:tags: ['"anonymity"']
               hippostdpubwf:createdBy: publications
               hippostdpubwf:creationDate: 2025-01-21T10:29:00.691Z
-              hippostdpubwf:lastModificationDate: 2025-02-10T14:33:37.098Z
+              hippostdpubwf:lastModificationDate: 2025-02-17T11:12:23.902Z
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: f60e2a17-8cd5-48e6-99b5-20ce0914dda8
               hippotranslation:locale: en
@@ -2627,10 +2597,10 @@
                 govscot:label: Consultation
                 /govscot:link:
                   jcr:primaryType: govscot:DescribedLink
-                  govscot:description: two
+                  govscot:customLinkText: ''
                   /govscot:link:
                     jcr:primaryType: hippo:mirror
-                    hippo:docbase: a71ff4dd-e647-436c-84c9-09362b68a7fd
+                    hippo:docbase: e3958b0e-bda4-49e7-a7d0-9cbec0eab7cd
           /documents:
             jcr:primaryType: hippostd:folder
             jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']

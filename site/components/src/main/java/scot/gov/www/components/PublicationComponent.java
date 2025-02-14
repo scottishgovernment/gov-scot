@@ -87,7 +87,7 @@ public class PublicationComponent extends AbstractPublicationComponent {
         HstQuery query = createIncomingBeansQuery(bean, baseBean, path, BaseDocument.class, true);
         HstQueryResult result = query.execute();
         if (result.getTotalSize() > 0) {
-            request.setAttribute("consultationAnalysis", result.getHippoBeans().nextHippoBean());
+            request.setAttribute("consultationAnalysis", result.getHippoBeans());
         }
     }
 
