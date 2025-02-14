@@ -28,6 +28,9 @@
                     <strong class="ds_tag ds_tag--grey">Closed</strong><br>
                     This consultation ended <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>
                 </p>
+                <#if consultationAnalysis?has_content>
+                <p><a href="<@hst.link hippobean=consultationAnalysis />">Consultation analysis</a></p>
+                </#if>
             </div>
         </div>
     </#if>

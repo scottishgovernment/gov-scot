@@ -35,8 +35,8 @@
                         </#list>
                     </#if>
 
-                    <#include '../common/collections-list.ftl'/>
                     <#include 'consultation-response.ftl'/>
+                    <#include '../common/collections-list.ftl'/>
                 </div>
 
                 <#if hasDocuments!false>
