@@ -26,7 +26,7 @@
             <div class="ds_inset-text__text">
                 <p>
                     <strong class="ds_tag ds_tag--grey">Closed</strong><br>
-                    This consultation ended <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>
+                    This consultation closed <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>
                 </p>
             </div>
         </div>
