@@ -1,5 +1,9 @@
 package scot.gov.www.components;
 
+import org.apache.commons.lang3.StringUtils;
+import org.hippoecm.hst.content.beans.query.HstQuery;
+import org.hippoecm.hst.content.beans.query.HstQueryResult;
+import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
 import org.hippoecm.hst.content.beans.standard.HippoFolderBean;
@@ -7,6 +11,7 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.BaseDocument;
 import scot.gov.www.beans.DocumentInformation;
 import scot.gov.www.beans.PublicationPage;
 
@@ -20,6 +25,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import static org.hippoecm.hst.util.ContentBeanUtils.createIncomingBeansQuery;
 
 public class PublicationComponent extends AbstractPublicationComponent {
 
@@ -40,14 +46,13 @@ public class PublicationComponent extends AbstractPublicationComponent {
         setDocuments(publication, document, request);
         setPages(publication, document, request);
         request.setAttribute("document", publication);
-        if (isConsultationWithDates(publication)) {
-            populateConsultationFields(publication, request);
-        }
+
+        populateConsultationFields(publication, request);
+        populateConsultationAnalysis((HippoDocumentBean) publication, request);
     }
 
     boolean isConsultationWithDates(HippoBean publication) {
-        String publicationType = publication.getSingleProperty("govscot:publicationType");
-        if (!"consultation-paper".equals(publicationType)) {
+        if (!isConsultation(publication)) {
             return false;
         }
 
@@ -55,7 +60,41 @@ public class PublicationComponent extends AbstractPublicationComponent {
         return closingDate != null;
     }
 
+    void populateConsultationAnalysis(HippoDocumentBean bean, HstRequest request) {
+        if (!isConsultation(bean)) {
+            return;
+        }
+
+        try {
+            doPopulateConsultationAnalysis(bean, request);
+        } catch (QueryException e) {
+            LOG.error("Failed to get related consultaiton analysis for consultation, {}", bean.getPath(), e);
+        }
+    }
+
+    boolean isConsultation(HippoBean bean) {
+        String publicationType = publicationType(bean);
+        return StringUtils.equals(publicationType, "consultation-paper");
+    }
+
+    String publicationType(HippoBean bean) {
+        return bean.getSingleProperty("govscot:publicationType");
+    }
+
+    void doPopulateConsultationAnalysis(HippoDocumentBean bean, HstRequest request) throws QueryException {
+        HippoBean baseBean =request.getRequestContext().getSiteContentBaseBean();
+        String path = "govscot:featuredLinks/govscot:link/govscot:link/@hippo:docbase";
+        HstQuery query = createIncomingBeansQuery(bean, baseBean, path, BaseDocument.class, true);
+        HstQueryResult result = query.execute();
+        if (result.getTotalSize() > 0) {
+            request.setAttribute("consultationAnalysis", result.getHippoBeans());
+        }
+    }
+
     void populateConsultationFields(HippoBean publication, HstRequest request) {
+        if (!isConsultationWithDates(publication)) {
+            return;
+        }
         LocalDateTime closingDate = convertCalendarToLocalDateTime(publication.getSingleProperty("govscot:closingDate"));
         LocalDateTime now = LocalDateTime.now();
         boolean open = now.isBefore(closingDate);
@@ -82,7 +121,6 @@ public class PublicationComponent extends AbstractPublicationComponent {
 
         request.setAttribute(TIME_TO_RESPOND_STRING, "Closes today");
     }
-
 
     public static LocalDateTime convertCalendarToLocalDateTime(Calendar calendar) {
         return LocalDateTime.ofInstant(calendar.toInstant(), ZoneId.systemDefault());

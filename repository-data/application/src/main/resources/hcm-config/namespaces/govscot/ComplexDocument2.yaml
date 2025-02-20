@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 4f3ffa99-3992-464c-b7dc-39f9b2cf4eca
+          jcr:uuid: 32fc143f-3486-4dfd-8bcb-f49093c7a483
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -54,7 +54,7 @@ definitions:
         /hipposysedit:prototype:
           jcr:primaryType: govscot:ComplexDocument2
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 6bf50031-bdb8-4563-b45a-0cf7e7284a7a
+          jcr:uuid: fe064bcc-6327-4648-921b-fefabd400cb4
           govscot:isbn: ''
           govscot:metaDescription: ''
           govscot:officialdate: 0001-01-01T12:00:00Z
@@ -74,6 +74,7 @@ definitions:
           govscot:slug: ''
           govscot:displayPrimaryDocument: false
           govscot:reportingTags: []
+          govscot:publicationType: hipposysedit:prototype
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -369,6 +370,15 @@ definitions:
               date present in search results.
             mode: view
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /featuredLinks:
+            jcr:primaryType: frontend:plugin
+            caption: Featured links
+            field: featuredLinks
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
