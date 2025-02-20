@@ -1,0 +1,75 @@
+definitions:
+  config:
+    /hippo:namespaces/govscot/FeaturedLinks:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: ffbc0ac9-ea7b-4898-a7c7-5847aa7ba790
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 7b06e788-8978-4601-8d5a-8b48308b9742
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: 0ffd0ce8-4de1-4666-a877-93e0289ab7a7
+          hipposysedit:node: true
+          hipposysedit:supertype: ['hippo:compound', 'hippostd:relaxed']
+          hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /label:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:label
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [optional]
+          /link:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: govscot:link
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:DescribedLink
+            hipposysedit:validators: [required]
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: govscot:FeaturedLinks
+          govscot:label: ''
+          /govscot:link:
+            jcr:primaryType: govscot:DescribedLink
+            govscot:description: ''
+            /govscot:link:
+              jcr:primaryType: hippo:mirror
+              hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /label:
+            jcr:primaryType: frontend:plugin
+            caption: Label
+            field: label
+            hint: Optional label for these featured links
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /link:
+            jcr:primaryType: frontend:plugin
+            caption: Links
+            field: link
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

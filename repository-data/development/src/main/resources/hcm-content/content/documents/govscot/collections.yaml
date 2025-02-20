@@ -6,9 +6,10 @@
   hippostd:foldertype: [new-document-collection]
   /test-collection:
     jcr:primaryType: hippo:handle
-    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
     jcr:uuid: eb5d9f96-849c-4e55-842c-83c4bd297e0f
     hippo:name: Test collection
+    hippo:versionHistory: 893b60ac-6903-47ae-941d-14204c0b9834
     /test-collection[1]:
       jcr:primaryType: govscot:Collection
       jcr:mixinTypes: ['mix:referenceable']
@@ -20,10 +21,11 @@
       govscot:summary: collection test
       govscot:title: Test collection
       hippo:availability: []
+      hippostd:retainable: false
       hippostd:state: draft
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2022-05-11T12:06:54.254+01:00
-      hippostdpubwf:lastModificationDate: 2022-05-11T12:06:54.254+01:00
+      hippostdpubwf:lastModificationDate: 2025-02-17T10:52:35.221Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: 740f85bf-dd02-4148-99e7-3dd7e33bd1ac
       hippotranslation:locale: document-type-locale
@@ -39,6 +41,20 @@
       /govscot:contact:
         jcr:primaryType: hippostd:html
         hippostd:content: ''
+      /govscot:groups:
+        jcr:primaryType: govscot:CollectionGroup
+        govscot:groupTitle: Publications
+        govscot:highlight: false
+        govscot:order: false
+        /govscot:description:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+        /govscot:collectionItems[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /govscot:collectionItems[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
     /test-collection[2]:
       jcr:primaryType: govscot:Collection
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -50,10 +66,11 @@
       govscot:summary: collection test
       govscot:title: Test collection
       hippo:availability: [preview]
+      hippostd:retainable: false
       hippostd:state: unpublished
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2022-05-11T12:06:54.254+01:00
-      hippostdpubwf:lastModificationDate: 2022-05-11T12:07:13.104+01:00
+      hippostdpubwf:lastModificationDate: 2025-02-17T11:11:32.219Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: 740f85bf-dd02-4148-99e7-3dd7e33bd1ac
       hippotranslation:locale: document-type-locale
@@ -69,6 +86,66 @@
       /govscot:contact:
         jcr:primaryType: hippostd:html
         hippostd:content: ''
+      /govscot:groups:
+        jcr:primaryType: govscot:CollectionGroup
+        govscot:groupTitle: Publications
+        govscot:highlight: false
+        govscot:order: false
+        /govscot:description:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+        /govscot:collectionItems[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /govscot:collectionItems[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+    /test-collection[3]:
+      jcr:primaryType: govscot:Collection
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: e2469b8e-d7fa-4f8d-a362-64a77666831a
+      govscot:metaDescription: test
+      govscot:reportingTags: []
+      govscot:seoTitle: Test collection
+      govscot:sme: ''
+      govscot:summary: collection test
+      govscot:title: Test collection
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2022-05-11T12:06:54.254+01:00
+      hippostdpubwf:lastModificationDate: 2025-02-17T11:11:32.219Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2025-02-17T11:11:33.830Z
+      hippotranslation:id: 740f85bf-dd02-4148-99e7-3dd7e33bd1ac
+      hippotranslation:locale: document-type-locale
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:responsibleDirectorate:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:responsibleRole:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /govscot:contact:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:groups:
+        jcr:primaryType: govscot:CollectionGroup
+        govscot:groupTitle: Publications
+        govscot:highlight: false
+        govscot:order: false
+        /govscot:description:
+          jcr:primaryType: hippostd:html
+          hippostd:content: ''
+        /govscot:collectionItems[1]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        /govscot:collectionItems[2]:
+          jcr:primaryType: hippo:mirror
+          hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
   /collections:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']

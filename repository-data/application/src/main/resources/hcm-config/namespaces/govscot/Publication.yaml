@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 289957bf-a2d1-4366-a9cd-13ec54c835f9
+          jcr:uuid: 02f7e81f-b2bd-497b-8e8b-7fcd1fe677ee
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:AttributableContent', 'hippostd:relaxed',
             'hippotranslation:translated']
@@ -116,6 +116,15 @@ definitions:
             hipposysedit:path: govscot:group
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
+          /featuredLinks:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:featuredLinks
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:FeaturedLinks
+            hipposysedit:validators: [optional]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -132,7 +141,7 @@ definitions:
           govscot:summary: ''
           govscot:isbn: ''
           govscot:title: ''
-          jcr:uuid: 8c91783a-8ce3-4e40-8d90-1c6ba2c8ef21
+          jcr:uuid: 8ea2b207-fe3e-47a2-831e-31cd113454fb
           hippostdpubwf:lastModificationDate: 2018-03-16T14:27:32.591Z
           hippostdpubwf:creationDate: 2018-03-16T14:27:32.591Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -142,6 +151,7 @@ definitions:
           govscot:reportingTags: []
           govscot:displayDate: 0001-01-01T12:00:00Z
           govscot:contentitemlanguage: en
+          govscot:publicationType: hipposysedit:prototype
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -163,6 +173,15 @@ definitions:
           /govscot:group:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:featuredLinks:
+            jcr:primaryType: govscot:FeaturedLinks
+            govscot:label: ''
+            /govscot:link:
+              jcr:primaryType: govscot:DescribedLink
+              govscot:description: ''
+              /govscot:link:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
       /editor:templates:
         jcr:primaryType: editor:templateset
         /_default_:
@@ -452,5 +471,14 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             mode: view
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /featuredLinks:
+            jcr:primaryType: frontend:plugin
+            caption: Featured links
+            field: featuredLinks
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

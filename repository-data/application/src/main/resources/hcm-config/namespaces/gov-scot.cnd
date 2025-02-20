@@ -57,6 +57,9 @@
 [govscot:CookiePage] > govscot:SiteItem, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:DescribedLink] > hippo:compound, hippostd:relaxed
+  orderable
+
 [govscot:Directorate] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
@@ -73,6 +76,9 @@
   orderable
 
 [govscot:FeaturedItems] > hippogallery:imageset, hippogallery:relaxed
+
+[govscot:FeaturedLinks] > hippo:compound, hippostd:relaxed
+  orderable
 
 [govscot:FeaturedRole] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
