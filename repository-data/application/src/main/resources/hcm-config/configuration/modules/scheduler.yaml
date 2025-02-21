@@ -103,3 +103,33 @@ definitions:
           hipposched:cronExpression: 0 0/10 * * * ?
           hipposched:enabled: true
           hipposched:nextFireTime: 2025-01-27T14:10:00Z
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PressReleaseImporter:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.pressreleases.PressReleaseImporterJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: a91475f8-57cd-41ab-b5ef-d1232d77c7cb
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2024-12-03T10:45:00Z
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PressReleaseTagsImporter:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.pressreleases.TagImporterJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          jcr:uuid: 6fb462a1-347a-45ab-8c0c-c8d7ee2d8c81
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2024-12-03T10:45:00Z

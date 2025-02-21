@@ -1,6 +1,6 @@
 package scot.gov.pressreleases;
 
-import scot.gov.pressreleases.domain.ImporterStatus;
+import org.hippoecm.repository.util.JcrUtils;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -16,6 +16,12 @@ public class ImporterStatusUpdater {
 
     private static final String DATE_TIME_PROPERTY = "datetime";
 
+    private static final String SUCCESS_DATE_TIME_PROPERTY = "successDatetime";
+
+    private static final String SUCCESS_PROPERTY = "success";
+
+    private static final String MESSAGE_PROPERTY = "message";
+
     static Clock clock = Clock.system(ZoneId.of("Europe/London"));
 
     static Set<String> IMPORTERS = new HashSet<>(Arrays.asList("press-release-importer", "speech-briefing-importer", "tag-importer", "correspondence-importer"));
@@ -26,29 +32,46 @@ public class ImporterStatusUpdater {
         }
 
         Node importerNode = importerNode(importer, session);
-        Calendar calendar = importerNode.hasProperty(DATE_TIME_PROPERTY)
-                ? importerNode.getProperty(DATE_TIME_PROPERTY).getDate()
-                : defaultLastRuntime();
+        Calendar lastRun = getDateWithDefault(importerNode, DATE_TIME_PROPERTY);
+        Calendar lastSuccessfulRun = getDateWithDefault(importerNode, SUCCESS_DATE_TIME_PROPERTY);
+
+        if (!importerNode.hasProperty(SUCCESS_DATE_TIME_PROPERTY)) {
+            // the first time the importer runs without the new properties, assume the last run ius synonymous with
+            // DATE_TIME_PROPERTY
+            lastSuccessfulRun = lastRun;
+        }
+
         ImporterStatus importerStatus = new ImporterStatus();
         importerStatus.setImporter(importer);
-        importerStatus.setLastrun(toZDT(calendar));
+        importerStatus.setLastrun(toZDT(lastRun));
+        importerStatus.setLastSuccessfulRun(toZDT(lastSuccessfulRun));
+        importerStatus.setSuccess(JcrUtils.getBooleanProperty(importerNode, SUCCESS_PROPERTY, true));
+        importerStatus.setMessage(JcrUtils.getStringProperty(importerNode, MESSAGE_PROPERTY, ""));
         session.save();
+
         return importerStatus;
     }
 
-    ImporterStatus setStatus(ImporterStatus status, Session session) throws RepositoryException {
+    Calendar getDateWithDefault(Node node, String property) throws RepositoryException {
+        return node.hasProperty(property) ? node.getProperty(property).getDate() : defaultLastRuntime();
+    }
+
+    public ImporterStatus saveStatus(ImporterStatus status, Session session) throws RepositoryException {
         if (!IMPORTERS.contains(status.getImporter())) {
             return null;
         }
         Node importerNode = importerNode(status.getImporter(), session);
         importerNode.setProperty(DATE_TIME_PROPERTY, GregorianCalendar.from(status.getLastrun()));
+        importerNode.setProperty(SUCCESS_DATE_TIME_PROPERTY, GregorianCalendar.from(status.getLastSuccessfulRun()));
+        importerNode.setProperty(SUCCESS_PROPERTY, status.isSuccess());
+        importerNode.setProperty(MESSAGE_PROPERTY, status.getMessage());
         session.save();
         return status;
     }
 
     ZonedDateTime toZDT(Calendar calendar) {
         Instant instant = calendar.toInstant();
-        ZoneId zoneId = TimeZone.getDefault().toZoneId();
+        ZoneId zoneId = calendar.getTimeZone().toZoneId();
         return ZonedDateTime.ofInstant(instant, zoneId);
     }
 
