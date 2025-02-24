@@ -26,17 +26,16 @@
             <div class="ds_inset-text__text">
                 <p>
                     <strong class="ds_tag ds_tag--grey">Closed</strong><br>
-                    This consultation closed <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>
+                    This consultation closed <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>.
                 </p>
+                <p><a href="${document.responseUrl}">View this consultation</a> on consult.gov.scot, including responses once published.</p>
                 <#if consultationAnalysis?has_content>
-                <p>
-                    <!-- TODO: handle as a list ... if there is only one then do this:-->
-
-                    <#list consultationAnalysis as analysis>
-                        <a href="<@hst.link hippobean=analysis />">Consultation analysis</a>
-                    </#list>
-                    <!-- if more then title and then comma separated list? -->
-
+                <h2 class="ds_h3">Consultation analysis</h2>
+                <ul class="ds_no-bullets">
+                <#list consultationAnalysis as analysis>
+                    <li><a href="<@hst.link hippobean=analysis />">${analysis.title}</a></li>
+                </#list>
+                </ul>
                 </#if>
             </div>
         </div>
