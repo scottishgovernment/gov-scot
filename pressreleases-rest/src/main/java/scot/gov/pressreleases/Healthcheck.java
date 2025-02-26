@@ -18,7 +18,7 @@ public class Healthcheck {
 
     private static final Logger LOG = LoggerFactory.getLogger(Healthcheck.class);
 
-    static final DateTimeFormatter DATE_FORMAT  = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+    static final DateTimeFormatter DATE_FORMAT  = DateTimeFormatter.RFC_1123_DATE_TIME;
 
     Session session;
 
@@ -36,43 +36,45 @@ public class Healthcheck {
         try {
             collectHealthInformation(health);
         } catch (RepositoryException e) {
-            health.setMessage("critical");
-            health.setPerformanceData("RepositoryException collecting health data: " + e.getMessage());
+            health.setStatus(NagiosStatus.CRITICAL);
+            health.setPerformanceData("Failed to read importer health: " + e.getMessage());
             LOG.error("Failed to get health data for press release importer", e);
         }
-
         return health;
     }
 
     void collectHealthInformation(Health health) throws RepositoryException {
-        health.setStatus("ok");
-        health.setMessage("ok");
+        health.setStatus(NagiosStatus.OK);
+        health.setMessage("OK");
 
         List<String> notOkImporters = new ArrayList<>();
-        List<String> performanceData = new ArrayList<>();
+        List<String> info = new ArrayList<>();
         for (Importer importer : Importer.values()) {
-            ImporterStatus status = statusUpdater.getStatus(importer.name, session);
+            ImporterStatus status = statusUpdater.getStatus(importer.node, session);
             ZonedDateTime cutoff = ZonedDateTime.now().minusMinutes(importer.minutesThreshold);
             boolean importerOk = status.getLastSuccessfulRun().isAfter(cutoff);
-            String importerMessage =  messageForImporter(status, importerOk);
-            performanceData.add(importerMessage);
+            String importerMessage =  messageForImporter(status);
+            info.add(importerMessage);
             if (!importerOk) {
-                health.setStatus("warning");
+                health.setStatus(NagiosStatus.WARNING);
                 notOkImporters.add(importer.name);
             }
         }
 
         if (!notOkImporters.isEmpty()) {
-            health.setMessage("importers out of date: " + String.join(",", notOkImporters));
+            health.setMessage("Importers out of date: " + String.join(",", notOkImporters));
         }
-        health.setPerformanceData(String.join(", ", performanceData));
+        health.setInfo(info);
     }
 
-    String messageForImporter(ImporterStatus status, boolean ok) {
+    String messageForImporter(ImporterStatus status) {
+        String importerId = status.getImporter();
+        Importer importer = Importer.forId(importerId);
+        String name = importer.name;
         String lastRun = status.getLastSuccessfulRun().format(DATE_FORMAT);
         return StringUtils.isBlank(status.getMessage())
-                ? String.format("%s=%s", status.getImporter(), lastRun)
-                : String.format("%s=%s, message: %s", status.getImporter(), lastRun, status.getMessage());
+                ? String.format("%s: %s", name, lastRun)
+                : String.format("%s: %s (%s)", name, lastRun, status.getMessage());
     }
 
 }
