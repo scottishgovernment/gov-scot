@@ -1,19 +1,50 @@
 package scot.gov.pressreleases;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Importer {
 
-    PRESS_RELEASES("press-release-importer", 6),
-    SPEECHES("speech-briefing-importer", 6),
-    CORRESPONDENCES("correspondence-importer", 6),
-    TAGS("tag-importer", 65);
+    PRESS_RELEASES(
+            "Press releases",
+            "press-release-importer",
+            6),
+    SPEECHES(
+            "Speeches/Briefings",
+            "speech-briefing-importer",
+            6),
+    CORRESPONDENCES(
+            "Correspondences",
+            "correspondence-importer",
+            6),
+    TAGS(
+            "Tags",
+            "tag-importer",
+            65);
 
-    int minutesThreshold;
+    static Map<String, Importer> byId = new HashMap<>();
 
     String name;
 
-    Importer(String name, int minutesThreshold) {
+    String node;
+
+    int minutesThreshold;
+
+    static {
+        for (Importer importer : Importer.values()) {
+            byId.put(importer.node, importer);
+        }
+    }
+
+    Importer(String name, String node, int minutesThreshold) {
         this.name = name;
+        this.node = node;
         this.minutesThreshold = minutesThreshold;
+
+    }
+
+    public static Importer forId(String id) {
+        return byId.get(id);
     }
 
 }

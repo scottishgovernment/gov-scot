@@ -1,12 +1,19 @@
 package scot.gov.pressreleases;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.List;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Health {
 
-    String status;
+    NagiosStatus status;
 
     String message;
 
     String performanceData;
+
+    List<String> info;
 
     public String getMessage() {
         return message;
@@ -16,11 +23,11 @@ public class Health {
         this.message = message;
     }
 
-    public String getStatus() {
+    public NagiosStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(NagiosStatus status) {
         this.status = status;
     }
 
@@ -30,5 +37,13 @@ public class Health {
 
     public void setPerformanceData(String performanceData) {
         this.performanceData = performanceData;
+    }
+
+    public List<String> getInfo() {
+        return info;
+    }
+
+    public void setInfo(List<String> info) {
+        this.info = info;
     }
 }
