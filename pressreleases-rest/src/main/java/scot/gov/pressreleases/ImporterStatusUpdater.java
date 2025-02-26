@@ -36,9 +36,8 @@ public class ImporterStatusUpdater {
         Calendar lastSuccessfulRun = getDateWithDefault(importerNode, SUCCESS_DATE_TIME_PROPERTY);
 
         if (!importerNode.hasProperty(SUCCESS_DATE_TIME_PROPERTY)) {
-            // the first time the importer runs without the new properties, assume the last run ius synonymous with
-            // DATE_TIME_PROPERTY
-            lastSuccessfulRun = lastRun;
+            // if the importer has never successfully run then return a date in the past
+            lastSuccessfulRun = defaultLastRuntime();
         }
 
         ImporterStatus importerStatus = new ImporterStatus();
