@@ -1,4 +1,4 @@
-package scot.gov.pressreleases;
+package scot.gov.www.pressreleases.health;
 
 import java.util.HashMap;
 import java.util.Map;

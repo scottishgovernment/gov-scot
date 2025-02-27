@@ -1,4 +1,4 @@
-package scot.gov.httpclient;
+package scot.gov.www.httpclient;
 
 import org.apache.commons.lang3.StringUtils;
 

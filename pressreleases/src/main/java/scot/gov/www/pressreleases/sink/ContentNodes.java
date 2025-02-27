@@ -3,7 +3,8 @@ package scot.gov.www.pressreleases.sink;
 import org.onehippo.forge.content.pojo.model.ContentNode;
 import org.onehippo.forge.content.pojo.model.ContentPropertyType;
 
-import scot.gov.www.pressreleases.domain.*;
+import scot.gov.www.pressreleases.domain.Media;
+import scot.gov.www.pressreleases.domain.PressRelease;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
