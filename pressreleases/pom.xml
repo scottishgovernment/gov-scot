@@ -10,14 +10,16 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>pressreleases-rest</artifactId>
-
-  <properties>
-    <sonar.coverage.exclusions>
-    </sonar.coverage.exclusions>
-  </properties>
+  <artifactId>pressreleases</artifactId>
 
   <dependencies>
+
+    <dependency>
+      <groupId>scot.gov.www</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>com.github.slugify</groupId>
       <artifactId>slugify</artifactId>
@@ -25,14 +27,33 @@
     </dependency>
 
     <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.15.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-commons</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-repository-jaxrs</artifactId>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>org.onehippo.forge.content-exim</groupId>
       <artifactId>content-exim-core</artifactId>
     </dependency>
+
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jsr310</artifactId>

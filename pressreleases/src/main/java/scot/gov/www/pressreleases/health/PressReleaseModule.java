@@ -1,4 +1,4 @@
-package scot.gov.pressreleases;
+package scot.gov.www.pressreleases.health;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;

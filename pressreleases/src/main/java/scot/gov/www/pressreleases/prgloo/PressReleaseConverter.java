@@ -99,7 +99,7 @@ public class PressReleaseConverter {
     }
 
     private Media convertMedia(Attachment from) {
-        scot.gov.www.pressreleases.domain.Media to = new scot.gov.www.pressreleases.domain.Media();
+        Media to = new Media();
         to.setTitle(from.getName());
         to.setUrl(prglooMediaUrl + from.getPublicId());
         to.setType(from.getContentType());

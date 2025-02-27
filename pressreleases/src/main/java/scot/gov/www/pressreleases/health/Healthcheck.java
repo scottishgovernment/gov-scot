@@ -1,4 +1,4 @@
-package scot.gov.pressreleases;
+package scot.gov.www.pressreleases.health;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

@@ -15,7 +15,7 @@ import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.httpclient.HttpClientSource;
+import scot.gov.www.httpclient.HttpClientSource;
 import scot.gov.publishing.searchjournal.FeatureFlag;
 import scot.gov.publishing.searchjournal.SearchJournal;
 import scot.gov.publishing.searchjournal.SearchJournalEntry;

@@ -1,4 +1,4 @@
-package scot.gov.pressreleases;
+package scot.gov.www.pressreleases.health;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

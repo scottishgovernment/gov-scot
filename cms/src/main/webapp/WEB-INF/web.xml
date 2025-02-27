@@ -14,7 +14,7 @@
   </listener>
 
   <listener>
-    <listener-class>scot.gov.httpclient.HttpClientInitializer</listener-class>
+    <listener-class>scot.gov.www.httpclient.HttpClientInitializer</listener-class>
   </listener>
 
   <context-param>

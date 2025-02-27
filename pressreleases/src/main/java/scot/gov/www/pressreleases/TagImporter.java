@@ -2,9 +2,10 @@ package scot.gov.www.pressreleases;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.pressreleases.ImporterStatus;
-import scot.gov.pressreleases.ImporterStatusUpdater;
-import scot.gov.www.pressreleases.prgloo.*;
+import scot.gov.www.pressreleases.prgloo.PRGlooClient;
+import scot.gov.www.pressreleases.prgloo.PRGlooException;
+import scot.gov.www.pressreleases.health.ImporterStatus;
+import scot.gov.www.pressreleases.health.ImporterStatusUpdater;
 import scot.gov.www.pressreleases.prgloo.rest.Classification;
 import scot.gov.www.pressreleases.prgloo.rest.TagGroup;
 import scot.gov.www.pressreleases.prgloo.rest.TagGroups;

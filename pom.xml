@@ -324,13 +324,14 @@
         <module>cms-dependencies</module>
         <module>cms-deb</module>
         <module>essentials</module>
+        <module>httpclient</module>
         <module>repository</module>
         <module>repository-deb</module>
         <module>site</module>
         <module>site-deb</module>
         <module>gov-scot-libs</module>
         <module>publications-rest</module>
-        <module>pressreleases-rest</module>
+        <module>pressreleases</module>
         <module>redirects-rest</module>
         <module>searchjournal-rest</module>
         <module>imageprocessing</module>
