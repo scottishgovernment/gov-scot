@@ -28,7 +28,7 @@ public class SpeechImporter extends AbstractImporter {
 
     @Override
     PressReleaseSink sink() {
-        return new PublicationSink(session, "govscot:Publication", "speech-statement","new-speech-or-statement-folder");
+        return new PublicationSink(session, "govscot:SpeechOrStatement", "speech-statement","new-speech-or-statement-folder");
     }
 
     @Override
