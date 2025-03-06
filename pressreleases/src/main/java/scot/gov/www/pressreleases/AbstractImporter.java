@@ -1,5 +1,6 @@
 package scot.gov.www.pressreleases;
 
+import org.onehippo.forge.content.exim.core.ContentMigrationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.www.pressreleases.prgloo.PRGlooClient;
@@ -16,12 +17,10 @@ import scot.gov.www.pressreleases.sink.PressReleaseSink;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZonedDateTime;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractImporter {
 
@@ -43,7 +42,7 @@ public abstract class AbstractImporter {
         importerStatus.setLastrun(ZonedDateTime.now());
 
         try {
-            List<Change> changes = fetchChanges(importerStatus.getLastSuccessfulRun().toInstant());
+            List<Change> changes = fetchChanges(getFetchTime(importerStatus));
             processPressReleases(changes, prgloo, sink());
             importerStatus.setLastSuccessfulRun(importerStatus.getLastrun());
             importerStatus.setMessage("");
@@ -57,6 +56,15 @@ public abstract class AbstractImporter {
         }
     }
 
+    Instant getFetchTime(ImporterStatus importerStatus) {
+        Instant lastSuccessfulRun = importerStatus.getLastSuccessfulRun().toInstant();
+        Instant sevenDaysAgo = lastSuccessfulRun.minus(Duration.ofDays(7)).plus(Duration.ofHours(1));
+        if (lastSuccessfulRun.isBefore(sevenDaysAgo)) {
+            return sevenDaysAgo;
+        } else {
+            return lastSuccessfulRun;
+        }
+    }
     List<Change> fetchChanges(Instant from) {
         ChangeHistory history = fetchHistoryCall(from);
         List<Change> changes = history.getHistory();
@@ -68,11 +76,23 @@ public abstract class AbstractImporter {
     public void processPressReleases(List<Change> changes, PRGlooClient prgloo, PressReleaseSink sink) throws RepositoryException {
         Set<String> seen = new HashSet<>();
         LOG.info("processPressReleases {} changes", changes.size());
+        ContentMigrationException contentMigrationException = null;
+        List<String> errorMessages = new ArrayList<>();
         for (Change change : changes) {
             if (!seen.contains(change.getDocId())) {
-                processChange(sink, change, prgloo);
+                try {
+                    processChange(sink, change, prgloo);
+                } catch (ContentMigrationException e) {
+                    LOG.error("Document checked out by user" + change.getDocId(), e);
+                    errorMessages.add(e.getMessage());
+                    contentMigrationException = e;
+                }
             }
             seen.add(change.getDocId());
+        }
+
+        if (contentMigrationException != null) {
+            throw new PressReleaseImporterException(String.join(", ", errorMessages));
         }
     }
 
