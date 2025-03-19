@@ -6,7 +6,15 @@ definitions:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [cmsadmin, news-editors]
         hipposys:role: editor
-      /news-documents:
+      /embargo:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [news-editors]
+        hipposys:role: embargo
+      /importer-documents:
         jcr:primaryType: hipposys:domainrule
         /include-news-documents:
           jcr:primaryType: hipposys:facetrule
@@ -29,11 +37,26 @@ definitions:
           hipposys:filter: false
           hipposys:type: Name
           hipposys:value: embargo:document
-      /embargo:
-        jcr:primaryType: hipposys:authrole
-        hipposys:groups:
-          .meta:category: system
-          .meta:add-new-system-values: true
-          type: string
-          value: [news-editors]
-        hipposys:role: embargo
+      /news-documents:
+        jcr:primaryType: hipposys:domainrule
+        /include-news-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/importers/
+        /hide-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle
+        /hide-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document

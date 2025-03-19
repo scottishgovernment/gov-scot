@@ -4,7 +4,11 @@ definitions:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [cmsadmin]
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [cmsadmin, news-editors]
         hipposys:role: editor
       /readonly:
         jcr:primaryType: hipposys:authrole
@@ -19,4 +23,3 @@ definitions:
           hipposys:filter: false
           hipposys:type: Reference
           hipposys:value: /content/documents/govscot/valuelists
-

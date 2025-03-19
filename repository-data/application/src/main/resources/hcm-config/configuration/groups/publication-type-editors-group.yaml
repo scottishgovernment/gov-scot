@@ -11,6 +11,7 @@ definitions:
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
         value: []
     /hippo:configuration/hippo:groups/agreement-publication-type-editors:
@@ -20,12 +21,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/consultation-analysis-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -33,12 +35,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/consultation-paper-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -46,12 +49,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/corporate-report-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -59,12 +63,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/correspondence-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -72,12 +77,12 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ ]
+        value: [news]
     /hippo:configuration/hippo:groups/factsheet-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -85,12 +90,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/form-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -98,12 +104,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/impact-assessment-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -111,12 +118,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/independent-report-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -124,12 +132,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/map-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -137,12 +146,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/minutes-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -150,12 +160,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/progress-report-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -163,12 +174,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/regulation-directive-order-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -176,12 +188,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/research-and-analysis-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -189,12 +202,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/speech-statement-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -202,12 +216,12 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ ]
+        value: [news]
     /hippo:configuration/hippo:groups/strategy-plan-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -215,12 +229,13 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []
     /hippo:configuration/hippo:groups/transparency-data-publication-type-editors:
       jcr:primaryType: hipposys:group
       hipposys:securityprovider: internal
@@ -228,9 +243,10 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [ xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer ]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true
+        operation: override
         type: string
-        value: [ ]
+        value: []

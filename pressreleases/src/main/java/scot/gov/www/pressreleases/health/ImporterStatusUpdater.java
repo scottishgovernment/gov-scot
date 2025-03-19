@@ -75,7 +75,7 @@ public class ImporterStatusUpdater {
     }
 
     Calendar defaultLastRuntime() {
-        return GregorianCalendar.from(ZonedDateTime.now(clock).minusDays(7).plusMinutes(1).truncatedTo(ChronoUnit.SECONDS));
+        return GregorianCalendar.from(ZonedDateTime.now(clock).minusDays(7).plusHours(1).truncatedTo(ChronoUnit.SECONDS));
     }
 
     Node importerNode(String importer, Session session) throws RepositoryException {

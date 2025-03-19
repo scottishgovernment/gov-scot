@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.pressreleases.prgloo.PRGlooClient;
 import scot.gov.www.pressreleases.prgloo.PRGlooConfiguration;
 
+import javax.jcr.Credentials;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.SimpleCredentials;
 
 public class TagImporterJob implements RepositoryJob {
 
@@ -24,22 +26,28 @@ public class TagImporterJob implements RepositoryJob {
             return;
         }
 
-        Session session = context.createSystemSession();
+
+        Session systemSession = context.createSystemSession();
+        Session session = null;
         try {
+            Credentials credentials = new SimpleCredentials("news", "".toCharArray());
+            session = systemSession.impersonate(credentials);
             doImport(session);
-        } catch (RepositoryException e) {
-            LOG.error("failed ", e);
-        } catch (PressReleaseImporterException e) {
+        } catch (RepositoryException | PressReleaseImporterException e) {
             LOG.error("failed ", e);
         } finally {
-            session.logout();
+            if (session != null) {
+                session.logout();
+            }
+            systemSession.logout();
+
         }
     }
 
     void doImport(Session session) throws RepositoryException {
         LOG.info("TagImporter running");
         new TagImporter(session).doImport();
-        LOG.info("PressReleaseImporter finished");
+        LOG.info("TagImporter finished");
     }
 
 }
