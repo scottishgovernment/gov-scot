@@ -3,20 +3,8 @@
 \*------------------------------------*/
 
 /* [1] compensate for 1px border */
-.#{$site-prefix}feedback {
+.gov_feedback {
     border-top: 1px solid $ds_colour__border;
     margin-top: 32px;
     padding-top: 31px; /* [1] */
-
-    &__success {
-        @include ds_block-margins;
-
-        background-color: $ds_colour__state--positive;
-        color: $ds_colour__white;
-        padding: 16px 24px;
-
-        > :last-child {
-            margin-bottom: 0;
-        }
-    }
 }

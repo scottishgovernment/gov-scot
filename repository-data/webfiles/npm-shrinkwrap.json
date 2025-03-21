@@ -10,6 +10,7 @@
       "devDependencies": {
         "@babel/core": "^7.6.4",
         "@babel/preset-env": "^7.6.3",
+        "@dryfeld/nunjucks-loader": "^4.0.4",
         "@scottish-government-design-system/content-blocks": "^0.1.2",
         "@scottish-government/design-system": "^2.3.2",
         "babel-loader": "^8.0.5",
@@ -25,6 +26,7 @@
         "karma-jasmine-jquery-2": "^0.1.1",
         "karma-jasmine-matchers": "^4.0.1",
         "karma-webpack": "^4.0.0-rc.6",
+        "nunjucks": "^3.2.3",
         "sass": "^1.49.11",
         "sealant": "0.0.2",
         "svg-sprite": "^1.4.0",
@@ -1646,6 +1648,16 @@
         "kuler": "^2.0.0"
       }
     },
+    "node_modules/@dryfeld/nunjucks-loader": {
+      "version": "4.0.4",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@dryfeld/nunjucks-loader/-/nunjucks-loader-4.0.4.tgz",
+      "integrity": "sha512-ZpohhSwhMUq0si5gbZCBKLzT+BuHWHQUmGDIkRQfFm6AZuEOrGRnLHztzqGeKZ51p13mp4rryijms2vTr9ZYPA==",
+      "dev": true,
+      "license": "MIT",
+      "peerDependencies": {
+        "nunjucks": ">= 2.5.0 <= 4.0.0"
+      }
+    },
     "node_modules/@jridgewell/gen-mapping": {
       "version": "0.3.5",
       "resolved": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.5.tgz",
@@ -1951,6 +1963,13 @@
       "integrity": "sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==",
       "dev": true
     },
+    "node_modules/a-sync-waterfall": {
+      "version": "1.0.1",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/a-sync-waterfall/-/a-sync-waterfall-1.0.1.tgz",
+      "integrity": "sha512-RYTOHHdWipFUliRFMCS4X2Yn2X8M87V/OpSqWzKKOGhzqyUxzyVmhHDH9sAvG+ZuQf/TAOFsLCpMw09I1ufUnA==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/abbrev": {
       "version": "1.0.9",
       "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-1.0.9.tgz",
@@ -2203,6 +2222,13 @@
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
       }
+    },
+    "node_modules/asap": {
+      "version": "2.0.6",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/asap/-/asap-2.0.6.tgz",
+      "integrity": "sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/asn1": {
       "version": "0.2.6",
@@ -7620,6 +7646,42 @@
       "dev": true,
       "engines": {
         "node": ">=0.10.0"
+      }
+    },
+    "node_modules/nunjucks": {
+      "version": "3.2.3",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/nunjucks/-/nunjucks-3.2.3.tgz",
+      "integrity": "sha512-psb6xjLj47+fE76JdZwskvwG4MYsQKXUtMsPh6U0YMvmyjRtKRFcxnlXGWglNybtNTNVmGdp94K62/+NjF5FDQ==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "dependencies": {
+        "a-sync-waterfall": "^1.0.0",
+        "asap": "^2.0.3",
+        "commander": "^5.1.0"
+      },
+      "bin": {
+        "nunjucks-precompile": "bin/precompile"
+      },
+      "engines": {
+        "node": ">= 6.9.0"
+      },
+      "peerDependencies": {
+        "chokidar": "^3.3.0"
+      },
+      "peerDependenciesMeta": {
+        "chokidar": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/nunjucks/node_modules/commander": {
+      "version": "5.1.0",
+      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/commander/-/commander-5.1.0.tgz",
+      "integrity": "sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">= 6"
       }
     },
     "node_modules/oauth-sign": {

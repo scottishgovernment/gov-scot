@@ -1,0 +1,27 @@
+{% if errors.length %}
+<div class="ds_error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert">
+    <h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
+
+    {% if errors.length > 1 %}
+        <ul class="ds_error-summary__list">
+            {% for item in errors %}
+                <li>
+                    {% if item.fragmentId %}
+                        <a class="ds_error-summary__link" href="#{{ item.fragmentId }}">{{item.fieldName}}: {{ item.message }}</a>
+                    {% else %}
+                        {{item.message}}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="ds_error-summary__list">
+            {% if errors[0].fragmentId %}
+                <a class="ds_error-summary__link" href="#{{ errors[0].fragmentId }}">{{errors[0].fieldName}}: {{ errors[0].message }}</a>
+            {% else %}
+                {{errors[0].message}}
+            {% endif %}
+        </p>
+    {% endif %}
+</div>
+{% endif %}
