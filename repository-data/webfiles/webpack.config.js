@@ -25,11 +25,19 @@ const commonItems = {
             'node_modules'
         ],
 
-        extensions: ['.js']
+        extensions: ['.js', '.njk']
     },
 
     module: {
-        rules: []
+        rules: [
+            {
+                test: /\.njk/,
+                loader: '@dryfeld/nunjucks-loader',
+                options: {
+                    config: 'src/scripts/nunjucks.config.js'
+                }
+            }
+        ]
     }
 };
 
@@ -40,6 +48,7 @@ module.exports = [{
     entry: commonItems.entry,
     externals: commonItems.externals,
     resolve: commonItems.resolve,
+    module: commonItems.module,
 
     output: {
         path: path.resolve(__dirname, 'src/main/resources/site/assets/scripts'),
@@ -53,6 +62,7 @@ module.exports = [{
 
     module: {
         rules: [
+            commonItems.module.rules[0],
             {
                 test: /\.js$/,
                 use: {

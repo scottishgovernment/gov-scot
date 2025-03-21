@@ -1,0 +1,60 @@
+{% if step == 'type' %}
+    <div id="feedback-step-1" class="feedback-step">
+        <div class="ds_question">
+            <fieldset id="feedback-type" data-newvalidation="true" data-validation="requiredRadio">
+                <legend class="ds_label">Was this page helpful?</legend>
+
+                <div class="ds_radio  ds_radio--small">
+                    <input value="yes" type="radio" class="ds_radio__input" name="feedback-type" id="feedback-yes" />
+                    <label class="ds_radio__label" for="feedback-yes">Yes</label>
+                </div>
+
+                <div class="ds_radio  ds_radio--small">
+                    <input value="no" type="radio" class="ds_radio__input" name="feedback-type" id="feedback-no" />
+                    <label class="ds_radio__label" for="feedback-no">No</label>
+                </div>
+
+                <div class="ds_radio  ds_radio--small">
+                    <input value="yesbut" type="radio" class="ds_radio__input" name="feedback-type" id="feedback-yesbut" />
+                    <label class="ds_radio__label" for="feedback-yesbut">Yes, but</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <button type="button" class="js-continue  ds_button  ds_button--secondary">Continue</button>
+    </div>
+{% endif %}
+{% if step == 'details' %}
+    <div id="feedback-step-2" class="feedback-step">
+        {% if data.type == 'no' or data.type == 'yesbut' %}
+            <div class="ds_question">
+                <label class="ds_label" for="reason">Choose a reason for your feedback</label>
+                <div class="ds_select-wrapper">
+                    <select name="reason" id="reason" class="ds_select" {% if data.type === 'no' %}data-newvalidation="true" data-validation="requiredDropdown"{% endif %}>
+                        <option selected="" disabled="" value="">Please select a reason</option>
+                        {% if data.type == 'no' %}<option value="It wasn't detailed enough">It wasn't detailed enough</option>{% endif %}
+                        {% if data.type == 'no' or data.type == 'yesbut' %}<option value="It's hard to understand">It's hard to understand</option>{% endif %}
+                        {% if data.type == 'no' %}<option value="It's incorrect">It's incorrect</option>{% endif %}
+                        {% if data.type == 'no' or data.type == 'yesbut' %}<option value="It needs updating">It needs updating</option>{% endif %}
+                        {% if data.type == 'no' or data.type == 'yesbut' %}<option value="There's a broken link">There's a broken link</option>{% endif %}
+                        {% if data.type == 'yesbut' %}<option value="There's a spelling mistake">There's a spelling mistake</option>{% endif %}
+                        {% if data.type == 'no' %}<option value="It wasn't what I was looking for">It wasn't what I was looking for</option>{% endif %}
+                        {% if data.type == 'no' or data.type == 'yesbut' %}<option value="Other">Other</option>{% endif %}
+                    </select>
+                    <span class="ds_select-arrow" aria-hidden="true"></span>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="ds_question">
+            <label class="ds_label" for="feedback-comments">Your comments</label>
+            <p class="ds_hint-text">Your feedback helps us to improve this website. Do not give any personal information because we cannot reply to you directly.</p>
+            <textarea name="comment" class="ds_input" rows="5" maxlength="250" id="feedback-comments" {% if data.type === 'no' or data.type === 'yesbut' %}data-newvalidation="true" data-validation="requiredField"{% endif %}></textarea>
+        </div>
+
+        <div class="ds_button-group">
+            <button type="button" class="js-cancel  ds_button  ds_button--secondary">Cancel</button>
+            <button type="submit" class="js-submit  ds_button">Submit</button>
+        </div>
+    </div>
+{% endif %}
