@@ -30,7 +30,7 @@
             <div class="ds_question">
                 <label class="ds_label" for="reason">Choose a reason for your feedback</label>
                 <div class="ds_select-wrapper">
-                    <select name="reason" id="reason" class="ds_select" {% if data.type === 'no' %}data-newvalidation="true" data-validation="requiredDropdown"{% endif %}>
+                    <select name="reason" id="reason" class="ds_select" {% if data.type == 'no' or data.type == 'yesbut' %}data-newvalidation="true" data-validation="requiredDropdown"{% endif %}>
                         <option selected="" disabled="" value="">Please select a reason</option>
                         {% if data.type == 'no' %}<option value="It wasn't detailed enough">It wasn't detailed enough</option>{% endif %}
                         {% if data.type == 'no' or data.type == 'yesbut' %}<option value="It's hard to understand">It's hard to understand</option>{% endif %}
