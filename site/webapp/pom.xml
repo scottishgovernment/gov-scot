@@ -4,7 +4,7 @@
   <parent>
     <artifactId>gov-scot-site</artifactId>
     <groupId>scot.gov.www</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1691</version>
   </parent>
 
   <artifactId>gov-scot-webapp</artifactId>
@@ -54,7 +54,7 @@
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-hst</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.138</version>
     </dependency>
 
   </dependencies>
