@@ -12,7 +12,7 @@
     <@hst.include ref="plausibleanalytics"/>
     <@hst.include ref="schema-website"/>
     <@hst.headContributions categoryIncludes="pageTitle"/>
-    <@hst.headContributions categoryIncludes="opemGraph"/>
+    <@hst.headContributions categoryIncludes="openGraph"/>
     <@hst.headContributions categoryIncludes="schema"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@
     <meta name="msapplication-TileColor" content="#0065bd">
     <meta name="theme-color" content="#ffffff">
 
-    <@hst.headContributions categoryExcludes="schema, noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager, googleTagManagerDataLayer, opemGraph" xhtml=true/>
+    <@hst.headContributions categoryExcludes="schema, noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager, googleTagManagerDataLayer, openGraph" xhtml=true/>
 
     <script>
         BR = window.BR || {};
