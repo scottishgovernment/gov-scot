@@ -47,6 +47,7 @@
     <forge.embargo.version>7.0.2</forge.embargo.version>
     <forge.breadcrumb.version>5.0.0</forge.breadcrumb.version>
     <forge.resetpassword.version>6.0.0</forge.resetpassword.version>
+    <review-workflow.version>1.2.1</review-workflow.version>
     <freemarker.version>2.3.28</freemarker.version>
 
     <retrofit.version>2.4.0</retrofit.version>
@@ -99,6 +100,12 @@
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-repository-builtin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bloomreach.forge.review-workflow</groupId>
+      <artifactId>review-workflow-shared</artifactId>
+      <version>${review-workflow.version}</version>
     </dependency>
 
     <dependency>
@@ -393,6 +400,11 @@
           <artifactId>jaxb-runtime</artifactId>
           <scope>runtime</scope>
         </dependency>
+<!--        <dependency>-->
+<!--          <groupId>org.bloomreach.forge.review-workflow</groupId>-->
+<!--          <artifactId>review-workflow-shared</artifactId>-->
+<!--          <scope>shared</scope>-->
+<!--        </dependency>-->
       </dependencies>
       <build>
         <defaultGoal>initialize</defaultGoal>
