@@ -2,10 +2,7 @@ package scot.gov.www;
 
 import org.apache.commons.lang.StringUtils;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.www.searchjournal.JournalPopulationJob;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
