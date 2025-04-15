@@ -2,7 +2,10 @@ package scot.gov.www;
 
 import org.apache.commons.lang.StringUtils;
 import org.onehippo.repository.events.HippoWorkflowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
+import scot.gov.www.searchjournal.JournalPopulationJob;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -10,7 +13,7 @@ import javax.jcr.RepositoryException;
 import java.util.Calendar;
 
 /**
- * When a publication is publish, ensure the the latestUpdateDate field is populated from the most recent entry in the
+ * When a publication is published, ensure that the latestUpdateDate field is populated from the most recent entry in the
  * updateHistory.
  */
 public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
@@ -32,13 +35,16 @@ public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
         Node subject = session.getNodeByIdentifier(event.subjectId());
 
         Node publication = null;
-        if (subject.isNodeType("govscot:Publication")) {
+        if (isPublication(subject)) {
             publication = subject;
         }
 
         // some event have the
         if (subject.isNodeType("hippo:handle")) {
-            publication = new HippoUtils().getVariant(subject.getNodes());
+            publication = new HippoUtils().getVariant(subject.getNodes(subject.getName()));
+            if (!isPublication(publication)) {
+                publication = null;
+            }
         }
 
         if (publication == null) {
@@ -46,6 +52,10 @@ public class PublicationDisplayDateDaemonModule extends DaemonModuleBase {
         }
 
         maintainDisplayDate(publication);
+    }
+
+    boolean isPublication(Node node) throws RepositoryException {
+        return node.isNodeType("govscot:Publication");
     }
 
     void maintainDisplayDate(Node publication) throws RepositoryException {
