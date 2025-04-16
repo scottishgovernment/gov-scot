@@ -1,0 +1,52 @@
+
+/*------------------------------------*\
+    CONTENT BLOCK OVERRIDES
+    Temporary fix for dark background blocks before replacement in new page blocks package
+\*------------------------------------*/
+
+// colors
+
+$cb_colors: (
+    'blue'      $ds_colour__blue        'reversed',
+    'darkblue'  $ds_colour__blue--darker 'reversed',
+    'darkteal'  $ds_colour__dark-teal   'reversed',
+    'darkgreen' $ds_colour__dark-green  'reversed',
+    'red'       $ds_colour__red         'reversed',
+    'pink'      $ds_colour__pink        'reversed',
+    'purple'    $ds_colour__purple      'reversed',
+    'brown'     $ds_colour__brown       'reversed'
+);
+
+%texttheme-reversed {
+
+    a:not(:focus):not(.ds_button) {
+        color: currentColor;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration-thickness: $link__underline-thickness--hover;
+        }
+    }
+
+}
+
+.ds_cb {
+
+    @each $color in $cb_colors {
+        $name: nth($color, 1);
+        $hex: nth($color, 2);
+        $texttheme: nth($color, 3);
+
+        &--fullwidth.ds_cb--bg-#{$name},
+        &:not(&--fullwidth).ds_cb--bg-#{$name} .ds_wrapper {
+            background-color: #{$hex};
+        }
+
+        &--bg-#{$name} {
+            @if ($texttheme == 'reversed') {
+                @extend %texttheme-reversed;
+            }
+        }
+
+    }
+}

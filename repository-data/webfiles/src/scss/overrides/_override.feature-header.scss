@@ -3,6 +3,62 @@
 \*------------------------------------*/
 
 .ds_feature-header {
+
+    // Reduce vertical padding on text if aspect box used for image - so image specifies height
+    &:has(.ds_aspect-box){
+        .ds_feature-header__primary {
+            @include ds_media-query(medium) {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+    }
+
+    &--topic {
+        background-color: transparent;
+    }
+
+    &--full-image {
+        color: inherit;
+        padding: 0;
+    }
+
+    &--full-image &__primary{
+        @include media-query(medium-down) {
+            padding: 0 !important;
+        }
+        @include media-query(medium) {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    &--full-image &__secondary {
+        grid-area: 1/1/2/13 !important;
+        margin: 0 -1rem 0.5rem;
+
+        @include media-query(medium) {
+            margin: 0;
+        }
+    }
+
+    &--issue &__primary {
+        align-self: start;
+        padding-top: 0;
+    }
+
+    &--issue &__title {
+        padding: 0 1rem 0.5rem 0;
+    }
+
+    &--issue &__primary > * {
+        background: $ds_colour__white;
+        display: inline-block;
+    }
+
+    /*
     &__primary {
         padding-right: 2rem;
     }
@@ -43,8 +99,10 @@
         background: $ds_colour__white;
         display: inline-block;
     }
-}
 
+    */
+}
+/*
 // ie
 .ds_feature-header {
     @include media-query(medium) {
@@ -58,3 +116,4 @@
         }
     }
 }
+*/

@@ -43,6 +43,10 @@
     text-decoration: underline;
   }
 
+  &:hover &__label {
+    text-decoration-thickness: $link__underline-thickness--hover;
+  }
+
   &:focus &__label {
     text-decoration: none;
   }

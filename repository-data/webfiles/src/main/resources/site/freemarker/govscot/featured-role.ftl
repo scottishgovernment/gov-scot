@@ -10,7 +10,7 @@
         <#assign postalAddress = document.incumbent.postalAddress/>
 
         <div class="ds_layout__header">
-            <header class="ds_feature-header  ds_feature-header--background" id="page-content">
+            <header class="ds_feature-header  ds_feature-header--background-tertiary" id="page-content">
                 <div class="ds_feature-header__primary">
                     <h1 class="ds_feature-header__title" id="sg-meta__person-role">${document.title}</h1>
                     <#if document.incumbent??>

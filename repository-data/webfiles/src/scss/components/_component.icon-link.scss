@@ -12,6 +12,7 @@ $icon-spacing: 1.5em;
 
     &__text {
         text-decoration: underline;
+        text-underline-offset: $link__underline-offset;
     }
 
     &__icon {
@@ -26,6 +27,10 @@ $icon-spacing: 1.5em;
 
         margin-top: -0.25em;
         right: 0.333333em;
+    }
+
+    &:hover &__text {
+        text-decoration-thickness: $link__underline-thickness--hover;
     }
 
     &:focus &__text {
@@ -50,10 +55,20 @@ $icon-spacing: 1.5em;
 
     &--major {
         display: inline-block;
-        border-bottom: px-to-em(2px) solid currentColor;
+        border-bottom: 2px solid currentColor;
         font-weight: $bold;
         padding-top: 6px;
         padding-bottom: 2px;
+
+        &:hover {
+            border-bottom-width: 3px;
+            padding-bottom: 1px;
+
+            @include ds_media-query(medium) {
+                border-bottom-width: 4px;
+                padding-bottom: 0;
+            }
+        }
 
         &:focus {
             border-bottom-color: transparent;
