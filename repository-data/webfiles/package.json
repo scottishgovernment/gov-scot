@@ -19,7 +19,7 @@
     "@babel/preset-env": "^7.6.3",
     "@dryfeld/nunjucks-loader": "^4.0.4",
     "@scottish-government-design-system/content-blocks": "^0.1.2",
-    "@scottish-government/design-system": "^3.0.0",
+    "@scottish-government/design-system": "^3.0.1",
     "babel-loader": "^8.0.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^2.4.1",
