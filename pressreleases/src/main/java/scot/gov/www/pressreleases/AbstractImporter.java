@@ -65,6 +65,7 @@ public abstract class AbstractImporter {
             return lastSuccessfulRun;
         }
     }
+
     List<Change> fetchChanges(Instant from) {
         ChangeHistory history = fetchHistoryCall(from);
         List<Change> changes = history.getHistory();
@@ -119,7 +120,8 @@ public abstract class AbstractImporter {
         try {
             return prgloo.item(id);
         } catch (PRGlooException e) {
-            throw new PressReleaseImporterException("Failed to fetch item " + id, e);
+            LOG.warn("Item not found: {}", id, e);
+            return null;
         }
     }
 
