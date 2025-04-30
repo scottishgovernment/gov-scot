@@ -179,6 +179,14 @@
       <artifactId>hippo-govscot-bulkpublish-repository</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
+
+    <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-feedback-cms</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
+
 
 </project>

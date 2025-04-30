@@ -1,0 +1,20 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/group-gov-feedback:
+      jcr:primaryType: hipposys:domain
+      /readonly:
+        jcr:primaryType: hipposys:authrole
+        hipposys:role: readonly
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [feedback]
+      /groups:
+        jcr:primaryType: hipposys:domainrule
+        /groups-and-descendants:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:type: Reference
+          hipposys:value: /hst:hst/hst:hosts/
