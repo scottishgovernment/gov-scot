@@ -23,6 +23,7 @@ definitions:
         embargo-shcs, embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
         embargo-agriculture-statistics, embargo-community-ownership-statistics,
         embargo-employability-statistics, embargo-justice-system-monitoring-team, embargo-sscq,
+        embargo-rural-statistics, embargo-scottish-crime-and-justice-survey,
         embargo-temporary,
         cmsadmin,
         collection-authors, collection-editors,

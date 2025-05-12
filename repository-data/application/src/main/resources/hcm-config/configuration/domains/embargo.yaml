@@ -8,21 +8,21 @@ definitions:
         .meta:add-new-system-values: true
         type: string
         value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
-                embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
-                embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
-                embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
-                embargo-agriculture-statistics, embargo-community-ownership-statistics,
-                embargo-employability-statistics, embargo-justice-system-monitoring-team, embargo-sscq,
-                embargo-temporary]
+          embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
+          embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
+          embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
+          embargo-agriculture-statistics, embargo-community-ownership-statistics,
+          embargo-employability-statistics, embargo-justice-system-monitoring-team,
+          embargo-sscq, embargo-temporary, embargo-trade-statistics, embargo-scottish-crime-and-justice-survey]
     /hippo:configuration/hippo:domains/embargo/embargo:
       hipposys:groups:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
         value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
-                embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
-                embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
-                embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
-                embargo-agriculture-statistics, embargo-community-ownership-statistics,
-                embargo-employability-statistics, embargo-justice-system-monitoring-team, embargo-sscq,
-                embargo-temporary]
+          embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
+          embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
+          embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
+          embargo-agriculture-statistics, embargo-community-ownership-statistics,
+          embargo-employability-statistics, embargo-justice-system-monitoring-team,
+          embargo-sscq, embargo-temporary, embargo-trade-statistics, embargo-scottish-crime-and-justice-survey]
