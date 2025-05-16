@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>15.7.1</version>
+    <version>16.0.0</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -43,22 +43,22 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <forge.feed.version>7.0.0</forge.feed.version>
-    <forge.embargo.version>7.0.2</forge.embargo.version>
-    <forge.breadcrumb.version>5.0.0</forge.breadcrumb.version>
-    <forge.resetpassword.version>6.0.0</forge.resetpassword.version>
-    <freemarker.version>2.3.28</freemarker.version>
+    <forge.feed.version>8.0.0</forge.feed.version>
+    <forge.embargo.version>8.0.0</forge.embargo.version>
+    <forge.breadcrumb.version>6.0.0</forge.breadcrumb.version>
+    <forge.resetpassword.version>7.0.0</forge.resetpassword.version>
+<!--    <freemarker.version>2.3.28</freemarker.version>-->
 
     <retrofit.version>2.4.0</retrofit.version>
 
-    <forge.content-exim.version>5.0.0</forge.content-exim.version>
-    <essentials.version>15.7.1</essentials.version>
-    <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.5</taglibs.version>
+    <forge.content-exim.version>6.0.1</forge.content-exim.version>
+    <essentials.version>16.0.0</essentials.version>
+<!--    <jsp-api.version>2.2</jsp-api.version>-->
+<!--    <taglibs.version>1.2.5</taglibs.version>-->
     <junit.version>4.13.1</junit.version>
     <easymock.version>3.4</easymock.version>
     <mockito.version>2.22.0</mockito.version>
-    <commons-io.version>2.14.0</commons-io.version>
+    <commons-io.version>2.16.1</commons-io.version>
 
     <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
     <maven.plugin.cargo.version>1.7.0</maven.plugin.cargo.version>
@@ -70,7 +70,7 @@
 
     <index.configuration>cms/src/main/resources/org/hippoecm/repository/query/lucene/indexing_configuration.xml</index.configuration>
 
-    <log4j2.version>2.17.0</log4j2.version>
+    <log4j2.version>2.23.1</log4j2.version>
 
     <cargo.debug.address>8000</cargo.debug.address>
     <cargo.debug.suspend>n</cargo.debug.suspend>
@@ -123,9 +123,9 @@
       </dependency>
 
       <dependency>
-        <groupId>javax.servlet.jsp</groupId>
+        <groupId>jakarta.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
-        <version>${jsp-api.version}</version>
+<!--        <version>${jsp-api.version}</version>-->
         <scope>provided</scope>
       </dependency>
 
@@ -145,14 +145,14 @@
       <dependency>
         <groupId>org.apache.taglibs</groupId>
         <artifactId>taglibs-standard-spec</artifactId>
-        <version>${taglibs.version}</version>
+<!--        <version>${taglibs.version}</version>-->
         <scope>runtime</scope>
       </dependency>
 
       <dependency>
         <groupId>org.apache.taglibs</groupId>
         <artifactId>taglibs-standard-impl</artifactId>
-        <version>${taglibs.version}</version>
+<!--        <version>${taglibs.version}</version>-->
         <scope>runtime</scope>
       </dependency>
 
@@ -222,7 +222,7 @@
 
         <plugin>
           <groupId>org.codehaus.cargo</groupId>
-          <artifactId>cargo-maven2-plugin</artifactId>
+          <artifactId>cargo-maven3-plugin</artifactId>
           <version>${maven.plugin.cargo.version}</version>
           <configuration>
             <configuration>
@@ -379,8 +379,8 @@
           <scope>compile</scope>
         </dependency>
         <dependency>
-          <groupId>javax.annotation</groupId>
-          <artifactId>javax.annotation-api</artifactId>
+          <groupId>jakarta.annotation</groupId>
+          <artifactId>jakarta.annotation-api</artifactId>
           <scope>compile</scope>
         </dependency>
         <dependency>
@@ -399,7 +399,7 @@
         <plugins>
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
-            <artifactId>cargo-maven2-plugin</artifactId>
+            <artifactId>cargo-maven3-plugin</artifactId>
             <executions>
               <execution>
                 <id>cargo-run</id>

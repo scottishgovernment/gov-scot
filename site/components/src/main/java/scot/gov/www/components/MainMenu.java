@@ -8,7 +8,7 @@ import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 import org.onehippo.cms7.essentials.components.EssentialsMenuComponent;
 import org.onehippo.cms7.essentials.components.info.EssentialsMenuComponentInfo;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 /**
  * Subclass the standard menu component in order to feature flag items.

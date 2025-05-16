@@ -8,7 +8,8 @@
       <includes>
         <include>javax.jcr:jcr</include>
         <include>org.apache.geronimo.specs:geronimo-jta_1.1_spec</include>
-        <include>com.sun.mail:jakarta.mail</include>
+        <include>jakarta.mail:jakarta.mail-api</include>
+        <include>org.eclipse.angus:angus-mail</include>
       </includes>
     </dependencySet>
   </dependencySets>
