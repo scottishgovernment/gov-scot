@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import javax.jcr.RepositoryException;
-import javax.ws.rs.core.*;
+import jakarta.ws.rs.core.*;
 import java.util.Collections;
 import java.util.List;
 

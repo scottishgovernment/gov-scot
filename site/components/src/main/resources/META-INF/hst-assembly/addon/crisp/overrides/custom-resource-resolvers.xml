@@ -28,16 +28,9 @@
         <property name="resourceDataCache">
             <bean class="org.onehippo.cms7.crisp.core.resource.SpringResourceDataCache">
                 <constructor-arg>
-                    <bean class="org.springframework.cache.ehcache.EhCacheCache">
-                        <constructor-arg>
-                            <bean parent="abstractCrispResourceEhCache">
-                                <property name="cacheName" value="funnelbackSearch" />
-                                <property name="maxEntriesLocalHeap" value="1000" />
-                                <property name="maxEntriesLocalDisk" value="0" />
-                                <property name="timeToLiveSeconds" value="60" />
-                                <property name="timeToIdleSeconds" value="60" />
-                            </bean>
-                        </constructor-arg>
+                    <bean class="org.springframework.cache.caffeine.CaffeineCache" factory-bean="caffeineCacheInstanceFactory" factory-method="createSpringCacheInstance">
+                        <constructor-arg value="demomarketoCache" />
+                        <constructor-arg value="initialCapacity=10,maximumSize=1000,expireAfterWrite=100s,expireAfterAccess=100s" />
                     </bean>
                 </constructor-arg>
             </bean>
