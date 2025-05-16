@@ -8,7 +8,7 @@ import org.onehippo.forge.breadcrumb.components.BreadcrumbComponent;
 import org.onehippo.forge.breadcrumb.components.BreadcrumbParametersInfo;
 import org.onehippo.forge.breadcrumb.components.BreadcrumbProvider;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 @ParametersInfo(type = BreadcrumbParametersInfo.class)
 public class BreadcrumbRenderingComponent extends BreadcrumbComponent {

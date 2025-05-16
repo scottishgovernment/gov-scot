@@ -38,11 +38,6 @@
     </dependency>
 
     <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>org.bloomreach.forge.breadcrumb</groupId>
       <artifactId>breadcrumb</artifactId>
       <version>${forge.breadcrumb.version}</version>
@@ -55,13 +50,15 @@
     </dependency>
 
     <dependency>
-      <groupId>org.apache.taglibs</groupId>
-      <artifactId>taglibs-standard-spec</artifactId>
+      <groupId>com.bloomreach.xm</groupId>
+      <artifactId>taglibs-standard-spec-jakarta</artifactId>
+      <version>${taglibs.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.apache.taglibs</groupId>
-      <artifactId>taglibs-standard-impl</artifactId>
+      <groupId>com.bloomreach.xm</groupId>
+      <artifactId>taglibs-standard-impl-jakarta</artifactId>
+      <version>${taglibs.version}</version>
     </dependency>
 
     <dependency>
@@ -81,8 +78,8 @@
     </dependency>
 
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
       <scope>provided</scope>
     </dependency>
 

@@ -28,7 +28,7 @@
 
     <Resource name="mail/Session"
               auth="Container"
-              type="javax.mail.Session"
+              type="jakarta.mail.Session"
               mail.smtp.host="127.0.0.1"
               mail.smtp.port= "2525"
     />

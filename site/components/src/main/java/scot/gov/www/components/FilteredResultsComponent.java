@@ -32,8 +32,8 @@ import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;

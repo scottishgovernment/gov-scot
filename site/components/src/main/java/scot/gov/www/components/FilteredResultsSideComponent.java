@@ -24,7 +24,7 @@ import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
 import scot.gov.www.components.info.FilteredResultsSideComponentInfo;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.*;
 
 import static scot.gov.www.components.FilteredResultsComponent.PUBLICATION_TYPES;

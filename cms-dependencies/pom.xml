@@ -111,16 +111,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-cms-google-analytics-frontend</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.client-modules</groupId>
-      <artifactId>hst-google-analytics-repository</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>org.bloomreach.forge.embargo</groupId>
       <artifactId>embargo-cms</artifactId>
       <version>${forge.embargo.version}</version>
