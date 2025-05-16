@@ -157,13 +157,15 @@
                                     <@fmt.formatDate value=document.closingDate.time type="both" pattern="d MMMM yyyy"/>,
                                     in any of the following ways:
                                     </p>
-                                    <h3>Online form</h3>
-                                    <p>
-                                        <a href="${document.responseUrl}" class="ds_button ds_button--has-icon  ds_no-margin--bottom">
-                                        Respond online
-                                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
-                                        </a>
-                                    </p>
+                                    <#if document.responseUrl?has_content>
+                                        <h3>Online form</h3>
+                                        <p>
+                                            <a href="${document.responseUrl}" class="ds_button ds_button--has-icon  ds_no-margin--bottom">
+                                            Respond online
+                                            <svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#chevron_right"></use></svg>
+                                            </a>
+                                        </p>
+                                    </#if>
                                     <#list document.consultationResponseMethods as responseMethod>
                                         <h3>${responseMethod.type}</h3>
                                         <@hst.html hippohtml=responseMethod.content/>
