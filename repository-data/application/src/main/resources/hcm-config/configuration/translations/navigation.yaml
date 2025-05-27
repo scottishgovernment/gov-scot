@@ -1,4 +1,0 @@
-definitions:
-  config:
-    /hippo:configuration/hippo:translations/hippo:navigation/navigationitem/displayName/en:
-      feedback: Feedback
