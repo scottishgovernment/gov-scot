@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/feedback/hippo:moduleconfig:
+      hostgroup: www
+      hstroot: hst:hst
