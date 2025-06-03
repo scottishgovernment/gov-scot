@@ -1,5 +1,7 @@
 definitions:
   config:
+    /hippo:configuration/hippo:frontend/cms/cms-services/logoutService:
+      plugin.class: scot.gov.publishing.hippo.sso.SsoLogoutService
     /hippo:configuration/hippo:frontend/cms/cms-services/imageValidationService:
       max.width: 2280
     /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
