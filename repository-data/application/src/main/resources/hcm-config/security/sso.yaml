@@ -1,0 +1,11 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:security/sso:
+      jcr:primaryType: hipposys:securityprovider
+      hipposys:classname: scot.gov.publishing.hippo.sso.SsoSecurityProvider
+      /hipposys:userprovider:
+        jcr:primaryType: hipposys:userprovider
+        hipposys:dirlevels: 0
+      /hipposys:groupprovider:
+        jcr:primaryType: hipposys:groupprovider
+        hipposys:dirlevels: 0

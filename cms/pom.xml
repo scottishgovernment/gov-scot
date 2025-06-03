@@ -106,6 +106,18 @@
       <version>2.3.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.nimbusds</groupId>
+      <artifactId>oauth2-oidc-sdk</artifactId>
+      <version>11.26</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.nimbusds</groupId>
+      <artifactId>nimbus-jose-jwt</artifactId>
+      <version>10.3.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>

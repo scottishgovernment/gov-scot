@@ -2,6 +2,8 @@ definitions:
   config:
     /hippo:configuration/hippo:frontend/cms/cms-editor/editorPlugin:
       plugin.class: scot.gov.publishing.plugins.ExtendedEditorPlugin
+    /hippo:configuration/hippo:frontend/cms/cms-services/logoutService:
+      plugin.class: scot.gov.publishing.hippo.sso.SsoLogoutService
     /hippo:configuration/hippo:frontend/cms/cms-services/imageValidationService:
       max.width: 2280
     /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
@@ -575,6 +577,8 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-advanced-search/genericFilters:
       document.type.namespaces: [govscot]
       document.type.excluded: ['govscot:ComplexDocument', 'govscot:publicationjob']
+    /hippo:configuration/hippo:frontend/cms/cms-admin/users:
+      plugin.class: scot.gov.publishing.hippo.sso.useradmin.SsoListUsersPlugin
     /hippo:configuration/hippo:frontend/cms/cms-admin/groups:
       hipposys:userrole: xm.security.application-admin
     /hippo:configuration/hippo:frontend/cms/cms-admin/permissions:
