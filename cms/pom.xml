@@ -16,6 +16,8 @@
   <description>www.gov.scot CMS</description>
 
   <properties>
+    <spring.version>6.5.0</spring.version>
+    <opensaml.version>5.1.4</opensaml.version>
     <sonar.exclusions>
       src/main/java/org/hippoecm/frontend/plugins/reviewedactions/EditingWorkflowPlugin.java,
       src/main/java/org/hippoecm/repository/deriveddata/RelativePropertyReference.java
@@ -90,6 +92,123 @@
       <groupId>org.bloomreach.forge.resetpassword</groupId>
       <artifactId>resetpassword-bootstrap-configuration</artifactId>
       <version>${forge.resetpassword.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.15</version>
+    </dependency>
+    <dependency>
+      <groupId>org.opensaml</groupId>
+      <artifactId>opensaml-saml-api</artifactId>
+      <version>${opensaml.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.opensaml</groupId>
+      <artifactId>opensaml-saml-impl</artifactId>
+      <version>${opensaml.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-saml2-service-provider</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+            <groupId>org.opensaml</groupId>
+            <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-web</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-aop</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-expression</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-expression</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-aop</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
   </dependencies>
