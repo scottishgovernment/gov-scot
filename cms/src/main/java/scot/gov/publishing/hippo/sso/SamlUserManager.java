@@ -12,13 +12,13 @@ import javax.jcr.RepositoryException;
 import javax.jcr.SimpleCredentials;
 import java.util.Set;
 
-public class SSOUserManager extends DelegatingHippoUserManager {
+public class SamlUserManager extends DelegatingHippoUserManager {
 
-    private static final Logger log = LoggerFactory.getLogger(SSOUserManager.class);
+    private static final Logger log = LoggerFactory.getLogger(SamlUserManager.class);
 
     private final GroupManager groupManger;
 
-    public SSOUserManager(HippoUserManager delegatee, GroupManager groupManager) {
+    public SamlUserManager(HippoUserManager delegatee, GroupManager groupManager) {
         super(delegatee);
         this.groupManger = groupManager;
     }
@@ -41,7 +41,7 @@ public class SSOUserManager extends DelegatingHippoUserManager {
 
     protected boolean validateAuthentication(SimpleCredentials creds) {
         log.info("Validating credentials: {}", creds);
-        SSOUserState userState = LoginSuccessFilter.getCurrentSSOUserState();
+        SSOUserState userState = PostAuthorisationFilter.getCurrentSSOUserState();
 
         if (userState != null) {
             // CMS context

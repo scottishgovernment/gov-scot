@@ -1,5 +1,6 @@
 package scot.gov.publishing.hippo.sso;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,8 +50,8 @@ public class SecurityConfig {
 
         return httpSecurity
                 .csrf(CsrfConfigurer::disable)
-                .authorizeHttpRequests(http -> {
-                    http.requestMatchers(
+                .authorizeHttpRequests(http -> { http.
+                    requestMatchers(
                             "/angular/**",
                             "/skin/**",
                             "/wicket/**",
@@ -64,10 +65,14 @@ public class SecurityConfig {
                             "*.js",
                             "*.css"
                     ).permitAll()
+                    .requestMatchers(m -> {
+                        return StringUtils.contains(m.getQueryString(), "UserLoggedOut");
+                    })
+                    .permitAll()
                     .anyRequest()
                     .authenticated();
                 })
-                .addFilterAfter(new LoginSuccessFilter(), AuthorizationFilter.class)
+                .addFilterAfter(new PostAuthorisationFilter(), AuthorizationFilter.class)
                 .saml2Login(saml2 -> {
                     saml2.authenticationManager(authenticationManager);
                 })
@@ -86,7 +91,6 @@ public class SecurityConfig {
         RelyingPartyRegistration registration = RelyingPartyRegistrations
                 .fromMetadataLocation(metadataUrl)
                 .registrationId("auth0")
-                .assertionConsumerServiceLocation("https://lcl.publishing.gov.scot/login/saml2/sso/{registrationId}")
                 .build();
         return new InMemoryRelyingPartyRegistrationRepository(registration);
     }

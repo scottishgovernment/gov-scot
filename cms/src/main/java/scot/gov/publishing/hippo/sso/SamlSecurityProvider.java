@@ -3,7 +3,6 @@ package scot.gov.publishing.hippo.sso;
 import org.apache.jackrabbit.api.security.user.UserManager;
 import org.hippoecm.repository.security.DelegatingSecurityProvider;
 import org.hippoecm.repository.security.RepositorySecurityProvider;
-import org.hippoecm.repository.security.SecurityProviderContext;
 import org.hippoecm.repository.security.user.HippoUserManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +19,9 @@ import javax.jcr.SimpleCredentials;
  * the custom security provider to do authentication and authorization.
  * </P>
  */
-public class CustomDelegatingSecurityProvider extends DelegatingSecurityProvider {
+public class SamlSecurityProvider extends DelegatingSecurityProvider {
 
-    private static final Logger log = LoggerFactory.getLogger(CustomDelegatingSecurityProvider.class);
+    private static final Logger log = LoggerFactory.getLogger(SamlSecurityProvider.class);
 
     private HippoUserManager userManager;
 
@@ -32,7 +31,7 @@ public class CustomDelegatingSecurityProvider extends DelegatingSecurityProvider
      *
      * @throws RepositoryException
      */
-    public CustomDelegatingSecurityProvider() throws RepositoryException {
+    public SamlSecurityProvider() throws RepositoryException {
         super(new RepositorySecurityProvider());
     }
 
@@ -43,7 +42,7 @@ public class CustomDelegatingSecurityProvider extends DelegatingSecurityProvider
     public UserManager getUserManager() throws RepositoryException {
         if (userManager == null) {
             HippoUserManager hippoUserManager = (HippoUserManager) super.getUserManager();
-            userManager = new SSOUserManager(hippoUserManager, getGroupManager());
+            userManager = new SamlUserManager(hippoUserManager, getGroupManager());
         }
         return userManager;
     }
@@ -54,7 +53,7 @@ public class CustomDelegatingSecurityProvider extends DelegatingSecurityProvider
     @Override
     public UserManager getUserManager(Session session) throws RepositoryException {
         HippoUserManager hippoUserManager = (HippoUserManager) super.getUserManager(session);
-        return new SSOUserManager(hippoUserManager, getGroupManager());
+        return new SamlUserManager(hippoUserManager, getGroupManager());
     }
 
     @Override

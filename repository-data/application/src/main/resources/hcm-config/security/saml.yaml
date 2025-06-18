@@ -2,7 +2,7 @@ definitions:
   config:
     /hippo:configuration/hippo:security/saml:
       jcr:primaryType: hipposys:securityprovider
-      hipposys:classname: scot.gov.publishing.hippo.sso.CustomDelegatingSecurityProvider
+      hipposys:classname: scot.gov.publishing.hippo.sso.SamlSecurityProvider
       /hipposys:userprovider:
         jcr:primaryType: hipposys:userprovider
         hipposys:dirlevels: 0
