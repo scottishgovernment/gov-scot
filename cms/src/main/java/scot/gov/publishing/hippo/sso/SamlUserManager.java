@@ -1,6 +1,5 @@
 package scot.gov.publishing.hippo.sso;
 
-import org.apache.commons.lang.StringUtils;
 import org.hippoecm.repository.security.group.GroupManager;
 import org.hippoecm.repository.security.user.DelegatingHippoUserManager;
 import org.hippoecm.repository.security.user.HippoUserManager;
@@ -25,7 +24,7 @@ public class SamlUserManager extends DelegatingHippoUserManager {
 
     @Override
     public boolean authenticate(SimpleCredentials creds) throws RepositoryException {
-        if (!validateAuthentication(creds)) {
+        if (!validSamlCredentials(creds)) {
             return false;
         }
         String userId = creds.getUserID();
@@ -39,22 +38,9 @@ public class SamlUserManager extends DelegatingHippoUserManager {
         return true;
     }
 
-    protected boolean validateAuthentication(SimpleCredentials creds) {
+    protected boolean validSamlCredentials(SimpleCredentials creds) {
         log.info("Validating credentials: {}", creds);
-        SSOUserState userState = PostAuthorisationFilter.getCurrentSSOUserState();
-
-        if (userState != null) {
-            // CMS context
-            return StringUtils.isNotEmpty(userState.getCredentials().getUsername());
-        } else {
-            // Site context
-            String samlId = (String) creds.getAttribute(SSOUserState.SAML_ID);
-            if (StringUtils.isNotBlank(samlId)) {
-                log.info("Authentication allowed to: {}", samlId);
-                return true;
-            }
-        }
-        return false;
+        return creds.getAttribute(SSOUserState.SAML_ID) != null;
     }
 
     @Override
