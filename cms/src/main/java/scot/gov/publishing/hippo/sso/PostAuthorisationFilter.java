@@ -6,109 +6,111 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.frontend.model.UserCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.saml2.provider.service.authentication.Saml2AuthenticatedPrincipal;
 import org.springframework.security.saml2.provider.service.authentication.Saml2Authentication;
 
 import javax.jcr.SimpleCredentials;
 import java.io.IOException;
+import java.util.List;
 
 public class PostAuthorisationFilter extends HttpFilter {
 
-    private static final Logger log = LoggerFactory.getLogger(PostAuthorisationFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PostAuthorisationFilter.class);
 
-    private static final String SSO_USER_STATE = SSOUserState.class.getName();
-
-    private static final ThreadLocal<SSOUserState> userStateHolder = new ThreadLocal<SSOUserState>();
+    /**
+     * The name of the request attribute used to store the Bloomreach {@link UserCredentials}.
+     * When this attribute is set, Bloomreach will use the contained JCR credentials.
+     * If that user has appropriate permissions, Bloomreach will not show the login prompt.
+     * The attribute is used by {@link org.hippoecm.frontend.session.PluginUserSession}.
+     */
+    public static final String CREDENTIALS_ATTR_NAME = UserCredentials.class.getName();
 
     @Override
-    public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null
-                || !authentication.isAuthenticated()
-                || authentication instanceof AnonymousAuthenticationToken) {
-            log.debug("User not authenticated");
+    public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // User will be unauthenticated or anonymous if security config does not require it
+        if (!(auth instanceof Saml2Authentication authentication)) {
+            LOG.debug("User is not SAML authenticated");
             chain.doFilter(request, response);
             return;
         }
 
         // Check if the user already has a SSO user state stored in HttpSession before.
         HttpSession session = request.getSession();
-        SSOUserState userState = (SSOUserState) session.getAttribute(SSO_USER_STATE);
-        if (userState == null || !userState.getSessionId().equals(session.getId())) {
-            userState = createSessionAttribute(session);
+        UserCredentials credentials = (UserCredentials) session.getAttribute(CREDENTIALS_ATTR_NAME);
+
+        if (credentials == null) {
+            credentials = toCmsCredentials(authentication);
+            if (credentials != null) {
+                session.setAttribute(CREDENTIALS_ATTR_NAME, credentials);
+            } else {
+                session.removeAttribute(CREDENTIALS_ATTR_NAME);
+            }
         }
 
-        // If the user has a valid SSO user state, then
-        // set a JCR Credentials as request attribute (named by FQCN of UserCredentials class).
-        // Then the CMS application will use the JCR credentials passed through this request attribute.
-        if (userState != null && userState.getSessionId().equals(session.getId())) {
-            request.setAttribute(UserCredentials.class.getName(), userState.getCredentials());
+        // Add the credentials as a request attribute where Bloomreach will find them
+        if (credentials != null) {
+            request.setAttribute(CREDENTIALS_ATTR_NAME, credentials);
         }
 
-        try {
-            userStateHolder.set(userState);
-            logRequest(request, userState);
-            chain.doFilter(request, response);
-        } finally {
-            userStateHolder.remove();
-        }
+        logRequest(request, credentials);
+        chain.doFilter(request, response);
     }
 
-    private SSOUserState createSessionAttribute(HttpSession session) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        // Check if the user already has a SSO user state stored in HttpSession before.
-        SSOUserState userState = (SSOUserState) session.getAttribute(SSO_USER_STATE);
-        if (userState != null && userState.getSessionId().equals(session.getId())) {
-            return userState;
-        }
-
-        String username = extractUserName(authentication);
-        if (username == null) {
-            log.warn("No name found in SAML response");
+    /**
+     * Converts the Spring Security Authentication instance to Bloomreach UserCredentials.
+     * The UserCredentials instance wraps a JCR {@link javax.jcr.Credentials} instance.
+     * Attributes are then set on that instance in order to make them available to the
+     * {@link SamlUserManager}.
+     */
+    private UserCredentials toCmsCredentials(Saml2Authentication authentication) {
+        String username = username(authentication);
+        if (StringUtils.isBlank(username)) {
+            LOG.warn("No name found in SAML response");
             return null;
         }
 
-        // Bloomreach requires the password in credentials must be non-empty array.
+        // Bloomreach HippoLoginModule requires the password be a non-empty array
         char[] password = {0};
         SimpleCredentials credentials = new SimpleCredentials(username, password);
-        credentials.setAttribute(SSOUserState.SAML_ID, username);
-        userState = new SSOUserState(new UserCredentials(credentials), session.getId());
-        session.setAttribute(SSO_USER_STATE, userState);
-        return userState;
+        credentials.setAttribute(Saml2JcrCredentials.SAML_ID, username);
+
+        List<String> groups = groups(authentication);
+        credentials.setAttribute(Saml2JcrCredentials.SAML_GROUPS, groups);
+
+        return new UserCredentials(credentials);
     }
 
-    private String extractUserName(Authentication authentication) {
-        if (!(authentication instanceof Saml2Authentication)) {
-            return authentication.getName();
-        }
+    private String username(Saml2Authentication authentication) {
         Saml2AuthenticatedPrincipal principal = (Saml2AuthenticatedPrincipal) authentication.getPrincipal();
         return principal.getFirstAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
     }
 
-    private static void logRequest(HttpServletRequest req, SSOUserState sso) {
+    private List<String> groups(Saml2Authentication authentication) {
+        return authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+    }
+
+    private static void logRequest(HttpServletRequest req, UserCredentials credentials) {
         String username = "<anonymous>";
-        if (sso != null) {
-            username = sso.getCredentials().getUsername();
+        if (credentials != null) {
+            username = credentials.getUsername();
         }
         StringBuffer url = req.getRequestURL();
         if (req.getQueryString() != null) {
             url.append('?').append(req.getQueryString());
         }
-        log.info("doFilter({}) LoginSuccessFilter {}", username, url);
-    }
-
-    /**
-     * Get current <code>SSOUserState</code> instance from the current thread local context.
-     */
-    static SSOUserState getCurrentSSOUserState() {
-        return userStateHolder.get();
+        LOG.info("doFilter({}) LoginSuccessFilter {}", username, url);
     }
 
 }

@@ -18,7 +18,7 @@ public class SamlSecurityManager extends SecurityManager {
 
     @Override
     public AuthenticationStatus authenticate(SimpleCredentials creds) {
-        if (!creds.getUserID().contains("@")) {
+        if (!creds.getUserID().contains("@") || containsPassword(creds)) {
             return super.authenticate(creds);
         }
 
@@ -46,6 +46,15 @@ public class SamlSecurityManager extends SecurityManager {
         } catch (RepositoryException ex) {
             return AuthenticationStatus.FAILED;
         }
+    }
+
+    /**
+     * Return true if the credentials contain a password supplied by the user, and
+     * false if the password is empty or a sentinel password set when using SSO.
+     */
+    private static boolean containsPassword(SimpleCredentials credentials) {
+        char[] password = credentials.getPassword();
+        return password.length > 1 || password[0] != 0;
     }
 
     private SecurityProvider provider(String name) {

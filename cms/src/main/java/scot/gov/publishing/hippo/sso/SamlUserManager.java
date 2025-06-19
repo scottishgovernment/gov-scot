@@ -40,7 +40,7 @@ public class SamlUserManager extends DelegatingHippoUserManager {
 
     protected boolean validSamlCredentials(SimpleCredentials creds) {
         log.info("Validating credentials: {}", creds);
-        return creds.getAttribute(SSOUserState.SAML_ID) != null;
+        return creds.getAttribute(Saml2JcrCredentials.SAML_ID) != null;
     }
 
     @Override
