@@ -65,7 +65,6 @@ public class SamlUserManager extends DelegatingHippoUserManager {
 
     protected void syncUser(Node user, Node group) throws RepositoryException {
         log.info("Auth sync user {}", user.getName());
-        user.setProperty("hipposys:securityprovider", "saml");
         user.setProperty("hipposys:active", true);
         String userId = user.getName();
         Set<String> members = groupManger.getMembers(group);
