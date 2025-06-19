@@ -1,6 +1,7 @@
 package scot.gov.publishing.hippo.sso;
 
-import jakarta.servlet.*;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
@@ -8,6 +9,25 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Adds a wrapper to requests to reflect values in X-Forwarded-* headers in
+ * request methods.
+ * <p>
+ * Spring Security uses certain request methods to determine the URL that the
+ * user is using to access the application, and specifically to construct the
+ * SAML Assertion Consumer Service (ACS) URL, where authentication tokens
+ * should be POSTed. The ACS URL is constructed by calling request methods
+ * overridden by this filter from the Spring Security SAML2 plugin, namely
+ * from RelyingPartyRegistrationPlaceholderResolvers.
+ * <p>
+ * This filter is similar in purpose to the Spring filter with a similar name,
+ * see {@link org.springframework.web.filter.ForwardedHeaderFilter}. However,
+ * this filter does not remove the X-Forwarded-* headers. These are used by
+ * Bloomreach.
+ * <p>
+ * @see org.springframework.web.filter.ForwardedHeaderFilter
+ * @see org.springframework.security.saml2.provider.service.web.RelyingPartyRegistrationPlaceholderResolvers
+ */
 public class ForwardedHeaderFilter extends HttpFilter {
 
     @Override
