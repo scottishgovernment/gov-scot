@@ -53,17 +53,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(http -> { http.
                     requestMatchers(
                             "/angular/**",
-                            "/skin/**",
-                            "/wicket/**",
+                            "/ckeditor/**",
+                            "/favicon.ico",
+                            "/navapp-assets/**",
                             "/saml2/**",
+                            "/skin/**",
                             "/login**",
-                            "*.ico",
-                            "*.gif",
-                            "*.jpg",
-                            "*.jpeg",
-                            "*.png",
-                            "*.js",
-                            "*.css"
+                            "/ping/",
+                            "/wicket/**",
+                            "/ws/indexexport",
+                            "/ws/**"
                     ).permitAll()
                     .requestMatchers(m -> {
                         return StringUtils.contains(m.getQueryString(), "UserLoggedOut");
