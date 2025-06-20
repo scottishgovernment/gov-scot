@@ -1,4 +1,5 @@
 definitions:
   config:
     /hippo:configuration/hippo:frontend/login/login/loginPage:
+      plugin.class: scot.gov.publishing.hippo.sso.SSOLoginPlugin
       signin.form.autocomplete: false

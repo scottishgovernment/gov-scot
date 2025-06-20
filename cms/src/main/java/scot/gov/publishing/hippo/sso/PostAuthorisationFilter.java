@@ -40,16 +40,40 @@ public class PostAuthorisationFilter extends HttpFilter {
         // User will be unauthenticated or anonymous if security config does not require it
         if (!(auth instanceof Saml2Authentication authentication)) {
             LOG.debug("User is not SAML authenticated");
+            logRequest(request, null);
+            if (request.getRequestURI().contains("/sso")) {
+                HttpSession s = request.getSession(false);
+                if (s != null) {
+                    s.invalidate();
+                }
+                response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", "..");
+                return;
+            }
+            if (request.getRequestURI().contains("/internal")) {
+                HttpSession s = request.getSession();
+                s.setAttribute("sso", false);
+                response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", "..");
+                return;
+            }
             chain.doFilter(request, response);
             return;
         }
 
         // Check if the user already has a SSO user state stored in HttpSession before.
-        HttpSession session = request.getSession();
-        UserCredentials credentials = (UserCredentials) session.getAttribute(CREDENTIALS_ATTR_NAME);
+        HttpSession session = request.getSession(false);
+        UserCredentials credentials = null;
+
+        if (session != null) {
+            credentials = (UserCredentials) session.getAttribute(CREDENTIALS_ATTR_NAME);
+        }
 
         if (credentials == null) {
             credentials = toCmsCredentials(authentication);
+        }
+
+        if (session != null) {
             if (credentials != null) {
                 session.setAttribute(CREDENTIALS_ATTR_NAME, credentials);
             } else {
@@ -106,11 +130,18 @@ public class PostAuthorisationFilter extends HttpFilter {
         if (credentials != null) {
             username = credentials.getUsername();
         }
+        String sessionId = "none";
+        HttpSession session = req.getSession(false);
+        boolean sso = true;
+        if (session != null) {
+            sessionId = req.getSession().getId();
+            sso = session.getAttribute("sso") != null;
+        }
         StringBuffer url = req.getRequestURL();
         if (req.getQueryString() != null) {
             url.append('?').append(req.getQueryString());
         }
-        LOG.info("doFilter({}) LoginSuccessFilter {}", username, url);
+        LOG.info("doFilter({} - {} - {}) {}", username, sessionId, sso, url);
     }
 
 }

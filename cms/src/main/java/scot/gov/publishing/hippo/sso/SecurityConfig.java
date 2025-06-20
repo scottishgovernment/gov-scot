@@ -1,6 +1,6 @@
 package scot.gov.publishing.hippo.sso;
 
-import org.apache.commons.lang.StringUtils;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,24 +40,50 @@ public class SecurityConfig {
         AuthenticationManager authenticationManager = new CmsAuthenticationManager(authenticationProvider);
 
         return httpSecurity
+//                .logout(logout -> logout.logoutSuccessHandler((request, response, authentication) -> {
+//                    String url = "https://login.microsoftonline.com/" + System.getenv("SSO_TENANT_ID") + "/oauth2/v2.0/logout";
+//                    request.setAttribute("logoutUrl", url.toString());
+//                    request.getRequestDispatcher("/WEB-INF/logout-redirect.jsp").forward(request, response);
+//                    response.flushBuffer();
+//                }))
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(http -> { http.
                     requestMatchers(
                             "/angular/**",
                             "/ckeditor/**",
                             "/favicon.ico",
+                            "/internal",
                             "/navapp-assets/**",
                             "/saml2/**",
                             "/skin/**",
                             "/login**",
                             "/ping/",
+                            "/sso",
                             "/wicket/**",
+                            "/ws/navigationitems",
                             "/ws/indexexport",
-                            "/ws/**"
+                            "/ws/redirects"
                     ).permitAll()
                     .requestMatchers(m -> {
-                        return StringUtils.contains(m.getQueryString(), "UserLoggedOut");
-                    })
+                        boolean logout = "loginmessage=UserLoggedOut".equals(m.getQueryString())
+                                || "0&loginmessage=UserLoggedOut".equals(m.getQueryString())
+                                || "1-1.0-root-activeLogout&iframe".equals(m.getQueryString())
+                                || "0-1.-root-login~panel-login~form".equals(m.getQueryString());
+                        HttpSession session = m.getSession(false);
+                        if (session != null && logout) {
+                            session.setAttribute("sso", false);
+                        }
+                        return logout;
+                    }, m -> {
+                        HttpSession session = m.getSession(false);
+                        boolean allow = false;
+                        if (session != null) {
+                            allow = session.getAttribute("sso") != null;
+                        }
+                        log.info("request: {} session: {} sso: {}", m.getRequestURI(), session != null ? session.getId() : null, allow);
+                        return allow;
+                    }
+                    )
                     .permitAll()
                     .anyRequest()
                     .authenticated();
