@@ -42,6 +42,11 @@ public class ForwardedHeaderFilter extends HttpFilter {
         }
 
         @Override
+        public boolean isSecure() {
+            return "https".equalsIgnoreCase(this.getScheme());
+        }
+
+        @Override
         public String getRequestURI() {
             String requestURI = super.getRequestURI();
             if (super.getHeader("x-forwarded-host") == null) {
