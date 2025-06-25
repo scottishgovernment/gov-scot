@@ -51,6 +51,7 @@ public class SsoControlFilter extends HttpFilter {
 
         res.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
         res.setHeader("Location", "..");
+        res.setHeader("Cache-Control", "no-cache");
         res.addCookie(cookie);
     }
 
