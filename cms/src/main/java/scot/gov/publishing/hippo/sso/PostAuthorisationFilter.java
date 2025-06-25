@@ -2,10 +2,7 @@ package scot.gov.publishing.hippo.sso;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpFilter;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.frontend.model.UserCredentials;
 import org.slf4j.Logger;
@@ -41,22 +38,6 @@ public class PostAuthorisationFilter extends HttpFilter {
         if (!(auth instanceof Saml2Authentication authentication)) {
             LOG.debug("User is not SAML authenticated");
             logRequest(request, null);
-            if (request.getRequestURI().contains("/sso")) {
-                HttpSession s = request.getSession(false);
-                if (s != null) {
-                    s.invalidate();
-                }
-                response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
-                response.setHeader("Location", "..");
-                return;
-            }
-            if (request.getRequestURI().contains("/internal")) {
-                HttpSession s = request.getSession();
-                s.setAttribute("sso", false);
-                response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
-                response.setHeader("Location", "..");
-                return;
-            }
             chain.doFilter(request, response);
             return;
         }

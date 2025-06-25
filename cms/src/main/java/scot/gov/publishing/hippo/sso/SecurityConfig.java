@@ -1,6 +1,9 @@
 package scot.gov.publishing.hippo.sso;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.commons.lang3.BooleanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +22,9 @@ import org.springframework.security.saml2.provider.service.registration.RelyingP
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -40,54 +46,37 @@ public class SecurityConfig {
         AuthenticationManager authenticationManager = new CmsAuthenticationManager(authenticationProvider);
 
         return httpSecurity
-//                .logout(logout -> logout.logoutSuccessHandler((request, response, authentication) -> {
-//                    String url = "https://login.microsoftonline.com/" + System.getenv("SSO_TENANT_ID") + "/oauth2/v2.0/logout";
-//                    request.setAttribute("logoutUrl", url.toString());
-//                    request.getRequestDispatcher("/WEB-INF/logout-redirect.jsp").forward(request, response);
-//                    response.flushBuffer();
-//                }))
+                .logout(c -> {
+                    c.logoutSuccessHandler((req, res, auth) -> {
+                        res.sendRedirect("..");
+                    });
+                })
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(http -> { http.
                     requestMatchers(
                             "/angular/**",
                             "/ckeditor/**",
                             "/favicon.ico",
-                            "/internal",
                             "/navapp-assets/**",
                             "/saml2/**",
                             "/skin/**",
                             "/login**",
                             "/ping/",
-                            "/sso",
+                            "/sso/**",
                             "/wicket/**",
                             "/ws/navigationitems",
                             "/ws/indexexport",
                             "/ws/redirects"
                     ).permitAll()
-                    .requestMatchers(m -> {
-                        boolean logout = "loginmessage=UserLoggedOut".equals(m.getQueryString())
-                                || "0&loginmessage=UserLoggedOut".equals(m.getQueryString())
-                                || "1-1.0-root-activeLogout&iframe".equals(m.getQueryString())
-                                || "0-1.-root-login~panel-login~form".equals(m.getQueryString());
-                        HttpSession session = m.getSession(false);
-                        if (session != null && logout) {
-                            session.setAttribute("sso", false);
-                        }
-                        return logout;
-                    }, m -> {
-                        HttpSession session = m.getSession(false);
-                        boolean allow = false;
-                        if (session != null) {
-                            allow = session.getAttribute("sso") != null;
-                        }
-                        log.info("request: {} session: {} sso: {}", m.getRequestURI(), session != null ? session.getId() : null, allow);
-                        return allow;
-                    }
+                    .requestMatchers(
+                            this::logout,
+                            this::sso
                     )
                     .permitAll()
                     .anyRequest()
                     .authenticated();
                 })
+                .addFilterBefore(new SsoControlFilter(), AuthorizationFilter.class)
                 .addFilterAfter(new PostAuthorisationFilter(), AuthorizationFilter.class)
                 .saml2Login(saml2 -> {
                     saml2.authenticationManager(authenticationManager);
@@ -109,6 +98,40 @@ public class SecurityConfig {
                 .registrationId("auth0")
                 .build();
         return new InMemoryRelyingPartyRegistrationRepository(registration);
+    }
+
+    boolean logout(HttpServletRequest req) {
+        boolean logout = "loginmessage=UserLoggedOut".equals(req.getQueryString())
+                || "0&loginmessage=UserLoggedOut".equals(req.getQueryString())
+                || "1-1.0-root-activeLogout&iframe".equals(req.getQueryString())
+                || "0-1.-root-login~panel-login~form".equals(req.getQueryString());
+        HttpSession session = req.getSession(false);
+        if (session != null && logout) {
+            session.setAttribute("sso", false);
+        }
+        return logout;
+    }
+
+    boolean sso(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        boolean allow = false;
+        if (session != null) {
+            allow = session.getAttribute("sso") != null;
+            if (allow) {
+                return true;
+            }
+        }
+        Optional<Boolean> cookie = Arrays.stream(request.getCookies())
+                .filter(c -> "sso".equalsIgnoreCase(c.getName()))
+                .map(Cookie::getValue)
+                .map(BooleanUtils::toBoolean)
+                .findFirst();
+        log.info("request: {} session: {} session: {} cookie: {}",
+                request.getRequestURI(),
+                session != null ? session.getId() : null,
+                allow,
+                cookie);
+        return cookie.map(c -> !c).orElse(false);
     }
 
 }
