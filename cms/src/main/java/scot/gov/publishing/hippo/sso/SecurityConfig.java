@@ -69,8 +69,7 @@ public class SecurityConfig {
                             "/ws/redirects"
                     ).permitAll()
                     .requestMatchers(
-                            this::logout,
-                            this::sso
+                            this::permit
                     )
                     .permitAll()
                     .anyRequest()
@@ -100,6 +99,14 @@ public class SecurityConfig {
         return new InMemoryRelyingPartyRegistrationRepository(registration);
     }
 
+    boolean permit(HttpServletRequest request) {
+        boolean cookie = ssoCookieValue(request).orElse(true);
+        if (cookie) {
+            return false;
+        }
+        return sso(request) || logout(request);
+    }
+
     boolean logout(HttpServletRequest req) {
         boolean logout = "loginmessage=UserLoggedOut".equals(req.getQueryString())
                 || "0&loginmessage=UserLoggedOut".equals(req.getQueryString())
@@ -113,25 +120,32 @@ public class SecurityConfig {
     }
 
     boolean sso(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        boolean allow = false;
-        if (session != null) {
-            allow = session.getAttribute("sso") != null;
-            if (allow) {
-                return true;
-            }
+        Optional<Boolean> session = ssoSessionValue(request);
+        if (!session.orElse(true)) {
+            return true;
         }
-        Optional<Boolean> cookie = Arrays.stream(request.getCookies())
+        Optional<Boolean> cookie = ssoCookieValue(request);
+        if (!cookie.orElse(true)) {
+            return true;
+        }
+        return false;
+    }
+
+    private static Optional<Boolean> ssoSessionValue(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            return Optional.empty();
+        }
+        Boolean sso = (Boolean) session.getAttribute("sso");
+        return Optional.ofNullable(sso);
+    }
+
+    private static Optional<Boolean> ssoCookieValue(HttpServletRequest request) {
+        return Arrays.stream(request.getCookies())
                 .filter(c -> "sso".equalsIgnoreCase(c.getName()))
                 .map(Cookie::getValue)
                 .map(BooleanUtils::toBoolean)
                 .findFirst();
-        log.info("request: {} session: {} session: {} cookie: {}",
-                request.getRequestURI(),
-                session != null ? session.getId() : null,
-                allow,
-                cookie);
-        return cookie.map(c -> !c).orElse(false);
     }
 
 }
