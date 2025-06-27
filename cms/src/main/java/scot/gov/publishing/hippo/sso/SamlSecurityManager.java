@@ -7,7 +7,9 @@ import org.hippoecm.repository.security.user.HippoUserManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -15,6 +17,15 @@ import java.util.Map;
 public class SamlSecurityManager extends SecurityManager {
 
     private static final Logger LOG = LoggerFactory.getLogger(SamlSecurityManager.class);
+
+
+    @Override
+    public void configure() throws RepositoryException {
+        super.configure();
+        SecurityProvider internal = provider("internal");
+        SamlSecurityProvider saml = (SamlSecurityProvider) provider("saml");
+        saml.setInternalProvider(internal);
+    }
 
     @Override
     public AuthenticationStatus authenticate(SimpleCredentials creds) {
@@ -26,7 +37,9 @@ public class SamlSecurityManager extends SecurityManager {
         try {
             SecurityProvider internalProvider = provider("internal");
             HippoUserManager internalUserManager = (HippoUserManager) internalProvider.getUserManager();
-            if (!internalUserManager.isActive(userId)) {
+            if (!internalUserManager.hasUser(userId)) {
+                LOG.debug("New user: {}", userId);
+            } else if (!internalUserManager.isActive(userId)) {
                 LOG.debug("Inactive user: {}", userId);
                 return AuthenticationStatus.ACCOUNT_EXPIRED;
             } else if (internalUserManager.isPasswordExpired(userId)) {

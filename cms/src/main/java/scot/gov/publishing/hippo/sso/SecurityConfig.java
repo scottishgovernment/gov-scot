@@ -3,6 +3,7 @@ package scot.gov.publishing.hippo.sso;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.saml2.provider.service.authentication.OpenSaml5AuthenticationProvider;
 import org.springframework.security.saml2.provider.service.registration.InMemoryRelyingPartyRegistrationRepository;
 import org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistration;
@@ -46,9 +48,12 @@ public class SecurityConfig {
         AuthenticationManager authenticationManager = new CmsAuthenticationManager(authenticationProvider);
 
         return httpSecurity
+                .headers(headers -> {
+                    headers.frameOptions(FrameOptionsConfig::sameOrigin);
+                })
                 .logout(c -> {
                     c.logoutSuccessHandler((req, res, auth) -> {
-                        res.sendRedirect("..");
+                        res.sendRedirect(req.getContextPath());
                     });
                 })
                 .csrf(CsrfConfigurer::disable)
@@ -141,7 +146,11 @@ public class SecurityConfig {
     }
 
     private static Optional<Boolean> ssoCookieValue(HttpServletRequest request) {
-        return Arrays.stream(request.getCookies())
+        Cookie[] cookies = request.getCookies();
+        if (ArrayUtils.isEmpty(cookies)) {
+            return Optional.empty();
+        }
+        return Arrays.stream(cookies)
                 .filter(c -> "sso".equalsIgnoreCase(c.getName()))
                 .map(Cookie::getValue)
                 .map(BooleanUtils::toBoolean)

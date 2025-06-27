@@ -3,13 +3,17 @@ package scot.gov.publishing.hippo.sso;
 import org.apache.jackrabbit.api.security.user.UserManager;
 import org.hippoecm.repository.security.DelegatingSecurityProvider;
 import org.hippoecm.repository.security.RepositorySecurityProvider;
+import org.hippoecm.repository.security.SecurityProvider;
+import org.hippoecm.repository.security.group.GroupManager;
 import org.hippoecm.repository.security.user.HippoUserManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
+import java.util.List;
 
 /**
  * Custom <code>org.hippoecm.repository.security.SecurityProvider</code> implementation.
@@ -24,6 +28,8 @@ public class SamlSecurityProvider extends DelegatingSecurityProvider {
     private static final Logger log = LoggerFactory.getLogger(SamlSecurityProvider.class);
 
     private HippoUserManager userManager;
+
+    private SecurityProvider internalProvider;
 
     /**
      * Constructs by creating the default <code>RepositorySecurityProvider</code> to delegate all the other calls
@@ -58,7 +64,21 @@ public class SamlSecurityProvider extends DelegatingSecurityProvider {
 
     @Override
     public void synchronizeOnLogin(SimpleCredentials creds) throws RepositoryException {
-        super.synchronizeOnLogin(creds);
+        GroupManager groupManager = internalProvider.getGroupManager();
+        Node user = userManager.getUser(creds.getUserID());
+        List<String> groups = ((List<String>) creds.getAttribute(SsoAttributes.SAML_GROUPS))
+                .stream()
+                .map(g -> g.substring(g.lastIndexOf(' ') + 1))
+                .toList();
+        for (String group : groups) {
+            Node groupNode = groupManager.getGroup(group);
+            groupManager.addMember(groupNode, creds.getUserID());
+        }
+        groupManager.saveGroups();
+    }
+
+    public void setInternalProvider(SecurityProvider internal) {
+        this.internalProvider = internal;
     }
 
 }

@@ -17,7 +17,7 @@ import java.util.Set;
  */
 public class SamlResponseConverter implements Converter<ResponseToken, Saml2Authentication> {
 
-    public static final String GROUP_ATTR = "http://schemas.xmlsoap.org/claims/Group";
+    public static final String GROUP_ATTR = "http://schemas.auth0.com/groups";
 
     private final Converter<ResponseToken, Saml2Authentication> delegate =
             new OpenSaml5AuthenticationProvider.ResponseAuthenticationConverter();

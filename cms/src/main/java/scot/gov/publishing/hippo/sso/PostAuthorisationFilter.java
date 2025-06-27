@@ -87,10 +87,10 @@ public class PostAuthorisationFilter extends HttpFilter {
         // Bloomreach HippoLoginModule requires the password be a non-empty array
         char[] password = {0};
         SimpleCredentials credentials = new SimpleCredentials(username, password);
-        credentials.setAttribute(Saml2JcrCredentials.SAML_ID, username);
+        credentials.setAttribute(SsoAttributes.SAML_ID, username);
 
         List<String> groups = groups(authentication);
-        credentials.setAttribute(Saml2JcrCredentials.SAML_GROUPS, groups);
+        credentials.setAttribute(SsoAttributes.SAML_GROUPS, groups);
 
         return new UserCredentials(credentials);
     }

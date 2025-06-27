@@ -34,23 +34,28 @@ public class SamlUserManager extends DelegatingHippoUserManager {
         } else {
             userNode = getUser(userId);
         }
-        syncUser(userNode, groupManger.getGroup("admin"));
+        saveUsers();
         return true;
     }
 
     protected boolean validSamlCredentials(SimpleCredentials creds) {
         log.info("Validating credentials: {}", creds);
-        return creds.getAttribute(Saml2JcrCredentials.SAML_ID) != null;
+        return creds.getAttribute(SsoAttributes.SAML_ID) != null;
     }
 
     @Override
     public void syncUserInfo(String userId) {
         super.syncUserInfo(userId);
         log.info("Sync user {}", userId);
+        try {
+            Node userNode = getUser(userId);
+            syncUser(userNode, groupManger.getGroup("admin"));
+        } catch (RepositoryException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    protected void syncUser(Node user, Node group) throws RepositoryException {
-        log.info("Auth sync user {}", user.getName());
+    private void syncUser(Node user, Node group) throws RepositoryException {
         user.setProperty("hipposys:active", true);
         String userId = user.getName();
         Set<String> members = groupManger.getMembers(group);
