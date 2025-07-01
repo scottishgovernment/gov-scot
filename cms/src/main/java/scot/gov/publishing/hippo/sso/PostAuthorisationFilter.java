@@ -2,13 +2,15 @@ package scot.gov.publishing.hippo.sso;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.frontend.model.UserCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.saml2.provider.service.authentication.Saml2AuthenticatedPrincipal;
 import org.springframework.security.saml2.provider.service.authentication.Saml2Authentication;
@@ -16,6 +18,8 @@ import org.springframework.security.saml2.provider.service.authentication.Saml2A
 import javax.jcr.SimpleCredentials;
 import java.io.IOException;
 import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class PostAuthorisationFilter extends HttpFilter {
 
@@ -97,13 +101,17 @@ public class PostAuthorisationFilter extends HttpFilter {
 
     private String username(Saml2Authentication authentication) {
         Saml2AuthenticatedPrincipal principal = (Saml2AuthenticatedPrincipal) authentication.getPrincipal();
-        return principal.getFirstAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+        return principal.getName();
+//        return principal.getFirstAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
     }
 
     private List<String> groups(Saml2Authentication authentication) {
-        return authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .toList();
+        Saml2AuthenticatedPrincipal principal = (Saml2AuthenticatedPrincipal) authentication.getPrincipal();
+        List<String> groups = principal.getAttribute("http://schemas.auth0.com/groups");
+        if (groups == null) {
+            groups = emptyList();
+        }
+        return groups;
     }
 
     private static void logRequest(HttpServletRequest req, UserCredentials credentials) {

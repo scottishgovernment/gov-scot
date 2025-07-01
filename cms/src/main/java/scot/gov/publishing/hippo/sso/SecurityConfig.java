@@ -37,6 +37,9 @@ public class SecurityConfig {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
+    @Value("${saml.registration.id}")
+    String registrationId;
+
     @Value("${saml.metadata.url}")
     String metadataUrl;
 
@@ -44,7 +47,7 @@ public class SecurityConfig {
     SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
 
         OpenSaml5AuthenticationProvider authenticationProvider = new OpenSaml5AuthenticationProvider();
-        authenticationProvider.setResponseAuthenticationConverter(new SamlResponseConverter());
+//        authenticationProvider.setResponseAuthenticationConverter(new SamlResponseConverter());
         AuthenticationManager authenticationManager = new CmsAuthenticationManager(authenticationProvider);
 
         return httpSecurity
@@ -86,6 +89,7 @@ public class SecurityConfig {
                     saml2.authenticationManager(authenticationManager);
                 })
                 .saml2Logout(withDefaults())
+                .saml2Metadata(withDefaults())
                 .build();
     }
 
@@ -99,8 +103,10 @@ public class SecurityConfig {
         log.info("Using {}", metadataUrl);
         RelyingPartyRegistration registration = RelyingPartyRegistrations
                 .fromMetadataLocation(metadataUrl)
-                .registrationId("auth0")
+                .registrationId(registrationId)
                 .build();
+        log.info("Entity ID: {}", registration.getEntityId());
+        log.info("Registration ID: {}", registration.getRegistrationId());
         return new InMemoryRelyingPartyRegistrationRepository(registration);
     }
 
