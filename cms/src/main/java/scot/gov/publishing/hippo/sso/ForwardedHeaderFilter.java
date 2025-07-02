@@ -84,6 +84,9 @@ public class ForwardedHeaderFilter extends HttpFilter {
                 }
             }
             String forwardedProto = super.getHeader("x-forwarded-proto");
+            if (forwardedProto == null) {
+                return super.getServerPort();
+            }
             return switch (forwardedProto) {
                 case "http" -> 80;
                 case "https" -> 443;
