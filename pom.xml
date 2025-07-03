@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>16.3.1</version>
+    <version>16.4.0</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -43,7 +43,7 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <essentials.version>16.3.1</essentials.version>
+    <essentials.version>16.4.0</essentials.version>
     <forge.feed.version>8.0.0</forge.feed.version>
     <forge.embargo.version>8.0.0</forge.embargo.version>
     <forge.breadcrumb.version>6.0.0</forge.breadcrumb.version>
@@ -343,7 +343,7 @@
       <dependencies>
         <dependency>
           <groupId>org.apache.logging.log4j</groupId>
-          <artifactId>log4j-slf4j-impl</artifactId>
+          <artifactId>log4j-slf4j2-impl</artifactId>
           <scope>provided</scope>
         </dependency>
         <dependency>
@@ -497,7 +497,7 @@
                   </dependency>
                   <dependency>
                     <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
+                    <artifactId>log4j-slf4j2-impl</artifactId>
                     <classpath>shared</classpath>
                   </dependency>
                   <dependency>

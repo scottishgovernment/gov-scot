@@ -1,0 +1,208 @@
+<!--
+    This file is duplicated from the equivalent file in the 'hippo-addon-advanced-search-frontend-filters'
+    library, following the same file path:
+    hippo-addon-advanced-search-frontend-filters-16.4.0.jar!/com/onehippo/cms7
+    /search/frontend/filters/GenericFiltersPlugin.html
+
+    It removes the "Has pending request" radio button in the Advanced Search panel. The query executed when this
+    button is pressed has been observed to cause CPU spikes, and makes the CMS UI unresponsive until refreshed.
+
+    For as long as this functionality needs to be overridden in this manner, this file
+    should be monitored during upgrades.
+-->
+
+<html xmlns:wicket="http://wicket.apache.org/">
+<wicket:panel>
+    <div class="hippo-advanced-search-filter">
+        <!--
+        <h2><wicket:message key="title">Generic Filters</wicket:message></h2>
+        -->
+        <form wicket:id="form">
+            <ul>
+                <li class="filter">
+                    <h3>
+                        <wicket:message key="document-type">Document Type</wicket:message>
+                    </h3>
+                    <div class="hippo-advanced-search-input hippo-advanced-search-document-type">
+                        <select wicket:id="document-type">
+                            <option value="">All</option>
+                            <option value="news">News</option>
+                            <option value="agenda">Agenda</option>
+                        </select>
+                        <div class="hippo-advanced-search-reset" wicket:id="document-type-reset-container">
+                            <img wicket:id="document-type-reset"/>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="filter">
+                    <h3>
+                        <wicket:message key="location">Location</wicket:message>
+                    </h3>
+                    <div class="hippo-advanced-search-input hippo-advanced-search-input-picker" wicket:id="location">
+                        <input type="text" wicket:id="location-display" class="hippo-advanced-search-input-large" readonly="true"/>
+                        <div class="hippo-advanced-search-location-search hippo-advanced-search-icon">
+                            <img wicket:id="location-search"/>
+                        </div>
+                        <div class="hippo-advanced-search-reset hippo-advanced-search-reset-large" wicket:id="location-display-reset-container" >
+                            <img wicket:id="location-display-reset"/>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="filter">
+                    <h3 style="margin-bottom: 0;">
+                        <wicket:message key="status">Status</wicket:message>
+                    </h3>
+                    <ul class="hippo-advanced-search-filter-status">
+                        <li>
+                            <div class="hippo-advanced-search-radio">
+                                <div class="hippo-advanced-search-select"><wicket:message key="yes">Y</wicket:message></div>
+                                <div class="hippo-advanced-search-select"><wicket:message key="no">N</wicket:message></div>
+                                <div class="hippo-advanced-search-reset"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <wicket:message key="published">Are published</wicket:message>
+                            <div wicket:id="published" class="hippo-advanced-search-radio qa-search-filter-radio-unpublished">
+                                <input type="radio" wicket:id="published-yes" class="hippo-advanced-search-select qa-search-filter-radio-published-yes"/>
+                                <input type="radio" wicket:id="published-no" class="hippo-advanced-search-select qa-search-filter-radio-published-no"/>
+                                <div class="hippo-advanced-search-reset qa-search-filter-radio-published-reset">
+                                    <img wicket:id="published-reset"/>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <wicket:message key="unpublished">Have an unpublished preview</wicket:message>
+                            <div wicket:id="unpublished" class="hippo-advanced-search-radio qa-search-filter-radio-unpublished">
+                                <input type="radio" wicket:id="unpublished-yes" class="hippo-advanced-search-select qa-search-filter-radio-unpublished-yes"/>
+                                <input type="radio" wicket:id="unpublished-no" class="hippo-advanced-search-select qa-search-filter-radio-unpublished-no"/>
+                                <div class="hippo-advanced-search-reset qa-search-filter-radio-unpublished-reset">
+                                    <img wicket:id="unpublished-reset"/>
+                                </div>
+                            </div>
+                        </li>
+
+<!--                        Hide pending request radio button-->
+
+<!--                        <li>-->
+<!--                            <wicket:message key="pending-request">Has pending workflow request</wicket:message>-->
+<!--                            <div wicket:id="pendingRequest" class="hippo-advanced-search-radio qa-search-filter-radio-pending-request">-->
+<!--                                <input type="radio" wicket:id="pendingRequest-yes" class="hippo-advanced-search-select qa-search-filter-radio-pending-request-yes"/>-->
+<!--                                <div class="hippo-global-hideme">-->
+<!--                                    <input type="radio" wicket:id="pendingRequest-no" class="hippo-advanced-search-select qa-search-filter-radio-pending-request-no"/>-->
+<!--                                </div>-->
+<!--                                <div class="hippo-advanced-search-reset qa-search-filter-radio-pending-request-reset">-->
+<!--                                    <img wicket:id="pendingRequest-reset"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+                    </ul>
+                </li>
+
+                <li class="filter">
+                    <h3>
+                        <wicket:message key="last-modified-by">Last modified by</wicket:message>
+                    </h3>
+                    <div class="hippo-advanced-search-input">
+                        <input type="text" wicket:id="last-modified-by" class="hippo-advanced-search-input-large"/>
+                        <div class="hippo-advanced-search-reset hippo-advanced-search-reset-large" wicket:id="last-modified-by-reset-container">
+                            <img wicket:id="last-modified-by-reset"/>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="filter">
+                    <h3>
+                        <wicket:message key="last-modification-date">Last modification date</wicket:message>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                <wicket:message key="from">From:</wicket:message>
+                            </th>
+                            <td class="hippo-advanced-search-input hippo-advanced-search-input-picker">
+                                <input type="text" wicket:id="last-modification-date-from" class="hippo-advanced-search-input-date" readonly="true"/>
+                                <div class="hippo-advanced-search-reset" wicket:id="last-modification-date-from-reset-container">
+                                    <img wicket:id="last-modification-date-from-reset"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <wicket:message key="to">To:</wicket:message>
+                            </th>
+                            <td class="hippo-advanced-search-input hippo-advanced-search-input-picker">
+                                <input type="text" wicket:id="last-modification-date-to" class="hippo-advanced-search-input-date" readonly="true"/>
+                                <div class="hippo-advanced-search-reset" wicket:id="last-modification-date-to-reset-container">
+                                    <img wicket:id="last-modification-date-to-reset"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+
+                <li class="filter">
+                    <h3>
+                        <wicket:message key="creation-date">Creation date</wicket:message>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                <wicket:message key="from">From:</wicket:message>
+                            </th>
+                            <td class="hippo-advanced-search-input hippo-advanced-search-input-picker">
+                                <input type="text" wicket:id="creation-date-from" class="hippo-advanced-search-input-date" readonly="true"/>
+                                <div class="hippo-advanced-search-reset" wicket:id="creation-date-from-reset-container">
+                                    <img wicket:id="creation-date-from-reset"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <wicket:message key="to">To:</wicket:message>
+                            </th>
+                            <td class="hippo-advanced-search-input hippo-advanced-search-input-picker">
+                                <input type="text" wicket:id="creation-date-to" class="hippo-advanced-search-input-date" readonly="true"/>
+                                <div class="hippo-advanced-search-reset" wicket:id="creation-date-to-reset-container">
+                                    <img wicket:id="creation-date-to-reset"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+
+                <li class="filter">
+                    <h3>
+                        <wicket:message key="publication-date">Publication date</wicket:message>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                <wicket:message key="from">From:</wicket:message>
+                            </th>
+                            <td class="hippo-advanced-search-input hippo-advanced-search-input-picker">
+                                <input type="text" wicket:id="publication-date-from" class="hippo-advanced-search-input-date" readonly="true"/>
+                                <div class="hippo-advanced-search-reset" wicket:id="publication-date-from-reset-container">
+                                    <img wicket:id="publication-date-from-reset"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <wicket:message key="to">To:</wicket:message>
+                            </th>
+                            <td class="hippo-advanced-search-input hippo-advanced-search-input-picker">
+                                <input type="text" wicket:id="publication-date-to" class="hippo-advanced-search-input-date" readonly="true"/>
+                                <div class="hippo-advanced-search-reset" wicket:id="publication-date-to-reset-container">
+                                    <img wicket:id="publication-date-to-reset"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </form>
+    </div>
+</wicket:panel>
+</html>
