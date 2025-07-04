@@ -7,9 +7,10 @@ import com.nimbusds.oauth2.sdk.*;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
+import com.nimbusds.oauth2.sdk.http.HTTPResponse;
 import com.nimbusds.oauth2.sdk.id.ClientID;
-import com.nimbusds.openid.connect.sdk.OIDCTokenResponse;
-import com.nimbusds.openid.connect.sdk.OIDCTokenResponseParser;
+import com.nimbusds.openid.connect.sdk.*;
+import com.nimbusds.openid.connect.sdk.claims.UserInfo;
 import com.nimbusds.openid.connect.sdk.token.OIDCTokens;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ public class CallbackServlet implements Filter {
     private static final String CLIENT_SECRET = "";
     private static final String REDIRECT_URI = "https://lcl.publishing.gov.scot/callback";
     private static final String TOKEN_ENDPOINT = "https://cloudhothouse.okta.com/oauth2/default/v1/token";
+    private static final String USERINFO_ENDPOINT = "https://cloudhothouse.okta.com/oauth2/default/v1/userinfo";
     private static final JWSAlgorithm EXPECTED_JWS_ALG = JWSAlgorithm.RS256;
 
     public static final String CREDENTIALS_ATTR_NAME = UserCredentials.class.getName();
@@ -47,14 +49,14 @@ public class CallbackServlet implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        if (req.getServletPath().startsWith("/callback")) {
-            doGet(req, res, chain);
-        } else {
+        if (!req.getServletPath().startsWith("/callback")) {
             chain.doFilter(req, res);
+            return;
         }
+        doGet(req, res);
     }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("/callback " + req.getServletPath());
         HttpSession session = req.getSession();
 
@@ -85,6 +87,21 @@ public class CallbackServlet implements Filter {
         }
 
         OIDCTokenResponse successResponse = (OIDCTokenResponse) tokenResponse.toSuccessResponse();
+
+        UserInfoRequest userInfoRequest = new UserInfoRequest(URI.create(USERINFO_ENDPOINT), successResponse.getOIDCTokens().getBearerAccessToken());
+        HTTPResponse httpResponse = userInfoRequest.toHTTPRequest().send();
+        UserInfoResponse userInfoResponse = null;
+        try {
+            userInfoResponse = UserInfoResponse.parse(httpResponse);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (httpResponse.indicatesSuccess()) {
+            UserInfo info = userInfoResponse.toSuccessResponse().getUserInfo();
+            System.out.println(info);
+        }
+
         OIDCTokens tokens = successResponse.getOIDCTokens();
         JWT idToken = tokens.getIDToken();
 
