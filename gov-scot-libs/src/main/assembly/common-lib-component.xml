@@ -13,6 +13,7 @@
         <include>jakarta.mail:jakarta.mail-api</include>
         <include>org.eclipse.angus:angus-activation</include>
         <include>org.eclipse.angus:angus-mail</include>
+<!--        <include>com.amazonaws:aws-java-sdk-ses</include>-->
       </includes>
     </dependencySet>
   </dependencySets>
