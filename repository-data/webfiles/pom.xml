@@ -111,9 +111,9 @@
             <id>createCSSDir</id>
             <phase>generate-resources</phase>
             <configuration>
-              <tasks>
+              <target>
                 <mkdir dir="./src/main/resources/site/assets/css"/>
-              </tasks>
+              </target>
             </configuration>
             <goals>
               <goal>run</goal>

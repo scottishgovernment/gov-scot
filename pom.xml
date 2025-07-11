@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>15.7.1</version>
+    <version>16.4.1</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -43,26 +43,19 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <forge.feed.version>7.0.0</forge.feed.version>
-    <forge.embargo.version>7.0.2</forge.embargo.version>
-    <forge.breadcrumb.version>5.0.0</forge.breadcrumb.version>
-    <forge.resetpassword.version>6.0.0</forge.resetpassword.version>
-    <freemarker.version>2.3.28</freemarker.version>
+    <essentials.version>16.4.1</essentials.version>
+    <forge.feed.version>8.0.0</forge.feed.version>
+    <forge.embargo.version>8.0.0</forge.embargo.version>
+    <forge.breadcrumb.version>6.0.0</forge.breadcrumb.version>
+    <forge.resetpassword.version>7.0.0</forge.resetpassword.version>
+    <forge.content-exim.version>6.0.1</forge.content-exim.version>
 
     <retrofit.version>2.4.0</retrofit.version>
 
-    <forge.content-exim.version>5.0.0</forge.content-exim.version>
-    <essentials.version>15.7.1</essentials.version>
-    <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.5</taglibs.version>
     <junit.version>4.13.1</junit.version>
     <easymock.version>3.4</easymock.version>
     <mockito.version>2.22.0</mockito.version>
-    <commons-io.version>2.14.0</commons-io.version>
-
-    <maven.plugin.jrebel.version>1.1.7</maven.plugin.jrebel.version>
-    <maven.plugin.cargo.version>1.7.0</maven.plugin.cargo.version>
-    <maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
+    <commons-io.version>2.16.1</commons-io.version>
 
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
     <hippo.cms.locales/>
@@ -70,7 +63,7 @@
 
     <index.configuration>cms/src/main/resources/org/hippoecm/repository/query/lucene/indexing_configuration.xml</index.configuration>
 
-    <log4j2.version>2.17.0</log4j2.version>
+    <log4j2.version>2.23.1</log4j2.version>
 
     <cargo.debug.address>8000</cargo.debug.address>
     <cargo.debug.suspend>n</cargo.debug.suspend>
@@ -123,7 +116,7 @@
       </dependency>
 
       <dependency>
-        <groupId>javax.servlet.jsp</groupId>
+        <groupId>jakarta.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
         <version>${jsp-api.version}</version>
         <scope>provided</scope>
@@ -143,15 +136,15 @@
 
       <!-- other predefined runtime scope versioned dependencies -->
       <dependency>
-        <groupId>org.apache.taglibs</groupId>
-        <artifactId>taglibs-standard-spec</artifactId>
+        <groupId>com.bloomreach.xm</groupId>
+        <artifactId>taglibs-standard-spec-jakarta</artifactId>
         <version>${taglibs.version}</version>
         <scope>runtime</scope>
       </dependency>
 
       <dependency>
-        <groupId>org.apache.taglibs</groupId>
-        <artifactId>taglibs-standard-impl</artifactId>
+        <groupId>com.bloomreach.xm</groupId>
+        <artifactId>taglibs-standard-impl-jakarta</artifactId>
         <version>${taglibs.version}</version>
         <scope>runtime</scope>
       </dependency>
@@ -222,7 +215,7 @@
 
         <plugin>
           <groupId>org.codehaus.cargo</groupId>
-          <artifactId>cargo-maven2-plugin</artifactId>
+          <artifactId>cargo-maven3-plugin</artifactId>
           <version>${maven.plugin.cargo.version}</version>
           <configuration>
             <configuration>
@@ -343,14 +336,14 @@
       <properties>
         <repo.base.path>${project.basedir}</repo.base.path>
         <repo.path>${project.build.directory}/storage</repo.path>
-        <repo.config />
+        <repo.config>repository.xml</repo.config>
         <repo.bootstrap>true</repo.bootstrap>
         <repo.autoexport.allowed>true</repo.autoexport.allowed>
       </properties>
       <dependencies>
         <dependency>
           <groupId>org.apache.logging.log4j</groupId>
-          <artifactId>log4j-slf4j-impl</artifactId>
+          <artifactId>log4j-slf4j2-impl</artifactId>
           <scope>provided</scope>
         </dependency>
         <dependency>
@@ -379,8 +372,8 @@
           <scope>compile</scope>
         </dependency>
         <dependency>
-          <groupId>javax.annotation</groupId>
-          <artifactId>javax.annotation-api</artifactId>
+          <groupId>jakarta.annotation</groupId>
+          <artifactId>jakarta.annotation-api</artifactId>
           <scope>compile</scope>
         </dependency>
         <dependency>
@@ -399,7 +392,7 @@
         <plugins>
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
-            <artifactId>cargo-maven2-plugin</artifactId>
+            <artifactId>cargo-maven3-plugin</artifactId>
             <executions>
               <execution>
                 <id>cargo-run</id>
@@ -414,7 +407,7 @@
                 <home>${project.build.directory}/tomcat${cargo.tomcat.major.version}x</home>
                 <properties>
                   <cargo.jvmargs>
-                    <![CDATA[-agentlib:jdwp=transport=dt_socket,address=${cargo.debug.address},server=y,suspend=${cargo.debug.suspend} -noverify ${javaagent} ${cargo.jvm.args}]]>
+                    <![CDATA[-agentlib:jdwp=transport=dt_socket,address=${cargo.debug.address},server=y,suspend=${cargo.debug.suspend} -noverify ${javaagent} --add-opens java.base/java.util=ALL-UNNAMED ${cargo.jvm.args}]]>
                   </cargo.jvmargs>
                   <cargo.tomcat.uriencoding>UTF-8</cargo.tomcat.uriencoding>
                   <cargo.servlet.users>admin::manager-script,manager-gui</cargo.servlet.users>
@@ -504,7 +497,7 @@
                   </dependency>
                   <dependency>
                     <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
+                    <artifactId>log4j-slf4j2-impl</artifactId>
                     <classpath>shared</classpath>
                   </dependency>
                   <dependency>

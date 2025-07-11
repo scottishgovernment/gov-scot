@@ -1,0 +1,55 @@
+<!--
+    This file is duplicated from the equivalent file in the 'hippo-cms-perspectives'
+    library, following the same file path:
+    hippo-cms-perspectives-16.4.0.jar!/org/hippoecm/frontend/plugins/cms/dashboard/DashboardPerspective.html
+
+    It removes the "See all" button in the Pending Requests dashboard panel. The query executed when this
+    button is pressed has been observed to cause CPU spikes, and makes the CMS UI unresponsive until refreshed.
+
+    For as long as this functionality needs to be overridden in this manner, this file
+    should be monitored during upgrades.
+-->
+
+<html xmlns:wicket="http://wicket.apache.org/" xmlns:yui="http://www.hippoecm.org/frontend/yui">
+<wicket:panel>
+    <div class="hippo-perspective-dashboard" yui:id="dashboard-perspective-wrapper">
+        <div class="hippo-perspective-dashboard-panel" yui:id="left">
+            <div yui:id="left-body">
+                <h2>
+                    <span wicket:id="edition-panel">[ Name ]</span>
+                    <span wicket:id="version-label">[ Version ]</span>
+                </h2>
+                <div>
+                    <div class="hippo-perspective-dashboard-shortcuts" wicket:id="extension.shortcuts">[ Shortcuts ]</div>
+                </div>
+            </div>
+        </div>
+        <div class="hippo-perspective-dashboard-panel" yui:id="center">
+            <div yui:id="center-body">
+                <h2>
+                    <span><wicket:message key="history">history message</wicket:message></span>
+                </h2>
+                <div wicket:id="extension.currentActivity">[ Whats going on plugin ]</div>
+            </div>
+        </div>
+        <div class="hippo-perspective-dashboard-panel" yui:id="right">
+            <div yui:id="right-body">
+                <h2 class="hippo-perspective-pending-requests-title">
+            <span class="task">
+              <wicket:message key="todo">todo message</wicket:message>
+             </span>
+
+<!--                    Hide "See all" requests button-->
+
+<!--                    <a class="btn btn-default btn-secondary qa-btn-see-all-requests" href="#" wicket:id="container">-->
+<!--                        <span wicket:id="title">[[button title]]</span>-->
+<!--                    </a>-->
+                </h2>
+                <div class="hippo-perspective-dashboard-panel">
+                    <div wicket:id="extension.todo">[ Todo plugin ]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</wicket:panel>
+</html>

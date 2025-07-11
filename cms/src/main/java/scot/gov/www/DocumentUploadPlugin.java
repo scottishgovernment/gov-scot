@@ -1,7 +1,10 @@
 package scot.gov.www;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
+import org.hippoecm.frontend.behaviors.EventStoppingBehavior;
 import org.hippoecm.frontend.editor.plugins.resource.ResourceHelper;
 import org.hippoecm.frontend.editor.plugins.resource.ResourceUploadPlugin;
 import org.hippoecm.frontend.model.JcrNodeModel;
@@ -32,19 +35,22 @@ import static org.hippoecm.frontend.editor.plugins.resource.ResourceHelper.getVa
 public class DocumentUploadPlugin extends ResourceUploadPlugin {
 
     private static final Logger LOG = LoggerFactory.getLogger(DocumentUploadPlugin.class);
+    public static final String DEFAULT_ASSET_VALIDATION_SERVICE_ID = "service.gallery.asset.validation";
 
     private final Mode mode;
 
     public DocumentUploadPlugin(IPluginContext context, IPluginConfig config) {
         super(context, config);
         mode = Mode.fromString(config.getString("mode"), Mode.EDIT);
-        addOrReplace(createFileUploadPanel());
+        this.add(new Component[]{this.createFileUploadPanel()});
+        this.add(new Behavior[]{new EventStoppingBehavior("click")});
     }
 
     private FileUploadPanel createFileUploadPanel() {
-        final FileUploadPanel panel = new FileUploadPanel("fileUpload", this.getPluginConfig(), this.getValidationService(), this.getPreProcessorService()) {
+        FileUploadPanel panel = new FileUploadPanel("fileUpload", this.getPluginConfig(),
+                this.getValidationService(), this.getPreProcessorService()) {
             @Override
-            public void onFileUpload ( final FileUpload fileUpload) throws FileUploadViolationException {
+            public void onFileUpload(FileUpload fileUpload) throws FileUploadViolationException {
                 DocumentUploadPlugin.this.handleUpload(fileUpload);
             }
         };
@@ -53,12 +59,13 @@ public class DocumentUploadPlugin extends ResourceUploadPlugin {
     }
 
     private FileUploadValidationService getValidationService() {
-        return DefaultUploadValidationService.getValidationService(getPluginContext(), getPluginConfig(),
+        return DefaultUploadValidationService.getValidationService(this.getPluginContext(), this.getPluginConfig(),
                 DEFAULT_ASSET_VALIDATION_SERVICE_ID);
     }
 
     private FileUploadPreProcessorService getPreProcessorService() {
-        return DefaultFileUploadPreProcessorService.getPreProcessorService(this.getPluginContext(), this.getPluginConfig());
+        return DefaultFileUploadPreProcessorService.getPreProcessorService(this.getPluginContext(),
+                this.getPluginConfig());
     }
 
     /**
@@ -69,13 +76,13 @@ public class DocumentUploadPlugin extends ResourceUploadPlugin {
     private void handleUpload(FileUpload upload) throws FileUploadViolationException {
         String fileName = upload.getClientFileName();
         String mimeType = upload.getContentType();
-
-        JcrNodeModel nodeModel = (JcrNodeModel) DocumentUploadPlugin.this.getDefaultModel();
+        JcrNodeModel nodeModel = (JcrNodeModel) this.getDefaultModel();
         Node node = nodeModel.getNode();
+
         try {
             ResourceHelper.setDefaultResourceProperties(node, mimeType, upload.getInputStream(), fileName);
             setEmptyHippoTextBinary(node);
-        } catch (RepositoryException | IOException ex) {
+        } catch (IOException | RepositoryException ex) {
             if (LOG.isDebugEnabled()) {
                 LOG.error("Cannot upload resource", ex);
             } else {

@@ -1,7 +1,7 @@
 package scot.gov.www.redirects;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider;
 import org.apache.cxf.jaxrs.JAXRSInvoker;
 import org.onehippo.repository.jaxrs.*;
 import org.onehippo.repository.modules.AbstractReconfigurableDaemonModule;

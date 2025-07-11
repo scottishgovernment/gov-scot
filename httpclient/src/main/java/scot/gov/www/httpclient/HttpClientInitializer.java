@@ -2,8 +2,8 @@ package scot.gov.www.httpclient;
 
 import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 import java.net.URI;
 
 public class HttpClientInitializer implements ServletContextListener {
