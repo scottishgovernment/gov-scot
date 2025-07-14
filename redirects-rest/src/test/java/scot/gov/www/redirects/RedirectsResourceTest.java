@@ -85,7 +85,6 @@ public class RedirectsResourceTest {
         Response response = sut.get();
 
         // ASSERT
-        RedirectResult entity = (RedirectResult) response.getEntity();
         assertEquals(200, response.getStatus());
     }
 
