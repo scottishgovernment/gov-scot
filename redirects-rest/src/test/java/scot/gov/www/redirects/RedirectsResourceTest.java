@@ -55,7 +55,7 @@ public class RedirectsResourceTest {
     }
 
     @Test
-    public void uploadReturns200WhenRedirectsCreated() throws RepositoryException {
+    public void uploadReturns200WhenRedirectsCreated() {
         // ARRANGE
         RedirectsRepository redirectsRepository = Mockito.mock(RedirectsRepository.class);
         RedirectsResource sut = new RedirectsResource(redirectsRepository);
