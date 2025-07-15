@@ -5,6 +5,6 @@ Priority: optional
 Architecture: all
 Maintainer: martin.ellis@gov.scot
 Pre-Depends: gov-scot-libs
-Depends: java11-runtime-headless
+Depends: java17-runtime-headless
 Description: Rubric Repository
 >

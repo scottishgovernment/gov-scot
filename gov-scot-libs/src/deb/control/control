@@ -4,6 +4,6 @@ Section: mygov
 Priority: optional
 Architecture: all
 Maintainer: martin.ellis@gov.scot
-Depends: java11-runtime-headless
+Depends: java17-runtime-headless
 Description: www.gov.scot Shared Libraries
 Provides: hippo-libs
