@@ -47,7 +47,7 @@ public class DocumentUploadPlugin extends ResourceUploadPlugin {
     }
 
     private FileUploadPanel createFileUploadPanel() {
-        FileUploadPanel panel = new FileUploadPanel("fileUpload", this.getPluginConfig(),
+        FileUploadPanel panel = new FileUploadPanel("fileUploadPanel", this.getPluginConfig(),
                 this.getValidationService(), this.getPreProcessorService()) {
             @Override
             public void onFileUpload(FileUpload fileUpload) throws FileUploadViolationException {
