@@ -61,7 +61,7 @@ public class PublicationSink extends AbstractSink {
 
     @Override
     public void removeDeletedPressRelease(String id) throws RepositoryException {
-        delete(id, "govscot:Publication", session);
+        depublish(id, "govscot:Publication", session);
     }
 
 }

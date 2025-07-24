@@ -39,6 +39,6 @@ public class NewsSink extends AbstractSink {
 
     @Override
     public void removeDeletedPressRelease(String id) throws RepositoryException {
-        delete(id, "govscot:News", session);
+        depublish(id, "govscot:News", session);
     }
 }

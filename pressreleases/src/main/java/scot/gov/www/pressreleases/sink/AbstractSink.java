@@ -27,7 +27,7 @@ public abstract class AbstractSink implements PressReleaseSink {
     @Override
     public abstract void removeDeletedPressRelease(String id) throws RepositoryException;
 
-    String delete(String id, String type, Session session) throws RepositoryException {
+    String depublish(String id, String type, Session session) throws RepositoryException {
         String xpath = String.format("//element(*, %s)[@govscot:externalId = '%s']", type, id);
         Query query = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH);
         QueryResult result = query.execute();
@@ -35,10 +35,14 @@ public abstract class AbstractSink implements PressReleaseSink {
             return null;
         }
         Node node = result.getNodes().nextNode();
-        String path = node.getParent().getPath();
-        node.getParent().remove();
-        session.save();
-        return path;
+        DocumentManager documentManager = new WorkflowDocumentManagerImpl(session);
+        try {
+            documentManager.depublishDocument(node.getParent().getPath());
+            session.save();
+        } catch (IllegalStateException e) {
+            LOG.warn("No depublish action for {}", node.getPath() , e);
+        }
+        return node.getPath();
     }
 
     String update(ContentNode contentNode, String location, Session session) {
@@ -49,7 +53,7 @@ public abstract class AbstractSink implements PressReleaseSink {
         try {
             documentManager.publishDocument(updatedDocumentLocation);
         } catch (IllegalStateException e) {
-            LOG.warn("No publish action for " + location + " no changes were found", e);
+            LOG.warn("No publish action for {}", location, e);
         }
         return updatedDocumentLocation;
     }

@@ -75,21 +75,18 @@ public abstract class AbstractImporter {
     }
 
     public void processPressReleases(List<Change> changes, PRGlooClient prgloo, PressReleaseSink sink) throws RepositoryException {
-        Set<String> seen = new HashSet<>();
+
         LOG.info("processPressReleases {} changes", changes.size());
         ContentMigrationException contentMigrationException = null;
         List<String> errorMessages = new ArrayList<>();
         for (Change change : changes) {
-            if (!seen.contains(change.getDocId())) {
-                try {
-                    processChange(sink, change, prgloo);
-                } catch (ContentMigrationException e) {
-                    LOG.error("Document checked out by user" + change.getDocId(), e);
-                    errorMessages.add(e.getMessage());
-                    contentMigrationException = e;
-                }
+            try {
+                processChange(sink, change, prgloo);
+            } catch (ContentMigrationException e) {
+                LOG.error("Document checked out by user" + change.getDocId(), e);
+                errorMessages.add(e.getMessage());
+                contentMigrationException = e;
             }
-            seen.add(change.getDocId());
         }
 
         if (contentMigrationException != null) {
