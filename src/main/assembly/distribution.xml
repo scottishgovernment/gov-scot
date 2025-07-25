@@ -12,4 +12,14 @@
     <componentDescriptor>common-lib-component.xml</componentDescriptor>
     <componentDescriptor>shared-lib-component.xml</componentDescriptor>
   </componentDescriptors>
+  <dependencySets>
+    <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
+      <outputDirectory>shared/lib</outputDirectory>
+      <scope>provided</scope>
+      <includes>
+        <include>org.onehippo.cms7:hippo-addon-review-workflow-shared</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
 </assembly>

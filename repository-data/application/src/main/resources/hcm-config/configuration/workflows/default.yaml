@@ -4,3 +4,5 @@ definitions:
       jcr:primaryType: frontend:plugin
       plugin.class: scot.gov.publishing.staging.plugins.PreviewPlugin
       wicket.id: ${item}
+    /hippo:configuration/hippo:workflows/default/handle/frontend:renderer/review:
+      onlineRequestReview.enabled: true

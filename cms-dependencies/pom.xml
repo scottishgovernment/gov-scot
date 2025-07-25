@@ -129,6 +129,18 @@
     </dependency>
 
     <dependency>
+      <groupId>org.bloomreach.forge.review-workflow</groupId>
+      <artifactId>review-workflow-frontend</artifactId>
+      <version>${forge.review-workflow.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bloomreach.forge.review-workflow</groupId>
+      <artifactId>review-workflow-repository</artifactId>
+      <version>${forge.review-workflow.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-staging-cms</artifactId>
       <version>0.0.1-SNAPSHOT</version>

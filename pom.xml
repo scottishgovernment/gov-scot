@@ -36,6 +36,14 @@
     </snapshotRepository>
   </distributionManagement>
 
+  <repositories>
+    <repository>
+      <id>bloomreach-maven2</id>
+      <name>Bloomreach Maven 2 Repository</name>
+      <url>https://maven.bloomreach.com/maven2-forge/</url>
+    </repository>
+  </repositories>
+
   <properties>
     <!-- Front end build -->
     <version.node>v22.11.0</version.node>
@@ -49,6 +57,7 @@
     <forge.breadcrumb.version>6.0.0</forge.breadcrumb.version>
     <forge.resetpassword.version>7.0.0</forge.resetpassword.version>
     <forge.content-exim.version>6.0.1</forge.content-exim.version>
+    <forge.review-workflow.version>2.0.0</forge.review-workflow.version>
 
     <retrofit.version>2.4.0</retrofit.version>
 
@@ -92,6 +101,12 @@
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-repository-builtin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bloomreach.forge.review-workflow</groupId>
+      <artifactId>review-workflow-shared</artifactId>
+      <version>${forge.review-workflow.version}</version>
     </dependency>
 
     <dependency>
@@ -518,6 +533,11 @@
                   <dependency>
                     <groupId>org.onehippo.cms7</groupId>
                     <artifactId>hippo-repository-builtin</artifactId>
+                    <classpath>shared</classpath>
+                  </dependency>
+                  <dependency>
+                    <groupId>org.bloomreach.forge.review-workflow</groupId>
+                    <artifactId>review-workflow-shared</artifactId>
                     <classpath>shared</classpath>
                   </dependency>
                 </dependencies>

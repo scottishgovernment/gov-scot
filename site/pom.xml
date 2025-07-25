@@ -19,4 +19,12 @@
   <name>www.gov.scot Site</name>
   <description>www.gov.scot Site</description>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.bloomreach.forge.review-workflow</groupId>
+      <artifactId>review-workflow-hst</artifactId>
+      <version>${forge.review-workflow.version}</version>
+    </dependency>
+  </dependencies>
+
 </project>
