@@ -58,7 +58,7 @@ public abstract class AbstractImporter {
 
     Instant getFetchTime(ImporterStatus importerStatus) {
         Instant lastSuccessfulRun = importerStatus.getLastSuccessfulRun().toInstant();
-        Instant sevenDaysAgo = lastSuccessfulRun.minus(Duration.ofDays(7)).plus(Duration.ofHours(1));
+        Instant sevenDaysAgo = Instant.now().minus(Duration.ofDays(7)).plus(Duration.ofHours(1));
         if (lastSuccessfulRun.isBefore(sevenDaysAgo)) {
             return sevenDaysAgo;
         } else {
