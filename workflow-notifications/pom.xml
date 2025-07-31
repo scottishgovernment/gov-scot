@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+<!--    <parent>-->
+<!--        <groupId>org.example</groupId>-->
+<!--        <artifactId>myproject</artifactId>-->
+<!--        <version>2.0.0</version>-->
+<!--    </parent>-->
+    <parent>
+        <groupId>scot.gov.www</groupId>
+        <artifactId>gov-scot</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>myproject-workflow-notifications</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+<!--        <commons-email.version>1.5</commons-email.version>-->
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>bloomreach-maven2</id>
+            <name>Bloomreach Maven 2</name>
+            <url>https://maven.bloomreach.com/repository/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </repository>
+    </repositories>
+
+    <modules>
+        <module>email-addon</module>
+        <module>event-handler</module>
+    </modules>
+
+</project>

@@ -343,6 +343,7 @@
         <module>redirects-rest</module>
         <module>searchjournal-rest</module>
         <module>imageprocessing</module>
+        <module>workflow-notifications</module>
       </modules>
     </profile>
 

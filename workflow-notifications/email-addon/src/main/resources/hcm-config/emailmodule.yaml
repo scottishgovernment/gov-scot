@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/emailmodule:
+      jcr:primaryType: hipposys:module
+      hipposys:className: demo.hippo.email.EmailModule
+      /hippo:moduleconfig:
+        jcr:primaryType: nt:unstructured
+        email.cmsroot: http://localhost:8080/cms

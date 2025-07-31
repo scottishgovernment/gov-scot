@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/notifications-listener-module:
+      jcr:primaryType: hipposys:module
+      hipposys:className: demo.hippo.notifications.NotificationsEventsListener
+      /hippo:moduleconfig:
+        jcr:primaryType: nt:unstructured

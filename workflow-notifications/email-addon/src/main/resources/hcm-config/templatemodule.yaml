@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/templatemodule:
+      jcr:primaryType: hipposys:module
+      hipposys:className: demo.hippo.email.TemplateModule
+      /hippo:moduleconfig:
+        jcr:primaryType: nt:unstructured
+        base.template.path: /mail/templates

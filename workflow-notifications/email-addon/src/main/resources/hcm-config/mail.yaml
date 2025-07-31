@@ -1,0 +1,34 @@
+definitions:
+  config:
+    /mail:
+      jcr:primaryType: nt:unstructured
+      /templates:
+        jcr:primaryType: nt:unstructured
+        /requestReviewHtml.ftl:
+          jcr:primaryType: nt:unstructured
+          template: "\n          \n<html>\n<#if documentname??><h3>A review was requested\
+            \ for ${documentname}<#if user??>, by user ${user}</#if></h3></#if>\n<#if\
+            \ cmsRoot??>Document link: <a href=\"${cmsRoot}/?path=${path}\">${cmsRoot}/?path=${path}</a></#if>\n\
+            <#if diff?? && diff?has_content><div><br/><h3>Differences:</h3>${diff}</div></#if>\n\
+            </html>\n          \n        "
+        /requestReviewText.ftl:
+          jcr:primaryType: nt:unstructured
+          template: "\n          \n<#if documentname??>A review was requested for ${documentname}<#if\
+            \ user??>, by user ${user}</#if></#if>\n<#if cmsRoot??>Document link: ${cmsRoot}/?path=${path}</#if>\n\
+            <#if diff?? && diff?has_content>Differences: ${diff}</#if>\n          \n \
+            \       "
+        /requestReviewOnlineHtml.ftl:
+          jcr:primaryType: nt:unstructured
+          preview.link.base: http://localhost:8080/site/rest
+          template: "<html>\r\n          <#if documentname??><h3>A review was requested\
+            \ for ${documentname}<#if user??>, by user ${user}</#if></h3></#if>\r\n  \
+            \        <#if previewLink??>Document link: <a href=\"${previewLink}\">${previewLink}</a></#if>\r\
+            \n          <#if diff?? && diff?has_content><div><br/><h3>Differences:</h3>${diff}</div></#if>\r\
+            \n          </html>"
+        /requestReviewOnlineText.ftl:
+          jcr:primaryType: nt:unstructured
+          preview.link.base: http://localhost:8080/site/rest
+          template: "<#if documentname??>A review was requested for ${documentname}<#if\
+            \ user??>, by user ${user}</#if></#if>\r\n          <#if previewLink??>Document\
+            \ link: ${previewLink}</#if>\r\n          <#if diff?? && diff?has_content>Differences:\
+            \ ${diff}</#if>"

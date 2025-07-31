@@ -1,0 +1,6 @@
+group:
+  name: workflow-notifications
+  after: hippo-cms
+project: workflow-notifications
+module:
+  name: workflow-notifications-event-handler
