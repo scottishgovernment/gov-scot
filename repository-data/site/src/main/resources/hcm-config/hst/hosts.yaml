@@ -33,6 +33,11 @@ definitions:
               hst:type: preview
               preview-cookie-httponly: 'false'
               preview-cookie-secure: 'false'
+            /reviewworkflow-preview:
+              jcr:primaryType: hst:mount
+              jcr:uuid: cca9cdc1-77c1-4266-847f-2cc179c73a8f
+              hst:alias: reviewworkflow
+              hst:type: preview
       /lcl:
         jcr:primaryType: hst:virtualhostgroup
         jcr:uuid: 544c5ec1-ab0a-4679-97c3-f31733622081

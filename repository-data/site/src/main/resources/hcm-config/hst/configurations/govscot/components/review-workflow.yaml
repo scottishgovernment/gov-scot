@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/govscot/hst:components/review-workflow:
+      jcr:primaryType: hst:component
+      hst:componentclassname: org.onehippo.forge.reviewworkflow.hst.ExampleReviewWorkflowComponent
+      hst:template: reviewworkflow
