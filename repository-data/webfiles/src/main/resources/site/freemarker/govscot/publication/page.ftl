@@ -96,6 +96,21 @@
                                 <#case "xsd">
                                     <#assign fileThumbnailPath = '/assets/images/documents/svg/xml.svg' />
                                     <#break>
+                                <#case "odf">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/odf.svg' />
+                                    <#break>
+                                <#case "odg">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/odg.svg' />
+                                    <#break>
+                                <#case "odp">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/odp.svg' />
+                                    <#break>
+                                <#case "ods">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/ods.svg' />
+                                    <#break>
+                                <#case "odt">
+                                    <#assign fileThumbnailPath = '/assets/images/documents/svg/odt.svg' />
+                                    <#break>
                                 <#default>
                                     <#assign fileThumbnailPath = '/assets/images/documents/svg/generic.svg' />
                             </#switch>
