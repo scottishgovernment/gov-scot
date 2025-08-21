@@ -3,6 +3,7 @@ definitions:
     /hst:hst/hst:configurations/govscot/hst:pages/searchfunnelbackresults:
       jcr:primaryType: hst:component
       hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent
-      hst:parameternames: [searchtype, supportedparams]
-      hst:parametervalues: [funnelback, 'q,qsup,page,topics,publicationTypes,begin,end,sort']
+      hst:parameternames: [searchtype, supportedparams, topicsProvider, publicationTypesProvider]
+      hst:parametervalues: [funnelback, 'q,qsup,page,topics,publicationTypes,begin,end,sort',
+        scot.gov.www.components.TopicsProvider, scot.gov.www.components.PublicationTypesProvider]
       hst:template: search-funnelback-results

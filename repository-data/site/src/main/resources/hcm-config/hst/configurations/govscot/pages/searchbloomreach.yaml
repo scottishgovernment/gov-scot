@@ -14,8 +14,9 @@ definitions:
         /results:
           jcr:primaryType: hst:component
           hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent
-          hst:parameternames: [searchtype]
-          hst:parametervalues: [bloomreach]
+          hst:parameternames: [searchtype, topicsProvider, publicationTypesProvider]
+          hst:parametervalues: [bloomreach, scot.gov.www.components.TopicsProvider,
+            scot.gov.www.components.PublicationTypesProvider]
           hst:template: search-funnelback-results
         /side-filter:
           jcr:primaryType: hst:component
