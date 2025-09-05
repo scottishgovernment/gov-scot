@@ -1,11 +1,14 @@
 package scot.gov.www;
 
+import org.apache.jackrabbit.util.ISO9075;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publications.hippo.HippoUtils;
 import scot.gov.publishing.sluglookup.SlugLookups;
 
-import javax.jcr.*;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 
 import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.tika.utils.StringUtils.isBlank;
@@ -24,9 +27,11 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
     static final String SLUG = "govscot:slug";
 
-    private static final String PREVIEW = "preview";
+    HippoUtils hippoUtils = new HippoUtils();
 
-    private static final String LIVE = "live";
+    protected static final String PREVIEW = "preview";
+
+    protected static final String LIVE = "live";
 
     @Override
     public boolean canHandleEvent(HippoWorkflowEvent event) {
@@ -34,6 +39,15 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
+        if (isFolderMove(event)) {
+            updateLookupsInFolderForFolderMove(event);
+            return;
+        }
+
+        if (isFolderCopy(event) && hasNoExceptions(event)) {
+            updateLookupsInFolderForFolderCopy(event);
+            return;
+        }
 
         if (!session.nodeExists(event.subjectPath())) {
             return;
@@ -82,7 +96,16 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
         SlugLookups slugLookups = new SlugLookups(session);
         slugLookups.updateLookup(slug, path, site, type, mount, true);
-        session.save();
+    }
+
+    void updateLookup(Node subject, String mount, boolean clearLookout) throws RepositoryException {
+        String slug = slug(subject);
+        String site = sitename(subject);
+        String path = substringAfter(subject.getPath(), site);
+        String type = path.split("/")[1];
+
+        SlugLookups slugLookups = new SlugLookups(session);
+        slugLookups.updateLookup(slug, path, site, type, mount, clearLookout);
     }
 
     void removeLookup(Node subject, String mount) throws RepositoryException {
@@ -111,6 +134,62 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
         Node variant = subject.getNode(subject.getName());
         return variant.hasProperty(SLUG);
+    }
+
+    boolean isFolderMove(HippoWorkflowEvent event) {
+        return "moveFolder".equals(event.action());
+    }
+
+    boolean isFolderCopy(HippoWorkflowEvent event) {
+        return "copyFolder".equals(event.action());
+    }
+
+    boolean hasNoExceptions(HippoWorkflowEvent event) {
+        return event.exception() == null;
+    }
+
+    void updateLookupsInFolderForFolderMove(HippoWorkflowEvent event) throws RepositoryException {
+        String sitename = getSitenameFromSubjectPath(event.subjectPath());
+        String fromPath = substringAfter(event.subjectPath(), sitename);
+        String toFolder = session.getNodeByIdentifier(event.arguments().get(2).toString()).getPath();
+        String toPath = substringAfter(toFolder, sitename) + "/" + event.arguments().get(3);
+        updateUrlLookupsForFolderMove(sitename, fromPath, toPath);
+        session.save();
+    }
+
+    void updateUrlLookupsForFolderMove(String sitename, String fromPath, String toPath) throws RepositoryException{
+        String xpath = String.format(
+                "/jcr:root/content/urls/%s//element(*, sluglookup:lookup)[jcr:like(@sluglookup:path, '%s/%%')]",
+                sitename,
+                fromPath);
+        hippoUtils.executeXpathQuery(session, xpath, node -> {
+            String oldPath = node.getProperty("sluglookup:path").getString();
+            String newPath = oldPath.replace(fromPath, toPath);
+            LOG.error("setting {} -> {}", oldPath, newPath);
+            node.setProperty("sluglookup:path", newPath);
+        });
+    }
+
+    void updateLookupsInFolderForFolderCopy(HippoWorkflowEvent event) throws RepositoryException {
+        String sitename = getSitenameFromSubjectPath(event.subjectPath());
+        String toFolder = session.getNodeByIdentifier(event.arguments().get(2).toString()).getPath();
+        String toPath = ISO9075.encodePath(substringAfter(toFolder, sitename) + "/" + event.arguments().get(3));
+        String xpath = String.format(
+                "/jcr:root/content/documents/%s%s//*[govscot:slug != '']",
+                sitename,
+                toPath);
+
+        hippoUtils.executeXpathQuery(session, xpath, node -> {
+            String slug = node.getProperty(SLUG).getString();
+            String newSlug = slug + "-copy";
+            node.setProperty(SLUG, newSlug);
+            session.save();
+            updateLookup(node.getParent(), PREVIEW, false);
+        });
+    }
+
+    String getSitenameFromSubjectPath(String path) {
+        return path.split("/")[3];
     }
 
 }

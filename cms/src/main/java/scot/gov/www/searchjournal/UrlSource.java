@@ -82,14 +82,21 @@ public class UrlSource {
         String publicationUrl = slugUrl("publications", publication);
 
         // if this is the first published non contents page then use the publication url
-        return isFirstVisiblePage(page, "publish".equals(action)) ?
+        boolean confirmAction = "publish".equals(action) || "moveFolder".equals(action);
+        return isFirstVisiblePage(page, confirmAction) ?
                 publicationUrl :
                 new StringBuilder(publicationUrl)
                         .append(PAGES).append('/').append(page.getName()).append('/')
                         .toString();
     }
 
-
+    String complexDocumentChapterUrl(Node publication, Node chapter, String action) throws RepositoryException {
+        String publicationUrl = slugUrl("publications", publication);
+        return new StringBuilder(publicationUrl)
+                .append(chapter.getParent().getName()).append('/')
+                .append(chapter.getName()).append('/')
+                .toString();
+    }
 
     boolean hasPages(Node publication) throws RepositoryException {
         Node publicationFolder = publication.getParent().getParent();
@@ -103,7 +110,7 @@ public class UrlSource {
 
     /**
      * Determine if the node is the first visible page of the publication.  If it is then it will use the url of
-     * the publicaitons since this will be its canonical url and will avoid the same content being in funnelback twice.
+     * the publications since this will be its canonical url and will avoid the same content being in funnelback twice.
      *
      * we skip over contents pages
      *

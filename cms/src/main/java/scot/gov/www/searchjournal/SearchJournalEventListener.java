@@ -1,10 +1,5 @@
 package scot.gov.www.searchjournal;
 
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-
 import org.apache.commons.lang3.StringUtils;
 import org.onehippo.cms7.services.eventbus.HippoEventListenerRegistry;
 import org.onehippo.cms7.services.eventbus.Subscribe;
@@ -17,17 +12,20 @@ import scot.gov.publishing.searchjournal.FeatureFlag;
 import scot.gov.publishing.searchjournal.SearchJournal;
 import scot.gov.publishing.searchjournal.SearchJournalEntry;
 
+import javax.jcr.Node;
+import javax.jcr.NodeIterator;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.*;
-import static scot.gov.publishing.searchjournal.FunnelbackCollection.NEWS;
-import static scot.gov.publishing.searchjournal.FunnelbackCollection.POLICY;
-import static scot.gov.publishing.searchjournal.FunnelbackCollection.getCollectionByPublicationType;
+import static org.apache.commons.lang3.StringUtils.equalsAny;
+import static org.apache.commons.lang3.StringUtils.startsWithAny;
+import static scot.gov.publishing.searchjournal.FunnelbackCollection.*;
 
 /**
  * Listen to publish and unpublish events in order to maintain the search journal.
  *
- * This is only done for certain collections for news and publicaitons since these are time sensitive.
+ * This is only done for certain collections for news and publications since these are time-sensitive.
  */
 public class SearchJournalEventListener implements DaemonModule {
 
@@ -37,6 +35,8 @@ public class SearchJournalEventListener implements DaemonModule {
 
     private static final String DEPUBLISH_INTERACTION = "default:handle:depublish";
 
+    private static final String MOVE_INTERACTION = "threepane:folder-permissions:moveFolder";
+
     private static final String PUBLICATIONS_PATH_PREFIX = "/content/documents/govscot/publications";
 
     private static final String NEWS_PATH_PREFIX = "/content/documents/govscot/news";
@@ -44,6 +44,12 @@ public class SearchJournalEventListener implements DaemonModule {
     private static final String POLICY_PATH_PREFIX = "/content/documents/govscot/policies";
 
     private static final String PAGES = "pages";
+
+    private static final String CHAPTERS = "chapters";
+
+    private static final String DEPUBLISH_ACTION = "depublish";
+
+    private static final String PUBLISH_ACTION = "publish";
 
     private static final int PUBLICATION_FOLDER_DEPTH = 8;
 
@@ -97,6 +103,7 @@ public class SearchJournalEventListener implements DaemonModule {
 
     /**
      * we are only interested in successful publish and depublish events for news, policy and publications
+     * Or move events for Publications
      */
     boolean shouldHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
         if (!event.success()) {
@@ -112,10 +119,28 @@ public class SearchJournalEventListener implements DaemonModule {
             return false;
         }
 
-        // it is a publish or a depublish with no arguments.  If the even has arguments it means it is scheduled
-        // when the page is actually published we will get a no arguments event.
-        return equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION) &&
-                event.arguments() == null;
+        // Check if it's a move of the documents folder with published documents
+        if (!isMovedPublishedFolder(event, "documents")) {
+            return false;
+        }
+
+        if (!isMovedPublishedFolder(event, "pages")) {
+            return false;
+        }
+
+        // it is a publish or a depublish with no arguments, or is a move event.
+        // If the event has arguments it means it is scheduled when the page is actually published
+        // we will get a no arguments event.
+        return (equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION) &&
+                event.arguments() == null) || equalsAny(event.interaction(), MOVE_INTERACTION);
+    }
+
+    boolean isMovedPublishedFolder(HippoWorkflowEvent event, String folder) throws RepositoryException {
+        if (event.interaction().equals(MOVE_INTERACTION) && event.arguments().contains(folder)) {
+            Node documentFolder = session.getNodeByIdentifier(event.subjectId());
+            return isFolderWithPublishedDocs(documentFolder);
+        }
+        return true;
     }
 
     boolean isExcludedPage(HippoWorkflowEvent event) throws RepositoryException {
@@ -133,10 +158,47 @@ public class SearchJournalEventListener implements DaemonModule {
 
     Node getVariant(HippoWorkflowEvent event) throws RepositoryException {
         Node handle = session.getNodeByIdentifier(event.subjectId());
+        if (event.interaction().equals(MOVE_INTERACTION)) {
+            handle = session.getNodeByIdentifier(handle.getNode("index").getIdentifier());
+        }
+
         return hippoUtils.getVariant(handle);
     }
 
     List<SearchJournalEntry> journalEntries(HippoWorkflowEvent event) throws RepositoryException {
+
+        if (event.interaction().equals(MOVE_INTERACTION) && event.arguments().contains("documents")) {
+            Node documentFolder = session.getNodeByIdentifier(event.subjectId());
+                NodeIterator documentIterator = documentFolder.getNodes();
+                while (documentIterator.hasNext()) {
+                    Node documentHandle = documentIterator.nextNode();
+                    Node documentVariant = publishedVariant(documentHandle);
+                    if (documentVariant != null) {
+                    List<SearchJournalEntry> entries = new ArrayList<>();
+                    SearchJournalEntry depublishOldEntry = createDepublishSubfolderEntry(event.subjectPath(), null, false);
+                    entries.add(depublishOldEntry);
+                    entries.addAll(journalEntriesForPublication(documentVariant, event));
+                    return entries;
+                    }
+                }
+        }
+
+        if (event.interaction().equals(MOVE_INTERACTION) && event.arguments().contains(PAGES)) {
+            Node pagesFolder = session.getNodeByIdentifier(event.subjectId());
+            NodeIterator pagesIterator = pagesFolder.getNodes();
+            List<SearchJournalEntry> entries = new ArrayList<>();
+            while (pagesIterator.hasNext()) {
+                Node pageHandle = pagesIterator.nextNode();
+                Node pageVariant = publishedVariant(pageHandle);
+                if (pageVariant != null) {
+                    SearchJournalEntry depublishOldEntry = createDepublishSubfolderEntry(event.subjectPath(), pageVariant.getName(), true);
+                    entries.add(depublishOldEntry);
+                    entries.addAll(journalEntriesForPublication(pageVariant, event));
+                }
+            }
+            return entries;
+        }
+
         Node variant = getVariant(event);
 
         if (variant.isNodeType("govscot:News")) {
@@ -154,6 +216,26 @@ public class SearchJournalEventListener implements DaemonModule {
         }
 
         return journalEntriesForPublication(variant, event);
+    }
+
+    SearchJournalEntry createDepublishSubfolderEntry(String oldPath, String pageTitle, boolean isPages) {
+        SearchJournalEntry entry = new SearchJournalEntry();
+        entry.setAttempt(0);
+        entry.setAction(DEPUBLISH_ACTION);
+        entry.setTimestamp(Calendar.getInstance());
+        // build from oldPath passed in as folder has already been moved to new location
+        String[] pathSections = oldPath.split("/");
+        StringBuilder url = new StringBuilder(UrlSource.URL_BASE).append("publications/")
+                .append(pathSections[8]).append('/')
+                .append(pathSections[9])
+                .append('/');
+        if (isPages) {
+            url.append(pageTitle).append("/");
+        }
+        entry.setUrl(url.toString());
+        entry.setCollection(PUBLICATIONS.getCollectionName());
+
+        return entry;
     }
 
     List<SearchJournalEntry> journalEntriesForPublication(Node variant, HippoWorkflowEvent event) throws RepositoryException {
@@ -188,13 +270,69 @@ public class SearchJournalEventListener implements DaemonModule {
             return Arrays.asList(documentsEntry, publicationEntry);
         }
 
-        // just update the publication
-        return Collections.singletonList(entry);
+        if (isAnyNodeType(variant, "govscot:ComplexDocument2" )) {
+            List<SearchJournalEntry> journalEntries = new ArrayList<>();
+            journalEntries.add(entry);
+            List<Node> chapters = getChapters(publicationFolder);
+            for (Node chapter : chapters) {
+                journalEntries.add(publicationChapterEntry(event, collection, chapter, publication));
+            }
+            if (hasDocuments) {
+                journalEntries.add(documentsEntry(event, collection, hasDocuments, publication));
+            }
+            return journalEntries;
+        }
+
+        // update the publication, all pages and the documents folder
+        List<SearchJournalEntry> journalEntries = new ArrayList<>();
+        journalEntries.add(entry);
+        if (hasPages) {
+            List<Node> pages = getPages(publicationFolder);
+            for (Node page : pages) {
+                journalEntries.add(publicationPageEntry(event, collection, page, publication));
+            }
+        }
+        if (hasDocuments) {
+            journalEntries.add(documentsEntry(event, collection, needsDocumentsPage, publication));
+        }
+        return journalEntries;
+
+//        return Collections.singletonList(entry);
+    }
+
+    List<Node> getPages(Node publicationFolder) throws RepositoryException {
+        List<Node> pages = new ArrayList<>();
+        Node pagesFolder = publicationFolder.getNode(PAGES);
+        NodeIterator it = pagesFolder.getNodes();
+        while (it.hasNext()) {
+            Node pageHandle = it.nextNode();
+            if (publishedNonContentPage(pageHandle)) {
+                pages.add(pageHandle);
+            }
+        }
+        return pages;
+    }
+
+    List<Node> getChapters(Node publicationFolder) throws RepositoryException {
+        List<Node> chapters = new ArrayList<>();
+        Node chaptersFolder = publicationFolder.getNode(CHAPTERS);
+        NodeIterator it = chaptersFolder.getNodes();
+        while (it.hasNext()) {
+            Node chapterFolder = it.nextNode();
+            NodeIterator chapterIt = chapterFolder.getNodes();
+            while (chapterIt.hasNext()) {
+                Node chapterHandle = chapterIt.nextNode();
+                if (publishedNonContentPage(chapterHandle)) {
+                    chapters.add(chapterHandle);
+                }
+            }
+        }
+        return chapters;
     }
 
     SearchJournalEntry documentsEntry(HippoWorkflowEvent event, String collection, boolean needsDocumentsPage, Node publication) throws RepositoryException {
         SearchJournalEntry entry = entry(event);
-        entry.setAction(needsDocumentsPage ? "publish" : "depublish");
+        entry.setAction(needsDocumentsPage ? PUBLISH_ACTION : DEPUBLISH_ACTION);
         entry.setCollection(collection);
         entry.setUrl(urlSource.documentsUrl(publication));
         return entry;
@@ -208,9 +346,25 @@ public class SearchJournalEventListener implements DaemonModule {
         return entry;
     }
 
+    SearchJournalEntry publicationPageEntry(HippoWorkflowEvent event, String collection, Node page, Node publication) throws RepositoryException {
+        SearchJournalEntry entry = entry(event);
+        setActionDependingOnState(publication, entry);
+        entry.setCollection(collection);
+        entry.setUrl(urlSource.publicationPageUrl(publication, page, entry.getAction()));
+        return entry;
+    }
+
+    SearchJournalEntry publicationChapterEntry(HippoWorkflowEvent event, String collection, Node chapter, Node publication) throws RepositoryException {
+        SearchJournalEntry entry = entry(event);
+        setActionDependingOnState(publication, entry);
+        entry.setCollection(collection);
+        entry.setUrl(urlSource.complexDocumentChapterUrl(publication, chapter, entry.getAction()));
+        return entry;
+    }
+
     void setActionDependingOnState(Node node, SearchJournalEntry entry) throws RepositoryException {
         Node publishedPublicationVariant = publishedVariant(node.getParent());
-        String action = publishedPublicationVariant != null ? "publish" : "depublish";
+        String action = publishedPublicationVariant != null ? PUBLISH_ACTION : DEPUBLISH_ACTION;
         entry.setAction(action);
     }
 
@@ -283,10 +437,18 @@ public class SearchJournalEventListener implements DaemonModule {
                 v -> hippoUtils.contains(v, "hippo:availability", "live"));
     }
 
+    String getEventAction(HippoWorkflowEvent event) {
+        if ("moveFolder".equals(event.action())) {
+            return PUBLISH_ACTION;
+        }
+
+        return event.action();
+    }
+
     SearchJournalEntry entry(HippoWorkflowEvent event) {
         SearchJournalEntry journalEntry = new SearchJournalEntry();
         journalEntry.setAttempt(0);
-        journalEntry.setAction(event.action());
+        journalEntry.setAction(getEventAction(event));
         journalEntry.setTimestamp(Calendar.getInstance());
         return journalEntry;
     }
