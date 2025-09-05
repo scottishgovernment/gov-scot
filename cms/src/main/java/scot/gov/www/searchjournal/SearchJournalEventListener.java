@@ -283,10 +283,18 @@ public class SearchJournalEventListener implements DaemonModule {
                 v -> hippoUtils.contains(v, "hippo:availability", "live"));
     }
 
+    String getEventAction(HippoWorkflowEvent event) {
+        if ("moveFolder".equals(event.action())) {
+            return "publish";
+        }
+
+        return event.action();
+    }
+
     SearchJournalEntry entry(HippoWorkflowEvent event) {
         SearchJournalEntry journalEntry = new SearchJournalEntry();
         journalEntry.setAttempt(0);
-        journalEntry.setAction(event.action());
+        journalEntry.setAction(getEventAction(event));
         journalEntry.setTimestamp(Calendar.getInstance());
         return journalEntry;
     }
