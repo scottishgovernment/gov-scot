@@ -129,6 +129,16 @@
     </dependency>
 
     <dependency>
+      <groupId>org.onehippo.forge.folderctxmenus</groupId>
+      <artifactId>folderctxmenus-repository</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.forge.folderctxmenus</groupId>
+      <artifactId>folderctxmenus-frontend</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-staging-cms</artifactId>
       <version>0.0.1-SNAPSHOT</version>

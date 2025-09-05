@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/extra-folder-options/editor:
+      jcr:primaryType: hipposys:authrole
+      hipposys:groups:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [useradmin]
+      hipposys:role: folderctxmenus-editor
+    /hippo:configuration/hippo:domains/extra-folder-options/content-domain:
+      /browse-folder-and-descendants:
+        jcr:primaryType: hipposys:facetrule
+        hipposys:equals: true
+        hipposys:facet: jcr:path
+        hipposys:type: Reference
+        hipposys:value: /content/documents/govscot/publications

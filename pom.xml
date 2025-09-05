@@ -49,6 +49,7 @@
     <forge.breadcrumb.version>6.0.0</forge.breadcrumb.version>
     <forge.resetpassword.version>7.0.0</forge.resetpassword.version>
     <forge.content-exim.version>6.0.1</forge.content-exim.version>
+    <forge.folderctxmenus.version>7.1.2</forge.folderctxmenus.version>
 
     <retrofit.version>2.4.0</retrofit.version>
 
@@ -113,6 +114,18 @@
         <groupId>org.onehippo.forge.content-exim</groupId>
         <artifactId>content-exim-core</artifactId>
         <version>${forge.content-exim.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.onehippo.forge.folderctxmenus</groupId>
+        <artifactId>folderctxmenus-repository</artifactId>
+        <version>${forge.folderctxmenus.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.onehippo.forge.folderctxmenus</groupId>
+        <artifactId>folderctxmenus-frontend</artifactId>
+        <version>${forge.folderctxmenus.version}</version>
       </dependency>
 
       <dependency>
