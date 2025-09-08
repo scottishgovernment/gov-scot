@@ -70,5 +70,6 @@ definitions:
                   embargo-agriculture-statistics, embargo-community-ownership-statistics,
                   embargo-employability-statistics, embargo-sscq, embargo-temporary,
                   embargo-rural-statistics, embargo-scottish-crime-and-justice-survey,
-                  embargo-justice-system-monitoring-team]
+                  embargo-justice-system-monitoring-team, embargo-scottish-health-survey
+          ]
         hipposys:role: embargo

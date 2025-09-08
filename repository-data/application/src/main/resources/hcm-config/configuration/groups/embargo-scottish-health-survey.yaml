@@ -1,0 +1,10 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/embargo-scottish-health-survey:
+      jcr:primaryType: hipposys:group
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: []
+      hipposys:securityprovider: internal
