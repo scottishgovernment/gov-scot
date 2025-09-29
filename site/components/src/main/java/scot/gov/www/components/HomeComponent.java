@@ -11,6 +11,7 @@ import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.Topic;
@@ -38,7 +39,7 @@ public class HomeComponent extends BaseHstComponent {
         populateStatsAndResearch(scope.getBean(PUBLICATIONS), request);
         populateConsultations(scope.getBean(PUBLICATIONS), request);
         populatePublications(scope.getBean(PUBLICATIONS), request);
-        populateTopicsList(scope.getBean("topics"), request);
+        FilteredResultsSideComponent.populateTopics(request);
         request.setAttribute("firstMinister", scope.getBean("about/who-runs-government/first-minister/index"));
         request.setAttribute("document", context.getContentBean());
     }
@@ -88,15 +89,6 @@ public class HomeComponent extends BaseHstComponent {
                 .build();
         executeQueryLoggingException(query, request, PUBLICATIONS);
     }
-
-
-    private void populateTopicsList(HippoBean scope, HstRequest request) {
-        List<Topic> topics = scope.getChildBeans(Topic.class);
-        Comparator<Topic> titleComparator = Comparator.comparing(Topic::getTitle);
-                Collections.sort(topics, titleComparator);
-        request.setAttribute("topics", topics);
-    }
-
 
     static HstQueryBuilder publicationsQuery(HippoBean scope) {
         return HstQueryBuilder.create(scope)

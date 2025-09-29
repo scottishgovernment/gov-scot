@@ -105,7 +105,7 @@ FilteredResultsSideComponent extends BaseHstComponent {
         }
     }
 
-    private void populateTopics(HstRequest request) {
+    static void populateTopics(HstRequest request) {
         HippoBean baseBean = request.getRequestContext().getSiteContentBaseBean();
         HippoFolderBean topicsFolder = baseBean.getBean("topics", HippoFolderBean.class);
         HstQuery query = HstQueryBuilder.create(topicsFolder).ofTypes(Issue.class, Topic.class, DynamicIssue.class).orderByAscending("govscot:title").build();

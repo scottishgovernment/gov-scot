@@ -249,12 +249,10 @@
                                         <div class="ds_search-filters__scrollable  gov_filters__scrollable--fixed">
                                             <div class="ds_field-group--checkboxes">
                                                 <#list topics as item>
-                                                    <#assign slugifyTitle=item.title?lower_case?replace(' ', '-')?replace(',', '')>
-
                                                     <div class="ds_checkbox  ds_checkbox--small">
                                                         <input
-                                                            id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${slugifyTitle}">
-                                                        <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
+                                                            id="${item.node.name}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${item.node.name}">
+                                                        <label for="${item.node.name}" class="ds_checkbox__label">${item.title}</label>
                                                     </div>
                                                 </#list>
                                             </div>
