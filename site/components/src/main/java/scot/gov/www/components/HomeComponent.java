@@ -11,14 +11,8 @@ import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.News;
 import scot.gov.www.beans.Publication;
-import scot.gov.www.beans.Topic;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 
