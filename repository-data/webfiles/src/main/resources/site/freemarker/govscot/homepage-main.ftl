@@ -253,7 +253,7 @@
 
                                                     <div class="ds_checkbox  ds_checkbox--small">
                                                         <input
-                                                            id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${item.title}">
+                                                            id="${slugifyTitle}" name="topics[]" class="ds_checkbox__input" type="checkbox" value="${slugifyTitle}">
                                                         <label for="${slugifyTitle}" class="ds_checkbox__label">${item.title}</label>
                                                     </div>
                                                 </#list>

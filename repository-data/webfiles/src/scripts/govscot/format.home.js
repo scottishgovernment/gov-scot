@@ -77,7 +77,9 @@ const homePage = {
         queryStringParams.push('cat=filter');
 
         if (topics.length > 0) {
-            queryStringParams.push('topics=' + topics.join(';'));
+            topics.forEach(topic => {
+                queryStringParams.push('topic=' + topic);
+            });
         }
 
         if (queryStringParams.length > 0) {
