@@ -1,5 +1,5 @@
 # Our security address
-Contact: https://hackerone.com/291b7ece-5c82-4a77-b2b8-db6b2a4f6528/embedded_submissions/new
+Contact: https://hackerone.com/78ccd5b9-4869-4087-ba12-1ebabd3cff99/embedded_submissions/new?locale=en
 
 # Our security policy
 Policy:  https://www.gov.scot/publications/vulnerability-disclosure-policy/
