@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/publication-extra-folder-options:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:members: []
