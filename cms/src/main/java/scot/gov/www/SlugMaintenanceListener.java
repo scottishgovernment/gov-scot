@@ -1,5 +1,6 @@
 package scot.gov.www;
 
+import org.apache.jackrabbit.util.ISO9075;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,6 +105,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
         String slug = slug(subject);
         String site = sitename(subject);
         String path = substringAfter(subject.getPath(), site);
+        SlugLookups slugLookups = new SlugLookups(session);
         slugLookups.updateLookup(slug, path, site, "global", mount, clearLookout);
     }
 
@@ -176,7 +178,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     void updateLookupsInFolderForFolderCopy(HippoWorkflowEvent event) throws RepositoryException {
         String sitename = getSitenameFromSubjectPath(event.subjectPath());
         String toFolder = session.getNodeByIdentifier(event.arguments().get(2).toString()).getPath();
-        String toPath = substringAfter(toFolder, sitename) + "/" + event.arguments().get(3);
+        String toPath = ISO9075.encodePath(substringAfter(toFolder, sitename) + "/" + event.arguments().get(3));
         String xpath = String.format(
                 "/jcr:root/content/documents/%s%s//*[govscot:slug != '']",
                 sitename,
