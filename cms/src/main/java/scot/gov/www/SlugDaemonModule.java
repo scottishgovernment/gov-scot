@@ -17,6 +17,10 @@ public abstract class SlugDaemonModule extends DaemonModuleBase {
 
     protected static final String GOVSCOT_SLUG_PROPERTY = "govscot:slug";
 
+    protected static final String PREVIEW = "preview";
+
+    protected static final String LIVE = "live";
+
     protected String allocate(String slug, String docType) throws RepositoryException {
 
         slug = removeDuplicateHyphens(slug);
@@ -46,7 +50,7 @@ public abstract class SlugDaemonModule extends DaemonModuleBase {
         return disambiguate(slug, docType, postfix + 1);
     }
     private boolean slugAlreadyExists(String slug, String type) throws RepositoryException {
-        String slugPath = SlugLookupPaths.slugLookupPath(slug, "govscot", type, "live");
+        String slugPath = SlugLookupPaths.slugLookupPath(slug, "govscot", type, LIVE);
         return session.nodeExists(slugPath);
     }
 

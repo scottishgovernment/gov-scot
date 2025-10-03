@@ -27,10 +27,6 @@ public class SlugMaintenanceListener extends SlugDaemonModule {
 
     static final String SLUG = "govscot:slug";
 
-    private static final String PREVIEW = "preview";
-
-    private static final String LIVE = "live";
-
     HippoUtils hippoUtils = new HippoUtils();
 
     @Override
@@ -39,12 +35,12 @@ public class SlugMaintenanceListener extends SlugDaemonModule {
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
-        if(isFolderMove(event)) {
+        if (isFolderMove(event)) {
             updateLookupsInFolderForFolderMove(event);
             return;
         }
 
-        if(isFolderCopy(event)) {
+        if (isFolderCopy(event)) {
             updateLookupsInFolderForFolderCopy(event);
             return;
         }

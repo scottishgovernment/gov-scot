@@ -11,14 +11,3 @@ definitions:
       hipposys:previouspasswords:
         .meta:category: system
       hipposys:securityprovider: internal
-    /hippo:configuration/hippo:users/embargouser:
-      jcr:primaryType: hipposys:user
-      hipposys:active: true
-      hipposys:password:
-        .meta:category: system
-        value: embargouser
-      hipposys:passwordlastmodified:
-        .meta:category: system
-      hipposys:previouspasswords:
-        .meta:category: system
-      hipposys:securityprovider: internal
