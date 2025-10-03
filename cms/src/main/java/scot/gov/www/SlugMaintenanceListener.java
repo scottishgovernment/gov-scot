@@ -7,7 +7,8 @@ import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 import scot.gov.publishing.sluglookup.SlugLookups;
 
-import javax.jcr.*;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 
 import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.tika.utils.StringUtils.isBlank;
@@ -20,7 +21,7 @@ import static org.apache.tika.utils.StringUtils.isBlank;
  * This allows the link processor to get the right path for a slug with a simple session.getNode call rather than
  * having to do an expensive query.
  */
-public class SlugMaintenanceListener extends DaemonModuleBase {
+public class SlugMaintenanceListener extends SlugDaemonModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(SlugMaintenanceListener.class);
 
@@ -30,8 +31,6 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
     private static final String LIVE = "live";
 
-    SlugLookups slugLookups;
-
     HippoUtils hippoUtils = new HippoUtils();
 
     @Override
@@ -40,13 +39,12 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
-
-        if (isFolderMove(event)) {
+        if(isFolderMove(event)) {
             updateLookupsInFolderForFolderMove(event);
             return;
         }
 
-        if (isFolderCopy(event)) {
+        if(isFolderCopy(event)) {
             updateLookupsInFolderForFolderCopy(event);
             return;
         }
@@ -98,15 +96,16 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
         SlugLookups slugLookups = new SlugLookups(session);
         slugLookups.updateLookup(slug, path, site, type, mount, true);
-        session.save();
     }
 
     void updateLookup(Node subject, String mount, boolean clearLookout) throws RepositoryException {
         String slug = slug(subject);
         String site = sitename(subject);
         String path = substringAfter(subject.getPath(), site);
+        String type = path.split("/")[1];
+
         SlugLookups slugLookups = new SlugLookups(session);
-        slugLookups.updateLookup(slug, path, site, "global", mount, clearLookout);
+        slugLookups.updateLookup(slug, path, site, type, mount, clearLookout);
     }
 
     void removeLookup(Node subject, String mount) throws RepositoryException {
@@ -142,7 +141,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
             return false;
         }
 
-        return "threepane:folder-permissions:moveFolder".equals(event.interaction());
+        return true;
     }
 
     boolean isFolderCopy(HippoWorkflowEvent event) {
@@ -150,7 +149,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
             return false;
         }
 
-        return "threepane:folder-permissions:copyFolder".equals(event.interaction());
+        return true;
     }
 
     void updateLookupsInFolderForFolderMove(HippoWorkflowEvent event) throws RepositoryException {
@@ -186,7 +185,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
         hippoUtils.executeXpathQuery(session, xpath, node -> {
             String slug = node.getProperty(SLUG).getString();
-            String newSlug = slug + "-copy";
+            String newSlug = allocate(slug, "publications");
             node.setProperty(SLUG, newSlug);
             session.save();
             updateLookup(node.getParent(), PREVIEW, false);

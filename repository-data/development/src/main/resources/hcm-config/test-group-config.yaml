@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/publication-editors:
+      hipposys:members:  [publicationuser]
+    /hippo:configuration/hippo:groups/embargo-rural-statistics:
+      hipposys:members:  [embargouser]
