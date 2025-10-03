@@ -57,24 +57,19 @@ CKEDITOR.dialog.add('dsButtonDialog', function (editor) {
                         type: 'select',
                         id: 'button-type',
                         label: 'Type',
-                        items: [ [ 'Primary' ], [ 'Secondary' ], [ 'Cancel' ] ],
+                        items: [ [ 'Primary' ], [ 'Secondary' ] ],
                         'default': 'Primary',
                         setup: function (element) {
                             if (element.hasClass('ds_button--secondary')) {
                                 this.setValue('Secondary');
-                            } else if (element.hasClass('ds_button--cancel')) {
-                                this.setValue('Cancel');
                             } else {
                                 this.setValue('Primary');
                             }
                         },
                         commit: function (element) {
-                            element.$.classList.remove('ds_button--secondary', 'ds_button--cancel');
+                            element.$.classList.remove('ds_button--secondary');
                             if (this.getValue() === 'Secondary') {
                                 element.$.classList.add('ds_button--secondary');
-                            }
-                            if (this.getValue() === 'Cancel') {
-                                element.$.classList.add('ds_button--cancel');
                             }
                         }
                     },

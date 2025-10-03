@@ -41,11 +41,11 @@
                 <div class="ds_cb--feature-grid__item">
                     <#if showimages>
                         <div class="ds_cb--feature-grid__item-media  <#if smallvariant>ds_cb--feature-grid__item-media--small-mobile</#if>">
-                            <div class="ds_aspect-box">
-                            <#if item.image??>
+                            <#if item.image?has_content>
                             <#if link?has_content>
-                                <a href="${link}" tabindex="-1">
+                            <a href="${link}" tabindex="-1">
                             </#if>
+                                <div class="ds_aspect-box">
                                 <#if item.image.xlargesixcolumns??>
                                     <img class="ds_aspect-box__inner" alt="${item.alt}" src="<@hst.link hippobean=item.image.xlargesixcolumns />"
                                             width="${item.image.xlargesixcolumns.width?c}"
@@ -65,11 +65,11 @@
                                 <#else>
                                     <img loading="lazy" class="ds_aspect-box__inner" src="<@hst.link hippobean=item.image />" alt="${item.alt}"/>
                                 </#if>
+                                </div>
                             <#if link?has_content>
-                                </a>
+                            </a>
                             </#if> 
                             </#if> 
-                            </div>
                         </div>
                     </#if>
                     <#if item.title??>

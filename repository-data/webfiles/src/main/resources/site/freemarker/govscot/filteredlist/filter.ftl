@@ -64,7 +64,7 @@
             <form id="filters" method="GET" action="#">
 
                 <fieldset id="filter-search" class="gov_filters__search">
-                    <legend class="visually-hidden"><h3>Keyword search</h3></legend>
+                    <legend class="visually-hidden"><h2>Keyword search</h2></legend>
                     <label class="ds_label" for="filters-search-term">Search</label>
 
                     <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
@@ -75,7 +75,7 @@
                         </button>
                     </div>
                 </fieldset>
-                <h3 class="ds_search-filters__title  ds_h4  ds_!_padding-top--0">Filter by</h3>
+                <h2 class="ds_search-filters__title  ds_h4  ds_!_padding-top--0">Filter by</h2>
 
                 <div class="ds_accordion  ds_accordion--small  ds_!_margin-top--0" data-module="ds-accordion">
                 <#if publicationTypes??>
