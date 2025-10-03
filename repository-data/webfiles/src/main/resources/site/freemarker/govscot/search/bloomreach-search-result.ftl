@@ -8,8 +8,8 @@
 
     <div class="ds_search-result__has-media">
         <div class="ds_search-result__media-wrapper">
-            <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
-                <a class="ds_search-result__media-link" href="${link}" tabindex="-1">
+            <a class="ds_search-result__media-link" href="${link}" tabindex="-1">
+                <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
                     <img alt=""
                          aria-hidden="true"
                          class="ds_aspect-box__inner"
@@ -23,8 +23,8 @@
                                                 <@hst.link hippobean=item.image.mediumtwocolumnsdoubledsquare/> 192w,
                                                 <@hst.link hippobean=item.image.largetwocolumnsdoubledsquare/> 256w"
                          sizes="(min-width:480px) 128px, 96px">
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div>
             <#if item.name??>

@@ -269,28 +269,18 @@
     color: #ffffff;
 }
 
-.ds_button--secondary {
+.ds_button--secondary, 
+.ds_button--cancel {
     background-color: transparent;
     color: #0065bd;
     outline: 2px solid currentColor;
     outline-offset: -2px;
 }
 
-.ds_button--secondary:hover:not(:focus) {
+.ds_button--secondary:hover:not(:focus),
+.ds_button--cancel:hover:not(:focus)  {
     background-color: #d9effc;
     color: #00437e;
-}
-
-.ds_button--cancel {
-    background-color: transparent;
-    color: #333333;
-    outline: 2px solid currentColor;
-    outline-offset: -2px;
-}
-
-.ds_button--cancel:hover:not(:focus) {
-    background-color: #ebebeb;
-    color: #333333;
 }
 
 .ds_button--fixed {
@@ -314,13 +304,10 @@
 }
 
 .cke_wysiwyg_div.cke_editable a.ds_button--secondary,
-.hippo-richtext a.ds_button--secondary {
-    color: #0065bd;
-}
-
+.hippo-richtext a.ds_button--secondary,
 .cke_wysiwyg_div.cke_editable a.ds_button--cancel,
-.hippo-richtext a.ds_button--cancel {
-    color: #333333;
+.hippo-richtext a.ds_button--cancel  {
+    color: #0065bd;
 }
 
 

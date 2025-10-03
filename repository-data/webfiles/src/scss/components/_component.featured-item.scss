@@ -5,7 +5,7 @@
 
 .#{$site-prefix}featured-item {
     @include small-size;
-    @include blocklink('.#{$site-prefix}featured-item__link', false);
+    @include ds_blocklink('.#{$site-prefix}featured-item__link');
 
     line-height: 24px;
 
@@ -15,6 +15,7 @@
 
     &__metadata {
         @include tiny-size;
+        color: $ds_colour__text;
         margin-bottom: 8px;
 
         .ds_content-label {
@@ -38,6 +39,19 @@ h3.#{$site-prefix}featured-item__title {
 
     line-height: 24px;
     margin-top: 0;
+}
+
+
+.#{$site-prefix}featured-item__link {
+    &::after {
+        background: transparent;
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
 }
 
 @supports (display: grid) {

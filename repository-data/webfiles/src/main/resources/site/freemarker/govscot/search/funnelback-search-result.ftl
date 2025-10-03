@@ -16,8 +16,8 @@
 
     <div class="ds_search-result__has-media">
         <div class="ds_search-result__media-wrapper">
-            <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
-                <a class="ds_search-result__media-link" href="${result.liveUrl}" tabindex="-1">
+            <a class="ds_search-result__media-link" href="${result.liveUrl}" tabindex="-1">
+                <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
                     <img alt=""
                             aria-hidden="true"
                             class="ds_aspect-box__inner"
@@ -30,8 +30,8 @@
                                     ${result.listMetadata['image']?first}/govscot%3Alargetwocolumnsdoubledsquare 256w"
                             sizes="(min-width:480px) 128px, 96px"
                             src="${result.listMetadata['image']?first}/govscot%3Amediumtwocolumnssquare">
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div>
             <h4 class="ds_search-result__sub-title">

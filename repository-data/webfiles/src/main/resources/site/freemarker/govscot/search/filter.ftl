@@ -39,7 +39,7 @@
                 <#assign searchpagepath = "${searchpagepath}" />
             </#if>
             <form id="filters" method="GET" action="<@hst.link path=searchpagepath/>">
-                <h3 class="ds_search-filters__title  ds_h4">Filter by</h3>
+                <h2 class="ds_search-filters__title  ds_h4">Filter by</h2>
 
                 <input type="hidden" value="${term}" name="q">
 
