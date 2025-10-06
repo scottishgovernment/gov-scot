@@ -135,8 +135,9 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
         HippoFolderBean chaptersFolder = chaptersFolders.get(0);
         List<HippoFolderBean> chapters = new ArrayList<>();
 
+        boolean preview = request.getRequestContext().isPreview();
         for (HippoFolderBean chapter : chaptersFolder.getFolders()) {
-            if (hasPublishedChildren(chapter.getNode())) {
+            if (preview || hasPublishedChildren(chapter.getNode())) {
                 chapters.add(chapter);
             }
         }
