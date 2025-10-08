@@ -11,33 +11,21 @@
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
     "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed",
-    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack -p --config ./webpack.config.js",
-    "test": "karma start ./test/karma.conf.js"
+    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --config ./webpack.config.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
     "@dryfeld/nunjucks-loader": "^4.0.4",
     "@scottish-government-design-system/content-blocks": "^0.1.2",
     "@scottish-government/design-system": "^3.0.1",
-    "babel-loader": "^8.0.5",
-    "istanbul-instrumenter-loader": "^3.0.1",
-    "jasmine-core": "^2.4.1",
-    "jasmine-jquery": "^2.1.1",
-    "karma": "^6.4.1",
-    "karma-babel-preprocessor": "^8.0.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.2",
-    "karma-coverage-istanbul-reporter": "^1.4.3",
-    "karma-jasmine": "^2.0.1",
-    "karma-jasmine-jquery-2": "^0.1.1",
-    "karma-jasmine-matchers": "^4.0.1",
-    "karma-webpack": "^4.0.0-rc.6",
-    "nunjucks": "^3.2.3",
-    "sass": "^1.49.11",
+    "babel-loader": "^10.0.0",
+    "mkdirp": "^3.0.1",
+    "nunjucks": "^3.2.4",
+    "sass": "^1.71.1",
     "sealant": "0.0.2",
-    "svg-sprite": "^1.4.0",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.1"
+    "svg-sprite": "^2.0.4",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
   }
 }
