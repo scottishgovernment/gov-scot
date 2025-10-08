@@ -11,6 +11,672 @@
     govscot:publicationType: advice-and-guidance
     hippo:name: Advice and guidance
     hippostd:foldertype: [new-publication-year-folder]
+    /2025:
+      jcr:primaryType: hippostd:folder
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 5b96d06d-e497-4032-9b94-5ab7a1c43677
+      hippostd:foldertype: [new-publication-month-folder]
+      /10:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['frontend:orderChildFolders', 'mix:versionable']
+        jcr:uuid: 5791bd10-56a6-4651-bbdb-087869758344
+        hippostd:foldertype: [new-publication-folder, new-complex-document-folder]
+        /test-complex-document:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: ['bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable']
+          jcr:uuid: fcdd105d-c659-488c-9446-97a3cc6fa314
+          hippo:name: Test complex document
+          hippostd:foldertype: []
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+            jcr:uuid: 55a27632-824a-4070-92cc-703805748a62
+            hippo:name: Test complex document
+            hippo:versionHistory: a44a3029-d6a4-4b3d-b963-fb930ad44a3f
+            /index[1]:
+              jcr:primaryType: govscot:ComplexDocument2
+              jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+              jcr:uuid: 09768bc3-7b7b-4e0f-8f1a-fe98f082d111
+              govscot:displayDate: 2025-10-07T00:00:00+01:00
+              govscot:displayPrimaryDocument: true
+              govscot:isbn: ''
+              govscot:metaDescription: Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2025-10-07T00:00:00+01:00
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Test complex document
+              govscot:slug: test-complex-document
+              govscot:sme: ''
+              govscot:summary: Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has survived
+                not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and
+                more recently with desktop publishing software like Aldus PageMaker
+                including versions of Lorem Ipsum.
+              govscot:title: Test complex document
+              hippo:availability: [preview]
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2025-10-07T12:33:54.082+01:00
+              hippostdpubwf:lastModificationDate: 2025-10-07T12:35:26.627+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: ''
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+                  <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:revisions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6454eef7-278f-4a12-b363-be8edc64fd8f
+            /index[2]:
+              jcr:primaryType: govscot:ComplexDocument2
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: baebde46-ea94-4868-9af9-99387244a083
+              govscot:displayDate: 2025-10-07T00:00:00+01:00
+              govscot:displayPrimaryDocument: true
+              govscot:isbn: ''
+              govscot:metaDescription: Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2025-10-07T00:00:00+01:00
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Test complex document
+              govscot:slug: test-complex-document
+              govscot:sme: ''
+              govscot:summary: Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has survived
+                not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and
+                more recently with desktop publishing software like Aldus PageMaker
+                including versions of Lorem Ipsum.
+              govscot:title: Test complex document
+              hippo:availability: []
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2025-10-07T12:33:54.082+01:00
+              hippostdpubwf:lastModificationDate: 2025-10-07T12:33:59.687+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: ''
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+                  <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:revisions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6454eef7-278f-4a12-b363-be8edc64fd8f
+            /index[3]:
+              jcr:primaryType: govscot:ComplexDocument2
+              jcr:mixinTypes: ['mix:referenceable']
+              jcr:uuid: 790efac2-362c-4b82-92f0-872c5e2a3298
+              govscot:displayDate: 2025-10-07T00:00:00+01:00
+              govscot:displayPrimaryDocument: true
+              govscot:isbn: ''
+              govscot:metaDescription: Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2025-10-07T00:00:00+01:00
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: []
+              govscot:seoTitle: Test complex document
+              govscot:slug: test-complex-document
+              govscot:sme: ''
+              govscot:summary: Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has survived
+                not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and
+                more recently with desktop publishing software like Aldus PageMaker
+                including versions of Lorem Ipsum.
+              govscot:title: Test complex document
+              hippo:availability: [live]
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2025-10-07T12:33:54.082+01:00
+              hippostdpubwf:lastModificationDate: 2025-10-07T12:35:26.627+01:00
+              hippostdpubwf:lastModifiedBy: admin
+              hippostdpubwf:publicationDate: 2025-10-07T12:40:02.825+01:00
+              hippostdpubwf:publishedBy: admin
+              hippotranslation:id: ''
+              hippotranslation:locale: en
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+                  <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:revisions:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:topics:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: 6454eef7-278f-4a12-b363-be8edc64fd8f
+          /chapters:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [new-chapter-folder]
+            /chapter-1:
+              jcr:primaryType: hippostd:folder
+              jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+              jcr:uuid: 577efca1-d41a-446d-81c5-f39007705310
+              hippo:name: chapter 1
+              hippostd:foldertype: [new-complex-document-section]
+              /section-1:
+                jcr:primaryType: hippo:handle
+                jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+                jcr:uuid: a13e0260-2f8a-4887-8a02-f2f2491fdd0a
+                hippo:name: section 1
+                hippo:versionHistory: 811017eb-78c0-4b62-94cf-432abeb5c30c
+                /section-1[1]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: 1b8d6544-1224-4ebd-9413-174ac42b9aec
+                  govscot:metaDescription: It is a long established fact that a reader
+                    will be distracted by the readable content of a page when looking
+                    at its layout.
+                  govscot:seoTitle: section 1
+                  govscot:summary: ''
+                  govscot:title: ch 1 section 1
+                  hippo:availability: []
+                  hippostd:retainable: false
+                  hippostd:state: draft
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:35:45.456+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:18:18.947+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: e23349e7-d697-4f2d-bf54-ae4a51afe37a
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>It is a long established fact that a reader
+                      will be distracted by the readable content of a page when looking
+                      at its layout. The point of using Lorem Ipsum is that it has
+                      a more-or-less normal distribution of letters, as opposed to
+                      using 'Content here, content here', making it look like readable
+                      English. Many desktop publishing packages and web page editors
+                      now use Lorem Ipsum as their default model text, and a search
+                      for 'lorem ipsum' will uncover many web sites still in their
+                      infancy. Various versions have evolved over the years, sometimes
+                      by accident, sometimes on purpose (injected humour and the like).</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /section-1[2]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable', 'mix:versionable']
+                  jcr:uuid: d5ddaffc-6292-476b-b5eb-8e55c4d3d995
+                  govscot:metaDescription: It is a long established fact that a reader
+                    will be distracted by the readable content of a page when looking
+                    at its layout.
+                  govscot:seoTitle: section 1
+                  govscot:summary: ''
+                  govscot:title: ch 1 section 1
+                  hippo:availability: [preview]
+                  hippostd:retainable: false
+                  hippostd:state: unpublished
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:35:45.456+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:18:24.455+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: e23349e7-d697-4f2d-bf54-ae4a51afe37a
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>It is a long established fact that a reader
+                      will be distracted by the readable content of a page when looking
+                      at its layout. The point of using Lorem Ipsum is that it has
+                      a more-or-less normal distribution of letters, as opposed to
+                      using 'Content here, content here', making it look like readable
+                      English. Many desktop publishing packages and web page editors
+                      now use Lorem Ipsum as their default model text, and a search
+                      for 'lorem ipsum' will uncover many web sites still in their
+                      infancy. Various versions have evolved over the years, sometimes
+                      by accident, sometimes on purpose (injected humour and the like).</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /section-1[3]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: 5f004ef0-884c-4780-99de-7d4100abf7e5
+                  govscot:metaDescription: It is a long established fact that a reader
+                    will be distracted by the readable content of a page when looking
+                    at its layout.
+                  govscot:seoTitle: section 1
+                  govscot:summary: ''
+                  govscot:title: ch 1 section 1
+                  hippo:availability: [live]
+                  hippostd:retainable: false
+                  hippostd:state: published
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:35:45.456+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:18:24.455+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippostdpubwf:publicationDate: 2025-10-08T10:18:28.921+01:00
+                  hippostdpubwf:publishedBy: admin
+                  hippotranslation:id: e23349e7-d697-4f2d-bf54-ae4a51afe37a
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>It is a long established fact that a reader
+                      will be distracted by the readable content of a page when looking
+                      at its layout. The point of using Lorem Ipsum is that it has
+                      a more-or-less normal distribution of letters, as opposed to
+                      using 'Content here, content here', making it look like readable
+                      English. Many desktop publishing packages and web page editors
+                      now use Lorem Ipsum as their default model text, and a search
+                      for 'lorem ipsum' will uncover many web sites still in their
+                      infancy. Various versions have evolved over the years, sometimes
+                      by accident, sometimes on purpose (injected humour and the like).</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+              /section-2:
+                jcr:primaryType: hippo:handle
+                jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+                jcr:uuid: bd16069f-83af-4cb7-834e-0ff0324e8247
+                hippo:name: section 2
+                hippo:versionHistory: 5da748b5-4f51-48c4-a659-9c7b0854d21f
+                /section-2[1]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: 5fe7b8ee-6cb2-487d-8bb9-47284197b9e8
+                  govscot:metaDescription: Sed ut perspiciatis unde omnis iste natus
+                    error sit voluptatem accusantium doloremque laudantium, totam
+                    rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo
+                  govscot:seoTitle: section 2
+                  govscot:summary: ''
+                  govscot:title: ch 1 section 2 unpublished
+                  hippo:availability: []
+                  hippostd:retainable: false
+                  hippostd:state: draft
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:36:29.533+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:33:05.928+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: f49f6117-500d-4d5e-837a-1e1d6cf06c18
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>Sed ut perspiciatis unde omnis iste natus
+                      error sit voluptatem accusantium doloremque laudantium, totam
+                      rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                      quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                      ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                      sed quia consequuntur magni dolores eos qui ratione voluptatem
+                      sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+                      quia dolor sit amet, consectetur, adipisci velit, sed quia non
+                      numquam eius modi tempora incidunt ut labore et dolore magnam
+                      aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+                      exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+                      ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
+                      qui in ea voluptate velit esse quam nihil molestiae consequatur,
+                      vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /section-2[2]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable', 'mix:versionable']
+                  jcr:uuid: 5666be32-0ef6-4508-b339-e68dd3fbe583
+                  govscot:metaDescription: Sed ut perspiciatis unde omnis iste natus
+                    error sit voluptatem accusantium doloremque laudantium, totam
+                    rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo
+                  govscot:seoTitle: section 2
+                  govscot:summary: ''
+                  govscot:title: ch 1 section 2 unpublished
+                  hippo:availability: [preview]
+                  hippostd:retainable: false
+                  hippostd:state: unpublished
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:36:29.533+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:33:15.552+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: f49f6117-500d-4d5e-837a-1e1d6cf06c18
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>Sed ut perspiciatis unde omnis iste natus
+                      error sit voluptatem accusantium doloremque laudantium, totam
+                      rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                      quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                      ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                      sed quia consequuntur magni dolores eos qui ratione voluptatem
+                      sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+                      quia dolor sit amet, consectetur, adipisci velit, sed quia non
+                      numquam eius modi tempora incidunt ut labore et dolore magnam
+                      aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+                      exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+                      ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
+                      qui in ea voluptate velit esse quam nihil molestiae consequatur,
+                      vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /section-2[3]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: 994d8ac5-4bcb-41a5-be20-b2cb783cd180
+                  govscot:metaDescription: Sed ut perspiciatis unde omnis iste natus
+                    error sit voluptatem accusantium doloremque laudantium, totam
+                    rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo
+                  govscot:seoTitle: section 2
+                  govscot:summary: ''
+                  govscot:title: ch 1 section 2 unpublished
+                  hippo:availability: []
+                  hippostd:retainable: false
+                  hippostd:state: published
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:36:29.533+01:00
+                  hippostdpubwf:depublicationDate: 2025-10-08T10:34:44.481+01:00
+                  hippostdpubwf:depublishedBy: admin
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:33:15.552+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippostdpubwf:publicationDate: 2025-10-08T10:33:18.751+01:00
+                  hippostdpubwf:publishedBy: admin
+                  hippotranslation:id: f49f6117-500d-4d5e-837a-1e1d6cf06c18
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>Sed ut perspiciatis unde omnis iste natus
+                      error sit voluptatem accusantium doloremque laudantium, totam
+                      rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                      quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                      ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                      sed quia consequuntur magni dolores eos qui ratione voluptatem
+                      sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+                      quia dolor sit amet, consectetur, adipisci velit, sed quia non
+                      numquam eius modi tempora incidunt ut labore et dolore magnam
+                      aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+                      exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+                      ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
+                      qui in ea voluptate velit esse quam nihil molestiae consequatur,
+                      vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+            /chapter-2:
+              jcr:primaryType: hippostd:folder
+              jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+              jcr:uuid: 9c85cb6f-f198-496b-8c6e-b57583902b3e
+              hippo:name: chapter 2
+              hippostd:foldertype: [new-complex-document-section]
+              /section-1:
+                jcr:primaryType: hippo:handle
+                jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+                jcr:uuid: 9e438c7d-a291-418d-aa1b-9aec8ce4c2ce
+                hippo:name: section 1
+                hippo:versionHistory: affd1636-89b7-4d82-91d8-c3ced1014a78
+                /section-1[1]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: c2c815ac-3f8a-470d-91f7-eb513b9c2ec8
+                  govscot:metaDescription: Lorem ipsum dolor sit amet consectetur
+                    adipiscing elit. Quisque faucibus ex sapien vitae pellentesque
+                    sem placerat
+                  govscot:seoTitle: section 1
+                  govscot:summary: ''
+                  govscot:title: ch 2 section 1
+                  hippo:availability: []
+                  hippostd:retainable: false
+                  hippostd:state: draft
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:37:03.228+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:18:39.204+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: ae470dca-6bcc-4f3a-af26-c1fb8f67ea0a
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: |-
+                      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+
+                      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /section-1[2]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable', 'mix:versionable']
+                  jcr:uuid: bdee494f-e0da-418b-8891-1ad210461428
+                  govscot:metaDescription: Lorem ipsum dolor sit amet consectetur
+                    adipiscing elit. Quisque faucibus ex sapien vitae pellentesque
+                    sem placerat
+                  govscot:seoTitle: section 1
+                  govscot:summary: ''
+                  govscot:title: ch 2 section 1
+                  hippo:availability: [preview]
+                  hippostd:retainable: false
+                  hippostd:state: unpublished
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:37:03.228+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:18:43.639+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: ae470dca-6bcc-4f3a-af26-c1fb8f67ea0a
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: |-
+                      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+
+                      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /section-1[3]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: 1b6830b7-0295-429c-aff9-a3cb67225d9b
+                  govscot:metaDescription: Lorem ipsum dolor sit amet consectetur
+                    adipiscing elit. Quisque faucibus ex sapien vitae pellentesque
+                    sem placerat
+                  govscot:seoTitle: section 1
+                  govscot:summary: ''
+                  govscot:title: ch 2 section 1
+                  hippo:availability: [live]
+                  hippostd:retainable: false
+                  hippostd:state: published
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-07T12:37:03.228+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:18:43.639+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippostdpubwf:publicationDate: 2025-10-08T10:18:46.565+01:00
+                  hippostdpubwf:publishedBy: admin
+                  hippotranslation:id: ae470dca-6bcc-4f3a-af26-c1fb8f67ea0a
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: |-
+                      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+
+                      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+            /chapter-3:
+              jcr:primaryType: hippostd:folder
+              jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+              jcr:uuid: 910c1866-bf19-4ab2-85ad-39b792a983d2
+              hippo:name: chapter 3
+              hippostd:foldertype: [new-complex-document-section]
+              /ch-3-section-1:
+                jcr:primaryType: hippo:handle
+                jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+                jcr:uuid: 1a50016d-3ff2-4b46-ac4c-2b94843da945
+                hippo:name: ch 3 section 1
+                /ch-3-section-1[1]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable']
+                  jcr:uuid: dde3b505-543e-45a8-9b74-4c49c5a6d377
+                  govscot:metaDescription: Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.
+                  govscot:seoTitle: ch 3 section 1
+                  govscot:summary: ''
+                  govscot:title: ch 3 section 1 unpublished
+                  hippo:availability: []
+                  hippostd:retainable: false
+                  hippostd:state: draft
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-08T10:33:43.467+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:33:43.467+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: 3de67a3c-7dce-4cdb-9f34-b65bee7ee99b
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                      dolor in reprehenderit in voluptate velit esse cillum dolore
+                      eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                      non proident, sunt in culpa qui officia deserunt mollit anim
+                      id est laborum.</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
+                /ch-3-section-1[2]:
+                  jcr:primaryType: govscot:ComplexDocumentSection
+                  jcr:mixinTypes: ['hippostd:taggable', 'mix:referenceable', 'mix:versionable']
+                  jcr:uuid: de5d63fe-5aac-4301-b22e-4618d12dac20
+                  govscot:metaDescription: Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.
+                  govscot:seoTitle: ch 3 section 1
+                  govscot:summary: ''
+                  govscot:title: ch 3 section 1 unpublished
+                  hippo:availability: [preview]
+                  hippostd:retainable: false
+                  hippostd:state: unpublished
+                  hippostd:tags: []
+                  hippostdpubwf:createdBy: admin
+                  hippostdpubwf:creationDate: 2025-10-08T10:33:43.467+01:00
+                  hippostdpubwf:lastModificationDate: 2025-10-08T10:34:32.446+01:00
+                  hippostdpubwf:lastModifiedBy: admin
+                  hippotranslation:id: 3de67a3c-7dce-4cdb-9f34-b65bee7ee99b
+                  hippotranslation:locale: document-type-locale
+                  /govscot:content:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                      dolor in reprehenderit in voluptate velit esse cillum dolore
+                      eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                      non proident, sunt in culpa qui officia deserunt mollit anim
+                      id est laborum.</p>
+                  /govscot:notes:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: ''
+                  /govscot:responsibilities:
+                    jcr:primaryType: hippostd:html
+                    hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
+                      </html>"
     /2020:
       jcr:primaryType: hippostd:folder
       jcr:mixinTypes: ['mix:versionable']

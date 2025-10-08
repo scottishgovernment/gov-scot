@@ -3,17 +3,12 @@ package scot.gov.www.components;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
 import org.hippoecm.hst.content.beans.standard.HippoFolderBean;
-import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.HippoUtils;
 import scot.gov.www.beans.ComplexDocumentSection;
 
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.RepositoryException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +19,6 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
     private static final String DOCUMENTS = "documents";
 
     private static final String CHAPTERS = "chapters";
-
-    private final HippoUtils hippoUtils = new HippoUtils();
 
     @Override
     protected void populateRequest(HippoBean publication, HippoBean document, HstRequest request, HstResponse response) {
@@ -133,15 +126,7 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
 
         List<HippoFolderBean> chaptersFolders = publicationFolder.getChildBeansByName(CHAPTERS);
         HippoFolderBean chaptersFolder = chaptersFolders.get(0);
-        List<HippoFolderBean> chapters = new ArrayList<>();
-
-        boolean preview = request.getRequestContext().isPreview();
-        for (HippoFolderBean chapter : chaptersFolder.getFolders()) {
-            if (preview || hasPublishedChildren(chapter.getNode())) {
-                chapters.add(chapter);
-            }
-        }
-
+        List<HippoFolderBean> chapters = chaptersFolder.getFolders();
         HippoBean currentPage = isSection(document) ? document : publication;
         HippoBean currentChapter = isSection(document) ? document.getParentBean() : null;
         request.setAttribute(CHAPTERS, chapters);
@@ -166,21 +151,6 @@ public class ComplexDocumentComponent extends AbstractPublicationComponent {
 
     private boolean hasChapters(HippoBean publicationParentFolder) {
         return hasChildBeans(publicationParentFolder.getChildBeansByName(CHAPTERS));
-    }
-
-    private boolean hasPublishedChildren(Node node) {
-        try {
-            NodeIterator it = node.getNodes();
-            while (it.hasNext()) {
-                Node nextNode = hippoUtils.getPublishedVariant(it.nextNode());
-                if (nextNode != null) {
-                    return true;
-                }
-            }
-            return false;
-        } catch (RepositoryException e) {
-            throw new HstComponentException(e);
-        }
     }
 }
 

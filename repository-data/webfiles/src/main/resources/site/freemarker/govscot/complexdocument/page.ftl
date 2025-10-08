@@ -182,29 +182,31 @@
                                 </li>
 
                                 <#list chapters as chapter>
-                                    <li class="ds_side-navigation__item">
-                                        <#if chapter == currentChapter>
-                                            <span class="ds_side-navigation__link  ds_side-navigation__link--inactive">
-                                                <b>${chapter.displayName}</b>
-                                            </span>
+                                    <#if chapter.documents?has_content>
+                                        <li class="ds_side-navigation__item">
+                                            <#if chapter == currentChapter>
+                                                <span class="ds_side-navigation__link  ds_side-navigation__link--inactive">
+                                                    <b>${chapter.displayName}</b>
+                                                </span>
 
-                                            <ul class="ds_side-navigation__list">
-                                                <#list chapter.documents as page>
-                                                    <li class="ds_side-navigation__item">
-                                                        <a class="ds_side-navigation__link<#if page == currentPage>  ds_current</#if>" href="<@hst.link hippobean=page/>"<#if page == currentPage> aria-current="page"</#if>>
-                                                            ${page.title}
-                                                        </a>
-                                                    </li>
-                                                </#list>
-                                            </ul>
-                                        <#else>
+                                                <ul class="ds_side-navigation__list">
+                                                    <#list chapter.documents as page>
+                                                        <li class="ds_side-navigation__item">
+                                                            <a class="ds_side-navigation__link<#if page == currentPage>  ds_current</#if>" href="<@hst.link hippobean=page/>"<#if page == currentPage> aria-current="page"</#if>>
+                                                                ${page.title}
+                                                            </a>
+                                                        </li>
+                                                    </#list>
+                                                </ul>
+                                            <#else>
 
-                                            <@hst.link var="link" hippobean=chapter.documents?first/>
-                                            <a class="ds_side-navigation__link" href="${link}">
-                                                ${chapter.displayName}
-                                            </a>
-                                        </#if>
-                                    </li>
+                                                <@hst.link var="link" hippobean=chapter.documents?first/>
+                                                <a class="ds_side-navigation__link" href="${link}">
+                                                    ${chapter.displayName}
+                                                </a>
+                                            </#if>
+                                        </li>
+                                    </#if>
                                 </#list>
                             </ul>
                         </nav>
@@ -294,27 +296,29 @@
                             <button data-accordion="accordion-open-all" type="button" class="ds_link  ds_accordion__open-all  js-open-all">Open all <span class="visually-hidden">sections</span></button>
 
                             <#list chapters as chapter>
-                                <div class="ds_accordion-item">
-                                    <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-${chapter.name}" aria-labelledby="panel-${chapter.name}-heading" />
-                                    <div class="ds_accordion-item__header">
-                                        <h3 id="panel-${chapter.name}-heading" class="ds_accordion-item__title">
-                                            ${chapter.displayName}
-                                        </h3>
-                                        <span class="ds_accordion-item__indicator"></span>
-                                        <label class="ds_accordion-item__label" for="panel-${chapter.name}"><span class="visually-hidden">Show this section</span></label>
+                                <#if chapter.documents?has_content>
+                                    <div class="ds_accordion-item">
+                                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-${chapter.name}" aria-labelledby="panel-${chapter.name}-heading" />
+                                        <div class="ds_accordion-item__header">
+                                            <h3 id="panel-${chapter.name}-heading" class="ds_accordion-item__title">
+                                                ${chapter.displayName}
+                                            </h3>
+                                            <span class="ds_accordion-item__indicator"></span>
+                                            <label class="ds_accordion-item__label" for="panel-${chapter.name}"><span class="visually-hidden">Show this section</span></label>
+                                        </div>
+                                        <div class="ds_accordion-item__body">
+                                            <nav role="navigation" class="ds_contents-nav" aria-label="Sections">
+                                                <ul class="ds_contents-nav__list">
+                                                    <#list chapter.documents as section>
+                                                        <li class="ds_contents-nav__item">
+                                                            <a class="ds_contents-nav__link" href="<@hst.link hippobean=section/>">${section.title}</a>
+                                                        </li>
+                                                    </#list>
+                                                </ul>
+                                            </nav>
+                                        </div>
                                     </div>
-                                    <div class="ds_accordion-item__body">
-                                        <nav role="navigation" class="ds_contents-nav" aria-label="Sections">
-                                            <ul class="ds_contents-nav__list">
-                                                <#list chapter.documents as section>
-                                                    <li class="ds_contents-nav__item">
-                                                        <a class="ds_contents-nav__link" href="<@hst.link hippobean=section/>">${section.title}</a>
-                                                    </li>
-                                                </#list>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
+                                </#if>
                             </#list>
                         </div>
 
