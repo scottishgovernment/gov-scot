@@ -20,10 +20,6 @@
 <#-- @ftlvariable name="searchTermPlural" type="java.lang.String" -->
 <#-- @ftlvariable name="showSort" type="java.lang.Boolean" -->
 
-<#-- Set number format to exclude comma separators -->
-<#setting number_format="0.##">
-
-
 <#if response??>
     <#if (response.resultPacket.resultsSummary.totalMatching)!?has_content &&
         response.resultPacket.resultsSummary.totalMatching &gt; 0>
