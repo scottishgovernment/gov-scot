@@ -9,20 +9,42 @@
     <property name="beforeValves" value="pageCachingValve" />
   </bean>
 
-  <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-    <property name="targetObject">
-      <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetObject" ref="org.hippoecm.hst.core.container.Pipelines" />
-        <property name="targetMethod" value="getPipeline" />
-        <property name="arguments">
-          <value>DefaultSitePipeline</value>
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject">
+            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="targetObject" ref="org.hippoecm.hst.core.container.Pipelines" />
+                <property name="targetMethod" value="getPipeline" />
+                <property name="arguments">
+                    <value>DefaultSitePipeline</value>
+                </property>
+            </bean>
         </property>
-      </bean>
-    </property>
-    <property name="targetMethod" value="addProcessingValve" />
-    <property name="arguments">
-      <ref bean="userTypeValve" />
-    </property>
-  </bean>
+        <property name="targetMethod" value="addProcessingValve" />
+        <property name="arguments">
+            <ref bean="userTypeValve" />
+        </property>
+    </bean>
 
+
+    <bean id="nonceValve" class="scot.gov.publishing.hippo.hst.request.NonceValve">
+        <property name="valveName" value="nonceValve" />
+        <property name="afterValves" value="userTypeValve" />
+        <property name="beforeValves" value="pageCachingValve" />
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject">
+            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="targetObject" ref="org.hippoecm.hst.core.container.Pipelines" />
+                <property name="targetMethod" value="getPipeline" />
+                <property name="arguments">
+                    <value>DefaultSitePipeline</value>
+                </property>
+            </bean>
+        </property>
+        <property name="targetMethod" value="addProcessingValve" />
+        <property name="arguments">
+            <ref bean="nonceValve" />
+        </property>
+    </bean>
 </beans>
