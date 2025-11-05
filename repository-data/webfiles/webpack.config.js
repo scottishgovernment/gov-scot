@@ -7,6 +7,8 @@ const commonItems = {
         'global':                       path.resolve(__dirname, './src/scripts/govscot/global.js'),
         'gtm':                          path.resolve(__dirname, './src/scripts/govscot/gtm.js'),
         'datalayer':                    path.resolve(__dirname, './src/scripts/govscot/datalayer.js'),
+        'datalayer-search':             path.resolve(__dirname, './src/scripts/govscot/datalayer-search.js'),
+        'js-enabled':                   path.resolve(__dirname, './src/scripts/govscot/js-enabled.js'),
 
         // format-specific entry point)s
         'cookie-preferences':           path.resolve(__dirname, './src/scripts/govscot/format.cookie-preferences.js'),

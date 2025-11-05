@@ -12,14 +12,7 @@
 </#macro>
 
 <@hst.headContribution category="googleTagManagerDataLayer">
-<script id="gtm-datalayer-search">
-    window.dataLayer = window.dataLayer || [];
-    if (window.dataLayer == 0) {
-        window.dataLayer.push({});
-    }
-    window.dataLayer[0].searchEnabled = '${enabled?c}';
-    window.dataLayer[0].searchType = '${searchType}';
-</script>
+<script src="<@hst.webfile path='assets/scripts/datalayer-search.js'/>" id="gtm-datalayer-search" data-enabled="${enabled?c}" data-type="${searchType}"></script>
 </@hst.headContribution>
 
 <#if enabled>

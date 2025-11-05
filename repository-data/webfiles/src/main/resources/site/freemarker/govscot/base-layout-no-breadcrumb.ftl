@@ -31,16 +31,7 @@
 
     <@hst.headContributions categoryExcludes="schema, noscriptHead, footerScripts, pageTitle, dataLayer, googleTagManager, googleTagManagerDataLayer, openGraph" xhtml=true/>
 
-    <script>
-        BR = window.BR || {};
-        BR.webfile = function(path) {
-            return '<@hst.webfile path="/"/>' + path;
-        };
-    </script>
-    <script>
-        var htmlClass = document.documentElement.getAttribute('class') || '';
-        document.documentElement.setAttribute('class', (htmlClass ? htmlClass + ' ' : '') + 'js-enabled');
-    </script>
+    <script src='<@hst.webfile path="assets/scripts/js-enabled.js"/>'></script>
 </head>
 <body>
     <input type="hidden" id="site-root-path" value="<@hst.link path="/"/>" />
