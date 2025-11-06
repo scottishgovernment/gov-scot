@@ -11,3 +11,9 @@ definitions:
         hipposys:facet: jcr:path
         hipposys:type: Reference
         hipposys:value: /content/documents/govscot/publications
+      /exclude-folders-with-foldertype:
+        jcr:primaryType: hipposys:facetrule
+        hipposys:equals: true
+        hipposys:facet: nodetype
+        hipposys:type: Name
+        hipposys:value: bulkpublish:bulkpublishdirectory
