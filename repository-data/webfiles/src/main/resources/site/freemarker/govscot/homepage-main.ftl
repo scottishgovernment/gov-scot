@@ -175,10 +175,11 @@
                 </section>
 
                 <section id="latest-consultations" class="gov_latest-feed  gov_content-block">
+                    <@hst.link var="consultationsLink" path='/publications/'/>
                     <div>
                         <h2 class="gov_content-block__title  gov_content-block__title--consultations">
                             <a class="gov_content-block__title-link"
-                                href="<@hst.link path='/publications/?publicationTypes=consultation-analysis;consultation-paper'/>"
+                                href="${consultationsLink}?cat=filter&topic=${document.name}&type=consultation-analysis&type=consultation-paper"
                                 data-navigation="consultations-title">
                                 Consultations
                             </a>
@@ -206,7 +207,6 @@
                     </div>
 
                     <div>
-                        <@hst.link var="consultationsLink" path='/publications/'/>
                         <a class="gov_icon-link  gov_icon-link--major" href="${consultationsLink}?cat=filter&topic=${document.name}&type=consultation-analysis&type=consultation-paper" data-navigation="consultations-all">
                             <span class="gov_icon-link__text">See all consultations <span class="visually-hidden">about ${document.title}</span></span>
                             <span class="gov_icon-link__icon  gov_icon-link__icon--chevron" aria-hidden="true"></span>

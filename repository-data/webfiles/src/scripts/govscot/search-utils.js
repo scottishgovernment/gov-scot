@@ -278,12 +278,6 @@ const searchUtils = {
         if (params.q) {
             newQueryStringParams.push('q=' + params.q);
         }
-        if (params.topics) {
-            newQueryStringParams.push('topics=' + params.topics.join(';'));
-        }
-        if (params.publicationTypes) {
-            newQueryStringParams.push('publicationTypes=' + params.publicationTypes.join(';'));
-        }
 
         if (params.topic) {
             params.topic.forEach(topic => {
