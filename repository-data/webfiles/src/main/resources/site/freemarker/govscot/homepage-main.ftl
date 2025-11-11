@@ -231,7 +231,7 @@
                                     <div class="ds_question">
                                     <fieldset id="filter-search">
                                         <legend class="visually-hidden">Keyword search</legend>
-                                        <label class="ds_label" for="filters-search-term">Keyword</label>
+                                        <label class="ds_label  gov_content-block__subtitle" for="filters-search-term">Keyword</label>
 
                                         <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
                                             <input type="text" title="Filter by keyword" name="term" id="filters-search-term" placeholder="Keyword" maxlength="160" class="ds_input" />
