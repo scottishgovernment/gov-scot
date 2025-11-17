@@ -14,7 +14,7 @@ definitions:
           embargo-agriculture-statistics, embargo-community-ownership-statistics,
           embargo-employability-statistics, embargo-justice-system-monitoring-team,
           embargo-sscq, embargo-temporary, embargo-trade-statistics, embargo-scottish-crime-and-justice-survey,
-          embargo-scottish-health-survey
+          embargo-scottish-health-survey, embargo-rural-statistics
         ]
     /hippo:configuration/hippo:domains/embargo/embargo:
       hipposys:groups:
@@ -28,4 +28,4 @@ definitions:
           embargo-agriculture-statistics, embargo-community-ownership-statistics,
           embargo-employability-statistics, embargo-justice-system-monitoring-team,
           embargo-sscq, embargo-temporary, embargo-trade-statistics, embargo-scottish-crime-and-justice-survey,
-          embargo-scottish-health-survey]
+          embargo-scottish-health-survey, embargo-rural-statistics]
