@@ -25,7 +25,7 @@
 
 <@hst.headContribution category="schema">
 <#if breadcrumbs??>
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="${nonce}">
     {
         "@context": "http://schema.org",
         "@type": "BreadcrumbList",
