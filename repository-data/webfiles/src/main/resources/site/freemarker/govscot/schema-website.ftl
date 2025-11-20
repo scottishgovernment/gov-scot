@@ -2,7 +2,7 @@
 <#include "../include/imports.ftl">
 <@hst.link var="sitelink" hippobean=baseBean canonical=true fullyQualified=true/>
 <@hst.headContribution category="schema">
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="${nonce}">
 {
   "@context" : "https://schema.org",
   "@type" : "WebSite",

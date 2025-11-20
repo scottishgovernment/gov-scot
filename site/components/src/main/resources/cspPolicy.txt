@@ -1,4 +1,5 @@
 script-src
+  'nonce-<nonce>'
   'self'
   'unsafe-inline'
   'unsafe-eval'
