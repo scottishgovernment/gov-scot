@@ -7,6 +7,7 @@ definitions:
         value: ['/hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/**']
       autoexport:modules: ['repository-data/application:/', repository-data/development,
         'repository-data/site-development:gov-scot', 'repository-data/site:gov-scot:/hst:govscot']
+      autoexport:enabled: false
     /hippo:configuration/hippo:groups/author:
       hipposys:members:
         operation: add

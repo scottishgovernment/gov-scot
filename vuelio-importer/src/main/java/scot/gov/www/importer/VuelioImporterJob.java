@@ -1,29 +1,32 @@
-package scot.gov.www.pressreleases;
+package scot.gov.www.importer;
 
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.searchjournal.FeatureFlag;
-import scot.gov.www.pressreleases.prgloo.PRGlooClient;
-import scot.gov.www.pressreleases.prgloo.PRGlooConfiguration;
+import scot.gov.www.importer.vuelio.VuelioClient;
+import scot.gov.www.importer.vuelio.VuelioConfiguration;
 
 import javax.jcr.Credentials;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
 
-public class TagImporterJob implements RepositoryJob {
+/**
+ * Scheduled job to import press releases (news, speeches and correspondence).
+ */
+public class VuelioImporterJob implements RepositoryJob {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TagImporterJob.class);
+    private static final Logger LOG = LoggerFactory.getLogger(VuelioImporterJob.class);
     //
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
 
-        // if no prgloo token is configured, do not run the job
-        PRGlooConfiguration prGlooConfiguration = PRGlooClient.config();
-        if (prGlooConfiguration == null) {
-            LOG.info("No PRGloo token configured, not running");
+        // if no vuelio token is configured, do not run the job
+        VuelioConfiguration vuelioConfiguration = VuelioClient.config();
+        if (vuelioConfiguration == null) {
+            LOG.info("No Vuelio token configured, not running");
             return;
         }
 
@@ -32,13 +35,13 @@ public class TagImporterJob implements RepositoryJob {
         try {
             Credentials credentials = new SimpleCredentials("news", "".toCharArray());
             session = systemSession.impersonate(credentials);
-            FeatureFlag featureFlag = new FeatureFlag(session, "PressReleaseImporterJob");
+            FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
             if (featureFlag.isEnabled()) {
                 doImport(session);
             } else {
                 LOG.info("VuelioImporterJob is disabled");
             }
-        } catch (RepositoryException | PressReleaseImporterException e) {
+        } catch (RepositoryException | VuelioImporterException e) {
             LOG.error("failed ", e);
         } finally {
             if (session != null) {
@@ -50,9 +53,9 @@ public class TagImporterJob implements RepositoryJob {
     }
 
     void doImport(Session session) throws RepositoryException {
-        LOG.info("TagImporter running");
-        new TagImporter(session).doImport();
-        LOG.info("TagImporter finished");
+        LOG.info("ContentImporter running");
+        new VuelioImporter(session).doImport();
+        LOG.info("ContentImporter finished");
     }
 
 }

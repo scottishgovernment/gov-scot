@@ -1,20 +1,21 @@
-package scot.gov.www.pressreleases.health;
+package scot.gov.www.importer.health;
 
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scot.gov.publishing.searchjournal.FeatureFlag;
 
-import java.time.*;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Healthcheck {
 
@@ -35,10 +36,10 @@ public class Healthcheck {
     @Produces(MediaType.APPLICATION_JSON)
     public Health healthcheck() {
         Health health = new Health();
-        FeatureFlag featureFlag = new FeatureFlag(session, "PressReleaseImporterJob");
+        FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
         if (!featureFlag.isEnabled()) {
             health.setStatus(NagiosStatus.OK);
-            health.setMessage("PressReleaseImporterJob is disabled via feature flag");
+            health.setMessage("VuelioImporterJob is disabled via feature flag");
             health.setInfo(Collections.emptyList());
             return health;
         }

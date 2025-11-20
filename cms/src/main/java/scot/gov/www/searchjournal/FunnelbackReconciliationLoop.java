@@ -70,6 +70,8 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
             FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
             if (featureFlag.isEnabled()) {
                 doExecute(context, session, featureFlag);
+            } else {
+                LOG.info("FunnelbackReconciliationLoop is disabled");
             }
         } catch (RepositoryException e) {
             LOG.error("RepositoryException during funnelback reconciliation", e);

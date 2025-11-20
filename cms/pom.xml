@@ -63,6 +63,12 @@
     </dependency>
 
     <dependency>
+        <groupId>scot.gov.www</groupId>
+        <artifactId>vuelio-importer</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>searchjournal-rest</artifactId>
       <version>${project.version}</version>

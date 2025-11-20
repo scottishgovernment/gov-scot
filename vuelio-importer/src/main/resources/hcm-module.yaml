@@ -1,0 +1,7 @@
+group:
+  name: gov-scot
+  after: [hippo-cms]
+project: gov-scot
+module:
+  name: gov-scot-pressreleases-vuelio
+
