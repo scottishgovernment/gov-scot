@@ -1,0 +1,21 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/vuelio-importer-rest:
+      jcr:primaryType: hipposys:domain
+      /restuser:
+        jcr:primaryType: hipposys:authrole
+        hipposys:role: restuser
+        hipposys:groups:
+          .meta:category: system
+          .meta:add-new-system-values: true
+          type: string
+          value: [news]
+      /vuelio-importer-module:
+        jcr:primaryType: hipposys:domainrule
+        /vuelio-importer-module:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /hippo:configuration/hippo:modules/vuelio-importer-rest

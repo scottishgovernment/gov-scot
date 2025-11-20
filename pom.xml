@@ -328,6 +328,7 @@
         <module>redirects-rest</module>
         <module>searchjournal-rest</module>
         <module>imageprocessing</module>
+        <module>vuelio-importer</module>
       </modules>
     </profile>
 

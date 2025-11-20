@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/vuelio-importer-rest:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.importer.health.ImporterModule
+      hipposys:cmsonly: true
+      /hippo:moduleconfig:
+        jcr:primaryType: hipposys:moduleconfig
+        enabled: true

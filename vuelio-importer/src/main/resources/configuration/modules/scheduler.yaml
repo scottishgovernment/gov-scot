@@ -1,0 +1,16 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/VuelioImporter:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.importer.VuelioImporterJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyFiveMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2024-12-03T10:45:00Z
