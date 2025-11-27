@@ -4,7 +4,6 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PressRelease {
@@ -16,9 +15,9 @@ public class PressRelease {
     private ZonedDateTime dateTime;
     private String url;
     private String seoName;
-    private List<String> policies = new ArrayList<>();
-    private List<String> topics = new ArrayList<>();
-    private List<Media> mediaAttachments  = new ArrayList<>();
+    private List<String> policies;
+    private List<String> topics;
+    private List<Media> mediaAttachments;
     private ZonedDateTime updatedDate;
     private String publicationType;
 
