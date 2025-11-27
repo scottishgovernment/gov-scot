@@ -1,6 +1,7 @@
 package scot.gov.www.importer.vuelio.rest;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Metadata {
 
     private String id;
     private String name;
-    private List<String> values;
+    private List<String> values = new ArrayList<>();
     private LocalDateTime dateCreated;
     private LocalDateTime dateModified;
 
@@ -43,12 +44,14 @@ public class Metadata {
 
     public void setDateModified(LocalDateTime dateModified) { this.dateModified = dateModified; }
 
-//    public List<String> getPolicyTags() {
-//
-//    }
-//
-//    public List<String> getTopicTags() {
-//
-//    }
-
+    @Override
+    public String toString() {
+        return "Metadata{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", values=" + values +
+                ", dateCreated=" + dateCreated +
+                ", dateModified=" + dateModified +
+                '}';
+    }
 }

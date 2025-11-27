@@ -67,19 +67,19 @@ public class ContentItem {
     private boolean headlineNews;
     private String subHeading;
     private String globalCategory;
-    private List<String> category;
-    private List<String> region;
-    private List<String> businessUnits;
+    private List<String> category = new ArrayList<>();
+    private List<String> region = new ArrayList<>();
+    private List<String> businessUnits = new ArrayList<>();
     private LocalDateTime displayDate;
     private String leadParagraph;
     private String coreCopy;
     private String notesToEditor;
     private String boilerPlate;
-    private List<Asset> assets;
+    private List<Asset> assets = new ArrayList<>();
     private boolean published;
     private LocalDateTime dateCreated;
     private LocalDateTime dateModified;
-    private List<Metadata> metadata;
+    private List<Metadata> metadata = new ArrayList<>();
     private boolean isDeleted;
 
     public String getId() {

@@ -3,6 +3,7 @@ package scot.gov.www.importer;
 import org.onehippo.forge.content.exim.core.ContentMigrationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.importer.domain.PressRelease;
 import scot.gov.www.importer.health.ImporterStatus;
 import scot.gov.www.importer.health.ImporterStatusUpdater;
 import scot.gov.www.importer.sink.ContentSink;
@@ -111,13 +112,17 @@ public class VuelioImporter {
                 contentItem.getMetadata(),
                 contentItem.getDateModified());
 
-            if (contentItem.isDeleted() || !contentItem.isPublished()) {
-                new DepublishSink(session).removeDeletedPressRelease(contentItem.getId());
-            } else {
-                Objects.requireNonNull(
-                        getSink(contentItem)).acceptPressRelease(new ContentConverter().convert(contentItem));
-            }
+        ContentSink sink = getSink(contentItem);
+        if (sink == null) {
+            LOG.error("cant get a sink for {} {}, unsupported format", contentItem.getId(), contentItem.getHeadLine());
+            return;
+        }
 
+        if (contentItem.isDeleted() || !contentItem.isPublished()) {
+            sink.removeDeletedPressRelease(contentItem.getId());
+        } else {
+            sink.acceptPressRelease(new ContentConverter().convert(contentItem));
+        }
     }
 
     private List<ContentItem> fetchContent() {
@@ -129,6 +134,11 @@ public class VuelioImporter {
     }
 
     private ContentSink getSink(ContentItem contentItem) {
+
+        if (contentItem.isDeleted()) {
+            new DepublishSink(session);
+        }
+
         if (contentItem.isNews() || contentItem.isStagingNews()) {
             return new NewsSink(session);
         }
