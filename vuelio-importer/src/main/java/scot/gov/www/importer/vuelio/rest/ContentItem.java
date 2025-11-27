@@ -4,7 +4,8 @@ package scot.gov.www.importer.vuelio.rest;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.Instant;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 /**
@@ -67,15 +68,15 @@ public class ContentItem {
     private List<String> category;
     private List<String> region;
     private List<String> businessUnits;
-    private OffsetDateTime displayDate;
+    private LocalDateTime displayDate;
     private String leadParagraph;
     private String coreCopy;
     private String notesToEditor;
     private String boilerPlate;
     private List<Asset> assets;
     private boolean published;
-    private OffsetDateTime dateCreated;
-    private OffsetDateTime dateModified;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateModified;
     private List<Metadata> metadata;
     private boolean isDeleted;
 
@@ -135,11 +136,11 @@ public class ContentItem {
         this.businessUnits = businessUnits;
     }
 
-    public OffsetDateTime getDisplayDate() {
+    public LocalDateTime getDisplayDate() {
         return displayDate;
     }
 
-    public void setDisplayDate(OffsetDateTime displayDate) {
+    public void setDisplayDate(LocalDateTime displayDate) {
         this.displayDate = displayDate;
     }
 
@@ -191,19 +192,19 @@ public class ContentItem {
         this.published = published;
     }
 
-    public OffsetDateTime getDateCreated() {
+    public LocalDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(OffsetDateTime dateCreated) {
+    public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public OffsetDateTime getDateModified() {
+    public LocalDateTime getDateModified() {
         return dateModified;
     }
 
-    public void setDateModified(OffsetDateTime dateModified) {
+    public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
     }
 
@@ -223,8 +224,25 @@ public class ContentItem {
         isDeleted = deleted;
     }
 
+    public List<String> getPolicyTags() {
+        List<Metadata> policies = metadata.stream().filter(m -> m.getName().contains("Policy")).toList();
+        if (policies.isEmpty()) {
+            return null;
+        }
+        return policies.get(0).getValues();
+    }
+
+    public List<String> getTopicTags() {
+        List<Metadata> topics = metadata.stream().filter(m -> m.getName().contains("Topic")).toList();
+        if (topics.isEmpty()) {
+            return null;
+        }
+        return topics.get(0).getValues();
+    }
+
+
     public boolean updatedSinceLastRun(Instant lastRun) {
-        return lastRun.isBefore(dateModified.toInstant());
+        return lastRun.isBefore(displayDate.toInstant(ZoneOffset.UTC));
     }
 
     public boolean isNews() {
@@ -245,8 +263,10 @@ public class ContentItem {
                         v.contains(Value.CORRESPONDENCE.getDescription())));
     }
 
+    public
+
     @Override
-    public String toString() {
+    String toString() {
         return "ContentItem{" +
                 "id='" + id + '\'' +
                 ", republishCount=" + republishCount +

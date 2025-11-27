@@ -2,7 +2,7 @@ package scot.gov.www.importer.vuelio.rest;
 
 public enum Value {
 
-    NEWS_RELEASE("News relase"),
+    NEWS_RELEASE("News release"),
     SPEECH("Speech/Statement"),
     CORRESPONDENCE("Correspondence");
 

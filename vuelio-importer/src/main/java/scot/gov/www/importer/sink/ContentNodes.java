@@ -59,16 +59,13 @@ public class ContentNodes {
         node.setProperty("hippostdpubwf:lastModifiedBy", "news");
         node.setProperty("hippostdpubwf:lastModifiedBy", "news");
         node.setProperty("govscot:externalId", release.getId());
-        node.setProperty("hippostd:tags", release.getTopics().values().toArray(new String [release.getTopics().size()]));
+        node.setProperty("hippostd:tags", release.getTopics().toArray(new String [release.getTopics().size()]));
         node.setProperty("govscot:policyTags", release.getPolicies().toArray(new String [release.getPolicies().size()]));
         node.setProperty(GOVSCOT_TITLE, release.getTitle());
         node.setProperty("govscot:summary", release.getSummary());
         node.setProperty("govscot:seoTitle", release.getTitle());
         node.setProperty("govscot:prglooslug", release.getSeoName());
         node.setProperty("govscot:metaDescription", release.getSummary());
-        if (release.getNotesToEditors() != null) {
-            node.addNode(htmlNode("govscot:background", release.getNotesToEditors()));
-        }
         node.addNode(htmlNode("govscot:content", release.getBody()));
         dateProperty(node, "govscot:publicationDate", release.getDateTime());
         dateProperty(node, "govscot:updatedDate", release.getUpdatedDate());

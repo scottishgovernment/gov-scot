@@ -26,9 +26,9 @@ public class ContentConverter {
     private final Cleaner plainTextCleaner = new Cleaner(Safelist.simpleText());
 
     /**
-     * Convert a PressReleaseItems item from a SOAP API call to our own domain object.
+     * Convert a ContentItem item from the REST API call to our own domain object.
      *
-     * @param from PressReleaseItems item to convert
+     * @param from ContentItem, item to convert
      * @return {PressRelease in our own domain model}
      */
     public PressRelease convert(ContentItem from) {
@@ -40,8 +40,8 @@ public class ContentConverter {
         to.setSeoName(from.getBoilerPlate());
         to.setBody(from.getCoreCopy());
         ZoneId london = ZoneId.of("Europe/London");
-        to.setDateTime(from.getDisplayDate().atZoneSameInstant(london));
-        to.setUpdatedDate(from.getDateModified().atZoneSameInstant(london));
+        to.setDateTime(from.getDisplayDate().atZone(london));
+        to.setUpdatedDate(from.getDateModified().atZone(london));
 
         if (from.isSpeech()) {
             to.setPublicationType(SPEECH_NODE);
@@ -51,7 +51,7 @@ public class ContentConverter {
             to.setPublicationType(CORRESPONDENCE_NODE);
         }
         convertMedia(to, from);
-//        convertTags(to, from);
+        convertTags(to, from);
         return to;
     }
 
@@ -70,40 +70,10 @@ public class ContentConverter {
         return to;
     }
 
-    private void convertTopicTags(PressRelease to, ContentItem from) {
-
+    private void convertTags(PressRelease to, ContentItem from) {
+        to.setPolicies(from.getPolicyTags());
+        to.setTopics(from.getTopicTags());
     }
-
-//    private void convertTags(PressRelease to, PressReleaseItem from) {
-//        List<String> policies = getPolicyTags(from);
-//        to.setPolicies(policies);
-//        Map<String, String> topics = getTopicTags(from);
-//        to.setTopics(topics);
-//    }
-
-//    private List<String> getPolicyTags(PressReleaseItem from) {
-//        Set<String> set = from.getTagGroups().stream()
-//                .filter(g -> g.getName().toLowerCase().startsWith("policy"))
-//                .flatMap(g -> g.getTags().stream())
-//                .map(Classification::getId)
-//                .collect(toSet());
-//        List<String> result = new ArrayList<>(set);
-//        result.sort(null);
-//        return result;
-//    }
-
-//    private Map<String, String> getTopicTags(PressReleaseItem from) {
-//        return from.getTagGroups().stream()
-//                .filter(this::isTopicTagGroup)
-//                .sorted()
-//                .flatMap(g -> g.getTags().stream())
-//                .collect(toMap(Classification::getId, Classification::getName));
-//    }
-
-//    boolean isTopicTagGroup(TagGroup tagGroup) {
-//        String lowercaseName = tagGroup.getName().toLowerCase();
-//        return StringUtils.startsWithAny(lowercaseName, "website categories");
-//    }
 
     private String cleanPlainText(String s) {
         if (s == null) {

@@ -2,8 +2,7 @@ package scot.gov.www.importer.vuelio;
 
 public class VuelioConfiguration {
 
-//    private String api = "https://webpublish.vuelio.co.uk/api/Proxy/json";
-    private String api = "https://webpublishqa.vuelio.co.uk/api/Proxy/json";
+    private String api;
 
     private String token;
 

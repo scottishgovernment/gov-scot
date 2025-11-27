@@ -7,7 +7,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Map;
 
 public class PressRelease {
 
@@ -15,23 +14,14 @@ public class PressRelease {
     private String title;
     private String summary;
     private String body;
-    private String internalNotes;
-    private String notesToEditors;
     private ZonedDateTime dateTime;
     private String url;
     private String seoName;
-    private String newsAreaId;
-    private String client;
-    private List<Contact> contacts;
     private List<String> policies;
-    private Map<String, String> topics;
-    private String boilerPlateTitle;
-    private String boilerPlateDescription;
-    private String statusCode;
-    private String statusDescription;
+    private List<String> topics;
     private List<Media> mediaAttachments;
     @JsonProperty("updatedDate")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private ZonedDateTime updatedDate;
     private String publicationType;
 
@@ -67,18 +57,6 @@ public class PressRelease {
         this.body = body;
     }
 
-    public void setInternalNotes(String internalNotes) {
-        this.internalNotes = internalNotes;
-    }
-
-    public String getNotesToEditors() {
-        return notesToEditors;
-    }
-
-    public void setNotesToEditors(String notesToEditors) {
-        this.notesToEditors = notesToEditors;
-    }
-
     public ZonedDateTime getDateTime() {
         return dateTime;
     }
@@ -103,26 +81,6 @@ public class PressRelease {
         this.seoName = seoName;
     }
 
-    public void setNewsAreaId(String newsAreaId) {
-        this.newsAreaId = newsAreaId;
-    }
-
-    public String getClient() {
-        return client;
-    }
-
-    public void setClient(String client) {
-        this.client = client;
-    }
-
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
     public List<String> getPolicies() {
         return policies;
     }
@@ -131,28 +89,12 @@ public class PressRelease {
         this.policies = policies;
     }
 
-    public Map<String, String> getTopics() {
+    public List<String> getTopics() {
         return topics;
     }
 
-    public void setTopics(Map<String, String> topics) {
+    public void setTopics(List<String> topics) {
         this.topics = topics;
-    }
-
-    public void setBoilerPlateTitle(String boilerPlateTitle) {
-        this.boilerPlateTitle = boilerPlateTitle;
-    }
-
-    public void setBoilerPlateDescription(String boilerPlateDescription) {
-        this.boilerPlateDescription = boilerPlateDescription;
-    }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public void setStatusDescription(String statusDescription) {
-        this.statusDescription = statusDescription;
     }
 
     public List<Media> getMediaAttachments() {
@@ -192,19 +134,10 @@ public class PressRelease {
                 .append(title, that.title)
                 .append(summary, that.summary)
                 .append(body, that.body)
-                .append(internalNotes, that.internalNotes)
-                .append(notesToEditors, that.notesToEditors)
                 .append(dateTime, that.dateTime)
                 .append(url, that.url)
-                .append(newsAreaId, that.newsAreaId)
-                .append(client, that.client)
-                .append(contacts, that.contacts)
                 .append(policies, that.policies)
                 .append(topics, that.topics)
-                .append(boilerPlateTitle, that.boilerPlateTitle)
-                .append(boilerPlateDescription, that.boilerPlateDescription)
-                .append(statusCode, that.statusCode)
-                .append(statusDescription, that.statusDescription)
                 .append(mediaAttachments, that.mediaAttachments)
                 .isEquals();
     }
@@ -216,19 +149,10 @@ public class PressRelease {
                 .append(title)
                 .append(summary)
                 .append(body)
-                .append(internalNotes)
-                .append(notesToEditors)
                 .append(dateTime)
                 .append(url)
-                .append(newsAreaId)
-                .append(client)
-                .append(contacts)
                 .append(policies)
                 .append(topics)
-                .append(boilerPlateTitle)
-                .append(boilerPlateDescription)
-                .append(statusCode)
-                .append(statusDescription)
                 .append(mediaAttachments)
                 .toHashCode();
     }

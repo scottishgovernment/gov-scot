@@ -20,7 +20,7 @@ public class Topics {
      * Add topics for this press release.
      *
      * This adds any matching govscot:Topic's based on the name matching the title of the topic node in bloomreach.
-     * It then adds any govscot:Issue's whose title matches or fi their id matched one of its govscot:newsTags.
+     * It then adds any govscot:Issue whose title matches or fi their id matched one of its govscot:newsTags.
      *
      * The topics added are deduplicated and sorted by name.
      */
@@ -58,7 +58,7 @@ public class Topics {
             }
 
             Set<String> newsTags = newsTags(issue);
-            for (String topicKey : release.getTopics().keySet()) {
+            for (String topicKey : release.getTopics()) {
                 if (newsTags.contains(topicKey)) {
                     topicMap.put(title, handleIdentifier);
                 }
@@ -67,7 +67,7 @@ public class Topics {
     }
 
     boolean releaseContainsTopic(PressRelease release, String topic) {
-        return release.getTopics().values().stream().filter(s -> equalsIgnoreCase(s, topic)).findFirst().isPresent();
+        return release.getTopics().stream().anyMatch(s -> equalsIgnoreCase(s, topic));
     }
 
     void addTopicNode(ContentNode contentNode, String identifier) {

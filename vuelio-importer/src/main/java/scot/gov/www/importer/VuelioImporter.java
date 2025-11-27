@@ -6,19 +6,22 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.importer.health.ImporterStatus;
 import scot.gov.www.importer.health.ImporterStatusUpdater;
 import scot.gov.www.importer.sink.ContentSink;
+import scot.gov.www.importer.sink.NewsSink;
+import scot.gov.www.importer.sink.PublicationSink;
 import scot.gov.www.importer.vuelio.ContentConverter;
 import scot.gov.www.importer.vuelio.VuelioClient;
 import scot.gov.www.importer.vuelio.VuelioException;
 import scot.gov.www.importer.vuelio.rest.ContentItem;
-import scot.gov.www.importer.vuelio.rest.ContentList;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.time.Instant;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class VuelioImporter {
@@ -64,7 +67,7 @@ public class VuelioImporter {
 
     Instant getFetchTime(ImporterStatus importerStatus) {
         Instant lastSuccessfulRun = importerStatus.getLastSuccessfulRun().toInstant();
-        Instant now = Instant.now();
+        Instant now = Instant.now().minus(7, ChronoUnit.DAYS);
         if (lastSuccessfulRun.isBefore(now)) {
             return now;
         } else {
@@ -73,8 +76,7 @@ public class VuelioImporter {
     }
 
     List<ContentItem> filterContentToProcess(Instant from) {
-        ContentList content = fetchContent();
-        List<ContentItem> results = content.getItems()
+        List<ContentItem> results = fetchContent()
                 .stream()
                 .filter(c -> c.updatedSinceLastRun(from))
                 .collect(Collectors.toList());
@@ -90,7 +92,7 @@ public class VuelioImporter {
         List<String> errorMessages = new ArrayList<>();
         for (ContentItem item : contentItems) {
             try {
-                processContent(sink, item, vuelio);
+                processContent(item);
             } catch (ContentMigrationException e) {
                 LOG.error("Document checked out by user" + item.getId(), e);
                 errorMessages.add(e.getMessage());
@@ -103,26 +105,46 @@ public class VuelioImporter {
         }
     }
 
-    private void processContent(ContentSink sink, ContentItem contentItem, VuelioClient vuelio) throws RepositoryException {
+    private void processContent(ContentItem contentItem) throws RepositoryException {
         LOG.info("Doc={} metadata={} time={}",
                 contentItem.getId(),
                 contentItem.getMetadata(),
                 contentItem.getDateModified());
 
-        if (contentItem.isDeleted()) {
-            sink.removeDeletedPressRelease(contentItem.getId());
-        }
+            if (contentItem.isDeleted()) {
+                Objects.requireNonNull(getSink(contentItem)).removeDeletedPressRelease(contentItem.getId());
+            }
 
-        sink.acceptPressRelease(new ContentConverter().convert(contentItem));
+            Objects.requireNonNull(getSink(contentItem)).acceptPressRelease(new ContentConverter().convert(contentItem));
 
     }
 
-    private ContentList fetchContent() {
+    private List<ContentItem> fetchContent() {
         try {
             return vuelio.content();
         } catch (VuelioException e) {
             throw new VuelioImporterException("failed to fetch content from API", e);
         }
+    }
+
+    private ContentSink getSink(ContentItem contentItem) {
+        if (contentItem.isNews()) {
+            return new NewsSink(session);
+        }
+
+        if (contentItem.isCorrespondence()) {
+            return new PublicationSink(
+                    session, "govscot:Publication", "correspondence","new-publication-folder");
+        }
+
+        if (contentItem.isSpeech()) {
+            return new PublicationSink(
+                    session,
+                    "govscot:SpeechOrStatement",
+                    "speech-statement",
+                    "new-speech-or-statement-folder");
+        }
+        return null;
     }
 
 }

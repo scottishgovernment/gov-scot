@@ -1,6 +1,6 @@
 package scot.gov.www.importer.vuelio.rest;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -8,7 +8,7 @@ import java.util.List;
  *     "id": "6ed7a023-86c6-a159-4e74-ce5763ddebdb",
  *     "name": "Distribution Type",
  *     "values": [
- *          "News relase"
+ *          "News release"
  *     ],
  *     "dateCreated": "2025-11-21T10:03:09",
  *     "dateModified": "2025-11-21T10:03:09"
@@ -20,8 +20,8 @@ public class Metadata {
     private String id;
     private String name;
     private List<String> values;
-    private OffsetDateTime dateCreated;
-    private OffsetDateTime dateModified;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateModified;
 
     public String getId() { return id; }
 
@@ -35,12 +35,20 @@ public class Metadata {
 
     public void setValues(List<String> values) { this.values = values; }
 
-    public OffsetDateTime getDateCreated() { return dateCreated; }
+    public LocalDateTime getDateCreated() { return dateCreated; }
 
-    public void setDateCreated(OffsetDateTime dateCreated) { this.dateCreated = dateCreated; }
+    public void setDateCreated(LocalDateTime dateCreated) { this.dateCreated = dateCreated; }
 
-    public OffsetDateTime getDateModified() { return dateModified; }
+    public LocalDateTime getDateModified() { return dateModified; }
 
-    public void setDateModified(OffsetDateTime dateModified) { this.dateModified = dateModified; }
+    public void setDateModified(LocalDateTime dateModified) { this.dateModified = dateModified; }
+
+//    public List<String> getPolicyTags() {
+//
+//    }
+//
+//    public List<String> getTopicTags() {
+//
+//    }
 
 }
