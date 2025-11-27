@@ -23,7 +23,7 @@ public class ContentNodes {
 
     static final String GOVSCOT_TITLE = "govscot:title";
 
-    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 
     Topics topics = new Topics();
 

@@ -62,8 +62,9 @@ public class ContentItem {
 
     private String id;
     private int republishCount;
-    private String headline;
+    private String headLine;
     private boolean headlineNews;
+    private String subHeading;
     private String globalCategory;
     private List<String> category;
     private List<String> region;
@@ -88,12 +89,12 @@ public class ContentItem {
         this.id = id;
     }
 
-    public String getHeadline() {
-        return headline;
+    public String getHeadLine() {
+        return headLine;
     }
 
-    public void setHeadline(String headline) {
-        this.headline = headline;
+    public void setHeadLine(String headLine) {
+        this.headLine = headLine;
     }
 
     public boolean isHeadlineNews() {
@@ -102,6 +103,14 @@ public class ContentItem {
 
     public void setHeadlineNews(boolean headlineNews) {
         this.headlineNews = headlineNews;
+    }
+
+    public String getSubHeading() {
+        return subHeading;
+    }
+
+    public void setSubHeading(String subHeading) {
+        this.subHeading = subHeading;
     }
 
     public String getGlobalCategory() {
@@ -270,7 +279,7 @@ public class ContentItem {
         return "ContentItem{" +
                 "id='" + id + '\'' +
                 ", republishCount=" + republishCount +
-                ", headline='" + headline + '\'' +
+                ", headline='" + headLine + '\'' +
                 ", headlineNews=" + headlineNews +
                 ", globalCategory='" + globalCategory + '\'' +
                 ", category=" + category +

@@ -35,7 +35,7 @@ public class ContentConverter {
         PressRelease to = new PressRelease();
 
         to.setId(from.getId());
-        to.setTitle(from.getHeadline());
+        to.setTitle(from.getHeadLine());
         to.setSummary(cleanPlainText(from.getBoilerPlate()));
         to.setSeoName(from.getBoilerPlate());
         to.setBody(from.getCoreCopy());

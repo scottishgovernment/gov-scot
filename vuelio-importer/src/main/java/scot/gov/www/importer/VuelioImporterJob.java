@@ -22,7 +22,7 @@ public class VuelioImporterJob implements RepositoryJob {
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
 
-        // if no prgloo token is configured, do not run the job
+        // if no vuelio token is configured, do not run the job
         VuelioConfiguration vuelioConfiguration = VuelioClient.config();
         if (vuelioConfiguration == null) {
             LOG.info("No Vuelio token configured, not running");

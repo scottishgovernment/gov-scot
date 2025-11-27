@@ -36,8 +36,6 @@ public class VuelioImporter {
 
     ImporterStatus importerStatus;
 
-    ContentSink sink;
-
     public VuelioImporter(Session session) {
         this.session = session;
         vuelio = new VuelioClient();
@@ -50,7 +48,7 @@ public class VuelioImporter {
         try {
             List<ContentItem> filteredContent = filterContentToProcess(getFetchTime(importerStatus));
             LOG.info("content obtained");
-            processPressReleases(filteredContent, vuelio, sink);
+            processPressReleases(filteredContent);
             importerStatus.setLastSuccessfulRun(importerStatus.getLastrun());
             importerStatus.setMessage("");
 
@@ -85,7 +83,7 @@ public class VuelioImporter {
         return results;
     }
 
-    public void processPressReleases(List<ContentItem> contentItems, VuelioClient vuelio, ContentSink sink) throws RepositoryException {
+    public void processPressReleases(List<ContentItem> contentItems) throws RepositoryException {
 
         LOG.info("processVuelioContent {} changes", contentItems.size());
         ContentMigrationException contentMigrationException = null;

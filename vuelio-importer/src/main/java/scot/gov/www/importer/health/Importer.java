@@ -6,8 +6,8 @@ import java.util.Map;
 public enum Importer {
 
     CONTENT_ITEMS(
-            "Press releases",
-            "press-release-importer",
+            "Vuelio Importer",
+            "vuelio-importer",
             6),;
 
     static Map<String, Importer> byId = new HashMap<>();
