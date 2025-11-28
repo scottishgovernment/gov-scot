@@ -89,13 +89,17 @@ public class VuelioImporter {
     public void processPressReleases(List<ContentItem> contentItems) throws RepositoryException {
 
         LOG.info("processVuelioContent {} changes", contentItems.size());
-        ContentMigrationException contentMigrationException = null;
+        Throwable contentMigrationException = null;
         List<String> errorMessages = new ArrayList<>();
         for (ContentItem item : contentItems) {
             try {
                 processContent(item);
             } catch (ContentMigrationException e) {
                 LOG.error("Document checked out by user" + item.getId(), e);
+                errorMessages.add(e.getMessage());
+                contentMigrationException = e;
+            } catch (RuntimeException e) {
+                LOG.error("RuntimeException processing item " + item.getId(), e);
                 errorMessages.add(e.getMessage());
                 contentMigrationException = e;
             }
