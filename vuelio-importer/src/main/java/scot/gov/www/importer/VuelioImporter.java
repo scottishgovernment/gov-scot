@@ -54,7 +54,7 @@ public class VuelioImporter {
             importerStatus.setLastSuccessfulRun(importerStatus.getLastrun());
             importerStatus.setMessage("");
 
-        } catch (VuelioImporterException e) {
+        } catch (RuntimeException e) {
             LOG.error("Exception thrown", e);
             importerStatus.setSuccess(false);
             importerStatus.setMessage(e.getMessage());

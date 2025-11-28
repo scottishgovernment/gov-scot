@@ -36,10 +36,10 @@ public class VuelioImporterJob implements RepositoryJob {
             Credentials credentials = new SimpleCredentials("news", "".toCharArray());
             session = systemSession.impersonate(credentials);
             FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
-            if (!featureFlag.isEnabled()) {
-                LOG.info("VuelioImporterJob is disabled");
-            } else {
+            if (featureFlag.isEnabled()) {
                 doImport(session);
+            } else {
+                LOG.info("VuelioImporterJob is disabled");
             }
         } catch (RepositoryException | VuelioImporterException e) {
             LOG.error("failed ", e);
