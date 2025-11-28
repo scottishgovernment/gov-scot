@@ -3,5 +3,5 @@ group:
   after: [hippo-cms]
 project: gov-scot
 module:
-  name: gov-scot-vuelio-importer
+  name: gov-scot-pressreleases-vuelio
 
