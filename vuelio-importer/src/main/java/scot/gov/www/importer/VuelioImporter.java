@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import scot.gov.www.importer.health.ImporterStatus;
 import scot.gov.www.importer.health.ImporterStatusUpdater;
 import scot.gov.www.importer.sink.ContentSink;
+import scot.gov.www.importer.sink.DepublishSink;
 import scot.gov.www.importer.sink.NewsSink;
 import scot.gov.www.importer.sink.PublicationSink;
 import scot.gov.www.importer.vuelio.ContentConverter;
@@ -76,7 +77,8 @@ public class VuelioImporter {
     List<ContentItem> filterContentToProcess(Instant from) {
         List<ContentItem> results = fetchContent()
                 .stream()
-                .filter(c -> c.updatedSinceLastRun(from) && c.isWebPublishContent())
+                .filter(c -> c.updatedSinceLastRun(from) &&
+                        (c.isWebPublishContent() || c.isDeleted() || !c.isPublished()))
                 .collect(Collectors.toList());
         Collections.reverse(results);
         LOG.info("Found {} results to process", results.size());
@@ -109,8 +111,8 @@ public class VuelioImporter {
                 contentItem.getMetadata(),
                 contentItem.getDateModified());
 
-            if (contentItem.isDeleted()) {
-                Objects.requireNonNull(getSink(contentItem)).removeDeletedPressRelease(contentItem.getId());
+            if (contentItem.isDeleted() || !contentItem.isPublished()) {
+                new DepublishSink(session).removeDeletedPressRelease(contentItem.getId());
             } else {
                 Objects.requireNonNull(
                         getSink(contentItem)).acceptPressRelease(new ContentConverter().convert(contentItem));

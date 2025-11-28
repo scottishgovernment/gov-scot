@@ -36,8 +36,8 @@ public class ContentConverter {
 
         to.setId(from.getId());
         to.setTitle(from.getHeadLine());
-        to.setSummary(cleanPlainText(from.getBoilerPlate()));
-        to.setSeoName(from.getBoilerPlate());
+        to.setSummary(cleanPlainText(from.getSubHeading()));
+        to.setSeoName(from.getSubHeading());
         to.setBody(from.getCoreCopy());
         ZoneId london = ZoneId.of("Europe/London");
         to.setDateTime(from.getDisplayDate().atZone(london));

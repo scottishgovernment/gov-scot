@@ -226,13 +226,9 @@ public class ContentItem {
         this.metadata = metadata;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
+    public boolean isDeleted() { return isDeleted; }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
+    public void setDeleted(boolean deleted) { isDeleted = deleted; }
 
     public List<String> getPolicyTags() {
         List<Metadata> policies = metadata.stream().filter(m -> m.getName().contains("Policy")).toList();
@@ -252,7 +248,7 @@ public class ContentItem {
 
 
     public boolean updatedSinceLastRun(Instant lastRun) {
-        return lastRun.isBefore(displayDate.toInstant(ZoneOffset.UTC));
+        return lastRun.isBefore(dateModified.toInstant(ZoneOffset.UTC));
     }
 
     public boolean isNews() {

@@ -21,6 +21,7 @@ public class PublicationSink extends AbstractSink {
     String pathElement;
 
     String action;
+
     public PublicationSink(Session session, String type, String pathElement, String action) {
         this.session = session;
         this.type = type;
@@ -61,7 +62,7 @@ public class PublicationSink extends AbstractSink {
 
     @Override
     public void removeDeletedPressRelease(String id) throws RepositoryException {
-        depublish(id, "govscot:Publication", session);
+        //Not implemented
     }
 
 }

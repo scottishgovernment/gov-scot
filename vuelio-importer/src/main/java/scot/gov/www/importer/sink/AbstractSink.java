@@ -27,8 +27,8 @@ public abstract class AbstractSink implements ContentSink {
     @Override
     public abstract void removeDeletedPressRelease(String id) throws RepositoryException;
 
-    String depublish(String id, String type, Session session) throws RepositoryException {
-        String xpath = String.format("//element(*, %s)[@govscot:externalId = '%s']", type, id);
+    String depublish(String id, Session session) throws RepositoryException {
+        String xpath = String.format("//element(*)[@govscot:externalId = '%s']", id);
         Query query = session.getWorkspace().getQueryManager().createQuery(xpath, Query.XPATH);
         QueryResult result = query.execute();
         if (!result.getNodes().hasNext()) {
