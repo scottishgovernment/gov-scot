@@ -59,6 +59,12 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>scot.gov.publishing.hippo</groupId>
+            <artifactId>hippo-govscot-funnelback-cms</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

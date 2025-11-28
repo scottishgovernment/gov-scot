@@ -4,6 +4,7 @@ import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.searchjournal.FeatureFlag;
 import scot.gov.www.pressreleases.prgloo.PRGlooClient;
 import scot.gov.www.pressreleases.prgloo.PRGlooConfiguration;
 
@@ -35,6 +36,12 @@ public class PressReleaseImporterJob implements RepositoryJob {
         try {
             Credentials credentials = new SimpleCredentials("news", "".toCharArray());
             session = systemSession.impersonate(credentials);
+            FeatureFlag featureFlag = new FeatureFlag(session, "PressReleaseImporterJob");
+            if (!featureFlag.isEnabled()) {
+                LOG.info("PressReleaseImporterJob is disabled");
+            } else {
+                doImport(session);
+            }
             doImport(session);
         } catch (RepositoryException | PressReleaseImporterException e) {
             LOG.error("failed ", e);

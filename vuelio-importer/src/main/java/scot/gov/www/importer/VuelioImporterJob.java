@@ -4,6 +4,7 @@ import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.searchjournal.FeatureFlag;
 import scot.gov.www.importer.vuelio.VuelioClient;
 import scot.gov.www.importer.vuelio.VuelioConfiguration;
 
@@ -34,7 +35,12 @@ public class VuelioImporterJob implements RepositoryJob {
         try {
             Credentials credentials = new SimpleCredentials("news", "".toCharArray());
             session = systemSession.impersonate(credentials);
-            doImport(session);
+            FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
+            if (!featureFlag.isEnabled()) {
+                LOG.info("VuelioImporterJob is disabled");
+            } else {
+                doImport(session);
+            }
         } catch (RepositoryException | VuelioImporterException e) {
             LOG.error("failed ", e);
         } finally {
