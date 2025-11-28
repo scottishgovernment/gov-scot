@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -236,7 +237,7 @@ public class ContentItem {
     public List<String> getPolicyTags() {
         List<Metadata> policies = metadata.stream().filter(m -> m.getName().contains("Policy")).toList();
         if (policies.isEmpty()) {
-            return null;
+            return new ArrayList<>();
         }
         return policies.get(0).getValues();
     }
@@ -244,7 +245,7 @@ public class ContentItem {
     public List<String> getTopicTags() {
         List<Metadata> topics = metadata.stream().filter(m -> m.getName().contains("Topic")).toList();
         if (topics.isEmpty()) {
-            return null;
+            return new ArrayList<>();
         }
         return topics.get(0).getValues();
     }
@@ -260,6 +261,12 @@ public class ContentItem {
                 v.contains(Value.NEWS_RELEASE.getDescription())));
     }
 
+    public boolean isStagingNews() {
+        return metadata.stream().anyMatch(m ->
+                m.getValues().stream().anyMatch(v ->
+                        v.contains(Value.NEWS_RELASE.getDescription())));
+    }
+
     public boolean isSpeech() {
         return metadata.stream().anyMatch(m ->
                 m.getValues().stream().anyMatch(v ->
@@ -270,6 +277,13 @@ public class ContentItem {
         return metadata.stream().anyMatch(m ->
                 m.getValues().stream().anyMatch(v ->
                         v.contains(Value.CORRESPONDENCE.getDescription())));
+    }
+
+    public boolean isWebPublishContent() {
+        if (isNews() || isSpeech() || isCorrespondence() || isStagingNews()) {
+            return true;
+        }
+        return false;
     }
 
     public

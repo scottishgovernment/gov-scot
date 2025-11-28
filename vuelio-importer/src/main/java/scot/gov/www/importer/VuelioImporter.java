@@ -76,7 +76,7 @@ public class VuelioImporter {
     List<ContentItem> filterContentToProcess(Instant from) {
         List<ContentItem> results = fetchContent()
                 .stream()
-                .filter(c -> c.updatedSinceLastRun(from))
+                .filter(c -> c.updatedSinceLastRun(from) && c.isWebPublishContent())
                 .collect(Collectors.toList());
         Collections.reverse(results);
         LOG.info("Found {} results to process", results.size());
@@ -111,9 +111,10 @@ public class VuelioImporter {
 
             if (contentItem.isDeleted()) {
                 Objects.requireNonNull(getSink(contentItem)).removeDeletedPressRelease(contentItem.getId());
+            } else {
+                Objects.requireNonNull(
+                        getSink(contentItem)).acceptPressRelease(new ContentConverter().convert(contentItem));
             }
-
-            Objects.requireNonNull(getSink(contentItem)).acceptPressRelease(new ContentConverter().convert(contentItem));
 
     }
 
@@ -126,7 +127,7 @@ public class VuelioImporter {
     }
 
     private ContentSink getSink(ContentItem contentItem) {
-        if (contentItem.isNews()) {
+        if (contentItem.isNews() || contentItem.isStagingNews()) {
             return new NewsSink(session);
         }
 
