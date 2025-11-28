@@ -25,7 +25,7 @@ public class DepublishSink extends AbstractSink {
     @Override
     public void removeDeletedPressRelease(String id) throws RepositoryException {
         String found = depublish(id, session);
-        if (found==null) {
+        if (found == null) {
             LOG.info("No matching document ID found to depublish: {}", id);
         }
     }

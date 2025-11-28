@@ -4,6 +4,7 @@ import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.searchjournal.FeatureFlag;
 import scot.gov.www.pressreleases.prgloo.PRGlooClient;
 import scot.gov.www.pressreleases.prgloo.PRGlooConfiguration;
 
@@ -26,13 +27,17 @@ public class TagImporterJob implements RepositoryJob {
             return;
         }
 
-
         Session systemSession = context.createSystemSession();
         Session session = null;
         try {
             Credentials credentials = new SimpleCredentials("news", "".toCharArray());
             session = systemSession.impersonate(credentials);
-            doImport(session);
+            FeatureFlag featureFlag = new FeatureFlag(session, "PressReleaseImporterJob");
+            if (featureFlag.isEnabled()) {
+                doImport(session);
+            } else {
+                LOG.info("VuelioImporterJob is disabled");
+            }
         } catch (RepositoryException | PressReleaseImporterException e) {
             LOG.error("failed ", e);
         } finally {

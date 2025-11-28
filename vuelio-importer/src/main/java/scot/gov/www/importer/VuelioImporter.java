@@ -3,7 +3,6 @@ package scot.gov.www.importer;
 import org.onehippo.forge.content.exim.core.ContentMigrationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.importer.domain.PressRelease;
 import scot.gov.www.importer.health.ImporterStatus;
 import scot.gov.www.importer.health.ImporterStatusUpdater;
 import scot.gov.www.importer.sink.ContentSink;
@@ -23,8 +22,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class VuelioImporter {
 
@@ -48,12 +47,11 @@ public class VuelioImporter {
         importerStatus.setLastrun(ZonedDateTime.now());
 
         try {
-            List<ContentItem> filteredContent = filterContentToProcess(getFetchTime(importerStatus));
-            LOG.info("content obtained");
+            Instant fetchTime = getFetchTime(importerStatus);
+            List<ContentItem> filteredContent = filterContentToProcess(fetchTime);
             processPressReleases(filteredContent);
             importerStatus.setLastSuccessfulRun(importerStatus.getLastrun());
             importerStatus.setMessage("");
-
         } catch (RuntimeException e) {
             LOG.error("Exception thrown", e);
             importerStatus.setSuccess(false);
@@ -76,14 +74,31 @@ public class VuelioImporter {
     }
 
     List<ContentItem> filterContentToProcess(Instant from) {
-        List<ContentItem> results = fetchContent()
-                .stream()
-                .filter(c -> c.updatedSinceLastRun(from) &&
-                        (c.isWebPublishContent() || c.isDeleted() || !c.isPublished()))
-                .collect(Collectors.toList());
+        List<ContentItem> all = fetchContent();
+        List<ContentItem> results = all.stream().filter(c -> include(from, c)).collect(toList());
         Collections.reverse(results);
         LOG.info("Found {} results to process", results.size());
         return results;
+    }
+
+    boolean include(Instant from, ContentItem item) {
+        if (deletedOrUnpublished(item)) {
+            // always process deletions and unpublished
+            return true;
+        }
+
+        if (!item.isWebPublishContent() ) {
+            // never process non web published content
+            // note deleteded things have isWebPublishContent == false and so you have to check the deleted part first
+            return false;
+        }
+
+        // only process if it has changed since the last run
+        return item.updatedSinceLastRun(from);
+    }
+
+    boolean deletedOrUnpublished(ContentItem item) {
+        return item.isDeleted() || !item.isPublished();
     }
 
     public void processPressReleases(List<ContentItem> contentItems) throws RepositoryException {
@@ -139,8 +154,8 @@ public class VuelioImporter {
 
     private ContentSink getSink(ContentItem contentItem) {
 
-        if (contentItem.isDeleted()) {
-            new DepublishSink(session);
+        if (deletedOrUnpublished(contentItem)) {
+            return new DepublishSink(session);
         }
 
         if (contentItem.isNews() || contentItem.isStagingNews()) {
@@ -159,6 +174,7 @@ public class VuelioImporter {
                     "speech-statement",
                     "new-speech-or-statement-folder");
         }
+
         return null;
     }
 

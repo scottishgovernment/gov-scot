@@ -10,6 +10,8 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import scot.gov.publishing.searchjournal.FeatureFlag;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -33,6 +35,14 @@ public class Healthcheck {
     @Produces(MediaType.APPLICATION_JSON)
     public Health healthcheck() {
         Health health = new Health();
+        FeatureFlag featureFlag = new FeatureFlag(session, "PressReleaseImporterJob");
+        if (!featureFlag.isEnabled()) {
+            health.setStatus(NagiosStatus.OK);
+            health.setMessage("PressReleaseImporterJob is disabled via feature flag");
+            health.setInfo(Collections.emptyList());
+            return health;
+        }
+
         try {
             collectHealthInformation(health);
         } catch (RepositoryException e) {

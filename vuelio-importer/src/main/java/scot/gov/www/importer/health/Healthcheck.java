@@ -7,12 +7,14 @@ import jakarta.ws.rs.core.MediaType;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.searchjournal.FeatureFlag;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Healthcheck {
@@ -34,6 +36,14 @@ public class Healthcheck {
     @Produces(MediaType.APPLICATION_JSON)
     public Health healthcheck() {
         Health health = new Health();
+        FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
+        if (!featureFlag.isEnabled()) {
+            health.setStatus(NagiosStatus.OK);
+            health.setMessage("VuelioImporterJob is disabled via feature flag");
+            health.setInfo(Collections.emptyList());
+            return health;
+        }
+
         try {
             collectHealthInformation(health);
         } catch (RepositoryException e) {
