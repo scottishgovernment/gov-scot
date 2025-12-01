@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /content:
+      /featureflags:
+        jcr:primaryType: nt:unstructured
+        FunnelbackReconciliationLoop: true
+        JournalPopulationJob: false
+        PressReleaseImporterJob: true
+        SearchJournalCleanupJob: true
+        SearchJournalEventListener: true
+        SlugLookupsPopulationJob: false
+        VuelioImporterJob: true
