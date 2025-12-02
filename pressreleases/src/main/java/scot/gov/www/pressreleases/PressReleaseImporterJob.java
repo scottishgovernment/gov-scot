@@ -14,8 +14,8 @@ import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
 
 /**
- * Scheduled job to import press releases (news, speeches and correspondence).  Note that there is a separte scheduled job
- * to import tags since this only needs to run once an hour.
+ * Scheduled job to import press releases (news, speeches and correspondence).
+ * Note that there is a separate scheduled job to import tags since this only needs to run once an hour.
  */
 public class PressReleaseImporterJob implements RepositoryJob {
 
@@ -42,7 +42,6 @@ public class PressReleaseImporterJob implements RepositoryJob {
             } else {
                 doImport(session);
             }
-            doImport(session);
         } catch (RepositoryException | PressReleaseImporterException e) {
             LOG.error("failed ", e);
         } finally {

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Converts new/speech/correspondence from the REST API to our own domain model.
+ * Converts news/speech/correspondence from the REST API to our own domain model.
  */
 public class ContentConverter {
 
