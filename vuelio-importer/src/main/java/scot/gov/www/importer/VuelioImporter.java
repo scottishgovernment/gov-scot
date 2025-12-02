@@ -89,7 +89,7 @@ public class VuelioImporter {
 
         if (!item.isWebPublishContent() ) {
             // never process non web published content
-            // note deleteded things have isWebPublishContent == false and so you have to check the deleted part first
+            // note deleted things have isWebPublishContent == false and so you have to check the deleted part first
             return false;
         }
 

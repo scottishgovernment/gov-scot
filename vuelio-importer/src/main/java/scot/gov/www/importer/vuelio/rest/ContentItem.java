@@ -228,7 +228,7 @@ public class ContentItem {
 
     public boolean isDeleted() { return isDeleted; }
 
-    public void setDeleted(boolean deleted) { isDeleted = deleted; }
+    public void setIsDeleted(boolean deleted) { isDeleted = deleted; }
 
     public List<String> getPolicyTags() {
         List<Metadata> policies = metadata.stream().filter(m -> m.getName().contains("Policy")).toList();
