@@ -5,7 +5,11 @@ import org.hippoecm.hst.site.HstServices;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.hippo.funnelback.SearchType;
 import scot.gov.www.searchjournal.FunnelbackReconciliationLoop;
+
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 
 public class FunnelbackFactory {
 
@@ -19,11 +23,12 @@ public class FunnelbackFactory {
         // hide implicit constructor
     }
 
-    public static Funnelback newFunnelback(RepositoryJobExecutionContext context) {
+    public static Funnelback newFunnelback(RepositoryJobExecutionContext context, Session session) throws RepositoryException {
 
         // decide what kind of funnelback instance to create based on the job context.
         String filters = filters(context);
-        Funnelback funnelback = new FunnelbackImpl(configuration(), filters);
+        String searchType = SearchType.getSearchType(session);
+        Funnelback funnelback = new FunnelbackImpl(configuration(searchType), filters);
 
         LOG.info("filters: {}", filters);
         // for testing error conditions it is possible to configure the repository to add artificial errors to our
@@ -42,13 +47,26 @@ public class FunnelbackFactory {
         return new MetricsCollectingFunnelbackImpl(funnelback);
     }
 
-    static FunnelbackConfiguration configuration() {
+    static FunnelbackConfiguration configuration(String searchType) {
+
         FunnelbackConfiguration configuration = new FunnelbackConfiguration();
         ContainerConfiguration containerConfiguration = HstServices.getComponentManager().getContainerConfiguration();
-        String url = containerConfiguration.getString("funnelback.url");
-        String token = containerConfiguration.getString("funnelback.token");
-        configuration.setApiUrl(url);
-        configuration.setApiKey(token);
+        configuration.setSearchType(searchType);
+        if ("funnelback".equals(searchType)) {
+            String url = containerConfiguration.getString("funnelback.url");
+            String token = containerConfiguration.getString("funnelback.token");
+            configuration.setApiUrl(url);
+            configuration.setApiKey(token);
+        }
+
+        if ("funnelback-dxp".equals(searchType)) {
+            String url = containerConfiguration.getString("squiz.admin.url");
+            String clientId = containerConfiguration.getString("squiz.clientId");
+            String token = containerConfiguration.getString("squiz.admin.token");
+            configuration.setApiUrl(url);
+            configuration.setClientId(clientId);
+            configuration.setApiKey(token);
+        }
 
         return configuration;
     }

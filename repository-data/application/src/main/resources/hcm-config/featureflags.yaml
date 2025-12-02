@@ -9,4 +9,4 @@ definitions:
         SearchJournalCleanupJob: true
         SearchJournalEventListener: true
         SlugLookupsPopulationJob: false
-        VuelioImporterJob: true
+        VuelioImporterJob: false

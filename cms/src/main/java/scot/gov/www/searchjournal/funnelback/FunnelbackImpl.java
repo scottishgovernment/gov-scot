@@ -2,7 +2,7 @@ package scot.gov.www.searchjournal.funnelback;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -55,7 +55,6 @@ public class FunnelbackImpl implements Funnelback {
         funnelBackUri = URI.create(configuration.getApiUrl());
         funnelbackHost = new HttpHost(funnelBackUri.getHost(), funnelBackUri.getPort(), funnelBackUri.getScheme());
         this.positionUrl = funnelbackCollectionUrl(FunnelbackCollection.JOURNAL.getCollectionName(), "https://www.gov.scot/journalposition");
-        LOG.info("positionUrl {}", positionUrl);
         httpClient = HttpClientSource.newClient();
     }
 
@@ -143,12 +142,33 @@ public class FunnelbackImpl implements Funnelback {
         try {
             String encodedKey = URLEncoder.encode(key, CHARSET);
             String encodedFilters = URLEncoder.encode(filters, CHARSET);
-            return String.format(
-                    "%s%s/documents?key=%s&filters=%s",
-                    "/push-api/v2/collections/",
-                    collection,
-                    encodedKey,
-                    encodedFilters);
+
+            //  these are stored in the journal ... this means that it will work whether the govscot~ prefix is there or not
+            if (collection.startsWith("govscot~")) {
+                collection = StringUtils.substringAfter(collection, "govscot~");
+            }
+
+            String url = "";
+            LOG.info("funnelbackCollectionUrl collection {}, searchType {}", collection, configuration.getSearchType());
+            if ("funnelback-dxp".equals(configuration.getSearchType())) {
+                url = String.format(
+                        "%s%s~%s/documents?key=%s&filters=%s",
+                        "/push-api/v2/collections/",
+                        configuration.getClientId(),
+                        collection,
+                        encodedKey,
+                        encodedFilters);
+            } else {
+                url = String.format(
+                        "%sgovscot~%s/documents?key=%s&filters=%s",
+                        "/push-api/v2/collections/",
+                        collection,
+                        encodedKey,
+                        encodedFilters);
+            }
+
+            LOG.info("funnelbackCollectionUrl {}", url);
+            return url;
         } catch (UnsupportedEncodingException e) {
             throw new IllegalArgumentException("UnsupportedEncodingException trying to encode position key", e);
         }
@@ -173,7 +193,6 @@ public class FunnelbackImpl implements Funnelback {
     }
 
     String fetchJournalPosition(String url) throws IOException, FunnelbackException {
-
         HttpGet request = new HttpGet(url);
         request.addHeader(SECURITY_TOKEN, configuration.getApiKey());
         CloseableHttpResponse response = httpClient.execute(funnelbackHost, request);

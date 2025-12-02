@@ -41,7 +41,7 @@ public class JournalPopulationJob implements RepositoryJob {
             if (featureFlag.isEnabled()) {
                 LOG.info("JournalPopulationJob running");
                 populate(session, context);
-                resetJournalPosition(context);
+                resetJournalPosition(context, session);
                 deactivateJob(context);
                 activateReconciliationJob(context);
                 LOG.info("JournalPopulationJob finished");
@@ -61,8 +61,8 @@ public class JournalPopulationJob implements RepositoryJob {
         }
     }
 
-    void resetJournalPosition(RepositoryJobExecutionContext context) throws FunnelbackException {
-        Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
+    void resetJournalPosition(RepositoryJobExecutionContext context, Session session) throws FunnelbackException, RepositoryException {
+        Funnelback funnelback = FunnelbackFactory.newFunnelback(context, session);
         ZonedDateTime position = ZonedDateTime.now().withYear(2013).withDayOfYear(1).withHour(0).withMinute(0);
         Calendar cal = Calendar.getInstance();
         cal.setTime(Date.from(position.toInstant()));

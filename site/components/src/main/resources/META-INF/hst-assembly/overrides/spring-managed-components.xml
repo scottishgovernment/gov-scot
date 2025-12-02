@@ -17,6 +17,30 @@
                 <entry key="govscot" value="govscot~sp-govscot"/>
             </map>
         </property>
+
+        <property name="resourceResolver" value="funnelback"/>
+
+        <property name="tokenProperty" value="funnelback.token"/>
+
+        <property name="urlTemplate" value="/search.json?query={query}&amp;start_rank={rank}&amp;collection={collection}"/>
+
+        <property name="suggestTemplate" value="/suggest.json?partial_query={partial_query}&amp;show={show}&amp;sort={sort}&amp;fmt={fmt}&amp;collection={collection}&amp;profile=search"/>
+    </bean>
+
+    <bean id="funnelbackSearchServiceDXP" class="scot.gov.publishing.hippo.funnelback.component.FunnelbackSearchService">
+        <property name="collections">
+            <map>
+                <entry key="govscot" value="sp-govscot"/>
+            </map>
+        </property>
+
+        <property name="resourceResolver" value="funnelbackDXP"/>
+
+        <property name="tokenProperty" value="squiz.search.token"/>
+
+        <property name="urlTemplate" value="/s/search.json?collection={clientId}~{collection}&amp;query={query}&amp;start_rank={rank}"/>
+
+        <property name="suggestTemplate" value="/s/suggest.json?partial_query={partial_query}&amp;show={show}&amp;sort={sort}&amp;fmt={fmt}&amp;collection={clientId}~{collection}&amp;profile=search"/>
     </bean>
 
     <bean id="bloomreachSearchService" class="scot.gov.www.search.BloomreachSearchService">

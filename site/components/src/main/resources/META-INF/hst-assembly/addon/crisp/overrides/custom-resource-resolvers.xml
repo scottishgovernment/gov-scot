@@ -29,7 +29,7 @@
             <bean class="org.onehippo.cms7.crisp.core.resource.SpringResourceDataCache">
                 <constructor-arg>
                     <bean class="org.springframework.cache.caffeine.CaffeineCache" factory-bean="caffeineCacheInstanceFactory" factory-method="createSpringCacheInstance">
-                        <constructor-arg value="demomarketoCache" />
+                        <constructor-arg value="funnelbackCache" />
                         <constructor-arg value="initialCapacity=10,maximumSize=1000,expireAfterWrite=100s,expireAfterAccess=100s" />
                     </bean>
                 </constructor-arg>
@@ -38,4 +38,35 @@
 
     </bean>
 
+    <bean id="funnelbackDXP" parent="abstractCrispSimpleJacksonRestTemplateResourceResolver"
+          class="org.onehippo.cms7.crisp.core.resource.jackson.SimpleJacksonRestTemplateResourceResolver">
+        <property name="cacheEnabled" value="true" />
+        <property name="baseUri" value="${squiz.search.url}" />
+        <property name="restTemplate">
+            <bean class="org.springframework.web.client.RestTemplate">
+
+                <constructor-arg index="0" ref="loggingHttpRequestFactory" />
+
+                <property name="interceptors">
+                    <list>
+                        <bean class="scot.gov.publishing.hippo.funnelback.client.SecurityTokenInterceptor">
+                            <property name="token" value="${squiz.search.token}" />
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+
+        <property name="resourceDataCache">
+            <bean class="org.onehippo.cms7.crisp.core.resource.SpringResourceDataCache">
+                <constructor-arg>
+                    <bean class="org.springframework.cache.caffeine.CaffeineCache" factory-bean="caffeineCacheInstanceFactory" factory-method="createSpringCacheInstance">
+                        <constructor-arg value="funnelbackDXPCache" />
+                        <constructor-arg value="initialCapacity=10,maximumSize=1000,expireAfterWrite=100s,expireAfterAccess=100s" />
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
+
+    </bean>
 </beans>

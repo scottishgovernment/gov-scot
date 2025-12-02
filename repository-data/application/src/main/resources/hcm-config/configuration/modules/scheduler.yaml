@@ -60,8 +60,8 @@ definitions:
           hipposched:enabled: true
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PollFunnelbackCurator:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: [pollPaths]
-      hipposched:attributeValues: [/admin-api/curator/v2/collections/govscot~sp-govscot/profiles/search/curator/]
+      hipposched:attributeNames: [ pollPaths, collections ]
+      hipposched:attributeValues: ['/admin-api/curator/v2/collections/govscot~sp-govscot/profiles/search/curator/', 'govscot']
       hipposched:enabled: true
       hipposched:repositoryJobClass: scot.gov.publishing.hippo.funnelback.scheduler.PollFunnelbackCurator
       /hipposched:triggers:

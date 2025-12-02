@@ -4,7 +4,6 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.configuration.components.HstComponentConfiguration;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent;
 import scot.gov.publishing.hippo.funnelback.component.SearchSettings;
 
 import static org.apache.commons.lang3.StringUtils.equalsAny;
@@ -32,7 +31,7 @@ public class SearchBarComponent extends BaseHstComponent {
      * determine if auto complete should be used for search bars
      */
     static void populateAutoCompleteFlag(HstRequest request) {
-        SearchSettings searchSettings = searchSettings();
+        SearchSettings searchSettings = SearchSettings.searchSettings();
         request.setAttribute("ds_autocomplete", autoCompleteEnabled(searchSettings));
     }
 
