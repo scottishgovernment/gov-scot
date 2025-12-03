@@ -8,6 +8,7 @@ import scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent;
 import scot.gov.publishing.hippo.funnelback.component.SearchSettings;
 
 import static org.apache.commons.lang3.StringUtils.equalsAny;
+import static scot.gov.publishing.hippo.funnelback.component.SearchSettings.searchSettings;
 
 public class SearchBarComponent extends BaseHstComponent {
 
@@ -31,7 +32,7 @@ public class SearchBarComponent extends BaseHstComponent {
      * determine if auto complete should be used for search bars
      */
     static void populateAutoCompleteFlag(HstRequest request) {
-        SearchSettings searchSettings = ResilientSearchComponent.searchSettings();
+        SearchSettings searchSettings = searchSettings();
         request.setAttribute("ds_autocomplete", autoCompleteEnabled(searchSettings));
     }
 
