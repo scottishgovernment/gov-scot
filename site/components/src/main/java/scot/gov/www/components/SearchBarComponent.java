@@ -7,7 +7,6 @@ import org.hippoecm.hst.core.component.HstResponse;
 import scot.gov.publishing.hippo.funnelback.component.SearchSettings;
 
 import static org.apache.commons.lang3.StringUtils.equalsAny;
-import static scot.gov.publishing.hippo.funnelback.component.SearchSettings.searchSettings;
 
 public class SearchBarComponent extends BaseHstComponent {
 
