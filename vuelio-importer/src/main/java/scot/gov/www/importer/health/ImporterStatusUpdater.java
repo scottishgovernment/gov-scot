@@ -12,9 +12,6 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-/**
- * TODO: needs to be re-written for the new importer API
- */
 public class ImporterStatusUpdater {
 
     private static final String DATE_TIME_PROPERTY = "datetime";

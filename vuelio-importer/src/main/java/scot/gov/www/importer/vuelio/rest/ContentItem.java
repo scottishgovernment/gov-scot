@@ -276,16 +276,11 @@ public class ContentItem {
     }
 
     public boolean isWebPublishContent() {
-        if (isNews() || isSpeech() || isCorrespondence() || isStagingNews()) {
-            return true;
-        }
-        return false;
+        return isNews() || isSpeech() || isCorrespondence() || isStagingNews();
     }
 
-    public
-
     @Override
-    String toString() {
+    public String toString() {
         return "ContentItem{" +
                 "id='" + id + '\'' +
                 ", republishCount=" + republishCount +
