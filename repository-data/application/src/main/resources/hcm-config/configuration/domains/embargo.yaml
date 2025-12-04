@@ -7,7 +7,7 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
+        value: [general-embargo, embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
           embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
           embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
           embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
@@ -21,7 +21,7 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
+        value: [general-embargo, embargo-social-security-analysis, embargo-energy-statistics, embargo-trade-statistics,
           embargo-children-and-families-analysis, embargo-gdp, embargo-public-sector-employment,
           embargo-labour-market–lfs-aps, embargo-general-labour-market, embargo-shcs,
           embargo-community-ownership-in-scotland, embargo-business-and-innovation-statistics,
