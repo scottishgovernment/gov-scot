@@ -1,6 +1,10 @@
 package scot.gov.www.importer.sink;
 
+import com.fasterxml.jackson.databind.type.LogicalType;
 import com.github.slugify.Slugify;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import scot.gov.www.importer.VuelioImporter;
 import scot.gov.www.importer.domain.PressRelease;
 
 import javax.jcr.Node;
@@ -13,6 +17,8 @@ import static scot.gov.www.importer.sink.ContentNodes.GOVSCOT_NEWS;
 import static scot.gov.www.importer.sink.ContentNodes.GOVSCOT_PUBLICATION;
 
 public class Locations {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Locations.class);
 
     private Slugify slugify = new Slugify();
 
@@ -34,7 +40,13 @@ public class Locations {
         String slug = slugify.slugify(release.getTitle());
         String yearString = Integer.toString(release.getDateTime().getYear());
         String monthString = String.format("%02d", release.getDateTime().getMonthValue());
-        return String.format("/content/documents/govscot/news/%s/%s/%s", yearString, monthString, slug);
+        String location = String.format("/content/documents/govscot/news/%s/%s/%s", yearString, monthString, slug);
+        if (session.nodeExists(location)) {
+            // if a press release with the same title had been created in the same month then we need to disambiguate
+            location = String.format("/content/documents/govscot/news/%s/%s/%s-%s", yearString, monthString, slug, release.getId());
+            LOG.info("duplicate news title found, disambiguating to: {}", location);
+        }
+        return location;
     }
 
     public String publicationLocation(PressRelease release, String publicationType, Session session) throws RepositoryException {
@@ -48,7 +60,15 @@ public class Locations {
         String slug = slugify.slugify(release.getTitle());
         String yearString = Integer.toString(release.getDateTime().getYear());
         String monthString = String.format("%02d", release.getDateTime().getMonthValue());
-        return String.format("/content/documents/govscot/publications/%s/%s/%s/%s/index", publicationType, yearString, monthString, slug);
+
+        String location = String.format("/content/documents/govscot/publications/%s/%s/%s/%s/index", publicationType, yearString, monthString, slug);
+        if (session.nodeExists(location)) {
+            // if a press release with the same title had been created in the same month then we need to disambiguate
+            location = String.format("/content/documents/govscot/publications/%s/%s/%s/%s%s/index", publicationType, yearString, monthString, slug, release.getId());
+            LOG.info("------> duplicate publication title found, disambiguating to: {}", location);
+        }
+LOG.info("----> location {}", location);
+        return location;
     }
 
     public static Node getByExternalId(Session session, String type, PressRelease pressRelease) throws RepositoryException {
