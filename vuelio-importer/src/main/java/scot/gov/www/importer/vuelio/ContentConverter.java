@@ -2,8 +2,6 @@ package scot.gov.www.importer.vuelio;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Entities;
-import org.jsoup.safety.Cleaner;
 import org.jsoup.safety.Safelist;
 import scot.gov.www.importer.domain.Media;
 import scot.gov.www.importer.domain.PressRelease;
@@ -23,8 +21,6 @@ public class ContentConverter {
 
     public static final String CORRESPONDENCE_NODE = "correspondence";
 
-    private final Cleaner plainTextCleaner = new Cleaner(Safelist.simpleText());
-
     /**
      * Convert a ContentItem item from the REST API call to our own domain object.
      *
@@ -38,7 +34,7 @@ public class ContentConverter {
         to.setTitle(from.getHeadLine());
         to.setSummary(cleanPlainText(from.getSubHeading()));
         to.setSeoName(from.getSubHeading());
-        to.setBody(from.getCoreCopy());
+        to.setBody(cleanHtml(from.getCoreCopy()));
         ZoneId london = ZoneId.of("Europe/London");
         to.setDateTime(from.getDisplayDate().atZone(london));
         to.setUpdatedDate(from.getDateModified().atZone(london));
@@ -79,9 +75,23 @@ public class ContentConverter {
         if (s == null) {
             return s;
         }
-        Document doc = Jsoup.parse(Jsoup.parse(s).text());
-        doc.outputSettings().escapeMode(Entities.EscapeMode.xhtml);
-        return plainTextCleaner.clean(doc).body().text();
+        return Jsoup.clean(s, Safelist.simpleText());
+    }
+
+    private String cleanHtml(String s) {
+        if (s == null) {
+            return s;
+        }
+        String cleanedHtml = Jsoup.clean(s, Safelist.basic().removeTags("br", "span"));
+        Document doc = Jsoup.parseBodyFragment(cleanedHtml);
+        doc.select("p").forEach(p -> {
+            // remove nbsp + trim
+            String text = p.text().replace("\u00A0", "").trim();
+            if (text.isEmpty()) {
+                p.remove();
+            }
+        });
+        return doc.body().html();
     }
 
 }
