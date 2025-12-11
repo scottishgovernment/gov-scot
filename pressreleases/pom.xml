@@ -6,7 +6,7 @@
   <parent>
     <groupId>scot.gov.www</groupId>
     <artifactId>gov-scot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1743</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -75,7 +75,7 @@
       <dependency>
           <groupId>scot.gov.publishing.hippo</groupId>
           <artifactId>hippo-govscot-funnelback-cms</artifactId>
-          <version>0.0.1-SNAPSHOT</version>
+          <version>1.0.154</version>
           <scope>compile</scope>
       </dependency>
 
