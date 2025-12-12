@@ -58,7 +58,7 @@
                 <property name="period" value="25000"/>
                 <property name="runnable">
                     <bean class="org.springframework.scheduling.support.MethodInvokingRunnable">
-                        <property name="targetObject" ref="funnelbackSearchService"/>
+                        <property name="targetObject" ref="funnelbackSearchServiceDXP"/>
                         <property name="targetMethod" value="ping"/>
                         <property name="arguments" value="govscot" />
                     </bean>
