@@ -75,7 +75,15 @@ public class ContentConverter {
         if (s == null) {
             return s;
         }
-        return Jsoup.clean(s, Safelist.simpleText());
+        String cleaned = Jsoup.clean(s, Safelist.simpleText());
+
+        // Convert non-breaking spaces to regular spaces
+        cleaned = cleaned.replace('\u00A0', ' ');
+        cleaned = cleaned.replace("&nbsp;", " ");
+
+        // Collapse whitespace to a single space and trim
+        cleaned = cleaned.replaceAll("\\s+", " ").trim();
+        return cleaned;
     }
 
     private String cleanHtml(String s) {
