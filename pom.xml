@@ -184,6 +184,11 @@
     <defaultGoal>package</defaultGoal>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>4.0.0.4121</version>
+        </plugin>
 
         <plugin>
           <groupId>org.zeroturnaround</groupId>
@@ -324,7 +329,6 @@
         <module>site-deb</module>
         <module>gov-scot-libs</module>
         <module>publications-rest</module>
-        <module>pressreleases</module>
         <module>redirects-rest</module>
         <module>searchjournal-rest</module>
         <module>imageprocessing</module>

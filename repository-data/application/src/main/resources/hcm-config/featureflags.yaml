@@ -5,7 +5,6 @@ definitions:
         jcr:primaryType: nt:unstructured
         FunnelbackReconciliationLoop: true
         JournalPopulationJob: false
-        PressReleaseImporterJob: true
         SearchJournalCleanupJob: true
         SearchJournalEventListener: true
         SlugLookupsPopulationJob: false
