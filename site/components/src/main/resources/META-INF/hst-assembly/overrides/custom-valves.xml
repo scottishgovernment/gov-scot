@@ -25,4 +25,25 @@
     </property>
   </bean>
 
+    <bean id="contentSecurityPolicyValve" class="scot.gov.publishing.hippo.hst.request.ContentSecurityPolicyValve">
+        <property name="valveName" value="contentSecurityPolicyValve" />
+        <property name="afterValves" value="userTypeValve" />
+        <property name="beforeValves" value="pageCachingValve" />
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject">
+            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="targetObject" ref="org.hippoecm.hst.core.container.Pipelines" />
+                <property name="targetMethod" value="getPipeline" />
+                <property name="arguments">
+                    <value>DefaultSitePipeline</value>
+                </property>
+            </bean>
+        </property>
+        <property name="targetMethod" value="addProcessingValve" />
+        <property name="arguments">
+            <ref bean="contentSecurityPolicyValve" />
+        </property>
+    </bean>
 </beans>
