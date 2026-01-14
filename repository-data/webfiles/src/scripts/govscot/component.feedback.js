@@ -7,8 +7,128 @@
 
 import temporaryFocus from '@scottish-government/design-system/src/base/tools/temporary-focus/temporary-focus';
 
-const errorSummaryTemplate = require('../templates/error-summary');
-const feedbackTemplate = require('../templates/feedback');
+const errorSummaryTemplate = {
+    render: function (templateData) {
+        if (templateData.errors.length === 0) {
+            return ''
+        } else {
+            let html = `
+            <div class="ds_error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert">
+                <h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>`;
+
+            if (templateData.errors.length > 1) {
+                html += `<ul class="ds_error-summary__list">`;
+
+                templateData.errors.forEach((item) => {
+                    html += `<li>`;
+                    if (item.fragmentId) {
+                        html += `<a class="ds_error-summary__link" href="#${item.fragmentId}">${item.fieldName}: ${item.message}</a>`;
+                    } else {
+                        html += `${item.message}`;
+                    }
+                    html += `</li>`;
+                });
+
+                html += `</ul>`;
+            } else {
+                html += `<p class="ds_error-summary__list">`;
+                if (templateData.errors[0].fragmentId) {
+                    html += `<a class="ds_error-summary__link" href="#${templateData.errors[0].fragmentId}">${templateData.errors[0].fieldName}: ${templateData.errors[0].message}</a>`;
+                } else {
+                    html += `${templateData.errors[0].message}`;
+                }
+                html += `</p>`
+            }
+
+            html += `</div>`;
+
+            return html
+        }
+    }
+}
+
+const feedbackTemplate = {
+    render: function (templateData) {
+        if (templateData.step === 'type') {
+            return `<div id="feedback-step-1" class="feedback-step">
+                <div class="ds_question">
+                    <fieldset id="feedback-type" data-newvalidation="true" data-validation="requiredRadio">
+                        <legend>Was this page helpful?</legend>
+
+                        <div class="ds_radio  ds_radio--small">
+                            <input value="yes" type="radio" class="ds_radio__input" name="feedback-type" id="feedback-yes" />
+                            <label class="ds_radio__label" for="feedback-yes">Yes</label>
+                        </div>
+
+                        <div class="ds_radio  ds_radio--small">
+                            <input value="no" type="radio" class="ds_radio__input" name="feedback-type" id="feedback-no" />
+                            <label class="ds_radio__label" for="feedback-no">No</label>
+                        </div>
+
+                        <div class="ds_radio  ds_radio--small">
+                            <input value="yesbut" type="radio" class="ds_radio__input" name="feedback-type" id="feedback-yesbut" />
+                            <label class="ds_radio__label" for="feedback-yesbut">Yes, but</label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <button type="button" class="js-continue  ds_button  ds_button--secondary">Continue</button>
+            </div>`;
+        } else if (templateData.step === 'details') {
+            let html = `<div id="feedback-step-2" class="feedback-step">`;
+
+            if (templateData.data.type === 'no') {
+                html += `
+                    <div class="ds_question">
+                        <label class="ds_label" for="reason">Choose a reason for your feedback</label>
+                        <div class="ds_select-wrapper">
+                            <select name="reason" id="reason" class="ds_select" data-newvalidation="true" data-validation="requiredDropdown">
+                                <option selected="" disabled="" value="">Please select a reason</option>
+                                <option value="It wasn't detailed enough">It wasn't detailed enough</option>
+                                <option value="It's hard to understand">It's hard to understand</option>
+                                <option value="It's incorrect">It's incorrect</option>
+                                <option value="It needs updating">It needs updating</option>
+                                <option value="There's a broken link">There's a broken link</option>
+                                <option value="It wasn't what I was looking for">It wasn't what I was looking for</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="ds_select-arrow" aria-hidden="true"></span>
+                        </div>
+                    </div>`
+            } else if (templateData.data.type === 'yesbut') {
+                html += `
+                    <div class="ds_question">
+                        <label class="ds_label" for="reason">Choose a reason for your feedback</label>
+                        <div class="ds_select-wrapper">
+                            <select name="reason" id="reason" class="ds_select" data-newvalidation="true" data-validation="requiredDropdown">
+                                <option selected="" disabled="" value="">Please select a reason</option>
+                                <option value="It's hard to understand">It's hard to understand</option>
+                                <option value="It needs updating">It needs updating</option>
+                                <option value="There's a broken link">There's a broken link</option>
+                                <option value="There's a spelling mistake">There's a spelling mistake</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="ds_select-arrow" aria-hidden="true"></span>
+                        </div>
+                    </div>`
+            }
+
+            html += `<div class="ds_question">
+                    <label class="ds_label" for="feedback-comments">Your comments</label>
+                    <p class="ds_hint-text">Your feedback helps us to improve this website. Do not give any personal information because we cannot reply to you directly.</p>
+                    <textarea name="comment" class="ds_input" rows="5" maxlength="250" id="feedback-comments" {% if data.type === 'no' or data.type === 'yesbut' %}data-newvalidation="true" data-validation="requiredField"{% endif %}></textarea>
+                </div>
+
+                <div class="ds_button-group">
+                    <button type="button" class="js-cancel  ds_button  ds_button--secondary">Cancel</button>
+                    <button type="submit" class="js-submit  ds_button">Submit</button>
+                </div>
+            </div>`;
+
+            return html;
+        }
+    }
+}
 
 // todo: replace with DS PromiseRequest if it gets updated to support POST
 const PromiseRequest = function (url, method, data, headers) {
