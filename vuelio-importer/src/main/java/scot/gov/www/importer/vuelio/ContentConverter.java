@@ -90,7 +90,7 @@ public class ContentConverter {
         if (s == null) {
             return s;
         }
-        String cleanedHtml = Jsoup.clean(s, Safelist.basic().removeTags("br", "span"));
+        String cleanedHtml = Jsoup.clean(s, Safelist.basic().removeTags("span"));
         Document doc = Jsoup.parseBodyFragment(cleanedHtml);
         doc.select("p").forEach(p -> {
             // remove nbsp + trim
