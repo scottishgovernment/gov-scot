@@ -74,14 +74,14 @@ public class VuelioImporter {
     }
 
     List<ContentItem> filterContentToProcess(Instant from) {
-        List<ContentItem> all = fetchContent();
-        List<ContentItem> results = all.stream().filter(c -> include(from, c)).collect(toList());
+        List<ContentItem> all = fetchContent(from);
+        List<ContentItem> results = all.stream().filter(this::include).collect(toList());
         Collections.reverse(results);
         LOG.info("Found {} results to process", results.size());
         return results;
     }
 
-    boolean include(Instant from, ContentItem item) {
+    boolean include(ContentItem item) {
         if (deletedOrUnpublished(item)) {
             // always process deletions and unpublished
             return true;
@@ -92,9 +92,7 @@ public class VuelioImporter {
             // note deleted things have isWebPublishContent == false and so you have to check the deleted part first
             return false;
         }
-
-        // only process if it has changed since the last run
-        return item.updatedSinceLastRun(from);
+        return true;
     }
 
     boolean deletedOrUnpublished(ContentItem item) {
@@ -144,9 +142,9 @@ public class VuelioImporter {
         }
     }
 
-    private List<ContentItem> fetchContent() {
+    private List<ContentItem> fetchContent(Instant time) {
         try {
-            return vuelio.content();
+            return vuelio.content(time);
         } catch (VuelioException e) {
             throw new VuelioImporterException("failed to fetch content from API", e);
         }
