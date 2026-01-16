@@ -20,6 +20,7 @@ import scot.gov.www.importer.vuelio.rest.ContentItem;
 
 import java.io.IOException;
 import java.net.URI;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
@@ -69,8 +70,10 @@ public class VuelioClient {
         return configuration;
     }
 
-    public List<ContentItem> content() throws VuelioException {
-        ContentItem[] contentArray = readValue(baseUrl, ContentItem[].class);
+    public List<ContentItem> content(Instant time) throws VuelioException {
+        String fullUrl = String.format(baseUrl+"%s%s", "?start=", time);
+        LOG.info("API call: {}", fullUrl);
+        ContentItem[] contentArray = readValue(fullUrl, ContentItem[].class);
         return Arrays.stream(contentArray).toList();
     }
 
