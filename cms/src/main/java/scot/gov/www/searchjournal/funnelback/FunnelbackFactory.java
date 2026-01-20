@@ -52,13 +52,6 @@ public class FunnelbackFactory {
         FunnelbackConfiguration configuration = new FunnelbackConfiguration();
         ContainerConfiguration containerConfiguration = HstServices.getComponentManager().getContainerConfiguration();
         configuration.setSearchType(searchType);
-        if ("funnelback".equals(searchType)) {
-            String url = containerConfiguration.getString("funnelback.url");
-            String token = containerConfiguration.getString("funnelback.token");
-            configuration.setApiUrl(url);
-            configuration.setApiKey(token);
-        }
-
         if ("funnelback-dxp".equals(searchType)) {
             String url = containerConfiguration.getString("squiz.admin.url");
             String clientId = containerConfiguration.getString("squiz.clientId");
@@ -67,7 +60,6 @@ public class FunnelbackFactory {
             configuration.setClientId(clientId);
             configuration.setApiKey(token);
         }
-
         return configuration;
     }
 
