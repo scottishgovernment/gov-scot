@@ -87,12 +87,9 @@ public class VuelioImporter {
             return true;
         }
 
-        if (!item.isWebPublishContent() ) {
-            // never process non web published content
-            // note deleted things have isWebPublishContent == false and so you have to check the deleted part first
-            return false;
-        }
-        return true;
+        // never process non web published content
+        // note deleted things have isWebPublishContent == false and so you have to check the deleted part first
+        return item.isWebPublishContent();
     }
 
     boolean deletedOrUnpublished(ContentItem item) {
