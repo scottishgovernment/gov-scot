@@ -75,6 +75,13 @@
     </dependency>
 
     <dependency>
+        <groupId>scot.gov.publishing.hippo</groupId>
+        <artifactId>hippo-govscot-cms</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-sluglookup-cms</artifactId>
       <version>0.0.1-SNAPSHOT</version>
