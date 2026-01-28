@@ -21,13 +21,17 @@ import static org.apache.tika.utils.StringUtils.isBlank;
  * This allows the link processor to get the right path for a slug with a simple session.getNode call rather than
  * having to do an expensive query.
  */
-public class SlugMaintenanceListener extends SlugDaemonModule {
+public class SlugMaintenanceListener extends DaemonModuleBase {
 
     private static final Logger LOG = LoggerFactory.getLogger(SlugMaintenanceListener.class);
 
     static final String SLUG = "govscot:slug";
 
     HippoUtils hippoUtils = new HippoUtils();
+
+    protected static final String PREVIEW = "preview";
+
+    protected static final String LIVE = "live";
 
     @Override
     public boolean canHandleEvent(HippoWorkflowEvent event) {
@@ -181,7 +185,7 @@ public class SlugMaintenanceListener extends SlugDaemonModule {
 
         hippoUtils.executeXpathQuery(session, xpath, node -> {
             String slug = node.getProperty(SLUG).getString();
-            String newSlug = allocate(slug, "publications");
+            String newSlug = slug + "-copy";
             node.setProperty(SLUG, newSlug);
             session.save();
             updateLookup(node.getParent(), PREVIEW, false);
