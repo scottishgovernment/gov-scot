@@ -33,7 +33,7 @@ definitions:
             hipposysedit:path: govscot:summary
             hipposysedit:primary: false
             hipposysedit:type: Text
-            hipposysedit:validators: [required]
+            hipposysedit:validators: [required, govscot-placeholder]
           /content:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -59,7 +59,7 @@ definitions:
             hipposysedit:path: govscot:metaDescription
             hipposysedit:primary: false
             hipposysedit:type: Text
-            hipposysedit:validators: [required]
+            hipposysedit:validators: [required, govscot-placeholder]
           /notes:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false

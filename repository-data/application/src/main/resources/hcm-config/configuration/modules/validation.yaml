@@ -11,3 +11,6 @@ definitions:
     /hippo:configuration/hippo:modules/validation/hippo:moduleconfig/govscot-slug:
       jcr:primaryType: hipposys:moduleconfig
       hipposys:className: scot.gov.www.validation.SlugValidator
+    /hippo:configuration/hippo:modules/validation/hippo:moduleconfig/govscot-placeholder:
+      jcr:primaryType: hipposys:moduleconfig
+      hipposys:className: scot.gov.www.validation.PlaceholderValidator
