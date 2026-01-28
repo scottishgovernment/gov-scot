@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 3827203e-72af-4f5e-bd97-8774128c78f0
+          jcr:uuid: 7ab3740f-790f-42a4-867b-586999faaff4
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -56,22 +56,7 @@ definitions:
             hipposysedit:path: govscot:actions
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
-          /contact:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:contact
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /epilogue:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:epilogue
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
           /sme:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -90,22 +75,72 @@ definitions:
             hipposysedit:type: String
             hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
               publication-slug-dots]
-          /displayDate:
+        /hipposysedit:nodetype[2]:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: cfa98754-6f4c-4ee0-b331-c03c8cb02506
+          hipposysedit:node: true
+          hipposysedit:supertype: ['govscot:Publication', 'hippostd:relaxed', 'hippotranslation:translated']
+          /location:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:displayDate
+            hipposysedit:path: govscot:location
+            hipposysedit:primary: false
+            hipposysedit:type: String
+          /officialdate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: true
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:officialdate
+            hipposysedit:primary: false
+            hipposysedit:type: CalendarDate
+            hipposysedit:validators: [required]
+          /nextMeetingDate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:nextMeetingDate
             hipposysedit:primary: false
             hipposysedit:type: Date
-          /contentitemlanguage:
+          /attendees:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
             hipposysedit:multiple: false
             hipposysedit:ordered: false
-            hipposysedit:path: govscot:contentitemlanguage
+            hipposysedit:path: govscot:attendees
             hipposysedit:primary: false
-            hipposysedit:type: DynamicDropdown
+            hipposysedit:type: hippostd:html
+          /actions:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:actions
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [required]
+          /sme:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:sme
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /slug:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:slug
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required, govscot-slug, publication-slug-spaces,
+              publication-slug-dots]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -116,14 +151,16 @@ definitions:
           hippostdpubwf:lastModifiedBy: ''
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
-          govscot:summary: ''
+          govscot:summary: Minutes from the meeting of the group on [day month year,
+            eg 22 October 2025].
           govscot:title: ''
           govscot:isbn: ''
           govscot:seoTitle: ''
-          govscot:metaDescription: ''
+          govscot:metaDescription: Minutes from the meeting of the Scottish Government
+            [add name of group] on [day month year].
           govscot:publicationDate: 0001-01-01T12:00:00Z
           jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: a973dd80-f47a-4649-8833-ffc4c50b2664
+          jcr:uuid: 662e423a-5780-494e-b655-472d2894298f
           hippostdpubwf:lastModificationDate: 2018-04-12T15:30:46.250+01:00
           hippostdpubwf:creationDate: 2018-04-12T15:30:46.250+01:00
           govscot:nextMeetingDate: 0001-01-01T12:00:00Z
@@ -131,7 +168,6 @@ definitions:
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:sme: ''
           govscot:slug: ''
-          govscot:reportingTags: []
           govscot:contentitemlanguage: en
           govscot:publicationType: hipposysedit:prototype
           /govscot:content:
@@ -149,10 +185,47 @@ definitions:
           /govscot:actions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:contact:
+        /hipposysedit:prototype[2]:
+          jcr:primaryType: nt:unstructured
+          jcr:mixinTypes: ['hippostd:publishableSummary', 'hippostd:relaxed', 'hippostd:taggable',
+            'hippostdpubwf:document', 'hippotranslation:translated', 'mix:referenceable']
+          jcr:uuid: 3d917e94-53d6-4faf-b58b-9713e201c1c9
+          govscot:contentitemlanguage: en
+          govscot:isbn: ''
+          govscot:location: ''
+          govscot:metaDescription: Minutes from the meeting of the Scottish Government
+            [add name of group] on [day month year].
+          govscot:nextMeetingDate: 0001-01-01T12:00:00Z
+          govscot:officialdate: 0001-01-01T12:00:00Z
+          govscot:publicationDate: 0001-01-01T12:00:00Z
+          govscot:publicationType: hipposysedit:prototype
+          govscot:seoTitle: ''
+          govscot:slug: ''
+          govscot:sme: ''
+          govscot:summary: Minutes from the meeting of the group on [day month year,
+            eg 22 October 2025]
+          govscot:title: ''
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2018-04-12T15:30:46.250+01:00
+          hippostdpubwf:lastModificationDate: 2018-04-12T15:30:46.250+01:00
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:epilogue:
+          /govscot:responsibleDirectorate:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:responsibleRole:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /govscot:attendees:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:actions:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -162,6 +235,8 @@ definitions:
           frontend:properties: [mode]
           frontend:references: [wicket.model, model.compareTo, engine, validator.id]
           frontend:services: [wicket.id, validator.id]
+          documentation.link.text: Editing guidance
+          documentation.link: https://scotsconnect.sharepoint.com/sites/MyWork/SitePages/Publishing-minutes-on-govscot.aspx
           /root:
             jcr:primaryType: frontend:plugin
             item: ${cluster.id}.field
@@ -170,8 +245,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: This is the main title for this content item.  The title needs to
-              be descriptive and concise.
+            hint: 'The title is taken from the name of the folder, you should have
+              used this format: name of group minutes: month year. If you haven’t,
+              you can change it before proceeding any further.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -180,9 +256,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Slug
             field: slug
-            hint: This is used to determine the URL of this publication.  It must
-              be unique and should ideally be a short, URL friendly version of the
-              title. Slugs should be limited to no more than 60 characters.
+            hint: Do not change the slug. It reflects the title.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -191,29 +265,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: 'The summary is used by the internal search and category list pages.  The
-              summary should be a short description of the content item (300 characters
-              - approx. 50 words).  Note: longer summaries will be truncated to two
-              lines of text on search result and category listing pages.'
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /publicationType:
-            jcr:primaryType: frontend:plugin
-            caption: Publication type
-            field: dynamicdropdown
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              source: /content/documents/govscot/valuelists/publicationTypes
-          /isbn:
-            jcr:primaryType: frontend:plugin
-            caption: ISBN
-            field: isbn
-            hint: ''
+            hint: 'Use this style of sentence: Minutes from the meeting of the group
+              on day month year (eg 22 October 2025).'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -224,13 +277,15 @@ definitions:
             field: location
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Add the location of the meeting if you know it.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /publicationDate:
             jcr:primaryType: frontend:plugin
             caption: Publication date
             field: publicationDate
-            hint: ''
+            hint: Add the date of publication. Use the date that you are authorising
+              them to go live.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -241,7 +296,7 @@ definitions:
             field: officialdate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: ''
+            hint: Add the date the meeting took place.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /nextMeetingDate:
@@ -250,15 +305,7 @@ definitions:
             field: nextMeetingDate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /content:
-            jcr:primaryType: frontend:plugin
-            caption: Content
-            field: content
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
+            hint: Add the date of the next meeting if you know it.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /attendees:
@@ -267,54 +314,43 @@ definitions:
             field: attendees
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
+            hint: Add the list of attendees and apologies. Don't add a heading for
+              attendees, the system adds it. The names should be a bulleted list.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /actions:
             jcr:primaryType: frontend:plugin
             caption: Actions
             field: actions
-            hint: ''
+            hint: This is where you will add your minutes. Use Notepad to strip out
+              any formatting.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
-          /contact:
-            jcr:primaryType: frontend:plugin
-            caption: Contact details
-            field: contact
-            hint: Provide contact information for the content item (where possible)
-              or use the central enquiry unit's contact details.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /epilogue:
-            jcr:primaryType: frontend:plugin
-            caption: Epilogue
-            field: epilogue
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /contentitemlanguage:
-            jcr:primaryType: frontend:plugin
-            caption: Content language
-            field: contentitemlanguage
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              showDefault: 'false'
-              source: /content/documents/govscot/valuelists/contentitemlanguages
+              ckeditor.config.appended.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"bidi\"\t}],\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                }"
+              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
+                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
+                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
+                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
+                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
+                : \"mygov\"\t}, {\t\t\"name\": \"bidi\"\t}],\t\"disallowedContent\"\
+                : \"*[style]{*}\",\t\"extraPlugins\": \"language,youtube_enablejsapi,dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
+                ,\t\"contentsCss\": [\t\t\"ckeditor/hippocontents.css\",\t\t\"ckeditor/ckeditorstyle.css\"\
+                \t],\t\"youtube_responsive\": true,\t\"youtube_privacy\": true,\t\"\
+                youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\", \"\
+                txtEmbed\", \"chkOlderCode\"],\t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]\"\
+                ,\t\"language_list\": [\t\t\"en:English\",\t\t\"gd:Gaelic (Scottish)\"\
+                ,\t\t\"ru:Russian\",\t\t\"uk:Ukrainian\"\t]}"
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible directorate
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select the primary directorate responsible for the content item.
+            hint: Select the primary responsible directorate.
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/how-government-is-run/directorates
@@ -324,8 +360,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Secondary responsible directorate(s)
             field: secondaryResponsibleDirectorate
-            hint: Select any secondary directorate(s) responsible for this content
-              item.
+            hint: Select any other relevant directorates.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -337,9 +372,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Topics and issues
             field: topics
-            hint: Select one or more topics related to this content item, e.g. Economy
-              or Energy. Please also select any issues/campaigns related to the content
-              item, e.g. Brexit or Year of Young People 2018.
+            hint: Select the topic(s) that relate to the subject area.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -347,38 +380,12 @@ definitions:
               base.path: /content/documents/govscot/topics/
               last.visited.enabled: 'false'
               nodetypes: ['govscot:Topic', 'govscot:Issue', 'govscot:DynamicIssue']
-          /responsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Primary responsible role
-            field: responsibleRole
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Select the primary role responsible for this content item e.g. Cabinet
-              Secretary for …
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              last.visited.enabled: 'false'
-              base.path: /content/documents/govscot/about/
-              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
-          /secondaryResponsibleRole:
-            jcr:primaryType: frontend:plugin
-            caption: Secondary responsible role(s)
-            field: secondaryResponsibleRole
-            hint: Select any secondary responsible role(s) for this content item e.g.
-              Minister for …
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              last.visited.enabled: 'false'
-              base.path: /content/documents/govscot/about/
-              nodetypes: ['govscot:Role', 'govscot:Person', 'govscot:FeaturedRole']
           /group:
             jcr:primaryType: frontend:plugin
             caption: Group(s)
             field: group
-            hint: Associate this Publication with a Group. This will make it appear
-              on the Group page and also link to the Group from the publication page.
+            hint: This field adds the minutes to the group page. Choose ‘add’ and
+              then ‘select’ to bring up the link picker.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -389,9 +396,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: SEO title
             field: seoTitle
-            hint: 'This title is used by search engines and social media for indexing
-              this content item.  The title needs to be brief and concise.  Note:
-              Search engines and social media only use first 60 characters.'
+            hint: Ignore this field, it is populated from the title.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -401,9 +406,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Meta description
             field: metaDescription
-            hint: 'A description of this content item for search engine indexing purposes.  Note:
-              Meta descriptions should be limited to no more than 300 characters -
-              approx. 50 words.'
+            hint: Minutes from the meeting of the Scottish Government [add name of group] on [day month year].
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -412,6 +415,10 @@ definitions:
           /tags:
             jcr:primaryType: frontend:plugin
             mixin: hippostd:taggable
+            hint: These tags are used to inform the internal search.  Please enter
+              all the tags relevant to this content. At a minimum add three tags,
+              in lower case, using a separate tag for each - group name, minutes,
+              month and year
             plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -420,8 +427,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Notes
             field: notes
-            hint: The content of the notes field is not displayed.  It should be used
-              for additional information about this content.
+            hint: Confirm that you have submitted the pre-publication checklist. No
+              new content should be published before a checklist has been submitted.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -430,34 +437,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Subject matter expert / policy contact
             field: sme
-            hint: The contents of the SME / policy contact field will not be displayed.
-              It should be used to enter details of the the subject matter expert
-              / policy contact associated with this content.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /reportingTags:
-            jcr:primaryType: frontend:plugin
-            caption: Reporting Tags
-            field: reportingTags
-            multiselect.type: palette
-            palette.alloworder: false
-            palette.maxrows: '8'
-            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
-            selectlist.maxrows: '8'
-            valuelist.provider: service.valuelist.default
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-              source: /content/documents/govscot/valuelists/reportingTags
-          /displayDate:
-            jcr:primaryType: frontend:plugin
-            caption: Display date
-            field: displayDate
-            hint: The date used to sort and filter publications.  Also used as the
-              date present in search results.
-            mode: view
+            hint: Add your name.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -468,6 +448,16 @@ definitions:
             field: featuredLinks
             hint: ''
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /updateHistory:
+            jcr:primaryType: frontend:plugin
+            caption: Update History
+            field: UpdateHistory
+            hint: To be used if content is updated after the original publication
+              date. Add the date and a brief description of what changed.
+            plugin.class: scot.gov.plugins.field.ExtendedNodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
