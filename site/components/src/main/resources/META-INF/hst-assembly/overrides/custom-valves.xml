@@ -25,8 +25,8 @@
     </property>
   </bean>
 
-    <bean id="contentSecurityPolicyValve" class="scot.gov.publishing.hippo.hst.request.ContentSecurityPolicyValve">
-        <property name="valveName" value="contentSecurityPolicyValve" />
+    <bean id="cspValve" class="scot.gov.publishing.hippo.hst.request.CspValve">
+        <property name="valveName" value="cspValve" />
         <property name="afterValves" value="userTypeValve" />
         <property name="beforeValves" value="pageCachingValve" />
     </bean>
@@ -43,7 +43,7 @@
         </property>
         <property name="targetMethod" value="addProcessingValve" />
         <property name="arguments">
-            <ref bean="contentSecurityPolicyValve" />
+            <ref bean="cspValve" />
         </property>
     </bean>
 </beans>
