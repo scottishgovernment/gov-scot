@@ -31,7 +31,7 @@
                             <time datetime="<@fmt.formatDate value=history.lastUpdated.time type="both" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>">
                                 <@fmt.formatDate value=history.lastUpdated.time type="both" pattern="d MMMM yyyy"/>
                             </time>
-                            <p style="font-weight: normal">${history.updateText}</p>
+                            <p class="gov_history-list__content">${history.updateText}</p>
                         </li>
                     </#list>
                 </ol>

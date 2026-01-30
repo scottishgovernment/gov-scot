@@ -5,7 +5,7 @@
 <@hst.link var="link" canonical=true fullyQualified=true/>
 
 <@hst.headContribution category="schema">
-    <script type="application/ld+json">
+    <script type="application/ld+json" nonce="${nonce}">
 {
     "@context": "https://schema.org",
     "@type": "Article",

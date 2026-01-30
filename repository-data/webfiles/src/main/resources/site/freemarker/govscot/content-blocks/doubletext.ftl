@@ -12,7 +12,7 @@
         <div class="ds_cb__inner <#if removebottompadding> ds_!_padding-bottom--0</#if>">
 
             <#if document1??>
-                <div class="ds_cb__text" style="position: relative">
+                <div class="ds_cb__text">
                     <@hst.html hippohtml=document1.content/>
 
                     <@hst.manageContent hippobean=document1 documentTemplateQuery="new-text-document" parameterName="document1"/>

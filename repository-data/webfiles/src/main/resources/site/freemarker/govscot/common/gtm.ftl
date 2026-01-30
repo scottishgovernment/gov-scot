@@ -15,5 +15,5 @@
 
 <!-- Google Tag Manager (noscript) -->
 <noscript id="gtm-noscript"><iframe src="https://www.googletagmanager.com/ns.html?id=${gtmContainerId}<#if gtmAuth?has_content>&amp;gtm_auth=${gtmAuth}</#if><#if gtmEnv?has_content>&amp;gtm_preview=${gtmEnv}&amp;gtm_cookies_win=x</#if>"
-                                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                                    height="0" width="0" class="fully-hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
