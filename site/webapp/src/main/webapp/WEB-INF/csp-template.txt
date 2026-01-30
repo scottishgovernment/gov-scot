@@ -1,21 +1,21 @@
 script-src
+  'nonce-<nonce>'
   'self'
-  'unsafe-inline'
-  'unsafe-eval'
   data:
-  https://www.googletagmanager.com
-  https://tagmanager.google.com
-  https://www.google-analytics.com
-  https://translate.google.com
-  https://translate.googleapis.com
   https://www.youtube.com
   https://s.ytimg.com
+  https://www.google-analytics.com
+  https://www.googletagmanager.com
+  https://tagmanager.google.com
+  https://translate.google.com
+  https://translate.googleapis.com
   https://plausible.io
 ;
 img-src
   'self'
   data:
-  https://cdn.prgloo.com
+  https://*.ytimg.com
+  https://img.youtube.com
   https://www.google.com
   https://*.google-analytics.com
   https://*.analytics.google.com
@@ -23,8 +23,7 @@ img-src
   https://www.gstatic.com
   https://translate.google.com
   https://translate.googleapis.com
-  https://*.ytimg.com
-  https://img.youtube.com
+  https://cdn.prgloo.com
 ;
 connect-src
     'self'
@@ -36,10 +35,10 @@ style-src
   'self'
   'unsafe-inline'
   https://fonts.googleapis.com
-  https://maxcdn.bootstrapcdn.com
+  https://tagmanager.google.com
   https://translate.google.com
   https://translate.googleapis.com
-  https://tagmanager.google.com
+  https://maxcdn.bootstrapcdn.com
 ;
 font-src
   'self'
@@ -48,11 +47,11 @@ font-src
   https://maxcdn.bootstrapcdn.com
 ;
 frame-src
-  https://www.googletagmanager.com
   https://www.youtube.com
   https://youtu.be
   https://www.youtube-nocookie.com
   https://youtube-nocookie.com
+  https://www.googletagmanager.com
 ;
 object-src
   'self'
