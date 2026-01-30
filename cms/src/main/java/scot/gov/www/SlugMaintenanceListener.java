@@ -44,7 +44,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
             return;
         }
 
-        if (isFolderCopy(event)) {
+        if (isFolderCopy(event) && hasNoExceptions(event)) {
             updateLookupsInFolderForFolderCopy(event);
             return;
         }
@@ -137,19 +137,15 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     }
 
     boolean isFolderMove(HippoWorkflowEvent event) {
-        if (!"moveFolder".equals(event.action())) {
-            return false;
-        }
-
-        return true;
+        return "moveFolder".equals(event.action());
     }
 
     boolean isFolderCopy(HippoWorkflowEvent event) {
-        if (!"copyFolder".equals(event.action())) {
-            return false;
-        }
+        return "copyFolder".equals(event.action());
+    }
 
-        return true;
+    boolean hasNoExceptions(HippoWorkflowEvent event) {
+        return event.exception() == null;
     }
 
     void updateLookupsInFolderForFolderMove(HippoWorkflowEvent event) throws RepositoryException {
