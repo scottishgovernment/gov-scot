@@ -33,10 +33,10 @@ definitions:
               jcr:mixinTypes: ['mix:referenceable']
               jcr:uuid: 51e38933-b5a3-47d4-8a41-1c18244ef39b
               govscot:isbn: ''
-              govscot:metaDescription: 'Minutes from the meeting of the group on [day month year]'
+              govscot:metaDescription: 'Minutes from the meeting of the group on [day month year].'
               govscot:publicationType: minutes
               govscot:seoTitle: ''
-              govscot:summary: 'Minutes from the meeting of the group on [day month year]'
+              govscot:summary: 'Minutes from the meeting of the group on [day month year].'
               govscot:title: ''
               hippo:availability: [preview]
               hippostd:state: unpublished

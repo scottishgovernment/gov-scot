@@ -151,13 +151,11 @@ definitions:
           hippostdpubwf:lastModifiedBy: ''
           hippotranslation:id: document-type-locale-id
           hippotranslation:locale: document-type-locale
-          govscot:summary: Minutes from the meeting of the group on [day month year,
-            eg 22 October 2025].
+          govscot:summary: Minutes from the meeting of the group on [day month year, eg 22 October 2025].
           govscot:title: ''
           govscot:isbn: ''
           govscot:seoTitle: ''
-          govscot:metaDescription: Minutes from the meeting of the Scottish Government
-            [add name of group] on [day month year].
+          govscot:metaDescription: Minutes from the meeting of the Scottish Government [add name of group] on [day month year].
           govscot:publicationDate: 0001-01-01T12:00:00Z
           jcr:mixinTypes: ['mix:referenceable']
           jcr:uuid: 662e423a-5780-494e-b655-472d2894298f
@@ -193,8 +191,7 @@ definitions:
           govscot:contentitemlanguage: en
           govscot:isbn: ''
           govscot:location: ''
-          govscot:metaDescription: Minutes from the meeting of the Scottish Government
-            [add name of group] on [day month year].
+          govscot:metaDescription: Minutes from the meeting of the Scottish Government [add name of group] on [day month year].
           govscot:nextMeetingDate: 0001-01-01T12:00:00Z
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
@@ -202,8 +199,7 @@ definitions:
           govscot:seoTitle: ''
           govscot:slug: ''
           govscot:sme: ''
-          govscot:summary: Minutes from the meeting of the group on [day month year,
-            eg 22 October 2025]
+          govscot:summary: Minutes from the meeting of the group on [day month year, eg 22 October 2025].
           govscot:title: ''
           hippostd:holder: holder
           hippostd:state: draft
@@ -406,7 +402,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Meta description
             field: metaDescription
-            hint: Minutes from the meeting of the Scottish Government [add name of group] on [day month year].
+            hint: 'Use this style of sentence: Minutes from the meeting of the Scottish Government [add name of group] on [day month year].'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
