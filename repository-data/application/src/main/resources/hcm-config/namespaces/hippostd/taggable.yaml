@@ -2,5 +2,4 @@ definitions:
   config:
     /hippo:namespaces/hippostd/taggable/editor:templates/_default_/tags:
       caption: Internal search tags
-      hint: These tags are used to inform the internal search.  Please enter all the
-        tags relevant to this content.
+      hint: Enter all the tags relevant to this content to make it findable. Tags should be lower case, using a separate tag for each subject.
