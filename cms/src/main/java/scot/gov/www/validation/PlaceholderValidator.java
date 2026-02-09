@@ -14,7 +14,7 @@ public class PlaceholderValidator implements Validator<String> {
             return Optional.empty();
         }
 
-        if (value.matches(".*\\[.*?\\].*")) {
+        if (value.matches("(?s).*\\[.*\\].*")) {
             return Optional.of(context.createViolation());
         }
 
