@@ -1,10 +1,5 @@
 package scot.gov.www.searchjournal;
 
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-
 import org.apache.commons.lang3.StringUtils;
 import org.onehippo.cms7.services.eventbus.HippoEventListenerRegistry;
 import org.onehippo.cms7.services.eventbus.Subscribe;
@@ -17,12 +12,18 @@ import scot.gov.publishing.searchjournal.FeatureFlag;
 import scot.gov.publishing.searchjournal.SearchJournal;
 import scot.gov.publishing.searchjournal.SearchJournalEntry;
 
-import java.util.*;
+import javax.jcr.Node;
+import javax.jcr.NodeIterator;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.*;
-import static scot.gov.publishing.searchjournal.FunnelbackCollection.NEWS;
-import static scot.gov.publishing.searchjournal.FunnelbackCollection.POLICY;
-import static scot.gov.publishing.searchjournal.FunnelbackCollection.getCollectionByPublicationType;
+import static org.apache.commons.lang3.StringUtils.equalsAny;
+import static org.apache.commons.lang3.StringUtils.startsWithAny;
+import static scot.gov.publishing.searchjournal.FunnelbackCollection.*;
 
 /**
  * Listen to publish and unpublish events in order to maintain the search journal.
@@ -36,6 +37,8 @@ public class SearchJournalEventListener implements DaemonModule {
     private static final String PUBLISH_INTERACTION = "default:handle:publish";
 
     private static final String DEPUBLISH_INTERACTION = "default:handle:depublish";
+
+    private static final String MOVE_INTERACTION = "threepane:folder-permissions:moveFolder";
 
     private static final String PUBLICATIONS_PATH_PREFIX = "/content/documents/govscot/publications";
 
@@ -97,6 +100,7 @@ public class SearchJournalEventListener implements DaemonModule {
 
     /**
      * we are only interested in successful publish and depublish events for news, policy and publications
+     * Or move events for Publications
      */
     boolean shouldHandleEvent(HippoWorkflowEvent event) throws RepositoryException {
         if (!event.success()) {
@@ -112,10 +116,11 @@ public class SearchJournalEventListener implements DaemonModule {
             return false;
         }
 
-        // it is a publish or a depublish with no arguments.  If the even has arguments it means it is scheduled
-        // when the page is actually published we will get a no arguments event.
-        return equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION) &&
-                event.arguments() == null;
+        // it is a publish or a depublish with no arguments, or is a move event.
+        // If the event has arguments it means it is scheduled when the page is actually published
+        // we will get a no arguments event.
+        return (equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION) &&
+                event.arguments() == null) || equalsAny(event.interaction(), MOVE_INTERACTION);
     }
 
     boolean isExcludedPage(HippoWorkflowEvent event) throws RepositoryException {
@@ -133,6 +138,10 @@ public class SearchJournalEventListener implements DaemonModule {
 
     Node getVariant(HippoWorkflowEvent event) throws RepositoryException {
         Node handle = session.getNodeByIdentifier(event.subjectId());
+        if (event.interaction().equals(MOVE_INTERACTION)) {
+            handle = session.getNodeByIdentifier(handle.getNode("index").getIdentifier());
+        }
+
         return hippoUtils.getVariant(handle);
     }
 
