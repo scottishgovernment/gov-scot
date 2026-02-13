@@ -89,7 +89,13 @@ public class UrlSource {
                         .toString();
     }
 
-
+    String complexDocumentChapterUrl(Node publication, Node chapter, String action) throws RepositoryException {
+        String publicationUrl = slugUrl("publications", publication);
+        return new StringBuilder(publicationUrl)
+                .append(chapter.getParent().getName()).append('/')
+                .append(chapter.getName()).append('/')
+                .toString();
+    }
 
     boolean hasPages(Node publication) throws RepositoryException {
         Node publicationFolder = publication.getParent().getParent();

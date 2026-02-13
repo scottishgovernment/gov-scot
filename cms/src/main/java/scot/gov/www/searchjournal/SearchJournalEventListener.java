@@ -16,10 +16,7 @@ import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.equalsAny;
 import static org.apache.commons.lang3.StringUtils.startsWithAny;
@@ -47,6 +44,8 @@ public class SearchJournalEventListener implements DaemonModule {
     private static final String POLICY_PATH_PREFIX = "/content/documents/govscot/policies";
 
     private static final String PAGES = "pages";
+
+    private static final String CHAPTERS = "chapters";
 
     private static final int PUBLICATION_FOLDER_DEPTH = 8;
 
@@ -197,8 +196,64 @@ public class SearchJournalEventListener implements DaemonModule {
             return Arrays.asList(documentsEntry, publicationEntry);
         }
 
-        // just update the publication
-        return Collections.singletonList(entry);
+        if (isAnyNodeType(variant, "govscot:ComplexDocument2" )) {
+            List<SearchJournalEntry> journalEntries = new ArrayList<>();
+            journalEntries.add(entry);
+            List<Node> chapters = getChapters(publicationFolder);
+            for (Node chapter : chapters) {
+                journalEntries.add(publicationChapterEntry(event, collection, chapter, publication));
+            }
+            if (hasDocuments) {
+                journalEntries.add(documentsEntry(event, collection, hasDocuments, publication));
+            }
+            return journalEntries;
+        }
+
+        // update the publication, all pages and the documents folder
+        List<SearchJournalEntry> journalEntries = new ArrayList<>();
+        journalEntries.add(entry);
+        if (hasPages) {
+            List<Node> pages = getPages(publicationFolder);
+            for (Node page : pages) {
+                journalEntries.add(publicationPageEntry(event, collection, page, publication));
+            }
+        }
+        if (hasDocuments) {
+            journalEntries.add(documentsEntry(event, collection, needsDocumentsPage, publication));
+        }
+        return journalEntries;
+
+//        return Collections.singletonList(entry);
+    }
+
+    List<Node> getPages(Node publicationFolder) throws RepositoryException {
+        List<Node> pages = new ArrayList<>();
+        Node pagesFolder = publicationFolder.getNode(PAGES);
+        NodeIterator it = pagesFolder.getNodes();
+        while (it.hasNext()) {
+            Node pageHandle = it.nextNode();
+            if (publishedNonContentPage(pageHandle)) {
+                pages.add(pageHandle);
+            }
+        }
+        return pages;
+    }
+
+    List<Node> getChapters(Node publicationFolder) throws RepositoryException {
+        List<Node> chapters = new ArrayList<>();
+        Node chaptersFolder = publicationFolder.getNode(CHAPTERS);
+        NodeIterator it = chaptersFolder.getNodes();
+        while (it.hasNext()) {
+            Node chapterFolder = it.nextNode();
+            NodeIterator chapterIt = chapterFolder.getNodes();
+            while (chapterIt.hasNext()) {
+                Node chapterHandle = chapterIt.nextNode();
+                if (publishedNonContentPage(chapterHandle)) {
+                    chapters.add(chapterHandle);
+                }
+            }
+        }
+        return chapters;
     }
 
     SearchJournalEntry documentsEntry(HippoWorkflowEvent event, String collection, boolean needsDocumentsPage, Node publication) throws RepositoryException {
@@ -214,6 +269,22 @@ public class SearchJournalEventListener implements DaemonModule {
         setActionDependingOnState(publication, entry);
         entry.setCollection(collection);
         entry.setUrl(urlSource.publicationUrl(publication));
+        return entry;
+    }
+
+    SearchJournalEntry publicationPageEntry(HippoWorkflowEvent event, String collection, Node page, Node publication) throws RepositoryException {
+        SearchJournalEntry entry = entry(event);
+        setActionDependingOnState(publication, entry);
+        entry.setCollection(collection);
+        entry.setUrl(urlSource.publicationPageUrl(publication, page, entry.getAction()));
+        return entry;
+    }
+
+    SearchJournalEntry publicationChapterEntry(HippoWorkflowEvent event, String collection, Node chapter, Node publication) throws RepositoryException {
+        SearchJournalEntry entry = entry(event);
+        setActionDependingOnState(publication, entry);
+        entry.setCollection(collection);
+        entry.setUrl(urlSource.complexDocumentChapterUrl(publication, chapter, entry.getAction()));
         return entry;
     }
 

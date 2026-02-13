@@ -677,6 +677,395 @@
                     jcr:primaryType: hippostd:html
                     hippostd:content: "<html>\n <head></head> \n <body> \n </body>\n\
                       </html>"
+        /test-publication:
+          jcr:primaryType: hippostd:folder
+          jcr:mixinTypes: [ 'bulkpublish:bulkpublishdirectory', 'hippo:named', 'mix:versionable' ]
+          jcr:uuid: f3592126-b559-4112-83e8-d7beaba053ef
+          hippo:name: Test publication
+          hippostd:foldertype: [ ]
+          /index:
+            jcr:primaryType: hippo:handle
+            jcr:mixinTypes: [ 'hippo:named', 'hippo:versionInfo', 'mix:referenceable' ]
+            jcr:uuid: 64d64aa0-a854-4e0e-b299-31f70fc4685f
+            hippo:name: Test publication
+            hippo:versionHistory: 887c62ba-e37c-4a3d-b66a-b93d118a16b9
+            /index[1]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: [ 'mix:referenceable', 'mix:versionable' ]
+              jcr:uuid: c21414fb-3306-4846-993e-1804238adfa6
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2026-02-10T15:39:00Z
+              govscot:isbn: ''
+              govscot:metaDescription: Island communities impact assessment (ICIA) for the
+                Scottish Government response to the consultation on pelagic quota cuts 2026.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2026-02-10T15:39:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: [ ]
+              govscot:seoTitle: Test publication
+              govscot:slug: test-publication
+              govscot:sme: ''
+              govscot:summary: Island communities impact assessment (ICIA) for the Scottish
+                Government response to the consultation on pelagic quota cuts 2026.
+              govscot:title: Test publication
+              hippo:availability: [ preview ]
+              hippostd:retainable: false
+              hippostd:state: unpublished
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2026-02-10T15:36:47.118Z
+              hippostdpubwf:lastModificationDate: 2026-02-10T15:39:40.227Z
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: eca877db-a00f-458b-967a-1d5eb25cc9c0
+              hippotranslation:locale: en
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            /index[2]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: [ 'mix:referenceable' ]
+              jcr:uuid: f1bf88bc-db0b-4acf-92b0-7116f0d151e3
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2026-02-10T15:39:00Z
+              govscot:isbn: ''
+              govscot:metaDescription: Island communities impact assessment (ICIA) for the
+                Scottish Government response to the consultation on pelagic quota cuts 2026.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2026-02-10T15:39:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: [ ]
+              govscot:seoTitle: Test publication
+              govscot:slug: test-publication
+              govscot:sme: ''
+              govscot:summary: Island communities impact assessment (ICIA) for the Scottish
+                Government response to the consultation on pelagic quota cuts 2026.
+              govscot:title: Test publication
+              hippo:availability: [ ]
+              hippostd:retainable: false
+              hippostd:state: draft
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2026-02-10T15:36:47.118Z
+              hippostdpubwf:lastModificationDate: 2026-02-10T15:39:16.303Z
+              hippostdpubwf:lastModifiedBy: admin
+              hippotranslation:id: eca877db-a00f-458b-967a-1d5eb25cc9c0
+              hippotranslation:locale: en
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+            /index[3]:
+              jcr:primaryType: govscot:Publication
+              jcr:mixinTypes: [ 'mix:referenceable' ]
+              jcr:uuid: d2e2ca5f-9bd6-4e35-a292-5d8acf28d14a
+              govscot:contentitemlanguage: en
+              govscot:displayDate: 2026-02-10T15:39:00Z
+              govscot:isbn: ''
+              govscot:metaDescription: Island communities impact assessment (ICIA) for the
+                Scottish Government response to the consultation on pelagic quota cuts 2026.
+              govscot:officialdate: 0001-01-01T12:00:00Z
+              govscot:publicationDate: 2026-02-10T15:39:00Z
+              govscot:publicationType: advice-and-guidance
+              govscot:reportingTags: [ ]
+              govscot:seoTitle: Test publication
+              govscot:slug: test-publication
+              govscot:sme: ''
+              govscot:summary: Island communities impact assessment (ICIA) for the Scottish
+                Government response to the consultation on pelagic quota cuts 2026.
+              govscot:title: Test publication
+              hippo:availability: [ live ]
+              hippostd:retainable: false
+              hippostd:state: published
+              hippostdpubwf:createdBy: admin
+              hippostdpubwf:creationDate: 2026-02-10T15:36:47.118Z
+              hippostdpubwf:lastModificationDate: 2026-02-10T15:39:40.227Z
+              hippostdpubwf:lastModifiedBy: admin
+              hippostdpubwf:publicationDate: 2026-02-10T15:40:37.147Z
+              hippostdpubwf:publishedBy: admin
+              hippotranslation:id: eca877db-a00f-458b-967a-1d5eb25cc9c0
+              hippotranslation:locale: en
+              /govscot:executiveSummary:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:content:
+                jcr:primaryType: hippostd:html
+                hippostd:content: |-
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+
+                  <p>Island communities impact assessment (ICIA) for the Scottish Government response to the consultation on pelagic quota cuts 2026.</p>
+              /govscot:contact:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:epilogue:
+                jcr:primaryType: hippostd:html
+                hippostd:content: ''
+              /govscot:responsibleDirectorate:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+              /govscot:responsibleRole:
+                jcr:primaryType: hippo:mirror
+                hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+          /pages:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [ new-publication-page ]
+            /test-page-1:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: [ 'hippo:named', 'hippo:versionInfo', 'mix:referenceable' ]
+              jcr:uuid: e673750f-1529-498d-88b8-d4661a62f6b8
+              hippo:name: test page 1
+              hippo:versionHistory: 69c2f801-1022-4e4c-be72-58bc1be7295c
+              /test-page-1[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable' ]
+                jcr:uuid: d0b4e7f7-e7e6-44a9-8577-32ed3d296e09
+                govscot:contentitemlanguage: en
+                govscot:title: test page 1
+                hippo:availability: [ ]
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-10T15:37:23.312Z
+                hippostdpubwf:lastModificationDate: 2026-02-10T15:37:23.312Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: ce470c9d-f7ad-474f-87f4-ea06df042849
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <p>Following annual fisheries international negotiations, the&nbsp;UK&nbsp;has agreed significant quota reductions for 2026, including a 48% reduction in the North East Atlantic mackerel Total Allowable Catch (TAC) and a 22% reduction for herring. These reductions in available fishing opportunities are expected to reduce pelagic fishing activity and create material risk for Scottish processing factories and the wider supply chain.</p>
+
+                    <p>In this context, the objective of the Scottish Government’s intervention for 2026 is to help maintain the volume and regularity of pelagic fish landed into Scotland, thereby supporting the resilience of pelagic processing capacity and associated port and coastal economic activity during a period of exceptional quota constraint. This is intended to support the original aims of the amended economic link policy introduced from January 2023, namely to:</p>
+
+                    <ul>
+                     <li>support long-term, sustainable growth of local economies where fishing is a key driver by increasing the volume and regularity of fish landed and available for processing in Scotland;</li>
+                     <li>reduce supply chain risk to encourage investment and safeguard employment; and</li>
+                     <li>spread the economic and social benefits of Scotland’s quota more widely through fishing communities.</li>
+                    </ul>
+
+                    <p>The Scottish Government has therefore assessed whether additional measures for 2026 are necessary, proportionate and in the public interest. This includes weighing strong calls from processors and port interests for action to maintain domestic throughput, against strong opposition from some catcher interests—particularly independent operators—who emphasise market flexibility and concerns about price differentials.</p>
+
+                    <p>Given the urgency, the evidence base has been informed by; landings and socioeconomic analysis in the&nbsp;BRIA&nbsp;and associated impact assessments; evidence from the amended economic link policy; and, accelerated stakeholder engagement (including 26 individual sessions with catching, processing and port interests and meetings with sector representative bodies).</p>
+
+                    <p>The overarching outcome is an evidence-based decision on whether intervention is justified and, if so, what form it should take to maximise public benefit while minimising unintended consequences.</p>
+              /test-page-1[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable', 'mix:versionable' ]
+                jcr:uuid: d22fc4fc-b3cb-4c2e-b9cc-0d255d27d52c
+                govscot:contentitemlanguage: en
+                govscot:title: test page 1
+                hippo:availability: [ preview ]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-10T15:37:23.312Z
+                hippostdpubwf:lastModificationDate: 2026-02-10T15:38:37.160Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: ce470c9d-f7ad-474f-87f4-ea06df042849
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <p>Following annual fisheries international negotiations, the&nbsp;UK&nbsp;has agreed significant quota reductions for 2026, including a 48% reduction in the North East Atlantic mackerel Total Allowable Catch (TAC) and a 22% reduction for herring. These reductions in available fishing opportunities are expected to reduce pelagic fishing activity and create material risk for Scottish processing factories and the wider supply chain.</p>
+
+                    <p>In this context, the objective of the Scottish Government’s intervention for 2026 is to help maintain the volume and regularity of pelagic fish landed into Scotland, thereby supporting the resilience of pelagic processing capacity and associated port and coastal economic activity during a period of exceptional quota constraint. This is intended to support the original aims of the amended economic link policy introduced from January 2023, namely to:</p>
+
+                    <ul>
+                     <li>support long-term, sustainable growth of local economies where fishing is a key driver by increasing the volume and regularity of fish landed and available for processing in Scotland;</li>
+                     <li>reduce supply chain risk to encourage investment and safeguard employment; and</li>
+                     <li>spread the economic and social benefits of Scotland’s quota more widely through fishing communities.</li>
+                    </ul>
+
+                    <p>The Scottish Government has therefore assessed whether additional measures for 2026 are necessary, proportionate and in the public interest. This includes weighing strong calls from processors and port interests for action to maintain domestic throughput, against strong opposition from some catcher interests—particularly independent operators—who emphasise market flexibility and concerns about price differentials.</p>
+
+                    <p>Given the urgency, the evidence base has been informed by; landings and socioeconomic analysis in the&nbsp;BRIA&nbsp;and associated impact assessments; evidence from the amended economic link policy; and, accelerated stakeholder engagement (including 26 individual sessions with catching, processing and port interests and meetings with sector representative bodies).</p>
+
+                    <p>The overarching outcome is an evidence-based decision on whether intervention is justified and, if so, what form it should take to maximise public benefit while minimising unintended consequences.</p>
+              /test-page-1[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable' ]
+                jcr:uuid: af2011fe-7da9-4220-b731-7e6e0ac910e7
+                govscot:contentitemlanguage: en
+                govscot:title: test page 1
+                hippo:availability: [ live ]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-10T15:37:23.312Z
+                hippostdpubwf:lastModificationDate: 2026-02-10T15:38:37.160Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2026-02-10T15:40:37.257Z
+                hippostdpubwf:publishedBy: admin
+                hippotranslation:id: ce470c9d-f7ad-474f-87f4-ea06df042849
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <p>Following annual fisheries international negotiations, the&nbsp;UK&nbsp;has agreed significant quota reductions for 2026, including a 48% reduction in the North East Atlantic mackerel Total Allowable Catch (TAC) and a 22% reduction for herring. These reductions in available fishing opportunities are expected to reduce pelagic fishing activity and create material risk for Scottish processing factories and the wider supply chain.</p>
+
+                    <p>In this context, the objective of the Scottish Government’s intervention for 2026 is to help maintain the volume and regularity of pelagic fish landed into Scotland, thereby supporting the resilience of pelagic processing capacity and associated port and coastal economic activity during a period of exceptional quota constraint. This is intended to support the original aims of the amended economic link policy introduced from January 2023, namely to:</p>
+
+                    <ul>
+                     <li>support long-term, sustainable growth of local economies where fishing is a key driver by increasing the volume and regularity of fish landed and available for processing in Scotland;</li>
+                     <li>reduce supply chain risk to encourage investment and safeguard employment; and</li>
+                     <li>spread the economic and social benefits of Scotland’s quota more widely through fishing communities.</li>
+                    </ul>
+
+                    <p>The Scottish Government has therefore assessed whether additional measures for 2026 are necessary, proportionate and in the public interest. This includes weighing strong calls from processors and port interests for action to maintain domestic throughput, against strong opposition from some catcher interests—particularly independent operators—who emphasise market flexibility and concerns about price differentials.</p>
+
+                    <p>Given the urgency, the evidence base has been informed by; landings and socioeconomic analysis in the&nbsp;BRIA&nbsp;and associated impact assessments; evidence from the amended economic link policy; and, accelerated stakeholder engagement (including 26 individual sessions with catching, processing and port interests and meetings with sector representative bodies).</p>
+
+                    <p>The overarching outcome is an evidence-based decision on whether intervention is justified and, if so, what form it should take to maximise public benefit while minimising unintended consequences.</p>
+            /test-page-2:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: [ 'hippo:named', 'hippo:versionInfo', 'mix:referenceable' ]
+              jcr:uuid: 94fe737a-11e1-4d38-b532-a79402986d8f
+              hippo:name: test page 2
+              hippo:versionHistory: 830cfe3f-5772-439f-a27a-7d1bf64afb57
+              /test-page-2[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable' ]
+                jcr:uuid: 9778076f-0b15-4a76-a026-2cc43dfee48a
+                govscot:contentitemlanguage: en
+                govscot:title: test page 2
+                hippo:availability: [ ]
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-10T15:37:43.628Z
+                hippostdpubwf:lastModificationDate: 2026-02-10T15:37:43.628Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 69f47159-5353-490f-9c14-ea3aa9ed9a36
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <h3>Landed Value Modelling</h3>
+              /test-page-2[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable', 'mix:versionable' ]
+                jcr:uuid: df911ab3-08a7-481b-b846-929119945e1a
+                govscot:contentitemlanguage: en
+                govscot:title: test page 2
+                hippo:availability: [ preview ]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-10T15:37:43.628Z
+                hippostdpubwf:lastModificationDate: 2026-02-10T15:39:57.382Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: 69f47159-5353-490f-9c14-ea3aa9ed9a36
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <h3>Landed Value Modelling</h3>
+              /test-page-2[3]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable' ]
+                jcr:uuid: 6035732c-7b65-4a16-be37-1e1822b634e1
+                govscot:contentitemlanguage: en
+                govscot:title: test page 2
+                hippo:availability: [ live ]
+                hippostd:retainable: false
+                hippostd:state: published
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-10T15:37:43.628Z
+                hippostdpubwf:lastModificationDate: 2026-02-10T15:39:57.382Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippostdpubwf:publicationDate: 2026-02-10T15:40:37.211Z
+                hippostdpubwf:publishedBy: admin
+                hippotranslation:id: 69f47159-5353-490f-9c14-ea3aa9ed9a36
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: <h3>Landed Value Modelling</h3>
+            /test-page-3:
+              jcr:primaryType: hippo:handle
+              jcr:mixinTypes: [ 'hippo:named', 'mix:referenceable' ]
+              jcr:uuid: 7405fca0-8de9-4756-aad6-f69f2ada8c50
+              hippo:name: test page 3
+              /test-page-3[1]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable' ]
+                jcr:uuid: b61603f6-a457-4533-9165-ddc1b5b54349
+                govscot:contentitemlanguage: en
+                govscot:title: test page 3
+                hippo:availability: [ ]
+                hippostd:retainable: false
+                hippostd:state: draft
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-13T09:19:33.469Z
+                hippostdpubwf:lastModificationDate: 2026-02-13T09:19:56.219Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: d1587eac-4388-4c77-bef1-e8e786257bdd
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              /test-page-3[2]:
+                jcr:primaryType: govscot:PublicationPage
+                jcr:mixinTypes: [ 'mix:referenceable', 'mix:versionable' ]
+                jcr:uuid: 78da15c9-6372-4ee7-b789-37ab377441f1
+                govscot:contentitemlanguage: en
+                govscot:title: test page 3
+                hippo:availability: [ preview ]
+                hippostd:retainable: false
+                hippostd:state: unpublished
+                hippostdpubwf:createdBy: admin
+                hippostdpubwf:creationDate: 2026-02-13T09:19:33.469Z
+                hippostdpubwf:lastModificationDate: 2026-02-13T09:20:03.537Z
+                hippostdpubwf:lastModifiedBy: admin
+                hippotranslation:id: d1587eac-4388-4c77-bef1-e8e786257bdd
+                hippotranslation:locale: document-type-locale
+                /govscot:content:
+                  jcr:primaryType: hippostd:html
+                  hippostd:content: |-
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          /documents:
+            jcr:primaryType: hippostd:folder
+            hippostd:foldertype: [ new-publication-document-info, new-publication-documents-folder ]
     /2020:
       jcr:primaryType: hippostd:folder
       jcr:mixinTypes: ['mix:versionable']
