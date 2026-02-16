@@ -28,7 +28,12 @@ public class FunnelbackFactory {
         // decide what kind of funnelback instance to create based on the job context.
         String filters = filters(context);
         String searchType = SearchType.getSearchType(session);
-        Funnelback funnelback = new FunnelbackImpl(configuration(searchType), filters);
+
+        FunnelbackConfiguration funnelbackConfiguration = configuration(searchType);
+        if (funnelbackConfiguration == null) {
+            return null;
+        }
+        Funnelback funnelback = new FunnelbackImpl(funnelbackConfiguration, filters);
 
         LOG.info("filters: {}", filters);
         // for testing error conditions it is possible to configure the repository to add artificial errors to our
@@ -51,6 +56,9 @@ public class FunnelbackFactory {
 
         FunnelbackConfiguration configuration = new FunnelbackConfiguration();
         ContainerConfiguration containerConfiguration = HstServices.getComponentManager().getContainerConfiguration();
+        if (!containerConfiguration.containsKey("squiz.admin.token")) {
+            return null;
+        }
         configuration.setSearchType(searchType);
         if ("funnelback-dxp".equals(searchType)) {
             String url = containerConfiguration.getString("squiz.admin.url");

@@ -112,6 +112,10 @@ public class FunnelbackReconciliationLoop implements RepositoryJob {
 
     void doExecute(RepositoryJobExecutionContext context, Session session, FeatureFlag featureFlag) throws RepositoryException {
         Funnelback funnelback = FunnelbackFactory.newFunnelback(context, session);
+        if (funnelback == null) {
+            LOG.warn("no funnelback token, skipping");
+            return;
+        }
         CloseableHttpClient httpClient = HttpClientSource.newClient();
 
         try {
