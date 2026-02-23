@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class SsoFilter extends HttpFilter {
 
+    public static final String SSO_COOKIE_NAME = "sso";
+
     private final CallbackHandler callbackHandler = new CallbackHandler();
 
     @Override
@@ -32,12 +34,25 @@ public class SsoFilter extends HttpFilter {
             case "disable":
                 disableSSOCookie(req, res);
                 break;
+            case "jwks":
+                serveJwks(res);
+                break;
             case "login":
                 performSSOLogin(req, res);
                 break;
             default:
                 res.sendError(HttpServletResponse.SC_NOT_FOUND);
                 break;
+        }
+    }
+
+    private void serveJwks(HttpServletResponse res) throws IOException, ServletException {
+        try {
+            OidcConfig oidcConfig = OidcConfig.get();
+            res.setContentType("application/json");
+            res.getWriter().write(oidcConfig.publicJwks().toString());
+        } catch (Exception ex) {
+            throw new ServletException("Failed to serve JWKS", ex);
         }
     }
 
@@ -52,12 +67,12 @@ public class SsoFilter extends HttpFilter {
     }
 
     private void performSSOLogin(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        HttpSession s = req.getSession(false);
-        if (s != null) {
-            s.invalidate();
-        }
-        s = req.getSession(true);
-        s.setAttribute(OIDCLoginFilter.SSO_ATTR_NAME, true);
+        HttpSession s = req.getSession(true);
+        s.setAttribute(SsoSessionAttributes.SSO, true);
+        // Clear stale credentials from a previous SSO attempt that ended with
+        // "user not found". If left in the session, OidcLoginFilter would see
+        // them and pass through rather than redirecting to the IdP.
+        s.removeAttribute(SsoSessionAttributes.CREDENTIALS);
         sendRedirect(req, res);
     }
 
@@ -67,7 +82,7 @@ public class SsoFilter extends HttpFilter {
     }
 
     private static Cookie createSsoCookie(boolean secure, boolean enable) {
-        Cookie cookie = new Cookie("sso", Boolean.toString(enable));
+        Cookie cookie = new Cookie(SSO_COOKIE_NAME, Boolean.toString(enable));
         cookie.setSecure(secure);
         cookie.setHttpOnly(true);
         cookie.setPath("/");

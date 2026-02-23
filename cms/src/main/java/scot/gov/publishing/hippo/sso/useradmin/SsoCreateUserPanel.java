@@ -61,12 +61,12 @@ public class SsoCreateUserPanel extends CreateUserPanel
     }
 
     @Override
-    public void setPassword (String password){
+    public void setPassword(String password) {
         // No-op - ignore password setting
     }
 
     @Override
-    public void setPasswordCheck (String passwordCheck){
+    public void setPasswordCheck(String passwordCheck) {
         // No-op - ignore password check setting
     }
 
@@ -112,25 +112,28 @@ public class SsoCreateUserPanel extends CreateUserPanel
     }
 
     @Override
-    public IResourceStream getMarkupResourceStream(
-            MarkupContainer container,
-            Class<?> containerClass) {
+    public IResourceStream getMarkupResourceStream(MarkupContainer container, Class<?> containerClass) {
+        Class<?> containerType;
         if (containerClass == CreateUserPanel.class) {
-            // Skip Parent's markup, jump straight to GrandParent
-            containerClass = CreateUserPanel.class.getSuperclass();
+            // Ignore CreateUserPanel markup - markup for this class replaces it.
+            // That is, markup for this class extends that of the grandparent class.
+            containerType = containerClass.getSuperclass();
+        } else {
+            containerType = containerClass;
         }
         return new DefaultMarkupResourceStreamProvider()
-                .getMarkupResourceStream(container, containerClass);
+                .getMarkupResourceStream(container, containerType);
     }
 
     @Override
     public String getCacheKey(MarkupContainer container, Class<?> containerClass) {
+        IMarkupCacheKeyProvider cacheKeyProvider = new DefaultMarkupCacheKeyProvider();
+        String defaultCacheKey = cacheKeyProvider.getCacheKey(container, containerClass);
         if (containerClass == CreateUserPanel.class) {
             // Unique cache key so we don't collide with Parent's normal cached markup
-            return getClass().getName() + "::" +
-                    new DefaultMarkupCacheKeyProvider().getCacheKey(container, containerClass);
+            return getClass().getName() + "::" + defaultCacheKey;
         }
-        return new DefaultMarkupCacheKeyProvider().getCacheKey(container, containerClass);
+        return defaultCacheKey;
     }
 
 }

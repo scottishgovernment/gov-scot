@@ -9,10 +9,6 @@
   <display-name>www.gov.scot CMS</display-name>
   <description>www.gov.scot CMS</description>
 
-  <!-- listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener -->
-
   <listener>
     <listener-class>org.hippoecm.hst.platform.container.HstCmsContextLoaderListener</listener-class>
   </listener>
@@ -59,7 +55,7 @@
 
   <filter>
     <filter-name>OIDCLogin</filter-name>
-    <filter-class>scot.gov.publishing.hippo.sso.OIDCLoginFilter</filter-class>
+    <filter-class>scot.gov.publishing.hippo.sso.OidcLoginFilter</filter-class>
   </filter>
 
   <filter-mapping>

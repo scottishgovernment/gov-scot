@@ -6,27 +6,22 @@ import com.nimbusds.jose.proc.BadJOSEException;
 import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.oauth2.sdk.*;
-import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
-import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
-import com.nimbusds.oauth2.sdk.auth.Secret;
 import com.nimbusds.oauth2.sdk.http.HTTPResponse;
-import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.nimbusds.oauth2.sdk.id.Issuer;
+import com.nimbusds.oauth2.sdk.id.State;
 import com.nimbusds.oauth2.sdk.pkce.CodeVerifier;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
-import com.nimbusds.openid.connect.sdk.*;
+import com.nimbusds.openid.connect.sdk.Nonce;
+import com.nimbusds.openid.connect.sdk.OIDCTokenResponse;
+import com.nimbusds.openid.connect.sdk.UserInfoRequest;
+import com.nimbusds.openid.connect.sdk.UserInfoSuccessResponse;
 import com.nimbusds.openid.connect.sdk.claims.UserInfo;
-import com.nimbusds.openid.connect.sdk.op.OIDCProviderMetadata;
 import com.nimbusds.openid.connect.sdk.token.OIDCTokens;
 import com.nimbusds.openid.connect.sdk.validators.IDTokenValidator;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.commons.lang3.ObjectUtils;
 import org.hippoecm.frontend.model.UserCredentials;
-import org.hippoecm.hst.core.container.ComponentManager;
-import org.hippoecm.hst.core.container.ContainerConfiguration;
-import org.hippoecm.hst.site.HstServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,23 +30,16 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Objects;
 
-import static java.util.Collections.emptyList;
-
 public class CallbackHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(CallbackHandler.class);
 
-    public static final String CREDENTIALS_ATTR_NAME = UserCredentials.class.getName();
-
-    private ClientID clientId;
-    private String clientSecret;
-    private String redirectUri;
-    private URI tokenEndpoint;
-    private URI userInfoEndpoint;
+    private OidcConfig oidcConfig;
     private boolean configured = false;
     private IDTokenValidator idTokenValidator;
 
     public void handleRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
         try {
             ensureConfigured();
             handleCallback(req, resp);
@@ -59,7 +47,6 @@ public class CallbackHandler {
             LOG.error(ex.getMessage(), ex.getCause());
             resp.sendError(ex.getStatus(), ex.getMessage());
         }
-        resp.sendRedirect(req.getContextPath() + "/");
     }
 
     private synchronized void ensureConfigured() throws CallbackException {
@@ -68,51 +55,54 @@ public class CallbackHandler {
                 configure();
                 this.configured = true;
             }
-        } catch (GeneralException | IOException ex) {
+        } catch (GeneralException | IOException | JOSEException ex) {
             throw new CallbackException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to initialise", ex);
         }
     }
 
-    private void configure() throws GeneralException, IOException {
-        ComponentManager componentManager = HstServices.getComponentManager();
-        ContainerConfiguration config = componentManager.getContainerConfiguration();
-
-        String issuerUri = config.getString("oidc.issuer");
-        Issuer issuer = new Issuer(issuerUri);
-        URI jwksEndpoint;
-
-        if (false) {
-            jwksEndpoint = URI.create(config.getString("oidc.jwks.uri"));
-            this.tokenEndpoint = URI.create(config.getString("oidc.token.endpoint"));
-            this.userInfoEndpoint = URI.create(config.getString("oidc.userinfo.endpoint"));
-        } else {
-            OIDCProviderMetadata metadata = OIDCProviderMetadata.resolve(issuer);
-            jwksEndpoint = metadata.getJWKSetURI();
-            this.tokenEndpoint = metadata.getTokenEndpointURI();
-            this.userInfoEndpoint = metadata.getUserInfoEndpointURI();
-        }
-        this.clientId = new ClientID(config.getString("oidc.client.id"));
-        this.clientSecret = config.getString("oidc.client.secret");
-        this.redirectUri = config.getString("oidc.redirect.uri");
-
+    private void configure() throws GeneralException, IOException, JOSEException {
+        this.oidcConfig = OidcConfig.get();
+        Issuer issuer = new Issuer(oidcConfig.issuer());
         this.idTokenValidator = new IDTokenValidator(
                 issuer,
-                clientId,
+                oidcConfig.clientId(),
                 JWSAlgorithm.RS256,
-                jwksEndpoint.toURL());
+                oidcConfig.jwksUri().toURL());
     }
 
-    private void handleCallback(HttpServletRequest req, HttpServletResponse resp) throws CallbackException {
-        LOG.info("/callback {}", req.getServletPath());
+    private void handleCallback(HttpServletRequest req, HttpServletResponse resp) throws CallbackException, IOException {
         HttpSession session = req.getSession();
+        String returnUrl = Objects.toString(
+                session.getAttribute(SsoSessionAttributes.RETURN_URL),
+                req.getContextPath() + "/");
 
-        String code = req.getParameter("code");
-        String stateParam = req.getParameter("state");
-        String state = Objects.toString(session.getAttribute("state"), null);
-        CodeVerifier codeVerifier = (CodeVerifier) session.getAttribute("code_verifier");
-        Nonce expectedNonce = (Nonce) session.getAttribute("nonce");
+        String error = req.getParameter("error");
+        if (error != null) {
+            handleErrorCallback(req, error);
+        } else {
+            handleSuccessCallback(req);
+        }
+        resp.sendRedirect(returnUrl);
+    }
 
-        validateParametersAndSession(code, stateParam, state, codeVerifier, expectedNonce);
+    private static void handleErrorCallback(HttpServletRequest req, String error) {
+        String description = req.getParameter("error_description");
+        LOG.warn("IdP returned error: {} ({})", error, description);
+        req.getSession().setAttribute(SsoSessionAttributes.SSO_ERROR, error);
+    }
+
+    private void handleSuccessCallback(HttpServletRequest req) throws CallbackException {
+        String stateParam = queryParameter(req, "state");
+        String code = queryParameter(req, "code");
+
+        HttpSession session = req.getSession();
+        State state = sessionAttribute(session, SsoSessionAttributes.STATE, State.class);
+        CodeVerifier codeVerifier = sessionAttribute(session, SsoSessionAttributes.CODE_VERIFIER, CodeVerifier.class);
+        Nonce expectedNonce = sessionAttribute(session, SsoSessionAttributes.NONCE, Nonce.class);
+
+        if (!stateParam.equals(state.getValue())) {
+            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Invalid state (mismatched)");
+        }
 
         // Exchange code for tokens
         OIDCTokenResponse successResponse = getTokenResponse(code, codeVerifier);
@@ -121,30 +111,35 @@ public class CallbackHandler {
         OIDCTokens tokens = successResponse.getOIDCTokens();
         JWT idToken = tokens.getIDToken();
         JWTClaimsSet jwtClaimsSet = parseJwtClaimSet(idToken, expectedNonce);
+        LOG.debug("JWT claims set: {}", jwtClaimsSet);
 
         // Fetch user info
         BearerAccessToken accessToken = successResponse.getOIDCTokens().getBearerAccessToken();
         UserInfo userInfo = fetchUserInfo(accessToken);
 
-        storeInSession(session, jwtClaimsSet, userInfo, idToken);
+        // Invalidate session to ensure Bloomreach creates a new session.
+        // This is necessary for PluginUserSession to pick up the new credentials.
+        session.invalidate();
+        session = req.getSession();
+
+        session.setAttribute(SsoSessionAttributes.SSO, true);
+        storeInSession(session, userInfo);
     }
 
-    private void validateParametersAndSession(String code, String stateParam, String state, CodeVerifier codeVerifier, Nonce expectedNonce) throws CallbackException {
-        if (ObjectUtils.anyNull(code, stateParam)) {
-            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Code and state are required");
+    private String queryParameter(HttpServletRequest request, String parameterName) throws CallbackException {
+        String parameter = request.getParameter(parameterName);
+        if (parameter == null) {
+            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Request did not contain parameter " + parameterName);
         }
+        return parameter;
+    }
 
-        if (!stateParam.equals(state)) {
-            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Invalid state");
+    private <T> T sessionAttribute(HttpSession session, String attributeName, Class<T> type) throws CallbackException {
+        T attribute = type.cast(session.getAttribute(attributeName));
+        if (attribute == null) {
+            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Session did not contain attribute " + attributeName);
         }
-
-        if (codeVerifier == null) {
-            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Code verifier not present");
-        }
-
-        if (expectedNonce == null) {
-            throw new CallbackException(HttpServletResponse.SC_UNAUTHORIZED, "Expected nonce not present");
-        }
+        return attribute;
     }
 
     private OIDCTokenResponse getTokenResponse(String code, CodeVerifier codeVerifier) throws CallbackException {
@@ -152,48 +147,35 @@ public class CallbackHandler {
         AuthorizationCode codeObj = new AuthorizationCode(code);
         AuthorizationGrant codeGrant = new AuthorizationCodeGrant(
                 codeObj,
-                URI.create(redirectUri),
+                URI.create(oidcConfig.redirectUri()),
                 codeVerifier);
 
-        ClientAuthentication clientAuth = new ClientSecretBasic(clientId, new Secret(clientSecret));
-        TokenRequest tokenRequest = new TokenRequest.Builder(tokenEndpoint, clientAuth, codeGrant).build();
-        TokenResponse tokenResponse = null;
+        TokenRequest tokenRequest = new TokenRequest.Builder(
+                oidcConfig.tokenEndpoint(),
+                oidcConfig.clientAuthentication().get(),
+                codeGrant).build();
         try {
             HTTPResponse tokenHttpResponse = tokenRequest.toHTTPRequest().send();
-            tokenResponse = OIDCTokenResponseParser.parse(tokenHttpResponse);
+            return OIDCTokenResponse.parse(tokenHttpResponse);
         } catch (IOException ex) {
             throw new CallbackException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Token exchange IO error", ex);
         } catch (ParseException ex) {
-            throw new CallbackException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Invalid token response", ex);
+            throw new CallbackException(HttpServletResponse.SC_BAD_REQUEST, "Token exchange failed", ex);
         }
-
-        if (!tokenResponse.indicatesSuccess()) {
-            throw new CallbackException(HttpServletResponse.SC_BAD_REQUEST, "Token exchange failed");
-        }
-
-        return (OIDCTokenResponse) tokenResponse.toSuccessResponse();
     }
 
     private UserInfo fetchUserInfo(BearerAccessToken accessToken) throws CallbackException {
-        UserInfoRequest userInfoRequest = new UserInfoRequest(userInfoEndpoint, accessToken);
-        HTTPResponse userInfoHttpResponse = null;
-        UserInfoResponse userInfoResponse = null;
+        UserInfoRequest userInfoRequest = new UserInfoRequest(oidcConfig.userInfoEndpoint(), accessToken);
         try {
-            userInfoHttpResponse = userInfoRequest.toHTTPRequest().send();
-            userInfoResponse = UserInfoResponse.parse(userInfoHttpResponse);
+            HTTPResponse httpResponse = userInfoRequest.toHTTPRequest().send();
+            UserInfo userInfo = UserInfoSuccessResponse.parse(httpResponse).getUserInfo();
+            LOG.info("UserInfo: {}", userInfo);
+            return userInfo;
         } catch (IOException ex) {
             throw new CallbackException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "User info IO error", ex);
         } catch (ParseException ex) {
-            throw new CallbackException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Fetching user info failed", ex);
+            throw new CallbackException(HttpServletResponse.SC_BAD_REQUEST, "User info request failed", ex);
         }
-
-        if (!userInfoHttpResponse.indicatesSuccess()) {
-            throw new CallbackException(HttpServletResponse.SC_BAD_REQUEST, "User info request failed");
-        }
-
-        UserInfo userInfo = userInfoResponse.toSuccessResponse().getUserInfo();
-        LOG.info("UserInfo: {}", userInfo);
-        return userInfo;
     }
 
     private JWTClaimsSet parseJwtClaimSet(JWT idToken, Nonce expectedNonce) throws CallbackException {
@@ -214,19 +196,17 @@ public class CallbackHandler {
         }
     }
 
-    private static void storeInSession(HttpSession session, JWTClaimsSet jwtClaimsSet, UserInfo userInfo, JWT idToken) {
-        String email = (String) jwtClaimsSet.getClaim("email");
-        LOG.info("Authenticated as: {} {} {}", email, jwtClaimsSet, userInfo);
+    private static void storeInSession(HttpSession session, UserInfo userInfo) {
+        String email = userInfo.getEmailAddress();
+        LOG.info("Authenticated as: {} {}", email, userInfo);
         char[] password = {0};
         SimpleCredentials creds = new SimpleCredentials(email, password);
         creds.setAttribute(SsoAttributes.SSO_ID, email);
-        creds.setAttribute(SsoAttributes.SSO_GROUPS, emptyList());
+        creds.setAttribute(SsoAttributes.SSO_EMAIL, email);
         creds.setAttribute(SsoAttributes.SSO_NAME, userInfo.getName());
         creds.setAttribute(SsoAttributes.SSO_GIVEN_NAME, userInfo.getGivenName());
         creds.setAttribute(SsoAttributes.SSO_FAMILY_NAME, userInfo.getFamilyName());
-        session.setAttribute(CREDENTIALS_ATTR_NAME, new UserCredentials(creds));
-
-        session.setAttribute("id_token", idToken);
+        session.setAttribute(SsoSessionAttributes.CREDENTIALS, new UserCredentials(creds));
     }
 
     static class CallbackException extends Exception {

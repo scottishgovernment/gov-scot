@@ -1,78 +1,86 @@
 package scot.gov.publishing.hippo.sso;
 
 import org.apache.jackrabbit.api.security.user.UserManager;
+import org.apache.jackrabbit.value.StringValue;
+import org.hippoecm.frontend.plugins.cms.admin.users.User;
+import org.hippoecm.repository.security.AbstractSecurityProvider;
 import org.hippoecm.repository.security.DelegatingSecurityProvider;
-import org.hippoecm.repository.security.RepositorySecurityProvider;
-import org.hippoecm.repository.security.SecurityProvider;
+import org.hippoecm.repository.security.ManagerContext;
+import org.hippoecm.repository.security.SecurityProviderContext;
 import org.hippoecm.repository.security.group.GroupManager;
+import org.hippoecm.repository.security.group.RepositoryGroupManager;
 import org.hippoecm.repository.security.user.HippoUserManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
-import java.util.List;
 
 /**
- * Custom <code>org.hippoecm.repository.security.SecurityProvider</code> implementation.
- * <p>
+ * Custom SecurityProvider that wraps the repository user manager with an
+ * SSO-aware user manager and copies OIDC claims to the user node on login.
+ *
+ * <p>Extends {@link AbstractSecurityProvider} rather than
+ * {@link DelegatingSecurityProvider} in order to override {@link #syncUser}.
+ * This allows OpenID Connect claims, such as names and email address, to be
+ * synchronized to the repository user, when {@link #synchronizeOnLogin} in
+ * the superclass is called.
  */
-public class SsoSecurityProvider extends DelegatingSecurityProvider {
+public class SsoSecurityProvider extends AbstractSecurityProvider {
 
-    private static final Logger log = LoggerFactory.getLogger(SsoSecurityProvider.class);
+    private SecurityProviderContext context;
 
-    private HippoUserManager userManager;
-
-    private SecurityProvider internalProvider;
-
-    /**
-     * Constructs by creating the default <code>RepositorySecurityProvider</code> to delegate all the other calls
-     * except of authentication calls.
-     */
-    public SsoSecurityProvider() throws RepositoryException {
-        super(new RepositorySecurityProvider());
-    }
-
-    /**
-     * Returns a custom (delegating) HippoUserManager to authenticate a user by SSO claims.
-     */
     @Override
-    public UserManager getUserManager() throws RepositoryException {
-        if (userManager == null) {
-            HippoUserManager hippoUserManager = (HippoUserManager) super.getUserManager();
-            userManager = new SsoUserManager(hippoUserManager, getGroupManager());
-        }
-        return userManager;
+    public void init(SecurityProviderContext context) throws RepositoryException {
+        this.context = context;
+        Session session = context.getSession();
+
+        ManagerContext userContext = userContext(session);
+        this.userManager = new SsoUserManager(userContext);
+
+        this.groupManager = new RepositoryGroupManager();
+        this.groupManager.init(groupContext(session));
     }
 
-    /**
-     * Returns a custom (delegating) HippoUserManager to authenticate a user by SSO claims.
-     */
     @Override
     public UserManager getUserManager(Session session) throws RepositoryException {
-        HippoUserManager hippoUserManager = (HippoUserManager) super.getUserManager(session);
-        return new SsoUserManager(hippoUserManager, getGroupManager());
+        return new SsoUserManager(userContext(session));
     }
 
     @Override
-    public void synchronizeOnLogin(SimpleCredentials creds) throws RepositoryException {
-        GroupManager groupManager = internalProvider.getGroupManager();
-        Node user = userManager.getUser(creds.getUserID());
-        List<String> groups = ((List<String>) creds.getAttribute(SsoAttributes.SSO_GROUPS))
-                .stream()
-                .map(g -> g.substring(g.lastIndexOf(' ') + 1))
-                .toList();
-        for (String group : groups) {
-            Node groupNode = groupManager.getGroup(group);
-            groupManager.addMember(groupNode, creds.getUserID());
-        }
-        groupManager.saveGroups();
+    public GroupManager getGroupManager(Session session) throws RepositoryException {
+        RepositoryGroupManager groupManager = new RepositoryGroupManager();
+        groupManager.init(groupContext(session));
+        return groupManager;
     }
 
-    public void setInternalProvider(SecurityProvider internal) {
-        this.internalProvider = internal;
+    @Override
+    protected void syncUser(SimpleCredentials creds, HippoUserManager userMgr) throws RepositoryException {
+        if (creds.getAttribute(SsoAttributes.SSO_ID) != null) {
+            Node user = userMgr.getUser(creds.getUserID());
+            copyAttribute(creds, SsoAttributes.SSO_EMAIL, user, User.PROP_EMAIL);
+            copyAttribute(creds, SsoAttributes.SSO_GIVEN_NAME, user, User.PROP_FIRSTNAME);
+            copyAttribute(creds, SsoAttributes.SSO_FAMILY_NAME, user, User.PROP_LASTNAME);
+        }
+        super.syncUser(creds, userMgr);
+    }
+
+    private void copyAttribute(SimpleCredentials creds, String attributeName, Node node, String propertyName)
+            throws RepositoryException {
+        String attribute = (String) creds.getAttribute(attributeName);
+        node.setProperty(propertyName, new StringValue(attribute));
+    }
+
+    private ManagerContext userContext(Session session) throws RepositoryException {
+        return new ManagerContext(
+                session, context.getProviderPath(),
+                context.getUsersPath(), context.isMaintenanceMode());
+    }
+
+    private ManagerContext groupContext(Session session) throws RepositoryException {
+        return new ManagerContext(
+                session, context.getProviderPath(),
+                context.getGroupsPath(), context.isMaintenanceMode());
     }
 
 }
