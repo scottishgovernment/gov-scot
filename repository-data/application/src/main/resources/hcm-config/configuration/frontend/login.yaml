@@ -3,3 +3,5 @@ definitions:
     /hippo:configuration/hippo:frontend/login/login/loginPage:
       plugin.class: scot.gov.publishing.hippo.sso.SsoLoginPlugin
       signin.form.autocomplete: false
+    /hippo:configuration/hippo:frontend/cms/cms-services/logoutService:
+      plugin.class: scot.gov.publishing.hippo.sso.SsoLogoutService

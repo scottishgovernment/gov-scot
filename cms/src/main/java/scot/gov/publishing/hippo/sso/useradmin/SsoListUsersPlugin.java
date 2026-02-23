@@ -10,6 +10,7 @@ import org.hippoecm.frontend.plugins.standards.panelperspective.breadcrumb.Panel
 /**
  * Extends the ListUsers plugin to allow use of a custom panel to create users.
  */
+@SuppressWarnings("unused")
 public class SsoListUsersPlugin extends ListUsersPlugin {
 
     private final UserDataProvider userDataProvider = new UserDataProvider();

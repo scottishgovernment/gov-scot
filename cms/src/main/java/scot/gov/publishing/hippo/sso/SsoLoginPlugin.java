@@ -17,6 +17,7 @@ import org.hippoecm.frontend.plugins.login.LoginPanel;
 import org.onehippo.forge.resetpassword.frontend.ResetPasswordConst;
 import org.onehippo.forge.resetpassword.login.CustomLoginPlugin;
 
+@SuppressWarnings("unused")
 public class SsoLoginPlugin extends CustomLoginPlugin {
 
     public SsoLoginPlugin(IPluginContext context, IPluginConfig config) {
@@ -73,6 +74,7 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
                     // This forces and IdP redirect which, in turn, clears the session and
                     // ensures the application picks up the new credentials.
                     session.removeAttribute(SsoSessionAttributes.CREDENTIALS);
+                    session.removeAttribute(SsoSessionAttributes.LOGGED_OUT);
                     target.appendJavaScript("window.location.href = window.location.href.replace('loginmessage=UserLoggedOut', '')"
                             + ".replace('?0&', '?');");
                 }
@@ -154,6 +156,7 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
             HttpServletRequest request = (HttpServletRequest) getRequest().getContainerRequest();
             HttpSession session = request.getSession(true);
             session.removeAttribute(SsoSessionAttributes.SSO);
+            session.removeAttribute(SsoSessionAttributes.LOGGED_OUT);
         }
     }
 

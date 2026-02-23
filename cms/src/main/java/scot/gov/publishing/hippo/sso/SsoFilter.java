@@ -73,6 +73,7 @@ public class SsoFilter extends HttpFilter {
         // "user not found". If left in the session, OidcLoginFilter would see
         // them and pass through rather than redirecting to the IdP.
         s.removeAttribute(SsoSessionAttributes.CREDENTIALS);
+        s.removeAttribute(SsoSessionAttributes.LOGGED_OUT);
         sendRedirect(req, res);
     }
 

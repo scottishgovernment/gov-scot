@@ -11,8 +11,6 @@ import org.apache.wicket.markup.IMarkupCacheKeyProvider;
 import org.apache.wicket.markup.IMarkupResourceStreamProvider;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;
-import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
-import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.hippoecm.frontend.plugin.IPluginContext;

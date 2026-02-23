@@ -122,7 +122,8 @@ public class OidcLoginFilter extends HttpFilter {
     }
 
     private static boolean isLoggedOut(HttpServletRequest request) {
-        return request.getParameter("loginmessage") != null;
+        HttpSession session = request.getSession(false);
+        return session != null && session.getAttribute(SsoSessionAttributes.LOGGED_OUT) != null;
     }
 
     private static boolean isExcluded(HttpServletRequest request) {
