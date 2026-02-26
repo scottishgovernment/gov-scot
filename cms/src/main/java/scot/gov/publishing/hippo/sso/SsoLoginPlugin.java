@@ -14,6 +14,7 @@ import org.hippoecm.frontend.plugins.login.DefaultLoginPlugin;
 import org.hippoecm.frontend.plugins.login.LoginConfig;
 import org.hippoecm.frontend.plugins.login.LoginHandler;
 import org.hippoecm.frontend.plugins.login.LoginPanel;
+import org.jetbrains.annotations.NotNull;
 import org.onehippo.forge.resetpassword.frontend.ResetPasswordConst;
 import org.onehippo.forge.resetpassword.login.CustomLoginPlugin;
 
@@ -46,6 +47,11 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
             httpSession.removeAttribute(SsoSessionAttributes.SSO_ERROR);
             panel.getSession().error(panel.getString("sso.idp.error"));
         }
+        Object callbackError = httpSession != null ? httpSession.getAttribute(SsoSessionAttributes.CALLBACK_ERROR) : null;
+        if (callbackError != null) {
+            httpSession.removeAttribute(SsoSessionAttributes.CALLBACK_ERROR);
+            panel.getSession().error(panel.getString("sso.callback.error"));
+        }
     }
 
     class SsoLoginForm extends DefaultLoginPlugin.TimeZonePanel {
@@ -58,29 +64,10 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
                     && ssoConfig.enabled() == SsoConfig.Default.OFF;
             boolean credentialsAllowed = ssoConfig.mode() == SsoConfig.Mode.OPTIONAL;
 
-            // SSO button — sets the SSO session attribute then redirects to the initialPath
-            // (CMS) or path (console) query parameter, so OidcLoginFilter intercepts the
-            // request and saves the correct RETURN_URL before redirecting to the IdP.
-            // Uses AjaxButton to bypass PreventResubmit.js (which disables submit buttons
-            // before POST serialisation, causing findSubmitter() to return null and the
-            // default password-login handler to run instead).
-            AjaxButton ssoLogin = new AjaxButton("sso-login", form) {
-                @Override
-                protected void onSubmit(AjaxRequestTarget target) {
-                    HttpServletRequest request = (HttpServletRequest) getRequest().getContainerRequest();
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute(SsoSessionAttributes.SSO, true);
-                    // Ensure no stale credentials are in the session from a previous login.
-                    // This forces and IdP redirect which, in turn, clears the session and
-                    // ensures the application picks up the new credentials.
-                    session.removeAttribute(SsoSessionAttributes.CREDENTIALS);
-                    session.removeAttribute(SsoSessionAttributes.LOGGED_OUT);
-                    target.appendJavaScript("window.location.href = window.location.href.replace('loginmessage=UserLoggedOut', '')"
-                            + ".replace('?0&', '?');");
-                }
-            };
-            ssoLogin.setDefaultFormProcessing(false);
-            ssoLogin.add(new Label("sso-login-label", new ResourceModel("sso.login")));
+            // Use AjaxButton to bypass PreventResubmit.js, which disables submit buttons
+            // before POST serialization. In turn, this causes Form.findSubmitter() to return
+            // null and the password onSubmit() runs instead.
+            AjaxButton ssoLogin = ssoLoginButton();
             form.addLabelledComponent(ssoLogin);
 
             // Choice separator — visible when both SSO and login with username/password is available
@@ -141,6 +128,28 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
             passwordToggle.setOutputMarkupPlaceholderTag(true);
             passwordToggle.add(new Label("password-toggle-label", new ResourceModel("password.login")));
             form.add(passwordToggle);
+        }
+
+        private AjaxButton ssoLoginButton() {
+            AjaxButton ssoLogin = new AjaxButton("sso-login", form) {
+                @Override
+                protected void onSubmit(AjaxRequestTarget target) {
+                    HttpServletRequest request = (HttpServletRequest) getRequest().getContainerRequest();
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute(SsoSessionAttributes.SSO, true);
+                    // Ensure no stale credentials are in the session from a previous login.
+                    // This forces and IdP redirect which, in turn, clears the session and
+                    // ensures the application picks up the new credentials.
+                    session.removeAttribute(SsoSessionAttributes.CREDENTIALS);
+                    session.removeAttribute(SsoSessionAttributes.LOGGED_OUT);
+                    // Reload the current page as a fresh GET so OidcLoginFilter intercepts
+                    // it and redirects to the IdP.
+                    target.appendJavaScript("window.location.reload();");
+                }
+            };
+            ssoLogin.add(new Label("sso-login-label", new ResourceModel("sso.login")));
+            ssoLogin.setDefaultFormProcessing(false);
+            return ssoLogin;
         }
 
         @Override

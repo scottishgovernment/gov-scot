@@ -23,6 +23,10 @@ public class SsoFilter extends HttpFilter {
             return;
         }
         String[] splits = path.split("/", 3);
+        if (splits.length < 3) {
+            res.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
         String action = splits[2];
         switch (action) {
             case "callback":

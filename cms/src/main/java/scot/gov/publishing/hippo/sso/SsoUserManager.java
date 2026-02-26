@@ -27,7 +27,11 @@ public class SsoUserManager extends DelegatingHippoUserManager {
 
     private final Session session;
 
-    // Maps user IDs (as provided by the IdP) to the actual user IDs in the repository.
+    /**
+     * Maps user IDs (as provided by the IdP) to the actual user IDs in the repository.
+     * This cache is never evicted but its size has an upper bound determined by the
+     * number of user IDs provided by the IdP.
+     */
     private final ConcurrentMap<String, String> resolvedUserIds = new ConcurrentHashMap<>();
 
     public SsoUserManager(ManagerContext context) throws RepositoryException {

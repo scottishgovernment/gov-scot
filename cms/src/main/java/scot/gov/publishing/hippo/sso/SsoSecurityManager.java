@@ -36,7 +36,10 @@ public class SsoSecurityManager extends SecurityManager {
                 if (!ssoUserManager.isActive(userId)) {
                     LOG.debug("Inactive user: {}", userId);
                     return AuthenticationStatus.ACCOUNT_EXPIRED;
-                } else if (ssoUserManager.isPasswordExpired(userId)) {
+                }
+
+                boolean isSsoLogin = creds.getAttribute(SsoAttributes.SSO_ID) != null;
+                if (!isSsoLogin && ssoUserManager.isPasswordExpired(userId)) {
                     LOG.debug("Password expired for user: {}", userId);
                     return AuthenticationStatus.CREDENTIAL_EXPIRED;
                 }
@@ -56,6 +59,13 @@ public class SsoSecurityManager extends SecurityManager {
     }
 
     private SecurityProvider provider(String name) {
+        // The SecurityManager base class holds providers in a private "providers" map
+        // and does not expose it through any public or protected API. Reflection is the
+        // only option short of copying the whole SecurityManager class.
+        // If this approach is not feasible in the future, then the solution would be to
+        // add `securityprovider: sso` to users, and ensure that passwords could not
+        // expire. It may also be necessary to ensure usernames are lowercase to match
+        // user IDs in the IdP.
         try {
             Field field = SecurityManager.class.getDeclaredField("providers");
             field.setAccessible(true);
@@ -63,7 +73,7 @@ public class SsoSecurityManager extends SecurityManager {
             Map<String, SecurityProvider> providers = (Map<String, SecurityProvider>) field.get(this);
             return providers.get(name);
         } catch (NoSuchFieldException | IllegalAccessException ex) {
-            throw new RuntimeException(ex);
+            throw new RuntimeException("Incompatible change to Bloomreach SecurityManager", ex);
         }
     }
 
