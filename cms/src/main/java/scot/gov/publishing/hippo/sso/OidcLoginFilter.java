@@ -49,9 +49,9 @@ public class OidcLoginFilter extends HttpFilter {
             "/ws/indexexport"
     );
 
-    private SsoConfig ssoConfig;
-    private OidcConfig oidcConfig;
-    private boolean configured = false;
+    SsoConfig ssoConfig;
+    OidcConfig oidcConfig;
+    boolean configured = false;
 
     private synchronized void ensureConfigured() throws ServletException {
         if (configured) {

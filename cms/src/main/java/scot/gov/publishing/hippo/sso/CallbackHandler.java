@@ -34,8 +34,8 @@ public class CallbackHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(CallbackHandler.class);
 
-    private OidcConfig oidcConfig;
-    private boolean configured = false;
+    OidcConfig oidcConfig;
+    boolean configured = false;
     private IDTokenValidator idTokenValidator;
 
     public void handleRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {

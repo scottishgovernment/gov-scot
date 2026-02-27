@@ -9,16 +9,14 @@ import jakarta.servlet.http.HttpSession;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Field;
-
 import static org.mockito.Mockito.*;
 
 /**
  * Unit tests for {@link CallbackHandler}.
  *
  * <p>These tests cover the error-handling paths that do not require a live OIDC
- * provider. The {@code configured} flag is set to {@code true} via reflection so
- * that {@code ensureConfigured()} is a no-op (avoiding HST infrastructure).
+ * provider. The {@code configured} flag is set to {@code true} directly so that
+ * {@code ensureConfigured()} is a no-op (avoiding HST infrastructure).
  */
 public class CallbackHandlerTest {
 
@@ -28,13 +26,9 @@ public class CallbackHandlerTest {
     private HttpSession session;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         sut = new CallbackHandler();
-
-        // Bypass lazy OIDC configuration so tests run without HST/Hippo infrastructure.
-        Field configuredField = CallbackHandler.class.getDeclaredField("configured");
-        configuredField.setAccessible(true);
-        configuredField.set(sut, true);
+        sut.configured = true;
 
         req = mock(HttpServletRequest.class);
         resp = mock(HttpServletResponse.class);
