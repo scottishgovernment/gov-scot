@@ -74,7 +74,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void offModePassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OFF, SsoConfig.Default.OFF);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OFF, SsoConfig.Redirect.MANUAL, SsoConfig.Form.NATIVE);
 
         sut.doFilter(req, resp, chain);
 
@@ -84,7 +84,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void postRequestPassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         when(req.getMethod()).thenReturn("POST");
 
         sut.doFilter(req, resp, chain);
@@ -95,7 +95,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void excludedPrefixSkinPassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         when(req.getRequestURI()).thenReturn("/skin/logo.png");
 
         sut.doFilter(req, resp, chain);
@@ -106,7 +106,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void excludedPrefixSsoCallbackPassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         when(req.getRequestURI()).thenReturn("/sso/callback");
 
         sut.doFilter(req, resp, chain);
@@ -117,7 +117,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void excludedExactPathNavigationItemsPassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         when(req.getRequestURI()).thenReturn("/ws/navigationitems");
 
         sut.doFilter(req, resp, chain);
@@ -128,7 +128,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void loggedOutSessionPassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         when(req.getSession(false)).thenReturn(session);
         when(session.getAttribute(SsoSessionAttributes.LOGGED_OUT)).thenReturn(true);
 
@@ -140,7 +140,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void optionalModeWithSsoCookieFalsePassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.OFF);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Redirect.MANUAL, SsoConfig.Form.REVEAL);
         when(req.getCookies()).thenReturn(new Cookie[]{new Cookie(SsoFilter.SSO_COOKIE_NAME, "false")});
 
         sut.doFilter(req, resp, chain);
@@ -150,8 +150,8 @@ public class OidcLoginFilterTest {
     }
 
     @Test
-    public void optionalModeNoCookieDefaultOffPassesThrough() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.OFF);
+    public void optionalModeManualNoCookiePassesThrough() throws Exception {
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Redirect.MANUAL, SsoConfig.Form.REVEAL);
         when(req.getCookies()).thenReturn(null);
 
         sut.doFilter(req, resp, chain);
@@ -162,7 +162,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void credentialsInSessionPassesThroughAndSetsRequestAttribute() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         Object mockCreds = mock(Object.class);
         when(req.getSession(false)).thenReturn(session);
         when(req.getSession(true)).thenReturn(session);
@@ -182,7 +182,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void requiredModeRedirectsToIdP() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getSession(true)).thenReturn(session);
 
@@ -197,7 +197,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void optionalModeWithSsoSessionAttrRedirectsToIdP() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.OFF);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Redirect.MANUAL, SsoConfig.Form.REVEAL);
         sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getSession(false)).thenReturn(session);
         when(req.getSession(true)).thenReturn(session);
@@ -211,7 +211,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void optionalModeWithSsoCookieTrueRedirectsToIdP() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.OFF);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Redirect.MANUAL, SsoConfig.Form.REVEAL);
         sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getCookies()).thenReturn(new Cookie[]{new Cookie(SsoFilter.SSO_COOKIE_NAME, "true")});
         when(req.getSession(true)).thenReturn(session);
@@ -223,8 +223,8 @@ public class OidcLoginFilterTest {
     }
 
     @Test
-    public void optionalModeNoCookieDefaultOnRedirectsToIdP() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.ON);
+    public void optionalModeAutoNoCookieRedirectsToIdP() throws Exception {
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Redirect.AUTO, SsoConfig.Form.REVEAL);
         sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getCookies()).thenReturn(null);
         when(req.getSession(true)).thenReturn(session);
@@ -241,7 +241,7 @@ public class OidcLoginFilterTest {
 
     @Test
     public void redirectUrlContainsResponseTypeCodeAndStateParam() throws Exception {
-        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.AUTO, SsoConfig.Form.SSO);
         sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getSession(true)).thenReturn(session);
 

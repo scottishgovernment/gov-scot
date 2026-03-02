@@ -30,7 +30,7 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
     @Override
     protected LoginPanel createLoginPanel(String id, LoginConfig config, LoginHandler handler) {
         SsoConfig ssoConfig = SsoConfig.get();
-        if (ssoConfig.mode() == SsoConfig.Mode.OFF) {
+        if (ssoConfig.form() == SsoConfig.Form.NATIVE) {
             return super.createLoginPanel(id, config, handler);
         }
         return new SsoLoginPanel(id, config, handler);
@@ -65,8 +65,9 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
             this.returnUrl = pageUrl();
 
             SsoConfig ssoConfig = SsoConfig.get();
-            boolean credentialsAllowed = ssoConfig.mode() == SsoConfig.Mode.OPTIONAL;
-            boolean credentialsVisible = credentialsAllowed && ssoConfig.enabled() == SsoConfig.Default.OFF;
+            SsoConfig.Form ssoForm = ssoConfig.form();
+            boolean credentialsAllowed = ssoForm != SsoConfig.Form.SSO;     // true for REVEAL or EXPANDED
+            boolean credentialsVisible = ssoForm == SsoConfig.Form.EXPANDED;
 
             // Use AjaxButton to bypass PreventResubmit.js, which disables submit buttons
             // before POST serialization. In turn, this causes Form.findSubmitter() to return

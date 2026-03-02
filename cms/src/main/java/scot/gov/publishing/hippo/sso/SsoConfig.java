@@ -6,37 +6,52 @@ import org.hippoecm.hst.site.HstServices;
 
 public record SsoConfig(
         Mode mode,
-        Default enabled
+        Redirect redirect,
+        Form form
 ) {
 
     static SsoConfig get() {
         ComponentManager componentManager = HstServices.getComponentManager();
         ContainerConfiguration config = componentManager.getContainerConfiguration();
 
-        String modeString = config.getString("sso.mode", Mode.OFF.name());
-        Mode mode = Mode.valueOf(modeString.toUpperCase());
+        Mode mode = enumValue(config, "sso.mode", Mode.OFF);
 
-        Default enabled = switch (mode) {
-            case REQUIRED -> Default.ON;
-            case OFF -> Default.OFF;
-            case OPTIONAL -> {
-                String string = config.getString("sso.default", Default.ON.name());
-                yield Default.valueOf(string.toUpperCase());
-            }
+        Redirect redirect = switch (mode) {
+            case OFF -> Redirect.MANUAL;
+            case REQUIRED, OPTIONAL -> enumValue(config, "sso.redirect", Redirect.AUTO);
         };
 
-        return new SsoConfig(mode, enabled);
+        Form form = switch (mode) {
+            case REQUIRED -> Form.SSO;
+            case OFF      -> Form.NATIVE;
+            case OPTIONAL -> enumValue(config, "sso.form", Form.REVEAL);
+        };
+
+        return new SsoConfig(mode, redirect, form);
     }
 
-    enum Mode {
+    static <T extends Enum<T>> T enumValue(ContainerConfiguration config, String name, T defaultValue) {
+        String value = config.getString(name, defaultValue.name()).toUpperCase();
+        return Enum.valueOf(defaultValue.getDeclaringClass(), value);
+    }
+
+    enum Mode     {
         REQUIRED,
         OPTIONAL,
-        OFF,
+        OFF
     }
 
-    enum Default {
-        ON,
-        OFF,
+    enum Redirect {
+        AUTO,
+        MANUAL
+    }
+
+    enum Form {
+        NATIVE,
+        REVEAL,
+        EXPANDED,
+        // SSO is internal-only for REQUIRED
+        SSO
     }
 
 }

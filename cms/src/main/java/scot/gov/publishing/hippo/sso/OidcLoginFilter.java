@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 public class OidcLoginFilter extends HttpFilter {
@@ -100,9 +99,9 @@ public class OidcLoginFilter extends HttpFilter {
         HttpSession session = request.getSession(false);
         boolean sessionAttr = session != null && session.getAttribute(SsoSessionAttributes.SSO) != null;
         boolean sso = switch (ssoConfig.mode()) {
-            case REQUIRED -> true;
-            case OPTIONAL -> sessionAttr || cookiePreference(request, this.ssoConfig.enabled());
             case OFF -> false;
+            case REQUIRED -> ssoConfig.redirect() == SsoConfig.Redirect.AUTO;
+            case OPTIONAL -> sessionAttr || cookiePreference(request);
         };
         return sso && !isExcluded(request) && !isLoggedOut(request);
     }
@@ -120,18 +119,18 @@ public class OidcLoginFilter extends HttpFilter {
                 || EXCLUDED_PATHS.contains(path);
     }
 
-    private boolean cookiePreference(HttpServletRequest request, SsoConfig.Default enabled) {
+    private boolean cookiePreference(HttpServletRequest request) {
+        boolean systemDefault = ssoConfig.redirect() == SsoConfig.Redirect.AUTO;
         Cookie[] cookies = request.getCookies();
         if (ArrayUtils.isEmpty(cookies)) {
-            // Early return if no cookies
-            return enabled == SsoConfig.Default.ON;
+            return systemDefault;
         }
-        Optional<Boolean> first = Arrays.stream(cookies)
+        return Arrays.stream(cookies)
                 .filter(c -> SsoFilter.SSO_COOKIE_NAME.equalsIgnoreCase(c.getName()))
                 .map(Cookie::getValue)
                 .map(BooleanUtils::toBoolean)
-                .findFirst();
-        return first.orElse(enabled == SsoConfig.Default.ON);
+                .findFirst()
+                .orElse(systemDefault);
     }
 
 }
