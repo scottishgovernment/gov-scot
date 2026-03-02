@@ -49,20 +49,6 @@ public class CallbackHandler {
         }
     }
 
-    private static void redirectWithError(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        HttpSession session = req.getSession();
-        String returnUrl = Objects.toString(
-                session.getAttribute(SsoSessionAttributes.RETURN_URL),
-                req.getContextPath() + "/");
-        // Clear OIDC flow attributes from the failed attempt — they are single-use and
-        // tied to this now-failed flow, so leaving them would only add debugging noise.
-        session.removeAttribute(SsoSessionAttributes.STATE);
-        session.removeAttribute(SsoSessionAttributes.NONCE);
-        session.removeAttribute(SsoSessionAttributes.CODE_VERIFIER);
-        session.setAttribute(SsoSessionAttributes.CALLBACK_ERROR, true);
-        resp.sendRedirect(returnUrl);
-    }
-
     private synchronized void ensureConfigured() throws CallbackException {
         try {
             if (!configured) {
@@ -221,6 +207,20 @@ public class CallbackHandler {
         creds.setAttribute(SsoAttributes.SSO_GIVEN_NAME, userInfo.getGivenName());
         creds.setAttribute(SsoAttributes.SSO_FAMILY_NAME, userInfo.getFamilyName());
         session.setAttribute(SsoSessionAttributes.CREDENTIALS, new UserCredentials(creds));
+    }
+
+    private static void redirectWithError(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        String returnUrl = Objects.toString(
+                session.getAttribute(SsoSessionAttributes.RETURN_URL),
+                req.getContextPath() + "/");
+        // Clear OIDC flow attributes from the failed attempt — they are single-use and
+        // tied to this now-failed flow, so leaving them would only add debugging noise.
+        session.removeAttribute(SsoSessionAttributes.STATE);
+        session.removeAttribute(SsoSessionAttributes.NONCE);
+        session.removeAttribute(SsoSessionAttributes.CODE_VERIFIER);
+        session.setAttribute(SsoSessionAttributes.CALLBACK_ERROR, true);
+        resp.sendRedirect(returnUrl);
     }
 
     static class CallbackException extends Exception {

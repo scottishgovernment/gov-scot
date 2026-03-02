@@ -42,7 +42,15 @@ public record OidcConfig(
 
     private static final Logger LOG = LoggerFactory.getLogger(OidcConfig.class);
 
-    static OidcConfig get() throws GeneralException, IOException, JOSEException {
+    static OidcConfig get() {
+        try {
+            return loadConfig();
+        } catch (IOException | GeneralException | JOSEException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private static OidcConfig loadConfig() throws GeneralException, IOException, JOSEException {
         ContainerConfiguration config = HstServices.getComponentManager().getContainerConfiguration();
 
         String issuer = config.getString("oidc.issuer");

@@ -8,18 +8,20 @@ import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.hippoecm.frontend.plugin.IPluginContext;
 import org.hippoecm.frontend.plugin.config.IPluginConfig;
 import org.hippoecm.frontend.plugins.login.DefaultLoginPlugin;
 import org.hippoecm.frontend.plugins.login.LoginConfig;
 import org.hippoecm.frontend.plugins.login.LoginHandler;
 import org.hippoecm.frontend.plugins.login.LoginPanel;
-import org.jetbrains.annotations.NotNull;
 import org.onehippo.forge.resetpassword.frontend.ResetPasswordConst;
 import org.onehippo.forge.resetpassword.login.CustomLoginPlugin;
 
 @SuppressWarnings("unused")
 public class SsoLoginPlugin extends CustomLoginPlugin {
+
+    private final OidcConfig oidcConfig = OidcConfig.get();
 
     public SsoLoginPlugin(IPluginContext context, IPluginConfig config) {
         super(context, config);
@@ -31,7 +33,7 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
         if (ssoConfig.mode() == SsoConfig.Mode.OFF) {
             return super.createLoginPanel(id, config, handler);
         }
-        return new SsoLoginForm(id, config, handler);
+        return new SsoLoginPanel(id, config, handler);
     }
 
     private static void checkSsoErrors(LoginPanel panel) {
@@ -54,15 +56,17 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
         }
     }
 
-    class SsoLoginForm extends DefaultLoginPlugin.TimeZonePanel {
+    class SsoLoginPanel extends DefaultLoginPlugin.TimeZonePanel {
 
-        public SsoLoginForm(String id, LoginConfig config, LoginHandler handler) {
+        private final String returnUrl;
+
+        public SsoLoginPanel(String id, LoginConfig config, LoginHandler handler) {
             super(id, config, handler);
+            this.returnUrl = pageUrl();
 
             SsoConfig ssoConfig = SsoConfig.get();
-            boolean credentialsVisible = ssoConfig.mode() == SsoConfig.Mode.OPTIONAL
-                    && ssoConfig.enabled() == SsoConfig.Default.OFF;
             boolean credentialsAllowed = ssoConfig.mode() == SsoConfig.Mode.OPTIONAL;
+            boolean credentialsVisible = credentialsAllowed && ssoConfig.enabled() == SsoConfig.Default.OFF;
 
             // Use AjaxButton to bypass PreventResubmit.js, which disables submit buttons
             // before POST serialization. In turn, this causes Form.findSubmitter() to return
@@ -130,6 +134,15 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
             form.add(passwordToggle);
         }
 
+        private static String pageUrl() {
+            HttpServletRequest httpRequest = (HttpServletRequest) RequestCycle.get()
+                    .getRequest()
+                    .getContainerRequest();
+            String requestURI = httpRequest.getRequestURI();
+            String queryString = httpRequest.getQueryString();
+            return queryString == null ? requestURI : requestURI + "?" + queryString;
+        }
+
         private AjaxButton ssoLoginButton() {
             AjaxButton ssoLogin = new AjaxButton("sso-login", form) {
                 @Override
@@ -138,13 +151,17 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
                     HttpSession session = request.getSession(true);
                     session.setAttribute(SsoSessionAttributes.SSO, true);
                     // Ensure no stale credentials are in the session from a previous login.
-                    // This forces and IdP redirect which, in turn, clears the session and
+                    // This forces an IdP redirect which, in turn, clears the session and
                     // ensures the application picks up the new credentials.
                     session.removeAttribute(SsoSessionAttributes.CREDENTIALS);
                     session.removeAttribute(SsoSessionAttributes.LOGGED_OUT);
-                    // Reload the current page as a fresh GET so OidcLoginFilter intercepts
-                    // it and redirects to the IdP.
-                    target.appendJavaScript("window.location.reload();");
+                    // Save the URL of the login page as RETURN_URL, captured when the page
+                    // was first rendered, so CallbackHandler can return the user here after
+                    // authentication.
+                    session.setAttribute(SsoSessionAttributes.RETURN_URL, returnUrl);
+                    // Build the IdP authorization URL and navigate the browser to it.
+                    String idpUrl = new RedirectHandler(oidcConfig).buildRedirectUrl(session);
+                    target.appendJavaScript("window.location.href = '" + idpUrl + "';");
                 }
             };
             ssoLogin.add(new Label("sso-login-label", new ResourceModel("sso.login")));

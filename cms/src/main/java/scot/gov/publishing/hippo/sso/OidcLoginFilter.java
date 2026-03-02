@@ -1,12 +1,5 @@
 package scot.gov.publishing.hippo.sso;
 
-import com.nimbusds.oauth2.sdk.ResponseType;
-import com.nimbusds.oauth2.sdk.Scope;
-import com.nimbusds.oauth2.sdk.id.State;
-import com.nimbusds.oauth2.sdk.pkce.CodeChallengeMethod;
-import com.nimbusds.oauth2.sdk.pkce.CodeVerifier;
-import com.nimbusds.openid.connect.sdk.AuthenticationRequest;
-import com.nimbusds.openid.connect.sdk.Nonce;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -16,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -28,16 +20,12 @@ public class OidcLoginFilter extends HttpFilter {
 
     private static final Logger LOG = LoggerFactory.getLogger(OidcLoginFilter.class);
 
-    private static final Scope SCOPE = new Scope("openid", "profile", "email");
-
     private static final List<String> EXCLUDED_PREFIXES = List.of(
             "/angular/",
             "/ckeditor/",
-            "/favicon.ico",
             "/logging/",
             "/navapp-assets/",
             "/skin/",
-            "/ping/",
             "/resetpassword",
             "/sso/",
             "/wicket/",
@@ -45,15 +33,17 @@ public class OidcLoginFilter extends HttpFilter {
     );
 
     private static final Set<String> EXCLUDED_PATHS = Set.of(
+            "/favicon.ico",
+            "/ping/",
             "/ws/navigationitems",
             "/ws/indexexport"
     );
 
     SsoConfig ssoConfig;
-    OidcConfig oidcConfig;
+    RedirectHandler redirectHandler;
     boolean configured = false;
 
-    private synchronized void ensureConfigured() throws ServletException {
+    private synchronized void ensureConfigured() {
         if (configured) {
             return;
         }
@@ -65,11 +55,7 @@ public class OidcLoginFilter extends HttpFilter {
             return;
         }
 
-        try {
-            this.oidcConfig = OidcConfig.get();
-        } catch (Exception ex) {
-            throw new ServletException("Not configured", ex);
-        }
+        this.redirectHandler = new RedirectHandler(OidcConfig.get());
         this.configured = true;
     }
 
@@ -103,10 +89,10 @@ public class OidcLoginFilter extends HttpFilter {
             return;
         }
 
-        String url = idpRedirect(session);
+        session.setAttribute(SsoSessionAttributes.RETURN_URL, requestUrl);
+        String url = redirectHandler.buildRedirectUrl(session);
         LOG.info("Redirecting from {}", requestUrl);
         LOG.info("Redirecting to {}", url);
-        session.setAttribute(SsoSessionAttributes.RETURN_URL, requestUrl);
         response.sendRedirect(url);
     }
 
@@ -146,29 +132,6 @@ public class OidcLoginFilter extends HttpFilter {
                 .map(BooleanUtils::toBoolean)
                 .findFirst();
         return first.orElse(enabled == SsoConfig.Default.ON);
-    }
-
-    private String idpRedirect(HttpSession session) {
-        State state = new State();
-        Nonce nonce = new Nonce();
-        CodeVerifier codeVerifier = new CodeVerifier();
-        session.setAttribute(SsoSessionAttributes.CODE_VERIFIER, codeVerifier);
-        session.setAttribute(SsoSessionAttributes.STATE, state);
-        session.setAttribute(SsoSessionAttributes.NONCE, nonce);
-
-        AuthenticationRequest authRequest = new AuthenticationRequest.Builder(
-                new ResponseType(ResponseType.Value.CODE),
-                SCOPE,
-                oidcConfig.clientId(),
-                URI.create(oidcConfig.redirectUri()))
-                .endpointURI(oidcConfig.authorizationEndpoint())
-                .codeChallenge(codeVerifier, CodeChallengeMethod.S256)
-                .state(state)
-                .responseType(ResponseType.CODE)
-                .nonce(nonce)
-                .build();
-
-        return authRequest.toURI().toString();
     }
 
 }

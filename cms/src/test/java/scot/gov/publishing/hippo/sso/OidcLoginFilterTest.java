@@ -183,7 +183,7 @@ public class OidcLoginFilterTest {
     @Test
     public void requiredModeRedirectsToIdP() throws Exception {
         sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
-        sut.oidcConfig = testOidcConfig();
+        sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getSession(true)).thenReturn(session);
 
         sut.doFilter(req, resp, chain);
@@ -198,7 +198,7 @@ public class OidcLoginFilterTest {
     @Test
     public void optionalModeWithSsoSessionAttrRedirectsToIdP() throws Exception {
         sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.OFF);
-        sut.oidcConfig = testOidcConfig();
+        sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getSession(false)).thenReturn(session);
         when(req.getSession(true)).thenReturn(session);
         when(session.getAttribute(SsoSessionAttributes.SSO)).thenReturn("true");
@@ -212,7 +212,7 @@ public class OidcLoginFilterTest {
     @Test
     public void optionalModeWithSsoCookieTrueRedirectsToIdP() throws Exception {
         sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.OFF);
-        sut.oidcConfig = testOidcConfig();
+        sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getCookies()).thenReturn(new Cookie[]{new Cookie(SsoFilter.SSO_COOKIE_NAME, "true")});
         when(req.getSession(true)).thenReturn(session);
 
@@ -225,7 +225,7 @@ public class OidcLoginFilterTest {
     @Test
     public void optionalModeNoCookieDefaultOnRedirectsToIdP() throws Exception {
         sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Default.ON);
-        sut.oidcConfig = testOidcConfig();
+        sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getCookies()).thenReturn(null);
         when(req.getSession(true)).thenReturn(session);
 
@@ -242,7 +242,7 @@ public class OidcLoginFilterTest {
     @Test
     public void redirectUrlContainsResponseTypeCodeAndStateParam() throws Exception {
         sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Default.ON);
-        sut.oidcConfig = testOidcConfig();
+        sut.redirectHandler = new RedirectHandler(testOidcConfig());
         when(req.getSession(true)).thenReturn(session);
 
         sut.doFilter(req, resp, chain);
