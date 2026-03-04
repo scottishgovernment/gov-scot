@@ -175,6 +175,46 @@ public class OidcLoginFilterTest {
         verify(resp, never()).sendRedirect(anyString());
     }
 
+    /**
+     * REQUIRED+MANUAL: requireSsoSession() returns false so the filter does not auto-redirect.
+     * However, CallbackHandler still stores credentials in a fresh session after IdP auth.
+     * The filter must copy them to request attributes so Wicket can pick them up.
+     */
+    @Test
+    public void requiredModeManualCredentialsInSessionPassesThroughAndSetsRequestAttribute() throws Exception {
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.REQUIRED, SsoConfig.Redirect.MANUAL, SsoConfig.Form.SSO);
+        Object mockCreds = mock(Object.class);
+        when(req.getSession(false)).thenReturn(session);
+        when(session.getAttribute(OidcLoginFilter.CREDENTIALS_ATTR_NAME)).thenReturn(mockCreds);
+
+        sut.doFilter(req, resp, chain);
+
+        verify(req).setAttribute(OidcLoginFilter.CREDENTIALS_ATTR_NAME, mockCreds);
+        verify(chain).doFilter(req, resp);
+        verify(resp, never()).sendRedirect(anyString());
+    }
+
+    /**
+     * OPTIONAL+MANUAL: after callback, CallbackHandler creates a fresh session with only
+     * credentials (the SSO session attribute was in the old session). With MANUAL system
+     * default and no sso cookie, requireSsoSession() returns false — credentials must still
+     * be forwarded to the request.
+     */
+    @Test
+    public void optionalModeManualCredentialsInSessionPassesThroughAndSetsRequestAttribute() throws Exception {
+        sut.ssoConfig = new SsoConfig(SsoConfig.Mode.OPTIONAL, SsoConfig.Redirect.MANUAL, SsoConfig.Form.REVEAL);
+        Object mockCreds = mock(Object.class);
+        when(req.getSession(false)).thenReturn(session);
+        when(session.getAttribute(OidcLoginFilter.CREDENTIALS_ATTR_NAME)).thenReturn(mockCreds);
+        when(req.getCookies()).thenReturn(null);
+
+        sut.doFilter(req, resp, chain);
+
+        verify(req).setAttribute(OidcLoginFilter.CREDENTIALS_ATTR_NAME, mockCreds);
+        verify(chain).doFilter(req, resp);
+        verify(resp, never()).sendRedirect(anyString());
+    }
+
     // =========================================================================
     // IdP redirect cases — filter must call response.sendRedirect() to the IdP
     // and store STATE, NONCE, and CODE_VERIFIER in the session.

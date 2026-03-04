@@ -66,7 +66,7 @@ public class SsoLoginPlugin extends CustomLoginPlugin {
 
             SsoConfig ssoConfig = SsoConfig.get();
             SsoConfig.Form ssoForm = ssoConfig.form();
-            boolean credentialsAllowed = ssoForm != SsoConfig.Form.SSO;     // true for REVEAL or EXPANDED
+            boolean credentialsAllowed = ssoForm != SsoConfig.Form.SSO;
             boolean credentialsVisible = ssoForm == SsoConfig.Form.EXPANDED;
 
             // Use AjaxButton to bypass PreventResubmit.js, which disables submit buttons

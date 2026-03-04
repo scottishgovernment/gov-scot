@@ -75,19 +75,26 @@ public class OidcLoginFilter extends HttpFilter {
             return;
         }
 
-        if (!requireSsoSession(request)) {
+        // Always propagate credentials from session to request, regardless of redirect mode.
+        // In REQUIRED+MANUAL and OPTIONAL+MANUAL the filter does not auto-redirect, but
+        // CallbackHandler still stores credentials in a fresh session after IdP authentication.
+        // Without this check those credentials would be silently dropped.
+        HttpSession existingSession = request.getSession(false);
+        if (existingSession != null) {
+            Object creds = existingSession.getAttribute(CREDENTIALS_ATTR_NAME);
+            if (creds != null) {
+                request.setAttribute(CREDENTIALS_ATTR_NAME, creds);
+                chain.doFilter(request, response);
+                return;
+            }
+        }
+
+        if (!requiresIdpRedirect(request)) {
             chain.doFilter(request, response);
             return;
         }
 
         HttpSession session = request.getSession(true);
-        Object creds = session.getAttribute(CREDENTIALS_ATTR_NAME);
-        if (creds != null) {
-            request.setAttribute(CREDENTIALS_ATTR_NAME, creds);
-            chain.doFilter(request, response);
-            return;
-        }
-
         session.setAttribute(SsoSessionAttributes.RETURN_URL, requestUrl);
         String url = redirectHandler.buildRedirectUrl(session);
         LOG.info("Redirecting from {}", requestUrl);
@@ -95,7 +102,7 @@ public class OidcLoginFilter extends HttpFilter {
         response.sendRedirect(url);
     }
 
-    private boolean requireSsoSession(HttpServletRequest request) {
+    private boolean requiresIdpRedirect(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         boolean sessionAttr = session != null && session.getAttribute(SsoSessionAttributes.SSO) != null;
         boolean sso = switch (ssoConfig.mode()) {
