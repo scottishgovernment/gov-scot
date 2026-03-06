@@ -1,7 +1,6 @@
 script-src
   'nonce-<nonce>'
   'self'
-  data:
   https://www.youtube.com
   https://s.ytimg.com
   https://www.google-analytics.com
