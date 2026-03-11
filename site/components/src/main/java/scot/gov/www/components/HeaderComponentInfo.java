@@ -15,15 +15,8 @@ public interface HeaderComponentInfo {
     @DropDownList({"left", "center", "right"})
     String getPosition();
 
-    @Parameter(name = "fullwidth", displayName = "Full-width background", defaultValue = "true")
-    Boolean getFullWidth();
-
-    @Parameter(name = "foregroundcolor", displayName = "Text colour (on white background)")
-    @DropDownList(valueListProvider = ComponentForegroundColourValueListProvider.class)
-    String getForegroundColor();
-
     @Parameter(name = "backgroundcolor", displayName = "Background colour")
-    @DropDownList(valueListProvider = ComponentBackgroundColourValueListProvider.class)
+    @DropDownList({"Secondary", "Tertiary", "Theme"})
     String getBackgroundColor();
 
     @Parameter(name = "removebottompadding", displayName = "Remove bottom padding", defaultValue = "false")

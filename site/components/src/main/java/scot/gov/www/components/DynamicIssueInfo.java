@@ -6,7 +6,7 @@ import org.hippoecm.hst.core.parameters.FieldGroup;
 import org.hippoecm.hst.core.parameters.FieldGroupList;
 
 @FieldGroupList({
-    @FieldGroup(titleKey = "Appearance", value = { "showNews", "showPublications", "showPolicies", "neutrallinks", "removebottompadding"}),
+    @FieldGroup(titleKey = "Appearance", value = { "showNews", "showPublications", "showPolicies", "removebottompadding"}),
     @FieldGroup(titleKey = "Content", value = { "document"})
 })
 
@@ -28,9 +28,6 @@ public interface DynamicIssueInfo {
 
     @Parameter(name = "showPublications", displayName = "Show Publications", defaultValue = "false")
     Boolean getShowPublications();
-
-    @Parameter(name = "neutrallinks", displayName = "Neutral link colour", defaultValue = "false")
-    Boolean getNeutralLinks();
 
     @Parameter(name = "removebottompadding", displayName = "Remove bottom padding", defaultValue = "false")
     Boolean getRemoveBottomPadding();

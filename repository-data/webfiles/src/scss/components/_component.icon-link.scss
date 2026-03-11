@@ -2,6 +2,8 @@
     ICON LINK
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 $icon-spacing: 1.5em;
 
 .gov_icon-link {
@@ -23,7 +25,7 @@ $icon-spacing: 1.5em;
     }
 
     &__icon--chevron {
-        @include ds_chevron(right, 0.583333em);
+        @include ds_helpers.ds_chevron(right, 0.583333em);
 
         margin-top: -0.25em;
         right: 0.333333em;
@@ -47,7 +49,7 @@ $icon-spacing: 1.5em;
         right: auto;
 
         &--chevron {
-            @include ds_chevron(left, 0.583333em);
+            @include ds_helpers.ds_chevron(left, 0.583333em);
 
             left: 0.333333em;
         }
@@ -64,7 +66,7 @@ $icon-spacing: 1.5em;
             border-bottom-width: 3px;
             padding-bottom: 1px;
 
-            @include ds_media-query(medium) {
+            @include ds_helpers.ds_media-query(medium) {
                 border-bottom-width: 4px;
                 padding-bottom: 0;
             }

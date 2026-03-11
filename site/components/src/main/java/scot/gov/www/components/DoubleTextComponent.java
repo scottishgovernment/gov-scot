@@ -19,10 +19,7 @@ public class DoubleTextComponent extends CommonComponent {
         setDocument("document1", paramInfo.getDocument1(), request);
         setDocument("document2", paramInfo.getDocument2(), request);
 
-        request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
-        request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
-        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 

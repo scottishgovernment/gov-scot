@@ -3,17 +3,26 @@
 <#include "../../../include/cms-placeholders.ftl">
 <#-- @ftlvariable name="document" type="scot.gov.www.beans.Imageandtext" -->
 
-<div class="ds_cb  ds_cb--image-text
-    <#if backgroundcolor?? && backgroundcolor?length gt 0>ds_cb--bg-${backgroundcolor}</#if>
-    <#if foregroundcolor?? && foregroundcolor?length gt 0>ds_cb--fg-${foregroundcolor}</#if>
-    <#if fullwidth>ds_cb--fullwidth</#if>
-    <#if neutrallinks>  ds_cb--neutral-links</#if>
-    <#if removebottompadding>  ds_!_padding-bottom--0</#if>
-">
+<div class="ds_pb  ds_pb--image-text
+<#if backgroundcolor?has_content> 
+<#switch backgroundcolor?lower_case> 
+  <#case 'secondary'>
+  ds_pb--background-secondary
+  <#break>
+  <#case 'tertiary'>
+  ds_pb--background-tertiary
+  <#break>
+  <#case 'theme'>
+  ds_pb__theme--background-secondary
+  <#break>
+</#switch>
+</#if>
+<#if verticalcenter?has_content><#if verticalcenter>  ds_pb--image-text--center</#if></#if>
+<#if removebottompadding>  ds_!_padding-bottom--0</#if>">
     <div class="ds_wrapper">
-        <div class="ds_cb__inner">
+        <div class="ds_pb__inner">
             <#if document??>
-                <div class="ds_cb__poster">
+                <div class="ds_pb__poster">
                     <#if document.image.xlargesixcolumns??>
                         <img alt="${document.alt}" src="<@hst.link hippobean=document.image.xlargesixcolumns />"
                             width="${document.image.xlargesixcolumns.width?c}"
@@ -35,17 +44,17 @@
                     </#if>
                 </div>
 
-                <div class="ds_cb__text">
+                <div class="ds_pb__text">
                     <@hst.html hippohtml=document.content/>
                 </div>
 
                 <@hst.manageContent hippobean=document documentTemplateQuery="new-imageandtext-document" parameterName="document"/>
             <#elseif editMode>
-                <div class="ds_cb__poster cms-blank">
+                <div class="ds_pb__poster cms-blank">
                     <@placeholderimage/>
                 </div>
 
-                <div class="ds_cb__text cms-blank">
+                <div class="ds_pb__text cms-blank">
                     <@placeholdertext lines=7/>
                 </div>
 

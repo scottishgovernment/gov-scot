@@ -23,10 +23,7 @@ public class FeatureGridComponent extends CommonComponent {
         request.setAttribute("document4", getHippoDocument(paramInfo.getImage4()));
         request.setAttribute("weight", paramInfo.getWeight());
 
-        request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
-        request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
-        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
         request.setAttribute("showimages", paramInfo.getShowImages());
         request.setAttribute("smallvariant", paramInfo.getSmallVariant());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());

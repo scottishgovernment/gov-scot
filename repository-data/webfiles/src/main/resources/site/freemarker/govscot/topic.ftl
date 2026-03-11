@@ -61,22 +61,22 @@
 
                         <div class="gov_feature-cards">
                             <#list document.featuredItems as item>
-                                <div class="ds_card  ds_card--grey  ds_card--hover  gov_feature-card">
+                                <div class="ds_card  ds_card--background-secondary  ds_card--navigation">
                                     <article class="ds_card__content">
-                                        <h3 class="ds_card__title">
-                                            <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
-                                                ${item.title}
-                                            </a>
-                                        </h3>
-
-                                        <p>
+                                        <div class="ds_card__content-header">
+                                            <h3 class="ds_card__title">
+                                                <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link  ds_card__link--cover">
+                                                    ${item.title}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="ds_card__content-main">
                                             ${item.summary}
-                                        </p>
-
+                                        </div>
                                         <div class="ds_card__content-footer">
                                             <#assign date = (item.publicationDate.time)!item.properties['hippostdpubwf:lastModificationDate'].time />
 
-                                            <dl class="ds_metadata  ds_metadata--inline  gov_featured-item__metadata">
+                                            <dl class="ds_metadata  ds_metadata--inline">
                                                 <div class="ds_metadata__item">
                                                     <dt class="ds_metadata__key">
                                                         Publication date</dt>
@@ -85,10 +85,12 @@
                                                     </dd>
                                                 </div>
 
-                                                <div class="ds_metadata__item">
-                                                    <dt class="ds_metadata__key">Type</dt>
-                                                    <dd class="ds_metadata__value">${item.label}</dd>
-                                                </div>
+                                                <#if item.label?has_content>
+                                                    <div class="ds_metadata__item">
+                                                        <dt class="ds_metadata__key">Type</dt>
+                                                        <dd class="ds_metadata__value">${item.label}</dd>
+                                                    </div>
+                                                </#if>
                                             </dl>
                                         </div>
                                     </article>

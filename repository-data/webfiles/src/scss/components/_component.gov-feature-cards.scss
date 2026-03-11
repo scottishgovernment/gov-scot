@@ -2,53 +2,14 @@
     FEATURE CARDS
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .gov_feature-cards {
-    @include ds_responsive-margin(8, bottom);
+    @include ds_helpers.ds_responsive-margin(8, bottom);
+    display: grid;
+    grid-gap: 2rem;
 
-    .gov_feature-card {
-        margin-bottom: 32px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-.gov_feature-card {
-    @include ds_responsive-margin(8, bottom);
-}
-
-@include ds_media-query('medium') {
-    .gov_feature-cards {
-        display: flex;
-
-        .gov_feature-card {
-            margin-bottom: 0;
-            margin-right: 32px;
-            width: calc(33.33333% - 21px);
-
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-    }
-}
-
-@supports (display: grid) {
-    .gov_feature-cards {
-        display: grid;
-        grid-gap: 32px;
-
-        .gov_feature-card {
-            margin-bottom: 0;
-            margin-right: 0;
-            width: auto;
-        }
-    }
-
-     @include ds_media-query('medium') {
-        .gov_feature-cards {
-            grid-template-columns: repeat(3, 1fr);
-        }
+    @include ds_helpers.ds_media-query('medium') {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

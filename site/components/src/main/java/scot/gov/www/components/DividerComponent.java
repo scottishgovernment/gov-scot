@@ -14,6 +14,5 @@ public class DividerComponent extends CommonComponent {
 
         DividerComponentInfo paramInfo = getComponentParametersInfo(request);
         request.setAttribute("fullwidth", paramInfo.getFullWidth());
-        request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
     }
 }

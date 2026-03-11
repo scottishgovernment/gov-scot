@@ -2,17 +2,7 @@
     CARD OVERRIDES
 \*------------------------------------*/
 
-.ds_card {
-    grid-template-rows: unset;
-}
-
-.ds_card:has(.ds_card__content-footer) {
-    .ds_card__content {
-        padding-bottom: 16px;
-    }
-}
-
-.ds_card:has(.ds_card__media) {
-    align-content: start;
-    grid-template-rows: auto 1fr;
+.gov_collection-item-card {
+    margin-bottom: 1rem;
+    margin-left: -1.25rem;
 }

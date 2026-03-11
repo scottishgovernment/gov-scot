@@ -1,6 +1,6 @@
 'use strict';
 
-import storage from '../../../node_modules/@scottish-government/design-system/src/base/tools/storage/storage';
+import storage from '@scottish-government/design-system/dist/scripts/base/tools/storage/storage';
 
 class Notification {
     constructor (notification, closeCookie = false, closeCookieDuration = 30) {

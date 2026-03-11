@@ -10,19 +10,19 @@
   "scripts": {
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
-    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed",
+    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --pkg-importer=node --quiet",
     "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --config ./webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "@dryfeld/nunjucks-loader": "^4.0.6",
-    "@scottish-government-design-system/content-blocks": "^0.1.2",
-    "@scottish-government/design-system": "^3.4.1",
+    "@scottish-government-design-system/page-blocks": "^2.0.0-beta.1",
+    "@scottish-government/design-system": "^4.0.0",
     "babel-loader": "^10.0.0",
     "mkdirp": "^3.0.1",
     "nunjucks": "^3.2.4",
-    "sass": "^1.71.1",
+    "sass": "^1.94.3",
     "sealant": "0.0.2",
     "svg-sprite": "^2.0.4",
     "webpack": "^5.102.1",

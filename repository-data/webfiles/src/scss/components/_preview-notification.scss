@@ -1,5 +1,7 @@
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .dp_preview-notification {
-    background-color: $ds_colour__state--negative;
+    background-color: ds_settings.$ds_colour__state--negative;
     position: fixed;
     top: 0;
     width: 100%;
@@ -28,7 +30,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    outline: 8px solid $ds_colour__state--negative;
+    outline: 8px solid ds_settings.$ds_colour__state--negative;
     outline-offset: -8px;
     pointer-events: none;
 }

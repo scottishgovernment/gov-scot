@@ -2,13 +2,15 @@
     FILTERS
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .ds_filters {
 
 }
 
 .gov_filters {
-    @include ds_small-size;
-    
+    @include ds_helpers.ds_small-size;
+
     &__scrollable {
 
         &--fixed {

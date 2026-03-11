@@ -2,15 +2,18 @@
     NOTIFICATION BANNER OVERRIDES
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .ds_notification {
     &--black {
-        background-color: $ds_colour__black;
+        background-color: ds_settings.$ds_colour__black;
     }
 
     &__content {
         min-height: 23px; /// compensate for 1px bottom margin
 
-        @include ds_media-query(medium) {
+        @include ds_helpers.ds_media-query(medium) {
             min-height: 63px; /// compensate for 1px bottom margin
         }
     }

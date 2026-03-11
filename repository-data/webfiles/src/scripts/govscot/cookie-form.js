@@ -1,6 +1,6 @@
 'use strict';
 
-import storage from '../../../node_modules/@scottish-government/design-system/src/base/tools/storage/storage';
+import storage from '@scottish-government/design-system/dist/scripts/base/tools/storage/storage';
 import removeDisallowedCookies from '../tools/remove-disallowed-cookies';
 
 const cookieForm = {
@@ -24,7 +24,7 @@ const cookieForm = {
         const inputGroups = document.querySelectorAll('#cookie-preferences .ds_field-group');
         let cookiePermissions = {};
 
-        if (storage.isJsonString(cookiePermissionsString)) {
+        if (storage.getIsJsonString(cookiePermissionsString)) {
             cookiePermissions = JSON.parse(cookiePermissionsString);
         } else {
             cookiePermissions = {};

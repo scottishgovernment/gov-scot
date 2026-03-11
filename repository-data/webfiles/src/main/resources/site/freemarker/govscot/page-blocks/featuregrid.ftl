@@ -16,15 +16,23 @@
 </#if>
 
 <#if items?size != 0>
-<div class="ds_cb  ds_cb--feature-grid
-<#if fullwidth>  ds_cb--fullwidth</#if>
-<#if backgroundcolor?? && backgroundcolor?length gt 0>  ds_cb--bg-${backgroundcolor}</#if>
-<#if foregroundcolor?? && foregroundcolor?length gt 0>  ds_cb--fg-${foregroundcolor}</#if>
-<#if neutrallinks>  ds_cb--neutral-links</#if>
+<div class="ds_pb  ds_pb--feature-grid
 <#if removebottompadding>  ds_!_padding-bottom--0</#if>
-">
+<#if backgroundcolor?has_content> 
+<#switch backgroundcolor?lower_case> 
+  <#case 'secondary'>
+  ds_pb--background-secondary
+  <#break>
+  <#case 'tertiary'>
+  ds_pb--background-tertiary
+  <#break>
+  <#case 'theme'>
+  ds_pb__theme--background-secondary
+  <#break>
+</#switch>
+</#if>">
     <div class="ds_wrapper">
-        <div class="ds_cb__inner">
+        <div class="ds_pb__inner">
 
         <#list items as item>
 
@@ -38,9 +46,9 @@
                 </#if>
             </#assign>
 
-                <div class="ds_cb--feature-grid__item">
+                <div class="ds_pb--feature-grid__item">
                     <#if showimages>
-                        <div class="ds_cb--feature-grid__item-media  <#if smallvariant>ds_cb--feature-grid__item-media--small-mobile</#if>">
+                        <div class="ds_pb--feature-grid__item-media  <#if smallvariant>ds_pb--feature-grid__item-media--small-mobile</#if>">
                             <#if item.image?has_content>
                             <#if link?has_content>
                             <a href="${link}" tabindex="-1">
@@ -73,7 +81,7 @@
                         </div>
                     </#if>
                     <#if item.title??>
-                        <${weight} class="ds_cb--feature-grid__item-title">
+                        <${weight} class="ds_pb--feature-grid__item-title">
                             <#if link?has_content>
                                 <a href="${link}">${item.title}</a>
                             <#else>
@@ -83,7 +91,7 @@
                     </#if>
                     <@hst.html var="htmlcontent" hippohtml=item.content/>
                     <#if htmlcontent?has_content>
-                    <div class="ds_cb--feature-grid__item-summary">
+                    <div class="ds_pb--feature-grid__item-summary">
                         <@hst.html hippohtml=item.content/>
                     </div>
                     </#if>
@@ -91,16 +99,16 @@
                     <@hst.manageContent hippobean=item documentTemplateQuery="new-featuregriditem-document" parameterName="document${item?index + 1}"/>
                 </div>
             <#elseif editMode>
-                <div class="ds_cb--feature-grid__item  cms-blank">
+                <div class="ds_pb--feature-grid__item  cms-blank">
                     <#if showimages>
-                    <div class="ds_cb--feature-grid__item-media  <#if smallvariant>ds_cb--feature-grid__item-media--small-mobile</#if>">
+                    <div class="ds_pb--feature-grid__item-media  <#if smallvariant>ds_pb--feature-grid__item-media--small-mobile</#if>">
                         <@placeholderimage/>
                     </div>
                     </#if>
-                    <${weight} class="ds_cb--feature-grid__item-title">
+                    <${weight} class="ds_pb--feature-grid__item-title">
                         <@placeholdertext lines=2/>
                     </${weight}>
-                    <div class="ds_cb--feature-grid__item-summary">
+                    <div class="ds_pb--feature-grid__item-summary">
                         <@placeholdertext lines=4/>
                     </div>
 

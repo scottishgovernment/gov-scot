@@ -5,9 +5,9 @@
 
 'use strict';
 
-import breakpointCheck from '../../../node_modules/@scottish-government/design-system/src/base/utilities/breakpoint-check/breakpoint-check';
-import PromiseRequest from '../../../node_modules/@scottish-government/design-system/src/base/tools/promise-request/promise-request';
-import temporaryFocus from '../../../node_modules/@scottish-government/design-system/src/base/tools/temporary-focus/temporary-focus';
+import breakpointCheck from '@scottish-government/design-system/dist/scripts/base/utilities/breakpoint-check/breakpoint-check';
+import PromiseRequest from '@scottish-government/design-system/dist/scripts/base/tools/promise-request/promise-request';
+import temporaryFocus from '@scottish-government/design-system/dist/scripts/base/tools/temporary-focus/temporary-focus';
 import searchUtils from './search-utils';
 
 window.dataLayer = window.dataLayer || [];
@@ -24,7 +24,7 @@ class LandingFilters {
         // set up date pickers
         const imagePath = document.getElementById('imagePath').value;
         const datePickers = [].slice.call(document.querySelectorAll('[data-module="ds-datepicker"]'));
-        datePickers.forEach(datePicker => new window.DS.components.DSDatePicker(datePicker, {imagePath: imagePath, maxDate: new Date()}).init());
+        datePickers.forEach(datePicker => new window.DS.components.DatePicker(datePicker, {imagePath: imagePath, maxDate: new Date()}).init());
 
         // set up events
         this.attachEventHandlers();
@@ -117,7 +117,7 @@ class LandingFilters {
                 event.preventDefault();
                 this.clearFilters();
             }
-            
+
             // pagination link submits search on click
             if (event.target.classList.contains('ds_pagination__link')) {
                 event.preventDefault();
@@ -180,7 +180,7 @@ class LandingFilters {
     }
 
     convertUrl (url, newSearch) {
-        return url.pathname + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));    
+        return url.pathname + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));
     }
 
     doSearch(url, newSearch = false) {
@@ -188,7 +188,7 @@ class LandingFilters {
         const pageUrl = window.location.pathname + searchUtils.getNewQueryString(this.gatherParams(url, newSearch));
 
         if (!url) {
-           
+
             url = this.convertUrl(window.location, newSearch);
 
             // do not proceed if there are errors
@@ -203,7 +203,7 @@ class LandingFilters {
                 // invalid url
                 return false;
             }
-        
+
         }
 
         // disable search containers
@@ -284,13 +284,13 @@ class LandingFilters {
                 searchParams.page = encodeURIComponent(pageParam);
             }
         }
-        
+
         // size
         const sizeParam = searchUtils.getParameterByName('size') || 10;
         if(sizeParam){
             searchParams.size = encodeURIComponent(sizeParam);
         }
-         
+
 
         // content types
         searchParams.type = [];
@@ -323,7 +323,7 @@ class LandingFilters {
             }
         }
 
-        // cat 
+        // cat
         const catParam = searchUtils.getParameterByName('cat');
         if(catParam){
             searchParams.cat = encodeURIComponent(catParam);

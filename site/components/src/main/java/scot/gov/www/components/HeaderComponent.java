@@ -15,9 +15,7 @@ public class HeaderComponent extends CommonComponent {
         request.setAttribute("weight", paramInfo.getWeight());
         request.setAttribute("text", paramInfo.getText());
         request.setAttribute("position", paramInfo.getPosition());
-        request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
-        request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 }

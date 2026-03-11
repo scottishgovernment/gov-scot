@@ -2,6 +2,8 @@
     #HOMEPAGE: ABOUT
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .#{$site-prefix}homepage-fm {
   &__image > img {
     display: block;
@@ -10,7 +12,7 @@
   }
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
   .#{$site-prefix}homepage-fm {
     &__image > img {
       margin: 0 0 16px;
@@ -19,23 +21,23 @@
   }
 }
 
-@include ds_media-query(large) {
+@include ds_helpers.ds_media-query(large) {
   .#{$site-prefix}homepage-fm {
-    @include ds_layout();
+    @include ds_helpers.ds_layout();
 
     &__title {
-      @include ds_colwidth(12);
+      @include ds_helpers.ds_colwidth(12);
     }
 
     &__image {
       float: left;
-      @include ds_colwidth(4);
+      @include ds_helpers.ds_colwidth(4);
       margin-right: 32px;
     }
 
     &__content {
       float: left;
-      @include ds_colwidth(8);
+      @include ds_helpers.ds_colwidth(8);
     }
   }
 }
@@ -67,7 +69,7 @@
       grid-area: c;
     }
 
-    @include ds_media-query(medium) {
+    @include ds_helpers.ds_media-query(medium) {
       &__image > img {
         margin-left: 0;
         margin-right: 0;
@@ -75,7 +77,7 @@
       }
     }
 
-    @include ds_media-query(large) {
+    @include ds_helpers.ds_media-query(large) {
       display: grid;
       grid-gap: 0 $grid-gap-x;
       grid-template-areas: 't t' 'i c';

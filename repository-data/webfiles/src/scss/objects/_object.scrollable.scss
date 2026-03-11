@@ -1,12 +1,15 @@
 /*------------------------------------*\
     #SCROLLABLE
 \*------------------------------------*/
+
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .scrollable {
   position: relative;
 }
 
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
   .scrollable {
 
       ::-webkit-scrollbar {

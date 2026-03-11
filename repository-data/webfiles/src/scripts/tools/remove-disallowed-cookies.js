@@ -7,7 +7,7 @@ export default function() {
         return prev;
     }, {});
 
-    if (!storage.hasPermission(storage.categories.statistics)) {
+    if (!storage.hasPermission('statistics')) {
         function removeStatisticsCookies() {
             const statisticsCookiePrefixes = ['_ga', '_gid', '_ga_'];
             for (const cookie in cookiesAsObject) {
@@ -32,7 +32,7 @@ export default function() {
         });
     }
 
-    if (!storage.hasPermission(storage.categories.preferences)) {
+    if (!storage.hasPermission('preferences')) {
         const preferencesCookiePrefixes = ['banner-'];
         for (const cookie in cookiesAsObject) {
             if (preferencesCookiePrefixes.includes(cookie.substring(0,8))) {

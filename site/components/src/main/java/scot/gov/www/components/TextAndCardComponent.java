@@ -19,9 +19,8 @@ public class TextAndCardComponent extends CommonComponent {
         TextAndCardComponentInfo paramInfo = getComponentParametersInfo(request);
         setDocument("document1", paramInfo.getDocument(), request);
         request.setAttribute("document2", getHippoDocument(paramInfo.getImage()));
-        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
+        request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
         request.setAttribute("showimages", paramInfo.getShowImages());
-        request.setAttribute("smallvariant", paramInfo.getSmallVariant());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 

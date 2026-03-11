@@ -2,34 +2,36 @@
     VISIBILITY
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 /**
 * responsive visibility, cribbed from Bootstrap 3
 */
-@include ds_media-query(medium-down) {
+@include ds_helpers.ds_media-query(medium-down) {
     .hidden-xsmall {
         display: none !important;
     }
 }
 
-@include ds_media-query(small-to-medium) {
+@include ds_helpers.ds_media-query(small-to-medium) {
     .hidden-small {
         display: none !important;
     }
 }
 
-@include ds_media-query(medium-to-large) {
+@include ds_helpers.ds_media-query(medium-to-large) {
     .hidden-medium {
         display: none !important;
     }
 }
 
-@include ds_media-query(large-to-xlarge) {
+@include ds_helpers.ds_media-query(large-to-xlarge) {
     .hidden-large {
         display: none !important;
     }
 }
 
-@include ds_media-query(xlarge-up) {
+@include ds_helpers.ds_media-query(xlarge-up) {
     .hidden-xlarge {
         display: none !important;
     }
@@ -43,7 +45,7 @@
     display: none !important;
 }
 
-@include ds_media-query(medium-down) {
+@include ds_helpers.ds_media-query(medium-down) {
     .visible-xsmall {
         display: block !important;
     }
@@ -53,7 +55,7 @@
     }
 }
 
-@include ds_media-query(small-to-medium) {
+@include ds_helpers.ds_media-query(small-to-medium) {
     .visible-small {
         display: block !important;
     }
@@ -63,7 +65,7 @@
     }
 }
 
-@include ds_media-query(medium-to-large) {
+@include ds_helpers.ds_media-query(medium-to-large) {
     .visible-medium {
         display: block !important;
     }
@@ -73,7 +75,7 @@
     }
 }
 
-@include ds_media-query(large-to-xlarge) {
+@include ds_helpers.ds_media-query(large-to-xlarge) {
     .visible-large {
         display: block !important;
     }
@@ -83,7 +85,7 @@
     }
 }
 
-@include ds_media-query(xlarge-up) {
+@include ds_helpers.ds_media-query(xlarge-up) {
     .visible-xlarge {
         display: block !important;
     }
