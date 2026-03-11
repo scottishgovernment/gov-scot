@@ -10,10 +10,10 @@ import Notification from './component.notification';
 import ToggleLink from './component.toggle-link';
 import UpdateHistory from './component.update-history';
 import setInitialCookiePermissions from '../tools/set-initial-cookie-permissions';
-import storage from '../../../node_modules/@scottish-government/design-system/src/base/tools/storage/storage';
+import storage from '@scottish-government/design-system/dist/scripts/base/tools/storage/storage';
 import removeDisallowedCookies from '../tools/remove-disallowed-cookies';
 
-import '../../../node_modules/@scottish-government/design-system/src/all';
+import '@scottish-government/design-system/dist/scripts/all/all';
 
 const global = {
     init: function () {

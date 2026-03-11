@@ -25,7 +25,7 @@ const config = {
 };
 
 const spritePaths = [
-    'node_modules/@scottish-government/design-system/src/images/icons/svg/',
+    'node_modules/@scottish-government/design-system/dist/images/icons/svg/',
     '../../site/webapp/src/main/webapp/assets/images/icons/svg/',
     'src/main/resources/images/icons/svg/'
 ];
