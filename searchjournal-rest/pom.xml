@@ -38,7 +38,6 @@
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-funnelback-cms</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
@@ -70,15 +69,17 @@
       <artifactId>metrics-core</artifactId>
       <version>3.2.3</version>
     </dependency>
+
     <dependency>
       <groupId>scot.gov.www</groupId>
       <artifactId>publications-rest</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>${project.version}</version>
     </dependency>
-      <dependency>
-          <groupId>org.apache.jackrabbit</groupId>
-          <artifactId>jackrabbit-jcr-commons</artifactId>
-      </dependency>
+
+    <dependency>
+      <groupId>org.apache.jackrabbit</groupId>
+      <artifactId>jackrabbit-jcr-commons</artifactId>
+    </dependency>
 
   </dependencies>
 

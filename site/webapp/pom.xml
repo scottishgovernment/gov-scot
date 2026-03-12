@@ -54,7 +54,6 @@
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-hst</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
   </dependencies>
