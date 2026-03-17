@@ -20,7 +20,6 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import scot.gov.publishing.hippo.funnelback.component.*;
 
 import scot.gov.publishing.hippo.search.PaginationBuilder;
 import scot.gov.publishing.hippo.search.SearchService;
