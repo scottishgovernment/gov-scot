@@ -55,9 +55,9 @@ public class BloomreachSearchService implements SearchService {
 
     public static final String [] DATE_FIELDS = { "govscot:displayDate", "govscot:publicationDate", "hippostdpubwf:lastModificationDate" };
 
-    DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
 
-    DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
 
     static {
         Collections.addAll(FIELD_NAMES,
@@ -274,11 +274,7 @@ public class BloomreachSearchService implements SearchService {
         if (partOf != null) {
             res.getPartOf().add(link(partOf, requestContext));
         }
-
-
         Calendar date = bean.getSingleProperty("govscot:publicationDate");
-
-        ///  for publi
         if (date == null || bean instanceof Publication) {
             date = bean.getSingleProperty("govscot:displayDate");
         }
@@ -286,7 +282,11 @@ public class BloomreachSearchService implements SearchService {
             DateTimeFormatter dateTimeFormatter = "News".equals(res.getLabel()) ? DATE_TIME_FORMATTER : DATE_FORMATTER;
             res.setDisplayDate(dateTimeFormatter.format(date.toInstant().atZone(java.time.ZoneId.systemDefault())));
         }
+        setLabel(res, bean, requestContext);
+        return res;
+    }
 
+    void setLabel(Result res, HippoBean bean, HstRequestContext requestContext) {
         if (bean instanceof Role role) {
             People peopleImage = role.getImage();
             res.setSubtitle(role.getIncumbent().getTitle());
@@ -296,7 +296,6 @@ public class BloomreachSearchService implements SearchService {
             }
             res.setLabel("Role");
         }
-
         if (bean instanceof FeaturedRole role) {
             ColumnImage peopleImage = role.getImage();
             res.setSubtitle(role.getIncumbent().getTitle());
@@ -312,10 +311,7 @@ public class BloomreachSearchService implements SearchService {
                 res.setImage(image(peopleImage, requestContext));
                 res.setLabel("Role");
             }
-
-            // subtitle
         }
-        return res;
     }
 
     Image image(HippoBean imageBean, HstRequestContext requestContext) {

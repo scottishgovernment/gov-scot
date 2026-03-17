@@ -268,18 +268,6 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         request.setAttribute("filterButtons", searchResponse.getFilterButtons());
     }
 
-    private static List<HippoBean> collectionsBeans(HstQueryResult result) {
-        // convert the iterator to a list of hippo beans - otherwise size method fails
-        List<HippoBean> collectionsBeans = new ArrayList<>();
-        HippoBeanIterator it = result.getHippoBeans();
-        while (it.hasNext()) {
-            HippoBean collection = it.nextHippoBean();
-            LOG.info("collectionsBeans adding {}", collection.getPath());
-            collectionsBeans.add(collection);
-        }
-        return collectionsBeans;
-    }
-
     private Constraint constraints(Search search, String [] dateFields) {
         List<Constraint> constraints = new ArrayList<>();
         addTermConstraints(constraints, search);
