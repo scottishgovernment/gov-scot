@@ -4,7 +4,6 @@ import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
-import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.ContentBeanUtils;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
@@ -15,7 +14,6 @@ import java.util.*;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.www.components.FilteredResultsComponent;
 
 @HippoEssentialsGenerated(internalName = "govscot:AttributableContent")
 @Node(jcrType = "govscot:AttributableContent")

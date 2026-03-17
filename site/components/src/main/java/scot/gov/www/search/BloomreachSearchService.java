@@ -316,10 +316,8 @@ public class BloomreachSearchService implements SearchService {
 
     Image image(HippoBean imageBean, HstRequestContext requestContext) {
         HstLinkCreator linkCreator = requestContext.getHstLinkCreator();
-
         String link = linkCreator.create(imageBean, requestContext).toUrlForm(requestContext, true);
         link = link + imageBean.getName();
-        //link = link + "/govscot%3Amediumtwocolumnssquare";
         return Image.createImage(link, "govscot");
     }
 
@@ -329,7 +327,7 @@ public class BloomreachSearchService implements SearchService {
         String url = hstlink.toUrlForm(requestContext, false);
         Link link = new Link();
         link.setUrl(url);
-        link.setLabel(bean.getSingleProperty("govscot:title"));
+        link.setLabel(bean.getSingleProperty(TITLE));
         return link;
     }
 

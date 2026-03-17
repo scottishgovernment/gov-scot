@@ -24,7 +24,6 @@ import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.publishing.hippo.funnelback.component.*;
 import scot.gov.publishing.hippo.search.SearchBuilder;
 import scot.gov.publishing.hippo.search.model.FilterButtonGroups;
 import scot.gov.publishing.hippo.search.model.Search;
