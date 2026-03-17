@@ -5,10 +5,8 @@ import java.util.Map;
 
 public enum Importer {
 
-    CONTENT_ITEMS(
-            "Vuelio Importer",
-            "vuelio-importer",
-            6),;
+    VULEO_SCOTGOV("Vuelio Importer scotgov","vuelio-importer",6),
+    VULEO_SOCIAL_SECURITY("Vuelio Importer Social Security","vuelio-importer-social-security",6);
 
     static Map<String, Importer> byId = new HashMap<>();
 

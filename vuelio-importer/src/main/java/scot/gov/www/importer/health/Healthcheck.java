@@ -36,14 +36,6 @@ public class Healthcheck {
     @Produces(MediaType.APPLICATION_JSON)
     public Health healthcheck() {
         Health health = new Health();
-        FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
-        if (!featureFlag.isEnabled()) {
-            health.setStatus(NagiosStatus.OK);
-            health.setMessage("VuelioImporterJob is disabled via feature flag");
-            health.setInfo(Collections.emptyList());
-            return health;
-        }
-
         try {
             collectHealthInformation(health);
         } catch (RepositoryException e) {
@@ -61,6 +53,15 @@ public class Healthcheck {
         List<String> notOkImporters = new ArrayList<>();
         List<String> info = new ArrayList<>();
         for (Importer importer : Importer.values()) {
+
+            String flagname = "VuelioImporterJob" + importer.name;
+            FeatureFlag featureFlag = new FeatureFlag(session, flagname);
+
+            if (!featureFlag.isEnabled()) {
+                info.add(importer.name+ " disabled");
+                continue;
+            }
+
             ImporterStatus status = statusUpdater.getStatus(importer.node, session);
             ZonedDateTime cutoff = ZonedDateTime.now().minusMinutes(importer.minutesThreshold);
             boolean importerOk = status.getLastSuccessfulRun().isAfter(cutoff);

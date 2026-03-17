@@ -11,6 +11,7 @@ import scot.gov.www.importer.sink.NewsSink;
 import scot.gov.www.importer.sink.PublicationSink;
 import scot.gov.www.importer.vuelio.ContentConverter;
 import scot.gov.www.importer.vuelio.VuelioClient;
+import scot.gov.www.importer.vuelio.VuelioConfiguration;
 import scot.gov.www.importer.vuelio.VuelioException;
 import scot.gov.www.importer.vuelio.rest.ContentItem;
 
@@ -37,13 +38,16 @@ public class VuelioImporter {
 
     ImporterStatus importerStatus;
 
-    public VuelioImporter(Session session) {
+    VuelioConfiguration config;
+
+    public VuelioImporter(Session session, VuelioConfiguration config) {
         this.session = session;
-        vuelio = new VuelioClient();
+        this.config = config;
+        vuelio = new VuelioClient(config);
     }
 
     void doImport() throws RepositoryException {
-        importerStatus = statusUpdater.getStatus("vuelio-importer", session);
+        importerStatus = statusUpdater.getStatus("vuelio-importer-" + config.getName(), session);
         importerStatus.setLastrun(ZonedDateTime.now());
 
         try {

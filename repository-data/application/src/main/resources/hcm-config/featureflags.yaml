@@ -9,3 +9,4 @@ definitions:
         SearchJournalEventListener: true
         SlugLookupsPopulationJob: false
         VuelioImporterJob: false
+        VuelioImporterJobscotgov: true

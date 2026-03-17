@@ -36,8 +36,9 @@ public class VuelioClient {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    public VuelioClient() {
-        VuelioConfiguration config = config();
+    VuelioConfiguration config;
+    public VuelioClient(VuelioConfiguration config) {
+        this.config = config;
         URI uri = URI.create(config.getApi());
         baseUrl = config.getApi();
         host = new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme());
@@ -54,20 +55,6 @@ public class VuelioClient {
         } catch (IOException e) {
             LOG.error("Failed to close httpclient", e);
         }
-    }
-
-    public static VuelioConfiguration config() {
-        ContainerConfiguration containerConfiguration = HstServices.getComponentManager().getContainerConfiguration();
-        String url = containerConfiguration.getString("vuelio.url");
-        String token = containerConfiguration.getString("vuelio.token");
-        if (StringUtils.isBlank(token)) {
-            return null;
-        }
-
-        VuelioConfiguration configuration = new VuelioConfiguration();
-        configuration.setApi(url);
-        configuration.setToken(token);
-        return configuration;
     }
 
     public List<ContentItem> content(Instant time) throws VuelioException {
@@ -94,8 +81,7 @@ public class VuelioClient {
     CloseableHttpResponse get(String url) throws IOException {
         HttpGet request = new HttpGet(url);
         request.addHeader("Content-Type", "application/json; charset=UTF-8");
-        request.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + config().getToken());
+        request.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + config.getToken());
         return httpClient.execute(host, request);
-
     }
 }

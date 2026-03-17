@@ -24,7 +24,7 @@ public class ImporterStatusUpdater {
 
     static Clock clock = Clock.system(ZoneId.of("Europe/London"));
 
-    static Set<String> IMPORTERS = new HashSet<>(Arrays.asList("vuelio-importer"));
+    static Set<String> IMPORTERS = new HashSet<>(Arrays.asList("vuelio-importer-scotgov"));
 
     public ImporterStatus getStatus(String importer, Session session) throws RepositoryException {
         if (!IMPORTERS.contains(importer)) {
