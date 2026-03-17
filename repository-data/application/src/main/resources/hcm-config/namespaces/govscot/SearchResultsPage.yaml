@@ -11,7 +11,7 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 11d3453f-b47a-4bd6-849f-bdff4350b46d
+          jcr:uuid: aab330b7-4a9f-4014-af5e-1329ace85dd9
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
@@ -48,6 +48,24 @@ definitions:
             hipposysedit:path: govscot:blankSearchQueryMessage
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
+          /displayDates:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:displayDates
+            hipposysedit:primary: false
+            hipposysedit:type: Boolean
+            hipposysedit:validators: [required]
+          /displayLabels:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:displayLabels
+            hipposysedit:primary: false
+            hipposysedit:type: Boolean
+            hipposysedit:validators: [required]
       /hipposysedit:prototypes:
         jcr:primaryType: hipposysedit:prototypeset
         /hipposysedit:prototype:
@@ -60,9 +78,11 @@ definitions:
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
           govscot:title: ''
-          jcr:uuid: df830726-8102-44be-a24f-19e612ae80d2
+          jcr:uuid: 13247625-acd1-4a23-9b88-0668f1b6ac72
           hippostdpubwf:lastModificationDate: 2024-01-18T12:51:03.723Z
           hippostdpubwf:creationDate: 2024-01-18T12:51:03.723Z
+          govscot:displayDates: true
+          govscot:displayLabels: true
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -135,3 +155,21 @@ definitions:
                 txtEmbed\", \"chkOlderCode\"],\t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]\"\
                 ,\t\"language_list\": [\t\t\"en:English\",\t\t\"gd:Gaelic (Scottish)\"\
                 ,\t\t\"ru:Russian\",\t\t\"uk:Ukrainian\"\t]}"
+          /displayDates:
+            jcr:primaryType: frontend:plugin
+            caption: Dispay dates?
+            field: displayDates
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /displayLabels:
+            jcr:primaryType: frontend:plugin
+            caption: Display labels?
+            field: displayLabels
+            hint: ''
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

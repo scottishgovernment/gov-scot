@@ -9,18 +9,20 @@
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
     jcr:uuid: 9783d712-d3b4-4d41-8ce8-ac2a99fae902
     hippo:name: Search results
-    hippo:versionHistory: 68a9c058-052a-46f8-b175-f6c172a7e68b
+    hippo:versionHistory: c8c0ba26-0319-4f28-bb0d-d1b945431005
     /index[1]:
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 7ce89f63-18d5-4277-9127-551c94597824
+      govscot:displayDates: true
+      govscot:displayLabels: true
       govscot:title: Search title
       hippo:availability: []
       hippostd:retainable: false
       hippostd:state: draft
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
-      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:29.202Z
+      hippostdpubwf:lastModificationDate: 2026-03-12T09:13:14.136Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
       hippotranslation:locale: document-type-locale
@@ -48,13 +50,15 @@
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: e497d4e2-905f-4f58-9f4f-10954937c56b
+      govscot:displayDates: true
+      govscot:displayLabels: true
       govscot:title: Search title
       hippo:availability: [preview]
       hippostd:retainable: false
       hippostd:state: unpublished
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
-      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:43.362Z
+      hippostdpubwf:lastModificationDate: 2026-02-27T13:11:00.582Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
       hippotranslation:locale: document-type-locale
@@ -82,15 +86,18 @@
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: daf55a04-cc49-4341-b9ca-e67020f00aa4
+      govscot:displayDates: true
+      govscot:displayLabels: true
       govscot:title: Search title
       hippo:availability: [live]
       hippostd:retainable: false
       hippostd:state: published
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-18T16:52:59.563Z
-      hippostdpubwf:lastModificationDate: 2024-01-30T10:42:43.362Z
+      hippostdpubwf:lastModificationDate: 2026-02-27T13:11:00.582Z
       hippostdpubwf:lastModifiedBy: admin
-      hippostdpubwf:publicationDate: 2024-01-30T10:42:45.399Z
+      hippostdpubwf:publicationDate: 2026-02-27T13:11:03.025Z
+      hippostdpubwf:publishedBy: admin
       hippotranslation:id: eb557c5e-fbc5-496e-a4c4-e76df5a04a62
       hippotranslation:locale: document-type-locale
       /govscot:content:

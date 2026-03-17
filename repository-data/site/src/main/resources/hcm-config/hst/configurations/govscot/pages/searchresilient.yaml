@@ -7,17 +7,17 @@ definitions:
       hst:parametervalues: ['true', resilient, 'q,qsup,page,topics,publicationTypes,begin,end,sort']
       /main:
         jcr:primaryType: hst:component
-        hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.SearchComponent
+        hst:componentclassname: scot.gov.publishing.hippo.search.SearchComponent
         hst:parameternames: [searchtype]
         hst:parametervalues: [resilient]
-        hst:template: search-funnelback-main
+        hst:template: search-main
         /results:
           jcr:primaryType: hst:component
-          hst:componentclassname: scot.gov.publishing.hippo.funnelback.component.ResilientSearchComponent
+          hst:componentclassname: scot.gov.publishing.hippo.search.ResilientSearchComponent
           hst:parameternames: [searchtype, topicsProvider, publicationTypesProvider]
           hst:parametervalues: [resilient, scot.gov.www.components.TopicsProvider,
             scot.gov.www.components.PublicationTypesProvider]
-          hst:template: search-funnelback-results
+          hst:template: search-results
         /side-filter:
           jcr:primaryType: hst:component
           hst:parameternames: [searchType, localeRequired, includeDateFilter, fromDate,

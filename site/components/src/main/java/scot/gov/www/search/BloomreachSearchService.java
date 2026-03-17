@@ -1,5 +1,7 @@
 package scot.gov.www.search;
 
+import org.apache.commons.beanutils.MethodUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.builder.Constraint;
@@ -8,6 +10,8 @@ import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.core.component.HstRequest;
+import org.hippoecm.hst.core.linking.HstLink;
+import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
 import org.slf4j.Logger;
@@ -17,19 +21,19 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import scot.gov.publishing.hippo.funnelback.component.*;
-import scot.gov.publishing.hippo.funnelback.component.postprocess.PaginationBuilder;
-import scot.gov.publishing.hippo.funnelback.model.Pagination;
-import scot.gov.publishing.hippo.funnelback.model.Question;
-import scot.gov.publishing.hippo.funnelback.model.Response;
-import scot.gov.publishing.hippo.funnelback.model.ResultsSummary;
-import scot.gov.www.beans.AttributableContent;
-import scot.gov.www.beans.ComplexDocument2;
-import scot.gov.www.beans.ComplexDocumentSection;
-import scot.gov.www.beans.PublicationPage;
-import scot.gov.www.components.ConstraintUtils;
-import scot.gov.www.components.FilteredResultsComponent;
 
+import scot.gov.publishing.hippo.search.PaginationBuilder;
+import scot.gov.publishing.hippo.search.SearchService;
+import scot.gov.publishing.hippo.search.SearchSettings;
+import scot.gov.publishing.hippo.search.model.*;
+import scot.gov.www.beans.*;
+import scot.gov.www.components.ConstraintUtils;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.Collection;
 
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
@@ -50,6 +54,10 @@ public class BloomreachSearchService implements SearchService {
     private static final String TITLE = "govscot:title";
 
     public static final String [] DATE_FIELDS = { "govscot:displayDate", "govscot:publicationDate", "hippostdpubwf:lastModificationDate" };
+
+    DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+
+    DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
 
     static {
         Collections.addAll(FIELD_NAMES,
@@ -97,11 +105,6 @@ public class BloomreachSearchService implements SearchService {
     }
 
     void postProcessResult(HippoBean item, HstRequest request) {
-
-        // populate Collections for Publication type items
-        if (item instanceof AttributableContent) {
-            FilteredResultsComponent.populateCollectionAttribution(request, (AttributableContent) item);
-        }
 
         // populate parent publication for Complex Document sections
         if (item instanceof ComplexDocumentSection) {
@@ -219,41 +222,149 @@ public class BloomreachSearchService implements SearchService {
         return constraints.toArray(new Constraint[constraints.size()]);
     }
 
-    public static SearchResponse response(HstQueryResult result, Search search) {
+    public SearchResponse response(HstQueryResult result, Search search) {
         SearchResponse searchResponse = new SearchResponse();
         searchResponse.setType(SearchResponse.Type.BLOOMREACH);
 
         Question question = getQuestion(search.getQuery());
         searchResponse.setQuestion(question);
 
-        Response response = new Response();
         int offset = (search.getPage() - 1) * PAGE_SIZE;
         ResultsSummary resultsSummary = buildResultsSummary(result, offset);
-        response.getResultPacket().setResultsSummary(resultsSummary);
-        searchResponse.setResponse(response);
+        searchResponse.setResultsSummary(resultsSummary);
 
         Pagination pagination = new PaginationBuilder().getPagination(resultsSummary, search);
         searchResponse.setPagination(pagination);
-        searchResponse.setBloomreachResults(result.getHippoBeans());
-
+        searchResponse.setResults(results(result.getHippoBeans(), search.getRequest().getRequestContext()));
+        searchResponse.setHasResults(!searchResponse.getResults().isEmpty());
         return searchResponse;
     }
 
-    static Question getQuestion(String query) {
+     Question getQuestion(String query) {
         Question question = new Question();
         question.setOriginalQuery(query);
         question.setQuery(query);
         return question;
     }
 
-    public static ResultsSummary buildResultsSummary(HstQueryResult result, int offset) {
+    public ResultsSummary buildResultsSummary(HstQueryResult result, int offset) {
         ResultsSummary resultsSummary = new ResultsSummary();
         resultsSummary.setCurrStart(offset + 1);
         resultsSummary.setCurrEnd(Math.min(resultsSummary.getCurrStart() + PAGE_SIZE - 1, result.getTotalSize()));
         resultsSummary.setNumRanks(PAGE_SIZE);
         resultsSummary.setTotalMatching(result.getTotalSize());
-        resultsSummary.setFullyMatching(result.getTotalSize());
         return resultsSummary;
     }
 
+    List<Result> results(HippoBeanIterator it, HstRequestContext requestContext) {
+        List<Result> results = new ArrayList<>();
+        while (it.hasNext()) {
+            HippoBean bean = it.nextHippoBean();
+            results.add(result(bean, requestContext));
+        }
+        return results;
+    }
+
+    Result result(HippoBean bean, HstRequestContext requestContext) {
+        Result res = new Result();
+        res.setLink(link(bean, requestContext));
+        res.setSummary(bean.getSingleProperty("govscot:summary"));
+        res.setLabel(label(bean));
+        HippoBean partOf = partOfLink(bean);
+        if (partOf != null) {
+            res.getPartOf().add(link(partOf, requestContext));
+        }
+
+
+        Calendar date = bean.getSingleProperty("govscot:publicationDate");
+
+        ///  for publi
+        if (date == null || bean instanceof Publication) {
+            date = bean.getSingleProperty("govscot:displayDate");
+        }
+        if (date != null) {
+            DateTimeFormatter dateTimeFormatter = "News".equals(res.getLabel()) ? DATE_TIME_FORMATTER : DATE_FORMATTER;
+            res.setDisplayDate(dateTimeFormatter.format(date.toInstant().atZone(java.time.ZoneId.systemDefault())));
+        }
+
+        if (bean instanceof Role role) {
+            People peopleImage = role.getImage();
+            res.setSubtitle(role.getIncumbent().getTitle());
+            if (peopleImage != null) {
+                res.setImage(image(peopleImage, requestContext));
+                res.setLabel("Role");
+            }
+            res.setLabel("Role");
+        }
+
+        if (bean instanceof FeaturedRole role) {
+            ColumnImage peopleImage = role.getImage();
+            res.setSubtitle(role.getIncumbent().getTitle());
+            if (peopleImage != null) {
+                res.setImage(image(peopleImage, requestContext));
+                res.setLabel("Role");
+            }
+            res.setLabel("Role");
+        }
+        if (bean instanceof Person person) {
+            People peopleImage = person.getImage();
+            if (peopleImage != null) {
+                res.setImage(image(peopleImage, requestContext));
+                res.setLabel("Role");
+            }
+
+            // subtitle
+        }
+        return res;
+    }
+
+    Image image(HippoBean imageBean, HstRequestContext requestContext) {
+        HstLinkCreator linkCreator = requestContext.getHstLinkCreator();
+
+        String link = linkCreator.create(imageBean, requestContext).toUrlForm(requestContext, true);
+        link = link + imageBean.getName();
+        //link = link + "/govscot%3Amediumtwocolumnssquare";
+        return Image.createImage(link, "govscot");
+    }
+
+    Link link(HippoBean bean, HstRequestContext requestContext) {
+        HstLinkCreator linkCreator = requestContext.getHstLinkCreator();
+        HstLink hstlink = linkCreator.create(bean, requestContext);
+        String url = hstlink.toUrlForm(requestContext, false);
+        Link link = new Link();
+        link.setUrl(url);
+        link.setLabel(bean.getSingleProperty("govscot:title"));
+        return link;
+    }
+
+    HippoBean partOfLink(HippoBean bean) {
+        Method method = MethodUtils.getMatchingAccessibleMethod(bean.getClass(), "getPartOfBean", new Class[0]);
+        if (method == null) {
+            return null;
+        }
+        try {
+            return (HippoBean) MethodUtils.invokeMethod(bean, "getPartOfBean", new String [] {});
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            LOG.error("unable to invoke getPartOfBean", e);
+            return null;
+        }
+    }
+
+    String label(HippoBean bean) {
+        Method method = MethodUtils.getMatchingAccessibleMethod(bean.getClass(), "getLabel", new Class[0]);
+        if (method == null) {
+            return null;
+        }
+        try {
+            String label = (String) MethodUtils.invokeMethod(bean, "getLabel", new String [] {});
+            return StringUtils.capitalize(label);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            LOG.error("unable to invoke getLabel", e);
+            return null;
+        }
+    }
 }

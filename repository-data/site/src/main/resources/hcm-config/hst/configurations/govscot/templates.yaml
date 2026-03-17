@@ -107,21 +107,12 @@ definitions:
       /filteredlist.side-filter:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/filteredlist/filter.ftl
-      /filteredlist.results:
-        jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/filteredlist/results.ftl
       /topics-list.list:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/topics-list/list.ftl
       /publication.page:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/publication/page.ftl
-      /search.page:
-        jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/search/page.ftl
-      /search.results:
-        jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/search/results.ftl
       /search-box:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/common/search.ftl
@@ -179,12 +170,6 @@ definitions:
       /preview-indicator:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/preview-indicator.ftl
-      /search-funnelback-main:
-        jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/search/search-main.ftl
-      /search-funnelback-results:
-        jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/search/search-results.ftl
       /divider:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/content-blocks/divider.ftl
@@ -224,3 +209,9 @@ definitions:
       /search.side-filter:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/search/filter.ftl
+      /search-results:
+        jcr:primaryType: hst:template
+        hst:renderpath: jcr:/webfiles/search/search-results.ftl
+      /search-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/search/search-main.ftl

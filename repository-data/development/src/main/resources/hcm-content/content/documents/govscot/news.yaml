@@ -358,18 +358,21 @@
     jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
     jcr:uuid: 7e872980-0eeb-41ad-9082-d4c8a8305bcc
     hippo:name: News
-    hippo:versionHistory: 6e8c2d0c-1902-4d6f-a958-56b3703e16b1
+    hippo:versionHistory: f7b00f73-2a79-4877-876a-dcb4c2e7eb58
     /index[1]:
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: ea891776-6b29-4e24-9aaf-a8e4fe9b0555
+      govscot:displayDates: true
+      govscot:displayLabels: true
       govscot:title: News
       hippo:availability: []
+      hippostd:holder: admin
       hippostd:retainable: false
       hippostd:state: draft
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-26T16:16:43.661Z
-      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:00.048Z
+      hippostdpubwf:lastModificationDate: 2026-03-02T10:15:21.352Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: c9b12a1b-12d2-4fd0-aeb7-042c374fc146
       hippotranslation:locale: document-type-locale
@@ -396,13 +399,15 @@
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 8297cd20-778b-45e8-9ee1-a94fa89e6ab2
+      govscot:displayDates: true
+      govscot:displayLabels: true
       govscot:title: News
       hippo:availability: [preview]
       hippostd:retainable: false
       hippostd:state: unpublished
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-26T16:16:43.661Z
-      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:18.756Z
+      hippostdpubwf:lastModificationDate: 2026-03-02T10:03:35.820Z
       hippostdpubwf:lastModifiedBy: admin
       hippotranslation:id: c9b12a1b-12d2-4fd0-aeb7-042c374fc146
       hippotranslation:locale: document-type-locale
@@ -429,15 +434,18 @@
       jcr:primaryType: govscot:SearchResultsPage
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: b6424e98-9a05-4a7a-8700-031a80cc5ece
+      govscot:displayDates: true
+      govscot:displayLabels: true
       govscot:title: News
       hippo:availability: [live]
       hippostd:retainable: false
       hippostd:state: published
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2024-01-26T16:16:43.661Z
-      hippostdpubwf:lastModificationDate: 2024-01-30T10:44:18.756Z
+      hippostdpubwf:lastModificationDate: 2026-03-02T10:03:35.820Z
       hippostdpubwf:lastModifiedBy: admin
-      hippostdpubwf:publicationDate: 2024-01-30T10:44:20.833Z
+      hippostdpubwf:publicationDate: 2026-03-02T10:03:38.974Z
+      hippostdpubwf:publishedBy: admin
       hippotranslation:id: c9b12a1b-12d2-4fd0-aeb7-042c374fc146
       hippotranslation:locale: document-type-locale
       /govscot:content:

@@ -14,7 +14,6 @@ import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.ComponentConfiguration;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.util.ContentBeanUtils;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
 import org.hippoecm.repository.util.DateTools;
 import org.onehippo.cms7.essentials.components.EssentialsListComponent;
@@ -26,7 +25,11 @@ import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.hippo.funnelback.component.*;
-import scot.gov.www.beans.AttributableContent;
+import scot.gov.publishing.hippo.search.SearchBuilder;
+import scot.gov.publishing.hippo.search.model.FilterButtonGroups;
+import scot.gov.publishing.hippo.search.model.Search;
+import scot.gov.publishing.hippo.search.model.SearchResponse;
+import scot.gov.publishing.hippo.search.model.Sort;
 import scot.gov.www.beans.DynamicIssue;
 import scot.gov.www.beans.Issue;
 import scot.gov.www.beans.Topic;
@@ -34,6 +37,8 @@ import scot.gov.www.components.info.FilteredResultsComponentInfo;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
+import scot.gov.www.search.BloomreachSearchService;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -43,7 +48,6 @@ import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
 import static scot.gov.www.search.BloomreachSearchService.DATE_FIELDS;
-import static scot.gov.www.search.BloomreachSearchService.response;
 
 @ParametersInfo(type = FilteredResultsComponentInfo.class)
 public class FilteredResultsComponent extends EssentialsListComponent {
@@ -57,6 +61,8 @@ public class FilteredResultsComponent extends EssentialsListComponent {
     private Collection<String> fieldNames = new ArrayList<>();
 
     private FilteredResultsComponentInfo paramInfo;
+
+    BloomreachSearchService bloomreachSearchService = new BloomreachSearchService();
 
     @Override
     public void init(ServletContext servletContext, ComponentConfiguration componentConfig) {
@@ -75,13 +81,18 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         String relativeContentPath = request.getRequestContext().getResolvedSiteMapItem().getRelativeContentPath();
         Search search = search(request, false);
         request.setAttribute("search", search);
+        request.setAttribute("searchType", "bloomreach");
+        request.setAttribute("displayFilters", true);
+        request.setAttribute("includeRelevanceSort", false);
         request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
         request.setAttribute("relativeContentPath", relativeContentPath);
         request.setAttribute("searchTermPlural", paramInfo.getSearchTermPlural());
         request.setAttribute("searchTermSingular", paramInfo.getSearchTermSingular());
-        if (paramInfo.getShowSort()) {
-            request.setAttribute("showSort", true);
-        }
+        request.setAttribute("displayDates", paramInfo.getDisplayDates());
+        request.setAttribute("displayLabels", paramInfo.getDisplayLabels());
+        request.setAttribute("showSort", paramInfo.getShowSort());
+        request.setAttribute("enabled", true);
+        request.setAttribute("showBlankQueryMessage", false);
     }
 
     Search search(HstRequest request, boolean includeComponentParams) {
@@ -240,17 +251,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         final int pageSize = getPageSize(request, paramInfo);
         final int page = getCurrentPage(request);
         final HstQueryResult queryResult = query.execute();
-
-        // populate Collections for Publication type items
-        HippoBeanIterator it = queryResult.getHippoBeans();
-        while (it.hasNext()) {
-            HippoBean item = it.nextHippoBean();
-            if (item instanceof AttributableContent){
-                populateCollectionAttribution(request, (AttributableContent) item);
-            }
-        }
         populateResponse(request, queryResult);
-
         return getPageableFactory().createPageable(
                 queryResult.getHippoBeans(),
                 queryResult.getTotalSize(),
@@ -260,27 +261,11 @@ public class FilteredResultsComponent extends EssentialsListComponent {
 
     void populateResponse(HstRequest request, HstQueryResult queryResult) {
         Search search = search(request, true);
-        SearchResponse searchResponse = response(queryResult, search);
+        SearchResponse searchResponse = bloomreachSearchService.response(queryResult, search);
         request.setAttribute("question", searchResponse.getQuestion());
-        request.setAttribute("response", searchResponse.getResponse());
+        request.setAttribute("response", searchResponse);
         request.setAttribute("pagination", searchResponse.getPagination());
-        request.setAttribute("filterButtons", FilterButtonGroups.filterButtonGroups(search));
-    }
-
-    public static void populateCollectionAttribution(HstRequest request, AttributableContent item) {
-        try {
-            // find any Collection documents that link to the content bean in this request
-            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
-                    item,
-                    request.getRequestContext().getSiteContentBaseBean(),
-                    "*/*/@hippo:docbase",
-                    scot.gov.www.beans.Collection.class,
-                    false);
-            HstQueryResult result = query.execute();
-            item.setCollections(collectionsBeans(result));
-        } catch (QueryException e) {
-            LOG.warn("Unable to get collections for content item {}", request.getRequestURI(), e);
-        }
+        request.setAttribute("filterButtons", searchResponse.getFilterButtons());
     }
 
     private static List<HippoBean> collectionsBeans(HstQueryResult result) {
@@ -289,6 +274,7 @@ public class FilteredResultsComponent extends EssentialsListComponent {
         HippoBeanIterator it = result.getHippoBeans();
         while (it.hasNext()) {
             HippoBean collection = it.nextHippoBean();
+            LOG.info("collectionsBeans adding {}", collection.getPath());
             collectionsBeans.add(collection);
         }
         return collectionsBeans;

@@ -1,15 +1,27 @@
 package scot.gov.www.beans;
 
+import org.hippoecm.hst.container.RequestContextProvider;
+import org.hippoecm.hst.content.beans.query.HstQuery;
+import org.hippoecm.hst.content.beans.query.HstQueryResult;
+import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
+import org.hippoecm.hst.core.component.HstRequest;
+import org.hippoecm.hst.core.request.HstRequestContext;
+import org.hippoecm.hst.util.ContentBeanUtils;
 import org.onehippo.cms7.essentials.dashboard.annotations.HippoEssentialsGenerated;
 import org.hippoecm.hst.content.beans.Node;
 
 import java.util.*;
 
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import scot.gov.www.components.FilteredResultsComponent;
 
 @HippoEssentialsGenerated(internalName = "govscot:AttributableContent")
 @Node(jcrType = "govscot:AttributableContent")
 public class AttributableContent extends SimpleContent {
+    private static final Logger LOG = LoggerFactory.getLogger(AttributableContent.class);
+
     private ArrayList<HippoBean> collections = new ArrayList<>();
 
     @HippoEssentialsGenerated(internalName = "govscot:topics")
@@ -59,7 +71,6 @@ public class AttributableContent extends SimpleContent {
      *
      * The primary role should be first followed by the secondary roles with duplicates removed.
      */
-
     public List<HippoBean> getAllResponsibleRoles() {
         Set<String> taken = new HashSet<>();
         List<HippoBean> roles = new ArrayList<>();
@@ -101,4 +112,25 @@ public class AttributableContent extends SimpleContent {
     public List<HippoBean> getCollections() {
         return this.collections;
     }
+
+    public HippoBean getPartOfBean() {
+        try {
+            HstRequestContext requestContext = RequestContextProvider.get();
+            // find any Collection documents that link to the content bean in this request
+            HstQuery query = ContentBeanUtils.createIncomingBeansQuery(
+                    this,
+                    requestContext.getSiteContentBaseBean(),
+                    "*/*/@hippo:docbase",
+                    scot.gov.www.beans.Collection.class,
+                    false);
+            HstQueryResult result = query.execute();
+            if (result.getHippoBeans().hasNext()) {
+                return result.getHippoBeans().nextHippoBean();
+            }
+        } catch (QueryException e) {
+            LOG.warn("Unable to get collections for content item {}", this.getPath(), e);
+        }
+        return null;
+    }
+
 }

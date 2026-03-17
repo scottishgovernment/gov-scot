@@ -4,7 +4,7 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.configuration.components.HstComponentConfiguration;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import scot.gov.publishing.hippo.funnelback.component.SearchSettings;
+import scot.gov.publishing.hippo.search.SearchSettings;
 
 import static org.apache.commons.lang3.StringUtils.equalsAny;
 

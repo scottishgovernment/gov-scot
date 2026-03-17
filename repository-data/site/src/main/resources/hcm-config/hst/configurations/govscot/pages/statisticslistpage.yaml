@@ -15,8 +15,8 @@ definitions:
             showSort, defaultSort]
           hst:parametervalues: ['govscot:displayDate,govscot:title', 'desc,asc', 'off',
             'on', /publications, '10', 'govscot:Publication', publications, publication,
-            'research-and-analysis,statistics', 'true', 'date']
-          hst:template: filteredlist.results
+            'research-and-analysis,statistics', 'true', date]
+          hst:template: search-results
           hst:xtype: hst.item
           hippo:identifier: 58921651-d597-4dc9-8695-8b7b0c280cfa
         /side-filter:
