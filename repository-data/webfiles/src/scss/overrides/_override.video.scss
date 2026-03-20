@@ -2,6 +2,9 @@
     VIDEO OVERRIDES
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .ds_cb--video {
 
     .ds_cb__poster {
@@ -22,19 +25,19 @@
 
             .ds_cb__poster__overlay {
                 .background {
-                    fill: $ds_colour__button__background;
+                    fill: ds_settings.$ds_colour__button__background;
                     transition: fill 0.2s;
                 }
 
                 .foreground {
-                    fill: $ds_colour__button;
+                    fill: ds_settings.$ds_colour__button;
                 }
             }
 
             &:hover {
                 .ds_cb__poster__overlay {
                     .background {
-                        fill: $ds_colour__button--hover__background;
+                        fill: ds_settings.$ds_colour__button--hover__background;
                     }
                 }
             }
@@ -43,12 +46,12 @@
             &:active {
                 .ds_cb__poster__overlay {
                     .background {
-                        fill: $ds_colour__button--focus__background;
+                        fill: ds_settings.$ds_colour__button--focus__background;
                         transition-duration: 0s;
                     }
 
                     .foreground {
-                        fill: $ds_colour__button--focus;
+                        fill: ds_settings.$ds_colour__button--focus;
                     }
                 }
             }
@@ -69,7 +72,7 @@
         }
 
         // Mobile alignment fix (using center rather than middle now)
-        @include ds_media-query (medium-down) {
+        @include ds_helpers.ds_media-query (medium-down) {
             text-align: inherit;
 
             &--center-mobile {

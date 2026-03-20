@@ -3,10 +3,13 @@
     used on complex doc
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .#{$site-prefix}document-banner {
     position: sticky;
     top: -1px;
-    background: $ds_colour__grey--light;
+    background: ds_settings.$ds_colour__grey--light;
     padding: 16px;
     z-index: 2;
 
@@ -61,7 +64,7 @@
         &.ds_current {
             pointer-events: none;
             background-color: transparent;
-            color: $ds_colour__text--secondary;
+            color: ds_settings.$ds_colour__text--secondary;
             border: 1px dashed currentColor;
         }
     }
@@ -87,7 +90,7 @@
         display: block;
     }
 
-    @include ds_media-query(medium) {
+    @include ds_helpers.ds_media-query(medium) {
         &__nav {
             display: flex;
             justify-content: left;

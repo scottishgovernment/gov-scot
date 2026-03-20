@@ -2,8 +2,11 @@
     #STAT BOX
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .stat-boxes {
-  @include ds_responsive-margin(2, bottom);
+  @include ds_helpers.ds_responsive-margin(2, bottom);
 
   overflow: auto;
 
@@ -11,11 +14,11 @@
 }
 
 .stat-box {
-  @include ds_blocklink;
-  @include ds_responsive-margin(2, bottom);
-  @include ds_tiny-size;
+  @include ds_helpers.ds_blocklink;
+  @include ds_helpers.ds_responsive-margin(2, bottom);
+  @include ds_helpers.ds_tiny-size;
 
-  background-color: $ds_colour__grey--lighter;
+  background-color: ds_settings.$ds_colour__grey--lighter;
   line-height: 20px;
   padding: 16px;
   text-align: center;
@@ -37,7 +40,7 @@
   }
 
   &__label {
-    color: $ds_colour__text;
+    color: ds_settings.$ds_colour__text;
     display: inline-block;
     min-height: 40px;
     text-decoration: underline;
@@ -52,7 +55,7 @@
   }
 }
 
-@include ds_media-query(large) {
+@include ds_helpers.ds_media-query(large) {
   .stat-box__value {
     font-size: 72px;
   }
@@ -80,7 +83,7 @@
     }
   }
 
-  @include ds_media-query(large) {
+  @include ds_helpers.ds_media-query(large) {
     .stat-boxes {
       grid-gap: 32px;
     }

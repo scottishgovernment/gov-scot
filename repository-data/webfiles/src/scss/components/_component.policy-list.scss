@@ -2,8 +2,11 @@
     POLICY LIST
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .#{$site-prefix}policy-list {
-    @include ds_responsive-margin(6, bottom);
+    @include ds_helpers.ds_responsive-margin(6, bottom);
 
     line-height: 24px;
     list-style-type: none;
@@ -17,17 +20,17 @@
         right: 0;
         top: 0;
 
-        background: $ds_colour__white;
+        background: ds_settings.$ds_colour__white;
     }
 
     &__item {
-        border-top: 1px solid $ds_colour__border--light;
+        border-top: 1px solid ds_settings.$ds_colour__border--faint;
         margin: 0;
         position: relative;
     }
 
     &__link {
-        @include ds_blocklink();
+        @include ds_helpers.ds_blocklink();
 
         display: block;
         padding-bottom: 24px;
@@ -37,7 +40,7 @@
     }
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
     .#{$site-prefix}policy-list {
 
         &__link {

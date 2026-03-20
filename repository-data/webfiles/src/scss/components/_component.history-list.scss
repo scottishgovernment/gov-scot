@@ -3,13 +3,15 @@
     // update history
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .gov_history-list {
     display: block;
     margin-top: 16px;
     position: relative;
 
     &::before {
-        background: $ds_colour__grey--medium;
+        background: ds_settings.$ds_colour__grey--medium;
         bottom: 36px;
         content: '';
         left: 3px;
@@ -24,7 +26,7 @@
     position: relative;
 
     &::before {
-        background: $ds_colour__grey--medium;
+        background: ds_settings.$ds_colour__grey--medium;
         border-radius: 10px;
         content: '';
         height: 8px;

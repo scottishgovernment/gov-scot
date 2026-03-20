@@ -2,12 +2,14 @@
     SIDEBAR FEATURE
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .gov_sidebar-feature {
     &__image {
         display: block;
         height: auto;
         width: 100%;
-        @include ds_responsive-margin(4, bottom);
+        @include ds_helpers.ds_responsive-margin(4, bottom);
     }
 }
 

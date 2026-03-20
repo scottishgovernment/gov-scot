@@ -2,8 +2,10 @@
     FEATURE CARDS
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .gov_feature-cards {
-    @include ds_responsive-margin(8, bottom);
+    @include ds_helpers.ds_responsive-margin(8, bottom);
 
     .gov_feature-card {
         margin-bottom: 32px;
@@ -15,10 +17,10 @@
 }
 
 .gov_feature-card {
-    @include ds_responsive-margin(8, bottom);
+    @include ds_helpers.ds_responsive-margin(8, bottom);
 }
 
-@include ds_media-query('medium') {
+@include ds_helpers.ds_media-query('medium') {
     .gov_feature-cards {
         display: flex;
 
@@ -46,7 +48,7 @@
         }
     }
 
-     @include ds_media-query('medium') {
+     @include ds_helpers.ds_media-query('medium') {
         .gov_feature-cards {
             grid-template-columns: repeat(3, 1fr);
         }

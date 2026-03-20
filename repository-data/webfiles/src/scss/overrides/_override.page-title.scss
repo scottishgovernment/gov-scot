@@ -3,19 +3,22 @@
     Includes video play overlay - to be included in future version of npm package
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .ds_cb--page-title {
 
     // add spacing under text on mobile sizes if text only
-    @include ds_media-query (medium-down) {
+    @include ds_helpers.ds_media-query (medium-down) {
         &--text-only {
-            @include ds_responsive-padding(4, bottom);
+            @include ds_helpers.ds_responsive-padding(4, bottom);
         }
     }
 
     // add spacing under text on mobile sizes if image is set to be hidden
-    @include ds_media-query (medium-down) {
+    @include ds_helpers.ds_media-query (medium-down) {
         .ds_cb__text--hidden-mobile-spacing {
-            @include ds_responsive-margin(4, bottom);
+            @include ds_helpers.ds_responsive-margin(4, bottom);
         }
     }
 
@@ -37,19 +40,19 @@
 
             .ds_cb__poster__overlay {
                 .background {
-                    fill: $ds_colour__button__background;
+                    fill: ds_settings.$ds_colour__button__background;
                     transition: fill 0.2s;
                 }
 
                 .foreground {
-                    fill: $ds_colour__button;
+                    fill: ds_settings.$ds_colour__button;
                 }
             }
 
             &:hover {
                 .ds_cb__poster__overlay {
                     .background {
-                        fill: $ds_colour__button--hover__background;
+                        fill: ds_settings.$ds_colour__button--hover__background;
                     }
                 }
             }
@@ -58,12 +61,12 @@
             &:active {
                 .ds_cb__poster__overlay {
                     .background {
-                        fill: $ds_colour__button--focus__background;
+                        fill: ds_settings.$ds_colour__button--focus__background;
                         transition-duration: 0s;
                     }
 
                     .foreground {
-                        fill: $ds_colour__button--focus;
+                        fill: ds_settings.$ds_colour__button--focus;
                     }
                 }
             }
@@ -84,7 +87,7 @@
         }
 
         // Mobile alignment fix (using center rather than middle now)
-        @include ds_media-query (medium-down) {
+        @include ds_helpers.ds_media-query (medium-down) {
             text-align: inherit;
 
             &--center-mobile {
@@ -99,7 +102,7 @@
     &--video {
         .ds_cb__poster {
             // Mobile alignment - left by default
-            @include ds_media-query (medium-down) {
+            @include ds_helpers.ds_media-query (medium-down) {
                 &--center-mobile {
                     text-align: center;
                 }
@@ -108,7 +111,7 @@
                 }
             }
 
-            @include ds_media-query (medium) {
+            @include ds_helpers.ds_media-query (medium) {
                 // Extra support for cover when video link
                 &--cover {
                     .ds_cb__poster__link {

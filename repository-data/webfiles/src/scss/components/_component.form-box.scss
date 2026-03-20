@@ -2,8 +2,11 @@
     #FORM BOX
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .form-box {
-    background-color: $ds_colour__grey--lighter;
+    background-color: ds_settings.$ds_colour__grey--lighter;
     box-sizing: border-box;
 
     margin: 32px -16px;
@@ -14,7 +17,7 @@
     margin-top: 0;
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
     .form-box {
         margin-left: 0;
         margin-right: 0;

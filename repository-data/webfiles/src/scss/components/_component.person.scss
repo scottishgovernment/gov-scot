@@ -2,22 +2,25 @@
     #PERSON
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .#{$site-prefix}person {
-    @include ds_small-size;
-    @include ds_responsive-margin(6, bottom);
+    @include ds_helpers.ds_small-size;
+    @include ds_helpers.ds_responsive-margin(6, bottom);
 
     line-height: 24px;
 
     &__name {
-        @include ds_h4-style;
+        @include ds_helpers.ds_h4-style;
     }
 
     &__link {
         display: block;
 
         &:focus {
-            outline: 2px solid $ds_colour__link--focus__outline;
-            box-shadow: -2px 5px 0 $ds_colour__link--focus__shadow, 2px 5px 0 $ds_colour__link--focus__shadow;
+            outline: 2px solid ds_settings.$ds_colour__link--focus__outline;
+            box-shadow: -2px 5px 0 ds_settings.$ds_colour__link--focus__shadow, 2px 5px 0 ds_settings.$ds_colour__link--focus__shadow;
         }
 
         &:hover:not(:focus) {
@@ -25,7 +28,7 @@
         }
 
         &::after {
-            background-color: $ds_colour__black;
+            background-color: ds_settings.$ds_colour__black;
             bottom: 0;
             content: '';
             left: 0;
@@ -42,9 +45,9 @@
     }
 
     &__image-container {
-        @include ds_responsive-margin(2, bottom);
+        @include ds_helpers.ds_responsive-margin(2, bottom);
 
-        background-color: $ds_colour__white;
+        background-color: ds_settings.$ds_colour__white;
         position: relative;
     }
 
@@ -69,7 +72,7 @@
             width: calc(33% - 16px);
         }
 
-        @include ds_media-query(medium) {
+        @include ds_helpers.ds_media-query(medium) {
             display: block;
 
             .#{$site-prefix}person__image-container {
@@ -80,7 +83,7 @@
     }
 }
 
-@include ds_media-query(medium-down) {
+@include ds_helpers.ds_media-query(medium-down) {
     .gov_person {
         &__image-container--centered-mobile {
             margin: 0 auto;

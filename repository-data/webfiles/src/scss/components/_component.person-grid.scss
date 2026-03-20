@@ -2,17 +2,19 @@
     #PERSON GRID
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .#{$site-prefix}person-grid {
-  @include ds_layout();
+  @include ds_helpers.ds_layout();
 
   list-style-type: none;
   margin-left: 0;
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
   .#{$site-prefix}person-grid__item {
       float: left;
-      @include ds_colwidth(6);
+      @include ds_helpers.ds_colwidth(6);
 
       &:nth-child(2n+1) {
           clear: left;
@@ -20,10 +22,10 @@
   }
 }
 
-@include ds_media-query(large) {
+@include ds_helpers.ds_media-query(large) {
   .#{$site-prefix}person-grid__item {
       float: left;
-      @include ds_colwidth(4);
+      @include ds_helpers.ds_colwidth(4);
 
       &:nth-child(2n+1) {
           clear: none;
@@ -36,11 +38,11 @@
 
 @supports (display: grid) {
   .#{$site-prefix}person-grid {
-    @include ds_media-query(medium) {
+    @include ds_helpers.ds_media-query(medium) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include ds_media-query(large) {
+    @include ds_helpers.ds_media-query(large) {
       grid-template-columns: repeat(3, 1fr);
     }
   }

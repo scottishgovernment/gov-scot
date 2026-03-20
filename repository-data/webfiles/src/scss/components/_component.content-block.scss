@@ -3,28 +3,31 @@
     used on homepage and topic pages
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 $content-block-highlight-padding: 16px;
 
 .#{$site-prefix}content-block {
-    @include ds_responsive-margin(6, bottom);
+    @include ds_helpers.ds_responsive-margin(6, bottom);
 
     position: relative;
 
     &__highlight {
-        background-color: $ds_colour__grey--lighter;
+        background-color: ds_settings.$ds_colour__grey--lighter;
         margin-top: #{$content-block-highlight-padding * -1};
         padding: $content-block-highlight-padding;
     }
 
     &__title {
-        @include ds_responsive-margin(3, bottom);
+        @include ds_helpers.ds_responsive-margin(3, bottom);
 
         display: inline-block;
         position: relative;
         padding-top: 8px;
 
         &::before {
-            background-color: $ds_colour__brand;
+            background-color: ds_settings.$ds_colour__brand;
             content: '';
             height: 4px;
             position: absolute;

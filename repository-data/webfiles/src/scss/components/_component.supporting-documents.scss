@@ -2,6 +2,9 @@
     SUPPORTING DOCUMENTS
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .#{$site-prefix}supporting-documents {
     text-align: center;
 
@@ -36,23 +39,23 @@
             width: 36px;
 
             > svg {
-                fill: $ds_colour__white;
+                fill: ds_settings.$ds_colour__white;
                 height: 100%;
                 width: 100%;
             }
         }
 
         &:hover:not(:focus) &-icon > svg {
-            fill: $ds_colour__link--hover__background;
+            fill: ds_settings.$ds_colour__link--hover__background;
         }
 
         &:focus &-icon > svg {
-            fill: $ds_colour__link--focus__background;
+            fill: ds_settings.$ds_colour__link--focus__background;
         }
     }
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
     .#{$site-prefix}supporting-documents {
         &__thumbnail-link {
             display: inline-block;
@@ -75,7 +78,7 @@
             padding: 0 8px;
         }
 
-        @include ds_media-query(medium) {
+        @include ds_helpers.ds_media-query(medium) {
             width: 100%;
 
             &-text {

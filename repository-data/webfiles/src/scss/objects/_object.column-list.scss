@@ -6,6 +6,7 @@
 
 /// used on topic.ftl
 @use "sass:math";
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
 
 $gutter: 32px !default;
 
@@ -34,7 +35,7 @@ $gutter: 32px !default;
     }
 }
 
-@include ds_media-query(medium-down) {
+@include ds_helpers.ds_media-query(medium-down) {
     .#{$site-prefix}column-list--not-small {
         -moz-column-count: 1 !important;
         column-count: 1 !important;
@@ -68,7 +69,7 @@ $gutter: 32px !default;
     }
 }
 
-@include ds_media-query(medium-down) {
+@include ds_helpers.ds_media-query(medium-down) {
     .#{$site-prefix}column-list--not-small {
         .#{$site-prefix}column-list__item {
             width: 100% !important;

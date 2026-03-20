@@ -2,12 +2,14 @@
     SITE PAGE LAYOUTS
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+
 .#{$site-prefix}layout {
 
 }
 
 .#{$site-prefix}sublayout {
-    @include ds_layout();
+    @include ds_helpers.ds_layout();
     margin-bottom: 32px;
 
     &--threecols {
@@ -16,40 +18,40 @@
 
     &--publication-header {
         > * {
-            @include ds_responsive-margin(4, bottom);
+            @include ds_helpers.ds_responsive-margin(4, bottom);
         }
     }
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
     .#{$site-prefix}layout {
         &--about {
             > .ds_layout {
                 &__banner {
-                    @include ds_colwidth(9);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(9);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__header {
-                    @include ds_colwidth(9);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(9);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__content {
-                    @include ds_colwidth(9);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(9);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(9);
-                    @include ds_colpush(3);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(9);
+                    @include ds_helpers.ds_colpush(3);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__sidebar {
                     float: left;
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
             }
         }
@@ -57,23 +59,23 @@
         &--filter-search {
             > .ds_layout {
                 &__header {
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__content {
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_helpers.ds_colwidth(8);
+                    @include ds_helpers.ds_colpush(4);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_helpers.ds_colwidth(8);
+                    @include ds_helpers.ds_colpush(4);
                 }
 
                 &__sidebar {
                     float: left;
-                    @include ds_colwidth(4);
+                    @include ds_helpers.ds_colwidth(4);
                 }
             }
         }
@@ -81,23 +83,23 @@
         &--policy {
             > .ds_layout {
                 &__header {
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__content {
                     float: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_helpers.ds_colwidth(8);
+                    @include ds_helpers.ds_colpush(4);
                 }
 
                 &__sidebar {
                     float: left;
-                    @include ds_colwidth(4);
+                    @include ds_helpers.ds_colwidth(4);
                 }
             }
         }
@@ -105,23 +107,23 @@
         &--issue {
             > .ds_layout {
                 &__banner {
-                    @include ds_colwidth(12);
+                    @include ds_helpers.ds_colwidth(12);
                 }
 
                 &__content {
                     float: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__sidebar,
                 &__sidebar-B {
                     float: left;
-                    @include ds_colwidth(4);
+                    @include ds_helpers.ds_colwidth(4);
                 }
             }
         }
@@ -130,24 +132,24 @@
         &--publication {
             > .ds_layout {
                 &__header {
-                    @include ds_colwidth(12);
+                    @include ds_helpers.ds_colwidth(12);
                 }
 
                 &__content {
                     float: left;
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_helpers.ds_colwidth(8);
+                    @include ds_helpers.ds_colpush(4);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_helpers.ds_colwidth(8);
+                    @include ds_helpers.ds_colpush(4);
                 }
 
                 &__sidebar {
                     float: left;
-                    @include ds_colwidth(4);
+                    @include ds_helpers.ds_colwidth(4);
                 }
             }
 
@@ -156,7 +158,7 @@
                     &__header,
                     &__content,
                     &__feedback {
-                        @include ds_colwidth(12);
+                        @include ds_helpers.ds_colwidth(12);
                     }
                 }
             }
@@ -165,25 +167,25 @@
         &--role {
             > .ds_layout {
                 &__header {
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__content {
                     float: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
-                    @include ds_colpush(4);
+                    @include ds_helpers.ds_colwidth(8);
+                    @include ds_helpers.ds_colpush(4);
                 }
 
                 &__sidebar,
                 &__sidebar-B {
                     clear: left;
                     float: left;
-                    @include ds_colwidth(4);
+                    @include ds_helpers.ds_colwidth(4);
                 }
             }
         }
@@ -192,7 +194,7 @@
             > .ds_layout {
                 &__content {
                     float: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__latest,
@@ -203,12 +205,12 @@
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__sidebar {
                     float: left;
-                    @include ds_colwidth(4);
+                    @include ds_helpers.ds_colwidth(4);
                 }
             }
         }
@@ -218,7 +220,7 @@
         &--twocols {
             > * {
                 float: left;
-                @include ds_colwidth(6);
+                @include ds_helpers.ds_colwidth(6);
 
                 &:nth-child(2n+1) {
                     clear: left;
@@ -229,7 +231,7 @@
         &--threecols {
             > * {
                 float: left;
-                @include ds_colwidth(4);
+                @include ds_helpers.ds_colwidth(4);
 
                 &:nth-child(3n+1) {
                     clear: left;
@@ -240,45 +242,45 @@
         &--publication-header {
             > .gov_sublayout {
                 &__title {
-                    @include ds_colwidth(10);
+                    @include ds_helpers.ds_colwidth(10);
                 }
 
                 &__metadata {
-                    @include ds_colwidth(10);
+                    @include ds_helpers.ds_colwidth(10);
                 }
 
                 &__content {
                     float: left;
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__document {
                     float: right;
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
             }
         }
     }
 }
 
-@include ds_media-query(large) {
+@include ds_helpers.ds_media-query(large) {
     .#{$site-prefix}layout {
         &--about {
             > .ds_layout {
                 &__banner {
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
 
                 &__header {
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
 
                 &__content {
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
 
                 &__feedback {
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
             }
         }
@@ -286,18 +288,18 @@
         &--filter-search {
             > .ds_layout {
                 &__content {
-                    @include ds_colwidth(9);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(9);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__feedback {
                     clear: left;
-                    @include ds_colwidth(9);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(9);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__sidebar {
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
             }
         }
@@ -306,16 +308,16 @@
             > .ds_layout {
                 &__content {
                     float: left;
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
 
                 &__feedback {
-                    @include ds_colwidth(7);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(7);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__sidebar {
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
             }
         }
@@ -325,30 +327,30 @@
             > .ds_layout {
                 &__content {
                     float: left;
-                    @include ds_colwidth(7);
-                    @include ds_colpush(0);
+                    @include ds_helpers.ds_colwidth(7);
+                    @include ds_helpers.ds_colpush(0);
                 }
 
                 &__feedback {
-                    @include ds_colwidth(7);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(7);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__sidebar {
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
             }
 
             &--no-sidebar {
                 > .ds_layout {
                     &__header {
-                        @include ds_colwidth(12);
+                        @include ds_helpers.ds_colwidth(12);
                     }
 
                     &__content,
                     &__feedback {
-                        @include ds_colwidth(7);
-                        @include ds_colpush(3);
+                        @include ds_helpers.ds_colwidth(7);
+                        @include ds_helpers.ds_colpush(3);
                     }
                 }
             }
@@ -357,21 +359,21 @@
         &--role {
             > .ds_layout {
                 &__header {
-                    @include ds_colwidth(8);
+                    @include ds_helpers.ds_colwidth(8);
                 }
 
                 &__content {
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
 
                 &__feedback {
-                    @include ds_colwidth(7);
-                    @include ds_colpush(3);
+                    @include ds_helpers.ds_colwidth(7);
+                    @include ds_helpers.ds_colpush(3);
                 }
 
                 &__sidebar,
                 &__sidebar-B {
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
             }
         }
@@ -381,33 +383,33 @@
         &--firstminister {
             > *:first-child {
                 float: left;
-                @include ds_colwidth(2, 6);
+                @include ds_helpers.ds_colwidth(2, 6);
             }
 
             > *:last-child {
                 float: left;
-                @include ds_colwidth(4, 6);
+                @include ds_helpers.ds_colwidth(4, 6);
             }
         }
 
         &--publication-header {
             > .gov_sublayout {
                 &__title {
-                    @include ds_colwidth(10);
+                    @include ds_helpers.ds_colwidth(10);
                 }
 
                 &__metadata {
                     float: left;
-                    @include ds_colwidth(3);
+                    @include ds_helpers.ds_colwidth(3);
                 }
 
                 &__content {
                     float: left;
-                    @include ds_colwidth(7);
+                    @include ds_helpers.ds_colwidth(7);
                 }
 
                 &__document {
-                    @include ds_colwidth(2);
+                    @include ds_helpers.ds_colwidth(2);
                 }
             }
         }
@@ -574,7 +576,7 @@
         }
     }
 
-    @include ds_media-query(small) {
+    @include ds_helpers.ds_media-query(small) {
         .#{$site-prefix}layout {
             &--about {
                 grid-template-areas:
@@ -669,7 +671,7 @@
         }
     }
 
-    @include ds_media-query(medium) {
+    @include ds_helpers.ds_media-query(medium) {
         .#{$site-prefix}layout {
             &--about {
                 grid-template-areas:
@@ -761,7 +763,7 @@
         }
     }
 
-    @include ds_media-query(large) {
+    @include ds_helpers.ds_media-query(large) {
         .#{$site-prefix}layout {
             &--about {
                 grid-template-areas:
@@ -822,7 +824,7 @@
         }
     }
 
-    @include ds_media-query(xlarge) {
+    @include ds_helpers.ds_media-query(xlarge) {
         .#{$site-prefix}layout {
 
         }
@@ -847,7 +849,7 @@
         }
     }
 
-    @include ds_media-query(small) {
+    @include ds_helpers.ds_media-query(small) {
         .#{$site-prefix}sublayout {
             &--threecols {
                 grid-template-columns: repeat(2, 6fr);
@@ -864,7 +866,7 @@
         }
     }
 
-    @include ds_media-query(medium) {
+    @include ds_helpers.ds_media-query(medium) {
         .#{$site-prefix}sublayout {
             &--twocols {
                 grid-template-columns:repeat(2, 6fr);
@@ -897,7 +899,7 @@
         }
     }
 
-    @include ds_media-query(large) {
+    @include ds_helpers.ds_media-query(large) {
         .#{$site-prefix}sublayout {
             &--firstminister {
                 grid-template-areas: none;

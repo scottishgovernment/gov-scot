@@ -4,17 +4,19 @@
     Temporary fix for dark background blocks before replacement in new page blocks package
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 // colors
 
 $cb_colors: (
-    'blue'      $ds_colour__blue        'reversed',
-    'darkblue'  $ds_colour__blue--darker 'reversed',
-    'darkteal'  $ds_colour__dark-teal   'reversed',
-    'darkgreen' $ds_colour__dark-green  'reversed',
-    'red'       $ds_colour__red         'reversed',
-    'pink'      $ds_colour__pink        'reversed',
-    'purple'    $ds_colour__purple      'reversed',
-    'brown'     $ds_colour__brown       'reversed'
+    'blue'      ds_settings.$ds_colour__blue        'reversed',
+    'darkblue'  ds_settings.$ds_colour__blue--darker 'reversed',
+    'darkteal'  ds_settings.$ds_colour__dark-teal   'reversed',
+    'darkgreen' ds_settings.$ds_colour__dark-green  'reversed',
+    'red'       ds_settings.$ds_colour__red         'reversed',
+    'pink'      ds_settings.$ds_colour__pink        'reversed',
+    'purple'    ds_settings.$ds_colour__purple      'reversed',
+    'brown'     ds_settings.$ds_colour__brown       'reversed'
 );
 
 %texttheme-reversed {

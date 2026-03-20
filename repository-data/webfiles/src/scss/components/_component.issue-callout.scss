@@ -2,9 +2,12 @@
     ISSUE CALLOUT
 \*------------------------------------*/
 
+@use '../../../node_modules/@scottish-government/design-system/src/base/helpers/' as ds_helpers;
+@use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
+
 .#{$site-prefix}issue-callout {
-    background: $ds_colour__white;
-    color: $ds_colour__brand;
+    background: ds_settings.$ds_colour__white;
+    color: ds_settings.$ds_colour__brand;
     margin: -48px -16px 32px;
     padding: 16px;
     text-align: center;
@@ -17,7 +20,7 @@
 
         &:before,
         &:after {
-            background: $ds_colour__white;
+            background: ds_settings.$ds_colour__white;
             bottom: 0;
             content: '';
             position: absolute;
@@ -44,7 +47,7 @@
 
         &:before,
         &:after {
-            background: $ds_colour__brand;
+            background: ds_settings.$ds_colour__brand;
             content: '';
             height: 1px;
 
@@ -77,9 +80,9 @@
     }
 }
 
-@include ds_media-query(medium) {
+@include ds_helpers.ds_media-query(medium) {
     .#{$site-prefix}issue-callout {
-        @include ds_box-shadow;
+        @include ds_helpers.ds_box-shadow;
         margin-left: 0;
         margin-right: 0;
         margin-top: -128px;
