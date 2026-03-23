@@ -109,9 +109,6 @@ const global = {
         const accordions = [].slice.call(document.querySelectorAll('[data-module="ds-accordion"]'));
         accordions.forEach(accordion => new window.DS.components.Accordion(accordion).init());
 
-        const aspectBoxes = [].slice.call(document.querySelectorAll('.ds_aspect-box:not(.ds_aspect-box--fallback)'));
-        aspectBoxes.forEach(aspectBox => new window.DS.components.AspectBox(aspectBox).init());
-
         const autocompletes = [].slice.call(document.querySelectorAll('[data-module="ds-autocomplete"]'));
         autocompletes.forEach(autocomplete => {
             let url = window.location.origin + document.getElementById('site-root-path').value;
@@ -155,7 +152,7 @@ const global = {
         }
 
         const mobileMenus = [].slice.call(document.querySelectorAll('[data-module="ds-mobile-navigation-menu"]'));
-        mobileMenus.forEach(mobileMenu =>  new window.DS.components.MobileMenu(mobileMenu).init());
+        mobileMenus.forEach(mobileMenu =>  new window.DS.components.SiteNavigation(mobileMenu).init());
 
         const searchBoxes = [].slice.call(document.querySelectorAll('[data-module="ds-site-search"]'));
         searchBoxes.forEach(searchBox => new window.DS.components.CollapsibleSearchBox(searchBox).init());
@@ -184,7 +181,7 @@ const global = {
 
         videoElements.forEach(videoElement => {
 
-            if (storage.hasPermission(storage.categories.marketing)) {
+            if (storage.hasPermission('marketing')) {
                 videoElement.innerHTML = `
                 <iframe title="Embedded video" width="${videoElement.dataset.width}" height="${videoElement.dataset.height}" src="${videoElement.dataset.src}" frameborder="0" allowfullscreen></iframe>`;
             } else {
@@ -206,11 +203,11 @@ const global = {
 
                         let permissions;
 
-                        if (!storage.isJsonString(permissionsString)) {
+                        if (!storage.getIsJsonString(permissionsString)) {
                             permissions = {};
 
 
-                            storage.setCookie(storage.categories.necessary,
+                            storage.setCookie('necessary',
                                 'cookiePermissions',
                                 JSON.stringify(permissions)
                             );
@@ -220,7 +217,7 @@ const global = {
 
                         permissions.marketing = true;
 
-                        storage.setCookie(storage.categories.necessary,
+                        storage.setCookie('necessary',
                             'cookiePermissions',
                             JSON.stringify(permissions)
                         );

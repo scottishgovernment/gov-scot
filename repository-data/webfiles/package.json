@@ -10,7 +10,7 @@
   "scripts": {
     "svgsprite": "node svg-sprite",
     "scss": "npm run sass",
-    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed --quiet",
+    "sass": "sass ./src/scss/main.scss ./src/main/resources/site/assets/css/main.css --style compressed",
     "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --config ./webpack.config.js"
   },
   "devDependencies": {

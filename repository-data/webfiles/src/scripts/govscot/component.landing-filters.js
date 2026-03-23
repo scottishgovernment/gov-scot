@@ -24,7 +24,7 @@ class LandingFilters {
         // set up date pickers
         const imagePath = document.getElementById('imagePath').value;
         const datePickers = [].slice.call(document.querySelectorAll('[data-module="ds-datepicker"]'));
-        datePickers.forEach(datePicker => new window.DS.components.DSDatePicker(datePicker, {imagePath: imagePath, maxDate: new Date()}).init());
+        datePickers.forEach(datePicker => new window.DS.components.DatePicker(datePicker, {imagePath: imagePath, maxDate: new Date()}).init());
 
         // set up events
         this.attachEventHandlers();

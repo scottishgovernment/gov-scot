@@ -24,7 +24,7 @@ const cookieForm = {
         const inputGroups = document.querySelectorAll('#cookie-preferences .ds_field-group');
         let cookiePermissions = {};
 
-        if (storage.isJsonString(cookiePermissionsString)) {
+        if (storage.getIsJsonString(cookiePermissionsString)) {
             cookiePermissions = JSON.parse(cookiePermissionsString);
         } else {
             cookiePermissions = {};

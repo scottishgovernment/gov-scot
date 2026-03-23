@@ -3,12 +3,12 @@ import storage from '@scottish-government/design-system/dist/scripts/base/tools/
 export default function () {
     const permissionsString = storage.getCookie('cookiePermissions') || '';
 
-    if (!storage.isJsonString(permissionsString)) {
+    if (!storage.getIsJsonString(permissionsString)) {
         const permissions = {};
         permissions.statistics = false;
         permissions.preferences = true;
 
-        storage.setCookie(storage.categories.necessary,
+        storage.setCookie('necessary',
             'cookiePermissions',
             JSON.stringify(permissions)
         );

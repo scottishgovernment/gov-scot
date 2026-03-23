@@ -156,7 +156,7 @@
                             </#if>
 
                             <h3 class="ds_card__title">
-                                <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link--cover">
+                                <a data-navigation="featured-${item?index + 1}" href="<@hst.link hippobean=item/>" class="ds_card__link  ds_card__link--cover">
                                     ${item.title}
                                 </a>
                             </h3>

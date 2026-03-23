@@ -8,9 +8,9 @@
 
 .#{$site-prefix}featured-item {
     @include small-size;
-    @include ds_helpers.ds_blocklink('.#{$site-prefix}featured-item__link');
 
     line-height: 24px;
+    position: relative;
 
     > :last-child {
         margin-bottom: 0;
@@ -40,7 +40,6 @@
 h3.#{$site-prefix}featured-item__title {
     @include h4-size;
 
-    line-height: 24px;
     margin-top: 0;
 }
 
@@ -54,6 +53,14 @@ h3.#{$site-prefix}featured-item__title {
         position: absolute;
         right: 0;
         top: 0;
+    }
+
+    &:focus {
+        filter: none;
+        outline: none;
+        box-shadow:
+            0 0 0 round(ds_settings.$ds_focus__outline-width, 1px) ds_settings.$ds_colour__link--focus__outline,
+            0 round(ds_settings.$ds_focus__shadow-width, 1px) 0 round(ds_settings.$ds_focus__outline-width, 1px) ds_settings.$ds_colour__link--focus__shadow;
     }
 }
 

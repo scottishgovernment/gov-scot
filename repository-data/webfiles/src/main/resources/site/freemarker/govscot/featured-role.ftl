@@ -52,11 +52,10 @@
 
         <div class="ds_layout__sidebar">
             <#if document.feature.title?has_content>
-                <aside class="ds_card  ds_card--grey  <#if document.feature.externallink?? || document.feature.internallink??>ds_card--hover</#if>  gov_feature-card">
-                    <#if document.feature.image??>
-                        <div class="ds_card__media">
-                            <div class="ds_aspect-box">
-                                <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
+                <aside class="ds_card  ds_card--grey">
+                    <div class="ds_card__media">
+                        <div class="ds_aspect-box">
+                            <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
                                 src="<@hst.link hippobean=document.feature.image.largefourcolumns/>"
                                 srcset="<@hst.link hippobean=document.feature.image.smallcolumns/> 360w,
                                     <@hst.link hippobean=document.feature.image.smallcolumnsdoubled/> 720w,
@@ -67,29 +66,29 @@
                                     <@hst.link hippobean=document.feature.image.xlargefourcolumns/> 352w,
                                     <@hst.link hippobean=document.feature.image.xlargefourcolumnsdoubled/> 704w"
                                 sizes="(min-width:1200px) 352px, (min-width:920px) 288px, (min-width:768px) 224px, 360px" />
-                            </div>
                         </div>
-                    </#if>
-
+                    </div>
                     <div class="ds_card__content">
-                        <h2 class="ds_card__title">
-                            <#if document.feature.internallink??>
-                                <a data-navigation="feature-main" href="<@hst.link hippobean=document.feature.internallink/>" class="ds_card__link--cover">
+                        <div class="ds_card__content-header">
+                            <h2 class="ds_card__title">
+                                <#if document.feature.internallink??>
+                                    <a data-navigation="feature-main" href="<@hst.link hippobean=document.feature.internallink/>" class="ds_card__link  ds_card__link--cover">
+                                        ${document.feature.title}
+                                    </a>
+                                <#elseif document.feature.externallink?has_content>
+                                    <a data-navigation="feature-main" href="${document.feature.externallink}" class="ds_card__link  ds_card__link--cover">
+                                        ${document.feature.title}
+                                    </a>
+                                <#else>
                                     ${document.feature.title}
-                                </a>
-                            <#elseif document.feature.externallink?has_content>
-                                <a data-navigation="feature-main" href="${document.feature.externallink}" class="ds_card__link--cover">
-                                    ${document.feature.title}
-                                </a>
-                            <#else>
-                                ${document.feature.title}
-                            </#if>
-                        </h2>
-
-                        ${document.feature.content?no_esc}
+                                </#if>
+                            </h2>
+                        </div>
+                        <div class="ds_card__content-main">
+                            ${document.feature.content?no_esc}
+                        </div>
                     </div>
                 </aside>
-
             </#if>
         </div>
 
@@ -169,11 +168,11 @@
                             <div class="ds_card__content">
                                 <h2 class="ds_card__title">
                                     <#if feature.internallink??>
-                                        <a data-navigation="featured-item-${feature?index + 1}"  href="<@hst.link hippobean=feature.internallink/>" class="ds_card__link--cover">
+                                        <a data-navigation="featured-item-${feature?index + 1}"  href="<@hst.link hippobean=feature.internallink/>" class="ds_card__link  ds_card__link--cover">
                                             ${feature.title}
                                         </a>
                                     <#elseif feature.externallink?has_content>
-                                        <a data-navigation="featured-item-${feature?index + 1}"  href="${feature.externallink}" class="ds_card__link--cover">
+                                        <a data-navigation="featured-item-${feature?index + 1}"  href="${feature.externallink}" class="ds_card__link  ds_card__link--cover">
                                             ${feature.title}
                                         </a>
                                     <#else>

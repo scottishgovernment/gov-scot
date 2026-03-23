@@ -10,7 +10,7 @@
 
   overflow: auto;
 
-  margin-right: -16px;
+  margin-right: -1rem;
 }
 
 .stat-box {
@@ -19,14 +19,13 @@
   @include ds_helpers.ds_tiny-size;
 
   background-color: ds_settings.$ds_colour__grey--lighter;
-  line-height: 20px;
-  padding: 16px;
+  padding: 1rem;
   text-align: center;
   text-decoration: none;
 
   float: left;
-  margin-right: 16px;
-  width: calc(100%/3 - 16px);
+  margin-right: 1rem;
+  width: calc(100%/3 - 1rem);
 
   &:last-child {
     margin-right: 0;
@@ -34,7 +33,7 @@
 
   &__value {
     display: block;
-    font-size: 56px;
+    font-size: 3.5rem;
     font-weight: $bold;
     line-height: 1;
   }
@@ -42,7 +41,7 @@
   &__label {
     color: ds_settings.$ds_colour__text;
     display: inline-block;
-    min-height: 40px;
+    min-height: 2.5rem;
     text-decoration: underline;
   }
 
@@ -57,14 +56,14 @@
 
 @include ds_helpers.ds_media-query(large) {
   .stat-box__value {
-    font-size: 72px;
+    font-size: 4.5rem;
   }
 }
 
 @supports (display: grid) {
   .stat-boxes {
     display: grid;
-    grid-gap: 16px;
+    grid-gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
     margin-right: 0;
   }
@@ -85,7 +84,7 @@
 
   @include ds_helpers.ds_media-query(large) {
     .stat-boxes {
-      grid-gap: 32px;
+      grid-gap: 2rem;
     }
   }
 }

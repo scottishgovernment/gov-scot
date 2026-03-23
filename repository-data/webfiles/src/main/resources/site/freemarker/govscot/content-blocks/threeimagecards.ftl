@@ -33,6 +33,52 @@
 
             <#if card != ''>
                 <div class="ds_card  ds_card--hover  <#if greycards>ds_card--grey</#if>">
+                    <div class="ds_card__media">
+                        <div class="ds_aspect-box">
+                            <#if card.image.xlargefourcolumns??>
+                                <img class="ds_aspect-box__inner" alt="${card.alt}" src="<@hst.link hippobean=card.image.xlargefourcolumns />"
+                                        width="${card.image.xlargefourcolumns.width?c}"
+                                        height="${card.image.xlargefourcolumns.height?c}"
+                                        loading="lazy"
+                                        srcset="
+                                        <@hst.link hippobean=card.image.smallcolumns/> 360w,
+                                        <@hst.link hippobean=card.image.smallcolumnsdoubled/> 720w,
+                                        <@hst.link hippobean=card.image.mediumfourcolumns/> 224w,
+                                        <@hst.link hippobean=card.image.mediumfourcolumnsdoubled/> 448w,
+                                        <@hst.link hippobean=card.image.largefourcolumns/> 288w,
+                                        <@hst.link hippobean=card.image.largefourcolumnsdoubled/> 576w,
+                                        <@hst.link hippobean=card.image.xlargefourcolumns/> 352w,
+                                        <@hst.link hippobean=card.image.xlargefourcolumnsdoubled/> 704w"
+                                        sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width: 768px) 224px, <#if smallvariant>360px<#else>100vw</#if>"
+                                        >
+                            <#else>
+                                <img loading="lazy" class="ds_aspect-box__inner" src="<@hst.link hippobean=card.image />" alt="${card.alt}"/>
+                            </#if>
+                        </div>
+                    </div>
+                    <div class="ds_card__content">
+                        <div class="ds_card__content-header">
+                            <h2 class="ds_card__title">
+                                <#if card.link??>
+                                    <a class="ds_card__link  ds_card__link--cover" href="<@hst.link hippobean=card.link/>">${card.title}</a>
+                                <#elseif card.externalLink?has_content>
+                                    <a class="ds_card__link  ds_card__link--cover" href="${card.externalLink}">${card.title}</a>
+                                <#else>
+                                    ${card.title}
+                                </#if>
+                            </h2>
+                        </div>
+                        <div class="ds_card__content-main">
+                            <#if card.text??>
+                                <p>${card.text}</p>
+                            </#if>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="ds_card  ds_card--hover  <#if greycards>ds_card--grey</#if>">
                     <#if showimages>
                         <div class="ds_card__media  <#if smallvariant>ds_card__media--small-mobile</#if>">
                             <div class="ds_aspect-box">
@@ -62,9 +108,9 @@
                         <#if card.title??>
                         <h2 class="ds_card__title">
                             <#if card.link??>
-                                <a class="ds_card__link--cover" href="<@hst.link hippobean=card.link/>">${card.title}</a>
+                                <a class="ds_card__link  ds_card__link--cover" href="<@hst.link hippobean=card.link/>">${card.title}</a>
                             <#elseif card.externalLink?has_content>
-                                <a class="ds_card__link--cover" href="${card.externalLink}">${card.title}</a>
+                                <a class="ds_card__link  ds_card__link--cover" href="${card.externalLink}">${card.title}</a>
                             <#else>
                                 ${card.title}
                             </#if>

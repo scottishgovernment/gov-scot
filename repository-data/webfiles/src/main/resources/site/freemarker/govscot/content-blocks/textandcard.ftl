@@ -51,9 +51,9 @@
                         <#if document2.title??>
                         <h2 class="ds_card__title">
                             <#if document2.link??>
-                                <a class="ds_card__link--cover" href="<@hst.link hippobean=document2.link/>">${document2.title}</a>
+                                <a class="ds_card__link  ds_card__link--cover" href="<@hst.link hippobean=document2.link/>">${document2.title}</a>
                             <#elseif document2.externalLink?has_content>
-                                <a class="ds_card__link--cover" href="${document2.externalLink}">${document2.title}</a>
+                                <a class="ds_card__link  ds_card__link--cover" href="${document2.externalLink}">${document2.title}</a>
                             <#else>
                                 ${document2.title}
                             </#if>

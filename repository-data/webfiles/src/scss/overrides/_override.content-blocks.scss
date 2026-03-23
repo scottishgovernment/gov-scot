@@ -4,6 +4,7 @@
     Temporary fix for dark background blocks before replacement in new page blocks package
 \*------------------------------------*/
 
+@use 'sass:list';
 @use '../../../node_modules/@scottish-government/design-system/src/base/settings/' as ds_settings;
 
 // colors
@@ -35,9 +36,9 @@ $cb_colors: (
 .ds_cb {
 
     @each $color in $cb_colors {
-        $name: nth($color, 1);
-        $hex: nth($color, 2);
-        $texttheme: nth($color, 3);
+        $name: list.nth($color, 1);
+        $hex: list.nth($color, 2);
+        $texttheme: list.nth($color, 3);
 
         &--fullwidth.ds_cb--bg-#{$name},
         &:not(&--fullwidth).ds_cb--bg-#{$name} .ds_wrapper {
