@@ -25,7 +25,6 @@ public class DynamicIssueComponent extends CommonComponent {
         request.setAttribute("showPolicies", paramInfo.getShowPolicies());
         request.setAttribute("showNews", paramInfo.getShowNews());
         request.setAttribute("showPublications", paramInfo.getShowPublications());
-        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
 
         if (paramInfo.getShowPolicies().booleanValue()) {

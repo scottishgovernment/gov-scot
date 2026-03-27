@@ -22,12 +22,9 @@ public class ThreeImageCardsComponent extends CommonComponent {
         request.setAttribute("document2", getHippoDocument(paramInfo.getImage2()));
         request.setAttribute("document3", getHippoDocument(paramInfo.getImage3()));
 
-        request.setAttribute("fullwidth", paramInfo.getFullWidth());
+        request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
         request.setAttribute("showimages", paramInfo.getShowImages());
-        request.setAttribute("smallvariant", paramInfo.getSmallVariant());
-        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
-        request.setAttribute("greycards", paramInfo.getGreyCards());
     }
 
     HippoDocument getHippoDocument(String id) {

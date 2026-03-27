@@ -2,11 +2,19 @@
 <#include "../../include/imports.ftl">
 
 <#if hstRequestContext.preview><div class="cms-display-grid"></#if>
-<div class="ds_cb  ds_cb--divider
-    <#if backgroundcolor?? && backgroundcolor?length gt 0>ds_cb--bg-${backgroundcolor}</#if>
-    <#if fullwidth>ds_cb--fullwidth</#if>">
+<div class="ds_pb  ds_pb--divider">
+    <#if fullwidth?has_content>
+        <#if fullwidth>
+    <hr />
+        <#else>
+    <div class="ds_wrapper">
+        <hr />
+    </div> 
+        </#if>
+    <#else>
     <div class="ds_wrapper">
         <hr />
     </div>
+    </#if>
 </div>
 <#if hstRequestContext.preview></div></#if>

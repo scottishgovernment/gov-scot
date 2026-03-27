@@ -8,9 +8,8 @@ import org.hippoecm.hst.core.parameters.Parameter;
 import org.onehippo.cms7.essentials.components.info.EssentialsDocumentComponentInfo;
 
 @FieldGroupList({
-    @FieldGroup(titleKey = "Appearance", value = {"backgroundcolor", "fullwidth", "foregroundcolor", "neutrallinks"}),
-    @FieldGroup(titleKey = "Text formatting", value = {"widetext", "verticalalign", "lightheader" }),
-    @FieldGroup(titleKey = "Image/video formatting ", value = {"medianomargin", "mediaaligndesktop", "mediaalignmobile" }),
+    @FieldGroup(titleKey = "Appearance", value = {"backgroundcolor", "fullwidth"}),
+    @FieldGroup(titleKey = "Formatting", value = {"widetext", "verticalalign", "imagenomargin", "imagecover", "imagealignmobile" }),
     @FieldGroup(titleKey = "Content", value = {"document"})
 })
 
@@ -27,35 +26,24 @@ public interface PageheadingComponentInfo extends EssentialsDocumentComponentInf
     @Parameter(name = "fullwidth", displayName = "Full-width background", defaultValue = "true")
     Boolean getFullWidth();
 
-    @Parameter(name = "foregroundcolor", displayName = "Text colour (on white background)")
-    @DropDownList(valueListProvider = ComponentForegroundColourValueListProvider.class)
-    String getForegroundColor();
-
     @Parameter(name = "backgroundcolor", displayName = "Background colour")
-    @DropDownList(valueListProvider = ComponentBackgroundColourValueListProvider.class)
+    @DropDownList({"Secondary", "Tertiary", "Theme", "Theme reversed"})
     String getBackgroundColor();
 
-    @Parameter(name = "neutrallinks", displayName = "Neutral link colour", defaultValue = "false")
-    Boolean getNeutralLinks();
-
-    @Parameter(name = "verticalalign", displayName = "Vertical align text", required = true, defaultValue = "top")
+    @Parameter(name = "verticalalign", displayName = "Vertical align", required = true, defaultValue = "top")
     @DropDownList({"top", "middle"})
     String getVerticalAlign();
 
     @Parameter(name = "widetext", displayName = "Increase width of text", defaultValue = "false")
     Boolean getWideText();
 
-    @Parameter(name = "lightheader", displayName = "Lighter heading style", defaultValue = "false")
-    Boolean getLightHeader();
+    @Parameter(name = "imagenomargin", displayName = "Remove padding around image (only applicable if full width background)", defaultValue = "false")
+    Boolean getImageNoMargin();
 
-    @Parameter(name = "medianomargin", displayName = "Remove vertical margins (media on desktop)", defaultValue = "false")
-    Boolean getMediaNoMargin();
+    @Parameter(name = "imagecover", displayName = "Set image to cover available space (desktop)", defaultValue = "false")
+    Boolean getImageCover();
 
-    @Parameter(name = "mediaaligndesktop", displayName = "Vertical alignment (media on desktop)", defaultValue = "middle")
-    @DropDownList({"top", "middle", "cover"})
-    String getMediaAlignDesktop();
-
-    @Parameter(name = "mediaalignmobile", displayName = "Horizontal alignment (media on mobile)", defaultValue = "left")
+    @Parameter(name = "imagealignmobile", displayName = "Image horizontal alignment (mobile)", defaultValue = "left")
     @DropDownList({"left", "right", "center", "hidden"})
-    String getMediaAlignMobile();
+    String getImageAlignMobile();
 }

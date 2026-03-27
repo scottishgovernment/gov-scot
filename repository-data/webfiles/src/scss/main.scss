@@ -1,9 +1,15 @@
+@use '../../node_modules/@scottish-government-design-system/page-blocks/src/blocks/base' as pageblocks with (
+    $pb_theme__background-secondary: #e5f0f8
+);
+
 /**
  * PATTERN LIBRARY VALUES
  */
 $iconsfile: "../images/icons/icons.stack.svg";
 $site-prefix: "gov_";
 
+// Page block secondary theme background
+ $pb_theme__background-secondary: red;
 
 /**
  * BASE STYLES FROM PATTERN LIBRARY
@@ -69,16 +75,16 @@ $breakpoints: (
 @import "components/preview-notification";
 
 /**
- * CONTENT BLOCKS FROM DESIGN SYSTEM CONTENT BLOCKS
+ * PAGE BLOCKS FROM DESIGN SYSTEM PAGE BLOCKS
  */
- @import "../../node_modules/@scottish-government-design-system/content-blocks/src/content-blocks/all-content-blocks";
+@import "../../node_modules/@scottish-government-design-system/page-blocks/src/page-blocks";
 
  @import "overrides/override.page-title";
  @import "overrides/override.video";
 
 
 @import "overrides/override.card";
-@import "overrides/override.content-blocks";
+//@import "overrides/override.content-blocks";
 @import "overrides/override.feature-header";
 @import "overrides/override.notification-banner";
 @import "overrides/override.tables";

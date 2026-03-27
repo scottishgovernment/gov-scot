@@ -14,10 +14,8 @@ public class ImageAndTextComponent extends EssentialsDocumentComponent {
     public void doBeforeRender(HstRequest request, final HstResponse response) {
         super.doBeforeRender(request, response);
         ImageAndTextComponentInfo paramInfo = getComponentParametersInfo(request);
-        request.setAttribute("fullwidth", paramInfo.getFullWidth());
         request.setAttribute("backgroundcolor", paramInfo.getBackgroundColor());
-        request.setAttribute("foregroundcolor", paramInfo.getForegroundColor());
-        request.setAttribute("neutrallinks", paramInfo.getNeutralLinks());
+        request.setAttribute("verticalcenter", paramInfo.getVerticalCenter());
         request.setAttribute("removebottompadding", paramInfo.getRemoveBottomPadding());
     }
 }

@@ -4,9 +4,23 @@
 
 <#if showNews || showPolicies || showPublications>
 
-<div class="ds_cb  ds_cb--link-list<#if removebottompadding>  ds_!_padding-bottom--0</#if><#if neutrallinks>  ds_cb--neutral-links</#if>">
+<div class="ds_pb  ds_pb--link-list
+<#if removebottompadding>  ds_!_padding-bottom--0</#if>
+<#if backgroundcolor?has_content> 
+<#switch backgroundcolor?lower_case> 
+  <#case 'secondary'>
+  ds_pb--background-secondary
+  <#break>
+  <#case 'tertiary'>
+  ds_pb--background-tertiary
+  <#break>
+  <#case 'theme'>
+  ds_pb__theme--background-secondary
+  <#break>
+</#switch>
+</#if>">
     <div class="ds_wrapper">
-        <div class="ds_cb__inner">
+        <div class="ds_pb__inner">
             <#if document??>
                 <#if showNews && news?has_content>
                     <section class="gov_latest-feed  gov_latest-feed--horizontal  gov_content-block">

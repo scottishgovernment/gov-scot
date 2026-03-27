@@ -172,37 +172,37 @@ definitions:
         hst:renderpath: webfile:/freemarker/govscot/preview-indicator.ftl
       /divider:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/divider.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/divider.ftl
       /doubletext:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/doubletext.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/doubletext.ftl
       /pageheader:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/pageheader.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/featureheader.ftl
       /featuregrid:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/featuregrid.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/featuregrid.ftl
       /textandcard:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/textandcard.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/textandcard.ftl
       /header:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/header.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/header.ftl
       /imageandtext:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/imageandtext.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/imageandtext.ftl
       /text:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/text.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/text.ftl
       /threeimagecards:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/threeimagecards.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/threeimagecards.ftl
       /video:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/video.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/video.ftl
       /dynamicissue:
         jcr:primaryType: hst:template
-        hst:renderpath: webfile:/freemarker/govscot/content-blocks/dynamicissue.ftl
+        hst:renderpath: webfile:/freemarker/govscot/page-blocks/dynamicissue.ftl
       /base-plausibleanalytics:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/base-plausibleanalytics.ftl

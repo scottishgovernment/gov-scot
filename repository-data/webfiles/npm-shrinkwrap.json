@@ -11,7 +11,7 @@
         "@babel/core": "^7.28.4",
         "@babel/preset-env": "^7.28.3",
         "@dryfeld/nunjucks-loader": "^4.0.6",
-        "@scottish-government-design-system/content-blocks": "^0.1.2",
+        "@scottish-government-design-system/page-blocks": "^2.0.0-beta.0",
         "@scottish-government/design-system": "^4.0.0-beta.1",
         "babel-loader": "^10.0.0",
         "mkdirp": "^3.0.1",
@@ -2180,17 +2180,20 @@
         "node": ">= 10"
       }
     },
-    "node_modules/@scottish-government-design-system/content-blocks": {
-      "version": "0.1.2",
-      "resolved": "http://nexus.digital.gov.uk/repository/npm-all/@scottish-government-design-system/content-blocks/-/content-blocks-0.1.2.tgz",
-      "integrity": "sha512-fsswKTDM0sGNX2cm0eZwDu3ConDbsRxN5kKKmq9rmoEBPI6bEGaElzjiwfWSXl7AH5HJFLLHNHVXp3B7JwbeJQ==",
+    "node_modules/@scottish-government-design-system/page-blocks": {
+      "version": "2.0.0-beta.0",
+      "resolved": "https://registry.npmjs.org/@scottish-government-design-system/page-blocks/-/page-blocks-2.0.0-beta.0.tgz",
+      "integrity": "sha512-rn+3oE12q07L0t9BsrxISIpyBAZSxRUn9yoUtO6ha1r8q39t/n0tjj1IrLyxMYxoMpCo7z4iafkVEezO3HmfKw==",
       "dev": true,
-      "license": "MIT"
+      "license": "MIT",
+      "dependencies": {
+        "@scottish-government/design-system": "^4.0.0-beta.2"
+      }
     },
     "node_modules/@scottish-government/design-system": {
-      "version": "4.0.0-beta.1",
-      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-4.0.0-beta.1.tgz",
-      "integrity": "sha512-T4Ke5RFUQyTt6b2Q0Jcu126QffrAEW6l08Eet5Jl9LLVfnkZlLAUSSwezyBat6NlVXPXhx3uY/ezh6l8akygMQ==",
+      "version": "4.0.0-beta.2",
+      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-4.0.0-beta.2.tgz",
+      "integrity": "sha512-C2tGGojxhYlWEpwIGwHHX+m9TIIWh4kVWyHl1UVNh0l4IrfZcH6ba+hOmgLob6XNIO3OeiiiR2pIfZrSoM+RCA==",
       "dev": true,
       "license": "MIT"
     },

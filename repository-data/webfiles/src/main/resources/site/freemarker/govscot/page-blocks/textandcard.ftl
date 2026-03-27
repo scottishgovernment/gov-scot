@@ -2,26 +2,37 @@
 <#include "../../include/imports.ftl">
 <#include "../../include/cms-placeholders.ftl">
 <#-- @ftlvariable name="document" type="scot.gov.www.beans.Text" -->
-<div class="ds_cb  ds_cb--card-text
-<#if neutrallinks>  ds_cb--neutral-links</#if>
+<div class="ds_pb  ds_pb--card-text
 <#if removebottompadding>  ds_!_padding-bottom--0</#if>
-">
+<#if backgroundcolor?has_content> 
+<#switch backgroundcolor?lower_case> 
+  <#case 'secondary'>
+  ds_pb--background-secondary
+  <#break>
+  <#case 'tertiary'>
+  ds_pb--background-tertiary
+  <#break>
+  <#case 'theme'>
+  ds_pb__theme--background-secondary
+  <#break>
+</#switch>
+</#if>">
     <div class="ds_wrapper">
-        <div class="ds_cb__inner">
+        <div class="ds_pb__inner">
             <#if document1??>
-            <div class="ds_cb__text">
+            <div class="ds_pb__text">
                 <@hst.html hippohtml=document1.content/>
                 <@hst.manageContent hippobean=document1 documentTemplateQuery="new-text-document" parameterName="document1" rootPath="text"/>
             </div>
             <#elseif editMode>
-            <div class="cms-blank  ds_cb__text">
+            <div class="cms-blank  ds_pb__text">
                 <@placeholdertext lines=7/>
                 <@hst.manageContent documentTemplateQuery="new-text-document" parameterName="document1" rootPath="text"/>
             </div>
             </#if>
             <#if document2??>
-            <div class="ds_cb__card">
-                <div class="ds_card  <#if document2.link?? || document2.externalLink?has_content>ds_card--hover  </#if>ds_card--grey">
+            <div class="ds_pb__card">
+                <div class="ds_card  <#if document2.link?? || document2.externalLink?has_content>ds_card--hover  </#if> <#if !backgroundcolor?has_content>  ds_card--background-secondary</#if>">
                     <#if showimages>
                         <div class="ds_card__media">
                             <div class="ds_aspect-box">
@@ -72,8 +83,8 @@
                 </div>
             </div>
             <#elseif editMode>
-            <div class="ds_cb__card">
-                <div class="ds_card  cms-blank  ds_card--grey">
+            <div class="ds_pb__card">
+                <div class="ds_card  cms-blank  ds_card--background-secondary">
                     <#if showimages>
                         <div class="ds_card__media  <#if smallvariant>ds_card__media--small-mobile</#if>">
                             <@placeholderimage/>
