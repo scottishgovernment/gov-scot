@@ -7,13 +7,16 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.sitemenu.EditableMenuItem;
 import org.hippoecm.hst.core.sitemenu.EditableMenuItemImpl;
 
+import java.util.Set;
+
 public class RepoBasedMenuItem extends EditableMenuItemImpl {
 
     public RepoBasedMenuItem(
             HippoDocumentBean repoItem,
             EditableMenuItem parentItem,
             HstRequest request,
-            HippoBean currentContentBean) {
+            HippoBean currentContentBean,
+            Set<String> ignore) {
         super(parentItem);
         this.name = repoItem.getDisplayName();
         this.properties = repoItem.getProperties();
@@ -31,7 +34,8 @@ public class RepoBasedMenuItem extends EditableMenuItemImpl {
             HippoFolderBean repoItem,
             EditableMenuItem parentItem,
             HstRequest request,
-            HippoBean currentContentBean) {
+            HippoBean currentContentBean,
+            Set<String> ignore) {
         super(parentItem);
         this.name = repoItem.getDisplayName();
         this.depth = parentItem.getDepth() - 1;
@@ -50,23 +54,26 @@ public class RepoBasedMenuItem extends EditableMenuItemImpl {
         }
 
         for (HippoBean child : repoItem.getChildBeans(HippoBean.class)) {
-            processChild(child, request, currentContentBean);
+            processChild(child, request, currentContentBean, ignore);
         }
     }
 
-    private void processChild(HippoBean child, HstRequest request, HippoBean currentContentBean) {
+    private void processChild(HippoBean child, HstRequest request, HippoBean currentContentBean, Set<String> ignore) {
+        if (ignore.contains(child.getName())) {
+            return;
+        }
         if (child instanceof HippoDocumentBean) {
-            processChildDocument(child, request, currentContentBean);
+            processChildDocument(child, request, currentContentBean, ignore);
         }
 
         if (child instanceof HippoFolderBean) {
-            processChildFolder(child, request, currentContentBean);
+            processChildFolder(child, request, currentContentBean, ignore);
         }
     }
 
-    private void processChildDocument(HippoBean child, HstRequest request, HippoBean currentContentBean) {
+    private void processChildDocument(HippoBean child, HstRequest request, HippoBean currentContentBean, Set<String> ignore) {
         HippoDocumentBean childDocumentItem = (HippoDocumentBean) child;
-        EditableMenuItem childMenuItem = new RepoBasedMenuItem(childDocumentItem, this, request, currentContentBean);
+        EditableMenuItem childMenuItem = new RepoBasedMenuItem(childDocumentItem, this, request, currentContentBean, ignore);
         if ("index".equals(childDocumentItem.getName())) {
             // don't add the item as a child if it is the 'index' item for that folder
             this.name = childDocumentItem.getDisplayName();
@@ -77,9 +84,9 @@ public class RepoBasedMenuItem extends EditableMenuItemImpl {
         }
     }
 
-    private void processChildFolder(HippoBean child, HstRequest request, HippoBean currentContentBean) {
+    private void processChildFolder(HippoBean child, HstRequest request, HippoBean currentContentBean, Set<String> ignore) {
         HippoFolderBean childRepoItem = (HippoFolderBean) child;
-        EditableMenuItem childMenuItem = new RepoBasedMenuItem(childRepoItem, this, request, currentContentBean);
+        EditableMenuItem childMenuItem = new RepoBasedMenuItem(childRepoItem, this, request, currentContentBean, ignore);
         this.addChildMenuItem(childMenuItem);
     }
 }

@@ -215,3 +215,6 @@ definitions:
       /search-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/search/search-main.ftl
+      /people-list:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/people-list.ftl

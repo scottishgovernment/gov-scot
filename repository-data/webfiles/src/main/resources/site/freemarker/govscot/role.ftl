@@ -60,7 +60,28 @@
                     <div class="gov_person">
                         <div class="gov_person__text-container">
                             <#assign contactInformationHeadingModifier = 'gamma' />
-                            <#include 'common/contact-information.ftl' />
+                            <div class="ds_contact-details">
+                                <h2 class="ds_contact-details__title  <#if contactInformationHeadingModifier??>${contactInformationHeadingModifier}</#if>">Contact</h2>
+                                <dl class="ds_contact-details__list">
+                                    <@hst.html var="htmladdress" hippohtml=postalAddress/>
+                                    <#if htmladdress?has_content>
+                                        <div class="ds_contact-details__item">
+                                            <dt>Address</dt>
+                                            <dd translate="no">
+                                                <address>
+                                                    <@hst.html hippohtml=postalAddress/>
+                                                </address>
+                                            </dd>
+                                        </div>
+                                    </#if>
+                                    <#if contactInformation.email?has_content>
+                                        <div class="ds_contact-details__item">
+                                            <dt>Email</dt>
+                                            <dd><a class="ds_break-word" href="mailto:${contactInformation.email}">${insertWbrAtCamelCaseWordBreaks(contactInformation.email)?no_esc}</a></dd>
+                                        </div>
+                                    </#if>
+                                </dl>
+                            </div>
                         </div>
                     </div>
                 </#if>

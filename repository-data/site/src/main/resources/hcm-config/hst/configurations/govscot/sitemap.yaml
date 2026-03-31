@@ -188,6 +188,17 @@ definitions:
             hst:refId: directorates
             hst:relativecontentpath: ${parent}/directorates
             hst:sitemapitemhandlerids: [trailing-slash]
+        /people:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/peoplepage
+          hst:refId: people
+          hst:relativecontentpath: about/people
+          hst:sitemapitemhandlerids: [trailing-slash]
+          /_default_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/personpage
+            hst:relativecontentpath: ${parent}/${1}
+            hst:sitemapitemhandlerids: [trailing-slash]
       /roles:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/contentlist
