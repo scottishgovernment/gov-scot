@@ -17,6 +17,8 @@ public class UrlSource {
 
     private static final String PAGES = "pages";
 
+    private static final String PUBLICATIONS = "publications";
+
     private HippoUtils hippoUtils = new HippoUtils();
 
     String policyUrl(Node node) throws RepositoryException {
@@ -34,7 +36,7 @@ public class UrlSource {
     }
 
     String publicationUrl(Node publication) throws RepositoryException {
-        return slugUrl("publications", publication);
+        return slugUrl(PUBLICATIONS, publication);
     }
 
     String publicationUrl(Node publication, Node variant, String action, String path) throws RepositoryException {
@@ -79,7 +81,7 @@ public class UrlSource {
         return new StringBuilder(publicationUrl).append("documents").append('/').toString();
     }
     String publicationPageUrl(Node publication, Node page, String action) throws RepositoryException {
-        String publicationUrl = slugUrl("publications", publication);
+        String publicationUrl = slugUrl(PUBLICATIONS, publication);
 
         // if this is the first published non contents page then use the publication url
         boolean confirmAction = "publish".equals(action) || "moveFolder".equals(action);
@@ -91,7 +93,7 @@ public class UrlSource {
     }
 
     String complexDocumentChapterUrl(Node publication, Node chapter, String action) throws RepositoryException {
-        String publicationUrl = slugUrl("publications", publication);
+        String publicationUrl = slugUrl(PUBLICATIONS, publication);
         return new StringBuilder(publicationUrl)
                 .append(chapter.getParent().getName()).append('/')
                 .append(chapter.getName()).append('/')
