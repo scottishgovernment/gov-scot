@@ -222,7 +222,9 @@ public class SearchJournalEventListener implements DaemonModule {
             Node pageVariant = publishedVariant(pageHandle);
             if (pageVariant != null) {
                 SearchJournalEntry depublishOldEntry = createDepublishSubfolderEntry(event.subjectPath(), pageVariant.getName(), true);
+                SearchJournalEntry depublishParentPublication = createDepublishPublicationEntryForSubfolderMove(event.subjectPath());
                 entries.add(depublishOldEntry);
+                entries.add(depublishParentPublication);
                 entries.addAll(journalEntriesForPublication(pageVariant, event));
             }
         }
@@ -243,6 +245,21 @@ public class SearchJournalEventListener implements DaemonModule {
         if (isPages) {
             url.append(pageTitle).append("/");
         }
+        entry.setUrl(url.toString());
+        entry.setCollection(PUBLICATIONS.getCollectionName());
+
+        return entry;
+    }
+
+    SearchJournalEntry createDepublishPublicationEntryForSubfolderMove(String oldPath) {
+        SearchJournalEntry entry = new SearchJournalEntry();
+        entry.setAttempt(0);
+        entry.setAction(DEPUBLISH_ACTION);
+        entry.setTimestamp(Calendar.getInstance());
+        // build from oldPath passed in as folder has already been moved to new location
+        String[] pathSections = oldPath.split("/");
+        StringBuilder url = new StringBuilder(UrlSource.URL_BASE).append("publications/")
+                .append(pathSections[8]).append('/');
         entry.setUrl(url.toString());
         entry.setCollection(PUBLICATIONS.getCollectionName());
 
