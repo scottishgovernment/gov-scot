@@ -5,10 +5,7 @@ import org.hippoecm.repository.util.JcrUtils;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -22,7 +19,7 @@ public class ImporterStatusUpdater {
 
     private static final String MESSAGE_PROPERTY = "message";
 
-    static Clock clock = Clock.system(ZoneId.of("Europe/London"));
+    static Clock clock = Clock.system(ZoneOffset.UTC.normalized());
 
     static Set<String> IMPORTERS = new HashSet<>(Arrays.asList("vuelio-importer"));
 

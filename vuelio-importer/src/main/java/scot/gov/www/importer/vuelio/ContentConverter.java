@@ -9,6 +9,7 @@ import scot.gov.www.importer.vuelio.rest.Asset;
 import scot.gov.www.importer.vuelio.rest.ContentItem;
 
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,9 +36,9 @@ public class ContentConverter {
         to.setSummary(cleanPlainText(from.getSubHeading()));
         to.setSeoName(from.getSubHeading());
         to.setBody(cleanHtml(from.getCoreCopy()));
-        ZoneId london = ZoneId.of("Europe/London");
-        to.setDateTime(from.getDisplayDate().atZone(london));
-        to.setUpdatedDate(from.getDateModified().atZone(london));
+        ZoneId utc = ZoneId.of(ZoneOffset.UTC.toString());
+        to.setDateTime(from.getDisplayDate().atZone(utc));
+        to.setUpdatedDate(from.getDateModified().atZone(utc));
 
         if (from.isSpeech()) {
             to.setPublicationType(SPEECH_NODE);
