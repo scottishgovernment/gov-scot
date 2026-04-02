@@ -26,8 +26,8 @@
 
 <#if cards?size != 0>
 <div class="ds_pb  ds_pb--cards
-<#if backgroundcolor?has_content> 
-<#switch backgroundcolor?lower_case> 
+<#if backgroundcolor?has_content>
+<#switch backgroundcolor?lower_case>
   <#case 'secondary'>
   ds_pb--background-secondary
   <#break>
@@ -45,7 +45,7 @@
         <#list cards as card>
 
             <#if card != ''>
-                <div class="ds_card  ds_card--hover  <#if !backgroundcolor?has_content>ds_card--background-secondary</#if>">
+                <div class="ds_card  ds_card--navigation  <#if !backgroundcolor?has_content>ds_card--background-secondary</#if>">
                     <div class="ds_card__media">
                         <div class="ds_aspect-box">
                             <#if card.image.xlargefourcolumns??>
@@ -87,11 +87,11 @@
                             </#if>
                         </div>
                     </div>
-                    
+
                 <@hst.manageContent hippobean=card documentTemplateQuery="new-navigationcardcontentblock-document" parameterName="document${card?index+1}"/>
                 </div>
             <#elseif editMode>
-                <div class="ds_card  cms-blank">
+                <div class="ds_card  ds_card--navigation  cms-blank">
                     <#if showimages>
                         <div class="ds_card__media">
                             <@placeholderimage/>

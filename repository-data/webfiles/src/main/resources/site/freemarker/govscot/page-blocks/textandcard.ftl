@@ -4,8 +4,8 @@
 <#-- @ftlvariable name="document" type="scot.gov.www.beans.Text" -->
 <div class="ds_pb  ds_pb--card-text
 <#if removebottompadding>  ds_!_padding-bottom--0</#if>
-<#if backgroundcolor?has_content> 
-<#switch backgroundcolor?lower_case> 
+<#if backgroundcolor?has_content>
+<#switch backgroundcolor?lower_case>
   <#case 'secondary'>
   ds_pb--background-secondary
   <#break>
@@ -32,7 +32,7 @@
             </#if>
             <#if document2??>
             <div class="ds_pb__card">
-                <div class="ds_card  <#if document2.link?? || document2.externalLink?has_content>ds_card--hover  </#if> <#if !backgroundcolor?has_content>  ds_card--background-secondary</#if>">
+                <div class="ds_card  <#if document2.link?? || document2.externalLink?has_content>ds_card--navigation  </#if> <#if !backgroundcolor?has_content>  ds_card--background-secondary</#if>">
                     <#if showimages>
                         <div class="ds_card__media">
                             <div class="ds_aspect-box">

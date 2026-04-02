@@ -112,7 +112,7 @@
 
             <div class="gov_feature-cards">
                 <#list document.featuredItems as item>
-                    <div class="ds_card  ds_card--grey  ds_card--hover  gov_feature-card">
+                    <div class="ds_card  ds_card--grey  ds_card--navigation  gov_feature-card">
                         <#assign imgLabel = 'news'/>
                         <#if item.label == 'news'>
                             <#assign imgLabel = 'news'/>

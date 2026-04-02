@@ -61,7 +61,7 @@
 
                         <div class="gov_feature-cards">
                             <#list document.featuredItems as item>
-                                <div class="ds_card  ds_card--grey  ds_card--hover">
+                                <div class="ds_card  ds_card--grey  ds_card--navigation">
                                     <article class="ds_card__content">
                                         <div class="ds_card__content-header">
                                             <h3 class="ds_card__title">

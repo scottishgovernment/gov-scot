@@ -52,7 +52,7 @@
 
         <div class="ds_layout__sidebar">
             <#if document.feature.title?has_content>
-                <aside class="ds_card  ds_card--grey">
+                <aside class="ds_card  ds_card--navigation  ds_card--grey">
                     <div class="ds_card__media">
                         <div class="ds_aspect-box">
                             <img alt="" aria-hidden="true" class="ds_aspect-box__inner"
@@ -146,7 +146,7 @@
             <div class="gov_feature-cards">
                 <#list document.featurelist as feature>
                     <#if feature.title?has_content>
-                        <div class="ds_card  ds_card--grey  <#if feature.externallink?? || feature.internallink??>ds_card--hover</#if>  gov_feature-card">
+                        <div class="ds_card  ds_card--navigation  ds_card--grey  gov_feature-card">
                             <#if feature.image??>
                                 <div class="ds_card__media">
                                     <div class="ds_aspect-box">

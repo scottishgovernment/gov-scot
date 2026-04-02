@@ -64,7 +64,7 @@
                     <ul class="collections-list">
                         <#list group.collectionItems as item>
                             <#if group.highlight == true && item?index == 0>
-                                <li class="ds_card  ds_card--grey  gov_collection-item-card">
+                                <li class="ds_card  ds_card--navigation  ds_card--grey  gov_collection-item-card">
                                     <article class="ds_card__content">
                                         <div class="ds_card__content-header">
                                             <h2 class="ds_card__title">
