@@ -122,12 +122,12 @@ public class SearchJournalEventListener implements DaemonModule {
         }
 
         // Check if it's a move of the documents folder with published documents
-        if (!isMovedPublishedFolder(event, DOCUMENTS)) {
-            return false;
+        if (isMovedPublishedFolder(event, DOCUMENTS)) {
+            return true;
         }
 
-        if (!isMovedPublishedFolder(event, PAGES)) {
-            return false;
+        if (isMovedPublishedFolder(event, PAGES)) {
+            return true;
         }
 
         // it is a publish or a depublish with no arguments, or is a move event.
@@ -142,7 +142,7 @@ public class SearchJournalEventListener implements DaemonModule {
             Node documentFolder = session.getNodeByIdentifier(event.subjectId());
             return isFolderWithPublishedDocs(documentFolder);
         }
-        return true;
+        return false;
     }
 
     boolean isExcludedPage(HippoWorkflowEvent event) throws RepositoryException {
