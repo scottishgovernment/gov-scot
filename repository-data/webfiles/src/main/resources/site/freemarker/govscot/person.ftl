@@ -7,14 +7,19 @@
             <div class="ds_layout__header">
                 <header class="ds_page-header">
                     <h1 class="ds_page-header__title" id="sg-meta__person-name">${document.title}</h1>
-                    <dl class="ds_page-header__metadata  ds_metadata">
-                        <#if document.roleTitle??>
+                    <#if roles?has_content>
+                        <dl class="ds_page-header__metadata  ds_metadata">
                             <div class="ds_metadata__item">
                                 <dt class="ds_metadata__key">Role</dt>
-                                <dd class="ds_metadata__value" id="sg-meta__person-role">${document.roleTitle}</dd>
+                                <dd class="ds_metadata__value" id="sg-meta__person-name">
+                                    <#list roles as role>
+                                        <@hst.link var="link" hippobean=role/>
+                                        <a href="${link}">${role.title}</a><#sep>, </#sep>
+                                    </#list>
+                                </dd>
                             </div>
-                        </#if>
-                    </dl>
+                        </dl>
+                    </#if>
                 </header>
             </div>
 
@@ -35,15 +40,7 @@
                                 <@hst.link hippobean=document.image.xlargethreecolumnsdoubledsquare/> 512w"
                             sizes="(min-width:1200px) 256px, (min-width:992px) 208px, 224px" />
                         <#else>
-                        <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="<#if document.incumbent??>${document.incumbent.title}<#else>${document.roleTitle}</#if>">
-                        </#if>
-                    </div>
-
-                    <div class="gov_person__text-container">
-                        <#if document.contactInformation??>
-                            <#assign contactInformationHeadingModifier = 'gamma' />
-                            <#assign contactInformation = document.contactInformation />
-                            <#include 'common/contact-information.ftl' />
+                        <img width="256" height="256" loading="lazy" class="gov_person__image" src="<@hst.link path='/assets/images/people/placeholder.png'/>" alt="${document.title}">
                         </#if>
                     </div>
                 </div>

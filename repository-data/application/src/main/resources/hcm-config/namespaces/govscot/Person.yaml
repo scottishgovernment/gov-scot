@@ -11,35 +11,10 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: cd33b49c-81c1-4580-b732-1e0c22836e97
+          jcr:uuid: 70b9d501-452b-4ba4-88b1-0cfd114ca61c
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
-          /ContactInformation:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:ContactInformation
-            hipposysedit:primary: false
-            hipposysedit:type: govscot:ContactInformation
-          /postalAddress:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:postalAddress
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
-          /roleTitle:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:roleTitle
-            hipposysedit:primary: false
-            hipposysedit:type: String
-            hipposysedit:validators: [optional]
           /image:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -63,26 +38,14 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: e5192f26-9403-4fff-87fe-8f57d6de5b9d
+          jcr:uuid: bcde0cab-6f13-4aaa-b2be-064641db8103
           hippostdpubwf:lastModificationDate: 2018-02-13T13:26:22.509Z
           hippostdpubwf:creationDate: 2018-02-13T13:26:22.509Z
-          govscot:roleTitle: ''
+          govscot:reportingTags: []
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: "<html>\n <head></head> \n <body>  \n </body>\n</html>"
-          /govscot:ContactInformation:
-            jcr:primaryType: govscot:ContactInformation
-            govscot:blog: ''
-            govscot:email: ''
-            govscot:facebook: ''
-            govscot:flickr: ''
-            govscot:twitter: ''
-            govscot:website: ''
-            govscot:youtube: ''
           /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:postalAddress:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
           /govscot:image:
@@ -141,34 +104,6 @@ definitions:
               academic career, hobbies & interests, previous career and political
               career.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /postalAddress:
-            jcr:primaryType: frontend:plugin
-            caption: Postal address
-            field: postalAddress
-            hint: Please enter the postal address for this person.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /ContactInformation:
-            jcr:primaryType: frontend:plugin
-            caption: Contact information
-            field: ContactInformation
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: ''
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /roleTitle:
-            jcr:primaryType: frontend:plugin
-            caption: Role title
-            field: roleTitle
-            hint: If the person has an undefined role within the system please enter
-              their role title here.
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

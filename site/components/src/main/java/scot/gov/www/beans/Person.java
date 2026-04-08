@@ -55,6 +55,11 @@ public class Person extends AttributableContent {
         return getHippoHtml("govscot:content");
     }
 
+    @HippoEssentialsGenerated(internalName = "govscot:biography")
+    public HippoHtml getBiography() {
+        return getHippoHtml("govscot:biography");
+    }
+
     @HippoEssentialsGenerated(internalName = "govscot:notes")
     public HippoHtml getNotes() {
         return getHippoHtml("govscot:notes");

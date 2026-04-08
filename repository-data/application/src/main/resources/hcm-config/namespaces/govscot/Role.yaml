@@ -11,10 +11,26 @@ definitions:
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
-          jcr:uuid: 3ca4c952-8604-428b-ac5f-da2220292bc6
+          jcr:uuid: 60420709-a96a-4cb9-9914-13d9c716b54d
           hipposysedit:node: true
           hipposysedit:supertype: ['govscot:SimpleContent', 'hippostd:relaxed', 'hippotranslation:translated']
           hipposysedit:uri: http://www.onehippo.org/govscot/nt/1.0
+          /ContactInformation:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:ContactInformation
+            hipposysedit:primary: false
+            hipposysedit:type: govscot:ContactInformation
+          /postalAddress:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:postalAddress
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
           /responsibilities:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -29,6 +45,14 @@ definitions:
             hipposysedit:multiple: false
             hipposysedit:ordered: false
             hipposysedit:path: govscot:incumbent
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+          /supportingRole:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: govscot:supportingRole
             hipposysedit:primary: false
             hipposysedit:type: hippo:mirror
       /hipposysedit:prototypes:
@@ -46,7 +70,7 @@ definitions:
           govscot:metaDescription: ''
           govscot:summary: ''
           govscot:title: ''
-          jcr:uuid: ee293647-de4c-4e89-804a-7747f22b9b19
+          jcr:uuid: 7fe7b577-8e88-498a-80e4-5667924d7c7a
           hippostdpubwf:lastModificationDate: 2018-02-09T12:32:15.950Z
           hippostdpubwf:creationDate: 2018-02-09T12:32:15.950Z
           govscot:reportingTags: []
@@ -57,6 +81,18 @@ definitions:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
           /govscot:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:ContactInformation:
+            jcr:primaryType: govscot:ContactInformation
+            govscot:blog: ''
+            govscot:email: ''
+            govscot:facebook: ''
+            govscot:flickr: ''
+            govscot:twitter: ''
+            govscot:website: ''
+            govscot:youtube: ''
+          /govscot:postalAddress:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
       /editor:templates:
@@ -149,8 +185,8 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: UpdateHistory
             field: UpdateHistory
-            hint: Details of the last updated date and a brief descriptions of the content
-              update
+            hint: Details of the last updated date and a brief descriptions of the
+              content update
             plugin.class: scot.gov.plugins.field.ExtendedNodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -186,3 +222,30 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               source: /content/documents/govscot/valuelists/reportingTags
+          /postalAddress:
+            jcr:primaryType: frontend:plugin
+            caption: Postal address
+            field: postalAddress
+            hint: Please enter the postal address for this person.
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /ContactInformation:
+            jcr:primaryType: frontend:plugin
+            caption: Contact information
+            field: ContactInformation
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /supportingRole:
+            jcr:primaryType: frontend:plugin
+            caption: Supporting roles
+            field: supportingRole
+            hint: Add roles that support this role
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
