@@ -1,4 +1,5 @@
 /content/documents/govscot/about:
+  .meta:order-before: people
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 3fd79452-bfb6-4756-9895-b94a35ce7a04
@@ -1333,7 +1334,7 @@
       jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
       jcr:uuid: 01b58df1-6354-464a-ab9c-8ed12bc893b4
       hippo:name: Cabinet and ministers
-      hippostd:foldertype: [new-role, new-person]
+      hippostd:foldertype: [new-role]
       /awaiting-appointment-8:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
@@ -1647,10 +1648,11 @@
           hippostd:retainable: false
           hippostd:state: draft
           hippostd:tags: [transport, net zero, just transition]
+          hippostd:transferable: false
           hippostdpubwf:createdBy: christian.storstein@gov.scot
           hippostdpubwf:creationDate: 2023-03-29T14:17:11.597+01:00
-          hippostdpubwf:lastModificationDate: 2023-10-11T12:00:13.730+01:00
-          hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
+          hippostdpubwf:lastModificationDate: 2026-03-20T14:33:56.612Z
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: 7c3a265c-20fd-4351-9515-c80bfa430ba2
           hippotranslation:locale: document-type-locale
           /govscot:responsibilities:
@@ -1753,6 +1755,18 @@
               hippo:facets: []
               hippo:modes: []
               hippo:values: []
+          /govscot:postalAddress:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:ContactInformation:
+            jcr:primaryType: govscot:ContactInformation
+            govscot:blog: ''
+            govscot:email: ''
+            govscot:facebook: ''
+            govscot:flickr: ''
+            govscot:twitter: ''
+            govscot:website: ''
+            govscot:youtube: ''
         /cabinet-secretary-for-net-zero-and-just-transition[2]:
           jcr:primaryType: govscot:Role
           jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -2429,217 +2443,13 @@
           /govscot:orgRole[13]:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-      /angela-constance:
-        jcr:primaryType: hippo:handle
-        jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
-          'mix:versionable']
-        jcr:uuid: aef28012-8206-4bc2-9504-94ab9f9aa569
-        hippo:name: Angela Constance MSP
-        hippo:versionHistory: f6da4050-2356-40ac-936d-ae3fa55e7fb3
-        /angela-constance[1]:
-          jcr:primaryType: govscot:Person
-          jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
-          jcr:uuid: 34016294-fccd-4340-9865-419bbfa25123
-          govscot:metaDescription: Angela Constance MSP's role and biography.
-          govscot:reportingTags: []
-          govscot:roleTitle: Cabinet Secretary for Justice and Home Affairs
-          govscot:rubricId: GOV-18
-          govscot:seoTitle: Angela Constance MSP
-          govscot:summary: Angela Constance MSP's role and biography.
-          govscot:title: Angela Constance MSP
-          hippo:availability: [preview]
-          hippo:name: Angela Constance MSP
-          hippostd:retainable: false
-          hippostd:state: unpublished
-          hippostd:tags: [equalities, elderly, local government, biography, religion,
-            cab sec, disabilities, social security, council, angela constance msp,
-            authority, cabinet secretary, old people, communities]
-          hippostdpubwf:createdBy: build.api@mygov.scot
-          hippostdpubwf:creationDate: 2015-09-25T14:36:37+01:00
-          hippostdpubwf:lastModificationDate: 2023-05-12T16:27:45.992+01:00
-          hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
-          hippotranslation:id: fc3450ec-6f0a-4666-8c06-79b19e17adb9
-          hippotranslation:locale: en
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: |-
-              <p><span><span><span>Angela Constance was appointed as Cabinet Secretary for Justice and Home Affairs in March 2023.</span></span></span></p>
-
-              <p><span><span><span><span><span><span>Angela Constance was born, raised and educated in West Lothian. Prior to 2007, she worked as a social worker and mental health officer and was a local councillor in Livingston.</span></span></span></span></span></span></p>
-
-              <p><span><span><span><span><span><span>She has been a Member of the Scottish Parliament since May 2007, first for the Livingston constituency and now for the Almond Valley constituency.</span></span></span></span></span></span></p>
-
-              <p><span><span><span><span><span><span>She has served as Minister for Youth Employment and Cabinet Secretary for Training, Youth and Women's Employment, Cabinet Secretary for Education and Lifelong Learning and Cabinet Secretary for Communities, Social Security and Equalities. She was reappointed as the Minister for Drugs Policy in May 2021.</span></span></span></span></span></span></p>
-
-              <ul>
-               <li><span><span><span><span><span><span><span>Read more about&nbsp;</span></span></span><span><a href="https://www.parliament.scot/msps/current-and-previous-msps/angela-constance"><span><span><span>Angela Constance on the Scottish Parliament website</span></span></span></a></span><span><span><span>.</span></span></span></span></span></span></span></li>
-              </ul>
-          /govscot:notes:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:postalAddress:
-            jcr:primaryType: hippostd:html
-            hippostd:content: |-
-              <p><span><span><span>Cabinet Secretary for Justice and Home Affairs</span></span></span><br />
-              Scottish Government<br />
-              St&nbsp;Andrew's House<br />
-              Regent Road<br />
-              Edinburgh<br />
-              EH1 3DG</p>
-          /govscot:ContactInformation:
-            jcr:primaryType: govscot:ContactInformation
-            govscot:blog: ''
-            govscot:email: cabsecjha@gov.scot
-            govscot:facebook: ''
-            govscot:flickr: ''
-            govscot:twitter: ''
-            govscot:website: ''
-            govscot:youtube: ''
-          /govscot:image:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: c90bd425-9cb1-4be9-add0-9b7ec819a2ba
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-        /angela-constance[2]:
-          jcr:primaryType: govscot:Person
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: 03f37c01-103d-411a-bc32-34e53d252a3a
-          govscot:metaDescription: Angela Constance MSP's role and biography.
-          govscot:reportingTags: []
-          govscot:roleTitle: Cabinet Secretary for Justice and Home Affairs
-          govscot:rubricId: GOV-18
-          govscot:seoTitle: Angela Constance MSP
-          govscot:summary: Angela Constance MSP's role and biography.
-          govscot:title: Angela Constance MSP
-          hippo:availability: []
-          hippo:name: Angela Constance MSP
-          hippostd:retainable: false
-          hippostd:state: draft
-          hippostd:tags: [equalities, elderly, local government, biography, religion,
-            cab sec, disabilities, social security, council, angela constance msp,
-            authority, cabinet secretary, old people, communities]
-          hippostdpubwf:createdBy: build.api@mygov.scot
-          hippostdpubwf:creationDate: 2015-09-25T14:36:37+01:00
-          hippostdpubwf:lastModificationDate: 2023-05-12T16:26:50.598+01:00
-          hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
-          hippotranslation:id: fc3450ec-6f0a-4666-8c06-79b19e17adb9
-          hippotranslation:locale: en
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: |-
-              <p><span><span><span>Angela Constance was appointed as Cabinet Secretary for Justice and Home Affairs in March 2023.</span></span></span></p>
-
-              <p><span><span><span><span><span><span>Angela Constance was born, raised and educated in West Lothian. Prior to 2007, she worked as a social worker and mental health officer and was a local councillor in Livingston.</span></span></span></span></span></span></p>
-
-              <p><span><span><span><span><span><span>She has been a Member of the Scottish Parliament since May 2007, first for the Livingston constituency and now for the Almond Valley constituency.</span></span></span></span></span></span></p>
-
-              <p><span><span><span><span><span><span>She has served as Minister for Youth Employment and Cabinet Secretary for Training, Youth and Women's Employment, Cabinet Secretary for Education and Lifelong Learning and Cabinet Secretary for Communities, Social Security and Equalities. She was reappointed as the Minister for Drugs Policy in May 2021.</span></span></span></span></span></span></p>
-
-              <ul>
-               <li><span><span><span><span><span><span><span>Read more about&nbsp;</span></span></span><span><a href="https://www.parliament.scot/msps/current-and-previous-msps/angela-constance"><span><span><span>Angela Constance on the Scottish Parliament website</span></span></span></a></span><span><span><span>.</span></span></span></span></span></span></span></li>
-              </ul>
-          /govscot:notes:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:postalAddress:
-            jcr:primaryType: hippostd:html
-            hippostd:content: |-
-              <p><span><span><span>Cabinet Secretary for Justice and Home Affairs</span></span></span><br />
-              Scottish Government<br />
-              St&nbsp;Andrew's House<br />
-              Regent Road<br />
-              Edinburgh<br />
-              EH1 3DG</p>
-          /govscot:ContactInformation:
-            jcr:primaryType: govscot:ContactInformation
-            govscot:blog: ''
-            govscot:email: cabsecjha@gov.scot
-            govscot:facebook: ''
-            govscot:flickr: ''
-            govscot:twitter: ''
-            govscot:website: ''
-            govscot:youtube: ''
-          /govscot:image:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: c90bd425-9cb1-4be9-add0-9b7ec819a2ba
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
-        /angela-constance[3]:
-          jcr:primaryType: govscot:Person
-          jcr:mixinTypes: ['mix:referenceable']
-          jcr:uuid: eddc3e73-9bb5-4a8e-b2e8-c823de3d5732
-          govscot:excludeFromSearchIndex: true
-          govscot:metaDescription: Angela Constance MSP's role and biography.
-          govscot:reportingTags: []
-          govscot:roleTitle: Cabinet Secretary for Justice and Home Affairs
-          govscot:rubricId: GOV-18
-          govscot:seoTitle: Angela Constance MSP
-          govscot:summary: Angela Constance MSP's role and biography.
-          govscot:title: Angela Constance MSP
-          hippo:availability: [live]
-          hippo:name: Angela Constance MSP
-          hippostd:retainable: false
-          hippostd:state: published
-          hippostd:tags: [equalities, elderly, local government, biography, religion,
-            cab sec, disabilities, social security, council, angela constance msp,
-            authority, cabinet secretary, old people, communities]
-          hippostdpubwf:createdBy: build.api@mygov.scot
-          hippostdpubwf:creationDate: 2015-09-25T14:36:37+01:00
-          hippostdpubwf:lastModificationDate: 2023-05-12T16:27:45.992+01:00
-          hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
-          hippostdpubwf:publicationDate: 2023-05-12T16:27:47.736+01:00
-          hippotranslation:id: fc3450ec-6f0a-4666-8c06-79b19e17adb9
-          hippotranslation:locale: en
-          /govscot:content:
-            jcr:primaryType: hippostd:html
-            hippostd:content: |-
-              <p><span><span><span>Angela Constance was appointed as Cabinet Secretary for Justice and Home Affairs in March 2023.</span></span></span></p>
-
-              <p><span><span><span><span><span><span>Angela Constance was born, raised and educated in West Lothian. Prior to 2007, she worked as a social worker and mental health officer and was a local councillor in Livingston.</span></span></span></span></span></span></p>
-
-              <p><span><span><span><span><span><span>She has been a Member of the Scottish Parliament since May 2007, first for the Livingston constituency and now for the Almond Valley constituency.</span></span></span></span></span></span></p>
-
-              <p><span><span><span><span><span><span>She has served as Minister for Youth Employment and Cabinet Secretary for Training, Youth and Women's Employment, Cabinet Secretary for Education and Lifelong Learning and Cabinet Secretary for Communities, Social Security and Equalities. She was reappointed as the Minister for Drugs Policy in May 2021.</span></span></span></span></span></span></p>
-
-              <ul>
-               <li><span><span><span><span><span><span><span>Read more about&nbsp;</span></span></span><span><a href="https://www.parliament.scot/msps/current-and-previous-msps/angela-constance"><span><span><span>Angela Constance on the Scottish Parliament website</span></span></span></a></span><span><span><span>.</span></span></span></span></span></span></span></li>
-              </ul>
-          /govscot:notes:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
-          /govscot:postalAddress:
-            jcr:primaryType: hippostd:html
-            hippostd:content: |-
-              <p><span><span><span>Cabinet Secretary for Justice and Home Affairs</span></span></span><br />
-              Scottish Government<br />
-              St&nbsp;Andrew's House<br />
-              Regent Road<br />
-              Edinburgh<br />
-              EH1 3DG</p>
-          /govscot:ContactInformation:
-            jcr:primaryType: govscot:ContactInformation
-            govscot:blog: ''
-            govscot:email: cabsecjha@gov.scot
-            govscot:facebook: ''
-            govscot:flickr: ''
-            govscot:twitter: ''
-            govscot:website: ''
-            govscot:youtube: ''
-          /govscot:image:
-            jcr:primaryType: hippogallerypicker:imagelink
-            hippo:docbase: c90bd425-9cb1-4be9-add0-9b7ec819a2ba
-            hippo:facets: []
-            hippo:modes: []
-            hippo:values: []
       /christina-mckelvie:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
           'mix:versionable']
         jcr:uuid: 1d4186fc-242c-4513-9602-5415a5278ea8
         hippo:name: Christina McKelvie  MSP
-        hippo:versionHistory: ca1dffe6-33e2-4b85-883d-a0d14469f348
+        hippo:versionHistory: 30a4d51b-cb20-4fdb-847a-a1844338da29
         /christina-mckelvie[1]:
           jcr:primaryType: govscot:Person
           jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -2783,13 +2593,15 @@
           govscot:seoTitle: Christina McKelvie
           govscot:summary: Role and biography.
           govscot:title: Christina McKelvie  MSP
-          hippo:availability: [live]
+          hippo:availability: []
           hippo:name: Christina McKelvie  MSP
           hippostd:retainable: false
           hippostd:state: published
           hippostd:tags: [equalities, older people]
           hippostdpubwf:createdBy: christian.storstein@gov.scot
           hippostdpubwf:creationDate: 2018-06-27T10:46:47+01:00
+          hippostdpubwf:depublicationDate: 2026-04-02T14:19:13.535+01:00
+          hippostdpubwf:depublishedBy: admin
           hippostdpubwf:lastModificationDate: 2023-05-12T16:28:09.171+01:00
           hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
           hippostdpubwf:publicationDate: 2023-05-12T16:28:10.959+01:00
@@ -5285,7 +5097,7 @@
           'mix:versionable']
         jcr:uuid: a894f0b0-e8ba-4256-ad1d-a34509816443
         hippo:name: Deputy First Minister
-        hippo:versionHistory: 139cd07d-b41f-411a-84e3-8531cdfb4a0c
+        hippo:versionHistory: 8925fcc0-c4a5-4651-9912-8fc565c3f5f5
         /deputy-first-minister[1]:
           jcr:primaryType: govscot:Role
           jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
@@ -5305,8 +5117,8 @@
               minister, cabinet secretary, john swinney msp, public sector reform]
           hippostdpubwf:createdBy: build.api@mygov.scot
           hippostdpubwf:creationDate: 2015-09-25T14:36:43+01:00
-          hippostdpubwf:lastModificationDate: 2023-08-31T13:37:54.836+01:00
-          hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+          hippostdpubwf:lastModificationDate: 2026-03-23T10:52:01.045Z
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: e1035c5a-23dc-4e56-b284-1d5b273b5d9d
           hippotranslation:locale: en
           /govscot:content:
@@ -5408,6 +5220,24 @@
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:postalAddress:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:ContactInformation:
+            jcr:primaryType: govscot:ContactInformation
+            govscot:blog: ''
+            govscot:email: ''
+            govscot:facebook: ''
+            govscot:flickr: ''
+            govscot:twitter: ''
+            govscot:website: ''
+            govscot:youtube: ''
+          /govscot:supportingRole[1]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: abd45b0d-1d98-4b12-b18f-7a5a298a2ddc
+          /govscot:supportingRole[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: b400d957-3977-44a8-a6ef-374248df11bd
         /deputy-first-minister[2]:
           jcr:primaryType: govscot:Role
           jcr:mixinTypes: ['mix:referenceable']
@@ -5421,14 +5251,15 @@
           govscot:title: Deputy First Minister
           hippo:availability: []
           hippo:name: Deputy First Minister
+          hippostd:holder: admin
           hippostd:retainable: false
           hippostd:state: draft
           hippostd:tags: [government strategy, cab sec, responsibilites, deputy first
               minister, cabinet secretary, john swinney msp, public sector reform]
           hippostdpubwf:createdBy: build.api@mygov.scot
           hippostdpubwf:creationDate: 2015-09-25T14:36:43+01:00
-          hippostdpubwf:lastModificationDate: 2023-08-31T13:37:30.847+01:00
-          hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
+          hippostdpubwf:lastModificationDate: 2026-03-23T11:04:49.414Z
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: e1035c5a-23dc-4e56-b284-1d5b273b5d9d
           hippotranslation:locale: en
           /govscot:content:
@@ -5530,6 +5361,24 @@
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:postalAddress:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:ContactInformation:
+            jcr:primaryType: govscot:ContactInformation
+            govscot:blog: ''
+            govscot:email: ''
+            govscot:facebook: ''
+            govscot:flickr: ''
+            govscot:twitter: ''
+            govscot:website: ''
+            govscot:youtube: ''
+          /govscot:supportingRole[1]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: abd45b0d-1d98-4b12-b18f-7a5a298a2ddc
+          /govscot:supportingRole[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: b400d957-3977-44a8-a6ef-374248df11bd
         /deputy-first-minister[3]:
           jcr:primaryType: govscot:Role
           jcr:mixinTypes: ['mix:referenceable']
@@ -5550,9 +5399,10 @@
               minister, cabinet secretary, john swinney msp, public sector reform]
           hippostdpubwf:createdBy: build.api@mygov.scot
           hippostdpubwf:creationDate: 2015-09-25T14:36:43+01:00
-          hippostdpubwf:lastModificationDate: 2023-08-31T13:37:54.836+01:00
-          hippostdpubwf:lastModifiedBy: claire.delaney@gov.scot
-          hippostdpubwf:publicationDate: 2023-09-05T14:20:17.882+01:00
+          hippostdpubwf:lastModificationDate: 2026-03-23T10:52:01.045Z
+          hippostdpubwf:lastModifiedBy: admin
+          hippostdpubwf:publicationDate: 2026-03-23T10:52:03.962Z
+          hippostdpubwf:publishedBy: admin
           hippotranslation:id: e1035c5a-23dc-4e56-b284-1d5b273b5d9d
           hippotranslation:locale: en
           /govscot:content:
@@ -5654,6 +5504,24 @@
           /govscot:responsibilities:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
+          /govscot:postalAddress:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /govscot:ContactInformation:
+            jcr:primaryType: govscot:ContactInformation
+            govscot:blog: ''
+            govscot:email: ''
+            govscot:facebook: ''
+            govscot:flickr: ''
+            govscot:twitter: ''
+            govscot:website: ''
+            govscot:youtube: ''
+          /govscot:supportingRole[1]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: abd45b0d-1d98-4b12-b18f-7a5a298a2ddc
+          /govscot:supportingRole[2]:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: b400d957-3977-44a8-a6ef-374248df11bd
       /lord-advocate:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
@@ -14167,6 +14035,217 @@
               hippo:facets: []
               hippo:modes: []
               hippo:values: []
+      /people:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: cfebac49-4850-4a57-ab6a-8532fcaccf70
+        hippostd:foldertype: [new-person, new-person-folder]
+        /angela-constance:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
+            'mix:versionable']
+          jcr:uuid: aef28012-8206-4bc2-9504-94ab9f9aa569
+          hippo:name: Angela Constance MSP
+          hippo:versionHistory: 2138d3cc-05a8-4698-875a-d9ecb010e49e
+          /angela-constance[1]:
+            jcr:primaryType: govscot:Person
+            jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+            jcr:uuid: 34016294-fccd-4340-9865-419bbfa25123
+            govscot:metaDescription: Angela Constance MSP's role and biography.
+            govscot:reportingTags: []
+            govscot:roleTitle: Cabinet Secretary for Justice and Home Affairs
+            govscot:rubricId: GOV-18
+            govscot:seoTitle: Angela Constance MSP
+            govscot:summary: Angela Constance MSP's role and biography.
+            govscot:title: Angela Constance MSP
+            hippo:availability: [preview]
+            hippo:name: Angela Constance MSP
+            hippostd:retainable: false
+            hippostd:state: unpublished
+            hippostd:tags: [equalities, elderly, local government, biography, religion,
+              cab sec, disabilities, social security, council, angela constance msp,
+              authority, cabinet secretary, old people, communities]
+            hippostdpubwf:createdBy: build.api@mygov.scot
+            hippostdpubwf:creationDate: 2015-09-25T14:36:37+01:00
+            hippostdpubwf:lastModificationDate: 2023-05-12T16:27:45.992+01:00
+            hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
+            hippotranslation:id: fc3450ec-6f0a-4666-8c06-79b19e17adb9
+            hippotranslation:locale: en
+            /govscot:content:
+              jcr:primaryType: hippostd:html
+              hippostd:content: |-
+                <p><span><span><span>Angela Constance was appointed as Cabinet Secretary for Justice and Home Affairs in March 2023.</span></span></span></p>
+
+                <p><span><span><span><span><span><span>Angela Constance was born, raised and educated in West Lothian. Prior to 2007, she worked as a social worker and mental health officer and was a local councillor in Livingston.</span></span></span></span></span></span></p>
+
+                <p><span><span><span><span><span><span>She has been a Member of the Scottish Parliament since May 2007, first for the Livingston constituency and now for the Almond Valley constituency.</span></span></span></span></span></span></p>
+
+                <p><span><span><span><span><span><span>She has served as Minister for Youth Employment and Cabinet Secretary for Training, Youth and Women's Employment, Cabinet Secretary for Education and Lifelong Learning and Cabinet Secretary for Communities, Social Security and Equalities. She was reappointed as the Minister for Drugs Policy in May 2021.</span></span></span></span></span></span></p>
+
+                <ul>
+                 <li><span><span><span><span><span><span><span>Read more about&nbsp;</span></span></span><span><a href="https://www.parliament.scot/msps/current-and-previous-msps/angela-constance"><span><span><span>Angela Constance on the Scottish Parliament website</span></span></span></a></span><span><span><span>.</span></span></span></span></span></span></span></li>
+                </ul>
+            /govscot:notes:
+              jcr:primaryType: hippostd:html
+              hippostd:content: ''
+            /govscot:postalAddress:
+              jcr:primaryType: hippostd:html
+              hippostd:content: |-
+                <p><span><span><span>Cabinet Secretary for Justice and Home Affairs</span></span></span><br />
+                Scottish Government<br />
+                St&nbsp;Andrew's House<br />
+                Regent Road<br />
+                Edinburgh<br />
+                EH1 3DG</p>
+            /govscot:ContactInformation:
+              jcr:primaryType: govscot:ContactInformation
+              govscot:blog: ''
+              govscot:email: cabsecjha@gov.scot
+              govscot:facebook: ''
+              govscot:flickr: ''
+              govscot:twitter: ''
+              govscot:website: ''
+              govscot:youtube: ''
+            /govscot:image:
+              jcr:primaryType: hippogallerypicker:imagelink
+              hippo:docbase: c90bd425-9cb1-4be9-add0-9b7ec819a2ba
+              hippo:facets: []
+              hippo:modes: []
+              hippo:values: []
+          /angela-constance[2]:
+            jcr:primaryType: govscot:Person
+            jcr:mixinTypes: ['mix:referenceable']
+            jcr:uuid: 03f37c01-103d-411a-bc32-34e53d252a3a
+            govscot:metaDescription: Angela Constance MSP's role and biography.
+            govscot:reportingTags: []
+            govscot:roleTitle: Cabinet Secretary for Justice and Home Affairs
+            govscot:rubricId: GOV-18
+            govscot:seoTitle: Angela Constance MSP
+            govscot:summary: Angela Constance MSP's role and biography.
+            govscot:title: Angela Constance MSP
+            hippo:availability: []
+            hippo:name: Angela Constance MSP
+            hippostd:retainable: false
+            hippostd:state: draft
+            hippostd:tags: [equalities, elderly, local government, biography, religion,
+              cab sec, disabilities, social security, council, angela constance msp,
+              authority, cabinet secretary, old people, communities]
+            hippostdpubwf:createdBy: build.api@mygov.scot
+            hippostdpubwf:creationDate: 2015-09-25T14:36:37+01:00
+            hippostdpubwf:lastModificationDate: 2023-05-12T16:26:50.598+01:00
+            hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
+            hippotranslation:id: fc3450ec-6f0a-4666-8c06-79b19e17adb9
+            hippotranslation:locale: en
+            /govscot:content:
+              jcr:primaryType: hippostd:html
+              hippostd:content: |-
+                <p><span><span><span>Angela Constance was appointed as Cabinet Secretary for Justice and Home Affairs in March 2023.</span></span></span></p>
+
+                <p><span><span><span><span><span><span>Angela Constance was born, raised and educated in West Lothian. Prior to 2007, she worked as a social worker and mental health officer and was a local councillor in Livingston.</span></span></span></span></span></span></p>
+
+                <p><span><span><span><span><span><span>She has been a Member of the Scottish Parliament since May 2007, first for the Livingston constituency and now for the Almond Valley constituency.</span></span></span></span></span></span></p>
+
+                <p><span><span><span><span><span><span>She has served as Minister for Youth Employment and Cabinet Secretary for Training, Youth and Women's Employment, Cabinet Secretary for Education and Lifelong Learning and Cabinet Secretary for Communities, Social Security and Equalities. She was reappointed as the Minister for Drugs Policy in May 2021.</span></span></span></span></span></span></p>
+
+                <ul>
+                 <li><span><span><span><span><span><span><span>Read more about&nbsp;</span></span></span><span><a href="https://www.parliament.scot/msps/current-and-previous-msps/angela-constance"><span><span><span>Angela Constance on the Scottish Parliament website</span></span></span></a></span><span><span><span>.</span></span></span></span></span></span></span></li>
+                </ul>
+            /govscot:notes:
+              jcr:primaryType: hippostd:html
+              hippostd:content: ''
+            /govscot:postalAddress:
+              jcr:primaryType: hippostd:html
+              hippostd:content: |-
+                <p><span><span><span>Cabinet Secretary for Justice and Home Affairs</span></span></span><br />
+                Scottish Government<br />
+                St&nbsp;Andrew's House<br />
+                Regent Road<br />
+                Edinburgh<br />
+                EH1 3DG</p>
+            /govscot:ContactInformation:
+              jcr:primaryType: govscot:ContactInformation
+              govscot:blog: ''
+              govscot:email: cabsecjha@gov.scot
+              govscot:facebook: ''
+              govscot:flickr: ''
+              govscot:twitter: ''
+              govscot:website: ''
+              govscot:youtube: ''
+            /govscot:image:
+              jcr:primaryType: hippogallerypicker:imagelink
+              hippo:docbase: c90bd425-9cb1-4be9-add0-9b7ec819a2ba
+              hippo:facets: []
+              hippo:modes: []
+              hippo:values: []
+          /angela-constance[3]:
+            jcr:primaryType: govscot:Person
+            jcr:mixinTypes: ['mix:referenceable']
+            jcr:uuid: eddc3e73-9bb5-4a8e-b2e8-c823de3d5732
+            govscot:metaDescription: Angela Constance MSP's role and biography.
+            govscot:reportingTags: []
+            govscot:roleTitle: Cabinet Secretary for Justice and Home Affairs
+            govscot:rubricId: GOV-18
+            govscot:seoTitle: Angela Constance MSP
+            govscot:summary: Angela Constance MSP's role and biography.
+            govscot:title: Angela Constance MSP
+            hippo:availability: [live]
+            hippo:name: Angela Constance MSP
+            hippostd:retainable: false
+            hippostd:state: published
+            hippostd:tags: [equalities, elderly, local government, biography, religion,
+              cab sec, disabilities, social security, council, angela constance msp,
+              authority, cabinet secretary, old people, communities]
+            hippostdpubwf:createdBy: build.api@mygov.scot
+            hippostdpubwf:creationDate: 2015-09-25T14:36:37+01:00
+            hippostdpubwf:depublicationDate: 2026-04-02T14:19:08.403+01:00
+            hippostdpubwf:depublishedBy: admin
+            hippostdpubwf:lastModificationDate: 2023-05-12T16:27:45.992+01:00
+            hippostdpubwf:lastModifiedBy: christian.storstein@gov.scot
+            hippostdpubwf:publicationDate: 2026-04-02T14:19:31.916+01:00
+            hippostdpubwf:publishedBy: admin
+            hippotranslation:id: fc3450ec-6f0a-4666-8c06-79b19e17adb9
+            hippotranslation:locale: en
+            /govscot:content:
+              jcr:primaryType: hippostd:html
+              hippostd:content: |-
+                <p><span><span><span>Angela Constance was appointed as Cabinet Secretary for Justice and Home Affairs in March 2023.</span></span></span></p>
+
+                <p><span><span><span><span><span><span>Angela Constance was born, raised and educated in West Lothian. Prior to 2007, she worked as a social worker and mental health officer and was a local councillor in Livingston.</span></span></span></span></span></span></p>
+
+                <p><span><span><span><span><span><span>She has been a Member of the Scottish Parliament since May 2007, first for the Livingston constituency and now for the Almond Valley constituency.</span></span></span></span></span></span></p>
+
+                <p><span><span><span><span><span><span>She has served as Minister for Youth Employment and Cabinet Secretary for Training, Youth and Women's Employment, Cabinet Secretary for Education and Lifelong Learning and Cabinet Secretary for Communities, Social Security and Equalities. She was reappointed as the Minister for Drugs Policy in May 2021.</span></span></span></span></span></span></p>
+
+                <ul>
+                 <li><span><span><span><span><span><span><span>Read more about&nbsp;</span></span></span><span><a href="https://www.parliament.scot/msps/current-and-previous-msps/angela-constance"><span><span><span>Angela Constance on the Scottish Parliament website</span></span></span></a></span><span><span><span>.</span></span></span></span></span></span></span></li>
+                </ul>
+            /govscot:notes:
+              jcr:primaryType: hippostd:html
+              hippostd:content: ''
+            /govscot:postalAddress:
+              jcr:primaryType: hippostd:html
+              hippostd:content: |-
+                <p><span><span><span>Cabinet Secretary for Justice and Home Affairs</span></span></span><br />
+                Scottish Government<br />
+                St&nbsp;Andrew's House<br />
+                Regent Road<br />
+                Edinburgh<br />
+                EH1 3DG</p>
+            /govscot:ContactInformation:
+              jcr:primaryType: govscot:ContactInformation
+              govscot:blog: ''
+              govscot:email: cabsecjha@gov.scot
+              govscot:facebook: ''
+              govscot:flickr: ''
+              govscot:twitter: ''
+              govscot:website: ''
+              govscot:youtube: ''
+            /govscot:image:
+              jcr:primaryType: hippogallerypicker:imagelink
+              hippo:docbase: c90bd425-9cb1-4be9-add0-9b7ec819a2ba
+              hippo:facets: []
+              hippo:modes: []
+              hippo:values: []
     /index:
       jcr:primaryType: hippo:handle
       jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
@@ -14449,7 +14528,7 @@
       jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
       jcr:uuid: 564269e5-27c1-44dc-bf7e-ca2f08839068
       hippo:name: The Civil Service
-      hippostd:foldertype: [new-role, new-person]
+      hippostd:foldertype: [new-role, new-person-folder]
       /index:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
@@ -32156,6 +32235,11 @@
             hippo:facets: []
             hippo:modes: []
             hippo:values: []
+      /people:
+        jcr:primaryType: hippostd:folder
+        jcr:mixinTypes: ['mix:versionable']
+        jcr:uuid: 60de5c2f-b212-44f2-9871-f75fccfb0fbc
+        hippostd:foldertype: [new-person, new-person-folder]
     /index:
       jcr:primaryType: hippo:handle
       jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']

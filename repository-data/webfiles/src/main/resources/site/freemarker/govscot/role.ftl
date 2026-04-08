@@ -4,14 +4,9 @@
 <#if document??>
     <@hst.manageContent hippobean=document/>
 
-    <#if document.incumbent??>
-        <#if document.incumbent.contactInformation??>
-            <#assign contactInformation = document.incumbent.contactInformation/>
-        </#if>
-        <#if document.incumbent.postalAddress??>
-            <#assign postalAddress = document.incumbent.postalAddress/>
-        </#if>
-    </#if>
+
+    <#assign contactInformation = document.contactInformation/>
+    <#assign postalAddress = document.postalAddress/>
 
     <div class="ds_wrapper">
         <main id="main-content" class="ds_layout  gov_layout--role">
@@ -23,6 +18,28 @@
                             <div class="ds_metadata__item">
                                 <dt class="ds_metadata__key">Current role holder</dt>
                                 <dd class="ds_metadata__value" id="sg-meta__person-name">${document.incumbent.title}</dd>
+                            </div>
+                        </#if>
+                        <#if document.supportingRole?size gt 0>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Supported by</dt>
+                                <dd class="ds_metadata__value" id="sg-meta__person-name">
+                                    <#list document.supportingRole  as supportingRole>
+                                        <@hst.link var="link" hippobean=supportingRole/>
+                                        <a href="${link}">${supportingRole.title}</a><#sep>, </#sep>
+                                    </#list>
+                                </dd>
+                            </div>
+                        </#if>
+                        <#if supports?has_content>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Supports</dt>
+                                <dd class="ds_metadata__value" id="sg-meta__person-name">
+                                    <#list supports as supportsRole>
+                                        <@hst.link var="link" hippobean=supportsRole/>
+                                        <a href="${link}">${supportsRole.title}</a><#sep>, </#sep>
+                                    </#list>
+                                </dd>
                             </div>
                         </#if>
                     </dl>
@@ -67,15 +84,6 @@
             </div>
 
             <div class="ds_layout__content">
-                <#if document.incumbent??>
-                    <#if document.incumbent.content?has_content>
-                        <div class="ds_leader-first-paragraph">
-                            <@hst.html hippohtml=document.incumbent.content var="biography"/>
-                            ${biography?trim?keep_before("\n")?no_esc}
-                        </div>
-                    </#if>
-                </#if>
-
                 <h2>Responsibilities</h2>
 
                 <@hst.html hippohtml=document.content/>
@@ -83,8 +91,7 @@
                 <#if document.incumbent??>
                     <#if document.incumbent.content?has_content>
                         <h2>Biography</h2>
-
-                        ${biography?trim?keep_after("\n")?no_esc}
+                        <@hst.html hippohtml=document.incumbent.content/>
                     </#if>
                 </#if>
 

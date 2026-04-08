@@ -10,6 +10,8 @@ import org.hippoecm.hst.core.sitemenu.EditableMenu;
 import org.hippoecm.hst.core.sitemenu.EditableMenuItem;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 
+import java.util.Collections;
+
 public class AboutMenu extends BaseHstComponent {
 
     @Override
@@ -31,7 +33,7 @@ public class AboutMenu extends BaseHstComponent {
                 HippoBean aboutIndexPageBean = this.getBeanForResolvedSiteMapItem(request, item.resolveToSiteMapItem());
                 HippoBean aboutFolderBean = aboutIndexPageBean.getParentBean();
 
-                EditableMenuItem aboutMenuItem = new RepoBasedMenuItem((HippoFolderBean) aboutFolderBean, item, request, requestContext.getContentBean());
+                EditableMenuItem aboutMenuItem = new RepoBasedMenuItem((HippoFolderBean) aboutFolderBean, item, request, requestContext.getContentBean(), Collections.singleton("people"));
 
                 request.setAttribute("aboutMenuItem", aboutMenuItem);
             }

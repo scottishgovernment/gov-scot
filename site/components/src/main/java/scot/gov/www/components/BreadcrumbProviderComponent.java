@@ -95,7 +95,6 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
         }
 
         Collections.reverse(items);
-
         return items;
     }
 
@@ -129,7 +128,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
             BreadcrumbItem parent = getBreadcrumbItem(request, currentBean.getParentBean());
 
-            if (parent != null && !"govscot".equals(parent.getTitle()) && !menuItems.contains(parent)) {
+            if (parent != null && !"govscot".equals(parent.getTitle()) && !"People".equals(parent.getTitle()) && !menuItems.contains(parent)) {
                 menuItems.add(parent);
             }
 
