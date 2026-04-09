@@ -89,11 +89,11 @@
 
 <#if document.displayDate??>
     <@hst.headContribution category="dcMeta">
-        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.displayDate.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.displayDate.time type="both" pattern="yyyy-MM-dd HH:mm"/>"/>
     </@hst.headContribution>
 <#elseif document.publicationDate??>
     <@hst.headContribution category="dcMeta">
-        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.publicationDate.time type="both" pattern="YYYY-MM-dd HH:mm"/>"/>
+        <meta name="dc.date.modified" content="<@fmt.formatDate value=document.publicationDate.time type="both" pattern="yyyy-MM-dd HH:mm"/>"/>
      </@hst.headContribution>
  </#if>
 
