@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-enterprise-release</artifactId>
-    <version>16.4.1</version>
+    <version>16.7.1</version>
   </parent>
 
   <groupId>scot.gov.www</groupId>
@@ -43,7 +43,7 @@
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
-    <essentials.version>16.4.1</essentials.version>
+    <essentials.version>16.7.1</essentials.version>
     <forge.feed.version>8.0.0</forge.feed.version>
     <forge.embargo.version>8.0.0</forge.embargo.version>
     <forge.breadcrumb.version>6.0.0</forge.breadcrumb.version>
@@ -64,7 +64,7 @@
 
     <index.configuration>cms/src/main/resources/org/hippoecm/repository/query/lucene/indexing_configuration.xml</index.configuration>
 
-    <log4j2.version>2.23.1</log4j2.version>
+    <log4j2.version>2.25.3</log4j2.version>
 
     <cargo.debug.address>8000</cargo.debug.address>
     <cargo.debug.suspend>n</cargo.debug.suspend>
