@@ -15,7 +15,7 @@
 
     <div class="ds_wrapper">
         <main <@lang document/> id="main-content">
-            <#if pages?has_content && documents?has_content>
+            <#if pages?has_content && (documents?has_content || groupedDocumentFolders?has_content)>
                 <#assign hasDocuments = true>
             </#if>
             <header class="ds_page-header  gov_sublayout  gov_sublayout--publication-header">
@@ -43,7 +43,6 @@
                     <div class="gov_sublayout__document">
                         <div <@revertlang document /> class="gov_supporting-documents">
 
-                            <#assign mainDocument = documents[0]/>
                             <#assign filenameExtension = mainDocument.document.filename?keep_after_last(".")?lower_case/>
 
                             <@hst.link var="documentdownload" hippobean=mainDocument.document>
