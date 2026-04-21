@@ -2,8 +2,6 @@ package scot.gov.www.importer.vuelio.rest;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.type.LogicalType;
-import org.apache.commons.lang.StringUtils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
