@@ -1,5 +1,6 @@
 package scot.gov.www.components;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
@@ -121,13 +122,8 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
         menuItems.remove(itemToRemove);
 
         // if we are in About or Policies, add the parent folder to the breadcrumbs if it's not already there
-        if ("about".equals(deepestExpandedMenuItemBean.getName())
-                || "about".equals(deepestExpandedMenuItemBean.getParentBean().getName())
-                || "directorates".equals(deepestExpandedMenuItemBean.getName())
-                || "policies".equals(deepestExpandedMenuItemBean.getName()) ){
-
+        if (isAboutOrPolicies(deepestExpandedMenuItemBean)){
             BreadcrumbItem parent = getBreadcrumbItem(request, currentBean.getParentBean());
-
             if (parent != null && !"govscot".equals(parent.getTitle()) && !"People".equals(parent.getTitle()) && !menuItems.contains(parent)) {
                 menuItems.add(parent);
             }
@@ -136,4 +132,10 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     }
 
+    boolean isAboutOrPolicies(HippoBean deepestExpandedMenuItemBean) {
+        String name = deepestExpandedMenuItemBean.getName();
+        String parentName = deepestExpandedMenuItemBean.getParentBean().getName();
+        return StringUtils.equalsAny(name, "about", "directorates", "policies")
+                || StringUtils.equals(parentName, "about");
+    }
 }
