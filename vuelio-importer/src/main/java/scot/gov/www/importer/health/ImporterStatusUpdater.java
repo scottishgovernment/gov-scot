@@ -1,15 +1,25 @@
 package scot.gov.www.importer.health;
 
 import org.hippoecm.repository.util.JcrUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import scot.gov.www.importer.Importer;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.time.*;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class ImporterStatusUpdater {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ImporterStatusUpdater.class);
 
     private static final String DATE_TIME_PROPERTY = "datetime";
 
@@ -21,13 +31,7 @@ public class ImporterStatusUpdater {
 
     static Clock clock = Clock.system(ZoneOffset.UTC.normalized());
 
-    static Set<String> IMPORTERS = new HashSet<>(Arrays.asList("vuelio-importer"));
-
-    public ImporterStatus getStatus(String importer, Session session) throws RepositoryException {
-        if (!IMPORTERS.contains(importer)) {
-            return null;
-        }
-
+    public ImporterStatus getStatus(Importer importer, Session session) throws RepositoryException {
         Node importerNode = importerNode(importer, session);
         Calendar lastRun = getDateWithDefault(importerNode, DATE_TIME_PROPERTY);
         Calendar lastSuccessfulRun = getDateWithDefault(importerNode, SUCCESS_DATE_TIME_PROPERTY);
@@ -52,17 +56,13 @@ public class ImporterStatusUpdater {
         return node.hasProperty(property) ? node.getProperty(property).getDate() : defaultLastRuntime();
     }
 
-    public ImporterStatus saveStatus(ImporterStatus status, Session session) throws RepositoryException {
-        if (!IMPORTERS.contains(status.getImporter())) {
-            return null;
-        }
+    public void saveStatus(ImporterStatus status, Session session) throws RepositoryException {
         Node importerNode = importerNode(status.getImporter(), session);
         importerNode.setProperty(DATE_TIME_PROPERTY, GregorianCalendar.from(status.getLastrun()));
         importerNode.setProperty(SUCCESS_DATE_TIME_PROPERTY, GregorianCalendar.from(status.getLastSuccessfulRun()));
         importerNode.setProperty(SUCCESS_PROPERTY, status.isSuccess());
         importerNode.setProperty(MESSAGE_PROPERTY, status.getMessage());
         session.save();
-        return status;
     }
 
     ZonedDateTime toZDT(Calendar calendar) {
@@ -72,13 +72,17 @@ public class ImporterStatusUpdater {
     }
 
     Calendar defaultLastRuntime() {
-        return GregorianCalendar.from(ZonedDateTime.now(clock).minusDays(7).plusHours(1).truncatedTo(ChronoUnit.SECONDS));
+        GregorianCalendar cal = GregorianCalendar.from(ZonedDateTime.now(clock).minusDays(7).plusHours(1).truncatedTo(ChronoUnit.SECONDS));
+        ZonedDateTime zdt = cal.toZonedDateTime();
+        LOG.info("using ddefaut dat time {}", zdt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        return cal;
     }
 
-    Node importerNode(String importer, Session session) throws RepositoryException {
+    Node importerNode(Importer importer, Session session) throws RepositoryException {
         Node content = session.getNode("/content");
         Node importers = getOrCreate(content, "importers");
-        return getOrCreate(importers, importer);
+        String importerName = "vuelio-" + importer.getName();
+        return getOrCreate(importers, importerName);
     }
 
     Node getOrCreate(Node parent, String name) throws RepositoryException {

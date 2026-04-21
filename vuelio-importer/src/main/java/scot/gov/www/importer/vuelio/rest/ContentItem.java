@@ -2,12 +2,16 @@ package scot.gov.www.importer.vuelio.rest;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.type.LogicalType;
+import org.apache.commons.lang.StringUtils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.apache.commons.lang.StringUtils.containsIgnoreCase;
 
 /**
  * Format from Vuelio API
@@ -252,27 +256,25 @@ public class ContentItem {
     }
 
     public boolean isNews() {
-        return metadata.stream().anyMatch(m ->
-                m.getValues().stream().anyMatch(v ->
-                v.contains(Value.NEWS_RELEASE.getDescription())));
+        return isType(Value.NEWS_RELEASE);
     }
 
     public boolean isStagingNews() {
-        return metadata.stream().anyMatch(m ->
-                m.getValues().stream().anyMatch(v ->
-                        v.contains(Value.NEWS_RELASE.getDescription())));
+        return isType(Value.NEWS_RELASE);
     }
 
     public boolean isSpeech() {
-        return metadata.stream().anyMatch(m ->
-                m.getValues().stream().anyMatch(v ->
-                        v.contains(Value.SPEECH.getDescription())));
+        return isType(Value.SPEECH);
     }
 
     public boolean isCorrespondence() {
-        return metadata.stream().anyMatch(m ->
-                m.getValues().stream().anyMatch(v ->
-                        v.contains(Value.CORRESPONDENCE.getDescription())));
+        return isType(Value.NEWS_RELEASE);
+    }
+
+    public boolean isType(Value type) {
+        // TODO: ask Katie about this, think this should only be checking the type, this checks all metadata
+        return metadata.stream().flatMap(m -> m.getValues().stream())
+                .anyMatch(v -> containsIgnoreCase(v, type.getDescription()));
     }
 
     public boolean isWebPublishContent() {

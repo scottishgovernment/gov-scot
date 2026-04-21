@@ -36,8 +36,10 @@ public class VuelioClient {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    public VuelioClient() {
-        VuelioConfiguration config = config();
+    VuelioConfiguration config;
+
+    public VuelioClient(VuelioConfiguration config) {
+        this.config = config;
         URI uri = URI.create(config.getApi());
         baseUrl = config.getApi();
         host = new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme());
@@ -56,24 +58,11 @@ public class VuelioClient {
         }
     }
 
-    public static VuelioConfiguration config() {
-        ContainerConfiguration containerConfiguration = HstServices.getComponentManager().getContainerConfiguration();
-        String url = containerConfiguration.getString("vuelio.url");
-        String token = containerConfiguration.getString("vuelio.token");
-        if (StringUtils.isBlank(token)) {
-            return null;
-        }
-
-        VuelioConfiguration configuration = new VuelioConfiguration();
-        configuration.setApi(url);
-        configuration.setToken(token);
-        return configuration;
-    }
-
     public List<ContentItem> content(Instant time) throws VuelioException {
         String fullUrl = String.format(baseUrl+"%s%s", "?start=", time);
-        LOG.info("API call: {}", fullUrl);
+        LOG.info("API call {} : {}", config.getImporter().getName(), fullUrl);
         ContentItem[] contentArray = readValue(fullUrl, ContentItem[].class);
+        LOG.info("got {} content items", contentArray.length);
         return Arrays.stream(contentArray).toList();
     }
 
@@ -81,7 +70,7 @@ public class VuelioClient {
         try {
             CloseableHttpResponse response = get(url);
             if (response.getStatusLine().getStatusCode() != 200) {
-                throw new VuelioException("Failed Vuelio request " + url + " " + response.getStatusLine());
+                throw new VuelioException("Failed Vuelio request " +config.getImporter().getName() + " " + url + " " + response.getStatusLine());
             }
 
             HttpEntity entity = response.getEntity();
@@ -94,8 +83,7 @@ public class VuelioClient {
     CloseableHttpResponse get(String url) throws IOException {
         HttpGet request = new HttpGet(url);
         request.addHeader("Content-Type", "application/json; charset=UTF-8");
-        request.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + config().getToken());
+        request.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + config.getToken());
         return httpClient.execute(host, request);
-
     }
 }

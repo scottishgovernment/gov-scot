@@ -8,13 +8,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.searchjournal.FeatureFlag;
+import scot.gov.www.importer.Importer;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Healthcheck {
@@ -22,6 +22,8 @@ public class Healthcheck {
     private static final Logger LOG = LoggerFactory.getLogger(Healthcheck.class);
 
     static final DateTimeFormatter DATE_FORMAT  = DateTimeFormatter.RFC_1123_DATE_TIME;
+
+    static final int MINUTES_THRESHOLD = 6;
 
     Session session;
 
@@ -36,14 +38,6 @@ public class Healthcheck {
     @Produces(MediaType.APPLICATION_JSON)
     public Health healthcheck() {
         Health health = new Health();
-        FeatureFlag featureFlag = new FeatureFlag(session, "VuelioImporterJob");
-        if (!featureFlag.isEnabled()) {
-            health.setStatus(NagiosStatus.OK);
-            health.setMessage("VuelioImporterJob is disabled via feature flag");
-            health.setInfo(Collections.emptyList());
-            return health;
-        }
-
         try {
             collectHealthInformation(health);
         } catch (RepositoryException e) {
@@ -61,14 +55,23 @@ public class Healthcheck {
         List<String> notOkImporters = new ArrayList<>();
         List<String> info = new ArrayList<>();
         for (Importer importer : Importer.values()) {
-            ImporterStatus status = statusUpdater.getStatus(importer.node, session);
-            ZonedDateTime cutoff = ZonedDateTime.now().minusMinutes(importer.minutesThreshold);
+
+            String flagname = "VuelioImporterJob" + importer.getName();
+            FeatureFlag featureFlag = new FeatureFlag(session, flagname);
+
+            if (!featureFlag.isEnabled()) {
+                info.add(importer.getName()+ " disabled");
+                continue;
+            }
+
+            ImporterStatus status = statusUpdater.getStatus(importer, session);
+            ZonedDateTime cutoff = ZonedDateTime.now().minusMinutes(MINUTES_THRESHOLD);
             boolean importerOk = status.getLastSuccessfulRun().isAfter(cutoff);
             String importerMessage =  messageForImporter(status);
             info.add(importerMessage);
             if (!importerOk) {
                 health.setStatus(NagiosStatus.WARNING);
-                notOkImporters.add(importer.name);
+                notOkImporters.add(importer.getName());
             }
         }
 
@@ -79,9 +82,7 @@ public class Healthcheck {
     }
 
     String messageForImporter(ImporterStatus status) {
-        String importerId = status.getImporter();
-        Importer importer = Importer.forId(importerId);
-        String name = importer.name;
+        String name = status.getImporter().getName();
         String lastRun = status.getLastSuccessfulRun().format(DATE_FORMAT);
         return StringUtils.isBlank(status.getMessage())
                 ? String.format("%s: %s", name, lastRun)

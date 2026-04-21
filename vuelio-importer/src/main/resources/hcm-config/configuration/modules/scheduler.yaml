@@ -2,8 +2,8 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/VuelioImporter:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: []
-      hipposched:attributeValues: []
+      hipposched:attributeNames: [names]
+      hipposched:attributeValues: [scotgov]
       hipposched:enabled: true
       hipposched:repositoryJobClass: scot.gov.www.importer.VuelioImporterJob
       /hipposched:triggers:

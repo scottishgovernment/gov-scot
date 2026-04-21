@@ -1,10 +1,12 @@
 package scot.gov.www.importer.health;
 
+import scot.gov.www.importer.Importer;
+
 import java.time.ZonedDateTime;
 
 public class ImporterStatus {
 
-    private String importer;
+    private Importer importer;
 
     private ZonedDateTime lastrun;
 
@@ -14,11 +16,11 @@ public class ImporterStatus {
 
     private String message;
 
-    public String getImporter() {
+    public Importer getImporter() {
         return importer;
     }
 
-    public void setImporter(String importer) {
+    public void setImporter(Importer importer) {
         this.importer = importer;
     }
 
