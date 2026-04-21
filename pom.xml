@@ -10,7 +10,7 @@
 
   <groupId>scot.gov.www</groupId>
   <artifactId>gov-scot</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1776</version>
   <packaging>pom</packaging>
 
   <name>www.gov.scot</name>
@@ -113,7 +113,7 @@
       <dependency>
         <groupId>scot.gov.publishing.hippo</groupId>
         <artifactId>hippo-govscot-bom</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.174</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
