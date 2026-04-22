@@ -73,14 +73,13 @@
             </div>
 
             <div class="ds_layout__sidebar-B">
-                <#if document.incumbent??>
-                    <div class="gov_person">
-                        <div class="gov_person__text-container">
-                            <#assign contactInformationHeadingModifier = 'gamma' />
-                            <#include 'common/contact-information.ftl' />
-                        </div>
+                <div class="gov_person">
+                    <div class="gov_person__text-container">
+                        <#assign contactInformationHeadingModifier = 'gamma' />
+                        <#assign abbreviatedContactInformation = true />
+                        <#include 'common/contact-information.ftl' />
                     </div>
-                </#if>
+                </div>
             </div>
 
             <div class="ds_layout__content">

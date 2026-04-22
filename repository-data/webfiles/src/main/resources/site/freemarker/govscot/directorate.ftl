@@ -165,6 +165,7 @@
                             <#assign postalAddress = document.postalAddress />
                         </#if>
                     <section class="gov_content-block">
+                        <#assign abbreviatedContactInformation = false />
                         <#include 'common/contact-information.ftl' />
                     </section>
                 </#if>
