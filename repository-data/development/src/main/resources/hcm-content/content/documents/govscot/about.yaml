@@ -14039,7 +14039,7 @@
         jcr:primaryType: hippostd:folder
         jcr:mixinTypes: ['mix:versionable']
         jcr:uuid: cfebac49-4850-4a57-ab6a-8532fcaccf70
-        hippostd:foldertype: [new-person, new-person-folder]
+        hippostd:foldertype: [new-person]
         /angela-constance:
           jcr:primaryType: hippo:handle
           jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
@@ -14528,7 +14528,7 @@
       jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
       jcr:uuid: 564269e5-27c1-44dc-bf7e-ca2f08839068
       hippo:name: The Civil Service
-      hippostd:foldertype: [new-role, new-person-folder]
+      hippostd:foldertype: [new-role]
       /index:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable',
@@ -32239,7 +32239,7 @@
         jcr:primaryType: hippostd:folder
         jcr:mixinTypes: ['mix:versionable']
         jcr:uuid: 60de5c2f-b212-44f2-9871-f75fccfb0fbc
-        hippostd:foldertype: [new-person, new-person-folder]
+        hippostd:foldertype: [new-person]
     /index:
       jcr:primaryType: hippo:handle
       jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
