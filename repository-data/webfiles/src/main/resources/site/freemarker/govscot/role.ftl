@@ -83,6 +83,15 @@
             </div>
 
             <div class="ds_layout__content">
+                <#if document.incumbent??>
+                    <#if document.incumbent.content?has_content>
+                        <div class="ds_leader-first-paragraph">
+                            <@hst.html hippohtml=document.incumbent.content var="biography"/>
+                            ${biography?trim?keep_before("\n")?no_esc}
+                        </div>
+                    </#if>
+                </#if>
+
                 <h2>Responsibilities</h2>
 
                 <@hst.html hippohtml=document.content/>
@@ -90,7 +99,7 @@
                 <#if document.incumbent??>
                     <#if document.incumbent.content?has_content>
                         <h2>Biography</h2>
-                        <@hst.html hippohtml=document.incumbent.content/>
+                        ${biography?trim?keep_after("\n")?no_esc}
                     </#if>
                 </#if>
 
