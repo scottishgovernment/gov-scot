@@ -11,7 +11,6 @@ definitions:
         /everyMin:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: 81e95230-8e1f-4b3d-b754-b7185fa2827f
           hipposched:cronExpression: 0 0/2 * * * ?
           hipposched:enabled: true
           hipposched:nextFireTime: 2025-01-27T14:06:00Z
@@ -26,7 +25,6 @@ definitions:
         /daily:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: a4c6df3f-c537-4458-9870-9243df54b133
           hipposched:cronExpression: 0 0 9 * * ?
           hipposched:enabled: true
           hipposched:nextFireTime: 2024-10-24T09:00:00+01:00
@@ -41,9 +39,21 @@ definitions:
         /daily:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: 535ff94d-e234-43c2-8158-71df0ee91196
           hipposched:cronExpression: 0 15 16 * * ?
           hipposched:enabled: false
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/DeleteOldRequestsJob:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:attributeNames: [cutoffMillis]
+      hipposched:attributeValues: ['']
+      hipposched:enabled: false
+      hipposched:repositoryJobClass: scot.gov.www.DeleteOldRequestsJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyMin:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          hipposched:cronExpression: 0 0 0 * * ?
+          hipposched:enabled: true
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [cutoffMillis]
@@ -55,7 +65,6 @@ definitions:
         /everyMin:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: bab7b6ec-1d9d-4474-990e-fafdc2b20e67
           hipposched:cronExpression: 0 0/2 * * * ?
           hipposched:enabled: true
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PollFunnelbackCurator:
@@ -69,7 +78,6 @@ definitions:
         /everyMin:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: d2b951cd-b467-4ffa-afb8-e7aed9dc4db4
           hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
           hipposched:nextFireTime: 2025-01-27T14:10:00Z
@@ -84,7 +92,6 @@ definitions:
         /nightly:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: ba851e5f-b012-43e4-8877-c41fe545e669
           hipposched:cronExpression: 0 0 2 ? * * *
           hipposched:enabled: true
           hipposched:nextFireTime: 2024-10-03T02:00:00+01:00
@@ -99,7 +106,6 @@ definitions:
         /daily:
           jcr:primaryType: hipposched:crontrigger
           jcr:mixinTypes: ['mix:lockable']
-          jcr:uuid: 4c842ed6-c970-429d-844c-b40cedd184c9
           hipposched:cronExpression: 0 0/10 * * * ?
           hipposched:enabled: true
           hipposched:nextFireTime: 2025-01-27T14:10:00Z

@@ -301,6 +301,14 @@ public class HippoUtils {
         return executeQuery(session, query, Query.XPATH, node -> true, consumer);
     }
 
+    public long executeXpathQuery(
+            Session session,
+            String query,
+            ThrowingPredicate predicate,
+            ThrowingConsumer consumer) throws RepositoryException {
+        return executeQuery(session, query, Query.XPATH, predicate, consumer);
+    }
+
     public long executeQuery(
             Session session,
             String query,
