@@ -1,5 +1,0 @@
-definitions:
-  config:
-    /hippo:namespaces/searchjournal:
-      jcr:primaryType: hipposysedit:namespace
-      jcr:mixinTypes: ['mix:referenceable']

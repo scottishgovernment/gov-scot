@@ -183,6 +183,7 @@ public class SearchJournalEventListener implements DaemonModule {
             SearchJournalEntry entry = entry(event);
             entry.setUrl(urlSource.newsUrl(variant));
             entry.setCollection(NEWS.getCollectionName());
+            entry.setUuid(variant.getIdentifier());
             return Collections.singletonList(entry);
         }
 
@@ -190,6 +191,7 @@ public class SearchJournalEventListener implements DaemonModule {
             SearchJournalEntry entry = entry(event);
             entry.setUrl(urlSource.policyUrl(variant));
             entry.setCollection(POLICY.getCollectionName());
+            entry.setUuid(variant.getIdentifier());
             return Collections.singletonList(entry);
         }
 
@@ -205,6 +207,7 @@ public class SearchJournalEventListener implements DaemonModule {
             Node documentVariant = publishedVariant(documentHandle);
             if (documentVariant != null) {
                 SearchJournalEntry depublishOldEntry = createDepublishSubfolderEntry(event.subjectPath(), null, false);
+                depublishOldEntry.setUuid(documentVariant.getIdentifier());
                 entries.add(depublishOldEntry);
                 entries.addAll(journalEntriesForPublication(documentVariant, event));
                 return entries;
@@ -223,6 +226,8 @@ public class SearchJournalEventListener implements DaemonModule {
             if (pageVariant != null) {
                 SearchJournalEntry depublishOldEntry = createDepublishSubfolderEntry(event.subjectPath(), pageVariant.getName(), true);
                 SearchJournalEntry depublishParentPublication = createDepublishPublicationEntryForSubfolderMove(event.subjectPath());
+                depublishOldEntry.setUuid(event.subjectId());
+                depublishParentPublication.setUuid(pageHandle.getIdentifier());
                 entries.add(depublishOldEntry);
                 entries.add(depublishParentPublication);
                 entries.addAll(journalEntriesForPublication(pageVariant, event));
@@ -262,7 +267,6 @@ public class SearchJournalEventListener implements DaemonModule {
                 .append(pathSections[8]).append('/');
         entry.setUrl(url.toString());
         entry.setCollection(PUBLICATIONS.getCollectionName());
-
         return entry;
     }
 
@@ -271,6 +275,7 @@ public class SearchJournalEventListener implements DaemonModule {
         String publicationType = publication.getProperty("govscot:publicationType").getString();
         String collection = getCollectionByPublicationType(publicationType).getCollectionName();
         SearchJournalEntry entry = entry(event);
+        entry.setUuid(variant.getIdentifier());
         entry.setUrl(urlSource.publicationUrl(publication, variant, event));
         entry.setCollection(collection);
         Node publicationFolder = publicationFolder(publication);
@@ -364,6 +369,7 @@ public class SearchJournalEventListener implements DaemonModule {
 
     SearchJournalEntry documentsEntry(HippoWorkflowEvent event, String collection, boolean needsDocumentsPage, Node publication) throws RepositoryException {
         SearchJournalEntry entry = entry(event);
+        entry.setUuid(event.subjectId());
         entry.setAction(needsDocumentsPage ? PUBLISH_ACTION : DEPUBLISH_ACTION);
         entry.setCollection(collection);
         entry.setUrl(urlSource.documentsUrl(publication));
@@ -373,6 +379,7 @@ public class SearchJournalEventListener implements DaemonModule {
     SearchJournalEntry publicationEntry(HippoWorkflowEvent event, String collection, Node publication) throws RepositoryException {
         SearchJournalEntry entry = entry(event);
         setActionDependingOnState(publication, entry);
+        entry.setUuid(publication.getParent().getIdentifier());
         entry.setCollection(collection);
         entry.setUrl(urlSource.publicationUrl(publication));
         return entry;
@@ -381,6 +388,7 @@ public class SearchJournalEventListener implements DaemonModule {
     SearchJournalEntry publicationPageEntry(HippoWorkflowEvent event, String collection, Node page, Node publication) throws RepositoryException {
         SearchJournalEntry entry = entry(event);
         setActionDependingOnState(publication, entry);
+        entry.setUuid(page.getIdentifier());
         entry.setCollection(collection);
         entry.setUrl(urlSource.publicationPageUrl(publication, page, entry.getAction()));
         return entry;
@@ -479,6 +487,7 @@ public class SearchJournalEventListener implements DaemonModule {
 
     SearchJournalEntry entry(HippoWorkflowEvent event) {
         SearchJournalEntry journalEntry = new SearchJournalEntry();
+        journalEntry.setUuid(event.subjectId());
         journalEntry.setAttempt(0);
         journalEntry.setAction(getEventAction(event));
         journalEntry.setTimestamp(Calendar.getInstance());
