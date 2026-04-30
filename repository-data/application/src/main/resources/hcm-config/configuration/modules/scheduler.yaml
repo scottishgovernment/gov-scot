@@ -41,18 +41,6 @@ definitions:
           jcr:mixinTypes: ['mix:lockable']
           hipposched:cronExpression: 0 15 16 * * ?
           hipposched:enabled: false
-    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/DeleteOldRequestsJob:
-      jcr:primaryType: hipposched:repositoryjob
-      hipposched:enabled: true
-      hipposched:repositoryJobClass: scot.gov.www.DeleteOldRequestsJob
-      /hipposched:triggers:
-        jcr:primaryType: hipposched:triggers
-        /dailyAtMidnight:
-          jcr:primaryType: hipposched:crontrigger
-          jcr:mixinTypes: ['mix:lockable']
-          hipposched:cronExpression: 0 0 0 * * ?
-          hipposched:enabled: true
-          hipposched:nextFireTime: 2026-04-30T00:00:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [cutoffMillis]
