@@ -31,14 +31,6 @@ definitions:
             hipposysedit:path: govscot:speechDeliveredBy
             hipposysedit:primary: false
             hipposysedit:type: String
-          /executiveSummary:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:executiveSummary
-            hipposysedit:primary: false
-            hipposysedit:type: hippostd:html
           /epilogue:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -126,9 +118,6 @@ definitions:
           /govscot:responsibleRole:
             jcr:primaryType: hippo:mirror
             hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-          /govscot:executiveSummary:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
           /govscot:epilogue:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -176,15 +165,6 @@ definitions:
               - approx. 50 words).  Note: longer summaries will be truncated to two
               lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /executiveSummary:
-            jcr:primaryType: frontend:plugin
-            caption: Executive summary
-            field: executiveSummary
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig

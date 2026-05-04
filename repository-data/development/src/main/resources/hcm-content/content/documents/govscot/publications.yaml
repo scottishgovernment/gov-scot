@@ -717,9 +717,6 @@
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: eca877db-a00f-458b-967a-1d5eb25cc9c0
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: |-
@@ -768,9 +765,6 @@
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: eca877db-a00f-458b-967a-1d5eb25cc9c0
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: |-
@@ -821,9 +815,6 @@
               hippostdpubwf:publishedBy: admin
               hippotranslation:id: eca877db-a00f-458b-967a-1d5eb25cc9c0
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: |-
@@ -1116,9 +1107,6 @@
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: <p>Public guidance for consultations.</p>
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: |-
@@ -1325,9 +1313,6 @@
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: <p>Public guidance for consultations.</p>
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: |-
@@ -1535,9 +1520,6 @@
               hippostdpubwf:publicationDate: 2025-02-17T11:13:03.529Z
               hippotranslation:id: a0e27019-5177-46e8-a20e-5bb6b013b809
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: <p>Public guidance for consultations.</p>
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: |-
@@ -2820,9 +2802,6 @@
                 /govscot:content:
                   jcr:primaryType: hippostd:html
                   hippostd:content: <p>asdfasdf</p>
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -2889,9 +2868,6 @@
                 /govscot:content:
                   jcr:primaryType: hippostd:html
                   hippostd:content: <p>asdfasdf</p>
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -2959,9 +2935,6 @@
                 /govscot:content:
                   jcr:primaryType: hippostd:html
                   hippostd:content: <p>asdfasdf</p>
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3204,9 +3177,6 @@
               /govscot:responsibleRole:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3249,9 +3219,6 @@
               /govscot:responsibleRole:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3295,9 +3262,6 @@
               /govscot:responsibleRole:
                 jcr:primaryType: hippo:mirror
                 hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3409,9 +3373,6 @@
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: eb3ef5f1-3a9f-4b93-8d8d-1874fe46eb22
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3455,9 +3416,6 @@
               hippostdpubwf:lastModifiedBy: admin
               hippotranslation:id: eb3ef5f1-3a9f-4b93-8d8d-1874fe46eb22
               hippotranslation:locale: en
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:content:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3567,9 +3525,6 @@
               /govscot:contact:
                 jcr:primaryType: hippostd:html
                 hippostd:content: '<p>Email: <a href="mailto:reportingconsultation@gov.scot">reportingconsultation@gov.scot</a></p>'
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:epilogue:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3653,9 +3608,6 @@
               /govscot:contact:
                 jcr:primaryType: hippostd:html
                 hippostd:content: '<p>Email: <a href="mailto:reportingconsultation@gov.scot">reportingconsultation@gov.scot</a></p>'
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:epilogue:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
@@ -3738,9 +3690,6 @@
               /govscot:contact:
                 jcr:primaryType: hippostd:html
                 hippostd:content: '<p>Email: <a href="mailto:reportingconsultation@gov.scot">reportingconsultation@gov.scot</a></p>'
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:epilogue:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''

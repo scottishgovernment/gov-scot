@@ -49,9 +49,6 @@ definitions:
               /govscot:epilogue:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''
-              /govscot:executiveSummary:
-                jcr:primaryType: hippostd:html
-                hippostd:content: ''
               /govscot:contact:
                 jcr:primaryType: hippostd:html
                 hippostd:content: ''

@@ -81,11 +81,6 @@ public class Publication extends AttributableContent {
         return getHippoHtml("govscot:contact");
     }
 
-    @HippoEssentialsGenerated(internalName = "govscot:executiveSummary")
-    public HippoHtml getExecutiveSummary() {
-        return getHippoHtml("govscot:executiveSummary");
-    }
-
     @HippoEssentialsGenerated(internalName = "govscot:epilogue")
     public HippoHtml getEpilogue() {
         return getHippoHtml("govscot:epilogue");

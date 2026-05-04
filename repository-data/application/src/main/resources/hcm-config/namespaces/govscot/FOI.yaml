@@ -119,9 +119,6 @@ definitions:
           /govscot:contact:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:executiveSummary:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''

@@ -116,9 +116,6 @@ definitions:
           /govscot:contact:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
-          /govscot:executiveSummary:
-            jcr:primaryType: hippostd:html
-            hippostd:content: ''
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -187,15 +184,6 @@ definitions:
               - approx. 50 words).  Note: longer summaries will be truncated to two
               lines of text on search result and category listing pages.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /executiveSummary:
-            jcr:primaryType: frontend:plugin
-            caption: Executive summary
-            field: executveSummary
-            hint: ''
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
