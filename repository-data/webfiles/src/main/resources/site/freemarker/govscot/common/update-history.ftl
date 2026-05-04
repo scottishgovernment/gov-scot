@@ -22,6 +22,7 @@
             </dd>
         </div>
 
+        <!--noindex-->
         <div id="full-history" data-module="gov-update-history" class="ds_metadata__item  gov_toggle-link__target">
             <dt class="ds_metadata__key  visually-hidden">All updates</dt>
             <dd class="ds_metadata__value  gov_history-list">
@@ -37,5 +38,6 @@
                 </ol>
             </dd>
         </div>
+        <!--endnoindex-->
     </dl>
 </div>

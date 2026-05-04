@@ -20,7 +20,13 @@
         <#if reportingTags?has_content>data-reportingtags="<#list reportingTags as tag>${tag?js_string}<#sep>|</#sep></#list>"</#if>
         <#if policies?has_content>data-policies="<#list policies as policy>${policy?js_string}<#sep>|</#sep></#list>"</#if>
         <#if collections?has_content>data-collections="<#list collections as collection>${collection.title?js_string}<#sep>|</#sep></#list>"</#if>
-        data-lastupdated='<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />'
+        <#if document.displayDate??>
+            data-lastupdated='<@fmt.formatDate value=document.displayDate.time type="Date" pattern="dd/MM/yyyy" />'
+        <#else>
+            data-lastupdated='<@fmt.formatDate value=lastUpdated.time type="Date" pattern="dd/MM/yyyy" />'
+         </#if>
+
+
         data-datecreated='<@fmt.formatDate value=dateCreated.time type="Date" pattern="dd/MM/yyyy" />'
         data-uuid="${uuid}"
         >

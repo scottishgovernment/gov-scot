@@ -29,7 +29,11 @@
     },
 
     "headline": "${document.title?json_string}",
+<#if document.displayDate??>
+    "dateModified": "${document.displayDate.time?datetime?iso_local}",
+<#elseif document.publicationDate??>
     "dateModified": "${document.getSingleProperty('hippostdpubwf:lastModificationDate').time?datetime?iso_local}",
+ </#if>
     <#if document.publicationDate??>"datePublished": "${document.publicationDate.time?datetime?iso_local}",</#if>
     <#if document.metaDescription??>
     "description": "${document.metaDescription?json_string}",
