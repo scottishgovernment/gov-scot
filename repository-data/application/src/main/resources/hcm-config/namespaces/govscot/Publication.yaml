@@ -186,8 +186,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Title
             field: title
-            hint: This is the main title for this content item.  The title needs to
-              be descriptive and concise.
+            hint: "The title is taken from the name of the folder. Use a maximum of 12 words and the format - subject: descriptor. For example, Income Tax reform: plans for 2027 to 2030"
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -196,9 +195,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Slug
             field: slug
-            hint: This is used to determine the URL of this publication.  It must
-              be unique and should ideally be a short, URL friendly version of the
-              title. Slugs should be limited to no more than 60 characters.
+            hint: "This is the url. It is auto-generated from the title."
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -207,10 +204,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Summary
             field: summary
-            hint: 'The summary is used by the internal search and category list pages.  The
-              summary should be a short description of the content item (300 characters
-              - approx. 50 words).  Note: longer summaries will be truncated to two
-              lines of text on search result and category listing pages.'
+            hint: 'Don’t duplicate the title. Add a short, one sentence description to explain the subject matter of the content item. No more than 40 words. The summary is used by the internal search.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -219,7 +213,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Publication type
             field: dynamicdropdown
-            hint: ''
+            hint: 'Pre-populated.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -229,7 +223,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: ISBN
             field: isbn
-            hint: ''
+            hint: 'Ignore. It’s automatically filled for relevant APS publications.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -238,7 +232,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Publication date
             field: publicationDate
-            hint: ''
+            hint: 'Select the date and time that you will first publish the item.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -247,6 +241,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Official date
             field: officialdate
+            hint: 'Ignore. Only use it if relates to an event date, for example when a speech was made.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -255,7 +250,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content area for this page.
+            hint: 'Enter the content in this field if it’s a single page item. Leave blank if you are making a paged guide.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -266,14 +261,14 @@ definitions:
             field: html_
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Provide contact information for the content item (where possible)
-              or use the central enquiry unit's contact details.
+            hint: 'Enter the team contact details, use a generic team email or contactus@gov.scot'
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /epilogue:
             jcr:primaryType: frontend:plugin
             caption: Epilogue
             field: html
+            hint: 'This content displays further down the page, below the main content field.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -295,7 +290,7 @@ definitions:
             field: responsibleDirectorate
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select the primary directorate responsible for the content item.
+            hint: 'Select the main directorate responsible for this content.'
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               base.path: /content/documents/govscot/about/how-government-is-run/directorates
@@ -305,8 +300,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Secondary responsible directorate(s)
             field: secondaryResponsibleDirectorate
-            hint: Select any secondary directorate(s) responsible for this content
-              item.
+            hint: 'Select any additional responsible directorate(s).'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -318,9 +312,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Topics and issues
             field: topics
-            hint: Select one or more topics related to this content item, e.g. Economy
-              or Energy. Please also select any issues/campaigns related to the content
-              item, e.g. Brexit or Year of Young People 2018.
+            hint: 'Select one or more relevant topics or issues e.g. Economy, Energy.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -334,8 +326,7 @@ definitions:
             field: responsibleRole
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Select the primary role responsible for this content item e.g. Cabinet
-              Secretary for …
+            hint: 'Select the lead ministerial or primary role responsible e.g. Cabinet Secretary for ...'
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               last.visited.enabled: 'false'
@@ -345,8 +336,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Secondary responsible role(s)
             field: secondaryResponsibleRole
-            hint: Select any secondary responsible role(s) for this content item e.g.
-              Minister for …
+            hint: 'Select any secondary responsible role(s) for this content item e.g. Minister for ...'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -360,8 +350,7 @@ definitions:
             field: group
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: Associate this Publication with a Group. This will make it appear
-              on the Group page and also link to the Group from the publication page.
+            hint: 'Link this publication to a group page. This will make it appear on the group page and link to the group from the publications page.'
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               nodetypes: govscot:Group
@@ -370,9 +359,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: SEO title
             field: seoTitle
-            hint: 'This title is used by search engines and social media for indexing
-              this content item.  The title needs to be brief and concise.  Note:
-              Search engines and social media only use first 60 characters.'
+            hint: 'Used by search engines and social media. Maximum 60 characters.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -382,9 +369,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Meta description
             field: metaDescription
-            hint: 'A description of this content item for search engine indexing purposes.  Note:
-              Meta descriptions should be limited to no more than 300 characters -
-              approx. 50 words.'
+            hint: 'Used for search engine indexing. Maximum 40 words.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -394,8 +379,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Update History
             field: UpdateHistory
-            hint: Details of the last updated date and a brief descriptions of the
-              content update
+            hint: 'To be used if content is updated after the original publication date. Add the date and a brief description of what changed. This will display on the content item.'
             plugin.class: scot.gov.plugins.field.ExtendedNodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -405,14 +389,14 @@ definitions:
             mixin: hippostd:taggable
             plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
             wicket.id: ${cluster.id}.field
+            hint: 'Tags are used to inform the internal search. Enter all the tags relevant to this content. Use lower case. One tag per line using the ‘+ Add’ button.'
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /notes:
             jcr:primaryType: frontend:plugin
             caption: Notes
             field: notes
-            hint: The content of the notes field is not displayed.  It should be used
-              for additional information about this content.
+            hint: 'For internal purposes. Use for additional information about this content.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -421,9 +405,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Subject matter expert / policy contact
             field: sme
-            hint: The contents of the SME / policy contact field will not be displayed.
-              It should be used to enter details of the the subject matter expert
-              / policy contact associated with this content.
+            hint: 'For internal purposes. Enter the relevant expert or policy contact details.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -432,6 +414,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Reporting Tags
             field: reportingTags
+            hint: 'Ignore this field.'
             multiselect.type: palette
             palette.alloworder: false
             palette.maxrows: '8'
@@ -446,8 +429,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Display date
             field: displayDate
-            hint: The date used to sort and filter publications.  Also used as the
-              date present in search results.
+            hint: 'Used to sort and filter publications. Also used as the date present in search results.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
             wicket.id: ${cluster.id}.field
             mode: view
