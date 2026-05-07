@@ -8,7 +8,7 @@ import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.publishing.searchjournal.FeatureFlag;
+import scot.gov.publishing.jcr.FeatureFlag;
 import scot.gov.publishing.searchjournal.SearchJournal;
 import scot.gov.publishing.searchjournal.SearchJournalEntry;
 

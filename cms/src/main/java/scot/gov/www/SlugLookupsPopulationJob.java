@@ -5,8 +5,8 @@ import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.publishing.searchjournal.FeatureFlag;
-import scot.gov.publishing.searchjournal.SessionSaver;
+import scot.gov.publishing.jcr.FeatureFlag;
+import scot.gov.publishing.jcr.SessionSaver;
 import scot.gov.publishing.sluglookup.SlugLookups;
 
 import javax.jcr.Node;

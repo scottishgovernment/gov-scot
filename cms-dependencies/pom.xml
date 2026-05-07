@@ -178,6 +178,16 @@
       <artifactId>hippo-govscot-feedback-cms</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-redirects-repository</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-redirects-cms</artifactId>
+    </dependency>
+
   </dependencies>
 
 </project>

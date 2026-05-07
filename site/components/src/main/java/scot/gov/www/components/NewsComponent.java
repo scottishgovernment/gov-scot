@@ -24,8 +24,6 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.or;
-import static scot.gov.www.components.ArchiveUtils.isArchivedUrl;
-import static scot.gov.www.components.ArchiveUtils.redirectToOldSite;
 
 /**
  * Component backing News pages. Queries to find policies that this news item is attributed to.
@@ -52,14 +50,6 @@ public class NewsComponent extends EssentialsContentComponent {
     }
 
     protected void handleNoNewsItemForRequest(HstRequest request, HstResponse response){
-
-        // check if this url is an archived url (some nes from before the PRGloo era is still on www2
-        // for example /news/releases/2008/08/13091153
-        if (isArchivedUrl(request)) {
-            redirectToOldSite(request, response);
-            return;
-        }
-
         try {
             LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);

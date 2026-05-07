@@ -1,20 +1,19 @@
 package scot.gov.www.components;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.jackrabbit.util.Text;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
-import org.hippoecm.hst.core.component.HstResponse;
-import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.hippo.redirects.Redirect;
+import scot.gov.publishing.hippo.redirects.hst.AliasRedirectService;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
-import java.util.Arrays;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.joining;
 
@@ -24,26 +23,6 @@ public class ArchiveUtils {
 
     private ArchiveUtils() {
         // prevent instantiation
-    }
-
-    /**
-     * Redirect to the same path on the old site.
-     */
-    public static void redirectToOldSite(HstRequest request, HstResponse response) {
-        String path = request.getPathInfo();
-        redirectToOldSite(path, request, response);
-    }
-
-    /**
-     * Redirect to a given path on the old site.
-     *
-     * While beta still exists pages will be sent to the live gov.scot site.  When the new site goes live the redirects
-     * will all go to www2.gov.scot.
-     */
-    public static void redirectToOldSite(String path, HstRequest request, HstResponse response) {
-        String url = archiveUrl(request);
-        LOG.info("Redirecting to archive {} -> {}", path, url);
-        HstResponseUtils.sendRedirect(request, response, url);
     }
 
     public static String archiveUrl(HstRequest request) {
@@ -56,27 +35,15 @@ public class ArchiveUtils {
     }
 
     public static boolean isArchivedUrl(HstRequest request)  {
+        AliasRedirectService aliasRedirectService = new AliasRedirectService();
         try {
             Session session = request.getRequestContext().getSession();
-            String path = String.format("/content/redirects/HistoricalUrls%s", escapeJcrPath(request.getPathInfo()));
-            if (path.endsWith("/")) {
-                path = StringUtils.substringBeforeLast(path, "/");
-            }
-            return session.nodeExists(path);
+            Optional<Redirect> redirect = aliasRedirectService.lookup(session, request.getPathInfo());
+            return redirect.isPresent() && redirect.get().isHistoricalUrl();
         } catch (RepositoryException e) {
             LOG.error("Failed to find historical url redirect {}", request.getPathInfo(), e);
             return false;
         }
-    }
-
-    public static String escapeJcrPath(String path) {
-        String escaped = Arrays.stream(path.split("/"))
-                .filter(segment -> !StringUtils.equals(segment, ".."))
-                .filter(StringUtils::isNotBlank)
-                .map(Text::escapeIllegalJcrChars)
-                .map(StringUtils::deleteWhitespace)
-                .collect(joining("/"));
-        return "/" + escaped;
     }
 
     private static String archiveBaseUrl(HstRequest request) {

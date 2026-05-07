@@ -111,7 +111,6 @@ public class PublicationLinkProcessor extends SlugProcessor {
             String pubPath = pathSource.get(slug, "govscot", "publications", link.getMount().getType());
 
             if(pubPath == null) {
-                LOG.info("no publication");
                 link.setNotFound(true);
                 link.setPath("/pagenotfound");
                 return link;

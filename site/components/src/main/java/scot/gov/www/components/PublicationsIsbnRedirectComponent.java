@@ -62,13 +62,6 @@ public class PublicationsIsbnRedirectComponent extends BaseHstComponent {
             return;
         }
 
-        // check to see if we recorded this isbn in the historical publication urls
-        String historicalPublicationPath = findHistoricalPublicationUrl(isbn, context);
-        if (StringUtils.isNotBlank(historicalPublicationPath)) {
-            ArchiveUtils.redirectToOldSite(historicalPublicationPath, request, response);
-            return;
-        }
-
         // we were not able to resolve the isbn, send a 404
         try {
             LOG.info("404 for {}", request.getRequestURL());

@@ -7,7 +7,7 @@ import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.publishing.searchjournal.FeatureFlag;
+import scot.gov.publishing.jcr.FeatureFlag;
 import scot.gov.www.importer.vuelio.VuelioConfiguration;
 
 import javax.jcr.Credentials;

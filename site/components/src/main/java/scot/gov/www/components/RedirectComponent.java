@@ -15,12 +15,13 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.hippo.redirects.Redirect;
+import scot.gov.publishing.hippo.redirects.hst.AliasRedirectService;
 import scot.gov.www.beans.Publication;
 import scot.gov.www.beans.PublicationPage;
 
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.util.Optional;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
@@ -47,6 +48,8 @@ public class RedirectComponent extends BaseHstComponent {
 
     public static final String GOVSCOT_URL = "govscot:url";
 
+    AliasRedirectService aliasRedirectService = new AliasRedirectService();
+
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
 
@@ -60,6 +63,9 @@ public class RedirectComponent extends BaseHstComponent {
         }
 
         // if this is a publications url then check if we have a publication for it
+
+        ///  TODO: is this stiull wanted?  wouldnt it be in the redirects?
+        ///  these are stiull getting traffic.  I think these are a problem, they should be moved to the url lookup structure
         if (isOldStylePublicationUrl(request)) {
             HippoBean bean = findPublicationsByGovScotUrl(request);
             if (bean != null) {
@@ -81,34 +87,23 @@ public class RedirectComponent extends BaseHstComponent {
     }
 
 
-    private String findAlias(HstRequest request)  {
+    private String findAlias(HstRequest request) {
         try {
-           return doFindAlias(request);
-        } catch (RepositoryException e) {
+            Session session = request.getRequestContext().getSession();
+            Optional<Redirect> redirect = aliasRedirectService.lookup(session, request.getPathInfo());
+            if (redirect.isEmpty() || redirect.get().isHistoricalUrl()) {
+                return null;
+            }
+            String url = redirect.get().getTo();
+            // if the incoming url has parameters and the outgoing one does not then pass them on
+            if (!url.contains("?") && isNotBlank(request.getQueryString())) {
+                url = url + '?' + request.getQueryString();
+            }
+            return url;
+        } catch (Exception e) {
             LOG.error("Failed to find url alias {}", request.getPathInfo(), e);
             return null;
         }
-    }
-
-    private String doFindAlias(HstRequest request) throws RepositoryException {
-
-        Session session = request.getRequestContext().getSession();
-        String path = String.format("/content/redirects/Aliases%s", ArchiveUtils.escapeJcrPath(request.getPathInfo()));
-        if (!session.nodeExists(path)) {
-            return null;
-        }
-        Node node = session.getNode(path);
-        if (!node.hasProperty(GOVSCOT_URL)) {
-            return null;
-        }
-        String url = node.getProperty(GOVSCOT_URL).getString();
-
-        // if the incoming url has parameters and the outgoing one does not then add
-        // the params to the redirect
-        if (!url.contains("?") && isNotBlank(request.getQueryString())) {
-            url = new StringBuilder(url).append('?').append(request.getQueryString()).toString();
-        }
-        return url;
     }
 
     private boolean isOldStylePublicationUrl(HstRequest request) {
@@ -136,6 +131,7 @@ public class RedirectComponent extends BaseHstComponent {
                 .build();
 
         try {
+            LOG.info("qqqq {}", query);
             HstQueryResult result = query.execute();
             if (result.getTotalSize() == 0) {
                 return null;

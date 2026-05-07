@@ -36,6 +36,11 @@
     </dependency>
 
     <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-redirects-hst</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.bloomreach.forge.breadcrumb</groupId>
       <artifactId>breadcrumb</artifactId>
       <version>${forge.breadcrumb.version}</version>

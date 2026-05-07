@@ -63,6 +63,15 @@
             <groupId>scot.gov.publishing.hippo</groupId>
             <artifactId>hippo-govscot-funnelback-cms</artifactId>
         </dependency>
+        <dependency>
+            <groupId>scot.gov.publishing.hippo</groupId>
+            <artifactId>hippo-govscot-cms</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>scot.gov.publishing.hippo</groupId>
+            <artifactId>hippo-govscot-jcrutil</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

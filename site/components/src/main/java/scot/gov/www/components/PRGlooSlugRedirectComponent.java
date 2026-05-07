@@ -14,12 +14,15 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.hippo.redirects.Redirect;
+import scot.gov.publishing.hippo.redirects.hst.AliasRedirectService;
 import scot.gov.www.beans.News;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import static org.apache.commons.lang.StringUtils.substringAfter;
 import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
@@ -31,38 +34,29 @@ import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.con
  * If a match is found a redirect will be issues to that item.
  *
  * If not then the slug will then be matched against the list of all historical prgloo slugs contained in the
- * repo under /content/redirects/prgloo/ if found a redirect to the achive will be issued.
+ * repo under /content/redirects/prgloo/ if found a redirect to the archive will be issued.
  *
- * Finally if it not found then a 404 will be sent.
+ * Finally, if it not found then a 404 will be sent.
  */
 public class PRGlooSlugRedirectComponent extends BaseHstComponent {
 
     private static final Logger LOG = LoggerFactory.getLogger(PRGlooSlugRedirectComponent.class);
 
-    private static final String ARCHIVE_TEMPLATE = "https://webarchive.nrscotland.gov.uk/3000/news.gov.scot/news/%s";
+    AliasRedirectService aliasRedirectService = new AliasRedirectService();
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        String slug = lastPathElement(request);
 
-        // see if the slug is the prgloo slug of a news item we have imported to the repo
-        HippoBean bean = findByPRGlooSlug(slug, request);
-
-        if (bean != null) {
-            HstRequestContext context = request.getRequestContext();
-            final HstLink link = context.getHstLinkCreator().create(bean, context);
-            LOG.info("Redirecting news slug {} -> {}", request.getPathInfo(), link.getPath());
-            HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
-            return;
-        }
-
-        // see if the slug is a known prgloo slug that we have not imported
-        // if so then send a redirect to the archive.
-        if (isArchivedSlug(slug, request)) {
-            String archiveUrl = String.format(ARCHIVE_TEMPLATE, slug);
-            LOG.info("Redirecting news slug to archive {} -> {}", slug, archiveUrl);
-            HstResponseUtils.sendPermanentRedirect(request, response, archiveUrl);
-            return;
+        try {
+            Optional<Redirect> redirect = aliasRedirectService.lookup(request.getRequestContext().getSession(), request.getPathInfo());
+            if (redirect.isPresent()) {
+                LOG.info("Redirecting news slug {} -> {}", request.getRequestContext(), redirect.get().getTo());
+                HstResponseUtils.sendPermanentRedirect(request, response, redirect.get().getTo());
+                return;
+            }
+        } catch (RepositoryException e) {
+            LOG.error("failed to get redirect for " + request.getPathInfo());
+            throw new RuntimeException(e);
         }
 
         // we do not know this slug, send a 404
@@ -70,62 +64,8 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
             LOG.info("404 for {}", request.getRequestURL());
             response.setStatus(404);
             response.forward("/pagenotfound");
-            return;
         }  catch (IOException e) {
             throw new HstComponentException("forward failed", e);
-        }
-    }
-
-    private String lastPathElement(HstRequest request) {
-        String [] pathElements = request.getPathInfo().split("/");
-        return pathElements[pathElements.length - 1];
-    }
-
-    private HippoBean findByPRGlooSlug(String slug, HstRequest request) {
-        HstQuery query = HstQueryBuilder
-                .create(request.getRequestContext().getSiteContentBaseBean())
-                .ofTypes(News.class)
-                .where(constraint("govscot:prglooslug").equalTo(slug))
-                .build();
-        return executeHstQuery(query, slug);
-    }
-
-    private HippoBean executeHstQuery(HstQuery query, String slug) {
-        try {
-            HstQueryResult result = query.execute();
-            if (result.getTotalSize() == 0) {
-                LOG.info("PRGloo slug not found: {}", slug);
-                return null;
-            }
-
-            if (result.getTotalSize() > 1) {
-                LOG.warn("Multiple news items with this slug : {}, will use first", slug);
-            }
-
-            return result.getHippoBeans().nextHippoBean();
-        } catch (QueryException e) {
-            LOG.error("Failed to get news by prgloo slug {}", slug, e);
-            return null;
-        }
-    }
-
-    private boolean isArchivedSlug(String slug, HstRequest request) {
-        // form the letters of the slug into a path e.g. myslug -> /m/y/s/l/u/g/
-        StringBuilder path = new StringBuilder("/content/redirects/prgloo/");
-        slug = ArchiveUtils.escapeJcrPath(slug);
-        for(char c : substringAfter(slug, "/").toCharArray()) {
-            path.append(c).append("/");
-        }
-
-        try {
-            if (request.getRequestContext().getSession().nodeExists(path.toString())){
-                Node node = request.getRequestContext().getSession().getNode(path.toString());
-                return !node.hasNodes();
-            }
-            return false;
-        } catch (RepositoryException e) {
-            LOG.warn("Failed to determine existence of slug {}", slug, e);
-            return false;
         }
     }
 
