@@ -1,0 +1,24 @@
+$robotoFontPath: '../fonts/roboto' !default;
+
+@use "pkg:@fontsource-utils/scss" as fontsource;
+@use "pkg:@fontsource/roboto/scss" as roboto;
+
+/* Use Faces Mixin to allow directory to be overridden */
+@include fontsource.faces(
+  $metadata: roboto.$metadata,
+  $directory: $robotoFontPath,
+  $formats: woff2,
+  $styles: all,
+  $weights: 400
+);
+
+@include fontsource.faces(
+  $metadata: roboto.$metadata,
+  $directory: $robotoFontPath,
+  $formats: woff2,
+  $styles: normal,
+  $weights: (
+    300,
+    700
+  )
+);
