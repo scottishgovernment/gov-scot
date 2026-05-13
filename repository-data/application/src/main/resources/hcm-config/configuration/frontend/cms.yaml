@@ -1,5 +1,7 @@
 definitions:
   config:
+    /hippo:configuration/hippo:frontend/cms/app-transition-config/apptransitionconfigurations/homepage:
+      frontend:enableapp: false
     /hippo:configuration/hippo:frontend/cms/cms-editor/editorPlugin:
       plugin.class: scot.gov.publishing.plugins.ExtendedEditorPlugin
     /hippo:configuration/hippo:frontend/cms/cms-services/imageValidationService:
