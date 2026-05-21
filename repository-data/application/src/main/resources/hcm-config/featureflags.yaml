@@ -11,7 +11,7 @@ definitions:
         VuelioImporterJob: false
         VuelioImporterJobscotgov: false
         VuelioImporterJobsocialsecurity: false
-        JcrRedirectRepository: true
+        JcrRedirectRepository: false
         MigrateAliasRedirectsJob: false
         MigrateAliasRedirectsJobPaused: false
         DeleteOldRedirectsJob: false
