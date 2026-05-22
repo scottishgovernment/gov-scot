@@ -62,21 +62,6 @@ public class RedirectComponent extends BaseHstComponent {
             return;
         }
 
-        // if this is a publications url then check if we have a publication for it
-
-        ///  TODO: is this stiull wanted?  wouldnt it be in the redirects?
-        ///  these are stiull getting traffic.  I think these are a problem, they should be moved to the url lookup structure
-        if (isOldStylePublicationUrl(request)) {
-            HippoBean bean = findPublicationsByGovScotUrl(request);
-            if (bean != null) {
-                HstRequestContext context = request.getRequestContext();
-                final HstLink link = context.getHstLinkCreator().create(bean, context);
-                LOG.info("Redirecting govscot publication url {} to {}", request.getPathInfo(), link.getPath());
-                HstResponseUtils.sendPermanentRedirect(request, response, link.getPath());
-                return;
-            }
-        }
-
         // we do not know this url, send a 404
         HstRequestContext context = request.getRequestContext();
         HippoBean document = context.getContentBean();
@@ -85,7 +70,6 @@ public class RedirectComponent extends BaseHstComponent {
         LOG.info("404 for {}", request.getRequestURL());
         response.setStatus(404);
     }
-
 
     private String findAlias(HstRequest request) {
         try {
@@ -104,48 +88,6 @@ public class RedirectComponent extends BaseHstComponent {
             LOG.error("Failed to find url alias {}", request.getPathInfo(), e);
             return null;
         }
-    }
-
-    private boolean isOldStylePublicationUrl(HstRequest request) {
-        String govscotUrl = request.getPathInfo();
-        return StringUtils.startsWith(govscotUrl, "/Publications/");
-
-    }
-
-    private HippoBean findPublicationsByGovScotUrl(HstRequest request) {
-        String govscotUrl = request.getPathInfo();
-
-        // remove any trailing slash since they are stored without a trailing slash
-        govscotUrl = StringUtils.removeEnd(govscotUrl, "/");
-
-        // if the url ends with /downloads then remove it since there is no downloads page in the new version
-        // of publications
-        if (govscotUrl.endsWith("/downloads")) {
-            govscotUrl = StringUtils.substringBeforeLast(govscotUrl, "/downloads");
-        }
-
-        HstQuery query = HstQueryBuilder
-                .create(request.getRequestContext().getSiteContentBaseBean())
-                .ofTypes(Publication.class, PublicationPage.class)
-                .where(urlConstraint(govscotUrl))
-                .build();
-
-        try {
-            LOG.info("qqqq {}", query);
-            HstQueryResult result = query.execute();
-            if (result.getTotalSize() == 0) {
-                return null;
-            }
-
-            return result.getHippoBeans().nextHippoBean();
-        } catch (QueryException e) {
-            LOG.error("Failed to get publication by govscotUrl slug {}", govscotUrl, e);
-            return null;
-        }
-    }
-
-    Constraint urlConstraint(String govscotUrl) {
-        return constraint("govscot:govscoturl").equalTo(govscotUrl);
     }
 }
 

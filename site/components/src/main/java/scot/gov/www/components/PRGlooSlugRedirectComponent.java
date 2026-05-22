@@ -1,31 +1,19 @@
 package scot.gov.www.components;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-import org.hippoecm.hst.content.beans.query.HstQuery;
-import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
-import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
-import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import org.hippoecm.hst.core.linking.HstLink;
-import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.hippo.redirects.Redirect;
 import scot.gov.publishing.hippo.redirects.hst.AliasRedirectService;
-import scot.gov.www.beans.News;
 
-import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
 import java.io.IOException;
 import java.util.Optional;
-
-import static org.apache.commons.lang.StringUtils.substringAfter;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
 /**
  * Redirect prgloo slugs
@@ -55,8 +43,8 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
                 return;
             }
         } catch (RepositoryException e) {
-            LOG.error("failed to get redirect for " + request.getPathInfo());
-            throw new RuntimeException(e);
+            LOG.error("failed to get redirect for " + request.getPathInfo(), e);
+            throw new HstComponentException(e);
         }
 
         // we do not know this slug, send a 404

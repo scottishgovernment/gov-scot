@@ -15,8 +15,6 @@ import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.joining;
-
 public class ArchiveUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ArchiveUtils.class);
