@@ -1,30 +1,20 @@
 package scot.gov.www.components;
 
-import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
-import org.hippoecm.hst.content.beans.query.HstQuery;
-import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.builder.Constraint;
-import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
-import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.hippo.redirects.Redirect;
 import scot.gov.publishing.hippo.redirects.hst.AliasRedirectService;
-import scot.gov.www.beans.Publication;
-import scot.gov.www.beans.PublicationPage;
 
 import javax.jcr.Session;
 import java.util.Optional;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.constraint;
 
 /**
  * Component used to support the redirect behaviour of gov.scot: if the sitemap does not match any other entry then this
