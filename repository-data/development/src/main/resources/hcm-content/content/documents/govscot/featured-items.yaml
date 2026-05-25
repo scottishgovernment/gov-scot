@@ -14,8 +14,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 3860edda-973e-4e2d-bc5a-c3cf9aa7a28a
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel on the coronavirus.
       govscot:title: Coronavirus
       govscot:youtube: ''
@@ -47,8 +45,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 91f1683d-fe0f-45a1-aa85-cd307dce4e6c
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel on the coronavirus.
       govscot:title: Coronavirus
       govscot:youtube: ''
@@ -80,8 +76,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 8bf3cd80-95bc-4d36-a14a-530d1a41bd04
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel on the coronavirus.
       govscot:title: Coronavirus
       govscot:youtube: ''
@@ -120,8 +114,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 8f383669-e065-4fef-94c6-79ebf9c0107e
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Pre-election period feature panel.
       govscot:title: Pre-election period
       govscot:youtube: ''
@@ -154,8 +146,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: a8a1a96a-c178-42a6-919b-298f2b24ba87
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Pre-election period feature panel.
       govscot:title: Pre-election period
       govscot:youtube: ''
@@ -188,8 +178,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: ce4a696c-4e79-4a15-a4df-0110e5063895
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Pre-election period feature panel.
       govscot:title: Pre-election period
       govscot:youtube: ''
@@ -231,8 +219,6 @@
       jcr:uuid: a4adaad3-d96e-4e5a-b453-0a9e57312b08
       govscot:metaDescription: The Chinese New Year is celebrated this weekend – the
         Year of the Rooster.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-503
       govscot:seoTitle: Chinese New Year
       govscot:summary: Programme for Government panel
@@ -292,8 +278,6 @@
       jcr:uuid: a4f83b6b-6f9b-4a9e-88d3-1725e493401b
       govscot:metaDescription: The Chinese New Year is celebrated this weekend – the
         Year of the Rooster.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-503
       govscot:seoTitle: Chinese New Year
       govscot:summary: Programme for Government panel
@@ -353,8 +337,6 @@
       jcr:uuid: 6f684eac-c40f-4f65-8b55-667c7c3a5024
       govscot:metaDescription: The Chinese New Year is celebrated this weekend – the
         Year of the Rooster.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-503
       govscot:seoTitle: Chinese New Year
       govscot:summary: Programme for Government panel
@@ -419,8 +401,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 3aa8c59f-9513-44cc-bcee-314e77728d5f
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel to promote information about the Scottish Government's
         policy on EU exit (Brexit).
       govscot:title: EU Exit (Brexit)
@@ -459,8 +439,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 1c51b013-4159-49ce-b0a2-66279e758311
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel to promote information about the Scottish Government's
         policy on EU exit (Brexit).
       govscot:title: EU Exit (Brexit)
@@ -499,8 +477,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 51042dee-1ae0-4f61-bbfe-142a7d667485
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel to promote information about the Scottish Government's
         policy on EU exit (Brexit).
       govscot:title: EU Exit (Brexit)
@@ -547,8 +523,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: e3b1e760-ef84-45c8-838d-3dc4a1868e56
       govscot:metaDescription: Scottish Budget 2018 to 2019 (draft).
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: Public Finance Minister Kate Forbes
       govscot:rubricId: GOV-493
       govscot:seoTitle: Scottish Budget 2018 to 2019 (draft)
       govscot:summary: We have set out our spending and tax plans for 2022 to 2023.
@@ -600,8 +574,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 5fddb743-02f5-4977-b1e5-e3a5a5710a3b
       govscot:metaDescription: Scottish Budget 2018 to 2019 (draft).
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: Public Finance Minister Kate Forbes
       govscot:rubricId: GOV-493
       govscot:seoTitle: Scottish Budget 2018 to 2019 (draft)
       govscot:summary: We have set out our spending and tax plans for 2022 to 2023.
@@ -652,8 +624,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 029cb3fb-f9a3-4957-ae64-56ff1fde6bf9
       govscot:metaDescription: Scottish Budget 2018 to 2019 (draft).
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: Public Finance Minister Kate Forbes
       govscot:rubricId: GOV-493
       govscot:seoTitle: Scottish Budget 2018 to 2019 (draft)
       govscot:summary: We have set out our spending and tax plans for 2022 to 2023.
@@ -709,8 +679,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: a67225f6-1d09-4de7-ba91-b8bc6fdf7960
-      govscot:overlayQuote: '<p>Get involved using the hashtag #YCW2020</p>'
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel to promote The Year of Coasts and Waters.
       govscot:title: Year of Coasts & Waters
       govscot:youtube: https://www.youtube.com/watch?v=Bg_rFf-lLg4
@@ -741,8 +709,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 4a8054a8-e417-4cce-b869-35092319fdc4
-      govscot:overlayQuote: '<p>Get involved using the hashtag #YCW2020</p>'
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel to promote The Year of Coasts and Waters.
       govscot:title: Year of Coasts & Waters
       govscot:youtube: https://www.youtube.com/watch?v=Bg_rFf-lLg4
@@ -773,8 +739,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 560686e6-1c63-4ecc-934a-db82cab25269
-      govscot:overlayQuote: '<p>Get involved using the hashtag #YCW2020</p>'
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel to promote The Year of Coasts and Waters.
       govscot:title: Year of Coasts & Waters
       govscot:youtube: https://www.youtube.com/watch?v=Bg_rFf-lLg4
@@ -812,9 +776,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: addd1c48-b238-44d7-8ad6-5af719cb8666
       govscot:metaDescription: Scotland and Brexit
-      govscot:overlayQuote: In a referendum on European Union membership held in June
-        2016 the Scottish people voted decisively to remain within the EU.
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-949
       govscot:seoTitle: Scotland and Brexit
       govscot:summary: Scotland and Brexit
@@ -865,9 +826,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: bf93c1b5-2351-44cf-a57c-b40725e5e737
       govscot:metaDescription: Scotland and Brexit
-      govscot:overlayQuote: In a referendum on European Union membership held in June
-        2016 the Scottish people voted decisively to remain within the EU.
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-949
       govscot:seoTitle: Scotland and Brexit
       govscot:summary: Scotland and Brexit
@@ -917,9 +875,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 02fd5a84-664c-4136-b734-0eac253ed273
       govscot:metaDescription: Scotland and Brexit
-      govscot:overlayQuote: In a referendum on European Union membership held in June
-        2016 the Scottish people voted decisively to remain within the EU.
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-949
       govscot:seoTitle: Scotland and Brexit
       govscot:summary: Scotland and Brexit
@@ -975,8 +930,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: b179aaee-644d-496e-b308-e2a4207fa2be
       govscot:metaDescription: Scotland Is Now campaign
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-950
       govscot:seoTitle: Scotland Is Now
       govscot:summary: Scotland is Open
@@ -1031,8 +984,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 753a1f8f-6905-49fc-a10e-484b012d9f0f
       govscot:metaDescription: Scotland Is Now campaign
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-950
       govscot:seoTitle: Scotland Is Now
       govscot:summary: Scotland is Open
@@ -1086,8 +1037,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: afab34ee-b897-4559-85cd-b3d4a0ca2364
       govscot:metaDescription: Scotland Is Now campaign
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-950
       govscot:seoTitle: Scotland Is Now
       govscot:summary: Scotland is Open
@@ -1145,8 +1094,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 31636e17-640c-44a8-af9d-884fbc113cb9
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Animal welfare
       govscot:title: Animal welfare
       govscot:youtube: https://youtu.be/lSCPHBD9upo
@@ -1176,8 +1123,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 8ada9abe-d753-4db7-9abf-a91223e13b71
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Animal welfare
       govscot:title: Animal welfare
       govscot:youtube: https://youtu.be/lSCPHBD9upo
@@ -1207,8 +1152,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: a6bebf97-b7c3-41a5-ac83-5a5b54eb4239
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Animal welfare
       govscot:title: Animal welfare
       govscot:youtube: https://youtu.be/lSCPHBD9upo
@@ -1245,10 +1188,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: b97e0128-960b-4a9b-a058-0e3de8623b1d
       govscot:metaDescription: Autumn statement response
-      govscot:overlayQuote: '"Above all, this was a massive missed opportunity to
-        end austerity. The Chancellor has failed to ease the punitive cuts that are
-        hitting so many Scottish families."'
-      govscot:overlayQuoteAttribution: Finance Secretary Derek Mackay
       govscot:rubricId: GOV-479
       govscot:seoTitle: Autumn Statement
       govscot:summary: Autumn statement
@@ -1305,12 +1244,6 @@
       jcr:uuid: a7a21114-4d96-47ee-9be9-41fd8f96916b
       govscot:metaDescription: The Scottish Government is gifting every newborn baby
         a box of essential items.
-      govscot:overlayQuote: '"We are committed to doing everything we can to give
-        every baby born in Scotland the best possible start in life and the Baby Box
-        is just one of the range of measures we are using to help babies and parents
-        thrive in the crucial early months."'
-      govscot:overlayQuoteAttribution: Minister for Childcare and Early Years Mark
-        McDonald
       govscot:rubricId: GOV-498
       govscot:seoTitle: Baby Boxes
       govscot:summary: The Scottish Government is gifting every newborn baby a box
@@ -1424,8 +1357,6 @@
       govscot:metaDescription: First Minister Nicola Sturgeon met Glasgow school pupils
         taking part in the First Minister's Reading Challenge on the first day of
         Book Week Scotland.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-469
       govscot:seoTitle: Book Week
       govscot:summary: First Minister Nicola Sturgeon met Glasgow school pupils taking
@@ -1481,8 +1412,6 @@
       govscot:metaDescription: First Minister Nicola Sturgeon met Glasgow school pupils
         taking part in the First Minister's Reading Challenge on the first day of
         Book Week Scotland.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-469
       govscot:seoTitle: Book Week
       govscot:summary: First Minister Nicola Sturgeon met Glasgow school pupils taking
@@ -1538,8 +1467,6 @@
       govscot:metaDescription: First Minister Nicola Sturgeon met Glasgow school pupils
         taking part in the First Minister's Reading Challenge on the first day of
         Book Week Scotland.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-469
       govscot:seoTitle: Book Week
       govscot:summary: First Minister Nicola Sturgeon met Glasgow school pupils taking
@@ -1601,8 +1528,6 @@
       jcr:uuid: 2a13db62-03e2-4032-93aa-ae32f24a16be
       govscot:metaDescription: 25 January marks the annual celebration of Scotland's
         national poet Robert Burns.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-501
       govscot:seoTitle: Burns Night
       govscot:summary: 25 January marks the annual celebration of Scotland's national
@@ -1661,8 +1586,6 @@
       jcr:uuid: dbfe7501-345c-4471-9547-5aee995df406
       govscot:metaDescription: 25 January marks the annual celebration of Scotland's
         national poet Robert Burns.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-501
       govscot:seoTitle: Burns Night
       govscot:summary: 25 January marks the annual celebration of Scotland's national
@@ -1720,8 +1643,6 @@
       jcr:uuid: ff8368bc-fa62-43ba-9b8c-04fe59396015
       govscot:metaDescription: 25 January marks the annual celebration of Scotland's
         national poet Robert Burns.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-501
       govscot:seoTitle: Burns Night
       govscot:summary: 25 January marks the annual celebration of Scotland's national
@@ -1783,10 +1704,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: e540df14-cc7a-495c-9d00-2dc497f1306d
       govscot:metaDescription: The first part of the Scottish Growth Scheme
-      govscot:overlayQuote: '"The Scottish Growth Scheme is a £500 million boost to
-        support businesses and jobs at a time when the UK Government stance on Brexit
-        continues to present a huge threat to jobs and prosperity."'
-      govscot:overlayQuoteAttribution: Finance Secretary Derek Mackay
       govscot:rubricId: GOV-610
       govscot:seoTitle: Scottish growth
       govscot:summary: Details of the first tranche of Scottish Growth Scheme.
@@ -2007,8 +1924,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 21a8d3e0-a53a-43b1-80aa-28a67cf4a9f2
       govscot:metaDescription: First Minister's Christmas Message
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-496
       govscot:seoTitle: Christmas message
       govscot:summary: First Minister's Christmas Message
@@ -2061,8 +1976,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 49e26ad0-57f0-4939-b6eb-49a5eb3dae91
       govscot:metaDescription: First Minister's Christmas Message
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-496
       govscot:seoTitle: Christmas message
       govscot:summary: First Minister's Christmas Message
@@ -2114,8 +2027,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 27079d22-f6e1-4af8-ae54-62015b8e245c
       govscot:metaDescription: First Minister's Christmas Message
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-496
       govscot:seoTitle: Christmas message
       govscot:summary: First Minister's Christmas Message
@@ -2172,10 +2083,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 79dcc6a7-b48c-4f55-8700-5eff0449004c
       govscot:metaDescription: Climate Change Bill panel
-      govscot:overlayQuote: '"Climate change is one of the defining challenges of
-        our age and Scotland’s international leadership means our plans must be ambitious,
-        credible and affordable."'
-      govscot:overlayQuoteAttribution: Climate Change Secretary Roseanna Cunningham
       govscot:rubricId: GOV-1020
       govscot:seoTitle: Climate Change Bill
       govscot:summary: Climate Change Bill panel
@@ -2226,10 +2133,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 64d92d18-63b0-4ab2-ba1f-5647e67a4a15
       govscot:metaDescription: Climate Change Bill panel
-      govscot:overlayQuote: '"Climate change is one of the defining challenges of
-        our age and Scotland’s international leadership means our plans must be ambitious,
-        credible and affordable."'
-      govscot:overlayQuoteAttribution: Climate Change Secretary Roseanna Cunningham
       govscot:rubricId: GOV-1020
       govscot:seoTitle: Climate Change Bill
       govscot:summary: Climate Change Bill panel
@@ -2286,7 +2189,6 @@
       jcr:uuid: 9e716db9-b87f-453b-8572-05ceb1e4e93e
       govscot:metaDescription: Council elections are taking place across Scotland
         on Thursday 4 May 2017.
-      govscot:overlayQuote: Thursday 4 May 2017
       govscot:rubricId: GOV-571
       govscot:seoTitle: Council elections
       govscot:summary: Council elections are taking place across Scotland on Thursday
@@ -2446,10 +2348,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: c042f2b7-3d58-4cd7-9ce5-00e7d7c3eb1e
       govscot:metaDescription: Cyber resilience panel
-      govscot:overlayQuote: '"There is a need for everyone to have appropriate and
-        robust measures in place to protect against cyber attacks which could strike
-        any IT system at any time."'
-      govscot:overlayQuoteAttribution: Justice Secretary Michael Matheson
       govscot:rubricId: GOV-595
       govscot:seoTitle: Cyber resilience
       govscot:summary: Cyber resilience
@@ -2505,10 +2403,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 14a81542-8ee0-4155-a702-889e50f88b9f
       govscot:metaDescription: Consultation on deposit return scheme.
-      govscot:overlayQuote: "\"Deposit return is not only an effective way of increasing\
-        \ recycling rates and preventing litter, it is also an economic opportunity.\"\
-        \  \nEnvironment Secretary Roseanna Cunningham"
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-1069
       govscot:seoTitle: Deposit return
       govscot:summary: Consultation on deposit return scheme.
@@ -2575,10 +2469,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 6d7d8e97-e003-4f1d-8cee-2957eea2299c
       govscot:metaDescription: Consultation on deposit return scheme.
-      govscot:overlayQuote: "\"Deposit return is not only an effective way of increasing\
-        \ recycling rates and preventing litter, it is also an economic opportunity.\"\
-        \  \nEnvironment Secretary Roseanna Cunningham"
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-1069
       govscot:seoTitle: Deposit return
       govscot:summary: Consultation on deposit return scheme.
@@ -2644,10 +2534,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 0309279f-bc79-447d-9737-487e07b8e180
       govscot:metaDescription: Consultation on deposit return scheme.
-      govscot:overlayQuote: "\"Deposit return is not only an effective way of increasing\
-        \ recycling rates and preventing litter, it is also an economic opportunity.\"\
-        \  \nEnvironment Secretary Roseanna Cunningham"
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-1069
       govscot:seoTitle: Deposit return
       govscot:summary: Consultation on deposit return scheme.
@@ -2719,10 +2605,6 @@
       jcr:uuid: 52b8ac53-9e4b-4966-b996-8b180fbe828f
       govscot:metaDescription: Scottish Women's Aid ready staff as Domestic Abuse
         Bill progresses.
-      govscot:overlayQuote: '"I am pleased Parliament has come together to pass this
-        legislation. This is a momentous day as our laws will be changed so they reflect
-        the experience all too many women have suffered."'
-      govscot:overlayQuoteAttribution: Justice Secretary Michael Matheson
       govscot:rubricId: GOV-890
       govscot:seoTitle: Domestic Abuse Bill
       govscot:summary: Scottish Women’s Aid ready staff as Domestic Abuse Bill progresses.
@@ -2774,10 +2656,6 @@
       jcr:uuid: 977e77b9-712d-4d95-a43f-c274c8fa8677
       govscot:metaDescription: Scottish Women's Aid ready staff as Domestic Abuse
         Bill progresses.
-      govscot:overlayQuote: '"I am pleased Parliament has come together to pass this
-        legislation. This is a momentous day as our laws will be changed so they reflect
-        the experience all too many women have suffered."'
-      govscot:overlayQuoteAttribution: Justice Secretary Michael Matheson
       govscot:rubricId: GOV-890
       govscot:seoTitle: Domestic Abuse Bill
       govscot:summary: Scottish Women’s Aid ready staff as Domestic Abuse Bill progresses.
@@ -2833,9 +2711,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: ac98a126-361a-4102-b368-406b126bd5da
       govscot:metaDescription: Scottish Government response to the EU Referendum result.
-      govscot:overlayQuote: '"The question for me is not if I am going to protect
-        Scotland''s interests, it is how I am going to do it."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-333
       govscot:seoTitle: EU Referendum result
       govscot:summary: Scotland's response to the EU referendum result.
@@ -2892,11 +2767,6 @@
       jcr:uuid: e5987675-3e2c-4294-ac82-241d805003a4
       govscot:metaDescription: Another successful year with increased attainment in
         work-related qualifications.
-      govscot:overlayQuote: '"Receiving your results can be exciting, scary and worrying
-        all at the same time, and I think it’s important that we recognise this and
-        make sure our young people have the right support available to them, to make
-        the best decisions about their future."'
-      govscot:overlayQuoteAttribution: Cabinet Secretary for Education John Swinney
       govscot:rubricId: GOV-365
       govscot:seoTitle: Exam results
       govscot:summary: Free exam results helpline 0808 100 8000
@@ -2954,10 +2824,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 97fe7be2-fac9-480d-9417-7455a007c4e7
       govscot:metaDescription: Homepage panel to promote the Fair Start campaign.
-      govscot:overlayQuote: '"Our priority is that people receive high quality services,
-        designed for their local needs and that treats them fairly and with respect."'
-      govscot:overlayQuoteAttribution: Minister for Employability and Training Jamie
-        Hepburn
       govscot:rubricId: GOV-784
       govscot:seoTitle: Fair Start
       govscot:summary: Homepage panel to promote the Fair Start campaign.
@@ -3119,11 +2985,8 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 363385cb-7465-4732-a973-eeca13020bdf
       govscot:metaDescription: Programme for Government 2017
-      govscot:overlayQuote: |-
-        "Improving the education and life chances of our children and young people is the defining mission of this Government."
 
         This sets out how we will use those powers and adapt to that new context."
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-397
       govscot:seoTitle: Government programme
       govscot:summary: Programme for Government 2017
@@ -3178,11 +3041,8 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 80f6fcc4-761e-4cf0-a6d2-fd5a63f11045
       govscot:metaDescription: Programme for Government 2017
-      govscot:overlayQuote: |-
-        "Improving the education and life chances of our children and young people is the defining mission of this Government."
 
         This sets out how we will use those powers and adapt to that new context."
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-397
       govscot:seoTitle: Government programme
       govscot:summary: Programme for Government 2017
@@ -3292,10 +3152,6 @@
       jcr:uuid: 45f472ec-43ea-42df-b76c-b7f9fc19a8dc
       govscot:metaDescription: Increasing number of potential victims being identified
         in Scotland.
-      govscot:overlayQuote: '"Human trafficking is an appalling abuse of human rights.
-        This horrific crime affects the most vulnerable in society and has wide reaching
-        consequences for its victims."'
-      govscot:overlayQuoteAttribution: Cabinet Secretary for Justice Michael Matheson
       govscot:rubricId: GOV-745
       govscot:seoTitle: Human trafficking
       govscot:summary: Increasing number of potential human trafficking victims being
@@ -3423,10 +3279,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: ce33961e-610c-4915-a572-c93ee04045d2
       govscot:metaDescription: Consequences of distributing personal pictures or film.
-      govscot:overlayQuote: '"Disclosing private images can be extremely cruel and
-        degrading, and can cause fear and alarm. There is no place for this abusive
-        and manipulative behaviour in Scotland."'
-      govscot:overlayQuoteAttribution: Justice Secretary Michael Matheson
       govscot:rubricId: GOV-627
       govscot:seoTitle: Intimate images
       govscot:summary: Consequences of distributing personal pictures or film.
@@ -3539,9 +3391,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 3baf0885-1694-49db-8f98-9e0b2a951fa7
       govscot:metaDescription: Manchester attack First Minister comments.
-      govscot:overlayQuote: '"I urge the people of Scotland to be vigilant but not
-        alarmed and, as far as possible, to go about their business as usual."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-597
       govscot:seoTitle: Manchester attack
       govscot:summary: Manchester attack First Minister comments.
@@ -3593,10 +3442,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: a889094e-731b-46f1-8868-84d8cdc72741
       govscot:metaDescription: Homepage panel to promote Maths Week.
-      govscot:overlayQuote: '"Excellence in maths and numeracy attainment is central
-        to the ambitions of this government to keep improving the education of our
-        children and young people, and to close the poverty-related attainment gap."'
-      govscot:overlayQuoteAttribution: Deputy First Minister John Swinney
       govscot:rubricId: GOV-756
       govscot:seoTitle: Maths Week
       govscot:summary: Homepage panel to promote Maths Week.
@@ -3655,8 +3500,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 551c7b72-7018-458c-8cca-00ea6537ba86
       govscot:metaDescription: First Minister's New Year message
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-497
       govscot:seoTitle: New Year message
       govscot:summary: First Minister's New Year message
@@ -3708,8 +3551,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: c880a873-1011-4dcb-a01b-220103ee6eb7
       govscot:metaDescription: First Minister's New Year message
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-497
       govscot:seoTitle: New Year message
       govscot:summary: First Minister's New Year message
@@ -3761,8 +3602,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: e3035671-45f4-4ece-97db-9f6f8ab39c93
       govscot:metaDescription: First Minister's New Year message
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-497
       govscot:seoTitle: New Year message
       govscot:summary: First Minister's New Year message
@@ -3822,9 +3661,6 @@
       govscot:metaDescription: A large number of people have been killed or injured
         in a terrorist attack during Bastille Day celebrations on the seafront at
         Nice in southern France.
-      govscot:overlayQuote: '"My thoughts are with all those affected by this senseless
-        attack on Nice. Scotland stands in sadness and solidarity with France."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-356
       govscot:seoTitle: Nice Attack
       govscot:summary: A large number of people have been killed or injured in a terrorist
@@ -3878,10 +3714,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 50a37bc9-4e2d-471a-9dec-a047aa4e6f8e
       govscot:metaDescription: New powers for schools.
-      govscot:overlayQuote: '"We will reform the system so that the key decisions
-        in a child’s education are taken by schools."'
-      govscot:overlayQuoteAttribution: Cabinet Secretary for Education and Skills,
-        John Swinney.
       govscot:rubricId: GOV-613
       govscot:seoTitle: Powers for schools
       govscot:summary: New powers for schools.
@@ -3937,8 +3769,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: f2bcc090-ad89-47f1-b2df-b01d11dd9212
       govscot:metaDescription: Homepage panel to promote private
-      govscot:overlayQuote: Watch this video to find out what the new tenancy means
-        for landlords and tenants.
       govscot:rubricId: GOV-795
       govscot:seoTitle: Private renting
       govscot:summary: Homepage panel to promote private residential tenancy.
@@ -3993,8 +3823,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 68ab5b66-ece4-407f-bbc2-32bbafee9357
       govscot:metaDescription: Homepage panel to promote private
-      govscot:overlayQuote: Watch this video to find out what the new tenancy means
-        for landlords and tenants.
       govscot:rubricId: GOV-795
       govscot:seoTitle: Private renting
       govscot:summary: Homepage panel to promote private residential tenancy.
@@ -4054,11 +3882,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 93f579bd-61d7-49c0-a59d-0cdcc81b29b5
       govscot:metaDescription: Date set for new Forth bridge to be opened by The Queen.
-      govscot:overlayQuote: '"The Queensferry Crossing is a symbol of a confident,
-        forward-looking Scotland and – as well as providing a vital transport connection
-        for many years to come – it is a truly iconic structure and a feat of modern
-        engineering."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-694
       govscot:seoTitle: Queensferry Crossing
       govscot:summary: Date set for new Forth bridge to be opened by The Queen.
@@ -4175,10 +3998,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: dce43e15-ef43-4f14-b049-233a65ff9512
       govscot:metaDescription: FM press conference, Bute House
-      govscot:overlayQuote: I will take the steps necessary to make sure that Scotland
-        has a choice at the end of this process - a choice of whether to follow the
-        UK to a hard Brexit or to become an independent country.
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-542
       govscot:seoTitle: FM press conference
       govscot:summary: FM press conference, Bute House
@@ -4243,10 +4062,6 @@
       jcr:uuid: 85ff1f56-cefe-44b7-9621-18b552b9bb25
       govscot:metaDescription: The Scottish Parliament has voted in favour of a referendum
         on independence.
-      govscot:overlayQuote: '"It is now the will of Scotland’s democratically elected
-        national Parliament that discussions should begin with the UK Government to
-        enable an independence referendum to be held."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-549
       govscot:seoTitle: Referendum
       govscot:summary: The Scottish Parliament has voted in favour of a referendum
@@ -4301,10 +4116,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 4f0c212e-527b-4fbf-815b-690c8e8dac39
       govscot:metaDescription: Consultation on the draft Re
-      govscot:overlayQuote: '"We will continue to work UK wide to seek to avert a
-        hard Brexit and we will also bring forward proposals that seek to protect
-        our place in the single market, even if the rest of the UK leaves."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-446
       govscot:seoTitle: Referendum Bill
       govscot:summary: Consultation on a draft Referendum Bill
@@ -4369,8 +4180,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 098fc61e-455f-4ef1-974f-4dbefd1b8bed
       govscot:metaDescription: Remembrance is a period for us to remember and commemorate.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-451
       govscot:seoTitle: Remembrance
       govscot:summary: Remembrance is a period for us to remember and commemorate.
@@ -4419,8 +4228,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 4502f57d-9278-4611-afbe-63d6cfd30f2e
       govscot:metaDescription: Remembrance is a period for us to remember and commemorate.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-451
       govscot:seoTitle: Remembrance
       govscot:summary: Remembrance is a period for us to remember and commemorate.
@@ -4469,8 +4276,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 7fdcb9ad-4fc5-4ec0-979e-c6ff0728d956
       govscot:metaDescription: Remembrance is a period for us to remember and commemorate.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-451
       govscot:seoTitle: Remembrance
       govscot:summary: Remembrance is a period for us to remember and commemorate.
@@ -4526,10 +4331,6 @@
       jcr:uuid: 4cd39911-6614-4ba6-996d-c1ce868a6317
       govscot:metaDescription: Equality for women is at the heart of the Scottish
         Government's vision for an equal Scotland.
-      govscot:overlayQuote: '"While we have a come a long way since 1918, much still
-        needs to be done if we are to eradicate gender inequality and create a fairer
-        and more prosperous country."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-893
       govscot:seoTitle: Right to vote
       govscot:summary: Equality for women is at the heart of the Scottish Government’s
@@ -4580,10 +4381,6 @@
       jcr:uuid: d01ac1b0-0dc3-4fa9-a9b4-635b689bacd1
       govscot:metaDescription: Equality for women is at the heart of the Scottish
         Government's vision for an equal Scotland.
-      govscot:overlayQuote: '"While we have a come a long way since 1918, much still
-        needs to be done if we are to eradicate gender inequality and create a fairer
-        and more prosperous country."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-893
       govscot:seoTitle: Right to vote
       govscot:summary: Equality for women is at the heart of the Scottish Government’s
@@ -4638,9 +4435,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: cfbbe6cd-630b-43f6-90c9-07762d5d02fa
       govscot:metaDescription: Ask the FM and Cabinet EU citizens event.
-      govscot:overlayQuote: '"I said I would seek to bring people in Scotland together
-        in common cause and to build as much consensus as possible."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-371
       govscot:seoTitle: Scotland in Europe
       govscot:summary: A paper setting out the importance of continued European Single
@@ -4832,9 +4626,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: b1cf93fc-a59b-4fe1-9dea-5779422ba1d9
       govscot:metaDescription: Scottish devolution - 20 years on
-      govscot:overlayQuote: '"Enhancing the powers of our national Parliament will
-        allow us to continue to make progress over the next decades."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-749
       govscot:seoTitle: Scottish devolution
       govscot:summary: Scottish devolution - 20 years on
@@ -4893,10 +4684,6 @@
       jcr:uuid: 41bcda72-8a1f-4e13-a170-3dfa20912e62
       govscot:metaDescription: John Swinney delivers major speech setting out his
         agenda for Scottish education.
-      govscot:overlayQuote: '"Looking at the data, the status quo is not an option.
-        Doing more of the same will not achieve our ambitions for our children and
-        young people and their future."'
-      govscot:overlayQuoteAttribution: Deputy First Minister John Swinney
       govscot:rubricId: GOV-547
       govscot:seoTitle: Excellence and equity
       govscot:summary: John Swinney delivers major speech setting out his agenda for
@@ -4956,10 +4743,6 @@
       jcr:uuid: 54116a61-e746-4881-8083-46f942c3428c
       govscot:metaDescription: Findings of the independent analysis of responses to
         the recent consultation.
-      govscot:overlayQuote: '"I believe strongly that everyone has a right to social
-        security - so much so that I have put these principles on the very first page
-        of this Bill."'
-      govscot:overlayQuoteAttribution: Minister for Social Security Jeane Freeman
       govscot:rubricId: GOV-538
       govscot:seoTitle: Social Security
       govscot:summary: Social Security Bill
@@ -5016,7 +4799,6 @@
       jcr:uuid: 0f4339df-48da-4bd3-b6ce-9ea6eef45898
       govscot:metaDescription: Consultation on the benefits of Social Security being
         devolved to Scotland.
-      govscot:overlayQuote: Consultation runs until 28 October 2016.
       govscot:rubricId: GOV-364
       govscot:seoTitle: Social Security
       govscot:summary: Consultation on the benefits of Social Security being devolved
@@ -5086,8 +4868,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 0502a634-8f50-4a95-9825-0e3257dbe596
       govscot:metaDescription: St Andrew's Day
-      govscot:overlayQuote: <p>Celebrate St Andrew's Day on 30 November 2019</p>
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-485
       govscot:seoTitle: St Andrew's Day
       govscot:summary: St Andrew’s Day
@@ -5143,8 +4923,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 28a726ad-f5cd-47f7-9601-dc715d1ac7a5
       govscot:metaDescription: St Andrew's Day
-      govscot:overlayQuote: <p>Celebrate St Andrew's Day on 30 November 2019</p>
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-485
       govscot:seoTitle: St Andrew's Day
       govscot:summary: St Andrew’s Day
@@ -5200,8 +4978,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 0c9dddcc-3259-4328-acd6-cfa38c4bf341
       govscot:metaDescription: St Andrew's Day
-      govscot:overlayQuote: <p>Celebrate St Andrew's Day on 30 November 2019</p>
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-485
       govscot:seoTitle: St Andrew's Day
       govscot:summary: St Andrew’s Day
@@ -5264,10 +5040,6 @@
       jcr:uuid: 1c6f0c2f-61ea-49fe-8bbe-beaa8500d701
       govscot:metaDescription: A new teacher recruitment campaign has been launched
         by Deputy First Minister John Swinney.
-      govscot:overlayQuote: '"Teaching is a highly rewarding and inspiring career
-        with opportunities for creativity and autonomy and, crucially, to make a positive
-        difference to children’s lives."'
-      govscot:overlayQuoteAttribution: Deputy First Minister John Swinney
       govscot:rubricId: GOV-509
       govscot:seoTitle: Teaching makes people
       govscot:summary: A new teacher recruitment campaign has been launched by Deputy
@@ -5444,8 +5216,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: f16d84a5-0e64-4199-8ee5-515d102b6b53
       govscot:metaDescription: Bad weather homepage panel.
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:rubricId: GOV-790
       govscot:seoTitle: Weather disruption
       govscot:summary: Bad weather homepage panel.
@@ -5511,10 +5281,6 @@
       jcr:uuid: 7c09af7d-a584-47bf-a47d-18117281e018
       govscot:metaDescription: Praesent tellus felis, maximus eget scelerisque quis,
         fermentum non nulla.
-      govscot:overlayQuote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Ut vitae nisi metus. Nunc euismod iaculis urna sed faucibus. Etiam quis massa
-        magna. Maecenas hendrerit ut."'
-      govscot:overlayQuoteAttribution: First Minister Nicola Sturgeon
       govscot:rubricId: GOV-631
       govscot:seoTitle: William Bligh
       govscot:summary: Praesent tellus felis, maximus eget scelerisque quis, fermentum
@@ -5571,7 +5337,6 @@
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 45b9e957-4038-45c1-904e-aed17c8b19b8
       govscot:metaDescription: Year of Young People 2018.
-      govscot:overlayQuote: 'Follow on Twitter @YOYP2018, #YOYP2018'
       govscot:rubricId: GOV-869
       govscot:seoTitle: Year of Young People
       govscot:summary: Year of Young People 2018.
@@ -5618,7 +5383,6 @@
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 808626c9-6e6f-46f6-894f-984575244300
       govscot:metaDescription: Year of Young People 2018.
-      govscot:overlayQuote: 'Follow on Twitter @YOYP2018, #YOYP2018'
       govscot:rubricId: GOV-869
       govscot:seoTitle: Year of Young People
       govscot:summary: Year of Young People 2018.
@@ -5670,8 +5434,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: ee81bc60-bfec-4744-8448-dc089735c220
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Minsiter comments
       govscot:title: Test attack
       govscot:youtube: ''
@@ -5700,8 +5462,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 0acdb9c1-043d-4484-9f64-9deeaafeeb1c
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Minsiter comments
       govscot:title: Test attack
       govscot:youtube: ''
@@ -5730,8 +5490,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 444e2956-9d87-45f0-8747-dd583c8ff604
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Minsiter comments
       govscot:title: Test attack
       govscot:youtube: ''
@@ -5766,8 +5524,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 938dcf27-f23b-4c94-9622-35c1ddf07353
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: homepage panel promoting Cyber Scotland Week.
       govscot:title: Cyber Scotland Week
       govscot:youtube: ''
@@ -5799,8 +5555,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: b0588c5b-d3c9-4405-bb78-9508638ba767
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: homepage panel promoting Cyber Scotland Week.
       govscot:title: Cyber Scotland Week
       govscot:youtube: ''
@@ -5832,8 +5586,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: f350f705-2ebb-4fce-bcb3-870f5c500505
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: homepage panel promoting Cyber Scotland Week.
       govscot:title: Cyber Scotland Week
       govscot:youtube: ''
@@ -5871,8 +5623,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 97bd0335-d16a-4df3-9306-ae0139c0df36
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: text
       govscot:title: The Queen
       govscot:youtube: ''
@@ -5901,8 +5651,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 5b3d6e15-10a9-4c4e-8838-0b4196b7d233
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: text
       govscot:title: The Queen
       govscot:youtube: ''
@@ -5937,8 +5685,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 3610e3b7-ef16-4ff8-8dcc-d384ede80256
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: If you are travelling and affected by the situation with Thomas
         Cook, go to thomascook.caa.co.uk for advice.
       govscot:title: Thomas Cook
@@ -5970,8 +5716,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: d554ef41-8481-4b4e-9054-d02177bbde91
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: If you are travelling and affected by the situation with Thomas
         Cook, go to thomascook.caa.co.uk for advice.
       govscot:title: Thomas Cook
@@ -6003,8 +5747,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 5dcf214d-cda4-4315-85e2-374c3f3e44ec
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: If you are travelling and affected by the situation with Thomas
         Cook, go to thomascook.caa.co.uk for advice.
       govscot:title: Thomas Cook
@@ -6043,8 +5785,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 3fd14cae-d74e-449a-bab0-422170cb5194
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Scotland’s Climate Week is 7th-13th October.
       govscot:title: Climate Week
       govscot:youtube: https://www.youtube.com/watch?v=7YrEkXCY40E
@@ -6074,8 +5814,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 5777c575-effb-4a5e-9b57-e99ac963b5bc
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Scotland’s Climate Week is 7th-13th October.
       govscot:title: Climate Week
       govscot:youtube: https://www.youtube.com/watch?v=7YrEkXCY40E
@@ -6105,8 +5843,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 63b3fccc-4836-4ed6-aece-328d421db20d
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Scotland’s Climate Week is 7th-13th October.
       govscot:title: Climate Week
       govscot:youtube: https://www.youtube.com/watch?v=7YrEkXCY40E
@@ -6143,8 +5879,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 48c34e19-0bdf-4a75-90b4-f18ebdccb408
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: text here
       govscot:title: Prince Philip
       govscot:youtube: ''
@@ -6178,8 +5912,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 9700ec14-c46d-4536-b327-69c99f9bf5fc
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: text here
       govscot:title: Prince Philip
       govscot:youtube: ''
@@ -6213,8 +5945,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: 2027656d-136c-4f9b-af55-ba4f7e670e6c
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: text here
       govscot:title: Prince Philip
       govscot:youtube: ''
@@ -6255,8 +5985,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: f87c41c9-5f23-47bb-ab4b-8b05ad463366
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel on the COP26 event.
       govscot:title: COP26
       govscot:youtube: ''
@@ -6292,8 +6020,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
       jcr:uuid: 30f71aa5-7193-4c00-818b-8a7f1f5f7dc6
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel on the COP26 event.
       govscot:title: COP26
       govscot:youtube: ''
@@ -6329,8 +6055,6 @@
       jcr:primaryType: govscot:HomeFeaturedItem
       jcr:mixinTypes: ['mix:referenceable']
       jcr:uuid: c0e296e0-76a1-4d90-be47-88664388cd89
-      govscot:overlayQuote: ''
-      govscot:overlayQuoteAttribution: ''
       govscot:summary: Panel on the COP26 event.
       govscot:title: COP26
       govscot:youtube: ''

@@ -23,22 +23,6 @@ definitions:
             hipposysedit:path: govscot:teaserText
             hipposysedit:primary: false
             hipposysedit:type: hippostd:html
-          /overlayQuote:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:overlayQuote
-            hipposysedit:primary: false
-            hipposysedit:type: Html
-          /overlayQuoteAttribution:
-            jcr:primaryType: hipposysedit:field
-            hipposysedit:mandatory: false
-            hipposysedit:multiple: false
-            hipposysedit:ordered: false
-            hipposysedit:path: govscot:overlayQuoteAttribution
-            hipposysedit:primary: false
-            hipposysedit:type: String
           /link:
             jcr:primaryType: hipposysedit:field
             hipposysedit:mandatory: false
@@ -93,8 +77,6 @@ definitions:
           hippotranslation:locale: document-type-locale
           jcr:mixinTypes: ['mix:referenceable']
           govscot:summary: ''
-          govscot:overlayQuote: ''
-          govscot:overlayQuoteAttribution: ''
           govscot:title: ''
           jcr:uuid: 37d1376a-d14f-4738-87e4-7d8070f00481
           hippostdpubwf:lastModificationDate: 2018-04-13T09:51:56.199+01:00
@@ -164,26 +146,6 @@ definitions:
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             hint: Enter the teaser text for this feature.
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /overlayQuote:
-            jcr:primaryType: frontend:plugin
-            caption: Overlay quote
-            field: overlayQuote
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: The quote that will be overlaid on the main image or video for this
-              featured item (max of 280 characters).
-            /cluster.options:
-              jcr:primaryType: frontend:pluginconfig
-          /overlayQuoteAttribution:
-            jcr:primaryType: frontend:plugin
-            caption: Overlay quote attribution
-            field: overlayQuoteAttribution
-            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
-            wicket.id: ${cluster.id}.field
-            hint: Enter the source of the quote. Shown directly below the feature
-              quote. (Max of 65 characters).
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /link:

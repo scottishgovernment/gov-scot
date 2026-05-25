@@ -7,15 +7,6 @@ import org.hippoecm.hst.content.beans.standard.HippoHtml;
 @HippoEssentialsGenerated(internalName = "govscot:HomeFeaturedItem")
 @Node(jcrType = "govscot:HomeFeaturedItem")
 public class HomeFeaturedItem extends SimpleContent {
-    @HippoEssentialsGenerated(internalName = "govscot:overlayQuote")
-    public String getOverlayQuote() {
-        return getSingleProperty("govscot:overlayQuote");
-    }
-
-    @HippoEssentialsGenerated(internalName = "govscot:overlayQuoteAttribution")
-    public String getOverlayQuoteAttribution() {
-        return getSingleProperty("govscot:overlayQuoteAttribution");
-    }
 
     @HippoEssentialsGenerated(internalName = "govscot:youtube")
     public String getYoutube() {
