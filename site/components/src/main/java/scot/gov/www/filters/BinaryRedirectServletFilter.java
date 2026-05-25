@@ -1,21 +1,21 @@
 package scot.gov.www.filters;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.hippoecm.hst.servlet.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.hippo.redirects.Redirect;
+import scot.gov.publishing.hippo.redirects.hst.AliasRedirectService;
 
-import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
-import static org.apache.commons.lang3.StringUtils.*;
-import static scot.gov.www.components.RedirectComponent.GOVSCOT_URL;
+import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 
 /**
  * Intercept binary requests to understand legacy binary urls.
@@ -27,6 +27,9 @@ import static scot.gov.www.components.RedirectComponent.GOVSCOT_URL;
  * This is an example if such a url:
  * /binaries/content/documents/govscot/publications/form/2015/10/community-right-to-buy-application-form-and-guidance/documents/605a96e1-81c3-4f61-869c-788437a024fb/605a96e1-81c3-4f61-869c-788437a024fb/govscot%3Adocument?
  *
+ * <p>Delegates the redirect lookup to {@link AliasRedirectService}, which in turn uses
+ * {@link scot.gov.publishing.hippo.redirects.SwitchingRedirectRepository} so that both the
+ * legacy path-mirror store and the new hash-bucketed store are queried correctly.
  */
 public class BinaryRedirectServletFilter implements Filter {
 
@@ -36,8 +39,11 @@ public class BinaryRedirectServletFilter implements Filter {
 
     static final String X_FORWARDED_PROTO = "x-forwarded-proto";
 
-    // provide a session.  overridable in unit tests
-    SessionProvider sessionProvider = request -> SessionUtils.getBinariesSession(request);
+    // overridable in unit tests
+    SessionProvider sessionProvider = SessionUtils::getBinariesSession;
+
+    // overridable in unit tests
+    AliasRedirectService aliasRedirectService = new AliasRedirectService();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -48,7 +54,6 @@ public class BinaryRedirectServletFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
 
-        //servletRequest.getPath
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String newPath = findRedirectPath(httpServletRequest);
 
@@ -63,16 +68,38 @@ public class BinaryRedirectServletFilter implements Filter {
     }
 
     /**
-     * Get the url that this path should redirect to.
-     *
-     * If the x-forwarded-host and x-forwarded-proto headers are set then use them to construct a full url. Otherwise
-     * use the context path and redirect path.
+     * Returns the redirect target for this request path, or {@code null} if no redirect exists.
+     */
+    private String findRedirectPath(HttpServletRequest request) {
+        if (request.getPathInfo() == null) {
+            return null;
+        }
+        Session session = null;
+        try {
+            session = sessionProvider.get(request);
+            LOG.info("findRedirectPath {}", request.getPathInfo());
+            return aliasRedirectService.lookup(session, "/binaries" + request.getPathInfo())
+                    .map(Redirect::getTo)
+                    .filter(StringUtils::isNotBlank)
+                    .orElse(null);
+        } catch (RepositoryException e) {
+            LOG.warn("RepositoryException while getting stream for binaries request '{}'. {}",
+                    request.getRequestURI(), e);
+            return null;
+        } finally {
+            SessionUtils.releaseSession(request, session);
+        }
+    }
+
+    /**
+     * Builds the redirect URL.  If {@code x-forwarded-host} / {@code x-forwarded-proto} headers
+     * are present the full URL is constructed from them; otherwise the context path is prepended.
+     * If {@code newPath} is itself an absolute URL it is used verbatim.
      */
     private String getUrl(HttpServletRequest req, String newPath) {
         if (isUrl(newPath)) {
             return newPath;
         }
-
         if (hasForwardingHeaders(req)) {
             String host = req.getHeader(X_FORWARDED_HOST);
             String proto = req.getHeader(X_FORWARDED_PROTO);
@@ -83,46 +110,11 @@ public class BinaryRedirectServletFilter implements Filter {
     }
 
     boolean isUrl(String path) {
-        /// is this a redirect to another site?
-        return startsWith(path, "https://") || startsWith(path, "http://");
+        return Strings.CS.startsWith(path, "https://") || Strings.CS.startsWith(path, "http://");
     }
 
     private boolean hasForwardingHeaders(HttpServletRequest req) {
         return isNoneBlank(req.getHeader(X_FORWARDED_HOST), req.getHeader(X_FORWARDED_PROTO));
-    }
-
-    private String findRedirectPath(HttpServletRequest request) throws IOException {
-        // get a session
-        Session session = null;
-        try {
-            session = sessionProvider.get(request);
-
-            String redirectPath = jcrLookupPath(request);
-            if (!session.nodeExists(redirectPath)) {
-                return null;
-            }
-
-            Node node = session.getNode(redirectPath);
-            if (!node.hasProperty(GOVSCOT_URL)) {
-                return null;
-            }
-            return node.getProperty(GOVSCOT_URL).getString();
-        } catch (RepositoryException e) {
-            LOG.warn("RepositoryException while getting stream for binaries request '{}'. {}", request.getRequestURI(), e);
-            return null;
-        } finally {
-            SessionUtils.releaseSession(request, session);
-        }
-    }
-
-    static String jcrLookupPath(HttpServletRequest request) throws UnsupportedEncodingException {
-        String characterEncoding = request.getCharacterEncoding();
-        if (characterEncoding == null) {
-            characterEncoding = "ISO-8859-1";
-        }
-        String undecoded = String.format("/content/redirects/Aliases/binaries%s", request.getPathInfo());
-        String decoded = URLDecoder.decode(undecoded, characterEncoding);
-        return decoded.replaceAll("govscot:document", "govscot%3Adocument");
     }
 
     @Override
@@ -131,11 +123,9 @@ public class BinaryRedirectServletFilter implements Filter {
     }
 
     /**
-     * Session provider interface - this enables us to iverride how we get a sesison in unit tests since Hippo use a static
-     * method.
+     * Session provider — allows tests to inject a mock session without a real JCR container.
      */
     interface SessionProvider {
         Session get(HttpServletRequest request) throws RepositoryException;
     }
-
 }
