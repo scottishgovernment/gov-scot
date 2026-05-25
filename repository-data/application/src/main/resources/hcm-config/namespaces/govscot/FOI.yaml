@@ -3,11 +3,9 @@ definitions:
     /hippo:namespaces/govscot/FOI:
       jcr:primaryType: hipposysedit:templatetype
       jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
-      jcr:uuid: 193846bd-829e-48e8-a71e-009eb3ad7b0e
       /hipposysedit:nodetype:
         jcr:primaryType: hippo:handle
         jcr:mixinTypes: ['mix:referenceable']
-        jcr:uuid: 24720c5b-686c-4314-a181-376b04e1802e
         /hipposysedit:nodetype:
           jcr:primaryType: hipposysedit:nodetype
           jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']

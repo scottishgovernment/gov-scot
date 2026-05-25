@@ -18,17 +18,14 @@ definitions:
         /hippostd:folder:
           jcr:primaryType: hippostd:folder
           jcr:mixinTypes: ['mix:versionable', 'bulkpublish:bulkpublishdirectory']
-          jcr:uuid: 4f48ee5e-b1b5-439b-b300-d9236ead6394
           hippostd:foldertype: []
           /index:
             jcr:primaryType: hippo:handle
             jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
-            jcr:uuid: a53a9e2d-dfdd-400f-af4f-7b9288150f8d
             hippo:name: Publication name
             /index[1]:
               jcr:primaryType: govscot:Publication
               jcr:mixinTypes: ['mix:referenceable']
-              jcr:uuid: f037e3be-ecbf-43b6-86a8-a81eb3502e12
               govscot:isbn: ''
               govscot:metaDescription: ''
               govscot:officialdate: 0001-01-01T12:00:00Z
