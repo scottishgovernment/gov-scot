@@ -136,7 +136,7 @@ public class BinaryRedirectServletFilterTest {
     // helpers
     // -------------------------------------------------------------------------
 
-    BinaryRedirectServletFilter filter() throws RepositoryException {
+    BinaryRedirectServletFilter filter() {
         BinaryRedirectServletFilter sut = new BinaryRedirectServletFilter();
         Session session = mock(Session.class);
         sut.sessionProvider = r -> session;
