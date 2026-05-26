@@ -27,7 +27,7 @@ public class BinaryRedirectServletFilterTest {
     public void requestPassedOnIfNoRedirectInRepo() throws Exception {
         BinaryRedirectServletFilter sut = filter();
         when(sut.aliasRedirectService.lookup(any(), any())).thenReturn(Optional.empty());
-        HttpServletRequest request = request("/contextPath", "/binaries/this/is/a/path");
+        HttpServletRequest request = request("/contextPath", "/this/is/a/path");
         HttpServletResponse response = mock(HttpServletResponse.class);
         FilterChain filterChain = mock(FilterChain.class);
 
@@ -44,7 +44,7 @@ public class BinaryRedirectServletFilterTest {
     public void requestPassedOnIfRedirectHasBlankTo() throws Exception {
         BinaryRedirectServletFilter sut = filter();
         when(sut.aliasRedirectService.lookup(any(), any())).thenReturn(Optional.of(redirect("")));
-        HttpServletRequest request = request("/contextPath", "/binaries/this/is/a/path");
+        HttpServletRequest request = request("/contextPath", "/this/is/a/path");
         HttpServletResponse response = mock(HttpServletResponse.class);
         FilterChain filterChain = mock(FilterChain.class);
 
@@ -78,9 +78,9 @@ public class BinaryRedirectServletFilterTest {
     @Test
     public void requestRedirectedIfRedirectInRepoWithNullForwardingHeaders() throws Exception {
         BinaryRedirectServletFilter sut = filter();
-        String path = "/binaries/this/is/a/path";
+        String path = "/this/is/a/path";
         String redirectTo = "/redirect/me/here";
-        when(sut.aliasRedirectService.lookup(any(), eq(path))).thenReturn(Optional.of(redirect(redirectTo)));
+        when(sut.aliasRedirectService.lookup(any(), eq("/binaries" + path))).thenReturn(Optional.of(redirect(redirectTo)));
 
         HttpServletRequest request = request("/contextPath", path);
         HttpServletResponse response = mock(HttpServletResponse.class);
@@ -98,9 +98,9 @@ public class BinaryRedirectServletFilterTest {
     @Test
     public void requestRedirectedIfRedirectInRepoWithEmptyForwardingHeaders() throws Exception {
         BinaryRedirectServletFilter sut = filter();
-        String path = "/binaries/this/is/a/path";
+        String path = "/this/is/a/path";
         String redirectTo = "/redirect/me/here";
-        when(sut.aliasRedirectService.lookup(any(), eq(path))).thenReturn(Optional.of(redirect(redirectTo)));
+        when(sut.aliasRedirectService.lookup(any(), eq("/binaries" + path))).thenReturn(Optional.of(redirect(redirectTo)));
 
         HttpServletRequest request = request("/contextPath", path, "", "");
         HttpServletResponse response = mock(HttpServletResponse.class);
@@ -118,9 +118,9 @@ public class BinaryRedirectServletFilterTest {
     @Test
     public void requestRedirectedIfRedirectInRepoWithForwardingHeaders() throws Exception {
         BinaryRedirectServletFilter sut = filter();
-        String path = "/binaries/this/is/a/path";
+        String path = "/this/is/a/path";
         String redirectTo = "/redirect/me/here";
-        when(sut.aliasRedirectService.lookup(any(), eq(path))).thenReturn(Optional.of(redirect(redirectTo)));
+        when(sut.aliasRedirectService.lookup(any(), eq("/binaries" + path))).thenReturn(Optional.of(redirect(redirectTo)));
 
         HttpServletRequest request = request("/contextPath", path, "https", "www.gov.scot");
         HttpServletResponse response = mock(HttpServletResponse.class);
