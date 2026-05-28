@@ -4,7 +4,6 @@ import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
-import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.hippo.redirects.Redirect;
@@ -39,7 +38,8 @@ public class PRGlooSlugRedirectComponent extends BaseHstComponent {
             Optional<Redirect> redirect = aliasRedirectService.lookup(request.getRequestContext().getSession(), request.getPathInfo());
             if (redirect.isPresent()) {
                 LOG.info("Redirecting news slug {} -> {}", request.getRequestContext(), redirect.get().getTo());
-                HstResponseUtils.sendPermanentRedirect(request, response, redirect.get().getTo());
+                response.setStatus(301);
+                response.setHeader("Location", redirect.get().getTo());
                 return;
             }
         } catch (RepositoryException e) {

@@ -5,7 +5,6 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.util.HstResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.hippo.redirects.Redirect;
@@ -47,8 +46,8 @@ public class RedirectComponent extends BaseHstComponent {
         String url = findAlias(request);
         if (url != null) {
             LOG.info("Redirecting to url alias {} -> {}", request.getPathInfo(), url);
-            // if the incoming url has url paramaters and the outgoing one does nto then pass them on...
-            HstResponseUtils.sendPermanentRedirect(request, response, url);
+            response.setStatus(301);
+            response.setHeader("Location", url);
             return;
         }
 
