@@ -60,7 +60,6 @@ public class BinaryRedirectServletFilter implements Filter {
         if (newPath != null) {
             HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
             String url = getUrl(httpServletRequest, newPath);
-            LOG.info("binary redirect {} -> {}", httpServletRequest.getPathInfo(), url);
             httpServletResponse.sendRedirect(url);
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
@@ -77,7 +76,6 @@ public class BinaryRedirectServletFilter implements Filter {
         Session session = null;
         try {
             session = sessionProvider.get(request);
-            LOG.info("findRedirectPath {}", request.getPathInfo());
             return aliasRedirectService.lookup(session, "/binaries" + request.getPathInfo())
                     .map(Redirect::getTo)
                     .filter(StringUtils::isNotBlank)
