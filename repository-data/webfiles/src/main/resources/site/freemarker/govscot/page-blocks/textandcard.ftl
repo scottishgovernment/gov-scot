@@ -50,7 +50,7 @@
                                             <@hst.link hippobean=document2.image.largefourcolumnsdoubled/> 576w,
                                             <@hst.link hippobean=document2.image.xlargefourcolumns/> 352w,
                                             <@hst.link hippobean=document2.image.xlargefourcolumnsdoubled/> 704w"
-                                            sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width: 768px) 224px, <#if smallvariant>360px<#else>100vw</#if>"
+                                            sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width: 768px) 224px, 100vw"
                                             >
                                 <#else>
                                     <img loading="lazy" class="ds_aspect-box__inner" src="<@hst.link hippobean=document2.image />" alt="${document2.alt}"/>
@@ -86,7 +86,7 @@
             <div class="ds_pb__card">
                 <div class="ds_card  cms-blank  ds_card--background-secondary">
                     <#if showimages>
-                        <div class="ds_card__media  <#if smallvariant>ds_card__media--small-mobile</#if>">
+                        <div class="ds_card__media">
                             <@placeholderimage/>
                         </div>
                     </#if>

@@ -63,7 +63,7 @@
                                         <@hst.link hippobean=card.image.largefourcolumnsdoubled/> 576w,
                                         <@hst.link hippobean=card.image.xlargefourcolumns/> 352w,
                                         <@hst.link hippobean=card.image.xlargefourcolumnsdoubled/> 704w"
-                                        sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width: 768px) 224px, <#if smallvariant>360px<#else>100vw</#if>"
+                                        sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width: 768px) 224px, 100vw"
                                         >
                             <#else>
                                 <img loading="lazy" class="ds_aspect-box__inner" src="<@hst.link hippobean=card.image />" alt="${card.alt}"/>
