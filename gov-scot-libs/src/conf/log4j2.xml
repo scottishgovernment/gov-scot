@@ -109,7 +109,8 @@
 
     <Logger name="org.onehippo.cm.engine.ConfigurationServiceImpl" level="info"/>
 
-    <!-- Advanced Search -->
+    <!-- Search -->
+    <Logger name="org.hippoecm.frontend.plugins.standards.search.TextSearchBuilder" level="debug"/>
     <Logger name="org.onehippo.cms7.services.search.jcr.service.HippoJcrSearchService" level="info"/>
 
     <!-- project logging -->
