@@ -85,8 +85,8 @@ public class DeleteUnusedPropertiesJob implements RepositoryJob {
             logProgress(stats);
         } catch (JobStoppedException e) {
             saver.forceSave();
-            LOG.info("DeleteUnusedPropertiesJob: stopped early (flag disabled) after removed={}, byProperty={}",
-                    stats.removed, stats.byProperty);
+            LOG.error("DeleteUnusedPropertiesJob: stopped early (flag disabled) after removed={}, byProperty={}",
+                    stats.removed, stats.byProperty, e);
             return;
         } catch (RepositoryException e) {
             LOG.error("DeleteUnusedPropertiesJob: error during processing after removed={}; saving progress before re-throwing",
@@ -233,8 +233,8 @@ public class DeleteUnusedPropertiesJob implements RepositoryJob {
             LOG.debug("DeleteUnusedPropertiesJob: removing {} from {}", propertyName, nodePath);
             node.getProperty(propertyName).remove();
         } catch (VersionException e) {
-            LOG.info("DeleteUnusedPropertiesJob: node is checked in, using checkout/checkin to remove {} from {}",
-                    propertyName, nodePath);
+            LOG.error("DeleteUnusedPropertiesJob: node is checked in, using checkout/checkin to remove {} from {}",
+                    propertyName, nodePath, e);
             Session session = node.getSession();
             VersionManager versionManager = session.getWorkspace().getVersionManager();
             versionManager.checkout(nodePath);
