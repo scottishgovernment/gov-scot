@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/funnelbackjournalconsumer:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.searchjournal.funnelback.FunnelbackJournalConsumerModule
+      hipposys:cmsonly: true

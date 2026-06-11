@@ -6,13 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 import scot.gov.publishing.jcr.FeatureFlag;
-import scot.gov.publishing.searchjournal.FunnelbackCollection;
+
 import scot.gov.publishing.searchjournal.SearchJournal;
 import scot.gov.publishing.searchjournal.SearchJournalEntry;
-import scot.gov.www.searchjournal.funnelback.Funnelback;
-import scot.gov.www.searchjournal.funnelback.FunnelbackException;
-import scot.gov.www.searchjournal.funnelback.FunnelbackFactory;
-import scot.gov.www.searchjournal.funnelback.JournalPosition;
+import scot.gov.publishing.searchjournal.funnelback.*;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -41,7 +38,7 @@ public class JournalPopulationJob implements RepositoryJob {
             if (featureFlag.isEnabled()) {
                 LOG.info("JournalPopulationJob running");
                 populate(session, context);
-                resetJournalPosition(context, session);
+                resetJournalPosition(context);
                 deactivateJob(context);
                 activateReconciliationJob(context);
                 LOG.info("JournalPopulationJob finished");
@@ -61,8 +58,8 @@ public class JournalPopulationJob implements RepositoryJob {
         }
     }
 
-    void resetJournalPosition(RepositoryJobExecutionContext context, Session session) throws FunnelbackException, RepositoryException {
-        Funnelback funnelback = FunnelbackFactory.newFunnelback(context, session);
+    void resetJournalPosition(RepositoryJobExecutionContext context) throws FunnelbackException, RepositoryException {
+        Funnelback funnelback = FunnelbackFactory.newFunnelback(context);
         ZonedDateTime position = ZonedDateTime.now().withYear(2013).withDayOfYear(1).withHour(0).withMinute(0);
         Calendar cal = Calendar.getInstance();
         cal.setTime(Date.from(position.toInstant()));
@@ -81,9 +78,9 @@ public class JournalPopulationJob implements RepositoryJob {
     }
 
     void activateReconciliationJob(RepositoryJobExecutionContext context) throws RepositoryException {
-        LOG.info("Activating FunnelbackReconciliationLoop");
+        LOG.info("Activating JournalReconciliationLoop");
         Session session = context.createSystemSession();
-        FeatureFlag featureFlag = new FeatureFlag(session, "FunnelbackReconciliationLoop");
+        FeatureFlag featureFlag = new FeatureFlag(session, "JournalReconciliationLoop");
         featureFlag.setEnabled(true);
         session.save();
     }
@@ -149,7 +146,8 @@ public class JournalPopulationJob implements RepositoryJob {
         Calendar timestamp = getTimestamp(publication);
         String slug = publication.getProperty("govscot:slug").getString();
         String publicationUrl = publicationUrl(slug);
-        journal.record(publishEntry(publicationUrl, collection, timestamp));
+        String handleId = publication.getParent().getIdentifier();
+        journal.record(publishEntry(publicationUrl, collection, timestamp, handleId));
         Node folder = publication.getParent().getParent();
 
         boolean hasPages = false;
@@ -162,13 +160,14 @@ public class JournalPopulationJob implements RepositoryJob {
         if (hasPages && hasDocuments(folder)) {
             String url = publicationUrl + "documents/";
             timestamp.setTimeInMillis(timestamp.getTimeInMillis() + 1);
-            journal.record(publishEntry(url, collection, timestamp));
+            journal.record(publishEntry(url, collection, timestamp, handleId));
         }
     }
 
 
-    SearchJournalEntry publishEntry(String url, String collection, Calendar timestamp) {
+    SearchJournalEntry publishEntry(String url, String collection, Calendar timestamp, String contentId) {
         SearchJournalEntry entry = new SearchJournalEntry();
+        entry.setContentId(contentId);
         entry.setUrl(url);
         entry.setAction("publish");
         entry.setCollection(collection);
@@ -225,7 +224,7 @@ public class JournalPopulationJob implements RepositoryJob {
                 } else {
                     String url = pageUrl(slug, pageHandle);
                     timestamp.setTimeInMillis(timestamp.getTimeInMillis() + 1);
-                    journal.record(publishEntry(url, collection, timestamp));
+                    journal.record(publishEntry(url, collection, timestamp, pageHandle.getIdentifier()));
                 }
             }
         }
@@ -256,7 +255,7 @@ public class JournalPopulationJob implements RepositoryJob {
         }
         String url = chapterUrl(slug, chapterHandle);
         timestamp.setTimeInMillis(timestamp.getTimeInMillis() + 1);
-        journal.record(publishEntry(url, collection, timestamp));
+        journal.record(publishEntry(url, collection, timestamp, chapterHandle.getIdentifier()));
     }
 
     String chapterUrl(String slug, Node handle) throws RepositoryException {
@@ -277,7 +276,7 @@ public class JournalPopulationJob implements RepositoryJob {
     }
 
     String publicationUrl(String slug) {
-        return UrlSource.URL_BASE + "publications/" + slug + "/";
+        return GovJournalEntrySource.URL_BASE + "publications/" + slug + "/";
     }
 
     String pageUrl(String slug, Node page) throws RepositoryException {

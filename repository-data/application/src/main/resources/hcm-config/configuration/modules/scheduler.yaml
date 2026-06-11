@@ -1,11 +1,11 @@
 definitions:
   config:
-    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/FunnelbackReconciliationLoop:
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalReconciliationLoop:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: [maxJournalEntriesToFetch, interRequestPause, filters]
-      hipposched:attributeValues: ['2000', '0', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
+      hipposched:attributeNames: [maxJournalEntriesToFetch, interRequestPause, filters, accountName, positionCollection, positionKey, siteBaseUrl, localSiteUrl, forwardedHost]
+      hipposched:attributeValues: ['2000', '0', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider', 'govscot', 'ds-journal-push', 'https://www.gov.scot/journalposition', 'https://www.gov.scot/', 'http://localhost:8080/site/', 'www.gov.scot']
       hipposched:enabled: true
-      hipposched:repositoryJobClass: scot.gov.www.searchjournal.FunnelbackReconciliationLoop
+      hipposched:repositoryJobClass: scot.gov.publishing.searchjournal.JournalReconciliationLoop
       /hipposched:triggers:
         jcr:primaryType: hipposched:triggers
         /everyMin:
@@ -43,8 +43,8 @@ definitions:
           hipposched:enabled: false
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: [cutoffMillis]
-      hipposched:attributeValues: ['']
+      hipposched:attributeNames: [cutoffMillis, accountName, positionCollection, positionKey]
+      hipposched:attributeValues: ['', 'govscot', 'ds-journal-push', 'https://www.gov.scot/journalposition']
       hipposched:enabled: false
       hipposched:repositoryJobClass: scot.gov.www.searchjournal.JournalPopulationJob
       /hipposched:triggers:
