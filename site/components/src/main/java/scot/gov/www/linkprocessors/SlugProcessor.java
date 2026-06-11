@@ -24,9 +24,11 @@ public abstract class SlugProcessor extends HstLinkProcessorTemplate {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
 
-        return session.nodeExists(path) ?
-                findPublishedNodeFromFolder(session, path)
-                : null;
+        if (session.nodeExists(path)) {
+            return findPublishedNodeFromFolder(session, path);
+        }
+
+        return null;
     }
 
     protected Node findPublishedNodeFromFolder(Session session, String path) throws RepositoryException {

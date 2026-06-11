@@ -1,5 +1,8 @@
 package scot.gov.searchjournal;
 
+import scot.gov.publishing.journal.funnelback.FunnelbackMetricRegistry;
+import scot.gov.publishing.journal.funnelback.MetricName;
+
 import com.codahale.metrics.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -4,9 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.publishing.searchjournal.FunnelbackCollection;
-import scot.gov.publishing.searchjournal.SearchJournal;
-import scot.gov.publishing.searchjournal.SearchJournalEntry;
+import scot.gov.publishing.journal.Journal;
+import scot.gov.publishing.journal.JournalAction;
+import scot.gov.publishing.journal.JournalEntry;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -37,11 +37,11 @@ public class JournalPopulationResource {
 
     Session session;
 
-    SearchJournal journal;
+    Journal journal;
 
     public JournalPopulationResource(Session session) {
         this.session = session;
-        this.journal = new SearchJournal(session);
+        this.journal = new Journal(session);
     }
 
     @PUT
@@ -90,14 +90,15 @@ public class JournalPopulationResource {
     void processPublicationOrComplexDocument(Node publication, List<String> paths) throws RepositoryException {
         LOG.info("processPublicationOrComplexDocument {}", publication.getPath());
         String publicationType = publication.getProperty("govscot:publicationType").getString();
-        String collection = FunnelbackCollection.getCollectionByPublicationType(publicationType).getCollectionName();
+        String collection = "";
         Calendar timestamp = getTimestamp(publication);
         String slug = publication.getProperty("govscot:slug").getString();
         String publicationUrl = publicationUrl(slug);
+        String handleId = publication.getParent().getIdentifier();
         Calendar now = Calendar.getInstance();
         timestamp.set(Calendar.SECOND, now.get(Calendar.SECOND));
         timestamp.set(Calendar.MILLISECOND, now.get(Calendar.MILLISECOND));
-        journal.record(publishEntry(publicationUrl, collection, timestamp));
+        journal.record(publishEntry(publicationUrl, collection, timestamp, handleId));
         paths.add(publicationUrl);
         Node folder = publication.getParent().getParent();
 
@@ -105,7 +106,7 @@ public class JournalPopulationResource {
             boolean addedPages = processPublicationPages(publication, slug, collection, timestamp, paths);
             if (addedPages && hasDocuments(folder)) {
                 String url = publicationUrl + "documents/";
-                journal.record(publishEntry(url, collection, timestamp));
+                journal.record(publishEntry(url, collection, timestamp, handleId));
                 paths.add(url);
             }
         } else {
@@ -133,10 +134,11 @@ public class JournalPopulationResource {
         return publicationUrl + "pages/" + page.getName() + "/";
     }
 
-    SearchJournalEntry publishEntry(String url, String collection, Calendar timestamp) {
-        SearchJournalEntry entry = new SearchJournalEntry();
+    JournalEntry publishEntry(String url, String collection, Calendar timestamp, String contentId) {
+        JournalEntry entry = new JournalEntry();
+        entry.setContentId(contentId);
         entry.setUrl(url);
-        entry.setAction("publish");
+        entry.setAction(JournalAction.PUBLISH);
         entry.setCollection(collection);
         entry.setTimestamp(timestamp);
         return entry;
@@ -159,7 +161,7 @@ public class JournalPopulationResource {
                     seenFirstPage = true;
                 } else {
                     String url = pageUrl(slug, pageHandle);
-                    journal.record(publishEntry(url, collection, timestamp));
+                    journal.record(publishEntry(url, collection, timestamp, pageHandle.getIdentifier()));
                     paths.add(url);
                     addedPages = true;
                 }
@@ -205,7 +207,7 @@ public class JournalPopulationResource {
         while (it.hasNext()) {
             Node chapterHandle = it.nextNode();
             String url = chapterUrl(slug, chapterHandle);
-            journal.record(publishEntry(url, collection, timestamp));
+            journal.record(publishEntry(url, collection, timestamp, chapterHandle.getIdentifier()));
             paths.add(url);
         }
     }
