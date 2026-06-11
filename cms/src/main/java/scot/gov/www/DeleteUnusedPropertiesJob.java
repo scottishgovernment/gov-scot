@@ -233,8 +233,8 @@ public class DeleteUnusedPropertiesJob implements RepositoryJob {
             LOG.debug("DeleteUnusedPropertiesJob: removing {} from {}", propertyName, nodePath);
             node.getProperty(propertyName).remove();
         } catch (VersionException e) {
-            LOG.error("DeleteUnusedPropertiesJob: node is checked in, using checkout/checkin to remove {} from {}",
-                    propertyName, nodePath, e);
+            LOG.trace("Version was checked in", e);
+            LOG.info("DeleteUnusedPropertiesJob: node is checked in, using checkout/checkin to remove {} from {}", propertyName, nodePath);
             Session session = node.getSession();
             VersionManager versionManager = session.getWorkspace().getVersionManager();
             versionManager.checkout(nodePath);
