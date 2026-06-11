@@ -61,7 +61,7 @@
         </dependency>
         <dependency>
             <groupId>scot.gov.publishing.hippo</groupId>
-            <artifactId>hippo-govscot-funnelback-cms</artifactId>
+            <artifactId>hippo-govscot-search-cms</artifactId>
         </dependency>
         <dependency>
             <groupId>scot.gov.publishing.hippo</groupId>
