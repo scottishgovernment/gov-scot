@@ -81,6 +81,8 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
 
     static final String SLUG_LOOKUP_PATH = "sluglookup:path";
 
+    static final String INDEX = "index";
+
     /** All gov.scot host prefixes whose path component should be resolved. */
     private static final String[] GOV_SCOT_BASES = {
             "https://www.gov.scot",
@@ -181,31 +183,32 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
         }
 
         for (String mount : MOUNTS) {
-            String lookupPath = SlugLookupPaths.slugLookupPath(slug, SITE, contentArea, mount);
-            if (!session.nodeExists(lookupPath)) {
-                continue;
-            }
-            Node lookupNode = session.getNode(lookupPath);
-            if (!lookupNode.hasProperty(SLUG_LOOKUP_PATH)) {
-                continue;
-            }
-
-            String contentPath = lookupNode.getProperty(SLUG_LOOKUP_PATH).getString();
-            String jcrPath = CONTENT_DOCUMENTS_ROOT + contentPath;
-
-            if (!session.nodeExists(jcrPath)) {
-                LOG.debug("GovScotLinkRewriteStrategy: lookup entry for slug '{}' points to missing node {}",
-                        slug, jcrPath);
-                continue;
-            }
-
-            Node handle = session.getNode(jcrPath);
-            if (handle.isNodeType("hippo:handle")) {
+            Node handle = findBySlugMount(session, contentArea, slug, mount);
+            if (handle != null) {
                 return handle;
             }
         }
 
         return null;
+    }
+
+    private Node findBySlugMount(Session session, String contentArea, String slug, String mount)
+            throws RepositoryException {
+        String lookupPath = SlugLookupPaths.slugLookupPath(slug, SITE, contentArea, mount);
+        if (!session.nodeExists(lookupPath)) {
+            return null;
+        }
+        Node lookupNode = session.getNode(lookupPath);
+        if (!lookupNode.hasProperty(SLUG_LOOKUP_PATH)) {
+            return null;
+        }
+        String jcrPath = CONTENT_DOCUMENTS_ROOT + lookupNode.getProperty(SLUG_LOOKUP_PATH).getString();
+        if (!session.nodeExists(jcrPath)) {
+            LOG.debug("GovScotLinkRewriteStrategy: lookup entry for slug '{}' points to missing node {}", slug, jcrPath);
+            return null;
+        }
+        Node handle = session.getNode(jcrPath);
+        return handle.isNodeType("hippo:handle") ? handle : null;
     }
 
     // ---- ISBN-based resolution -------------------------------------------------------------
@@ -273,13 +276,13 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
 
         Node node = session.getNode(jcrPath);
 
-        if (node.isNodeType("hippo:handle")) {
+        if (isHandle(node)) {
             return node;
         }
 
         // Folder with a conventional index handle (e.g. policy-area landing page)
-        if (node.isNodeType("hippostd:folder") && node.hasNode("index")) {
-            return node.getNode("index");
+        if (node.isNodeType("hippostd:folder") && node.hasNode(INDEX)) {
+            return node.getNode(INDEX);
         }
 
         LOG.debug("GovScotLinkRewriteStrategy: node at {} is neither a handle nor an indexable folder", jcrPath);
@@ -292,6 +295,10 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
      * Returns {@code true} when {@code path} has exactly one non-empty segment — e.g.
      * {@code /programme-for-government} or {@code programme-for-government}.
      */
+    private static boolean isHandle(Node node) throws RepositoryException {
+        return node.isNodeType("hippo:handle");
+    }
+
     private static boolean isSingleSegmentPath(String path) {
         String segment = path.startsWith("/") ? path.substring(1) : path;
         return !segment.isEmpty() && !segment.contains("/");
@@ -312,12 +319,12 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
 
         Node node = session.getNode(topicPath);
 
-        if (node.isNodeType("hippo:handle")) {
+        if (isHandle(node)) {
             return node;
         }
 
-        if (node.isNodeType("hippostd:folder") && node.hasNode("index")) {
-            return node.getNode("index");
+        if (node.isNodeType("hippostd:folder") && node.hasNode(INDEX)) {
+            return node.getNode(INDEX);
         }
 
         LOG.debug("GovScotLinkRewriteStrategy: topic node at {} is neither a handle nor an indexable folder", topicPath);
