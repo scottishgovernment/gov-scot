@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:frontend/cms/cms-tree-views:
+      /documents:
+        /sectionPlugin:
+          wildcarded.minimal.length: 4
+      /images:
+        /sectionPlugin:
+          wildcarded.minimal.length: 4
