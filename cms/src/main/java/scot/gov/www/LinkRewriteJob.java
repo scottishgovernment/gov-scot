@@ -240,8 +240,7 @@ public class LinkRewriteJob implements RepositoryJob {
 
     private LinkReplacement processLink(Node htmlNode, String href, Stats stats) throws RepositoryException {
         // Bare names pointing to an existing facetselect child are already in the correct format
-        if (!href.startsWith("/") && !href.contains(":") && SIMPLE_NODE_NAME.matcher(href).matches()
-                && htmlNode.hasNode(href) && htmlNode.getNode(href).isNodeType(HIPPO_FACETSELECT)) {
+        if (isSafeNodeName(href) && htmlNode.hasNode(href) && htmlNode.getNode(href).isNodeType(HIPPO_FACETSELECT)) {
             LOG.debug("LinkRewriteJob: skipping href='{}' in {} — already a facetselect child node",
                     href, htmlNode.getPath());
             return null;
@@ -272,6 +271,10 @@ public class LinkRewriteJob implements RepositoryJob {
             stats.binariesUnresolvable++;
         }
         stats.unresolvableByPrefix.merge(firstPathSegment(href), 1, Integer::sum);
+    }
+
+    private static boolean isSafeNodeName(String href) {
+        return !href.startsWith("/") && !href.contains(":") && SIMPLE_NODE_NAME.matcher(href).matches();
     }
 
     private static boolean isBinariesHref(String href) {
