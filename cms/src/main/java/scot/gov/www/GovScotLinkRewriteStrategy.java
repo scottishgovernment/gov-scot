@@ -136,33 +136,34 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
      */
     private Node resolveByPath(Session session, String path) throws RepositoryException {
         if (path.startsWith(NEWS_PREFIX)) {
-            Node result = findBySlug(session, "news", firstSegmentAfterPrefix(path, NEWS_PREFIX));
-            if (result != null) lastResolutionType = ResolutionType.NEWS;
-            return result;
+            return resolve(findBySlug(session, "news", firstSegmentAfterPrefix(path, NEWS_PREFIX)), ResolutionType.NEWS);
         }
         if (path.startsWith(PUBLICATIONS_PREFIX)) {
-            Node result = findBySlug(session, "publications", firstSegmentAfterPrefix(path, PUBLICATIONS_PREFIX));
-            if (result != null) lastResolutionType = ResolutionType.PUBLICATIONS;
-            return result;
+            return resolve(findBySlug(session, "publications", firstSegmentAfterPrefix(path, PUBLICATIONS_PREFIX)), ResolutionType.PUBLICATIONS);
         }
         if (path.startsWith(ISBN_PREFIX) || path.startsWith("/ISBN/")) {
-            Node result = findByIsbn(session, firstSegmentAfterPrefix(path, ISBN_PREFIX));
-            if (result != null) lastResolutionType = ResolutionType.ISBN;
-            return result;
+            return resolve(findByIsbn(session, firstSegmentAfterPrefix(path, ISBN_PREFIX)), ResolutionType.ISBN);
         }
-        Node result = findByJcrPath(session, path);
-        if (result != null) {
-            lastResolutionType = ResolutionType.PATH;
-            return result;
+
+        Node byPath = findByJcrPath(session, path);
+        if (byPath != null) {
+            return resolve(byPath, ResolutionType.PATH);
         }
+
         // Single-segment paths (e.g. /programme-for-government) may be topic/issue pages
-        // stored under /content/documents/govscot/topics/
         if (isSingleSegmentPath(path)) {
-            result = findByTopicPath(session, path);
-            if (result != null) lastResolutionType = ResolutionType.TOPIC;
-            return result;
+            return resolve(findByTopicPath(session, path), ResolutionType.TOPIC);
         }
+
         return null;
+    }
+
+    /** Sets {@link #lastResolutionType} when {@code node} is non-null and returns it. */
+    private Node resolve(Node node, ResolutionType type) {
+        if (node != null) {
+            lastResolutionType = type;
+        }
+        return node;
     }
 
     // ---- Slug-based resolution via lookup table --------------------------------------------
