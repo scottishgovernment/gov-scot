@@ -85,6 +85,11 @@
     </dependency>
 
     <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-redirects-cms</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.bloomreach.forge.resetpassword</groupId>
       <artifactId>resetpassword-cms</artifactId>
       <version>${forge.resetpassword.version}</version>

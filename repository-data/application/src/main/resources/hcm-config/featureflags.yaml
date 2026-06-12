@@ -12,3 +12,4 @@ definitions:
         VuelioImporterJobscotgov: false
         VuelioImporterJobsocialsecurity: false
         DeleteUnusedPropertiesJob: false
+        LinkRewriteJob: false

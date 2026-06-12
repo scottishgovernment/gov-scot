@@ -94,6 +94,18 @@ definitions:
           hipposched:cronExpression: 0 0/5 * * * ?
           hipposched:enabled: true
           hipposched:nextFireTime: 2026-06-11T00:00:00+01:00
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/LinkRewriteJob:
+      jcr:primaryType: hipposched:repositoryjob
+      hipposched:enabled: true
+      hipposched:repositoryJobClass: scot.gov.www.LinkRewriteJob
+      /hipposched:triggers:
+        jcr:primaryType: hipposched:triggers
+        /everyFiveMinutes:
+          jcr:primaryType: hipposched:crontrigger
+          jcr:mixinTypes: ['mix:lockable']
+          hipposched:cronExpression: 0 0/5 * * * ?
+          hipposched:enabled: true
+          hipposched:nextFireTime: 2026-06-11T00:00:00+01:00
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SlugLookupsPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: []
