@@ -8,7 +8,6 @@
         fileName="${sys:catalina.base}/logs/hippo.json"
         filePattern="${sys:catalina.base}/logs/hippo.%i.json"
         createOnDemand="true">
-      <LookupFilter key="jndi:logging/contextName" value="cms" onMatch="ACCEPT"/>
       <JsonTemplateLayout
           eventTemplateUri="file:${sys:catalina.base}/conf/log-layout.json"
           locationInfoEnabled="true">
