@@ -12,10 +12,7 @@
       <JsonTemplateLayout
           eventTemplateUri="file:${sys:catalina.base}/conf/log-layout.json"
           locationInfoEnabled="true">
-        <EventTemplateAdditionalField
-            key="context"
-            format="JSON"
-            value='{"$resolver": "pattern", "pattern": "%replace{$${web:contextPath}}{^/}{}"}'/>
+        <EventTemplateAdditionalField key="context" value="$${web:contextPath}"/>
       </JsonTemplateLayout>
       <Policies>
         <SizeBasedTriggeringPolicy size="10MB"/>
