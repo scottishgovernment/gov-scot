@@ -208,7 +208,7 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
             return null;
         }
         Node handle = session.getNode(jcrPath);
-        return handle.isNodeType("hippo:handle") ? handle : null;
+        return isHandle(handle) ? handle : null;
     }
 
     // ---- ISBN-based resolution -------------------------------------------------------------
@@ -248,7 +248,7 @@ public class GovScotLinkRewriteStrategy implements LinkRewriteStrategy {
         }
 
         Node handle = variant.getParent();
-        if (handle.isNodeType("hippo:handle")) {
+        if (isHandle(handle)) {
             return handle;
         }
 
