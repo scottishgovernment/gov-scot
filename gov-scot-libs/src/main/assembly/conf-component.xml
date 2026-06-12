@@ -6,5 +6,10 @@
       <outputDirectory>conf</outputDirectory>
       <destName>log4j2.xml</destName>
     </file>
+    <file>
+      <source>src/conf/log-layout.json</source>
+      <outputDirectory>conf</outputDirectory>
+      <destName>log-layout.json</destName>
+    </file>
   </files>
 </component>

@@ -3,6 +3,26 @@
 
   <Appenders>
 
+    <RollingFile
+        name="json"
+        fileName="${sys:catalina.base}/logs/hippo.json"
+        filePattern="${sys:catalina.base}/logs/hippo.%i.json"
+        createOnDemand="true">
+      <LookupFilter key="jndi:logging/contextName" value="cms" onMatch="ACCEPT"/>
+      <JsonTemplateLayout
+          eventTemplateUri="file:${sys:catalina.base}/conf/log-layout.json"
+          locationInfoEnabled="true">
+        <EventTemplateAdditionalField
+            key="context"
+            format="JSON"
+            value='{"$resolver": "pattern", "pattern": "%replace{$${web:contextPath}}{^/}{}"}'/>
+      </JsonTemplateLayout>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="10MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="1" fileIndex="min"/>
+    </RollingFile>
+
     <!-- hippo-cms.log -->
     <RollingFile
         name="cms"
@@ -117,6 +137,7 @@
     <Logger name="scot.gov" level="info"/>
 
     <Root level="warn">
+      <AppenderRef ref="json"/>
       <AppenderRef ref="cms"/>
       <AppenderRef ref="site"/>
       <AppenderRef ref="repo"/>

@@ -36,6 +36,16 @@
     <param-value>repository.xml</param-value>
   </context-param>
 
+  <filter>
+    <filter-name>UserMDCFilter</filter-name>
+    <filter-class>scot.gov.www.UserMDCFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>UserMDCFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
   <!--HstFilter needs to be first!-->
   <filter>
     <filter-name>HstFilter</filter-name>

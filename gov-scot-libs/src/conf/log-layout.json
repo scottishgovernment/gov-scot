@@ -1,0 +1,39 @@
+{
+  "@timestamp": {
+    "$resolver": "timestamp",
+    "unit": "nanos",
+    "pattern": {
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+      "timeZone": "UTC"
+    }
+  },
+  "level": {
+    "$resolver": "level",
+    "field": "name"
+  },
+  "logger": {
+    "$resolver": "logger",
+    "field": "name"
+  },
+  "thread": {
+    "$resolver": "thread",
+    "field": "name"
+  },
+  "message": {
+    "$resolver": "message",
+    "stringified": true
+  },
+  "exception": {
+    "$resolver": "exception",
+    "field": "stackTrace",
+    "stringified": true
+  },
+  "mdc": {
+    "$resolver": "mdc"
+  },
+  "source": {
+    "$resolver": "source",
+    "field": "className"
+  },
+  "service": "hippo"
+}
