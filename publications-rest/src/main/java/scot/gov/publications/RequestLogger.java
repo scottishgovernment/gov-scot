@@ -9,10 +9,10 @@ import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.container.ContainerResponseContext;
 import jakarta.ws.rs.container.ContainerResponseFilter;
+import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 
-import static net.logstash.logback.argument.StructuredArguments.keyValue;
-
+@Provider
 public class RequestLogger implements ContainerRequestFilter, ContainerResponseFilter {
 
     private static final Logger LOG = LoggerFactory.getLogger(RequestLogger.class);
@@ -44,7 +44,7 @@ public class RequestLogger implements ContainerRequestFilter, ContainerResponseF
         StopWatch stopWatch = (StopWatch) request.getProperty("stopwatch");
         if (stopWatch != null) {
             stopWatch.stop();
-            LOG.info("{} {} {} {}", status, method, path, keyValue("requestTime", stopWatch.getTime()));
+            LOG.info("{} {} {} requestTime={}ms", status, method, path, stopWatch.getTime());
         } else {
             LOG.info("{} {} {}", status, method, path);
         }

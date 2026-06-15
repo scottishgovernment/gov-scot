@@ -29,6 +29,27 @@ public class HippoNodeFactory {
         return handle;
     }
 
+    public Node newDocumentNodeWithoutSlug(
+            Node handle,
+            String slug,
+            String title,
+            String type,
+            ZonedDateTime publishDateTime,
+            boolean embargo) throws RepositoryException {
+
+        Node node = hippoUtils.createNode(handle, slug, type, DOCUMENT_MIXINS);
+        node.setProperty(HIPPO_NAME, TitleSanitiser.sanitise(title));
+        node.setProperty("hippotranslation:locale", "en");
+        node.setProperty("hippotranslation:id", UUID.randomUUID().toString());
+        Calendar now = Calendar.getInstance();
+        node.setProperty("hippostdpubwf:createdBy", USER);
+        node.setProperty("hippostdpubwf:creationDate", now);
+        node.setProperty("hippostdpubwf:lastModifiedBy", USER);
+        node.setProperty("hippostdpubwf:lastModificationDate", now);
+        ensurePublicationStatus(node, publishDateTime, embargo);
+        return node;
+    }
+
     public Node newDocumentNode(
             Node handle,
             String slug,
@@ -103,7 +124,7 @@ public class HippoNodeFactory {
         if (embargo) {
             hippoUtils.apply(handle.getNodes(), child -> child.addMixin(EMBARGO_DOCUMENT));
             handle.addMixin(EMBARGO_HANDLE);
-            handle.setProperty(EMBARGO_GROUPS, new String[]{"General Embargo"});
+            handle.setProperty(EMBARGO_GROUPS, new String[]{"general-embargo"});
             createRemoveEmbargoJob(handle, publishDateTime);
         } else {
             hippoUtils.apply(handle.getNodes(), child -> hippoUtils.ensureMixinRemoved(child, EMBARGO_DOCUMENT));

@@ -12,6 +12,7 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.sql.Timestamp;
 import java.util.*;
 
 import static java.util.stream.Collectors.joining;
@@ -22,7 +23,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  *
  * Lays them out by breaking the guid into quartiles to avoid a large node.
  */
-public class PublicationRepositoryJcrImpl {
+public class PublicationRepositoryJcrImpl implements PublicationRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationRepositoryJcrImpl.class);
 
@@ -49,6 +50,7 @@ public class PublicationRepositoryJcrImpl {
      * @param publication Publication details to create.
      * @throws PublicationRepositoryException if the create failed.
      */
+    @Override
     public void create(Publication publication) throws PublicationRepositoryException {
         try {
             Node folder = paths.ensurePath(ROOT, path(publication));
@@ -66,10 +68,11 @@ public class PublicationRepositoryJcrImpl {
      * @param publication Publication details to update.
      * @throws PublicationRepositoryException if the update the publication.
      */
+    @Override
     public void update(Publication publication) throws PublicationRepositoryException {
         try {
             Node node = findById(publication.getId());
-            publication.setLastmodifieddate(Calendar.getInstance());
+            publication.setLastmodifieddate(new Timestamp(System.currentTimeMillis()));
             copyValues(node, publication);
             session.save();
         } catch (RepositoryException e) {
@@ -84,6 +87,7 @@ public class PublicationRepositoryJcrImpl {
      * @return Publication with that id, null if none exists
      * @throws PublicationRepositoryException if the create failed.
      */
+    @Override
     public Publication get(String id) throws PublicationRepositoryException {
         try {
             Node node = findById(id);
@@ -104,6 +108,7 @@ public class PublicationRepositoryJcrImpl {
      * @return Collection of matching publications
      * @throws PublicationRepositoryException if it fails to list publications
      */
+    @Override
     public ListResult list(int page, int size, String title, String isbn, String filename)
             throws PublicationRepositoryException {
 
@@ -175,8 +180,12 @@ public class PublicationRepositoryJcrImpl {
         node.setProperty("govscot:state", publication.getState());
         node.setProperty("govscot:statedetails", publication.getStatedetails());
         node.setProperty("govscot:username", publication.getUsername());
-        node.setProperty("govscot:createddate", publication.getCreateddate());
-        node.setProperty("govscot:embargodate", publication.getEmbargodate());
+        Calendar createdDateCal = Calendar.getInstance();
+        createdDateCal.setTimeInMillis(publication.getCreateddate().getTime());
+        node.setProperty("govscot:createddate", createdDateCal);
+        Calendar embargoDateCal = Calendar.getInstance();
+        embargoDateCal.setTimeInMillis(publication.getEmbargodate().getTime());
+        node.setProperty("govscot:embargodate", embargoDateCal);
         node.setProperty("hippostd:state", "published");
         hippoNodeFactory.addBasicFields(node, publication.getTitle());
     }
@@ -191,8 +200,8 @@ public class PublicationRepositoryJcrImpl {
         publication.setState(node.getProperty("govscot:state").getString());
         publication.setStatedetails(propWithDefault(node, "govscot:statedetails", ""));
         publication.setUsername(propWithDefault(node, "govscot:username", ""));
-        publication.setCreateddate(node.getProperty("govscot:createddate").getDate());
-        publication.setEmbargodate(node.getProperty("govscot:embargodate").getDate());
+        publication.setCreateddate(new Timestamp(node.getProperty("govscot:createddate").getDate().getTimeInMillis()));
+        publication.setEmbargodate(new Timestamp(node.getProperty("govscot:embargodate").getDate().getTimeInMillis()));
         return publication;
     }
 
