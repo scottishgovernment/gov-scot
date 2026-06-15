@@ -1,6 +1,12 @@
 package scot.gov.publications.hippo;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.onehippo.forge.content.exim.core.DocumentManager;
+import org.onehippo.forge.content.exim.core.impl.WorkflowDocumentManagerImpl;
+import org.onehippo.forge.content.exim.core.impl.WorkflowDocumentVariantImportTask;
+import org.onehippo.forge.content.pojo.model.BinaryValue;
+import org.onehippo.forge.content.pojo.model.ContentNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.imageprocessing.ImageProcessing;
@@ -15,6 +21,7 @@ import scot.gov.publications.util.FileType;
 import scot.gov.publications.util.MimeTypeUtils;
 
 import javax.jcr.*;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,7 +30,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import static scot.gov.publications.hippo.Constants.*;
-import static scot.gov.publications.hippo.Constants.JCR_LAST_MODIFIED;
 
 /**
  * Responsible for uploading documents to hippo.
@@ -38,15 +44,15 @@ public class DocumentUploader {
 
     private HippoUtils hippoUtils = new HippoUtils();
 
-    private HippoNodeFactory nodeFactory;
-
     private HippoPaths hippoPaths;
+
+    private DocumentHelper documentHelper;
 
     public DocumentUploader(Session session, ImageProcessing imageProcessing, Exif exif) {
         this.session = session;
         this.exif = exif;
         this.hippoPaths = new HippoPaths(session);
-        this.nodeFactory = new HippoNodeFactory(session);
+        this.documentHelper = new DocumentHelper(session);
     }
 
     public Map<String, Node> uploadDocuments(
@@ -67,7 +73,7 @@ public class DocumentUploader {
             Manifest manifest,
             Metadata metadata) throws RepositoryException, IOException, ApsZipImporterException, ThumbnailsProviderException {
 
-        LOG.info("Uploading {} documents to {}", manifest.getEntries().size(), pubFolder.getPath());
+        LOG.debug("Uploading {} documents to {}", manifest.getEntries().size(), pubFolder.getPath());
         Map<String, Node> filenameToDocument = new HashMap<>();
         List<String> path = hippoUtils.pathFromNode(pubFolder);
         path.add("documents");
@@ -75,6 +81,12 @@ public class DocumentUploader {
         documentsFolder.setProperty(HIPPOSTD_FOLDERTYPE, new String[]{"new-publication-document-info", "new-publication-documents-folder"});
         SortedMap<String, String> existingDocumentTitles = existingDocumentTitles(documentsFolder);
         hippoUtils.removeChildren(documentsFolder);
+        // the removal above is only transient in our session - uploadDocument() now creates each
+        // document via FolderWorkflow.add() (through content-exim), which runs against the actual
+        // persisted repository state on its own session, so without this save it still sees the old,
+        // not-yet-removed handle with the same name and creates a same-name-sibling instead of
+        // reusing the slot.
+        session.save();
 
         for (ManifestEntry manifestEntry : manifest.getEntries()) {
             Node docNode = uploadDocument(
@@ -105,34 +117,35 @@ public class DocumentUploader {
         }
         String title = getTitle(manifestEntry, existingDocumentTitles);
         String slug = hippoPaths.slugify(title);
-        Node handle = nodeFactory.newHandle(title, documentsFolder, slug);
-        Node documentInfoNode = nodeFactory.newDocumentNode(
-                handle,
-                slug,
-                title,
-                "govscot:DocumentInformation",
-                metadata.getPublicationDateWithTimezone(),
-                metadata.shoudlEmbargo());
-        documentInfoNode.setProperty(GOVSCOT_TITLE, title);
-        documentInfoNode.setProperty("govscot:accessible", false);
-        documentInfoNode.setProperty("govscot:highlighted", false);
+        String filename = manifestEntry.getFriendlyFilename();
+        String mimeType = detectContentType(filename);
 
-        String mimeType = detectContentType(manifestEntry.getFriendlyFilename());
-        Node resourceNode = nodeFactory.newResourceNode(
-                documentInfoNode,
-                "govscot:document",
-                manifestEntry.getFriendlyFilename(),
-                mimeType,
-                zipFile,
-                zipEntry);
+        byte[] bytes = IOUtils.toByteArray(zipFile.getInputStream(zipEntry));
+        long pageCount = exif.pageCount(toBinary(bytes), mimeType);
 
-        long pageCount = exif.pageCount(resourceNode.getProperty(JCR_DATA).getBinary(), mimeType);
-        documentInfoNode.setProperty(GOVSCOT_PAGE_COUNT, pageCount);
+        ContentNode contentNode = new ContentNodes().newDocumentInfoNode(
+                title, pageCount, filename, mimeType, new BinaryValue(bytes, mimeType, null));
+
+        DocumentManager documentManager = new WorkflowDocumentManagerImpl(session);
+        WorkflowDocumentVariantImportTask importTask = new WorkflowDocumentVariantImportTask(documentManager);
+        String path = documentsFolder.getPath() + "/" + slug;
+        String publishedPath = importTask.createOrUpdateDocumentFromVariantContentNode(
+                contentNode, "govscot:DocumentInformation", path, "en", title);
+
+        Node documentInfoHandle = session.getNode(publishedPath);
+        documentHelper.ensurePublicationState(documentManager, documentInfoHandle, publishedPath, metadata);
+
+        Node documentInfoVariant = hippoUtils.getVariant(documentInfoHandle);
+        Node resourceNode = documentInfoVariant.getNode("govscot:document");
 
         if ("application/pdf".equals(mimeType)) {
             createThumbnails(resourceNode);
         }
         return resourceNode;
+    }
+
+    private Binary toBinary(byte[] bytes) throws RepositoryException {
+        return session.getValueFactory().createBinary(new ByteArrayInputStream(bytes));
     }
 
     private String detectContentType(String filename) throws ApsZipImporterException {
@@ -168,11 +181,11 @@ public class DocumentUploader {
 
         if (existingDocumentTitles.containsKey(filename)) {
             String existingtitle = existingDocumentTitles.get(filename);
-            LOG.info("Using existing document title \"{}\" for {}", existingtitle, filename);
+            LOG.debug("Using existing document title \"{}\" for {}", existingtitle, filename);
             return existingtitle;
         }
 
-        LOG.info("Using title from manifest \"{}\" for {}", manifestEntry.getTitleOrFilename(), filename);
+        LOG.debug("Using title from manifest \"{}\" for {}", manifestEntry.getTitleOrFilename(), filename);
         return manifestEntry.getTitleOrFilename();
     }
 

@@ -9,6 +9,15 @@ public class ListResult {
     private int pageSize;
     private List<Publication> publications;
 
+    public static ListResult result(List<Publication> publications, long totalSize, int page, int pageSize) {
+        ListResult r = new ListResult();
+        r.setPublications(publications);
+        r.setTotalSize(totalSize);
+        r.setPage(page);
+        r.setPageSize(pageSize);
+        return r;
+    }
+
     public long getTotalSize() {
         return totalSize;
     }

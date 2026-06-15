@@ -13,3 +13,4 @@ definitions:
         VuelioImporterJobsocialsecurity: false
         LinkRewriteJob: false
         OrganiseGalleryImagesJob: false
+        PublicationImporterPerspective: false

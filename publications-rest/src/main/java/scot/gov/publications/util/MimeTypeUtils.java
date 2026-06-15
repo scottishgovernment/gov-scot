@@ -2,6 +2,8 @@ package scot.gov.publications.util;
 
 public class MimeTypeUtils {
 
+    static final String OPEN_SPREADSHEET = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
     private MimeTypeUtils() {
         // prevent instantiation
     }

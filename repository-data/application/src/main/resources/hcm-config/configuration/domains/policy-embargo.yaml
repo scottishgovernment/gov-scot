@@ -1,0 +1,43 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/policy-embargo:
+      jcr:primaryType: hipposys:domain
+      # PoliciesUpdater only ever adds a govscot:relatedItems mirror onto an existing policy variant
+      # (never removes), so "editor" is enough here - unlike the publications-side embargo override,
+      # which also needs to remove scheduler jobs/mixins.
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, publication-importer]
+        hipposys:role: editor
+      /embargo-document:
+        jcr:primaryType: hipposys:domainrule
+        /include-policy-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/policies/
+        /type-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document
+      /embargo-handle:
+        jcr:primaryType: hipposys:domainrule
+        /include-policy-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/policies/
+        /type-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle

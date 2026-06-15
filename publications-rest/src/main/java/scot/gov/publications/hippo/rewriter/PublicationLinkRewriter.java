@@ -1,11 +1,12 @@
 package scot.gov.publications.hippo.rewriter;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publications.hippo.Constants;
 import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.Node;
@@ -14,8 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
-import static org.apache.commons.lang.StringUtils.isEmpty;
-import static org.apache.commons.lang.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static scot.gov.publications.hippo.rewriter.LinkRewriter.CONTENT_ATTRIB;
 
 /**
@@ -49,7 +50,14 @@ public class PublicationLinkRewriter {
     }
 
     public void rewritePageHandle(Node pageHandle) throws RepositoryException {
-        hippoUtils.apply(pageHandle.getNodes(), this::rewritePage);
+        // a handle for a page with a future publish date, or one under embargo, also carries
+        // scheduled workflow job nodes (hippo:request / embargo:request) as siblings of the
+        // actual document variant - skip those rather than trying to rewrite links in them
+        hippoUtils.apply(pageHandle.getNodes(), this::isDocumentVariant, this::rewritePage);
+    }
+
+    private boolean isDocumentVariant(Node node) throws RepositoryException {
+        return node.hasProperty(Constants.HIPPOSTD_STATE);
     }
 
     private void rewritePage(Node pageNode) throws RepositoryException {
@@ -64,11 +72,13 @@ public class PublicationLinkRewriter {
 
     private void rewriteLink(String href, Node pageNode) throws RepositoryException {
 
-        LOG.info("rewriteLink {} -> {}", href, pageNode.getPath());
+        LOG.debug("rewriteLink {} -> {}", href, pageNode.getPath());
 
         // if the href is one of the pages then rewrite it as a facet link
         if (pageNodesByEntryname.containsKey(href)) {
-            linkRewriter.rewriteLinkToFacet(pageNode, href, pageNodesByEntryname.get(href));
+            Node pagenode = pageNodesByEntryname.get(href);
+            Node toNode = pagenode.isNodeType("hippo:resource") ? pagenode.getParent() : pagenode;
+            linkRewriter.rewriteLinkToFacet(pageNode, href, toNode);
             return;
         }
 

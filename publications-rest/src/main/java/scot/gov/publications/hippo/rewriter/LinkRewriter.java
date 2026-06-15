@@ -35,7 +35,7 @@ class LinkRewriter {
                 quoted(facet.getName()));
         contentNode.setProperty(CONTENT_ATTRIB, toHtml);
 
-        LOG.info("Rewriting {} -> {} in page {}, created new facet for {}",
+        LOG.debug("Rewriting {} -> {} in page {}, created new facet for {}",
                 from,
                 facet.getName(),
                 pageNode.getPath(),
@@ -51,7 +51,7 @@ class LinkRewriter {
         String fromhtml = contentNode.getProperty(CONTENT_ATTRIB).getString();
         String toHtml = fromhtml.replaceAll(from, to);
         contentNode.setProperty(CONTENT_ATTRIB, toHtml);
-        LOG.info("Rewriting {} -> {} in page (no facet)", from, to, pageNode.getPath());
+        LOG.debug("Rewriting {} -> {} in page {} (no facet)", from, to, pageNode.getPath());
     }
 
     Node ensueFacetSelect(Node contentNode, Node to) throws RepositoryException {

@@ -1,13 +1,10 @@
 package scot.gov.publications.hippo;
 
 import javax.jcr.*;
-import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.UUID;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import static scot.gov.publications.hippo.Constants.*;
 
@@ -17,68 +14,39 @@ public class HippoNodeFactory {
 
     HippoUtils hippoUtils = new HippoUtils();
 
-    private static final String USER = "aps-importer";
-
     public HippoNodeFactory(Session session) {
         this.session = session;
     }
 
-    public Node newHandle(String title, Node parent, String slug) throws RepositoryException {
-        Node handle = hippoUtils.createNode(parent, slug, "hippo:handle", HANDLE_MIXINS);
-        handle.setProperty(HIPPO_NAME, TitleSanitiser.sanitise(title));
-        return handle;
-    }
-
-    public Node newDocumentNode(
-            Node handle,
-            String slug,
-            String title,
-            String type,
-            ZonedDateTime publishDateTime,
-            boolean embargo) throws RepositoryException {
-
-        Node node = hippoUtils.createNode(handle, slug, type, DOCUMENT_MIXINS);
-
-        // the folder has been created using the SlugAllocations strategy so we can use it name as the govscot:slug
-        // property that is used to determine the url of this publication.
-        node.setProperty("govscot:slug", handle.getParent().getName());
-        node.setProperty(HIPPO_NAME, TitleSanitiser.sanitise(title));
-        node.setProperty("hippotranslation:locale", "en");
-        node.setProperty("hippotranslation:id", UUID.randomUUID().toString());
-        Calendar now = Calendar.getInstance();
-        node.setProperty("hippostdpubwf:createdBy", USER);
-        node.setProperty("hippostdpubwf:creationDate", now);
-        node.setProperty("hippostdpubwf:lastModifiedBy", USER);
-        node.setProperty("hippostdpubwf:lastModificationDate", now);
-        ensurePublicationStatus(node, publishDateTime, embargo);
-        return node;
-    }
-
     /**
-     * Ensure that the publication status and wny required workflow job exists for this publication
+     * Create a bare handle + document variant directly via JCR, bypassing the generic
+     * content-exim/FolderWorkflow "add document" mechanism entirely.
+     *
+     * The folder a new publication is created in deliberately has an empty hippostd:foldertype
+     * (see PublicationNodeUpdater.path()) because, per the CMS's own new-publication-folder
+     * template, its "index" document is meant to be created atomically as part of that template
+     * rather than added afterwards - so content-exim's WorkflowDocumentManagerImpl.createDocument(),
+     * which always asks FolderWorkflow to add under a hardcoded "new-document" category, has
+     * nothing to match and fails. Creating the bare node here and leaving ContentNode binding to
+     * WorkflowDocumentVariantImportTask's *update* path (which works against an already-existing
+     * node, exactly as it already does for re-imported publications) avoids that mechanism.
      */
-    public void ensurePublicationStatus(Node node, ZonedDateTime publishDateTime, boolean embargo) throws RepositoryException {
-        // remove any workflow job that exists.  If it is needed then we will recreate it. Ditto for embargo jobs
-        ensureWorkflowJobsDeleted(node.getParent());
-        ensureEmbargoFields(node, publishDateTime, embargo);
+    public Node newBarePublicationVariant(Node publicationFolder, String slug, String type, String title)
+            throws RepositoryException {
+        Node handle = hippoUtils.createNode(publicationFolder, slug, "hippo:handle", HANDLE_MIXINS);
+        handle.setProperty(HIPPO_NAME, TitleSanitiser.sanitise(title));
 
-        if (publishDateTime.isBefore(ZonedDateTime.now())) {
-            // the publication can be published
-            node.setProperty(HIPPO_AVAILABILITY, new String[]{"live", "preview"});
-            node.setProperty(HIPPOSTD_STATE, "published");
-            node.setProperty(HIPPOSTD_STATE_SUMMARY, "live");
-        } else {
-            node.setProperty(HIPPO_AVAILABILITY, new String[]{"preview"});
-            node.setProperty(HIPPOSTD_STATE, "unpublished");
-            node.setProperty(HIPPOSTD_STATE_SUMMARY, "new");
-
-            // If the publish date is in the future, we need to create an unpublished,
-            // preview node. These nodes should have the "versionable" mixin. This node
-            // is still present once the live, published node is created. If this mixin
-            // isn't set, it causes exceptions when a page or document is unpublished.
-            node.addMixin(MIX_VERSIONABLE);
-            ensureWorkflowJob(node.getParent(), publishDateTime);
-        }
+        Node variant = hippoUtils.createNode(handle, slug, type, DOCUMENT_MIXINS);
+        variant.setProperty("hippotranslation:locale", "en");
+        variant.setProperty("hippotranslation:id", UUID.randomUUID().toString());
+        Calendar now = Calendar.getInstance();
+        variant.setProperty("hippostdpubwf:createdBy", session.getUserID());
+        variant.setProperty("hippostdpubwf:creationDate", now);
+        variant.setProperty("hippostdpubwf:lastModifiedBy", session.getUserID());
+        variant.setProperty("hippostdpubwf:lastModificationDate", now);
+        variant.setProperty(HIPPO_AVAILABILITY, new String[]{"preview"});
+        variant.setProperty(HIPPOSTD_STATE, "unpublished");
+        return handle;
     }
 
     public void ensureEmbargoAndWorkflowJobs(Node handle, ZonedDateTime publishDateTime, boolean embargo) throws RepositoryException {
@@ -118,10 +86,10 @@ public class HippoNodeFactory {
         job.addMixin(MIX_REFERENCEABLE);
         job.addMixin(MIX_SIMPLE_VERSIONABLE);
         job.addMixin(MIX_VERSIONABLE);
-        job.setProperty("hipposched:attributeNames", new String[] { "hipposched:subjectId", "hipposched:methodName"});
-        job.setProperty("hipposched:attributeValues", new String[] { handle.getIdentifier(), "removeEmbargo"});
+        job.setProperty(HIPPOSCHED_ATTRIBUTE_NAMES, new String[] { HIPPOSCHED_SUBJECT_ID, HIPPOSCHED_METHOD_NAME});
+        job.setProperty(HIPPOSCHED_ATTRIBUTE_VALUES, new String[] { handle.getIdentifier(), "removeEmbargo"});
 
-        job.setProperty("hipposched:repositoryJobClass",
+        job.setProperty(HIPPOSCHED_REPOSITORY_JOB_CLASS,
                 "org.onehippo.forge.embargo.repository.workflow.EmbargoWorkflowImpl$WorkflowJob");
         Node triggers = job.addNode(HIPPOSCHED_TRIGGERS, HIPPOSCHED_TRIGGERS);
         Node defaultNode = triggers.addNode("embargo", HIPPOSCHED_SIMPLE_TRIGGER);
@@ -134,10 +102,18 @@ public class HippoNodeFactory {
     }
 
     /**
-     * If this publication node has a workflow job attached to its handle then remove it
+     * If this publication node has a workflow job or embargo removal job attached to its handle then remove them.
+     * Both must be cleared together, otherwise a stale embargo:request job left over from a previous import can
+     * fire its removeEmbargo action while a later scheduled publish job is versioning the same handle, causing a
+     * JCR NoSuchItemStateException on embargo:groups.
      */
     public void ensureWorkflowJobsDeleted(Node handle) throws RepositoryException {
-        NodeIterator it = handle.getNodes(HIPPO_REQUEST);
+        removeChildNodes(handle, HIPPO_REQUEST);
+        removeChildNodes(handle, EMBARGO_REQUEST);
+    }
+
+    private void removeChildNodes(Node handle, String name) throws RepositoryException {
+        NodeIterator it = handle.getNodes(name);
         while (it.hasNext()) {
             Node request = (Node) it.nextNode();
             request.remove();
@@ -156,9 +132,9 @@ public class HippoNodeFactory {
 
         // create the job needed to publish this node
         Node job = handle.addNode(HIPPO_REQUEST, "hipposched:workflowjob");
-        job.setProperty("hipposched:attributeNames", new String[] { "hipposched:subjectId", "hipposched:methodName"});
-        job.setProperty("hipposched:attributeValues", new String[] { handle.getIdentifier(), "publish"});
-        job.setProperty("hipposched:repositoryJobClass",
+        job.setProperty(HIPPOSCHED_ATTRIBUTE_NAMES, new String[] { HIPPOSCHED_SUBJECT_ID, HIPPOSCHED_METHOD_NAME});
+        job.setProperty(HIPPOSCHED_ATTRIBUTE_VALUES, new String[] { handle.getIdentifier(), "publish"});
+        job.setProperty(HIPPOSCHED_REPOSITORY_JOB_CLASS,
                 "org.onehippo.repository.documentworkflow.task.ScheduleWorkflowTask$WorkflowJob");
         Node triggers = job.addNode(HIPPOSCHED_TRIGGERS, HIPPOSCHED_TRIGGERS);
         Node defaultNode = triggers.addNode("default", HIPPOSCHED_SIMPLE_TRIGGER);
@@ -167,42 +143,6 @@ public class HippoNodeFactory {
         Calendar publishTime = GregorianCalendar.from(publishDateTime);
         defaultNode.setProperty(HIPPOSCHED_NEXT_FIRE_TIME, publishTime);
         defaultNode.setProperty(HIPPOSCHED_START_TIME, publishTime);
-    }
-
-    public Node newResourceNode(
-            Node parent,
-            String property,
-            String filename,
-            String contentType,
-            ZipFile zipFile, ZipEntry zipEntry)
-            throws RepositoryException {
-
-        try {
-            Node resourceNode = parent.addNode(property, "hippo:resource");
-            Binary binary = session.getValueFactory().createBinary(zipFile.getInputStream(zipEntry));
-
-            resourceNode.setProperty(HIPPO_FILENAME, filename);
-            resourceNode.setProperty(JCR_DATA, binary);
-            resourceNode.setProperty(JCR_MIMETYPE, contentType);
-            resourceNode.setProperty(JCR_LAST_MODIFIED, Calendar.getInstance());
-
-            // to avoid costly text extraction, set hippo:text to an empty string
-            resourceNode.setProperty("hippo:text", "");
-            return resourceNode;
-        } catch (IOException e) {
-            throw new RepositoryException(e);
-        }
-    }
-
-    public void addBasicFields(Node node, String name) throws RepositoryException {
-        hippoUtils.setPropertyIfAbsent(node, "hippo:name", name);
-        node.setProperty("hippotranslation:locale", "en");
-        node.setProperty("hippotranslation:id", UUID.randomUUID().toString());
-        Calendar now = Calendar.getInstance();
-        node.setProperty("hippostdpubwf:createdBy", USER);
-        node.setProperty("hippostdpubwf:creationDate", now);
-        hippoUtils.setPropertyIfAbsent(node, "hippostdpubwf:lastModifiedBy", USER);
-        node.setProperty("hippostdpubwf:lastModificationDate", now);
     }
 
 }

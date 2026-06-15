@@ -14,6 +14,7 @@ public final class Constants {
     public static final String HIPPO_NAME = "hippo:name";
     public static final String HIPPO_REQUEST = "hippo:request";
     public static final String HIPPO_DOCBASE = "hippo:docbase";
+    public static final String HIPPO_MIRROR = "hippo:mirror";
 
     public static final String HIPPOSTD_CONTAINER = "hippostd:container";
     public static final String HIPPOSTD_PUBLISHABLE = "hippostd:publishable";
@@ -29,6 +30,11 @@ public final class Constants {
     public static final String HIPPOSCHED_SIMPLE_TRIGGER = "hipposched:simpletrigger";
     public static final String HIPPOSCHED_NEXT_FIRE_TIME = "hipposched:nextFireTime";
     public static final String HIPPOSCHED_START_TIME = "hipposched:startTime";
+    public static final String HIPPOSCHED_SUBJECT_ID = "hipposched:subjectId";
+    public static final String HIPPOSCHED_METHOD_NAME = "hipposched:methodName";
+    public static final String HIPPOSCHED_ATTRIBUTE_NAMES = "hipposched:attributeNames";
+    public static final String HIPPOSCHED_ATTRIBUTE_VALUES = "hipposched:attributeValues";
+    public static final String HIPPOSCHED_REPOSITORY_JOB_CLASS = "hipposched:repositoryJobClass";
 
     public static final String MIX_REFERENCEABLE = "mix:referenceable";
     public static final String MIX_SIMPLE_VERSIONABLE = "mix:simpleVersionable";

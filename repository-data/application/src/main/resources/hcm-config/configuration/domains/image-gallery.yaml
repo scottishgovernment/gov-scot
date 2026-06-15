@@ -12,7 +12,7 @@ definitions:
           hipposys:value: /content/gallery
       /admin:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [cmsadmin, editor, author, useradmin, image-editors]
+        hipposys:groups: [cmsadmin, editor, author, useradmin, image-editors, publication-importer]
         hipposys:role: admin
       /embargo:
         jcr:primaryType: hipposys:authrole

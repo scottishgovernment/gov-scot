@@ -10,60 +10,42 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import static scot.gov.publications.util.MimeTypeUtils.OPEN_SPREADSHEET;
+
 /**
- * Enum top encapsulate knowledge about file types.
+ * Enum to encapsulate knowledge about file types. This is the allowlist of file types that can be
+ * uploaded as part of a publication - kept aligned with the document types actually configured in
+ * Bloomreach, rather than every type the old standalone importer once accepted.
  */
 public enum FileType {
 
-    PDF("pdf", "application/pdf", "pdf"),
-
-    DOC("doc", "application/msword", "word"),
-    DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "word"),
-
-    XLS("xls", "application/vnd.ms-excel", "excel"),
-    XLSX("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
-    XLSM("xlsm", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
-
-    PPT("ppt", "application/vnd.ms-powerpoint", IconNames.PPT),
-    PPS("pps", "application/vnd.ms-powerpoint", IconNames.PPT),
-    PPTX("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation", IconNames.PPT),
-    PPSX("ppsx", "application/vnd.openxmlformats-officedocument.presentationml.slideshow", IconNames.PPT),
-
-    RTF("rtf", "application/rtf", "rtf"),
-
-    XML("xml", "application/xml", "xml"),
-    XSD("xsd", "application/xsd", "xml"),
-
-    MD("md", "text/markdown", IconNames.FALLBACK),
     CSV("csv", "text/csv", "csv"),
-    TXT("txt", "text/plain", "txt"),
-
+    DOC("doc", "application/msword", "word"),
+    DOCM("docm", "application/msword", "word"),
+    DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "word"),
     HTML("html", "text/html", IconNames.FALLBACK),
-
-    HTM("htm", "text/html", IconNames.FALLBACK),
-
-    // open docs
-    ODT("odt", "application/vnd.oasis.opendocument.text", IconNames.ODT),
-    ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", IconNames.ODT),
-    ODP("odp", "application/vnd.oasis.opendocument.presentation", IconNames.ODT),
-
-    // google earth
-    KML("kml", "application/vnd.google-earth.kml+xml", "geo"),
-    KMZ("kmz", "application/vnd.google-earth.kmz", "geo"),
-
-    // images
     JPG("jpg", "image/jpeg", IconNames.IMAGE),
-    JPEG("jpeg", "image/jpeg", IconNames.IMAGE),
     GIF("gif", "image/gif", IconNames.IMAGE),
+    MSG("html", "text/html", IconNames.FALLBACK),
+    ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", IconNames.ODT),
+    PDF("pdf", "application/pdf", "pdf"),
     PNG("png", "image/png", IconNames.IMAGE),
-
-    JSON("json", "application/json", IconNames.FALLBACK);
+    PPT("ppt", "application/vnd.ms-powerpoint", IconNames.PPT),
+    PPTM("pptm", "application/vnd.ms-powerpoint.presentation.macroEnabled.12", IconNames.PPT),
+    PPTX("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation", IconNames.PPT),
+    RTF("rtf", "application/rtf", "rtf"),
+    TXT("txt", "text/plain", "txt"),
+    XLS("xls", "application/vnd.ms-excel", "excel"),
+    XLSB("xlsb", OPEN_SPREADSHEET, IconNames.EXCEL),
+    XLSM("xlsm", OPEN_SPREADSHEET, IconNames.EXCEL),
+    XLTX("xlstx", OPEN_SPREADSHEET, IconNames.EXCEL),
+    XLSX("xlsx", OPEN_SPREADSHEET, IconNames.EXCEL),
+    XSD("xsd", "application/xsd", IconNames.EXCEL);
 
     private static final Set<FileType> IMAGE_TYPES = new HashSet<>();
 
     static {
-        Collections.addAll(IMAGE_TYPES, JPG, JPEG, GIF, PNG);
-
+        Collections.addAll(IMAGE_TYPES, JPG, PNG);
     }
 
     private final String extension;

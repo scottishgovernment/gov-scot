@@ -2,7 +2,6 @@ package scot.gov.publications.repo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.publications.hippo.HippoNodeFactory;
 import scot.gov.publications.hippo.HippoPaths;
 import scot.gov.publications.hippo.HippoUtils;
 
@@ -12,6 +11,7 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.sql.Timestamp;
 import java.util.*;
 
 import static java.util.stream.Collectors.joining;
@@ -22,11 +22,64 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  *
  * Lays them out by breaking the guid into quartiles to avoid a large node.
  */
-public class PublicationRepositoryJcrImpl {
+public class PublicationRepositoryJcrImpl implements PublicationRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationRepositoryJcrImpl.class);
 
     private static final String ROOT = "/content/publicationjobs";
+
+    private static final String PROP_ID = "govscot:id";
+
+    private static final String PROP_TITLE = "govscot:title";
+
+    private static final String PROP_ISBN = "govscot:isbn";
+
+    private static final String PROP_CONTACT = "govscot:contact";
+
+    private static final String PROP_FILENAME = "govscot:filename";
+
+    private static final String PROP_STATE = "govscot:state";
+
+    private static final String PROP_STATEDETAILS = "govscot:statedetails";
+
+    private static final String PROP_USERNAME = "govscot:username";
+
+    private static final String PROP_CREATEDDATE = "govscot:createddate";
+
+    private static final String PROP_EMBARGODATE = "govscot:embargodate";
+
+    private static final String PROP_URL = "govscot:url";
+
+    private static final String PROP_DOCUMENTCOUNT = "govscot:documentcount";
+
+    private static final String PROP_PAGECOUNT = "govscot:pagecount";
+
+    private static final String PROP_EMBARGOED = "govscot:embargoed";
+
+    private static final String PROP_SCHEDULED = "govscot:scheduled";
+
+    private static final String PROP_PUBLISHED = "govscot:published";
+
+    private static final String PROP_STACKTRACE = "govscot:stacktrace";
+
+    private static final String PROP_CHECKSUM = "govscot:checksum";
+
+    /**
+     * Allowlist of the fields a caller may sort by, mapped to their JCR property name. Sort input
+     * is never concatenated into the query directly to avoid JCR-SQL injection via the sort param.
+     */
+    private static final Map<String, String> SORTABLE_FIELDS = new LinkedHashMap<>();
+    static {
+        SORTABLE_FIELDS.put("title", PROP_TITLE);
+        SORTABLE_FIELDS.put("isbn", PROP_ISBN);
+        SORTABLE_FIELDS.put("filename", PROP_FILENAME);
+        SORTABLE_FIELDS.put("createddate", PROP_CREATEDDATE);
+        SORTABLE_FIELDS.put("embargodate", PROP_EMBARGODATE);
+        SORTABLE_FIELDS.put("state", PROP_STATE);
+        SORTABLE_FIELDS.put("username", PROP_USERNAME);
+    }
+
+    private static final String DEFAULT_SORT = "createddate";
 
     Session session;
 
@@ -34,13 +87,10 @@ public class PublicationRepositoryJcrImpl {
 
     HippoUtils hippoUtils;
 
-    HippoNodeFactory hippoNodeFactory;
-
     public PublicationRepositoryJcrImpl(Session session) {
         this.session = session;
         this.paths = new HippoPaths(session);
         this.hippoUtils = new HippoUtils();
-        this.hippoNodeFactory = new HippoNodeFactory(session);
     }
 
     /**
@@ -49,8 +99,10 @@ public class PublicationRepositoryJcrImpl {
      * @param publication Publication details to create.
      * @throws PublicationRepositoryException if the create failed.
      */
+    @Override
     public void create(Publication publication) throws PublicationRepositoryException {
         try {
+            ensureRoot();
             Node folder = paths.ensurePath(ROOT, path(publication));
             Node node = folder.addNode(publication.getIsbn(), "nt:unstructured");
             copyValues(node, publication);
@@ -66,10 +118,11 @@ public class PublicationRepositoryJcrImpl {
      * @param publication Publication details to update.
      * @throws PublicationRepositoryException if the update the publication.
      */
+    @Override
     public void update(Publication publication) throws PublicationRepositoryException {
         try {
             Node node = findById(publication.getId());
-            publication.setLastmodifieddate(Calendar.getInstance());
+            publication.setLastmodifieddate(new Timestamp(System.currentTimeMillis()));
             copyValues(node, publication);
             session.save();
         } catch (RepositoryException e) {
@@ -84,6 +137,7 @@ public class PublicationRepositoryJcrImpl {
      * @return Publication with that id, null if none exists
      * @throws PublicationRepositoryException if the create failed.
      */
+    @Override
     public Publication get(String id) throws PublicationRepositoryException {
         try {
             Node node = findById(id);
@@ -101,27 +155,44 @@ public class PublicationRepositoryJcrImpl {
      * @param title title to match (partial case insensitive
      * @param isbn isbn to match (partial case insensitive
      * @param filename filename to match (partial case insensitive
+     * @param username username to match (partial case insensitive
+     * @param state state to match (exact)
+     * @param sort field to sort by, defaults to {@value #DEFAULT_SORT} if blank or unrecognised
+     * @param dir sort direction, "asc" or "desc" (defaults to "desc")
      * @return Collection of matching publications
      * @throws PublicationRepositoryException if it fails to list publications
      */
-    public ListResult list(int page, int size, String title, String isbn, String filename)
+    @Override
+    public ListResult list(int page, int size, String title, String isbn, String filename, String username, String state, String sort, String dir)
             throws PublicationRepositoryException {
 
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM nt:unstructured ");
             List<String> andterms = new ArrayList<>();
             andterms.add("jcr:path LIKE '/content/publicationjobs/%'");
+            // exclude the bucket folder nodes created by path()/HippoPaths.ensurePath, which are
+            // also nt:unstructured and would otherwise be picked up alongside real publications
+            andterms.add(PROP_ID + " IS NOT NULL");
 
             if (isNotBlank(title)) {
-                andterms.add(String.format("govscot:title LIKE '%%%s%%'", title));
+                // title is a multi word field, so require each word in the search term to
+                // be present (as a prefix match) rather than treating the whole term as one token
+                for (String word : title.trim().split("\\s+")) {
+                    andterms.add(String.format("CONTAINS(%s, '%s')", PROP_TITLE, escapeForContainsPrefix(word)));
+                }
             }
 
             if (isNotBlank(isbn)) {
-                andterms.add(String.format("govscot:isbn LIKE '%%%s%%'", isbn));
+                andterms.add(String.format("CONTAINS(%s, '%s')", PROP_ISBN, escapeForContainsPrefix(isbn)));
             }
-
             if (isNotBlank(filename)) {
-                andterms.add(String.format("govscot:filename LIKE '%%%s%%'", filename));
+                andterms.add(String.format("CONTAINS(%s, '%s')", PROP_FILENAME, escapeForContainsPrefix(filename)));
+            }
+            if (isNotBlank(username)) {
+                andterms.add(String.format("CONTAINS(%s, '%s')", PROP_USERNAME, escapeForContainsPrefix(username)));
+            }
+            if (isNotBlank(state) && isValidState(state)) {
+                andterms.add(String.format("%s = '%s'", PROP_STATE, state));
             }
 
             if (!andterms.isEmpty()) {
@@ -129,7 +200,7 @@ public class PublicationRepositoryJcrImpl {
                 sql.append(andterms.stream().collect(joining(" AND ")));
             }
 
-            sql.append(" ORDER by govscot:createddate DESC");
+            sql.append(orderByClause(sort, dir));
             return executeQuery(sql.toString(), page, size);
         } catch (RepositoryException e) {
             LOG.error("Failed to list publications {}", e);
@@ -161,38 +232,100 @@ public class PublicationRepositoryJcrImpl {
         return result;
     }
 
+    /**
+     * Build an ORDER BY clause for the given sort field and direction, using only allowlisted
+     * property names so the sort param can never be used to inject arbitrary JCR-SQL.
+     */
+    String orderByClause(String sort, String dir) {
+        String property = SORTABLE_FIELDS.getOrDefault(sort, SORTABLE_FIELDS.get(DEFAULT_SORT));
+        String direction = "asc".equalsIgnoreCase(dir) ? "ASC" : "DESC";
+        return String.format(" ORDER BY %s %s", property, direction);
+    }
+
+    /**
+     * Sanitise a user supplied search term for use as a fulltext prefix match (term*), for fields
+     * such as isbn/filename that are indexed as a single token, where a caller is typically typing
+     * from the start of the value rather than searching for a whole word.
+     */
+    String escapeForContainsPrefix(String term) {
+        String sanitized = term.replace("\"", "").replace("'", "").replace("*", "").trim();
+        return sanitized + "*";
+    }
+
+    /**
+     * Only allow known {@link State} values through to the query, since state is concatenated
+     * directly into the JCR-SQL rather than passed as a bind parameter.
+     */
+    boolean isValidState(String state) {
+        for (State s : State.values()) {
+            if (s.name().equals(state)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Create the {@value #ROOT} node if it does not already exist. HippoPaths.ensurePath only
+     * creates the elements below the root it is given, so the root itself has to be created here.
+     */
+    void ensureRoot() throws RepositoryException {
+        if (!session.nodeExists(ROOT)) {
+            session.getNode("/content").addNode("publicationjobs", "nt:unstructured");
+        }
+    }
+
     List<String> path(Publication publication) {
         String guid = publication.getId().replaceAll("-", "");
-        return Arrays.asList(guid.split("(?<=\\G.{2})"));
+        return Arrays.asList(guid.substring(0, 2), guid.substring(2, 4));
     }
 
     void copyValues(Node node, Publication publication) throws RepositoryException  {
-        node.setProperty("govscot:id", publication.getId());
-        node.setProperty("govscot:title", publication.getTitle());
-        node.setProperty("govscot:isbn", publication.getIsbn());
-        node.setProperty("govscot:contact", publication.getContact());
-        node.setProperty("govscot:filename", publication.getFilename());
-        node.setProperty("govscot:state", publication.getState());
-        node.setProperty("govscot:statedetails", publication.getStatedetails());
-        node.setProperty("govscot:username", publication.getUsername());
-        node.setProperty("govscot:createddate", publication.getCreateddate());
-        node.setProperty("govscot:embargodate", publication.getEmbargodate());
+        node.setProperty(PROP_ID, publication.getId());
+        node.setProperty(PROP_TITLE, publication.getTitle());
+        node.setProperty(PROP_ISBN, publication.getIsbn());
+        node.setProperty(PROP_CONTACT, publication.getContact());
+        node.setProperty(PROP_FILENAME, publication.getFilename());
+        node.setProperty(PROP_STATE, publication.getState());
+        node.setProperty(PROP_STATEDETAILS, publication.getStatedetails());
+        node.setProperty(PROP_USERNAME, publication.getUsername());
+        Calendar createdDateCal = Calendar.getInstance();
+        createdDateCal.setTimeInMillis(publication.getCreateddate().getTime());
+        node.setProperty(PROP_CREATEDDATE, createdDateCal);
+        Calendar embargoDateCal = Calendar.getInstance();
+        embargoDateCal.setTimeInMillis(publication.getEmbargodate().getTime());
+        node.setProperty(PROP_EMBARGODATE, embargoDateCal);
+        node.setProperty(PROP_URL, publication.getUrl());
+        node.setProperty(PROP_DOCUMENTCOUNT, publication.getDocumentcount());
+        node.setProperty(PROP_PAGECOUNT, publication.getPagecount());
+        node.setProperty(PROP_EMBARGOED, publication.isEmbargoed());
+        node.setProperty(PROP_SCHEDULED, publication.isScheduled());
+        node.setProperty(PROP_PUBLISHED, publication.isPublished());
+        node.setProperty(PROP_STACKTRACE, publication.getStacktrace());
+        node.setProperty(PROP_CHECKSUM, publication.getChecksum());
         node.setProperty("hippostd:state", "published");
-        hippoNodeFactory.addBasicFields(node, publication.getTitle());
     }
 
     Publication nodeToPublication(Node node) throws RepositoryException {
         Publication publication = new Publication();
-        publication.setId(node.getProperty("govscot:id").getString());
-        publication.setTitle(node.getProperty("govscot:title").getString());
-        publication.setIsbn(node.getProperty("govscot:isbn").getString());
-        publication.setContact(propWithDefault(node, "govscot:contact", ""));
-        publication.setFilename(node.getProperty("govscot:filename").getString());
-        publication.setState(node.getProperty("govscot:state").getString());
-        publication.setStatedetails(propWithDefault(node, "govscot:statedetails", ""));
-        publication.setUsername(propWithDefault(node, "govscot:username", ""));
-        publication.setCreateddate(node.getProperty("govscot:createddate").getDate());
-        publication.setEmbargodate(node.getProperty("govscot:embargodate").getDate());
+        publication.setId(node.getProperty(PROP_ID).getString());
+        publication.setTitle(node.getProperty(PROP_TITLE).getString());
+        publication.setIsbn(node.getProperty(PROP_ISBN).getString());
+        publication.setContact(propWithDefault(node, PROP_CONTACT, ""));
+        publication.setFilename(node.getProperty(PROP_FILENAME).getString());
+        publication.setState(node.getProperty(PROP_STATE).getString());
+        publication.setStatedetails(propWithDefault(node, PROP_STATEDETAILS, ""));
+        publication.setUsername(propWithDefault(node, PROP_USERNAME, ""));
+        publication.setCreateddate(new Timestamp(node.getProperty(PROP_CREATEDDATE).getDate().getTimeInMillis()));
+        publication.setEmbargodate(new Timestamp(node.getProperty(PROP_EMBARGODATE).getDate().getTimeInMillis()));
+        publication.setUrl(propWithDefault(node, PROP_URL, null));
+        publication.setDocumentcount(intPropWithDefault(node, PROP_DOCUMENTCOUNT, 0));
+        publication.setPagecount(intPropWithDefault(node, PROP_PAGECOUNT, 0));
+        publication.setEmbargoed(boolPropWithDefault(node, PROP_EMBARGOED, false));
+        publication.setScheduled(boolPropWithDefault(node, PROP_SCHEDULED, false));
+        publication.setPublished(boolPropWithDefault(node, PROP_PUBLISHED, false));
+        publication.setStacktrace(propWithDefault(node, PROP_STACKTRACE, null));
+        publication.setChecksum(propWithDefault(node, PROP_CHECKSUM, null));
         return publication;
     }
 
@@ -200,11 +333,19 @@ public class PublicationRepositoryJcrImpl {
         return node.hasProperty(prop) ? node.getProperty(prop).getString() : defaultVal;
     }
 
+    int intPropWithDefault(Node node, String prop, int defaultVal) throws RepositoryException {
+        return node.hasProperty(prop) ? (int) node.getProperty(prop).getLong() : defaultVal;
+    }
+
+    boolean boolPropWithDefault(Node node, String prop, boolean defaultVal) throws RepositoryException {
+        return node.hasProperty(prop) ? node.getProperty(prop).getBoolean() : defaultVal;
+    }
+
     Node findById(String id) throws RepositoryException {
         String sql= String.format(
                     "SELECT * FROM nt:unstructured " +
                     "WHERE jcr:path LIKE '/content/publicationjobs/%%' " +
-                    "AND govscot:id = '%s'", id);
+                    "AND " + PROP_ID + " = '%s'", id);
         return hippoUtils.findOneQueryNoArgs(session, sql, Query.SQL);
     }
 

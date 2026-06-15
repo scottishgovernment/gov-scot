@@ -10,6 +10,9 @@ import java.util.*;
 
 import static java.util.Arrays.asList;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static scot.gov.publications.hippo.Constants.HIPPOSTD_FOLDERTYPE;
+import static scot.gov.publications.hippo.Constants.HIPPO_NAMED;
+import static scot.gov.publications.hippo.Constants.MIX_REFERENCEABLE;
 
 /**
  * Creates nodes in the repository for given hippoPaths.
@@ -25,6 +28,10 @@ public class HippoPaths {
     private static final String[] EMPTY_STRINGS = new String[0];
 
     private static final String NAME_PROPERTY = "hippo:name";
+
+    private static final String PROP_HASFOLDERS = "hippostd:hasfolders";
+
+    private static final String PROP_GALLERYTYPE = "hippostd:gallerytype";
 
     Session session;
 
@@ -110,13 +117,13 @@ public class HippoPaths {
     public Node folderNode(Node parent, String name) throws RepositoryException {
         String slug = slugify(name);
         Node node = parent.addNode(slug, "hippostd:folder");
-        node.addMixin("hippo:named");
-        node.addMixin("mix:referenceable");
+        node.addMixin(HIPPO_NAMED);
+        node.addMixin(MIX_REFERENCEABLE);
         node.addMixin("mix:versionable");
         node.addMixin("mix:simpleVersionable");
         node.addMixin("mix:lockable");
         node.setProperty(NAME_PROPERTY, name);
-        parent.setProperty("hippostd:hasfolders", true);
+        parent.setProperty(PROP_HASFOLDERS, true);
         return node;
     }
 
@@ -132,11 +139,11 @@ public class HippoPaths {
      * it has moved everything out of the root.
      */
     private void preventImagesAtGalleryRoot(Node root) throws RepositoryException {
-        if (!Arrays.equals(readStringValues(root, "hippostd:foldertype"), EMPTY_STRINGS)) {
-            root.setProperty("hippostd:foldertype", EMPTY_STRINGS);
+        if (!Arrays.equals(readStringValues(root, HIPPOSTD_FOLDERTYPE), EMPTY_STRINGS)) {
+            root.setProperty(HIPPOSTD_FOLDERTYPE, EMPTY_STRINGS);
         }
-        if (!Arrays.equals(readStringValues(root, "hippostd:gallerytype"), EMPTY_STRINGS)) {
-            root.setProperty("hippostd:gallerytype", EMPTY_STRINGS);
+        if (!Arrays.equals(readStringValues(root, PROP_GALLERYTYPE), EMPTY_STRINGS)) {
+            root.setProperty(PROP_GALLERYTYPE, EMPTY_STRINGS);
         }
     }
 
@@ -185,6 +192,9 @@ public class HippoPaths {
     }
 
     private Node applyDisplayName(Node folder, String displayName) throws RepositoryException {
+        if (!folder.isNodeType(HIPPO_NAMED)) {
+            folder.addMixin(HIPPO_NAMED);
+        }
         if (!folder.hasProperty(NAME_PROPERTY) || !displayName.equals(folder.getProperty(NAME_PROPERTY).getString())) {
             folder.setProperty(NAME_PROPERTY, displayName);
         }
@@ -193,10 +203,12 @@ public class HippoPaths {
 
     private Node imageFolderNode(Node parent, String slug, String displayName) throws RepositoryException {
         Node node = parent.addNode(slug, "hippogallery:stdImageGallery");
-        node.addMixin("hippo:named");
-        node.addMixin("mix:referenceable");
+        node.addMixin(HIPPO_NAMED);
+        node.addMixin(MIX_REFERENCEABLE);
         node.setProperty(NAME_PROPERTY, displayName);
-        parent.setProperty("hippostd:hasfolders", true);
+        parent.setProperty(PROP_HASFOLDERS, true);
+        node.setProperty(HIPPOSTD_FOLDERTYPE, new String[]{"new-image-folder"});
+        node.setProperty(PROP_GALLERYTYPE, new String[]{"hippogallery:imageset"});
         return node;
     }
 

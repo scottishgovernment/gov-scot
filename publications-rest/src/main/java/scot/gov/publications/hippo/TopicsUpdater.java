@@ -82,7 +82,7 @@ public class TopicsUpdater {
     private void ensureLegacyTopic(ContentNode publicationNode, String topicName) throws RepositoryException {
         String mappedTopic = topics.get(topicName);
         if (mappedTopic == null) {
-            LOG.info("No such legacy topic {}", topicName);
+            LOG.debug("No such legacy topic {}", topicName);
             return;
         }
         ensureTopic(publicationNode, mappedTopic);
