@@ -1,6 +1,6 @@
 package scot.gov.publications.hippo.rewriter;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
-import static org.apache.commons.lang.StringUtils.isEmpty;
-import static org.apache.commons.lang.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static scot.gov.publications.hippo.rewriter.LinkRewriter.CONTENT_ATTRIB;
 
 /**
@@ -68,7 +68,9 @@ public class PublicationLinkRewriter {
 
         // if the href is one of the pages then rewrite it as a facet link
         if (pageNodesByEntryname.containsKey(href)) {
-            linkRewriter.rewriteLinkToFacet(pageNode, href, pageNodesByEntryname.get(href));
+            Node pagenode = pageNodesByEntryname.get(href);
+            Node toNode = pagenode.isNodeType("hippo:resource") ? pagenode.getParent() : pagenode;
+            linkRewriter.rewriteLinkToFacet(pageNode, href, toNode);
             return;
         }
 

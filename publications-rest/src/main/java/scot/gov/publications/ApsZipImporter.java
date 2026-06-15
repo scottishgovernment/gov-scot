@@ -67,6 +67,7 @@ public class ApsZipImporter {
                     metadata.getPublicationDateWithTimezone());
 
             Node publicationHandle = publicationNodeUpdater.createOrUpdatePublicationNode(metadata, publication);
+            logCreatedByForVariants(publicationHandle);
             Node publicationFolder = publicationHandle.getParent();
 
             LOG.info("publication folder is {}", publicationFolder.getPath());
@@ -85,6 +86,18 @@ public class ApsZipImporter {
             return publicationFolder.getPath();
         } catch (RepositoryException e) {
             throw new ApsZipImporterException("Failed to save session", e);
+        }
+    }
+
+    private void logCreatedByForVariants(Node handle) throws RepositoryException {
+        NodeIterator it = handle.getNodes(handle.getName());
+        while (it.hasNext()) {
+            Node variant = it.nextNode();
+            LOG.info("variant path={} session.getUserID()={} hippostdpubwf:createdBy={} hippostdpubwf:lastModifiedBy={}",
+                    variant.getPath(),
+                    session.getUserID(),
+                    variant.hasProperty("hippostdpubwf:createdBy") ? variant.getProperty("hippostdpubwf:createdBy").getString() : "<absent>",
+                    variant.hasProperty("hippostdpubwf:lastModifiedBy") ? variant.getProperty("hippostdpubwf:lastModifiedBy").getString() : "<absent>");
         }
     }
 

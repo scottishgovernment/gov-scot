@@ -9,6 +9,7 @@ definitions:
         value: [cmsadmin, useradmin, collection-authors, collection-editors, core-content-authors,
           core-content-editors, foi-authors, foi-editors, group-authors, group-editors,
           news-editors, policy-authors, policy-editors, publication-authors, publication-editors,
+          publication-importer,
           statistics-authors, statistics-editors, topics-issues-authors, topics-issues-editors,
           advice-and-guidance-publication-type-authors, agreement-publication-type-authors,
           consultation-analysis-publication-type-authors, consultation-paper-publication-type-authors,

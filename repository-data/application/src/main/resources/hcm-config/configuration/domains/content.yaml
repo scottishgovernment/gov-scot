@@ -36,7 +36,7 @@ definitions:
         news-editors,
         policy-authors, policy-editors,
         previewusers,
-        publication-authors, publication-editors,
+        publication-authors, publication-editors, publication-importer,
         readonly,
         statistics-authors, statistics-editors,
         topics-issues-authors, topics-issues-editors,

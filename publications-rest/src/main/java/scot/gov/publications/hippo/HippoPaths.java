@@ -185,6 +185,9 @@ public class HippoPaths {
     }
 
     private Node applyDisplayName(Node folder, String displayName) throws RepositoryException {
+        if (!folder.isNodeType("hippo:named")) {
+            folder.addMixin("hippo:named");
+        }
         if (!folder.hasProperty(NAME_PROPERTY) || !displayName.equals(folder.getProperty(NAME_PROPERTY).getString())) {
             folder.setProperty(NAME_PROPERTY, displayName);
         }
@@ -197,6 +200,8 @@ public class HippoPaths {
         node.addMixin("mix:referenceable");
         node.setProperty(NAME_PROPERTY, displayName);
         parent.setProperty("hippostd:hasfolders", true);
+        node.setProperty("hippostd:foldertype", new String[]{"new-image-folder"});
+        node.setProperty("hippostd:gallerytype", new String[]{"hippogallery:imageset"});
         return node;
     }
 
