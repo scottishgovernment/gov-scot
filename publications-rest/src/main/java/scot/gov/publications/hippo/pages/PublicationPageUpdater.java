@@ -81,6 +81,7 @@ public class PublicationPageUpdater {
                     publicationFolder,
                     filenameToImageId);
             nodesByEntryname.putAll(docnameToNode);
+            session.save();
             PublicationLinkRewriter linkRewriter = new PublicationLinkRewriter(publicationFolder.getName(), nodesByEntryname);
             linkRewriter.rewrite(publicationFolder);
         } catch (IOException | RepositoryException e) {

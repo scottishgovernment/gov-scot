@@ -180,6 +180,11 @@
 
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-publications-cms</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-redirects-repository</artifactId>
     </dependency>
 

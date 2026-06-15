@@ -18,11 +18,14 @@ public enum FileType {
     PDF("pdf", "application/pdf", "pdf"),
 
     DOC("doc", "application/msword", "word"),
+    DOCM("docm", "application/msword", "word"),
     DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "word"),
 
     XLS("xls", "application/vnd.ms-excel", "excel"),
-    XLSX("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
+    XLSB("xlsb", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
     XLSM("xlsm", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
+    XLTX("xltx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
+    XLSX("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", IconNames.EXCEL),
 
     PPT("ppt", "application/vnd.ms-powerpoint", IconNames.PPT),
     PPS("pps", "application/vnd.ms-powerpoint", IconNames.PPT),
