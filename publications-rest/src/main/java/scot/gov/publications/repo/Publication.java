@@ -1,6 +1,8 @@
 package scot.gov.publications.repo;
 
-import java.util.Calendar;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.sql.Timestamp;
 
 public class Publication {
 
@@ -14,17 +16,22 @@ public class Publication {
 
     private String isbn;
 
-    private Calendar embargodate;
+    private Timestamp embargodate;
 
     private String state;
 
     private String statedetails;
 
-    private Calendar createddate;
+    private String checksum;
 
-    private Calendar lastmodifieddate;
+    private Timestamp createddate;
+
+    private Timestamp lastmodifieddate;
 
     private String contact;
+
+    @JsonIgnore
+    private int fullcount;
 
     public String getId() {
         return id;
@@ -66,11 +73,11 @@ public class Publication {
         this.isbn = isbn;
     }
 
-    public Calendar getEmbargodate() {
+    public Timestamp getEmbargodate() {
         return embargodate;
     }
 
-    public void setEmbargodate(Calendar embargodate) {
+    public void setEmbargodate(Timestamp embargodate) {
         this.embargodate = embargodate;
     }
 
@@ -90,20 +97,36 @@ public class Publication {
         this.statedetails = statedetails;
     }
 
-    public Calendar getCreateddate() {
+    public String getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    public Timestamp getCreateddate() {
         return createddate;
     }
 
-    public void setCreateddate(Calendar createddate) {
+    public void setCreateddate(Timestamp createddate) {
         this.createddate = createddate;
     }
 
-    public Calendar getLastmodifieddate() {
+    public Timestamp getLastmodifieddate() {
         return lastmodifieddate;
     }
 
-    public void setLastmodifieddate(Calendar lastmodifieddate) {
+    public void setLastmodifieddate(Timestamp lastmodifieddate) {
         this.lastmodifieddate = lastmodifieddate;
+    }
+
+    public int getFullcount() {
+        return fullcount;
+    }
+
+    public void setFullcount(int fullcount) {
+        this.fullcount = fullcount;
     }
 
     public String getContact() {

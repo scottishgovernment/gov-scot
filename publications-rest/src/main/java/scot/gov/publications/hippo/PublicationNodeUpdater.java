@@ -1,6 +1,6 @@
 package scot.gov.publications.hippo;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.repository.api.Document;
 import org.onehippo.forge.content.exim.core.DocumentManager;
 import org.onehippo.forge.content.exim.core.impl.WorkflowDocumentManagerImpl;
@@ -20,7 +20,7 @@ import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
 import java.util.*;
 
-import static org.apache.commons.lang.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.ObjectUtils.firstNonNull;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static scot.gov.publications.hippo.Constants.HIPPOSTD_FOLDERTYPE;

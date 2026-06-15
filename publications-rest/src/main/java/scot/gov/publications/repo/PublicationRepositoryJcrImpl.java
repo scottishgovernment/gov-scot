@@ -12,6 +12,7 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.sql.Timestamp;
 import java.util.*;
 
 import static java.util.stream.Collectors.joining;
@@ -22,11 +23,28 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  *
  * Lays them out by breaking the guid into quartiles to avoid a large node.
  */
-public class PublicationRepositoryJcrImpl {
+public class PublicationRepositoryJcrImpl implements PublicationRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublicationRepositoryJcrImpl.class);
 
     private static final String ROOT = "/content/publicationjobs";
+
+    /**
+     * Allowlist of the fields a caller may sort by, mapped to their JCR property name. Sort input
+     * is never concatenated into the query directly to avoid JCR-SQL injection via the sort param.
+     */
+    private static final Map<String, String> SORTABLE_FIELDS = new LinkedHashMap<>();
+    static {
+        SORTABLE_FIELDS.put("title", "govscot:title");
+        SORTABLE_FIELDS.put("isbn", "govscot:isbn");
+        SORTABLE_FIELDS.put("filename", "govscot:filename");
+        SORTABLE_FIELDS.put("createddate", "govscot:createddate");
+        SORTABLE_FIELDS.put("embargodate", "govscot:embargodate");
+        SORTABLE_FIELDS.put("state", "govscot:state");
+        SORTABLE_FIELDS.put("username", "govscot:username");
+    }
+
+    private static final String DEFAULT_SORT = "createddate";
 
     Session session;
 
@@ -49,8 +67,10 @@ public class PublicationRepositoryJcrImpl {
      * @param publication Publication details to create.
      * @throws PublicationRepositoryException if the create failed.
      */
+    @Override
     public void create(Publication publication) throws PublicationRepositoryException {
         try {
+            ensureRoot();
             Node folder = paths.ensurePath(ROOT, path(publication));
             Node node = folder.addNode(publication.getIsbn(), "nt:unstructured");
             copyValues(node, publication);
@@ -66,10 +86,11 @@ public class PublicationRepositoryJcrImpl {
      * @param publication Publication details to update.
      * @throws PublicationRepositoryException if the update the publication.
      */
+    @Override
     public void update(Publication publication) throws PublicationRepositoryException {
         try {
             Node node = findById(publication.getId());
-            publication.setLastmodifieddate(Calendar.getInstance());
+            publication.setLastmodifieddate(new Timestamp(System.currentTimeMillis()));
             copyValues(node, publication);
             session.save();
         } catch (RepositoryException e) {
@@ -84,6 +105,7 @@ public class PublicationRepositoryJcrImpl {
      * @return Publication with that id, null if none exists
      * @throws PublicationRepositoryException if the create failed.
      */
+    @Override
     public Publication get(String id) throws PublicationRepositoryException {
         try {
             Node node = findById(id);
@@ -101,27 +123,36 @@ public class PublicationRepositoryJcrImpl {
      * @param title title to match (partial case insensitive
      * @param isbn isbn to match (partial case insensitive
      * @param filename filename to match (partial case insensitive
+     * @param username username to match (partial case insensitive
+     * @param sort field to sort by, defaults to {@value #DEFAULT_SORT} if blank or unrecognised
+     * @param dir sort direction, "asc" or "desc" (defaults to "desc")
      * @return Collection of matching publications
      * @throws PublicationRepositoryException if it fails to list publications
      */
-    public ListResult list(int page, int size, String title, String isbn, String filename)
+    @Override
+    public ListResult list(int page, int size, String title, String isbn, String filename, String username, String sort, String dir)
             throws PublicationRepositoryException {
 
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM nt:unstructured ");
             List<String> andterms = new ArrayList<>();
             andterms.add("jcr:path LIKE '/content/publicationjobs/%'");
+            // exclude the bucket folder nodes created by path()/HippoPaths.ensurePath, which are
+            // also nt:unstructured and would otherwise be picked up alongside real publications
+            andterms.add("govscot:id IS NOT NULL");
 
             if (isNotBlank(title)) {
-                andterms.add(String.format("govscot:title LIKE '%%%s%%'", title));
+                andterms.add(String.format("CONTAINS(govscot:title, '%s')", escapeForContains(title)));
             }
 
             if (isNotBlank(isbn)) {
-                andterms.add(String.format("govscot:isbn LIKE '%%%s%%'", isbn));
+                andterms.add(String.format("CONTAINS(govscot:isbn, '%s')", escapeForContainsPrefix(isbn)));
             }
-
             if (isNotBlank(filename)) {
-                andterms.add(String.format("govscot:filename LIKE '%%%s%%'", filename));
+                andterms.add(String.format("CONTAINS(govscot:filename, '%s')", escapeForContainsPrefix(filename)));
+            }
+            if (isNotBlank(username)) {
+                andterms.add(String.format("CONTAINS(govscot:username, '%s')", escapeForContainsPrefix(username)));
             }
 
             if (!andterms.isEmpty()) {
@@ -129,7 +160,7 @@ public class PublicationRepositoryJcrImpl {
                 sql.append(andterms.stream().collect(joining(" AND ")));
             }
 
-            sql.append(" ORDER by govscot:createddate DESC");
+            sql.append(orderByClause(sort, dir));
             return executeQuery(sql.toString(), page, size);
         } catch (RepositoryException e) {
             LOG.error("Failed to list publications {}", e);
@@ -161,9 +192,49 @@ public class PublicationRepositoryJcrImpl {
         return result;
     }
 
+    /**
+     * Build an ORDER BY clause for the given sort field and direction, using only allowlisted
+     * property names so the sort param can never be used to inject arbitrary JCR-SQL.
+     */
+    String orderByClause(String sort, String dir) {
+        String property = SORTABLE_FIELDS.getOrDefault(sort, SORTABLE_FIELDS.get(DEFAULT_SORT));
+        String direction = "asc".equalsIgnoreCase(dir) ? "ASC" : "DESC";
+        return String.format(" ORDER BY %s %s", property, direction);
+    }
+
+    /**
+     * Sanitise a user supplied search term for use inside a CONTAINS() fulltext expression,
+     * wrapping it as a phrase so multi word terms are matched as adjacent words rather than
+     * being interpreted as fulltext query syntax (AND/OR/NOT, wildcards, quotes).
+     */
+    String escapeForContains(String term) {
+        String sanitized = term.replace("\"", "").replace("'", "");
+        return "\"" + sanitized + "\"";
+    }
+
+    /**
+     * Sanitise a user supplied search term for use as a fulltext prefix match (term*), for fields
+     * such as isbn/filename that are indexed as a single token, where a caller is typically typing
+     * from the start of the value rather than searching for a whole word.
+     */
+    String escapeForContainsPrefix(String term) {
+        String sanitized = term.replace("\"", "").replace("'", "").replace("*", "").trim();
+        return sanitized + "*";
+    }
+
+    /**
+     * Create the {@value #ROOT} node if it does not already exist. HippoPaths.ensurePath only
+     * creates the elements below the root it is given, so the root itself has to be created here.
+     */
+    void ensureRoot() throws RepositoryException {
+        if (!session.nodeExists(ROOT)) {
+            session.getNode("/content").addNode("publicationjobs", "nt:unstructured");
+        }
+    }
+
     List<String> path(Publication publication) {
         String guid = publication.getId().replaceAll("-", "");
-        return Arrays.asList(guid.split("(?<=\\G.{2})"));
+        return Arrays.asList(guid.substring(0, 2), guid.substring(2, 4));
     }
 
     void copyValues(Node node, Publication publication) throws RepositoryException  {
@@ -175,8 +246,12 @@ public class PublicationRepositoryJcrImpl {
         node.setProperty("govscot:state", publication.getState());
         node.setProperty("govscot:statedetails", publication.getStatedetails());
         node.setProperty("govscot:username", publication.getUsername());
-        node.setProperty("govscot:createddate", publication.getCreateddate());
-        node.setProperty("govscot:embargodate", publication.getEmbargodate());
+        Calendar createdDateCal = Calendar.getInstance();
+        createdDateCal.setTimeInMillis(publication.getCreateddate().getTime());
+        node.setProperty("govscot:createddate", createdDateCal);
+        Calendar embargoDateCal = Calendar.getInstance();
+        embargoDateCal.setTimeInMillis(publication.getEmbargodate().getTime());
+        node.setProperty("govscot:embargodate", embargoDateCal);
         node.setProperty("hippostd:state", "published");
         hippoNodeFactory.addBasicFields(node, publication.getTitle());
     }
@@ -191,8 +266,8 @@ public class PublicationRepositoryJcrImpl {
         publication.setState(node.getProperty("govscot:state").getString());
         publication.setStatedetails(propWithDefault(node, "govscot:statedetails", ""));
         publication.setUsername(propWithDefault(node, "govscot:username", ""));
-        publication.setCreateddate(node.getProperty("govscot:createddate").getDate());
-        publication.setEmbargodate(node.getProperty("govscot:embargodate").getDate());
+        publication.setCreateddate(new Timestamp(node.getProperty("govscot:createddate").getDate().getTimeInMillis()));
+        publication.setEmbargodate(new Timestamp(node.getProperty("govscot:embargodate").getDate().getTimeInMillis()));
         return publication;
     }
 

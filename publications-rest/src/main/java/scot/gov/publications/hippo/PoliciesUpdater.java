@@ -45,13 +45,15 @@ public class PoliciesUpdater {
             return;
         }
 
+        Node policyLatestHandle = policyLatest.getParent();
         Node publicationHandle = publicationNode.getParent();
         LOG.info("publication node is {}", publicationNode.getPath());
         LOG.info("publication handle is {}", publicationHandle.getPath());
         if (alreadyRelated(policyLatest, publicationHandle)) {
             LOG.info("Policy is already related to {}", publicationNode.getPath());
         } else {
-            hippoUtils.createMirror(policyLatest, "govscot:relatedItems", publicationHandle);
+            NodeIterator it = policyLatestHandle.getNodes(policyLatestHandle.getName());
+            hippoUtils.apply(it, v -> true, v -> hippoUtils.createMirror(v, "govscot:relatedItems", publicationHandle));
         }
     }
 

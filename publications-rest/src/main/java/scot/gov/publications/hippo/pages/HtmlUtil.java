@@ -4,11 +4,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.ApsZipImporterException;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.apache.commons.lang3.StringUtils.containsAny;
 
 /**
  * Utility methods used to update publication pages.
@@ -73,6 +77,26 @@ public class HtmlUtil {
         String title = getTitle(htmlDoc, 0).toLowerCase();
         return StringUtils.equalsAny(title, "contents", "table of contents");
 
+    }
+
+    /**
+     * APS process their HTML to add <abbr> tags around the text ISBN / isbn, but their
+     * processing is doing this within attribute values leading to links like:
+     * https://www.gov.scot/<abbr>isbn</abbr>/111
+     * This method detects and rejects these.
+     */
+    public void assertLinksDoNotContainMarkup(Document doc) throws ApsZipImporterException {
+        Elements anchors = doc.select("a");
+        List<String> invalidLinks = new ArrayList<>();
+        for (Element anchor : anchors) {
+            String href = anchor.attr("href");
+            if (containsAny(href, '<', '>')) {
+                invalidLinks.add(href);
+            }
+        }
+        if (!invalidLinks.isEmpty()) {
+            throw new ApsZipImporterException("Invalid Links: " + String.join(",", invalidLinks));
+        }
     }
 
 }
