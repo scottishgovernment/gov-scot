@@ -1,6 +1,5 @@
 package scot.gov.publications;
 
-import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -9,10 +8,10 @@ import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.container.ContainerResponseContext;
 import jakarta.ws.rs.container.ContainerResponseFilter;
+import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 
-import static net.logstash.logback.argument.StructuredArguments.keyValue;
-
+@Provider
 public class RequestLogger implements ContainerRequestFilter, ContainerResponseFilter {
 
     private static final Logger LOG = LoggerFactory.getLogger(RequestLogger.class);
@@ -20,15 +19,13 @@ public class RequestLogger implements ContainerRequestFilter, ContainerResponseF
     /**
      * Runs before the request is processed.
      *
-     * Adds the user to the MDC and adds a started stopwatch to the request context.
+     * Adds the user to the MDC and records the start time on the request context.
      */
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         String user = requestContext.getHeaderString("X-User");
         MDC.put("username", user);
-        StopWatch stopwatch = new StopWatch();
-        requestContext.setProperty("stopwatch", stopwatch);
-        stopwatch.start();
+        requestContext.setProperty("startTime", System.currentTimeMillis());
     }
 
     /**
@@ -41,10 +38,9 @@ public class RequestLogger implements ContainerRequestFilter, ContainerResponseF
         String method = request.getRequest().getMethod();
         String path = request.getUriInfo().getPath();
         int status = response.getStatus();
-        StopWatch stopWatch = (StopWatch) request.getProperty("stopwatch");
-        if (stopWatch != null) {
-            stopWatch.stop();
-            LOG.info("{} {} {} {}", status, method, path, keyValue("requestTime", stopWatch.getTime()));
+        Long startTime = (Long) request.getProperty("startTime");
+        if (startTime != null) {
+            LOG.info("{} {} {} requestTime={}ms", status, method, path, System.currentTimeMillis() - startTime);
         } else {
             LOG.info("{} {} {}", status, method, path);
         }

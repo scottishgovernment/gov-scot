@@ -49,6 +49,6 @@ public class PublicationTypeMapper {
     }
 
     public boolean isEmbargoType(String type) {
-        return STATISTICS.equals(map(type));
+        return STATISTICS.equalsIgnoreCase(map(type));
     }
 }

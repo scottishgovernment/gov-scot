@@ -4,6 +4,16 @@ import java.util.List;
 
 public class ListResult {
 
+    public static ListResult result(List<Publication> publications, long totalSize, int page, int pageSize) {
+        ListResult r = new ListResult();
+        r.setPublications(publications);
+        r.setTotalSize(totalSize);
+        r.setPage(page);
+        r.setPageSize(pageSize);
+        return r;
+    }
+
+
     private long totalSize;
     private int page;
     private int pageSize;

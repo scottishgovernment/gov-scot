@@ -66,7 +66,27 @@ public class Metadata {
 
     List<String> secondaryResponsibleRoles = new ArrayList<>();
 
+    Consultation consultation;
+
+    Update update;
+
     boolean sensitive = false;
+
+    public Consultation getConsultation() {
+        return consultation;
+    }
+
+    public void setConsultation(Consultation consultation) {
+        this.consultation = consultation;
+    }
+
+    public Update getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(Update update) {
+        this.update = update;
+    }
 
     public String getId() {
         return id;
@@ -287,5 +307,13 @@ public class Metadata {
 
         // if the sensitive flag is set or if this is an embargo type then we should embargo it.
         return isSensitive() || typeMapper.isEmbargoType(publicationType);
+    }
+
+    public boolean isConsultation() {
+        return "consultation-paper".equals(getPublicationType()) && getConsultation() != null;
+    }
+
+    public boolean isConsultationAnalysis() {
+        return "consultation-analysis".equals(getPublicationType()) && getConsultation() != null;
     }
 }
