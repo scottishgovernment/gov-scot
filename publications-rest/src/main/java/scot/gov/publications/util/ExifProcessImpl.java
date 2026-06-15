@@ -82,7 +82,7 @@ public class ExifProcessImpl implements Exif {
             try {
                 return Integer.parseInt(pageCount);
             } catch (NumberFormatException e) {
-                LOG.info("Invalid page count {}", pageCount, e);
+                LOG.warn("Invalid page count {}", pageCount, e);
             }
         }
         return 0;

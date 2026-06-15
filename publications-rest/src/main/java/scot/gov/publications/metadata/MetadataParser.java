@@ -2,11 +2,14 @@ package scot.gov.publications.metadata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.cfg.CoercionAction;
+import com.fasterxml.jackson.databind.cfg.CoercionInputShape;
+import com.fasterxml.jackson.databind.type.LogicalType;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.ZonedDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
@@ -24,7 +27,7 @@ public class MetadataParser {
             Metadata metadata = doParse(in);
             assertRequiredFields(metadata);
             assertValidFields(metadata);
-            calculateZonedPublicationDatetime(metadata);
+            calculateZonedDateTimes(metadata);
             return metadata;
         } catch (IOException e) {
             throw new MetadataParserException("Failed to parse metadata", e);
@@ -35,6 +38,7 @@ public class MetadataParser {
         ObjectMapper om = new ObjectMapper();
         om.registerModule(new JavaTimeModule());
         om.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        om.coercionConfigFor(LogicalType.Boolean).setCoercion(CoercionInputShape.String, CoercionAction.TryConvert);
         MetadataWrapper wrapper = om.readValue(in, MetadataWrapper.class);
         return wrapper.getMetadata();
     }
@@ -74,14 +78,29 @@ public class MetadataParser {
         if (!validISBN(metadata.normalisedIsbn())) {
             throw new MetadataParserException("Invalid field: isbn = " + metadata.normalisedIsbn());
         }
+
+        if (metadata.getUpdate() != null && metadata.getUpdate().getUpdateText().isEmpty()) {
+            throw new MetadataParserException("Update text cannot be empty.");
+        }
+
+        if (metadata.isConsultation() || metadata.isConsultationAnalysis()) {
+            Consultation consultation = metadata.getConsultation();
+            if (consultation.getOpeningDate() == null || consultation.getClosingDate() == null) {
+                throw new MetadataParserException("Consultation openingDate and closingDate are required.");
+            }
+        }
     }
 
-    private void calculateZonedPublicationDatetime(Metadata metadata) {
-        // the publication date contained in the metadata is specified without a timezone.
+    private void calculateZonedDateTimes(Metadata metadata) {
+        // the publication date and update date contained in the metadata is specified without a timezone.
         // To ensure it is published at the right time we convert this to the right timezone.
         TimeZone timezone = TimeZone.getTimeZone("Europe/London");
-        ZonedDateTime zonedDateTime = metadata.getPublicationDate().atZone(timezone.toZoneId());
-        metadata.setPublicationDateWithTimezone(zonedDateTime);
+        metadata.setPublicationDateWithTimezone(metadata.getPublicationDate().atZone(timezone.toZoneId()));
+
+        if (metadata.getUpdate() != null) {
+            metadata.getUpdate().setLastUpdatedWithTimezone(
+                    metadata.getUpdate().getLastUpdated().atZone(ZoneId.of("Europe/London")));
+        }
     }
 
     private boolean validISBN(String isbn) {

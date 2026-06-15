@@ -3,5 +3,9 @@ definitions:
     /hippo:configuration/hippo:modules/publications-rest:
       jcr:primaryType: hipposys:module
       hipposys:className: scot.gov.publications.PublicationsModule
+      hipposys:cmsonly: true
       /hippo:moduleconfig:
-        jcr:primaryType: hipposched:jobregistry
+        jcr:primaryType: hipposys:moduleconfig
+        publications.db.url: jdbc:postgresql://localhost/publications
+        publications.db.username: publications
+        publications.db.password: publications

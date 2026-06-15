@@ -6,6 +6,14 @@ definitions:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [cmsadmin, publication-editors]
         hipposys:role: editor
+      # the API importer does raw JCR writes that bypass the normal document workflow (folder moves,
+      # removing stale pages/documents on re-import, removing/recreating scheduler job nodes) - these
+      # need jcr:removeNode/jcr:removeChildNodes, which the plain "editor" role above does not include,
+      # so the importer's own system identity gets "admin" here instead, scoped to this one domain.
+      /importer-admin:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [publication-importer]
+        hipposys:role: admin
       /author:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [publication-authors]
@@ -42,5 +50,5 @@ definitions:
           hipposys:value: embargo:handle
       /embargo:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [general-embargo]
+        hipposys:groups: [general-embargo, publication-importer]
         hipposys:role: embargo

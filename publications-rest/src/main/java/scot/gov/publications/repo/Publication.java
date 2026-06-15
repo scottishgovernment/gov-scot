@@ -1,6 +1,8 @@
 package scot.gov.publications.repo;
 
-import java.util.Calendar;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.sql.Timestamp;
 
 public class Publication {
 
@@ -14,17 +16,36 @@ public class Publication {
 
     private String isbn;
 
-    private Calendar embargodate;
+    private Timestamp embargodate;
 
     private String state;
 
     private String statedetails;
 
-    private Calendar createddate;
+    private String checksum;
 
-    private Calendar lastmodifieddate;
+    private Timestamp createddate;
+
+    private Timestamp lastmodifieddate;
 
     private String contact;
+
+    private String url;
+
+    private int documentcount;
+
+    private int pagecount;
+
+    private boolean embargoed;
+
+    private boolean scheduled;
+
+    private boolean published;
+
+    private String stacktrace;
+
+    @JsonIgnore
+    private int fullcount;
 
     public String getId() {
         return id;
@@ -66,11 +87,11 @@ public class Publication {
         this.isbn = isbn;
     }
 
-    public Calendar getEmbargodate() {
+    public Timestamp getEmbargodate() {
         return embargodate;
     }
 
-    public void setEmbargodate(Calendar embargodate) {
+    public void setEmbargodate(Timestamp embargodate) {
         this.embargodate = embargodate;
     }
 
@@ -90,20 +111,36 @@ public class Publication {
         this.statedetails = statedetails;
     }
 
-    public Calendar getCreateddate() {
+    public String getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    public Timestamp getCreateddate() {
         return createddate;
     }
 
-    public void setCreateddate(Calendar createddate) {
+    public void setCreateddate(Timestamp createddate) {
         this.createddate = createddate;
     }
 
-    public Calendar getLastmodifieddate() {
+    public Timestamp getLastmodifieddate() {
         return lastmodifieddate;
     }
 
-    public void setLastmodifieddate(Calendar lastmodifieddate) {
+    public void setLastmodifieddate(Timestamp lastmodifieddate) {
         this.lastmodifieddate = lastmodifieddate;
+    }
+
+    public int getFullcount() {
+        return fullcount;
+    }
+
+    public void setFullcount(int fullcount) {
+        this.fullcount = fullcount;
     }
 
     public String getContact() {
@@ -112,5 +149,61 @@ public class Publication {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public int getDocumentcount() {
+        return documentcount;
+    }
+
+    public void setDocumentcount(int documentcount) {
+        this.documentcount = documentcount;
+    }
+
+    public int getPagecount() {
+        return pagecount;
+    }
+
+    public void setPagecount(int pagecount) {
+        this.pagecount = pagecount;
+    }
+
+    public boolean isEmbargoed() {
+        return embargoed;
+    }
+
+    public void setEmbargoed(boolean embargoed) {
+        this.embargoed = embargoed;
+    }
+
+    public boolean isScheduled() {
+        return scheduled;
+    }
+
+    public void setScheduled(boolean scheduled) {
+        this.scheduled = scheduled;
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public void setPublished(boolean published) {
+        this.published = published;
+    }
+
+    public String getStacktrace() {
+        return stacktrace;
+    }
+
+    public void setStacktrace(String stacktrace) {
+        this.stacktrace = stacktrace;
     }
 }

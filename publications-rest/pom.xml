@@ -19,8 +19,19 @@
   <dependencies>
 
     <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-jcrutil</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-repository-jaxrs</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-cms-api</artifactId>
       <scope>provided</scope>
     </dependency>
 
@@ -34,6 +45,16 @@
       <groupId>scot.gov.www</groupId>
       <artifactId>imageprocessing</artifactId>
       <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-commons</artifactId>
     </dependency>
 
     <dependency>
@@ -53,8 +74,6 @@
       <artifactId>logstash-logback-encoder</artifactId>
       <version>5.3</version>
     </dependency>
-
-    <!---Database -->
 
     <!-- Apache utils -->
     <dependency>

@@ -46,14 +46,11 @@ public class PublicationPageUpdater {
 
     DocumentHelper documentHelper;
 
-    PublicationPathStrategy pathStrategy;
-
     public PublicationPageUpdater(Session session) {
         this.session = session;
         this.nodeFactory = new HippoNodeFactory(session);
         this.hippoPaths = new HippoPaths(session);
         this.documentHelper = new DocumentHelper(session);
-        this.pathStrategy = new PublicationPathStrategy(session);
     }
 
     /**
@@ -64,9 +61,10 @@ public class PublicationPageUpdater {
      * @param publicationFolder Node of the folder containing the publication in the repo
      * @param filenameToImageId Map image filenames to the node of tat image in the repo
      * @param docnameToNode Map from the document name to the node of that document in the repo
+     * @return the number of pages created
      * @throws ApsZipImporterException
      */
-    public void addPages(
+    public int addPages(
             ZipFile zipFile,
             Metadata metadata,
             Node publicationFolder,
@@ -80,9 +78,12 @@ public class PublicationPageUpdater {
                     metadata,
                     publicationFolder,
                     filenameToImageId);
+            int pageCount = nodesByEntryname.size();
             nodesByEntryname.putAll(docnameToNode);
+            session.save();
             PublicationLinkRewriter linkRewriter = new PublicationLinkRewriter(publicationFolder.getName(), nodesByEntryname);
             linkRewriter.rewrite(publicationFolder);
+            return pageCount;
         } catch (IOException | RepositoryException e) {
             throw new ApsZipImporterException("Failed to upload pages", e);
         }
@@ -101,7 +102,7 @@ public class PublicationPageUpdater {
 
         List<ZipEntry> htmlEntries = zipFile.stream().filter(ZipEntryUtil::isHtml).sorted(Comparator.comparing(ZipEntry::getName)).collect(toList());
 
-        LOG.info("Adding {} pages", htmlEntries.size());
+        LOG.debug("Adding {} pages", htmlEntries.size());
         Map<String, Node> pageNodesByEntry = new HashMap<>();
         int i = 0;
         DocumentManager documentManager = new WorkflowDocumentManagerImpl(session);
@@ -125,7 +126,32 @@ public class PublicationPageUpdater {
             pageNodesByEntry.put(entryPath.getFileName().toString(), pageNode);
             i++;
         }
+
+        if (metadata.isConsultation()) {
+            addConsultationResponsePage(importTask, documentManager, metadata, pagesPath, i);
+        }
+
         return pageNodesByEntry;
+    }
+
+    /**
+     * Consultation papers always get a "How to respond" page containing standard boilerplate text,
+     * appended after the pages taken from the APS zip.
+     */
+    private void addConsultationResponsePage(
+            WorkflowDocumentVariantImportTask importTask,
+            DocumentManager documentManager,
+            Metadata metadata,
+            String pagesPath,
+            int index) throws IOException, RepositoryException {
+
+        String html = IOUtils.resourceToString("/consultationResponse.html", UTF_8);
+        ContentNode responseNode = new ContentNodes().newConsultationResponseNode(html);
+        String path = pagesPath + index;
+        String publishedPath = importTask.createOrUpdateDocumentFromVariantContentNode(
+                responseNode, "govscot:PublicationPage", path, "en", responseNode.getProperty(GOVSCOT_TITLE).getValue());
+        Node pageNode = session.getNode(publishedPath);
+        documentHelper.ensurePublicationState(documentManager, pageNode, path, metadata);
     }
 
     private Node ensurePagesNode(Node publicationsFolder) throws RepositoryException {

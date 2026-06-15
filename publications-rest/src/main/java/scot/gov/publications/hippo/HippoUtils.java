@@ -199,6 +199,13 @@ public class HippoUtils {
         node.setProperty(property, values.toArray(new String[values.size()]), PropertyType.STRING);
     }
 
+    public void setPropertyStringsIfAbsent(Node node, String property, String[] values) throws RepositoryException {
+        if (node.hasProperty(property)) {
+            return;
+        }
+        node.setProperty(property, values, PropertyType.STRING);
+    }
+
     public Node findOne(Session session, String queryTemplate, Object... args) throws RepositoryException {
         return findOneQuery(session, queryTemplate, Query.SQL, args);
     }
@@ -214,7 +221,7 @@ public class HippoUtils {
 
     public Node findOneQuery(Session session, String queryTemplate, String type, Object... args) throws RepositoryException {
         String sql = String.format(queryTemplate, args);
-        LOG.info("findOneQuery {}", sql);
+        LOG.debug("findOneQuery {}", sql);
         Query queryObj = session.getWorkspace().getQueryManager().createQuery(sql, type);
         QueryResult result = queryObj.execute();
         if (result.getNodes().getSize() == 1) {
@@ -248,6 +255,10 @@ public class HippoUtils {
             node = it.nextNode();
         }
         return node;
+    }
+
+    public void sortChildren(Node node) throws RepositoryException {
+        sortChildren(node, false);
     }
 
     public void sortChildren(Node node, boolean reverse) throws RepositoryException {

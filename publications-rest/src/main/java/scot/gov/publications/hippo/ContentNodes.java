@@ -1,9 +1,11 @@
 package scot.gov.publications.hippo;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.jackrabbit.util.ISO8601;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.onehippo.forge.content.pojo.model.BinaryValue;
 import org.onehippo.forge.content.pojo.model.ContentNode;
 import org.onehippo.forge.content.pojo.model.ContentProperty;
 import org.onehippo.forge.content.pojo.model.ContentPropertyType;
@@ -16,6 +18,7 @@ import scot.gov.publications.repo.Publication;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,10 +38,10 @@ public class ContentNodes {
         String title = TitleSanitiser.sanitise(publication.getTitle());
         ContentNode contentNode = new ContentNode();
         contentNode.setPrimaryType("govscot:Publication");
-        contentNode.addMixinType("hippo:named");
+        contentNode.addMixinType(HIPPO_NAMED);
         contentNode.setProperty(HIPPO_NAME, publication.getTitle());
         contentNode.setProperty("govscot:slug", slug);
-        contentNode.setProperty("govscot:title", title);
+        contentNode.setProperty(GOVSCOT_TITLE, title);
         contentNode.setProperty("govscot:publicationId", publication.getId());
         contentNode.setProperty("govscot:publicationFilename", publication.getFilename());
         contentNode.setProperty("govscot:publicationUsername", publication.getUsername());
@@ -58,6 +61,38 @@ public class ContentNodes {
         return contentNode;
     }
 
+    /**
+     * Refresh the metadata-derived fields of an existing publication's exported ContentNode from a
+     * re-imported zip's metadata - title, summary, description, contact, isbn and the old-style url
+     * - so that editing these in the source metadata and re-uploading actually takes effect, rather
+     * than silently keeping whatever was last imported. Deliberately leaves govscot:notes alone
+     * (CMS-editor-only field) and never adds/removes child nodes already present on the exported
+     * tree (see the content-exim binder note on updateMirrorDocbase in PublicationNodeUpdater).
+     */
+    public void updateContentNode(ContentNode contentNode, Metadata metadata) {
+        String title = TitleSanitiser.sanitise(metadata.getTitle());
+        contentNode.setProperty(HIPPO_NAME, metadata.getTitle());
+        contentNode.setProperty(GOVSCOT_TITLE, title);
+        contentNode.setProperty("govscot:seoTitle", metadata.getTitle());
+        contentNode.setProperty("govscot:summary", metadata.getExecutiveSummary());
+        contentNode.setProperty("govscot:metaDescription", metadata.getExecutiveSummary());
+        updateHtmlNodeContent(contentNode, "govscot:content", metadata.getDescription());
+        updateHtmlNodeContent(contentNode, "govscot:contact", mailToLink(metadata.getContact().getEmail()));
+        contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
+
+        if (isNotBlank(metadata.getUrl())) {
+            contentNode.setProperty(GOVSCOT_GOVSCOTURL, oldStyleUrl(metadata));
+        }
+    }
+
+    private void updateHtmlNodeContent(ContentNode contentNode, String name, String html) {
+        if (contentNode.hasNode(name)) {
+            contentNode.getNode(name).setProperty("hippostd:content", html);
+        } else {
+            contentNode.addNode(htmlNode(name, html));
+        }
+    }
+
     public ContentNode newPageNode(String content, int i, Map<String, String> filenameToImageId) throws ApsZipImporterException {
 
 
@@ -67,9 +102,9 @@ public class ContentNodes {
 
         ContentNode contentNode = new ContentNode();
         contentNode.setPrimaryType("govscot:PublicationPage");
-        contentNode.addMixinType("hippo:named");
+        contentNode.addMixinType(HIPPO_NAMED);
         contentNode.setProperty(HIPPO_NAME, title);
-        contentNode.setProperty("govscot:title", title);
+        contentNode.setProperty(GOVSCOT_TITLE, title);
 
 
         Set<String> imageLinks = imageLinks(mainTextDiv, filenameToImageId);
@@ -82,6 +117,55 @@ public class ContentNodes {
         setBooleanProperty(contentNode, "govscot:contentsPage", htmlUtil.isContentsPage(rewrittenHtml));
 
         return contentNode;
+    }
+
+    /**
+     * Build the "How to respond" page added to every consultation paper, containing standard
+     * boilerplate text about how responses are handled rather than content from the APS zip.
+     */
+    public ContentNode newConsultationResponseNode(String html) {
+        String title = "How to respond";
+
+        ContentNode contentNode = new ContentNode();
+        contentNode.setPrimaryType("govscot:PublicationPage");
+        contentNode.addMixinType(HIPPO_NAMED);
+        contentNode.setProperty(HIPPO_NAME, title);
+        contentNode.setProperty(GOVSCOT_TITLE, title);
+        contentNode.addNode(htmlNode("govscot:content", html));
+        setBooleanProperty(contentNode, "govscot:contentsPage", false);
+        return contentNode;
+    }
+
+    public ContentNode newDocumentInfoNode(
+            String title,
+            long pageCount,
+            String filename,
+            String mimeType,
+            BinaryValue document) {
+
+        ContentNode contentNode = new ContentNode();
+        contentNode.setPrimaryType("govscot:DocumentInformation");
+        contentNode.addMixinType(HIPPO_NAMED);
+        contentNode.setProperty(HIPPO_NAME, title);
+        contentNode.setProperty(GOVSCOT_TITLE, title);
+        setBooleanProperty(contentNode, "govscot:accessible", false);
+        setBooleanProperty(contentNode, "govscot:highlighted", false);
+        contentNode.setProperty("govscot:pageCount", ContentPropertyType.LONG, Long.toString(pageCount));
+        contentNode.addNode(documentResourceNode(filename, mimeType, document));
+        return contentNode;
+    }
+
+    private ContentNode documentResourceNode(String filename, String mimeType, BinaryValue document) {
+        ContentNode resourceNode = new ContentNode();
+        resourceNode.setName("govscot:document");
+        resourceNode.setPrimaryType("hippo:resource");
+        resourceNode.setProperty(HIPPO_FILENAME, filename);
+        resourceNode.setProperty(JCR_MIMETYPE, mimeType);
+        resourceNode.setProperty("jcr:data", document);
+        resourceNode.setProperty("jcr:lastModified", ContentPropertyType.DATE, ISO8601.format(Calendar.getInstance()));
+        // avoid costly text extraction
+        resourceNode.setProperty("hippo:text", "");
+        return resourceNode;
     }
 
     void setBooleanProperty(ContentNode contentNode, String name, boolean val) {

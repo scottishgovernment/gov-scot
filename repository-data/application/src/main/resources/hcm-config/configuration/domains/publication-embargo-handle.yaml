@@ -1,0 +1,45 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/publication-embargo-handle:
+      jcr:primaryType: hipposys:domain
+      # a node's own type (embargo:handle / embargo:document) excludes it from the main "publications"
+      # domain regardless of role, so the importer needs this separate, unconditional grant to read/
+      # write/remove on an embargoed publication's handle and variants (mixins, embargo:groups,
+      # scheduler job nodes underneath, etc). Admin (not just editor) because the importer also removes
+      # stale scheduler job nodes and mixins here, not just adds/modifies.
+      /admin:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, publication-importer]
+        hipposys:role: admin
+      /embargo-handle:
+        jcr:primaryType: hipposys:domainrule
+        /include-publication-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/publications/
+        /type-embargo-handle:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:handle
+      /embargo-document:
+        jcr:primaryType: hipposys:domainrule
+        /include-publication-documents:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/publications/
+        /type-embargo-document:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: nodetype
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: embargo:document

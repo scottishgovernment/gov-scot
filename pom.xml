@@ -59,6 +59,7 @@
     <jsoup.version>1.23.2</jsoup.version>
     <commons-io.version>2.21.0</commons-io.version>
     <commons-validator.version>1.10.1</commons-validator.version>
+    <aws.version>2.28.11</aws.version>
 
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
     <hippo.cms.locales/>
@@ -122,6 +123,12 @@
         <groupId>org.onehippo.forge.content-exim</groupId>
         <artifactId>content-exim-core</artifactId>
         <version>${forge.content-exim.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>s3</artifactId>
+        <version>${aws.version}</version>
       </dependency>
 
       <dependency>

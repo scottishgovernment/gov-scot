@@ -22,15 +22,12 @@ public class PublicationPathStrategy {
 
     Session session;
 
-    HippoUtils hippoUtils;
-
     HippoPaths hippoPaths;
 
     SlugAllocationStrategy slugAllocationStrategy;
 
     public PublicationPathStrategy(Session session) {
         this.session = session;
-        this.hippoPaths = new HippoPaths(session);
         this.hippoPaths = new HippoPaths(session);
         this.slugAllocationStrategy = new SlugAllocationStrategy(session);
     }
@@ -69,10 +66,15 @@ public class PublicationPathStrategy {
         String yearString = Integer.toString(pubDate.getYear());
         String monthString = String.format("%02d", pubDate.getMonthValue());
 
+        // slugify these segments (without stopword removal - the real seeded type folders keep
+        // words like "and", e.g. advice-and-guidance, statistics-and-research) so the string this
+        // produces - used both to create/look up the real folder nodes and, later, as the literal
+        // path handed to the document import task - matches exactly what HippoPaths.ensurePath()
+        // will create/find. The real top-level folder is named "publications" (lowercase).
         List<String> path = new ArrayList<>();
         Collections.addAll(path,
-                "Publications",
-                defaultIfBlank(metadata.mappedPublicationType(), "Publication"),
+                HippoPaths.slugify("Publications", false),
+                HippoPaths.slugify(defaultIfBlank(metadata.mappedPublicationType(), "Publication"), false),
                 yearString,
                 monthString);
         return path;
