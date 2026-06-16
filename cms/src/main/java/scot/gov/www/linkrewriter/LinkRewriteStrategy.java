@@ -1,4 +1,4 @@
-package scot.gov.www;
+package scot.gov.www.linkrewriter;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
