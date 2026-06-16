@@ -1,0 +1,85 @@
+/* ---- Input dialog ---- */
+
+/* The framework renders .hippo-window-buttons as position:absolute; bottom:16px; right:16px
+   so it floats over the dialog content. Add padding-bottom to clear it:
+   button height (~36px) + bottom offset (16px) + gap (12px) = 64px */
+
+.archive-dialog {
+    padding: 16px 16px 64px;
+}
+
+.archive-dialog-note {
+    background-color: #f0f6fc;
+    border-left: 4px solid #147ac8;
+    border-radius: 2px;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+}
+
+.archive-dialog-note p {
+    margin: 0 0 6px;
+}
+
+.archive-dialog-note p:last-child {
+    margin-bottom: 0;
+}
+
+.archive-dialog-label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.archive-dialog-url-input {
+    border: 1px solid #bbbbbb;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 7px 10px;
+    width: 100%;
+}
+
+.archive-dialog-url-input:focus {
+    border-color: #147ac8;
+    outline: none;
+}
+
+/* ---- Results dialog ---- */
+
+.archive-results {
+    padding: 16px 16px 64px;
+}
+
+.archive-results-table {
+    border-collapse: collapse;
+    font-size: 12px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.archive-results-table thead th {
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    padding: 8px 10px;
+    text-align: left;
+    width: 50%;
+}
+
+.archive-results-table tbody tr:nth-child(even) td {
+    background-color: #fafafa;
+}
+
+.archive-results-table tbody td {
+    border: 1px solid #ddd;
+    overflow-wrap: break-word;
+    padding: 7px 10px;
+    vertical-align: top;
+    word-break: break-all;
+    width: 50%;
+}

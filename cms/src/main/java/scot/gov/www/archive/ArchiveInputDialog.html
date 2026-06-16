@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org/">
+<head>
+  <title>Create archive redirects</title>
+</head>
+<wicket:extend>
+  <div class="archive-dialog">
+    <div class="archive-dialog-note">
+      <p>Redirects will be created pointing to the archived version of this document at
+        the UK Web Archive. The archive URL below is the base address — the document's
+        own path will be appended automatically.</p>
+      <p>For publications, redirects will also be created for all publication pages.</p>
+    </div>
+    <div class="archive-dialog-field">
+      <label class="archive-dialog-label" for="archiveUrlInput">Archive URL</label>
+      <input type="text" wicket:id="archive-url" id="archiveUrlInput" class="archive-dialog-url-input" />
+    </div>
+  </div>
+</wicket:extend>
+</html>
