@@ -11,7 +11,9 @@
       <JsonTemplateLayout
           eventTemplateUri="file:${sys:catalina.base}/conf/log-layout.json"
           locationInfoEnabled="true">
-        <EventTemplateAdditionalField key="context" value="$${web:contextPath}"/>
+        <EventTemplateAdditionalField
+            key="context"
+            value="$${jndi:java:comp/env/logging/contextName:-unknown}"/>
       </JsonTemplateLayout>
       <Policies>
         <SizeBasedTriggeringPolicy size="10MB"/>
