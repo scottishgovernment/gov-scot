@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org/">
+<body>
+<wicket:panel>
+  <div class="redirects-perspective">
+    <div class="redirects-perspective-note">
+      <p>Paste a CSV with columns: <strong>from</strong>, <strong>to</strong>, <strong>description</strong> (optional). No header row.</p>
+      <p>The <em>from</em> URL may be a path (e.g. <code>/old/page</code>) or a fully-qualified <code>https://www.gov.scot/…</code> URL — the origin will be stripped automatically.</p>
+      <p>For publications, redirects will be created for all publication pages as well as the top-level URL.</p>
+    </div>
+    <form wicket:id="form">
+      <label class="redirects-perspective-label" for="csvInput">CSV</label>
+      <textarea wicket:id="csv" id="csvInput" class="redirects-perspective-textarea"></textarea>
+      <div class="redirects-perspective-actions">
+        <button wicket:id="upload" class="btn btn-primary">Upload</button>
+      </div>
+    </form>
+  </div>
+</wicket:panel>
+</body>
+</html>

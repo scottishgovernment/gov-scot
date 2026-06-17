@@ -5,20 +5,22 @@
 </head>
 <wicket:extend>
   <div class="archive-results">
-    <table class="archive-results-table">
-      <thead>
-        <tr>
-          <th class="archive-results-col">From</th>
-          <th class="archive-results-col">To</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr wicket:id="redirects">
-          <td class="archive-results-col"><span wicket:id="from"></span></td>
-          <td class="archive-results-col"><span wicket:id="to"></span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="archive-results-scroll-wrapper">
+      <table class="archive-results-table">
+        <thead>
+          <tr>
+            <th class="archive-results-col">From</th>
+            <th class="archive-results-col">To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr wicket:id="redirects">
+            <td class="archive-results-col"><span wicket:id="from"></span></td>
+            <td class="archive-results-col"><span wicket:id="to"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </wicket:extend>
 </html>

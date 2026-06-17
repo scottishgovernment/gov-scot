@@ -38,6 +38,7 @@ class ArchiveDocumentUtils {
         return getVariantOfType(handleNode, PUBLICATION_NODE_TYPE) != null;
     }
 
+
     static Node getVariantOfType(Node handleNode, String nodeType) throws RepositoryException {
         for (Node variant : new NodeIterable(handleNode.getNodes(handleNode.getName()))) {
             if (variant.isNodeType(nodeType)) {

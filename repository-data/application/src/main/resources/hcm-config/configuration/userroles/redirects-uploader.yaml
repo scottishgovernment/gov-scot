@@ -1,0 +1,9 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:userroles:
+      /scotgov.redirects.uploader:
+        jcr:primaryType: hipposys:userrole
+        hipposys:system: true
+        hipposys:description: Access to the redirects uploader perspective
+        hipposys:userroles:
+          - xm.cms.user

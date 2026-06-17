@@ -55,6 +55,13 @@
     padding: 16px 16px 64px;
 }
 
+.archive-results-scroll-wrapper {
+    /* ~20 rows: header ~35px + 20 rows * ~33px each = 695px */
+    max-height: 695px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
 .archive-results-table {
     border-collapse: collapse;
     font-size: 12px;
@@ -64,11 +71,14 @@
 
 .archive-results-table thead th {
     background-color: #f3f3f3;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     font-weight: bold;
     padding: 8px 10px;
+    position: sticky;
     text-align: left;
+    top: 0;
     width: 50%;
+    z-index: 1;
 }
 
 .archive-results-table tbody tr:nth-child(even) td {
@@ -76,7 +86,7 @@
 }
 
 .archive-results-table tbody td {
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     overflow-wrap: break-word;
     padding: 7px 10px;
     vertical-align: top;

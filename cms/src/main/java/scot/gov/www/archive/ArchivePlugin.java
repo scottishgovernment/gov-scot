@@ -48,7 +48,7 @@ public class ArchivePlugin extends RenderPlugin<Workflow> {
 
             @Override
             public boolean isVisible() {
-                return isUserInArchivers();
+                return isUserInArchivers() && isApplicableDocumentType();
             }
 
             @Override
@@ -87,7 +87,7 @@ public class ArchivePlugin extends RenderPlugin<Workflow> {
 
             @Override
             public boolean isVisible() {
-                return isUserInArchivers();
+                return isUserInArchivers() && isApplicableDocumentType();
             }
 
             @Override
@@ -117,6 +117,50 @@ public class ArchivePlugin extends RenderPlugin<Workflow> {
                             (ArchiveResultsDialog.OnCloseCallback) ArchivePlugin.this::forceWorkflowMenuRebuild);
                 } catch (RepositoryException e) {
                     LOG.error("Error removing redirects", e);
+                    return new ExceptionDialog(e);
+                }
+            }
+        });
+
+        add(new StdWorkflow("showRedirects", new StringResourceModel("show-redirects", this, null), context, model) {
+
+            @Override
+            public String getSubMenu() {
+                return "Archive";
+            }
+
+            @Override
+            public boolean isVisible() {
+                return isUserInArchivers() && isApplicableDocumentType();
+            }
+
+            @Override
+            public boolean isEnabled() {
+                try {
+                    return redirectExists(model.getNode());
+                } catch (RepositoryException e) {
+                    LOG.error("Error checking redirect existence for show item", e);
+                    return false;
+                }
+            }
+
+            @Override
+            protected Component getIcon(final String id) {
+                return HippoIcon.fromSprite(id, Icon.SEARCH);
+            }
+
+            @Override
+            protected IDialogService.Dialog createRequestDialog() {
+                try {
+                    Session session = UserSession.get().getJcrSession();
+                    Node handleNode = model.getNode();
+                    List<Redirect> redirects = lookupRedirects(session, handleNode);
+                    int count = redirects.size();
+                    String noun = count == 1 ? "redirect" : "redirects";
+                    return new ArchiveResultsDialog(redirects, count + " " + noun + " for this page",
+                            (ArchiveResultsDialog.OnCloseCallback) () -> {});
+                } catch (RepositoryException e) {
+                    LOG.error("Error looking up redirects", e);
                     return new ExceptionDialog(e);
                 }
             }
@@ -160,6 +204,32 @@ public class ArchivePlugin extends RenderPlugin<Workflow> {
         return removed;
     }
 
+    private List<Redirect> lookupRedirects(Session session, Node handleNode) throws RepositoryException {
+        JcrRedirectRepository repo = new JcrRedirectRepository(session);
+        String documentPath = ArchiveDocumentUtils.getDocumentPath(handleNode);
+
+        List<String> pathsToLookup = new ArrayList<>();
+        pathsToLookup.add(documentPath);
+
+        if (ArchiveDocumentUtils.isPublication(handleNode)) {
+            Redirect dummy = new Redirect();
+            dummy.setFrom(documentPath);
+            dummy.setTo("dummy");
+            dummy.setHistoricalUrl(true);
+            PublicationArchiver archiver = new PublicationArchiver(session, repo);
+            List<Redirect> expanded = archiver.expand(dummy);
+            for (Redirect r : expanded) {
+                pathsToLookup.add(r.getFrom());
+            }
+        }
+
+        List<Redirect> found = new ArrayList<>();
+        for (String path : pathsToLookup) {
+            repo.lookup(path).ifPresent(found::add);
+        }
+        return found;
+    }
+
     /**
      * Forces the document workflow menu to re-evaluate isEnabled()/isVisible() on all items
      * without a full page reload. Walks up the Wicket component hierarchy to find
@@ -182,6 +252,16 @@ public class ArchivePlugin extends RenderPlugin<Workflow> {
             }
         }
         LOG.debug("DocumentWorkflowManagerPlugin not found in parent hierarchy; menu state updates on next page load");
+    }
+
+    private boolean isApplicableDocumentType() {
+        try {
+            WorkflowDescriptorModel model = (WorkflowDescriptorModel) getDefaultModel();
+            return ArchiveDocumentUtils.isPublication(model.getNode());
+        } catch (RepositoryException e) {
+            LOG.error("Error checking document type for Archive menu visibility", e);
+            return false;
+        }
     }
 
     private boolean isUserInArchivers() {

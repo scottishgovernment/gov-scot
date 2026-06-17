@@ -1,0 +1,54 @@
+.redirects-perspective {
+    box-sizing: border-box;
+    max-width: 860px;
+    padding: 24px;
+}
+
+.redirects-perspective-note {
+    background-color: #f0f6fc;
+    border-left: 4px solid #147ac8;
+    border-radius: 2px;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+}
+
+.redirects-perspective-note p {
+    margin: 0 0 6px;
+}
+
+.redirects-perspective-note p:last-child {
+    margin-bottom: 0;
+}
+
+.redirects-perspective-label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.redirects-perspective-textarea {
+    border: 1px solid #bbbbbb;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 12px;
+    height: 400px;
+    line-height: 1.5;
+    padding: 8px 10px;
+    resize: vertical;
+    width: 100%;
+}
+
+.redirects-perspective-textarea:focus {
+    border-color: #147ac8;
+    outline: none;
+}
+
+.redirects-perspective-actions {
+    margin-top: 12px;
+    text-align: right;
+}

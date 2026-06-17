@@ -10,6 +10,13 @@ definitions:
       country: sc
     /hippo:configuration/hippo:frontend/cms/cms-static/root:
       wicket.skin: [skin/document-editor.css, skin/cms-design-tweaks.css]
+    /hippo:configuration/hippo:frontend/cms/cms-static/redirectsPerspective:
+      jcr:primaryType: frontend:plugin
+      jcr:mixinTypes: ['frontend:navigationitem']
+      plugin.class: scot.gov.www.redirects.RedirectsPerspective
+      hipposys:userrole: scotgov.redirects.uploader
+      wicket.id: service.tab
+      frontend:appPath: redirects
     /hippo:configuration/hippo:frontend/cms/cms-dashshortcuts/gotoShortcut:
       option.location: /content/documents/govscot
     /hippo:configuration/hippo:frontend/cms:

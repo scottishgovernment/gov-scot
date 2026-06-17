@@ -8,7 +8,7 @@ definitions:
         .meta:category: system
         .meta:add-new-system-values: true
         type: string
-        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer]
+        value: [xm.channel.webmaster, xm.dashboard.user, xm.cms.user, xm.content.viewer, scotgov.redirects.uploader]
       hipposys:members:
         .meta:category: system
         .meta:add-new-system-values: true

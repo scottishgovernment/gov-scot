@@ -1,0 +1,16 @@
+.redirects-error-dialog {
+    padding: 16px 16px 64px;
+}
+
+.redirects-error-list {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.redirects-error-list li {
+    color: #c0392b;
+    margin-bottom: 4px;
+    word-break: break-all;
+}

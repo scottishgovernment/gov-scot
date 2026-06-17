@@ -19,7 +19,7 @@ import java.util.List;
 public class ArchiveResultsDialog extends AbstractDialog<Void> {
 
     @FunctionalInterface
-    interface OnCloseCallback extends Runnable, Serializable {}
+    public interface OnCloseCallback extends Runnable, Serializable {}
 
     private final String title;
     private final OnCloseCallback onClose;
