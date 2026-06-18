@@ -38,7 +38,7 @@
 
   <filter>
     <filter-name>UserMDCFilter</filter-name>
-    <filter-class>scot.gov.www.UserMDCFilter</filter-class>
+    <filter-class>scot.gov.publishing.cms.request.UserMDCFilter</filter-class>
   </filter>
 
   <filter-mapping>
