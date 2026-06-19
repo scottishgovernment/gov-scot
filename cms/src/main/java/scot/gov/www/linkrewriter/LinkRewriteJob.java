@@ -372,6 +372,12 @@ public class LinkRewriteJob implements RepositoryJob {
             recordUnresolvable(href, strategy.lastWasHistoricalRedirect, stats);
             return null;
         }
+        if (!hasPublishedVariant(target)) {
+            LOG.warn("LinkRewriteJob: resolved href='{}' in {} to {} but it has no published variant, skipping",
+                    href, htmlNode.getPath(), target.getPath());
+            stats.notRewritten++;
+            return null;
+        }
         return new LinkReplacement(href, target, strategy.lastStrategyName);
     }
 
@@ -426,6 +432,18 @@ public class LinkRewriteJob implements RepositoryJob {
 
     private static boolean isBinariesHref(String href) {
         return href.contains("/binaries/");
+    }
+
+    private static boolean hasPublishedVariant(Node handle) throws RepositoryException {
+        NodeIterator variants = handle.getNodes();
+        while (variants.hasNext()) {
+            Node variant = variants.nextNode();
+            if (variant.hasProperty("hippostd:state")
+                    && "published".equals(variant.getProperty("hippostd:state").getString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
