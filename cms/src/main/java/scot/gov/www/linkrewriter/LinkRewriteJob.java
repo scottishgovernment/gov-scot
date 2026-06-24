@@ -134,6 +134,7 @@ public class LinkRewriteJob implements RepositoryJob {
         } catch (JobStoppedException e) {
             saver.forceSave();
             logStats(stats);
+            LOG.debug("JobStoppedException", e);
             LOG.info("LinkRewriteJob: stopped early by operator after {}", formatDuration(System.currentTimeMillis() - startMs));
             return;
         } catch (RepositoryException e) {

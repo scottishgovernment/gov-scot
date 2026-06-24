@@ -100,10 +100,7 @@ public class RedirectPathLocator implements PathLocatorStrategy {
 
             Optional<Redirect> redirect = redirects.lookup(currentPath);
             if (redirect.isEmpty()) {
-                if (visited.size() > 1) {
-                    LOG.info("RedirectPathLocator: path='{}' chain ended at '{}' with no further redirect (chain: {})",
-                            path, currentPath, chainString(visited, null));
-                }
+                logChainEndedNoRedirect(path, currentPath, visited);
                 return Optional.empty();
             }
             if (redirect.get().isHistoricalUrl()) {
@@ -128,15 +125,12 @@ public class RedirectPathLocator implements PathLocatorStrategy {
             LOG.info("RedirectPathLocator: path='{}' resolved redirect path='{}'", currentPath, redirectPath);
 
             Optional<Node> result = tryDelegates(session, currentPath, redirectPath);
-            if (result.isPresent() && testIsPublished(result.get())) {
-                lastRedirectQueryString = hopQueryString;
-                if (visited.size() > 1) {
-                    LOG.info("RedirectPathLocator: path='{}' resolved after {} redirect hop(s): {}",
-                            path, visited.size(), chainString(visited, redirectPath));
-                }
-                return result;
-            }
             if (result.isPresent()) {
+                if (testIsPublished(result.get())) {
+                    lastRedirectQueryString = hopQueryString;
+                    logChainResolved(path, visited, redirectPath);
+                    return result;
+                }
                 LOG.info("RedirectPathLocator: path='{}' redirect target '{}' resolved to unpublished '{}', following chain",
                         currentPath, redirectPath, result.get().getPath());
             }
@@ -161,6 +155,20 @@ public class RedirectPathLocator implements PathLocatorStrategy {
             }
         }
         return Optional.empty();
+    }
+
+    private void logChainEndedNoRedirect(String path, String currentPath, LinkedHashSet<String> visited) {
+        if (visited.size() > 1) {
+            LOG.info("RedirectPathLocator: path='{}' chain ended at '{}' with no further redirect (chain: {})",
+                    path, currentPath, chainString(visited, null));
+        }
+    }
+
+    private void logChainResolved(String path, LinkedHashSet<String> visited, String redirectPath) {
+        if (visited.size() > 1) {
+            LOG.info("RedirectPathLocator: path='{}' resolved after {} redirect hop(s): {}",
+                    path, visited.size(), chainString(visited, redirectPath));
+        }
     }
 
     /** Extracts the query string (including leading {@code ?}) from a redirect target URL, logging if non-empty. */
