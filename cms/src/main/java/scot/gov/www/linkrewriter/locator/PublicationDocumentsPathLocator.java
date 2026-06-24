@@ -26,7 +26,8 @@ public class PublicationDocumentsPathLocator implements PathLocatorStrategy {
     private static final Logger LOG = LoggerFactory.getLogger(PublicationDocumentsPathLocator.class);
 
     private static final String CONTENT_DOCUMENTS_ROOT = SlugLookup.CONTENT_DOCUMENTS_ROOT;
-    private static final String DOCUMENTS = "documents";
+    private static final String DOCUMENTS         = "documents";
+    private static final String DOCUMENTS_SEGMENT = "/documents";
 
     @Override
     public String name() {
@@ -43,7 +44,7 @@ public class PublicationDocumentsPathLocator implements PathLocatorStrategy {
         }
 
         String beforeDocs = normPath.substring(0, docsStart);
-        String afterDocs  = normPath.substring(docsStart + "/documents".length());
+        String afterDocs  = normPath.substring(docsStart + DOCUMENTS_SEGMENT.length());
 
         // afterDocs is either "" (path ends at /documents) or "/<filename>"
         String filename = afterDocs.isEmpty() ? "" : afterDocs.substring(1);
@@ -53,7 +54,7 @@ public class PublicationDocumentsPathLocator implements PathLocatorStrategy {
             return Optional.empty();
         }
 
-        String docsFolderPath = CONTENT_DOCUMENTS_ROOT + beforeDocs + "/documents";
+        String docsFolderPath = CONTENT_DOCUMENTS_ROOT + beforeDocs + DOCUMENTS_SEGMENT;
         if (!session.nodeExists(docsFolderPath)) {
             return Optional.empty();
         }
@@ -64,11 +65,9 @@ public class PublicationDocumentsPathLocator implements PathLocatorStrategy {
         }
 
         if (!filename.isEmpty()) {
-            if (docsFolder.hasNode(filename)) {
-                Node candidate = docsFolder.getNode(filename);
-                if (SlugLookup.isHandle(candidate)) {
-                    return Optional.of(candidate);
-                }
+            Optional<Node> named = findByFilename(docsFolder, filename);
+            if (named.isPresent()) {
+                return named;
             }
             LOG.info("PublicationDocumentsPathLocator: '{}' — no handle named '{}' in {}, falling back to first document",
                     path, filename, docsFolderPath);
@@ -82,14 +81,24 @@ public class PublicationDocumentsPathLocator implements PathLocatorStrategy {
      * or {@code -1} if not present.
      */
     private static int indexOfDocumentsSegment(String path) {
-        int idx = path.indexOf("/documents/");
+        int idx = path.indexOf(DOCUMENTS_SEGMENT + "/");
         if (idx >= 0) {
             return idx;
         }
-        if (path.endsWith("/documents")) {
-            return path.length() - "/documents".length();
+        if (path.endsWith(DOCUMENTS_SEGMENT)) {
+            return path.length() - DOCUMENTS_SEGMENT.length();
         }
         return -1;
+    }
+
+    private static Optional<Node> findByFilename(Node docsFolder, String filename) throws RepositoryException {
+        if (docsFolder.hasNode(filename)) {
+            Node candidate = docsFolder.getNode(filename);
+            if (SlugLookup.isHandle(candidate)) {
+                return Optional.of(candidate);
+            }
+        }
+        return Optional.empty();
     }
 
     private static Optional<Node> firstHandle(Node docsFolder, String docsFolderPath,

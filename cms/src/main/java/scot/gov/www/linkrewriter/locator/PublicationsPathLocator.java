@@ -140,7 +140,7 @@ public class PublicationsPathLocator implements PathLocatorStrategy {
                 LOG.warn("PublicationsPathLocator: sub-path '{}' has too many segments, skipping", originalPath);
                 return null;
             }
-            String pagePath = pubFolder.getPath() + "/pages/" + pageSegment;
+            String pagePath = pubFolder.getPath() + PAGES_SUBPATH_PREFIX + pageSegment;
             if (!session.nodeExists(pagePath)) {
                 LOG.warn("PublicationsPathLocator: sub-path '{}' — page node not found at {}", originalPath, pagePath);
                 return null;
@@ -170,7 +170,7 @@ public class PublicationsPathLocator implements PathLocatorStrategy {
 
     private Node resolveDocumentsSubPath(Session session, Node pubFolder, String subPath,
                                           String originalPath) throws RepositoryException {
-        String docsPath = pubFolder.getPath() + "/documents";
+        String docsPath = pubFolder.getPath() + DOCUMENTS_SUBPATH;
         if (!session.nodeExists(docsPath)) {
             LOG.warn("PublicationsPathLocator: sub-path '{}' — documents folder not found at {}", originalPath, docsPath);
             return null;

@@ -78,6 +78,7 @@ public class LinkRewriteJob implements RepositoryJob {
 
     static final String PARTIAL_RUN_FLAG = "LinkRewriteJobPartialRun";
 
+    static final String HIPPOSTD_FOLDER   = "hippostd:folder";
     static final String HIPPOSTD_CONTENT  = "hippostd:content";
     static final String HIPPO_FACETSELECT = "hippo:facetselect";
     static final String HIPPO_DOCBASE     = "hippo:docbase";
@@ -136,11 +137,11 @@ public class LinkRewriteJob implements RepositoryJob {
             LOG.info("LinkRewriteJob: stopped early by operator after {}", formatDuration(System.currentTimeMillis() - startMs));
             return;
         } catch (RepositoryException e) {
-            LOG.error("LinkRewriteJob: error during processing after {}; saving progress before re-throwing",
+            LOG.error("LinkRewriteJob: error during processing after {}; saving progress",
                     formatDuration(System.currentTimeMillis() - startMs), e);
             logStats(stats);
             saver.forceSave();
-            throw e;
+            return;
         }
 
         saver.forceSave();
@@ -190,7 +191,7 @@ public class LinkRewriteJob implements RepositoryJob {
         NodeIterator areas = session.getNode(CONTENT_ROOT).getNodes();
         while (areas.hasNext()) {
             Node area = areas.nextNode();
-            if (!area.isNodeType("hippostd:folder")) {
+            if (!area.isNodeType(HIPPOSTD_FOLDER)) {
                 continue;
             }
             if (!flag.isEnabled()) {
@@ -228,7 +229,7 @@ public class LinkRewriteJob implements RepositoryJob {
                     throw new JobStoppedException();
                 }
 
-                if (type.isNodeType("hippostd:folder")) {
+                if (type.isNodeType(HIPPOSTD_FOLDER)) {
                     walkJanuaryAcrossAllYears(session, saver, stats, flag, type.getPath());
                 }
             }
@@ -265,7 +266,7 @@ public class LinkRewriteJob implements RepositoryJob {
         NodeIterator children = session.getNode(parentPath).getNodes();
         while (children.hasNext()) {
             Node child = children.nextNode();
-            if (child.isNodeType("hippostd:folder") && isYearName(child.getName())) {
+            if (child.isNodeType(HIPPOSTD_FOLDER) && isYearName(child.getName())) {
                 walkAreaIfExists(session, saver, stats, flag, child.getPath() + "/02");
             }
         }
@@ -537,9 +538,6 @@ public class LinkRewriteJob implements RepositoryJob {
             stats.rewrittenByStrategy.merge(r.strategyName, 1, Integer::sum);
             addExample(stats, r.strategyName, r.originalHref, r.targetHandle.getPath(), htmlNode.getPath());
             String pageUrl = jcrPathToPageUrl(htmlNode.getPath());
-            String location = pageUrl != null
-                    ? htmlNode.getPath() + " (" + pageUrl + ")"
-                    : htmlNode.getPath();
             LOG.info("LinkRewriteJob rewrite: {},{},{},{},{}", r.strategyName, contentArea(htmlNode.getPath()), pageUrl != null ? pageUrl : "", r.originalHref, htmlNode.getPath());
         }
 
@@ -689,17 +687,9 @@ public class LinkRewriteJob implements RepositoryJob {
         String area = segments[0];
         switch (area) {
             case "publications":
-                // layout: publications / <type> / <year> / <month> / <slug> / ...
-                if (segments.length < 5) {
-                    return null;
-                }
-                return "https://www.gov.scot/publications/" + segments[4] + "/";
+                return buildPublicationUrl(segments);
             case "news":
-                // layout: news / <year> / <month> / <slug> / ...
-                if (segments.length < 4) {
-                    return null;
-                }
-                return "https://www.gov.scot/news/" + segments[3] + "/";
+                return buildNewsUrl(segments);
             case "about":
             case "groups":
                 return buildDirectMappingUrl(segments);
@@ -708,6 +698,24 @@ public class LinkRewriteJob implements RepositoryJob {
             default:
                 return null;
         }
+    }
+
+    /** Builds a URL for a publication: {@code publications/<type>/<year>/<month>/<slug>/…}. */
+    private static String buildPublicationUrl(String[] segments) {
+        // layout: publications / <type> / <year> / <month> / <slug> / ...
+        if (segments.length < 5) {
+            return null;
+        }
+        return "https://www.gov.scot/publications/" + segments[4] + "/";
+    }
+
+    /** Builds a URL for a news article: {@code news/<year>/<month>/<slug>/…}. */
+    private static String buildNewsUrl(String[] segments) {
+        // layout: news / <year> / <month> / <slug> / ...
+        if (segments.length < 4) {
+            return null;
+        }
+        return "https://www.gov.scot/news/" + segments[3] + "/";
     }
 
     /**

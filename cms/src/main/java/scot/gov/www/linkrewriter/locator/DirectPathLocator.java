@@ -128,10 +128,11 @@ public class DirectPathLocator implements PathLocatorStrategy {
      *   <li>{@code |} — XPath union operator, illegal in absolute paths</li>
      * </ul>
      */
+    private static final String INVALID_JCR_CHARS = ":[]()*|";
+
     static boolean hasInvalidJcrSegment(String path) {
         for (int i = 0; i < path.length(); i++) {
-            char c = path.charAt(i);
-            if (c == ':' || c == '[' || c == ']' || c == '(' || c == ')' || c == '*' || c == '|') {
+            if (INVALID_JCR_CHARS.indexOf(path.charAt(i)) >= 0) {
                 return true;
             }
         }

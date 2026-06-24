@@ -47,6 +47,8 @@ public class GovScotLinkRewriteStrategy {
 
     private static final Logger LOG = LoggerFactory.getLogger(GovScotLinkRewriteStrategy.class);
 
+    private static final String HIPPO_AVAILABILITY = "hippo:availability";
+
     /**
      * All gov.scot host prefixes whose path component should be resolved.
      * Listed most-specific first so the first match in {@link #extractPath} is always the
@@ -116,7 +118,7 @@ public class GovScotLinkRewriteStrategy {
             try {
                 return hasPublishedVariant(node);
             } catch (RepositoryException e) {
-                throw new RuntimeException(e);
+                throw new IllegalStateException(e);
             }
         });
     }
@@ -159,10 +161,10 @@ public class GovScotLinkRewriteStrategy {
 
         LOG.info("GovScotLinkRewriteStrategy: looking up redirect for path='{}' (foundUnpublished={})", path, foundUnpublished);
         Optional<Node> redirectResult = redirectLocator.locate(session, path);
-        lastWasHistoricalRedirect = redirectLocator.lastWasHistorical;
-        lastRedirectQueryString = redirectLocator.lastRedirectQueryString;
+        lastWasHistoricalRedirect = redirectLocator.isLastHistorical();
+        lastRedirectQueryString = redirectLocator.getLastRedirectQueryString();
         LOG.info("GovScotLinkRewriteStrategy: redirect lookup for path='{}': present={}, historical={}",
-                path, redirectResult.isPresent(), redirectLocator.lastWasHistorical);
+                path, redirectResult.isPresent(), redirectLocator.isLastHistorical());
         return resolveRedirectResult(redirectResult, path, foundUnpublished, unpublishedLocatorName, unpublishedNodePath);
     }
 
@@ -232,19 +234,7 @@ public class GovScotLinkRewriteStrategy {
         NodeIterator variants = handle.getNodes();
         while (variants.hasNext()) {
             Node variant = variants.nextNode();
-            String availability;
-            if (variant.hasProperty("hippo:availability")) {
-                StringBuilder avail = new StringBuilder();
-                for (javax.jcr.Value v : variant.getProperty("hippo:availability").getValues()) {
-                    if (avail.length() > 0) {
-                        avail.append(',');
-                    }
-                    avail.append(v.getString());
-                }
-                availability = avail.length() > 0 ? avail.toString() : "(empty)";
-            } else {
-                availability = "(no hippo:availability property)";
-            }
+            String availability = readAvailability(variant);
             String state;
             if (variant.hasProperty("hippostd:state")) {
                 state = variant.getProperty("hippostd:state").getString();
@@ -254,6 +244,20 @@ public class GovScotLinkRewriteStrategy {
             LOG.info("GovScotLinkRewriteStrategy: variant detail: path='{}' handle='{}' variant='{}' state='{}' availability='{}'",
                     path, handle.getPath(), variant.getName(), state, availability);
         }
+    }
+
+    private static String readAvailability(Node variant) throws RepositoryException {
+        if (!variant.hasProperty(HIPPO_AVAILABILITY)) {
+            return "(no hippo:availability property)";
+        }
+        StringBuilder avail = new StringBuilder();
+        for (javax.jcr.Value v : variant.getProperty(HIPPO_AVAILABILITY).getValues()) {
+            if (avail.length() > 0) {
+                avail.append(',');
+            }
+            avail.append(v.getString());
+        }
+        return avail.length() > 0 ? avail.toString() : "(empty)";
     }
 
     static boolean hasPublishedVariant(Node handle) throws RepositoryException {
@@ -274,10 +278,10 @@ public class GovScotLinkRewriteStrategy {
      * {@code hippo:availability}, meaning it has been taken offline.
      */
     private static boolean isLive(Node variant) throws RepositoryException {
-        if (!variant.hasProperty("hippo:availability")) {
+        if (!variant.hasProperty(HIPPO_AVAILABILITY)) {
             return false;
         }
-        for (javax.jcr.Value value : variant.getProperty("hippo:availability").getValues()) {
+        for (javax.jcr.Value value : variant.getProperty(HIPPO_AVAILABILITY).getValues()) {
             if ("live".equals(value.getString())) {
                 return true;
             }

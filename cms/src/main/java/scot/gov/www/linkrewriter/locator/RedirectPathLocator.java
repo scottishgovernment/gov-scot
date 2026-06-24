@@ -64,13 +64,21 @@ public class RedirectPathLocator implements PathLocatorStrategy {
      * skipped it because it was marked historical.  {@code false} for all other outcomes
      * (no redirect entry, redirect found and resolved, redirect target not resolvable).
      */
-    public boolean lastWasHistorical = false;
+    private boolean lastWasHistorical = false;
 
     /**
      * The query string (including the leading {@code ?}) from the redirect target that was
      * ultimately resolved, or an empty string.  Set after each {@link #locate} call.
      */
-    public String lastRedirectQueryString = "";
+    private String lastRedirectQueryString = "";
+
+    public boolean isLastHistorical() {
+        return lastWasHistorical;
+    }
+
+    public String getLastRedirectQueryString() {
+        return lastRedirectQueryString;
+    }
 
     @Override
     public Optional<Node> locate(Session session, String path) throws RepositoryException {
@@ -115,29 +123,23 @@ public class RedirectPathLocator implements PathLocatorStrategy {
                 return Optional.empty();
             }
 
-            String hopQueryString = extractHopQueryString(redirectPath);
-            if (!hopQueryString.isEmpty()) {
-                LOG.info("RedirectPathLocator: path='{}' redirect target has query string '{}', stripping for lookup",
-                        currentPath, hopQueryString);
-            }
+            String hopQueryString = extractHopQueryString(redirectPath, currentPath);
             redirectPath = cleanRedirectPath(redirectPath);
             LOG.info("RedirectPathLocator: path='{}' resolved redirect path='{}'", currentPath, redirectPath);
 
             Optional<Node> result = tryDelegates(session, currentPath, redirectPath);
-            if (result.isPresent()) {
-                if (!testIsPublished(result.get())) {
-                    LOG.info("RedirectPathLocator: path='{}' redirect target '{}' resolved to unpublished '{}', following chain",
-                            currentPath, redirectPath, result.get().getPath());
-                } else {
-                    lastRedirectQueryString = hopQueryString;
-                    if (visited.size() > 1) {
-                        LOG.info("RedirectPathLocator: path='{}' resolved after {} redirect hop(s): {}",
-                                path, visited.size(), chainString(visited, redirectPath));
-                    }
-                    return result;
+            if (result.isPresent() && testIsPublished(result.get())) {
+                lastRedirectQueryString = hopQueryString;
+                if (visited.size() > 1) {
+                    LOG.info("RedirectPathLocator: path='{}' resolved after {} redirect hop(s): {}",
+                            path, visited.size(), chainString(visited, redirectPath));
                 }
+                return result;
             }
-
+            if (result.isPresent()) {
+                LOG.info("RedirectPathLocator: path='{}' redirect target '{}' resolved to unpublished '{}', following chain",
+                        currentPath, redirectPath, result.get().getPath());
+            }
             LOG.info("RedirectPathLocator: path='{}' redirect target '{}' not resolved by any delegate, following chain",
                     currentPath, redirectPath);
             currentPath = redirectPath;
@@ -161,15 +163,18 @@ public class RedirectPathLocator implements PathLocatorStrategy {
         return Optional.empty();
     }
 
-    /** Extracts the query string (including leading {@code ?}) from a redirect target URL. */
-    private static String extractHopQueryString(String redirectPath) {
+    /** Extracts the query string (including leading {@code ?}) from a redirect target URL, logging if non-empty. */
+    private static String extractHopQueryString(String redirectPath, String currentPath) {
         int qIdx = redirectPath.indexOf('?');
         if (qIdx < 0) {
             return "";
         }
         String after = redirectPath.substring(qIdx);
         int hIdx = after.indexOf('#');
-        return hIdx < 0 ? after : after.substring(0, hIdx);
+        String qs = hIdx < 0 ? after : after.substring(0, hIdx);
+        LOG.info("RedirectPathLocator: path='{}' redirect target has query string '{}', stripping for lookup",
+                currentPath, qs);
+        return qs;
     }
 
     /** Strips the query string and fragment from a redirect target path, and trims trailing slashes. */
@@ -184,7 +189,7 @@ public class RedirectPathLocator implements PathLocatorStrategy {
     private boolean testIsPublished(Node node) throws RepositoryException {
         try {
             return isPublished.test(node);
-        } catch (RuntimeException e) {
+        } catch (IllegalStateException e) {
             if (e.getCause() instanceof RepositoryException) {
                 throw (RepositoryException) e.getCause();
             }
