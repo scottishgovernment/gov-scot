@@ -111,6 +111,7 @@ public class HippoPaths {
         node.addMixin("mix:simpleVersionable");
         node.addMixin("mix:lockable");
         node.setProperty("hippo:name", name);
+        parent.setProperty("hippostd:hasfolders", true);
         return node;
     }
 
@@ -139,6 +140,7 @@ public class HippoPaths {
         node.addMixin("hippo:named");
         node.addMixin("mix:referenceable");
         node.setProperty("hippo:name", name);
+        parent.setProperty("hippostd:hasfolders", true);
         return node;
     }
 

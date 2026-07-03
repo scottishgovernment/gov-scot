@@ -43,8 +43,12 @@ public class PublicationSink extends AbstractSink {
         Node pub = handle.getParent();
         Node month = pub.getParent();
         Node year = month.getParent();
+        Node typeFolder = year.getParent();
         setFolderType(month, monthType);
         setFolderType(year, yearType);
+        month.setProperty("hippostd:hasfolders", true);
+        year.setProperty("hippostd:hasfolders", true);
+        typeFolder.setProperty("hippostd:hasfolders", true);
         removeExtraIndex(pub);
         session.save();
     }
