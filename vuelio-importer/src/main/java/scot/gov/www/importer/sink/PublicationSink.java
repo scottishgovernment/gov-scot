@@ -22,8 +22,6 @@ public class PublicationSink extends AbstractSink {
 
     String action;
 
-    public static final String HIPPOSTD_HASFOLDERS = "hippostd:hasfolders";
-
     public PublicationSink(Session session, String type, String pathElement, String action) {
         this.session = session;
         this.type = type;
@@ -45,12 +43,8 @@ public class PublicationSink extends AbstractSink {
         Node pub = handle.getParent();
         Node month = pub.getParent();
         Node year = month.getParent();
-        Node typeFolder = year.getParent();
         setFolderType(month, monthType);
         setFolderType(year, yearType);
-        month.setProperty(HIPPOSTD_HASFOLDERS, true);
-        year.setProperty(HIPPOSTD_HASFOLDERS, true);
-        typeFolder.setProperty(HIPPOSTD_HASFOLDERS, true);
         removeExtraIndex(pub);
         session.save();
     }
