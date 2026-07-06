@@ -97,7 +97,7 @@ definitions:
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/LinkRewriteJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:enabled: true
-      hipposched:repositoryJobClass: scot.gov.www.LinkRewriteJob
+      hipposched:repositoryJobClass: scot.gov.www.linkrewriter.LinkRewriteJob
       /hipposched:triggers:
         jcr:primaryType: hipposched:triggers
         /everyFiveMinutes:
