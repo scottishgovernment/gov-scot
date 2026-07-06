@@ -13,6 +13,10 @@
     display: block;
 }
 
+.dp_preview-notification .ds_notification__icon {
+    color: currentColor;
+}
+
 @supports (position: sticky) {
     .dp_preview-notification {
         position: sticky;
