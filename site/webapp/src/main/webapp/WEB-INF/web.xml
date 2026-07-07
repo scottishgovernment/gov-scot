@@ -156,7 +156,7 @@
 
   <servlet>
     <servlet-name>freemarker</servlet-name>
-    <servlet-class>org.hippoecm.hst.servlet.HstFreemarkerServlet</servlet-class>
+    <servlet-class>scot.gov.publishing.hippo.hst.request.LoggingHstFreemarkerServlet</servlet-class>
     <!-- FreemarkerServlet settings: -->
     <init-param>
       <param-name>TemplatePath</param-name>
