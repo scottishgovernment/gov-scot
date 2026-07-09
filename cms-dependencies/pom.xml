@@ -140,6 +140,11 @@
 
     <dependency>
       <groupId>scot.gov.publishing.hippo</groupId>
+      <artifactId>hippo-govscot-sso-cms</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>scot.gov.publishing.hippo</groupId>
       <artifactId>hippo-govscot-staging-cms</artifactId>
     </dependency>
 
