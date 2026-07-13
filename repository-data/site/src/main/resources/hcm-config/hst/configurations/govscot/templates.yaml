@@ -215,3 +215,12 @@ definitions:
       /search-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/search/search-main.ftl
+      /npf.page:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/npf/page.ftl
+      /npf.outcome:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/npf/outcome.ftl
+      /npf.indicator:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/npf/indicator.ftl

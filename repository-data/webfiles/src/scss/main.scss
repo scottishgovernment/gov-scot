@@ -92,6 +92,7 @@ $breakpoints: (
 @import "overrides/override.notification-banner";
 @import "overrides/override.tables";
 
+@import "components/component.npf-indicator";
 @import "components/bugfix.file-download";
 
 .ds_input__wrapper .ds_input {

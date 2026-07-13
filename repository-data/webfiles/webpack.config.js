@@ -18,7 +18,8 @@ const commonItems = {
         'payment-form':                 path.resolve(__dirname, './src/scripts/govscot/format.payment-form.js'),
         'publication':                  path.resolve(__dirname, './src/scripts/govscot/format.publication.js'),
         'search':                       path.resolve(__dirname, './src/scripts/govscot/format.search.js'),
-        'search-page':                  path.resolve(__dirname, './src/scripts/govscot/format.searchpage.js')
+        'search-page':                  path.resolve(__dirname, './src/scripts/govscot/format.searchpage.js'),
+        // npf-indicator is output separately below (static webapp, not webfiles)
     },
 
     resolve: {
@@ -43,6 +44,8 @@ const commonItems = {
     }
 };
 
+
+const staticScriptsPath = path.resolve(__dirname, '../../site/webapp/src/main/webapp/assets/scripts');
 
 // Packs JS files & deps into bundles
 module.exports = [{
@@ -78,4 +81,23 @@ module.exports = [{
         path: path.resolve(__dirname, 'src/main/resources/site/assets/scripts'),
         filename: '[name].es5.js'
     }
+}, {
+    // npf-indicator: output to static webapp so it is served directly by Tomcat,
+    // not via the webfiles JCR bundle
+    mode: commonItems.mode,
+    entry: { 'npf-indicator': path.resolve(__dirname, './src/scripts/govscot/format.npf-indicator.js') },
+    resolve: commonItems.resolve,
+    module: commonItems.module,
+    output: { path: staticScriptsPath, filename: '[name].js' }
+}, {
+    mode: commonItems.mode,
+    entry: { 'npf-indicator': path.resolve(__dirname, './src/scripts/govscot/format.npf-indicator.js') },
+    resolve: commonItems.resolve,
+    module: {
+        rules: [
+            commonItems.module.rules[0],
+            { test: /\.js$/, use: { loader: 'babel-loader' } }
+        ]
+    },
+    output: { path: staticScriptsPath, filename: '[name].es5.js' }
 }];

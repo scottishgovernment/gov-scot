@@ -84,3 +84,7 @@ definitions:
       new-Consultation-document: new Consultation document
       new-Consultation-folder: new Consultation folder
       new-consultation-folder: New consultation
+      new-outcome-folder: New NPF outcome folder
+      new-indicator: New NPF indicator
+      new-chart-data: New NPF chart data
+      new-chart-config: New NPF chart config

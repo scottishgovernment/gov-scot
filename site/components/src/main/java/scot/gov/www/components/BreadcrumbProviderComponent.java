@@ -135,7 +135,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
     boolean isAboutOrPolicies(HippoBean deepestExpandedMenuItemBean) {
         String name = deepestExpandedMenuItemBean.getName();
         String parentName = deepestExpandedMenuItemBean.getParentBean().getName();
-        return StringUtils.equalsAny(name, "about", "directorates", "policies")
+        return StringUtils.equalsAny(name, "about", "directorates", "policies", "npf")
                 || StringUtils.equals(parentName, "about");
     }
 }

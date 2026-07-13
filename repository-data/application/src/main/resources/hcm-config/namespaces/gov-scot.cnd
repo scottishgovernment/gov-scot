@@ -188,3 +188,18 @@
 [govscot:video] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:Outcome] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Indicator] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:IndicatorChart] > hippo:compound, hippostd:relaxed
+  orderable
+
+[govscot:ChartData] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:ChartConfig] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+

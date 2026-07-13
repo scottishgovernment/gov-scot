@@ -1,0 +1,4 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/breadcrumb/National Performance Framework:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: npf
+  hst:repobased: false
