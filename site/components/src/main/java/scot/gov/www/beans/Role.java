@@ -33,7 +33,10 @@ public class Role extends SimpleContent {
 
     public String getLabel() { return "role"; }
 
-    public People getImage() { return getIncumbent().getImage(); }
+    public People getImage() {
+        Person incumbent = getIncumbent();
+        return incumbent != null ? incumbent.getImage() : null;
+    }
 
     public String getName() { return getIncumbent() != null ? getIncumbent().getTitle() : ""; }
 

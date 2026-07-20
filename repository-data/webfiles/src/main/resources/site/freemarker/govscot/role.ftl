@@ -5,8 +5,12 @@
     <@hst.manageContent hippobean=document/>
 
 
-    <#assign contactInformation = document.contactInformation/>
-    <#assign postalAddress = document.postalAddress/>
+    <#if document.contactInformation??>
+        <#assign contactInformation = document.contactInformation/>
+    </#if>
+    <#if document.postalAddress??>
+        <#assign postalAddress = document.postalAddress/>
+    </#if>
 
     <div class="ds_wrapper">
         <main id="main-content" class="ds_layout  gov_layout--role">
@@ -155,7 +159,7 @@
         <meta name="description" content="${document.metaDescription}"/>
     </@hst.headContribution>
 
-    <#if document.incumbent.image??>
+    <#if document.incumbent?? && document.incumbent.image??>
         <@hst.link var="imagelink" hippobean=document.incumbent.image.xlargethreecolumnsdoubledsquare fullyQualified=true/>
     <#else>
         <#assign imageBlank = true>
