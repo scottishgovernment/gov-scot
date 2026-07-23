@@ -418,6 +418,7 @@ definitions:
       /_search:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/searchresilient
+        hst:excludedforlinkrewriting: true
         hst:hiddeninchannelmanager: true
         hst:relativecontentpath: search/index
         hst:sitemapitemhandlerids: [trailing-slash]
