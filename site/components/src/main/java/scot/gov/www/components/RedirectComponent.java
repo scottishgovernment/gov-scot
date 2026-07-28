@@ -68,10 +68,25 @@ public class RedirectComponent extends BaseHstComponent {
                 return null;
             }
             String url = redirect.get().getTo();
+
             // if the incoming url has parameters and the outgoing one does not then pass them on
             if (!url.contains("?") && isNotBlank(request.getQueryString())) {
                 url = url + '?' + request.getQueryString();
             }
+
+            // if the redirect target is the same as the incoming url (e.g. only differing by
+            // having the incoming query string tacked back on) then following it would loop back
+            // to this same request, so treat it as no redirect rather than looping forever
+            String incomingUrl = request.getPathInfo();
+            if (isNotBlank(request.getQueryString())) {
+                incomingUrl = incomingUrl + '?' + request.getQueryString();
+            }
+            if (url.equals(incomingUrl)) {
+                LOG.warn("Redirect for {} points back to itself ({}), skipping to avoid a redirect loop",
+                        request.getPathInfo(), url);
+                return null;
+            }
+
             return url;
         } catch (Exception e) {
             LOG.error("Failed to find url alias {}", request.getPathInfo(), e);
