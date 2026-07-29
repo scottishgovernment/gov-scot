@@ -90,10 +90,12 @@ public class LinkRewriteJob implements RepositoryJob {
 
     /**
      * UUID pattern: 8-4-4-4-12 hex digits.  Matches hrefs that have already been rewritten
-     * to Bloomreach portable facetselect links and should not be touched again.
+     * to Bloomreach portable facetselect links and should not be touched again.  A rewritten
+     * href may be followed by a preserved query string and/or fragment (see
+     * {@link #escapeEmbeddedScheme}), so both are tolerated here.
      */
     private static final Pattern UUID_PATTERN =
-            Pattern.compile("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(#.*)?",
+            Pattern.compile("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}([?#].*)?",
                     Pattern.CASE_INSENSITIVE);
 
     /**
@@ -380,7 +382,25 @@ public class LinkRewriteJob implements RepositoryJob {
             queryString = strategy.lastRedirectQueryString;
         }
         String fragment = extractFragment(href);
-        return new LinkReplacement(href, target, strategy.lastStrategyName, queryString + fragment);
+        String preserved = escapeEmbeddedScheme(queryString + fragment);
+        return new LinkReplacement(href, target, strategy.lastStrategyName, preserved);
+    }
+
+    /**
+     * Escapes any {@code "://"} sequence found in a preserved query string or fragment.
+     *
+     * <p>Bloomreach's {@code SimpleContentRewriter} (the HST component that turns a
+     * facetselect href into a real URL at render time) treats any href containing
+     * {@code "://"} anywhere in the string as already-external and returns it unrewritten
+     * — see {@code SimpleContentRewriter.isExternal}.  Some legacy hrefs carry a query
+     * value that is itself an absolute URL (e.g. {@code ?via=https://example.com/…}); left
+     * as-is, that embedded {@code "://"} would make the whole rewritten
+     * {@code <uuid>?via=https://…} href look external and it would never be resolved to a
+     * working link.  Percent-encoding the scheme separator avoids the false match while
+     * remaining a valid, decodable query/fragment value.
+     */
+    static String escapeEmbeddedScheme(String queryOrFragment) {
+        return queryOrFragment.replace("://", "%3A%2F%2F");
     }
 
     private static void recordUnresolvable(String href, boolean wasHistoricalRedirect, Stats stats) {
