@@ -120,6 +120,7 @@
     <!-- more info wanted -->
     <Logger name="org.apache.jackrabbit.core.journal.DatabaseJournal" level="debug"/>
     <Logger name="org.apache.jackrabbit.core.persistence.bundle" level="info"/>
+    <Logger name="org.onehippo.repository.update" level="debug"/>
     <Logger name="org.hippoecm.repository.updater" level="info"/>
     <Logger name="org.apache.jackrabbit.core.query.lucene.MultiIndex" level="info"/>
     <Logger name="org.apache.jackrabbit.core.query.lucene.SearchIndex" level="info"/>

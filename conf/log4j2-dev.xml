@@ -104,6 +104,11 @@
     <!-- more info wanted -->
     <Logger name="org.apache.jackrabbit.core.persistence.bundle" level="warn"/>
     <Logger name="org.hippoecm.repository.jackrabbit.persistence" level="info"/>
+
+    <Logger name="org.onehippo.repository.update" additivity="false" level="debug">
+      <AppenderRef ref="messages"/>
+    </Logger>
+
     <Logger name="org.hippoecm.repository.updater" additivity="false" level="info">
       <AppenderRef ref="messages"/>
     </Logger>

@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/hasfoldersimprovement:
+      jcr:primaryType: hipposys:module
+      hipposys:className: scot.gov.www.HasFoldersImprovementListener
+      hipposys:cmsonly: true
