@@ -1,0 +1,44 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/group-useradmin:
+      jcr:primaryType: hipposys:domain
+      /groups:
+        jcr:primaryType: hipposys:domainrule
+        /groups-and-descendants:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:type: Reference
+          hipposys:value: /hippo:configuration/hippo:groups
+        /exclude-webmaster-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: webmaster
+        /exclude-cmsadmin-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: cmsadmin
+        /exclude-cms-admin-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: cms-admin
+        /exclude-admin-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: admin
+      /readwrite-no-delete:
+        jcr:primaryType: hipposys:authrole
+        hipposys:role: readwrite-no-delete
+        hipposys:groups: [ useradmin ]

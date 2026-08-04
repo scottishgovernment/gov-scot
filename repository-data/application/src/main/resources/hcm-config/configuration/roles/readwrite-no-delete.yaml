@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:roles/readwrite-no-delete:
+      jcr:primaryType: hipposys:role
+      hipposys:privileges: ['jcr:read', 'jcr:addChildNodes', 'jcr:modifyProperties']
