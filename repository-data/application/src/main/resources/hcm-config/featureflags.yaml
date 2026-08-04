@@ -13,3 +13,4 @@ definitions:
         VuelioImporterJobsocialsecurity: false
         DeleteUnusedPropertiesJob: false
         LinkRewriteJob: false
+        OrganiseGalleryImagesJob: false
