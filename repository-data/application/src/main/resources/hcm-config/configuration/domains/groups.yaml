@@ -23,9 +23,12 @@ definitions:
         hipposys:role: readwrite
         hipposys:groups:
           .meta:category: system
-          .meta:add-new-system-values: true
           type: string
-          value: [cmsadmin, cms-admin]
+          value: [cms-admin]
+      /readwrite-no-delete:
+        jcr:primaryType: hipposys:authrole
+        hipposys:role: readwrite-no-delete
+        hipposys:groups: [cmsadmin, useradmin]
       /groups:
         jcr:primaryType: hipposys:domainrule
         /groups-and-descendants:
