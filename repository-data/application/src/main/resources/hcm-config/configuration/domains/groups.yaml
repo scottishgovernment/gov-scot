@@ -28,7 +28,7 @@ definitions:
       /readwrite-no-delete:
         jcr:primaryType: hipposys:authrole
         hipposys:role: readwrite-no-delete
-        hipposys:groups: [cmsadmin, useradmin]
+        hipposys:groups: [cmsadmin]
       /groups:
         jcr:primaryType: hipposys:domainrule
         /groups-and-descendants:
