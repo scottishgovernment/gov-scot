@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/collection-authors:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles: [xm.channel.viewer, xm.dashboard.user, xm.cms.user, xm.content.viewer]
+      hipposys:members: []
