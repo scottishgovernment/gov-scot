@@ -7,13 +7,7 @@ definitions:
         hipposys:groups: [cmsadmin, news-editors]
         hipposys:role: editor
       /embargo:
-        jcr:primaryType: hipposys:authrole
-        hipposys:groups:
-          .meta:category: system
-          .meta:add-new-system-values: true
-          type: string
-          value: [news-editors]
-        hipposys:role: embargo
+        .meta:delete: true
       /importer-documents:
         jcr:primaryType: hipposys:domainrule
         /include-news-documents:

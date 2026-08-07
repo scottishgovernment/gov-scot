@@ -19,10 +19,4 @@ definitions:
           value: [cmsadmin, editor, author, useradmin, image-editors]
         hipposys:role: admin
       /embargo:
-        jcr:primaryType: hipposys:authrole
-        hipposys:groups:
-          .meta:category: system
-          .meta:add-new-system-values: true
-          type: string
-          value: [image-editors]
-        hipposys:role: embargo
+        .meta:delete: true

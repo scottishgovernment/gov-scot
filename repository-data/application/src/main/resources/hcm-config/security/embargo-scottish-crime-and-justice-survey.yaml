@@ -2,9 +2,5 @@ definitions:
   config:
     /hippo:configuration/hippo:groups/embargo-scottish-crime-and-justice-survey:
       jcr:primaryType: hipposys:group
-      hipposys:members:
-        .meta:category: system
-        .meta:add-new-system-values: true
-        type: string
-        value: []
+      hipposys:members: []
       hipposys:securityprovider: internal

@@ -57,10 +57,4 @@ definitions:
           hipposys:type: Name
           hipposys:value: embargo:document
       /embargo:
-        jcr:primaryType: hipposys:authrole
-        hipposys:groups:
-          .meta:category: system
-          .meta:add-new-system-values: true
-          type: string
-          value: [independent-report-publication-type-authors, independent-report-publication-type-editors]
-        hipposys:role: embargo
+        .meta:delete: true

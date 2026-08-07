@@ -93,17 +93,16 @@ public class HippoNodeFactory {
      *
      * If the node is supposed to be embargoed then:
      * - the handle needs a mixin
-     * - the handle needs a roperty indicating the embargo group.
+     * - the handle needs a property indicating the embargo group.
      * - the node needs a mixin
-     * - we also need a workflow job that will remove the embargo fields at the publish date and tiem
-     * In the case wher
+     * - we also need a workflow job that will remove the embargo fields at the publish date and time
      */
     void ensureEmbargoFields(Node handle, ZonedDateTime publishDateTime, boolean embargo) throws RepositoryException {
 
         if (embargo) {
             hippoUtils.apply(handle.getNodes(), child -> child.addMixin(EMBARGO_DOCUMENT));
             handle.addMixin(EMBARGO_HANDLE);
-            handle.setProperty(EMBARGO_GROUPS, new String[]{"General Embargo"});
+            handle.setProperty(EMBARGO_GROUPS, new String[]{"general-embargo"});
             createRemoveEmbargoJob(handle, publishDateTime);
         } else {
             hippoUtils.apply(handle.getNodes(), child -> hippoUtils.ensureMixinRemoved(child, EMBARGO_DOCUMENT));
