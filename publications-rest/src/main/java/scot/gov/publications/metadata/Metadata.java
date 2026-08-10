@@ -278,7 +278,7 @@ public class Metadata {
         return typeMapper.map(publicationType);
     }
 
-    public boolean shoudlEmbargo() {
+    public boolean shouldEmbargo() {
 
         // we never need to embargo a publications whose publication date is in the past
         if (publicationDate.isBefore(LocalDateTime.now())) {
