@@ -83,7 +83,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content area for this page.
+            hint: The main content area for this page. Images used here should be uploaded
+              to this publication's own gallery folder — use the 'Images' item in
+              the Document menu to open it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

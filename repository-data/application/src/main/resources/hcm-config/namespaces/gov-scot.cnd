@@ -188,3 +188,7 @@
 [govscot:video] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:organised] mixin
+  - govscot:sorted (boolean)
+  - govscot:firstSeenProcessingDateTime (date)
+

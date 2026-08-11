@@ -150,7 +150,9 @@ definitions:
             caption: Content
             field: content
             hint: Enter the content that will appear on the 'About this publication'
-              page.
+              page. Images used here should be uploaded to this publication's own
+              gallery folder — use the 'Images' item in the Document menu to open
+              it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -159,7 +161,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Contact details
             field: html_
-            hint: Enter the contact details for this publication.
+            hint: Enter the contact details for this publication. Images used here
+              should be uploaded to this publication's own gallery folder — use
+              the 'Images' item in the Document menu to open it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

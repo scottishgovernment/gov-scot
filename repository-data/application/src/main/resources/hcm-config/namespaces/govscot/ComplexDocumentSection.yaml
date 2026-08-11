@@ -115,7 +115,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Section content
             field: content
-            hint: Enter the content for this section.
+            hint: Enter the content for this section. Images used here should be
+              uploaded to this publication's own gallery folder — use the 'Images'
+              item in the Document menu to open it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/independent-report-gallery:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, independent-report-publication-type-editors]
+        hipposys:role: editor
+      /gallery-folder:
+        jcr:primaryType: hipposys:domainrule
+        /include-independent-report-gallery:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/gallery/publications/independent-report/

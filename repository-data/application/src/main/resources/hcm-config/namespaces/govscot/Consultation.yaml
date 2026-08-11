@@ -227,7 +227,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: The main content area for this page.
+            hint: The main content area for this page. Images used here should be uploaded
+              to this publication's own gallery folder — use the 'Images' item in
+              the Document menu to open it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -273,7 +275,9 @@ definitions:
             caption: Contact details
             field: html_
             hint: Provide contact information for the content item (where possible)
-              or use the central enquiry unit's contact details.
+              or use the central enquiry unit's contact details. Images used here
+              should be uploaded to this publication's own gallery folder — use
+              the 'Images' item in the Document menu to open it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -282,7 +286,9 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Epilogue
             field: html
-            hint: ''
+            hint: Images used here should be uploaded to this publication's own
+              gallery folder — use the 'Images' item in the Document menu to open
+              it.
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:

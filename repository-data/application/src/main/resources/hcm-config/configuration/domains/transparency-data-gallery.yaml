@@ -1,0 +1,17 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/transparency-data-gallery:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, transparency-data-publication-type-editors]
+        hipposys:role: editor
+      /gallery-folder:
+        jcr:primaryType: hipposys:domainrule
+        /include-transparency-data-gallery:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/gallery/publications/transparency-data/

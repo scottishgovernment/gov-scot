@@ -250,7 +250,7 @@ definitions:
             jcr:primaryType: frontend:plugin
             caption: Content
             field: content
-            hint: 'Enter the content in this field if it’s a single page item. Leave blank if you are making a paged guide.'
+            hint: 'Enter the content in this field if it’s a single page item. Leave blank if you are making a paged guide. Images used here should be uploaded to this publication’s own gallery folder — use the ‘Images’ item in the Document menu to open it.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
@@ -261,14 +261,14 @@ definitions:
             field: html_
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
-            hint: 'Enter the team contact details, use a generic team email or contactus@gov.scot'
+            hint: 'Enter the team contact details, use a generic team email or contactus@gov.scot. Images used here should be uploaded to this publication’s own gallery folder — use the ‘Images’ item in the Document menu to open it.'
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
           /epilogue:
             jcr:primaryType: frontend:plugin
             caption: Epilogue
             field: html
-            hint: 'This content displays further down the page, below the main content field.'
+            hint: 'This content displays further down the page, below the main content field. Images used here should be uploaded to this publication’s own gallery folder — use the ‘Images’ item in the Document menu to open it.'
             plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
             wicket.id: ${cluster.id}.field
             /cluster.options:
