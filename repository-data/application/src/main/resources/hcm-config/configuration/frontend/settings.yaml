@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:frontend/settings:
+      navapp.use.absolute.path: false
