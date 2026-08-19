@@ -11,6 +11,5 @@ definitions:
         VuelioImporterJob: false
         VuelioImporterJobscotgov: false
         VuelioImporterJobsocialsecurity: false
-        DeleteUnusedPropertiesJob: false
         LinkRewriteJob: false
         OrganiseGalleryImagesJob: false
