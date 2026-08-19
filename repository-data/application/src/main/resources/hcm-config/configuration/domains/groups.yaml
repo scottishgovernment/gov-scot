@@ -1,5 +1,7 @@
 definitions:
   config:
+    /hippo:configuration/hippo:domains/groups/readwrite/hipposys:groups:
+      .meta:delete: true
     /hippo:configuration/hippo:domains/groups:
       jcr:primaryType: hipposys:domain
       /current-groups:
@@ -22,7 +24,6 @@ definitions:
         jcr:primaryType: hipposys:authrole
         hipposys:role: readwrite
         hipposys:groups:
-          .meta:category: system
           type: string
           value: [cms-admin]
       /readwrite-no-delete:
