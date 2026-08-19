@@ -16,13 +16,15 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
  */
 public class HippoPaths {
 
-    private static List<String> stopWords = new ArrayList<>();
+    private static final List<String> stopWords = new ArrayList<>();
 
     public static final String ROOT = "/content/documents/govscot/";
 
     public static final String IMG_ROOT = "/content/gallery/";
 
     private static final String[] EMPTY_STRINGS = new String[0];
+
+    private static final String NAME_PROPERTY = "hippo:name";
 
     Session session;
 
@@ -113,7 +115,7 @@ public class HippoPaths {
         node.addMixin("mix:versionable");
         node.addMixin("mix:simpleVersionable");
         node.addMixin("mix:lockable");
-        node.setProperty("hippo:name", name);
+        node.setProperty(NAME_PROPERTY, name);
         parent.setProperty("hippostd:hasfolders", true);
         return node;
     }
@@ -177,14 +179,14 @@ public class HippoPaths {
             return fallback;
         }
         Node contentNode = session.getNode(contentPath);
-        return contentNode.hasProperty("hippo:name")
-                ? contentNode.getProperty("hippo:name").getString()
+        return contentNode.hasProperty(NAME_PROPERTY)
+                ? contentNode.getProperty(NAME_PROPERTY).getString()
                 : fallback;
     }
 
     private Node applyDisplayName(Node folder, String displayName) throws RepositoryException {
-        if (!folder.hasProperty("hippo:name") || !displayName.equals(folder.getProperty("hippo:name").getString())) {
-            folder.setProperty("hippo:name", displayName);
+        if (!folder.hasProperty(NAME_PROPERTY) || !displayName.equals(folder.getProperty(NAME_PROPERTY).getString())) {
+            folder.setProperty(NAME_PROPERTY, displayName);
         }
         return folder;
     }
@@ -193,7 +195,7 @@ public class HippoPaths {
         Node node = parent.addNode(slug, "hippogallery:stdImageGallery");
         node.addMixin("hippo:named");
         node.addMixin("mix:referenceable");
-        node.setProperty("hippo:name", displayName);
+        node.setProperty(NAME_PROPERTY, displayName);
         parent.setProperty("hippostd:hasfolders", true);
         return node;
     }

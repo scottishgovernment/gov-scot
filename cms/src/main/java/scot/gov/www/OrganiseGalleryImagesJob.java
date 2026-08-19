@@ -170,7 +170,6 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
             } catch (NumberFormatException e) {
                 LOG.warn("OrganiseGalleryImagesJob: invalid {} attribute value '{}', using default of {} minutes",
                         MINIMUM_AGE_ATTRIBUTE, value, DEFAULT_MINIMUM_AGE_MINUTES);
-                minutes = DEFAULT_MINIMUM_AGE_MINUTES;
             }
         }
         return minutes * 60_000L;
@@ -252,8 +251,7 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
      * folder itself and all of its descendant folders).
      */
     private List<Node> collectImageHandles(Session session) throws RepositoryException {
-        List<Node> handles = new ArrayList<>();
-        handles.addAll(queryUnsortedHandles(session, GALLERY_ROOT, false));
+        List<Node> handles = new ArrayList<>(queryUnsortedHandles(session, GALLERY_ROOT, false));
 
         String publicationsPath = GALLERY_ROOT + "/" + PUBLICATIONS_FOLDER;
         if (session.nodeExists(publicationsPath)) {
@@ -346,12 +344,12 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
         List<Node> references = findReferences(session, imageUuid);
 
         if (references.isEmpty()) {
-            moveToUnreferencedBucket(session, imageHandle, imagePath, imageName, stats, saver, "unreferenced");
+            moveToUnreferencedBucket(session, imageHandle, imagePath, imageName, stats, saver, UNREFERENCED_FOLDER);
             return;
         }
 
         Set<String> handlePaths = referencingHandlePaths(references, imagePath, imageName, stats);
-        if (handlePaths == null) {
+        if (handlePaths.isEmpty()) {
             return;
         }
 
@@ -380,7 +378,7 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
                     LOG.warn("OrganiseGalleryImagesJob: could not find handle ancestor for reference at {}, skipping image {}",
                             referenceNode.getPath(), imageName);
                     stats.skipped++;
-                    return null;
+                    return Collections.emptySet();
                 }
                 ancestor = ancestor.getParent();
             }
