@@ -1,5 +1,8 @@
 package scot.gov.www;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -19,6 +22,8 @@ import javax.jcr.Session;
  * treat the result as a best guess for logging, never as a canonical link.
  */
 final class PageUrls {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PageUrls.class);
 
     private static final String URL_BASE = "https://www.gov.scot/";
     private static final String PUBLICATIONS_SEGMENT = "publications";
@@ -69,6 +74,7 @@ final class PageUrls {
             Node variant = handle.getNode(name);
             return variant.hasProperty(SLUG_PROPERTY) ? variant.getProperty(SLUG_PROPERTY).getString() : null;
         } catch (RepositoryException e) {
+            LOG.error("unexpected error reading slug", e);
             return null;
         }
     }

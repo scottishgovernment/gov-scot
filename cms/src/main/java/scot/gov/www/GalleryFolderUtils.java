@@ -56,6 +56,10 @@ public class GalleryFolderUtils {
      */
     private static final String INDEX_NODE_NAME = "index";
 
+    private static final String NAMED_MIXIN         = "hippo:named";
+    private static final String FOLDER_TYPE_PROPERTY  = "hippostd:foldertype";
+    private static final String GALLERY_TYPE_PROPERTY = "hippostd:gallerytype";
+
     private GalleryFolderUtils() {
         // util class
     }
@@ -86,6 +90,23 @@ public class GalleryFolderUtils {
             Session session, String topLevelFolder, String documentHandlePath) throws RepositoryException {
         Node topFolder = ensureImagePath(session, List.of(topLevelFolder));
         return ensureImagePath(topFolder, documentPathElements(documentHandlePath), DOCUMENTS_PREFIX);
+    }
+
+    /**
+     * Predicts the path {@link #ensureGalleryFolderForDocument} would resolve/create for the
+     * given document handle path, without creating anything.
+     */
+    public static String documentGalleryPath(String documentHandlePath) throws RepositoryException {
+        return GALLERY_ROOT + "/" + String.join("/", documentPathElements(documentHandlePath));
+    }
+
+    /**
+     * Predicts the path {@link #ensureGalleryFolderForDocumentUnder} would resolve/create for
+     * the given top-level folder and document handle path, without creating anything.
+     */
+    public static String documentGalleryPathUnder(String topLevelFolder, String documentHandlePath)
+            throws RepositoryException {
+        return GALLERY_ROOT + "/" + topLevelFolder + "/" + String.join("/", documentPathElements(documentHandlePath));
     }
 
     private static List<String> documentPathElements(String documentHandlePath) throws RepositoryException {
@@ -191,18 +212,18 @@ public class GalleryFolderUtils {
     private static void applyFolderTypes(Node folder, String[] folderType, String[] galleryType)
             throws RepositoryException {
         if (folder.isNodeType("hippostd:folder") || folder.isNodeType("hippostd:directory")) {
-            if (!folder.hasProperty("hippostd:foldertype")
-                    || !Arrays.equals(readStringValues(folder, "hippostd:foldertype"), folderType)) {
-                folder.setProperty("hippostd:foldertype", folderType);
+            if (!folder.hasProperty(FOLDER_TYPE_PROPERTY)
+                    || !Arrays.equals(readStringValues(folder, FOLDER_TYPE_PROPERTY), folderType)) {
+                folder.setProperty(FOLDER_TYPE_PROPERTY, folderType);
             }
         } else {
             LOG.warn("GalleryFolderUtils: {} is not a hippostd:folder/hippostd:directory, "
                     + "not applying hippostd:foldertype", folder.getPath());
         }
         if (folder.isNodeType("hippostd:gallery")) {
-            if (!folder.hasProperty("hippostd:gallerytype")
-                    || !Arrays.equals(readStringValues(folder, "hippostd:gallerytype"), galleryType)) {
-                folder.setProperty("hippostd:gallerytype", galleryType);
+            if (!folder.hasProperty(GALLERY_TYPE_PROPERTY)
+                    || !Arrays.equals(readStringValues(folder, GALLERY_TYPE_PROPERTY), galleryType)) {
+                folder.setProperty(GALLERY_TYPE_PROPERTY, galleryType);
             }
         } else {
             LOG.warn("GalleryFolderUtils: {} is not a hippostd:gallery, not applying hippostd:gallerytype",
@@ -235,8 +256,8 @@ public class GalleryFolderUtils {
     }
 
     private static Node applyDisplayName(Node folder, String displayName) throws RepositoryException {
-        if (!folder.isNodeType("hippo:named")) {
-            folder.addMixin("hippo:named");
+        if (!folder.isNodeType(NAMED_MIXIN)) {
+            folder.addMixin(NAMED_MIXIN);
         }
         if (!folder.hasProperty(HippoNodeType.HIPPO_NAME)
                 || !displayName.equals(folder.getProperty(HippoNodeType.HIPPO_NAME).getString())) {
@@ -247,7 +268,7 @@ public class GalleryFolderUtils {
 
     private static Node createImageFolder(Node parent, String name, String displayName) throws RepositoryException {
         Node node = parent.addNode(name, "hippogallery:stdImageGallery");
-        node.addMixin("hippo:named");
+        node.addMixin(NAMED_MIXIN);
         node.addMixin("mix:referenceable");
         node.setProperty(HippoNodeType.HIPPO_NAME, displayName);
         markHasFolders(node, false);

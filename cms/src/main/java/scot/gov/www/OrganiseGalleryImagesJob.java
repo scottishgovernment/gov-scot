@@ -15,6 +15,7 @@ import javax.jcr.query.Query;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -115,6 +116,8 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
     static final String GOVSCOT_FOLDER      = "govscot";
     static final String UNREFERENCED_FOLDER = "unreferenced";
     static final String DOCUMENTS_PREFIX    = GalleryFolderUtils.DOCUMENTS_PREFIX;
+
+    private static final String HANDLE_NODE_TYPE = "hippo:handle";
 
     /**
      * Mixin added to an image's {@code hippo:handle} the first time it is seen, so that later
@@ -347,86 +350,133 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
             return;
         }
 
-        // Referencing documents can have several variants (draft/unpublished/published), each
-        // potentially containing its own reference to the image, so references are grouped by
-        // the handle of the document they belong to rather than counted directly.
+        Set<String> handlePaths = referencingHandlePaths(references, imagePath, imageName, stats);
+        if (handlePaths == null) {
+            return;
+        }
+
+        if (handlePaths.size() > 1) {
+            processMultiplyReferencedImage(session, imageHandle, imagePath, imageName, handlePaths, stats, saver);
+        } else {
+            processSingleReferenceImage(session, imageHandle, imagePath, imageName,
+                    handlePaths.iterator().next(), stats, saver);
+        }
+    }
+
+    /**
+     * Groups the given references by the handle of the document they belong to (referencing
+     * documents can have several variants — draft/unpublished/published — each potentially
+     * containing its own reference to the image, so references are grouped rather than counted
+     * directly). Returns {@code null}, having already logged and updated {@code stats}, if a
+     * reference's handle ancestor cannot be found.
+     */
+    private Set<String> referencingHandlePaths(List<Node> references, String imagePath, String imageName,
+                                                 Stats stats) throws RepositoryException {
         Set<String> handlePaths = new LinkedHashSet<>();
         for (Node referenceNode : references) {
             Node ancestor = referenceNode;
-            while (!ancestor.isNodeType("hippo:handle")) {
+            while (!ancestor.isNodeType(HANDLE_NODE_TYPE)) {
                 if ("/".equals(ancestor.getPath())) {
                     LOG.warn("OrganiseGalleryImagesJob: could not find handle ancestor for reference at {}, skipping image {}",
                             referenceNode.getPath(), imageName);
                     stats.skipped++;
-                    return;
+                    return null;
                 }
                 ancestor = ancestor.getParent();
             }
             handlePaths.add(ancestor.getPath());
         }
+        return handlePaths;
+    }
 
-        if (handlePaths.size() > 1) {
-            List<String> sharedPublicationPathElements = sharedPublicationPathElements(handlePaths);
-            if (sharedPublicationPathElements == null) {
-                // Not all references are pages/sections of the same publication (could be
-                // different publications, a mix of publication and non-publication documents, or
-                // several unrelated documents), so there is no single folder they all agree on:
-                // file it in whichever referenced publication is oldest, since that's as good a
-                // choice as any and at least keeps it out of a generic bucket. Only when none of
-                // the references are under a publication at all does it fall back to a shared
-                // "general" folder within the publications gallery.
-                MultiplyReferencedImageLog.differentPublications(imagePath, handlePaths);
-                List<String> oldestPublicationPathElements = oldestPublicationPathElements(handlePaths);
-                Node targetFolder = oldestPublicationPathElements != null
-                        ? GalleryFolderUtils.ensureGalleryFolderForPath(session, oldestPublicationPathElements)
-                        : GalleryFolderUtils.ensureImagePath(session, List.of(PUBLICATIONS_FOLDER, GENERAL_FOLDER));
-                String destinationPath = targetFolder.getPath() + "/" + imageName;
-                markOrganised(imageHandle);
-                saver.save();
-                if (destinationPath.equals(imagePath) || imagePath.startsWith(targetFolder.getPath() + "/")) {
-                    LOG.info("OrganiseGalleryImagesJob: multiply-referenced image {} is already in {} "
-                                    + "(referenced by {})",
-                            imagePath, destinationPath, handlePaths);
-                } else {
-                    LOG.info("OrganiseGalleryImagesJob: moving multiply-referenced image: {} -> {} "
-                                    + "(referenced by {})",
-                            imagePath, destinationPath, handlePaths);
-                    moveImage(session, imagePath, destinationPath, saver);
-                    for (String handlePath : handlePaths) {
-                        MovedImagePageLog.pageImageMoved(session, handlePath, imagePath, destinationPath);
-                    }
-                }
-                stats.multiplyReferenced++;
-                return;
-            }
-
-            // Referenced more than once within the same publication (either more than once
-            // on the same page, or from different pages of the same publication), so there
-            // is no single page to move it to: move it to the publication's own gallery
-            // folder.
-            MultiplyReferencedImageLog.samePublication(imagePath, handlePaths);
-            Node publicationFolder = GalleryFolderUtils.ensureGalleryFolderForPath(session, sharedPublicationPathElements);
-            String destinationPath = publicationFolder.getPath() + "/" + imageName;
-            markOrganised(imageHandle);
-            saver.save();
-            if (destinationPath.equals(imagePath) || imagePath.startsWith(publicationFolder.getPath() + "/")) {
-                LOG.info("OrganiseGalleryImagesJob: image {} is used multiple times within the same publication and "
-                                + "is already in its gallery folder (referenced by {})",
-                        imagePath, handlePaths);
-            } else {
-                LOG.info("OrganiseGalleryImagesJob: moving image used multiple times within the same publication: "
-                                + "{} -> {} (referenced by {})",
-                        imagePath, destinationPath, handlePaths);
-                moveImage(session, imagePath, destinationPath, saver);
-                for (String handlePath : handlePaths) {
-                    MovedImagePageLog.pageImageMoved(session, handlePath, imagePath, destinationPath);
-                }
-            }
-            stats.moved++;
-            return;
+    /**
+     * Resolves and moves an image referenced by more than one document, delegating to whichever
+     * of {@link #moveToSharedPublicationFolder} or {@link #moveToOldestOrGeneralFolder} applies
+     * depending on whether all the references agree on a single publication.
+     */
+    private void processMultiplyReferencedImage(Session session, Node imageHandle, String imagePath,
+                                                  String imageName, Set<String> handlePaths, Stats stats,
+                                                  SessionSaver saver) throws RepositoryException {
+        List<String> sharedPublicationPathElements = sharedPublicationPathElements(handlePaths);
+        if (sharedPublicationPathElements.isEmpty()) {
+            moveToOldestOrGeneralFolder(session, imageHandle, imagePath, imageName, handlePaths, stats, saver);
+        } else {
+            moveToSharedPublicationFolder(session, imageHandle, imagePath, imageName, handlePaths,
+                    sharedPublicationPathElements, stats, saver);
         }
+    }
 
-        String handlePath = handlePaths.iterator().next();
+    /**
+     * Not all references are pages/sections of the same publication (could be different
+     * publications, a mix of publication and non-publication documents, or several unrelated
+     * documents), so there is no single folder they all agree on: file it in whichever
+     * referenced publication is oldest, since that's as good a choice as any and at least keeps
+     * it out of a generic bucket. Only when none of the references are under a publication at
+     * all does it fall back to a shared "general" folder within the publications gallery.
+     */
+    private void moveToOldestOrGeneralFolder(Session session, Node imageHandle, String imagePath, String imageName,
+                                              Set<String> handlePaths, Stats stats, SessionSaver saver)
+            throws RepositoryException {
+        MultiplyReferencedImageLog.differentPublications(imagePath, handlePaths);
+        List<String> oldestPublicationPathElements = oldestPublicationPathElements(handlePaths);
+        Node targetFolder = !oldestPublicationPathElements.isEmpty()
+                ? GalleryFolderUtils.ensureGalleryFolderForPath(session, oldestPublicationPathElements)
+                : GalleryFolderUtils.ensureImagePath(session, List.of(PUBLICATIONS_FOLDER, GENERAL_FOLDER));
+        String destinationPath = targetFolder.getPath() + "/" + imageName;
+        markOrganised(imageHandle);
+        saver.save();
+        if (destinationPath.equals(imagePath) || imagePath.startsWith(targetFolder.getPath() + "/")) {
+            LOG.info("OrganiseGalleryImagesJob: multiply-referenced image {} is already in {} "
+                            + "(referenced by {})",
+                    imagePath, destinationPath, handlePaths);
+        } else {
+            LOG.info("OrganiseGalleryImagesJob: moving multiply-referenced image: {} -> {} "
+                            + "(referenced by {})",
+                    imagePath, destinationPath, handlePaths);
+            moveImage(session, imagePath, destinationPath, saver);
+            for (String handlePath : handlePaths) {
+                MovedImagePageLog.pageImageMoved(session, handlePath, imagePath, destinationPath);
+            }
+        }
+        stats.multiplyReferenced++;
+    }
+
+    /**
+     * Referenced more than once within the same publication (either more than once on the same
+     * page, or from different pages of the same publication), so there is no single page to move
+     * it to: move it to the publication's own gallery folder.
+     */
+    private void moveToSharedPublicationFolder(Session session, Node imageHandle, String imagePath,
+                                                String imageName, Set<String> handlePaths,
+                                                List<String> sharedPublicationPathElements, Stats stats,
+                                                SessionSaver saver) throws RepositoryException {
+        MultiplyReferencedImageLog.samePublication(imagePath, handlePaths);
+        Node publicationFolder = GalleryFolderUtils.ensureGalleryFolderForPath(session, sharedPublicationPathElements);
+        String destinationPath = publicationFolder.getPath() + "/" + imageName;
+        markOrganised(imageHandle);
+        saver.save();
+        if (destinationPath.equals(imagePath) || imagePath.startsWith(publicationFolder.getPath() + "/")) {
+            LOG.info("OrganiseGalleryImagesJob: image {} is used multiple times within the same publication and "
+                            + "is already in its gallery folder (referenced by {})",
+                    imagePath, handlePaths);
+        } else {
+            LOG.info("OrganiseGalleryImagesJob: moving image used multiple times within the same publication: "
+                            + "{} -> {} (referenced by {})",
+                    imagePath, destinationPath, handlePaths);
+            moveImage(session, imagePath, destinationPath, saver);
+            for (String handlePath : handlePaths) {
+                MovedImagePageLog.pageImageMoved(session, handlePath, imagePath, destinationPath);
+            }
+        }
+        stats.moved++;
+    }
+
+    /**
+     * Resolves and moves an image referenced by exactly one document.
+     */
+    private void processSingleReferenceImage(Session session, Node imageHandle, String imagePath, String imageName,
+                                              String handlePath, Stats stats, SessionSaver saver)
+            throws RepositoryException {
         if (!handlePath.startsWith(DOCUMENTS_PREFIX)) {
             LOG.warn("OrganiseGalleryImagesJob: handle path {} is outside expected prefix, skipping image {}",
                     handlePath, imageName);
@@ -434,8 +484,7 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
             return;
         }
 
-        Node targetFolder = targetFolderForDocument(session, handlePath);
-        String destinationPath = targetFolder.getPath() + "/" + imageName;
+        String destinationPath = targetPathForDocument(handlePath) + "/" + imageName;
         markOrganised(imageHandle);
         saver.save();
         if (destinationPath.equals(imagePath)) {
@@ -446,6 +495,11 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
                             + "not moving to exact subfolder {} (referenced by {})",
                     imagePath, destinationPath, handlePath);
         } else {
+            // Only now, having established the image actually needs to move there, is the
+            // exact subfolder resolved/created: doing this any earlier would create it even for
+            // images left in place by the branch above, leaving an empty folder behind for the
+            // end-of-run cleanup to immediately remove again.
+            targetFolderForDocument(session, handlePath);
             LOG.info("OrganiseGalleryImagesJob: moving image: {} -> {} (referenced by {})",
                     imagePath, destinationPath, handlePath);
             moveImage(session, imagePath, destinationPath, saver);
@@ -490,6 +544,17 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
     }
 
     /**
+     * Predicts the path {@link #targetFolderForDocument} would resolve/create for the given
+     * handle path, without actually creating anything. Used to decide whether an image needs to
+     * move at all before paying the cost (and side effect) of ensuring the folder exists.
+     */
+    private String targetPathForDocument(String handlePath) throws RepositoryException {
+        return GalleryFolderUtils.isUnderPublications(handlePath)
+                ? GalleryFolderUtils.documentGalleryPath(handlePath)
+                : GalleryFolderUtils.documentGalleryPathUnder(GOVSCOT_FOLDER, handlePath);
+    }
+
+    /**
      * True if {@code imagePath} already sits somewhere within the gallery folder for the
      * publication itself (i.e. under {@code .../publications/type/year/month/slug}), even if
      * not in the exact subfolder that mirrors {@code handlePath}. Publications can nest
@@ -510,26 +575,27 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
      */
     private String publicationFolderPath(String handlePath) {
         List<String> pathElements = publicationPathElements(handlePath);
-        return pathElements == null ? null : GALLERY_ROOT + "/" + String.join("/", pathElements);
+        return pathElements.isEmpty() ? null : GALLERY_ROOT + "/" + String.join("/", pathElements);
     }
 
     /**
      * Returns the {@code publications/type/year/month/slug} path elements common to every given
      * handle path (i.e. they are all pages/sections of, or the publication document itself for,
-     * the same publication), or {@code null} if any handle is not under the publications folder,
-     * not nested deeply enough to resolve one, or they resolve to different publications.
+     * the same publication), or an empty list if any handle is not under the publications
+     * folder, not nested deeply enough to resolve one, or they resolve to different
+     * publications.
      */
     private List<String> sharedPublicationPathElements(Set<String> handlePaths) {
         List<String> shared = null;
         for (String handlePath : handlePaths) {
             List<String> pathElements = publicationPathElements(handlePath);
-            if (pathElements == null) {
-                return null;
+            if (pathElements.isEmpty()) {
+                return Collections.emptyList();
             }
             if (shared == null) {
                 shared = pathElements;
             } else if (!shared.equals(pathElements)) {
-                return null;
+                return Collections.emptyList();
             }
         }
         return shared;
@@ -538,15 +604,15 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
     /**
      * Returns the {@code publications/type/year/month/slug} path elements of whichever of the
      * given handle paths resolves to the oldest publication (by year, then month, both taken
-     * from the path), or {@code null} if none of them are under the publications folder at all.
-     * Handle paths that aren't under a publication are simply ignored rather than disqualifying
-     * the result, unlike {@link #sharedPublicationPathElements}.
+     * from the path), or an empty list if none of them are under the publications folder at
+     * all. Handle paths that aren't under a publication are simply ignored rather than
+     * disqualifying the result, unlike {@link #sharedPublicationPathElements}.
      */
     private List<String> oldestPublicationPathElements(Set<String> handlePaths) {
-        List<String> oldest = null;
+        List<String> oldest = Collections.emptyList();
         for (String handlePath : handlePaths) {
             List<String> pathElements = publicationPathElements(handlePath);
-            if (pathElements != null && (oldest == null || isOlderPublication(pathElements, oldest))) {
+            if (!pathElements.isEmpty() && (oldest.isEmpty() || isOlderPublication(pathElements, oldest))) {
                 oldest = pathElements;
             }
         }
@@ -594,16 +660,16 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
 
     /**
      * Returns the {@code publications/type/year/month/slug} path elements for the given document
-     * handle path, or {@code null} if the handle is not under the publications folder, or is not
-     * nested deeply enough (type/year/month/slug) to resolve one.
+     * handle path, or an empty list if the handle is not under the publications folder, or is
+     * not nested deeply enough (type/year/month/slug) to resolve one.
      */
     private List<String> publicationPathElements(String handlePath) {
         if (!handlePath.startsWith(DOCUMENTS_PREFIX)) {
-            return null;
+            return Collections.emptyList();
         }
         String[] pathElements = handlePath.substring(DOCUMENTS_PREFIX.length()).split("/");
         if (pathElements.length < 5 || !PUBLICATIONS_FOLDER.equals(pathElements[0])) {
-            return null;
+            return Collections.emptyList();
         }
         return Arrays.asList(pathElements).subList(0, 5);
     }
@@ -679,7 +745,7 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
             children.add(childIterator.nextNode());
         }
         for (Node child : children) {
-            if (child.isNodeType("hippo:handle")) {
+            if (child.isNodeType(HANDLE_NODE_TYPE)) {
                 continue;
             }
             if (isFreeOfImages(child)) {
@@ -700,7 +766,7 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
         NodeIterator children = folder.getNodes();
         while (children.hasNext()) {
             Node child = children.nextNode();
-            if (child.isNodeType("hippo:handle") || !isFreeOfImages(child)) {
+            if (child.isNodeType(HANDLE_NODE_TYPE) || !isFreeOfImages(child)) {
                 return false;
             }
         }
