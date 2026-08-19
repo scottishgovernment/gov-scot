@@ -57,6 +57,7 @@
     <easymock.version>3.4</easymock.version>
     <mockito.version>2.22.0</mockito.version>
     <commons-io.version>2.20.0</commons-io.version>
+    <jsoup.version>1.23.1</jsoup.version>
 
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
     <hippo.cms.locales/>
