@@ -4,8 +4,6 @@
 
 <#-- @ftlvariable name="document" type="scot.mygov.publishing.beans.Pageheading" -->
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
-<#assign variables = hstRequestContext.getAttribute("variables")/>
-<@hst.messagesReplace escapeMessageXml=false bundle=variables variablePrefix="[[" variableSuffix="]]">
 <#if document?? || editMode>
 <#assign constrain = true>
 <#if fullwidth?has_content>
@@ -130,4 +128,3 @@
 </#if>
 
 </#if>
-</@hst.messagesReplace>
