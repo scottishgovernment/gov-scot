@@ -12,11 +12,9 @@ definitions:
           hipposys:value: /content/gallery
       /admin:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups:
-          .meta:category: system
-          .meta:add-new-system-values: true
-          type: string
-          value: [cmsadmin, editor, author, useradmin, image-editors]
+        hipposys:groups: [cmsadmin, editor, author, useradmin, image-editors]
         hipposys:role: admin
       /embargo:
-        .meta:delete: true
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [image-editors]
+        hipposys:role: embargo
