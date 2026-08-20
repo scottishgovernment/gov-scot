@@ -31,6 +31,12 @@ public class PublicationLinkProcessor extends SlugProcessor {
     @Override
     protected HstLink doPostProcess(HstLink link) {
         if (isFullLink(link, PUBLICATIONS, 5)) {
+            String slug = slug(link);
+            if (slug == null) {
+                // could not resolve a slug (e.g. invalid or unresolvable path) - leave the link untouched
+                return link;
+            }
+
             // remove the type, year and month...
             String [] newElements = removeElements(link.getPathElements(),
                     link.getPathElements()[1],
@@ -67,8 +73,8 @@ public class PublicationLinkProcessor extends SlugProcessor {
 
             return publicationNode.getProperty(SLUG).getString();
         } catch (RepositoryException e) {
-            LOG.error("Unable to get the publication slug", e);
-            return link.getPathElements()[4];
+            LOG.debug("Unable to get the publication slug for path {}", path, e);
+            return null;
         }
     }
 
@@ -137,14 +143,18 @@ public class PublicationLinkProcessor extends SlugProcessor {
     }
 
     String determinePath(String pubPath, String escapedRemaining) throws RepositoryException {
-        String path = String.format("%s%s", pubPath, escapedRemaining);
-        String chapterPath = String.format("%schapters/%s", pubPath, escapedRemaining);
+        String path = normalizeSlashes(String.format("%s%s", pubPath, escapedRemaining));
+        String chapterPath = normalizeSlashes(String.format("%schapters/%s", pubPath, escapedRemaining));
         String stripped = stripAboutAndDownloads(path);
         if (anyExist(path, stripped, chapterPath)) {
             return path;
         } else {
             return null;
         }
+    }
+
+    private String normalizeSlashes(String path) {
+        return path.replaceAll("/{2,}", "/");
     }
 
     String stripAboutAndDownloads(String path) {
