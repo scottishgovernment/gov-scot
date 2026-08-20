@@ -2,7 +2,16 @@
 <@hst.webfile var="iconspath" path="/assets/images/icons/icons.stack.svg"/>
 <#include "./macros/lang-attributes.ftl">
 
-<#if collections?has_content || document.featuredLinks?has_content>
+<#assign validFeaturedLinks = []>
+<#if document.featuredLinks?has_content>
+    <#list document.featuredLinks.link as link>
+        <#if link.link??>
+            <#assign validFeaturedLinks = validFeaturedLinks + [link]>
+        </#if>
+    </#list>
+</#if>
+
+<#if collections?has_content || validFeaturedLinks?has_content>
 
     <div class="ds_inset-text">
         <div class="ds_inset-text__text">
@@ -17,7 +26,7 @@
                 </li>
                 </#list>
         </#if>
-        <#if document.featuredLinks?has_content>
+        <#if validFeaturedLinks?has_content>
             <#if document.featuredLinks.label?has_content>
                 <#if collections?has_content>
             </ul>
@@ -28,7 +37,7 @@
             <h2 class="ds_h3">Part of</h2>
             <ul class="ds_no-bullets">
             </#if>
-            <#list document.featuredLinks.link as link>
+            <#list validFeaturedLinks as link>
                 <li>
                     <a href="<@hst.link hippobean=link.link/>">
                         <#if link.customLinkText?has_content>
