@@ -6,14 +6,16 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.util.Arrays;
 
 /**
  * Best-effort derivation of a document's public gov.scot URL from its JCR handle path, for
  * logging from repository-level code (scheduled jobs etc.) that runs outside an HST request
  * context, where the site's own link-resolution machinery isn't reachable.
  *
- * <p>Publications and news have a flat slug-based URL unrelated to their JCR path depth
- * (mirroring the rule in {@code scot.gov.www.searchjournal.UrlSource}); every other document is
+ * <p>Publications and news have a slug-based URL unrelated to their JCR path depth, with pages
+ * nested under a publication taking the form {@code publications/{slug}/pages/{pageName}/}
+ * (mirroring the rules in {@code scot.gov.www.searchjournal.UrlSource}); every other document is
  * assumed to have a URL that directly mirrors its JCR path under {@link
  * GalleryFolderUtils#DOCUMENTS_PREFIX} (mirroring {@code DirectPathLocator}, the fallback used by
  * {@code GovScotLinkRewriteStrategy} when resolving incoming links). That fallback isn't exact
@@ -28,6 +30,7 @@ final class PageUrls {
     private static final String URL_BASE = "https://www.gov.scot/";
     private static final String PUBLICATIONS_SEGMENT = "publications";
     private static final String NEWS_SEGMENT = "news";
+    private static final String PAGES_SEGMENT = "pages";
     private static final String SLUG_PROPERTY = "govscot:slug";
     private static final String INDEX_SUFFIX = "/index";
 
@@ -47,18 +50,36 @@ final class PageUrls {
         if (relativePath.endsWith(INDEX_SUFFIX)) {
             relativePath = relativePath.substring(0, relativePath.length() - INDEX_SUFFIX.length());
         }
-        String firstSegment = relativePath.contains("/")
-                ? relativePath.substring(0, relativePath.indexOf('/'))
-                : relativePath;
+        String[] segments = relativePath.split("/");
+        String firstSegment = segments[0];
 
         if (PUBLICATIONS_SEGMENT.equals(firstSegment) || NEWS_SEGMENT.equals(firstSegment)) {
-            String slug = readSlug(session, handlePath);
+            // the slug lives on the publication/news document itself, which is the segment
+            // just before "pages" for a nested page, or the last segment otherwise
+            int pagesIndex = indexOf(segments, PAGES_SEGMENT);
+            int slugFolderEnd = pagesIndex >= 0 ? pagesIndex : segments.length;
+            String slugHandlePath = GalleryFolderUtils.DOCUMENTS_PREFIX
+                    + String.join("/", Arrays.copyOfRange(segments, 0, slugFolderEnd));
+            String slug = readSlug(session, slugHandlePath);
             if (slug != null) {
-                return URL_BASE + firstSegment + "/" + slug + "/";
+                String url = URL_BASE + firstSegment + "/" + slug + "/";
+                if (pagesIndex >= 0 && pagesIndex + 1 < segments.length) {
+                    url += PAGES_SEGMENT + "/" + segments[pagesIndex + 1] + "/";
+                }
+                return url;
             }
         }
 
         return URL_BASE + relativePath + "/";
+    }
+
+    private static int indexOf(String[] segments, String value) {
+        for (int i = 0; i < segments.length; i++) {
+            if (value.equals(segments[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private static String readSlug(Session session, String handlePath) {
