@@ -44,7 +44,8 @@ FilteredResultsSideComponent extends BaseHstComponent {
         super.doBeforeRender(request, response);
 
         FilteredResultsSideComponentInfo info = getComponentParametersInfo(request);
-        request.setAttribute("term", true);
+        String term = param(request, "q");
+        request.setAttribute("term", term == null ? "" : term);
         request.setAttribute("searchType", info.getSearchType());
         if (info.getIncludeDateFilter()) {
             request.setAttribute("dates", true);
