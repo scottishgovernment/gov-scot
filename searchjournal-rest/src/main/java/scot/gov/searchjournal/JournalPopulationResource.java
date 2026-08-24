@@ -4,9 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
-import scot.gov.publishing.searchjournal.FunnelbackCollection;
-import scot.gov.publishing.searchjournal.SearchJournal;
-import scot.gov.publishing.searchjournal.SearchJournalEntry;
+import scot.gov.publishing.journal.Journal;
+import scot.gov.publishing.journal.JournalAction;
+import scot.gov.publishing.journal.JournalEntry;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -37,11 +37,11 @@ public class JournalPopulationResource {
 
     Session session;
 
-    SearchJournal journal;
+    Journal journal;
 
     public JournalPopulationResource(Session session) {
         this.session = session;
-        this.journal = new SearchJournal(session);
+        this.journal = new Journal(session);
     }
 
     @PUT
@@ -89,27 +89,26 @@ public class JournalPopulationResource {
 
     void processPublicationOrComplexDocument(Node publication, List<String> paths) throws RepositoryException {
         LOG.info("processPublicationOrComplexDocument {}", publication.getPath());
-        String publicationType = publication.getProperty("govscot:publicationType").getString();
-        String collection = FunnelbackCollection.getCollectionByPublicationType(publicationType).getCollectionName();
         Calendar timestamp = getTimestamp(publication);
         String slug = publication.getProperty("govscot:slug").getString();
         String publicationUrl = publicationUrl(slug);
+        String handleId = publication.getParent().getIdentifier();
         Calendar now = Calendar.getInstance();
         timestamp.set(Calendar.SECOND, now.get(Calendar.SECOND));
         timestamp.set(Calendar.MILLISECOND, now.get(Calendar.MILLISECOND));
-        journal.record(publishEntry(publicationUrl, collection, timestamp));
+        journal.record(publishEntry(publicationUrl, timestamp, handleId));
         paths.add(publicationUrl);
         Node folder = publication.getParent().getParent();
 
         if (publication.isNodeType("govscot:Publication")) {
-            boolean addedPages = processPublicationPages(publication, slug, collection, timestamp, paths);
+            boolean addedPages = processPublicationPages(publication, slug, timestamp, paths);
             if (addedPages && hasDocuments(folder)) {
                 String url = publicationUrl + "documents/";
-                journal.record(publishEntry(url, collection, timestamp));
+                journal.record(publishEntry(url, timestamp, handleId));
                 paths.add(url);
             }
         } else {
-            processComplexDocumentChapters(publication, slug, collection, timestamp, paths);
+            processComplexDocumentChapters(publication, slug, timestamp, paths);
         }
     }
 
@@ -133,16 +132,16 @@ public class JournalPopulationResource {
         return publicationUrl + "pages/" + page.getName() + "/";
     }
 
-    SearchJournalEntry publishEntry(String url, String collection, Calendar timestamp) {
-        SearchJournalEntry entry = new SearchJournalEntry();
+    JournalEntry publishEntry(String url, Calendar timestamp, String contentId) {
+        JournalEntry entry = new JournalEntry();
+        entry.setContentId(contentId);
         entry.setUrl(url);
-        entry.setAction("publish");
-        entry.setCollection(collection);
+        entry.setAction(JournalAction.PUBLISH);
         entry.setTimestamp(timestamp);
         return entry;
     }
 
-    boolean processPublicationPages(Node publication, String slug, String collection, Calendar timestamp, List<String> paths) throws RepositoryException {
+    boolean processPublicationPages(Node publication, String slug, Calendar timestamp, List<String> paths) throws RepositoryException {
 
         if (!publication.getParent().getParent().hasNode(PAGES)) {
             return false;
@@ -159,7 +158,7 @@ public class JournalPopulationResource {
                     seenFirstPage = true;
                 } else {
                     String url = pageUrl(slug, pageHandle);
-                    journal.record(publishEntry(url, collection, timestamp));
+                    journal.record(publishEntry(url, timestamp, pageHandle.getIdentifier()));
                     paths.add(url);
                     addedPages = true;
                 }
@@ -190,22 +189,22 @@ public class JournalPopulationResource {
                 && variant.getProperty("govscot:contentsPage").getBoolean();
     }
 
-    void processComplexDocumentChapters(Node publication, String slug, String collection, Calendar timestamp, List<String> paths) throws RepositoryException {
+    void processComplexDocumentChapters(Node publication, String slug, Calendar timestamp, List<String> paths) throws RepositoryException {
 
         Node pagesFolder = publication.getParent().getParent().getNode("chapters");
         NodeIterator it = pagesFolder.getNodes();
         while (it.hasNext()) {
             Node folder = it.nextNode();
-            processComplexDocumentChapterFolder(folder, slug, collection, timestamp, paths);
+            processComplexDocumentChapterFolder(folder, slug, timestamp, paths);
         }
     }
 
-    void processComplexDocumentChapterFolder(Node folder, String slug, String collection, Calendar timestamp, List<String> paths) throws RepositoryException {
+    void processComplexDocumentChapterFolder(Node folder, String slug, Calendar timestamp, List<String> paths) throws RepositoryException {
         NodeIterator it = folder.getNodes();
         while (it.hasNext()) {
             Node chapterHandle = it.nextNode();
             String url = chapterUrl(slug, chapterHandle);
-            journal.record(publishEntry(url, collection, timestamp));
+            journal.record(publishEntry(url, timestamp, chapterHandle.getIdentifier()));
             paths.add(url);
         }
     }

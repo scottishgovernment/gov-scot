@@ -38,6 +38,7 @@
                         <bean class="scot.gov.publishing.hippo.search.HealthResource" />
                     </constructor-arg>
                 </bean>
+
             </list>
         </property>
     </bean>

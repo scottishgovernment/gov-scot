@@ -1,11 +1,11 @@
 definitions:
   config:
-    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/FunnelbackReconciliationLoop:
+    /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalReconciliationLoop:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: [maxJournalEntriesToFetch, interRequestPause, filters]
-      hipposched:attributeValues: ['2000', '0', 'TikaFilterProvider,ExternalFilterProvider:JSoupProcessingFilterProvider:DocumentFixerFilterProvider']
+      hipposched:attributeNames: [maxJournalEntriesToFetch, interRequestPause]
+      hipposched:attributeValues: ['2000', '0']
       hipposched:enabled: true
-      hipposched:repositoryJobClass: scot.gov.www.searchjournal.FunnelbackReconciliationLoop
+      hipposched:repositoryJobClass: scot.gov.publishing.journal.JournalReconciliationLoop
       /hipposched:triggers:
         jcr:primaryType: hipposched:triggers
         /everyMin:
@@ -43,8 +43,8 @@ definitions:
           hipposched:enabled: false
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/JournalPopulationJob:
       jcr:primaryType: hipposched:repositoryjob
-      hipposched:attributeNames: [cutoffMillis]
-      hipposched:attributeValues: ['']
+      hipposched:attributeNames: []
+      hipposched:attributeValues: []
       hipposched:enabled: false
       hipposched:repositoryJobClass: scot.gov.www.searchjournal.JournalPopulationJob
       /hipposched:triggers:

@@ -2,5 +2,9 @@ definitions:
   config:
     /hippo:configuration/hippo:modules/searchjournal:
       jcr:primaryType: hipposys:module
-      hipposys:className: scot.gov.www.searchjournal.SearchJournalEventListener
+      hipposys:className: scot.gov.publishing.journal.JournalEventListener
       hipposys:cmsonly: true
+      /hippo:moduleconfig:
+        jcr:primaryType: hipposys:moduleconfig
+        rootContentPath: govscot
+        rootSite: gov

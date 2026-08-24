@@ -26,9 +26,11 @@ public abstract class SlugProcessor extends HstLinkProcessorTemplate {
         HstRequestContext req = RequestContextProvider.get();
         Session session = req.getSession();
 
-        return session.nodeExists(path) ?
-                findPublishedNodeFromFolder(session, path)
-                : null;
+        if (session.nodeExists(path)) {
+            return findPublishedNodeFromFolder(session, path);
+        }
+
+        return null;
     }
 
     // when generating a link for the preview mount, the slug must be read from the draft variant

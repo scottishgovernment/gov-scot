@@ -33,7 +33,7 @@ public class FeatureFlagsResource {
             session.save();
             return Response.status(Response.Status.OK).entity("Done").build();
         } catch (RepositoryException e) {
-            LOG.error("Failed to set enabled flag for FunnelbackReconciliationLoop", e);
+            LOG.error("Failed to set enabled flag for " + flag, e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -52,7 +52,7 @@ public class FeatureFlagsResource {
             }
             return Response.status(Response.Status.OK).entity(Boolean.toString(isEnabled)).build();
         } catch (RepositoryException e) {
-            LOG.error("Failed to get enabled flag for FunnelbackReconciliationLoop", e);
+            LOG.error("Failed to get enabled flag for JournalReconciliationLoop", e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }

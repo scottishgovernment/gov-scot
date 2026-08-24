@@ -43,11 +43,11 @@ public class SearchJournalCleanupJob implements RepositoryJob {
     void doExecute(Session session) throws RepositoryException {
         Calendar cutoff = getCutoff();
         for (Node monthNode : getMonthsToDelete(session, cutoff)) {
-            LOG.info("removing month {}", monthNode.getPath());
+            LOG.info("Removing month {}", monthNode.getPath());
             Node yearNode = monthNode.getParent();
             monthNode.remove();
             if (!yearNode.hasNodes()) {
-                LOG.info("removing year {}", yearNode.getPath());
+                LOG.info("Removing year {}", yearNode.getPath());
                 yearNode.remove();
             }
             session.save();

@@ -3,10 +3,10 @@ definitions:
     /content:
       /featureflags:
         jcr:primaryType: nt:unstructured
-        FunnelbackReconciliationLoop: true
+        JournalEventListener: true
+        JournalReconciliationLoop: true
         JournalPopulationJob: false
         SearchJournalCleanupJob: true
-        SearchJournalEventListener: true
         SlugLookupsPopulationJob: false
         VuelioImporterJob: false
         VuelioImporterJobscotgov: false
