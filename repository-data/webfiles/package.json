@@ -20,7 +20,7 @@
     "@fontsource-utils/scss": "^0.2.2",
     "@fontsource/roboto": "^5.2.10",
     "@scottish-government-design-system/page-blocks": "^2.0.0-beta.1",
-    "@scottish-government/design-system": "^4.0.1",
+    "@scottish-government/design-system": "^4.2.0",
     "babel-loader": "^10.0.0",
     "mkdirp": "^3.0.1",
     "nunjucks": "^3.2.4",

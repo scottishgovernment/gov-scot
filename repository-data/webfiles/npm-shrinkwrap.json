@@ -14,7 +14,7 @@
         "@fontsource-utils/scss": "^0.2.2",
         "@fontsource/roboto": "^5.2.10",
         "@scottish-government-design-system/page-blocks": "^2.0.0-beta.1",
-        "@scottish-government/design-system": "^4.0.1",
+        "@scottish-government/design-system": "^4.2.0",
         "babel-loader": "^10.0.0",
         "mkdirp": "^3.0.1",
         "nunjucks": "^3.2.4",
@@ -2210,9 +2210,9 @@
       }
     },
     "node_modules/@scottish-government/design-system": {
-      "version": "4.0.1",
-      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-4.0.1.tgz",
-      "integrity": "sha512-T+g6qYRkss/SotUbDrNFieGF844ZAHcS69xhGcPAmsKbzYn0RJKEHHU7/AX0DHBuJ+4Poykn+qiDAEQ5ZkTDqA==",
+      "version": "4.2.0",
+      "resolved": "https://registry.npmjs.org/@scottish-government/design-system/-/design-system-4.2.0.tgz",
+      "integrity": "sha512-kCIG0P4kN+G1rJay9lOplMoEYVnfEDqI7iU2IUHw/BJbTVADvdqV8gT0wVlA35OFs17Rqy+gLyNbveiwgb4qBw==",
       "dev": true,
       "license": "MIT"
     },

@@ -19,7 +19,11 @@
 
             <noscript>
                 <div class="ds_warning-text">
-                    <strong class="ds_warning-text__icon" aria-hidden="true"></strong>
+                    <div class="ds_warning-text__icon" aria-hidden="true">
+                        <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
+                            <use href="/webfiles/latest/assets/images/icons/icons.stack.svg#warning"></use>
+                        </svg>
+                    </div>
                     <strong class="visually-hidden">Warning</strong>
                     <div class="ds_warning-text__text">
                         We've detected from your browser that JavaScript is disabled.

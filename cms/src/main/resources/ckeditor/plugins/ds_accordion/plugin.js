@@ -105,7 +105,7 @@ const accordionPlugin = function () {
                         'button(!ds_accordion__open-all)',
 
                         // warning text support
-                        'div(!ds_warning-text);strong(!ds_warning-text__icon);div(!ds_warning-text__text)',
+                        'div(!ds_warning-text__icon)[!aria-hidden]; svg(!ds_icon, !ds_icon--fill)[!aria-hidden, !role]; use[!href]; strong(!visually-hidden); div(!ds_warning-text__text)',
 
                         // inset text support
                         'div(!ds_inset-text);div(!ds_inset-text__text)'

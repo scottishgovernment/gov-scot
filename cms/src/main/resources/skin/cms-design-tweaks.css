@@ -121,12 +121,16 @@
 .ds_warning-text {
     border: 1px solid currentColor;
     border-width: 1px 0;
-    padding: 14px 15px 14px 65px;
+    font-weight: bold;
+    padding: 23px 64px 23px 64px;
     position: relative;
 
-    /* to match CKEditor spacing */
     margin-top: 0.7em;
     margin-bottom: 0.3em;
+}
+
+.ds_warning-text:first-child{
+    margin-top: 0;
 }
 
 .ds_warning-text__text> :last-child {
@@ -134,20 +138,26 @@
 }
 
 .ds_warning-text__icon {
-    background: #333;
-    border-radius: 50%;
-    color: #fff;
-    display: inline-block;
-    height: 35px;
-    font-size: 32px;
-    font-weight: 700;
+    height: 34px;
     left: 15px;
-    line-height: 35px;
+    line-height: 1;
     position: absolute;
-    text-align: center;
-    top: 9px;
-    width: 35px;
+    top: 17px;
+    width: 34px;
 }
+
+.ds_warning-text__icon .ds_icon {
+    display: none;
+}
+
+.ds_warning-text__icon::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%' viewBox='0 -960 960 960' width='100%' fill='%231a1a1a'%3E%3Cpath d='m40-120 440-760 440 760H40Zm468.5-131.5Q520-263 520-280t-11.5-28.5Q497-320 480-320t-28.5 11.5Q440-297 440-280t11.5 28.5Q463-240 480-240t28.5-11.5ZM440-360h80v-200h-80v200Z'/%3E%3C/svg%3E");
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
 
 
 

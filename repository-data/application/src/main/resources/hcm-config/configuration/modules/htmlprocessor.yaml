@@ -11,3 +11,9 @@ definitions:
       /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/span:
        jcr:primaryType: hipposys:moduleconfig
        attributes: [aria-hidden, class, lang, dir]
+      /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/svg:
+        jcr:primaryType: hipposys:moduleconfig
+        attributes: [aria-hidden, class, role]
+      /hippo:configuration/hippo:modules/htmlprocessor/hippo:moduleconfig/richtext/use:
+        jcr:primaryType: hipposys:moduleconfig
+        attributes: [href]

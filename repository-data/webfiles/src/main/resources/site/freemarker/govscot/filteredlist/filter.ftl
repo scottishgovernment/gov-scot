@@ -42,12 +42,10 @@
 <div class="ds_search-filters">
     <input type="hidden" id="imagePath" value="<@hst.webfile path='assets/images/icons/' />">
 
-    <div class="ds_details  ds_no-margin" data-module="ds-details">
-        <input id="filters-toggle" type="checkbox" class="ds_details__toggle  visually-hidden">
-
-        <label for="filters-toggle" class="ds_details__summary">
+    <details class="ds_details  ds_no-margin" data-module="ds-details">
+        <summary class="ds_details__summary">
             <span class="visually-hidden">Show </span>Search filters
-        </label>
+        </summary>
 
         <div class="ds_skip-links  ds_skip-links--static">
             <ul class="ds_skip-links__list">
@@ -252,5 +250,5 @@
 
             </form>
         </div>
-    </div>
+    </details>
 </div>

@@ -8,8 +8,8 @@
             <div class="ds_notification__content  ds_notification__content--has-close">
                 <div role="heading" class="visually-hidden">Information</div>
 
-                <span class="ds_notification__icon  ds_notification__icon--inverse  ds_notification__icon--colour" aria-hidden="true">
-                    <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img"><use href="${iconspath}#priority_high"></use></svg>
+                <span class="ds_notification__icon" aria-hidden="true">
+                    <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img"><use href="${iconspath}#warning"></use></svg>
                 </span>
                 <div class="ds_notification__text">
                     <@hst.html var="content" hippohtml=importantBanner.content/>

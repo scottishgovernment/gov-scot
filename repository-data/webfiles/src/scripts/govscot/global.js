@@ -143,6 +143,9 @@ const global = {
                 }
             });
         }
+        
+        const detailsElements = [].slice.call(document.querySelectorAll('[data-module="ds-details"]:not(.js-instantiated)'));
+        detailsElements.forEach(details => new window.DS.components.Details(details).init());
 
         // this one is handled differently because it applies an event to the whole body and we only want that event once
         const hidePageButtons = [].slice.call(document.querySelectorAll('.ds_hide-page'));
