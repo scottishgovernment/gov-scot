@@ -1,0 +1,3 @@
+action-lists:
+  - 0.20260821:
+      /hippo:configuration/hippo:domains/groups/readwrite: reload

@@ -1,7 +1,5 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/security-user-management/groups:
-      .meta:delete: true
     /hippo:configuration/hippo:domains/security-user-management/groups/exclude-webmaster-group:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false
