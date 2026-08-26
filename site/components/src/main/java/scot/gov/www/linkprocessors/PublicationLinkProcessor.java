@@ -31,7 +31,7 @@ public class PublicationLinkProcessor extends SlugProcessor {
     @Override
     protected HstLink doPostProcess(HstLink link) {
         if (isFullLink(link, PUBLICATIONS, 5)) {
-            String slug = slug(link);
+            String slug = slug(link, link.getMount().getType());
             if (slug == null) {
                 // could not resolve a slug (e.g. invalid or unresolvable path) - leave the link untouched
                 return link;
@@ -44,7 +44,7 @@ public class PublicationLinkProcessor extends SlugProcessor {
                     link.getPathElements()[3]);
 
             // replace the folder name with the slug
-            newElements[1] = slug(link, link.getMount().getType());
+            newElements[1] = slug;
 
             // if this is a link to govscot:Publication then remove the name part of the url e.g. index
             if (link.getPathElements().length == 6) {
