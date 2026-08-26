@@ -97,7 +97,7 @@ definitions:
     /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/OrganiseGalleryImagesJob:
       jcr:primaryType: hipposched:repositoryjob
       hipposched:attributeNames: [minimumAgeMinutes]
-      hipposched:attributeValues: ['43200']
+      hipposched:attributeValues: ['10080']
       hipposched:enabled: true
       hipposched:repositoryJobClass: scot.gov.www.OrganiseGalleryImagesJob
       /hipposched:triggers:
