@@ -24,18 +24,18 @@ public class NewsLinkProcessor extends SlugProcessor {
     protected HstLink doPostProcess(HstLink link) {
         if (isFullLink(link, NEWS, 4)) {
             // get the slug from the govscot:News item field
-            link.setPath(String.format("news/%s", slug(link)));
+            link.setPath(String.format("news/%s", slug(link, link.getMount().getType())));
         }
 
         return link;
     }
 
-    private String slug(HstLink link) {
+    private String slug(HstLink link, String mountType) {
 
         String path = String.format("/content/documents/govscot/%s", link.getPath());
 
         try {
-            Node newsNode = findNode(path);
+            Node newsNode = findNode(path, mountType);
             if (newsNode == null) {
                 LOG.warn("Unable to find publication node for path {}", link.getPath());
                 return null;

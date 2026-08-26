@@ -8,6 +8,7 @@ import scot.gov.publications.hippo.HippoUtils;
 import scot.gov.publishing.sluglookup.SlugLookups;
 
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 
 import static org.apache.commons.lang3.StringUtils.substringAfter;
@@ -26,6 +27,8 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     private static final Logger LOG = LoggerFactory.getLogger(SlugMaintenanceListener.class);
 
     static final String SLUG = "govscot:slug";
+
+    private static final String HIPPOSTD_STATE = "hippostd:state";
 
     HippoUtils hippoUtils = new HippoUtils();
 
@@ -84,7 +87,7 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     }
 
     void updateLookup(Node subject, String mount ) throws RepositoryException {
-        String slug = slug(subject);
+        String slug = slug(subject, variantStateForMount(mount));
         if (isBlank(slug)) {
             LOG.warn("Slug is empty for {}", slug);
             return;
@@ -99,13 +102,25 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
     }
 
     void updateLookup(Node subject, String mount, boolean clearLookout) throws RepositoryException {
-        String slug = slug(subject);
+        String slug = slug(subject, variantStateForMount(mount));
+        if (isBlank(slug)) {
+            LOG.warn("Slug is empty for {}", slug);
+            return;
+        }
+
         String site = sitename(subject);
         String path = substringAfter(subject.getPath(), site);
         String type = path.split("/")[1];
 
         SlugLookups slugLookups = new SlugLookups(session);
         slugLookups.updateLookup(slug, path, site, type, mount, clearLookout);
+    }
+
+    // the "preview" mount is populated from the just-saved draft edit (commitEditableInstance fires
+    // before the draft is copied into the unpublished variant), the "live" mount must reflect what is
+    // actually published, so each mount needs the slug from a different variant.
+    private String variantStateForMount(String mount) {
+        return LIVE.equals(mount) ? "published" : "draft";
     }
 
     void removeLookup(Node subject, String mount) throws RepositoryException {
@@ -118,9 +133,22 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
         session.save();
     }
 
-    private String slug(Node subject) throws RepositoryException {
-        Node variant = subject.getNode(subject.getName());
-        return variant.getProperty(SLUG).getString();
+    private String slug(Node subject, String requiredState) throws RepositoryException {
+        NodeIterator variants = subject.getNodes(subject.getName());
+        Node matched = null;
+        while (variants.hasNext()) {
+            Node variant = variants.nextNode();
+            String state = variant.hasProperty(HIPPOSTD_STATE) ? variant.getProperty(HIPPOSTD_STATE).getString() : null;
+            if (requiredState.equals(state)) {
+                matched = variant;
+            }
+        }
+
+        if (matched == null) {
+            return null;
+        }
+
+        return matched.hasProperty(SLUG) ? matched.getProperty(SLUG).getString() : null;
     }
 
     private String sitename(Node subject) throws RepositoryException {

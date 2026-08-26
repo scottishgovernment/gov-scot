@@ -38,7 +38,7 @@ public class PublicationLinkProcessor extends SlugProcessor {
                     link.getPathElements()[3]);
 
             // replace the folder name with the slug
-            newElements[1] = slug(link);
+            newElements[1] = slug(link, link.getMount().getType());
 
             // if this is a link to govscot:Publication then remove the name part of the url e.g. index
             if (link.getPathElements().length == 6) {
@@ -50,12 +50,12 @@ public class PublicationLinkProcessor extends SlugProcessor {
         return link;
     }
 
-    private String slug(HstLink link) {
+    private String slug(HstLink link, String mountType) {
         String path =
                 String.format("/content/documents/govscot/%s",
                         Arrays.stream(Arrays.copyOf(link.getPathElements(), 5)).collect(joining("/")));
         try {
-            Node publicationNode = findNode(path);
+            Node publicationNode = findNode(path, mountType);
             if (publicationNode == null) {
                 LOG.warn("Unable to find publication node for path {}", link.getPath());
                 return null;
