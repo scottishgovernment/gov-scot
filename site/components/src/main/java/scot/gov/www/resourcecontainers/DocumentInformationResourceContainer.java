@@ -59,7 +59,7 @@ public class DocumentInformationResourceContainer extends AbstractResourceContai
         Path parent = path.getParent();
 
         // if the parent of this path is govscot:document then we need to strip off the filename
-        if (isDocument(parent.getFileName().toString())) {
+        if (parent != null && parent.getFileName() != null && isDocument(parent.getFileName().toString())) {
             path = parent;
         }
         return super.resolveToResourceNode(session, path.toString());
