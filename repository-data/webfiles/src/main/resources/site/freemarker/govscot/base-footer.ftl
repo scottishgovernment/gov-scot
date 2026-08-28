@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="gov_social-links__item">
-                    <a title="LinkedIn" class="gov_social-links__link" href="https://www.tiktok.com/" data-footer="social-6">
+                    <a title="Tiktok" class="gov_social-links__link" href="https://www.tiktok.com/" data-footer="social-7">
                         <div class="gov_social-links__link-inner">
                             <span class="gov_social-links__icon"><svg class="ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#tiktok"></use></svg></span>
                             <span>TikTok</span>
