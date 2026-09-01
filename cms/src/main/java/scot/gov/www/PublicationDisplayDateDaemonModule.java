@@ -1,6 +1,6 @@
 package scot.gov.www;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.onehippo.repository.events.HippoWorkflowEvent;
 import scot.gov.publications.hippo.HippoUtils;
 
