@@ -42,6 +42,6 @@ public class DocumentHelper {
             documentManager.depublishDocument(path);
         }
 
-        nodeFactory.ensureEmbargoAndWorkflowJobs(node, metadata.getPublicationDateWithTimezone(), metadata.shoudlEmbargo());
+        nodeFactory.ensureEmbargoAndWorkflowJobs(node, metadata.getPublicationDateWithTimezone(), metadata.shouldEmbargo());
     }
 }
