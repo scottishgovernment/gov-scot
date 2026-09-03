@@ -7,6 +7,13 @@ definitions:
       hipposys:filter: false
       hipposys:type: Name
       hipposys:value: webmaster
+    /hippo:configuration/hippo:domains/security-user-management/groups/exclude-cmsadmin-group:
+      jcr:primaryType: hipposys:facetrule
+      hipposys:equals: false
+      hipposys:facet: nodename
+      hipposys:filter: false
+      hipposys:type: Name
+      hipposys:value: cmsadmin
     /hippo:configuration/hippo:domains/security-user-management/groups/exclude-cms-admin-group:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false
@@ -21,6 +28,8 @@ definitions:
       hipposys:filter: false
       hipposys:type: Name
       hipposys:value: admin
+    /hippo:configuration/hippo:domains/security-user-management/readwrite:
+      hipposys:role: readwrite-no-delete
     /hippo:configuration/hippo:domains/security-user-management/users/exclude-admin-user:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false
