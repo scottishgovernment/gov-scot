@@ -13,3 +13,19 @@ definitions:
         VuelioImporterJobsocialsecurity: false
         LinkRewriteJob: false
         OrganiseGalleryImagesJob: false
+        # DocumentOrderDaemonModule re-sorts folder children (orderBefore + session.save())
+        # on every successful workflow event with no content-type filtering. It is the
+        # prime suspect for HippoLocalItemStateManager.reorderHandleChildNodeEntries lock
+        # contention seen during heavy imports, so it defaults to disabled.
+        DocumentOrderDaemonModule: false
+        SitemapEventListener: true
+        SlugMaintenanceListener: true
+        NewsSlugDaemonModule: true
+        PublicationSlugDaemonModule: true
+        PublicationDisplayDateDaemonModule: true
+        FOINumberDaemonModule: true
+        EnrichRoleDaemonModule: true
+        FolderTypesDaemonModule: true
+        UpdateHistoryDaemonModule: true
+        ThumbnailsDaemonModule: true
+        HasFoldersImprovementListener: true

@@ -41,29 +41,32 @@ public class PublicationSink extends AbstractSink {
 
     void postProcessPublication(PressRelease release, String location, String yearType, String monthType, Session session) throws RepositoryException {
         Node handle = session.getNode(location);
-        handle.setProperty("hippo:name", release.getTitle());
+        boolean changed = setStringPropertyIfChanged(handle, "hippo:name", release.getTitle());
         Node pub = handle.getParent();
         Node month = pub.getParent();
         Node year = month.getParent();
         Node typeFolder = year.getParent();
-        setFolderType(month, monthType);
-        setFolderType(year, yearType);
-        month.setProperty(HIPPOSTD_HASFOLDERS, true);
-        year.setProperty(HIPPOSTD_HASFOLDERS, true);
-        typeFolder.setProperty(HIPPOSTD_HASFOLDERS, true);
-        removeExtraIndex(pub);
-        session.save();
+        changed |= setFolderType(month, monthType);
+        changed |= setFolderType(year, yearType);
+        changed |= setBooleanPropertyIfChanged(month, HIPPOSTD_HASFOLDERS, true);
+        changed |= setBooleanPropertyIfChanged(year, HIPPOSTD_HASFOLDERS, true);
+        changed |= setBooleanPropertyIfChanged(typeFolder, HIPPOSTD_HASFOLDERS, true);
+        changed |= removeExtraIndex(pub);
+        if (changed) {
+            session.save();
+        }
     }
 
-    void removeExtraIndex(Node pubfolder) throws RepositoryException {
+    boolean removeExtraIndex(Node pubfolder) throws RepositoryException {
         NodeIterator it = pubfolder.getNodes("index");
         while (it.hasNext()) {
             Node handle = it.nextNode();
             if (handle.getNodes("index").getSize() != 3) {
                 handle.remove();
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     @Override

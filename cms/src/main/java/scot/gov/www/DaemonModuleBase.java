@@ -9,6 +9,7 @@ import org.onehippo.repository.events.HippoWorkflowEvent;
 import org.onehippo.repository.modules.DaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.publishing.jcr.FeatureFlag;
 
 /**
  * Base class intended for out event handlers. Logs start and end time and provides a simple template
@@ -18,6 +19,10 @@ public abstract class DaemonModuleBase implements DaemonModule {
     private static final Logger LOG = LoggerFactory.getLogger(DaemonModuleBase.class);
 
     protected Session session;
+
+    // feature flag named after the concrete subclass (e.g. /content/featureflags/DocumentOrderDaemonModule),
+    // so each event handler can be disabled independently without a code change
+    private FeatureFlag featureFlag;
 
     /**
      * determine whether this class handles this type of event
@@ -32,12 +37,17 @@ public abstract class DaemonModuleBase implements DaemonModule {
     @Override
     public void initialize(Session session) throws RepositoryException {
         this.session = session;
+        this.featureFlag = new FeatureFlag(session, getClass().getSimpleName());
 
         HippoEventListenerRegistry.get().register(this);
     }
 
     @Subscribe
     public void handleEvent(HippoWorkflowEvent event) {
+        if (!featureFlag.isEnabled()) {
+            return;
+        }
+
         if (!canHandleEvent(event)) {
             return;
         }
@@ -66,6 +76,5 @@ public abstract class DaemonModuleBase implements DaemonModule {
     public void shutdown() {
         HippoEventListenerRegistry.get().unregister(this);
     }
-
 
 }

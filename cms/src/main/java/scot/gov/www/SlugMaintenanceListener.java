@@ -33,9 +33,35 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
     protected static final String LIVE = "live";
 
+    private static final String NEWS_PREFIX = "/content/documents/govscot/news/";
+
+    // the JCR user the vuelio-importer impersonates as (see VuelioImporterJob) - the importer
+    // maintains the live slug lookup for news items itself (see NewsSideEffects), since this
+    // listener's own save would run on a separate session that nothing the importer does can
+    // ever cause to persist
+    private static final String IMPORTER_USER = "news";
+
     @Override
     public boolean canHandleEvent(HippoWorkflowEvent event) {
-        return true;
+        return !isImportedNewsPublishOrDepublish(event);
+    }
+
+    private boolean isImportedNewsPublishOrDepublish(HippoWorkflowEvent event) {
+        if (!("publish".equals(event.action()) || "depublish".equals(event.action()))) {
+            return false;
+        }
+
+        String subjectPath = event.subjectPath();
+        boolean isImportedNewsEvent = IMPORTER_USER.equals(event.user())
+                && subjectPath != null
+                && subjectPath.startsWith(NEWS_PREFIX);
+        if (isImportedNewsEvent) {
+            LOG.warn("SlugMaintenanceListener: skipping {} action={} - triggered by importer user '{}', importer maintains its own slug lookup",
+                    subjectPath, event.action(), event.user());
+        } else {
+            LOG.warn("SlugMaintenanceListener: handling {} action={} - triggered by user '{}'", subjectPath, event.action(), event.user());
+        }
+        return isImportedNewsEvent;
     }
 
     public void doHandleEvent(HippoWorkflowEvent event) throws RepositoryException {

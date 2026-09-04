@@ -29,9 +29,10 @@ public class ContentNodes {
 
     Policies policies = new Policies();
 
-    ContentNode news(PressRelease release, Session session) throws RepositoryException {
+    ContentNode news(PressRelease release, Session session, String slug) throws RepositoryException {
         ContentNode node = contentNode(release, session);
         node.setPrimaryType(GOVSCOT_NEWS);
+        node.setProperty("govscot:slug", slug);
         Media hero = release.getMediaAttachments().isEmpty() ? null : release.getMediaAttachments().get(0);
         List<Media> attachments = release.getMediaAttachments().size() <= 1
                 ? Collections.emptyList()

@@ -72,6 +72,11 @@
             <groupId>scot.gov.publishing.hippo</groupId>
             <artifactId>hippo-govscot-jcrutil</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>scot.gov.publishing.hippo</groupId>
+            <artifactId>hippo-govscot-sluglookup-cms</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -21,10 +21,12 @@ public class NewsSink extends AbstractSink {
 
     @Override
     public void acceptPressRelease(PressRelease release) throws RepositoryException {
-        ContentNode contentNode = contentNodes.news(release, session);
         String location = locations.newsLocation(release, session);
+        String slug = newsSideEffects.resolveSlug(session, location, release.getSeoName());
+        ContentNode contentNode = contentNodes.news(release, session, slug);
         String updatedlocation = update(contentNode, location, session);
         ensureNewsFolderActions(updatedlocation, session);
+        newsSideEffects.afterPublish(session, session.getNode(updatedlocation));
         detectMissingSlug(session, updatedlocation, release);
     }
 
@@ -33,11 +35,13 @@ public class NewsSink extends AbstractSink {
         Node month = handle.getParent();
         Node year = month.getParent();
         Node news = year.getParent();
-        setFolderType(month, "new-news-document");
-        setFolderType(year, "new-news-month-folder");
-        year.setProperty("hippostd:hasfolders", true);
-        news.setProperty("hippostd:hasfolders", true);
-        session.save();
+        boolean changed = setFolderType(month, "new-news-document");
+        changed |= setFolderType(year, "new-news-month-folder");
+        changed |= setBooleanPropertyIfChanged(year, "hippostd:hasfolders", true);
+        changed |= setBooleanPropertyIfChanged(news, "hippostd:hasfolders", true);
+        if (changed) {
+            session.save();
+        }
     }
 
     @Override

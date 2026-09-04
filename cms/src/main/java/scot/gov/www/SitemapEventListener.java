@@ -7,6 +7,7 @@ import org.onehippo.repository.modules.AbstractReconfigurableDaemonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
+import scot.gov.publishing.jcr.FeatureFlag;
 
 import javax.jcr.*;
 
@@ -26,6 +27,14 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     private static final String DEPUBLISH_INTERACTION = "default:handle:depublish";
 
+    private static final String NEWS_PREFIX = "/content/documents/govscot/news/";
+
+    // the JCR user the vuelio-importer impersonates as (see VuelioImporterJob) - the importer
+    // maintains the sitemap entry for news items itself (see NewsSideEffects), since this
+    // listener's own save would run on a separate session that nothing the importer does can
+    // ever cause to persist
+    private static final String IMPORTER_USER = "news";
+
     private static final String LAST_MOD = "govscot:lastMod";
 
     private static final String NT_UNSTRUCTURED = "nt:unstructured";
@@ -37,6 +46,8 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
     private UrlSource urlSource = new UrlSource();
 
     private Set<String> exludedTypes = new HashSet<>();
+
+    private FeatureFlag featureFlag;
 
     @Override
     protected void doConfigure(Node node) throws RepositoryException {
@@ -50,6 +61,7 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     @Override
     protected void doInitialize(Session session) throws RepositoryException {
+        featureFlag = new FeatureFlag(session, "SitemapEventListener");
         HippoEventListenerRegistry.get().register(this);
     }
 
@@ -60,6 +72,10 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
 
     @Subscribe
     public void handleEvent(HippoWorkflowEvent event) {
+
+        if (!featureFlag.isEnabled()) {
+            return;
+        }
 
         if (!shouldHandleEvent(event)) {
             return;
@@ -177,6 +193,20 @@ public class SitemapEventListener extends AbstractReconfigurableDaemonModule {
             return false;
         }
 
-        return equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION);
+        if (!equalsAny(event.interaction(), PUBLISH_INTERACTION, DEPUBLISH_INTERACTION)) {
+            return false;
+        }
+
+        String subjectPath = event.subjectPath();
+        boolean isImportedNewsEvent = IMPORTER_USER.equals(event.user())
+                && subjectPath != null
+                && subjectPath.startsWith(NEWS_PREFIX);
+        if (isImportedNewsEvent) {
+            LOG.warn("SitemapEventListener: skipping {} - triggered by importer user '{}', importer maintains its own sitemap entry",
+                    subjectPath, event.user());
+        } else {
+            LOG.warn("SitemapEventListener: handling {} - triggered by user '{}'", subjectPath, event.user());
+        }
+        return !isImportedNewsEvent;
     }
 }

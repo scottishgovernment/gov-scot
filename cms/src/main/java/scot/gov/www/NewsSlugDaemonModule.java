@@ -20,11 +20,24 @@ public class NewsSlugDaemonModule extends SlugDaemonModule {
 
     private static final String PREFIX = "/content/documents/govscot/news/";
 
+    // the JCR user the vuelio-importer impersonates as (see VuelioImporterJob) - the importer
+    // assigns slugs to news items itself (see NewsSideEffects), since this listener's own save
+    // would run on a separate session that nothing the importer does can ever cause to persist
+    private static final String IMPORTER_USER = "news";
+
     public boolean canHandleEvent(HippoWorkflowEvent event) {
-        return
-                "add".equals(event.action())
-                        && event.success()
-                        && isNewsPath(event.result());
+        if (!("add".equals(event.action()) && event.success() && isNewsPath(event.result()))) {
+            return false;
+        }
+
+        boolean isImporterEvent = IMPORTER_USER.equals(event.user());
+        if (isImporterEvent) {
+            LOG.warn("NewsSlugDaemonModule: skipping {} - triggered by importer user '{}', importer assigns its own slug",
+                    event.result(), event.user());
+        } else {
+            LOG.warn("NewsSlugDaemonModule: handling {} - triggered by user '{}'", event.result(), event.user());
+        }
+        return !isImporterEvent;
     }
 
     /**

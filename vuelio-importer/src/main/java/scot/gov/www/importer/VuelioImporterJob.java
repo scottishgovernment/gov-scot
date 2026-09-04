@@ -18,7 +18,7 @@ import javax.jcr.SimpleCredentials;
 /**
  * Scheduled job to import press releases (news, speeches and correspondence).
  */
-public class VuelioImporterJob implements RepositoryJob {
+public class    VuelioImporterJob implements RepositoryJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(VuelioImporterJob.class);
 
