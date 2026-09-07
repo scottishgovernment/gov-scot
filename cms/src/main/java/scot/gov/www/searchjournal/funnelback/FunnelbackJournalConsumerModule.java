@@ -12,6 +12,7 @@ import scot.gov.publishing.journal.funnelback.FunnelbackJournalPosition;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.io.IOException;
 
 /**
  * {@link DaemonModule} that registers a FunnelbackIndexer-backed {@link JournalConsumerFactory}
@@ -62,8 +63,10 @@ public class FunnelbackJournalConsumerModule implements DaemonModule, JournalCon
             throw new JournalConsumerFactoryException("No FunnelbackIndexer token configured");
         }
         currentFunnelback = funnelback;
-        SiteContentFetcher siteContentFetcher = new SiteContentFetcher(ROOT_SITE);
-        if (!siteContentFetcher.isPingResponding()) {
+        SiteContentFetcher siteContentFetcher = new SiteContentFetcher();
+        try {
+            siteContentFetcher.ping();
+        } catch (IOException e) {
             LOG.error("SiteContentFetcher ping check failed, local site is not responding");
             throw new JournalConsumerFactoryException("SiteContentFetcher is not ready");
         }

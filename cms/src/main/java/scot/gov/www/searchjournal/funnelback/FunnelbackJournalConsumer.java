@@ -1,16 +1,15 @@
 package scot.gov.www.searchjournal.funnelback;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publishing.journal.JournalConsumer;
 import scot.gov.publishing.journal.JournalConsumerException;
 import scot.gov.publishing.journal.JournalEntry;
 import scot.gov.publishing.journal.SiteContentFetcher;
-import scot.gov.publishing.journal.funnelback.FunnelbackIndexer;
 import scot.gov.publishing.journal.funnelback.FunnelbackCollection;
 import scot.gov.publishing.journal.funnelback.FunnelbackException;
-
-import org.apache.commons.lang3.StringUtils;
+import scot.gov.publishing.journal.funnelback.FunnelbackIndexer;
 
 import javax.jcr.ItemNotFoundException;
 import javax.jcr.Node;
@@ -18,6 +17,7 @@ import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
+import java.net.URI;
 import java.util.Set;
 
 /**
@@ -89,22 +89,21 @@ public class FunnelbackJournalConsumer implements JournalConsumer {
     }
 
     private void publish(JournalEntry entry) throws JournalConsumerException {
+        URI uri = URI.create(entry.getUrl());
         try {
             String collection = collectionFor(entry);
             if (collection == null) {
                 LOG.warn("Could not determine collection for {}, skipping publish", entry.getUrl());
                 return;
             }
-            String html = fetcher.getHtml(entry.getSite(), entry.getUrl());
-            if (html != null) {
-                funnelback.publish(collection, entry.getUrl(), html);
-            }
-        } catch (IOException e) {
-            throw new JournalConsumerException("Failed to fetch HTML for " + entry.getUrl(), e);
-        } catch (FunnelbackException e) {
-            throw new JournalConsumerException("Failed to publish " + entry.getUrl(), e);
+            String html = fetcher.getHtml(uri);
+            funnelback.publish(collection, entry.getUrl(), html);
         } catch (RepositoryException e) {
-            throw new JournalConsumerException("Failed to determine collection for " + entry.getUrl(), e);
+            throw new JournalConsumerException("Failed to determine collection for " + uri, e);
+        } catch (IOException e) {
+            throw new JournalConsumerException("Failed to fetch HTML for " + uri, e);
+        } catch (FunnelbackException e) {
+            throw new JournalConsumerException("Failed to publish " + uri, e);
         }
     }
 
