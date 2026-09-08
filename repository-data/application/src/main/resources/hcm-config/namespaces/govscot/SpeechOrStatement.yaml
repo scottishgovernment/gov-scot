@@ -108,7 +108,6 @@ definitions:
           govscot:slug: ''
           govscot:reportingTags: []
           govscot:contentitemlanguage: en
-          govscot:publicationType: hipposysedit:prototype
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''

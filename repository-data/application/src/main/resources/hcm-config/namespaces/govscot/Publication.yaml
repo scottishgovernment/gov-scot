@@ -143,7 +143,6 @@ definitions:
           govscot:reportingTags: []
           govscot:displayDate: 0001-01-01T12:00:00Z
           govscot:contentitemlanguage: en
-          govscot:publicationType: hipposysedit:prototype
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
