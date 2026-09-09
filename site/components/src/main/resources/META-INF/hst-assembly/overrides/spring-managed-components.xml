@@ -30,26 +30,4 @@
     <bean id="bloomreachSearchService" class="scot.gov.www.search.BloomreachSearchService">
     </bean>
 
-    <bean id="threadFactory" class="scot.gov.publishing.hippo.funnelback.client.ThreadNamingThreadFactory">
-        <property name="prefix" value="funnelback-ping-"/>
-    </bean>
-
-    <bean class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean">
-    <property name="threadFactory" ref="threadFactory"/>
-    <property name="scheduledExecutorTasks">
-        <list>
-            <bean class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
-                <property name="period" value="25000"/>
-                <property name="runnable">
-                    <bean class="org.springframework.scheduling.support.MethodInvokingRunnable">
-                        <property name="targetObject" ref="funnelbackSearchServiceDXP"/>
-                        <property name="targetMethod" value="ping"/>
-                        <property name="arguments" value="govscot" />
-                    </bean>
-                </property>
-            </bean>
-        </list>
-    </property>
-</bean>
-
 </beans>
