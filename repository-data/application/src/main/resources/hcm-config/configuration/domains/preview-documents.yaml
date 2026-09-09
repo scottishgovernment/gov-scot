@@ -29,13 +29,6 @@ definitions:
           speech-statement-publication-type-editors, strategy-plan-publication-type-editors,
           transparency-data-publication-type-editors]
       hipposys:role: modify
-    /hippo:configuration/hippo:domains/preview-documents/hippo-document/hide-embargo-handle:
-      jcr:primaryType: hipposys:facetrule
-      hipposys:equals: false
-      hipposys:facet: nodetype
-      hipposys:filter: false
-      hipposys:type: Name
-      hipposys:value: embargo:handle
     /hippo:configuration/hippo:domains/preview-documents/hippo-document/exclude-resetpassword-folder:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false

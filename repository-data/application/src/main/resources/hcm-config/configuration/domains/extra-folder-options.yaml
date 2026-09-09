@@ -1,15 +1,10 @@
 definitions:
   config:
     /hippo:configuration/hippo:domains/extra-folder-options:
-      jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [useradmin, publication-extra-folder-options]
         hipposys:role: folderctxmenus-editor
-      /admin:
-        jcr:primaryType: hipposys:authrole
-        hipposys:role: folderctxmenus-editor
-        hipposys:userrole: xm.content.admin
       /content-domain:
         /browse-folder-and-descendants:
           jcr:primaryType: hipposys:facetrule
