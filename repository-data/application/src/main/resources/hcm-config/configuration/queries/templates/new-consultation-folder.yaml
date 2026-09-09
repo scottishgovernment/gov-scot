@@ -30,6 +30,8 @@ definitions:
               jcr:mixinTypes: ['mix:referenceable']
               jcr:uuid: 7d063f6c-5f63-466d-8452-1e6e6f825492
               govscot:isbn: ''
+              govscot:publicationType:
+                operation: delete
               govscot:metaDescription: ''
               govscot:seoTitle: ''
               govscot:summary: ''

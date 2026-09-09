@@ -1,0 +1,35 @@
+config:
+  export:
+    ignorepaths:
+      # hipposched:nextFireTime is recomputed by the scheduler on every job run,
+      # so it will always differ from the static bootstrap value
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/DeleteOldRequestsJob/hipposched:triggers/dailyAtMidnight/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/FunnelbackReconciliationLoop/hipposched:triggers/everyMin/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/LinkRewriteJob/hipposched:triggers/everyFiveMinutes/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/OrganiseGalleryImagesJob/hipposched:triggers/everyHour/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PollFunnelbackCurator/hipposched:triggers/everyMin/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/PreviewLinksCleanup/hipposched:triggers/nightly/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SitemapJob/hipposched:triggers/daily/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/SlugLookupsPopulationJob/hipposched:triggers/daily/hipposched:nextFireTime
+      - /hippo:configuration/hippo:modules/scheduler/hippo:moduleconfig/system/VuelioImporter/hipposched:triggers/everyFiveMin/hipposched:nextFireTime
+      # hippo:count on facet-navigation report nodes is computed at query time,
+      # not persisted config
+      - /hippo:reports/facet-createdby/hippo:count
+      - /hippo:reports/facet-types/hippo:count
+      # hippo:identifier on this HST prototype page is runtime-assigned and not
+      # declared in source
+      - /hst:hst/hst:configurations/govscot/hst:prototypepages/contentpage/main/hippo:identifier
+      # govscot:publicationType is a derived property (see PublicationTypeDerivedData);
+      # on these template-query prototypes it gets cleared by the derived-data
+      # engine after bootstrap sets the static default, so it can never persist
+      - /hippo:configuration/hippo:queries/hippo:templates/new-complex-document-folder/hippostd:templates/hippostd:folder/index/index/govscot:publicationType
+      - /hippo:configuration/hippo:queries/hippo:templates/new-foi-folder/hippostd:templates/hippostd:folder/index/index/govscot:publicationType
+      - /hippo:configuration/hippo:queries/hippo:templates/new-minutes-folder/hippostd:templates/hippostd:folder/index/index/govscot:publicationType
+      - /hippo:configuration/hippo:queries/hippo:templates/new-publication-folder/hippostd:templates/hippostd:folder/index/index/govscot:publicationType
+      - /hippo:configuration/hippo:queries/hippo:templates/new-speech-or-statement-folder/hippostd:templates/hippostd:folder/index/index/govscot:publicationType
+    filteruuidpaths:
+#      - /some/path/for/which/uuid/export/should/be/ignored
+#      - /another/path/for/which/uuid/export/should/be/ignored
+    path-prefix-source-mapping:
+#      /hst:hst/hst:sites: hst
+#      /hst:hst/hst:configurations: hst

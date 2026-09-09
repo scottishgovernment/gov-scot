@@ -17,6 +17,8 @@ public class PublicationTypeDerivedData extends DerivedDataFunction {
 
     static final String PATH = "path";
 
+    static final String PUBLICATIONS_PATH_PREFIX = "/content/documents/govscot/publications/";
+
     public Map<String,Value[]> compute(Map<String,Value[]> parameters) {
 
         if (parameters.isEmpty() || parameters.get(PATH).length == 0){
@@ -25,7 +27,13 @@ public class PublicationTypeDerivedData extends DerivedDataFunction {
 
         try {
             Value pathValue = parameters.get(PATH)[0];
-            String publicationType = pathValue.getString().split("/")[5];
+            String path = pathValue.getString();
+            if (!path.startsWith(PUBLICATIONS_PATH_PREFIX)) {
+                // not a real publication document (e.g. a template-query prototype
+                // or document-type prototype) - leave publicationType untouched
+                return parameters;
+            }
+            String publicationType = path.split("/")[5];
             parameters.put(PUBLICATION_TYPE, new Value[] {getValueFactory().createValue(publicationType)});
         } catch (RepositoryException e) {
             LOG.error("Couldn't set publication type via derived data, {}", e);

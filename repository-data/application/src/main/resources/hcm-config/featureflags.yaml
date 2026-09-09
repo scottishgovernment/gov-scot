@@ -1,6 +1,8 @@
 definitions:
   config:
     /content:
+      jcr:mixinTypes: ['mix:referenceable', 'mix:lockable']
+      hippostd:hasfolders: true
       /featureflags:
         jcr:primaryType: nt:unstructured
         FunnelbackReconciliationLoop: true
@@ -9,7 +11,10 @@ definitions:
         SearchJournalEventListener: true
         SlugLookupsPopulationJob: false
         VuelioImporterJob: false
-        VuelioImporterJobscotgov: false
+        VuelioImporterJobscotgov:
+          .meta:category: system
+          type: boolean
+          value: true
         VuelioImporterJobsocialsecurity: false
         LinkRewriteJob: false
         OrganiseGalleryImagesJob: false

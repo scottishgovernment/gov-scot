@@ -1,5 +1,5 @@
 /content/gallery/people:
-  .meta:order-before: featureditems
+  .meta:order-before: npf
   jcr:primaryType: hippogallery:stdImageGallery
   jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
   jcr:uuid: 418180db-e45d-4471-9a35-1f994a8c7ab1

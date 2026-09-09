@@ -167,7 +167,6 @@ definitions:
           govscot:sme: ''
           govscot:slug: ''
           govscot:contentitemlanguage: en
-          govscot:publicationType: hipposysedit:prototype
           /govscot:content:
             jcr:primaryType: hippostd:html
             hippostd:content: ''
@@ -195,7 +194,6 @@ definitions:
           govscot:nextMeetingDate: 0001-01-01T12:00:00Z
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:publicationDate: 0001-01-01T12:00:00Z
-          govscot:publicationType: hipposysedit:prototype
           govscot:seoTitle: ''
           govscot:slug: ''
           govscot:sme: ''

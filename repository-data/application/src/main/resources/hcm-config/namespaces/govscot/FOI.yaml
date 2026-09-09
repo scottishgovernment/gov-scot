@@ -97,6 +97,8 @@ definitions:
           jcr:mixinTypes: ['mix:referenceable']
           govscot:isbn: ''
           govscot:publicationDate: 0001-01-01T12:00:00Z
+          govscot:publicationType:
+            operation: delete
           govscot:sme: ''
           govscot:slug: ''
           govscot:title: ''

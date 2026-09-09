@@ -110,7 +110,6 @@ definitions:
           govscot:reportingTags: []
           govscot:responseUrl: ''
           jcr:uuid: 27629e68-2295-4abd-9342-9e23818f311a
-          govscot:publicationType: hipposysedit:prototype
           govscot:officialdate: 0001-01-01T12:00:00Z
           govscot:contentitemlanguage: en
           /govscot:contact:

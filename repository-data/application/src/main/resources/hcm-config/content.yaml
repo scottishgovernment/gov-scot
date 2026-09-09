@@ -1,5 +1,10 @@
 definitions:
   config:
+    /content/assets:
+      hippostd:hasfolders: false
+    /content/documents:
+      hippostd:hasfolders: true
     /content/gallery:
       hippostd:foldertype: [new-govscot-BannerImages-folder]
       hippostd:gallerytype: ['govscot:BannerImages']
+      hippostd:hasfolders: true
