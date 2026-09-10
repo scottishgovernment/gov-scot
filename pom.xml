@@ -38,8 +38,8 @@
 
   <properties>
     <!-- Front end build -->
-    <version.node>v22.15.0</version.node>
-    <version.npm>10.9.2</version.npm>
+    <version.node>v24.21.0</version.node>
+    <version.npm>11.19.0</version.npm>
     <install.node.dir>${settings.localRepository}/.node/${version.node}</install.node.dir>
 
     <!-- Hippo versions -->
