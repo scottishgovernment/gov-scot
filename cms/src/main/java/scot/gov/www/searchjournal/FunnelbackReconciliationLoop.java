@@ -3,7 +3,7 @@ package scot.gov.www.searchjournal;
 import com.codahale.metrics.*;
 import com.codahale.metrics.Timer;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
