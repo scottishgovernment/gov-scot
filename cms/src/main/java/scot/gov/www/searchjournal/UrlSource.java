@@ -2,8 +2,6 @@ package scot.gov.www.searchjournal;
 
 import org.apache.commons.lang3.StringUtils;
 import org.onehippo.repository.events.HippoWorkflowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.Node;
@@ -14,8 +12,6 @@ import javax.jcr.RepositoryException;
  * Calculate urls for news and publication nodes for use in search indexing.
  */
 public class UrlSource {
-
-    private static final Logger LOG = LoggerFactory.getLogger(UrlSource.class);
 
     public static final String URL_BASE = "https://www.gov.scot/";
 
