@@ -70,9 +70,11 @@ import java.util.Set;
  * {@link MovedImagePageLog}, on its own logger distinct from this job's, so that stream can be
  * filtered or routed independently of the job's general progress logging.
  *
- * <p>Once every image has been moved out of the gallery root, {@code hippostd:foldertype}
- * and {@code hippostd:gallerytype} are cleared on the root so that new images can no longer
- * be created there directly.
+ * <p>Once every image has been moved out of the gallery root, {@code hippostd:foldertype} is
+ * cleared on the root so that new subfolders can no longer be created there directly.
+ * {@code hippostd:gallerytype} is reset to its normal default ({@link #DEFAULT_GALLERY_TYPE})
+ * rather than cleared, since Bloomreach does not support an empty array for that property and
+ * doing so can cause problems.
  *
  * <p><b>Scalability</b>: images are processed one at a time; saves are batched via two separate
  * {@link SessionSaver}s so a mass first-seen pass doesn't slow down to the pace of actual moves.
@@ -138,6 +140,13 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
     static final long DEFAULT_MINIMUM_AGE_MINUTES = 60;
 
     private static final String[] EMPTY_STRINGS = new String[0];
+
+    /**
+     * Value {@code hippostd:gallerytype} is reset to once uploads to the gallery root are
+     * disabled. It must not be set to an empty array: Bloomreach does not support that and it
+     * can cause problems, so the property is instead left at its normal default.
+     */
+    private static final String[] DEFAULT_GALLERY_TYPE = {"hippogallery:imageset"};
 
     @Override
     public void execute(RepositoryJobExecutionContext context) throws RepositoryException {
@@ -212,9 +221,9 @@ public class OrganiseGalleryImagesJob implements RepositoryJob {
         firstSeenSaver.forceSave();
         saver.forceSave();
 
-        // Prevent future images being created directly in the gallery root
+        // Prevent new subfolders being created directly in the gallery root
         galleryRoot.setProperty("hippostd:foldertype", EMPTY_STRINGS);
-        galleryRoot.setProperty("hippostd:gallerytype", EMPTY_STRINGS);
+        galleryRoot.setProperty("hippostd:gallerytype", DEFAULT_GALLERY_TYPE);
         session.save();
 
         removeEmptyPublicationsFolders(session, saver);

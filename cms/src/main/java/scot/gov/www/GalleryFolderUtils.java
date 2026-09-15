@@ -156,9 +156,11 @@ public class GalleryFolderUtils {
      * images actually end up and so has no child folders to order. This is (re)applied even
      * when the gallery folder already exists.
      *
-     * <p>In the publications subtree, only the leaf folder allows images to be uploaded to it;
-     * its ancestors (the publications, type, year and month folders) only allow child folders
-     * to be created. This is (re)applied even when the gallery folder already exists.
+     * <p>{@code hippostd:gallerytype} is applied at its normal default ({@link
+     * #IMAGE_GALLERY_TYPE}) on every folder in the chain, including the publications subtree's
+     * non-leaf ancestors (the publications, type, year and month folders): Bloomreach does not
+     * support an empty array for that property and clearing it can cause problems, so it is not
+     * used as a way of preventing uploads to those folders.
      */
     private static Node ensureImagePath(Node startFolder, List<String> path, String contentBasePath)
             throws RepositoryException {
@@ -175,7 +177,11 @@ public class GalleryFolderUtils {
                 contentPath.append("/");
             }
             boolean isLeaf = i == path.size() - 1;
-            String[] galleryType = underPublications && !isLeaf ? NO_TYPES : IMAGE_GALLERY_TYPE;
+            // hippostd:gallerytype is always left at its normal default here, even for
+            // non-leaf publication folders that shouldn't really accept image uploads:
+            // Bloomreach does not support an empty array for that property and clearing it
+            // can cause problems.
+            String[] galleryType = IMAGE_GALLERY_TYPE;
 
             if (parent.hasNode(element)) {
                 parent = applyDisplayName(parent.getNode(element), displayName);
