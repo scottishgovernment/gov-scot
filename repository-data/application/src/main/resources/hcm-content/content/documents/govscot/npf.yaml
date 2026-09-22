@@ -1,0 +1,38 @@
+/content/documents/govscot/npf:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: National Performance Framework
+  hippostd:foldertype: [new-npfoutcome-folder]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: National Performance Framework
+    /index[1]:
+      jcr:primaryType: govscot:NPF
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 8daf766d-a813-4327-92d8-5d51cfdbd0ad
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a48bad9f-9af6-41fd-87c8-5b777059bb7d
+      hippotranslation:locale: en
+      govscot:title: National Performance Framework
+      govscot:summary: Scotland's approach to measuring national wellbeing, setting out the outcomes we want to achieve and the indicators used to track our progress.
+      govscot:seoTitle: National Performance Framework
+      govscot:metaDescription: Scotland's approach to measuring national wellbeing, setting out the outcomes we want to achieve and the indicators used to track our progress.
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:dashboardUrl: https://placeholder.gov.scot/npf-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] The National Performance Framework sets out the kind of Scotland we want to see. It provides a vision for national wellbeing built around a shared set of values, and describes the outcomes we are working towards across our economy, society and environment.</p><p>Progress towards each outcome is tracked using a set of indicators, drawing on the best available evidence to show whether life in Scotland is improving.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the outcome cards, and can be used for supporting notes, methodology links, or related resources for the National Performance Framework as a whole.</p>"

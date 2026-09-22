@@ -1,0 +1,96 @@
+/content/documents/govscot/npf/healthy:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Healthy
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Healthy
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: e8b01a3c-c6da-4759-8e31-4c8e241ea57e
+      hippotranslation:locale: en
+      govscot:title: Healthy
+      govscot:summary: 'We live longer, healthy and fulfilling lives'
+      govscot:seoTitle: Healthy - National Performance Framework
+      govscot:metaDescription: 'We live longer, healthy and fulfilling lives'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Healthy national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Healthy outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /early-child-development:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Early child development
+    /early-child-development[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: c24c1aa7-62ab-40d2-a490-6c82d00e2773
+      hippotranslation:locale: en
+      govscot:title: Early child development
+      govscot:summary: 'The percentage of children with a concern at their 27-30 month review (as a percentage of children reviewed)'
+      govscot:seoTitle: Early child development - National Performance Framework
+      govscot:metaDescription: 'The percentage of children with a concern at their 27-30 month review (as a percentage of children reviewed)'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/early-child-development-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Early child development indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /premature-mortality:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Premature mortality
+    /premature-mortality[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 8c25fca3-a8a6-4007-b06a-125bee03c55e
+      hippotranslation:locale: en
+      govscot:title: Premature mortality
+      govscot:summary: 'The European Age-Standardised mortality rate per 100,000 people aged under 75 in Scotland (based on the 2013 European Standard Population)'
+      govscot:seoTitle: Premature mortality - National Performance Framework
+      govscot:metaDescription: 'The European Age-Standardised mortality rate per 100,000 people aged under 75 in Scotland (based on the 2013 European Standard Population)'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/premature-mortality-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Premature mortality indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''

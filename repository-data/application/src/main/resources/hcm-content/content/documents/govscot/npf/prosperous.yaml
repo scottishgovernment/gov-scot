@@ -1,0 +1,96 @@
+/content/documents/govscot/npf/prosperous:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Prosperous
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Prosperous
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 526e2196-c32f-4a3b-91dc-000fb5789ac6
+      hippotranslation:locale: en
+      govscot:title: Prosperous
+      govscot:summary: 'We have a successful economy which supports fair work and a good standard of living for all'
+      govscot:seoTitle: Prosperous - National Performance Framework
+      govscot:metaDescription: 'We have a successful economy which supports fair work and a good standard of living for all'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Prosperous national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Prosperous outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /investment:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Investment
+    /investment[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 87d23b60-661a-4f65-a01c-603bcefc7277
+      hippotranslation:locale: en
+      govscot:title: Investment
+      govscot:summary: 'Gross fixed capital formation as a % of GDP'
+      govscot:seoTitle: Investment - National Performance Framework
+      govscot:metaDescription: 'Gross fixed capital formation as a % of GDP'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/investment-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Investment indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /relative-poverty:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Relative poverty
+    /relative-poverty[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 3a2cb4b3-f556-40ad-9294-013c6f4b87cc
+      hippotranslation:locale: en
+      govscot:title: Relative poverty
+      govscot:summary: 'Proportion of individuals living in private households with an equivalised income of less than 60% of the UK median after housing costs'
+      govscot:seoTitle: Relative poverty - National Performance Framework
+      govscot:metaDescription: 'Proportion of individuals living in private households with an equivalised income of less than 60% of the UK median after housing costs'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/relative-poverty-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Relative poverty indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''

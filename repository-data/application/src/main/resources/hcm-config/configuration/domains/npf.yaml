@@ -1,0 +1,21 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:domains/npf:
+      jcr:primaryType: hipposys:domain
+      /editor:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [cmsadmin, core-content-editors]
+        hipposys:role: editor
+      /author:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [core-content-authors]
+        hipposys:role: author
+      /npf-documents:
+        jcr:primaryType: hipposys:domainrule
+        /include-npf-folder:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: true
+          hipposys:facet: jcr:path
+          hipposys:filter: false
+          hipposys:type: Reference
+          hipposys:value: /content/documents/govscot/npf

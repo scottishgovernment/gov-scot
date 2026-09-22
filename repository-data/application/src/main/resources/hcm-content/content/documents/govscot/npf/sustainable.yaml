@@ -1,0 +1,126 @@
+/content/documents/govscot/npf/sustainable:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Sustainable
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Sustainable
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: fd8765a9-1220-4b7f-8c83-b6d0a92e5e38
+      hippotranslation:locale: en
+      govscot:title: Sustainable
+      govscot:summary: 'We live in, and enjoy, a healthy environment and have protected and restored it for future generations'
+      govscot:seoTitle: Sustainable - National Performance Framework
+      govscot:metaDescription: 'We live in, and enjoy, a healthy environment and have protected and restored it for future generations'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Sustainable national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Sustainable outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /biodiversity:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Biodiversity
+    /biodiversity[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a43389d9-4b58-45ac-a172-79d511a6fc7d
+      hippotranslation:locale: en
+      govscot:title: Biodiversity
+      govscot:summary: 'This indicator is a combination of trends for three measures of Scottish species, index of abundance of marine species (based on seabirds), index of abundance of terrestrial species and index of occupancy of terrestrial species. (1994=100)'
+      govscot:seoTitle: Biodiversity - National Performance Framework
+      govscot:metaDescription: 'This indicator is a combination of trends for three measures of Scottish species, index of abundance of marine species (based on seabirds), index of abundance of terrestrial species and index of occupancy of terrestrial species. (1994=100)'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: worsening
+      govscot:dashboardUrl: https://placeholder.gov.scot/biodiversity-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Biodiversity indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /greenhouse-gas-emissions:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Greenhouse gas emissions
+    /greenhouse-gas-emissions[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: d52f6f07-4178-4137-9057-288ec91f210d
+      hippotranslation:locale: en
+      govscot:title: Greenhouse gas emissions
+      govscot:summary: 'Greenhouse gas emissions as a percentage change achieved from the baseline figure in 1990'
+      govscot:seoTitle: Greenhouse gas emissions - National Performance Framework
+      govscot:metaDescription: 'Greenhouse gas emissions as a percentage change achieved from the baseline figure in 1990'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/greenhouse-gas-emissions-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Greenhouse gas emissions indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /natural-capital:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Natural capital
+    /natural-capital[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 96fe0f05-574f-4806-ae51-d0674a6053f2
+      hippotranslation:locale: en
+      govscot:title: Natural capital
+      govscot:summary: 'The Natural Capital Asset Index (NCAI) monitors the quality and quantity of terrestrial habitats in Scotland, according to their potential to deliver ecosystem services now and into the future. It is a composite index, based (i.e. equal to 100) in the year 2000'
+      govscot:seoTitle: Natural capital - National Performance Framework
+      govscot:metaDescription: 'The Natural Capital Asset Index (NCAI) monitors the quality and quantity of terrestrial habitats in Scotland, according to their potential to deliver ecosystem services now and into the future. It is a composite index, based (i.e. equal to 100) in the year 2000'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/natural-capital-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Natural capital indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
