@@ -41,4 +41,6 @@ definitions:
           hipposys:type: Name
           hipposys:value: embargo:handle
       /embargo:
-        .meta:delete: true
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [general-embargo]
+        hipposys:role: embargo
