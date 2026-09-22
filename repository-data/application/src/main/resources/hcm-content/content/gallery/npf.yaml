@@ -1,0 +1,8 @@
+/content/gallery/npf:
+  .meta:order-before: people
+  jcr:primaryType: hippogallery:stdImageGallery
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: d9c3348d-3449-4bf0-b421-221258cbde81
+  hippo:name: NPF
+  hippostd:foldertype: [new-govscot-ColumnImage-folder]
+  hippostd:gallerytype: ['govscot:ColumnImage']

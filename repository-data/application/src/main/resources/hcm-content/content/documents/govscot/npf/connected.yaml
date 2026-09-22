@@ -1,0 +1,126 @@
+/content/documents/govscot/npf/connected:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Connected
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Connected
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 01540529-53cc-4fab-a055-1f370cdc9c12
+      hippotranslation:locale: en
+      govscot:title: Connected
+      govscot:summary: 'We participate freely in the civic, cultural and social life of our communities and institutions'
+      govscot:seoTitle: Connected - National Performance Framework
+      govscot:metaDescription: 'We participate freely in the civic, cultural and social life of our communities and institutions'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Connected national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Connected outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /satisfaction-housing:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Satisfaction with housing
+    /satisfaction-housing[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: dbdecbcb-627c-433f-b405-385ade8e1e71
+      hippotranslation:locale: en
+      govscot:title: Satisfaction with housing
+      govscot:summary: 'The percentage of households who report being either "very satisfied" or "fairly satisfied" with their house or flat'
+      govscot:seoTitle: Satisfaction with housing - National Performance Framework
+      govscot:metaDescription: 'The percentage of households who report being either "very satisfied" or "fairly satisfied" with their house or flat'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/satisfaction-housing-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Satisfaction with housing indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /satisfaction-public-transport:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Satisfaction with public transport
+    /satisfaction-public-transport[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 3eb9afc1-0290-4848-aed0-6f43b56918fd
+      hippotranslation:locale: en
+      govscot:title: Satisfaction with public transport
+      govscot:summary: 'Percentage of respondents who are very or fairly satisfied with public transport'
+      govscot:seoTitle: Satisfaction with public transport - National Performance Framework
+      govscot:metaDescription: 'Percentage of respondents who are very or fairly satisfied with public transport'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/satisfaction-public-transport-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Satisfaction with public transport indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /satisfaction-schools:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Satisfaction with schools
+    /satisfaction-schools[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 9438d72e-6d79-4bc1-b1a3-ff7e2322a82e
+      hippotranslation:locale: en
+      govscot:title: Satisfaction with schools
+      govscot:summary: 'Percentage of respondents who are very or fairly satisfied with schools'
+      govscot:seoTitle: Satisfaction with schools - National Performance Framework
+      govscot:metaDescription: 'Percentage of respondents who are very or fairly satisfied with schools'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/satisfaction-schools-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Satisfaction with schools indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''

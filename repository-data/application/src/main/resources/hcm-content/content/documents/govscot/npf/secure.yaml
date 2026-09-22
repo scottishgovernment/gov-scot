@@ -1,0 +1,66 @@
+/content/documents/govscot/npf/secure:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Secure
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Secure
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 17e6d502-d46f-4663-a3e1-3c3f0ca3f19b
+      hippotranslation:locale: en
+      govscot:title: Secure
+      govscot:summary: 'We live safe lives, free from threat, violence and injustice'
+      govscot:seoTitle: Secure - National Performance Framework
+      govscot:metaDescription: 'We live safe lives, free from threat, violence and injustice'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Secure national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Secure outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /crime-victimisation:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Crime victimisation
+    /crime-victimisation[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 67bbf4e5-ff72-4026-b95f-d5b14b5ec867
+      hippotranslation:locale: en
+      govscot:title: Crime victimisation
+      govscot:summary: 'The proportion of adults who have been the victim of one or more crimes in the past year (including fraud and computer misuse).'
+      govscot:seoTitle: Crime victimisation - National Performance Framework
+      govscot:metaDescription: 'The proportion of adults who have been the victim of one or more crimes in the past year (including fraud and computer misuse).'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/crime-victimisation-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Crime victimisation indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''

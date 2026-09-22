@@ -116,6 +116,15 @@
 [govscot:NavigationCard] > hippo:compound, hippostd:relaxed
   orderable
 
+[govscot:NPF] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Outcome] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:Indicator] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:News] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
   orderable
 

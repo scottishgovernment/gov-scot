@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstRequest;
+import org.hippoecm.hst.core.linking.HstLink;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
@@ -20,6 +22,8 @@ import java.util.List;
 public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(BreadcrumbProviderComponent.class);
+
+    private static final String NPF_FOLDER_NAME = "npf";
 
     /**
      * Constructor
@@ -87,7 +91,11 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
         final ResolvedSiteMapItem currentSmi = request.getRequestContext().getResolvedSiteMapItem();
         final HippoBean currentBean = getBeanForResolvedSiteMapItem(request, currentSmi);
 
-        if (currentBean != null && deepestExpandedMenuItem != null) {
+        if (currentBean != null && isNpfSection(request)) {
+
+            addNpfTrailingDocuments(items, currentBean, request);
+
+        } else if (currentBean != null && deepestExpandedMenuItem != null) {
 
             final ResolvedSiteMapItem deepestExpandedmenuItemSmi = deepestExpandedMenuItem.resolveToSiteMapItem();
             final HippoBean deepestExpandedMenuItemBean = getBeanForResolvedSiteMapItem(request, deepestExpandedmenuItemSmi);
@@ -130,6 +138,58 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
         }
 
+    }
+
+    /**
+     * The NPF (National Performance Framework) folder tree sits at the root of the site and
+     * isn't wired into the CMS-managed site menus, so its breadcrumb trail is built directly
+     * from content instead of from the deepest expanded menu item.
+     *
+     * @param request HST request
+     * @return true if the current request is for a page in the NPF section
+     */
+    boolean isNpfSection(final HstRequest request) {
+        final String pathInfo = request.getRequestContext().getResolvedSiteMapItem().getPathInfo();
+        return pathInfo != null && (NPF_FOLDER_NAME.equals(pathInfo) || pathInfo.startsWith(NPF_FOLDER_NAME + "/"));
+    }
+
+    /**
+     * Add breadcrumb items for the current bean and each of its ancestors up to (but not
+     * including) the NPF landing page, followed by a hard-coded crumb for the NPF landing
+     * page itself.
+     *
+     * @param items       list of breadcrumb items
+     * @param currentBean a bean described by URL that is in the NPF content tree
+     * @param request     HST request
+     */
+    private void addNpfTrailingDocuments(final List<BreadcrumbItem> items, final HippoBean currentBean, final HstRequest request) {
+        // the NPF landing page and outcome pages are folder-index pages, so the bean resolved
+        // for them here is the enclosing folder itself (named "npf" or the outcome's folder
+        // name), not a govscot:NPF/govscot:Outcome document instance - only indicator pages
+        // resolve to an actual document bean. Detect "am I on the NPF page itself" by name
+        // rather than type for this reason.
+        if (NPF_FOLDER_NAME.equals(currentBean.getName())) {
+            // like every other section, the current page's own title is not repeated in its
+            // breadcrumb trail - so on the NPF landing page itself there is nothing to add here
+            return;
+        }
+
+        // start from the current page's parent, not the current page itself
+        HippoBean bean = currentBean.getParentBean();
+        while (bean != null && !NPF_FOLDER_NAME.equals(bean.getName())) {
+            final BreadcrumbItem item = getBreadcrumbItem(request, bean);
+            if (item != null) {
+                items.add(item);
+            }
+            bean = bean.getParentBean();
+        }
+        items.add(getNpfHomeBreadcrumbItem(request));
+    }
+
+    private BreadcrumbItem getNpfHomeBreadcrumbItem(final HstRequest request) {
+        final HstRequestContext context = request.getRequestContext();
+        final HstLink link = context.getHstLinkCreator().create("/npf/", context.getResolvedMount().getMount());
+        return new BreadcrumbItem(link, "National Performance Framework");
     }
 
     boolean isAboutOrPolicies(HippoBean deepestExpandedMenuItemBean) {

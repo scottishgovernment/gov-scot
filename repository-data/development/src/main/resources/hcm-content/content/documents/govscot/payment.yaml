@@ -1,5 +1,4 @@
 /content/documents/govscot/payment:
-  .meta:order-before: home
   jcr:primaryType: hippo:handle
   jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
   jcr:uuid: 8b354ff9-579e-4367-b9f1-24c089da6b2f

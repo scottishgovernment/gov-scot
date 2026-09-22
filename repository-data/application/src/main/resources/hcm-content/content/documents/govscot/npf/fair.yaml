@@ -1,0 +1,126 @@
+/content/documents/govscot/npf/fair:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Fair
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Fair
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 86093ef6-17df-417a-958c-eed6e5f96b99
+      hippotranslation:locale: en
+      govscot:title: Fair
+      govscot:summary: 'We live in a fair and equitable national and global society, free from discrimination, and we respect, protect and fulfil our human rights'
+      govscot:seoTitle: Fair - National Performance Framework
+      govscot:metaDescription: 'We live in a fair and equitable national and global society, free from discrimination, and we respect, protect and fulfil our human rights'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Fair national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Fair outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /income-inequality:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Income inequality
+    /income-inequality[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 8f3eb635-0243-4164-bb25-cdf0d07327ef
+      hippotranslation:locale: en
+      govscot:title: Income inequality
+      govscot:summary: 'Palma ratio of income inequality (total household income of the top 10% of population divided by that of the bottom 40%) expressed as a percentage'
+      govscot:seoTitle: Income inequality - National Performance Framework
+      govscot:metaDescription: 'Palma ratio of income inequality (total household income of the top 10% of population divided by that of the bottom 40%) expressed as a percentage'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/income-inequality-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Income inequality indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /pay-gaps-gender:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Pay gaps - gender
+    /pay-gaps-gender[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: de712b23-e9a5-4edd-a949-b6abafd47b2a
+      hippotranslation:locale: en
+      govscot:title: Pay gaps - gender
+      govscot:summary: 'The difference between hourly earnings for selected characteristics, expressed as a percentage of hourly earnings'
+      govscot:seoTitle: Pay gaps - gender - National Performance Framework
+      govscot:metaDescription: 'The difference between hourly earnings for selected characteristics, expressed as a percentage of hourly earnings'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: worsening
+      govscot:dashboardUrl: https://placeholder.gov.scot/pay-gaps-gender-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Pay gaps - gender indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /wealth-inequality:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Wealth inequality
+    /wealth-inequality[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: cfffa9e8-a18e-465f-b539-86d97c1194cc
+      hippotranslation:locale: en
+      govscot:title: Wealth inequality
+      govscot:summary: 'This indicator measures wealth inequality, as measured by the Gini coefficient which ranges from 0 (perfect equality) to 100 (maximal inequality)'
+      govscot:seoTitle: Wealth inequality - National Performance Framework
+      govscot:metaDescription: 'This indicator measures wealth inequality, as measured by the Gini coefficient which ranges from 0 (perfect equality) to 100 (maximal inequality)'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/wealth-inequality-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Wealth inequality indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''

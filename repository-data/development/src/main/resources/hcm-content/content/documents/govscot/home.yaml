@@ -1,5 +1,4 @@
 /content/documents/govscot/home:
-  .meta:order-before: covid-19
   jcr:primaryType: hippo:handle
   jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable', 'mix:versionable']
   jcr:uuid: 46f1c8b6-6b5e-4150-9eb6-08d919777914

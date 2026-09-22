@@ -1,0 +1,156 @@
+/content/documents/govscot/npf/skilled:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: Skilled
+  hippostd:foldertype: [new-npfindicator]
+  /index:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Skilled
+    /index[1]:
+      jcr:primaryType: govscot:Outcome
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 90afdcc2-3b3f-4148-9276-11414716e18a
+      hippotranslation:locale: en
+      govscot:title: Skilled
+      govscot:summary: 'We have the knowledge and skills we need throughout our lives to realise our full potential'
+      govscot:seoTitle: Skilled - National Performance Framework
+      govscot:metaDescription: 'We have the knowledge and skills we need throughout our lives to realise our full potential'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Skilled national outcome.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+      /govscot:epilogue:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] This epilogue area appears below the indicator cards for the Skilled outcome, and can be used for supporting notes or links to related evidence.</p>"
+  /educational-attainment-scqf-5:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: 'Educational attainment: SCQF Level 5 or above'
+    /educational-attainment-scqf-5[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 4f0a2d66-0f60-428a-9d91-0448eea934a7
+      hippotranslation:locale: en
+      govscot:title: 'Educational attainment: SCQF Level 5 or above'
+      govscot:summary: 'Sub-measure 6: percent of school leavers with 5 award or more at SCQF Level 5 or above'
+      govscot:seoTitle: 'Educational attainment: SCQF Level 5 or above - National Performance Framework'
+      govscot:metaDescription: 'Sub-measure 6: percent of school leavers with 5 award or more at SCQF Level 5 or above'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: improving
+      govscot:dashboardUrl: https://placeholder.gov.scot/educational-attainment-scqf-5-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Educational attainment: SCQF Level 5 or above indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /educational-attainment-scqf-6:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: 'Educational attainment: SCQF Level 6 or above'
+    /educational-attainment-scqf-6[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: b7b3028b-9171-424a-97cc-fcb8cee4dadf
+      hippotranslation:locale: en
+      govscot:title: 'Educational attainment: SCQF Level 6 or above'
+      govscot:summary: 'Sub-measure 7: percent of school leavers with 5 award or more at SCQF Level 6 or above'
+      govscot:seoTitle: 'Educational attainment: SCQF Level 6 or above - National Performance Framework'
+      govscot:metaDescription: 'Sub-measure 7: percent of school leavers with 5 award or more at SCQF Level 6 or above'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/educational-attainment-scqf-6-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Educational attainment: SCQF Level 6 or above indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /skill-shortage-vacancies:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Skill shortage vacancies
+    /skill-shortage-vacancies[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: abcf7d5f-7024-41c2-b73b-3725b7ce8306
+      hippotranslation:locale: en
+      govscot:title: Skill shortage vacancies
+      govscot:summary: 'Proportion of establishments reporting at least one skills shortage vacancy'
+      govscot:seoTitle: Skill shortage vacancies - National Performance Framework
+      govscot:metaDescription: 'Proportion of establishments reporting at least one skills shortage vacancy'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: improving
+      govscot:dashboardUrl: https://placeholder.gov.scot/skill-shortage-vacancies-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Skill shortage vacancies indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''
+  /young-peoples-participation:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    hippo:name: Young people's participation
+    /young-peoples-participation[1]:
+      jcr:primaryType: govscot:Indicator
+      jcr:mixinTypes: ['mix:referenceable']
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-01-01T00:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 919a7352-63d5-49e2-be79-72bbf4e2714b
+      hippotranslation:locale: en
+      govscot:title: Young people's participation
+      govscot:summary: 'Percentage of young adults (16-19 year olds) participating in education, training or employment'
+      govscot:seoTitle: Young people's participation - National Performance Framework
+      govscot:metaDescription: 'Percentage of young adults (16-19 year olds) participating in education, training or employment'
+      govscot:reportingTags: []
+      hippostd:tags: []
+      govscot:contentitemlanguage: en
+      govscot:status: stable
+      govscot:dashboardUrl: https://placeholder.gov.scot/young-peoples-participation-dashboard
+      /govscot:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: "<p>[Placeholder] Placeholder content for the Young people's participation indicator.</p>"
+      /govscot:notes:
+        jcr:primaryType: hippostd:html
+        hippostd:content: ''

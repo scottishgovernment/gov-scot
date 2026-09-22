@@ -84,3 +84,6 @@ definitions:
       new-Consultation-document: new Consultation document
       new-Consultation-folder: new Consultation folder
       new-consultation-folder: New consultation
+      new-npf-folder: New National Performance Framework
+      new-npfoutcome-folder: New NPF outcome
+      new-npfindicator: New NPF indicator
