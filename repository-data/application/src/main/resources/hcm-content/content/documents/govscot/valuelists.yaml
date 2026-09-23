@@ -1,6 +1,0 @@
-/content/documents/govscot/valuelists:
-  jcr:primaryType: hippostd:folder
-  jcr:mixinTypes: ['hippo:named', 'mix:lockable', 'mix:referenceable', 'mix:versionable']
-  jcr:uuid: fd33ed57-e43b-4fad-ab15-9c69f61fe8e3
-  hippo:name: valuelists
-  hippostd:foldertype: [new-valuelist]
