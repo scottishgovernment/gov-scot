@@ -10,6 +10,28 @@ definitions:
           hipposys:facet: jcr:path
           hipposys:type: Reference
           hipposys:value: /hippo:configuration/hippo:users
+        /exclude-admin-user:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: admin
+        /exclude-pwreset-user:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: resetpassword
+      /groups:
+        /exclude-admin-group:
+          jcr:primaryType: hipposys:facetrule
+          hipposys:equals: false
+          hipposys:facet: nodename
+          hipposys:filter: false
+          hipposys:type: Name
+          hipposys:value: admin
       /readwrite:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [useradmin, cmsadmin]
