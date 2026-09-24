@@ -25,6 +25,7 @@ definitions:
           hipposys:type: Name
           hipposys:value: resetpassword
       /groups:
+        jcr:primaryType: hipposys:domainrule
         /exclude-admin-group:
           jcr:primaryType: hipposys:facetrule
           hipposys:equals: false
