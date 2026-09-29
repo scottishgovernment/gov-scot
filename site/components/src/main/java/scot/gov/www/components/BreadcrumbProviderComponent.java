@@ -23,7 +23,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(BreadcrumbProviderComponent.class);
 
-    private static final String NPF_FOLDER_NAME = "npf";
+    private static final String NPF_FOLDER_NAME = "national-outcomes";
 
     /**
      * Constructor
@@ -164,7 +164,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
      */
     private void addNpfTrailingDocuments(final List<BreadcrumbItem> items, final HippoBean currentBean, final HstRequest request) {
         // the NPF landing page and outcome pages are folder-index pages, so the bean resolved
-        // for them here is the enclosing folder itself (named "npf" or the outcome's folder
+        // for them here is the enclosing folder itself (named "national-outcomes" or the outcome's folder
         // name), not a govscot:NPF/govscot:Outcome document instance - only indicator pages
         // resolve to an actual document bean. Detect "am I on the NPF page itself" by name
         // rather than type for this reason.
