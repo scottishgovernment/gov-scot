@@ -1,3 +1,5 @@
 action-lists:
   - 0.20260821:
       /hippo:configuration/hippo:domains/groups/readwrite: reload
+  - 0.20260929:
+      /content/documents/govscot/npf: delete

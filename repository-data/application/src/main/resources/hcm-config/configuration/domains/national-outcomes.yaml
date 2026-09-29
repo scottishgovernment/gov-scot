@@ -1,6 +1,6 @@
 definitions:
   config:
-    /hippo:configuration/hippo:domains/npf:
+    /hippo:configuration/hippo:domains/national-outcomes:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
@@ -10,12 +10,12 @@ definitions:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [core-content-authors]
         hipposys:role: author
-      /npf-documents:
+      /national-outcomes-documents:
         jcr:primaryType: hipposys:domainrule
-        /include-npf-folder:
+        /include-national-outcomes-folder:
           jcr:primaryType: hipposys:facetrule
           hipposys:equals: true
           hipposys:facet: jcr:path
           hipposys:filter: false
           hipposys:type: Reference
-          hipposys:value: /content/documents/govscot/npf
+          hipposys:value: /content/documents/govscot/national-outcomes

@@ -70,3 +70,9 @@ definitions:
           hst:iconpath: icons/featuregrid.svg
           hst:label: Feature grid (2-4 items)
           hst:template: featuregrid
+        /outcomes:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: scot.gov.www.components.OutcomesComponent
+          hst:iconpath: icons/featuregrid.svg
+          hst:label: Outcomes
+          hst:template: outcomes
