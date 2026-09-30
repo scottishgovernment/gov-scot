@@ -25,9 +25,8 @@ definitions:
           .meta:category: system
           type: string
           value: xm.content.author
-        hipposys:users:
-          .meta:category: system
-          .meta:add-new-system-values: true
-          operation: override
-          type: string
-          value: []
+        hipposys:users: []
+      /modify-tags:
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [everybody]
+        hipposys:role: modify
