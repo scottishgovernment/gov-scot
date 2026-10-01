@@ -25,6 +25,7 @@ definitions:
         embargo-employability-statistics, embargo-justice-system-monitoring-team, embargo-sscq,
         embargo-rural-statistics, embargo-scottish-crime-and-justice-survey,
         embargo-temporary, embargo-scottish-health-survey,
+        embargo-neighbourhood-shs,
         cmsadmin,
         collection-authors, collection-editors,
         core-content-authors, core-content-editors,
