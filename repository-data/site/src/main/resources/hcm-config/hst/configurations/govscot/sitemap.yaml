@@ -1,6 +1,7 @@
 definitions:
   config:
     /hst:hst/hst:configurations/govscot/hst:sitemap:
+      .meta:residual-child-node-category: config
       jcr:primaryType: hst:sitemap
       /root:
         jcr:primaryType: hst:sitemapitem
@@ -359,20 +360,15 @@ definitions:
           hst:componentconfigurationid: hst:pages/collectionpage
           hst:relativecontentpath: ${parent}/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
-      /npf:
+      /national-outcomes:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/npfpage
-        hst:relativecontentpath: npf
+        hst:relativecontentpath: outcomes
         hst:sitemapitemhandlerids: [trailing-slash]
-        /_index_:
-          jcr:primaryType: hst:sitemapitem
-          hst:componentconfigurationid: hst:pages/npfpage
-          hst:relativecontentpath: npf/index
-          hst:sitemapitemhandlerids: [trailing-slash]
         /_default_:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/outcomepage
-          hst:relativecontentpath: npf/${1}
+          hst:relativecontentpath: outcomes/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
           /_index_:
             jcr:primaryType: hst:sitemapitem
@@ -382,7 +378,7 @@ definitions:
           /_default_:
             jcr:primaryType: hst:sitemapitem
             hst:componentconfigurationid: hst:pages/indicatorpage
-            hst:relativecontentpath: npf/${1}/${2}
+            hst:relativecontentpath: outcomes/${1}/${2}
             hst:sitemapitemhandlerids: [trailing-slash]
       /payment:
         jcr:primaryType: hst:sitemapitem

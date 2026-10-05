@@ -23,7 +23,9 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(BreadcrumbProviderComponent.class);
 
-    private static final String NPF_FOLDER_NAME = "npf";
+    private static final String NPF_FOLDER_NAME = "outcomes";
+
+    private static final String NPF_URL_SEGMENT = "national-outcomes";
 
     /**
      * Constructor
@@ -150,7 +152,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
      */
     boolean isNpfSection(final HstRequest request) {
         final String pathInfo = request.getRequestContext().getResolvedSiteMapItem().getPathInfo();
-        return pathInfo != null && (NPF_FOLDER_NAME.equals(pathInfo) || pathInfo.startsWith(NPF_FOLDER_NAME + "/"));
+        return pathInfo != null && (NPF_URL_SEGMENT.equals(pathInfo) || pathInfo.startsWith(NPF_URL_SEGMENT + "/"));
     }
 
     /**
@@ -164,7 +166,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
      */
     private void addNpfTrailingDocuments(final List<BreadcrumbItem> items, final HippoBean currentBean, final HstRequest request) {
         // the NPF landing page and outcome pages are folder-index pages, so the bean resolved
-        // for them here is the enclosing folder itself (named "npf" or the outcome's folder
+        // for them here is the enclosing folder itself (named "outcomes" or the outcome's folder
         // name), not a govscot:NPF/govscot:Outcome document instance - only indicator pages
         // resolve to an actual document bean. Detect "am I on the NPF page itself" by name
         // rather than type for this reason.
@@ -188,7 +190,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     private BreadcrumbItem getNpfHomeBreadcrumbItem(final HstRequest request) {
         final HstRequestContext context = request.getRequestContext();
-        final HstLink link = context.getHstLinkCreator().create("/npf/", context.getResolvedMount().getMount());
+        final HstLink link = context.getHstLinkCreator().create("/national-outcomes/", context.getResolvedMount().getMount());
         return new BreadcrumbItem(link, "National Performance Framework");
     }
 

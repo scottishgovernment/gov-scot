@@ -1,0 +1,5 @@
+/content/documents/govscot/outcomes:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'mix:versionable']
+  hippo:name: National Outcomes
+  hippostd:foldertype: [new-npfoutcome-folder]

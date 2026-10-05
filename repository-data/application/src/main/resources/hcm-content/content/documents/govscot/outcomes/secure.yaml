@@ -1,4 +1,4 @@
-/content/documents/govscot/npf/secure:
+/content/documents/govscot/outcomes/secure:
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['hippo:named', 'mix:versionable']
   hippo:name: Secure
