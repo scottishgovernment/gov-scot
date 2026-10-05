@@ -18,7 +18,7 @@ import java.util.List;
 @ParametersInfo(type = OutcomesComponentInfo.class)
 public class OutcomesComponent extends CommonComponent {
 
-    static final String OUTCOMES_FOLDER = "outcomes";
+    static final String OUTCOMES = "outcomes";
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
@@ -29,13 +29,13 @@ public class OutcomesComponent extends CommonComponent {
 
         HstRequestContext context = request.getRequestContext();
         HippoBean root = context.getSiteContentBaseBean();
-        HippoBean outcomesFolder = root.getBean(OUTCOMES_FOLDER);
+        HippoBean outcomesFolder = root.getBean(OUTCOMES);
         if (outcomesFolder == null) {
             return;
         }
 
         List<Outcome> outcomes = OutcomeGridUtils.getOutcomes(outcomesFolder);
-        request.setAttribute("outcomes", outcomes);
+        request.setAttribute(OUTCOMES, outcomes);
         request.setAttribute("outcomeStatusCounts", OutcomeGridUtils.getOutcomeStatusCounts(outcomesFolder, outcomes));
     }
 }
