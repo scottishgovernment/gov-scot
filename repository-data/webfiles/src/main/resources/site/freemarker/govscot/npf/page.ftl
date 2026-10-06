@@ -93,7 +93,7 @@
                                         <div class="ds_card__content">
                                             <div class="ds_card__content-header">
                                                 <h2 class="ds_card__title">
-                                                    <#assign outcomeHref><@hst.link path="/national-outcomes/${outcome.parentBean.name}/"/></#assign>
+                                                    <#assign outcomeHref><@hst.link hippobean=outcome/></#assign>
                                                     <a class="ds_card__link  ds_card__link--cover" href="${outcomeHref}">${outcome.title}</a>
                                                 </h2>
                                             </div>

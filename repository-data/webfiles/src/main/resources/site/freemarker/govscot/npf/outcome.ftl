@@ -68,7 +68,7 @@
                                         <div class="ds_card__content-header">
                                             <@indicatorStatusTag status=indicator.status/>
                                             <h2 class="ds_card__title">
-                                                <#assign indicatorHref><@hst.link path="/national-outcomes/${document.parentBean.name}/${indicator.name}/"/></#assign>
+                                                <#assign indicatorHref><@hst.link hippobean=indicator/></#assign>
                                                 <a class="ds_card__link  ds_card__link--cover" href="${indicatorHref}">${indicator.title}</a>
                                             </h2>
                                         </div>

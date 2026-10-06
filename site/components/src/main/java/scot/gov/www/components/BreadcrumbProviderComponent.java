@@ -25,7 +25,9 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     private static final String NPF_FOLDER_NAME = "outcomes";
 
-    private static final String NPF_URL_SEGMENT = "national-outcomes";
+    private static final String NPF_URL_SEGMENT = "outcomes";
+
+    private static final String NPF_HOME_URL = "/national-outcomes/";
 
     /**
      * Constructor
@@ -190,7 +192,7 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
     private BreadcrumbItem getNpfHomeBreadcrumbItem(final HstRequest request) {
         final HstRequestContext context = request.getRequestContext();
-        final HstLink link = context.getHstLinkCreator().create("/national-outcomes/", context.getResolvedMount().getMount());
+        final HstLink link = context.getHstLinkCreator().create(NPF_HOME_URL, context.getResolvedMount().getMount());
         return new BreadcrumbItem(link, "National Performance Framework");
     }
 

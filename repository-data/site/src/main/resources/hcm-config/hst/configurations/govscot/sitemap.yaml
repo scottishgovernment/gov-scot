@@ -360,7 +360,7 @@ definitions:
           hst:componentconfigurationid: hst:pages/collectionpage
           hst:relativecontentpath: ${parent}/${1}
           hst:sitemapitemhandlerids: [trailing-slash]
-      /national-outcomes:
+      /outcomes:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/npfpage
         hst:relativecontentpath: outcomes
