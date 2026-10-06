@@ -57,4 +57,7 @@ definitions:
           hipposys:type: Name
           hipposys:value: embargo:document
       /embargo:
-        .meta:delete: true
+        jcr:primaryType: hipposys:authrole
+        hipposys:groups: [ embargo-neighbourhood-shs ]
+        hipposys:role: embargo
+
