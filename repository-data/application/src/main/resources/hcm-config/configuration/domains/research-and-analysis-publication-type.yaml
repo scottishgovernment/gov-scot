@@ -58,6 +58,6 @@ definitions:
           hipposys:value: embargo:document
       /embargo:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [ embargo-neighbourhood-shs ]
+        hipposys:groups: [ embargo-neighbourhood-shs, embargo-trust-in-government-shs, embargo-cultural-engagement ]
         hipposys:role: embargo
 
