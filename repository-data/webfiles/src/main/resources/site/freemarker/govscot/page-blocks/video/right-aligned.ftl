@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="ds_pb__poster">
-                    <a target="_blank" class="ds_pb__poster__link" href="${document.videoUrl}">
+                    <a target="_blank" class="ds_pb__poster__link" href="${document.url}">
                         <#if document.image.xlargesixcolumns??>
                             <img alt="${document.alt}" src="<@hst.link hippobean=document.image.xlargesixcolumns />"
                                 class="ds_pb__poster-video"
