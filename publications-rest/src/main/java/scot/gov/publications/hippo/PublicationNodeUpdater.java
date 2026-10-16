@@ -430,16 +430,7 @@ public class PublicationNodeUpdater {
             if (!publicationNode.hasNode(RESPONSIBLE_ROLE)) {
                 createRoleLink(publicationNode, RESPONSIBLE_ROLE, primaryRole);
             } else {
-                ContentNode respRole = publicationNode.getNode(RESPONSIBLE_ROLE);
-                // some nodes have a responsibleRole of / ... treat these as empty
-                if (EMPTY_DOCBASE.equals(respRole.getProperty(HIPPO_DOCBASE).getValue())) {
-                    Node handle = findRoleOrPerson(primaryRole);
-                    if (handle != null) {
-                        respRole.setProperty(HIPPO_DOCBASE, handle.getIdentifier());
-                    } else {
-                        throw new ApsZipImporterException(String.format("No such role: '%s'", primaryRole));
-                    }
-                }
+                repairResponsibleRoleIfPlaceholder(publicationNode, primaryRole);
             }
         }
 
@@ -448,6 +439,25 @@ public class PublicationNodeUpdater {
                 createRoleLink(publicationNode, SECONDARY_RESPONSIBLE_ROLE, role);
             }
         }
+    }
+
+    /**
+     * If the existing responsible role mirror is just an unresolved placeholder (docbase
+     * {@value #EMPTY_DOCBASE}), repair it in place with the real handle - never remove+re-add the
+     * mirror ContentNode (see updateMirrorDocbase for why).
+     */
+    private void repairResponsibleRoleIfPlaceholder(ContentNode publicationNode, String primaryRole)
+            throws RepositoryException, ApsZipImporterException {
+        ContentNode respRole = publicationNode.getNode(RESPONSIBLE_ROLE);
+        // some nodes have a responsibleRole of / ... treat these as empty
+        if (!EMPTY_DOCBASE.equals(respRole.getProperty(HIPPO_DOCBASE).getValue())) {
+            return;
+        }
+        Node handle = findRoleOrPerson(primaryRole);
+        if (handle == null) {
+            throw new ApsZipImporterException(String.format("No such role: '%s'", primaryRole));
+        }
+        respRole.setProperty(HIPPO_DOCBASE, handle.getIdentifier());
     }
 
     private void createRoleLink(ContentNode publicationNode, String propertyName, String title)

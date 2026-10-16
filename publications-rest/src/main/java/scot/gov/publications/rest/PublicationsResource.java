@@ -80,7 +80,7 @@ public class PublicationsResource {
         return session.hasPermission(MODULE_PATH, RepositoryJaxrsService.HIPPO_REST_PERMISSION);
     }
 
-    private boolean isEnabled(Session session) throws RepositoryException {
+    private boolean isEnabled(Session session) {
         return new FeatureFlag(session, FEATURE_FLAG_NAME).isEnabled();
     }
 
@@ -133,7 +133,8 @@ public class PublicationsResource {
             if (!isAuthorized(session)) {
                 return Response.status(Response.Status.FORBIDDEN).build();
             }
-            ListResult result = repository.list(page, size, title, isbn, filename, username, state, sort, dir);
+            ListResult result = repository.list(
+                    PublicationListQuery.of(page, size, title, isbn, filename, username, state, sort, dir));
             LOG.debug("LIST returning {} publications, totalSize={}", result.getPublications().size(), result.getTotalSize());
             return Response.ok(result).build();
         } catch (Exception e) {

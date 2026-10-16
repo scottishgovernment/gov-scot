@@ -45,12 +45,11 @@ public class ContentNodes {
         contentNode.setProperty("govscot:publicationId", publication.getId());
         contentNode.setProperty("govscot:publicationFilename", publication.getFilename());
         contentNode.setProperty("govscot:publicationUsername", publication.getUsername());
-        contentNode.setProperty("govscot:summary", metadata.getExecutiveSummary());
         contentNode.setProperty("govscot:seoTitle", metadata.getTitle());
-        contentNode.setProperty("govscot:summary", metadata.getExecutiveSummary());
+        contentNode.setProperty(GOVSCOT_SUMMARY, metadata.getExecutiveSummary());
         contentNode.setProperty("govscot:metaDescription", metadata.getExecutiveSummary());
         contentNode.setProperty("govscot:notes", "");
-        contentNode.addNode(htmlNode("govscot:content", metadata.getDescription()));
+        contentNode.addNode(htmlNode(GOVSCOT_CONTENT, metadata.getDescription()));
         contentNode.addNode(htmlNode("govscot:contact",  mailToLink(metadata.getContact().getEmail())));
         contentNode.setProperty("govscot:publicationType", HippoPaths.slugify(metadata.mappedPublicationType(), false));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
@@ -74,9 +73,9 @@ public class ContentNodes {
         contentNode.setProperty(HIPPO_NAME, metadata.getTitle());
         contentNode.setProperty(GOVSCOT_TITLE, title);
         contentNode.setProperty("govscot:seoTitle", metadata.getTitle());
-        contentNode.setProperty("govscot:summary", metadata.getExecutiveSummary());
+        contentNode.setProperty(GOVSCOT_SUMMARY, metadata.getExecutiveSummary());
         contentNode.setProperty("govscot:metaDescription", metadata.getExecutiveSummary());
-        updateHtmlNodeContent(contentNode, "govscot:content", metadata.getDescription());
+        updateHtmlNodeContent(contentNode, GOVSCOT_CONTENT, metadata.getDescription());
         updateHtmlNodeContent(contentNode, "govscot:contact", mailToLink(metadata.getContact().getEmail()));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
 
@@ -109,7 +108,7 @@ public class ContentNodes {
 
         Set<String> imageLinks = imageLinks(mainTextDiv, filenameToImageId);
         String rewrittenHtml = rewriteImageLinks(mainTextDiv.html(), imageLinks);
-        ContentNode htmlNode = htmlNode("govscot:content", rewrittenHtml);
+        ContentNode htmlNode = htmlNode(GOVSCOT_CONTENT, rewrittenHtml);
         createImageFacets(htmlNode, imageLinks, filenameToImageId);
 
         contentNode.addNode(htmlNode);
@@ -131,7 +130,7 @@ public class ContentNodes {
         contentNode.addMixinType(HIPPO_NAMED);
         contentNode.setProperty(HIPPO_NAME, title);
         contentNode.setProperty(GOVSCOT_TITLE, title);
-        contentNode.addNode(htmlNode("govscot:content", html));
+        contentNode.addNode(htmlNode(GOVSCOT_CONTENT, html));
         setBooleanProperty(contentNode, "govscot:contentsPage", false);
         return contentNode;
     }

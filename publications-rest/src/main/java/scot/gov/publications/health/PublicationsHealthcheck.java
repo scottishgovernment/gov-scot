@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.repo.ListResult;
 import scot.gov.publications.repo.Publication;
+import scot.gov.publications.repo.PublicationListQuery;
 import scot.gov.publications.repo.PublicationRepository;
 import scot.gov.publications.repo.PublicationRepositoryException;
 import scot.gov.publications.repo.State;
@@ -52,8 +53,8 @@ public class PublicationsHealthcheck {
     }
 
     void collectHealthInformation(Health health) throws PublicationRepositoryException {
-        ListResult result = repository.list(
-                1, MAX_PENDING_TO_CHECK, null, null, null, null, State.PENDING.name(), "createddate", "asc");
+        ListResult result = repository.list(PublicationListQuery.of(
+                1, MAX_PENDING_TO_CHECK, null, null, null, null, State.PENDING.name(), "createddate", "asc"));
 
         ZonedDateTime cutoff = ZonedDateTime.now().minusMinutes(MINUTES_THRESHOLD);
         List<String> stuck = new ArrayList<>();

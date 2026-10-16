@@ -64,6 +64,10 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
 
     private static final String PROP_CHECKSUM = "govscot:checksum";
 
+    private static final String DEFAULT_SORT = "createddate";
+
+    private static final String CONTAINS_FORMAT = "CONTAINS(%s, '%s')";
+
     /**
      * Allowlist of the fields a caller may sort by, mapped to their JCR property name. Sort input
      * is never concatenated into the query directly to avoid JCR-SQL injection via the sort param.
@@ -73,13 +77,11 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
         SORTABLE_FIELDS.put("title", PROP_TITLE);
         SORTABLE_FIELDS.put("isbn", PROP_ISBN);
         SORTABLE_FIELDS.put("filename", PROP_FILENAME);
-        SORTABLE_FIELDS.put("createddate", PROP_CREATEDDATE);
+        SORTABLE_FIELDS.put(DEFAULT_SORT, PROP_CREATEDDATE);
         SORTABLE_FIELDS.put("embargodate", PROP_EMBARGODATE);
         SORTABLE_FIELDS.put("state", PROP_STATE);
         SORTABLE_FIELDS.put("username", PROP_USERNAME);
     }
-
-    private static final String DEFAULT_SORT = "createddate";
 
     Session session;
 
@@ -150,22 +152,13 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
     /**
      * Paged list of publications with an optional search.
      *
-     * @param page the page number to fetch
-     * @param size the size of the page
-     * @param title title to match (partial case insensitive
-     * @param isbn isbn to match (partial case insensitive
-     * @param filename filename to match (partial case insensitive
-     * @param username username to match (partial case insensitive
-     * @param state state to match (exact)
-     * @param sort field to sort by, defaults to {@value #DEFAULT_SORT} if blank or unrecognised
-     * @param dir sort direction, "asc" or "desc" (defaults to "desc")
+     * @param query page/size plus the optional search and sort parameters - see
+     *              {@link PublicationListQuery} for the meaning of each
      * @return Collection of matching publications
      * @throws PublicationRepositoryException if it fails to list publications
      */
     @Override
-    public ListResult list(int page, int size, String title, String isbn, String filename, String username, String state, String sort, String dir)
-            throws PublicationRepositoryException {
-
+    public ListResult list(PublicationListQuery query) throws PublicationRepositoryException {
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM nt:unstructured ");
             List<String> andterms = new ArrayList<>();
@@ -174,25 +167,25 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
             // also nt:unstructured and would otherwise be picked up alongside real publications
             andterms.add(PROP_ID + " IS NOT NULL");
 
-            if (isNotBlank(title)) {
+            if (isNotBlank(query.getTitle())) {
                 // title is a multi word field, so require each word in the search term to
                 // be present (as a prefix match) rather than treating the whole term as one token
-                for (String word : title.trim().split("\\s+")) {
-                    andterms.add(String.format("CONTAINS(%s, '%s')", PROP_TITLE, escapeForContainsPrefix(word)));
+                for (String word : query.getTitle().trim().split("\\s+")) {
+                    andterms.add(String.format(CONTAINS_FORMAT, PROP_TITLE, escapeForContainsPrefix(word)));
                 }
             }
 
-            if (isNotBlank(isbn)) {
-                andterms.add(String.format("CONTAINS(%s, '%s')", PROP_ISBN, escapeForContainsPrefix(isbn)));
+            if (isNotBlank(query.getIsbn())) {
+                andterms.add(String.format(CONTAINS_FORMAT, PROP_ISBN, escapeForContainsPrefix(query.getIsbn())));
             }
-            if (isNotBlank(filename)) {
-                andterms.add(String.format("CONTAINS(%s, '%s')", PROP_FILENAME, escapeForContainsPrefix(filename)));
+            if (isNotBlank(query.getFilename())) {
+                andterms.add(String.format(CONTAINS_FORMAT, PROP_FILENAME, escapeForContainsPrefix(query.getFilename())));
             }
-            if (isNotBlank(username)) {
-                andterms.add(String.format("CONTAINS(%s, '%s')", PROP_USERNAME, escapeForContainsPrefix(username)));
+            if (isNotBlank(query.getUsername())) {
+                andterms.add(String.format(CONTAINS_FORMAT, PROP_USERNAME, escapeForContainsPrefix(query.getUsername())));
             }
-            if (isNotBlank(state) && isValidState(state)) {
-                andterms.add(String.format("%s = '%s'", PROP_STATE, state));
+            if (isNotBlank(query.getState()) && isValidState(query.getState())) {
+                andterms.add(String.format("%s = '%s'", PROP_STATE, query.getState()));
             }
 
             if (!andterms.isEmpty()) {
@@ -200,8 +193,8 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
                 sql.append(andterms.stream().collect(joining(" AND ")));
             }
 
-            sql.append(orderByClause(sort, dir));
-            return executeQuery(sql.toString(), page, size);
+            sql.append(orderByClause(query.getSort(), query.getDir()));
+            return executeQuery(sql.toString(), query.getPage(), query.getSize());
         } catch (RepositoryException e) {
             LOG.error("Failed to list publications {}", e);
             throw new PublicationRepositoryException("Failed to list publications", e);

@@ -42,6 +42,7 @@ public final class Constants {
     public static final String MIX_LOCKABLE = "mix:lockable";
 
     public static final String GOVSCOT_TITLE = "govscot:title";
+    public static final String GOVSCOT_SUMMARY = "govscot:summary";
     public static final String GOVSCOT_CONTENT = "govscot:content";
     public static final String GOVSCOT_PAGE_COUNT = "govscot:pageCount";
     public static final String GOVSCOT_GOVSCOTURL = "govscot:govscoturl";
