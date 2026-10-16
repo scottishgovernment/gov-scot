@@ -152,13 +152,14 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
     /**
      * Paged list of publications with an optional search.
      *
-     * @param query page/size plus the optional search and sort parameters - see
-     *              {@link PublicationListQuery} for the meaning of each
+     * @param pageable page number and page size
+     * @param query the optional search and sort parameters - see {@link PublicationListQuery} for
+     *              the meaning of each
      * @return Collection of matching publications
      * @throws PublicationRepositoryException if it fails to list publications
      */
     @Override
-    public ListResult list(PublicationListQuery query) throws PublicationRepositoryException {
+    public ListResult list(Pageable pageable, PublicationListQuery query) throws PublicationRepositoryException {
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM nt:unstructured ");
             List<String> andterms = new ArrayList<>();
@@ -194,7 +195,7 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
             }
 
             sql.append(orderByClause(query.getSort(), query.getDir()));
-            return executeQuery(sql.toString(), query.getPage(), query.getSize());
+            return executeQuery(sql.toString(), pageable.getPage(), pageable.getSize());
         } catch (RepositoryException e) {
             LOG.error("Failed to list publications {}", e);
             throw new PublicationRepositoryException("Failed to list publications", e);

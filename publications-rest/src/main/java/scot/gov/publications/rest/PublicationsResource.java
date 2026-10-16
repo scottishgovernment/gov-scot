@@ -134,7 +134,15 @@ public class PublicationsResource {
                 return Response.status(Response.Status.FORBIDDEN).build();
             }
             ListResult result = repository.list(
-                    PublicationListQuery.of(page, size, title, isbn, filename, username, state, sort, dir));
+                    new Pageable(page, size),
+                    PublicationListQuery.create()
+                            .title(title)
+                            .isbn(isbn)
+                            .filename(filename)
+                            .username(username)
+                            .state(state)
+                            .sort(sort)
+                            .dir(dir));
             LOG.debug("LIST returning {} publications, totalSize={}", result.getPublications().size(), result.getTotalSize());
             return Response.ok(result).build();
         } catch (Exception e) {

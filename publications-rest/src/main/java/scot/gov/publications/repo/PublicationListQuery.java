@@ -1,44 +1,58 @@
 package scot.gov.publications.repo;
 
 /**
- * Search/paging parameters for {@link PublicationRepository#list(PublicationListQuery)} - bundled
- * into one object rather than passed as individual parameters, since the method otherwise needs
- * more than Sonar's default maximum of 8.
+ * Search and sort criteria for {@link PublicationRepository#list(Pageable, PublicationListQuery)} -
+ * paging itself is a separate concern, see {@link Pageable}. Built via {@link #create()} plus the
+ * fluent setters below rather than one large constructor, so no single method needs more than
+ * Sonar's default maximum of 8 parameters.
  */
 public class PublicationListQuery {
 
-    private int page;
-    private int size;
-    private String title;
-    private String isbn;
-    private String filename;
-    private String username;
-    private String state;
-    private String sort;
-    private String dir;
+    private String title = "";
+    private String isbn = "";
+    private String filename = "";
+    private String username = "";
+    private String state = "";
+    private String sort = "";
+    private String dir = "";
 
-    public static PublicationListQuery of(
-            int page, int size, String title, String isbn, String filename, String username,
-            String state, String sort, String dir) {
-        PublicationListQuery query = new PublicationListQuery();
-        query.page = page;
-        query.size = size;
-        query.title = title;
-        query.isbn = isbn;
-        query.filename = filename;
-        query.username = username;
-        query.state = state;
-        query.sort = sort;
-        query.dir = dir;
-        return query;
+    public static PublicationListQuery create() {
+        return new PublicationListQuery();
     }
 
-    public int getPage() {
-        return page;
+    public PublicationListQuery title(String title) {
+        this.title = title;
+        return this;
     }
 
-    public int getSize() {
-        return size;
+    public PublicationListQuery isbn(String isbn) {
+        this.isbn = isbn;
+        return this;
+    }
+
+    public PublicationListQuery filename(String filename) {
+        this.filename = filename;
+        return this;
+    }
+
+    public PublicationListQuery username(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public PublicationListQuery state(String state) {
+        this.state = state;
+        return this;
+    }
+
+    public PublicationListQuery sort(String sort) {
+        this.sort = sort;
+        return this;
+    }
+
+    public PublicationListQuery dir(String dir) {
+        this.dir = dir;
+        return this;
     }
 
     public String getTitle() {
