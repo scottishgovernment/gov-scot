@@ -266,7 +266,7 @@ public class ContentItem {
     }
 
     public boolean isCorrespondence() {
-        return isType(Value.NEWS_RELEASE);
+        return isType(Value.CORRESPONDENCE);
     }
 
     public boolean isType(Value type) {
