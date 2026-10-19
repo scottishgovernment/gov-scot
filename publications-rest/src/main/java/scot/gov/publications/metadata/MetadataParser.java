@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.cfg.CoercionAction;
 import com.fasterxml.jackson.databind.cfg.CoercionInputShape;
 import com.fasterxml.jackson.databind.type.LogicalType;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,9 +68,28 @@ public class MetadataParser {
             missingFields.add("publicationDate");
         }
 
+        if (StringUtils.equals(metadata.getPublicationType(), "consultation-paper")) {
+            // if the type is consultation paper, and the JSON contains a 'consultation' element then
+            // assert that there has to be: openingDate, closingDate
+            assertRequiredConsultationFields(metadata, missingFields);
+        }
+
         if (!missingFields.isEmpty()) {
             String missignFieldsString = missingFields.stream().collect(joining(", "));
             throw new MetadataParserException("Metadata missing required field(s): " + missignFieldsString);
+        }
+    }
+
+    void assertRequiredConsultationFields(Metadata metadata, List<String> missingFields) {
+        if (metadata.getConsultation() == null) {
+            return;
+        }
+        Consultation consultation = metadata.getConsultation();
+        if (consultation.getOpeningDate() == null) {
+            missingFields.add("consultation.openingDate");
+        }
+        if (consultation.getClosingDate() == null) {
+            missingFields.add("consultation.closingDate");
         }
     }
 
@@ -81,13 +101,6 @@ public class MetadataParser {
 
         if (metadata.getUpdate() != null && metadata.getUpdate().getUpdateText().isEmpty()) {
             throw new MetadataParserException("Update text cannot be empty.");
-        }
-
-        if (metadata.isConsultation() || metadata.isConsultationAnalysis()) {
-            Consultation consultation = metadata.getConsultation();
-            if (consultation.getOpeningDate() == null || consultation.getClosingDate() == null) {
-                throw new MetadataParserException("Consultation openingDate and closingDate are required.");
-            }
         }
     }
 
