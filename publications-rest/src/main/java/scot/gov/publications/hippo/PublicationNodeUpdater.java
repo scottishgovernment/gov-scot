@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scot.gov.publications.ApsZipImporterException;
 import scot.gov.publications.metadata.Consultation;
+import scot.gov.publications.metadata.ConsultationResponseMethod;
 import scot.gov.publications.metadata.Metadata;
 import scot.gov.publications.metadata.Update;
 import scot.gov.publications.repo.Publication;
@@ -22,12 +23,18 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryResult;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.ObjectUtils.firstNonNull;
 import static org.apache.commons.lang3.StringUtils.isBlank;
+import static scot.gov.publications.hippo.Constants.GOVSCOT_CONTENT;
 import static scot.gov.publications.hippo.Constants.HIPPOSTD_FOLDERTYPE;
+import static scot.gov.publications.hippo.Constants.HIPPOSTD_RELAXED;
+import static scot.gov.publications.hippo.Constants.HIPPOSTD_CONTAINER;
+import static scot.gov.publications.hippo.Constants.HIPPO_CONTAINER;
 import static scot.gov.publications.hippo.Constants.HIPPO_DOCBASE;
 import static scot.gov.publications.hippo.XpathQueryHelper.*;
 
@@ -47,6 +54,8 @@ public class PublicationNodeUpdater {
     private static final String SECONDARY_RESPONSIBLE_ROLE = "govscot:secondaryResponsibleRole";
 
     private static final String FEATURED_LINKS = "govscot:featuredLinks";
+
+    private static final String CONSULTATION_RESPONSE_METHODS = "govscot:consultationResponseMethods";
 
     private static final String LINK = "govscot:link";
 
@@ -174,6 +183,7 @@ public class PublicationNodeUpdater {
             maintainUpdateHistory(contentNode, metadata);
             createDirectoratesIfAbsent(contentNode, metadata);
             createRolesIfAbsent(contentNode, metadata);
+            createOrUpdateConsultationFields(contentNode, metadata);
             createOrUpdateConsultationAnalysisFields(contentNode, metadata);
             tagUpdater.updateTags(contentNode, metadata.getTags());
 
@@ -342,6 +352,42 @@ public class PublicationNodeUpdater {
         mirrorNode.setPrimaryType("hippo:mirror");
         mirrorNode.setProperty(HIPPO_DOCBASE, id);
         node.addNode(mirrorNode);
+    }
+
+    /**
+     * Set the opening/closing dates, derived open state and response url/methods for a consultation
+     * paper, matching the publications-service importer. The response methods are rebuilt from
+     * scratch on every import since they have no identity to repair in place.
+     */
+    private void createOrUpdateConsultationFields(ContentNode publicationNode, Metadata metadata) {
+        if (!metadata.isConsultation()) {
+            return;
+        }
+
+        Consultation consultation = metadata.getConsultation();
+        LocalDateTime now = LocalDateTime.now();
+        boolean open = now.isAfter(consultation.getOpeningDate()) && now.isBefore(consultation.getClosingDate());
+
+        publicationNode.setProperty("govscot:openingDate", ContentPropertyType.DATE,
+                ISO8601.format(GregorianCalendar.from(consultation.getOpeningDate().atZone(ZoneId.systemDefault()))));
+        publicationNode.setProperty("govscot:closingDate", ContentPropertyType.DATE,
+                ISO8601.format(GregorianCalendar.from(consultation.getClosingDate().atZone(ZoneId.systemDefault()))));
+        publicationNode.setProperty("govscot:isOpen", ContentPropertyType.BOOLEAN, Boolean.toString(open));
+        publicationNode.setProperty("govscot:responseUrl", consultation.getResponseUrl());
+
+        // remove any response methods that exist from a previous upload and rebuild from the metadata
+        publicationNode.getNodes().removeIf(node -> CONSULTATION_RESPONSE_METHODS.equals(node.getName()));
+        for (ConsultationResponseMethod responseMethod : consultation.getAlternativeWaysToRespond()) {
+            ContentNode responseMethodNode = new ContentNode();
+            responseMethodNode.setName(CONSULTATION_RESPONSE_METHODS);
+            responseMethodNode.setPrimaryType("govscot:ConsultationResponseType");
+            responseMethodNode.addMixinType(HIPPO_CONTAINER);
+            responseMethodNode.addMixinType(HIPPOSTD_CONTAINER);
+            responseMethodNode.addMixinType(HIPPOSTD_RELAXED);
+            responseMethodNode.setProperty("govscot:type", responseMethod.getTitle());
+            responseMethodNode.addNode(new ContentNodes().htmlNode(GOVSCOT_CONTENT, responseMethod.getText()));
+            publicationNode.addNode(responseMethodNode);
+        }
     }
 
     /**

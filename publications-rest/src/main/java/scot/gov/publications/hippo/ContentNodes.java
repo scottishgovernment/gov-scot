@@ -61,26 +61,40 @@ public class ContentNodes {
     }
 
     /**
-     * Refresh the metadata-derived fields of an existing publication's exported ContentNode from a
-     * re-imported zip's metadata - title, summary, description, contact, isbn and the old-style url
-     * - so that editing these in the source metadata and re-uploading actually takes effect, rather
-     * than silently keeping whatever was last imported. Deliberately leaves govscot:notes alone
-     * (CMS-editor-only field) and never adds/removes child nodes already present on the exported
-     * tree (see the content-exim binder note on updateMirrorDocbase in PublicationNodeUpdater).
+     * Refresh an existing publication's exported ContentNode from a re-imported zip's metadata.
+     * Title, summary, seoTitle, metaDescription, notes and the description body are user-editable
+     * in the CMS, so they are only set if not already present - preserving any edits made since
+     * the last import, matching the behaviour of the publications-service importer. Contact, isbn
+     * and the old-style url are always refreshed from the zip. Never adds/removes child nodes
+     * already present on the exported tree (see the content-exim binder note on
+     * updateMirrorDocbase in PublicationNodeUpdater).
      */
     public void updateContentNode(ContentNode contentNode, Metadata metadata) {
         String title = TitleSanitiser.sanitise(metadata.getTitle());
-        contentNode.setProperty(HIPPO_NAME, metadata.getTitle());
-        contentNode.setProperty(GOVSCOT_TITLE, title);
-        contentNode.setProperty("govscot:seoTitle", metadata.getTitle());
-        contentNode.setProperty(GOVSCOT_SUMMARY, metadata.getExecutiveSummary());
-        contentNode.setProperty("govscot:metaDescription", metadata.getExecutiveSummary());
-        updateHtmlNodeContent(contentNode, GOVSCOT_CONTENT, metadata.getDescription());
+        setPropertyIfAbsent(contentNode, HIPPO_NAME, metadata.getTitle());
+        setPropertyIfAbsent(contentNode, GOVSCOT_TITLE, title);
+        setPropertyIfAbsent(contentNode, "govscot:seoTitle", metadata.getTitle());
+        setPropertyIfAbsent(contentNode, GOVSCOT_SUMMARY, metadata.getExecutiveSummary());
+        setPropertyIfAbsent(contentNode, "govscot:metaDescription", metadata.getExecutiveSummary());
+        setPropertyIfAbsent(contentNode, "govscot:notes", "");
+        addHtmlNodeIfAbsent(contentNode, GOVSCOT_CONTENT, metadata.getDescription());
         updateHtmlNodeContent(contentNode, "govscot:contact", mailToLink(metadata.getContact().getEmail()));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
 
         if (isNotBlank(metadata.getUrl())) {
             contentNode.setProperty(GOVSCOT_GOVSCOTURL, oldStyleUrl(metadata));
+        }
+    }
+
+    private void setPropertyIfAbsent(ContentNode contentNode, String name, String value) {
+        if (!contentNode.hasProperty(name)) {
+            contentNode.setProperty(name, value);
+        }
+    }
+
+    private void addHtmlNodeIfAbsent(ContentNode contentNode, String name, String html) {
+        if (!contentNode.hasNode(name)) {
+            contentNode.addNode(htmlNode(name, html));
         }
     }
 
