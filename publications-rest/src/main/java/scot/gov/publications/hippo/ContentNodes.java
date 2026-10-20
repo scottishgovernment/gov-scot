@@ -19,6 +19,7 @@ import scot.gov.publications.repo.Publication;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class ContentNodes {
     public ContentNode newContentNode(Metadata metadata, Publication publication, String slug) {
         String title = TitleSanitiser.sanitise(publication.getTitle());
         ContentNode contentNode = new ContentNode();
-        contentNode.setPrimaryType("govscot:Publication");
+        contentNode.setPrimaryType(metadata.isConsultation() ? "govscot:Consultation" : "govscot:Publication");
         contentNode.addMixinType(HIPPO_NAMED);
         contentNode.setProperty(HIPPO_NAME, publication.getTitle());
         contentNode.setProperty("govscot:slug", slug);
@@ -53,6 +54,7 @@ public class ContentNodes {
         contentNode.addNode(htmlNode("govscot:contact",  mailToLink(metadata.getContact().getEmail())));
         contentNode.setProperty("govscot:publicationType", HippoPaths.slugify(metadata.mappedPublicationType(), false));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
+        setPublicationDates(contentNode, metadata);
 
         if (isNotBlank(metadata.getUrl())) {
             contentNode.setProperty(GOVSCOT_GOVSCOTURL, oldStyleUrl(metadata));
@@ -80,10 +82,17 @@ public class ContentNodes {
         addHtmlNodeIfAbsent(contentNode, GOVSCOT_CONTENT, metadata.getDescription());
         updateHtmlNodeContent(contentNode, "govscot:contact", mailToLink(metadata.getContact().getEmail()));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
+        setPublicationDates(contentNode, metadata);
 
         if (isNotBlank(metadata.getUrl())) {
             contentNode.setProperty(GOVSCOT_GOVSCOTURL, oldStyleUrl(metadata));
         }
+    }
+
+    private void setPublicationDates(ContentNode contentNode, Metadata metadata) {
+        String publicationDate = ISO8601.format(GregorianCalendar.from(metadata.getPublicationDateWithTimezone()));
+        contentNode.setProperty("govscot:publicationDate", ContentPropertyType.DATE, publicationDate);
+        contentNode.setProperty("govscot:displayDate", ContentPropertyType.DATE, publicationDate);
     }
 
     private void setPropertyIfAbsent(ContentNode contentNode, String name, String value) {
