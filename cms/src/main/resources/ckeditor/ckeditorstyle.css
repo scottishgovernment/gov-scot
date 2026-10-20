@@ -3,3 +3,16 @@
     border: 1px solid silver !important;
     min-width: 50px;
 }
+
+/* Reflect cell alignment classes (set via the Cell Properties dialog) in the HTML editor */
+.cke_wysiwyg_div.cke_editable td.lAlign, .cke_wysiwyg_div.cke_editable th.lAlign {
+    text-align: left;
+}
+
+.cke_wysiwyg_div.cke_editable td.cAlign, .cke_wysiwyg_div.cke_editable th.cAlign {
+    text-align: center;
+}
+
+.cke_wysiwyg_div.cke_editable td.rAlign, .cke_wysiwyg_div.cke_editable th.rAlign {
+    text-align: right;
+}

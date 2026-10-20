@@ -139,6 +139,11 @@ public class PublicationNodeUpdater {
 
         Node pubNode = findPublicationNodeToUpdate(metadata);
 
+        // a consultation paper is created as its own document type so that its dedicated CMS
+        // editor template and required-field validation (opening/closing date, response url)
+        // apply, matching the publications-service importer.
+        String primaryType = metadata.isConsultation() ? "govscot:Consultation" : "govscot:Publication";
+
         DocumentManager documentManager = new WorkflowDocumentManagerImpl(session);
         ContentNode contentNode;
         String path;
@@ -155,7 +160,7 @@ public class PublicationNodeUpdater {
             // for why that doesn't work here) - this lets the import task below find an existing
             // document at this path and go straight to its (working) update path instead.
             if (!publicationFolder.hasNode("index")) {
-                nodeFactory.newBarePublicationVariant(publicationFolder, "index", "govscot:Publication", metadata.getTitle());
+                nodeFactory.newBarePublicationVariant(publicationFolder, "index", primaryType, metadata.getTitle());
                 session.save();
             }
 
@@ -190,7 +195,7 @@ public class PublicationNodeUpdater {
             WorkflowDocumentVariantImportTask importTask = new WorkflowDocumentVariantImportTask(documentManager);
             String publishedPath =
                     importTask.createOrUpdateDocumentFromVariantContentNode(
-                            contentNode, "govscot:Publication", path, "en", publication.getTitle());
+                            contentNode, primaryType, path, "en", publication.getTitle());
             Node publicationNode = session.getNode(publishedPath);
             lastPublicationState = documentHelper.ensurePublicationState(documentManager, publicationNode, publishedPath, metadata);
             publicationNode = session.getNode(publishedPath);

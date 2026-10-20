@@ -128,7 +128,7 @@ public class PublicationPageUpdater {
         }
 
         if (metadata.isConsultation()) {
-            addConsultationResponsePage(importTask, documentManager, metadata, pagesPath, i);
+            addConsultationResponsePage(importTask, documentManager, metadata, pagesPath);
         }
 
         return pageNodesByEntry;
@@ -136,18 +136,18 @@ public class PublicationPageUpdater {
 
     /**
      * Consultation papers always get a "How to respond" page containing standard boilerplate text,
-     * appended after the pages taken from the APS zip.
+     * appended after the pages taken from the APS zip. Given the slug "respond" (rather than the
+     * next numeric index) to match the page's URL under the publications-service importer.
      */
     private void addConsultationResponsePage(
             WorkflowDocumentVariantImportTask importTask,
             DocumentManager documentManager,
             Metadata metadata,
-            String pagesPath,
-            int index) throws IOException, RepositoryException {
+            String pagesPath) throws IOException, RepositoryException {
 
         String html = IOUtils.resourceToString("/consultationResponse.html", UTF_8);
         ContentNode responseNode = new ContentNodes().newConsultationResponseNode(html);
-        String path = pagesPath + index;
+        String path = pagesPath + "respond";
         String publishedPath = importTask.createOrUpdateDocumentFromVariantContentNode(
                 responseNode, "govscot:PublicationPage", path, "en", responseNode.getProperty(GOVSCOT_TITLE).getValue());
         Node pageNode = session.getNode(publishedPath);
