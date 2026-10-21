@@ -1,0 +1,4 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/covidrestrictionseditor:
+      .meta:delete: true
