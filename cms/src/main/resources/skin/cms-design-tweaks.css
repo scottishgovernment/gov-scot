@@ -279,7 +279,7 @@
     color: #ffffff;
 }
 
-.ds_button--secondary, 
+.ds_button--secondary,
 .ds_button--cancel {
     background-color: transparent;
     color: #0065bd;
@@ -401,3 +401,23 @@
       min-height: 0;
     }
   }
+
+/*------------------------------------*\
+    #JUSTIFY PLUGIN
+\*------------------------------------*/
+
+.gov_text-left {
+    text-align: left;
+}
+
+.gov_text-right {
+    text-align: right;
+}
+
+.gov_text-center {
+    text-align: center;
+}
+
+.gov_text-justify {
+    text-align: justify;
+}

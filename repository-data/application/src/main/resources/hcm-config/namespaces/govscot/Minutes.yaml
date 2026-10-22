@@ -325,21 +325,10 @@ definitions:
             /cluster.options:
               jcr:primaryType: frontend:pluginconfig
               ckeditor.config.appended.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
-                : \"bidi\"\t}],\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline\"\
+                : \"bidi\"\t}],\t\"removeButtons\": \"ShowBlocks,Strike,Subscript,Superscript,Underline,JustifyCenter,JustifyBlock\"\
                 }"
-              ckeditor.config.overlayed.json: "{\t\"toolbarGroups\": [{\t\t\"name\"\
-                : \"styles\"\t}, {\t\t\"name\": \"basicstyles\"\t}, {\t\t\"name\"\
-                : \"cleanup\"\t}, {\t\t\"name\": \"undo\"\t}, {\t\t\"name\": \"listindentalign\"\
-                ,\t\t\"groups\": [\"list\"]\t}, {\t\t\"name\": \"links\"\t}, {\t\t\
-                \"name\": \"insert\"\t}, {\t\t\"name\": \"tools\"\t}, {\t\t\"name\"\
-                : \"mygov\"\t}, {\t\t\"name\": \"bidi\"\t}],\t\"disallowedContent\"\
-                : \"*[style]{*}\",\t\"extraPlugins\": \"language,youtube_enablejsapi,dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables\"\
-                ,\t\"contentsCss\": [\t\t\"ckeditor/hippocontents.css\",\t\t\"ckeditor/ckeditorstyle.css\"\
-                \t],\t\"youtube_responsive\": true,\t\"youtube_privacy\": true,\t\"\
-                youtube_disabled_fields\": [\"chkResponsive\", \"chkPrivacy\", \"\
-                txtEmbed\", \"chkOlderCode\"],\t\"extraAllowedContent\": \"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]\"\
-                ,\t\"language_list\": [\t\t\"en:English\",\t\t\"gd:Gaelic (Scottish)\"\
-                ,\t\t\"ru:Russian\",\t\t\"uk:Ukrainian\"\t]}"
+              ckeditor.config.overlayed.json:
+                '{"justifyClasses":["gov_text-left","gov_text-center","gov_text-right","gov_text-justify"],"toolbarGroups":[{"name":"styles"},{"name":"basicstyles"},{"name":"cleanup"},{"name":"undo"},{"name":"listindentalign","groups":["list","align"]},{"name":"links"},{"name":"insert"},{"name":"tools"},{"name":"mygov"},{"name":"bidi"}],"disallowedContent":"*[style]{*}","extraPlugins":"language,youtube_enablejsapi,dialogadvtab2,ds_inset-text,ds_warning-text,ds_accordion,simple_tables,justify","contentsCss":["ckeditor/hippocontents.css","ckeditor/ckeditorstyle.css"],"youtube_responsive":true,"youtube_privacy":true,"youtube_disabled_fields":["chkResponsive","chkPrivacy","txtEmbed","chkOlderCode"],"extraAllowedContent":"span(stat-box__*);table[data-smallscreen];div[data-module,data-uuid,href,contenteditable];address[translate];span[lang];iframe{*}[!width,!height,!src,!frameborder,!allowfullscreen]","language_list":["en:English","gd:Gaelic (Scottish)","ru:Russian","uk:Ukrainian"]}'
           /responsibleDirectorate:
             jcr:primaryType: frontend:plugin
             caption: Primary responsible directorate

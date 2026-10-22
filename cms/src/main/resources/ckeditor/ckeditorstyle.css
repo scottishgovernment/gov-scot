@@ -3,3 +3,21 @@
     border: 1px solid silver !important;
     min-width: 50px;
 }
+
+.cke_wysiwyg_div.cke_editable {
+    .gov_text-left {
+        text-align: left;
+    }
+
+    .gov_text-right {
+        text-align: right;
+    }
+
+    .gov_text-center {
+        text-align: center;
+    }
+
+    .gov_text-justify {
+        text-align: justify;
+    }
+}

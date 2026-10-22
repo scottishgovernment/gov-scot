@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #TEXT ALIGN
+\*------------------------------------*/
+
+.#{$site-prefix}text-center {
+  text-align: center;
+}
+
+.#{$site-prefix}text-justify {
+  text-align: justify;
+}
+
+.#{$site-prefix}text-left {
+  text-align: left;
+}
+
+.#{$site-prefix}text-right {
+  text-align: right;
+}
