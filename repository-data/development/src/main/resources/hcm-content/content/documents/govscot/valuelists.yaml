@@ -198,6 +198,19 @@
         jcr:primaryType: selection:listitem
         selection:key: fixme
         selection:label: Fix broken publication
+  /blogCategories:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']
+    jcr:uuid: 52f15460-9057-4f54-973e-6f4b1c50daf2
+    hippo:name: blogCategories
+    /blogCategories:
+      jcr:primaryType: selection:valuelist
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 4045ac29-6ebc-4c0e-b519-5013b5294a38
+      /selection:listitem[1]:
+        jcr:primaryType: selection:listitem
+        selection:key: General
+        selection:label: General
   /topicTags:
     jcr:primaryType: hippo:handle
     jcr:mixinTypes: ['hippo:named', 'mix:referenceable', 'mix:versionable']

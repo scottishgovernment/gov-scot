@@ -14,6 +14,8 @@ import org.onehippo.forge.breadcrumb.om.Breadcrumb;
 import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scot.gov.www.beans.Blog;
+import scot.gov.www.beans.BlogPost;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -99,6 +101,10 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
             addNpfTrailingDocuments(items, currentBean, request);
 
+        } else if (currentBean instanceof BlogPost) {
+
+            addBlogPostTrailingDocument(items, (BlogPost) currentBean, request);
+
         } else if (currentBean != null && deepestExpandedMenuItem != null) {
 
             final ResolvedSiteMapItem deepestExpandedmenuItemSmi = deepestExpandedMenuItem.resolveToSiteMapItem();
@@ -142,6 +148,25 @@ public class BreadcrumbProviderComponent extends BreadcrumbProvider {
 
         }
 
+    }
+
+    /**
+     * Blog post pages need an extra breadcrumb level for the blog they belong to, between the
+     * "Blogs" menu crumb and the post itself (which, like every other leaf page, is not shown in
+     * its own breadcrumb trail): Blogs -&gt; &lt;blog title&gt;.
+     *
+     * @param items    list of breadcrumb items
+     * @param blogPost the blog post bean described by the current URL
+     * @param request  HST request
+     */
+    private void addBlogPostTrailingDocument(final List<BreadcrumbItem> items, final BlogPost blogPost, final HstRequest request) {
+        final Blog blog = blogPost.getBlog();
+        if (blog != null) {
+            final BreadcrumbItem item = getBreadcrumbItem(request, blog);
+            if (item != null) {
+                items.add(item);
+            }
+        }
     }
 
     /**

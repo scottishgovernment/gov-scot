@@ -23,10 +23,29 @@ public class AtoZComponent extends BaseHstComponent {
             final HstRequest request,
            final HstResponse response) {
 
-        SortedMap<String, List<HippoBean>> beansByFirstLetter  = beansByFirstLetter(request);
+        request.setAttribute("beansByLetter",
+                computeLettersAndBeans(request.getRequestContext().getContentBean(), null));
+    }
+
+    /**
+     * Groups the children of the given folder bean into the A-Z list structure. Exposed so that
+     * callers which cannot rely on the request's content bean being the folder to list (for example
+     * because a sitemap item's index page resolves the content bean to a document rather than its
+     * containing folder) can resolve the correct folder themselves and pass it in directly.
+     */
+    public List<LettersAndBeans> computeLettersAndBeans(HippoBean folderBean) {
+        return computeLettersAndBeans(folderBean, null);
+    }
+
+    /**
+     * As {@link #computeLettersAndBeans(HippoBean)}, but excludes a specific child (by identifier)
+     * from the listing - for example the folder's own index document, which should not list itself.
+     */
+    public List<LettersAndBeans> computeLettersAndBeans(HippoBean folderBean, HippoBean exclude) {
+        SortedMap<String, List<HippoBean>> beansByFirstLetter = beansByFirstLetter(folderBean, exclude);
         List<LettersAndBeans> lettersAndBeans = lettersAndBeans(beansByFirstLetter);
         addLabels(lettersAndBeans);
-        request.setAttribute("beansByLetter", lettersAndBeans);
+        return lettersAndBeans;
     }
 
     private  List<LettersAndBeans> lettersAndBeans(SortedMap<String, List<HippoBean>> beansByFirstLetter) {
@@ -42,8 +61,9 @@ public class AtoZComponent extends BaseHstComponent {
             current.getBeans().addAll(entry.getValue());
         }
 
-        // if current contains no beans then append its letters to the last set
-        if (current.getBeans().isEmpty()) {
+        // if current contains no beans then append its letters to the last set, unless there is no
+        // last set (i.e. no beans were found at all), in which case just keep the empty current set.
+        if (current.getBeans().isEmpty() && !lettersAndBeans.isEmpty()) {
             LettersAndBeans last = lettersAndBeans.get(lettersAndBeans.size() - 1);
             last.getLetters().addAll(current.getLetters());
         } else {
@@ -72,14 +92,16 @@ public class AtoZComponent extends BaseHstComponent {
         lettersAndBeans.setLabel(label);
     }
 
-    private SortedMap<String, List<HippoBean>> beansByFirstLetter(HstRequest request) {
-        List<HippoBean> beans = request
-                .getRequestContext()
-                .getContentBean()
+    private SortedMap<String, List<HippoBean>> beansByFirstLetter(HippoBean folderBean, HippoBean exclude) {
+        List<HippoBean> beans = folderBean == null
+                ? Collections.emptyList()
+                : folderBean
                 .getChildBeans(HippoBean.class)
                 .stream()
+                .filter(bean -> exclude == null || !bean.getIdentifier().equals(exclude.getIdentifier()))
                 .map(this::determineBean)
                 .filter(Objects::nonNull)
+                .filter(this::hasTitle)
                 .collect(toList());
 
         // group by first letter of the title.
@@ -102,6 +124,11 @@ public class AtoZComponent extends BaseHstComponent {
 
         HippoBean indexBean = bean.getBean("index");
         return indexBean == null ? null : indexBean;
+    }
+
+    private boolean hasTitle(HippoBean bean) {
+        String title = bean.getSingleProperty("govscot:title");
+        return title != null && !title.isEmpty();
     }
 
     private String firstLetter(HippoBean bean) {

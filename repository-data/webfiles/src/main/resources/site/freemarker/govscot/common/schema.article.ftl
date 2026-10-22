@@ -1,14 +1,18 @@
 <#ftl output_format="HTML">
 <#if document??>
 
-<@hst.link var="imagelink" path='/assets/images/logos/SGLogo1200x630.png' fullyQualified=true/>
+<#if socialImage??>
+    <@hst.link var="imagelink" hippobean=socialImage fullyQualified=true/>
+<#else>
+    <@hst.link var="imagelink" path='/assets/images/logos/SGLogo1200x630.png' fullyQualified=true/>
+</#if>
 <@hst.link var="link" canonical=true fullyQualified=true/>
 
 <@hst.headContribution category="schema">
     <script type="application/ld+json" nonce="${nonce}">
 {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "<#if schemaType??>${schemaType}<#else>Article</#if>",
 
     "image": "${imagelink}",
 
@@ -18,6 +22,11 @@
     },
 
     "author": {
+<#if authorName??>
+        "@type": "Person",
+        "name": "${authorName?json_string}"<#if authorUrl??>,
+        "url": "${authorUrl}"</#if>
+<#else>
         "@type": "Organization",
 
         "name": "The Scottish Government",
@@ -26,6 +35,7 @@
             "@type": "ImageObject",
             "url": "${imagelink}"
         }
+</#if>
     },
 
     "headline": "${document.title?json_string}",
