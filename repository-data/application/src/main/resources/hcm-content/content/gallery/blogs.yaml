@@ -1,0 +1,8 @@
+/content/gallery/blogs:
+  .meta:order-before: outcomes
+  jcr:primaryType: hippogallery:stdImageGallery
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: 342ed20f-7f61-40f9-b44e-cde3f533c010
+  hippo:name: Blogs
+  hippostd:foldertype: [new-govscot-ColumnImage-folder]
+  hippostd:gallerytype: ['govscot:ColumnImage']

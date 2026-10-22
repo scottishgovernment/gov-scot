@@ -26,6 +26,16 @@ definitions:
       new-featured-role-article: New featured role article
       new-featured-role-biography: New featured role biography
       new-directorate: New directorate
+      new-bloghomepage-folder: New blogs homepage
+      new-blog-folder: New blog
+      new-blog-index-document: New blog index document
+      new-bloghomepage-index-document: New blogs homepage index document
+      new-blog-year-folder: New blog year folder
+      new-blog-month-folder: New blog month folder
+      new-blog-day-folder: New blog day folder
+      new-blog-post-document: New blog post
+      new-blogauthor-folder: New blog author folder
+      new-blogauthor: New blog author
       new-featured-item: New featured item
       new-minutes-folder: New minutes folder
       new-publication: New publication

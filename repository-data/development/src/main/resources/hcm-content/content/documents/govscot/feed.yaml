@@ -192,3 +192,1043 @@
         hippo:facets: []
         hippo:modes: []
         hippo:values: []
+  /digital-directorate:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: ac047294-ee27-4a7d-9b01-d25bc7910a84
+    hippo:name: 'Digital Directorate'
+    /digital-directorate[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 7bf13789-5ea1-431b-8d53-32e1086906ce
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Digital Directorate blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/digital-directorate'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Digital Directorate'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /digital-directorate[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 2391d634-97b4-49ad-a7af-a1d0e808a040
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Digital Directorate blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/digital-directorate'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Digital Directorate'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /marine-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 43dcc1b5-e5a9-44a0-8e5a-ccf5ecd7262f
+    hippo:name: 'Marine Scotland'
+    /marine-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 60a67359-ebbd-4ead-921b-40b376bd6ec6
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Marine Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/marine-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Marine Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /marine-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: b8e329e1-aaf5-4605-ae5f-fa8e552d5c4a
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Marine Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/marine-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Marine Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /national-records-of-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 26c9dafd-eb12-437a-a9dc-41c01d50a4eb
+    hippo:name: 'National Records of Scotland'
+    /national-records-of-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 0c757d65-4498-46c1-aaa2-6a542c2d477c
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'National Records of Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/national-records-of-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - National Records of Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /national-records-of-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 97a1cf77-aa0b-46e3-996d-c99caea7ca46
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'National Records of Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/national-records-of-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - National Records of Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /social-security-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 4896800e-d87c-4fcf-9551-774930d80ed3
+    hippo:name: 'Social Security Scotland'
+    /social-security-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 3f1f3439-51f2-4557-a37d-8e9390895b98
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Social Security Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/social-security-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Social Security Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /social-security-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 3427bc20-8c8e-4814-a37b-3eddcf9648f1
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Social Security Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/social-security-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Social Security Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /open-government:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: fc03454b-e243-4ac9-8474-e4ff39d8dadc
+    hippo:name: 'Open Government'
+    /open-government[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: adc55c2f-9e42-464d-999c-ccba51b829f5
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Open Government blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/open-government'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Open Government'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /open-government[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 9ba5cba9-884e-4b9c-9727-90462cdff5f4
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Open Government blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/open-government'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Open Government'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /transport-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 8b319be3-1985-46a9-a492-d4974b7342e7
+    hippo:name: 'Transport Scotland'
+    /transport-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 19f44c31-7691-4a75-977d-d3592f508a3d
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Transport Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/transport-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Transport Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /transport-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: fe778684-5f0c-4b20-a24a-b87c6fe7ee21
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Transport Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/transport-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Transport Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /scottish-prison-service:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 1306d591-1997-456a-87c3-254d97989832
+    hippo:name: 'Scottish Prison Service'
+    /scottish-prison-service[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 72a786c5-2704-49e8-86d6-7f0db8745791
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Scottish Prison Service blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/scottish-prison-service'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Scottish Prison Service'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /scottish-prison-service[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: e1f3ba06-6a7a-4603-b3c5-72b52924eaeb
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Scottish Prison Service blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/scottish-prison-service'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Scottish Prison Service'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /food-standards-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 40d24f24-3344-408a-8c6a-7fb56694d0d3
+    hippo:name: 'Food Standards Scotland'
+    /food-standards-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 4ccf3c84-a4ef-45d7-8aa6-2fe51dbd5379
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Food Standards Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/food-standards-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Food Standards Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /food-standards-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 7da4bc23-d991-4fa2-b758-127d23ee4aaf
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Food Standards Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/food-standards-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Food Standards Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /historic-environment-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 42b6199c-b0d9-4feb-a92f-aaba229f328c
+    hippo:name: 'Historic Environment Scotland'
+    /historic-environment-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: f881418a-8b25-4268-ae92-3a4c2e4b0368
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Historic Environment Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/historic-environment-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Historic Environment Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /historic-environment-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 8122ec70-ce4c-4235-926b-92d5be297aaa
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Historic Environment Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/historic-environment-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Historic Environment Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /visitscotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: ea7bbcfb-d68c-44e4-90e8-bc9125402d68
+    hippo:name: 'VisitScotland'
+    /visitscotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: e13d0390-8685-4d2d-a0ba-805d1df839bb
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'VisitScotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/visitscotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - VisitScotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /visitscotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 6fd466a9-d0b9-4b1a-8fe4-9e01f216e788
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'VisitScotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/visitscotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - VisitScotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /scottish-enterprise:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 09242346-d14a-46dd-af8a-df539e78356f
+    hippo:name: 'Scottish Enterprise'
+    /scottish-enterprise[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 22467d09-957d-4ad5-9f56-0cf18e1e10bc
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Scottish Enterprise blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/scottish-enterprise'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Scottish Enterprise'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /scottish-enterprise[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: e32b5036-0b47-441e-923e-14f2536d2917
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Scottish Enterprise blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/scottish-enterprise'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Scottish Enterprise'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /education-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: af6b516c-2d3b-4d97-89df-235e1a99b7ae
+    hippo:name: 'Education Scotland'
+    /education-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: b9d3873a-b992-44a4-967c-f0de0d6d92de
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Education Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/education-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Education Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /education-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 609b507e-6075-413b-84c8-60da7e94ea35
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Education Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/education-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Education Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /nhs-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 513b6329-1bef-45a8-8308-f0737e9b4f96
+    hippo:name: 'NHS Scotland'
+    /nhs-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 6128c98d-2dce-4a32-8b8e-5ea5b2a81c51
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'NHS Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/nhs-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - NHS Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /nhs-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: ab526a0a-2d36-4a1f-810c-5c6305039827
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'NHS Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/nhs-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - NHS Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /scottish-fire-and-rescue:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: c4b06678-092c-4005-af42-0fb2b5b6c84d
+    hippo:name: 'Scottish Fire and Rescue'
+    /scottish-fire-and-rescue[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 066c5ad8-40de-4a26-ba64-a024429672d9
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Scottish Fire and Rescue blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/scottish-fire-and-rescue'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Scottish Fire and Rescue'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /scottish-fire-and-rescue[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: c04fd4df-7770-43e4-aae2-81997c89979d
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Scottish Fire and Rescue blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/scottish-fire-and-rescue'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Scottish Fire and Rescue'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /revenue-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 88932ffc-4ff1-4a4e-8a75-195c2bee3eb1
+    hippo:name: 'Revenue Scotland'
+    /revenue-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: d6ec16f9-5c06-4cc9-9c77-1ea1fe148ae6
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Revenue Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/revenue-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Revenue Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /revenue-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 2a870515-7cbb-419d-bbd5-7917cbab179e
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Revenue Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/revenue-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Revenue Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /disclosure-scotland:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: b7a94d20-608a-4487-854c-269382e0243f
+    hippo:name: 'Disclosure Scotland'
+    /disclosure-scotland[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: eab5838f-8a23-4c85-ab5a-8765404b3f7d
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Disclosure Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/disclosure-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Disclosure Scotland'
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /disclosure-scotland[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 38d31815-623c-40a2-ba7d-8bf654a5eac5
+      feed:category: []
+      feed:copyright: ''
+      feed:description: 'Disclosure Scotland blog posts from Scottish Government'
+      feed:documentType: govscot:BlogPost
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: en-GB
+      feed:managingEditor: ''
+      feed:scope: 'blogs/disclosure-scotland'
+      feed:sortByField: govscot:publicationDate
+      feed:title: 'Scottish Government Blogs - Disclosure Scotland'
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModificationDate: 2026-10-22T09:00:00.000Z
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2026-10-22T09:00:00.000Z
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []

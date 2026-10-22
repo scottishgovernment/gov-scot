@@ -1,4 +1,4 @@
 /hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/main/Blogs:
   jcr:primaryType: hst:sitemenuitem
-  hst:externallink: http://blogs.gov.scot/
+  hst:referencesitemapitem: blogs
   hst:repobased: false

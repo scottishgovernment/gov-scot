@@ -55,6 +55,57 @@ definitions:
           hst:componentconfigurationid: hst:pages/newslistpage
           hst:relativecontentpath: ${parent}/index
           hst:sitemapitemhandlerids: [trailing-slash]
+      /blogs:
+        jcr:primaryType: hst:sitemapitem
+        hst:refId: blogs
+        hst:componentconfigurationid: hst:pages/blogshomepage
+        hst:relativecontentpath: blogs
+        hst:sitemapitemhandlerids: [trailing-slash]
+        /_index_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/blogshomepage
+          hst:relativecontentpath: ${parent}/index
+          hst:sitemapitemhandlerids: [trailing-slash]
+        /authors:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/pagenotfound
+          hst:relativecontentpath: blogs/authors
+          hst:sitemapitemhandlerids: [trailing-slash]
+          /_any_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/blogauthorpage
+            hst:relativecontentpath: ${parent}/${1}
+            hst:sitemapitemhandlerids: [trailing-slash]
+        /_default_:
+          jcr:primaryType: hst:sitemapitem
+          hst:componentconfigurationid: hst:pages/blogpage
+          hst:relativecontentpath: blogs/${1}
+          hst:sitemapitemhandlerids: [trailing-slash]
+          /_index_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/blogpage
+            hst:relativecontentpath: ${parent}/index
+            hst:sitemapitemhandlerids: [trailing-slash]
+          /_default_:
+            jcr:primaryType: hst:sitemapitem
+            hst:componentconfigurationid: hst:pages/pagenotfound
+            hst:relativecontentpath: blogs/${1}/${2}
+            hst:sitemapitemhandlerids: [trailing-slash]
+            /_default_:
+              jcr:primaryType: hst:sitemapitem
+              hst:componentconfigurationid: hst:pages/pagenotfound
+              hst:relativecontentpath: blogs/${1}/${2}/${3}
+              hst:sitemapitemhandlerids: [trailing-slash]
+              /_default_:
+                jcr:primaryType: hst:sitemapitem
+                hst:componentconfigurationid: hst:pages/pagenotfound
+                hst:relativecontentpath: blogs/${1}/${2}/${3}/${4}
+                hst:sitemapitemhandlerids: [trailing-slash]
+                /_default_:
+                  jcr:primaryType: hst:sitemapitem
+                  hst:componentconfigurationid: hst:pages/blogpostpage
+                  hst:relativecontentpath: blogs/${1}/${2}/${3}/${4}/${5}
+                  hst:sitemapitemhandlerids: [trailing-slash]
       /about:
         jcr:primaryType: hst:sitemapitem
         hst:componentconfigurationid: hst:pages/aboutpage

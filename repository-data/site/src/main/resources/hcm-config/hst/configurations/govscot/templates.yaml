@@ -35,6 +35,18 @@ definitions:
       /news-main:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/news.ftl
+      /blogshomepage-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/blogshomepage.ftl
+      /blog-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/blog.ftl
+      /blogpost-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/blogpost.ftl
+      /blogauthor-main:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/govscot/blogauthor.ftl
       /content-data:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/govscot/common/content-data.ftl

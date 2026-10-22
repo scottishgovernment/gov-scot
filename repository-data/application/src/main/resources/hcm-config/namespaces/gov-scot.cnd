@@ -23,6 +23,18 @@
 [govscot:AttributableContent] > govscot:SimpleContent, hippostd:relaxed, hippotranslation:translated
   orderable
 
+[govscot:Blog] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:BlogAuthor] > govscot:basedocument, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:BlogHomepage] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
+[govscot:BlogPost] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated
+  orderable
+
 [govscot:BannerImages] > hippogallery:imageset, hippogallery:relaxed
 
 [govscot:Collection] > govscot:AttributableContent, hippostd:relaxed, hippotranslation:translated

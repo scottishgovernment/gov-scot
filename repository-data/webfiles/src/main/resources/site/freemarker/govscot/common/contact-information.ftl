@@ -51,7 +51,7 @@
             <dd class="ds_contact-details__social-item">
                 <a class="ds_contact-details__social-link" href="http://x.com/${contactInformation.twitter}">
                     <svg class="ds_contact-details__social-icon  ds_icon" aria-hidden="true" role="img"><use href="${iconspath}#x"></use></svg>
-                    ${contactInformation.twitter}
+                    X
                 </a>
             </dd>
             </#if>

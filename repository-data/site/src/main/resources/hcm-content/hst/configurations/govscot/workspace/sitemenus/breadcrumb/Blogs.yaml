@@ -1,0 +1,4 @@
+/hst:hst/hst:configurations/govscot/hst:workspace/hst:sitemenus/breadcrumb/Blogs:
+  jcr:primaryType: hst:sitemenuitem
+  hst:referencesitemapitem: blogs
+  hst:repobased: false
