@@ -20,19 +20,9 @@ definitions:
           hipposys:type: String
           hipposys:value: statistics
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
       /statistics-publication-type:
         jcr:primaryType: hipposys:domainrule
         /include-statistics-documents:
@@ -43,19 +33,9 @@ definitions:
           hipposys:type: Reference
           hipposys:value: /content/documents/govscot/publications/statistics/
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
       /embargo:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [general-embargo, embargo-children-and-families-analysis, embargo-energy-statistics,

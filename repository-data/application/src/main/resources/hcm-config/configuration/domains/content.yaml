@@ -2,6 +2,11 @@ definitions:
   config:
     /hippo:configuration/hippo:domains/content/editor:
       hipposys:groups: [cmsadmin, editor]
+    /hippo:configuration/hippo:domains/content/content-domain:
+      /hide-embargo-handle:
+        .meta:delete: true
+      /hide-embargo-document:
+        .meta:delete: true
     /hippo:configuration/hippo:domains/content/content-domain/exclude-valuelists-folder:
       jcr:primaryType: hipposys:facetrule
       hipposys:equals: false

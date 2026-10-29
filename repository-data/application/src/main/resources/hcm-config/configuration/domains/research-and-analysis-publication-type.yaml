@@ -20,19 +20,9 @@ definitions:
           hipposys:type: Reference
           hipposys:value: /content/documents/govscot/publications/research-and-analysis/
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
       /research-and-analysis-publication-type:
         jcr:primaryType: hipposys:domainrule
         /include-research-and-analysis-documents:
@@ -43,19 +33,9 @@ definitions:
           hipposys:type: String
           hipposys:value: research-and-analysis
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
       /embargo:
         jcr:primaryType: hipposys:authrole
         hipposys:groups: [ embargo-neighbourhood-shs ]

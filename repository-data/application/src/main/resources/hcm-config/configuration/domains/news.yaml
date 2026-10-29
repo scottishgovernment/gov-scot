@@ -18,19 +18,9 @@ definitions:
           hipposys:type: Reference
           hipposys:value: /content/documents/govscot/news/
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
       /news-documents:
         jcr:primaryType: hipposys:domainrule
         /include-news-documents:
@@ -41,16 +31,6 @@ definitions:
           hipposys:type: Reference
           hipposys:value: /content/importers/
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true

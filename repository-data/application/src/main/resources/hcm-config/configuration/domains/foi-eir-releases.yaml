@@ -20,19 +20,9 @@ definitions:
           hipposys:type: Reference
           hipposys:value: /content/documents/govscot/publications/foi-eir-release/
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
       /foi-documents-folder:
         jcr:primaryType: hipposys:domainrule
         /include-foi-documents:
@@ -43,18 +33,8 @@ definitions:
           hipposys:type: String
           hipposys:value: foi-eir-release
         /hide-embargo-handle:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:handle
+          .meta:delete: true
         /hide-embargo-document:
-          jcr:primaryType: hipposys:facetrule
-          hipposys:equals: false
-          hipposys:facet: nodetype
-          hipposys:filter: false
-          hipposys:type: Name
-          hipposys:value: embargo:document
+          .meta:delete: true
       /embargo:
         .meta:delete: true
