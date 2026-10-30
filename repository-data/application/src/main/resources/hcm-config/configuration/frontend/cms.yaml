@@ -9,6 +9,7 @@ definitions:
     /hippo:configuration/hippo:frontend/cms/cms-services/localeProviderService/en:
       country: sc
     /hippo:configuration/hippo:frontend/cms/cms-static/root:
+      max.inactive.interval.minutes: '60'
       wicket.skin: [skin/document-editor.css, skin/cms-design-tweaks.css]
     /hippo:configuration/hippo:frontend/cms/cms-dashshortcuts/gotoShortcut:
       option.location: /content/documents/govscot
