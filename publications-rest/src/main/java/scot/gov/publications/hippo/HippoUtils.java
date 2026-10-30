@@ -84,6 +84,11 @@ public class HippoUtils {
         return isPublished(variant) ? variant : null;
     }
 
+    public Node getUnpublishedVariant(Node handle) throws RepositoryException {
+        return find(handle.getNodes(handle.getName()),
+                n -> hasState(n) && "unpublished".equals(n.getProperty(HIPPOSTD_STATE).getString()));
+    }
+
     boolean hasState(Node node) throws RepositoryException {
         return node.hasProperty(HIPPOSTD_STATE);
     }

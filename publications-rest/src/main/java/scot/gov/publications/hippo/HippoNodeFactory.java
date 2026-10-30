@@ -86,8 +86,9 @@ public class HippoNodeFactory {
         job.addMixin(MIX_REFERENCEABLE);
         job.addMixin(MIX_SIMPLE_VERSIONABLE);
         job.addMixin(MIX_VERSIONABLE);
+        Node unpublished = hippoUtils.getUnpublishedVariant(handle);
         job.setProperty(HIPPOSCHED_ATTRIBUTE_NAMES, new String[] { HIPPOSCHED_SUBJECT_ID, HIPPOSCHED_METHOD_NAME});
-        job.setProperty(HIPPOSCHED_ATTRIBUTE_VALUES, new String[] { handle.getIdentifier(), "removeEmbargo"});
+        job.setProperty(HIPPOSCHED_ATTRIBUTE_VALUES, new String[] { unpublished.getIdentifier(), "removeEmbargo"});
 
         job.setProperty(HIPPOSCHED_REPOSITORY_JOB_CLASS,
                 "org.onehippo.forge.embargo.repository.workflow.EmbargoWorkflowImpl$WorkflowJob");
