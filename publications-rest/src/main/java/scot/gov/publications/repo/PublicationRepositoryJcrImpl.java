@@ -67,6 +67,8 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
 
     private static final String CONTAINS_FORMAT = "CONTAINS(%s, '%s')";
 
+    private static final String NT_UNSTRUCTURED = "nt:unstructured";
+
     /**
      * Allowlist of the fields a caller may sort by, mapped to their JCR property name. Sort input
      * is never concatenated into the query directly to avoid JCR-SQL injection via the sort param.
@@ -101,7 +103,7 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
     public void create(Publication publication) throws PublicationRepositoryException {
         try {
             Node folder = ensurePath(path(publication));
-            Node node = folder.addNode(publication.getIsbn(), "nt:unstructured");
+            Node node = folder.addNode(publication.getIsbn(), NT_UNSTRUCTURED);
             copyValues(node, publication);
             session.save();
         } catch (RepositoryException e) {
@@ -259,7 +261,7 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
      */
     Node ensureRoot() throws RepositoryException {
         if (!session.nodeExists(ROOT)) {
-            return session.getNode("/content").addNode("publicationjobs", "nt:unstructured");
+            return session.getNode("/content").addNode("publicationjobs", NT_UNSTRUCTURED);
         }
         return session.getNode(ROOT);
     }
@@ -274,7 +276,7 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
         for (String element : path) {
             node = node.hasNode(element)
                     ? node.getNode(element)
-                    : node.addNode(element, "nt:unstructured");
+                    : node.addNode(element, NT_UNSTRUCTURED);
         }
         return node;
     }
