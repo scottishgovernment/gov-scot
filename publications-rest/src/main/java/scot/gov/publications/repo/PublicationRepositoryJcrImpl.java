@@ -2,7 +2,6 @@ package scot.gov.publications.repo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scot.gov.publications.hippo.HippoPaths;
 import scot.gov.publications.hippo.HippoUtils;
 
 import javax.jcr.Node;
@@ -85,13 +84,10 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
 
     Session session;
 
-    HippoPaths paths;
-
     HippoUtils hippoUtils;
 
     public PublicationRepositoryJcrImpl(Session session) {
         this.session = session;
-        this.paths = new HippoPaths(session);
         this.hippoUtils = new HippoUtils();
     }
 
@@ -104,8 +100,7 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
     @Override
     public void create(Publication publication) throws PublicationRepositoryException {
         try {
-            ensureRoot();
-            Node folder = paths.ensurePath(ROOT, path(publication));
+            Node folder = ensurePath(path(publication));
             Node node = folder.addNode(publication.getIsbn(), "nt:unstructured");
             copyValues(node, publication);
             session.save();
@@ -164,7 +159,7 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
             StringBuilder sql = new StringBuilder("SELECT * FROM nt:unstructured ");
             List<String> andterms = new ArrayList<>();
             andterms.add("jcr:path LIKE '/content/publicationjobs/%'");
-            // exclude the bucket folder nodes created by path()/HippoPaths.ensurePath, which are
+            // exclude the bucket folder nodes created by path()/ensurePath, which are
             // also nt:unstructured and would otherwise be picked up alongside real publications
             andterms.add(PROP_ID + " IS NOT NULL");
 
@@ -260,13 +255,28 @@ public class PublicationRepositoryJcrImpl implements PublicationRepository {
     }
 
     /**
-     * Create the {@value #ROOT} node if it does not already exist. HippoPaths.ensurePath only
-     * creates the elements below the root it is given, so the root itself has to be created here.
+     * Create the {@value #ROOT} node if it does not already exist.
      */
-    void ensureRoot() throws RepositoryException {
+    Node ensureRoot() throws RepositoryException {
         if (!session.nodeExists(ROOT)) {
-            session.getNode("/content").addNode("publicationjobs", "nt:unstructured");
+            return session.getNode("/content").addNode("publicationjobs", "nt:unstructured");
         }
+        return session.getNode(ROOT);
+    }
+
+    /**
+     * Ensure that each element of the path exists below {@value #ROOT}, creating any that are missing.
+     * The elements are used as node names as-is (they are hex characters from the guid) so no
+     * slugifying or stop word removal is applied.
+     */
+    Node ensurePath(List<String> path) throws RepositoryException {
+        Node node = ensureRoot();
+        for (String element : path) {
+            node = node.hasNode(element)
+                    ? node.getNode(element)
+                    : node.addNode(element, "nt:unstructured");
+        }
+        return node;
     }
 
     List<String> path(Publication publication) {
