@@ -10,6 +10,11 @@ import static scot.gov.publications.hippo.Constants.*;
 
 public class HippoNodeFactory {
 
+    /**
+     * How long before the publication date the publish job for an embargoed publication is scheduled for.
+     */
+    static final long EMBARGOED_PUBLISH_LEAD_MINUTES = 2;
+
     Session session;
 
     HippoUtils hippoUtils = new HippoUtils();
@@ -53,7 +58,7 @@ public class HippoNodeFactory {
 
         ensureWorkflowJobsDeleted(handle);
         ensureEmbargoFields(handle, publishDateTime, embargo);
-        ensureWorkflowJob(handle, publishDateTime);
+        ensureWorkflowJob(handle, publishDateTime, embargo);
     }
 
     /**
@@ -122,14 +127,23 @@ public class HippoNodeFactory {
     }
 
     /**
-     * Create a workflow job to publish this publication at the specified publication date
+     * Create a workflow job to publish this publication at the specified publication date.
+     *
+     * If the publication is embargoed then the publish job is scheduled {@value #EMBARGOED_PUBLISH_LEAD_MINUTES}
+     * minutes before the publication date, while the embargo removal job still runs at the publication date. This
+     * is done to avoid a race condition between the two jobs, which would otherwise both fire at the same time
+     * against the same handle.
      */
-    public void ensureWorkflowJob(Node handle, ZonedDateTime publishDateTime) throws RepositoryException {
+    public void ensureWorkflowJob(Node handle, ZonedDateTime publishDateTime, boolean embargo) throws RepositoryException {
         boolean needsJob = publishDateTime.isAfter(ZonedDateTime.now());
 
         if (!needsJob) {
             return;
         }
+
+        ZonedDateTime jobDateTime = embargo
+                ? publishDateTime.minusMinutes(EMBARGOED_PUBLISH_LEAD_MINUTES)
+                : publishDateTime;
 
         // create the job needed to publish this node
         Node job = handle.addNode(HIPPO_REQUEST, "hipposched:workflowjob");
@@ -141,7 +155,7 @@ public class HippoNodeFactory {
         Node defaultNode = triggers.addNode("default", HIPPOSCHED_SIMPLE_TRIGGER);
         defaultNode.addMixin(MIX_LOCKABLE);
         defaultNode.addMixin(MIX_REFERENCEABLE);
-        Calendar publishTime = GregorianCalendar.from(publishDateTime);
+        Calendar publishTime = GregorianCalendar.from(jobDateTime);
         defaultNode.setProperty(HIPPOSCHED_NEXT_FIRE_TIME, publishTime);
         defaultNode.setProperty(HIPPOSCHED_START_TIME, publishTime);
     }
