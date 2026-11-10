@@ -1,6 +1,6 @@
 package scot.gov.www.searchjournal;
 
-import org.hippoecm.hst.core.jcr.RuntimeRepositoryException;
+import org.hippoecm.repository.api.RuntimeRepositoryException;
 import org.onehippo.repository.scheduling.RepositoryJob;
 import org.onehippo.repository.scheduling.RepositoryJobExecutionContext;
 import org.slf4j.Logger;
