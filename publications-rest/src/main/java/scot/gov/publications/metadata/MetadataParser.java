@@ -68,6 +68,11 @@ public class MetadataParser {
             missingFields.add("publicationDate");
         }
 
+        if (metadata.getUpdate() != null) {
+            // if the JSON contains an 'update' element then it must have both a date and some text
+            assertRequiredUpdateFields(metadata.getUpdate(), missingFields);
+        }
+
         if (StringUtils.equals(metadata.getPublicationType(), "consultation-paper")) {
             // if the type is consultation paper, and the JSON contains a 'consultation' element then
             // assert that there has to be: openingDate, closingDate
@@ -93,14 +98,19 @@ public class MetadataParser {
         }
     }
 
+    void assertRequiredUpdateFields(Update update, List<String> missingFields) {
+        if (update.getLastUpdated() == null) {
+            missingFields.add("update.lastUpdated");
+        }
+        if (isBlank(update.getUpdateText())) {
+            missingFields.add("update.updateText");
+        }
+    }
+
     private void assertValidFields(Metadata metadata) throws MetadataParserException {
         // the isbn should only contain letters, numbers and hyphens
         if (!validISBN(metadata.normalisedIsbn())) {
             throw new MetadataParserException("Invalid field: isbn = " + metadata.normalisedIsbn());
-        }
-
-        if (metadata.getUpdate() != null && metadata.getUpdate().getUpdateText().isEmpty()) {
-            throw new MetadataParserException("Update text cannot be empty.");
         }
     }
 

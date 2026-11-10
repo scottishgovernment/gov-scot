@@ -45,7 +45,6 @@ public final class Constants {
     public static final String GOVSCOT_SUMMARY = "govscot:summary";
     public static final String GOVSCOT_CONTENT = "govscot:content";
     public static final String GOVSCOT_PAGE_COUNT = "govscot:pageCount";
-    public static final String GOVSCOT_GOVSCOTURL = "govscot:govscoturl";
 
     public static final String EMBARGO_DOCUMENT = "embargo:document";
     public static final String EMBARGO_HANDLE = "embargo:handle";

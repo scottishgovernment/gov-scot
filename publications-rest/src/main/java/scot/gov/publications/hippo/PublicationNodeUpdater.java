@@ -521,7 +521,11 @@ public class PublicationNodeUpdater {
         }
     }
 
-    private Node findRoleOrPerson(String roleOrPerson) throws RepositoryException {
+    private Node findRoleOrPerson(String roleOrPerson) throws RepositoryException, ApsZipImporterException {
+        // roles are looked up by node name, so must be slugs - anything else would produce an invalid xpath query
+        if (!roleOrPerson.matches("^[a-z0-9-]+$")) {
+            throw new ApsZipImporterException(String.format("Invalid role: '%s'", roleOrPerson));
+        }
         return firstNonNull(
                 hippoUtils.findOneXPath(session, roleHandleQuery(roleOrPerson)),
                 hippoUtils.findOneXPath(session, personHandleQuery(roleOrPerson)),

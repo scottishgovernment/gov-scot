@@ -9,15 +9,11 @@ import org.onehippo.forge.content.pojo.model.BinaryValue;
 import org.onehippo.forge.content.pojo.model.ContentNode;
 import org.onehippo.forge.content.pojo.model.ContentProperty;
 import org.onehippo.forge.content.pojo.model.ContentPropertyType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import scot.gov.publications.ApsZipImporterException;
 import scot.gov.publications.hippo.pages.HtmlUtil;
 import scot.gov.publications.metadata.Metadata;
 import scot.gov.publications.repo.Publication;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Map;
@@ -25,13 +21,10 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
 import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.hippoecm.repository.api.HippoNodeType.HIPPO_NAME;
 import static scot.gov.publications.hippo.Constants.*;
 
 public class ContentNodes {
-
-    private static final Logger LOG = LoggerFactory.getLogger(ContentNodes.class);
 
     HtmlUtil htmlUtil = new HtmlUtil();
 
@@ -51,14 +44,10 @@ public class ContentNodes {
         contentNode.setProperty("govscot:metaDescription", metadata.getExecutiveSummary());
         contentNode.setProperty("govscot:notes", "");
         contentNode.addNode(htmlNode(GOVSCOT_CONTENT, metadata.getDescription()));
-        contentNode.addNode(htmlNode("govscot:contact",  mailToLink(metadata.getContact().getEmail())));
+        contentNode.addNode(htmlNode("govscot:contact",  mailToLink(contactEmail(metadata))));
         contentNode.setProperty("govscot:publicationType", HippoPaths.slugify(metadata.mappedPublicationType(), false));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
         setPublicationDates(contentNode, metadata);
-
-        if (isNotBlank(metadata.getUrl())) {
-            contentNode.setProperty(GOVSCOT_GOVSCOTURL, oldStyleUrl(metadata));
-        }
         return contentNode;
     }
 
@@ -66,8 +55,8 @@ public class ContentNodes {
      * Refresh an existing publication's exported ContentNode from a re-imported zip's metadata.
      * Title, summary, seoTitle, metaDescription, notes and the description body are user-editable
      * in the CMS, so they are only set if not already present - preserving any edits made since
-     * the last import, matching the behaviour of the publications-service importer. Contact, isbn
-     * and the old-style url are always refreshed from the zip. Never adds/removes child nodes
+     * the last import, matching the behaviour of the publications-service importer. Contact and isbn
+     * are always refreshed from the zip. Never adds/removes child nodes
      * already present on the exported tree (see the content-exim binder note on
      * updateMirrorDocbase in PublicationNodeUpdater).
      */
@@ -80,13 +69,9 @@ public class ContentNodes {
         setPropertyIfAbsent(contentNode, "govscot:metaDescription", metadata.getExecutiveSummary());
         setPropertyIfAbsent(contentNode, "govscot:notes", "");
         addHtmlNodeIfAbsent(contentNode, GOVSCOT_CONTENT, metadata.getDescription());
-        updateHtmlNodeContent(contentNode, "govscot:contact", mailToLink(metadata.getContact().getEmail()));
+        updateHtmlNodeContent(contentNode, "govscot:contact", mailToLink(contactEmail(metadata)));
         contentNode.setProperty("govscot:isbn", metadata.normalisedIsbn());
         setPublicationDates(contentNode, metadata);
-
-        if (isNotBlank(metadata.getUrl())) {
-            contentNode.setProperty(GOVSCOT_GOVSCOTURL, oldStyleUrl(metadata));
-        }
     }
 
     private void setPublicationDates(ContentNode contentNode, Metadata metadata) {
@@ -237,22 +222,20 @@ public class ContentNodes {
         }
     }
 
-    private String oldStyleUrl(Metadata metadata) {
-        // we only want to store the path of the old style url
-        try {
-            return new URL(metadata.getUrl()).getPath();
-        } catch (MalformedURLException e) {
-            LOG.warn("Cannot parse metadata url: {}", metadata.getUrl(), e);
-            return "";
-        }
-    }
-
     ContentNode htmlNode(String name, String html) {
         ContentNode htmlNode = new ContentNode();
         htmlNode.setName(name);
         htmlNode.setPrimaryType("hippostd:html");
         htmlNode.setProperty("hippostd:content", html);
         return htmlNode;
+    }
+
+    /**
+     * The contact has not always been present in the metadata, so a missing contact is treated the same as one
+     * with no email.
+     */
+    private String contactEmail(Metadata metadata) {
+        return metadata.getContact() == null ? null : metadata.getContact().getEmail();
     }
 
     private String mailToLink(String email) {

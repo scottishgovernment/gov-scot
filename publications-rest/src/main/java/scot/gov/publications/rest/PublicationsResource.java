@@ -1,5 +1,6 @@
 package scot.gov.publications.rest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
 import javax.jcr.RepositoryException;
@@ -362,11 +363,11 @@ public class PublicationsResource {
     }
 
     /**
-     * The contact email has not always been present in the JSON and so we guard against it being null.
+     * The contact and its email have not always been present in the JSON and so we guard against either being null.
      */
     private String contactEmail(Metadata metadata) {
         if (metadata.getContact() != null) {
-            return metadata.getContact().getEmail().trim();
+            return StringUtils.trimToEmpty(metadata.getContact().getEmail());
         }
         return "";
     }
