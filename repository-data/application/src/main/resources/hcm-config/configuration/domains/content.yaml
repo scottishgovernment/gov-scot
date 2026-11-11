@@ -44,7 +44,7 @@ definitions:
         useradmin]
     /hippo:configuration/hippo:domains/content/unlockauthrole:
       jcr:primaryType: hipposys:authrole
-      hipposys:groups: [cmsadmin, document-unlocker]
+      hipposys:groups: [cmsadmin, document-unlocker, digital-comms]
       hipposys:role: unlocker
     /hippo:configuration/hippo:domains/content/embargo:
       .meta:delete: true
