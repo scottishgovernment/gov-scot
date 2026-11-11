@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/digital-comms:
+      jcr:primaryType: hipposys:group
+      hipposys:securityprovider: internal
+      hipposys:userroles: [xm.dashboard.user, xm.cms.user, xm.report.user, xm.channel.admin,
+                           xm.content.admin, xm.security.user-admin, scotgov.feedback.viewer]
