@@ -71,11 +71,18 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
                 break;
 
             case "publish" :
-                updateLookup(subject, LIVE);
+                // publish(Date) fires a "publish" event when the publication is scheduled, not when it happens
+                if (isLive(subject)) {
+                    updateLookup(subject, LIVE);
+                }
                 break;
 
             case "depublish":
-                removeLookup(subject, LIVE);
+                // depublish(Date) fires a "depublish" event when the depublication is scheduled, while the
+                // document is still live. Only remove the lookup once the document has actually been taken offline.
+                if (!isLive(subject)) {
+                    removeLookup(subject, LIVE);
+                }
                 break;
 
             case "delete":
@@ -153,6 +160,11 @@ public class SlugMaintenanceListener extends DaemonModuleBase {
 
     private String sitename(Node subject) throws RepositoryException {
         return subject.getAncestor(3).getName();
+    }
+
+    boolean isLive(Node subject) throws RepositoryException {
+        return hippoUtils.find(subject.getNodes(subject.getName()),
+                variant -> hippoUtils.contains(variant, "hippo:availability", LIVE)) != null;
     }
 
     boolean requiresSlug(Node subject) throws RepositoryException {
