@@ -59,9 +59,4 @@ public class TrailingSlashRedirect implements HstSiteMapItemHandler {
         return url.toString();
     }
 
-    @Override
-    public void destroy() {
-        // Nothing to destroy
-    }
-
 }
