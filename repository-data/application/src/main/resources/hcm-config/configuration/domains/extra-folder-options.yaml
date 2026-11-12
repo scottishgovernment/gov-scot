@@ -4,7 +4,7 @@ definitions:
       jcr:primaryType: hipposys:domain
       /editor:
         jcr:primaryType: hipposys:authrole
-        hipposys:groups: [useradmin, publication-extra-folder-options]
+        hipposys:groups: [useradmin, publication-extra-folder-options, digital-comms]
         hipposys:role: folderctxmenus-editor
       /admin:
         jcr:primaryType: hipposys:authrole
